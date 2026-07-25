@@ -1,0 +1,85 @@
+<p>如果您正在开发一款应用程序，那么您一定会依赖电子邮件来与用户进行沟通。您通过电子邮件验证用户注册，通知用户各类事件，以及向他们发送电子发票。即便在代理工作流和其他 AI 工具日益普及的今天，电子邮件依然焕发着新价值：只需一封简单的邮件，就能成为这些工具的输入或输出载体。</p>
+<p>但对于开发者而言，管理邮件服务却着实令人头疼，这往往是大多数团队最棘手的负担。开发者理应获得一套既简单可靠，又能深度融入其工作流的解决方案。</p>
+<p>今天，我们非常激动地向大家宣布：Email Sending 的内测版正式上线！这项全新功能让您可以直接从 Cloudflare Workers 发送事务性电子邮件。Email Sending 与我们广受欢迎的 <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a> 产品强强联合、功能互补，共同构成了全新的 Cloudflare Email Service——为您的所有电子邮件需求提供统一、完整的开发者体验。</p>
+<p>通过 Cloudflare Email Service，我们将多年来在邮件<a href="https://developers.cloudflare.com/cloudflare-one/email-security" target="_blank" rel="noopener noreferrer"><u>安全防护</u></a>与<a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>路由传输</u></a>方面的丰富经验，与开发者平台的强大能力相结合。现在，发送电子邮件变得非常简单，只需将绑定添加到 Worker 并调用 <code>send</code> 即可：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SEND_EMAIL</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      to: [{ email: </span><span class="sk-032f62-99ffe4">"hello@example.com"</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">      from: { email: </span><span class="sk-032f62-99ffe4">"api-sender@your-domain.com"</span><span class="sk-24292e-fff">, name: </span><span class="sk-032f62-99ffe4">"Your App"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">      subject: </span><span class="sk-032f62-99ffe4">"Hello World"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      text: </span><span class="sk-032f62-99ffe4">"Hello World!"</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Successfully sent email!`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<h3>电子邮件体验即用户体验</h3>
+<p>电子邮件是用户体验的核心支柱。当用户离开您的应用时，它正是您与他们保持联系的关键纽带。用户依赖电子邮件获取重要通知，无论是密码重置、购物收据、魔法登录链接，还是新手引导流程。一旦电子邮件服务失效，您的整个应用体验也将随之崩塌。</p>
+<p>这意味着，确保电子邮件能够可靠且快速地送达用户收件箱至关重要。一封延迟十分钟才送达的魔法链接邮件，可能会导致用户流失；而一封被投递到垃圾邮件文件夹的邮件，则会打乱用户流程，甚至侵蚀用户对您产品的信任。正因如此，我们致力于通过 Cloudflare Email Service，重点提升邮件的送达率和收件箱到达速度。</p>
+<p>为实现这一功能，我们将与 DNS 深度集成，自动配置必要的 DNS 记录（如 SPF、DKIM 和 DMARC），以便邮件服务商能够验证您的发件域名并信任您发送的电子邮件。此外，秉承 Cloudflare 的一贯风格，我们的 Cloudflare Email Service 是一项全球性服务。这意味着，我们能够在全球任何地方以低延迟投递您的邮件，而无需应对跨区域管理服务器的复杂问题。</p>
+<h3>简洁灵活，赋能开发者</h3>
+<p>将电子邮件视为应用程序的核心组成部分，也意味着需要为开发工作流中的每个接触点进行构建。我们正将 Cloudflare Email Service 打造为 Cloudflare 技术栈的一部分，让基于邮件开发变得像编写 Worker 一样自然。</p>
+<p>实际上，这意味着需要解决交易电子邮件工作流程的各个环节：</p>
+<ul>
+	<li>Cloudflare Email Service 入门非常简单！您无需管理复杂的 API 密钥和机密，只需在 <code>wrangler.jsonc</code> 配置文件中绑定 <code>Email</code> 服务，即可安全发送邮件，彻底杜绝凭证泄露风险。</li>
+	<li>您可以利用 Workers 处理接收的邮件，将附件存储至 R2，并将任务添加到 Queues 队列中，从而让邮件发送操作脱离应用的核心处理路径。此外，您还能使用 <code>wrangler</code> 工具在本地模拟 Email Sending，无需在各类工具和环境之间频繁切换，即可测试用户的旅程。</li>
+	<li>在生产环境中，您可以清晰洞察邮件的投递情况，通过退信率和投递事件实时掌握邮件状态。当用户反馈未收到邮件时，您能迅速查看投递状态，快速定位问题并帮助用户及时恢复正常使用。</li>
+</ul>
+<p>我们也在全力确保 Cloudflare Email Service 能与您现有的应用程序无缝集成。若您需要从外部服务发送邮件，既可以选择使用 REST API，也可以通过 SMTP 协议实现。同样地，如果您一直依赖现有的邮件框架（例如 <a href="https://react.email" target="_blank" rel="noopener noreferrer"><u>React Email</u></a>）来向用户发送内容丰富的 HTML 渲染邮件，那么您完全可以继续在 Cloudflare Email Service 中使用这些框架。只需导入相应的库，渲染您的模板，然后像在其他环境中一样，将其传递给 `send` 方法即可。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { render, pretty, toPlainText } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@react-email/render'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { SignupConfirmation } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './templates'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Convert React Email template to html</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> html</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> pretty</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> render</span><span class="sk-24292e-fff">(</span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">SignupConfirmation</span><span class="sk-6f42c1-a0a0a0"> url</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://your-domain.com/confirmation-id"</span><span class="sk-24292e-a0a0a0">/&gt;</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Use the Email Sending binding to send emails</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SEND_EMAIL</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      to: [{ email: </span><span class="sk-032f62-99ffe4">"hello@example.com"</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">      from: { email: </span><span class="sk-032f62-99ffe4">"api-sender@your-domain.com"</span><span class="sk-24292e-fff">, name: </span><span class="sk-032f62-99ffe4">"Welcome"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">      subject: </span><span class="sk-032f62-99ffe4">"Signup Confirmation"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      html,</span></span>
+<span class="line"><span class="sk-24292e-fff">      text: </span><span class="sk-6f42c1-ffc799">toPlainText</span><span class="sk-24292e-fff">(html)</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Successfully sent email!`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<h3>Email Routing 和 Email Sending：协同工作，效果更佳</h3>
+<p>发送电子邮件只是故事的一半。应用程序往往还需要接收和解析邮件，才能构建强大的工作流。通过将 Email Sending 功能与我们现有的 <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a> 功能相结合，我们为应用程序的所有邮件需求提供了一套完整的全链路解决方案。</p>
+<p>Email Routing 功能支持您在自己的域名下创建自定义电子邮件地址，并通过 Worker 以编程方式处理接收到的邮件，从而实现以下强大应用流程：</p>
+<ul>
+	<li>使用 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> 解析、总结甚至标记传入电子邮件：标记来自客户的安全事件，检测错误或事件的早期迹象，和/或根据这些传入电子邮件生成自动回复。</li>
+	<li>在 JIRA 或 Linear 等系统中，根据发送到 <code>support@your-domain.com</code> 的电子邮件创建支持工单。</li>
+	<li>处理发送到 <code>invoices@your-domain.com</code> 的发票，并将附件存储在 R2 中。</li>
+</ul>
+<p>要使用 Email Routing，请将 <code>email</code> 处理程序添加到您的 Worker 应用程序并根据需要进行处理：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Create an email handler to process emails delivered to your Worker</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> email</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">message</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Classify incoming emails using Workers AI</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">score</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">label</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/huggingface/distilbert-sst-2-int8"</span><span class="sk-24292e-fff">, { text: message.raw</span><span class="sk-032f62-99ffe4">" }</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    env.</span><span class="sk-005cc5-fff">PROCESSED_EMAILS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">({score, label, message});</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};  </span></span></code></pre>
+</div>
+<p>当您将入站路由与出站发送相结合时，您可以在 Cloudflare 内部完全实现闭环。想象一下，一位用户向您的支持地址发送电子邮件。一个 Worker 可以接收电子邮件，解析其内容，调用第三方 API 创建工单，然后使用 Email Sending 绑定立即向用户发送包含工单号的确认信息。这就是统一的 Cloudflare Email Service 的强大之处。</p>
+<p>使用 Email Sending 功能需订阅付费版 Workers 服务，我们将根据实际发送邮件数量计费。目前套餐方案仍在最终确定中，一旦定价确定（远早于正式收费时间），我们会第一时间更新官方文档、<a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>更新日志</u></a>并通知所有用户。另外，Email Routing 功能的现有使用限制保持不变。</p>
+<h3>下一步</h3>
+<p>在当今的应用程序中，电子邮件仍是核心要素；而在下一代 AI 智能体、后台任务和自动化工作流里，它正变得不可或缺。我们打造的 Cloudflare Email Service，将成为这一全新应用时代的强劲引擎。今年 11 月，我们将开启该服务的内测版。</p>
+<ul>
+	<li>对 Email Sending 感兴趣？<a href="https://forms.gle/BX6ECfkar3oVLQxs7" target="_blank" rel="noopener noreferrer"><u>在此注册以加入等候列表。</u></a></li>
+	<li>想要开始处理入站邮件？立即使用 <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a> 功能吧！该功能现已上线，目前仍然免费，并将在后续新推出的 Email Sending API 中整合。</li>
+</ul>
+<p>我们非常高兴将 Cloudflare Email Service 纳入开发人员平台，并期待看到您重新定义日益依赖电子邮件的用户体验！</p>

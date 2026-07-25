@@ -1,0 +1,47 @@
+<p>今天，我们将扩展 Cloudflare 的<a href="https://www.cloudflare.com/lp/dg/product/cloud-access-security-broker" target="_blank" rel="noopener noreferrer"><u>云访问安全代理 (CASB)</u></a>，以支持 <a href="https://support.claude.com/en/articles/13015708-access-the-compliance-api" target="_blank" rel="noopener noreferrer"><u>Claude Compliance API</u></a>。安全和合规团队现在可以直接在 Cloudflare 仪表板中监控 Claude 的使用情况。无需终结点智能体。</p>
+<p>长期以来，企业安全团队一直在努力了解用户如何与已批准和未批准的应用程序进行交互。AI 应用程序的快速采用使这一问题更加困难。员工花费大量时间在这些新的接触面上，他们的互动方式与传统 SaaS 不同：用户上传文件、共享自由格式的提示词，服务提供商生成可能包含敏感数据的内容。</p>
+<p><a href="https://www.cloudflare.com/lp/dg/product/cloud-access-security-broker" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a> 可帮助解决这个问题。通过一次 API 集成，让您能够对组织使用的应用进行带外可视化和控制。此集成在我们现有对 <a href="https://blog.cloudflare.com/best-practices-sase-for-ai" target="_blank" rel="noopener noreferrer"><u>AI 治理</u></a>的支持基础上进行扩展，覆盖安全团队现在管理的最常用工具。</p>
+<h2>安全 AI 落地的快速路径</h2>
+<p>AI 的采用速度超过了安全治理。IT 和安全团队虽争先恐后地推动 AI 工具以提升生产力，但控制措施却未能跟上。如今，大多数组织都面临有限的可见性：他们可在网络层阻止未经授权的 AI 工具，但无法看到授权工具内部发生的情况。</p>
+<p>这很重要，因为 AI 工具不同于传统的 SaaS 应用程序。它们通过 API 和智能体框架深度集成到工作流程中，特点为对话式和持久性。员工可能将客户数据粘贴到提示词中。开发人员可能会不小心分享 API 密钥，并且数月不更新。AI 应用程序可能会生成包含公司机密的内容。这些行为都会产生合规风险，而传统的安全工具无法检测到。</p>
+<p>企业正在迅速采用 AI，但这些工具需要不同的安全模型。它们不仅仅是读取数据；还生成数据、执行操作，并在单一工作流程中连接到多个记录系统。安全性需要覆盖整个生命周期：从应用程序如何调用 API，到其处理的数据内容，再到数据在静止时的存储位置。Cloudflare 为组织在工作流程的每个环节提供相应工具：</p>
+<ul>
+	<li><a href="https://www.cloudflare.com/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Gateway</u></a> 位于您的应用程序和 Anthropic 等 AI 提供商之间，为您提供请求、令牌支出和模型性能的可观测性。这使管理员能够强制执行速率限制、缓存响应并做出精细的路由决策。</li>
+	<li><a href="https://www.cloudflare.com/products/secure-web-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a> 和<a href="https://www.cloudflare.com/products/dlp" target="_blank" rel="noopener noreferrer"><u>数据丢失防护</u></a>检查 AI 流量中的敏感数据，阻止包含客户个人可识别信息或机密材料的提示词在到达模型之前被发送。</li>
+	<li><a href="https://www.cloudflare.com/products/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> 与 <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals" target="_blank" rel="noopener noreferrer"><u>MCP 服务器门户</u></a>将智能体与企业工具的连接集中到单一受保护终结点后面。管理员可以控制哪些用户和智能体可以访问哪些系统，并且每个请求都会被记录以供审计。</li>
+	<li><a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a> 现已将同一统一方法扩展至 Claude 内的静态数据扫描，无需终结点智能体，即可侦测错误配置和敏感数据。</li>
+</ul>
+<p>这些功能并排运行在相同的硬件上，使每项服务都具有<a href="https://blog.cloudflare.com/programmable-sase" target="_blank" rel="noopener noreferrer"><u>可组合性和可编程性</u></a>。更重要的是，这意味着流量无需经过多个供应商或云进行安全处理。</p>
+<h2>使用 Cloudflare CASB 实现更深入的洞察和控制</h2>
+<p>Cloudflare CASB 帮助组织通过轻量级 API 集成连接、扫描和监控第三方 SaaS 应用程序是否存在配置错误、数据共享不当和其他安全风险。组织可以重新获得对 SaaS 应用不断增长的投资的可见性和控制力。</p>
+<p>随着企业大规模部署 Claude，安全和合规团队对 Claude 使用情况的可见性需要与其技术栈中的其他企业应用程序相同。Anthropic 认识到这一差距，构建了 Claude Compliance API，使企业能够以编程方式访问有关其 Claude 组织、工作区和使用情况的安全相关数据。</p>
+<p>Cloudflare CASB 现在使用此终结点来提供可执行的安全发现，而无需内联流量检查或终结点智能体。</p>
+<h3>Claude Compliance API 的内容</h3>
+<p>通过此集成，Cloudflare One 客户可以使用他们已经依赖的检测和修复工作流程来监控 Claude Enterprise 活动。Cloudflare CASB 通过 <a href="https://platform.claude.com/docs/en/manage-claude/compliance-api" target="_blank" rel="noopener noreferrer"><u>Compliance API</u></a> 连接到 Claude，扫描安全问题。</p>
+<p>从今天开始，Cloudflare 支持以下资产的安全发现：</p>
+<ul>
+	<li>项目：检测整个组织或部分用户和群组共享的项目</li>
+	<li>项目附件：违反数据丢失防护 (DLP) 策略的项目文件和文档</li>
+	<li>聊天文件：用户上传和提供方生成的违反数据丢失防护 (DLP) 策略的文件</li>
+	<li>聊天消息：违反数据丢失防护 (DLP) 策略的用户提示词和提供商响应</li>
+	<li>工件：违反数据丢失防护 (DLP) 策略的提供商生成文档和文件</li>
+</ul>
+<p>这些发现会直接出现在 Cloudflare 仪表板中，与您其他 SaaS 应用中的安全状态和内容发现并列。发现按类别分组，按<a href="https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#severity-levels" target="_blank" rel="noopener noreferrer"><u>严重级别</u></a>排序。安全团队可以使用与 Microsoft 365、Google Workspace 或 Salesforce 相同的工作流程来分类、分配和解决 Claude 特定风险。</p>
+<h3>支持 Claude Enterprise 和 Claude Platform</h3>
+<p>对于 <a href="https://claude.com/pricing/enterprise" target="_blank" rel="noopener noreferrer"><u>Claude Enterprise</u></a>，CASB 显示合规数据，如组织、项目、聊天和角色。它还通过专用的只读终结点检索对话内容，包括消息和上传的文件，以防止数据丢失。 </p>
+<p>对于<a href="https://platform.claude.com" target="_blank" rel="noopener noreferrer"><u>Claude Platform</u></a>，CASB 将继续显示成员和工作空间的更改、API 密钥的创建，以及文件创建或下载事件。在不久的将来，我们将添加对活动提要的支持。</p>
+<p>CASB 将发现结果转化为行动。在 Claude 中检测到的安全发现，例如用户上传包含敏感数据的文件，可以在几分钟内成为 Gateway 策略。您可以使用 Gateway 阻止特定用户上传到 Claude，完全限制该应用程序的访问，或限制功能直到问题解决。这将通过将 CASB 的发现与 Cloudflare 现有的内联策略引擎相结合，使安全团队从可见性转向行动。</p>
+<h3>开始使用</h3>
+<p>要启用 Claude Compliance API 集成：</p>
+<ol>
+	<li>请确保您拥有 Claude Enterprise 账户。</li>
+	<li>请从 Claude 请求您组织的 Compliance API 访问权限。</li>
+	<li>在 Cloudflare 仪表板中，转到 Zero Trust &gt; 集成 &gt; 云和 SaaS。</li>
+	<li>选择“添加集成” &gt; Anthropic，然后输入您的 Compliance API 密钥。</li>
+	<li>如果您希望扫描上传文件中的敏感数据，请配置数据丢失防护 (DLP) 配置文件。</li>
+</ol>
+<p>集成会立即开始扫描，并在几分钟内在仪表板中显示结果。</p>
+<p>对于新的 Cloudflare 客户，您可以<a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>注册</u></a>并免费开始使用前两个集成。现有客户可以直接在仪表板中启用集成。</p>
+<h2>下一步</h2>
+<p>随着供应商发布新的企业安全 API，我们将继续扩展 CASB 对 AI 工具的覆盖范围。我们还将加强 CASB 内部的集成，使客户能够创建自定义发现并构建自动修复安全发现的工作流程。</p>
+<p>代理型 AI 的转变已经到来，我们相信帮助组织安全采用它的最佳方式是提供一个统一的平台来构建、部署和管理智能体。要保持更新，请查看我们的<a href="https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic" target="_blank" rel="noopener noreferrer"><u>开发人员文档</u></a>，或<a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>订阅</u></a>以自动获取更新。 </p>

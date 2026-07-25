@@ -1,0 +1,161 @@
+<p>Cloudflare werkt samen met Coinbase aan de oprichting van de x402 Foundation. De missie van deze stichting is om de acceptatie van het <a href="https://github.com/coinbase/x402" target="_blank" rel="noopener noreferrer">x402-protocol</a> te stimuleren. Dit is een vernieuwd raamwerk waarmee klanten en services op het internet in een gemeenschappelijke taal waarde met elkaar kunnen uitwisselen. Naast de samenwerking van vandaag kondigen we ook een reeks functies aan waarmee ontwikkelaars x402 in de <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>- en onze <a href="https://developers.cloudflare.com/agents/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>MCP</u></a>-integraties kunnen gebruiken. Ook stellen we een nieuw schema voor uitgestelde betalingen voor.</p>
+<h3>Betalingen in het tijdperk van AI-agents</h3>
+<p>Betalingen op het internet zijn van oudsher ontworpen voor mensen. We bekijken de website van een verkoper, geven onze koopintentie aan door artikelen aan een winkelwagentje toe te voegen en bevestigen deze intentie door onze creditcardgegevens in te voeren en op 'Betalen' te klikken. Maar hoe gaat dat in zijn werk voor directe transacties tussen digitale services? We hebben protocollen nodig om transacties tussen machines mogelijk te maken.&nbsp;</p>
+<p>De websites die beschermd worden door Cloudflare versturen dagelijks meer dan een miljard HTTP 402-responscodes naar bots en crawlers die toegang proberen te verkrijgen tot hun content en e-commercewinkels. Deze responscode wordt geleverd met een eenvoudig bericht: 'Betaling vereist.'</p>
+<p>Toch krijgen deze 402-berichten niet veel respons.&nbsp;Eén reden daarvoor is een gebrek aan standaardisatie.&nbsp;Zonder een specificatie over hoe deze responscodes eruit moeten zien en hoe erop moet worden gereageerd, beschikken contentcreators, uitgevers en websitebeheerders niet over de juiste hulpmiddelen om hun betalingsverzoeken over te brengen. Met x402 beschikken ontwikkelaars over een duidelijk, open protocol waarmee websites en geautomatiseerde agents wereldwijd betalingen kunnen doen.&nbsp;</p>
+<h3>Wat is x402?</h3>
+<p>Coinbase heeft de x402-transactieflow ontwikkeld, die hieronder wordt beschreven, om machines te helpen rechtstreeks via HTTP voor contentbronnen te betalen:</p>
+<ol>
+	<li>Een klant probeert toegang te verkrijgen tot een contentbron die beveiligd is door x402.&nbsp;</li>
+	<li>De server reageert met de statuscode '402 Betaling vereist'. De antwoordtekst bevat de betalingsinstructies, zoals het te betalen bedrag en de ontvanger.</li>
+	<li>De klant stuurt een verzoek met de betalingsautorisatie naar de contentbron die door x402 wordt beschermd.</li>
+	<li>De betalingsprovider controleert de betalingsinformatie van de klant en rondt de transactie af.</li>
+	<li>De server reageert met de gevraagde content in het antwoord, samen met de betalingsrespons die bevestigt dat de betaling is ontvangen.&nbsp;</li>
+</ol>
+<p>Deze flow zorgt voor de programmatische toegang tot contentbronnen op het internet. Klanten en servers die het x402-protocol kunnen interpreteren, kunnen transacties uitvoeren zonder dat daar accounts, abonnementen of API-sleutels voor nodig zijn.</p>
+<p>x402 kan worden gebruikt om geld met traditionele use cases te verdienen, maar maakt dit ook mogelijk voor een nieuwe klasse van use cases. Bijvoorbeeld:</p>
+<ul>
+	<li>Een assistent die bij verschillende leveranciers accessoires voor jouw Halloweenkostuum kan kopen.</li>
+	<li>Een AI-agent die per browser-renderingsessie betaalt, in plaats van een maandelijks abonnement.</li>
+	<li>Een autonome aandelenhandelaar die microbetalingen doet voor een hoogwaardige realtime datafeed om goed geïnformeerde beslissingen te kunnen nemen.</li>
+</ul>
+<p>Toekomstige versies van x402 zijn mogelijk onafhankelijk van de betalingsmethodes en zouden naast creditcards en bankrekeningen ook stablecoins kunnen ondersteunen.&nbsp;</p>
+<h3>Cloudflare's pay per crawl: voorstel voor het x402-uitgestelde betalingsschema&nbsp;</h3>
+<p>Agents en crawlers hebben vaak twee belangrijke functies nodig die al in de huidige financiële infrastructuur aanwezig zijn: een vertraagde afhandeling om rekening te houden met eventuele geschillen en een enkele, samengevoegde betaling om hun boekhouding te vereenvoudigen. Crawlers die deelnemen aan onze <a href="https://blog.cloudflare.com/introducing-pay-per-crawl" target="_blank" rel="noopener noreferrer"><u>private bèta van pay-per-crawl</u></a> kunnen bijvoorbeeld eenvoudig een enorm aantal pagina's crawlen en auditlogboeken genereren, en aan het einde van elke dag daar eenmalig via een gekoppelde creditcard of bankrekening voor betalen.&nbsp;</p>
+<p>We willen met dit soort betalingsscenario's rekening houden, en daarom stellen we een nieuw, uitgesteld betalingsschema voor het x402-protocol voor.&nbsp;Deze nieuwe regeling is specifiek ontworpen voor niet-urgente betalingen door agents, die via traditionele betaalmethoden of stablecoins afgehandeld kunnen worden. Met deze toevoeging zorgen we ervoor dat elke server die aan de vereisten voldoet, de cryptografische handshake optioneel kan loskoppelen van de betalingsafwikkeling zelf. Zo kunnen agents en servers vooraf onderhandelde licentieovereenkomsten, batchafwikkelingen of abonnementen gebruiken.</p>
+<p>We zullen dit nieuwe uitgestelde betalingsschema invoeren voor pay per crawl terwijl we de private bètaversie uitbreiden en verder ontwikkelen.&nbsp;</p>
+<h4>Wat is een handshake?</h4>
+<p>Dit is ons eerste voorstel voor de handshake die in de volgende grote update van x402 uitgebracht zou kunnen worden:</p>
+<h5>1. Het aanbod van de server</h5>
+<p>Tegenwoordig gaat het zo: een ongeverifieerde of ongeautoriseerde klant wil toegang verkrijgen tot een contentbron en ontvangt de melding <code>402 Betaling vereist</code>. De server stuurt de klant een betalingsverzoek dat de klant voor de respons kan gebruiken. Deze respons is een machineleesbaar aanbod en ons voorstel omvat een nieuw element, namelijk <strong>uitgesteld</strong>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 402</span><span class="sk-6f42c1-ffc799"> Payment</span><span class="sk-6f42c1-ffc799"> Required</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> application</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">json</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "accepts"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "scheme"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "deferred"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "network"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "resource"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://example.com/page"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "..."</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "..."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "extras"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "id"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "abc123"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "termsUrl"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://example.com/terms"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h5>2. De ondertekende verbintenis van de klant</h5>
+<p>Vervolgens verstuurt de klant het verzoek opnieuw met een ondertekende respons waarin de betalingsverplichting is vastgelegd. Het <strong>uitgestelde </strong>schema maakt gebruik van HTTP-berichthandtekeningen waarbij een <a href="https://datatracker.ietf.org/doc/html/rfc7517?cf_target_id=D4770F028006FD3F2FEE26B65F35A502" target="_blank" rel="noopener noreferrer"><u>public key met JWK-indeling</u></a> in een gehoste directory beschikbaar is. In de <code>Signature-Input</code> tekst staat duidelijk uitgelegd welke delen van het verzoek onderdeel zijn van de <code>Signature</code>. Deze tekst dient als cryptografisch bewijs van de intentie van de klant en kan door de serviceprovider worden geverifieerd zonder dat er een transactie in de blockchain hoeft te worden uitgevoerd.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">GET</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">path</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">to</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">resource </span><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Host</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> www</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Mozilla</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">5.0</span><span class="sk-6f42c1-ffc799"> Chrome</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">113.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0</span><span class="sk-6f42c1-ffc799"> MyBotCrawler</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Payment</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    scheme</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"deferred"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    network</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"abc123"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> signer</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Input</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"payment"</span><span class="sk-032f62-99ffe4"> "signature-agent"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    created</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1700000000</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1700011111</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    keyid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ba3e64=="</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    tag</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"web-bot-auth"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre>
+</div>
+<h5>3. Succesvolle reactie</h5>
+<p>De server van de contentbron valideert de handtekening en retourneert de content met een bevestigingstekst. De server is verantwoordelijk voor het toewijzen van de betaling aan de rekening die aan de <strong>HTTP-berichthandtekening</strong> is gekoppeld, voor het verifiëren van de identiteit van de klant en tot slot voor het leveren van de content. In dit scenario is er geen blockchain aan de betalingen gekoppeld.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-005cc5-fff"> OK</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">html</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Payment</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    scheme</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"deferred"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    network</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"abc123"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1730872968</span></span></code></pre>
+</div>
+<h5>4. Betaling</h5>
+<p>De server kan de betaling nu flexibel verwerken. De gevalideerde id van de handshake fungeert als referentie voor de transactie. Deze aanpak maakt een flexibel gebruiksmodel mogelijk zonder overhead per aanvraag, waardoor de server betalingen op abonnementsbasis, dagelijks of zelfs in batches kan verwerken. Hierdoor ontstaat een flexibel raamwerk waarin het cryptografische vertrouwen direct tot stand wordt gebracht, terwijl de financiële afhandeling via traditionele betalingsmethodes of stablecoins kan plaatsvinden.&nbsp;</p>
+<h3>De MCP-servers, Agents SDK en x402-betalingen van Cloudflare</h3>
+<p>Het uitvoeren van code is wat een theoretische open conventie in de praktijk bruikbaar maakt en uiteindelijk tot de erkende standaard verheft. Agents die zijn gebouwd met behulp van <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>Agent SDK</u></a> van Cloudflare kunnen nu via x402 voor contentbronnen betalen, en MCP-servers kunnen tools beschikbaar stellen die via x402 betaald kunnen worden. Om te laten zien hoe dit werkt, hebben we de <a href="https://playground.x402.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>x402-playground</u></a> aangemaakt, een live demo van x402. De x402-playground wordt aangestuurd door de <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> en heeft toegang tot tools van Cloudflare's <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>MCP-servers</u></a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1920&amp;h=977&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="977" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Wanneer u de x402-playground opent, wordt een nieuwe wallet aangemaakt en gefinancierd met Testnet USDC op een <a href="https://docs.base.org/learn/deployment-to-testnet/test-networks" target="_blank" rel="noopener noreferrer"><u>Base blockchain-testnet</u></a>. De agent, gebouwd met Agents SDK, heeft toegang tot een MCP-server met zowel gratis als betaalde tools.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@modelcontextprotocol/sdk/server/mcp.js"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/mcp"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { withX402 } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/x402"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> PayMCP</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> McpAgent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> withX402</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    new</span><span class="sk-6f42c1-ffc799"> McpServer</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">"PayMCP"</span><span class="sk-24292e-fff">, version: </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-005cc5-fff">    X402_CONFIG</span></span>
+<span class="line"><span class="sk-24292e-fff">  );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Paid tool</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">paidTool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "square"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "Squares a number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      0.01</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// Tool price</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        a: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {},</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">number</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> { content: [{ type: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, text: </span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">(a </span><span class="sk-d73a49-a0a0a0">**</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">) }] };</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Free tool</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "add-two-numbers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "Adds two numbers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        a: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">        b: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> { content: [{ type: </span><span class="sk-032f62-99ffe4">'text'</span><span class="sk-24292e-fff">, text: </span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">(a </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> b) }] };</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Wanneer de agent een betaalde tool probeert te gebruiken, reageert de MCP-server met een '402 Betaling vereist'-bericht. De agent kan de betalingsinstructies interpreteren en de mens vragen of hij/zij wil doorgaan met de transactie. Voor het bouwen van een x402-compatibele client is een 'basic wrapper' nodig voor het verzoek aan de tool:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { withX402Client } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/x402"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Your Agent definitions...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onToolCall</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Build the x402 client</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> x402Client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> withX402Client</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">      myMcpClient,</span></span>
+<span class="line"><span class="sk-24292e-fff">      { network: </span><span class="sk-032f62-99ffe4">"base-sepolia"</span><span class="sk-24292e-fff">, account: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.account }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // The first parameter becomes the confirmation callback.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // We can set it to `null` if we want the agent to pay automatically.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> x402Client.</span><span class="sk-6f42c1-ffc799">callTool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.onPaymentRequired,</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: toolName,</span></span>
+<span class="line"><span class="sk-24292e-fff">        arguments: toolArgs</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Deze testagent haalt het geld uit de wallet en stuurt de betaling naar de MCP-server, die de transactie afhandelt. U kunt opgeven of de transacties met of zonder menselijke bevestiging moeten worden uitgevoerd. Zo kunt u de interface ontwerpen die het beste bij uw toepassing past.</p>
+<h3>Wat is de volgende stap?&nbsp;</h3>
+<p>U kunt vandaag nog aan de slag met de <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> of door uw eigen <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>MCP-server</u></a> te gebruiken.</p>
+<p>We blijven nauw met Coinbase samenwerken aan de ontwikkeling van de x402 Foundation. Binnenkort volgt meer informatie.</p>
+<p>Wij geloven in de waarde van open en flexibele protocollen. Daarom moedigen we iedereen aan om <a href="https://github.com/coinbase/x402" target="_blank" rel="noopener noreferrer"><u>rechtstreeks aan het x402-protocol bij te dragen</u></a>. Wilt u contact opnemen met het Cloudflare-team dat aan x402 werkt? Stuur dan een e-mail naar <a href="mailto:x402@cloudflare.com"><u>x402@cloudflare.com</u></a>.</p>

@@ -1,403 +1,364 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s2q4Gg4kSXkTE62oqVRzc/f8d7515ec7291e99d1693cddbb89be2f/making-protocols-post-quantum.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Ever since the (public) invention of cryptography based on mathematical trap-doors by <a href="https://ieeexplore.ieee.org/document/1055638" target="_blank" rel="noopener noreferrer">Whitfield Diffie, Martin Hellman</a>, and Ralph Merkle, the world has had key agreement and signature schemes based on discrete logarithms. <a href="https://patents.google.com/patent/US4405829" target="_blank" rel="noopener noreferrer">Rivest, Shamir, and Adleman</a> invented integer factorization-based signature and encryption schemes a few years later. The core idea, that has perhaps changed the world in ways that are hard to comprehend, is that of public key cryptography. We can give you a piece of information that is completely public (the <i>public key</i>), known to all our adversaries, and yet we can still securely communicate as long as we do not reveal our piece of extra information (the <i>private key</i>). With the private key, we can then efficiently solve mathematical problems that, without the secret information, would be practically unsolvable.</p>
-	<p>In later decades, there were advancements in our understanding of integer factorization that required us to bump up the key sizes for finite-field based schemes. The cryptographic community largely solved that problem by figuring out how to base the same schemes on elliptic curves. The world has since then grown accustomed to having algorithms where public keys, secret keys, and signatures are just a handful of bytes and the speed is measured in the tens of microseconds. This allowed cryptography to be bolted onto previously insecure protocols such as HTTP or <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> without much overhead in either time or the data transmitted. We previously wrote about <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">how TLS loves small signatures</a>; similar things can probably be said for a lot of present-day protocols.</p>
-	<p>But this blog has “post-quantum” in the title; quantum computers are likely to make our cryptographic lives significantly harder by undermining many of the assurances we previously took for granted. The old schemes are no longer secure because new algorithms can efficiently solve their particular mathematical trapdoors. We, together with everyone on the Internet, will need to swap them out. There are whole suites of <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography" target="_blank" rel="noopener noreferrer">quantum-resistant replacement algorithms</a>; however, right now it seems that we need to choose between “fast” and “small”. The new alternatives also do not always have the same properties that we have based some protocols on.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DEjVrUy9g5YErrYBWnxwh/398bd862409ed0d2c8f880c0d2e1e4e6/image4-13.png" alt="Drawing of an ostrich, a large, but very fast running bird, to depict the CECPQ2 (HRSS+X25519) experiment, and a drawing of a turkey (a smaller, slower bird) to depict the CECPQ2b (SIKE+X25519) experiment." class="kg-image" width="1534" height="844" loading="lazy">
-
-	</figure>
-	<p>Fast or small: Cloudflare <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">previously experimented</a> with NTRU-HRSS (a fast key exchange scheme with large public keys and ciphertexts) and SIKE (a scheme with very small public keys and ciphertexts, but much slower algorithm operations).</p>
-	<p>In this blog post, we will discuss how one might upgrade cryptographic protocols to make them secure against quantum computers. We will focus on the cryptography that they use and see what the challenges are in making them secure against quantum computers. We will show how trade-offs might motivate completely new protocols for some applications. We will use TLS here as a stand-in for other protocols, as it is one of the most deployed protocols.</p>
-	<div class="flex anchor relative">
-		<h3 id="making-tls-post-quantum">Making TLS post-quantum</h3>
-		<a href="https://blog.cloudflare.com/#making-tls-post-quantum" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>TLS, from SSL and HTTPS fame, gets discussed a lot. We keep it brief here. TLS 1.3 consists of an Ephemeral Elliptic curve Diffie-Hellman (ECDH) key exchange which is authenticated by a digital signature that’s verified by using a public key that’s provided by the server in a certificate. We know that this public key is the right one because the certificate contains another signature by the issuer of the certificate and our client has a repository of valid issuer (“certificate authority”) public keys that it can use to verify the authenticity of the server’s certificate.</p>
-	<p>In principle, TLS can become post-quantum straightforwardly: we just write “PQ” in front of the algorithms. We replace ECDH key exchange by post-quantum (PQ) key exchange provided by a post-quantum Key Encapsulation Mechanism (KEM). For the signatures on the handshake, we just use a post-quantum signature scheme instead of an elliptic curve or RSA signature scheme. No big changes to the actual “arrows” of the protocol necessary, which is super convenient because we don’t need to revisit our security proofs. Mission accomplished, cake for everyone, right?</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7CWLpWVAzCcJ5cmwcFneEt/118fb95c11ef060e250545f9fd2962e1/image3-22.png" alt="A diagrammatic overview of the TLS 1.3 handshake protocol. In the places of DH key exchange, the operations are crossed out and KEM operations are scribbled in instead. For the signature operations, “PQ-” is scribbled in, in front of “Signature”." class="kg-image" width="1999" height="1630" loading="lazy">
-
-	</figure>
-	<p>Upgrading the cryptography in TLS seems as easy as scribbling in “PQ-”.</p>
-	<div class="flex anchor relative">
-		<h3 id="key-exchange">Key exchange</h3>
-		<a href="https://blog.cloudflare.com/#key-exchange" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Of course, it’s not so simple. There are nine different suites of post-quantum key exchange algorithms still in the running in round three of the NIST Post-Quantum standardization project: Kyber, SABER, NTRU, and Classic McEliece (the “finalists”); and SIKE, BIKE, FrodoKEM, HQC, and NTRU Prime (“alternates”). These schemes have wildly different characteristics. This means that for step one, replacing the key exchange by post-quantum key exchange, we need to understand the differences between these schemes and decide which one fits best in TLS. Because we’re doing ephemeral key exchange, we consider the size of the public key and the ciphertext since they need to be transmitted for every handshake. We also consider the “speed” of the key generation, encapsulation, and decapsulation operations, because these will affect how many servers we will need to handle these connections.</p>
-	<p><i><b>Table 1: Post-Quantum KEMs at security level comparable with AES128. Sizes in bytes.</b></i></p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Scheme</b></p>
-				</td>
-				<td>
-					<p><b>Transmission size (pk+ct)</b></p>
-				</td>
-				<td>
-					<p><b>Speed of operations</b></p>
-				</td>
+<p>Ever since the (public) invention of cryptography based on mathematical trap-doors by <a href="https://ieeexplore.ieee.org/document/1055638" target="_blank" rel="noopener noreferrer">Whitfield Diffie, Martin Hellman</a>, and Ralph Merkle, the world has had key agreement and signature schemes based on discrete logarithms. <a href="https://patents.google.com/patent/US4405829" target="_blank" rel="noopener noreferrer">Rivest, Shamir, and Adleman</a> invented integer factorization-based signature and encryption schemes a few years later. The core idea, that has perhaps changed the world in ways that are hard to comprehend, is that of public key cryptography. We can give you a piece of information that is completely public (the <em>public key</em>), known to all our adversaries, and yet we can still securely communicate as long as we do not reveal our piece of extra information (the <em>private key</em>). With the private key, we can then efficiently solve mathematical problems that, without the secret information, would be practically unsolvable.</p>
+<p>In later decades, there were advancements in our understanding of integer factorization that required us to bump up the key sizes for finite-field based schemes. The cryptographic community largely solved that problem by figuring out how to base the same schemes on elliptic curves. The world has since then grown accustomed to having algorithms where public keys, secret keys, and signatures are just a handful of bytes and the speed is measured in the tens of microseconds. This allowed cryptography to be bolted onto previously insecure protocols such as HTTP or <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> without much overhead in either time or the data transmitted. We previously wrote about <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">how TLS loves small signatures</a>; similar things can probably be said for a lot of present-day protocols.</p>
+<p>But this blog has “post-quantum” in the title; quantum computers are likely to make our cryptographic lives significantly harder by undermining many of the assurances we previously took for granted. The old schemes are no longer secure because new algorithms can efficiently solve their particular mathematical trapdoors. We, together with everyone on the Internet, will need to swap them out. There are whole suites of <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography" target="_blank" rel="noopener noreferrer">quantum-resistant replacement algorithms</a>; however, right now it seems that we need to choose between “fast” and “small”. The new alternatives also do not always have the same properties that we have based some protocols on.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Drawing of an ostrich, a large, but very fast running bird, to depict the CECPQ2 (HRSS+X25519) experiment, and a drawing of a turkey (a smaller, slower bird) to depict the CECPQ2b (SIKE+X25519) experiment." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VWSQAB0Y900PD7YQBN5J.png&amp;w=1534&amp;h=844&amp;f=webp" data-lightbox-width="1534" data-lightbox-height="844" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Fast or small: Cloudflare <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">previously experimented</a> with NTRU-HRSS (a fast key exchange scheme with large public keys and ciphertexts) and SIKE (a scheme with very small public keys and ciphertexts, but much slower algorithm operations).</p>
+<p>In this blog post, we will discuss how one might upgrade cryptographic protocols to make them secure against quantum computers. We will focus on the cryptography that they use and see what the challenges are in making them secure against quantum computers. We will show how trade-offs might motivate completely new protocols for some applications. We will use TLS here as a stand-in for other protocols, as it is one of the most deployed protocols.</p>
+<h3>Making TLS post-quantum</h3>
+<p>TLS, from SSL and HTTPS fame, gets discussed a lot. We keep it brief here. TLS 1.3 consists of an Ephemeral Elliptic curve Diffie-Hellman (ECDH) key exchange which is authenticated by a digital signature that’s verified by using a public key that’s provided by the server in a certificate. We know that this public key is the right one because the certificate contains another signature by the issuer of the certificate and our client has a repository of valid issuer (“certificate authority”) public keys that it can use to verify the authenticity of the server’s certificate.</p>
+<p>In principle, TLS can become post-quantum straightforwardly: we just write “PQ” in front of the algorithms. We replace ECDH key exchange by post-quantum (PQ) key exchange provided by a post-quantum Key Encapsulation Mechanism (KEM). For the signatures on the handshake, we just use a post-quantum signature scheme instead of an elliptic curve or RSA signature scheme. No big changes to the actual “arrows” of the protocol necessary, which is super convenient because we don’t need to revisit our security proofs. Mission accomplished, cake for everyone, right?</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="583" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=715&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=640&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=715&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=750&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=828&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=1080&amp;h=881&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=1280&amp;h=1044&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=1430&amp;h=1166&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A diagrammatic overview of the TLS 1.3 handshake protocol. In the places of DH key exchange, the operations are crossed out and KEM operations are scribbled in instead. For the signature operations, “PQ-” is scribbled in, in front of “Signature”." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P8EKKA3V3RHR6V2J2XDW.png&amp;w=1920&amp;h=1566&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1566" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="583" class="pt-portable-image-media"></div>
+</figure>
+<p>Upgrading the cryptography in TLS seems as easy as scribbling in “PQ-”.</p>
+<h3>Key exchange</h3>
+<p>Of course, it’s not so simple. There are nine different suites of post-quantum key exchange algorithms still in the running in round three of the NIST Post-Quantum standardization project: Kyber, SABER, NTRU, and Classic McEliece (the “finalists”); and SIKE, BIKE, FrodoKEM, HQC, and NTRU Prime (“alternates”). These schemes have wildly different characteristics. This means that for step one, replacing the key exchange by post-quantum key exchange, we need to understand the differences between these schemes and decide which one fits best in TLS. Because we’re doing ephemeral key exchange, we consider the size of the public key and the ciphertext since they need to be transmitted for every handshake. We also consider the “speed” of the key generation, encapsulation, and decapsulation operations, because these will affect how many servers we will need to handle these connections.</p>
+<p><strong><em>Table 1: Post-Quantum KEMs at security level comparable with AES128. Sizes in bytes.</em></strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Scheme</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Transmission size (pk+ct)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Speed of operations</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><i>Finalists</i></p>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Finalists</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Kyber512</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1,632</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very fast</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>NTRU-HPS-2048-509</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1,398</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very fast</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SABER (LightSABER)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1,408</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very fast</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Classic McEliece</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>261,248</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very slow</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><i>Alternate candidates</i></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Alternate candidates</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SIKEp434</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>676</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Slow</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>NTRU Prime (ntrulpr)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1,922</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very fast</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>NTRU Prime (sntru)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1,891</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fast</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>BIKE</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5,892</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Slow</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>HQC</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6,730</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Reasonable</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>FrodoKEM</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>19,336</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Reasonable</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Fortunately, once we make this table the landscape for KEMs that are suitable for use in TLS quickly becomes clear. We will have to sacrifice an additional 1,400 - 2,000 bytes, assuming SIKE’s slow runtime is a bigger penalty to the connection establishment (<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">see our previous work here</a>). So we can choose one of the lattice-based finalists (Kyber, SABER or NTRU) and call it a day.<sup>1</sup></p>
-	<div class="flex anchor relative">
-		<h3 id="signature-schemes">Signature schemes</h3>
-		<a href="https://blog.cloudflare.com/#signature-schemes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For our post-quantum signature scheme, we can draw a similar table. In TLS, we generally care about the sizes of public keys and signatures. In terms of runtime, we care about signing and verification times, as key generation is only done once for each certificate, offline. The round three candidates for signature schemes are: Dilithium, Falcon, Rainbow (the three finalists), and SPHINCS+, Picnic, and GeMSS.</p>
-	<p><i><b>Table 2: Post-Quantum signature schemes at security level comparable with AES128 (or smallest parameter set). Sizes in bytes.</b></i></p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Scheme</b></p>
-				</td>
-				<td>
-					<p><b>Public key size</b></p>
-				</td>
-				<td>
-					<p><b>Signature size</b></p>
-				</td>
-				<td>
-					<p><b>Speed of operations</b></p>
-				</td>
+</div>
+<p>Fortunately, once we make this table the landscape for KEMs that are suitable for use in TLS quickly becomes clear. We will have to sacrifice an additional 1,400 - 2,000 bytes, assuming SIKE’s slow runtime is a bigger penalty to the connection establishment (<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">see our previous work here</a>). So we can choose one of the lattice-based finalists (Kyber, SABER or NTRU) and call it a day.<sup>1</sup></p>
+<h3>Signature schemes</h3>
+<p>For our post-quantum signature scheme, we can draw a similar table. In TLS, we generally care about the sizes of public keys and signatures. In terms of runtime, we care about signing and verification times, as key generation is only done once for each certificate, offline. The round three candidates for signature schemes are: Dilithium, Falcon, Rainbow (the three finalists), and SPHINCS+, Picnic, and GeMSS.</p>
+<p><strong><em>Table 2: Post-Quantum signature schemes at security level comparable with AES128 (or smallest parameter set). Sizes in bytes.</em></strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Scheme</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Public key size</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signature size</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Speed of operations</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><i>Finalists</i></p>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Finalists</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Dilithium2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1,312</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2,420</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very fast</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Falcon-512</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>897</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>690</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fast if you have the right hardware</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Rainbow-I-CZ</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>103,648</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>66</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fast</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><i>Alternate Candidates</i></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Alternate Candidates</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SPHINCS+-128f</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>32</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>17,088</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Slow</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SPHINCS+-128s</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>32</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7,856</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very slow</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>GeMSS-128</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>352,188</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>33</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very slow</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Picnic3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>35</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>14,612</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Very slow</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>There are many signatures in a TLS handshake. Aside from the handshake signature that the server creates to authenticate the handshake (with public key in the server certificate), there are signatures on the certificate chain (with public keys for intermediate certificates), as well as OCSP Stapling (1) and Certificate Transparency (2) signatures (without public keys).</p>
-	<p>This means that if we used Dilithium for all of these, we require 17KB of public keys and signatures. Falcon is looking very attractive here, only requiring 6KB, but it might not run fast enough on embedded devices that don’t have special hardware to accelerate 64-bit floating point computations in constant time. SPHINCS+, GeMSS, or Rainbow each have significant deployment challenges, so it seems that there is no one-scheme-fits-all solution.</p>
-	<p>Picking and choosing specific algorithms for particular use cases, such as using a scheme with short signatures for root certificates, OCSP Stapling, and CT might help to alleviate the problems a bit. We might use Rainbow for the CA root, OCSP staples, and CT logs, which would mean we only need 66 bytes for each signature. It is very nice that Rainbow signatures are only very slightly larger than 64-byte ed25519 elliptic curve signatures, and they are significantly smaller than 256-byte RSA-2048 signatures. This gives us a lot of space to absorb the impact of the larger handshake signatures required. For intermediate certificates, where both the public key and the signature are transmitted, we might use Falcon because it’s nice and small, and the client only needs to do signature verification.</p>
-	<div class="flex anchor relative">
-		<h3 id="using-kems-for-authentication">Using KEMs for authentication</h3>
-		<a href="https://blog.cloudflare.com/#using-kems-for-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the pre-quantum world, key exchange and signature schemes used to be roughly equivalent in terms of work required or bytes transmitted. As we saw in the previous section, this doesn’t hold up in the post-quantum world. This means that this might be a good opportunity to also investigate alternatives to the classic “signed key exchange” model. Deploying significant changes to an existing protocol might be harder than just swapping out primitives, but we might gain better characteristics. We will look at such a proposed redesign for TLS here.</p>
-	<p>The idea is to use key exchange not just for confidentiality, but also for authentication. This uses the following idea: what a signature in a protocol like TLS is actually proving is that the person signing has possession of the secret key that corresponds to the public key that’s in the certificate. But we can also do this with a key exchange key by showing you can derive the same shared secret (if you want to prove this explicitly, you might do so by computing a <a href="https://en.wikipedia.org/wiki/Message_authentication_code" target="_blank" rel="noopener noreferrer">Message Authentication Code</a> using the established shared secret).</p>
-	<p>This isn’t new; many modern cryptographic protocols, such as the Signal messaging protocol, have used such mechanisms. They offer privacy benefits like (offline) <a href="https://en.wikipedia.org/wiki/Deniable_authentication" target="_blank" rel="noopener noreferrer">deniability</a>. But now we might also use this to obtain a faster or “smaller” protocol.</p>
-	<p>However, this does not come for free. Because authentication via key exchange (via KEM at least) inherently requires two participants to exchange keys, we need to send more messages. In TLS, this means that the server that wants to authenticate first needs to give the client their public key. The client obviously can not encapsulate a shared secret to a key he does not know.</p>
-	<p>We also still need to verify signatures on the certificate chain and the signatures for OCSP stapling and Certificate Transparency are still necessary. Because we need to do “offline” verification for those elements of the handshake, it is hard to get rid of those signatures. So we will still need to carefully look at those signatures and pick an algorithm that fits there.</p>
-	<pre class="language-bash"><code class="language-bash">   Client                                  Server
- ClientHello         --------&gt;
-                     &lt;--------         ServerHello
-                                             &lt;...&gt;
-                     &lt;--------       &lt;Certificate&gt;  ^
- &lt;KEMEncapsulation&gt;                                 | Auth
- {Finished}          --------&gt;                      |
- [Application Data]  --------&gt;                      |
-                     &lt;--------          {Finished}  v
- [Application Data]  &lt;-------&gt;  [Application Data]
-
-&lt;msg&gt;: encrypted w/ keys derived from ephemeral KEX (HS)
-{msg}: encrypted w/ keys derived from HS+KEM (AHS)
-[msg]: encrypted w/ traffic keys derived from AHS (MS)
-
-Authentication via KEM in TLS from the AuthKEM proposal</code></pre>
-	<p>Authentication via KEM in TLS from the AuthKEM proposal</p><!--kg-card-begin: html-->
-	<p></p><!--kg-card-end: html-->
-	<p>If we put the necessary arrows to authenticate via KEM into TLS it looks something like Figure 2. This is actually a fully-fledged proposal for an alternative to the usual TLS handshake. The academic proposal KEMTLS was published at the ACM CCS conference in 2020; a proposal to integrate this into TLS 1.3 is described in the <code>draft-celi-wiggers-tls-authkem</code> draft RFC.</p>
-	<p>What this proposal illustrates is that the transition to post-quantum cryptography might motivate, or even require, us to have a brand-new look at what the desired characteristics of our protocol are and what properties we need, like what budget we have for round-trips versus the budget for data transmitted. We might even pick up some properties, like deniability, along the way. For some protocols this is somewhat easy, like TLS; in other protocols there isn’t even a clear idea of where to start (<a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC</a> has very tight limits).</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusions">Conclusions</h3>
-		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We should not wait until NIST has finished standardizing post-quantum key exchange and signature schemes before thinking about whether our protocols are ready for the post-quantum world. For our current protocols, we should investigate how the proposed post-quantum key exchange and signature schemes can be fitted in. At the same time, we might use this opportunity for careful protocol redesigns, especially if the constraints are so tight that it is not easy to fit in post-quantum cryptography. Cloudflare is participating in the IETF and working with partners in both academia and the industry to investigate the impact of post-quantum cryptography and make the transition as easy as possible.</p>
-	<p>If you want to be a part of the future of cryptography on the Internet, either as an academic or an engineer, be sure to check out our <a href="https://research.cloudflare.com/outreach" target="_blank" rel="noopener noreferrer">academic outreach</a> or <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">jobs</a> pages.</p>
-	<div class="flex anchor relative">
-		<h3 id="reference">Reference</h3>
-		<a href="https://blog.cloudflare.com/#reference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p>Post-Quantum TLS without Handshake Signatures by Peter Schwabe, Douglas Stebila and Thom Wiggers: <a href="https://eprint.iacr.org/2020/534" target="_blank" rel="noopener noreferrer">https://eprint.iacr.org/2020/534/</a></p>
-		</li>
-	</ul>
-	<hr>
-	<p><sup>1</sup>Of course, it’s not so simple. The performance measurements were done on a beefy Macbook, using AVX2 intrinsics. For stuff like IoT (yes, your smart washing machine will also need to go post-quantum) or a smart card you probably want to add another few columns to this table before making a choice, such as code size, side channel considerations, power consumption, and execution time on your platform.</p>
 </div>
+<p>There are many signatures in a TLS handshake. Aside from the handshake signature that the server creates to authenticate the handshake (with public key in the server certificate), there are signatures on the certificate chain (with public keys for intermediate certificates), as well as OCSP Stapling (1) and Certificate Transparency (2) signatures (without public keys).</p>
+<p>This means that if we used Dilithium for all of these, we require 17KB of public keys and signatures. Falcon is looking very attractive here, only requiring 6KB, but it might not run fast enough on embedded devices that don’t have special hardware to accelerate 64-bit floating point computations in constant time. SPHINCS+, GeMSS, or Rainbow each have significant deployment challenges, so it seems that there is no one-scheme-fits-all solution.</p>
+<p>Picking and choosing specific algorithms for particular use cases, such as using a scheme with short signatures for root certificates, OCSP Stapling, and CT might help to alleviate the problems a bit. We might use Rainbow for the CA root, OCSP staples, and CT logs, which would mean we only need 66 bytes for each signature. It is very nice that Rainbow signatures are only very slightly larger than 64-byte ed25519 elliptic curve signatures, and they are significantly smaller than 256-byte RSA-2048 signatures. This gives us a lot of space to absorb the impact of the larger handshake signatures required. For intermediate certificates, where both the public key and the signature are transmitted, we might use Falcon because it’s nice and small, and the client only needs to do signature verification.</p>
+<h3>Using KEMs for authentication</h3>
+<p>In the pre-quantum world, key exchange and signature schemes used to be roughly equivalent in terms of work required or bytes transmitted. As we saw in the previous section, this doesn’t hold up in the post-quantum world. This means that this might be a good opportunity to also investigate alternatives to the classic “signed key exchange” model. Deploying significant changes to an existing protocol might be harder than just swapping out primitives, but we might gain better characteristics. We will look at such a proposed redesign for TLS here.</p>
+<p>The idea is to use key exchange not just for confidentiality, but also for authentication. This uses the following idea: what a signature in a protocol like TLS is actually proving is that the person signing has possession of the secret key that corresponds to the public key that’s in the certificate. But we can also do this with a key exchange key by showing you can derive the same shared secret (if you want to prove this explicitly, you might do so by computing a <a href="https://en.wikipedia.org/wiki/Message_authentication_code" target="_blank" rel="noopener noreferrer">Message Authentication Code</a> using the established shared secret).</p>
+<p>This isn’t new; many modern cryptographic protocols, such as the Signal messaging protocol, have used such mechanisms. They offer privacy benefits like (offline) <a href="https://en.wikipedia.org/wiki/Deniable_authentication" target="_blank" rel="noopener noreferrer">deniability</a>. But now we might also use this to obtain a faster or “smaller” protocol.</p>
+<p>However, this does not come for free. Because authentication via key exchange (via KEM at least) inherently requires two participants to exchange keys, we need to send more messages. In TLS, this means that the server that wants to authenticate first needs to give the client their public key. The client obviously can not encapsulate a shared secret to a key he does not know.</p>
+<p>We also still need to verify signatures on the certificate chain and the signatures for OCSP stapling and Certificate Transparency are still necessary. Because we need to do “offline” verification for those elements of the handshake, it is hard to get rid of those signatures. So we will still need to carefully look at those signatures and pick an algorithm that fits there.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">   Client</span><span class="sk-032f62-99ffe4">                                  Server</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> ClientHello</span><span class="sk-005cc5-99ffe4">         --------</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                     &lt;</span><span class="sk-6f42c1-ffc799">--------</span><span class="sk-032f62-99ffe4">         ServerHello</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                                             &lt;</span><span class="sk-005cc5-ffc799">...</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                     &lt;</span><span class="sk-6f42c1-ffc799">--------</span><span class="sk-d73a49-a0a0a0">       &lt;</span><span class="sk-032f62-99ffe4">Certificat</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">  ^</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-6f42c1-ffc799">KEMEncapsulation</span><span class="sk-24292e-fff">&gt;                                 </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> Auth</span></span>
+<span class="line"><span class="sk-24292e-fff"> {</span><span class="sk-6f42c1-ffc799">Finished}</span><span class="sk-005cc5-99ffe4">          --------</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">                      |</span></span>
+<span class="line"><span class="sk-24292e-fff"> [Application Data]  </span><span class="sk-6f42c1-ffc799">--------</span><span class="sk-24292e-fff">&gt;                      </span><span class="sk-d73a49-a0a0a0">|</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                     &lt;</span><span class="sk-6f42c1-ffc799">--------</span><span class="sk-032f62-99ffe4">          {Finished}</span><span class="sk-032f62-99ffe4">  v</span></span>
+<span class="line"><span class="sk-24292e-fff"> [Application Data]  </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799">-------</span><span class="sk-24292e-fff">&gt;  [Application </span><span class="sk-032f62-99ffe4">Data]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">msg</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">: encrypted w/ keys derived from ephemeral KEX (</span><span class="sk-6f42c1-ffc799">HS</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{msg}: encrypted w/ keys derived from HS+KEM (AHS)</span></span>
+<span class="line"><span class="sk-24292e-fff">[msg]</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> encrypted</span><span class="sk-032f62-99ffe4"> w/</span><span class="sk-032f62-99ffe4"> traffic</span><span class="sk-032f62-99ffe4"> keys</span><span class="sk-032f62-99ffe4"> derived</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> AHS</span><span class="sk-24292e-fff"> (MS)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Authentication</span><span class="sk-032f62-99ffe4"> via</span><span class="sk-032f62-99ffe4"> KEM</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> TLS</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> AuthKEM</span><span class="sk-032f62-99ffe4"> proposal</span></span></code></pre>
+</div>
+<p>Authentication via KEM in TLS from the AuthKEM proposal</p>
+<div id="html-block-k35" class="html-block">
+	<p></p>
+</div>
+<p>If we put the necessary arrows to authenticate via KEM into TLS it looks something like Figure 2. This is actually a fully-fledged proposal for an alternative to the usual TLS handshake. The academic proposal KEMTLS was published at the ACM CCS conference in 2020; a proposal to integrate this into TLS 1.3 is described in the <code>draft-celi-wiggers-tls-authkem</code> draft RFC.</p>
+<p>What this proposal illustrates is that the transition to post-quantum cryptography might motivate, or even require, us to have a brand-new look at what the desired characteristics of our protocol are and what properties we need, like what budget we have for round-trips versus the budget for data transmitted. We might even pick up some properties, like deniability, along the way. For some protocols this is somewhat easy, like TLS; in other protocols there isn’t even a clear idea of where to start (<a href="https://www.cloudflare.com/learning/dns/dnssec/ecdsa-and-dnssec" target="_blank" rel="noopener noreferrer">DNSSEC</a> has very tight limits).</p>
+<h3>Conclusions</h3>
+<p>We should not wait until NIST has finished standardizing post-quantum key exchange and signature schemes before thinking about whether our protocols are ready for the post-quantum world. For our current protocols, we should investigate how the proposed post-quantum key exchange and signature schemes can be fitted in. At the same time, we might use this opportunity for careful protocol redesigns, especially if the constraints are so tight that it is not easy to fit in post-quantum cryptography. Cloudflare is participating in the IETF and working with partners in both academia and the industry to investigate the impact of post-quantum cryptography and make the transition as easy as possible.</p>
+<p>If you want to be a part of the future of cryptography on the Internet, either as an academic or an engineer, be sure to check out our <a href="https://research.cloudflare.com/outreach" target="_blank" rel="noopener noreferrer">academic outreach</a> or <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">jobs</a> pages.</p>
+<h3>Reference</h3>
+<ul>
+	<li>Post-Quantum TLS without Handshake Signatures by Peter Schwabe, Douglas Stebila and Thom Wiggers: <a href="https://eprint.iacr.org/2020/534" target="_blank" rel="noopener noreferrer">https://eprint.iacr.org/2020/534/</a></li>
+</ul>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><sup>1</sup>Of course, it’s not so simple. The performance measurements were done on a beefy Macbook, using AVX2 intrinsics. For stuff like IoT (yes, your smart washing machine will also need to go post-quantum) or a smart card you probably want to add another few columns to this table before making a choice, such as code size, side channel considerations, power consumption, and execution time on your platform.</p>

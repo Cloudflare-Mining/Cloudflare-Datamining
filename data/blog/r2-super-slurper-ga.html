@@ -1,112 +1,37 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7elQCq1ldENPbFuYP3HjOM/afacd4209472596b49d17bb9eb5cb7b7/r2-super-slurper-ga.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>R2 is Cloudflare’s zero <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer">egress fee</a> <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">object storage platform</a>. One of the things that developers love about R2 is how easy it is to get started. With R2’s <a href="https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage" target="_blank" rel="noopener noreferrer">S3-compatible API</a>, integrating R2 into existing applications only requires changing a couple of lines of code.</p>
-	<p>However, migrating data from other <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> providers into R2 can still be a challenge. To address this issue, we introduced the beta of <a href="https://blog.cloudflare.com/cloudflare-r2-super-slurper">R2 Super Slurper</a> late last year. During the beta period, we’ve been able to partner with early adopters on hundreds of successful migrations from S3 to <a href="https://blog.cloudflare.com/#">Cloudflare R2</a>. We’ve made many improvements during the beta including speed (up to 5x increase in the number of objects copied per second!), reliability, and the ability to copy data between R2 buckets. Today, we’re proud to announce the general availability of Super Slurper for one-time migration, making <a href="https://www.cloudflare.com/learning/cloud/what-is-data-migration" target="_blank" rel="noopener noreferrer">data migration</a> a breeze!</p>
-	<div class="flex anchor relative">
-		<h2 id="data-migration-thats-fast-reliable-and-easy-to-use">Data migration that’s fast, reliable, and easy to use</h2>
-		<a href="https://blog.cloudflare.com/#data-migration-thats-fast-reliable-and-easy-to-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>R2 Super Slurper one-time migration allows you to quickly and easily copy objects from S3 to an R2 bucket of your choice.</p>
-	<div class="flex anchor relative">
-		<h3 id="fast">Fast</h3>
-		<a href="https://blog.cloudflare.com/#fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Super Slurper copies objects from your S3 buckets in parallel and uses Cloudflare’s global network to tap into vast amounts of bandwidth to ensure migrations finish fast.</p>
-	<blockquote>
-		<p>This migration tool is impressively fast! We expected our migration to take a day to complete, but we were able to move all of our data in less than half an hour. - <b>Nick Inhofe</b>, Engineering Manager at <a href="https://www.pdq.com" target="_blank" rel="noopener noreferrer">PDQ</a></p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="reliable">Reliable</h3>
-		<a href="https://blog.cloudflare.com/#reliable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Sending objects through the Internet can sometimes fail. R2 Super Slurper accounts for that, and is capable of driving multi-terabyte migrations to completion with robust retries of failed transfers. Additionally, larger objects are transferred in chunks, so if something goes wrong, it only retries the portion of the object that’s needed. This means faster migrations and <a href="https://r2-calculator.cloudflare.com" target="_blank" rel="noopener noreferrer">lower cost</a>. And if for some reason an object just won’t transfer, it gets logged, so you can keep track and sort it out later.</p>
-	<div class="flex anchor relative">
-		<h3 id="easy-to-use">Easy to use</h3>
-		<a href="https://blog.cloudflare.com/#easy-to-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>R2 Super Slurper simplifies the process of copying objects and their associated metadata from S3 to your R2 buckets. Point Super Slurper to your S3 buckets and an asynchronous task will handle the rest. While the migration is taking place, you can follow along from the dashboard.</p>
-	<blockquote>
-		<p>R2 has saved us both time and money. We migrated millions of images in a short period of time. It wouldn't have been possible for us to build a tool to migrate our data in this amount of time in a cost-effective way. - <b>Damien Capocchi</b>, Backend Engineering Manager at <a href="https://reelgood.com" target="_blank" rel="noopener noreferrer">Reelgood</a></p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h2 id="migrate-your-s3-data-into-r2">Migrate your S3 data into R2</h2>
-		<a href="https://blog.cloudflare.com/#migrate-your-s3-data-into-r2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ol>
-		<li>
-			<p>From the Cloudflare dashboard, expand <b>R2</b> and select <b>Data Migration</b>.</p>
-		</li>
-		<li>
-			<p>Select <b>Migrate files</b>.</p>
-		</li>
-		<li>
-			<p>Enter your Amazon S3 bucket name, optional bucket prefix, and associated credentials and select <b>Next</b>.</p>
-		</li>
-		<li>
-			<p>Enter your R2 bucket name and associated credentials and select <b>Next</b>.</p>
-		</li>
-		<li>
-			<p>After you finish reviewing the details of your migration, select <b>Migrate files</b>.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qo4qeK1OqM0xTKm6RbBWy/0ac3f85a6833194a585a66a1d3880524/image1-32.png" alt="" class="kg-image" width="1883" height="1318" loading="lazy">
-
-	</figure>
-	<p>You can view the status of your migration job at any time on the dashboard. If you want to copy data from one R2 bucket to another R2 bucket, you can select Cloudflare R2 as the source bucket provider and follow the same process. For more information on how to use Super Slurper, please see the documentation <a href="https://developers.cloudflare.com/r2/r2-migrator" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="next-up-incremental-migration">Next up: Incremental migration</h3>
-		<a href="https://blog.cloudflare.com/#next-up-incremental-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For the majority of cases, a one-time migration of data from your previous object storage bucket to R2 is sufficient; complete the switch from S3 to R2 and immediately watch egress fees go to zero.</p>
-	<p>However, in some cases you may want to migrate data to R2 incrementally over time (sip by sip if you will). Enter incremental migration, allowing you to do just that.</p>
-	<p>The goal of incremental migration is to copy files from your origin bucket to R2 as they are requested. When a requested object is not already in the R2 bucket, it is downloaded - one last time - from your origin bucket then copied to R2. From now on, every request for this object will be served by R2, which means less egress fees!</p>
-	<p>Since data is migrated all within the flow of normal data access and application logic, this means zero cost overhead of unnecessary egress fees! Previously complicated migrations become as easy as replacing your S3 endpoint in your application.</p>
-	<div class="flex anchor relative">
-		<h3 id="join-the-private-beta-waitlist-for-incremental-migration">Join the private beta waitlist for incremental migration</h3>
-		<a href="https://blog.cloudflare.com/#join-the-private-beta-waitlist-for-incremental-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re excited about our progress making data migration easier, but we’re just getting started. If you’re interested in participating in the private beta for Super Slurper incremental migration, let us know by joining the waitlist <a href="https://forms.gle/9xvDLR8LL1Pt8rF58" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<p>We encourage you to join our <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord community</a> to share your R2 experiences, questions, and feedback!</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
+<p>R2 is Cloudflare’s zero <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer">egress fee</a> <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">object storage platform</a>. One of the things that developers love about R2 is how easy it is to get started. With R2’s <a href="https://www.cloudflare.com/developer-platform/solutions/s3-compatible-object-storage" target="_blank" rel="noopener noreferrer">S3-compatible API</a>, integrating R2 into existing applications only requires changing a couple of lines of code.</p>
+<p>However, migrating data from other <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">object storage</a> providers into R2 can still be a challenge. To address this issue, we introduced the beta of <a href="https://blog.cloudflare.com/cloudflare-r2-super-slurper">R2 Super Slurper</a> late last year. During the beta period, we’ve been able to partner with early adopters on hundreds of successful migrations from S3 to <a href="https://blog.cloudflare.com/#">Cloudflare R2</a>. We’ve made many improvements during the beta including speed (up to 5x increase in the number of objects copied per second!), reliability, and the ability to copy data between R2 buckets. Today, we’re proud to announce the general availability of Super Slurper for one-time migration, making <a href="https://www.cloudflare.com/learning/cloud/what-is-data-migration" target="_blank" rel="noopener noreferrer">data migration</a> a breeze!</p>
+<h2>Data migration that’s fast, reliable, and easy to use</h2>
+<p>R2 Super Slurper one-time migration allows you to quickly and easily copy objects from S3 to an R2 bucket of your choice.</p>
+<h3>Fast</h3>
+<p>Super Slurper copies objects from your S3 buckets in parallel and uses Cloudflare’s global network to tap into vast amounts of bandwidth to ensure migrations finish fast.</p>
+<blockquote>This migration tool is impressively fast! We expected our migration to take a day to complete, but we were able to move all of our data in less than half an hour. - <strong>Nick Inhofe</strong>, Engineering Manager at <a href="https://www.pdq.com" target="_blank" rel="noopener noreferrer">PDQ</a></blockquote>
+<h3>Reliable</h3>
+<p>Sending objects through the Internet can sometimes fail. R2 Super Slurper accounts for that, and is capable of driving multi-terabyte migrations to completion with robust retries of failed transfers. Additionally, larger objects are transferred in chunks, so if something goes wrong, it only retries the portion of the object that’s needed. This means faster migrations and <a href="https://r2-calculator.cloudflare.com" target="_blank" rel="noopener noreferrer">lower cost</a>. And if for some reason an object just won’t transfer, it gets logged, so you can keep track and sort it out later.</p>
+<h3>Easy to use</h3>
+<p>R2 Super Slurper simplifies the process of copying objects and their associated metadata from S3 to your R2 buckets. Point Super Slurper to your S3 buckets and an asynchronous task will handle the rest. While the migration is taking place, you can follow along from the dashboard.</p>
+<blockquote>R2 has saved us both time and money. We migrated millions of images in a short period of time. It wouldn't have been possible for us to build a tool to migrate our data in this amount of time in a cost-effective way. - <strong>Damien Capocchi</strong>, Backend Engineering Manager at <a href="https://reelgood.com" target="_blank" rel="noopener noreferrer">Reelgood</a></blockquote>
+<h2>Migrate your S3 data into R2</h2>
+<ol>
+	<li>From the Cloudflare dashboard, expand <strong>R2</strong> and select <strong>Data Migration</strong>.</li>
+	<li>Select <strong>Migrate files</strong>.</li>
+	<li>Enter your Amazon S3 bucket name, optional bucket prefix, and associated credentials and select <strong>Next</strong>.</li>
+	<li>Enter your R2 bucket name and associated credentials and select <strong>Next</strong>.</li>
+	<li>After you finish reviewing the details of your migration, select <strong>Migrate files</strong>.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="500" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=715&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=640&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=715&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=750&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=828&amp;h=579&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=1080&amp;h=755&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=1280&amp;h=895&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=1430&amp;h=1000&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1813 Embedded Image - ODN2a1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VHA7Q6W1TK9CGFX7RY36.png&amp;w=1883&amp;h=1318&amp;f=webp" data-lightbox-width="1883" data-lightbox-height="1318" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="500" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>You can view the status of your migration job at any time on the dashboard. If you want to copy data from one R2 bucket to another R2 bucket, you can select Cloudflare R2 as the source bucket provider and follow the same process. For more information on how to use Super Slurper, please see the documentation <a href="https://developers.cloudflare.com/r2/r2-migrator" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<h3>Next up: Incremental migration</h3>
+<p>For the majority of cases, a one-time migration of data from your previous object storage bucket to R2 is sufficient; complete the switch from S3 to R2 and immediately watch egress fees go to zero.</p>
+<p>However, in some cases you may want to migrate data to R2 incrementally over time (sip by sip if you will). Enter incremental migration, allowing you to do just that.</p>
+<p>The goal of incremental migration is to copy files from your origin bucket to R2 as they are requested. When a requested object is not already in the R2 bucket, it is downloaded - one last time - from your origin bucket then copied to R2. From now on, every request for this object will be served by R2, which means less egress fees!</p>
+<p>Since data is migrated all within the flow of normal data access and application logic, this means zero cost overhead of unnecessary egress fees! Previously complicated migrations become as easy as replacing your S3 endpoint in your application.</p>
+<h3>Join the private beta waitlist for incremental migration</h3>
+<p>We’re excited about our progress making data migration easier, but we’re just getting started. If you’re interested in participating in the private beta for Super Slurper incremental migration, let us know by joining the waitlist <a href="https://forms.gle/9xvDLR8LL1Pt8rF58" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>We encourage you to join our <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord community</a> to share your R2 experiences, questions, and feedback!</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k35" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

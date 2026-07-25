@@ -1,235 +1,198 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Y2cbwlsOkF1fkvNHmspE/a45e645210f8354dcf0d481341381cf9/oauth-2-0-authentication-server.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener noreferrer">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
-	<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
-	<p>For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified" target="_blank" rel="noopener noreferrer">article</a>.</p>
-	<p>The steps of the OAuth 2.0 workflow are as follows:</p>
-	<ol>
-		<li>
-			<p>The consumer service redirects the user to a callback URL that was setup by the auth server. At this callback URL, the auth server asks the user to sign in and accept the consumer permissions requests.</p>
-		</li>
-		<li>
-			<p>The auth server redirects the user to the consumer service with a code.</p>
-		</li>
-		<li>
-			<p>The consumer service asks to exchange this code for an access token. The consumer service validates their identity by including their client secret in the callback URL.</p>
-		</li>
-		<li>
-			<p>The auth server gives the consumer the access token.</p>
-		</li>
-		<li>
-			<p>The consumer service can now use the access token to get resources on behalf of the user.</p>
-		</li>
-	</ol>
-	<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server" target="_blank" rel="noopener noreferrer">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
-	<div class="flex anchor relative">
-		<h3 id="setup">Setup</h3>
-		<a href="https://blog.cloudflare.com/#setup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data" target="_blank" rel="noopener noreferrer">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
-	<p>On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VFGcOfkTKZXNuEHBDlReT/4ca67344666d87c20215defd524a9b70/Screen-Shot-2018-12-11-at-3.46.15-PM.png" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" class="kg-image" width="510" height="518" loading="lazy">
-
-	</figure>
-	<p>To put and get items from storage using KV Storage syntax:</p>
-	<pre class="language-javascript"><code class="language-javascript">// @ts-ignore 
-CODES.get(“user@ex.com”) </code></pre>
-	<p>We include <code>// @ts-ignore</code> preceding all KV storage commands. We do not have type definitions for these variables locally, so Typescript would throw an error at compile time otherwise.</p>
-	<p>To set up a project using Typescript and the Cloudflare Previewer, follow this <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">blog post</a>. Webpack will allow us to <code>import</code> which we will need to use the JWT library <code>jsonwebtoken</code>.</p>
-	<pre class="language-javascript"><code class="language-javascript">import * as jwt from "jsonwebtoken";</code></pre>
-	<p>Remember to run:</p>
-	<pre class="language-javascript"><code class="language-javascript">npm install jsonwebtoken &amp;&amp; npm install @types/jsonwebtoken</code></pre>
-	<p>Optionally, we can set up a file to specify endpoints and credentials.</p>
-	<pre class="language-javascript"><code class="language-javascript">import { hosts } from "./private";
-
-export const credentials = {/* for demo purposes, ideally use KV to store secrets */
-  clients: [{
-    id: "victoriasclient",
-    secret: "victoriassecret"
-  }],
-  storage: {
-    secret: "somesecrettodecryptfromtheKV"
-  }
-
-};
-
-export const paths = {
-  auth: {
-    authorize: hosts.auth + "/authorize",
-    login: hosts.auth + "/login",
-    code: hosts.auth + "/code",
-  },
-  token: {
-    resource: hosts.token + "/resource",
-    token: hosts.token + "/authorize",
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="1-accept-page-after-callback">1. Accept page after callback</h4>
-		<a href="https://blog.cloudflare.com/#1-accept-page-after-callback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The consumer service generates some callback URL that redirects the user to our authentication server. The authentication server then presents the user with a login or accept page to generate a code. The authentication server thus must listen on the <code>authorize</code> url endpoint and return <code>giveLoginPageResponse</code>.</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
- const url = new URL(event.request.url);
- if (url.pathname.includes("/authorize"))
-  return event.respondWith(giveLoginPageResponse(event.request));
-}
-
-export async function giveLoginPageResponse(request: Request) {
- ...checks for cases where I am not necessarily logged in... 
- let token = getTokenFromRequest(request)
- if (token) { //user already signed in
-  return new Response(giveAcceptPage(request)
- }</code></pre>
-	<p>Since the user already has a stored session, we can use a method <code>giveAcceptPage</code>. To display the accept page and return a redirect to generate the code.</p>
-	<pre class="language-javascript"><code class="language-javascript">export function giveAcceptPage(request: Request) {
-  let req_url = new URL(request.url);
-  let params = req_url.search
-  let fetchCodeURL = paths.auth.code + params
-  return `&lt;!DOCTYPE html&gt;
-  &lt;html&gt;
-    &lt;body&gt;
-      &lt;a href="${fetchCodeURL}"&gt; Accept&lt;/button&gt;
-    &lt;/body&gt;
-  &lt;/html&gt;
-    `;
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="2-redirect-back-to-consumer">2. Redirect back to consumer</h4>
-		<a href="https://blog.cloudflare.com/#2-redirect-back-to-consumer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the user’s browser to the consumer’s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
- ...
- if (url.pathname.includes("/code"))
-  return event.respondWith(redirectCodeToConsumer(event.request));
-}
-export async function redirectCodeToConsumer(request: Request) {
- let session = await verifyUser(request)
-
- if (session.msg == "403") return new Response(give403Page(), { status: 403 })
- if (session.msg == "dne") return registerNewUser(session.email, session.pwd)
- let code = Math.random().toString(36).substring(2, 12)
- try {
-  let req_url = new URL(request.url)
-  let redirect_uri = new URL(encodeURI(req_url.searchParams.get("redirect_uri")))
-  let client_id = new URL(encodeURI(req_url.searchParams.get("client_id")))
-  // @ts-ignore
-  await CODES.put(client_id + email, code)
-  redirect_uri.searchParams.set("code", code);
-  redirect_uri.searchParams.set("response_type", "code");
-  return Response.redirect(redirect_uri.href, 302);
- } catch (e) {
-  // @ts-ignore
-  await CODES.delete(email, code)
-  return new Response(
-   JSON.stringify(factoryIError({ message: "error with the URL passed in" + e})),
-  { status: 500 });
- }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="3-code-to-token-exchange">3. Code to Token Exchange</h4>
-		<a href="https://blog.cloudflare.com/#3-code-to-token-exchange" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now the consumer has the code. They can use this code to request a token. On our token worker, configure the endpoint to exchange the code for the consumer service to grant a token.</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event: FetchEvent) =&gt; {
-...
- if (url.pathname.includes("/token"))
-  return event.respondWith(giveToken(event.request));</code></pre>
-	<p>Grab the code from the request and validate this code matches the code that is stored for this client. Once the code is verified, deliver the token by grabbing the existing token from the KV storage or by signing the user information to generate a new token.</p>
-	<pre class="language-javascript"><code class="language-javascript">export async function giveToken(request: Request) {
- let req_url = new URL(request.url);
- let code = req_url.searchParams.get("code");
- let email = req_url.searchParams.get("email");
- if (code){
-   if(!validClientSecret(request) return errorResponse()
-  // @ts-ignore
-  let storedCode = await CODES.get(email)
-  if(code != storedCode) return new Response(give403Page(), { status:403})
-
-  let tokenJWT = jwt.sign(email, credentials.client.secret);
-  ... return token</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="4-give-the-token-to-the-consumer">4. Give the token to the consumer</h4>
-		<a href="https://blog.cloudflare.com/#4-give-the-token-to-the-consumer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Continuing where step 3 left off from the <code>giveToken</code> method, respond to the consumer with this valid token.</p>
-	<pre class="language-javascript"><code class="language-javascript">  ...
-  headers.append("set-cookie", "token=Bearer " + tokenJWT);
-  // @ts-ignore
-  await TOKENS.put(email, tokenJWT)
-  var respBody = factoryTokenResponse({
-   "access_token": tokenJWT,
-   "token_type": "bearer",
-   "expires_in": 2592000,
-   "refresh_token": token,
-   "token": token
-  })
- } else {
-  respBody.errors.push(factoryIError({ message: "there was no code sent to the authorize token url" }))
- }
- return new Response(JSON.stringify(respBody), { headers });
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="5-accepting-the-token">5. Accepting the token</h4>
-		<a href="https://blog.cloudflare.com/#5-accepting-the-token" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At this point voila, your duty as an OAuth 2.0 Authentication server is complete! The consumer service that wishes to use your service has the token that you have not so magically generated.</p>
-	<p>The consumer server would send a request including the token:</p>
-	<pre class="language-javascript"><code class="language-javascript">GET /resource/some-goods
-Authorization: Bearer eyJhbGci..bGAqA</code></pre>
-	<p>Authentication server would validate the token and give the goods:</p>
-	<pre class="language-javascript"><code class="language-javascript">export async function giveResource(request: Request) {
- var respBody: HookResponse = factoryHookResponse({})
- let token = ""
- let decodedJWT = factoryJWTPayload()
- try { //validate request is who they claim
-  token = getCookie(request.headers.get("cookie"), "token")
-  if (!token) token = request.headers.get("Authorization").substring(7)
-  decodedJWT = jwt.verify(token, credentials.storage.secret)
-  // @ts-ignore
-  let storedToken = await TOKENS.get(decodedJWT.sub)
-  if (isExpired(storedToken)) throw new Error("token is expired") /* TODO instead of throwing error send to refresh */
-  if (storedToken != token) throw new Error("token does not match what is stored")
- }
- catch (e) {
-  respBody.errors.push(factoryIError({ message: e.message, type: "oauth" }))
-  return new Response(JSON.stringify(respBody), init)
- }
- respBody.body = getUsersPersonalBody(decodedJWT.sub)
- return new Response(JSON.stringify(respBody), init)
-}</code></pre>
-	<p>The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using <a href="https://www.cloudflare.com/products/cloudflare-access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
-	<p>Stay tuned for a follow-up blog post on an OAuth consumer implementation.</p>
+<p>Let’s pretend I own a service and I want to grant other services access to my service on behalf of my users. The familiar OAuth 2.0 is the industry standard used by the likes of <a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener noreferrer">Google sign in</a>, Facebook, etc. to communicate safely without inconveniencing users.</p>
+<p>Implementing an OAuth Authentication server is conceptually simple but a pain in practice. We can leverage the power of <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> to simplify the implementation, reduce latency, and segregate our service logic from the authentication layer.</p>
+<p>For those unfamiliar with OAuth, I highly recommend reading a more in depth <a href="https://aaronparecki.com/oauth-2-simplified" target="_blank" rel="noopener noreferrer">article</a>.</p>
+<p>The steps of the OAuth 2.0 workflow are as follows:</p>
+<ol>
+	<li>The consumer service redirects the user to a callback URL that was setup by the auth server. At this callback URL, the auth server asks the user to sign in and accept the consumer permissions requests.</li>
+	<li>The auth server redirects the user to the consumer service with a code.</li>
+	<li>The consumer service asks to exchange this code for an access token. The consumer service validates their identity by including their client secret in the callback URL.</li>
+	<li>The auth server gives the consumer the access token.</li>
+	<li>The consumer service can now use the access token to get resources on behalf of the user.</li>
+</ol>
+<p>In the rest of this post, I will be walking through my implementation of an OAuth Authentication server using a Worker. For simplicity, I will make the assumption the user has already logged in and obtained a session token in the form of a JWT that I will refer to as “token” herein. My <a href="https://github.com/victoriabernard92/OAuth-Server" target="_blank" rel="noopener noreferrer">full implementation</a> has a more thorough flow that includes initial user login and registration.</p>
+<h3>Setup</h3>
+<p>We must be able to reference valid user sessions, codes and login information. Because Workers do not maintain state between executions, we will store this information using <a href="https://developers.cloudflare.com/workers/writing-workers/storing-data" target="_blank" rel="noopener noreferrer">Cloudflare Storage</a>. We setup up three namespaces called: USERS, CODES, and TOKENS .</p>
+<p>On your OAuth server domain, create two empty worker scripts called auth and token. Bind the three namespaces to the two workers scripts. Then configure the namespaces to the scripts so that your resources end up looking like:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="510" height="518" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=510&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=510&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 510w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=640&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=750&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=828&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=1020&amp;h=1036&amp;f=webp&amp;fit=cover&amp;position=center 1020w" alt="Screen-Shot-2018-12-11-at-3.46.15-PM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KQJAJGKZPHEEYCFS1YTJ.png&amp;w=510&amp;h=518&amp;f=webp" data-lightbox-width="510" data-lightbox-height="518" data-astro-cid-7nvefuv6="true" sizes="(min-width: 510px) 510px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="510" height="518" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>To put and get items from storage using KV Storage syntax:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// @ts-ignore </span></span>
+<span class="line"><span class="sk-005cc5-fff">CODES</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(“user@ex.com”) </span></span></code></pre>
 </div>
+<p>We include <code>// @ts-ignore</code> preceding all KV storage commands. We do not have type definitions for these variables locally, so Typescript would throw an error at compile time otherwise.</p>
+<p>To set up a project using Typescript and the Cloudflare Previewer, follow this <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">blog post</a>. Webpack will allow us to <code>import</code> which we will need to use the JWT library <code>jsonwebtoken</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> jwt </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "jsonwebtoken"</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>Remember to run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm install jsonwebtoken </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> npm install @types</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">jsonwebtoken</span></span></code></pre>
+</div>
+<p>Optionally, we can set up a file to specify endpoints and credentials.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { hosts } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./private"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> credentials</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span><span class="sk-6a737d-8b8b8b94">/* for demo purposes, ideally use KV to store secrets */</span></span>
+<span class="line"><span class="sk-24292e-fff">  clients: [{</span></span>
+<span class="line"><span class="sk-24292e-fff">    id: </span><span class="sk-032f62-99ffe4">"victoriasclient"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    secret: </span><span class="sk-032f62-99ffe4">"victoriassecret"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }],</span></span>
+<span class="line"><span class="sk-24292e-fff">  storage: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    secret: </span><span class="sk-032f62-99ffe4">"somesecrettodecryptfromtheKV"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> paths</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  auth: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    authorize: hosts.auth </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/authorize"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    login: hosts.auth </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/login"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    code: hosts.auth </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/code"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  token: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    resource: hosts.token </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/resource"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    token: hosts.token </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/authorize"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h4>1. Accept page after callback</h4>
+<p>The consumer service generates some callback URL that redirects the user to our authentication server. The authentication server then presents the user with a login or accept page to generate a code. The authentication server thus must listen on the <code>authorize</code> url endpoint and return <code>giveLoginPageResponse</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/authorize"</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">giveLoginPageResponse</span><span class="sk-24292e-fff">(event.request));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">export </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> giveLoginPageResponse</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> ...</span><span class="sk-24292e-fff">checks for cases where </span><span class="sk-005cc5-fff">I</span><span class="sk-24292e-fff"> am not necessarily logged </span><span class="sk-d73a49-a0a0a0">in...</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> token </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> getTokenFromRequest</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (token) { </span><span class="sk-6a737d-8b8b8b94">//user already signed in</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">giveAcceptPage</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+</div>
+<p>Since the user already has a stored session, we can use a method <code>giveAcceptPage</code>. To display the accept page and return a redirect to generate the code.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> giveAcceptPage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> req_url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> params </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req_url.search</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> fetchCodeURL </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> paths.auth.code </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> params</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> `&lt;!DOCTYPE html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;body&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      &lt;a href="${</span><span class="sk-24292e-fff">fetchCodeURL</span><span class="sk-032f62-99ffe4">}"&gt; Accept&lt;/button&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    &lt;/body&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  &lt;/html&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    `</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h4>2. Redirect back to consumer</h4>
+<p>At the endpoint for <code>fetchCodeURL</code>, the authentication server will redirect the user’s browser to the consumer’s page as specified by <code>redirect_uri</code> in the original URL params of the callback with the code.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/code"</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">redirectCodeToConsumer</span><span class="sk-24292e-fff">(event.request));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">export </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> redirectCodeToConsumer</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> session </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> verifyUser</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (session.msg </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "403"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">give403Page</span><span class="sk-24292e-fff">(), { status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (session.msg </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "dne"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> registerNewUser</span><span class="sk-24292e-fff">(session.email, session.pwd)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> code </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Math.</span><span class="sk-6f42c1-ffc799">random</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">36</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">substring</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">12</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> req_url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> redirect_uri </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">encodeURI</span><span class="sk-24292e-fff">(req_url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"redirect_uri"</span><span class="sk-24292e-fff">)))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> client_id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">encodeURI</span><span class="sk-24292e-fff">(req_url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"client_id"</span><span class="sk-24292e-fff">)))</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // @ts-ignore</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-fff"> CODES</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(client_id </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> email, code)</span></span>
+<span class="line"><span class="sk-24292e-fff">  redirect_uri.searchParams.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"code"</span><span class="sk-24292e-fff">, code);</span></span>
+<span class="line"><span class="sk-24292e-fff">  redirect_uri.searchParams.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"response_type"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"code"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">redirect</span><span class="sk-24292e-fff">(redirect_uri.href, </span><span class="sk-005cc5-ffc799">302</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // @ts-ignore</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-fff"> CODES</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">delete</span><span class="sk-24292e-fff">(email, code)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-fff">   JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">factoryIError</span><span class="sk-24292e-fff">({ message: </span><span class="sk-032f62-99ffe4">"error with the URL passed in"</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> e})),</span></span>
+<span class="line"><span class="sk-24292e-fff">  { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h4>3. Code to Token Exchange</h4>
+<p>Now the consumer has the code. They can use this code to request a token. On our token worker, configure the endpoint to exchange the code for the consumer service to grant a token.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/token"</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">giveToken</span><span class="sk-24292e-fff">(event.request));</span></span></code></pre>
+</div>
+<p>Grab the code from the request and validate this code matches the code that is stored for this client. Once the code is verified, deliver the token by grabbing the existing token from the KV storage or by signing the user information to generate a new token.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> giveToken</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> req_url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> code </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req_url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"code"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> email </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req_url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"email"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (code){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">validClientSecret</span><span class="sk-24292e-fff">(request) return </span><span class="sk-6f42c1-ffc799">errorResponse</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // @ts-ignore</span></span>
+<span class="line"><span class="sk-24292e-fff">  let storedCode </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> CODES</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(email)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  if</span><span class="sk-24292e-fff">(code </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> storedCode) return </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">give403Page</span><span class="sk-24292e-fff">(), { status:</span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  let tokenJWT </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> jwt.</span><span class="sk-6f42c1-ffc799">sign</span><span class="sk-24292e-fff">(email, credentials.client.secret);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  ...</span><span class="sk-24292e-fff"> return token</span></span></code></pre>
+</div>
+<h4>4. Give the token to the consumer</h4>
+<p>Continuing where step 3 left off from the <code>giveToken</code> method, respond to the consumer with this valid token.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">  ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  headers.</span><span class="sk-6f42c1-ffc799">append</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"set-cookie"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"token=Bearer "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> tokenJWT);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // @ts-ignore</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-fff"> TOKENS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(email, tokenJWT)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> respBody </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> factoryTokenResponse</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "access_token"</span><span class="sk-24292e-fff">: tokenJWT,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "token_type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"bearer"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "expires_in"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2592000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "refresh_token"</span><span class="sk-24292e-fff">: token,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "token"</span><span class="sk-24292e-fff">: token</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  respBody.errors.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">factoryIError</span><span class="sk-24292e-fff">({ message: </span><span class="sk-032f62-99ffe4">"there was no code sent to the authorize token url"</span><span class="sk-24292e-fff"> }))</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(respBody), { headers });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h4>5. Accepting the token</h4>
+<p>At this point voila, your duty as an OAuth 2.0 Authentication server is complete! The consumer service that wishes to use your service has the token that you have not so magically generated.</p>
+<p>The consumer server would send a request including the token:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">GET</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">resource</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">some</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">goods</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Authorization</span><span class="sk-24292e-fff">: Bearer eyJhbGci..bGAqA</span></span></code></pre>
+</div>
+<p>Authentication server would validate the token and give the goods:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> giveResource</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> var</span><span class="sk-24292e-fff"> respBody</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> HookResponse</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> factoryHookResponse</span><span class="sk-24292e-fff">({})</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> token </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> ""</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> decodedJWT </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> factoryJWTPayload</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> try</span><span class="sk-24292e-fff"> { </span><span class="sk-6a737d-8b8b8b94">//validate request is who they claim</span></span>
+<span class="line"><span class="sk-24292e-fff">  token </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> getCookie</span><span class="sk-24292e-fff">(request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"cookie"</span><span class="sk-24292e-fff">), </span><span class="sk-032f62-99ffe4">"token"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">token) token </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Authorization"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">substring</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">7</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  decodedJWT </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> jwt.</span><span class="sk-6f42c1-ffc799">verify</span><span class="sk-24292e-fff">(token, credentials.storage.secret)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // @ts-ignore</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> storedToken </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> TOKENS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(decodedJWT.sub)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">isExpired</span><span class="sk-24292e-fff">(storedToken)) </span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"token is expired"</span><span class="sk-24292e-fff">) </span><span class="sk-6a737d-8b8b8b94">/* TODO instead of throwing error send to refresh */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (storedToken </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> token) </span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"token does not match what is stored"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-24292e-fff">  respBody.errors.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">factoryIError</span><span class="sk-24292e-fff">({ message: e.message, type: </span><span class="sk-032f62-99ffe4">"oauth"</span><span class="sk-24292e-fff"> }))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(respBody), init)</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff"> respBody.body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> getUsersPersonalBody</span><span class="sk-24292e-fff">(decodedJWT.sub)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(respBody), init)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The boundaries of serverless are pushed everyday, though if your app just needs to authorize users, you may be better off using <a href="https://www.cloudflare.com/products/cloudflare-access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>. We've demonstrated that a full blown OAuth 2.0 authentication server implementation can be achieved with Cloudflare Workers and Storage.</p>
+<p>Stay tuned for a follow-up blog post on an OAuth consumer implementation.</p>

@@ -1,213 +1,115 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-d1">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-d1">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-d1">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-d1">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-d1">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-d1">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OKtx5KDk3shjxeXWqbyUy/a61dba8efd3227fc6005595f0bd81d02/introducing-d1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
+<p>We <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">announced</a> Cloudflare Workers in 2017, giving developers access to compute on our network. We were excited about the possibilities this unlocked, but we quickly realized — most real world applications are stateful. Since then, we’ve delivered <a href="https://www.cloudflare.com/developer-platform/workers-kv" target="_blank" rel="noopener noreferrer">KV</a>, <a href="https://www.cloudflare.com/developer-platform/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>, and <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2</a>, giving developers access to various types of storage.</p>
+<p>Today, we're excited to announce D1, our first SQL database.</p>
+<p>While the wait on beta access shouldn’t be long — we’ll start letting folks in as early as June (<a href="https://www.cloudflare.com/lp/d1" target="_blank" rel="noopener noreferrer">sign up here</a>), we’re excited to share some details of what’s to come.</p>
+<h2>Meet D1, the database designed for Cloudflare Workers</h2>
+<p>D1 is built on SQLite. Not only is SQLite the most ubiquitous database in the world, used by billions of devices a day, it’s also the <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">first ever serverless database</a>. Surprised? SQLite was so ahead of its time, it dubbed itself “<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">serverless</a>” before the term gained connotation with cloud services, and originally meant literally “not involving a server”.</p>
+<p>Since Workers itself runs between the server and the client, and was inspired by technology built for the client, SQLite seemed like the perfect fit for our first entry into databases.</p>
+<p>So what can you build with D1? The true answer is “almost anything!”, that might not be very helpful in triggering the imagination, so how about a live demo?</p>
+<h2>D1 Demo: Northwind Traders</h2>
+<p>You can check out an example of D1 in action by trying out our demo running here: <a href="https://northwind.d1sql.com" target="_blank" rel="noopener noreferrer">northwind.d1sql.com</a>.</p>
+<p>If you’re wondering “Who are Northwind Traders?”, Northwind Traders is the “Hello, World!” of databases, if you will. A sample database that Microsoft would provide alongside Microsoft Access to use as their own tutorial. It first appeared 25 years ago in 1997, and you’ll find many examples of its use on the Internet.</p>
+<p>It’s a typical business application, with a realistic schema, with many foreign keys, across many different tables — a truly timeless representation of data.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="470" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=715&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=640&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=715&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=750&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=828&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=1080&amp;h=710&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=1280&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=1430&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1074 Embedded Image - cypvvG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EEFNMDXTKT16G6NMP8D8.png&amp;w=1920&amp;h=1262&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1262" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="470" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>When was the recent order of Queso Cabrales shipped, and what ship was it on? You can quickly find out. Someone calling in about ordering some Chai? Good thing Exotic Liquids still has 39 units in stock, for just $18 each.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="470" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=715&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=640&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=715&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=750&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=828&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=1080&amp;h=710&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=1280&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=1430&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1074 Embedded Image - NkLmfI" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TVJ1VAY3ZWTMP25QRMX4.png&amp;w=1920&amp;h=1262&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1262" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="470" class="pt-portable-image-media"></div>
+</figure>
+<p>We welcome you to play and poke around, and answer any questions you have about Northwind Trading’s business.</p>
+<p>The Northwind Traders demo also features a dashboard where you can find details and metrics about the D1 SQL queries happening behind the scenes.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="538" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=715&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=640&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=715&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=750&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=828&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=1080&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=1280&amp;h=963&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=1430&amp;h=1076&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1074 Embedded Image - EZCkgN" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW490MBYR5C725SKRENBF3B2.png&amp;w=1920&amp;h=1444&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1444" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="538" class="pt-portable-image-media"></div>
+</figure>
+<h2>What can you build with D1?</h2>
+<p>Going back to our original question before the demo, however, what can you build with D1?</p>
+<p>While you may not be running Northwind Traders yourself, you’re likely running a very similar piece of software somewhere. Even at the very core of Cloudflare’s service is a database. A SQL database filled with tables, materialized views and a plethora of stored procedures. Every time a customer interacts with our dashboard they end up changing state in that database.</p>
+<p>The reality is that databases are everywhere. They are inside the web browser you’re reading this on, inside every app on your phone, and the storage for your bank transaction, travel reservations, business applications, and on and on. Our goal with D1 is to help you build anything from APIs to rich and powerful applications, including <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">eCommerce sites</a>, accounting software, <a href="https://www.cloudflare.com/saas" target="_blank" rel="noopener noreferrer">SaaS solutions</a>, and CRMs.</p>
+<p>You can even combine D1 with <a href="https://www.cloudflare.com/zero-trust/products/access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a> and create internal dashboards and admin tools that are securely locked to only the people in your organization. The world, truly, is your oyster.</p>
+<h2>The D1 developer experience</h2>
+<p>We’ll talk about the capabilities, and upcoming features further down in the post, but at the core of it, the strength of D1 is the developer experience: allowing you to go from nothing to a full stack application in an instant. Think back to a tool you’ve used that made development feel magical — that’s exactly what we want developing with Workers and D1 to feel like.</p>
+<p>To give you a sense of it, here’s what getting started with D1 will look like.</p>
+<h3>Creating your first D1 database</h3>
+<p>With D1, you will be able to create a database, in just a few clicks — define the tables, insert or upload some data, no need to memorize any commands unless you need to.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="409" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=715&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=640&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=715&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=750&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=828&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=1080&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=1280&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=1430&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1074 Embedded Image - 3YSFGH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AMMHWK10GF79K1PVFNTB.png&amp;w=1920&amp;h=1098&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1098" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="409" class="pt-portable-image-media"></div>
+</figure>
+<p>Of course, if the command-line is your jam, earlier this week, we announced <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">the new and improved Wrangler 2</a>, the best tool for wrangling and deploying your Workers, and soon also your tool for deploying D1. Wrangler will also come with native D1 support, so you can create &amp; manage databases with a few simple commands:</p>
+<div id="html-block-k2j" class="html-block">
+	<div style="padding-top:60.42084168336673%"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
-	<p>We <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">announced</a> Cloudflare Workers in 2017, giving developers access to compute on our network. We were excited about the possibilities this unlocked, but we quickly realized — most real world applications are stateful. Since then, we’ve delivered <a href="https://www.cloudflare.com/developer-platform/workers-kv" target="_blank" rel="noopener noreferrer">KV</a>, <a href="https://www.cloudflare.com/developer-platform/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>, and <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2</a>, giving developers access to various types of storage.</p>
-	<p>Today, we're excited to announce D1, our first SQL database.</p>
-	<p>While the wait on beta access shouldn’t be long — we’ll start letting folks in as early as June (<a href="https://www.cloudflare.com/lp/d1" target="_blank" rel="noopener noreferrer">sign up here</a>), we’re excited to share some details of what’s to come.</p>
-	<div class="flex anchor relative">
-		<h2 id="meet-d1-the-database-designed-for-cloudflare-workers">Meet D1, the database designed for Cloudflare Workers</h2>
-		<a href="https://blog.cloudflare.com/#meet-d1-the-database-designed-for-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>D1 is built on SQLite. Not only is SQLite the most ubiquitous database in the world, used by billions of devices a day, it’s also the <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">first ever serverless database</a>. Surprised? SQLite was so ahead of its time, it dubbed itself “<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">serverless</a>” before the term gained connotation with cloud services, and originally meant literally “not involving a server”.</p>
-	<p>Since Workers itself runs between the server and the client, and was inspired by technology built for the client, SQLite seemed like the perfect fit for our first entry into databases.</p>
-	<p>So what can you build with D1? The true answer is “almost anything!”, that might not be very helpful in triggering the imagination, so how about a live demo?</p>
-	<div class="flex anchor relative">
-		<h2 id="d1-demo-northwind-traders">D1 Demo: Northwind Traders</h2>
-		<a href="https://blog.cloudflare.com/#d1-demo-northwind-traders" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can check out an example of D1 in action by trying out our demo running here: <a href="https://northwind.d1sql.com" target="_blank" rel="noopener noreferrer">northwind.d1sql.com</a>.</p>
-	<p>If you’re wondering “Who are Northwind Traders?”, Northwind Traders is the “Hello, World!” of databases, if you will. A sample database that Microsoft would provide alongside Microsoft Access to use as their own tutorial. It first appeared 25 years ago in 1997, and you’ll find many examples of its use on the Internet.</p>
-	<p>It’s a typical business application, with a realistic schema, with many foreign keys, across many different tables — a truly timeless representation of data.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rze39GwPcbi7rkFaoKTi4/e189b105a6ba5088fb3fb062e86c45e5/image3-13.png" alt="" class="kg-image" width="1999" height="1314" loading="lazy">
-
-	</figure>
-	<p>When was the recent order of Queso Cabrales shipped, and what ship was it on? You can quickly find out. Someone calling in about ordering some Chai? Good thing Exotic Liquids still has 39 units in stock, for just \$18 each.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ytvt3wgKWXkTkp8aMDMDx/851f1b0333a820328663807c418e5f33/image2-14.png" alt="" class="kg-image" width="1999" height="1314" loading="lazy">
-
-	</figure>
-	<p>We welcome you to play and poke around, and answer any questions you have about Northwind Trading’s business.</p>
-	<p>The Northwind Traders demo also features a dashboard where you can find details and metrics about the D1 SQL queries happening behind the scenes.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7r5YpPnZLYMbqwJDW5v38Y/d1714df833387bfc5cacd3e6caa97913/image5-5.png" alt="" class="kg-image" width="1999" height="1503" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="what-can-you-build-with-d1">What can you build with D1?</h2>
-		<a href="https://blog.cloudflare.com/#what-can-you-build-with-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Going back to our original question before the demo, however, what can you build with D1?</p>
-	<p>While you may not be running Northwind Traders yourself, you’re likely running a very similar piece of software somewhere. Even at the very core of Cloudflare’s service is a database. A SQL database filled with tables, materialized views and a plethora of stored procedures. Every time a customer interacts with our dashboard they end up changing state in that database.</p>
-	<p>The reality is that databases are everywhere. They are inside the web browser you’re reading this on, inside every app on your phone, and the storage for your bank transaction, travel reservations, business applications, and on and on. Our goal with D1 is to help you build anything from APIs to rich and powerful applications, including <a href="https://www.cloudflare.com/ecommerce" target="_blank" rel="noopener noreferrer">eCommerce sites</a>, accounting software, <a href="https://www.cloudflare.com/saas" target="_blank" rel="noopener noreferrer">SaaS solutions</a>, and CRMs.</p>
-	<p>You can even combine D1 with <a href="https://www.cloudflare.com/zero-trust/products/access" target="_blank" rel="noopener noreferrer">Cloudflare Access</a> and create internal dashboards and admin tools that are securely locked to only the people in your organization. The world, truly, is your oyster.</p>
-	<div class="flex anchor relative">
-		<h2 id="the-d1-developer-experience">The D1 developer experience</h2>
-		<a href="https://blog.cloudflare.com/#the-d1-developer-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ll talk about the capabilities, and upcoming features further down in the post, but at the core of it, the strength of D1 is the developer experience: allowing you to go from nothing to a full stack application in an instant. Think back to a tool you’ve used that made development feel magical — that’s exactly what we want developing with Workers and D1 to feel like.</p>
-	<p>To give you a sense of it, here’s what getting started with D1 will look like.</p>
-	<div class="flex anchor relative">
-		<h3 id="creating-your-first-d1-database">Creating your first D1 database</h3>
-		<a href="https://blog.cloudflare.com/#creating-your-first-d1-database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With D1, you will be able to create a database, in just a few clicks — define the tables, insert or upload some data, no need to memorize any commands unless you need to.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2T8rfy6OTt9UbegCxnLFWD/999f52d4fe1c0e4765acf72e62dc9390/image4-10.png" alt="" class="kg-image" width="1999" height="1143" loading="lazy">
-
-	</figure>
-	<p>Of course, if the command-line is your jam, earlier this week, we announced <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">the new and improved Wrangler 2</a>, the best tool for wrangling and deploying your Workers, and soon also your tool for deploying D1. Wrangler will also come with native D1 support, so you can create &amp; manage databases with a few simple commands:</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 60.42084168336673%;"><iframe src="https://iframe.videodelivery.net/6bc08db0ee3524778effb6af3cbbf90f?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F6bc08db0ee3524778effb6af3cbbf90f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D9s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="accessing-d1-from-your-worker">Accessing D1 from your Worker</h3>
-		<a href="https://blog.cloudflare.com/#accessing-d1-from-your-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Attaching D1 to your Worker is as easy as creating a new binding. Each D1 database that you attach to your Worker gets attached with its own binding on the <code>env</code> parameter:</p>
-	<pre class="language-js"><code class="language-js">export default {
-  async fetch(request, env, ctx) {
-    const { pathname } = new URL(request.url)
-    if (pathname === '/num-products') {
-      const { result } = await env.DB.get(`SELECT count(*) AS num_products FROM Product;`)
-      return new Response(`There are ${result.num_products} products in the D1 database!`)
-    }
-  }
-}</code></pre>
-	<p>Or, for a slightly more complex example, you can safely pass parameters from the URL to the database using a Router and parameterised queries:</p>
-	<pre class="language-js"><code class="language-js">import { Router } from 'itty-router';
-const router = Router();
-
-router.get('/product/:id', async ({ params }, env) =&gt; {
-  const { result } = await env.DB.get(
-    `SELECT * FROM Product WHERE ID = $id;`,
-    { $id: params.id }
-  )
-  return new Response(JSON.stringify(result), {
-    headers: {
-      'content-type': 'application/json'
-    }
-  })
-})
-
-export default {
-  fetch: router.handle,
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="so-what-can-you-expect-from-d1">So what can you expect from D1?</h2>
-		<a href="https://blog.cloudflare.com/#so-what-can-you-expect-from-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First and foremost, we want you to be able to develop with D1, without having to worry about cost.</p>
-	<p>At Cloudflare, we don’t believe in keeping your data hostage, so D1, like R2, will be free of egress charges. Our plan is to price D1 like we price our storage products by charging for the base storage plus database operations performed.</p>
-	<p>But, again, we don’t want our customers worrying about the cost or what happens if their business takes off, and they need more storage or have more activity. We want you to be able to build applications as simple or complex as you can dream up. We will ensure that D1 costs less and performs better than comparable centralized solutions. The promise of serverless and a global network like Cloudflare’s is <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website" target="_blank" rel="noopener noreferrer">performance</a> and <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">lower cost</a> driven by our architecture.</p>
-	<p>Here’s a small preview of the features in D1.</p>
-	<div class="flex anchor relative">
-		<h3 id="read-replication">Read replication</h3>
-		<a href="https://blog.cloudflare.com/#read-replication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With D1, we want to make it easy to store your whole application's state in the one place, so you can perform arbitrary queries across the full data set. That’s what makes relational databases so powerful.</p>
-	<p>However, we don’t think powerful should be synonymous with cumbersome. Most relational databases are huge, monolithic things and configuring replication isn't trivial, so in general, most systems are designed so that all reads and writes flow back to a single instance. D1 takes a different approach.</p>
-	<p>With D1, we want to take configuration off your hands, and take advantage of Cloudflare's global network. D1 will create read-only clones of your data, close to where your users are, and constantly keep them up-to-date with changes.</p>
-	<div class="flex anchor relative">
-		<h3 id="batching">Batching</h3>
-		<a href="https://blog.cloudflare.com/#batching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Many operations in an application don't just generate a single query. If your logic is running in a Worker near your user, but each of these queries needs to execute on the database, then sending them across the wire one-by-one is extremely inefficient.</p>
-	<p>D1’s API includes batching: anywhere you can send a single SQL statement you can also provide an array of them, meaning you only need a single HTTP round-trip to perform multiple operations. This is perfect for transactions that need to execute and commit atomically:</p>
-	<pre class="language-js"><code class="language-js">async function recordPurchase(userId, productId, amount) { 
-  const result = await env.DB.exec([
-    [
-      `UPDATE users SET balance = balance - $amount WHERE user_id = $user_id`,
-      { $amount: amount, $user_id: userId },
-    ],
-    [
-      'UPDATE product SET total_sales = total_sales + $amount WHERE product_id = $product_id',
-      { $amount: amount, $product_id: productId },
-    ],
-  ])
-  return result
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="embedded-compute">Embedded compute</h3>
-		<a href="https://blog.cloudflare.com/#embedded-compute" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>But we're going further. With D1, it will be possible to define a chunk of your Worker code that runs directly next to the database, giving you total control and maximum performance—each request first hits your Worker near your users, but depending on the operation, can hand off to another Worker deployed alongside a replica or your primary D1 instance to complete its work.</p>
-	<div class="flex anchor relative">
-		<h3 id="backups-and-redundancy">Backups and redundancy</h3>
-		<a href="https://blog.cloudflare.com/#backups-and-redundancy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are few things as critical as the data stored in your main application's database, so D1 will automatically save snapshots of your database to Cloudflare's cloud storage service, R2, at regular intervals, with a one-click restoration process. And, since we're building on the redundant storage of Durable Objects, your database can physically move locations as needed, resulting in self-healing from even the most catastrophic problems in seconds.</p>
-	<div class="flex anchor relative">
-		<h3 id="importing-and-exporting-data">Importing and exporting data</h3>
-		<a href="https://blog.cloudflare.com/#importing-and-exporting-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While D1 already supports the SQLite API, making it easy for you to write your queries, you might also need data to run them on. If you’re not creating a brand-new application, you may want to import an existing dataset from another source or database, which is why we’ll be working on allowing you to bring your own data to D1.</p>
-	<p>Likewise, one of SQLite’s advantages is its portability. If your application has a dedicated staging environment, say, you’ll be able to clone a snapshot of that data down to your local machine to develop against. And we’ll be adding more flexibility, such as the ability to create a new database with a set of test data for each new pull request on your Pages project.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-next">What’s next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This wouldn’t be a Cloudflare announcement if we didn’t conclude on “we’re just getting started!” — and it’s true! We are really excited about all the powerful possibilities our database on our global network opens up.</p>
-	<p>Are you already thinking about what you’re going to build with D1 and Workers? Same. <a href="https://www.cloudflare.com/lp/d1" target="_blank" rel="noopener noreferrer">Give us your details</a>, and we’ll give you access as soon as we can — look out for a beta invite from us starting as early as June 2022!</p>
-	<p>If you want to read more, refer to our <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
-	<p>
-	</p>
 </div>
+<h3>Accessing D1 from your Worker</h3>
+<p>Attaching D1 to your Worker is as easy as creating a new binding. Each D1 database that you attach to your Worker gets attached with its own binding on the <code>env</code> parameter:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> '/num-products'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">result</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`SELECT count(*) AS num_products FROM Product;`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`There are ${</span><span class="sk-24292e-fff">result</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">num_products</span><span class="sk-032f62-99ffe4">} products in the D1 database!`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Or, for a slightly more complex example, you can safely pass parameters from the URL to the database using a Router and parameterised queries:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Router } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'itty-router'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> router</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> Router</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">router.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/product/:id'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">params</span><span class="sk-24292e-fff"> }, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">result</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    `SELECT * FROM Product WHERE ID = $id;`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    { $id: params.id }</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(result), {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      'content-type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'application/json'</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  fetch: router.handle,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>So what can you expect from D1?</h2>
+<p>First and foremost, we want you to be able to develop with D1, without having to worry about cost.</p>
+<p>At Cloudflare, we don’t believe in keeping your data hostage, so D1, like R2, will be free of egress charges. Our plan is to price D1 like we price our storage products by charging for the base storage plus database operations performed.</p>
+<p>But, again, we don’t want our customers worrying about the cost or what happens if their business takes off, and they need more storage or have more activity. We want you to be able to build applications as simple or complex as you can dream up. We will ensure that D1 costs less and performs better than comparable centralized solutions. The promise of serverless and a global network like Cloudflare’s is <a href="https://www.cloudflare.com/learning/performance/speed-up-a-website" target="_blank" rel="noopener noreferrer">performance</a> and <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">lower cost</a> driven by our architecture.</p>
+<p>Here’s a small preview of the features in D1.</p>
+<h3>Read replication</h3>
+<p>With D1, we want to make it easy to store your whole application's state in the one place, so you can perform arbitrary queries across the full data set. That’s what makes relational databases so powerful.</p>
+<p>However, we don’t think powerful should be synonymous with cumbersome. Most relational databases are huge, monolithic things and configuring replication isn't trivial, so in general, most systems are designed so that all reads and writes flow back to a single instance. D1 takes a different approach.</p>
+<p>With D1, we want to take configuration off your hands, and take advantage of Cloudflare's global network. D1 will create read-only clones of your data, close to where your users are, and constantly keep them up-to-date with changes.</p>
+<h3>Batching</h3>
+<p>Many operations in an application don't just generate a single query. If your logic is running in a Worker near your user, but each of these queries needs to execute on the database, then sending them across the wire one-by-one is extremely inefficient.</p>
+<p>D1’s API includes batching: anywhere you can send a single SQL statement you can also provide an array of them, meaning you only need a single HTTP round-trip to perform multiple operations. This is perfect for transactions that need to execute and commit atomically:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> recordPurchase</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">userId</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">productId</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">amount</span><span class="sk-24292e-fff">) { </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">    [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      `UPDATE users SET balance = balance - $amount WHERE user_id = $user_id`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      { $amount: amount, $user_id: userId },</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">    [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      'UPDATE product SET total_sales = total_sales + $amount WHERE product_id = $product_id'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      { $amount: amount, $product_id: productId },</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  ])</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> result</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Embedded compute</h3>
+<p>But we're going further. With D1, it will be possible to define a chunk of your Worker code that runs directly next to the database, giving you total control and maximum performance—each request first hits your Worker near your users, but depending on the operation, can hand off to another Worker deployed alongside a replica or your primary D1 instance to complete its work.</p>
+<h3>Backups and redundancy</h3>
+<p>There are few things as critical as the data stored in your main application's database, so D1 will automatically save snapshots of your database to Cloudflare's cloud storage service, R2, at regular intervals, with a one-click restoration process. And, since we're building on the redundant storage of Durable Objects, your database can physically move locations as needed, resulting in self-healing from even the most catastrophic problems in seconds.</p>
+<h3>Importing and exporting data</h3>
+<p>While D1 already supports the SQLite API, making it easy for you to write your queries, you might also need data to run them on. If you’re not creating a brand-new application, you may want to import an existing dataset from another source or database, which is why we’ll be working on allowing you to bring your own data to D1.</p>
+<p>Likewise, one of SQLite’s advantages is its portability. If your application has a dedicated staging environment, say, you’ll be able to clone a snapshot of that data down to your local machine to develop against. And we’ll be adding more flexibility, such as the ability to create a new database with a set of test data for each new pull request on your Pages project.</p>
+<h2>What’s next?</h2>
+<p>This wouldn’t be a Cloudflare announcement if we didn’t conclude on “we’re just getting started!” — and it’s true! We are really excited about all the powerful possibilities our database on our global network opens up.</p>
+<p>Are you already thinking about what you’re going to build with D1 and Workers? Same. <a href="https://www.cloudflare.com/lp/d1" target="_blank" rel="noopener noreferrer">Give us your details</a>, and we’ll give you access as soon as we can — look out for a beta invite from us starting as early as June 2022!</p>
+<p>If you want to read more, refer to our <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
+<p><br></p>

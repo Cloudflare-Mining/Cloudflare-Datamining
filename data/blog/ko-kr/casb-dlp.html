@@ -1,61 +1,26 @@
-<div class="mb2 gray5">2분 읽기</div>
-<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/casb-dlp">English</a>, <a href="https://blog.cloudflare.com/zh-tw/casb-dlp">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/casb-dlp">Français</a>, <a href="https://blog.cloudflare.com/de-de/casb-dlp">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/casb-dlp">日本語</a>, <a href="https://blog.cloudflare.com/es-es/casb-dlp">Español</a> 및 <a href="https://blog.cloudflare.com/zh-cn/casb-dlp">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s4kyXV1qmn4CRFLbpXLAk/570f1b4cf21aecba70786af5ee1a0401/casb-dlp.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Cloudflare의 클라우드 액세스 보안 브로커(CASB)는 SaaS 애플리케이션을 스캔하여 잘못된 구성, 승인되지 않은 사용자 활동, 섀도우 IT, 데이터 보안 문제를 확인합니다. 발견된 보안 위협을 IT 관리자와 보안 관리자에게 보고하고 적시에 교정하여 수많은 애플리케이션을 무한정으로 직접 검사해야 하는 부담을 덜어줍니다.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Wqq52bJYYraL6kGegsWIc/d2b89355122ed7b0055bf5de4cc4847b/image4-12.png" alt="How Cloudflare CASB and DLP work together to protect your data" class="kg-image" width="1801" height="1013" loading="lazy">
-
-	</figure>
-	<p>하지만 Cloudflare 고객은 잘못된 구성과 관련된 위험을 평가하려면 더 많은 정보가 필요하다고 밝혔습니다. 교내 발야구 일정이 공개되는 것은 고객 목록이 공개적으로 노출되는 것만큼 중요하지 않으므로, 고객은 각기 다른 방식으로 이러한 정보를 처리하려고 합니다. 고객은 중요한 데이터가 노출된 위치를 파악하도록 Cloudflare에 요청하여, 유출 및 인시던트 발생 시 평가 시간과 교정 시간을 단축했습니다. 이러한 피드백을 통해 Cloudflare는 적성을 발휘할 또 다른 기회를 알아냈습니다. 바로 Cloudflare 제품에서 제일 좋은 부분을 결합하여 고객 문제를 해결하는 것입니다.</p>
-	<p>지금 진행하고 있는 흥미로운 활동은 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> 사용자에게 네트워크를 통해 전송되는 중요한 데이터에도 DLP 범위를 적용할 수 있는 방법을 제공하는 것입니다. 수백만 조직에서 사용하는 인기 있는 SaaS 앱에 저장된 데이터에 적용할 수 있는 SaaS DLP가 바로 그것입니다.</p>
-	<p>고객은 곧 제공될 이 기능을 사용해 몇 번의 클릭만으로 SaaS 애플리케이션을 연결하고 스캔하여 문서, 스프레드시트, PDF, 기타 업로드된 데이터 파일에 중요한 데이터(PII, PCI, 사용자 정의 정규 표현식 등)가 저장되어 있는지 확인할 수 있습니다. 이는 고객이 주요 보안 위험을 신속하게 평가하고 해결할 수 있는 신호가 되어줍니다.</p>
-	<div class="flex anchor relative">
-		<h3 id="understanding-casb">CASB 이해하기</h3>
-		<a href="https://blog.cloudflare.com/#understanding-casb" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>조직에서는 9월에 출시된 Cloudflare의 API CASB를 사용하여 빠르고 어려움 없이 SaaS 애플리케이션의 보안을 심층적으로 파악할 수 있었습니다. 여기에는 Google Workspace, Microsoft 365, 오늘 공개된 Salesforce와 Box를 비롯하여 Cloudflare에서 지원하는 기타 SaaS 앱 모두가 포함되어 있습니다. 오퍼레이터는 CASB를 사용하여 안전하지 않은 설정과 잘못된 구성, 부적절하게 공유된 파일, 사용자 액세스 위험과 모범 사례 미준수 등 조직과 직원을 위험에 빠뜨릴 수 있는 SaaS 보안 문제를 파악할 수 있었습니다.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vES53c15VUuvf2jGa0tGh/7ac679bf0220f2b6ee3076ddf34fc4a5/image2.jpg" alt="" class="kg-image" width="1600" height="1000" loading="lazy">
-
-	</figure>
-	<p>“하지만 공동 작업 중인 파일 <i>안에</i> 저장된 중요한 데이터는 어떻게 하나요? 이 파일은 어떻게 알아낼 수 있을까요?”</p>
-	<div class="flex anchor relative">
-		<h3 id="understanding-dlp">DLP 이해하기</h3>
-		<a href="https://blog.cloudflare.com/#understanding-dlp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>9월에 출시된 전송 중인 데이터용 Cloudflare DLP는 Cloudflare의 보안 웹 게이트웨이(SWG)인 Gateway 사용자에게 중요한 정보가 기업 네트워크로 오가는 것을 관리하고 차단하는 방법을 제공하여, 중요한 데이터가 공격자에 손에 들어가지 않도록 방지해줍니다. 이 경우 직원이 신용 카드 번호, 주민등록번호와 같은 중요한 문자열을 문서에 포함시켜 Google Drive 업로드, Slack 메시지 전송 등 어떤 방식으로든 전달하려고 할 때 DLP가 이 중요한 문자열을 찾아낼 수 있습니다. Cloudflare DLP는 HTTP 요청이 목표한 애플리케이션에 도달하기 전에 차단합니다.</p>
-	<p>그런데 Cloudflare에는 이전과 같은 질문과 피드백이 또 다시 들어왔습니다.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Tioay2oFOuQnRla7yv3Ty/94d810dcd8faa75059ca4a73f445bcc9/image3-14.png" alt="" class="kg-image" width="1478" height="1174" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1qDIi5N0R3koBNDcpbQQBg/f7e21759ba2778d1d9b2a87fbd125978/image1-25.png" alt="" class="kg-image" width="1688" height="1150" loading="lazy">
-
-	</figure>
-	<p>“SaaS 앱에 있는 데이터는요? 여기에 저장된 정보는 네트워크를 통해 확인할 수 없어요.”</p>
-	<div class="flex anchor relative">
-		<h3 id="casb-dlp-better-together">함께 사용하면 더 좋은 CASB + DLP</h3>
-		<a href="https://blog.cloudflare.com/#casb-dlp-better-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>2023년 초, 고객이 SaaS 애플리케이션에 저장된 파일을 살펴보고 파일에 들어있는 특히 중요한 데이터를 모두 구분할 수 있는 새로운 제품 시너지를 Cloudflare Zero Trust에 도입할 예정입니다.</p>
-	<p>Google 문서의 신용 카드 번호요? 문제 없습니다. Excel 스프레드시트의 주민등록번호는 어떻냐고요? CASB가 알려드리겠습니다.</p>
-	<p>Cloudflare는 이러한 제품 협업을 통해 IT 관리자와 보안 관리자에게 중요한 보안 범위를 하나 더 제공하여 Cloudflare의 데이터 손실 방지 일대기를 완성하려고 합니다. 전송 중인 데이터에는 DLP가, 파일 공유 모니터링에는 CASB가, 사용 중인 데이터 DLP 및 이메일 DLP에는 원격 브라우저 격리(RBI)와 Area 1이 데이터 유출 및 오용과 관련하여 기반을 보호하므로 조직에서는 안심할 수 있습니다.</p>
-	<p>Cloudflare는 개발을 진행하는 동안 귀사와 같은 조직에서 이러한 종류의 기능을 어떻게 사용할 수 있는지 듣고 싶습니다. 이 제품이나 다음 제품을 자세히 알아보고 싶으신가요? 귀사의 계정 담당자에게 연락하시거나, Cloudflare를 아직 사용하지 않고 있다면 <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">여기를 클릭하여 문의하세요</a>.</p>
-</div>
+<p>Cloudflare의 클라우드 액세스 보안 브로커(CASB)는 SaaS 애플리케이션을 스캔하여 잘못된 구성, 승인되지 않은 사용자 활동, 섀도우 IT, 데이터 보안 문제를 확인합니다. 발견된 보안 위협을 IT 관리자와 보안 관리자에게 보고하고 적시에 교정하여 수많은 애플리케이션을 무한정으로 직접 검사해야 하는 부담을 덜어줍니다.</p>
+<p>하지만 Cloudflare 고객은 잘못된 구성과 관련된 위험을 평가하려면 더 많은 정보가 필요하다고 밝혔습니다. 교내 발야구 일정이 공개되는 것은 고객 목록이 공개적으로 노출되는 것만큼 중요하지 않으므로, 고객은 각기 다른 방식으로 이러한 정보를 처리하려고 합니다. 고객은 중요한 데이터가 노출된 위치를 파악하도록 Cloudflare에 요청하여, 유출 및 인시던트 발생 시 평가 시간과 교정 시간을 단축했습니다. 이러한 피드백을 통해 Cloudflare는 적성을 발휘할 또 다른 기회를 알아냈습니다. 바로 Cloudflare 제품에서 제일 좋은 부분을 결합하여 고객 문제를 해결하는 것입니다.</p>
+<p>지금 진행하고 있는 흥미로운 활동은 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> 사용자에게 네트워크를 통해 전송되는 중요한 데이터에도 DLP 범위를 적용할 수 있는 방법을 제공하는 것입니다. 수백만 조직에서 사용하는 인기 있는 SaaS 앱에 저장된 데이터에 적용할 수 있는 SaaS DLP가 바로 그것입니다.</p>
+<p>고객은 곧 제공될 이 기능을 사용해 몇 번의 클릭만으로 SaaS 애플리케이션을 연결하고 스캔하여 문서, 스프레드시트, PDF, 기타 업로드된 데이터 파일에 중요한 데이터(PII, PCI, 사용자 정의 정규 표현식 등)가 저장되어 있는지 확인할 수 있습니다. 이는 고객이 주요 보안 위험을 신속하게 평가하고 해결할 수 있는 신호가 되어줍니다.</p>
+<h3>CASB 이해하기</h3>
+<p>조직에서는 9월에 출시된 Cloudflare의 API CASB를 사용하여 빠르고 어려움 없이 SaaS 애플리케이션의 보안을 심층적으로 파악할 수 있었습니다. 여기에는 Google Workspace, Microsoft 365, 오늘 공개된 Salesforce와 Box를 비롯하여 Cloudflare에서 지원하는 기타 SaaS 앱 모두가 포함되어 있습니다. 오퍼레이터는 CASB를 사용하여 안전하지 않은 설정과 잘못된 구성, 부적절하게 공유된 파일, 사용자 액세스 위험과 모범 사례 미준수 등 조직과 직원을 위험에 빠뜨릴 수 있는 SaaS 보안 문제를 파악할 수 있었습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1577 Embedded Image - wvr6gK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SDZZ06M7B9E4WRVKMC3V.jpg&amp;w=1600&amp;h=1000&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1000" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>“하지만 공동 작업 중인 파일 <em>안에</em> 저장된 중요한 데이터는 어떻게 하나요? 이 파일은 어떻게 알아낼 수 있을까요?”</p>
+<h3>DLP 이해하기</h3>
+<p>9월에 출시된 전송 중인 데이터용 Cloudflare DLP는 Cloudflare의 보안 웹 게이트웨이(SWG)인 Gateway 사용자에게 중요한 정보가 기업 네트워크로 오가는 것을 관리하고 차단하는 방법을 제공하여, 중요한 데이터가 공격자에 손에 들어가지 않도록 방지해줍니다. 이 경우 직원이 신용 카드 번호, 주민등록번호와 같은 중요한 문자열을 문서에 포함시켜 Google Drive 업로드, Slack 메시지 전송 등 어떤 방식으로든 전달하려고 할 때 DLP가 이 중요한 문자열을 찾아낼 수 있습니다. Cloudflare DLP는 HTTP 요청이 목표한 애플리케이션에 도달하기 전에 차단합니다.</p>
+<p>그런데 Cloudflare에는 이전과 같은 질문과 피드백이 또 다시 들어왔습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="568" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=640&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=750&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=828&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=1080&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=1280&amp;h=1017&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=1430&amp;h=1136&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1577 Embedded Image - 1Y4MEg" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485Y6375FS36MPMX7H8KRM.png&amp;w=1478&amp;h=1174&amp;f=webp" data-lightbox-width="1478" data-lightbox-height="1174" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="568" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="487" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=715&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=640&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=715&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=750&amp;h=511&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=828&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=1080&amp;h=736&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=1280&amp;h=872&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=1430&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1577 Embedded Image - rEPOgD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VAZ1K27YXNP9H6SFHW7P.png&amp;w=1688&amp;h=1150&amp;f=webp" data-lightbox-width="1688" data-lightbox-height="1150" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="487" class="pt-portable-image-media"></div>
+</figure>
+<p>“SaaS 앱에 있는 데이터는요? 여기에 저장된 정보는 네트워크를 통해 확인할 수 없어요.”</p>
+<h3>함께 사용하면 더 좋은 CASB + DLP</h3>
+<p>2023년 초, 고객이 SaaS 애플리케이션에 저장된 파일을 살펴보고 파일에 들어있는 특히 중요한 데이터를 모두 구분할 수 있는 새로운 제품 시너지를 Cloudflare Zero Trust에 도입할 예정입니다.</p>
+<p>Google 문서의 신용 카드 번호요? 문제 없습니다. Excel 스프레드시트의 주민등록번호는 어떻냐고요? CASB가 알려드리겠습니다.</p>
+<p>Cloudflare는 이러한 제품 협업을 통해 IT 관리자와 보안 관리자에게 중요한 보안 범위를 하나 더 제공하여 Cloudflare의 데이터 손실 방지 일대기를 완성하려고 합니다. 전송 중인 데이터에는 DLP가, 파일 공유 모니터링에는 CASB가, 사용 중인 데이터 DLP 및 이메일 DLP에는 원격 브라우저 격리(RBI)와 Area 1이 데이터 유출 및 오용과 관련하여 기반을 보호하므로 조직에서는 안심할 수 있습니다.</p>
+<p>Cloudflare는 개발을 진행하는 동안 귀사와 같은 조직에서 이러한 종류의 기능을 어떻게 사용할 수 있는지 듣고 싶습니다. 이 제품이나 다음 제품을 자세히 알아보고 싶으신가요? 귀사의 계정 담당자에게 연락하시거나, Cloudflare를 아직 사용하지 않고 있다면 <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">여기를 클릭하여 문의하세요</a>.</p>

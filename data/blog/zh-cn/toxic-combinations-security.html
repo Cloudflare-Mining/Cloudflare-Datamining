@@ -1,0 +1,814 @@
+<p>凌晨 3 点，一个 IP 发出了登录页面请求。这看似无害。但随后，同一来源的多个主机和路径开始在请求中附加 <code>?debug=true</code>，这是攻击者正在探测环境以评估技术栈并策划入侵的迹象。</p>
+<p>一些细微的配置错误、被忽略的防火墙事件或请求异常单独来看似乎无害。然而，当这些微小迹象汇聚在一起时，可能会演变成被称为“有害组合”的安全事件。攻击者利用这些漏洞，发现并叠加许多细微问题（例如 Web 应用程序中遗留的调试标志，或未经身份验证的应用程序路径），以入侵系统或窃取数据。</p>
+<p>Cloudflare 网络会观测对客户技术栈的请求，因此，在有害组合形成过程中，能够对这些迹象加以识别。在这篇博文中，我们将介绍 Cloudflare 如何从应用程序安全数据中发现这些迹象。我们将讨论最常见的有害组合类型及其带来的危险漏洞。我们还将详细介绍如何利用这些情报来识别并解决技术栈中的弱点。&nbsp;</p>
+<h2>我们如何定义有害组合</h2>
+<p>可以采用几种不同的方式来定义“有害组合”，但我们将在本文中提供一种基于自身数据集的实用方法来定义。大多数网络攻击最终通过自动化来实现规模化；攻击者发现可行的漏洞利用后，通常会将其编写成脚本并植入机器人，以此来发起攻击。<strong>通过分析机器人流量、特定应用程序路径、请求异常和错误配置的交集，我们可以发现潜在的安全漏洞。</strong>我们利用这个框架来分析每秒数百万个请求。</p>
+<p>虽然 Web 应用防火墙 (WAF)、机器人检测和 API 保护等单点防御措施已经发展到能够整合行为模式和声誉信号，但它们仍然主要侧重于评估单个请求的风险。相比之下，Cloudflare 看待“有害组合”检测的视角则转向更广泛的意图，通过分析围绕多个信号的上下文交集来识别正在酝酿之中的攻击事件。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="160" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=715&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=640&amp;h=143&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=715&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=750&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=828&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1080&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1280&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1430&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GXN170NR3TYP9ZKBHFZ7.png&amp;w=1920&amp;h=430&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="430" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="160" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>基于上下文的有害组合检测</em></sup></p>
+<p>这种视角转变至关重要，因为许多真实的攻击事件没有明显的漏洞利用恶意有效负载、没有无害的签名，也没有直接表明这是一次“攻击”的单一事件。因此，下文中，我们将结合以下上下文构建几种潜在的有毒组合：</p>
+<ul>
+	<li><strong>机器人信号</strong></li>
+	<li><strong>应用程序路径</strong>，尤其是各种敏感路径：管理、调试、指标、搜索、支付流程</li>
+	<li><strong>异常情况</strong>包括：意外的 http 代码、地理位置跳转、身份不匹配、ID 频繁变更、速率限制规避（多个分布式 IP 地址执行相同操作）、请求或成功率激增&nbsp;</li>
+	<li><strong>漏洞或配置错误</strong>：缺少会话 cookie 或身份认证标头、可预测的标识符</li>
+</ul>
+<h2>热门应用程序技术栈中的有害组合示例</h2>
+<p>我们查看了 Cloudflare 24 小时数据，以了解这些模式在热门应用程序技术栈中实际出现的频率。如下表所示，我们分析的主机中约有 11% 的主机易受此类有害组合的攻击，但易受攻击的 WordPress 网站导致分析失真。如果排除 WordPress 网站，则只有 0.25% 的主机显示了可利用的有毒组合的迹象。虽然这个比例极少，但它们代表容易容易遭到入侵的主机。</p>
+<p>为了理解数据，我们将一次攻击过程划分为三个阶段：</p>
+<ul>
+	<li><strong>估算已探测的主机：</strong>这是“广撒网”的阶段。它会计算针对特定敏感路径（例如 <code>/wp-admin</code>）的 HTTP 请求所对应的唯一主机。</li>
+	<li><strong>估算按有害组合筛选的主机：</strong>在这个阶段，我们将主机清单缩小到符合我们定义的有害组合标准的特定主机。</li>
+	<li><strong>估算可访问的主机：</strong>成功响应了漏洞利用尝试的唯一主机，这是攻击的“确凿证据”。简单的 <code>200 OK</code> 响应（例如，通过附加 <code>?debug=true</code> 触发的响应）可能是误报。我们对路径进行了验证，以过滤各种原因引起的干扰：即使状态代码为 200 也需要凭据的已验证路径；掩盖真实漏洞利用路径的重定向；以及为无法访问的路径提供成功代码的源配置错误。</li>
+</ul>
+<p>在下几节中，我们将深入探讨这些具体发现及其背后的逻辑驱动因素。提供的检测查询是必要的，但如果不进行可访问性测试，则不足以得出确切的结果；因为检测结果可能是误报。在某些情况下，<a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> 支持对未采样的 Cloudflare 日志执行这些查询。</p>
+<p><code>表 1.有害组合摘要</code></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="150" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=715&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=640&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=715&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=750&amp;h=157&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=828&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1080&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1280&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1430&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R0QQCK6PYQDM3YZNBQRA.png&amp;w=1920&amp;h=403&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="403" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="150" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="270" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=715&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=640&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=715&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=750&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=828&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1080&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1280&amp;h=483&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1430&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DFZ3546XCW8NQG2MMXNF.png&amp;w=1920&amp;h=725&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="725" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="270" class="pt-portable-image-media"></div>
+</figure>
+<h2>探测跨多个应用程序主机的敏感管理端点</h2>
+<h3><strong>我们检测到了什么？</strong></h3>
+<p>我们观察到自动化工具扫描了常见的管理员登录页面，例如 WordPress 管理面板 (/wp-admin)、数据库管理器，以及服务器仪表板。<a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> 中执行的模板化查询版本如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
+<span class="line"><span class="sk-005cc5-fff">  COUNT</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-005cc5-fff">AS</span><span class="sk-24292e-fff"> request_count</span></span>
+<span class="line"><span class="sk-005cc5-fff">FROM</span></span>
+<span class="line"><span class="sk-24292e-fff">  http_requests </span></span>
+<span class="line"><span class="sk-005cc5-fff">WHERE</span></span>
+<span class="line"><span class="sk-24292e-fff">  timestamp </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-032f62-99ffe4"> '{{START_DATE}}'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-032f62-99ffe4"> '{{END_DATE}}'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> edgeResponseStatus </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> clientRequestPath </span><span class="sk-005cc5-fff">LIKE</span><span class="sk-032f62-99ffe4"> '{{PATH_PATTERN}}'</span><span class="sk-6a737d-8b8b8b94"> //e.g. '%/wp-admin/%'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestHTTPHost, </span><span class="sk-032f62-99ffe4">'^[^:/]+'</span><span class="sk-24292e-fff">), </span><span class="sk-032f62-99ffe4">'^</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d{1,3}(</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d{1,3}){3}(:</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d+)?$'</span><span class="sk-24292e-fff">) </span><span class="sk-6a737d-8b8b8b94">// comment this line for Cloudflare Log Explorer</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> botScore </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> {{</span><span class="sk-005cc5-fff">BOT_THRESHOLD</span><span class="sk-24292e-fff">}} </span><span class="sk-6a737d-8b8b8b94">// we used botScore &lt; 30</span></span>
+<span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
+<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span></span>
+<span class="line"><span class="sk-24292e-fff">  request_count </span><span class="sk-005cc5-fff">DESC</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<h3><strong>为什么这个问题很严重？</strong></h3>
+<p>可公开访问的管理面板可能会让攻击者能够发起<a href="https://www.cloudflare.com/learning/bots/brute-force-attack" target="_blank" rel="noopener noreferrer"><u>暴力破解攻击</u></a>。如果成功，攻击者可能通过将面板添加到僵尸网络来进一步入侵主机，而僵尸网络会探测其他网站是否存在类似的漏洞。此外，这种有毒组合可能会导致：</p>
+<ul>
+	<li><strong>漏洞利用扫描：</strong>攻击者会识别您正在运行的特定软件版本（例如 Tomcat 或 WordPress），并针对已知漏洞 (CVE) 发起有针对性的漏洞利用攻击。</li>
+	<li><strong>用户枚举：</strong>许多管理面板会意外泄露有效的用户名，这有助于攻击者精心策划更具有说服力的网络钓鱼或登录攻击。</li>
+</ul>
+<h3><strong>有哪些证据支持？</strong></h3>
+<p>机器人自动化与暴露的管理接口的有害组合，例如<strong>：/wp-admin/</strong>、<strong>/admin/</strong>、<strong>/administrator/</strong>、<strong>/actuator/*</strong>、<strong>/_search/</strong>、<strong>/phpmyadmin/</strong>、<strong>/manager/html/</strong> 和 <strong>/app/kibana/</strong>。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人活动</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &lt; 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞扫描程序的典型机器人签名</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>重复探测</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>对管理端点的异常访问</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>可公开访问的端点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>对管理端点的成功请求</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>如何缓解这个问题？</strong></h3>
+<ol>
+	<li><strong>实施 <a href="https://www.cloudflare.com/sase/products/access" target="_blank" rel="noopener noreferrer"><u>Zero Trust 访问</u></a></strong>。<strong>&nbsp;</strong></li>
+	<li>如果由于任何原因端点必须保持公开，请部署<a href="https://www.cloudflare.com/application-services/products/turnstile" target="_blank" rel="noopener noreferrer"><strong><u>一个质询平台，以增加机器人的访问难度</u></strong></a>。</li>
+	<li><strong>实施 IP 允许列表：</strong>使用 <a href="https://blog.cloudflare.com/wildcard-rules" target="_blank" rel="noopener noreferrer"><u>WAF</u></a> 或服务器配置，确保只能通过贵公司 VPN 或特定办公室 IP 地址才能访问管理路径。</li>
+	<li><strong>隐藏管理路径：</strong>如果贵公司的平台允许，则重命名默认的管理 URL（例如，将 <code>/wp-admin</code> 更改为难以猜测的唯一字符串）。</li>
+	<li><strong>部署地理位置屏蔽：</strong>如果管理员仅从特定国家/地区执行操作，请屏蔽这些区域以外流向这些敏感路径的流量。</li>
+	<li><strong>强制执行多因素身份验证 (MFA)：</strong>确保每个管理入口点都需要验证第二个因素；仅依靠密码不足以阻止专用爬网程序。</li>
+</ol>
+<h2>未经身份验证的公共 API 端点，放任通过可预测的标识符大规模泄露数据</h2>
+<h3><strong>我们检测到了什么？</strong></h3>
+<p>我们发现了一些 API 端点，互联网上的任何用户无需密码或登录即可访问（请参阅 <a href="https://owasp.org/API-Security/editions/2023/en/0xa2-broken-authentication" target="_blank" rel="noopener noreferrer"><u>OWASP: API2:2023 - 失效的身份验证</u></a>）。更糟糕的是，它识别记录的方式（使用简单、可预测的 ID 号，请参阅 <a href="https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization" target="_blank" rel="noopener noreferrer"><u>OWASP: API1:2023 - 失效的对象级授权</u></a>）让任何用户都可以轻松地“计算”您的数据库数量，从而使攻击者无需直接访问您的网站即可枚举并“抓取”业务记录。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  uniqExact</span><span class="sk-24292e-fff">(clientRequestHTTPHost) </span><span class="sk-005cc5-fff">AS</span><span class="sk-24292e-fff"> unique_host_count</span></span>
+<span class="line"><span class="sk-005cc5-fff">FROM</span><span class="sk-24292e-fff">  http_requests</span></span>
+<span class="line"><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-032f62-99ffe4"> '2026-02-13'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&lt;=</span><span class="sk-032f62-99ffe4"> '2026-02-14'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> edgeResponseStatus </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> bmScore </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 30</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       match</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestQuery, </span><span class="sk-032f62-99ffe4">'(?i)(?:^|[&amp;?])uid=([^&amp;]+)'</span><span class="sk-24292e-fff">),  </span><span class="sk-032f62-99ffe4">'^[0-9]{3,10}$'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">    OR</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestQuery, </span><span class="sk-032f62-99ffe4">'(?i)(?:^|[&amp;?])user=([^&amp;]+)'</span><span class="sk-24292e-fff">), </span><span class="sk-032f62-99ffe4">'^[0-9]{3,10}$'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">    OR</span><span class="sk-6f42c1-ffc799"> length</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestQuery, </span><span class="sk-032f62-99ffe4">'(?i)(?:^|[&amp;?])uid=([^&amp;]+)'</span><span class="sk-24292e-fff">))  </span><span class="sk-005cc5-fff">BETWEEN</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-ffc799"> 8</span></span>
+<span class="line"><span class="sk-005cc5-fff">    OR</span><span class="sk-6f42c1-ffc799"> length</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestQuery, </span><span class="sk-032f62-99ffe4">'(?i)(?:^|[&amp;?])user=([^&amp;]+)'</span><span class="sk-24292e-fff">)) </span><span class="sk-005cc5-fff">BETWEEN</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-005cc5-fff"> AND</span><span class="sk-005cc5-ffc799"> 8</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span></span></code></pre>
+</div>
+<h3><strong>为什么这个问题很严重？</strong></h3>
+<p>这是一个“零利用”漏洞，也就是说，攻击者无需是黑客即可窃取您的数据；他们只需更改 Web 链接中的某个数字即可。这会导致：</p>
+<ul>
+	<li><strong>大规模数据泄露：</strong>大规模抓取您的整个客户数据集。</li>
+	<li><strong>二次攻击：</strong>被盗数据用于针对性网络钓鱼或帐户接管。</li>
+	<li><strong>监管风险：</strong>因泄露敏感的个人可识别信息 (PII)，可能严重违反隐私条例 (GDPR/CCPA) 的规定。</li>
+	<li><strong>欺诈：</strong>竞争对手或恶意行为者可能获取您的业务量和客户群信息。</li>
+</ul>
+<h3><strong>有哪些证据支持？</strong></h3>
+<p>缺少安全控制措施与针对特定 API 端点的自动化攻击的有害组合。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人活动</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &lt; 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>来自单个客户端指纹的大量请求，通过不同的 ID 迭代。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>tid 基数高</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>单个访客在短时间内访问数百或数千个唯一资源 ID。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>稳定的响应大小</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>JSON 结构和文件大小一致，这表明每个猜测的 ID 都成功检索到数据。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>缺少身份验证信号</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>请求完全没有会话 cookie、Bearer 令牌或 Authorization 标头。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>错误配置</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>可预测的标识符</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>tid 参数使用低熵、可预测的整数（例如，1001、1002、1003）。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>查询核实了机器人分数和可预测的标识符，同时也在与查询匹配的流量样本中测试了高基数、稳定的响应大小和缺少身份验证等信号。</p>
+<h3><strong>如何缓解这个问题？</strong></h3>
+<ol>
+	<li><strong>强制执行身份验证：</strong>立即要求受影响端点提供有效的会话或 API 密钥。禁止匿名访问包含个人可识别信息或商业机密的数据。</li>
+	<li><strong>实施授权（IDOR 检查）：</strong>确保后端核实已执行身份验证的用户是否确实拥有查看其请求的 <code>tid</code> 的权限。</li>
+	<li><strong>使用 UUID：</strong>将可预测的连续整数 ID 替换为长随机字符串 (UUID)，使用户无法通过计算“猜中”标识符。</li>
+	<li><strong>部署 API Shield：</strong>启用 Cloudflare <a href="https://blog.cloudflare.com/api-abuse-detection" target="_blank" rel="noopener noreferrer"><u>API Shield</u></a>，它提供<strong>架构验证</strong>（用于阻止意外输入）和 <strong>BOLA 检测</strong>等功能。</li>
+</ol>
+<h2>调试参数探测泄露系统详细信息</h2>
+<h3><strong>我们检测到了什么？</strong></h3>
+<p>我们发现了攻击者将 <code>debug=true</code> 附加到网络路径来泄露系统详细信息的证据。<a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> 中执行的模板化查询版本如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
+<span class="line"><span class="sk-005cc5-fff">  COUNT</span><span class="sk-24292e-fff">(rayId) </span><span class="sk-005cc5-fff">AS</span><span class="sk-24292e-fff"> request_count</span></span>
+<span class="line"><span class="sk-005cc5-fff">FROM</span></span>
+<span class="line"><span class="sk-24292e-fff">  http_requests</span></span>
+<span class="line"><span class="sk-005cc5-fff">WHERE</span></span>
+<span class="line"><span class="sk-24292e-fff">  timestamp </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-032f62-99ffe4"> '{{START_TIMESTAMP}}'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> timestamp &lt; </span><span class="sk-032f62-99ffe4">'{{END_TIMESTAMP}}'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> edgeResponseStatus </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> clientRequestQuery </span><span class="sk-005cc5-fff">LIKE</span><span class="sk-032f62-99ffe4"> '%debug=false%'</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> botScore </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> {{</span><span class="sk-005cc5-fff">BOT_THRESHOLD</span><span class="sk-24292e-fff">}}</span></span>
+<span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
+<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span></span>
+<span class="line"><span class="sk-24292e-fff">  request_count </span><span class="sk-005cc5-fff">DESC</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<h3><strong>为什么这个问题很严重？</strong></h3>
+<p>虽然这不会立即窃取数据，但它为攻击者提供了您的内部基础设施的高清地图。这种“侦察”模式会显著提高攻击者下一次攻击的成功率，因为他们能够看到：</p>
+<ul>
+	<li><strong>隐藏的数据字段：</strong>不应向用户显示的敏感内部信息。</li>
+	<li><strong>技术栈详细信息：</strong>特定的软件版本和服务器类型，让攻击者能够查找这些版本的已知漏洞。</li>
+	<li><strong>逻辑提示：</strong>准确阐述代码工作原理的错误消息或技术栈跟踪，帮助攻击者找到破解代码的方法。</li>
+</ul>
+<h3><strong>有哪些证据支持？</strong></h3>
+<p>自动探测与针对<strong>多个主机和应用程序路径</strong>的错误配置诊断标志的有害组合。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人活动</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &lt; 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞扫描程序活动</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>响应大小增加</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>切换调试标记时数据量出现显著跳跃，这表明正在泄露详细信息或技术栈跟踪。根据需要，添加以下这些附加条件：选择AVG(edgeResponseBytes) AS avg_payload_size、&nbsp;其中edgeResponseBytes &gt; {{your baseline response size}}</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>重复的路径探测</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>跨不同端点（例如 /api、/login、/search）发送快速请求，专门测试相同的诊断触发器。根据需要，添加以下这些条件：<br><br>SELECTAPPROX_DISTINCT(clientRequestPath) AS unique_endpoints_tested&nbsp;HAVING&nbsp;unique_endpoints_tested &gt; 1</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>错误配置</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>允许的调试参数</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>生产环境 URL 中存在会更改应用程序行为的“debug”、“test”或“dev”标记。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>模式泄露</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>出现仅供内部使用的 JSON 字段或“firebase.json”格式的转储文件，这些文件会暴露底层结构。从而揭示了底层结构。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>查询检查了机器人分数和带有调试参数的路径，同时也在与查询匹配的流量样本中测试了重复的探测、响应大小和模式泄露等信号。</p>
+<h3><strong>如何缓解这个问题？</strong></h3>
+<ol>
+	<li><strong>禁用生产环境中的调试：</strong>确保在生产部署配置中将所有“debug”或“development”环境变量严格设置为 <code>false</code>。</li>
+	<li><strong>在边缘过滤参数：</strong>使用 <a href="https://blog.cloudflare.com/wildcard-rules" target="_blank" rel="noopener noreferrer"><u>WAF</u></a> 或 API 网关，在已知的调试参数（例如 <code>?debug=</code>、<code>?test=</code>、<code>?trace=</code>）到达应用程序服务器之前将其剔除。</li>
+	<li><strong>清理错误响应：</strong>配置 Web 服务器（Nginx、Apache 等）以显示通用错误页面，而不是显示详细的技术栈跟踪或内部系统消息。</li>
+	<li><strong>审核 firebase/DB 规则：</strong>如果使用 Firebase 或类似的 NoSQL 数据库，请确保通过严格的安全规则限制对 /<code>.json</code> 路径的访问，以防止公共用户转储整个数据库模式或数据。</li>
+</ol>
+<h2>公开监测端点提供内部基础设施可见性</h2>
+<h3><strong>我们检测到了什么？</strong></h3>
+<p>我们发现了“运行状况检查”和监测仪表板对整个互联网可见。具体而言，<code>/actuator/metrics</code> 等路径会响应任何提问的用户。<a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> 中执行的模板化查询版本如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  count</span><span class="sk-24292e-fff">() </span><span class="sk-005cc5-fff">AS</span><span class="sk-24292e-fff"> request_count</span></span>
+<span class="line"><span class="sk-005cc5-fff">FROM</span><span class="sk-24292e-fff"> http_requests</span></span>
+<span class="line"><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-6f42c1-ffc799"> toDateTime</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'{{START_DATE}}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799">  toDateTime</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'{{END_DATE}}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> botScore </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 30</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> edgeResponseStatus </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> clientRequestPath </span><span class="sk-005cc5-fff">LIKE</span><span class="sk-032f62-99ffe4"> '%/actuator/metrics%'</span><span class="sk-6a737d-8b8b8b94"> // an example</span></span>
+<span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
+<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span><span class="sk-24292e-fff"> request_count </span><span class="sk-005cc5-fff">DESC</span></span></code></pre>
+</div>
+<p><strong>为什么这个问题很严重？</strong></p>
+<p>虽然这些端点通常不会直接泄露客户密码，但却为复杂攻击提供了“蓝图”。暴露这些端点会导致：</p>
+<ul>
+	<li><strong>战略时机选择：</strong>攻击者可以实时监测您的 CPU 和内存使用情况，在系统已经不堪重负的情况下发动<a href="https://www.cloudflare.com/learning/ddos/glossary/denial-of-service" target="_blank" rel="noopener noreferrer"><u>拒绝服务 (DoS) 攻击</u></a>。</li>
+	<li><strong>基础设施映射：</strong>这些日志通常会泄露内部服务的名称、依赖项和版本号，帮助攻击者找到已知的漏洞并加以利用。</li>
+	<li><strong>漏洞利用链接：</strong>有关线程计数和环境提示的信息，可用于绕过安全层或提升网络权限。</li>
+</ul>
+<h3><strong>有哪些证据支持？</strong></h3>
+<p>访问控制配置错误与针对 <strong>Asset/Path: /actuator/metrics, /actuator/prometheus, and /health</strong> 的自动化侦察的有害组合。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人活动</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &lt; 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>自动扫描工具系统地检查特定路径</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>监测指纹</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>响应正文与已知的格式（Prometheus、Micrometer 或 Spring Boot）匹配，证实系统正在泄漏实时数据。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>HTTP 200 状态</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>成功从理想情况下本应向公众返回 403 Forbidden 或 404 Not Found 的端点检索到数据。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>错误配置</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>公共监测路径</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>仅供内部使用的端点（例如 /actuator/*）可供用户公开访问，这些端点原本用于私密的观测。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>缺少身份验证</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>无需会话令牌、API 密钥或基于 IP 的限制，即可访问这些端点。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>如何缓解这个问题？</strong></h3>
+<ol>
+	<li><strong>通过 WAF 限制访问：</strong>立即创建<a href="https://blog.cloudflare.com/wildcard-rules" target="_blank" rel="noopener noreferrer"><u>防火墙规则</u></a>，以阻止任何包含 <code>/actuator/</code> 或 <code>/prometheus</code> 的路径的外部流量请求。</li>
+	<li><strong>绑定到本地主机：</strong>重新配置应用程序框架，使其仅在 <code>localhost</code> (127.0.0.1) 或私有管理网络上为这些监测端点提供服务。</li>
+	<li><strong>强制执行基本身份验证：</strong>如果必须通过 Web 访问这些端点，请确保它们受到强身份验证（至少是复杂的基本身份验证或 mTLS）的保护。</li>
+	<li><strong>禁用不必要的端点：</strong>在 Spring Boot 或类似框架中，禁用并非生产环境监测所必需的“Actuator”功能。</li>
+</ol>
+<h2>未经身份验证的搜索端点，允许直接转储索引</h2>
+<h3><strong>我们检测到了什么？</strong></h3>
+<p>通常仅供内部使用的搜索端点（例如 Elasticsearch 或 OpenSearch）现在对公众完全开放。模板化查询如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  count</span><span class="sk-24292e-fff">() </span><span class="sk-005cc5-fff">AS</span><span class="sk-24292e-fff"> request_count</span></span>
+<span class="line"><span class="sk-005cc5-fff">FROM</span><span class="sk-24292e-fff"> http_requests</span></span>
+<span class="line"><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-6f42c1-ffc799"> toDateTime</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'{{START_DATE}}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799">  toDateTime</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'{{END_DATE}}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> botScore </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 30</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> edgeResponseStatus </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-005cc5-fff">AND</span><span class="sk-24292e-fff"> clientRequestPath like </span><span class="sk-032f62-99ffe4">'%/</span><span class="sk-005cc5-a0a0a0">\_</span><span class="sk-032f62-99ffe4">search%'</span></span>
+<span class="line"><span class="sk-005cc5-fff">AND</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-6f42c1-ffc799"> match</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">extract</span><span class="sk-24292e-fff">(clientRequestHTTPHost, </span><span class="sk-032f62-99ffe4">'^[^:/]+'</span><span class="sk-24292e-fff">), </span><span class="sk-032f62-99ffe4">'^</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d{1,3}(</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d{1,3}){3}(:</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">d+)?$'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span></code></pre>
+</div>
+<h3><strong>为什么这个问题很严重？</strong></h3>
+<p>这是一个非常严重的漏洞，因为它无需任何技术技能即可利用，但造成的破坏却相当严重：</p>
+<ul>
+	<li><strong>大规模数据窃取：</strong>攻击者可以“转储”整个索引，在几分钟内窃取数百万条记录。</li>
+	<li><strong>内部侦察：</strong>通过查看“索引”（您存储内容的列表），攻击者可以识别网络中的其他高价值目标。</li>
+	<li><strong>数据破坏：</strong>根据配置的不同，攻击者不仅会读取数据，而且还可能修改或删除整个搜索索引，从而导致大规模服务中断。</li>
+</ul>
+<h3><strong>有哪些证据支持？</strong></h3>
+<p>我们看到了错误配置的暴露与针对 <strong>&nbsp;/_search, /_cat/indices, and /_cluster/health</strong> 的自动化流量和数据枚举的有害组合。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人活动</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &lt; 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>高速自动化签名尝试对大型数据集进行分页并“抓取”整个索引。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>意外响应大小</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>JSON 响应体积庞大，符合批量数据检索的特征而非简单的状态检查。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>重复的查询模式</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>系统“枚举”行为，攻击者循环遍历每一个可能的索引名称以查找敏感数据。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>/_search 或 /_cat/ 模式</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>直接暴露管理和查询级路径，而这些路径绝不应通过公共 URL 访问。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>错误配置</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>HTTP 200 状态</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>端点主动响应来自未经授权的外部 IP 的请求，而不是在网络层或应用层拒绝这些请求。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>查询检查了机器人分数和路径，同时也在与查询匹配的流量样本中测试了重复的查询模式、响应大小和模式泄露等信号。&nbsp;</p>
+<h3><strong>如何缓解这个问题？</strong></h3>
+<ol>
+	<li><strong>限制网络访问：</strong>立即更新防火墙/安全组，以确保只能从特定的内部 IP 地址访问搜索端口（例如 9200、9300）和路径。</li>
+	<li><strong>启用身份验证：</strong>为搜索集群启用“安全”功能（例如 Shield 或 Search Guard），要求每一次 API 调用都提供有效凭据。</li>
+	<li><strong>WAF 拦截：</strong>部署 WAF 规则以立即阻止来自公共互联网的任何包含 <code>/_search</code>、<code>/_cat</code> 或 <code>/_cluster</code> 的请求。</li>
+	<li><strong>审核数据丢失：</strong>检查数据库日志，以了解来自未知 IP 的大量“Scroll”或“Search”查询，从而确定究竟泄露了多少数据。</li>
+</ol>
+<h2>成功尝试针对应用程序路径的 SQL 注入&nbsp;</h2>
+<h3><strong>我们检测到了什么？</strong></h3>
+<p>我们已经识别了攻击者发送的恶意请求，具体而言是旨在欺骗数据库的 <a href="https://www.cloudflare.com/learning/security/threats/sql-injection" target="_blank" rel="noopener noreferrer"><u>SQL 注入</u></a>。<a href="https://www.cloudflare.com/application-services/products/log-explorer" target="_blank" rel="noopener noreferrer"><u>Cloudflare Log Explorer</u></a> 中执行的模板化查询版本如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  count</span><span class="sk-24292e-fff">() </span><span class="sk-005cc5-fff">AS</span><span class="sk-24292e-fff"> request_count</span></span>
+<span class="line"><span class="sk-005cc5-fff">FROM</span><span class="sk-24292e-fff"> http_requests</span></span>
+<span class="line"><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-6f42c1-ffc799"> toDateTime</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'{{START_DATE}}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> timestamp </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-6f42c1-ffc799">  toDateTime</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'{{END_DATE}}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> botScore </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 30</span></span>
+<span class="line"><span class="sk-005cc5-fff">AND</span><span class="sk-24292e-fff"> wafmlScore&lt;</span><span class="sk-005cc5-ffc799">30</span></span>
+<span class="line"><span class="sk-005cc5-fff">  AND</span><span class="sk-24292e-fff"> edgeResponseStatus </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-005cc5-fff">AND</span><span class="sk-005cc5-fff"> LOWER</span><span class="sk-24292e-fff">(clientRequestQuery) </span><span class="sk-005cc5-fff">LIKE</span><span class="sk-032f62-99ffe4"> '%sleep(%'</span></span>
+<span class="line"><span class="sk-005cc5-fff">GROUP</span><span class="sk-005cc5-fff"> BY</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRequestHTTPHost</span></span>
+<span class="line"><span class="sk-005cc5-fff">ORDER</span><span class="sk-005cc5-fff"> BY</span><span class="sk-24292e-fff"> request_count </span><span class="sk-005cc5-fff">DESC</span></span></code></pre>
+</div>
+<h3><strong>为什么这个问题很严重？</strong></h3>
+<p>这是数据泄露的“隐蔽途径”。由于系统返回了成功状态代码 (<strong>HTTP 200</strong>)，因此，这些攻击通常与合法流量混合在一起。如果不加以处理，攻击者可以：</p>
+<ul>
+	<li><strong>优化方法：</strong>通过反复试验，找到能够绕过过滤器的确切恶意有效负载。</li>
+	<li><strong>外泄数据：</strong>使数据库内容缓慢地外流，或泄露 URL 中传递的敏感信息（例如 API 密钥）。</li>
+	<li><strong>保持隐蔽：</strong>大多数自动化警报会查找“已被拒绝”的攻击尝试；“成功的”漏洞利用在海量的日志记录中更难发现。</li>
+</ul>
+<h3><strong>有哪些证据支持？</strong></h3>
+<p>我们看到了针对许多应用程序路径的自动化机器人信号、异常情况以及应用层漏洞的有害组合。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &lt; 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>自动化流量的可能性较高；签名和计时与漏洞利用脚本一致。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>敏感路径中的 HTTP 200</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>来自本应触发 WAF 拦截的登录端点的成功响应。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>重复突变</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>同一请求的高频变化，表明攻击者在不断“调整”其恶意有效负载。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>漏洞</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>可疑的查询模式</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>使用 SLEEP 命令和基于时间的模式，探测数据库的响应能力。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3><strong>如何缓解这个问题？</strong></h3>
+<ol>
+	<li><strong>立即进行虚拟修补：</strong>更新 WAF 规则，以专门阻止已识别的 SQL 模式（例如，基于时间的探测）。</li>
+	<li><strong>清理输入：</strong>检查此路径的后端代码，确保其使用预处理语句或参数化查询。</li>
+	<li><strong>补救密钥泄露：</strong>将所有敏感数据从 URL 参数移至请求正文或标头。轮换任何标记为“已泄露”的密钥。</li>
+	<li><strong>审计日志：</strong>检查数据库日志，查找“HTTP 200”响应的时间范围，以确认是否成功提取了任何数据。</li>
+</ol>
+<h2>支付流程中的有害组合示例</h2>
+<p>信用卡测试和信用卡盗刷是最常见的欺诈手段之一。攻击者可能从暗网上购买大量信用卡。然后，为了验证有多少张卡仍然有效，他们可能会在网站上通过进行小额交易来测试这些卡。一旦验证成功，他们可能会使用这些信用卡在热门购物网站上购买商品，例如礼品卡。</p>
+<h2>支付流程中的疑似信用卡测试</h2>
+<h3>我们检测到了什么？</h3>
+<p>在支付流程（<code>/payment</code>、<code>/checkout</code>、<code>/cart</code>）中，我们发现一天之中的某些时段，机器人每小时的请求量或每小时的支付成功率比过去 30 天的每小时基线值高出 <strong>3 个标准差</strong>。这可能与信用卡测试有关，攻击者试图验证大量被盗的信用卡。当然，营销活动也可能导致请求量激增，而支付服务中断则可能导致成功率骤降。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="230" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=640&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=750&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=828&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1080&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1280&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1430&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E4642P1VE62JM87W0SMT.png&amp;w=1920&amp;h=617&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="617" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="230" class="pt-portable-image-media"></div>
+</figure>
+<h3>为什么这个问题很严重？</h3>
+<p>在没有营销活动、支付服务中断或其他因素影响的情况下，支付成功率下降与请求量激增同时发生，这<strong>可能</strong>意味着机器人正在进行大规模的信用卡测试。</p>
+<h3>有哪些证据支持？</h3>
+<p>我们针对 <code>/payment</code>、<code>/checkout</code>、<code>/cart</code> 使用了机器人信号与异常情况组合：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &lt; 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>自动化流量的可能性很高，而非人为错误</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>请求量 Z 分数 &gt; 3.0，根据过去 30 天内指定小时的请求量基线计算，并按小时进行评估。这也考虑了每日季节性因素。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>规模事件：攻击者正在测试一批信用卡</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>成功率 Z &gt; 3.0，根据过去 30 天内指定小时的成功率基线计算，并按小时进行评估。这也考虑了每日季节性因素。&nbsp;</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>成功率突然下降可能意味着信用卡遭到拒绝，因为此类信用卡已被报告丢失或被盗</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>如何缓解这个问题？</h3>
+<p>对支付路径上所有机器人分数低于 30 的请求，使用 30 天支付路径的每小时请求量基准作为每小时速率限制。&nbsp;&nbsp;</p>
+<h2>支付流程中的疑似信用卡盗刷</h2>
+<h3>我们检测到了什么？</h3>
+<p>在支付流程（<code>/payment</code>、<code>/checkout</code>、<code>/cart</code>）中，我们发现一天之中的某些时段，来自人类（或假冒真人的机器人）的每小时请求量或每小时支付成功率比过去 30 天的每小时基线值高出 <strong>3 个标准差</strong>。这可能与信用卡盗刷有关，攻击者（可能是真人用户或假冒真人的机器人）尝试使用有效但被盗的信用卡购买商品。当然，营销活动也可能导致请求量和成功率激增，因此，来自特定 IP 地址的典型支付请求形式的额外上下文是必不可少的信息，如图所示。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="326" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=640&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=750&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=828&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1080&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1280&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1430&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3130 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453S4N4K9F7XDQ81X8X46B.png&amp;w=1920&amp;h=875&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="875" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="326" class="pt-portable-image-media"></div>
+</figure>
+<h3>为什么这个问题很严重？</h3>
+<p>在没有营销活动、支付服务中断或其他因素影响的情况下，支付成功率激增与请求量激增以及每个 IP 地址的高密度请求同时出现，这<strong>可能</strong>意味着真人用户（或假冒真人的机器人）正在进行欺诈性购买。这种情况下的每一笔成功交易都可能导致直接的收入损失或潜在的退款。</p>
+<h3>有哪些证据支持？</h3>
+<p>我们针对 <code>/payment</code>、<code>/checkout</code>、<code>/cart</code> 使用了机器人信号与异常情况组合：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>要素</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Signal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>机器人分数 &gt;= 30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>预计真人流量将大幅增加，且允许交易</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>流量 Z 分数 &gt; 3.0，根据过去 30 天内指定小时的请求量基线计算，并按小时进行评估。这也考虑了每日季节性因素。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>攻击者的购物频率远高于普通顾客</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>成功率 Z &gt; 3.0，根据过去 30 天内指定小时的成功率基线计算，并按小时进行评估。这也考虑了每日季节性因素。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>成功率突然飙升，可能意味着有效的信用卡已获授权可以购买</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>IP 密度 &gt; 5，根据指定小时内每个 IP 的支付请求数除以过去 30 天该小时内的平均支付请求数计算</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>过去 30 天内购物次数是普通顾客 5 倍的“真人”用户，这是一个危险信号</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>异常</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>JA4 多样性 &lt; 0.1，根据指定小时内每个支付请求的 JA4 计算</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>JA4 账户的每小时购物次数异常，很可能是假冒真人的机器人</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>如何缓解这个问题？</h3>
+<p><strong>基于身份的速率限制：</strong>利用 IP 密度，对支付端点上机器人分数 ≥ 30 的请求实施速率限制。</p>
+<p><strong>监测成功率：</strong>当支付端点上机器人分数 &gt;=30 的“真人”流量<strong>成功率</strong>比其 30 天基线值高出 3 个标准差时，发出警报。</p>
+<p><strong>提出质询：</strong>如果某个高机器人分数请求（可能是真人）在 10 分钟内访问<code>支付流程</code>超过 3 次，则触发质询以降低其访问频率。</p>
+<h2>下一步：仪表板中的检测功能与 AI 驱动的补救措施</h2>
+<p>目前我们正在努力将这些“有害组合”检测结果直接集成到安全见解仪表板中，以便用户能够即时查看和了解此类风险。我们的路线图包括构建 AI 辅助的修复路径，届时仪表板不仅会显示有害组合，还会提出具体的 WAF 规则或 <a href="https://blog.cloudflare.com/api-abuse-detection" target="_blank" rel="noopener noreferrer"><u>API Shield</u></a> 配置，以消除此类组合带来的威胁。</p>
+<p>我们诚邀您体验 Cloudflare 安全见解中新增的“有害组合”检测功能。<a href="https://www.cloudflare.com/lp/toxic-combinations-security" target="_blank" rel="noopener noreferrer"><u>单击此处即可加入候补名单</u></a>。</p>

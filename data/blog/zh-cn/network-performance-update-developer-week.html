@@ -1,0 +1,301 @@
+<p>Cloudflare 正在建设世界上最快的网络。但我们不想您只是相信我们所说的话。为演示这一点，我们会持续测试我们相对于别人的表现，确保我们是最快的。因为现在是 Developer Week，我们想提供关于 Workers 产品相对于竞争对手的表现以及我们总体网络性能的更新。</p>
+<p>今年早些时候，我们比较了自己与 Fastly 的 Compute@Edge，总体来看，我们更快。这次，我们不仅重复了这些测试，还增加了 AWS Lambda@Edge，帮助展示我们相对于越来越多的竞争对手的表现。总结：我们提供了市场上最快的开发人员平台。我们来谈一谈我们是如何构建网络，帮助您提高速度，然后我们会谈到这如何影响到我们的开发人员平台。</p>
+<h2>关于网络性能的最新更新</h2>
+<p>我们有两项数据更新：总体网络性能更新，然后是关于 Workers 相较于 Compute@Edge 和 Lambda@Edge 的表现的数据。</p>
+<p>为量化全球网络性能，我们必须从世界各地的各种不同网络获取足够的数据，以将我们自己与其他提供商进行比较。我们使用 Real User Measurements (RUM) 来从几家不同提供商提取一个 100kB 的文件。世界各地的用户会报告不同提供商的性能。报告数据的用户越多，信号的保真度就越高。目标是准确地反映出在哪些网络中其他提供商的速度更快，以及更重要的是，Cloudflare 在哪些方面还可以改进。您可以点击<a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">此处</a>阅读原创 Speed Week 博客文章中有关该方法的更多内容。</p>
+<p>在 Cloudflare One Week（2022 年 6 月）期间，我们宣布在更多的最常用网络中比我们的竞争对手更快一步。在全世界最热门的 3,000 个网络（按公布的 IPv4 地址数量排名）中，下面详细列出了每个提供商在 p95 TCP 连接时间方面排名第一的网络数量，该时间表示给定网络上的用户连接到该提供商所用时间。该数据来自 Cloudflare One Week（2022 年 6 月）：</p>
+<p>Developer Week（2022 年 11 月）最热门的 3,000 个网络的分布情况如下：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="307" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=640&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=750&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=828&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=1080&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=1280&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=1430&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - h3IAvG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A7HGRHAH2TR8SKEDY8Q4.png&amp;w=1920&amp;h=823&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="823" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="307" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare 不仅是热门网络中最快的，而且还承诺在每个国家/地区成为最快的提供商。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="310" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=750&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=828&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=1080&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=1280&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=1430&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - iIWTem" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S0R5BE2P77E24JAE89N0.png&amp;w=1920&amp;h=833&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="833" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="310" class="pt-portable-image-media"></div>
+</figure>
+<p>利用 Cloudflare One Week（2022 年 6 月）最热门的 3,000 个网络的相关数据，世界地图如下所示（Cloudflare 为橙色）：</p>
+<p>显示 Developer Week（2022 年 11 月）最热门的 3,000 个网络的世界地图如下：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="368" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=715&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=640&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=715&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=750&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=828&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=1080&amp;h=556&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=1280&amp;h=659&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=1430&amp;h=736&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - eik1wG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449E43GXNGNJNQR2YNG1PQ.png&amp;w=1920&amp;h=988&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="988" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="368" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare 在欧洲和亚洲更多国家/地区排名第一，尤其是俄罗斯、乌克兰、哈萨克斯坦、印度和中国，从而进一步履行了我们关于成为全世界最快网络的使命。现在我们来介绍一下该网络如何帮助 Supercloud 成为最快的开发人员平台。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - 4i1lCA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48K7TYY31R0VH0BBGC8N6W.png&amp;w=1920&amp;h=980&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="980" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<h2>我们比较各个开发人员平台的方法</h2>
+<p>自从我们发布初始测试以来，已经有六个月了，下面我们来快速回顾一下。我们做比较的方法是测量连接到网络所用时间、完成请求所用时间以及总体响应时间。我们将这些数字分别称为连接、等待和响应。我们选择这些数字的原因是，它们是请求中的关键组成部分，需要尽可能快速，以便提升用户体验。我们会尽可能靠近用户进行对等互连，从而缩短连接时间。我们竭尽所能优化代码执行，从而缩短等待时间。如果我们优化这两个过程，我们就优化了响应，它表示请求的端到端延迟。</p>
+<h2>测试方法</h2>
+<p>为了测量连接、等待和响应，我们对每个提供商执行三项测试：简单的无操作 JavaScript 函数、复杂的 JavaScript 函数和复杂的 Rust 函数。我们并不执行简单的 Rust 函数，因为这种函数预计所用时间可以忽略不计，而且我们已经针对无操作 JavaScript 函数中的端到端功能制定了基准，因为许多提供商经常会将两者编译至 WebAssembly。</p>
+<p>每种情况的函数如下：</p>
+<p>JavaScript 无操作：</p>
+<p>JavaScript 硬函数：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getErrorResponse</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">message</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">status</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(message, {status: status, headers: {</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/plain'</span><span class="sk-24292e-fff">}});</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Rust 硬函数：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> testHardBusyLoop</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> offset </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> n </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; n </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 15000</span><span class="sk-24292e-fff">; n</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    value </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> Math.</span><span class="sk-6f42c1-ffc799">floor</span><span class="sk-24292e-fff">(Math.</span><span class="sk-6f42c1-ffc799">abs</span><span class="sk-24292e-fff">(Math.</span><span class="sk-6f42c1-ffc799">sin</span><span class="sk-24292e-fff">(offset </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> n)) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> value;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>我们试图测试每个平台能在多大程度上优化计算，以及评估每个平台有多靠近最终用户。但是，就本测试而言，我们并未对 Lambda@Edge 运行 Rust 测试，因为它并不能原生支持我们的 Rust 函数，而需要上传自行编译的 WASM 二进制文件。由于 Lambda@Edge 没有真正的一流开发人员平台和工具来运行 Rust，我们决定针对 Lambda@Edge 排除 Rust 场景。因此，当我们比较 Lambda@Edge 的数字时，仅适用于 JavaScript 简单测试和 JavaScript 硬测试。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> test_hard_busy_loop</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> i32</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> offset </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">as_millis</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> n </span><span class="sk-d73a49-ffc799">in</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-d73a49-a0a0a0">..</span><span class="sk-005cc5-ffc799">15000</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    value </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> (((offset </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> n) </span><span class="sk-d73a49-ffc799">as</span><span class="sk-6f42c1-ffc799"> f64</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">sin</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">abs</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 10.0</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">as</span><span class="sk-6f42c1-ffc799"> i32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  value</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>通过真实用户测量 Workers 性能</h2>
+<p>为了收集数据，我们使用了两种不同的方法：一种是第三方服务提供的方法，称为 Catchpoint；另一种是我们自己的网络性能基准测试中使用的方法。首先，我们使用 Catchpoint 从合成探针采集一组数据。Catchpoint 是业界标准的“合成”测试工具，测量数据将从全世界的真实用户收集。Catchpoint 是一种监控平台，总共有大约 2,000 个分布在世界各地且可以配置为获取每个测试的特定资源和时间的端点。Catchpoint 很适合像我们这样的网络提供商，因为它提供了一致、可重复的方法来测量工作负载的端到端性能，并尽可能近似表示用户所看到的内容。</p>
+<p>Catchpoint 在全世界的 ISP 中嵌入了主干网节点。这意味着，这些节点就像用户那样接入 ISP 路由器，并且流量会经过 ISP 网络进入所监控的每个端点。这些可以近似表示真实用户，但并不能真正地复制真实用户。例如，这些节点的带宽 100% 专用于平台监控，而用户的家庭互联网连接则不同，用户的互联网体验会包含不同的用例，其中一些根本不会与 Workers 应用程序通信。</p>
+<p>就该新测试而言，我们选择了全世界的最后一英里 ISP 中嵌入的 300 个主干网节点。我们过滤掉云提供商中或有多个传输选项的都市地区的节点，力求尽量去除重复路径。</p>
+<p>我们使用自己的数据集对这些测试进行了核查，该数据集是从连接到免费网站时收到 1xxx 错误页面的用户收集的，就像我们收集全球网络性能的数据那样。用户看到此错误页面时，该页面会在渲染过程中执行这些测试，并将有关这些调用的性能指标上传到 Cloudflare。</p>
+<p>我们还更改了测试方法，将付费帐户用于 Fastly、Cloudflare 和 AWS。</p>
+<h2>Workers、Compute@Edge 与 Lambda@Edge 比较</h2>
+<p>这次，我们首先来看响应时间，看看我们在端到端方面的表现如何：</p>
+<p>测试</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="288" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=715&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=640&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=715&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=750&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=828&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=1080&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=1280&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=1430&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - zTsiiN" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W4VSMQPJCXWWWE2ZPZT9.png&amp;w=1600&amp;h=644&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="644" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="288" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k1y" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Test</th>
+				<th>95th percentile response (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>479</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>634</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>1,400</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript hard</td>
+				<td>471</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript hard</td>
+				<td>683</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript hard</td>
+				<td>1,411</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust hard</td>
+				<td>472</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust hard</td>
+				<td>638</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>第 95 个百分位（毫秒）</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="291" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=750&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=828&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=1080&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=1280&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=1430&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - nSwGNE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526B7R19KSDAM7Z3R3THV.png&amp;w=1600&amp;h=652&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="652" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="291" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k22" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Test</th>
+				<th>95th percentile connect (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>295</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript hard</td>
+				<td>82</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript hard</td>
+				<td>94</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript hard</td>
+				<td>297</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust hard</td>
+				<td>79</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust hard</td>
+				<td>94</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Cloudflare JavaScript 无操作</p>
+<p>479</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="288" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=715&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=640&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=715&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=750&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=828&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=1080&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=1280&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=1430&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - ihx3Yy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RZYSWN8Q94SJKYF62RQF.png&amp;w=1600&amp;h=645&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="645" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="288" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k28" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Test</th>
+				<th>95th percentile wait (ms)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare JavaScript no-op</td>
+				<td>110</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript no-op</td>
+				<td>122</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript no-op</td>
+				<td>362</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare JavaScript hard</td>
+				<td>115</td>
+			</tr>
+			<tr>
+				<td>Fastly JavaScript hard</td>
+				<td>178</td>
+			</tr>
+			<tr>
+				<td>AWS JavaScript hard</td>
+				<td>367</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rust hard</td>
+				<td>125</td>
+			</tr>
+			<tr>
+				<td>Fastly Rust hard</td>
+				<td>122</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Fastly JavaScript 无操作</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="258" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=640&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=750&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=828&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=1080&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=1280&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=1430&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1486 Embedded Image - o53LnD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KDZNWYGZBDXQNRW7HV5Q.png&amp;w=1600&amp;h=578&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="578" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="258" class="pt-portable-image-media"></div>
+</figure>
+<p>634</p>
+<p>AWS JavaScript 无操作</p>
+<p>1,400</p>
+<p>Cloudflare JavaScript 硬</p>
+<p>471</p>
+<p>Fastly JavaScript 硬</p>
+<p>683</p>
+<p>AWS JavaScript 硬</p>
+<p>1,411</p>
+<p>Cloudflare Rust 硬</p>
+<p>472</p>
+<p>Fastly Rust 硬</p>
+<p>638</p>
+<p>我们在所有情况下都是最快的。现在我们来看一下连接时间，即执行任何实际计算之前，用户连接到计算平台的速度：</p>
+<p>测试</p>
+<p>第 95 个百分位等待（毫秒）</p>
+<p>Cloudflare JavaScript 无操作</p>
+<p>82</p>
+<p>Fastly JavaScript 无操作</p>
+<p>94</p>
+<p>AWS JavaScript 无操作</p>
+<p>295</p>
+<p>Cloudflare JavaScript 硬</p>
+<p>82</p>
+<p>Fastly JavaScript 硬</p>
+<p>94</p>
+<p>AWS JavaScript 硬</p>
+<p>297</p>
+<p>Cloudflare Rust 硬</p>
+<p>79</p>
+<p>Fastly Rust 硬</p>
+<p>94</p>
+<p>请注意，我们预计这些时间并不会根据所运行的代码而出现差异化，但我们是从同一组测试提取的，下面是明细情况。</p>
+<p>等待时间如何呢？别忘了，等待时间表示_计算_请求所用的时间，那么谁在优化平台方面做得最好？仍然是 Cloudflare，但 Fastly 仍在硬 Rust 测试方面稍有优势（我们计划进一步优化，争取赶超）：</p>
+<p>测试</p>
+<p>第 95 个百分位等待（毫秒）</p>
+<p>Cloudflare JavaScript 无操作</p>
+<p>110</p>
+<p>Fastly JavaScript 无操作</p>
+<p>122</p>
+<p>AWS JavaScript 无操作</p>
+<p>362</p>
+<p>Cloudflare JavaScript 硬</p>
+<p>115</p>
+<p>Fastly JavaScript 硬</p>
+<p>178</p>
+<p>AWS JavaScript 硬</p>
+<p>367</p>
+<p>Cloudflare Rust 硬</p>
+<p>125</p>
+<p>Fastly Rust 硬</p>
+<p>122</p>
+<p>为了验证这些结果，我们将 Catchpoint 结果与我们自己的数据集进行了比较。下面是根据我们的数据，Fastly、AWS 和 Cloudflare 的 JavaScript 和 Rust 硬循环的 p95 TTFB：</p>
+<p>Cloudflare 在 JavaScript 和 Rust 调用方面都更快。这些数字也佐证了 Fastly 在 Rust 调用方面略强的计算优势。</p>
+<p>根据以上信息得出的最大结论是，不仅 Cloudflare 在处理几乎每个测试中的请求所用时间方面都更快，而且 Cloudflare 的网络和性能优化总体上让我们脱颖而出，使我们的 Workers 平台对于一切都更快。当然，我们计划再接再厉，保持佳绩。</p>
+<h2>您的应用程序，但运行更快</h2>
+<p>延迟是用户体验中的重要一环，就开发人员而言，能够确保其用户可以尽可能快速地完成任务，对于应用程序的成功至关重要。无论您是在 Workers、D1 和 R2 中构建应用程序，在 Pages 中托管文档，还是在 SaaS 平台中利用 Workers，让您的代码在我们的全球网络 SuperCloud 中运行，将确保您的用户实现尽可能最佳的体验。</p>
+<p>我们的网络得到极致优化，能让您的代码尽可能快速地运行。通过使用 Cloudflare 的网络运行您的应用程序，您可以专注于创建尽可能最佳的应用程序，并感到安心，因为 Cloudflare 会为您提供尽可能最佳的用户体验。这是因为，Cloudflare 的开发人员平台基于<a href="https://blog.cloudflare.com/network-performance-update-cloudflare-one-week-june-2022">全世界最快的网络</a>构建。放心地放飞梦想吧，我们会让您的梦想达到尽可能快的速度。</p>

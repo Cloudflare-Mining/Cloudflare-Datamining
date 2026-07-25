@@ -1,0 +1,144 @@
+<p><em>此内容已使用自动机器翻译服务进行翻译，仅供您参考及阅读便利。其中可能包含错误、遗漏，或与原始英文版本存在理解方面的细微差别。如有疑问，请参考原始英文版本。</em></p>
+<p>二十多年来，我们一直使用拼凑而成的各种专门工具在互联网上建立实时通信。RTMP 为我们提供了 ingest。<a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming" target="_blank" rel="noopener noreferrer"><u>HLS</u></a> 和 <a href="https://www.mpeg.org/standards/MPEG-DASH" target="_blank" rel="noopener noreferrer"><u>DASH</u></a> 帮助我们实现了规模。WebRTC 给我们带来了交互性。它们各自解决了当时的特定问题，共同驱动着我们今天所依赖的全球流式传输生态系统。</p>
+<p>但是，在 2025 年一起使用它们，感觉就像使用来自不同时代的工具构建一个现代应用程序。接缝开始显现——复杂性、延迟，以及下一代应用程序所需的灵活性——从亚秒级实时拍卖到大规模交互活动。我们经常被迫在延迟、规模和运营复杂性之间进行痛苦的权衡。</p>
+<p>今天，Cloudflare 推出首个 Media over QUIC (MoQ) 中继网络，该网络在分布在 330 多个城市的数据中心的每一台 Cloudflare 服务器上运行。MoQ 是全行业工程师在 <a href="https://www.ietf.org" target="_blank" rel="noopener noreferrer"><u>IETF</u></a> 上开发的一个开放协议，而不是 Cloudflare 的专有技术。起订量结合了 WebRTC 的低延迟交互性、HLS/DASH 的可扩展性以及单一架构的简单性，全部建立在现代传输层上。我们将加入 Meta、Google、Cisco 和其他公司的行列，构建无缝协同工作的实现，为互联网上的下一代实时应用程序创建一个共同的基础。</p>
+<h3><strong>妥协的进化阶梯</strong></h3>
+<p>要理解最小起订量的承诺，首先我们必须回顾引领我们走到今天的历史——这是一系列架构妥协定义的旅程，解决一个问题不可避免地产生了另一个问题。</p>
+<p><strong>RTMP 时代：克服延迟，权衡规模</strong></p>
+<p>21 世纪初，<strong>RTMP（实时消息协议）</strong>是一个突破。通过在 <a href="https://en.wikipedia.org/wiki/Adobe_Flash" target="_blank" rel="noopener noreferrer"><u>Flash</u></a> 客户端和服务器之间创建一种持久的、有状态的 TCP 连接，它解决了早期网络视频播放中令人沮丧的“下载并等待”体验。这实现了低延迟的流媒体传输（2-5 秒），支持 <a href="http://justin.tv" target="_blank" rel="noopener noreferrer"><u>Justin.tv</u></a>（后来的 Twitch 前身）等第一波直播平台。</p>
+<p>但它的优势也是其劣势。这种有状态的连接必须为每一位观看者进行维护，从架构上不利于扩展。它需要昂贵的专用媒体服务器，并且无法使用基于 HTTP 的<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer"><u>商品化内容分发网络（CDN）</u></a>，而后者开始为网络的其他部分提供支持。它对 TCP 的依赖也意味着一个丢失的数据包可能会冻结整个流——这种现象称为<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking" target="_blank" rel="noopener noreferrer"><u>队头阻塞</u></a>——从而造成刺耳的延迟峰值。业界为从摄像机到服务器的“第一英里”保留了 RTMP（摄取），但需要为从服务器到屏幕的“最后一英里”提供新的解决方案（交付）。</p>
+<p><strong>HLS 和 DASH 时代：解决规模问题，在延迟方面做出妥协</strong></p>
+<p>下一个时代的催化剂是 iPhone 对 Flash 的摒弃。为此，Apple 创建了 <a href="https://www.cloudflare.com/learning/video/what-is-http-live-streaming" target="_blank" rel="noopener noreferrer"><strong><u>HLS（HTTP 实时流式传输）</u></strong></a>。HLS 及其对应的开放标准 <strong>MPEG-DASH</strong> 放弃了有状态连接，并将视频视为通过标准 HTTP 交付的一系列小静态文件。</p>
+<p>这实现了更大的可扩展性。通过转向可互操作的开放 HTTP 标准作为底层传输，视频现在可以通过任何网络服务器分发并通过全球 CDN 缓存，使平台能够以相对低成本可靠地服务数百万观众。妥协呢？<em>重大的</em>权衡延迟。为确保播放流畅，播放器需要缓冲至少三个视频片段才能开始。由于分段持续时间为 6-10 秒，因此架构中直接嵌入了 15-30 秒的延迟。</p>
+<p>虽然像<a href="https://developer.apple.com/documentation/http-live-streaming/enabling-low-latency-http-live-streaming-hls" target="_blank" rel="noopener noreferrer"><u>低延迟 HLS (LL-HLS)</u></a>这样的扩展最近出现了，以实现 3 秒范围内的延迟，但它们仍然是与该协议的基本设计<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking" target="_blank" rel="noopener noreferrer"><u>相抗争的复杂补丁</u></a>。这些扩展引入了一个有状态的实时通信层（使用巧妙的变通方法，例如将播放列表请求保持打开状态），最终给对 HTTP 可扩展性和可组合性至关重要的无状态请求-响应模型带来压力。</p>
+<p><strong>WebRTC 时代：克服对话延迟，对架构的妥协</strong></p>
+<p>在此期间，<strong>WebRTC（网络实时通信）</strong> 出现了，解决一个不同的问题：无需插件，双向对话视频在浏览器中实现不超过 500 毫秒的延迟。它的工作原理是创建直接的点对点（P2P）媒体路径，消除了等式中的中央服务器。</p>
+<p>但这种点对点模式从根本上与广播规模是不一致的。<a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc/#webrtc-growing-pains" target="_blank" rel="noopener noreferrer"><u>在网状网络中，连接数随着每个新参与者的二次函数增长</u></a>（“N 方问题”）。对于不止少数的用户来说，模型会在自身复杂性的重压下崩溃。为解决这个问题，业界开发了基于服务器的拓扑，例如选择性转发单元 (SFU) 和多点控制单元 (MCU)。这些措施行之有效，但需要构建一个本质上<a href="https://blog.cloudflare.com/cloudflare-calls-anycast-webrtc/#is-cloudflare-calls-a-real-sfu" target="_blank" rel="noopener noreferrer"><u>私有的、有状态的实时 CDN</u></a>——这是一项复杂和昂贵的工作，而且没有在基础设施提供商之间实现标准化。</p>
+<p>这段征程给我们留下了一个由专门、不可互操作的孤岛组成的支离破碎的环境，迫使开发人员将多种协议拼凑在一起，并接受<strong>延迟、规模和复杂性</strong>之间痛苦的三向紧张。</p>
+<h3><strong>介绍 MoQ</strong></h3>
+<p>这就是 Media over QUIC (MoQ) 应运而生的背景。这不仅仅是另一个协议，全新的设计理念从头开始构建，旨在解决这个历史悠久的三难问题。<u>MoQ</u> 脱胎于 IETF 进行的一项开放、社区驱动的努力，旨在成为一项基础互联网技术，而非专有产品。</p>
+<p>它承诺通过提供以下功能来统一流媒体的不同世界：</p>
+<ol>
+	<li><strong>广播规模的亚秒延迟：</strong>结合 WebRTC 的延迟、HLS/DASH 的规模以及 RTMP 的简单性。</li>
+	<li><strong>架构简单：</strong>创建单一、灵活的协议用于摄取、分发和交互用例，无需在不同技术之间进行转码。</li>
+	<li><strong>传输效率：</strong>在 <a href="https://blog.cloudflare.com/the-road-to-quic" target="_blank" rel="noopener noreferrer"><u>QUIC</u></a>（一种基于 <a href="https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp" target="_blank" rel="noopener noreferrer"><u>UDP</u></a> 的协议）上构建，以消除 <a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking" target="_blank" rel="noopener noreferrer"><u>TCP 队头阻塞</u></a>等瓶颈。</li>
+</ol>
+<p>最初的重点是“媒体”而不是 QUIC，但核心概念——计时、有序但独立数据的命名轨道——非常灵活，以至于工作组现在直接将该协议称为“MoQ”。这个名字反映了抽象的力量：它是一种通用传输工具，适用于任何需要高效、大规模地交付的实时数据。</p>
+<p>现在，最小起订量非常通用，是一个数据扇出或发布/订阅系统，适用于从音频/视频（高带宽数据）到体育赛事分数更新（低带宽数据）的一切内容。</p>
+<h3><strong>起订量协议栈深入剖析</strong></h3>
+<p>起订量的优雅源于在正确的层解决正确的问题。让我们从基础开始，看看它如何大规模实现亚秒级延迟。</p>
+<p>选择 QUIC 作为最小起订量的基础并非任意——它解决了困扰流式传输协议数十年的问题。</p>
+<p>通过构建于 <strong>QUIC</strong>（一种也为 <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer"><u>HTTP/3</u></a> 提供支持的传输协议），MoQ 解决了一些关键的流式传输问题：</p>
+<ul>
+	<li><strong>无队头阻塞：</strong>与 TCP 不同，在 TCP 中一个丢失的数据包会阻塞其后方的所有内容，而 QUIC 的数据流是独立的。一个流（例如音轨）上的数据包丢失不会阻塞另一个流（例如主视频轨道）。仅此一点就消除了困扰 RTMP 的卡顿问题。</li>
+	<li><strong>连接迁移：</strong>当您的设备中途从 Wi-Fi 切换到蜂窝网络时，连接无缝迁移而不会中断——无需重新缓冲，无需重新连接。</li>
+	<li><strong>快速建立连接：</strong>QUIC 的 <a href="https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption" target="_blank" rel="noopener noreferrer"><u>0-RTT 续传</u></a>意味着返回的观众可以立即开始播放。</li>
+	<li><strong>内置的强制加密：</strong>所有 QUIC 连接默认使用 <a href="https://blog.cloudflare.com/rfc-8446-aka-tls-1-3" target="_blank" rel="noopener noreferrer"><u>TLS 1.3</u></a> 加密。</li>
+</ul>
+<h4>核心创新：媒体发布/订阅</h4>
+<p>通过 QUIC 解决传输问题，MoQ 引入了其关键创新：将媒体视为发布/订阅系统中的可订阅轨道。但与传统的 pub/sub 不同，这是专门为 CDN 规模的实时媒体而设计的。</p>
+<p>不再使用复杂的会话管理 (WebRTC) 或基于文件的分块 (HLS)，<strong>MoQ 让发布者公告订阅者可以请求的媒体轨道命名</strong>。中继网络无需了解媒体本身即可处理分发。</p>
+<h4>最小起订量如何组织媒体：数据模型</h4>
+<p>在了解媒体如何在网络中流动之前，让我们先了解一下 MoQ 是如何构建网络的。MoQ 以层次结构组织数据：</p>
+<ul>
+	<li><strong>Tracks</strong>：命名的媒体流，例如"video-1080p" 或 "audio-english"。订阅者按名称请求特定轨道。</li>
+	<li><strong>Groups</strong>：轨道的可独立解码的块。对于视频，这通常意味着以关键帧开始的 GOP（图片组）。新订阅者可以在任何组边界加入。</li>
+	<li><strong>Object</strong>：网络上发送的实际数据包。每个对象都属于一个跟踪，并在组中具有一个位置。</li>
+</ul>
+<p>这个简单的层次结构支持两种功能：</p>
+<ol>
+	<li>订阅者可从 <strong>Groups</strong> 边界开始播放，无需等待下一个关键帧</li>
+	<li>中继可以在不解析或了解媒体格式的情况下转发 <strong>Object</strong></li>
+</ol>
+<h5>网络架构：从发布者到订阅者</h5>
+<p>MoQ 的网络组件也很简单：</p>
+<ul>
+	<li><strong>发布者</strong>：公告跟踪命名空间并发送对象</li>
+	<li><strong>订阅者</strong>：按名称请求特定轨道</li>
+	<li><strong>中继</strong>：通过转发不可变的对象将发布者连接到订阅者，无需解析或<a href="https://www.cloudflare.com/learning/video/video-encoding-formats" target="_blank" rel="noopener noreferrer"><u>对媒体进行转码</u></a></li>
+</ul>
+<p>中继充当订阅者，从上游接收跟踪（与原始发布者一样），同时充当发布者，将这些相同的跟踪转发给下游。这种模型是 MoQ 可扩展性的关键：一个上游订阅可以呈扇形展开，为成千上万的下游观众提供服务。</p>
+<h5>MoQ 堆栈</h5>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="381" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=715&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=640&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=715&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=750&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=828&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=1080&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=1280&amp;h=682&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=1430&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2923 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X7DR2JFMAKJZ3X4P6N4F.png&amp;w=1920&amp;h=1024&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1024" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="381" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>MoQ 的架构可以理解为三个不同的层，每层都有明确的工作：</p>
+<ol>
+	<li><strong>Transport Foundation（QUIC 或 WebTransport）：</strong>这是现代一切的基础。MoQT 可以直接在原始 <strong>QUIC</strong> 上运行（这对于原生应用程序是理想的选择，或在 <strong>WebTransport</strong> 上运行，这是需要在网络浏览器中使用）。至关重要的是，<a href="https://www.ietf.org/archive/id/draft-ietf-webtrans-http3-02.html" target="_blank" rel="noopener noreferrer"><u>WebTransport 协议</u></a>及其相应的 <a href="https://w3c.github.io/webtransport" target="_blank" rel="noopener noreferrer"><u>W3C 浏览器 API</u></a> 使浏览器应用程序可以直接访问 QUIC 的多路复用可靠流和不可靠数据报。这是一个颠覆性的变革。像 <a href="https://blog.cloudflare.com/stream-now-supports-srt-as-a-drop-in-replacement-for-rtmp" target="_blank" rel="noopener noreferrer"><u>SRT</u></a> 这样的协议可能是高效的，但由于缺乏原生浏览器支持，它们只能扮演仅摄取的角色。WebTransport 在网络上为 MoQ 提供了一等公民身份，因而适合于摄取和直接向客户端大规模分发。</li>
+	<li><strong>MoQT 层：</strong>MoQT 层位于 QUIC（或 WebTransport）之上，为“发布-订阅”系统提供信号和结构。这是 IETF 工作组的主要重点工作。它定义了核心控制消息（如宣布和订阅）以及我们刚刚涵盖的基本数据模型。MoQT 本身也刻意做到简洁；它不知道或关心它移动的数据是 <a href="https://www.cloudflare.com/learning/video/what-is-h264-avc" target="_blank" rel="noopener noreferrer"><u>H.264</u></a> 视频、Opus 音频，还是游戏状态更新。</li>
+	<li><strong>流格式层：</strong>这是特定于媒体的逻辑所在。流式传输格式定义了清单、编解码器元数据和打包规则等内容。<a href="https://datatracker.ietf.org/doc/draft-ietf-moq-warp" target="_blank" rel="noopener noreferrer"><strong><u>WARP</u></strong></a> 就是 IETF 与 MoQT 一起开发的一种格式，但它并不是唯一的格式。另一个标准机构，例如 DASH-IF，可以通过 MoQT 定义一种基于 <a href="https://www.iso.org/standard/85623.html" target="_blank" rel="noopener noreferrer"><u>CMAF</u></a> 的流媒体格式。同时控制原始发布者和最终订阅者的公司可以开发自己的专有流格式，在不受传输协议约束的情况下尝试新的编解码器或交付机制。</li>
+</ol>
+<p>通过这种层的分离，不同的组织可以构建可互操作的实现，同时仍能在流格式层进行创新。</p>
+<h4>端到端的数据流</h4>
+<p>现在我们已经了解了架构和数据模型，下面我们来看看这些部分是如何组合在一起提供流媒体的。该协议很灵活，但是典型的广播流依赖于<code>宣布</code>和<code>订阅</code>消息来通过中继网络建立从发布者到订阅者的数据路径。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="708" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=715&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=640&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=715&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=750&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=828&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=1080&amp;h=1069&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=1280&amp;h=1267&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=1430&amp;h=1416&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2923 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G7GEX8BTWT9C7X05KVB4.png&amp;w=1808&amp;h=1791&amp;f=webp" data-lightbox-width="1808" data-lightbox-height="1791" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="708" class="pt-portable-image-media"></div>
+</figure>
+<p>如下对这一流程的逐步细分：</p>
+<ol>
+	<li><strong>启动连接：</strong>当充当客户端的端点连接到中继网络时，这个过程就开始了。原始发布者向它最近的中继（我们称之为中继 A）发起连接。另外，最终订阅服务器发起与自己的本地中继（中继 B）的连接。这些端点与其各自的中继执行 <code>SETUP</code> 握手，以建立起订量会话并声明支持的参数。</li>
+	<li><strong>公告命名空间</strong>：为了使其内容可以发现，发布者向中继 A 发送<code>宣布</code>消息。该消息声明，发布者是给定<strong>跟踪命名空间</strong>的权威来源。中继 A 接收到此消息，并在共享控制平面（一个概念数据库）中注册，自己现在是网络中此命名空间的来源。</li>
+	<li><strong>订阅跟踪：</strong> 当最终订阅者想要接收媒体时，它会向其中继（中继 B）发送一条<code>订阅</code>消息。此消息是对特定<strong>跟踪名称</strong>中的特定<strong>跟踪命名空间</strong>的请求。</li>
+	<li><strong>连接中继：</strong>中继 B 收到<code>订阅</code>请求并查询控制平面。它查找所请求的命名空间，发现中继 A 是来源。然后，中继 B 发起与中继 A 的会话（如果还没有会话），并将<code>订阅</code>请求转发给上游。</li>
+	<li><strong>完成路径和转发对象：</strong>中继 A 在收到来自中继 B 的订阅请求后，将其转发给原始发布者。建立完整路径后，发布者开始发送所请求跟踪的<code>对象</code>。对象从发布者流到中继 A，中继 A 将它们转发给中继 B，中继 B 再将它们转发给最终订阅者。如果另一个订阅者连接到中继 B 并请求相同的轨道，中继 B 可以立即开始向他们发送对象，而无需创建新的上游订阅。</li>
+</ol>
+<h5>另一种流程：<code>发布</code>模型</h5>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="815" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=715&amp;h=815&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=640&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=715&amp;h=815&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=750&amp;h=855&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=828&amp;h=944&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=1080&amp;h=1231&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=1280&amp;h=1459&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=1430&amp;h=1630&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2923 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482QY0ZTRZDWV4CE09255A.png&amp;w=1686&amp;h=1921&amp;f=webp" data-lightbox-width="1686" data-lightbox-height="1921" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="815" class="pt-portable-image-media"></div>
+</figure>
+<p>MoQ 规范的较新草稿引入了另一种使用<code>发布</code>消息的基于推送的模型。在这个流程中，发布者可以有效地请求允许，将跟踪的对象发送到中继，而<em>无需</em>等待<code>订阅</code>请求。发布者发送一条<code>发布</code>消息，中继的 <code>PUBLISH_OK</code> 响应表明它是否接受这些对象。这特别有用于摄取场景，即发布者希望将其流立即发送到网络的入口点，确保媒体在第一个订阅者连接的瞬间可用。</p>
+<h4>高级功能：优先级和拥塞控制</h4>
+<p>当网络发生拥塞时，最小起订量的优势才真正大放异彩。最小起订量 包括用于处理现实网络流量的机制。一种这样的机制就是 Subgroups。</p>
+<p><strong>子组</strong>是组内的细分部分，它们实际上直接映射到底层 QUIC 流。同一子组内的所有对象通常通过相同的 QUIC 流发送，以保证它们的传递顺序。子组编号还提供了一个编码优先级的机会：在一个组中，编号较小的子组被认为具有较高的优先级。</p>
+<p>这会实现智能质量降级，尤其是在分层编解码器（例如 SVC):</p>
+<ul>
+	<li><strong>子组 0</strong>：基础视频层 (360p)——必须交付</li>
+	<li><strong>子组 1</strong>：增强到 720p——在带宽允许的情况下交付</li>
+	<li><strong>子组 2</strong>：增强到 1080p——第一个在拥塞时下降</li>
+</ul>
+<p>当中继检测到拥塞时，它可以丢弃编号较大的子组中的对象，从而保留基础层。观众看到的是质量下降而不是缓冲。</p>
+<p>起订量规范定义了一种调度算法，用于确定所有“准备发送”的对象的顺序。当中继有多个对象时，它首先按<strong>组顺序</strong>（升序或降序）对它们进行优先级排序，然后在组中按<strong>子组 id</strong> 为它们确定优先级。我们的实现支持<strong>组顺序</strong>首选项，这对于低延迟广播可能很有用。如果查看者落后了，并且其订阅使用组降序排列，则中继会优先发送最新“活动”组中的对象，从而有可能取消较旧组中未发送的对象。这可以帮助观众快速跟上实时边缘，对于许多交互式流式传输用例来说，这是一个非常理想的功能。如何使用这些功能来改善特定用例的 QoE 仍是一个开放的研究问题。我们诚邀开发人员和研究人员使用我们的网络进行实验，并帮助找到答案。</p>
+<h3><strong>实施：构建 Cloudflare MoQ 中继</strong></h3>
+<p>理论是一回事，实践是一回事。实施是另一回事为了验证协议并了解其现实挑战，我们正在打造首批全球最小起订量中继网络之一。Cloudflare 的网络将计算和逻辑置于边缘，非常适合于此。</p>
+<p>我们的架构将最小起订量的抽象概念连接到 Cloudflare 堆栈。在我们的深入探讨中，我们提到，当发布者<code>宣布</code>命名空间时，中继需要在“共享控制平面”中注册此可用性，以便正确路由<code>订阅</code>请求。对于状态管理的这一关键部分，我们使用 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> 。</p>
+<p>当发布者向位于例如伦敦的中继宣布一个新的命名空间时，该中继将使用我们的强一致性单线程存储解决方案 Durable Object 来记录，此命名空间现在在该特定位置可用。当巴黎的订阅者想要该命名空间中的轨道时，网络可以查询此分布式状态以找到最近的源并相应地路由<code>订阅</code>请求。这种架构建立在我们为 Cloudflare 实时服务开发的技术基础上，提供了一种解决方案来应对全球范围内的状态管理挑战。</p>
+<h4>不断发展的规范</h4>
+<p>以公开方式构建一个新协议意味着要实施一个不断变动的目标。为了让社区能够享受起订量，我们深思熟虑地做了一个权衡取舍：我们当前的中继实现基于 <a href="https://www.ietf.org/archive/id/draft-ietf-moq-transport-07.html" target="_blank" rel="noopener noreferrer"><strong><u>Draft-ietf-moq-transport-07</u></strong></a> <strong>中定义的功能子集</strong>。这个版本成为了几个开源项目之间事实上的互操作性目标，暂停在这里让我们能够将精力用于部署中继网络的其他方面<strong>。</strong></p>
+<p>此协议草案对访问“过去”的内容和访问“未来”的内容进行了区分。<strong><code>订阅</code></strong>用于在<strong>未来</strong>对象到达时接收其订阅请求，就像收看实时广播节目以了解从那一刻起以后的所有内容。相比之下，<strong><code>FETCH</code></strong> 提供了一种机制来访问中继在其缓存中可能已经拥有的 <strong>过去</strong> 的内容，就像要求提供刚刚播放的歌曲的录音。</p>
+<p>两者属于同一规范，但对于最紧迫的低延迟用例，<code>订阅</code>的高性能实现最为重要。因此，我们最初的努力中心化了那里，尚未实施 <code>FETCH</code>。</p>
+<p>这是我们路线图灵活的地方，也是社区可以产生直接影响的地方。您是否需要 <code>FETCH</code> 来构建按需或追赶式功能？或者是对您的用例的<code>订阅</code>中的优先级功能提供更完整的支持？从早期开发人员那里获得的反馈将帮助我们决定下一步要构建什么。</p>
+<p>一如既往，我们将在<a href="https://developers.cloudflare.com/moq" target="_blank" rel="noopener noreferrer"><u>开发人员文档页面</u></a>上宣布我们继续开发过程中对实现的更新和更改。</p>
+<h3>展望未来</h3>
+<p>我们相信构建社区是为了开放和互操作性。MoQ 不是 Cloudflare 技术，而是一项基础互联网技术。为此，我们推出的第一个演示客户端是一个开源社区示例。</p>
+<p><strong>您可以在这里访问演示：<a href="https://moq.dev/publish" target="_blank" rel="noopener noreferrer"><u>https://moq.dev/publish/</u></a></strong></p>
+<p>尽管这是预览版，但我们正在以 Cloudflare 的全规模运行起订量中继，就像我们所做的每一项生产服务一样。也就是说，在超过 330 个城市，Cloudflare 网络中的每一台服务器现在都是一个最小起订量中继。</p>
+<p>诚邀您体验 MoQ 所实现的近乎即时的亚秒级流式传输延迟的令人惊叹的时刻。如果您有一个能提供全球广播规模的视频通话速度，您会如何使用这种协议？</p>
+<h3><strong>互操作性</strong></h3>
+<p>我们一直与 IETF 工作组社区及其他地方的其他人进行合作，研究开发者、播放器以及 MoQ 生态系统其他部分之间的互操作性。到目前为止，我们测试过：</p>
+<ul>
+	<li>Luke Curley 的 <a href="https://moq.dev" target="_blank" rel="noopener noreferrer"><u>moq.dev</u></a></li>
+	<li>Lorenzo Miniero 的 <a href="https://github.com/meetecho/imquic" target="_blank" rel="noopener noreferrer"><u>imquic</u></a></li>
+	<li>Meta 的 <a href="https://github.com/facebookexperimental/moxygen" target="_blank" rel="noopener noreferrer"><u>Moxygen</u></a>&nbsp;</li>
+	<li><a href="https://github.com/englishm/moq-rs" target="_blank" rel="noopener noreferrer"><u>moq-rs</u></a></li>
+	<li><a href="https://github.com/englishm/moq-js" target="_blank" rel="noopener noreferrer"><u>moq-js</u></a></li>
+	<li><a href="https://norsk.video" target="_blank" rel="noopener noreferrer"><u>Norsk</u></a></li>
+	<li><a href="https://vindral.com" target="_blank" rel="noopener noreferrer"><u>Vindral</u></a></li>
+</ul>
+<h3>未来道路</h3>
+<p>互联网的媒体堆栈正在被重构。二十年来，我们一直被迫在延迟、规模和复杂性之间做出选择。我们做出的妥协解决了一些问题，但也导致了一个碎片化的生态系统。</p>
+<p>最小起订量代表了一个有希望的新基础——一个统一这些孤岛并在可扩展协议上构建下一代实时应用的机会。我们致力于帮助建立这一公开基础，而我们才刚刚开始。</p>
+<p>起订量限制是一种现实的前进方式，基于 QUIC 构建，不会过时，比 WebRTC 更容易理解，能不同于 RTMP 与浏览器兼容。</p>
+<p>协议在发展，实现在成熟，社区在成长。无论是构建下一代实时流式传输，探索实时协作，还是挑战交互式媒体的极限，请考虑最小起订量是否可以提供您所需的基础。</p>
+<h3>上市时间和定价</h3>
+<p>我们希望开发人员今天就可以起订量开始构建。为实现这一点，Cloudflare 提供了技术预览版，这意味着它可以免费用于测试（任何规模）。请访问我们的<a href="https://developers.cloudflare.com/moq" target="_blank" rel="noopener noreferrer"><u>开发者主页</u></a>，获取更新和潜在的重大变化。</p>
+<p>独立开发者和大型企业在采用新技术之初都会询问定价。我们将保持透明、明确的最小起订量定价。在普遍可用时，自助客户应该支付 5 美分/GB 的出站费用，而不是发送到 Cloudflare 的流量。</p>
+<p>Enterprise 客户可以享受与常规媒体交付定价一致的定价，与现有协议相比具有竞争力。这意味着，如果您已经在使用 Cloudflare 进行媒体交付，那么就不应该因为成本而对采用新技术保持警惕。我们会全力支持您的。</p>
+<p>如果您有兴趣与 Cloudflare 合作尽早采用该协议或为其开发做出贡献，请通过 <a href="mailto:moq@cloudflare.com"><u>moq@cloudflare.com</u></a> 联系我们！对互联网的未来充满希望的工程师们已蓄势待发。</p>
+<h3>参与其中：</h3>
+<ul>
+	<li><strong>尝试演示：</strong> <a href="https://moq.dev/publish" target="_blank" rel="noopener noreferrer"><u>https://moq.dev/publish/</u></a></li>
+	<li><strong>阅读互联网草案：</strong> <a href="https://datatracker.ietf.org/doc/draft-ietf-moq-transport" target="_blank" rel="noopener noreferrer"><u>https://datatracker.ietf.org/doc/draft-ietf-moq-transport/</u></a></li>
+	<li><strong>为协议发展做出贡献</strong>：<a href="https://datatracker.ietf.org/group/moq/documents" target="_blank" rel="noopener noreferrer"><u>https://datatracker.ietf.org/group/moq/documents/</u></a></li>
+	<li><strong>请访问</strong>我们的开发人员主页：<a href="https://developers.cloudflare.com/moq" target="_blank" rel="noopener noreferrer"><u>https://developers.cloudflare.com/moq/</u></a></li>
+</ul>

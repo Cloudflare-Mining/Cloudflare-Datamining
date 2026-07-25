@@ -1,0 +1,291 @@
+<p>2026 年 2 月 20 日，世界標准時間 17:48，Cloudflare 發生了一起服務中斷事件。部分使用 Cloudflare「自帶 IP」（Bring Your Own IP，簡稱 BYOIP）服務的客戶，其通往網際網路的路由透過邊界閘道通訊協定 (BGP) 被撤銷。</p>
+<p>此問題並非由任何型態的網路攻擊或惡意行為直接或間接造成。問題源於 Cloudflare 對網路管理透過 BYOIP 流程導入之 IP 位址的方式進行了一項變更。這項變更導致 Cloudflare 意外地撤銷了客戶的首碼。</p>
+<p>對於部分 BYOIP 客戶而言，這導致其服務和應用程式無法從網際網路存取，使得使用 BYOIP 的 Cloudflare 部署環境出現連線逾時和失敗。Cloudflare 的遞迴 DNS 解析程式 (1.1.1.1) 網站也出現 403 錯誤。此次事件總共持續 6 小時 7 分鐘，其中大部分時間用於將首碼設定還原至變更前的狀態。</p>
+<p>Cloudflare 工程師在觀察到故障發生後，便還原了該項變更，首碼撤銷的情況也隨之停止。然而，在團隊完成還原作業之前，約有 1100 個 BYOIP 首碼已從 Cloudflare 網路中撤銷。部分客戶能夠自行透過 Cloudflare 儀表板重新公告其 IP 位址來恢復服務。我們在還原所有首碼設定後，解決了此事件。</p>
+<p>對於此次事件對客戶造成的影響，我們深感抱歉。今天我們讓各位失望了。本文將詳細說明事發經過，以及哪些系統和流程發生了問題。我們也將概述我們為防止類似中斷再次發生所採取的改善措施。</p>
+<h2>此次中斷事件對客戶造成了哪些影響？</h2>
+<p>下圖顯示了事件期間 Cloudflare 向某個 BGP 鄰居公告的首碼數量，這與實際影響密切相關，因為未被公告的首碼在網際網路上會變得無法連線：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="570" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=715&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=640&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=715&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=750&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=828&amp;h=660&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1080&amp;h=861&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1280&amp;h=1020&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1430&amp;h=1140&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3193 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1920&amp;h=1530&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1530" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="570" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>在所有公告給該對等互連的 6500 個首碼中，有 4306 個屬於 BYOIP 首碼。這些 BYOIP 首碼會公告給每一個對等節點，代表了我們在全球範圍內所公告的所有 BYOIP 首碼。 </p>
+<p>事件發生期間，從世界標準時間 17:56 至 18:46，總共 1100 個首碼從網路中被撤銷。在全部 4306 個 BYOIP 首碼中，有 25% 被意外撤銷。我們在 one.one.one.one 上偵測到影響後，立即還原了導致問題的變更，才未讓更多首碼受到影響。世界標準時間 19:19，我們向客戶發布指引，建議他們可透過 Cloudflare 儀表板重新公告其首碼，以自行修復此問題。</p>
+<p>Cloudflare 在世界標準時間 20:20 左右還原了多數首碼的公告設定，使約 800 個首碼恢復正常。不過，仍有約 300 個首碼無法透過儀表板修復，因為這些首碼的服務組態在邊緣上因軟體錯誤而被移除。這些首碼最終由 Cloudflare 工程師在世界標準時間 23:03 手動恢復。</p>
+<p>這次事件並未影響到所有 BYOIP 客戶，因為該組態變更是逐步套用，而非同時對所有 BYOIP 客戶生效。在發現變更帶來負面影響後，我們在影響擴大前完成了還原。</p>
+<p>受影響的 BYOIP 客戶首先遇到一種稱為 <a href="https://blog.cloudflare.com/going-bgp-zombie-hunting" target="_blank" rel="noopener noreferrer"><u>BGP 路徑搜尋</u></a>的行為。在此狀態下，終端使用者的連線會穿越多個網路，嘗試尋找前往目的地 IP 的路徑。這種行為會持續到已開啟的連線逾時並失敗為止。只要首碼尚未被任何地方公告，客戶就會持續看到此失敗模式。這種「重試直到失敗」的情境影響了所有透過 BYOIP 向網際網路公告的產品。此外，造訪 Cloudflare 遞迴 DNS 解析程式網站 one.one.one.one 的使用者，則會看到 HTTP 403 錯誤，以及「Edge IP Restricted」（邊緣 IP 受限）錯誤訊息。不過，使用 1.1.1.1 公眾解析程式（包括 DNS over HTTPS）的 DNS 解析功能並未受到影響。以下為受影響服務的完整細項說明。</p>
+<div id="html-block-ks" class="html-block">
+	<style>
+		#html-block-ks .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-ks .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ks .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ks .tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-ks .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:251px">
+				<col style="width:451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">服務/產品</span></th>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">影響描述</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">核心 CDN 與安全服務</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">流量未能導向 Cloudflare，嘗試連線至這些位址範圍所公告網站的使用者將會遇到連線失敗</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Spectrum</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">由於流量未能導向 Cloudflare，使用 BYOIP 的 Spectrum 應用程式無法代理流量</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">專用輸出</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用 Gateway 專用輸出（搭配 BYOIP）或用於 CDN 輸出的專用 IP（搭配 BYOIP）的客戶，無法將流量傳送到其目的地</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Magic Transit</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">終端使用者連線至受 Magic Transit 保護的應用程式時，因其首碼未公告於網際網路，而導致連線逾時與失敗</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>另有一群客戶無法透過切換 Cloudflare 儀表板上的首碼設定來恢復服務。當工程師開始重新公告首碼以恢復這些客戶的服務時，儘管其 IP 位址已重新公告，仍可能出現延遲增加或連線失敗的情形。這是因為由於我們自身軟體的問題，部分使用者的位址設定已從邊緣伺服器中移除，必須重新將狀態同步回邊緣節點。</p>
+<p>接下來我們將深入探討我們的位址系統究竟出了什麼問題，但在此之前，我們需要先簡單介紹一下 Addressing API——它是 Cloudflare 用來管理客戶 IP 位址的基礎真值來源。</p>
+<h2>Cloudflare 的 Addressing API</h2>
+<p>Addressing API 是 Cloudflare 網路上所有 IP 位址的權威資料來源。任何對該資料集所做的變更都會立即反映在 Cloudflare 的全球網路中。雖然我們目前正在進行一項名為「<a href="https://blog.cloudflare.com/fail-small-resilience-plan" target="_blank" rel="noopener noreferrer"><u>Code Orange：Fail Small</u></a>」的計畫，以改善這些系統變更的推出方式，但目前客戶仍可透過與公開 API 互動來設定其 IP 位址。這些 API 會設定一組資料庫，進而觸發操作流程，將變更傳播至 Cloudflare 的邊緣。這表示對 Addressing API 所做的變更會立即同步至 Cloudflare 邊緣。</p>
+<p>在 Cloudflare 上公告與設定 IP 位址包含以下幾個步驟：</p>
+<ul>
+	<li>客戶透過 Addressing API 或 BGP Control 通知 Cloudflare 要公告或撤銷 IP 位址</li>
+	<li>Addressing API 指示機器變更首碼的公告狀態</li>
+	<li>一旦足夠多的機器收到更新通知，路由器上的 BGP 設定就會進行更新</li>
+	<li>最後，客戶可以透過<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>服務繫結</u></a>設定 Cloudflare 產品使用 BYOIP 位址，將產品指派給這些 IP 範圍</li>
+</ul>
+<p>Addressing API 使我們能夠自動化大部分的 IP 位址公告與撤銷流程，但仍有一些程序需要人工操作。這些手動程序風險較高，因為它們直接涉及生產環境。作為「<a href="https://blog.cloudflare.com/fail-small-resilience-plan" target="_blank" rel="noopener noreferrer"><u>Code Orange：Fail Small</u></a>」計畫的一部分，修復目標之一便是移除 Addressing API 中所需的人工操作，改以安全的自動化工作流程取代。</p>
+<h2>這起事件是如何發生的？</h2>
+<p>導致問題的特定組態變更，原本是要自動化處理客戶請求從 Cloudflare 的 BYOIP 服務中移除首碼的流程——這是目前仍需人工執行的例行請求。將這項人工流程自動化，是我們「Code Orange：Fail Small」計畫的一部分，目的是將所有變更轉向安全、自動化且經健康狀態監控的部署流程。由於 BYOIP 首碼的相關物件清單可能非常龐大，這項清理工作作為定期執行的子任務來實施，負責檢查應該移除的 BYOIP 首碼並加以移除。不幸的是，這個定期清理子任務在向 API 傳送請求時存在一個錯誤。</p>
+<p>以下是來自清理子任務的 API 查詢：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"> resp, </span><span class="sk-6f42c1-ffc799">err</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> d.</span><span class="sk-6f42c1-ffc799">doRequest</span><span class="sk-24292e-fff">(ctx, http.MethodGet, </span><span class="sk-032f62-99ffe4">`/v1/prefixes?pending_delete`</span><span class="sk-24292e-fff">, nil)</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>以下是 API 實作的相關部分：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-6f42c1-ffc799"> v</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req.</span><span class="sk-005cc5-fff">URL</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">Get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"pending_delete"</span><span class="sk-24292e-fff">); v </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// ignore other behavior and fetch pending objects from the ip_prefixes_deleted table</span></span>
+<span class="line"><span class="sk-24292e-fff">		prefixes, </span><span class="sk-6f42c1-ffc799">err</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">RO</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">IPPrefixes</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">FetchPrefixesPendingDeletion</span><span class="sk-24292e-fff">(ctx)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> nil {</span></span>
+<span class="line"><span class="sk-24292e-fff">			api.</span><span class="sk-6f42c1-ffc799">RenderError</span><span class="sk-24292e-fff">(ctx, w, ErrInternalError)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">		api.</span><span class="sk-6f42c1-ffc799">Render</span><span class="sk-24292e-fff">(ctx, w, http.StatusOK, </span><span class="sk-6f42c1-ffc799">renderIPPrefixAPIResponse</span><span class="sk-24292e-fff">(prefixes, nil))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>由於用戶端傳遞的 pending_delete 沒有帶值，這裡 Query().Get("pending_delete") 的結果會是一個空字串 (“”)，因此 API 伺服器將此解讀為請求所有 BYOIP 首碼，而非僅僅那些應該被移除的首碼。系統因此認為所有回傳的首碼都已排入佇列等待刪除。這個新的子任務於是開始系統性地刪除所有 BYOIP 首碼及其所有相關的依賴物件（包括<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>服務繫結</u></a>），直到有人注意到影響，工程師找出該子任務並將其關閉為止。</p>
+<h3>為什麼 Cloudflare 沒有在暫存環境或測試中發現這個錯誤？</h3>
+<p>我們的暫存環境盡可能模擬了生產環境的資料，但在這種情況下還不夠充分，而且我們用來模擬可能情況的模擬資料也不足。 </p>
+<p>此外，雖然我們對此功能進行了測試，但在我們的測試流程和環境中，針對此情境的測試覆蓋率並不完整。最初的測試和程式碼審查專注於 BYOIP 的自助服務 API 旅程，並已成功完成。雖然我們的工程師成功測試了客戶會遵循的確切流程，但測試中並未涵蓋「任務執行器服務在未經明確輸入的情況下，獨立對使用者資料做出變更」的情境。</p>
+<h3>為什麼復原不是立即完成的？</h3>
+<p>受影響的 BYOIP 首碼在這次事件中並非全都處於相同的狀態，因此需要採取更深入、更複雜的資料復原步驟。作為「Code Orange：Fail Small」計畫的一部分，我們正在打造一套系統，讓營運狀態的快照能夠透過具健康狀態監控的部署方式安全地推出。萬一推出的變更導致了意外行為，我們也能非常快速地復原到已知的良好狀態。然而，該系統目前尚未應用於生產環境。</p>
+<p>在本次事件中，BYOIP 首碼處於多種不同的影響狀態，每種狀態都需要不同的處理方式：</p>
+<ul>
+	<li>大多數受影響的客戶僅是首碼被撤銷。這類客戶可以直接進入儀表板，重新切換其首碼的公告狀態，即可恢復服務。</li>
+	<li>有些客戶的首碼被撤銷，而且部分服務繫結也被移除。這些客戶處於部分復原的狀態，他們可以重新公告部分首碼，但無法處理其他首碼。</li>
+	<li>還有部分客戶的首碼被撤銷，且所有服務繫結皆被移除。由於已沒有任何<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>服務</u></a>（如 Magic Transit、Spectrum 或 CDN）與這些首碼繫結，他們無法透過儀表板重新公告首碼。這類客戶的復原時間最長，因為我們必須發起一次全域組態更新，將這些客戶的服務繫結重新套用到 Cloudflare 邊緣的每一台機器上。</li>
+</ul>
+<h3>這次事件與「Code Orange：Fail Small」計畫有何關聯？</h3>
+<p>本次事件發生時，我們所進行的變更正是「Code Orange：Fail Small」計畫的一部分，該計畫旨在提升 Cloudflare 在程式碼與組態方面的韌性。簡單來說，「<a href="https://blog.cloudflare.com/fail-small-resilience-plan" target="_blank" rel="noopener noreferrer"><u>Code Orange：Fail Small</u></a>」的工作可分成三大面向：</p>
+<ul>
+	<li>要求以受控方式推出任何傳播至網路的設定變更，就像我們如今對軟體二進位版本所做的那樣。</li>
+	<li>變更我們的內部「Break Glass」（緊急應變）程序，並移除任何循環相依項，以便我們和我們的客戶能夠快速採取行動，並在事件期間毫無問題地存取所有系統。</li>
+	<li>審查、改善和測試所有處理網路流量的系統的故障模式，以確保其在所有條件下都能展現定義完善的行為，包括非預期錯誤狀態。</li>
+</ul>
+<p>這次我們嘗試部署的變更，屬於第一個面向。我們希望將高風險、需人工介入的變更，改為安全、自動化且以健康狀態監控方式部署的組態更新，藉此提高服務的可靠性。</p>
+<p>當時已有關鍵工作正在進行，以透過階段性測試控管與更嚴謹的正確性檢查，來強化 Addressing API 的組態變更支援。這些工作與已部署的變更是平行進行的。雖然在這次中斷發生前，預防性措施尚未完全上線，但相關團隊在事件發生時，早已積極投入這些系統的開發。根據「Code Orange：Fail Small」所承諾的「所有變更都需以受控方式推進至正式環境」，我們的工程團隊正全面深入堆疊的各個層級，找出並修復所有有問題的地方。雖然這次中斷本身並非全球性的，但其波及範圍與造成的影響仍然大到不可接受。這進一步強化了將「Code Orange：Fail Small」作為優先事項的必要性，直到我們能重新確信所有對網路的變更都能盡可能地逐步完成。接下來，讓我們更詳細地談談針對這些系統所規劃的改進措施。</p>
+<h2>補救措施和後續步驟</h2>
+<h3>API 結構描述標準化</h3>
+<p>此事件中的一個問題是，pending_delete 旗標被視為字串，導致用戶端與伺服器難以準確判斷該旗標的實際值。我們將改進 API 結構描述以確保更好的標準化，這將使測試和系統能更容易地驗證 API 呼叫的格式是否正確。此工作屬於 Code Orange 第三個工作面向，目標是在所有條件下創造定義明確的行為。</p>
+<h3>營運狀態與設定狀態之間更好的區隔</h3>
+<p>目前，客戶對位址結構描述所做的變更會保存在一個權威資料庫中，而該資料庫同時也用於執行營運操作。這使得人工復原流程變得更為困難，因為工程師必須仰賴資料庫快照，而非比較期望狀態與實際狀態之間的差異。我們將重新設計復原機制與資料庫組態，確保我們能輕易快速地回復變更，並在客戶設定與生產環境之間加入隔離層。 </p>
+<p>我們將對從資料庫讀取並套用至生產環境的資料進行快照，並以部署所有其他生產環境變更的相同方式來套用這些快照，也就是透過健康狀態指標進行調控，能在出現問題時自動停止部署。這意味著，下次當我們遇到資料庫因故進入錯誤狀態的問題時，我們可以近乎即時地將個別客戶（或所有客戶）復原到一個先前正常運作的版本。</p>
+<p>雖然這在發生中斷事件時，會暫時阻止客戶透過我們的 API 進行直接更新，但這也意味著在我們努力修復資料庫的同時，我們可以繼續為客戶的流量提供服務，而不是在此期間服務中斷。此工作與 Code Orange 的第一和第二個工作面向一致，也就是實現快速復原以及安全、經健康狀態監控的組態部署。</p>
+<h3>更有效地仲裁大規模撤銷動作</h3>
+<p>我們將加強監控，偵測是否有變更發生得太快或太廣泛，例如快速撤銷或刪除 BGP 首碼，並在這種情況下停用快照的部署。這將形成一種斷路器機制，能夠阻止任何失控的資料庫操作擴散成大規模的影響，就像本次事件所見的那樣。</p>
+<p>此外，我們也正持續進行一項工作，直接監控客戶所運作的服務是否正常執行，這些訊號也可用來觸發斷路器，在調查完成前暫停可能具有危險性的變更。這項工作符合「Code Orange」第一項工作流，也就是安全部署變更的原則。</p>
+<p>以下是包含變更部署與修復步驟的事件時間軸： </p>
+<div id="html-block-k3p" class="html-block">
+	<style>
+		#html-block-k3p .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k3p .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3p .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3p .tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k3p .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k3p .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:151px">
+				<col style="width:201px">
+				<col style="width:451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">時間 (UT</span><span style="font-style:normal;text-decoration:none;color:#000">C</span><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">)</span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">狀態</span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">描述</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-05 21:53</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">程式碼合併到系統中</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">有缺陷的子流程被合併到程式碼庫中</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 17:46</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">程式碼部署到系統中</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">包含有缺陷子流程的 Address API 版本部署完成</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 17:56</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">開始受影響</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">有缺陷的子流程開始執行。首碼公告更新開始傳播，首碼開始被撤銷</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> – 影響開始 -</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:13</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 介入</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">因 one.one.one.one 出現故障，Cloudflare 介入調查</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:18</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">宣佈發生內部事件</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 工程師持續調查影響範圍</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:21</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Addressing API 團隊接手</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">負責 Addressing API 的工程團隊介入並開始除錯</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 18:46</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">識別問題</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">工程師終止了有缺陷的子流程，並停用其定期執行；開始修復作業</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 19:11</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">開始緩解</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 工程師開始為被撤銷的首碼恢復服務能力，同時其他人專注於已被移除的首碼</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 19:19</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">部分首碼得到緩解</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">客戶開始透過儀表板重新公告其首碼以恢復服務。</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影響程度降低 -</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 19:44</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">其他緩解措施仍在繼續</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">工程師開始對已移除的首碼進行資料庫復原方法操作</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 20:30</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">最終緩解程序開始</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">工程師完成用於恢復那些仍具有現有服務繫結但被撤銷首碼的版本。其他人仍在處理已移除的首碼</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> – 影響程度降低 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 21:08</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">組態更新部署</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">工程師開始全球機器組態滾動更新，以恢復那些未能自行緩解或透過先前措施緩解的首碼</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> – 影響程度降低 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026-02-20 23:03</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">組態更新完成</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">用於恢復其餘首碼的全球機器組態部署完成。</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影響結束 –</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>我們對今日這起事件深表歉意，也為其對我們客戶乃至整個網際網路所造成的影響感到非常遺憾。我們致力於提供一個能抵禦變更衝擊的穩健網路，但這次我們未能兌現承諾。我們正積極推動上述各項改進，以確保未來的穩定性，並防止此類問題再次發生。</p>

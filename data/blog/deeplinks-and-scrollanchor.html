@@ -1,359 +1,279 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6neEMhq4G7VLzdtb8taQok/8fc3c8f45bd784c1063018219601bb4a/deeplinks-and-scrollanchor.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<div class="flex anchor relative">
-		<h3 id="what-are-deeplinks">What are DeepLinks?</h3>
-		<a href="https://blog.cloudflare.com/#what-are-deeplinks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To directly quote <a href="https://en.wikipedia.org/wiki/Deep_linking" target="_blank" rel="noopener noreferrer">Wikipedia</a>:</p>
-	<p><b>“Deep linking</b> is the use of a hyperlink that links to a specific, generally searchable or indexed, piece of web content on a website (e.g. <code>http://example.com/path/page</code>), rather than the website's home page (e.g., <code>http://example.com</code>). The URL contains all the information needed to point to a particular item.”</p>
-	<div class="flex anchor relative">
-		<h3 id="why-deeplinks-in-dashboard">Why DeepLinks in Dashboard?</h3>
-		<a href="https://blog.cloudflare.com/#why-deeplinks-in-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are many user experiences in Cloudflare’s Dashboard that are enhanced by the use of deep linking, such as:</p>
-	<ul>
-		<li>
-			<p>We’re able to direct users from marketing pages directly into the Dashboard so they can interact with new/changed features.</p>
-		</li>
-		<li>
-			<p>Troubleshooting docs can have clearer, more intently directions. e.g. “Enable SSL encryption here” vs “Log into the Dashboard, choose your account and zone, navigate to the security tab, change SSL encryption level, blah blah blah”.</p>
-		</li>
-	</ul>
-	<p>One of the interesting challenges with deep linking in the Dashboard is that most interesting resources are “locked” behind the context of an account and a zone/domain/website. To illustrate this, look at a tree of possible URL paths into Cloudflare’s Dashboard:</p>
-	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/ -&gt; root-level resources: login, sign-up, forgot-password, two-factor
-
-dash.cloudflare.com/&lt;accountId&gt;/ -&gt; account-level resources: analytics, workers, domains, stream, billing, audit-log
-
-dash.cloudflare.com/&lt;accountId&gt;/&lt;zoneId&gt; -&gt; zone-level resources: dns, ssl-tls, firewall, speed, caching, page-rules, traffic, etc.</code></pre>
-	<p>You might notice that in order to deep link to anything more interesting than logging in, a deep linker will need to know a user’s account or zone beforehand. A troubleshooting doc might want to send a user to the Page Rules tab in Dashboard to help a user fix their zone, but <i>the linker doesn’t know what that zone is</i>.</p>
-	<p>Another highly desired feature was the ability for a deep link to scroll to a particular piece of content on a Dashboard page, making it even easier for users to navigate. Instead of a troubleshooting doc asking a user to fumble around to find a setting, we could helpfully scroll that setting right into view. Now that would be slick!</p>
-	<div class="flex anchor relative">
-		<h3 id="what-do-deeplinks-look-like-in-dashboard">What do DeepLinks look like in Dashboard?</h3>
-		<a href="https://blog.cloudflare.com/#what-do-deeplinks-look-like-in-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The solution we came up with involves 3 main parts:</p>
-	<ul>
-		<li>
-			<p>Deep links URLs expose an intuitive schema for dynamic value resolution.</p>
-		</li>
-		<li>
-			<p>A React component, DeepLink, consolidates routing/resolving deep links.</p>
-		</li>
-		<li>
-			<p>A React component, ScrollAnchor, encapsulates a simple algorithm which scrolls its content into view when the DOM has “finished loading”.</p>
-		</li>
-	</ul>
-	<p>Just to prove that it works, here’s a GIF of us deep linking to the “TLS 1.3” setting on the security settings page:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ffkWLOQ4Jux6PfgoDaF6r/004b0bd23e0944c895b96a0a1a1a3e32/image1-1.gif" alt="" class="kg-image" width="1665" height="968" loading="lazy">
-
-	</figure>
-	<p>It works! I was asked to select one of my several accounts, then our DeepLink routing component was smart enough to know that I have only one zone within that account and auto-filled the rest of the URL path. After the page was fully loaded, we were automatically scrolled to the TLS 1.3 setting. If you’re curious how all of this works and want to jump into the nitty gritty details, read on!</p>
-	<div class="flex anchor relative">
-		<h3 id="how-are-deeplinks-exposed">How are DeepLinks exposed?</h3>
-		<a href="https://blog.cloudflare.com/#how-are-deeplinks-exposed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you were paying attention to the URL bar in the GIF above, you already know what’s coming. In order to deal with dynamic account/zone resolution, a deep link can use a to query parameter to specify a path into Dashboard. I think it reads quite nicely:</p>
-	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates</code></pre>
-	<p>This example is saying that we’d like to link to the “Edge Certificates” section of the “SSL-TLS” product for <i>some</i> account and <i>some</i> zone that a user needs to manually resolve, as you saw above. It’s easy to imagine removing “?to=/” to transform the link URL into the resolved one:</p>
-	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/&lt;resolvedAccount&gt;/&lt;resolvedZone&gt;/ssl-tls/edge-certificates</code></pre>
-	<p>The URL-like schema of the to parameter makes it very natural to support different variations such as account-level resources</p>
-	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/?to=/:account/billing</code></pre>
-	<p>Or allowing the linker to supply known information</p>
-	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/?to=/1234567890abcdef/:zone/traffic</code></pre>
-	<p>This link takes the user to the “Traffic” product tab for <i>some</i> zone inside of account 1234567890abcdef. Indeed, the :account and :zone symbols are placeholders for user-supplied values, but they can be replaced with any permutation of real, known values to speed up resolution time to provide a better UX.</p>
-	<div class="flex anchor relative">
-		<h3 id="deeplink-routing">DeepLink routing</h3>
-		<a href="https://blog.cloudflare.com/#deeplink-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>These links are parsed and resolved in our top-level routing component, DeepLink. At a high level, this component contains a series of “resolvers” for unknown symbols that need automatic or user-interactive resolution (i.e. :account and :zone). But before we dive in, let’s take a step back and gain appreciation for how cool this component is.</p>
-	<p>Cloudflare’s Dashboard is a single page React app, which means we use React Router to create routing components that handle what’s rendered on different URLs:</p>
-	<pre class="language-typescript"><code class="language-typescript">&lt;Switch&gt;
-  &lt;Route path="/login"&gt;&lt;Login /&gt;&lt;/Route&gt;
-  &lt;Route path="/sign-up"&gt;&lt;Signup /&gt;&lt;/Route&gt;
-  ...
-  &lt;AccountRoutes /&gt;
-&lt;/Switch&gt;</code></pre>
-	<p>When a page is loaded, a lot of things need to happen: API calls need to be made to fetch all the data needed to render a page, like account/user/zone info not cached in the browser. Many components need to be rendered. It turns out that we can improve the UX of many users by <i>blocking React Router</i> to make specific queries to our API instead of rendering an entire page that anecdotally fetches the information we need. For example, there’s no need to render a zone selection page if a user only has one zone, like in our GIF above ☝️.</p>
-	<div class="flex anchor relative">
-		<h3 id="resolvers">Resolvers</h3>
-		<a href="https://blog.cloudflare.com/#resolvers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When a deep link gets parsed and split into parts, the framework iterates over those parts and tries to build a URL string that is later used to redirect users to a specific location in the dashboard.</p>
-	<pre class="language-javascript"><code class="language-javascript">// to=/:account/:zone/traffic
-// parts = [‘:account’, ‘:zone’, ‘traffic’]
-for (const part of parts) {
-  // do something with each part
-}</code></pre>
-	<p>We can build up the dynamic URL by looking at prefixes. If a part starts with “:”, it’s considered a symbol that needs to be resolved. Everything else is a static string that just gets appended.</p>
-	<pre class="language-typescript"><code class="language-typescript">const resolvedParts: string[] = [];
-// parts = [‘:account’, ‘:zone’, ‘traffic’]
-for (let part of parts) {
-  if (part.startsWith(‘:’)) {
-    // resolve
-  }
-
-  resolvedParts.push(part);
-}
-const finalUrl = resolvedParts.join(‘/’);</code></pre>
-	<p>Symbols are handled by functions we call “resolvers”. A resolver is a function that:</p>
-	<ol>
-		<li>
-			<p>Is async.</p>
-		</li>
-		<li>
-			<p>Has a context parameter.</p>
-		</li>
-		<li>
-			<p>Always returns a string - the value it resolves to.</p>
-		</li>
-	</ol>
-	<p>In JavaScript, async functions always return a promise. Return values that are not type of Promise are wrapped in a resolved promise implicitly. They also allow “await” to be used in them. The async/await syntax is used for resolvers so they can perform any kind of asynchronous work - such as calling the API, while being able to “pause” JavaScript with “await” until that asynchronous work is done.</p>
-	<p>Each dynamic symbol has its own resolver. We currently have two resolvers - for account and for zone.</p>
-	<pre class="language-typescript"><code class="language-typescript">const RESOLVERS: Resolvers = {
-  account: accountResolver,
-  zone: zoneResolver
-};
-const resolvedParts: string[] = [];
-// parts = [‘:account’, ‘:zone’, ‘traffic’]
-for (let part of parts) {
-  if (part.startsWith(‘:’)) {
-    // for :account, accountResolver is awaited and returns “abc123”
-    // for :zone, zoneResolver is awaited and returns “testsite.io”
-    part = await RESOLVERS[part.slice(1)];
-  }
-  resolvedParts.push(part);
-}
-const finalUrl = resolvedParts.join(‘/’);</code></pre>
-	<p>The internal implementation is a little bit more complicated, but this is a rough overview of how our DeepLink works.</p>
-	<div class="flex anchor relative">
-		<h3 id="resolver-context">Resolver context</h3>
-		<a href="https://blog.cloudflare.com/#resolver-context" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We mentioned that each resolver has a context parameter. Context is an object that is passed to resolvers from the DeepLink component and it contains a bunch of handy utilities that give resolvers control over any part of the app. For example, it has access to the Redux store (we use Redux.js in the Dashboard to help us manage the application’s state). It has access to previously resolved values, and to all other parts of the deep link. It also has functions to help with user interactions.</p>
-	<div class="flex anchor relative">
-		<h3 id="user-interactions">User interactions</h3>
-		<a href="https://blog.cloudflare.com/#user-interactions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In many cases, a resolver is not able to resolve without the user's help. For example, if a user has multiple zones, the resolver working on :zone symbol needs to wait for the user to select a zone.</p>
-	<pre class="language-typescript"><code class="language-typescript">const zoneResolver: Resolver = async ctx =&gt; {
-  const zones = await fetchZone();
-  // Just one zone, :zone symbols can be resolved to zone.name without user’s help
-  if (zones.length === 1) return zones[0].name;
-  if (zones.length &gt; 1) {
-    // need user’s help to pick a zone
-  }
-};</code></pre>
-	<p>We already have a page in the dashboard with a zone list that looks like this.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57MLM5FGHiSN9LiWocJ7Se/b9396b6f0f69ac90b9982c308aa35f5f/image3-5.png" alt="" class="kg-image" width="1300" height="542" loading="lazy">
-
-	</figure>
-	<p>What we need to do is give the resolver the ability to somehow show this page, and wait for the result of the user's interaction.You might be asking: “But how do we show this page? You just told me that DeepLink blocks the entire page!”That’s true!</p>
-	<p>We decided to block the React Router to prevent unnecessary API calls and DOM updates while a deep link is resolving. But there is no harm in showing some part of the UI, if needed. To be able to do that, we added two functions to context - unblockRouter and blockRouter. These functions just toggle the state that is gating our Router component.</p>
-	<pre class="language-typescript"><code class="language-typescript">const zoneResolver: Resolver = async ctx =&gt; {
-  // ...
-  if (zones.length &gt; 1) {
-    // delegate to React Router to render the page with zone picker
-    ctx.unblockRouter();
-    // need users help to pick a zone
-    // block the router again
-    ctx.blockRouter();
-  }
-};</code></pre>
-	<p>Now, the last piece is to somehow observe user interactions from within the resolver. To be able to do that, we have written a powerful utility.</p>
-	<div class="flex anchor relative">
-		<h3 id="waitforpageaction">waitForPageAction</h3>
-		<a href="https://blog.cloudflare.com/#waitforpageaction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Resolvers are isolated functions that live outside of the application’s components. To be able to observe anything that happens in distant branches of React DOM, we created a function called <code>waitForPageAction</code>. This function takes two parameters:</p>
-	<p>1. <code>pageToAwaitActionOn</code> - URL string pointing to a page we want to await the user's action on. For example, “dash.cloudflare.com/123abc”</p>
-	<p>2. <code>actionType</code> - Unique string describing the action. For example, <code>ZONE_SELECTED</code>.</p>
-	<p>As you may have guessed, waitForPageAction is an async function. It returns a promise that resolves with action metadata whenever that action happens on the page specified by <code>pageToAwaitActionOn</code>. The promise rejects when the user navigates away from <code>pageToAwaitActionOn</code>. Otherwise, it keeps waiting… forever.</p>
-	<p>This helps us to write a code that is very easy to understand.</p>
-	<pre class="language-typescript"><code class="language-typescript">const zoneResolver: Resolver = async ctx =&gt; {
-  // ...
-  if (zones.length &gt; 1) {
-    // delegate to React Router to render the page with zone picker
-    ctx.unblockRouter();
-    // need users help to pick a zone. Wait for ‘ZONE_SELECTED’ action at ‘dash.cloudflare.com/abc123’
-    // action is an object with metadata about zone. It contains zoneName, which can be used in this resolver to resolve :zone symbol
-    const action = ctx.waitForPageAction(
-      ‘dash.cloudflare.com/abc123’,
-      ‘ZONE_SELECTED’
-    );
-    // block the router again
-    ctx.blockRouter();
-    return action.zoneName
-  }
-};</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="how-does-waitforpageaction-work">How does waitForPageAction work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-waitforpageaction-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As mentioned above, we use Redux to manage our state. The <code>actionType</code> parameter is nothing else than a type of Redux action. Whenever a zone is selected, React dispatches a Redux action in an onClick handler.</p>
-	<pre class="language-typescript"><code class="language-typescript">&lt;ZoneCard onClick={zoneName =&gt; { dispatch({type: ‘ZONE_SELECTED’, zoneName}) }} /&gt;</code></pre>
-	<p>Now, how does <code>waitForPageAction</code> know that <code>ZONE_SELECTED’</code> has been dispatched? Aren’t we supposed to write a reducer?!</p>
-	<p>Not really. <code>waitForPageAction</code> is not changing any state, it’s just an observer that resolves whenever some action, that is dispatched, satisfies a predicate. And Redux has an API to subscribe to any store changes - <code>store.subscribe(listener)</code>.</p>
-	<p>The listener will be called any time an action is dispatched, and some part of the state tree may have changed. Unfortunately, the listener does not have access to the currently dispatched action. We can only read the current state.</p>
-	<p>Solution? Store the action in the Redux store!</p>
-	<p>Redux actions are just plain objects (mostly), and thus easy to serialize. We added a simple reducer that stores all actions in the Redux state.</p>
-	<pre class="language-typescript"><code class="language-typescript">export function deepLinkReducer(
-  state: State = DEFAULT_STATE,
-  action: AnyAction
-){
-  const nextState = { ... state, lastAction: action };
-  return nextState;
-}</code></pre>
-	<p>Anytime an action is dispatched, we can read that action’s metadata in <code>store.getState().lastAction</code>. Now, we have everything we need to finally implement <code>waitForPageAction</code>.</p>
-	<pre class="language-typescript"><code class="language-typescript">export function waitForPageAction = (store: Store&lt;DashState&gt;) =&gt;(
-  pageToAwaitActionOn: string,
-  actionType: string
-) =&gt;
-  new Promise&lt;AnyAction&gt;((resolve, reject) =&gt; {
-    // Subscribe to redux store
-    const unsubscribe = store.subscribe(() =&gt; {
-      const state = store.getState();
-      const currentPage = state.router.location.pathname;
-      const lastAction = state.lastAction;
-      if (currentPage !== pageToAwaitActionOn) {
-        // user navigated away -unsubscribe and reject
-        unsubscribe();
-        reject(‘User navigated away’);
-      } else if (lastAction.type === actionType) {
-        // Action types match! Unsubscribe and resolve with action object
-        unsubscribe();
-        resolve(lastAction);
-      }
-    });
-  });</code></pre>
-	<p>The listener reads the current state and grabs the <code>currentPage</code> and <code>lastAction</code> data. If <code>currentPage</code> doesn’t match <code>pageToAwaitActionOn</code>, it means the user navigated away, and there’s no need to continue resolving the deep link - we unsubscribe, and reject the promise. Deep link resolvers are stopped, and React Router unblocked.</p>
-	<p>Else, if <code>lastAction.type</code> matches the <code>actionType</code> parameter, it means the action we are waiting on just happened! Unsubscribe, and resolve the promise with action metadata. The deep link keeps resolving.</p>
-	<p>That’s it! We also added a similar function - <code>waitForAction</code> - which does exactly the same thing, but is not restricted to a specific page.</p>
-	<div class="flex anchor relative">
-		<h3 id="scrollanchor-component">ScrollAnchor component</h3>
-		<a href="https://blog.cloudflare.com/#scrollanchor-component" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We implemented a wrapper component ScrollAnchor that will scroll to its wrapped content, making our deep links even more targeted. A client would wrap some content like this:</p>
-	<pre class="language-typescript"><code class="language-typescript">&lt;ScrollAnchor id=”super-important-setting-card”&gt;
-  &lt;SuperImportantSettingCard /&gt;
-&lt;/ScrollAnchor&gt;</code></pre>
-	<p>And then reference it via a typical URL anchor:</p>
-	<pre class="language-bash"><code class="language-bash">dash.cloudflare.com/path/to/content#super-important-setting-card</code></pre>
-	<p>Now I can hear you saying, “what’s the point? Can’t we get the same behavior with any old ID?”</p>
-	<pre class="language-typescript"><code class="language-typescript">&lt;div id=”super-important-setting-card”&gt;
-  &lt;SuperImportantSettingCard /&gt;
-&lt;/div&gt;</code></pre>
-	<p>We thought so too! But it turns out that there are a few problems that prevent this super simple approach:</p>
-	<ul>
-		<li>
-			<p>The Dashboard’s fixed header</p>
-		</li>
-		<li>
-			<p>DOM updates after page load</p>
-		</li>
-	</ul>
-	<p>Since the Dashboard contains a fixed header at the top of the page, we can’t simply anchor to any ID, since the content will be scrolled to the top of the browser window <i>behind</i> the header. Fortunately, there’s a simple CSS solution using negative margins:</p>
-	<pre class="language-typescript"><code class="language-typescript">&lt;div id=”super-important-setting-card” padding-top={headerOffset} margin-top={headerOffset}&gt;
-  &lt;SuperImportantSettingCard /&gt;
-&lt;/div&gt;</code></pre>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fsQmMLnn9G44KEnxEuhtd/598f79ee26775ac850960bc7d7a797c5/image2-5.png" alt="" class="kg-image" width="1999" height="735" loading="lazy">
-
-	</figure>
-	<p>This CSS trick alone would work for a static site with a fixed header, but the Dashboard is very dynamic. We found early on in testing that using a normal HTML ID anchor in a URL would cause the browser to jump to the tag <i>on page load</i> but the DOM would change in response to newly fetched information or re-rendering, and the anchored content would be pushed out of view.</p>
-	<p>A solution: scroll to the anchored content after the page content is fully loaded, i.e. after all API calls are resolved, spinners removed, content is rendered. Fortunately, there’s a good way to programmatically scroll a browser window: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener noreferrer">Element.scrollIntoView()</a>. However, there isn’t a good way to tell <i>when</i> the DOM is finished changing, since it can be modified at any time after page load. Let’s consider two possible strategies for determining when to scroll anchored content into view.</p>
-	<p>Strategy #1: scroll after a fixed duration. If our goal is to make sure we only scroll to content after a page is “fully loaded”, we can simplify the problem by making some assumptions. Namely, we can assume a maximum amount of time it will take a given page to fetch resources from the backend and re-render the DOM. Let’s call this assumed max duration <code>M</code> milliseconds. We can then easily scroll to some content by running a timeout on page load:</p>
-	<pre class="language-typescript"><code class="language-typescript">setTimeout(() =&gt; scrollTo(htmlId), M)</code></pre>
-	<p>The problem with this approach is that the DOM might finish updating before or after we scroll. We end up with vertical alignment problems (as the DOM is still settling) or a jarring, unexpected scroll (if we scroll long after the DOM is settled). Both options are bad UX, and in practice it’s difficult to choose a duration constant M that is “just right” for every single page.</p>
-	<p>Strategy #2: scroll after the DOM has “settled”. If we know that choosing a good duration <code>M</code> for every page isn’t practical, we should try to come up with an algorithm that can choose a better <code>M</code>:</p>
-	<ol>
-		<li>
-			<p>Define an arbitrary threshold of DOM “busyness”, <code>B</code> milliseconds.</p>
-		</li>
-		<li>
-			<p>On page load, start a timer that will scroll to anchored content after <code>B</code> milliseconds.</p>
-		</li>
-		<li>
-			<p>If we observe any changes to the DOM, reset the timer.</p>
-		</li>
-		<li>
-			<p>Once the timer expires, we know that the DOM hasn’t changed in <code>B</code> milliseconds.</p>
-		</li>
-	</ol>
-	<p>By varying our choice of <code>B</code>, we’re able to have some control over how long we’re willing to wait for a page to “finish loading”. If B is 0 milliseconds, we’ll scroll to the anchored content immediately. If it’s 1000 milliseconds, we’ll wait a full second after any DOM change before scrolling. This algorithm is more resilient than fixed threshold scrolling since it explicitly listens to the DOM, but the chosen threshold is somewhat arbitrary. After some trial and error loading a sample of Dashboard pages, we determined that a 500 millisecond busyness threshold was sufficient to allow all content to load onto a page. Here’s what the implementation looks like:</p>
-	<pre class="language-typescript"><code class="language-typescript">const SETTLE_THRESHOLD = 500;
-const scrollThunk = (observer: MutationObserver) =&gt; {
-  scrollToAnchor(id);
-  observer.disconnect();
-};
-
-let domTimer: number;
-
-const observer = new MutationObserver((_mutationsList, observer) =&gt; {
-  domTimer = resetTimeout(domTimer, scrollTunk, SETTLE_THRESHOLD, observer);
-});
-
-observer.observe(document.body, {childList: true, subtree: true});
-
-domTimer = window.setTimeout(scrollThunk, SETTLE_THRESHOLD, observer);</code></pre>
-	<p>A key assumption is that API calls take roughly the same amount of time to resolve. If most fetches take 250ms to resolve but others take 1500ms, we might see that the DOM hasn’t been changed for a while and think that it’s settled. Who knew there would be so much work involved in scrolling!</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There you have it. A fully-featured deep linking solution with an intuitive schema, React Router blocking, autofilling, and scrolling. Thanks for reading.</p>
+<h3>What are DeepLinks?</h3>
+<p>To directly quote <a href="https://en.wikipedia.org/wiki/Deep_linking" target="_blank" rel="noopener noreferrer">Wikipedia</a>:</p>
+<p><strong>“Deep linking</strong> is the use of a hyperlink that links to a specific, generally searchable or indexed, piece of web content on a website (e.g. <code>http://example.com/path/page</code>), rather than the website's home page (e.g., <code>http://example.com</code>). The URL contains all the information needed to point to a particular item.”</p>
+<h3>Why DeepLinks in Dashboard?</h3>
+<p>There are many user experiences in Cloudflare’s Dashboard that are enhanced by the use of deep linking, such as:</p>
+<ul>
+	<li>We’re able to direct users from marketing pages directly into the Dashboard so they can interact with new/changed features.</li>
+	<li>Troubleshooting docs can have clearer, more intently directions. e.g. “Enable SSL encryption here” vs “Log into the Dashboard, choose your account and zone, navigate to the security tab, change SSL encryption level, blah blah blah”.</li>
+</ul>
+<p>One of the interesting challenges with deep linking in the Dashboard is that most interesting resources are “locked” behind the context of an account and a zone/domain/website. To illustrate this, look at a tree of possible URL paths into Cloudflare’s Dashboard:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> root-level</span><span class="sk-032f62-99ffe4"> resources:</span><span class="sk-032f62-99ffe4"> login,</span><span class="sk-032f62-99ffe4"> sign-up,</span><span class="sk-032f62-99ffe4"> forgot-password,</span><span class="sk-032f62-99ffe4"> two-factor</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;accountId&gt;/ -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> account-level</span><span class="sk-032f62-99ffe4"> resources:</span><span class="sk-032f62-99ffe4"> analytics,</span><span class="sk-032f62-99ffe4"> workers,</span><span class="sk-032f62-99ffe4"> domains,</span><span class="sk-032f62-99ffe4"> stream,</span><span class="sk-032f62-99ffe4"> billing,</span><span class="sk-032f62-99ffe4"> audit-log</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;accountId&gt;/&lt;zoneId&gt; -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> zone-level</span><span class="sk-032f62-99ffe4"> resources:</span><span class="sk-032f62-99ffe4"> dns,</span><span class="sk-032f62-99ffe4"> ssl-tls,</span><span class="sk-032f62-99ffe4"> firewall,</span><span class="sk-032f62-99ffe4"> speed,</span><span class="sk-032f62-99ffe4"> caching,</span><span class="sk-032f62-99ffe4"> page-rules,</span><span class="sk-032f62-99ffe4"> traffic,</span><span class="sk-032f62-99ffe4"> etc.</span></span></code></pre>
 </div>
+<p>You might notice that in order to deep link to anything more interesting than logging in, a deep linker will need to know a user’s account or zone beforehand. A troubleshooting doc might want to send a user to the Page Rules tab in Dashboard to help a user fix their zone, but <em>the linker doesn’t know what that zone is</em>.</p>
+<p>Another highly desired feature was the ability for a deep link to scroll to a particular piece of content on a Dashboard page, making it even easier for users to navigate. Instead of a troubleshooting doc asking a user to fumble around to find a setting, we could helpfully scroll that setting right into view. Now that would be slick!</p>
+<h3>What do DeepLinks look like in Dashboard?</h3>
+<p>The solution we came up with involves 3 main parts:</p>
+<ul>
+	<li>Deep links URLs expose an intuitive schema for dynamic value resolution.</li>
+	<li>A React component, DeepLink, consolidates routing/resolving deep links.</li>
+	<li>A React component, ScrollAnchor, encapsulates a simple algorithm which scrolls its content into view when the DOM has “finished loading”.</li>
+</ul>
+<p>Just to prove that it works, here’s a GIF of us deep linking to the “TLS 1.3” setting on the security settings page:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="416" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW48A1G9YS2DVC6BMQT869DX.gif" alt="DeepLinks and ScrollAnchor Embedded Image - QErqPV" width="715" height="416" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>It works! I was asked to select one of my several accounts, then our DeepLink routing component was smart enough to know that I have only one zone within that account and auto-filled the rest of the URL path. After the page was fully loaded, we were automatically scrolled to the TLS 1.3 setting. If you’re curious how all of this works and want to jump into the nitty gritty details, read on!</p>
+<h3>How are DeepLinks exposed?</h3>
+<p>If you were paying attention to the URL bar in the GIF above, you already know what’s coming. In order to deal with dynamic account/zone resolution, a deep link can use a to query parameter to specify a path into Dashboard. I think it reads quite nicely:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/:account/:zone/ssl-tls/edge-certificates</span></span></code></pre>
+</div>
+<p>This example is saying that we’d like to link to the “Edge Certificates” section of the “SSL-TLS” product for <em>some</em> account and <em>some</em> zone that a user needs to manually resolve, as you saw above. It’s easy to imagine removing “?to=/” to transform the link URL into the resolved one:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/</span><span class="sk-24292e-fff">&lt;resolvedAccount&gt;/&lt;resolvedZone&gt;/ssl-tls/edge-certificates</span></span></code></pre>
+</div>
+<p>The URL-like schema of the to parameter makes it very natural to support different variations such as account-level resources</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/:account/billing</span></span></code></pre>
+</div>
+<p>Or allowing the linker to supply known information</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/?to</span><span class="sk-032f62-99ffe4">=/1234567890abcdef/:zone/traffic</span></span></code></pre>
+</div>
+<p>This link takes the user to the “Traffic” product tab for <em>some</em> zone inside of account 1234567890abcdef. Indeed, the :account and :zone symbols are placeholders for user-supplied values, but they can be replaced with any permutation of real, known values to speed up resolution time to provide a better UX.</p>
+<h3>DeepLink routing</h3>
+<p>These links are parsed and resolved in our top-level routing component, DeepLink. At a high level, this component contains a series of “resolvers” for unknown symbols that need automatic or user-interactive resolution (i.e. :account and :zone). But before we dive in, let’s take a step back and gain appreciation for how cool this component is.</p>
+<p>Cloudflare’s Dashboard is a single page React app, which means we use React Router to create routing components that handle what’s rendered on different URLs:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Switch</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">Route path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/login"</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Login</span><span class="sk-24292e-fff"> /&gt;&lt;/</span><span class="sk-6f42c1-ffc799">Route</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">Route path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"/sign-up"</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Signup</span><span class="sk-24292e-fff"> /&gt;&lt;/</span><span class="sk-6f42c1-ffc799">Route</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">AccountRoutes </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">Switch</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>When a page is loaded, a lot of things need to happen: API calls need to be made to fetch all the data needed to render a page, like account/user/zone info not cached in the browser. Many components need to be rendered. It turns out that we can improve the UX of many users by <em>blocking React Router</em> to make specific queries to our API instead of rendering an entire page that anecdotally fetches the information we need. For example, there’s no need to render a zone selection page if a user only has one zone, like in our GIF above ☝️.</p>
+<h3>Resolvers</h3>
+<p>When a deep link gets parsed and split into parts, the framework iterates over those parts and tries to build a URL string that is later used to redirect users to a specific location in the dashboard.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// to=/:account/:zone/traffic</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// parts = [‘:account’, ‘:zone’, ‘traffic’]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> part</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> parts) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // do something with each part</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We can build up the dynamic URL by looking at prefixes. If a part starts with “:”, it’s considered a symbol that needs to be resolved. Everything else is a static string that just gets appended.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> resolvedParts</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">[] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// parts = [‘:account’, ‘:zone’, ‘traffic’]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> part </span><span class="sk-d73a49-a0a0a0">of</span><span class="sk-24292e-fff"> parts) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (part.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(‘:’)) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // resolve</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  resolvedParts.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(part);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> finalUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> resolvedParts.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(‘</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">’);</span></span></code></pre>
+</div>
+<p>Symbols are handled by functions we call “resolvers”. A resolver is a function that:</p>
+<ol>
+	<li>Is async.</li>
+	<li>Has a context parameter.</li>
+	<li>Always returns a string - the value it resolves to.</li>
+</ol>
+<p>In JavaScript, async functions always return a promise. Return values that are not type of Promise are wrapped in a resolved promise implicitly. They also allow “await” to be used in them. The async/await syntax is used for resolvers so they can perform any kind of asynchronous work - such as calling the API, while being able to “pause” JavaScript with “await” until that asynchronous work is done.</p>
+<p>Each dynamic symbol has its own resolver. We currently have two resolvers - for account and for zone.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> RESOLVERS</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Resolvers</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  account: accountResolver,</span></span>
+<span class="line"><span class="sk-24292e-fff">  zone: zoneResolver</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> resolvedParts</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">[] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// parts = [‘:account’, ‘:zone’, ‘traffic’]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> part </span><span class="sk-d73a49-a0a0a0">of</span><span class="sk-24292e-fff"> parts) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (part.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(‘:’)) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // for :account, accountResolver is awaited and returns “abc123”</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // for :zone, zoneResolver is awaited and returns “testsite.io”</span></span>
+<span class="line"><span class="sk-24292e-fff">    part </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> RESOLVERS</span><span class="sk-24292e-fff">[part.</span><span class="sk-6f42c1-ffc799">slice</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)];</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  resolvedParts.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(part);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> finalUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> resolvedParts.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(‘</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">’);</span></span></code></pre>
+</div>
+<p>The internal implementation is a little bit more complicated, but this is a rough overview of how our DeepLink works.</p>
+<h3>Resolver context</h3>
+<p>We mentioned that each resolver has a context parameter. Context is an object that is passed to resolvers from the DeepLink component and it contains a bunch of handy utilities that give resolvers control over any part of the app. For example, it has access to the Redux store (we use Redux.js in the Dashboard to help us manage the application’s state). It has access to previously resolved values, and to all other parts of the deep link. It also has functions to help with user interactions.</p>
+<h3>User interactions</h3>
+<p>In many cases, a resolver is not able to resolve without the user's help. For example, if a user has multiple zones, the resolver working on :zone symbol needs to wait for the user to select a zone.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> zoneResolver</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Resolver</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-e36209-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> zones</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetchZone</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Just one zone, :zone symbols can be resolved to zone.name without user’s help</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (zones.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> ===</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> zones[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">].name;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (zones.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // need user’s help to pick a zone</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>We already have a page in the dashboard with a zone list that looks like this.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="298" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=640&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=750&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=828&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=1080&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=1280&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=1430&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="DeepLinks and ScrollAnchor Embedded Image - e5cOCc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477C5M018AV74PNMZHZH02.png&amp;w=1300&amp;h=542&amp;f=webp" data-lightbox-width="1300" data-lightbox-height="542" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="298" class="pt-portable-image-media"></div>
+</figure>
+<p>What we need to do is give the resolver the ability to somehow show this page, and wait for the result of the user's interaction.You might be asking: “But how do we show this page? You just told me that DeepLink blocks the entire page!”That’s true!</p>
+<p>We decided to block the React Router to prevent unnecessary API calls and DOM updates while a deep link is resolving. But there is no harm in showing some part of the UI, if needed. To be able to do that, we added two functions to context - unblockRouter and blockRouter. These functions just toggle the state that is gating our Router component.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> zoneResolver</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Resolver</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-e36209-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (zones.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // delegate to React Router to render the page with zone picker</span></span>
+<span class="line"><span class="sk-24292e-fff">    ctx.</span><span class="sk-6f42c1-ffc799">unblockRouter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // need users help to pick a zone</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // block the router again</span></span>
+<span class="line"><span class="sk-24292e-fff">    ctx.</span><span class="sk-6f42c1-ffc799">blockRouter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>Now, the last piece is to somehow observe user interactions from within the resolver. To be able to do that, we have written a powerful utility.</p>
+<h3>waitForPageAction</h3>
+<p>Resolvers are isolated functions that live outside of the application’s components. To be able to observe anything that happens in distant branches of React DOM, we created a function called <code>waitForPageAction</code>. This function takes two parameters:</p>
+<p>1. <code>pageToAwaitActionOn</code> - URL string pointing to a page we want to await the user's action on. For example, “dash.cloudflare.com/123abc”</p>
+<p>2. <code>actionType</code> - Unique string describing the action. For example, <code>ZONE_SELECTED</code>.</p>
+<p>As you may have guessed, waitForPageAction is an async function. It returns a promise that resolves with action metadata whenever that action happens on the page specified by <code>pageToAwaitActionOn</code>. The promise rejects when the user navigates away from <code>pageToAwaitActionOn</code>. Otherwise, it keeps waiting… forever.</p>
+<p>This helps us to write a code that is very easy to understand.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> zoneResolver</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Resolver</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-e36209-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (zones.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // delegate to React Router to render the page with zone picker</span></span>
+<span class="line"><span class="sk-24292e-fff">    ctx.</span><span class="sk-6f42c1-ffc799">unblockRouter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // need users help to pick a zone. Wait for ‘ZONE_SELECTED’ action at ‘dash.cloudflare.com/abc123’</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // action is an object with metadata about zone. It contains zoneName, which can be used in this resolver to resolve :zone symbol</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> action</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> ctx.</span><span class="sk-6f42c1-ffc799">waitForPageAction</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">      ‘dash.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">abc123’,</span></span>
+<span class="line"><span class="sk-24292e-fff">      ‘</span><span class="sk-005cc5-fff">ZONE_SELECTED</span><span class="sk-24292e-fff">’</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // block the router again</span></span>
+<span class="line"><span class="sk-24292e-fff">    ctx.</span><span class="sk-6f42c1-ffc799">blockRouter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> action.zoneName</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<h3>How does waitForPageAction work?</h3>
+<p>As mentioned above, we use Redux to manage our state. The <code>actionType</code> parameter is nothing else than a type of Redux action. Whenever a zone is selected, React dispatches a Redux action in an onClick handler.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ZoneCard onClick</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{</span><span class="sk-e36209-fff">zoneName</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-6f42c1-ffc799">dispatch</span><span class="sk-24292e-fff">({type: ‘</span><span class="sk-005cc5-fff">ZONE_SELECTED</span><span class="sk-24292e-fff">’, zoneName}) }} </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span></code></pre>
+</div>
+<p>Now, how does <code>waitForPageAction</code> know that <code>ZONE_SELECTED’</code> has been dispatched? Aren’t we supposed to write a reducer?!</p>
+<p>Not really. <code>waitForPageAction</code> is not changing any state, it’s just an observer that resolves whenever some action, that is dispatched, satisfies a predicate. And Redux has an API to subscribe to any store changes - <code>store.subscribe(listener)</code>.</p>
+<p>The listener will be called any time an action is dispatched, and some part of the state tree may have changed. Unfortunately, the listener does not have access to the currently dispatched action. We can only read the current state.</p>
+<p>Solution? Store the action in the Redux store!</p>
+<p>Redux actions are just plain objects (mostly), and thus easy to serialize. We added a simple reducer that stores all actions in the Redux state.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> deepLinkReducer</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-e36209-fff">  state</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> State</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> DEFAULT_STATE</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-e36209-fff">  action</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AnyAction</span></span>
+<span class="line"><span class="sk-24292e-fff">){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> nextState</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> state, lastAction: action };</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> nextState;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Anytime an action is dispatched, we can read that action’s metadata in <code>store.getState().lastAction</code>. Now, we have everything we need to finally implement <code>waitForPageAction</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> waitForPageAction</span><span class="sk-24292e-fff"> = (</span><span class="sk-e36209-fff">store</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Store</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">DashState</span><span class="sk-24292e-fff">&gt;) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-e36209-fff">  pageToAwaitActionOn</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-e36209-fff">  actionType</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span></span>
+<span class="line"><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  new</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">AnyAction</span><span class="sk-24292e-fff">&gt;((</span><span class="sk-e36209-fff">resolve</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">reject</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Subscribe to redux store</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-e36209-fff"> unsubscribe</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> store.</span><span class="sk-6f42c1-ffc799">subscribe</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> state</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> store.</span><span class="sk-6f42c1-ffc799">getState</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> currentPage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> state.router.location.pathname;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> lastAction</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> state.lastAction;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (currentPage </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-24292e-fff"> pageToAwaitActionOn) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // user navigated away -unsubscribe and reject</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        unsubscribe</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        reject</span><span class="sk-24292e-fff">(‘User navigated away’);</span></span>
+<span class="line"><span class="sk-24292e-fff">      } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (lastAction.type </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> actionType) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Action types match! Unsubscribe and resolve with action object</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        unsubscribe</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        resolve</span><span class="sk-24292e-fff">(lastAction);</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span></code></pre>
+</div>
+<p>The listener reads the current state and grabs the <code>currentPage</code> and <code>lastAction</code> data. If <code>currentPage</code> doesn’t match <code>pageToAwaitActionOn</code>, it means the user navigated away, and there’s no need to continue resolving the deep link - we unsubscribe, and reject the promise. Deep link resolvers are stopped, and React Router unblocked.</p>
+<p>Else, if <code>lastAction.type</code> matches the <code>actionType</code> parameter, it means the action we are waiting on just happened! Unsubscribe, and resolve the promise with action metadata. The deep link keeps resolving.</p>
+<p>That’s it! We also added a similar function - <code>waitForAction</code> - which does exactly the same thing, but is not restricted to a specific page.</p>
+<h3>ScrollAnchor component</h3>
+<p>We implemented a wrapper component ScrollAnchor that will scroll to its wrapped content, making our deep links even more targeted. A client would wrap some content like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ScrollAnchor id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-005cc5-a0a0a0">super</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">important</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">setting</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">card”</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">SuperImportantSettingCard </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">ScrollAnchor</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>And then reference it via a typical URL anchor:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">dash.cloudflare.com/path/to/content#super-important-setting-card</span></span></code></pre>
+</div>
+<p>Now I can hear you saying, “what’s the point? Can’t we get the same behavior with any old ID?”</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">div id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-005cc5-a0a0a0">super</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">important</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">setting</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">card”</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">SuperImportantSettingCard </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>We thought so too! But it turns out that there are a few problems that prevent this super simple approach:</p>
+<ul>
+	<li>The Dashboard’s fixed header</li>
+	<li>DOM updates after page load</li>
+</ul>
+<p>Since the Dashboard contains a fixed header at the top of the page, we can’t simply anchor to any ID, since the content will be scrolled to the top of the browser window <em>behind</em> the header. Fortunately, there’s a simple CSS solution using negative margins:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">div id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">”</span><span class="sk-005cc5-a0a0a0">super</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">important</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">setting</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">card” padding</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">top</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{headerOffset} margin</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">top</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{headerOffset}</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  &lt;</span><span class="sk-24292e-fff">SuperImportantSettingCard </span><span class="sk-d73a49-a0a0a0">/&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-24292e-fff">div</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="263" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=750&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=828&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1080&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1280&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1430&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="DeepLinks and ScrollAnchor Embedded Image - zwQzt9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47M3SBKAY92807K1K49CGY.png&amp;w=1920&amp;h=706&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="706" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="263" class="pt-portable-image-media"></div>
+</figure>
+<p>This CSS trick alone would work for a static site with a fixed header, but the Dashboard is very dynamic. We found early on in testing that using a normal HTML ID anchor in a URL would cause the browser to jump to the tag <em>on page load</em> but the DOM would change in response to newly fetched information or re-rendering, and the anchored content would be pushed out of view.</p>
+<p>A solution: scroll to the anchored content after the page content is fully loaded, i.e. after all API calls are resolved, spinners removed, content is rendered. Fortunately, there’s a good way to programmatically scroll a browser window: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView" target="_blank" rel="noopener noreferrer">Element.scrollIntoView()</a>. However, there isn’t a good way to tell <em>when</em> the DOM is finished changing, since it can be modified at any time after page load. Let’s consider two possible strategies for determining when to scroll anchored content into view.</p>
+<p>Strategy #1: scroll after a fixed duration. If our goal is to make sure we only scroll to content after a page is “fully loaded”, we can simplify the problem by making some assumptions. Namely, we can assume a maximum amount of time it will take a given page to fetch resources from the backend and re-render the DOM. Let’s call this assumed max duration <code>M</code> milliseconds. We can then easily scroll to some content by running a timeout on page load:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">setTimeout</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> scrollTo</span><span class="sk-24292e-fff">(htmlId), </span><span class="sk-005cc5-fff">M</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>The problem with this approach is that the DOM might finish updating before or after we scroll. We end up with vertical alignment problems (as the DOM is still settling) or a jarring, unexpected scroll (if we scroll long after the DOM is settled). Both options are bad UX, and in practice it’s difficult to choose a duration constant M that is “just right” for every single page.</p>
+<p>Strategy #2: scroll after the DOM has “settled”. If we know that choosing a good duration <code>M</code> for every page isn’t practical, we should try to come up with an algorithm that can choose a better <code>M</code>:</p>
+<ol>
+	<li>Define an arbitrary threshold of DOM “busyness”, <code>B</code> milliseconds.</li>
+	<li>On page load, start a timer that will scroll to anchored content after <code>B</code> milliseconds.</li>
+	<li>If we observe any changes to the DOM, reset the timer.</li>
+	<li>Once the timer expires, we know that the DOM hasn’t changed in <code>B</code> milliseconds.</li>
+</ol>
+<p>By varying our choice of <code>B</code>, we’re able to have some control over how long we’re willing to wait for a page to “finish loading”. If B is 0 milliseconds, we’ll scroll to the anchored content immediately. If it’s 1000 milliseconds, we’ll wait a full second after any DOM change before scrolling. This algorithm is more resilient than fixed threshold scrolling since it explicitly listens to the DOM, but the chosen threshold is somewhat arbitrary. After some trial and error loading a sample of Dashboard pages, we determined that a 500 millisecond busyness threshold was sufficient to allow all content to load onto a page. Here’s what the implementation looks like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> SETTLE_THRESHOLD</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 500</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> scrollThunk</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">observer</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> MutationObserver</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  scrollToAnchor</span><span class="sk-24292e-fff">(id);</span></span>
+<span class="line"><span class="sk-24292e-fff">  observer.</span><span class="sk-6f42c1-ffc799">disconnect</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> domTimer</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> observer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MutationObserver</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">_mutationsList</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">observer</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  domTimer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> resetTimeout</span><span class="sk-24292e-fff">(domTimer, scrollTunk, </span><span class="sk-005cc5-fff">SETTLE_THRESHOLD</span><span class="sk-24292e-fff">, observer);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">observer.</span><span class="sk-6f42c1-ffc799">observe</span><span class="sk-24292e-fff">(document.body, {childList: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, subtree: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">domTimer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> window.</span><span class="sk-6f42c1-ffc799">setTimeout</span><span class="sk-24292e-fff">(scrollThunk, </span><span class="sk-005cc5-fff">SETTLE_THRESHOLD</span><span class="sk-24292e-fff">, observer);</span></span></code></pre>
+</div>
+<p>A key assumption is that API calls take roughly the same amount of time to resolve. If most fetches take 250ms to resolve but others take 1500ms, we might see that the DOM hasn’t been changed for a while and think that it’s settled. Who knew there would be so much work involved in scrolling!</p>
+<h3>Conclusion</h3>
+<p>There you have it. A fully-featured deep linking solution with an intuitive schema, React Router blocking, autofilling, and scrolling. Thanks for reading.</p>

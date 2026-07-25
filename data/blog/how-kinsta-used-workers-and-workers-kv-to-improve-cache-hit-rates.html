@@ -1,105 +1,73 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QtEG4SPpBvhhQRrOHLmMt/ff56c77652452c22b0ff7c73949cf718/how-kinsta-used-workers-and-workers-kv-to-improve-cache-hit-rates.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>This is a guest post by Kinsta about their use of our platform.</p>
-	<p>At <a href="https://kinsta.com" target="_blank" rel="noopener noreferrer">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
-	<p>While making that happen, we’ve learned a thing or two about using Cloudflare Workers and Workers KV to provide optimized caching rules for static and dynamic content.</p>
-	<p>In early 2023, we doubled down on Cloudflare cache wrangling, making caches more responsive to client-side configuration changes while also shifting the heavy lifting behind broadcasting feature updates away from our admins on the backend and into Cloudflare Workers. A key result was a dramatic increase in the share of customer data successfully cached, increasing 56.3% between October 2022 and March 2023.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jl0A69n6LwaP2LfqmiFAh/41eaf7bfd0e23a139a27f0fef3218992/image5-10.png" alt="" class="kg-image" width="1053" height="160" loading="lazy">
-
-	</figure>
-	<p>Cloudflare Workers and Workers KV allow us to programmatically customize every request and response with minimal effort and lower latency. We no longer need to deploy changes to hundreds of thousands of containers when we want to implement new features; we can replicate or implement the feature with Workers and deploy it everywhere with a few commands and clicks, saving us days of work and maintenance.</p>
-	<div class="flex anchor relative">
-		<h3 id="request-routing-with-workers-kv-and-workers">Request routing with Workers KV and Workers</h3>
-		<a href="https://blog.cloudflare.com/#request-routing-with-workers-kv-and-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Every Kinsta-hosted domain is a key, and its value contains at least the core settings, like the origin's IP and port, and a unique random ID. With this data easily available in Workers KV, we can use Workers to analyze, manipulate, and route requests to their expected backend. We also use Workers KV to store customer optimization options like Polish, Image Resizing, and Auto Minify.</p>
-	<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties" target="_blank" rel="noopener noreferrer">Request property</a>. Here's an example:</p>
-	<pre class="language-javascript"><code class="language-javascript">// Assign KV values to variables
-const { customBackend } = kvdata.kinstaConf;
-
-// Override the backend
-cf.resolveOverride = customBackend;</code></pre>
-	<p>However, while Workers KV worked well to route requests, we soon noticed inconsistent responses in our cache. Sometimes a customer activated Polish and, due to Workers KV's one-minute cache, new requests arrived before Workers KV fully propagated the change, causing us to cache non-optimized assets. When this happened, the client had to clear their cache again manually. Not the ideal scenario. Clients got frustrated, and we wasted API operations and GCP bandwidth, constantly purging caches.</p>
-	<div class="flex anchor relative">
-		<h3 id="cache-key-is-the-key">Cache key is the key</h3>
-		<a href="https://blog.cloudflare.com/#cache-key-is-the-key" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since we always read the domain's Workers KV data, we realized we could route requests and customize the cache key, appending things like the domain's ID and features that could affect the asset, like Polish. Today, our cache key is heavily customized to quickly reflect every client's change in our panel or API. By modifying the cache key using Workers KV's data, nobody needs to worry about clearing the cache anymore. As soon as Workers KV propagates the changes, the cache key also changes and we request and cache a fresh asset.</p>
-	<p>The easiest way to customize the cache key is to append <code>query params</code> to it. For example:</p>
-	<pre class="language-javascript"><code class="language-javascript">let cacheKey = `${request.url}?custom-cache-param-polish=lossy`</code></pre>
-	<p>Of course, you need to check the URL for existing parameters to determine which connector to use — <code>?</code> or <code>&amp;</code> — and ensure you are using a unique identifier.</p>
-	<p>Then, you can use this new cache key to save the response with Cache API or Fetch — or both.</p>
-	<div class="flex anchor relative">
-		<h3 id="workers-kv-cache">Workers KV Cache</h3>
-		<a href="https://blog.cloudflare.com/#workers-kv-cache" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Workers KV operations are affordable, but the numbers can pile up when you trigger billions of reading operations daily.</p>
-	<p>Thanks to our cache key customization, we realized we could cache the Workers KV data with Cache API, saving on reading operations and possibly lowering the latency by avoiding multiple Workers KV GET requests per visitor. Since the cached response is now based on the request's URL combined with KV data, we no longer need to worry about caching stale content.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rBZU50BbZo9KghOLn8061/472a03792013dbe143c59d215de1b996/image3-16.png" alt="" class="kg-image" width="381" height="301" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ep6zAMholFQw5kxOZuvxn/eaeadc260624177796e47390447b857d/image1-23.png" alt="" class="kg-image" width="562" height="381" loading="lazy">
-
-	</figure>
-	<p>However, unlike many applications, we can't cache Workers KV for extended periods. Kinsta's customers are constantly trying new features, changing Polish and Auto Minify settings, sometimes excluding pages or extensions from being cached, and they want to see their changes in production as soon as possible.</p>
-	<p>That's when we decided to microcache our Workers KV data — caching dynamic or constantly-changed content for a very short period of time, usually less than 60 seconds.</p>
-	<p>It’s pretty simple to implement your own Workers KV caching logic. For example:</p>
-	<pre class="language-javascript"><code class="language-javascript">const handleKVCache = async (event, myCustomDomain) =&gt; {
-  // Try to get KV from cache first
-  const cache = caches.default;
-  let site_data = await cache.match( `https://${myCustomDomain}/some-string-ID-kv-data/` );
-
-  // Valid KV cache match
-  if (site_data &amp;&amp; site_data.status === 200) {
-    // ... modify your cached data if necessary, then return it
-    return site_data;
-  }
-
-  // Invalid cache (expired, miss, etc), get data from KV namespace
-  site_data = await KV_NAMESPACE.get(myCustomDomain.toLowerCase());
-  
-  // Cache valid KV responses with Cache API
-  if (site_data) {
-    let kvResponse = new Response(JSON.stringify(site_data), {status: 200});
-    kvResponse.headers.set("Cache-Control", "public, s-maxage=30");
-    event.waitUntil(cache.put(`https://${myCustomDomain}/some-string-ID-kv-data/`, kvResponse));
-  }
-  
-  return site_data;
-};</code></pre>
-	<p>(Optionally, you could use <a href="https://flareutils.pages.dev/betterkv" target="_blank" rel="noopener noreferrer">FlareUtils' BetterKV</a>.)</p>
-	<p>At Kinsta, we implemented a 30-second cache TTL for Workers KV data, decreasing read operations by about 80%.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/55WQ6ntmTVnTWEhzV8sRL1/1a0489491415f34164cfcda505fb0ee0/image4-14.png" alt="" class="kg-image" width="875" height="363" loading="lazy">
-
-	</figure>
-	<p>Read operations</p>
-	<div class="flex anchor relative">
-		<h3 id="learn-more">Learn more</h3>
-		<a href="https://blog.cloudflare.com/#learn-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Want to learn more about Workers and Workers KV? Check out the Cloudflare Workers KV developer <a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">documentation</a>, or read our dedicated <a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">homepage</a>.</p>
+<p>This is a guest post by Kinsta about their use of our platform.</p>
+<p>At <a href="https://kinsta.com" target="_blank" rel="noopener noreferrer">Kinsta</a>, we’re obsessed with speed: Our Application Hosting, Database Hosting and Managed WordPress Hosting services all run on the Google Cloud Platform’s fastest Premium Tier Network and C2 Machines, and we rely on Cloudflare to keep the pedal to the metal for tens of thousands of customers who want to deliver their content around the world with speed and security.</p>
+<p>While making that happen, we’ve learned a thing or two about using Cloudflare Workers and Workers KV to provide optimized caching rules for static and dynamic content.</p>
+<p>In early 2023, we doubled down on Cloudflare cache wrangling, making caches more responsive to client-side configuration changes while also shifting the heavy lifting behind broadcasting feature updates away from our admins on the backend and into Cloudflare Workers. A key result was a dramatic increase in the share of customer data successfully cached, increasing 56.3% between October 2022 and March 2023.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="109" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=715&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=640&amp;h=98&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=715&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=750&amp;h=114&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=828&amp;h=126&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=1080&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=1280&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=1430&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1925 Embedded Image - kuMoZH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NK96FP43CQNTGG8464TK.png&amp;w=1053&amp;h=160&amp;f=webp" data-lightbox-width="1053" data-lightbox-height="160" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="109" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare Workers and Workers KV allow us to programmatically customize every request and response with minimal effort and lower latency. We no longer need to deploy changes to hundreds of thousands of containers when we want to implement new features; we can replicate or implement the feature with Workers and deploy it everywhere with a few commands and clicks, saving us days of work and maintenance.</p>
+<h3>Request routing with Workers KV and Workers</h3>
+<p>Every Kinsta-hosted domain is a key, and its value contains at least the core settings, like the origin's IP and port, and a unique random ID. With this data easily available in Workers KV, we can use Workers to analyze, manipulate, and route requests to their expected backend. We also use Workers KV to store customer optimization options like Polish, Image Resizing, and Auto Minify.</p>
+<p>To route requests to custom IPs and ports, we use resolveOverride, a Cloudflare-specific <a href="https://developers.cloudflare.com/workers/runtime-apis/request/#requestinitcfproperties" target="_blank" rel="noopener noreferrer">Request property</a>. Here's an example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Assign KV values to variables</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">customBackend</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> kvdata.kinstaConf;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Override the backend</span></span>
+<span class="line"><span class="sk-24292e-fff">cf.resolveOverride </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> customBackend;</span></span></code></pre>
 </div>
+<p>However, while Workers KV worked well to route requests, we soon noticed inconsistent responses in our cache. Sometimes a customer activated Polish and, due to Workers KV's one-minute cache, new requests arrived before Workers KV fully propagated the change, causing us to cache non-optimized assets. When this happened, the client had to clear their cache again manually. Not the ideal scenario. Clients got frustrated, and we wasted API operations and GCP bandwidth, constantly purging caches.</p>
+<h3>Cache key is the key</h3>
+<p>Since we always read the domain's Workers KV data, we realized we could route requests and customize the cache key, appending things like the domain's ID and features that could affect the asset, like Polish. Today, our cache key is heavily customized to quickly reflect every client's change in our panel or API. By modifying the cache key using Workers KV's data, nobody needs to worry about clearing the cache anymore. As soon as Workers KV propagates the changes, the cache key also changes and we request and cache a fresh asset.</p>
+<p>The easiest way to customize the cache key is to append <code>query params</code> to it. For example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> cacheKey </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> `${</span><span class="sk-24292e-fff">request</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url</span><span class="sk-032f62-99ffe4">}?custom-cache-param-polish=lossy`</span></span></code></pre>
+</div>
+<p>Of course, you need to check the URL for existing parameters to determine which connector to use — <code>?</code> or <code>&amp;</code> — and ensure you are using a unique identifier.</p>
+<p>Then, you can use this new cache key to save the response with Cache API or Fetch — or both.</p>
+<h3>Workers KV Cache</h3>
+<p>Workers KV operations are affordable, but the numbers can pile up when you trigger billions of reading operations daily.</p>
+<p>Thanks to our cache key customization, we realized we could cache the Workers KV data with Cache API, saving on reading operations and possibly lowering the latency by avoiding multiple Workers KV GET requests per visitor. Since the cached response is now based on the request's URL combined with KV data, we no longer need to worry about caching stale content.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="381" height="301" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47190M9YTA54FG1H0T5SMN.png&amp;w=381&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47190M9YTA54FG1H0T5SMN.png&amp;w=381&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 381w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47190M9YTA54FG1H0T5SMN.png&amp;w=640&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47190M9YTA54FG1H0T5SMN.png&amp;w=750&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47190M9YTA54FG1H0T5SMN.png&amp;w=762&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 762w" alt="BLOG-1925 Embedded Image - 3v6Wuu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47190M9YTA54FG1H0T5SMN.png&amp;w=381&amp;h=301&amp;f=webp" data-lightbox-width="381" data-lightbox-height="301" data-astro-cid-7nvefuv6="true" sizes="(min-width: 381px) 381px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="381" height="301" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="562" height="381" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=562&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=562&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 562w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=640&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=750&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=828&amp;h=561&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=1080&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=1124&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 1124w" alt="BLOG-1925 Embedded Image - R14Orv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7FBR6Z2YYW1C4EEP5JM.png&amp;w=562&amp;h=381&amp;f=webp" data-lightbox-width="562" data-lightbox-height="381" data-astro-cid-7nvefuv6="true" sizes="(min-width: 562px) 562px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="562" height="381" class="pt-portable-image-media"></div>
+</figure>
+<p>However, unlike many applications, we can't cache Workers KV for extended periods. Kinsta's customers are constantly trying new features, changing Polish and Auto Minify settings, sometimes excluding pages or extensions from being cached, and they want to see their changes in production as soon as possible.</p>
+<p>That's when we decided to microcache our Workers KV data — caching dynamic or constantly-changed content for a very short period of time, usually less than 60 seconds.</p>
+<p>It’s pretty simple to implement your own Workers KV caching logic. For example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> handleKVCache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">myCustomDomain</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Try to get KV from cache first</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> cache</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> caches.default;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> site_data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> cache.</span><span class="sk-6f42c1-ffc799">match</span><span class="sk-24292e-fff">( </span><span class="sk-032f62-99ffe4">`https://${</span><span class="sk-24292e-fff">myCustomDomain</span><span class="sk-032f62-99ffe4">}/some-string-ID-kv-data/`</span><span class="sk-24292e-fff"> );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Valid KV cache match</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (site_data </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> site_data.status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ... modify your cached data if necessary, then return it</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> site_data;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Invalid cache (expired, miss, etc), get data from KV namespace</span></span>
+<span class="line"><span class="sk-24292e-fff">  site_data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> KV_NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(myCustomDomain.</span><span class="sk-6f42c1-ffc799">toLowerCase</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Cache valid KV responses with Cache API</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (site_data) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> kvResponse </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(site_data), {status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-fff">    kvResponse.headers.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Cache-Control"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"public, s-maxage=30"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(cache.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`https://${</span><span class="sk-24292e-fff">myCustomDomain</span><span class="sk-032f62-99ffe4">}/some-string-ID-kv-data/`</span><span class="sk-24292e-fff">, kvResponse));</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> site_data;</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>(Optionally, you could use <a href="https://flareutils.pages.dev/betterkv" target="_blank" rel="noopener noreferrer">FlareUtils' BetterKV</a>.)</p>
+<p>At Kinsta, we implemented a 30-second cache TTL for Workers KV data, decreasing read operations by about 80%.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="297" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=640&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=750&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=828&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=1080&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=1280&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=1430&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1925 Embedded Image - lagHoK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476GJKV00PR7A6NBV0EP9B.png&amp;w=875&amp;h=363&amp;f=webp" data-lightbox-width="875" data-lightbox-height="363" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="297" class="pt-portable-image-media"></div>
+</figure>
+<p>Read operations</p>
+<h3>Learn more</h3>
+<p>Want to learn more about Workers and Workers KV? Check out the Cloudflare Workers KV developer <a href="https://developers.cloudflare.com/workers/learning/how-kv-works" target="_blank" rel="noopener noreferrer">documentation</a>, or read our dedicated <a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">homepage</a>.</p>

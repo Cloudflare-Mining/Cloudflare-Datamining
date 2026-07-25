@@ -1,184 +1,125 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wjNgwHIKKYSxmtFYTxVBD/bd0d746f82c9726857ad5601cf239c6f/remote-work-isnt-just-video-conferencing-how-we-built-cloudflaretv.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-Hands to product demos. Being able to <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand" target="_blank" rel="noopener noreferrer">stream video on demand</a> has two major advantages when compared to live video:</p>
-	<ol>
-		<li>
-			<p>It encourages asynchronous communication within the organization</p>
-		</li>
-		<li>
-			<p>It extends the life time value of the shared knowledge</p>
-		</li>
-	</ol>
-	<p>Historically, we haven’t had a central, secure repository of all video content that could be easily accessed from the browser. Various teams choose their own platform to share the content. If I wanted to find a recording of a product demo, for example, I’d need to search Google Drive, Gmail and Google Chat with creative keywords. Very often, I would need to reach out to individual teams to finally locate the content.</p>
-	<p>So we decided we wanted to build CloudflareTV, an internal Netflix-like application that can only be accessed by Cloudflare employees and has all of our videos neatly organized and immediately watchable from the browser.</p>
-	<p>We wanted to achieve the following when building CloudflareTV:</p>
-	<ul>
-		<li>
-			<p>Security: make sure the videos are access controlled and not publicly accessible</p>
-		</li>
-		<li>
-			<p>Authentication: ensure the application can only be accessed by Cloudflare employees</p>
-		</li>
-		<li>
-			<p>Tagging: allow the videos to be categorized so they can be found easily</p>
-		</li>
-		<li>
-			<p>Originless: build the entire backend using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Stream</a> so we don’t need separate infrastructure for encoding, storage and delivery</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="securing-the-videos-using-signed-urls">Securing the videos using signed URLs</h3>
-		<a href="https://blog.cloudflare.com/#securing-the-videos-using-signed-urls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Every video uploaded to Cloudflare Stream can be locked down by requiring signed URLs. A Stream video can be marked as requiring signed URLs using the UI or by making an API call:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19J2fu6de5Cg5lmf5fAIVX/328a6648871b2a79b71ab2a0cbb763f3/2-2.png" alt="" class="kg-image" width="560" height="299" loading="lazy">
-
-	</figure>
-	<p>Once locked down in this way videos can’t be accessed directly. Instead, they can only be accessed using a temporary token.</p>
-	<p>In order to create signed tokens, we must first make an <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys#12345682" target="_blank" rel="noopener noreferrer">API call</a> to create a key:</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST -H "X-Auth-Email: {$EMAIL}" -H "X-Auth-Key: {$AUTH_KEY}"  "https://api.cloudflare.com/client/v4/accounts/{$ACCOUNT_ID}/media/keys"</code></pre>
-	<p>The API call will return a JSON object similar to this:</p>
-	<pre class="language-bash"><code class="language-bash">{
-  "result": {
-    "id": "...",
-    "pem": "...",
-    "jwk": "...",
-    "created": "2020-03-10T18:17:00.075188052Z"
-  },
-  "success": true,
-  "errors": [],
-  "messages": []
-}</code></pre>
-	<p>We can use the <b>id</b> and <b>pem</b> values in a Workers script that takes a video ID and returns a signed token that expires after 1 hour:</p>
-	<pre class="language-bash"><code class="language-bash">async function generateToken(video_id) {
-var exp_time = Math.round((new Date()).getTime() / 1000)+3600;
-
-    const key_data = {
-        'id': '{$KEY_ID}',
-        'pem': '{$PEM}',
-        'exp': exp_time
-    }
-
-    let response = await fetch('https://util.cloudflarestream.com/sign/'+video_id, {
-        method: 'POST',
-        body: JSON.stringify(key_data)
-    });
-    let token_value = await response.text();
-    return token_value;
-}</code></pre>
-	<p>The returned signed token should look something like this:</p>
-	<pre class="language-bash"><code class="language-bash">eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh</code></pre>
-	<p>Stream provides an embed code for each video. The “src” attribute of the embed code typically contains the video ID. But if the video is private, instead of setting the “src” attribute to the video ID, you set it to the signed token value:</p>
-	<pre class="language-bash"><code class="language-bash">&lt;stream src="eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh" controls&gt;&lt;/stream&gt;
-&lt;script data-cfasync="false" defer type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js"&gt;&lt;/script&gt;</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="tagging-videos">Tagging videos</h3>
-		<a href="https://blog.cloudflare.com/#tagging-videos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We would like to categorize videos uploaded to Stream by tagging them. This can be done by updating the video object’s meta field and passing it arbitrary JSON data. To categorize a video, we simply update the meta field with a comma-delimited list of tags:</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST  -d '{"uid": "VIDEO_ID", "meta": {"tags": "All Hands,Stream"}}' "https://api.cloudflare.com/client/v4/accounts/{$ACCOUNT_ID}/stream/{$VIDEO_ID}"  -H "X-Auth-Email: {$EMAIL}"  -H "X-Auth-Key: {$ACCOUNT_KEY}"  -H "Content-Type: application/json"</code></pre>
-	<p>Later, we will create a <b>getVideos</b> Worker function to fetch a list of videos and all associated data so we can render the UI. The tagging data we just set for this video will be included in the video data returned by the Worker.</p>
-	<div class="flex anchor relative">
-		<h3 id="fetching-video-data-using-workers">Fetching Video Data using Workers</h3>
-		<a href="https://blog.cloudflare.com/#fetching-video-data-using-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The heart of the UI is a list of videos. How do we get this list of videos programmatically? Stream provides an endpoint that returns all the videos and any metadata associated with them.</p>
-	<p>First, we set up environment variables for our Worker:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7gupv1LnhFeJ7X3rGOIcY7/9eed06310ca958eab862287b2730eb95/3-3.png" alt="" class="kg-image" width="588" height="309" loading="lazy">
-
-	</figure>
-	<p>Next, we wrote a simple Workers function to call the Stream API and return a list of videos, eliminating the need for an origin:</p>
-	<pre class="language-bash"><code class="language-bash">async function getVideos() {
-    const headers = {
-        'X-Auth-Key': CF_KEY,
-        'X-Auth-Email': CF_EMAIL
-    }
-
-    let response = await fetch(“https://api.cloudflare.com/client/v4/accounts/” + CF_ACCOUNT_ID + '/stream', {
-        headers: headers
-    });
-    let video_list = await response.text();
-    return video_list;
-}</code></pre>
-	<p>Lastly, we set up a zone and within the zone, we set up a Worker routes pointing to our Workers script. This can be done from the Workers tab:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rxhNxPv0rVfFTXofb8xOL/3238839da4f443931b00ef6feeec7e14/4-2.png" alt="" class="kg-image" width="1111" height="479" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="authenticating-using-cloudflare-access">Authenticating using Cloudflare Access</h3>
-		<a href="https://blog.cloudflare.com/#authenticating-using-cloudflare-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, we want to restrict access to CloudflareTV to people within the organization. We can do this using Cloudflare Access, available under the <b>Access</b> tab.</p>
-	<p>To restrict access to CloudflareTV, we must do two things:</p>
-	<ol>
-		<li>
-			<p>Add a new login method</p>
-		</li>
-		<li>
-			<p>Add an access policy</p>
-		</li>
-	</ol>
-	<p>To add a new login method, click the “+” icon and choose your identity provider. In our case, we chose Google:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/77wNmqDraVQTPuqrWKAL15/883ff1e404764adb80144a96ed921412/5-1.png" alt="" class="kg-image" width="356" height="374" loading="lazy">
-
-	</figure>
-	<p>You will see a pop up asking for information including <b>Client ID</b> and <b>Client Secret</b>, both key pieces of information required to set up Google as the identity provider.</p>
-	<p>Once we add an identity provider, we want to tell Access “who specifically should be allowed to access our application?” This is done by creating an <b>Access Policy.</b></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1lGE8NoPuruBdbJ62gOULQ/01b9ccf941a7b886857e733ebfbceda9/6-1.png" alt="" class="kg-image" width="917" height="188" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/759SsaHGmEgN626KJKrj5j/3664a275496339dd42f3c5320c4b6b32/7.png" alt="" class="kg-image" width="1600" height="746" loading="lazy">
-
-	</figure>
-	<p>We set up an Access Policy to only allow emails ending in our domain name. This effectively makes CloudflareTV only accessible by our team!</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you have interesting ideas around video, Cloudflare Stream lets you focus on your idea while it handles storage, encoding and the viewing experience for your users. Coupled that with Access and Workers, you can build powerful applications. Here are the docs to help you get started:</p>
-	<ul>
-		<li>
-			<p><a href="https://developers.cloudflare.com/stream/getting-started" target="_blank" rel="noopener noreferrer">Cloudflare Stream Developer Docs</a></p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/access/setting-up-access" target="_blank" rel="noopener noreferrer">Setting up Cloudflare Access</a></p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/workers/quickstart" target="_blank" rel="noopener noreferrer">Workers Quick Start</a></p>
-		</li>
-	</ul>
+<p>At Cloudflare, we produce all types of video content, ranging from recordings of our Weekly All-Hands to product demos. Being able to <a href="https://www.cloudflare.com/developer-platform/solutions/video-on-demand" target="_blank" rel="noopener noreferrer">stream video on demand</a> has two major advantages when compared to live video:</p>
+<ol>
+	<li>It encourages asynchronous communication within the organization</li>
+	<li>It extends the life time value of the shared knowledge</li>
+</ol>
+<p>Historically, we haven’t had a central, secure repository of all video content that could be easily accessed from the browser. Various teams choose their own platform to share the content. If I wanted to find a recording of a product demo, for example, I’d need to search Google Drive, Gmail and Google Chat with creative keywords. Very often, I would need to reach out to individual teams to finally locate the content.</p>
+<p>So we decided we wanted to build CloudflareTV, an internal Netflix-like application that can only be accessed by Cloudflare employees and has all of our videos neatly organized and immediately watchable from the browser.</p>
+<p>We wanted to achieve the following when building CloudflareTV:</p>
+<ul>
+	<li>Security: make sure the videos are access controlled and not publicly accessible</li>
+	<li>Authentication: ensure the application can only be accessed by Cloudflare employees</li>
+	<li>Tagging: allow the videos to be categorized so they can be found easily</li>
+	<li>Originless: build the entire backend using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers</a> and <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Stream</a> so we don’t need separate infrastructure for encoding, storage and delivery</li>
+</ul>
+<h3>Securing the videos using signed URLs</h3>
+<p>Every video uploaded to Cloudflare Stream can be locked down by requiring signed URLs. A Stream video can be marked as requiring signed URLs using the UI or by making an API call:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="560" height="299" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=560&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=560&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 560w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=640&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=750&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=828&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=1080&amp;h=577&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=1120&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1120w" alt="Remote Work Isn’t Just Video Conferencing: How We Built CloudflareTV Embedded Image - aPuvZX" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B27JPW9EXN0WRYTPDQD7.png&amp;w=560&amp;h=299&amp;f=webp" data-lightbox-width="560" data-lightbox-height="299" data-astro-cid-7nvefuv6="true" sizes="(min-width: 560px) 560px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="560" height="299" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Once locked down in this way videos can’t be accessed directly. Instead, they can only be accessed using a temporary token.</p>
+<p>In order to create signed tokens, we must first make an <a href="https://support.cloudflare.com/hc/en-us/articles/200167836-Managing-API-Tokens-and-Keys#12345682" target="_blank" rel="noopener noreferrer">API call</a> to create a key:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {</span><span class="sk-24292e-fff">$EMAIL</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {</span><span class="sk-24292e-fff">$AUTH_KEY</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-032f62-99ffe4">  "https://api.cloudflare.com/client/v4/accounts/{</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">}/media/keys"</span></span></code></pre>
 </div>
+<p>The API call will return a JSON object similar to this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "...",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "pem"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "...",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "jwk"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "...",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "created"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2020-03-10T18:17:00.075188052Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "errors"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "messages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We can use the <strong>id</strong> and <strong>pem</strong> values in a Workers script that takes a video ID and returns a signed token that expires after 1 hour:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> generateToken</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">video_id</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> exp_time</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Math.round</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-032f62-99ffe4"> Date</span><span class="sk-24292e-fff">())</span><span class="sk-6f42c1-ffc799">.getTime</span><span class="sk-24292e-fff">() / 1000)</span><span class="sk-6f42c1-ffc799">+3600</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> key_data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        'id'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> '{$KEY_ID}',</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        'pem'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> '{$PEM}',</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        'exp'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> exp_time</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'https://util.cloudflarestream.com/sign/'</span><span class="sk-6f42c1-ffc799">+video_id,</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        method:</span><span class="sk-032f62-99ffe4"> 'POST',</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        body:</span><span class="sk-032f62-99ffe4"> JSON.stringify</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">key_data</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> token_value</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> response.text</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> token_value</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The returned signed token should look something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh</span></span></code></pre>
+</div>
+<p>Stream provides an embed code for each video. The “src” attribute of the embed code typically contains the video ID. But if the video is private, instead of setting the “src” attribute to the video ID, you set it to the signed token value:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">stream src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"eyJhbGciOiJSUzI1NiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIn0.eyJzdWIiOiJiODdjOWYzOTkwYjE4ODI0ZTYzMTZlMThkOWYwY2I1ZiIsImtpZCI6IjExZDM5ZjEwY2M0NGY1NGE4ZDJlMjM5OGY3YWVlOGYzIiwiZXhwIjoiMTUzNzQ2MDM2NSIsIm5iZiI6IjE1Mzc0NTMxNjUifQ.C1BEveKi4XVeZk781K8eCGsMJrhbvj4RUB-FjybSm2xiQntFi7AqJHmj_ws591JguzOqM1q-Bz5e2dIEpllFf6JKK4DMK8S8B11Vf-bRmaIqXQ-QcpizJfewNxaBx9JdWRt8bR00DG_AaYPrMPWi9eH3w8Oim6AhfBiIAudU6qeyUXRKiolyXDle0jaP9bjsKQpqJ10K5oPWbCJ4Nf2QHBzl7Aasu6GK72hBsvPjdwTxdD5neazdxViMwqGKw6M8x_L2j2bj93X0xjiFTyHeVwyTJyj6jyPwdcOT5Bpuj6raS5Zq35qgvffXWAy_bfrWqXNHiQdSMOCNa8MsV8hljQsh"</span><span class="sk-6f42c1-ffc799"> controls</span><span class="sk-24292e-fff">&gt;&lt;/stream&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">script data-cfasync</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"false"</span><span class="sk-6f42c1-ffc799"> defer</span><span class="sk-032f62-99ffe4"> type="text/javascript"</span><span class="sk-032f62-99ffe4"> src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">/scrip</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<h3>Tagging videos</h3>
+<p>We would like to categorize videos uploaded to Stream by tagging them. This can be done by updating the video object’s meta field and passing it arbitrary JSON data. To categorize a video, we simply update the meta field with a comma-delimited list of tags:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> '{"uid": "VIDEO_ID", "meta": {"tags": "All Hands,Stream"}}'</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/{</span><span class="sk-24292e-fff">$ACCOUNT_ID</span><span class="sk-032f62-99ffe4">}/stream/{</span><span class="sk-24292e-fff">$VIDEO_ID</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {</span><span class="sk-24292e-fff">$EMAIL</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {</span><span class="sk-24292e-fff">$ACCOUNT_KEY</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span></span></code></pre>
+</div>
+<p>Later, we will create a <strong>getVideos</strong> Worker function to fetch a list of videos and all associated data so we can render the UI. The tagging data we just set for this video will be included in the video data returned by the Worker.</p>
+<h3>Fetching Video Data using Workers</h3>
+<p>The heart of the UI is a list of videos. How do we get this list of videos programmatically? Stream provides an endpoint that returns all the videos and any metadata associated with them.</p>
+<p>First, we set up environment variables for our Worker:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="588" height="309" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=588&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=588&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 588w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=640&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=750&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=828&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=1080&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=1176&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1176w" alt="Remote Work Isn’t Just Video Conferencing: How We Built CloudflareTV Embedded Image - gzOHWV" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WNJ2X9YAYFAED243S349.png&amp;w=588&amp;h=309&amp;f=webp" data-lightbox-width="588" data-lightbox-height="309" data-astro-cid-7nvefuv6="true" sizes="(min-width: 588px) 588px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="588" height="309" class="pt-portable-image-media"></div>
+</figure>
+<p>Next, we wrote a simple Workers function to call the Stream API and return a list of videos, eliminating the need for an origin:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> getVideos</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        'X-Auth-Key'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> CF_KEY,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        'X-Auth-Email'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> CF_EMAIL</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">“https://api.cloudflare.com/client/v4/accounts/”</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> CF_ACCOUNT_ID</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> '/stream',</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        headers:</span><span class="sk-032f62-99ffe4"> headers</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> video_list</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> response.text</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> video_list</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Lastly, we set up a zone and within the zone, we set up a Worker routes pointing to our Workers script. This can be done from the Workers tab:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Remote Work Isn’t Just Video Conferencing: How We Built CloudflareTV Embedded Image - R6GxOR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RCFH1G9YYM96GDMEMDHM.png&amp;w=1111&amp;h=479&amp;f=webp" data-lightbox-width="1111" data-lightbox-height="479" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<h3>Authenticating using Cloudflare Access</h3>
+<p>Finally, we want to restrict access to CloudflareTV to people within the organization. We can do this using Cloudflare Access, available under the <strong>Access</strong> tab.</p>
+<p>To restrict access to CloudflareTV, we must do two things:</p>
+<ol>
+	<li>Add a new login method</li>
+	<li>Add an access policy</li>
+</ol>
+<p>To add a new login method, click the “+” icon and choose your identity provider. In our case, we chose Google:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="356" height="374" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MF8FG5EJWSHV3V88RB79.png&amp;w=356&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MF8FG5EJWSHV3V88RB79.png&amp;w=356&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 356w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MF8FG5EJWSHV3V88RB79.png&amp;w=640&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MF8FG5EJWSHV3V88RB79.png&amp;w=712&amp;h=748&amp;f=webp&amp;fit=cover&amp;position=center 712w" alt="Remote Work Isn’t Just Video Conferencing: How We Built CloudflareTV Embedded Image - VzCd61" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MF8FG5EJWSHV3V88RB79.png&amp;w=356&amp;h=374&amp;f=webp" data-lightbox-width="356" data-lightbox-height="374" data-astro-cid-7nvefuv6="true" sizes="(min-width: 356px) 356px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="356" height="374" class="pt-portable-image-media"></div>
+</figure>
+<p>You will see a pop up asking for information including <strong>Client ID</strong> and <strong>Client Secret</strong>, both key pieces of information required to set up Google as the identity provider.</p>
+<p>Once we add an identity provider, we want to tell Access “who specifically should be allowed to access our application?” This is done by creating an <strong>Access Policy.</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="147" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=715&amp;h=147&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=640&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=715&amp;h=147&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=750&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=828&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=1080&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=1280&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=1430&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Remote Work Isn’t Just Video Conferencing: How We Built CloudflareTV Embedded Image - Lmaqdt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SD6RB4422HZ3D14S4SNB.png&amp;w=917&amp;h=188&amp;f=webp" data-lightbox-width="917" data-lightbox-height="188" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="147" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="333" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=640&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=750&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=828&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=1080&amp;h=503&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=1280&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=1430&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Remote Work Isn’t Just Video Conferencing: How We Built CloudflareTV Embedded Image - t40fRR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KCB60SGTK9QMCY9ZMZ93.png&amp;w=1600&amp;h=746&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="746" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="333" class="pt-portable-image-media"></div>
+</figure>
+<p>We set up an Access Policy to only allow emails ending in our domain name. This effectively makes CloudflareTV only accessible by our team!</p>
+<h3>What’s next?</h3>
+<p>If you have interesting ideas around video, Cloudflare Stream lets you focus on your idea while it handles storage, encoding and the viewing experience for your users. Coupled that with Access and Workers, you can build powerful applications. Here are the docs to help you get started:</p>
+<ul>
+	<li><a href="https://developers.cloudflare.com/stream/getting-started" target="_blank" rel="noopener noreferrer">Cloudflare Stream Developer Docs</a></li>
+	<li><a href="https://developers.cloudflare.com/access/setting-up-access" target="_blank" rel="noopener noreferrer">Setting up Cloudflare Access</a></li>
+	<li><a href="https://developers.cloudflare.com/workers/quickstart" target="_blank" rel="noopener noreferrer">Workers Quick Start</a></li>
+</ul>

@@ -1,62 +1,33 @@
-<div class="mb2 gray5">3 min de lectura</div>
-<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/adaptive-ddos-protection">English</a>, <a href="https://blog.cloudflare.com/pl-pl/adaptive-ddos-protection">Polski</a> y <a href="https://blog.cloudflare.com/ru-ru/adaptive-ddos-protection">Рyсский</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4c85XeFnfoorghM1AODrHL/27ba0145797daea4292523bb82f0a95c/adaptive-ddos-protection.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Toda propiedad de Internet es única, con su propio comportamiento y patrones de tráfico. Por ejemplo, es posible que un sitio web solo espere tráfico de usuarios de determinadas áreas geográficas, y que una red solo espere un conjunto limitado de protocolos.</p>
-	<p></p>
-	<p>Comprender que los patrones de tráfico de cada propiedad de Internet son únicos es lo que nos ha llevado a desarrollar el sistema Protección flexible contra DDoS, que pasa a formar parte de nuestro paquete de <a href="https://blog.cloudflare.com/es-es/deep-dive-cloudflare-autonomous-edge-ddos-protection-es-es">defensas automatizadas contra DDoS</a> y lo optimiza. El nuevo sistema aprende tus patrones de tráfico únicos y se adapta para protegerte contra sofisticados ataques DDoS.</p>
-	<p>La Protección flexible contra DDoS ya está disponible a nivel general para todos los clientes Enterprise:</p>
-	<ul>
-		<li>
-			<p><b>Protección flexible contra DDoS a HTTP</b>: disponible para los clientes de WAF/CDN del plan Enterprise que también estén suscritos al servicio Protección de DDoS avanzada.</p>
-		</li>
-		<li>
-			<p><b>Protección flexible contra DDoS a la capa 3 y 4</b>: disponible para los clientes de Magic Transit y Spectrum del plan Enterprise.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="adaptive-ddos-protection-learns-your-traffic-patterns">La Protección flexible contra DDoS aprende de tus patrones de tráfico</h3>
-		<a href="https://blog.cloudflare.com/#adaptive-ddos-protection-learns-your-traffic-patterns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>El sistema Protección flexible contra DDoS crea un perfil de tráfico analizando diariamente las velocidades máximas de tráfico de un cliente, durante los últimos 7 días. Los perfiles se recalculan cada día utilizando el historial de los últimos 7 días. A continuación, almacenamos las velocidades máximas de tráfico observadas para cada valor de dimensión predefinido. Cada perfil utiliza una dimensión, y estas dimensiones incluyen el país de origen de la solicitud, el país donde está ubicado el centro de datos de Cloudflare que ha recibido el paquete de IP, el agente de usuario, el protocolo de IP, los puertos de destino, y más.</p>
-	<p>Así, por ejemplo, para el <a href="https://blog.cloudflare.com/es-es/location-aware-ddos-protection-es-es">perfil que utiliza el país de origen como una dimensión</a>, el sistema registrará las velocidades máximas de tráfico observadas por país, p. ej., 2000 solicitudes por segundo para Alemania, 3000 para Francia, 10 000 para Brasil, etc. Este ejemplo es para tráfico HTTP, pero la Protección flexible contra DDoS también crea perfiles de tráfico de las capas 3 y 4 para nuestros clientes Enterprise de Magic Transit y Spectrum.</p>
-	<p>Otro aspecto a destacar acerca de las velocidades máximas es que utilizamos velocidades con un percentil de 95. Esto significa que analizamos las velocidades máximas y descartamos el 5 % superior de las velocidades más altas. El objetivo es eliminar de los cálculos los valores atípicos.</p>
-	<p>Los perfiles de tráfico de calculan de forma asíncrona, lo que significa que esto no causa latencia en el tráfico de nuestros clientes. A continuación, el sistema distribuye una representación compacta del perfil en nuestra red, que nuestros sistemas de protección contra DDoS pueden utilizar para detectar y mitigar los ataques DDoS de forma mucho más rentable.</p>
-	<p>Además de los perfiles de tráfico, la Protección flexible contra DDoS también aprovecha las <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning" target="_blank" rel="noopener noreferrer">puntuaciones de bot</a> generadas por el <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">aprendizaje automático</a> de Cloudflare como una señal adicional para diferenciar entre el tráfico del usuario y el tráfico automatizado. El objetivo es diferenciar entre picos legítimos del tráfico del usuario que se desvían del perfil de tráfico y un pico de tráfico automatizado y potencialmente malicioso.</p>
-	<div class="flex anchor relative">
-		<h3 id="out-of-the-box-and-easy-to-use">Fácil y sin configuración</h3>
-		<a href="https://blog.cloudflare.com/#out-of-the-box-and-easy-to-use" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>La Protección flexible contra DDoS simplemente funciona, sin configuración previa. Crea automáticamente los perfiles y, a continuación, los clientes pueden realizar ajustes según necesiten mediante <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer">Reglas administradas contra ataques DDoS</a>. Pueden cambiar el nivel de sensibilidad, aprovechar los campos de expresión para crear anulaciones (p. ej. excluir <i>este</i> tipo de tráfico), y cambiar la acción de mitigación para adaptar el comportamiento del sistema a sus necesidades y patrones de tráfico específicos.</p>
-	<p>El sistema Protección flexible contra DDoS complementa el sistema de protección contra DDoS existente que aprovecha las huellas digitales dinámicas para detectar y mitigar los ataques DDoS. Ambos funcionan conjuntamente para proteger a nuestros clientes contra los ataques DDoS. Cuando los clientes de Cloudflare incorporan una nueva propiedad de Internet a Cloudflare, las huellas digitales dinámicas les protegen automáticamente, sin necesidad de ninguna acción del usuario. Cuando la Protección flexible contra DDos ha aprendido los patrones de tráfico legítimo de los usuarios y creado un perfil, estos pueden proporcionar una capa adicional de protección.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6avwDSeZVfreb140FKSB5e/f59e79bcdcb9e644d87fec94fcdc7d72/image2-11.png" alt="A screenshot of Cloudflare Adaptive DDoS Protection rules" class="kg-image" width="1938" height="1286" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="rules-included-as-part-of-the-adaptive-ddos-protection">Reglas incluidas como parte de la Protección flexible contra DDoS</h3>
-		<a href="https://blog.cloudflare.com/#rules-included-as-part-of-the-adaptive-ddos-protection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Como parte de este lanzamiento, nos complace anunciar las funciones siguientes como parte de la Protección flexible contra DDoS de Cloudflare:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>Toda propiedad de Internet es única, con su propio comportamiento y patrones de tráfico. Por ejemplo, es posible que un sitio web solo espere tráfico de usuarios de determinadas áreas geográficas, y que una red solo espere un conjunto limitado de protocolos.</p>
+<p>Comprender que los patrones de tráfico de cada propiedad de Internet son únicos es lo que nos ha llevado a desarrollar el sistema Protección flexible contra DDoS, que pasa a formar parte de nuestro paquete de <a href="https://blog.cloudflare.com/es-es/deep-dive-cloudflare-autonomous-edge-ddos-protection-es-es">defensas automatizadas contra DDoS</a> y lo optimiza. El nuevo sistema aprende tus patrones de tráfico únicos y se adapta para protegerte contra sofisticados ataques DDoS.</p>
+<p>La Protección flexible contra DDoS ya está disponible a nivel general para todos los clientes Enterprise:</p>
+<ul>
+	<li><strong>Protección flexible contra DDoS a HTTP</strong>: disponible para los clientes de WAF/CDN del plan Enterprise que también estén suscritos al servicio Protección de DDoS avanzada.</li>
+	<li><strong>Protección flexible contra DDoS a la capa 3 y 4</strong>: disponible para los clientes de Magic Transit y Spectrum del plan Enterprise.</li>
+</ul>
+<h3>La Protección flexible contra DDoS aprende de tus patrones de tráfico</h3>
+<p>El sistema Protección flexible contra DDoS crea un perfil de tráfico analizando diariamente las velocidades máximas de tráfico de un cliente, durante los últimos 7 días. Los perfiles se recalculan cada día utilizando el historial de los últimos 7 días. A continuación, almacenamos las velocidades máximas de tráfico observadas para cada valor de dimensión predefinido. Cada perfil utiliza una dimensión, y estas dimensiones incluyen el país de origen de la solicitud, el país donde está ubicado el centro de datos de Cloudflare que ha recibido el paquete de IP, el agente de usuario, el protocolo de IP, los puertos de destino, y más.</p>
+<p>Así, por ejemplo, para el <a href="https://blog.cloudflare.com/es-es/location-aware-ddos-protection-es-es">perfil que utiliza el país de origen como una dimensión</a>, el sistema registrará las velocidades máximas de tráfico observadas por país, p. ej., 2000 solicitudes por segundo para Alemania, 3000 para Francia, 10 000 para Brasil, etc. Este ejemplo es para tráfico HTTP, pero la Protección flexible contra DDoS también crea perfiles de tráfico de las capas 3 y 4 para nuestros clientes Enterprise de Magic Transit y Spectrum.</p>
+<p>Otro aspecto a destacar acerca de las velocidades máximas es que utilizamos velocidades con un percentil de 95. Esto significa que analizamos las velocidades máximas y descartamos el 5 % superior de las velocidades más altas. El objetivo es eliminar de los cálculos los valores atípicos.</p>
+<p>Los perfiles de tráfico de calculan de forma asíncrona, lo que significa que esto no causa latencia en el tráfico de nuestros clientes. A continuación, el sistema distribuye una representación compacta del perfil en nuestra red, que nuestros sistemas de protección contra DDoS pueden utilizar para detectar y mitigar los ataques DDoS de forma mucho más rentable.</p>
+<p>Además de los perfiles de tráfico, la Protección flexible contra DDoS también aprovecha las <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning" target="_blank" rel="noopener noreferrer">puntuaciones de bot</a> generadas por el <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">aprendizaje automático</a> de Cloudflare como una señal adicional para diferenciar entre el tráfico del usuario y el tráfico automatizado. El objetivo es diferenciar entre picos legítimos del tráfico del usuario que se desvían del perfil de tráfico y un pico de tráfico automatizado y potencialmente malicioso.</p>
+<h3>Fácil y sin configuración</h3>
+<p>La Protección flexible contra DDoS simplemente funciona, sin configuración previa. Crea automáticamente los perfiles y, a continuación, los clientes pueden realizar ajustes según necesiten mediante <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer">Reglas administradas contra ataques DDoS</a>. Pueden cambiar el nivel de sensibilidad, aprovechar los campos de expresión para crear anulaciones (p. ej. excluir <em>este</em> tipo de tráfico), y cambiar la acción de mitigación para adaptar el comportamiento del sistema a sus necesidades y patrones de tráfico específicos.</p>
+<p>El sistema Protección flexible contra DDoS complementa el sistema de protección contra DDoS existente que aprovecha las huellas digitales dinámicas para detectar y mitigar los ataques DDoS. Ambos funcionan conjuntamente para proteger a nuestros clientes contra los ataques DDoS. Cuando los clientes de Cloudflare incorporan una nueva propiedad de Internet a Cloudflare, las huellas digitales dinámicas les protegen automáticamente, sin necesidad de ninguna acción del usuario. Cuando la Protección flexible contra DDos ha aprendido los patrones de tráfico legítimo de los usuarios y creado un perfil, estos pueden proporcionar una capa adicional de protección.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="474" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=715&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=715&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=750&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=828&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1080&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1280&amp;h=849&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1430&amp;h=948&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A screenshot of Cloudflare Adaptive DDoS Protection rules" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1920&amp;h=1274&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1274" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="474" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Reglas incluidas como parte de la Protección flexible contra DDoS</h3>
+<p>Como parte de este lanzamiento, nos complace anunciar las funciones siguientes como parte de la Protección flexible contra DDoS de Cloudflare:</p>
+<div id="html-block-k1h" class="html-block">
+	<style>
+		#html-block-k1h .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k1h .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -67,7 +38,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k1h .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -79,7 +50,7 @@
 			word-break: normal;
 		}
 
-		.tg .tg-q2ib {
+		#html-block-k1h .tg .tg-q2ib {
 			background-color: #CFE2F3;
 			font-family: inherit;
 			font-weight: bold;
@@ -87,13 +58,13 @@
 			vertical-align: top
 		}
 
-		.tg .tg-u5z2 {
+		#html-block-k1h .tg .tg-u5z2 {
 			font-family: inherit;
 			text-align: center;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-q2ib" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Creación de perfiles de dimensión</span></th>
@@ -131,28 +102,13 @@
 				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Próximamente</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>*La función de agente de usuario analiza, aprende y crea perfiles de los principales agentes de usuario observados en la red de Cloudflare. Esta función nos ayuda a identificar los ataques DDoS que aprovechan agentes de usuario heredados o incorrectamente configurados.</p>
-	<p>Excepto la Protección contra DDoS de agente de usuario, las reglas de Protección flexible contra DDoS se implementan en el modo "Log". Los clientes pueden observar el tráfico indicado, ajustar la sensibilidad si es necesario y, a continuación, implementar las reglas en el modo de mitigación. Para ello, puedes seguir los pasos descritos en <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive" target="_blank" rel="noopener noreferrer">esta guía</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="making-the-impact-of-ddos-attacks-a-thing-of-the-past">Hacer que el impacto de los ataques DDoS sea cosa del pasado</h3>
-		<a href="https://blog.cloudflare.com/#making-the-impact-of-ddos-attacks-a-thing-of-the-past" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Nuestra misión en Cloudflare es ayudar a mejorar Internet. La visión del equipo de protección contra DDoS se deriva de esta misión: nuestro objetivo es hacer que el impacto de los ataques DDoS sea cosa del pasado. La Protección flexible contra DDoS de Cloudflare nos acerca a lograr esta visión, haciendo que la protección contra DDoS de Cloudflare sea más inteligente, sofisticada y adaptada a los patrones de tráfico únicos y a las necesidades individuales de nuestros clientes.</p>
-	<p>¿Quieres saber más sobre la Protección flexible contra DDoS de Cloudflare? Visita nuestro <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection" target="_blank" rel="noopener noreferrer">sitio para desarrolladores</a>.</p>
-	<p>¿Te interesa cambiar de plan para obtener acceso a la Protección flexible contra DDoS? Contacta con tu equipo de cuenta.</p>
-	<p>¿Eres nuevo en Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact" target="_blank" rel="noopener noreferrer">Habla con un experto de Cloudflare</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Ver en Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p></p>
+	</table>
 </div>
+<p>*La función de agente de usuario analiza, aprende y crea perfiles de los principales agentes de usuario observados en la red de Cloudflare. Esta función nos ayuda a identificar los ataques DDoS que aprovechan agentes de usuario heredados o incorrectamente configurados.</p>
+<p>Excepto la Protección contra DDoS de agente de usuario, las reglas de Protección flexible contra DDoS se implementan en el modo "Log". Los clientes pueden observar el tráfico indicado, ajustar la sensibilidad si es necesario y, a continuación, implementar las reglas en el modo de mitigación. Para ello, puedes seguir los pasos descritos en <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive" target="_blank" rel="noopener noreferrer">esta guía</a>.</p>
+<h3>Hacer que el impacto de los ataques DDoS sea cosa del pasado</h3>
+<p>Nuestra misión en Cloudflare es ayudar a mejorar Internet. La visión del equipo de protección contra DDoS se deriva de esta misión: nuestro objetivo es hacer que el impacto de los ataques DDoS sea cosa del pasado. La Protección flexible contra DDoS de Cloudflare nos acerca a lograr esta visión, haciendo que la protección contra DDoS de Cloudflare sea más inteligente, sofisticada y adaptada a los patrones de tráfico únicos y a las necesidades individuales de nuestros clientes.</p>
+<p>¿Quieres saber más sobre la Protección flexible contra DDoS de Cloudflare? Visita nuestro <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection" target="_blank" rel="noopener noreferrer">sitio para desarrolladores</a>.</p>
+<p>¿Te interesa cambiar de plan para obtener acceso a la Protección flexible contra DDoS? Contacta con tu equipo de cuenta.</p>
+<p>¿Eres nuevo en Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact" target="_blank" rel="noopener noreferrer">Habla con un experto de Cloudflare</a>.</p>
+<h3>Ver en Cloudflare TV</h3>

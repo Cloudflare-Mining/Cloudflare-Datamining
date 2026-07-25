@@ -1,0 +1,505 @@
+<p>Cloudflare 在網際網路上佔據了獨特的有利位置。從這個位置，我們能夠看到、探索和識別本有可能會被忽視的趨勢。在本報告中，我們正是這樣做的，並分享了我們對網際網路範圍內的應用程式安全趨勢的見解。</p>
+<p>本報告是我們的《應用程式安全報告》的第三版。第一版<a href="https://blog.cloudflare.com/zh-tw/application-security-zh-tw">於 2022 年 3 月發佈</a>，第二版<a href="https://blog.cloudflare.com/zh-tw/application-security-2023-zh-tw">於今年早些時候的 3 月份發佈</a>，這是第一份按季度發佈的報告。</p>
+<p>自上次報告以來，我們的網路規模更大、速度更快：現在平均每秒可處理 4600 萬個 HTTP 請求，峰值時可達 6300 萬個。我們每秒持續處理大約 2500 萬個 DNS 查詢。每天大約有 2.1 萬億次 DNS 查詢，每月大約有 65 萬億次查詢。這是我們的基礎結構所服務的權威請求和解析程式請求的總和。總結 HTTP 和 DNS 請求，我們可以看到大量惡意流量。僅聚焦 HTTP 請求，2023 年第 2 季度，Cloudflare 平均每天封鎖 1120 億個網路威脅，這就是為本報告提供支援的資料。</p>
+<p>不過，像往常一樣，在深入討論之前，我們需要先定義一下我們的詞彙。</p>
+<h2>定義</h2>
+<p>在這份報告中，我們將提及以下詞彙：</p>
+<ul>
+	<li><strong>已緩解流量</strong>：Cloudflare 平台對其套用了「終止」動作的任何重點關注的 HTTP* 請求。其中包括以下動作：<code>BLOCK</code>、<a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#legacy-captcha-challenge" target="_blank" rel="noopener noreferrer"><code>CHALLENGE</code></a>、<a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#js-challenge" target="_blank" rel="noopener noreferrer"><code>JS_CHALLENGE</code></a> 和 <a href="https://developers.cloudflare.com/fundamentals/get-started/concepts/cloudflare-challenges/#managed-challenge-recommended" target="_blank" rel="noopener noreferrer"><code>MANAGED_CHALLENGE</code></a>。這不包括套用了以下動作的請求：<code>LOG</code>、<code>SKIP</code>、<code>ALLOW</code>。與去年相比，我們現在排除了 DDoS 緩解系統套用了 <code>CONNECTION_CLOSE</code> 和 <code>FORCE_CONNECTION_CLOSE</code> 動作的請求，因為從技術上講，這些動作只會減慢連線初始化的速度。它們在請求中所占的比例也相對較小。此外，我們改進了有關 <code>CHALLENGE</code> 類型動作的計算，以確保只有未解決的質詢才計入已緩解。如需<a href="https://developers.cloudflare.com/ruleset-engine/rules-language/actions" target="_blank" rel="noopener noreferrer">動作的詳細描述</a>，請參閱我們的開發人員文件。</li>
+	<li><strong>機器人流量/自動化流量</strong>：由 Cloudflare 的 <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">Bot Management</a> 系統識別為由機器人產生的 HTTP* 要求，包括<a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">機器人分數</a>介於 <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">1 至 29</a>（含）之間的要求。這一點從去年的報告至今並未改變。</li>
+	<li><strong>API 流量</strong>：任何含有 XML 或 JSON 等回應內容類型的 HTTP* 要求。其中回應內容類型（由使用者代理指定）無法用於緩解的要求，因此會改為使用同等的 Accept。在後者的案例中，不會完全將 API 流量列入考量，但是在取得深入解析方面還是具有相當不錯的代表性。</li>
+</ul>
+<p>除非另有說明，否則本文中評估的時間範圍為 2023 年 4 月至 2023 年 6 月（含）的 3 個月期間。</p>
+<p>最後要注意的是，此資料僅依據在 Cloudflare 網路中觀察到的流量來計算，不一定代表網際網路中的整體 HTTP 流量模式。</p>
+<p>* <em>提及 HTTP 流量時，同時表示 HTTP 和 HTTPS。</em></p>
+<h2>全球流量深入解析</h2>
+<h3>緩解的每日流量穩定在 6%，峰值達到 8%</h3>
+<p>儘管從 2021 年到 2022 年，每日緩解的 HTTP 請求平均減少了 2 個百分點，達到 6%，但在整個網路中可以清楚地看到惡意活動超過平常的日子。下圖顯示了一個明顯的範例：到 2023 年 5 月底，可以看到峰值達到近 8%。這是由於大型 DDoS 事件和其他活動不遵循標準的每日或每週週期，並且不斷提醒人們，大型惡意事件仍然可以在全球範圍內產生明顯的影響，即使在 Cloudflare 規模上也是如此。</p>
+<p>75% 的已緩解 HTTP 請求被徹底封鎖。與之前的報告相比，這一數字下降了 6 個百分點。大多數其他請求都可以透過各種 CHALLENGE 類型動作來緩解，其中受管理的質詢占該類別的約 20%。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="451" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=715&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=640&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=715&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=750&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=828&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=1080&amp;h=681&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=1280&amp;h=807&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=1430&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Percentage of mitigated HTTP requests from April 2023 to end of June 2023" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482SWJ1XC2QWGT42ZBXVZ6.png&amp;w=1544&amp;h=974&amp;f=webp" data-lightbox-width="1544" data-lightbox-height="974" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="451" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>加強防護：客戶設定的規則是已緩解流量的最大貢獻者</h3>
+<p>在我們之前的報告中，我們的自動化 DDoS 緩解系統平均占到已緩解流量的 50% 以上。在過去的兩個季度中，由於 WAF 採用率的增加，以及組織很可能更好地設定和鎖定其應用程式以免受無用流量的影響，我們看到了一種新趨勢的出現，WAF 緩解的流量超過了 DDoS 緩解。大部分增長是由 WAF 自訂規則 BLOCK 而不是我們的 WAF 受管理規則推動的，這表明這些緩解是由客戶為業務邏輯或相關目的設定的規則產生的。從下圖中可以清楚地看到這一點。</p>
+<p>請注意，與 WAF 緩解的總體流量相比，我們的 WAF 受管理規則的緩解流量（黃線）可以忽略不計，這也表明客戶正在採用積極的安全模型，允許已知的良好流量，而不是僅封鎖已知的不良流量。儘管如此，本季度 WAF 受管理規則緩解量也達到了每天 15 億個請求。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="314" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=640&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=750&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=828&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=1080&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=1280&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=1430&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Daily mitigated HTTP requests from DDoS and WAF systems separating WAF Managed Rules from WAF Custom Rules. Date range from April 2023 to end of June 2023" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M7FCXKKPBR0SEFW2WHG3.png&amp;w=1920&amp;h=842&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="842" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="314" class="pt-portable-image-media"></div>
+</figure>
+<p>當然，我們的 DDoS 緩解容量巨大，並且與我們的 DDoS 第 7 層規則相匹配的流量不應被低估，特別是考慮到我們觀察到網路上出現了許多新型攻擊和僵屍網路。您可以在我們的<a href="https://blog.cloudflare.com/zh-tw/ddos-threat-report-2023-q2-zh-tw">第二季度 DDoS 威脅報告</a>中深入瞭解 DDoS 攻擊趨勢。</p>
+<p>匯總已緩解流量的來源，WAF 目前約占所有緩解流量的 57%。下面的表格中匯總了其他來源，可供參考。</p>
+<p>來源</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="732" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=715&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=640&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=715&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=750&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=828&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=1080&amp;h=1106&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=1280&amp;h=1310&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=1430&amp;h=1464&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1997 Embedded Image - 6yapy9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PHM59HN33AEADQSQ2B0.png&amp;w=1164&amp;h=1192&amp;f=webp" data-lightbox-width="1164" data-lightbox-height="1192" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="732" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k2o" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Source</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Percentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">WAF</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">57%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">DDoS Mitigation</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">34%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">IP Reputation</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">6%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Access Rules</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">2%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Other</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>百分比 (%)</p>
+<p>WAF</p>
+<div id="html-block-k2t" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Field</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"> Used in percentage % of rules</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Geolocation fields</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">40%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">HTTP URI</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">31%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">IP address</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">21%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Other HTTP fields (excluding URI)</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">34%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Bot Management fields</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">11%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">IP reputation score</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">4%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>57%</p>
+<p>DDoS 緩解</p>
+<p>34%</p>
+<p>IP 聲譽</p>
+<p>6%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="375" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=640&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=750&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=828&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=1080&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=1280&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=1430&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="WAF Managed Rule category matching HTTP requests from April 2023 to end of June 2023" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C0FESN5QSR44N09NPE03.png&amp;w=1840&amp;h=964&amp;f=webp" data-lightbox-width="1840" data-lightbox-height="964" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="375" class="pt-portable-image-media"></div>
+</figure>
+<p>存取規則</p>
+<div id="html-block-k37" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Source</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Percentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">HTTP Anomaly</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">32%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">SQLi</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">13%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Directory Traversal</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">10%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">File Inclusion</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">DoS</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">XSS</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Software Specific</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">7%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Broken Authentication</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">6%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Common Injection</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">3%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">CVE</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>2%</p>
+<p>其他</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="327" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=715&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=640&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=715&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=750&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=828&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=1080&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=1280&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=1430&amp;h=654&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="WAF Managed Rule DoS category deep dive from April 2023 to end of June 2023" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HSPADS82RES0GY8DY33R.png&amp;w=1920&amp;h=878&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="878" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="327" class="pt-portable-image-media"></div>
+</figure>
+<p>1%</p>
+<h3>應用程式擁有者越來越依賴地理位置封鎖</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="379" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=640&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=750&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=828&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=1080&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=1280&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=1430&amp;h=758&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Number of requests blocked across the Cloudflare network for each CVE. The blocks are triggered by managed rules created to protect Cloudflare users." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MWZNM7BY1FSE6K6KQKX7.png&amp;w=1600&amp;h=849&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="849" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="379" class="pt-portable-image-media"></div>
+</figure>
+<p>鑒於客戶定義的 WAF 規則所緩解的流量有所增加，我們認為，更深入地瞭解客戶正在封鎖哪些內容以及他們是如何做到這一點的，將會很有意義。為此，我們檢閱了 WAF 自訂規則中的規則欄位使用情況，以識別常見主題。當然，資料需要正確解讀，因為由於合約和方案層級的不同，並非所有客戶都可以存取所有欄位，但我們仍然可以根據欄位「類別」做出一些推論。透過檢閱整個網路中部署的全部約 700 萬條 WAF 自訂規則並僅關注主要分組，我們得到以下欄位使用情況分佈：</p>
+<p>欄位</p>
+<p>在規則中的使用百分比</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="414" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=640&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=750&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=828&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=1080&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=1280&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=1430&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Bot score distribution of eyeball traffic from April 2023 to end of June 2023" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45XTGTZ0XRH4DWX7WE58HC.png&amp;w=1648&amp;h=954&amp;f=webp" data-lightbox-width="1648" data-lightbox-height="954" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="414" class="pt-portable-image-media"></div>
+</figure>
+<p>地理位置欄位</p>
+<p>40%</p>
+<p>HTTP URI</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="375" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=640&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=715&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=750&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=828&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=1080&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=1280&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=1430&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Mitigated HTTP Traffic percentage of non verified bot traffic from April 2023 to end of June 2023" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455YAYS5336XPRZHBE95Y7.png&amp;w=1876&amp;h=984&amp;f=webp" data-lightbox-width="1876" data-lightbox-height="984" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="375" class="pt-portable-image-media"></div>
+</figure>
+<p>31%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="585" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=715&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=640&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=715&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=750&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=828&amp;h=677&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=1080&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=1280&amp;h=1047&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=1430&amp;h=1170&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1997 Embedded Image - As7VKs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4542032R3K5YA2T8SF0F19.png&amp;w=1480&amp;h=1210&amp;f=webp" data-lightbox-width="1480" data-lightbox-height="1210" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="585" class="pt-portable-image-media"></div>
+</figure>
+<p>IP 位址</p>
+<div id="html-block-k41" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Source</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Percentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">WAF</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">77%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">DDoS Mitigation</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">13%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">IP reputation</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">5%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Access Rules</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">3%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Other</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">1%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>21%</p>
+<p>其他 HTTP 欄位（不包括 URI）</p>
+<p>34%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="API traffic over the last 12 months: % of total HTTP requests and % of 200 response non cacheable HTTP requests" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45X4K45ZXEJEHKQX6DMYZF.png&amp;w=1920&amp;h=978&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="978" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
+</figure>
+<p>機器人管理欄位</p>
+<p>11%</p>
+<p>IP 聲譽評分</p>
+<p>4%</p>
+<p>值得注意的是，在所有已部署的 WAF 自訂規則中，40% 使用與地理位置相關的欄位來決定如何處理流量。這是一種常用技術，用於實施業務邏輯或排除預計不會產生流量的地區，並有助於減少攻擊面。雖然這些都是粗略的控制，不太可能阻止老練的攻擊者，但它們仍然可以有效地減少攻擊面。</p>
+<p>另一個值得注意的觀察結果是，11% 的 WAF 自訂規則中使用了機器人管理相關欄位。隨著越來越多的客戶採用基於機器學習的分類策略來保護其應用程式，這個數字隨著時間的推移而穩步增加。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="413" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=640&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=750&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=828&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=1080&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=1280&amp;h=739&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=1430&amp;h=826&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Bot score distribution of API traffic" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480J5WYAZ6S1KVP8C1KBXJ.png&amp;w=1662&amp;h=960&amp;f=webp" data-lightbox-width="1662" data-lightbox-height="960" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="413" class="pt-portable-image-media"></div>
+</figure>
+<h3>舊 CVE 仍然被大規模利用</h3>
+<p>HTTP 異常仍然是 WAF 受管理規則攔截的最常見攻擊類別，占 WAF 受管理規則總體緩解流量的約 32%。SQLi 上升到第二位，超過了目錄周遊，二者分別占 12.7% 和 9.9%。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="367" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=640&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=750&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=828&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=1080&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=1280&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=1430&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="WAF rule category corresponding to the last mitigation action on API traffic over the last quarter" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4490FB4EQQVJSQ27ZVTYNT.png&amp;w=1900&amp;h=976&amp;f=webp" data-lightbox-width="1900" data-lightbox-height="976" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="367" class="pt-portable-image-media"></div>
+</figure>
+<p>如果我們看看 2023 年 4 月初的情況，就會發現 DoS 類別遠遠超過 HTTP 異常類別。DoS 類別中的規則是 WAF 第 7 層 HTTP 簽名，這些簽名足夠具體，可以匹配（並封鎖）單個請求，而無需查看交叉請求行為，並且可以追究到導致阻斷服務 (DoS) 的具體僵屍網路或有效負載。通常（就像這裡的情況一樣），這些請求不是「分散式」攻擊的一部分，因此在類別名稱中沒有代表「分散式」的第一個「D」。</p>
+<div id="html-block-k4t" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Source</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#f3f3f3;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Percentage %</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">HTTP Anomaly</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">64%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">SQLi</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">11%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">XSS</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">9%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Software Specific</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">5%</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Command Injection</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:center;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">4%</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>供參考的表格格式（前 10 大類別）：</p>
+<p>來源</p>
+<p>百分比 (%)</p>
+<p>HTTP 異常</p>
+<p>32%</p>
+<p>SQLi</p>
+<p>13%</p>
+<p>目錄周遊</p>
+<p>10%</p>
+<p>檔案包含</p>
+<p>9%</p>
+<p>DoS</p>
+<p>9%</p>
+<p>XSS</p>
+<p>9%</p>
+<p>軟體特定</p>
+<p>7%</p>
+<p>驗證受損</p>
+<p>6%</p>
+<p>常見插入</p>
+<p>3%</p>
+<p>CVE</p>
+<p>1%</p>
+<p>縮小範圍並僅基於 DoS 類別進行篩選，我們發現大部分已緩解流量可歸因於一條規則：100031 / ce02fd…（分別為舊 WAF 和新 WAF 規則 ID）。此規則的描述為「<em>Microsoft IIS - DoS，Anomaly:Header:Range - CVE:CVE-2015-1635</em>」，屬於<a href="https://nvd.nist.gov/vuln/detail/CVE-2015-1635" target="_blank" rel="noopener noreferrer">可追溯到 2015 年的 CVE</a>，該 CVE 影響了許多 Microsoft Windows 元件，可導致遠端程式碼執行*。這是一個很好的提醒，舊的 CVE，甚至是 8 年多以前的 CVE，仍然被積極利用來危害可能未修補且仍在執行易受攻擊軟體的電腦。</p>
+<p>* <em>由於規則分類的原因，一些特定於 CVE 的規則仍被指派到更廣泛的類別，如本範例中的 DoS。只有當攻擊有效負載與其他更通用的類別沒有明顯重疊時，才會將規則指派到 CVE 類別中。</em></p>
+<p>另一個有趣的觀察結果是，從 6 月份開始，「失效驗證」規則匹配數有所增加。這一增長還歸因於我們所有客戶（包括我們的免费方案使用者）部署的一條規則：「<em>Wordpress - Broken Access Control, File Inclusion</em>」。此規則會封鎖對 wp-config.php - WordPress 預設設定檔的存取嘗試，該檔案通常位於 Web 伺服器文件根目錄中，但永遠不應該透過 HTTP 直接存取。</p>
+<p>同樣，CISA/CSA 最近發佈了一份報告，重點介紹了 <a href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa23-215a?cf_target_id=DC7FD2F218498816EEC88041CD1F9A74" target="_blank" rel="noopener noreferrer">2022 年最常被利用的漏洞</a>。我們藉此機會探討了 <a href="https://blog.cloudflare.com/zh-tw/unmasking-the-top-exploited-vulnerabilities-of-2022-zh-tw">CISA 報告中提到的每個 CVE 在 Cloudflare 自身資料中的反映情況</a>。CISA/CSA 討論了惡意網路攻擊者在 2022 年經常利用的 12 個漏洞。然而，根據我們的分析，CISA 報告中提到的兩個 CVE 造成了我們在全網看到的絕大多數攻擊流量：Log4J 和 Atlassian Confluence 程式碼插入。我們的資料清楚地表明，前兩名與清單中的其餘成員之間的漏洞利用量存在重大差異。下圖根據我們的記錄比較了 CISA 清單中前 6 個漏洞的攻擊量（以對數刻度）。</p>
+<h2>傀儡程式流量深入解析</h2>
+<p>Cloudflare 的 <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">Bot Management</a> 繼續獲得重大投資，因為新增了 JavaScript Verified URL 以更好地防禦基於瀏覽器的機器人，Detection ID 現在可在自訂規則中使用，以實現額外的可設定性，以及改進了 UI 以簡化入門。對於自助服務客戶，我們新增了「跳過」Super Bot Fight 模式規則的功能以及對 Wordpress Loopback 請求的支援，以更好地與客戶的應用程式整合並為他們提供所需的保護。</p>
+<p>我們對 Bot Management 分類輸出仍然充滿信心。如果我們在分析的時間範圍內繪製機器人分數圖，我們會發現一個非常清晰的分佈，大多數請求要麼被歸類為「肯定是機器人」（得分低於 30 分），要麼被歸類為「肯定是人類」（得分高於 80 分），大多數請求的實際得分低於 2 分或高於 95 分。這相當於在同一時間段內，33% 的流量被歸類為自動化流量（由機器人產生）。在較長一段時間內，我們確實看到整體機器人流量百分比穩定在 29%，這也反映了 <a href="https://radar.cloudflare.com/traffic?dateStart=2023-04-01&amp;dateEnd=2023-07-01" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> 上顯示的資料。</p>
+<h3>平均而言，超過 10% 的未經驗證機器人流量得到緩解</h3>
+<p>與上次報告相比，未經驗證的機器人 HTTP 流量緩解目前呈下降趨勢（下降 6 個百分點）。然而，WAF 自訂規則中的機器人管理欄位使用率不可忽視，占 11%。這意味著 Cloudflare 上部署了超過 70 萬個 WAF 自訂規則，這些規則依賴機器人訊號來執行某些動作。最常用的欄位是 cf.client.bot，它是 cf.bot_management.verified_bot 的別名，由我們<a href="https://radar.cloudflare.com/traffic/verified-bots" target="_blank" rel="noopener noreferrer">經過驗證的機器人清單</a>提供支援，讓客戶能夠區分「良性」機器人和潛在的「惡意」未經驗證機器人 。</p>
+<p>企业方案客戶可以存取更強大的 cf.bot_management.score，它可以直接存取根據每個請求計算的分數，該分數與上一節中用於產生機器人分數分佈圖的分數相同。</p>
+<p>查看哪些 Cloudflare 服務正在緩解未經驗證的機器人流量，上述資料也得到了驗證。 儘管我們的 DDoS 緩解系統會自動封鎖所有客戶的 HTTP 流量，但這僅占未經驗證機器人緩解的 13%。與之相對，WAF 以及主要由客戶定義的規則占此類緩解的 77%，遠高於報告開頭討論的所有流量的緩解情況 (57%)。請注意，這裡特別提到的機器人管理指的是我們的「預設」一鍵式規則，這些規則與 WAF 自訂規則中使用的機器人欄位分開計數。</p>
+<p>供參考的表格格式：</p>
+<p>來源</p>
+<p>百分比 (%)</p>
+<p>WAF</p>
+<p>77%</p>
+<p>DDoS 緩解</p>
+<p>13%</p>
+<p>IP 聲譽</p>
+<p>5%</p>
+<p>存取規則</p>
+<p>3%</p>
+<p>其他</p>
+<p>1%</p>
+<h2>API 流量深入解析</h2>
+<h3>58% 的動態（不可快取）流量與 API 相關</h3>
+<p>Cloudflare 觀察到的 API 流量總體增長速度並未放緩。與上一季度相比，我們現在看到 58% 的總動態流量被歸類為 API 相關流量。 比第一季度增加了 3 個百分點。</p>
+<p>我們對 API Gateway 的投資也呈現出類似的增長趨勢。在上一季度，我們發佈了幾項新的 API 安全功能。</p>
+<p>首先，我們推出了<a href="https://developers.cloudflare.com/api-shield/security/api-discovery/#inbox-view" target="_blank" rel="noopener noreferrer">新的收件匣檢視</a>，使 API Discovery 更易於使用。API Discovery 會清點您的 API 以防止影子 IT 和僵屍 API，現在客戶可以輕鬆篩選以僅顯示 API Discovery 發現的新端點。從 API Discovery 儲存端點會將它們放入我們的<a href="https://developers.cloudflare.com/api-shield/management-and-monitoring" target="_blank" rel="noopener noreferrer">端點管理</a>系統中。</p>
+<p>接下來，我們新增了僅在 Cloudflare 提供的全新 API 安全功能：透過用戶端行為控制 API 存取的能力。我們稱之為<a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">序列緩解</a>。客戶現在可以根據用戶端存取的 API 路徑的順序，建立積極或消極的安全模型。您現在可以確保，只有存取應用程式的使用者才能存取 API，忽略正常應用程式功能而進行暴力嘗試的人將無法存取 API。例如，在銀行應用程式中，您現在可以強制要求，只有在使用者存取了帳戶餘額檢查端點之後，才能存取資金轉帳端點。</p>
+<p>我們很高興能在 2023 年的剩餘時間以及以後繼續發佈 API 安全和 API 管理功能。</p>
+<h3>65% 的全球 API 流量是由瀏覽器產生</h3>
+<p>在過去一個季度中，瀏覽器產生的 API 流量所占比例一直非常穩定。 對於此統計，我們指的是那些不提供基於 HTML 內容的 HTTP 請求，這些內容將由瀏覽器直接呈現，無需進行一些預處理，例如那些通常稱為 AJAX 呼叫的請求，這些請求通常會提供基於 JSON 的回應。</p>
+<h3>HTTP 異常是 API 端點上最常見的攻擊手段</h3>
+<p>與上一季度一樣，HTTP 異常仍然是 API 流量中被緩解次數最多的攻擊手段。 不過，SQLi 插入攻擊也不容忽視，約占緩解流量總量的 11%，緊隨其後的是 XSS 攻擊，約占 9%。</p>
+<p>表格形式供參考（前 5 位）：</p>
+<p>來源</p>
+<p>百分比 (%)</p>
+<p>HTTP 異常</p>
+<p>64%</p>
+<p>SQLi</p>
+<p>11%</p>
+<p>XSS</p>
+<p>9%</p>
+<p>軟體特定</p>
+<p>5%</p>
+<p>命令資料隱碼</p>
+<p>4%</p>
+<h3>未來展望</h3>
+<p>隨著我們將應用程式安全報告改為每季度一次，我們計畫加深一些見解，並提供來自某些較新產品（例如 Page Shield）的額外資料，使我們能夠看到 HTTP 流量之外的內容，並探索第三方線上依賴性的狀態。</p>
+<p>請繼續關注 <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>， 以獲取更多應用程式安全報告和見解。</p>

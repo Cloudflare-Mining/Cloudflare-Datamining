@@ -1,1003 +1,816 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62dEEUl0uTJ4534HHLt2cT/c259a6b1a54188c714ede8e56631c10a/internet-mince-pie-database.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>In December 2017 we unveiled the <a href="https://blog.cloudflare.com/imdb-2017">true potential</a> of Cloudflare’s scale: to find the best commercially available mince pie and let the world know about it. In 2018, we’ve all been extremely busy helping Cloudflare &amp; our customers, and therefore we left it <i>very</i> late this year. Uncomfortably late.</p>
-	<p>If you want to know the best mince pie to buy in 2018 right now, skip straight to the bottom of this post where we reveal the winner. If you want to understand more about what makes a mince pie great and how we can learn this at Cloudflare’s scale - read on.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-do-you-review-42-varieties-of-mince-pie-in-an-hour">How do you review 42 varieties of mince pie in an hour?</h2>
-		<a href="https://blog.cloudflare.com/#how-do-you-review-42-varieties-of-mince-pie-in-an-hour" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With a very short amount of time to get this research out to a discerning and demanding public, we engaged the entire Cloudflare London team to help. Team members diligently went out and purchased mince pies from all over the South East of England for everyone to taste.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jZ2L5QDE6kEQZ99YLWeea/2e524861a4f9969ad8abe85955b0a933/mince_pie_collecting_collage.png" alt="Mince pie collecting collage" class="kg-image" width="1024" height="768" loading="lazy">
-
-	</figure>
-	<p>On Monday the team assembled for a “Mince Pie Jam”, where we would taste &amp; consistently review each pie:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/191cbkS3GWDQFlk2vHIp3P/63842c9eea00cb215f19580cee41d488/2018_mince_pie_jam_kitchen.jpg" alt="The 2018 Cloudflare Mince Pie Jam" class="kg-image" width="2000" height="1500" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="a-quick-refresher-what-is-a-mince-pie">A quick refresher - what is a mince pie?</h2>
-		<a href="https://blog.cloudflare.com/#a-quick-refresher-what-is-a-mince-pie" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4hvZNibFEBxOfXo1UqMkd2/543453431e2cf33c28c6b59d5d76ec38/internet_search_mince_pies.png" alt="Internet search for Mince Pies" class="kg-image" width="613" height="589" loading="lazy">
-
-	</figure>
-	<p>As we can see from even the most cursory Internet search, there are a lot of questions surrounding mince pies. After some confusion relating to our 2017 edition of the IMDB we should clearly state: modern mince pies do not contain meat. A Mince Pie is “a sweet pie of British origin, filled with a mixture of dried fruits and spices called mincemeat, that is traditionally served during the Christmas season in the English world.” - <a href="https://en.wikipedia.org/wiki/Mince_pie" target="_blank" rel="noopener noreferrer">Wikipedia for Mince Pie</a></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9l4k8S5cx7UqPVdw7p25L/886121a89eafd3a780bd90449fef52ef/mincepie-Sketch--Today-at-14.07.04.png" alt="A cross-section drawing of a classic mince pie" class="kg-image" width="1848" height="932" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="our-methodology">Our methodology</h2>
-		<a href="https://blog.cloudflare.com/#our-methodology" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We reviewed the mince pies in terms of its characteristics as well as overall. Each mince pie was given a score of 1 to 10 for each of the following:</p>
-	<ul>
-		<li>
-			<p>Innovation</p>
-		</li>
-		<li>
-			<p>Booziness</p>
-		</li>
-		<li>
-			<p>Pastry to Filling Ratio</p>
-		</li>
-		<li>
-			<p>Pastry</p>
-		</li>
-		<li>
-			<p>Mince</p>
-		</li>
-		<li>
-			<p>Overall rating</p>
-		</li>
-	</ul>
-	<p>The top 3 categories there are somewhat objective measurements compared to the more subjective ones below. During analysis, this created some exciting opportunities.</p>
-	<div class="flex anchor relative">
-		<h2 id="analysis">Analysis</h2>
-		<a href="https://blog.cloudflare.com/#analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With this combination of 3 subjective &amp; 3 objective metrics and a total of 214 submitted reviews by our team, we had a lot of data. To break this data down Nela quickly settled on the Pearson Correlation Coefficient (PCC).</p>
-	<div class="flex anchor relative">
-		<h3 id="the-pearson-correlation-coefficient">The Pearson Correlation Coefficient</h3>
-		<a href="https://blog.cloudflare.com/#the-pearson-correlation-coefficient" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a> describes the PCC as follows:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1iok4F6Gh9I3kqz4e16YyF/709ee53c3f83f81dd87ca7f2c66eab0a/f76ccfa7c2ed7f5b085115086107bbe25d329cec.1.0.0_" alt="formula for the population Pearson Correlation Coefficient" class="kg-image" width="148" height="48" loading="lazy">
-
-	</figure>
-	<blockquote>
-		<p>The correlation coefficient ranges from −1 to 1. A value of 1 implies that a linear equation describes the relationship between X and Y perfectly, with all data points lying on a line for which Y increases as X increases. A value of −1 implies that all data points lie on a line for which Y decreases as X increases. A value of 0 implies that there is no linear correlation between the variables.</p>
-	</blockquote>
-	<p>By setting our X Value as the Overall Rating, we were able to plug in each of the other metrics from our reviews as the Y value, to understand how important each of these characteristics are in producing a high quality result.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/As76BfBuh2Rcz9zZVHq5c/646c19c3259e6adfea3e2611523b9b89/2018_mince_pie_correlation_coefficient-1.png" alt="" class="kg-image" width="656" height="813" loading="lazy">
-
-	</figure>
-	<p>2018 Internet Mince pie Database evaluation criteria coefficient. <a href="https://public.tableau.com/profile/nela7296#!/vizhome/2018MincePieRatingCriteria/RatingCriteriaCoefficient" target="_blank" rel="noopener noreferrer">Explore the full dataset</a></p>
-	<p>From this data we can conclude that satisfaction with a pie’s mince filling is the most likely criteria for overall pie satisfaction with <code>r=.841</code>, while innovation creates a negative correlation implying that traditional mince pies are favoured, and straying from this will only lead to dissatisfaction. Alcohol content had a minor positive correlation while pastry, pastry to filling ratio, and aesthetic had an average positive correlation.</p>
-	<div class="flex anchor relative">
-		<h3 id="word-association">Word Association</h3>
-		<a href="https://blog.cloudflare.com/#word-association" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Along with scores, our reviewers also left tasting notes which gave an insight into how they arrived at their scores. Taking the reviews which scored a mince pie from 1-5 we’re able to see the terms most associated with poorer performing pies:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6GPC7lCIeM7O27KtOOS5Gm/10730a7e3eed59fda527c77048cac7a8/bad_mince_pie_review_word_cloud.png" alt="Bad mince pie review word cloud" class="kg-image" width="640" height="480" loading="lazy">
-
-	</figure>
-	<p>Pies scoring between 6 and 10 points had the following terms used the most in tasting notes:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5pDTjVBjvHukQAzb3klSqn/dc866033e9313259b76ce5e4bd28fe24/good_mince_pie_review_word_cloud.png" alt="Good mince pie review word cloud" class="kg-image" width="640" height="480" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="also-rans-and-notable-mentions">Also-rans and notable mentions</h2>
-		<a href="https://blog.cloudflare.com/#also-rans-and-notable-mentions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Before we get to the final overall rankings, there are a few categories we wanted to mention.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-most-expensive-pies">The Most Expensive Pies</h3>
-		<a href="https://blog.cloudflare.com/#the-most-expensive-pies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Unsurprisingly, some of the most expensive mince pies come from London’s fanciest Restaurants &amp; Bakeries. The 3 most expensive mince pies did not rank highly enough to feature elsewhere - which goes to show you that money doesn’t necessarily buy you the best mince pie.</p>
-	<div class="flex anchor relative">
-		<h4 id="mince-pie"><a href="https://ottolenghi.co.uk">Ottolenghi</a> Mince Pie</h4>
-		<a href="https://blog.cloudflare.com/#mince-pie" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+<p>In December 2017 we unveiled the <a href="https://blog.cloudflare.com/imdb-2017">true potential</a> of Cloudflare’s scale: to find the best commercially available mince pie and let the world know about it. In 2018, we’ve all been extremely busy helping Cloudflare &amp; our customers, and therefore we left it <em>very</em> late this year. Uncomfortably late.</p>
+<p>If you want to know the best mince pie to buy in 2018 right now, skip straight to the bottom of this post where we reveal the winner. If you want to understand more about what makes a mince pie great and how we can learn this at Cloudflare’s scale - read on.</p>
+<h2>How do you review 42 varieties of mince pie in an hour?</h2>
+<p>With a very short amount of time to get this research out to a discerning and demanding public, we engaged the entire Cloudflare London team to help. Team members diligently went out and purchased mince pies from all over the South East of England for everyone to taste.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Mince pie collecting collage" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XQGNZZYKHG3W254ZG4Y9.png&amp;w=1024&amp;h=768&amp;f=webp" data-lightbox-width="1024" data-lightbox-height="768" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>On Monday the team assembled for a “Mince Pie Jam”, where we would taste &amp; consistently review each pie:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The 2018 Cloudflare Mince Pie Jam" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYANXDKQPFQCH4V473GB.jpg&amp;w=1920&amp;h=1440&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1440" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<h2>A quick refresher - what is a mince pie?</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="613" height="589" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=613&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=613&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 613w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=640&amp;h=615&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=750&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=828&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=1080&amp;h=1038&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=1226&amp;h=1178&amp;f=webp&amp;fit=cover&amp;position=center 1226w" alt="Internet search for Mince Pies" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XWYM3KHJG99AKJQPB3RF.png&amp;w=613&amp;h=589&amp;f=webp" data-lightbox-width="613" data-lightbox-height="589" data-astro-cid-7nvefuv6="true" sizes="(min-width: 613px) 613px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="613" height="589" class="pt-portable-image-media"></div>
+</figure>
+<p>As we can see from even the most cursory Internet search, there are a lot of questions surrounding mince pies. After some confusion relating to our 2017 edition of the IMDB we should clearly state: modern mince pies do not contain meat. A Mince Pie is “a sweet pie of British origin, filled with a mixture of dried fruits and spices called mincemeat, that is traditionally served during the Christmas season in the English world.” - <a href="https://en.wikipedia.org/wiki/Mince_pie" target="_blank" rel="noopener noreferrer">Wikipedia for Mince Pie</a></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="361" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=715&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=640&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=715&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=750&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=828&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=1080&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=1280&amp;h=646&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=1430&amp;h=722&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Mince Pie Sketch" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGCFE1BHWN08KPSA9E1.png&amp;w=1848&amp;h=932&amp;f=webp" data-lightbox-width="1848" data-lightbox-height="932" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="361" class="pt-portable-image-media"></div>
+</figure>
+<h2>Our methodology</h2>
+<p>We reviewed the mince pies in terms of its characteristics as well as overall. Each mince pie was given a score of 1 to 10 for each of the following:</p>
+<ul>
+	<li>Innovation</li>
+	<li>Booziness</li>
+	<li>Pastry to Filling Ratio</li>
+	<li>Pastry</li>
+	<li>Mince</li>
+	<li>Overall rating</li>
+</ul>
+<p>The top 3 categories there are somewhat objective measurements compared to the more subjective ones below. During analysis, this created some exciting opportunities.</p>
+<h2>Analysis</h2>
+<p>With this combination of 3 subjective &amp; 3 objective metrics and a total of 214 submitted reviews by our team, we had a lot of data. To break this data down Nela quickly settled on the Pearson Correlation Coefficient (PCC).</p>
+<h3>The Pearson Correlation Coefficient</h3>
+<p><a href="https://wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a> describes the PCC as follows:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="148" height="48" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RM93XA4NFXMHT2160S8G.0%2522&amp;w=148&amp;h=48&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RM93XA4NFXMHT2160S8G.0%2522&amp;w=148&amp;h=48&amp;f=webp&amp;fit=cover&amp;position=center 148w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RM93XA4NFXMHT2160S8G.0%2522&amp;w=296&amp;h=96&amp;f=webp&amp;fit=cover&amp;position=center 296w" alt="formula for the population Pearson Correlation Coefficient" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RM93XA4NFXMHT2160S8G.0%2522&amp;w=148&amp;h=48&amp;f=webp" data-lightbox-width="148" data-lightbox-height="48" data-astro-cid-7nvefuv6="true" sizes="(min-width: 148px) 148px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="148" height="48" class="pt-portable-image-media"></div>
+</figure>
+<blockquote>The correlation coefficient ranges from −1 to 1. A value of 1 implies that a linear equation describes the relationship between X and Y perfectly, with all data points lying on a line for which Y increases as X increases. A value of −1 implies that all data points lie on a line for which Y decreases as X increases. A value of 0 implies that there is no linear correlation between the variables.</blockquote>
+<p>By setting our X Value as the Overall Rating, we were able to plug in each of the other metrics from our reviews as the Y value, to understand how important each of these characteristics are in producing a high quality result.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="656" height="813" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=656&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=640&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=656&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 656w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=750&amp;h=929&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=828&amp;h=1026&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=1080&amp;h=1338&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=1280&amp;h=1586&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=1312&amp;h=1626&amp;f=webp&amp;fit=cover&amp;position=center 1312w" alt="The Internet Mince Pie Data Base: 2018 Edition Embedded Image - r4XoLq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TRWVTZS4YV91D7SJWHC.png&amp;w=656&amp;h=813&amp;f=webp" data-lightbox-width="656" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 656px) 656px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="656" height="813" class="pt-portable-image-media"></div>
+</figure>
+<p>2018 Internet Mince pie Database evaluation criteria coefficient. <a href="https://public.tableau.com/profile/nela7296#!/vizhome/2018MincePieRatingCriteria/RatingCriteriaCoefficient" target="_blank" rel="noopener noreferrer">Explore the full dataset</a></p>
+<p>From this data we can conclude that satisfaction with a pie’s mince filling is the most likely criteria for overall pie satisfaction with <code>r=.841</code>, while innovation creates a negative correlation implying that traditional mince pies are favoured, and straying from this will only lead to dissatisfaction. Alcohol content had a minor positive correlation while pastry, pastry to filling ratio, and aesthetic had an average positive correlation.</p>
+<h3>Word Association</h3>
+<p>Along with scores, our reviewers also left tasting notes which gave an insight into how they arrived at their scores. Taking the reviews which scored a mince pie from 1-5 we’re able to see the terms most associated with poorer performing pies:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="480" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481CJ7JZ52099CHRKW650N.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481CJ7JZ52099CHRKW650N.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481CJ7JZ52099CHRKW650N.png&amp;w=750&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481CJ7JZ52099CHRKW650N.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481CJ7JZ52099CHRKW650N.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481CJ7JZ52099CHRKW650N.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="Bad mince pie review word cloud" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481CJ7JZ52099CHRKW650N.png&amp;w=640&amp;h=480&amp;f=webp" data-lightbox-width="640" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="480" class="pt-portable-image-media"></div>
+</figure>
+<p>Pies scoring between 6 and 10 points had the following terms used the most in tasting notes:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="480" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QEQ62VBCHSNYKSTNKMP2.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QEQ62VBCHSNYKSTNKMP2.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QEQ62VBCHSNYKSTNKMP2.png&amp;w=750&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QEQ62VBCHSNYKSTNKMP2.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QEQ62VBCHSNYKSTNKMP2.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QEQ62VBCHSNYKSTNKMP2.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="Good mince pie review word cloud" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QEQ62VBCHSNYKSTNKMP2.png&amp;w=640&amp;h=480&amp;f=webp" data-lightbox-width="640" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="480" class="pt-portable-image-media"></div>
+</figure>
+<h2>Also-rans and notable mentions</h2>
+<p>Before we get to the final overall rankings, there are a few categories we wanted to mention.</p>
+<h3>The Most Expensive Pies</h3>
+<p>Unsurprisingly, some of the most expensive mince pies come from London’s fanciest Restaurants &amp; Bakeries. The 3 most expensive mince pies did not rank highly enough to feature elsewhere - which goes to show you that money doesn’t necessarily buy you the best mince pie.</p>
+<h4><a href="https://ottolenghi.co.uk" target="_blank" rel="noopener noreferrer">Ottolenghi</a> Mince Pie</h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.647</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£10 for 4 (250ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.176</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.471</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.647</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.588</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.059</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>A Dickensian-styled thing of beauty, I expected a pie-seller to appear muttering "gawd blimey guv'nor thems good pies". Good bite, alcohol was raw and overly pungent, tasty but I needed a quiet lie down afterwards.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id="mince-pie"><a href="https://www.flourishbakery.com">Flourish</a> Mince Pie</h4>
-		<a href="https://blog.cloudflare.com/#mince-pie" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>A Dickensian-styled thing of beauty, I expected a pie-seller to appear muttering "gawd blimey guv'nor thems good pies". Good bite, alcohol was raw and overly pungent, tasty but I needed a quiet lie down afterwards.</blockquote>
+<h4><a href="https://www.flourishbakery.com" target="_blank" rel="noopener noreferrer">Flourish</a> Mince Pie</h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.167</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>230ppp</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.167</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.333</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.167</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.667</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.667</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>Deeelicious and moist. A little citrus and Christmas on the finish.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id="mince-pie"><a href="https://stjohnrestaurant.com/a/restaurants/bakery">St. John</a> Mince Pie</h4>
-		<a href="https://blog.cloudflare.com/#mince-pie" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>Deeelicious and moist. A little citrus and Christmas on the finish.</blockquote>
+<h4><a href="https://stjohnrestaurant.com/a/restaurants/bakery" target="_blank" rel="noopener noreferrer">St. John</a> Mince Pie</h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.273</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>230ppp</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.273</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.727</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.727</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.182</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.000</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>In a word, dense. Dense filling, dense pastry. A bit too heavy all round.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="the-bottom-3">The Bottom 3</h3>
-		<a href="https://blog.cloudflare.com/#the-bottom-3" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Below are the 3 lowest scoring mince pies in 2018. We publish this not to humiliate but in the hope that these bakers will learn &amp; improve for 2019.</p>
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://www.tesco.com/groceries/products/301637989">Tesco Mince Pie Cookies</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>In a word, dense. Dense filling, dense pastry. A bit too heavy all round.</blockquote>
+<h3>The Bottom 3</h3>
+<p>Below are the 3 lowest scoring mince pies in 2018. We publish this not to humiliate but in the hope that these bakers will learn &amp; improve for 2019.</p>
+<h4><a href="https://www.tesco.com/groceries/products/301637989" target="_blank" rel="noopener noreferrer">Tesco Mince Pie Cookies</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.4</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£3.00 for 8 (~38ppc)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>10</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.8</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>The 10 on "experimental" here means ... experiment gone badly wrong. If ratings allowed for complex numbers, this one would score an overall '10i'.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://groceries.asda.com/product/tarts-pies-bakewells/asda-extra-special-allbutter-luxury-mince-pies/910000327219">ASDA Extra Special All-Butter Luxury</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>The 10 on "experimental" here means ... experiment gone badly wrong. If ratings allowed for complex numbers, this one would score an overall '10i'.</blockquote>
+<h4><a href="https://groceries.asda.com/product/tarts-pies-bakewells/asda-extra-special-allbutter-luxury-mince-pies/910000327219" target="_blank" rel="noopener noreferrer">ASDA Extra Special All-Butter Luxury</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£1.50 for 6 (25ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.75</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.75</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.5</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>A bit dry and what on earth is all that air doing there?! Get out and put mince in!</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id="holly-lane-mince-pies"><a href="https://www.aldi.co.uk">Aldi</a> Holly Lane Mince Pies</h4>
-		<a href="https://blog.cloudflare.com/#holly-lane-mince-pies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>A bit dry and what on earth is all that air doing there?! Get out and put mince in!</blockquote>
+<h4><a href="https://www.aldi.co.uk" target="_blank" rel="noopener noreferrer">Aldi</a> Holly Lane Mince Pies</h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.667</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£0.75 for 6 (~13ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.667</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.333</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.667</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.333</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>BANG average from Aldi. I don't know where Holly Lane is but if I were to guess it would be firmly in the middle of somewhere. Slightly chalky, pasty pastry and sweet uninteresting mince.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="the-most-innovative-mince-pies">The most innovative mince pies</h3>
-		<a href="https://blog.cloudflare.com/#the-most-innovative-mince-pies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Nela’s impressive Pearson Correlation work showed that there is actually a minor negative correlation with mince pies that are highly innovative. During tasting we observed that innovative pies drew people in but they most definitely divided opinion. Here are the 3 most innovative mince pies (as ranked by their innovation score).</p>
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://www.waitrose.com/ecom/products/heston-from-waitrose-chocolate-and-cherry-mince-pies/689473-666824-666825">Heston from Waitrose Chocolate &amp; Cherry Mince Pies</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>BANG average from Aldi. I don't know where Holly Lane is but if I were to guess it would be firmly in the middle of somewhere. Slightly chalky, pasty pastry and sweet uninteresting mince.</blockquote>
+<h3>The most innovative mince pies</h3>
+<p>Nela’s impressive Pearson Correlation work showed that there is actually a minor negative correlation with mince pies that are highly innovative. During tasting we observed that innovative pies drew people in but they most definitely divided opinion. Here are the 3 most innovative mince pies (as ranked by their innovation score).</p>
+<h4><a href="https://www.waitrose.com/ecom/products/heston-from-waitrose-chocolate-and-cherry-mince-pies/689473-666824-666825" target="_blank" rel="noopener noreferrer">Heston from Waitrose Chocolate &amp; Cherry Mince Pies</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.600</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£3.00 for 6 (50ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.800</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.400</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.400</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.600</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.200</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.000</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>Bad.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://groceries.asda.com/product/tarts-pies-bakewells/asda-extra-special-allbutter-caramel-crumble-pies/1000071078214">ASDA Extra Special All-Butter Caramel Crumble Pies</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>Bad.</blockquote>
+<h4><a href="https://groceries.asda.com/product/tarts-pies-bakewells/asda-extra-special-allbutter-caramel-crumble-pies/1000071078214" target="_blank" rel="noopener noreferrer">ASDA Extra Special All-Butter Caramel Crumble Pies</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.667</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£2.00 for 6 (~33ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.333</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.333</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.333</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.667</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>Interesting but this is not a mince pie.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://www.aldi.co.uk/flavoured-mince-pies/p/071747105694400">Aldi Black Forest Mince Pies</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>Interesting but this is not a mince pie.</blockquote>
+<h4><a href="https://www.aldi.co.uk/flavoured-mince-pies/p/071747105694400" target="_blank" rel="noopener noreferrer">Aldi Black Forest Mince Pies</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.700</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£1.99 for 6 (~33ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.300</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.200</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.300</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.500</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.800</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>Absolutely amazing taste however questionable as a mince pie. 😱😱😱😱</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h2 id="the-overall-chart">The overall chart</h2>
-		<a href="https://blog.cloudflare.com/#the-overall-chart" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Here are 2018’s top mince pies as stringently tested by the Cloudflare mince pie QA engineers:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2GUErGVz4gB2QM6yAAPtYG/a8a1c1e89552b1b8d68c1e3ac8cf2f89/2018_mince_pie_rankings-2.png" alt="" class="kg-image" width="797" height="501" loading="lazy">
-
-	</figure>
-	<p>2018 Internet Mince pie Database Rankings. <a href="https://public.tableau.com/profile/nela7296#!/vizhome/2018MincePieRating/AverageRatingDash" target="_blank" rel="noopener noreferrer">Explore the full dataset</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-imdb-top-3-mince-pies-for-2018">The IMDB Top 3 mince pies for 2018</h3>
-		<a href="https://blog.cloudflare.com/#the-imdb-top-3-mince-pies-for-2018" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://christmasfood.marksandspencer.com">M&amp;S Bakery Mince Pies</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>Absolutely amazing taste however questionable as a mince pie. 😱😱😱😱</blockquote>
+<h2>The overall chart</h2>
+<p>Here are 2018’s top mince pies as stringently tested by the Cloudflare mince pie QA engineers:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="449" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=715&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=640&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=715&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=750&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=828&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=1080&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=1280&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=1430&amp;h=898&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The Internet Mince Pie Data Base: 2018 Edition Embedded Image - q9Uxs3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455QS9VP80BKPQW31BJDV3.png&amp;w=797&amp;h=501&amp;f=webp" data-lightbox-width="797" data-lightbox-height="501" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="449" class="pt-portable-image-media"></div>
+</figure>
+<p>2018 Internet Mince pie Database Rankings. <a href="https://public.tableau.com/profile/nela7296#!/vizhome/2018MincePieRating/AverageRatingDash" target="_blank" rel="noopener noreferrer">Explore the full dataset</a>.</p>
+<h3>The IMDB Top 3 mince pies for 2018</h3>
+<h4><a href="https://christmasfood.marksandspencer.com" target="_blank" rel="noopener noreferrer">M&amp;S Bakery Mince Pies</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.400</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£1.30 per pie</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.200</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.400</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.200</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.400</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>I tried it twice. Will probably try to grab another one. Even with 14 others in-between the first and the second sampling, my preference hasn't changed. To me this is the star of the show. Yum!</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://gailsbread.co.uk/order/christmas/390-6-mince-pies.html">Gail’s Bakery Mince Pies</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>I tried it twice. Will probably try to grab another one. Even with 14 others in-between the first and the second sampling, my preference hasn't changed. To me this is the star of the show. Yum!</blockquote>
+<h4><a href="https://gailsbread.co.uk/order/christmas/390-6-mince-pies.html" target="_blank" rel="noopener noreferrer">Gail’s Bakery Mince Pies</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.200</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£8.75 for 6 (146ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.700</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.900</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.300</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.300</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>Tasty filling, with a solid pastry. A great all rounder, if a little sweet with extra filling peel and topped sugar on the pastry.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h4 id=""><a href="https://groceries.iceland.co.uk/iceland-luxury-6-mince-pies/p/56837">Iceland Luxury Mince Pies</a></h4>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Overall</b></p>
-				</td>
-				<td>
-					<p><b>Price</b></p>
-				</td>
-				<td>
-					<p><b>Booziness</b></p>
-				</td>
-				<td>
-					<p><b>Aesthetic</b></p>
-				</td>
-				<td>
-					<p><b>Pastry-to-Filling Ratio</b></p>
-				</td>
-				<td>
-					<p><b>Innovation</b></p>
-				</td>
-				<td>
-					<p><b>Pastry</b></p>
-				</td>
-				<td>
-					<p><b>Filling</b></p>
-				</td>
+</div>
+<blockquote>Tasty filling, with a solid pastry. A great all rounder, if a little sweet with extra filling peel and topped sugar on the pastry.</blockquote>
+<h4><a href="https://groceries.iceland.co.uk/iceland-luxury-6-mince-pies/p/56837" target="_blank" rel="noopener noreferrer">Iceland Luxury Mince Pies</a></h4>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Overall</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Price</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Booziness</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Aesthetic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry-to-Filling Ratio</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Innovation</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Pastry</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Filling</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.500</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>£1.89 for 6 (~32ppp)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.500</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.500</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.500</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<blockquote>
-		<p>Iceland are a dark horse here - the mince here elevates the fairly pedestrian pastry - which is pale and a little bit chalky in texture. But that mince - full of complexity - there's a hint of banana in here despite there being no actual bananas. HOW DID THEY DO THIS? DELICIOUS.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h2 id="thanks">Thanks</h2>
-		<a href="https://blog.cloudflare.com/#thanks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Thanks to everyone at Cloudflare who took part in this extensive research. If you’re inspired by some of the questions answered in this blog post, and you like spiced fruit and intense pastry debates then Cloudflare is hiring in <a href="https://www.cloudflare.com/careers/locations/london" target="_blank" rel="noopener noreferrer">London</a> and <a href="https://www.cloudflare.com/careers/locations" target="_blank" rel="noopener noreferrer">all over the world</a>.</p>
-	<p>Happy Holidays!</p>
 </div>
+<blockquote>Iceland are a dark horse here - the mince here elevates the fairly pedestrian pastry - which is pale and a little bit chalky in texture. But that mince - full of complexity - there's a hint of banana in here despite there being no actual bananas. HOW DID THEY DO THIS? DELICIOUS.</blockquote>
+<h2>Thanks</h2>
+<p>Thanks to everyone at Cloudflare who took part in this extensive research. If you’re inspired by some of the questions answered in this blog post, and you like spiced fruit and intense pastry debates then Cloudflare is hiring in <a href="https://www.cloudflare.com/careers/locations/london" target="_blank" rel="noopener noreferrer">London</a> and <a href="https://www.cloudflare.com/careers/locations" target="_blank" rel="noopener noreferrer">all over the world</a>.</p>
+<p>Happy Holidays!</p>

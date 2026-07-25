@@ -1,85 +1,32 @@
-<div class="mb2 gray5">2分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/supercharging-firewall-events-for-self-serve">English</a>、<a href="https://blog.cloudflare.com/fr-fr/supercharging-firewall-events-for-self-serve">Français</a>、<a href="https://blog.cloudflare.com/de-de/supercharging-firewall-events-for-self-serve">Deutsch</a>、<a href="https://blog.cloudflare.com/zh-cn/supercharging-firewall-events-for-self-serve">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AG5dfPUOAhHuw1oqKbMV0/00cb8efac637feaeb2770eb88e96b506/supercharging-firewall-events-for-self-serve.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>無料プラン、Proプラン、Businessプランのお客様に対して、本日、全面的に刷新されたバージョンのファイアウォールイベントログのリリースをお知らせできることを大変うれしく思います。新しいファイアウォールイベントログはダッシュボードで使えるようになっており、この新しい機能を受け取るために何もする必要はありません。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/141jSRK1fTPux3n04DH7ud/0dcd81e892295258abd387fcfa4fbb61/image1-6.png" alt="" class="kg-image" width="1999" height="1315" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="no-more-modals"><b>モーダルはもう古い</b></h2>
-		<a href="https://blog.cloudflare.com/#no-more-modals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>当社は厄介なモーダルは廃止して遥かにスムーズなユーザーエクスペリエンスを提供します。イベントに関する詳細情報を確認するには、イベントリスト行の任意の場所をクリックします。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VRogojtxjTNxa5Xjo5UBK/6611c2560fd3b102c69f33a42a3de1f2/image4-3.png" alt="" class="kg-image" width="1999" height="866" loading="lazy">
-
-	</figure>
-	<p>展開表示には、ファイアウォールの問題を特定したり診断したり、アプリケーションに対する潜在的な脅威に関する詳細を確認するために必要な情報がすべて表示されます。</p>
-	<div class="flex anchor relative">
-		<h2 id="additional-matches-per-event"><b>イベントごとの照合を追加</b></h2>
-		<a href="https://blog.cloudflare.com/#additional-matches-per-event" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflareには、お客様のセキュリティをきめ細かく制御するためのファイアウォール機能がいくつか用意されています。この制御機能を使用すると、ファイアウォールによってリクエストが停止された理由をデバッグするときに、少し複雑になります。何が起こったかを明確にするために、イベントの下部に、同じリクエストに対して複数のサービスまたはルールによってトリガーされた「追加の照合」のカウントを表示しています。番号をクリックすると、対応するアクションと合わせて各ルールとサービスを示すリストが展開されます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fqalGyuTVZGq4sEX8Dtl8/cf7278c59f4e83c748083ffadc512a9c/image5.png" alt="" class="kg-image" width="1999" height="1440" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="search-for-any-field-within-a-firewall-event"><b>ファイアウォールイベント内で任意のフィールドを検索する</b></h2>
-		<a href="https://blog.cloudflare.com/#search-for-any-field-within-a-firewall-event" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>これは、新しいファイアウォールイベントログで私が気に入っている部分の一つです。多くのお客様は、個別のイベントを特定することの難しさに不満をあらわにしています。ここで、当社の新しい検索機能が本領を発揮します。お客様は、ファイアウォールイベントで表示できるフィールドのどれでも検索条件を追加したり、フリーフォーム検索ができるようになりました！</p>
-	<p>たとえば、ファイアウォールルールが JavaScriptチャレンジを発行した特定の ISPや国からのすべてのリクエストを検索するとします。UIでこれを行うには方法が2つあります。</p>
-	<p>まず、詳細表示からは、そのフィールド値について_含める、_または_除外するフィルターを_作成できます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xIXJmuiiwnn8xlida4IaN/0af3214cc4f4b70b265f7d84a541a1a8/image6.gif" alt="" class="kg-image" width="1024" height="898" loading="lazy">
-
-	</figure>
-	<p>次に、上部にある [+フィルターの追加] ボタンを使用してフリーフォームフィルターを作成するか、既にフィルタリングされたフィールドのいずれかを編集します。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xg5KWxcCmxUCyRrNsw6dp/9e43274178c59c966ce32dfad233cdd0/image2.gif" alt="" class="kg-image" width="1030" height="484" loading="lazy">
-
-	</figure>
-	<p>上に示したように、WAF管理ルールをログのみで有効にすると、これが正当な攻撃だった場合にトリガーされるすべてのルールを確認できます。これにより、構成が予想通りに動作していることが確認できます。</p>
-	<div class="flex anchor relative">
-		<h2 id="scoping-your-search-to-a-specific-date-and-time"><b>検索を特定の日時に絞りこむ</b></h2>
-		<a href="https://blog.cloudflare.com/#scoping-your-search-to-a-specific-date-and-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>旧版のファイアウォールイベントログでは、あるイベントを見つけるためには、ユーザーは特定の日のイベントが見つかるまで多くのページに目を通す必要がありました。最後に追加した大きな変更は、過去 2 週間の 2 つの時点の間のイベントを表示する時間枠を選択する機能です。時間選択ウィンドウでは、無料プランおよびProプランのお客様は24時間の時間枠を選択することができ、当社のBusinessプランのお客様は最大72時間まで表示できます。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tHEAR3fymBerYnU86FSsk/4424d791d85ecaede8c05cb639c1c326/image3.gif" alt="" class="kg-image" width="1012" height="709" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="we-want-your-feedback"><b>フィードバックをお待ちしてます！</b></h2>
-		<a href="https://blog.cloudflare.com/#we-want-your-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>ご協力をお願いします！ぜひ、<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">コミュニティフォーラム</a>に関するフィードバックを記入ください。不具合がありましたら、サポートチケットを発行してください。お客様からのフィードバックは、当社の製品改善プロセスにとって重要です。ぜひご意見をお寄せください。</p>
-</div>
+<p>無料プラン、Proプラン、Businessプランのお客様に対して、本日、全面的に刷新されたバージョンのファイアウォールイベントログのリリースをお知らせできることを大変うれしく思います。新しいファイアウォールイベントログはダッシュボードで使えるようになっており、この新しい機能を受け取るために何もする必要はありません。</p>
+<h2><strong>モーダルはもう古い</strong></h2>
+<p>当社は厄介なモーダルは廃止して遥かにスムーズなユーザーエクスペリエンスを提供します。イベントに関する詳細情報を確認するには、イベントリスト行の任意の場所をクリックします。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="310" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=750&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=828&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1080&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1280&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1430&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Supercharging Firewall Events for Self-Serve Embedded Image - aN1ore" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1920&amp;h=832&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="310" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>展開表示には、ファイアウォールの問題を特定したり診断したり、アプリケーションに対する潜在的な脅威に関する詳細を確認するために必要な情報がすべて表示されます。</p>
+<h2><strong>イベントごとの照合を追加</strong></h2>
+<p>Cloudflareには、お客様のセキュリティをきめ細かく制御するためのファイアウォール機能がいくつか用意されています。この制御機能を使用すると、ファイアウォールによってリクエストが停止された理由をデバッグするときに、少し複雑になります。何が起こったかを明確にするために、イベントの下部に、同じリクエストに対して複数のサービスまたはルールによってトリガーされた「追加の照合」のカウントを表示しています。番号をクリックすると、対応するアクションと合わせて各ルールとサービスを示すリストが展開されます。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Supercharging Firewall Events for Self-Serve Embedded Image - KEVQ6K" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1920&amp;h=1383&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1383" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
+</figure>
+<h2><strong>ファイアウォールイベント内で任意のフィールドを検索する</strong></h2>
+<p>これは、新しいファイアウォールイベントログで私が気に入っている部分の一つです。多くのお客様は、個別のイベントを特定することの難しさに不満をあらわにしています。ここで、当社の新しい検索機能が本領を発揮します。お客様は、ファイアウォールイベントで表示できるフィールドのどれでも検索条件を追加したり、フリーフォーム検索ができるようになりました！</p>
+<p>たとえば、ファイアウォールルールが JavaScriptチャレンジを発行した特定の ISPや国からのすべてのリクエストを検索するとします。UIでこれを行うには方法が2つあります。</p>
+<p>まず、詳細表示からは、そのフィールド値について_含める、_または_除外するフィルターを_作成できます。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="627" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW492HR2KVY35QSVNRS7ATCP.gif" alt="Supercharging Firewall Events for Self-Serve Embedded Image - UJKQjF" width="715" height="627" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>次に、上部にある [+フィルターの追加] ボタンを使用してフリーフォームフィルターを作成するか、既にフィルタリングされたフィールドのいずれかを編集します。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47TAD041SCRM71KYNKFW15.gif" alt="Supercharging Firewall Events for Self-Serve Embedded Image - PXVh5z" width="715" height="336" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>上に示したように、WAF管理ルールをログのみで有効にすると、これが正当な攻撃だった場合にトリガーされるすべてのルールを確認できます。これにより、構成が予想通りに動作していることが確認できます。</p>
+<h2><strong>検索を特定の日時に絞りこむ</strong></h2>
+<p>旧版のファイアウォールイベントログでは、あるイベントを見つけるためには、ユーザーは特定の日のイベントが見つかるまで多くのページに目を通す必要がありました。最後に追加した大きな変更は、過去 2 週間の 2 つの時点の間のイベントを表示する時間枠を選択する機能です。時間選択ウィンドウでは、無料プランおよびProプランのお客様は24時間の時間枠を選択することができ、当社のBusinessプランのお客様は最大72時間まで表示できます。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="501" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW472AC8425RFH9KEE97SKD8.gif" alt="Supercharging Firewall Events for Self-Serve Embedded Image - IMEmBK" width="715" height="501" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h2><strong>フィードバックをお待ちしてます！</strong></h2>
+<p>ご協力をお願いします！ぜひ、<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">コミュニティフォーラム</a>に関するフィードバックを記入ください。不具合がありましたら、サポートチケットを発行してください。お客様からのフィードバックは、当社の製品改善プロセスにとって重要です。ぜひご意見をお寄せください。</p>

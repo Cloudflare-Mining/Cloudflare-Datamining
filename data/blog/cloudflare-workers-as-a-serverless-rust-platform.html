@@ -1,408 +1,376 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BAx37OMGa3UKptJhvBifT/ffdd359d0294a85dccb0b7e127affb2b/cloudflare-workers-as-a-serverless-rust-platform.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><b><i>Update</i></b><i>: Rust Tooling for Workers has improved significantly since this post. Go </i><a href="https://blog.cloudflare.com/introducing-wrangler-cli"><i>here</i></a><i> to check out Wrangler, our new Rust+Workers cli</i></p>
-	<hr>
-	<p>The Workers team just <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">announced support</a> for WebAssembly (WASM) within Workers. If you saw my post on <a href="https://blog.cloudflare.com/internet-native-applications">Internet Native Apps</a>, you'll know that I believe WebAssembly will play a big part in the apps of the future.</p>
-	<p>It's exciting times for Rust developers. Cloudflare's Serverless Platform, Cloudflare Workers, allows you to compile your code to WASM, upload to 150+ data centers and invoke those functions just as easily as if they were JavaScript functions. Today I'm going to convert my lipsum generator to use Rust and explore the developer experience (hint: it's already pretty nice).</p>
-	<p>The Workers teams notes in the documentation:</p>
-	<blockquote>
-		<p>...WASM is not always the right tool for the job. For lightweight tasks like redirecting a request to a different URL or checking an authorization token, sticking to pure JavaScript is probably both faster and easier than WASM. WASM programs operate in their own separate memory space, which means that it's necessary to copy data in and out of that space in order to operate on it. Code that mostly interacts with external objects without doing any serious "number crunching" likely does not benefit from WASM.</p>
-	</blockquote>
-	<p>OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. ?</p>
-	<div class="flex anchor relative">
-		<h2 id="setup-the-environment-with-wasm-pack">Setup the environment with wasm-pack</h2>
-		<a href="https://blog.cloudflare.com/#setup-the-environment-with-wasm-pack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack" target="_blank" rel="noopener noreferrer">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html" target="_blank" rel="noopener noreferrer">prerequisites</a> installed and then follow the steps below to get started.</p>
-	<p>wasm-pack allows you to compile Rust to WebAssembly, as well as generate bindings between JavaScript objects and Rust objects. We'll talk about why that's important later.</p>
-	<pre class="language-bash"><code class="language-bash"># Install wasm-pack
-curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
-
-# Cargo generate to build apps based on templates
-cargo install cargo-generate
-
-# And generate a HelloWorld wasm app, based on the wasm-pack template
-cargo generate --git https://github.com/rustwasm/wasm-pack-template
-
-?  Project Name: bob-ross-lorem-ipsum-rust
-?   Creating project called `bob-ross-lorem-ipsum-rust`...
-✨   Done! New project created /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/api-rust/bob-ross-lorem-ipsum-rust</code></pre>
-	<p>The <a href="https://rustwasm.github.io/wasm-pack/book/tutorial/template-deep-dive/cargo-toml.html" target="_blank" rel="noopener noreferrer">WASM book</a> describes some of the glue in the Cargo.toml file, but the meat of the project is here:</p>
-	<pre class="language-bash"><code class="language-bash">...
-#[wasm_bindgen]
-extern {
-    fn alert(s: &amp;str);
-}
-
-#[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, bob-ross-lorem-ipsum-rust!");
-}</code></pre>
-	<p>This does two things</p>
-	<ol>
-		<li>
-			<p>Binds to the "external" function in our host environment where the WASM will run. If that's the browser, it will popup a window.</p>
-		</li>
-		<li>
-			<p>It also defines a Rust function, greet() which will be made available as a function callable from the host environment, in our case JavaScript.</p>
-		</li>
-	</ol>
-	<p>Build with <code>wasm-pack build</code></p>
-	<pre class="language-bash"><code class="language-bash">$ wasm-pack build
-  
-  [1/9] ?  Checking `rustc` version...
-  [2/9] ?  Checking crate configuration...
-  [3/9] ?  Adding WASM target...
-  [4/9] ?  Compiling to WASM...
-  [5/9] ?  Creating a pkg directory...
-  [6/9] ?  Writing a package.json...
-  ⚠️   [WARN]: Field 'description' is missing from Cargo.toml. It is not necessary, but recommended
-  ⚠️   [WARN]: Field 'repository' is missing from Cargo.toml. It is not necessary, but recommended
-  ⚠️   [WARN]: Field 'license' is missing from Cargo.toml. It is not necessary, but recommended
-  [7/9] ?  Copying over your README...
-  [8/9] ⬇️  Installing wasm-bindgen...
-  [9/9] ?‍♀️  Running WASM-bindgen...
-  ✨   Done in 2 minutes
-| ?   Your wasm pkg is ready to publish at "/Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross</code></pre>
-	<p>Subsequent builds will be faster. We eventually want to ship that .wasm file to a Worker, but I'd like to keep things local and test in a browser first.</p>
-	<p>There's an <a href="https://www.npmjs.com/package/create-wasm-app" target="_blank" rel="noopener noreferrer">npm</a> package that will create a templated webpack webapp, preconfigured to import WebAssembly node modules, which we'll use as a test harness.</p>
-	<pre class="language-bash"><code class="language-bash">$ npm init wasm-app www
-npx: installed 1 in 2.533s
-? Rust + ? Wasm = ❤</code></pre>
-	<p>Install the dependencies with <code>npm install</code> and then <code>npm start</code> to fire up the webpack bundled web server to serve your page</p>
-	<pre class="language-bash"><code class="language-bash">$ npm start
-
-&gt; create-wasm-app@0.1.0 start /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross-lorem-ipsum-rust/www
-&gt; webpack-dev-server
-
-ℹ ｢wds｣: Project is running at http://localhost:8080/</code></pre>
-	<p>Open your web browser at <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a> and you should see your first WASM generated content!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nGG5L8JRVz3j0DE8M7jds/18178a9da5a9a7f5718a665145a11153/rust-wasm-hello-world.png" alt="Rust WASM Hello World" class="kg-image" width="1038" height="380" loading="lazy">
-
-	</figure>
-	<p>OK, that's promising, but it's not actually our code. Our greet function returned <code>"Hello, bob-ross-lorem-ipsum-rust!"</code></p>
-	<p>If we open up <code>www/index.js</code>, we can see this:</p>
-	<pre class="language-bash"><code class="language-bash">import * as wasm from "hello-wasm-pack";
-
-wasm.greet();</code></pre>
-	<p>So it's importing a node module "hello-wasm-pack" which was part of the template. We want to import our <i>own</i> module we built with <code>cargo generate</code> earlier.</p>
-	<p>First, expose our WASM package as a node module:</p>
-	<pre class="language-bash"><code class="language-bash"># Create a global node_modules entry pointing to your local wasm pkg
-$ cd pkg
-$ npm link
-...
-/Users/steve/.nvm/versions/node/v8.11.3/lib/node_modules/bob-ross-lorem-ipsum-rust -&gt; /Volumes/HD2/Code/cloudflare/bob-ross-lorem-ipsum-rust/pkg</code></pre>
-	<p>Then make it available as a node_module in our test harness.</p>
-	<pre class="language-bash"><code class="language-bash">$ cd ../www
-$ npm link bob-ross-lorem-ipsum-rust
-/Volumes/HD2/Code/cloudflare/bobross/bob-ross-lorem-ipsum-rust/www/node_modules/bob-ross-lorem-ipsum-rust -&gt; /Users/steve/.nvm/versions/node/v8.11.3/lib/node_modules/bob-ross-lorem-ipsum-rust -&gt; /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lorem-ipsum-rust/pkg</code></pre>
-	<p>Import it in the index.js file</p>
-	<pre class="language-bash"><code class="language-bash">//import * as wasm from "hello-wasm-pack";
-import * as wasm from "bob-ross-lorem-ipsum-rust"</code></pre>
-	<p>and run!</p>
-	<pre class="language-bash"><code class="language-bash">npm run build
-npm run start</code></pre>
-	<p>Better! That's our code.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31yXXKuqGD2mkeKNer0Dok/c263af03d29c34f4fd8f745981f0c421/rust-wasm-hello-world2.png" alt="Rust WASM Hello World 2" class="kg-image" width="466" height="144" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="quick-recap">Quick recap</h3>
-		<a href="https://blog.cloudflare.com/#quick-recap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have:</p>
-	<ul>
-		<li>
-			<p>A Hello, World WASM module</p>
-		</li>
-		<li>
-			<p>Exposed as an npm module</p>
-		</li>
-		<li>
-			<p>A webpack app which imports that module</p>
-		</li>
-		<li>
-			<p>And invokes the greet() function</p>
-		</li>
-	</ul>
-	<p>We're now going to port our Bob Ross Lorem Ipsum generator to Rust, and try it out locally before uploading as a worker. Check it out on in the <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">GitHub</a> repo, or follow along.</p>
-	<pre class="language-rust"><code class="language-rust">
-use std::vec::Vec;
-use rand::distributions::{Range, Distribution};
-use rand::rngs::SmallRng;
-use rand::FromEntropy;
-
-static PHRASES: [&amp;str; 370] = [...elided for clarity];
-
-fn get_random_indexes(cnt: usize) -&gt; Vec&lt;usize&gt; {
-    let mut rng = get_rng();
-    let range = Range::new(0, PHRASES.len());    
-    (0..cnt)
-        .map(|_| range.sample(&amp;mut rng))
-        .collect()
-}
-
-fn get_phrase(idx: usize) -&gt; &amp;'static str {
-    PHRASES[idx]        
-}
-
-fn get_rng() -&gt; SmallRng {    
-    SmallRng::from_entropy()
-}
-
-fn get_phrases(idxs: &amp;Vec&lt;usize&gt;) -&gt; Vec&lt;&amp;'static str&gt; {    
-    idxs.iter()
-        .map(|idx| get_phrase(*idx))
-        .collect()
-}
-
-fn need_newline(newline: usize, idx: usize) -&gt; bool {
-    //idx+1 because idx is zero-based but we want a new line after "every x phrases".
-    (newline &gt; 0) &amp;&amp; (idx &gt; 0) &amp;&amp; ((idx + 1) % newline == 0)
-}
-
-fn need_space(newline: usize, idx: usize) -&gt; bool {
-    !need_newline(newline, idx)
-}
-
-fn build_phrase_text(idxs: Vec&lt;usize&gt;, newline: usize) -&gt; String {
-    let phrases_vec = get_phrases(&amp;idxs);
-    let mut string = String::new();
-    for i in 0..phrases_vec.len() {
-        //the phrase
-        string.push_str(phrases_vec[i]);
-        //spaces between phrases
-        if need_space(newline, i) {
-            string.push(' ');
-        }
-        //new lines
-        if need_newline(newline, i) {
-            string.push_str("\n\n");
-        }
-    }
-    string
-}
-
-pub fn get_phrase_text(phrase_cnt: usize, newline: usize) -&gt; String {
-    let idxs = get_random_indexes(phrase_cnt);
-    build_phrase_text(idxs,newline)
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    fn get_test_indexes() -&gt; Vec&lt;usize&gt; {
-        vec![34, 2, 99, 43, 128, 300, 45, 56, 303, 42, 11]
-    }
-    
-    #[test]
-    fn get_phrases() {
-        let randoms = get_test_indexes();
-        let phrases = super::get_phrases(&amp;randoms);
-        println!("{:?}", phrases);
-    }
-}</code></pre>
-	<p>Running the tests shows everything looks good:</p>
-	<pre class="language-bash"><code class="language-bash">$ cargo test -- --nocapture
-    Finished dev [unoptimized + debuginfo] target(s) in 0.40s                                                                                       
-     Running target/debug/deps/bob_ross_lorem_ipsum_rust-5be29ab9ead7494d
-
-running 1 test
-["Decide where your cloud lives. Maybe he lives right in here.", "A fan brush is a fantastic piece of equipment. Use it. Make friends with it.", "If we\'re going to have animals around we all have to be concerned about them and take care of them.", "Don\'t kill all your dark areas - you need them to show the light.", "It\'s almost like something out of a fairytale book.", "We don\'t have anything but happy trees here.", "Even the worst thing we can do here is good.", "Everything is happy if you choose to make it that way.", "We don\'t make mistakes we just have happy little accidents.", "Don\'t hurry. Take your time and enjoy.", "All you have to learn here is how to have fun."]
-test phrases::tests::get_phrases ... ok
-
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out</code></pre>
-	<p>And I've exposed the method to WASM like this:</p>
-	<pre class="language-bash"><code class="language-bash">#[wasm_bindgen]
-pub fn get_phrase_text(phrase_cnt: usize, new_line: usize) -&gt; String {
-    phrases::get_phrase_text(phrase_cnt, new_line)
-}</code></pre>
-	<p>So, we should be good to call our WASM from the browser test harness. Let's modify <code>www/index.js</code> to invoke <code>get_phrase_text</code> and fire it up in the browser!</p>
-	<pre class="language-javascript"><code class="language-javascript">//wasm.greet();
-let phraseText = wasm.get_phrase_text(100, 10);
-console.log(phraseText);
-alert(phraseText);</code></pre>
-	<p>Fail.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AIwddjpP7c8NrOrl5FONS/02cd2d9c04e00f9f0a5109fea2d01142/rust-wasm-fail-no-entropy.png" alt="Rust WASM Fail no entropy" class="kg-image" width="1152" height="239" loading="lazy">
-
-	</figure>
-	<p>If you've played around with Rust, you'll know how jarring it can be to see your code compile and tests pass, only to have it blow up at runtime. The strictness of the language means your code behaves exactly as you expect more often than other languages, so this failure really threw me.</p>
-	<p>Analysing the stack trace, we can see the failure starts at FromEntropy. My first instinct was that the WASM host didn't support providing entropy. I re-jigged the code to use a time-based seed instead and that failed too. The common theme seemed to be both entropy, and the current time, both make system calls.</p>
-	<p>Reading through the relevant Github issues which discuss this <a href="https://github.com/rustwasm/team/issues/16" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://github.com/rust-lang/rust/pull/47102" target="_blank" rel="noopener noreferrer">here</a>, it looks like the design for how Rust generated WASM will handle system calls remains open. If the compiler isn't able to guarantee the system calls will be available, shouldn't the linker fail to compile? I think the answer lies in the <code>wasm-unknown-unknown</code> triplet that we compile to. There are no guarantees on what the target platform provides when you target unknown, so you're on your own.</p>
-	<p>That said, we know that the v8 JavaScript engine will be our host in both the browser, and in Workers. There are libraries which allow us to make all Web APIs defined in the ECMAScript standard available to Rust, such as <a href="https://rustwasm.github.io/wasm-bindgen/api/js_sys/index.html" target="_blank" rel="noopener noreferrer">js-sys</a></p>
-	<p>Using that, I can rewrite the failing <code>get_rng()</code> method to return a pseudo-random number generated seed with a time-based value using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener noreferrer">Date</a> object provided by the JavaScript host, rather than making a system call. Full code listing is on <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">Github</a></p>
-	<pre class="language-rust"><code class="language-rust">fn get_rng() -&gt; SmallRng {    
-    use js_sys::Date;
-    use rand::SeedableRng;
-
-	//from Javascript	
-    let ticks = Date::now(); 
-    //convert the number to byte array to use as a seed
-    let tick_bytes = transmute(ticks as u128); 
-    SmallRng::from_seed(tick_bytes)
-}</code></pre>
-	<p>After another <code>wasm-pack build</code> and reloading our test page...</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tQ0dr6wWPBgr5koG2NNXK/d27bbfbc4b957b61294d6b0d3f90cedb/rust-wasm-random-phrases.png" alt="Generating random phrases" class="kg-image" width="810" height="444" loading="lazy">
-
-	</figure>
-	<p>Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
-	<div class="flex anchor relative">
-		<h2 id="from-local-browser-harness-to-workers">From local browser harness to Workers</h2>
-		<a href="https://blog.cloudflare.com/#from-local-browser-harness-to-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can use the <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32dpvCO880Ktl6yq92ZjmN/871f582f646aab3a5244aee51bd43610/rust-wasm-upload.png" alt="Rust WASM upload" class="kg-image" width="571" height="409" loading="lazy">
-
-	</figure>
-	<p>If you're following and looked at the output of the <code>wasm-pack build</code> command, you might have noticed it produced a JavaScript glue file in the pkg folder, which is actually what the browser executed.</p>
-	<p>It looks like this:</p>
-	<pre class="language-bash"><code class="language-bash">/* tslint:disable */
-import * as wasm from './bob_ross_lorem_ipsum_rust_bg';
-
-let cachedDecoder = new TextDecoder('utf-8');
-
-let cachegetUint8Memory = null;
-function getUint8Memory() {
-    if (cachegetUint8Memory === null || cachegetUint8Memory.buffer !== wasm.memory.buffer) {
-        cachegetUint8Memory = new Uint8Array(wasm.memory.buffer);
-    }
-    return cachegetUint8Memory;
-}
-
-function getStringFromWasm(ptr, len) {
-    return cachedDecoder.decode(getUint8Memory().subarray(ptr, ptr + len));
-}
-
-export function __wbg_alert_8c454b1ebc6068d7(arg0, arg1) {
-    let varg0 = getStringFromWasm(arg0, arg1);
-    alert(varg0);
-}
-/**
-* @returns {void}
-*/
-export function greet() {
-    return wasm.greet();
-}
-
-let cachedGlobalArgumentPtr = null;
-function globalArgumentPtr() {
-    if (cachedGlobalArgumentPtr === null) {
-        cachedGlobalArgumentPtr = wasm.__wbindgen_global_argument_ptr();
-    }
-    return cachedGlobalArgumentPtr;
-}
-
-let cachegetUint32Memory = null;
-function getUint32Memory() {
-    if (cachegetUint32Memory === null || cachegetUint32Memory.buffer !== wasm.memory.buffer) {
-        cachegetUint32Memory = new Uint32Array(wasm.memory.buffer);
-    }
-    return cachegetUint32Memory;
-}
-/**
-* @param {number} arg0
-* @param {number} arg1
-* @returns {string}
-*/
-export function get_phrase_text(arg0, arg1) {
-    const retptr = globalArgumentPtr();
-    wasm.get_phrase_text(retptr, arg0, arg1);
-    const mem = getUint32Memory();
-    const rustptr = mem[retptr / 4];
-    const rustlen = mem[retptr / 4 + 1];
-
-    const realRet = getStringFromWasm(rustptr, rustlen).slice();
-    wasm.__wbindgen_free(rustptr, rustlen * 1);
-    return realRet;
-
-}
-
-const __wbg_now_4410283ed4cdb45a_target = Date.now.bind(Date) || function() {
-    throw new Error(`wasm-bindgen: Date.now.bind(Date) does not exist`);
-};
-
-export function __wbg_now_4410283ed4cdb45a() {
-    return __wbg_now_4410283ed4cdb45a_target();
-}</code></pre>
-	<p>It takes care of the marshalling of strings from WASM into JavaScript and freeing the memory it uses. In an ideal world, we'd just include this in our Worker and be done. However, there a few differences between how Workers instantiates WebAssembly modules and the browser.</p>
-	<p>You need to:</p>
-	<ul>
-		<li>
-			<p>Remove the import line</p>
-		</li>
-		<li>
-			<p>Remove the export keywords</p>
-		</li>
-		<li>
-			<p>Wrap all the functions in a module</p>
-		</li>
-		<li>
-			<p>Create an importObject referencing the methods</p>
-		</li>
-		<li>
-			<p>Pass that in when you create the WebAssembly instance</p>
-		</li>
-	</ul>
-	<p><i>Update 28-Dec-2018: wasm-bindgen has been updated since this post. See this </i><a href="https://github.com/stevenpack/bob-ross-lipsum-rust/pull/1" target="_blank" rel="noopener noreferrer"><i>PR</i></a><i> if you're getting errors related to the glue code. Thanks </i><a href="https://github.com/andrewdavidmackenzie" target="_blank" rel="noopener noreferrer"><i>Andrew</i></a><i>!</i></p>
-	<p>You can view a <a href="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-local-vs-worker-diff.png">side-by-side diff</a> or a <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/glue-to-worker.patch" target="_blank" rel="noopener noreferrer">patch</a> to see the changes required to have it run in a Worker. Include the modified glue code into your worker and you can now call it like any other function. (Thanks for the tip Jake Riesterer!)</p>
-	<pre class="language-bash"><code class="language-bash">// Request Handler
-async function handleRequest(request) {
-
-    let url = new URL(request.url);
-
-    //Serve the UI
-    if (url.pathname === "/" ) {
-        let init = { "status" : 200 , "headers" : { 'Content-Type': 'text/html' } };
-        return new Response(ui, init);
-    }
-
-    let phraseCount = Math.min(parseInt(url.searchParams.get("phrases") || 100), 10000);
-    let newLine = Math.min(parseInt(url.searchParams.get("newline") || 0), 10000);
-
-    //Serverless Rust in 150+ data centers!
-    let phraseText = mod.get_phrase_text(phraseCount, newLine);
-    return new Response(phraseText);
-}</code></pre>
-	<p>Success!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5uC0hcvIpB50a7w5p5NdOE/d1ef8455307a8a2c6ad25dfbf3dc5c5c/rust-wasm-success.png" alt="Serverless Rust on the Edge" class="kg-image" width="705" height="354" loading="lazy">
-
-	</figure>
-	<p>The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js" target="_blank" rel="noopener noreferrer">source code</a> is on Github.</p>
-	<div class="flex anchor relative">
-		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We can compile Rust to WASM, and call it from Serverless functions woven into the very fabric of the Internet. That's huge and I can't wait to do more of it.</p>
-	<p>There's some wrangling of the generated code required, but the tooling will improve over time. Once you've modified the glue code, calling a function in Rust generated WASM modules is just as simple as JavaScript.</p>
-	<p>Are we Serverless yet? Yes we are.</p>
-	<p>In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>
+<p><em><strong>Update</strong>: Rust Tooling for Workers has improved significantly since this post. Go <a href="https://blog.cloudflare.com/introducing-wrangler-cli">here</a> to check out Wrangler, our new Rust+Workers cli</em></p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p>The Workers team just <a href="https://blog.cloudflare.com/webassembly-on-cloudflare-workers">announced support</a> for WebAssembly (WASM) within Workers. If you saw my post on <a href="https://blog.cloudflare.com/internet-native-applications">Internet Native Apps</a>, you'll know that I believe WebAssembly will play a big part in the apps of the future.</p>
+<p>It's exciting times for Rust developers. Cloudflare's Serverless Platform, Cloudflare Workers, allows you to compile your code to WASM, upload to 150+ data centers and invoke those functions just as easily as if they were JavaScript functions. Today I'm going to convert my lipsum generator to use Rust and explore the developer experience (hint: it's already pretty nice).</p>
+<p>The Workers teams notes in the documentation:</p>
+<blockquote>...WASM is not always the right tool for the job. For lightweight tasks like redirecting a request to a different URL or checking an authorization token, sticking to pure JavaScript is probably both faster and easier than WASM. WASM programs operate in their own separate memory space, which means that it's necessary to copy data in and out of that space in order to operate on it. Code that mostly interacts with external objects without doing any serious "number crunching" likely does not benefit from WASM.</blockquote>
+<p>OK, I'm unlikely to gain significant performance improvements on this particular project, but it serves as a good opportunity illustrate the developer experience and tooling. ?</p>
+<h2>Setup the environment with wasm-pack</h2>
+<p>Coding with WASM has been bleeding edge for a while, but Rust's tool for WASM development recently reached a fairly ergonomic state and even got a <a href="https://rustwasm.github.io/wasm-pack" target="_blank" rel="noopener noreferrer">website</a>. Make sure you have the <a href="https://rustwasm.github.io/wasm-pack/book/prerequisites/index.html" target="_blank" rel="noopener noreferrer">prerequisites</a> installed and then follow the steps below to get started.</p>
+<p>wasm-pack allows you to compile Rust to WebAssembly, as well as generate bindings between JavaScript objects and Rust objects. We'll talk about why that's important later.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Install wasm-pack</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://rustwasm.github.io/wasm-pack/installer/init.sh</span><span class="sk-005cc5-99ffe4"> -sSf</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sh</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Cargo generate to build apps based on templates</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cargo</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cargo-generate</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># And generate a HelloWorld wasm app, based on the wasm-pack template</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cargo</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-99ffe4"> --git</span><span class="sk-032f62-99ffe4"> https://github.com/rustwasm/wasm-pack-template</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">  Project Name: bob-ross-lorem-ipsum-rust</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">   Creating project called </span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">bob-ross-lorem-ipsum-rust</span><span class="sk-032f62-99ffe4">`</span><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">✨</span><span class="sk-032f62-99ffe4">   Done!</span><span class="sk-032f62-99ffe4"> New</span><span class="sk-032f62-99ffe4"> project</span><span class="sk-032f62-99ffe4"> created</span><span class="sk-032f62-99ffe4"> /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/api-rust/bob-ross-lorem-ipsum-rust</span></span></code></pre>
 </div>
+<p>The <a href="https://rustwasm.github.io/wasm-pack/book/tutorial/template-deep-dive/cargo-toml.html" target="_blank" rel="noopener noreferrer">WASM book</a> describes some of the glue in the Cargo.toml file, but the meat of the project is here:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#[wasm_bindgen]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">extern</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fn</span><span class="sk-032f62-99ffe4"> alert</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">str</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#[wasm_bindgen]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> greet</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    alert(</span><span class="sk-6f42c1-ffc799">"Hello, bob-ross-lorem-ipsum-rust!"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This does two things</p>
+<ol>
+	<li>Binds to the "external" function in our host environment where the WASM will run. If that's the browser, it will popup a window.</li>
+	<li>It also defines a Rust function, greet() which will be made available as a function callable from the host environment, in our case JavaScript.</li>
+</ol>
+<p>Build with <code>wasm-pack build</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wasm-pack</span><span class="sk-032f62-99ffe4"> build</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-24292e-fff">  [1/9] </span><span class="sk-6f42c1-ffc799">?</span><span class="sk-032f62-99ffe4">  Checking</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">rustc</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> version...</span></span>
+<span class="line"><span class="sk-24292e-fff">  [2/9] </span><span class="sk-6f42c1-ffc799">?</span><span class="sk-032f62-99ffe4">  Checking</span><span class="sk-032f62-99ffe4"> crate</span><span class="sk-032f62-99ffe4"> configuration...</span></span>
+<span class="line"><span class="sk-24292e-fff">  [3/9] </span><span class="sk-6f42c1-ffc799">?</span><span class="sk-032f62-99ffe4">  Adding</span><span class="sk-032f62-99ffe4"> WASM</span><span class="sk-032f62-99ffe4"> target...</span></span>
+<span class="line"><span class="sk-24292e-fff">  [4/9] </span><span class="sk-6f42c1-ffc799">?</span><span class="sk-032f62-99ffe4">  Compiling</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> WASM...</span></span>
+<span class="line"><span class="sk-24292e-fff">  [5/9] </span><span class="sk-6f42c1-ffc799">?</span><span class="sk-032f62-99ffe4">  Creating</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> pkg</span><span class="sk-032f62-99ffe4"> directory...</span></span>
+<span class="line"><span class="sk-24292e-fff">  [6/9] </span><span class="sk-6f42c1-ffc799">?</span><span class="sk-032f62-99ffe4">  Writing</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> package.json...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  ⚠️</span><span class="sk-24292e-fff">   [WARN]: Field </span><span class="sk-032f62-99ffe4">'description'</span><span class="sk-24292e-fff"> is missing from Cargo.toml. It is not necessary, but recommended</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  ⚠️</span><span class="sk-24292e-fff">   [WARN]: Field </span><span class="sk-032f62-99ffe4">'repository'</span><span class="sk-24292e-fff"> is missing from Cargo.toml. It is not necessary, but recommended</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  ⚠️</span><span class="sk-24292e-fff">   [WARN]: Field </span><span class="sk-032f62-99ffe4">'license'</span><span class="sk-24292e-fff"> is missing from Cargo.toml. It is not necessary, but recommended</span></span>
+<span class="line"><span class="sk-24292e-fff">  [7/9] </span><span class="sk-6f42c1-ffc799">?</span><span class="sk-032f62-99ffe4">  Copying</span><span class="sk-032f62-99ffe4"> over</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> README...</span></span>
+<span class="line"><span class="sk-24292e-fff">  [8/9] </span><span class="sk-6f42c1-ffc799">⬇️</span><span class="sk-032f62-99ffe4">  Installing</span><span class="sk-032f62-99ffe4"> wasm-bindgen...</span></span>
+<span class="line"><span class="sk-24292e-fff">  [9/9] </span><span class="sk-6f42c1-ffc799">?‍♀️</span><span class="sk-032f62-99ffe4">  Running</span><span class="sk-032f62-99ffe4"> WASM-bindgen...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  ✨</span><span class="sk-032f62-99ffe4">   Done</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> minutes</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> ?</span><span class="sk-032f62-99ffe4">   Your</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> pkg</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> ready</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> publish</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> "/Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross</span></span></code></pre>
+</div>
+<p>Subsequent builds will be faster. We eventually want to ship that .wasm file to a Worker, but I'd like to keep things local and test in a browser first.</p>
+<p>There's an <a href="https://www.npmjs.com/package/create-wasm-app" target="_blank" rel="noopener noreferrer">npm</a> package that will create a templated webpack webapp, preconfigured to import WebAssembly node modules, which we'll use as a test harness.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-032f62-99ffe4"> wasm-app</span><span class="sk-032f62-99ffe4"> www</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx:</span><span class="sk-032f62-99ffe4"> installed</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> 2.533s</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> Rust + </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> Wasm = ❤</span></span></code></pre>
+</div>
+<p>Install the dependencies with <code>npm install</code> and then <code>npm start</code> to fire up the webpack bundled web server to serve your page</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> start</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> create-wasm-app@0.1.0 start /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lipsum-rust/bob-ross-lorem-ipsum-rust/www</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> webpack-dev-server</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ℹ</span><span class="sk-032f62-99ffe4"> ｢wds｣:</span><span class="sk-032f62-99ffe4"> Project</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> running</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> http://localhost:8080/</span></span></code></pre>
+</div>
+<p>Open your web browser at <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a> and you should see your first WASM generated content!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="262" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=750&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=828&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1080&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1280&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1430&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Rust WASM Hello World" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z1YPCBM3P9DWREC1FMJ8.png&amp;w=1038&amp;h=380&amp;f=webp" data-lightbox-width="1038" data-lightbox-height="380" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="262" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>OK, that's promising, but it's not actually our code. Our greet function returned <code>"Hello, bob-ross-lorem-ipsum-rust!"</code></p>
+<p>If we open up <code>www/index.js</code>, we can see this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "hello-wasm-pack"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">wasm.greet</span><span class="sk-24292e-fff">();</span></span></code></pre>
+</div>
+<p>So it's importing a node module "hello-wasm-pack" which was part of the template. We want to import our <em>own</em> module we built with <code>cargo generate</code> earlier.</p>
+<p>First, expose our WASM package as a node module:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Create a global node_modules entry pointing to your local wasm pkg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> pkg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> link</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">/Users/steve/.nvm/versions/node/v8.11.3/lib/node_modules/bob-ross-lorem-ipsum-rust</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /Volumes/HD2/Code/cloudflare/bob-ross-lorem-ipsum-rust/pkg</span></span></code></pre>
+</div>
+<p>Then make it available as a node_module in our test harness.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> ../www</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> link</span><span class="sk-032f62-99ffe4"> bob-ross-lorem-ipsum-rust</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">/Volumes/HD2/Code/cloudflare/bobross/bob-ross-lorem-ipsum-rust/www/node_modules/bob-ross-lorem-ipsum-rust</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /Users/steve/.nvm/versions/node/v8.11.3/lib/node_modules/bob-ross-lorem-ipsum-rust</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /Volumes/HD2/Code/cloudflare/bobross/bob-ross-lorem-ipsum-rust/pkg</span></span></code></pre>
+</div>
+<p>Import it in the index.js file</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "hello-wasm-pack"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> "bob-ross-lorem-ipsum-rust"</span></span></code></pre>
+</div>
+<p>and run!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> build</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> start</span></span></code></pre>
+</div>
+<p>Better! That's our code.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="466" height="144" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=466&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=466&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 466w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=932&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 932w" alt="Rust WASM Hello World 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QQKGV4DGTARHVRV2YKYY.png&amp;w=466&amp;h=144&amp;f=webp" data-lightbox-width="466" data-lightbox-height="144" data-astro-cid-7nvefuv6="true" sizes="(min-width: 466px) 466px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="466" height="144" class="pt-portable-image-media"></div>
+</figure>
+<h3>Quick recap</h3>
+<p>We have:</p>
+<ul>
+	<li>A Hello, World WASM module</li>
+	<li>Exposed as an npm module</li>
+	<li>A webpack app which imports that module</li>
+	<li>And invokes the greet() function</li>
+</ul>
+<p>We're now going to port our Bob Ross Lorem Ipsum generator to Rust, and try it out locally before uploading as a worker. Check it out on in the <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">GitHub</a> repo, or follow along.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">use</span><span class="sk-6f42c1-ffc799"> std</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">vec</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">use</span><span class="sk-6f42c1-ffc799"> rand</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">distributions</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">Range</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Distribution</span><span class="sk-24292e-fff">};</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">use</span><span class="sk-6f42c1-ffc799"> rand</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">rngs</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">SmallRng</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">use</span><span class="sk-6f42c1-ffc799"> rand</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">FromEntropy</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-005cc5-fff"> PHRASES</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">str</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">370</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">elided </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> clarity];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> get_random_indexes</span><span class="sk-24292e-fff">(cnt</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">usize</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> rng </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> get_rng</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> range </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Range</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">PHRASES</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">len</span><span class="sk-24292e-fff">());    </span></span>
+<span class="line"><span class="sk-24292e-fff">    (</span><span class="sk-005cc5-ffc799">0</span><span class="sk-d73a49-a0a0a0">..</span><span class="sk-24292e-fff">cnt)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">_</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> range</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">sample</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;mut</span><span class="sk-24292e-fff"> rng))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">collect</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> get_phrase</span><span class="sk-24292e-fff">(idx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">'</span><span class="sk-6f42c1-ffc799">static</span><span class="sk-6f42c1-ffc799"> str</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-fff">    PHRASES</span><span class="sk-24292e-fff">[idx]        </span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> get_rng</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> SmallRng</span><span class="sk-24292e-fff"> {    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    SmallRng</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">from_entropy</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> get_phrases</span><span class="sk-24292e-fff">(idxs</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">usize</span><span class="sk-24292e-fff">&gt;) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">'</span><span class="sk-6f42c1-ffc799">static</span><span class="sk-6f42c1-ffc799"> str</span><span class="sk-24292e-fff">&gt; {    </span></span>
+<span class="line"><span class="sk-24292e-fff">    idxs</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">iter</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">idx</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> get_phrase</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">idx))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        .</span><span class="sk-6f42c1-ffc799">collect</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> need_newline</span><span class="sk-24292e-fff">(newline</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">, idx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> bool</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    //idx+1 because idx is zero-based but we want a new line after "every x phrases".</span></span>
+<span class="line"><span class="sk-24292e-fff">    (newline </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> (idx </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> ((idx </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">%</span><span class="sk-24292e-fff"> newline </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> need_space</span><span class="sk-24292e-fff">(newline</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">, idx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> bool</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    !</span><span class="sk-6f42c1-ffc799">need_newline</span><span class="sk-24292e-fff">(newline, idx)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> build_phrase_text</span><span class="sk-24292e-fff">(idxs</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">usize</span><span class="sk-24292e-fff">&gt;, newline</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> String</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> phrases_vec </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> get_phrases</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">idxs);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> string </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> String</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-ffc799">in</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-d73a49-a0a0a0">..</span><span class="sk-24292e-fff">phrases_vec</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">len</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        //the phrase</span></span>
+<span class="line"><span class="sk-24292e-fff">        string</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">push_str</span><span class="sk-24292e-fff">(phrases_vec[i]);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        //spaces between phrases</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-6f42c1-ffc799"> need_space</span><span class="sk-24292e-fff">(newline, i) {</span></span>
+<span class="line"><span class="sk-24292e-fff">            string</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        //new lines</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-6f42c1-ffc799"> need_newline</span><span class="sk-24292e-fff">(newline, i) {</span></span>
+<span class="line"><span class="sk-24292e-fff">            string</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">push_str</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0">\n\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">    string</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-ffc799"> fn</span><span class="sk-6f42c1-ffc799"> get_phrase_text</span><span class="sk-24292e-fff">(phrase_cnt</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">, newline</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> usize</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> String</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> idxs </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> get_random_indexes</span><span class="sk-24292e-fff">(phrase_cnt);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    build_phrase_text</span><span class="sk-24292e-fff">(idxs,newline)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">#[cfg(test)]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">mod</span><span class="sk-6f42c1-ffc799"> tests</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    use</span><span class="sk-005cc5-a0a0a0"> super</span><span class="sk-d73a49-a0a0a0">::*</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">    fn</span><span class="sk-6f42c1-ffc799"> get_test_indexes</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> Vec</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">usize</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        vec!</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">34</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">99</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">43</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">128</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">300</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">45</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">56</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">303</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">42</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">11</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-24292e-fff">    #[test]</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    fn</span><span class="sk-6f42c1-ffc799"> get_phrases</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> randoms </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> get_test_indexes</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> phrases </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> super</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">get_phrases</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">randoms);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        println!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{:?}"</span><span class="sk-24292e-fff">, phrases);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Running the tests shows everything looks good:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cargo</span><span class="sk-032f62-99ffe4"> test</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --nocapture</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Finished</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-24292e-fff"> [unoptimized </span><span class="sk-032f62-99ffe4">+</span><span class="sk-032f62-99ffe4"> debuginfo]</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">in</span><span class="sk-032f62-99ffe4"> 0.40s</span><span class="sk-24292e-fff">                                                                                       </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     Running</span><span class="sk-032f62-99ffe4"> target/debug/deps/bob_ross_lorem_ipsum_rust-5be29ab9ead7494d</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">running</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> test</span></span>
+<span class="line"><span class="sk-24292e-fff">[</span><span class="sk-032f62-99ffe4">"Decide where your cloud lives. Maybe he lives right in here."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"A fan brush is a fantastic piece of equipment. Use it. Make friends with it."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"If we\'re going to have animals around we all have to be concerned about them and take care of them."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Don\'t kill all your dark areas - you need them to show the light."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"It\'s almost like something out of a fairytale book."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"We don\'t have anything but happy trees here."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Even the worst thing we can do here is good."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Everything is happy if you choose to make it that way."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"We don\'t make mistakes we just have happy little accidents."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Don\'t hurry. Take your time and enjoy."</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"All you have to learn here is how to have fun."</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> phrases::tests::get_phrases</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> ok</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">test</span><span class="sk-032f62-99ffe4"> result:</span><span class="sk-032f62-99ffe4"> ok.</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> passed</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">0</span><span class="sk-032f62-99ffe4"> failed</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">0</span><span class="sk-032f62-99ffe4"> ignored</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">0</span><span class="sk-032f62-99ffe4"> measured</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">0</span><span class="sk-032f62-99ffe4"> filtered</span><span class="sk-032f62-99ffe4"> out</span></span></code></pre>
+</div>
+<p>And I've exposed the method to WASM like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#[wasm_bindgen]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> get_phrase_text</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">phrase_cnt:</span><span class="sk-032f62-99ffe4"> usize,</span><span class="sk-032f62-99ffe4"> new_line:</span><span class="sk-032f62-99ffe4"> usize</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> String</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    phrases::get_phrase_text(phrase_cnt,</span><span class="sk-032f62-99ffe4"> new_line</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>So, we should be good to call our WASM from the browser test harness. Let's modify <code>www/index.js</code> to invoke <code>get_phrase_text</code> and fire it up in the browser!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">//wasm.greet();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> phraseText </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> wasm.</span><span class="sk-6f42c1-ffc799">get_phrase_text</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(phraseText);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">alert</span><span class="sk-24292e-fff">(phraseText);</span></span></code></pre>
+</div>
+<p>Fail.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="148" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=715&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=640&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=715&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=750&amp;h=155&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=828&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1080&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1280&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1430&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Rust WASM Fail no entropy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NDC3EYSSD9EPZ40KR2PK.png&amp;w=1152&amp;h=239&amp;f=webp" data-lightbox-width="1152" data-lightbox-height="239" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="148" class="pt-portable-image-media"></div>
+</figure>
+<p>If you've played around with Rust, you'll know how jarring it can be to see your code compile and tests pass, only to have it blow up at runtime. The strictness of the language means your code behaves exactly as you expect more often than other languages, so this failure really threw me.</p>
+<p>Analysing the stack trace, we can see the failure starts at FromEntropy. My first instinct was that the WASM host didn't support providing entropy. I re-jigged the code to use a time-based seed instead and that failed too. The common theme seemed to be both entropy, and the current time, both make system calls.</p>
+<p>Reading through the relevant Github issues which discuss this <a href="https://github.com/rustwasm/team/issues/16" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://github.com/rust-lang/rust/pull/47102" target="_blank" rel="noopener noreferrer">here</a>, it looks like the design for how Rust generated WASM will handle system calls remains open. If the compiler isn't able to guarantee the system calls will be available, shouldn't the linker fail to compile? I think the answer lies in the <code>wasm-unknown-unknown</code> triplet that we compile to. There are no guarantees on what the target platform provides when you target unknown, so you're on your own.</p>
+<p>That said, we know that the v8 JavaScript engine will be our host in both the browser, and in Workers. There are libraries which allow us to make all Web APIs defined in the ECMAScript standard available to Rust, such as <a href="https://rustwasm.github.io/wasm-bindgen/api/js_sys/index.html" target="_blank" rel="noopener noreferrer">js-sys</a></p>
+<p>Using that, I can rewrite the failing <code>get_rng()</code> method to return a pseudo-random number generated seed with a time-based value using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" rel="noopener noreferrer">Date</a> object provided by the JavaScript host, rather than making a system call. Full code listing is on <a href="https://github.com/stevenpack/bob-ross-lipsum-rust" target="_blank" rel="noopener noreferrer">Github</a></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> get_rng</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> SmallRng</span><span class="sk-24292e-fff"> {    </span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    use</span><span class="sk-6f42c1-ffc799"> js_sys</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Date</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    use</span><span class="sk-6f42c1-ffc799"> rand</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">SeedableRng</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	//from Javascript	</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> ticks </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">(); </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    //convert the number to byte array to use as a seed</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> tick_bytes </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> transmute</span><span class="sk-24292e-fff">(ticks </span><span class="sk-d73a49-ffc799">as</span><span class="sk-6f42c1-ffc799"> u128</span><span class="sk-24292e-fff">); </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    SmallRng</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">from_seed</span><span class="sk-24292e-fff">(tick_bytes)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>After another <code>wasm-pack build</code> and reloading our test page...</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="392" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=640&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=750&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=828&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=1080&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=1280&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=1430&amp;h=784&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Generating random phrases" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472A345G0H2MKCJH2GQNSC.png&amp;w=810&amp;h=444&amp;f=webp" data-lightbox-width="810" data-lightbox-height="444" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="392" class="pt-portable-image-media"></div>
+</figure>
+<p>Huzzah! OK, if my WASM module returns the right output in Chrome, I'm feeling good about it working in Workers.</p>
+<h2>From local browser harness to Workers</h2>
+<p>You can use the <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">API</a> or UI to upload. Below, I upload the .wasm file in my /pkg director and bind it to the global variable BOBROSS_WASM, where it will be available in my Worker.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="571" height="409" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=571&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=571&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 571w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=640&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=750&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=828&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=1080&amp;h=774&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=1142&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 1142w" alt="Rust WASM upload" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QX6RB7E4APKS8BJNTBD5.png&amp;w=571&amp;h=409&amp;f=webp" data-lightbox-width="571" data-lightbox-height="409" data-astro-cid-7nvefuv6="true" sizes="(min-width: 571px) 571px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="571" height="409" class="pt-portable-image-media"></div>
+</figure>
+<p>If you're following and looked at the output of the <code>wasm-pack build</code> command, you might have noticed it produced a JavaScript glue file in the pkg folder, which is actually what the browser executed.</p>
+<p>It looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> tslint:disable</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> wasm</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> './bob_ross_lorem_ipsum_rust_bg'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4"> cachedDecoder</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> TextDecoder</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'utf-8'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4"> cachegetUint8Memory</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> getUint8Memory</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">cachegetUint8Memory</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> null</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> cachegetUint8Memory.buffer</span><span class="sk-032f62-99ffe4"> !==</span><span class="sk-032f62-99ffe4"> wasm.memory.buffer</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        cachegetUint8Memory</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Uint8Array</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">wasm.memory.buffer</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> cachegetUint8Memory</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> getStringFromWasm</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">ptr,</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> cachedDecoder.decode</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">getUint8Memory</span><span class="sk-24292e-fff">().subarray(</span><span class="sk-6f42c1-ffc799">ptr,</span><span class="sk-032f62-99ffe4"> ptr</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> function __wbg_alert_8c454b1ebc6068d7(</span><span class="sk-6f42c1-ffc799">arg0,</span><span class="sk-032f62-99ffe4"> arg1</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> varg0</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> getStringFromWasm</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">arg0,</span><span class="sk-032f62-99ffe4"> arg1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    alert(varg0</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">/**</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> @returns {</span><span class="sk-6f42c1-ffc799">void}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">/</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> function greet() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> wasm.greet</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4"> cachedGlobalArgumentPtr</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> globalArgumentPtr</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">cachedGlobalArgumentPtr</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> null</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        cachedGlobalArgumentPtr</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> wasm.__wbindgen_global_argument_ptr</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> cachedGlobalArgumentPtr</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4"> cachegetUint32Memory</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> getUint32Memory</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">cachegetUint32Memory</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> null</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> cachegetUint32Memory.buffer</span><span class="sk-032f62-99ffe4"> !==</span><span class="sk-032f62-99ffe4"> wasm.memory.buffer</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        cachegetUint32Memory</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Uint32Array</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">wasm.memory.buffer</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> cachegetUint32Memory</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">/**</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> @param {</span><span class="sk-6f42c1-ffc799">number}</span><span class="sk-032f62-99ffe4"> arg0</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> @param {</span><span class="sk-6f42c1-ffc799">number}</span><span class="sk-032f62-99ffe4"> arg1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> @returns {</span><span class="sk-6f42c1-ffc799">string}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">/</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> function get_phrase_text(</span><span class="sk-6f42c1-ffc799">arg0,</span><span class="sk-032f62-99ffe4"> arg1</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> retptr</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> globalArgumentPtr</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    wasm.get_phrase_text(retptr,</span><span class="sk-032f62-99ffe4"> arg0,</span><span class="sk-032f62-99ffe4"> arg1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> mem</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> getUint32Memory</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> rustptr</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> mem[retptr</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-032f62-99ffe4"> 4]</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> rustlen</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> mem[retptr</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> 1]</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> realRet</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> getStringFromWasm</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">rustptr,</span><span class="sk-032f62-99ffe4"> rustlen</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.slice</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    wasm.__wbindgen_free(rustptr,</span><span class="sk-032f62-99ffe4"> rustlen</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> realRet</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> __wbg_now_4410283ed4cdb45a_target</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Date.now.bind</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Date</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-6f42c1-ffc799"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    throw</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">wasm-bindgen:</span><span class="sk-032f62-99ffe4"> Date.now.bind(</span><span class="sk-6f42c1-ffc799">Date</span><span class="sk-032f62-99ffe4">) does not exist`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> function __wbg_now_4410283ed4cdb45a() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> __wbg_now_4410283ed4cdb45a_target</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>It takes care of the marshalling of strings from WASM into JavaScript and freeing the memory it uses. In an ideal world, we'd just include this in our Worker and be done. However, there a few differences between how Workers instantiates WebAssembly modules and the browser.</p>
+<p>You need to:</p>
+<ul>
+	<li>Remove the import line</li>
+	<li>Remove the export keywords</li>
+	<li>Wrap all the functions in a module</li>
+	<li>Create an importObject referencing the methods</li>
+	<li>Pass that in when you create the WebAssembly instance</li>
+</ul>
+<p><em>Update 28-Dec-2018: wasm-bindgen has been updated since this post. See this <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/pull/1" target="_blank" rel="noopener noreferrer">PR</a> if you're getting errors related to the glue code. Thanks <a href="https://github.com/andrewdavidmackenzie" target="_blank" rel="noopener noreferrer">Andrew</a>!</em></p>
+<p>You can view a <a href="https://blog.cloudflare.com/content/images/2018/10/rust-wasm-local-vs-worker-diff.png">side-by-side diff</a> or a <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/glue-to-worker.patch" target="_blank" rel="noopener noreferrer">patch</a> to see the changes required to have it run in a Worker. Include the modified glue code into your worker and you can now call it like any other function. (Thanks for the tip Jake Riesterer!)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Request</span><span class="sk-032f62-99ffe4"> Handler</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> url</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request.url</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //Serve</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> UI</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">url.pathname</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> "/"</span><span class="sk-24292e-fff"> ) {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        let</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> "status"</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> ,</span><span class="sk-032f62-99ffe4"> "headers"</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 'Content-Type':</span><span class="sk-032f62-99ffe4"> 'text/html'</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">ui,</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> phraseCount</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Math.min</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parseInt(url.searchParams.get(</span><span class="sk-6f42c1-ffc799">"phrases"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-6f42c1-ffc799"> 100</span><span class="sk-24292e-fff">), 10000);</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> newLine</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Math.min</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parseInt(url.searchParams.get(</span><span class="sk-6f42c1-ffc799">"newline"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-6f42c1-ffc799"> 0</span><span class="sk-24292e-fff">), 10000);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //Serverless</span><span class="sk-032f62-99ffe4"> Rust</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> 150+</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> centers!</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> phraseText</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> mod.get_phrase_text</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">phraseCount,</span><span class="sk-032f62-99ffe4"> newLine</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">phraseText</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Success!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="705" height="354" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=705&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=705&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 705w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=1410&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 1410w" alt="Serverless Rust on the Edge" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S4GM8J3KBH99ZEWE0A8Y.png&amp;w=705&amp;h=354&amp;f=webp" data-lightbox-width="705" data-lightbox-height="354" data-astro-cid-7nvefuv6="true" sizes="(min-width: 705px) 705px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="705" height="354" class="pt-portable-image-media"></div>
+</figure>
+<p>The full <a href="https://github.com/stevenpack/bob-ross-lipsum-rust/blob/master/worker/worker.js" target="_blank" rel="noopener noreferrer">source code</a> is on Github.</p>
+<h3>Summary</h3>
+<p>We can compile Rust to WASM, and call it from Serverless functions woven into the very fabric of the Internet. That's huge and I can't wait to do more of it.</p>
+<p>There's some wrangling of the generated code required, but the tooling will improve over time. Once you've modified the glue code, calling a function in Rust generated WASM modules is just as simple as JavaScript.</p>
+<p>Are we Serverless yet? Yes we are.</p>
+<p>In a future post, I'll extract out the phrases and the UI to the <a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">KV store</a> to show a full fledged serverless app powered by Rust and WASM.</p>

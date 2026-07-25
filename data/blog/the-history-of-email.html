@@ -1,256 +1,205 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8mMjdt7uXbHyXbWtP6lW5/8a8f076015966c20c50618a35842b70a/the-history-of-email.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>This was adapted from a post which originally appeared on the Eager blog. Eager has now become the new <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">Cloudflare Apps</a>.</p>
-	<blockquote>
-		<p>QWERTYUIOP</p>
-		<p>— Text of the first email ever sent, 1971</p>
-	</blockquote>
-	<p>The ARPANET (a precursor to the Internet) was created “to help maintain U.S. technological superiority and guard against unforeseen technological advances by potential adversaries,” in other words, to avert the next Sputnik. Its purpose was to allow scientists to share the products of their work and to make it more likely that the work of any one team could potentially be somewhat usable by others. One thing which was not considered particularly valuable was allowing these scientists to communicate using this network. People were already perfectly capable of communicating by phone, letter, and in-person meeting. The purpose of a computer was to do <a href="http://www.kurzweilai.net/memorandum-for-members-and-affiliates-of-the-intergalactic-computer-network" target="_blank" rel="noopener noreferrer">massive computation</a>, to <a href="http://groups.csail.mit.edu/medg/people/psz/Licklider.html" target="_blank" rel="noopener noreferrer">augment our memories</a> and <a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881" target="_blank" rel="noopener noreferrer">empower our minds</a>.</p>
-	<p>Surely we didn’t need a computer, this behemoth of technology and innovation, just to talk to each other.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RJOCLGtgVm3eGa2QACMXd/b35b27f9fe2850bb744f2d5736bb4c10/posts-history-of-email-images-first-email-computers.jpg" alt="Computers which sent the first email" class="kg-image" width="513" height="404" loading="lazy">
-
-	</figure>
-	<p>The computers which sent (and received) the first email.</p>
-	<p></p>
-	<p>The history of computing moves from massive data processing mainframes, to time sharing where many people share one computer, to the diverse collection of personal computing devices we have today. Messaging was first born in the time sharing era, when users wanted the ability to message other users of the same time shared computer.</p>
-	<p>Unix machines have a command called <code>write</code> which can be used to send messages to other currently logged-in users. For example, if I want to ask Mark out to lunch:</p>
-	<pre class="language-bash"><code class="language-bash">$ write mark
-write: mark is logged in more than once; writing to ttys002
-
-Hi, wanna grab lunch?</code></pre>
-	<p>He will see:</p>
-	<pre class="language-bash"><code class="language-bash">Message from zack@Awesome-Mainframe.local on ttys003 at 10:36 ...
-Hi, wanna grab lunch?</code></pre>
-	<p>This is absolutely hilarious if your coworker happens to be using a graphical tool like vim which will not take kindly to random output on the screen.</p>
-	<div class="flex anchor relative">
-		<h3 id="persistant-messages">Persistant Messages</h3>
-		<a href="https://blog.cloudflare.com/#persistant-messages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<blockquote>
-		<p>When the mail was being developed, nobody thought at the beginning it was going to be the smash hit that it was. People liked it, they thought it was nice, but nobody imagined it was going to be the explosion of excitement and interest that it became. So it was a surprise to everybody, that it was a big hit.</p>
-		<p>— Frank Heart, director of the ARPANET infrastructure team</p>
-	</blockquote>
-	<p>An early alternative to Unix called <a href="https://en.wikipedia.org/wiki/TOPS-20" target="_blank" rel="noopener noreferrer">Tenex</a> took this capability one step further. Tenex included the ability to send a message to another user by writing onto the end of a file which only they could read. This is conceptually very simple, you could implement it yourself by creating a file in everyones home directory which only they can read:</p>
-	<pre class="language-bash"><code class="language-bash">mkdir ~/messages
-chmod 0442 ~/messages</code></pre>
-	<p>Anyone who wants to send a message just has to append to the file:</p>
-	<pre class="language-bash"><code class="language-bash">echo "??\n" &gt;&gt; /Users/zack/messages</code></pre>
-	<p>This is, of course, not a great system because anyone could delete your messages! I trust the Tenex implementation (called <code>SNDMSG</code>) was a bit more secure.</p>
-	<div class="flex anchor relative">
-		<h3 id="arpanet">ARPANET</h3>
-		<a href="https://blog.cloudflare.com/#arpanet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In 1971, the Tenex team had just gotten access to the ARPANET, the network of computers which was a main precursor to the Internet. The team quickly created a program called CPYNET which could be used to send files to remote computers, similar to FTP today.</p>
-	<p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310" target="_blank" rel="noopener noreferrer">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
-	<pre class="language-bash"><code class="language-bash">SNDMSG zack@cloudflare</code></pre>
-	<p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
-	<div class="flex anchor relative">
-		<h3 id="ftp">FTP</h3>
-		<a href="https://blog.cloudflare.com/#ftp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The CPYNET format did not have much of a life outside of Tenex unfortunately. It was necessary to create a standard method of communication which every system could understand. Fortunately, this was also the goal of another similar protocol, FTP. FTP (the File Transfer Protocol) sought to create a single way by which different machines could transfer files over the ARPANET.</p>
-	<p>FTP <a href="https://tools.ietf.org/html/rfc114" target="_blank" rel="noopener noreferrer">originally</a> didn’t include support for email. Around the time it was <a href="http://www.rfc-editor.org/rfc/rfc385.txt" target="_blank" rel="noopener noreferrer">updated</a> to use TCP (rather than the NCP protocol which ARPANET historically used) the <code>MAIL</code> command was added.</p>
-	<pre class="language-bash"><code class="language-bash">$ ftp
-&lt; open bbn
-
-&gt; 220 HELLO, this is the BBN mail service
-
-&lt; MAIL zack
-
-&gt; 354 Type mail, ended by &lt;CRLF&gt;.&lt;CRLF&gt;
-
-&lt; Sup?
-&lt; .
-
-&gt; 250 Mail stored</code></pre>
-	<p>These commands were ultimately <a href="https://tools.ietf.org/html/rfc772" target="_blank" rel="noopener noreferrer">borrowed from</a> FTP and formed the basis for the SMTP (Simple Mail Transfer Protocol) protocol in <a href="https://tools.ietf.org/html/rfc821" target="_blank" rel="noopener noreferrer">1982</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="mailboxes">Mailboxes</h3>
-		<a href="https://blog.cloudflare.com/#mailboxes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The format for defining how a message should be transmitted (and often how it would be stored on disk) was first <a href="https://tools.ietf.org/html/rfc733" target="_blank" rel="noopener noreferrer">standardized</a> in 1977:</p>
-	<pre class="language-bash"><code class="language-bash">Date     :  27 Aug 1976 0932-PDT
-From     :  Ken Davis &lt;KDavis at Other-Host&gt;
-Subject  :  Re: The Syntax in the RFC
-To       :  George Jones &lt;Group at Host&gt;,
-              Al Neuman at Mad-Host
-
-There’s no way this is ever going anywhere...</code></pre>
-	<p>Note that at this time the ‘at’ word could be used rather than the ‘@’ symbol. Also note that this use of headers before the message predates HTTP by almost fifteen years. This format remains nearly identical today.</p>
-	<p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox" target="_blank" rel="noopener noreferrer">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
-	<pre class="language-bash"><code class="language-bash">From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author &lt;author@example.com&gt;
-To: Recipient &lt;recipient@example.com&gt;
-Subject: Save $100 on floppy disks
-
-They’re never gonna go out of style!
-
-From MAILER-DAEMON Fri Jul  8 12:08:34 1974
-From: Author &lt;author@example.com&gt;
-To: Recipient &lt;recipient@example.com&gt;
-Subject: Seriously, buy AAPL
-
-You’ve never heard of it, you’ve never heard of me, but when you see
-that stock symbol appear.  Buy it.
-
-- The Future</code></pre>
-	<p>Each message began with the word ‘From’, meaning if a message happened to contain From at the beginning of a line it needed to be escaped lest the system think that’s the start of a new message:</p>
-	<pre class="language-bash"><code class="language-bash">From MAILER-DAEMON Fri Jul  8 12:08:34 2011
-From: Author &lt;author@example.com&gt;
-To: Recipient &lt;recipient@example.com&gt;
-Subject: Sample message 1
-
-This is the body.
-&gt;From (should be escaped).
-There are 3 lines.</code></pre>
-	<p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="http://www.rfc-editor.org/rfc/rfc808.txt" target="_blank" rel="noopener noreferrer">diversity</a> of clients available, but a few are of historical note.</p>
-	<p>RD was an editor which was created by <a href="http://www.livinginternet.com/i/ii_roberts.htm" target="_blank" rel="noopener noreferrer">Lawrence Roberts</a> who was actually the program manager for the ARPANET itself at the time. It was a set of macros on top of the Tenex text editor (TECO), which itself would later become Emacs.</p>
-	<p>RD was the first client to give us the ability to sort messages, save messages, and delete them. There was one key thing missing though: any integration between receiving a message and sending one. RD was strictly for consuming emails you had received, to reply to a message it was necessary to compose an entirely new message in SNDMSG or another tool.</p>
-	<p>That innovation came from MSG, which itself was an improvement on a client with the hilarious name BANANARD. MSG added the ability to reply to a message, in the words of Dave Crocker:</p>
-	<blockquote>
-		<p>My subjective sense was that propagation of MSG resulted in an exponential explosion of email use, over roughly a 6-month period. The simplistic explanation is that people could now close the Shannon-Weaver communication loop with a single, simple command, rather than having to formulate each new message. In other words, email moved from the sending of independent messages into having a conversation.</p>
-	</blockquote>
-	<p>Email wasn’t just allowing people to talk more easily, it was changing how they talk. In <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt" target="_blank" rel="noopener noreferrer">the words</a> of C. R. Linklider and Albert Vezza in 1978:</p>
-	<blockquote>
-		<p>One of the advantages of the message systems over letter mail was that, in an ARPANET message, one could write tersely and type imperfectly, even to an older person in a superior position and even to a person one did not know very well, and the recipient took no offense... Among the advantages of the network message services over the telephone were the fact that one could proceed immediately to the point without having to engage in small talk first, that the message services produced a preservable record, and that the sender and receiver did not have to be available at the same time.</p>
-	</blockquote>
-	<p>The most popular client from this era was called <a href="https://en.wikipedia.org/wiki/MH_Message_Handling_System" target="_blank" rel="noopener noreferrer">MH</a> and was composed of several command line utilities for doing various actions with and to your email.</p>
-	<pre class="language-bash"><code class="language-bash">$ mh
-
-% show
-
-(Message inbox:1)
-Return-Path: joed
-Received: by mysun.xyz.edu (5.54/ACS)
-        id AA08581; Mon, 09 Jan 1995 16:56:39 EST
-Message-Id: &lt;9501092156.AA08581@mysun.xyz.edu&gt;
-To: angelac
-Subject: Here’s the first message you asked for
-Date: Mon, 09 Jan 1995 16:56:37 -0600
-From: "Joe Doe" &lt;joed&gt;
-
-Hi, Angela!  You asked me to send you a message.  Here it is.
-I hope this is okay and that you can figure out how to use
-that mail system.
-
-Joe</code></pre>
-	<p>You could reply to the message easily:</p>
-	<pre class="language-bash"><code class="language-bash">% repl
-
-To: "Joe Doe" &lt;joed&gt;
-cc: angelac
-Subject: Re: Here’s the first message you asked for
-In-reply-to: Your message of "Mon, 09 Jan 1995 16:56:37 -0600."
-        &lt;9501092156.AA08581@mysun.xyz.edu&gt;
--------
-
-% edit vi</code></pre>
-	<p>You could then edit your reply in vim which is actually pretty cool.</p>
-	<p>Interestingly enough, in June of 1996 the guide “<a href="http://rand-mh.sourceforge.net/book" target="_blank" rel="noopener noreferrer">MH &amp; xmh: Email for Users &amp; Programmers</a>” was actually the first book in history to be published on the Internet.</p>
-	<div class="flex anchor relative">
-		<h3 id="pine-elm-mutt">Pine, Elm &amp; Mutt</h3>
-		<a href="https://blog.cloudflare.com/#pine-elm-mutt" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<blockquote>
-		<p>All mail clients suck. This one just sucks less.</p>
-		<p>— Mutt Slogan</p>
-	</blockquote>
-	<p>It took several years until terminals became powerful enough, and perhaps email pervasive enough, that a more graphical program was required. In 1986 Elm was introduced, which allowed you to interact with your email more interactively.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TC1QcSpjdKD1OkLtaAPId/f0faa8605a8a6528ff4487fff3097fde/posts-history-of-email-images-elm.png" alt="Elm Screenshot" class="kg-image" width="640" height="400" loading="lazy">
-
-	</figure>
-	<p>Elm Mail Client</p>
-	<p>This was followed by more graphical <a href="https://en.wikipedia.org/wiki/Text-based_user_interface" target="_blank" rel="noopener noreferrer">TUI</a> clients like <a href="https://web.archive.org/web/19970126101209/http://www.cs.hmc.edu/~me/mutt/index.html" target="_blank" rel="noopener noreferrer">Mutt</a> and <a href="https://groups.google.com/forum/#!msg/comp.mail.misc/kqKQojTDVBM/kvYgyYbwfKoJ" target="_blank" rel="noopener noreferrer">Pine</a>.</p>
-	<p>In the words of the University of Washington’s <a href="http://www.washington.edu/pine/overview/project-history.html" target="_blank" rel="noopener noreferrer">Pine team</a>:</p>
-	<blockquote>
-		<p>Our goal was to provide a mailer that naive users could use without fear of making mistakes. We wanted to cater to users who were less interested in learning the mechanics of using electronic mail than in doing their jobs; users who perhaps had some computer anxiety. We felt the way to do this was to have a system that didn’t do surprising things and provided immediate feedback on each operation; a mailer that had a limited set of carefully-selected functions.</p>
-	</blockquote>
-	<p>These clients were becoming gradually easier and easier to use by non-technical people, and it was becoming clear how big of a deal this really was:</p>
-	<blockquote>
-		<p>We in the ARPA community (and no doubt many others outside it) have come to realize that we have in our hands something very big, and possibly very important. It is now plain to all of us that message service over computer networks has enormous potential for changing the way communication is done in all sectors of our society: military, civilian government, and private.</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="webmail">Webmail</h3>
-		<a href="https://blog.cloudflare.com/#webmail" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<blockquote>
-		<p>Its like when I did the referer field. I got nothing but grief for my choice of spelling. I am now attempting to get the spelling corrected in the OED since my spelling is used several billion times a minute more than theirs.</p>
-		<p>— Phillip Hallam-Baker on his spelling of ’Referer’ <a href="https://groups.google.com/forum/#!original/alt.folklore.computers/7X75In21_54/JgV9Rw04f-EJ" target="_blank" rel="noopener noreferrer"><code>2000</code></a></p>
-	</blockquote>
-	<p>The first webmail client was created by Phillip Hallam-Baker at CERN in <a href="https://groups.google.com/forum/#!topic/comp.archives/vpWqUAmg8xU" target="_blank" rel="noopener noreferrer">1994</a>. Its creation was early enough in the history of the web that it led to the identification of the need for the <code>Content-Length</code> header in POST requests.</p>
-	<p>Hotmail was released in 1996. The name was chosen because it included the letters HTML to emphasize it being ‘on the web’ (it was original stylized as ‘HoTMaiL’). When it was launched users were limited to 2MB of storage (at the time a 1.6GB hard drive was $399).</p>
-	<p>Hotmail was originally implemented using FreeBSD, but in a decision I’m sure every engineer regretted, it was moved to Windows 2000 after the service was bought by Microsoft. In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password ‘<a href="http://archive.wired.com/science/discoveries/news/1999/08/21503" target="_blank" rel="noopener noreferrer">eh</a>’. It took until 2001 for ‘hackers’ to realize you could access other people’s messages by swap usernames in the URL and guessing at a valid message number.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LQJvosil4wqu6Ku3J6kqf/15c82c1105b2576396d88815402c86ce/posts-history-of-email-images-gmail.jpg" alt="Gmail" class="kg-image" width="560" height="405" loading="lazy">
-
-	</figure>
-	<p>Gmail was famously created in 2004 as a ‘20% project’ of Paul Buchheit. Originally it wasn’t particularly believed in as a product within Google. They had to launch using a few hundred Pentium III computers no one else wanted, and it took three years before they had the resources to accept users without an invitation. It was notable both for being much closer to a desktop application (using AJAX) and for the unprecedented offer of 1GB of mail storage.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-future">The Future</h3>
-		<a href="https://blog.cloudflare.com/#the-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vOMbpChEaJ0JNHRgRr7hn/474dc2b8b40a5b77989c1ab30a7b7e70/posts-history-of-email-images-mail.gif" alt="Volume of Postal Mail" class="kg-image" width="568" height="325" loading="lazy">
-
-	</figure>
-	<p>US Postal Mail Volume, <a href="http://www.slideshare.net/jesserobbins/devops-change/14-US_Postal_Service_Mail_Volume" target="_blank" rel="noopener noreferrer">KPCB</a></p>
-	<p>At this point email is a ubiquitous enough communication standard that it’s very possible postal mail as an everyday idea will die before I do. One thing which has not survived well is any attempt to replace email with a more complex messaging tool like <a href="https://en.wikipedia.org/wiki/Apache_Wave" target="_blank" rel="noopener noreferrer">Google Wave</a>. With the rise of more targeted communication tools like Slack, Facebook, and Snapchat though, you never know.</p>
-	<p>There is, of course, a cost to that. The ancestors of the Internet were kind enough to give us a communication standard which is free, transparent, and standardized. It would be a shame to see the tech communication landscape move further and further into the world of locked gardens and proprietary schemas.</p>
-	<p>We’ll leave you with two quotes:</p>
-	<blockquote>
-		<p>Mostly because it seemed like a neat idea. There was no directive to ‘go forth and invent e-mail’.</p>
-		<p>— Ray Tomlinson, answering a question about why he invented e-mail</p>
-	</blockquote>
-	<hr>
-	<blockquote>
-		<p>Permit me to carry the doom-crying one step further. I am curious whether the increasingly easy access to computers by adolescents will have any effect, however small, on their social development. Keep in mind that the social skills necessary for interpersonal relationships are not taught; they are learned by experience. Adolescence is probably the most important time period for learning these skills. There are two directions for a cause-effect relationship. Either people lacking social skills (shy people, etc.) turn to other pasttimes, or people who do not devote enough time to human interactions have difficulty learning social skills. I do not [consider] whether either or both of these alternatives actually occur. I believe I am justified in asking whether computers will compete with human interactions as a way of spending time? Will they compete more effectively than other pasttimes? If so, and if we permit computers to become as ubiquitous as televisions, will computers have some effect (either positive or negative) on personal development of future generations?</p>
-		<p>— Gary Feldman, <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt" target="_blank" rel="noopener noreferrer"><code>1981</code></a></p>
-	</blockquote>
-	<ul>
-		<li>
-			<p>Use Cloudflare Apps to build tools which can be installed by millions of sites.</p>
-			<p><a href="https://www.cloudflare.com/apps/developer/docs/getting-started" target="_blank" rel="noopener noreferrer">Build an app →</a></p>
-			<p>If you're in San Francisco, London or Austin: <a href="https://boards.greenhouse.io/cloudflare/jobs/850951" target="_blank" rel="noopener noreferrer">work with us</a>.</p>
-		</li>
-		<li>
-			<p>Our next post is on the history of the URL!<b>Get notified when new apps and apps-related posts are released:</b></p>
-			<p>Email Address</p>
-		</li>
-	</ul>
-	<p>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true); /* Social */ .social { margin-top: 1.3em; } .fb_iframe_widget { padding-right: 1px; } .IN-widget { padding-left: 11px; } /* Hide period after author */ .post-header .meta a { border-right: 5px solid white; margin-right: -5px; position: relative; } /* Post */ body { background-color: white; } pre, code { font-size: inherit; line-height: inherit; } section.primary-content { font-size: 16px; line-height: 1.6; color: black; } blockquote { padding-bottom: 1.5em; padding-top: 1em; font-style: italic; font-size: 1.25rem; } blockquote.pull-quote-centered { font-size: 1.2em; text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; } blockquote blockquote { margin-left: 1em; padding-left: 1em; border-left: 5px solid rgba(0, 0, 0, 0.2); padding-bottom: 0.5em; padding-top: 0.5em; margin-bottom: 0.5em; margin-top: 0.5em; } figure.standard { position: relative; max-width: 100%; margin: 1em auto; text-align: center; z-index: -1; } .figcaption { padding-top: .5em; font-size: .8em; color: #888; font-weight: 300; letter-spacing: .03em; line-height: 1.35; } .figcontent { display: inline-block; } p.attribution { color: #666; font-size: 0.9em; padding-bottom: 1em; } a code.year { text-decoration: underline; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0.75em 0; } .closing-cards #mc_embed_signup input { font-size: 1.5em; height: auto; } .closing-cards #mc_embed_signup input[type="email"] { border: 1px solid #bcbcbc; border-radius: 2px; margin-bottom: 0; } .closing-cards #mc_embed_signup input[type="submit"] { background: #f38020; color: #fff; padding: .8em 1em .8em 1em; white-space: nowrap; line-height: 1.2; text-align: center; border-radius: 2px; border: 0; display: inline-block; text-rendering: optimizeLegibility; -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: subpixel-antialiased; user-select: none; -webkit-appearance: none; appearance: none; letter-spacing: .04em; text-indent: .04em; cursor: pointer; } .closing-cards #mc_embed_signup div.mce_inline_error { background-color: transparent; color: #C33; padding: 0; display: inline-block; font-size: 0.9em; } .closing-cards #mc_embed_signup p:not(:empty) { line-height: 1.5; margin-bottom: 2em; } .closing-cards #mc_embed_signup input[type="email"] { font-size: 20px !important; width: 100% !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0 !important; } .closing-cards #mc_embed_signup input[type="submit"] { font-size: 20px !important; margin-top: .5em !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup div.mce_inline_error { padding: 0; margin: 0; color: #F38020 !important; } aside.section.learn-more { display: none; } .closing-cards { background: #eee; width: 100%; list-style-type: none; margin-left: 0; } .closing-card { width: calc(50% - 10px) !important; font-size: 20px; padding: 1.5em; display: inline-block; box-sizing: border-box; vertical-align: top; } @media (max-width: 788px){ .closing-card { width: 100% !important; } .closing-card + .closing-card { border-top: 10px solid white; } }</p>
+<p>This was adapted from a post which originally appeared on the Eager blog. Eager has now become the new <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">Cloudflare Apps</a>.</p>
+<blockquote>
+	<p>QWERTYUIOP</p>
+	<p>— Text of the first email ever sent, 1971</p>
+</blockquote>
+<p>The ARPANET (a precursor to the Internet) was created “to help maintain U.S. technological superiority and guard against unforeseen technological advances by potential adversaries,” in other words, to avert the next Sputnik. Its purpose was to allow scientists to share the products of their work and to make it more likely that the work of any one team could potentially be somewhat usable by others. One thing which was not considered particularly valuable was allowing these scientists to communicate using this network. People were already perfectly capable of communicating by phone, letter, and in-person meeting. The purpose of a computer was to do <a href="http://www.kurzweilai.net/memorandum-for-members-and-affiliates-of-the-intergalactic-computer-network" target="_blank" rel="noopener noreferrer">massive computation</a>, to <a href="http://groups.csail.mit.edu/medg/people/psz/Licklider.html" target="_blank" rel="noopener noreferrer">augment our memories</a> and <a href="http://www.theatlantic.com/magazine/archive/1945/07/as-we-may-think/303881" target="_blank" rel="noopener noreferrer">empower our minds</a>.</p>
+<p>Surely we didn’t need a computer, this behemoth of technology and innovation, just to talk to each other.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="513" height="404" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HW7AQW2RNPZ7GZV9XA0G.jpg&amp;w=513&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HW7AQW2RNPZ7GZV9XA0G.jpg&amp;w=513&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 513w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HW7AQW2RNPZ7GZV9XA0G.jpg&amp;w=640&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HW7AQW2RNPZ7GZV9XA0G.jpg&amp;w=750&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HW7AQW2RNPZ7GZV9XA0G.jpg&amp;w=828&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HW7AQW2RNPZ7GZV9XA0G.jpg&amp;w=1026&amp;h=808&amp;f=webp&amp;fit=cover&amp;position=center 1026w" alt="Computers which sent the first email" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HW7AQW2RNPZ7GZV9XA0G.jpg&amp;w=513&amp;h=404&amp;f=webp" data-lightbox-width="513" data-lightbox-height="404" data-astro-cid-7nvefuv6="true" sizes="(min-width: 513px) 513px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="513" height="404" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The computers which sent (and received) the first email.</p>
+<p>The history of computing moves from massive data processing mainframes, to time sharing where many people share one computer, to the diverse collection of personal computing devices we have today. Messaging was first born in the time sharing era, when users wanted the ability to message other users of the same time shared computer.</p>
+<p>Unix machines have a command called <code>write</code> which can be used to send messages to other currently logged-in users. For example, if I want to ask Mark out to lunch:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> mark</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">write:</span><span class="sk-032f62-99ffe4"> mark</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> logged</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> than</span><span class="sk-032f62-99ffe4"> once</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">writing</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> ttys002</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hi,</span><span class="sk-032f62-99ffe4"> wanna</span><span class="sk-032f62-99ffe4"> grab</span><span class="sk-032f62-99ffe4"> lunch?</span></span></code></pre>
 </div>
+<p>He will see:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Message</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> zack@Awesome-Mainframe.local</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> ttys003</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> 10:36</span><span class="sk-032f62-99ffe4"> ...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hi,</span><span class="sk-032f62-99ffe4"> wanna</span><span class="sk-032f62-99ffe4"> grab</span><span class="sk-032f62-99ffe4"> lunch?</span></span></code></pre>
+</div>
+<p>This is absolutely hilarious if your coworker happens to be using a graphical tool like vim which will not take kindly to random output on the screen.</p>
+<h3>Persistant Messages</h3>
+<blockquote>
+	<p>When the mail was being developed, nobody thought at the beginning it was going to be the smash hit that it was. People liked it, they thought it was nice, but nobody imagined it was going to be the explosion of excitement and interest that it became. So it was a surprise to everybody, that it was a big hit.</p>
+	<p>— Frank Heart, director of the ARPANET infrastructure team</p>
+</blockquote>
+<p>An early alternative to Unix called <a href="https://en.wikipedia.org/wiki/TOPS-20" target="_blank" rel="noopener noreferrer">Tenex</a> took this capability one step further. Tenex included the ability to send a message to another user by writing onto the end of a file which only they could read. This is conceptually very simple, you could implement it yourself by creating a file in everyones home directory which only they can read:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> ~/messages</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">chmod</span><span class="sk-005cc5-ffc799"> 0442</span><span class="sk-032f62-99ffe4"> ~/messages</span></span></code></pre>
+</div>
+<p>Anyone who wants to send a message just has to append to the file:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "??\n"</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> /Users/zack/messages</span></span></code></pre>
+</div>
+<p>This is, of course, not a great system because anyone could delete your messages! I trust the Tenex implementation (called <code>SNDMSG</code>) was a bit more secure.</p>
+<h3>ARPANET</h3>
+<p>In 1971, the Tenex team had just gotten access to the ARPANET, the network of computers which was a main precursor to the Internet. The team quickly created a program called CPYNET which could be used to send files to remote computers, similar to FTP today.</p>
+<p>One of these engineers, Ray Tomlinson, had the idea to combine the message files with <a href="https://tools.ietf.org/html/rfc310" target="_blank" rel="noopener noreferrer">CPYNET</a>. He added a command which allowed you to append to a file. He also wired things up such that you could add an <code>@</code> symbol and a remote machine name to your messages and the machine would automatically connect to that host and append to the right file. In other words, running:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SNDMSG</span><span class="sk-032f62-99ffe4"> zack@cloudflare</span></span></code></pre>
+</div>
+<p>Would append to the <code>/Users/zack/messages</code> file on the host <code>cloudflare</code>. And email was born!</p>
+<h3>FTP</h3>
+<p>The CPYNET format did not have much of a life outside of Tenex unfortunately. It was necessary to create a standard method of communication which every system could understand. Fortunately, this was also the goal of another similar protocol, FTP. FTP (the File Transfer Protocol) sought to create a single way by which different machines could transfer files over the ARPANET.</p>
+<p>FTP <a href="https://tools.ietf.org/html/rfc114" target="_blank" rel="noopener noreferrer">originally</a> didn’t include support for email. Around the time it was <a href="http://www.rfc-editor.org/rfc/rfc385.txt" target="_blank" rel="noopener noreferrer">updated</a> to use TCP (rather than the NCP protocol which ARPANET historically used) the <code>MAIL</code> command was added.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ftp</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> open bbn</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 220 HELLO, this is the BBN mail service</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> MAIL zack</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 354 Type mail, ended by </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">CRLF</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">.</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">CRLF</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> Sup</span><span class="sk-d73a49-a0a0a0">?</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> .</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 250 Mail stored</span></span></code></pre>
+</div>
+<p>These commands were ultimately <a href="https://tools.ietf.org/html/rfc772" target="_blank" rel="noopener noreferrer">borrowed from</a> FTP and formed the basis for the SMTP (Simple Mail Transfer Protocol) protocol in <a href="https://tools.ietf.org/html/rfc821" target="_blank" rel="noopener noreferrer">1982</a>.</p>
+<h3>Mailboxes</h3>
+<p>The format for defining how a message should be transmitted (and often how it would be stored on disk) was first <a href="https://tools.ietf.org/html/rfc733" target="_blank" rel="noopener noreferrer">standardized</a> in 1977:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Date</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799">  27</span><span class="sk-032f62-99ffe4"> Aug</span><span class="sk-005cc5-ffc799"> 1976</span><span class="sk-032f62-99ffe4"> 0932-PDT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-032f62-99ffe4">  Ken</span><span class="sk-032f62-99ffe4"> Davis</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">KDavis</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> Other-Hos</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Subject</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-032f62-99ffe4">  Re:</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> Syntax</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> RFC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4">  George</span><span class="sk-032f62-99ffe4"> Jones</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">Group</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> Hos</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              Al</span><span class="sk-032f62-99ffe4"> Neuman</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> Mad-Host</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">There’s</span><span class="sk-032f62-99ffe4"> no</span><span class="sk-032f62-99ffe4"> way</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> ever</span><span class="sk-032f62-99ffe4"> going</span><span class="sk-032f62-99ffe4"> anywhere...</span></span></code></pre>
+</div>
+<p>Note that at this time the ‘at’ word could be used rather than the ‘@’ symbol. Also note that this use of headers before the message predates HTTP by almost fifteen years. This format remains nearly identical today.</p>
+<p>The Fifth Edition of Unix used a very similar <a href="https://en.wikipedia.org/wiki/Mbox" target="_blank" rel="noopener noreferrer">format</a> for storing a users email messages on disk. Each user would have a file which contained their messages:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">From</span><span class="sk-032f62-99ffe4"> MAILER-DAEMON</span><span class="sk-032f62-99ffe4"> Fri</span><span class="sk-032f62-99ffe4"> Jul</span><span class="sk-005cc5-ffc799">  8</span><span class="sk-032f62-99ffe4"> 12:08:34</span><span class="sk-005cc5-ffc799"> 1974</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> Author</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">author@example.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-032f62-99ffe4"> Recipient</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">recipient@example.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Subject:</span><span class="sk-032f62-99ffe4"> Save</span><span class="sk-24292e-fff"> $100 </span><span class="sk-032f62-99ffe4">on</span><span class="sk-032f62-99ffe4"> floppy</span><span class="sk-032f62-99ffe4"> disks</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">They’re</span><span class="sk-032f62-99ffe4"> never</span><span class="sk-032f62-99ffe4"> gonna</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> out</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> style!</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From</span><span class="sk-032f62-99ffe4"> MAILER-DAEMON</span><span class="sk-032f62-99ffe4"> Fri</span><span class="sk-032f62-99ffe4"> Jul</span><span class="sk-005cc5-ffc799">  8</span><span class="sk-032f62-99ffe4"> 12:08:34</span><span class="sk-005cc5-ffc799"> 1974</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> Author</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">author@example.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-032f62-99ffe4"> Recipient</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">recipient@example.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Subject:</span><span class="sk-032f62-99ffe4"> Seriously,</span><span class="sk-032f62-99ffe4"> buy</span><span class="sk-032f62-99ffe4"> AAPL</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">You’ve</span><span class="sk-032f62-99ffe4"> never</span><span class="sk-032f62-99ffe4"> heard</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> it,</span><span class="sk-032f62-99ffe4"> you’ve</span><span class="sk-032f62-99ffe4"> never</span><span class="sk-032f62-99ffe4"> heard</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> me,</span><span class="sk-032f62-99ffe4"> but</span><span class="sk-032f62-99ffe4"> when</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> see</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">that</span><span class="sk-032f62-99ffe4"> stock</span><span class="sk-032f62-99ffe4"> symbol</span><span class="sk-032f62-99ffe4"> appear.</span><span class="sk-032f62-99ffe4">  Buy</span><span class="sk-032f62-99ffe4"> it.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> Future</span></span></code></pre>
+</div>
+<p>Each message began with the word ‘From’, meaning if a message happened to contain From at the beginning of a line it needed to be escaped lest the system think that’s the start of a new message:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">From</span><span class="sk-032f62-99ffe4"> MAILER-DAEMON</span><span class="sk-032f62-99ffe4"> Fri</span><span class="sk-032f62-99ffe4"> Jul</span><span class="sk-005cc5-ffc799">  8</span><span class="sk-032f62-99ffe4"> 12:08:34</span><span class="sk-005cc5-ffc799"> 2011</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> Author</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">author@example.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-032f62-99ffe4"> Recipient</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">recipient@example.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Subject:</span><span class="sk-032f62-99ffe4"> Sample</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">This</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> body.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">From (</span><span class="sk-6f42c1-ffc799">should</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> escaped</span><span class="sk-24292e-fff">).</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> lines.</span></span></code></pre>
+</div>
+<p>It was technically possible to interact with your email by simply editing your mailbox file, but it was much more common to use an email client. As you might expect there was a <a href="http://www.rfc-editor.org/rfc/rfc808.txt" target="_blank" rel="noopener noreferrer">diversity</a> of clients available, but a few are of historical note.</p>
+<p>RD was an editor which was created by <a href="http://www.livinginternet.com/i/ii_roberts.htm" target="_blank" rel="noopener noreferrer">Lawrence Roberts</a> who was actually the program manager for the ARPANET itself at the time. It was a set of macros on top of the Tenex text editor (TECO), which itself would later become Emacs.</p>
+<p>RD was the first client to give us the ability to sort messages, save messages, and delete them. There was one key thing missing though: any integration between receiving a message and sending one. RD was strictly for consuming emails you had received, to reply to a message it was necessary to compose an entirely new message in SNDMSG or another tool.</p>
+<p>That innovation came from MSG, which itself was an improvement on a client with the hilarious name BANANARD. MSG added the ability to reply to a message, in the words of Dave Crocker:</p>
+<blockquote>My subjective sense was that propagation of MSG resulted in an exponential explosion of email use, over roughly a 6-month period. The simplistic explanation is that people could now close the Shannon-Weaver communication loop with a single, simple command, rather than having to formulate each new message. In other words, email moved from the sending of independent messages into having a conversation.</blockquote>
+<p>Email wasn’t just allowing people to talk more easily, it was changing how they talk. In <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt" target="_blank" rel="noopener noreferrer">the words</a> of C. R. Linklider and Albert Vezza in 1978:</p>
+<blockquote>One of the advantages of the message systems over letter mail was that, in an ARPANET message, one could write tersely and type imperfectly, even to an older person in a superior position and even to a person one did not know very well, and the recipient took no offense... Among the advantages of the network message services over the telephone were the fact that one could proceed immediately to the point without having to engage in small talk first, that the message services produced a preservable record, and that the sender and receiver did not have to be available at the same time.</blockquote>
+<p>The most popular client from this era was called <a href="https://en.wikipedia.org/wiki/MH_Message_Handling_System" target="_blank" rel="noopener noreferrer">MH</a> and was composed of several command line utilities for doing various actions with and to your email.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mh</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> show</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Message</span><span class="sk-032f62-99ffe4"> inbox:1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Return-Path:</span><span class="sk-032f62-99ffe4"> joed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Received:</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> mysun.xyz.edu</span><span class="sk-24292e-fff"> (5.54/ACS)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        id</span><span class="sk-032f62-99ffe4"> AA08581</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Mon,</span><span class="sk-005cc5-ffc799"> 09</span><span class="sk-032f62-99ffe4"> Jan</span><span class="sk-005cc5-ffc799"> 1995</span><span class="sk-032f62-99ffe4"> 16:56:39</span><span class="sk-032f62-99ffe4"> EST</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Message-Id:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">9501092156.AA08581@mysun.xyz.ed</span><span class="sk-24292e-fff">u</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-032f62-99ffe4"> angelac</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Subject:</span><span class="sk-032f62-99ffe4"> Here’s</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> first</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> asked</span><span class="sk-032f62-99ffe4"> for</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4"> Mon,</span><span class="sk-005cc5-ffc799"> 09</span><span class="sk-032f62-99ffe4"> Jan</span><span class="sk-005cc5-ffc799"> 1995</span><span class="sk-032f62-99ffe4"> 16:56:37</span><span class="sk-005cc5-99ffe4"> -0600</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> "Joe Doe"</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">joe</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hi,</span><span class="sk-032f62-99ffe4"> Angela!</span><span class="sk-032f62-99ffe4">  You</span><span class="sk-032f62-99ffe4"> asked</span><span class="sk-032f62-99ffe4"> me</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> send</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> message.</span><span class="sk-032f62-99ffe4">  Here</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> is.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> hope</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> okay</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> figure</span><span class="sk-032f62-99ffe4"> out</span><span class="sk-032f62-99ffe4"> how</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> use</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">that</span><span class="sk-032f62-99ffe4"> mail</span><span class="sk-032f62-99ffe4"> system.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Joe</span></span></code></pre>
+</div>
+<p>You could reply to the message easily:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> repl</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-032f62-99ffe4"> "Joe Doe"</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">joe</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cc:</span><span class="sk-032f62-99ffe4"> angelac</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Subject:</span><span class="sk-032f62-99ffe4"> Re:</span><span class="sk-032f62-99ffe4"> Here’s</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> first</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> asked</span><span class="sk-032f62-99ffe4"> for</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">In-reply-to:</span><span class="sk-032f62-99ffe4"> Your</span><span class="sk-032f62-99ffe4"> message</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> "Mon, 09 Jan 1995 16:56:37 -0600."</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        &lt;</span><span class="sk-6f42c1-ffc799">9501092156.AA08581@mysun.xyz.edu</span><span class="sk-24292e-fff">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> edit</span><span class="sk-032f62-99ffe4"> vi</span></span></code></pre>
+</div>
+<p>You could then edit your reply in vim which is actually pretty cool.</p>
+<p>Interestingly enough, in June of 1996 the guide “<a href="http://rand-mh.sourceforge.net/book" target="_blank" rel="noopener noreferrer">MH &amp; xmh: Email for Users &amp; Programmers</a>” was actually the first book in history to be published on the Internet.</p>
+<h3>Pine, Elm &amp; Mutt</h3>
+<blockquote>
+	<p>All mail clients suck. This one just sucks less.</p>
+	<p>— Mutt Slogan</p>
+</blockquote>
+<p>It took several years until terminals became powerful enough, and perhaps email pervasive enough, that a more graphical program was required. In 1986 Elm was introduced, which allowed you to interact with your email more interactively.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="400" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JRTTWB4D1PXJD23S2BP9.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JRTTWB4D1PXJD23S2BP9.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JRTTWB4D1PXJD23S2BP9.png&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JRTTWB4D1PXJD23S2BP9.png&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JRTTWB4D1PXJD23S2BP9.png&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JRTTWB4D1PXJD23S2BP9.png&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="Elm Screenshot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JRTTWB4D1PXJD23S2BP9.png&amp;w=640&amp;h=400&amp;f=webp" data-lightbox-width="640" data-lightbox-height="400" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="400" class="pt-portable-image-media"></div>
+</figure>
+<p>Elm Mail Client</p>
+<p>This was followed by more graphical <a href="https://en.wikipedia.org/wiki/Text-based_user_interface" target="_blank" rel="noopener noreferrer">TUI</a> clients like <a href="https://web.archive.org/web/19970126101209/http://www.cs.hmc.edu/~me/mutt/index.html" target="_blank" rel="noopener noreferrer">Mutt</a> and <a href="https://groups.google.com/forum/#!msg/comp.mail.misc/kqKQojTDVBM/kvYgyYbwfKoJ" target="_blank" rel="noopener noreferrer">Pine</a>.</p>
+<p>In the words of the University of Washington’s <a href="http://www.washington.edu/pine/overview/project-history.html" target="_blank" rel="noopener noreferrer">Pine team</a>:</p>
+<blockquote>Our goal was to provide a mailer that naive users could use without fear of making mistakes. We wanted to cater to users who were less interested in learning the mechanics of using electronic mail than in doing their jobs; users who perhaps had some computer anxiety. We felt the way to do this was to have a system that didn’t do surprising things and provided immediate feedback on each operation; a mailer that had a limited set of carefully-selected functions.</blockquote>
+<p>These clients were becoming gradually easier and easier to use by non-technical people, and it was becoming clear how big of a deal this really was:</p>
+<blockquote>We in the ARPA community (and no doubt many others outside it) have come to realize that we have in our hands something very big, and possibly very important. It is now plain to all of us that message service over computer networks has enormous potential for changing the way communication is done in all sectors of our society: military, civilian government, and private.</blockquote>
+<h3>Webmail</h3>
+<blockquote>
+	<p>Its like when I did the referer field. I got nothing but grief for my choice of spelling. I am now attempting to get the spelling corrected in the OED since my spelling is used several billion times a minute more than theirs.</p>
+	<p>— Phillip Hallam-Baker on his spelling of ’Referer’ <a href="https://groups.google.com/forum/#!original/alt.folklore.computers/7X75In21_54/JgV9Rw04f-EJ" target="_blank" rel="noopener noreferrer"><code>2000</code></a></p>
+</blockquote>
+<p>The first webmail client was created by Phillip Hallam-Baker at CERN in <a href="https://groups.google.com/forum/#!topic/comp.archives/vpWqUAmg8xU" target="_blank" rel="noopener noreferrer">1994</a>. Its creation was early enough in the history of the web that it led to the identification of the need for the <code>Content-Length</code> header in POST requests.</p>
+<p>Hotmail was released in 1996. The name was chosen because it included the letters HTML to emphasize it being ‘on the web’ (it was original stylized as ‘HoTMaiL’). When it was launched users were limited to 2MB of storage (at the time a 1.6GB hard drive was $399).</p>
+<p>Hotmail was originally implemented using FreeBSD, but in a decision I’m sure every engineer regretted, it was moved to Windows 2000 after the service was bought by Microsoft. In 1999, hackers revealed a security flaw in Hotmail that permitted anybody to log in to any Hotmail account using the password ‘<a href="http://archive.wired.com/science/discoveries/news/1999/08/21503" target="_blank" rel="noopener noreferrer">eh</a>’. It took until 2001 for ‘hackers’ to realize you could access other people’s messages by swap usernames in the URL and guessing at a valid message number.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="560" height="405" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=560&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=560&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 560w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=640&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=750&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=828&amp;h=599&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=1080&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=1120&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1120w" alt="Gmail" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4837ZN98VVTJ67ZQJ1KFB5.jpg&amp;w=560&amp;h=405&amp;f=webp" data-lightbox-width="560" data-lightbox-height="405" data-astro-cid-7nvefuv6="true" sizes="(min-width: 560px) 560px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="560" height="405" class="pt-portable-image-media"></div>
+</figure>
+<p>Gmail was famously created in 2004 as a ‘20% project’ of Paul Buchheit. Originally it wasn’t particularly believed in as a product within Google. They had to launch using a few hundred Pentium III computers no one else wanted, and it took three years before they had the resources to accept users without an invitation. It was notable both for being much closer to a desktop application (using AJAX) and for the unprecedented offer of 1GB of mail storage.</p>
+<h3>The Future</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="568" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW491YKX3WHZFBSD6R147W22.gif" alt="Volume of Postal Mail" width="568" height="325" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>US Postal Mail Volume, <a href="http://www.slideshare.net/jesserobbins/devops-change/14-US_Postal_Service_Mail_Volume" target="_blank" rel="noopener noreferrer">KPCB</a></p>
+<p>At this point email is a ubiquitous enough communication standard that it’s very possible postal mail as an everyday idea will die before I do. One thing which has not survived well is any attempt to replace email with a more complex messaging tool like <a href="https://en.wikipedia.org/wiki/Apache_Wave" target="_blank" rel="noopener noreferrer">Google Wave</a>. With the rise of more targeted communication tools like Slack, Facebook, and Snapchat though, you never know.</p>
+<p>There is, of course, a cost to that. The ancestors of the Internet were kind enough to give us a communication standard which is free, transparent, and standardized. It would be a shame to see the tech communication landscape move further and further into the world of locked gardens and proprietary schemas.</p>
+<p>We’ll leave you with two quotes:</p>
+<blockquote>
+	<p>Mostly because it seemed like a neat idea. There was no directive to ‘go forth and invent e-mail’.</p>
+	<p>— Ray Tomlinson, answering a question about why he invented e-mail</p>
+</blockquote>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<blockquote>
+	<p>Permit me to carry the doom-crying one step further. I am curious whether the increasingly easy access to computers by adolescents will have any effect, however small, on their social development. Keep in mind that the social skills necessary for interpersonal relationships are not taught; they are learned by experience. Adolescence is probably the most important time period for learning these skills. There are two directions for a cause-effect relationship. Either people lacking social skills (shy people, etc.) turn to other pasttimes, or people who do not devote enough time to human interactions have difficulty learning social skills. I do not [consider] whether either or both of these alternatives actually occur. I believe I am justified in asking whether computers will compete with human interactions as a way of spending time? Will they compete more effectively than other pasttimes? If so, and if we permit computers to become as ubiquitous as televisions, will computers have some effect (either positive or negative) on personal development of future generations?</p>
+	<p>— Gary Feldman, <a href="http://www.livinginternet.com/References/Ian%20Hardy%20Email%20Thesis.txt" target="_blank" rel="noopener noreferrer"><code>1981</code></a></p>
+</blockquote>
+<ul>
+	<li>Use Cloudflare Apps to build tools which can be installed by millions of sites.</li>
+	<li><a href="https://www.cloudflare.com/apps/developer/docs/getting-started" target="_blank" rel="noopener noreferrer">Build an app →</a></li>
+	<li>If you're in San Francisco, London or Austin: <a href="https://boards.greenhouse.io/cloudflare/jobs/850951" target="_blank" rel="noopener noreferrer">work with us</a>.</li>
+	<li>Our next post is on the history of the URL!<strong>Get notified when new apps and apps-related posts are released:</strong></li>
+	<li>Email Address</li>
+</ul>
+<p>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true); /* Social */ .social { margin-top: 1.3em; } .fb_iframe_widget { padding-right: 1px; } .IN-widget { padding-left: 11px; } /* Hide period after author */ .post-header .meta a { border-right: 5px solid white; margin-right: -5px; position: relative; } /* Post */ body { background-color: white; } pre, code { font-size: inherit; line-height: inherit; } section.primary-content { font-size: 16px; line-height: 1.6; color: black; } blockquote { padding-bottom: 1.5em; padding-top: 1em; font-style: italic; font-size: 1.25rem; } blockquote.pull-quote-centered { font-size: 1.2em; text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; } blockquote blockquote { margin-left: 1em; padding-left: 1em; border-left: 5px solid rgba(0, 0, 0, 0.2); padding-bottom: 0.5em; padding-top: 0.5em; margin-bottom: 0.5em; margin-top: 0.5em; } figure.standard { position: relative; max-width: 100%; margin: 1em auto; text-align: center; z-index: -1; } .figcaption { padding-top: .5em; font-size: .8em; color: #888; font-weight: 300; letter-spacing: .03em; line-height: 1.35; } .figcontent { display: inline-block; } p.attribution { color: #666; font-size: 0.9em; padding-bottom: 1em; } a code.year { text-decoration: underline; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0.75em 0; } .closing-cards #mc_embed_signup input { font-size: 1.5em; height: auto; } .closing-cards #mc_embed_signup input[type="email"] { border: 1px solid #bcbcbc; border-radius: 2px; margin-bottom: 0; } .closing-cards #mc_embed_signup input[type="submit"] { background: #f38020; color: #fff; padding: .8em 1em .8em 1em; white-space: nowrap; line-height: 1.2; text-align: center; border-radius: 2px; border: 0; display: inline-block; text-rendering: optimizeLegibility; -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: subpixel-antialiased; user-select: none; -webkit-appearance: none; appearance: none; letter-spacing: .04em; text-indent: .04em; cursor: pointer; } .closing-cards #mc_embed_signup div.mce_inline_error { background-color: transparent; color: #C33; padding: 0; display: inline-block; font-size: 0.9em; } .closing-cards #mc_embed_signup p:not(:empty) { line-height: 1.5; margin-bottom: 2em; } .closing-cards #mc_embed_signup input[type="email"] { font-size: 20px !important; width: 100% !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup .mc-field-group { margin: 0 !important; } .closing-cards #mc_embed_signup input[type="submit"] { font-size: 20px !important; margin-top: .5em !important; padding: .6em 1em !important; } .closing-cards #mc_embed_signup div.mce_inline_error { padding: 0; margin: 0; color: #F38020 !important; } aside.section.learn-more { display: none; } .closing-cards { background: #eee; width: 100%; list-style-type: none; margin-left: 0; } .closing-card { width: calc(50% - 10px) !important; font-size: 20px; padding: 1.5em; display: inline-block; box-sizing: border-box; vertical-align: top; } @media (max-width: 788px){ .closing-card { width: 100% !important; } .closing-card + .closing-card { border-top: 10px solid white; } }</p>

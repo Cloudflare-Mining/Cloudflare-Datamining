@@ -1,268 +1,207 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ifiJyB00Saj3K0TtU5QWn/7c552a4795603414457c7c33c4f432a2/image2.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>It feels like almost everyone building AI applications and <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">agents</a> is talking about the <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer">Model Context Protocol</a> (MCP), as well as building MCP servers that you install and run locally on your own computer.</p>
-	<p>You can now <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>build and deploy remote MCP servers</u></a> to Cloudflare. We’ve added four things to Cloudflare that handle the hard parts of building remote MCP servers for you:</p>
-	<ol>
-		<li>
-			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization" target="_blank" rel="noopener noreferrer"><u>workers-oauth-provider</u></a> — an <a href="https://www.cloudflare.com/learning/access-management/what-is-oauth" target="_blank" rel="noopener noreferrer"><u>OAuth</u></a> Provider that makes authorization easy</p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/agents/model-context-protocol/tools" target="_blank" rel="noopener noreferrer"><u>McpAgent</u></a> —&nbsp;a class built into the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a> that handles remote transport</p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/agents/guides/test-remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>mcp-remote</u></a> —&nbsp;an adapter that lets MCP clients that otherwise only support local connections work with remote MCP servers</p>
-		</li>
-		<li>
-			<p><a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>AI playground as a remote MCP client</u></a> —&nbsp;a chat interface that allows you to connect to remote MCP servers, with the authentication check included</p>
-		</li>
-	</ol>
-	<p>The button below, or the <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>developer docs</u></a>, will get you up and running in production with <a href="https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>this example MCP server</u></a> in less than two minutes:</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-server" target="_blank"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+<p>It feels like almost everyone building AI applications and <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">agents</a> is talking about the <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer">Model Context Protocol</a> (MCP), as well as building MCP servers that you install and run locally on your own computer.</p>
+<p>You can now <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>build and deploy remote MCP servers</u></a> to Cloudflare. We’ve added four things to Cloudflare that handle the hard parts of building remote MCP servers for you:</p>
+<ol>
+	<li><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization" target="_blank" rel="noopener noreferrer"><u>workers-oauth-provider</u></a> — an <a href="https://www.cloudflare.com/learning/access-management/what-is-oauth" target="_blank" rel="noopener noreferrer"><u>OAuth</u></a> Provider that makes authorization easy</li>
+	<li><a href="https://developers.cloudflare.com/agents/model-context-protocol/tools" target="_blank" rel="noopener noreferrer"><u>McpAgent</u></a> —&nbsp;a class built into the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a> that handles remote transport</li>
+	<li><a href="https://developers.cloudflare.com/agents/guides/test-remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>mcp-remote</u></a> —&nbsp;an adapter that lets MCP clients that otherwise only support local connections work with remote MCP servers</li>
+	<li><a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>AI playground as a remote MCP client</u></a> —&nbsp;a chat interface that allows you to connect to remote MCP servers, with the authentication check included</li>
+</ol>
+<p>The button below, or the <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>developer docs</u></a>, will get you up and running in production with <a href="https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>this example MCP server</u></a> in less than two minutes:</p>
+<div id="html-block-k1b" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-server" target="_blank"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
-	<p>Unlike the local MCP servers you may have previously used, remote MCP servers are accessible on the Internet. People simply sign in and grant permissions to MCP clients using familiar authorization flows. We think this is going to be a massive deal — connecting coding agents to MCP servers has blown developers’ minds over the past few months, and remote MCP servers have the same potential to open up similar new ways of working with LLMs and agents to a much wider audience, including more everyday consumer use cases.</p>
-	<div class="flex anchor relative">
-		<h2 id="from-local-to-remote-bringing-mcp-to-the-masses">From local to remote —&nbsp;bringing MCP to the masses</h2>
-		<a href="https://blog.cloudflare.com/#from-local-to-remote-bringing-mcp-to-the-masses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>MCP is quickly becoming the common protocol that enables LLMs to go beyond <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer"><u>inference</u></a> and <a href="https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag" target="_blank" rel="noopener noreferrer"><u>RAG</u></a>, and take actions that require access beyond the AI application itself (like sending an email, deploying a code change, publishing blog posts, you name it). It enables AI agents (MCP clients) to access tools and resources from external services (MCP servers).</p>
-	<p>To date, MCP has been limited to running locally on your own machine — if you want to access a tool on the web using MCP, it’s up to you to set up the server locally. You haven’t been able to use MCP from web-based interfaces or mobile apps, and there hasn’t been a way to let people authenticate and grant the MCP client permission. Effectively, MCP servers haven’t yet been brought online.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1EyiTXzB4FvBs2zEfzuNTp/5ce4b55457348e9ab83e6d9cf35d8c3c/image7.png" alt="" class="kg-image" width="1999" height="813" loading="lazy">
-	</figure>
-	<p>Support for <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>remote MCP connections</u></a> changes this. It creates the opportunity to reach a wider audience of Internet users who aren’t going to install and run MCP servers locally for use with desktop apps. Remote MCP support is like the transition from desktop software to web-based software. People expect to continue tasks across devices and to login and have things just work. Local MCP is great for developers, but remote MCP connections are the missing piece to reach everyone on the Internet.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bI7rJtLh89jmZaibSgiLl/e426f93616a8210d80b979c47d89dc75/image4.png" alt="" class="kg-image" width="1999" height="723" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="making-authentication-and-authorization-just-work-with-mcp">Making authentication and authorization just work with MCP</h2>
-		<a href="https://blog.cloudflare.com/#making-authentication-and-authorization-just-work-with-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Beyond just changing the transport layer — from <a href="https://modelcontextprotocol.io/docs/concepts/transports#standard-input%2Foutput-stdio" target="_blank" rel="noopener noreferrer"><u>stdio</u></a> to <a href="https://github.com/modelcontextprotocol/specification/pull/206" target="_blank" rel="noopener noreferrer"><u>streamable HTTP</u></a> — when you build a remote MCP server that uses information from the end user’s account, you need <a href="https://www.cloudflare.com/learning/access-management/authn-vs-authz" target="_blank" rel="noopener noreferrer"><u>authentication and authorization</u></a>. You need a way to allow users to login and prove who they are (authentication) and a way for users to control what the AI agent will be able to access when using a service (authorization).</p>
-	<p>MCP does this with <a href="https://oauth.net/2" target="_blank" rel="noopener noreferrer"><u>OAuth</u></a>, which has been the standard protocol that allows users to grant applications to access their information or services, without sharing passwords. Here, the MCP Server itself acts as the OAuth Provider. However, OAuth with MCP is hard to implement yourself, so when you build MCP servers on Cloudflare we provide it for you.</p>
-	<div class="flex anchor relative">
-		<h3 id="workers-oauth-provider-an-oauth-2-1-provider-library-for-cloudflare-workers">workers-oauth-provider — an OAuth 2.1 Provider library for Cloudflare Workers</h3>
-		<a href="https://blog.cloudflare.com/#workers-oauth-provider-an-oauth-2-1-provider-library-for-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>deploy an MCP Server</u></a> to Cloudflare, your Worker acts as an OAuth Provider, using <a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><u>workers-oauth-provider</u></a>, a new TypeScript library that wraps your Worker’s code, adding authorization to API endpoints, including (but not limited to) MCP server API endpoints.</p>
-	<p>Your MCP server will receive the already-authenticated user details as a parameter. You don’t need to perform any checks of your own, or directly manage tokens. You can still fully control how you authenticate users: from what UI they see when they log in, to which provider they use to log in. You can choose to bring your own third-party authentication and authorization providers like Google or GitHub, or integrate with your own.</p>
-	<p>The complete <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener noreferrer"><u>MCP OAuth flow</u></a> looks like this:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VTPBfZ4hRPdq2TWE5VOjS/00abc97e4beedf59a4101957612fd503/image5.png" alt="" class="kg-image" width="1999" height="1904" loading="lazy">
-	</figure>
-	<p>Here, your MCP server acts as both an OAuth client to your upstream service, <i>and</i> as an OAuth server (also referred to as an OAuth “provider”) to MCP clients. You can use any upstream authentication flow you want, but workers-oauth-provider guarantees that your MCP server is <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener noreferrer"><u>spec-compliant</u></a> and able to work with the full range of client apps &amp; websites. This includes support for Dynamic Client Registration (<a href="https://datatracker.ietf.org/doc/html/rfc7591" target="_blank" rel="noopener noreferrer"><u>RFC 7591</u></a>) and Authorization Server Metadata (<a href="https://datatracker.ietf.org/doc/html/rfc8414" target="_blank" rel="noopener noreferrer"><u>RFC 8414</u></a>).</p>
-	<div class="flex anchor relative">
-		<h3 id="a-simple-pluggable-interface-for-oauth">A simple, pluggable interface for OAuth</h3>
-		<a href="https://blog.cloudflare.com/#a-simple-pluggable-interface-for-oauth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you build an MCP server with Cloudflare Workers, you provide an instance of the OAuth Provider paths to your authorization, token, and client registration endpoints, along with <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch" target="_blank" rel="noopener noreferrer"><u>handlers</u></a> for your MCP Server, and for auth:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">import OAuthProvider from "@cloudflare/workers-oauth-provider";
-import MyMCPServer from "./my-mcp-server";
-import MyAuthHandler from "./auth-handler";
-
-export default new OAuthProvider({
-  apiRoute: "/sse", // MCP clients connect to your server at this route
-  apiHandler: MyMCPServer.mount('/sse'), // Your MCP Server implmentation
-  defaultHandler: MyAuthHandler, // Your authentication implementation
-  authorizeEndpoint: "/authorize",
-  tokenEndpoint: "/token",
-  clientRegistrationEndpoint: "/register",
-});</code></pre>
-	<p>This abstraction lets you easily plug in your own authentication. Take a look at <a href="https://github.com/cloudflare/ai/blob/main/demos/remote-mcp-github-oauth/src/github-handler.ts" target="_blank" rel="noopener noreferrer"><u>this example</u></a> that uses GitHub as the identity provider for an MCP server, in less than 100 lines of code, by implementing /callback and /authorize routes.</p>
-	<div class="flex anchor relative">
-		<h3 id="why-do-mcp-servers-issue-their-own-tokens">Why do MCP servers issue their own tokens?</h3>
-		<a href="https://blog.cloudflare.com/#why-do-mcp-servers-issue-their-own-tokens" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You may have noticed in the authorization diagram above, and in the <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener noreferrer"><u>authorization section</u></a> of the MCP spec, that the MCP server issues its own token to the MCP client.</p>
-	<p>Instead of passing the token it receives from the upstream provider directly to the MCP client, your Worker stores an encrypted access token in <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>. It then issues its own token to the client. As shown in the <a href="https://github.com/cloudflare/ai/blob/main/demos/remote-mcp-github-oauth/src/github-handler.ts" target="_blank" rel="noopener noreferrer"><u>GitHub example</u></a> above, this is handled on your behalf by the workers-oauth-provider — your code never directly handles writing this token, preventing mistakes. You can see this in the following code snippet from the <a href="https://github.com/cloudflare/ai/blob/main/demos/remote-mcp-github-oauth/src/github-handler.ts" target="_blank" rel="noopener noreferrer"><u>GitHub example</u></a> above:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">  // When you call completeAuthorization, the accessToken you pass to it
-  // is encrypted and stored, and never exposed to the MCP client
-  // A new, separate token is generated and provided to the client at the /token endpoint
-  const { redirectTo } = await c.env.OAUTH_PROVIDER.completeAuthorization({
-    request: oauthReqInfo,
-    userId: login,
-    metadata: { label: name },
-    scope: oauthReqInfo.scope,
-    props: {
-      accessToken,  // Stored encrypted, never sent to MCP client
-    },
-  })
-
-  return Response.redirect(redirectTo)</code></pre>
-	<p>On the surface, this indirection might sound more complicated. Why does it work this way?</p>
-	<p>By issuing its own token, MCP Servers can restrict access and enforce more granular controls than the upstream provider. If a token you issue to an MCP client is compromised, the attacker only gets the limited permissions you've explicitly granted through your MCP tools, not the full access of the original token.</p>
-	<p>Let’s say your MCP server requests that the user authorize permission to read emails from their Gmail account, using the <a href="https://developers.google.com/identity/protocols/oauth2/scopes#gmail" target="_blank" rel="noopener noreferrer"><u>gmail.readonly scope</u></a>. The tool that the MCP server exposes is more narrow, and allows reading travel booking notifications from a limited set of senders, to handle a question like “What’s the check-out time for my hotel room tomorrow?” You can enforce this constraint in your MCP server, and if the token you issue to the MCP client is compromised, because the token is to your MCP server — and not the raw token to the upstream provider (Google) — an attacker cannot use it to read arbitrary emails. They can only call the tools your MCP server provides. OWASP calls out <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency" target="_blank" rel="noopener noreferrer"><u>“Excessive Agency”</u></a> as one of the top risk factors for building AI applications, and by issuing its own token to the client and enforcing constraints, your MCP server can limit tools access to only what the client needs.</p>
-	<p>Or building off the earlier GitHub example, you can enforce that only a specific user is allowed to access a particular tool. In the example below, only users that are part of an allowlist can see or call the generateImage tool, that uses <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> to generate an image based on a prompt:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
-
-const USER_ALLOWLIST = ["geelen"];
-
-export class MyMCP extends McpAgent&lt;Props, Env&gt; {
-  server = new McpServer({
-    name: "Github OAuth Proxy Demo",
-    version: "1.0.0",
-  });
-
-  async init() {
-    // Dynamically add tools based on the user's identity
-    if (USER_ALLOWLIST.has(this.props.login)) {
-      this.server.tool(
-        'generateImage',
-        'Generate an image using the flux-1-schnell model.',
-        {
-          prompt: z.string().describe('A text description of the image you want to generate.')
-        },
-        async ({ prompt }) =&gt; {
-          const response = await this.env.AI.run('@cf/black-forest-labs/flux-1-schnell', { 
-            prompt, 
-            steps: 8 
-          })
-          return {
-            content: [{ type: 'image', data: response.image!, mimeType: 'image/jpeg' }],
-          }
-        }
-      )
-    }
-  }
-}
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="introducing-mcpagent-remote-transport-support-that-works-today-and-will-work-with-the-revision-to-the-mcp-spec">Introducing McpAgent: remote transport support that works today, and will work with the revision to the MCP spec</h2>
-		<a href="https://blog.cloudflare.com/#introducing-mcpagent-remote-transport-support-that-works-today-and-will-work-with-the-revision-to-the-mcp-spec" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The next step to opening up MCP beyond your local machine is to open up a remote transport layer for communication. MCP servers you run on your local machine just communicate over <a href="https://modelcontextprotocol.io/docs/concepts/transports#standard-input%2Foutput-stdio" target="_blank" rel="noopener noreferrer"><u>stdio</u></a>, but for an MCP server to be callable over the Internet, it must implement <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/transports/#http-with-sse" target="_blank" rel="noopener noreferrer"><u>remote transport</u></a>.</p>
-	<p>The <a href="https://github.com/cloudflare/agents/blob/2f82f51784f4e27292249747b5fbeeef94305552/packages/agents/src/mcp.ts" target="_blank" rel="noopener noreferrer"><u>McpAgent</u></a> class we introduced today as part of our <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> handles this for you, using <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> behind the scenes to hold a persistent connection open, so that the MCP client can send <a href="https://modelcontextprotocol.io/docs/concepts/transports#server-sent-events-sse" target="_blank" rel="noopener noreferrer"><u>server-sent events (SSE)</u></a> to your MCP server. You don’t have to write code to deal with transport or serialization yourself. A minimal MCP server in 15 lines of code can look like this:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
-
-export class MyMCP extends McpAgent {
-  server = new McpServer({
-    name: "Demo",
-    version: "1.0.0",
-  });
-  async init() {
-    this.server.tool("add", { a: z.number(), b: z.number() }, async ({ a, b }) =&gt; ({
-      content: [{ type: "text", text: String(a + b) }],
-    }));
-  }
-}</code></pre>
-	<p>After much <a href="https://github.com/modelcontextprotocol/specification/discussions/102" target="_blank" rel="noopener noreferrer"><u>discussion</u></a>, remote transport in the MCP spec is changing, with <a href="https://github.com/modelcontextprotocol/specification/pull/206" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP replacing HTTP+SSE</u></a> This allows for stateless, pure HTTP connections to MCP servers, with an option to upgrade to SSE, and removes the need for the MCP client to send messages to a separate endpoint than the one it first connects to. The McpAgent class will change with it and just work with streamable HTTP, so that you don’t have to start over to support the revision to how transport works.</p>
-	<p>This applies to future iterations of transport as well. Today, the vast majority of MCP servers only expose tools, which are simple <a href="https://en.wikipedia.org/wiki/Remote_procedure_call" target="_blank" rel="noopener noreferrer"><u>remote procedure call (RPC)</u></a> methods that can be provided by a stateless transport. But more complex human-in-the-loop and agent-to-agent interactions will need <a href="https://modelcontextprotocol.io/docs/concepts/prompts" target="_blank" rel="noopener noreferrer"><u>prompts</u></a> and <a href="https://modelcontextprotocol.io/docs/concepts/sampling" target="_blank" rel="noopener noreferrer"><u>sampling</u></a>. We expect these types of chatty, two-way interactions will need to be real-time, which will be challenging to do well without a bidirectional transport layer. When that time comes, Cloudflare, the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>, and Durable Objects all natively support <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets" target="_blank" rel="noopener noreferrer"><u>WebSockets</u></a>, which enable full-duplex, bidirectional real-time communication.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="stateful-agentic-mcp-servers">Stateful, agentic MCP servers</h2>
-		<a href="https://blog.cloudflare.com/#stateful-agentic-mcp-servers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you build MCP servers on Cloudflare, each MCP client session is backed by a Durable Object, via the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>. This means each session can manage and persist its own state, <a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state" target="_blank" rel="noopener noreferrer"><u>backed by its own SQL database</u></a>.</p>
-	<p>This opens the door to building stateful MCP servers. Rather than just acting as a stateless layer between a client app and an external API, MCP servers on Cloudflare can themselves be stateful applications —&nbsp;games, a shopping cart plus checkout flow, a <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_blank" rel="noopener noreferrer"><u>persistent knowledge graph</u></a>, or anything else you can dream up. When you build on Cloudflare, MCP servers can be much more than a layer in front of your REST API.</p>
-	<p>To understand the basics of how this works, let’s look at a minimal example that increments a counter:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">import { McpAgent } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
-
-type State = { counter: number }
-
-export class MyMCP extends McpAgent&lt;Env, State, {}&gt; {
-  server = new McpServer({
-    name: "Demo",
-    version: "1.0.0",
-  });
-
-  initialState: State = {
-    counter: 1,
-  }
-
-  async init() {
-    this.server.resource(`counter`, `mcp://resource/counter`, (uri) =&gt; {
-      return {
-        contents: [{ uri: uri.href, text: String(this.state.counter) }],
-      }
-    })
-
-    this.server.tool('add', 'Add to the counter, stored in the MCP', { a: z.number() }, async ({ a }) =&gt; {
-      this.setState({ ...this.state, counter: this.state.counter + a })
-
-      return {
-        content: [{ type: 'text', text: String(`Added ${a}, total is now ${this.state.counter}`) }],
-      }
-    })
-  }
-
-  onStateUpdate(state: State) {
-    console.log({ stateUpdate: state })
-  }
-
-}</code></pre>
-	<p>For a given session, the MCP server above will remember the state of the counter across tool calls.</p>
-	<p>From within an MCP server, you can use Cloudflare’s whole developer platform, and have your MCP server <a href="https://developers.cloudflare.com/agents/api-reference/browse-the-web" target="_blank" rel="noopener noreferrer"><u>spin up its own web browser</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>trigger a Workflow</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/using-ai-models" target="_blank" rel="noopener noreferrer"><u>call AI models</u></a>, and more. We’re excited to see the MCP ecosystem evolve into more advanced use cases.</p>
-	<div class="flex anchor relative">
-		<h2 id="connect-to-remote-mcp-servers-from-mcp-clients-that-today-only-support-local-mcp">Connect to remote MCP servers from MCP clients that today only support local MCP</h2>
-		<a href="https://blog.cloudflare.com/#connect-to-remote-mcp-servers-from-mcp-clients-that-today-only-support-local-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare is supporting remote MCP early — before the most prominent MCP client applications support remote, authenticated MCP, and before other platforms support remote MCP. We’re doing this to give you a head start building for where MCP is headed.</p>
-	<p>But if you build a remote MCP server today, this presents a challenge — how can people start using your MCP server if there aren’t MCP clients that support remote MCP?</p>
-	<p>We have two new tools that allow you to test your remote MCP server and simulate how users will interact with it in the future:</p>
-	<p>We updated the <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers AI Playground</u></a> to be a fully remote MCP client that allows you to connect to any remote MCP server with built-in authentication support. This online chat interface lets you immediately test your remote MCP servers without having to install anything on your device. Instead, just enter the remote MCP server’s URL (e.g. https://remote-server.example.com/sse) and click Connect.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4N64nJHJiQygmMdSK7clIs/c0bf8c64f1607674f81be10c3871a64b/image1.png" alt="" class="kg-image" width="1999" height="1363" loading="lazy">
-	</figure>
-	<p>Once you click Connect, you’ll go through the authentication flow (if you set one up) and after, you will be able to interact with the MCP server tools directly from the chat interface.</p>
-	<p>If you prefer to use a client like Claude Desktop or Cursor that already supports MCP but doesn’t yet handle remote connections with authentication, you can use <a href="https://www.npmjs.com/package/mcp-remote" target="_blank" rel="noopener noreferrer"><u>mcp-remote</u></a>. mcp-remote is&nbsp;an adapter that&nbsp; lets MCP clients that otherwise only support local connections to work with remote MCP servers. This gives you and your users the ability to preview what interactions with your remote MCP server will be like from the tools you’re already using today, without having to wait for the client to support remote MCP natively.&nbsp;</p>
-	<p>We’ve <a href="https://developers.cloudflare.com/agents/guides/test-remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>published a guide</u></a> on how to use mcp-remote with popular MCP clients including Claude Desktop, Cursor, and Windsurf. In Claude Desktop, you add the following to your configuration file:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">{
-  "mcpServers": {
-    "remote-example": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://remote-server.example.com/sse"
-      ]
-    }
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="1800-mcp-cloudflare-com-start-building-remote-mcp-servers-today">1800-mcp@cloudflare.com — start building remote MCP servers today</h2>
-		<a href="https://blog.cloudflare.com/#1800-mcp-cloudflare-com-start-building-remote-mcp-servers-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Remote Model Context Protocol (MCP) is coming! When client apps support remote MCP servers, the audience of people who can use them opens up from just us, developers, to the rest of the population — who may never even know what MCP is or stands for.&nbsp;</p>
-	<p>Building a remote MCP server is the way to bring your service into the AI assistants and tools that millions of people use. We’re excited to see many of the biggest companies on the Internet are busy building MCP servers right now, and we are curious about the businesses that pop-up in an agent-first, MCP-native way.</p>
-	<p>On Cloudflare, <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>you can start building today</u></a>. We’re ready for you, and ready to help build with you. Email us at <a href="https://blog.cloudflare.com/#"><u>1800-mcp@cloudflare.com</u></a>, and we’ll help get you going. There’s lots more to come with MCP, and we’re excited to see what you build.</p>
 </div>
+<p>Unlike the local MCP servers you may have previously used, remote MCP servers are accessible on the Internet. People simply sign in and grant permissions to MCP clients using familiar authorization flows. We think this is going to be a massive deal — connecting coding agents to MCP servers has blown developers’ minds over the past few months, and remote MCP servers have the same potential to open up similar new ways of working with LLMs and agents to a much wider audience, including more everyday consumer use cases.</p>
+<h2>From local to remote —&nbsp;bringing MCP to the masses</h2>
+<p>MCP is quickly becoming the common protocol that enables LLMs to go beyond <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer"><u>inference</u></a> and <a href="https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag" target="_blank" rel="noopener noreferrer"><u>RAG</u></a>, and take actions that require access beyond the AI application itself (like sending an email, deploying a code change, publishing blog posts, you name it). It enables AI agents (MCP clients) to access tools and resources from external services (MCP servers).</p>
+<p>To date, MCP has been limited to running locally on your own machine — if you want to access a tool on the web using MCP, it’s up to you to set up the server locally. You haven’t been able to use MCP from web-based interfaces or mobile apps, and there hasn’t been a way to let people authenticate and grant the MCP client permission. Effectively, MCP servers haven’t yet been brought online.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="291" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=750&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=828&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=1080&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=1280&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=1430&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2722 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D9A7JW1TRJG2WS78P4PM.png&amp;w=1920&amp;h=781&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="781" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="291" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Support for <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>remote MCP connections</u></a> changes this. It creates the opportunity to reach a wider audience of Internet users who aren’t going to install and run MCP servers locally for use with desktop apps. Remote MCP support is like the transition from desktop software to web-based software. People expect to continue tasks across devices and to login and have things just work. Local MCP is great for developers, but remote MCP connections are the missing piece to reach everyone on the Internet.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="259" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=715&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=640&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=715&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=750&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=828&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=1080&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=1280&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=1430&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2722 image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TK42EWH49VZRPPN0F5W3.png&amp;w=1920&amp;h=694&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="694" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="259" class="pt-portable-image-media"></div>
+</figure>
+<h2>Making authentication and authorization just work with MCP</h2>
+<p>Beyond just changing the transport layer — from <a href="https://modelcontextprotocol.io/docs/concepts/transports#standard-input%2Foutput-stdio" target="_blank" rel="noopener noreferrer"><u>stdio</u></a> to <a href="https://github.com/modelcontextprotocol/specification/pull/206" target="_blank" rel="noopener noreferrer"><u>streamable HTTP</u></a> — when you build a remote MCP server that uses information from the end user’s account, you need <a href="https://www.cloudflare.com/learning/access-management/authn-vs-authz" target="_blank" rel="noopener noreferrer"><u>authentication and authorization</u></a>. You need a way to allow users to login and prove who they are (authentication) and a way for users to control what the AI agent will be able to access when using a service (authorization).</p>
+<p>MCP does this with <a href="https://oauth.net/2" target="_blank" rel="noopener noreferrer"><u>OAuth</u></a>, which has been the standard protocol that allows users to grant applications to access their information or services, without sharing passwords. Here, the MCP Server itself acts as the OAuth Provider. However, OAuth with MCP is hard to implement yourself, so when you build MCP servers on Cloudflare we provide it for you.</p>
+<h3>workers-oauth-provider — an OAuth 2.1 Provider library for Cloudflare Workers</h3>
+<p>When you <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>deploy an MCP Server</u></a> to Cloudflare, your Worker acts as an OAuth Provider, using <a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><u>workers-oauth-provider</u></a>, a new TypeScript library that wraps your Worker’s code, adding authorization to API endpoints, including (but not limited to) MCP server API endpoints.</p>
+<p>Your MCP server will receive the already-authenticated user details as a parameter. You don’t need to perform any checks of your own, or directly manage tokens. You can still fully control how you authenticate users: from what UI they see when they log in, to which provider they use to log in. You can choose to bring your own third-party authentication and authorization providers like Google or GitHub, or integrate with your own.</p>
+<p>The complete <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener noreferrer"><u>MCP OAuth flow</u></a> looks like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="681" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=715&amp;h=681&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=640&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=715&amp;h=681&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=750&amp;h=714&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=828&amp;h=789&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=1080&amp;h=1029&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=1280&amp;h=1219&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=1430&amp;h=1362&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2722 image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BMJ2A6MVMM9381KA69TZ.png&amp;w=1920&amp;h=1829&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1829" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="681" class="pt-portable-image-media"></div>
+</figure>
+<p>Here, your MCP server acts as both an OAuth client to your upstream service, <em>and</em> as an OAuth server (also referred to as an OAuth “provider”) to MCP clients. You can use any upstream authentication flow you want, but workers-oauth-provider guarantees that your MCP server is <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener noreferrer"><u>spec-compliant</u></a> and able to work with the full range of client apps &amp; websites. This includes support for Dynamic Client Registration (<a href="https://datatracker.ietf.org/doc/html/rfc7591" target="_blank" rel="noopener noreferrer"><u>RFC 7591</u></a>) and Authorization Server Metadata (<a href="https://datatracker.ietf.org/doc/html/rfc8414" target="_blank" rel="noopener noreferrer"><u>RFC 8414</u></a>).</p>
+<h3>A simple, pluggable interface for OAuth</h3>
+<p>When you build an MCP server with Cloudflare Workers, you provide an instance of the OAuth Provider paths to your authorization, token, and client registration endpoints, along with <a href="https://developers.cloudflare.com/workers/runtime-apis/handlers/fetch" target="_blank" rel="noopener noreferrer"><u>handlers</u></a> for your MCP Server, and for auth:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> OAuthProvider </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/workers-oauth-provider"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> MyMCPServer </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./my-mcp-server"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> MyAuthHandler </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./auth-handler"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OAuthProvider</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  apiRoute: </span><span class="sk-032f62-99ffe4">"/sse"</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// MCP clients connect to your server at this route</span></span>
+<span class="line"><span class="sk-24292e-fff">  apiHandler: MyMCPServer.</span><span class="sk-6f42c1-ffc799">mount</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/sse'</span><span class="sk-24292e-fff">), </span><span class="sk-6a737d-8b8b8b94">// Your MCP Server implmentation</span></span>
+<span class="line"><span class="sk-24292e-fff">  defaultHandler: MyAuthHandler, </span><span class="sk-6a737d-8b8b8b94">// Your authentication implementation</span></span>
+<span class="line"><span class="sk-24292e-fff">  authorizeEndpoint: </span><span class="sk-032f62-99ffe4">"/authorize"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  tokenEndpoint: </span><span class="sk-032f62-99ffe4">"/token"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  clientRegistrationEndpoint: </span><span class="sk-032f62-99ffe4">"/register"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>This abstraction lets you easily plug in your own authentication. Take a look at <a href="https://github.com/cloudflare/ai/blob/main/demos/remote-mcp-github-oauth/src/github-handler.ts" target="_blank" rel="noopener noreferrer"><u>this example</u></a> that uses GitHub as the identity provider for an MCP server, in less than 100 lines of code, by implementing /callback and /authorize routes.</p>
+<h3>Why do MCP servers issue their own tokens?</h3>
+<p>You may have noticed in the authorization diagram above, and in the <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/authorization" target="_blank" rel="noopener noreferrer"><u>authorization section</u></a> of the MCP spec, that the MCP server issues its own token to the MCP client.</p>
+<p>Instead of passing the token it receives from the upstream provider directly to the MCP client, your Worker stores an encrypted access token in <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a>. It then issues its own token to the client. As shown in the <a href="https://github.com/cloudflare/ai/blob/main/demos/remote-mcp-github-oauth/src/github-handler.ts" target="_blank" rel="noopener noreferrer"><u>GitHub example</u></a> above, this is handled on your behalf by the workers-oauth-provider — your code never directly handles writing this token, preventing mistakes. You can see this in the following code snippet from the <a href="https://github.com/cloudflare/ai/blob/main/demos/remote-mcp-github-oauth/src/github-handler.ts" target="_blank" rel="noopener noreferrer"><u>GitHub example</u></a> above:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">  // When you call completeAuthorization, the accessToken you pass to it</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // is encrypted and stored, and never exposed to the MCP client</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // A new, separate token is generated and provided to the client at the /token endpoint</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">redirectTo</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> c.env.</span><span class="sk-005cc5-fff">OAUTH_PROVIDER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">completeAuthorization</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    request: oauthReqInfo,</span></span>
+<span class="line"><span class="sk-24292e-fff">    userId: login,</span></span>
+<span class="line"><span class="sk-24292e-fff">    metadata: { label: name },</span></span>
+<span class="line"><span class="sk-24292e-fff">    scope: oauthReqInfo.scope,</span></span>
+<span class="line"><span class="sk-24292e-fff">    props: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      accessToken,  </span><span class="sk-6a737d-8b8b8b94">// Stored encrypted, never sent to MCP client</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">redirect</span><span class="sk-24292e-fff">(redirectTo)</span></span></code></pre>
+</div>
+<p>On the surface, this indirection might sound more complicated. Why does it work this way?</p>
+<p>By issuing its own token, MCP Servers can restrict access and enforce more granular controls than the upstream provider. If a token you issue to an MCP client is compromised, the attacker only gets the limited permissions you've explicitly granted through your MCP tools, not the full access of the original token.</p>
+<p>Let’s say your MCP server requests that the user authorize permission to read emails from their Gmail account, using the <a href="https://developers.google.com/identity/protocols/oauth2/scopes#gmail" target="_blank" rel="noopener noreferrer"><u>gmail.readonly scope</u></a>. The tool that the MCP server exposes is more narrow, and allows reading travel booking notifications from a limited set of senders, to handle a question like “What’s the check-out time for my hotel room tomorrow?” You can enforce this constraint in your MCP server, and if the token you issue to the MCP client is compromised, because the token is to your MCP server — and not the raw token to the upstream provider (Google) — an attacker cannot use it to read arbitrary emails. They can only call the tools your MCP server provides. OWASP calls out <a href="https://genai.owasp.org/llmrisk/llm062025-excessive-agency" target="_blank" rel="noopener noreferrer"><u>“Excessive Agency”</u></a> as one of the top risk factors for building AI applications, and by issuing its own token to the client and enforcing constraints, your MCP server can limit tools access to only what the client needs.</p>
+<p>Or building off the earlier GitHub example, you can enforce that only a specific user is allowed to access a particular tool. In the example below, only users that are part of an allowlist can see or call the generateImage tool, that uses <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> to generate an image based on a prompt:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/mcp"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@modelcontextprotocol/sdk/server/mcp.js"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { z } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "zod"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> USER_ALLOWLIST</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"geelen"</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyMCP</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> McpAgent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Props</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-e36209-fff">  server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> McpServer</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    name: </span><span class="sk-032f62-99ffe4">"Github OAuth Proxy Demo"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    version: </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Dynamically add tools based on the user's identity</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">USER_ALLOWLIST</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">has</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.props.login)) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'generateImage'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'Generate an image using the flux-1-schnell model.'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-24292e-fff">          prompt: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'A text description of the image you want to generate.'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">prompt</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/black-forest-labs/flux-1-schnell'</span><span class="sk-24292e-fff">, { </span></span>
+<span class="line"><span class="sk-24292e-fff">            prompt, </span></span>
+<span class="line"><span class="sk-24292e-fff">            steps: </span><span class="sk-005cc5-ffc799">8</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">          })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">            content: [{ type: </span><span class="sk-032f62-99ffe4">'image'</span><span class="sk-24292e-fff">, data: response.image</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">, mimeType: </span><span class="sk-032f62-99ffe4">'image/jpeg'</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      )</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>Introducing McpAgent: remote transport support that works today, and will work with the revision to the MCP spec</h2>
+<p>The next step to opening up MCP beyond your local machine is to open up a remote transport layer for communication. MCP servers you run on your local machine just communicate over <a href="https://modelcontextprotocol.io/docs/concepts/transports#standard-input%2Foutput-stdio" target="_blank" rel="noopener noreferrer"><u>stdio</u></a>, but for an MCP server to be callable over the Internet, it must implement <a href="https://spec.modelcontextprotocol.io/specification/draft/basic/transports/#http-with-sse" target="_blank" rel="noopener noreferrer"><u>remote transport</u></a>.</p>
+<p>The <a href="https://github.com/cloudflare/agents/blob/2f82f51784f4e27292249747b5fbeeef94305552/packages/agents/src/mcp.ts" target="_blank" rel="noopener noreferrer"><u>McpAgent</u></a> class we introduced today as part of our <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> handles this for you, using <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> behind the scenes to hold a persistent connection open, so that the MCP client can send <a href="https://modelcontextprotocol.io/docs/concepts/transports#server-sent-events-sse" target="_blank" rel="noopener noreferrer"><u>server-sent events (SSE)</u></a> to your MCP server. You don’t have to write code to deal with transport or serialization yourself. A minimal MCP server in 15 lines of code can look like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/mcp"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@modelcontextprotocol/sdk/server/mcp.js"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { z } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "zod"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyMCP</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> McpAgent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> McpServer</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    name: </span><span class="sk-032f62-99ffe4">"Demo"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    version: </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"add"</span><span class="sk-24292e-fff">, { a: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">(), b: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">() }, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({</span></span>
+<span class="line"><span class="sk-24292e-fff">      content: [{ type: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, text: </span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">(a </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> b) }],</span></span>
+<span class="line"><span class="sk-24292e-fff">    }));</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>After much <a href="https://github.com/modelcontextprotocol/specification/discussions/102" target="_blank" rel="noopener noreferrer"><u>discussion</u></a>, remote transport in the MCP spec is changing, with <a href="https://github.com/modelcontextprotocol/specification/pull/206" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP replacing HTTP+SSE</u></a> This allows for stateless, pure HTTP connections to MCP servers, with an option to upgrade to SSE, and removes the need for the MCP client to send messages to a separate endpoint than the one it first connects to. The McpAgent class will change with it and just work with streamable HTTP, so that you don’t have to start over to support the revision to how transport works.</p>
+<p>This applies to future iterations of transport as well. Today, the vast majority of MCP servers only expose tools, which are simple <a href="https://en.wikipedia.org/wiki/Remote_procedure_call" target="_blank" rel="noopener noreferrer"><u>remote procedure call (RPC)</u></a> methods that can be provided by a stateless transport. But more complex human-in-the-loop and agent-to-agent interactions will need <a href="https://modelcontextprotocol.io/docs/concepts/prompts" target="_blank" rel="noopener noreferrer"><u>prompts</u></a> and <a href="https://modelcontextprotocol.io/docs/concepts/sampling" target="_blank" rel="noopener noreferrer"><u>sampling</u></a>. We expect these types of chatty, two-way interactions will need to be real-time, which will be challenging to do well without a bidirectional transport layer. When that time comes, Cloudflare, the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>, and Durable Objects all natively support <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets" target="_blank" rel="noopener noreferrer"><u>WebSockets</u></a>, which enable full-duplex, bidirectional real-time communication.&nbsp;</p>
+<h2>Stateful, agentic MCP servers</h2>
+<p>When you build MCP servers on Cloudflare, each MCP client session is backed by a Durable Object, via the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>. This means each session can manage and persist its own state, <a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state" target="_blank" rel="noopener noreferrer"><u>backed by its own SQL database</u></a>.</p>
+<p>This opens the door to building stateful MCP servers. Rather than just acting as a stateless layer between a client app and an external API, MCP servers on Cloudflare can themselves be stateful applications —&nbsp;games, a shopping cart plus checkout flow, a <a href="https://github.com/modelcontextprotocol/servers/tree/main/src/memory" target="_blank" rel="noopener noreferrer"><u>persistent knowledge graph</u></a>, or anything else you can dream up. When you build on Cloudflare, MCP servers can be much more than a layer in front of your REST API.</p>
+<p>To understand the basics of how this works, let’s look at a minimal example that increments a counter:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/mcp"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@modelcontextprotocol/sdk/server/mcp.js"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { z } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "zod"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> State</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">counter</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyMCP</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> McpAgent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">State</span><span class="sk-24292e-fff">, {}&gt; {</span></span>
+<span class="line"><span class="sk-e36209-fff">  server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> McpServer</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    name: </span><span class="sk-032f62-99ffe4">"Demo"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    version: </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-e36209-fff">  initialState</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> State</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    counter: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">resource</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`counter`</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">`mcp://resource/counter`</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">uri</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        contents: [{ uri: uri.href, text: </span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.state.counter) }],</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'add'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Add to the counter, stored in the MCP'</span><span class="sk-24292e-fff">, { a: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">() }, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">setState</span><span class="sk-24292e-fff">({ </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.state, counter: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.state.counter </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> a })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        content: [{ type: </span><span class="sk-032f62-99ffe4">'text'</span><span class="sk-24292e-fff">, text: </span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Added ${</span><span class="sk-24292e-fff">a</span><span class="sk-032f62-99ffe4">}, total is now ${</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">state</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">counter</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">) }],</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  onStateUpdate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">state</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> State</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">({ stateUpdate: state })</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>For a given session, the MCP server above will remember the state of the counter across tool calls.</p>
+<p>From within an MCP server, you can use Cloudflare’s whole developer platform, and have your MCP server <a href="https://developers.cloudflare.com/agents/api-reference/browse-the-web" target="_blank" rel="noopener noreferrer"><u>spin up its own web browser</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>trigger a Workflow</u></a>, <a href="https://developers.cloudflare.com/agents/api-reference/using-ai-models" target="_blank" rel="noopener noreferrer"><u>call AI models</u></a>, and more. We’re excited to see the MCP ecosystem evolve into more advanced use cases.</p>
+<h2>Connect to remote MCP servers from MCP clients that today only support local MCP</h2>
+<p>Cloudflare is supporting remote MCP early — before the most prominent MCP client applications support remote, authenticated MCP, and before other platforms support remote MCP. We’re doing this to give you a head start building for where MCP is headed.</p>
+<p>But if you build a remote MCP server today, this presents a challenge — how can people start using your MCP server if there aren’t MCP clients that support remote MCP?</p>
+<p>We have two new tools that allow you to test your remote MCP server and simulate how users will interact with it in the future:</p>
+<p>We updated the <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers AI Playground</u></a> to be a fully remote MCP client that allows you to connect to any remote MCP server with built-in authentication support. This online chat interface lets you immediately test your remote MCP servers without having to install anything on your device. Instead, just enter the remote MCP server’s URL (e.g. https://remote-server.example.com/sse) and click Connect.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="488" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=640&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=750&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=828&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=1080&amp;h=737&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=1280&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=1430&amp;h=976&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2722 image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46P1T1G72CJRN0Y8PAN76C.png&amp;w=1920&amp;h=1309&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1309" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="488" class="pt-portable-image-media"></div>
+</figure>
+<p>Once you click Connect, you’ll go through the authentication flow (if you set one up) and after, you will be able to interact with the MCP server tools directly from the chat interface.</p>
+<p>If you prefer to use a client like Claude Desktop or Cursor that already supports MCP but doesn’t yet handle remote connections with authentication, you can use <a href="https://www.npmjs.com/package/mcp-remote" target="_blank" rel="noopener noreferrer"><u>mcp-remote</u></a>. mcp-remote is&nbsp;an adapter that&nbsp; lets MCP clients that otherwise only support local connections to work with remote MCP servers. This gives you and your users the ability to preview what interactions with your remote MCP server will be like from the tools you’re already using today, without having to wait for the client to support remote MCP natively.&nbsp;</p>
+<p>We’ve <a href="https://developers.cloudflare.com/agents/guides/test-remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>published a guide</u></a> on how to use mcp-remote with popular MCP clients including Claude Desktop, Cursor, and Windsurf. In Claude Desktop, you add the following to your configuration file:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "mcpServers"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "remote-example"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "command"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"npx"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "args"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "mcp-remote"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "https://remote-server.example.com/sse"</span></span>
+<span class="line"><span class="sk-24292e-fff">      ]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>1800-mcp@cloudflare.com — start building remote MCP servers today</h2>
+<p>Remote Model Context Protocol (MCP) is coming! When client apps support remote MCP servers, the audience of people who can use them opens up from just us, developers, to the rest of the population — who may never even know what MCP is or stands for.&nbsp;</p>
+<p>Building a remote MCP server is the way to bring your service into the AI assistants and tools that millions of people use. We’re excited to see many of the biggest companies on the Internet are busy building MCP servers right now, and we are curious about the businesses that pop-up in an agent-first, MCP-native way.</p>
+<p>On Cloudflare, <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>you can start building today</u></a>. We’re ready for you, and ready to help build with you. Email us at <a href="mailto:1800-mcp@cloudflare.com"><u>1800-mcp@cloudflare.com</u></a>, and we’ll help get you going. There’s lots more to come with MCP, and we’re excited to see what you build.</p>

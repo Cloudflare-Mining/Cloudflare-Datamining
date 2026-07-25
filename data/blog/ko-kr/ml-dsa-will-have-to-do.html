@@ -1,0 +1,982 @@
+<p><em>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</em></p>
+<p>우리 모두가 수십 년 동안 의존해 온 암호화 알고리즘인 RSA와 ECC는 충분히 발전한 양자 컴퓨터의 공격에 <a href="https://blog.cloudflare.com/the-quantum-menace" target="_blank" rel="noopener noreferrer"><u>취약합니다</u></a>. 이러한 양자 컴퓨터는 아직 존재하지 않지만, 예상보다 <a href="https://scottaaronson.blog/?p=9718" target="_blank" rel="noopener noreferrer"><u>빨리</u></a> 등장할 것으로 보입니다. 다행히도 이미 솔루션을 이용할 수 있으므로 양자 공격에 저항하도록 설계된 ML-KEM 암호화 및 ML-DSA 서명으로 마이그레이션하는 것입니다. 이들은 8년간의 국제 공개 경쟁 끝에 미국 국립표준기술연구소(NIST)에 의해 <a href="https://blog.cloudflare.com/nists-first-post-quantum-standards" target="_blank" rel="noopener noreferrer"><u>2024년</u></a> 표준화되었습니다.</p>
+<p>포스트 퀀텀 암호화로의 마이그레이션이 현재 본격 진행되고 있습니다. 이 글을 쓰는 시점을 기준으로 Cloudflare에서 처리하는 트래픽의 대부분은 이미 ML-KEM 암호화를 사용하고 있으므로 <a href="https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later" target="_blank" rel="noopener noreferrer"><u>지금 수집하여 나중에 해독하는(harvest-now-decrypt-later)</u></a> 공격으로 인한 데이터 위협으로부터 보호됩니다. 하지만 암호화는 전체 방정식의 일부일 뿐입니다. 기존 암호화를 해독할 수 있는 양자 컴퓨터에 대해 완전히 보안을 유지하기 위해, 저희는 포스트 퀀텀 서명을 배포하여 무단 액세스로부터 인증 시스템을 보호하는 것을 목표로 합니다. Cloudflare는 <a href="https://blog.cloudflare.com/post-quantum-roadmap" target="_blank" rel="noopener noreferrer"><u>2029년까지 포스트 양자 보안을 완벽하게 갖추는 것을 목표로 합니다</u></a>.</p>
+<p>현재 표준화되어 있는 최고의 만능 포스트 퀀텀 서명 체계인 ML-DSA는 단점이 있습니다. 곧 더 나은 양자내성 서명 방식이 등장할 전망입니다. 지난 달 NIST는 9개의 양자내성 서명 체계를 “<a href="https://csrc.nist.gov/projects/pqc-dig-sig" target="_blank" rel="noopener noreferrer"><u>signatures on-ramp”의 세 번째</u></a> <a href="https://groups.google.com/a/list.nist.gov/g/pqc-forum/c/LXoTAe5AN78/m/ZXgBCNlgDAAJ" target="_blank" rel="noopener noreferrer"><u>단계로 진행했다고</u></a> 발표했습니다. 그리고 이전 경쟁업체에서 선정된 <a href="https://falcon-sign.info" target="_blank" rel="noopener noreferrer"><u>FN-DSA</u></a> (née Falcon)의 표준 초안이 곧 발표될 것으로 예상됩니다.</p>
+<p>Cloudflare는 양자 서명 이후의 알고리즘 발전에 큰 관심을 가지고 있으며, <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures" target="_blank" rel="noopener noreferrer"><u>2021</u></a>년, <a href="https://blog.cloudflare.com/nist-post-quantum-surprise" target="_blank" rel="noopener noreferrer"><u>2022</u></a>년, <a href="https://blog.cloudflare.com/another-look-at-pq-signatures" target="_blank" rel="noopener noreferrer"><u>2024</u></a>년, <a href="https://blog.cloudflare.com/pq-2025/#signatures-on-the-horizon" target="_blank" rel="noopener noreferrer"><u>2025</u></a>년의 진행 상황에 대해 글을 작성했습니다. 이 블로그 게시물에서는 최신 개발 사항을 아주 자세히 다루겠습니다.</p>
+<p>하지만 먼저 이 문제를 해결해야 합니다. 문제는 너무 빨리 발생하여 기다릴 수 없습니다. ML-DSA는 오늘부터 사용할 수 있으며, 이는 첫 번째 마이그레이션을 위해 수행되어야 합니다. Eric Rescorla는 2024년에 <a href="https://educatedguesswork.org/posts/pq-emergency" target="_blank" rel="noopener noreferrer"><u>이렇게 적었습니다</u></a>.</p>
+<blockquote><em>갖고 싶었던 알고리즘이 아니라, 이미 갖고 있는 알고리즘을 가지고 전쟁을 치르는 것입니다.</em></blockquote>
+<p>그럼에도 불구하고 더 나은 양자 내성 알고리즘을 찾는 것이 여러 가지 이유로 매우 중요하며, Cloudflare는 이것이 여전히 NIST의 제한된 리소스를 가장 잘 사용하는 방식이라고 확신합니다.</p>
+<p>서명 알고리즘을 자세히 살펴보겠습니다. 그런 다음 가용성 타임라인과 여전히 Cloudflare가 필요한 이유를 살펴보겠습니다.</p>
+<h2>서명 알고리즘</h2>
+<p>아래 표에서는 양자 공격에 취약한 기존 알고리즘(❌)과 3차 라운드에 진출한 후보 서명 알고리즘(🤔 표시)을 비교했으며, 이미 표준화된 포스트 퀀텀 알고리즘( ✅)을 비교하거나 (📝). 각 후보자는 여러 변형을 제안합니다. 인터넷에서 연결을 보호하는 데 사용되는 프로토콜인 TLS와 가장 관련성이 높은 변종을 나열했습니다. 모든 변형을 알아보려면 <a href="https://thomwiggers.nl" target="_blank" rel="noopener noreferrer"><u>Thom Wigger</u></a>의 <a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>서명 모음</u></a>을 확인해 보세요.</p>
+<div id="html-block-k1v" class="html-block">
+	<style>
+		#html-block-k1v .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k1v .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1v .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1v .tg .tg-9ojm {
+			background-color: #0F0;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-2z78 {
+			background-color: #0F0;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-y2nm {
+			background-color: #FFE400;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-dov9 {
+			background-color: #FFE400;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-cvqw {
+			background-color: #F00;
+			color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-nbj5 {
+			background-color: #FFF;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-nq8s {
+			background-color: #ffffff;
+			border-color: inherit;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-7btt {
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-ocy3 {
+			background-color: #0F0;
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-gdr6 {
+			background-color: #FF0;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-w5hb {
+			background-color: #F90;
+			color: #FFF;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-ezr1 {
+			background-color: #0F0;
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-hw7o {
+			background-color: #FF0;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-ez01 {
+			background-color: #F90;
+			color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-fcih {
+			background-color: #C0FF00;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1v .tg .tg-7yig {
+			background-color: #FFF;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<figure class="table" style="width:743px">
+		<table class="tg ck-table-resized" style="table-layout:fixed">
+			<colgroup>
+				<col style="width:14.29%">
+				<col style="width:14.29%">
+				<col style="width:14.29%">
+				<col style="width:14.29%">
+				<col style="width:14.29%">
+				<col style="width:14.29%">
+				<col style="width:14.26%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-nq8s">
+						&nbsp;
+					</th>
+					<th class="tg-7btt">
+						&nbsp;
+					</th>
+					<th class="tg-7btt">
+						&nbsp;
+					</th>
+					<th class="tg-7btt" colspan="2">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>크기</strong></span><span style="font-style:normal;font-weight:400;text-decoration:none"> (바이트)</span></span>
+					</th>
+					<th class="tg-amwm" colspan="2">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>CPU 시간</strong></span><span style="font-style:normal;font-weight:400;text-decoration:none"> (낮을수록 우수)</span></span>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-7btt">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>가족</strong></span></span>
+					</td>
+					<td class="tg-7btt">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>이름</strong></span><span style="font-style:normal;font-weight:400;text-decoration:none"> </span><span style="font-style:normal;text-decoration:none"><strong><sub>변형</sub></strong></span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">경로는</span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">공개 키</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">서명</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">서명</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">검증</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-nbj5">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">타원 곡선</span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Ed25519</span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">❌</span></span>
+					</td>
+					<td class="tg-ocy3">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
+					</td>
+					<td class="tg-2z78">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">64</span></span>
+					</td>
+					<td class="tg-2z78">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.15</span></span>
+					</td>
+					<td class="tg-2z78">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.3</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-nbj5">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">팩터링</span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">RSA <sub>2048</sub></span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">❌</span></span>
+					</td>
+					<td class="tg-ocy3">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">272</span></span>
+					</td>
+					<td class="tg-2z78">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">256</span></span>
+					</td>
+					<td class="tg-gdr6">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">80</span></span>
+					</td>
+					<td class="tg-2z78">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.4</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-nbj5">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">격자</span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ML-DSA <sub>44</sub></span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
+					</td>
+					<td class="tg-y2nm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,312</span></span>
+					</td>
+					<td class="tg-w5hb">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">2,420</span></span>
+					</td>
+					<td class="tg-2z78">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1(베이스라인)</span></span>
+					</td>
+					<td class="tg-2z78">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1(베이스라인)</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-nbj5" rowspan="4">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">대칭</span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SLH-DSA <sub>128s</sub></span></span>
+					</td>
+					<td class="tg-c3ow">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
+					</td>
+					<td class="tg-ezr1">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">7,856</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">14,000건</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">40</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SLH-DSA <sub>128f</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">17,088</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">720</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">110</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SLH-DSA <sub>128-24</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">📝</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">3,856</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">7,000,000 </span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">⚠️</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">4</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">LMS <sub>M24_H20_W8</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">✅</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">48</span></span>
+					</td>
+					<td class="tg-dov9">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,112</span></span>
+					</td>
+					<td class="tg-fcih">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2.9</span></span><span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none"> </span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">⚠️</span></span>
+					</td>
+					<td class="tg-fcih">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">8.4</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-7yig">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">격자</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">FN-DSA <sub>512</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">📝</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">897</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">666</span></span>
+					</td>
+					<td class="tg-fcih">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">3 ⚠️</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.7</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-7yig">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">격자</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">HAWK <sub>512</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,024</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">555</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.25</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.2</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-7yig" rowspan="3">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">지식 증명</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">MQOM <sub>L1-gf16-fast-5r</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">60</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">3,280</span></span>
+					</td>
+					<td class="tg-fcih">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">8</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">20</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SDitH <sub>SDitH2-L1-gf2-fast</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">70</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">4,484</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">15</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">40</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">FAEST <sub>EM-128f</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">32</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">5,060</span></span>
+					</td>
+					<td class="tg-fcih">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">4.2</span></span>
+					</td>
+					<td class="tg-fcih">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">9</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-7yig">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">등원성</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SQIsign <sub>I</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">65</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">148</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">300 ⚠️</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">50</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-7yig" rowspan="8">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">다변량</span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">MAYO <sub>one</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,420</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">454</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2.1</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.4</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">MAYO <sub>2</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">4,912</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">186</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.1</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.8</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QR-UOV&nbsp;</span></span><br>
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"><sub>I-(127 156 54 3)</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">24,225명</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">200</span></span>
+					</td>
+					<td class="tg-fcih">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">9.3</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">20</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SNOVA <sub>(24,5,4)</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-hw7o">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1,016</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">248</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.2</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1조 7천억 개</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SNOVA <sub>(25,8,3)</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-ez01">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">2,320</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">165</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.5</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">SNOVA <sub>(37,17,2)</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">9,842</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1억 2천</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.8</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">1.3</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">UOV <sub>Is-pkc</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">66,576</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">96</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.3</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2.4</span></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">UOV <sub>Ip-pkc</sub></span></span>
+					</td>
+					<td class="tg-baqh">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">🤔</span></span>
+					</td>
+					<td class="tg-cvqw">
+						<span style="background-color:transparent;color:#FFF"><span style="font-style:normal;font-weight:400;text-decoration:none">43,576</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">128</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">0.3</span></span>
+					</td>
+					<td class="tg-9ojm">
+						<span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">2</span></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<p>이 표에 참고할 사항이 더 있습니다. 대부분의 후보자에게는 모든 보안 수준에서 여러 변형이 있습니다. 보안의 가장 바람직한 표준인 128비트 보안 수준에서 TLS와 가장 관련성이 높은 변형을 보여드립니다. CPU 시간은 2026년 6월 <a href="https://pqshield.github.io/nist-sigs-zoo" target="_blank" rel="noopener noreferrer"><u>signatures zoo</u></a> 에서 가져왔으며, 이는 2차 제출 문서 및 이후 진행에서 수집되었습니다. 후보자는 세 번째 라운드에서 변경 사항을 적용할 수 있으며, 이는 이 수치에 영향을 미칩니다. 일부 공격은(컴퓨팅 및 규모 측면에서) 개선될 것이고, 반면에 다른 공격은 퇴행되어 새로운 공격에 대응하게 될 것입니다. zoo에서 최신 수치를 확인하세요. FN-DSA 및 SQIsign 서명에는 ⚠️️ 표시가 있습니다. 둘 다 빠르고 <a href="https://blog.cloudflare.com/kyber-isnt-broken/#side-channel-attacks" target="_blank" rel="noopener noreferrer"><u>타이밍 사이드 채널에 안전한</u></a> 방식으로 구현하기 어렵기 때문입니다. 안전한 LMS 서명은 여러 서명 상태를 유지해야 하고, 나열된 서명 시간은 32MB 캐시를 가정한 것이므로 LMS 서명은 ⚠️입니다. SLH-DSA의 128-24 변형은 2<sup>24</sup> 개 미만의 서명을 생성하도록 되어 있으므로 ⚠️️로 표시됩니다.</p>
+<h2>"올스타" 알고리즘 없음</h2>
+<p>즉시 눈에 띄는 한 가지는 양자에 취약한 타원 곡선 서명 알고리즘 인 Ed25519가 (양자 취약성을 무시할 때) 가장 만능의 선택이라는 점입니다. 공개 키 크기, 서명 등 거의 모든 단일 지표에서 최고의 수치를 기록합니다. 크기와 서명 시간 등이 중요합니다. 검증 시간 면에서는 가장 빠르지만 대부분의 애플리케이션을 작동시킬 수 있을 만큼 빠릅니다.</p>
+<p>이는 퀀텀 이후의 알고리즘과는 상당히 다릅니다. 우리는 하나의 '올스타' 알고리즘 대신 대략 두 가지 범주의 체계를 사용합니다. 하나는 일부 메트릭에서 신뢰할 수 있는 타원 곡선 서명에 접근하지만 다른 메트릭에서는 문제가 되는 "전문가"이므로 올바른 배포 시나리오에서 유용합니다. 그리고 ML-DSA와 같은 '일반 기업'도 있습니다. 이들은 모든 지표에서 타원 곡선만큼 좋은 성과를 내지는 않았지만 단점을 고려하면 꽤 균형을 이룹니다.</p>
+<h2>전문가</h2>
+<p>전문가부터 시작해 보겠습니다.</p>
+<h3>SQIsign: 소규모 서명 / 느린 서명</h3>
+<p>전송되는 바이트를 살펴보면 <strong>SQIsign</strong> 은 타원 곡선 암호화를 드롭인 방식으로 거의 완벽하게 대체하는 것처럼 보입니다. 서명이 148바이트이고 공개 키가 65바이트로 RSA-2048을 능가합니다. 안타깝게도 무료 점심은 없습니다. SQIsign에는 세 가지 약점이 있습니다. 첫째, 현존하는 알고리즘 중 가장 복잡한 알고리즘입니다. 둘째, 서명 생성 및 확인이 매우 느립니다. 마지막으로, 타이밍 부채널에서 안전한 방식으로 서명 생성을 구현하기 어렵고 그렇게 하면 부팅 성능이 저하됩니다.</p>
+<p>지금까지는 별로 안 좋아 <a href="https://blog.cloudflare.com/another-look-at-pq-signatures/#sqisign" target="_blank" rel="noopener noreferrer"><u>보이는지만, 2024년을 돌아보면</u></a> 아직 부채널 보안을 구현할 적절한 시기를 놓치고 있었고, 서명 검증이 20배나 더 빨랐습니다. 또한 이 체계를 간소화하는 작업에도 환영할 만한 진전이 있었습니다.</p>
+<p>이러한 극적인 개선에도 불구하고, (부채널 보안) 서명이 가까운 미래에 TLS 핸드셰이크와 같은 일반적인 <em>온라인</em> 사례에서 사용될 정도로 충분히 빠르지는 않을 것입니다. 그러나 CA 서명이나 DNSSEC와 같이 서명 시간보다 확인 시간이 더 중요한 <em>오프라인</em> 사례의 경우 SQIsign에 애플리케이션이 있을 수 있습니다.</p>
+<p>하지만 정말 논의해야 할 주제는 보안입니다. SQIsign은 <a href="https://blog.cloudflare.com/sidh-go" target="_blank" rel="noopener noreferrer"><u>동형사상</u></a>을 기반으로 합니다. 오히려 유명하게도, 동형사상에 기반한 또 다른 알고리즘인 SIKE는 ML-DSA를 표준화한 첫 번째 NIST PQC 경쟁의 후반 단계에서 <a href="https://eprint.iacr.org/2022/975.pdf" target="_blank" rel="noopener noreferrer"><u>심각하게 뚫렸습니다</u></a>. Sike는 포스트 퀀텀 암호화가 갑자기 손상될 수 있음을 보여주는 경고 사례로 자주 거론됩니다. 여기에는 약간의 미묘한 차이가 있습니다. 첫째, Sike의 보안, 특히 파괴로 이어진 <em>토션 포인트</em> 에 대한 우려가 이미 있었습니다. 이러한 우려 때문에 표준화 대상으로 선정되지는 않았지만 추가 평가를 거쳐 평가에 실패하게 되었습니다. (실제로 이는 NIST 프로세스가 잘 작동하는 예시입니다.) SQIsign은 토션 포인트를 사용하지 않으며 Sike와 같은 유사한 우려는 없습니다.</p>
+<p>보안 분야에서 주목할 만한 또 다른 속성은 SQIsign에 대한 가장 잘 알려진 공격이 잘 선택된 타원 곡선에 대한 기존 공격과 마찬가지로 일반적인 무차별 암호 대입 공격이라는 점입니다. 이는 공격 알고리즘이 서서히 개선되어 매개변수를 더 큰 시그니처 쪽으로 밀어내고 있는 RSA, 격자, 다변량과는 상당히 다릅니다. 그럼에도 불구하고 등생성성의 이면에 있는 수학은 매우 풍부하며 다른 알고리즘에 비해 <em>수학적 공격면</em>이 많습니다. 그럼에도 불구하고 나중에 설명하게 될 구조화된 다변량 알고리즘보다는 보안이 더 건전해 보입니다.</p>
+<p>SQIsign은 엄청난 잠재력을 가진 알고리즘입니다. 너무 일찍 표준화하기에는 아쉽습니다. 개발자 여러분, 다음 위시리스트를 공유합니다.</p>
+<ul>
+	<li>검증 시간이 서명 시간과 서명 크기와 타협하더라도 검증 시간을 더 줄이는 것이 이상적입니다. SQIsign 서명은 이미 충분히 작고 오프라인 서명 시간에는 여유가 있습니다.</li>
+	<li>부채널 보안 구현 시의 타이밍이 기본이 되어야 합니다. 특히 서명 시간을 더 줄여 일부 온라인 서명 응용 프로그램을 사용하려는 경우라면 더욱 그렇습니다.</li>
+	<li>하지만 무엇보다도 우리의 바람은 SQIsign이 간소화되는 것입니다.</li>
+</ul>
+<h3>UOV: 아주 작은 서명/거대한 공개 키</h3>
+<p><strong>UOV</strong> (언밸런스드 오일 및 비니거)는 원래 1999년에 제안된 고전적인 다변량 시그니처 알고리즘입니다. 서명이 96바이트로 아주 작습니다. 타협점은 무엇일까요? 방대한 공개 키: 66kB. 이는 연결을 설정할 때 공개 키가 유선으로 전송되는 TLS 서버 인증서에는 도움이 되지 않지만, 공개 키가 미리 배포되는 경우에는 도움이 됩니다.</p>
+<p>WebPKI를 예로 들어 보겠습니다. 일반적인 브라우저는 약 100개의 루트 인증서와 30개의 인증서 투명성 로그를 신뢰하며, UOV를 사용할 경우 이들의 공개 키가 추가되면 약 8MB가 됩니다.</p>
+<figure class="emdash-image" data-astro-cid-cqt3p7qg=""><img src="" alt="" loading="lazy" decoding="async" data-astro-cid-cqt3p7qg=""></figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>일반적인 TLS 연결의 공개 키와 서명.</em></p>
+<p>루트 인증서는 대역 외에서 클라이언트에 전송되므로 거기에서 UOV 서명을 사용하는 것이 좋습니다. 하지만 이것은 슬램 덩크가 아닙니다. 크기 때문에 UOV 루트 인증서는 루트가 중간으로 사용되는 곳에서 교차 서명하는 것은 비현실적입니다. 동시에 포스트 퀀텀 서명의 규모가 커지면 교차 기호와 중간 신호의 매력이 떨어집니다. 이렇게 하면 더 많은 루트 인증서를 클라이언트에 직접 포함할 수 있습니다. 이렇게 해도 역시 UOV에 유리한 상황이 되겠지만, 어느 정도까지는 루트 인증서의 수가 1,000개 이상으로 늘어나면 브라우저 다운로드 크기의 상당 부분을 차지하는 66MB 이상의 키 자료를 처리하게 됩니다(예: , Firefox 151의 경우 90MB.)</p>
+<h4>다변량 보안</h4>
+<p>보안은 어떨까요? 수년에 걸쳐 추가 수학적 구조를 사용하여 공개 키의 크기를 줄이는 많은 UOV 변형이 제안되었습니다. 이러한 <em>구조화된 다변량</em> 계획은 무지개,<a href="https://eprint.iacr.org/2021/1677" target="_blank" rel="noopener noreferrer"><u>GeMMS 등의</u></a> <a href="https://eprint.iacr.org/2022/214" target="_blank" rel="noopener noreferrer"><u>계획은</u></a> 아주 잘 실패하는 등 불량한 실적이 있습니다. 이들은 보안 추적 기록이 훨씬 더 좋지만 완벽하지는 않은 UOV 자체와 구별하는 것이 중요합니다.</p>
+<p>많은 암호화 계획이 그렇듯이, 초기에 기본적인 공격과 매개변수화 함정이 발견되는 어려움이 있었습니다. 사실, UOV의 “U”는 그것의 나머지 부분입니다.<em>불균형을</em> 의미하며, 이는 UOV의 기반이 되는 1997년 오일과 식음료 계획에서 매개변수 설정 실수를 수정한 것입니다. 동일한 개수의 <em>석유</em> 및 <em>식초 </em>변수를 공개 키로 사용하는 경우, 이로 인해 <a href="https://weizmann.elsevierpure.com/en/publications/cryptanalysis-of-the-oil-and-vinegar-signature-scheme-2" target="_blank" rel="noopener noreferrer"><u>공격이 허용될 수 있습니다.</u></a> 다채로운 색상의 이름이 궁금하시다면, 수학식 1.1.1.1.1.1.1.1.1 독일 해칭 및 2020년 4월 1일에 공식적으로 발표한 공식 웹사이트를 통해, 수학식 10에 있는 방정식 시스템에는 식초 x식초 및 오일 x식초는 포함되지만, 오일 x 석유 항은 포함되지 않습니다. 별도의 작은 오일 덩어리가 있는 비네그레트와 같습니다. 과거로 돌아가 보면 2005년부터 2020년까지 다변량 서명에 있어서 조용했던 시기였습니다. UOV에 대한 이해는 높아졌지만, 일반적인 매개변수에 대한 새로운 공격은 없었습니다.</p>
+<p>2020년에는 이러한 상황이 바뀌었습니다. 하지만 원래의 <em>오일과</em> 식초의 균형 잡힌 공격을 기반으로 한 교차 공격이 발견되었습니다. 교차 공격은 당시 제안되었던 128비트 매개변수 집합에서 약 30비트의 보안을 제거합니다. 상당한 타격이지만 치명적이지는 않습니다. 매개변수를 약간만 조정하면 키와 서명 크기만 약간만 더 늘리면 공격이 완전히 완화됩니다.</p>
+<p>더 큰 충격은 2025년에 <a href="https://eprint.iacr.org/2025/1143.pdf" target="_blank" rel="noopener noreferrer"><u>출판된</u></a> 웨지를 사용하여 다변량 스킴을 공격한다는 아이디어가 <a href="https://en.wikipedia.org/wiki/Exterior_algebra" target="_blank" rel="noopener noreferrer"><em><u>발표된</u></em></a> 것입니다. UOV에 대한 초기 영향은 몇 비트(128비트 보안 수준)로 미미했습니다. 우려했던 것은 이러한 아이디어가 기발한 발상이었다는 것이며, 어디까지 그렇게 접근할 수 있을지는 명확하지 않다는 것이었습니다. 이 웨지 아이디어는 매우 효과적이었고 이를 기반으로 몇 차례의 후속 공격이 이루어지면서 보안이 약 15비트 감소했기 때문에 이러한 우려는 부분적으로 타당했습니다. 그러나 웨지 공격과 일반화가 잘린 고리에 대한 <a href="https://eprint.iacr.org/2026/298" target="_blank" rel="noopener noreferrer"><u>분명한</u></a> 교차 공격의 특별한 사례로 간주될 수 있다는 것도 <em>분명해졌으며</em>, 따라서 생각보다 훨씬 더 익숙합니다. 다시 말하지만, 이러한 공격은 키와 서명 크기를 약간만 늘리면 완화할 수 있습니다.</p>
+<p>이 모든 것을 어떻게 평가해야 할까요? 이러한 공격의 역사는 드문 일이 아닙니다. 지난 25년 동안 lattice의 보안 정도가 더 크게 감소했지만, 최근 몇 년 동안 이러한 추세가 진정되었습니다. 그럼에도 불구하고 현재 프로덕션에 배포된 격자 기반 암호화는 향후 암호화 분석에 대한 헤지를 하기 위해 128비트 이상의 보수적인 매개변수 집합을 사용합니다. 우리도 UOV로 똑같은 걸 하고 싶을 겁니다. 서명 크기는 보안 수준에 비례하여 증가하므로 비용은 256비트 보안 수준에서도 260바이트에 불과합니다. 안타깝게도 공개 키의 크기는 보안 수준이 256비트의 경우 446kB로 세제곱입니다. 편리하게도, UOV(대부분의 다변량 체계와 마찬가지로)는 다양한 중간 보안 수준에서 매개변수 집합을 매우 유연하게 선택할 수 있습니다.</p>
+<p>UOV는 좁지만 실제적인 사용 사례를 가진 기본 체계입니다. 앞으로는 128비트(예: 160비트)보다 약간 큰 여백을 둔 매개변수 세트를 사용하여 향후 암호 분석 개선 사항에 대비하고자 합니다.</p>
+<h3>QR-UOV: 소규모 서명 / 대규모 공개 키</h3>
+<p>나중에 설명하게 될 SNOVA 및 MAYO와 마찬가지로 <strong>QR-UOV</strong> 는 구조화된 다변량 체계입니다. 이는 크기를 줄이기 위해 공개 키에 구조를 추가하는 UOV의 변형입니다. 이점은 크지 않습니다. 우리는 기껏해야 12kB의 공개 키를 보고 있지만, 특정 매개변수 집합에 대한 서명을 검증하는 것은 현실적으로 불가능할 정도입니다. 보다 현실적인 매개변수 세트는 24kB 공개 키에서 시작합니다.</p>
+<p>보안과 관련하여 새로운 공격에 대응하여 원래의(1차) 매개변수를 조정할 필요가 없는 다변량 체계는 QR-UOV뿐입니다. UOV에 대한 모든 공격이 QR-UOV에도 적용될 수 있다는 점에서 이는 다소 놀라운 결과입니다. 설명은 공격은 적용되지만, QR-UOV에는 자연스러운 매개변수가 있어서 우연히 공격이 효과적이지 않다는 것입니다. 다른 한편으로는 QR-UOV가 추가하는 특정 추가 구조를 사용하는 것으로 알려진 공격이 이미 여러 건이 있었습니다. 실제로 일부 매개 변수 집합에 대해서는 구조별 공격이 가장 좋은 공격입니다. 이는 MAYO가 추가하는 추가 구조에 대한 알려진 공격이 없는 MAYO와 대조되어야 합니다. (MAYO 및 SNOVA에 대해서는 이 게시물 뒷부분에서 다시 다루겠습니다.)</p>
+<p>지난 라운드에 비해 QR-UOV 서명 및 확인 시간은 크게 개선되었지만, 여전히 상대적으로 느립니다. 대체로 QR-UOV는 판매가 어렵습니다. 주요 크기를 범용 크기로 낮추지 않고도 UOV에 익스플로잇 가능한 구조를 추가합니다.</p>
+<h3>해시 기반 서명</h3>
+<h4>상태 저장 해시 기반 서명</h4>
+<p>최초의 표준화된 포스트 퀀텀 서명 알고리즘은 상태 저장 해시 기반 <a href="https://www.rfc-editor.org/rfc/rfc8554.html" target="_blank" rel="noopener noreferrer"><u>LMS, HSS</u></a> 및 <a href="https://datatracker.ietf.org/doc/html/rfc8391" target="_blank" rel="noopener noreferrer"><u>XMSS<sup>(MT)</sup></u></a>입니다. 매우 작은 공개 키를 가지고 있으며 많은 매개 변수 집합의 경우 ML-DSA-44의 서명보다 훨씬 작은 서명이 많습니다. 먼저, 보안은 널리 알려져 있고 이미 암호화의 초석이 된 해시를 기반으로 합니다. 따라서 해시 기반 서명 알고리즘은 매우 보수적인 선택이 되며 더 높은 보안 수준으로 헤지할 필요가 없습니다.</p>
+<p>그렇다면 무엇이 문제일까요?</p>
+<p>두 가지가 있습니다. 가장 중요한 것은 동일한 국가를 유지하는 것입니다. 이러한 상태 저장 해시 기반 서명 체계는 머클 트리에 수집되는 일회용 서명 키로 구축됩니다. 서명자는 어떤 일회용 서명 키가 사용되었는지 추적해야 하며, 이는 카운터처럼 간단할 수 있습니다. 하지만 서명자가 이를 잘못 처리하고 실수로 동일한 1회용 서명 키를 다른 메시지에 두 번 사용한다면 누구나 이 두 서명을 사용하여 모든 메시지에 자신의 서명을 <a href="https://eprint.iacr.org/2016/1042" target="_blank" rel="noopener noreferrer"><u>likely</u></a> 만들 수 있습니다. 이 상태를 올바르게 유지하려면 많은 것을 염두에 두어야 합니다. 몇 가지를 고려해야 합니다. 서명을 전달하기 전에 업데이트가 스토리지에 기록되었는지 확인해야 합니다. 백업에서 이전 상태로 복원되는 것을 원하지 않습니다. 상태를 분할하거나 유지할 방법에 대한 합의 없이는 개인 키를 한 장소에서 다른 장소로 내보내거나 가져올 수 없습니다. 국가는 Adam Langley가 몇 년 전에 <a href="https://www.imperialviolet.org/2013/07/18/hashsig.html" target="_blank" rel="noopener noreferrer"><u>지적했듯이</u></a>, 거대한 자폭 무기와도 같습니다.</p>
+<p>또 다른 단점은 가장 경쟁력 있는 매개 변수 집합으로 생성할 수 있는 서명 수가 적다는 것입니다. 1,112바이트 서명(위 표 참조)은 약 백만 개의 서명을 생성하는 데만 사용할 수 있습니다. 이 <a href="https://westerbaan.name/~bas/hashcalc" target="_blank" rel="noopener noreferrer"><u>계산기</u></a>를 통해 장단점을 알아볼 수 있습니다.</p>
+<p>이로 인해 상태 저장 해시 기반 서명에는 작은 틈새가 생깁니다. 서명 규모가 심각해집니다. 그리고 서명자는 서명 수에 대한 엄격한 제한을 받아들여야 합니다.</p>
+<h4>SLH-DSA: 보수적인 보안/대규모 및 느림</h4>
+<p><strong>SLH-DSA</strong> 는 해시 기반 서명으로 서명 제한이 낮고 상태 유지 문제가 발생하지 않습니다. 기본적인 아이디어는 1회용 서명 키의 수를 너무 많이 만들어 동일한 키를 두 번 사용할 가능성에 대해 걱정할 필요 없이 동일한 키를 두 번 선택할 가능성이 감소하여 무작위로 하나를 선택하는 것입니다. SLH-DSA는 1회용 서명 키를 몇 차례의 서명 키로 대체하여 키가 가끔 재사용되면 보안이 서서히 저하되므로 그보다 조금 더 효율적입니다. 여전히 비용이 듭니다. SLH-DSA에는 작은 서명 크기에 맞게 최적화하는 변형과 빠른 서명에 최적화하는 변형의 두 가지 변형이 있습니다. 크기 최적화는 8kB로 전혀 작지 않으며 서명 최적화는 심지어 SQIsign보다 느립니다.</p>
+<h5>SLH-DSA의 시그니처 변형 감소</h5>
+<p>NIST에서는 <a href="https://csrc.nist.gov/pubs/sp/800/230/ipd" target="_blank" rel="noopener noreferrer"><u>제안한</u></a> 훨씬 더 작은 서명을 사용하여 SLH-DSA의 추가 매개변수 세트를 표준화하는 것을 제안했지만, 이는 보안이 약화되기 전에 약 1,600만 개의 서명을 만드는 데만 사용할 수 있습니다. 서명은 3.8kB로 여전히 ML-DSA-44의 서명보다 크지만, 공개 키와 서명을 합친 것과 거의 비슷한 크기입니다. 매개변수 집합은 서명 시간을 희생하면서 서명을 빠르게 확인하도록 선택되었습니다. 서명하는 시간이 참으로 안 좋습니다.</p>
+<h5>사용 사례</h5>
+<p>그렇다면 왜 SLH-DSA를 사용할까요? 판매 포인트는 보수적인 증권입니다. 대체하기 어려운 장기의 신뢰할 수 있는 키의 경우, 애플리케이션이 새로 제안된 변형의 표준화된 변형이나 느린 서명 시간을 감당할 수 있으면서 애플리케이션이 큰 규모의 서명과 느린 검증을 감당할 수 있다면 의미가 있을 수 있습니다. 두 가지 주의 사항을 추가해야 합니다. 첫째, 주요 알고리즘이 번인되지 않고 사후에 대체될 수 있도록 설정하는 것이 좋습니다. 둘째, 대부분의 경우 시스템(예: TLS 보안 연결)은 서명뿐만 아니라 키 합의에도 의존합니다. 해시 기반 키 합의 메커니즘이 없으므로 어쨌든 격자와 같이 덜 보수적인 것을 신뢰해야 합니다.</p>
+<h3>DN-DSA: 작은 키와 서명 / 교묘한 서명</h3>
+<p>수치를 비교하면 FL-DSA-512(née Falcon)가 더 빠른 검증, 더 작은 공개 키, 666바이트의 훨씬 더 작은 서명 등 거의 모든 메트릭에서 ML-DSA-44보다 훨씬 더 좋아 보입니다. 서명은 RSA-2048보다 3배 느리지만 여전히 25배입니다. 이미 FIPS 206으로 선택되어 있습니다. 그렇다면 FL-DSA를 범용 알고리즘으로 간주해 보겠습니다.</p>
+<p>FM-DSA 서명을 안전하게 구현하기가 어렵기 때문입니다. FN-DSA의 가장 잘 알려진 장점은 하드웨어 가속 <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic" target="_blank" rel="noopener noreferrer"><u>부동 소수점 산술</u></a>을 사용하여 가장 자연스럽고 효율적으로 구현된다는 것입니다. 암호화 표준이 도입된 것은 이번이 처음입니다. 이 방법의 큰 문제 중 하나는 우리가 부채널에서 안전한 방식으로 빠른 부동 소수점 산술을 구현한 경험이 적다는 것입니다. 지금까지 우리가 알고 있는 바로는 이 서명은 미묘하고 강력하지 않다는 것입니다. 한 프로세서에 부동 소수점 장치(FPU)를 사용하여 FB-DSA 서명을 안전하게 구현하는 것이 다른 프로세서에서는 안전하지 않을 수 있습니다. FPU에 의존하는 대신 부동 소수점 연산을 에뮬레이션할 수 있습니다. 이렇게 하면 쉽게 얻을 수 있지만 약 20배 느리므로 RSA-2048만큼 느립니다. 최근 고정 소수점 산술을 사용하여 FN-DSA 서명을 안전하게 구현하기 위한 환영할 만한 <a href="https://github.com/fixed-point-fndsa/fxp-falcon-py" target="_blank" rel="noopener noreferrer"><u>진전이 있었습니다</u></a>. 이는 부동 소수점 에뮬레이션보다 훨씬 빠릅니다. 이 부분만 사용하면 FM-DSA로 끝낼 수 있을까요? 이는 보증이 되지 않을 수 있는 인식 수준이 있다고 가정합니다. 일화적으로는 어느 컨퍼런스에서 발표자가 FM-DSA를 포함한 양자 서명 이후의 알고리즘을 벤치마크에서 비교할 때마다 발표자는 부동 소수점 에뮬레이션의 사용 여부를 파악하지 못했습니다.</p>
+<p>부동 소수점 사용의 또 다른 결과는 서명을 위한 테스트 벡터를 만들기가 어렵다는 것입니다. 한 가지 예에 불과한 것이 <em>a+(b+c)</em> 와 <em>(a+b)+c</em> 의 결과가 비슷하다는 보장만 있을 뿐 같지 않다는 것입니다. 즉, 유용한 테스트 벡터를 갖추려면 FM-DSA 사양이 부동 소수점 연산의 차수에 대해 매우 정밀해야 합니다. 또 하나의 예로는 <em>a*b+c</em>가 있으며, 이는 두 단계(곱하기 후 더하기)로 계산하거나 <a href="https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation" target="_blank" rel="noopener noreferrer"><u>융합-승산 더하기</u></a> (FMA)를 사용하여 한 번에 계산할 수 있습니다. 후자가 더 빠르지만, 반올림이 한 번만 발생하므로 다시 약간 다른 응답이 제공됩니다. 모든 프로세서가 FMA를 지원하는 것은 아니지만, 지원하는 프로세서의 경우 일반적으로 성능 향상을 위해 컴파일러가 자동으로 FMA를 사용합니다. 문제를 일으키는 수학적 최적화도 있습니다. 예를 들어, 참조 구현은 <a href="https://en.wikipedia.org/wiki/Parseval%27s_theorem" target="_blank" rel="noopener noreferrer"><u>Parseval의 정리</u></a>를 사용하여 더 빠르고 간접적인 방식으로 값(표준)을 계산합니다. 수학적으로 보면 답은 완전히 동일하지만, 부동 소수점은 추정치에 불과하므로 결과 값은 아주 약간 다릅니다. 마찬가지로, 안전한 고정 소수점 산술 구현의 결과도 약간 다릅니다.</p>
+<p>문제가 되는 이유는 무엇일까요? 실제로 대부분의 구현 버그를 포착하는 것은 아직 수수한 테스트 벡터이기 때문입니다. 공식 검증과 같은 다른 보다 정교한 방법은 분명히 더 많은 것을 포착할 수 있지만, 테스트 벡터는 단순함에서 이기기 어렵습니다.</p>
+<p>고정 구현이 없는 또 다른 놀라운 이점은 다음과 같습니다. 동일한 개인 키에서 약간 다른 구현으로 생성된 두 개의 결정론적 서명에서 해당 개인 키의 <a href="https://eprint.iacr.org/2024/1709" target="_blank" rel="noopener noreferrer"><u>일부를 도출할 수 있습니다</u></a>. DN-DSA는 결정론적 서명을 사용하지 않고 대신 이를 방지하기 위해 무작위 도구를 추가합니다. 테스트에는 긴장 관계가 있습니다. 서명을 테스트하려면 결정론적 인터페이스가 필요하지만, 실제 서명을 생성하는 데는 이를 사용하고 싶지 않기 때문입니다.</p>
+<p>FL-DSA 사양의 변화 가능성을 어떻게 처리할 것인가가 논의의 화두가 될 것입니다. 구현 간의 불일치에는 오히려 좋은 점이 있을 수도 있습니다. NIST는 고정 소수점 산술 구현으로부터 테스트 벡터(<a href="https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program" target="_blank" rel="noopener noreferrer"><u>CAVP</u></a>)를 생성하기로 결정할 수도 있습니다. 더 위험한 부동 소수점 구현이 테스트 벡터를 통과하지 못하는 것은 버그가 아니라 기능일 수 있습니다. 왜냐하면 더 안전한 고정 소수점 버전으로 구현을 이끌기 때문입니다!</p>
+<p><a href="https://keymaterial.net/2026/05/13/so-you-want-to-deploy-fn-dsa" target="_blank" rel="noopener noreferrer"><u>이 블로그 게시물</u></a>에서 몇 가지 다른 흥미로운 문제점에 대해 읽을 수 있습니다. 구체적인 세부 사항에서 돌아와서, 핵심은 DN-DSA가 복잡한 체계라는 것입니다. NIST에서 표준 초안을 작성하는 데 (현재의 불확실한 상황은 계산하지 않고) <a href="https://csrc.nist.gov/csrc/media/presentations/2025/fips-206-fn-dsa-(falcon)/images-media/fips_206-perlner_2.1.pdf" target="_blank" rel="noopener noreferrer"><u>몇 년</u></a> 이 걸린 것은 놀라운 일이 아닙니다. 최종 표준이 나오고 암호화 라이브러리에서 지원을 추가하는 데는 평소보다 시간이 더 걸릴 것으로 예상됩니다. FB-DSA는 생각보다 멀리 떨어져 있습니다. 타임라인은 이 블로그 게시물 뒷부분에서 비교해보겠습니다.</p>
+<p>숫자가 여전히 매우 유혹적이라면, 마지막으로 한 가지 유의해야 할 사항이 있습니다. FM-DSA-512는 128비트 보안으로 매개변수화되어 있어 ML-DSA-44의 넉넉한 160비트 보안에 비해 취약합니다. 격자 암호 분석이 개선되면 중간 보안 수준은 없습니다. 다음 단계는 256비트에서 FM-DSA-1024까지입니다. TN-DSA-1024는 TN-DSA-512에 비해 키와 서명 크기와 서명 및 확인 시간이 두 배로 늘어났습니다. FN-DSA-1024 서명은 여전히 ML-DSA-44 서명 크기의 절반이지만, <em>공개 키+서명</em> 은 20% 정도만 차이가 납니다.</p>
+<p>DN-DSA에 대한 논의를 마무리하면서, DN-DSA의 모든 어려움은 서명 측에 있다는 점을 강조하고 싶습니다. TN-DSA 서명을 검증하는 것은 매우 간단합니다.&nbsp;</p>
+<h2>범용 알고리즘</h2>
+<p>이제 ML-DSA의 범용 대체 알고리즘을 살펴보겠습니다.</p>
+<h3>HAWK</h3>
+<p><strong>HAWK</strong> 는 특이한 경우입니다. 여러 측면에서 FM-DSA와 유사합니다. 이 방식은 서명과 공개 키의 크기가 비슷하고 중간 보안 수준이 누락된 구조화된 격자 해시-서명 방식입니다. DN-DSA에 비해 HAWK의 주요 이점은 서명이 매우 빠르고 부동 소수점 산술을 사용하지 않는다는 것입니다. 하지만 이는 간단한 알고리즘도 아닙니다. 여기에는 하나의 타협점이 있습니다. HAWK는 이를 기반으로 하는 새로운 보안 가정인 <em>격자 동형 현상 문제 </em>(LIP)를 도입합니다. HAWK가 도입된 지 2년이 지난 2024년, HAWK나 다른 암호화에서는 사용되지 않는 완전 실수 필드라는 특수한 경우에 이 문제를 <a href="https://eprint.iacr.org/2024/441" target="_blank" rel="noopener noreferrer"><u>쉽게 풀 수 있다</u></a> 는 것이 밝혀졌습니다. 2025년에는 이 공격이 더 광범위한 숫자 필드 클래스로 <a href="https://eprint.iacr.org/2025/280.pdf" target="_blank" rel="noopener noreferrer"><u>확장되었습니다</u></a>. 아직 HAWK에는 적용되지 않았지만, 점점 더 유사해지고 있습니다. 2026년 6월에 <a href="https://eprint.iacr.org/2026/1318.pdf" target="_blank" rel="noopener noreferrer"><u>발표된</u></a> 새로운 논문에서는 공격을 HAWK로 확장하는 방법이 있음을 시사합니다. 논문에서 오류가 발견되었지만, 이것이 해당 접근 방식에 얼마나 근본적인지는 아직 불분명합니다. 어쨌든 그 궤도는 우려스럽습니다.</p>
+<p>HAWK는 잠재적인 공격을 무시하더라도, 추가적인 보안 가정으로 인해 DN-DSA를 대체하지 못하지만, 실질적인 이점(특히 중간 보안 수준이 없다는 점을 고려할 때)은 구조화된 다변량 후보보다 미치지 못하는 단점이 있습니다. 또한 NIST가 원하는 보안 가정의 다양성도 증가하지 않습니다.</p>
+<h3>지식 증명 체계</h3>
+<p>FAEST, MQOM, SDitH는 모두 유사한 전체 구조를 공유합니다. 발신자의 공개 키가 어려운 문제의 사례이고 발신자의 비밀 키가 해결책입니다.</p>
+<ul>
+	<li><strong>FAEST</strong> 공개 키는 비밀 키 아래에 있는 알려진 일반 텍스트를 AES로 암호화한 것입니다.</li>
+	<li><strong>MQOM</strong> 은 다변량 2차 문제에서 이름이 유래되었는데, 이 문제는 다변량 체계의 기초가 되는 암호화 가정과 밀접하게 관련되어 있지만, 그보다 더 보수적입니다. 공개 키 시스템은 2차 방정식이고 비밀 키는 해당 방정식 시스템의 해입니다.</li>
+	<li><strong>SDitH</strong> 는 무작위 선형 코드에 대한 신드롬 디코딩 문제의 경도에 기반합니다. 이 문제는 원래 NIST 경쟁에 제출된 코드 기반 체계와 관련이 있지만, 세 번째 라운드에서 제외되었습니다.</li>
+</ul>
+<p>모든 경우에 서명은 서명자가 이 어려운 문제의 해결책을 알고 있음을 보여주는 <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank" rel="noopener noreferrer"><u>영지식 증명</u></a> 이며, 동시에 (거의 사후에) 서명될 메시지가 증명의 일부임을 인정하는 것입니다.</p>
+<p>많은 서명 체계, 특히 ML-DSA, SQIsign, Ed25519가 이러한 막후에서 이와 같은 Zero 지식을 증명합니다. <em>지식 증명</em> 스킴을 사용하는 이들을 그룹화하는 것은 어떨까요?</p>
+<p>차이점은 일반화 가능성입니다. <a href="https://blog.cloudflare.com/lattice-crypto-primer/#warm-up" target="_blank" rel="noopener noreferrer"><u>ML-DSA에 사용되는 영지식 증명</u></a> 은 ML-DSA에 사용되는 특정 LWE 문제에 대해서만 무언가를 증명할 수 있습니다. 증명은 키의 수학적 구조를 사용합니다. 모든 일반 진술에 격자를 사용하여 영지식 증명을 만드는 <a href="https://eprint.iacr.org/2022/1341.pdf" target="_blank" rel="noopener noreferrer"><u>방법</u></a> 이 있지만, 이러한 증명 시스템은 ML-DSA와 매우 다르며 50kB 정도의 큰 서명을 생성합니다.</p>
+<p>반면, FAEST, MQOM, SDitH에서 사용되는 증명 시스템은 임의의 진술을 증명하는 데 사용할 수 있습니다. 예를 들어, FAEST를 수정하여 MQOM의 어려운 문제를 대신 사용할 수 있습니다. 이를 통해 <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>KuMQuat</u></a>이라는 보다 효율적인 체계를 사용할 수 있습니다. (일부 성능 수치에 대해서는 나중에 설명하겠습니다.) 반대로 MQOM은 AES를 어려운 문제로 사용하도록 조정할 수 있습니다.</p>
+<p>이러한 유연성이 좋은 이유는 두 가지입니다. 첫째, 사용된 어려운 문제에서 특정 수학적 구조를 필요로 하지 않으므로 AES 깨뜨리기와 같은 매우 보수적인 문제를 선택할 수 있습니다. MQOM에서 사용되는 것처럼 일부 문제는 다른 문제보다 더 효율적인 서명으로 이어집니다. MQ는 여전히 상당히 보수적인 가정입니다. UOV에 사용된 숨겨진 하위 공간과 다른 다변량 서명이 포함되어 있지 않습니다. <a href="https://blog.cloudflare.com/#multivariate-security"><u>교차 공격이나 웨지 공격</u></a> 모두 여기에 적용되지 않습니다. 사실 MQ 문제는 NP-하드입니다. 이 방식이 보안이려면 적절한 문제 규모를 골라야 하는데, MQ가 꽤 오랫동안 연구되어 왔지만, AES와 같이 배포된 알고리즘만큼 정밀한 조사를 받지는 못했습니다.</p>
+<p>두 번째이자 더 큰 이점은 일반적인 영지식 증명 시스템에서 단순한 서명 체계 그 이상을 만들 수 있다는 것입니다. <a href="https://eprint.iacr.org/2026/109.pdf" target="_blank" rel="noopener noreferrer"><u>블라인드 서명</u></a> 은 물론 본격적인 익명 자격 증명까지 만들 수 있습니다.</p>
+<p>여기서 한 가지 유의할 점이 있습니다. 세 가지 모두를 위한 증명의 크기는 진술이 입증된 만큼 선형적으로 증가한다는 것입니다. 기술적인 측면에서, 이들은 <em>STARK</em> 나 <a href="https://aszepieniec.github.io/stark-anatomy" target="_blank" rel="noopener noreferrer"><u>LaBRADOR</u></a> 처럼 <a href="https://eprint.iacr.org/2022/1341.pdf" target="_blank" rel="noopener noreferrer"><u>간결하지 않으며</u></a>, 이들은 대규모 명령문에서 이들을 훨씬 능가합니다. 이는 때때로 최적이 아닌 접근 방식을 점근적으로 선택하는 것이 더 나은 또 다른 예입니다.</p>
+<p>장점으로 돌아가서: 어려운 문제와 해시 함수의 보안성을 제외하고는 이 세 가지 체계는 추가 보안 가정이 필요하지 않습니다. 따라서 FAEST는 SLH-DSA만큼 보수적입니다.</p>
+<p>그렇다면 선택한 어려운 문제 외에는 무엇이 다를까요? 이 스킴은 아주 다르게 시작되었지만, 첫 번째 라운드 이후로 개선되면서 수렴해 왔습니다. MQOM의 증명 시스템은 FAEST보다 약간 간단하지만, 성능도 좋지 않습니다. <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>KuMQuat</u></a> (FAEST+MQ)이 MQOM보다 성능이 우수합니다.</p>
+<p>성능에 관해서는 SLH-DSA와의 비교부터 시작하겠습니다. 세 가지 체계 모두 표준화된 SLH-DSA 매개변수 세트보다 성능이 뛰어난 변이가 있는데, 이는 종종 상당한 차이가 있습니다. SLH-DSA에는 검증 루틴을 구현하기가 더 간단하다는 것이 분명한 장점이 있습니다.</p>
+<p>ML-DSA-44와 비교하는 것은 더욱 흥미롭습니다. 모든 스킴은 런타임과 서명 크기 사이에서 원활하게 균형을 잡아야 합니다. 예를 들어, 다음은 KuMQuat(FAEST+MQ.)에 대해 <a href="https://eprint.iacr.org/2024/490.pdf" target="_blank" rel="noopener noreferrer"><u>보고된</u></a> 절충안입니다. 확인 시간이 서명 시간과 비슷합니다.</p>
+<figure class="emdash-image" data-astro-cid-cqt3p7qg=""><img src="" alt="" loading="lazy" decoding="async" data-astro-cid-cqt3p7qg=""></figure>
+<p>KuMQuat는 서명(및 확인) 시간이 길어야 하지만, ML-DSA-44보다 약간 작은 서명을 갖도록 매개변수화할 수 있습니다. 다른 한편으로는 공개 키 + 서명 크기는 여전히 유사하지만, 더 큰 서명을 희생하면서 ML-DSA-44와 유사한 서명 시간을 가질 수 있습니다.</p>
+<p>이 체계는 몇 년에 걸쳐 상당히 개선되었으며, 저희는 여전히 몇 가지 개선 사항이 있을 것으로 예상합니다. 다른 체계에서 고려한 것만큼 ML-DSA를 개선하지는 않지만, 보수적인 보안, 특히 익명 자격 증명과 같은 광범위한 응용 프로그램에 대한 잠재력이 매우 매력적입니다. 기본적인 영지식 증명 시스템의 유연성을 보여주기 위해 이 카테고리의 각 체계가 서로 다른 근본적인 어려운 문제를 해결했을 때 얼마나 잘 수행되는지에 대한 수치를 표시하고 싶습니다.</p>
+<h3>구조화된 다변량: MAYO 대 SNOVA</h3>
+<p>앞서 설명한 QR-UOV와 마찬가지로 MAYO와 SNOVA는 UOV의 변종으로, 공개 키에 구조를 추가하여 크기를 줄입니다. MAYO와 SNOVA는 두 가지 서로 다른 접근 방식을 취합니다. SNOVA는 최고의 성능을 얻기 위해 공격적인 베팅을 하는 반면, MAYO는 신중하게 보수적인 설계를 적용합니다.</p>
+<p>SNOVA는 인상적인 성능을 보여줍니다. 기본 매개변수 세트에는 단 1kB의 공개 키와 함께 248바이트 서명(RSA-2048보다 작습니다!)이 있습니다. 공개 키+서명 크기에서 다른 모든 포스트 퀀텀 계획을 능가하며 런타임이 훌륭합니다.</p>
+<p>MAYO의 성능도 조롱거리가 아닙니다. MAYO<sub>one</sub> 은 검증 시간이 가장 뛰어나며 454바이트 서명은 여전히 FN-DSA-512, HAWK-512, RSA-4096보다 작습니다. 1,420바이트의 공개 키와 결합하면 MAYO<sub>one</sub> 은 FN-DSA-512 및 HAWK-512에 약간 뒤처집니다. 그러나 MAYO는 어느 정도의 보안 마진을 요청하면 다시 한 번 선두를 차지합니다. DN-DSA 및 HAWK는 중간 보안 수준이 누락되어 256비트 보안을 사용해야 하는 반면, MAYO의 세분화된 보안 기능은 공개 키와 서명 크기를 약간 늘리더라도 보안을 추가합니다.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>보안</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>공개 키&nbsp;</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>서명</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>PK + 서명</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>HAWK-1024</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>256</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,440</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,221</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,661</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>FM-DSA-1024</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>256</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,793</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,280</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,079</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>174비트 보안에서의 MAYO</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>174</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,600</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>550</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,150</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>만약 이것으로 충분하지 않은 경우, MAYO와 SNOVA 모두 서명과 공개 키 크기 사이에서 절충점을 찾을 수 있습니다. 따라서 미리 전송되는 공개 키에 대해 더 작은 서명을 얻을 수 있습니다. MAYO는 극단적으로 푸시되면 UOV가 됩니다.</p>
+<p>지금까지 성능에 대해 살펴보았습니다. 보안은 어떨까요? MAYO는 UOV 위에 '채핑(whipping)' 구조를 추가합니다. 현재까지 휘핑 구조, 특히 MAYO에 대한 공격은 발견된 적이 없습니다. 최악의 상황은 MAYO에 자연스러운 UOV 매개변수 선택으로 인해 일부 UOV 공격이 일반적인 UOV 매개변수 세트보다 일부 MAYO 변종에 더 많은 영향을 미쳤다는 점입니다.</p>
+<p>이는 SNOVA와 극명하게 대조됩니다. SNOVA는 특정 구조에서 여러 번 큰 타격을 받았습니다. 이에 대응하여 SNOVA 팀에서는 매개변수를 조정하는 데 그치지 않고 실제 구조를 지속해서 변경했습니다. 매번, 매번 도약하여 성능이 훨씬 더 좋은 새로운 SNOVA를 제안합니다. 이것을 확인했습니다 <a href="https://blog.cloudflare.com/pq-2025/#the-fight-between-mayo-versus-snova" target="_blank" rel="noopener noreferrer"><u>작년에</u></a> 그리고 패턴은 계속되었지만 MAYO의 기본 설계는 안정적입니다.</p>
+<p>또한 SNOVA에서 사용하는 구조는 MAYO에서 사용하는 휘핑 맵의 특별한 형태로 <a href="https://eprint.iacr.org/2024/1297.pdf" target="_blank" rel="noopener noreferrer"><u>볼 수도</u></a> <a href="https://eprint.iacr.org/2026/659" target="_blank" rel="noopener noreferrer"><u>있습니다</u></a>. 이는 모든 MAYO 관련 공격이 SNOVA에 적용되지만 그 반대의 경우에는 적용되지 않음을 의미합니다.</p>
+<p>결국, 다변량 보안의 이해에 많은 진전이 있었습니다. NIST는 다변량 체계를 표준화하기 전에 추가 라운드가 있을 것으로 예상한다고 <a href="https://csrc.nist.gov/pubs/ir/8610/final" target="_blank" rel="noopener noreferrer"><u>밝혔습니다</u></a>. 현명한 결정인 것 같습니다. 우리가 보기에 그때까지 SNOVA가 준비되었을지 여부는 불분명하지만, 지금까지 MAYO는 잘 성숙된 것 같습니다.</p>
+<h2>타임라인</h2>
+<p>이제 이 새로운 서명 알고리즘을 언제 사용할 수 있을지 예측해 보겠습니다.</p>
+<h3>지금까지 ML-DSA 진행 상황</h3>
+<p>ML-DSA를 살펴보는 것은 이해를 돕기 위함입니다.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>2017년 11월</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>경쟁에 제출</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2019년 1월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2차 예선 진출</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2020년 7월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3차 라운드 진출</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2022년 7월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>표준화 대상으로 선정</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2023년 8월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>초기 공개 초안</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2024년 8월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>최종 NIST 표준</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025년 10월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ML-DSA 인증서 표준(RFC 9881)</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025년 4월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>OpenSSL 3.5.0 ML-DSA에 대한 지원 추가</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025년 8월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>OpenSSL 3.5.0과 함께 출시된 Debian Trixie</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025년 12월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ML-DSA 등록을 위한 TLS IANA 코드 포인트</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2026년 3월</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ML-DSA 모듈에 대한 최초의 CMVP 인증서</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2026년 7월(예상)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>하이브리드 ML-DSA 인증서 표준</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2026년 8월(예상)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>TLS에서 ML-DSA 사용을 위한 RFC</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2027년 초(예상)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>가용한 WebPKI 최초의 ML-DSA 인증서</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>NIST에서 ML-DSA가 되기 위해 Dilitium을 선택한 후 표준에 대한 제안서 초안을 작성하는 데는 1년이 걸렸고 알고리즘 표준이 발표되는 데는 1년이 더 걸렸습니다. 알고리즘 표준만으로는 충분하지 않습니다. ML-DSA를 통합하는 방법에 프로토콜이 합의해야 합니다. 1년이 더 걸린 인증서 때문입니다. 이게 끝이 아닙니다. 소프트웨어가 ML-DSA 및 프로토콜과의 통합에 대한 지원을 추가해야 합니다.</p>
+<p>이러한 단계는 순전히 순차적으로 이루어지지 않습니다. ML-DSA의 소프트웨어 구현 작업에 대한 작업이 최종 표준 전에 시작됩니다. 또한 프로토콜 통합 표준은 최종 표준이 되기 전에 '완료'되는 경우가 많습니다. 예를 들어, TLS에서 ML-DSA 사용이 완료되었지만, 이 글을 쓰는 시점에서 RFC가 사용되려면 몇 달이 걸릴 것입니다. 특히, IANA 코드포인트가 할당되기 전에는 OpenSSL이 급증했고 ML-DSA에 대한 지원을 추가했습니다. TLS에서 어떤 하이브리드 서명을 사용해야 하는지(아니면 전혀), 어떤 하이브리드서명도(작성 시점에) IANA 코드 포인트가 할당되지 않은지에 대한 합의가 특히 누락되었습니다.</p>
+<h3>이 새로운 서명 알고리즘은 언제 사용할 수 있을까요?</h3>
+<p>그렇다면 새로운 서명 알고리즘을 활용할 수 있을까요? 만약 <strong>FN-DSA</strong> 초안이 오늘 발표되고 ML-DSA와 같은 속도로 진행된다면, 2029년 초에 초기 소프트웨어 지원이 있을 수 있지만 중요한 배포는 없을 것입니다. TN-DSA 표준 초안을 작성하는 데 걸린 시간을 살펴보면 최종 표준, 프로토콜 통합, 소프트웨어 지원도 느리게 진행될 가능성이 높습니다. FM-DSA가 2033년 이전에 널리 보급되지는 못할 것으로 예상됩니다.</p>
+<p><strong>다변량</strong> 체계에 대한 암호 분석이 진전되면서 NIST에서는 잠시 멈춰 섰습니다. NIST에서는 다변량에 적어도 약 2년이 더 걸릴 것으로 예상한다고 답했습니다. 반면에 다변량 스킴은 상당히 구현하기 쉽습니다. 즉, 2031년에 다변량 NIST 표준이 등장하고 2034년 이후로 제품 가용성이 더 넓어질 수 있습니다.</p>
+<p>NIST는 다변량보다 <strong>SQIsign</strong> 의 보안을 더 확신합니다. DN-DSA와 마찬가지로 SQIsign은 표준화하고 구현하기 어려운 체계입니다. 동시에 SQIsign을 단순화하는 데 많은 진전이 있었습니다. SQIsign은 세 번째 평가에서 큰 변화를 일으킬 것으로 보이므로 네 번째 평가가 필요할 것입니다. 두 경우 모두 2035년 이전에 가용성이 확대될 가능성은 거의 없어 보입니다.</p>
+<p><a href="https://blog.cloudflare.com/#hawk"><u>앞서 설명한</u></a> 것처럼 <strong>HAWK</strong> 는 FN-DSA와 구조화된 다변량 후보 사이에서 모호한 중간 위치를 차지합니다. 최근 암호 분석이 발전하기 전까지도 이것이 불가능해 보이는 표준화되어 있었다면 2034년 이전에 출시될 제품을 기대하지는 않았을 것입니다.</p>
+<p>따라서 <em>지식 증명</em> 알고리즘은 <strong>MQOM</strong>, <strong>SDitH</strong> 및 <strong>FAEST</strong>입니다. 여러 라운드에 걸쳐 이러한 계획이 극적으로 개선되는 것을 확인했습니다. 이 변화율이 유지되려면 또 다른 단계가 필요하겠지만, 지금이 안정적이라면 지식 증명 알고리즘이 2030년에 빛을 보게 되는 첫 번째 새로운 NIST 표준이 될 것입니다. 이렇게 일찍 출시되었다면 ML-DSA보다 성능이 크게 뛰어나지 않을 가능성이 높습니다. 그럼에도 불구하고 서명을 넘어 익명 자격 증명 및 기타 기본 사항을 구축하는 것은 여전히 환영할 일입니다.</p>
+<p>그렇다면, 포스트 퀀텀 마이그레이션을 위해 이러한 서명 중 하나를 기다려야 할까요? 최근 양자 하드웨어와 소프트웨어의 발전을 고려할 때, 더 이상 기다릴 여유가 없습니다. Cloudflare는 <a href="https://blog.cloudflare.com/post-quantum-roadmap" target="_blank" rel="noopener noreferrer"><u>2029년까지 완전히 마이그레이션</u></a>하는 것을 목표로 하고 있습니다. 이러한 서명 중 어느 것도 적시에 종료되지 않을 것입니다. 대부분의 규제 기관의 기한은 2030년부터 2035년까지 다양합니다. 여기에는 최근의 진행 상황이 고려되지 않았으므로 조정될 것으로 예상됩니다. 우리는 <a href="https://blog.cloudflare.com/post-quantum-eo-2026" target="_blank" rel="noopener noreferrer"><u>2026년 6월 미국 행정명령</u></a> 이 2031년 시한을 설정하면서 이러한 상황을 확인했습니다. 기한이 변경되지 않더라도 기다리는 것은 권장하지 않습니다.</p>
+<p>그 이유는 무엇일까요? 2034년에 포스트 퀀텀 서명을 배포하여 2035년 기한을 넘기는 것만으로는 충분하지 않습니다. 합리적인 규모의 시스템에서 모든 것을 한 번에 업그레이드할 수는 없습니다. 포스트 퀀텀 서명과 기존 서명이 모두 지원되는 과도기적 시기가 필요합니다. 그리고 두 가지를 모두 지원하면 다운그레이드 공격이 가능합니다. 이러한 다운그레이드를 방지하는 가장 간단한 방법은 기존 암호화를 비활성화하는 것입니다. 그러려면 시간이 걸릴 것이며, WebPKI처럼 충분히 분산된 여러 시스템에서는 솔직히 이 옵션이 아닙니다. 향후 블로그 게시물에서 다운그레이드에 대처하는 방법을 다룰 예정입니다. 혹시 궁금하신 분을 위해 읽어볼 만한 글이 여기 있습니다. 어쨌든 다운그레이드 상황에서는 시간이 걸릴 것입니다.</p>
+<p>이러한 새로운 포스트 퀀텀 서명 알고리즘은 첫 번째 마이그레이션에 맞추어 제때 사용할 준비가 되지 않을 것이 분명해 보입니다. 왜 그런가요?</p>
+<h3>Cloudflare가 여전히 필요한 이유</h3>
+<p>저희는 디지털 사회 전반에 공개 키 암호화를 구축하는 데 <a href="https://ee.stanford.edu/~hellman/publications/24.pdf" target="_blank" rel="noopener noreferrer"><u>50년</u></a> 의 시간을 가졌습니다. 이제 양자 보안을 모두 확보할 시간이 몇 년 남지 않았습니다. 대부분의 업그레이드에서는 절차가 명확합니다. 포스트 퀀텀 암호화가 감소합니다. 말은 쉽지 않습니다. 이는 기념비적인 작업입니다. 하지만 근본적으로 더 어려운 경우도 있습니다. 퀀텀 이후의 세계에는 올스타 시그니처가 없으며, ML-DSA의 크기가 문제가 되는 경우가 있습니다. 충분한 리소스와 이해 관계자가 동의하는 경우, 이처럼 대규모 서명에도 잘 작동하도록 시스템을 다시 설계할 수 있습니다. 실제로 지속적인 리엔지니어링 덕분에 포스트 퀀텀 WebPKI는 오늘날의 양자 취약성보다 <a href="https://blog.cloudflare.com/bootstrap-mtc" target="_blank" rel="noopener noreferrer"><u>더 나은 성능을 발휘하도록</u></a> 형성되고 있습니다. 너무 늦기 전에 모든 시스템에서 이러한 일이 일어날 것으로 기대하는 것은 비현실적입니다. 일부 기업은 성능 비용을 감수해야 합니다. 액세스 제한, 터널링, 모니터링 강화 등 비용이 많이 드는 수많은 기타 조치를 통해 보안 격차를 해결해야 하는 조직도 있습니다. 더 규모가 작은 포스트 퀀텀 서명이 도착하면 이러한 보상 제어를 제거하고 완전한 효율성 및 보안을 복구할 수 있습니다.</p>
+<p>진행 중인 NIST 경쟁의 간접적인 효과에 비해 덜 중요한 이점은 포스트 퀀텀 암호화를 기본 프리미티브를 넘어 발전시키는 데 도움이 된다는 점입니다. 키 합의 및 서명만이 양자에 취약한 것은 아닙니다. 프로덕션 환경에서는 익명의 자격 증명, Pake, 임계값 서명 등 수많은 멋진 <a href="https://github.com/fancy-cryptography/fancy-cryptography" target="_blank" rel="noopener noreferrer"><u><em> </em>암호화 기본 요소를 이용할 수 있습니다.</u></a> 대부분의 경우 포스트 퀀텀 변종은 쉽게 구할 수 없거나 충분히 연구되지 않고 있습니다. 어떤 경우에는 멋진 암호화 없이 동일한 목표를 달성할 수 있지만, 미묘한 개인정보 보호 목표를 실현하면 안타까운 퇴행을 저지를 수 있습니다. NIST에서 이러한 특정 기본 요소 각각에 대한 포스트 퀀텀 표준을 정의하기 위한 대회를 개최할 수는 없지만, 다행히도 서명 대회는 여기에서 큰 도움이 되었습니다.</p>
+<p>가장 명확한 예는 FAEST입니다. 서명 체계로 설계되었지만, 기본 메커니즘(VOLEitH)은 MAYO와 같은 다변량 체계와 함께 사용하여 효율적인 <a href="https://www.usenix.org/system/files/conference/usenixsecurity26/sec26_prepub_baum.pdf" target="_blank" rel="noopener noreferrer"><u>포스트 퀀텀 익명 자격 증명</u></a>을 생성할 수 있습니다. 서명 경쟁이 없었다면 VoleitH는 지금처럼 개발되고 검증되지 않았을 것입니다.</p>
+<p>서명과 별개로 많은 후보 스킴이 유용함을 간략하게 언급하고 있습니다. 이러한 스킴의 간접적인 적용이 더 많이 강조되기를 바랍니다.</p>
+<p>훌륭한 서명이 등장하고 더 발전된 암호화가 출시될 예정이지만, 가까운 시일 내에 보안을 유지하는 것은 당면한 과제입니다.</p>

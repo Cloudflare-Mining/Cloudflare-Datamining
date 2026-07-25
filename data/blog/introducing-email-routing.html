@@ -1,104 +1,55 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-email-routing">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-email-routing">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/introducing-email-routing">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-email-routing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ouIfgmZWC074kelzOWWxx/6864c3d581ce119fef6a3b99466acc2c/introducing-email-routing.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
+<p><em>Note: Cloudflare Email Routing is</em> <em><a href="https://blog.cloudflare.com/email-routing-open-beta">now in open Beta</a>, available to everyone. You no longer need to join a waitlist to use it.</em></p>
+<p>Over <a href="https://www.statista.com/statistics/255080/number-of-e-mail-users-worldwide" target="_blank" rel="noopener noreferrer">four billion people</a> — or half of the world’s population — have at least one email address, many of whom use it as an essential tool to stay on top of their personal and professional matters. More than 300 billion emails are sent and received every day, but seeing email as just a communications tool wouldn’t do it justice. Its impact in our lives goes far beyond being a vessel for messages — its use cases also cover being a common way of validating one’s identity online, and serving as the gateway for other communication platforms.</p>
+<p>Today, most people use their email for sensitive purposes, such as logging in to their bank account, or communicating with governmental entities. At the same time, they will use that email to sign up for a 10% off coupon they found online, which will surely spam them for months to come. Despite these two use cases being polar opposites in relation to importance and security, people take the risk, usually for the sake of conveniently managing one account.</p>
+<p>Much in the same way, businesses want to have different email addresses for different types of inquiries, such as sales and support, but often find it cumbersome to control who receives these emails. And as the business evolves, matters that were handled by the owner often need to be handed off to other people. But for <a href="https://www.cloudflare.com/small-business" target="_blank" rel="noopener noreferrer">small businesses</a> it’s not usually straightforward to configure mailboxes and aliases.</p>
+<p>And then there are countless individuals and families that juggle multiple mailboxes to handle the Internet identities that they use, to represent their various online presences.</p>
+<p>We understand these challenges, and that’s why we’re launching Cloudflare Email Routing, the most straightforward way to create any number of email addresses that are <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing" target="_blank" rel="noopener noreferrer">redirected to the mailbox</a> you, your family or your team are already using.</p>
+<h3>Cloudflare Email Routing</h3>
+<p>Cloudflare Email Routing is designed to simplify the way you create and manage email addresses, without needing to keep an eye on additional mailboxes.</p>
+<p>The process is simple:</p>
+<ol>
+	<li>You enter the email address you want to create on your domain</li>
+	<li>You enter the email address you want it forwarded to</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="103" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=715&amp;h=103&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=640&amp;h=92&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=715&amp;h=103&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=750&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=828&amp;h=119&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=1080&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=1280&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=1430&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Text boxes to type the address to create and the one to forward to." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480H0HXFJT4DXE428T1GD8.png&amp;w=1084&amp;h=156&amp;f=webp" data-lightbox-width="1084" data-lightbox-height="156" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="103" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>As some of you already know, email consists of the envelope, the header, and its body.</p>
+<p>The envelope is part of the SMTP transport protocol and tells the servers where the email is coming from and where it's supposed to be delivered.</p>
+<p>The headers contain structured information like the message traveled path, date, the sender and recipients' addresses, subject, and other technical metadata like SPF pass results, DKIM signatures, and anti-spam scores. Every time the message goes through a server, it can add new headers or modify the existing ones until it reaches the final inbox.</p>
+<p>And finally, there's the body of the message, where the actual content resides. The body can be plain text, rich HTML, it can contain file attachments, and in some cases, it can be signed or even encrypted.</p>
+<p>Here’s a simplified diagram of how the SMTP protocol works and how the three steps of an Email message fit together:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="346" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=715&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=640&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=715&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=750&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=828&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=1080&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=1280&amp;h=619&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=1430&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Simplified diagram of how the SMTP protocol works" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W1N9WW8VWN97X1E8Z92X.png&amp;w=1710&amp;h=828&amp;f=webp" data-lightbox-width="1710" data-lightbox-height="828" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="346" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare Email Routing service acts as an intelligent router at the transport layer, handling and modifying the SMTP envelope to deliver the message at its final destination but preserving the original headers and keeping the body intact. This approach ensures that things like SPF, DKIM, and other security or anti-spam protocols don't break and the recipient stays <a href="https://www.cloudflare.com/learning/dns/dns-records/protect-domains-without-email" target="_blank" rel="noopener noreferrer">protected</a>.</p>
+<p>Furthermore, following the same privacy-first approach we use in other products, we don't look into, queue, or store emails at any point. Messages are received, handled according to the configured rules, and delivered to their final destinations in real-time.</p>
+<h3>Private Beta access</h3>
+<p>Email Forwarding is now in private beta, and you can save your place in line through <a href="https://www.cloudflare.com/email-forwarding-waitlist-sign-up" target="_blank" rel="noopener noreferrer">this sign-up form</a>.</p>
+<p>Then, to start using Email Routing, all you need to do is to add your domain to <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">Cloudflare DNS</a>.</p>
+<p>If you don’t currently own a domain, you can buy one right here on our <a href="https://www.cloudflare.com/products/registrar" target="_blank" rel="noopener noreferrer">registrar</a>.</p>
+<h3>Step-by-Step Configuration</h3>
+<p>Then there are only a few steps to creating a new email address and setting up forwarding:</p>
+<ol>
+	<li>Go to the email page on the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Femail%2Foverview" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a>.</li>
+	<li>Select <strong>Configure.</strong></li>
+	<li>Enter the email address you want to create (remember, this is for <strong>your</strong> domain, so you can pick anything you like). Alternatively, you can choose to use a <em>catch-all</em> so that all possible emails addresses in your domain are considered valid and forwarded.</li>
+	<li>The DNS configuration step is automatic if you don’t have email configured for your domain. Otherwise, we provide straightforward guidance on how to best configure it for your needs.</li>
+	<li>Lastly, you just need to validate that the destination email belongs to you. Super simple, and exactly the same as you’ve done a million times before.</li>
+</ol>
+<p>We did say we made it straightforward!</p>
+<div id="html-block-k2o" class="html-block">
+	<div style="padding-top:68.57541899441341%"><iframe src="https://iframe.videodelivery.net/436e35ef19226a83471e61e0082d5487?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
-	<p><i>Note: Cloudflare Email Routing is</i> <a href="https://blog.cloudflare.com/email-routing-open-beta"><i>now in open Beta</i></a><i>, available to everyone. You no longer need to join a waitlist to use it.</i></p>
-	<p>Over <a href="https://www.statista.com/statistics/255080/number-of-e-mail-users-worldwide" target="_blank" rel="noopener noreferrer">four billion people</a> — or half of the world’s population — have at least one email address, many of whom use it as an essential tool to stay on top of their personal and professional matters. More than 300 billion emails are sent and received every day, but seeing email as just a communications tool wouldn’t do it justice. Its impact in our lives goes far beyond being a vessel for messages — its use cases also cover being a common way of validating one’s identity online, and serving as the gateway for other communication platforms.</p>
-	<p>Today, most people use their email for sensitive purposes, such as logging in to their bank account, or communicating with governmental entities. At the same time, they will use that email to sign up for a 10% off coupon they found online, which will surely spam them for months to come. Despite these two use cases being polar opposites in relation to importance and security, people take the risk, usually for the sake of conveniently managing one account.</p>
-	<p>Much in the same way, businesses want to have different email addresses for different types of inquiries, such as sales and support, but often find it cumbersome to control who receives these emails. And as the business evolves, matters that were handled by the owner often need to be handed off to other people. But for <a href="https://www.cloudflare.com/small-business" target="_blank" rel="noopener noreferrer">small businesses</a> it’s not usually straightforward to configure mailboxes and aliases.</p>
-	<p>And then there are countless individuals and families that juggle multiple mailboxes to handle the Internet identities that they use, to represent their various online presences.</p>
-	<p>We understand these challenges, and that’s why we’re launching Cloudflare Email Routing, the most straightforward way to create any number of email addresses that are <a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing" target="_blank" rel="noopener noreferrer">redirected to the mailbox</a> you, your family or your team are already using.</p>
-	<div class="flex anchor relative">
-		<h3 id="cloudflare-email-routing">Cloudflare Email Routing</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-email-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Email Routing is designed to simplify the way you create and manage email addresses, without needing to keep an eye on additional mailboxes.</p>
-	<p>The process is simple:</p>
-	<ol>
-		<li>
-			<p>You enter the email address you want to create on your domain</p>
-		</li>
-		<li>
-			<p>You enter the email address you want it forwarded to</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6E8ZYEuNNh10CJ1efw187m/e4c07f6a07494483c75d727183a6271c/image1-33.png" alt="Text boxes to type the address to create and the one to forward to." class="kg-image" width="1084" height="156" loading="lazy">
-
-	</figure>
-	<p>As some of you already know, email consists of the envelope, the header, and its body.</p>
-	<p>The envelope is part of the SMTP transport protocol and tells the servers where the email is coming from and where it's supposed to be delivered.</p>
-	<p>The headers contain structured information like the message traveled path, date, the sender and recipients' addresses, subject, and other technical metadata like SPF pass results, DKIM signatures, and anti-spam scores. Every time the message goes through a server, it can add new headers or modify the existing ones until it reaches the final inbox.</p>
-	<p>And finally, there's the body of the message, where the actual content resides. The body can be plain text, rich HTML, it can contain file attachments, and in some cases, it can be signed or even encrypted.</p>
-	<p>Here’s a simplified diagram of how the SMTP protocol works and how the three steps of an Email message fit together:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62d9wOWIhSHT8G8RAL6CDW/3ed756ad38d8f0dcde734bc7ae4ce46f/unnamed.png" alt="Simplified diagram of how the SMTP protocol works" class="kg-image" width="1710" height="828" loading="lazy">
-
-	</figure>
-	<p>Cloudflare Email Routing service acts as an intelligent router at the transport layer, handling and modifying the SMTP envelope to deliver the message at its final destination but preserving the original headers and keeping the body intact. This approach ensures that things like SPF, DKIM, and other security or anti-spam protocols don't break and the recipient stays <a href="https://www.cloudflare.com/learning/dns/dns-records/protect-domains-without-email" target="_blank" rel="noopener noreferrer">protected</a>.</p>
-	<p>Furthermore, following the same privacy-first approach we use in other products, we don't look into, queue, or store emails at any point. Messages are received, handled according to the configured rules, and delivered to their final destinations in real-time.</p>
-	<div class="flex anchor relative">
-		<h3 id="private-beta-access">Private Beta access</h3>
-		<a href="https://blog.cloudflare.com/#private-beta-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Email Forwarding is now in private beta, and you can save your place in line through <a href="https://www.cloudflare.com/email-forwarding-waitlist-sign-up" target="_blank" rel="noopener noreferrer">this sign-up form</a>.</p>
-	<p>Then, to start using Email Routing, all you need to do is to add your domain to <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">Cloudflare DNS</a>.</p>
-	<p>If you don’t currently own a domain, you can buy one right here on our <a href="https://www.cloudflare.com/products/registrar" target="_blank" rel="noopener noreferrer">registrar</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="step-by-step-configuration">Step-by-Step Configuration</h3>
-		<a href="https://blog.cloudflare.com/#step-by-step-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Then there are only a few steps to creating a new email address and setting up forwarding:</p>
-	<ol>
-		<li>
-			<p>Go to the email page on the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Femail%2Foverview" target="_blank" rel="noopener noreferrer">Cloudflare dashboard</a>.</p>
-		</li>
-		<li>
-			<p>Select <b>Configure.</b></p>
-		</li>
-		<li>
-			<p>Enter the email address you want to create (remember, this is for <b>your</b> domain, so you can pick anything you like). Alternatively, you can choose to use a <i>catch-all</i> so that all possible emails addresses in your domain are considered valid and forwarded.</p>
-		</li>
-		<li>
-			<p>The DNS configuration step is automatic if you don’t have email configured for your domain. Otherwise, we provide straightforward guidance on how to best configure it for your needs.</p>
-		</li>
-		<li>
-			<p>Lastly, you just need to validate that the destination email belongs to you. Super simple, and exactly the same as you’ve done a million times before.</p>
-		</li>
-	</ol>
-	<p>We did say we made it straightforward!</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 68.57541899441341%;"><iframe src="https://iframe.videodelivery.net/436e35ef19226a83471e61e0082d5487?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: html-->
-	<p>With efficiency and simplicity in mind, we're launching Email Routing with support for multiple rules and message forwarding to any upstream inbox of your choice.</p>
-	<p>However, we feel like the email scene has been long-dormant, and we have exciting new features coming soon that take advantage of the Cloudflare platform, resources, and know-how.</p>
-	<p>We're also listening. If you have questions, suggestions, or new ideas, share them in the <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">community forum</a>. We'll be around.</p>
-	<p>To start using Cloudflare Email Routing just join the waitlist today through <a href="https://www.cloudflare.com/email-forwarding-waitlist-sign-up" target="_blank" rel="noopener noreferrer">this form</a>. We will be opening up this <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services" target="_blank" rel="noopener noreferrer">service</a> to more users on a daily basis, and promise the short wait will be worth it!</p>
-	<p>If you want to read more, refer to our <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
-	<p>
-	</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/a2aa734006f53ae233cf234a6a3b8203?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
+</div>
+<p>With efficiency and simplicity in mind, we're launching Email Routing with support for multiple rules and message forwarding to any upstream inbox of your choice.</p>
+<p>However, we feel like the email scene has been long-dormant, and we have exciting new features coming soon that take advantage of the Cloudflare platform, resources, and know-how.</p>
+<p>We're also listening. If you have questions, suggestions, or new ideas, share them in the <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">community forum</a>. We'll be around.</p>
+<p>To start using Cloudflare Email Routing just join the waitlist today through <a href="https://www.cloudflare.com/email-forwarding-waitlist-sign-up" target="_blank" rel="noopener noreferrer">this form</a>. We will be opening up this <a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services" target="_blank" rel="noopener noreferrer">service</a> to more users on a daily basis, and promise the short wait will be worth it!</p>
+<p>If you want to read more, refer to our <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
+<p><br></p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k3f" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/a2aa734006f53ae233cf234a6a3b8203?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

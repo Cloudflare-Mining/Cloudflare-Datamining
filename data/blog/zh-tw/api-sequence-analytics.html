@@ -1,0 +1,292 @@
+<p>今天，我們推出了適用於 API 的 Cloudflare 序列分析。透過序列分析，訂閱 <a href="https://developers.cloudflare.com/api-shield" target="_blank" rel="noopener noreferrer">API Gateway</a> 的客戶就能夠檢視對其端點最重要的 API 呼叫序列。這項新功能可協助客戶<a href="https://www.cloudflare.com/learning/security/api/what-is-an-api-gateway" target="_blank" rel="noopener noreferrer">將保護功能優先套用</a>至最重要的端點。</p>
+<p>什麼是序列？簡單地說，序列就是特定訪客在瀏覽網站、使用行動應用程式或透過 API 與 B2B 合作夥伴互動時所發出之 HTTP API 請求的時間順序清單。例如，在銀行資金轉帳期間所執行之序列的一部分可能如下所示：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-kd" class="html-block">
+	<style>
+		#html-block-kd .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-kd .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kd .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kd .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kd .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Order</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Method</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Path</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/users/{user_id}/accounts</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">user_id is the active user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is one of the user’s accounts</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is a different account belonging to the user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Containing a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>順序</p>
+<p>方式</p>
+<p>路徑</p>
+<p>描述</p>
+<p>1</p>
+<p>GET</p>
+<div id="html-block-kq" class="html-block">
+	<style>
+		#html-block-kq .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-kq .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kq .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kq .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kq .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kq .tg .tg-5frq {
+			font-style: italic;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-kq .tg .tg-8zwo {
+			font-style: italic;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Order</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Method</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Path</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/users/{user_id}/accounts</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">user_id is the active user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is one of the user’s accounts</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GET</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/accounts/{account_id}/balance</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">account_id is a different account belonging to the user</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Containing a request body detailing an account to transfer funds from, an account to transfer funds to, and an amount of money to transfer</span></td>
+			</tr>
+			<tr>
+				<td class="tg-5frq" colspan="4"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">… attacker copies the request to a debugging tool like Postman …</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Attacker has modified the POST body to try and trick the API</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A further modified POST body to try and trick the API</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">POST</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">/api/v1/transferFunds</span></td>
+				<td class="tg-8zwo"><span style="font-weight:400;font-style:italic;text-decoration:none;color:#000;background-color:transparent">Another</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">, further modified POST body to try and trick the API</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>/api/v1/users/{user_id}/accounts</p>
+<p>user_id 是活躍使用者</p>
+<p>2</p>
+<p>GET</p>
+<p>/api/v1/accounts/{account_id}/balance</p>
+<p>account_id 是其中一個使用者帳戶</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1719 Embedded Image - YG5i6t" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TSMEJ9DT1W3BPDQEYVV8.png&amp;w=826&amp;h=511&amp;f=webp" data-lightbox-width="826" data-lightbox-height="511" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>3</p>
+<p>GET</p>
+<p>/api/v1/accounts/{account_id}/balance</p>
+<p>account_id 是屬於使用者的不同帳戶</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="642" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=715&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=640&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=715&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=750&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=828&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=1080&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=1280&amp;h=1149&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=1430&amp;h=1284&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1719 Embedded Image - SEJzAB" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CAYYMVHMF2YJSR5YH273.png&amp;w=1920&amp;h=1723&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1723" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="642" class="pt-portable-image-media"></div>
+</figure>
+<p>4</p>
+<p>POST</p>
+<p>/api/v1/transferFunds</p>
+<p>包含一個請求正文，其中詳細說明了要從中轉移資金的帳戶、要向其轉移資金的帳戶以及要轉移的金額</p>
+<p>為什麼關注 API 安全性的序列很重要？如果上述 API 在收到 POST /api/v1/transferFunds 請求之前未收到前面的任何請求，則會很可疑。想一想：API 用戶端如何在不列出使用者的相關帳戶 ID 情況下得知相關資訊？API 用戶端如何得知有多少資金可供轉帳？雖然此範例可能很明顯，但對任何特定生產性 API 的海量 API 請求可能使分析人員難以發現可疑的使用情況。</p>
+<p>在安全方面，防禦無法由人類團隊篩選之海量威脅的其中一種方法是建立_正面安全性模型_。依預設，您將允許所有已知的安全或良性流量並阻止其他所有流量，而不是嘗試阻止所有可能構成威脅的內容。</p>
+<p>客戶可能已經在兩個主要領域使用 API 閘道建立正面安全性模型： <a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection" target="_blank" rel="noopener noreferrer">大規模濫用防護</a>和<a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">結構描述驗證</a>。序列將構成 API 流量正面安全性模型的第三個支柱。API 閘道將能夠在任何指定 API 序列中強制實施端點的優先順序。透過在 API 序列中建立優先順序，API 閘道將記錄或阻止任何不符合預期的流量，從而減少濫用流量。</p>
+<h3>依序列偵測濫用</h3>
+<p>當攻擊者試圖以濫用方式使資料外流時，很少會遵循預期的 API 流量模式。攻擊通常使用特殊軟體來<a href="https://owasp.org/www-community/Fuzzing" target="_blank" rel="noopener noreferrer">「模糊」</a>API，傳送具有不同請求參數的多個請求，以期從 API 中找到指示資料外流機會的意外回應。攻擊者還可以手動傳送請求至 API，試圖誘騙 API 執行未經授權的動作，例如透過<a href="https://github.com/OWASP/API-Security/blob/master/2019/en/src/0xa1-broken-object-level-authorization.md" target="_blank" rel="noopener noreferrer">損壞的物件層級驗證 (Broken Object Level Authentication) 攻擊</a>授予攻擊者更高的權限或資料存取權。利用速率限制保護 API 是一種常見的最佳做法；但是，在上述兩個範例中，攻擊者可能會故意緩慢執行請求序列，以試圖阻止大規模濫用偵測。</p>
+<p>再次考慮上面的請求序列，但這次假設攻擊者複製合法的資金轉帳請求並修改請求有效負載以試圖欺騙系統：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-5frq{font-style:italic;text-align:center;vertical-align:top} .tg .tg-8zwo{font-style:italic;text-align:left;vertical-align:top}</p>
+<p>順序</p>
+<p>方式</p>
+<p>路徑</p>
+<p>描述</p>
+<p>1</p>
+<p>GET</p>
+<p>/api/v1/users/{user_id}/accounts</p>
+<p>user_id 是活躍使用者</p>
+<p>2</p>
+<p>GET</p>
+<p>/api/v1/accounts/{account_id}/balance</p>
+<p>account_id 是其中一個使用者帳戶</p>
+<p>3</p>
+<p>GET</p>
+<p>/api/v1/accounts/{account_id}/balance</p>
+<p>account_id 是屬於使用者的不同帳戶</p>
+<p>4</p>
+<p>POST</p>
+<p>/api/v1/transferFunds</p>
+<p>包含一個請求正文，其中詳細說明了要從中轉移資金的帳戶、要向其轉移資金的帳戶以及要轉移的金額</p>
+<p>… 攻擊者將請求複製到偵錯工具，如 Postman …</p>
+<p>5</p>
+<p>POST</p>
+<p>/api/v1/transferFunds</p>
+<p>攻擊者修改了 POST 正文以試圖欺騙 API</p>
+<p>6</p>
+<p>POST</p>
+<p>/api/v1/transferFunds</p>
+<p>進一步修改 POST 正文以試圖欺騙 API</p>
+<p>7</p>
+<p>POST</p>
+<p>/api/v1/transferFunds</p>
+<p>又進一步修改了 POST 正文以試圖欺騙 API</p>
+<p>如果客戶事先知道資金轉帳端點對於保護至關重要，並且在一個序列中只會發生一次，他們就可以編寫規則來確保永遠不會連續呼叫兩次，並且 GET /balance 一律優先於 POST /transferFunds。但是，如果事先不知道哪些端點序列對於保護至關重要， 客戶如何才能知道要定義哪些規則？低速率限制風險太大，因為 API 使用者可能會合法地在短時間內執行多個資金轉帳請求。在現實中，能夠防止此類濫用的工具很少，大多數客戶在濫用發生後只能被動地與應用程式團隊和防欺詐部門一起清理濫用行為。</p>
+<p>最終，我們認為，要讓客戶能夠定義關於 API 請求序列的正面安全性模型，需要採取三管齊下的方法：</p>
+<ol>
+	<li><strong>序列分析</strong>：判定 API 請求的哪些序列發生以及何時發生，並將資料匯總為易於理解的表單。</li>
+	<li><strong>序列濫用偵測</strong>：判定哪些 API 請求序列可能是良性或惡意來源。</li>
+	<li><strong>序列緩解</strong>：判定有關 API 請求序列的相關規則，以決定允許或阻止哪些流量。</li>
+</ol>
+<h3>建立序列時可能遇到的挑戰</h3>
+<p>序列分析帶來了一些比較難以解決的技術挑戰，因為工作階段可能存留很長時間，並且可能包含很多請求。因此，僅透過工作階段識別碼來定義序列還不夠。因此，我們有必要開發一種能夠自動識別特定工作階段中發生的多個序列的解決方案。此外，由於重要序列不一定僅以容量為特性，並且可能的序列集會很大，因此有必要開發一種能夠識別_重要_序列的解決方案，而不是簡單地呈現_頻繁_執行的序列。</p>
+<p>為了幫助使用 api.cloudflare.com 範例說明這些挑戰，我們可以按工作階段對 API 請求進行分組，並標繪出不同序列的數量與序列長度的關係：</p>
+<p>我們將基於一個小時的快照進行標繪，其中包含大約 88,000 個工作階段和 2.6 億個 API 請求，具有 301 個不同的 API 端點。我們對每個工作階段套用固定長度的滑動視窗，然後計算由於套用滑動視窗而觀察到之不同固定長度序列的總數（「n-grams」），以此來處理資料。繪圖中將顯示視窗大小（「n-gram length」）在 1 到 10 個請求之間變化的結果。不同序列範圍的的數量從 301（1 個請求的視窗大小）到約 780,000（10 請求的視窗大小）。根據繪圖，我們觀察到大量可能的序列，這些序列隨著序列長度的增大而成長：隨著滑動視窗大小的增加，我們看到範例中有越來越多的不同序列。平滑趨勢可以由以下事實來解釋：我們套用了滑動視窗（工作階段本身可能包含許多序列）並與相對於序列長度的大量長工作階段相結合。</p>
+<p>鑑於可能的序列數量眾多，嘗試找到濫用序列簡直就是「大海撈針」。</p>
+<h3>序列分析簡介</h3>
+<p>下面是 API 閘道儀表板的螢幕截圖，其中突出顯示了序列分析：</p>
+<p>讓我們來詳細了解螢幕截圖中看到的新功能。</p>
+<p>API 閘道使用前文所述的方法智慧地判定 API 使用者發出的請求序列。API 閘道按照我們稱為相關性分數的指標對序列進行評分。序列分析按最高相關性分數顯示前 20 個序列，我們將這些序列稱為最重要的序列。高重要性序列包含可能按順序一起發生的 API 請求。</p>
+<p>您應該檢查每個序列以了解序列的相關性分數。相關性分數較高的序列可能包含很少使用的端點（潛在的異常使用者行為）以及常用的端點（可能是良性使用者行為）。由於在這些序列中找到的端點通常一起出現，因此可以代表 API 的真實使用模式。您應將所有可能的 API 閘道保護措施套用於這些端點（<a href="https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection" target="_blank" rel="noopener noreferrer">速率限制建議</a>、<a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">結構描述驗證</a>、<a href="https://developers.cloudflare.com/api-shield/security/jwt-validation" target="_blank" rel="noopener noreferrer">JWT 驗證</a>和 <a href="https://developers.cloudflare.com/api-shield/security/mtls" target="_blank" rel="noopener noreferrer">mTLS</a>），並與開發團隊一起檢查特定的端點順序。</p>
+<p>我們知道，客戶希望在現今 API 閘道提供的主動保護之外，對其 API 明確地設定允許的行為。我們即將發佈序列優先順序規則，並實現基於這些規則阻止請求的功能。新的序列優先順序規則將允許客戶為允許的 API 請求指定確切順序，從而提供另一種建立正面安全性模型的方法，以保護您的 API 免遭未知威脅。</p>
+<h3>如何開始使用</h3>
+<p>所有 API Gateway 客戶現在都可以存取序列分析。導覽到 Cloudflare 儀表板中的區域，然後按一下「安全性」索引標籤 &gt;「API 閘道」索引標籤 &gt;「序列」索引標籤。您將看到 API 使用者請求的最重要序列。</p>
+<p>尚未購買 API 閘道的企業客戶可以在 Cloudflare 儀表板中<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fpage-shield" target="_blank" rel="noopener noreferrer">啟用 API 閘道試用版</a>或聯絡客戶經理以開始使用。</p>
+<h3>下一步驟</h3>
+<p>基於序列的偵測是一項強大而獨特的功能，可解鎖大量識別和阻止攻擊的新機會。隨著我們調整了識別這些序列並將其部署到全球網路的方法，我們將在未來推出自訂序列匹配和即時緩解功能。我們還將確保您擁有可執行的情報，以便向您的團隊報告試圖請求與原則不相符之序列的 API 使用者。</p>

@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "Reducing double spend latency from 40 ms to < 1 ms on privacy proxy",
+	"url": "https://blog.cloudflare.com/reducing-double-spend-latency-from-40-ms-to-less-than-1-ms-on-privacy-proxy/",
+	"datePublished": "2025-08-05T13:00:00.000Z",
+	"dateModified": "2026-07-15T14:24:07.067Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW46G5B0Z2AEYR87FYZ4NJWD.png",
+	"description": "We significantly sped up our privacy proxy service by fixing a 40ms delay in \"double-spend\" checks. The issue stemmed from how Nagle's algorithm and delayed ACKs interacted with a third-party dependency."
+}

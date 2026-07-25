@@ -1,66 +1,28 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MiOEJBhOTIMXWzF4Xf0oh/2b2fa165f2b5bf007ddbd25c67dea053/node-js-support-cloudflare-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>We released Cloudflare Workers three years ago, making edge compute accessible to the masses with native support for the world’s most ubiquitous language — JavaScript.</p>
-	<p>The Workers platform has transformed so much since its launch. Developers can not only write sandboxed code at our edge, they can also store data at the edge with Workers KV and, more recently, coordinate state within our giant network using <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>. Now, we’re excited to share our support of an 11 year old technology that’s still going strong: Node.js.</p>
-	<p>Node.js made a breakthrough by enabling developers to build both the frontend and the backend with a single language. It took JavaScript beyond the browser and into the server by using Chrome’s JavaScript engine, V8.</p>
-	<p>Workers is also built on V8 <a href="https://developers.cloudflare.com/workers/learning/how-workers-works#isolates" target="_blank" rel="noopener noreferrer">Isolates</a> and empowers developers in a similar way by allowing you to create entire applications with only JavaScript — except your code runs across Cloudflare’s data centers in over 100 countries.</p>
-	<div class="flex anchor relative">
-		<h2 id="our-package-support-today">Our Package Support Today</h2>
-		<a href="https://blog.cloudflare.com/#our-package-support-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There is nothing more satisfying than importing a library and watching your code magically work out-of-the-box.</p>
-	<p>For over <a href="https://www.npmjs.com/package/webpack?activeTab=dependents" target="_blank" rel="noopener noreferrer">20k packages</a>, Workers supports this magic already: <i>any Node.js package that uses webpack or another polyfill bundler runs within our environment today</i>. You can get started with the greatest hits packages like <a href="https://github.com/cisco/node-jose" target="_blank" rel="noopener noreferrer">node-jose</a> for encryption, <a href="https://github.com/kwhitley/itty-router" target="_blank" rel="noopener noreferrer">itty-router</a> for routing, <a href="https://www.npmjs.com/package/graphql" target="_blank" rel="noopener noreferrer">graphql</a> for querying your API, and so much more.</p>
-	<p>And rather than finding out by trial and error, we made a <a href="https://workers.cloudflare.com/works" target="_blank" rel="noopener noreferrer">catalogue of libraries</a> that you can rely on. All you have to do is pick one and boom: it runs.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2IlWAw0CyBBZuB9PVNTBn7/03e2a631cc586e12c0c01a279b778598/image1-26.png" alt="" class="kg-image" width="1068" height="770" loading="lazy">
-
-	</figure>
-	<p>Once you select a package, you can use webpack to bundle it all up with our <a href="https://developers.cloudflare.com/workers/cli-wrangler/webpack" target="_blank" rel="noopener noreferrer">wrangler CLI</a> and deploy onto Workers. Webpack is a module bundler that takes your JavaScript files, including third-party dependencies, and makes them usable in the browser.</p>
-	<p>For an example of bundling dependencies in action, see this <a href="https://www.gatsbyjs.com/docs/deploying-to-cloudflare-workers" target="_blank" rel="noopener noreferrer">example</a> of getting started with Gatsby.</p>
-	<div class="flex anchor relative">
-		<h2 id="our-next-steps">Our Next Steps</h2>
-		<a href="https://blog.cloudflare.com/#our-next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="increasing-worker-sizes">Increasing Worker sizes</h3>
-		<a href="https://blog.cloudflare.com/#increasing-worker-sizes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Using webpack can get you far, but that can cause the Worker to exceed the size limit quickly. Node.js was designed with the assumption that servers, unlike the client, are amenable to code bloat, resulting in an ecosystem of packages that are generous in size.</p>
-	<p>We plan to support raising the 1MB size limit for Workers soon, so users don’t have to worry about the size of their dependencies. Please share what you’re building in the <a href="https://discord.gg/wdycq7r6Y9" target="_blank" rel="noopener noreferrer">Workers Unbound channel</a> of our Discord if you’d like that limit raised.</p>
-	<div class="flex anchor relative">
-		<h3 id="supporting-native-apis">Supporting Native APIs</h3>
-		<a href="https://blog.cloudflare.com/#supporting-native-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>But why stop there? We want to go even further and support the most important modules, even if they do rely on native code. Our approach will be to reimplement supported modules and polyfill package functionality directly into the Workers runtime. This doesn’t mean we’re shifting our runtime to run on Node.js. In fact, here are two important security and design reasons why we are not:</p>
-	<ul>
-		<li>
-			<p>Node.js was not designed to be a sandbox, which was made apparent by their <a href="https://nodejs.org/api/vm.html#vm_vm_executing_javascript" target="_blank" rel="noopener noreferrer">vm module</a> that says “do not use it to run untrusted code.”</p>
-		</li>
-		<li>
-			<p>For proper sandboxing, Node.js would’ve forced us to build a container-based runtime that both doesn’t scale and isn’t as performant as Isolates. Without containers, we were able to design a system that has 0ms cold starts.</p>
-		</li>
-	</ul>
-	<p>However, there are other ways we can be Node.js compatible without necessarily supporting the entire runtime. What’s up first? We’ll support Stripe.js SDK and Twilio Client JS SDK. We’ll also build support for the net module, so you can run popular database libraries.</p>
-	<p>But we want to hear from you! We created a <a href="https://workers.cloudflare.com/node" target="_blank" rel="noopener noreferrer"><b>leadership board</b></a> for you to vote on which popular libraries/APIs matter the most. Are statistics packages your jam? Do you need an email utility? What about a templating engine? We want to hear directly from you.</p>
-	<p>We won’t stop until our users can import popular Node.js libraries seamlessly. This effort will be large-scale and ongoing for us, but we think it’s well worth it.</p>
-	<p>We’re excited to support developers as they build all types of applications. We look forward to hearing from <a href="https://workers.cloudflare.com/node" target="_blank" rel="noopener noreferrer"><b>you</b></a>!</p>
-</div>
+<p>We released Cloudflare Workers three years ago, making edge compute accessible to the masses with native support for the world’s most ubiquitous language — JavaScript.</p>
+<p>The Workers platform has transformed so much since its launch. Developers can not only write sandboxed code at our edge, they can also store data at the edge with Workers KV and, more recently, coordinate state within our giant network using <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>. Now, we’re excited to share our support of an 11 year old technology that’s still going strong: Node.js.</p>
+<p>Node.js made a breakthrough by enabling developers to build both the frontend and the backend with a single language. It took JavaScript beyond the browser and into the server by using Chrome’s JavaScript engine, V8.</p>
+<p>Workers is also built on V8 <a href="https://developers.cloudflare.com/workers/learning/how-workers-works#isolates" target="_blank" rel="noopener noreferrer">Isolates</a> and empowers developers in a similar way by allowing you to create entire applications with only JavaScript — except your code runs across Cloudflare’s data centers in over 100 countries.</p>
+<h2>Our Package Support Today</h2>
+<p>There is nothing more satisfying than importing a library and watching your code magically work out-of-the-box.</p>
+<p>For over <a href="https://www.npmjs.com/package/webpack?activeTab=dependents" target="_blank" rel="noopener noreferrer">20k packages</a>, Workers supports this magic already: <em>any Node.js package that uses webpack or another polyfill bundler runs within our environment today</em>. You can get started with the greatest hits packages like <a href="https://github.com/cisco/node-jose" target="_blank" rel="noopener noreferrer">node-jose</a> for encryption, <a href="https://github.com/kwhitley/itty-router" target="_blank" rel="noopener noreferrer">itty-router</a> for routing, <a href="https://www.npmjs.com/package/graphql" target="_blank" rel="noopener noreferrer">graphql</a> for querying your API, and so much more.</p>
+<p>And rather than finding out by trial and error, we made a <a href="https://workers.cloudflare.com/works" target="_blank" rel="noopener noreferrer">catalogue of libraries</a> that you can rely on. All you have to do is pick one and boom: it runs.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-483 Embedded Image - 7TQMMb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW456HDMD2NPXYZY2F0Q047G.png&amp;w=1068&amp;h=770&amp;f=webp" data-lightbox-width="1068" data-lightbox-height="770" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Once you select a package, you can use webpack to bundle it all up with our <a href="https://developers.cloudflare.com/workers/cli-wrangler/webpack" target="_blank" rel="noopener noreferrer">wrangler CLI</a> and deploy onto Workers. Webpack is a module bundler that takes your JavaScript files, including third-party dependencies, and makes them usable in the browser.</p>
+<p>For an example of bundling dependencies in action, see this <a href="https://www.gatsbyjs.com/docs/deploying-to-cloudflare-workers" target="_blank" rel="noopener noreferrer">example</a> of getting started with Gatsby.</p>
+<h2>Our Next Steps</h2>
+<h3>Increasing Worker sizes</h3>
+<p>Using webpack can get you far, but that can cause the Worker to exceed the size limit quickly. Node.js was designed with the assumption that servers, unlike the client, are amenable to code bloat, resulting in an ecosystem of packages that are generous in size.</p>
+<p>We plan to support raising the 1MB size limit for Workers soon, so users don’t have to worry about the size of their dependencies. Please share what you’re building in the <a href="https://discord.gg/wdycq7r6Y9" target="_blank" rel="noopener noreferrer">Workers Unbound channel</a> of our Discord if you’d like that limit raised.</p>
+<h3>Supporting Native APIs</h3>
+<p>But why stop there? We want to go even further and support the most important modules, even if they do rely on native code. Our approach will be to reimplement supported modules and polyfill package functionality directly into the Workers runtime. This doesn’t mean we’re shifting our runtime to run on Node.js. In fact, here are two important security and design reasons why we are not:</p>
+<ul>
+	<li>Node.js was not designed to be a sandbox, which was made apparent by their <a href="https://nodejs.org/api/vm.html#vm_vm_executing_javascript" target="_blank" rel="noopener noreferrer">vm module</a> that says “do not use it to run untrusted code.”</li>
+	<li>For proper sandboxing, Node.js would’ve forced us to build a container-based runtime that both doesn’t scale and isn’t as performant as Isolates. Without containers, we were able to design a system that has 0ms cold starts.</li>
+</ul>
+<p>However, there are other ways we can be Node.js compatible without necessarily supporting the entire runtime. What’s up first? We’ll support Stripe.js SDK and Twilio Client JS SDK. We’ll also build support for the net module, so you can run popular database libraries.</p>
+<p>But we want to hear from you! We created a <a href="https://workers.cloudflare.com/node" target="_blank" rel="noopener noreferrer"><strong>leadership board</strong></a> for you to vote on which popular libraries/APIs matter the most. Are statistics packages your jam? Do you need an email utility? What about a templating engine? We want to hear directly from you.</p>
+<p>We won’t stop until our users can import popular Node.js libraries seamlessly. This effort will be large-scale and ongoing for us, but we think it’s well worth it.</p>
+<p>We’re excited to support developers as they build all types of applications. We look forward to hearing from <a href="https://workers.cloudflare.com/node" target="_blank" rel="noopener noreferrer"><strong>you</strong></a>!</p>

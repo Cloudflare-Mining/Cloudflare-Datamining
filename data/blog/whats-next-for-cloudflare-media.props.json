@@ -1,266 +1,65 @@
 {
-	"footerBlurb": "<span></span>",
-	"initialReadingTime": "4",
+	"initialReadingTime": "5",
 	"locale": "en-us",
-	"localesAvailable": [],
 	"post": {
 		"authors": [
 			{
 				"name": "Deanna Lam",
-				"slug": "deanna",
-				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eGiJ4EopefC4KhjH4khYQ/526640356ab514827ac816ee0708edbb/deanna.jpg",
-				"location": null,
-				"website": null,
-				"twitter": null,
-				"facebook": null,
-				"publiclyIndex": true
+				"slug": "deanna"
 			},
 			{
 				"name": "Taylor Smith",
-				"slug": "tsmith",
-				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6FeCG1X2NGusCwWiMYDUW/e7e9bb9563dff808944171181243753b/tsmith.jpg",
-				"location": "Austin, TX",
-				"website": null,
-				"twitter": null,
-				"facebook": null,
-				"publiclyIndex": true
+				"slug": "tsmith"
 			},
 			{
 				"name": "Zaid Farooqui",
-				"slug": "zaid",
-				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6sLWDXefS5m1hkizzB9c9Q/600a5746383b4a6c07a2f7f735531998/zaid.png",
-				"location": "San Francisco, CA",
-				"website": null,
-				"twitter": "@zaid",
-				"facebook": null,
-				"publiclyIndex": true
+				"slug": "zaid"
 			}
 		],
 		"excerpt": "With Cloudflare Calls in open beta, you can build real-time, serverless video and audio applications. Cloudflare Stream lets your viewers instantly clip from ongoing streams",
-		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3RlCPrxLouovIdx0OKofmL/faa236d8d7d0a1c0f664f0731bc5af38/whats-next-for-cloudflare-media.png",
-		"featured": false,
-		"html": "<p></p><p>Our customers use Cloudflare Calls, Stream, and Images to build live, interactive, and real-time experiences for their users. We want to reduce friction by making it easier to get data into our products. This also means providing transparent pricing, so customers can be confident that costs make economic sense for their business, especially as they scale.</p><p>Today, we’re introducing four new improvements to help you build media applications with Cloudflare:</p><ul><li><p>Cloudflare Calls is in open beta with transparent pricing</p></li><li><p>Cloudflare Stream has a Live Clipping API to let your viewers instantly clip from ongoing streams</p></li><li><p>Cloudflare Images has a pre-built upload widget that you can embed in your application to accept uploads from your users</p></li><li><p>Cloudflare Images lets you crop and resize images of people at scale with automatic face cropping</p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"build-real-time-video-and-audio-applications-with-cloudflare-calls\">Build real-time video and audio applications with Cloudflare Calls</h3>\n      <a href=\"#build-real-time-video-and-audio-applications-with-cloudflare-calls\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>Cloudflare Calls is now in open beta, and you can activate it from your dashboard. Your usage will be free until May 15, 2024. Starting May 15, 2024, customers with a Calls subscription will receive the first terabyte each month for free, with any usage beyond that charged at $0.05 per real-time gigabyte. Additionally, there are no charges for inbound traffic to Cloudflare.</p><p>To get started, read the <a href=\"https://developers.cloudflare.com/calls/\" target=\"_blank\" rel=\"noopener noreferrer\">developer documentation for Cloudflare Calls</a>.</p>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"live-instant-clipping-create-clips-from-live-streams-and-recordings\">Live Instant Clipping: create clips from live streams and recordings</h3>\n      <a href=\"#live-instant-clipping-create-clips-from-live-streams-and-recordings\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>Live broadcasts often include short bursts of highly engaging content within a longer stream. Creators and viewers alike enjoy being able to make a “clip” of these moments to share across multiple channels. Being able to generate that clip rapidly enables our customers to offer instant replays, showcase key pieces of recordings, and build audiences on social media in real-time.</p><p>Today, <a href=\"https://www.cloudflare.com/products/cloudflare-stream/\" target=\"_blank\" rel=\"noopener noreferrer\">Cloudflare Stream</a> is launching Live Instant Clipping in open beta for all customers. With the new Live Clipping API, you can let your viewers instantly clip and share moments from an ongoing stream - without re-encoding the video.</p><p>When planning this feature, we considered a typical user flow for generating clips from live events. Consider users watching a stream of a video game: something wild happens and users want to save and share a clip of it to social media. What will they do?</p><p>First, they’ll need to be able to review the preceding few minutes of the broadcast, so they know what to clip. Next, they need to select a start time and clip duration or end time, possibly as a visualization on a timeline or by scrubbing the video player. Finally, the clip must be available quickly in a way that can be replayed or shared across multiple platforms, even after the original broadcast has ended.</p><p>That ideal user flow implies some heavy lifting in the background. We now offer a manifest to preview recent live content in a rolling window, and we provide the timing information in that response to determine the start and end times of the requested clip relative to the whole broadcast. Finally, on request, we will generate on-the-fly that clip as a standalone video file for easy sharing as well as an HLS manifest for embedding into players.</p><p>Live Instant Clipping is available in beta to all customers starting today! Live clips are free to make; they do not count toward storage quotas, and playback is billed just like minutes of video delivered. To get started, check out the <a href=\"https://developers.cloudflare.com/stream/stream-live/live-instant-clipping/\" target=\"_blank\" rel=\"noopener noreferrer\">Live Clipping API in developer documentation</a>.</p>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"integrate-cloudflare-images-into-your-application-with-only-a-few-lines-of-code\">Integrate Cloudflare Images into your application with only a few lines of code</h3>\n      <a href=\"#integrate-cloudflare-images-into-your-application-with-only-a-few-lines-of-code\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>Building applications with user-uploaded images is even easier with the upload widget, a pre-built, interactive UI that lets users upload images directly into your Cloudflare Images account.</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MVN5ibd1UGnokaEm7f1Vq/8efedb285ec93d52867d78ca63cb454b/image3-9.png\" alt=\"\" class=\"kg-image\" width=\"1999\" height=\"988\" loading=\"lazy\"/>\n            \n            </figure><p>Many developers use <a href=\"https://www.cloudflare.com/developer-platform/cloudflare-images/\" target=\"_blank\" rel=\"noopener noreferrer\">Cloudflare Images</a> as an end-to-end image management solution to support applications that center around user-generated content, from AI photo editors to social media platforms. Our APIs connect the frontend experience – where users upload their images – to the storage, optimization, and delivery operations in the backend.</p><p>But building an application can take time. Our team saw a huge opportunity to take away as much extra work as possible, and we wanted to provide off-the-shelf integration to speed up the development process.</p><p>With the upload widget, you can seamlessly integrate Cloudflare Images into your application within minutes. The widget can be integrated in two ways: by embedding a script into a static HTML page or by installing a package that works with your favorite framework. We provide a ready-made Worker template that you can deploy directly to your account to connect your frontend application with Cloudflare Images and authorize users to upload through the widget.</p><p>To try out the upload widget, <a href=\"https://forms.gle/vBu47y3638k8fkGF8\" target=\"_blank\" rel=\"noopener noreferrer\">sign up for our closed beta</a>.</p>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"optimize-images-of-people-with-automatic-face-cropping-for-cloudflare-images\">Optimize images of people with automatic face cropping for Cloudflare Images</h3>\n      <a href=\"#optimize-images-of-people-with-automatic-face-cropping-for-cloudflare-images\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>Cloudflare Images lets you dynamically manipulate images in different aspect ratios and dimensions for various use cases. With face cropping for Cloudflare Images, you can now crop and resize images of people’s faces at scale. For example, if you’re building a social media application, you can apply automatic face cropping to generate profile picture thumbnails from user-uploaded images.</p><p>Our existing gravity parameter uses saliency detection to set the focal point of an image based on the most visually interesting pixels, which determines how the image will be cropped. We expanded this feature by using a machine learning model called RetinaFace, which classifies images that have human faces. We’re also introducing a new zoom parameter that you can combine with face cropping to specify how closely an image should be cropped toward the face.</p><p>To apply face cropping to your image optimization, <a href=\"https://forms.gle/2bPbuijRoqGi6Qn36\" target=\"_blank\" rel=\"noopener noreferrer\">sign up for our closed beta</a>.</p>\n            <figure class=\"kg-card kg-image-card kg-width-wide\">\n            \n            <Image src=\"https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JFNk182dDZHu0sxIySMC5/d3821e2f911b7e31bb411addcc10bdb6/image2-10.png\" alt=\"\" class=\"kg-image\" width=\"1999\" height=\"956\" loading=\"lazy\"/>\n            \n            </figure><p><i>Photo by</i> <a href=\"https://unsplash.com/@eyeforebony?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash\" target=\"_blank\" rel=\"noopener noreferrer\"><i>Eye for Ebony</i></a> <i>on</i> <a href=\"https://unsplash.com/photos/photo-of-woman-wearing-purple-lipstick-and-black-crew-neck-shirt-vYpbBtkDhNE?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash\" target=\"_blank\" rel=\"noopener noreferrer\"><i>Unsplash</i></a></p>\n            <pre class=\"language-html\"><code class=\"language-html\">https://example.com/cdn-cgi/image/fit=crop,width=500,height=500,gravity=face,zoom=0.6/https://example.com/images/picture.jpg</pre></code>\n            \n    <div class=\"flex anchor relative\">\n      <h3 id=\"meet-the-media-team-over-discord\">Meet the Media team over Discord</h3>\n      <a href=\"#meet-the-media-team-over-discord\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>As we’re working to build the next set of media tools, we’d love to hear what you’re building for your users. Come <a href=\"https://discord.gg/cloudflaredev\" target=\"_blank\" rel=\"noopener noreferrer\">say hi to us on Discord</a>. You can also learn more by visiting our developer documentation for <a href=\"https://developers.cloudflare.com/calls/\" target=\"_blank\" rel=\"noopener noreferrer\">Calls</a>, <a href=\"https://developers.cloudflare.com/stream/\" target=\"_blank\" rel=\"noopener noreferrer\">Stream</a>, and <a href=\"https://developers.cloudflare.com/images/\" target=\"_blank\" rel=\"noopener noreferrer\">Images</a>.</p>",
-		"id": "4fOMOrJU6Bg9JNkRAThc7c",
-		"localeList": {
-			"name": "What’s new with Cloudflare Media: updates for Calls, Stream, and Images Config",
-			"enUS": "English for Locale",
-			"zhCN": "No Page for Locale",
-			"zhHansCN": "No Page for Locale",
-			"zhTW": "No Page for Locale",
-			"frFR": "No Page for Locale",
-			"deDE": "No Page for Locale",
-			"itIT": "No Page for Locale",
-			"jaJP": "No Page for Locale",
-			"koKR": "No Page for Locale",
-			"ptBR": "No Page for Locale",
-			"esLA": "No Page for Locale",
-			"esES": "No Page for Locale",
-			"enAU": "No Page for Locale",
-			"enCA": "No Page for Locale",
-			"enIN": "No Page for Locale",
-			"enGB": "No Page for Locale",
-			"idID": "No Page for Locale",
-			"ruRU": "No Page for Locale",
-			"svSE": "No Page for Locale",
-			"viVN": "No Page for Locale",
-			"plPL": "No Page for Locale",
-			"arAR": "No Page for Locale",
-			"nlNL": "No Page for Locale",
-			"thTH": "No Page for Locale",
-			"trTR": "No Page for Locale",
-			"heIL": "No Page for Locale",
-			"lvLV": "No Page for Locale",
-			"etEE": "No Page for Locale",
-			"ltLT": "No Page for Locale"
-		},
-		"meta_description": "With Cloudflare Calls in open beta, you can build real-time, serverless video and audio applications. Cloudflare Stream lets your viewers instantly clip from ongoing streams. Finally, Cloudflare Images now supports automatic face cropping and has an upload widget that lets you easily integrate into your application.",
-		"metadata": {
-			"title": "What’s new with Cloudflare Media: updates for Calls, Stream, and Images",
-			"description": "With Cloudflare Calls in open beta, you can build real-time, serverless video and audio applications. Cloudflare Stream lets your viewers instantly clip from ongoing streams. Finally, Cloudflare Images now supports automatic face cropping and has an upload widget that lets you easily integrate into your application.",
-			"imgPreview": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KS5E3Xkt8DICpeLZIpW9s/9c071a450238fad9128dfb462b02d0bd/whats-next-for-cloudflare-media-7W3rhM.png"
-		},
-		"primary_author": {},
-		"publicly_index": true,
-		"published_at": "2024-04-04T14:00:40.000+01:00",
+		"feature_image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW45YD76EABV01JVBM0G2WQ2.png",
+		"published_at": "2024-04-04T13:00:40.000Z",
 		"slug": "whats-next-for-cloudflare-media",
 		"tags": [
 			{
-				"id": "2xCnBweKwOI3VXdYsGVbMe",
-				"name": "Developer Week",
-				"slug": "developer-week"
-			},
-			{
-				"id": "7mVMfcxp4tMqKil9jj8BJa",
-				"name": "Cloudflare Stream",
-				"slug": "cloudflare-stream"
-			},
-			{
-				"id": "2lpv2daeYndRIyDp7rTa07",
-				"name": "Live Streaming",
-				"slug": "live-streaming"
-			},
-			{
-				"id": "5rBdsRv4kKPXGL1ECAZu9a",
-				"name": "Cloudflare Images",
-				"slug": "cloudflare-images"
-			},
-			{
-				"id": "7AjcZWHV41NlWVws6Zowxk",
-				"name": "Image Optimization",
-				"slug": "image-optimization"
-			},
-			{
-				"id": "3u2CnZYJGFucodn5pMvilA",
-				"name": "Image Resizing",
-				"slug": "image-resizing"
-			},
-			{
-				"id": "7tlYTGuOnnWAuLQMjhHsYh",
-				"name": "Image Storage",
-				"slug": "image-storage"
-			},
-			{
-				"id": "Gjiz2ZEdsdMrNS3Vl3ypi",
 				"name": "Cloudflare Calls",
 				"slug": "cloudflare-calls"
 			},
 			{
-				"id": "4HIPcb68qM0e26fIxyfzwQ",
+				"name": "Cloudflare Images",
+				"slug": "cloudflare-images"
+			},
+			{
+				"name": "Cloudflare Stream",
+				"slug": "cloudflare-stream"
+			},
+			{
+				"name": "Developer Week",
+				"slug": "developer-week"
+			},
+			{
 				"name": "Developers",
 				"slug": "developers"
+			},
+			{
+				"name": "Image Optimization",
+				"slug": "image-optimization"
+			},
+			{
+				"name": "Image Resizing",
+				"slug": "image-resizing"
+			},
+			{
+				"name": "Image Storage",
+				"slug": "image-storage"
+			},
+			{
+				"name": "Live Streaming",
+				"slug": "live-streaming"
 			}
 		],
 		"title": "What’s new with Cloudflare Media: updates for Calls, Stream, and Images",
-		"updated_at": "2025-10-24T09:38:37.357Z",
-		"url": "https://blog.cloudflare.com/whats-next-for-cloudflare-media"
-	},
-	"translations": {
-		"posts.by": "By",
-		"closeHint": "Close",
-		"selectHint": "Select",
-		"errorPrefix": "Error:",
-		"footer.gdpr": "GDPR",
-		"lang_blurb1": "This post is also available in {lang1}.",
-		"lang_blurb2": "This post is also available in {lang1} and {lang2}.",
-		"lang_blurb3": "This post is also available in {lang1}, {lang2} and {lang3}.",
-		"placeholder": "Search...",
-		"footer.press": "Press",
-		"header.title": "The Cloudflare Blog",
-		"navigateHint": "Navigate",
-		"search.clear": "Clear",
-		"search.filter": "Filter",
-		"search.source": "Source",
-		"footer.careers": "Careers",
-		"footer.company": "Company",
-		"footer.support": "Support",
-		"footer.the_net": "theNet",
-		"noResultsTitle": "No Results Found",
-		"search.filters": "Filters",
-		"seeMoreResults": "See more results",
-		"emptyStateTitle": "Start Searching",
-		"footer.our_team": "Our team",
-		"footer.webinars": "Webinars",
-		"loadingMessages": [
-			"Searching...",
-			"Digging through results...",
-			"Scanning the knowledge base...",
-			"Finding the best matches...",
-			"Sifting through the data...",
-			"Almost there...",
-			"Looking far and wide...",
-			"Connecting the dots...",
-			"Rummaging through pages...",
-			"Hunting down answers..."
-		],
-		"page.more_posts": "More posts",
-		"posts.time_read": "{time} min read",
-		"search.language": "Language",
-		"footer.community": "Community",
-		"footer.resources": "Resources",
-		"footer.solutions": "Solutions",
-		"footer.trademark": "Trademark",
-		"header.subscribe": "Subscribe",
-		"loadingAriaLabel": "Loading",
-		"footer.compliance": "Compliance",
-		"footer.free_plans": "Free plans",
-		"footer.impact_ESG": "Impact/ESG",
-		"modalResultsCount": "{n} result",
-		"posts.follow_on_X": "Follow on X",
-		"searchButtonLabel": "Search",
-		"footer.help_center": "Help center",
-		"footer.network_map": "Network Map",
-		"header.please_wait": "Please Wait",
-		"missingApiUrlError": "The api-url attribute is required. Please provide a valid API URL.",
-		"page.related_posts": "Related posts",
-		"search.result_stat": "Results <strong>{search_range}</strong> of <strong>{search_total}</strong> for <strong>{search_keyword}</strong>",
-		"footer.case_studies": "Case Studies",
-		"footer.connect_2024": "Connect 2024",
-		"footer.terms_of_use": "Terms of Use",
-		"footer.white_papers": "White Papers",
-		"modalNoResultsTitle": "No results found",
-		"footer.cloudflare_tv": "Cloudflare TV",
-		"footer.community_hub": "Community Hub",
-		"footer.compare_plans": "Compare plans",
-		"footer.contact_sales": "Contact Sales",
-		"header.contact_sales": "Contact Sales",
-		"header.email_address": "Email Address",
-		"noResultsDescription": "No results found for \"{query}\"",
-		"page.error.not_found": "Page not found",
-		"searchInputAriaLabel": "Search input",
-		"emptyStateDescription": "Enter a query to search for results",
-		"footer.developer_docs": "Developer docs",
-		"footer.privacy_policy": "Privacy Policy",
-		"footer.request_a_demo": "Request a demo",
-		"modalResultsCountZero": "0 results",
-		"page.continue_reading": "Continue reading",
-		"footer.analysts_report": "Analyst reports",
-		"footer.for_enterprises": "For enterprises",
-		"footer.getting_started": "Getting Started",
-		"footer.learning_center": "Learning Center",
-		"footer.project_galileo": "Project Galileo",
-		"modalResultsCountError": "Error",
-		"pagination.newer_posts": "Newer Posts",
-		"pagination.older_posts": "Older Posts",
-		"posts.social_buttons.x": "Discuss on X",
-		"search.icon_aria_label": "Search",
-		"search.source_location": "Source/Location",
-		"searchResultsAriaLabel": "Search results",
-		"footer.about_cloudflare": "About Cloudflare",
-		"footer.athenian_project": "Athenian Project",
-		"footer.become_a_partner": "Become a partner",
-		"footer.cloudflare_radar": "Cloudflare Radar",
-		"footer.network_services": "Network services",
-		"footer.trust_and_safety": "Trust & Safety",
-		"header.get_started_free": "Get Started Free",
-		"modalResultsCountPlural": "{n} results",
-		"page.search.placeholder": "Search Cloudflare",
-		"footer.cloudflare_status": "Cloudflare Status",
-		"footer.cookie_preference": "Cookie Preferences",
-		"header.valid_email_error": "Must be valid email.",
-		"search.result_stat_empty": "Results <strong>{search_range}</strong> of <strong>{search_total}</strong>",
-		"footer.connectivity_cloud": "Connectivity cloud",
-		"footer.developer_services": "Developer services",
-		"footer.investor_relations": "Investor relations",
-		"modalNoResultsDescription": "No results for \"{query}\"",
-		"page.not_found.error_code": "Error Code: 404",
-		"search.autocomplete_title": "Insert a query. Press enter to send",
-		"footer.logos_and_press_kit": "Logos & press kit",
-		"modalEmptyStateDescription": "Start typing to search",
-		"footer.application_services": "Application services",
-		"footer.get_a_recommendation": "Get a recommendation",
-		"posts.social_buttons.reddit": "Discuss on Reddit",
-		"footer.sse_and_sase_services": "SSE and SASE services",
-		"page.not_found.outdated_link": "You may have used an outdated link, or you may have typed the address incorrectly.",
-		"footer.report_security_issues": "Report Security Issues",
-		"page.error.error_message_page": "Sorry, we can't find the page you are looking for.",
-		"header.subscribe_notifications": "Subscribe to receive notifications of new posts:",
-		"footer.cloudflare_for_campaigns": "Cloudflare for Campaigns",
-		"header.subscription_confimation": "Subscription confirmed. Thank you for subscribing!",
-		"posts.social_buttons.hackernews": "Discuss on Hacker News",
-		"footer.diversity_equity_inclusion": "Diversity, equity & inclusion",
-		"footer.critical_infrastructure_defense_project": "Critical Infrastructure Defense Project"
+		"updated_at": "2026-07-15T14:11:17.289Z",
+		"url": "https://blog.cloudflare.com/whats-next-for-cloudflare-media/"
 	}
 }

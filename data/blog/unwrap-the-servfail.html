@@ -1,113 +1,76 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5gRltbrLmeUguopTnCxPLH/db304c3a25e657b6584c909bd2bfa95f/unwrap-the-servfail.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>We recently released a new version of <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer">Cloudflare Resolver</a> which adds a piece of information called “<a href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-extended-error" target="_blank" rel="noopener noreferrer">Extended DNS Errors</a>” (EDE) along with the response code under certain circumstances. This will be helpful in tracing DNS resolution errors and figuring out what went wrong behind the scenes.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pI28dXSUFpxeVT9fbOtXN/cf7d24e9340ec93201ecafa232370d5b/image1-1.jpg" alt="" class="kg-image" width="910" height="513" loading="lazy">
-
-	</figure>
-	<p>(image from: <a href="https://www.pxfuel.com/en/free-photo-expka" target="_blank" rel="noopener noreferrer">https://www.pxfuel.com/en/free-photo-expka</a>)</p>
-	<div class="flex anchor relative">
-		<h3 id="a-tight-lipped-agent">A tight-lipped agent</h3>
-		<a href="https://blog.cloudflare.com/#a-tight-lipped-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The DNS protocol was designed to map domain names to IP addresses. To inform the client about the result of the lookup, the protocol has a 4 bit field, called response code/RCODE. The logic to serve a response might look something like this:</p>
-	<pre class="language-bash"><code class="language-bash">function lookup(domain) {
-    ...
-    switch result {
-    case "No error condition":
-        return NOERROR with client expected answer
-    case "No record for the request type":
-        return NOERROR
-    case "The request domain does not exist":
-        return NXDOMAIN
-    case "Refuse to perform the specified operation for policy reasons":
-        return REFUSE
-    default("Server failure: unable to process this query due to a problem with the name server"):
-        return SERVFAIL
-    }
-}
-
-try {
-    lookup(domain)
-} catch {
-    return SERVFAIL
-}</code></pre>
-	<p>Although the context hasn't changed much, protocol extensions such as DNSSEC have been added, which makes the RCODE run out of space to express the server's internal status. To keep backward compatibility, DNS servers have to squeeze various statuses into existing ones. This behavior could confuse the client, especially with the "catch-all" SERVFAIL: something went wrong but what exactly?</p>
-	<p>Most often, end users don't talk to authoritative name servers directly, but use a <a href="https://tools.ietf.org/html/rfc8499#section-6" target="_blank" rel="noopener noreferrer">stub</a> and/or a recursive resolver as an agent to acquire the information it needs. When a user receives &nbsp;SERVFAIL, the failure can be one of the following:</p>
-	<ul>
-		<li>
-			<p>The stub resolver fails to send the request.</p>
-		</li>
-		<li>
-			<p>The stub resolver doesn’t get a response.</p>
-		</li>
-		<li>
-			<p>The recursive resolver, which the stub resolver sends its query to, is overloaded.</p>
-		</li>
-		<li>
-			<p>The recursive resolver is unable to communicate with upstream authoritative servers.</p>
-		</li>
-		<li>
-			<p>The recursive resolver fails to verify the DNSSEC chain.</p>
-		</li>
-		<li>
-			<p>The authoritative server takes too long to respond.</p>
-		</li>
-		<li>
-			<p>...</p>
-		</li>
-	</ul>
-	<p>In such cases, it is nearly impossible for the user to know exactly what’s wrong. The resolver is usually the one to be blamed, because, as an agent, it fails to get back the answer, and doesn’t return a clear reason for the failure in the response.</p>
-	<div class="flex anchor relative">
-		<h3 id="keep-backward-compatibility">Keep backward compatibility</h3>
-		<a href="https://blog.cloudflare.com/#keep-backward-compatibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It seems we need to return more information, but (there's always a but) we also need to keep the behavior of existing clients unchanged.</p>
-	<p>One way is to extend the RCODE space, which came out with the <a href="https://www.ietf.org/rfc/rfc6891.txt" target="_blank" rel="noopener noreferrer">Extension mechanisms for DNS</a> or EDNS. It defines a 8 bit EXTENDED-RCODE, as high-order bits to current 4 bit RCODE. Together they make up a 12 bit integer. This changes the processing of RCODE, requires both client and server to fully support the logic unfortunately.</p>
-	<p>Another approach is to provide out-of-band data without touching the current RCODE. This is how Extended DNS Errors is defined. It introduces a <a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11" target="_blank" rel="noopener noreferrer">new option</a> to EDNS, containing an INFO-CODE to describe error details with an EXTRA-TEXT as an optional supplement. The option can be repeated as many times as needed, so it's possible for the client to get a full error chain with detailed messages. The INFO-CODE is just something like RCODE, but is 16 bits wide, while the EXTRA-TEXT is an utf-8 encoded string. For example, let’s say a client sends a request to a resolver, and the requested domain has two name servers. The client may receive a SERVFAIL response with an OPT record (see below) which contains two extended errors, one from one of the authoritative servers that shows it's not ready to serve, and the other from the resolver, showing it cannot connect to the other name server.</p>
-	<pre class="language-bash"><code class="language-bash">;; OPT PSEUDOSECTION:
-; ...
-; EDE: 14 (Not Ready)
-; EDE: 23 (Network Error): (cannot reach upstream 192.0.2.1)
-; ...</code></pre>
-	<p>Google has something similar in their <a href="https://developers.google.com/speed/public-dns/docs/doh/json" target="_blank" rel="noopener noreferrer">DoH JSON API</a>, which provides diagnostic information in the "Comment" field.</p>
-	<div class="flex anchor relative">
-		<h3 id="lets-dig-into-it">Let's dig into it</h3>
-		<a href="https://blog.cloudflare.com/#lets-dig-into-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our 1.1.1.1 service has an initial support of the draft version of Extended DNS Errors, while we are still trying to find the best practice. As we mentioned above, this is not a breaking change, and existing clients will not be affected. The additional options can be safely ignored without any problem, since the RCODE stays the same.</p>
-	<p>If you have a <a href="https://downloads.isc.org/isc/bind9/9.16.4/doc/arm/html/notes.html#new-features" target="_blank" rel="noopener noreferrer">newer version of dig</a>, you can simply check it out with a known problematic domain. As you can see, due to DNSSEC verification failing, the RCODE is still SERVFAIL, but the extended error shows the failure is "DNSSEC Bogus".</p>
-	<pre class="language-bash"><code class="language-bash">$ dig @1.1.1.1 dnssec-failed.org
-
-; &lt;&lt;&gt;&gt; DiG 9.16.4-Debian &lt;&lt;&gt;&gt; @1.1.1.1 dnssec-failed.org
-; (1 server found)
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 1111
-;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 1232
-; EDE: 6 (DNSSEC Bogus)
-;; QUESTION SECTION:
-;dnssec-failed.org.		IN	A
-
-;; Query time: 111 msec
-;; SERVER: 1.1.1.1#53(1.1.1.1)
-;; WHEN: Wed Sep 01 00:00:00 PDT 2020
-;; MSG SIZE  rcvd: 52</code></pre>
-	<p>Note that Extended DNS Error relies on EDNS. So to be able to get one, the client needs to support EDNS, and needs to enable it in the request. At the time of writing this blog post, we see about 17% of queries that 1.1.1.1 received had EDNS enabled within a short time range. We hope this information will help you uncover the root cause of a SERVFAIL in the future.</p>
+<p>We recently released a new version of <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer">Cloudflare Resolver</a> which adds a piece of information called “<a href="https://datatracker.ietf.org/doc/draft-ietf-dnsop-extended-error" target="_blank" rel="noopener noreferrer">Extended DNS Errors</a>” (EDE) along with the response code under certain circumstances. This will be helpful in tracing DNS resolution errors and figuring out what went wrong behind the scenes.</p>
+<p>(image from: <a href="https://www.pxfuel.com/en/free-photo-expka" target="_blank" rel="noopener noreferrer">https://www.pxfuel.com/en/free-photo-expka</a>)</p>
+<h3>A tight-lipped agent</h3>
+<p>The DNS protocol was designed to map domain names to IP addresses. To inform the client about the result of the lookup, the protocol has a 4 bit field, called response code/RCODE. The logic to serve a response might look something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> lookup</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">domain</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    ...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    switch</span><span class="sk-032f62-99ffe4"> result</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> "No error condition":</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> NOERROR</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-032f62-99ffe4"> expected</span><span class="sk-032f62-99ffe4"> answer</span></span>
+<span class="line"><span class="sk-24292e-fff">    case </span><span class="sk-032f62-99ffe4">"No record for the request type"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> NOERROR</span></span>
+<span class="line"><span class="sk-24292e-fff">    case </span><span class="sk-032f62-99ffe4">"The request domain does not exist"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> NXDOMAIN</span></span>
+<span class="line"><span class="sk-24292e-fff">    case </span><span class="sk-032f62-99ffe4">"Refuse to perform the specified operation for policy reasons"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> REFUSE</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    default(</span><span class="sk-6f42c1-ffc799">"Server failure: unable to process this query due to a problem with the name server"</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> SERVFAIL</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">try</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    lookup(domain</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">} catch {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> SERVFAIL</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Although the context hasn't changed much, protocol extensions such as DNSSEC have been added, which makes the RCODE run out of space to express the server's internal status. To keep backward compatibility, DNS servers have to squeeze various statuses into existing ones. This behavior could confuse the client, especially with the "catch-all" SERVFAIL: something went wrong but what exactly?</p>
+<p>Most often, end users don't talk to authoritative name servers directly, but use a <a href="https://tools.ietf.org/html/rfc8499#section-6" target="_blank" rel="noopener noreferrer">stub</a> and/or a recursive resolver as an agent to acquire the information it needs. When a user receives &nbsp;SERVFAIL, the failure can be one of the following:</p>
+<ul>
+	<li>The stub resolver fails to send the request.</li>
+	<li>The stub resolver doesn’t get a response.</li>
+	<li>The recursive resolver, which the stub resolver sends its query to, is overloaded.</li>
+	<li>The recursive resolver is unable to communicate with upstream authoritative servers.</li>
+	<li>The recursive resolver fails to verify the DNSSEC chain.</li>
+	<li>The authoritative server takes too long to respond.</li>
+	<li>...</li>
+</ul>
+<p>In such cases, it is nearly impossible for the user to know exactly what’s wrong. The resolver is usually the one to be blamed, because, as an agent, it fails to get back the answer, and doesn’t return a clear reason for the failure in the response.</p>
+<h3>Keep backward compatibility</h3>
+<p>It seems we need to return more information, but (there's always a but) we also need to keep the behavior of existing clients unchanged.</p>
+<p>One way is to extend the RCODE space, which came out with the <a href="https://www.ietf.org/rfc/rfc6891.txt" target="_blank" rel="noopener noreferrer">Extension mechanisms for DNS</a> or EDNS. It defines a 8 bit EXTENDED-RCODE, as high-order bits to current 4 bit RCODE. Together they make up a 12 bit integer. This changes the processing of RCODE, requires both client and server to fully support the logic unfortunately.</p>
+<p>Another approach is to provide out-of-band data without touching the current RCODE. This is how Extended DNS Errors is defined. It introduces a <a href="https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-11" target="_blank" rel="noopener noreferrer">new option</a> to EDNS, containing an INFO-CODE to describe error details with an EXTRA-TEXT as an optional supplement. The option can be repeated as many times as needed, so it's possible for the client to get a full error chain with detailed messages. The INFO-CODE is just something like RCODE, but is 16 bits wide, while the EXTRA-TEXT is an utf-8 encoded string. For example, let’s say a client sends a request to a resolver, and the requested domain has two name servers. The client may receive a SERVFAIL response with an OPT record (see below) which contains two extended errors, one from one of the authoritative servers that shows it's not ready to serve, and the other from the resolver, showing it cannot connect to the other name server.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">OPT</span><span class="sk-032f62-99ffe4"> PSEUDOSECTION:</span></span>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">EDE:</span><span class="sk-005cc5-ffc799"> 14</span><span class="sk-24292e-fff"> (Not </span><span class="sk-032f62-99ffe4">Ready</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">EDE:</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-24292e-fff"> (Network </span><span class="sk-032f62-99ffe4">Error</span><span class="sk-24292e-fff">): (</span><span class="sk-6f42c1-ffc799">cannot</span><span class="sk-032f62-99ffe4"> reach</span><span class="sk-032f62-99ffe4"> upstream</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>Google has something similar in their <a href="https://developers.google.com/speed/public-dns/docs/doh/json" target="_blank" rel="noopener noreferrer">DoH JSON API</a>, which provides diagnostic information in the "Comment" field.</p>
+<h3>Let's dig into it</h3>
+<p>Our 1.1.1.1 service has an initial support of the draft version of Extended DNS Errors, while we are still trying to find the best practice. As we mentioned above, this is not a breaking change, and existing clients will not be affected. The additional options can be safely ignored without any problem, since the RCODE stays the same.</p>
+<p>If you have a <a href="https://downloads.isc.org/isc/bind9/9.16.4/doc/arm/html/notes.html#new-features" target="_blank" rel="noopener noreferrer">newer version of dig</a>, you can simply check it out with a known problematic domain. As you can see, due to DNSSEC verification failing, the RCODE is still SERVFAIL, but the extended error shows the failure is "DNSSEC Bogus".</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-032f62-99ffe4"> dnssec-failed.org</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> DiG</span><span class="sk-032f62-99ffe4"> 9.16.4-Debian</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">&gt;&gt;</span><span class="sk-6f42c1-ffc799"> @1.1.1.1</span><span class="sk-032f62-99ffe4"> dnssec-failed.org</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">; (1 server found)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; global options: +cmd</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; Got answer:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: SERVFAIL, id: 1111</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; OPT PSEUDOSECTION:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">; EDNS: version: 0, flags:; udp: 1232</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">; EDE: 6 (DNSSEC Bogus)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; QUESTION SECTION:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;dnssec-failed.org.		IN	A</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; Query time: 111 msec</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; SERVER: 1.1.1.1#53(1.1.1.1)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; WHEN: Wed Sep 01 00:00:00 PDT 2020</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; MSG SIZE  rcvd: 52</span></span></code></pre>
+</div>
+<p>Note that Extended DNS Error relies on EDNS. So to be able to get one, the client needs to support EDNS, and needs to enable it in the request. At the time of writing this blog post, we see about 17% of queries that 1.1.1.1 received had EDNS enabled within a short time range. We hope this information will help you uncover the root cause of a SERVFAIL in the future.</p>

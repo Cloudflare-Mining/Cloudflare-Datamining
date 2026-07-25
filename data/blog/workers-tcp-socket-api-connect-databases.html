@@ -1,222 +1,147 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CjlPkdLJUXlfgIKgq2Jvy/d2e17e3027c02f82e191007561640f79/image2-12.png" alt="Announcing connect() — a new API for creating TCP sockets from Cloudflare Workers" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<p>Today, we are excited to announce a new API in Cloudflare Workers for creating outbound TCP sockets, making it possible to connect directly to any TCP-based service from Workers.</p>
-	<p>Standard protocols including <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH</a>, MQTT, SMTP, FTP, and IRC are all built on top of TCP. Most importantly, nearly all applications need to connect to databases, and most databases speak TCP. And while <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">Cloudflare D1</a> works seamlessly on Workers, and some <a href="https://developers.cloudflare.com/workers/learning/integrations/databases" target="_blank" rel="noopener noreferrer">hosted database providers</a> allow connections over HTTP or WebSockets, the vast majority of databases, both relational (SQL) and document-oriented (NoSQL), require clients to connect by opening a direct TCP “socket”, an ongoing two-way connection that is used to send queries and receive data. Now, Workers provides an API for this, the first of many steps to come in allowing you to use any database or infrastructure you choose when building full-stack applications on Workers.</p>
-	<p>Database drivers, the client code used to connect to databases and execute queries, are already using this new API. <a href="https://github.com/brianc/node-postgres" target="_blank" rel="noopener noreferrer">pg</a>, the most widely used JavaScript database driver for PostgreSQL, works on Cloudflare Workers today, with more database drivers to come.</p>
-	<p>The TCP Socket API is available today to everyone. Get started by reading the <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer">TCP Socket API docs</a>, or connect directly to any PostgreSQL database from your Worker by following <a href="https://developers.cloudflare.com/workers/databases/connect-to-postgres" target="_blank" rel="noopener noreferrer">this guide</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="first-what-is-a-tcp-socket">First — what is a TCP Socket?</h2>
-		<a href="https://blog.cloudflare.com/#first-what-is-a-tcp-socket" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip" target="_blank" rel="noopener noreferrer">TCP (Transmission Control Protocol)</a> is a foundational networking protocol of the Internet. It is the underlying protocol that is used to make HTTP requests (prior to <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer">HTTP/3</a>, which uses <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">QUIC</a>), to send email over <a href="https://www.cloudflare.com/learning/email-security/what-is-smtp" target="_blank" rel="noopener noreferrer">SMTP</a>, to query databases using database–specific protocols like MySQL, and many other application-layer protocols.</p>
-	<p>A TCP socket is a programming interface that represents a two-way communication connection between two applications that have both agreed to “speak” over TCP. One application (ex: a Cloudflare Worker) initiates an outbound TCP connection to another (ex: a database server) that is listening for inbound TCP connections. Connections are established by negotiating a three-way handshake, and after the handshake is complete, data can be sent bi-directionally.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xxArl43DbexJUoRmw8JrG/0ad545bb25f002a4598d387aca491997/image1-30.png" alt="" class="kg-image" width="1617" height="789" loading="lazy">
-
-	</figure>
-	<p>A socket is the programming interface for a single TCP connection — it has both a readable and writable “stream” of data, allowing applications to read and write data on an ongoing basis, as long as the connection remains open.</p>
-	<div class="flex anchor relative">
-		<h2 id="connect-a-simpler-socket-api">connect() — A simpler socket API</h2>
-		<a href="https://blog.cloudflare.com/#connect-a-simpler-socket-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With Workers, we aim to support standard APIs that are supported across browsers and non-browser environments wherever possible, so that as many NPM packages as possible work on Workers without changes, and package authors don’t have to write runtime-specific code. But for TCP sockets, we faced a challenge — there was no clear shared standard across runtimes. Node.js provides the <a href="https://nodejs.org/api/net.html" target="_blank" rel="noopener noreferrer">net</a> and <a href="https://nodejs.org/api/tls.html" target="_blank" rel="noopener noreferrer">tls</a> APIs, but Deno implements a different API — <a href="https://deno.land/api@v1.33.1?s=Deno.connect" target="_blank" rel="noopener noreferrer">Deno.connect</a>. And web browsers do not provide a raw TCP socket API, though a <a href="https://github.com/WICG/direct-sockets/blob/main/docs/explainer.md" target="_blank" rel="noopener noreferrer">WICG proposal</a> does exist, and it is different from both Node.js and Deno.</p>
-	<p>We also considered how a TCP socket API could be designed to maximize performance and ergonomics in a serverless environment. Most networking APIs were designed well before serverless emerged, with the assumption that the developer’s application is also the server, responsible for directly handling configuring TLS options and credentials.</p>
-	<p>With this backdrop, we reached out to the community, with a focus on maintainers of database drivers, ORMs and other libraries that create outbound TCP connections. Using this feedback, we’ve tried to incorporate the best elements of existing APIs and proposals, and intend to contribute back to future standards, as part of the <a href="https://blog.cloudflare.com/introducing-the-wintercg">Web-interoperable Runtimes Community Group (WinterCG)</a>.</p>
-	<p>The API we landed on is a simple function, connect(), imported from the new cloudflare:sockets module, that returns an instance of a Socket. Here’s a simple example showing it used to connect to a <a href="https://www.w3.org/People/Bos/PROSA/rep-protocols.html#gopher" target="_blank" rel="noopener noreferrer">Gopher</a> server. Gopher was one of the Internet’s early protocols that relied on TCP/IP, and still works today:</p>
-	<pre class="language-javascript"><code class="language-javascript">import { connect } from 'cloudflare:sockets';
-
-export default {
-  async fetch(req: Request) {
-    const gopherAddr = "gopher.floodgap.com:70";
-    const url = new URL(req.url);
-
-    try {
-      const socket = connect(gopherAddr);
-
-      const writer = socket.writable.getWriter()
-      const encoder = new TextEncoder();
-      const encoded = encoder.encode(url.pathname + "\r\n");
-      await writer.write(encoded);
-
-      return new Response(socket.readable, { headers: { "Content-Type": "text/plain" } });
-    } catch (error) {
-      return new Response("Socket connection failed: " + error, { status: 500 });
-    }
-  }
-};</code></pre>
-	<p>We think this API design has many benefits that can be realized not just on Cloudflare, but in any serverless environment that adopts this design:</p>
-	<pre class="language-javascript"><code class="language-javascript">connect(address: SocketAddress | string, options?: SocketOptions): Socket
-
-declare interface Socket {
-  get readable(): ReadableStream;
-  get writable(): WritableStream;
-  get closed(): Promise&lt;void&gt;;
-  close(): Promise&lt;void&gt;;
-  startTls(): Socket;
-}
-
-declare interface SocketOptions {
-  secureTransport?: string;
-  allowHalfOpen: boolean;
-}
-
-declare interface SocketAddress {
-  hostname: string;
-  port: number;
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="opportunistic-tls-starttls-without-separate-apis">Opportunistic TLS (StartTLS), without separate APIs</h3>
-		<a href="https://blog.cloudflare.com/#opportunistic-tls-starttls-without-separate-apis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Opportunistic TLS, a pattern of creating an initial insecure connection, and then upgrading it to a secure one that uses TLS, remains common, particularly with database drivers. In Node.js, you must use the <a href="https://nodejs.org/api/net.html#class-netsocket" target="_blank" rel="noopener noreferrer">net</a> API to create the initial connection, and then use the <a href="https://nodejs.org/api/tls.html" target="_blank" rel="noopener noreferrer">tls</a> API to create a new, upgraded connection. In Deno, you pass the original socket to <a href="https://deno.land/api@v1.33.1?s=Deno.startTls" target="_blank" rel="noopener noreferrer">Deno.startTls()</a>, which creates a new, upgraded connection.</p>
-	<p>Drawing on a <a href="https://www.w3.org/TR/tcp-udp-sockets/#idl-def-TCPOptions" target="_blank" rel="noopener noreferrer">previous W3C proposal</a> for a TCP Socket API, we’ve simplified this by providing one API, that allows TLS to be enabled, allowed, or used when creating a socket, and exposes a simple method, startTls(), for upgrading a socket to use TLS.</p>
-	<pre class="language-javascript"><code class="language-javascript">// Create a new socket without TLS. secureTransport defaults to "off" if not specified.
-const socket = connect("address:port", { secureTransport: "off" })
-
-// Create a new socket, then upgrade it to use TLS.
-// Once startTls() is called, only the newly created socket can be used.
-const socket = connect("address:port", { secureTransport: "starttls" })
-const secureSocket = socket.startTls();
-
-// Create a new socket with TLS
-const socket = connect("address:port", { secureTransport: "use" })</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="tls-configuration-a-concern-of-host-infrastructure-not-application-code">TLS configuration — a concern of host infrastructure, not application code</h3>
-		<a href="https://blog.cloudflare.com/#tls-configuration-a-concern-of-host-infrastructure-not-application-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Existing APIs for creating TCP sockets treat TLS as a library that you interact with in your application code. The <a href="https://nodejs.org/api/tls.html#tlscreatesecurecontextoptions" target="_blank" rel="noopener noreferrer">tls.createSecureContext()</a> API from Node.js has a plethora of advanced configuration options that are mostly environment specific. If you use custom certificates when connecting to a particular service, you likely use a different set of credentials and options in production, staging and development. Managing direct file paths to credentials across environments and swapping out .env files in production build steps are common pain points.</p>
-	<p>Host infrastructure is best positioned to manage this on your behalf, and similar to Workers support for <a href="https://blog.cloudflare.com/mtls-workers">making subrequests using mTLS</a>, TLS configuration and credentials for the socket API will be managed via Wrangler, and a connect() function provided via a <a href="https://developers.cloudflare.com/workers/platform/bindings" target="_blank" rel="noopener noreferrer">capability binding</a>. Currently, custom TLS credentials and configuration are not supported, but are coming soon.</p>
-	<div class="flex anchor relative">
-		<h3 id="start-writing-data-immediately-before-the-tls-handshake-finishes">Start writing data immediately, before the TLS handshake finishes</h3>
-		<a href="https://blog.cloudflare.com/#start-writing-data-immediately-before-the-tls-handshake-finishes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Because the connect() API synchronously returns a new socket, one can start writing to the socket immediately, without waiting for the TCP handshake to first complete. This means that once the handshake completes, data is already available to send immediately, and host platforms can make use of pipelining to optimize performance.</p>
-	<div class="flex anchor relative">
-		<h2 id="connect-api-db-drivers-connect-directly-to-databases">connect() API + DB drivers = Connect directly to databases</h2>
-		<a href="https://blog.cloudflare.com/#connect-api-db-drivers-connect-directly-to-databases" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Many <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">serverless databases</a> already work on Workers, allowing clients to connect over HTTP or over <a href="https://blog.cloudflare.com/neon-postgres-database-from-workers">WebSockets</a>. But most databases don’t “speak” HTTP, including databases hosted on most cloud providers.</p>
-	<p>Databases each have their own “wire protocol”, and open-source database “drivers” that speak this protocol, sending and receiving data over a TCP socket. Developers rely on these drivers in their own code, as do database ORMs. Our goal is to make sure that you can use the same drivers and ORMs you might use in other runtimes and on other platforms on Workers.</p>
-	<div class="flex anchor relative">
-		<h2 id="try-it-now-connect-to-postgresql-from-workers">Try it now — connect to PostgreSQL from Workers</h2>
-		<a href="https://blog.cloudflare.com/#try-it-now-connect-to-postgresql-from-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve worked with the maintainers of <a href="https://www.npmjs.com/package/pg" target="_blank" rel="noopener noreferrer">pg</a>, one of the most popular database drivers in the JavaScript ecosystem, used by ORMs including <a href="https://sequelize.org/docs/v6/getting-started" target="_blank" rel="noopener noreferrer">Sequelize</a> and <a href="https://knexjs.org" target="_blank" rel="noopener noreferrer">knex.js</a>, to add support for connect().</p>
-	<p>You can try this right now. First, create a new Worker and install pg:</p>
-	<pre class="language-bash"><code class="language-bash">wrangler init
-npm install --save pg</code></pre>
-	<p>As of this writing, you’ll need to <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#add-polyfills-using-wrangler" target="_blank" rel="noopener noreferrer">enable the node_compat</a> option in wrangler.toml:</p>
-	<p><b>wrangler.toml</b></p>
-	<pre class="language-yaml"><code class="language-yaml">name = "my-worker"
-main = "src/index.ts"
-compatibility_date = "2023-05-15"
-node_compat = true</code></pre>
-	<p>In just 20 lines of TypeScript, you can create a connection to a Postgres database, execute a query, return results in the response, and close the connection:</p>
-	<p><b>index.ts</b></p>
-	<pre class="language-javascript"><code class="language-javascript">import { Client } from "pg";
-
-export interface Env {
-  DB: string;
-}
-
-export default {
-  async fetch(
-    request: Request,
-    env: Env,
-    ctx: ExecutionContext
-  ): Promise&lt;Response&gt; {
-    const client = new Client(env.DB);
-    await client.connect();
-    const result = await client.query({
-      text: "SELECT * from customers",
-    });
-    console.log(JSON.stringify(result.rows));
-    const resp = Response.json(result.rows);
-    // Close the database connection, but don't block returning the response
-    ctx.waitUntil(client.end());
-    return resp;
-  },
-};</code></pre>
-	<p>To test this in local development, use the <code>--experimental-local</code> flag (instead of <code>–local</code>), which <a href="https://blog.cloudflare.com/miniflare-and-workerd">uses the open-source Workers runtime</a>, ensuring that what you see locally mirrors behavior in production:</p>
-	<pre class="language-bash"><code class="language-bash">wrangler dev --experimental-local</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="whats-next-for-connecting-to-databases-from-workers">What’s next for connecting to databases from Workers?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next-for-connecting-to-databases-from-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is only the beginning. We’re aiming for the two popular MySQL drivers, <a href="https://github.com/mysqljs/mysql" target="_blank" rel="noopener noreferrer">mysql</a> and <a href="https://github.com/sidorares/node-mysql2" target="_blank" rel="noopener noreferrer">mysql2</a>, to work on Workers soon, with more to follow. If you work on a database driver or ORM, we’d love to help make your library work on Workers.</p>
-	<p>If you’ve worked more closely with database scaling and performance, you might have noticed that in the example above, a new connection is created for every request. This is one of the biggest current challenges of connecting to databases from serverless functions, across all platforms. With typical client connection pooling, you maintain a local pool of database connections that remain open. This approach of storing a reference to a connection or connection pool in global scope will not work, and is a poor fit for serverless. Managing individual pools of client connections on a per-isolate basis creates other headaches — when and how should connections be terminated? How can you limit the total number of concurrent connections across many isolates and locations?</p>
-	<p>Instead, we’re already working on simpler approaches to connection pooling for the most popular databases. We see a path to a future where you don’t have to think about or manage client connection pooling on your own. We’re also working on a brand new approach to making your database reads lightning fast.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-next-for-sockets-on-workers">What’s next for sockets on Workers?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next-for-sockets-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Supporting outbound TCP connections is only one half of the story — we plan to support inbound TCP and UDP connections, as well as new emerging application protocols based on QUIC, so that you can build applications beyond HTTP with <a href="https://blog.cloudflare.com/introducing-socket-workers">Socket Workers</a>.</p>
-	<p>Earlier today we also announced <a href="https://blog.cloudflare.com/announcing-workers-smart-placement">Smart Placement</a>, which improves performance by placing any Worker that makes multiple HTTP requests to an origin run as close as possible to reduce round-trip time. We’re working on making this work with Workers that open TCP connections, so that if your Worker connects to a database in Virginia and makes many queries over a TCP connection, each query is lightning fast and comes from the nearest location on <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare’s global network</a>.</p>
-	<p>We also plan to support custom certificates and other TLS configuration options in the coming months — tell us what is a must-have in order to connect to the services you need to connect to from Workers.</p>
-	<div class="flex anchor relative">
-		<h2 id="get-started-and-share-your-feedback">Get started, and share your feedback</h2>
-		<a href="https://blog.cloudflare.com/#get-started-and-share-your-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The TCP Socket API is available today to everyone. Get started by reading the <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer">TCP Socket API docs</a>, or connect directly to any PostgreSQL database from your Worker by following <a href="https://developers.cloudflare.com/workers/databases/connect-to-postgres" target="_blank" rel="noopener noreferrer">this guide</a>.</p>
-	<p>We want to hear your feedback, what you’d like to see next, and more about what you’re building. Join the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
+<p>Today, we are excited to announce a new API in Cloudflare Workers for creating outbound TCP sockets, making it possible to connect directly to any TCP-based service from Workers.</p>
+<p>Standard protocols including <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH</a>, MQTT, SMTP, FTP, and IRC are all built on top of TCP. Most importantly, nearly all applications need to connect to databases, and most databases speak TCP. And while <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">Cloudflare D1</a> works seamlessly on Workers, and some <a href="https://developers.cloudflare.com/workers/learning/integrations/databases" target="_blank" rel="noopener noreferrer">hosted database providers</a> allow connections over HTTP or WebSockets, the vast majority of databases, both relational (SQL) and document-oriented (NoSQL), require clients to connect by opening a direct TCP “socket”, an ongoing two-way connection that is used to send queries and receive data. Now, Workers provides an API for this, the first of many steps to come in allowing you to use any database or infrastructure you choose when building full-stack applications on Workers.</p>
+<p>Database drivers, the client code used to connect to databases and execute queries, are already using this new API. <a href="https://github.com/brianc/node-postgres" target="_blank" rel="noopener noreferrer">pg</a>, the most widely used JavaScript database driver for PostgreSQL, works on Cloudflare Workers today, with more database drivers to come.</p>
+<p>The TCP Socket API is available today to everyone. Get started by reading the <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer">TCP Socket API docs</a>, or connect directly to any PostgreSQL database from your Worker by following <a href="https://developers.cloudflare.com/workers/databases/connect-to-postgres" target="_blank" rel="noopener noreferrer">this guide</a>.</p>
+<h2>First — what is a TCP Socket?</h2>
+<p><a href="https://www.cloudflare.com/learning/ddos/glossary/tcp-ip" target="_blank" rel="noopener noreferrer">TCP (Transmission Control Protocol)</a> is a foundational networking protocol of the Internet. It is the underlying protocol that is used to make HTTP requests (prior to <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer">HTTP/3</a>, which uses <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">QUIC</a>), to send email over <a href="https://www.cloudflare.com/learning/email-security/what-is-smtp" target="_blank" rel="noopener noreferrer">SMTP</a>, to query databases using database–specific protocols like MySQL, and many other application-layer protocols.</p>
+<p>A TCP socket is a programming interface that represents a two-way communication connection between two applications that have both agreed to “speak” over TCP. One application (ex: a Cloudflare Worker) initiates an outbound TCP connection to another (ex: a database server) that is listening for inbound TCP connections. Connections are established by negotiating a three-way handshake, and after the handshake is complete, data can be sent bi-directionally.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="349" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=640&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=750&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=828&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=1080&amp;h=527&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=1280&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=1430&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1791 Embedded Image - azSzGt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GNFWBDPGEB8JZZVSR1T7.png&amp;w=1617&amp;h=789&amp;f=webp" data-lightbox-width="1617" data-lightbox-height="789" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="349" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>A socket is the programming interface for a single TCP connection — it has both a readable and writable “stream” of data, allowing applications to read and write data on an ongoing basis, as long as the connection remains open.</p>
+<h2>connect() — A simpler socket API</h2>
+<p>With Workers, we aim to support standard APIs that are supported across browsers and non-browser environments wherever possible, so that as many NPM packages as possible work on Workers without changes, and package authors don’t have to write runtime-specific code. But for TCP sockets, we faced a challenge — there was no clear shared standard across runtimes. Node.js provides the <a href="https://nodejs.org/api/net.html" target="_blank" rel="noopener noreferrer">net</a> and <a href="https://nodejs.org/api/tls.html" target="_blank" rel="noopener noreferrer">tls</a> APIs, but Deno implements a different API — <a href="https://deno.land/api@v1.33.1?s=Deno.connect" target="_blank" rel="noopener noreferrer">Deno.connect</a>. And web browsers do not provide a raw TCP socket API, though a <a href="https://github.com/WICG/direct-sockets/blob/main/docs/explainer.md" target="_blank" rel="noopener noreferrer">WICG proposal</a> does exist, and it is different from both Node.js and Deno.</p>
+<p>We also considered how a TCP socket API could be designed to maximize performance and ergonomics in a serverless environment. Most networking APIs were designed well before serverless emerged, with the assumption that the developer’s application is also the server, responsible for directly handling configuring TLS options and credentials.</p>
+<p>With this backdrop, we reached out to the community, with a focus on maintainers of database drivers, ORMs and other libraries that create outbound TCP connections. Using this feedback, we’ve tried to incorporate the best elements of existing APIs and proposals, and intend to contribute back to future standards, as part of the <a href="https://blog.cloudflare.com/introducing-the-wintercg">Web-interoperable Runtimes Community Group (WinterCG)</a>.</p>
+<p>The API we landed on is a simple function, connect(), imported from the new cloudflare:sockets module, that returns an instance of a Socket. Here’s a simple example showing it used to connect to a <a href="https://www.w3.org/People/Bos/PROSA/rep-protocols.html#gopher" target="_blank" rel="noopener noreferrer">Gopher</a> server. Gopher was one of the Internet’s early protocols that relied on TCP/IP, and still works today:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { connect } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:sockets'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> gopherAddr</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "gopher.floodgap.com:70"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(req.url);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> socket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(gopherAddr);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> writer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> socket.writable.</span><span class="sk-6f42c1-ffc799">getWriter</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> encoder</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> encoded</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> encoder.</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(url.pathname </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-005cc5-a0a0a0">\r\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> writer.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(encoded);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(socket.readable, { headers: { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/plain"</span><span class="sk-24292e-fff"> } });</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Socket connection failed: "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> error, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>We think this API design has many benefits that can be realized not just on Cloudflare, but in any serverless environment that adopts this design:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(address: SocketAddress </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> string, options</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-24292e-fff"> SocketOptions): Socket</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Socket</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  get</span><span class="sk-6f42c1-ffc799"> readable</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ReadableStream</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  get</span><span class="sk-6f42c1-ffc799"> writable</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WritableStream</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  get</span><span class="sk-6f42c1-ffc799"> closed</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  close</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  startTls</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Socket</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> SocketOptions</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  secureTransport</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  allowHalfOpen</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> boolean</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> SocketAddress</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  hostname</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  port</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Opportunistic TLS (StartTLS), without separate APIs</h3>
+<p>Opportunistic TLS, a pattern of creating an initial insecure connection, and then upgrading it to a secure one that uses TLS, remains common, particularly with database drivers. In Node.js, you must use the <a href="https://nodejs.org/api/net.html#class-netsocket" target="_blank" rel="noopener noreferrer">net</a> API to create the initial connection, and then use the <a href="https://nodejs.org/api/tls.html" target="_blank" rel="noopener noreferrer">tls</a> API to create a new, upgraded connection. In Deno, you pass the original socket to <a href="https://deno.land/api@v1.33.1?s=Deno.startTls" target="_blank" rel="noopener noreferrer">Deno.startTls()</a>, which creates a new, upgraded connection.</p>
+<p>Drawing on a <a href="https://www.w3.org/TR/tcp-udp-sockets/#idl-def-TCPOptions" target="_blank" rel="noopener noreferrer">previous W3C proposal</a> for a TCP Socket API, we’ve simplified this by providing one API, that allows TLS to be enabled, allowed, or used when creating a socket, and exposes a simple method, startTls(), for upgrading a socket to use TLS.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a new socket without TLS. secureTransport defaults to "off" if not specified.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> socket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"address:port"</span><span class="sk-24292e-fff">, { secureTransport: </span><span class="sk-032f62-99ffe4">"off"</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Create a new socket, then upgrade it to use TLS.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Once startTls() is called, only the newly created socket can be used.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> socket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"address:port"</span><span class="sk-24292e-fff">, { secureTransport: </span><span class="sk-032f62-99ffe4">"starttls"</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> secureSocket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> socket.</span><span class="sk-6f42c1-ffc799">startTls</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Create a new socket with TLS</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> socket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> connect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"address:port"</span><span class="sk-24292e-fff">, { secureTransport: </span><span class="sk-032f62-99ffe4">"use"</span><span class="sk-24292e-fff"> })</span></span></code></pre>
+</div>
+<h3>TLS configuration — a concern of host infrastructure, not application code</h3>
+<p>Existing APIs for creating TCP sockets treat TLS as a library that you interact with in your application code. The <a href="https://nodejs.org/api/tls.html#tlscreatesecurecontextoptions" target="_blank" rel="noopener noreferrer">tls.createSecureContext()</a> API from Node.js has a plethora of advanced configuration options that are mostly environment specific. If you use custom certificates when connecting to a particular service, you likely use a different set of credentials and options in production, staging and development. Managing direct file paths to credentials across environments and swapping out .env files in production build steps are common pain points.</p>
+<p>Host infrastructure is best positioned to manage this on your behalf, and similar to Workers support for <a href="https://blog.cloudflare.com/mtls-workers">making subrequests using mTLS</a>, TLS configuration and credentials for the socket API will be managed via Wrangler, and a connect() function provided via a <a href="https://developers.cloudflare.com/workers/platform/bindings" target="_blank" rel="noopener noreferrer">capability binding</a>. Currently, custom TLS credentials and configuration are not supported, but are coming soon.</p>
+<h3>Start writing data immediately, before the TLS handshake finishes</h3>
+<p>Because the connect() API synchronously returns a new socket, one can start writing to the socket immediately, without waiting for the TCP handshake to first complete. This means that once the handshake completes, data is already available to send immediately, and host platforms can make use of pipelining to optimize performance.</p>
+<h2>connect() API + DB drivers = Connect directly to databases</h2>
+<p>Many <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">serverless databases</a> already work on Workers, allowing clients to connect over HTTP or over <a href="https://blog.cloudflare.com/neon-postgres-database-from-workers">WebSockets</a>. But most databases don’t “speak” HTTP, including databases hosted on most cloud providers.</p>
+<p>Databases each have their own “wire protocol”, and open-source database “drivers” that speak this protocol, sending and receiving data over a TCP socket. Developers rely on these drivers in their own code, as do database ORMs. Our goal is to make sure that you can use the same drivers and ORMs you might use in other runtimes and on other platforms on Workers.</p>
+<h2>Try it now — connect to PostgreSQL from Workers</h2>
+<p>We’ve worked with the maintainers of <a href="https://www.npmjs.com/package/pg" target="_blank" rel="noopener noreferrer">pg</a>, one of the most popular database drivers in the JavaScript ecosystem, used by ORMs including <a href="https://sequelize.org/docs/v6/getting-started" target="_blank" rel="noopener noreferrer">Sequelize</a> and <a href="https://knexjs.org" target="_blank" rel="noopener noreferrer">knex.js</a>, to add support for connect().</p>
+<p>You can try this right now. First, create a new Worker and install pg:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> init</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save</span><span class="sk-032f62-99ffe4"> pg</span></span></code></pre>
+</div>
+<p>As of this writing, you’ll need to <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#add-polyfills-using-wrangler" target="_blank" rel="noopener noreferrer">enable the node_compat</a> option in wrangler.toml:</p>
+<p><strong>wrangler.toml</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">name = "my-worker"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">main = "src/index.ts"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">compatibility_date = "2023-05-15"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">node_compat = true</span></span></code></pre>
+</div>
+<p>In just 20 lines of TypeScript, you can create a connection to a Postgres database, execute a query, return results in the response, and close the connection:</p>
+<p><strong>index.ts</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Client } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "pg"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  DB</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-e36209-fff">    request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-e36209-fff">    env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-e36209-fff">    ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Client</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">query</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      text: </span><span class="sk-032f62-99ffe4">"SELECT * from customers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">    console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(result.rows));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> resp</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(result.rows);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Close the database connection, but don't block returning the response</span></span>
+<span class="line"><span class="sk-24292e-fff">    ctx.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(client.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> resp;</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>To test this in local development, use the <code>--experimental-local</code> flag (instead of <code>–local</code>), which <a href="https://blog.cloudflare.com/miniflare-and-workerd">uses the open-source Workers runtime</a>, ensuring that what you see locally mirrors behavior in production:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-005cc5-99ffe4"> --experimental-local</span></span></code></pre>
+</div>
+<h2>What’s next for connecting to databases from Workers?</h2>
+<p>This is only the beginning. We’re aiming for the two popular MySQL drivers, <a href="https://github.com/mysqljs/mysql" target="_blank" rel="noopener noreferrer">mysql</a> and <a href="https://github.com/sidorares/node-mysql2" target="_blank" rel="noopener noreferrer">mysql2</a>, to work on Workers soon, with more to follow. If you work on a database driver or ORM, we’d love to help make your library work on Workers.</p>
+<p>If you’ve worked more closely with database scaling and performance, you might have noticed that in the example above, a new connection is created for every request. This is one of the biggest current challenges of connecting to databases from serverless functions, across all platforms. With typical client connection pooling, you maintain a local pool of database connections that remain open. This approach of storing a reference to a connection or connection pool in global scope will not work, and is a poor fit for serverless. Managing individual pools of client connections on a per-isolate basis creates other headaches — when and how should connections be terminated? How can you limit the total number of concurrent connections across many isolates and locations?</p>
+<p>Instead, we’re already working on simpler approaches to connection pooling for the most popular databases. We see a path to a future where you don’t have to think about or manage client connection pooling on your own. We’re also working on a brand new approach to making your database reads lightning fast.</p>
+<h2>What’s next for sockets on Workers?</h2>
+<p>Supporting outbound TCP connections is only one half of the story — we plan to support inbound TCP and UDP connections, as well as new emerging application protocols based on QUIC, so that you can build applications beyond HTTP with <a href="https://blog.cloudflare.com/introducing-socket-workers">Socket Workers</a>.</p>
+<p>Earlier today we also announced <a href="https://blog.cloudflare.com/announcing-workers-smart-placement">Smart Placement</a>, which improves performance by placing any Worker that makes multiple HTTP requests to an origin run as close as possible to reduce round-trip time. We’re working on making this work with Workers that open TCP connections, so that if your Worker connects to a database in Virginia and makes many queries over a TCP connection, each query is lightning fast and comes from the nearest location on <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare’s global network</a>.</p>
+<p>We also plan to support custom certificates and other TLS configuration options in the coming months — tell us what is a must-have in order to connect to the services you need to connect to from Workers.</p>
+<h2>Get started, and share your feedback</h2>
+<p>The TCP Socket API is available today to everyone. Get started by reading the <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer">TCP Socket API docs</a>, or connect directly to any PostgreSQL database from your Worker by following <a href="https://developers.cloudflare.com/workers/databases/connect-to-postgres" target="_blank" rel="noopener noreferrer">this guide</a>.</p>
+<p>We want to hear your feedback, what you’d like to see next, and more about what you’re building. Join the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>.</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k61" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/e87f8536439db9b5eea7dfd33ad2f11e/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fe87f8536439db9b5eea7dfd33ad2f11e%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

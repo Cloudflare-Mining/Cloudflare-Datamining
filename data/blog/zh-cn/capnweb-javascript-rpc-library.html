@@ -1,0 +1,322 @@
+<p>本文将介绍 <a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"><u>Cap’n Web</u></a>，这是一个基于纯 TypeScript 的 RPC 协议和实现。</p>
+<p>Cap'n Web 与<a href="https://capnproto.org" target="_blank" rel="noopener noreferrer"><u> Cap'n Proto</u></a> 堪称精神同源，后者是我 (Kenton) 在 10 年前创建的 RPC 协议，但其设计初衷是为了在 Web 栈中良好运行。这意味着：</p>
+<ul>
+	<li>与 Cap'n Proto 类似，它是一种对象能力协议。（“Cap'n”是“capabilities and”的缩写。）我们将在下文详细介绍，但它的功能非常强大。</li>
+	<li>与 Cap'n Proto 不同，Cap'n Web <em>没有模式</em>。事实上，它几乎没有任何模板代码。这意味着它的工作方式更像是 <a href="https://blog.cloudflare.com/javascript-native-rpc" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers 中的 JavaScript 原生 RPC 系统</u></a>。</li>
+	<li>尽管如此，它与 TypeScript 集成得很好。</li>
+	<li>与 Cap'n Proto 不同，Cap'n Web 的底层序列化是人类可读的。实际上，它只是经过少量预处理/后处理的 JSON。</li>
+	<li>它原生支持 HTTP、WebSocket 和 postMessage()，并且可以轻松扩展到其他传输协议。</li>
+	<li>它可以在所有主流浏览器、Cloudflare Workers、Node.js 和其他现代 JavaScript 运行时中运行。</li>
+	<li>整个内容压缩 (minify+gzip) 至 10&nbsp;kB 以下，且无任何依赖关系。</li>
+	<li><a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"><u>它是基于 MIT 许可的开源软件</u></a>。</li>
+</ul>
+<p>Cap'n Web 比几乎所有其他 RPC 系统都更具表现力，因为它实现了<strong>对象能力 RPC 模型</strong>。这意味着它：</p>
+<ul>
+	<li>支持双向调用。客户端可以调用服务器，服务器也可以调用客户端。</li>
+	<li>支持通过引用传递函数：当您通过 RPC 调用传递一个函数时，接收方会收到一个“存根”。当其调用这个存根时，实际上会向您发起一次反向 RPC，从而在您最初定义该函数的地方执行它。这就是双向调用的实现原理：客户端向服务端传递一个回调函数，之后服务端可以在任意时刻调用它。</li>
+	<li>类似地，支持通过引用传递对象：如果一个类扩展了特殊标记类型 <code>RpcTarget</code>，那么该类的实例将通过引用传递，方法调用将回调到创建对象的位置。</li>
+	<li>支持 Promise 流水线。启动 RPC 时，会返回一个 Promise。无需等待，您可以立即在依赖的 RPC 中使用该 Promise，从而在一次网络往返中执行一系列调用。</li>
+	<li>支持基于能力的安全性模式。</li>
+</ul>
+<p>简而言之，Cap'n Web 允许您以设计常规 JavaScript API 的方式设计 RPC 接口，同时依然能正视网络延迟问题并加以优化。</p>
+<p>最棒的是，Cap'n Web 的设置极其简单。</p>
+<p>客户端看起来像这样：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { newWebSocketRpcSession } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "capnweb"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// One-line setup.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> api </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> newWebSocketRpcSession</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"wss://example.com/api"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Call a method on the server!</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> api.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"World"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>下面是一个实现了 RPC 服务器的完整 Cloudflare Worker：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { RpcTarget, newWorkersRpcResponse } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "capnweb"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This is the server implementation.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MyApiServer</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> RpcTarget</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  hello</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">name</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> `Hello, ${</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}!`</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Standard Workers HTTP handler.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Parse URL for routing.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Serve API at `/api`.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/api"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> newWorkersRpcResponse</span><span class="sk-24292e-fff">(request, </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> MyApiServer</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // You could serve other endpoints here...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>就是这样，应用就此完成。</p>
+<ul>
+	<li>您可以向 <code>MyApiServer</code> 添加更多方法，并从客户端调用它们。</li>
+	<li>您可以让客户端将回调函数传递给服务器，然后服务器可以直接调用它。</li>
+	<li>您可以为您的 API 定义一个 TypeScript 接口，并轻松地将其应用到客户端和服务器。</li>
+</ul>
+<p>它非常有效。</p>
+<h3>为什么使用 RPC 以及 RPC 到底是什么？</h3>
+<p>远程过程调用 (RPC) 是一种通过网络在两个程序之间进行通信的方式。如果没有 RPC，您可能使用 HTTP 之类的协议进行通信。但是，如果使用 HTTP，您必须将通信格式化并解析为 HTTP 请求和响应，这或许可以采用 <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer"><u>REST</u></a> 风格设计。RPC 系统试图使通信看起来像常规的函数调用，就好像您是在调用库而不是远程服务一样。RPC 系统在客户端提供了一个“存根”对象，它代表真正的服务器端对象。当在存根上调用方法时，RPC 系统会确定如何序列化参数并将其传输到服务器，在服务器上调用该方法，然后将返回值传回。</p>
+<p>RPC 的优点一直是争论的焦点。它常被指责犯下了诸多<a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing" target="_blank" rel="noopener noreferrer"><u>分布式计算谬误</u></a>。</p>
+<p>但这种名声已经过时了。大约 40 年前 RPC 刚刚发明时，异步编程几乎不存在。我们还没有 Promise，更不用说 async 和 await 了。早期的 RPC 是同步的：每次调用都会阻塞调用线程，等待回复返回。在最好的情况下，延迟会使程序变慢。在最坏的情况下，网络故障会导致程序挂起或崩溃。难怪它被认为是“不完善的”。</p>
+<p>如今情况大不相同。我们有 Promise、async 和 await，并且可以在网络故障时抛出异常。我们甚至了解 RPC 是如何实现流水线化的，这样一连串调用只需要一次网络往返。您每天可能使用的许多大型分布式系统都是基于 RPC 构建的。它确实有效。</p>
+<p>事实是，RPC 契合我们早已习惯的编程思维模式。每位程序员都被训练成以函数调用构成的 API 来思考问题，而非以字节流协议甚至 REST 的方式。使用 RPC 能让您摆脱在不同心智模型之间频繁切换的困扰，从而提升开发效率。</p>
+<h3>何时应该使用 Cap'n Web？</h3>
+<p>Cap'n Web 适用于任何两个 JavaScript 应用程序通过网络相互通信的情况，包括客户端到服务器以及微服务到微服务的场景。然而，它尤其适合具有实时协作功能的交互式 Web 应用程序，以及在复杂的安全边界上进行交互建模。</p>
+<p>Cap’n Web 目前仍处于早期阶段，属于实验性项目，因此现阶段您可能也需要有拥抱前沿技术的勇气！</p>
+<h2>功能，功能，功能……</h2>
+<p>以下是使用 Cap’n Web 还能实现的更多功能。</p>
+<h3>HTTP 批处理模式</h3>
+<p>有时，WebSocket 连接显得有些过于重量级。如果您只是想快速发起一批一次性调用，而不需要维持一个持续连接，那该怎么办呢？</p>
+<p>为此，Cap'n Web 支持 HTTP 批处理模式：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { newHttpBatchRpcSession } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "capnweb"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> batch </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> newHttpBatchRpcSession</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com/api"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> batch.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"World"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p><em>（服务器与之前完全相同。）</em></p>
+<p>请注意，一旦您在某个批次中 await 了一个 RPC 调用，该批次就结束了，通过该批次获得的所有远程引用都会失效。若要继续发起更多调用，您需要重新开始一个新的批次。不过，您可以在单个批次中发起多个调用。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> batch </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> newHttpBatchRpcSession</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com/api"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// We can call make multiple calls, as long as we await them all at once.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> promise1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> batch.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Alice"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> promise2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> batch.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Bob"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> [result1, result2] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([promise1, promise2]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result1);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result2);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>这就引出了另一个功能……</p>
+<h3>链式调用（Promise 流水线）</h3>
+<p>下面是见证奇迹的时刻。</p>
+<p>在批处理模式和 WebSocket 模式下，您都可以进行依赖于另一个调用结果的调用，而无需等待第一个调用完成。在批处理模式下，这意味着您可以在单个批处理中调用一个方法，然后在另一个调用中使用其结果。整个批处理仍然只需要一次网络往返。</p>
+<p>例如，假设您的 API 为：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MyApiServer</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> RpcTarget</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getMyName</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> "Alice"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  hello</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">name</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> `Hello, ${</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}!`</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>您可以这样写：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> namePromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> batch.</span><span class="sk-6f42c1-ffc799">getMyName</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> batch.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">(namePromise);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>请注意，对 <code>getMyName()</code> 的初始调用返回了一个 Promise，但我们直接使用该 Promise 本身作为 <code>hello()</code> 的输入，而没有先等待它。使用 Cap'n Web，这就可以正常工作：客户端向服务器发送一条消息，内容为：“请将第一次调用的结果插入到第二次调用的参数中。”</p>
+<p>或者，第一次调用可能返回一个包含方法的对象。您可以立即调用这些方法，无需等待第一个 Promise，例如：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> batch </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> newHttpBatchRpcSession</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com/api"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Authencitate the API key, returning a Session object.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> sessionPromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> batch.</span><span class="sk-6f42c1-ffc799">authenticate</span><span class="sk-24292e-fff">(apiKey);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Get the user's name.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sessionPromise.</span><span class="sk-6f42c1-ffc799">whoami</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(name);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>之所以有效，是因为 Cap'n Web 调用返回的 Promise 并非常规的 Promise。相反，它是一个 JavaScript 代理对象。您对其调用的任何方法都会被解释为对最终结果的推测性方法调用。这些调用会立即发送到服务器，告诉服务器：“当你完成我之前发送的调用后，请对其返回的结果调用此方法。”</p>
+<h3>您发现其中的安全机制了吗？</h3>
+<p>最后一个例子展示了 Cap'n Web 的对象能力模型所支持的一个重要安全模式。</p>
+<p>当我们调用 authenticate() 方法时，在验证了提供的 API 密钥后，它会返回一个经过身份验证的会话对象。客户端可以对该会话对象进行进一步的 RPC 调用，以执行需要以该用户身份授权的操作。服务器代码可能如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MyApiServer</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> RpcTarget</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  authenticate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">apiKey</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> username </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> checkApiKey</span><span class="sk-24292e-fff">(apiKey);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AuthenticatedSession</span><span class="sk-24292e-fff">(username);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AuthenticatedSession</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> RpcTarget</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">username</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    super</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.username </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> username;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  whoami</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.username;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...other methods requiring auth...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>其工作原理如下：<strong>客户端无法“伪造”会话对象。获取会话对象的唯一方法是调用 authenticate() 并使其成功返回。</strong></p>
+<p>在大多数 RPC 系统中，一次 RPC 调用不可能以这种方式返回指向新 RPC 对象的存根。相反，所有函数都是顶层函数，任何人都可以调用。在这种传统的 RPC 系统中，每次调用函数时都需要再次传递 API 密钥，并且每次都要在服务器上再次验证。或者，您需要完全在 RPC 系统之外进行授权。</p>
+<p>这是 WebSocket 的一个常见痛点。由于 WebSocket 的 Web API 设计，通常无法使用标头或 Cookie 进行授权。相反，授权必须在带内进行，即通过 WebSocket 本身发送消息。但这对 RPC 协议来说可能很麻烦，因为这意味着身份验证消息是“特殊的”，会改变连接本身的状态，从而影响后续调用。这破坏了抽象性。</p>
+<p>上面显示的 authenticate() 模式巧妙地使身份验证自然地融入了 RPC 抽象。它甚至是类型安全的：您不可能在调用需要身份验证的方法之前忘记进行身份验证，因为您没有可进行调用的对象。说到类型安全……</p>
+<h3>TypeScript</h3>
+<p>如果您使用 TypeScript，Cap'n Web 可以很好地与之兼容。您可以将 RPC API 声明为 TypeScript 接口，在服务器上实现，然后在客户端调用它：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Shared interface declaration:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> MyApi</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  hello</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">string</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// On the client:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> api</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RpcStub</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">MyApi</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> newWebSocketRpcSession</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"wss://example.com/api"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// On the server:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MyApiServer</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> RpcTarget</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> MyApi</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  hello</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">name</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> `Hello, ${</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}!`</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>现在，您将获得端到端的类型检查、自动补全的方法名等功能。</p>
+<p>请注意，与 TypeScript 一样，运行时不会进行类型检查。RPC 系统本身并不能阻止恶意客户端使用错误类型的参数调用 RPC。当然，这并非 Cap'n Web 独有的问题——基于 JSON 的 API 一直存在这个问题。您可能希望使用像 Zod 这样的运行时类型检查系统来解决这个问题。（同时，我们希望在未来添加直接基于 TypeScript 类型的类型检查。）</p>
+<h2>GraphQL 的替代方案？</h2>
+<p>如果您以前使用过 GraphQL，您可能会注意到一些相似之处。GraphQL 的一个优点是允许客户端在一次查询中请求多条数据，从而解决了传统 REST API 的“瀑布流”问题。例如，您不再需要依次发起三次 HTTP 请求：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">GET</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">user</span></span>
+<span class="line"><span class="sk-005cc5-fff">GET</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">user</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">friends</span></span>
+<span class="line"><span class="sk-005cc5-fff">GET</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">user</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">friends</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">photos</span></span></code></pre>
+</div>
+<p>……您可以编写一个 GraphQL 查询来一次性获取所有内容。</p>
+<p>相对于 REST 来说，这是一个很大的改进，但 GraphQL 也有其自身的缺点：</p>
+<ul>
+	<li><strong>新语言和工具。</strong>您需要采用 GraphQL 的模式语言、服务器和客户端库。如果您的团队完全使用 JavaScript，那会增加很多额外的开销。</li>
+	<li><strong>有限的可组合性。</strong>GraphQL 查询是声明式的，这使得它们非常适合用于获取数据，但对于链式操作或修改操作来说却很不方便。例如，您不能简单地说：“创建一个用户，然后立即使用这个新用户对象发起好友请求，且整个过程仅需一次网络往返。”</li>
+	<li><strong>不同的抽象模型。</strong> GraphQL 的外观和使用体验与您熟悉的 JavaScript API 截然不同。您是在学习一种新的思维模型，而不是扩展您日常使用的模型。</li>
+</ul>
+<h3>Cap’n Web 如何更进一步</h3>
+<p>Cap’n Web 解决了“瀑布流”问题，<em>且无需</em>引入新的语言或生态体系——它用的就是 JavaScript。得益于对 Promise 流水线和对象引用的支持，您可以写出如下所示的代码：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> user </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> api.</span><span class="sk-6f42c1-ffc799">createUser</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">"Alice"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> friendRequest </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> user.</span><span class="sk-6f42c1-ffc799">sendFriendRequest</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Bob"</span><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>这里面到底发生了什么？两个调用都被整合到一次网络往返中：</p>
+<ol>
+	<li>创建用户。</li>
+	<li>获取该调用的结果（一个新的 User 对象）。</li>
+	<li>立即对该对象调用 sendFriendRequest()。</li>
+</ol>
+<p>所有这些都可以用 JavaScript 自然地表达，无需任何模式、查询语言或特殊工具。您只需调用方法并传递对象即可，就像在任何其他 JavaScript 代码中一样。</p>
+<p>换句话说，GraphQL 为我们提供了一种化解 REST 架构中“瀑布流”问题的方案。而 Cap’n Web 则更进一步：它让您能够像编写普通程序那样，精确建模复杂的交互逻辑，且不存在任何阻抗失配问题。</p>
+<h3>但是我们如何解决数组问题呢？</h3>
+<p>结合我们目前为止所介绍的内容，若要将 Cap’n Web 作为 GraphQL 的可行替代方案来认真考虑，还有一个关键环节不容忽视：列表处理。GraphQL 常被用于实现这样的需求：“执行这个查询，然后针对每一个查询结果，再执行另一个查询。”例如：“列出用户的所有好友，然后为每位好友获取其个人资料照片。”</p>
+<p>简而言之，我们需要一个无需增加往返即可执行的 <code>array.map()</code> 操作。</p>
+<p>从历史发展来看，Cap’n Proto 从未支持过这样的功能。</p>
+<p>但是，通过 Cap'n Web，我们已经解决了这个问题。您可以这样写：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> user </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> api.</span><span class="sk-6f42c1-ffc799">authenticate</span><span class="sk-24292e-fff">(token);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Get the user's list of friends (an array).</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> friendsPromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> user.</span><span class="sk-6f42c1-ffc799">listFriends</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Do a .map() to annotate each friend record with their photo.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This operates on the *promise* for the friends list, so does not</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// add a round trip.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// (wait WHAT!?!?)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> friendsWithPhotos </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> friendsPromise.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">friend</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> {friend, photo: api.</span><span class="sk-6f42c1-ffc799">getUserPhoto</span><span class="sk-24292e-fff">(friend.id))};</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Await the friends list with attached photos -- one round trip!</span></span>
+<span class="line"><span class="sk-24292e-fff">let results </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> friendsWithPhotos;</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>等等……这是怎么实现的？</h3>
+<p><code>.map()</code> 接受一个回调函数，该函数需要应用于数组中的每个元素。如前所述，<em>通常</em>，当您将函数传递给 RPC 时，该函数会“通过引用”传递，这意味着远程端会收到一个存根 (stub)，调用该存根会将 RPC 返回到创建该函数的客户端。</p>
+<p>但这里的情况并非如此。那样做就违背了目的：我们不希望服务器必须往返客户端来处理数组的每个成员。我们希望服务器只在服务器端应用转换。</p>
+<p>为此，<code>.map() </code>比较特殊。它不会向服务器发送 JavaScript 代码，而是发送类似“代码”的东西，仅限于特定领域的非图灵完备语言。“代码”是服务器应该针对数组的每个成员执行的一系列指令。在本例中，这些指令如下：</p>
+<ol>
+	<li>调用 <code>api.getUserPhoto(friend.id)</code>。</li>
+	<li>返回一个对象 <code>{friend, photo}</code>，其中 friend 是原始数组元素，photo 是步骤 1 的结果。</li>
+</ol>
+<p>但是，应用程序代码只指定了一个 JavaScript 方法。我们究竟该如何将其转换为狭义 DSL 呢？</p>
+<p>答案是记录-回放机制：在客户端，我们执行一次回调函数，并传入一个特殊的占位值。该参数的行为类似于一个 RPC Promise，但要求回调函数必须是同步的，因此它实际上无法等待这个 Promise。它唯一能做的就是利用 Promise 流水线发起流水线调用。这些调用会被实现层拦截并记录为指令，随后这些指令可以被发送到服务端，并在需要时进行回放。</p>
+<p>而且，由于记录基于 Promise 流水线，而这正是 RPC 协议本身的设计目的，因此，用于表示 map 函数“指令”的“DSL”<em>只是 RPC 协议本身</em>。🤯</p>
+<h2>实现详情</h2>
+<h3>基于 JSON 的序列化</h3>
+<p>Cap'n Web 的底层协议基于 JSON，但包含一个预处理步骤来处理特殊类型。数组被视为“转义序列”，以便我们对其他值进行编码。例如，JSON 没有 <code>Date</code> 对象的编码，但 Cap'n Web 有。您可能会看到如下消息：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  event</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Birthday Week"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  timestamp</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"date"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1758499200000</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>要对文字数组进行编码，我们只需用两对 <code>[]</code> 将其双重包裹起来：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  names</span><span class="sk-24292e-fff">: [[</span><span class="sk-032f62-99ffe4">"Alice"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Bob"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Carol"</span><span class="sk-24292e-fff">]]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>换句话说，如果一个数组只有一个元素，并且该元素本身也是一个数组，则其值等于其内部数组的字面值。如果一个数组的第一个元素是类型名称，则其值等于该类型的一个实例，其余元素是该类型的参数。</p>
+<p>需要注意的是，目前仅支持一组固定的类型：主要是<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm" target="_blank" rel="noopener noreferrer"><u>“可结构化克隆”类型</u></a>以及 RPC 存根类型。</p>
+<p>在此基本编码之上，我们定义了一个受 Cap'n Proto 启发的 RPC 协议，但该协议已得到极大的简化。</p>
+<h3>RPC 协议</h3>
+<p>由于 Cap'n Web 是一种对称协议，因此在协议层面上没有明确定义的“客户端”或“服务器”。只有两方通过连接交换消息。任何交互都可以在任意方向上进行。</p>
+<p>为了更容易描述这些互动，我将双方称为“Alice”和“Bob”。</p>
+<p>Alice 和 Bob 通过建立某种双向消息流来启动连接。这可能是 WebSocket，但 Cap'n Web 也允许应用程序定义自己的传输方式。如前所述，流中的每条消息都采用 JSON 编码。</p>
+<p>Alice 和 Bob 各自维护着一些与连接相关的状态信息。具体来说，双方都维护着一个「导出表」（描述他们暴露给对方的所有引用传递对象）和一个「导入表」（描述自己从对方接收到的引用）。Alice 的导出项对应 Bob 的导入项，反之亦然。导出表中的每个条目都有一个带符号的整数 ID，用于引用该条目。您可以把这些 ID 想象成 POSIX 系统中的文件描述符。不过与文件描述符不同的是，这些 ID 可以是负数，并且在连接的整个生命周期内，一个 ID 永远不会被重复使用。</p>
+<p>在连接开始时，Alice 和 Bob 在各自的导出表中填充一个编号为 0 的条目，代表他们的“主”接口。通常，当一方充当“服务器”时，他们会将其主公共 RPC 接口导出为 ID 为 0 的条目，而“客户端”则会导出一个空接口。不过，这取决于应用程序：任何一方都可以导出任何他们想要的接口。</p>
+<p>从那里开始，可以通过两种方式添加新的导出项：</p>
+<ul>
+	<li>当 Alice 向 Bob 发送包含对象或函数引用的消息时，Alice 会将目标对象添加到她的导出表中。在这种情况下分配的 ID 始终为负数，从 -1 开始向下计数。</li>
+	<li>Alice 可以向 Bob 发送一条“推送”(push) 消息，请求 Bob 向其导出表添加一个值。该“推送”消息包含一个表达式，Bob 会对其进行求值并导出结果。通常，该表达式描述了对 Bob 现有导出之一的方法调用——这就是 RPC 的实现方式。每次“推送”操作都会在导出表上分配一个正 ID，从 1 开始向上计数。由于仅在推送操作后才会分配正 ID，因此 Alice 可以预测她的每次推送操作产生的 ID，并可以在后续消息中立即使用该 ID。这就是 Promise 流水线的实现方式。</li>
+</ul>
+<p>在发送“推送”(push) 消息后，Alice 可以接着发送一条“拉取”(pull)消息，该消息会告知 Bob：一旦他完成对“推送”内容的求值，就应该主动将结果序列化并回传给 Alice，形式为一条“解析”(resolve) 或“拒绝”(reject) 消息。不过，这一步是可选的：如果 Alice 只是想利用该 RPC 调用在 Promise 流水线中继续后续操作，而并不真正关心获取返回值，那么她可能根本不会去接收这个返回值。事实上，Cap’n Web 的实现只有在应用程序确实 await 了返回的 Promise 时，才会发送“拉取”消息。</p>
+<p>把它们放在一起，代码序列如下：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> namePromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> api.</span><span class="sk-6f42c1-ffc799">getMyName</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> api.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">(namePromise);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(result);</span></span></code></pre>
+</div>
+<p>可能产生如下的消息交换：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Call api.getByName(). `api` is the server's main export, so has export ID 0.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"push"</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">"pipeline"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"getMyName"</span><span class="sk-24292e-fff">, []]</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Call api.hello(namePromise). `namePromise` refers to the result of the first push,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// so has ID 1.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"push"</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">"pipeline"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"hello"</span><span class="sk-24292e-fff">, [[</span><span class="sk-032f62-99ffe4">"pipeline"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">]]]]</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Ask that the result of the second push be proactively serialized and returned.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"pull"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Server responds.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;-</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"resolve"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Hello, Alice!"</span><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>有关该协议的更多详细信息，请<a href="https://github.com/cloudflare/capnweb/blob/main/protocol.md" target="_blank" rel="noopener noreferrer"><u>查看文档</u></a>。</p>
+<h2>立即试用！</h2>
+<p>Cap’n Web 仍是一项较新的技术，目前正处于高度实验阶段，可能存在一些待解决的漏洞。但事实上，我们已经在实际使用它了。Cap’n Web 是 <a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga" target="_blank" rel="noopener noreferrer"><u>Wrangler 最近推出的“远程绑定”功能</u></a>的基础，该功能让本地测试环境中的 workerd 实例能够通过 RPC 与生产环境中的服务进行通信。此外，我们也已开始在各类前端应用中对其进行实验性应用，未来敬请期待更多相关博客文章。</p>
+<p>无论怎样，Cap’n Web 是开源的，您现在就可以在自己的项目中开始使用它。</p>
+<p><a href="https://github.com/cloudflare/capnweb" target="_blank" rel="noopener noreferrer"><u>您可以在 GitHub 上查看。</u></a></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="266" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=715&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=640&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=715&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=750&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=828&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=1080&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=1280&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=1430&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2954 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475Z5XABGAXA81B83CMT6R.png&amp;w=1200&amp;h=446&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="446" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="266" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><br></p>

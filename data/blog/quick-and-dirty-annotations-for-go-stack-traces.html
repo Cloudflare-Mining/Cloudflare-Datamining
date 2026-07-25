@@ -1,62 +1,53 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6v8eVN6UI2Be9Pd9X6dUms/b230b031d3baa391da1b829eb488369f/quick-and-dirty-annotations-for-go-stack-traces.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>CloudFlare’s DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v4jReMMfDFsc62GnuXpFo/13aafcf00d9d9b425cdf294f62fa7f76/6372385465_014a4e56af_z.jpg" alt="" class="kg-image" width="640" height="513" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23" target="_blank" rel="noopener noreferrer">wiredforlego</a></p>
-	<p>When there are thousands of goroutines running, debug output quickly becomes difficult to interpret. For example, last week I was tracking down a problem with a file descriptor and wanted to know what its listening goroutine was doing. <i>With 40k stack traces, good luck figuring out which one is having trouble.</i></p>
-	<p>Go stack traces include parameter values, but most Go types are (or are implemented as) pointers, so what you will see passed to the goroutine function is just a meaningless memory address.</p>
-	<p>We have a couple options to make sense of the addresses: get a heap dump at the same time as the stack trace and cross-reference the pointers, or have a debug endpoint that prints a goroutine/pointer -&gt; IP map. Neither are seamless.</p>
-	<div class="flex anchor relative">
-		<h3 id="underscore-to-the-rescue">Underscore to the rescue</h3>
-		<a href="https://blog.cloudflare.com/#underscore-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>However, we know that <i>integers are shown in traces</i>, so what we did is first <i>convert IPv4 addresses to their uint32 representation</i>:</p>
-	<pre class="language-go"><code class="language-go">// addrToUint32 takes a TCPAddr or UDPAddr and converts its IP to a uint32.
-// If the IP is v6, 0xffffffff is returned.
-func addrToUint32(addr net.Addr) uint32 {
-       var ip net.IP
-       switch addr := addr.(type) {
-       case *net.TCPAddr:
-               ip = addr.IP
-       case *net.UDPAddr:
-               ip = addr.IP
-       case *net.IPAddr:
-               ip = addr.IP
-       }
-       if ip == nil {
-               return 0
-       }
-       ipv4 := ip.To4()
-       if ipv4 == nil {
-               return math.MaxUint32
-       }
-       return uint32(ipv4[0])&lt;&lt;24 | uint32(ipv4[1])&lt;&lt;16 | uint32(ipv4[2])&lt;&lt;8 | uint32(ipv4[3])
-}</code></pre>
-	<p>And then <i>pass the IPv4-as-uint32 to the listening goroutine as an </i><code><i>_</i></code><i> parameter</i>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier" target="_blank" rel="noopener noreferrer">blank identifier</a> in Go.</p>
-	<pre class="language-go"><code class="language-go">// PacketUDPRead is a goroutine that listens on a specific UDP socket and reads
-// in new requests
-// The first parameter is the int representation of the listening IP address,
-// and it's passed just so it will appear in stack traces
-func PacketUDPRead(_ uint32, conn *net.UDPConn, ...) { ... }
-
-go PacketUDPRead(addrToUint32(conn.LocalAddr()), conn, ...)</code></pre>
-	<p>Now when we get a stack trace, we can just look at the first bytes, convert them back to dotted notation, and know on what IP the goroutine was listening.</p>
-	<pre class="language-bash"><code class="language-bash">goroutine 42 [IO wait]:
-	[...]
-	/.../request.go:195 +0x5d
-rrdns/core.PacketUDPRead(0xc27f000001, 0x2b6328113ad8, 0xc20801ecc0, 0xc208044308, 0xc208e99280, 0xc208ad8180, 0x12a05f200)
-	/.../server.go:119 +0x35a
-created by rrdns/core.PacketIO
-	/.../server.go:230 +0x8be</code></pre>
-	<p><code>0xc27f000001</code> -&gt; remove alignment byte -&gt; <code>0x7f000001</code> -&gt; <code>127.0.0.1</code></p>
-	<p>Obviously you can do the same with any piece of information you can represent as an <code>int</code>.</p>
-	<p><i>Are you interested in taming the goroutines that run the web? We're </i><a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer"><i>hiring</i></a><i> in London, San Francisco and Singapore!</i></p>
+<p>CloudFlare’s DNS server, <a href="https://blog.cloudflare.com/tag/rrdns">RRDNS</a>, is entirely written in Go and typically runs tens of thousands goroutines. Since goroutines are cheap and Go I/O is blocking we run one goroutine per file descriptor we listen on and queue new packets for processing.</p>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/wiredforsound23/6372385465" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/wiredforsound23" target="_blank" rel="noopener noreferrer">wiredforlego</a></p>
+<p>When there are thousands of goroutines running, debug output quickly becomes difficult to interpret. For example, last week I was tracking down a problem with a file descriptor and wanted to know what its listening goroutine was doing. <em>With 40k stack traces, good luck figuring out which one is having trouble.</em></p>
+<p>Go stack traces include parameter values, but most Go types are (or are implemented as) pointers, so what you will see passed to the goroutine function is just a meaningless memory address.</p>
+<p>We have a couple options to make sense of the addresses: get a heap dump at the same time as the stack trace and cross-reference the pointers, or have a debug endpoint that prints a goroutine/pointer -&gt; IP map. Neither are seamless.</p>
+<h3>Underscore to the rescue</h3>
+<p>However, we know that <em>integers are shown in traces</em>, so what we did is first <em>convert IPv4 addresses to their uint32 representation</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// addrToUint32 takes a TCPAddr or UDPAddr and converts its IP to a uint32.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// If the IP is v6, 0xffffffff is returned.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> addrToUint32</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">addr</span><span class="sk-6f42c1-ffc799"> net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Addr</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">uint32</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       var</span><span class="sk-24292e-fff"> ip </span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">IP</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       switch</span><span class="sk-24292e-fff"> addr </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> addr.(</span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       case</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">TCPAddr</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">               ip </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> addr.IP</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       case</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">UDPAddr</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">               ip </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> addr.IP</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       case</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">IPAddr</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">               ip </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> addr.IP</span></span>
+<span class="line"><span class="sk-24292e-fff">       }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       if</span><span class="sk-24292e-fff"> ip </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">               return</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-24292e-fff">       }</span></span>
+<span class="line"><span class="sk-24292e-fff">       ipv4 </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> ip.</span><span class="sk-6f42c1-ffc799">To4</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       if</span><span class="sk-24292e-fff"> ipv4 </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">               return</span><span class="sk-24292e-fff"> math.MaxUint32</span></span>
+<span class="line"><span class="sk-24292e-fff">       }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799">24</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799">16</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">])</span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799">8</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">(ipv4[</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">])</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>And then <em>pass the IPv4-as-uint32 to the listening goroutine as an <code>_</code> parameter</em>. Yes, as a parameter with name <code>_</code>; it's known as the <a href="https://golang.org/ref/spec#Blank_identifier" target="_blank" rel="noopener noreferrer">blank identifier</a> in Go.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// PacketUDPRead is a goroutine that listens on a specific UDP socket and reads</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// in new requests</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The first parameter is the int representation of the listening IP address,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// and it's passed just so it will appear in stack traces</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> PacketUDPRead</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">_</span><span class="sk-d73a49-a0a0a0"> uint32</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">conn</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-6f42c1-ffc799">net</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">UDPConn</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">) { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">go</span><span class="sk-6f42c1-ffc799"> PacketUDPRead</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">addrToUint32</span><span class="sk-24292e-fff">(conn.</span><span class="sk-6f42c1-ffc799">LocalAddr</span><span class="sk-24292e-fff">()), conn, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Now when we get a stack trace, we can just look at the first bytes, convert them back to dotted notation, and know on what IP the goroutine was listening.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">goroutine</span><span class="sk-005cc5-ffc799"> 42</span><span class="sk-24292e-fff"> [IO </span><span class="sk-032f62-99ffe4">wait]:</span></span>
+<span class="line"><span class="sk-24292e-fff">	[...]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	/.../request.go:195</span><span class="sk-032f62-99ffe4"> +0x5d</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">rrdns/core.PacketUDPRead(0xc27f000001,</span><span class="sk-032f62-99ffe4"> 0x2b6328113ad8,</span><span class="sk-032f62-99ffe4"> 0xc20801ecc0,</span><span class="sk-032f62-99ffe4"> 0xc208044308,</span><span class="sk-032f62-99ffe4"> 0xc208e99280,</span><span class="sk-032f62-99ffe4"> 0xc208ad8180,</span><span class="sk-005cc5-ffc799"> 0x12a05f200</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	/.../server.go:119</span><span class="sk-032f62-99ffe4"> +0x35a</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">created</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> rrdns/core.PacketIO</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	/.../server.go:230</span><span class="sk-032f62-99ffe4"> +0x8be</span></span></code></pre>
+</div>
+<p><code>0xc27f000001</code> -&gt; remove alignment byte -&gt; <code>0x7f000001</code> -&gt; <code>127.0.0.1</code></p>
+<p>Obviously you can do the same with any piece of information you can represent as an <code>int</code>.</p>
+<p><em>Are you interested in taming the goroutines that run the web? We're <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a> in London, San Francisco and Singapore!</em></p>

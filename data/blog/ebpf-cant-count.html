@@ -1,238 +1,220 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bsvYlZJnTR8ZngKkyoizz/3cb9d04ac676775e16d93d4cc7fcd436/ebpf-cant-count.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Grant mechanical calculating machine, public domain <a href="https://en.wikipedia.org/wiki/File:Grant_mechanical_calculating_machine_1877.jpg" target="_blank" rel="noopener noreferrer">image</a></p>
-	<p>It is unlikely we can tell you anything new about the extended Berkeley Packet Filter, eBPF for short, if you've read all the great <a href="http://man7.org/linux/man-pages/man2/bpf.2.html" target="_blank" rel="noopener noreferrer">man pages</a>, <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">docs</a>, <a href="https://cilium.readthedocs.io/en/latest/bpf" target="_blank" rel="noopener noreferrer">guides</a>, and some of our <a href="https://blog.cloudflare.com/epbf_sockets_hop_distance">blogs</a> out there.</p>
-	<p>But we can tell you a war story, and who doesn't like those? This one is about how eBPF lost its ability to count for a while<a href="https://blog.cloudflare.com/#f1"><sup>1</sup></a>.</p>
-	<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe this… tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com" target="_blank" rel="noopener noreferrer">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04" target="_blank" rel="noopener noreferrer">Marek Majkowski</a> after what I heard was a long night:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2z8UE9I87Kpw8ONzxBH3WW/96500c2ee678248af9c22936bb49cdee/ebpf_bug_email_netdev.png" alt="" class="kg-image" width="1486" height="710" loading="lazy">
-
-	</figure>
-	<p>Marek's findings were quite shocking - if you subtract two 64-bit timestamps in eBPF, the result is garbage. But only when running as an unprivileged user. From root all works fine. Huh.</p>
-	<p>If you've seen Marek's <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank" rel="noopener noreferrer">presentation</a> from the Netdev 0x13 conference, you know that we are using BPF socket filters as one of the defenses against simple, volumetric DoS attacks. So potentially getting your packet count wrong could be a Bad Thing™, and affect legitimate traffic.</p>
-	<p>Let's try to reproduce this bug with a simplified <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L63" target="_blank" rel="noopener noreferrer">eBPF socket filter</a> that subtracts two 64-bit unsigned integers passed to it from <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93" target="_blank" rel="noopener noreferrer">user-space</a> though a BPF map. The input for our BPF program comes from a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L44" target="_blank" rel="noopener noreferrer">BPF array map</a>, so that the values we operate on are not known at build time. This allows for easy experimentation and prevents the compiler from optimizing out the operations.</p>
-	<p>Starting small, eBPF, what is 2 - 1? View the code <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93" target="_blank" rel="noopener noreferrer">on our GitHub</a>.</p>
-	<pre class="language-bash"><code class="language-bash">$ ./run-bpf 2 1
-arg0                    2 0x0000000000000002
-arg1                    1 0x0000000000000001
-diff                    1 0x0000000000000001</code></pre>
-	<p>OK, eBPF, what is 2^32 - 1?</p>
-	<pre class="language-bash"><code class="language-bash">$ ./run-bpf $[2**32] 1
-arg0           4294967296 0x0000000100000000
-arg1                    1 0x0000000000000001
-diff 18446744073709551615 0xffffffffffffffff</code></pre>
-	<p>Wrong! But if we ask nicely with sudo:</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo ./run-bpf $[2**32] 1
-[sudo] password for jkbs:
-arg0           4294967296 0x0000000100000000
-arg1                    1 0x0000000000000001
-diff           4294967295 0x00000000ffffffff</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="who-is-messing-with-my-ebpf">Who is messing with my eBPF?</h3>
-		<a href="https://blog.cloudflare.com/#who-is-messing-with-my-ebpf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When computers stop subtracting, you know something big is up. We called for reinforcements.</p>
-	<p>Our colleague Arthur Fabre <a href="https://lore.kernel.org/netdev/20190301113901.29448-1-afabre@cloudflare.com" target="_blank" rel="noopener noreferrer">quickly noticed</a> something is off when you examine the eBPF code loaded into the kernel. It turns out kernel doesn't actually run the eBPF it's supplied - it sometimes rewrites it first.</p>
-	<p>Any sane programmer would expect 64-bit subtraction to be expressed as <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.s#L47" target="_blank" rel="noopener noreferrer">a single eBPF instruction</a></p>
-	<pre class="language-bash"><code class="language-bash">$ llvm-objdump -S -no-show-raw-insn -section=socket1 bpf/filter.o
-…
-      20:       1f 76 00 00 00 00 00 00         r6 -= r7
-…</code></pre>
-	<p>However, that's not what the kernel actually runs. Apparently after the rewrite the subtraction becomes a complex, multi-step operation.</p>
-	<p>To see what the kernel is actually running we can use little known <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/bpf/bpftool?h=v5.0" target="_blank" rel="noopener noreferrer">bpftool utility</a>. First, we need to load our BPF</p>
-	<pre class="language-bash"><code class="language-bash">$ ./run-bpf --stop-after-load 2 1
-[2]+  Stopped                 ./run-bpf 2 1</code></pre>
-	<p>Then list all BPF programs loaded into the kernel with <code>bpftool prog list</code></p>
-	<pre class="language-bash"><code class="language-bash">$ sudo bpftool prog list
-…
-5951: socket_filter  name filter_alu64  tag 11186be60c0d0c0f  gpl
-        loaded_at 2019-04-05T13:01:24+0200  uid 1000
-        xlated 424B  jited 262B  memlock 4096B  map_ids 28786</code></pre>
-	<p>The most recently loaded <code>socket_filter</code> must be our program (<code>filter_alu64</code>). Now we now know its id is 5951 and we can list its bytecode with</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo bpftool prog dump xlated id 5951
-…
-  33: (79) r7 = *(u64 *)(r0 +0)
-  34: (b4) (u32) r11 = (u32) -1
-  35: (1f) r11 -= r6
-  36: (4f) r11 |= r6
-  37: (87) r11 = -r11
-  38: (c7) r11 s&gt;&gt;= 63
-  39: (5f) r6 &amp;= r11
-  40: (1f) r6 -= r7
-  41: (7b) *(u64 *)(r10 -16) = r6
-…</code></pre>
-	<p>bpftool can also display the JITed code with: <code>bpftool prog dump jited id 5951</code>.</p>
-	<p>As you see, subtraction is replaced with a series of opcodes. That is unless you are root. When running from root all is good</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo ./run-bpf --stop-after-load 0 0
-[1]+  Stopped                 sudo ./run-bpf --stop-after-load 0 0
-$ sudo bpftool prog list | grep socket_filter
-659: socket_filter  name filter_alu64  tag 9e7ffb08218476f3  gpl
-$ sudo bpftool prog dump xlated id 659
-…
-  31: (79) r7 = *(u64 *)(r0 +0)
-  32: (1f) r6 -= r7
-  33: (7b) *(u64 *)(r10 -16) = r6
-…</code></pre>
-	<p>If you've spent any time using eBPF, you must have experienced first hand the dreaded eBPF verifier. It's a merciless judge of all eBPF code that will reject any programs that it deems not worthy of running in kernel-space.</p>
-	<p>What perhaps nobody has told you before, and what might come as a surprise, is that the very same verifier will actually also <a href="https://elixir.bootlin.com/linux/v4.20.13/source/kernel/bpf/verifier.c#L6421" target="_blank" rel="noopener noreferrer">rewrite and patch up your eBPF code</a> as needed to make it safe.</p>
-	<p>The problems with subtraction were introduced by an inconspicuous security fix to the verifier. The patch in question first landed in Linux 5.0 and was backported to 4.20.6 stable and 4.19.19 LTS kernel. <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=979d63d50c0c0f7bc537bf821e056cc9fe5abd38" target="_blank" rel="noopener noreferrer">The over 2000 words long commit message</a> doesn't spare you any details on the attack vector it targets.</p>
-	<p>The mitigation stems from <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-7308" target="_blank" rel="noopener noreferrer">CVE-2019-7308</a> vulnerability <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1711" target="_blank" rel="noopener noreferrer">discovered by Jann Horn at Project Zero</a>, which exploits pointer arithmetic, i.e. adding a scalar value to a pointer, to trigger speculative memory loads from out-of-bounds addresses. Such speculative loads change the CPU cache state and can be used to mount a <a href="https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html" target="_blank" rel="noopener noreferrer">Spectre variant 1 attack</a>.</p>
-	<p>To mitigate it the eBPF verifier rewrites any arithmetic operations on pointer values in such a way the result is always a memory location within bounds. The patch demonstrates how arithmetic operations on pointers get rewritten and we can spot a familiar pattern there</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/8irnzqpgIARBl3UdtS30S/5e885701ef2fe3a9426b1e960e48f0d1/bpf_commit.png" alt="" class="kg-image" width="1585" height="1026" loading="lazy">
-
-	</figure>
-	<p>Wait a minute… What pointer arithmetic? We are just trying to subtract two scalar values. How come the mitigation kicks in?</p>
-	<p>It shouldn't. It's a bug. The eBPF verifier keeps track of what kind of values the ALU is operating on, and in this corner case the state was ignored.</p>
-	<p>Why running BPF as root is fine, you ask? If your program has <code>CAP_SYS_ADMIN</code> privileges, side-channel mitigations <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L7218" target="_blank" rel="noopener noreferrer">don't</a> <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L3109" target="_blank" rel="noopener noreferrer">apply</a>. As root you already have access to kernel address space, so nothing new can leak through BPF.</p>
-	<p>After our report, <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3612af783cf52c74a031a2f11b82247b2599d3cd" target="_blank" rel="noopener noreferrer">the fix</a> has quickly landed in v5.0 kernel and got backported to stable kernels 4.20.15 and 4.19.28. Kudos to Daniel Borkmann for getting the fix out fast. However, kernel upgrades are hard and in the meantime we were left with code running in production that was not doing what it was supposed to.</p>
-	<div class="flex anchor relative">
-		<h3 id="32-bit-alu-to-the-rescue">32-bit ALU to the rescue</h3>
-		<a href="https://blog.cloudflare.com/#32-bit-alu-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As one of the eBPF maintainers <a href="https://lore.kernel.org/netdev/af0643e0-08a1-6326-2a80-71892de1bf56@iogearbox.net" target="_blank" rel="noopener noreferrer">has pointed out</a>, 32-bit arithmetic operations are not affected by the verifier bug. This opens a door for a work-around.</p>
-	<p>eBPF registers, <code>r0</code>..<code>r10</code>, are 64-bits wide, but you can also access just the lower 32 bits, which are exposed as subregisters <code>w0</code>..<code>w10</code>. You can operate on the 32-bit subregisters using BPF ALU32 instruction subset. LLVM 7+ can generate eBPF code that uses this instruction subset. Of course, you need to you ask it nicely with trivial <code>-Xclang -target-feature -Xclang +alu32</code> toggle:</p>
-	<pre class="language-bash"><code class="language-bash">$ cat sub32.c
-#include "common.h"
-
-u32 sub32(u32 x, u32 y)
-{
-        return x - y;
-}
-$ clang -O2 -target bpf -Xclang -target-feature -Xclang +alu32 -c sub32.c
-$ llvm-objdump -S -no-show-raw-insn sub32.o
-…
-sub32:
-       0:       bc 10 00 00 00 00 00 00         w0 = w1
-       1:       1c 20 00 00 00 00 00 00         w0 -= w2
-       2:       95 00 00 00 00 00 00 00         exit</code></pre>
-	<p>The <code>0x1c</code> <a href="https://elixir.bootlin.com/linux/v5.0/source/include/uapi/linux/bpf_common.h#L11" target="_blank" rel="noopener noreferrer">opcode</a> of the instruction #1, which can be broken down as <code>BPF_ALU | BPF_X | BPF_SUB</code> (read more in the <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">kernel docs</a>), is the 32-bit subtraction between registers we are looking for, as opposed to regular 64-bit subtract operation <code>0x1f = BPF_ALU64 | BPF_X | BPF_SUB</code>, which will get rewritten.</p>
-	<p>Armed with this knowledge we can borrow a page from <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic" target="_blank" rel="noopener noreferrer">bignum arithmetic</a> and subtract 64-bit numbers using just 32-bit ops:</p>
-	<pre class="language-c"><code class="language-c">u64 sub64(u64 x, u64 y)
-{
-        u32 xh, xl, yh, yl;
-        u32 hi, lo;
-
-        xl = x;
-        yl = y;
-        lo = xl - yl;
-
-        xh = x &gt;&gt; 32;
-        yh = y &gt;&gt; 32;
-        hi = xh - yh - (lo &gt; xl); /* underflow? */
-
-        return ((u64)hi &lt;&lt; 32) | (u64)lo;
-}</code></pre>
-	<p>This code compiles as expected on normal architectures, like x86-64 or ARM64, but BPF Clang target plays by its own rules:</p>
-	<pre class="language-bash"><code class="language-bash">$ clang -O2 -target bpf -Xclang -target-feature -Xclang +alu32 -c sub64.c -o - \
-  | llvm-objdump -S -
-…  
-      13:       1f 40 00 00 00 00 00 00         r0 -= r4
-      14:       1f 30 00 00 00 00 00 00         r0 -= r3
-      15:       1f 21 00 00 00 00 00 00         r1 -= r2
-      16:       67 00 00 00 20 00 00 00         r0 &lt;&lt;= 32
-      17:       67 01 00 00 20 00 00 00         r1 &lt;&lt;= 32
-      18:       77 01 00 00 20 00 00 00         r1 &gt;&gt;= 32
-      19:       4f 10 00 00 00 00 00 00         r0 |= r1
-      20:       95 00 00 00 00 00 00 00         exit</code></pre>
-	<p>Apparently the compiler decided it was better to operate on 64-bit registers and discard the upper 32 bits. Thus we weren't able to get rid of the problematic <code>0x1f</code> opcode. Annoying, back to square one.</p>
-	<div class="flex anchor relative">
-		<h3 id="surely-a-bit-of-ir-will-do">Surely a bit of IR will do?</h3>
-		<a href="https://blog.cloudflare.com/#surely-a-bit-of-ir-will-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The problem was in Clang frontend - compiling C to IR. We know that BPF "assembly" backend for LLVM can generate bytecode that uses ALU32 instructions. Maybe if we tweak the Clang compiler's output just a little we can achieve what we want. This means we have to get our hands dirty with the LLVM Intermediate Representation (IR).</p>
-	<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="http://www.aosabook.org/en/llvm.html" target="_blank" rel="noopener noreferrer">reading</a><a href="https://blog.cloudflare.com/#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
-	<p>Time to write IR by hand! Here's a hand-tweaked <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.ll#L7" target="_blank" rel="noopener noreferrer">IR variant</a> of our <code>sub64()</code> function:</p>
-	<pre class="language-bash"><code class="language-bash">define dso_local i64 @sub64_ir(i64, i64) local_unnamed_addr #0 {
-  %3 = trunc i64 %0 to i32      ; xl = (u32) x;
-  %4 = trunc i64 %1 to i32      ; yl = (u32) y;
-  %5 = sub i32 %3, %4           ; lo = xl - yl;
-  %6 = zext i32 %5 to i64
-  %7 = lshr i64 %0, 32          ; tmp1 = x &gt;&gt; 32;
-  %8 = lshr i64 %1, 32          ; tmp2 = y &gt;&gt; 32;
-  %9 = trunc i64 %7 to i32      ; xh = (u32) tmp1;
-  %10 = trunc i64 %8 to i32     ; yh = (u32) tmp2;
-  %11 = sub i32 %9, %10         ; hi = xh - yh
-  %12 = icmp ult i32 %3, %5     ; tmp3 = xl &lt; lo
-  %13 = zext i1 %12 to i32
-  %14 = sub i32 %11, %13        ; hi -= tmp3
-  %15 = zext i32 %14 to i64
-  %16 = shl i64 %15, 32         ; tmp2 = hi &lt;&lt; 32
-  %17 = or i64 %16, %6          ; res = tmp2 | (u64)lo
-  ret i64 %17
-}</code></pre>
-	<p>It may not be pretty but it does produce <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.s#L5" target="_blank" rel="noopener noreferrer">desired BPF code</a> when compiled<a href="https://blog.cloudflare.com/#f3"><sup>3</sup></a>. You will likely find the <a href="https://llvm.org/docs/LangRef.html" target="_blank" rel="noopener noreferrer">LLVM IR reference</a> helpful when deciphering it.</p>
-	<p>And voila! First working solution that produces correct results:</p>
-	<pre class="language-bash"><code class="language-bash">$ ./run-bpf -filter ir $[2**32] 1
-arg0           4294967296 0x0000000100000000
-arg1                    1 0x0000000000000001
-diff           4294967295 0x00000000ffffffff</code></pre>
-	<p>Actually using this hand-written IR function from C is tricky. See <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/build.ninja#L27" target="_blank" rel="noopener noreferrer">our code on GitHub</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zQLSvXLH19lXCjYnstl2a/f8fb73710fc8e5eda96476006974eea5/LED_DISP-1.JPG.jpeg" alt="" class="kg-image" width="1280" height="385" loading="lazy">
-
-	</figure>
-	<p>public domain <a href="https://en.wikipedia.org/wiki/File:LED_DISP.JPG" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Sergei_Frolov" target="_blank" rel="noopener noreferrer">Sergei Frolov</a></p>
-	<div class="flex anchor relative">
-		<h3 id="the-final-trick">The final trick</h3>
-		<a href="https://blog.cloudflare.com/#the-final-trick" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Hand-written IR does the job. The downside is that linking IR modules to your C modules is hard. Fortunately there is a better way. You can persuade Clang to stick to 32-bit ALU ops in generated IR.</p>
-	<p>We've already seen the problem. To recap, if we ask Clang to subtract 32-bit integers, it will operate on 64-bit values and throw away the top 32-bits. Putting C, IR, and eBPF side-by-side helps visualize this:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33bbylbcFR7zuF7NwxHcTs/fa9f110a71ab6e5f5cf8f7d70aadd587/sub32_v1.png" alt="" class="kg-image" width="1224" height="362" loading="lazy">
-
-	</figure>
-	<p>The trick to get around it is to declare the 32-bit variable that holds the result as <code>volatile</code>. You might already know the <a href="https://en.wikipedia.org/wiki/Volatile_(computer_programming)" target="_blank" rel="noopener noreferrer"><code>volatile</code> keyword</a> if you've written Unix signal handlers. It basically tells the compiler that the value of the variable may change under its feet so it should refrain from reorganizing loads (reads) from it, as well as that stores (writes) to it might have side-effects so changing the order or eliminating them, by skipping writing it to the memory, is not allowed either.</p>
-	<p>Using <code>volatile</code> makes Clang emit <a href="https://llvm.org/docs/LangRef.html#volatile-memory-accesses" target="_blank" rel="noopener noreferrer">special loads and/or stores</a> at the IR level, which then on eBPF level translates to writing/reading the value from memory (stack) on every access. While this sounds not related to the problem at hand, there is a surprising side-effect to it:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fEaCu15LmmeauGv7Vh1Wb/354c4a8aa60da7a7e5797fe0f951508d/sub32_v2.png" alt="" class="kg-image" width="1386" height="324" loading="lazy">
-
-	</figure>
-	<p>With volatile access compiler doesn't promote the subtraction to 64 bits! Don't ask me why, although I would love to hear an explanation. For now, consider this a hack. One that does not come for free - there is the overhead of going through the stack on each read/write.</p>
-	<p>However, if we play our cards right we just might reduce it a little. We don't actually need the volatile load or store to happen, we just want the side effect. So instead of declaring the value as volatile, which implies that both reads and writes are volatile, let's try to make only the writes volatile with a help of a macro:</p>
-	<pre class="language-c"><code class="language-c">/* Emits a "store volatile" in LLVM IR */
-#define ST_V(rhs, lhs) (*(volatile typeof(rhs) *) &amp;(rhs) = (lhs))</code></pre>
-	<p>If this macro looks strangely familiar, it's because it does the same thing as <a href="https://elixir.bootlin.com/linux/v5.1-rc5/source/include/linux/compiler.h#L214" target="_blank" rel="noopener noreferrer"><code>WRITE_ONCE()</code> macro</a> in the Linux kernel. Applying it to our example:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qQ1CrUvUBsJJE09xVqzA1/bc84a1c3fdd5a855c505c56c2273e664/sub32_v3.png" alt="" class="kg-image" width="1424" height="304" loading="lazy">
-
-	</figure>
-	<p>That's another <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L143" target="_blank" rel="noopener noreferrer">hacky but working solution</a>. Pick your poison.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28GXw3wm8YlUgg9nvnBwEx/2939bf7b36758a66685385e16a48cc5f/poison_bottles-2.jpg" alt="" class="kg-image" width="640" height="480" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg" target="_blank" rel="noopener noreferrer">image</a> by ANKAWÜ</p>
-	<p>So there you have it - from C, to IR, and back to C to hack around a bug in eBPF verifier and be able to subtract 64-bit integers again. Usually you won't have to dive into LLVM IR or assembly to make use of eBPF. But it does help to know a little about it when things don't work as expected.</p>
-	<p>Did I mention that 64-bit addition is also broken? Have fun fixing it!</p>
-	<hr>
-	<p><sup>1</sup> Okay, it was more like 3 months time until the bug was discovered and fixed.</p>
-	<p><sup>2</sup> Some even think that it is <a href="https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly" target="_blank" rel="noopener noreferrer">better than assembly</a>.</p>
-	<p><sup>3</sup> How do we know? The litmus test is to look for statements matching <code>r[0-9] [-+]= r[0-9]</code> in BPF assembly.</p>
+<p>Grant mechanical calculating machine, public domain <a href="https://en.wikipedia.org/wiki/File:Grant_mechanical_calculating_machine_1877.jpg" target="_blank" rel="noopener noreferrer">image</a></p>
+<p>It is unlikely we can tell you anything new about the extended Berkeley Packet Filter, eBPF for short, if you've read all the great <a href="http://man7.org/linux/man-pages/man2/bpf.2.html" target="_blank" rel="noopener noreferrer">man pages</a>, <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">docs</a>, <a href="https://cilium.readthedocs.io/en/latest/bpf" target="_blank" rel="noopener noreferrer">guides</a>, and some of our <a href="https://blog.cloudflare.com/epbf_sockets_hop_distance" target="_blank" rel="noopener noreferrer">blogs</a> out there.</p>
+<p>But we can tell you a war story, and who doesn't like those? This one is about how eBPF lost its ability to count for a while<a href="https://blog.cloudflare.com/#f1"><sup>1</sup></a>.</p>
+<p>They say in our Austin, Texas office that all good stories start with "y'all ain't gonna believe this… tale." This one though, starts with a <a href="https://lore.kernel.org/netdev/CAJPywTJqP34cK20iLM5YmUMz9KXQOdu1-+BZrGMAGgLuBWz7fg@mail.gmail.com" target="_blank" rel="noopener noreferrer">post</a> to Linux netdev mailing list from <a href="https://twitter.com/majek04" target="_blank" rel="noopener noreferrer">Marek Majkowski</a> after what I heard was a long night:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=640&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=828&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=1280&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=1430&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="eBPF can't count?! Embedded Image - sOYoQn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PJQC3VY84G8GB8M41FBV.png&amp;w=1486&amp;h=710&amp;f=webp" data-lightbox-width="1486" data-lightbox-height="710" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="342" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Marek's findings were quite shocking - if you subtract two 64-bit timestamps in eBPF, the result is garbage. But only when running as an unprivileged user. From root all works fine. Huh.</p>
+<p>If you've seen Marek's <a href="https://speakerdeck.com/majek04/linux-at-cloudflare" target="_blank" rel="noopener noreferrer">presentation</a> from the Netdev 0x13 conference, you know that we are using BPF socket filters as one of the defenses against simple, volumetric DoS attacks. So potentially getting your packet count wrong could be a Bad Thing™, and affect legitimate traffic.</p>
+<p>Let's try to reproduce this bug with a simplified <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L63" target="_blank" rel="noopener noreferrer">eBPF socket filter</a> that subtracts two 64-bit unsigned integers passed to it from <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93" target="_blank" rel="noopener noreferrer">user-space</a> though a BPF map. The input for our BPF program comes from a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L44" target="_blank" rel="noopener noreferrer">BPF array map</a>, so that the values we operate on are not known at build time. This allows for easy experimentation and prevents the compiler from optimizing out the operations.</p>
+<p>Starting small, eBPF, what is 2 - 1? View the code <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/run_bpf.go#L93" target="_blank" rel="noopener noreferrer">on our GitHub</a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">                    2</span><span class="sk-005cc5-ffc799"> 0x0000000000000002</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span></code></pre>
 </div>
+<p>OK, eBPF, what is 2^32 - 1?</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-24292e-fff"> $</span><span class="sk-032f62-99ffe4">[2</span><span class="sk-005cc5-a0a0a0">**</span><span class="sk-032f62-99ffe4">32]</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">           4294967296</span><span class="sk-005cc5-ffc799"> 0x0000000100000000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799"> 18446744073709551615</span><span class="sk-005cc5-ffc799"> 0xffffffffffffffff</span></span></code></pre>
+</div>
+<p>Wrong! But if we ask nicely with sudo:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-24292e-fff"> $</span><span class="sk-032f62-99ffe4">[2</span><span class="sk-005cc5-a0a0a0">**</span><span class="sk-032f62-99ffe4">32]</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">[sudo] password </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> jkbs:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">           4294967296</span><span class="sk-005cc5-ffc799"> 0x0000000100000000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">           4294967295</span><span class="sk-005cc5-ffc799"> 0x00000000ffffffff</span></span></code></pre>
+</div>
+<h3>Who is messing with my eBPF?</h3>
+<p>When computers stop subtracting, you know something big is up. We called for reinforcements.</p>
+<p>Our colleague Arthur Fabre <a href="https://lore.kernel.org/netdev/20190301113901.29448-1-afabre@cloudflare.com" target="_blank" rel="noopener noreferrer">quickly noticed</a> something is off when you examine the eBPF code loaded into the kernel. It turns out kernel doesn't actually run the eBPF it's supplied - it sometimes rewrites it first.</p>
+<p>Any sane programmer would expect 64-bit subtraction to be expressed as <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.s#L47" target="_blank" rel="noopener noreferrer">a single eBPF instruction</a></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> llvm-objdump</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-005cc5-99ffe4"> -no-show-raw-insn</span><span class="sk-005cc5-99ffe4"> -section=socket1</span><span class="sk-032f62-99ffe4"> bpf/filter.o</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      20:</span><span class="sk-032f62-99ffe4">       1f</span><span class="sk-005cc5-ffc799"> 76</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         r6</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> r7</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+</div>
+<p>However, that's not what the kernel actually runs. Apparently after the rewrite the subtraction becomes a complex, multi-step operation.</p>
+<p>To see what the kernel is actually running we can use little known <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/bpf/bpftool?h=v5.0" target="_blank" rel="noopener noreferrer">bpftool utility</a>. First, we need to load our BPF</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-005cc5-99ffe4"> --stop-after-load</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">[2]+  Stopped                 ./run-bpf 2 1</span></span></code></pre>
+</div>
+<p>Then list all BPF programs loaded into the kernel with <code>bpftool prog list</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftool</span><span class="sk-032f62-99ffe4"> prog</span><span class="sk-032f62-99ffe4"> list</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">5951:</span><span class="sk-032f62-99ffe4"> socket_filter</span><span class="sk-032f62-99ffe4">  name</span><span class="sk-032f62-99ffe4"> filter_alu64</span><span class="sk-032f62-99ffe4">  tag</span><span class="sk-032f62-99ffe4"> 11186be60c0d0c0f</span><span class="sk-032f62-99ffe4">  gpl</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        loaded_at</span><span class="sk-032f62-99ffe4"> 2019-04-05T13:01:24+0200</span><span class="sk-032f62-99ffe4">  uid</span><span class="sk-005cc5-ffc799"> 1000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        xlated</span><span class="sk-032f62-99ffe4"> 424B</span><span class="sk-032f62-99ffe4">  jited</span><span class="sk-032f62-99ffe4"> 262B</span><span class="sk-032f62-99ffe4">  memlock</span><span class="sk-032f62-99ffe4"> 4096B</span><span class="sk-032f62-99ffe4">  map_ids</span><span class="sk-005cc5-ffc799"> 28786</span></span></code></pre>
+</div>
+<p>The most recently loaded <code>socket_filter</code> must be our program (<code>filter_alu64</code>). Now we now know its id is 5951 and we can list its bytecode with</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftool</span><span class="sk-032f62-99ffe4"> prog</span><span class="sk-032f62-99ffe4"> dump</span><span class="sk-032f62-99ffe4"> xlated</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-005cc5-ffc799"> 5951</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  33:</span><span class="sk-24292e-fff"> (79) r7 = </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u64</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-6f42c1-ffc799">r0</span><span class="sk-032f62-99ffe4"> +0</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  34:</span><span class="sk-24292e-fff"> (b4) (</span><span class="sk-6f42c1-ffc799">u32</span><span class="sk-24292e-fff">) r11 = (</span><span class="sk-6f42c1-ffc799">u32</span><span class="sk-24292e-fff">) -1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  35:</span><span class="sk-24292e-fff"> (1f) r11 -</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> r6</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  36:</span><span class="sk-24292e-fff"> (4f) r11 </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> r6</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  37:</span><span class="sk-24292e-fff"> (87) r11 = -r11</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  38:</span><span class="sk-24292e-fff"> (c7) r11 s</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">= 63</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  39:</span><span class="sk-24292e-fff"> (5f) r6 &amp;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> r11</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  40:</span><span class="sk-24292e-fff"> (1f) r6 -</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> r7</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  41:</span><span class="sk-24292e-fff"> (7b) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u64</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-6f42c1-ffc799">r10</span><span class="sk-005cc5-99ffe4"> -16</span><span class="sk-24292e-fff">) = r6</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+</div>
+<p>bpftool can also display the JITed code with: <code>bpftool prog dump jited id 5951</code>.</p>
+<p>As you see, subtraction is replaced with a series of opcodes. That is unless you are root. When running from root all is good</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-005cc5-99ffe4"> --stop-after-load</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-24292e-fff">[1]+  Stopped                 sudo ./run-bpf --stop-after-load 0 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftool</span><span class="sk-032f62-99ffe4"> prog</span><span class="sk-032f62-99ffe4"> list</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> socket_filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">659:</span><span class="sk-032f62-99ffe4"> socket_filter</span><span class="sk-032f62-99ffe4">  name</span><span class="sk-032f62-99ffe4"> filter_alu64</span><span class="sk-032f62-99ffe4">  tag</span><span class="sk-032f62-99ffe4"> 9e7ffb08218476f3</span><span class="sk-032f62-99ffe4">  gpl</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftool</span><span class="sk-032f62-99ffe4"> prog</span><span class="sk-032f62-99ffe4"> dump</span><span class="sk-032f62-99ffe4"> xlated</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-005cc5-ffc799"> 659</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  31:</span><span class="sk-24292e-fff"> (79) r7 = </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u64</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-6f42c1-ffc799">r0</span><span class="sk-032f62-99ffe4"> +0</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  32:</span><span class="sk-24292e-fff"> (1f) r6 -</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> r7</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  33:</span><span class="sk-24292e-fff"> (7b) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u64</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-6f42c1-ffc799">r10</span><span class="sk-005cc5-99ffe4"> -16</span><span class="sk-24292e-fff">) = r6</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+</div>
+<p>If you've spent any time using eBPF, you must have experienced first hand the dreaded eBPF verifier. It's a merciless judge of all eBPF code that will reject any programs that it deems not worthy of running in kernel-space.</p>
+<p>What perhaps nobody has told you before, and what might come as a surprise, is that the very same verifier will actually also <a href="https://elixir.bootlin.com/linux/v4.20.13/source/kernel/bpf/verifier.c#L6421" target="_blank" rel="noopener noreferrer">rewrite and patch up your eBPF code</a> as needed to make it safe.</p>
+<p>The problems with subtraction were introduced by an inconspicuous security fix to the verifier. The patch in question first landed in Linux 5.0 and was backported to 4.20.6 stable and 4.19.19 LTS kernel. <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=979d63d50c0c0f7bc537bf821e056cc9fe5abd38" target="_blank" rel="noopener noreferrer">The over 2000 words long commit message</a> doesn't spare you any details on the attack vector it targets.</p>
+<p>The mitigation stems from <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-7308" target="_blank" rel="noopener noreferrer">CVE-2019-7308</a> vulnerability <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1711" target="_blank" rel="noopener noreferrer">discovered by Jann Horn at Project Zero</a>, which exploits pointer arithmetic, i.e. adding a scalar value to a pointer, to trigger speculative memory loads from out-of-bounds addresses. Such speculative loads change the CPU cache state and can be used to mount a <a href="https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html" target="_blank" rel="noopener noreferrer">Spectre variant 1 attack</a>.</p>
+<p>To mitigate it the eBPF verifier rewrites any arithmetic operations on pointer values in such a way the result is always a memory location within bounds. The patch demonstrates how arithmetic operations on pointers get rewritten and we can spot a familiar pattern there</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="eBPF can't count?! Embedded Image - roro7h" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493ZQG4G891ZVCN4K40QJ7.png&amp;w=1585&amp;h=1026&amp;f=webp" data-lightbox-width="1585" data-lightbox-height="1026" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<p>Wait a minute… What pointer arithmetic? We are just trying to subtract two scalar values. How come the mitigation kicks in?</p>
+<p>It shouldn't. It's a bug. The eBPF verifier keeps track of what kind of values the ALU is operating on, and in this corner case the state was ignored.</p>
+<p>Why running BPF as root is fine, you ask? If your program has <code>CAP_SYS_ADMIN</code> privileges, side-channel mitigations <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L7218" target="_blank" rel="noopener noreferrer">don't</a> <a href="https://elixir.bootlin.com/linux/v5.0/source/kernel/bpf/verifier.c#L3109" target="_blank" rel="noopener noreferrer">apply</a>. As root you already have access to kernel address space, so nothing new can leak through BPF.</p>
+<p>After our report, <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3612af783cf52c74a031a2f11b82247b2599d3cd" target="_blank" rel="noopener noreferrer">the fix</a> has quickly landed in v5.0 kernel and got backported to stable kernels 4.20.15 and 4.19.28. Kudos to Daniel Borkmann for getting the fix out fast. However, kernel upgrades are hard and in the meantime we were left with code running in production that was not doing what it was supposed to.</p>
+<h3>32-bit ALU to the rescue</h3>
+<p>As one of the eBPF maintainers <a href="https://lore.kernel.org/netdev/af0643e0-08a1-6326-2a80-71892de1bf56@iogearbox.net" target="_blank" rel="noopener noreferrer">has pointed out</a>, 32-bit arithmetic operations are not affected by the verifier bug. This opens a door for a work-around.</p>
+<p>eBPF registers, <code>r0</code>..<code>r10</code>, are 64-bits wide, but you can also access just the lower 32 bits, which are exposed as subregisters <code>w0</code>..<code>w10</code>. You can operate on the 32-bit subregisters using BPF ALU32 instruction subset. LLVM 7+ can generate eBPF code that uses this instruction subset. Of course, you need to you ask it nicely with trivial <code>-Xclang -target-feature -Xclang +alu32</code> toggle:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> sub32.c</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#include "common.h"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">u32</span><span class="sk-032f62-99ffe4"> sub32</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">u32</span><span class="sk-032f62-99ffe4"> x,</span><span class="sk-032f62-99ffe4"> u32</span><span class="sk-032f62-99ffe4"> y</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> y</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> clang</span><span class="sk-005cc5-99ffe4"> -O2</span><span class="sk-005cc5-99ffe4"> -target</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> -Xclang</span><span class="sk-005cc5-99ffe4"> -target-feature</span><span class="sk-005cc5-99ffe4"> -Xclang</span><span class="sk-032f62-99ffe4"> +alu32</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> sub32.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> llvm-objdump</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-005cc5-99ffe4"> -no-show-raw-insn</span><span class="sk-032f62-99ffe4"> sub32.o</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sub32:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       0:</span><span class="sk-032f62-99ffe4">       bc</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         w0</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> w1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       1:</span><span class="sk-032f62-99ffe4">       1c</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         w0</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> w2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       2:</span><span class="sk-005cc5-ffc799">       95</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         exit</span></span></code></pre>
+</div>
+<p>The <code>0x1c</code> <a href="https://elixir.bootlin.com/linux/v5.0/source/include/uapi/linux/bpf_common.h#L11" target="_blank" rel="noopener noreferrer">opcode</a> of the instruction #1, which can be broken down as <code>BPF_ALU | BPF_X | BPF_SUB</code> (read more in the <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">kernel docs</a>), is the 32-bit subtraction between registers we are looking for, as opposed to regular 64-bit subtract operation <code>0x1f = BPF_ALU64 | BPF_X | BPF_SUB</code>, which will get rewritten.</p>
+<p>Armed with this knowledge we can borrow a page from <a href="https://en.wikipedia.org/wiki/Arbitrary-precision_arithmetic" target="_blank" rel="noopener noreferrer">bignum arithmetic</a> and subtract 64-bit numbers using just 32-bit ops:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">u64 </span><span class="sk-6f42c1-ffc799">sub64</span><span class="sk-24292e-fff">(u64 </span><span class="sk-e36209-fff">x</span><span class="sk-24292e-fff">, u64 </span><span class="sk-e36209-fff">y</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">        u32 xh, xl, yh, yl;</span></span>
+<span class="line"><span class="sk-24292e-fff">        u32 hi, lo;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">        xl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> x;</span></span>
+<span class="line"><span class="sk-24292e-fff">        yl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> y;</span></span>
+<span class="line"><span class="sk-24292e-fff">        lo </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> xl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> yl;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">        xh </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> x </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        yh </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> y </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        hi </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> xh </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> yh </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> (lo </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> xl);</span><span class="sk-6a737d-8b8b8b94"> /* underflow? */</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> ((u64)hi </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> (u64)lo;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This code compiles as expected on normal architectures, like x86-64 or ARM64, but BPF Clang target plays by its own rules:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> clang</span><span class="sk-005cc5-99ffe4"> -O2</span><span class="sk-005cc5-99ffe4"> -target</span><span class="sk-032f62-99ffe4"> bpf</span><span class="sk-005cc5-99ffe4"> -Xclang</span><span class="sk-005cc5-99ffe4"> -target-feature</span><span class="sk-005cc5-99ffe4"> -Xclang</span><span class="sk-032f62-99ffe4"> +alu32</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> sub64.c</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  |</span><span class="sk-6f42c1-ffc799"> llvm-objdump</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-032f62-99ffe4"> -</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      13:</span><span class="sk-032f62-99ffe4">       1f</span><span class="sk-005cc5-ffc799"> 40</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         r0</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> r4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      14:</span><span class="sk-032f62-99ffe4">       1f</span><span class="sk-005cc5-ffc799"> 30</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         r0</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> r3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      15:</span><span class="sk-032f62-99ffe4">       1f</span><span class="sk-005cc5-ffc799"> 21</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         r1</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> r2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      16:</span><span class="sk-005cc5-ffc799">       67</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">         r0</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">=</span><span class="sk-6f42c1-ffc799"> 32</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      17:       67 01 00 00 20 00 00 00         r1 &lt;&lt;= 32</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      18:       77 01 00 00 20 00 00 00         r1 &gt;&gt;= 32</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      19:       4f 10 00 00 00 00 00 00         r0 |= r1</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      20:       95 00 00 00 00 00 00 00         exit</span></span></code></pre>
+</div>
+<p>Apparently the compiler decided it was better to operate on 64-bit registers and discard the upper 32 bits. Thus we weren't able to get rid of the problematic <code>0x1f</code> opcode. Annoying, back to square one.</p>
+<h3>Surely a bit of IR will do?</h3>
+<p>The problem was in Clang frontend - compiling C to IR. We know that BPF "assembly" backend for LLVM can generate bytecode that uses ALU32 instructions. Maybe if we tweak the Clang compiler's output just a little we can achieve what we want. This means we have to get our hands dirty with the LLVM Intermediate Representation (IR).</p>
+<p>If you haven't heard of LLVM IR before, now is a good time to do some <a href="http://www.aosabook.org/en/llvm.html" target="_blank" rel="noopener noreferrer">reading</a><a href="https://blog.cloudflare.com/#f2"><sup>2</sup></a>. In short the LLVM IR is what Clang produces and LLVM BPF backend consumes.</p>
+<p>Time to write IR by hand! Here's a hand-tweaked <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.ll#L7" target="_blank" rel="noopener noreferrer">IR variant</a> of our <code>sub64()</code> function:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">define</span><span class="sk-032f62-99ffe4"> dso_local</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> @sub64_ir</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">i64,</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">local_unnamed_addr</span><span class="sk-6a737d-8b8b8b94"> #0 {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %3</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> trunc</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %0</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">xl</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (u32) x;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %4</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> trunc</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %1</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">yl</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (u32) y;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %5</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sub</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-032f62-99ffe4"> %3,</span><span class="sk-032f62-99ffe4"> %4</span><span class="sk-24292e-fff">           ; </span><span class="sk-6f42c1-ffc799">lo</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> xl</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> yl</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %6</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> zext</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-032f62-99ffe4"> %5</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> i64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %7</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> lshr</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %0,</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">          ; </span><span class="sk-6f42c1-ffc799">tmp1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %8</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> lshr</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %1,</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">          ; </span><span class="sk-6f42c1-ffc799">tmp2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> y</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %9</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> trunc</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %7</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">xh</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (u32) tmp1;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %10</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> trunc</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %8</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-24292e-fff">     ; </span><span class="sk-6f42c1-ffc799">yh</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (u32) tmp2;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %11</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sub</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-032f62-99ffe4"> %9,</span><span class="sk-032f62-99ffe4"> %10</span><span class="sk-24292e-fff">         ; </span><span class="sk-6f42c1-ffc799">hi</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> xh</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> yh</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %12</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> icmp</span><span class="sk-032f62-99ffe4"> ult</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-032f62-99ffe4"> %3,</span><span class="sk-032f62-99ffe4"> %5</span><span class="sk-24292e-fff">     ; </span><span class="sk-6f42c1-ffc799">tmp3</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> xl</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> lo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %13</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> zext</span><span class="sk-032f62-99ffe4"> i1</span><span class="sk-032f62-99ffe4"> %12</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> i32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %14</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sub</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-032f62-99ffe4"> %11,</span><span class="sk-032f62-99ffe4"> %13</span><span class="sk-24292e-fff">        ; </span><span class="sk-6f42c1-ffc799">hi</span><span class="sk-005cc5-99ffe4"> -=</span><span class="sk-032f62-99ffe4"> tmp3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %15</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> zext</span><span class="sk-032f62-99ffe4"> i32</span><span class="sk-032f62-99ffe4"> %14</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> i64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  %16</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> shl</span><span class="sk-032f62-99ffe4"> i64</span><span class="sk-032f62-99ffe4"> %15,</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">         ; </span><span class="sk-6f42c1-ffc799">tmp2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> hi</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff"> 32</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  %17 = or i64 %16, %6          ; res = tmp2 | (u64)lo</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  ret i64 %17</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+</div>
+<p>It may not be pretty but it does produce <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/sub64_ir.s#L5" target="_blank" rel="noopener noreferrer">desired BPF code</a> when compiled<a href="https://blog.cloudflare.com/#f3"><sup>3</sup></a>. You will likely find the <a href="https://llvm.org/docs/LangRef.html" target="_blank" rel="noopener noreferrer">LLVM IR reference</a> helpful when deciphering it.</p>
+<p>And voila! First working solution that produces correct results:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./run-bpf</span><span class="sk-005cc5-99ffe4"> -filter</span><span class="sk-032f62-99ffe4"> ir</span><span class="sk-24292e-fff"> $</span><span class="sk-032f62-99ffe4">[2</span><span class="sk-005cc5-a0a0a0">**</span><span class="sk-032f62-99ffe4">32]</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg0</span><span class="sk-005cc5-ffc799">           4294967296</span><span class="sk-005cc5-ffc799"> 0x0000000100000000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">arg1</span><span class="sk-005cc5-ffc799">                    1</span><span class="sk-005cc5-ffc799"> 0x0000000000000001</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">diff</span><span class="sk-005cc5-ffc799">           4294967295</span><span class="sk-005cc5-ffc799"> 0x00000000ffffffff</span></span></code></pre>
+</div>
+<p>Actually using this hand-written IR function from C is tricky. See <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/build.ninja#L27" target="_blank" rel="noopener noreferrer">our code on GitHub</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="215" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=640&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=750&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=828&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=1080&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=1280&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=1430&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="eBPF can't count?! Embedded Image - oXEHFV" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H8WCG1J31CGAYXBNVHNR.jpeg&amp;w=1280&amp;h=385&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="385" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="215" class="pt-portable-image-media"></div>
+</figure>
+<p>public domain <a href="https://en.wikipedia.org/wiki/File:LED_DISP.JPG" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://commons.wikimedia.org/wiki/User:Sergei_Frolov" target="_blank" rel="noopener noreferrer">Sergei Frolov</a></p>
+<h3>The final trick</h3>
+<p>Hand-written IR does the job. The downside is that linking IR modules to your C modules is hard. Fortunately there is a better way. You can persuade Clang to stick to 32-bit ALU ops in generated IR.</p>
+<p>We've already seen the problem. To recap, if we ask Clang to subtract 32-bit integers, it will operate on 64-bit values and throw away the top 32-bits. Putting C, IR, and eBPF side-by-side helps visualize this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="211" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=715&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=640&amp;h=189&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=715&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=750&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=828&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=1080&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=1280&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=1430&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="eBPF can't count?! Embedded Image - hWR5kt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RA936RD0P00ZVQDV37G0.png&amp;w=1224&amp;h=362&amp;f=webp" data-lightbox-width="1224" data-lightbox-height="362" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="211" class="pt-portable-image-media"></div>
+</figure>
+<p>The trick to get around it is to declare the 32-bit variable that holds the result as <code>volatile</code>. You might already know the <a href="https://en.wikipedia.org/wiki/Volatile_(computer_programming)" target="_blank" rel="noopener noreferrer"><code>volatile</code> keyword</a> if you've written Unix signal handlers. It basically tells the compiler that the value of the variable may change under its feet so it should refrain from reorganizing loads (reads) from it, as well as that stores (writes) to it might have side-effects so changing the order or eliminating them, by skipping writing it to the memory, is not allowed either.</p>
+<p>Using <code>volatile</code> makes Clang emit <a href="https://llvm.org/docs/LangRef.html#volatile-memory-accesses" target="_blank" rel="noopener noreferrer">special loads and/or stores</a> at the IR level, which then on eBPF level translates to writing/reading the value from memory (stack) on every access. While this sounds not related to the problem at hand, there is a surprising side-effect to it:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="eBPF can't count?! Embedded Image - vsBGdO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F2X986PYZ41V7014KEPS.png&amp;w=1386&amp;h=324&amp;f=webp" data-lightbox-width="1386" data-lightbox-height="324" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<p>With volatile access compiler doesn't promote the subtraction to 64 bits! Don't ask me why, although I would love to hear an explanation. For now, consider this a hack. One that does not come for free - there is the overhead of going through the stack on each read/write.</p>
+<p>However, if we play our cards right we just might reduce it a little. We don't actually need the volatile load or store to happen, we just want the side effect. So instead of declaring the value as volatile, which implies that both reads and writes are volatile, let's try to make only the writes volatile with a help of a macro:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* Emits a "store volatile" in LLVM IR */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> ST_V</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">rhs</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lhs</span><span class="sk-24292e-fff">) (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">volatile</span><span class="sk-6f42c1-ffc799"> typeof</span><span class="sk-24292e-fff">(rhs) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">(rhs) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (lhs))</span></span></code></pre>
+</div>
+<p>If this macro looks strangely familiar, it's because it does the same thing as <a href="https://elixir.bootlin.com/linux/v5.1-rc5/source/include/linux/compiler.h#L214" target="_blank" rel="noopener noreferrer"><code>WRITE_ONCE()</code> macro</a> in the Linux kernel. Applying it to our example:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="153" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=715&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=640&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=715&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=750&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=828&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=1080&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=1280&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=1430&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="eBPF can't count?! Embedded Image - XQH3dF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AJJCSEPD5S0ZFVQGJJWP.png&amp;w=1424&amp;h=304&amp;f=webp" data-lightbox-width="1424" data-lightbox-height="304" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="153" class="pt-portable-image-media"></div>
+</figure>
+<p>That's another <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-04-ebpf-alu32/bpf/filter.c#L143" target="_blank" rel="noopener noreferrer">hacky but working solution</a>. Pick your poison.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="480" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452EBKXNGBGV8J84DPSWX8.jpg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452EBKXNGBGV8J84DPSWX8.jpg&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452EBKXNGBGV8J84DPSWX8.jpg&amp;w=750&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452EBKXNGBGV8J84DPSWX8.jpg&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452EBKXNGBGV8J84DPSWX8.jpg&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452EBKXNGBGV8J84DPSWX8.jpg&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="eBPF can't count?! Embedded Image - nZUYXn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452EBKXNGBGV8J84DPSWX8.jpg&amp;w=640&amp;h=480&amp;f=webp" data-lightbox-width="640" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="480" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a> <a href="https://commons.wikimedia.org/wiki/File:D-BW-Kressbronn_aB_-_Kl%C3%A4ranlage_067.jpg" target="_blank" rel="noopener noreferrer">image</a> by ANKAWÜ</p>
+<p>So there you have it - from C, to IR, and back to C to hack around a bug in eBPF verifier and be able to subtract 64-bit integers again. Usually you won't have to dive into LLVM IR or assembly to make use of eBPF. But it does help to know a little about it when things don't work as expected.</p>
+<p>Did I mention that 64-bit addition is also broken? Have fun fixing it!</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><sup>1</sup> Okay, it was more like 3 months time until the bug was discovered and fixed.</p>
+<p><sup>2</sup> Some even think that it is <a href="https://idea.popcount.org/2013-07-24-ir-is-better-than-assembly" target="_blank" rel="noopener noreferrer">better than assembly</a>.</p>
+<p><sup>3</sup> How do we know? The litmus test is to look for statements matching <code>r[0-9] [-+]= r[0-9]</code> in BPF assembly.</p>

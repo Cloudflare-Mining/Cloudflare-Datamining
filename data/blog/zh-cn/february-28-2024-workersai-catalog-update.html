@@ -1,0 +1,87 @@
+<p>2024 年 2 月 6 日，我们<a href="https://blog.cloudflare.com/zh-cn/february-2024-workersai-catalog-update-zh-cn">宣布将 8 个新模型</a>添加到我们的目录中，用于文本生成、分类和代码生成用例。今天，我们又带来了十七个 (17!) 模型，专注于使用 Workers AI 实现新类型的任务和用例。我们的目录现在已接近 40 个模型，因此我们还决定对开发人员文档进行修订，使用户能够轻松搜索和发现新模型。</p>
+<p>新模型如下所示，完整的 Workers AI 目录请参见我们的<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">新开发人员文档</a>。</p>
+<p><strong>文本生成</strong></p>
+<ul>
+	<li><strong><strong><strong>@cf/deepseek-ai/deepseek-math-7b-instruct</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/openchat/openchat-3.5-0106</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/microsoft/phi-2</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/tinyllama/tinyllama-1.1b-chat-v1.0</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/thebloke/discolm-german-7b-v1-awq</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/qwen/qwen1.5-0.5b-chat</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/qwen/qwen1.5-1.8b-chat</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/qwen/qwen1.5-7b-chat-awq</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/qwen/qwen1.5-14b-chat-awq</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/tiiuae/falcon-7b-instruct</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/defog/sqlcoder-7b-2</strong></strong></strong></li>
+</ul>
+<p><strong>总结</strong></p>
+<ul>
+	<li><strong><strong><strong>@cf/facebook/bart-large-cnn</strong></strong></strong></li>
+</ul>
+<p><strong>文本转图像</strong></p>
+<ul>
+	<li><strong><strong><strong>@cf/lykon/dreamshaper-8-lcm</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/runwayml/stable-diffusion-v1-5-inpainting</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/runwayml/stable-diffusion-v1-5-img2img</strong></strong></strong></li>
+	<li><strong><strong><strong>@cf/bytedance/stable-diffusion-xl-lightning</strong></strong></strong></li>
+</ul>
+<p><strong>图像转文本</strong></p>
+<ul>
+	<li><strong><strong><strong>@cf/unum/uform-gen2-qwen-500m</strong></strong></strong></li>
+</ul>
+<h3>新的语言模型、微调和量化</h3>
+<p>今天的目录更新包含了许多新的语言模型，开发人员可以根据自己的用例挑选出最好的 LLM。虽然大多数 LLM 都可以推广到任何情况下，但选择针对特定用例量身定制的模型有很多好处。我们很高兴为您带来一些新的大型语言模型 (LLM)、小型语言模型 (SLM) 和多语言支持，以及一些经过微调和量化的模型。</p>
+<p>我们最新添加的 LLM 包括 <code>falcon-7b-instruct</code>，它特别令人兴奋，因为它创新地使用了多查询注意力来生成高精度响应。<code>discolm_german_7b</code> 和 <code>qwen1.5</code> 模型也提供了更好的语言支持，这些模型在多语言数据上进行训练，不仅在英语方面，而且在德语 (<code>discolm</code>) 和中文 (<code>qwen1.5</code>) 方面也拥有令人印象深刻的 LLM 输出。Qwen 模型的参数范围从 0.5B 到 14B，在我们的测试中表现出尤其令人印象深刻的准确性。我们还发布了一些新的 SLM，它们越来越受欢迎，因为它们能够更快、更便宜地进行推理，而不会牺牲准确性。对于 SLM，我们引入了小型但性能卓越的模型，例如 1.1B 参数版本的 Llama (<code>tinyllama-1.1b-chat-v1.0</code>) 和来自 Microsoft 的 1.3B 参数模型 (<code>phi-2</code>)。</p>
+<p>随着 AI 行业不断加速发展，出色之人已经找到了改进和优化模型性能和准确性的方法。我们添加了一个微调模型 (openchat-3.5)，该模型实施<a href="https://arxiv.org/abs/2309.11235" target="_blank" rel="noopener noreferrer">条件强化学习微调 (C-RLFT)</a>，这是一种通过使用易于收集的混合质量数据来实现开源语言模型开发的技术。</p>
+<p>今天，我们非常高兴能够将所有这些新的文本生成模型引入我们的平台。开源社区在开发新的 AI 突破方面表现出色，我们感谢大家为训练、微调和量化这些模型所做的贡献。我们很高兴能够代管这些模型并让所有人都能访问它们，以便开发人员能够快速轻松地使用 AI 构建新应用程序。您可以在<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">我们的开发人员文档</a>中查看新模型及其 API 架构。</p>
+<h3>新的图像生成模型</h3>
+<p>我们正在添加新的 Stable Diffusion 管道和优化，以实现强大的新图像编辑和生成用例。我们已经增加对 Stable Diffusion XL Lightning 的支持，它只需两个推理步骤即可生成高质量图像。对于想要获取文本提示并让模型根据输入生成图像的人来说，文本转图像是一项非常受欢迎的任务，但 Stable Diffusion 实际上可以做更多的事情。随着这个新的 Workers AI 版本的发布，我们解锁了新的管道，以便您可以使用 Stable Diffusion 尝试不同的输入模式和任务。</p>
+<p>您现在可以在 Workers AI 上使用 Stable Diffusion 完成图像到图像和图像修复用例。图像到图像允许您将输入图像转换为不同的图像——例如，您可以要求 Stable Diffusion 生成肖像的卡通版本。图像修复允许用户上传图像并将该图像转换为新图像——图像修复的示例包括“扩展”照片的背景或为黑白照片着色。</p>
+<p>要使用图像修复功能，您需要输入图像、蒙版和提示。图像是您想要修改的原始图片，蒙版是突出显示您想要修复之区域的单色屏幕，提示告诉模型在该空间中生成什么。以下是执行图像修复的输入和请求模板的示例。</p>
+<h3>新用例</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="213" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=715&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=640&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=715&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=750&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=828&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=1080&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=1280&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=1430&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2275 Embedded Image - 6GpZZG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A9RWVHY36QNAD4M401YD.png&amp;w=1600&amp;h=477&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="477" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="213" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/ai'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> formData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">formData</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> prompt</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> formData.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"prompt"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> imageFile</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> formData.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"image"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> maskFile</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> formData.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"mask"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> imageArrayBuffer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> imageFile.</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> maskArrayBuffer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> maskFile.</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> ai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Ai</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> inputs</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">            prompt,</span></span>
+<span class="line"><span class="sk-24292e-fff">            image: [</span><span class="sk-d73a49-a0a0a0">...new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(imageArrayBuffer)],</span></span>
+<span class="line"><span class="sk-24292e-fff">            mask: [</span><span class="sk-d73a49-a0a0a0">...new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(maskArrayBuffer)],  </span></span>
+<span class="line"><span class="sk-24292e-fff">            strength: </span><span class="sk-005cc5-ffc799">0.8</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// Adjust the strength of the transformation</span></span>
+<span class="line"><span class="sk-24292e-fff">            num_steps: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// Number of inference steps for the diffusion process</span></span>
+<span class="line"><span class="sk-24292e-fff">        };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/runwayml/stable-diffusion-v1-5-inpainting"</span><span class="sk-24292e-fff">, inputs);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(response, {</span></span>
+<span class="line"><span class="sk-24292e-fff">            headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"image/png"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>我们还为 Workers AI 添加了新模型，可以执行各种专门的任务和用例，例如，专门用于解决数学问题 (<code>deepseek-math-7b-instruct</code>)、生成 SQL 代码 (<code>sqlcoder-7b-2</code>)、总结文本 (<code>bart-large-cnn</code>) 和自动添加图像描述 (<code>uform-gen2-qwen-500m</code>) 的 LLM。</p>
+<p>我们希望向公众发布这些模型，以便您可以开始使用它们进行构建，但我们将在接下来的几周内发布更多演示和教程内容。请继续关注我们的 <a href="https://twitter.com/CloudflareDev" target="_blank" rel="noopener noreferrer">X 帐户</a>和<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">开发人员文档</a>，了解有关如何使用这些新模型的更多信息。</p>
+<h3>优化我们的模型目录</h3>
+<p>AI 模型创新正在迅速发展，快速高效推理的工具和技术也在迅速发展。我们很高兴能够整合新的工具来帮助我们优化模型，以便为每个人提供最佳的推理平台。通常，在优化 AI 推理时，将模型序列化为 <a href="https://onnxruntime.ai" target="_blank" rel="noopener noreferrer">ONNX</a> 等格式很有用，ONNX 是此用例最普遍适用的选项之一，具有广泛的硬件和模型架构支持。ONNX 模型可以通过转换为 <a href="https://github.com/NVIDIA/TensorRT" target="_blank" rel="noopener noreferrer">TensorRT</a> 引擎来进一步优化。这种格式专为 Nvidia GPU 设计，可以缩短推理延迟并提高 LLM 的总吞吐量。选择正确的格式通常取决于特定模型架构和可用于推理的硬件对格式的最佳支持。我们决定为新的 Stable Diffusion 管道同时利用 TensorRT 和 ONNX 格式，这些管道代表了一系列应用于特定任务的模型。</p>
+<h3>在我们的新开发人员文档中探索更多信息</h3>
+<p>您可以在我们的<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">新开发人员文档</a>中探索所有这些新模型，了解有关各个模型、它们的提示模板以及上下文令牌限制等属性的更多信息。我们重新设计了模型页面，以便开发人员能更轻松地探索新模型并学习如何使用它们。现在，您将在一个页面上看到所有模型，以便于搜索，任务类型位于右侧。然后，您可以点击进入各个模型页面，查看有关如何使用这些模型的代码示例。</p>
+<p>我们希望您尝试这些新模型并在 Workers AI 上构建新的东西！我们即将推出更多更新，包括更多演示、教程和 Workers AI 定价。请在我们的 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a> 上告诉我们您正在开发的内容以及您希望看到的其他模型。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="316" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=715&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=640&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=715&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=750&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=828&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=1080&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=1280&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=1430&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2275 Embedded Image - cVLn7k" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FXRH756W9NB4SJNG0N80.png&amp;w=1556&amp;h=687&amp;f=webp" data-lightbox-width="1556" data-lightbox-height="687" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="316" class="pt-portable-image-media"></div>
+</figure>

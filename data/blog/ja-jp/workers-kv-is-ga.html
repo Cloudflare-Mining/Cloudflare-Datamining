@@ -1,407 +1,286 @@
-<div class="mb2 gray5">5分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/workers-kv-is-ga">English</a>、<a href="https://blog.cloudflare.com/fr-fr/workers-kv-is-ga">Français</a>、<a href="https://blog.cloudflare.com/de-de/workers-kv-is-ga">Deutsch</a>、<a href="https://blog.cloudflare.com/es-es/workers-kv-is-ga">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/workers-kv-is-ga">简体中文</a>でも表示されます。</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<p>本日、Workers KVの一般利用が開始し、業務目的の利用準備が完了したことをお知らせします！</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3188jggqN4vJJchIXvTReV/e9476e1e9e5783948d4255f92bcb2e47/Workers-KV-GA_2x.png" alt="" class="kg-image" width="1517" height="776" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="what-is-workers-kv"><b>Workers KVとは？</b></h3>
-		<a href="https://blog.cloudflare.com/#what-is-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は、Cloudflareのグローバルエッジに拡がる、分散性が高く、結果整合性のあるKey-Valueストアです。これにより、数十億のキーと値のペアを保存し、世界中のどこでも超低レイテンシーでそれらを読み取ることができます。これで、CDN 静的キャッシュのパフォーマンスでアプリケーション全体を構築できるようになりました。</p>
-	<div class="flex anchor relative">
-		<h3 id="why-did-we-build-it"><b>Workers KVを構築した理由は？</b></h3>
-		<a href="https://blog.cloudflare.com/#why-did-we-build-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a>は、Cloudflareの175以上のデータセンターのグローバルエッジでJavaScriptが実行できるプラットフォームです。ほんの数行のコードで、HTTP要求のルーティング、応答の修正、配信元サーバーなしでも新しい応答を作成することができます。</p>
-	<pre class="language-javascript"><code class="language-javascript">// A Worker that handles a single redirect,
-// such a humble beginning...
-addEventListener("fetch", event =&gt; {
-  event.respondWith(handleOneRedirect(event.request))
-})
-
-async function handleOneRedirect(request) {
-  let url = new URL(request.url)
-  let device = request.headers.get("CF-Device-Type")
-  // If the device is mobile, add a prefix to the hostname.
-  // (eg. example.com becomes mobile.example.com)
-  if (device === "mobile") {
-    url.hostname = "mobile." + url.hostname
-    return Response.redirect(url, 302)
-  }
-  // Otherwise, send request to the original hostname.
-  return await fetch(request)
-}</code></pre>
-	<p>すぐに、お客様から、永続的なデータを格納する方法を必要とする利用例が提示されました。上記の例に倣い、リダイレクトが一つなら簡単に処理できますが、数十億のリダイレクトを処理する場合はどうでしょうか？Workersスクリプトにハードコード化して、すべて1MB以下に収まるようにし、変更を加えるたびに再展開する必要があります。面倒くさい！これが、WorkersKVを構築した理由です。</p>
-	<pre class="language-javascript"><code class="language-javascript">// A Worker that can handle billions of redirects,
-// now that's more like it!
-addEventListener("fetch", event =&gt; {
-  event.respondWith(handleBillionsOfRedirects(event.request))
-})
-
-async function handleBillionsOfRedirects(request) {
-  let prefix = "/redirect"
-  let url = new URL(request.url)
-  // Check if the URL is a special redirect.
-  // (eg. example.com/redirect/&lt;random-hash&gt;)
-  if (url.pathname.startsWith(prefix)) {
-    // REDIRECTS is a custom variable that you define,
-    // it binds to a Workers KV "namespace." (aka. a storage bucket)
-    let redirect = await REDIRECTS.get(url.pathname.replace(prefix, ""))
-    if (redirect) {
-      url.pathname = redirect
-      return Response.redirect(url, 302)
-    }
-  }
-  // Otherwise, send request to the original path.
-  return await fetch(request)
-}</code></pre>
-	<p>前述の例からほんの少し変更しただけで、リダイレクトが一つから数十億に拡大しました。Workers KVでできることのほんの一部に過ぎません。</p>
-	<div class="flex anchor relative">
-		<h3 id="how-does-it-work"><b>動作機序</b></h3>
-		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>分散型データストアはよく、<a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP Theorem</a>を使用して、形作られます。ここでは、分散型システムは次の3つのうちの2つしか選択することができないと述べられています。</p>
-	<ul>
-		<li>
-			<p>一貫性 - データはどこでも同じですか？</p>
-		</li>
-		<li>
-			<p>可用性 - 常にデータにアクセスできますか？</p>
-		</li>
-		<li>
-			<p>分断耐性 -地域的な停電時にもデータは復元しますか？</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2q0UXWQCbVcPVUX9nrkB88/2c384717f1db76f9ecdf7065c08b770f/workers-kv-venn-diagram_2x-1.png" alt="" class="kg-image" width="1204" height="924" loading="lazy">
-
-	</figure>
-	<p>Workers KV は、可用性と分断耐性を保証することを選択します。この組み合わせは<a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">結果整合性</a>と呼ばれ、Workers KVは類似製品に比べて 2 つの点で有利です。</p>
-	<ul>
-		<li>
-			<p>読み取りは、当社のキャッシュ技術が装備されているため、超高速(中央値 12m秒)です。</p>
-		</li>
-		<li>
-			<p>データは175以上のエッジデータセンターで利用でき、地域的な停電時の復元力を備えています。</p>
-		</li>
-	</ul>
-	<p>ただし、結果整合性には代償があります。2 者のクライアントが同じキーに異なる値を同時に書き込む場合、最後に書き込んだクライアントが_最終的に_ 「勝ち」、その値はグローバルに一貫性を持ちます。これは、クライアントがキーに書き込み、その同じクライアントが同じキーを読み取った場合でも、値が短時間一致しない可能性があるということです。</p>
-	<p>このシナリオをわかりやすくするために、3 人の友人の間で実際に起きたことを例にします。</p>
-	<ul>
-		<li>
-			<p>マシュー、ミシェル、リーが週一回のランチを計画しているとします。</p>
-		</li>
-		<li>
-			<p>マシューが、お寿司を食べに行くと決めました。</p>
-		</li>
-		<li>
-			<p>ミシェルにお寿司の計画を伝え、ミシェルは同意します。</p>
-		</li>
-		<li>
-			<p>リーは計画を知らないので、ミシェルに実はピザを食べる予定だと話します。</p>
-		</li>
-	</ul>
-	<p>1 時間後、ミシェルとリーはピザ屋で待っていて、マシューは寿司屋で 1 人で座っています。どこで間違ったのでしょうか？私たちは、これを結果整合性であると結論づけることができます。なぜなら、マシューは数分間待った後、更新されたカレンダーを見て、_結果的に_寿司の代わりに_ピザを食べるという_新しい真実を見つけるのです。</p>
-	<p>現実世界では数分かかるかもしれませんが、WorkersKVは遥かに高速です。60秒未満でグローバルな一貫性が実現できます。さらに、Worker がキーに書き込み、_即座に_同じキーを読み取るときに、両方の操作が同じ場所から来た場合は、値の一貫性が期待できます。</p>
-	<div class="flex anchor relative">
-		<h3 id="when-should-i-use-it"><b>どんな時に利用できるか？</b></h3>
-		<a href="https://blog.cloudflare.com/#when-should-i-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>結果整合性を使用する利点と代償が理解できました。では、アプリケーションに適したストレージソリューションかどうかを判断するにはどうすればよいでしょうか？簡単に言えば、超高速読み取りでグローバルな可用性をお求めなら、Workers KVが最適です。</p>
-	<p>ただし、アプリケーションが頻繁に同じキーに書き込む場合は、さらに考慮すべきことがあります。私たちはそれを「マシューの疑問」と呼んでいます。世界のマシューたちが_たまに_間違ったレストランに行っても許容できますか？</p>
-	<p>これにより実質的な違いが生じない利用例 (当社のリダイレクトWorkerの例など) は、想像できます。しかし、ユーザーの銀行口座残高を追跡すると決めた場合、同時に2つの残高が存在する可能性は望まないでしょう。既に使ってしまったお金で何かを購入してしまうかもしれないからです。</p>
-	<div class="flex anchor relative">
-		<h3 id="what-can-i-build-with-it"><b>Workers KVで何を構築することができますか？</b></h3>
-		<a href="https://blog.cloudflare.com/#what-can-i-build-with-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>KVで構築されたアプリケーションの例を次に示しましょう。</p>
-	<ul>
-		<li>
-			<p>一括リダイレクト - 数十億ものHTTPリダイレクトを処理します。</p>
-		</li>
-		<li>
-			<p>ユーザー認証 - API へのユーザー要求を検証します。</p>
-		</li>
-		<li>
-			<p>翻訳キー - ウェブページを動的にローカライズします。</p>
-		</li>
-		<li>
-			<p>コンフィギュレーションデータ - 配信元にアクセスできるユーザーを管理します。</p>
-		</li>
-		<li>
-			<p>ステップ関数 - 複数の API 関数間で状態データを同期します。</p>
-		</li>
-		<li>
-			<p>エッジファイル格納 - 大量にある小さなファイルをホストします。</p>
-		</li>
-	</ul>
-	<p>当社の以前の<a href="https://blog.cloudflare.com/building-with-workers-kv">ブログ記事</a>で、これらの利用例のいくつかを取り上げました。また、<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">Workers KVを利用したオンラインTo-Doリスト</a>を作成する方法に関する、最近公開されたブログ記事など、より詳細なコードチュートリアルもあります。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3oQnAPwVXWgsjCuSXuYL7q/755458cfb741e45f78c468a4729f7fc7/GQ4hrfQ.png" alt="" class="kg-image" width="618" height="487" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="whats-new-since-beta"><b>ベータ版以降の新機能は何ですか？</b></h3>
-		<a href="https://blog.cloudflare.com/#whats-new-since-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>これまでのところ、最も一般的なリクエストは、Workers KVへのデータの書き込みを容易にすることです。そのため、その体験をさらに向上させる 3 つの新しい方法をリリースします。</p>
-	<div class="flex anchor relative">
-		<h4 id="1-bulk-writes"><b>1.一括書き込み</b></h4>
-		<a href="https://blog.cloudflare.com/#1-bulk-writes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>既存のデータを Workers KV にインポートする場合は、キーと値のペアすべ_て_に対してHTTP要求を送信する手間はかけたくありません。だからこそ、Cloudflare API に<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">一括エンドポイント</a>を追加したのです。1 回の PUT要求で最大 10,000 組 (最大 100 MB のデータ) がアップロードできるようになりました。</p>
-	<pre class="language-bash"><code class="language-bash">curl "https://api.cloudflare.com/client/v4/accounts/ \
-     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/bulk" \
-  -X PUT \
-  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
-  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
-  -d '[
-    {"key": "built_by",    value: "kyle, alex, charlie, andrew, and brett"},
-    {"key": "reviewed_by", value: "joaquin"},
-    {"key": "approved_by", value: "steve"}
-  ]'</code></pre>
-	<p>利用例を 1 件ずつ見ていきましょう。Workersへのウェブサイト翻訳負荷軽減をしたいと思っています。翻訳キーを頻繁に読み込んでいるのですが、たまにしかアップデートしないため、このアプリケーションにはWorkers KVの結果整合性モデルが適しています。</p>
-	<p>この例では、翻訳データ管理に人気のプラットフォームである<a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>を結び付けます。このWorkersは/translateエンドポイントに応答し、すべての翻訳キーをダウンロードした後で、当社のエッジで後で読むことができるようにWorkers KVに一括書き込みします。</p>
-	<pre class="language-js"><code class="language-js">addEventListener("fetch", event =&gt; {
-  if (event.request.url.pathname === "/translate") {
-    event.respondWith(uploadTranslations())
-  }
-})
-
-async function uploadTranslations() {
-  // Ask crowdin for all of our translations.
-  var response = await fetch(
-    "https://api.crowdin.com/api/project" +
-    "/:ci_project_id/download/all.zip?key=:ci_secret_key")
-  // If crowdin is responding, parse the response into
-  // a single json with all of our translations.
-  if (response.ok) {
-    var translations = await zipToJson(response)
-    return await bulkWrite(translations)
-  }
-  // Return the errored response from crowdin.
-  return response
-}
-
-async function bulkWrite(keyValuePairs) {
-  return fetch(
-    "https://api.cloudflare.com/client/v4/accounts" +
-    "/:cf_account_id/storage/kv/namespaces/:cf_namespace_id/bulk",
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Auth-Key": ":cf_auth_key",
-        "X-Auth-Email": ":cf_email"
-      },
-      body: JSON.stringify(keyValuePairs)
-    }
-  )
-}
-
-async function zipToJson(response) {
-  // ... omitted for brevity ...
-  // (eg. https://stuk.github.io/jszip)
-  return [
-    {key: "hello.EN", value: "Hello World"},
-    {key: "hello.ES", value: "Hola Mundo"}
-  ]
-}</code></pre>
-	<p>これで、ページを翻訳したい場合は、Workers KV から読み取るだけです。</p>
-	<pre class="language-javascript"><code class="language-javascript">async function translate(keys, lang) {
-  // You bind your translations namespace to the TRANSLATIONS variable.
-  return Promise.all(keys.map(key =&gt; TRANSLATIONS.get(key + "." + lang)))
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="2-expiring-keys"><b>2.期限付きのキー</b></h4>
-		<a href="https://blog.cloudflare.com/#2-expiring-keys" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>デフォルトでは、Workers KV に格納されているキーと値のペアは永久に存続します。しかし、一定時間の経過後にデータを自動削除したい場合があります。そのため、書き込み操作の有効期限と有効期限の Ttlオプションを導入しています。</p>
-	<pre class="language-javascript"><code class="language-javascript">// Key expires 60 seconds from now.
-NAMESPACE.put("myKey", "myValue", {expirationTtl: 60})
-
-// Key expires if the UNIX epoch is in the past.
-NAMESPACE.put("myKey", "myValue", {expiration: 1247788800})</code></pre>
-
-	<pre class="language-bash"><code class="language-bash"># You can also set keys to expire from the Cloudflare API.
-curl "https://api.cloudflare.com/client/v4/accounts/ \
-     $ACCOUNT_ID/storage/kv/namespaces/$NAMESPACE_ID/ \
-     values/$KEY?expiration_ttl=$EXPIRATION_IN_SECONDS"
-  -X PUT \
-  -H "X-Auth-Key: $CLOUDFLARE_AUTH_KEY" \
-  -H "X-Auth-Email: $CLOUDFLARE_AUTH_EMAIL" \
-  -d "$VALUE"</code></pre>
-	<p>たとえば、不適切だとフラグがついているユーザーをサイトからブロックしたいとします。ただし 1 週間の期限付きです。期限付きのキーを使用すれば、有効期限を設定でき、後で削除する必要もありません。</p>
-	<p>この例では、ユーザーと IP アドレスが同じものであると仮定します。アプリケーションにデータ確認がある場合は、アクセス・トークンをキー識別子として使用できます。</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
-  var url = new URL(event.request.url)
-  // An internal API that blocks a new user IP.
-  // (eg. example.com/block/1.2.3.4)
-  if (url.pathname.startsWith("/block")) {
-    var ip = url.pathname.split("/").pop()
-    event.respondWith(blockIp(ip))
-  } else {
-    // Other requests check if the IP is blocked.
-   event.respondWith(handleRequest(event.request))
-  }
-})
-
-async function blockIp(ip) {
-  // Values are allowed to be empty in KV,
-  // we don't need to store any extra information anyway.
-  await BLOCKED.put(ip, "", {expirationTtl: 60*60*24*7})
-  return new Response("ok")
-}
-
-async function handleRequest(request) {
-  var ip = request.headers.get("CF-Connecting-IP")
-  if (ip) {
-    var blocked = await BLOCKED.get(ip)
-    // If we detect an IP and its blocked, respond with a 403 error.
-    if (blocked) {
-      return new Response({status: 403, statusText: "You are blocked!"})
-    }
-  }
-  // Otherwise, passthrough the original request.
-  return fetch(request)
-}</code></pre>
-	<p><b>3.大きい値</b></p>
-	<p>値のサイズ制限を64 kB から2 MBに増やしました。これは、Workers KV にバッファベースまたはファイルデータを格納する必要がある場合に、非常に便利です。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cYcxKnB6nfE9lUg6aIUZK/4cefcd37832fc703602f0c8aa37c33d6/workers-kc-file-size-update_2x.png" alt="" class="kg-image" width="1212" height="604" loading="lazy">
-
-	</figure>
-	<p>こんな場合が考えられます。ユーザーが、プロフィールにお好みのGIFをアップロードできるようにしたい、でも自分のデータベースにバイナリとして格納したり、別_の_ストレージバケットを管理することは避けたい。</p>
-	<p>Workers KVは、この利用例に最適です！ユーザーのGIF用に Workers KV の名前空間を作成することができ、ユーザーの所在地に関わらず高速で高い信頼性を実現します。</p>
-	<p>この例では、ユーザーがお気に入りの GIFへのリンクをアップロードし、Workersがダウンロードして、Workers KV に格納します。</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
-  var url = event.request.url
-  var arg = request.url.split("/").pop()
-  // User sends a URI encoded link to the GIF they wish to upload.
-  // (eg. example.com/api/upload_gif/&lt;encoded-uri&gt;)
-  if (url.pathname.startsWith("/api/upload_gif")) {
-    event.respondWith(uploadGif(arg))
-    // Profile contains link to view the GIF.
-    // (eg. example.com/api/view_gif/&lt;username&gt;)
-  } else if (url.pathname.startsWith("/api/view_gif")) {
-    event.respondWith(getGif(arg))
-  }
-})
-
-async function uploadGif(url) {
-  // Fetch the GIF from the Internet.
-  var gif = await fetch(decodeURIComponent(url))
-  var buffer = await gif.arrayBuffer()
-  // Upload the GIF as a buffer to Workers KV.
-  await GIFS.put(user.name, buffer)
-  return gif
-}
-
-async function getGif(username) {
-  var gif = await GIFS.get(username, "arrayBuffer")
-  // If the user has set one, respond with the GIF.
-  if (gif) {
-    return new Response(gif, {headers: {"Content-Type": "image/gif"}})
-  } else {
-    return new Response({status: 404, statusText: "User has no GIF!"})
-  }
-}</code></pre>
-	<p>最後に、ベータ版をご利用いただいたすべてのお客様に感謝申し上げます。みなさまの貴重なフィードバックがあってこそ、Workers KVの変更を開発することが可能になりました。どうぞこれからもお願いいたします。当社は常にさらに先を見据えており、お客様からのご意見を楽しみにしております！</p>
-	<div class="flex anchor relative">
-		<h3 id="3-larger-values"><b>価格設定</b></h3>
-		<a href="https://blog.cloudflare.com/#3-larger-values" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>正式版も、価格を発表する準備が整いました。エンタープライズプランのお客様の場合、価格の変更はありません。</p>
-	<ul>
-		<li>
-			<p>最初の1 GBは無料。以後は1 GBごとに$0.50</p>
-		</li>
-		<li>
-			<p>最初の1千万回分の読み取りは無料。以後は百万回ごとに$0.50</p>
-		</li>
-		<li>
-			<p>最初の百万回分の書き込み、リスト、削除操作は無料。以降は百万回ごとに$5</p>
-		</li>
-	</ul>
-	<p>ベータ期間中に判明したことは、当社のエッジで値を読み取るだけではなく、エッジから値の書き込みも必要とされている、ということでした。需要の高いエッジ操作はよりコストがかかるため、読み取り操作以外にも月額の課金を開始しました。</p>
-	<div class="flex anchor relative">
-		<h3 id="pricing"><b>制限</b></h3>
-		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>前述のように、値のサイズ制限を 64 kB から 2 MB に拡張しました。また、名前空間ごとのキー数の上限もなくし、無制限としました。正式版の制限は次のとおりです。</p>
-	<ul>
-		<li>
-			<p>アカウントあたり最大 20 個の名前空間(それぞれ無制限のキー付き)</p>
-		</li>
-		<li>
-			<p>最大512バイトのキーと最大2MB の値</p>
-		</li>
-		<li>
-			<p>異なるキーに対する 1 秒あたりの書き込み無制限</p>
-		</li>
-		<li>
-			<p>同じキーに対して1秒あたり 1 回の書き込み</p>
-		</li>
-		<li>
-			<p>キーごとの1秒あたりの読み取り数は無制限</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="limits"><b>今すぐお試しください！</b></h3>
-		<a href="https://blog.cloudflare.com/#limits" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>すべてのお客様に公開しましたので、<a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は Cloudflare ダッシュボード上で、[Workers] タブから使用開始できます。当社の更新版<a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">ドキュメントもご覧ください。</a></p>
-	<p>Workers KVで何が構築できるのか、拝見するのが楽しみです！</p>
+<p>本日、Workers KVの一般利用が開始し、業務目的の利用準備が完了したことをお知らせします！</p>
+<h3><strong>Workers KVとは？</strong></h3>
+<p><a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は、Cloudflareのグローバルエッジに拡がる、分散性が高く、結果整合性のあるKey-Valueストアです。これにより、数十億のキーと値のペアを保存し、世界中のどこでも超低レイテンシーでそれらを読み取ることができます。これで、CDN 静的キャッシュのパフォーマンスでアプリケーション全体を構築できるようになりました。</p>
+<h3><strong>Workers KVを構築した理由は？</strong></h3>
+<p><a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a>は、Cloudflareの175以上のデータセンターのグローバルエッジでJavaScriptが実行できるプラットフォームです。ほんの数行のコードで、HTTP要求のルーティング、応答の修正、配信元サーバーなしでも新しい応答を作成することができます。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that handles a single redirect,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// such a humble beginning...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleOneRedirect</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleOneRedirect</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> device </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"CF-Device-Type"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // If the device is mobile, add a prefix to the hostname.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // (eg. example.com becomes mobile.example.com)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (device </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "mobile"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    url.hostname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "mobile."</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> url.hostname</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">redirect</span><span class="sk-24292e-fff">(url, </span><span class="sk-005cc5-ffc799">302</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Otherwise, send request to the original hostname.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>すぐに、お客様から、永続的なデータを格納する方法を必要とする利用例が提示されました。上記の例に倣い、リダイレクトが一つなら簡単に処理できますが、数十億のリダイレクトを処理する場合はどうでしょうか？Workersスクリプトにハードコード化して、すべて1MB以下に収まるようにし、変更を加えるたびに再展開する必要があります。面倒くさい！これが、WorkersKVを構築した理由です。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker that can handle billions of redirects,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// now that's more like it!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleBillionsOfRedirects</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleBillionsOfRedirects</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> prefix </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "/redirect"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Check if the URL is a special redirect.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // (eg. example.com/redirect/&lt;random-hash&gt;)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(prefix)) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // REDIRECTS is a custom variable that you define,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // it binds to a Workers KV "namespace." (aka. a storage bucket)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> redirect </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> REDIRECTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(url.pathname.</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(prefix, </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (redirect) {</span></span>
+<span class="line"><span class="sk-24292e-fff">      url.pathname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> redirect</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">redirect</span><span class="sk-24292e-fff">(url, </span><span class="sk-005cc5-ffc799">302</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Otherwise, send request to the original path.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>前述の例からほんの少し変更しただけで、リダイレクトが一つから数十億に拡大しました。Workers KVでできることのほんの一部に過ぎません。</p>
+<h3><strong>動作機序</strong></h3>
+<p>分散型データストアはよく、<a href="https://en.wikipedia.org/wiki/CAP_theorem" target="_blank" rel="noopener noreferrer">CAP Theorem</a>を使用して、形作られます。ここでは、分散型システムは次の3つのうちの2つしか選択することができないと述べられています。</p>
+<ul>
+	<li>一貫性 - データはどこでも同じですか？</li>
+	<li>可用性 - 常にデータにアクセスできますか？</li>
+	<li>分断耐性 -地域的な停電時にもデータは復元しますか？</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=750&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=828&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1080&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1280&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1430&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - pjWvzj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K13QCN14GT98G2N4GS3A.png&amp;w=1204&amp;h=924&amp;f=webp" data-lightbox-width="1204" data-lightbox-height="924" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="549" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Workers KV は、可用性と分断耐性を保証することを選択します。この組み合わせは<a href="https://en.wikipedia.org/wiki/Eventual_consistency" target="_blank" rel="noopener noreferrer">結果整合性</a>と呼ばれ、Workers KVは類似製品に比べて 2 つの点で有利です。</p>
+<ul>
+	<li>読み取りは、当社のキャッシュ技術が装備されているため、超高速(中央値 12m秒)です。</li>
+	<li>データは175以上のエッジデータセンターで利用でき、地域的な停電時の復元力を備えています。</li>
+</ul>
+<p>ただし、結果整合性には代償があります。2 者のクライアントが同じキーに異なる値を同時に書き込む場合、最後に書き込んだクライアントが_最終的に_ 「勝ち」、その値はグローバルに一貫性を持ちます。これは、クライアントがキーに書き込み、その同じクライアントが同じキーを読み取った場合でも、値が短時間一致しない可能性があるということです。</p>
+<p>このシナリオをわかりやすくするために、3 人の友人の間で実際に起きたことを例にします。</p>
+<ul>
+	<li>マシュー、ミシェル、リーが週一回のランチを計画しているとします。</li>
+	<li>マシューが、お寿司を食べに行くと決めました。</li>
+	<li>ミシェルにお寿司の計画を伝え、ミシェルは同意します。</li>
+	<li>リーは計画を知らないので、ミシェルに実はピザを食べる予定だと話します。</li>
+</ul>
+<p>1 時間後、ミシェルとリーはピザ屋で待っていて、マシューは寿司屋で 1 人で座っています。どこで間違ったのでしょうか？私たちは、これを結果整合性であると結論づけることができます。なぜなら、マシューは数分間待った後、更新されたカレンダーを見て、_結果的に_寿司の代わりに_ピザを食べるという_新しい真実を見つけるのです。</p>
+<p>現実世界では数分かかるかもしれませんが、WorkersKVは遥かに高速です。60秒未満でグローバルな一貫性が実現できます。さらに、Worker がキーに書き込み、_即座に_同じキーを読み取るときに、両方の操作が同じ場所から来た場合は、値の一貫性が期待できます。</p>
+<h3><strong>どんな時に利用できるか？</strong></h3>
+<p>結果整合性を使用する利点と代償が理解できました。では、アプリケーションに適したストレージソリューションかどうかを判断するにはどうすればよいでしょうか？簡単に言えば、超高速読み取りでグローバルな可用性をお求めなら、Workers KVが最適です。</p>
+<p>ただし、アプリケーションが頻繁に同じキーに書き込む場合は、さらに考慮すべきことがあります。私たちはそれを「マシューの疑問」と呼んでいます。世界のマシューたちが_たまに_間違ったレストランに行っても許容できますか？</p>
+<p>これにより実質的な違いが生じない利用例 (当社のリダイレクトWorkerの例など) は、想像できます。しかし、ユーザーの銀行口座残高を追跡すると決めた場合、同時に2つの残高が存在する可能性は望まないでしょう。既に使ってしまったお金で何かを購入してしまうかもしれないからです。</p>
+<h3><strong>Workers KVで何を構築することができますか？</strong></h3>
+<p>KVで構築されたアプリケーションの例を次に示しましょう。</p>
+<ul>
+	<li>一括リダイレクト - 数十億ものHTTPリダイレクトを処理します。</li>
+	<li>ユーザー認証 - API へのユーザー要求を検証します。</li>
+	<li>翻訳キー - ウェブページを動的にローカライズします。</li>
+	<li>コンフィギュレーションデータ - 配信元にアクセスできるユーザーを管理します。</li>
+	<li>ステップ関数 - 複数の API 関数間で状態データを同期します。</li>
+	<li>エッジファイル格納 - 大量にある小さなファイルをホストします。</li>
+</ul>
+<p>当社の以前の<a href="https://blog.cloudflare.com/building-with-workers-kv">ブログ記事</a>で、これらの利用例のいくつかを取り上げました。また、<a href="https://blog.cloudflare.com/building-a-to-do-list-with-workers-and-kv">Workers KVを利用したオンラインTo-Doリスト</a>を作成する方法に関する、最近公開されたブログ記事など、より詳細なコードチュートリアルもあります。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="618" height="487" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center 618w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=640&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=750&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=828&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1080&amp;h=851&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=1236&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center 1236w" alt="Workers KV — Cloudflare's distributed database Embedded Image - LkgCY5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469WC0QCCRDMAA0VRTGVB3.png&amp;w=618&amp;h=487&amp;f=webp" data-lightbox-width="618" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 618px) 618px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="618" height="487" class="pt-portable-image-media"></div>
+</figure>
+<h3><strong>ベータ版以降の新機能は何ですか？</strong></h3>
+<p>これまでのところ、最も一般的なリクエストは、Workers KVへのデータの書き込みを容易にすることです。そのため、その体験をさらに向上させる 3 つの新しい方法をリリースします。</p>
+<h4><strong>1.一括書き込み</strong></h4>
+<p>既存のデータを Workers KV にインポートする場合は、キーと値のペアすべ_て_に対してHTTP要求を送信する手間はかけたくありません。だからこそ、Cloudflare API に<a href="https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs" target="_blank" rel="noopener noreferrer">一括エンドポイント</a>を追加したのです。1 回の PUT要求で最大 10,000 組 (最大 100 MB のデータ) がアップロードできるようになりました。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/ </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-24292e-fff">     $ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/storage/kv/namespaces/</span><span class="sk-24292e-fff">$NAMESPACE_ID</span><span class="sk-032f62-99ffe4">/bulk"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -X</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_KEY</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_EMAIL</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> '[</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    {"key": "built_by",    value: "kyle, alex, charlie, andrew, and brett"},</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    {"key": "reviewed_by", value: "joaquin"},</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    {"key": "approved_by", value: "steve"}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  ]'</span></span></code></pre>
+</div>
+<p>利用例を 1 件ずつ見ていきましょう。Workersへのウェブサイト翻訳負荷軽減をしたいと思っています。翻訳キーを頻繁に読み込んでいるのですが、たまにしかアップデートしないため、このアプリケーションにはWorkers KVの結果整合性モデルが適しています。</p>
+<p>この例では、翻訳データ管理に人気のプラットフォームである<a href="https://crowdin.com" target="_blank" rel="noopener noreferrer">Crowdin</a>を結び付けます。このWorkersは/translateエンドポイントに応答し、すべての翻訳キーをダウンロードした後で、当社のエッジで後で読むことができるようにWorkers KVに一括書き込みします。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (event.request.url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/translate"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">uploadTranslations</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> uploadTranslations</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Ask crowdin for all of our translations.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "https://api.crowdin.com/api/project"</span><span class="sk-d73a49-a0a0a0"> +</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "/:ci_project_id/download/all.zip?key=:ci_secret_key"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // If crowdin is responding, parse the response into</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // a single json with all of our translations.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (response.ok) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> translations </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> zipToJson</span><span class="sk-24292e-fff">(response)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> bulkWrite</span><span class="sk-24292e-fff">(translations)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Return the errored response from crowdin.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> bulkWrite</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">keyValuePairs</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "https://api.cloudflare.com/client/v4/accounts"</span><span class="sk-d73a49-a0a0a0"> +</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "/:cf_account_id/storage/kv/namespaces/:cf_namespace_id/bulk"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      method: </span><span class="sk-032f62-99ffe4">"PUT"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "X-Auth-Key"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">":cf_auth_key"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "X-Auth-Email"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">":cf_email"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(keyValuePairs)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> zipToJson</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">response</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... omitted for brevity ...</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // (eg. https://stuk.github.io/jszip)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {key: </span><span class="sk-032f62-99ffe4">"hello.EN"</span><span class="sk-24292e-fff">, value: </span><span class="sk-032f62-99ffe4">"Hello World"</span><span class="sk-24292e-fff">},</span></span>
+<span class="line"><span class="sk-24292e-fff">    {key: </span><span class="sk-032f62-99ffe4">"hello.ES"</span><span class="sk-24292e-fff">, value: </span><span class="sk-032f62-99ffe4">"Hola Mundo"</span><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>これで、ページを翻訳したい場合は、Workers KV から読み取るだけです。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> translate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">keys</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">lang</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // You bind your translations namespace to the TRANSLATIONS variable.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">(keys.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">key</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-005cc5-fff"> TRANSLATIONS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(key </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "."</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> lang)))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h4><strong>2.期限付きのキー</strong></h4>
+<p>デフォルトでは、Workers KV に格納されているキーと値のペアは永久に存続します。しかし、一定時間の経過後にデータを自動削除したい場合があります。そのため、書き込み操作の有効期限と有効期限の Ttlオプションを導入しています。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Key expires 60 seconds from now.</span></span>
+<span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expirationTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Key expires if the UNIX epoch is in the past.</span></span>
+<span class="line"><span class="sk-005cc5-fff">NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"myKey"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"myValue"</span><span class="sk-24292e-fff">, {expiration: </span><span class="sk-005cc5-ffc799">1247788800</span><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># You can also set keys to expire from the Cloudflare API.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/ </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-24292e-fff">     $ACCOUNT_ID</span><span class="sk-032f62-99ffe4">/storage/kv/namespaces/</span><span class="sk-24292e-fff">$NAMESPACE_ID</span><span class="sk-032f62-99ffe4">/ </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     values/</span><span class="sk-24292e-fff">$KEY</span><span class="sk-032f62-99ffe4">?expiration_ttl=</span><span class="sk-24292e-fff">$EXPIRATION_IN_SECONDS</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  -X</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_KEY</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: </span><span class="sk-24292e-fff">$CLOUDFLARE_AUTH_EMAIL</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$VALUE</span><span class="sk-032f62-99ffe4">"</span></span></code></pre>
+</div>
+<p>たとえば、不適切だとフラグがついているユーザーをサイトからブロックしたいとします。ただし 1 週間の期限付きです。期限付きのキーを使用すれば、有効期限を設定でき、後で削除する必要もありません。</p>
+<p>この例では、ユーザーと IP アドレスが同じものであると仮定します。アプリケーションにデータ確認がある場合は、アクセス・トークンをキー識別子として使用できます。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // An internal API that blocks a new user IP.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // (eg. example.com/block/1.2.3.4)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/block"</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> ip </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> url.pathname.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">pop</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">blockIp</span><span class="sk-24292e-fff">(ip))</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Other requests check if the IP is blocked.</span></span>
+<span class="line"><span class="sk-24292e-fff">   event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> blockIp</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">ip</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Values are allowed to be empty in KV,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // we don't need to store any extra information anyway.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-fff"> BLOCKED</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(ip, </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">, {expirationTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799">60</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799">24</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799">7</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ok"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> ip </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"CF-Connecting-IP"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (ip) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> blocked </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> BLOCKED</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(ip)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // If we detect an IP and its blocked, respond with a 403 error.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (blocked) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">({status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">, statusText: </span><span class="sk-032f62-99ffe4">"You are blocked!"</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Otherwise, passthrough the original request.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><strong>3.大きい値</strong></p>
+<p>値のサイズ制限を64 kB から2 MBに増やしました。これは、Workers KV にバッファベースまたはファイルデータを格納する必要がある場合に、非常に便利です。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="356" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=640&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=750&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=828&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1080&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1280&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1430&amp;h=712&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers KV — Cloudflare's distributed database Embedded Image - cOsdZR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFP8SZNQ872DVNFTRCVK.png&amp;w=1212&amp;h=604&amp;f=webp" data-lightbox-width="1212" data-lightbox-height="604" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="356" class="pt-portable-image-media"></div>
+</figure>
+<p>こんな場合が考えられます。ユーザーが、プロフィールにお好みのGIFをアップロードできるようにしたい、でも自分のデータベースにバイナリとして格納したり、別_の_ストレージバケットを管理することは避けたい。</p>
+<p>Workers KVは、この利用例に最適です！ユーザーのGIF用に Workers KV の名前空間を作成することができ、ユーザーの所在地に関わらず高速で高い信頼性を実現します。</p>
+<p>この例では、ユーザーがお気に入りの GIFへのリンクをアップロードし、Workersがダウンロードして、Workers KV に格納します。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> event.request.url</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> arg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.url.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">pop</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // User sends a URI encoded link to the GIF they wish to upload.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // (eg. example.com/api/upload_gif/&lt;encoded-uri&gt;)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/api/upload_gif"</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">uploadGif</span><span class="sk-24292e-fff">(arg))</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Profile contains link to view the GIF.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // (eg. example.com/api/view_gif/&lt;username&gt;)</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/api/view_gif"</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">getGif</span><span class="sk-24292e-fff">(arg))</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> uploadGif</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Fetch the GIF from the Internet.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> gif </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">decodeURIComponent</span><span class="sk-24292e-fff">(url))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> buffer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> gif.</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Upload the GIF as a buffer to Workers KV.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-fff"> GIFS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(user.name, buffer)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> gif</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getGif</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">username</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> gif </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> GIFS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(username, </span><span class="sk-032f62-99ffe4">"arrayBuffer"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // If the user has set one, respond with the GIF.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (gif) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(gif, {headers: {</span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"image/gif"</span><span class="sk-24292e-fff">}})</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">({status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff">, statusText: </span><span class="sk-032f62-99ffe4">"User has no GIF!"</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>最後に、ベータ版をご利用いただいたすべてのお客様に感謝申し上げます。みなさまの貴重なフィードバックがあってこそ、Workers KVの変更を開発することが可能になりました。どうぞこれからもお願いいたします。当社は常にさらに先を見据えており、お客様からのご意見を楽しみにしております！</p>
+<h3><strong>価格設定</strong></h3>
+<p>正式版も、価格を発表する準備が整いました。エンタープライズプランのお客様の場合、価格の変更はありません。</p>
+<ul>
+	<li>最初の1 GBは無料。以後は1 GBごとに$0.50</li>
+	<li>最初の1千万回分の読み取りは無料。以後は百万回ごとに$0.50</li>
+	<li>最初の百万回分の書き込み、リスト、削除操作は無料。以降は百万回ごとに$5</li>
+</ul>
+<p>ベータ期間中に判明したことは、当社のエッジで値を読み取るだけではなく、エッジから値の書き込みも必要とされている、ということでした。需要の高いエッジ操作はよりコストがかかるため、読み取り操作以外にも月額の課金を開始しました。</p>
+<h3><strong>制限</strong></h3>
+<p>前述のように、値のサイズ制限を 64 kB から 2 MB に拡張しました。また、名前空間ごとのキー数の上限もなくし、無制限としました。正式版の制限は次のとおりです。</p>
+<ul>
+	<li>アカウントあたり最大 20 個の名前空間(それぞれ無制限のキー付き)</li>
+	<li>最大512バイトのキーと最大2MB の値</li>
+	<li>異なるキーに対する 1 秒あたりの書き込み無制限</li>
+	<li>同じキーに対して1秒あたり 1 回の書き込み</li>
+	<li>キーごとの1秒あたりの読み取り数は無制限</li>
+</ul>
+<h3><strong>今すぐお試しください！</strong></h3>
+<p>すべてのお客様に公開しましたので、<a href="https://www.cloudflare.com/products/workers-kv" target="_blank" rel="noopener noreferrer">Workers KV</a>は Cloudflare ダッシュボード上で、[Workers] タブから使用開始できます。当社の更新版<a href="https://developers.cloudflare.com/workers/kv" target="_blank" rel="noopener noreferrer">ドキュメントもご覧ください。</a></p>
+<p>Workers KVで何が構築できるのか、拝見するのが楽しみです！</p>

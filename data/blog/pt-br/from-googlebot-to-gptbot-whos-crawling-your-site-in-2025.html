@@ -1,0 +1,972 @@
+<p>Os <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer"><u>web crawlers</u></a> não são novidade. O <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Wanderer" target="_blank" rel="noopener noreferrer"><u>World Wide Web Wanderer</u></a> foi lançado em 1993, embora os primeiros mecanismos de pesquisa na web a realmente usarem crawlers e indexadores tenham sido o <a href="https://en.wikipedia.org/wiki/JumpStation" target="_blank" rel="noopener noreferrer"><u>JumpStation</u></a> e o <a href="https://en.wikipedia.org/wiki/WebCrawler" target="_blank" rel="noopener noreferrer"><u>WebCrawler</u></a>. Os crawlers são parte de uma das bases do sucesso da internet: a pesquisa. O objetivo principal deles tem sido indexar o conteúdo de sites em toda a internet para que esses sites possam aparecer nos resultados dos mecanismos de pesquisa e direcionar os usuários de forma adequada. Neste post do blog, analisamos as tendências recentes na atividades de crawlers da web, que agora desempenha um papel crucial e complexo com a ascensão da IA.</p>
+<p>Nem todos os crawlers são iguais. Bots, scripts automatizados que executam tarefas na internet, apresentam-se em muitas formas: aqueles considerados não ameaçadores ou “<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>bons</u></a>” (como clientes de API, bots de indexação de pesquisa como o Googlebot ou verificadores de integridade) e aqueles considerados maliciosos ou “<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>ruins</u></a>” (como os usados para preenchimento de credenciais, spam ou raspagem de conteúdo sem permissão). Na verdade, cerca de 30% do tráfego global da web hoje, de acordo com os <a href="https://radar.cloudflare.com/traffic?dateRange=52w#bot-vs-human" target="_blank" rel="noopener noreferrer"><u>dados do Cloudflare Radar</u></a>, vem de bots e até excede o tráfego humano da internet em alguns locais.</p>
+<p>Uma nova categoria, crawlers de IA, surgiu nos últimos anos. Esses bots coletam dados de toda a web para treinar modelos de IA, melhorando ferramentas e experiências, mas também <a href="https://en.wikipedia.org/wiki/Artificial_intelligence_and_copyright" target="_blank" rel="noopener noreferrer"><u>levantando questões sobre direitos sobre conteúdo</u></a>, uso não autorizado e sobrecarga de infraestrutura. Tínhamos como objetivo confirmar o crescimento dos crawlers de pesquisa e de IA, examinar crawlers de IA específicos e compreender o uso mais amplo dos crawlers.</p>
+<p>Isso é cada vez mais relevante com a rápida adoção da IA, as crescentes preocupações com os direitos de conteúdo e as discussões sobre privacidade de dados. Alguns sites e criadores estão procurando limitar ou bloquear os crawlers de IA usando ferramentas como <code>robots.txt</code> ou <a href="https://blog.cloudflare.com/bringing-ai-to-cloudflare/#enabling-dynamic-updates-for-the-ai-bot-rule" target="_blank" rel="noopener noreferrer"><u>regras de firewall</u></a>. Outros, como o criador indie e empreendedor holandês <a href="https://x.com/levelsio/status/1916626339924267319" target="_blank" rel="noopener noreferrer"><u>Pieter Levels</u></a>, os adotaram: “<em>Estou 100% bem com os crawlers de IA... é muito importante classificar em LLMs [grandes modelos de linguagem]</em>”.</p>
+<p>É importante notar que os crawlers têm finalidades diferentes. Por exemplo, o bot <code>facebookexternalhit</code> não está incluído nesta análise, pois é utilizado pelo Facebook para buscar o conteúdo da página ao gerar visualizações de links compartilhados. No entanto, neste post, estamos focando apenas nos crawlers de IA e de pesquisa que estão indexando ou raspando o conteúdo do site.</p>
+<h2>Perspectiva dos crawlers apenas de IA</h2>
+<p>Vamos começar com uma perspectiva dos crawlers apenas de IA que temos atualmente no <a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;dt=12w" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>, focada apenas em crawlers anunciados como relacionados à IA. Para identificá-los, estamos usando aqui uma <a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>lista</u></a> derivada de um projeto de código aberto que ajuda os proprietários de sites a gerenciar e controlar o acesso a crawlers de IA, especialmente aqueles usados para treinar grandes modelos de linguagem (LLMs). Isso também fornece orientação sobre o que incluir nos arquivos <code>robots.txt</code> (mais sobre isso abaixo). Os dados apresentados abaixo baseiam-se na correspondência desses nomes de crawlers com as cadeias de caracteres de agente de usuário em solicitações HTTP. (Mais detalhes, incluindo uma exceção, sobre este método podem ser encontrados no final deste post do blog.)</p>
+<p>O cenário dos crawlers de IA passou por uma mudança significativa entre maio de 2024 e maio de 2025, com o <code>GPTBot</code> (da OpenAI) emergindo como a força dominante, passando de 5% para 30% de participação, e o <code>Meta-ExternalAgent</code> (da Meta) fazendo uma nova entrada forte com 19%. Esse crescimento ocorreu às custas do ex-líder <code>Bytespider</code>, que despencou de 42% para 7%, bem como de outros crawlers de IA, como <code>ClaudeBot</code> e <code>Amazonbot</code>, que também registraram quedas. Nossos dados indicam claramente uma reordenação dos principais crawlers de IA, destacando a crescente proeminência da OpenAI e da Meta nesta categoria.</p>
+<p><strong>Maio de 2024</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="568" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=640&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=750&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=828&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1080&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1280&amp;h=1017&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1430&amp;h=1136&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1600&amp;h=1270&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1270" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="568" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>Maio de 2025</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="641" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=715&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=640&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=715&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=750&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=828&amp;h=742&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1080&amp;h=968&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1280&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1430&amp;h=1282&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1600&amp;h=1434&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1434" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="641" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Classificação</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Nome do bot</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Participação (maio de 2024)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Classificação</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Nome do bot</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Participação (maio de 2025)</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bytespider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>42%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GPTBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ClaudeBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>27%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ClaudeBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>21%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Amazonbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>21%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Meta-ExternalAgent</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>19%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GPTBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Amazonbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Applebot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bytespider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7,2%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div id="html-block-k2b" class="html-block">
+	<style>
+		#html-block-k2b .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k2b .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2b .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2b .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2b .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2b .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Classificação</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nome do bot</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Participação (maio de 2024)</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Classificação</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nome do bot</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Participação (maio de 2025)</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">42%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">27%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazonbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Meta-ExternalAgent</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazonbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Applebot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,2%</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>Para mais contexto, a lista abaixo inclui mais informações sobre os bots com as maiores participações de atividades de crawlers vistas acima. Essas informações vêm da mesma <a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>lista</u></a> de códigos abertos mencionada acima e de publicações de empresas como a <a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer"><u>OpenAI</u></a>, que explicam como seus crawlers são usados.&nbsp;</p>
+<ul>
+	<li><strong>GPTBot</strong> – Crawler da OpenAI usado para melhorar e treinar grandes modelos de linguagem como o ChatGPT.</li>
+	<li><strong>ClaudeBot</strong> – Crawler da Anthropic para treinamento e atualização do assistente Claude AI.</li>
+	<li><strong>Meta-ExternalAgent</strong> – Bot da Meta provavelmente usado para coletar dados para treinar ou ajustar LLMs.</li>
+	<li><strong>Amazonbot</strong> – Crawler da Amazon que coleta dados para seus aplicativos de pesquisa e de IA.</li>
+	<li><strong>Bytespider</strong> – Coletor de dados de IA da ByteDance, frequentemente associado a modelos de treinamento como o Ernie ou a IA relacionada ao TikTok.</li>
+	<li><strong>Applebot</strong> – Web crawler da Apple, principalmente para pesquisas da Siri e do Spotlight, possivelmente utilizado no desenvolvimento de IA.</li>
+	<li><strong>OAI-SearchBot</strong> – Crawler focado em pesquisa da OpenAI, provavelmente usado para recuperar informações da web em tempo real para modelos.</li>
+	<li><strong>ChatGPT-User</strong> – Representa o uso do ChatGPT baseado em API ou no navegador em conexão com as interações dos usuários.</li>
+	<li><strong>PerplexityBot</strong> – Crawler da Perplexity.ai, que alimenta seu mecanismo de respostas de IA usando dados da web em tempo real.</li>
+</ul>
+<p>Os webmasters podem informar aos operadores de crawlers se desejam que esses bots e crawlers acessem seu conteúdo estabelecendo regras em um arquivo chamado <a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><code><u>robots.txt</u></code></a>, que informa aos crawlers quais páginas eles devem ou não acessar. <a href="https://blog.cloudflare.com/ai-audit-enforcing-robots-txt" target="_blank" rel="noopener noreferrer"><u>Como vimos recentemente</u></a>, os crawlers que respeitam suas políticas <code>robots.txt</code> são voluntários, mas a Cloudflare anunciou ferramentas como o <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>AI Audit</u></a> para ajudar os criadores de conteúdo a aplicá-las.</p>
+<p>Agora, como vimos, o cenário de atividade de crawlers da web está evoluindo rapidamente, impulsionado pela fusão dos papéis dos mecanismos de pesquisa e da IA. A IA agora está profundamente integrada à pesquisa, como visto no AI Overviews e no AI Mode do Google, mas também nas plataformas de redes sociais, como a Meta AI no Instagram. Então, vamos expandir nossa análise para incluir essas atividades mais amplas de crawlers orientadas por IA.</p>
+<h2>Crescimento geral das atividades de crawlers de IA e de pesquisa: +18%</h2>
+<p>Uma visão mais ampla revela o crescimento do tráfego de atividades de crawlers tanto de crawlers de pesquisa quanto de IA nos primeiros meses de 2025. Para remover o viés de crescimento de clientes, analisaremos tendências usando um conjunto fixo de clientes em semanas específicas (um método que usamos em nossa <a href="http://radar.cloudflare.com/year-in-review" target="_blank" rel="noopener noreferrer"><u>Análise do ano do Cloudflare Radar</u></a>): a primeira semana de maio de 2024, uma semana em novembro de 2024 e a primeira semana de abril de 2025.&nbsp;</p>
+<p>Usando esse método, descobrimos que o tráfego de crawlers de IA e de pesquisa cresceu 18% de maio de 2024 a maio de 2025 (comparando períodos de mês completo). O aumento foi ainda maior, de 48%, ao incluir novos clientes da Cloudflare adicionados durante esse período. O pico do tráfego de crawlers de IA e de pesquisa ocorreu em abril de 2025, com um aumento de 32% em comparação com maio de 2024. Isso confirma que o tráfego de crawlers aumentou claramente no último ano, mas também que o crescimento nem sempre é constante. O Google continua sendo o principal player e sua participação também está crescendo, como veremos na próxima seção.</p>
+<p>Conforme o gráfico a seguir, o tráfego de crawlers aumentou acentuadamente em março e abril de 2025 e manteve-se alto, embora ligeiramente menor, em maio.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="233" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=640&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=750&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=828&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1080&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1280&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1430&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1920&amp;h=625&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="625" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="233" class="pt-portable-image-media"></div>
+</figure>
+<p>Os padrões no gráfico da atividade de crawlers acima também parecem refletir padrões sazonais mais amplos e padrões gerais de tráfego humano na internet. Em 2024, o tráfego diminuiu durante o verão no hemisfério norte, sendo agosto e setembro os meses menos ativos. E, assim como o tráfego geral da internet, ele aumentou em novembro, quando as pessoas normalmente estão mais on-line devido às compras e aos hábitos sazonais, como vimos em <a href="https://blog.cloudflare.com/from-deals-to-ddos-exploring-cyber-week-2024-internet-trends" target="_blank" rel="noopener noreferrer"><u>análises passadas</u></a>.&nbsp;</p>
+<h2>A atividade de crawlers do Googlebot cresceu 96% em um ano</h2>
+<p><a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a>, que indexa conteúdo para a Pesquisa Google, foi claramente o principal crawler durante todo o período e mostrou um forte crescimento, subindo 96% de maio de 2024 a maio de 2025, refletindo o aumento da atividade de crawlers pelo Google. O tráfego de atividade de crawlers atingiu o pico em abril de 2025, alcançando 145% a mais do que em maio de 2024. Também é importante mencionar que o Google fez alterações em seu mecanismo de pesquisa e lançou o <a href="https://ahrefs.com/blog/google-ai-overviews" target="_blank" rel="noopener noreferrer"><u>AI Overviews</u></a> durante esse período — primeiro nos EUA em maio de 2024, depois em mais países.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="237" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=640&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=750&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=828&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1080&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1280&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1430&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1920&amp;h=636&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="636" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="237" class="pt-portable-image-media"></div>
+</figure>
+<p>Duas tendências se destacam ao observar os dados diários dos crawlers relacionados ao Google, conforme ilustrado no gráfico abaixo. Primeira, o <a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a> e o mais recente <code>GoogleOther</code> (um <a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u>web crawler de 2023</u></a> para “pesquisa e desenvolvimento”) são responsáveis pela maior parte da atividade de crawlers do Google. Em segundo lugar, houve duas quedas visíveis no tráfego de atividade de crawlers: uma em 14 de dezembro de 2024 (em torno de uma <a href="https://status.search.google.com/incidents/V9nDKuo6nWKh2ThBALgA#:~:text=Incident%20began%20at%202024%2D12,Time" target="_blank" rel="noopener noreferrer"><u>atualização</u></a> da Pesquisa Google) e outra de 20 a 28 de maio de 2025. A queda de 20 de maio ocorreu aproximadamente na mesma época do lançamento do AI Mode na Pesquisa Google nos EUA, embora o momento possa ser coincidência.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="239" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=715&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=640&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=715&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=750&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=828&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1080&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1280&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1430&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1920&amp;h=643&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="643" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="239" class="pt-portable-image-media"></div>
+</figure>
+<h2>Análise dos vinte principais web crawlers de IA e de pesquisa&nbsp;</h2>
+<p>Classificar os crawlers pela sua participação no total de solicitações oferece uma visão mais clara de quais bots estão ganhando ou perdendo espaço, especialmente entre aqueles focados em pesquisa e IA. A tabela abaixo mostra uma tendência clara: alguns bots de IA cresceram rapidamente desde o ano passado (com o crescimento começando ainda mais cedo), enquanto muitos crawlers de pesquisa tradicionais permaneceram estáveis ou perderam participação (como no caso do Bing e seu crawler <code>Bingbot</code>). A principal exceção é o <code>Googlebot</code>.</p>
+<p>A tabela a seguir mostra a porcentagem de participação de cada crawler em relação a todo o tráfego de atividade de crowlers gerado por este grupo específico de mais de 30 crawlers de IA e pesquisa observados pela Cloudflare em maio de 2024 e maio de 2025. A tabela abaixo também inclui a mudança em pontos percentuais e o crescimento ou declínio no volume bruto de solicitações. Os crawlers são classificados por sua participação em maio de 2025. As principais mudanças nos crawlers incluem o <code>GPTBot</code>, que aumentou bruscamente (+305%), enquanto o <code>Bytespider</code> caiu drasticamente (-85%).</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Classificação</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Nome do bot</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Participação <br>maio de 2024</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Participação <br>maio de 2025</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Variação Δ de ponto percentual</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Crescimento de solicitações brutas (maio de 2024 a maio de 2025)</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Googlebot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>50%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+20 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>96%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bingbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8,7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-1,3 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GPTBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7,7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+5,5 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>305%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ClaudeBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11,7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5,4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-6,3 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-46%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GoogleOther</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0,1 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>6</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Amazonbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7,6%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-3,4 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-35%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Googlebot-Image</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-1,2 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-13%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bytespider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>22,8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,9%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-19,8 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-85%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>9</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Yandex</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0,7 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-10%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ChatGPT-User</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+1,2 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,825%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Applebot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,9%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0,7 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-26%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>12</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Timpibot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,6%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0,3 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>133%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Baiduspider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0,1 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>PerplexityBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>&lt;0,01%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0,2 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>157,490%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>15</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>DuckDuckBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0,1 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-16%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>16</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SeznamBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Yeti</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>47%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>18</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>coccocbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-3%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>19</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Sogou</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-22%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>20</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Yahoo! Slurp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,0%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0,1 pp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-8%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div id="html-block-k5v" class="html-block">
+	<style>
+		#html-block-k5v .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k5v .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k5v .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k5v .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-51vm {
+			background-color: #D9D9D9;
+			color: #4A86E8;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Classificação</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nome do bot</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Participação maio de 2024</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Participação maio de 2025</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Variação Δ de ponto percentual</span></th>
+					<th class="tg-51vm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#4A86E8;background-color:transparent">Crescimento de solicitações brutas (maio de 2024 a maio de 2025)</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Googlebot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+20 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">96%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bingbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8,7%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-1,3 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,7%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+5,5 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">305%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11,7%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5,4%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-6,3 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-46%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GoogleOther</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,4%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0,1 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazonbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7,6%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-3,4 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-35%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Googlebot-Image</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4,5%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3,3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-1,2 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-13%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">22,8%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,9%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-19,8 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-85%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yandex</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,8%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0,7 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-10%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ChatGPT-User</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+1,2 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,825%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Applebot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,9%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0,7 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-26%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Timpibot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,6%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+0,3 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">133%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Baiduspider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,5%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,4%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0,1 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PerplexityBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt;0,01%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+0,2 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">157,490%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DuckDuckBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0,1 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-16%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SeznamBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yeti</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">coccocbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-3%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sogou</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-22%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yahoo! Slurp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0,0%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0,1 pp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-8%</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>Com base nesses dados, duas grandes mudanças na atividade dos web crawlers ocorreram entre maio de 2024 e maio de 2025:</p>
+<p><strong>1. Alguns crawlers de IA aumentaram drasticamente.<br></strong><code>O GPTBot</code> (da OpenAI) aumentou sua participação de 2,2% para 7,7% (+5,5 pp), com um aumento de 305% nas solicitações. Isso destaca a demanda por dados para treinar grandes modelos de linguagem como o ChatGPT. O <code>GPTBot</code> saltou do 9º lugar em maio de 2024 para o 3º lugar em maio de 2025.</p>
+<p>Outro crawler da OpenAI, <code>ChatGPT-User</code>, viu as solicitações aumentarem em 2.825%, alcançando uma participação de 1,3%. Isso reflete um grande aumento na atividade dos usuários do ChatGPT ou em interações baseadas em API que envolvem o acesso a conteúdo da web. O <code>PerplexityBot</code> (da Perplexity.ai), apesar de uma pequena participação de 0,2%, registrou a maior taxa de crescimento: um aumento impressionante de 157.490% nas solicitações brutas.</p>
+<p>Enquanto isso, alguns crawlers de IA experimentaram quedas acentuadas. O <code>ClaudeBot</code> (Anthropic) caiu de 11,7% para 5,4% do tráfego total e caiu 46% nas solicitações. O <code>Bytespider</code> despencou 85% no volume de solicitações, caindo do 2º para o 8º lugar na participação de crawlers (agora com apenas 2,9%).</p>
+<p>Tanto o <code>Amazonbot</code> quanto o <code>Applebot</code>, também considerados crawlers de IA, tiveram quedas na participação e nas solicitações brutas (-35% e -26%, respectivamente).</p>
+<p><strong>2. O domínio do Google se expandiu.<br></strong>A participação do <code>Googlebot</code> aumentou de 30% para 50%, apoiando a indexação de pesquisa, mas possivelmente também com fins relacionados à IA (como o novo AI Overviews na Pesquisa Google). E o <code>GoogleOther</code> (o<a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u> crawler introduzido em 2023</u></a>) também aumentou no tráfego de rastreamento, 14%. Outros crawlers do Google que não estão entre os 20 principais, como o <code>Googlebot-News</code>, também cresceram significativamente (+71% em solicitações). Há uma clara tendência de crescimento desses web crawlers relacionados ao Google, num momento em que a empresa está investindo fortemente na combinação de IA com pesquisa.</p>
+<p>Também na categoria de pesquisa, a participação do <code>Bingbot</code> (da Microsoft) diminuiu ligeiramente de 10% para 8,7% (-1,3 pp), embora suas solicitações brutas ainda tenham crescido modestamente em 2%.</p>
+<p>Essas tendências mostram que a atividade de web crawlers é cada vez mais dominada por bots do Google e da OpenAI, refletindo mudanças claras ao longo de um ano. O Google também parece estar adaptando a maneira como coleta dados para dar suporte tanto à pesquisa tradicional quanto a funcionalidades impulsionadas por IA.</p>
+<p>Também é digno de nota o <code>FriendlyCrawler</code>, que não aparece mais na lista dos vinte principais desde maio de 2025 (agora classificado em 35º lugar). Foi o 14º em maio de 2024, com 0,2% de participação, mas teve uma queda de 100% nas solicitações até maio de 2025. Esse bot é conhecido por indexar e analisar o conteúdo de sites, embora seu proprietário e <a href="https://imho.alex-kunz.com/2024/01/25/an-update-on-friendly-crawler" target="_blank" rel="noopener noreferrer"><u>objetivo</u></a> não sejam claros. Normalmente, crawlers como este são usados para melhorar os resultados de pesquisa, fazer pesquisa de mercado ou análises.</p>
+<h2>robots.txt e bots de IA: GPTBot lidera duas vezes</h2>
+<p>Dados recentes de 6 de junho de 2025 do <a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-05-30&amp;dateEnd=2025-06-06" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> mostram que, dos 3.816 domínios (dos <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>10 mil principais</u></a>) nos quais conseguimos encontrar um arquivo<em> robots.txt</em>, 546 (cerca de 14%) tinham "allow" ou "disallow" (total ou parcialmente) direcionadas especificamente a bots de IA.</p>
+<p>Isso deixa muitos proprietários de sites em uma área cinzenta, pois nem sempre está claro quanto o <em>robots.txt</em> é eficaz no gerenciamento de crawlers de IA. Alguns proprietários de sites podem não pensar em usá-lo especificamente para bots de IA, enquanto outros podem estar inseguros se esses bots respeitam as regras do <em>robots.txt</em>, especialmente crawlers mais novos ou menos transparentes. Em outros casos, os sites utilizam regras parciais para ajustar o acesso, buscando equilibrar visibilidade e proteção sem optar por participar ou não totalmente.</p>
+<p>As regras “disallow” aparecem com muito mais frequência do que as regras “allow”. O bot bloqueado com mais frequência foi o <code>GPTBot</code>, proibido por 312 domínios (250 totalmente, 62 parcialmente), seguido pelo <code>CCBot</code> e <code>Google-Extended</code>, conforme mostrado no gráfico a seguir.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=750&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=828&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1080&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1280&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1430&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1600&amp;h=1228&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1228" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="549" class="pt-portable-image-media"></div>
+</figure>
+<p>Embora o <code>GPTBot</code> tenha sido o mais bloqueado, também foi o mais explicitamente permitido, com 61 domínios concedendo acesso (18 totalmente, 43 parcialmente). Ainda assim, pouquíssimos sites permitem abertamente e explicitamente bots de IA, e quando o fazem, geralmente é para seções limitadas. Observe que bots não listados no arquivo robots.txt de um site são permitidos por padrão.</p>
+<p>À medida que a atividade de crawlers de IA aumenta, mais sites estão mudando de sinais passivos, como <em>robots.txt</em>, para proteções ativas, como <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer"><u>firewalls de aplicativos web</u></a>. O ecossistema está mudando, com um foco crescente em controles executáveis.</p>
+<p><em>Observação: ao analisarmos o tráfego de crawlers, comparamos os tokens de agente de usuário encontrados em arquivos robots.txt (como os para crawlers de IA) com as cadeias de caracteres de agente de usuário reais em solicitações HTTP. É importante notar que alguns tokens do robots.txt, como o Google-Extended, não são sub cadeias de caracteres de agente de usuário. Conforme descrito no <a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-the-user-agent-line" target="_blank" rel="noopener noreferrer"><u>RFC 9309</u></a>, um dos objetivos desses tokens pode ser sinalizar o objetivo do crawler. Por exemplo, o Google utiliza o Google-Extended no robots.txt para verificar se seu conteúdo pode ser usado para treinamento de IA, mas o tráfego em si ainda provém de agentes de usuário padrão do Google, como o Googlebot. Por causa disso, nem todas as entradas do robots.txt terão uma correspondência direta nos registros de solicitações HTTP.</em></p>
+<h2>Conclusão</h2>
+<p>À medida que os crawlers de IA remodelam a internet, os sites enfrentam tanto novos desafios quanto novas oportunidades na gestão de sua presença on-line.</p>
+<p>Esta análise destaca o impacto crescente da IA na atividade de web crawlers, evidenciando uma clara transição da indexação de pesquisa tradicional para a coleta de dados destinada ao treinamento de modelos de IA. As estatísticas detalhadas, como o crescimento contínuo do Googlebot e a rápida ascensão de crawlers específicos para IA, oferecem contexto para entender como esse espaço está evoluindo e o que isso significa para o futuro do acesso ao conteúdo da web.</p>
+<p>A tendência para métodos de bloqueio mais fortes e aplicáveis, algo em que <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>a Cloudflare também tem investido</u></a>, sinaliza uma mudança importante na forma como os sites podem controlar suas interações com sistemas de IA no futuro.</p>

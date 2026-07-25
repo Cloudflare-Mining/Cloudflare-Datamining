@@ -1,0 +1,226 @@
+<p>Сегодня мы рады объявить о завершении бета-тестирования Stream Live, теперь он доступен всем желающим и готов к приему массового рабочего трафика. Stream Live является функцией <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Cloudflare Stream</a>, позволяющей разработчикам встраивать видеотрансляции в веб-сайты и нативные приложения.</p>
+<p>С момента запуска <a href="https://blog.cloudflare.com/stream-live">бета-тестирования</a> разработчики используют Stream для трансляции концертов ведущих мировых исполнителей напрямую поклонникам, разрабатывают на его основе новые платформы для создателей видео, обеспечивают функционирование глобального OTT-сервиса видеотрансляций в режиме 24/7 и многое другое. За время бета-тестирования Stream принял и доставил зрителям по всему миру миллионы минут прямых эфиров.</p>
+<p>Каковы бы ни были ваши задачи — трансляция крупных мероприятий, новый масштабный сервис видеоподписок или мобильное видеоприложение с миллионами пользователей — мы к ним готовы.</p>
+<h2>Потоковые видеотрансляции в больших масштабах — непростое дело</h2>
+<p>Видеотрансляции требуют большой пропускной способности. Например, поток 1080p 8 Мбит/с продолжительностью 1 час — это 3,6 Гбайт. А учитывая <a href="https://blog.cloudflare.com/aws-egregious-egress">типичные расценки облачных сервисов</a>, даже небольшой объем исходящего трафика «кусается».</p>
+<p>Видеотрансляции необходимо кодировать на лету, в режиме реального времени. Люди хотят иметь возможность смотреть трансляции на телефоне через мобильные сети, несмотря на их ограниченную пропускную способность, сетевые задержки и частые сбои соединения. Для этого видеопоток необходимо перекодировать в режиме реального времени в разных разрешениях, чтобы у телефона была возможность переключиться на более низкое разрешение и продолжить воспроизведение. Это может быть непросто (какой битрейт? какие кодеки? сколько?) и недешево: парк виртуальных машин стоит немалых денег.</p>
+<p>Имеет значение точка приема видеопотока — протоколы потокового вещания, такие как RTMPS, используют для передачи видео протокол TCP. Если хотя бы один пакет оказывается отброшен или потерян, весь поток останавливается, пока пакет не будет найден и передан заново. Это называется «блокировка начала очереди». Чем дальше находится вещатель от принимающего видеопоток сервера, чем больше сетевых переходов, тем больше пакетов может быть потеряно, что в конечном итоге для зрителей приводит к задержкам и буферизации.</p>
+<p>Имеет значение место доставки — видеотрансляции должны кэшироваться и доставляться из точек присутствия, расположенных как можно ближе к зрителям. Чем дольше время приема-передачи по сети, тем больше вероятность, что трансляции будут буферизироваться или переключаться на более низкое качество.</p>
+<p>Протоколы потокового вещания меняются — самый распространенный протокол для потоковых видеотрансляций, RTMPS, не поддерживается с 2012 года и относится к эпохе Flash-видео начала 2000-х годов. Новый и набирающий популярность формат, SRT, пока не везде поддерживается. А WebRTC лишь недавно стал способен обеспечивать вещание в формате «один ко многим» с высоким разрешением и в больших масштабах.</p>
+<p>Старый подход к решению данной проблемы заключался в объединении отдельных облачных сервисов от разных поставщиков. Один поставщик отлично доставляет контент, но не обеспечивает кодирование. Другой предоставляет API или аппаратные средства для кодирования, но в остальном вынуждает вас полагаться на самого себя и создавать свои собственные средства хранения. Вам как разработчику приходится все это изучать, этим управлять и писать связующий код, учитывающий малоизвестные особенности стриминговых протоколов, кодеков, настроек кодирования и процессов доставки.</p>
+<p>Мы создали Stream Live для того, чтобы сделать онлайн-трансляции таким же легким делом, как добавление тега на веб-сайт. Видеотрансляции стали важным компонентом интернет-контента, и мы считаем, что у любого разработчика должны быть инструменты, дающие возможность встраивать их в веб-сайт или нативное приложение.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="607" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=715&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=640&amp;h=543&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=715&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=750&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=828&amp;h=703&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=1080&amp;h=917&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=1280&amp;h=1087&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=1430&amp;h=1214&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1323 Embedded Image - NbiQ8e" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VXPQAZS951P0QAXJHARR.png&amp;w=1168&amp;h=991&amp;f=webp" data-lightbox-width="1168" data-lightbox-height="991" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="607" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>С помощью Stream вы или ваши пользователи передаете видеопоток трансляции напрямую в Cloudflare, а Cloudflare доставляет видео напрямую зрителям. Вам не нужно управлять внутренними системами кодирования, хранения и доставки — только видеопоток на входе и на выходе.</p>
+<h2>Наша сеть и наше оборудование = решение, которое может предоставить только Cloudflare</h2>
+<p>Мы не единственные, кто создает API для видеотрансляций, но мы единственные, у кого есть <em>собственная</em> глобальная сеть и оборудование, которое находится под нашим управлением и оптимизировано для видео. Это позволяет нам делать то, что другие не могут, например: <a href="https://blog.cloudflare.com/magic-hdmi-cable">задержка от камеры до экрана составляет менее секунды</a> при воспроизведении с помощью RTMPS или SRT в больших масштабах.</p>
+<p>Новые видеокодеки требуют специальных аппаратных кодировщиков. В то время как другие зависят от аппаратных ограничений общедоступных облачных сервисов, мы уже активно устанавливаем новейшее кодирующее оборудование в наших собственных стойках, чтобы обеспечить вам возможность доставки видео в высоком разрешении с еще меньшим затратами пропускной способности. Наша цель — сделать напрямую доступным для вас то, что обычно доступно лишь видеогигантам, и на следующей неделе вас ждут по этому поводу интересные новости.</p>
+<p>Большинство провайдеров ограничивает количество площадок, на которые вы можете осуществлять ретрансляцию или многопотоковое вещание. Поскольку мы используем собственную сеть, для нас это не представляет никакой проблемы, вы можете <a href="https://developers.cloudflare.com/stream/stream-live/simulcasting" target="_blank" rel="noopener noreferrer">ретранслировать на любое нужное вам количество площадок</a>.</p>
+<p>Наличие собственной сети позволяет нам устанавливать тарифы на Stream на основе количества минут доставленного видео — в отличие от других, мы никому не платим за пропускную способность и не перекладываем эти затраты на вас с наценкой. Существующая ситуация, когда вам приходится платить за пропускную способность или за гигабайты хранения, оборачивается для вас убытками при хранении или доставке видео высокого разрешения. Если вы начнете выяснять почему, чаще всего вы обнаружите, что другие просто перекладывают на вас свою структуру расходов.</p>
+<p>Кодирование видео требует больших затрат вычислительной мощности, доставка видео требует большой пропускной способности, при этом имеет значение точка приема видеопотока. При использовании Stream вам не нужно беспокоиться об оптимизации производительности, заниматься поиском CDN и/или бесконечной корректировкой настроек. Stream делает это за вас.</p>
+<h2>Ваши онлайн-трансляции не должны зависеть от бизнес-моделей больших платформ</h2>
+<p>Почти все компании используют видеотрансляции для взаимодействия с клиентами, для прямых эфиров с мероприятий или для монетизации стримингового контента. Но не у многих есть специализированные инженерные ресурсы, чтобы самостоятельно осуществлять доставку видео в больших масштабах и увязывать между собой несколько облачных сервисов низкого уровня. До сих пор для доставки видеотрансляций в больших масштабах многие крупнейшие создатели контента были вынуждены полагаться на ограниченный круг приложений социальных медиа и стриминговых сервисов.</p>
+<p>В отличие от ситуации, когда вы вынуждены вести прямые эфиры через <em>сторонние</em> приложения и сервисы и подстраиваться под <em>их</em> бизнес-модели, Stream обеспечивает вам полный контроль над трансляциями, на <em>вашем</em> веб-сайте или в вашем приложении, на любых устройствах и в больших масштабах, не заставляя пользователей иметь дело со сторонним сервисом.</p>
+<p>Бесплатное кодирование. Бесплатный прием видеопотока. Бесплатная аналитика. Простая поминутная тарификация.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<div id="html-block-k1z" class="html-block">
+	<style>
+		#html-block-k1z .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k1z .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1z .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1z .tg .tg-c6q4 {
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1z .tg .tg-dkn2 {
+			background-color: #CCC;
+			font-family: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1z .tg .tg-0fkh {
+			background-color: #CCC;
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1z .tg .tg-3xvn {
+			font-family: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-dkn2"></th>
+				<th class="tg-0fkh"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Others</span></th>
+				<th class="tg-0fkh"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stream</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Encoding</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ per minute</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Free</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Ingestion</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ per GB</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Free</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Analytics</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Separate product</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Free</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Live recordings</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Minutes or hours later</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instant</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Storage</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ per GB </span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">per minute stored</span></td>
+			</tr>
+			<tr>
+				<td class="tg-3xvn"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Delivery</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">$ per GB</span></td>
+				<td class="tg-c6q4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">per minute delivered</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-c6q4{font-family:inherit;text-align:left;vertical-align:top} .tg .tg-dkn2{background-color:#CCC;font-family:inherit;text-align:left;vertical-align:top} .tg .tg-0fkh{background-color:#CCC;font-family:inherit;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-3xvn{font-family:inherit;font-weight:bold;text-align:left;vertical-align:top}</p>
+<p>Другие</p>
+<p>Stream</p>
+<p>Кодирование</p>
+<p>$ за минуту</p>
+<p>Бесплатные сервисы</p>
+<p>Прием видеопотока</p>
+<p>$ за Гбайт</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="414" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=640&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=750&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=828&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=1080&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=1280&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=1430&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1323 Embedded Image - 71w2aK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496SCRR8MRNS4SZGVY9WZJ.png&amp;w=1216&amp;h=704&amp;f=webp" data-lightbox-width="1216" data-lightbox-height="704" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="414" class="pt-portable-image-media"></div>
+</figure>
+<p>Бесплатные сервисы</p>
+<p>Аналитика</p>
+<p>Отдельный продукт</p>
+<p>Бесплатные сервисы</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"Authorization: Bearer &lt;YOUR_API_TOKEN&gt;"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-d </span><span class="sk-032f62-99ffe4">"{"recording": { "mode": "automatic" } }"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">https://api.cloudflare.com/client/v4/accounts/&lt;YOUR_CLOUDFLARE_ACCOUNT_ID&gt;/stream/live_inputs</span></span></code></pre>
+</div>
+<p>Записи трансляций</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"uid"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "&lt;UID_OF_YOUR_LIVE_INPUT&gt;",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"rtmps"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"url"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "rtmps://live.cloudflare.com:443/live/",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"streamKey"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "&lt;PRIVATE_RTMPS_STREAM_KEY&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">},</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Спустя несколько минут или часов</p>
+<p>Мгновенно</p>
+<p>Хранение</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="124" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=715&amp;h=124&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=640&amp;h=111&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=715&amp;h=124&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=750&amp;h=130&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=828&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=1080&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=1280&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=1430&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1323 Embedded Image - Qw5WbT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EFBBV71ZH6MZTBTAC9EX.png&amp;w=1414&amp;h=246&amp;f=webp" data-lightbox-width="1414" data-lightbox-height="246" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="124" class="pt-portable-image-media"></div>
+</figure>
+<p>$ за Гбайт</p>
+<p>за минуту хранящегося видео</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="263" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=750&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=828&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=1080&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=1280&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=1430&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1323 Embedded Image - QnnOW1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46N7JDAKKHZG6V29K12852.png&amp;w=1920&amp;h=708&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="708" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="263" class="pt-portable-image-media"></div>
+</figure>
+<p>Доставка</p>
+<p>$ за Гбайт</p>
+<p>за минуту доставленного видео</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>import SwiftUI</span></span>
+<span class="line"><span>import AVKit</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>struct MyView: View {</span></span>
+<span class="line"><span>    // Change the url to the Cloudflare Stream HLS manifest URL</span></span>
+<span class="line"><span>    private let player = AVPlayer(url: URL(string: "https://customer-9cbb9x7nxdw5hb57.cloudflarestream.com/8f92fe7d2c1c0983767649e065e691fc/manifest/video.m3u8")!)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    var body: some View {</span></span>
+<span class="line"><span>        VideoPlayer(player: player)</span></span>
+<span class="line"><span>            .onAppear() {</span></span>
+<span class="line"><span>                player.play()</span></span>
+<span class="line"><span>            }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>struct MyView_Previews: PreviewProvider {</span></span>
+<span class="line"><span>    static var previews: some View {</span></span>
+<span class="line"><span>        MyView()</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>Другие платформы взимают плату за прием и кодирование видео. Многие даже заставляют вас учитывать, откуда и куда ведется трансляция, битрейт и количество кадров в секунду в вашем видео, вплоть до того, какие центры обработки данных вы используете.</p>
+<p><strong>Stream осуществляет кодирование и прием видео бесплатно.</strong> Другие платформы взимают плату за доставку исходя из пропускной способности, что влечет для вас убытки при доставке зрителям видео высокого качества. Если вы вещаете в высоком разрешении, вы платите больше.</p>
+<p><strong>При использовании Stream вам не нужно переплачивать за доставку видео в высоком разрешении.</strong> Тарификация Stream проста — оплачиваются минуты доставленного и хранящегося видео. Поскольку вы платите за минуты, а не за гигабайты, вы можете осуществлять трансляции в идеальном разрешении для ваших зрителей, не беспокоясь о затратах на пропускную способность.</p>
+<p>Другие платформы взимают отдельную плату за аналитику, требуя приобретения еще одного продукта для получения статистики ваших прямых эфиров.</p>
+<p><strong>В Stream аналитика бесплатна.</strong> Stream предоставляет аналитику как на стороне сервера, так и на стороне клиента через <a href="https://developers.cloudflare.com/stream/getting-analytics/fetching-bulk-analytics" target="_blank" rel="noopener noreferrer">API</a> и на <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream%2Fanalytics" target="_blank" rel="noopener noreferrer">информационной панели</a>, ее можно запрашивать для отдельного видео, создателя, страны и т. д. Вы можете использовать аналитику для получения информации о том, кто из создателей в вашем приложении имеет трансляции с наибольшим числом просмотров, на какую сумму выставлять счета клиентам исходя из объема использования, а также для отслеживания вирусного контента и многого другого.</p>
+<p>Другие платформы предлагают запись трансляций или режим видеозаписи в качестве отдельной дополнительной функции, при этом записи становятся доступными лишь через несколько минут или даже часов после окончания прямого эфира.</p>
+<p><strong>В Stream запись трансляций является встроенной функцией, и записи становятся доступны <a href="https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#replaying-recordings" target="_blank" rel="noopener noreferrer">сразу после окончания прямого эфира</a>.</strong> Как только запись становится доступной, она работает так же, как и любое другое видео, выгруженное в Stream, что позволяет бесшовно использовать одни и те же API для управления как заранее записанными видео, так и трансляциями.</p>
+<h2>Встраивание видеотрансляции в веб-сайт или приложение за несколько минут</h2>
+<p>Cloudflare Stream дает возможность вам или вашим пользователям вести прямые эфиры, используя те же протоколы и инструменты, которые используют крупные и небольшие вещатели для прямых эфиров на YouTube или Twitch, при этом предоставляя вам полный контроль над доступом и оформлением трансляций.</p>
+<h3><strong>Шаг 1: Создайте источник трансляции</strong></h3>
+<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream%2Finputs%2Fcreate" target="_blank" rel="noopener noreferrer">Создайте новый источник трансляции на информационной панели Stream</a> или используйте Stream API:</p>
+<p>Запрос</p>
+<p>Ответ</p>
+<h3>Шаг 2: Используйте ключ RTMPS в любом ПО для онлайн-трансляций или в вашем собственном нативном приложении</h3>
+<p>Скопируйте URL и ключ RTMPS и используйте их в вашем приложении для потокового вещания. Для начала мы рекомендуем использовать <a href="https://obsproject.com" target="_blank" rel="noopener noreferrer">Open Broadcaster Software (OBS)</a>, однако любое ПО с поддержкой RTMPS или SRT должно быть совместимо со Stream Live.</p>
+<p>Введите URL и ключ RTMPS, созданные в Stream на шаге 1:</p>
+<h3>Шаг 3: Посмотрите окно предпросмотра вашей трансляции на информационной панели Cloudflare</h3>
+<p>На информационной панели Stream всего через несколько секунд после запуска прямого эфира вы сможете увидеть в окне предпросмотра изображение, которое увидят ваши зрители, а также состояние подключения вашей трансляции в режиме реального времени.</p>
+<h3>Шаг 4: Встройте возможность воспроизведения видеотрансляций в ваш веб-сайт или приложение</h3>
+<p>Воспользуйтесь для этого <a href="https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player" target="_blank" rel="noopener noreferrer">кодом для встраивания нашего Stream Player</a> или используйте <a href="https://developers.cloudflare.com/stream/viewing-videos/using-own-player" target="_blank" rel="noopener noreferrer">любой видеоплеер, поддерживающий HLS или DASH</a> — трансляции могут воспроизводиться как на веб-сайтах, так и в нативных приложениях для iOS и Android.</p>
+<p>Например, в iOS достаточно ввести в AVPlayer ссылку на источник трансляции в виде URL манифеста HLS, вы можете найти ее <a href="https://developers.cloudflare.com/stream/stream-live/watch-live-stream" target="_blank" rel="noopener noreferrer">через API</a> или на <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream" target="_blank" rel="noopener noreferrer">информационной панели Stream</a>.</p>
+<p>Для выполнения всего примера приложения в XCode воспользуйтесь <a href="https://developers.cloudflare.com/stream/examples/ios" target="_blank" rel="noopener noreferrer">данным руководством</a> в документации для разработчиков Stream.</p>
+<h2>На основе Stream компании создают собственные новые видеоплатформы</h2>
+<p>Разработчикам необходимо держать свой продукт под контролем, однако у большинства нет времени, чтобы стать экспертами в области видео. И даже эксперты, создающие новые инновационные платформы, не имеют желания управлять инфраструктурой потокового вещания.</p>
+<p>Для Switcher Studio видеотрансляции — основа всего бизнеса, их приложение для iOS позволяет индивидуальным и корпоративным пользователям вести брендированные многокамерные видеотрансляции. В качестве ключевого компонента инфраструктуры потокового вещания Switcher использует Stream. Вот что они говорят:</p>
+<blockquote><em>«С 2014 года Switcher помогает создателям и зрителям видеотрансляций находить друг друга. Сейчас наши пользователи проводят более 100 000 прямых эфиров в месяц. В связи с ростом нам потребовалось масштабируемое решение для доставки контента. Cloudflare обеспечивает надежную и быструю доставку, и мы даже смогли предложить новые функции, такие как мультистриминг. Уверенность в Cloudflare Stream позволяет нашим специалистам сосредоточиться на инструментах для онлайн-трансляций, делающих Switcher уникальным».</em></blockquote>
+<p>На этапе бета-тестирования Stream Live мы работали со многими клиентами, такими как Switcher, для кого видеотрансляции — не просто одна из функций, а <em>главная основа</em> всего продукта. Даже будучи экспертами в области видеотрансляций, они выбрали Stream, чтобы иметь возможность сосредоточиться на создании уникальных преимуществ для клиентов, используя для приема, кодирования, записи и доставки видео инфраструктуру Cloudflare.</p>
+<h2>Начните встраивать видеотрансляции в ваш веб-сайт или приложение уже сегодня</h2>
+<p>Нужно всего несколько минут, чтобы зарегистрироваться и начать первую трансляцию с помощью информационной панели Cloudflare. Для начала работы не требуется писать никакой код, а для создания вашего собственного функционала видеотрансляций вы сможете использовать наши <a href="https://developers.cloudflare.com/stream" target="_blank" rel="noopener noreferrer">API</a>. <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream" target="_blank" rel="noopener noreferrer">Попробуйте</a> — мы готовы, каким бы ни был размер вашей аудитории.</p>

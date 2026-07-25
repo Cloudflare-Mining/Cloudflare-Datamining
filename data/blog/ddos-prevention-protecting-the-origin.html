@@ -1,104 +1,33 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sNHpO90eVf0GlbnVrkQZF/eb1aa85cbbfe08de98e506c914c7a12a/ddos-prevention-protecting-the-origin.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>One of the many great features that CloudFlare provides is protection from Distributed Denial of Service (DDoS) attacks. A malicious party who wants to make your website or web service unavailable could try to overwhelm it with requests from compromised machines (or bots) all around the world. With a large enough volume of requests, your server may become overloaded and not be able to provide its services to legitimate clients. This is the typical scenario in a denial of service attack.</p>
-	<p>The attacking machines use the public domain name service (DNS) to look up the IP address that hosts your domain (<a href="http://www.sample.com" target="_blank" rel="noopener noreferrer">www.sample.com</a>) and send their traffic to that machine hoping to shut it down.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fVd553julXuB9kmooRfPG/6edf028d118563e27071f1d658f1e307/ddos-illustrations-1.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
-
-	</figure>
-	<p>Signing up for CloudFlare is like taking your number out of the phone book, and putting in CloudFlare’s number under your name. When someone attempts to look up who hosts your domain, DNS will return an IP address in the CloudFlare network. If an attacker tries to take down your site, their traffic will go to CloudFlare machines around the world instead of directly to your web server. The CloudFlare network acts as a filter to block bad traffic and only send legitimate traffic through to your origin server.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6oj0yH5BAuEHugMapuqEae/3b68a811a2520710a3609be3a862064b/ddos-illustrations-2.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
-
-	</figure>
-	<p>Just as removing your phone number from the phone book won't stop telemarketers from calling it, enabling CloudFlare doesn't stop clever attackers who know your IP address from sending traffic to it directly. Just because your origin server's IP address is no longer advertised over DNS, it's still connected to the internet. If your IP address is not kept secret, attackers can bypass the CloudFlare network and attack your servers directly.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/HC0BFpxlmKQ3ULa6yYdQH/19b9b55af2f32e51354ee1ef437bf628/ddos-illustrations-3.png" alt="" class="kg-image" width="645" height="389" loading="lazy">
-
-	</figure>
-	<p>Here are some helpful tips to help keep your origin IP secure to protect against clever attackers who want to bypass CloudFlare’s <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection</a>:</p>
-	<div class="flex anchor relative">
-		<h4 id="keep-all-subdomains-on-cloudflare">Keep all subdomains on CloudFlare</h4>
-		<a href="https://blog.cloudflare.com/#keep-all-subdomains-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you sign up for CloudFlare, CloudFlare automatically adds a 'direct' subdomain. The 'direct' subdomain does not get the benefit of the CloudFlare proxy service by default. For maximum security, you should rename the 'direct' subdomain to something that can't be guessed easily or remove it altogether. Otherwise, an attacker can use the subdomain to look up your origin IP address. If you receive email for the domain signed up with CloudFlare use a separate server for mail; if not the MX record would reveal the IP address of your server.</p>
-	<div class="flex anchor relative">
-		<h4 id="wildcard-subdomains">Wildcard subdomains</h4>
-		<a href="https://blog.cloudflare.com/#wildcard-subdomains" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare powers DNS for wildcard subdomains, but only offers the performance and security proxy service for wildcard subdomains at the Enterprise level. As a result, if you are a Free, Pro or Business customer, wildcard subdomain records can not be proxied through CloudFlare and should be removed for DDoS protection. Otherwise, an attacker could use the wildcard subdomains to look up your origin IP.</p>
-	<div class="flex anchor relative">
-		<h4 id="review-dns-records">Review DNS records</h4>
-		<a href="https://blog.cloudflare.com/#review-dns-records" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>None of the DNS records should contain any mention of the origin IP. Take a close look at any SPF and TXT records to make sure they do not contain any information about the origin.</p>
-	<div class="flex anchor relative">
-		<h4 id="dont-host-mail-or-other-services-on-the-same-server-as-your-web-server">Don't host mail or other services on the same server as your web server</h4>
-		<a href="https://blog.cloudflare.com/#dont-host-mail-or-other-services-on-the-same-server-as-your-web-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If your mail server hosted by the same IP as your http server, an attacker could find the IP address from an outgoing email. For example, an attacker could send an email to a non-existent email address on your server causing a bounce; the bounce might contain the IP address of your server in its headers.</p>
-	<div class="flex anchor relative">
-		<h4 id="never-initiate-an-outbound-connection-based-on-user-action">Never initiate an outbound connection based on user action</h4>
-		<a href="https://blog.cloudflare.com/#never-initiate-an-outbound-connection-based-on-user-action" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If the attacker can get your web server to connect to an arbitrary address, they will reveal your origin IP. Features like "upload from URL" that allow the user to upload a photo from a given URL should be configured so that the server doing the download is not the website origin server. This is important because if an attacker can choose the URL entered, they can set up a web site specifically to monitor who connects to it, or use a public service that monitors the IPs that contact unique URLs.</p>
-	<div class="flex anchor relative">
-		<h4 id="information-disclosure-vulnerabilities">Information disclosure vulnerabilities</h4>
-		<a href="https://blog.cloudflare.com/#information-disclosure-vulnerabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Make sure that your web server and web application are patched against all known information disclosure vulnerabilities.</p>
-	<div class="flex anchor relative">
-		<h4 id="change-your-origin-ip-once-configured-for-maximum-ddos-protection-on-cloudflare">Change your origin IP once configured for maximum DDoS protection on CloudFlare</h4>
-		<a href="https://blog.cloudflare.com/#change-your-origin-ip-once-configured-for-maximum-ddos-protection-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>DNS records are public domain and there are many places where historical records are archived. These historical DNS records will contain your original IP from before signing up with CloudFlare. If you are a target, the attacker probably already has your previous DNS record.</p>
-	<div class="flex anchor relative">
-		<h4 id="additional-security-resources">Additional security resources</h4>
-		<a href="https://blog.cloudflare.com/#additional-security-resources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you are concerned about security, review these two documents that outline advanced security steps for CloudFlare users.</p>
-	<ul>
-		<li>
-			<p><a href="https://www.cloudflare.com/learning/security/how-to-secure-a-website" target="_blank" rel="noopener noreferrer">General Website Security Guidelines</a></p>
-		</li>
-		<li>
-			<p><a href="https://support.cloudflare.com/entries/24111221" target="_blank" rel="noopener noreferrer">I'm Under DDoS Attack, What do I do?</a></p>
-		</li>
-	</ul>
-	<p>Security is tough. Attackers only need to find one flaw or weakness in order to do a lot of damage. Following these steps will help keep your origin IP address private and help CloudFlare <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks" target="_blank" rel="noopener noreferrer">prevent DDoS attacks</a> against your site.</p>
-</div>
+<p>One of the many great features that CloudFlare provides is protection from Distributed Denial of Service (DDoS) attacks. A malicious party who wants to make your website or web service unavailable could try to overwhelm it with requests from compromised machines (or bots) all around the world. With a large enough volume of requests, your server may become overloaded and not be able to provide its services to legitimate clients. This is the typical scenario in a denial of service attack.</p>
+<p>The attacking machines use the public domain name service (DNS) to look up the IP address that hosts your domain (<a href="http://www.sample.com" target="_blank" rel="noopener noreferrer">www.sample.com</a>) and send their traffic to that machine hoping to shut it down.</p>
+<p>Signing up for CloudFlare is like taking your number out of the phone book, and putting in CloudFlare’s number under your name. When someone attempts to look up who hosts your domain, DNS will return an IP address in the CloudFlare network. If an attacker tries to take down your site, their traffic will go to CloudFlare machines around the world instead of directly to your web server. The CloudFlare network acts as a filter to block bad traffic and only send legitimate traffic through to your origin server.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="645" height="389" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=645&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=640&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=645&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 645w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=750&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=828&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=1080&amp;h=651&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=1280&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=1290&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1290w" alt="DDoS Prevention: Protecting The Origin Embedded Image - VvT996" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D7BSYJ1DXM5WGV848ETM.png&amp;w=645&amp;h=389&amp;f=webp" data-lightbox-width="645" data-lightbox-height="389" data-astro-cid-7nvefuv6="true" sizes="(min-width: 645px) 645px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="645" height="389" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Just as removing your phone number from the phone book won't stop telemarketers from calling it, enabling CloudFlare doesn't stop clever attackers who know your IP address from sending traffic to it directly. Just because your origin server's IP address is no longer advertised over DNS, it's still connected to the internet. If your IP address is not kept secret, attackers can bypass the CloudFlare network and attack your servers directly.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="645" height="389" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=645&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=640&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=645&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 645w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=750&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=828&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=1080&amp;h=651&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=1280&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=1290&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1290w" alt="DDoS Prevention: Protecting The Origin Embedded Image - sLYxZr" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496RRSVRC8Y5740D0C0D0Q.png&amp;w=645&amp;h=389&amp;f=webp" data-lightbox-width="645" data-lightbox-height="389" data-astro-cid-7nvefuv6="true" sizes="(min-width: 645px) 645px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="645" height="389" class="pt-portable-image-media"></div>
+</figure>
+<p>Here are some helpful tips to help keep your origin IP secure to protect against clever attackers who want to bypass CloudFlare’s <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection</a>:</p>
+<h4>Keep all subdomains on CloudFlare</h4>
+<p>When you sign up for CloudFlare, CloudFlare automatically adds a 'direct' subdomain. The 'direct' subdomain does not get the benefit of the CloudFlare proxy service by default. For maximum security, you should rename the 'direct' subdomain to something that can't be guessed easily or remove it altogether. Otherwise, an attacker can use the subdomain to look up your origin IP address. If you receive email for the domain signed up with CloudFlare use a separate server for mail; if not the MX record would reveal the IP address of your server.</p>
+<h4>Wildcard subdomains</h4>
+<p>CloudFlare powers DNS for wildcard subdomains, but only offers the performance and security proxy service for wildcard subdomains at the Enterprise level. As a result, if you are a Free, Pro or Business customer, wildcard subdomain records can not be proxied through CloudFlare and should be removed for DDoS protection. Otherwise, an attacker could use the wildcard subdomains to look up your origin IP.</p>
+<h4>Review DNS records</h4>
+<p>None of the DNS records should contain any mention of the origin IP. Take a close look at any SPF and TXT records to make sure they do not contain any information about the origin.</p>
+<h4>Don't host mail or other services on the same server as your web server</h4>
+<p>If your mail server hosted by the same IP as your http server, an attacker could find the IP address from an outgoing email. For example, an attacker could send an email to a non-existent email address on your server causing a bounce; the bounce might contain the IP address of your server in its headers.</p>
+<h4>Never initiate an outbound connection based on user action</h4>
+<p>If the attacker can get your web server to connect to an arbitrary address, they will reveal your origin IP. Features like "upload from URL" that allow the user to upload a photo from a given URL should be configured so that the server doing the download is not the website origin server. This is important because if an attacker can choose the URL entered, they can set up a web site specifically to monitor who connects to it, or use a public service that monitors the IPs that contact unique URLs.</p>
+<h4>Information disclosure vulnerabilities</h4>
+<p>Make sure that your web server and web application are patched against all known information disclosure vulnerabilities.</p>
+<h4>Change your origin IP once configured for maximum DDoS protection on CloudFlare</h4>
+<p>DNS records are public domain and there are many places where historical records are archived. These historical DNS records will contain your original IP from before signing up with CloudFlare. If you are a target, the attacker probably already has your previous DNS record.</p>
+<h4>Additional security resources</h4>
+<p>If you are concerned about security, review these two documents that outline advanced security steps for CloudFlare users.</p>
+<ul>
+	<li><a href="https://www.cloudflare.com/learning/security/how-to-secure-a-website" target="_blank" rel="noopener noreferrer">General Website Security Guidelines</a></li>
+	<li><a href="https://support.cloudflare.com/entries/24111221" target="_blank" rel="noopener noreferrer">I'm Under DDoS Attack, What do I do?</a></li>
+</ul>
+<p>Security is tough. Attackers only need to find one flaw or weakness in order to do a lot of damage. Following these steps will help keep your origin IP address private and help CloudFlare <a href="https://www.cloudflare.com/learning/ddos/how-to-prevent-ddos-attacks" target="_blank" rel="noopener noreferrer">prevent DDoS attacks</a> against your site.</p>

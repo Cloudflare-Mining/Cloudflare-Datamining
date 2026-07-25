@@ -1,61 +1,41 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7ceeKMriHJbSSjjpDd2UMk/1eb083315db2730e0238d407ac19d8fd/whats-inside-net-http-socket-late-binding-in-the-go-standard-library.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>It's well known that we're heavy users of the Go programming language at CloudFlare. Our work often involves delving into the standard library source code to understand internal code paths, error handling and performance characteristics.</p>
-	<p>Recently, I looked at how the standard library's built-in HTTP client handles connections to remote servers in order to provide minimal roundtrip latency.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Bjh7RemFgAymGt06VoKi6/cb8339189b010180f0fd37da6b121eb1/11940908695_cea0865524_o-1.jpg" alt="Athletics track" class="kg-image" width="1024" height="708" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC By 2.0</a> <a href="https://www.flickr.com/photos/deanhochman/11940908695" target="_blank" rel="noopener noreferrer">Image</a> by <a href="https://www.flickr.com/photos/deanhochman" target="_blank" rel="noopener noreferrer">Dean Hochman</a></p>
-	<div class="flex anchor relative">
-		<h3 id="connection-pooling">Connection pooling</h3>
-		<a href="https://blog.cloudflare.com/#connection-pooling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A common pattern that aims to avoid connection setup costs (such as the TCP handshake and TLS setup) and confer control over the number of concurrently established connections is to pool them. <code>net/http</code> maintains a pool of connections to each remote host which supports <code>Connection: keep-alive</code>. The <a href="https://golang.org/src/net/http/transport.go#L42" target="_blank" rel="noopener noreferrer">default size</a> of the pool is two idle connections per <a href="https://golang.org/src/net/http/transport.go#L743" target="_blank" rel="noopener noreferrer">remote host</a>.</p>
-	<p>More interestingly, when you make a request with <code>net/http</code>, a race happens. Races in code are often an unwanted side effect, but in this case it's intentional. Two goroutines operate in parallel: one that tries to dial a connection to the remote host, and another which tries to retrieve an idle connection from the connection pool. The fastest goroutine wins.</p>
-	<p>To illustrate, let's look at the <a href="https://golang.org/src/net/http/transport.go#L187" target="_blank" rel="noopener noreferrer">code executed</a> when <code>transport.RoundTrip(req)</code> is called:</p>
-	<pre class="language-bash"><code class="language-bash">go func() {
-    pc, err := t.dialConn(cm)
-    dialc &lt;- dialRes{pc, err}
-}()
-
-idleConnCh := t.getIdleConnCh(cm)
-
-select {
-case v := &lt;-dialc:
-    // Our dial finished.
-    return v.pc, v.err
-case pc := &lt;-idleConnCh:
-    // Another request finished first and its net.Conn
-    // became available before our dial. Or somebody
-    // else's dial that they didn't use.
-    // But our dial is still going, so give it away
-    // when it finishes:
-    handlePendingDial()
-    return pc, nil
-case &lt;-req.Cancel:  
-    handlePendingDial()
-    return nil, errors.New("net/http: request canceled while waiting for connection")
-case &lt;-cancelc:  
-    handlePendingDial()
-    return nil, errors.New("net/http: request canceled while waiting for connection")
-}</code></pre>
-	<p>First a connection is dialed, then we select over <code>idleConnCh</code> (down which idle connections are passed) or <code>dialc</code>, which gives us the result of the dial. Cancellation of the request is also possible if the caller decides <code>RoundTrip</code> has taken too long.</p>
-	<div class="flex anchor relative">
-		<h3 id="late-binding">Late binding</h3>
-		<a href="https://blog.cloudflare.com/#late-binding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So if an idle connection is available, retrieving it from the pool should win against dialing a new one. A similar approach (alongside other optimizations) has been used in Chromium, where it's referred to as <a href="https://insouciant.org/tech/connection-management-in-chromium" target="_blank" rel="noopener noreferrer">late binding</a>.</p>
-	<p>This echoes a mechanism we use in <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a>, CloudFlare's dynamic content optimizer, to ensure that an incoming request is serviced as quickly as possible. Idle connections to the Railgun component running at an origin server are periodically pruned after a timeout or may be closed because of errors, so an established connection from CloudFlare's edge is not always available. In this case, a direct request is made without Railgun whilst, in parallel, a persistent connection is initiated for use by subsequent requests.</p>
-	<p>As long as you have confidence that your connection manager is capable of cleaning up bad connections and cancelled requests properly, connection pooling and late binding can be important in reducing roundtrip latency. <a href="https://golang.org/pkg/sync/#Pool" target="_blank" rel="noopener noreferrer">sync.Pool</a> in the standard library may be a useful starting point if you need to pool something other than HTTP connections.</p>
-	<p>If you found this exploration interesting, we're <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring engineers in London, San Francisco and Singapore</a>.</p>
+<p>It's well known that we're heavy users of the Go programming language at CloudFlare. Our work often involves delving into the standard library source code to understand internal code paths, error handling and performance characteristics.</p>
+<p>Recently, I looked at how the standard library's built-in HTTP client handles connections to remote servers in order to provide minimal roundtrip latency.</p>
+<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC By 2.0</a> <a href="https://www.flickr.com/photos/deanhochman/11940908695" target="_blank" rel="noopener noreferrer">Image</a> by <a href="https://www.flickr.com/photos/deanhochman" target="_blank" rel="noopener noreferrer">Dean Hochman</a></p>
+<h3>Connection pooling</h3>
+<p>A common pattern that aims to avoid connection setup costs (such as the TCP handshake and TLS setup) and confer control over the number of concurrently established connections is to pool them. <code>net/http</code> maintains a pool of connections to each remote host which supports <code>Connection: keep-alive</code>. The <a href="https://golang.org/src/net/http/transport.go#L42" target="_blank" rel="noopener noreferrer">default size</a> of the pool is two idle connections per <a href="https://golang.org/src/net/http/transport.go#L743" target="_blank" rel="noopener noreferrer">remote host</a>.</p>
+<p>More interestingly, when you make a request with <code>net/http</code>, a race happens. Races in code are often an unwanted side effect, but in this case it's intentional. Two goroutines operate in parallel: one that tries to dial a connection to the remote host, and another which tries to retrieve an idle connection from the connection pool. The fastest goroutine wins.</p>
+<p>To illustrate, let's look at the <a href="https://golang.org/src/net/http/transport.go#L187" target="_blank" rel="noopener noreferrer">code executed</a> when <code>transport.RoundTrip(req)</code> is called:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> func</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    pc,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> t.dialConn</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cm</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    dialc</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-</span><span class="sk-032f62-99ffe4"> dialRes{pc,</span><span class="sk-032f62-99ffe4"> err}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">idleConnCh</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> t.getIdleConnCh</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cm</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">select</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> v</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-dialc:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> Our</span><span class="sk-032f62-99ffe4"> dial</span><span class="sk-032f62-99ffe4"> finished.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> v.pc,</span><span class="sk-032f62-99ffe4"> v.err</span></span>
+<span class="line"><span class="sk-24292e-fff">case pc := </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">-idleConnCh:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> Another</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> finished</span><span class="sk-032f62-99ffe4"> first</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> its</span><span class="sk-032f62-99ffe4"> net.Conn</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> became</span><span class="sk-032f62-99ffe4"> available</span><span class="sk-032f62-99ffe4"> before</span><span class="sk-032f62-99ffe4"> our</span><span class="sk-032f62-99ffe4"> dial.</span><span class="sk-032f62-99ffe4"> Or</span><span class="sk-032f62-99ffe4"> somebody</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> else's dial that they didn't</span><span class="sk-032f62-99ffe4"> use.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> But</span><span class="sk-032f62-99ffe4"> our</span><span class="sk-032f62-99ffe4"> dial</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> still</span><span class="sk-032f62-99ffe4"> going,</span><span class="sk-032f62-99ffe4"> so</span><span class="sk-032f62-99ffe4"> give</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> away</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> when</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> finishes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    handlePendingDial</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> pc,</span><span class="sk-032f62-99ffe4"> nil</span></span>
+<span class="line"><span class="sk-24292e-fff">case </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">-req.Cancel:  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    handlePendingDial</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> nil,</span><span class="sk-032f62-99ffe4"> errors.New</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"net/http: request canceled while waiting for connection"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">case </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">-cancelc:  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    handlePendingDial</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> nil,</span><span class="sk-032f62-99ffe4"> errors.New</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"net/http: request canceled while waiting for connection"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>First a connection is dialed, then we select over <code>idleConnCh</code> (down which idle connections are passed) or <code>dialc</code>, which gives us the result of the dial. Cancellation of the request is also possible if the caller decides <code>RoundTrip</code> has taken too long.</p>
+<h3>Late binding</h3>
+<p>So if an idle connection is available, retrieving it from the pool should win against dialing a new one. A similar approach (alongside other optimizations) has been used in Chromium, where it's referred to as <a href="https://insouciant.org/tech/connection-management-in-chromium" target="_blank" rel="noopener noreferrer">late binding</a>.</p>
+<p>This echoes a mechanism we use in <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a>, CloudFlare's dynamic content optimizer, to ensure that an incoming request is serviced as quickly as possible. Idle connections to the Railgun component running at an origin server are periodically pruned after a timeout or may be closed because of errors, so an established connection from CloudFlare's edge is not always available. In this case, a direct request is made without Railgun whilst, in parallel, a persistent connection is initiated for use by subsequent requests.</p>
+<p>As long as you have confidence that your connection manager is capable of cleaning up bad connections and cancelled requests properly, connection pooling and late binding can be important in reducing roundtrip latency. <a href="https://golang.org/pkg/sync/#Pool" target="_blank" rel="noopener noreferrer">sync.Pool</a> in the standard library may be a useful starting point if you need to pool something other than HTTP connections.</p>
+<p>If you found this exploration interesting, we're <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring engineers in London, San Francisco and Singapore</a>.</p>

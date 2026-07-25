@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "請求パイプラインが突然遅くなったのです。原因はClickHouseの隠れたボトルネックでした",
+	"url": "https://blog.cloudflare.com/ja-jp/clickhouse-query-plan-contention/",
+	"datePublished": "2026-05-14T13:00:00.000Z",
+	"dateModified": "2026-07-15T15:23:34.340Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW4999A46M2F3BCY3QF5F258.png",
+	"description": "ペタバイト規模のClickHouseクラスターのパーティショニング変更によって重要な請求ジョブが停止したとき、標準的なメトリクスは明らかなエラーは示されませんでした。この記事では、当社がClickHouseのクエリプランナーで深刻なロックコンテンツを特定し、それを修正するためのアップストリームパッチをどのように構築したかを探ります。"
+}

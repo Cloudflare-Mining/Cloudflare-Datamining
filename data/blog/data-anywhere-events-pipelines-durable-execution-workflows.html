@@ -1,265 +1,195 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tHICOd04js5JavULcHBM5/32451f29cf1a7bf2cff69f2f8607cd4a/data-anywhere-events-pipelines-durable-execution-workflows.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Data is fundamental to any real-world application: the database storing your user data and inventory, the analytics tracking sales events and/or error rates, the object storage with your web assets and/or the Parquet files driving your data science team, and the vector database enabling semantic search or AI-powered recommendations for your users.</p>
-	<p>When we first announced Workers <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">back in 2017</a>, and then <a href="https://blog.cloudflare.com/introducing-workers-kv">Workers KV</a>, <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>, and <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">D1</a>, it was obvious that the next big challenge to solve for developers would be in making it easier to ingest, store, and query the data needed to build scalable, full-stack applications.</p>
-	<p>To that end, as part of our quest to make building stateful, distributed-by-default applications even easier, we’re launching our new Event Notifications service; a preview of our upcoming streaming ingestion product, Pipelines; and a sneak peek into our take on durable execution, Workflows.</p>
-	<div class="flex anchor relative">
-		<h3 id="event-based-architectures">Event-based architectures</h3>
-		<a href="https://blog.cloudflare.com/#event-based-architectures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you’re writing data — whether that’s new data, changing existing data, or deleting old data — you often want to trigger other, asynchronous work to run in response. That could be processing user-driven uploads, updating search indexes as the underlying data changes, or removing associated rows in your SQL database when content is removed.</p>
-	<p>In order to make these event-driven workflows far easier to build across Cloudflare, we’re launching the first step towards a wider Event Notifications platform across Cloudflare, starting with notifications support in R2.</p>
-	<p>You can read more in the deep-dive on <a href="https://blog.cloudflare.com/r2-events-gcs-migration-infrequent-access">Event Notifications for R2</a>, but in a nutshell: you can configure changes to content in any R2 bucket to write directly to a <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queue</a>, allowing you to reliably consume those events in a Worker or to <a href="https://developers.cloudflare.com/queues/reference/pull-consumers" target="_blank" rel="noopener noreferrer">pull from compute</a> in a legacy cloud.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63wR0NuQIFaZUo5TvDvS29/79b6444d125a9c373f59d6cbdf1bb9c3/image2-3.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
-
-	</figure>
-	<p>Event Notifications for R2 are just the beginning, though. There are many kinds of events you might want to trigger as a developer — these are just some of the event types we’re planning to support:</p>
-	<ul>
-		<li>
-			<p>Changes (writes) to key-value pairs in your <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a> namespaces.</p>
-		</li>
-		<li>
-			<p>Updates to your <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1 databases</a>, including changed rows or triggers.</p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer">Deployments</a> to your Cloudflare Workers</p>
-		</li>
-	</ul>
-	<p>Consuming event notifications from a single Worker is just <i>one</i> approach, though. As you start to consume events, you may want to trigger multi-step <i>workflows</i> that execute reliably, resume from errors or exceptions, and ensure that previous steps aren’t duplicated or repeated unnecessarily. An event notification framework turns out to be just the thing needed to drive <a href="https://blog.cloudflare.com/#durable-exectution">a workflow engine that <i>executes durably</i>…</a></p>
-	<div class="flex anchor relative">
-		<h3 id="making-it-even-easier-to-ingest-data">Making it even easier to ingest data</h3>
-		<a href="https://blog.cloudflare.com/#making-it-even-easier-to-ingest-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When we launched <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>, our <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">object storage service</a>, we knew that supporting the de facto-standard <a href="https://developers.cloudflare.com/r2/api/s3/api" target="_blank" rel="noopener noreferrer">S3 API</a> was critical in order to allow developers to bring the tooling and services they already had over to R2. But the S3 API is designed to be simple: at its core, it provides APIs for upload, download, multipart and metadata operations, and many tools <i>don’t</i> support the S3 API.</p>
-	<p>What if you want to batch clickstream data from your web services so that it’s efficient (and cost-effective) to query by your analytics team? Or partition data by customer ID, merchant ID, or locale within a structured data format like JSON?</p>
-	<p>Well, we want to help solve this problem too, and so we’re announcing Pipelines, an upcoming streaming ingestion service designed to ingest data at scale, aggregate it, and write it directly to R2, without you having to manage infrastructure, partitions, runners, or worry about durability.</p>
-	<p>With Pipelines, creating a globally scalable ingestion endpoint that can ingest tens-of-thousands of events per second doesn’t require any code:</p>
-	<pre class="language-js"><code class="language-js">$ wrangler pipelines create clickstream-ingest-prod --batch-size="1MB" --batch-timeout-secs=120 --batch-on-json-key=".merchantId" --destination-bucket="prod-cs-data"
-
-✅ Successfully created new pipeline "clickstream-ingest-prod"
-📥 Created endpoints:
-➡ HTTPS: https://d458dbe698b8eef41837f941d73bc5b3.pipelines.cloudflarestorage.com/clickstream-ingest-prod
-➡ WebSocket: wss://d458dbe698b8eef41837f941d73bc5b3.pipelines.cloudflarestorage.com:8443/clickstream-ingest-prod
-➡ Kafka: d458dbe698b8eef41837f941d73bc5b3.pipelines.cloudflarestorage.com:9092 (topic: clickstream-ingest-prod)</code></pre>
-	<p>As you can see here, we’re already thinking about how to make Pipelines protocol-agnostic: write from a HTTP client, stream events over a WebSocket, and/or redirect your existing Kafka producer (and stop having to manage and scale Kafka) directly to Pipelines.</p>
-	<p>But that’s just the beginning of our vision here. Scalable ingestion and simple batching is one thing, but what about if you have more complex needs? Well, we have a massively scalable compute platform (<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>) that can help address this too.</p>
-	<p>The code below is just an initial exploration for how we’re thinking about an API for running transforms over streaming data. If you’re aware of projects like <a href="https://beam.apache.org/documentation/programming-guide" target="_blank" rel="noopener noreferrer">Apache Beam</a> or <a href="https://flink.apache.org" target="_blank" rel="noopener noreferrer">Flink</a>, this programming model might even look familiar:</p>
-	<pre class="language-js"><code class="language-js">export default {    
-   // Pipeline handler is invoked when batch criteria are met
-   async pipeline(stream: StreamPipeline, env: Env, ctx: ExecutionContext): Promise&lt;StreamingPipeline&gt; {
-      // ...
-      return stream
-         // Type: transform(label: string, transformFunc: TransformFunction): Promise&lt;StreamPipeline&gt;
-         // Each transform has a label that is used in metrics to provide
-    // per-transform observability and debugging
-         .transform("human readable label", (events: Array&lt;StreamEvent&gt;) =&gt; {
-            return events.map((e) =&gt; ...)
-         })
-         .transform("another transform", (events: Array&lt;StreamEvent&gt;) =&gt; {
-            return events.map((e) =&gt; ...)
-         })
-         .writeToR2({
-            format: "json",
-            bucket: "MY_BUCKET_NAME",
-            prefix: somePrefix,
-            batchSize: "10MB"
-         })
-   }
-}</code></pre>
-	<p>Specifically:</p>
-	<ul>
-		<li>
-			<p>The Worker describes a pipeline of transformations (mapping, reducing, filtering) that operates over each subset of events (records)</p>
-		</li>
-		<li>
-			<p>You can call out to other services — including D1 or KV — in order to synchronously or asynchronously hydrate data or lookup values during your stream processing</p>
-		</li>
-		<li>
-			<p>We take care of scaling horizontally based on records-per-second and/or any concurrency settings you configure based on processing latency requirements.</p>
-		</li>
-	</ul>
-	<p><b>We’ll be bringing Pipelines into open beta later in 2024</b>, and it will initially launch with support for HTTP ingestion and R2 as a destination (sink), but we’re already thinking bigger.</p>
-	<p>We’ll be sharing more as Pipelines gets closer to release. In the meantime, you can <a href="https://docs.google.com/forms/d/e/1FAIpQLSeuaQ5YZoXJej5h5KoEz6LNrVb7gASJ8msahJg8VmBeC0HEYQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">register your interest and share your use-case</a>, and we’ll reach out when Pipelines reaches open beta.</p>
-	<div class="flex anchor relative">
-		<h3 id="durable-execution">Durable Execution</h3>
-		<a href="https://blog.cloudflare.com/#durable-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If the term “Durable Execution” is new to you, don’t worry: the term comes from the desire to run applications that can resume execution from where they left off, even if the underlying host or compute fails (where the “durable” part comes from).</p>
-	<p>As we’ve continued to build out our data and AI platforms, we’ve been acutely aware that developers need ways to create reliable, repeatable workflows that operate over that data, turn unstructured data into structured data, trigger on fresh data (or periodically), and automatically retry, restart, and export metrics for each step along the way. The industry calls this Durable Execution: we’re just calling it <i>Workflows</i>.</p>
-	<p>What makes Workflows different from other takes on Durable Execution is that we provide the underlying compute as part of the platform. You don’t have to bring-your-own compute, or worry about scaling it or provisioning it in the right locations. Workflows runs on top of <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> – you write the workflow, and we take care of the rest.</p>
-	<p>Here’s an early example of writing a Workflow that generates text embeddings using Workers AI and stores them (ready to query) in Vectorize as new content is written to (or updated within) R2.</p>
-	<ul>
-		<li>
-			<p>Each Workflow <i>run</i> is triggered by an Event Notification consumed from a Queue, but could also be triggered by a HTTP request, another Worker, or even scheduled on a timer.</p>
-		</li>
-		<li>
-			<p>Individual <i>steps</i> within the Workflow allow us to define individually retriable units of work: in this case, we’re reading the new objects from R2, creating text embeddings using Workers AI, and then inserting.</p>
-		</li>
-		<li>
-			<p>State is <i>durably</i> persisted between steps: each step can emit state, and Workflows will automatically persist that so that any underlying failures, uncaught exceptions or network retries can resume execution from the last successful step.</p>
-		</li>
-		<li>
-			<p>Every call to step() automatically emits metrics associated with the unique Workflow run, making it easier to debug within each step and/or break down your application into its smallest units of execution, without having to worry about <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability</a>.</p>
-		</li>
-	</ul>
-	<p>Step-by-step, it looks like this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OCCJMjL6NCXeeVTD4aNeb/43cda373e2969d263d03226b19244429/image4-5.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
-
-	</figure>
-	<p>Transforming this series of steps into real code, here’s what this would look like with Workflows:</p>
-	<pre class="language-js"><code class="language-js">import { Ai } from "@cloudflare/ai";
-import { Workflow } from "cloudflare:workers";
-
-export interface Env {
-  R2: R2Bucket;
-  AI: any;
-  VECTOR_INDEX: VectorizeIndex;
-}
-
-export default class extends Workflow {
-  async run(event: Event) {
-    const ai = new Ai(this.env.AI);
-
-    // List of keys to fetch from our incoming event notification
-    const keysToFetch = event.messages.map((val) =&gt; {
-      return val.object.key;
-    });
-
-    // The return value of each step is stored (the "durable" part
-    // of "durable execution")
-    // This ensures that state can be persisted between steps, reducing
-    // the need to recompute results ($$, time) should subsequent
-    // steps fail.
-    const inputs = await this.ctx.run(
-      // Each step has a user-defined label
-      // Metrics are emitted as each step runs (to success or failure)
-// with this label attached and available within per-Workflow
-// analytics in near-real-time.
-"read objects from R2", async () =&gt; {
-      const objects = [];
-
-      for (const key of keysToFetch) {
-        const object = await this.env.R2.get(key);
-        objects.push(await object.text());
-      }
-
-      return objects;
-    });
-
-
-    // Persist the output of this step.
-    const embeddings = await this.ctx.run(
-      "generate embeddings",
-      async () =&gt; {
-        const { data } = await ai.run("@cf/baai/bge-small-en-v1.5", {
-          text: inputs,
-        });
-
-        if (data.length) {
-          return data;
-        } else {
-          // Uncaught exceptions trigger an automatic retry of the step
-          // Retries and timeouts have sane defaults and can be overridden
-    // per step
-          throw new Error("Failed to generate embeddings");
-        }
-      },
-      {
-        retries: {
-          limit: 5,
-          delayMs: 1000,
-          backoff: "exponential",
-        },
-      }
-    );
-
-    await this.ctx.run("insert vectors", async () =&gt; {
-      const vectors = [];
-
-      keysToFetch.forEach((key, index) =&gt; {
-        vectors.push({
-          id: crypto.randomUUID(),
-          // Our embeddings from the previous step
-          values: embeddings[index].values, 
-          // The path to each R2 object to map back to during
- 	    // vector search
-          metadata: { r2Path: key },
-        });
-      });
-
-      return this.env.VECTOR_INDEX.upsert(vectors);
-    });
-  }
-}</code></pre>
-	<p>This is just one example of what a Workflow can do. The ability to durably execute an application, modeled as a series of steps, applies to a wide number of domains. You can apply this model of execution to a number of use-cases, including:</p>
-	<ul>
-		<li>
-			<p>Deploying software: each step can define a build step and subsequent health check, gating further progress until your deployment meets your criteria for “healthy”.</p>
-		</li>
-		<li>
-			<p>Post-processing user data: triggering a workflow based on user uploads (e.g. to Cloudflare R2) that then subsequently parses that data asynchronously, redacts PII or sensitive data, writes the sanitized output, and triggers a notification via email, webhook, or mobile push.</p>
-		</li>
-		<li>
-			<p>Payment and batch workflows: aggregating raw customer usage data on a periodic schedule by querying your data warehouse (or <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>), triggering usage or spend alerts, and/or generating PDF invoices.</p>
-		</li>
-	</ul>
-	<p>Each of these use cases model tasks that you want to run to completion, minimize redundant retries by persisting intermediate state, and (importantly) easily observe success and failure.</p>
-	<p><b>We’ll be sharing more about Workflows during the second quarter of 2024 as we work towards an open (public!) beta</b>. This includes how we’re thinking about idempotency and interactions with our storage, per-instance observability and metrics, local development, and templates to bootstrap common workflows.</p>
-	<div class="flex anchor relative">
-		<h3 id="putting-it-together">Putting it together</h3>
-		<a href="https://blog.cloudflare.com/#putting-it-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve often thought of Cloudflare’s own network as one massively scalable parallel data processing cluster: <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">data centers in 310+ cities</a>, with the ability to run compute close to users and/or <a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">close to data</a>, keep it within the bounds of regulatory or compliance requirements, and most importantly, use our massive scale to enable our customers to scale as well.</p>
-	<p>Recapping, a fully-fledged data platform needs to enable three things:</p>
-	<ol>
-		<li>
-			<p>Ingesting data: getting data into the platform (in the right format, from the right sources)</p>
-		</li>
-		<li>
-			<p>Storing data: securely, reliably, and durably.</p>
-		</li>
-		<li>
-			<p>Querying data: understanding and extracting insights from the data, and/or transforming it for use by other tools.</p>
-		</li>
-	</ol>
-	<p>When we launched R2 we tackled the second part, but knew that we’d need to follow up with the first and third parts in order to make it easier for developers to get data in and make use of it.</p>
-	<p>If we look at how we can build a system that helps us solve each of these three parts together with Pipelines, Event Notifications, R2, and Workflows, we end up with an architecture that resembles this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15ue6XZBrDyTtfja0z8VS5/57140a77d3881b3b3c8c5a0186c2a84f/image1-2.png" alt="" class="kg-image" width="1999" height="1020" loading="lazy">
-
-	</figure>
-	<p>Specifically, we have Pipelines (1) scaling out to ingest data, batch it, filter it, and then durably store it in R2 (2) in a format that’s ready and optimized for querying. Workflows, ClickHouse, Databricks, or the query engine of your choice can then query (3) that data as soon as it’s ready — with “ready” being automatically triggered by an Event Notification <i>as soon as the data is ingested and written to R2</i>.</p>
-	<p>There’s no need to poll, no need to batch after the fact, no need to have your query engine slow down on data that wasn’t pre-aggregated or filtered, and no need to manage and scale infrastructure in order to keep up with load or data jurisdiction requirements. Create a Pipeline, write your data directly to R2, and query directly from it.</p>
-	<p>If you’re also looking at this and wondering about the costs of moving this data around, then we’re holding to one important principle: <a href="https://www.cloudflare.com/the-net/cloud-egress-fees-challenge-future-ai" target="_blank" rel="noopener noreferrer">zero egress fees</a> across all of our data products. Just as we set the stage for this with <a href="https://blog.cloudflare.com/introducing-r2-object-storage">our R2 object storage</a>, we intend to apply this to every data product we’re building, Pipelines included.</p>
-	<div class="flex anchor relative">
-		<h3 id="start-building">Start Building</h3>
-		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve shared a lot of what we’re building so that developers have an opportunity to provide feedback (including via our <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Developer Discord</a>), share use-cases, and think about how to build their <i>next</i> application on Cloudflare.</p>
+<p>Data is fundamental to any real-world application: the database storing your user data and inventory, the analytics tracking sales events and/or error rates, the object storage with your web assets and/or the Parquet files driving your data science team, and the vector database enabling semantic search or AI-powered recommendations for your users.</p>
+<p>When we first announced Workers <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">back in 2017</a>, and then <a href="https://blog.cloudflare.com/introducing-workers-kv">Workers KV</a>, <a href="https://www.cloudflare.com/developer-platform/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>, and <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">D1</a>, it was obvious that the next big challenge to solve for developers would be in making it easier to ingest, store, and query the data needed to build scalable, full-stack applications.</p>
+<p>To that end, as part of our quest to make building stateful, distributed-by-default applications even easier, we’re launching our new Event Notifications service; a preview of our upcoming streaming ingestion product, Pipelines; and a sneak peek into our take on durable execution, Workflows.</p>
+<h3>Event-based architectures</h3>
+<p>When you’re writing data — whether that’s new data, changing existing data, or deleting old data — you often want to trigger other, asynchronous work to run in response. That could be processing user-driven uploads, updating search indexes as the underlying data changes, or removing associated rows in your SQL database when content is removed.</p>
+<p>In order to make these event-driven workflows far easier to build across Cloudflare, we’re launching the first step towards a wider Event Notifications platform across Cloudflare, starting with notifications support in R2.</p>
+<p>You can read more in the deep-dive on <a href="https://blog.cloudflare.com/r2-events-gcs-migration-infrequent-access">Event Notifications for R2</a>, but in a nutshell: you can configure changes to content in any R2 bucket to write directly to a <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queue</a>, allowing you to reliably consume those events in a Worker or to <a href="https://developers.cloudflare.com/queues/reference/pull-consumers" target="_blank" rel="noopener noreferrer">pull from compute</a> in a legacy cloud.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2386 Embedded Image - gtfWC3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG7WDTPTFNPDB9TT9ECK.png&amp;w=1920&amp;h=980&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="980" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Event Notifications for R2 are just the beginning, though. There are many kinds of events you might want to trigger as a developer — these are just some of the event types we’re planning to support:</p>
+<ul>
+	<li>Changes (writes) to key-value pairs in your <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a> namespaces.</li>
+	<li>Updates to your <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1 databases</a>, including changed rows or triggers.</li>
+	<li><a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments" target="_blank" rel="noopener noreferrer">Deployments</a> to your Cloudflare Workers</li>
+</ul>
+<p>Consuming event notifications from a single Worker is just <em>one</em> approach, though. As you start to consume events, you may want to trigger multi-step <em>workflows</em> that execute reliably, resume from errors or exceptions, and ensure that previous steps aren’t duplicated or repeated unnecessarily. An event notification framework turns out to be just the thing needed to drive <a href="https://blog.cloudflare.com/#durable-exectution">a workflow engine that <em>executes durably</em>…</a></p>
+<h3>Making it even easier to ingest data</h3>
+<p>When we launched <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>, our <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">object storage service</a>, we knew that supporting the de facto-standard <a href="https://developers.cloudflare.com/r2/api/s3/api" target="_blank" rel="noopener noreferrer">S3 API</a> was critical in order to allow developers to bring the tooling and services they already had over to R2. But the S3 API is designed to be simple: at its core, it provides APIs for upload, download, multipart and metadata operations, and many tools <em>don’t</em> support the S3 API.</p>
+<p>What if you want to batch clickstream data from your web services so that it’s efficient (and cost-effective) to query by your analytics team? Or partition data by customer ID, merchant ID, or locale within a structured data format like JSON?</p>
+<p>Well, we want to help solve this problem too, and so we’re announcing Pipelines, an upcoming streaming ingestion service designed to ingest data at scale, aggregate it, and write it directly to R2, without you having to manage infrastructure, partitions, runners, or worry about durability.</p>
+<p>With Pipelines, creating a globally scalable ingestion endpoint that can ingest tens-of-thousands of events per second doesn’t require any code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ wrangler pipelines create clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ingest</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">prod </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">batch</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">size</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1MB"</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">batch</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">timeout</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">secs</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">120</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">batch</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">on</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">json</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">key</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">".merchantId"</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">destination</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"prod-cs-data"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">✅ Successfully created </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> pipeline </span><span class="sk-032f62-99ffe4">"clickstream-ingest-prod"</span></span>
+<span class="line"><span class="sk-24292e-fff">📥 Created </span><span class="sk-6f42c1-ffc799">endpoints</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">➡ </span><span class="sk-6f42c1-ffc799">HTTPS</span><span class="sk-24292e-fff">: </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//d458dbe698b8eef41837f941d73bc5b3.pipelines.cloudflarestorage.com/clickstream-ingest-prod</span></span>
+<span class="line"><span class="sk-24292e-fff">➡ </span><span class="sk-6f42c1-ffc799">WebSocket</span><span class="sk-24292e-fff">: </span><span class="sk-6f42c1-ffc799">wss</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//d458dbe698b8eef41837f941d73bc5b3.pipelines.cloudflarestorage.com:8443/clickstream-ingest-prod</span></span>
+<span class="line"><span class="sk-24292e-fff">➡ </span><span class="sk-6f42c1-ffc799">Kafka</span><span class="sk-24292e-fff">: d458dbe698b8eef41837f941d73bc5b3.pipelines.cloudflarestorage.com:</span><span class="sk-005cc5-ffc799">9092</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">topic</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> clickstream</span><span class="sk-24292e-fff">-</span><span class="sk-6f42c1-ffc799">ingest</span><span class="sk-24292e-fff">-</span><span class="sk-6f42c1-ffc799">prod</span><span class="sk-24292e-fff">)</span></span></code></pre>
 </div>
+<p>As you can see here, we’re already thinking about how to make Pipelines protocol-agnostic: write from a HTTP client, stream events over a WebSocket, and/or redirect your existing Kafka producer (and stop having to manage and scale Kafka) directly to Pipelines.</p>
+<p>But that’s just the beginning of our vision here. Scalable ingestion and simple batching is one thing, but what about if you have more complex needs? Well, we have a massively scalable compute platform (<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>) that can help address this too.</p>
+<p>The code below is just an initial exploration for how we’re thinking about an API for running transforms over streaming data. If you’re aware of projects like <a href="https://beam.apache.org/documentation/programming-guide" target="_blank" rel="noopener noreferrer">Apache Beam</a> or <a href="https://flink.apache.org" target="_blank" rel="noopener noreferrer">Flink</a>, this programming model might even look familiar:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {    </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // Pipeline handler is invoked when batch criteria are met</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   async</span><span class="sk-6f42c1-ffc799"> pipeline</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">stream</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> StreamPipeline</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">StreamingPipeline</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> stream</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">         // Type: transform(label: string, transformFunc: TransformFunction): Promise&lt;StreamPipeline&gt;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">         // Each transform has a label that is used in metrics to provide</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // per-transform observability and debugging</span></span>
+<span class="line"><span class="sk-24292e-fff">         .</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"human readable label"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">events</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">StreamEvent</span><span class="sk-24292e-fff">&gt;) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> events.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">e</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-d73a49-a0a0a0"> ...</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">         })</span></span>
+<span class="line"><span class="sk-24292e-fff">         .</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"another transform"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">events</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">StreamEvent</span><span class="sk-24292e-fff">&gt;) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> events.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">e</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-d73a49-a0a0a0"> ...</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">         })</span></span>
+<span class="line"><span class="sk-24292e-fff">         .</span><span class="sk-6f42c1-ffc799">writeToR2</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            format: </span><span class="sk-032f62-99ffe4">"json"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            bucket: </span><span class="sk-032f62-99ffe4">"MY_BUCKET_NAME"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            prefix: somePrefix,</span></span>
+<span class="line"><span class="sk-24292e-fff">            batchSize: </span><span class="sk-032f62-99ffe4">"10MB"</span></span>
+<span class="line"><span class="sk-24292e-fff">         })</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Specifically:</p>
+<ul>
+	<li>The Worker describes a pipeline of transformations (mapping, reducing, filtering) that operates over each subset of events (records)</li>
+	<li>You can call out to other services — including D1 or KV — in order to synchronously or asynchronously hydrate data or lookup values during your stream processing</li>
+	<li>We take care of scaling horizontally based on records-per-second and/or any concurrency settings you configure based on processing latency requirements.</li>
+</ul>
+<p><strong>We’ll be bringing Pipelines into open beta later in 2024</strong>, and it will initially launch with support for HTTP ingestion and R2 as a destination (sink), but we’re already thinking bigger.</p>
+<p>We’ll be sharing more as Pipelines gets closer to release. In the meantime, you can <a href="https://docs.google.com/forms/d/e/1FAIpQLSeuaQ5YZoXJej5h5KoEz6LNrVb7gASJ8msahJg8VmBeC0HEYQ/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">register your interest and share your use-case</a>, and we’ll reach out when Pipelines reaches open beta.</p>
+<h3>Durable Execution</h3>
+<p>If the term “Durable Execution” is new to you, don’t worry: the term comes from the desire to run applications that can resume execution from where they left off, even if the underlying host or compute fails (where the “durable” part comes from).</p>
+<p>As we’ve continued to build out our data and AI platforms, we’ve been acutely aware that developers need ways to create reliable, repeatable workflows that operate over that data, turn unstructured data into structured data, trigger on fresh data (or periodically), and automatically retry, restart, and export metrics for each step along the way. The industry calls this Durable Execution: we’re just calling it <em>Workflows</em>.</p>
+<p>What makes Workflows different from other takes on Durable Execution is that we provide the underlying compute as part of the platform. You don’t have to bring-your-own compute, or worry about scaling it or provisioning it in the right locations. Workflows runs on top of <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> – you write the workflow, and we take care of the rest.</p>
+<p>Here’s an early example of writing a Workflow that generates text embeddings using Workers AI and stores them (ready to query) in Vectorize as new content is written to (or updated within) R2.</p>
+<ul>
+	<li>Each Workflow <em>run</em> is triggered by an Event Notification consumed from a Queue, but could also be triggered by a HTTP request, another Worker, or even scheduled on a timer.</li>
+	<li>Individual <em>steps</em> within the Workflow allow us to define individually retriable units of work: in this case, we’re reading the new objects from R2, creating text embeddings using Workers AI, and then inserting.</li>
+	<li>State is <em>durably</em> persisted between steps: each step can emit state, and Workflows will automatically persist that so that any underlying failures, uncaught exceptions or network retries can resume execution from the last successful step.</li>
+	<li>Every call to step() automatically emits metrics associated with the unique Workflow run, making it easier to debug within each step and/or break down your application into its smallest units of execution, without having to worry about <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability</a>.</li>
+</ul>
+<p>Step-by-step, it looks like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2386 Embedded Image - GS43WT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48445Y86CMY6CS15C78MNQ.png&amp;w=1920&amp;h=980&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="980" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<p>Transforming this series of steps into real code, here’s what this would look like with Workflows:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Workflow } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  R2</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> R2Bucket</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  AI</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  VECTOR_INDEX</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> VectorizeIndex</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Workflow</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Event</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> ai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Ai</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // List of keys to fetch from our incoming event notification</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> keysToFetch</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> event.messages.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">val</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> val.object.key;</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // The return value of each step is stored (the "durable" part</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // of "durable execution")</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // This ensures that state can be persisted between steps, reducing</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // the need to recompute results ($$, time) should subsequent</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // steps fail.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> inputs</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Each step has a user-defined label</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Metrics are emitted as each step runs (to success or failure)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// with this label attached and available within per-Workflow</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// analytics in near-real-time.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"read objects from R2"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> objects</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> key</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> keysToFetch) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> object</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">R2</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(key);</span></span>
+<span class="line"><span class="sk-24292e-fff">        objects.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> object.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> objects;</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Persist the output of this step.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> embeddings</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "generate embeddings"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">data</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/baai/bge-small-en-v1.5"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">          text: inputs,</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (data.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          return</span><span class="sk-24292e-fff"> data;</span></span>
+<span class="line"><span class="sk-24292e-fff">        } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">          // Uncaught exceptions trigger an automatic retry of the step</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">          // Retries and timeouts have sane defaults and can be overridden</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // per step</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Failed to generate embeddings"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        retries: {</span></span>
+<span class="line"><span class="sk-24292e-fff">          limit: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          delayMs: </span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          backoff: </span><span class="sk-032f62-99ffe4">"exponential"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"insert vectors"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> vectors</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">      keysToFetch.</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">key</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">index</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        vectors.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          id: crypto.</span><span class="sk-6f42c1-ffc799">randomUUID</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">          // Our embeddings from the previous step</span></span>
+<span class="line"><span class="sk-24292e-fff">          values: embeddings[index].values, </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">          // The path to each R2 object to map back to during</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> 	    // vector search</span></span>
+<span class="line"><span class="sk-24292e-fff">          metadata: { r2Path: key },</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">VECTOR_INDEX</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">upsert</span><span class="sk-24292e-fff">(vectors);</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This is just one example of what a Workflow can do. The ability to durably execute an application, modeled as a series of steps, applies to a wide number of domains. You can apply this model of execution to a number of use-cases, including:</p>
+<ul>
+	<li>Deploying software: each step can define a build step and subsequent health check, gating further progress until your deployment meets your criteria for “healthy”.</li>
+	<li>Post-processing user data: triggering a workflow based on user uploads (e.g. to Cloudflare R2) that then subsequently parses that data asynchronously, redacts PII or sensitive data, writes the sanitized output, and triggers a notification via email, webhook, or mobile push.</li>
+	<li>Payment and batch workflows: aggregating raw customer usage data on a periodic schedule by querying your data warehouse (or <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>), triggering usage or spend alerts, and/or generating PDF invoices.</li>
+</ul>
+<p>Each of these use cases model tasks that you want to run to completion, minimize redundant retries by persisting intermediate state, and (importantly) easily observe success and failure.</p>
+<p><strong>We’ll be sharing more about Workflows during the second quarter of 2024 as we work towards an open (public!) beta</strong>. This includes how we’re thinking about idempotency and interactions with our storage, per-instance observability and metrics, local development, and templates to bootstrap common workflows.</p>
+<h3>Putting it together</h3>
+<p>We’ve often thought of Cloudflare’s own network as one massively scalable parallel data processing cluster: <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">data centers in 310+ cities</a>, with the ability to run compute close to users and/or <a href="https://smart-placement-demo.pages.dev" target="_blank" rel="noopener noreferrer">close to data</a>, keep it within the bounds of regulatory or compliance requirements, and most importantly, use our massive scale to enable our customers to scale as well.</p>
+<p>Recapping, a fully-fledged data platform needs to enable three things:</p>
+<ol>
+	<li>Ingesting data: getting data into the platform (in the right format, from the right sources)</li>
+	<li>Storing data: securely, reliably, and durably.</li>
+	<li>Querying data: understanding and extracting insights from the data, and/or transforming it for use by other tools.</li>
+</ol>
+<p>When we launched R2 we tackled the second part, but knew that we’d need to follow up with the first and third parts in order to make it easier for developers to get data in and make use of it.</p>
+<p>If we look at how we can build a system that helps us solve each of these three parts together with Pipelines, Event Notifications, R2, and Workflows, we end up with an architecture that resembles this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2386 Embedded Image - ly1jS3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MHTRN3GRY9M1PJET0NE.png&amp;w=1920&amp;h=980&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="980" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<p>Specifically, we have Pipelines (1) scaling out to ingest data, batch it, filter it, and then durably store it in R2 (2) in a format that’s ready and optimized for querying. Workflows, ClickHouse, Databricks, or the query engine of your choice can then query (3) that data as soon as it’s ready — with “ready” being automatically triggered by an Event Notification <em>as soon as the data is ingested and written to R2</em>.</p>
+<p>There’s no need to poll, no need to batch after the fact, no need to have your query engine slow down on data that wasn’t pre-aggregated or filtered, and no need to manage and scale infrastructure in order to keep up with load or data jurisdiction requirements. Create a Pipeline, write your data directly to R2, and query directly from it.</p>
+<p>If you’re also looking at this and wondering about the costs of moving this data around, then we’re holding to one important principle: <a href="https://www.cloudflare.com/the-net/cloud-egress-fees-challenge-future-ai" target="_blank" rel="noopener noreferrer">zero egress fees</a> across all of our data products. Just as we set the stage for this with <a href="https://blog.cloudflare.com/introducing-r2-object-storage">our R2 object storage</a>, we intend to apply this to every data product we’re building, Pipelines included.</p>
+<h3>Start Building</h3>
+<p>We’ve shared a lot of what we’re building so that developers have an opportunity to provide feedback (including via our <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Developer Discord</a>), share use-cases, and think about how to build their <em>next</em> application on Cloudflare.</p>

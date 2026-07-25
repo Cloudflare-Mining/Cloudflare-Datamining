@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "我们的计费流程管道突然变慢了。问题的起因在于 ClickHouse 中隐藏的瓶颈",
+	"url": "https://blog.cloudflare.com/zh-cn/clickhouse-query-plan-contention/",
+	"datePublished": "2026-05-14T13:00:00.000Z",
+	"dateModified": "2026-07-15T17:27:37.426Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW4999A46M2F3BCY3QF5F258.png",
+	"description": "当我们对 PB 级 ClickHouse 集群进行分区更改而导致重要的计费任务停滞时，标准指标未显示明显错误。本文概述了我们如何识别 ClickHouse 查询规划器中存在的严重锁争用问题，以及构建了哪些上游补丁来解决问题。"
+}

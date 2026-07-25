@@ -1,0 +1,113 @@
+<h2>什麼是稽核記錄？為什麼它們很重要？</h2>
+<p>稽核記錄是一個關鍵工具，用於追蹤和記錄 Cloudflare 環境中的變更、動作和資源存取模式。透過這些記錄，可以瞭解動作執行者、動作內容、發生時間、發生位置以及執行方式。這使安全團隊能夠識別漏洞、確保法規遵從性並協助解決營運問題。稽核記錄提供了至關重要的透明度和責任追究能力。這就是為什麼我們使其「自動化」——這消除了各個 Cloudflare 產品團隊手動傳送事件的需要。系統會在執行動作時以標準化格式自動產生稽核記錄，從而提供完整的可見性並確保全面涵蓋我們的所有產品。</p>
+<h2>新功能</h2>
+<p>我們很高興地宣佈推出 Automatic Audit Logs 測試版——該系統統一了各 Cloudflare 產品的稽核記錄。這個新系統旨在為您提供環境活動的完整且一致的檢視。以下是稽核記錄功能的增強情況：</p>
+<ul>
+	<li><strong>標準化記錄：</strong>以前，稽核記錄的產生依賴於不同的內部團隊，這可能導致漏洞和不一致。現在，稽核記錄以無縫且標準化的方式自動產生，消除了對單個團隊的依賴並確保在所有 Cloudflare 服務中的一致性。</li>
+	<li><strong>擴大產品涵蓋範圍：</strong>Automatic Audit Logs 現在將我們的涵蓋範圍從 62 個產品擴大到 111 個產品，使總體涵蓋範圍從 75% 提高到 95%。我們現在從關鍵端點（例如 <code>/accounts</code>、<code>/zones</code> 和 <code>/organizations</code> API）捕獲操作。</li>
+	<li><strong>細粒度篩選：</strong>透過統一格式的記錄，可以快速確定特定的動作、使用者、方法和資源，使調查更快、更高效。</li>
+	<li><strong>增強背景和透明度：</strong>每個記錄項目都包含詳細的背景，例如所使用的驗證方法、動作是透過 API 還是儀表板執行，以及到 Cloudflare Ray ID 的對應以實現更好的可追溯性。</li>
+	<li><strong>全面的活動擷取：</strong>除了建立、編輯和刪除動作，系統現在還記錄 GET 請求和失敗的嘗試，確保不會忽視任何關鍵活動。</li>
+</ul>
+<p>這一新系統體現了 Cloudflare 致力於構建更安全、更透明的網際網路的承諾。這也是 Cloudflare 遵循 <a href="https://blog.cloudflare.com/secure-by-design-principles" target="_blank" rel="noopener noreferrer"><u>CISA 網路安全承諾</u></a>的體現，並加強了我們致力於增強客戶收集網路安全入侵證據之能力的決心。</p>
+<p>Automatic Audit Logs（測試版）僅透過 <a href="https://developers.cloudflare.com/api/resources/audit_logs/methods/list" target="_blank" rel="noopener noreferrer"><u>API</u></a> 提供。</p>
+<h2>稽核記錄的旅程：Cloudflare 如何建立可靠、安全的記錄</h2>
+<p>在 Cloudflare，我們一直透過 <a href="https://developers.cloudflare.com/api/resources/audit_logs/methods/list" target="_blank" rel="noopener noreferrer"><u>Audit Log API</u></a> 提供稽核記錄，但體驗並不十分一致。</p>
+<p>究其原因，是因為由單個產品團隊來負責建立和維護其稽核記錄。這導致了不一致、涵蓋範圍上的缺口以及碎片化的使用者體驗。</p>
+<p>認識到可靠稽核記錄的重要性，我們著手擴大其在所有 Cloudflare 產品中的涵蓋範圍。我們的目標是使流程標準化、安全化和自動化，為使用者提供有關使用者發起動作的全面見解，同時增強可見性和可用性。我們來仔細看看 Cloudflare 如何建立稽核記錄。</p>
+<h3><strong>哪些 API 有稽核記錄？</strong></h3>
+<p>透過公用 API 或 Cloudflare 儀表板發出的所有使用者要求都會產生稽核記錄。雖然存在一些例外情況（例如 GraphQL 要求和靜態資產），但大多數使用者動作都會被擷取。</p>
+<p>當發生使用者動作時，要求將轉寄到我們的稽核記錄管線。這可確保為所有產品自動產生記錄，靠近動作的來源，並擷取最相關的詳細資料。</p>
+<p>對於產生 JSON 的 <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer"><u>RESTful</u></a> API，會記錄經過清理的要求內文，以防止稽核記錄中包含任何敏感性資訊。而 GET 要求通常是唯讀的並且可能會產生大量回應，因此僅記錄執行的動作和存取的資源，從而避免不必要的開銷，同時仍保持必要的可見性。</p>
+<h3>串流 HTTP 要求</h3>
+<p>使用者在 Cloudflare 上發起的任何動作（無論是透過 API 還是儀表板）均由 API Gateway 處理。然後，HTTP 要求及其相應的要求和回應資料都會被轉寄到名為稽核記錄編輯器的 <a href="https://www.cloudflare.com/en-gb/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Worker</u></a>。這樣就可以自動進行稽核記錄，而無需依賴內部團隊傳送事件。</p>
+<p>為了最大限度地減少延遲，API Gateway 會使用服務繫結，透過 <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC（遠端程序呼叫）</u></a>將這些要求串流到編輯器 Worker。這種方法可確保無需透過可公開存取的 URL 即可成功傳送要求。</p>
+<h3>編輯敏感性資訊</h3>
+<p>Worker 收到 HTTP 要求後，會引用<a href="https://blog.cloudflare.com/open-api-transition" target="_blank" rel="noopener noreferrer"><u>Cloudflare OpenAPI 結構描述</u></a>來處理敏感性資訊。OpenAPI 是一種廣泛採用、機器可讀且對人類友好的規範格式，用於定義 HTTP API。它依賴於 <a href="https://blog.postman.com/what-is-json-schema" target="_blank" rel="noopener noreferrer"><u>JSON 結構描述</u></a>來描述 API 的底層資料。</p>
+<p>編輯器 Worker 使用 <a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer"><u>OpenAPI 結構描述</u></a>來識別 HTTP 要求的相應 API 結構描述。然後，它會編輯所有敏感性資訊，僅在結構描述中保留明確標記為<strong>可稽核</strong>的資訊。這個編輯過程可確保敏感性資料不會在管線中進一步傳輸，同時保留足夠的資訊來偵錯和分析動作對資源價值的影響。</p>
+<p>每個 Cloudflare 產品團隊都在 OpenAPI 結構描述中定義其 API，並將特定欄位標記為可稽核。這樣不僅能夠獲取有關資源變更的資訊，還能保護敏感性資料。</p>
+<p>編輯後，資料將在 Cloudflare 的資料管線中流動。該<a href="https://blog.cloudflare.com/cloudflare-incident-on-november-14-2024-resulting-in-lost-logs/#system-architecture" target="_blank" rel="noopener noreferrer"><u>管線</u></a>包含幾個關鍵元件，包括 Logfwdr、Logreceiver 和 Buftee 緩衝區，經過清理的資料最終被推送到這些緩衝區，等待進一步處理。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2635 image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1508&amp;h=976&amp;f=webp" data-lightbox-width="1508" data-lightbox-height="976" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>擷取和建立稽核記錄</h3>
+<p>Ingestor 服務使用來自 Buftee 緩衝區的訊息並將個別要求轉換為稽核記錄。Ingestor 使用固定結構描述，確保稽核記錄在任意規模的所有 Cloudflare 產品中保持標準化。</p>
+<p>因為 API Gateway（如上所述，從中記錄大多數 Automatic Audit Logs 的系統）每秒處理數萬個要求，所以 Ingestor 被設計為同時處理多個要求。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="302" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=640&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=750&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=828&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1080&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1280&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1430&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2635 image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1920&amp;h=812&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="812" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="302" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>稽核要求率圖。x 軸表示時間，y 軸表示每秒處理的稽核要求總數。</em></sup></p>
+<h3>擴充和儲存記錄</h3>
+<p>從安全性角度來看，擷取發起變更的人以及其進行驗證的方式至關重要。為了實現這一點，稽核記錄進行了擴充，包含從自訂回應標頭中擷取的使用者詳細資料和驗證資訊。</p>
+<p>其他詳細背景資訊（例如帳戶名稱）將透過呼叫內部服務來擷取。為了提高效能，使用了通讀快取機制。系統首先檢查快取中的回應，如果不可用，則從內部服務擷取資料並將其快取以供將來使用。</p>
+<p>在完全轉換並擴充稽核記錄後，會將其分批儲存在資料庫中，以防止系統過載。對於測試版，稽核記錄將在資料庫中儲存 30 天。計劃於 2025 年下半年推出 GA（正式上市）版本，將此期限延長至 18 個月。</p>
+<h3>稽核記錄範例</h3>
+<p>下面是更新警報通知原則時所產生稽核記錄的完整範例。它提供了所有必要的細節來回答動作的執行者、內容、時間、地點和方式問題。</p>
+<p>稽核記錄始終與帳戶相關聯，一些動作還包括相關的使用者和區域資訊。動作部分概述了變更的內容和時間，而執行者部分則提供了有關變更執行者以及執行方式的背景資訊，包括變更是透過 API 還是透過 UI 完成的。</p>
+<p>還包括有關資源的資訊，以便您能夠輕鬆識別變更的內容（在本範例中，更新了<a href="https://developers.cloudflare.com/waf/reference/alerts" target="_blank" rel="noopener noreferrer"><u>進階安全性事件警示</u></a>）。此外，還提供原始 API 要求詳細資料，讓使用者能透過稽核記錄追溯到特定的 API 呼叫。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> PUT</span><span class="sk-6f42c1-ffc799"> https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt; --data-raw '{...'}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">       {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "account"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;account_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Example account"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "action"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a Notification policy"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "result"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"success"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-01-23T18:25:14.749Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"update"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "actor"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "context"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"dash"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "email"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"test@example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;actor-id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "ip_address"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"127.0.0.1"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "token"</span><span class="sk-24292e-fff">: {},</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"user"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;audit_log_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "raw"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "cf_ray_id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;ray_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PUT"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "status_code"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "uri"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "user_agent"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Postman"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "resource"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;resource-id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "product"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"alerting"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "request"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "alert_type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"clickhouse_alert_fw_ent_anomaly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "enabled"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "filters"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                        "services"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "securitylevel"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "ratelimit"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "firewallrules"</span></span>
+<span class="line"><span class="sk-24292e-fff">                        ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                        "zones"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "&lt;zone_id&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">                        ]</span></span>
+<span class="line"><span class="sk-24292e-fff">                    },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Advanced Security Events Alert"</span></span>
+<span class="line"><span class="sk-24292e-fff">                },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "response"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;resource_id&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">                },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "scope"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"accounts"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"policies"</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span></code></pre>
+</div>
+<h2>即將推出的增強功能</h2>
+<p>對於正式上市 (GA) 版本，我們專注於在 Automatic Audit Logs 儀表板中開發新的使用者介面，為稽核記錄擷取更多的可稽核欄位（包括系統發起的動作和使用者層級動作，如登入事件），並允許透過 <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a> 匯出稽核記錄。而在長期發展方面，我們計劃為稽核記錄引入儀表板、趨勢分析和警示功能，以進一步提高其實用性和易用性。透過增強我們的稽核記錄系統，Cloudflare 正在努力踐行承諾，讓使用者能夠以更高的透明度、安全性和效率管理其環境。</p>
+<h2>開始使用 Automatic Audit Logs</h2>
+<p><strong>Automatic Audit Logs</strong> 現已可供測試。我們鼓勵您探索新功能並提供寶貴的意見回饋。</p>
+<p>使用以下端點擷取稽核記錄：</p>
+<p><code>/accounts/&lt;account_id&gt;/logs/audit?since=&lt;date&gt;&amp;before=&lt;date&gt;</code></p>
+<p>您可以在<a href="https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit" target="_blank" rel="noopener noreferrer"><u>此處</u></a>存取有關 Automatic Audit Logs 測試版 API 的詳細文件。</p>
+<p><em>請注意，測試版不包括對 Cloudflare 儀表板中稽核記錄 UI 的更新。在 Automatic Audit Logs 正式上市之前，用於當前稽核記錄的現有 UI 和 API 將保持可用。</em></p>
+<p><strong>我們希望收到您的意見回饋</strong>：您的意見回饋對於改進 Automatic Audit Logs 至關重要。請考慮填寫一份<a href="https://docs.google.com/forms/d/e/1FAIpQLSfXGkJpOG1jUPEh-flJy9B13icmcdBhveFwe-X0EzQjJQnQfQ/viewform?usp=sharing" target="_blank" rel="noopener noreferrer"><u>簡短的調查問卷</u></a>。</p>

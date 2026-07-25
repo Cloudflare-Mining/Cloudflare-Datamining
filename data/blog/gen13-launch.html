@@ -1,547 +1,455 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/gen13-launch">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/gen13-launch">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Pl3ibbeqtfWJS8biSF5ZG/24cbbe62932fe5ee076263d853c0492c/image1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Two years ago, Cloudflare deployed our <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>12th Generation server fleet</u></a>, based on AMD EPYC™ Genoa-X processors with their massive 3D V-Cache. That cache-heavy architecture was a perfect match for our request handling layer, FL1 at the time. But as we evaluated next-generation hardware, we faced a dilemma — the CPUs offering the biggest throughput gains came with a significant cache reduction. Our legacy software stack wasn't optimized for this, and the potential throughput benefits were being capped by increasing latency.</p>
-	<p>This blog describes how the <a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>FL2 transition</u></a>, our Rust-based rewrite of Cloudflare's core request handling layer, allowed us to prove Gen 13's full potential and unlock performance gains that would have been impossible on our previous stack. FL2 removes the dependency on the larger cache, allowing for performance to scale with cores while maintaining our SLAs. Today, we are proud to announce the launch of Cloudflare's Gen 13 based on AMD EPYC™ 5th Gen Turin-based servers running FL2, effectively capturing and scaling performance at the edge.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="what-amd-epycturin-brings-to-the-table">What AMD EPYCTurin brings to the table</h2>
-		<a href="https://blog.cloudflare.com/#what-amd-epycturin-brings-to-the-table" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html" target="_blank" rel="noopener noreferrer"><u>AMD's EPYC™ 5th Generation Turin-based processors</u></a> deliver more than just a core count increase. The architecture delivers improvements across multiple dimensions of what Cloudflare servers require.</p>
-	<ul>
-		<li>
-			<p><b>2x core count:</b> up to 192 cores versus Gen 12's 96 cores, with SMT providing 384 threads</p>
-		</li>
-		<li>
-			<p><b>Improved IPC:</b> Zen 5's architectural improvements deliver better instructions-per-cycle compared to Zen 4</p>
-		</li>
-		<li>
-			<p><b>Better power efficiency</b>: Despite the higher core count, Turin consumes up to 32% fewer watts per core compared to Genoa-X</p>
-		</li>
-		<li>
-			<p><b>DDR5-6400 support</b>: Higher memory bandwidth to feed all those cores</p>
-		</li>
-	</ul>
-	<p>However, Turin's high density OPNs make a deliberate tradeoff: prioritizing throughput over per core cache. Our analysis across the Turin stack highlighted this shift. For example, comparing the highest density Turin OPN to our Gen 12 Genoa-X processors reveals that Turin's 192 cores share 384MB of L3 cache. This leaves each core with access to just 2MB, one-sixth of Gen 12's allocation. For any workload that relies heavily on cache locality, which ours did, this reduction posed a serious challenge.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+<p>Two years ago, Cloudflare deployed our <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor" target="_blank" rel="noopener noreferrer"><u>12th Generation server fleet</u></a>, based on AMD EPYC™ Genoa-X processors with their massive 3D V-Cache. That cache-heavy architecture was a perfect match for our request handling layer, FL1 at the time. But as we evaluated next-generation hardware, we faced a dilemma — the CPUs offering the biggest throughput gains came with a significant cache reduction. Our legacy software stack wasn't optimized for this, and the potential throughput benefits were being capped by increasing latency.</p>
+<p>This blog describes how the <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>FL2 transition</u></a>, our Rust-based rewrite of Cloudflare's core request handling layer, allowed us to prove Gen 13's full potential and unlock performance gains that would have been impossible on our previous stack. FL2 removes the dependency on the larger cache, allowing for performance to scale with cores while maintaining our SLAs. Today, we are proud to announce the launch of Cloudflare's Gen 13 based on AMD EPYC™ 5th Gen Turin-based servers running FL2, effectively capturing and scaling performance at the edge.&nbsp;</p>
+<h2>What AMD EPYCTurin brings to the table</h2>
+<p><a href="https://www.amd.com/en/products/processors/server/epyc/9005-series.html" target="_blank" rel="noopener noreferrer"><u>AMD's EPYC™ 5th Generation Turin-based processors</u></a> deliver more than just a core count increase. The architecture delivers improvements across multiple dimensions of what Cloudflare servers require.</p>
+<ul>
+	<li><strong>2x core count:</strong> up to 192 cores versus Gen 12's 96 cores, with SMT providing 384 threads</li>
+	<li><strong>Improved IPC:</strong> Zen 5's architectural improvements deliver better instructions-per-cycle compared to Zen 4</li>
+	<li><strong>Better power efficiency</strong>: Despite the higher core count, Turin consumes up to 32% fewer watts per core compared to Genoa-X</li>
+	<li><strong>DDR5-6400 support</strong>: Higher memory bandwidth to feed all those cores</li>
+</ul>
+<p>However, Turin's high density OPNs make a deliberate tradeoff: prioritizing throughput over per core cache. Our analysis across the Turin stack highlighted this shift. For example, comparing the highest density Turin OPN to our Gen 12 Genoa-X processors reveals that Turin's 192 cores share 384MB of L3 cache. This leaves each core with access to just 2MB, one-sixth of Gen 12's allocation. For any workload that relies heavily on cache locality, which ours did, this reduction posed a serious challenge.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
 					<p>Generation</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Processor</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Cores/Threads</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>L3 Cache/Core</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Gen 12</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AMD Genoa-X 9684X</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>96C/192T</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>12MB (3D V-Cache)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Gen 13 Option 1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AMD Turin 9755</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>128C/256T</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4MB</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Gen 13 Option 2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AMD Turin 9845</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>160C/320T</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2MB</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Gen 13 Option 3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AMD Turin 9965</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>192C/384T</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2MB</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h2 id="diagnosing-the-problem-with-performance-counters">Diagnosing the problem with performance counters</h2>
-		<a href="https://blog.cloudflare.com/#diagnosing-the-problem-with-performance-counters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For our FL1 request handling layer, NGINX- and LuaJIT-based code, this cache reduction presented a significant challenge. But we didn't just assume it would be a problem; we measured it.</p>
-	<p>During the CPU evaluation phase for Gen 13, we collected CPU performance counters and profiling data to identify exactly what was happening under the hood using <a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm" target="_blank" rel="noopener noreferrer"><u>AMD uProf tool</u></a>. The data showed:</p>
-	<ul>
-		<li>
-			<p>L3 cache miss rates increased dramatically compared to Gen 12's server equipped with 3D V-cache processors</p>
-		</li>
-		<li>
-			<p>Memory fetch latency dominated request processing time as data that previously stayed in L3 now required trips to DRAM</p>
-		</li>
-		<li>
-			<p>The latency penalty scaled with utilization as we pushed CPU usage higher, and cache contention worsened</p>
-		</li>
-	</ul>
-	<p>L3 cache hits complete in roughly 50 cycles; L3 cache misses requiring DRAM access take 350+ cycles, an order of magnitude difference. With 6x less cache per core, FL1 on Gen 13 was hitting memory far more often, incurring latency penalties.</p>
-	<div class="flex anchor relative">
-		<h2 id="the-tradeoff-latency-vs-throughput">The tradeoff: latency vs. throughput&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#the-tradeoff-latency-vs-throughput" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our initial tests running FL1 on Gen 13 confirmed what the performance counters had already suggested. While the Turin processor could achieve higher throughput, it came at a steep latency cost.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+</div>
+<h2>Diagnosing the problem with performance counters</h2>
+<p>For our FL1 request handling layer, NGINX- and LuaJIT-based code, this cache reduction presented a significant challenge. But we didn't just assume it would be a problem; we measured it.</p>
+<p>During the CPU evaluation phase for Gen 13, we collected CPU performance counters and profiling data to identify exactly what was happening under the hood using <a href="https://docs.amd.com/r/en-US/68658-uProf-getting-started-guide/Identifying-Issues-Using-uProfPcm" target="_blank" rel="noopener noreferrer"><u>AMD uProf tool</u></a>. The data showed:</p>
+<ul>
+	<li>L3 cache miss rates increased dramatically compared to Gen 12's server equipped with 3D V-cache processors</li>
+	<li>Memory fetch latency dominated request processing time as data that previously stayed in L3 now required trips to DRAM</li>
+	<li>The latency penalty scaled with utilization as we pushed CPU usage higher, and cache contention worsened</li>
+</ul>
+<p>L3 cache hits complete in roughly 50 cycles; L3 cache misses requiring DRAM access take 350+ cycles, an order of magnitude difference. With 6x less cache per core, FL1 on Gen 13 was hitting memory far more often, incurring latency penalties.</p>
+<h2>The tradeoff: latency vs. throughput&nbsp;</h2>
+<p>Our initial tests running FL1 on Gen 13 confirmed what the performance counters had already suggested. While the Turin processor could achieve higher throughput, it came at a steep latency cost.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
 					<p>Metric</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 12 (FL1)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 13 - AMD Turin 9755 (FL1)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 13 - AMD Turin 9845 (FL1)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 13 - AMD Turin 9965 (FL1)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Delta</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Core count</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+33%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+67%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+100%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>FL throughput</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+10%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+31%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+62%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Improvement</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Latency at low to moderate CPU utilization</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+10%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+30%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+30%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Regression</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Latency at high CPU utilization</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>&gt; 20%&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>&gt; 50%&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>&gt; 50%&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Unacceptable</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>The Gen 13 evaluation server with AMD Turin 9965 that generated 60% throughput gain was compelling, and the performance uplift provided the most improvement to Cloudflare’s total cost of ownership (TCO).&nbsp;</p>
-	<p>But a more than 50% latency penalty is not acceptable. The increase in request processing latency would directly impact customer experience. We faced a familiar infrastructure question: do we accept a solution with no TCO benefit, accept the increased latency tradeoff, or find a way to boost efficiency without adding latency?</p>
-	<div class="flex anchor relative">
-		<h2 id="incremental-gains-with-performance-tuning">Incremental gains with performance tuning</h2>
-		<a href="https://blog.cloudflare.com/#incremental-gains-with-performance-tuning" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To find a path to an optimal outcome, we collaborated with AMD to analyze the Turin 9965 data and run targeted optimization experiments. We systematically tested multiple configurations:</p>
-	<ul>
-		<li>
-			<p><b>Hardware Tuning:</b> Adjusting hardware prefetchers and Data Fabric (DF) Probe Filters, which showed only marginal gains</p>
-		</li>
-		<li>
-			<p><b>Scaling Workers</b>: Launching more FL1 workers, which improved throughput but cannibalized resources from other production services</p>
-		</li>
-		<li>
-			<p><b>CPU Pinning &amp; Isolation:</b> Adjusting workload isolation configurations to find optimal mix, with limited success&nbsp;</p>
-		</li>
-	</ul>
-	<p>The configuration that ultimately provided the most value was <b>AMD’s Platform Quality of Service (PQOS). PQOS </b>extensions enable fine-grained regulation of shared resources like cache and memory bandwidth. Since Turin processors consist of one I/O Die and up to 12 Core Complex Dies (CCDs), each sharing an L3 cache across up to 16 cores, we put this to the test. Here is how the different experimental configurations performed.&nbsp;</p>
-	<p>First, we used PQOS to allocate a dedicated L3 cache share within a single CCD for FL1, the gains were minimal. However, when we scaled the concept to the socket level, dedicating an <i>entire</i> CCD strictly to FL1, we saw meaningful throughput gains while keeping latency acceptable.</p>
-	<div dir="ltr" style="margin-left: 0pt;" align="center">
+</div>
+<p>The Gen 13 evaluation server with AMD Turin 9965 that generated 60% throughput gain was compelling, and the performance uplift provided the most improvement to Cloudflare’s total cost of ownership (TCO).&nbsp;</p>
+<p>But a more than 50% latency penalty is not acceptable. The increase in request processing latency would directly impact customer experience. We faced a familiar infrastructure question: do we accept a solution with no TCO benefit, accept the increased latency tradeoff, or find a way to boost efficiency without adding latency?</p>
+<h2>Incremental gains with performance tuning</h2>
+<p>To find a path to an optimal outcome, we collaborated with AMD to analyze the Turin 9965 data and run targeted optimization experiments. We systematically tested multiple configurations:</p>
+<ul>
+	<li><strong>Hardware Tuning:</strong> Adjusting hardware prefetchers and Data Fabric (DF) Probe Filters, which showed only marginal gains</li>
+	<li><strong>Scaling Workers</strong>: Launching more FL1 workers, which improved throughput but cannibalized resources from other production services</li>
+	<li><strong>CPU Pinning &amp; Isolation:</strong> Adjusting workload isolation configurations to find optimal mix, with limited success&nbsp;</li>
+</ul>
+<p>The configuration that ultimately provided the most value was <strong>AMD’s Platform Quality of Service (PQOS). PQOS </strong>extensions enable fine-grained regulation of shared resources like cache and memory bandwidth. Since Turin processors consist of one I/O Die and up to 12 Core Complex Dies (CCDs), each sharing an L3 cache across up to 16 cores, we put this to the test. Here is how the different experimental configurations performed.&nbsp;</p>
+<p>First, we used PQOS to allocate a dedicated L3 cache share within a single CCD for FL1, the gains were minimal. However, when we scaled the concept to the socket level, dedicating an <em>entire</em> CCD strictly to FL1, we saw meaningful throughput gains while keeping latency acceptable.</p>
+<div id="html-block-k2h" class="html-block">
+	<div style="margin-left:0pt">
 		<figure class="table">
-			<table class="ck-table-resized" style="border-collapse: collapse; border-style: none;">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
 				<colgroup>
-					<col style="width: 25%;" width="116">
-					<col style="width: 25%;" width="122">
-					<col style="width: 25%;" width="320">
-					<col style="width: 25%;" width="136">
+					<col style="width:25%">
+					<col style="width:25%">
+					<col style="width:25%">
+					<col style="width:25%">
 				</colgroup>
 				<tbody>
-					<tr style="height: 0pt;">
-						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Configuration</span></span></p>
+					<tr style="height:0pt">
+						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Configuration</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Description</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Description</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Illustration</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Illustration</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Performance gain</span></span></p>
-						</td>
-					</tr>
-					<tr style="height: 0pt;">
-						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">NUMA-aware core affinity&nbsp;</span></span><br><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">(equivalent to PQOS at socket level)</span></span></p>
-						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">6 out of 12 CCD (aligned with NUMA domain) run FL.</span></span></p>
-							<p>&nbsp;</p>
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">32MB L3 cache in each CCD shared among all cores.&nbsp;</span></span></p>
-						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 795px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
-										<picture>
-											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 80w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 160w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 240w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 320w,https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png" width="304" height="795" data-ckbox-resource-id="ScAsYReXHQlI" alt="">
-										</picture>
-									</span></span></p>
-						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&gt;15% incremental&nbsp;</span></span></p>
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">throughput gain</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Performance gain</span></span></p>
 						</td>
 					</tr>
-					<tr style="height: 0pt;">
-						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS config 1</span></span></p>
+					<tr style="height:0pt">
+						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">NUMA-aware core affinity&nbsp;</span></span><br><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">(equivalent to PQOS at socket level)</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1 of 2 vCPU on each physical core in each CCD runs FL.&nbsp;</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">6 out of 12 CCD (aligned with NUMA domain) run FL.</span></span></p>
 							<p>&nbsp;</p>
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL gets 75% of the 32MB L3 cache of each CCD.</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">32MB L3 cache in each CCD shared among all cores.&nbsp;</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 390px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 302px;">
-										<picture>
-											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 368w" type="image/webp" sizes="(max-width: 368px) 100vw, 368px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="Nl0jNxumjs7w" alt="">
-										</picture>
-									</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="border-style:none;display:inline-block;font-style:normal;font-weight:400;height:795px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:304px"><img style="margin-left:0px;margin-top:0px" src="https://images.ctfassets.net/zkvhlag99gkb/4CBSHY02oIZOiENgFrzLSz/0c6c2ac8ef0096894ff4827e30d25851/image3.png" width="304" height="795" data-ckbox-resource-id="ScAsYReXHQlI" alt=""></span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% incremental throughput gain</span></span></p>
-							<p>&nbsp;</p>
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Other services show minor signs of degradation</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&gt;15% incremental&nbsp;</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">throughput gain</span></span></p>
 						</td>
 					</tr>
-					<tr style="height: 0pt;">
-						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS config 2</span></span></p>
+					<tr style="height:0pt">
+						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">PQOS config 1</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">1 of 2 vCPU in each physical core in each CCD runs FL.</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">1 of 2 vCPU on each physical core in each CCD runs FL.&nbsp;</span></span></p>
 							<p>&nbsp;</p>
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL gets 50% of the 32MB L3 cache of each CCD.</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">FL gets 75% of the 32MB L3 cache of each CCD.</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 388px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 300px;">
-										<picture>
-											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 80w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 160w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 240w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 320w,https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png 369w" type="image/webp" sizes="(max-width: 369px) 100vw, 369px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="6Es1KpqJZTZw" alt="">
-										</picture>
-									</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="border-style:none;display:inline-block;font-style:normal;font-weight:400;height:390px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:302px"><img style="margin-left:0px;margin-top:0px" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="Nl0jNxumjs7w" alt=""></span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% incremental throughput gain</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&lt; 5% incremental throughput gain</span></span></p>
+							<p>&nbsp;</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Other services show minor signs of degradation</span></span></p>
 						</td>
 					</tr>
-					<tr style="height: 0pt;">
-						<td style="background-color: #f38020; border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">PQOS config 3</span></span></p>
+					<tr style="height:0pt">
+						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">PQOS config 2</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">2 vCPU on 50% of the physical core in each CCD runs FL.&nbsp;</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">1 of 2 vCPU in each physical core in each CCD runs FL.</span></span></p>
 							<p>&nbsp;</p>
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">FL gets 50% of&nbsp; the 32MB L3 cache of each CCD.</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">FL gets 50% of the 32MB L3 cache of each CCD.</span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="border-style: none; display: inline-block; font-style: normal; font-variant: normal; font-weight: 400; height: 396px; overflow: hidden; text-decoration: none; vertical-align: baseline; white-space: pre-wrap; width: 304px;">
-										<picture>
-											<source srcset="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 80w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 160w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 240w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 320w,https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png 367w" type="image/webp" sizes="(max-width: 367px) 100vw, 367px"><img style="margin-left: 0px; margin-top: 0px;" src="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png" width="367" height="478" data-ckbox-resource-id="EA8Pplzp2IQX" alt="">
-										</picture>
-									</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="border-style:none;display:inline-block;font-style:normal;font-weight:400;height:388px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:300px"><img style="margin-left:0px;margin-top:0px" src="https://images.ctfassets.net/zkvhlag99gkb/3iJo1BBRueQRy92R3aXbGx/596c3231fa0e66f20de70ea02615f9a7/image2.png" width="368" height="476" data-ckbox-resource-id="6Es1KpqJZTZw" alt=""></span></span></p>
 						</td>
-						<td style="border-color: #000000; border-width: 1pt; overflow-wrap: break-word; overflow: hidden; padding: 5pt; vertical-align: top;">
-							<p dir="ltr" style="line-height: 1.2; margin-bottom: 0pt; margin-top: 0pt;"><span style="background-color: transparent; color: #000000; font-family: Arial,sans-serif; font-size: 11pt;"><span style="font-style: normal; font-variant: normal; font-weight: 400; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">&lt; 5% incremental throughput gain</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&lt; 5% incremental throughput gain</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="background-color:#f38020;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">PQOS config 3</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">2 vCPU on 50% of the physical core in each CCD runs FL.&nbsp;</span></span></p>
+							<p>&nbsp;</p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">FL gets 50% of&nbsp; the 32MB L3 cache of each CCD.</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="border-style:none;display:inline-block;font-style:normal;font-weight:400;height:396px;overflow:hidden;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;width:304px"><img style="margin-left:0px;margin-top:0px" src="https://images.ctfassets.net/zkvhlag99gkb/7FKLfSxnSNUlXJCw8CJGzU/69c7b81b6cee5a2c7040ecc96748084b/image5.png" width="367" height="478" data-ckbox-resource-id="EA8Pplzp2IQX" alt=""></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&lt; 5% incremental throughput gain</span></span></p>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</figure>
 	</div>
-	<div class="flex anchor relative">
-		<h2 id="the-opportunity-fl2-was-already-in-progress">The opportunity: FL2 was already in progress</h2>
-		<a href="https://blog.cloudflare.com/#the-opportunity-fl2-was-already-in-progress" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Hardware tuning and resource configuration provided modest gains, but to truly unlock the performance potential of the Gen 13 architecture, we knew we would have to rewrite our software stack to fundamentally change how it utilized system resources.</p>
-	<p>Fortunately, we weren't starting from scratch. As we <a href="https://blog.cloudflare.com/20-percent-internet-upgrade"><u>announced during Birthday Week 2025</u></a>, we had already been rebuilding FL1 from the ground up. FL2 is a complete rewrite of our request handling layer in Rust, built on our <a href="https://blog.cloudflare.com/pingora-open-source"><u>Pingora</u></a> and <a href="https://blog.cloudflare.com/introducing-oxy"><u>Oxy</u></a> frameworks, replacing 15 years of NGINX and LuaJIT code.</p>
-	<p>The FL2 project wasn't initiated to solve the Gen 13 cache problem — it was driven by the need for better security (Rust's memory safety), faster development velocity (strict module system), and improved performance across the board (less CPU, less memory, modular execution).</p>
-	<p>FL2's cleaner architecture, with better memory access patterns and less dynamic allocation, might not depend on massive L3 caches the way FL1 did. This gave us an opportunity to use the FL2 transition to prove whether Gen 13's throughput gains could be realized without the latency penalty.</p>
-	<div class="flex anchor relative">
-		<h2 id="proving-it-out-fl2-on-gen-13">Proving it out: FL2 on Gen 13</h2>
-		<a href="https://blog.cloudflare.com/#proving-it-out-fl2-on-gen-13" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As the FL2 rollout progressed, production metrics from our Gen 13 servers validated what we had hypothesized.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+</div>
+<h2>The opportunity: FL2 was already in progress</h2>
+<p>Hardware tuning and resource configuration provided modest gains, but to truly unlock the performance potential of the Gen 13 architecture, we knew we would have to rewrite our software stack to fundamentally change how it utilized system resources.</p>
+<p>Fortunately, we weren't starting from scratch. As we <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>announced during Birthday Week 2025</u></a>, we had already been rebuilding FL1 from the ground up. FL2 is a complete rewrite of our request handling layer in Rust, built on our <a href="https://blog.cloudflare.com/pingora-open-source" target="_blank" rel="noopener noreferrer"><u>Pingora</u></a> and <a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>Oxy</u></a> frameworks, replacing 15 years of NGINX and LuaJIT code.</p>
+<p>The FL2 project wasn't initiated to solve the Gen 13 cache problem — it was driven by the need for better security (Rust's memory safety), faster development velocity (strict module system), and improved performance across the board (less CPU, less memory, modular execution).</p>
+<p>FL2's cleaner architecture, with better memory access patterns and less dynamic allocation, might not depend on massive L3 caches the way FL1 did. This gave us an opportunity to use the FL2 transition to prove whether Gen 13's throughput gains could be realized without the latency penalty.</p>
+<h2>Proving it out: FL2 on Gen 13</h2>
+<p>As the FL2 rollout progressed, production metrics from our Gen 13 servers validated what we had hypothesized.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
 					<p>Metric</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 13 AMD Turin 9965 (FL1)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 13 AMD Turin 9965 (FL2)</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>FL requests per CPU%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>50% higher</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Latency vs Gen 12</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>70% lower</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Throughput vs Gen 12</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>62% higher</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>100% higher</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>The out-of-the-box efficiency gains on our new FL2 stack were substantial, even before any system optimizations. FL2 slashed the latency penalty by 70%, allowing us to push Gen 13 to higher CPU utilization while strictly meeting our latency SLAs. Under FL1, this would have been impossible.</p>
-	<p>By effectively eliminating the cache bottleneck, FL2 enables our throughput to scale linearly with core count. The impact is undeniable on the high-density AMD Turin 9965: we achieved a 2x performance gain, unlocking the true potential of the hardware. With further system tuning, we expect to squeeze even more power out of our Gen 13 fleet.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1jV1q0n9PgmbbNzDl8E1J1/2ead24a20cc10836ba041f73a16f3883/image6.png" alt="Generational improvement with Gen 13" class="kg-image" width="1999" height="1125" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="generational-improvement-with-gen-13">Generational improvement with Gen 13</h2>
-		<a href="https://blog.cloudflare.com/#generational-improvement-with-gen-13" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With FL2 unlocking the immense throughput of the high-core-count AMD Turin 9965, we have officially selected these processors for our Gen 13 deployment. Hardware qualification is complete, and Gen 13 servers are now shipping at scale to support our global rollout.</p>
-	<div class="flex anchor relative">
-		<h3 id="performance-improvements">Performance improvements</h3>
-		<a href="https://blog.cloudflare.com/#performance-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p>
-					</p>
-				</td>
-				<td>
+</div>
+<p>The out-of-the-box efficiency gains on our new FL2 stack were substantial, even before any system optimizations. FL2 slashed the latency penalty by 70%, allowing us to push Gen 13 to higher CPU utilization while strictly meeting our latency SLAs. Under FL1, this would have been impossible.</p>
+<p>By effectively eliminating the cache bottleneck, FL2 enables our throughput to scale linearly with core count. The impact is undeniable on the high-density AMD Turin 9965: we achieved a 2x performance gain, unlocking the true potential of the hardware. With further system tuning, we expect to squeeze even more power out of our Gen 13 fleet.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Generational improvement with Gen 13" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RW0AAZBVMAQA2ZF5NEDD.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>Generational improvement with Gen 13</h2>
+<p>With FL2 unlocking the immense throughput of the high-core-count AMD Turin 9965, we have officially selected these processors for our Gen 13 deployment. Hardware qualification is complete, and Gen 13 servers are now shipping at scale to support our global rollout.</p>
+<h3>Performance improvements</h3>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 12&nbsp;</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Gen 13&nbsp;</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Processor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AMD EPYC™ 4th Gen Genoa-X 9684X</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AMD EPYC™ 5th Gen Turin 9965</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Core count</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>96C/192T</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>192C/384T</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>FL throughput</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Up to +100%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Performance per watt</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>baseline</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Up to +50%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h3 id="gen-13-business-impact">Gen 13 business impact</h3>
-		<a href="https://blog.cloudflare.com/#gen-13-business-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Up to 2x throughput vs Gen 12 </b>for uncompromising customer experience: By doubling our throughput capacity while staying within our latency SLAs, we guarantee our applications remain fast and responsive, and able to absorb massive traffic spikes.</p>
-	<p><b>50% better performance/watt vs Gen 12 </b>for sustainable scaling: This gain in power efficiency not only reduces data center expansion costs, but allows us to process growing traffic with a vastly lower carbon footprint per request.</p>
-	<p><b>60% higher rack throughput vs Gen 12 </b>for global edge upgrades: Because we achieved this throughput density while keeping the rack power budget constant, we can seamlessly deploy this next generation compute anywhere in the world across our global edge network, delivering top tier performance exactly where our customers want it.</p>
-	<div class="flex anchor relative">
-		<h2 id="gen-13-fl2-ready-for-the-edge">Gen 13 + FL2: ready for the edge&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#gen-13-fl2-ready-for-the-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our legacy request serving layer FL1 hit a cache contention wall on Gen 13, forcing an unacceptable tradeoff between throughput and latency. Instead of compromising, we built FL2.&nbsp;</p>
-	<p>Designed with a vastly leaner memory access pattern, FL2 removes our dependency on massive L3 caches and allows linear scaling with core count. Running on the Gen 13 AMD Turin platform, FL2 unlocks 2x the throughput and a 50% boost in power efficiency all while keeping latency within our SLAs. This leap forward is a great reminder of the importance of hardware-software co-design. Unconstrained by cache limits, Gen 13 servers are now ready to be deployed to serve millions of requests across Cloudflare’s global network.</p>
-	<p>If you're excited about working on infrastructure at global scale, <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>we're hiring</u></a>.</p>
 </div>
+<h3>Gen 13 business impact</h3>
+<p><strong>Up to 2x throughput vs Gen 12 </strong>for uncompromising customer experience: By doubling our throughput capacity while staying within our latency SLAs, we guarantee our applications remain fast and responsive, and able to absorb massive traffic spikes.</p>
+<p><strong>50% better performance/watt vs Gen 12 </strong>for sustainable scaling: This gain in power efficiency not only reduces data center expansion costs, but allows us to process growing traffic with a vastly lower carbon footprint per request.</p>
+<p><strong>60% higher rack throughput vs Gen 12 </strong>for global edge upgrades: Because we achieved this throughput density while keeping the rack power budget constant, we can seamlessly deploy this next generation compute anywhere in the world across our global edge network, delivering top tier performance exactly where our customers want it.</p>
+<h2>Gen 13 + FL2: ready for the edge&nbsp;</h2>
+<p>Our legacy request serving layer FL1 hit a cache contention wall on Gen 13, forcing an unacceptable tradeoff between throughput and latency. Instead of compromising, we built FL2.&nbsp;</p>
+<p>Designed with a vastly leaner memory access pattern, FL2 removes our dependency on massive L3 caches and allows linear scaling with core count. Running on the Gen 13 AMD Turin platform, FL2 unlocks 2x the throughput and a 50% boost in power efficiency all while keeping latency within our SLAs. This leap forward is a great reminder of the importance of hardware-software co-design. Unconstrained by cache limits, Gen 13 servers are now ready to be deployed to serve millions of requests across Cloudflare’s global network.</p>
+<p>If you're excited about working on infrastructure at global scale, <a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>we're hiring</u></a>.</p>

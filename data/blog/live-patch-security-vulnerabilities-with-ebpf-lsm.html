@@ -1,329 +1,306 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/live-patch-security-vulnerabilities-with-ebpf-lsm">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/live-patch-security-vulnerabilities-with-ebpf-lsm">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1AScqEBDJJJSB1rEYb3VYV/23bb407471fa3e38579f90fbbf9430f9/live-patch-security-vulnerabilities-with-ebpf-lsm.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank" rel="noopener noreferrer">Linux Security Modules</a> (LSM) is a hook-based framework for implementing security policies and Mandatory Access Control in the Linux kernel. Until recently users looking to implement a security policy had just two options. Configure an existing LSM module such as AppArmor or SELinux, or write a custom kernel module.</p>
-	<p><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7" target="_blank" rel="noopener noreferrer">Linux 5.7</a> introduced a third way: <a href="https://docs.kernel.org/bpf/prog_lsm.html" target="_blank" rel="noopener noreferrer">LSM extended Berkeley Packet Filters (eBPF)</a> (LSM BPF for short). LSM BPF allows developers to write granular policies without configuration or loading a kernel module. LSM BPF programs are verified on load, and then executed when an LSM hook is reached in a call path.</p>
-	<div class="flex anchor relative">
-		<h2 id="lets-solve-a-real-world-problem">Let’s solve a real-world problem</h2>
-		<a href="https://blog.cloudflare.com/#lets-solve-a-real-world-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Modern operating systems provide facilities allowing "partitioning" of kernel resources. For example FreeBSD has "jails", Solaris has "zones". Linux is different - it provides a set of seemingly independent facilities each allowing isolation of a specific resource. These are called "namespaces" and have been growing in the kernel for years. They are the base of popular tools like Docker, lxc or firejail. Many of the namespaces are uncontroversial, like the UTS namespace which allows the host system to hide its hostname and time. Others are complex but straightforward - NET and NS (mount) namespaces are known to be hard to wrap your head around. Finally, there is this very special very curious USER namespace.</p>
-	<p>USER namespace is special, since it allows the owner to operate as "root" inside it. How it works is beyond the scope of this blog post, however, suffice to say it's a foundation to having tools like Docker to not operate as true root, and things like rootless containers.</p>
-	<p>Due to its nature, allowing unpriviledged users access to USER namespace always carried a great security risk. &nbsp;One such risk is privilege escalation.</p>
-	<p>Privilege escalation is a <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface" target="_blank" rel="noopener noreferrer">common attack surface</a> for operating systems. One way users may gain privilege is by mapping their namespace to the root namespace via the unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank" rel="noopener noreferrer">syscall</a> and specifying the <i>CLONE_NEWUSER</i> flag. This tells unshare to create a new user namespace with full permissions, and maps the new user and group ID to the previous namespace. You can use the <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank" rel="noopener noreferrer">unshare(1)</a> program to map root to our original namespace:</p>
-	<pre class="language-sh"><code class="language-sh">$ id
-uid=1000(fred) gid=1000(fred) groups=1000(fred) …
-$ unshare -rU
-# id
-uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
-# cat /proc/self/uid_map
-         0       1000          1</code></pre>
-	<p>In most cases using unshare is harmless, and is intended to run with lower privileges. However, this syscall has been known to be used to <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank" rel="noopener noreferrer">escalate privileges</a>.</p>
-	<p>Syscalls <i>clone</i> and <i>clone3</i> are worth looking into as they also have the ability to <i>CLONE_NEWUSER</i>. However, for this post we’re going to focus on unshare.</p>
-	<p>Debian solved this problem with this <a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch" target="_blank" rel="noopener noreferrer">"add sysctl to disallow unprivileged CLONE_NEWUSER by default"</a> patch, but it was not mainlined. Another similar patch <a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org" target="_blank" rel="noopener noreferrer">"sysctl: allow CLONE_NEWUSER to be disabled"</a> attempted to mainline, and was met with push back. A critique is the <a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org" target="_blank" rel="noopener noreferrer">inability to toggle this feature</a> for specific applications. In the article “<a href="https://lwn.net/Articles/673597" target="_blank" rel="noopener noreferrer">Controlling access to user namespaces</a>” the author wrote: “... the current patches do not appear to have an easy path into the mainline.” And as we can see, the patches were ultimately not included in the vanilla kernel.</p>
-	<div class="flex anchor relative">
-		<h2 id="our-solution-lsm-bpf">Our solution - LSM BPF</h2>
-		<a href="https://blog.cloudflare.com/#our-solution-lsm-bpf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since upstreaming code that restricts USER namespace seem to not be an option, we decided to use LSM BPF to circumvent these issues. This requires no modifications to the kernel and allows us to express complex rules guarding the access.</p>
-	<div class="flex anchor relative">
-		<h3 id="track-down-an-appropriate-hook-candidate">Track down an appropriate hook candidate</h3>
-		<a href="https://blog.cloudflare.com/#track-down-an-appropriate-hook-candidate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First, let us track down the syscall we’re targeting. We can find the prototype in the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank" rel="noopener noreferrer"><i>include/linux/syscalls.h</i></a> file. From there, it’s not as obvious to track down, but the line:</p>
-	<pre class="language-c"><code class="language-c">/* kernel/fork.c */</code></pre>
-	<p>Gives us a clue of where to look next in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank" rel="noopener noreferrer"><i>kernel/fork.c</i></a>. There a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank" rel="noopener noreferrer"><i>ksys_unshare()</i></a> is made. Digging through that function, we find a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank" rel="noopener noreferrer"><i>unshare_userns()</i></a>. This looks promising.</p>
-	<p>Up to this point, we’ve identified the syscall implementation, but the next question to ask is what hooks are available for us to use? Because we know from the <a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank" rel="noopener noreferrer">man-pages</a> that unshare is used to mutate tasks, we look at the task-based hooks in <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank" rel="noopener noreferrer"><i>include/linux/lsm_hooks.h</i></a>. Back in the function <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank" rel="noopener noreferrer"><i>unshare_userns()</i></a> we saw a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank" rel="noopener noreferrer"><i>prepare_creds()</i></a>. This looks very familiar to the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank" rel="noopener noreferrer"><i>cred_prepare</i></a> hook. To verify we have our match via <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank" rel="noopener noreferrer"><i>prepare_creds()</i></a>, we see a call to the security hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank" rel="noopener noreferrer"><i>security_prepare_creds()</i></a> which ultimately calls the hook:</p>
-	<pre class="language-c"><code class="language-c">…
-rc = call_int_hook(cred_prepare, 0, new, old, gfp);
-…</code></pre>
-	<p>Without going much further down this rabbithole, we know this is a good hook to use because <i>prepare_creds()</i> is called right before <i>create_user_ns()</i> in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank" rel="noopener noreferrer"><i>unshare_userns()</i></a> which is the operation we’re trying to block.</p>
-	<div class="flex anchor relative">
-		<h3 id="lsm-bpf-solution">LSM BPF solution</h3>
-		<a href="https://blog.cloudflare.com/#lsm-bpf-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re going to compile with the <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank" rel="noopener noreferrer">eBPF compile once-run everywhere (CO-RE)</a> approach. This allows us to compile on one architecture and load on another. But we’re going to target x86_64 specifically. LSM BPF for ARM64 is still in development, and the following code will not run on that architecture. Watch the <a href="https://lore.kernel.org/bpf" target="_blank" rel="noopener noreferrer">BPF mailing list</a> to follow the progress.</p>
-	<p>This solution was tested on kernel versions &gt;= 5.15 configured with the following:</p>
-	<pre class="language-bash"><code class="language-bash">BPF_EVENTS
-BPF_JIT
-BPF_JIT_ALWAYS_ON
-BPF_LSM
-BPF_SYSCALL
-BPF_UNPRIV_DEFAULT_OFF
-DEBUG_INFO_BTF
-DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
-DYNAMIC_FTRACE
-FUNCTION_TRACER
-HAVE_DYNAMIC_FTRACE</code></pre>
-	<p>A boot option <code>lsm=bpf</code> may be necessary if <code>CONFIG_LSM</code> does not contain “bpf” in the list.</p>
-	<p>Let’s start with our preamble:</p>
-	<p><i>deny_unshare.bpf.c</i>:</p>
-	<pre class="language-c"><code class="language-c">#include &lt;linux/bpf.h&gt;
-#include &lt;linux/capability.h&gt;
-#include &lt;linux/errno.h&gt;
-#include &lt;linux/sched.h&gt;
-#include &lt;linux/types.h&gt;
-
-#include &lt;bpf/bpf_tracing.h&gt;
-#include &lt;bpf/bpf_helpers.h&gt;
-#include &lt;bpf/bpf_core_read.h&gt;
-
-#define X86_64_UNSHARE_SYSCALL 272
-#define UNSHARE_SYSCALL X86_64_UNSHARE_SYSCALL</code></pre>
-	<p>Next we set up our necessary structures for CO-RE relocation in the following way:</p>
-	<p><i>deny_unshare.bpf.c</i>:</p>
-	<pre class="language-c"><code class="language-c">…
-
-typedef unsigned int gfp_t;
-
-struct pt_regs {
-	long unsigned int di;
-	long unsigned int orig_ax;
-} __attribute__((preserve_access_index));
-
-typedef struct kernel_cap_struct {
-	__u32 cap[_LINUX_CAPABILITY_U32S_3];
-} __attribute__((preserve_access_index)) kernel_cap_t;
-
-struct cred {
-	kernel_cap_t cap_effective;
-} __attribute__((preserve_access_index));
-
-struct task_struct {
-    unsigned int flags;
-    const struct cred *cred;
-} __attribute__((preserve_access_index));
-
-char LICENSE[] SEC("license") = "GPL";
-
-…</code></pre>
-	<p>We don’t need to fully-flesh out the structs; we just need the absolute minimum information a program needs to function. CO-RE will do whatever is necessary to perform the relocations for your kernel. This makes writing the LSM BPF programs easy!</p>
-	<p><i>deny_unshare.bpf.c</i>:</p>
-	<pre class="language-c"><code class="language-c">SEC("lsm/cred_prepare")
-int BPF_PROG(handle_cred_prepare, struct cred *new, const struct cred *old,
-             gfp_t gfp, int ret)
-{
-    struct pt_regs *regs;
-    struct task_struct *task;
-    kernel_cap_t caps;
-    int syscall;
-    unsigned long flags;
-
-    // If previous hooks already denied, go ahead and deny this one
-    if (ret) {
-        return ret;
-    }
-
-    task = bpf_get_current_task_btf();
-    regs = (struct pt_regs *) bpf_task_pt_regs(task);
-    // In x86_64 orig_ax has the syscall interrupt stored here
-    syscall = regs-&gt;orig_ax;
-    caps = task-&gt;cred-&gt;cap_effective;
-
-    // Only process UNSHARE syscall, ignore all others
-    if (syscall != UNSHARE_SYSCALL) {
-        return 0;
-    }
-
-    // PT_REGS_PARM1_CORE pulls the first parameter passed into the unshare syscall
-    flags = PT_REGS_PARM1_CORE(regs);
-
-    // Ignore any unshare that does not have CLONE_NEWUSER
-    if (!(flags &amp; CLONE_NEWUSER)) {
-        return 0;
-    }
-
-    // Allow tasks with CAP_SYS_ADMIN to unshare (already root)
-    if (caps.cap[CAP_TO_INDEX(CAP_SYS_ADMIN)] &amp; CAP_TO_MASK(CAP_SYS_ADMIN)) {
-        return 0;
-    }
-
-    return -EPERM;
-}</code></pre>
-	<p>Creating the program is the first step, the second is loading and attaching the program to our desired hook. There are several ways to do this: <a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">Cilium ebpf</a> project, <a href="https://github.com/libbpf/libbpf-rs" target="_blank" rel="noopener noreferrer">Rust bindings</a>, and several others on the <a href="https://ebpf.io/projects" target="_blank" rel="noopener noreferrer">ebpf.io</a> project landscape page. We’re going to use native libbpf.</p>
-	<p><i>deny_unshare.c</i>:</p>
-	<pre class="language-c"><code class="language-c">#include &lt;bpf/libbpf.h&gt;
-#include &lt;unistd.h&gt;
-#include "deny_unshare.skel.h"
-
-static int libbpf_print_fn(enum libbpf_print_level level, const char *format, va_list args)
-{
-    return vfprintf(stderr, format, args);
-}
-
-int main(int argc, char *argv[])
-{
-    struct deny_unshare_bpf *skel;
-    int err;
-
-    libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
-    libbpf_set_print(libbpf_print_fn);
-
-    // Loads and verifies the BPF program
-    skel = deny_unshare_bpf__open_and_load();
-    if (!skel) {
-        fprintf(stderr, "failed to load and verify BPF skeleton\n");
-        goto cleanup;
-    }
-
-    // Attaches the loaded BPF program to the LSM hook
-    err = deny_unshare_bpf__attach(skel);
-    if (err) {
-        fprintf(stderr, "failed to attach BPF skeleton\n");
-        goto cleanup;
-    }
-
-    printf("LSM loaded! ctrl+c to exit.\n");
-
-    // The BPF link is not pinned, therefore exiting will remove program
-    for (;;) {
-        fprintf(stderr, ".");
-        sleep(1);
-    }
-
-cleanup:
-    deny_unshare_bpf__destroy(skel);
-    return err;
-}</code></pre>
-	<p>Lastly, to compile, we use the following Makefile:</p>
-	<p><i>Makefile</i>:</p>
-	<pre class="language-makefile"><code class="language-makefile">CLANG ?= clang-13
-LLVM_STRIP ?= llvm-strip-13
-ARCH := x86
-INCLUDES := -I/usr/include -I/usr/include/x86_64-linux-gnu
-LIBS_DIR := -L/usr/lib/lib64 -L/usr/lib/x86_64-linux-gnu
-LIBS := -lbpf -lelf
-
-.PHONY: all clean run
-
-all: deny_unshare.skel.h deny_unshare.bpf.o deny_unshare
-
-run: all
-	sudo ./deny_unshare
-
-clean:
-	rm -f *.o
-	rm -f deny_unshare.skel.h
-
-#
-# BPF is kernel code. We need to pass -D__KERNEL__ to refer to fields present
-# in the kernel version of pt_regs struct. uAPI version of pt_regs (from ptrace)
-# has different field naming.
-# See: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fd56e0058412fb542db0e9556f425747cf3f8366
-#
-deny_unshare.bpf.o: deny_unshare.bpf.c
-	$(CLANG) -g -O2 -Wall -target bpf -D__KERNEL__ -D__TARGET_ARCH_$(ARCH) $(INCLUDES) -c $&lt; -o $@
-	$(LLVM_STRIP) -g $@ # Removes debug information
-
-deny_unshare.skel.h: deny_unshare.bpf.o
-	sudo bpftool gen skeleton $&lt; &gt; $@
-
-deny_unshare: deny_unshare.c deny_unshare.skel.h
-	$(CC) -g -Wall -c $&lt; -o $@.o
-	$(CC) -g -o $@ $(LIBS_DIR) $@.o $(LIBS)
-
-.DELETE_ON_ERROR:</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="result">Result</h3>
-		<a href="https://blog.cloudflare.com/#result" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In a new terminal window run:</p>
-	<pre class="language-sh"><code class="language-sh">$ make run
-…
-LSM loaded! ctrl+c to exit.</code></pre>
-	<p>In another terminal window, we’re successfully blocked!</p>
-	<pre class="language-sh"><code class="language-sh">$ unshare -rU
-unshare: unshare failed: Cannot allocate memory
-$ id
-uid=1000(fred) gid=1000(fred) groups=1000(fred) …</code></pre>
-	<p>The policy has an additional feature to always allow privilege pass through:</p>
-	<pre class="language-sh"><code class="language-sh">$ sudo unshare -rU
-# id
-uid=0(root) gid=0(root) groups=0(root)</code></pre>
-	<p>In the unprivileged case the syscall early aborts. What is the performance impact in the privileged case?</p>
-	<div class="flex anchor relative">
-		<h3 id="measure-performance">Measure performance</h3>
-		<a href="https://blog.cloudflare.com/#measure-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re going to use a one-line unshare that’ll map the user namespace, and execute a command within for the measurements:</p>
-	<pre class="language-sh"><code class="language-sh">$ unshare -frU --kill-child -- bash -c "exit 0"</code></pre>
-	<p>With a resolution of CPU cycles for syscall unshare enter/exit, we’ll measure the following as root user:</p>
-	<ol>
-		<li>
-			<p>Command ran without the policy</p>
-		</li>
-		<li>
-			<p>Command run with the policy</p>
-		</li>
-	</ol>
-	<p>We’ll record the measurements with <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank" rel="noopener noreferrer">ftrace</a>:</p>
-	<pre class="language-sh"><code class="language-sh">$ sudo su
-# cd /sys/kernel/debug/tracing
-# echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable</code></pre>
-	<p>At this point, we’re enabling tracing for the syscall enter and exit for unshare specifically. Now we set the time-resolution of our enter/exit calls to count CPU cycles:</p>
-	<pre class="language-sh"><code class="language-sh"># echo 'x86-tsc' &gt; trace_clock </code></pre>
-	<p>Next we begin our measurements:</p>
-	<pre class="language-sh"><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
-[1] 92014</code></pre>
-	<p>Run the policy in a new terminal window, and then run our next syscall:</p>
-	<pre class="language-sh"><code class="language-sh"># unshare -frU --kill-child -- bash -c "exit 0" &amp;
-[2] 92019</code></pre>
-	<p>Now we have our two calls for comparison:</p>
-	<pre class="language-sh"><code class="language-sh"># cat trace
-# tracer: nop
-#
-# entries-in-buffer/entries-written: 4/4   #P:8
-#
-#                                _-----=&gt; irqs-off
-#                               / _----=&gt; need-resched
-#                              | / _---=&gt; hardirq/softirq
-#                              || / _--=&gt; preempt-depth
-#                              ||| / _-=&gt; migrate-disable
-#                              |||| /     delay
-#           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION
-#              | |         |   |||||     |         |
-         unshare-92014   [002] ..... 762950852559027: sys_unshare(unshare_flags: 10000000)
-         unshare-92014   [002] ..... 762950852622321: sys_unshare -&gt; 0x0
-         unshare-92019   [007] ..... 762975980681895: sys_unshare(unshare_flags: 10000000)
-         unshare-92019   [007] ..... 762975980752033: sys_unshare -&gt; 0x0
-</code></pre>
-	<p>unshare-92014 used 63294 cycles.unshare-92019 used 70138 cycles.</p>
-	<p>We have a 6,844 (~10%) cycle penalty between the two measurements. Not bad!</p>
-	<p>These numbers are for a single syscall, and add up the more frequently the code is called. Unshare is typically called at task creation, and not repeatedly during normal execution of a program. Careful consideration and measurement is needed for your use case.</p>
-	<div class="flex anchor relative">
-		<h2 id="outro">Outro</h2>
-		<a href="https://blog.cloudflare.com/#outro" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We learned a bit about what LSM BPF is, how unshare is used to map a user to root, and how to solve a real-world problem by implementing a solution in eBPF. Tracking down the appropriate hook is not an easy task, and requires a bit of playing and a lot of kernel code. Fortunately, that’s the hard part. Because a policy is written in C, we can granularly tweak the policy to our problem. This means one may extend this policy with an allow-list to allow certain programs or users to continue to use an unprivileged unshare. Finally, we looked at the performance impact of this program, and saw the overhead is worth blocking the attack vector.</p>
-	<p>“Cannot allocate memory” is not a clear error message for denying permissions. We proposed a <a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com" target="_blank" rel="noopener noreferrer">patch</a> to propagate error codes from the <i>cred_prepare</i> hook up the call stack. Ultimately we came to the conclusion that a new hook is better suited to this problem. Stay tuned!</p>
+<p><a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank" rel="noopener noreferrer">Linux Security Modules</a> (LSM) is a hook-based framework for implementing security policies and Mandatory Access Control in the Linux kernel. Until recently users looking to implement a security policy had just two options. Configure an existing LSM module such as AppArmor or SELinux, or write a custom kernel module.</p>
+<p><a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.7" target="_blank" rel="noopener noreferrer">Linux 5.7</a> introduced a third way: <a href="https://docs.kernel.org/bpf/prog_lsm.html" target="_blank" rel="noopener noreferrer">LSM extended Berkeley Packet Filters (eBPF)</a> (LSM BPF for short). LSM BPF allows developers to write granular policies without configuration or loading a kernel module. LSM BPF programs are verified on load, and then executed when an LSM hook is reached in a call path.</p>
+<h2>Let’s solve a real-world problem</h2>
+<p>Modern operating systems provide facilities allowing "partitioning" of kernel resources. For example FreeBSD has "jails", Solaris has "zones". Linux is different - it provides a set of seemingly independent facilities each allowing isolation of a specific resource. These are called "namespaces" and have been growing in the kernel for years. They are the base of popular tools like Docker, lxc or firejail. Many of the namespaces are uncontroversial, like the UTS namespace which allows the host system to hide its hostname and time. Others are complex but straightforward - NET and NS (mount) namespaces are known to be hard to wrap your head around. Finally, there is this very special very curious USER namespace.</p>
+<p>USER namespace is special, since it allows the owner to operate as "root" inside it. How it works is beyond the scope of this blog post, however, suffice to say it's a foundation to having tools like Docker to not operate as true root, and things like rootless containers.</p>
+<p>Due to its nature, allowing unpriviledged users access to USER namespace always carried a great security risk. &nbsp;One such risk is privilege escalation.</p>
+<p>Privilege escalation is a <a href="https://www.cloudflare.com/learning/security/what-is-an-attack-surface" target="_blank" rel="noopener noreferrer">common attack surface</a> for operating systems. One way users may gain privilege is by mapping their namespace to the root namespace via the unshare <a href="https://en.wikipedia.org/wiki/System_call" target="_blank" rel="noopener noreferrer">syscall</a> and specifying the <em>CLONE_NEWUSER</em> flag. This tells unshare to create a new user namespace with full permissions, and maps the new user and group ID to the previous namespace. You can use the <a href="https://man7.org/linux/man-pages/man1/unshare.1.html" target="_blank" rel="noopener noreferrer">unshare(1)</a> program to map root to our original namespace:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> id</span></span>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">…</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># id</span></span>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,65534</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">nogroup</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># cat /proc/self/uid_map</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         0</span><span class="sk-005cc5-ffc799">       1000</span><span class="sk-005cc5-ffc799">          1</span></span></code></pre>
 </div>
+<p>In most cases using unshare is harmless, and is intended to run with lower privileges. However, this syscall has been known to be used to <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0492" target="_blank" rel="noopener noreferrer">escalate privileges</a>.</p>
+<p>Syscalls <em>clone</em> and <em>clone3</em> are worth looking into as they also have the ability to <em>CLONE_NEWUSER</em>. However, for this post we’re going to focus on unshare.</p>
+<p>Debian solved this problem with this <a href="https://sources.debian.org/patches/linux/3.16.56-1+deb8u1/debian/add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by-default.patch" target="_blank" rel="noopener noreferrer">"add sysctl to disallow unprivileged CLONE_NEWUSER by default"</a> patch, but it was not mainlined. Another similar patch <a href="https://lore.kernel.org/all/1453502345-30416-3-git-send-email-keescook@chromium.org" target="_blank" rel="noopener noreferrer">"sysctl: allow CLONE_NEWUSER to be disabled"</a> attempted to mainline, and was met with push back. A critique is the <a href="https://lore.kernel.org/all/87poq5y0jw.fsf@x220.int.ebiederm.org" target="_blank" rel="noopener noreferrer">inability to toggle this feature</a> for specific applications. In the article “<a href="https://lwn.net/Articles/673597" target="_blank" rel="noopener noreferrer">Controlling access to user namespaces</a>” the author wrote: “... the current patches do not appear to have an easy path into the mainline.” And as we can see, the patches were ultimately not included in the vanilla kernel.</p>
+<h2>Our solution - LSM BPF</h2>
+<p>Since upstreaming code that restricts USER namespace seem to not be an option, we decided to use LSM BPF to circumvent these issues. This requires no modifications to the kernel and allows us to express complex rules guarding the access.</p>
+<h3>Track down an appropriate hook candidate</h3>
+<p>First, let us track down the syscall we’re targeting. We can find the prototype in the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/syscalls.h#L608" target="_blank" rel="noopener noreferrer"><em>include/linux/syscalls.h</em></a> file. From there, it’s not as obvious to track down, but the line:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* kernel/fork.c */</span></span></code></pre>
+</div>
+<p>Gives us a clue of where to look next in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3201" target="_blank" rel="noopener noreferrer"><em>kernel/fork.c</em></a>. There a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3082" target="_blank" rel="noopener noreferrer"><em>ksys_unshare()</em></a> is made. Digging through that function, we find a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/fork.c#L3129" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a>. This looks promising.</p>
+<p>Up to this point, we’ve identified the syscall implementation, but the next question to ask is what hooks are available for us to use? Because we know from the <a href="https://man7.org/linux/man-pages/man2/unshare.2.html" target="_blank" rel="noopener noreferrer">man-pages</a> that unshare is used to mutate tasks, we look at the task-based hooks in <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L605" target="_blank" rel="noopener noreferrer"><em>include/linux/lsm_hooks.h</em></a>. Back in the function <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L171" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> we saw a call to <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L252" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a>. This looks very familiar to the <a href="https://elixir.bootlin.com/linux/v5.18/source/include/linux/lsm_hooks.h#L624" target="_blank" rel="noopener noreferrer"><em>cred_prepare</em></a> hook. To verify we have our match via <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/cred.c#L291" target="_blank" rel="noopener noreferrer"><em>prepare_creds()</em></a>, we see a call to the security hook <a href="https://elixir.bootlin.com/linux/v5.18/source/security/security.c#L1706" target="_blank" rel="noopener noreferrer"><em>security_prepare_creds()</em></a> which ultimately calls the hook:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
+<span class="line"><span class="sk-24292e-fff">rc </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> call_int_hook</span><span class="sk-24292e-fff">(cred_prepare, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, new, old, gfp);</span></span>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+</div>
+<p>Without going much further down this rabbithole, we know this is a good hook to use because <em>prepare_creds()</em> is called right before <em>create_user_ns()</em> in <a href="https://elixir.bootlin.com/linux/v5.18/source/kernel/user_namespace.c#L181" target="_blank" rel="noopener noreferrer"><em>unshare_userns()</em></a> which is the operation we’re trying to block.</p>
+<h3>LSM BPF solution</h3>
+<p>We’re going to compile with the <a href="https://nakryiko.com/posts/bpf-core-reference-guide/#defining-own-co-re-relocatable-type-definitions" target="_blank" rel="noopener noreferrer">eBPF compile once-run everywhere (CO-RE)</a> approach. This allows us to compile on one architecture and load on another. But we’re going to target x86_64 specifically. LSM BPF for ARM64 is still in development, and the following code will not run on that architecture. Watch the <a href="https://lore.kernel.org/bpf" target="_blank" rel="noopener noreferrer">BPF mailing list</a> to follow the progress.</p>
+<p>This solution was tested on kernel versions &gt;= 5.15 configured with the following:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BPF_EVENTS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">BPF_JIT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">BPF_JIT_ALWAYS_ON</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">BPF_LSM</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">BPF_SYSCALL</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">BPF_UNPRIV_DEFAULT_OFF</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG_INFO_BTF</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DYNAMIC_FTRACE</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNCTION_TRACER</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">HAVE_DYNAMIC_FTRACE</span></span></code></pre>
+</div>
+<p>A boot option <code>lsm=bpf</code> may be necessary if <code>CONFIG_LSM</code> does not contain “bpf” in the list.</p>
+<p>Let’s start with our preamble:</p>
+<p><em>deny_unshare.bpf.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/bpf.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/capability.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/errno.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/sched.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/types.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;bpf/bpf_tracing.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;bpf/bpf_helpers.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;bpf/bpf_core_read.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> X86_64_UNSHARE_SYSCALL</span><span class="sk-005cc5-ffc799"> 272</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> UNSHARE_SYSCALL</span><span class="sk-24292e-fff"> X86_64_UNSHARE_SYSCALL</span></span></code></pre>
+</div>
+<p>Next we set up our necessary structures for CO-RE relocation in the following way:</p>
+<p><em>deny_unshare.bpf.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">typedef</span><span class="sk-d73a49-a0a0a0"> unsigned</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-005cc5-ffc799"> gfp_t</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> pt_regs {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	long</span><span class="sk-d73a49-a0a0a0"> unsigned</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff"> di;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	long</span><span class="sk-d73a49-a0a0a0"> unsigned</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff"> orig_ax;</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6f42c1-ffc799">__attribute__</span><span class="sk-24292e-fff">((preserve_access_index));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">typedef</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> kernel_cap_struct {</span></span>
+<span class="line"><span class="sk-24292e-fff">	__u32 </span><span class="sk-e36209-fff">cap</span><span class="sk-24292e-fff">[_LINUX_CAPABILITY_U32S_3];</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6f42c1-ffc799">__attribute__</span><span class="sk-24292e-fff">((preserve_access_index)) </span><span class="sk-005cc5-ffc799">kernel_cap_t</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> cred {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	kernel_cap_t</span><span class="sk-24292e-fff"> cap_effective;</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6f42c1-ffc799">__attribute__</span><span class="sk-24292e-fff">((preserve_access_index));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> task_struct {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    unsigned</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff"> flags;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> cred </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">cred;</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-6f42c1-ffc799">__attribute__</span><span class="sk-24292e-fff">((preserve_access_index));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">char</span><span class="sk-24292e-fff"> LICENSE</span><span class="sk-d73a49-a0a0a0">[]</span><span class="sk-6f42c1-ffc799"> SEC</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"license"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "GPL"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+</div>
+<p>We don’t need to fully-flesh out the structs; we just need the absolute minimum information a program needs to function. CO-RE will do whatever is necessary to perform the relocations for your kernel. This makes writing the LSM BPF programs easy!</p>
+<p><em>deny_unshare.bpf.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SEC</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"lsm/cred_prepare"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> BPF_PROG</span><span class="sk-24292e-fff">(handle_cred_prepare, </span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> cred </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">new</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> cred </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-e36209-fff">old</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">             gfp_t</span><span class="sk-e36209-fff"> gfp</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-e36209-fff"> ret</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> pt_regs </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">regs;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> task_struct </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">task;</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    kernel_cap_t</span><span class="sk-24292e-fff"> caps;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> syscall;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    unsigned</span><span class="sk-d73a49-a0a0a0"> long</span><span class="sk-24292e-fff"> flags;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // If previous hooks already denied, go ahead and deny this one</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (ret) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> ret;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    task </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> bpf_get_current_task_btf</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    regs </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> pt_regs </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">bpf_task_pt_regs</span><span class="sk-24292e-fff">(task);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // In x86_64 orig_ax has the syscall interrupt stored here</span></span>
+<span class="line"><span class="sk-24292e-fff">    syscall </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> regs-&gt;orig_ax;</span></span>
+<span class="line"><span class="sk-24292e-fff">    caps </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> task-&gt;cred-&gt;cap_effective;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Only process UNSHARE syscall, ignore all others</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (syscall </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> UNSHARE_SYSCALL) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // PT_REGS_PARM1_CORE pulls the first parameter passed into the unshare syscall</span></span>
+<span class="line"><span class="sk-24292e-fff">    flags </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> PT_REGS_PARM1_CORE</span><span class="sk-24292e-fff">(regs);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Ignore any unshare that does not have CLONE_NEWUSER</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(flags </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff"> CLONE_NEWUSER)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Allow tasks with CAP_SYS_ADMIN to unshare (already root)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (caps.cap[</span><span class="sk-6f42c1-ffc799">CAP_TO_INDEX</span><span class="sk-24292e-fff">(CAP_SYS_ADMIN)] </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799"> CAP_TO_MASK</span><span class="sk-24292e-fff">(CAP_SYS_ADMIN)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">EPERM;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Creating the program is the first step, the second is loading and attaching the program to our desired hook. There are several ways to do this: <a href="https://github.com/cilium/ebpf" target="_blank" rel="noopener noreferrer">Cilium ebpf</a> project, <a href="https://github.com/libbpf/libbpf-rs" target="_blank" rel="noopener noreferrer">Rust bindings</a>, and several others on the <a href="https://ebpf.io/projects" target="_blank" rel="noopener noreferrer">ebpf.io</a> project landscape page. We’re going to use native libbpf.</p>
+<p><em>deny_unshare.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;bpf/libbpf.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;unistd.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> "deny_unshare.skel.h"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-6f42c1-ffc799"> libbpf_print_fn</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">enum</span><span class="sk-24292e-fff"> libbpf_print_level </span><span class="sk-e36209-fff">level</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> char</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">format</span><span class="sk-24292e-fff">, va_list </span><span class="sk-e36209-fff">args</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> vfprintf</span><span class="sk-24292e-fff">(stderr, format, args);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-e36209-fff"> argc</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">char</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">argv</span><span class="sk-d73a49-a0a0a0">[]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> deny_unshare_bpf </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">skel;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> err;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    libbpf_set_strict_mode</span><span class="sk-24292e-fff">(LIBBPF_STRICT_ALL);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    libbpf_set_print</span><span class="sk-24292e-fff">(libbpf_print_fn);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Loads and verifies the BPF program</span></span>
+<span class="line"><span class="sk-24292e-fff">    skel </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> deny_unshare_bpf__open_and_load</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">skel) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        fprintf</span><span class="sk-24292e-fff">(stderr, </span><span class="sk-032f62-99ffe4">"failed to load and verify BPF skeleton</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        goto</span><span class="sk-24292e-fff"> cleanup;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Attaches the loaded BPF program to the LSM hook</span></span>
+<span class="line"><span class="sk-24292e-fff">    err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> deny_unshare_bpf__attach</span><span class="sk-24292e-fff">(skel);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (err) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        fprintf</span><span class="sk-24292e-fff">(stderr, </span><span class="sk-032f62-99ffe4">"failed to attach BPF skeleton</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        goto</span><span class="sk-24292e-fff"> cleanup;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"LSM loaded! ctrl+c to exit.</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // The BPF link is not pinned, therefore exiting will remove program</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (;;) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        fprintf</span><span class="sk-24292e-fff">(stderr, </span><span class="sk-032f62-99ffe4">"."</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        sleep</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">cleanup:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    deny_unshare_bpf__destroy</span><span class="sk-24292e-fff">(skel);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> err;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Lastly, to compile, we use the following Makefile:</p>
+<p><em>Makefile</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>CLANG ?= clang-13</span></span>
+<span class="line"><span>LLVM_STRIP ?= llvm-strip-13</span></span>
+<span class="line"><span>ARCH := x86</span></span>
+<span class="line"><span>INCLUDES := -I/usr/include -I/usr/include/x86_64-linux-gnu</span></span>
+<span class="line"><span>LIBS_DIR := -L/usr/lib/lib64 -L/usr/lib/x86_64-linux-gnu</span></span>
+<span class="line"><span>LIBS := -lbpf -lelf</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.PHONY: all clean run</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>all: deny_unshare.skel.h deny_unshare.bpf.o deny_unshare</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>run: all</span></span>
+<span class="line"><span>	sudo ./deny_unshare</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>clean:</span></span>
+<span class="line"><span>	rm -f *.o</span></span>
+<span class="line"><span>	rm -f deny_unshare.skel.h</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># BPF is kernel code. We need to pass -D__KERNEL__ to refer to fields present</span></span>
+<span class="line"><span># in the kernel version of pt_regs struct. uAPI version of pt_regs (from ptrace)</span></span>
+<span class="line"><span># has different field naming.</span></span>
+<span class="line"><span># See: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=fd56e0058412fb542db0e9556f425747cf3f8366</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span>deny_unshare.bpf.o: deny_unshare.bpf.c</span></span>
+<span class="line"><span>	$(CLANG) -g -O2 -Wall -target bpf -D__KERNEL__ -D__TARGET_ARCH_$(ARCH) $(INCLUDES) -c $&lt; -o $@</span></span>
+<span class="line"><span>	$(LLVM_STRIP) -g $@ # Removes debug information</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>deny_unshare.skel.h: deny_unshare.bpf.o</span></span>
+<span class="line"><span>	sudo bpftool gen skeleton $&lt; &gt; $@</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>deny_unshare: deny_unshare.c deny_unshare.skel.h</span></span>
+<span class="line"><span>	$(CC) -g -Wall -c $&lt; -o $@.o</span></span>
+<span class="line"><span>	$(CC) -g -o $@ $(LIBS_DIR) $@.o $(LIBS)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>.DELETE_ON_ERROR:</span></span></code></pre>
+</div>
+<h3>Result</h3>
+<p>In a new terminal window run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> run</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">…</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">LSM</span><span class="sk-032f62-99ffe4"> loaded!</span><span class="sk-032f62-99ffe4"> ctrl+c</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> exit.</span></span></code></pre>
+</div>
+<p>In another terminal window, we’re successfully blocked!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">unshare:</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Cannot</span><span class="sk-032f62-99ffe4"> allocate</span><span class="sk-032f62-99ffe4"> memory</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> id</span></span>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1000</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fred</span><span class="sk-24292e-fff">) </span><span class="sk-6f42c1-ffc799">…</span></span></code></pre>
+</div>
+<p>The policy has an additional feature to always allow privilege pass through:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -rU</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># id</span></span>
+<span class="line"><span class="sk-24292e-fff">uid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) gid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">) groups</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>In the unprivileged case the syscall early aborts. What is the performance impact in the privileged case?</p>
+<h3>Measure performance</h3>
+<p>We’re going to use a one-line unshare that’ll map the user namespace, and execute a command within for the measurements:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> unshare</span><span class="sk-005cc5-99ffe4"> -frU</span><span class="sk-005cc5-99ffe4"> --kill-child</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "exit 0"</span></span></code></pre>
+</div>
+<p>With a resolution of CPU cycles for syscall unshare enter/exit, we’ll measure the following as root user:</p>
+<ol>
+	<li>Command ran without the policy</li>
+	<li>Command run with the policy</li>
+</ol>
+<p>We’ll record the measurements with <a href="https://docs.kernel.org/trace/ftrace.html" target="_blank" rel="noopener noreferrer">ftrace</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> su</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># cd /sys/kernel/debug/tracing</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># echo 1 &gt; events/syscalls/sys_enter_unshare/enable ; echo 1 &gt; events/syscalls/sys_exit_unshare/enable</span></span></code></pre>
+</div>
+<p>At this point, we’re enabling tracing for the syscall enter and exit for unshare specifically. Now we set the time-resolution of our enter/exit calls to count CPU cycles:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># echo 'x86-tsc' &gt; trace_clock </span></span></code></pre>
+</div>
+<p>Next we begin our measurements:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
+<span class="line"><span class="sk-24292e-fff">[1] </span><span class="sk-6f42c1-ffc799">92014</span></span></code></pre>
+</div>
+<p>Run the policy in a new terminal window, and then run our next syscall:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># unshare -frU --kill-child -- bash -c "exit 0" &amp;</span></span>
+<span class="line"><span class="sk-24292e-fff">[2] </span><span class="sk-6f42c1-ffc799">92019</span></span></code></pre>
+</div>
+<p>Now we have our two calls for comparison:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># cat trace</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># tracer: nop</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># entries-in-buffer/entries-written: 4/4   #P:8</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#                                _-----=&gt; irqs-off</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#                               / _----=&gt; need-resched</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#                              | / _---=&gt; hardirq/softirq</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#                              || / _--=&gt; preempt-depth</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#                              ||| / _-=&gt; migrate-disable</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#                              |||| /     delay</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#           TASK-PID     CPU#  |||||  TIMESTAMP  FUNCTION</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#              | |         |   |||||     |         |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         unshare-92014</span><span class="sk-24292e-fff">   [002] ..... 762950852559027: sys_unshare(</span><span class="sk-6f42c1-ffc799">unshare_flags:</span><span class="sk-005cc5-ffc799"> 10000000</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         unshare-92014</span><span class="sk-24292e-fff">   [002] ..... 762950852622321: sys_unshare -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 0x0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         unshare-92019</span><span class="sk-24292e-fff">   [007] ..... 762975980681895: sys_unshare(</span><span class="sk-6f42c1-ffc799">unshare_flags:</span><span class="sk-005cc5-ffc799"> 10000000</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         unshare-92019</span><span class="sk-24292e-fff">   [007] ..... 762975980752033: sys_unshare -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> 0x0</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>unshare-92014 used 63294 cycles.unshare-92019 used 70138 cycles.</p>
+<p>We have a 6,844 (~10%) cycle penalty between the two measurements. Not bad!</p>
+<p>These numbers are for a single syscall, and add up the more frequently the code is called. Unshare is typically called at task creation, and not repeatedly during normal execution of a program. Careful consideration and measurement is needed for your use case.</p>
+<h2>Outro</h2>
+<p>We learned a bit about what LSM BPF is, how unshare is used to map a user to root, and how to solve a real-world problem by implementing a solution in eBPF. Tracking down the appropriate hook is not an easy task, and requires a bit of playing and a lot of kernel code. Fortunately, that’s the hard part. Because a policy is written in C, we can granularly tweak the policy to our problem. This means one may extend this policy with an allow-list to allow certain programs or users to continue to use an unprivileged unshare. Finally, we looked at the performance impact of this program, and saw the overhead is worth blocking the attack vector.</p>
+<p>“Cannot allocate memory” is not a clear error message for denying permissions. We proposed a <a href="https://lore.kernel.org/all/20220608150942.776446-1-fred@cloudflare.com" target="_blank" rel="noopener noreferrer">patch</a> to propagate error codes from the <em>cred_prepare</em> hook up the call stack. Ultimately we came to the conclusion that a new hook is better suited to this problem. Stay tuned!</p>

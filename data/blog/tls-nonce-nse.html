@@ -1,171 +1,68 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y3cwQU81Fr9JB1jGoXaiW/30e9493e0163e7f1de99c3b97d658cc4/tls-nonce-nse.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>One of the base principles of cryptography is that you can't <i>just</i> encrypt multiple messages with the same key. At the very least, what will happen is that two messages that have identical plaintext will also have identical ciphertext, which is a dangerous leak. (This is similar to why you can't encrypt blocks with <a href="https://blog.filippo.io/the-ecb-penguin" target="_blank" rel="noopener noreferrer">ECB</a>.)</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7e62kSNRA1U4fnYOyOzcnf/f7170ef03a53336e04f0ce640fe779fe/19fq1n.jpg" alt="One Does Not Simply" class="kg-image" width="568" height="335" loading="lazy">
-
-	</figure>
-	<p>If you think about it, a pure encryption function is just like any other pure computer function: deterministic. Given the same set of inputs (key and message) it will always return the same output (the encrypted message). And we don't want an attacker to be able to tell that two encrypted messages came from the same plaintext.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ypDxOdFtrCyJKATmJ8MrZ/6993281f817e294e4c93aded559575b4/Nonces.001-1.png" alt="Same inputs, same output" class="kg-image" width="1340" height="602" loading="lazy">
-
-	</figure>
-	<p>The solution is the use of IVs (Initialization Vectors) or nonces (numbers used once). These are byte strings that are different for each encrypted message. They are the source of non-determinism that is needed to make duplicates indistinguishable. They are usually not secret, and distributed prepended to the ciphertext since they are necessary for decryption.</p>
-	<p>The distinction between IVs and nonces is controversial and not binary. Different encryption schemes require different properties to be secure: some just need them to never repeat, in which case we commonly refer to them as nonces; some also need them to be random, or even unpredictable, in which case we commonly call them IVs.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zLMUUtK3IC6m9cEqDEeN8/b1e3f972e89120f0251a86eb9b9043dd/Nonces.002-1.png" alt="Different nonce, different output" class="kg-image" width="1416" height="898" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="nonces-in-tls">Nonces in TLS</h3>
-		<a href="https://blog.cloudflare.com/#nonces-in-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>TLS at its core is about encrypting a stream of packets, or more properly "records". The initial handshake takes care of authenticating the connection and generating the keys, but then it's up to the record layer to encrypt many records with that same key. Enter nonces.</p>
-	<p>Nonce management can be a hard problem, but TLS is near to the best case: keys are never reused across connections, and the records have sequence numbers that both sides keep track of. However, it took the protocol a few revisions to fully take advantage of this.</p>
-	<p>The resulting landscape is a bit confusing (including one or two attack names):</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SKHBZfapSldYN2czxNNuH/7f2d30dd41d885dc13b76d9ac6668c35/Nonces-table.png" alt="TABLE" class="kg-image" width="2480" height="810" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="rc4-and-stream-ciphers">RC4 and stream ciphers</h4>
-		<a href="https://blog.cloudflare.com/#rc4-and-stream-ciphers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VnXTZTwdpRaoyqySKVcDn/ae6e025045313ccfc7da498555196386/Nonces-RC4-black.png" alt="RC4" class="kg-image" width="2073" height="756" loading="lazy">
-
-	</figure>
-	<p>RC4 is a stream cipher, so it doesn't have to treat records separately. The cipher generates a continuous keystream which is XOR'd with the plaintexts as if they were just portions of one big message. Hence, there are no nonces.</p>
-	<p>RC4 <a href="https://blog.cloudflare.com/tag/rc4">is broken</a> and was removed from TLS 1.3.</p>
-	<div class="flex anchor relative">
-		<h4 id="cbc-in-tls-1-0">CBC in TLS 1.0</h4>
-		<a href="https://blog.cloudflare.com/#cbc-in-tls-1-0" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qMGKsTc0nc47WCKPrCvjk/f5dbe96ec072da2153b4549c5094d454/Nonces-CBC-1.0-black-1.png" alt="CBC" class="kg-image" width="2040" height="824" loading="lazy">
-
-	</figure>
-	<p>CBC in TLS 1.0 works similarly to RC4: the cipher is instantiated once, and then the records are encrypted as part of one continuous message.</p>
-	<p>Sadly that means that the IV for the next record <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining_.28CBC.29" target="_blank" rel="noopener noreferrer">is the last block of ciphertext of the previous record</a>, which the attacker can observe. Being able to predict the IV breaks CBC security, and that led to the <a href="https://www.imperialviolet.org/2011/09/23/chromeandbeast.html" target="_blank" rel="noopener noreferrer">BEAST attack</a>. BEAST is mitigated by <a href="https://www.imperialviolet.org/2012/01/15/beastfollowup.html" target="_blank" rel="noopener noreferrer">splitting records in two</a>, which effectively randomizes the IV, but this is a client-side fix, out of the server control.</p>
-	<div class="flex anchor relative">
-		<h4 id="cbc-in-tls-1-1">CBC in TLS 1.1+</h4>
-		<a href="https://blog.cloudflare.com/#cbc-in-tls-1-1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5OaNhFttOtRZjYfEgeIq6v/e7a957af57c1116317a13befa7d5f6b6/Nonces-CBC-explicit-black.png" alt="CBC 1.1" class="kg-image" width="2079" height="819" loading="lazy">
-
-	</figure>
-	<p>TLS 1.1 fixed BEAST by simply making IVs explicit, sending the IV with each record (with the network overhead that comes with that).</p>
-	<p>AES-CBC IVs are 16 bytes (128 bits), so using random bytes is sufficient to prevent collisions.</p>
-	<p>CBC has <a href="https://blog.cloudflare.com/yet-another-padding-oracle-in-openssl-cbc-ciphersuites">other nasty design issues</a> and has been removed in TLS 1.3.</p>
-	<div class="flex anchor relative">
-		<h4 id="tls-1-2-gcm">TLS 1.2 GCM</h4>
-		<a href="https://blog.cloudflare.com/#tls-1-2-gcm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bbl3iFzHYooGKXgbGZYCo/389f3e082c1097f97933391d8c7ed9fd/Nonces-GCM-black-2.png" alt="GCM" class="kg-image" width="2090" height="825" loading="lazy">
-
-	</figure>
-	<p>TLS 1.2 inherited the 1.1 explicit IVs. It also introduced <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">AEADs</a> like AES-GCM. The record nonce in 1.2 AES-GCM is a concatenation of a fixed per-connection IV (4 bytes, derived at the same time as the key) and an explicit per-record nonce (8 bytes, sent on the wire).</p>
-	<p>Since <a href="https://en.wikipedia.org/wiki/Birthday_problem" target="_blank" rel="noopener noreferrer">8 random bytes is too short to guarantee uniqueness</a>, 1.2 GCM implementations have to use the sequence number or a counter. If you are thinking "but what sense does it make to use an explicit IV, sent on the wire, which is just the sequence number that both parties know anyway", well... yeah.</p>
-	<p>Implementations not using a counter/sequence-based AES-GCM nonce were found to be indeed vulnerable by the "<a href="https://github.com/nonce-disrespect/nonce-disrespect" target="_blank" rel="noopener noreferrer">Nonce-Disrespecting Adversaries</a>" paper.</p>
-	<div class="flex anchor relative">
-		<h4 id="tls-1-3">TLS 1.3</h4>
-		<a href="https://blog.cloudflare.com/#tls-1-3" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X6R46MkjuADDzdspGpNAp/313ba89f66a1a304c169d1e9cd801eaf/Nonces-1.3-black-1.png" alt="1.3" class="kg-image" width="2075" height="787" loading="lazy">
-
-	</figure>
-	<p>TLS 1.3 finally took advantage of the sequential nature of TLS records and removed the free-form explicit IVs. It uses instead a combination of a fixed per-connection IV (derived at the same time as the key) and the sequence number, XORed—not concatenated.</p>
-	<p>This way the entire nonce length is random-looking, nonces can never be reused as the sequence number monotonically increases, and there is no network overhead.</p>
-	<div class="flex anchor relative">
-		<h4 id="chacha20-poly1305">ChaCha20-Poly1305</h4>
-		<a href="https://blog.cloudflare.com/#chacha20-poly1305" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305 ciphersuite</a> uses the same "fixed IV XORed with the sequence number" scheme of TLS 1.3 even when used in TLS 1.2</p>
-	<p>While 1.3 AEADs and 1.2 ChaCha20 use the same nonce scheme, when used in 1.2 ChaCha20 still puts the sequence number, type, version and length in the additional authenticated data. 1.3 makes all those either implicit or part of the encrypted payload.</p>
-	<div class="flex anchor relative">
-		<h3 id="to-recap">To recap</h3>
-		<a href="https://blog.cloudflare.com/#to-recap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p>RC4 is a stream cipher, so it has no per-record nonce.</p>
-		</li>
-		<li>
-			<p>CBC in TLS 1.0 used to work similarly to RC4. Sadly, that was vulnerable to BEAST.</p>
-		</li>
-		<li>
-			<p>TLS 1.1 fixed BEAST by simply making IVs explicit and random.</p>
-		</li>
-		<li>
-			<p>TLS 1.2 AES-GCM uses a concatenation of a fixed IV and an explicit sequential nonce.</p>
-		</li>
-		<li>
-			<p>TLS 1.3 finally uses a simple fixed IV XORed with the sequence number.</p>
-		</li>
-		<li>
-			<p>ChaCha20-Poly1305 uses the same scheme of TLS 1.3 even when used in TLS 1.2.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="nonce-misuse-resistance">Nonce misuse resistance</h2>
-		<a href="https://blog.cloudflare.com/#nonce-misuse-resistance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the introduction we used the case of a pair of identical message and key to illustrate the most intuitive issue of missing or reused nonces. However, depending on the cipher, other things can go wrong when the same nonce is reused, or is predictable.</p>
-	<p>A repeated nonce often breaks entirely the security properties of the connection. For example, AES-GCM <a href="https://github.com/nonce-disrespect/nonce-disrespect" target="_blank" rel="noopener noreferrer">leaks the authentication key altogether</a>, allowing an attacker to fake packets and inject data.</p>
-	<p>As part of the trend of making cryptography primitives less dangerous to use for implementers, the research is focusing on mitigating the adverse consequences of nonce reuse. The property of these new schemes is called <a href="https://www.lvh.io/posts/nonce-misuse-resistance-101.html" target="_blank" rel="noopener noreferrer">Nonce Reuse Resistance</a>.</p>
-	<p>However, they still have to see wider adoption and standardization, which is why a solid protocol design like the one in TLS 1.3 is critical to prevent this class of attacks.</p>
-	<p><i>Does painting overviews of technical topics like this sound satisfying to you? </i><a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer"><i>We are hiring in London, Austin (TX), Champaign (IL), San Francisco and Singapore</i></a><i>!</i></p>
-</div>
+<p>One of the base principles of cryptography is that you can't <em>just</em> encrypt multiple messages with the same key. At the very least, what will happen is that two messages that have identical plaintext will also have identical ciphertext, which is a dangerous leak. (This is similar to why you can't encrypt blocks with <a href="https://blog.filippo.io/the-ecb-penguin" target="_blank" rel="noopener noreferrer">ECB</a>.)</p>
+<p>If you think about it, a pure encryption function is just like any other pure computer function: deterministic. Given the same set of inputs (key and message) it will always return the same output (the encrypted message). And we don't want an attacker to be able to tell that two encrypted messages came from the same plaintext.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="321" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=715&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=640&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=715&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=750&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=828&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=1080&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=1280&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=1430&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Same inputs, same output" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PFNDJCEG5K03WMHHWW3F.png&amp;w=1340&amp;h=602&amp;f=webp" data-lightbox-width="1340" data-lightbox-height="602" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="321" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The solution is the use of IVs (Initialization Vectors) or nonces (numbers used once). These are byte strings that are different for each encrypted message. They are the source of non-determinism that is needed to make duplicates indistinguishable. They are usually not secret, and distributed prepended to the ciphertext since they are necessary for decryption.</p>
+<p>The distinction between IVs and nonces is controversial and not binary. Different encryption schemes require different properties to be secure: some just need them to never repeat, in which case we commonly refer to them as nonces; some also need them to be random, or even unpredictable, in which case we commonly call them IVs.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="453" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=715&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=640&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=715&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=750&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=828&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=1080&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=1280&amp;h=811&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=1430&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Different nonce, different output" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DHMD3EHDJWE3NCGA6KZ7.png&amp;w=1416&amp;h=898&amp;f=webp" data-lightbox-width="1416" data-lightbox-height="898" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="453" class="pt-portable-image-media"></div>
+</figure>
+<h3>Nonces in TLS</h3>
+<p>TLS at its core is about encrypting a stream of packets, or more properly "records". The initial handshake takes care of authenticating the connection and generating the keys, but then it's up to the record layer to encrypt many records with that same key. Enter nonces.</p>
+<p>Nonce management can be a hard problem, but TLS is near to the best case: keys are never reused across connections, and the records have sequence numbers that both sides keep track of. However, it took the protocol a few revisions to fully take advantage of this.</p>
+<p>The resulting landscape is a bit confusing (including one or two attack names):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="234" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=715&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=640&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=715&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=750&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=828&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=1080&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=1280&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=1430&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="TABLE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485C0ENSYBTEZ7NMTDY6Q9.png&amp;w=1920&amp;h=627&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="627" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="234" class="pt-portable-image-media"></div>
+</figure>
+<h4>RC4 and stream ciphers</h4>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="261" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=715&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=640&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=715&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=750&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=828&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=1080&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=1280&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=1430&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="RC4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BPET90C5EWMMRV9CY5HM.png&amp;w=1920&amp;h=700&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="700" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="261" class="pt-portable-image-media"></div>
+</figure>
+<p>RC4 is a stream cipher, so it doesn't have to treat records separately. The cipher generates a continuous keystream which is XOR'd with the plaintexts as if they were just portions of one big message. Hence, there are no nonces.</p>
+<p>RC4 <a href="https://blog.cloudflare.com/tag/rc4">is broken</a> and was removed from TLS 1.3.</p>
+<h4>CBC in TLS 1.0</h4>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="289" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=640&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=750&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=828&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=1080&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=1280&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=1430&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="CBC" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470XGER3MBCXK0CN3XK8SX.png&amp;w=1920&amp;h=776&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="776" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="289" class="pt-portable-image-media"></div>
+</figure>
+<p>CBC in TLS 1.0 works similarly to RC4: the cipher is instantiated once, and then the records are encrypted as part of one continuous message.</p>
+<p>Sadly that means that the IV for the next record <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining_.28CBC.29" target="_blank" rel="noopener noreferrer">is the last block of ciphertext of the previous record</a>, which the attacker can observe. Being able to predict the IV breaks CBC security, and that led to the <a href="https://www.imperialviolet.org/2011/09/23/chromeandbeast.html" target="_blank" rel="noopener noreferrer">BEAST attack</a>. BEAST is mitigated by <a href="https://www.imperialviolet.org/2012/01/15/beastfollowup.html" target="_blank" rel="noopener noreferrer">splitting records in two</a>, which effectively randomizes the IV, but this is a client-side fix, out of the server control.</p>
+<h4>CBC in TLS 1.1+</h4>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="282" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=715&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=640&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=715&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=750&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=828&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=1080&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=1280&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=1430&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="CBC 1.1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DWAXQBV0S3BXZ92DBYZE.png&amp;w=1920&amp;h=756&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="756" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="282" class="pt-portable-image-media"></div>
+</figure>
+<p>TLS 1.1 fixed BEAST by simply making IVs explicit, sending the IV with each record (with the network overhead that comes with that).</p>
+<p>AES-CBC IVs are 16 bytes (128 bits), so using random bytes is sufficient to prevent collisions.</p>
+<p>CBC has <a href="https://blog.cloudflare.com/yet-another-padding-oracle-in-openssl-cbc-ciphersuites">other nasty design issues</a> and has been removed in TLS 1.3.</p>
+<h4>TLS 1.2 GCM</h4>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="282" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=715&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=640&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=715&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=750&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=828&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=1080&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=1280&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=1430&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="GCM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46513B0JCHQ36D9FN24NQ7.png&amp;w=1920&amp;h=758&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="758" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="282" class="pt-portable-image-media"></div>
+</figure>
+<p>TLS 1.2 inherited the 1.1 explicit IVs. It also introduced <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">AEADs</a> like AES-GCM. The record nonce in 1.2 AES-GCM is a concatenation of a fixed per-connection IV (4 bytes, derived at the same time as the key) and an explicit per-record nonce (8 bytes, sent on the wire).</p>
+<p>Since <a href="https://en.wikipedia.org/wiki/Birthday_problem" target="_blank" rel="noopener noreferrer">8 random bytes is too short to guarantee uniqueness</a>, 1.2 GCM implementations have to use the sequence number or a counter. If you are thinking "but what sense does it make to use an explicit IV, sent on the wire, which is just the sequence number that both parties know anyway", well... yeah.</p>
+<p>Implementations not using a counter/sequence-based AES-GCM nonce were found to be indeed vulnerable by the "<a href="https://github.com/nonce-disrespect/nonce-disrespect" target="_blank" rel="noopener noreferrer">Nonce-Disrespecting Adversaries</a>" paper.</p>
+<h4>TLS 1.3</h4>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="271" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=715&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=640&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=715&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=750&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=828&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=1080&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=1280&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=1430&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="1.3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486ZYNN03EN6X8YFEHW1GG.png&amp;w=1920&amp;h=728&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="728" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="271" class="pt-portable-image-media"></div>
+</figure>
+<p>TLS 1.3 finally took advantage of the sequential nature of TLS records and removed the free-form explicit IVs. It uses instead a combination of a fixed per-connection IV (derived at the same time as the key) and the sequence number, XORed—not concatenated.</p>
+<p>This way the entire nonce length is random-looking, nonces can never be reused as the sequence number monotonically increases, and there is no network overhead.</p>
+<h4>ChaCha20-Poly1305</h4>
+<p>The <a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography">ChaCha20-Poly1305 ciphersuite</a> uses the same "fixed IV XORed with the sequence number" scheme of TLS 1.3 even when used in TLS 1.2</p>
+<p>While 1.3 AEADs and 1.2 ChaCha20 use the same nonce scheme, when used in 1.2 ChaCha20 still puts the sequence number, type, version and length in the additional authenticated data. 1.3 makes all those either implicit or part of the encrypted payload.</p>
+<h3>To recap</h3>
+<ul>
+	<li>RC4 is a stream cipher, so it has no per-record nonce.</li>
+	<li>CBC in TLS 1.0 used to work similarly to RC4. Sadly, that was vulnerable to BEAST.</li>
+	<li>TLS 1.1 fixed BEAST by simply making IVs explicit and random.</li>
+	<li>TLS 1.2 AES-GCM uses a concatenation of a fixed IV and an explicit sequential nonce.</li>
+	<li>TLS 1.3 finally uses a simple fixed IV XORed with the sequence number.</li>
+	<li>ChaCha20-Poly1305 uses the same scheme of TLS 1.3 even when used in TLS 1.2.</li>
+</ul>
+<h2>Nonce misuse resistance</h2>
+<p>In the introduction we used the case of a pair of identical message and key to illustrate the most intuitive issue of missing or reused nonces. However, depending on the cipher, other things can go wrong when the same nonce is reused, or is predictable.</p>
+<p>A repeated nonce often breaks entirely the security properties of the connection. For example, AES-GCM <a href="https://github.com/nonce-disrespect/nonce-disrespect" target="_blank" rel="noopener noreferrer">leaks the authentication key altogether</a>, allowing an attacker to fake packets and inject data.</p>
+<p>As part of the trend of making cryptography primitives less dangerous to use for implementers, the research is focusing on mitigating the adverse consequences of nonce reuse. The property of these new schemes is called <a href="https://www.lvh.io/posts/nonce-misuse-resistance-101.html" target="_blank" rel="noopener noreferrer">Nonce Reuse Resistance</a>.</p>
+<p>However, they still have to see wider adoption and standardization, which is why a solid protocol design like the one in TLS 1.3 is critical to prevent this class of attacks.</p>
+<p><em>Does painting overviews of technical topics like this sound satisfying to you? <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">We are hiring in London, Austin (TX), Champaign (IL), San Francisco and Singapore</a>!</em></p>

@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "重新设计 Workers KV，以提高可用性和更快的性能",
+	"url": "https://blog.cloudflare.com/zh-cn/rearchitecting-workers-kv-for-redundancy/",
+	"datePublished": "2025-08-08T13:00:00.000Z",
+	"dateModified": "2026-07-15T15:58:57.931Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW46AZKR183RVBSR2QYVMMKV.png",
+	"description": "Workers KV 是 Cloudflare 的全球键值存储服务，每秒处理数百万个请求，涉及数千亿个存储对象。该服务为数十种 Cloudflare 产品的关键基础设施提供支持，从 Access 身份验证到 Pages 静态资产，因而其可用性对我们平台的可靠性至关重要。\n\n在 6 月 12 日的事件发生后，我们加快了重新架构 KV 冗余存储后端的工作速度，消除了单点故障，并显着改善了 KV 的 p99 延迟状况。"
+}

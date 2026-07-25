@@ -1,279 +1,253 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3l6EgQAS0DQR5Wrad5ZIQY/9a0525e8a0df8eeabecbb6e90d48ad4a/Feature_Image.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>As the Internet has become enmeshed in our everyday lives, so has our need for speed. No one wants to wait when adding shoes to our shopping carts, or accessing corporate assets from across the globe. And as the Internet supports more and more of our critical infrastructure, speed becomes more than just a measure of how quickly we can place a takeout order. It becomes the connective tissue between the systems that keep us safe, healthy, and organized. Governments, financial institutions, healthcare ecosystems, transit — they increasingly rely on the Internet. This is why at Cloudflare, building the fastest network is our north star.&nbsp;</p>
-	<p>We’re happy to announce that we are the fastest network in 48% of the top 1000 networks by 95th percentile TCP connection time between November 2024, and March 2025, up from 44% in September 2024.</p>
-	<p>In this post, we’re going to share with you how our network performance has changed since our <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024"><u>last post in September 2024</u></a>, and talk about what makes us faster than other networks.&nbsp; But first, let’s talk a little bit about how we get this data.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-does-cloudflare-get-this-data">How does Cloudflare get this data?</h2>
-		<a href="https://blog.cloudflare.com/#how-does-cloudflare-get-this-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It’s happened to all of us — you casually click on a site, and suddenly you’ve reached a Cloudflare-branded error page. While you are shaking your fist at the sky, something interesting is happening on the back end. Cloudflare is using <a href="https://www.w3.org/TR/user-timing" target="_blank" rel="noopener noreferrer"><u>Real User Monitoring (RUM)</u></a> to collect the data used to compare our performance against other networks. The monitoring we do is slightly different than the <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer"><u>RUM Cloudflare offers</u></a> to customers. When the error page loads, a 100 KB file is fetched and loaded. This file is hosted on networks like Cloudflare, Akamai, Amazon CloudFront, Fastly, and Google Cloud CDN. Your browser processes the performance data, and sends it to Cloudflare, where we use it to get a clear view of how these different networks stack up in terms of speed.&nbsp;</p>
-	<p>We’ve been collecting and refining this data since June 2021.&nbsp; You can read more about how we collect that data <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance"><u>here</u></a>, and we regularly <a href="https://blog.cloudflare.com/tag/network-performance-update"><u>track our performance</u></a> during Innovation Weeks to hold ourselves accountable to you that we are always in pursuit of being the fastest network in the world.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-are-we-doing">How are we doing?</h2>
-		<a href="https://blog.cloudflare.com/#how-are-we-doing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In order to evaluate Cloudflare’s speed relative to others, we measure performance across the top 1000 “eyeball” networks using the list provided by the <a href="https://stats.labs.apnic.net/cgi-bin/aspop?c=IN" target="_blank" rel="noopener noreferrer"><u>Asia Pacific Network Information Centre (APNIC)</u></a>. So-called “eyeball” networks are those with a large concentration of subscribers/end users.&nbsp; This information is important, because it gives us signals for where we can expand our presence or peering, or optimize our traffic engineering. When benchmarking, we assess the 95th percentile TCP connection time. This is the time it takes a user to establish a TCP connection to the server they are trying to reach. This metric helps us illustrate how Cloudflare’s network makes your traffic faster by serving your customers as locally as possible.&nbsp;</p>
-	<p>When we look at Cloudflare’s performance across the top 1000 networks, we can see that we’re fastest in 487, or over 48%, of these networks, between November 2024 and March 2025:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vkfABpKwZtd7FJf5BU4lz/c2a778435be9b2c47656753cdb39e8f0/1.png" alt="" class="kg-image" width="1086" height="506" loading="lazy">
-	</figure>
-	<p>In <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024"><u>September 2024</u></a>, we ranked #1 in 44% of these networks:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/105vHx9riLNO4Fgm5XvxnL/4b7d106b84d90bcc674c3fb54043593c/2.png" alt="" class="kg-image" width="813" height="363" loading="lazy">
-	</figure>
-	<p>So why did we jump?&nbsp; To get a better understanding of why, let’s take a look at the countries where we improved, which will give us a better sense of where to dive in.&nbsp; This is what our network map looked like in <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024"><u>September 2024</u></a> (grey countries mean we do not have enough data or users to derive insights):</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5IfSvKcdYDsTE2Rl2WPLpE/1814ef571b8622c83ff6817b41102cf5/3.png" alt="" class="kg-image" width="1140" height="812" loading="lazy">
-	</figure>
-	<p>(September 2024)</p>
-	<p>Today, using those same 95th percentile TCP connect times, we rank #1 in 48% of networks and the network map looks like this:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xYWPvT0dQH7eCxbqNSrqv/e758b2961faad0cd5e1d1d6a72351131/4.png" alt="" class="kg-image" width="1148" height="808" loading="lazy">
-	</figure>
-	<p>(March 2025)</p>
-	<p>We made most of our gains in Africa, where countries that previously didn’t have enough samples saw an increase in samples, and Cloudflare pulled ahead. This could mean that there was either an increase in Cloudflare users, or an increase in error pages shown. These countries got faster almost exclusively due to the presence of our <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets"><u>Edge Partner deployments</u></a>, which are Cloudflare locations embedded in last mile networks.&nbsp; In next-generation markets like many African countries, these locations are crucial towards being faster as connectivity to end users tends to fall back to places like South Africa or London if in-country peering does not exist.</p>
-	<p>But let’s take a look at a couple of other places and see why we got faster.</p>
-	<p>In Canada, we were not the fastest in September 2024, but we are the fastest today. Today, we are the fastest in 40% of networks, which is the most out of all of our competitors:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bWdN0wG9g1LhujV4lY5Ne/5cdaa76a27cacc487622c45ab0ea38cd/5.png" alt="" class="kg-image" width="1044" height="498" loading="lazy">
-	</figure>
-	<p>But when you look at the overall country numbers, we see that the race for the fastest network is quite close:</p>
-	<div style="margin-left:0pt;" dir="ltr" align="center">
+<p>As the Internet has become enmeshed in our everyday lives, so has our need for speed. No one wants to wait when adding shoes to our shopping carts, or accessing corporate assets from across the globe. And as the Internet supports more and more of our critical infrastructure, speed becomes more than just a measure of how quickly we can place a takeout order. It becomes the connective tissue between the systems that keep us safe, healthy, and organized. Governments, financial institutions, healthcare ecosystems, transit — they increasingly rely on the Internet. This is why at Cloudflare, building the fastest network is our north star.&nbsp;</p>
+<p>We’re happy to announce that we are the fastest network in 48% of the top 1000 networks by 95th percentile TCP connection time between November 2024, and March 2025, up from 44% in September 2024.</p>
+<p>In this post, we’re going to share with you how our network performance has changed since our <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024" target="_blank" rel="noopener noreferrer"><u>last post in September 2024</u></a>, and talk about what makes us faster than other networks.&nbsp; But first, let’s talk a little bit about how we get this data.</p>
+<h2>How does Cloudflare get this data?</h2>
+<p>It’s happened to all of us — you casually click on a site, and suddenly you’ve reached a Cloudflare-branded error page. While you are shaking your fist at the sky, something interesting is happening on the back end. Cloudflare is using <a href="https://www.w3.org/TR/user-timing" target="_blank" rel="noopener noreferrer"><u>Real User Monitoring (RUM)</u></a> to collect the data used to compare our performance against other networks. The monitoring we do is slightly different than the <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer"><u>RUM Cloudflare offers</u></a> to customers. When the error page loads, a 100 KB file is fetched and loaded. This file is hosted on networks like Cloudflare, Akamai, Amazon CloudFront, Fastly, and Google Cloud CDN. Your browser processes the performance data, and sends it to Cloudflare, where we use it to get a clear view of how these different networks stack up in terms of speed.&nbsp;</p>
+<p>We’ve been collecting and refining this data since June 2021.&nbsp; You can read more about how we collect that data <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance" target="_blank" rel="noopener noreferrer"><u>here</u></a>, and we regularly <a href="https://blog.cloudflare.com/tag/network-performance-update" target="_blank" rel="noopener noreferrer"><u>track our performance</u></a> during Innovation Weeks to hold ourselves accountable to you that we are always in pursuit of being the fastest network in the world.</p>
+<h2>How are we doing?</h2>
+<p>In order to evaluate Cloudflare’s speed relative to others, we measure performance across the top 1000 “eyeball” networks using the list provided by the <a href="https://stats.labs.apnic.net/cgi-bin/aspop?c=IN" target="_blank" rel="noopener noreferrer"><u>Asia Pacific Network Information Centre (APNIC)</u></a>. So-called “eyeball” networks are those with a large concentration of subscribers/end users.&nbsp; This information is important, because it gives us signals for where we can expand our presence or peering, or optimize our traffic engineering. When benchmarking, we assess the 95th percentile TCP connection time. This is the time it takes a user to establish a TCP connection to the server they are trying to reach. This metric helps us illustrate how Cloudflare’s network makes your traffic faster by serving your customers as locally as possible.&nbsp;</p>
+<p>When we look at Cloudflare’s performance across the top 1000 networks, we can see that we’re fastest in 487, or over 48%, of these networks, between November 2024 and March 2025:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="333" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=640&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=750&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=828&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=1080&amp;h=503&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=1280&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=1430&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2788 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N9JMCESF3BPHA5FCEP5D.png&amp;w=1086&amp;h=506&amp;f=webp" data-lightbox-width="1086" data-lightbox-height="506" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="333" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>In <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024" target="_blank" rel="noopener noreferrer"><u>September 2024</u></a>, we ranked #1 in 44% of these networks:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="319" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=640&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=715&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=750&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=828&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=1080&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=1280&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=1430&amp;h=638&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2788 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4476FTCHGZHTZH8BK2AB7V.png&amp;w=813&amp;h=363&amp;f=webp" data-lightbox-width="813" data-lightbox-height="363" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="319" class="pt-portable-image-media"></div>
+</figure>
+<p>So why did we jump?&nbsp; To get a better understanding of why, let’s take a look at the countries where we improved, which will give us a better sense of where to dive in.&nbsp; This is what our network map looked like in <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024" target="_blank" rel="noopener noreferrer"><u>September 2024</u></a> (grey countries mean we do not have enough data or users to derive insights):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="509" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=715&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=640&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=715&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=750&amp;h=534&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=828&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=1080&amp;h=769&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=1280&amp;h=911&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=1430&amp;h=1018&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2788 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BJTHG5W9WXC4W4ZEQ63G.png&amp;w=1140&amp;h=812&amp;f=webp" data-lightbox-width="1140" data-lightbox-height="812" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="509" class="pt-portable-image-media"></div>
+</figure>
+<p>(September 2024)</p>
+<p>Today, using those same 95th percentile TCP connect times, we rank #1 in 48% of networks and the network map looks like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="503" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=715&amp;h=503&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=640&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=715&amp;h=503&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=750&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=828&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=1080&amp;h=760&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=1280&amp;h=900&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=1430&amp;h=1006&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2788 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NED4HZAH0YWBSPX60M0E.png&amp;w=1148&amp;h=808&amp;f=webp" data-lightbox-width="1148" data-lightbox-height="808" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="503" class="pt-portable-image-media"></div>
+</figure>
+<p>(March 2025)</p>
+<p>We made most of our gains in Africa, where countries that previously didn’t have enough samples saw an increase in samples, and Cloudflare pulled ahead. This could mean that there was either an increase in Cloudflare users, or an increase in error pages shown. These countries got faster almost exclusively due to the presence of our <a href="https://blog.cloudflare.com/how-cloudflare-helps-next-generation-markets" target="_blank" rel="noopener noreferrer"><u>Edge Partner deployments</u></a>, which are Cloudflare locations embedded in last mile networks.&nbsp; In next-generation markets like many African countries, these locations are crucial towards being faster as connectivity to end users tends to fall back to places like South Africa or London if in-country peering does not exist.</p>
+<p>But let’s take a look at a couple of other places and see why we got faster.</p>
+<p>In Canada, we were not the fastest in September 2024, but we are the fastest today. Today, we are the fastest in 40% of networks, which is the most out of all of our competitors:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="341" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=715&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=640&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=715&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=750&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=828&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=1080&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=1280&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=1430&amp;h=682&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2788 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488HK3TYMCBG23G5YKJW3W.png&amp;w=1044&amp;h=498&amp;f=webp" data-lightbox-width="1044" data-lightbox-height="498" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="341" class="pt-portable-image-media"></div>
+</figure>
+<p>But when you look at the overall country numbers, we see that the race for the fastest network is quite close:</p>
+<div id="html-block-k1w" class="html-block">
+	<div style="margin-left:0pt">
 		<figure class="table">
-			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
 				<colgroup>
-					<col style="width:25%;" width="64">
-					<col style="width:25%;" width="151">
-					<col style="width:25%;" width="208">
-					<col style="width:25%;" width="202">
+					<col style="width:25%">
+					<col style="width:25%">
+					<col style="width:25%">
+					<col style="width:25%">
 				</colgroup>
 				<tbody>
-					<tr style="height:21pt;">
-						<td style="background-color:#b7b7b7;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" colspan="4">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Canada 95th Percentile TCP Connect Time by Provider</strong></span></span></p>
+					<tr style="height:21pt">
+						<td style="background-color:#b7b7b7;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top" colspan="4">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Canada 95th Percentile TCP Connect Time by Provider</strong></span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Rank</strong></span></span></p>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Rank</strong></span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Entity</strong></span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Entity</strong></span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Connect Time (P95)</strong></span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Connect Time (P95)</strong></span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>#1 Diff</strong></span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#ff6600;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Cloudflare</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">179 ms</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">-</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>#1 Diff</strong></span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2</span></span></p>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">1</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#f15a80;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Fastly</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#ff6600;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Cloudflare</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">180 ms</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">179 ms</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+0.48% (+0.87 ms)</span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#5295ff;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Google</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">180 ms</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+0.74% (+1.32 ms)</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">-</span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4</span></span></p>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">2</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#ca70e7;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">CloudFront</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#f15a80;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Fastly</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">182 ms</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">180 ms</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+1.74% (+3.11 ms)</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+0.48% (+0.87 ms)</span></span></p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5</span></span></p>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">3</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#64a878;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Akamai</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#5295ff;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Google</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">215 ms&nbsp;</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">180 ms</span></span></p>
 						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+20% (+36 ms)</span></span></p>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+0.74% (+1.32 ms)</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">4</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#ca70e7;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">CloudFront</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">182 ms</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+1.74% (+3.11 ms)</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#64a878;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Akamai</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">215 ms&nbsp;</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+20% (+36 ms)</span></span></p>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</figure>
 	</div>
-	<p>The difference between Cloudflare and the third-fastest network is a little over a millisecond!&nbsp; As we’ve <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024"><u>pointed out previously</u></a>, such fluctuations are quite common, especially at higher percentiles.&nbsp; But there is still a significant difference between us and the slowest network; we’re around 20% faster.</p>
-	<p>However, looking at a place like Japan where were not the fastest in September 2024 but are now the fastest, there is a significant difference between Cloudflare and the number two network:</p>
-	<div style="margin-left:0pt;" dir="ltr" align="center">
-		<figure class="table">
-			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
-				<colgroup>
-					<col style="width:25%;" width="64">
-					<col style="width:25%;" width="151">
-					<col style="width:25%;" width="208">
-					<col style="width:25%;" width="202">
-				</colgroup>
-				<tbody>
-					<tr style="height:21pt;">
-						<td style="background-color:#b7b7b7;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;" colspan="4">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Japan 95th Percentile TCP Connect Time by Provider</strong></span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Rank</strong></span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Entity</strong></span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>Connect Time (P95)</strong></span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><strong>#1 Diff</strong></span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#ff6600;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Cloudflare</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">116 ms</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">-</span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#f15a80;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Fastly</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">122 ms</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+5.23% (+6.08 ms)</span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#5295ff;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Google</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">124 ms</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+6.21% (+7.22 ms)</span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#ca70e7;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">CloudFront</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">127 ms</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+8.91% (+10 ms)</span></span></p>
-						</td>
-					</tr>
-					<tr style="height:0pt;">
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#64a878;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Akamai</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">153 ms&nbsp;</span></span></p>
-						</td>
-						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">+32% (+37 ms)</span></span></p>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</figure>
-	</div>
-	<p>Why is this?&nbsp;We are in more locations in Japan than our competitors and added more Edge Partner deployments in these locations, bringing us even closer to end-users. Edge Partner deployments are collaborations with ISPs, where we take space in their data centers, and peer with them directly.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="why">Why?</h2>
-		<a href="https://blog.cloudflare.com/#why" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Why do we track our network performance like this? The answer is simple: to improve user experience. This data allows us to track a key performance metric for Cloudflare and the other networks. When we see that we’re lagging in a region, it serves as a signal to dig deeper into our network.&nbsp;</p>
-	<p>This data is a gold mine for the teams tasked with improving Cloudflare’s network. When there are countries where Cloudflare is behind, it gives us signals for where we should expand or investigate. If we’re slow, we may need to invest in additional peering. If a region we have invested in heavily is slower, we may need to investigate our hardware.&nbsp; The example from Japan shows exactly how this can benefit: we took a location where we were previously on par with our competitors, added peering in new locations, and we pulled ahead.&nbsp;</p>
-	<p>On top of this map, we have <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>autonomous system (ASN)</u></a> level granularity on how we are performing on each one of the top 1000 eyeball networks, and we continuously optimize our traffic flow with each of them.&nbsp; This allows us to track individual networks that may lag and improve the customer experience in those networks through turning up peering, or even adding new deployments in those regions.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-next">What’s next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re sharing our updates on our journey to become #1 everywhere so that you can see what goes into running the fastest network in the world. From here, our plan is the same as always: identify where we’re slower, fix it, and then tell you how we’ve gotten faster.</p>
 </div>
+<p>The difference between Cloudflare and the third-fastest network is a little over a millisecond!&nbsp; As we’ve <a href="https://blog.cloudflare.com/network-performance-update-birthday-week-2024" target="_blank" rel="noopener noreferrer"><u>pointed out previously</u></a>, such fluctuations are quite common, especially at higher percentiles.&nbsp; But there is still a significant difference between us and the slowest network; we’re around 20% faster.</p>
+<p>However, looking at a place like Japan where were not the fastest in September 2024 but are now the fastest, there is a significant difference between Cloudflare and the number two network:</p>
+<div id="html-block-k24" class="html-block">
+	<div style="margin-left:0pt">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
+				<colgroup>
+					<col style="width:25%">
+					<col style="width:25%">
+					<col style="width:25%">
+					<col style="width:25%">
+				</colgroup>
+				<tbody>
+					<tr style="height:21pt">
+						<td style="background-color:#b7b7b7;border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top" colspan="4">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Japan 95th Percentile TCP Connect Time by Provider</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Rank</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Entity</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Connect Time (P95)</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>#1 Diff</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">1</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#ff6600;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Cloudflare</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">116 ms</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">-</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">2</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#f15a80;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Fastly</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">122 ms</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+5.23% (+6.08 ms)</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">3</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#5295ff;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Google</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">124 ms</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+6.21% (+7.22 ms)</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">4</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#ca70e7;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">CloudFront</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">127 ms</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+8.91% (+10 ms)</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#64a878;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Akamai</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">153 ms&nbsp;</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+32% (+37 ms)</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+</div>
+<p>Why is this?&nbsp;We are in more locations in Japan than our competitors and added more Edge Partner deployments in these locations, bringing us even closer to end-users. Edge Partner deployments are collaborations with ISPs, where we take space in their data centers, and peer with them directly.&nbsp;</p>
+<h2>Why?</h2>
+<p>Why do we track our network performance like this? The answer is simple: to improve user experience. This data allows us to track a key performance metric for Cloudflare and the other networks. When we see that we’re lagging in a region, it serves as a signal to dig deeper into our network.&nbsp;</p>
+<p>This data is a gold mine for the teams tasked with improving Cloudflare’s network. When there are countries where Cloudflare is behind, it gives us signals for where we should expand or investigate. If we’re slow, we may need to invest in additional peering. If a region we have invested in heavily is slower, we may need to investigate our hardware.&nbsp; The example from Japan shows exactly how this can benefit: we took a location where we were previously on par with our competitors, added peering in new locations, and we pulled ahead.&nbsp;</p>
+<p>On top of this map, we have <a href="https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer"><u>autonomous system (ASN)</u></a> level granularity on how we are performing on each one of the top 1000 eyeball networks, and we continuously optimize our traffic flow with each of them.&nbsp; This allows us to track individual networks that may lag and improve the customer experience in those networks through turning up peering, or even adding new deployments in those regions.&nbsp;</p>
+<h2>What’s next?</h2>
+<p>We’re sharing our updates on our journey to become #1 everywhere so that you can see what goes into running the fastest network in the world. From here, our plan is the same as always: identify where we’re slower, fix it, and then tell you how we’ve gotten faster.</p>

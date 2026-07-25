@@ -1,0 +1,210 @@
+<p>2024 年度 Developer Week 聚焦于生产就绪性。4 月 1 日（星期一），我们<a href="https://blog.cloudflare.com/zh-cn/making-full-stack-easier-d1-ga-hyperdrive-queues-zh-cn">宣布</a> <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>、<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">Hyperdrive</a> 和 <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a> 已生产就绪并正式发布。4 月 2 日（星期二），我们<a href="https://blog.cloudflare.com/zh-cn/workers-ai-ga-huggingface-loras-python-support-zh-cn">宣布</a>我们的推理平台 —— <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a> —— 生产就绪。而我们还远远没有结束呢。</p>
+<p>生产就绪性不仅仅关乎您用于构建的服务的规模和可靠性。您还需要一些工具来安全、可靠地进行更改。 您不仅要依靠 Cloudflare 提供的服务，还要能够根据应用程序的需求精确控制和定制 Cloudflare 的行为。</p>
+<p>今天，我们隆重宣布五项更新，为您提供一些更强有力的工具——渐进式部署、Tail Workers 中的源码映射堆栈跟踪、新的速率限制 API、全新的 API SDK 以及 Durable Objects 更新——每一项都是针对任务关键型生产服务而构建的。我们使用 Workers 构建自己的产品，包括 <a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer">Access</a>、 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>、 <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">KV</a>、 <a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer">Waiting Room</a>、 <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">Vectorize</a>、 <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>、 <a href="https://developers.cloudflare.com/stream" target="_blank" rel="noopener noreferrer">Stream</a> 等。我们自己依靠以上每一个新功能来确保我们生产就绪，现在我们很高兴能将它们提供给每一个人使用。</p>
+<h3>逐步部署更改到 Workers 和 Durable Objects</h3>
+<p>部署 Worker 几乎是瞬时的事情——只需几秒钟，您的更改就会在<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">每一个地方</a>生效。</p>
+<p>当您达到生产规模时，您所做的每一次改变具有更大的风险，无论是在数量上还是在期望上。 您需要满足 99.99% 的可用性 SLA，或雄心勃勃的 P90 延迟 SLO。 一个不良部署若在 100% 的流量中上线运行 45 秒，可能意味着数百万个请求失败。即使是一个微小的代码更改，如果一次性推出，都有可能会导致大量重试请求，导致后端不堪重负。对于我们自己使用 Workers 构建的服务，都会考虑和缓解这些风险。</p>
+<p>减轻这些风险的方法是逐步部署更改——通常称为滚动部署：</p>
+<ol>
+	<li>当前版本的应用程序在生产环境中运行。</li>
+	<li>将应用程序的新版本部署到生产环境中，但只将一小部分流量路由到这个新版本，并等待它在生产环境中 “浸泡”，检测是否出现性能退化和错误。 如果发生了问题，可在一小部分（例如 1%）的流量中及早发现并可以快速回滚。</li>
+	<li>逐步增加流量百分比，直到新版本的流量达到 100%，然后再全面推出。</li>
+</ol>
+<p>今天，我们将推出一种一流的方式，通过 <a href="https://developers.cloudflare.com/api/operations/worker-deployments-list-deployments" target="_blank" rel="noopener noreferrer">Cloudflare API</a>、<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-wrangler" target="_blank" rel="noopener noreferrer">Wrangler CLI</a> 或 <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-the-cloudflare-dashboard" target="_blank" rel="noopener noreferrer">Workers 仪表板</a>将更改逐步部署到 Workers 和 Durable Objects。渐进式部署现已开启公测——您可以在订阅 <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer">Workers Free 计划</a>任何账户中使用渐进式部署，很快您就可以在订阅 <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer">Workers Paid</a> 和 Enterprise 计划的 Cloudflare 账户上开始使用渐进式部署。 一旦您的账户可以访问，您将在 Workers 仪表板上看到横幅通知。</p>
+<p>当在生产中同时拥有 Worker 或 Durable Object 的两个版本时，您几乎一定希望能按版本过滤指标、异常和日志。 这可以帮助您在新版本只推出给一小部分流量时提前发现问题，或者在按 50/50 比例分割流量时比较性能指标。我们还在整个平台上增加了版本级别的可观察性：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="353" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=640&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=750&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=828&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1080&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1280&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1430&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Splitting traffic between different versions of a Worker." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1600&amp;h=791&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="791" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="353" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<ul>
+	<li>您可以在 Workers 仪表板中或通过 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL Analytics API</a> 按版本过滤分析结果。</li>
+	<li><a href="https://developers.cloudflare.com/workers/observability/logging/logpush" target="_blank" rel="noopener noreferrer">Workers Trace Events</a> 和 <a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a> 事件包括 Worker 的版本 ID，以及可选的版本信息和版本标记字段。</li>
+	<li>使用 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#tail" target="_blank" rel="noopener noreferrer">wrangler tail</a> 查看实时日志时 &nbsp;，可以查看特定版本的日志。</li>
+	<li>通过配置<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata" target="_blank" rel="noopener noreferrer">版本元数据绑定</a>，您可以在 Worker 代码中访问版本 ID、消息和标签 。</li>
+</ul>
+<p>您可能还希望确保每个客户端或用户只能看到 Worker 的一个一致版本。我们新推出<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-keys-and-session-affinity" target="_blank" rel="noopener noreferrer">版本亲和性</a>功能，以便与特定标识符（例如用户、会话或任何 ID）相关联的请求将始终由 Worker 的一致版本处理。 <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-keys-and-session-affinity" target="_blank" rel="noopener noreferrer">会话亲和力</a>与<a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#setting-cloudflare-workers-version-key-using-ruleset-engine" target="_blank" rel="noopener noreferrer">规则集引擎</a>一起使用时 ，您可以完全控制用于确保“粘性”的机制和标识符。</p>
+<p>渐进式部署进入公测阶段。 随着我们向正式版推进，我们正在努力以提供如下支持：</p>
+<ul>
+	<li>**版本覆盖。**调用 Worker 的特定版本，以便在其服务任何生产流量之前进行测试。这样将允许您创建蓝绿部署。</li>
+	<li>**Cloudflare Pages.**让 Cloudflare Pages 中的 CI/CD 系统代表您自动推进部署。</li>
+	<li><strong>自动回滚。</strong> 当新版 Worker 的错误率激增时，自动回滚部署。</li>
+</ul>
+<p>我们期待听到您的反馈！请通过<a href="https://www.cloudflare.com/lp/developer-week-deployments" target="_blank" rel="noopener noreferrer">此</a>反馈表单或<a href="https://discord.gg/HJvPcPcN" target="_blank" rel="noopener noreferrer">开发人员 Discord</a>的 #workers-gradual-deployments-beta 频道 告诉我们您的想法。</p>
+<h3>Tail Workers 中的源码映射堆栈跟踪</h3>
+<p>生产就绪意味着要跟踪错误和异常，并努力将其降至零。发生错误时，通常首先要查看的是错误的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack" target="_blank" rel="noopener noreferrer">堆栈跟踪</a>，即调用的具体函数、调用顺序、调用的行和文件以及参数。</p>
+<p>大多数 JavaScript 代码（不仅是 Workers 上的代码，还包括是各种平台的代码）在部署到生产环境之前，通常会先进行打包，常会转译，然后再进行压缩。这个过程是在幕后进行的，以创建更小的包来优化性能，并在需要时将 Typescript 转换为 Javascript。</p>
+<p>如果您见过一个异常返回这样的堆栈跟踪：/src/index.js:1:342，这意味着错误发生在函数压缩代码的第 342 个字符上。这显然对调试没有什么帮助。</p>
+<p><a href="https://web.dev/articles/source-maps" target="_blank" rel="noopener noreferrer">源码映射</a>解决了这个问题——它将编译和精简后的代码映射回您编写的原始代码。源码映射与 JavaScript 运行时返回的堆栈跟踪相结合，为您提供人类可读的堆栈跟踪。例如，下面的堆栈跟踪显示 Worker 在 down.ts 文件的第 30 行收到了一个意外的空值。这是一个有用的调试起点，您可以沿着堆栈跟踪向下查看，以了解导致空值的函数调用设置。</p>
+<p>工作方式如下：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Unexpected</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> null</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> parseBytes</span><span class="sk-24292e-fff"> (src/down.ts:30:8)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> down_default</span><span class="sk-24292e-fff"> (src/down.ts:10:19)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> Object.fetch</span><span class="sk-24292e-fff"> (src/index.ts:11:12)</span></span></code></pre>
+</div>
+<ol>
+	<li>在 <a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer">Wrangler.toml</a> 中设置 upload_source_maps = true 后 ，当运行 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#deploy" target="_blank" rel="noopener noreferrer">Wrangler 部署</a>或 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#versions" target="_blank" rel="noopener noreferrer">Wrangler 版本上传</a>时，将自动生成并上传任何源码映射文件 。</li>
+	<li>当您的 Worker 抛出未捕获异常时，我们会获取源码映射，并使用它将异常的堆栈跟踪映射回 Worker 的原始源代码行。</li>
+	<li>然后，您就可以在<a href="https://developers.cloudflare.com/workers/observability/logging/real-time-logs" target="_blank" rel="noopener noreferrer">实时日志</a> 或 <a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a> 中查看经过反混淆的堆栈跟踪 。</li>
+</ol>
+<p>从今天开始，通过公测版，您可以在部署 Worker 时将源码映射上传到 Cloudflare —— <a href="https://developers.cloudflare.com/workers/observability/source-maps" target="_blank" rel="noopener noreferrer">欢迎阅读文档以开始使用</a> 。从 4 月 15 日开始，Workers 运行时将开始使用源码映射来反混淆堆栈跟踪。 当源码映射堆栈跟踪可用时 ， 我们将在 Cloudflare 仪表板上发布通知，并在 <a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" rel="noopener noreferrer">Cloudflare 开发人员 X 账户</a>公布。</p>
+<h3>Workers 中的新速率限制 API</h3>
+<p>仅在具有合理的<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">速率限制</a>时，API 才算是生产就绪。随着业务发展，需要执行的限制也会日益复杂和多样化，以平衡特定客户的需求、保护服务正常运行或在特定情况下执行和调整限制。Cloudflare 自己的 API 就面临着这样的挑战——我们数十种产品的每一种都有许多 API 端点，可能需要执行不同的速率限制。</p>
+<p>自 2017 年以来，您就可以在 Cloudflare 上配置<a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer">速率限制规则</a>。但直到今天，控制这个功能的唯一方式是通过 Cloudflare 仪表板或 Cloudflare API。不可能在_运行时_上定义行为，或在 Worker 中编写直接与访问速率限制交互的代码——您只能控制一个请求在到达您的 Worker 之前是否执行速率限制。</p>
+<p>今天，我们推出了新 API 的公测版，让您可以从 Worker 直接访问速率限制。 它的速度快如闪电，由 memcached 支持，添加到 Worker 中非常简单。 例如，以下配置定义了 60 秒内 100 个请求的速率限制：</p>
+<p>然后，您可以在 Worker 中调用 RATE_LIMITER 绑定的 limit 方法，提供您选择的键值。根据上述配置， 一旦在 60 秒内向特定路径发出的请求超过 100 个，代码就会返回 &nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429" target="_blank" rel="noopener noreferrer">HTTP 429</a> 响应状态码：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[unsafe.bindings]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "RATE_LIMITER"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "ratelimit"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">namespace_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "1001"</span><span class="sk-6a737d-8b8b8b94"> # An identifier unique to your Cloudflare account</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Limit: the number of tokens allowed within a given period, in a single Cloudflare location</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Period: the duration of the period, in seconds. Must be either 60 or 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">simple</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> limit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 100,</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<p>既然 Workers 现在可以直接连接到 memcached 这样的数据存储，我们还能提供什么呢？计数器？锁？ <a href="https://github.com/cloudflare/workerd/pull/1666" target="_blank" rel="noopener noreferrer">内存缓存</a>？ 我们正在探索在 Workers 中提供很多基元，以解决多年来一直存在的问题，即跨多个 Worker 的临时共享状态<a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">隔离</a>应存放在何处，速率限制就是其中一个。 如果您现在依赖于将状态放在 Worker 的全局范围内，我们正在开发更好的基元，这些基元是为特定用例而专门构建的。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">success</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">RATE_LIMITER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">limit</span><span class="sk-24292e-fff">({ key: pathname })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">success) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`429 Failure – rate limit exceeded for ${</span><span class="sk-24292e-fff">pathname</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">429</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Success!`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Workers 速率限制 API 目前处于公测阶段，您可以通过<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit" target="_blank" rel="noopener noreferrer">阅读文档</a>开始使用。</p>
+<h3>为 Cloudflare 的 API 自动生成新的 SDK</h3>
+<p>生产就绪意味着从通过点击仪表板上的按钮进行更改，转变为使用 <a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">Terraform</a> 或 <a href="https://github.com/pulumi/pulumi-cloudflare" target="_blank" rel="noopener noreferrer">Pulumi</a> 等基础架构即代码方法 ，或自行/通过 SDK 直接发出 API 请求，以编程方式进行更改 。</p>
+<p><a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">Cloudflare API</a> 规模庞大，并不断增加新功能——我们平均<a href="https://github.com/cloudflare/api-schemas/activity" target="_blank" rel="noopener noreferrer">每天更新 API 模式 20 到 30 次</a> 。但迄今为止，我们的 API SDK 都是手动构建和维护的，因此我们迫切需要实现自动化。</p>
+<p>我们已经做到了这一点，今天，我们宣布为 Cloudflare API 提供 <a href="https://github.com/cloudflare/cloudflare-typescript" target="_blank" rel="noopener noreferrer">Typescript</a>、 <a href="https://github.com/cloudflare/cloudflare-python" target="_blank" rel="noopener noreferrer">Python</a> 和 <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>三种语言的新客户端 SDK，更多语言即将推出。</p>
+<p>每个 SDK 都是根据定义我们每个 API 端点结构和功能的 <a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer">OpenAPI 模式</a><a href="https://www.stainlessapi.com" target="_blank" rel="noopener noreferrer">， 使用 Stainless API</a> 自动生成的。 这意味着，当我们为 Cloudflare API 添加任何新功能时，对于 Cloudflare 的任何产品，都会自动重新生成这些 API SDK 并发布新版本，以确保其正确和最新。</p>
+<p>运行以下命令之一即可安装这些 SDK：</p>
+<p>如果使用 Terraform 或 Pulumi，Cloudflare 的 Terraform Provider 目前使用现有的非自动化 <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go SDK</a>。当你运行 terraform apply 时 ，Cloudflare Terraform Provider 会决定以何种顺序进行哪些 API 调用，并使用 Go SDK 执行这些操作。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Typescript</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Python</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pip</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Go</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cloudflare-go/v2</span></span></code></pre>
+</div>
+<p>全新的自动生成 Go SDK 为实现对所有 Cloudflare 产品的更全面 Terraform 支持铺平了道路，提供了一套可依赖的基础工具，能正确且及时跟上最新的 API 变化。 我们正在朝着这样的目标努力：每当 Cloudflare 产品团队构建一个通过 Cloudflare API 公开的新功能时，就会自动得到 SDK 的支持。2024 年将推出更多更新，敬请期待。</p>
+<h3>Durable Object 命名空间分析和 WebSocket Hibernation 正式发布</h3>
+<p>我们自己的许多产品，包括 <a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer">Waiting Room</a> 、 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a> 和 <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a> 以及 <a href="https://www.partykit.io" target="_blank" rel="noopener noreferrer">PartyKit</a> 等平台都使用 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>。Durable Objects 部署到全球，包括新增的大洋洲支持，您可以将其想象成单一实例 Workers ，它可以提供单点协调和<a href="https://developers.cloudflare.com/durable-objects/api/transactional-storage-api" target="_blank" rel="noopener noreferrer">持久状态</a> 。它们非常适合需要实时用户协调的应用程序 ， 如交互式聊天或协作编辑 。请听 Atlassian 的感言：</p>
+<blockquote><em>我们的新功能之一是</em> <em><a href="https://www.atlassian.com/software/confluence/whiteboards" target="_blank" rel="noopener noreferrer">Confluence 白板</a>，它提供了一种自由的方式来捕捉非结构化的工作，如头脑风暴和早期规划，然后再由团队进行更正式的记录。团队考虑了很多实时协作的方案，最终决定使用 Cloudflare 的 Durable Objects。事实证明，Durable Objects 非常适合这一问题领域，它独特的功能组合使我们能够大大简化基础架构，并轻松扩展到大量用户。</em> <a href="https://www.atlassian.com/software/confluence/whiteboards" target="_blank" rel="noopener noreferrer"><em>- Atlassian</em></a></blockquote>
+<p>我们以前没有在仪表板中显示相关的分析趋势，因此除非您直接使用 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL Analytics API</a>， 否则很难了解 &nbsp;<a href="https://developers.cloudflare.com/durable-objects/configuration/access-durable-object-from-a-worker/#generate-ids-randomly" target="_blank" rel="noopener noreferrer">Durable Objects 命名空间</a>中的使用模式和错误率 。 现在，我们对 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fdurable-objects" target="_blank" rel="noopener noreferrer">Durable Objects 仪表板</a>进行了改进，让您可以根据需要深入查看指标。</p>
+<p>从<a href="https://blog.cloudflare.com/introducing-workers-durable-objects">第一天</a>起，Durable Objects 就支持 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket" target="_blank" rel="noopener noreferrer">WebSocket</a>，允许许多客户端直接连接到持久对象以发送和接收消息。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="557" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=715&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=640&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=715&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=750&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=828&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1080&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1280&amp;h=997&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1430&amp;h=1114&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2305 Embedded Image - tUWMOW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1342&amp;h=1045&amp;f=webp" data-lightbox-width="1342" data-lightbox-height="1045" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="557" class="pt-portable-image-media"></div>
+</figure>
+<p>不过，有时客户端应用程序打开一个 WebSocket 连接后，最终会停下来......不进行任何操作。 想一想您的浏览器中打开了5小时但没有碰过的标签。如果它使用 WebSocket 发送和接收信息，那么它实际上就拥有了一个长时间存在的 TCP 连接，而这个连接并没有被用于任何其他用途。 如果这个连接的目标是一个 Durable Object，这个 Durable Object 就必须一直运行，等待某种操作发生，从而消耗内存，并花费您的成本。</p>
+<p>我们最初<a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero">推出 WebSocket Hibernation</a> 就是为了解决这个问题，今天我们宣布该功能已完成测试并正式发布。通过 WebSocket Hibernation，您可以设置休眠时使用的自动响应，并将状态序列化，使其能够在休眠状态下保持。这为 Cloudflare 提供了所需的输入，在“休眠” Durable Object（使其不处于活动运行状态）同时保持来自客户端的开放 WebSocket 连接，而且您不需要为空闲时间付费。结果是，当您真正需要时，您的状态始终在内存中可用，但在不需要时不会被无谓保留。只要您的 Durable Object 处于休眠状态，即使仍有活动的客户端通过 WebSocket 连接，您也不会被计费。</p>
+<p>此外，我们还听取了开发人员就传入 &nbsp;WebSocket 消息到 Durable Objects 的费用提出的反馈意见，这倾向于使用更小、更频繁的消息进行实时通信。从今天起，传入 WebSocket 消息将按相当于 1/20 个请求计费（而不是到现在为止那样 1 个消息相当于 1 个请求）。下面是一个<a href="https://developers.cloudflare.com/durable-objects/platform/pricing/#example-4" target="_blank" rel="noopener noreferrer">定价示例</a>：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-4kyp{color:#0E101A;text-align:left;vertical-align:top} .tg .tg-bhdc{color:#0E101A;font-weight:bold;text-align:left;vertical-align:top}</p>
+<div id="html-block-k93" class="html-block">
+	<style>
+		#html-block-k93 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k93 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k93 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k93 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k93 .tg .tg-4kyp {
+			color: #0E101A;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k93 .tg .tg-bhdc {
+			color: #0E101A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">WebSocket Connection Requests</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Incoming WebSocket Messages</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Billed Requests</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Request Billing</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Before</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">10K</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432M</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432,010,000</span></td>
+				<td class="tg-bhdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">$64.65</span></td>
+			</tr>
+			<tr>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">After</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">10K</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432M</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">21,610,000</span></td>
+				<td class="tg-bhdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">$3.09</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>WebSocket 连接请求</p>
+<p>传入 WebSocket 信息</p>
+<p>计费的请求</p>
+<p>请求费用</p>
+<p>使用之前</p>
+<p>10K</p>
+<p>432M</p>
+<p>432,010,000</p>
+<p>$64.65</p>
+<p>使用之后</p>
+<p>10K</p>
+<p>432M</p>
+<p>21,610,000</p>
+<p>$3.09</p>
+<h3>生产就绪，但没有生产的复杂性</h3>
+<p>要在上一代云平台上达到生产就绪状态，意味着要减慢发布速度。它意味着要将许多独立的工具拼凑起来，或者组建整个团队在内部平台上开展工作。 您不得不改造自己的生产力工具组合，已部署到障碍重重的平台。</p>
+<p>Cloudflare 开发人员平台已经成熟并生产就绪，致力于成为一个集成平台，其上各种产品直观地协同工作，不会有十种不同的方法来完成同样的工作，不需要通过复杂的兼容性列表来帮助了解什么可以一同工作。这些更新都充分体现了这一点，将新功能整合到 Cloudflare 平台的各种产品和组成部分中。</p>
+<p>为此，我们期待听到您的意见，不仅是您希望看到接下来推出什么产品和功能，还包括您认为我们在哪些方面可以做得更简单，或者您认为我们的产品在哪些方面可以更好地协同工作。请告诉我们您认为我们在哪些方面可以做得更多—— &nbsp;<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare 开发人员 Discord</a> 的大门始终敞开。</p>

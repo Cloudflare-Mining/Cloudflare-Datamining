@@ -1,82 +1,46 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7bMxXOoK4JfZ8vOSQMEEze/6771fb2a713d450e0cfbe9e72f8f18a9/making-waf-ai-models-go-brr.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>We made our WAF Machine Learning models <b>5.5x</b> faster, reducing execution time by approximately <b>82%</b>, from <b>1519</b> to <b>275</b> microseconds! Read on to find out how we achieved this remarkable improvement.</p>
-	<p><a href="https://developers.cloudflare.com/waf/about/waf-attack-score" target="_blank" rel="noopener noreferrer">WAF Attack Score</a> is Cloudflare's machine learning (ML)-powered layer built on top of our <a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Web Application Firewall (WAF)</a>. Its goal is to complement the WAF and detect attack bypasses that we haven't encountered before. This has proven invaluable in <a href="https://blog.cloudflare.com/detecting-zero-days-before-zero-day">catching zero-day vulnerabilities</a>, like the one detected in <a href="https://blog.cloudflare.com/how-cloudflares-ai-waf-proactively-detected-ivanti-connect-secure-critical-zero-day-vulnerability">Ivanti Connect Secure</a>, before they are publicly disclosed and enhancing our customers' protection against emerging and unknown threats.</p>
-	<p>Since its <a href="https://blog.cloudflare.com/waf-ml">launch in 2022</a>, WAF attack score adoption has grown exponentially, now protecting millions of Internet properties and running real-time inference on tens of millions of requests per second. The feature's popularity has driven us to seek performance improvements, enabling even broader customer use and enhancing Internet security.</p>
-	<p>In this post, we will discuss the performance optimizations we've implemented for our WAF ML product. We'll guide you through specific code examples and benchmark numbers, demonstrating how these enhancements have significantly improved our system's efficiency. Additionally, we'll share the impressive latency reduction numbers observed after the rollout.</p>
-	<p>Before diving into the optimizations, let's take a moment to review the inner workings of the WAF Attack Score, which powers our WAF ML product.</p>
-	<div class="flex anchor relative">
-		<h2 id="waf-attack-score-system-design">WAF Attack Score system design</h2>
-		<a href="https://blog.cloudflare.com/#waf-attack-score-system-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Bis9LE38A3aK4k7HEn7k9/44ae7b31096471a5256961715f8c7991/unnamed--4--6.png" alt="" class="kg-image" width="1600" height="343" loading="lazy">
-
-	</figure>
-	<p>Cloudflare's WAF attack score identifies various traffic types and attack vectors (<a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank" rel="noopener noreferrer">SQLi</a>, <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks" target="_blank" rel="noopener noreferrer">XSS</a>, Command Injection, etc.) based on structural or statistical content properties. Here's how it works during inference:</p>
-	<ol>
-		<li>
-			<p><b>HTTP Request Content</b>: Start with raw HTTP input.</p>
-		</li>
-		<li>
-			<p><b>Normalization &amp; Transformation</b>: Standardize and clean the data, applying normalization, content substitutions, and de-duplication.</p>
-		</li>
-		<li>
-			<p><b>Feature Extraction</b>: Tokenize the transformed content to generate statistical and structural data.</p>
-		</li>
-		<li>
-			<p><b>Machine Learning Model Inference</b>: Analyze the extracted features with pre-trained models, mapping content representations to classes (e.g., XSS, SQLi or <a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution" target="_blank" rel="noopener noreferrer">RCE</a>) or scores.</p>
-		</li>
-		<li>
-			<p><b>Classification Output in WAF</b>: Assign a score to the input, ranging from 1 (likely malicious) to 99 (likely clean), guiding security actions.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZzHRYXU27VYB5F3F3QjXf/9e5248610a1e89ac8c73a446925abb69/cfce15fb-ce84-4489-a05a-6872b9e502b8.png" alt="" class="kg-image" width="1600" height="991" loading="lazy">
-
-	</figure>
-	<p>Next, we will explore feature extraction and inference optimizations.</p>
-	<div class="flex anchor relative">
-		<h2 id="feature-extraction-optimizations">Feature extraction optimizations</h2>
-		<a href="https://blog.cloudflare.com/#feature-extraction-optimizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the context of the WAF Attack Score ML model, feature extraction or pre-processing is essentially a process of tokenizing the given input and producing a float tensor of 1 x m size:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DIxHJ5zLkdeknndiNGbk0/e802888a2212ddfcae688f1c4201587f/8cc41311-3a09-4c39-b47c-9dc449760ee2.png" alt="" class="kg-image" width="1271" height="805" loading="lazy">
-
-	</figure>
-	<p>In our initial pre-processing implementation, this is achieved via a sliding window of 3 bytes over the input with the help of Rust’s <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html" target="_blank" rel="noopener noreferrer">std::collections::HashMap</a> to look up the tensor index for a given ngram.</p>
-	<div class="flex anchor relative">
-		<h3 id="initial-benchmarks">Initial benchmarks</h3>
-		<a href="https://blog.cloudflare.com/#initial-benchmarks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To establish performance baselines, we've set up four benchmark cases representing example inputs of various lengths, ranging from 44 to 9482 bytes. Each case exemplifies typical input sizes, including those for a request body, user agent, and URI. We run benchmarks using the <a href="https://bheisler.github.io/criterion.rs/book/getting_started.html" target="_blank" rel="noopener noreferrer">Criterion.rs</a> statistics-driven micro-benchmarking tool:</p>
-	<pre class="language-rust"><code class="language-rust">RUSTFLAGS="-C opt-level=3 -C target-cpu=native" cargo criterion</code></pre>
-	<p>Here are initial numbers for these benchmarks executed on a Linux laptop with a 13th Gen Intel® Core™ i7-13800H processor:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>We made our WAF Machine Learning models <strong>5.5x</strong> faster, reducing execution time by approximately <strong>82%</strong>, from <strong>1519</strong> to <strong>275</strong> microseconds! Read on to find out how we achieved this remarkable improvement.</p>
+<p><a href="https://developers.cloudflare.com/waf/about/waf-attack-score" target="_blank" rel="noopener noreferrer">WAF Attack Score</a> is Cloudflare's machine learning (ML)-powered layer built on top of our <a href="https://developers.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Web Application Firewall (WAF)</a>. Its goal is to complement the WAF and detect attack bypasses that we haven't encountered before. This has proven invaluable in <a href="https://blog.cloudflare.com/detecting-zero-days-before-zero-day">catching zero-day vulnerabilities</a>, like the one detected in <a href="https://blog.cloudflare.com/how-cloudflares-ai-waf-proactively-detected-ivanti-connect-secure-critical-zero-day-vulnerability">Ivanti Connect Secure</a>, before they are publicly disclosed and enhancing our customers' protection against emerging and unknown threats.</p>
+<p>Since its <a href="https://blog.cloudflare.com/waf-ml">launch in 2022</a>, WAF attack score adoption has grown exponentially, now protecting millions of Internet properties and running real-time inference on tens of millions of requests per second. The feature's popularity has driven us to seek performance improvements, enabling even broader customer use and enhancing Internet security.</p>
+<p>In this post, we will discuss the performance optimizations we've implemented for our WAF ML product. We'll guide you through specific code examples and benchmark numbers, demonstrating how these enhancements have significantly improved our system's efficiency. Additionally, we'll share the impressive latency reduction numbers observed after the rollout.</p>
+<p>Before diving into the optimizations, let's take a moment to review the inner workings of the WAF Attack Score, which powers our WAF ML product.</p>
+<h2>WAF Attack Score system design</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="153" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=715&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=640&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=715&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=750&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=828&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=1080&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=1280&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=1430&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - 1Lgyd1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45VB8Z69R3RRCPQ12VAC9G.png&amp;w=1600&amp;h=343&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="343" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="153" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare's WAF attack score identifies various traffic types and attack vectors (<a href="https://www.cloudflare.com/learning/security/threats/how-to-prevent-sql-injection" target="_blank" rel="noopener noreferrer">SQLi</a>, <a href="https://www.cloudflare.com/learning/security/how-to-prevent-xss-attacks" target="_blank" rel="noopener noreferrer">XSS</a>, Command Injection, etc.) based on structural or statistical content properties. Here's how it works during inference:</p>
+<ol>
+	<li><strong>HTTP Request Content</strong>: Start with raw HTTP input.</li>
+	<li><strong>Normalization &amp; Transformation</strong>: Standardize and clean the data, applying normalization, content substitutions, and de-duplication.</li>
+	<li><strong>Feature Extraction</strong>: Tokenize the transformed content to generate statistical and structural data.</li>
+	<li><strong>Machine Learning Model Inference</strong>: Analyze the extracted features with pre-trained models, mapping content representations to classes (e.g., XSS, SQLi or <a href="https://www.cloudflare.com/learning/security/what-is-remote-code-execution" target="_blank" rel="noopener noreferrer">RCE</a>) or scores.</li>
+	<li><strong>Classification Output in WAF</strong>: Assign a score to the input, ranging from 1 (likely malicious) to 99 (likely clean), guiding security actions.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The full pipeline required to run malicious HTTP request classification at Cloudflare" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4758VY6PBVNNSH501HR46Y.png&amp;w=1600&amp;h=991&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="991" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media"></div>
+</figure>
+<p>Next, we will explore feature extraction and inference optimizations.</p>
+<h2>Feature extraction optimizations</h2>
+<p>In the context of the WAF Attack Score ML model, feature extraction or pre-processing is essentially a process of tokenizing the given input and producing a float tensor of 1 x m size:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="453" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=715&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=640&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=715&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=750&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=828&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=1080&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=1280&amp;h=811&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=1430&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - Hoh831" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PFGB3783W97B05ZHCRFB.png&amp;w=1271&amp;h=805&amp;f=webp" data-lightbox-width="1271" data-lightbox-height="805" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="453" class="pt-portable-image-media"></div>
+</figure>
+<p>In our initial pre-processing implementation, this is achieved via a sliding window of 3 bytes over the input with the help of Rust’s <a href="https://doc.rust-lang.org/std/collections/struct.HashMap.html" target="_blank" rel="noopener noreferrer">std::collections::HashMap</a> to look up the tensor index for a given ngram.</p>
+<h3>Initial benchmarks</h3>
+<p>To establish performance baselines, we've set up four benchmark cases representing example inputs of various lengths, ranging from 44 to 9482 bytes. Each case exemplifies typical input sizes, including those for a request body, user agent, and URI. We run benchmarks using the <a href="https://bheisler.github.io/criterion.rs/book/getting_started.html" target="_blank" rel="noopener noreferrer">Criterion.rs</a> statistics-driven micro-benchmarking tool:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">RUSTFLAGS</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"-C opt-level=3 -C target-cpu=native"</span><span class="sk-24292e-fff"> cargo criterion</span></span></code></pre>
+</div>
+<p>Here are initial numbers for these benchmarks executed on a Linux laptop with a 13th Gen Intel® Core™ i7-13800H processor:</p>
+<div id="html-block-k2d" class="html-block">
+	<style>
+		#html-block-k2d .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k2d .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -89,7 +53,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k2d .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -103,24 +67,24 @@
 			word-break: normal;
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k2d .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k2d .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k2d .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -150,26 +114,27 @@
 				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30.24</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>An important observation from these results is that pre-processing time correlates with the length of the input string, with throughput ranging from 28 MiB/s to 36 MiB/s. This suggests that considerable time is spent iterating over longer input strings. Optimizing this part of the process could significantly enhance performance. The dependency of processing time on input size highlights a key area for performance optimization. To validate this, we should examine where the processing time is spent by analyzing flamegraphs created from a 100-second profiling session visualized using <a href="https://www.honeycomb.io/blog/golang-observability-using-the-new-pprof-web-ui-to-debug-memory-usage" target="_blank" rel="noopener noreferrer">pprof</a>:</p>
-	<pre class="language-rust"><code class="language-rust">RUSTFLAGS="-C opt-level=3 -C target-cpu=native" cargo criterion -- --profile-time 100
- 
-go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profile.pb</code></pre>
-
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/WGhFT3j6vn4QGFOmdyNGO/8dd1c6e4d171cd2c407af7bf4d9a9ac7/unnamed--5--6.png" alt="" class="kg-image" width="1600" height="729" loading="lazy">
-
-	</figure>
-	<p>Looking at the pre-processing flamegraph above, it's clear that most of the time was spent on the following two operations:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>An important observation from these results is that pre-processing time correlates with the length of the input string, with throughput ranging from 28 MiB/s to 36 MiB/s. This suggests that considerable time is spent iterating over longer input strings. Optimizing this part of the process could significantly enhance performance. The dependency of processing time on input size highlights a key area for performance optimization. To validate this, we should examine where the processing time is spent by analyzing flamegraphs created from a 100-second profiling session visualized using <a href="https://www.honeycomb.io/blog/golang-observability-using-the-new-pprof-web-ui-to-debug-memory-usage" target="_blank" rel="noopener noreferrer">pprof</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">RUSTFLAGS</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"-C opt-level=3 -C target-cpu=native"</span><span class="sk-24292e-fff"> cargo criterion </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">time </span><span class="sk-005cc5-ffc799">100</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">go tool pprof </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">http</span><span class="sk-d73a49-a0a0a0">=:</span><span class="sk-24292e-fff"> target</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">criterion</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">preprocessing</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">avg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">body</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1000</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">profile</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">pb</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="326" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=640&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=715&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=750&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=828&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1080&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1280&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1430&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - yKX2fM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BXKBBXR01F17F5BE8P3A.png&amp;w=1600&amp;h=729&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="729" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="326" class="pt-portable-image-media"></div>
+</figure>
+<p>Looking at the pre-processing flamegraph above, it's clear that most of the time was spent on the following two operations:</p>
+<div id="html-block-k2n" class="html-block">
+	<style>
+		#html-block-k2n .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k2n .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -182,7 +147,7 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k2n .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -196,24 +161,24 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 			word-break: normal;
 		}
 
-		.tg .tg-ekg0 {
+		#html-block-k2n .tg .tg-ekg0 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k2n .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k2n .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Function name</span></th>
@@ -230,84 +195,83 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18.5%</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Let's tackle the HashMap lookups first. Lookups are happening inside the <i>tensor_populate_ngrams</i> function, where input is split into windows of 3 bytes representing ngram and then lookup inside two hash maps:</p>
-	<pre class="language-python"><code class="language-python">fn tensor_populate_ngrams(tensor: &amp;mut [f32], input: &amp;[u8]) {   
-   // Populate the NORM ngrams
-   let mut unknown_norm_ngrams = 0;
-   let norm_offset = 1;
- 
-   for s in input.windows(3) {
-       match NORM_VOCAB.get(s) {
-           Some(pos) =&gt; {
-               tensor[*pos as usize + norm_offset] += 1.0f32;
-           }
-           None =&gt; {
-               unknown_norm_ngrams += 1;
-           }
-       };
-   }
- 
-   // Populate the SIG ngrams
-   let mut unknown_sig_ngrams = 0;
-   let sig_offset = norm_offset + NORM_VOCAB.len();
- 
-   let res = SIG_REGEX.replace_all(&amp;input, b"#");
- 
-   for s in res.windows(3) {
-       match SIG_VOCAB.get(s) {
-           Some(pos) =&gt; {
-               // adding +1 here as the first position will be the unknown_sig_ngrams
-               tensor[*pos as usize + sig_offset + 1] += 1.0f32;
-           }
-           None =&gt; {
-               unknown_sig_ngrams += 1;
-           }
-       }
-   }
-}</code></pre>
-	<p>So essentially the pre-processing function performs a ton of hash map lookups, the volume of which depends on the size of the input string, e.g. 1469 lookups for the given benchmark case <i>avg-body-1000</i>.</p>
-	<div class="flex anchor relative">
-		<h3 id="optimization-attempt-1-hashmap-aho-corasick">Optimization attempt #1: HashMap → Aho-Corasick</h3>
-		<a href="https://blog.cloudflare.com/#optimization-attempt-1-hashmap-aho-corasick" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Rust hash maps are generally quite fast. However, when that many lookups are being performed, it's not very cache friendly.</p>
-	<p>So can we do better than hash maps, and what should we try first? The answer is the <a href="https://docs.rs/aho-corasick/latest/aho_corasick" target="_blank" rel="noopener noreferrer">Aho-Corasick library</a>.</p>
-	<p>This library provides multiple pattern search principally through an implementation of the <a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm" target="_blank" rel="noopener noreferrer">Aho-Corasick algorithm</a>, which builds a fast finite state machine for executing searches in linear time.</p>
-	<p>We can also tune Aho-Corasick settings based on this recommendation:</p>
-	<blockquote>
-		<p><i>“You might want to use</i> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/struct.AhoCorasickBuilder.html#method.kind" target="_blank" rel="noopener noreferrer"><i>AhoCorasickBuilder::kind</i></a> <i>to set your searcher to always use</i> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/enum.AhoCorasickKind.html#variant.DFA" target="_blank" rel="noopener noreferrer"><i>AhoCorasickKind::DFA</i></a> <i>if search speed is critical and memory usage isn’t a concern.”</i></p>
-	</blockquote>
-	<pre class="language-python"><code class="language-python">static ref NORM_VOCAB_AC: AhoCorasick = AhoCorasick::builder().kind(Some(AhoCorasickKind::DFA)).build(&amp;[    
-    "abc",
-    "def",
-    "wuq",
-    "ijf",
-    "iru",
-    "piw",
-    "mjw",
-    "isn",
-    "od ",
-    "pro",
-    ...
-]).unwrap();</code></pre>
-	<p>Then we use the constructed AhoCorasick dictionary to lookup ngrams using its <a href="https://docs.rs/aho-corasick/latest/aho_corasick/struct.AhoCorasick.html#method.find_overlapping_iter" target="_blank" rel="noopener noreferrer">find_overlapping_iter</a> method:</p>
-	<pre class="language-python"><code class="language-python">for mat in NORM_VOCAB_AC.find_overlapping_iter(&amp;input) {
-    tensor_input_data[mat.pattern().as_usize() + 1] += 1.0;
-}</code></pre>
-	<p>We ran benchmarks and compared them against the baseline times shown above:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Let's tackle the HashMap lookups first. Lookups are happening inside the <em>tensor_populate_ngrams</em> function, where input is split into windows of 3 bytes representing ngram and then lookup inside two hash maps:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">fn tensor_populate_ngrams(tensor: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">mut [f32], </span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">[u8]) {   </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   //</span><span class="sk-24292e-fff"> Populate the </span><span class="sk-005cc5-fff">NORM</span><span class="sk-24292e-fff"> ngrams</span></span>
+<span class="line"><span class="sk-24292e-fff">   let mut unknown_norm_ngrams = </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   let norm_offset = </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   for</span><span class="sk-24292e-fff"> s </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> input</span><span class="sk-24292e-fff">.windows(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       match </span><span class="sk-005cc5-fff">NORM_VOCAB</span><span class="sk-24292e-fff">.get(s) {</span></span>
+<span class="line"><span class="sk-24292e-fff">           Some(pos) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">               tensor[</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">pos </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> norm_offset] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">0f32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">           }</span></span>
+<span class="line"><span class="sk-005cc5-fff">           None</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">               unknown_norm_ngrams </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">           }</span></span>
+<span class="line"><span class="sk-24292e-fff">       };</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   //</span><span class="sk-24292e-fff"> Populate the </span><span class="sk-005cc5-fff">SIG</span><span class="sk-24292e-fff"> ngrams</span></span>
+<span class="line"><span class="sk-24292e-fff">   let mut unknown_sig_ngrams = </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   let sig_offset = norm_offset </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-fff"> NORM_VOCAB</span><span class="sk-24292e-fff">.len();</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">   let res = </span><span class="sk-005cc5-fff">SIG_REGEX</span><span class="sk-24292e-fff">.replace_all(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"#"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   for</span><span class="sk-24292e-fff"> s </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> res.windows(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       match </span><span class="sk-005cc5-fff">SIG_VOCAB</span><span class="sk-24292e-fff">.get(s) {</span></span>
+<span class="line"><span class="sk-24292e-fff">           Some(pos) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">               //</span><span class="sk-24292e-fff"> adding </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> here </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> the first position will be the unknown_sig_ngrams</span></span>
+<span class="line"><span class="sk-24292e-fff">               tensor[</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">pos </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> sig_offset </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">0f32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">           }</span></span>
+<span class="line"><span class="sk-005cc5-fff">           None</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">               unknown_sig_ngrams </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">           }</span></span>
+<span class="line"><span class="sk-24292e-fff">       }</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>So essentially the pre-processing function performs a ton of hash map lookups, the volume of which depends on the size of the input string, e.g. 1469 lookups for the given benchmark case <em>avg-body-1000</em>.</p>
+<h3>Optimization attempt #1: HashMap → Aho-Corasick</h3>
+<p>Rust hash maps are generally quite fast. However, when that many lookups are being performed, it's not very cache friendly.</p>
+<p>So can we do better than hash maps, and what should we try first? The answer is the <a href="https://docs.rs/aho-corasick/latest/aho_corasick" target="_blank" rel="noopener noreferrer">Aho-Corasick library</a>.</p>
+<p>This library provides multiple pattern search principally through an implementation of the <a href="https://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_algorithm" target="_blank" rel="noopener noreferrer">Aho-Corasick algorithm</a>, which builds a fast finite state machine for executing searches in linear time.</p>
+<p>We can also tune Aho-Corasick settings based on this recommendation:</p>
+<blockquote><em>“You might want to use</em> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/struct.AhoCorasickBuilder.html#method.kind" target="_blank" rel="noopener noreferrer"><em>AhoCorasickBuilder::kind</em></a> <em>to set your searcher to always use</em> <a href="https://docs.rs/aho-corasick/1.1.3/aho_corasick/enum.AhoCorasickKind.html#variant.DFA" target="_blank" rel="noopener noreferrer"><em>AhoCorasickKind::DFA</em></a> <em>if search speed is critical and memory usage isn’t a concern.”</em></blockquote>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">static ref </span><span class="sk-005cc5-fff">NORM_VOCAB_AC</span><span class="sk-24292e-fff">: AhoCorasick </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> AhoCorasick::builder().kind(Some(AhoCorasickKind::</span><span class="sk-005cc5-fff">DFA</span><span class="sk-24292e-fff">)).build(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">[    </span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "abc"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "def"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "wuq"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "ijf"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "iru"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "piw"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "mjw"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "isn"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "od "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "pro"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-fff">    ...</span></span>
+<span class="line"><span class="sk-24292e-fff">]).unwrap()</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre>
+</div>
+<p>Then we use the constructed AhoCorasick dictionary to lookup ngrams using its <a href="https://docs.rs/aho-corasick/latest/aho_corasick/struct.AhoCorasick.html#method.find_overlapping_iter" target="_blank" rel="noopener noreferrer">find_overlapping_iter</a> method:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> mat </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-fff"> NORM_VOCAB_AC</span><span class="sk-24292e-fff">.find_overlapping_iter(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    tensor_input_data[mat.pattern().as_usize() </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We ran benchmarks and compared them against the baseline times shown above:</p>
+<div id="html-block-k3y" class="html-block">
+	<style>
+		#html-block-k3y .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k3y .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -320,7 +284,7 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k3y .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -334,31 +298,31 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 			word-break: normal;
 		}
 
-		.tg .tg-gyuw {
+		#html-block-k3y .tg .tg-gyuw {
 			color: #38761D;
 			font-weight: bold;
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k3y .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k3y .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k3y .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -393,43 +357,40 @@ go tool pprof -http=: target/criterion/profile/preprocessing/avg-body-1000/profi
 				<td class="tg-gyuw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#38761D;background-color:transparent">-33.60% or 1.51x</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>That's substantially better – Aho-Corasick DFA does wonders.</p>
-	<div class="flex anchor relative">
-		<h3 id="optimization-attempt-2-aho-corasick-match">Optimization attempt #2: Aho-Corasick → match</h3>
-		<a href="https://blog.cloudflare.com/#optimization-attempt-2-aho-corasick-match" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One would think optimization with Aho-Corasick DFA is enough and that it seems unlikely that anything else can beat it. Yet, we can throw Aho-Corasick away and simply use the Rust match statement and let the compiler do the optimization for us!</p>
-	<pre class="language-python"><code class="language-python">#[inline]
-const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {     
-    match ngram {
-        b"abc" =&gt; 1,
-        b"def" =&gt; 2,
-        b"wuq" =&gt; 3,
-        b"ijf" =&gt; 4,
-        b"iru" =&gt; 5,
-        b"piw" =&gt; 6,
-        b"mjw" =&gt; 7,
-        b"isn" =&gt; 8,
-        b"od " =&gt; 9,
-        b"pro" =&gt; 10,
-        ...
-        _ =&gt; 0,
-    }
-}```</code></pre>
-	<p>Here's how it performs in practice, based on the assembly generated by the <a href="https://godbolt.org/z/dqTq5n5Y3" target="_blank" rel="noopener noreferrer">Godbolt compiler explorer</a>. The corresponding assembly code efficiently implements this lookup by employing a jump table and byte-wise comparisons to determine the return value based on input sequences, optimizing for quick decisions and minimal branching. Although the example only includes ten ngrams, it's important to note that in applications like our WAF Attack Score ML models, we deal with thousands of ngrams. This simple match-based approach outshines both HashMap lookups and the Aho-Corasick method.</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>That's substantially better – Aho-Corasick DFA does wonders.</p>
+<h3>Optimization attempt #2: Aho-Corasick → match</h3>
+<p>One would think optimization with Aho-Corasick DFA is enough and that it seems unlikely that anything else can beat it. Yet, we can throw Aho-Corasick away and simply use the Rust match statement and let the compiler do the optimization for us!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#[inline]</span></span>
+<span class="line"><span class="sk-24292e-fff">const fn norm_vocab_lookup(ngram: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">[u8; </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">]) </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">-&gt;</span><span class="sk-24292e-fff"> usize {     </span></span>
+<span class="line"><span class="sk-24292e-fff">    match ngram {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"abc"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"def"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"wuq"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"ijf"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"iru"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"piw"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"mjw"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"isn"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"od "</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 9</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        b</span><span class="sk-032f62-99ffe4">"pro"</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-fff">        ...</span></span>
+<span class="line"><span class="sk-24292e-fff">        _ =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">```</span></span></code></pre>
+</div>
+<p>Here's how it performs in practice, based on the assembly generated by the <a href="https://godbolt.org/z/dqTq5n5Y3" target="_blank" rel="noopener noreferrer">Godbolt compiler explorer</a>. The corresponding assembly code efficiently implements this lookup by employing a jump table and byte-wise comparisons to determine the return value based on input sequences, optimizing for quick decisions and minimal branching. Although the example only includes ten ngrams, it's important to note that in applications like our WAF Attack Score ML models, we deal with thousands of ngrams. This simple match-based approach outshines both HashMap lookups and the Aho-Corasick method.</p>
+<div id="html-block-k4b" class="html-block">
+	<style>
+		#html-block-k4b .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k4b .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -442,7 +403,7 @@ const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k4b .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -456,31 +417,31 @@ const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {
 			word-break: normal;
 		}
 
-		.tg .tg-gyuw {
+		#html-block-k4b .tg .tg-gyuw {
 			color: #38761D;
 			font-weight: bold;
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k4b .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k4b .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k4b .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -515,104 +476,99 @@ const fn norm_vocab_lookup(ngram: &amp;[u8; 3]) -&gt; usize {
 				<td class="tg-gyuw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#38761D;background-color:transparent">-50.91% or 2.04x</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Switching to match gave us another 7-18% drop in latency, depending on the case.</p>
-	<div class="flex anchor relative">
-		<h3 id="optimization-attempt-3-regex-windowedreplacer">Optimization attempt #3: Regex → WindowedReplacer</h3>
-		<a href="https://blog.cloudflare.com/#optimization-attempt-3-regex-windowedreplacer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So, what exactly is the purpose of <i>Regex::replace_all</i> in pre-processing? Regex is defined and used like this:</p>
-	<pre class="language-regex"><code class="language-regex">pub static SIG_REGEX: Lazy&lt;Regex&gt; =
-    Lazy::new(|| RegexBuilder::new("[a-z]+").unicode(false).build().unwrap());
-    ... 
-    let res = SIG_REGEX.replace_all(&amp;input, b"#");
-    for s in res.windows(3) {
-        tensor[sig_vocab_lookup(s.try_into().unwrap())] += 1.0;
-    }</code></pre>
-	<p>Essentially, all we need is to:</p>
-	<ol>
-		<li>
-			<p>Replace every sequence of lowercase letters in the input with a single byte "#".</p>
-		</li>
-		<li>
-			<p>Iterate over replaced bytes in a windowed fashion with a step of 3 bytes representing an ngram.</p>
-		</li>
-		<li>
-			<p>Look up the ngram index and increment it in the tensor.</p>
-		</li>
-	</ol>
-	<p>This logic seems simple enough that we could implement it more efficiently with a single pass over the input and without any allocations:</p>
-	<pre class="language-python"><code class="language-python">type Window = [u8; 3];
-type Iter&lt;'a&gt; = Peekable&lt;std::slice::Iter&lt;'a, u8&gt;&gt;;
-
-pub struct WindowedReplacer&lt;'a&gt; {
-    window: Window,
-    input_iter: Iter&lt;'a&gt;,
-}
-
-#[inline]
-fn is_replaceable(byte: u8) -&gt; bool {
-    matches!(byte, b'a'..=b'z')
-}
-
-#[inline]
-fn next_byte(iter: &amp;mut Iter) -&gt; Option&lt;u8&gt; {
-    let byte = iter.next().copied()?;
-    if is_replaceable(byte) {
-        while iter.next_if(|b| is_replaceable(**b)).is_some() {}
-        Some(b'#')
-    } else {
-        Some(byte)
-    }
-}
-
-impl&lt;'a&gt; WindowedReplacer&lt;'a&gt; {
-    pub fn new(input: &amp;'a [u8]) -&gt; Option&lt;Self&gt; {
-        let mut window: Window = Default::default();
-        let mut iter = input.iter().peekable();
-        for byte in window.iter_mut().skip(1) {
-            *byte = next_byte(&amp;mut iter)?;
-        }
-        Some(WindowedReplacer {
-            window,
-            input_iter: iter,
-        })
-    }
-}
-
-impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
-    type Item = Window;
-
-    #[inline]
-    fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
-        for i in 0..2 {
-            self.window[i] = self.window[i + 1];
-        }
-        let byte = next_byte(&amp;mut self.input_iter)?;
-        self.window[2] = byte;
-        Some(self.window)
-    }
-}</code></pre>
-	<p>By utilizing the <i>WindowedReplacer</i>, we simplify the replacement logic:</p>
-	<pre class="language-python"><code class="language-python">if let Some(replacer) = WindowedReplacer::new(&amp;input) {                
-    for ngram in replacer.windows(3) {
-        tensor[sig_vocab_lookup(ngram.try_into().unwrap())] += 1.0;
-    }
-}</code></pre>
-	<p>This new approach not only eliminates the need for allocating additional buffers to store replaced content, but also leverages Rust's iterator optimizations, which the compiler can more effectively optimize. You can view an example of the assembly output for this new iterator at the provided <a href="https://godbolt.org/z/fjaoP7z6Y" target="_blank" rel="noopener noreferrer">Godbolt link</a>.</p>
-	<p>Now let's benchmark this and compare against the original implementation:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Switching to match gave us another 7-18% drop in latency, depending on the case.</p>
+<h3>Optimization attempt #3: Regex → WindowedReplacer</h3>
+<p>So, what exactly is the purpose of <em>Regex::replace_all</em> in pre-processing? Regex is defined and used like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-fff">pub static SIG_REGEX: Lazy&lt;Regex&gt; =</span></span>
+<span class="line"><span class="sk-032f62-fff">    Lazy::new</span><span class="sk-005cc5-fff">(</span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-032f62-fff"> RegexBuilder::new</span><span class="sk-005cc5-fff">(</span><span class="sk-032f62-fff">"</span><span class="sk-005cc5-fff">[</span><span class="sk-005cc5-ffc799">a-z</span><span class="sk-005cc5-fff">]</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-fff">"</span><span class="sk-005cc5-fff">).</span><span class="sk-032f62-fff">unicode</span><span class="sk-005cc5-fff">(</span><span class="sk-032f62-fff">false</span><span class="sk-005cc5-fff">).</span><span class="sk-032f62-fff">build</span><span class="sk-005cc5-fff">().</span><span class="sk-032f62-fff">unwrap</span><span class="sk-005cc5-fff">())</span><span class="sk-032f62-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-fff">    ...</span><span class="sk-032f62-fff"> </span></span>
+<span class="line"><span class="sk-032f62-fff">    let res = SIG_REGEX</span><span class="sk-005cc5-fff">.</span><span class="sk-032f62-fff">replace_all</span><span class="sk-005cc5-fff">(</span><span class="sk-032f62-fff">&amp;input, b"#"</span><span class="sk-005cc5-fff">)</span><span class="sk-032f62-fff">;</span></span>
+<span class="line"><span class="sk-032f62-fff">    for s in res</span><span class="sk-005cc5-fff">.</span><span class="sk-032f62-fff">windows</span><span class="sk-005cc5-fff">(</span><span class="sk-032f62-fff">3</span><span class="sk-005cc5-fff">)</span><span class="sk-032f62-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-fff">        tensor</span><span class="sk-005cc5-fff">[</span><span class="sk-005cc5-ffc799">sig_vocab_lookup(s.try_into().unwrap())</span><span class="sk-005cc5-fff">]</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-032f62-fff">= 1</span><span class="sk-005cc5-fff">.</span><span class="sk-032f62-fff">0;</span></span>
+<span class="line"><span class="sk-032f62-fff">    }</span></span></code></pre>
+</div>
+<p>Essentially, all we need is to:</p>
+<ol>
+	<li>Replace every sequence of lowercase letters in the input with a single byte "#".</li>
+	<li>Iterate over replaced bytes in a windowed fashion with a step of 3 bytes representing an ngram.</li>
+	<li>Look up the ngram index and increment it in the tensor.</li>
+</ol>
+<p>This logic seems simple enough that we could implement it more efficiently with a single pass over the input and without any allocations:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-24292e-fff"> Window </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [u8; </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">]</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-24292e-fff"> Iter</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">'a&gt; = Peekable&lt;std::slice::Iter&lt;'</span><span class="sk-24292e-fff">a, u8</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">pub struct WindowedReplacer</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">'a&gt; {</span></span>
+<span class="line"><span class="sk-24292e-fff">    window: Window,</span></span>
+<span class="line"><span class="sk-24292e-fff">    input_iter: Iter</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">'a&gt;,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#[inline]</span></span>
+<span class="line"><span class="sk-24292e-fff">fn is_replaceable(byte: u8) </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">-&gt;</span><span class="sk-005cc5-ffc799"> bool</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    matches!(byte, </span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">'a'</span><span class="sk-24292e-fff">..=</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">'z'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#[inline]</span></span>
+<span class="line"><span class="sk-24292e-fff">fn next_byte(</span><span class="sk-005cc5-ffc799">iter</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">mut Iter) </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">-&gt;</span><span class="sk-24292e-fff"> Option</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">u8</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    let byte = </span><span class="sk-005cc5-ffc799">iter</span><span class="sk-24292e-fff">.next().copied()</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> is_replaceable(byte) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        while</span><span class="sk-005cc5-ffc799"> iter</span><span class="sk-24292e-fff">.next_if(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">b</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> is_replaceable(</span><span class="sk-d73a49-a0a0a0">**</span><span class="sk-24292e-fff">b)).is_some() {}</span></span>
+<span class="line"><span class="sk-24292e-fff">        Some(</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">'#'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        Some(byte)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">impl</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">'a&gt; WindowedReplacer&lt;'</span><span class="sk-24292e-fff">a</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    pub fn new(</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-032f62-99ffe4">'a [u8]) -&gt; Option&lt;Self&gt; {</span></span>
+<span class="line"><span class="sk-24292e-fff">        let mut window: </span><span class="sk-e36209-fff">Window</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Default::default();</span></span>
+<span class="line"><span class="sk-24292e-fff">        let mut </span><span class="sk-e36209-fff">iter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> input</span><span class="sk-24292e-fff">.iter().peekable();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        for</span><span class="sk-24292e-fff"> byte </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> window.iter_mut().skip(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            *</span><span class="sk-24292e-fff">byte = next_byte(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">mut </span><span class="sk-005cc5-ffc799">iter</span><span class="sk-24292e-fff">)</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">        Some(WindowedReplacer {</span></span>
+<span class="line"><span class="sk-24292e-fff">            window,</span></span>
+<span class="line"><span class="sk-24292e-fff">            input_iter: </span><span class="sk-005cc5-ffc799">iter</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        })</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">impl</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">'a&gt; Iterator for WindowedReplacer&lt;'</span><span class="sk-24292e-fff">a</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    type</span><span class="sk-24292e-fff"> Item = Window;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    #[inline]</span></span>
+<span class="line"><span class="sk-24292e-fff">    fn </span><span class="sk-005cc5-ffc799">next</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">mut </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">) </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">-&gt;</span><span class="sk-24292e-fff"> Option</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Self::Item</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">.2</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">            self</span><span class="sk-24292e-fff">.window[i] = </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">.window[i </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">        let byte = next_byte(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">mut </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">.input_iter)</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">        self</span><span class="sk-24292e-fff">.window[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">] = byte;</span></span>
+<span class="line"><span class="sk-24292e-fff">        Some(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">.window)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>By utilizing the <em>WindowedReplacer</em>, we simplify the replacement logic:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> let Some(replacer) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> WindowedReplacer::new(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">) {                </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> ngram </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> replacer.windows(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        tensor[sig_vocab_lookup(ngram.try_into().unwrap())] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This new approach not only eliminates the need for allocating additional buffers to store replaced content, but also leverages Rust's iterator optimizations, which the compiler can more effectively optimize. You can view an example of the assembly output for this new iterator at the provided <a href="https://godbolt.org/z/fjaoP7z6Y" target="_blank" rel="noopener noreferrer">Godbolt link</a>.</p>
+<p>Now let's benchmark this and compare against the original implementation:</p>
+<div id="html-block-k58" class="html-block">
+	<style>
+		#html-block-k58 .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k58 .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -625,7 +581,7 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k58 .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -639,31 +595,31 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 			word-break: normal;
 		}
 
-		.tg .tg-gyuw {
+		#html-block-k58 .tg .tg-gyuw {
 			color: #38761D;
 			font-weight: bold;
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k58 .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k58 .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k58 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -698,25 +654,20 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 				<td class="tg-gyuw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#38761D;background-color:transparent">-76.07% or 4.18x</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>The new letters replacement implementation has doubled the preprocessing speed compared to the previously optimized version using match statements, and it is four to five times faster than the original version!</p>
-	<div class="flex anchor relative">
-		<h3 id="optimization-attempt-4-going-nuclear-with-branchless-ngram-lookups">Optimization attempt #4: Going nuclear with branchless ngram lookups</h3>
-		<a href="https://blog.cloudflare.com/#optimization-attempt-4-going-nuclear-with-branchless-ngram-lookups" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At this point, 4-5x improvement might seem like a lot and there is no point pursuing any further optimizations. After all, using an ngram lookup with a match statement has beaten the following methods, with benchmarks omitted for brevity:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>The new letters replacement implementation has doubled the preprocessing speed compared to the previously optimized version using match statements, and it is four to five times faster than the original version!</p>
+<h3>Optimization attempt #4: Going nuclear with branchless ngram lookups</h3>
+<p>At this point, 4-5x improvement might seem like a lot and there is no point pursuing any further optimizations. After all, using an ngram lookup with a match statement has beaten the following methods, with benchmarks omitted for brevity:</p>
+<div id="html-block-k5f" class="html-block">
+	<style>
+		#html-block-k5f .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k5f .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -729,7 +680,7 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k5f .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -743,26 +694,26 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 			word-break: normal;
 		}
 
-		.tg .tg-ekg0 {
+		#html-block-k5f .tg .tg-ekg0 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-zb5k {
+		#html-block-k5f .tg .tg-zb5k {
 			color: #15C;
 			text-align: left;
 			text-decoration: underline;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k5f .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Lookup method</span></th>
@@ -791,76 +742,88 @@ impl&lt;'a&gt; Iterator for WindowedReplacer&lt;'a&gt; {
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">A Rust crate that allows you to use static compile-time generated hash maps and hash sets using </span><a href="https://arxiv.org/abs/2104.10402"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">PTHash perfect hash functions</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">.</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>However, if we look again at <a href="https://godbolt.org/z/dqTq5n5Y3" target="_blank" rel="noopener noreferrer">the assembly of the norm_vocab_lookup function</a>, it is clear that the execution flow has to perform a bunch of comparisons using <i>cmp</i> instructions. This creates many branches for the CPU to handle, which can lead to branch mispredictions. Branch mispredictions occur when the CPU incorrectly guesses the path of execution, causing delays as it discards partially completed instructions and fetches the correct ones. By reducing or eliminating these branches, we can avoid these mispredictions and improve the efficiency of the lookup process. How can we get rid of those branches when there is a need to look up thousands of unique ngrams?</p>
-	<p>Since there are only 3 bytes in each ngram, we can build two lookup tables of 256 x 256 x 256 size, storing the ngram tensor index. With this naive approach, our memory requirements will be: 256 x 256 x 256 x 2 x 2 = 64 MB, which seems like a lot.</p>
-	<p>However, given that we only care about ASCII bytes 0..127, then memory requirements can be lower: 128 x 128 x 128 x 2 x 2 = 8 MB, which is better. However, we will need to check for bytes &gt;= 128, which will introduce a branch again.</p>
-	<p>So can we do better? Considering that the actual number of distinct byte values used in the ngrams is significantly less than the total possible 256 values, we can reduce memory requirements further by employing the following technique:</p>
-	<p>1. To avoid the branching caused by comparisons, we use precomputed offset lookup tables. This means instead of comparing each byte of the ngram during each lookup, we precompute the positions of each possible byte in a lookup table. This way, we replace the comparison operations with direct memory accesses, which are much faster and do not involve branching. We build an ngram bytes offsets lookup const array, storing each unique ngram byte offset position multiplied by the number of unique ngram bytes:</p>
-	<pre class="language-python"><code class="language-python">const NGRAM_OFFSETS: [[u32; 256]; 3] = [
-    [
-        // offsets of first byte in ngram
-    ],
-    [
-        // offsets of second byte in ngram
-    ],
-    [
-        // offsets of third byte in ngram
-    ],
-];</code></pre>
-	<p>2. Then to obtain the ngram index, we can use this simple const function:</p>
-	<pre class="language-python"><code class="language-python">#[inline]
-const fn ngram_index(ngram: [u8; 3]) -&gt; usize {
-    (NGRAM_OFFSETS[0][ngram[0] as usize]
-        + NGRAM_OFFSETS[1][ngram[1] as usize]
-        + NGRAM_OFFSETS[2][ngram[2] as usize]) as usize
-}</code></pre>
-	<p>3. To look up the tensor index based on the ngram index, we construct another const array at compile time using a list of all ngrams, where N is the number of unique ngram bytes:</p>
-	<pre class="language-python"><code class="language-python">const NGRAM_TENSOR_IDX: [u16; N * N * N] = {
-    let mut arr = [0; N * N * N];
-    arr[ngram_index(*b"abc")] = 1;
-    arr[ngram_index(*b"def")] = 2;
-    arr[ngram_index(*b"wuq")] = 3;
-    arr[ngram_index(*b"ijf")] = 4;
-    arr[ngram_index(*b"iru")] = 5;
-    arr[ngram_index(*b"piw")] = 6;
-    arr[ngram_index(*b"mjw")] = 7;
-    arr[ngram_index(*b"isn")] = 8;
-    arr[ngram_index(*b"od ")] = 9;
-    ...
-    arr
-};</code></pre>
-	<p>4. Finally, to update the tensor based on given ngram, we lookup the ngram index, then the tensor index, and then increment it with help of <a href="https://doc.rust-lang.org/std/primitive.slice.html#method.get_unchecked_mut" target="_blank" rel="noopener noreferrer">get_unchecked_mut</a>, which avoids unnecessary (in this case) boundary checks and eliminates another source of branching:</p>
-	<pre class="language-python"><code class="language-python">#[inline]
-fn update_tensor_with_ngram(tensor: &amp;mut [f32], ngram: [u8; 3]) {
-    let ngram_idx = ngram_index(ngram);
-    debug_assert!(ngram_idx &lt; NGRAM_TENSOR_IDX.len());
-    unsafe {
-        let tensor_idx = *NGRAM_TENSOR_IDX.get_unchecked(ngram_idx) as usize;
-        debug_assert!(tensor_idx &lt; tensor.len());
-        *tensor.get_unchecked_mut(tensor_idx) += 1.0;
-    }
-}</code></pre>
-	<p>This logic works effectively, passes correctness tests, and most importantly, it's completely branchless! Moreover, the memory footprint of used lookup arrays is tiny – just ~500 KiB of memory – which easily fits into modern CPU L2/L3 caches, ensuring that expensive cache misses are rare and performance is optimal.</p>
-	<p>The last trick we will employ is loop unrolling for ngrams processing. By taking 6 ngrams (corresponding to 8 bytes of the input array) at a time, the compiler can unroll the second loop and auto-vectorize it, leveraging parallel execution to improve performance:</p>
-	<pre class="language-python"><code class="language-python">const CHUNK_SIZE: usize = 6;
-
-let chunks_max_offset =
-    ((input.len().saturating_sub(2)) / CHUNK_SIZE) * CHUNK_SIZE;
-for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
-    for ngram in input[i..i + CHUNK_SIZE + 2].windows(3) {
-        update_tensor_with_ngram(tensor, ngram.try_into().unwrap());
-    }
-}</code></pre>
-	<p>Tying up everything together, our final pre-processing benchmarks show the following:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>However, if we look again at <a href="https://godbolt.org/z/dqTq5n5Y3" target="_blank" rel="noopener noreferrer">the assembly of the norm_vocab_lookup function</a>, it is clear that the execution flow has to perform a bunch of comparisons using <em>cmp</em> instructions. This creates many branches for the CPU to handle, which can lead to branch mispredictions. Branch mispredictions occur when the CPU incorrectly guesses the path of execution, causing delays as it discards partially completed instructions and fetches the correct ones. By reducing or eliminating these branches, we can avoid these mispredictions and improve the efficiency of the lookup process. How can we get rid of those branches when there is a need to look up thousands of unique ngrams?</p>
+<p>Since there are only 3 bytes in each ngram, we can build two lookup tables of 256 x 256 x 256 size, storing the ngram tensor index. With this naive approach, our memory requirements will be: 256 x 256 x 256 x 2 x 2 = 64 MB, which seems like a lot.</p>
+<p>However, given that we only care about ASCII bytes 0..127, then memory requirements can be lower: 128 x 128 x 128 x 2 x 2 = 8 MB, which is better. However, we will need to check for bytes &gt;= 128, which will introduce a branch again.</p>
+<p>So can we do better? Considering that the actual number of distinct byte values used in the ngrams is significantly less than the total possible 256 values, we can reduce memory requirements further by employing the following technique:</p>
+<p>1. To avoid the branching caused by comparisons, we use precomputed offset lookup tables. This means instead of comparing each byte of the ngram during each lookup, we precompute the positions of each possible byte in a lookup table. This way, we replace the comparison operations with direct memory accesses, which are much faster and do not involve branching. We build an ngram bytes offsets lookup const array, storing each unique ngram byte offset position multiplied by the number of unique ngram bytes:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">const </span><span class="sk-005cc5-fff">NGRAM_OFFSETS</span><span class="sk-24292e-fff">: [[u32; </span><span class="sk-005cc5-ffc799">256</span><span class="sk-24292e-fff">]; </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    [</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        //</span><span class="sk-24292e-fff"> offsets of first byte </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> ngram</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">    [</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        //</span><span class="sk-24292e-fff"> offsets of second byte </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> ngram</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">    [</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        //</span><span class="sk-24292e-fff"> offsets of third byte </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> ngram</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre>
+</div>
+<p>2. Then to obtain the ngram index, we can use this simple const function:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#[inline]</span></span>
+<span class="line"><span class="sk-24292e-fff">const fn ngram_index(ngram: [u8; </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">]) </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">-&gt;</span><span class="sk-24292e-fff"> usize {</span></span>
+<span class="line"><span class="sk-24292e-fff">    (</span><span class="sk-005cc5-fff">NGRAM_OFFSETS</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">][ngram[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        +</span><span class="sk-005cc5-fff"> NGRAM_OFFSETS</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">][ngram[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        +</span><span class="sk-005cc5-fff"> NGRAM_OFFSETS</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">][ngram[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize]) </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>3. To look up the tensor index based on the ngram index, we construct another const array at compile time using a list of all ngrams, where N is the number of unique ngram bytes:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">const </span><span class="sk-005cc5-fff">NGRAM_TENSOR_IDX</span><span class="sk-24292e-fff">: [u16; N </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> N </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> N] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    let mut arr = [</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; N </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> N </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> N];</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"abc"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"def"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"wuq"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"ijf"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"iru"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"piw"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"mjw"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">7</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"isn"</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">8</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr[ngram_index(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-d73a49-a0a0a0">b</span><span class="sk-032f62-99ffe4">"od "</span><span class="sk-24292e-fff">)] = </span><span class="sk-005cc5-ffc799">9</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-fff">    ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    arr</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span></code></pre>
+</div>
+<p>4. Finally, to update the tensor based on given ngram, we lookup the ngram index, then the tensor index, and then increment it with help of <a href="https://doc.rust-lang.org/std/primitive.slice.html#method.get_unchecked_mut" target="_blank" rel="noopener noreferrer">get_unchecked_mut</a>, which avoids unnecessary (in this case) boundary checks and eliminates another source of branching:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#[inline]</span></span>
+<span class="line"><span class="sk-24292e-fff">fn update_tensor_with_ngram(tensor: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">mut [f32], ngram: [u8; </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">]) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    let ngram_idx = ngram_index(ngram);</span></span>
+<span class="line"><span class="sk-24292e-fff">    debug_assert!(ngram_idx </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-fff"> NGRAM_TENSOR_IDX</span><span class="sk-24292e-fff">.len());</span></span>
+<span class="line"><span class="sk-24292e-fff">    unsafe {</span></span>
+<span class="line"><span class="sk-24292e-fff">        let tensor_idx = </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-fff">NGRAM_TENSOR_IDX</span><span class="sk-24292e-fff">.get_unchecked(ngram_idx) </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> usize;</span></span>
+<span class="line"><span class="sk-24292e-fff">        debug_assert!(tensor_idx </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> tensor.len());</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        *</span><span class="sk-24292e-fff">tensor.get_unchecked_mut(tensor_idx) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-005cc5-ffc799">1.0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This logic works effectively, passes correctness tests, and most importantly, it's completely branchless! Moreover, the memory footprint of used lookup arrays is tiny – just ~500 KiB of memory – which easily fits into modern CPU L2/L3 caches, ensuring that expensive cache misses are rare and performance is optimal.</p>
+<p>The last trick we will employ is loop unrolling for ngrams processing. By taking 6 ngrams (corresponding to 8 bytes of the input array) at a time, the compiler can unroll the second loop and auto-vectorize it, leveraging parallel execution to improve performance:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">const </span><span class="sk-005cc5-fff">CHUNK_SIZE</span><span class="sk-24292e-fff">: usize </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">let chunks_max_offset </span><span class="sk-d73a49-a0a0a0">=</span></span>
+<span class="line"><span class="sk-24292e-fff">    ((</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">.len().saturating_sub(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-fff"> CHUNK_SIZE</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-fff"> CHUNK_SIZE</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">..chunks_max_offset).step_by(</span><span class="sk-005cc5-fff">CHUNK_SIZE</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> ngram </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-005cc5-ffc799"> input</span><span class="sk-24292e-fff">[i..i </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-fff"> CHUNK_SIZE</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">].windows(</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        update_tensor_with_ngram(tensor, ngram.try_into().unwrap());</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Tying up everything together, our final pre-processing benchmarks show the following:</p>
+<div id="html-block-k6f" class="html-block">
+	<style>
+		#html-block-k6f .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k6f .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -873,7 +836,7 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k6f .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -887,31 +850,31 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			word-break: normal;
 		}
 
-		.tg .tg-gyuw {
+		#html-block-k6f .tg .tg-gyuw {
 			color: #38761D;
 			font-weight: bold;
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k6f .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k6f .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k6f .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -946,36 +909,23 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 				<td class="tg-gyuw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#38761D;background-color:transparent">-84.92% or 6.63x</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>The longer input is, the higher the latency drop will be due to branchless ngram lookups and loop unrolling, ranging from <b>six to twelve times faster</b> than baseline implementation.</p>
-	<p>After trying various optimizations, the final version of pre-processing retains optimization attempts 3 and 4, using branchless ngram lookup with offset tables and a single-pass non-allocating replacement iterator.</p>
-	<p>There are potentially more CPU cycles left on the table, and techniques like memory pre-fetching and manual SIMD intrinsics could speed this up a bit further. However, let's now switch gears into looking at inference latency a bit closer.</p>
-	<div class="flex anchor relative">
-		<h2 id="model-inference-optimizations">Model inference optimizations</h2>
-		<a href="https://blog.cloudflare.com/#model-inference-optimizations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="initial-benchmarks">Initial benchmarks</h3>
-		<a href="https://blog.cloudflare.com/#initial-benchmarks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s have a look at original performance numbers of the WAF Attack Score ML model, which uses <a href="https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0" target="_blank" rel="noopener noreferrer">TensorFlow Lite 2.6.0</a>:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>The longer input is, the higher the latency drop will be due to branchless ngram lookups and loop unrolling, ranging from <strong>six to twelve times faster</strong> than baseline implementation.</p>
+<p>After trying various optimizations, the final version of pre-processing retains optimization attempts 3 and 4, using branchless ngram lookup with offset tables and a single-pass non-allocating replacement iterator.</p>
+<p>There are potentially more CPU cycles left on the table, and techniques like memory pre-fetching and manual SIMD intrinsics could speed this up a bit further. However, let's now switch gears into looking at inference latency a bit closer.</p>
+<h2>Model inference optimizations</h2>
+<h3>Initial benchmarks</h3>
+<p>Let’s have a look at original performance numbers of the WAF Attack Score ML model, which uses <a href="https://github.com/tensorflow/tensorflow/releases/tag/v2.6.0" target="_blank" rel="noopener noreferrer">TensorFlow Lite 2.6.0</a>:</p>
+<div id="html-block-k6x" class="html-block">
+	<style>
+		#html-block-k6x .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k6x .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -988,7 +938,7 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k6x .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -1002,24 +952,24 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			word-break: normal;
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k6x .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k6x .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k6x .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -1044,22 +994,22 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">246.88</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Model inference is actually independent of the original input length, as inputs are transformed into tensors of predetermined size during the pre-processing phase, which we optimized above. From now on, we will refer to a singular inference time when benchmarking our optimizations.</p>
-	<p>Digging deeper with profiler, we observed that most of the time is spent on the following operations:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3uy64gatRk8PfdnpRz5Xm5/0d3da469c30e5941524289c1b13574c5/unnamed--6--6.png" alt="" class="kg-image" width="1600" height="137" loading="lazy">
-
-	</figure><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Model inference is actually independent of the original input length, as inputs are transformed into tensors of predetermined size during the pre-processing phase, which we optimized above. From now on, we will refer to a singular inference time when benchmarking our optimizations.</p>
+<p>Digging deeper with profiler, we observed that most of the time is spent on the following operations:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="61" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=715&amp;h=61&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=640&amp;h=55&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=715&amp;h=61&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=750&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=828&amp;h=71&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=1080&amp;h=92&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=1280&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=1430&amp;h=122&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - Q8tTh8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46C1P11KVWZVWN9RGTSYHD.png&amp;w=1600&amp;h=137&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="137" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="61" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k73" class="html-block">
+	<style>
+		#html-block-k73 .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k73 .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -1072,7 +1022,7 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k73 .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -1086,24 +1036,24 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 			word-break: normal;
 		}
 
-		.tg .tg-ekg0 {
+		#html-block-k73 .tg .tg-ekg0 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k73 .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k73 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Function name</span></th>
@@ -1132,68 +1082,61 @@ for i in (0..chunks_max_offset).step_by(CHUNK_SIZE) {
 				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4.13%</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>The most expensive operation is matrix multiplication, which boils down to iteration within <a href="https://github.com/tensorflow/tensorflow/blob/v2.6.0/tensorflow/lite/kernels/internal/reference/portable_tensor_utils.cc#L119-L136" target="_blank" rel="noopener noreferrer">three nested loops</a>:</p>
-	<pre class="language-python"><code class="language-python">void PortableMatrixBatchVectorMultiplyAccumulate(const float* matrix,
-                                                 int m_rows, int m_cols,
-                                                 const float* vector,
-                                                 int n_batch, float* result) {
-  float* result_in_batch = result;
-  for (int b = 0; b &lt; n_batch; b++) {
-    const float* matrix_ptr = matrix;
-    for (int r = 0; r &lt; m_rows; r++) {
-      float dot_prod = 0.0f;
-      const float* vector_in_batch = vector + b * m_cols;
-      for (int c = 0; c &lt; m_cols; c++) {
-        dot_prod += *matrix_ptr++ * *vector_in_batch++;
-      }
-      *result_in_batch += dot_prod;
-     ++result_in_batch;
-    }
-  }
-}</code></pre>
-	<p>This doesn’t look very efficient and many <a href="https://en.algorithmica.org/hpc/algorithms/matmul" target="_blank" rel="noopener noreferrer">blogs</a> and <a href="https://www.cs.utexas.edu/~flame/pubs/GotoTOMS_revision.pdf" target="_blank" rel="noopener noreferrer">research papers</a> have been written on how matrix multiplication can be optimized, which basically boils down to:</p>
-	<ul>
-		<li>
-			<p><b>Blocking</b>: Divide matrices into smaller blocks that fit into the cache, improving cache reuse and reducing memory access latency.</p>
-		</li>
-		<li>
-			<p><b>Vectorization</b>: Use SIMD instructions to process multiple data points in parallel, enhancing efficiency with vector registers.</p>
-		</li>
-		<li>
-			<p><b>Loop Unrolling</b>: Reduce loop control overhead and increase parallelism by executing multiple loop iterations simultaneously.</p>
-		</li>
-	</ul>
-	<p>To gain a better understanding of how these techniques work, we recommend watching this video, which brilliantly depicts the process of matrix multiplication:</p><!--kg-card-begin: html--><iframe width="560" height="315" src="https://www.youtube.com/embed/aMvCEEBIBto?si=tbw1XsYwHFezUX98&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-	<p></p><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="tensorflow-lite-with-avx2">Tensorflow Lite with AVX2</h3>
-		<a href="https://blog.cloudflare.com/#tensorflow-lite-with-avx2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>TensorFlow Lite does, in fact, support SIMD matrix multiplication – we just need to enable it and re-compile the TensorFlow Lite library:</p>
-	<pre class="language-python"><code class="language-python">if [[ "$(uname -m)" == x86_64* ]]; then
-    # On x86_64 target x86-64-v3 CPU to enable AVX2 and FMA.
-    arguments+=("--copt=-march=x86-64-v3")
-fi</code></pre>
-	<p>After running profiler again using the SIMD-optimized TensorFlow Lite library:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6NmJhJoYG42ZZhU41m0Uj5/1d9fce45d44f98b41375d6a56f1a7cac/unnamed--7--5.png" alt="" class="kg-image" width="1600" height="102" loading="lazy">
-
-	</figure>
-	<p>Top operations as per profiler output:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>The most expensive operation is matrix multiplication, which boils down to iteration within <a href="https://github.com/tensorflow/tensorflow/blob/v2.6.0/tensorflow/lite/kernels/internal/reference/portable_tensor_utils.cc#L119-L136" target="_blank" rel="noopener noreferrer">three nested loops</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">void PortableMatrixBatchVectorMultiplyAccumulate(const </span><span class="sk-005cc5-ffc799">float</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> matrix,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                                                 int</span><span class="sk-24292e-fff"> m_rows, </span><span class="sk-005cc5-ffc799">int</span><span class="sk-24292e-fff"> m_cols,</span></span>
+<span class="line"><span class="sk-24292e-fff">                                                 const </span><span class="sk-005cc5-ffc799">float</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> vector,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                                                 int</span><span class="sk-24292e-fff"> n_batch, </span><span class="sk-005cc5-ffc799">float</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> result) {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  float</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> result_in_batch = result;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">int</span><span class="sk-24292e-fff"> b = </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; b </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> n_batch; b</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    const </span><span class="sk-005cc5-ffc799">float</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> matrix_ptr = matrix;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">int</span><span class="sk-24292e-fff"> r = </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; r </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> m_rows; r</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      float</span><span class="sk-24292e-fff"> dot_prod = </span><span class="sk-005cc5-ffc799">0.</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">0f</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">      const </span><span class="sk-005cc5-ffc799">float</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> vector_in_batch = vector </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> b </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> m_cols;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      for</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">int</span><span class="sk-24292e-fff"> c = </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; c </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> m_cols; c</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        dot_prod </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">matrix_ptr</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">++</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">vector_in_batch</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">++</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      *</span><span class="sk-24292e-fff">result_in_batch </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">= dot_prod;</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">     ++</span><span class="sk-24292e-fff">result_in_batch;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This doesn’t look very efficient and many <a href="https://en.algorithmica.org/hpc/algorithms/matmul" target="_blank" rel="noopener noreferrer">blogs</a> and <a href="https://www.cs.utexas.edu/~flame/pubs/GotoTOMS_revision.pdf" target="_blank" rel="noopener noreferrer">research papers</a> have been written on how matrix multiplication can be optimized, which basically boils down to:</p>
+<ul>
+	<li><strong>Blocking</strong>: Divide matrices into smaller blocks that fit into the cache, improving cache reuse and reducing memory access latency.</li>
+	<li><strong>Vectorization</strong>: Use SIMD instructions to process multiple data points in parallel, enhancing efficiency with vector registers.</li>
+	<li><strong>Loop Unrolling</strong>: Reduce loop control overhead and increase parallelism by executing multiple loop iterations simultaneously.</li>
+</ul>
+<p>To gain a better understanding of how these techniques work, we recommend watching this video, which brilliantly depicts the process of matrix multiplication:</p>
+<div id="html-block-k7t" class="html-block"><iframe width="560" height="315" src="https://www.youtube.com/embed/aMvCEEBIBto?si=tbw1XsYwHFezUX98&amp;controls=0" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+	<p></p>
+</div>
+<h3>Tensorflow Lite with AVX2</h3>
+<p>TensorFlow Lite does, in fact, support SIMD matrix multiplication – we just need to enable it and re-compile the TensorFlow Lite library:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> [[ </span><span class="sk-032f62-99ffe4">"$(uname -m)"</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-24292e-fff"> x86_64</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> ]]; then</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # On x86_64 target x86-64-v3 CPU to enable AVX2 and FMA.</span></span>
+<span class="line"><span class="sk-24292e-fff">    arguments</span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"--copt=-march=x86-64-v3"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">fi</span></span></code></pre>
+</div>
+<p>After running profiler again using the SIMD-optimized TensorFlow Lite library:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="46" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=715&amp;h=46&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=640&amp;h=41&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=715&amp;h=46&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=750&amp;h=48&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=828&amp;h=53&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=1080&amp;h=69&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=1280&amp;h=82&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=1430&amp;h=92&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - INajyl" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4840FWBA31AR3P0FZM56BE.png&amp;w=1600&amp;h=102&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="102" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="46" class="pt-portable-image-media"></div>
+</figure>
+<p>Top operations as per profiler output:</p>
+<div id="html-block-k84" class="html-block">
+	<style>
+		#html-block-k84 .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k84 .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -1206,7 +1149,7 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k84 .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -1220,24 +1163,24 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg .tg-ekg0 {
+		#html-block-k84 .tg .tg-ekg0 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k84 .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k84 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Function name</span></th>
@@ -1266,17 +1209,19 @@ fi</code></pre>
 				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4.63%</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Matrix multiplication now uses <a href="https://github.com/tensorflow/tensorflow/blob/15ec568b5505727c940b651aeb2a9643b504086c/tensorflow/lite/kernels/internal/optimized/sse_tensor_utils.cc#L161-L199" target="_blank" rel="noopener noreferrer">AVX2 instructions</a>, which uses blocks of 8x8 to multiply and accumulate the multiplication result.</p>
-	<p>Proportionally, matrix multiplication and <a href="https://www.cloudflare.com/learning/ai/what-is-quantization" target="_blank" rel="noopener noreferrer">quantization</a> operations take a similar time share when compared to non-SIMD version, however in absolute numbers, it’s almost twice as fast when SIMD optimizations are enabled:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Matrix multiplication now uses <a href="https://github.com/tensorflow/tensorflow/blob/15ec568b5505727c940b651aeb2a9643b504086c/tensorflow/lite/kernels/internal/optimized/sse_tensor_utils.cc#L161-L199" target="_blank" rel="noopener noreferrer">AVX2 instructions</a>, which uses blocks of 8x8 to multiply and accumulate the multiplication result.</p>
+<p>Proportionally, matrix multiplication and <a href="https://www.cloudflare.com/learning/ai/what-is-quantization" target="_blank" rel="noopener noreferrer">quantization</a> operations take a similar time share when compared to non-SIMD version, however in absolute numbers, it’s almost twice as fast when SIMD optimizations are enabled:</p>
+<div id="html-block-k8f" class="html-block">
+	<style>
+		#html-block-k8f .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k8f .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -1289,7 +1234,7 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k8f .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -1303,31 +1248,31 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg .tg-gyuw {
+		#html-block-k8f .tg .tg-gyuw {
 			color: #38761D;
 			font-weight: bold;
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k8f .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k8f .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k8f .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -1344,28 +1289,25 @@ fi</code></pre>
 				<td class="tg-gyuw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#38761D;background-color:transparent">-47.19% or 1.89x</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Quite a nice performance boost just from a few lines of build config change!</p>
-	<div class="flex anchor relative">
-		<h3 id="tensorflow-lite-with-xnnpack">Tensorflow Lite with XNNPACK</h3>
-		<a href="https://blog.cloudflare.com/#tensorflow-lite-with-xnnpack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Tensorflow Lite comes with a useful benchmarking tool called <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/benchmark" target="_blank" rel="noopener noreferrer">benchmark_model</a>, which also has a built-in profiler.</p>
-	<p>The tool can be built locally using the command:</p>
-	<pre class="language-bash"><code class="language-bash">bazel build -j 4 --copt=-march=native -c opt tensorflow/lite/tools/benchmark:benchmark_model</code></pre>
-	<p>After building, benchmarks were run with different settings:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Quite a nice performance boost just from a few lines of build config change!</p>
+<h3>Tensorflow Lite with XNNPACK</h3>
+<p>Tensorflow Lite comes with a useful benchmarking tool called <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/lite/tools/benchmark" target="_blank" rel="noopener noreferrer">benchmark_model</a>, which also has a built-in profiler.</p>
+<p>The tool can be built locally using the command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">bazel</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> -j</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-005cc5-99ffe4"> --copt=-march=native</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> opt</span><span class="sk-032f62-99ffe4"> tensorflow/lite/tools/benchmark:benchmark_model</span></span></code></pre>
+</div>
+<p>After building, benchmarks were run with different settings:</p>
+<div id="html-block-k8u" class="html-block">
+	<style>
+		#html-block-k8u .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k8u .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -1378,7 +1320,7 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k8u .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -1392,19 +1334,19 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg .tg-ekg0 {
+		#html-block-k8u .tg .tg-ekg0 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k8u .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-ekg0"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark run</span></th>
@@ -1425,26 +1367,24 @@ fi</code></pre>
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">49.05</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Tensorflow Lite with XNNPACK enabled emerges as a leader, achieving ~50% latency reduction, when compared to the original Tensorflow Lite implementation.</p>
-	<p>More technical details about XNNPACK can be found in these blog posts:</p>
-	<ul>
-		<li>
-			<p><a href="https://blog.tensorflow.org/2022/06/Profiling-XNNPACK-with-TFLite.html" target="_blank" rel="noopener noreferrer">Profiling XNNPACK with TFLite</a></p>
-		</li>
-		<li>
-			<p><a href="https://blog.tensorflow.org/2024/04/faster-dynamically-quantized-inference-with-xnnpack.html" target="_blank" rel="noopener noreferrer">Faster Dynamically Quantized Inference with XNNPack</a></p>
-		</li>
-	</ul>
-	<p>Re-running benchmarks with XNNPack enabled, we get the following results:</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Tensorflow Lite with XNNPACK enabled emerges as a leader, achieving ~50% latency reduction, when compared to the original Tensorflow Lite implementation.</p>
+<p>More technical details about XNNPACK can be found in these blog posts:</p>
+<ul>
+	<li><a href="https://blog.tensorflow.org/2022/06/Profiling-XNNPACK-with-TFLite.html" target="_blank" rel="noopener noreferrer">Profiling XNNPACK with TFLite</a></li>
+	<li><a href="https://blog.tensorflow.org/2024/04/faster-dynamically-quantized-inference-with-xnnpack.html" target="_blank" rel="noopener noreferrer">Faster Dynamically Quantized Inference with XNNPack</a></li>
+</ul>
+<p>Re-running benchmarks with XNNPack enabled, we get the following results:</p>
+<div id="html-block-k9b" class="html-block">
+	<style>
+		#html-block-k9b .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k9b .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -1457,7 +1397,7 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k9b .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -1471,31 +1411,31 @@ fi</code></pre>
 			word-break: normal;
 		}
 
-		.tg .tg-gyuw {
+		#html-block-k9b .tg .tg-gyuw {
 			color: #38761D;
 			font-weight: bold;
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-lqy6 {
+		#html-block-k9b .tg .tg-lqy6 {
 			text-align: right;
 			vertical-align: top
 		}
 
-		.tg .tg-kxn2 {
+		#html-block-k9b .tg .tg-kxn2 {
 			background-color: #EFEFEF;
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k9b .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Benchmark case</span></th>
@@ -1516,64 +1456,35 @@ fi</code></pre>
 				<td class="tg-gyuw"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#38761D;background-color:transparent">-77.17% or 4.38x</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>By upgrading TensorFlow Lite from 2.6.0 to 2.16.1 and enabling SIMD optimizations along with the XNNPack, we were able to decrease WAF ML model inference time more than <b>four-fold</b>, achieving a <b>77.17%</b> reduction.</p>
-	<div class="flex anchor relative">
-		<h2 id="caching-inference-result">Caching inference result</h2>
-		<a href="https://blog.cloudflare.com/#caching-inference-result" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While making code faster through pre-processing and inference optimizations is great, it's even better when code doesn't need to run at all. This is where caching comes in. <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law" target="_blank" rel="noopener noreferrer">Amdahl's Law</a> suggests that optimizing only parts of a program has diminishing returns. By avoiding redundant executions with caching, we can achieve significant performance gains beyond the limitations of traditional code optimization.</p>
-	<p>A simple key-value cache would quickly occupy all available memory on the server due to the high cardinality of URLs, HTTP headers, and HTTP bodies. However, because "everything on the Internet has an L-shape" or more specifically, follows a <a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">Zipf's law</a> distribution, we can optimize our caching strategy.</p>
-	<p><a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">Zipf</a>'<a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">s law</a> states that in many natural datasets, the frequency of any item is inversely proportional to its rank in the frequency table. In other words, a few items are extremely common, while the majority are rare. By analyzing our request data, we found that URLs, HTTP headers, and even HTTP bodies follow this distribution. For example, here is the user agent header frequency distribution against its rank:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50OWcB7Buza1Jp77ePY75X/e25e66e7665fccc454df026e5ca37729/unnamed--8--3.png" alt="" class="kg-image" width="1277" height="800" loading="lazy">
-
-	</figure>
-	<p>By caching the top-N most frequently occurring inputs and their corresponding inference results, we can ensure that both pre-processing and inference are skipped for the majority of requests. This is where the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener noreferrer">Least Recently Used (LRU)</a> cache comes in – frequently used items stay hot in the cache, while the least recently used ones are evicted.</p>
-	<p>We use <a href="https://github.com/openresty/lua-resty-lrucache" target="_blank" rel="noopener noreferrer">lua-resty-mlcache</a> as our caching solution, allowing us to share cached inference results between different Nginx workers via a shared memory dictionary. The LRU cache effectively exploits the <a href="https://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff" target="_blank" rel="noopener noreferrer">space-time trade-off</a>, where we trade a small amount of memory for significant CPU time savings.</p>
-	<p>This approach enables us to achieve a <b>~70%</b> cache hit ratio, significantly reducing latency further, as we will analyze in the final section below.</p>
-	<div class="flex anchor relative">
-		<h2 id="optimization-results">Optimization results</h2>
-		<a href="https://blog.cloudflare.com/#optimization-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The optimizations discussed in this post were rolled out in several phases to ensure system correctness and stability.</p>
-	<p>First, we enabled SIMD optimizations for TensorFlow Lite, which reduced WAF ML total execution time by approximately <b>41.80%,</b> decreasing from <b>1519</b> ➔ <b>884 μs</b> on average.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15SMdamloYpjyUy5ZwH9o0/ab4ec787f870d27a45ff513db1f696c8/unnamed--9--3.png" alt="" class="kg-image" width="1600" height="470" loading="lazy">
-
-	</figure>
-	<p>Next, we upgraded TensorFlow Lite from version 2.6.0 to 2.16.1, enabled XNNPack, and implemented pre-processing optimizations. This further reduced WAF ML total execution time by <b>~40.77%</b>, bringing it down from <b>932</b> ➔ <b>552 μs</b> on average. The initial average time of 932 μs was slightly higher than the previous 884 μs due to the increased number of customers using this feature and the months that passed between changes.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/01EuBB1eVopVjUjWsVvwrK/0d908285bd4296d75f5c98918cf1a561/unnamed--10--3.png" alt="" class="kg-image" width="1600" height="472" loading="lazy">
-
-	</figure>
-	<p>Lastly, we introduced LRU caching, which led to an additional reduction in WAF ML total execution time by <b>~50.18%</b>, from <b>552</b> ➔ <b>275 μs</b> on average.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6epSwp5jz4ZMaVfdwahZnN/8c23c1b6a90bf301f9e7f6566d4f3295/unnamed--11--3.png" alt="" class="kg-image" width="1600" height="482" loading="lazy">
-
-	</figure>
-	<p>Overall, we cut WAF ML execution time by <b>~81.90%</b>, decreasing from <b>1519</b> ➔ <b>275 μs</b>, or <b>5.5x</b> faster!</p>
-	<p>To illustrate the significance of this: with Cloudflare’s average rate of 9.5 million requests per second passing through WAF ML, saving <b>1244 microseconds</b> per request equates to saving ~<b>32 years</b> of processing time every single day! That’s in addition to the savings of <b>523 microseconds</b> per request or <b>65 years</b> of processing time per day demonstrated last year in our <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">Every request, every microsecond: scalable machine learning at Cloudflare</a> post about our Bot Management product.</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We hope you enjoyed reading about how we made our WAF ML models go brrr, just as much as we enjoyed implementing these optimizations to bring scalable WAF ML to more customers on a truly global scale.</p>
-	<p>Looking ahead, we are developing even more sophisticated ML security models. These advancements aim to bring our <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer">WAF</a> and <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer">Bot Management</a> products to the next level, making them even more useful and effective for our customers.</p>
+	</table>
 </div>
+<p>By upgrading TensorFlow Lite from 2.6.0 to 2.16.1 and enabling SIMD optimizations along with the XNNPack, we were able to decrease WAF ML model inference time more than <strong>four-fold</strong>, achieving a <strong>77.17%</strong> reduction.</p>
+<h2>Caching inference result</h2>
+<p>While making code faster through pre-processing and inference optimizations is great, it's even better when code doesn't need to run at all. This is where caching comes in. <a href="https://en.wikipedia.org/wiki/Amdahl%27s_law" target="_blank" rel="noopener noreferrer">Amdahl's Law</a> suggests that optimizing only parts of a program has diminishing returns. By avoiding redundant executions with caching, we can achieve significant performance gains beyond the limitations of traditional code optimization.</p>
+<p>A simple key-value cache would quickly occupy all available memory on the server due to the high cardinality of URLs, HTTP headers, and HTTP bodies. However, because "everything on the Internet has an L-shape" or more specifically, follows a <a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">Zipf's law</a> distribution, we can optimize our caching strategy.</p>
+<p><a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">Zipf</a>'<a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank" rel="noopener noreferrer">s law</a> states that in many natural datasets, the frequency of any item is inversely proportional to its rank in the frequency table. In other words, a few items are extremely common, while the majority are rare. By analyzing our request data, we found that URLs, HTTP headers, and even HTTP bodies follow this distribution. For example, here is the user agent header frequency distribution against its rank:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=715&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=640&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=715&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=750&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=828&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=1080&amp;h=677&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=1280&amp;h=802&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=1430&amp;h=896&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - HQ5kcv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4750F7FNJE01Y67YM8EB0A.png&amp;w=1277&amp;h=800&amp;f=webp" data-lightbox-width="1277" data-lightbox-height="800" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="448" class="pt-portable-image-media"></div>
+</figure>
+<p>By caching the top-N most frequently occurring inputs and their corresponding inference results, we can ensure that both pre-processing and inference are skipped for the majority of requests. This is where the <a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener noreferrer">Least Recently Used (LRU)</a> cache comes in – frequently used items stay hot in the cache, while the least recently used ones are evicted.</p>
+<p>We use <a href="https://github.com/openresty/lua-resty-lrucache" target="_blank" rel="noopener noreferrer">lua-resty-mlcache</a> as our caching solution, allowing us to share cached inference results between different Nginx workers via a shared memory dictionary. The LRU cache effectively exploits the <a href="https://en.wikipedia.org/wiki/Space%E2%80%93time_tradeoff" target="_blank" rel="noopener noreferrer">space-time trade-off</a>, where we trade a small amount of memory for significant CPU time savings.</p>
+<p>This approach enables us to achieve a <strong>~70%</strong> cache hit ratio, significantly reducing latency further, as we will analyze in the final section below.</p>
+<h2>Optimization results</h2>
+<p>The optimizations discussed in this post were rolled out in several phases to ensure system correctness and stability.</p>
+<p>First, we enabled SIMD optimizations for TensorFlow Lite, which reduced WAF ML total execution time by approximately <strong>41.80%,</strong> decreasing from <strong>1519</strong> ➔ <strong>884 μs</strong> on average.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="210" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=715&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=640&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=715&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=750&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=828&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=1080&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=1280&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=1430&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - BBiN58" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449BEBD45P567FSVK6TGJN.png&amp;w=1600&amp;h=470&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="470" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="210" class="pt-portable-image-media"></div>
+</figure>
+<p>Next, we upgraded TensorFlow Lite from version 2.6.0 to 2.16.1, enabled XNNPack, and implemented pre-processing optimizations. This further reduced WAF ML total execution time by <strong>~40.77%</strong>, bringing it down from <strong>932</strong> ➔ <strong>552 μs</strong> on average. The initial average time of 932 μs was slightly higher than the previous 884 μs due to the increased number of customers using this feature and the months that passed between changes.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="211" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=715&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=640&amp;h=189&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=715&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=750&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=828&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=1080&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=1280&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=1430&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - KTZpDO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446HB8Q8T03W7T0000PN5D.png&amp;w=1600&amp;h=472&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="211" class="pt-portable-image-media"></div>
+</figure>
+<p>Lastly, we introduced LRU caching, which led to an additional reduction in WAF ML total execution time by <strong>~50.18%</strong>, from <strong>552</strong> ➔ <strong>275 μs</strong> on average.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="215" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=640&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=715&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=750&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=828&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=1080&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=1280&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=1430&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2447 Embedded Image - 4NWIvQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489PG0QE1H6J3S4BNYWZ0Y.png&amp;w=1600&amp;h=482&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="482" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="215" class="pt-portable-image-media"></div>
+</figure>
+<p>Overall, we cut WAF ML execution time by <strong>~81.90%</strong>, decreasing from <strong>1519</strong> ➔ <strong>275 μs</strong>, or <strong>5.5x</strong> faster!</p>
+<p>To illustrate the significance of this: with Cloudflare’s average rate of 9.5 million requests per second passing through WAF ML, saving <strong>1244 microseconds</strong> per request equates to saving ~<strong>32 years</strong> of processing time every single day! That’s in addition to the savings of <strong>523 microseconds</strong> per request or <strong>65 years</strong> of processing time per day demonstrated last year in our <a href="https://blog.cloudflare.com/scalable-machine-learning-at-cloudflare">Every request, every microsecond: scalable machine learning at Cloudflare</a> post about our Bot Management product.</p>
+<h2>Conclusion</h2>
+<p>We hope you enjoyed reading about how we made our WAF ML models go brrr, just as much as we enjoyed implementing these optimizations to bring scalable WAF ML to more customers on a truly global scale.</p>
+<p>Looking ahead, we are developing even more sophisticated ML security models. These advancements aim to bring our <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer">WAF</a> and <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer">Bot Management</a> products to the next level, making them even more useful and effective for our customers.</p>

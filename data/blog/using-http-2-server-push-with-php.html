@@ -1,170 +1,156 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NPP0lk9059Fun7XgYDpJv/abefe80a280891839114d756339d10d3/using-http-2-server-push-with-php.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Two weeks ago CloudFlare announced that it was supporting <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">HTTP/2 Server</a> Push for all our customers. By simply adding a <code>Link</code> header to an HTTP response specifying <code>preload</code> CloudFlare would automatically push items to web browsers that support Server Push.</p>
-	<p>To illustrate how easy this is I create a small PHP page that uses the PHP <a href="https://secure.php.net/manual/en/function.header.php" target="_blank" rel="noopener noreferrer"><code>header</code></a> function to insert appropriate <code>Link</code> headers to push images to the web browser via CloudFlare. The web page looks like this when loaded:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KEen2kNGsrXXEKZZnQSni/27615c7b083c1aff54f087eb5225c1c6/Screen-Shot-2016-05-13-at-11-50-00-AM.png" alt="" class="kg-image" width="436" height="675" loading="lazy">
-
-	</figure>
-	<p>There are two images loaded from the same server both of which are pushed if the web browser supports Server Push. This is achieved by inserting two <code>Link</code> headers in the HTTP response. The response looks like:</p>
-	<pre class="language-bash"><code class="language-bash">HTTP/1.1 200 OK
-Server: nginx/1.9.15
-Date: Fri, 13 May 2016 10:52:13 GMT
-Content-Type: text/html
-Transfer-Encoding: chunked
-Connection: keep-alive
-Link: &lt;/images/drucken.jpg&gt;; rel=preload; as=image
-Link: &lt;/images/empire.jpg&gt;; rel=preload; as=image</code></pre>
-	<p>At the bottom are the two <code>Link</code> headers corresponding to the two images on the page with the <code>rel=preload</code> directive as specified in W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer">preload draft</a>.</p>
-	<p>The complete code can be found in this <a href="https://gist.github.com/jgrahamc/df91229381366105c7ff0f88c8c38485" target="_blank" rel="noopener noreferrer">gist</a> but the core of the code looks like this:</p>
-	<pre class="language-php"><code class="language-php">    &lt;?php
-    function pushImage($uri) {
-        header("Link: &lt;{$uri}&gt;; rel=preload; as=image", false);
-        return &lt;&lt;&lt;HTML
-    &lt;img src="{$uri}"&gt;
-    HTML;
-    }
-
-    $image1 = pushImage("/images/drucken.jpg");
-    $image2 = pushImage("/images/empire.jpg");
-    ?&gt;
-
-    &lt;html&gt;
-
-    &lt;head&gt;&lt;title&gt;PHP Server Push&lt;/title&gt;&lt;/head&gt;
-    &lt;body&gt;
-
-    &lt;h1&gt;PHP Server Push&lt;/h1&gt;
-
-    &lt;?php
-    echo ccbysa($image1, "https://bit.ly/1Wu5bYx",
-       "https://www.flickr.com/photos/hiperactivo/", "Javier Candeira");
-
-    echo ccbynd($image2, "https://bit.ly/24PHue3",
-        "https://www.flickr.com/photos/bobsfever/", "Robert McGoldrick");
-    ?&gt;
-
-    &lt;/body&gt;
-    &lt;/html&gt;</code></pre>
-	<p>Since you have to call the PHP <code>header</code> function before any output (such as HTML) has occurred the code makes two calls to a helper function called <code>pushImage</code> first. <code>pushImage</code> adds the appropriate <code>Link</code> header and returns the HTML needed to insert the actual image in the page.</p>
-	<p>Later the variables <code>$image1</code> and <code>$image2</code> (which contain the HTML needed to display the images) is inserted use two other helper functions (<code>ccbysa</code> and <code>ccbynd</code>) that add captions. Those two helper functions don't play any part in the Server Push, they just ensure that the HTML is placed correctly on the page with a caption.</p>
-	<p>Notice that the <code>Link</code> header is added as follows:</p>
-	<pre class="language-bash"><code class="language-bash">header("Link: &lt;{$uri}&gt;; rel=preload; as=image", false);</code></pre>
-	<p>The <code>false</code> second parameter tells <code>header</code> to <i>not</i> override an existing <code>Link</code> header. With that option specified multiple <code>Link</code> headers can be added. Without it the last call to <code>pushImage</code> would win.</p>
-	<div class="flex anchor relative">
-		<h2 id="effect-of-server-push">Effect of Server Push</h2>
-		<a href="https://blog.cloudflare.com/#effect-of-server-push" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To understand the effect of Server Push on the example I used Google Chrome Canary and loaded the page twice (once without the <code>Link</code> headers so that no push would occur and once with).</p>
-	<p>Here's the simple waterfall over HTTP/2 with no Server Push:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/05/Screen-Shot-2016-05-13-at-12-22-24-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oN4WtS0666At1eTeB2Xkr/aa2a06fb0da68d4e5a068a944c1c6da9/Screen-Shot-2016-05-13-at-12-22-24-PM.png" alt="" class="kg-image" width="1181" height="388" loading="lazy">
-		</a>
-	</figure>
-	<p>The page load time was 651ms. You can see the initial page HTML load in 175ms followed by the two images.</p>
-	<p>How here's the waterfall with HTTP/2 Server Push:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2016/05/Screen-Shot-2016-05-13-at-12-20-58-PM.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2thpvABMv76ref5uY2LIhX/771d0c7d56cec749b84306fbbdd48ca7/Screen-Shot-2016-05-13-at-12-20-58-PM.png" alt="" class="kg-image" width="1171" height="366" loading="lazy">
-		</a>
-	</figure>
-	<p>The page load time was 251ms (the HTML loaded in 168ms) and Chrome is showing that the two images were pushed (see the Initiator column).</p>
-	<p>It's not 100% obvious what happened there but digging into chrome://net-internals/ it's possible to see a detailed HTTP/2 timeline. I've edited out a few details of the protocol (such as the window size changes) to focus in on the requests and responses.</p>
-	<p>The <code>t</code> value gives the tick time (1ms per tick).</p>
-	<pre class="language-bash"><code class="language-bash">t=910212 [st=   1]    HTTP2_SESSION_SEND_HEADERS
-                      --&gt; exclusive = true
-                      --&gt; fin = true
-                      --&gt; has_priority = true
-                      --&gt; :method: GET
-                          :scheme: https
-                          :path: /index.php
-                          pragma: no-cache
-                          cache-control: no-cache
-                          upgrade-insecure-requests: 1
-                          accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-                          accept-encoding: gzip, deflate, sdch, br
-                          accept-language: en-US,en;q=0.8
-                          cookie: [52 bytes were stripped]
-                      --&gt; parent_stream_id = 0
-                      --&gt; priority = 0
-                      --&gt; stream_id = 1
-
-[...]
-
-t=910404 [st= 193]    HTTP2_SESSION_RECV_HEADERS
-                      --&gt; fin = false
-                      --&gt; :status: 200
-                          date: Fri, 13 May 2016 11:28:16 GMT
-                          content-type: text/html
-                          content-encoding: gzip
-                      --&gt; stream_id = 1
-t=910405 [st= 194]    HTTP2_SESSION_RECV_PUSH_PROMISE
-                      --&gt; :method: GET
-                          :path: /images/drucken.jpg
-                          :scheme: https
-                          accept-encoding: gzip, deflate, sdch, br
-                      --&gt; id = 1
-                      --&gt; promised_stream_id = 2
-t=910405 [st= 194]    HTTP2_SESSION_RECV_PUSH_PROMISE
-                      --&gt; :method: GET
-                          :path: /images/empire.jpg
-                          :scheme: https
-                          accept-encoding: gzip, deflate, sdch, br
-                      --&gt; id = 1
-                      --&gt; promised_stream_id = 4
-t=910405 [st= 194]    HTTP2_SESSION_RECV_DATA
-                      --&gt; fin = false
-                      --&gt; size = 298
-                      --&gt; stream_id = 1
-t=910405 [st= 194]    HTTP2_SESSION_RECV_DATA
-                      --&gt; fin = true
-                      --&gt; size = 0
-                      --&gt; stream_id = 1
-t=910409 [st= 198]    HTTP2_SESSION_RECV_HEADERS
-                      --&gt; fin = false
-                      --&gt; :status: 200
-                          date: Fri, 13 May 2016 11:28:16 GMT
-                          content-type: image/jpeg
-                          content-length: 49852
-                          set-cookie: [124 bytes were stripped]
-                          etag: "5735aac0-12f99"
-                          last-modified: Fri, 13 May 2016 10:21:52 GMT
-                          cf-cache-status: HIT
-                          vary: Accept-Encoding
-                          expires: Fri, 13 May 2016 15:28:16 GMT
-                          cache-control: public, max-age=14400
-                          accept-ranges: bytes
-                          server: cloudflare-nginx
-                      --&gt; stream_id = 2
-t=910409 [st= 198]    HTTP2_SESSION_RECV_DATA
-                      --&gt; fin = false
-                      --&gt; size = 987
-                      --&gt; stream_id = 2
-t=910409 [st= 198]    HTTP2_SESSION_RECV_DATA
-                      --&gt; fin = false
-                      --&gt; size = 1369
-                      --&gt; stream_id = 2
-t=910410 [st= 199]    HTTP2_SESSION_RECV_DATA
-                      --&gt; fin = false
-                      --&gt; size = 1369
-                      --&gt; stream_id = 2</code></pre>
-	<p>The web browser sends an <code>HTTP2_SESSION_SEND_HEADERS</code> request asking for the web page (that's the first item above) and subsequently receives the response headers and page followed immediately by two push promises for the two images. It then immediately starts receiving image data (see the <code>stream_id</code> 2).</p>
-	<p>CloudFlare's web server is pushing the image contents before the browser asked for them. When CloudFlare pushes an item specified in a <code>Link</code> header the header itself is stripped (to prevent the browser from re-requesting the resource).</p>
-	<div class="flex anchor relative">
-		<h2 id="the-future-starts-here">The Future Starts Here</h2>
-		<a href="https://blog.cloudflare.com/#the-future-starts-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We released HTTP/2 Server Push support to help kick start innovative use of this critical feature of HTTP/2. We would love people to start experimenting with it to see how much of a speed improvement is possible with their specific websites.</p>
-	<p>As can be seen from this blog post making use of Server Push in a web application is easy: just insert <code>Link</code> headers with the appropriate format. Server Push will be particularly fast if the items being pushed are also stored in CloudFlare's cache (as was the case with the examples above).</p>
-	<p>Please let us know how you use Server Push. We're particularly interested in experiences with pushing different types of resources (images vs. styles vs. scripts) and working out the optimal number of items to push (we currently allow up to 50 resources per page).</p>
+<p>Two weeks ago CloudFlare announced that it was supporting <a href="https://blog.cloudflare.com/announcing-support-for-http-2-server-push-2">HTTP/2 Server</a> Push for all our customers. By simply adding a <code>Link</code> header to an HTTP response specifying <code>preload</code> CloudFlare would automatically push items to web browsers that support Server Push.</p>
+<p>To illustrate how easy this is I create a small PHP page that uses the PHP <a href="https://secure.php.net/manual/en/function.header.php" target="_blank" rel="noopener noreferrer"><code>header</code></a> function to insert appropriate <code>Link</code> headers to push images to the web browser via CloudFlare. The web page looks like this when loaded:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="436" height="675" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4572SJBZZ61DQ976PBNB6S.png&amp;w=436&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4572SJBZZ61DQ976PBNB6S.png&amp;w=436&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 436w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4572SJBZZ61DQ976PBNB6S.png&amp;w=640&amp;h=991&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4572SJBZZ61DQ976PBNB6S.png&amp;w=750&amp;h=1161&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4572SJBZZ61DQ976PBNB6S.png&amp;w=828&amp;h=1282&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4572SJBZZ61DQ976PBNB6S.png&amp;w=872&amp;h=1350&amp;f=webp&amp;fit=cover&amp;position=center 872w" alt="Using HTTP/2 Server Push with PHP Embedded Image - 738xZL" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4572SJBZZ61DQ976PBNB6S.png&amp;w=436&amp;h=675&amp;f=webp" data-lightbox-width="436" data-lightbox-height="675" data-astro-cid-7nvefuv6="true" sizes="(min-width: 436px) 436px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="436" height="675" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>There are two images loaded from the same server both of which are pushed if the web browser supports Server Push. This is achieved by inserting two <code>Link</code> headers in the HTTP response. The response looks like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">HTTP/1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-032f62-99ffe4"> OK</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Server:</span><span class="sk-032f62-99ffe4"> nginx/1.9.15</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4"> Fri,</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-032f62-99ffe4"> May</span><span class="sk-005cc5-ffc799"> 2016</span><span class="sk-032f62-99ffe4"> 10:52:13</span><span class="sk-032f62-99ffe4"> GMT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content-Type:</span><span class="sk-032f62-99ffe4"> text/html</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Transfer-Encoding:</span><span class="sk-032f62-99ffe4"> chunked</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Connection:</span><span class="sk-032f62-99ffe4"> keep-alive</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/images/drucken.jp</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">image</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Link:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">/images/empire.jp</span><span class="sk-24292e-fff">g</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">; rel</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">preload</span><span class="sk-24292e-fff">; as</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">image</span></span></code></pre>
 </div>
+<p>At the bottom are the two <code>Link</code> headers corresponding to the two images on the page with the <code>rel=preload</code> directive as specified in W3C <a href="https://www.w3.org/TR/preload/#server-push-http-2" target="_blank" rel="noopener noreferrer">preload draft</a>.</p>
+<p>The complete code can be found in this <a href="https://gist.github.com/jgrahamc/df91229381366105c7ff0f88c8c38485" target="_blank" rel="noopener noreferrer">gist</a> but the core of the code looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">    &lt;?</span><span class="sk-005cc5-fff">php</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> pushImage</span><span class="sk-24292e-fff">($uri) {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        header</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Link: &lt;{</span><span class="sk-24292e-fff">$uri</span><span class="sk-032f62-99ffe4">}&gt;; rel=preload; as=image"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">false</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-a0a0a0"> &lt;&lt;&lt;</span><span class="sk-d73a49-a0a0a0">HTML</span></span>
+<span class="line"><span class="sk-032f62-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">img</span><span class="sk-6f42c1-a0a0a0"> src</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4">"{$uri}"</span><span class="sk-032f62-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    HTML</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    $image1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> pushImage</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/images/drucken.jpg"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    $image2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> pushImage</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/images/empire.jpg"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    ?&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-005cc5-fff">html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-005cc5-fff">head</span><span class="sk-d73a49-a0a0a0">&gt;&lt;</span><span class="sk-005cc5-fff">title</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-fff">PHP</span><span class="sk-005cc5-fff"> Server</span><span class="sk-005cc5-fff"> Push</span><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-005cc5-fff">title</span><span class="sk-d73a49-a0a0a0">&gt;&lt;/</span><span class="sk-005cc5-fff">head</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-005cc5-fff">body</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-005cc5-fff">h1</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-fff">PHP</span><span class="sk-005cc5-fff"> Server</span><span class="sk-005cc5-fff"> Push</span><span class="sk-d73a49-a0a0a0">&lt;/</span><span class="sk-005cc5-fff">h1</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;?</span><span class="sk-005cc5-fff">php</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-6f42c1-ffc799"> ccbysa</span><span class="sk-24292e-fff">($image1, </span><span class="sk-032f62-99ffe4">"https://bit.ly/1Wu5bYx"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">       "https://www.flickr.com/photos/hiperactivo/"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Javier Candeira"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-6f42c1-ffc799"> ccbynd</span><span class="sk-24292e-fff">($image2, </span><span class="sk-032f62-99ffe4">"https://bit.ly/24PHue3"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "https://www.flickr.com/photos/bobsfever/"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Robert McGoldrick"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    ?&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;/</span><span class="sk-005cc5-fff">body</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;/</span><span class="sk-005cc5-fff">html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>Since you have to call the PHP <code>header</code> function before any output (such as HTML) has occurred the code makes two calls to a helper function called <code>pushImage</code> first. <code>pushImage</code> adds the appropriate <code>Link</code> header and returns the HTML needed to insert the actual image in the page.</p>
+<p>Later the variables <code>$image1</code> and <code>$image2</code> (which contain the HTML needed to display the images) is inserted use two other helper functions (<code>ccbysa</code> and <code>ccbynd</code>) that add captions. Those two helper functions don't play any part in the Server Push, they just ensure that the HTML is placed correctly on the page with a caption.</p>
+<p>Notice that the <code>Link</code> header is added as follows:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">header(</span><span class="sk-6f42c1-ffc799">"Link: &lt;{</span><span class="sk-24292e-fff">$uri</span><span class="sk-6f42c1-ffc799">}&gt;; rel=preload; as=image"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-99ffe4"> false</span><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>The <code>false</code> second parameter tells <code>header</code> to <em>not</em> override an existing <code>Link</code> header. With that option specified multiple <code>Link</code> headers can be added. Without it the last call to <code>pushImage</code> would win.</p>
+<h2>Effect of Server Push</h2>
+<p>To understand the effect of Server Push on the example I used Google Chrome Canary and loaded the page twice (once without the <code>Link</code> headers so that no push would occur and once with).</p>
+<p>Here's the simple waterfall over HTTP/2 with no Server Push:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using HTTP/2 Server Push with PHP Embedded Image - Qd2DxS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q3XAN1ZXRVQ5M9A4112X.png&amp;w=1181&amp;h=388&amp;f=webp" data-lightbox-width="1181" data-lightbox-height="388" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<p>The page load time was 651ms. You can see the initial page HTML load in 175ms followed by the two images.</p>
+<p>How here's the waterfall with HTTP/2 Server Push:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="223" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=640&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=750&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=828&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=1080&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=1280&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=1430&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using HTTP/2 Server Push with PHP Embedded Image - OvQsOD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ME203NEGD46X48SA9F1K.png&amp;w=1171&amp;h=366&amp;f=webp" data-lightbox-width="1171" data-lightbox-height="366" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="223" class="pt-portable-image-media"></div>
+</figure>
+<p>The page load time was 251ms (the HTML loaded in 168ms) and Chrome is showing that the two images were pushed (see the Initiator column).</p>
+<p>It's not 100% obvious what happened there but digging into chrome://net-internals/ it's possible to see a detailed HTTP/2 timeline. I've edited out a few details of the protocol (such as the window size changes) to focus in on the requests and responses.</p>
+<p>The <code>t</code> value gives the tick time (1ms per tick).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910212</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4">   1]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_SEND_HEADERS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">exclusive</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">has_priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">:method:</span><span class="sk-032f62-99ffe4"> GET</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          :scheme:</span><span class="sk-032f62-99ffe4"> https</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          :path:</span><span class="sk-032f62-99ffe4"> /index.php</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          pragma:</span><span class="sk-032f62-99ffe4"> no-cache</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          cache-control:</span><span class="sk-032f62-99ffe4"> no-cache</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          upgrade-insecure-requests:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          accept:</span><span class="sk-032f62-99ffe4"> text/html,application/xhtml+xml,application/xml</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.9,image/webp,*/*</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          accept-encoding:</span><span class="sk-032f62-99ffe4"> gzip,</span><span class="sk-032f62-99ffe4"> deflate,</span><span class="sk-032f62-99ffe4"> sdch,</span><span class="sk-032f62-99ffe4"> br</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          accept-language:</span><span class="sk-032f62-99ffe4"> en-US,en</span><span class="sk-24292e-fff">;q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0.8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          cookie:</span><span class="sk-24292e-fff"> [52 </span><span class="sk-032f62-99ffe4">bytes</span><span class="sk-032f62-99ffe4"> were</span><span class="sk-032f62-99ffe4"> stripped]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">parent_stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">priority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910404</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 193]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_HEADERS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">:status:</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          date:</span><span class="sk-032f62-99ffe4"> Fri,</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-032f62-99ffe4"> May</span><span class="sk-005cc5-ffc799"> 2016</span><span class="sk-032f62-99ffe4"> 11:28:16</span><span class="sk-032f62-99ffe4"> GMT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          content-type:</span><span class="sk-032f62-99ffe4"> text/html</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          content-encoding:</span><span class="sk-032f62-99ffe4"> gzip</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910405</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 194]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_PUSH_PROMISE</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">:method:</span><span class="sk-032f62-99ffe4"> GET</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          :path:</span><span class="sk-032f62-99ffe4"> /images/drucken.jpg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          :scheme:</span><span class="sk-032f62-99ffe4"> https</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          accept-encoding:</span><span class="sk-032f62-99ffe4"> gzip,</span><span class="sk-032f62-99ffe4"> deflate,</span><span class="sk-032f62-99ffe4"> sdch,</span><span class="sk-032f62-99ffe4"> br</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">promised_stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910405</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 194]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_PUSH_PROMISE</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">:method:</span><span class="sk-032f62-99ffe4"> GET</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          :path:</span><span class="sk-032f62-99ffe4"> /images/empire.jpg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          :scheme:</span><span class="sk-032f62-99ffe4"> https</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          accept-encoding:</span><span class="sk-032f62-99ffe4"> gzip,</span><span class="sk-032f62-99ffe4"> deflate,</span><span class="sk-032f62-99ffe4"> sdch,</span><span class="sk-032f62-99ffe4"> br</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">promised_stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910405</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 194]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_DATA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 298</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910405</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 194]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_DATA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910409</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 198]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_HEADERS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">:status:</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          date:</span><span class="sk-032f62-99ffe4"> Fri,</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-032f62-99ffe4"> May</span><span class="sk-005cc5-ffc799"> 2016</span><span class="sk-032f62-99ffe4"> 11:28:16</span><span class="sk-032f62-99ffe4"> GMT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          content-type:</span><span class="sk-032f62-99ffe4"> image/jpeg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          content-length:</span><span class="sk-005cc5-ffc799"> 49852</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          set-cookie:</span><span class="sk-24292e-fff"> [124 </span><span class="sk-032f62-99ffe4">bytes</span><span class="sk-032f62-99ffe4"> were</span><span class="sk-032f62-99ffe4"> stripped]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          etag:</span><span class="sk-032f62-99ffe4"> "5735aac0-12f99"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          last-modified:</span><span class="sk-032f62-99ffe4"> Fri,</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-032f62-99ffe4"> May</span><span class="sk-005cc5-ffc799"> 2016</span><span class="sk-032f62-99ffe4"> 10:21:52</span><span class="sk-032f62-99ffe4"> GMT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          cf-cache-status:</span><span class="sk-032f62-99ffe4"> HIT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          vary:</span><span class="sk-032f62-99ffe4"> Accept-Encoding</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          expires:</span><span class="sk-032f62-99ffe4"> Fri,</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-032f62-99ffe4"> May</span><span class="sk-005cc5-ffc799"> 2016</span><span class="sk-032f62-99ffe4"> 15:28:16</span><span class="sk-032f62-99ffe4"> GMT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          cache-control:</span><span class="sk-032f62-99ffe4"> public,</span><span class="sk-032f62-99ffe4"> max-age=</span><span class="sk-005cc5-ffc799">14400</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          accept-ranges:</span><span class="sk-032f62-99ffe4"> bytes</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          server:</span><span class="sk-032f62-99ffe4"> cloudflare-nginx</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910409</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 198]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_DATA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 987</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910409</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 198]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_DATA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1369</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2</span></span>
+<span class="line"><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">910410</span><span class="sk-6f42c1-ffc799"> [st</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> 199]</span><span class="sk-032f62-99ffe4">    HTTP2_SESSION_RECV_DATA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">fin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1369</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      --</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">stream_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre>
+</div>
+<p>The web browser sends an <code>HTTP2_SESSION_SEND_HEADERS</code> request asking for the web page (that's the first item above) and subsequently receives the response headers and page followed immediately by two push promises for the two images. It then immediately starts receiving image data (see the <code>stream_id</code> 2).</p>
+<p>CloudFlare's web server is pushing the image contents before the browser asked for them. When CloudFlare pushes an item specified in a <code>Link</code> header the header itself is stripped (to prevent the browser from re-requesting the resource).</p>
+<h2>The Future Starts Here</h2>
+<p>We released HTTP/2 Server Push support to help kick start innovative use of this critical feature of HTTP/2. We would love people to start experimenting with it to see how much of a speed improvement is possible with their specific websites.</p>
+<p>As can be seen from this blog post making use of Server Push in a web application is easy: just insert <code>Link</code> headers with the appropriate format. Server Push will be particularly fast if the items being pushed are also stored in CloudFlare's cache (as was the case with the examples above).</p>
+<p>Please let us know how you use Server Push. We're particularly interested in experiences with pushing different types of resources (images vs. styles vs. scripts) and working out the optimal number of items to push (we currently allow up to 50 resources per page).</p>

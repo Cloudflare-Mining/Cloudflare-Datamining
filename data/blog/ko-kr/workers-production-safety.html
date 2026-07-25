@@ -1,0 +1,210 @@
+<p>2024년의 Developer Week는 프로덕션 준비에 중점을 두고 있습니다. 4월 1일 월요일에, 저희가 <a href="https://blog.cloudflare.com/ko-kr/making-full-stack-easier-d1-ga-hyperdrive-queues-ko-kr">발표</a>한 내용은 <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a> <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">Hyperdrive</a>, <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>이 프로덕션 규모에 맞게 준비되었으며 일반 사용자가 사용할 수 있게 되었다는 것이었습니다. 4월 2일 화요일에는 추론 플랫폼인 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>에 대해서도 같은 내용을 <a href="https://blog.cloudflare.com/workers-ai-ga-huggingface-loras-python-support">발표</a>했습니다. 그리고 아직 끝나지 않았습니다.</p>
+<p>하지만 프로덕션 준비 상태는 귀사가 구축하는 서비스의 규모와 안정성 그 이상을 의미합니다. 안전하고 안정적으로 변경할 수 있는 도구도 필요합니다. 고객은 Cloudflare에서 제공하는 기능을 필요로 할 뿐만 아니라 Cloudflare 의 작동 방식을 앱의 요구 사항에 맞게 정확하게 제어하고 조정할 수 있어야 합니다.</p>
+<p>오늘 저희는 Gradual Deployments, Tail Workers의 소스 매핑 스택 추적, 새로운 레이트 리미팅 API, 새로운 API SDK, Durable Objects 업데이트 등 필수적인 프로덕션 서비스를 염두에 두고 마련된 5가지 업데이트를 발표합니다. 당사의 제품은 <a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer">Access</a>, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>, <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">KV</a>, <a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer">대기실</a>, <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer">Vectorize</a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a>, <a href="https://developers.cloudflare.com/stream" target="_blank" rel="noopener noreferrer">Stream</a>을 포함하여 Workers를 사용하여 구축합니다. 이러한 새로운 기능 하나하나를 직접 사용해 프로덕션에 적용할 수 있도록 준비했으며, 이제 모든 분께 제공할 수 있게 되어 기쁩니다.</p>
+<h3>변경 사항을 Workers 및 Durable Objects에 배포</h3>
+<p>Worker 배포는 몇 초 만에 거의 즉각적으로 이루어지며 변경 사항이 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">모든 곳</a>에 실시간으로 적용됩니다.</p>
+<p>프로덕션 규모에 도달하면 변경할 때마다 규모와 기대치 측면에서 더 큰 위험이 수반됩니다. 99.99% 가용성 SLA를 충족하거나 야심찬 P90 대기 시간 SLO를 달성해야 합니다. 45초 동안 100%의 트래픽이 발생하는 잘못된 배포는 수백만 건의 요청 실패를 의미할 수 있습니다. 미묘한 코드 변경이 한꺼번에 적용되면 백엔드에 재시도가 폭주하여 과부하가 걸릴 수 있습니다. 이러한 것들은 저희가 Workers를 기반으로 구축된 자체 서비스에 대해 고려하고 자체적으로 완화하는 종류의 위험입니다.</p>
+<p>이러한 위험을 완화하는 방법은 점진적인 변경 사항을 배포하는 것이며, 일반적으로 롤링 배포라고 합니다.</p>
+<ol>
+	<li>현재 버전의 앱이 프로덕션 환경에서 실행됩니다.</li>
+	<li>새 버전의 앱을 프로덕션에 배포하되 트래픽의 일부만 이 새 버전으로 라우팅하고 그 트래픽이 프로덕션에 '흡수'될 때까지 기다리면서 회귀 및 버그가 있는지 모니터링합니다. 나쁜 일이 발생하면 적은 비율로 조기에 발견하여(예: 1%) 트래픽을 빠르게 되돌릴 수 있습니다.</li>
+	<li>새 버전이 완전히 배포되는 시점인 100%가 될 때까지 트래픽 비율을 점진적으로 늘립니다.</li>
+</ol>
+<p>오늘 저희는 <a href="https://developers.cloudflare.com/api/operations/worker-deployments-list-deployments" target="_blank" rel="noopener noreferrer">Cloudflare API</a>, <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-wrangler" target="_blank" rel="noopener noreferrer">Wrangler CLI</a>, <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#via-the-cloudflare-dashboard" target="_blank" rel="noopener noreferrer">Workers 대시보드</a>를 통해 코드 변경 사항을 Workers 및 Durable Objects에 점진적으로 배포하는 최고의 방법을 공개합니다. Gradual Deployments가 오픈 베타 버전에 들어갑니다. <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer">Workers Free 요금제</a>를 사용하는 모든 Cloudflare 계정으로 Gradual Deployments를 사용할 수 있으며, 곧 <a href="https://developers.cloudflare.com/workers/platform/pricing/#workers" target="_blank" rel="noopener noreferrer">Workers 유료</a> 및 Enterprise 요금제를 사용하는 Cloudflare 계정으로 점진적 배포를 사용할 수 있게 될 것입니다. 계정에 액세스 권한이 부여되면 Workers 대시보드에 배너가 표시됩니다.</p>
+<p>프로덕션에서 Worker 또는 Durable Object의 두 가지 버전이 동시에 실행되는 경우 메트릭, 예외 및 로그를 버전별로 필터링할 수 있기를 원할 것입니다. 이를 통해 새 버전이 소량의 트래픽에만 배포될 때 프로덕션 문제를 조기에 발견하거나 트래픽을 50/50으로 분할할 때 성능 메트릭을 비교하는 데 도움이 될 수 있습니다. 저희는 또한 플랫폼 전반의 버전 수준에서 가시성을 추가했습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="353" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=640&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=750&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=828&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1080&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1280&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1430&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Splitting traffic between different versions of a Worker." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4792EFMEWR5SFVJAMDC49A.png&amp;w=1600&amp;h=791&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="791" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="353" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<ul>
+	<li>Workers 대시보드와 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL Analytics API</a>를 통해 버전별로 Analytics를 필터링할 수 있습니다.</li>
+	<li><a href="https://developers.cloudflare.com/workers/observability/logging/logpush" target="_blank" rel="noopener noreferrer">Workers Trace Events</a> 및 <a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a> 이벤트에는 Worker 의 버전 ID와 함께 선택적 버전 메시지 및 버전 태그 필드가 포함됩니다.</li>
+	<li><a href="https://developers.cloudflare.com/workers/wrangler/commands/#tail" target="_blank" rel="noopener noreferrer">Wrangler Tail</a>을 사용하여 실시간 로그를 볼 때 특정 버전에 대한 로그를 볼 수 있습니다.</li>
+	<li><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata" target="_blank" rel="noopener noreferrer">버전 메타데이터 바인딩</a>을 구성하여 Worker의 코드 내에서 버전 ID, 메시지, 태그에 액세스할 수 있습니다.</li>
+</ul>
+<p>또한 각 클라이언트 또는 사용자에게 일관된 버전의 Worker만 표시되도록 할 수도 있습니다. 특정 식별자(예: 사용자, 세션 또는 고유 ID)와 관련된 요청이 항상 일관된 버전의 Worker에서 처리되도록 <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-keys-and-session-affinity" target="_blank" rel="noopener noreferrer">버전 선호도</a>를 추가했습니다. <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#version-keys-and-session-affinity" target="_blank" rel="noopener noreferrer">세션 선호도</a>를 <a href="https://developers.cloudflare.com/workers/configuration/versions-and-deployments/gradual-deployments/#setting-cloudflare-workers-version-key-using-ruleset-engine" target="_blank" rel="noopener noreferrer">규칙 집합 엔진</a>과 함께 사용하면 "고착성"을 보장하는 데 사용되는 메커니즘과 식별자를 모두 완벽하게 제어할 수 있습니다.</p>
+<p>Gradual Deployments가 오픈 베타 버전으로 전환됩니다. GA를 향해 진행해 나감에 따라 다음과 같은 지원을 위해 노력하고 있습니다.</p>
+<ul>
+	<li><strong>버전 재정의.</strong> 프로덕션 트래픽을 제공하기 전에 테스트하기 위해 Worker의 특정 버전을 호출합니다. 이렇게 하면 블루-그린 배포를 생성할 수 있습니다.</li>
+	<li><strong>Cloudflare Pages.</strong> Pages의 CI/CD 시스템이 사용자를 대신하여 자동으로 배포를 진행하도록 합니다.</li>
+	<li><strong>자동 롤백.</strong> 새 버전의 Worker에서 오류율이 급증하면 배포를 자동으로 롤백합니다.</li>
+</ul>
+<p>여러분의 피드백을 기다립니다! <a href="https://www.cloudflare.com/lp/developer-week-deployments" target="_blank" rel="noopener noreferrer">이</a> 피드백 양식을 통해 의견을 보내 주시거나 <a href="https://discord.gg/HJvPcPcN" target="_blank" rel="noopener noreferrer">개발자 Discord</a>에서 #workers-gradual-deployments-beta 채널로 문의해 주세요.</p>
+<h3>Tail Workers의 소스 매핑된 스택 추적</h3>
+<p>프로덕션 준비는 오류와 예외를 추적하고 오류를 0으로 낮추기 위해 노력하는 것을 의미합니다. 오류가 발생하면 일반적으로 가장 먼저 살펴보고 싶은 것은 오류의 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack" target="_blank" rel="noopener noreferrer">스택 추적</a>, 즉 어떤 순서로, 어떤 줄과 파일에서, 어떤 인수를 사용하여 특정 함수가 호출되었는지 입니다.</p>
+<p>Workers 뿐만 아니라 여러 플랫폼에 걸쳐 대부분의 JavaScript 코드는 먼저 번들링되고, 종종 트랜스파일링된 후 프로덕션에 배포되기 전에 축소됩니다. 이는 성능을 최적화하기 위해 더 작은 번들을 생성하고 필요한 경우 Typescript에서 JavaScript 로 변환하기 위해 백그라운드에서 수행됩니다.</p>
+<p>예외가 /src/index.js:1:342와 같은 스택 추적을 반환하는 것을 본 적이 있다면, 함수의 축소 코드의 342번째 문자에서 오류가 발생했다는 뜻입니다. 이는 디버깅에 그다지 도움이 되지 않습니다.</p>
+<p><a href="https://web.dev/articles/source-maps" target="_blank" rel="noopener noreferrer">소스 맵</a>은 컴파일되고 축소된 코드를 작성한 원본 코드에 다시 매핑하여 이 문제를 해결합니다. 소스 맵은 JavaScript 런타임에서 반환한 스택 추적과 결합되어 사람이 읽을 수 있는 스택 추적을 표시합니다. 예를 들어, 다음 스택 추적은 Worker가 down.ts 파일의 30번째 줄에서 예기치 않은 null 값을 받았음을 보여 줍니다. 이는 디버깅에 유용한 시작점이며, 스택 추적을 아래로 이동하여 null 값을 발생시킨 설정된 호출된 함수를 이해할 수 있습니다.</p>
+<p>그 작동 방식은 다음과 같습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Unexpected</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> value:</span><span class="sk-032f62-99ffe4"> null</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> parseBytes</span><span class="sk-24292e-fff"> (src/down.ts:30:8)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> down_default</span><span class="sk-24292e-fff"> (src/down.ts:10:19)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  at</span><span class="sk-032f62-99ffe4"> Object.fetch</span><span class="sk-24292e-fff"> (src/index.ts:11:12)</span></span></code></pre>
+</div>
+<ol>
+	<li>wrangler.toml에서 upload_<a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer">source_maps = true</a>를 설정하면 Wrangler는 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#deploy" target="_blank" rel="noopener noreferrer">Wrangler 배포</a> 또는 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#versions" target="_blank" rel="noopener noreferrer">Wrangler 버전 업로드</a>를 실행할 때 모든 소스 맵 파일을 자동으로 생성하고 업로드합니다.</li>
+	<li>Worker에서 잡히지 않은 예외가 발생하면 소스 맵을 가져와서 예외의 스택 추적을 Worker의 원본 소스 코드 줄에 다시 매핑하는 데 사용합니다.</li>
+	<li>그런 다음 이 난독 해제된 스택 추적을 <a href="https://developers.cloudflare.com/workers/observability/logging/real-time-logs" target="_blank" rel="noopener noreferrer">실시간 로그</a> 또는 <a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a>에서 볼 수 있습니다.</li>
+</ol>
+<p>오늘부터 오픈 베타 버전에서는 Worker를 배포할 때 소스 맵을 Cloudflare에 업로드할 수 있습니다. <a href="https://developers.cloudflare.com/workers/observability/source-maps" target="_blank" rel="noopener noreferrer">문서를 읽어 보시고 시작하세요</a>. 그리고 4월 15일부터 Workers 런타임에서 소스 맵을 사용하여 스택 추적을 난독 해제하기 시작할 것입니다. 소스 매핑된 스택 추적을 사용할 수 있게 되면 Cloudflare 대시보드에 알림을 게시하고 <a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" rel="noopener noreferrer">Cloudflare 개발자 X 계정</a>에 게시할 예정입니다.</p>
+<h3>API in Workers에서의 새 레이트 리미팅</h3>
+<p>API는 합리적인 <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">레이트 리미팅</a>이 있는 경우에만 프로덕션 준비가 &nbsp;완료된 것입니다. 비즈니스가 성장함에 따라 특정 고객의 요구와 균형을 맞추거나 서비스의 건전성을 보호하거나 특정 시나리오에서 제한을 적용하고 조정하기 위해 적용해야 하는 제한의 복잡성과 다양성도 증가하고 있습니다. Cloudflare의 자체 API도 이 문제를 안고 있습니다. 많은 API 엔드포인트가 있는 수십 개의 제품 각각에 서로 다른 레이트 리미팅을 적용해야 할 수 있습니다.</p>
+<p>2017년부터 Cloudflare에서 <a href="https://developers.cloudflare.com/waf/rate-limiting-rules" target="_blank" rel="noopener noreferrer">레이트 리미팅 규칙</a>을 구성할 수 있었습니다. 하지만 지금까지는 Cloudflare 대시보드 또는 Cloudflare API를 통해서만 이를 제어할 수 있었습니다. _런타임_에 동작을 정의하거나 레이트 리미팅과 직접 상호 작용하는 Worker에서 코드를 작성하는 것은 불가능했으며, 요청이 Worker에 도달하기 전에만 요청이 레이트 리미팅 되는지 여부를 제어할 수 있었습니다.</p>
+<p>오늘 오픈 베타 버전으로 Worker에서 레이트 리미팅에 직접 액세스할 수 있는 새로운 API를 소개합니다. 이 API는 멤캐시드의 지원으로 매우 빠르며, Worker에 추가하는 것도 아주 간단합니다. 예를 들어, 다음 구성은 60초 이내에 100건의 요청으로 레이트 리미팅을 정의합니다.</p>
+<p>그런 다음 Worker에서 원하는 키를 제공하여 RATE_LIMITER 바인딩의 리미팅 메서드를 호출할 수 있습니다. 위의 구성에 따라 이 코드는 60초 동안 특정 경로에 대한 요청이 100회 이상 발생하면 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429" target="_blank" rel="noopener noreferrer">HTTP 429</a> 응답 상태 코드를 반환합니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[unsafe.bindings]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "RATE_LIMITER"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "ratelimit"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">namespace_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "1001"</span><span class="sk-6a737d-8b8b8b94"> # An identifier unique to your Cloudflare account</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Limit: the number of tokens allowed within a given period, in a single Cloudflare location</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Period: the duration of the period, in seconds. Must be either 60 or 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">simple</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> limit</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 100,</span><span class="sk-032f62-99ffe4"> period</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<p>이제 Workers 멤캐시드 같은 데이터 저장소에 직접 연결할 수 있게 되었으니, 저희가 또 무엇을 제공할 수 있을까요? 카운터? 잠금? <a href="https://github.com/cloudflare/workerd/pull/1666" target="_blank" rel="noopener noreferrer">인메모리 캐시</a>? 레이트 리미팅은 많은 Worker <a href="https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates" target="_blank" rel="noopener noreferrer">격리</a>에 걸쳐 있는 임시 공유 상태가 어디에 있어야 하는지에 대해 저희가 수년 동안 받은 질문을 해결하기 위해 Workers에서 제공하는 많은 기본 기능 중 첫 번째입니다. 귀하가 현재 Worker의 글로벌 범위에 상태를 넣는 데 의존하고 있다면, 저희는 특정 사용 사례를 위해 특별히 제작된 더 나은 기본 기능을 개발 중입니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">success</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">RATE_LIMITER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">limit</span><span class="sk-24292e-fff">({ key: pathname })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">success) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`429 Failure – rate limit exceeded for ${</span><span class="sk-24292e-fff">pathname</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">429</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Success!`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Workers의 레이트 리미팅 API는 오픈 베타 버전이며, <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit" target="_blank" rel="noopener noreferrer">문서를 읽고서</a> 시작할 수 있습니다.</p>
+<h3>Cloudflare의 API를 위한 새로운 자동 생성 SDK</h3>
+<p>프로덕션 준비 상태란 대시보드의 버튼을 클릭하여 변경하는 방식에서 <a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">Terraform</a>이나 <a href="https://github.com/pulumi/pulumi-cloudflare" target="_blank" rel="noopener noreferrer">Pulumi</a>와 같은 코드형 인프라 접근 방식을 사용하여 프로그래밍 방식으로 변경하거나 직접 또는 SDK를 통해 API를 직접 호출하는 방식으로 변경하는 것을 의미합니다.</p>
+<p><a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">Cloudflare API</a>는 방대하고, 지속해서 새로운 기능이 추가되고 있으며, 평균적으로 <a href="https://github.com/cloudflare/api-schemas/activity" target="_blank" rel="noopener noreferrer">하루에 20~30회 정도 API 스키마를 업데이트</a>합니다. 하지만 지금까지는 API SDK를 수동으로 구축하고 유지 관리해 왔으므로 이를 자동화해야 할 필요성이 절실했습니다.</p>
+<p>저희는 그렇게 해왔고, 오늘 Cloudflare API를 위한 새로운 클라이언트 SDK를 <a href="https://github.com/cloudflare/cloudflare-typescript" target="_blank" rel="noopener noreferrer">Typescript</a>, <a href="https://github.com/cloudflare/cloudflare-python" target="_blank" rel="noopener noreferrer">Python</a>, <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>의 세 가지 언어로 발표하며, 더 많은 언어를 준비 중입니다.</p>
+<p>각 SDK는 각 API 엔드포인트의 구조와 기능을 정의하는 <a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer">OpenAPI</a> 스키마에 기반한 <a href="https://www.stainlessapi.com" target="_blank" rel="noopener noreferrer">Stainless API</a>를 사용하여 자동으로 생성됩니다. 즉, 모든 Cloudflare 제품에 걸쳐 Cloudflare API에 새로운 기능을 추가하면 이러한 API SDK가 자동으로 다시 생성되고 새 버전이 게시되어 올바른 최신 버전이 유지됩니다.</p>
+<p>다음 명령 중 하나를 실행하여 SDK를 설치할 수 있습니다.</p>
+<p>Terraform 또는 Pulumi를 사용하는 경우, 내부적으로 Cloudflare의 Terraform 공급자는 현재 자동화가 되지 않은 기존의 <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go SDK</a>를 사용합니다. Terraform 적용을 실행하면 Cloudflare Terraform 공급자가 어떤 순서로 어떤 API 호출을 수행할지 결정하고 Go SDK를 사용하여 이를 실행합니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Typescript</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Python</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pip</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Go</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cloudflare-go/v2</span></span></code></pre>
+</div>
+<p>자동 생성되는 새로운 Go SDK는 모든 Cloudflare 제품에 대하여 보다 포괄적인 Terraform 지원을 위한 길을 열어주며, 최신 API 변경 사항을 정확하고 최신 상태로 유지할 수 있는 기본 도구 세트를 제공합니다. 저희는 Cloudflare의 제품팀에서 Cloudflare API를 통해 노출되는 새로운 기능을 개발할 때마다 SDK에서 자동으로 지원되는 미래를 향해 나아가고 있습니다. 2024년 내내 이와 관련된 더 많은 업데이트를 기대하세요.</p>
+<h3>Durable Object 네임스페이스 분석 및 WebSocket Hibernation GA</h3>
+<p><a href="https://developers.cloudflare.com/waiting-room" target="_blank" rel="noopener noreferrer">대기실</a> ,<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a> 등 많은 저희 자체 제품과 <a href="https://www.partykit.io" target="_blank" rel="noopener noreferrer">PartyKit</a> 등의 플랫폼은 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>를 사용하여 구축됩니다. 새로 추가된 대양주 지원을 포함하여 전 세계에 배포된 Durable Objects는 단일 조정 지점을 제공하고 <a href="https://developers.cloudflare.com/durable-objects/api/transactional-storage-api" target="_blank" rel="noopener noreferrer">상태를 유지</a>할 수 있는 개체 Workers와 같다고 생각하면 됩니다. Durable Objects는 대화형 채팅이나 공동 &nbsp;편집과 같이 실시간 사용자 조정이 필요한 앱에 적합합니다. Atlassian의 말을 믿으세요.</p>
+<blockquote><em>새로운 기능 중 하나는</em> <em><a href="https://www.atlassian.com/software/confluence/whiteboards" target="_blank" rel="noopener noreferrer">Confluence 화이트보드</a>이며, 이는 팀에서 보다 공식적으로 문서화하기 전에 브레인스토밍 및 초기 계획과 같은 비정형 작업을 캡처할 수 있는 자유로운 방법을 제공합니다. 팀에서는 실시간 협업을 위한 여러 옵션을 고려한 끝에 결국 Cloudflare의 Durable Objects를 사용하기로 결정했습니다. Durable Objects는 인프라를 크게 간소화하고 많은 사용자로 쉽게 확장할 수 있는 독특한 기능의 조합으로, 이 문제 공간에 아주 적합하다는 것이 입증되었습니다. -</em> <a href="https://www.atlassian.com/software/confluence/whiteboards" target="_blank" rel="noopener noreferrer"><em>Atlassian</em></a></blockquote>
+<p>이전에는 대시보드에 관련 분석 추세를 노출시키지 않았으므로 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL Analytics API</a>를 직접 사용하지 않는 한 <a href="https://developers.cloudflare.com/durable-objects/configuration/access-durable-object-from-a-worker/#generate-ids-randomly" target="_blank" rel="noopener noreferrer">Durable Objects 네임스페이스</a> 내의 사용 패턴과 오류율을 파악하기 어려웠습니다. 이제 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fdurable-objects" target="_blank" rel="noopener noreferrer">Durable Objects 대시보드</a>가 개선되어 메트릭을 세부 분석하고 필요한 만큼 깊이 있게 분석할 수 있습니다.</p>
+<p><a href="https://blog.cloudflare.com/introducing-workers-durable-objects">첫날</a>부터 Durable Objects는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket" target="_blank" rel="noopener noreferrer">WebSocket</a>을 지원하여 많은 클라이언트가 Durable Object에 직접 연결하여 메시지를 주고받을 수 있도록 했습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="557" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=715&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=640&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=715&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=750&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=828&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1080&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1280&amp;h=997&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1430&amp;h=1114&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2305 Embedded Image - tUWMOW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NGJQ7SMHCNME7M5TATPN.png&amp;w=1342&amp;h=1045&amp;f=webp" data-lightbox-width="1342" data-lightbox-height="1045" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="557" class="pt-portable-image-media"></div>
+</figure>
+<p>하지만 클라이언트 앱이 WebSocket 연결을 열었다가 결국 아무것도 하지 않는 경우가 있습니다. 지난 5시간 동안 브라우저에 열어두었지만, 건드리지 않은 탭이 있다고 생각해 보세요. 그 탭에서 WebSocket을 사용하여 메시지를 주고받는 경우, 사실상 아무 용도로도 사용되지 않는 수명이 긴 TCP 연결을 갖게 됩니다. 이 연결이 Durable Object에 연결된 경우 해당 Durable Object가 계속 실행되어 어떤 일이 일어나기를 기다리므로 사용자는 메모리를 소모하고 비용을 지불해야 합니다.</p>
+<p>이 문제를 해결하기 위해 저희가 처음 <a href="https://blog.cloudflare.com/workers-pricing-scale-to-zero">도입한 것이 WebSocket Hibernation</a>이었으며, 오늘 이 기능이 베타 버전에서 벗어나 정식 버전으로 출시되었음을 알려드립니다. WebSocket Hibernation 모드를 사용하면 최대 절전 모드 중에 사용할 자동 응답을 설정하고 최대 절전 모드에서도 유지되도록 상태를 직렬화할 수 있습니다. 이렇게 하면 Durable Object가 활발하게 실행되지 않고 유휴 시간에 대한 요금이 청구되지 않도록 "최대 절전 모드"로 전환하는 동안 클라이언트로부터 열린 WebSocket 연결을 유지하는 데 필요한 입력이 Cloudflare에 제공됩니다. 그 결과 실제로 필요할 때는 항상 상태를 인메모리에 사용할 수 있지만, 필요하지 않을 때는 불필요하게 유지되지 않습니다. Durable Object가 최대 절전 모드에 있는 한, 웹소켓을 통해 연결된 활성 클라이언트가 있더라도 지속 시간에 대한 요금이 청구되지 않습니다.</p>
+<p>저희는 또한 Durable Objects로 들어오는 WebSocket 메시지 비용에 대한 개발자들의 피드백을 들었습니다. 실시간 커뮤니케이션을 위해 더 작고 빈번한 메시지를 선호한다는 것이었습니다. 오늘부터, 수신되는 웹소켓 메시지는 요청의 1/20에 해당하는 금액이 청구됩니다(지금까지처럼 메시지 1개가 요청 1개에 해당하는 것과는 달리). <a href="https://developers.cloudflare.com/durable-objects/platform/pricing/#example-4" target="_blank" rel="noopener noreferrer">가격 책정 예시</a>를 참고하세요.</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-4kyp{color:#0E101A;text-align:left;vertical-align:top} .tg .tg-bhdc{color:#0E101A;font-weight:bold;text-align:left;vertical-align:top}</p>
+<div id="html-block-k92" class="html-block">
+	<style>
+		#html-block-k92 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k92 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k92 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k92 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k92 .tg .tg-4kyp {
+			color: #0E101A;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k92 .tg .tg-bhdc {
+			color: #0E101A;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">WebSocket Connection Requests</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Incoming WebSocket Messages</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Billed Requests</span></th>
+				<th class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Request Billing</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">Before</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">10K</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432M</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432,010,000</span></td>
+				<td class="tg-bhdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">$64.65</span></td>
+			</tr>
+			<tr>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">After</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">10K</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">432M</span></td>
+				<td class="tg-4kyp"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">21,610,000</span></td>
+				<td class="tg-bhdc"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#0E101A;background-color:transparent">$3.09</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>WebSocket 연결 요청</p>
+<p>수신 WebSocket 메시지</p>
+<p>청구된 요청</p>
+<p>요청 청구</p>
+<p>이전</p>
+<p>10K</p>
+<p>432M</p>
+<p>432,010,000</p>
+<p>$64.65</p>
+<p>이후</p>
+<p>10K</p>
+<p>432M</p>
+<p>21,610,000</p>
+<p>$3.09</p>
+<h3>프로덕션 복잡성 없이 프로덕션 준비 완료</h3>
+<p>이전 세대의 클라우드 플랫폼에서 프로덕션을 준비한다는 것은 출시 속도가 느려진다는 것을 의미했습니다. 프로덕션을 준비한다는 것은 단절된 여러 도구를 하나로 연결하거나 내부 플랫폼에서 작업하기 위해 전체 팀을 구성하는 것을 의미했습니다. 장애물이 되는 플랫폼에 맞춰 자체 생산성 계층을 개조해야 했습니다.</p>
+<p>Cloudflare 개발자 플랫폼은 성장하여 생산 준비가 되어 있고, 통합 플랫폼이 되기 위해 최선을 다하고 있습니다. 이 플랫폼에서는 제품이 직관적으로 함께 작동하고 동일한 작업을 수행하는 10가지 방법이 없으며, 함께 작동하는 것을 이해하는 데 도움이 되는 호환성 매트릭스가 필요 없게 됩니다. 이러한 각 업데이트는 제품 및 Cloudflare 플랫폼의 일부에 새로운 기능을 통합하여 이를 실제로 보여 줍니다.</p>
+<p>이를 위해 여러분이 다음에 보고 싶은 기능뿐만 아니라 더 간소화할 수 있는 부분이나 더 잘 작동할 수 있다고 생각하는 제품에 대한 의견을 듣고자 합니다. 저희가 더 많은 도움을 드릴 수 있다고 생각되는 부분을 알려 주세요. <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare 개발자 Discord</a>는 항상 열려 있습니다.</p>

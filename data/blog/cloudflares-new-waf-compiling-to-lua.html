@@ -1,86 +1,44 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https:undefined" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>We use nginx throughout our network for front-line web serving, proxying and traffic filtering. In some cases, we've augmented the core C code of nginx with our own modules, but recently we've made a <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">major move</a> to using Lua in conjunction with nginx.</p>
-	<p>One project that's now almost entirely written in Lua is the new CloudFlare WAF that we <a href="https://blog.cloudflare.com/heuristics-and-rules-why-we-built-a-new-old-waf">blogged about the other day</a>.</p>
-	<p>The Lua WAF uses the <a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="noopener noreferrer">nginx Lua module</a> to embed Lua code and execute that code as part of the normal nginx handling of phases. The entire execution of the [WAF](<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/</a>) is actually handled by the following nginx configuration:</p>
-	<p>location / {
-		set $backend_waf "WAF_CORE";
-		default_type 'text/plain';
-		access_by_lua '
-		local waf = require "waf"
-		waf.execute()
-		';
-		}</p>
-	<p>The <a href="http://wiki.nginx.org/HttpLuaModule#access_by_lua" target="_blank" rel="noopener noreferrer">access_by_lua</a> directive tells nginx to execute the Lua code shown as an access phase handler. Then the Lua code in the waf module determines whether the request should be blocked or passed to the origin for processing. The waf module terminates by calling <a href="http://wiki.nginx.org/HttpLuaModule#ngx.exit" target="_blank" rel="noopener noreferrer">ngx.exit()</a>&nbsp;with either a 200 (which causes nginx to continue processing the request) or a 403 (to block the request).</p>
-	<p>All the real WAF work is done by the waf module which is written in Lua.</p>
-	<p>To implement the WAF we wanted to be able to read existing WAF configurations written for the popular <a href="http://www.modsecurity.org" target="_blank" rel="noopener noreferrer">mod_security</a> open source WAF and support our own simplified WAF language. The mod_security language has to work inside Apache configuration files which leads to it being somewhat hard to read, but there are a large body of rules written using it (such as the popular <a href="https://www.owasp.org/index.php/Projects/OWASP_ModSecurity_Core_Rule_Set_Project" target="_blank" rel="noopener noreferrer">OWASP ruleset</a>) that we wanted to be able to run natively.</p>
-	<p>Prior to writing the new WAF we had actually been running Apache alongside nginx just for mod_security, but the combination was slow, cumbersome, and not scalable with CloudFlare's growing business. We were already working with compromises just to keep it running.</p>
-	<p>A rule written in mod_security's native language might look like the following (this is a slightly obfuscated version of a real custom rule we put in place). The first block of code shows the mod_security version, the second the equivalent in CloudFlare's own rule language.&nbsp;</p>
-	<p>SecRule REQUEST_HEADERS:User-Agent "@beginsWith DataStore/"
-		"id:100000,phase:0,t:none,deny,chain,msg:'DataStore Attack'"
-		SecRule REQUEST_METHOD "@streq GET" "chain"
-		SecRule REQUEST_URI "\/\?-?\d+=-?\d+" ""</p>
-	<p>rule 100000 DataStore AttackREQUEST_HEADERS:User-Agent has-prefix DataStore/ andREQUEST_METHOD is GET andREQUEST_URI matches /?-?\d+=-?\d+deny</p>
-	<p>We'll be opening up the ability to write custom rules in either mod_security or CloudFlare style as the WAF rolls out more widely. Most importantly the CloudFlare WAF language is not Lua despite the fact that the WAF is implemented in Lua.</p>
-	<p>In fact, the WAF operates by first taking rules written in either mod_security or CloudFlare style and converting them to a common JSON format that encodes the rule and adds additional information used by the WAF UI (such as whether the rule can be disabled or not).</p>
-	<p>The JSON format is then compiled into a Lua program that is executed by the WAF. The compilation step allows us to support different input languages (like the two above) and perform optimization so that the WAF executes quickly.</p>
-	<p>For example, the compiler performs tasks such as:</p>
-	<ul>
-		<li>
-			<p>Clause reordering so that rules can be quickly skipped if a sub-clause doesn't match</p>
-		</li>
-		<li>
-			<p>Regular expression optimization and simplification</p>
-		</li>
-		<li>
-			<p>Operator replacement so that fast operators (such as simple string matches) are used where possible</p>
-		</li>
-		<li>
-			<p>Providing hints to the WAF runtime about whether macro expansion is needed.</p>
-		</li>
-		<li>
-			<p>Global optimizations such as recognizing repeated use of the same strings or variables and ensuring that they are computed only once</p>
-		</li>
-		<li>
-			<p>Lua optimizations such as the use of local references to global functions</p>
-		</li>
-	</ul>
-	<p>The rule above ends up as the following Lua code:</p>
-	<p>if waf_begins(waf, v3_6, '3_6', t3_1, '3_1', 'DataStore/', false) then
-		waf.vars['RULE']['ID'] = '100000'
-		if waf_eq(waf, v3_7, '3_7', t3_1, '3_1', 'GET', false) then
-		if waf_regex(waf, v3_4, '3_4', t3_1, '3_1', [=[\/\?-?\d+=-?\d+]=],
-		false, nil, false) then
-		waf_activate(waf, rulefile)
-		waf_msg(waf, 'DataStore Attack')
-		waf_deny(waf, rulefile)
-		end
-		end
-		end</p>
-	<p>The resulting code is hard to read because it's essentially the WAF's assembly language and has been automatically generated. The WAF runtime implements functions like waf_begins, waf_eq, and waf_regex that are used to perform rule matching. Those functions themselves are highly optimized.</p>
-	<p>The overall goal was to get the median WAF block/allow decision made in &lt;1ms when running in the real world.</p>
-	<p>The optimization in the WAF runtime comes from examining the WAF's performance under a test harness with line-level timing information and from running the WAF in CloudFlare's network with very detailed <a href="http://sourceware.org/systemtap" target="_blank" rel="noopener noreferrer">systemtap</a>-based instrumention.</p>
-	<p>To get line-level information when running in the test suite we wrote a small line-level code profiler which we use when running the WAF core code against a test set of requests. The profiler, called <a href="http://blog.jgc.org/2013/04/lulip-line-level-profiler-for-code.html" target="_blank" rel="noopener noreferrer">lulip</a>, is an open source project. It outputs information about which lines were called the most frequently and which consumed the most execution time.</p>
-	<p>For example, here's a simplified version of output from a test:</p>
-	<p>file:line count elapsed (ms) line
-		wr.lua:1129 2 822.455 hash = ngx_sha1_bin(value)
-		wr.lua:1172 428 470.849 captures, err = ngx_re_match(v, p)
-		wr.lua:1197 3762 207.487 x = string_find(v, f)
-		wr.lua:212 157 154.386 string_gsub(v, "//([^/]+)//", "%1")
-		wr.lua:1196 3788 87.475 for i=1,g() do
-		wr.lua:1158 1563 52.906 if not f() then</p>
-	<p>It shows that a call to ngx_sha1_bin (which is actually a local Lua reference to the <a href="http://wiki.nginx.org/HttpLuaModule#ngx.sha1_bin" target="_blank" rel="noopener noreferrer">ngx.sha1_bin</a> function in nginx Lua) was called only twice but took 823ms to run. The next most expensive line was line 1172 which took 471ms in total but was called 428 times. Using this detailed information we were able to optimize specific hot spots of code.</p>
-	<p>Information from the systemtap or a stack trace is fed into our own pastebin which parses it and automatically produces a <a href="http://dtrace.org/blogs/brendan/2011/12/16/flame-graphs" target="_blank" rel="noopener noreferrer">flame graph</a> showing where the code is running. Hovering over any segment gives information about percentage of time spent in any part of the code.</p>
-	<p>Early on in the optimization of the WAF the flame graph quickly showed that extensive used of <a href="http://lua-users.org/wiki/MinimisingClosures" target="_blank" rel="noopener noreferrer">closures</a> was causing slowness because of their cost in <a href="http://luajit.org" target="_blank" rel="noopener noreferrer">LuaJIT</a>. A change to the compiler removed their use.</p>
-	<p>Another view generated from the same information shows the total time spent within a function (ignoring any functions it itself calls). This enables quick identification of hot functions. Here it's easy to see that regular expression processing and string matching are the most expensive operations (which isn't surprising given that that's what the WAF does, mostly).</p>
-	<p>Examining these traces we decided that it would be worthwhile <a href="http://luajit.org/sponsors.html#sponsorship_perf" target="_blank" rel="noopener noreferrer">sponsoring improvements</a> to the LuaJIT open source project.</p>
-	<p>The key to optimizing the WAF came from two things: repeatable test data and tools for inspecting the code as it ran. The combination of flame graphs and lulip meant that it was possible to make huge leaps in WAF performance by seeing precisely where time was spent. The use of a rule compiler meant that optimizations could be made rapidly to all the rules as needed. There's no point guessing what's slow: measure it!</p>
-	<p>The resulting code makes extensive use of <a href="http://lua-users.org/wiki/OptimisingUsingLocalVariables" target="_blank" rel="noopener noreferrer">local variables</a> (many of which are automatically generated by the compiler) and memoization. We also use nginx Lua's cache of loaded Lua code to speed up loading of custom rules and a two stage in-memory cache that uses by <a href="http://wiki.nginx.org/HttpLuaModule#ngx.shared.DICT" target="_blank" rel="noopener noreferrer">lua_shared_dict</a> and memcached for additional loading speed. And our <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">globally distributed data store</a> means that new rules can be rolled out in seconds.</p>
-	<p>And, finally, to measure the operation of the WAF in production we have a global metrics system that gathers metrics about all parts of the CloudFlare network. Here's a chart showing a few hours of WAF operation; it shows the average time to process a request in microseconds. The WAF is running at between 380us and 480us per request, well within the goal of 1ms.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/66gD4M2c2W91OyMtXNkslf/a3ad0d436ca663704031de25b7f1b4d9/Screen_Shot_2013-08-23_at_4.41.07_PM.png" alt="" class="kg-image" width="787" height="407" loading="lazy">
-
-	</figure>
-	<p>The combination of optimization in the language, the compiler and the WAF core mean that we now have a very fast all Lua WAF that gives us great flexibility and which runs within the core of nginx. This is yet another project that points to Lua being an excellent embedded language in which to write the sorts of scalable logic that CloudFlare needs.</p>
-</div>
+<p>We use nginx throughout our network for front-line web serving, proxying and traffic filtering. In some cases, we've augmented the core C code of nginx with our own modules, but recently we've made a <a href="https://blog.cloudflare.com/pushing-nginx-to-its-limit-with-lua">major move</a> to using Lua in conjunction with nginx.</p>
+<p>One project that's now almost entirely written in Lua is the new CloudFlare WAF that we <a href="https://blog.cloudflare.com/heuristics-and-rules-why-we-built-a-new-old-waf">blogged about the other day</a>.</p>
+<p>The Lua WAF uses the <a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="noopener noreferrer">nginx Lua module</a> to embed Lua code and execute that code as part of the normal nginx handling of phases. The entire execution of the [WAF](<a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf/</a>) is actually handled by the following nginx configuration:</p>
+<p>location / {<br>set $backend_waf "WAF_CORE";<br>default_type 'text/plain';<br>access_by_lua '<br>local waf = require "waf"<br>waf.execute()<br>';<br>}</p>
+<p>The <a href="http://wiki.nginx.org/HttpLuaModule#access_by_lua" target="_blank" rel="noopener noreferrer">access_by_lua</a> directive tells nginx to execute the Lua code shown as an access phase handler. Then the Lua code in the waf module determines whether the request should be blocked or passed to the origin for processing. The waf module terminates by calling <a href="http://wiki.nginx.org/HttpLuaModule#ngx.exit" target="_blank" rel="noopener noreferrer">ngx.exit()</a>&nbsp;with either a 200 (which causes nginx to continue processing the request) or a 403 (to block the request).</p>
+<p>All the real WAF work is done by the waf module which is written in Lua.</p>
+<p>To implement the WAF we wanted to be able to read existing WAF configurations written for the popular <a href="http://www.modsecurity.org" target="_blank" rel="noopener noreferrer">mod_security</a> open source WAF and support our own simplified WAF language. The mod_security language has to work inside Apache configuration files which leads to it being somewhat hard to read, but there are a large body of rules written using it (such as the popular <a href="https://www.owasp.org/index.php/Projects/OWASP_ModSecurity_Core_Rule_Set_Project" target="_blank" rel="noopener noreferrer">OWASP ruleset</a>) that we wanted to be able to run natively.</p>
+<p>Prior to writing the new WAF we had actually been running Apache alongside nginx just for mod_security, but the combination was slow, cumbersome, and not scalable with CloudFlare's growing business. We were already working with compromises just to keep it running.</p>
+<p>A rule written in mod_security's native language might look like the following (this is a slightly obfuscated version of a real custom rule we put in place). The first block of code shows the mod_security version, the second the equivalent in CloudFlare's own rule language.&nbsp;</p>
+<p>SecRule REQUEST_HEADERS:User-Agent "@beginsWith DataStore/"<br>"id:100000,phase:0,t:none,deny,chain,msg:'DataStore Attack'"<br>SecRule REQUEST_METHOD "@streq GET" "chain"<br>SecRule REQUEST_URI "\/\?-?\d+=-?\d+" ""</p>
+<p>rule 100000 DataStore AttackREQUEST_HEADERS:User-Agent has-prefix DataStore/ andREQUEST_METHOD is GET andREQUEST_URI matches /?-?\d+=-?\d+deny</p>
+<p>We'll be opening up the ability to write custom rules in either mod_security or CloudFlare style as the WAF rolls out more widely. Most importantly the CloudFlare WAF language is not Lua despite the fact that the WAF is implemented in Lua.</p>
+<p>In fact, the WAF operates by first taking rules written in either mod_security or CloudFlare style and converting them to a common JSON format that encodes the rule and adds additional information used by the WAF UI (such as whether the rule can be disabled or not).</p>
+<p>The JSON format is then compiled into a Lua program that is executed by the WAF. The compilation step allows us to support different input languages (like the two above) and perform optimization so that the WAF executes quickly.</p>
+<p>For example, the compiler performs tasks such as:</p>
+<ul>
+	<li>Clause reordering so that rules can be quickly skipped if a sub-clause doesn't match</li>
+	<li>Regular expression optimization and simplification</li>
+	<li>Operator replacement so that fast operators (such as simple string matches) are used where possible</li>
+	<li>Providing hints to the WAF runtime about whether macro expansion is needed.</li>
+	<li>Global optimizations such as recognizing repeated use of the same strings or variables and ensuring that they are computed only once</li>
+	<li>Lua optimizations such as the use of local references to global functions</li>
+</ul>
+<p>The rule above ends up as the following Lua code:</p>
+<p>if waf_begins(waf, v3_6, '3_6', t3_1, '3_1', 'DataStore/', false) then<br>waf.vars['RULE']['ID'] = '100000'<br>if waf_eq(waf, v3_7, '3_7', t3_1, '3_1', 'GET', false) then<br>if waf_regex(waf, v3_4, '3_4', t3_1, '3_1', [=[\/\?-?\d+=-?\d+]=],<br>false, nil, false) then<br>waf_activate(waf, rulefile)<br>waf_msg(waf, 'DataStore Attack')<br>waf_deny(waf, rulefile)<br>end<br>end<br>end</p>
+<p>The resulting code is hard to read because it's essentially the WAF's assembly language and has been automatically generated. The WAF runtime implements functions like waf_begins, waf_eq, and waf_regex that are used to perform rule matching. Those functions themselves are highly optimized.</p>
+<p>The overall goal was to get the median WAF block/allow decision made in &lt;1ms when running in the real world.</p>
+<p>The optimization in the WAF runtime comes from examining the WAF's performance under a test harness with line-level timing information and from running the WAF in CloudFlare's network with very detailed <a href="http://sourceware.org/systemtap" target="_blank" rel="noopener noreferrer">systemtap</a>-based instrumention.</p>
+<p>To get line-level information when running in the test suite we wrote a small line-level code profiler which we use when running the WAF core code against a test set of requests. The profiler, called <a href="http://blog.jgc.org/2013/04/lulip-line-level-profiler-for-code.html" target="_blank" rel="noopener noreferrer">lulip</a>, is an open source project. It outputs information about which lines were called the most frequently and which consumed the most execution time.</p>
+<p>For example, here's a simplified version of output from a test:</p>
+<p>file:line count elapsed (ms) line<br>wr.lua:1129 2 822.455 hash = ngx_sha1_bin(value)<br>wr.lua:1172 428 470.849 captures, err = ngx_re_match(v, p)<br>wr.lua:1197 3762 207.487 x = string_find(v, f)<br>wr.lua:212 157 154.386 string_gsub(v, "//([^/]+)//", "%1")<br>wr.lua:1196 3788 87.475 for i=1,g() do<br>wr.lua:1158 1563 52.906 if not f() then</p>
+<p>It shows that a call to ngx_sha1_bin (which is actually a local Lua reference to the <a href="http://wiki.nginx.org/HttpLuaModule#ngx.sha1_bin" target="_blank" rel="noopener noreferrer">ngx.sha1_bin</a> function in nginx Lua) was called only twice but took 823ms to run. The next most expensive line was line 1172 which took 471ms in total but was called 428 times. Using this detailed information we were able to optimize specific hot spots of code.</p>
+<p>Information from the systemtap or a stack trace is fed into our own pastebin which parses it and automatically produces a <a href="http://dtrace.org/blogs/brendan/2011/12/16/flame-graphs" target="_blank" rel="noopener noreferrer">flame graph</a> showing where the code is running. Hovering over any segment gives information about percentage of time spent in any part of the code.</p>
+<p>Early on in the optimization of the WAF the flame graph quickly showed that extensive used of <a href="http://lua-users.org/wiki/MinimisingClosures" target="_blank" rel="noopener noreferrer">closures</a> was causing slowness because of their cost in <a href="http://luajit.org" target="_blank" rel="noopener noreferrer">LuaJIT</a>. A change to the compiler removed their use.</p>
+<p>Another view generated from the same information shows the total time spent within a function (ignoring any functions it itself calls). This enables quick identification of hot functions. Here it's easy to see that regular expression processing and string matching are the most expensive operations (which isn't surprising given that that's what the WAF does, mostly).</p>
+<p>Examining these traces we decided that it would be worthwhile <a href="http://luajit.org/sponsors.html#sponsorship_perf" target="_blank" rel="noopener noreferrer">sponsoring improvements</a> to the LuaJIT open source project.</p>
+<p>The key to optimizing the WAF came from two things: repeatable test data and tools for inspecting the code as it ran. The combination of flame graphs and lulip meant that it was possible to make huge leaps in WAF performance by seeing precisely where time was spent. The use of a rule compiler meant that optimizations could be made rapidly to all the rules as needed. There's no point guessing what's slow: measure it!</p>
+<p>The resulting code makes extensive use of <a href="http://lua-users.org/wiki/OptimisingUsingLocalVariables" target="_blank" rel="noopener noreferrer">local variables</a> (many of which are automatically generated by the compiler) and memoization. We also use nginx Lua's cache of loaded Lua code to speed up loading of custom rules and a two stage in-memory cache that uses by <a href="http://wiki.nginx.org/HttpLuaModule#ngx.shared.DICT" target="_blank" rel="noopener noreferrer">lua_shared_dict</a> and memcached for additional loading speed. And our <a href="https://blog.cloudflare.com/kyoto_tycoon_with_postgresql">globally distributed data store</a> means that new rules can be rolled out in seconds.</p>
+<p>And, finally, to measure the operation of the WAF in production we have a global metrics system that gathers metrics about all parts of the CloudFlare network. Here's a chart showing a few hours of WAF operation; it shows the average time to process a request in microseconds. The WAF is running at between 380us and 480us per request, well within the goal of 1ms.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="370" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=640&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=750&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=828&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=1080&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=1280&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=1430&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="CloudFlare's new WAF: compiling to Lua Embedded Image - 7qy0mh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47XFP0QTYG4HGMCZZ2EK98.png&amp;w=787&amp;h=407&amp;f=webp" data-lightbox-width="787" data-lightbox-height="407" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="370" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The combination of optimization in the language, the compiler and the WAF core mean that we now have a very fast all Lua WAF that gives us great flexibility and which runs within the core of nginx. This is yet another project that points to Lua being an excellent embedded language in which to write the sorts of scalable logic that CloudFlare needs.</p>

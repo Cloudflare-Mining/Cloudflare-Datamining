@@ -1,70 +1,31 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/introducing-regional-services">Français</a>, <a href="https://blog.cloudflare.com/es-es/introducing-regional-services">Español</a> and <a href="https://blog.cloudflare.com/de-de/introducing-regional-services">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51O0aXGdAVJcEbXQ5JIwCN/710c53b545410ef8972248060f276aaf/introducing-regional-services.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>In a world where, increasingly, workloads shift to the cloud, it is often uncertain and unclear how data travels the Internet and in which countries data is processed. Today, Cloudflare is pleased to announce that we're giving our customers control. With Regional Services, we’re providing customers full control over exactly where their traffic is handled.</p>
-	<p>We operate a global network spanning more than 200 cities. Each data center runs servers with the exact same software stack. This has enabled Cloudflare to quickly and efficiently add capacity where needed. It also allows our engineers to ship features with ease: deploy once, and it's available globally.</p>
-	<p>The same benefit applies to our customers: configure once and that change is applied everywhere in seconds, regardless of whether they’re changing security features, adding a DNS record or deploying a Cloudflare Worker containing code.</p>
-	<p>Having a homogenous network is great from a routing point of view: whenever a user performs an HTTP request, the closest datacenter is found due to Cloudflare's Anycast network. BGP looks at the hops that would need to be traversed to find the closest data center. This means that someone near the Canadian border (let's say North Dakota) could easily find themselves routed to Winnipeg (inside Canada) instead of a data center in the United States. This is generally what our customers want and expect: find the fastest way to serve traffic, regardless of geographic location.</p><!--kg-card-begin: html--><a href="https://cloudflare.tv">
+<p>In a world where, increasingly, workloads shift to the cloud, it is often uncertain and unclear how data travels the Internet and in which countries data is processed. Today, Cloudflare is pleased to announce that we're giving our customers control. With Regional Services, we’re providing customers full control over exactly where their traffic is handled.</p>
+<p>We operate a global network spanning more than 200 cities. Each data center runs servers with the exact same software stack. This has enabled Cloudflare to quickly and efficiently add capacity where needed. It also allows our engineers to ship features with ease: deploy once, and it's available globally.</p>
+<p>The same benefit applies to our customers: configure once and that change is applied everywhere in seconds, regardless of whether they’re changing security features, adding a DNS record or deploying a Cloudflare Worker containing code.</p>
+<p>Having a homogenous network is great from a routing point of view: whenever a user performs an HTTP request, the closest datacenter is found due to Cloudflare's Anycast network. BGP looks at the hops that would need to be traversed to find the closest data center. This means that someone near the Canadian border (let's say North Dakota) could easily find themselves routed to Winnipeg (inside Canada) instead of a data center in the United States. This is generally what our customers want and expect: find the fastest way to serve traffic, regardless of geographic location.</p>
+<div id="html-block-k8" class="html-block"><a href="https://cloudflare.tv">
 		<img alt="Cloudflare TV" src="http://staging.blog.mrk.cfdata.org/content/images/2020/06/tube-blog-banner.png">
-	</a><!--kg-card-end: html-->
-	<p>Some organizations, however, have expressed preferences for maintaining regional control over their data for a variety of reasons. For example, they may be bound by agreements with their own customers that include geographic restrictions on data flows or data processing. As a result, some customers have requested control over where their web traffic is serviced.</p>
-	<p>Regional Services gives our customers the ability to accommodate regional restrictions while still using Cloudflare’s global edge network. As of today, Enterprise customers can add Regional Services to their contracts. With Regional Services, customers can choose which subset of data centers are able to service traffic on the HTTP level. But we're not reducing network capacity to do this: that would not be the Cloudflare Way. Instead, we're allowing customers to use our entire network for <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection</a> but limiting the data centers that apply higher-level layer 7 security and performance features such as WAF, Workers, and Bot Management.</p>
-	<p>Traffic is ingested on our global Anycast network at the location closest to the client, as usual, and then passed to data centers inside the geographic region of the customer’s choice. TLS keys are only <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">stored</a> and used to actually handle traffic inside that region. This gives our customers the benefit of our huge, low-latency, high-throughput network, capable of withstanding even the <a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks">largest DDoS attacks</a>, while also giving them local control: only data centers inside a customer’s preferred geographic region will have the access necessary to apply security policies.</p>
-	<p>The diagram below shows how this process works. When users connect to Cloudflare, they hit the closest data center to them, by nature of our Anycast network. That data center detects and mitigates DDoS attacks. Legitimate traffic is passed through to a data center with the geographic region of the customers choosing. Inside that data center, traffic is inspected at OSI layer 7 and HTTP products can work their magic:</p>
-	<ul>
-		<li>
-			<p>Content can be returned from and stored in cache</p>
-		</li>
-		<li>
-			<p>The WAF looks inside the HTTP payloads</p>
-		</li>
-		<li>
-			<p>Bot Management detects and blocks suspicious activity</p>
-		</li>
-		<li>
-			<p>Workers scripts run</p>
-		</li>
-		<li>
-			<p>Access policies are applied</p>
-		</li>
-		<li>
-			<p>Load Balancers look for the best origin to service traffic</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aaFSqiVx77rXsS2N3RT1f/d574a8616e54dd8246b68ee94a09837e/image2-9.png" alt="" class="kg-image" width="1181" height="652" loading="lazy">
-
-	</figure>
-	<p>Today's launch includes preconfigured geographic regions; we'll look to add more depending on customer demand. Today, US and EU regions are available immediately, meaning layer 7 (HTTP) products can be configured to only be applied within those regions and not outside of them.</p>
-	<p>The US and EU maps are depicted below. Purple dots represent data centers that apply DDoS protection and network acceleration. Orange dots represent data centers that process traffic.</p>
-	<div class="flex anchor relative">
-		<h3 id="us">US</h3>
-		<a href="https://blog.cloudflare.com/#us" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27QO1l8SD4U7w27OSYYPOp/33c4577ab859445c0f3fab1f515fbf72/image1-10.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="eu">EU</h3>
-		<a href="https://blog.cloudflare.com/#eu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/10lHcRerwTtYDamjx1u0HA/7f714e18362e0ad7a09caa8ea4447406/BDES-655-_-Slides-with-Cloudflare-PoPs-for-product-launch--1-.jpg" alt="" class="kg-image" width="960" height="540" loading="lazy">
-
-	</figure>
-	<p>We're very excited to provide new tools to our customers, allowing them to dictate which of our data centers employ HTTP features and which do not. If you're interested in learning more, contact <a href="https://blog.cloudflare.com/#">sales@cloudflare.com</a>.</p>
-</div>
+	</a></div>
+<p>Some organizations, however, have expressed preferences for maintaining regional control over their data for a variety of reasons. For example, they may be bound by agreements with their own customers that include geographic restrictions on data flows or data processing. As a result, some customers have requested control over where their web traffic is serviced.</p>
+<p>Regional Services gives our customers the ability to accommodate regional restrictions while still using Cloudflare’s global edge network. As of today, Enterprise customers can add Regional Services to their contracts. With Regional Services, customers can choose which subset of data centers are able to service traffic on the HTTP level. But we're not reducing network capacity to do this: that would not be the Cloudflare Way. Instead, we're allowing customers to use our entire network for <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection</a> but limiting the data centers that apply higher-level layer 7 security and performance features such as WAF, Workers, and Bot Management.</p>
+<p>Traffic is ingested on our global Anycast network at the location closest to the client, as usual, and then passed to data centers inside the geographic region of the customer’s choice. TLS keys are only <a href="https://blog.cloudflare.com/geo-key-manager-how-it-works">stored</a> and used to actually handle traffic inside that region. This gives our customers the benefit of our huge, low-latency, high-throughput network, capable of withstanding even the <a href="https://blog.cloudflare.com/the-daily-ddos-ten-days-of-massive-attacks">largest DDoS attacks</a>, while also giving them local control: only data centers inside a customer’s preferred geographic region will have the access necessary to apply security policies.</p>
+<p>The diagram below shows how this process works. When users connect to Cloudflare, they hit the closest data center to them, by nature of our Anycast network. That data center detects and mitigates DDoS attacks. Legitimate traffic is passed through to a data center with the geographic region of the customers choosing. Inside that data center, traffic is inspected at OSI layer 7 and HTTP products can work their magic:</p>
+<ul>
+	<li>Content can be returned from and stored in cache</li>
+	<li>The WAF looks inside the HTTP payloads</li>
+	<li>Bot Management detects and blocks suspicious activity</li>
+	<li>Workers scripts run</li>
+	<li>Access policies are applied</li>
+	<li>Load Balancers look for the best origin to service traffic</li>
+</ul>
+<p>Today's launch includes preconfigured geographic regions; we'll look to add more depending on customer demand. Today, US and EU regions are available immediately, meaning layer 7 (HTTP) products can be configured to only be applied within those regions and not outside of them.</p>
+<p>The US and EU maps are depicted below. Purple dots represent data centers that apply DDoS protection and network acceleration. Orange dots represent data centers that process traffic.</p>
+<h3>US</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing Regional Services Embedded Image - fvFwgS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452607K8VKN38AJ2R6ZT7K.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>EU</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing Regional Services Embedded Image - ajXlpY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447F4XV1YN2HDTXVSHAQZ6.jpg&amp;w=960&amp;h=540&amp;f=webp" data-lightbox-width="960" data-lightbox-height="540" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>We're very excited to provide new tools to our customers, allowing them to dictate which of our data centers employ HTTP features and which do not. If you're interested in learning more, contact <a href="mailto:sales@cloudflare.com">sales@cloudflare.com</a>.</p>

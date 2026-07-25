@@ -1,655 +1,612 @@
-<div class="mb2 gray5">11 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Ih4pvbZshdUy2ihfodYAU/7800842ad2c0270609b36a8a99d0ceb4/image1-1.png" alt="How to execute an object file: part 4, AArch64 edition" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<p>Translating source code written in a high-level programming language into an executable binary typically involves a series of steps, namely compiling and assembling the code into object files, and then linking those object files into the final executable. However, there are certain scenarios where it can be useful to apply an alternate approach that involves executing object files directly, bypassing the linker. For example, we might use it for malware analysis or when part of the code requires an incompatible compiler. We’ll be focusing on the latter scenario: when one of our libraries needed to be compiled differently from the rest of the code. Learning how to execute an object file directly will give you a much better sense of how code is compiled and linked together.</p>
-	<p>To demonstrate how this was done, we have previously published a series of posts on executing an object file:</p>
-	<ul>
-		<li>
-			<p><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">How to execute an object file: Part 1</a></p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">How to execute an object file: Part 2</a></p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">How to execute an object file: Part 3</a></p>
-		</li>
-	</ul>
-	<p>The initial posts are dedicated to the x86 architecture. Since then the fleet of our working machines has expanded to include a large and growing number of ARM CPUs. This time we’ll repeat this exercise for the aarch64 architecture. You can pause here to read the previous blog posts before proceeding with this one, or read through the brief summary below and reference the earlier posts for more detail. We might reiterate some theory as working with ELF files can be daunting, if it’s not your day-to-day routine. Also, please be mindful that for simplicity, these examples omit bounds and integrity checks. Let the journey begin!</p>
-	<div class="flex anchor relative">
-		<h2 id="introduction">Introduction</h2>
-		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In order to obtain an object file or an executable binary from a high-level compiled programming language the code needs to be processed by three components: compiler, assembler and linker. The compiler generates an assembly listing. This assembly listing is picked up by the assembler and translated into an object file. All source files, if a program contains multiple, go through these two steps generating an object file for each source file. At the final step the linker unites all object files into one binary, additionally resolving references to the shared libraries (i.e. we don’t implement the <code>printf</code> function each time, rather we take it from a system library). Even though the approach is platform independent, the compiler output varies by platform as the assembly listing is closely tied to the CPU architecture.</p>
-	<p>GCC (GNU Compiler Collection) can run each step: compiler, assembler and linker separately for us:</p>
-	<p>main.c:</p>
-	<pre class="language-cpp"><code class="language-cpp">#include &lt;stdio.h&gt;
-
-int main(void)
-{
-	puts("Hello, world!");
-	return 0;
-}</code></pre>
-	<p>Compiler (output <code>main.s</code> - assembly listing):</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -S main.c
-$ ls
-main.c  main.s</code></pre>
-	<p>Assembler (output <code>main.o</code> - an object file):</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -c main.s -o main.o
-$ ls
-main.c  main.o  main.s</code></pre>
-	<p>Linker (<code>main</code> - an object file):</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc main.o -o main
-$ ls
-main  main.c  main.o  main.s
-$ ./main
-Hello, world!</code></pre>
-	<p>All the examples assume gcc is running on a native aarch64 architecture or include a cross compilation flag for those who want to reproduce and have no aarch64.</p>
-	<p>We have two object files in the output above: <code>main.o</code> and <code>main</code>. Object files are files encoded with the <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF (Executable and Linkable Format)</a> standard. Although, <code>main.o</code> is an ELF file, it doesn’t contain all the information to be fully executable.</p>
-	<pre class="language-bash"><code class="language-bash">$ file main.o
-main.o: ELF 64-bit LSB relocatable, ARM aarch64, version 1 (SYSV), not stripped
-
-$ file main
-main: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically
-linked, interpreter /lib/ld-linux-aarch64.so.1,
-BuildID[sha1]=d3ecd2f8ac3b2dec11ed4cc424f15b3e1f130dd4, for GNU/Linux 3.7.0, not stripped</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="the-elf-file">The ELF File</h2>
-		<a href="https://blog.cloudflare.com/#the-elf-file" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The central idea of this series of blog posts is to understand how to resolve dependencies from object files without directly involving the linker. For illustrative purposes we generated an object file based on some C-code and used it as a library for our main program. Before switching to the code, we need to understand the basics of the ELF structure.</p>
-	<p>Each ELF file is made up of one <i>ELF header</i>, followed by file data. The data can include: a <i>program header</i> table, a <i>section header</i> table, and the data which is referred to by the program or section header tables.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-elf-header">The ELF Header</h3>
-		<a href="https://blog.cloudflare.com/#the-elf-header" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The ELF header provides some basic information about the file: what architecture the file is compiled for, the program entry point and the references to other tables.</p>
-	<p>The ELF Header:</p>
-	<pre class="language-bash"><code class="language-bash">$ readelf -h main
-ELF Header:
-  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
-  Class:                             ELF64
-  Data:                              2's complement, little endian
-  Version:                           1 (current)
-  OS/ABI:                            UNIX - System V
-  ABI Version:                       0
-  Type:                              DYN (Position-Independent Executable file)
-  Machine:                           AArch64
-  Version:                           0x1
-  Entry point address:               0x640
-  Start of program headers:          64 (bytes into file)
-  Start of section headers:          68576 (bytes into file)
-  Flags:                             0x0
-  Size of this header:               64 (bytes)
-  Size of program headers:           56 (bytes)
-  Number of program headers:         9
-  Size of section headers:           64 (bytes)
-  Number of section headers:         29
-  Section header string table index: 28</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="the-elf-program-header">The ELF Program Header</h3>
-		<a href="https://blog.cloudflare.com/#the-elf-program-header" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The execution process of almost every program starts from an auxiliary program, called loader, which arranges the memory and calls the program’s entry point. In the following output the loader is marked with a line <code>“Requesting program interpreter: /lib/ld-linux-aarch64.so.1”</code>. The whole program memory is split into different segments with associated size, permissions and type (which instructs the loader on how to interpret this block of memory). Because the execution process should be performed in the shortest possible time, the <i>sections</i> with the same characteristics and located nearby are grouped into bigger blocks — <i>segments</i> — and placed in the <i>program header</i>. We can say that the <i>program header</i> summarizes the types of data that appear in the <i>section header</i>.</p>
-	<p>The ELF Program Header:</p>
-	<pre class="language-bash"><code class="language-bash">$ readelf -Wl main
-
-Elf file type is DYN (Position-Independent Executable file)
-Entry point 0x640
-There are 9 program headers, starting at offset 64
-
-Program Headers:
-  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align
-  PHDR           0x000040 0x0000000000000040 0x0000000000000040 0x0001f8 0x0001f8 R   0x8
-  INTERP         0x000238 0x0000000000000238 0x0000000000000238 0x00001b 0x00001b R   0x1
-      [Requesting program interpreter: /lib/ld-linux-aarch64.so.1]
-  LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x00088c 0x00088c R E 0x10000
-  LOAD           0x00fdc8 0x000000000001fdc8 0x000000000001fdc8 0x000270 0x000278 RW  0x10000
-  DYNAMIC        0x00fdd8 0x000000000001fdd8 0x000000000001fdd8 0x0001e0 0x0001e0 RW  0x8
-  NOTE           0x000254 0x0000000000000254 0x0000000000000254 0x000044 0x000044 R   0x4
-  GNU_EH_FRAME   0x0007a0 0x00000000000007a0 0x00000000000007a0 0x00003c 0x00003c R   0x4
-  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RW  0x10
-  GNU_RELRO      0x00fdc8 0x000000000001fdc8 0x000000000001fdc8 0x000238 0x000238 R   0x1
-
- Section to Segment mapping:
-  Segment Sections...
-   00     
-   01     .interp 
-   02     .interp .note.gnu.build-id .note.ABI-tag .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame 
-   03     .init_array .fini_array .dynamic .got .got.plt .data .bss 
-   04     .dynamic 
-   05     .note.gnu.build-id .note.ABI-tag 
-   06     .eh_frame_hdr 
-   07     
-   08     .init_array .fini_array .dynamic .got </code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="the-elf-section-header">The ELF Section Header</h3>
-		<a href="https://blog.cloudflare.com/#the-elf-section-header" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the source code of high-level languages, variables, functions, and constants are mixed together. However, in assembly you might see that the data and instructions are separated into different blocks. The ELF file content is divided in an even more granular way. For example, variables with initial values are placed into different sections than the uninitialized ones. This approach optimizes for space, otherwise the values for uninitialized variables would be filled with zeros. Along with the space efficiency, there are security reasons for stratification — executable instructions can’t have writable permissions, while memory containing variables can't be executable. The section header describes each of these sections.</p>
-	<p>The ELF Section Header:</p>
-	<pre class="language-bash"><code class="language-bash">$ readelf -SW main
-There are 29 section headers, starting at offset 0x10be0:
-
-Section Headers:
-  [Nr] Name              Type            Address          Off    Size   ES Flg Lk Inf Al
-  [ 0]                   NULL            0000000000000000 000000 000000 00      0   0  0
-  [ 1] .interp           PROGBITS        0000000000000238 000238 00001b 00   A  0   0  1
-  [ 2] .note.gnu.build-id NOTE            0000000000000254 000254 000024 00   A  0   0  4
-  [ 3] .note.ABI-tag     NOTE            0000000000000278 000278 000020 00   A  0   0  4
-  [ 4] .gnu.hash         GNU_HASH        0000000000000298 000298 00001c 00   A  5   0  8
-  [ 5] .dynsym           DYNSYM          00000000000002b8 0002b8 0000f0 18   A  6   3  8
-  [ 6] .dynstr           STRTAB          00000000000003a8 0003a8 000092 00   A  0   0  1
-  [ 7] .gnu.version      VERSYM          000000000000043a 00043a 000014 02   A  5   0  2
-  [ 8] .gnu.version_r    VERNEED         0000000000000450 000450 000030 00   A  6   1  8
-  [ 9] .rela.dyn         RELA            0000000000000480 000480 0000c0 18   A  5   0  8
-  [10] .rela.plt         RELA            0000000000000540 000540 000078 18  AI  5  22  8
-  [11] .init             PROGBITS        00000000000005b8 0005b8 000018 00  AX  0   0  4
-  [12] .plt              PROGBITS        00000000000005d0 0005d0 000070 00  AX  0   0 16
-  [13] .text             PROGBITS        0000000000000640 000640 000134 00  AX  0   0 64
-  [14] .fini             PROGBITS        0000000000000774 000774 000014 00  AX  0   0  4
-  [15] .rodata           PROGBITS        0000000000000788 000788 000016 00   A  0   0  8
-  [16] .eh_frame_hdr     PROGBITS        00000000000007a0 0007a0 00003c 00   A  0   0  4
-  [17] .eh_frame         PROGBITS        00000000000007e0 0007e0 0000ac 00   A  0   0  8
-  [18] .init_array       INIT_ARRAY      000000000001fdc8 00fdc8 000008 08  WA  0   0  8
-  [19] .fini_array       FINI_ARRAY      000000000001fdd0 00fdd0 000008 08  WA  0   0  8
-  [20] .dynamic          DYNAMIC         000000000001fdd8 00fdd8 0001e0 10  WA  6   0  8
-  [21] .got              PROGBITS        000000000001ffb8 00ffb8 000030 08  WA  0   0  8
-  [22] .got.plt          PROGBITS        000000000001ffe8 00ffe8 000040 08  WA  0   0  8
-  [23] .data             PROGBITS        0000000000020028 010028 000010 00  WA  0   0  8
-  [24] .bss              NOBITS          0000000000020038 010038 000008 00  WA  0   0  1
-  [25] .comment          PROGBITS        0000000000000000 010038 00001f 01  MS  0   0  1
-  [26] .symtab           SYMTAB          0000000000000000 010058 000858 18     27  66  8
-  [27] .strtab           STRTAB          0000000000000000 0108b0 00022c 00      0   0  1
-  [28] .shstrtab         STRTAB          0000000000000000 010adc 000103 00      0   0  1
-Key to Flags:
-  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
-  L (link order), O (extra OS processing required), G (group), T (TLS),
-  C (compressed), x (unknown), o (OS specific), E (exclude),
-  D (mbind), p (processor specific)</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="executing-example-from-part-1-on-aarch64">Executing example from Part 1 on aarch64</h2>
-		<a href="https://blog.cloudflare.com/#executing-example-from-part-1-on-aarch64" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Actually, our <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1" target="_blank" rel="noopener noreferrer">initial code</a> from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">Part 1</a> works on aarch64 as is!</p>
-	<p>Let’s have a quick summary about what was done in the code:</p>
-	<ol>
-		<li>
-			<p>We need to find the code of two functions (<code>add5</code> and <code>add10</code>) in the <code>.text</code> section of our object file (<code>obj.o</code>)</p>
-		</li>
-		<li>
-			<p>Load the functions in the executable memory</p>
-		</li>
-		<li>
-			<p>Return the memory locations of the functions to the main program</p>
-		</li>
-	</ol>
-	<p>There is one nuance: even though all the sections are in the section header, neither of them have a string name. Without the names we can’t identify them. However, having an additional character field for each section in the ELF structure would be inefficient for the space — it must be limited by some maximum length and those names which are shorter would leave the space unfilled. Instead, ELF provides an additional section, <code>.shstrtab</code>. This string table concatenates all the names where each name ends with a null terminated byte. We can iterate over the names and match with an offset held by other sections to reference their name. But how do we find <code>.shstrtab</code> itself if we don’t have a name? To solve this chicken and egg problem, the ELF program header provides a direct pointer to <code>.shstrtab</code>. The similar approach is applied to two other sections: <code>.symtab</code> and <code>.strtab</code>. Where <code>.symtab</code> contains all information about the symbols and <code>.strtab</code> holds the list of symbol names. In the code we work with these tables to resolve all their dependencies and find our functions.</p>
-	<div class="flex anchor relative">
-		<h2 id="executing-example-from-part-2-on-aarch64">Executing example from Part 2 on aarch64</h2>
-		<a href="https://blog.cloudflare.com/#executing-example-from-part-2-on-aarch64" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At the beginning of the second blog post on <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">how to execute an object file</a> we made the function <code>add10</code> depend on <code>add5</code> instead of being self-contained. This is the first time when we faced relocations. <i>Relocations</i> is the process of loading symbols defined outside the current scope. The relocated symbols can present global or thread-local variables, constant, functions, etc. We’ll start from checking assembly instructions which trigger relocations and uncovering how the ELF format handles them in a more general way.</p>
-	<p>After making <code>add10</code> depend on <code>add5</code> our aarch64 version stopped working as well, similarly to the x86. Let’s take a look at assembly listing:</p>
-	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text obj.o
-
-obj.o:     file format elf64-littleaarch64
-
-
-Disassembly of section .text:
-
-0000000000000000 &lt;add5&gt;:
-   0:	d10043ff 	sub	sp, sp, #0x10
-   4:	b9000fe0 	str	w0, [sp, #12]
-   8:	b9400fe0 	ldr	w0, [sp, #12]
-   c:	11001400 	add	w0, w0, #0x5
-  10:	910043ff 	add	sp, sp, #0x10
-  14:	d65f03c0 	ret
-
-0000000000000018 &lt;add10&gt;:
-  18:	a9be7bfd 	stp	x29, x30, [sp, #-32]!
-  1c:	910003fd 	mov	x29, sp
-  20:	b9001fe0 	str	w0, [sp, #28]
-  24:	b9401fe0 	ldr	w0, [sp, #28]
-  28:	94000000 	bl	0 &lt;add5&gt;
-  2c:	b9001fe0 	str	w0, [sp, #28]
-  30:	b9401fe0 	ldr	w0, [sp, #28]
-  34:	94000000 	bl	0 &lt;add5&gt;
-  38:	a8c27bfd 	ldp	x29, x30, [sp], #32
-  3c:	d65f03c0 	ret</code></pre>
-	<p>Have you noticed that all the hex values in the second column are exactly the same length, in contrast with the instructions lengths seen for x86 in Part 2 of our series? This is because all Armv8-A instructions are presented in 32 bits. Since it is impossible to encode every immediate value into less than 32 bits, some operations require more than one instruction, as we’ll see later. For now, we’re interested in one instruction <code>- bl</code> (<a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BL--Branch-with-Link-?lang=en" target="_blank" rel="noopener noreferrer">branch with link</a>) on rows <code>28</code> and <code>34</code>. The <code>bl</code> is a “jump” instruction, but before the jump it preserves the next instruction after the current one in the link register (<code>lr</code>). When the callee finishes execution the caller address is recovered from <code>lr</code>. Usually, the aarch64 instructions reserve the last 6 bits [31:26] for opcode and some auxiliary fields such as running architecture (32 or 64 bits), condition flag and others. Remaining bits are shared between arguments like source register, destination register and immediate value. Since the <code>bl</code> instruction does not require a source or destination register, the full 26 bits can be used to encode the immediate offset instead. However, 26 bits can only encode a small range (+/-32 MB), but because the jump can only target a beginning of an instruction, it must always be aligned to 4 bytes, which increases the effective range of the encoded immediate fourfold, to +/-128 MB.</p>
-	<p>Similarly to what we did in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we’re going to resolve our relocations - first by manually calculating the correct addresses and then by using an approach similar to what the linker does. The current value of our <code>bl</code> instruction is <code>94000000</code> or in binary representation <code>100101**00000000000000000000000000**</code>. All 26 bits are zeros, so we don't jump anywhere. The address is calculated by an offset from the current <i>program counter</i> (<code>pc</code>), which can be positive or negative. In our case we expect it to be <code>-0x28</code> and <code>-0x34</code>. As described above, it should be divided by 4 and taken as <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="noopener noreferrer">two's complements</a>: <code>-0x28 / 4 = -0xA == 0xFFFFFFF6</code> and <code>-0x34 / 4 = -0xD == 0xFFFFFFF3</code>. From these values we need to take the lower 26 bits and concatenate them with the initial 6 bits to get the final instruction. So, the final ones will be: <code>100101**11111111111111111111110110** == 0x97FFFFF6</code> and <code>100101**11111111111111111111110011** == 0x97FFFFF3</code>. Have you noticed that all the distance calculations are done relative to the <code>bl</code> (or current <code>pc</code>), not the next instruction as in x86?</p>
-	<p>Let’s add to the code and execute:</p>
-	<pre class="language-cpp"><code class="language-cpp">... 
-
-static void parse_obj(void)
-{
-	...
-	/* copy the contents of `.text` section from the ELF file */
-	memcpy(text_runtime_base, obj.base + text_hdr-&gt;sh_offset, text_hdr-&gt;sh_size);
-
-	*((uint32_t *)(text_runtime_base + 0x28)) = 0x97FFFFF6;
-	*((uint32_t *)(text_runtime_base + 0x34)) = 0x97FFFFF3;
-
-	/* make the `.text` copy readonly and executable */
-	if (mprotect(text_runtime_base, page_align(text_hdr-&gt;sh_size), PROT_READ | PROT_EXEC)) {
-	...</code></pre>
-	<p>Compile and run:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c
-$ ./loader
-Executing add5...
-add5(42) = 47
-Executing add10...
-add10(42) = 52</code></pre>
-	<p>It works! But this is not how the linker handles the relocations. The linker resolves relocation based on the type and formula assigned to this type. In our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we investigated it quite well. Here again we need to find the type and check the formula for this type:</p>
-	<pre class="language-bash"><code class="language-bash">$ readelf --relocs obj.o
-
-Relocation section '.rela.text' at offset 0x228 contains 2 entries:
-  Offset          Info           Type           Sym. Value    Sym. Name + Addend
-000000000028  000a0000011b R_AARCH64_CALL26  0000000000000000 add5 + 0
-000000000034  000a0000011b R_AARCH64_CALL26  0000000000000000 add5 + 0
-
-Relocation section '.rela.eh_frame' at offset 0x258 contains 2 entries:
-  Offset          Info           Type           Sym. Value    Sym. Name + Addend
-00000000001c  000200000105 R_AARCH64_PREL32  0000000000000000 .text + 0
-000000000034  000200000105 R_AARCH64_PREL32  0000000000000000 .text + 18</code></pre>
-	<p>Our Type is R_AARCH64_CALL26 and the <a href="https://github.com/ARM-software/abi-aa/blob/main/aaelf64/aaelf64.rst#5733relocation-operations" target="_blank" rel="noopener noreferrer">formula</a> for it is:</p><!--kg-card-begin: html-->
-	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
+<p>Translating source code written in a high-level programming language into an executable binary typically involves a series of steps, namely compiling and assembling the code into object files, and then linking those object files into the final executable. However, there are certain scenarios where it can be useful to apply an alternate approach that involves executing object files directly, bypassing the linker. For example, we might use it for malware analysis or when part of the code requires an incompatible compiler. We’ll be focusing on the latter scenario: when one of our libraries needed to be compiled differently from the rest of the code. Learning how to execute an object file directly will give you a much better sense of how code is compiled and linked together.</p>
+<p>To demonstrate how this was done, we have previously published a series of posts on executing an object file:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">How to execute an object file: Part 1</a></li>
+	<li><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">How to execute an object file: Part 2</a></li>
+	<li><a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">How to execute an object file: Part 3</a></li>
+</ul>
+<p>The initial posts are dedicated to the x86 architecture. Since then the fleet of our working machines has expanded to include a large and growing number of ARM CPUs. This time we’ll repeat this exercise for the aarch64 architecture. You can pause here to read the previous blog posts before proceeding with this one, or read through the brief summary below and reference the earlier posts for more detail. We might reiterate some theory as working with ELF files can be daunting, if it’s not your day-to-day routine. Also, please be mindful that for simplicity, these examples omit bounds and integrity checks. Let the journey begin!</p>
+<h2>Introduction</h2>
+<p>In order to obtain an object file or an executable binary from a high-level compiled programming language the code needs to be processed by three components: compiler, assembler and linker. The compiler generates an assembly listing. This assembly listing is picked up by the assembler and translated into an object file. All source files, if a program contains multiple, go through these two steps generating an object file for each source file. At the final step the linker unites all object files into one binary, additionally resolving references to the shared libraries (i.e. we don’t implement the <code>printf</code> function each time, rather we take it from a system library). Even though the approach is platform independent, the compiler output varies by platform as the assembly listing is closely tied to the CPU architecture.</p>
+<p>GCC (GNU Compiler Collection) can run each step: compiler, assembler and linker separately for us:</p>
+<p>main.c:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Compiler (output <code>main.s</code> - assembly listing):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-032f62-99ffe4"> main.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main.c</span><span class="sk-032f62-99ffe4">  main.s</span></span></code></pre>
+</div>
+<p>Assembler (output <code>main.o</code> - an object file):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> main.s</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> main.o</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main.c</span><span class="sk-032f62-99ffe4">  main.o</span><span class="sk-032f62-99ffe4">  main.s</span></span></code></pre>
+</div>
+<p>Linker (<code>main</code> - an object file):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-032f62-99ffe4"> main.o</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> main</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main</span><span class="sk-032f62-99ffe4">  main.c</span><span class="sk-032f62-99ffe4">  main.o</span><span class="sk-032f62-99ffe4">  main.s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./main</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+</div>
+<p>All the examples assume gcc is running on a native aarch64 architecture or include a cross compilation flag for those who want to reproduce and have no aarch64.</p>
+<p>We have two object files in the output above: <code>main.o</code> and <code>main</code>. Object files are files encoded with the <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank" rel="noopener noreferrer">ELF (Executable and Linkable Format)</a> standard. Although, <code>main.o</code> is an ELF file, it doesn’t contain all the information to be fully executable.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> main.o</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main.o:</span><span class="sk-032f62-99ffe4"> ELF</span><span class="sk-032f62-99ffe4"> 64-bit</span><span class="sk-032f62-99ffe4"> LSB</span><span class="sk-032f62-99ffe4"> relocatable,</span><span class="sk-032f62-99ffe4"> ARM</span><span class="sk-032f62-99ffe4"> aarch64,</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff"> (SYSV), not stripped</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> main</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main:</span><span class="sk-032f62-99ffe4"> ELF</span><span class="sk-032f62-99ffe4"> 64-bit</span><span class="sk-032f62-99ffe4"> LSB</span><span class="sk-032f62-99ffe4"> pie</span><span class="sk-032f62-99ffe4"> executable,</span><span class="sk-032f62-99ffe4"> ARM</span><span class="sk-032f62-99ffe4"> aarch64,</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff"> (SYSV), dynamically</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">linked,</span><span class="sk-032f62-99ffe4"> interpreter</span><span class="sk-032f62-99ffe4"> /lib/ld-linux-aarch64.so.1,</span></span>
+<span class="line"><span class="sk-24292e-fff">BuildID[sha1]</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">d3ecd2f8ac3b2dec11ed4cc424f15b3e1f130dd4,</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-032f62-99ffe4"> GNU/Linux</span><span class="sk-032f62-99ffe4"> 3.7.0,</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> stripped</span></span></code></pre>
+</div>
+<h2>The ELF File</h2>
+<p>The central idea of this series of blog posts is to understand how to resolve dependencies from object files without directly involving the linker. For illustrative purposes we generated an object file based on some C-code and used it as a library for our main program. Before switching to the code, we need to understand the basics of the ELF structure.</p>
+<p>Each ELF file is made up of one <em>ELF header</em>, followed by file data. The data can include: a <em>program header</em> table, a <em>section header</em> table, and the data which is referred to by the program or section header tables.</p>
+<h3>The ELF Header</h3>
+<p>The ELF header provides some basic information about the file: what architecture the file is compiled for, the program entry point and the references to other tables.</p>
+<p>The ELF Header:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-032f62-99ffe4"> main</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ELF</span><span class="sk-032f62-99ffe4"> Header:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Magic:</span><span class="sk-032f62-99ffe4">   7f</span><span class="sk-005cc5-ffc799"> 45</span><span class="sk-032f62-99ffe4"> 4c</span><span class="sk-005cc5-ffc799"> 46</span><span class="sk-005cc5-ffc799"> 02</span><span class="sk-005cc5-ffc799"> 01</span><span class="sk-005cc5-ffc799"> 01</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Class:</span><span class="sk-032f62-99ffe4">                             ELF64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Data:</span><span class="sk-005cc5-ffc799">                              2</span><span class="sk-032f62-99ffe4">'s complement, little endian</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Version:                           1 (current)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  OS/ABI:                            UNIX - System V</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  ABI Version:                       0</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Type:                              DYN (Position-Independent Executable file)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Machine:                           AArch64</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Version:                           0x1</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Entry point address:               0x640</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Start of program headers:          64 (bytes into file)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Start of section headers:          68576 (bytes into file)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Flags:                             0x0</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Size of this header:               64 (bytes)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Size of program headers:           56 (bytes)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Number of program headers:         9</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Size of section headers:           64 (bytes)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Number of section headers:         29</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  Section header string table index: 28</span></span></code></pre>
+</div>
+<h3>The ELF Program Header</h3>
+<p>The execution process of almost every program starts from an auxiliary program, called loader, which arranges the memory and calls the program’s entry point. In the following output the loader is marked with a line <code>“Requesting program interpreter: /lib/ld-linux-aarch64.so.1”</code>. The whole program memory is split into different segments with associated size, permissions and type (which instructs the loader on how to interpret this block of memory). Because the execution process should be performed in the shortest possible time, the <em>sections</em> with the same characteristics and located nearby are grouped into bigger blocks — <em>segments</em> — and placed in the <em>program header</em>. We can say that the <em>program header</em> summarizes the types of data that appear in the <em>section header</em>.</p>
+<p>The ELF Program Header:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> -Wl</span><span class="sk-032f62-99ffe4"> main</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Elf</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> DYN</span><span class="sk-24292e-fff"> (Position-Independent </span><span class="sk-032f62-99ffe4">Executable</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Entry</span><span class="sk-032f62-99ffe4"> point</span><span class="sk-005cc5-ffc799"> 0x640</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-005cc5-ffc799"> 9</span><span class="sk-032f62-99ffe4"> program</span><span class="sk-032f62-99ffe4"> headers,</span><span class="sk-032f62-99ffe4"> starting</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-005cc5-ffc799"> 64</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Program</span><span class="sk-032f62-99ffe4"> Headers:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Type</span><span class="sk-032f62-99ffe4">           Offset</span><span class="sk-032f62-99ffe4">   VirtAddr</span><span class="sk-032f62-99ffe4">           PhysAddr</span><span class="sk-032f62-99ffe4">           FileSiz</span><span class="sk-032f62-99ffe4">  MemSiz</span><span class="sk-032f62-99ffe4">   Flg</span><span class="sk-032f62-99ffe4"> Align</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  PHDR</span><span class="sk-005cc5-ffc799">           0x000040</span><span class="sk-005cc5-ffc799"> 0x0000000000000040</span><span class="sk-005cc5-ffc799"> 0x0000000000000040</span><span class="sk-005cc5-ffc799"> 0x0001f8</span><span class="sk-005cc5-ffc799"> 0x0001f8</span><span class="sk-032f62-99ffe4"> R</span><span class="sk-005cc5-ffc799">   0x8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  INTERP</span><span class="sk-005cc5-ffc799">         0x000238</span><span class="sk-005cc5-ffc799"> 0x0000000000000238</span><span class="sk-005cc5-ffc799"> 0x0000000000000238</span><span class="sk-005cc5-ffc799"> 0x00001b</span><span class="sk-005cc5-ffc799"> 0x00001b</span><span class="sk-032f62-99ffe4"> R</span><span class="sk-005cc5-ffc799">   0x1</span></span>
+<span class="line"><span class="sk-24292e-fff">      [Requesting program interpreter: /lib/ld-linux-aarch64.so.1]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  LOAD</span><span class="sk-005cc5-ffc799">           0x000000</span><span class="sk-005cc5-ffc799"> 0x0000000000000000</span><span class="sk-005cc5-ffc799"> 0x0000000000000000</span><span class="sk-005cc5-ffc799"> 0x00088c</span><span class="sk-005cc5-ffc799"> 0x00088c</span><span class="sk-032f62-99ffe4"> R</span><span class="sk-032f62-99ffe4"> E</span><span class="sk-005cc5-ffc799"> 0x10000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  LOAD</span><span class="sk-005cc5-ffc799">           0x00fdc8</span><span class="sk-005cc5-ffc799"> 0x000000000001fdc8</span><span class="sk-005cc5-ffc799"> 0x000000000001fdc8</span><span class="sk-005cc5-ffc799"> 0x000270</span><span class="sk-005cc5-ffc799"> 0x000278</span><span class="sk-032f62-99ffe4"> RW</span><span class="sk-005cc5-ffc799">  0x10000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  DYNAMIC</span><span class="sk-005cc5-ffc799">        0x00fdd8</span><span class="sk-005cc5-ffc799"> 0x000000000001fdd8</span><span class="sk-005cc5-ffc799"> 0x000000000001fdd8</span><span class="sk-005cc5-ffc799"> 0x0001e0</span><span class="sk-005cc5-ffc799"> 0x0001e0</span><span class="sk-032f62-99ffe4"> RW</span><span class="sk-005cc5-ffc799">  0x8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  NOTE</span><span class="sk-005cc5-ffc799">           0x000254</span><span class="sk-005cc5-ffc799"> 0x0000000000000254</span><span class="sk-005cc5-ffc799"> 0x0000000000000254</span><span class="sk-005cc5-ffc799"> 0x000044</span><span class="sk-005cc5-ffc799"> 0x000044</span><span class="sk-032f62-99ffe4"> R</span><span class="sk-005cc5-ffc799">   0x4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  GNU_EH_FRAME</span><span class="sk-005cc5-ffc799">   0x0007a0</span><span class="sk-005cc5-ffc799"> 0x00000000000007a0</span><span class="sk-005cc5-ffc799"> 0x00000000000007a0</span><span class="sk-005cc5-ffc799"> 0x00003c</span><span class="sk-005cc5-ffc799"> 0x00003c</span><span class="sk-032f62-99ffe4"> R</span><span class="sk-005cc5-ffc799">   0x4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  GNU_STACK</span><span class="sk-005cc5-ffc799">      0x000000</span><span class="sk-005cc5-ffc799"> 0x0000000000000000</span><span class="sk-005cc5-ffc799"> 0x0000000000000000</span><span class="sk-005cc5-ffc799"> 0x000000</span><span class="sk-005cc5-ffc799"> 0x000000</span><span class="sk-032f62-99ffe4"> RW</span><span class="sk-005cc5-ffc799">  0x10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  GNU_RELRO</span><span class="sk-005cc5-ffc799">      0x00fdc8</span><span class="sk-005cc5-ffc799"> 0x000000000001fdc8</span><span class="sk-005cc5-ffc799"> 0x000000000001fdc8</span><span class="sk-005cc5-ffc799"> 0x000238</span><span class="sk-005cc5-ffc799"> 0x000238</span><span class="sk-032f62-99ffe4"> R</span><span class="sk-005cc5-ffc799">   0x1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> Section</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> Segment</span><span class="sk-032f62-99ffe4"> mapping:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Segment</span><span class="sk-032f62-99ffe4"> Sections...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   00</span><span class="sk-24292e-fff">     </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   01</span><span class="sk-032f62-99ffe4">     .interp</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   02</span><span class="sk-032f62-99ffe4">     .interp</span><span class="sk-032f62-99ffe4"> .note.gnu.build-id</span><span class="sk-032f62-99ffe4"> .note.ABI-tag</span><span class="sk-032f62-99ffe4"> .gnu.hash</span><span class="sk-032f62-99ffe4"> .dynsym</span><span class="sk-032f62-99ffe4"> .dynstr</span><span class="sk-032f62-99ffe4"> .gnu.version</span><span class="sk-032f62-99ffe4"> .gnu.version_r</span><span class="sk-032f62-99ffe4"> .rela.dyn</span><span class="sk-032f62-99ffe4"> .rela.plt</span><span class="sk-032f62-99ffe4"> .init</span><span class="sk-032f62-99ffe4"> .plt</span><span class="sk-032f62-99ffe4"> .text</span><span class="sk-032f62-99ffe4"> .fini</span><span class="sk-032f62-99ffe4"> .rodata</span><span class="sk-032f62-99ffe4"> .eh_frame_hdr</span><span class="sk-032f62-99ffe4"> .eh_frame</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   03</span><span class="sk-032f62-99ffe4">     .init_array</span><span class="sk-032f62-99ffe4"> .fini_array</span><span class="sk-032f62-99ffe4"> .dynamic</span><span class="sk-032f62-99ffe4"> .got</span><span class="sk-032f62-99ffe4"> .got.plt</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> .bss</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   04</span><span class="sk-032f62-99ffe4">     .dynamic</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   05</span><span class="sk-032f62-99ffe4">     .note.gnu.build-id</span><span class="sk-032f62-99ffe4"> .note.ABI-tag</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   06</span><span class="sk-032f62-99ffe4">     .eh_frame_hdr</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   07</span><span class="sk-24292e-fff">     </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   08</span><span class="sk-032f62-99ffe4">     .init_array</span><span class="sk-032f62-99ffe4"> .fini_array</span><span class="sk-032f62-99ffe4"> .dynamic</span><span class="sk-032f62-99ffe4"> .got</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<h3>The ELF Section Header</h3>
+<p>In the source code of high-level languages, variables, functions, and constants are mixed together. However, in assembly you might see that the data and instructions are separated into different blocks. The ELF file content is divided in an even more granular way. For example, variables with initial values are placed into different sections than the uninitialized ones. This approach optimizes for space, otherwise the values for uninitialized variables would be filled with zeros. Along with the space efficiency, there are security reasons for stratification — executable instructions can’t have writable permissions, while memory containing variables can't be executable. The section header describes each of these sections.</p>
+<p>The ELF Section Header:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> -SW</span><span class="sk-032f62-99ffe4"> main</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">There</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-005cc5-ffc799"> 29</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> headers,</span><span class="sk-032f62-99ffe4"> starting</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-032f62-99ffe4"> 0x10be0:</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Section</span><span class="sk-032f62-99ffe4"> Headers:</span></span>
+<span class="line"><span class="sk-24292e-fff">  [Nr] </span><span class="sk-6f42c1-ffc799">Name</span><span class="sk-032f62-99ffe4">              Type</span><span class="sk-032f62-99ffe4">            Address</span><span class="sk-032f62-99ffe4">          Off</span><span class="sk-032f62-99ffe4">    Size</span><span class="sk-032f62-99ffe4">   ES</span><span class="sk-032f62-99ffe4"> Flg</span><span class="sk-032f62-99ffe4"> Lk</span><span class="sk-032f62-99ffe4"> Inf</span><span class="sk-032f62-99ffe4"> Al</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 0]                   </span><span class="sk-6f42c1-ffc799">NULL</span><span class="sk-005cc5-ffc799">            0000000000000000</span><span class="sk-005cc5-ffc799"> 000000</span><span class="sk-005cc5-ffc799"> 000000</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  0</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 1] </span><span class="sk-6f42c1-ffc799">.interp</span><span class="sk-032f62-99ffe4">           PROGBITS</span><span class="sk-005cc5-ffc799">        0000000000000238</span><span class="sk-005cc5-ffc799"> 000238</span><span class="sk-032f62-99ffe4"> 00001b</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  1</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 2] </span><span class="sk-6f42c1-ffc799">.note.gnu.build-id</span><span class="sk-032f62-99ffe4"> NOTE</span><span class="sk-005cc5-ffc799">            0000000000000254</span><span class="sk-005cc5-ffc799"> 000254</span><span class="sk-005cc5-ffc799"> 000024</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  4</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 3] </span><span class="sk-6f42c1-ffc799">.note.ABI-tag</span><span class="sk-032f62-99ffe4">     NOTE</span><span class="sk-005cc5-ffc799">            0000000000000278</span><span class="sk-005cc5-ffc799"> 000278</span><span class="sk-005cc5-ffc799"> 000020</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  4</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 4] </span><span class="sk-6f42c1-ffc799">.gnu.hash</span><span class="sk-032f62-99ffe4">         GNU_HASH</span><span class="sk-005cc5-ffc799">        0000000000000298</span><span class="sk-005cc5-ffc799"> 000298</span><span class="sk-032f62-99ffe4"> 00001c</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  5</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 5] </span><span class="sk-6f42c1-ffc799">.dynsym</span><span class="sk-032f62-99ffe4">           DYNSYM</span><span class="sk-032f62-99ffe4">          00000000000002b8</span><span class="sk-032f62-99ffe4"> 0002b8</span><span class="sk-032f62-99ffe4"> 0000f0</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  6</span><span class="sk-005cc5-ffc799">   3</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 6] </span><span class="sk-6f42c1-ffc799">.dynstr</span><span class="sk-032f62-99ffe4">           STRTAB</span><span class="sk-032f62-99ffe4">          00000000000003a8</span><span class="sk-032f62-99ffe4"> 0003a8</span><span class="sk-005cc5-ffc799"> 000092</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  1</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 7] </span><span class="sk-6f42c1-ffc799">.gnu.version</span><span class="sk-032f62-99ffe4">      VERSYM</span><span class="sk-032f62-99ffe4">          000000000000043a</span><span class="sk-032f62-99ffe4"> 00043a</span><span class="sk-005cc5-ffc799"> 000014</span><span class="sk-005cc5-ffc799"> 02</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  5</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  2</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 8] </span><span class="sk-6f42c1-ffc799">.gnu.version_r</span><span class="sk-032f62-99ffe4">    VERNEED</span><span class="sk-005cc5-ffc799">         0000000000000450</span><span class="sk-005cc5-ffc799"> 000450</span><span class="sk-005cc5-ffc799"> 000030</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  6</span><span class="sk-005cc5-ffc799">   1</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [ 9] </span><span class="sk-6f42c1-ffc799">.rela.dyn</span><span class="sk-032f62-99ffe4">         RELA</span><span class="sk-005cc5-ffc799">            0000000000000480</span><span class="sk-005cc5-ffc799"> 000480</span><span class="sk-032f62-99ffe4"> 0000c0</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  5</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [10] </span><span class="sk-6f42c1-ffc799">.rela.plt</span><span class="sk-032f62-99ffe4">         RELA</span><span class="sk-005cc5-ffc799">            0000000000000540</span><span class="sk-005cc5-ffc799"> 000540</span><span class="sk-005cc5-ffc799"> 000078</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4">  AI</span><span class="sk-005cc5-ffc799">  5</span><span class="sk-005cc5-ffc799">  22</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [11] </span><span class="sk-6f42c1-ffc799">.init</span><span class="sk-032f62-99ffe4">             PROGBITS</span><span class="sk-032f62-99ffe4">        00000000000005b8</span><span class="sk-032f62-99ffe4"> 0005b8</span><span class="sk-005cc5-ffc799"> 000018</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">  AX</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  4</span></span>
+<span class="line"><span class="sk-24292e-fff">  [12] </span><span class="sk-6f42c1-ffc799">.plt</span><span class="sk-032f62-99ffe4">              PROGBITS</span><span class="sk-032f62-99ffe4">        00000000000005d0</span><span class="sk-032f62-99ffe4"> 0005d0</span><span class="sk-005cc5-ffc799"> 000070</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">  AX</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-24292e-fff">  [13] </span><span class="sk-6f42c1-ffc799">.text</span><span class="sk-032f62-99ffe4">             PROGBITS</span><span class="sk-005cc5-ffc799">        0000000000000640</span><span class="sk-005cc5-ffc799"> 000640</span><span class="sk-005cc5-ffc799"> 000134</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">  AX</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799"> 64</span></span>
+<span class="line"><span class="sk-24292e-fff">  [14] </span><span class="sk-6f42c1-ffc799">.fini</span><span class="sk-032f62-99ffe4">             PROGBITS</span><span class="sk-005cc5-ffc799">        0000000000000774</span><span class="sk-005cc5-ffc799"> 000774</span><span class="sk-005cc5-ffc799"> 000014</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">  AX</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  4</span></span>
+<span class="line"><span class="sk-24292e-fff">  [15] </span><span class="sk-6f42c1-ffc799">.rodata</span><span class="sk-032f62-99ffe4">           PROGBITS</span><span class="sk-005cc5-ffc799">        0000000000000788</span><span class="sk-005cc5-ffc799"> 000788</span><span class="sk-005cc5-ffc799"> 000016</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [16] </span><span class="sk-6f42c1-ffc799">.eh_frame_hdr</span><span class="sk-032f62-99ffe4">     PROGBITS</span><span class="sk-032f62-99ffe4">        00000000000007a0</span><span class="sk-032f62-99ffe4"> 0007a0</span><span class="sk-032f62-99ffe4"> 00003c</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  4</span></span>
+<span class="line"><span class="sk-24292e-fff">  [17] </span><span class="sk-6f42c1-ffc799">.eh_frame</span><span class="sk-032f62-99ffe4">         PROGBITS</span><span class="sk-032f62-99ffe4">        00000000000007e0</span><span class="sk-032f62-99ffe4"> 0007e0</span><span class="sk-032f62-99ffe4"> 0000ac</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [18] </span><span class="sk-6f42c1-ffc799">.init_array</span><span class="sk-032f62-99ffe4">       INIT_ARRAY</span><span class="sk-032f62-99ffe4">      000000000001fdc8</span><span class="sk-032f62-99ffe4"> 00fdc8</span><span class="sk-005cc5-ffc799"> 000008</span><span class="sk-005cc5-ffc799"> 08</span><span class="sk-032f62-99ffe4">  WA</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [19] </span><span class="sk-6f42c1-ffc799">.fini_array</span><span class="sk-032f62-99ffe4">       FINI_ARRAY</span><span class="sk-032f62-99ffe4">      000000000001fdd0</span><span class="sk-032f62-99ffe4"> 00fdd0</span><span class="sk-005cc5-ffc799"> 000008</span><span class="sk-005cc5-ffc799"> 08</span><span class="sk-032f62-99ffe4">  WA</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [20] </span><span class="sk-6f42c1-ffc799">.dynamic</span><span class="sk-032f62-99ffe4">          DYNAMIC</span><span class="sk-032f62-99ffe4">         000000000001fdd8</span><span class="sk-032f62-99ffe4"> 00fdd8</span><span class="sk-032f62-99ffe4"> 0001e0</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-032f62-99ffe4">  WA</span><span class="sk-005cc5-ffc799">  6</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [21] </span><span class="sk-6f42c1-ffc799">.got</span><span class="sk-032f62-99ffe4">              PROGBITS</span><span class="sk-032f62-99ffe4">        000000000001ffb8</span><span class="sk-032f62-99ffe4"> 00ffb8</span><span class="sk-005cc5-ffc799"> 000030</span><span class="sk-005cc5-ffc799"> 08</span><span class="sk-032f62-99ffe4">  WA</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [22] </span><span class="sk-6f42c1-ffc799">.got.plt</span><span class="sk-032f62-99ffe4">          PROGBITS</span><span class="sk-032f62-99ffe4">        000000000001ffe8</span><span class="sk-032f62-99ffe4"> 00ffe8</span><span class="sk-005cc5-ffc799"> 000040</span><span class="sk-005cc5-ffc799"> 08</span><span class="sk-032f62-99ffe4">  WA</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [23] </span><span class="sk-6f42c1-ffc799">.data</span><span class="sk-032f62-99ffe4">             PROGBITS</span><span class="sk-005cc5-ffc799">        0000000000020028</span><span class="sk-005cc5-ffc799"> 010028</span><span class="sk-005cc5-ffc799"> 000010</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">  WA</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [24] </span><span class="sk-6f42c1-ffc799">.bss</span><span class="sk-032f62-99ffe4">              NOBITS</span><span class="sk-005cc5-ffc799">          0000000000020038</span><span class="sk-005cc5-ffc799"> 010038</span><span class="sk-005cc5-ffc799"> 000008</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-032f62-99ffe4">  WA</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  1</span></span>
+<span class="line"><span class="sk-24292e-fff">  [25] </span><span class="sk-6f42c1-ffc799">.comment</span><span class="sk-032f62-99ffe4">          PROGBITS</span><span class="sk-005cc5-ffc799">        0000000000000000</span><span class="sk-005cc5-ffc799"> 010038</span><span class="sk-032f62-99ffe4"> 00001f</span><span class="sk-005cc5-ffc799"> 01</span><span class="sk-032f62-99ffe4">  MS</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  1</span></span>
+<span class="line"><span class="sk-24292e-fff">  [26] </span><span class="sk-6f42c1-ffc799">.symtab</span><span class="sk-032f62-99ffe4">           SYMTAB</span><span class="sk-005cc5-ffc799">          0000000000000000</span><span class="sk-005cc5-ffc799"> 010058</span><span class="sk-005cc5-ffc799"> 000858</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-005cc5-ffc799">     27</span><span class="sk-005cc5-ffc799">  66</span><span class="sk-005cc5-ffc799">  8</span></span>
+<span class="line"><span class="sk-24292e-fff">  [27] </span><span class="sk-6f42c1-ffc799">.strtab</span><span class="sk-032f62-99ffe4">           STRTAB</span><span class="sk-005cc5-ffc799">          0000000000000000</span><span class="sk-032f62-99ffe4"> 0108b0</span><span class="sk-032f62-99ffe4"> 00022c</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  1</span></span>
+<span class="line"><span class="sk-24292e-fff">  [28] </span><span class="sk-6f42c1-ffc799">.shstrtab</span><span class="sk-032f62-99ffe4">         STRTAB</span><span class="sk-005cc5-ffc799">          0000000000000000</span><span class="sk-032f62-99ffe4"> 010adc</span><span class="sk-005cc5-ffc799"> 000103</span><span class="sk-005cc5-ffc799"> 00</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Key</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> Flags:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  W</span><span class="sk-24292e-fff"> (write), A (</span><span class="sk-6f42c1-ffc799">alloc</span><span class="sk-24292e-fff">), X (</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-24292e-fff">), M (</span><span class="sk-6f42c1-ffc799">merge</span><span class="sk-24292e-fff">), S (</span><span class="sk-6f42c1-ffc799">strings</span><span class="sk-24292e-fff">), I (</span><span class="sk-6f42c1-ffc799">info</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  L</span><span class="sk-24292e-fff"> (link </span><span class="sk-032f62-99ffe4">order</span><span class="sk-24292e-fff">), O (</span><span class="sk-6f42c1-ffc799">extra</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> processing</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-24292e-fff">), G (</span><span class="sk-6f42c1-ffc799">group</span><span class="sk-24292e-fff">), T (</span><span class="sk-6f42c1-ffc799">TLS</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  C</span><span class="sk-24292e-fff"> (compressed), x (</span><span class="sk-6f42c1-ffc799">unknown</span><span class="sk-24292e-fff">), o (</span><span class="sk-6f42c1-ffc799">OS</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">), E (</span><span class="sk-6f42c1-ffc799">exclude</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  D</span><span class="sk-24292e-fff"> (mbind), p (</span><span class="sk-6f42c1-ffc799">processor</span><span class="sk-032f62-99ffe4"> specific</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<h2>Executing example from Part 1 on aarch64</h2>
+<p>Actually, our <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/1" target="_blank" rel="noopener noreferrer">initial code</a> from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">Part 1</a> works on aarch64 as is!</p>
+<p>Let’s have a quick summary about what was done in the code:</p>
+<ol>
+	<li>We need to find the code of two functions (<code>add5</code> and <code>add10</code>) in the <code>.text</code> section of our object file (<code>obj.o</code>)</li>
+	<li>Load the functions in the executable memory</li>
+	<li>Return the memory locations of the functions to the main program</li>
+</ol>
+<p>There is one nuance: even though all the sections are in the section header, neither of them have a string name. Without the names we can’t identify them. However, having an additional character field for each section in the ELF structure would be inefficient for the space — it must be limited by some maximum length and those names which are shorter would leave the space unfilled. Instead, ELF provides an additional section, <code>.shstrtab</code>. This string table concatenates all the names where each name ends with a null terminated byte. We can iterate over the names and match with an offset held by other sections to reference their name. But how do we find <code>.shstrtab</code> itself if we don’t have a name? To solve this chicken and egg problem, the ELF program header provides a direct pointer to <code>.shstrtab</code>. The similar approach is applied to two other sections: <code>.symtab</code> and <code>.strtab</code>. Where <code>.symtab</code> contains all information about the symbols and <code>.strtab</code> holds the list of symbol names. In the code we work with these tables to resolve all their dependencies and find our functions.</p>
+<h2>Executing example from Part 2 on aarch64</h2>
+<p>At the beginning of the second blog post on <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">how to execute an object file</a> we made the function <code>add10</code> depend on <code>add5</code> instead of being self-contained. This is the first time when we faced relocations. <em>Relocations</em> is the process of loading symbols defined outside the current scope. The relocated symbols can present global or thread-local variables, constant, functions, etc. We’ll start from checking assembly instructions which trigger relocations and uncovering how the ELF format handles them in a more general way.</p>
+<p>After making <code>add10</code> depend on <code>add5</code> our aarch64 version stopped working as well, similarly to the x86. Let’s take a look at assembly listing:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> objdump</span><span class="sk-005cc5-99ffe4"> --disassemble</span><span class="sk-005cc5-99ffe4"> --section=.text</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">obj.o:</span><span class="sk-032f62-99ffe4">     file</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-032f62-99ffe4"> elf64-littleaarch64</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Disassembly</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> .text:</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000000</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">add</span><span class="sk-d73a49-a0a0a0">5&gt;</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   0:</span><span class="sk-032f62-99ffe4">	d10043ff</span><span class="sk-032f62-99ffe4"> 	sub</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4:</span><span class="sk-032f62-99ffe4">	b9000fe0</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#12]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   8:</span><span class="sk-032f62-99ffe4">	b9400fe0</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#12]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   c:</span><span class="sk-005cc5-ffc799">	11001400</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-032f62-99ffe4"> w0,</span><span class="sk-6a737d-8b8b8b94"> #0x5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  10:</span><span class="sk-032f62-99ffe4">	910043ff</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  14:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000018</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">add1</span><span class="sk-d73a49-a0a0a0">0&gt;</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  18:</span><span class="sk-032f62-99ffe4">	a9be7bfd</span><span class="sk-032f62-99ffe4"> 	stp</span><span class="sk-032f62-99ffe4">	x29,</span><span class="sk-032f62-99ffe4"> x30,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#-32]!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  1c:</span><span class="sk-032f62-99ffe4">	910003fd</span><span class="sk-032f62-99ffe4"> 	mov</span><span class="sk-032f62-99ffe4">	x29,</span><span class="sk-032f62-99ffe4"> sp</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  20:</span><span class="sk-032f62-99ffe4">	b9001fe0</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#28]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  24:</span><span class="sk-032f62-99ffe4">	b9401fe0</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#28]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  28:</span><span class="sk-005cc5-ffc799">	94000000</span><span class="sk-032f62-99ffe4"> 	bl</span><span class="sk-005cc5-ffc799">	0</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">add</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  2c:</span><span class="sk-032f62-99ffe4">	b9001fe0</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#28]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  30:</span><span class="sk-032f62-99ffe4">	b9401fe0</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#28]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  34:</span><span class="sk-005cc5-ffc799">	94000000</span><span class="sk-032f62-99ffe4"> 	bl</span><span class="sk-005cc5-ffc799">	0</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">add</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  38:</span><span class="sk-032f62-99ffe4">	a8c27bfd</span><span class="sk-032f62-99ffe4"> 	ldp</span><span class="sk-032f62-99ffe4">	x29,</span><span class="sk-032f62-99ffe4"> x30,</span><span class="sk-24292e-fff"> [sp], </span><span class="sk-6a737d-8b8b8b94">#32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  3c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre>
+</div>
+<p>Have you noticed that all the hex values in the second column are exactly the same length, in contrast with the instructions lengths seen for x86 in Part 2 of our series? This is because all Armv8-A instructions are presented in 32 bits. Since it is impossible to encode every immediate value into less than 32 bits, some operations require more than one instruction, as we’ll see later. For now, we’re interested in one instruction <code>- bl</code> (<a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BL--Branch-with-Link-?lang=en" target="_blank" rel="noopener noreferrer">branch with link</a>) on rows <code>28</code> and <code>34</code>. The <code>bl</code> is a “jump” instruction, but before the jump it preserves the next instruction after the current one in the link register (<code>lr</code>). When the callee finishes execution the caller address is recovered from <code>lr</code>. Usually, the aarch64 instructions reserve the last 6 bits [31:26] for opcode and some auxiliary fields such as running architecture (32 or 64 bits), condition flag and others. Remaining bits are shared between arguments like source register, destination register and immediate value. Since the <code>bl</code> instruction does not require a source or destination register, the full 26 bits can be used to encode the immediate offset instead. However, 26 bits can only encode a small range (+/-32 MB), but because the jump can only target a beginning of an instruction, it must always be aligned to 4 bytes, which increases the effective range of the encoded immediate fourfold, to +/-128 MB.</p>
+<p>Similarly to what we did in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we’re going to resolve our relocations - first by manually calculating the correct addresses and then by using an approach similar to what the linker does. The current value of our <code>bl</code> instruction is <code>94000000</code> or in binary representation <code>100101**00000000000000000000000000**</code>. All 26 bits are zeros, so we don't jump anywhere. The address is calculated by an offset from the current <em>program counter</em> (<code>pc</code>), which can be positive or negative. In our case we expect it to be <code>-0x28</code> and <code>-0x34</code>. As described above, it should be divided by 4 and taken as <a href="https://en.wikipedia.org/wiki/Two%27s_complement" target="_blank" rel="noopener noreferrer">two's complements</a>: <code>-0x28 / 4 = -0xA == 0xFFFFFFF6</code> and <code>-0x34 / 4 = -0xD == 0xFFFFFFF3</code>. From these values we need to take the lower 26 bits and concatenate them with the initial 6 bits to get the final instruction. So, the final ones will be: <code>100101**11111111111111111111110110** == 0x97FFFFF6</code> and <code>100101**11111111111111111111110011** == 0x97FFFFF3</code>. Have you noticed that all the distance calculations are done relative to the <code>bl</code> (or current <code>pc</code>), not the next instruction as in x86?</p>
+<p>Let’s add to the code and execute:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">... </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> parse_obj</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">	...</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* copy the contents of `.text` section from the ELF file */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	memcpy</span><span class="sk-24292e-fff">(text_runtime_base, obj.base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> text_hdr-&gt;sh_offset, text_hdr-&gt;sh_size);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)(text_runtime_base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">28</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">97FFFFF6</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)(text_runtime_base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">34</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">97FFFFF3</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* make the `.text` copy readonly and executable */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">mprotect</span><span class="sk-24292e-fff">(text_runtime_base, </span><span class="sk-6f42c1-ffc799">page_align</span><span class="sk-24292e-fff">(text_hdr-&gt;sh_size), PROT_READ </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> PROT_EXEC)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">	...</span></span></code></pre>
+</div>
+<p>Compile and run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre>
+</div>
+<p>It works! But this is not how the linker handles the relocations. The linker resolves relocation based on the type and formula assigned to this type. In our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">Part 2</a> we investigated it quite well. Here again we need to find the type and check the formula for this type:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --relocs</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Relocation</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> '.rela.text'</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-005cc5-ffc799"> 0x228</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> entries:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Offset</span><span class="sk-032f62-99ffe4">          Info</span><span class="sk-032f62-99ffe4">           Type</span><span class="sk-032f62-99ffe4">           Sym.</span><span class="sk-032f62-99ffe4"> Value</span><span class="sk-032f62-99ffe4">    Sym.</span><span class="sk-032f62-99ffe4"> Name</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> Addend</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000028</span><span class="sk-032f62-99ffe4">  000a0000011b</span><span class="sk-032f62-99ffe4"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799">  0000000000000000</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000034</span><span class="sk-032f62-99ffe4">  000a0000011b</span><span class="sk-032f62-99ffe4"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799">  0000000000000000</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Relocation</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> '.rela.eh_frame'</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-005cc5-ffc799"> 0x258</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-032f62-99ffe4"> entries:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Offset</span><span class="sk-032f62-99ffe4">          Info</span><span class="sk-032f62-99ffe4">           Type</span><span class="sk-032f62-99ffe4">           Sym.</span><span class="sk-032f62-99ffe4"> Value</span><span class="sk-032f62-99ffe4">    Sym.</span><span class="sk-032f62-99ffe4"> Name</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> Addend</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00000000001c</span><span class="sk-005cc5-ffc799">  000200000105</span><span class="sk-032f62-99ffe4"> R_AARCH64_PREL32</span><span class="sk-005cc5-ffc799">  0000000000000000</span><span class="sk-032f62-99ffe4"> .text</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000034</span><span class="sk-005cc5-ffc799">  000200000105</span><span class="sk-032f62-99ffe4"> R_AARCH64_PREL32</span><span class="sk-005cc5-ffc799">  0000000000000000</span><span class="sk-032f62-99ffe4"> .text</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 18</span></span></code></pre>
+</div>
+<p>Our Type is R_AARCH64_CALL26 and the <a href="https://github.com/ARM-software/abi-aa/blob/main/aaelf64/aaelf64.rst#5733relocation-operations" target="_blank" rel="noopener noreferrer">formula</a> for it is:</p>
+<div id="html-block-k6h" class="html-block">
+	<table style="border-collapse:collapse;border:none;width:100%">
 		<tbody>
 			<tr>
-				<td style="vertical-align:top; width:98px">
+				<td style="vertical-align:top;width:98px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000"><b>ELF64 Code</b></span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:179px">
+				<td style="vertical-align:top;width:179px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000"><b>Name</b></span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:145px">
+				<td style="vertical-align:top;width:145px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000"><b>Operation</b></span></span></span></p>
 				</td>
 			</tr>
 			<tr>
-				<td style="vertical-align:top; width:98px">
+				<td style="vertical-align:top;width:98px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000">283</span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:179px">
+				<td style="vertical-align:top;width:179px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000">R_&lt;CLS&gt;_CALL26</span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:145px">
+				<td style="vertical-align:top;width:145px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000">S + A - P</span></span></span></p>
 				</td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>where:</p>
-	<ul>
-		<li>
-			<p><code>S</code> (when used on its own) is the address of the symbol</p>
-		</li>
-		<li>
-			<p><code>A</code> is the addend for the relocation</p>
-		</li>
-		<li>
-			<p><code>P</code> is the address of the place being relocated (derived from <code>r_offset</code>)</p>
-		</li>
-	</ul>
-	<p>Here are the relevant changes to loader.c:</p>
-	<pre class="language-cpp"><code class="language-cpp">/* Replace `#define R_X86_64_PLT32 4` with our Type */
-#define R_AARCH64_CALL26 283
-...
-
-static void do_text_relocations(void)
-{
-	...
-	uint32_t val;
-
-	switch (type)
-	{
-	case R_AARCH64_CALL26:
-		/* The mask separates opcode (6 bits) and the immediate value */
-		uint32_t mask_bl = (0xffffffff &lt;&lt; 26);
-		/* S+A-P, divided by 4 */
-		val = (symbol_address + relocations[i].r_addend - patch_offset) &gt;&gt; 2;
-		/* Concatenate opcode and value to get final instruction */
-		*((uint32_t *)patch_offset) &amp;= mask_bl;
-		val &amp;= ~mask_bl;
-		*((uint32_t *)patch_offset) |= val;
-		break;
-	}
-	...
-}</code></pre>
-	<p>Compile and run:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c 
-$ ./loader
-Calculated relocation: 0x97fffff6
-Calculated relocation: 0x97fffff3
-Executing add5...
-add5(42) = 47
-Executing add10...
-add10(42) = 52</code></pre>
-	<p>So far so good. The next challenge is to <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/2/obj.c#L16-L31" target="_blank" rel="noopener noreferrer">add constant data and global variables</a> to our object file and check relocations again:</p>
-	<pre class="language-bash"><code class="language-bash">$ readelf --relocs --wide obj.o
-
-Relocation section '.rela.text' at offset 0x388 contains 8 entries:
-    Offset             Info             Type               Symbol's Value  Symbol's Name + Addend
-0000000000000000  0000000500000113 R_AARCH64_ADR_PREL_PG_HI21 0000000000000000 .rodata + 0
-0000000000000004  0000000500000115 R_AARCH64_ADD_ABS_LO12_NC 0000000000000000 .rodata + 0
-000000000000000c  0000000300000113 R_AARCH64_ADR_PREL_PG_HI21 0000000000000000 .data + 0
-0000000000000010  0000000300000115 R_AARCH64_ADD_ABS_LO12_NC 0000000000000000 .data + 0
-0000000000000024  0000000300000113 R_AARCH64_ADR_PREL_PG_HI21 0000000000000000 .data + 0
-0000000000000028  0000000300000115 R_AARCH64_ADD_ABS_LO12_NC 0000000000000000 .data + 0
-0000000000000068  000000110000011b R_AARCH64_CALL26       0000000000000040 add5 + 0
-0000000000000074  000000110000011b R_AARCH64_CALL26       0000000000000040 add5 + 0
-...</code></pre>
-	<p>We have even two new relocations: <code>R_AARCH64_ADD_ABS_LO12_NC</code> and <code>R_AARCH64_ADR_PREL_PG_HI21</code>. Their formulas are:</p><!--kg-card-begin: html-->
-	<table cellspacing="0" style="border-collapse:collapse; border:none; width:100%">
+	</table>
+</div>
+<p>where:</p>
+<ul>
+	<li><code>S</code> (when used on its own) is the address of the symbol</li>
+	<li><code>A</code> is the addend for the relocation</li>
+	<li><code>P</code> is the address of the place being relocated (derived from <code>r_offset</code>)</li>
+</ul>
+<p>Here are the relevant changes to loader.c:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* Replace `#define R_X86_64_PLT32 4` with our Type */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799"> 283</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> do_text_relocations</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">	...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> val;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	switch</span><span class="sk-24292e-fff"> (type)</span></span>
+<span class="line"><span class="sk-24292e-fff">	{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	case</span><span class="sk-24292e-fff"> R_AARCH64_CALL26:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		/* The mask separates opcode (6 bits) and the immediate value */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		uint32_t</span><span class="sk-24292e-fff"> mask_bl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">ffffffff</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		/* S+A-P, divided by 4 */</span></span>
+<span class="line"><span class="sk-24292e-fff">		val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (symbol_address </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> relocations[i].r_addend </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> patch_offset) </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		/* Concatenate opcode and value to get final instruction */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-24292e-fff"> mask_bl;</span></span>
+<span class="line"><span class="sk-24292e-fff">		val </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">mask_bl;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> val;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">	...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Compile and run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Calculated</span><span class="sk-032f62-99ffe4"> relocation:</span><span class="sk-005cc5-ffc799"> 0x97fffff6</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Calculated</span><span class="sk-032f62-99ffe4"> relocation:</span><span class="sk-005cc5-ffc799"> 0x97fffff3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span></code></pre>
+</div>
+<p>So far so good. The next challenge is to <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/2/obj.c#L16-L31" target="_blank" rel="noopener noreferrer">add constant data and global variables</a> to our object file and check relocations again:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --relocs</span><span class="sk-005cc5-99ffe4"> --wide</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Relocation</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> '.rela.text'</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-005cc5-ffc799"> 0x388</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-032f62-99ffe4"> entries:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Offset</span><span class="sk-032f62-99ffe4">             Info</span><span class="sk-032f62-99ffe4">             Type</span><span class="sk-032f62-99ffe4">               Symbol's Value  Symbol's</span><span class="sk-032f62-99ffe4"> Name</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> Addend</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000000</span><span class="sk-005cc5-ffc799">  0000000500000113</span><span class="sk-032f62-99ffe4"> R_AARCH64_ADR_PREL_PG_HI21</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-032f62-99ffe4"> .rodata</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000004</span><span class="sk-005cc5-ffc799">  0000000500000115</span><span class="sk-032f62-99ffe4"> R_AARCH64_ADD_ABS_LO12_NC</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-032f62-99ffe4"> .rodata</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000000000c</span><span class="sk-005cc5-ffc799">  0000000300000113</span><span class="sk-032f62-99ffe4"> R_AARCH64_ADR_PREL_PG_HI21</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000010</span><span class="sk-005cc5-ffc799">  0000000300000115</span><span class="sk-032f62-99ffe4"> R_AARCH64_ADD_ABS_LO12_NC</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000024</span><span class="sk-005cc5-ffc799">  0000000300000113</span><span class="sk-032f62-99ffe4"> R_AARCH64_ADR_PREL_PG_HI21</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000028</span><span class="sk-005cc5-ffc799">  0000000300000115</span><span class="sk-032f62-99ffe4"> R_AARCH64_ADD_ABS_LO12_NC</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000068</span><span class="sk-032f62-99ffe4">  000000110000011b</span><span class="sk-032f62-99ffe4"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799">       0000000000000040</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000074</span><span class="sk-032f62-99ffe4">  000000110000011b</span><span class="sk-032f62-99ffe4"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799">       0000000000000040</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>We have even two new relocations: <code>R_AARCH64_ADD_ABS_LO12_NC</code> and <code>R_AARCH64_ADR_PREL_PG_HI21</code>. Their formulas are:</p>
+<div id="html-block-k7d" class="html-block">
+	<table style="border-collapse:collapse;border:none;width:100%">
 		<tbody>
 			<tr>
-				<td style="vertical-align:top; width:98px">
+				<td style="vertical-align:top;width:98px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000"><b>ELF64 Code</b></span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:237px">
+				<td style="vertical-align:top;width:237px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000"><b>Name</b></span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:221px">
+				<td style="vertical-align:top;width:221px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000"><b>Operation</b></span></span></span></p>
 				</td>
 			</tr>
 			<tr>
-				<td style="vertical-align:top; width:98px">
+				<td style="vertical-align:top;width:98px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#1f2328"><span style="background-color:#ffffff">275</span></span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:237px">
+				<td style="vertical-align:top;width:237px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#1f2328"><span style="background-color:#ffffff">R_&lt;CLS&gt;_ ADR_PREL_PG_HI21</span></span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:221px">
+				<td style="vertical-align:top;width:221px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#1f2328"><span style="background-color:#ffffff">Page(S+A) - Page(P)</span></span></span></span></p>
 				</td>
 			</tr>
 			<tr>
-				<td style="vertical-align:top; width:98px">
+				<td style="vertical-align:top;width:98px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#1f2328">277</span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:237px">
+				<td style="vertical-align:top;width:237px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000">R_&lt;CLS&gt;_ ADD_ABS_LO12_NC</span></span></span></p>
 				</td>
-				<td style="vertical-align:top; width:221px">
+				<td style="vertical-align:top;width:221px">
 					<p><span style="font-size:9pt"><span style="font-family:'Courier New',monospace"><span style="color:#000000">S + A</span></span></span></p>
 				</td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>where:</p>
-	<p><code>Page(expr)</code> is the page address of the expression expr, defined as <code>(expr &amp; ~0xFFF)</code>. (This applies even if the machine page size supported by the platform has a different value.)</p>
-	<p>It’s a bit unclear why we have two new types, while in x86 we had only one. Let’s investigate the assembly code:</p>
-	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text obj.o
-
-obj.o:     file format elf64-littleaarch64
-
-
-Disassembly of section .text:
-
-0000000000000000 &lt;get_hello&gt;:
-   0:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
-   4:	91000000 	add	x0, x0, #0x0
-   8:	d65f03c0 	ret
-
-000000000000000c &lt;get_var&gt;:
-   c:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
-  10:	91000000 	add	x0, x0, #0x0
-  14:	b9400000 	ldr	w0, [x0]
-  18:	d65f03c0 	ret
-
-000000000000001c &lt;set_var&gt;:
-  1c:	d10043ff 	sub	sp, sp, #0x10
-  20:	b9000fe0 	str	w0, [sp, #12]
-  24:	90000000 	adrp	x0, 0 &lt;get_hello&gt;
-  28:	91000000 	add	x0, x0, #0x0
-  2c:	b9400fe1 	ldr	w1, [sp, #12]
-  30:	b9000001 	str	w1, [x0]
-  34:	d503201f 	nop
-  38:	910043ff 	add	sp, sp, #0x10
-  3c:	d65f03c0 	ret</code></pre>
-	<p>We see that all <code>adrp</code> instructions are followed by <code>add</code> instructions. The <code>[add](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADD--immediate---Add--immediate--?lang=en)</code> instruction adds an immediate value to the source register and writes the result to the destination register. The source and destination registers can be the same, the immediate value is 12 bits. The <code>[adrp](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en)</code> instruction generates a <code>pc</code>-relative (program counter) address and writes the result to the destination register. It takes <code>pc</code> of the instruction itself and adds a 21-bit immediate value shifted left by 12 bits. If the immediate value weren’t shifted it would lie in a range of +/-1 MB memory, which isn’t enough. The left shift increases the range up to +/-1 GB. However, because the 12 bits are masked out with the shift, we need to store them somewhere and restore later. That’s why we see add instruction following <code>adrp</code> and two types instead of one. Also, it’s a bit tricky to encode <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en" target="_blank" rel="noopener noreferrer"><code>adrp</code></a>: 2 low bits of immediate value are placed in the position 30:29 and the rest in the position 23:5. Due to size limitations, the aarch64 instructions try to make the most out of 32 bits.</p>
-	<p>In the code we are going to use the formulas to calculate the values and description of <code>adrp</code> and <code>add</code> instructions to obtain the final opcode:</p>
-	<pre class="language-cpp"><code class="language-cpp">#define R_AARCH64_CALL26 283
-#define R_AARCH64_ADD_ABS_LO12_NC 277
-#define R_AARCH64_ADR_PREL_PG_HI21 275
-...
-
-{
-case R_AARCH64_CALL26:
-	/* The mask separates opcode (6 bits) and the immediate value */
-	uint32_t mask_bl = (0xffffffff &lt;&lt; 26);
-	/* S+A-P, divided by 4 */
-	val = (symbol_address + relocations[i].r_addend - patch_offset) &gt;&gt; 2;
-	/* Concatenate opcode and value to get final instruction */
-	*((uint32_t *)patch_offset) &amp;= mask_bl;
-	val &amp;= ~mask_bl;
-	*((uint32_t *)patch_offset) |= val;
-	break;
-case R_AARCH64_ADD_ABS_LO12_NC:
-	/* The mask of `add` instruction to separate 
-	* opcode, registers and calculated value 
-	*/
-	uint32_t mask_add = 0b11111111110000000000001111111111;
-	/* S + A */
-	uint32_t val = *(symbol_address + relocations[i].r_addend);
-	val &amp;= ~mask_add;
-	*((uint32_t *)patch_offset) &amp;= mask_add;
-	/* Final instruction */
-	*((uint32_t *)patch_offset) |= val;
-case R_AARCH64_ADR_PREL_PG_HI21:
-	/* Page(S+A)-Page(P), Page(expr) is defined as (expr &amp; ~0xFFF) */
-	val = (((uint64_t)(symbol_address + relocations[i].r_addend)) &amp; ~0xFFF) - (((uint64_t)patch_offset) &amp; ~0xFFF);
-	/* Shift right the calculated value by 12 bits.
-	 * During decoding it will be shifted left as described above, 
-	 * so we do the opposite.
-	*/
-	val &gt;&gt;= 12;
-	/* Separate the lower and upper bits to place them in different positions */ 
-	uint32_t immlo = (val &amp; (0xf &gt;&gt; 2)) &lt;&lt; 29 ;
-	uint32_t immhi = (val &amp; ((0xffffff &gt;&gt; 13) &lt;&lt; 2)) &lt;&lt; 22;
-	*((uint32_t *)patch_offset) |= immlo;
-	*((uint32_t *)patch_offset) |= immhi;
-	break;
-}</code></pre>
-	<p>Compile and run:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c 
-$ ./loader
-Executing add5...
-add5(42) = 47
-Executing add10...
-add10(42) = 52
-Executing get_hello...
-get_hello() = Hello, world!
-Executing get_var...
-get_var() = 5
-Executing set_var(42)...
-Executing get_var again...
-get_var() = 42</code></pre>
-	<p>It works! The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/2" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="executing-example-from-part-3-on-aarch64">Executing example from Part 3 on aarch64</h2>
-		<a href="https://blog.cloudflare.com/#executing-example-from-part-3-on-aarch64" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> is about resolving external dependencies. When we write code we don’t think much about how to allocate memory or print debug information to the console. Instead, we involve functions from the system libraries. But the code of system libraries needs to be passed through to our programs somehow. Additionally, for optimization purposes, it would be nice if this code would be stored in one place and shared between all programs. And another wish — we don’t want to resolve all the functions and global variables from the libraries, only those which we need and at those times when we need them. To solve these problems, ELF introduced two sections: PLT (the procedure linkage table) and GOT (the global offset table). The dynamic loader creates a list which contains all external functions and variables from the shared library, but doesn’t resolve them immediately; instead they are placed in the PLT section. Each external symbol is presented by a small function, a stub, e.g. <code>puts@plt</code>. When an external symbol is requested, the stub checks if it was resolved previously. If not, the stub searches for an absolute address of the symbol, returns to the requester and writes it in the GOT table. The next time, the address returns directly from the GOT table.</p>
-	<p>In <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> we implemented a simplified PLT/GOT resolution. Firstly, we added a new function <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/obj.c#L35" target="_blank" rel="noopener noreferrer"><code>say_hello</code></a> in the <code>obj.c</code>, which calls unresolved system library function <code>puts</code>. Further we added an optional wrapper <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L73" target="_blank" rel="noopener noreferrer"><code>my_puts</code></a> in the <code>loader.c</code>. The wrapper isn’t required, we could’ve resolved directly to a standard function, but it's a good example of how the implementation of some functions can be overwritten with custom code. In the next steps we added our PLT/GOT resolution:</p>
-	<ul>
-		<li>
-			<p>PLT section we replaced with a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L340" target="_blank" rel="noopener noreferrer">jumptable</a></p>
-		</li>
-		<li>
-			<p>GOT we replaced with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238-L248" target="_blank" rel="noopener noreferrer">assembly instructions</a></p>
-		</li>
-	</ul>
-	<p>Basically, we created a small stub with assembly code (our <code>jumptable</code>) to resolve the global address of our <code>my_puts</code> wrapper and jump to it.</p>
-	<p>The approach for aarch64 is the same. But the <code>jumptable</code> is very different as it consists of different assembly instructions.</p>
-	<p>The big difference here compared to the other parts is that we need to work with a 64-bit address for the GOT resolution. Our custom PLT or <code>jumptable</code> is placed close to the main code of <code>obj.c</code> and can operate with the relative addresses as before. For the GOT or referencing <code>my_puts</code> wrapper we’ll use different branch instructions — <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BR--Branch-to-Register-" target="_blank" rel="noopener noreferrer"><code>br</code></a> or <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BLR--Branch-with-Link-to-Register-" target="_blank" rel="noopener noreferrer"><code>blr</code></a>. These instructions branch to the register, where the aarch64 registers can hold 64-bit values.</p>
-	<p>We can check how it resolves with the native PLT/GOT in our loader assembly code:</p>
-	<pre class="language-bash"><code class="language-bash">$ objdump --disassemble --section=.text loader
-...
-1d2c:	97fffb45 	bl	a40 &lt;puts@plt&gt;
-1d30:	f94017e0 	ldr	x0, [sp, #40]
-1d34:	d63f0000 	blr	x0
-...</code></pre>
-	<p>The first instruction is <code>bl</code> jump to <code>puts@plt</code> stub. The next <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/LDR--immediate---Load-Register--immediate--" target="_blank" rel="noopener noreferrer"><code>ldr</code></a> instruction tells us that some value was loaded into the register <code>x0</code> from the stack. Each function has its own <a href="https://en.wikipedia.org/wiki/Call_stack#Stack_and_frame_pointers" target="_blank" rel="noopener noreferrer">stack frame</a> to hold the local variables. The last <code>blr</code> instruction makes a jump to the address stored in <code>x0</code> register. There is an agreement in the register naming: if the stored value is 64-bits then the register is called <code>x0-x30</code>; if only 32-bits are used then it’s called <code>w0-w30</code> (the value will be stored in the lower 32-bits and upper 32-bits will be zeroed).</p>
-	<p>We need to do something similar — place the absolute address of our <code>my_puts</code> wrapper in some register and call <code>br</code> on this register. We don’t need to store the link before branching, the call will be returned to <code>say_hello</code> from <code>obj.c</code>, which is why a plain <code>br</code> will be enough. Let’s check an assembly of simple C-function:</p>
-	<p>hello.c:</p>
-	<pre class="language-cpp"><code class="language-cpp">#include &lt;stdint.h&gt;
-
-void say_hello(void)
-{
-    uint64_t reg = 0x555555550c14;
-}</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ gcc -c hello.c
-$ objdump --disassemble --section=.text hello.o
-
-hello.o:     file format elf64-littleaarch64
-
-
-Disassembly of section .text:
-
-0000000000000000 &lt;say_hello&gt;:
-   0:	d10043ff 	sub	sp, sp, #0x10
-   4:	d2818280 	mov	x0, #0xc14                 	// #3092
-   8:	f2aaaaa0 	movk	x0, #0x5555, lsl #16
-   c:	f2caaaa0 	movk	x0, #0x5555, lsl #32
-  10:	f90007e0 	str	x0, [sp, #8]
-  14:	d503201f 	nop
-  18:	910043ff 	add	sp, sp, #0x10
-  1c:	d65f03c0 	ret</code></pre>
-	<p>The number <code>0x555555550c14</code> is the address returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238" target="_blank" rel="noopener noreferrer"><code>lookup_ext_function</code></a>. We’ve printed it out to use as an example, but any <a href="https://www.kernel.org/doc/html/latest/arch/arm64/memory.html" target="_blank" rel="noopener noreferrer">48-bits</a> hex value can be used.</p>
-	<p>In our output we see that the value was split in three sections and written in <code>x0</code> register with three instructions: one <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-" target="_blank" rel="noopener noreferrer"><code>mov</code></a> and two <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en" target="_blank" rel="noopener noreferrer"><code>movk</code></a>. The documentation says that there are only 16 bits for the immediate value, but a shift can be applied (in our case left shift <code>lsl</code>).</p>
-	<p>However, we can’t use <code>x0</code> in our context. By <a href="https://developer.arm.com/documentation/den0024/a/The-ABI-for-ARM-64-bit-Architecture/Register-use-in-the-AArch64-Procedure-Call-Standard/Parameters-in-general-purpose-registers" target="_blank" rel="noopener noreferrer">convention</a> the registers <code>x0-x7</code> are caller-saved and used to pass function parameters between calls to other functions. Let’s use <code>x9</code> then.</p>
-	<p>We need to modify our loader. Firstly let’s change the jumptable structure.</p>
-	<p>loader.c:</p>
-	<pre class="language-cpp"><code class="language-cpp">...
-struct ext_jump {
-	uint32_t instr[4];
-};
-...</code></pre>
-	<p>As we saw above, we need four instructions: <code>mov</code>, <code>movk</code>, <code>movk</code>, <code>br</code>. We don’t need a stack frame as we aren’t preserving any local variables. We just want to load the address into the register and branch to it. But we can’t write human-readable code</p>
-	<p>e.g. <code>mov &nbsp;x0, #0xc14</code> into instructions, we need machine binary or hex representation, e.g. <code>d2818280</code>.</p>
-	<p>Let’s write a simple assembly code to get it:</p>
-	<p>hw.s:</p>
-	<pre class="language-cpp"><code class="language-cpp">.global _start
-
-_start: mov     x9, #0xc14 
-        movk    x9, #0x5555, lsl #16
-        movk    x9, #0x5555, lsl #32
-        br      x9</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ as -o hw.o hw.s
-$ objdump --disassemble --section=.text hw.o
-
-hw.o:     file format elf64-littleaarch64
-
-
-Disassembly of section .text:
-
-0000000000000000 &lt;_start&gt;:
-   0:	d2818289 	mov	x9, #0xc14                 	// #3092
-   4:	f2aaaaa9 	movk	x9, #0x5555, lsl #16
-   8:	f2caaaa9 	movk	x9, #0x5555, lsl #32
-   c:	d61f0120 	br	x9</code></pre>
-	<p>Almost done! But there’s one more thing to consider. Even if the value <code>0x555555550c14</code> is a real <code>my_puts</code> wrapper address, it will be different on each run if <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization" target="_blank" rel="noopener noreferrer">ASLR(Address space layout randomization)</a> is enabled. We need to patch these instructions to put the value which will be returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238" target="_blank" rel="noopener noreferrer"><code>lookup_ext_function</code></a> on each run. We’ll split the obtained value in three parts, 16-bits each, and replace them in our <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-" target="_blank" rel="noopener noreferrer"><code>mov</code></a> and <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en" target="_blank" rel="noopener noreferrer"><code>movk</code></a> instructions according to the documentation, similar to what we did before for our second part.</p>
-	<pre class="language-cpp"><code class="language-cpp">if (symbols[symbol_idx].st_shndx == SHN_UNDEF) {
-	static int curr_jmp_idx = 0;
-
-	uint64_t addr = lookup_ext_function(strtab +  symbols[symbol_idx].st_name);
-	uint32_t mov = 0b11010010100000000000000000001001 | ((addr &lt;&lt; 48) &gt;&gt; 43);
-	uint32_t movk1 = 0b11110010101000000000000000001001 | (((addr &gt;&gt; 16) &lt;&lt; 48) &gt;&gt; 43);
-	uint32_t movk2 = 0b11110010110000000000000000001001 | (((addr &gt;&gt; 32) &lt;&lt; 48) &gt;&gt; 43);
-	jumptable[curr_jmp_idx].instr[0] = mov;         // mov  x9, #0x0c14
-	jumptable[curr_jmp_idx].instr[1] = movk1;       // movk x9, #0x5555, lsl #16
-	jumptable[curr_jmp_idx].instr[2] = movk2;       // movk x9, #0x5555, lsl #32
-	jumptable[curr_jmp_idx].instr[3] = 0xd61f0120;  // br   x9
-
-	symbol_address = (uint8_t *)(&amp;jumptable[curr_jmp_idx].instr[0]);
-	curr_jmp_idx++;
-} else {
-	symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
-}
-uint32_t val;
-switch (type)
-{
-case R_AARCH64_CALL26:
-	/* The mask separates opcode (6 bits) and the immediate value */
-	uint32_t mask_bl = (0xffffffff &lt;&lt; 26);
-	/* S+A-P, divided by 4 */
-	val = (symbol_address + relocations[i].r_addend - patch_offset) &gt;&gt; 2;
-	/* Concatenate opcode and value to get final instruction */
-	*((uint32_t *)patch_offset) &amp;= mask_bl;
-	val &amp;= ~mask_bl;
-	*((uint32_t *)patch_offset) |= val;
-	break;
-...</code></pre>
-	<p>In the code we took the address of the first instruction <code>&amp;jumptable[curr_jmp_idx].instr[0]</code> and wrote it in the <code>symbol_address</code>, further because the <code>type</code> is still <code>R_AARCH64_CALL26</code> it will be put into <code>bl</code> - jump to the relative address. Where our relative address is the first <code>mov</code> instruction. The whole <code>jumptable</code> code will be executed and finished with the <code>blr</code> instruction.</p>
-	<p>The final run:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c
-$ ./loader
-Executing add5...
-add5(42) = 47
-Executing add10...
-add10(42) = 52
-Executing get_hello...
-get_hello() = Hello, world!
-Executing get_var...
-get_var() = 5
-Executing set_var(42)...
-Executing get_var again...
-get_var() = 42
-Executing say_hello...
-my_puts executed
-Hello, world!</code></pre>
-	<p>The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/3" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="summary">Summary</h2>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are several things we covered in this blog post. We gave a brief introduction on how the binary got executed on Linux and how all components are linked together. We saw a big difference between x86 and aarch64 assembly. We learned how we can hook into the code and change its behavior. But just as it was said in the first blog post of this series, the most important thing is to remember to always think about security first. Processing external inputs should always be done with great care. Bounds and integrity checks have been omitted for the purposes of keeping the examples short, so readers should be aware that the code is not production ready and is designed for educational purposes only.</p>
+	</table>
 </div>
+<p>where:</p>
+<p><code>Page(expr)</code> is the page address of the expression expr, defined as <code>(expr &amp; ~0xFFF)</code>. (This applies even if the machine page size supported by the platform has a different value.)</p>
+<p>It’s a bit unclear why we have two new types, while in x86 we had only one. Let’s investigate the assembly code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> objdump</span><span class="sk-005cc5-99ffe4"> --disassemble</span><span class="sk-005cc5-99ffe4"> --section=.text</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">obj.o:</span><span class="sk-032f62-99ffe4">     file</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-032f62-99ffe4"> elf64-littleaarch64</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Disassembly</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> .text:</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000000</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">get_hell</span><span class="sk-24292e-fff">o</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   0:</span><span class="sk-005cc5-ffc799">	90000000</span><span class="sk-032f62-99ffe4"> 	adrp</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">get_hell</span><span class="sk-24292e-fff">o</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4:</span><span class="sk-005cc5-ffc799">	91000000</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-032f62-99ffe4"> x0,</span><span class="sk-6a737d-8b8b8b94"> #0x0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   8:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000000000c</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">get_va</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   c:</span><span class="sk-005cc5-ffc799">	90000000</span><span class="sk-032f62-99ffe4"> 	adrp</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">get_hell</span><span class="sk-24292e-fff">o</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  10:</span><span class="sk-005cc5-ffc799">	91000000</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-032f62-99ffe4"> x0,</span><span class="sk-6a737d-8b8b8b94"> #0x0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  14:</span><span class="sk-032f62-99ffe4">	b9400000</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [x0]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  18:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000000001c</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">set_va</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  1c:</span><span class="sk-032f62-99ffe4">	d10043ff</span><span class="sk-032f62-99ffe4"> 	sub</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  20:</span><span class="sk-032f62-99ffe4">	b9000fe0</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	w0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#12]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  24:</span><span class="sk-005cc5-ffc799">	90000000</span><span class="sk-032f62-99ffe4"> 	adrp</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">get_hell</span><span class="sk-24292e-fff">o</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  28:</span><span class="sk-005cc5-ffc799">	91000000</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-032f62-99ffe4"> x0,</span><span class="sk-6a737d-8b8b8b94"> #0x0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  2c:</span><span class="sk-032f62-99ffe4">	b9400fe1</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	w1,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#12]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  30:</span><span class="sk-032f62-99ffe4">	b9000001</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	w1,</span><span class="sk-24292e-fff"> [x0]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  34:</span><span class="sk-032f62-99ffe4">	d503201f</span><span class="sk-032f62-99ffe4"> 	nop</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  38:</span><span class="sk-032f62-99ffe4">	910043ff</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  3c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre>
+</div>
+<p>We see that all <code>adrp</code> instructions are followed by <code>add</code> instructions. The <code>[add](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADD--immediate---Add--immediate--?lang=en)</code> instruction adds an immediate value to the source register and writes the result to the destination register. The source and destination registers can be the same, the immediate value is 12 bits. The <code>[adrp](https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en)</code> instruction generates a <code>pc</code>-relative (program counter) address and writes the result to the destination register. It takes <code>pc</code> of the instruction itself and adds a 21-bit immediate value shifted left by 12 bits. If the immediate value weren’t shifted it would lie in a range of +/-1 MB memory, which isn’t enough. The left shift increases the range up to +/-1 GB. However, because the 12 bits are masked out with the shift, we need to store them somewhere and restore later. That’s why we see add instruction following <code>adrp</code> and two types instead of one. Also, it’s a bit tricky to encode <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/ADRP--Form-PC-relative-address-to-4KB-page-?lang=en" target="_blank" rel="noopener noreferrer"><code>adrp</code></a>: 2 low bits of immediate value are placed in the position 30:29 and the rest in the position 23:5. Due to size limitations, the aarch64 instructions try to make the most out of 32 bits.</p>
+<p>In the code we are going to use the formulas to calculate the values and description of <code>adrp</code> and <code>add</code> instructions to obtain the final opcode:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> R_AARCH64_CALL26</span><span class="sk-005cc5-ffc799"> 283</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> R_AARCH64_ADD_ABS_LO12_NC</span><span class="sk-005cc5-ffc799"> 277</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> R_AARCH64_ADR_PREL_PG_HI21</span><span class="sk-005cc5-ffc799"> 275</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">case</span><span class="sk-6f42c1-ffc799"> R_AARCH64_CALL26</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* The mask separates opcode (6 bits) and the immediate value */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> mask_bl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">ffffffff</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* S+A-P, divided by 4 */</span></span>
+<span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (symbol_address </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> relocations[i].r_addend </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> patch_offset) </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* Concatenate opcode and value to get final instruction */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-24292e-fff"> mask_bl;</span></span>
+<span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">mask_bl;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> val;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">case</span><span class="sk-6f42c1-ffc799"> R_AARCH64_ADD_ABS_LO12_NC</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* The mask of `add` instruction to separate </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	* opcode, registers and calculated value </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	*/</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> mask_add </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0b</span><span class="sk-005cc5-ffc799">11111111110000000000001111111111</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* S + A */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">(symbol_address </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> relocations[i].r_addend);</span></span>
+<span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">mask_add;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-24292e-fff"> mask_add;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* Final instruction */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> val;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">case</span><span class="sk-6f42c1-ffc799"> R_AARCH64_ADR_PREL_PG_HI21</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* Page(S+A)-Page(P), Page(expr) is defined as (expr &amp; ~0xFFF) */</span></span>
+<span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (((</span><span class="sk-d73a49-a0a0a0">uint64_t</span><span class="sk-24292e-fff">)(symbol_address </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> relocations[i].r_addend)) </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">FFF</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> (((</span><span class="sk-d73a49-a0a0a0">uint64_t</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">FFF</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* Shift right the calculated value by 12 bits.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	 * During decoding it will be shifted left as described above, </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	 * so we do the opposite.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	*/</span></span>
+<span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">&gt;&gt;=</span><span class="sk-005cc5-ffc799"> 12</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* Separate the lower and upper bits to place them in different positions */</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> immlo </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (val </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">f</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 29</span><span class="sk-24292e-fff"> ;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> immhi </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (val </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff"> ((</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">ffffff</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 22</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> immlo;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> immhi;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Compile and run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_hello...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_hello</span><span class="sk-24292e-fff">() = Hello, world</span><span class="sk-d73a49-a0a0a0">!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_var...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> set_var</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">42</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_var</span><span class="sk-032f62-99ffe4"> again...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 42</span></span></code></pre>
+</div>
+<p>It works! The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/2" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<h2>Executing example from Part 3 on aarch64</h2>
+<p>Our <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> is about resolving external dependencies. When we write code we don’t think much about how to allocate memory or print debug information to the console. Instead, we involve functions from the system libraries. But the code of system libraries needs to be passed through to our programs somehow. Additionally, for optimization purposes, it would be nice if this code would be stored in one place and shared between all programs. And another wish — we don’t want to resolve all the functions and global variables from the libraries, only those which we need and at those times when we need them. To solve these problems, ELF introduced two sections: PLT (the procedure linkage table) and GOT (the global offset table). The dynamic loader creates a list which contains all external functions and variables from the shared library, but doesn’t resolve them immediately; instead they are placed in the PLT section. Each external symbol is presented by a small function, a stub, e.g. <code>puts@plt</code>. When an external symbol is requested, the stub checks if it was resolved previously. If not, the stub searches for an absolute address of the symbol, returns to the requester and writes it in the GOT table. The next time, the address returns directly from the GOT table.</p>
+<p>In <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-3">Part 3</a> we implemented a simplified PLT/GOT resolution. Firstly, we added a new function <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/obj.c#L35" target="_blank" rel="noopener noreferrer"><code>say_hello</code></a> in the <code>obj.c</code>, which calls unresolved system library function <code>puts</code>. Further we added an optional wrapper <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L73" target="_blank" rel="noopener noreferrer"><code>my_puts</code></a> in the <code>loader.c</code>. The wrapper isn’t required, we could’ve resolved directly to a standard function, but it's a good example of how the implementation of some functions can be overwritten with custom code. In the next steps we added our PLT/GOT resolution:</p>
+<ul>
+	<li>PLT section we replaced with a <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L340" target="_blank" rel="noopener noreferrer">jumptable</a></li>
+	<li>GOT we replaced with <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238-L248" target="_blank" rel="noopener noreferrer">assembly instructions</a></li>
+</ul>
+<p>Basically, we created a small stub with assembly code (our <code>jumptable</code>) to resolve the global address of our <code>my_puts</code> wrapper and jump to it.</p>
+<p>The approach for aarch64 is the same. But the <code>jumptable</code> is very different as it consists of different assembly instructions.</p>
+<p>The big difference here compared to the other parts is that we need to work with a 64-bit address for the GOT resolution. Our custom PLT or <code>jumptable</code> is placed close to the main code of <code>obj.c</code> and can operate with the relative addresses as before. For the GOT or referencing <code>my_puts</code> wrapper we’ll use different branch instructions — <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BR--Branch-to-Register-" target="_blank" rel="noopener noreferrer"><code>br</code></a> or <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/BLR--Branch-with-Link-to-Register-" target="_blank" rel="noopener noreferrer"><code>blr</code></a>. These instructions branch to the register, where the aarch64 registers can hold 64-bit values.</p>
+<p>We can check how it resolves with the native PLT/GOT in our loader assembly code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> objdump</span><span class="sk-005cc5-99ffe4"> --disassemble</span><span class="sk-005cc5-99ffe4"> --section=.text</span><span class="sk-032f62-99ffe4"> loader</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">1d2c:</span><span class="sk-032f62-99ffe4">	97fffb45</span><span class="sk-032f62-99ffe4"> 	bl</span><span class="sk-032f62-99ffe4">	a40</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">puts@pl</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">1d30:</span><span class="sk-032f62-99ffe4">	f94017e0</span><span class="sk-032f62-99ffe4"> 	ldr</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#40]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">1d34:</span><span class="sk-032f62-99ffe4">	d63f0000</span><span class="sk-032f62-99ffe4"> 	blr</span><span class="sk-032f62-99ffe4">	x0</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>The first instruction is <code>bl</code> jump to <code>puts@plt</code> stub. The next <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/LDR--immediate---Load-Register--immediate--" target="_blank" rel="noopener noreferrer"><code>ldr</code></a> instruction tells us that some value was loaded into the register <code>x0</code> from the stack. Each function has its own <a href="https://en.wikipedia.org/wiki/Call_stack#Stack_and_frame_pointers" target="_blank" rel="noopener noreferrer">stack frame</a> to hold the local variables. The last <code>blr</code> instruction makes a jump to the address stored in <code>x0</code> register. There is an agreement in the register naming: if the stored value is 64-bits then the register is called <code>x0-x30</code>; if only 32-bits are used then it’s called <code>w0-w30</code> (the value will be stored in the lower 32-bits and upper 32-bits will be zeroed).</p>
+<p>We need to do something similar — place the absolute address of our <code>my_puts</code> wrapper in some register and call <code>br</code> on this register. We don’t need to store the link before branching, the call will be returned to <code>say_hello</code> from <code>obj.c</code>, which is why a plain <code>br</code> will be enough. Let’s check an assembly of simple C-function:</p>
+<p>hello.c:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdint.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">void</span><span class="sk-6f42c1-ffc799"> say_hello</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    uint64_t</span><span class="sk-24292e-fff"> reg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">555555550c14</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> hello.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> objdump</span><span class="sk-005cc5-99ffe4"> --disassemble</span><span class="sk-005cc5-99ffe4"> --section=.text</span><span class="sk-032f62-99ffe4"> hello.o</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hello.o:</span><span class="sk-032f62-99ffe4">     file</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-032f62-99ffe4"> elf64-littleaarch64</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Disassembly</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> .text:</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000000</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">say_hell</span><span class="sk-24292e-fff">o</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   0:</span><span class="sk-032f62-99ffe4">	d10043ff</span><span class="sk-032f62-99ffe4"> 	sub</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4:</span><span class="sk-032f62-99ffe4">	d2818280</span><span class="sk-032f62-99ffe4"> 	mov</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-6a737d-8b8b8b94"> #0xc14                 	// #3092</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   8:</span><span class="sk-032f62-99ffe4">	f2aaaaa0</span><span class="sk-032f62-99ffe4"> 	movk</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-6a737d-8b8b8b94"> #0x5555, lsl #16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   c:</span><span class="sk-032f62-99ffe4">	f2caaaa0</span><span class="sk-032f62-99ffe4"> 	movk</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-6a737d-8b8b8b94"> #0x5555, lsl #32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  10:</span><span class="sk-032f62-99ffe4">	f90007e0</span><span class="sk-032f62-99ffe4"> 	str</span><span class="sk-032f62-99ffe4">	x0,</span><span class="sk-24292e-fff"> [sp, </span><span class="sk-6a737d-8b8b8b94">#8]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  14:</span><span class="sk-032f62-99ffe4">	d503201f</span><span class="sk-032f62-99ffe4"> 	nop</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  18:</span><span class="sk-032f62-99ffe4">	910043ff</span><span class="sk-032f62-99ffe4"> 	add</span><span class="sk-032f62-99ffe4">	sp,</span><span class="sk-032f62-99ffe4"> sp,</span><span class="sk-6a737d-8b8b8b94"> #0x10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  1c:</span><span class="sk-032f62-99ffe4">	d65f03c0</span><span class="sk-032f62-99ffe4"> 	ret</span></span></code></pre>
+</div>
+<p>The number <code>0x555555550c14</code> is the address returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238" target="_blank" rel="noopener noreferrer"><code>lookup_ext_function</code></a>. We’ve printed it out to use as an example, but any <a href="https://www.kernel.org/doc/html/latest/arch/arm64/memory.html" target="_blank" rel="noopener noreferrer">48-bits</a> hex value can be used.</p>
+<p>In our output we see that the value was split in three sections and written in <code>x0</code> register with three instructions: one <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-" target="_blank" rel="noopener noreferrer"><code>mov</code></a> and two <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en" target="_blank" rel="noopener noreferrer"><code>movk</code></a>. The documentation says that there are only 16 bits for the immediate value, but a shift can be applied (in our case left shift <code>lsl</code>).</p>
+<p>However, we can’t use <code>x0</code> in our context. By <a href="https://developer.arm.com/documentation/den0024/a/The-ABI-for-ARM-64-bit-Architecture/Register-use-in-the-AArch64-Procedure-Call-Standard/Parameters-in-general-purpose-registers" target="_blank" rel="noopener noreferrer">convention</a> the registers <code>x0-x7</code> are caller-saved and used to pass function parameters between calls to other functions. Let’s use <code>x9</code> then.</p>
+<p>We need to modify our loader. Firstly let’s change the jumptable structure.</p>
+<p>loader.c:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> ext_jump</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> instr[</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>As we saw above, we need four instructions: <code>mov</code>, <code>movk</code>, <code>movk</code>, <code>br</code>. We don’t need a stack frame as we aren’t preserving any local variables. We just want to load the address into the register and branch to it. But we can’t write human-readable code</p>
+<p>e.g. <code>mov &nbsp;x0, #0xc14</code> into instructions, we need machine binary or hex representation, e.g. <code>d2818280</code>.</p>
+<p>Let’s write a simple assembly code to get it:</p>
+<p>hw.s:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">.global _start</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">_start: mov     x9, #</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">c14</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">        movk    x9, #</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">5555</span><span class="sk-24292e-fff">, lsl #</span><span class="sk-005cc5-ffc799">16</span></span>
+<span class="line"><span class="sk-24292e-fff">        movk    x9, #</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">5555</span><span class="sk-24292e-fff">, lsl #</span><span class="sk-005cc5-ffc799">32</span></span>
+<span class="line"><span class="sk-24292e-fff">        br      x9</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> hw.o</span><span class="sk-032f62-99ffe4"> hw.s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> objdump</span><span class="sk-005cc5-99ffe4"> --disassemble</span><span class="sk-005cc5-99ffe4"> --section=.text</span><span class="sk-032f62-99ffe4"> hw.o</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hw.o:</span><span class="sk-032f62-99ffe4">     file</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-032f62-99ffe4"> elf64-littleaarch64</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Disassembly</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> .text:</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0000000000000000</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">_star</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   0:</span><span class="sk-032f62-99ffe4">	d2818289</span><span class="sk-032f62-99ffe4"> 	mov</span><span class="sk-032f62-99ffe4">	x9,</span><span class="sk-6a737d-8b8b8b94"> #0xc14                 	// #3092</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4:</span><span class="sk-032f62-99ffe4">	f2aaaaa9</span><span class="sk-032f62-99ffe4"> 	movk</span><span class="sk-032f62-99ffe4">	x9,</span><span class="sk-6a737d-8b8b8b94"> #0x5555, lsl #16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   8:</span><span class="sk-032f62-99ffe4">	f2caaaa9</span><span class="sk-032f62-99ffe4"> 	movk</span><span class="sk-032f62-99ffe4">	x9,</span><span class="sk-6a737d-8b8b8b94"> #0x5555, lsl #32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   c:</span><span class="sk-032f62-99ffe4">	d61f0120</span><span class="sk-032f62-99ffe4"> 	br</span><span class="sk-032f62-99ffe4">	x9</span></span></code></pre>
+</div>
+<p>Almost done! But there’s one more thing to consider. Even if the value <code>0x555555550c14</code> is a real <code>my_puts</code> wrapper address, it will be different on each run if <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization" target="_blank" rel="noopener noreferrer">ASLR(Address space layout randomization)</a> is enabled. We need to patch these instructions to put the value which will be returned by <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2021-03-obj-file/3/loader.c#L238" target="_blank" rel="noopener noreferrer"><code>lookup_ext_function</code></a> on each run. We’ll split the obtained value in three parts, 16-bits each, and replace them in our <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOV--inverted-wide-immediate---Move--inverted-wide-immediate---an-alias-of-MOVN-" target="_blank" rel="noopener noreferrer"><code>mov</code></a> and <a href="https://developer.arm.com/documentation/ddi0596/2021-12/Base-Instructions/MOVK--Move-wide-with-keep-?lang=en" target="_blank" rel="noopener noreferrer"><code>movk</code></a> instructions according to the documentation, similar to what we did before for our second part.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (symbols[symbol_idx].st_shndx </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> SHN_UNDEF) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	static</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff"> curr_jmp_idx </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint64_t</span><span class="sk-24292e-fff"> addr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> lookup_ext_function</span><span class="sk-24292e-fff">(strtab </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff">  symbols[symbol_idx].st_name);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> mov </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0b</span><span class="sk-005cc5-ffc799">11010010100000000000000000001001</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> ((addr </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 48</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 43</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> movk1 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0b</span><span class="sk-005cc5-ffc799">11110010101000000000000000001001</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> (((addr </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 48</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 43</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> movk2 </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0b</span><span class="sk-005cc5-ffc799">11110010110000000000000000001001</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> (((addr </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&lt;&lt;</span><span class="sk-005cc5-ffc799"> 48</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 43</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">	jumptable[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> mov;</span><span class="sk-6a737d-8b8b8b94">         // mov  x9, #0x0c14</span></span>
+<span class="line"><span class="sk-24292e-fff">	jumptable[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> movk1;</span><span class="sk-6a737d-8b8b8b94">       // movk x9, #0x5555, lsl #16</span></span>
+<span class="line"><span class="sk-24292e-fff">	jumptable[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> movk2;</span><span class="sk-6a737d-8b8b8b94">       // movk x9, #0x5555, lsl #32</span></span>
+<span class="line"><span class="sk-24292e-fff">	jumptable[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">d61f0120</span><span class="sk-24292e-fff">;</span><span class="sk-6a737d-8b8b8b94">  // br   x9</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	symbol_address </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">uint8_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">jumptable[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-24292e-fff">	curr_jmp_idx</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">	symbol_address </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> section_runtime_base</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">sections[symbols[symbol_idx].st_shndx]) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> symbols[symbol_idx].st_value;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-24292e-fff"> val;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">switch</span><span class="sk-24292e-fff"> (type)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">case</span><span class="sk-6f42c1-ffc799"> R_AARCH64_CALL26</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* The mask separates opcode (6 bits) and the immediate value */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	uint32_t</span><span class="sk-24292e-fff"> mask_bl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-ffc799">0x</span><span class="sk-005cc5-ffc799">ffffffff</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* S+A-P, divided by 4 */</span></span>
+<span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (symbol_address </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> relocations[i].r_addend </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> patch_offset) </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	/* Concatenate opcode and value to get final instruction */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-24292e-fff"> mask_bl;</span></span>
+<span class="line"><span class="sk-24292e-fff">	val </span><span class="sk-d73a49-a0a0a0">&amp;=</span><span class="sk-d73a49-a0a0a0"> ~</span><span class="sk-24292e-fff">mask_bl;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	*</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)patch_offset) </span><span class="sk-d73a49-a0a0a0">|=</span><span class="sk-24292e-fff"> val;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>In the code we took the address of the first instruction <code>&amp;jumptable[curr_jmp_idx].instr[0]</code> and wrote it in the <code>symbol_address</code>, further because the <code>type</code> is still <code>R_AARCH64_CALL26</code> it will be put into <code>bl</code> - jump to the relative address. Where our relative address is the first <code>mov</code> instruction. The whole <code>jumptable</code> code will be executed and finished with the <code>blr</code> instruction.</p>
+<p>The final run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_hello...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_hello</span><span class="sk-24292e-fff">() = Hello, world</span><span class="sk-d73a49-a0a0a0">!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_var...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> set_var</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">42</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_var</span><span class="sk-032f62-99ffe4"> again...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 42</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> say_hello...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">my_puts</span><span class="sk-032f62-99ffe4"> executed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+</div>
+<p>The final code is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/4/3" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<h2>Summary</h2>
+<p>There are several things we covered in this blog post. We gave a brief introduction on how the binary got executed on Linux and how all components are linked together. We saw a big difference between x86 and aarch64 assembly. We learned how we can hook into the code and change its behavior. But just as it was said in the first blog post of this series, the most important thing is to remember to always think about security first. Processing external inputs should always be done with great care. Bounds and integrity checks have been omitted for the purposes of keeping the examples short, so readers should be aware that the code is not production ready and is designed for educational purposes only.</p>

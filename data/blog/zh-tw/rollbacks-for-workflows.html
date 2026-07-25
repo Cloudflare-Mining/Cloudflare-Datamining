@@ -1,0 +1,252 @@
+<p>Cloudflare Workflows 讓您能夠建置持久化的多步驟應用程式，並在長時間執行的過程中內建重試機制和狀態持久化。當 <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflow</u></a> 執行時，每個步驟都可以呼叫外部系統、重試失敗的步驟，並在重新啟動之間持續保存狀態。但如果某個步驟失敗，可能會導致先前已完成步驟的早期工作處於不一致或部分完成的狀態。</p>
+<p>今天，我們為 Workflows 推出了 Saga 復原 (rollback) 功能，讓您可以在步驟定義中直接宣告失敗時的復原邏輯。</p>
+<p>舉例來說，考慮一個在兩家不同銀行帳戶之間轉帳的工作流程：</p>
+<ol>
+	<li>從 A 銀行帳戶扣款</li>
+	<li>存入 B 銀行帳戶</li>
+	<li>傳送電子郵件確認給兩個帳戶持有人</li>
+</ol>
+<p>如果第 2 步（存入 B 銀行帳戶）失敗了會怎樣？一旦在 A 銀行的扣款成功，該交易就已提交，資金已離開其系統。作為交易協調者，您無法簡單地在 A 銀行的系統中「復原」該操作。相反地，您必須透過一項在語意上與首次操作相反的新操作，將款項重新存入銀行 A 的帳戶。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="681" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=715&amp;h=681&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=640&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=715&amp;h=681&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=750&amp;h=714&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=828&amp;h=789&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=1080&amp;h=1029&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=1280&amp;h=1219&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=1430&amp;h=1362&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3317 image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WKYMHAWC2FCMBSGG1XMKT.png&amp;w=1376&amp;h=1310&amp;f=webp" data-lightbox-width="1376" data-lightbox-height="1310" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="681" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><br>這種「操作」與其對應「補償邏輯」的配對，即稱為 <a href="https://www.youtube.com/watch?v=xDuwrtwYHu8" target="_blank" rel="noopener noreferrer"><u>Saga 模式</u></a>。</p>
+<p>在今天之前，開發人員必須在步驟的直接定義之外，自行實作補償邏輯來追蹤哪些步驟成功、哪些失敗，以及失敗時應採取哪些行動。現在，您可以在每個 <code>step.do()</code> 中，將補償邏輯作為參數定義在步驟本身內部，同時確保復原過程本身也具備 Workflow 的持久性保證。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// track what completed so we know what to undo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> debitA;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> creditB;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  debitA </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"debit-bank-a"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankA.</span><span class="sk-6f42c1-ffc799">debit</span><span class="sk-24292e-fff">(from, amount));</span></span>
+<span class="line"><span class="sk-24292e-fff">  creditB </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"credit-bank-b"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">(to, amount));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"notify"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> notifyBoth</span><span class="sk-24292e-fff">(from, to, amount));</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // unwind in reverse. each undo is its own durable step,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // must be idempotent, and must keep going if one fails.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (creditB) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"reverse-credit-b"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">debit</span><span class="sk-24292e-fff">(to, amount, creditB.id));</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-6f42c1-ffc799"> alertOnCall</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"reverse-credit-b failed"</span><span class="sk-24292e-fff">, e);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (debitA) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"refund-debit-a"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankA.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">(from, amount, debitA.id));</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-6f42c1-ffc799"> alertOnCall</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"refund-debit-a failed"</span><span class="sk-24292e-fff">, e);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  throw</span><span class="sk-24292e-fff"> error;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><sup><em>沒有復原功能時</em></sup></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// each step ships with its own undo. add a step,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// add its rollback right here. no growing catch</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// block, no manual ordering, no replay logic.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"debit-bank-a"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankA.</span><span class="sk-6f42c1-ffc799">debit</span><span class="sk-24292e-fff">(from, amount), {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  rollback</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">output</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankA.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">(from, amount, output.id),</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"credit-bank-b"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">(to, amount), {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  rollback</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">output</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">debit</span><span class="sk-24292e-fff">(to, amount, output.id),</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"notify"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> notifyBoth</span><span class="sk-24292e-fff">(from, to, amount));</span></span></code></pre>
+</div>
+<p><sup><em>使用復原功能時</em></sup></p>
+<h2>試用</h2>
+<p>要使用復原功能，只需將包含 <code>rollback</code> 函式的選項物件作為最後一個引數傳遞給 <code>step.do()</code> 即可。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> debit</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "debit-account-a"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> bankA.</span><span class="sk-6f42c1-ffc799">debit</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      accountId: fromAccountId,</span></span>
+<span class="line"><span class="sk-24292e-fff">      amount,</span></span>
+<span class="line"><span class="sk-24292e-fff">      idempotencyKey: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">transferId</span><span class="sk-032f62-99ffe4">}:debit-account-a`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    rollback</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> bankA.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        accountId: fromAccountId,</span></span>
+<span class="line"><span class="sk-24292e-fff">        amount,</span></span>
+<span class="line"><span class="sk-24292e-fff">        idempotencyKey: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">transferId</span><span class="sk-032f62-99ffe4">}:rollback-debit-account-a`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The idempotency keys make both the forward operations and rollback operations safe to retry without duplicating the transfer</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> credit</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "credit-account-b"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      accountId: toAccountId,</span></span>
+<span class="line"><span class="sk-24292e-fff">      amount,</span></span>
+<span class="line"><span class="sk-24292e-fff">      idempotencyKey: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">transferId</span><span class="sk-032f62-99ffe4">}:credit-account-b`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    rollback</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">output</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (output </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> bankB.</span><span class="sk-6f42c1-ffc799">debit</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        accountId: toAccountId,</span></span>
+<span class="line"><span class="sk-24292e-fff">        amount,</span></span>
+<span class="line"><span class="sk-24292e-fff">        idempotencyKey: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">transferId</span><span class="sk-032f62-99ffe4">}:rollback-credit-account-b`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// If we fail here, we may want to revert all previous payments. Users should not have to wrap their code in complex try-catch logic just to revert two small payments (see below)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"send-confirmation"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> sendTransferConfirmation</span><span class="sk-24292e-fff">({ </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>復原函式應具備冪等性 (idempotent)，就像一般的 Workflow 步驟一樣。如果您要退還一筆費用，請使用付款服務商的冪等金鑰。如果您要釋放庫存，請確保釋放操作可以安全地被呼叫多次。</p>
+<p>如果任何步驟失敗，復原處理器將以<code>步驟開始</code>的相反順序執行。聽起來很簡單：當有問題發生時執行復原步驟。在實務上，有一些細節使得 API 和執行模型變得很重要。</p>
+<p>1.<strong>失敗的步驟可能仍需要復原。</strong>如果一個失敗的 <code>step.do()</code> 有註冊復原處理器，它仍然可以有資格執行復原。</p>
+<p>如果使用者程式碼捕捉到錯誤且 Workflow 繼續執行，則復原不會開始；但如果捕捉錯誤後，Workflow 後來因其他原因失敗，則先前註冊的處理器仍可執行復原，它們會以<code>步驟開始</code>的相反順序執行。</p>
+<p>為什麼？因為該步驟可能在失敗之前已與外部系統進行了部分互動。例如，付款服務商可能已扣款成功，但步驟可能在將 <code>chargeId</code> 傳回給 Workflows 之前就失敗了。這就是為什麼復原處理器會收到 <code>output</code>，但必須處理 <code>output === undefined</code> 的情況。</p>
+<p>2. <strong>復原僅在 Workflow 失敗時才啟動。</strong>加入復原處理器並不表示每個步驟錯誤都會觸發復原。如果使用者程式碼捕捉了錯誤並繼續執行，Workflow 就會繼續。復原會在 Workflow 本身即將最終失敗時啟動。</p>
+<p>當復原啟動時，Workflows 會尋找符合資格的 <code>step.do()</code> 呼叫，執行它們的復原處理器，然後記錄最終的 Workflow 失敗。</p>
+<p>3. <strong>執行順序必須是可預測的。</strong>對於循序 (sequential) Workflow，復原順序很直觀：</p>
+<ol>
+	<li>保留庫存。</li>
+	<li>信用卡扣款。</li>
+	<li>建立出貨單。</li>
+	<li>如果出貨失敗，就退款並釋放庫存。</li>
+</ol>
+<p>但當涉及平行步驟時，情況就比較微妙。步驟的完成順序可能與開始順序不同，因此 Workflows 採用的是反向步驟開始順序，而非反向完成順序。</p>
+<p>實際的規則是：</p>
+<ol>
+	<li>任何已開始或已完成且具有復原處理器的步驟都符合資格。</li>
+	<li>失敗的 <code>step.do()</code> 如果有註冊復原處理器，也符合資格。</li>
+	<li>處理器以反向步驟開始順序執行，而不是完成順序。</li>
+</ol>
+<h2>API 設計過程</h2>
+<p>在確立預期的行為邏輯後，我們需要將這套新模式整合進 Workflows API。復原功能其實歷經了好幾次疊代，才最終定案為目前的 <code>rollback options</code>。</p>
+<h3>為什麼不是流暢式 (fluent) 或建造者 (builder) 風格的 API？</h3>
+<p>第一種方法是流暢式寫法：<code>step.do(...).rollback(...)</code>。這種寫法可讀性極佳。正向動作和補償動作並列在一起，呼叫點看起來就像一般的 JavaScript 鏈式呼叫。</p>
+<p>問題在於，<code>step.do()</code> 已經有了一個重要的意義：它啟動一個持久化步驟，並回傳一個代表該步驟輸出的 Promise。在 Workers 中，類 Promise 的值特別重要，因為 Workers RPC 支援 <a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library/#chained-calls-promise-pipelining" target="_blank" rel="noopener noreferrer"><u>Promise 管線化</u></a>，這是一種繼承自 <a href="https://capnproto.org/rpc.html#time-travel-promise-pipelining" target="_blank" rel="noopener noreferrer"><u>Cap'n Proto</u></a> 等系統的模式。</p>
+<p>Promise 管線化讓程式碼可以在一個未來值完全回傳給呼叫者之前，就先呼叫該值上的方法。例如：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> api.</span><span class="sk-6f42c1-ffc799">authenticate</span><span class="sk-24292e-fff">(apiKey);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> name</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">whoami</span><span class="sk-24292e-fff">();</span></span></code></pre>
+</div>
+<p>在這裡，<code>session</code> 還不是真正的 session 物件。它比較像是一個即將存在之 session 的控制代碼 (handle)。當您呼叫 <code>session.whoami()</code> 時，Workers 可以提早將該呼叫傳送到遠端，並表示：「一旦驗證建立了 session，就在它上面呼叫 <code>whoami()</code>。」</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="476" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=715&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=640&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=715&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=750&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=828&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=1080&amp;h=719&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=1280&amp;h=852&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=1430&amp;h=952&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3317 image4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMVWKS68D8HCFGVRZQ2RA.png&amp;w=1920&amp;h=1279&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1279" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="476" class="pt-portable-image-media"></div>
+</figure>
+<p>這樣可以省去一次往返。呼叫者不需要等到 <code>authenticate()</code> 完全完成，就可以要求 <code>whoami()</code>。</p>
+<p>我們考慮過流暢式 API：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"charge-card"</span><span class="sk-24292e-fff">, chargeCard).</span><span class="sk-6f42c1-ffc799">rollback</span><span class="sk-24292e-fff">(refundCharge);</span></span></code></pre>
+</div>
+<p><br>對讀者來說，這看起來像是「在 <code>charge-card</code> 的結果上呼叫 <code>.rollback()</code>」。但復原並不是步驟輸出的一部分。它是 <code>step.do()</code> 選項的一部分，且必須在步驟啟動前就完成註冊，這樣 Workflows 才知道若後續步驟失敗時該如何補償。</p>
+<p>流暢式 API 也讓步驟的時序更難推理。目前，<code>step.do()</code> 在被呼叫時就會啟動步驟，所以開發人員可以啟動一個步驟、做其他工作，稍後再等待第一個步驟完成：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> first</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"first"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> serviceA.</span><span class="sk-6f42c1-ffc799">call</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"second"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> serviceB.</span><span class="sk-6f42c1-ffc799">call</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> first;</span></span></code></pre>
+</div>
+<p>在目前的執行模型中，<code>first</code> 會在 <code>second</code> 之前立即啟動。流暢式 API 會使情況變得複雜。Workflows 需要等待並觀察是否附加了 <code>.rollback()</code>，才能知道完整的步驟定義。這可能會延遲步驟被傳送到引擎的時間。</p>
+<p>在前面的例子中，<code>first</code> 可能會在 <code>await first</code> 時（即 <code>second</code> 步驟完成後）才啟動，而非在 <code>step.do("first", ...)</code> 處啟動。</p>
+<p>這使得並行 Workflow 更難以預測：步驟的時序將取決於回傳的 <code>Promise</code> 何時被使用，而不僅僅是 <code>step.do()</code> 在哪裡被呼叫。</p>
+<p>我們也考慮過建造者風格的 API：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> charge</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step</span></span>
+<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">saga</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"charge"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> chargeCard</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">rollback</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> refundCharge</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">();</span></span></code></pre>
+</div>
+<p>建造者 API 避免了 <code>Promise</code> 的模糊性。它也為未來的步驟層級選項提供了一個明確的位置，並清楚表明正向動作和復原動作屬於同一個 saga 步驟。</p>
+<p>但它的儀式感太重了。每個步驟都需要一個最終的 <code>.run()</code>，但很容易忘記寫 <code>.run()</code>，且若無工具輔助難以察覺；簡單的單一步驟案例也會變得像冗長的設定鏈。它也引入了一個新的 <code>step.saga() </code>建造者，偏離了現有的 <code>step.&lt;action&gt;</code> 模式。最重要的是，它讓 <code>step.do()</code> 感覺像是一個較舊的 API，而不是 Workflows 的主要基本元件。復原功能的目標是擴展 <code>step.do()</code>，而不是取代它。</p>
+<h3>將復原作為步驟的中繼資料</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">, { rollback })</span></span></code></pre>
+</div>
+<p>最終，我們選擇了明確的形式，將復原作為步驟的中繼資料。</p>
+<p>這樣一來，每個復原都在正向步驟本身內部定義。每個處理器都會收到觸發復原的錯誤、<a href="https://developers.cloudflare.com/workflows/build/step-context" target="_blank" rel="noopener noreferrer"><u>步驟上下文</u></a>，以及輸出。輸出可能是正向步驟回傳的持久化值（這可能是 undefined）；若步驟在持久化數值之前就失敗，則直接為 undefined。</p>
+<p>復原會發出生命週期事件，因此您可以知道補償是否已開始、哪個復原處理器失敗，以及復原是否成功完成。</p>
+<p>至關重要的是，原始的 Workflow 失敗保持獨立：復原是 Workflow 在失敗之後所做的事情，而不是 Workflow 失敗的原因。</p>
+<p>就像您可以透過 <code>WorkflowStepConfig</code> 在<a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowstepconfig" target="_blank" rel="noopener noreferrer"><u>步驟組態</u></a>中定義自訂的重試和逾時行為一樣，您也可以在 <code>rollbackConfig</code> 中加入復原專屬的值。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  rollback</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">output</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> bankA.</span><span class="sk-6f42c1-ffc799">credit</span><span class="sk-24292e-fff">({ accountId: fromAccountId, amount, transferId: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">transferId</span><span class="sk-032f62-99ffe4">}-reversal`</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  rollbackConfig</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    retries</span><span class="sk-24292e-fff">: { </span><span class="sk-6f42c1-ffc799">limit</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">delay</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'30 seconds'</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">backoff</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'exponential'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    timeout</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'2 minutes'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>這符合我們想要的生命週期事件心智模型。<code>step.do()</code> 本來就是在描述一個持久化的工作單元，Workflows 會記錄、重試該單元，並稍後在記錄中顯示。復原是針對同一個工作單元的另一個生命週期行為。它應該伴隨著步驟定義，而不是存在於單獨的包裝器 (wrapper) 或建造者中。</p>
+<ul>
+	<li>步驟仍然在 <code>step.do()</code> 正常啟動的時候啟動。</li>
+	<li>返回的 promise 仍然代表步驟的輸出。</li>
+	<li>並行的 Workflow 程式碼保持相同的執行模型。</li>
+	<li>復原的重試和逾時選項與復原處理器放在一起。</li>
+	<li>現有的 <code>step.do()</code> 呼叫保持完全相同的運作方式。</li>
+</ul>
+<p>這種形式比流暢式 API 稍微更明確一些，但這種明確性是有用的。操作及其補償仍然放在同一個地方，而且 API 沒有引入新的步驟建造者或新的 promise 類型。已經瞭解 <code>step.do()</code> 的開發人員只需要學習一個額外的 <code>options</code> 物件即可。</p>
+<p>這雖然不那麼神奇，但更容易採用，也更容易理解。</p>
+<h2>底層運作原理</h2>
+<p>復原功能感覺像是一個小小的 API 新增項目，但它改變了 Workflows 需要針對每個步驟記錄的內容。</p>
+<p>一般的 <code>step.do()</code> 已經有一個持久化的記錄。Workflows 會記錄步驟是否已啟動、是否已完成、回傳了什麼，以及如果 Workflow 稍後恢復執行，該步驟應該被跳過還是重新執行。</p>
+<p>復原功能為該記錄增加了一件事：該步驟是否註冊了補償邏輯。</p>
+<p>這意味著，如果 Workflow 失敗，Workflows 需要將兩項資訊結合起來。</p>
+<p>第一項是<strong>持久化的步驟歷程記錄</strong>。Workflow 引擎會儲存資料，以瞭解哪些已執行、哪些已完成、儲存了什麼輸出，以及是否已註冊復原。</p>
+<p>第二項是<strong>復原處理器</strong>本身，也就是為補償該步驟而編寫的函式。Workflows 不會將該函式的文字當作資料儲存。相反地，它會在 Workflow 執行期間，保留一個可呼叫的處理器參照。</p>
+<p>在 Workers RPC 中，這種可呼叫的參照稱為 <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle" target="_blank" rel="noopener noreferrer"><strong><u>stub</u></strong></a>。Stub 讓系統的一部分可以呼叫正在其他地方執行的程式碼。Stub 也具有生命週期，因此可以在呼叫或執行上下文結束時被處置 (dispose)。如果您需要在該時間點之後保留 stub，Workers RPC 提供了一個 <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle/#the-dup-method" target="_blank" rel="noopener noreferrer"><code><u>dup()</u></code></a> 方法，可以建立另一個指向相同目標的控制代碼。</p>
+<p>對於復原功能來說，這個模型很有用。持久化的步驟歷程記錄記錄了哪些需要補償。復原 stub 為 Workflows 提供了一種呼叫補償程式碼的方式。而且，由於復原處理器可能需要比註冊它們的 <code>step.do()</code> 呼叫存活更久，Workflows 會為復原階段保留自己的可呼叫處理器參照。</p>
+<p>在常見的情況下，當 Workflow 在同一個引擎生命週期中進入復原階段時，Workflows 已經擁有它需要的復原 stub。它可以使用持久化的步驟歷程記錄來找出符合資格的步驟，然後呼叫在正向執行期間註冊的復原 stub。</p>
+<p>當 Workflows 需要在重啟後進行<strong>復原</strong>時，情況就變得比較微妙。</p>
+<p>如果在需要執行復原時，引擎被驅逐、當機或重新啟動，Workflows 仍然擁有持久化的步驟歷程記錄，但可能不再擁有記憶體中的復原 stub。為了復原，Workflows 會使用<strong>重播 (replay)</strong>：這是一種復原模式，它可以重新執行 Workflow 程式碼，但不會重新執行已完成之正向步驟的主體。</p>
+<p>當重播遇到一個已完成的 <code>step.do()</code> 時，Workflows 會讀取持久化的結果，而不是再次執行步驟主體。對於 rollback 復原，Workflows 只需要為那些有附加復原且符合復原資格的步驟重建處理器。當遇到這些 <code>step.do()</code> 呼叫時，它們的復原選項可以再次註冊可呼叫的 stub。</p>
+<p>這讓 Workflows 能夠復原它需要的復原處理器，而不會重複原始的外部副作用。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="699" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=715&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=640&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=715&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=750&amp;h=733&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=828&amp;h=809&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=1080&amp;h=1056&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=1280&amp;h=1251&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=1430&amp;h=1398&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3317 image5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMK8HE1XEHVNX1B4RNK9W.png&amp;w=1738&amp;h=1698&amp;f=webp" data-lightbox-width="1738" data-lightbox-height="1698" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="699" class="pt-portable-image-media"></div>
+</figure>
+<p>有了這些元件，無論處理器是否仍在記憶體中可用，或者必須在復原期間重建，復原功能都能運作。</p>
+<p>當 Workflow 即將失敗時，Workflows 不會要求您的應用程式重建發生的事情。它已經有步驟歷程記錄。它可以查看持久化的記錄，並回答重要的問題：</p>
+<ul>
+	<li>哪些步驟已經開始？</li>
+	<li>哪些步驟已完成？</li>
+	<li>哪個失敗的步驟可能仍需要清理？</li>
+	<li>哪個步驟註冊了復原處理器？</li>
+	<li>每個復原處理器應該接收什麼輸出？</li>
+	<li>補償應以什麼順序執行？</li>
+</ul>
+<p>然後，Workflows 會使用復原上下文（包含原始錯誤、步驟上下文和步驟輸出（如果有被持久化））來呼叫每個復原 stub。</p>
+<p>執行順序的細節很重要。在一般的 JavaScript 中，特別是在使用 <code>Promise.all()</code> 時，完成順序不一定與開始順序相同。如果步驟 A 先啟動，步驟 B 後啟動，步驟 B 可能會先完成。對於復原，Workflows 使用持久化的開始順序作為穩定的真實來源，然後以相反的順序展開。</p>
+<p>復原處理器也會透過 Workflows 的正常步驟機制執行。這表示補償會獲得您對 Workflows 所預期的相同操作特性：重試、逾時、生命週期事件、記錄，以及最終的記錄結果。如果一個復原處理器在其設定的重試次數後仍持續失敗，Workflows 會將復原結果記錄為失敗，停止執行其餘的復原處理器，而 Workflow 執行個體最終會以 <code>Errored</code> 狀態結束。</p>
+<p>這是 Saga 復原與 <code>catch</code> 區塊之間的主要差異。<code>catch</code> 區塊只知道在 JavaScript 執行到該確切時間點時，仍在記憶體中的內容。Workflows 復原則使用持久化的步驟歷程記錄來決定已經發生的事情，在常見情況下呼叫它已有的 stub，並在需要時於復原期間安全地重建遺失的 stub。</p>
+<p>這也是為什麼該 API 將復原放在 <code>step.do()</code> 本身的原因。復原不是一個獨立的全域錯誤處理器——它是附加在 Workflows 已經理解的持久化工作單元上的中繼資料。</p>
+<h2>下一步驟</h2>
+<p>我們復原功能的第一個迭代版本包含：</p>
+<ul>
+	<li>針對 <code>step.do()</code> 的明確步驟復原處理器</li>
+	<li>循序復原執行</li>
+	<li>補償的重試和逾時設定</li>
+</ul>
+<p>接下來，我們想要探索：</p>
+<ul>
+	<li>對 <a href="https://developers.cloudflare.com/workflows/build/events-and-parameters/#wait-for-events" target="_blank" rel="noopener noreferrer"><code><u>waitForEvent</u></code></a> 的復原支援</li>
+	<li>對並行復原執行的支援</li>
+	<li>對 <a href="https://developers.cloudflare.com/workflows/python" target="_blank" rel="noopener noreferrer"><u>Python Workflows</u></a> 的復原支援</li>
+</ul>
+<p>當一個多步驟應用程式在執行中途失敗時，最困難的部分往往不是「<em>知道</em>它失敗了」，而是「知道已經發生了<em>什麼</em>，以及接下來需要發生什麼」。</p>
+<p>Saga 復原讓您可以將答案直接放在每個步驟旁邊。如果您正在使用 Workflows 建置多步驟應用程式，請試試 Saga 復原，並告訴我們您接下來還想要什麼補償模式。請參閱 <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows 技術文件</u></a>開始上手，並在 <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare 社群</u></a>中與我們分享您的寶貴回饋。</p>

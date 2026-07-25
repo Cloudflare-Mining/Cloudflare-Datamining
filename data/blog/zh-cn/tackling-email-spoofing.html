@@ -1,0 +1,287 @@
+<p>今天，我们推出了一个新的工具来对付电子邮件欺骗和网络钓鱼，并改善电子邮件的发送情况：_全新电子邮件安全 DNS 向导_可用于创建 DNS 记录，防止其他人代表你的域发送恶意电子邮件。这个新功能还会在用户的域上存在不安全的 DNS 配置时发出警告，并显示如何修复这些配置的建议。这项功能将首先在 Free 计划中向用户推出，在接下来的几周内，Pro、Business 和 Enterprise 用户也将可以使用。</p>
+<p>在我们深入了解这个向导的神奇之处之前，我们先后退一步，了解一下这个问题：电子邮件欺骗和网络钓鱼。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="298" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=640&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=750&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=828&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1080&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1280&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1430&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - 1JJBFv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1800&amp;h=751&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="751" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="298" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>什么是电子邮件欺骗和网络钓鱼？</h2>
+<p>欺骗指为了获得某种非法利益而伪装成别人的过程。例如<strong>域名欺骗</strong>：某人托管 mycoolwebpaqe.xyz 网站以欺骗 mycoolwebpage.xyz 的用户提供敏感信息，使用户误以为这是正确的网站。在浏览器的地址栏并排查看时，很难发现两者的区别。</p>
+<p>此外还有<strong>电子邮件欺骗</strong>。为了了解它是如何工作的，请看一下我通过自己的个人电子邮件地址收到的一封 Cloudflare 产品更新电子邮件。对于大多数电子邮件提供者，您可以查看电子邮件的完整源代码，其中包含多个标头以及电子邮件的主体。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="388" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=640&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=750&amp;h=407&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=828&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1080&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1280&amp;h=695&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1430&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - vOnDls" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1482&amp;h=804&amp;f=webp" data-lightbox-width="1482" data-lightbox-height="804" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="388" class="pt-portable-image-media"></div>
+</figure>
+<p>在上面，您可以看到电子邮件的 4 个标头，何时收到、来自谁、我应该回复给谁以及我的个人电子邮件地址。From 标头的值用于在我的电子邮件程序中显示发送者。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4"> Thu,</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-032f62-99ffe4"> Sep</span><span class="sk-005cc5-ffc799"> 2021</span><span class="sk-032f62-99ffe4"> 10:30:02</span><span class="sk-005cc5-99ffe4"> -0500</span><span class="sk-24292e-fff"> (CDT)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">product-updates@cloudflare.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Reply-To:</span><span class="sk-032f62-99ffe4"> product-updates@cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my_personal_email_addres</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>当我收到以上邮件时，我会自动认为这封邮件是由 Cloudflare 发送的。然而，任何人都可以从他们的电子邮件服务器发送带有修改过的 From 标头的电子邮件。如果我的电子邮件提供商没有进行适当的检查（这一点将在本文稍后讨论），我有可能受骗，以为某一封电子邮件是从 Cloudflare 发送的，但实际上并非如此。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="156" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=640&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 712w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=750&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=828&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1080&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1280&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1424&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 1424w" alt="BLOG-667 Embedded Image - qPVxMF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp" data-lightbox-width="712" data-lightbox-height="156" data-astro-cid-7nvefuv6="true" sizes="(min-width: 712px) 712px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="712" height="156" class="pt-portable-image-media"></div>
+</figure>
+<p>这就引出了第二种攻击类型：<strong>网络钓鱼</strong>。假设恶意分子已经成功使用电子邮件欺骗向您公司的客户发送电子邮件，这些电子邮件看起来像来自您的企业服务电子邮件。这些电子邮件使用相同的样式和格式，其内容看起来完全像来自您公司的合法电子邮件。电子邮件文本可能是一条紧急信息，要求更新一些帐户信息，包括一个到所谓门户网站的超链接。如果用户的接收邮件服务器没有将邮件标记为垃圾邮件或不安全来源，他们可能会直接点击链接，这样可能会执行恶意代码或引导他们进入一个欺骗域名并被要求提供敏感信息。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="298" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=640&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=750&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=828&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1080&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1280&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1430&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - frP5sQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1800&amp;h=749&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="749" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="298" class="pt-portable-image-media"></div>
+</figure>
+<p>根据 <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2020_IC3Report.pdf" target="_blank" rel="noopener noreferrer">FBI 的 2020 年互联网犯罪报告</a>，网络钓鱼是 2020 年最常见的网络犯罪，受害者超过 24 万，造成的损失超过 5000 万美元。自 2019 年以来，受害者人数增加了一倍多，几乎是 2018 年的 10 倍。</p>
+<p>为了了解大多网络钓鱼攻击如何执行，我们仔细看看 <a href="https://enterprise.verizon.com/resources/reports/2020/2020-data-breach-investigations-report.pdf" target="_blank" rel="noopener noreferrer">2020 年 Verizon 数据外泄调查报告</a>中的发现。报告显示，网络钓鱼占所有“社交行为”（社交工程攻击的另一个说法）的 80% 以上，使其成为迄今此类攻击中最常见的一种。此外，报告指出，96% 的社交行为是通过电子邮件传送的，仅 3% 通过网站、1% 通过电话或短信息。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - iWsJxA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1200&amp;h=742&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="742" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
+</figure>
+<p>这种情况清楚地表明，电子邮件钓鱼是一个严重的问题，让互联网用户非常头疼。我们来看看域名所有者能做些什么来阻止坏人滥用他们的域名进行电子邮件钓鱼。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - YGoL5r" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1214&amp;h=752&amp;f=webp" data-lightbox-width="1214" data-lightbox-height="752" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media"></div>
+</figure>
+<h2>DNS 如何帮助您防止这种攻击？</h2>
+<p>幸运的是，域名系统 (DNS) 中已经内置了三种反欺骗机制。</p>
+<ul>
+	<li>发送方策略框架 (SPF)</li>
+	<li>域名密钥识别邮件 (DKIM)</li>
+	<li>基于域名的邮件身份验证报告和一致性 (DMARC)</li>
+</ul>
+<p>然而，正确配置它们并非易事，尤其是对缺乏经验的人而言。如果您的配置过于严格，合法的电子邮件将被丢弃或标记为垃圾邮件。如果配置过于宽松，您的域名可能被滥用于电子邮件欺骗。</p>
+<h2>发送方策略框架 (SPF)</h2>
+<p>SPF 用于指定哪些 IP 地址和域被允许代表您的域发送电子邮件。SPF 策略以 TXT 记录的形式发布在您的网域上，以便人人都能通过 DNS访问。我们来检查 cloudflare.com 上的 TXT 记录：</p>
+<p>SPF TXT 记录始终需要以 v=spf1 开头。它通常包含发送电子邮件服务器的 IP 地址列表（使用 ip4 或 ip6 机制）。include 机制用于参考其他域名上的其他 SPF 记录。如果您依赖于其他需要代表我们发送电子邮件的供应商，则通常会这样做。您可以在 cloudflare.com 的 SPF 记录中看到一些例子：我们使用 Zendesk 作为客户支持软件，使用 Mandrill 作为营销和交易电子邮件。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflare.com</span><span class="sk-032f62-99ffe4"> 	TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</span></span></code></pre>
+</div>
+<p>最后，还有一种全面捕获机制 -all，其中规定了所有未指定的入站电子邮件应如何处理。全面捕获机制之前有一个限定符，可以是 + (Allow)、~ (Softfail) 或 - (Fail)。不建议使用 Allow 限定符，因为它基本上会使 SPF 记录无效，并允许所有 IP 地址和域名代表您的域名发送电子邮件。Softfail 通过接收邮件服务器进行不同解读，将电子邮件标记为垃圾邮件或不安全，具体取决于服务器。Fail 告诉服务器不要接受任何来自不明来源的电子邮件。</p>
+<p>上图显示了为确保收到的邮件符合 SPF 策略所采取的步骤。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="532" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=715&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=640&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=715&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=750&amp;h=558&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=828&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1080&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1280&amp;h=952&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1430&amp;h=1064&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - Hr7Dx2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1602&amp;h=1191&amp;f=webp" data-lightbox-width="1602" data-lightbox-height="1191" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="532" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li>电子邮件发送自 IP 地址 203.0.113.10，包含的 From 标头值为<a href="mailto:hannes@mycoolwebpage.xyz">hannes@mycoolwebpage.xyz</a>。</li>
+	<li>收到这封电子邮件后，接收者查询 mycoolwebpage.xyz 上的 SPF 记录，以获得这个网域的 SPF 策略。</li>
+	<li>接收者检查发送 IP 地址 203.0.113.10 是否列于 SPF 记录中。如是，该电子邮件成功完成 SPF 检查。否则，all 机制的限定符定义结果。</li>
+</ol>
+<p>关于所有机制的完整列表以及关于 SPF 的更多信息，请参阅 <a href="https://datatracker.ietf.org/doc/html/rfc7208#section-5" target="_blank" rel="noopener noreferrer">RFC7208</a>。</p>
+<h2>域名密钥识别邮件 (DKIM)</h2>
+<p>好啦，通过使用 SPF，我们已经确保只有允许的 IP 地址和域名才能代表 cloudflare.com 发送电子邮件。但是，如果其中一个 IP 在我们没有注意到的情况下改变了所有者并更新了 SPF 记录，我们怎么办？或者，如果其他人也使用谷歌的电子邮件服务器以相同的 IP 试图欺骗来自 cloudflare.com 的电子邮件怎么办？</p>
+<p>此时即可使用 DKIM。DKIM 提供一种机制，可加密签署电子邮件的多个部分 — 通常为主体和某些标头 — 它使用的是<a href="https://www.cloudflare.com/zh-cn/learning/ssl/how-does-public-key-encryption-work" target="_blank" rel="noopener noreferrer">公共密钥加密</a>。在深入了解其工作原理之前，我们先看看 cloudflare.com 使用的 DKIM 记录：</p>
+<p>DKIM 记录的结构为 ._domainkey.，其中，selector 由您的电子邮件提供商提供。DKIM TXT 记录的内容始终以 v=DKIM1 开头，之后是公共密钥。我们可以看到公共密钥的类型，引用了 k 标记和公共密钥本身，前面是 p 标记。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">google._domainkey.cloudflare.com.</span><span class="sk-032f62-99ffe4">	TXT</span><span class="sk-032f62-99ffe4">	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</span></span></code></pre>
+</div>
+<p>下面是签名和 DKIM 检查工作原理的简化序列：</p>
+<ol>
+	<li>发送电子邮件服务器根据电子邮件内容创建 <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function" target="_blank" rel="noopener noreferrer">hash</a>。</li>
+	<li>发送电子邮件服务器加密此 hash（使用 DKIM 私钥）。</li>
+	<li>发送电子邮件时包含加密的 hash。</li>
+	<li>接收电子邮件服务器从电子邮件域名上发布的 DKIM TXT 记录中检索公钥。</li>
+	<li>接收邮件服务器使用公共 DKIM 密钥解密 hash。</li>
+	<li>接受电子邮件服务器根据电子邮件内容生成 hash。</li>
+	<li>如果解密的 hash 与生成的 hash 匹配，则电子邮件真实性得到验证。否则，DKIM 检查不通过。</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">DKIM-Signature:</span><span class="sk-032f62-99ffe4"> v=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">; a</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">rsa-sha256</span><span class="sk-24292e-fff">; q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">dns/txt</span><span class="sk-24292e-fff">; c</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">relaxed/relaxed</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1632416903</span><span class="sk-24292e-fff">; s</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">m1</span><span class="sk-24292e-fff">; d</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">cloudflare.com</span><span class="sk-24292e-fff">; i</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">@cloudflare.com</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   h</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">Content-Type:MIME-Version:Subject:To:From:Date</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   bh</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">uMixy0BsCqhbru4fqPZQdeZY5Pq865sNAnOAxNgUS0s</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   b</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">LiIvJeRyqMo0gngiCygwpiKphJjYezb5kXBKCNj8DqRVcCk7obK6OUg4o+EufEbB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tRYQfQhgIkx5m70IqA6dP+DBZUcsJyS9C+vm2xRK7qyHi2hUFpYS5pkeiNVoQk/Wk4w</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    ZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU</span><span class="sk-032f62-99ffe4">=</span></span></code></pre>
+</div>
+<p>完整 DKIM 规范可参阅 <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank" rel="noopener noreferrer">RFC4871</a> 和 <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank" rel="noopener noreferrer">RFC5672</a>。</p>
+<h2>基于域名的邮件身份验证报告和一致性 (DMARC)</h2>
+<p>基于域名的邮件身份验证报告和一致性，这个名称确实很拗口。我们来关注两个词：<em>报告_和_一致性</em>。这正是 DMARC 提供的内容。定期报告让邮件发送者知道有多少邮件不符合要求，可能受到欺骗。一致性有助于向邮件接收者提供一个明确的信号，告诉他们如何处理不符合要求的邮件。即使没有 DMARC 记录，邮件接收者也可能会对 SPF 或 DKIM 检查不通过的邮件施加自己的策略。但是，在 DMARC 记录上配置的策略是电子邮件发送者的显式指令，因此它增强了电子邮件接收者处理不符合要求电子邮件的信心。</p>
+<p>这是 cloudflare.com 的 DMARC 记录</p>
+<p>DMARC TXT 记录始终在电子邮件域名的 _dmarc 子域上设置 — 类似于 SPF 和 DKIM — 内容需要以 v=DMARC1 开头。之后是三个附加标记：</p>
+<p>策略标记 (p) 指示电子邮件接收者如何处理 SPF 或 DKIM 检查不通过的电子邮件。可能值为 none、reject 和 quarantine。none 策略也称为仅监视，允许仍然接受检查不通过的电子邮件。通过指定 quarantine，电子邮件接收者将不符合 SPF 或 DKIM 的电子邮件放入垃圾邮件文件夹。对于 reject，如果 SPF 或 DKIM 检查不通过，将丢弃电子邮件，根本不发送。</p>
+<p>百分比标记 (pct) 可用于仅对传入电子邮件的子集应用指定的策略。如果您刚刚推出 DMARC，并且希望通过在子集上测试以确保所有配置都正确无误，则这样很有帮助。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">_dmarc.cloudflare.com.</span><span class="sk-032f62-99ffe4">   TXT</span><span class="sk-032f62-99ffe4">   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</span></span></code></pre>
+</div>
+<p>我们可以在记录中找到的最后一个标记是报告 URI (rua)。这用于指定一个电子邮件地址，该地址将接收关于不符合要求的电子邮件的汇总报告(通常是每天)。</p>
+<p>以上，我们可以看到 DMARC 是如何逐步工作的。</p>
+<ol>
+	<li>From 标头值为 <a href="mailto:hannes@mycoolwebpage.xyz">hannes@mycoolwebpage.xyz</a> 的电子邮件被发出。</li>
+	<li>接收者查询网域 mycoolwebpage.xyz 的 SPF、DKIM 和 DMARC 记录以获取所需原则和 DKIM 公钥。</li>
+	<li>接收者执行如上所述的 SPF 和 DKIM 检查。如两者均通过，该电子邮件被接受并投递到收件箱。如果 SPF 或 DKIM 检查失败，将遵循 DMARC 原则并确定邮件是否仍被接受、丢弃或发送到垃圾邮件文件夹。</li>
+	<li>最后，接收者返回一个汇总报告。根据 rua 标记中指定的电子邮件，报告也可能被发送到负责该电子邮件的另一个电子邮件服务器。</li>
+</ol>
+<p>其他可选标记和完整的 DMARC 规范可参阅 <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">RFC7489</a>。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="492" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=715&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=640&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=715&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=750&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=828&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1080&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1280&amp;h=881&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1430&amp;h=984&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - E2ThNW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1792&amp;h=1232&amp;f=webp" data-lightbox-width="1792" data-lightbox-height="1232" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="492" class="pt-portable-image-media"></div>
+</figure>
+<h2>关于目前采用情况的一些数据</h2>
+<p>现在我们已经知道了问题是什么，以及如何使用 SPF、DKIM 和 DMARC 来解决问题，下面，我们看看它们的普及情况。</p>
+<p><a href="https://dmarc.org/stats/farsight/dmarc" target="_blank" rel="noopener noreferrer">Dmarc.org</a> 已经发布了一个代表性数据集中采用 DMARC 记录的域名的情况。其中显示，到 2020 年底，仍只有不到 50% 的域名拥有 DMARC 记录。记住，没有 DMARC 记录，就不会明确执行 SPF 和 DKIM 检查。研究进一步表明，在具有 DMARC 记录的域名中，超过 65% 的域名使用仅监视策略 (p:none)，因此，推动更高的采用率潜力巨大。该研究没有提到这些域名是否有在发送或接收电子邮件，但即使它们没有接收或发送，安全配置也应该包括 DMARC 记录（稍后详细介绍）。</p>
+<p>2021 年 8 月 1 日的另一份<a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank" rel="noopener noreferrer">报告</a>指出，属于银行业实体的域名也出现了类似情况。在美国 2881 家银行实体中，只有 44% 的实体在其域名上发布了 DMARC 记录。在有 DMARC 记录的实体中，大约有 2/5 的实体将 DMARC 策略设置为 None，另外 8% 的实体存在“配置错误”情况。丹麦银行领域的域名中使用 DMARC 的比例非常高，达94%，而日本只有 13% 的域名使用 DMARC。SPF 的采用平均显著高于 DMARC，这可能与 2006 年首次引入 SPF 标准作为<a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank" rel="noopener noreferrer">实验性 RFC</a>、而 DMARC 仅在 2015 年<a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">才成为标准</a>这一情况有关。</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:12px;overflow:hidden;padding:10px 10px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:12px;font-weight:normal;overflow:hidden;padding:10px 10px;word-break:normal;} .tg .tg-2bn0{font-size:22px;text-align:center;vertical-align:top} .tg .tg-auka{font-size:22px;text-align:left;vertical-align:top} .tg .tg-ozhh{font-size:22px;font-weight:bold;text-align:center;vertical-align:top}</p>
+<p>国家/地区</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="394" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=640&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=750&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=828&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=1080&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=1280&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=1430&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - Bun4Cx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=950&amp;h=524&amp;f=webp" data-lightbox-width="950" data-lightbox-height="524" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="394" class="pt-portable-image-media"></div>
+</figure>
+<p>实体数量</p>
+<div id="html-block-k54" class="html-block">
+	<style>
+		#html-block-k54 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k54 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+			overflow: hidden;
+			padding: 10px 10px;
+			word-break: normal;
+		}
+
+		#html-block-k54 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 12px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 10px;
+			word-break: normal;
+		}
+
+		#html-block-k54 .tg .tg-2bn0 {
+			font-size: 22px;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k54 .tg .tg-auka {
+			font-size: 22px;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k54 .tg .tg-ozhh {
+			font-size: 22px;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ozhh">Country</th>
+				<th class="tg-ozhh">Number of entities</th>
+				<th class="tg-ozhh">SPF present</th>
+				<th class="tg-ozhh">DMARC present</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-auka">Denmark</td>
+				<td class="tg-2bn0">53</td>
+				<td class="tg-2bn0">91%</td>
+				<td class="tg-2bn0">94%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">UK</td>
+				<td class="tg-2bn0">83</td>
+				<td class="tg-2bn0">88%</td>
+				<td class="tg-2bn0">76%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">Canada</td>
+				<td class="tg-2bn0">24</td>
+				<td class="tg-2bn0">96%</td>
+				<td class="tg-2bn0">67%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">USA</td>
+				<td class="tg-2bn0">2,881</td>
+				<td class="tg-2bn0">91%</td>
+				<td class="tg-2bn0">44%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">Germany</td>
+				<td class="tg-2bn0">39</td>
+				<td class="tg-2bn0">74%</td>
+				<td class="tg-2bn0">36%</td>
+			</tr>
+			<tr>
+				<td class="tg-auka">Japan</td>
+				<td class="tg-2bn0">90</td>
+				<td class="tg-2bn0">82%</td>
+				<td class="tg-2bn0">13%</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>存在 SPF</p>
+<p>存在 DMARC</p>
+<p>丹麦</p>
+<p>53</p>
+<p>91%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="113" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=715&amp;h=113&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=640&amp;h=101&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=715&amp;h=113&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=750&amp;h=119&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=828&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1080&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1280&amp;h=202&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1430&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - nyKigs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1920&amp;h=303&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="303" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="113" class="pt-portable-image-media"></div>
+</figure>
+<p>94%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="156" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=715&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=640&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=715&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=750&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=828&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1080&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1280&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1430&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - 5INhbX" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1920&amp;h=418&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="418" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="156" class="pt-portable-image-media"></div>
+</figure>
+<p>英国</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="947" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=715&amp;h=947&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=640&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=715&amp;h=947&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=750&amp;h=993&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=828&amp;h=1097&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1080&amp;h=1430&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1280&amp;h=1695&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1430&amp;h=1894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - KKswfR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1547&amp;h=2048&amp;f=webp" data-lightbox-width="1547" data-lightbox-height="2048" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="947" class="pt-portable-image-media"></div>
+</figure>
+<p>83</p>
+<div id="html-block-k5o" class="html-block">
+	<div style="padding-top:57.28155339805825%"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+	<p></p>
+</div>
+<p>88%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=750&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1080&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1280&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1430&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - hj8c5z" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1920&amp;h=870&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="870" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="324" class="pt-portable-image-media"></div>
+</figure>
+<p>76%</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">example.com</span><span class="sk-032f62-99ffe4">			TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 -all"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">._domainkey.example.com.	TXT	</span><span class="sk-032f62-99ffe4">"v=DKIM1; p="</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">_dmarc.example.com.</span><span class="sk-032f62-99ffe4">		TXT</span><span class="sk-032f62-99ffe4">	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</span></span></code></pre>
+</div>
+<p>加拿大</p>
+<p>24</p>
+<p>96%</p>
+<p>67%</p>
+<div id="html-block-k63" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/b994d925816888ee88bfd6a3e4984572?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<p>USA</p>
+<p>2,881</p>
+<p>91%</p>
+<p>44%</p>
+<p>德国</p>
+<p>39</p>
+<p>74%</p>
+<p>36%</p>
+<p>日本</p>
+<p>90</p>
+<p>82%</p>
+<p>13%</p>
+<p>这表明我们还有很大的改进空间。</p>
+<h2>进入：电子邮件安全 DNS 向导</h2>
+<p>那么，我们要怎样做才能增加 SPF、DKIM 和 DMARC 的采用率并应对电子邮件欺骗和网络钓鱼？进入新的 Cloudflare <em>电子邮件安全 DNS 向导</em>。</p>
+<p>从今天开始，当您浏览到 Cloudflare 仪表盘的 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS 标签</a>时，您会看到两个新功能：</p>
+<ol>
+	<li>新增的电子邮件安全部分</li>
+	<li>新增的关于不安全配置的警告</li>
+</ol>
+<p>为了开始使用_电子邮件安全 DNS 向导_，您可以直接点击警告中的链接（引导您进入向导的相关部分）或点击新的<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard" target="_blank" rel="noopener noreferrer">电子邮件安全部分</a>中的<strong>配置</strong>。后者将向您显示以下可用选项：</p>
+<p>有两种情况。您使用您的域名发送电子邮件，或没有这样做。如果是前者，您可以通过以下几个简单的步骤配置 SPF、DKIM 和 DMARC 记录。这里是针对 SPF 的步骤：</p>
+<p>如果您的域名不发送电子邮件，有一个简单的方法可一键配置所有三个记录：</p>
+<p>单击 <strong>Submit</strong> 之后，将创建所有三个记录，并以相应方式配置，使所有电子邮件都检查不通过并被传入电子邮件服务器拒绝。</p>
+<h2>帮助应对电子邮件欺骗和网络钓鱼</h2>
+<p>确保您的域名是安全的，能够防止电子邮件欺骗和网络钓鱼。只需前往 Cloudflare 仪表盘上的 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS 标签</a>，或者，如果您还没有使用 Cloudflare DNS，只需在 <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a> 上花几分钟时间进行免费注册。</p>
+<p>如果您想了解关于 SPF、DKIM 和 DMARC 的更多信息，请查阅我们关于电子邮件相关 DNS 记录的<a href="https://www.cloudflare.com/zh-cn/learning/dns/dns-records/dns-txt-record" target="_blank" rel="noopener noreferrer">新学习页面</a>。</p>

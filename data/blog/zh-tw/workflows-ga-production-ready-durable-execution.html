@@ -1,0 +1,262 @@
+<p>測試版對於接收意見回饋和進行反覆運作很有用，但歸根結底，並非每個人都願意做實驗品，或者能忍受測試版軟體偶爾出現的尖銳問題。有時您需要大而閃亮的「正式推出」標籤（或部落格文章），現在輪到 Workflows 了。</p>
+<p>我們的無伺服器持久執行引擎 <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a> 現已正式推出，您可在 Workers 上構建長期執行、多步驟的應用程式（有些人稱之為「步驟函數」）。</p>
+<p>簡而言之，這意味著它<em>可用於生產環境</em>，但並不意味著 Workflows 將會僵化。我們將繼續擴展 Workflows（包括更多並行執行個體），推出新功能（例如全新的 <code>waitForEvent</code> API），並使用<a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>我們的 Agents SDK 和 Workflows</u></a>，更輕鬆地構建 AI 代理程式。</p>
+<p>如果您更喜歡程式碼而非散文，可以快速安裝 Workflows 入門專案，並使用單一命令來開始探索程式碼和 API ：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest workflows</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/workflows-starter"</span></span></code></pre>
+</div>
+<p>Workflows 如何運作？我可以用來構建哪些內容？如何看待使用 Workflows 和 <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> 來構建 AI 代理程式？請繼續閱讀。</p>
+<h2>使用 Workflows 構建</h2>
+<p>Workflows 是在 Cloudflare Workers 基礎上構建的持久執行引擎，可讓您構建具有復原能力的多步驟應用程式。</p>
+<p>Workflows 的核心是實作一個基於步驟的架構，其中應用程式中的每個步驟都可獨立重試，其狀態會在步驟之間自動保留。這意味著，即使某個步驟因暫時性錯誤或網路問題失敗，Workflows 可以僅重試該步驟，而無需從頭開始重新啟動整個應用程式。</p>
+<p>定義 Workflow 後，您將應用程式分解為合乎邏輯的步驟。</p>
+<ul>
+	<li>每個步驟都可執行程式碼 (<code>step.do</code>)，讓您的 Workflow 進入休眠狀態<code> (step.sleep</code> <code>或 step.sleepUnutil)，</code>或者等待某個事件 (<code>step.waitForEvent</code>)。</li>
+	<li>在 Workflow 執行時，它會自動保留從每個步驟傳回的狀態，從而確保您的應用程式可從中斷的位置繼續執行，即使在失敗或休眠期之後亦是如此。&nbsp;</li>
+	<li>對於在多個系統之間協調運作、按順序處理資料，或者需要處理可能持續數分鐘、數小時甚至數天的長時間執行任務的應用程式，這種持久的執行模型尤其強大。</li>
+</ul>
+<p>需要處理傳統無狀態功能難以處理的複雜業務程序時，Workflows 尤其有用。</p>
+<p>例如，電子商務訂單處理工作流程可能會在單獨的步驟中完成庫存檢查、以某種付款方式收費、傳送電子郵件確認，以及更新資料庫等操作。如果付款處理步驟因暫時性中斷而失敗，Workflows 會在付款服務再次可用時自動重試該步驟，而無需重複庫存檢查或重新啟動整個程序。&nbsp;</p>
+<p>您可在下方看到其運作方式：對服務的每次呼叫都可建模為一個步驟，獨立重試，並在需要時從該步驟開始復原：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint, WorkflowStep, WorkflowEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The params we expect when triggering this Workflow</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> OrderParams</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">	orderId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">	customerId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">	items</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;{ </span><span class="sk-e36209-fff">productId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">; </span><span class="sk-e36209-fff">quantity</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff"> }&gt;;</span></span>
+<span class="line"><span class="sk-e36209-fff">	paymentMethod</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">		type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">		id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	};</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Our Workflow definition</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> OrderProcessingWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">OrderParams</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">OrderParams</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 1: Check inventory</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> inventoryResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'check-inventory'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Checking inventory for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">			// Mock: In a real workflow, you'd query your inventory system</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			const</span><span class="sk-005cc5-fff"> inventoryCheck</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">INVENTORY_SERVICE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">checkAvailability</span><span class="sk-24292e-fff">(event.payload.items);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">			// Return inventory status as state for the next step</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">				inStock: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">				reservationId: </span><span class="sk-032f62-99ffe4">'inv-123456'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">				itemsChecked: event.payload.items.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">			};</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Exit workflow if items aren't in stock</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">inventoryResult.inStock) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> { status: </span><span class="sk-032f62-99ffe4">'failed'</span><span class="sk-24292e-fff">, reason: </span><span class="sk-032f62-99ffe4">'out-of-stock'</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 2: Process payment</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Configure specific retry logic for payment processing</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> paymentResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">			'process-payment'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">			{</span></span>
+<span class="line"><span class="sk-24292e-fff">				retries: {</span></span>
+<span class="line"><span class="sk-24292e-fff">					limit: </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					delay: </span><span class="sk-032f62-99ffe4">'30 seconds'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					backoff: </span><span class="sk-032f62-99ffe4">'exponential'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">				},</span></span>
+<span class="line"><span class="sk-24292e-fff">				timeout: </span><span class="sk-032f62-99ffe4">'2 minutes'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">			},</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">				console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Processing payment for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">				// Mock: In a real workflow, you'd call your payment processor</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">				const</span><span class="sk-005cc5-fff"> paymentResponse</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">PAYMENT_SERVICE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">processPayment</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">					customerId: event.payload.customerId,</span></span>
+<span class="line"><span class="sk-24292e-fff">					orderId: event.payload.orderId,</span></span>
+<span class="line"><span class="sk-24292e-fff">					amount: </span><span class="sk-6f42c1-ffc799">calculateTotal</span><span class="sk-24292e-fff">(event.payload.items),</span></span>
+<span class="line"><span class="sk-24292e-fff">					paymentMethodId: event.payload.paymentMethod.id,</span></span>
+<span class="line"><span class="sk-24292e-fff">				});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">				// If payment failed, throw an error that will trigger retry logic</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">				if</span><span class="sk-24292e-fff"> (paymentResponse.status </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> 'success'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">					throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Payment failed: ${</span><span class="sk-24292e-fff">paymentResponse</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">message</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">				}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">				// Return payment info as state for the next step</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">				return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">					transactionId: </span><span class="sk-032f62-99ffe4">'txn-789012'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					amount: </span><span class="sk-005cc5-ffc799">129.99</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					timestamp: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toISOString</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">				};</span></span>
+<span class="line"><span class="sk-24292e-fff">			},</span></span>
+<span class="line"><span class="sk-24292e-fff">		);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 3: Send email confirmation</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'send-confirmation-email'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Sending confirmation email for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Including payment confirmation ${</span><span class="sk-24292e-fff">paymentResult</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">transactionId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">EMAIL_SERVICE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">sendOrderConfirmation</span><span class="sk-24292e-fff">({ </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 4: Update database</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> dbResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'update-database'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Updating database for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">updateOrderStatus</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> { dbUpdated: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Return final workflow state</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			orderId: event.payload.orderId,</span></span>
+<span class="line"><span class="sk-24292e-fff">			processedAt: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toISOString</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">		};</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><br>由於集耐用性、自動重試和狀態持久性於一身，Workflows 成為構建可靠的分散式應用程式的理想選擇，這些應用程式可從容地處理現實世界出現的失敗問題。</p>
+<h2>人機互動</h2>
+<p>Workflows 即程式碼，這使得其變得極其強大：您可以動態、即時地定義步驟、有條件地分支，並對您需要的任何系統進行 API 呼叫。但有時您也需要一個 Workflow 來等待現實世界中發生的事情。</p>
+<p>例如：</p>
+<ul>
+	<li>取得人工核准以繼續。</li>
+	<li>傳入的 Webhook，例如，Stripe 付款或 GitHub 事件。 </li>
+	<li>狀態變更，例如，檔案上傳至 R2 會觸發<a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer"><u>事件通知</u></a>，然後將檔案引用推送至 Workflow，以便其處理檔案（或透過 AI 模型執行）。</li>
+</ul>
+<p>Workflows 中的全新 <code>waitForEvent</code> API 可讓您完成以下操作：&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> event </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">IncomingStripeWebhook</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-032f62-99ffe4">"receive invoice paid webhook from Stripe"</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">"stripe-webhook"</span><span class="sk-24292e-fff">, timeout: </span><span class="sk-032f62-99ffe4">"1 hour"</span><span class="sk-24292e-fff"> }) </span></span></code></pre>
+</div>
+<p>然後，您可透過能發出 HTTP 請求的任何外部服務，將事件傳送至特定執行個體：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"transaction":"complete","id":"1234-6789"}'</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${CF_TOKEN}"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">\ </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}"</span></span></code></pre>
+</div>
+<p>… 或透過 Worker 本身內的 <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>Workers API</u></a> 完成：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  MY_WORKFLOW</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Workflow</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Payload</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  transaction</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> instanceId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(req.url).searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"instanceId"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> webhookPayload</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> req.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Payload</span><span class="sk-24292e-fff">&gt;()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> instance </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_WORKFLOW</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(instanceId);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Send our event, with `type` matching the event type defined in</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // our step.waitForEvent call</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">sendEvent</span><span class="sk-24292e-fff">({type: </span><span class="sk-032f62-99ffe4">"stripe-webhook"</span><span class="sk-24292e-fff">, payload: webhookPayload})</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      status: </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">status</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>您甚至可使用 <code>type</code> 參數來等待多個事件，及/或使用 <code>Promise.race</code> 競爭多個事件來繼續操作，具體取決於先收到哪個事件：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> state </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"get some data"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-6a737d-8b8b8b94">/* step call here */</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Race the events, resolving the Promise based on which event</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// we receive first</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">race</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"payment success"</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">"payment-success-webhook"</span><span class="sk-24292e-fff">, timeout: </span><span class="sk-032f62-99ffe4">"4 hours"</span><span class="sk-24292e-fff"> ),</span></span>
+<span class="line"><span class="sk-24292e-fff">step.waitForEvent(</span><span class="sk-032f62-99ffe4">"payment failure"</span><span class="sk-24292e-fff">, { </span><span class="sk-6f42c1-ffc799">type</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"payment-failure-webhook"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">timeout</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"4 hours"</span><span class="sk-24292e-fff"> ),</span></span>
+<span class="line"><span class="sk-24292e-fff">])</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Continue on based on the value and event received</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>為了更詳細地視覺化 <code>waitForEvent</code>，假設我們有一個 Workflow，由監視 GitHub 存放庫的程式碼審查代理程式觸發。</p>
+<p>如果不能等待事件，Workflow 就無法輕鬆取得人工核准來寫回建議（甚至無法提交自己的 PR）。它<em>可能</em>會輪詢某些已更新的狀態，但這意味著我們必須在任意時段內呼叫 <code>step.sleep</code>，輪詢儲存服務以取得更新值，以及在不存在時重複操作。程式碼數量龐大，而且容易出錯：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>如果沒有 waitForEvent，則更難以向執行中的 Workflow 執行個體傳送資料</em></sup></p>
+<p>如果修改相同範例以整合新的 waitForEvent API，我們可將其用於等待人工核准，再進行變更：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>將 waitForEvent 新增至我們的程式碼審查 Workflow，以便其尋求明確的核准。</em></sup></p>
+<p>在這裡，您甚至可以想像 AI 代理程式本身代表人類傳送及/或採取行動：<code>waitForEvent</code> 只是為 Workflow 提供了一種方法，以在繼續（或不繼續）操作之前擷取和暫停某些要變更的內容。</p>
+<p>關鍵是，您可以像 Workflows 中的任何其他步驟一樣呼叫 <code>waitForEvent</code>：您可以有條件地呼叫、及/或多次呼叫、及/或在互動中呼叫。Workflows 就像是 Workers：您擁有程式設計語言的全部功能，並且不受<a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>領域特定語言 (DSL)</u></a> 或設定語言的限制。</p>
+<h2>定價</h2>
+<p>好消息：自發佈原始測試版以來，我們並未做出太多變更！我們將依據 Workflows 儲存的狀態新增儲存定價，並保留基於 CPU 和基於請求（叫用）的定價，如下所示：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>單位</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers Free</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers Paid</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>CPU 時間（毫秒）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每個 Workflow 10 毫秒</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每月含 3000 萬 CPU 毫秒+ 每增加 100 萬 CPU 毫秒 0.02 美元</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>請求</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每天 100,000 次 Workflow 叫用（與 Workers 共用）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每月包含 1,000 萬個每增加 100 萬個 + 0.3 美元</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>儲存 (GB)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1 GB</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每月含 1 GB<br>+ 每月每 GB 0.20 美元</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>由於儲存定價為新的定價，我們不會在 2025 年 9 月 15 日之前主動計費。在收取儲存費用之前，我們將通知超過 1 GB 限制的使用者，依預設，Workflows 的儲存狀態將在三 (3) 天（免費方案）或三十 (30) 天（付費方案）後到期。</p>
+<p>這裡的「CPU 時間」是指：您的 Workflow 主動取用運算資源的時間。這<em>不</em>包括等待 API 呼叫、推理 LLM 或其他 I/O（例如寫入資料庫）所花費的時間。這看起來似乎是一件小事，但在實踐中，它會共同產生影響：大多數應用程式的 CPU 時間只有幾毫秒，而操作時間有幾秒：一個或兩個 API 需要 100 - 250 毫秒才能回應！</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1912&amp;h=832&amp;f=webp" data-lightbox-width="1912" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>Workflow 空閒或等待時依 CPU 計費，而不是花費的時間。</em></sup></p>
+<p>特別是 Workflow 引擎，往往需要花費大量時間等待：從物件儲存（例如 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>）讀取資料、呼叫第三方 API 或 LLM（例如 o3-mini 或 Claude 3.7），甚至查詢 <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>、Postgres 或 MySQL 等資料庫。使用 Workflows 就像Workers一樣：您不必為應用程式等待的時間付費。</p>
+<h2>開始構建</h2>
+<p>現在您已非常瞭解 Workflows 及其運作方式，並想要開始構建。接下來做什麼？</p>
+<ol>
+	<li><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>瀏覽 Workflows 文件</u></a>以瞭解其運作方式、 Workflows API 和最佳做法</li>
+	<li>檢閱<a href="https://github.com/cloudflare/workflows-starter" target="_blank" rel="noopener noreferrer"><u>入門專案</u></a>中的程式碼</li>
+	<li>最後，只需按幾下滑鼠，即可將啟動程式部署至您自己的 Cloudflare 帳戶中：</li>
+</ol>
+<div id="html-block-k4i" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fworkflows-starter"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a></div>

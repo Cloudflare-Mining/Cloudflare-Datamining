@@ -1,0 +1,641 @@
+<p>Security Week 2023 已正式结束。在<a href="https://blog.cloudflare.com/zh-cn/welcome-to-security-week-2023-zh-cn">上周六的欢迎帖子</a>中，我谈到了 Cloudflare 多年来从保护网站，到保护应用，再到保护人员的发展历程。我们本周的目标是帮助我们的客户解决更广泛的问题，减少外部漏洞点，并使他们的工作更容易。</p>
+<p>我们宣布了 34 个新的工具和集成来实现这一点。这些新的工具和集成将帮助您更快、更容易地进行五项关键工作：</p>
+<ol>
+	<li>更容易在任何地方部署和管理 Zero Trust</li>
+	<li>减少客户必须使用的第三方工具数量</li>
+	<li>利用机器学习让人类专注于批判性思维</li>
+	<li>向我们的客户开放更多专有的 Cloudflare 威胁情报</li>
+	<li>让人为错误更难发生</li>
+</ol>
+<p>并帮助您实时响应最新的攻击。我们报告了<a href="https://blog.cloudflare.com/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">诈骗分子如何使用硅谷银行消息</a>来对新的受害者进行钓鱼，以及您能采取什么措施来保护自己。</p>
+<p>如果您错过了任何公告，请查看下面的概要和导航指南。</p>
+<h3>周一</h3>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ycd2{background-color:#F63;color:#FFF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-ktyi{background-color:#FFF;text-align:left;vertical-align:top} .tg .tg-dm87{background-color:#FFF;color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-kt" class="html-block">
+	<style>
+		#html-block-kt .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-kt .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kt .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kt .tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-kt .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kt .tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kt .tg .tg-dm87 {
+			background-color: #FFF;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kt .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Blog</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/50-most-impersonated-brands-protect-phishing"><span style="font-weight:400;font-style:normal;background-color:transparent">Top phished brands and new phishing and brand protections</span></a><br></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Today we have released insights from our global network on the top 50 brands used in phishing attacks coupled with the tools customers need to stay safer. Our new phishing and brand protection capabilities, part of Security Center, let customers better preserve brand trust by detecting and even blocking “confusable” and lookalike domains involved in phishing campaigns.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/stay-safe-phishing-attacks"><span style="font-weight:400;font-style:normal;background-color:transparent">How to stay safe from phishing</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Phishing attacks come in all sorts of ways to fool people. Email is definitely the most common, but there are others. Following up on our Top 50 brands in phishing attacks post, here are some tips to help you catch these scams before you fall for them.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/page-shield-positive-blocking-policies"><span style="font-weight:400;font-style:normal;background-color:transparent">Locking down your JavaScript: positive blocking with Page Shield policies</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Page Shield now ensures only vetted and secure JavaScript is being executed by browsers to stop unwanted or malicious JavaScript from loading to keep end user data safer. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/cloudflare-aegis"><span style="font-weight:400;font-style:normal;background-color:transparent">Cloudflare Aegis: dedicated IPs for Zero Trust migration</span></a><br></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">With Aegis, customers can now get dedicated IPs from Cloudflare we use to send them traffic. This allows customers to lock down services and applications at an IP level and build a protected environment that is application, protocol, and even IP-aware.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/mtls-workers"><span style="font-weight:400;font-style:normal;background-color:transparent">Mutual TLS now available for Workers</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">mTLS support for Workers allows for communication with resources that enforce an mTLS connection. mTLS provides greater security for those building on Workers so they can identify and authenticate both the client and the server helps protect sensitive data.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/access-aegis-cni"><span style="font-weight:400;font-style:normal;background-color:transparent">Using Cloudflare Access with CNI</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We have introduced an innovative new approach to secure hosted applications via Cloudflare Access without the need for any installed software or custom code on application servers.</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>博客</p>
+<div id="html-block-kw" class="html-block">
+	<style>
+		#html-block-kw .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-kw .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kw .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kw .tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-kw .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kw .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Blog </span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/descaler-program"><span style="font-weight:400;font-style:normal;background-color:transparent">No hassle migration from Zscaler to Cloudflare One with The Descaler Program</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare is excited to launch the Descaler Program, a frictionless path to migrate existing Zscaler customers to Cloudflare One. With this announcement, Cloudflare is making it even easier for enterprise customers to make the switch to a </span><a href="http://staging.blog.mrk.cfdata.org/network-performance-update-cio-edition"><span style="font-weight:400;font-style:normal;background-color:transparent">faster</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">, simpler, and more agile foundation for security and network transformation.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/application-security-2023"><span style="font-weight:400;font-style:normal;background-color:transparent">The state of application security in 2023</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">For Security Week 2023, we are providing updated insights and trends related to mitigated traffic, bot and API traffic, and <a href="https://www.cloudflare.com/zero-trust/solutions/account-takeover-prevention">account takeover attacks</a>.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/zero-trust-signals-to-sumo-logic"><span style="font-weight:400;font-style:normal;background-color:transparent">Adding Zero Trust signals to Sumo Logic for better security insights</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Today we’re excited to announce the expansion of support for automated normalization and correlation of Zero Trust logs for </span><a href="https://developers.cloudflare.com/logs/about"><span style="font-weight:400;font-style:normal;background-color:transparent">Logpush</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> in Sumo Logic’s </span><a href="https://www.sumologic.com/solutions/cloud-siem-enterprise"><span style="font-weight:400;font-style:normal;background-color:transparent">Cloud SIEM</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">. Joint customers will reduce alert fatigue and accelerate the triage process by converging security and network data into high-fidelity insights.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/cloudflare-dlp-mip"><span style="font-weight:400;font-style:normal;background-color:transparent">Cloudflare One DLP integrates with Microsoft Information Protection labels</span></a></td>
+				<td class="tg-zb5k"><a href="https://www.cloudflare.com/cloudflare-one"><span style="font-weight:400;font-style:normal;background-color:transparent">Cloudflare One</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> now offers Data Loss Prevention (DLP) detections for Microsoft Purview Information Protection labels. This extends the power of Microsoft’s labels to any of your corporate traffic in just a few clicks.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/scan-atlassian-casb"><span style="font-weight:400;font-style:normal;background-color:transparent">Scan and secure Atlassian with Cloudflare CASB</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We are unveiling two new integrations for Cloudflare CASB: one for Atlassian Confluence and the other for Atlassian Jira. Security teams can begin scanning for Atlassian- and Confluence-specific security issues that may be leaving sensitive corporate data at risk.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/cloudflare-ping"><span style="font-weight:400;font-style:normal;background-color:transparent">Zero Trust security with Ping Identity and Cloudflare Access</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Access and Ping Identity offer a powerful solution for organizations looking to implement Zero Trust security controls to protect their applications and data. Cloudflare is now offering </span><a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/pingone-oidc"><span style="font-weight:400;font-style:normal;background-color:transparent">full integration support</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">, so Ping Identity customers can easily integrate their identity management solutions with Cloudflare Access to provide a comprehensive security solution for their applications</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>摘要</p>
+<div id="html-block-kz" class="html-block">
+	<style>
+		#html-block-kz .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-kz .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kz .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kz .tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-kz .tg .tg-dm87 {
+			background-color: #FFF;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kz .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kz .tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kz .tg .tg-brl1 {
+			color: #222;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kz .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Blog</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/cloudflare-fraud-detection"><span style="font-weight:400;font-style:normal;background-color:transparent">Announcing Cloudflare Fraud Detection</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We are excited to announce Cloudflare Fraud Detection that will provide precise, easy to use tools that can be deployed in seconds to detect and categorize fraud such as fake account creation or card testing and fraudulent transactions. Fraud Detection will be in early access later this year, those interested </span><a href="https://www.cloudflare.com/lp/fraud-detection"><span style="font-weight:400;font-style:normal;background-color:transparent">can sign up here</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/ml-api-discovery-and-schema-learning"><span style="font-weight:400;font-style:normal;background-color:#FFF">Automatically discovering API endpoints and generating schemas using machine learning</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Customers can use these new features to enforce a positive security model on their API endpoints even if they have little-to-no information about their existing APIs today.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/api-sequence-analytics"><span style="font-weight:400;font-style:normal;background-color:transparent">Detecting API abuse automatically using sequence analysis</span></a><br></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">With our new Cloudflare Sequence Analytics for APIs, organizations can view the most important sequences of API requests to their endpoints to better understand potential abuse and where to apply protections first. </span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/threat-detection-machine-learning-models"><span style="font-weight:400;font-style:normal;background-color:transparent">Using the power of Cloudflare’s global network to detect malicious domains using machine learning</span></a></td>
+				<td class="tg-brl1"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">Read our post on how we keep users and organizations safer with machine learning models that detect attackers attempting to evade detection with DNS tunneling and domain generation algorithms.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/waf-attack-score-for-business-plan"><span style="font-weight:400;font-style:normal;background-color:transparent">Announcing WAF Attack Score Lite and Security Analytics for business customers</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We are making the machine learning empowered WAF and Security analytics view available to our Business plan customers, to help detect and stop attacks before they are known.</span><br></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/radar-url-scanner-early-access"><span style="font-weight:400;font-style:normal;background-color:transparent">Analyze any URL safely using the Cloudflare Radar URL Scanner</span></a></td>
+				<td class="tg-brl1"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">We have made Cloudflare Radar’s newest free tool available, </span><a href="https://radar.cloudflare.com/scan"><span style="font-weight:400;font-style:normal;background-color:transparent">URL Scanner</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">, providing an under-the-hood look at any webpage to make the Internet more transparent and secure for all.</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><a href="https://blog.cloudflare.com/zh-cn/50-most-impersonated-brands-protect-phishing-zh-cn">钓鱼攻击主要假冒品牌；全新防钓鱼和品牌保护</a></p>
+<div id="html-block-k13" class="html-block">
+	<style>
+		#html-block-k13 .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k13 .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k13 .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k13 .tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k13 .tg .tg-dm87 {
+			background-color: #FFF;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k13 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k13 .tg .tg-brl1 {
+			color: #222;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Blog</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/post-quantum-crypto-should-be-free"><span style="font-weight:400;font-style:normal;background-color:transparent">Post-quantum crypto should be free, so we’re including it for free, forever</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">One of our core beliefs is that privacy is a human right. To achieve that right, we are announcing that our implementations of post-quantum cryptography will be available to everyone, free of charge, forever.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/kyber-isnt-broken"><span style="font-weight:400;font-style:normal;background-color:transparent">No, AI did not break post-quantum cryptography</span></a></td>
+				<td class="tg-brl1"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#222;background-color:transparent">The recent news reports of AI cracking post-quantum cryptography are greatly exaggerated. In this blog, we take a deep dive into the world of side-channel attacks and how AI has been used for more than a decade already to aid it</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#36393A;background-color:#FFF">.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/configurable-super-bot-fight-mode"><span style="font-weight:400;font-style:normal;background-color:transparent">Super Bot Fight Mode is now configurable</span></a><br></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We are making Super Bot Fight Mode even more configurable with new flexibility to allow legitimate, automated traffic to access their site.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/ibm-keyless-bots"><span style="font-weight:400;font-style:normal;background-color:transparent">How Cloudflare and IBM partner to help build a better Internet</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IBM and Cloudflare continue to partner together to help customers meet the unique security, performance, resiliency and compliance needs of their customers through the addition of exciting new product and service offerings.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/protect-your-key-server-with-keyless-ssl-and-cloudflare-tunnel-integration"><span style="font-weight:400;font-style:normal;background-color:#FFF">Protect your key server with Keyless SSL and Cloudflare</span></a><a href="http://staging.blog.mrk.cfdata.org/protect-your-key-server-with-keyless-ssl-and-cloudflare-tunnel-integration"><span style="font-weight:400;font-style:normal;background-color:transparent"> </span></a><a href="http://staging.blog.mrk.cfdata.org/protect-your-key-server-with-keyless-ssl-and-cloudflare-tunnel-integration"><span style="font-weight:400;font-style:normal;background-color:#FFF">Tunnel integration</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Customers will now be able to use our Cloudflare Tunnels product to send traffic to the key server through a secure channel, without publicly exposing it to the rest of the Internet.</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>今天，我们公布钓鱼攻击假冒最多的 50 个品牌名单，以及客户使自己更安全所需的工具。我们的全新品牌保护和防钓鱼功能是安全中心的一部分，让客户检测并甚至阻止钓鱼活动中的“易混淆”和相似域名，从而更好地维护品牌信任。</p>
+<div id="html-block-k16" class="html-block">
+	<style>
+		#html-block-k16 .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k16 .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k16 .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k16 .tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k16 .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k16 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k16 .tg .tg-dm87 {
+			background-color: #FFF;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Blog</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/DMARC-Management"><span style="font-weight:400;font-style:normal;background-color:transparent">Stop Brand Impersonation with Cloudflare DMARC Management</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Brand impersonation continues to be a big problem globally. Setting SPF, DKIM and DMARC policies is a great way to reduce that risk, and protect your domains from being used in spoofing emails. But maintaining a correct SPF configuration can be very costly and time consuming, and that’s why we’re launching Cloudflare DMARC Management.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/how-we-built-dmarc-management"><span style="font-weight:400;font-style:normal;background-color:transparent">How we built DMARC Management using Cloudflare Workers</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">At Cloudflare, we use the Workers platform and our product stack to build new services. Read how we made the new DMARC Management solution entirely on top of our APIs.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/Knowbe4-emailsecurity-integration"><span style="font-weight:400;font-style:normal;background-color:#FFF">Cloudflare partners with KnowBe4 to equip organizations with real-time security coaching to avoid phishing attacks</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare’s cloud email security solution now integrates with KnowBe4, allowing mutual customers to offer real-time coaching to employees when a phishing campaign is detected by Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/access-custom-pages"><span style="font-weight:400;font-style:normal;background-color:#FFF">Introducing custom pages for Cloudflare Access</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We are excited to announce new options to customize user experience in Access, including customizable pages including login, blocks and the application launcher.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/network-performance-update-security-week-2023"><span style="font-weight:400;font-style:normal;background-color:transparent">Cloudflare Access is the fastest Zero Trust proxy</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Access is 75% faster than Netskope and 50% faster than Zscaler, and our network is faster than other providers in 48% of last mile networks.</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><a href="https://blog.cloudflare.com/zh-cn/stay-safe-phishing-attacks-zh-cn">如何防止网络钓鱼</a></p>
+<div id="html-block-k1a" class="html-block">
+	<style>
+		#html-block-k1a .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k1a .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1a .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1a .tg .tg-ycd2 {
+			background-color: #F63;
+			color: #FFF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1a .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1a .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1a .tg .tg-dm87 {
+			background-color: #FFF;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Blog</span></th>
+				<th class="tg-ycd2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Summary</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/one-click-iso-27001-deployment"><span style="font-weight:400;font-style:normal;background-color:transparent">One-click ISO 27001 certified deployment of Regional Services in the EU</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare announces one-click ISO certified region, a super easy way for customers to limit where traffic is serviced to ISO 27001 certified data centers inside the European Union.</span><br></td>
+			</tr>
+			<tr>
+				<td class="tg-dm87"><a href="http://staging.blog.mrk.cfdata.org/account-security-analytics-and-events"><span style="font-weight:400;font-style:normal;background-color:#FFF">Account level Security Analytics and Security Events: better visibility and control over all account zones at once</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">All WAF customers will benefit fromAccount Security Analytics and Events. This allows organizations to new eyes on your account in Cloudflare dashboard to give holistic visibility. No matter how many zones you manage, they are all there!</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="http://staging.blog.mrk.cfdata.org/access-wildcard-and-multi-hostname"><span style="font-weight:400;font-style:normal;background-color:transparent">Wildcard and multi-hostname support in Cloudflare Access</span></a><br></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We are thrilled to announce the full support of wildcard and multi-hostname application definitions in Cloudflare Access. Until now, Access had limitations that restricted it to a single hostname or a limited set of wildcards</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>网络钓鱼攻击利用许多不同的方法来欺骗人们。最常用的方法无疑是电子邮件，但还有其他方法。作为我们关于“在网络钓鱼攻击中被假冒最多的 50 个品牌”的一文后续，我们在这里提供了一些提示，帮助您发现这些诈骗伎俩以防上当。</p>
+<div id="html-block-k1d" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/86ecbe1b36db8e21876094c9c795bb0a/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F86ecbe1b36db8e21876094c9c795bb0a%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D8s%26height%3D600&amp;primaryColor=%23f29c07" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<p><a href="https://blog.cloudflare.com/page-shield-positive-blocking-policies">锁定您的 JavaScript：使用 Page Shield 策略进行主动阻止</a></p>
+<p>Page Shield 现在确保只有经过审查和安全的 JavaScript 被浏览器执行，以阻止有害或恶意的 JavaScript 加载，使终端用户的数据更加安全。</p>
+<p><a href="https://blog.cloudflare.com/cloudflare-aegis">Cloudflare Aegis：用于 Zero Trust 迁移的专用 IP</a></p>
+<p>通过 Aegis，客户现在可从 Cloudflare 获得专用 IP 地址，用于我们向其发送流量。这允许客户在 IP 级别锁定服务和应用，并建立一个应用、协议甚至 IP 感知的受保护环境。</p>
+<p><a href="https://blog.cloudflare.com/mtls-workers">Workers 现已支持双向 TLS</a></p>
+<p>对 Workers 的 mTLS 支持允许与强制 mTLS 连接的资源进行通信。mTLS 为使用 Workers 构建的应用提供更强的安全性，让其能够识别和验证客户端和服务器，帮助保护敏感数据。</p>
+<p><a href="https://blog.cloudflare.com/access-aegis-cni">搭配使用 Cloudflare Access 与 CNI</a></p>
+<p>我们引入了一种创新的新方法，通过 Cloudflare Access 来保护托管应用程序，无需在应用服务器上安装任何软件或自定义代码。</p>
+<h3>周二</h3>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ycd2{background-color:#F63;color:#FFF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>博客</p>
+<p>摘要</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/descaler-program-zh-cn">加入 Descaler 计划，轻松快捷地从 Zscaler 迁移到 Cloudflare One</a></p>
+<p>今天，Cloudflare 隆重推出 Descaler 计划，这是将现有 Zscaler 客户迁移到 Cloudflare One 的无障碍路径。如此，Cloudflare 使企业客户更容易切换到<a href="https://blog.cloudflare.com/zh-cn/network-performance-update-cio-edition-zh-cn">更快速</a>、更简单且更敏捷的安全和网络转型基础。</p>
+<p><a href="https://blog.cloudflare.com/application-security-2023">2023 年应用程序安全态势</a></p>
+<p>Security Week 2023 期间，我们将介绍有关缓解流量、机器人和 API 流量以及帐户接管攻击的最新洞察和发展趋势。</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/zero-trust-signals-to-sumo-logic-zh-cn">将 Zero Trust 信号添加到 Sumo Logic，获得更优质的安全洞察</a></p>
+<p>今天我们很高兴地宣布， 我们扩展了Sumo Logic 的 <a href="https://www.sumologic.com/solutions/cloud-siem-enterprise" target="_blank" rel="noopener noreferrer">Cloud SIEM</a> 对 <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer">Logpush</a> 的 Zero Trust 日志的自动标准化和关联的支持。通过将安全和网络数据融合为高保真的见解，共同客户将减少警报疲劳并加速分类过程。</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-dlp-mip-zh-cn">Cloudflare One DLP 继承了 Microsoft 信息保护标签</a></p>
+<p><a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a> 现提供针对 Microsoft Purview 信息保护标签的数据丢失防护(DLP)检测。这个功能将 Microsoft 标签的力量扩展到您的任何企业流量，而且仅需几次点击。</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/scan-atlassian-casb-zh-cn">使用 Cloudflare CASB 扫描并保护 Atlassian</a></p>
+<p>我们为 Cloudflare CASB 推出了两个新的集成：Atlassian Confluence 和 Atlassian Jira。安全团队可以开始对 Atlassian 和 Confluence 进行扫描，寻找可能会使敏感企业数据出于风险之中的安全问题。</p>
+<p><a href="https://blog.cloudflare.com/cloudflare-ping">使用 Ping Identity 和 Cloudflare Access，实现 Zero Trust 安全</a></p>
+<p>Cloudflare Access 和 Ping Identity 为希望实现 Zero Trust 安全控制以保护其应用和数据的组织提供了强大的解决方案。Cloudflare 现已提供<a href="https://developers.cloudflare.com/cloudflare-one/identity/idp-integration/pingone-oidc" target="_blank" rel="noopener noreferrer">完全集成支持</a>，以便 Ping Identity 客户轻松地将其身份管理解决方案与 Cloudflare Access 集成，为其应用提供一个全面的安全解决方案。</p>
+<h3>周三</h3>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ycd2{background-color:#F63;color:#FFF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-dm87{background-color:#FFF;color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-ktyi{background-color:#FFF;text-align:left;vertical-align:top} .tg .tg-brl1{color:#222;text-align:left;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top}</p>
+<p>博客</p>
+<p>摘要</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-fraud-detection-zh-cn">宣布推出 Cloudflare Fraud Detection</a></p>
+<p>隆重宣布，Cloudflare Fraud Detection 将提供精确、易用的工具，可以在几秒钟内部署，以检测和分类欺诈，如虚假帐户创建或信用卡测试和欺诈交易。Fraud Detection将在今年晚些时候开放提前体验，有兴趣者 <a href="https://www.cloudflare.com/lp/fraud-detection" target="_blank" rel="noopener noreferrer">可以在这里注册</a>。</p>
+<p><a href="https://blog.cloudflare.com/ml-api-discovery-and-schema-learning">运用机器学习自动发现 API 端点并生成架构</a></p>
+<p>即使其现有 API 信息毫不了解或知之甚少，客户也可以利用这些新增功能对其 API 实施一个积极的安全模型。</p>
+<p><a href="https://blog.cloudflare.com/api-sequence-analytics">运用序列分析，自动检测 API 滥用</a></p>
+<p>利用我们新推出的 Cloudflare API 序列分析，组织可以查看到其端点的最重要的 API 请求序列，以更好地了解潜在的滥用，以及首先在哪里应用保护。</p>
+<p><a href="https://blog.cloudflare.com/threat-detection-machine-learning-models">借助 Cloudflare 全球网络的强大力量，运用机器学习技术检测恶意域</a></p>
+<p>本文介绍我们如何使用机器学习模型来检测试图通过 DNS 隧道和域生成算法逃避检测的攻击者，使用户和组织更加安全。</p>
+<p><a href="https://blog.cloudflare.com/waf-attack-score-for-business-plan">宣布推出适用于企业客户的 WAF Attack Score Lite 和安全分析</a></p>
+<p>我们将为购买 Business 计划的客户提供机器学习支持的 WAF 和安全分析视图，协助客户及时检测和阻止攻击，防患于未然。</p>
+<p><a href="https://blog.cloudflare.com/radar-url-scanner-early-access">使用 Cloudflare Radar URL 扫描程序，分析 URL 是否安全</a></p>
+<p>我们已经免费提供 Cloudflare Radar 的最新工具——<a href="https://radar.cloudflare.com/scan" target="_blank" rel="noopener noreferrer">URL Scanner</a>，提供对任何网页的底层查看，使互联网对所有人更透明、更安全。</p>
+<h3>周四</h3>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ycd2{background-color:#F63;color:#FFF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-dm87{background-color:#FFF;color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-brl1{color:#222;text-align:left;vertical-align:top}</p>
+<p>博客</p>
+<p>摘要</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/post-quantum-crypto-should-be-free-zh-cn">后量子时代的加密技术应该是免费的，因此，我们添加了这项技术，永久免费</a></p>
+<p>我们的核心信念之一是，隐私是一项人权。为了实现这一权利，我们隆重宣布，我们的后量子密码学技术将永远免费向所有人开放。</p>
+<p><a href="https://blog.cloudflare.com/kyber-isnt-broken">不，AI 尚未攻破后量子密码学</a></p>
+<p>最近关于人工智能破解后量子密码学的新闻报道，着实属于危言耸听。在这篇博客文章中，我们将深入介绍旁道攻击发展概况，以及十多年来工程师们如何运用人工智能来抵御各种旁道攻击。</p>
+<p><a href="https://blog.cloudflare.com/configurable-super-bot-fight-mode">Super Bot Fight Mode 现在可以配置啦</a></p>
+<p>我们将进一步提高 Super Bot Fight Mode 的可配置性，提供更多灵活性，允许合法、自动化流量访问站点。</p>
+<p><a href="https://blog.cloudflare.com/ibm-keyless-bots">Cloudflare 与 IBM 达成合作伙伴关系，携手帮助构建更好的互联网</a></p>
+<p>IBM 和 Cloudflare 继续合作，通过增加令人兴奋的新产品和服务，帮助客户满足其独特的安全、性能、韧性和合规需求。</p>
+<p><a href="https://blog.cloudflare.com/protect-your-key-server-with-keyless-ssl-and-cloudflare-tunnel-integration">利用 Keyless SSL 和 Cloudflare Tunnel 集成</a><a href="https://blog.cloudflare.com/protect-your-key-server-with-keyless-ssl-and-cloudflare-tunnel-integration">保护您的密钥服务器</a></p>
+<p>现在，客户能够使用 Cloudflare Tunnel 产品经过安全通道将流量发送到密钥服务器，而不会将流量公开暴露给互联网的其他部分。</p>
+<h3>周五</h3>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ycd2{background-color:#F63;color:#FFF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-dm87{background-color:#FFF;color:#15C;text-align:left;vertical-align:top}</p>
+<p>博客</p>
+<p>摘要</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/DMARC-Management-zh-cn">使用 Cloudflare DMARC Management 阻止品牌假冒</a></p>
+<p>在全球范围内，品牌假冒问题一直是个大问题。设置 SPF、DKIM 和 DMARC 策略是降低风险、防止域名被诈骗电子邮件利用的好方法。但是，维护正确的 SPF 配置可能成本高昂，而且非常耗时，这就是我们推出 Cloudflare DMARC Management 的原因。</p>
+<p><a href="https://blog.cloudflare.com/how-we-built-dmarc-management">如何使用 Cloudflare Workers 构建 DMARC Management</a></p>
+<p>我们使用 Cloudflare Workers 平台及相关的系列产品构建全新服务。阅读本篇博客文章，即可了解我们如何在 API 技术基础上开发全新的 DMARC Management 解决方案。</p>
+<p><a href="https://blog.cloudflare.com/Knowbe4-emailsecurity-integration">Cloudflare 携手 KnowBe4，为组织提供实时安全指导，以抵御网络钓鱼攻击</a></p>
+<p>现在，Cloudflare 云电子邮件安全解决方案已与 KnowBe4 集成，当检测到网络钓鱼攻击活动时，允许共同客户为员工提供实时指导。</p>
+<p><a href="https://blog.cloudflare.com/access-custom-pages">Cloudflare Access 自定义页面简介</a></p>
+<p>隆重宣布在 Access 中定制用户体验的新选项，包括可定制的页面，包括登录、阻止和应用启动器。</p>
+<p><a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">Cloudflare Access 是最快的 Zero Trust 代理</a></p>
+<p>Cloudflare Access 比 Netskope 快 75%，比 Zscaler 快 50%，并且我们的网络性能在最后一公里连接中比其他服务提供商都快 48%。</p>
+<h3>周六</h3>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ycd2{background-color:#F63;color:#FFF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-dm87{background-color:#FFF;color:#15C;text-align:left;vertical-align:top}</p>
+<p>博客</p>
+<p>摘要</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/one-click-iso-27001-deployment-zh-cn">Regional Services 新增欧盟，一键完成 ISO 27001 认证部署</a></p>
+<p>Cloudflare 隆重推出一键 ISO 认证区域，这是一种超级简单的方式，允许客户将流量限制在欧盟内部经 ISO 27001 认证的数据中心。</p>
+<p><a href="https://blog.cloudflare.com/account-security-analytics-and-events">帐户级别安全分析和安全事件：一次性对所有帐户区域获得更佳的可见性和控制</a></p>
+<p>所有 WAF 客户将受益于帐户安全分析和安全事件功能。这在 Cloudflare 仪表板为组织提供了对其帐户的新观察视角，从而提供全面的可见性。无论您管理的帐户涉及多少个区域，均可以在 Cloudflare 仪表板中查看！</p>
+<p><a href="https://blog.cloudflare.com/access-wildcard-and-multi-hostname">Cloudflare Access 现可支持通配符和多主机名</a></p>
+<p>隆重宣布 Cloudflare Access 现在完全支持通配符和多主机名应用定义。在此以前，Access 仅允许单一主机名或一组有限的通配符</p>
+<h3>在 Cloudflare TV 上观看我们的 Security Week 内容</h3>
+<p><a href="https://cloudflare.tv/shows/security-week" target="_blank" rel="noopener noreferrer">在这里观看所有 Cloudflare TV 节目</a>。</p>
+<h3>接下来？</h3>
+<p>虽然 Security Week 2023 已经告一段落，但您现在应该已经知道，对 Cloudflare 而言，创新周将永不落幕。欢迎继续关注，我们即将推出一系列全新的开发人员工具，并在今年晚些时候专门讨论如何使互联网更快。</p>

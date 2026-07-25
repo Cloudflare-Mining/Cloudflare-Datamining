@@ -1,361 +1,245 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Ivp262lsHhESGeTQ4ydEz/f0f699dc52b2dd19f43b5466af029925/tools-for-debugging-testing-and-using-http-2.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>With CloudFlare's release of HTTP/2 for all our customers the web suddenly has a lot of HTTP/2 connections. To get the most out of HTTP/2 you'll want to be using an up to date web browser (all the major browsers support HTTP/2).</p>
-	<p>But there are some non-browser tools that come in handy when working with HTTP/2. This blog post starts with a useful browser add-on, and then delves into command-line tools, load testing, conformance verification, development libraries and packet decoding for HTTP/2.</p>
-	<p>If you know of something that I've missed please write a comment.</p>
-	<div class="flex anchor relative">
-		<h3 id="browser-indicators">Browser Indicators</h3>
-		<a href="https://blog.cloudflare.com/#browser-indicators" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For Google Chrome there's a handy <a href="https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin?hl=en" target="_blank" rel="noopener noreferrer">HTTP/2 and SPDY Indicator</a> extension that adds a colored lightning bolt to the browser bar showing the protocol being used when a web page is viewed.</p>
-	<p>The blue lightning bolt shown here indicates that the CloudFlare home page was served using HTTP/2:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oLd6mBoInw37IHY1A2EuQ/82331d2180273d64fa55a756b757c0f8/Screen-Shot-2015-12-03-at-12-08-25.png" alt="" class="kg-image" width="1590" height="321" loading="lazy">
-
-	</figure>
-	<p>A green lightning bolt indicates the site was served using SPDY and gives the SPDY version number. In this case SPDY/3.1:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mis7IT15cGk32zcQAl73M/9747e4c2afc6d1a891e9b75ee6249895/Screen-Shot-2015-12-03-at-12-15-10.png" alt="" class="kg-image" width="1604" height="355" loading="lazy">
-
-	</figure>
-	<p>A grey lightning bolt indicates that neither HTTP/2 no SPDY were used. Here the web page was served using HTTP/1.1.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/30VuLV8Q9qqPC2hpvtkU3l/3440efe822df32649b80a2547de2252c/Screen-Shot-2015-12-03-at-12-10-18.png" alt="" class="kg-image" width="1618" height="363" loading="lazy">
-
-	</figure>
-	<p>There's a similar extension for <a href="https://addons.mozilla.org/en-GB/firefox/addon/spdy-indicator" target="_blank" rel="noopener noreferrer">Firefox</a>.</p>
-	<div class="flex anchor relative">
-		<h4 id="online-testing">Online testing</h4>
-		<a href="https://blog.cloudflare.com/#online-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There's also a handy <a href="https://tools.keycdn.com/http2-test" target="_blank" rel="noopener noreferrer">online tool</a> to check any individual web site.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/DwWwyYZflqaees6W4aJaw/fea382962f1dbb50827f29b480cb72a8/Screen-Shot-2015-12-03-at-12-22-11.png" alt="" class="kg-image" width="1746" height="592" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="claire">Claire</h4>
-		<a href="https://blog.cloudflare.com/#claire" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare also has a Google Chrome extension called <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl" target="_blank" rel="noopener noreferrer">Claire</a> that gives information about how a web page was loaded. For example here's the information that Claire shows for a site using CloudFlare that uses <a href="https://www.cloudflare.com/ipv6" target="_blank" rel="noopener noreferrer">IPv6</a>, <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a>, and HTTP/2.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xZKZgNYat4xEKVCyzYhn4/c4db4e2c32cccd4e78b8361fddb4ebcf/Screen-Shot-2015-12-03-at-17-12-50.png" alt="" class="kg-image" width="717" height="762" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="command-line-tools">Command-line Tools</h3>
-		<a href="https://blog.cloudflare.com/#command-line-tools" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There's a handy command-line tool called <a href="https://github.com/stefanjudis/is-http2-cli" target="_blank" rel="noopener noreferrer">is-http</a> which is installed using npm as follows:</p>
-	<pre class="language-bash"><code class="language-bash">npm install -g is-http2-cli</code></pre>
-	<p>Once installed you can check the HTTP/2 status of a web on the command-line:</p>
-	<pre class="language-bash"><code class="language-bash">$ is-http2 www.cloudflare.com
-✓ HTTP/2 supported by www.cloudflare.com
-Supported protocols: h2 spdy/3.1 http/1.1
-
-$ is-http2 www.amazon.com
-× HTTP/2 not supported by www.amazon.com
-Supported protocols: http/1.1</code></pre>
-	<p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>
-	<div class="flex anchor relative">
-		<h4 id="curl">curl</h4>
-		<a href="https://blog.cloudflare.com/#curl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In version 7.43.0 the venerable <code>curl</code> tool got HTTP/2 support when it's linked with the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp</a> library. To build <code>curl</code> from sources you'll need OpenSSL, zlib, nghttp2 and libev. I used the following sequence of commands.</p>
-	<pre class="language-bash"><code class="language-bash">$ curl -LO http://dist.schmorp.de/libev/libev-4.20.tar.gz
-$ tar zvxf libev-4.20.tar.gz
-$ cd libev-4.20
-$ ./configure
-$ make
-$ sudo make install
-
-$ curl -LO https://www.openssl.org/source/openssl-1.0.2d.tar.gz
-$ tar zxvf openssl-1.0.2d.tar.gz
-$ cd openssl-1.0.2d
-$ ./config shared zlib-dynamic
-$ make &amp;&amp; make test
-$ sudo make install
-
-$ curl -LO http://zlib.net/zlib-1.2.8.tar.gz
-$ tar zxvf zlib-1.2.8.tar.gz
-$ cd zlib-1.2.8
-$ ./configure
-$ make &amp;&amp; make test
-$ sudo make install
-
-$ curl -LO https://github.com/tatsuhiro-t/nghttp2/releases/download/v1.5.0/nghttp2-1.5.0.tar.gz
-$ tar zxvf nghttp2-1.5.0.tar.gz
-$ cd nghttp2-1.5.0
-$ OPENSSL_CFLAGS="-I/usr/local/ssl/include" OPENSSL_LIBS="-L/usr/local/ssl/lib -lssl -lcrypto -ldl" ./configure
-$ make
-$ sudo make install
-
-$ curl -LO http://curl.haxx.se/download/curl-7.46.0.tar.gz
-$ tar zxvf curl-7.46.0.tar.gz
-$ cd curl-7.46.0
-$ ./configure
-$ make &amp;&amp; make test
-$ sudo make install
-$ sudo ldconfig</code></pre>
-	<p>Once installed <code>curl</code> has a new <code>--http2</code> option that causes it to use HTTP/2 (if it can). The <code>-v</code> verbose option will show information about the use of HTTP/2:</p>
-	<pre class="language-bash"><code class="language-bash">$ curl -vso /dev/null --http2 https://www.cloudflare.com/
-[...]
-* Using HTTP2, server supports multi-use
-* Connection state changed (HTTP/2 confirmed)
-* TCP_NODELAY set
-* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
-* Using Stream ID: 1 (easy handle 0xc3dba0)
-[...]</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="nghttp2">nghttp2</h4>
-		<a href="https://blog.cloudflare.com/#nghttp2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you built <code>curl</code> using my instructions above you will have built and installed some tools that come with the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library. One of those is a command-line client called <code>nghttp</code>. It can be used like <code>curl</code> to download from the web using HTTP/2 but it also has a handy verbose option that shows that actual HTTP/2 frames sent and received.</p>
-	<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5XhV2QcvnnoVSUERRpyGgP/d204e9ebeaff7da0cac4ead13aa053a5/Screen-Shot-2015-12-03-at-13-24-46.png" alt="" class="kg-image" width="1265" height="1259" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="h2c">h2c</h4>
-		<a href="https://blog.cloudflare.com/#h2c" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Another curl-like command-line tool for HTTP/2 is <a href="https://github.com/fstab/h2c" target="_blank" rel="noopener noreferrer">h2c</a>. It also enables dumping of HTTP/2 frames and has a nice feature that it runs in the background and keeps connections to servers alive and has a useful 'wiretap' feature for intercepting an HTTP/2 for debugging.</p>
-	<p>If you have <a href="https://golang.org/dl" target="_blank" rel="noopener noreferrer">Go 1.5.1</a> installed then you can download it as follows:</p>
-	<pre class="language-bash"><code class="language-bash">$ export GO15VENDOREXPERIMENT=1
-$ go get github.com/fstab/h2c</code></pre>
-	<p>You start <code>h2c</code> running by doing <code>h2c start &amp;</code> which sets it running in the background. You can then communicate with a web server like this:</p>
-	<pre class="language-bash"><code class="language-bash"> $ h2c connect www.cloudflare.com
- $ h2c get /
- $ h2c disconnect</code></pre>
-	<p>And it will perform the HTTP request. To see detailed output at the HTTP/2 you start h2c with the <code>--dump</code> parameter:</p>
-	<pre class="language-bash"><code class="language-bash"> $ h2c start --dump</code></pre>
-	<p>You will then get detailed output dumped by that process, in color, of the HTTP/2 frames being used.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QvyA73OaYNPT3ZJSOHay/ca5212fabad813467a33235b4653affd/Screen-Shot-2015-12-03-at-13-11-19.png" alt="" class="kg-image" width="811" height="1151" loading="lazy">
-
-	</figure>
-	<p>Details of the wiretap feature are in [this blog post](<a href="http://unrestful.io/2015/08/28/wiretap.html" target="_blank" rel="noopener noreferrer">http://unrestful.io/2015/08/28/wiretap.html</a>).</p>
-	<div class="flex anchor relative">
-		<h4 id="openssl-s_client">openssl s_client</h4>
-		<a href="https://blog.cloudflare.com/#openssl-s_client" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you just want to find out what protocols a web site supports OpenSSL's <code>s_client</code> can be used. If you specify an empty <code>-nextprotoneg</code> option OpenSSL sends an empty TLS option asking for negotiation of the next protocol and the server responds with a complete list of protocols it supports.</p>
-	<pre class="language-bash"><code class="language-bash">$ openssl s_client -connect www.cloudflare.com:443 -nextprotoneg ''
-CONNECTED(00000003)
-Protocols advertised by server: h2, spdy/3.1, http/1.1</code></pre>
-	<p>There you can see that <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> support HTTP/2 (the h2), SPDY/3.1 and HTTP/1.1.</p>
-	<div class="flex anchor relative">
-		<h4 id="h2i">h2i</h4>
-		<a href="https://blog.cloudflare.com/#h2i" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you want to do low level HTTP/2 debugging there's an interactive client call <a href="https://github.com/golang/net/tree/master/http2/h2i" target="_blank" rel="noopener noreferrer">h2i</a>. Once again it requires that you have Go installed. To get it, run</p>
-	<pre class="language-bash"><code class="language-bash">$ go get github.com/golang/net/http2/h2i</code></pre>
-	<p>You can then use <code>h2i</code> to connect to a site that uses HTTP/2 and send it individual HTTP/2 frames. For example, here's the start of session connecting to <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> and requesting the home page using the <code>headers</code> command which allows you to type in a standard HTTP/1.1 request.</p>
-	<pre class="language-bash"><code class="language-bash">$ h2i www.cloudflare.com
-Connecting to www.cloudflare.com:443 ...
-Connected to 198.41.214.163:443
-Negotiated protocol "h2"
-[FrameHeader SETTINGS len=18]
- [MAX_CONCURRENT_STREAMS = 128]
- [INITIAL_WINDOW_SIZE = 2147483647]
- [MAX_FRAME_SIZE = 16777215]
-[FrameHeader WINDOW_UPDATE len=4]
-  Window-Increment = 2147418112
-
-h2i&gt; headers
- (as HTTP/1.1)&gt; GET / HTTP/1.1
- (as HTTP/1.1)&gt; Host: www.cloudflare.com
- (as HTTP/1.1)&gt;
-  Opening Stream-ID 1:
-  :authority = www.cloudflare.com
-  :method = GET
-  :path = /
-  :scheme = https
- [FrameHeader HEADERS flags=END_HEADERS stream=1 len=819]
-   :status = "200"
-   server = "cloudflare-nginx"
-   date = "Fri, 04 Dec 2015 10:36:15 GMT"
-   content-type = "text/html"
-   last-modified = "Thu, 03 Dec 2015 22:27:41 G MT" 
-   strict-transport-security = "max-age=31536000"
-   x-content-type-options = "nosniff"
-   x-frame-options = "SAMEORIGIN"
-   cf-cache-status = "HIT"
-   expires = "Fri, 04 Dec 2015 14:36:15 GMT"
-   cache-control = "public, max-age=14400"
- [FrameHeader DATA stream=1 len=7261]
-   "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;!</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="load-testing">Load Testing</h3>
-		<a href="https://blog.cloudflare.com/#load-testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library also includes a load testing tool called <a href="https://nghttp2.org/documentation/h2load.1.html" target="_blank" rel="noopener noreferrer">h2load</a> which can be used a little like <a href="https://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank" rel="noopener noreferrer">ab</a>. There's a useful <a href="https://nghttp2.org/documentation/h2load-howto.html" target="_blank" rel="noopener noreferrer">HOWTO</a> on using the tool.</p>
-	<p>I ran it against the CloudFlare test server like this:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hWDbuK231mcZwO1JOKtvo/b012e7a9e6863bd360992858f0e24b8d/Screen-Shot-2015-12-03-at-16-02-50.png" alt="" class="kg-image" width="1778" height="940" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="conformance">Conformance</h3>
-		<a href="https://blog.cloudflare.com/#conformance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you are testing an HTTP/2 implementation there's a useful tool called h2spec which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl" target="_blank" rel="noopener noreferrer">Go 1.5.1</a> and then do</p>
-	<pre class="language-bash"><code class="language-bash">$ go get github.com/summerwind/h2spec/cmd/h2spec</code></pre>
-	<p>I only recommend it for testing locally running HTTP/2 servers. If you built <code>nghttp2</code> above while building <code>curl</code> you will also have the <code>nghttpd</code> HTTP/2 server available. You can run <code>h2spec</code> against it like this:</p>
-	<pre class="language-bash"><code class="language-bash">$ nghttpd --no-tls -D -d /tmp 8888
-$ h2spec -p 8888</code></pre>
-	<p><code>h2spec</code> will run a battery of tests against the server and output conformance information with a reference to the relevant part of <a href="https://tools.ietf.org/html/rfc7540" target="_blank" rel="noopener noreferrer">RFC7540</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fHO4ABgKvK4LFEnRKf3sT/5613c3aafbdefdeae8584f09d476b9ae/Screen-Shot-2015-12-03-at-14-49-07.png" alt="" class="kg-image" width="1667" height="1269" loading="lazy">
-
-	</figure>
-	<p>If you need to test a number of web sites to see which support HTTP/2 there's a tool called <a href="https://github.com/jgrahamc/h2scan" target="_blank" rel="noopener noreferrer">h2scan</a>. Feed it a list of web sites and it will check to see if they support HTTPS, SPDY/3.1 and HTTP/2.</p>
-	<pre class="language-bash"><code class="language-bash">$ cat examples
-www.cloudflare.com
-www.amazon.com
-www.yahoo.com
-$ h2scan --fields &lt; examples
-name,resolves,port443Open,tlsWorks,httpsWorks,cloudflare,spdyAnnounced,http2Announced,spdyWorks,http2Works,npn
-www.cloudflare.com,t,t,t,t,t,t,t,t,t,h2 spdy/3.1 http/1.1
-www.amazon.com,t,t,t,t,f,f,f,-,-,http/1.1
-www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1 spdy/3 http/1.1 http/1.0</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="useful-libraries">Useful Libraries</h3>
-		<a href="https://blog.cloudflare.com/#useful-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you are working in C and need to add HTTP/2 support to a program there's the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library that is full implementation of HTTP/2 with a simple interface. Their <a href="https://nghttp2.org/documentation/tutorial-client.html#libevent-client-c" target="_blank" rel="noopener noreferrer">HTTP/2 client tutorial</a> explains how to use the library to add HTTP/2 client capabilities. nghttp2 can also be used for <a href="https://nghttp2.org/documentation/tutorial-server.html#libevent-server-c" target="_blank" rel="noopener noreferrer">servers</a>.</p>
-	<p>Go programmers will find full HTTP/2 support will arrive with Go 1.6. If you can't wait until then there's an extension package for HTTP/2 <a href="https://godoc.org/golang.org/x/net/http2" target="_blank" rel="noopener noreferrer">golang.org/x/net/http2</a> . Details <a href="https://http2.golang.org" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<p>There's a pure Ruby implementation of HTTP/2 available from <a href="https://github.com/igrigorik/http-2" target="_blank" rel="noopener noreferrer">Ilya Grigorik</a>.</p>
-	<p>Haskell programmers can use the <a href="https://hackage.haskell.org/package/http2" target="_blank" rel="noopener noreferrer">http2</a> hackage.</p>
-	<div class="flex anchor relative">
-		<h3 id="packet-snooping">Packet Snooping</h3>
-		<a href="https://blog.cloudflare.com/#packet-snooping" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The popular Wireshark packet analyzer added decoding on HTTP/2 in version <a href="https://www.wireshark.org/docs/relnotes/wireshark-1.12.0.html#_new_protocol_support" target="_blank" rel="noopener noreferrer">1.12.0</a> and fully decodes HTTP/2 frames. Unfortunately most HTTP/2 is sent over TLS which means that, by default, Wireshark will not be able to decrypt the packets to be able to get to the HTTP/2 for decoding.</p>
-	<p>Fortunately, there is a workaround if you are using Google Chrome for testing. It is possible to get Chrome to save the symmetric cryptographic key used for TLS connections to a file and Wireshark is able to read that file to decode TLS connections.</p>
-	<p>This is done by setting the <code>SSLKEYLOGFILE</code> environment variable before running Chrome. I'm running on Mac OS X and use Google Chrome Canary for testing so I run:</p>
-	<pre class="language-bash"><code class="language-bash">% export SSLKEYLOGFILE=`pwd`/sslkey.log
-% /Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary</code></pre>
-	<p>Google Chrome will then write session keys to that file. In Wireshark I configure it to read the file by going to Preferences, expanding the Protocols list.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3VtO5XasCO2zeTqVfoTSPw/bc93d70e94487845510f5a8bbb4a0b06/Screen-Shot-2015-12-03-at-15-48-59.png" alt="" class="kg-image" width="1766" height="1218" loading="lazy">
-
-	</figure>
-	<p>Then I find SSL and set the Pre-Main-Secret log filename to point to the same file.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1MluGb7E88xSg352ummOYT/7bd9b00a4580287fe629502873e5c81e/Screen-Shot-2015-12-03-at-15-49-44.png" alt="" class="kg-image" width="1766" height="1218" loading="lazy">
-
-	</figure>
-	<p>Then Wireshark can decode the TLS connections made by that browser. Here's the beginning of a connection between Google Chrome Canary and the experimental server <a href="https://http2.cloudflare.com" target="_blank" rel="noopener noreferrer">https://http2.cloudflare.com/</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g7dIhFoqbTfoj24iX4Yu/535556886753cc531e686595f96004c4/Screen-Shot-2015-12-03-at-15-51-04.png" alt="" class="kg-image" width="2956" height="1814" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="chrome-developer-view">Chrome Developer View</h3>
-		<a href="https://blog.cloudflare.com/#chrome-developer-view" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, if you are looking at the performance of your own web site it can be handy to understand which parts of the page were downloaded using HTTP/2 and which were not. You can do that pretty easily using the Developer view in Google Chrome. Here's a shot of the CloudFlare blog loaded in Chrome. There's an additional Protocol fields available on the pop-up menu.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3KIWDKeDrHOsJYLQxKDFcT/f28684e2e951ad03a2d3db3db5075ee6/Screen-Shot-2015-12-04-at-10-46-21.png" alt="" class="kg-image" width="2682" height="1511" loading="lazy">
-
-	</figure>
-	<p>Once added you can sort by protocol to see which parts were HTTP/2 (the h2) and which were other protocols.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4yftvuhcm97tnJvQJou28Z/53e7051e0112f8c01ac7edb1d6d0d96d/Screen-Shot-2015-12-04-at-10-46-29.png" alt="" class="kg-image" width="2681" height="1512" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="learning-about-http-2">Learning about HTTP/2</h3>
-		<a href="https://blog.cloudflare.com/#learning-about-http-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ol>
-		<li>
-			<p>Short <a href="https://www.cloudflare.com/http2/what-is-http2" target="_blank" rel="noopener noreferrer">introduction to HTTP/2</a> from CloudFlare.</p>
-		</li>
-		<li>
-			<p><a href="http://daniel.haxx.se/http2" target="_blank" rel="noopener noreferrer">http2 explained</a> from the creator of <code>curl</code>.</p>
-		</li>
-		<li>
-			<p>The <a href="http://http2.github.io" target="_blank" rel="noopener noreferrer">home page</a> of the HTTP/2 working group with lots of information plus a list of useful <a href="https://github.com/http2/http2-spec/wiki/Tools" target="_blank" rel="noopener noreferrer">tools</a>.</p>
-		</li>
-	</ol>
+<p>With CloudFlare's release of HTTP/2 for all our customers the web suddenly has a lot of HTTP/2 connections. To get the most out of HTTP/2 you'll want to be using an up to date web browser (all the major browsers support HTTP/2).</p>
+<p>But there are some non-browser tools that come in handy when working with HTTP/2. This blog post starts with a useful browser add-on, and then delves into command-line tools, load testing, conformance verification, development libraries and packet decoding for HTTP/2.</p>
+<p>If you know of something that I've missed please write a comment.</p>
+<h3>Browser Indicators</h3>
+<p>For Google Chrome there's a handy <a href="https://chrome.google.com/webstore/detail/http2-and-spdy-indicator/mpbpobfflnpcgagjijhmgnchggcjblin?hl=en" target="_blank" rel="noopener noreferrer">HTTP/2 and SPDY Indicator</a> extension that adds a colored lightning bolt to the browser bar showing the protocol being used when a web page is viewed.</p>
+<p>The blue lightning bolt shown here indicates that the CloudFlare home page was served using HTTP/2:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="144" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=715&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=640&amp;h=129&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=715&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=750&amp;h=151&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=828&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=1080&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=1280&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=1430&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - J67imn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q31C08X20J27Q1FQX63W.png&amp;w=1590&amp;h=321&amp;f=webp" data-lightbox-width="1590" data-lightbox-height="321" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="144" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>A green lightning bolt indicates the site was served using SPDY and gives the SPDY version number. In this case SPDY/3.1:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="158" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=715&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=640&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=715&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=750&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=828&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=1080&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=1280&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=1430&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - AJxDng" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PJ78GYMGQP46QDVGF2Y3.png&amp;w=1604&amp;h=355&amp;f=webp" data-lightbox-width="1604" data-lightbox-height="355" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="158" class="pt-portable-image-media"></div>
+</figure>
+<p>A grey lightning bolt indicates that neither HTTP/2 no SPDY were used. Here the web page was served using HTTP/1.1.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="160" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=715&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=640&amp;h=143&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=715&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=750&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=828&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=1080&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=1280&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=1430&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - asLaIl" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Q7ZR6ED1YA0YBC9S0NFY.png&amp;w=1618&amp;h=363&amp;f=webp" data-lightbox-width="1618" data-lightbox-height="363" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="160" class="pt-portable-image-media"></div>
+</figure>
+<p>There's a similar extension for <a href="https://addons.mozilla.org/en-GB/firefox/addon/spdy-indicator" target="_blank" rel="noopener noreferrer">Firefox</a>.</p>
+<h4>Online testing</h4>
+<p>There's also a handy <a href="https://tools.keycdn.com/http2-test" target="_blank" rel="noopener noreferrer">online tool</a> to check any individual web site.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="242" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=715&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=640&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=715&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=750&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=828&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=1080&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=1280&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=1430&amp;h=484&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - Rq9hwn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW495TWN04AGPB992Z73QRZN.png&amp;w=1746&amp;h=592&amp;f=webp" data-lightbox-width="1746" data-lightbox-height="592" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="242" class="pt-portable-image-media"></div>
+</figure>
+<h4>Claire</h4>
+<p>CloudFlare also has a Google Chrome extension called <a href="https://chrome.google.com/webstore/detail/claire/fgbpcgddpmjmamlibbaobboigaijnmkl" target="_blank" rel="noopener noreferrer">Claire</a> that gives information about how a web page was loaded. For example here's the information that Claire shows for a site using CloudFlare that uses <a href="https://www.cloudflare.com/ipv6" target="_blank" rel="noopener noreferrer">IPv6</a>, <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a>, and HTTP/2.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="760" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=715&amp;h=760&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=640&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=715&amp;h=760&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=750&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=828&amp;h=880&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=1080&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=1280&amp;h=1361&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=1430&amp;h=1520&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - omlOa9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T8KFNRDA913P19C6PA4Z.png&amp;w=717&amp;h=762&amp;f=webp" data-lightbox-width="717" data-lightbox-height="762" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="760" class="pt-portable-image-media"></div>
+</figure>
+<h3>Command-line Tools</h3>
+<p>There's a handy command-line tool called <a href="https://github.com/stefanjudis/is-http2-cli" target="_blank" rel="noopener noreferrer">is-http</a> which is installed using npm as follows:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> is-http2-cli</span></span></code></pre>
 </div>
+<p>Once installed you can check the HTTP/2 status of a web on the command-line:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> is-http2</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">✓</span><span class="sk-032f62-99ffe4"> HTTP/2</span><span class="sk-032f62-99ffe4"> supported</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Supported</span><span class="sk-032f62-99ffe4"> protocols:</span><span class="sk-032f62-99ffe4"> h2</span><span class="sk-032f62-99ffe4"> spdy/3.1</span><span class="sk-032f62-99ffe4"> http/1.1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> is-http2</span><span class="sk-032f62-99ffe4"> www.amazon.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">×</span><span class="sk-032f62-99ffe4"> HTTP/2</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> supported</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> www.amazon.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Supported</span><span class="sk-032f62-99ffe4"> protocols:</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre>
+</div>
+<p>The <code>is-http</code> tool is also useful because it gives you a list of the protocols advertised by the server. As you can see <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> supports HTTP/2, HTTP/1.1 and SPDY/3.1.</p>
+<h4>curl</h4>
+<p>In version 7.43.0 the venerable <code>curl</code> tool got HTTP/2 support when it's linked with the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp</a> library. To build <code>curl</code> from sources you'll need OpenSSL, zlib, nghttp2 and libev. I used the following sequence of commands.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -LO</span><span class="sk-032f62-99ffe4"> http://dist.schmorp.de/libev/libev-4.20.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> zvxf</span><span class="sk-032f62-99ffe4"> libev-4.20.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> libev-4.20</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./configure</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> install</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -LO</span><span class="sk-032f62-99ffe4"> https://www.openssl.org/source/openssl-1.0.2d.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> zxvf</span><span class="sk-032f62-99ffe4"> openssl-1.0.2d.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> openssl-1.0.2d</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./config</span><span class="sk-032f62-99ffe4"> shared</span><span class="sk-032f62-99ffe4"> zlib-dynamic</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">make</span><span class="sk-032f62-99ffe4"> test</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> install</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -LO</span><span class="sk-032f62-99ffe4"> http://zlib.net/zlib-1.2.8.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> zxvf</span><span class="sk-032f62-99ffe4"> zlib-1.2.8.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> zlib-1.2.8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./configure</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">make</span><span class="sk-032f62-99ffe4"> test</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> install</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -LO</span><span class="sk-032f62-99ffe4"> https://github.com/tatsuhiro-t/nghttp2/releases/download/v1.5.0/nghttp2-1.5.0.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> zxvf</span><span class="sk-032f62-99ffe4"> nghttp2-1.5.0.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> nghttp2-1.5.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> OPENSSL_CFLAGS="-I/usr/local/ssl/include"</span><span class="sk-032f62-99ffe4"> OPENSSL_LIBS="-L/usr/local/ssl/lib -lssl -lcrypto -ldl"</span><span class="sk-032f62-99ffe4"> ./configure</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> install</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -LO</span><span class="sk-032f62-99ffe4"> http://curl.haxx.se/download/curl-7.46.0.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> zxvf</span><span class="sk-032f62-99ffe4"> curl-7.46.0.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> curl-7.46.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./configure</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">make</span><span class="sk-032f62-99ffe4"> test</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-032f62-99ffe4"> install</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ldconfig</span></span></code></pre>
+</div>
+<p>Once installed <code>curl</code> has a new <code>--http2</code> option that causes it to use HTTP/2 (if it can). The <code>-v</code> verbose option will show information about the use of HTTP/2:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -vso</span><span class="sk-032f62-99ffe4"> /dev/null</span><span class="sk-005cc5-99ffe4"> --http2</span><span class="sk-032f62-99ffe4"> https://www.cloudflare.com/</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Using HTTP2, server supports multi-use</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Connection state changed (</span><span class="sk-6f42c1-ffc799">HTTP/2</span><span class="sk-032f62-99ffe4"> confirmed</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> TCP_NODELAY set</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Using Stream ID: 1 (</span><span class="sk-6f42c1-ffc799">easy</span><span class="sk-032f62-99ffe4"> handle</span><span class="sk-005cc5-ffc799"> 0xc3dba0</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+</div>
+<h4>nghttp2</h4>
+<p>If you built <code>curl</code> using my instructions above you will have built and installed some tools that come with the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library. One of those is a command-line client called <code>nghttp</code>. It can be used like <code>curl</code> to download from the web using HTTP/2 but it also has a handy verbose option that shows that actual HTTP/2 frames sent and received.</p>
+<p>By running it with <code>-nv</code> you get HTTP/2 and throw away the actual downloaded page. Here's its output when downloading <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> using HTTP/2. On a terminal with color support it uses coloring to highlight different parts of the log.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="712" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=715&amp;h=712&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=640&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=715&amp;h=712&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=750&amp;h=747&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=828&amp;h=825&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=1080&amp;h=1075&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=1280&amp;h=1275&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=1430&amp;h=1424&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - QEZTmf" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H6ZM7DHVK89YH06113E5.png&amp;w=1265&amp;h=1259&amp;f=webp" data-lightbox-width="1265" data-lightbox-height="1259" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="712" class="pt-portable-image-media"></div>
+</figure>
+<h4>h2c</h4>
+<p>Another curl-like command-line tool for HTTP/2 is <a href="https://github.com/fstab/h2c" target="_blank" rel="noopener noreferrer">h2c</a>. It also enables dumping of HTTP/2 frames and has a nice feature that it runs in the background and keeps connections to servers alive and has a useful 'wiretap' feature for intercepting an HTTP/2 for debugging.</p>
+<p>If you have <a href="https://golang.org/dl" target="_blank" rel="noopener noreferrer">Go 1.5.1</a> installed then you can download it as follows:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> GO15VENDOREXPERIMENT=</span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/fstab/h2c</span></span></code></pre>
+</div>
+<p>You start <code>h2c</code> running by doing <code>h2c start &amp;</code> which sets it running in the background. You can then communicate with a web server like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> /</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> disconnect</span></span></code></pre>
+</div>
+<p>And it will perform the HTTP request. To see detailed output at the HTTP/2 you start h2c with the <code>--dump</code> parameter:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> $</span><span class="sk-032f62-99ffe4"> h2c</span><span class="sk-032f62-99ffe4"> start</span><span class="sk-005cc5-99ffe4"> --dump</span></span></code></pre>
+</div>
+<p>You will then get detailed output dumped by that process, in color, of the HTTP/2 frames being used.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1015" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=715&amp;h=1015&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=640&amp;h=909&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=715&amp;h=1015&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=750&amp;h=1065&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=828&amp;h=1175&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=1080&amp;h=1533&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=1280&amp;h=1817&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=1430&amp;h=2030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - vY3F67" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ETXJ8AXCD5D5R7XY360V.png&amp;w=811&amp;h=1151&amp;f=webp" data-lightbox-width="811" data-lightbox-height="1151" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1015" class="pt-portable-image-media"></div>
+</figure>
+<p>Details of the wiretap feature are in [this blog post](<a href="http://unrestful.io/2015/08/28/wiretap.html" target="_blank" rel="noopener noreferrer">http://unrestful.io/2015/08/28/wiretap.html</a>).</p>
+<h4>openssl s_client</h4>
+<p>If you just want to find out what protocols a web site supports OpenSSL's <code>s_client</code> can be used. If you specify an empty <code>-nextprotoneg</code> option OpenSSL sends an empty TLS option asking for negotiation of the next protocol and the server responds with a complete list of protocols it supports.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> s_client</span><span class="sk-005cc5-99ffe4"> -connect</span><span class="sk-032f62-99ffe4"> www.cloudflare.com:443</span><span class="sk-005cc5-99ffe4"> -nextprotoneg</span><span class="sk-032f62-99ffe4"> ''</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CONNECTED(00000003</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Protocols</span><span class="sk-032f62-99ffe4"> advertised</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> server:</span><span class="sk-032f62-99ffe4"> h2,</span><span class="sk-032f62-99ffe4"> spdy/3.1,</span><span class="sk-032f62-99ffe4"> http/1.1</span></span></code></pre>
+</div>
+<p>There you can see that <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> support HTTP/2 (the h2), SPDY/3.1 and HTTP/1.1.</p>
+<h4>h2i</h4>
+<p>If you want to do low level HTTP/2 debugging there's an interactive client call <a href="https://github.com/golang/net/tree/master/http2/h2i" target="_blank" rel="noopener noreferrer">h2i</a>. Once again it requires that you have Go installed. To get it, run</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/golang/net/http2/h2i</span></span></code></pre>
+</div>
+<p>You can then use <code>h2i</code> to connect to a site that uses HTTP/2 and send it individual HTTP/2 frames. For example, here's the start of session connecting to <a href="http://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> and requesting the home page using the <code>headers</code> command which allows you to type in a standard HTTP/1.1 request.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> h2i</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Connecting</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> www.cloudflare.com:443</span><span class="sk-032f62-99ffe4"> ...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Connected</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> 198.41.214.163:443</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Negotiated</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-032f62-99ffe4"> "h2"</span></span>
+<span class="line"><span class="sk-24292e-fff">[FrameHeader SETTINGS len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">18]</span></span>
+<span class="line"><span class="sk-24292e-fff"> [MAX_CONCURRENT_STREAMS </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> 128]</span></span>
+<span class="line"><span class="sk-24292e-fff"> [INITIAL_WINDOW_SIZE </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> 2147483647]</span></span>
+<span class="line"><span class="sk-24292e-fff"> [MAX_FRAME_SIZE </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> 16777215]</span></span>
+<span class="line"><span class="sk-24292e-fff">[FrameHeader WINDOW_UPDATE len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">4]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Window-Increment</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 2147418112</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">h2i</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">headers</span></span>
+<span class="line"><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">as</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-6f42c1-ffc799"> GET</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
+<span class="line"><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">as</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-6f42c1-ffc799"> Host:</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
+<span class="line"><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">as</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Opening</span><span class="sk-032f62-99ffe4"> Stream-ID</span><span class="sk-032f62-99ffe4"> 1:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  :authority</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> www.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  :method</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> GET</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  :path</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> /</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  :scheme</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> https</span></span>
+<span class="line"><span class="sk-24292e-fff"> [FrameHeader HEADERS flags</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">END_HEADERS stream</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">819]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   :status</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "200"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   server</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "cloudflare-nginx"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   date</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Fri, 04 Dec 2015 10:36:15 GMT"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   content-type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "text/html"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   last-modified</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Thu, 03 Dec 2015 22:27:41 G MT"</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   strict-transport-security</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "max-age=31536000"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   x-content-type-options</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "nosniff"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   x-frame-options</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "SAMEORIGIN"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   cf-cache-status</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "HIT"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   expires</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Fri, 04 Dec 2015 14:36:15 GMT"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   cache-control</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "public, max-age=14400"</span></span>
+<span class="line"><span class="sk-24292e-fff"> [FrameHeader DATA stream</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> len</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">7261]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n&lt;!</span></span></code></pre>
+</div>
+<h3>Load Testing</h3>
+<p>The <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library also includes a load testing tool called <a href="https://nghttp2.org/documentation/h2load.1.html" target="_blank" rel="noopener noreferrer">h2load</a> which can be used a little like <a href="https://httpd.apache.org/docs/2.2/programs/ab.html" target="_blank" rel="noopener noreferrer">ab</a>. There's a useful <a href="https://nghttp2.org/documentation/h2load-howto.html" target="_blank" rel="noopener noreferrer">HOWTO</a> on using the tool.</p>
+<p>I ran it against the CloudFlare test server like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="378" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=715&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=640&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=715&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=750&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=828&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=1080&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=1280&amp;h=677&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=1430&amp;h=756&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - c1gqnd" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FZQXASJV2YTCB9MMQZ8T.png&amp;w=1778&amp;h=940&amp;f=webp" data-lightbox-width="1778" data-lightbox-height="940" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="378" class="pt-portable-image-media"></div>
+</figure>
+<h3>Conformance</h3>
+<p>If you are testing an HTTP/2 implementation there's a useful tool called h2spec which runs through a conformance test against a real HTTP/2 server. To use it first install <a href="https://golang.org/dl" target="_blank" rel="noopener noreferrer">Go 1.5.1</a> and then do</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/summerwind/h2spec/cmd/h2spec</span></span></code></pre>
+</div>
+<p>I only recommend it for testing locally running HTTP/2 servers. If you built <code>nghttp2</code> above while building <code>curl</code> you will also have the <code>nghttpd</code> HTTP/2 server available. You can run <code>h2spec</code> against it like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nghttpd</span><span class="sk-005cc5-99ffe4"> --no-tls</span><span class="sk-005cc5-99ffe4"> -D</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> /tmp</span><span class="sk-005cc5-ffc799"> 8888</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> h2spec</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 8888</span></span></code></pre>
+</div>
+<p><code>h2spec</code> will run a battery of tests against the server and output conformance information with a reference to the relevant part of <a href="https://tools.ietf.org/html/rfc7540" target="_blank" rel="noopener noreferrer">RFC7540</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="544" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=715&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=640&amp;h=487&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=715&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=750&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=828&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=1080&amp;h=822&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=1280&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=1430&amp;h=1088&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - ZeONxv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCFXGN1CNH39W680JM1N.png&amp;w=1667&amp;h=1269&amp;f=webp" data-lightbox-width="1667" data-lightbox-height="1269" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="544" class="pt-portable-image-media"></div>
+</figure>
+<p>If you need to test a number of web sites to see which support HTTP/2 there's a tool called <a href="https://github.com/jgrahamc/h2scan" target="_blank" rel="noopener noreferrer">h2scan</a>. Feed it a list of web sites and it will check to see if they support HTTPS, SPDY/3.1 and HTTP/2.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> examples</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">www.cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">www.amazon.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">www.yahoo.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> h2scan</span><span class="sk-005cc5-99ffe4"> --fields</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> examples</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">name,resolves,port443Open,tlsWorks,httpsWorks,cloudflare,spdyAnnounced,http2Announced,spdyWorks,http2Works,npn</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">www.cloudflare.com,t,t,t,t,t,t,t,t,t,h2</span><span class="sk-032f62-99ffe4"> spdy/3.1</span><span class="sk-032f62-99ffe4"> http/1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">www.amazon.com,t,t,t,t,f,f,f,-,-,http/1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">www.yahoo.com,t,t,t,t,f,t,f,t,-,spdy/3.1</span><span class="sk-032f62-99ffe4"> spdy/3</span><span class="sk-032f62-99ffe4"> http/1.1</span><span class="sk-032f62-99ffe4"> http/1.0</span></span></code></pre>
+</div>
+<h3>Useful Libraries</h3>
+<p>If you are working in C and need to add HTTP/2 support to a program there's the <a href="https://nghttp2.org" target="_blank" rel="noopener noreferrer">nghttp2</a> library that is full implementation of HTTP/2 with a simple interface. Their <a href="https://nghttp2.org/documentation/tutorial-client.html#libevent-client-c" target="_blank" rel="noopener noreferrer">HTTP/2 client tutorial</a> explains how to use the library to add HTTP/2 client capabilities. nghttp2 can also be used for <a href="https://nghttp2.org/documentation/tutorial-server.html#libevent-server-c" target="_blank" rel="noopener noreferrer">servers</a>.</p>
+<p>Go programmers will find full HTTP/2 support will arrive with Go 1.6. If you can't wait until then there's an extension package for HTTP/2 <a href="https://godoc.org/golang.org/x/net/http2" target="_blank" rel="noopener noreferrer">golang.org/x/net/http2</a> . Details <a href="https://http2.golang.org" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>There's a pure Ruby implementation of HTTP/2 available from <a href="https://github.com/igrigorik/http-2" target="_blank" rel="noopener noreferrer">Ilya Grigorik</a>.</p>
+<p>Haskell programmers can use the <a href="https://hackage.haskell.org/package/http2" target="_blank" rel="noopener noreferrer">http2</a> hackage.</p>
+<h3>Packet Snooping</h3>
+<p>The popular Wireshark packet analyzer added decoding on HTTP/2 in version <a href="https://www.wireshark.org/docs/relnotes/wireshark-1.12.0.html#_new_protocol_support" target="_blank" rel="noopener noreferrer">1.12.0</a> and fully decodes HTTP/2 frames. Unfortunately most HTTP/2 is sent over TLS which means that, by default, Wireshark will not be able to decrypt the packets to be able to get to the HTTP/2 for decoding.</p>
+<p>Fortunately, there is a workaround if you are using Google Chrome for testing. It is possible to get Chrome to save the symmetric cryptographic key used for TLS connections to a file and Wireshark is able to read that file to decode TLS connections.</p>
+<p>This is done by setting the <code>SSLKEYLOGFILE</code> environment variable before running Chrome. I'm running on Mac OS X and use Google Chrome Canary for testing so I run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> SSLKEYLOGFILE=`</span><span class="sk-005cc5-ffc799">pwd</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">/sslkey.log</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> /Applications/Google</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Chrome</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Canary.app/Contents/MacOS/Google</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Chrome</span><span class="sk-005cc5-a0a0a0">\ </span><span class="sk-032f62-99ffe4">Canary</span></span></code></pre>
+</div>
+<p>Google Chrome will then write session keys to that file. In Wireshark I configure it to read the file by going to Preferences, expanding the Protocols list.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="493" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=640&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=750&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=828&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=1080&amp;h=745&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=1280&amp;h=883&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=1430&amp;h=986&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - MUCVK6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462SK2CMW9TVWJD945R71M.png&amp;w=1766&amp;h=1218&amp;f=webp" data-lightbox-width="1766" data-lightbox-height="1218" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="493" class="pt-portable-image-media"></div>
+</figure>
+<p>Then I find SSL and set the Pre-Main-Secret log filename to point to the same file.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="493" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=640&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=750&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=828&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=1080&amp;h=745&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=1280&amp;h=883&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=1430&amp;h=986&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - PvFxbW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G4NKDG0NH3PXQJTQ0T6X.png&amp;w=1766&amp;h=1218&amp;f=webp" data-lightbox-width="1766" data-lightbox-height="1218" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="493" class="pt-portable-image-media"></div>
+</figure>
+<p>Then Wireshark can decode the TLS connections made by that browser. Here's the beginning of a connection between Google Chrome Canary and the experimental server <a href="https://http2.cloudflare.com" target="_blank" rel="noopener noreferrer">https://http2.cloudflare.com/</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="439" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=640&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=750&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=828&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=1080&amp;h=663&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=1280&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=1430&amp;h=878&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - Is9LJ9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466MPJS3809F4WF4ZZR4FB.png&amp;w=1920&amp;h=1178&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1178" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="439" class="pt-portable-image-media"></div>
+</figure>
+<h3>Chrome Developer View</h3>
+<p>Finally, if you are looking at the performance of your own web site it can be handy to understand which parts of the page were downloaded using HTTP/2 and which were not. You can do that pretty easily using the Developer view in Google Chrome. Here's a shot of the CloudFlare blog loaded in Chrome. There's an additional Protocol fields available on the pop-up menu.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - 5q9PfL" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45YBVHQT91HVYYPKX2W30G.png&amp;w=1920&amp;h=1082&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1082" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<p>Once added you can sort by protocol to see which parts were HTTP/2 (the h2) and which were other protocols.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tools for debugging, testing and using HTTP/2 Embedded Image - 4gBvpJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4748SZ8X5XAJ6E6ND85MM7.png&amp;w=1920&amp;h=1083&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1083" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<h3>Learning about HTTP/2</h3>
+<ol>
+	<li>Short <a href="https://www.cloudflare.com/http2/what-is-http2" target="_blank" rel="noopener noreferrer">introduction to HTTP/2</a> from CloudFlare.</li>
+	<li><a href="http://daniel.haxx.se/http2" target="_blank" rel="noopener noreferrer">http2 explained</a> from the creator of <code>curl</code>.</li>
+	<li>The <a href="http://http2.github.io" target="_blank" rel="noopener noreferrer">home page</a> of the HTTP/2 working group with lots of information plus a list of useful <a href="https://github.com/http2/http2-spec/wiki/Tools" target="_blank" rel="noopener noreferrer">tools</a>.</li>
+</ol>

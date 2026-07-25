@@ -1,341 +1,298 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69nNlP5KONrdn9Agy4zcYS/bd633c2b1c06ee898782fcb192cb82b6/unit-testing-workers-in-cloudflare-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="https://blog.cloudflare.com/unit-testing-worker-functions">See Unit Testing Worker Functions.</a></p>
-	<p>Even though Cloudflare Workers deploy globally within seconds, software developers often choose to use local mock environments to have the fastest possible feedback loop while developing on their local machines. CloudWorker is perfect for this use case but as it is still a mock environment it does not guarantee an identical runtime or environment with all Cloudflare Worker APIs and features. This gap can make developers uneasy as they do not have 100% certainty that their tests will succeed in the production environment.</p>
-	<p>In this post, we're going to demonstrate how to generate a Cloudflare Worker compatible test harness which can execute mocha unit tests directly in the production Cloudflare environment.</p>
-	<div class="flex anchor relative">
-		<h2 id="directory-setup">Directory Setup</h2>
-		<a href="https://blog.cloudflare.com/#directory-setup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Create a new folder for your project, change it to your working directory and run <code>npm init</code> to initialise the <code>package.json</code> file.</p>
-	<p>Run <code>mkdir -p src &amp;&amp; mkdir -p test/lib &amp;&amp; mkdir dist</code> to create folders used by the next steps. Your folder should look like this:</p>
-	<pre class="language-bash"><code class="language-bash">.
-./dist
-./src/worker.js
-./test
-./test/lib
-./package.json</code></pre>
-	<p><code>npm install --save-dev mocha exports-loader webpack webpack-cli</code></p>
-	<p>This will install Mocha (the unit testing framework), Webpack (a tool used to package the code into a single Worker script) and Exports Loader (a tool used by Webpack to import the Worker script into the Worker based Mocha environment.</p>
-	<p><code>npm install --save-dev git+https://github.com/obezuk/mocha-loader.git</code></p>
-	<p>This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77" target="_blank" rel="noopener noreferrer">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
-	<div class="flex anchor relative">
-		<h3 id="example-script"><b>Example Script</b></h3>
-		<a href="https://blog.cloudflare.com/#example-script" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Create your Worker script in <code>./src/worker.js</code>:</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
- event.respondWith(handleRequest(event.request))
-})
-
-async function addition(a, b) {
-  return a + b
-}
-
-async function handleRequest(request) {
-  const added = await addition(1,3)
-  return new Response(`The Sum is ${added}!`)
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="add-tests">Add Tests</h3>
-		<a href="https://blog.cloudflare.com/#add-tests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Create your unit tests in <code>./test/test.test.js</code>:</p>
-	<pre class="language-javascript"><code class="language-javascript">const assert = require('assert')
-
-describe('Worker Test', function() {
-
-    it('returns a body that says The Sum is 4', async function () {
-        let url = new URL('https://worker.example.com')
-        let req = new Request(url)
-        let res = await handleRequest(req)
-        let body = await res.text()
-        assert.equal(body, 'The Sum is 4!')
-    })
-
-    it('does addition properly', async function() {
-        let res = await addition(1, 1)
-        assert.equal(res, 2)
-    })
-
-})</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="mocha-in-worker-test-harness">Mocha in Worker Test Harness</h2>
-		<a href="https://blog.cloudflare.com/#mocha-in-worker-test-harness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In order to execute mocha and unit tests within Cloudflare Workers we are going to build a Test Harness. The Test Harness script looks a lot like a normal Worker script but integrates your <code>./src/worker.js</code> and <code>./test/test.test.js</code> into a script which is capable of executing the Mocha unit tests within the Cloudflare Worker runtime.</p>
-	<p>Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p>
-	<pre class="language-javascript"><code class="language-javascript">import 'mocha';
-
-import 'mocha-loader!../test.test.js';
-
-var testResults;
-
-async function mochaRun() {
-    return new Promise(function (accept, reject) {
-        var runner = mocha.run(function () {
-            testResults = runner.testResults;
-            accept();
-        });
-    });
-}
-
-addEventListener('fetch', event =&gt; {
-    event.respondWith(handleMochaRequest(event.request))
-});
-
-async function handleMochaRequest(request) {
-
-    if (!testResults) {
-        await mochaRun();
-    }
-
-    var headers = new Headers({
-        "content-type": "application/json"
-    })
-
-    var statusCode = 200;
-
-    if (testResults.failures != 0) {
-        statusCode = 500;
-    }
-
-    return new Response(JSON.stringify(testResults), {
-        "status": statusCode,
-        "headers": headers
-    });
-
-}
-
-Object.assign(global, require('exports-loader?handleRequest,addition!../../src/worker.js'));
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="mocha-webpack-configuration">Mocha Webpack Configuration</h3>
-		<a href="https://blog.cloudflare.com/#mocha-webpack-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p>
-	<pre class="language-javascript"><code class="language-javascript">module.exports = {
-  target: 'webworker',
-  entry: "./test/lib/serviceworker-mocha-harness.js",
-  mode: "development",
-  optimization: {
-    minimize: false
-  },
-  performance: {
-    hints: false
-  },
-  node: {
-    fs: 'empty'
-  },
-  module: {
-    exprContextCritical: false
-  },
-  output: {
-    path: __dirname + "/dist",
-    publicPath: "dist",
-    filename: "worker-mocha-harness.js"
-  }
-};
-</code></pre>
-	<p>Your file structure should look like (excluding node_modules):</p>
-	<pre class="language-bash"><code class="language-bash">.
-./dist
-./src/worker.js
-./test/test.test.js
-./test/lib/serviceworker-mocha-harness.js
-./package.json
-./package-lock.json
-./webpack.mocha.config.js</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="customising-the-test-harness"><b>Customising the test harness.</b></h3>
-		<a href="https://blog.cloudflare.com/#customising-the-test-harness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p>
-	<pre class="language-javascript"><code class="language-javascript">import 'mocha-loader!/* TEST FILE NAME HERE */'</code></pre>
-	<p>If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p>
-	<pre class="language-javascript"><code class="language-javascript">Object.assign(global, require('exports-loader?/* COMMA SEPARATED FUNCTION NAMES HERE */!../../src/worker.js'));</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="running-the-test-harness">Running the test harness</h2>
-		<a href="https://blog.cloudflare.com/#running-the-test-harness" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Deploying and running the test harness is identical to deploying any other Worker script with Webpack.</p>
-	<p>Modify the scripts section of package.json to include the build-harness command.</p>
-	<pre class="language-javascript"><code class="language-javascript">"scripts": {
-  "build-harness": "webpack --config webpack.mocha.config.js -p --progress --colors"
-}</code></pre>
-	<p>In the project root directory run the command <code>npm run build-harness</code> to generate and bundle your Worker script, Mocha and your unit tests into <code>./dist/worker-mocha-harness.js</code>.</p>
-	<p>Upload this script to a test Cloudflare workers route and run <code>curl --fail https://test.example.org</code>. If the unit tests are successful it will return a <code>200</code> response, and if the unit tests fail a <code>500</code> response.</p>
-	<div class="flex anchor relative">
-		<h2 id="integrating-into-an-existing-ci-cd-pipeline">Integrating into an existing CI/CD pipeline</h2>
-		<a href="https://blog.cloudflare.com/#integrating-into-an-existing-ci-cd-pipeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can integrate Cloudflare Workers and the test harness into your existing <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipeline</a> by using our API: <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/api/</a>.</p>
-	<p>The test harness returns detailed test reports in JSON format:</p>
-	<p><b>Example Success Response</b></p>
-	<pre class="language-json"><code class="language-json">{
-  "stats": {
-    "suites": 1,
-    "tests": 2,
-    "passes": 2,
-    "pending": 0,
-    "failures": 0,
-    "start": "2019-04-23T06:24:33.492Z",
-    "end": "2019-04-23T06:24:33.590Z",
-    "duration": 98
-  },
-  "tests": [
-    {
-      "title": "returns a body that says The Sum is 4",
-      "fullTitle": "Worker Test returns a body that says The Sum is 4",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "does addition properly",
-      "fullTitle": "Worker Test does addition properly",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    }
-  ],
-  "pending": [],
-  "failures": [],
-  "passes": [
-    {
-      "title": "returns a body that says The Sum is 4",
-      "fullTitle": "Worker Test returns a body that says The Sum is 4",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    },
-    {
-      "title": "does addition properly",
-      "fullTitle": "Worker Test does addition properly",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {}
-    }
-  ]
-}
-</code></pre>
-	<p><b>Example Failure Response</b></p>
-	<pre class="language-json"><code class="language-json">{
-  "stats": {
-    "suites": 1,
-    "tests": 2,
-    "passes": 0,
-    "pending": 0,
-    "failures": 2,
-    "start": "2019-04-23T06:25:52.100Z",
-    "end": "2019-04-23T06:25:52.170Z",
-    "duration": 70
-  },
-  "tests": [
-    {
-      "title": "returns a body that says The Sum is 4",
-      "fullTitle": "Worker Test returns a body that says The Sum is 4",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {
-        "name": "AssertionError",
-        "actual": "The Sum is 5!",
-        "expected": "The Sum is 4!",
-        "operator": "==",
-        "message": "'The Sum is 5!' == 'The Sum is 4!'",
-        "generatedMessage": true,
-        "stack": "AssertionError: 'The Sum is 5!' == 'The Sum is 4!'\n    at Context.&lt;anonymous&gt; (worker.js:19152:16)"
-      }
-    },
-    {
-      "title": "does addition properly",
-      "fullTitle": "Worker Test does addition properly",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {
-        "name": "AssertionError",
-        "actual": "3",
-        "expected": "2",
-        "operator": "==",
-        "message": "3 == 2",
-        "generatedMessage": true,
-        "stack": "AssertionError: 3 == 2\n    at Context.&lt;anonymous&gt; (worker.js:19157:16)"
-      }
-    }
-  ],
-  "pending": [],
-  "failures": [
-    {
-      "title": "returns a body that says The Sum is 4",
-      "fullTitle": "Worker Test returns a body that says The Sum is 4",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {
-        "name": "AssertionError",
-        "actual": "The Sum is 5!",
-        "expected": "The Sum is 4!",
-        "operator": "==",
-        "message": "'The Sum is 5!' == 'The Sum is 4!'",
-        "generatedMessage": true,
-        "stack": "AssertionError: 'The Sum is 5!' == 'The Sum is 4!'\n    at Context.&lt;anonymous&gt; (worker.js:19152:16)"
-      }
-    },
-    {
-      "title": "does addition properly",
-      "fullTitle": "Worker Test does addition properly",
-      "duration": 0,
-      "currentRetry": 0,
-      "err": {
-        "name": "AssertionError",
-        "actual": "3",
-        "expected": "2",
-        "operator": "==",
-        "message": "3 == 2",
-        "generatedMessage": true,
-        "stack": "AssertionError: 3 == 2\n    at Context.&lt;anonymous&gt; (worker.js:19157:16)"
-      }
-    }
-  ],
-  "passes": []
-}
-</code></pre>
-	<p>This is really powerful and can allow you to execute your unit tests directly in the Cloudflare runtime, giving you more confidence before releasing your code into production. We hope this was useful and welcome any feedback.</p>
+<p>We recently wrote about unit testing Cloudflare Workers within a mock environment using CloudWorker (a Node.js based mock Cloudflare Worker environment created by Dollar Shave Club's engineering team). <a href="https://blog.cloudflare.com/unit-testing-worker-functions">See Unit Testing Worker Functions.</a></p>
+<p>Even though Cloudflare Workers deploy globally within seconds, software developers often choose to use local mock environments to have the fastest possible feedback loop while developing on their local machines. CloudWorker is perfect for this use case but as it is still a mock environment it does not guarantee an identical runtime or environment with all Cloudflare Worker APIs and features. This gap can make developers uneasy as they do not have 100% certainty that their tests will succeed in the production environment.</p>
+<p>In this post, we're going to demonstrate how to generate a Cloudflare Worker compatible test harness which can execute mocha unit tests directly in the production Cloudflare environment.</p>
+<h2>Directory Setup</h2>
+<p>Create a new folder for your project, change it to your working directory and run <code>npm init</code> to initialise the <code>package.json</code> file.</p>
+<p>Run <code>mkdir -p src &amp;&amp; mkdir -p test/lib &amp;&amp; mkdir dist</code> to create folders used by the next steps. Your folder should look like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./dist</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./src/worker.js</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./test</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./test/lib</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./package.json</span></span></code></pre>
 </div>
+<p><code>npm install --save-dev mocha exports-loader webpack webpack-cli</code></p>
+<p>This will install Mocha (the unit testing framework), Webpack (a tool used to package the code into a single Worker script) and Exports Loader (a tool used by Webpack to import the Worker script into the Worker based Mocha environment.</p>
+<p><code>npm install --save-dev git+https://github.com/obezuk/mocha-loader.git</code></p>
+<p>This will install a modified version of Webpack's mocha loader. It has been modified to support the Web Worker environment type. We are excited to see Web Worker support merged into Mocha Loader so please vote for our pull request here: <a href="https://github.com/webpack-contrib/mocha-loader/pull/77" target="_blank" rel="noopener noreferrer">https://github.com/webpack-contrib/mocha-loader/pull/77</a></p>
+<h3><strong>Example Script</strong></h3>
+<p>Create your Worker script in <code>./src/worker.js</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> addition</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> a </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> b</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> added</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> addition</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`The Sum is ${</span><span class="sk-24292e-fff">added</span><span class="sk-032f62-99ffe4">}!`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Add Tests</h3>
+<p>Create your unit tests in <code>./test/test.test.js</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> assert</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'assert'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Worker Test'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'returns a body that says The Sum is 4'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff"> () {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://worker.example.com'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> req </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(req)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">        assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(body, </span><span class="sk-032f62-99ffe4">'The Sum is 4!'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'does addition properly'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> addition</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(res, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<h2>Mocha in Worker Test Harness</h2>
+<p>In order to execute mocha and unit tests within Cloudflare Workers we are going to build a Test Harness. The Test Harness script looks a lot like a normal Worker script but integrates your <code>./src/worker.js</code> and <code>./test/test.test.js</code> into a script which is capable of executing the Mocha unit tests within the Cloudflare Worker runtime.</p>
+<p>Create the below script in <code>./test/lib/serviceworker-mocha-harness.js</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-032f62-99ffe4"> 'mocha'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-032f62-99ffe4"> 'mocha-loader!../test.test.js'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">var</span><span class="sk-24292e-fff"> testResults;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> mochaRun</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">accept</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">reject</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        var</span><span class="sk-24292e-fff"> runner </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> mocha.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> () {</span></span>
+<span class="line"><span class="sk-24292e-fff">            testResults </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> runner.testResults;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            accept</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleMochaRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleMochaRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">testResults) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-6f42c1-ffc799"> mochaRun</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> headers </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> statusCode </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (testResults.failures </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        statusCode </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 500</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(testResults), {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "status"</span><span class="sk-24292e-fff">: statusCode,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "headers"</span><span class="sk-24292e-fff">: headers</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">Object.</span><span class="sk-6f42c1-ffc799">assign</span><span class="sk-24292e-fff">(global, </span><span class="sk-6f42c1-ffc799">require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'exports-loader?handleRequest,addition!../../src/worker.js'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>Mocha Webpack Configuration</h3>
+<p>Create a new file in the project root directory called: <code>./webpack.mocha.config.js</code>. This file is used by Webpack to bundle the test harness, worker script and unit tests into a single script that can be deployed to Cloudflare.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  target: </span><span class="sk-032f62-99ffe4">'webworker'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  entry: </span><span class="sk-032f62-99ffe4">"./test/lib/serviceworker-mocha-harness.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  mode: </span><span class="sk-032f62-99ffe4">"development"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  optimization: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    minimize: </span><span class="sk-005cc5-ffc799">false</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  performance: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    hints: </span><span class="sk-005cc5-ffc799">false</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  node: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    fs: </span><span class="sk-032f62-99ffe4">'empty'</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  module: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    exprContextCritical: </span><span class="sk-005cc5-ffc799">false</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  output: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: __dirname </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/dist"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    publicPath: </span><span class="sk-032f62-99ffe4">"dist"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    filename: </span><span class="sk-032f62-99ffe4">"worker-mocha-harness.js"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Your file structure should look like (excluding node_modules):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./dist</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./src/worker.js</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./test/test.test.js</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./test/lib/serviceworker-mocha-harness.js</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./package.json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./package-lock.json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./webpack.mocha.config.js</span></span></code></pre>
+</div>
+<h3><strong>Customising the test harness.</strong></h3>
+<p>If you wish to extend the test harness to support your own test files you will need to add additional test imports to the top of the script:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-032f62-99ffe4"> 'mocha-loader!/* TEST FILE NAME HERE */'</span></span></code></pre>
+</div>
+<p>If you wish to import additional functions from your Worker script into the test harness environment you will need to add them comma separated into the last line:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">Object.</span><span class="sk-6f42c1-ffc799">assign</span><span class="sk-24292e-fff">(global, </span><span class="sk-6f42c1-ffc799">require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'exports-loader?/* COMMA SEPARATED FUNCTION NAMES HERE */!../../src/worker.js'</span><span class="sk-24292e-fff">));</span></span></code></pre>
+</div>
+<h2>Running the test harness</h2>
+<p>Deploying and running the test harness is identical to deploying any other Worker script with Webpack.</p>
+<p>Modify the scripts section of package.json to include the build-harness command.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"scripts"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "build-harness"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"webpack --config webpack.mocha.config.js -p --progress --colors"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>In the project root directory run the command <code>npm run build-harness</code> to generate and bundle your Worker script, Mocha and your unit tests into <code>./dist/worker-mocha-harness.js</code>.</p>
+<p>Upload this script to a test Cloudflare workers route and run <code>curl --fail https://test.example.org</code>. If the unit tests are successful it will return a <code>200</code> response, and if the unit tests fail a <code>500</code> response.</p>
+<h2>Integrating into an existing CI/CD pipeline</h2>
+<p>You can integrate Cloudflare Workers and the test harness into your existing <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipeline</a> by using our API: <a href="https://developers.cloudflare.com/workers/api" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/api/</a>.</p>
+<p>The test harness returns detailed test reports in JSON format:</p>
+<p><strong>Example Success Response</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "stats"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "suites"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "tests"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "passes"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "pending"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "failures"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "start"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019-04-23T06:24:33.492Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "end"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019-04-23T06:24:33.590Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">98</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "tests"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {}</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {}</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "pending"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "failures"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "passes"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {}</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {}</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p><strong>Example Failure Response</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "stats"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "suites"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "tests"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "passes"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "pending"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "failures"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "start"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019-04-23T06:25:52.100Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "end"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2019-04-23T06:25:52.170Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">70</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "tests"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "actual"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"The Sum is 5!"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "expected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"The Sum is 4!"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "operator"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"=="</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "message"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"'The Sum is 5!' == 'The Sum is 4!'"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "generatedMessage"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "stack"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError: 'The Sum is 5!' == 'The Sum is 4!'</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">    at Context.&lt;anonymous&gt; (worker.js:19152:16)"</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "actual"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"3"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "expected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "operator"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"=="</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "message"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"3 == 2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "generatedMessage"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "stack"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError: 3 == 2</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">    at Context.&lt;anonymous&gt; (worker.js:19157:16)"</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "pending"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "failures"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test returns a body that says The Sum is 4"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "actual"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"The Sum is 5!"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "expected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"The Sum is 4!"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "operator"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"=="</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "message"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"'The Sum is 5!' == 'The Sum is 4!'"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "generatedMessage"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "stack"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError: 'The Sum is 5!' == 'The Sum is 4!'</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">    at Context.&lt;anonymous&gt; (worker.js:19152:16)"</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "fullTitle"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Worker Test does addition properly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "currentRetry"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "err"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "actual"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"3"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "expected"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "operator"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"=="</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "message"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"3 == 2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "generatedMessage"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "stack"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AssertionError: 3 == 2</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">    at Context.&lt;anonymous&gt; (worker.js:19157:16)"</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "passes"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>This is really powerful and can allow you to execute your unit tests directly in the Cloudflare runtime, giving you more confidence before releasing your code into production. We hope this was useful and welcome any feedback.</p>

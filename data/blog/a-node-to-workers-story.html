@@ -1,80 +1,77 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DVsVgzLDZz2pPJTt1nLmW/5bc364089c088cf4779f3f8d20fc678a/a-node-to-workers-story.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Node.js allows developers to build web services with JavaScript. However, you're on your own when it comes to registering a domain, setting up DNS, managing the server processes, and setting up builds.</p>
-	<p>There's no reason to manage all these layers on separate platforms. For a site on Cloudflare, these layers can be on a single platform. Serverless technology simplifies developers' lives and reframes our current definition of backend.</p>
-	<p>In this article I will breeze through a simple example of how converting a former Node server into a Worker untangled a part of my teams’ code base. The conversion to Workers for this example can be found at this <a href="https://github.com/cloudflare-apps/spotify-oauth-express/pull/1/files" target="_blank" rel="noopener noreferrer">PR on Github</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="background">Background</h3>
-		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Marketplace hosts a variety of apps, most of which are produced by third party developers, but some are produced by Cloudflare employees.</p>
-	<p>The Spotify app is one of those apps that was written by the Cloudflare apps team. This app requires an OAuth flow with Spotify to retrieve the user’s token and gather the playlist, artists, other Spotify profile specific information. While Cloudflare manages the OAuth authentication portion, the app owner - in this case Cloudflare Apps - manages the small integration service that uses the token to call Spotify and formats an appropriate response. Mysteriously, this Spotify OAuth integration broke.</p>
-	<p>Teams at Cloudflare are keen to remain &nbsp;agile, adaptive, and constantly learning. The current Cloudflare Apps team no longer comprises the original team that developed the Spotify OAuth integration. As such, this current team had no idea why the app broke. Although we had various alerting and logging systems, the Spotify OAuth server was lost in the cloud.</p>
-	<p>Our first step to tackling the issue was tracking down, <i>where</i> exactly did the OAuth flow <i>live</i>. After shuffling through several of the potential platforms - GCloud, AWS, Digital Ocean.. - we discovered the service was on Heroku. &nbsp;The more platforms introduced, the more complexity in deploys and access management.</p>
-	<p>I decided to reduce the number of layers in our service by simply creating a serverless Cloudflare Worker with no maintenance, no new logins, and no unique backend configuration.</p>
-	<p>Here’s how I did it.</p>
-	<div class="flex anchor relative">
-		<h3 id="goodbye-node">Goodbye Node</h3>
-		<a href="https://blog.cloudflare.com/#goodbye-node" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The old service used the Node.js and Express.</p>
-	<pre class="language-javascript"><code class="language-javascript">app.post('/blah', function(request, response) {</code></pre>
-	<p>This states that for every POST to an endpoint <code>/blah</code>, execute the callback function with a request and response object as arguments.</p>
-	<p>Cloudflare Workers are built on top of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Workers</a> spec. Instead of mutating the response and calling methods on the response object like in Express, we need to respond to ‘fetch’ events. The code below adds an event listener for fetch events (incoming requests to the worker), receiving a <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent" target="_blank" rel="noopener noreferrer">FetchEvent</a> as the first parameter. The FetchEvent has a special method called <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith" target="_blank" rel="noopener noreferrer">respondWith</a> that accepts an instance of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank" rel="noopener noreferrer">Response</a> or a Promise which resolves to a Response.</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {
-         event.respondWith(new Response(‘Hello world!’));
-});
-</code></pre>
-	<p>To avoid reimplementation of the routing logic in my worker, I made my own <code>app</code> .</p>
-	<pre class="language-javascript"><code class="language-javascript">const app = {
-   get: (endpoint, fn) =&gt; {
-     url = new URL(request.url);
-     if (url.pathname === endpoint &amp;&amp; request.method === "GET")
-       return fn(request);
-     return null;
-   },
-   post: (endpoint, fn) =&gt; {
-     url = new URL(request.url);
-     if (url.pathname === endpoint &amp;&amp; request.method === "POST")
-       return fn(request);
-     return null;
-   }
- };</code></pre>
-	<p>Now with app set, I call <code>app.get(..)</code> similar to how I did in Node in my handler. I just need to make sure the handler returns at the correct app.</p>
-	<pre class="language-javascript"><code class="language-javascript">async function handleRequest(request) {
-  lastResponse = app.post("/", async function (request) {..}
-  if (lastResponse) {
-      return lastResponse;
-    }
- lastResponse =  app.get("/", async function (request) {
- if (lastResponse) {
-      return lastResponse;
-    }</code></pre>
-	<p><code>lastResponse</code> ensures that we keep listening for all the endpoint methods.</p>
-	<p>The other thing that needs to change is the return of the response. Before that return used <code>response.json()</code>, so the final response would be of JSON type.</p>
-	<pre class="language-javascript"><code class="language-javascript">response.json({
-         proceed: false,
-         errors: [{type: '400', message: error.toString()}]</code></pre>
-	<p>In workers, I need to return a type <code>Response</code> to the <code>respondWith</code> function. I replaced every instance of <code>response.json</code> or <code>response.sendStatus</code> with a new Response object.</p>
-	<pre class="language-javascript"><code class="language-javascript">return new Response(
-         JSON.stringify({
-         proceed: false,
-         errors: [{ type: "400", message: res.error }]
-         }, { headers: { ‘Content-Type’: ‘application/json’ } })</code></pre>
-	<p>Now for the most beautiful part of the transition: delete useless config.</p>
-	<p>Our Express server was set to export app as a module insert credentials so that Heroku or whatever non-serverless server could pick up, run, and build.</p>
-	<p>Though I <i>can</i> import libraries for workers via <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">webpack</a>, for this application, it’s unreasoned. Also, I have access to fetch and other native service worker functions.</p>
-	<pre class="language-javascript"><code class="language-javascript">const {getJson} = require('simple-fetch')
-module.exports = function setRoutes (app) {</code></pre>
-	<p>Getting rid of modules and deployment config, I removed the files: <code>Procfile</code>, <code>credentials.json</code>, <code>package.json</code>, <code>development.js</code>, <code>heroku.js</code>, and <code>create-app.js</code>.<code>Routes.js</code> simply becomes <code>worker.js</code>.</p>
-	<p>This was a demo of how workers made my life as a programmer easier. Future developers working with my code can read this code without ever looking at any configuration. Even a purely vanilla bean Javascript developer can come in since there is no managing builds and pulling hair out.</p>
-	<p>With serverless I can now spend time on doing what I love - development.</p>
+<p>Node.js allows developers to build web services with JavaScript. However, you're on your own when it comes to registering a domain, setting up DNS, managing the server processes, and setting up builds.</p>
+<p>There's no reason to manage all these layers on separate platforms. For a site on Cloudflare, these layers can be on a single platform. Serverless technology simplifies developers' lives and reframes our current definition of backend.</p>
+<p>In this article I will breeze through a simple example of how converting a former Node server into a Worker untangled a part of my teams’ code base. The conversion to Workers for this example can be found at this <a href="https://github.com/cloudflare-apps/spotify-oauth-express/pull/1/files" target="_blank" rel="noopener noreferrer">PR on Github</a>.</p>
+<h3>Background</h3>
+<p>Cloudflare Marketplace hosts a variety of apps, most of which are produced by third party developers, but some are produced by Cloudflare employees.</p>
+<p>The Spotify app is one of those apps that was written by the Cloudflare apps team. This app requires an OAuth flow with Spotify to retrieve the user’s token and gather the playlist, artists, other Spotify profile specific information. While Cloudflare manages the OAuth authentication portion, the app owner - in this case Cloudflare Apps - manages the small integration service that uses the token to call Spotify and formats an appropriate response. Mysteriously, this Spotify OAuth integration broke.</p>
+<p>Teams at Cloudflare are keen to remain &nbsp;agile, adaptive, and constantly learning. The current Cloudflare Apps team no longer comprises the original team that developed the Spotify OAuth integration. As such, this current team had no idea why the app broke. Although we had various alerting and logging systems, the Spotify OAuth server was lost in the cloud.</p>
+<p>Our first step to tackling the issue was tracking down, <em>where</em> exactly did the OAuth flow <em>live</em>. After shuffling through several of the potential platforms - GCloud, AWS, Digital Ocean.. - we discovered the service was on Heroku. &nbsp;The more platforms introduced, the more complexity in deploys and access management.</p>
+<p>I decided to reduce the number of layers in our service by simply creating a serverless Cloudflare Worker with no maintenance, no new logins, and no unique backend configuration.</p>
+<p>Here’s how I did it.</p>
+<h3>Goodbye Node</h3>
+<p>The old service used the Node.js and Express.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">post</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/blah'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">response</span><span class="sk-24292e-fff">) {</span></span></code></pre>
 </div>
+<p>This states that for every POST to an endpoint <code>/blah</code>, execute the callback function with a request and response object as arguments.</p>
+<p>Cloudflare Workers are built on top of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Workers</a> spec. Instead of mutating the response and calling methods on the response object like in Express, we need to respond to ‘fetch’ events. The code below adds an event listener for fetch events (incoming requests to the worker), receiving a <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent" target="_blank" rel="noopener noreferrer">FetchEvent</a> as the first parameter. The FetchEvent has a special method called <a href="https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith" target="_blank" rel="noopener noreferrer">respondWith</a> that accepts an instance of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" target="_blank" rel="noopener noreferrer">Response</a> or a Promise which resolves to a Response.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">         event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(‘Hello world</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">’));</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>To avoid reimplementation of the routing logic in my worker, I made my own <code>app</code> .</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> app</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   get</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">endpoint</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">fn</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">     url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     if</span><span class="sk-24292e-fff"> (url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> endpoint </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> request.method </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "GET"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-6f42c1-ffc799"> fn</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   post</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">endpoint</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">fn</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">     url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     if</span><span class="sk-24292e-fff"> (url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> endpoint </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> request.method </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "POST"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-6f42c1-ffc799"> fn</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff"> };</span></span></code></pre>
+</div>
+<p>Now with app set, I call <code>app.get(..)</code> similar to how I did in Node in my handler. I just need to make sure the handler returns at the correct app.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">  lastResponse </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> app.</span><span class="sk-6f42c1-ffc799">post</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {..}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  if</span><span class="sk-24292e-fff"> (lastResponse) {</span></span>
+<span class="line"><span class="sk-24292e-fff">      return lastResponse;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff"> lastResponse </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">  app.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (lastResponse) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> lastResponse;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+</div>
+<p><code>lastResponse</code> ensures that we keep listening for all the endpoint methods.</p>
+<p>The other thing that needs to change is the return of the response. Before that return used <code>response.json()</code>, so the final response would be of JSON type.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">         proceed: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">         errors: [{type: </span><span class="sk-032f62-99ffe4">'400'</span><span class="sk-24292e-fff">, message: error.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">()}]</span></span></code></pre>
+</div>
+<p>In workers, I need to return a type <code>Response</code> to the <code>respondWith</code> function. I replaced every instance of <code>response.json</code> or <code>response.sendStatus</code> with a new Response object.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-fff">         JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">         proceed: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">         errors: [{ type: </span><span class="sk-032f62-99ffe4">"400"</span><span class="sk-24292e-fff">, message: res.error }]</span></span>
+<span class="line"><span class="sk-24292e-fff">         }, { headers: { ‘Content-Type’: ‘application</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">json’ } })</span></span></code></pre>
+</div>
+<p>Now for the most beautiful part of the transition: delete useless config.</p>
+<p>Our Express server was set to export app as a module insert credentials so that Heroku or whatever non-serverless server could pick up, run, and build.</p>
+<p>Though I <em>can</em> import libraries for workers via <a href="https://blog.cloudflare.com/using-webpack-to-bundle-workers">webpack</a>, for this application, it’s unreasoned. Also, I have access to fetch and other native service worker functions.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> {</span><span class="sk-005cc5-fff">getJson</span><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'simple-fetch'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> setRoutes</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">app</span><span class="sk-24292e-fff">) {</span></span></code></pre>
+</div>
+<p>Getting rid of modules and deployment config, I removed the files: <code>Procfile</code>, <code>credentials.json</code>, <code>package.json</code>, <code>development.js</code>, <code>heroku.js</code>, and <code>create-app.js</code>.<code>Routes.js</code> simply becomes <code>worker.js</code>.</p>
+<p>This was a demo of how workers made my life as a programmer easier. Future developers working with my code can read this code without ever looking at any configuration. Even a purely vanilla bean Javascript developer can come in since there is no managing builds and pulling hair out.</p>
+<p>With serverless I can now spend time on doing what I love - development.</p>

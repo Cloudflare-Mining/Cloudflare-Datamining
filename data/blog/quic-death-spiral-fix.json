@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "When \"idle\" isn't idle: how a Linux kernel optimization became a QUIC bug",
+	"url": "https://blog.cloudflare.com/quic-death-spiral-fix/",
+	"datePublished": "2026-05-12T13:00:00.000Z",
+	"dateModified": "2026-07-15T14:35:12.623Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW46EVPXPR2FQVM566WBCSJQ.png",
+	"description": "We investigated a bug where CUBIC's congestion window became pinned at its minimum floor, causing a performance to plummet. The fix involved correctly measuring idle periods to distinguish RTT wait times from actual application idleness."
+}

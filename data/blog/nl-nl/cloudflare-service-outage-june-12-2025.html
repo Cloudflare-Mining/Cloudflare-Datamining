@@ -1,0 +1,338 @@
+<p>Op 12 juni 2025 ondervond Cloudflare een ernstige storing die gevolgen had voor een groot aantal van onze kritieke services, waaronder Workers KV, WARP, Access, Gateway, Images, Stream, Workers AI, Turnstile en Challenges, AutoRAG, Zaraz en onderdelen van het Cloudflare Dashboard.</p>
+<p>Deze storing duurde 2 uur en 28 minuten en had wereldwijd gevolgen voor alle Cloudflare-klanten die gebruikmaakten van de getroffen services. De oorzaak van deze storing was een defect van de onderliggende opslaginfrastructuur die door onze Workers KV-service wordt gebruikt. Dit is een kritieke afhankelijkheid van veel Cloudflare-producten voor de configuratie, authenticatie en levering van activa voor de getroffen services. Een deel van deze infrastructuur wordt ondersteund door een externe cloudprovider die vandaag een storing ondervond, wat een directe impact had op de beschikbaarheid van onze KV-service.</p>
+<p>We verontschuldigen ons voor deze storing. Dit was een fout van ons, en hoewel de directe oorzaak (of trigger) voor deze uitval een storing van een externe leverancier was, zijn wij uiteindelijk verantwoordelijk voor de door ons gekozen afhankelijkheden en de manier waarop we besluiten om die te structureren.</p>
+<p>De uitval was niet het gevolg van een aanval of een ander beveiligingsincident. Er is geen data verloren gegaan als gevolg van dit incident. Cloudflare Magic Transit en Magic WAN, DNS, cache, proxy, WAF en gerelateerde services ondervonden geen rechtstreekse impact van dit incident.</p>
+<h2>Wat waren de gevolgen?</h2>
+<p>Als regel ontwerpt en bouwt Cloudflare haar services op haar eigen platformelementen. Veel producten van Cloudflare vertrouwen dan ook op de Workers KV-service.&nbsp;</p>
+<p>In de volgende tabel staan de getroffen services, inclusief de impact op de gebruikers, de operationele defecten en de waargenomen toename van de foutpercentages:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Product/dienst</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Impact</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bij Workers KV mislukte 90,22% van de verzoeken: elk sleutelwaardepaar dat niet in de cache was opgeslagen en elk paar dat nodig was om de waarde op te halen uit de oorspronkelijke opslag-backends van Workers KV resulteerde in mislukte verzoeken met responscode 503 of 500.&nbsp;De resterende verzoeken werden met succes afgehandeld vanuit de cache van Workers KV (statuscode 200 en 404) of leverden fouten op die binnen de verwachte limieten en/of het foutenbudget vielen.Dit had geen invloed op de data die in Workers KV was opgeslagen.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Toegang<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access maakt gebruik van Workers KV om de configuratie van de applicaties en beleidsbepalingen op te slaan, samen met de identiteitsgegevens van gebruikers.Tijdens het incident mislukte Access bij 100% van de identiteitsgebaseerde inlogpogingen voor alle soorten applicaties, waaronder zelfgehoste, SaaS- en infrastructuurapplicaties. Ook waren de identiteitsgegevens van de gebruiker niet beschikbaar voor andere services, zoals WARP of Gateway. Access sluit automatisch als de beleidsconfiguratie of de identiteit van een gebruiker niet kan worden opgehaald.&nbsp;De SSH-sessies van de actieve infrastructuurtoepassing waarvoor de opdrachtregistratie was ingeschakeld, konden geen logboeken opslaan vanwege de afhankelijkheid van Workers KV.&nbsp;De SCIM-service (System for Cross Domain Identity) van Access had ook last van de afhankelijkheid van Workers KV en Durable Objects (die afhankelijk zijn van KV) om de gebruikersinformatie op te slaan. Tijdens dit incident werd de gebruikersinformatie niet bijgewerkt vanwege de mislukte Workers KV-updates. Deze storing zorgde ervoor dat een 500-fout naar de identiteitsproviders werd teruggestuurd. Sommige providers vereisen een handmatige hersynchronisatie, maar de meeste klanten zagen direct een herstel van de service zodra de SCIM-service van Access was hersteld dankzij de herhaallogica van de identiteitsprovider.De op service-authenticatie gebaseerde logins (bijv. service token, Mutual TLS en op IP-gebaseerde beleidsregels) en het Bypass-beleid waren ongemoeid. Tijdens deze periode zijn er geen wijzigingen of aanpassingen van het Access-beleid verloren gegaan.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Gateway<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Dit incident had geen invloed op de meeste Gateway DNS-query's, zoals query's via IPv4, IPv6, DNS over TLS (DoT) en DNS over HTTPS (DoH).Er waren echter twee uitzonderingen:De DoH-query's met identiteitsgebaseerde regels mislukten. Dit gebeurde omdat Gateway de vereiste gebruikersidentiteitsgegevens niet kon ophalen.Voor sommige gebruikers werd de geauthenticeerde DoH verstoord. Gebruikers met actieve sessies met geldige authenticatietokens hadden geen last, maar gebruikers die een nieuwe sessie wilden starten of authenticatietokens wilden vernieuwen, konden dat niet.De gebruikers van Gateway-proxy-, uitstromings- en TLS-decodering konden geen verbinding maken, konden zich niet registreren, en konden geen proxy gebruiken of verkeer registreren.Dit omdat wij afhankelijk zijn van Workers KV om actuele informatie over de identiteit en toestand van het apparaat op te halen. Voor elk van deze acties is Workers KV nodig. Als dat niet beschikbaar is, wordt Gateway automatisch gesloten om te voorkomen dat het verkeer de door de klant geconfigureerde regels omzeilt.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>WARP<br><br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De WARP-client werd getroffen vanwege de afhankelijkheid van Access en Workers KV, die vereist zijn voor de apparaatregistratie en -authenticatie. Hierdoor konden nieuwe cliënten tijdens het incident geen verbinding maken en zich niet aanmelden.Bestaande WARP-clientgebruikerssessies die via de Gateway-proxy werden gerouteerd, ondervonden onderbrekingen, omdat Gateway de vereiste beleidsevaluaties niet kon uitvoeren.Bovendien was de override van de WARP-nooduitschakeling niet beschikbaar vanwege een storing van de onderliggende afhankelijkheid, namelijk Workers KV.Bij Consumer WARP was er sprake van dezelfde sporadische impact als bij de Zero Trust-versie.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Dashboard<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De gebruikersaanmeldingen op het dashboard en de meeste bestaande dashboardsessies waren niet beschikbaar. Dit kwam door een storing die gevolgen had voor Turnstile, DO, KV en Access. De specifieke oorzaken voor de mislukte aanmeldingen waren:Standard logins (gebruiker/wachtwoord): mislukt omdat de Turnstile niet beschikbaar was.Aanmelden met Google (OIDC)-aanmeldingen: mislukt vanwege een KV-afhankelijkheidsprobleem.SSO-aanmeldingen: mislukt vanwege de volledige afhankelijkheid van Access.De Cloudflare v4 API had geen last van dit incident.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Challenges en Turnstile<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Het Challenge-platform dat Cloudflare Challenges en Turnstile aanstuurt, ondervond een hoog percentage fouten en time-outs voor siteverify-API-verzoeken tijdens de incidentperiode vanwege de afhankelijkheid van Workers KV en Durable Objects.We hebben kill-switches geïnstalleerd om deze verzoeken uit te schakelen in geval van incidenten en storingen zoals deze. We hebben deze kill-switches geactiveerd als een mitigatie, zodat bezoekers niet wordt belemmerd. Opvallend is dat de siteverify-API van Turnstile (de API die uitgegeven tokens valideert) de geldige tokens meerdere keren kon inwisselen terwijl deze kill-switches actief waren. Dit zou aanvallen mogelijk hebben kunnen maken als kwaadwillenden een eerder geldige token gebruikten om de validatie te omzeilen.&nbsp;Er was geen impact op het vermogen van Turnstile om bots te detecteren. Een bot die een uitdaging probeerde omzeilen, zou nog steeds zijn mislukt en zou dus geen token hebben ontvangen.&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Browserisolatie<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De bestaande, op links gebaseerde Browser Isolation-sessies werden getroffen vanwege de Gateway-afhankelijkheid voor de beleidsevaluatie.Nieuwe op links gebaseerde Browser Isolation-sessies konden niet worden gestart vanwege een afhankelijkheid van Cloudflare Access. Alle door Gateway geïnitieerde isolatiesessies mislukten vanwege de Gateway-afhankelijkheid.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Afbeeldingen<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Uploads naar Cloudflare Images werden door het incident beïnvloed, met een foutpercentage van 100% op het hoogtepunt van het incident.&nbsp;Het algehele succespercentage van de levering van afbeeldingen daalde tot ongeveer 97%. Image Transformations waren niet ernstig getroffen, net zomin als Polish.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Stream<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Het foutpercentage van Stream overschreed de 90% tijdens de incidentperiode, omdat videoafspeellijsten niet konden worden verwerkt. Stream Live constateerde een foutpercentage van 100%.Het probleem had geen gevolgen voor het uploaden van video's.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Realtime<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De Realtime TURN-service (Traversal Using Relays around NAT) maakt gebruik van KV en werd zwaar getroffen. Het foutpercentage lag tijdens de incidentperiode nagenoeg op 100%.De Realtime SFU-service (Selective Forwarding Unit) kon geen nieuwe sessies aanmaken, hoewel bestaande verbindingen gehandhaafd bleven. Hierdoor daalde het normale&nbsp;verkeersvolume tijdens de impactperiode met 20%.&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers AI<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Alle inferentieverzoeken aan Workers AI mislukten tijdens het incident. Workers AI is afhankelijk van Workers KV voor de wereldwijde distributie van configuratie- en routing-informatie voor AI-verzoeken.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pages en Workers Assets<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Statische assets die door Cloudflare Pages en Workers Assets worden verwerkt (zoals HTML, JavaScript, CSS, afbeeldingen, etc.) worden in Workers KV opgeslagen, gecached en op het moment van het verzoek opgehaald. Workers Assets zag in deze periode een toename van de gemiddelde foutmarge van ongeveer 0,06% van het totale aantal verzoeken.&nbsp;Tijdens de incidentperiode bereikte het foutpercentage van Pages een piek van circa 100% en kon geen enkele Pages-build worden afgerond.&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AutoRAG<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AutoRAG maakt gebruik van Workers AI-modellen voor zowel documentconversie als het genereren van vector-embeddings tijdens de indexering. Daarnaast maakt AutoRAG gebruik van LLM-modellen voor query's en zoekopdrachten. AutoRAG was tijdens het incidentvenster niet beschikbaar vanwege de afhankelijkheid van Workers AI.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Duurzame objecten<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De door SQLite-ondersteunde Durable Objects delen dezelfde onderliggende opslaginfrastructuur als Workers KV. Het gemiddelde foutpercentage bereikte tijdens de incidentperiode een piek van 22% en daalde naar 2% toen de services zich begonnen te herstellen.De Durable Object-naamruimten die gebruikmaken van de oude sleutelwaardeopslag, bleven ongemoeid.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>D1<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>D1-databases delen dezelfde onderliggende opslaginfrastructuur als Workers KV en Durable Objects.Net als bij Durable Objects bereikte het gemiddelde foutpercentage tijdens de incidentperiode een piek van 22%. Toen de services zich begonnen te herstellen, daalde dit percentage naar 2%.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Queues- en gebeurtenismeldingen<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Queues-berichten, waaronder pushing en consuming, waren tijdens de incidentperiode niet beschikbaar.Queues gebruikt KV om elke Queue aan onderliggende Durable Objects toe te wijzen die wachtrijberichten bevatten.Gebeurtenismeldingen gebruiken Queues als onderliggend aflevermechanisme.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI Gateway<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI Gateway is gebouwd op Workers en vertrouwt op Workers KV voor interne en client-configuraties. Tijdens de incidentperiode zag AI Gateway het foutpercentage pieken op 97% van de verzoeken totdat de afhankelijkheden waren hersteld.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>CDN<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De infrastructuur voor geautomatiseerd verkeersmanagement was operationeel, maar functioneerde tijdens de impactperiode minder effectief. Vooral het aantal registratieverzoeken van Zero Trust-klanten was door de storing fors toegenomen.Deze toename van het aantal verzoeken zorgde voor een extra belasting van verschillende Cloudflare-locaties, waardoor een reactie van het geautomatiseerde verkeersbeheer werd geactiveerd. Als reactie op deze omstandigheden leidden systemen het binnenkomende CDN-verkeer om naar locaties in de buurt, waardoor de gevolgen voor de klanten werden beperkt. Een deel van het verkeer werd echter niet omgeleid zoals verwacht, en dit wordt onderzocht. CDN-verzoeken die door dit probleem werden beïnvloed, ondervonden een verhoogde latentie, HTTP 499-fouten en/of HTTP 503-fouten. De getroffen Cloudflare-servicegebieden waren onder meer São Paulo, Philadelphia, Atlanta en Raleigh.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers/Workers for Platforms<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers en Workers for Platforms zijn voor het uploaden afhankelijk van een externe service. Tijdens de incidentperiode zag Workers een piek van het totale foutpercentage van circa 2% van het totaal aantal verzoeken. Workers for Platforms zag in dezelfde periode een piek van het totale foutpercentage van circa 10% van het totaal aantal verzoeken.&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers Builds (CI/CD)<br>&nbsp;<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Vanaf 18.03 uur UTC konden Workers-builds geen nieuwe push-gebeurtenissen voor broncodebeheer meer ontvangen, omdat Access niet beschikbaar was.100% van de nieuwe Workers Builds mislukte tijdens de incidentperiode.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Browser Rendering<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Browser Rendering is afhankelijk van Browser Isolation voor de infrastructuur van browserinstanties.Verzoeken naar zowel de REST API als via de Workers Browser Binding werden allemaal door het incident getroffen.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zaraz<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100% van de verzoeken werd tijdens de incidentperiode beïnvloed. Zaraz maakt gebruik van Workers KV-configuraties voor websites bij het verwerken van bezoekersverkeer. Vanwege dezelfde afhankelijkheid mislukten de pogingen om in deze periode updates van de Zaraz-configuraties op te slaan, maar uit onze monitoring blijkt dat dit slechts één gebruiker betrof.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Achtergrond</h2>
+<p>Workers KV is gebouwd als een zogeheten ‘coreless’ service. Dit betekent dat er geen enkel punt van falen zou moeten zijn, omdat de service onafhankelijk op al onze locaties wereldwijd draait. Tegenwoordig is Workers KV echter afhankelijk van een centrale data-opslag om een bron van waarheid voor de data te bieden. Door een storing in die opslag ontstond er een volledige uitval van koude lees- en schrijfbewerkingen naar de KV-naamruimten die door de services van Cloudflare worden gebruikt.</p>
+<p>Workers KV worden momenteel overgezet naar een aanzienlijk veerkrachtigere infrastructuur voor de centrale opslag. Helaas was er tijdens dit incident sprake van een leemte in deze dekking. Workers KV verwijderde een opslagprovider terwijl we bezig waren met het nieuwe ontwerp van de backend van KV, inclusief de migratie naar Cloudflare R2, om problemen met dataconsistentie te voorkomen (veroorzaakt door de oorspronkelijke architectuur voor gegevenssynchronisatie) en de ondersteuning voor de data-residentievereisten te verbeteren.</p>
+<p>Een van onze principes is om Cloudflare-services zoveel mogelijk op ons eigen platform te bouwen, en Workers KV vormt hierop geen uitzondering. Veel van onze interne en externe services zijn sterk afhankelijk van Workers KV. Dit helpt ons normaal gesproken om de meest robuuste services te leveren, zodat serviceteams niet hun eigen opslagservices hoeven te bouwen. In dit geval heeft de cascade-impact van het falen van Workers KV het probleem verergerd en de storing veel groter gemaakt.&nbsp;</p>
+<h2>Tijdlijn en impact van het incident</h2>
+<p>Hieronder staat een tijdlijn van het incident, inclusief de initiële impact, het onderzoek, de grondoorzaak en de getroffen corrigerende maatregelen.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="337" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=640&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=750&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=828&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1080&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1280&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1430&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2847 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1686&amp;h=794&amp;f=webp" data-lightbox-width="1686" data-lightbox-height="794" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="337" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sub><em>Workers KV-foutpercentages voor opslaginfrastructuur. 91% van de verzoeken aan KV mislukten tijdens de incidentperiode.</em></sub></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2847 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=978&amp;h=501&amp;f=webp" data-lightbox-width="978" data-lightbox-height="501" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
+</figure>
+<p><sub><em>Percentage succesvolle verzoeken via Cloudflare Access. Cloudflare Access is rechtstreeks afhankelijk van Workers KV en fungeert als een goede proxy om de beschikbaarheid van Workers KV in de loop der tijd te meten.</em></sub></p>
+<p>Alle vermelde tijdstempels zijn in Coordinated Universal Time (UTC).</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Tijdstip</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Evenement</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 17.52</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>START VAN HET INCIDENT<br>Het WARP-team van Cloudflare ziet dat de registratie van nieuwe apparaten mislukt, begint deze fouten onderzoeken en maakt melding van een incident.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 18.05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Het Cloudflare Access-team ontvangt een waarschuwing vanwege de snel toenemende foutpercentages.Service Level Objectives voor meerdere services voldoen niet aan de eisen, waardoor de desbetreffende teams worden gewaarschuwd.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 18.06</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Meerdere servicespecifieke incidenten worden gecombineerd tot één incident, aangezien we een gedeelde oorzaak hadden geïdentificeerd (onbeschikbaarheid van Workers KV). De incidentprioriteit wordt verhoogd naar P1.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 18.21</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De incidentprioriteit wordt van P1 verhoogd naar P0 aangezien de ernst van de impact duidelijker wordt.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 18.43</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Access gaat samen met het Workers KV-engineeringteam op zoek naar opties om de afhankelijkheid van Workers KV te verwijderen door naar een andere back-up data-opslag te migreren. Dit was een proactieve maatregel voor het geval de opslaginfrastructuur onbeschikbaar zou blijven.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 19.09</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zero Trust Gateway is begonnen met het verwijderen van de afhankelijkheden van Workers KV door de regels die verwijzen naar de identiteit of toestand van het apparaat op een elegante manier te degraderen.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 19.32</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access en Device Posture forceren de verwijdering van verzoeken voor de identiteit en toestand van het apparaat om de werklast van Workers KV te verlagen totdat de service van derden weer online is.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 19.45</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De teams van Cloudflare werken nog steeds aan de implementatie van een Workers KV-release met een alternatieve back-up data-opslag en zorgen ervoor dat essentiële services alle configuratiedata naar die opslag sturen.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 20.23</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De diensten beginnen zich te herstellen, aangezien de opslaginfrastructuur zich begint te herstellen. We zien nog steeds een hoog foutenpercentage en minder infrastructuurverzoeken vanwege de toestroom van de services die de caches opnieuw vullen.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 20.25</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access en Device Posture herstellen de verzoeken aan Workers KV, aangezien de service van derden is hersteld.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025-06-12 20.28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>EINDE VAN DE IMPACT&nbsp;<br>Service Level Objectives keren terug naar het niveau van vóór het incident. De Cloudflare-teams blijven de systemen monitoren om er zeker van te zijn dat de services niet verslechteren terwijl de afhankelijke systemen zich herstellen.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>EINDE VAN HET INCIDENT<br>Het Cloudflare-team ziet dat alle getroffen services weer normaal functioneren. Waarschuwingen met betrekking tot serviceniveaudoelstellingen worden ingetrokken.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>Corrigerende maatregelen en vervolgstappen</h2>
+<p>We treffen onmiddellijk maatregelen om de veerkracht van services die afhankelijk zijn van Workers KV en onze opslaginfrastructuur te verbeteren. Dit geldt ook voor de geplande werkzaamheden die we als gevolg van dit incident zullen versnellen.</p>
+<p>Dit omvat verschillende werkstromen: niet alleen inspanningen om te voorkomen dat er sprake is van een unieke afhankelijkheid van een opslaginfrastructuur die we niet zelf in eigendom hebben, maar ook inspanningen om ons vermogen te verbeteren om kritieke services te herstellen (waaronder Access, Gateway en WARP).&nbsp;</p>
+<p>Meer specifiek:</p>
+<ul>
+	<li>(Actief in uitvoering): We werken verder aan de verbetering van de redundantie binnen de opslaginfrastructuur van Workers KV, waardoor we niet langer afhankelijk zijn van één enkele provider. Tijdens de incidentperiode zijn we begonnen met het overzetten en aanvullen van kritieke KV-naamruimten naar onze eigen infrastructuur, voor het geval het incident zich zou blijven voordoen. </li>
+	<li>(Actief in uitvoering): Kortetermijnmaatregelen voor afzonderlijke producten die door dit incident zijn getroffen, zodat elk product bestand wordt tegen serviceverlies als gevolg van het falen van één punt, inclusief afhankelijkheden van derden.</li>
+	<li>(Actief in uitvoering): Implementatie van tooling waarmee we de naamruimten tijdens incidenten met de opslaginfrastructuur geleidelijk opnieuw kunnen inschakelen. Hierdoor kunnen we ervoor zorgen dat grote afhankelijkheden, waaronder Access en WARP, kunnen worden opgestart zonder het risico van een denial-of-service tegen onze eigen infrastructuur wanneer de caches opnieuw worden gevuld.</li>
+</ul>
+<p>Deze lijst is niet compleet: onze teams herzien de ontwerpbeslissingen voortdurend en beoordelen welke infrastructuurwijzigingen we op de korte (directe) termijn en op de lange termijn moeten doorvoeren om incidenten zoals deze in de toekomst te voorkomen.</p>
+<p>Dit was een ernstige storing en we begrijpen dat grote en kleine organisaties en instellingen op ons vertrouwen voor de beveiliging en/of werking van hun websites, applicaties, Zero Trust en netwerkinfrastructuur.&nbsp; Nogmaals, wij betreuren de impact ten zeerste en zijn hard aan het werk om de veerkracht van onze dienstverlening te verbeteren.&nbsp;</p>

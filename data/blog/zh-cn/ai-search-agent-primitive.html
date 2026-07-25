@@ -1,0 +1,370 @@
+<p>每个<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>智能体</u></a>都需要搜索功能：编码智能体需要搜索代码存储库中数百万个文件，支持智能体则需要搜索客户工单和内部文档。尽管用例各不相同，但根本问题是一样的：及时将正确的信息传递给模型。</p>
+<p>如果您自行构建搜索功能，则需要一个向量索引、一个用于解析和分块文档的索引管道，以及在数据更改时保持索引同步更新的某种方法。如果您还需要关键词搜索，则需要一个单独的索引以及顶部的融合逻辑。如果每个智能体都需要自己的可搜索上下文，则需要为每个智能体分别设置。</p>
+<p><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>（以前称为 <a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>）是用户需要的即插即用型搜索原语。用户可以动态创建实例，为其提供数据，然后通过 Worker、Agents SDK 或 Wrangler CLI 进行搜索。以下是我们即将发布的功能：</p>
+<ul>
+	<li><strong>混合搜索</strong>。在同一查询中启用语义匹配和关键词匹配。向量搜索和 BM25 并行运行，然后将结果整合。（我们博客上的搜索功能现已由 AI Search 提供支持。<em>请尝试右上角的放大镜图标。</em>）</li>
+	<li><strong>内置存储和索引。</strong>新实例自带存储和向量索引。通过 API 将文件直接上传到实例，然后对其进行索引。无需设置 R2 存储桶，也无需首先连接到外部数据源。新的 <code>ai_search_namespaces</code> 绑定支持用户在运行时从 Worker 创建和删除实例，以便按每个智能体、每个客户或每种语言来快速启动实例，无需重新部署。</li>
+</ul>
+<p>现在，用户还可以将元数据附加到文档，并在查询时使用此类数据提升排名，以及在单个调用中跨多个实例进行查询。<strong></strong></p>
+<p>现在，我们来看看这在实践中意味着什么。</p>
+<h2>实际应用：客户支持智能体</h2>
+<p>我们来看一看支持智能体如何搜索两种类型的知识：共享的产品文档，以及每个客户的历史记录（例如过去的解决方案）。产品文档内容太多，无法在上下文窗口中完整显示，而每个客户的历史记录会随着已解决的问题不断增长，因此，智能体需要通过检索来查找相关内容。</p>
+<p>以下是使用 AI Search 和 <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> 进行搜索的示例。从搭建项目框架开始：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare/agents-starter</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>首先，将 AI Search 命名空间绑定到 Worker：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ai_search_namespaces"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"SUPPORT_KB"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"namespace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"support"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ai"</span><span class="sk-24292e-fff">: { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "durable_objects"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "bindings"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"SupportAgent"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"class_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"SupportAgent"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>假设共享的产品文档存放在名为 <code>product-doc</code> 的 R2 存储桶中。您可以在 Cloudflare 仪表板的 <code>support</code> 命名空间中，创建由该存储桶提供支持的一次性 AI Search 实例（名为 <code>product-knowledge</code>）：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1014&amp;h=730&amp;f=webp" data-lightbox-width="1014" data-lightbox-height="730" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>这就是共享的知识库，文档均可供每个智能体参考。</p>
+<p>当客户提出新问题时，了解之前已经进行的尝试可以节省大家的时间。您可以通过为每位顾客创建一个 AI Search 实例来跟踪这些信息。每个问题解决后，智能体会保存一份摘要，总结出了什么问题以及解决方法。随着时间的推移，这将成为可供搜索的过往解决方法日志。您可以使用命名空间绑定来动态创建实例：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create a per-customer instance when they first show up </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">`customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  index_method:{ keyword: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, vector: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>每个实例都有其内置的存储和向量索引，由 <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 和 <a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a> 提供支持。实例最初为空，随着时间的推移会积累上下文。客户下次再次访问时，所有上下文均可搜索。</p>
+<p>以下是几个客户使用过后的命名空间示例：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>namespace: "support"</span></span>
+<span class="line"><span>├── product-knowledge     (R2 as source, shared across all agents)</span></span>
+<span class="line"><span>├── customer-abc123       (managed storage, per-customer)</span></span>
+<span class="line"><span>├── customer-def456       (managed storage, per-customer)</span></span>
+<span class="line"><span>└── customer-ghi789       (managed storage, per-customer)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span></code></pre>
+</div>
+<p>现在说回智能体本身。它会扩展源自 <code>Agents SDK</code> 的 AIChatAgent 并定义两个工具。我们通过 <a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>，将 <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>Kimi K2.5</u></a> 模型用作 LLM。模型会根据对话内容，决定何时调用这些工具：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AIChatAgent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> OnChatMessageOptions } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai-chat"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkersAI } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "workers-ai-provider"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { streamText, convertToModelMessages, tool, stepCountIs } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "ai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { routeAgentRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { z } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "zod"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> SupportAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onChatMessage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">_onFinish</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> unknown</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">options</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-6f42c1-ffc799"> OnChatMessageOptions</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // the client passes customerId in the request body</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // via the Agent SDK's sendMessage({ body: { customerId } })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> customerId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> options?.body?.customerId;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // create a per-customer instance when they first show up.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // each instance gets its own storage and vector index.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (customerId) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          id: </span><span class="sk-032f62-99ffe4">`customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          index_method: { keyword: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, vector: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">      } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // instance already exists</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> workersai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createWorkersAI</span><span class="sk-24292e-fff">({ binding: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> streamText</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      model: </span><span class="sk-6f42c1-ffc799">workersai</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/moonshotai/kimi-k2.5"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">      system: </span><span class="sk-032f62-99ffe4">`You are a support agent. Use search_knowledge_base</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        to find relevant docs before answering. Search results</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        include both product docs and this customer's past</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        resolutions — use them to avoid repeating failed fixes</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        and to recognize recurring issues. When the issue is</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        resolved, call save_resolution before responding.`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // this.messages is the full conversation history, automatically</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // persisted by AIChatAgent across reconnects</span></span>
+<span class="line"><span class="sk-24292e-fff">      messages: </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> convertToModelMessages</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.messages),</span></span>
+<span class="line"><span class="sk-24292e-fff">      tools: {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // tool 1: search across shared product docs AND this</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // customer's past resolutions in a single call</span></span>
+<span class="line"><span class="sk-24292e-fff">        search_knowledge_base: </span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          description: </span><span class="sk-032f62-99ffe4">"Search product docs and customer history"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          inputSchema: z.</span><span class="sk-6f42c1-ffc799">object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            query: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"The search query"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">          }),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">query</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // always search product docs;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // include customer history if available</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-005cc5-fff"> instances</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"product-knowledge"</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (customerId) {</span></span>
+<span class="line"><span class="sk-24292e-fff">              instances.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">              query: query,</span></span>
+<span class="line"><span class="sk-24292e-fff">              ai_search_options: {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">                // surface recent docs over older ones</span></span>
+<span class="line"><span class="sk-24292e-fff">                boost_by: [</span></span>
+<span class="line"><span class="sk-24292e-fff">                  { field: </span><span class="sk-032f62-99ffe4">"timestamp"</span><span class="sk-24292e-fff">, direction: </span><span class="sk-032f62-99ffe4">"desc"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">                ],</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">                // search across both instances at once</span></span>
+<span class="line"><span class="sk-24292e-fff">                instance_ids: instances</span></span>
+<span class="line"><span class="sk-24292e-fff">              }</span></span>
+<span class="line"><span class="sk-24292e-fff">            });</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }),</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // tool 2: after resolving an issue, the agent saves a</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // summary so future agents have full context</span></span>
+<span class="line"><span class="sk-24292e-fff">        save_resolution: </span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          description:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "Save a resolution summary after solving a customer's issue"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          inputSchema: z.</span><span class="sk-6f42c1-ffc799">object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            filename: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              "Short descriptive filename, e.g. 'billing-fix.md'"</span></span>
+<span class="line"><span class="sk-24292e-fff">            ),</span></span>
+<span class="line"><span class="sk-24292e-fff">            content: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              "What the problem was, what caused it, and how it was resolved"</span></span>
+<span class="line"><span class="sk-24292e-fff">            ),</span></span>
+<span class="line"><span class="sk-24292e-fff">          }),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">filename</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">content</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">customerId) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> { error: </span><span class="sk-032f62-99ffe4">"No customer ID"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              `customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span></span>
+<span class="line"><span class="sk-24292e-fff">            );</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // uploadAndPoll waits until indexing is complete,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // so the resolution is searchable before the next query</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-005cc5-fff"> item</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.items.</span><span class="sk-6f42c1-ffc799">uploadAndPoll</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">              filename, content</span></span>
+<span class="line"><span class="sk-24292e-fff">            );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> { saved: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, filename, status: item.status };</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // cap agentic tool-use loops at 10 steps</span></span>
+<span class="line"><span class="sk-24292e-fff">      stopWhen: </span><span class="sk-6f42c1-ffc799">stepCountIs</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">      abortSignal: options?.abortSignal,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> result.</span><span class="sk-6f42c1-ffc799">toUIMessageStreamResponse</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// route requests to the SupportAgent durable object</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-24292e-fff">      (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> routeAgentRequest</span><span class="sk-24292e-fff">(request, env)) </span><span class="sk-d73a49-a0a0a0">||</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>使用这种方法，模型可以自行判断何时搜索、何时保存。搜索时，它会一并查询 <code>product-knowledge</code> 与客户过去的解决方案。问题解决后，它会保存一份摘要，以便在未来的对话中可以立即搜索。</p>
+<h2>AI Search 如何找到您搜索的内容</h2>
+<p>事实上，AI Search 运行着一个多步骤检索流程，其中的每一个步骤都是可配置的。</p>
+<h3>混合搜索：理解意图并匹配术语的搜索</h3>
+<p>到目前为止，AI Search 仅提供向量搜索。向量搜索擅长理解意图，但它可能会丢失具体信息。在“ERR_CONNECTION_REFUSED 超时”查询中，嵌入会捕捉连接失败的宽泛概念。但用户并不是在寻找通用网络文档，而是在寻找提到“ERR_CONNECTION_REFUSED”的特定文档。向量搜索可能会返回关于故障排除的结果，但不会显示包含该确切错误字符串的页面。</p>
+<p>关键词搜索可以弥补这种不足。AI Search 现在支持 BM25，这是应用最广泛的检索评分函数之一。BM25 根据查询术语出现频率、这些术语在整个语料库中的稀有程度以及文档长度，对文档进行评分。它会奖励特定术语的匹配，惩罚常用填充词，并对文档长度进行规范化。搜索“ERR_CONNECTION_REFUSED 超时”时，BM25 会找到包含“ERR_CONNECTION_REFUSED”这个术语的文档。然而，BM25 可能会遗漏关于“排查网络连接”的网页，即便该网页可能描述了相同的问题。这正是向量搜索的优势所在，也是您需要同时使用这两种搜索方式的原因。</p>
+<p>启用混合搜索后，它会并行运行向量和 BM25，融合搜索结果，以及根据需要可选地对结果进行重新排序：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1920&amp;h=1327&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1327" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
+</figure>
+<p>我们来看看 BM25 的新配置，以及它们如何协同工作。</p>
+<ol>
+	<li><strong>分词器</strong>控制着在索引文档时如何将其拆分成可匹配的术语。波特词干提取器（选项：<code>porter</code>）提取单词的词干，因此“running”是“run”的匹配项。字母三元组（选项：<code>trigram</code>）匹配字符子字符串，因此“conf”是“configuration”的匹配项。您可以使用波特方法处理文档等自然语言内容，以及使用字母三元组方法处理部分匹配至关重要的代码。</li>
+	<li><strong>关键词匹配模式</strong>控制着哪些文档是查询时用于 BM25 评分的候选文档。<code>AND</code> 要求查询的所有术语必须出现在文档中，OR 则只须包含至少有一个匹配项的文档。</li>
+	<li><strong>融合</strong>控制着查询时如何将向量和关键词结果合并到最终结果列表中。倒数排名融合（选项：<code>rrf</code>）按排名位置而不是分数合并，以免比较两个不兼容的评分标准；最大融合（选项：<code>max</code>）则按分数高低进行合并。</li>
+	<li><strong>（可选）重新排序</strong>会添加一个交叉编码器阶段，通过将查询和文档作为一个整体进行评估来重新评分。这可能有助于发现搜索结果中包含正确术语但并未回答问题的情况。</li>
+</ol>
+<p>如果省略，则每个选项均采用合理的默认值。在创建新实例时，您可以灵活配置重要选项：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  index_method: { keyword: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, vector: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  indexing_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    keyword_tokenizer: </span><span class="sk-032f62-99ffe4">"porter"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  retrieval_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    keyword_match_mode: </span><span class="sk-032f62-99ffe4">"or"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  fusion_method: </span><span class="sk-032f62-99ffe4">"rrf"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  reranking: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  reranking_model: </span><span class="sk-032f62-99ffe4">"@cf/baai/bge-reranker-base"</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>提高相关性：显示重要内容</h3>
+<p>检索功能可以为您提供相关结果，但仅靠相关性还是不够的。例如，在新闻搜索中，上周的文章与三年前的文章可能都与“选举结果”语义相关，但大多数用户可能希望查看最新的文章。提高相关性让您在检索时通过根据文档元数据对排名进行微调，在检索基础上添加业务逻辑。</p>
+<p>您可以根据时间戳（每个项目都有）或通过<a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>自定义元数据字段</u></a>来提高相关性。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// boost high priority docs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  query: </span><span class="sk-032f62-99ffe4">"deployment guide"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ai_search_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    boost_by: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      { field: </span><span class="sk-032f62-99ffe4">"timestamp"</span><span class="sk-24292e-fff">, direction: </span><span class="sk-032f62-99ffe4">"desc"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>跨实例搜索：跨边界进行查询</h3>
+<p>在支持智能体示例中，产品文档和客户解决方案历史记录根据设计存储在不同的实例中。但是，在智能体回答问题时，它需要同时从这两个地方获取上下文信息。如果没有跨实例搜索功能，用户需要进行两次单独的调用，然后自行合并结果。</p>
+<p>命名空间绑定会公开 <code>search()</code> 方法，为用户处理此问题。传入一个实例名称数组，然后获得一个排名列表：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  query: </span><span class="sk-032f62-99ffe4">"billing error"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ai_search_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    instance_ids: [</span><span class="sk-032f62-99ffe4">"product-knowledge"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"customer-abc123"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>跨实例合并结果，然后进行排名。智能体无需了解或关心共享的文档与客户解决方案历史记录存储在不同位置。</p>
+<h2>AI Search 实例的工作原理</h2>
+<p>到目前为止，我们已经介绍了 AI Search 如何找到正确的结果。现在，让我们来看看如何创建和管理搜索实例。</p>
+<p>如果您在此版本发布之前使用过 AI Search，就会了解设置流程：创建一个 R2 存储桶，将其链接到 AI Search 实例，AI Search 生成一个服务 API 令牌，然后您管理自己账户中配置的 Vectorize 索引。上传对象需要写入 R2，然后等待同步作业运行，以完成对象编制索引。</p>
+<p>如今，新创建的实例的工作方式有所不同。调用 <code>create()</code> 后，实例将自带内置的存储和向量索引。您可以上传文件，文件会被立即添加到索引，并且您可以使用 <code>uploadAndpoll()</code> API 轮询索引状态。完成后，您可以立即搜索该实例，并且无需连接任何外部依赖项。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// upload and wait for indexing to complete</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> item</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.items.</span><span class="sk-6f42c1-ffc799">uploadAndPoll</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"faq.md"</span><span class="sk-24292e-fff">, content, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  metadata: { category: </span><span class="sk-032f62-99ffe4">"onboarding"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(item.status); </span><span class="sk-6a737d-8b8b8b94">// "completed"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// immediately search after indexing is completed</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // alternative way to pass in users' query other than using parameter query </span></span>
+<span class="line"><span class="sk-24292e-fff">  messages: [{ role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">"onboarding guide"</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>每个实例还可能连接到外部数据源（R2 存储桶或网站）并按同步排程运行。它可以与提供的内置存储并存。在支持智能体示例中，<code>product-knowledge</code> 由 R2 存储桶提供支持，用于存储共享的文档；而每个客户的实例则使用内置存储来存储存储实时动态上传的上下文信息。</p>
+<h3>命名空间：在运行时创建搜索实例</h3>
+<p><code>ai_search_namespaces</code> 是一个全新的绑定，您可以利用它在运行时动态创建搜索实例。它将取代以前的 <code>env.AI.autorag()</code> API，后者通过 <code>AI</code> 绑定来访问 AI Search。旧的绑定在与 <a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers 兼容的时间框架</u></a>内仍然可用。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ai_search_namespaces"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI_SEARCH"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"namespace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"example"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>命名空间绑定为您提供命名空间级别的 API，例如 <code>create()</code>、<code>delete()</code>、<code>list()</code> 和 <code>search()</code>。若要动态创建实例（例如，每个智能体、每个客户、每个租户），则应该使用此绑定。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create an instance </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">"my-instance"</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// delete an instance and all its indexed data</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">delete</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"old-instance"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>新实例定价</h3>
+<p>到今天为止，新创建的实例将自动获得内置存储和向量索引。</p>
+<p>在 AI Search 公测期间，这些实例均可免费使用，但存在以下限制。当使用网站作为数据源时，通过 <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run（以前称为 Browser Rendering）</u></a>爬取网站现在已成为一项内置服务，这意味着您无需为此单独付费。测试期后，我们的目标是提供 AI Search 这项单一服务的统一定价，而不是针对每个底层组件单独计费。Workers AI 与 <a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway </u></a> 的使用将继续单独计费。</p>
+<p>我们将在开始计费前至少提前 30 天发出通知，并告知定价详情。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>限制</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers Free</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers Paid</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每个账户的 AI Search 实例数量</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5,000</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每个实例的文件数量</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100,000</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100 万或 50 万用于混合搜索</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>最大文件大小</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4MB</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4MB</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每月的查询量</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>20000</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>无限制</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每天的最大抓取页面数</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>500</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>无限制</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><em>现有实例怎么办？</em></p>
+<p>如果您在此版本发布之前创建了实例，它们将继续像现在一样正常运行。R2 存储桶、Vectorize 索引和 Browser Run 使用量均保留在您的账户中，并按照以前的方式计费。我们将尽快分享现有实例迁移的详细信息。</p>
+<h2>立即开始使用</h2>
+<p>搜索是智能体最基本的功能之一。使用 AI Search，您无需构建任何基础设施即可搜索。创建实例、为其提供数据，即可让智能体进行搜索。</p>
+<p>立即运行以下命令，创建您的第一个实例：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> ai-search</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> my-search</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>欢迎查看<a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>文档</u></a>并加入 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>，分享您正在构建的应用。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1920&amp;h=472&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
+</figure>

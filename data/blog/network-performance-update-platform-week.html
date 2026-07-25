@@ -1,392 +1,322 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kmBeDaEuC01LF5KYrAywI/a2675e38536ac54396461cd9b24a3d8c/network-performance-update-platform-week.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>In September 2021, we <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">shared extensive benchmarking results</a> of 1,000 networks all around the world. The results showed that on a range of tests (TCP connection time, time to first byte, time to last byte), and on different measures (p95, mean), Cloudflare was the fastest provider in 49% of networks around the world. Since then, we’ve worked to continuously improve performance, with the ultimate goal of being the fastest everywhere and an intermediate goal to grow the number of networks where we’re the fastest by at least 10% every Innovation Week. We met that goal during <a href="https://blog.cloudflare.com/network-performance-update-security-week">Security Week</a> (March 2022), and we’re carrying the work over to Platform Week (May 2022).</p>
-	<p>We’re excited to update you on the latest results, but before we do: after running with this benchmark for nine months, we've also been looking for ways to improve the benchmark itself — to make it even more representative of speeds in the real world. To that end, we're expanding our measured networks from 1,000 to 3,000, to give an even more accurate sense of real world performance across the globe.</p>
-	<p>In terms of results: using the old benchmark of 1,000 networks, we’re the fastest in 69% of them. In this new expanded view of 3,000 networks, we’re the fastest in 42% of them. We’ve demonstrated a consistent ability to improve our performance against what we measure, and we’re excited to optimize our performance and lift our ranking in these smaller networks all around the world.</p>
-	<p>In addition to sharing a general update on where our network performance stands, we’re also sharing updated performance metrics on our Workers platform (given that it’s Platform Week!). We’ve done an extensive benchmark of Cloudflare Workers vs Fastly’s Compute@Edge.</p>
-	<p>We’ve got the results below, but before we get to that, we want to spend a bit of time on our revamped measurements.</p>
-	<div class="flex anchor relative">
-		<h2 id="revamped-measurements">Revamped measurements</h2>
-		<a href="https://blog.cloudflare.com/#revamped-measurements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A few months ago, we discussed the performance of Cloudflare Workers, as compared to other similar offerings out there. We compared our performance to Fastly’s Compute@Edge, showing that Workers was significantly faster.</p>
-	<p>After we published our results, there were questions and suggestions on how to improve our testing methodology (including sharing more detail about where and how we ran the tests). As we re-ran tests for this iteration, we made some small changes, and also worked to address the suggestions from the community. Let’s talk about what’s changed and why.</p>
-	<div class="flex anchor relative">
-		<h3 id="measuring-what-matters">Measuring what matters</h3>
-		<a href="https://blog.cloudflare.com/#measuring-what-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To quantify global network performance, we have to get enough data from around the world, across all manner of different networks, comparing ourselves with other providers. We used Real User Measurements (RUM) to fetch a 100kB file from different providers. Users around the world report the performance of different providers. The more users who report the data, the higher fidelity the signal is. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
-	<p>In the process of quantifying network performance, it became clear where we needed to expand our scope in measuring performance. <a href="https://blog.cloudflare.com/network-performance-update-security-week">After Security Week</a>, we were fastest in 71% of networks, and we decided that we wanted to expand the pool of networks from the top 1,000 most reported networks to the top 3,000 most reported networks.</p>
-	<p>We’ve shown the graph detailing the <i>number</i> of networks where Cloudflare is #1 in network performance, but from here on out, we will only be showing this graph in <i>percentages</i> of networks where we are number one out of 100%, since the denominator will be changing going forward as we set ourselves harder and harder challenges.</p>
-	<div class="flex anchor relative">
-		<h3 id="benchmarking-for-everyone">Benchmarking for everyone</h3>
-		<a href="https://blog.cloudflare.com/#benchmarking-for-everyone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At the time we published our earlier set of benchmarks, we had an unnecessary “no benchmarking” clause in our Terms of Service. It has since been removed. It’s been a while since we’ve worried about such things, and the clause lived past its intended life in our ToS.</p>
-	<p>We’ve done the work to show where we are the fastest provider, and it’s important that everyone else be able to validate that independently. We’re also confident that well run benchmarks will only help further improve performance for Workers, other Cloudflare products, and the Internet as a whole. Game on.</p>
-	<div class="flex anchor relative">
-		<h3 id="measuring-workers-performance-from-real-users">Measuring Workers performance from real users</h3>
-		<a href="https://blog.cloudflare.com/#measuring-workers-performance-from-real-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To run our tests, we used Catchpoint, an industry standard “synthetic” testing tool, and measurements collected from real users distributed around the world. Catchpoint is a monitoring platform that has <a href="https://www.catchpoint.com/global-observability-network" target="_blank" rel="noopener noreferrer">around 2,000 total endpoints</a> distributed around the world that can be configured to fetch specific resources and time each test. Catchpoint is useful for network providers like us as it provides a consistent, repeatable way to measure end-to-end performance of a workload, and delivers a best-effort approximation for what a user sees.</p>
-	<p>Catchpoint has a series of backbone nodes that are embedded in ISPs around the world. That means that these nodes are plugged into ISP routers just like you are, and the traffic goes through the ISP network to each endpoint they are monitoring. These can approximate a real user, but they will never truly approximate a real user. For example, the bandwidth for these nodes is 100% dedicated for platform monitoring, as opposed to your home Internet connection, where your Internet experience will be a mixed bag of different use cases, some of which won’t talk to Workers applications at all.</p>
-	<p>For this new test, we chose 300 backbone nodes that are embedded in last mile ISPs around the world. We filtered out nodes in cloud providers, or in metro areas with multiple transit options, trying to remove duplicate paths as much as possible.</p>
-	<p>We cross-checked these tests with our own data set, which is collected from users connecting to free websites when they are served 1xxx error pages, similar to how we collect data for global network performance. When a user sees this error page, that page will contain a call that will execute these tests and upload performance metrics on these calls to Cloudflare. Users would run these calls independently of the error page, ensuring that Cloudflare did not get a head start in these tests.</p>
-	<p>We also changed our test methodology to use paid accounts for both Fastly and Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h3 id="changing-the-numbers-we-look-at">Changing the numbers we look at</h3>
-		<a href="https://blog.cloudflare.com/#changing-the-numbers-we-look-at" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For this new test, we decided to look at Wait time in addition to Time to First Byte. <a href="https://www.catchpoint.com/blog/http-request-anatomy" target="_blank" rel="noopener noreferrer">Time to First Byte</a> is the time it takes for a web server to establish a connection, fetch the content, and deliver the first byte of a response to a user, and Wait time is the time the client spends waiting for the server to send back that first byte after the connection is established. We are using this particular measurement to look at the actual time it takes for the server to compute the request on the machine. <a href="https://blog.catchpoint.com/2010/09/17/anatomyhttp/?_ga=2.244682437.1326161414.1652456190-846434697.1631231609" target="_blank" rel="noopener noreferrer">Wait time</a> is a subcomponent of TTFB, and contains the machine processing time, the time it takes the server to give the response to the socket to be sent back to the user, and the time it takes the response to reach the user. There could be latency in passing the request to the socket on the machine, but we measured the actual time it took the server to send the request for all tests and found it to be zero:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3eXmohXQvNpex5OqjBXq1u/22d996b996ac35b865ec5d3d7e2e4f78/image2-39.png" alt="" class="kg-image" width="1974" height="486" loading="lazy">
-
-	</figure>
-	<p>So we would calculate the wait time as the amount of time spent on the box plus the time it took the server to send the packet over the wire to the client.</p>
-	<p>However, others have noted that using Time to First Byte to measure performance of serverless computing solutions could potentially be misleading because user performance measurements can be influenced by more than just the time spent computing functions on the machine. For example, things like the time to connect to the server, DNS resolution, and cache times can impact Time to First Byte. Time to connect to the server (connect) can be impacted by how well peered a network is (or how poorly). DNS resolution can be impacted by client behavior, local DNS behavior, or by the performance of the provider’s DNS. Cache times can be driven by the performance of the cache on the server itself.</p>
-	<p>We agree that it is difficult to tease out computing time from Time to First Byte. To look at that particular aspect of serverless computing, we look at Wait, which is a value that contains the least amount of variables: we aren’t caching anything during our tests, DNS isn’t part of the wait time, and the only thing impacting Wait aside from the time spent on the machine is the Connect time.</p>
-	<p>However, since we’re trying to measure the end user experience and not just the amount of time spent on a server, we want to use both the Wait and TTFB so that we can show the time spent both on the server and how that impacts end-to-end performance.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-in-the-test">What’s in the test?</h3>
-		<a href="https://blog.cloudflare.com/#whats-in-the-test" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For our test this time around, we decided to measure three things: a simple JavaScript function like last time, a complex JavaScript function, and a complex Rust function. Here are the functions for each of them:</p>
-	<pre class="language-js"><code class="language-js">async function getErrorResponse(event, message, status) {
-  return new Response(message, {status: status, headers: {'Content-Type': 'text/plain'}});
-}</code></pre>
-
-	<pre class="language-js"><code class="language-js">function testHardBusyLoop() {
-  let value = 0;
-  let offset = Date.now();
-
-  for (let n = 0; n &lt; 15000; n++) {
-    value += Math.floor(Math.abs(Math.sin(offset + n)) * 10);
-  }
-
-  return value;
-}</code></pre>
-
-	<pre class="language-rust"><code class="language-rust">fn test_hard_busy_loop() -&gt; i32 {
-  let mut value = 0;
-  let offset = Date::now().as_millis();
-
-  for n in 0..15000 {
-    value += (((offset + n) as f64).sin().abs() * 10.0) as i32;
-  }
-
-  value
-}</code></pre>
-	<p>The goals of each of these tests is simple: test the ability of Workers and Compute@Edge to perform compute actions.</p>
-	<div class="flex anchor relative">
-		<h2 id="latest-update-on-network-performance">Latest update on network performance</h2>
-		<a href="https://blog.cloudflare.com/#latest-update-on-network-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have two updates on data: a general network performance update, and then data on how Workers compares with Compute@Edge.</p>
-	<p>At Security Week (March 2022), we shared that we were faster in more of the most reported networks than our competitors. Out of the top 1,000 networks in the world (by number of IPv4 addresses advertised), here’s a breakdown of how many providers are number one in p95 TCP Connection Time, which represents the time it takes for a user to connect to the provider. This data is from Security Week (March 2022):</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27GOQxEzoC8xxd4ENFU4Cm/af66bf107106b32c1dd9dbdfd3d782a5/image5-15.png" alt="" class="kg-image" width="1204" height="516" loading="lazy">
-
-	</figure>
-	<p>Recognizing that we are now looking at different numbers of networks, here is what the distribution looks like for the top 3,000 networks for Platform Week (May 2022):</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2LmzCwB1Y3BbyJJ1z8v7Yd/7a53c4eb537c6ecf1ea2f675f5d58d68/image8-3.png" alt="" class="kg-image" width="1176" height="496" loading="lazy">
-
-	</figure>
-	<p>In addition to being the fastest across popular <i>networks</i>, Cloudflare is also committed to being the fastest provider in every country.</p>
-	<p>Using data on the top 1,000 networks from Full Stack Week (March 2022), here’s what the world map looks like:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zThyt1MKYzfdikI7hkgMV/6d77078ebedb85cd2864f4b15d99125c/image9-2.png" alt="" class="kg-image" width="1999" height="1025" loading="lazy">
-
-	</figure>
-	<p>And here’s what the world looks like while looking at the top 3,000 networks:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47bQqlUVtvF5kNq36qb358/f330ff35feb4f99fa5f9b82101a13cfd/image11.png" alt="" class="kg-image" width="1999" height="1007" loading="lazy">
-
-	</figure>
-	<p>Cloudflare became #1 in more countries in Africa and Europe, some of which previously did not have enough samples to officially be counted to one provider or another.</p>
-	<div class="flex anchor relative">
-		<h2 id="workers-vs-compute-edge">Workers vs Compute@Edge</h2>
-		<a href="https://blog.cloudflare.com/#workers-vs-compute-edge" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Moving on from general network results, what does performance look like when comparing serverless compute products across providers — in this case, Cloudflare Workers performance to Compute@Edge? Looking at the Catchpoint data, the first thing we noticed was Cloudflare is faster than Fastly in all tests at the 95th percentile for Time to First Byte:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wL9DyjkpfxlbYQIsPcEKw/d26c3f5e67165cdee85aa69e42e5aec5/image3-30.png" alt="" class="kg-image" width="1998" height="900" loading="lazy">
-
-	</figure>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Test</b></p>
-				</td>
-				<td>
-					<p><b>95th percentile TTFB (ms)</b></p>
-				</td>
+<p>In September 2021, we <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">shared extensive benchmarking results</a> of 1,000 networks all around the world. The results showed that on a range of tests (TCP connection time, time to first byte, time to last byte), and on different measures (p95, mean), Cloudflare was the fastest provider in 49% of networks around the world. Since then, we’ve worked to continuously improve performance, with the ultimate goal of being the fastest everywhere and an intermediate goal to grow the number of networks where we’re the fastest by at least 10% every Innovation Week. We met that goal during <a href="https://blog.cloudflare.com/network-performance-update-security-week">Security Week</a> (March 2022), and we’re carrying the work over to Platform Week (May 2022).</p>
+<p>We’re excited to update you on the latest results, but before we do: after running with this benchmark for nine months, we've also been looking for ways to improve the benchmark itself — to make it even more representative of speeds in the real world. To that end, we're expanding our measured networks from 1,000 to 3,000, to give an even more accurate sense of real world performance across the globe.</p>
+<p>In terms of results: using the old benchmark of 1,000 networks, we’re the fastest in 69% of them. In this new expanded view of 3,000 networks, we’re the fastest in 42% of them. We’ve demonstrated a consistent ability to improve our performance against what we measure, and we’re excited to optimize our performance and lift our ranking in these smaller networks all around the world.</p>
+<p>In addition to sharing a general update on where our network performance stands, we’re also sharing updated performance metrics on our Workers platform (given that it’s Platform Week!). We’ve done an extensive benchmark of Cloudflare Workers vs Fastly’s Compute@Edge.</p>
+<p>We’ve got the results below, but before we get to that, we want to spend a bit of time on our revamped measurements.</p>
+<h2>Revamped measurements</h2>
+<p>A few months ago, we discussed the performance of Cloudflare Workers, as compared to other similar offerings out there. We compared our performance to Fastly’s Compute@Edge, showing that Workers was significantly faster.</p>
+<p>After we published our results, there were questions and suggestions on how to improve our testing methodology (including sharing more detail about where and how we ran the tests). As we re-ran tests for this iteration, we made some small changes, and also worked to address the suggestions from the community. Let’s talk about what’s changed and why.</p>
+<h3>Measuring what matters</h3>
+<p>To quantify global network performance, we have to get enough data from around the world, across all manner of different networks, comparing ourselves with other providers. We used Real User Measurements (RUM) to fetch a 100kB file from different providers. Users around the world report the performance of different providers. The more users who report the data, the higher fidelity the signal is. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
+<p>In the process of quantifying network performance, it became clear where we needed to expand our scope in measuring performance. <a href="https://blog.cloudflare.com/network-performance-update-security-week">After Security Week</a>, we were fastest in 71% of networks, and we decided that we wanted to expand the pool of networks from the top 1,000 most reported networks to the top 3,000 most reported networks.</p>
+<p>We’ve shown the graph detailing the <em>number</em> of networks where Cloudflare is #1 in network performance, but from here on out, we will only be showing this graph in <em>percentages</em> of networks where we are number one out of 100%, since the denominator will be changing going forward as we set ourselves harder and harder challenges.</p>
+<h3>Benchmarking for everyone</h3>
+<p>At the time we published our earlier set of benchmarks, we had an unnecessary “no benchmarking” clause in our Terms of Service. It has since been removed. It’s been a while since we’ve worried about such things, and the clause lived past its intended life in our ToS.</p>
+<p>We’ve done the work to show where we are the fastest provider, and it’s important that everyone else be able to validate that independently. We’re also confident that well run benchmarks will only help further improve performance for Workers, other Cloudflare products, and the Internet as a whole. Game on.</p>
+<h3>Measuring Workers performance from real users</h3>
+<p>To run our tests, we used Catchpoint, an industry standard “synthetic” testing tool, and measurements collected from real users distributed around the world. Catchpoint is a monitoring platform that has <a href="https://www.catchpoint.com/global-observability-network" target="_blank" rel="noopener noreferrer">around 2,000 total endpoints</a> distributed around the world that can be configured to fetch specific resources and time each test. Catchpoint is useful for network providers like us as it provides a consistent, repeatable way to measure end-to-end performance of a workload, and delivers a best-effort approximation for what a user sees.</p>
+<p>Catchpoint has a series of backbone nodes that are embedded in ISPs around the world. That means that these nodes are plugged into ISP routers just like you are, and the traffic goes through the ISP network to each endpoint they are monitoring. These can approximate a real user, but they will never truly approximate a real user. For example, the bandwidth for these nodes is 100% dedicated for platform monitoring, as opposed to your home Internet connection, where your Internet experience will be a mixed bag of different use cases, some of which won’t talk to Workers applications at all.</p>
+<p>For this new test, we chose 300 backbone nodes that are embedded in last mile ISPs around the world. We filtered out nodes in cloud providers, or in metro areas with multiple transit options, trying to remove duplicate paths as much as possible.</p>
+<p>We cross-checked these tests with our own data set, which is collected from users connecting to free websites when they are served 1xxx error pages, similar to how we collect data for global network performance. When a user sees this error page, that page will contain a call that will execute these tests and upload performance metrics on these calls to Cloudflare. Users would run these calls independently of the error page, ensuring that Cloudflare did not get a head start in these tests.</p>
+<p>We also changed our test methodology to use paid accounts for both Fastly and Cloudflare.</p>
+<h3>Changing the numbers we look at</h3>
+<p>For this new test, we decided to look at Wait time in addition to Time to First Byte. <a href="https://www.catchpoint.com/blog/http-request-anatomy" target="_blank" rel="noopener noreferrer">Time to First Byte</a> is the time it takes for a web server to establish a connection, fetch the content, and deliver the first byte of a response to a user, and Wait time is the time the client spends waiting for the server to send back that first byte after the connection is established. We are using this particular measurement to look at the actual time it takes for the server to compute the request on the machine. <a href="https://blog.catchpoint.com/2010/09/17/anatomyhttp/?_ga=2.244682437.1326161414.1652456190-846434697.1631231609" target="_blank" rel="noopener noreferrer">Wait time</a> is a subcomponent of TTFB, and contains the machine processing time, the time it takes the server to give the response to the socket to be sent back to the user, and the time it takes the response to reach the user. There could be latency in passing the request to the socket on the machine, but we measured the actual time it took the server to send the request for all tests and found it to be zero:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - lJM9en" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4662FW6K4E4DNN0W2FWFD8.png&amp;w=1920&amp;h=473&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="473" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>So we would calculate the wait time as the amount of time spent on the box plus the time it took the server to send the packet over the wire to the client.</p>
+<p>However, others have noted that using Time to First Byte to measure performance of serverless computing solutions could potentially be misleading because user performance measurements can be influenced by more than just the time spent computing functions on the machine. For example, things like the time to connect to the server, DNS resolution, and cache times can impact Time to First Byte. Time to connect to the server (connect) can be impacted by how well peered a network is (or how poorly). DNS resolution can be impacted by client behavior, local DNS behavior, or by the performance of the provider’s DNS. Cache times can be driven by the performance of the cache on the server itself.</p>
+<p>We agree that it is difficult to tease out computing time from Time to First Byte. To look at that particular aspect of serverless computing, we look at Wait, which is a value that contains the least amount of variables: we aren’t caching anything during our tests, DNS isn’t part of the wait time, and the only thing impacting Wait aside from the time spent on the machine is the Connect time.</p>
+<p>However, since we’re trying to measure the end user experience and not just the amount of time spent on a server, we want to use both the Wait and TTFB so that we can show the time spent both on the server and how that impacts end-to-end performance.</p>
+<h3>What’s in the test?</h3>
+<p>For our test this time around, we decided to measure three things: a simple JavaScript function like last time, a complex JavaScript function, and a complex Rust function. Here are the functions for each of them:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getErrorResponse</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">message</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">status</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(message, {status: status, headers: {</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/plain'</span><span class="sk-24292e-fff">}});</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> testHardBusyLoop</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> offset </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> n </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; n </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 15000</span><span class="sk-24292e-fff">; n</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    value </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> Math.</span><span class="sk-6f42c1-ffc799">floor</span><span class="sk-24292e-fff">(Math.</span><span class="sk-6f42c1-ffc799">abs</span><span class="sk-24292e-fff">(Math.</span><span class="sk-6f42c1-ffc799">sin</span><span class="sk-24292e-fff">(offset </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> n)) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> value;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> test_hard_busy_loop</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799"> i32</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-d73a49-a0a0a0"> mut</span><span class="sk-24292e-fff"> value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> offset </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">as_millis</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> n </span><span class="sk-d73a49-ffc799">in</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-d73a49-a0a0a0">..</span><span class="sk-005cc5-ffc799">15000</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    value </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> (((offset </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> n) </span><span class="sk-d73a49-ffc799">as</span><span class="sk-6f42c1-ffc799"> f64</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">sin</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">abs</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 10.0</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">as</span><span class="sk-6f42c1-ffc799"> i32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  value</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The goals of each of these tests is simple: test the ability of Workers and Compute@Edge to perform compute actions.</p>
+<h2>Latest update on network performance</h2>
+<p>We have two updates on data: a general network performance update, and then data on how Workers compares with Compute@Edge.</p>
+<p>At Security Week (March 2022), we shared that we were faster in more of the most reported networks than our competitors. Out of the top 1,000 networks in the world (by number of IPv4 addresses advertised), here’s a breakdown of how many providers are number one in p95 TCP Connection Time, which represents the time it takes for a user to connect to the provider. This data is from Security Week (March 2022):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="306" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=715&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=640&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=715&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=750&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=828&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=1080&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=1280&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=1430&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - nrevEw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4523D149CBR0P4JEDZ9Q3B.png&amp;w=1204&amp;h=516&amp;f=webp" data-lightbox-width="1204" data-lightbox-height="516" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="306" class="pt-portable-image-media"></div>
+</figure>
+<p>Recognizing that we are now looking at different numbers of networks, here is what the distribution looks like for the top 3,000 networks for Platform Week (May 2022):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="302" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=640&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=750&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=828&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=1080&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=1280&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=1430&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - kkqLWm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457S9XR5AVW88G4N49TDDN.png&amp;w=1176&amp;h=496&amp;f=webp" data-lightbox-width="1176" data-lightbox-height="496" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="302" class="pt-portable-image-media"></div>
+</figure>
+<p>In addition to being the fastest across popular <em>networks</em>, Cloudflare is also committed to being the fastest provider in every country.</p>
+<p>Using data on the top 1,000 networks from Full Stack Week (March 2022), here’s what the world map looks like:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="367" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=640&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=750&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=828&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=1080&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=1280&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=1430&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1038 Embedded Image - 9zApIk" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47C3Z144A4J6ENKE33EBS4.png&amp;w=1920&amp;h=984&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="984" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="367" class="pt-portable-image-media"></div>
+</figure>
+<p>And here’s what the world looks like while looking at the top 3,000 networks:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="360" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=715&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=640&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=715&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=750&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=828&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=1080&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=1280&amp;h=644&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=1430&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - uP7Veq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GK8R7MC5CABRHK4EBKQZ.png&amp;w=1920&amp;h=967&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="967" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="360" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare became #1 in more countries in Africa and Europe, some of which previously did not have enough samples to officially be counted to one provider or another.</p>
+<h2>Workers vs Compute@Edge</h2>
+<p>Moving on from general network results, what does performance look like when comparing serverless compute products across providers — in this case, Cloudflare Workers performance to Compute@Edge? Looking at the Catchpoint data, the first thing we noticed was Cloudflare is faster than Fastly in all tests at the 95th percentile for Time to First Byte:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="322" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=715&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=640&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=715&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=750&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=828&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=1080&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=1280&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=1430&amp;h=644&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - KtLJgv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G37B6H5B5RHSE9HSQHX3.png&amp;w=1920&amp;h=865&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="865" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="322" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Test</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>95th percentile TTFB (ms)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare JS no-op</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>469</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly JS no-op</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>596</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare JS hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>481</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly JS hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>631</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare Rust hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>493</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly Rust hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>577</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Cloudflare is significantly faster at all tests compared to Fastly. But let’s dig into why that is. Looking at p95 Wait, we can see that Cloudflare does have an edge in most tests related to compute on-box:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qBIGm4DLEPbKZU6MgeFI/2b927f1f93cfa81a32829063736a8820/image10-1.png" alt="" class="kg-image" width="1982" height="912" loading="lazy">
-
-	</figure>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Test</b></p>
-				</td>
-				<td>
-					<p><b>95th Percentile Wait (ms)</b></p>
-				</td>
+</div>
+<p>Cloudflare is significantly faster at all tests compared to Fastly. But let’s dig into why that is. Looking at p95 Wait, we can see that Cloudflare does have an edge in most tests related to compute on-box:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="329" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=640&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=750&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=828&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=1080&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=1280&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=1430&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - jXr10h" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470WJY1Y1Y474N624S91M3.png&amp;w=1920&amp;h=883&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="883" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="329" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Test</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>95th Percentile Wait (ms)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare JS no-op</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>123</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly JS no-op</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>123</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare JS hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>136</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly JS hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>170</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare Rust hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>160</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly Rust hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>121</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Looking at the Wait times, you can see that Cloudflare does have a significant edge in on-box performance, except in Rust, where Fastly claims their workloads are the most optimized. This data backs up that claim. But why is Fastly so much slower on Time to First Byte? The answer lies in the rest of the request. While latency spent in compute matters, it only matters in conjunction with the rest of the network performance. And Cloudflare has an advantage over Fastly in Connect times and SSL establishment times:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6fC76Hvccza62kgiuAQLJI/c0b14e9db28a17b38c0477cd132895eb/image4-24.png" alt="" class="kg-image" width="1982" height="1370" loading="lazy">
-
-	</figure>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Test</b></p>
-				</td>
-				<td>
-					<p><b>95th Percentile Connect (ms)</b></p>
-				</td>
-				<td>
-					<p><b>95th Percentile SSL (ms)</b></p>
-				</td>
+</div>
+<p>Looking at the Wait times, you can see that Cloudflare does have a significant edge in on-box performance, except in Rust, where Fastly claims their workloads are the most optimized. This data backs up that claim. But why is Fastly so much slower on Time to First Byte? The answer lies in the rest of the request. While latency spent in compute matters, it only matters in conjunction with the rest of the network performance. And Cloudflare has an advantage over Fastly in Connect times and SSL establishment times:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - fro0EO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489VZ6D6QCPW92C749AEYC.png&amp;w=1920&amp;h=1327&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1327" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Test</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>95th Percentile Connect (ms)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>95th Percentile SSL (ms)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare JS no-op</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>81</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>289</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly JS no-op</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>88</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>293</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare JS hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>81</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>286</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly JS hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>88</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>291</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare Rust hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>81</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>288</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly Rust hard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>88</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>295</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Cloudflare’s hyper-optimized web stack allows us to process all requests faster, meaning that Workers code gets started faster. Having that extra head start in Connect and SSL allows us to further increase the distance between us and Compute@Edge.</p>
-	<p>To verify these results, we compared the Catchpoint results to our own data set. Here is the p95 TTFB for the JavaScript and Rust hard loops for both Fastly and Cloudflare from our data:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6d2NTigMxkcPtya4OYoL29/6e867e20d4437d2e2574bce7b3d8c577/image1-43.png" alt="" class="kg-image" width="1999" height="657" loading="lazy">
-
-	</figure>
-	<p>As you can see, Cloudflare is faster on JavaScript and Rust calls. And when you look at wait time, you will see that outside of Catchpoint results, Cloudflare even beats Fastly in the Rust hard tests:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gMdeYBHGrgSPR4psKORBU/9ca7b3ee2f89fc050c53e6895eecdabf/image6-15.png" alt="" class="kg-image" width="1999" height="661" loading="lazy">
-
-	</figure>
-	<p>The big takeaway from this is that in addition to Cloudflare being faster for the time spent processing requests, Cloudflare’s network and performance optimizations as a whole set us apart and make our Workers platform even faster.</p>
-	<div class="flex anchor relative">
-		<h2 id="a-fast-network-makes-for-a-faster-developer-platform">A fast network makes for a faster developer platform</h2>
-		<a href="https://blog.cloudflare.com/#a-fast-network-makes-for-a-faster-developer-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare’s commitment to building the fastest network allows us to deliver unparalleled performance for all applications, including our developer tools. Whether it’s by accelerating Cloudflare Pages performance by hosting on every single Cloudflare server, or by deploying Workers in 275 cities without developers needing to configure a thing, Cloudflare’s developer tools are all built on top of Cloudflare’s global network. We’re committed to making our network faster so that our developer products are as performant as they could possibly be.</p>
-	<p>And it’s not just the developer platform. Cloudflare runs an integrated and optimized stack that includes DDoS protection, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAF</a>, rate limiting, bot management, caching, SSL, smart routing, and more. By having a single software stack we are able to offer the widest range of features while ensuring that performance (no matter which of our products you use) remains excellent. We don’t want you to have to compromise performance to get security or vice versa.</p>
 </div>
+<p>Cloudflare’s hyper-optimized web stack allows us to process all requests faster, meaning that Workers code gets started faster. Having that extra head start in Connect and SSL allows us to further increase the distance between us and Compute@Edge.</p>
+<p>To verify these results, we compared the Catchpoint results to our own data set. Here is the p95 TTFB for the JavaScript and Rust hard loops for both Fastly and Cloudflare from our data:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - qMspuh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4892304RYR5GARAFNX14PX.png&amp;w=1920&amp;h=631&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="631" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<p>As you can see, Cloudflare is faster on JavaScript and Rust calls. And when you look at wait time, you will see that outside of Catchpoint results, Cloudflare even beats Fastly in the Rust hard tests:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="236" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=715&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=640&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=715&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=750&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=828&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=1080&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=1280&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=1430&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1101 Embedded Image - YZn5I3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FGQTSWKTQEVGCE6XK57E.png&amp;w=1920&amp;h=635&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="635" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="236" class="pt-portable-image-media"></div>
+</figure>
+<p>The big takeaway from this is that in addition to Cloudflare being faster for the time spent processing requests, Cloudflare’s network and performance optimizations as a whole set us apart and make our Workers platform even faster.</p>
+<h2>A fast network makes for a faster developer platform</h2>
+<p>Cloudflare’s commitment to building the fastest network allows us to deliver unparalleled performance for all applications, including our developer tools. Whether it’s by accelerating Cloudflare Pages performance by hosting on every single Cloudflare server, or by deploying Workers in 275 cities without developers needing to configure a thing, Cloudflare’s developer tools are all built on top of Cloudflare’s global network. We’re committed to making our network faster so that our developer products are as performant as they could possibly be.</p>
+<p>And it’s not just the developer platform. Cloudflare runs an integrated and optimized stack that includes DDoS protection, <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">WAF</a>, rate limiting, bot management, caching, SSL, smart routing, and more. By having a single software stack we are able to offer the widest range of features while ensuring that performance (no matter which of our products you use) remains excellent. We don’t want you to have to compromise performance to get security or vice versa.</p>

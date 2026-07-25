@@ -1,300 +1,233 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2K7WFOjmj3tTCZ2C90XOzp/1fd9487aaaf44a7b6f853f82f9e2be5f/image1-26.png" alt="Building secure websites: a guide to Cloudflare Pages and Turnstile Plugin" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<p>Balancing developer velocity and security against bots is a constant challenge. Deploying your changes as quickly and easily as possible is essential to stay ahead of your (or your customers’) needs and wants. Ensuring your website is safe from malicious bots — without degrading user experience with alien hieroglyphics to decipher just to prove that you are a human — is no small feat. With <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Pages</a> and <a href="https://developers.cloudflare.com/turnstile" target="_blank" rel="noopener noreferrer">Turnstile</a>, we'll walk you through just how easy it is to have the best of both worlds!</p>
-	<p><a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a> offer a seamless platform for deploying and scaling your websites with ease. You can get started right away with configuring your websites with a quick integration using your git provider, and get set up with unlimited requests, bandwidth, collaborators, and projects.</p>
-	<p>Cloudflare Turnstile is Cloudflare’s <a href="https://www.cloudflare.com/products/turnstile" target="_blank" rel="noopener noreferrer">CAPTCHA alternative solution</a> where your users don’t ever have to solve another puzzle to get to your website, no more stop lights and fire hydrants. You can protect your site without having to put your users through an annoying user experience. If you are already using another CAPTCHA service, we have made it easy for you to <a href="https://developers.cloudflare.com/turnstile/migration" target="_blank" rel="noopener noreferrer">migrate over to Turnstile</a> with minimal effort needed. Check out the <a href="https://developers.cloudflare.com/turnstile" target="_blank" rel="noopener noreferrer">Turnstile documentation</a> to get started.</p>
-	<div class="flex anchor relative">
-		<h3 id="alright-what-are-we-building">Alright, what are we building?</h3>
-		<a href="https://blog.cloudflare.com/#alright-what-are-we-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this tutorial, we'll walk you through integrating Cloudflare Pages with Turnstile to secure your website against bots. You'll learn how to deploy Pages, embed the Turnstile widget, validate the token on the server side, and monitor Turnstile analytics. Let’s build upon <a href="https://developers.cloudflare.com/pages/tutorials/forms" target="_blank" rel="noopener noreferrer">this tutorial</a> from Cloudflare’s developer docs, which outlines how to create an HTML form with Pages and Functions. We’ll also show you how to secure it by integrating with Turnstile, complete with client-side rendering and server-side validation, using the <a href="https://developers.cloudflare.com/pages/functions/plugins/turnstile" target="_blank" rel="noopener noreferrer">Turnstile Pages Plugin</a>!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DaVCMwbVOKW17aOgthwZh/f756f3466f64bc4f889a5b9ea497b910/Screenshot-2024-03-07-at-11.52.43.png" alt="" class="kg-image" width="2000" height="1425" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="step-1-deploy-your-pages">Step 1: Deploy your Pages</h3>
-		<a href="https://blog.cloudflare.com/#step-1-deploy-your-pages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On the Cloudflare Dashboard, select your account and go to Workers &amp; Pages to create a new Pages application with your git provider. Choose the repository where you cloned the tutorial project or any other repository that you want to use for this walkthrough.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kZP90IyFiaZzl7fX608Dl/355af9d8c998c19e0c032df65d14c324/image2-23.png" alt="" class="kg-image" width="1999" height="1135" loading="lazy">
-
-	</figure>
-	<p>The Build settings for this project is simple:</p>
-	<ul>
-		<li>
-			<p><b>Framework preset</b>: None</p>
-		</li>
-		<li>
-			<p><b>Build command</b>: npm install @cloudflare/pages-plugin-turnstile</p>
-		</li>
-		<li>
-			<p><b>Build output directory</b>: public</p>
-		</li>
-	</ul>
-	<p>Once you select “Save and Deploy”, all the magic happens under the hood and voilà! The form is already deployed.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6I301dY7rRKreWxUwEuHs/7ea859c666d3c04b39c139c47d3b1c7f/image8-3.png" alt="" class="kg-image" width="883" height="363" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="step-2-embed-turnstile-widget">Step 2: Embed Turnstile widget</h3>
-		<a href="https://blog.cloudflare.com/#step-2-embed-turnstile-widget" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now, let’s navigate to Turnstile and add the newly created Pages site.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BadX97G4W7s5FUuMx82MV/891f196d7f6840d7773684c13d9173ab/image5-14.png" alt="" class="kg-image" width="1999" height="1134" loading="lazy">
-
-	</figure>
-	<p>Here are the widget configuration options:</p>
-	<ul>
-		<li>
-			<p><b>Domain</b>: All you need to do is add the domain for the Pages application. In this example, it’s “pages-turnstile-demo.pages.dev”. For each deployment, Pages generates a <a href="https://developers.cloudflare.com/pages/configuration/preview-deployments" target="_blank" rel="noopener noreferrer">deployment specific preview</a> subdomain. Turnstile covers all subdomains automatically, so your Turnstile widget will work as expected even in your previews. This is covered more extensively in our <a href="https://developers.cloudflare.com/turnstile/reference/domain-management" target="_blank" rel="noopener noreferrer">Turnstile domain management documentation</a>.</p>
-		</li>
-		<li>
-			<p><b>Widget Mode</b>: There are three types of <a href="https://developers.cloudflare.com/turnstile/reference/widget-types" target="_blank" rel="noopener noreferrer">widget modes</a> you can choose from.</p>
-		</li>
-		<li>
-			<p><b>Managed</b>: This is the recommended option where Cloudflare will decide when further validation through the checkbox interaction is required to confirm whether the user is a human or a bot. This is the mode we will be using in this tutorial.</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78AnsttFltsSDTWMXxFjnH/d1ee443938d095a4d44874607c046760/Screenshot-2024-03-07-at-11.54.30.png" alt="" class="kg-image" width="2000" height="288" loading="lazy">
-
-	</figure>
-	<ul>
-		<li>
-			<p><b>Non-interactive</b>: This mode does not require the user to interact and check the box of the widget. It is a non-intrusive mode where the widget is still visible to users but requires no added step in the user experience.</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2EAIzU3P7JhQKFteYXb4Hq/1b39212a5393124a081bef94c7d9a07d/Screenshot-2024-03-07-at-11.55.00.png" alt="" class="kg-image" width="2000" height="279" loading="lazy">
-
-	</figure>
-	<ul>
-		<li>
-			<p><b>Invisible</b>: Invisible mode is where the widget is not visible at all to users and runs in the background of your website.</p>
-		</li>
-		<li>
-			<p><b>Pre-Clearance setting</b>: With a clearance cookie issued by the Turnstile widget, you can configure your website to verify every single request or once within a session. To learn more about <a href="https://blog.cloudflare.com/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">implementing pre-clearance with Turnstile</a>, check out this blog post.</p>
-		</li>
-	</ul>
-	<p>Once you create your widget, you will be given a sitekey and a secret key. The sitekey is public and used to invoke the Turnstile widget on your site. The secret key should be stored safely for security purposes.</p>
-	<p>Let’s embed the widget above the Submit button. Your index.html should look like this:</p>
-	<pre class="language-html"><code class="language-html">&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-	&lt;head&gt;
-		&lt;meta charset="utf8"&gt;
-		&lt;title&gt;Cloudflare Pages | Form Demo&lt;/title&gt;
-		&lt;meta name="theme-color" content="#d86300"&gt;
-		&lt;meta name="mobile-web-app-capable" content="yes"&gt;
-		&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
-		&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
-		&lt;link rel="icon" type="image/png" href="https://www.cloudflare.com/favicon-128.png"&gt;
-		&lt;link rel="stylesheet" href="/index.css"&gt;
-		&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb" defer&gt;&lt;/script&gt;
-	&lt;/head&gt;
-	&lt;body&gt;
-
-		&lt;main&gt;
-			&lt;h1&gt;Demo: Form Submission&lt;/h1&gt;
-
-			&lt;blockquote&gt;
-				&lt;p&gt;This is a demonstration of Cloudflare Pages with Turnstile.&lt;/p&gt;
-				&lt;p&gt;Pages deployed a &lt;code&gt;/public&lt;/code&gt; directory, containing a HTML document (this webpage) and a &lt;code&gt;/functions&lt;/code&gt; directory, which contains the Cloudflare Workers code for the API endpoint this &lt;code&gt;&amp;lt;form&amp;gt;&lt;/code&gt; references.&lt;/p&gt;
-				&lt;p&gt;&lt;b&gt;NOTE:&lt;/b&gt; On form submission, the API endpoint responds with a JSON representation of the data. There is no JavaScript running in this example.&lt;/p&gt;
-			&lt;/blockquote&gt;
-
-			&lt;form method="POST" action="/api/submit"&gt;
-				&lt;div class="input"&gt;
-					&lt;label for="name"&gt;Full Name&lt;/label&gt;
-					&lt;input id="name" name="name" type="text" /&gt;
-				&lt;/div&gt;
-
-				&lt;div class="input"&gt;
-					&lt;label for="email"&gt;Email Address&lt;/label&gt;
-					&lt;input id="email" name="email" type="email" /&gt;
-				&lt;/div&gt;
-
-				&lt;div class="input"&gt;
-					&lt;label for="referers"&gt;How did you hear about us?&lt;/label&gt;
-					&lt;select id="referers" name="referers"&gt;
-						&lt;option hidden disabled selected value&gt;&lt;/option&gt;
-						&lt;option value="Facebook"&gt;Facebook&lt;/option&gt;
-						&lt;option value="Twitter"&gt;Twitter&lt;/option&gt;
-						&lt;option value="Google"&gt;Google&lt;/option&gt;
-						&lt;option value="Bing"&gt;Bing&lt;/option&gt;
-						&lt;option value="Friends"&gt;Friends&lt;/option&gt;
-					&lt;/select&gt;
-				&lt;/div&gt;
-
-				&lt;div class="checklist"&gt;
-					&lt;label&gt;What are your favorite movies?&lt;/label&gt;
-					&lt;ul&gt;
-						&lt;li&gt;
-							&lt;input id="m1" type="checkbox" name="movies" value="Space Jam" /&gt;
-							&lt;label for="m1"&gt;Space Jam&lt;/label&gt;
-						&lt;/li&gt;
-						&lt;li&gt;
-							&lt;input id="m2" type="checkbox" name="movies" value="Little Rascals" /&gt;
-							&lt;label for="m2"&gt;Little Rascals&lt;/label&gt;
-						&lt;/li&gt;
-						&lt;li&gt;
-							&lt;input id="m3" type="checkbox" name="movies" value="Frozen" /&gt;
-							&lt;label for="m3"&gt;Frozen&lt;/label&gt;
-						&lt;/li&gt;
-						&lt;li&gt;
-							&lt;input id="m4" type="checkbox" name="movies" value="Home Alone" /&gt;
-							&lt;label for="m4"&gt;Home Alone&lt;/label&gt;
-						&lt;/li&gt;
-					&lt;/ul&gt;
-				&lt;/div&gt;
-				&lt;div id="turnstile-widget" style="padding-top: 20px;"&gt;&lt;/div&gt;
-				&lt;button type="submit"&gt;Submit&lt;/button&gt;
-			&lt;/form&gt;
-		&lt;/main&gt;
-	&lt;script&gt;
-	// This function is called when the Turnstile script is loaded and ready to be used.
-	// The function name matches the "onload=..." parameter.
-	function _turnstileCb() {
-	    console.debug('_turnstileCb called');
-
-	    turnstile.render('#turnstile-widget', {
-	      sitekey: '0xAAAAAAAAAXAAAAAAAAAAAA',
-	      theme: 'light',
-	    });
-	}
-	&lt;/script&gt;
-	&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-	<p>You can embed the Turnstile widget implicitly or explicitly. In this tutorial, we will explicitly embed the widget by injecting the JavaScript tag and related code, then specifying the placement of the widget.</p>
-	<pre class="language-javascript"><code class="language-javascript">&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb" defer&gt;&lt;/script&gt;</code></pre>
-
-	<pre class="language-javascript"><code class="language-javascript">&lt;script&gt;
-	function _turnstileCb() {
-	    console.debug('_turnstileCb called');
-
-	    turnstile.render('#turnstile-widget', {
-	      sitekey: '0xAAAAAAAAAXAAAAAAAAAAAA',
-	      theme: 'light',
-	    });
-	}
-&lt;/script&gt;</code></pre>
-	<p>Make sure that the <code>div id</code> you assign is the same as the <code>id</code> you specify in <code>turnstile.render</code> call. In this case, let’s use <code>“turnstile-widget”</code>. Once that’s done, you should see the widget show up on your site!</p>
-	<pre class="language-html"><code class="language-html">&lt;div id="turnstile-widget" style="padding-top: 20px;"&gt;&lt;/div&gt;</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="step-3-validate-the-token">Step 3: Validate the token</h3>
-		<a href="https://blog.cloudflare.com/#step-3-validate-the-token" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that the Turnstile widget is rendered on the front end, let’s validate it on the server side and check out the Turnstile outcome. We need to make a call to the <code>/siteverify</code> API with the token in the submit function under <code>./functions/api/submit.js</code>.</p>
-	<p>First, grab the token issued from Turnstile under cf-turnstile-response. Then, call the <code>/siteverify</code> API to ensure that the token is valid. In this tutorial, we’ll attach the Turnstile outcome to the response to verify everything is working well. You can decide on the expected behavior and where to direct the user based on the <code>/siteverify</code> response.</p>
-	<pre class="language-javascript"><code class="language-javascript">/**
- * POST /api/submit
- */
-
-import turnstilePlugin from "@cloudflare/pages-plugin-turnstile";
-
-// This is a demo secret key. In prod, we recommend you store
-// your secret key(s) safely. 
-const SECRET_KEY = '0x4AAAAAAASh4E5cwHGsTTePnwcPbnFru6Y';
-
-export const onRequestPost = [
-    turnstilePlugin({
-    	secret: SECRET_KEY,
-    }),
-    (async (context) =&gt; {
-    	// Request has been validated as coming from a human
-    	const formData = await context.request.formData()
-
-    	var tmp, outcome = {};
-	for (let [key, value] of formData) {
-		tmp = outcome[key];
-		if (tmp === undefined) {
-			outcome[key] = value;
-		} else {
-			outcome[key] = [].concat(tmp, value);
-		}
-	}
-
-	// Attach Turnstile outcome to the response
-	outcome["turnstile_outcome"] = context.data.turnstile;
-
-	let pretty = JSON.stringify(outcome, null, 2);
-
-      	return new Response(pretty, {
-      		headers: {
-      			'Content-Type': 'application/json;charset=utf-8'
-      		}
-      	});
-    })
-];</code></pre>
-	<p>Since Turnstile accurately decided that the visitor was not a bot, the response for “success” is “true” and “interactive” is “false”. The “interactive” being “false” means that the checkbox was automatically checked by Cloudflare as the visitor was determined to be human. The user was seamlessly allowed access to the website without having to perform any additional actions. If the visitor looks suspicious, Turnstile will become interactive, requiring the visitor to actually click the checkbox to verify that they are not a bot. We used the managed mode in this tutorial but depending on your application logic, you can choose the widget mode that works best for you.</p>
-	<pre class="language-javascript"><code class="language-javascript">{
-  "name": "Sally Lee",
-  "email": "sallylee@cloudflare.com",
-  "referers": "Facebook",
-  "movies": "Space Jam",
-  "cf-turnstile-response": "0._OHpi7JVN7Xz4abJHo9xnK9JNlxKljOp51vKTjoOi6NR4ru_4MLWgmxt1rf75VxRO4_aesvBvYj8bgGxPyEttR1K2qbUdOiONJUd5HzgYEaD_x8fPYVU6uZPUCdWpM4FTFcxPAnqhTGBVdYshMEycXCVBqqLVdwSvY7Me-VJoge7QOStLOtGgQ9FaY4NVQK782mpPfgVujriDAEl4s5HSuVXmoladQlhQEK21KkWtA1B6603wQjlLkog9WqQc0_3QMiBZzZVnFsvh_NLDtOXykOFK2cba1mLLcADIZyhAho0mtmVD6YJFPd-q9iQFRCMmT2Sz00IToXz8cXBGYluKtxjJrq7uXsRrI5pUUThKgGKoHCGTd_ufuLDjDCUE367h5DhJkeMD9UsvQgr1MhH3TPUKP9coLVQxFY89X9t8RAhnzCLNeCRvj2g-GNVs4-MUYPomd9NOcEmSpklYwCgLQ.jyBeKkV_MS2YkK0ZRjUkMg.6845886eb30b58f15de056eeca6afab8110e3123aeb1c0d1abef21c4dd4a54a1",
-  "turnstile_outcome": {
-    "success": true,
-    "error-codes": [],
-    "challenge_ts": "2024-02-28T22:52:30.009Z",
-    "hostname": "pages-turnstile-demo.pages.dev",
-    "action": "",
-    "cdata": "",
-    "metadata": {
-      "interactive": false
-    }
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="wrapping-up">Wrapping up</h3>
-		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that we've set up Turnstile, we can head to Turnstile analytics in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a> to monitor the <a href="https://developers.cloudflare.com/turnstile/reference/tooltips" target="_blank" rel="noopener noreferrer">solve rate</a> and widget traffic. Visitor Solve Rate indicates the percentage of visitors who successfully completed the Turnstile widget. A sudden drop in the Visitor Solve Rate could indicate an increase in bot traffic, as bots may fail to complete the challenge presented by the widget. API Solve Rate measures the percentage of visitors who successfully validated their token against the <code>/siteverify</code> API. Similar to the Visitor Solve Rate, a significant drop in the API Solve Rate may indicate an increase in bot activity, as bots may fail to validate their tokens. Widget Traffic provides insights into the nature of the traffic hitting your website. A high number of challenges requiring interaction may suggest that bots are attempting to access your site, while a high number of unsolved challenges could indicate that the Turnstile widget is effectively blocking suspicious traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LS7efg5RG5VVEE9VVh41n/0c4f7feaeb2c693ea47df2229efa2091/image6-4.png" alt="" class="kg-image" width="1012" height="494" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4rZfKrfY91tTRuCvJgFFHU/3a689f0b7a066d2d85fb09725859bd20/image9-1.png" alt="" class="kg-image" width="1013" height="533" loading="lazy">
-
-	</figure>
-	<p>And that’s it! We’ve walked you through how to easily secure your Pages with Turnstile. Pages and Turnstile are currently available for free for every Cloudflare user to get started right away. If you are looking for a seamless and speedy developer experience to get a secure website up and running, protected by Turnstile, head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a> today!</p>
+<p>Balancing developer velocity and security against bots is a constant challenge. Deploying your changes as quickly and easily as possible is essential to stay ahead of your (or your customers’) needs and wants. Ensuring your website is safe from malicious bots — without degrading user experience with alien hieroglyphics to decipher just to prove that you are a human — is no small feat. With <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Pages</a> and <a href="https://developers.cloudflare.com/turnstile" target="_blank" rel="noopener noreferrer">Turnstile</a>, we'll walk you through just how easy it is to have the best of both worlds!</p>
+<p><a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a> offer a seamless platform for deploying and scaling your websites with ease. You can get started right away with configuring your websites with a quick integration using your git provider, and get set up with unlimited requests, bandwidth, collaborators, and projects.</p>
+<p>Cloudflare Turnstile is Cloudflare’s <a href="https://www.cloudflare.com/products/turnstile" target="_blank" rel="noopener noreferrer">CAPTCHA alternative solution</a> where your users don’t ever have to solve another puzzle to get to your website, no more stop lights and fire hydrants. You can protect your site without having to put your users through an annoying user experience. If you are already using another CAPTCHA service, we have made it easy for you to <a href="https://developers.cloudflare.com/turnstile/migration" target="_blank" rel="noopener noreferrer">migrate over to Turnstile</a> with minimal effort needed. Check out the <a href="https://developers.cloudflare.com/turnstile" target="_blank" rel="noopener noreferrer">Turnstile documentation</a> to get started.</p>
+<h3>Alright, what are we building?</h3>
+<p>In this tutorial, we'll walk you through integrating Cloudflare Pages with Turnstile to secure your website against bots. You'll learn how to deploy Pages, embed the Turnstile widget, validate the token on the server side, and monitor Turnstile analytics. Let’s build upon <a href="https://developers.cloudflare.com/pages/tutorials/forms" target="_blank" rel="noopener noreferrer">this tutorial</a> from Cloudflare’s developer docs, which outlines how to create an HTML form with Pages and Functions. We’ll also show you how to secure it by integrating with Turnstile, complete with client-side rendering and server-side validation, using the <a href="https://developers.cloudflare.com/pages/functions/plugins/turnstile" target="_blank" rel="noopener noreferrer">Turnstile Pages Plugin</a>!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="509" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=715&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=640&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=715&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=750&amp;h=534&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=828&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=1080&amp;h=769&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=1280&amp;h=911&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=1430&amp;h=1018&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - 1nzojp" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JPZAEK00X3GQB9HGJVK4.png&amp;w=1920&amp;h=1368&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1368" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="509" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Step 1: Deploy your Pages</h3>
+<p>On the Cloudflare Dashboard, select your account and go to Workers &amp; Pages to create a new Pages application with your git provider. Choose the repository where you cloned the tutorial project or any other repository that you want to use for this walkthrough.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="406" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=750&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=828&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=1080&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=1280&amp;h=727&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=1430&amp;h=812&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - MzHjLA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NYDK0Y3CQCEFWB88NE0V.png&amp;w=1920&amp;h=1090&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1090" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="406" class="pt-portable-image-media"></div>
+</figure>
+<p>The Build settings for this project is simple:</p>
+<ul>
+	<li><strong>Framework preset</strong>: None</li>
+	<li><strong>Build command</strong>: npm install @cloudflare/pages-plugin-turnstile</li>
+	<li><strong>Build output directory</strong>: public</li>
+</ul>
+<p>Once you select “Save and Deploy”, all the magic happens under the hood and voilà! The form is already deployed.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="294" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=640&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=750&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=828&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=1080&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=1280&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=1430&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - QTnfOy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48207FP259TJ9EM7FWEW6S.png&amp;w=883&amp;h=363&amp;f=webp" data-lightbox-width="883" data-lightbox-height="363" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="294" class="pt-portable-image-media"></div>
+</figure>
+<h3>Step 2: Embed Turnstile widget</h3>
+<p>Now, let’s navigate to Turnstile and add the newly created Pages site.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="406" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=750&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=828&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=1080&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=1280&amp;h=727&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=1430&amp;h=812&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - tHRGv9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478XXT9J3WB1SGGMDW90V3.png&amp;w=1920&amp;h=1089&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1089" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="406" class="pt-portable-image-media"></div>
+</figure>
+<p>Here are the widget configuration options:</p>
+<ul>
+	<li><strong>Domain</strong>: All you need to do is add the domain for the Pages application. In this example, it’s “pages-turnstile-demo.pages.dev”. For each deployment, Pages generates a <a href="https://developers.cloudflare.com/pages/configuration/preview-deployments" target="_blank" rel="noopener noreferrer">deployment specific preview</a> subdomain. Turnstile covers all subdomains automatically, so your Turnstile widget will work as expected even in your previews. This is covered more extensively in our <a href="https://developers.cloudflare.com/turnstile/reference/domain-management" target="_blank" rel="noopener noreferrer">Turnstile domain management documentation</a>.</li>
+	<li><strong>Widget Mode</strong>: There are three types of <a href="https://developers.cloudflare.com/turnstile/reference/widget-types" target="_blank" rel="noopener noreferrer">widget modes</a> you can choose from.</li>
+	<li><strong>Managed</strong>: This is the recommended option where Cloudflare will decide when further validation through the checkbox interaction is required to confirm whether the user is a human or a bot. This is the mode we will be using in this tutorial.</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="103" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=715&amp;h=103&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=640&amp;h=92&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=715&amp;h=103&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=750&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=828&amp;h=119&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=1080&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=1280&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=1430&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - mioGyT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MH0BCBX4NMHT8ACS43XA.png&amp;w=1920&amp;h=276&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="276" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="103" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li><strong>Non-interactive</strong>: This mode does not require the user to interact and check the box of the widget. It is a non-intrusive mode where the widget is still visible to users but requires no added step in the user experience.</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="100" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=715&amp;h=100&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=640&amp;h=90&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=715&amp;h=100&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=750&amp;h=105&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=828&amp;h=116&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=1080&amp;h=151&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=1280&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=1430&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - Y3BXyx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454TADRKXSZE8TMR3N5PAW.png&amp;w=1920&amp;h=268&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="268" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="100" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li><strong>Invisible</strong>: Invisible mode is where the widget is not visible at all to users and runs in the background of your website.</li>
+	<li><strong>Pre-Clearance setting</strong>: With a clearance cookie issued by the Turnstile widget, you can configure your website to verify every single request or once within a session. To learn more about <a href="https://blog.cloudflare.com/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">implementing pre-clearance with Turnstile</a>, check out this blog post.</li>
+</ul>
+<p>Once you create your widget, you will be given a sitekey and a secret key. The sitekey is public and used to invoke the Turnstile widget on your site. The secret key should be stored safely for security purposes.</p>
+<p>Let’s embed the widget above the Submit button. Your index.html should look like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">doctype</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-6f42c1-ffc799"> lang</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"en"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">	&lt;</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> charset</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"utf8"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Cloudflare Pages | Form Demo</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"theme-color"</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"#d86300"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"mobile-web-app-capable"</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"yes"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"apple-mobile-web-app-capable"</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"yes"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"viewport"</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"width=device-width,initial-scale=1"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">link</span><span class="sk-6f42c1-ffc799"> rel</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"icon"</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"image/png"</span><span class="sk-6f42c1-ffc799"> href</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://www.cloudflare.com/favicon-128.png"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">link</span><span class="sk-6f42c1-ffc799"> rel</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"stylesheet"</span><span class="sk-6f42c1-ffc799"> href</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"/index.css"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb"</span><span class="sk-6f42c1-ffc799"> defer</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">	&lt;/</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">	&lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;</span><span class="sk-22863a-ffc799">main</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">			&lt;</span><span class="sk-22863a-ffc799">h1</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Demo: Form Submission</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">h1</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-a0a0a0">			&lt;</span><span class="sk-22863a-ffc799">blockquote</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">This is a demonstration of Cloudflare Pages with Turnstile.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Pages deployed a </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">code</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">/public</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">code</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff"> directory, containing a HTML document (this webpage) and a </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">code</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">/functions</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">code</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff"> directory, which contains the Cloudflare Workers code for the API endpoint this </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">code</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799">&amp;lt;</span><span class="sk-24292e-fff">form</span><span class="sk-005cc5-ffc799">&amp;gt;</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">code</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff"> references.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;&lt;</span><span class="sk-22863a-ffc799">b</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">NOTE:</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">b</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff"> On form submission, the API endpoint responds with a JSON representation of the data. There is no JavaScript running in this example.</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">			&lt;/</span><span class="sk-22863a-ffc799">blockquote</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-a0a0a0">			&lt;</span><span class="sk-22863a-ffc799">form</span><span class="sk-6f42c1-ffc799"> method</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-6f42c1-ffc799"> action</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"/api/submit"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> class</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"input"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Full Name</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">input</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> class</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"input"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"email"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Email Address</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">input</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"email"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"email"</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"email"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> class</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"input"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"referers"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">How did you hear about us?</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">select</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"referers"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"referers"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">option</span><span class="sk-6f42c1-ffc799"> hidden</span><span class="sk-6f42c1-ffc799"> disabled</span><span class="sk-6f42c1-ffc799"> selected</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">option</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">option</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Facebook"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Facebook</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">option</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">option</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Twitter"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Twitter</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">option</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">option</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Google"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Google</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">option</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">option</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Bing"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Bing</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">option</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">option</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Friends"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Friends</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">option</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;/</span><span class="sk-22863a-ffc799">select</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> class</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"checklist"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">What are your favorite movies?</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;</span><span class="sk-22863a-ffc799">ul</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">input</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m1"</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"checkbox"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"movies"</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Space Jam"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m1"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Space Jam</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">input</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m2"</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"checkbox"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"movies"</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Little Rascals"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m2"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Little Rascals</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">input</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m3"</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"checkbox"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"movies"</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Frozen"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m3"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Frozen</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">input</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m4"</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"checkbox"</span><span class="sk-6f42c1-ffc799"> name</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"movies"</span><span class="sk-6f42c1-ffc799"> value</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"Home Alone"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">							&lt;</span><span class="sk-22863a-ffc799">label</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"m4"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Home Alone</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">label</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">						&lt;/</span><span class="sk-22863a-ffc799">li</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">					&lt;/</span><span class="sk-22863a-ffc799">ul</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"turnstile-widget"</span><span class="sk-6f42c1-ffc799"> style</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"padding-top: 20px;"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">				&lt;</span><span class="sk-22863a-ffc799">button</span><span class="sk-6f42c1-ffc799"> type</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"submit"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Submit</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">			&lt;/</span><span class="sk-22863a-ffc799">form</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">		&lt;/</span><span class="sk-22863a-ffc799">main</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">	&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// This function is called when the Turnstile script is loaded and ready to be used.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// The function name matches the "onload=..." parameter.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	function</span><span class="sk-6f42c1-ffc799"> _turnstileCb</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-24292e-fff">	    console.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'_turnstileCb called'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	    turnstile.</span><span class="sk-6f42c1-ffc799">render</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'#turnstile-widget'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">	      sitekey: </span><span class="sk-032f62-99ffe4">'0xAAAAAAAAAXAAAAAAAAAAAA'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	      theme: </span><span class="sk-032f62-99ffe4">'light'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	    });</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">	&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">	&lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
 </div>
+<p>You can embed the Turnstile widget implicitly or explicitly. In this tutorial, we will explicitly embed the widget by injecting the JavaScript tag and related code, then specifying the placement of the widget.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-a0a0a0"> src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb"</span><span class="sk-6f42c1-a0a0a0"> defer</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">	function _turnstileCb() </span><span class="sk-24292e-a0a0a0">{</span></span>
+<span class="line"><span class="sk-24292e-fff">	    console.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'_turnstileCb called'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	    turnstile.</span><span class="sk-6f42c1-ffc799">render</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'#turnstile-widget'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">	      sitekey: </span><span class="sk-032f62-99ffe4">'0xAAAAAAAAAXAAAAAAAAAAAA'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	      theme: </span><span class="sk-032f62-99ffe4">'light'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	    });</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">	}</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>Make sure that the <code>div id</code> you assign is the same as the <code>id</code> you specify in <code>turnstile.render</code> call. In this case, let’s use <code>“turnstile-widget”</code>. Once that’s done, you should see the widget show up on your site!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"turnstile-widget"</span><span class="sk-6f42c1-ffc799"> style</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"padding-top: 20px;"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<h3>Step 3: Validate the token</h3>
+<p>Now that the Turnstile widget is rendered on the front end, let’s validate it on the server side and check out the Turnstile outcome. We need to make a call to the <code>/siteverify</code> API with the token in the submit function under <code>./functions/api/submit.js</code>.</p>
+<p>First, grab the token issued from Turnstile under cf-turnstile-response. Then, call the <code>/siteverify</code> API to ensure that the token is valid. In this tutorial, we’ll attach the Turnstile outcome to the response to verify everything is working well. You can decide on the expected behavior and where to direct the user based on the <code>/siteverify</code> response.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * POST /api/submit</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> turnstilePlugin </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/pages-plugin-turnstile"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This is a demo secret key. In prod, we recommend you store</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// your secret key(s) safely. </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> SECRET_KEY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '0x4AAAAAAASh4E5cwHGsTTePnwcPbnFru6Y'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-005cc5-fff"> onRequestPost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    turnstilePlugin</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    	secret: </span><span class="sk-005cc5-fff">SECRET_KEY</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    (</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    	// Request has been validated as coming from a human</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    	const</span><span class="sk-005cc5-fff"> formData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> context.request.</span><span class="sk-6f42c1-ffc799">formData</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    	var</span><span class="sk-24292e-fff"> tmp, outcome </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {};</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> [key, value] </span><span class="sk-d73a49-a0a0a0">of</span><span class="sk-24292e-fff"> formData) {</span></span>
+<span class="line"><span class="sk-24292e-fff">		tmp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> outcome[key];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> (tmp </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">			outcome[key] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> value;</span></span>
+<span class="line"><span class="sk-24292e-fff">		} </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			outcome[key] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [].</span><span class="sk-6f42c1-ffc799">concat</span><span class="sk-24292e-fff">(tmp, value);</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// Attach Turnstile outcome to the response</span></span>
+<span class="line"><span class="sk-24292e-fff">	outcome[</span><span class="sk-032f62-99ffe4">"turnstile_outcome"</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> context.data.turnstile;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	let</span><span class="sk-24292e-fff"> pretty </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(outcome, </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      	return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(pretty, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      		headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      			'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'application/json;charset=utf-8'</span></span>
+<span class="line"><span class="sk-24292e-fff">      		}</span></span>
+<span class="line"><span class="sk-24292e-fff">      	});</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">];</span></span></code></pre>
+</div>
+<p>Since Turnstile accurately decided that the visitor was not a bot, the response for “success” is “true” and “interactive” is “false”. The “interactive” being “false” means that the checkbox was automatically checked by Cloudflare as the visitor was determined to be human. The user was seamlessly allowed access to the website without having to perform any additional actions. If the visitor looks suspicious, Turnstile will become interactive, requiring the visitor to actually click the checkbox to verify that they are not a bot. We used the managed mode in this tutorial but depending on your application logic, you can choose the widget mode that works best for you.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Sally Lee"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "email"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"sallylee@cloudflare.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "referers"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Facebook"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "movies"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Space Jam"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "cf-turnstile-response"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"0._OHpi7JVN7Xz4abJHo9xnK9JNlxKljOp51vKTjoOi6NR4ru_4MLWgmxt1rf75VxRO4_aesvBvYj8bgGxPyEttR1K2qbUdOiONJUd5HzgYEaD_x8fPYVU6uZPUCdWpM4FTFcxPAnqhTGBVdYshMEycXCVBqqLVdwSvY7Me-VJoge7QOStLOtGgQ9FaY4NVQK782mpPfgVujriDAEl4s5HSuVXmoladQlhQEK21KkWtA1B6603wQjlLkog9WqQc0_3QMiBZzZVnFsvh_NLDtOXykOFK2cba1mLLcADIZyhAho0mtmVD6YJFPd-q9iQFRCMmT2Sz00IToXz8cXBGYluKtxjJrq7uXsRrI5pUUThKgGKoHCGTd_ufuLDjDCUE367h5DhJkeMD9UsvQgr1MhH3TPUKP9coLVQxFY89X9t8RAhnzCLNeCRvj2g-GNVs4-MUYPomd9NOcEmSpklYwCgLQ.jyBeKkV_MS2YkK0ZRjUkMg.6845886eb30b58f15de056eeca6afab8110e3123aeb1c0d1abef21c4dd4a54a1"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "turnstile_outcome"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "error-codes"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "challenge_ts"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2024-02-28T22:52:30.009Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "hostname"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"pages-turnstile-demo.pages.dev"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "action"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "cdata"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "metadata"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "interactive"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Wrapping up</h3>
+<p>Now that we've set up Turnstile, we can head to Turnstile analytics in the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a> to monitor the <a href="https://developers.cloudflare.com/turnstile/reference/tooltips" target="_blank" rel="noopener noreferrer">solve rate</a> and widget traffic. Visitor Solve Rate indicates the percentage of visitors who successfully completed the Turnstile widget. A sudden drop in the Visitor Solve Rate could indicate an increase in bot traffic, as bots may fail to complete the challenge presented by the widget. API Solve Rate measures the percentage of visitors who successfully validated their token against the <code>/siteverify</code> API. Similar to the Visitor Solve Rate, a significant drop in the API Solve Rate may indicate an increase in bot activity, as bots may fail to validate their tokens. Widget Traffic provides insights into the nature of the traffic hitting your website. A high number of challenges requiring interaction may suggest that bots are attempting to access your site, while a high number of unsolved challenges could indicate that the Turnstile widget is effectively blocking suspicious traffic.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="349" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=640&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=750&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=828&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=1080&amp;h=527&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=1280&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=1430&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - d4FJoZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4838QEHWZBM8KVFA0TJ8J6.png&amp;w=1012&amp;h=494&amp;f=webp" data-lightbox-width="1012" data-lightbox-height="494" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="349" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="376" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=750&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=828&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=1080&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=1280&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=1430&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2263 Embedded Image - 4YArkE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW471DRENQ7QK0PFAHZBXJ2W.png&amp;w=1013&amp;h=533&amp;f=webp" data-lightbox-width="1013" data-lightbox-height="533" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="376" class="pt-portable-image-media"></div>
+</figure>
+<p>And that’s it! We’ve walked you through how to easily secure your Pages with Turnstile. Pages and Turnstile are currently available for free for every Cloudflare user to get started right away. If you are looking for a seamless and speedy developer experience to get a secure website up and running, protected by Turnstile, head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a> today!</p>

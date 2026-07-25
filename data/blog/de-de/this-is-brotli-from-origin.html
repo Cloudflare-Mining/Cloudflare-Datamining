@@ -1,73 +1,48 @@
-<div class="mb2 gray5">Lesezeit: 6&nbsp;Min.</div>
-<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/this-is-brotli-from-origin">English</a>, <a href="https://blog.cloudflare.com/fr-fr/this-is-brotli-from-origin">Français</a>, <a href="https://blog.cloudflare.com/ja-jp/this-is-brotli-from-origin">日本語</a>, <a href="https://blog.cloudflare.com/es-es/this-is-brotli-from-origin">Español</a>, und <a href="https://blog.cloudflare.com/zh-cn/this-is-brotli-from-origin">简体中文</a> verfügbar.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rm8qKEGTh6eCWEi3qpxcS/85c3c65b032c34ac0940092602c5aadd/this-is-brotli-from-origin.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Während der gesamten Speed Week haben wir darüber gesprochen, wie wichtig es ist, die Performance zu optimieren. Die Komprimierung spielt eine entscheidende Rolle bei der Reduzierung der über das Internet übertragenen Dateigrößen. Kleinere Dateigrößen führen zu schnelleren Downloads, einem schnelleren Laden der Website und einer besseren Benutzerfreundlichkeit.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5eudI9Wu9FybnliXMNdIib/eacd7d29901473846554ed5c678e7e8c/image8-2.png" alt="All the way up to 11: Serve Brotli from origin and Introducing Compression Rules" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<p>Nehmen Sie Haushaltsreiniger als praktisches Beispiel. Es wird <a href="https://ellenmacarthurfoundation.org/circular-examples/replenish" target="_blank" rel="noopener noreferrer">geschätzt</a>, dass „eine typische Flasche Reinigungsmittel zu 90 % aus Wasser und zu weniger als 10 % aus wertvollen Inhaltsstoffen besteht“. Wenn Sie 90 % einer typischen 500ml Flasche Haushaltsreiniger entfernen, reduziert sich das Gewicht von 600g auf 60g. Diese Reduktion bedeutet, dass nur ein 60g-Paket mit der Anweisung, es bei Erhalt zu rehydrieren, verschickt werden muss. Rechnet man diese Gewichtsreduzierung auf mehrere Hunderte Liter hoch, so ergibt sich für Unternehmen schnell eine enorme Einsparung beim Versand. Ganz zu schweigen von den Auswirkungen auf die Umwelt.</p>
-	<p>So funktioniert die Komprimierung. Der Absender komprimiert die Datei auf die kleinstmögliche Größe und sendet dann die kleinere Datei mit Anweisungen, wie sie beim Empfang zu behandeln ist. Durch die Verringerung der Größe der gesendeten Dateien sorgt die Komprimierung dafür, dass die für die Übertragung von Dateien über das Internet benötigte Bandbreite wesentlich geringer ist. Wenn Dateien bei <a href="https://blog.cloudflare.com/aws-egregious-egress">teuren Cloud-Anbietern wie AWS gespeichert sind</a>, kann die Reduktion der Dateigröße der gesendeten Dateien direkt zu erheblichen Kosteneinsparungen bei der Bandbreite führen.</p>
-	<p>Kleinere Dateigrößen sind auch besonders vorteilhaft für Endbenutzer mit begrenzten Internetverbindungen, wie z. B. mobile Geräte in Mobilfunknetzen oder Benutzer in Gebieten mit langsamen Netzwerkgeschwindigkeiten.</p>
-	<p>Cloudflare hat schon immer die Komprimierung in Form von Gzip unterstützt. Gzip ist ein weit verbreiteter Komprimierungsalgorithmus, den es seit 1992 gibt und der allen Cloudflare-Benutzern Dateikomprimierung bietet. 2013 führte Google jedoch Brotli ein, das höhere Komprimierungsstufen und eine insgesamt bessere Performance unterstützt. Der Wechsel von gzip zu Brotli führt zu kleineren Dateigrößen und schnelleren Ladezeiten für Webseiten. Wir unterstützen Brotli seit 2017 für die Verbindung zwischen Cloudflare und Client-Browsern. Heute kündigen wir die End-to-End-Unterstützung von Brotli für Webinhalte an: Unterstützung für die Brotli-Komprimierung auf der höchstmöglichen Stufe, vom Ursprungsserver bis zum Client.</p>
-	<p>Wenn Ihr Ursprungsserver Brotli unterstützt, aktivieren Sie es, erhöhen Sie die Komprimierungsstufe und genießen Sie den Performance-Boost.</p>
-	<div class="flex anchor relative">
-		<h3 id="brotli-compression-to-11">Brotli-Komprimierung auf 11</h3>
-		<a href="https://blog.cloudflare.com/#brotli-compression-to-11" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Brotli verfügt über 12 Komprimierungsstufen von 0 bis 11, wobei 0 die schnellste Komprimierungsgeschwindigkeit, aber die niedrigste Komprimierungsrate und 11 die höchste Komprimierungsrate bietet, aber mehr Computing-Ressourcen und Zeit erfordert. Bei unserer ersten Implementierung von Brotli vor fünf Jahren haben wir festgestellt, dass die <a href="https://blog.cloudflare.com/results-experimenting-brotli">Komprimierungsstufe 4</a> ein ausgewogenes Verhältnis zwischen den eingesparten Bytes und der Komprimierungszeit bietet, ohne die Performance zu beeinträchtigen.</p>
-	<p>Seit 2017 verwendet Cloudflare eine maximale Komprimierung von Brotli-Stufe 4 für alle komprimierbaren Assets, basierend auf dem „accept-encoding“-Header des Endnutzers. Ein Problem war jedoch, dass Cloudflare nur Gzip-Komprimierung vom Ursprung anforderte, selbst wenn der Ursprung Brotli unterstützte. Darüber hinaus würde Cloudflare die von der Quelle empfangenen Inhalte immer dekomprimieren, bevor sie komprimiert und an den Endbenutzer gesendet werden, was zu einer zusätzlichen Verarbeitungszeit führt. Infolgedessen waren die Kunden nicht in der Lage, die Vorteile der Brotli-Komprimierung voll auszuschöpfen.</p>
-	<p><b><b>So wurde es früher gemacht</b></b></p>
-	<p>Da Cloudflare Brotli nun vollständig End-to-End unterstützt, werden Kunden nun feststellen können, dass unser aktualisierter accept-encoding-Header bei ihren Ursprüngen ankommt. Sobald dies der Fall ist, können Kunden stark komprimierte Brotli-Dateien direkt an uns übertragen, zwischenspeichern und bereitstellen, und zwar bis zur maximalen Stufe 11. Dies wird dazu beitragen, die <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">Latenzzeit</a> und den Bandbreitenverbrauch zu reduzieren. Wenn das Gerät des Endbenutzers die Brotli-Komprimierung nicht unterstützt, dekomprimieren wir die Datei automatisch und stellen sie entweder im dekomprimierten Format oder als mit Gzip komprimierte Datei bereit, je nach accept-encoding-Header.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oE6hwo4gOyCbDmcN9yd9P/18d7e83b965bbb83190039aa2013f480/Flow_how-CF-compresses_1.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
-
-	</figure>
-	<p><b>Vollständige End-to-End-Unterstützung der Brotli-Komprimierung</b></p>
-	<p><b><b>Endbenutzer kann die Brotli-Komprimierung nicht unterstützen</b></b></p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pQQ1tDxSU00iu1BARptlf/a448f89051e2480f2b11fe51b02d669a/Flow_how-CF-compresses_2.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
-
-	</figure>
-	<p>Kunden können die Brotli-Komprimierung bei ihrem Ursprungsserver implementieren, indem sie sich die entsprechenden Online-Materialien ansehen. Beispielsweise können Kunden, die NGINX verwenden, Brotli implementieren, indem sie diese <a href="https://github.com/google/ngx_brotli#installation" target="_blank" rel="noopener noreferrer">Anleitung</a> befolgen und die Komprimierung in der Konfigurationsdatei `nginx.conf` wie folgt auf Stufe 11 einstellen:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4YLEb3iqcTCqQu3GdUIwzo/3913ea436fb7b81ababe03f07c82cd6d/Flow_how-CF-compresses_3.png" alt="" class="kg-image" width="1600" height="373" loading="lazy">
-
-	</figure>
-	<p>Cloudflare stellt diese Assets dann dem Client mit genau der gleichen Komprimierungsstufe (11) für die passende Datei brotli_types zur Verfügung. Das bedeutet, dass alle SVG- oder BMP-Bilder mit Brotli-Stufe 11 komprimiert an den Client gesendet werden.</p>
-	<pre class="language-bash"><code class="language-bash">brotli on;
-brotli_comp_level 11;
-brotli_static on;
-brotli_types text/plain text/css application/javascript application/x-javascript text/xml 
-application/xml application/xml+rss text/javascript image/x-icon 
-image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="testing">Testen</h3>
-		<a href="https://blog.cloudflare.com/#testing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Wir haben eine einfache CSS-Datei komprimiert und dabei die Auswirkungen verschiedener Komprimierungsalgorithmen und -stufen gemessen. Unser Ziel war es, potenzielle Verbesserungen zu identifizieren, die Benutzer durch die Optimierung von Komprimierungstechniken erfahren könnten. Diese Ergebnisse sind in der folgenden Tabelle zu sehen:</p>
-	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-stvh{color:#172B4D;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>Während der gesamten Speed Week haben wir darüber gesprochen, wie wichtig es ist, die Performance zu optimieren. Die Komprimierung spielt eine entscheidende Rolle bei der Reduzierung der über das Internet übertragenen Dateigrößen. Kleinere Dateigrößen führen zu schnelleren Downloads, einem schnelleren Laden der Website und einer besseren Benutzerfreundlichkeit.</p>
+<p>Nehmen Sie Haushaltsreiniger als praktisches Beispiel. Es wird <a href="https://ellenmacarthurfoundation.org/circular-examples/replenish" target="_blank" rel="noopener noreferrer">geschätzt</a>, dass „eine typische Flasche Reinigungsmittel zu 90 % aus Wasser und zu weniger als 10 % aus wertvollen Inhaltsstoffen besteht“. Wenn Sie 90 % einer typischen 500ml Flasche Haushaltsreiniger entfernen, reduziert sich das Gewicht von 600g auf 60g. Diese Reduktion bedeutet, dass nur ein 60g-Paket mit der Anweisung, es bei Erhalt zu rehydrieren, verschickt werden muss. Rechnet man diese Gewichtsreduzierung auf mehrere Hunderte Liter hoch, so ergibt sich für Unternehmen schnell eine enorme Einsparung beim Versand. Ganz zu schweigen von den Auswirkungen auf die Umwelt.</p>
+<p>So funktioniert die Komprimierung. Der Absender komprimiert die Datei auf die kleinstmögliche Größe und sendet dann die kleinere Datei mit Anweisungen, wie sie beim Empfang zu behandeln ist. Durch die Verringerung der Größe der gesendeten Dateien sorgt die Komprimierung dafür, dass die für die Übertragung von Dateien über das Internet benötigte Bandbreite wesentlich geringer ist. Wenn Dateien bei <a href="https://blog.cloudflare.com/aws-egregious-egress">teuren Cloud-Anbietern wie AWS gespeichert sind</a>, kann die Reduktion der Dateigröße der gesendeten Dateien direkt zu erheblichen Kosteneinsparungen bei der Bandbreite führen.</p>
+<p>Kleinere Dateigrößen sind auch besonders vorteilhaft für Endbenutzer mit begrenzten Internetverbindungen, wie z. B. mobile Geräte in Mobilfunknetzen oder Benutzer in Gebieten mit langsamen Netzwerkgeschwindigkeiten.</p>
+<p>Cloudflare hat schon immer die Komprimierung in Form von Gzip unterstützt. Gzip ist ein weit verbreiteter Komprimierungsalgorithmus, den es seit 1992 gibt und der allen Cloudflare-Benutzern Dateikomprimierung bietet. 2013 führte Google jedoch Brotli ein, das höhere Komprimierungsstufen und eine insgesamt bessere Performance unterstützt. Der Wechsel von gzip zu Brotli führt zu kleineren Dateigrößen und schnelleren Ladezeiten für Webseiten. Wir unterstützen Brotli seit 2017 für die Verbindung zwischen Cloudflare und Client-Browsern. Heute kündigen wir die End-to-End-Unterstützung von Brotli für Webinhalte an: Unterstützung für die Brotli-Komprimierung auf der höchstmöglichen Stufe, vom Ursprungsserver bis zum Client.</p>
+<p>Wenn Ihr Ursprungsserver Brotli unterstützt, aktivieren Sie es, erhöhen Sie die Komprimierungsstufe und genießen Sie den Performance-Boost.</p>
+<h3>Brotli-Komprimierung auf 11</h3>
+<p>Brotli verfügt über 12 Komprimierungsstufen von 0 bis 11, wobei 0 die schnellste Komprimierungsgeschwindigkeit, aber die niedrigste Komprimierungsrate und 11 die höchste Komprimierungsrate bietet, aber mehr Computing-Ressourcen und Zeit erfordert. Bei unserer ersten Implementierung von Brotli vor fünf Jahren haben wir festgestellt, dass die <a href="https://blog.cloudflare.com/results-experimenting-brotli">Komprimierungsstufe 4</a> ein ausgewogenes Verhältnis zwischen den eingesparten Bytes und der Komprimierungszeit bietet, ohne die Performance zu beeinträchtigen.</p>
+<p>Seit 2017 verwendet Cloudflare eine maximale Komprimierung von Brotli-Stufe 4 für alle komprimierbaren Assets, basierend auf dem „accept-encoding“-Header des Endnutzers. Ein Problem war jedoch, dass Cloudflare nur Gzip-Komprimierung vom Ursprung anforderte, selbst wenn der Ursprung Brotli unterstützte. Darüber hinaus würde Cloudflare die von der Quelle empfangenen Inhalte immer dekomprimieren, bevor sie komprimiert und an den Endbenutzer gesendet werden, was zu einer zusätzlichen Verarbeitungszeit führt. Infolgedessen waren die Kunden nicht in der Lage, die Vorteile der Brotli-Komprimierung voll auszuschöpfen.</p>
+<p><strong><strong>So wurde es früher gemacht</strong></strong></p>
+<p>Da Cloudflare Brotli nun vollständig End-to-End unterstützt, werden Kunden nun feststellen können, dass unser aktualisierter accept-encoding-Header bei ihren Ursprüngen ankommt. Sobald dies der Fall ist, können Kunden stark komprimierte Brotli-Dateien direkt an uns übertragen, zwischenspeichern und bereitstellen, und zwar bis zur maximalen Stufe 11. Dies wird dazu beitragen, die <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">Latenzzeit</a> und den Bandbreitenverbrauch zu reduzieren. Wenn das Gerät des Endbenutzers die Brotli-Komprimierung nicht unterstützt, dekomprimieren wir die Datei automatisch und stellen sie entweder im dekomprimierten Format oder als mit Gzip komprimierte Datei bereit, je nach accept-encoding-Header.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - ooJjg6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4704MFH3BJQ7AZ40Y4FC6S.png&amp;w=1600&amp;h=373&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="373" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>Vollständige End-to-End-Unterstützung der Brotli-Komprimierung</strong></p>
+<p><strong><strong>Endbenutzer kann die Brotli-Komprimierung nicht unterstützen</strong></strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - Psbtli" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZWSE5FRS5AXH6X0AJQE8.png&amp;w=1600&amp;h=373&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="373" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<p>Kunden können die Brotli-Komprimierung bei ihrem Ursprungsserver implementieren, indem sie sich die entsprechenden Online-Materialien ansehen. Beispielsweise können Kunden, die NGINX verwenden, Brotli implementieren, indem sie diese <a href="https://github.com/google/ngx_brotli#installation" target="_blank" rel="noopener noreferrer">Anleitung</a> befolgen und die Komprimierung in der Konfigurationsdatei `nginx.conf` wie folgt auf Stufe 11 einstellen:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - Npp0zd" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46T4XZD0CHQ254J17CK3PS.png&amp;w=1600&amp;h=373&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="373" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare stellt diese Assets dann dem Client mit genau der gleichen Komprimierungsstufe (11) für die passende Datei brotli_types zur Verfügung. Das bedeutet, dass alle SVG- oder BMP-Bilder mit Brotli-Stufe 11 komprimiert an den Client gesendet werden.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">brotli</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">brotli_comp_level</span><span class="sk-005cc5-ffc799"> 11</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">brotli_static</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">brotli_types</span><span class="sk-032f62-99ffe4"> text/plain</span><span class="sk-032f62-99ffe4"> text/css</span><span class="sk-032f62-99ffe4"> application/javascript</span><span class="sk-032f62-99ffe4"> application/x-javascript</span><span class="sk-032f62-99ffe4"> text/xml</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">application/xml</span><span class="sk-032f62-99ffe4"> application/xml+rss</span><span class="sk-032f62-99ffe4"> text/javascript</span><span class="sk-032f62-99ffe4"> image/x-icon</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">image/vnd.microsoft.icon</span><span class="sk-032f62-99ffe4"> image/bmp</span><span class="sk-032f62-99ffe4"> image/svg+xml</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<h3>Testen</h3>
+<p>Wir haben eine einfache CSS-Datei komprimiert und dabei die Auswirkungen verschiedener Komprimierungsalgorithmen und -stufen gemessen. Unser Ziel war es, potenzielle Verbesserungen zu identifizieren, die Benutzer durch die Optimierung von Komprimierungstechniken erfahren könnten. Diese Ergebnisse sind in der folgenden Tabelle zu sehen:</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-stvh{color:#172B4D;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-k1k" class="html-block">
+	<style>
+		#html-block-k1k .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k1k .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -80,7 +55,7 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k1k .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -94,18 +69,18 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 			word-break: normal;
 		}
 
-		.tg .tg-stvh {
+		#html-block-k1k .tg .tg-stvh {
 			color: #172B4D;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k1k .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Test</span></th>
@@ -140,79 +115,59 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">66.94%</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Test</p>
-	<p>Größe (Bytes)</p>
-	<p>% Verkleinerung der Originaldatei (höherer % ist besser)</p>
-	<p>Unkomprimierte Antwort (keine Komprimierung verwendet)</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JgawIZ58Bp2hB133zV09d/3c4d5d9cc6b7fc6a558393032d124c3c/pasted-image-0-3.png" alt="" class="kg-image" width="1114" height="1518" loading="lazy">
-
-	</figure>
-	<p>2.747</p>
-	<p>-</p>
-	<p>Cloudflare Standard-Gzip-Komprimierung (Stufe 8)</p>
-	<p>1.121</p>
-	<p>59,21 %</p>
-	<p>Cloudflare-Standardkomprimierung von Brotli (Stufe 4)</p>
-	<p>1.110</p>
-	<p>59,58 %</p>
-	<p>Komprimiert mit maximaler Gzip-Stufe (Stufe 9)</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/KkfvWdXDQauzqaRSxLInu/e97a02af6927b7c2a405184b7204d7dc/pasted-image-0--1--2.png" alt="" class="kg-image" width="1600" height="1100" loading="lazy">
-
-	</figure>
-	<p>1.121</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SHkVVBlGpGDOstaY6r0wQ/c9aabf11c022b67402b8fdcaa4304636/pasted-image-0--2--1.png" alt="" class="kg-image" width="1470" height="1114" loading="lazy">
-
-	</figure>
-	<p>59,21 %</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7K6o1RMDHunR0xDyl61sdI/1f51fa7fcc17d70da034831b5461988d/pasted-image-0--3--1.png" alt="" class="kg-image" width="1600" height="406" loading="lazy">
-
-	</figure>
-	<p>Komprimiert mit maximaler Brotli-Stufe (Stufe 11)</p>
-	<p>909</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3e78OtHsTlLbAeCYGpgfjf/f4ade0204cbcf04021a54d5f63583afc/pasted-image-0--4-.png" alt="" class="kg-image" width="1600" height="339" loading="lazy">
-
-	</figure>
-	<p>66,94 %</p>
-	<p>Durch die Komprimierung von Brotli auf Stufe 11 können Benutzer ihre Dateigrößen im Vergleich zur besten Gzip-Komprimierungsstufe um 19 % reduzieren. Außerdem ist die stärkste Brotli-Komprimierungsstufe etwa 18 % kleiner als die von Cloudflare verwendete Standardstufe. Dies unterstreicht die erhebliche Größenreduzierung, die durch die Verwendung der Brotli-Komprimierung erreicht wird, insbesondere auf der höchsten Stufe, was zu einer verbesserten Leistung der Website, schnelleren Ladezeiten und einer allgemeinen Reduzierung der Egress-Gebühren führen kann.</p>
-	<p>Damit die Vorteile der höheren End-to-End-Komprimierungsraten genutzt werden können, müssen die folgenden Cloudflare-Proxy-Funktionen deaktiviert werden.</p>
-	<ul>
-		<li>
-			<p>E-Mail-Adresse verschleiern</p>
-		</li>
-		<li>
-			<p>Rocket Loader</p>
-		</li>
-		<li>
-			<p>Serverseitige Ausnahmen (Server Side Excludes, SSE)</p>
-		</li>
-		<li>
-			<p>Mirage</p>
-		</li>
-		<li>
-			<p>HTML Minification - JavaScript und CSS können aktiviert bleiben.</p>
-		</li>
-		<li>
-			<p>Automatic HTTPS RewritesDies ist darauf zurückzuführen, dass Cloudflare den Body dekomprimieren und darauf zugreifen muss, um die angeforderten Einstellungen anzuwenden. Alternativ kann ein Kunde diese Funktionen für bestimmte Pfade über Konfigurationsregeln deaktivieren.</p>
-		</li>
-	</ul><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Test</p>
+<p>Größe (Bytes)</p>
+<p>% Verkleinerung der Originaldatei (höherer % ist besser)</p>
+<p>Unkomprimierte Antwort (keine Komprimierung verwendet)</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="974" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=715&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=640&amp;h=872&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=715&amp;h=974&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=750&amp;h=1022&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=828&amp;h=1128&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=1080&amp;h=1471&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=1280&amp;h=1744&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=1430&amp;h=1948&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - 9ljJaf" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HESQHK532YR01Y6SBB9.png&amp;w=1114&amp;h=1518&amp;f=webp" data-lightbox-width="1114" data-lightbox-height="1518" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="974" class="pt-portable-image-media"></div>
+</figure>
+<p>2.747</p>
+<p>-</p>
+<p>Cloudflare Standard-Gzip-Komprimierung (Stufe 8)</p>
+<p>1.121</p>
+<p>59,21 %</p>
+<p>Cloudflare-Standardkomprimierung von Brotli (Stufe 4)</p>
+<p>1.110</p>
+<p>59,58 %</p>
+<p>Komprimiert mit maximaler Gzip-Stufe (Stufe 9)</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="492" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=715&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=640&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=715&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=750&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=828&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=1080&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=1280&amp;h=881&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=1430&amp;h=984&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - y46TUU" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497XDJF98HCX4QV7ZD4EEQ.png&amp;w=1600&amp;h=1100&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1100" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="492" class="pt-portable-image-media"></div>
+</figure>
+<p>1.121</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="542" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=715&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=640&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=715&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=750&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=828&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=1080&amp;h=819&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=1280&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=1430&amp;h=1084&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - rdfKtT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QZTGE9WMGKP9J6NZE972.png&amp;w=1470&amp;h=1114&amp;f=webp" data-lightbox-width="1470" data-lightbox-height="1114" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="542" class="pt-portable-image-media"></div>
+</figure>
+<p>59,21 %</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="181" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=640&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=750&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=828&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=1080&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=1280&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=1430&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - EJztPc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RQQN82HZFYZ7NX2ZM5HR.png&amp;w=1600&amp;h=406&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="406" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="181" class="pt-portable-image-media"></div>
+</figure>
+<p>Komprimiert mit maximaler Brotli-Stufe (Stufe 11)</p>
+<p>909</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="151" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=715&amp;h=151&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=640&amp;h=135&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=715&amp;h=151&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=750&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=828&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=1080&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=1280&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=1430&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1873 Embedded Image - 707l7c" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465YFQAR2WHWZNZVWXM4RM.png&amp;w=1600&amp;h=339&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="339" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="151" class="pt-portable-image-media"></div>
+</figure>
+<p>66,94 %</p>
+<p>Durch die Komprimierung von Brotli auf Stufe 11 können Benutzer ihre Dateigrößen im Vergleich zur besten Gzip-Komprimierungsstufe um 19 % reduzieren. Außerdem ist die stärkste Brotli-Komprimierungsstufe etwa 18 % kleiner als die von Cloudflare verwendete Standardstufe. Dies unterstreicht die erhebliche Größenreduzierung, die durch die Verwendung der Brotli-Komprimierung erreicht wird, insbesondere auf der höchsten Stufe, was zu einer verbesserten Leistung der Website, schnelleren Ladezeiten und einer allgemeinen Reduzierung der Egress-Gebühren führen kann.</p>
+<p>Damit die Vorteile der höheren End-to-End-Komprimierungsraten genutzt werden können, müssen die folgenden Cloudflare-Proxy-Funktionen deaktiviert werden.</p>
+<ul>
+	<li>E-Mail-Adresse verschleiern</li>
+	<li>Rocket Loader</li>
+	<li>Serverseitige Ausnahmen (Server Side Excludes, SSE)</li>
+	<li>Mirage</li>
+	<li>HTML Minification - JavaScript und CSS können aktiviert bleiben.</li>
+	<li>Automatic HTTPS RewritesDies ist darauf zurückzuführen, dass Cloudflare den Body dekomprimieren und darauf zugreifen muss, um die angeforderten Einstellungen anzuwenden. Alternativ kann ein Kunde diese Funktionen für bestimmte Pfade über Konfigurationsregeln deaktivieren.</li>
+</ul>
+<div id="html-block-k36" class="html-block">
+	<style>
+		#html-block-k36 .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k36 .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -223,7 +178,7 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k36 .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -235,17 +190,17 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 			word-break: normal;
 		}
 
-		.tg .tg-baqh {
+		#html-block-k36 .tg .tg-baqh {
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k36 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">O</span></th>
@@ -272,76 +227,42 @@ image/vnd.microsoft.icon image/bmp image/svg+xml;</code></pre>
 				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">y</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Wenn eine dieser Rewrite-Funktionen aktiviert ist, kann Ihr Ursprung immer noch eine Brotli-Komprimierung mit höheren Stufen senden. Wir dekomprimieren jedoch, wenden die aktivierte(n) Cloudflare-Funktion(en) an und komprimieren im laufenden Betrieb erneut mit der Standard-Brotli-Stufe 4 oder Gzip-Stufe 8, je nach dem accept-encoding-Header des Benutzers.</p>
-	<p>Bei Browsern, die keine Brotli-Komprimierung akzeptieren, werden wir weiterhin dekomprimieren und Gzipped-Antworten oder unkomprimiert senden.</p>
-	<div class="flex anchor relative">
-		<h3 id="implementation">Implementierung</h3>
-		<a href="https://blog.cloudflare.com/#implementation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Der erste Schritt zur Implementierung von Brotli vom Ursprung aus bestand in der Konstruktion eines Dekomprimierungsmoduls, das in den Cloudflare Software-Stack integriert werden konnte. Damit können wir die komprimierten Bits, die wir von der Quelle erhalten, effizient in die ursprüngliche, unkomprimierte Datei umwandeln. Dieser Schritt war entscheidend, da zahlreiche <a href="https://blog.cloudflare.com/rust-nginx-module">Funktionen</a> wie E-Mail-Verschleierung (Email Obfuscation) und Cloudflare Workers Customers darauf angewiesen sind, auf den Body einer Antwort zuzugreifen, um Anpassungen vorzunehmen.</p>
-	<p>Wir haben den Dekomprimierer in den zentralen <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer">Reverse-Web-Proxy</a> von Cloudflare integriert. Diese Integration stellte sicher, dass alle Cloudflare-Produkte und -Funktionen mühelos auf die Brotli-Dekomprimierung zugreifen können. Dies ermöglichte es unserem Cloudflare Workers-Team auch, Brotli direkt in Cloudflare Workers zu integrieren, so dass unsere Workers-Kunden in der Lage sind, mit den in Brotli zurückgegebenen Antworten zu interagieren oder sie unverändert an den Endbenutzer weiterzuleiten.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-compression-rules-granular-control-of-compression-to-end-users">Wir präsentieren: Compression Rules – Präzise Steuerung der Komprimierung zu Endnutzern</h3>
-		<a href="https://blog.cloudflare.com/#introducing-compression-rules-granular-control-of-compression-to-end-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f1c71fdb05263b5ec3077e6e7acdb7e2/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff1c71fdb05263b5ec3077e6e7acdb7e2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: html-->
-	<p>Standardmäßig komprimiert Cloudflare <a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress" target="_blank" rel="noopener noreferrer">bestimmte Inhaltstypen</a> basierend auf dem Content-Type-Header der Datei. Heute kündigen wir außerdem Compression Rules für unsere Enterprise-Kunden an, mit denen Sie noch mehr Kontrolle darüber haben, wie und was Cloudflare komprimiert.</p>
-	<p>Heute kündigen wir auch die Einführung von Compression Rules für unsere Enterprise-Kunden an. Mit Compression Rules erhalten Sie eine bessere Kontrolle über die Komprimierungsfunktionen von Cloudflare. So können Sie individuell festlegen, wie und welche Inhalte Cloudflare komprimiert, um die Performance Ihrer Website zu optimieren.</p>
-	<p>Zum Beispiel durch die Verwendung der Compression Rules von Cloudflare für .ktx -Dateien können Kunden die Bereitstellung von Texturen in WebGL-Anwendungen optimieren und so das Benutzererlebnis insgesamt verbessern. Durch die Aktivierung der Komprimierung wird die Bandbreitennutzung minimiert und sichergestellt, dass WebGL-Anwendungen schnell und reibungslos geladen werden, selbst wenn es sich um große und detaillierte Texturen handelt.</p>
-	<p>Alternativ können Kunden die Komprimierung deaktivieren oder eine Präferenz für die Art der Komprimierung angeben. Ein anderes Beispiel wäre ein Infrastrukturunternehmen, das Gzip nur für seine IoT-Geräte unterstützen möchte, aber Brotli-Komprimierung für alle anderen Hostnamen zulässt.</p>
-	<p>Compression Rules verwenden die Filter, auf denen unsere anderen <a href="https://developers.cloudflare.com/rules" target="_blank" rel="noopener noreferrer">Regelprodukte</a> aufbauen, mit den zusätzlichen Feldern Medientyp und Erweiterungstyp. So können Sie ganz einfach die Inhalte angeben, die Sie komprimieren möchten.</p>
-	<div class="flex anchor relative">
-		<h3 id="deprecating-the-brotli-toggle">Abschaffung des Brotli-Toggles</h3>
-		<a href="https://blog.cloudflare.com/#deprecating-the-brotli-toggle" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Brotli wird schon seit 2016 von einigen <a href="https://caniuse.com/brotli" target="_blank" rel="noopener noreferrer">Webbrowsern</a> unterstützt, seit 2017 bietet Cloudflare Brotli-Support an. Wie bei allen neuen Webtechnologien war Brotli unbekannt und wir gaben Kunden die Möglichkeit, Brotli über die API und unsere Benutzeroberfläche selektiv zu aktivieren oder zu deaktivieren.</p>
-	<p>Da sich Brotli nun weiterentwickelt hat und von allen Browsern unterstützt wird, planen wir, Brotli in den kommenden Monaten in allen Zonen standardmäßig zu aktivieren. Wir spiegeln das Gzip-Verhalten wider, das wir derzeit unterstützen, und entfernen die Umschaltfunktion aus unserem Dashboard. Wenn Browser Brotli nicht unterstützen, wird Cloudflare weiterhin die von ihnen akzeptierten Kodierungstypen wie Gzip oder unkomprimiert unterstützen. Enterprise-Kunden werden weiterhin in der Lage sein, Compression Rules zu verwenden, um genau zu steuern, wie wir die Daten für ihre Benutzer komprimieren.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-future-of-web-compression">Die Zukunft der Webkomprimierung</h3>
-		<a href="https://blog.cloudflare.com/#the-future-of-web-compression" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Nicht nur haben wir eine hohe Akzeptanz von Brotli als neuer Komprimierungstechnik für das Web festgestellt, es bietet auch eine exzellente Performance. Mit Blick auf die Zukunft behalten wir Trends und neue Komprimierungsalgorithmen wie <a href="https://www.rfc-editor.org/rfc/rfc8478" target="_blank" rel="noopener noreferrer">zstd</a> als möglichen Komprimierungsalgorithmus der nächsten Generation gut im Auge.</p>
-	<p>Gleichzeitig versuchen wir, Brotli direkt zu verbessern, wo wir können. Eine Entwicklung, auf die wir uns besonders konzentrieren, ist die gemeinsame Nutzung von Wörterbüchern mit Brotli. Wann immer Sie ein Asset komprimieren, verwenden Sie ein „Wörterbuch“, das die Komprimierung effizienter macht. Eine einfache Analogie dazu ist die Eingabe von OMW in eine iPhone-Nachricht. Das iPhone übersetzt es automatisch mit Hilfe seines eigenen internen Wörterbuchs in On My Way.</p>
-	<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-baqh{text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
-	<p>O</p>
-	<p>M</p>
-	<p>W</p>
-	<p>O</p>
-	<p>n</p>
-	<p>M</p>
-	<p>y</p>
-	<p>W</p>
-	<p>a</p>
-	<p>y</p>
-	<p>Dieses interne Wörterbuch hat aus drei Zeichen neun Zeichen gemacht (einschließlich Leerzeichen). Das interne Wörterbuch hat sechs Zeichen eingespart, was für die Benutzer einen Performance-Vorteil bedeutet.</p>
-	<p>Standardmäßig definiert der <a href="https://www.rfc-editor.org/rfc/rfc7932#page-28" target="_blank" rel="noopener noreferrer">Brotli RFC</a> ein statisches Wörterbuch, das sowohl von den Clients als auch von den Ursprungsservern verwendet wird. Das statische Wörterbuch wurde so konzipiert, dass es universell einsetzbar ist und für jeden gilt. Die Größe des Wörterbuchs wurde so optimiert, dass es nicht zu groß ist und gleichzeitig die besten Komprimierungsergebnisse erzielt werden können. Was wäre jedoch, wenn ein Ursprungsserver ein maßgeschneidertes Wörterbuch für eine bestimmte Website erstellen könnte? Ein Cloudflare-spezifisches Wörterbuch würde es uns beispielsweise ermöglichen, die Wörter und Ausdrücke zu komprimieren, die auf unserer Website wiederholt vorkommen, wie z.B. das Wort „Cloudflare“. Das maßgeschneiderte Wörterbuch wäre so konzipiert, dass es diese so stark wie möglich komprimiert, und der Browser, der dasselbe Wörterbuch verwendet, wäre in der Lage, dies zurück zu übersetzen.</p>
-	<p>Ein <a href="https://github.com/wicG/compression-dictionary-transport" target="_blank" rel="noopener noreferrer">neuer Vorschlag</a> des Web Incubator CG zielt darauf ab, genau das zu tun. Sie können Ihre eigenen Wörterbücher angeben, die Browser verwenden können, um Websites eine weitere Optimierung der Komprimierung zu ermöglichen. Wir freuen uns, zu diesem Vorschlag beizutragen und planen, unsere Forschungsergebnisse bald zu veröffentlichen.</p>
-	<div class="flex anchor relative">
-		<h3 id="try-it-now">Jetzt Testen</h3>
-		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Compression Rules sind jetzt verfügbar! End-to-End-Brotli-Komprimierung wird in den kommenden Wochen eingeführt. So können Sie die Performance verbessern, die Bandbreite reduzieren und präzise steuern, wie Cloudflare die Komprimierung für Ihre Endbenutzer handhabt.</p>
+	</table>
 </div>
+<p>Wenn eine dieser Rewrite-Funktionen aktiviert ist, kann Ihr Ursprung immer noch eine Brotli-Komprimierung mit höheren Stufen senden. Wir dekomprimieren jedoch, wenden die aktivierte(n) Cloudflare-Funktion(en) an und komprimieren im laufenden Betrieb erneut mit der Standard-Brotli-Stufe 4 oder Gzip-Stufe 8, je nach dem accept-encoding-Header des Benutzers.</p>
+<p>Bei Browsern, die keine Brotli-Komprimierung akzeptieren, werden wir weiterhin dekomprimieren und Gzipped-Antworten oder unkomprimiert senden.</p>
+<h3>Implementierung</h3>
+<p>Der erste Schritt zur Implementierung von Brotli vom Ursprung aus bestand in der Konstruktion eines Dekomprimierungsmoduls, das in den Cloudflare Software-Stack integriert werden konnte. Damit können wir die komprimierten Bits, die wir von der Quelle erhalten, effizient in die ursprüngliche, unkomprimierte Datei umwandeln. Dieser Schritt war entscheidend, da zahlreiche <a href="https://blog.cloudflare.com/rust-nginx-module">Funktionen</a> wie E-Mail-Verschleierung (Email Obfuscation) und Cloudflare Workers Customers darauf angewiesen sind, auf den Body einer Antwort zuzugreifen, um Anpassungen vorzunehmen.</p>
+<p>Wir haben den Dekomprimierer in den zentralen <a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer">Reverse-Web-Proxy</a> von Cloudflare integriert. Diese Integration stellte sicher, dass alle Cloudflare-Produkte und -Funktionen mühelos auf die Brotli-Dekomprimierung zugreifen können. Dies ermöglichte es unserem Cloudflare Workers-Team auch, Brotli direkt in Cloudflare Workers zu integrieren, so dass unsere Workers-Kunden in der Lage sind, mit den in Brotli zurückgegebenen Antworten zu interagieren oder sie unverändert an den Endbenutzer weiterzuleiten.</p>
+<h3>Wir präsentieren: Compression Rules – Präzise Steuerung der Komprimierung zu Endnutzern</h3>
+<div id="html-block-k3p" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f1c71fdb05263b5ec3077e6e7acdb7e2/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff1c71fdb05263b5ec3077e6e7acdb7e2%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+	<p></p>
+</div>
+<p>Standardmäßig komprimiert Cloudflare <a href="https://developers.cloudflare.com/support/speed/optimization-file-size/what-will-cloudflare-compress" target="_blank" rel="noopener noreferrer">bestimmte Inhaltstypen</a> basierend auf dem Content-Type-Header der Datei. Heute kündigen wir außerdem Compression Rules für unsere Enterprise-Kunden an, mit denen Sie noch mehr Kontrolle darüber haben, wie und was Cloudflare komprimiert.</p>
+<p>Heute kündigen wir auch die Einführung von Compression Rules für unsere Enterprise-Kunden an. Mit Compression Rules erhalten Sie eine bessere Kontrolle über die Komprimierungsfunktionen von Cloudflare. So können Sie individuell festlegen, wie und welche Inhalte Cloudflare komprimiert, um die Performance Ihrer Website zu optimieren.</p>
+<p>Zum Beispiel durch die Verwendung der Compression Rules von Cloudflare für .ktx -Dateien können Kunden die Bereitstellung von Texturen in WebGL-Anwendungen optimieren und so das Benutzererlebnis insgesamt verbessern. Durch die Aktivierung der Komprimierung wird die Bandbreitennutzung minimiert und sichergestellt, dass WebGL-Anwendungen schnell und reibungslos geladen werden, selbst wenn es sich um große und detaillierte Texturen handelt.</p>
+<p>Alternativ können Kunden die Komprimierung deaktivieren oder eine Präferenz für die Art der Komprimierung angeben. Ein anderes Beispiel wäre ein Infrastrukturunternehmen, das Gzip nur für seine IoT-Geräte unterstützen möchte, aber Brotli-Komprimierung für alle anderen Hostnamen zulässt.</p>
+<p>Compression Rules verwenden die Filter, auf denen unsere anderen <a href="https://developers.cloudflare.com/rules" target="_blank" rel="noopener noreferrer">Regelprodukte</a> aufbauen, mit den zusätzlichen Feldern Medientyp und Erweiterungstyp. So können Sie ganz einfach die Inhalte angeben, die Sie komprimieren möchten.</p>
+<h3>Abschaffung des Brotli-Toggles</h3>
+<p>Brotli wird schon seit 2016 von einigen <a href="https://caniuse.com/brotli" target="_blank" rel="noopener noreferrer">Webbrowsern</a> unterstützt, seit 2017 bietet Cloudflare Brotli-Support an. Wie bei allen neuen Webtechnologien war Brotli unbekannt und wir gaben Kunden die Möglichkeit, Brotli über die API und unsere Benutzeroberfläche selektiv zu aktivieren oder zu deaktivieren.</p>
+<p>Da sich Brotli nun weiterentwickelt hat und von allen Browsern unterstützt wird, planen wir, Brotli in den kommenden Monaten in allen Zonen standardmäßig zu aktivieren. Wir spiegeln das Gzip-Verhalten wider, das wir derzeit unterstützen, und entfernen die Umschaltfunktion aus unserem Dashboard. Wenn Browser Brotli nicht unterstützen, wird Cloudflare weiterhin die von ihnen akzeptierten Kodierungstypen wie Gzip oder unkomprimiert unterstützen. Enterprise-Kunden werden weiterhin in der Lage sein, Compression Rules zu verwenden, um genau zu steuern, wie wir die Daten für ihre Benutzer komprimieren.</p>
+<h3>Die Zukunft der Webkomprimierung</h3>
+<p>Nicht nur haben wir eine hohe Akzeptanz von Brotli als neuer Komprimierungstechnik für das Web festgestellt, es bietet auch eine exzellente Performance. Mit Blick auf die Zukunft behalten wir Trends und neue Komprimierungsalgorithmen wie <a href="https://www.rfc-editor.org/rfc/rfc8478" target="_blank" rel="noopener noreferrer">zstd</a> als möglichen Komprimierungsalgorithmus der nächsten Generation gut im Auge.</p>
+<p>Gleichzeitig versuchen wir, Brotli direkt zu verbessern, wo wir können. Eine Entwicklung, auf die wir uns besonders konzentrieren, ist die gemeinsame Nutzung von Wörterbüchern mit Brotli. Wann immer Sie ein Asset komprimieren, verwenden Sie ein „Wörterbuch“, das die Komprimierung effizienter macht. Eine einfache Analogie dazu ist die Eingabe von OMW in eine iPhone-Nachricht. Das iPhone übersetzt es automatisch mit Hilfe seines eigenen internen Wörterbuchs in On My Way.</p>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-baqh{text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>O</p>
+<p>M</p>
+<p>W</p>
+<p>O</p>
+<p>n</p>
+<p>M</p>
+<p>y</p>
+<p>W</p>
+<p>a</p>
+<p>y</p>
+<p>Dieses interne Wörterbuch hat aus drei Zeichen neun Zeichen gemacht (einschließlich Leerzeichen). Das interne Wörterbuch hat sechs Zeichen eingespart, was für die Benutzer einen Performance-Vorteil bedeutet.</p>
+<p>Standardmäßig definiert der <a href="https://www.rfc-editor.org/rfc/rfc7932#page-28" target="_blank" rel="noopener noreferrer">Brotli RFC</a> ein statisches Wörterbuch, das sowohl von den Clients als auch von den Ursprungsservern verwendet wird. Das statische Wörterbuch wurde so konzipiert, dass es universell einsetzbar ist und für jeden gilt. Die Größe des Wörterbuchs wurde so optimiert, dass es nicht zu groß ist und gleichzeitig die besten Komprimierungsergebnisse erzielt werden können. Was wäre jedoch, wenn ein Ursprungsserver ein maßgeschneidertes Wörterbuch für eine bestimmte Website erstellen könnte? Ein Cloudflare-spezifisches Wörterbuch würde es uns beispielsweise ermöglichen, die Wörter und Ausdrücke zu komprimieren, die auf unserer Website wiederholt vorkommen, wie z.B. das Wort „Cloudflare“. Das maßgeschneiderte Wörterbuch wäre so konzipiert, dass es diese so stark wie möglich komprimiert, und der Browser, der dasselbe Wörterbuch verwendet, wäre in der Lage, dies zurück zu übersetzen.</p>
+<p>Ein <a href="https://github.com/wicG/compression-dictionary-transport" target="_blank" rel="noopener noreferrer">neuer Vorschlag</a> des Web Incubator CG zielt darauf ab, genau das zu tun. Sie können Ihre eigenen Wörterbücher angeben, die Browser verwenden können, um Websites eine weitere Optimierung der Komprimierung zu ermöglichen. Wir freuen uns, zu diesem Vorschlag beizutragen und planen, unsere Forschungsergebnisse bald zu veröffentlichen.</p>
+<h3>Jetzt Testen</h3>
+<p>Compression Rules sind jetzt verfügbar! End-to-End-Brotli-Komprimierung wird in den kommenden Wochen eingeführt. So können Sie die Performance verbessern, die Bandbreite reduzieren und präzise steuern, wie Cloudflare die Komprimierung für Ihre Endbenutzer handhabt.</p>

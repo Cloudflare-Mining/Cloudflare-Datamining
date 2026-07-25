@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "How we built the most efficient inference engine for Cloudflare’s network",
+	"url": "https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine/",
+	"datePublished": "2025-08-27T14:00:00.000Z",
+	"dateModified": "2026-07-15T12:40:49.801Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW47VGD7PNZRCWMH7HPQSEKN.png",
+	"description": "Existing LLM serving engines aren’t efficient enough when deployed across a globally distributed network, so we built our own, in Rust. Infire is an LLM inference engine that employs a range of techniques to maximize resource utilization, allowing us to serve AI models more efficiently and with better performance for Cloudflare workloads."
+}

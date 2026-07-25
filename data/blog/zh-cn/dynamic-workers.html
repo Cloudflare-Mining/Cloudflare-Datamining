@@ -1,0 +1,327 @@
+<p>去年 9 月，我们推出了<a href="https://blog.cloudflare.com/code-mode" target="_blank" rel="noopener noreferrer"><u>代码模式</u></a>，其核心理念是智能体不应通过调用工具，而应该通过编写调用 API 的代码来执行任务。我们已经证明，只需将 MCP 服务器转换为 TypeScript API，即可<a href="https://www.youtube.com/watch?v=L2j3tYTtJwk" target="_blank" rel="noopener noreferrer"><u>将词元使用量减少 81%</u></a>。我们演示了代码模式也可以在 MCP 服务器<em>后端</em>运行，而不是在前端运行，从而创建了全新的 <a href="https://blog.cloudflare.com/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP 服务器，它仅使用两个工具和不到 1,000 个词元即可调用和管理整个 Cloudflare API</u></a>。</p>
+<p>但是，如果智能体（或 MCP 服务器）要执行 AI 动态生成的代码来完成任务，则需要在某个地方运行这些代码，而且这个地方必须安全。您不能直接在应用中使用 <code>eval() </code>执行 AI 生成的代码：恶意用户可以轻松地提示 AI 注入漏洞。</p>
+<p>您需要的是<strong>沙箱</strong>：一个与应用程序以及其他外部世界隔离的代码执行环境，除了代码要访问的特定功能之外。</p>
+<p>沙箱技术是 AI 行业的一个热门话题。对于这项任务，大多数人选择使用容器。使用基于 Linux 的容器来启动想要的任何类型的代码执行环境。Cloudflare 甚至为此提供了<a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>容器运行时</u></a>和<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>沙箱 SDK</u></a>。</p>
+<p>但是，容器成本高昂且启动缓慢，启动需要数百毫秒且运行需要数百兆字节的内存。您可能需要保持容器处于“预热”状态以避免延迟，而且您可能会倾向于将现有容器用于执行多个任务，从而损害安全性。</p>
+<p><strong>如果我们想要支持消费者级超大规模智能体，其中每个最终用户都拥有一个（或多个！）智能体，并且每个智能体都编写代码，则使用容器远远不够。我们需要更轻量级的解决方案。</strong></p>
+<h6>而且我们已经找到了。</h6>
+<h2>Dynamic Worker Loader：一个精简的沙箱</h2>
+<p>我们在 9 月的“代码模式”文章中宣布了一项新的实验性功能：Dynamic Worker Loader API。该 API 支持 Cloudflare Worker 使用在运行时指定的代码，在自己的沙箱中动态实例化新的 Worker。</p>
+<p><strong>Dynamic Worker Loader 现在处于公测阶段，可供所有 Workers 付费用户使用。</strong></p>
+<p><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>阅读文档，了解完整的详细信息</u></a>，下面是它的简介：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Have your LLM generate code like this.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> agentCode</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  export default {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    async myAgent(param, env, ctx) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      // ...</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Get RPC stubs representing APIs the agent should be able</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// to access. (This can be any Workers RPC API you define.)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> chatRoomRpcStub </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> ...</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Load a worker to run the code, using the worker loader</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// binding.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> worker </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">load</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Specify the code.</span></span>
+<span class="line"><span class="sk-24292e-fff">  compatibilityDate: </span><span class="sk-032f62-99ffe4">"2026-03-01"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  mainModule: </span><span class="sk-032f62-99ffe4">"agent.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  modules: { </span><span class="sk-032f62-99ffe4">"agent.js"</span><span class="sk-24292e-fff">: agentCode },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Give agent access to the chat room API.</span></span>
+<span class="line"><span class="sk-24292e-fff">  env: { CHAT_ROOM: chatRoomRpcStub },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Block internet access. (You can also intercept it.)</span></span>
+<span class="line"><span class="sk-24292e-fff">  globalOutbound: </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Call RPC methods exported by the agent code.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> worker.</span><span class="sk-6f42c1-ffc799">getEntrypoint</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">myAgent</span><span class="sk-24292e-fff">(param);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>就是这样。</p>
+<h3>速度快 100 倍</h3>
+<p>Dynamic Workers 使用与整个 Cloudflare Workers 平台自八年前推出以来一直采用的相同的底层沙箱机制：隔离区。隔离区是 V8 JavaScript 执行引擎的一个实例，与 Google Chrome 使用的引擎相同。它们是 <a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>Workers 的运行环境</u></a>。</p>
+<p>隔离区的启动只需几毫秒，占用几兆字节的内存。与典型的容器相比，其启动速度快大约 100 倍，内存效率高 10-100 倍。</p>
+<p><strong>这意味着，如果您想要为每个用户请求按需启动一个新的隔离区，则可以运行一个代码片段，然后将其丢弃。</strong></p>
+<h3>无限可扩展性</h3>
+<p>许多基于容器的沙箱提供商对全局并发沙箱的数量以及沙箱创建的速率施加了限制。Dynamic Worker Loader 没有此类限制。无需施加限制，因为它只是一个 API，调用一直以来为 Cloudflare 平台提供支持的相同技术，该技术始终支持 Workers 无缝扩展到可以处理每秒数百万个请求。</p>
+<p>希望处理每秒一百万个请求，其中<em>每个请求</em>都加载一个单独的 Dynamic Worker 沙箱且所有沙箱并发运行？没问题！</p>
+<h3>零延迟</h3>
+<p>一次性 Dynamic Workers 通常与创建它们的 Worker 在同一台机器，甚至是同一线程上运行。无需在全球范围内寻找可用的沙箱。隔离区非常轻量，我们可以在请求到达的任何地方运行它们。Cloudflare 遍布全球的数百个位置均可为 Dynamic Workers 提供支持。</p>
+<h3>全部使用 JavaScript</h3>
+<p>与容器相比，唯一的区别是智能体需要编写 JavaScript 代码。</p>
+<p>从技术角度来说，Workers（包括 Dynamic Workers）可以使用 Python 和 WebAssembly，但对于小型片段代码（例如，由智能体按需编写的代码），JavaScript 的加载和运行速度快得多。</p>
+<p>真人用户往往对编程语言有强烈的偏好，许多人喜欢 JavaScript，但另一些人可能更喜欢 Python、Rust 或其他语言。</p>
+<p>但是，我们在这里谈论的不是真人用户，而是 AI。AI 可以编写任何您想要的语言。LLM 精通所有主流语言。它们在 JavaScript 方面的训练数据非常庞大。</p>
+<p>为了能在网页上安全运行，JavaScript 从诞生之初就被设计成一种在沙箱环境中运行的语言。它是完成这项工作的正确语言。</p>
+<h3>TypeScript 中定义的工具</h3>
+<p>如果希望智能体能够执行任何有用的操作，它需要与外部 API 通信。我们如何告诉智能体，它可以访问哪些 API 呢？</p>
+<p>MCP 定义了扁平工具调用的模式，但没有定义编程 API 的调用模式。OpenAPI 提供一种表达 REST API 的方法，但它比较繁琐，无论是模式本身还是编写调用所需的代码。</p>
+<p>对于暴露给 JavaScript 的 API，只有一个显而易见的答案：TypeScript。</p>
+<p>智能体熟悉 TypeScript。TypeScript 的设计理念就是力求简洁。使用极少的词元，就能让智能体精准理解 API。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Interface to interact with a chat room.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> ChatRoom</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Get the last `limit` messages of the chat log.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getHistory</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">limit</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Message</span><span class="sk-24292e-fff">[]&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Subscribe to new messages. Dispose the returned object</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // to unsubscribe.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  subscribe</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">callback</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">msg</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Message</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Disposable</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Post a message to chat.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  post</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">text</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> Message</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  author</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  time</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  text</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>相比之下，对应的 OpenAPI 规范冗长繁琐，必须滚动浏览才能查看全文：</p>
+<div id="html-block-k2o" class="html-block">
+	<pre style="height:400px;overflow-y:scroll;display:block;color:#c7ccd1;background-color:rgb(28,32,35)">openapi: 3.1.0
+info:
+  title: ChatRoom API
+  description: &gt;
+    Interface to interact with a chat room.
+  version: 1.0.0
+
+paths:
+  /messages:
+    get:
+      operationId: getHistory
+      summary: Get recent chat history
+      description: Returns the last `limit` messages from the chat log, newest first.
+      parameters:
+        - name: limit
+          in: query
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        "200":
+          description: A list of messages.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+
+    post:
+      operationId: postMessage
+      summary: Post a message to the chat room
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - text
+              properties:
+                text:
+                  type: string
+      responses:
+        "204":
+          description: Message posted successfully.
+
+  /messages/stream:
+    get:
+      operationId: subscribeMessages
+      summary: Subscribe to new messages via SSE
+      description: &gt;
+        Opens a Server-Sent Events stream. Each event carries a JSON-encoded
+        Message object. The client unsubscribes by closing the connection.
+      responses:
+        "200":
+          description: An SSE stream of new messages.
+          content:
+            text/event-stream:
+              schema:
+                description: &gt;
+                  Each SSE `data` field contains a JSON-encoded Message object.
+                $ref: "#/components/schemas/Message"
+
+components:
+  schemas:
+    Message:
+      type: object
+      required:
+        - author
+        - time
+        - text
+      properties:
+        author:
+          type: string
+        time:
+          type: string
+          format: date-time
+        text:
+          type: string
+</pre>
+</div>
+<p>我们认为 TypeScript API 更胜一筹。它使用的词元更少，且更容易理解（对智能体和真人用户而言都是如此）。 </p>
+<p>Dynamic Worker Loader 让您可以轻松在自有 Worker 中实现类似这样的 TypeScript API，然后将其作为方法参数或在环境对象中传递给 Dynamic Worker。Workers 运行时会自动在沙箱与测试代码之间建立 <a href="https://blog.cloudflare.com/capnweb-javascript-rpc-library" target="_blank" rel="noopener noreferrer"><u>Cap'n Web RPC</u></a> 桥接，以便智能体可以跨越安全边界调用 API，而不会意识到它没有使用本地库。</p>
+<p>也就是说，智能体可以编写如下代码：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Thinking: The user asked me to summarize recent chat messages from Alice.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// I will filter the recent message history in code so that I only have to</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// read the relevant messages.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> history </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">CHAT_ROOM</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">getHistory</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> history.</span><span class="sk-6f42c1-ffc799">filter</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">msg</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> msg.author </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "alice"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>HTTP 过滤与凭据注入</h3>
+<p>如果您希望为智能体提供 HTTP API，我们也完全支持。您可以使用 worker loader API 的 <code>globalOutbound</code> 选项，注册一个回调函数，该函数会在每个 HTTP 请求时被调用。您可以在其中检查请求、重写请求、注入身份验证密钥、直接响应请求、阻止请求，或执行任何其他所需操作。</p>
+<p>例如，可以利用它来实施<strong>凭据注入</strong>（词元注入）：当智能体向需要授权的服务发出 HTTP 请求时，可以在请求发出时添加凭据。如此一来，智能体本身永远不会知道秘密凭据，因此，也不会泄露凭据。</p>
+<p>当智能体与训练集中已知的 API 通信，或者您希望智能体使用基于 REST API 构建的库（该库可以在智能体的沙箱中运行）时，使用普通 HTTP 接口是可取的。</p>
+<p>尽管如此，<strong>但在没有兼容性要求的情况下，TypeScript RPC 接口比 HTTP 更好：</strong></p>
+<ul>
+	<li>如上图所示，TypeScript 接口所需的描述词元远少于 HTTP 接口。</li>
+	<li>智能体可以使用比等效 HTTP 少得多的词元，来编写调用 TypeScript 接口的代码。</li>
+	<li>使用 TypeScript 接口时，由于您无论如何都要定义自己的包装器接口，因此更容易缩小接口范围，从而仅公开您希望提供给智能体的功能，这种做法既简单又安全。如果使用 HTTP，则更有可能需要<em>过滤</em>针对现有 API 发出的请求。这比较困难，因为代理必须完全解释每个 API 调用的含义，才能正确决定是否允许执行该调用，而 HTTP 请求很复杂，它包含许多可能有意义的标头和其他参数。最终，最简单的办法是编写一个 TypeScript 包装器，并且它只实现您要允许的功能。</li>
+</ul>
+<h3>久经考验的安全性</h3>
+<p>强化基于隔离的沙箱并非易事，因为它是比硬件虚拟机更复杂的攻击面。尽管所有沙箱机制都存在漏洞，但 V8 的安全漏洞比典型虚拟机管理程序中的安全漏洞更常见。如果使用隔离区将潜在的恶意代码隔离在沙箱中，部署额外的纵深防御层非常重要。例如，Google Chrome 浏览器出于这个原因而实现了严格的进程隔离，但这不是唯一可能的解决方案。</p>
+<p>Cloudflare 在保护基于隔离的平台方面拥有近十年的经验。我们的系统可以在数小时内自动将 V8 安全补丁部署到生产环境，速度甚至比 Chrome 本身更快。我们的<a href="https://blog.cloudflare.com/mitigating-spectre-and-other-security-threats-the-cloudflare-workers-security-model" target="_blank" rel="noopener noreferrer"><u>安全架构</u></a>采用定制的第二层沙箱，并根据风险评估对租户动态封锁。<a href="https://blog.cloudflare.com/safe-in-the-sandbox-security-hardening-for-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>我们扩展了 V8 沙箱本身</u></a>，以利用 MPK 等硬件功能。我们已经与顶尖研究人员合作并聘请了他们，开发<a href="https://blog.cloudflare.com/spectre-research-with-tu-graz" target="_blank" rel="noopener noreferrer"><u>针对 Spectre 漏洞的新型防御方法</u></a>。我们还拥有能够扫描代码的系统，以发现恶意模式并自动加以阻止或应用额外的沙箱层。以及更多其他功能。</p>
+<p>当您在 Cloudflare 平台上使用 Dynamic Workers 时，将自动获得所有这些功能。</p>
+<h2>辅助库</h2>
+<p>我们构建了一些库，您在使用 Dynamic Workers 时可能会发现这些库有用： </p>
+<h3>代码模式</h3>
+<p><a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><code>@cloudflare/codemode</code></a> 简化了使用 Dynamic Workers 针对 AI 工具运行模型生成的代码的过程。其核心是 <code>DynamicWorkerExecutor()</code>，它会构建一个具备代码规范化功能的专用沙箱，用于处理常见格式错误，以及直接访问 <code>globalOutbound</code> fetcher 来控制沙箱内的 <code>fetch()</code> 行为；如果将其设置为 <code>null</code>，则可实现完全隔离，或传递 <code>Fetcher</code> 绑定来路由、拦截或丰富源自沙箱的出站请求。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> executor</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> DynamicWorkerExecutor</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  loader: env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  globalOutbound: </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// fully isolated </span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> codemode</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createCodeTool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  tools: myTools,</span></span>
+<span class="line"><span class="sk-24292e-fff">  executor,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> generateText</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  model,</span></span>
+<span class="line"><span class="sk-24292e-fff">  messages,</span></span>
+<span class="line"><span class="sk-24292e-fff">  tools: { codemode },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>代码模式 SDK 还提供两个服务器端工具函数。<code>codeMcpServer({ server, executor })</code> 封装现有 MCP 服务器，将工具接口替换为单个 <code>code()</code> 工具。<code>openApiMcpServer({ spec, executor, request })</code> 则更进一步：给定 OpenAPI 规范和执行器，它会构建完整的 MCP 服务器，其中包含 Cloudflare MCP 服务器使用的 <code>search()</code> 和 <code>execute()</code> 工具，并且更适合更大型的 API。</p>
+<p>在两种情况下，模型生成的代码都在 Dynamic Workers 内运行，并通过传递给执行器的 RPC 绑定调用外部服务。</p>
+<p><a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><u>进一步了解该库的信息及其使用方法。</u></a> </p>
+<h3>打包</h3>
+<p>Dynamic Workers 需要预先打包的模块。<a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><code>@cloudflare/worker-bundler</code></a> 可以处理这个问题：提供源文件和 <code>package.json</code>，它会从注册表中解析 npm 依赖项，使用 <code>esbuild</code> 打包所有内容，并返回 Worker Loader 期望获得的模块映射。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorker } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/worker-bundler"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> worker</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-worker"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">mainModule</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">modules</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> createWorker</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    files: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "src/index.ts"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        import { Hono } from 'hono';</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        import { cors } from 'hono/cors';</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">        const app = new Hono();</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        app.use('*', cors());</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        app.get('/', (c) =&gt; c.text('Hello from Hono!'));</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        app.get('/json', (c) =&gt; c.json({ message: 'It works!' }));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">        export default app;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      `</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "package.json"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        dependencies: { hono: </span><span class="sk-032f62-99ffe4">"^4.0.0"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">      })</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> { mainModule, modules, compatibilityDate: </span><span class="sk-032f62-99ffe4">"2026-01-01"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> worker.</span><span class="sk-6f42c1-ffc799">getEntrypoint</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>它还支持通过 <code>createApp</code> 创建全栈应用，将服务器 Worker、客户端 JavaScript 和静态资产打包在一起，并且内置资产服务功能，可处理内容类型、ETag 和 SPA 路由。</p>
+<p><a href="https://www.npmjs.com/package/@cloudflare/worker-bundler" target="_blank" rel="noopener noreferrer"><u>进一步了解该库的信息及其使用方法。</u></a></p>
+<h3>文件处理</h3>
+<p><a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code>@cloudflare/shell</code></a> 为智能体提供 Dynamic Worker 内的虚拟文件系统。智能体代码调用 <code>state</code> 对象中的类型化方法（读取、写入、搜索、替换、比较、全局匹配、JSON 查询/更新、存档），并使用结构化输入和输出，而不是字符串解析。</p>
+<p>存储由持久的 <code>Workspace</code> (SQLite + R2) 提供支持，因此，文件在执行过程中持续存在。<code>searchFiles</code>、<code>replaceInFiles</code> 和 <code>planEdits</code> 之类的粗略操作可最大限度地减少 RPC 往返次数，智能体只需发出一次调用，而无需遍历单个文件。批量写入默认是事务性操作：如果任何写入失败，之前的写入会自动回滚。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Workspace } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/shell"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { stateTools } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/shell/workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DynamicWorkerExecutor, resolveProvider } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/codemode"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> workspace</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Workspace</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  sql: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx.storage.sql, </span><span class="sk-6a737d-8b8b8b94">// Works with any DO's SqlStorage, D1, or custom SQL backend</span></span>
+<span class="line"><span class="sk-24292e-fff">  r2: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">MY_BUCKET</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// large files spill to R2 automatically</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-24292e-fff">: () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.name   </span><span class="sk-6a737d-8b8b8b94">// lazy — resolved when needed, not at construction</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Code runs in an isolated Worker sandbox with no network access</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> executor</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> DynamicWorkerExecutor</span><span class="sk-24292e-fff">({ loader: env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The LLM writes this code; `state.*` calls dispatch back to the host via RPC</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> executor.</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  `async () =&gt; {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    // Search across all TypeScript files for a pattern</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    const hits = await state.searchFiles("src/**/*.ts", "answer");</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    // Plan multiple edits as a single transaction</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    const plan = await state.planEdits([</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      { kind: "replace", path: "/src/app.ts",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        search: "42", replacement: "43" },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      { kind: "writeJson", path: "/src/config.json",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        value: { version: 2 } }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    ]);</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    // Apply atomically — rolls back on failure</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    return await state.applyEditPlan(plan);</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  [</span><span class="sk-6f42c1-ffc799">resolveProvider</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">stateTools</span><span class="sk-24292e-fff">(workspace))]</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>该软件包还附带预构建的 TypeScript 类型声明和系统提示模板，因此您只需少量词元即可将完整的 <code>state</code> API 集成到 LLM 上下文中。</p>
+<p><a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><u>进一步了解该库的信息及其使用方法。</u></a></p>
+<h2>如何使用？</h2>
+<h4>代码模式</h4>
+<p>开发人员希望智能体能够针对工具 API 编写并执行代码，而不是一次调用一个顺序工具。使用 Dynamic Workers，LLM 会生成一个 TypeScript 函数，它将多个 API 调用链接在一起，在 Dynamic Worker 中运行，并将最终结果返回给智能体。因此，只有最终输出结果（而非每个中间步骤）才会显示在上下文窗口中。这可以降低了延迟并减少词元使用量，生成更好的输出结果，尤其是在使用大工具接口时。</p>
+<p><a href="https://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare MCP 服务器</a>正是基于这种理念构建：它仅通过搜索和执行这两个工具，使用不到 1000 个词元即可公开整个 Cloudflare API，因为智能体是针对类型化 API 编写代码，而不是浏览数百个单独的工具定义。</p>
+<h4>构建自定义自动化流程</h4>
+<p>开发人员正在使用 Dynamic Workers，让智能体能够即时构建自定义自动化流程。例如，<a href="https://www.zite.com" target="_blank" rel="noopener noreferrer"><u>Zite</u></a> 正在构建一个应用平台，用户可以通过聊天界面进行交互，LLM 在后台编写 TypeScript 代码来构建 CRUD 应用，连接到 Stripe、Airtable 和 Google Calendar 等服务并运行后端逻辑，所有这些操作用户都无需看到任何一行代码。每个自动化流程都在各自的 Dynamic Worker 中运行，且只能访问端点需要的特定服务和库。</p>
+<blockquote>
+	<p><em>“为了支持 Zite 的 LLM 生成的应用能够运行服务器端代码，我们需要一个即时、隔离且安全的执行层。Cloudflare Dynamic Workers 可以满足这三项要求，并且在速度和库支持方面超越了我们进行基准测试的所有其他平台。兼容 NodeJS 的运行时支持 Zite 的所有工作流程，允许数百个第三方集成，而不会牺牲启动时间。得益于 Dynamic Workers，Zite 现在每天可以处理数百万个执行请求。” </em></p>
+	<p><em>- Zite 首席技术官兼联合创始人 <strong>Antony Toron</strong></em></p>
+</blockquote>
+<h4>运行 AI 生成的应用</h4>
+<p>开发人员正在构建平台，利用 AI 生成完整的应用，供客户使用或供内部团队构建原型。借助 Dynamic Workers，每个应用都可以按需启动，然后返回冷存储状态，直到再次调用。快速启动时间让开发人员可以在现有开发过程中轻松预览更改。平台还可以阻止或拦截由生成的代码发出的任何网络请求，从而确保 AI 生成的应用安全运行。</p>
+<h2>定价</h2>
+<p>动态加载的 Workers 定价是每个每天加载的唯一 Worker 的价格为 0.002 美元（截至本文发布时），此外还需支付常规 Worker 的 CPU 时间以及调用费用。</p>
+<p>对于 AI 生成的“代码模式”用例，其中每个都是唯一的一次性 Worker，也就是说，每个加载 Worker 的价格为 0.002 美元（加上 CPU 与调用费用）。与生成代码的推理成本相比，这个成本通常可以忽略不计。</p>
+<p>测试期间，免除 0.002 美元的费用。由于定价可能随时变化，请务必查看 Cloudflare Dynamic Workers <a href="https://developers.cloudflare.com/dynamic-workers/pricing" target="_blank" rel="noopener noreferrer"><u>定价</u></a>页面，以获取最新信息。</p>
+<h2>开始使用</h2>
+<p>如果您已购买 Workers 付费计划，则可以立即开始使用 <a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer">Dynamic Workers</a>。</p>
+<h4>Dynamic Workers Starter</h4>
+<div id="html-block-k7p" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagents%2Ftree%2Fmain%2Fexamples%2Fdynamic-workers"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>使用这个“hello world”<a href="https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers" target="_blank" rel="noopener noreferrer">starter</a>，即可部署一个可加载并执行 Dynamic Workers 的 Worker。</p>
+<h4>Dynamic Workers Playground</h4>
+<div id="html-block-k7x" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagents%2Ftree%2Fmain%2Fexamples%2Fdynamic-workers-playground"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>您还可以部署 <a href="https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground" target="_blank" rel="noopener noreferrer">Dynamic Workers Playground</a>，在其中编写或导入代码，使用 <code>@cloudflare/worker-bundler</code> 在运行时进行打包，通过 Dynamic Worker 执行代码，并查看实时响应和执行日志。 </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="416" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=715&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=640&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=715&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=750&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=828&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=1080&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=1280&amp;h=745&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=1430&amp;h=832&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3243 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QXA1FXS79QZH7FBHMFWH.png&amp;w=1920&amp;h=1117&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1117" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="416" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Dynamic Workers 具备快速、可扩展和轻量的特点。如有任何问题，<a href="https://discord.com/channels/595317990191398933/1460655307255578695" target="_blank" rel="noopener noreferrer"><u>请在 Discord 上联系我们</u></a>。我们非常期待看到您的作品！</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="179" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=640&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=750&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=828&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=1080&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=1280&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=1430&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3243 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKHDZK5W2V5BGWDS27G9.png&amp;w=1920&amp;h=480&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="179" class="pt-portable-image-media"></div>
+</figure>

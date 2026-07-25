@@ -1,0 +1,143 @@
+<p>Wczoraj, 8 sierpnia 2022 roku, firma Twilio ogłosiła, że padła <a href="https://www.twilio.com/blog/august-2022-social-engineering-attack" target="_blank" rel="noopener noreferrer">ofiarą ukierunkowanego ataku phishingowego</a>. Mniej więcej w rym samym czasie &nbsp;zaatakowano w zbliżony sposób pracowników Cloudflare. Choć kilka osób dało się oszukać, zdołaliśmy zatrzymać atak, ponieważ stosujemy <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">produkty Cloudflare One</a>, a wszystkie nasze aplikacje wymagają od pracowników używania fizycznych kluczy zabezpieczeń.</p>
+<p>Potwierdziliśmy, że nie naruszono bezpieczeństwa żadnego z systemów Cloudflare. Nasz <a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">zespół Cloudforce One, odpowiedzialny za dane dot. zagrożeń</a>, przeprowadził dodatkową analizę ataku, co pozwoliło określić jego sposób działania i zebrać istotne dowody, które przyczynią się do znalezienia sprawcy.</p>
+<p>Była to wyrafinowana operacja atakująca pracowników i systemy w taki sposób, że większość firm prawdopodobnie nie byłaby w stanie się przed nią ochronić. Ponieważ sprawca wziął na cel wiele organizacji, postanowiliśmy podzielić się naszymi spostrzeżeniami, by pomóc innym firmom rozpoznać i złagodzić ten atak.</p>
+<h2>Ukierunkowane SMS‑y</h2>
+<p>20 lipca 2022 roku zespół ds. bezpieczeństwa w Cloudflare otrzymał doniesienia o wysyłanych do pracowników SMS‑ach, które wyglądały na autentyczne, Zawierały one link, który zdawał się przekierowywać na stronę logowania Cloudflare w portalu Okta. Pierwsze wiadomości wysłano 20 lipca 2022 roku o godzinie 22:50 czasu UTC. W ciągu niecałej minuty co najmniej 76 pracowników otrzymało takie wiadomości na numery osobiste i służbowe. W niektórych przypadkach wiadomość wysłano nawet do członków rodzin pracowników. Nie udało nam się jeszcze ustalić, jak sprawca ataku zdobył numery telefonów pracowników. Sprawdziliśmy dzienniki dostępu do naszego katalogu pracowników i nie znaleźliśmy w nich śladów naruszenia bezpieczeństwa.</p>
+<p>W Cloudlare zespół reagowania na incydenty bezpieczeństwa (SIRT) działa 24 godziny na dobę, 7 dni w tygodniu. Wszyscy nasi pracownicy zostali nauczeni, by zgłaszać SIRT wszystko, co wydaje im się podejrzane. W ponad 90% przypadków zgłoszone do SIRT incydenty okazują się nie być zagrożeniami. To dlatego, że pracownicy są zachęcani do wysyłania zgłoszeń i nigdy nie są za to krytykowani. W tym przypadku zgłoszenia dotyczyły jednak prawdziwego zagrożenia.</p>
+<p>Tak wyglądały otrzymane przez pracowników wiadomości:</p>
+<p>Zostały wysłane z czterech numerów powiązanych z kartami SIM wydanymi przez T‑Mobile: (754) 268-9387, (205) 946-7573, (754) 364-6683 i (561) 524-5989. Podana w nich domena wyglądała na oficjalną: cloudflare-okta.com. Zarejestrowano ją w rejestratorze domeny Porkbun 20 lipca 2022 roku o godzinie 22:13:04 czasu UTC, a więc niecałe 40 minut przed rozpoczęciem kampanii phishingowej.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="601" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=640&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=750&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=828&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1080&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1280&amp;h=1076&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1430&amp;h=1202&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1279 Embedded Image - mzDQx2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1125&amp;h=945&amp;f=webp" data-lightbox-width="1125" data-lightbox-height="945" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="601" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare zbudowało nasz <a href="https://www.cloudflare.com/products/registrar/custom-domain-protection" target="_blank" rel="noopener noreferrer">bezpieczny rejestrator</a> między innymi po to, by monitorować, kiedy są rejestrowane domeny wykorzystujące markę Cloudflare, aby szybko je usuwać. Ponieważ tę domenę zarejestrowano tuż przed atakiem, nie została jeszcze opublikowana, przez co nie zdążyliśmy jej wykryć i usunąć.</p>
+<p>Link w wiadomości prowadził do strony wyłudzającej informacje. Strona ta była hostowana na DigitalOcean i wyglądała tak:</p>
+<p>Fałszywa strona wyglądała identycznie jak prawdziwa strona logowania Okta — systemu uwierzytelniania, z którego korzysta Cloudflare, i prosiła odwiedzającego o podanie nazwy użytkownika i hasła.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1279 Embedded Image - 5SXCpt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1600&amp;h=1200&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1200" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<h2>Phishing w czasie rzeczywistym</h2>
+<p>Udało nam się przeanalizować ładunek <a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank" rel="noopener noreferrer">ataku phishingowego</a> na podstawie wiadomości wysłanych do naszych pracowników oraz treści opublikowanej na takich portalach, jak VirusTotal, przez inne zaatakowane firmy. Gdy ofiara ataku wypełniła pola na stronie, dane logowania były natychmiast przekazywane sprawcy za pośrednictwem komunikatora internetowego Telegram. Ten ostatni punkt jest istotny, ponieważ fałszywa strona prosiła także o podanie hasła jednorazowego opartego na czasie (kod TOTP).</p>
+<p>Przypuszczamy, że sprawca ataku otrzymywał dane logowania w czasie rzeczywistym i wprowadzał je na prawdziwej stronie logowania firmy ofiary, co w przypadku wielu organizacji powodowało wygenerowanie kodu wysyłanego pracownikowi SMS‑em lub wyświetlanego w generatorze haseł. Pracownik następnie wprowadzał kod TOTP na fałszywej stronie, która przekazywała go sprawcy ataku. Ten mógł wówczas, zanim wygasł kod TOTP, wykorzystać go do zalogowania na prawdziwej stronie logowania firmy — obchodząc w ten sposób najczęstszy sposób zabezpieczenia uwierzytelnianiem dwuskładnikowym.</p>
+<h2>Sprawna ochrona mimo potknięć</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="250" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=715&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=640&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=715&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=750&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=828&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=1080&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=1280&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=1430&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1279 Embedded Image - y0kAKQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=951&amp;h=332&amp;f=webp" data-lightbox-width="951" data-lightbox-height="332" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="250" class="pt-portable-image-media"></div>
+</figure>
+<p>Ustaliliśmy, że troje pracowników Cloudflare dało się oszukać i wprowadziło swoje dane na fałszywej stronie. Cloudflare nie korzysta jednak z kodów TOTP. Zamiast tego każdy pracownik otrzymuje zgodny ze standardem FIDO2 klucz zabezpieczeń od takiego dostawcy, jak YubiKey. To fizyczne klucze, które są powiązane z konkretnymi pracownikami i implementują <a href="https://www.yubico.com/blog/creating-unphishable-security-key" target="_blank" rel="noopener noreferrer">powiązanie ze źródłem</a>. Dzięki temu nawet wyrafinowana operacja phishingowa przeprowadzana w czasie rzeczywistym nie pozwoliłaby zebrać informacji koniecznych do zalogowania się do któregokolwiek z naszych systemów. Choć sprawca ataku próbował zalogować się do naszych systemów z wykorzystaniem skradzionych nazw użytkownika i haseł, nie mógł obejść wymagania fizycznego klucza.</p>
+<p>Celem tej fałszywej strony nie było jednak samo wyłudzanie poświadczeń i kodów TOTP. Jeśli ktoś wprowadził wszystkie te dane, strona inicjowała pobieranie ładunku zawierającego oprogramowanie AnyDesk do zdalnego dostępu. Zainstalowanie tego oprogramowania pozwoliłoby sprawcy ataku zdalnie kontrolować komputer ofiary. Żaden z naszych pracowników nie doszedł do tego etapu. Gdyby tak jednak się stało, nasza ochrona punktów końcowych powstrzymałaby instalację oprogramowania do zdalnego dostępu.</p>
+<h2><strong>Jak zareagowaliśmy na atak?</strong></h2>
+<p>Oto najważniejsze z działań podjętych przez nas w odpowiedzi na ten incydent:</p>
+<h3>1. Zablokowanie fałszywej domeny za pomocą Cloudflare Gateway</h3>
+<p>Cloudflare Gateway to <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">bezpieczna brama internetowa (SWG)</a> zapewniająca ochronę przez zagrożeniami internetowymi oraz ochronę danych z filtrowaniem DNS/HTTP i natywnie zintegrowanym <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>. Korzystamy z tego rozwiązania w naszej firmie, aby zapobiegawczo blokować domeny, które określiliśmy jako złośliwe. Nasz zespół dodał złośliwą domenę do Cloudflare Gateway, by zablokować do niej dostęp wszystkim pracownikom.</p>
+<p>Funkcja automatycznego wykrywania złośliwych domen zidentyfikowała domenę i ją zablokowała, jednak ponieważ zarejestrowano ją krótki czas przed wysłaniem wiadomości, system nie zdążył podjąć działań, zanim kilkoro pracowników kliknęło link. Mając na względzie ten incydent, pracujemy nad przyspieszeniem procesu wykrywania i blokowania złośliwych domen. Implementujemy także kontrole dostępu do nowo zarejestrowanych domen — jest to opcja, którą oferujemy klientom, a z której sami dotychczas nie korzystaliśmy.</p>
+<h3>2. Zidentyfikowanie wszystkich dotkniętych problemem pracowników i zresetowanie wykradzionych poświadczeń</h3>
+<p>Porównaliśmy odbiorców SMS-ów z aktywnością logowania i wykryliśmy próby uwierzytelnienia kont pracowników w ramach ataku. Wykryliśmy próby logowania zablokowane dzięki wymaganiu fizycznego klucza (U2F), co oznacza, że użyto prawidłowego hasła, ale nie udało się zweryfikować drugiego składnika. Zresetowaliśmy dane logowania oraz wszystkie aktywne sesje trojga pracowników, których dane logowania zostały skradzione. Przeskanowaliśmy również ich urządzenia.</p>
+<h3>3. Identyfikacja i usunięcie infrastruktury źródła zagrożenia</h3>
+<p>Domena wykorzystana w ataku była nowa, zarejestrowana przez Porkbun i hostowana na DigitalOcean. Założono ją niecałą godzinę przez pierwszą falą ataku. Strona miała front-end Nuxt.js i back-end Django. W wyniku naszego zgłoszenia DigitalOcean zamknęło serwer źródła zagrożenia. Podobnie Porkbun przejęło kontrolę nad złośliwą domeną.</p>
+<p>Na podstawie nieudanych prób logowania ustaliliśmy, że sprawca ataku korzystał z oprogramowania VPN Mullvad i używał przeglądarki Google Chrome oraz systemu Windows 10. Adresy IP VPN sprawcy ataku to 198.54.132.88 oraz 198.54.135.222. Są one przypisane Tzulo, dostawcy serwerów z siedzibą w USA, który podaje na swojej stronie internetowej, że ma serwery w Los Angeles i Chicago. W rzeczywistości wygląda jednak na to, że pierwszy adres był powiązany z serwerem w okolicach Toronto, a drugi z serwerem w okolicach Waszyngtonu (DC). Zablokowaliśmy tym adresom IP dostęp do naszych usług.</p>
+<h3>4. Aktualizacja wykrywania zagrożeń w celu identyfikacji kolejnych prób ataku</h3>
+<p>Na podstawie zebranych informacji o tym ataku włączyliśmy do naszego istniejącego systemu wykrywania dodatkowe sygnały ostrzegawcze, odnoszące się do tego sprawcy. Do czasu publikacji tego artykułu nie zaobserwowaliśmy kolejnych fal ataku na naszą firmę. Dane z serwera wskazują jednak, że sprawca zaatakował również inne organizacje, w tym Twilio. Skontaktowaliśmy się z tymi organizacjami i przekazaliśmy im zebrane przez nas informacje.</p>
+<h3>5. Inspekcja dzienników dostępu do usługi pod kątem innych oznak ataku</h3>
+<p>Po ataku sprawdziliśmy wszystkie dzienniki systemu pod kątem dodatkowych śladów cyfrowych sprawcy. Ponieważ Cloudflare Access stanowi punkt kontroli wszystkich aplikacji Cloudflare, możemy przeszukać dzienniki i wykryć wszelkie ślady naruszenia bezpieczeństwa systemów. Ponieważ w ataku wykorzystano telefony pracowników, starannie przeanalizowaliśmy także dzienniki dostawców usług dla pracowników. Nie znaleźliśmy dowodów naruszenia bezpieczeństwa.</p>
+<h2>Wyciągnięte wnioski i plan dodatkowych działań</h2>
+<p>Każdy atak jest dla nas lekcją. Choć ten był nieudany, wprowadzamy dodatkowe zmiany na podstawie zebranych przez nas informacji. Modyfikujemy ustawienia Cloudflare Gateway, by ograniczyć lub odizolować dostęp do stron internetowych na domenach zarejestrowanych w ciągu ostatniej doby. Wszelkie strony, które nie są na liście dozwolonych, a zawierają terminy takie jak „cloudflare”, „okta”, „sso” i „2fa”, będą obsługiwane w odizolowanej przeglądarce. Zwiększamy także wykorzystanie <a href="https://www.cloudflare.com/products/zero-trust/email-security" target="_blank" rel="noopener noreferrer">technologii Cloudflare Area 1 rozpoznające ataki phishingowe</a> do skanowania sieci Web w poszukiwaniu stron, które mają służyć do zaatakowania Cloudflare. Na koniec wzmacniamy implementację Access, by zapobiegać logowaniom z nieznanych sieci VPN, lokalnych serwerów proxy i dostawców infrastruktury. Są to standardowe funkcje produktów, które oferujemy naszym klientom.</p>
+<p>Atak pokazał także istotność trzech rzeczy, które robimy dobrze. Po pierwsze, dostęp do każdej aplikacji wymaga fizycznego klucza. <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing" target="_blank" rel="noopener noreferrer">Podobnie jak Google</a>, od czasu wprowadzenia tej metody uwierzytelniania nie mieliśmy do czynienia z ani jednym udanym atakiem phishingowym. Narzędzia takie jak Cloudflare Access ułatwiają wsparcie fizycznych kluczy nawet w starszych aplikacjach. Jeśli Twoja organizacja jest zainteresowana, jak wdrożyliśmy te klucze, skontaktuj się z nami pod adresem <a href="mailto:cloudforceone-irhelp@cloudflare.com">cloudforceone-irhelp@cloudflare.com</a>, a nasz zespół ds. bezpieczeństwa chętnie podzieli się dobrymi praktykami, których nauczyliśmy się w tym procesie.</p>
+<p>Po drugie, używamy własnej technologii do ochrony naszych pracowników i systemów. Rozwiązania Cloudflare One, takie jak Access i Gateway, były kluczowe w ochronie przed tym atakiem. Skonfigurowaliśmy implementację Access tak, by każda aplikacja wymagała fizycznego klucza. Access tworzy także jedno miejsce logowania do uwierzytelniania wszystkich aplikacji. W razie konieczności umożliwia także zakończenie sesji użytkownika z potencjalnie naruszonymi zabezpieczeniami. Gateway pozwala nam szybko zablokować złośliwe strony i ustalić, którzy pracownicy mogli zostać oszukani. Wszystkie te funkcje są dostępne dla klientów Cloudflare w ramach pakietu Cloudflare One, a ten atak dowodzi ich skuteczności.</p>
+<p>Po trzecie, kultura podejrzliwości bez obwiniania pracowników ma zasadnicze znaczenie dla bezpieczeństwa. Trzy osoby, które dały się oszukać w ataku, nie otrzymały nagany. Wszyscy jesteśmy ludźmi i popełniamy czasem błędy. To niezmiernie ważne, żeby je zgłaszać, a nie tuszować. Ten incydent jest kolejnym przykładem tego, że bezpieczeństwo jest częścią pracy każdego członka zespołu Cloudflare.</p>
+<h2>Szczegółowa oś czasu wydarzeń</h2>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>2022-07-20 22:49 UTC</p>
+<p>Sprawca wysyła ponad 100 SMS‑ów do pracowników Cloudflare i ich rodzin.</p>
+<p>2022-07-20 22:50 UTC</p>
+<p>Pracownicy zaczynają zgłaszać SMS-y zespołowi ds. bezpieczeństwa.</p>
+<p>2022-07-20 22:52 UTC</p>
+<p>Blokujemy w Cloudflare Gateway domenę źródła zagrożenia na urządzeniach służbowych.</p>
+<p>2022-07-20 22:58 UTC</p>
+<p>Wszyscy pracownicy otrzymują ostrzeżenia przez chat i pocztę e‑mail.</p>
+<p>2022-07-20 22:50 UTC to2022-07-20 23:26 UTC</p>
+<p>Monitorowanie telemetrii w dzienniku systemu Okta i dziennikach HTTP Cloudflare Gateway w celu zidentyfikowania naruszenia bezpieczeństwa poświadczeń. Wyczyszczenie sesji logowania i zawieszenie dotkniętych kont.</p>
+<p>2022-07-20 23:26 UTC</p>
+<p>Dostawca hostingu zamyka stronę wyłudzającą dane.</p>
+<p>2022-07-20 23:37 UTC</p>
+<p>Reset skradzionych poświadczeń.</p>
+<p>2022-07-21 00:15 UTC</p>
+<p>Analiza infrastruktury i możliwości sprawcy.</p>
+<h2>Wskaźniki naruszenia bezpieczeństwa</h2>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-nr0u{border-color:inherit;font-family:inherit;font-size:100%;text-align:left;vertical-align:top} .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}</p>
+<div id="html-block-k46" class="html-block">
+	<style>
+		#html-block-k46 .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k46 .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k46 .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k46 .tg .tg-nr0u {
+			border-color: inherit;
+			font-family: inherit;
+			font-size: 100%;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k46 .tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-nr0u">Value</th>
+				<th class="tg-0pky">Type</th>
+				<th class="tg-0pky">Context and MITRE Mapping</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">cloudflare-okta[.]com hosted on 147[.]182[.]132[.]52</td>
+				<td class="tg-0pky">Phishing URL</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1566/002">T1566.002</a>: Phishing: Spear Phishing Link sent to users.</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</td>
+				<td class="tg-0pky">SHA-256</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1219">T1219</a>: Remote Access Software being distributed by the threat actor</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Wartość</p>
+<p>Typ</p>
+<p>Kontekst i mapowanie MITRE</p>
+<p>cloudflare-okta[.]com hosted on 147[.]182[.]132[.]52</p>
+<p>Adres URL strony</p>
+<p><a href="https://attack.mitre.org/techniques/T1566/002" target="_blank" rel="noopener noreferrer">T1566.002</a>: phishing: link spear phishing wysłany do użytkowników</p>
+<p>64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</p>
+<p>SHA-256</p>
+<p><a href="https://attack.mitre.org/techniques/T1219" target="_blank" rel="noopener noreferrer">T1219</a>: oprogramowanie do dostępu zdalnego rozpowszechniane przez sprawcę</p>
+<h2>Co możesz zrobić</h2>
+<p>Jeśli w Twoim środowisku zdarzają się podobne ataki, zachęcamy do kontaktu pod adresem <a href="mailto:cloudforceone-irhelp@cloudflare.com">cloudforceone-irhelp@cloudflare.com</a>. Chętnie podzielimy się dobrymi praktykami w zakresie bezpieczeństwa Twojej firmy. A może chcesz pracować z nami nad wykrywaniem i łagodzeniem kolejnych ataków? Prowadzimy rekrutację do zespołu wykrywania i reagowania. <a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank" rel="noopener noreferrer">Dołącz do nas</a>!</p>

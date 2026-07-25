@@ -1,377 +1,295 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/P8HKBpFRPti4PyeNjqyUh/45ce7ccc4343ec416073a8512f5997a4/rapid-development-of-serverless-chatbots-with-cloudflare-workers-and-workers-kv.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>I'm the Product Manager for the Application Services team here at Cloudflare. We recently identified a need for a new tool around service ownership. As a fast-growing engineering organization, ownership of services changes fairly frequently. Many cycles get burned in chat with questions like "Who owns service x now?</p>
-	<p>Whilst it's easy to see how a tool like this saves a few seconds per day for the asker and askee, and saves on some mental context switches, the time saved is unlikely to add up to the cost of development and maintenance.</p>
-	<pre class="language-10"><code class="language-10">= 5 minutes per day
-x 260 work days 
-= 1300 mins 
-/ 60 mins 
-= 20 person hours per year</code></pre>
-	<p>So a 20-hour investment in that tool would pay itself back in a year valuing everyone's time the same. While we've made great strides in improving the efficiency of building tools at Cloudflare, 20 hours is a stretch for an end-to-end build, deploy and operation of a new tool.</p>
-	<div class="flex anchor relative">
-		<h3 id="enter-cloudflare-workers-workers-kv">Enter Cloudflare Workers + Workers KV</h3>
-		<a href="https://blog.cloudflare.com/#enter-cloudflare-workers-workers-kv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The more I use Serverless and Workers, the more I'm struck with the benefits of:</p>
-	<div class="flex anchor relative">
-		<h4 id="1-reduced-operational-overhead">1. Reduced operational overhead</h4>
-		<a href="https://blog.cloudflare.com/#1-reduced-operational-overhead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When I upload a Worker, it's automatically distributed to 175+ data centers. I don't have to be worried about uptime - it will be up, and it will be fast.</p>
-	<div class="flex anchor relative">
-		<h4 id="2-reduced-dev-time">2. Reduced dev time</h4>
-		<a href="https://blog.cloudflare.com/#2-reduced-dev-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With operational overhead largely removed, I'm able to focus purely on code. A constrained problem space like this lends itself really well to Workers. I reckon we can knock this out in well under 20 hours.</p>
-	<div class="flex anchor relative">
-		<h3 id="requirements">Requirements</h3>
-		<a href="https://blog.cloudflare.com/#requirements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At Cloudflare, people ask these questions in Chat, so that's a natural interface to service ownership. Here's the spec:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Use Case</b></p>
-				</td>
-				<td>
-					<p><b>Input</b></p>
-				</td>
-				<td>
-					<p><b>Output</b></p>
-				</td>
+<p>I'm the Product Manager for the Application Services team here at Cloudflare. We recently identified a need for a new tool around service ownership. As a fast-growing engineering organization, ownership of services changes fairly frequently. Many cycles get burned in chat with questions like "Who owns service x now?</p>
+<p>Whilst it's easy to see how a tool like this saves a few seconds per day for the asker and askee, and saves on some mental context switches, the time saved is unlikely to add up to the cost of development and maintenance.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>= 5 minutes per day</span></span>
+<span class="line"><span>x 260 work days </span></span>
+<span class="line"><span>= 1300 mins </span></span>
+<span class="line"><span>/ 60 mins </span></span>
+<span class="line"><span>= 20 person hours per year</span></span></code></pre>
+</div>
+<p>So a 20-hour investment in that tool would pay itself back in a year valuing everyone's time the same. While we've made great strides in improving the efficiency of building tools at Cloudflare, 20 hours is a stretch for an end-to-end build, deploy and operation of a new tool.</p>
+<h3>Enter Cloudflare Workers + Workers KV</h3>
+<p>The more I use Serverless and Workers, the more I'm struck with the benefits of:</p>
+<h4>1. Reduced operational overhead</h4>
+<p>When I upload a Worker, it's automatically distributed to 175+ data centers. I don't have to be worried about uptime - it will be up, and it will be fast.</p>
+<h4>2. Reduced dev time</h4>
+<p>With operational overhead largely removed, I'm able to focus purely on code. A constrained problem space like this lends itself really well to Workers. I reckon we can knock this out in well under 20 hours.</p>
+<h3>Requirements</h3>
+<p>At Cloudflare, people ask these questions in Chat, so that's a natural interface to service ownership. Here's the spec:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Use Case</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Input</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Output</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Add</p>
 				</td>
-				<td>
-					<p>@ownerbot add Jira IT <a href="http://web.archive.org/web/20190624175546/http://chat.google.com/room/ABC123" target="_blank" rel="noopener noreferrer">http://chat.google.com/room/ABC123</a></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>@ownerbot add Jira IT http://chat.google.com/room/ABC123</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Service added</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Delete</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>@ownerbot delete Jira</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Service deleted</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Question</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>@ownerbot Kibana</p>
 				</td>
-				<td>
-					<p>SRE Core owns Kibana. The room is: <a href="http://web.archive.org/web/20190624175546/http://chat.google.com/ABC123" target="_blank" rel="noopener noreferrer">http://chat.google.com/ABC123</a></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SRE Core owns Kibana. The room is: http://chat.google.com/ABC123</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Export</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>@ownerbot export</p>
 				</td>
-				<td>
-					<p><code>[{name: "Kibana", owner: "SRE Core"...}]</code></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>[{name: "Kibana", owner: "SRE Core"...}]</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h3 id="hello-ownerbot">Hello @ownerbot</h3>
-		<a href="https://blog.cloudflare.com/#hello-ownerbot" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Following the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop" target="_blank" rel="noopener noreferrer">Hangouts Chat API Guide</a>, let's start with a hello world bot.</p>
-	<ol>
-		<li>
-			<p>To configure the bot, go to the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish" target="_blank" rel="noopener noreferrer">Publish</a> page and scroll down to the <b>Enable The API</b> button:</p>
-		</li>
-		<li>
-			<p>Enter the bot name</p>
-		</li>
-		<li>
-			<p>Download the private key JSON file</p>
-		</li>
-		<li>
-			<p>Go to the <a href="https://console.developers.google.com" target="_blank" rel="noopener noreferrer">API Console</a></p>
-		</li>
-		<li>
-			<p>Search for the <b>Hangouts Chat API</b> (<i>Note: not the Google+ Hangouts API</i>)
-			</p>
-			<figure class="kg-card kg-image-card ">
-
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mQUzoV7nOtkEjVc5IOxnf/5981969de5b73cec65d8146eeec3b383/api-console-hangouts-chat-api-1.png" alt="api-console-hangouts-chat-api-1" class="kg-image" width="1710" height="250" loading="lazy">
-
-			</figure>
-		</li>
-		<li>
-			<p>Click <b>Configuration</b> on the left menu</p>
-		</li>
-		<li>
-			<p>Fill out the form as per below <a href="https://blog.cloudflare.com/#fn1">[1]</a></p>
-			<ul>
-				<li>
-					<p>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx" target="_blank" rel="noopener noreferrer">generate a guide</a> and use that in the URL.</p>
-				</li>
-				<li>
-					<p>The URL will be the route you associate with your Worker in the Dashboard
-					</p>
-					<figure class="kg-card kg-image-card ">
-
-						<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6LfF9FngUCK4THzSlrnFho/ecfee7e37965cdfb841e4f1a304959cd/bot-configuration-1.png" alt="bot-configuration-1" class="kg-image" width="2000" height="1820" loading="lazy">
-
-					</figure>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p>Click Save</p>
-		</li>
-	</ol>
-	<p>So Google Chat should know about our bot now. Back in Google Chat, click in the "Find people, rooms, bots" text box and choose "Message a Bot". Your bot should show up in the search:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6En5Ilq95DEcC1hQEfpCO/3c9e5a928f68f279d96e16bc62934b3e/message-a-bot.png" alt="message-a-bot" class="kg-image" width="1946" height="858" loading="lazy">
-
-	</figure>
-	<p>It won't be too useful just yet, as we need to create our Worker to receive the messages and respond!</p>
-	<div class="flex anchor relative">
-		<h3 id="the-worker">The Worker</h3>
-		<a href="https://blog.cloudflare.com/#the-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guide). It should look something like below. <a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pjvx9aep146V4aVSCBjvV/41307cdb04256dea6036ff1c6fab1902/route.png" alt="route" class="kg-image" width="1246" height="546" loading="lazy">
-
-	</figure>
-	<p>The Google Chatbot interface is pretty simple, but weirdly obfuscated in the Hangouts API guide IMHO. You have to reverse engineer the python example.</p>
-	<p>Basically, if we message our bot like <code>@ownerbot-blog Kibana</code>, we'll get a message like this:</p>
-	<pre class="language-bash"><code class="language-bash">  {
-    "type": "MESSAGE",
-    "message": {
-      "argumentText": "Kibana"
-    }
-  }</code></pre>
-	<p>To respond, we need to respond with <code>200 OK</code> and JSON body like this:</p>
-	<pre class="language-bash"><code class="language-bash">content-length: 27
-content-type: application/json
-
-{"text":"Hello chat world"}</code></pre>
-	<p>So, the minimum Chatbot Worker looks something like this:</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; { event.respondWith(process(event.request)) });
-
-function process(request) {
-  let body = {
-	text: "Hello chat world"
-  }
-  return new Response(JSON.stringify(body), {
-    status: 200,
-    headers: {
-        "Content-Type": "application/json",
-        "Cache-Control": "no-cache"
-    }
-  });
-}</code></pre>
-	<p>Save and deploy that, and we should be able to message our bot:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BL2D9sXew5rPpVLtif5bS/d75d9c07bbb51ff94de92115e34a8d71/google-chatbot-hello-world-response.png" alt="google-chatbot-hello-world-response" class="kg-image" width="1462" height="680" loading="lazy">
-
-	</figure>
-	<p><b>Success</b>!</p>
-	<div class="flex anchor relative">
-		<h3 id="implementation">Implementation</h3>
-		<a href="https://blog.cloudflare.com/#implementation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>OK, on to the meat of the code. Based on the requirements, I see a need for an <code>AddCommand</code>, <code>QueryCommand</code>, <code>DeleteCommand</code> and <code>HelpCommand</code>. I also see some sort of <code>ServiceDirectory</code> that knows how to add, delete and retrieve services.</p>
-	<p>I created a CommandFactory which accepts a ServiceDirectory, as well as an implementation of a KV store, which will be Workers KV in production, but I'll mock out in tests.</p>
-	<pre class="language-javascript"><code class="language-javascript">class CommandFactory {
-    constructor(serviceDirectory, kv) {
-        this.serviceDirectory = serviceDirectory;
-        this.kv = kv;
-    }
-
-    create(argumentText) {
-        let parts = argumentText.split(' ');
-        let primary = parts[0];       
-        
-        switch (primary) {
-            case "add":
-                return new AddCommand(argumentText, this.serviceDirectory, this.kv);
-            case "delete":
-                return new DeleteCommand(argumentText, this.serviceDirectory, this.kv);
-            case "help":
-                return new HelpCommand(argumentText, this.serviceDirectory, this.kv);
-            default:
-                return new QueryCommand(argumentText, this.serviceDirectory, this.kv);
-        }
-    }
-}</code></pre>
-	<p>OK, so if we receive a message like <code>@ownerbot add</code>, we'll interpret it as an <code>AddCommand</code>, but if it's not something we recognize, we'll assume it's a <code>QueryCommand</code> like <code>@ownerbot Kibana</code> which makes it easy to parse commands.</p>
-	<p>OK, our commands need a service directory, which will look something like this:</p>
-	<pre class="language-javascript"><code class="language-javascript">class ServiceDirectory {     
-    get(serviceName) {...}
-    async add(service) {...}
-    async delete(serviceName) {...}
-    find(serviceName) {...}
-    getNames() {...}
-}</code></pre>
-	<p>Let's build some commands. Oh, and my chatbot is going to be Ultima IV themed, because... reasons.</p>
-	<pre class="language-javascript"><code class="language-javascript">class AddCommand extends Command {
-
-    async respond() {
-        let cmdParts = this.commandParts;
-        if (cmdParts.length !== 6) {
-            return new OwnerbotResponse("Adding a service requireth Name, Owner, Room Name and Google Chat Room Url.", false);
-        }
-        let name = this.commandParts[1];
-        let owner = this.commandParts[2];
-        let room = this.commandParts[3];
-        let url = this.commandParts[4];
-        let aliasesPart = this.commandParts[5];
-        let aliases = aliasesPart.split(' ');
-        let service = {
-            name: name,
-            owner: owner,
-            room: room,
-            url: url,
-            aliases: aliases
-        }
-        await this.serviceDirectory.add(service);
-        return new OwnerbotResponse(`My codex of knowledge has expanded to contain knowledge of ${name}. Congratulations virtuous Paladin.`);
-    }
-}</code></pre>
-	<p>The nice thing about the <a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank" rel="noopener noreferrer">Command</a> pattern for chatbots, is you can encapsulate the logic of each command for testing, as well as compose series of commands together to test out conversations. Later, we could extend it to support undo. Let's test the <code>AddCommand</code></p>
-	<pre class="language-javascript"><code class="language-javascript">  it('requires all args', async function() {
-            let addCmd = new AddCommand("add AdminPanel 'Internal Tools' 'Internal Tools'", dir, kv); //missing url            
-            let res = await addCmd.respond();
-            console.log(res.text);
-            assert.equal(res.success, false, "Adding with missing args should fail");            
-        });
-
-        it('returns success for all args', async function() {
-            let addCmd = new AddCommand("add AdminPanel 'Internal Tools' 'Internal Tools Room' 'http://chat.google.com/roomXYZ'", dir, kv);            
-            let res = await addCmd.respond();
-            console.debug(res.text);
-            assert.equal(res.success, true, "Should have succeeded with all args");            
-        });</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ mocha -g "AddCommand"
-  AddCommand
-    add
-      ✓ requires all args
-      ✓ returns success for all args
-  2 passing (19ms)</code></pre>
-	<p>So far so good. But adding commands to our ownerbot isn't going to be so useful unless we can query them.</p>
-	<pre class="language-javascript"><code class="language-javascript">class QueryCommand extends Command {
-    async respond() {
-        let service = this.serviceDirectory.get(this.argumentText);
-        if (service) {
-            return new OwnerbotResponse(`${service.owner} owns ${service.name}. Seeketh thee room ${service.room} - ${service.url})`);
-        }
-        let serviceNames = this.serviceDirectory.getNames().join(", ");
-        return new OwnerbotResponse(`I knoweth not of that service. Thou mightst asketh me of: ${serviceNames}`);
-    }
-}</code></pre>
-	<p>Let's write a test that runs an <code>AddCommand</code> followed by a <code>QueryCommand</code></p>
-	<pre class="language-javascript"><code class="language-javascript">describe ('QueryCommand', function() {
-    let kv = new MockKeyValueStore();
-    let dir = new ServiceDirectory(kv);
-    await dir.init();
-
-    it('Returns added services', async function() {    
-        let addCmd = new AddCommand("add AdminPanel 'Internal Tools' 'Internal Tools Room' url 'alias' abc123", dir, kv);            
-        await addCmd.respond();
-
-        let queryCmd = new QueryCommand("AdminPanel", dir, kv);
-        let res = await queryCmd.respond();
-        assert.equal(res.success, true, "Should have succeeded");
-        assert(res.text.indexOf('Internal Tools') &gt; -1, "Should have returned the team name in the query response");
-    })
-})</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="demo">Demo</h3>
-		<a href="https://blog.cloudflare.com/#demo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot" target="_blank" rel="noopener noreferrer">full source on GitHub</a>. Let's take it for a spin!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/UJpvFMBP0gI5gx6ggEadY/303538f35b351adb396c9f3a0da38c94/ownerbot1-1.gif" alt="ownerbot1-1" class="kg-image" width="847" height="526" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="learnings">Learnings</h3>
-		<a href="https://blog.cloudflare.com/#learnings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Some of the things I learned during the development of @ownerbot were:</p>
-	<ul>
-		<li>
-			<p>Chatbots are an awesome use case for Serverless. You can deploy and not worry again about the infrastructure</p>
-		</li>
-		<li>
-			<p>Workers KV means extends the range of useful chatbots to include stateful bots like @ownerbot</p>
-		</li>
-		<li>
-			<p>The <code>Command</code> pattern provides a useful way to encapsulate the parsing and responding to commands in a chatbot.</p>
-		</li>
-	</ul>
-	<p>In <b>Part 2</b> we'll add authentication to ensure we're only responding to requests from our instance of Google Chat</p>
-	<ol>
-		<li>
-			<p>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity" target="_blank" rel="noopener noreferrer">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
-		</li>
-		<li>
-			<p>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
-		</li>
-	</ol>
-	<p></p>
 </div>
+<h3>Hello @ownerbot</h3>
+<p>Following the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop" target="_blank" rel="noopener noreferrer">Hangouts Chat API Guide</a>, let's start with a hello world bot.</p>
+<ol>
+	<li>To configure the bot, go to the <a href="https://developers.google.com/hangouts/chat/how-tos/bots-publish" target="_blank" rel="noopener noreferrer">Publish</a> page and scroll down to the <strong>Enable The API</strong> button:</li>
+	<li>Enter the bot name</li>
+	<li>Download the private key JSON file</li>
+	<li>Go to the <a href="https://console.developers.google.com" target="_blank" rel="noopener noreferrer">API Console</a></li>
+	<li>Search for the <strong>Hangouts Chat API</strong> (<em>Note: not the Google+ Hangouts API</em>)<br></li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="105" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=715&amp;h=105&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=640&amp;h=94&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=715&amp;h=105&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=750&amp;h=110&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=828&amp;h=122&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=1080&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=1280&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=1430&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="api-console-hangouts-chat-api-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YQZTQ6H5KZ2WSNRYB1MM.png&amp;w=1710&amp;h=250&amp;f=webp" data-lightbox-width="1710" data-lightbox-height="250" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="105" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<ol>
+	<li>Click <strong>Configuration</strong> on the left menu</li>
+	<li>Fill out the form as per below <a href="https://blog.cloudflare.com/#fn1">[1]</a>
+		<ul>
+			<li>Use a hard to guess URL. I <a href="https://www.guidgenerator.com/online-guid-generator.aspx" target="_blank" rel="noopener noreferrer">generate a guide</a> and use that in the URL.</li>
+			<li>The URL will be the route you associate with your Worker in the Dashboard<br></li>
+		</ul>
+	</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="651" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=715&amp;h=651&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=640&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=715&amp;h=651&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=750&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=828&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=1080&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=1280&amp;h=1165&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=1430&amp;h=1302&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="bot-configuration-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483AKGHE40X1PMYAB700NJ.png&amp;w=1920&amp;h=1747&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1747" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="651" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li>Click Save</li>
+</ol>
+<p>So Google Chat should know about our bot now. Back in Google Chat, click in the "Find people, rooms, bots" text box and choose "Message a Bot". Your bot should show up in the search:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="315" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=640&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=750&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=828&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=1080&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=1280&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=1430&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="message-a-bot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480S3T67PA1RAGHJ3D2BX2.png&amp;w=1920&amp;h=847&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="847" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="315" class="pt-portable-image-media"></div>
+</figure>
+<p>It won't be too useful just yet, as we need to create our Worker to receive the messages and respond!</p>
+<h3>The Worker</h3>
+<p>In the Workers dashboard, create a script and associate with the route you defined in step #7 (the one with the guide). It should look something like below. <a href="https://blog.cloudflare.com/#fn2">[2]</a></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="313" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=715&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=640&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=715&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=750&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=828&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=1080&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=1280&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=1430&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="route" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JVSDWTB2SR04AWK6YAKA.png&amp;w=1246&amp;h=546&amp;f=webp" data-lightbox-width="1246" data-lightbox-height="546" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="313" class="pt-portable-image-media"></div>
+</figure>
+<p>The Google Chatbot interface is pretty simple, but weirdly obfuscated in the Hangouts API guide IMHO. You have to reverse engineer the python example.</p>
+<p>Basically, if we message our bot like <code>@ownerbot-blog Kibana</code>, we'll get a message like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "MESSAGE",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "argumentText"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Kibana"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+</div>
+<p>To respond, we need to respond with <code>200 OK</code> and JSON body like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">content-length:</span><span class="sk-005cc5-ffc799"> 27</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">content-type:</span><span class="sk-032f62-99ffe4"> application/json</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"text"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"Hello chat world"</span><span class="sk-6f42c1-ffc799">}</span></span></code></pre>
+</div>
+<p>So, the minimum Chatbot Worker looks something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> { event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">process</span><span class="sk-24292e-fff">(event.request)) });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> process</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">	text: </span><span class="sk-032f62-99ffe4">"Hello chat world"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(body), {</span></span>
+<span class="line"><span class="sk-24292e-fff">    status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "Cache-Control"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"no-cache"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Save and deploy that, and we should be able to message our bot:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="333" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=640&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=750&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=828&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=1080&amp;h=503&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=1280&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=1430&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="google-chatbot-hello-world-response" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HYWQMXSW67B8B7MHE87C.png&amp;w=1462&amp;h=680&amp;f=webp" data-lightbox-width="1462" data-lightbox-height="680" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="333" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Success</strong>!</p>
+<h3>Implementation</h3>
+<p>OK, on to the meat of the code. Based on the requirements, I see a need for an <code>AddCommand</code>, <code>QueryCommand</code>, <code>DeleteCommand</code> and <code>HelpCommand</code>. I also see some sort of <code>ServiceDirectory</code> that knows how to add, delete and retrieve services.</p>
+<p>I created a CommandFactory which accepts a ServiceDirectory, as well as an implementation of a KV store, which will be Workers KV in production, but I'll mock out in tests.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> CommandFactory</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">serviceDirectory</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">kv</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">        this</span><span class="sk-24292e-fff">.serviceDirectory </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> serviceDirectory;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">        this</span><span class="sk-24292e-fff">.kv </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> kv;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    create</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">argumentText</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> parts </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> argumentText.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> primary </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> parts[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">];       </span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        switch</span><span class="sk-24292e-fff"> (primary) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            case</span><span class="sk-032f62-99ffe4"> "add"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AddCommand</span><span class="sk-24292e-fff">(argumentText, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.serviceDirectory, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.kv);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            case</span><span class="sk-032f62-99ffe4"> "delete"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> DeleteCommand</span><span class="sk-24292e-fff">(argumentText, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.serviceDirectory, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.kv);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            case</span><span class="sk-032f62-99ffe4"> "help"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> HelpCommand</span><span class="sk-24292e-fff">(argumentText, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.serviceDirectory, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.kv);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            default</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> QueryCommand</span><span class="sk-24292e-fff">(argumentText, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.serviceDirectory, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.kv);</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>OK, so if we receive a message like <code>@ownerbot add</code>, we'll interpret it as an <code>AddCommand</code>, but if it's not something we recognize, we'll assume it's a <code>QueryCommand</code> like <code>@ownerbot Kibana</code> which makes it easy to parse commands.</p>
+<p>OK, our commands need a service directory, which will look something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> ServiceDirectory</span><span class="sk-24292e-fff"> {     </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    get</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">serviceName</span><span class="sk-24292e-fff">) {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> add</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">service</span><span class="sk-24292e-fff">) {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> delete</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">serviceName</span><span class="sk-24292e-fff">) {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    find</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">serviceName</span><span class="sk-24292e-fff">) {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    getNames</span><span class="sk-24292e-fff">() {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Let's build some commands. Oh, and my chatbot is going to be Ultima IV themed, because... reasons.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AddCommand</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Command</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> respond</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> cmdParts </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.commandParts;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (cmdParts.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> !==</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OwnerbotResponse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Adding a service requireth Name, Owner, Room Name and Google Chat Room Url."</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> name </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.commandParts[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> owner </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.commandParts[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> room </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.commandParts[</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.commandParts[</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> aliasesPart </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.commandParts[</span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> aliases </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> aliasesPart.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> service </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">            name: name,</span></span>
+<span class="line"><span class="sk-24292e-fff">            owner: owner,</span></span>
+<span class="line"><span class="sk-24292e-fff">            room: room,</span></span>
+<span class="line"><span class="sk-24292e-fff">            url: url,</span></span>
+<span class="line"><span class="sk-24292e-fff">            aliases: aliases</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.serviceDirectory.</span><span class="sk-6f42c1-ffc799">add</span><span class="sk-24292e-fff">(service);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OwnerbotResponse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`My codex of knowledge has expanded to contain knowledge of ${</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}. Congratulations virtuous Paladin.`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The nice thing about the <a href="https://en.wikipedia.org/wiki/Command_pattern" target="_blank" rel="noopener noreferrer">Command</a> pattern for chatbots, is you can encapsulate the logic of each command for testing, as well as compose series of commands together to test out conversations. Later, we could extend it to support undo. Let's test the <code>AddCommand</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">  it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'requires all args'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            let</span><span class="sk-24292e-fff"> addCmd </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AddCommand</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"add AdminPanel 'Internal Tools' 'Internal Tools'"</span><span class="sk-24292e-fff">, dir, kv); </span><span class="sk-6a737d-8b8b8b94">//missing url            </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> addCmd.</span><span class="sk-6f42c1-ffc799">respond</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">            console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(res.text);</span></span>
+<span class="line"><span class="sk-24292e-fff">            assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(res.success, </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Adding with missing args should fail"</span><span class="sk-24292e-fff">);            </span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'returns success for all args'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            let</span><span class="sk-24292e-fff"> addCmd </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AddCommand</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"add AdminPanel 'Internal Tools' 'Internal Tools Room' 'http://chat.google.com/roomXYZ'"</span><span class="sk-24292e-fff">, dir, kv);            </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> addCmd.</span><span class="sk-6f42c1-ffc799">respond</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">            console.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(res.text);</span></span>
+<span class="line"><span class="sk-24292e-fff">            assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(res.success, </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Should have succeeded with all args"</span><span class="sk-24292e-fff">);            </span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mocha</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> "AddCommand"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  AddCommand</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    add</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      ✓</span><span class="sk-032f62-99ffe4"> requires</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> args</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      ✓</span><span class="sk-032f62-99ffe4"> returns</span><span class="sk-032f62-99ffe4"> success</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> args</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  2</span><span class="sk-032f62-99ffe4"> passing</span><span class="sk-24292e-fff"> (19ms)</span></span></code></pre>
+</div>
+<p>So far so good. But adding commands to our ownerbot isn't going to be so useful unless we can query them.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> QueryCommand</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Command</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> respond</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> service </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.serviceDirectory.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.argumentText);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (service) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OwnerbotResponse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">service</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">owner</span><span class="sk-032f62-99ffe4">} owns ${</span><span class="sk-24292e-fff">service</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}. Seeketh thee room ${</span><span class="sk-24292e-fff">service</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">room</span><span class="sk-032f62-99ffe4">} - ${</span><span class="sk-24292e-fff">service</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url</span><span class="sk-032f62-99ffe4">})`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> serviceNames </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.serviceDirectory.</span><span class="sk-6f42c1-ffc799">getNames</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">", "</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> OwnerbotResponse</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`I knoweth not of that service. Thou mightst asketh me of: ${</span><span class="sk-24292e-fff">serviceNames</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Let's write a test that runs an <code>AddCommand</code> followed by a <code>QueryCommand</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'QueryCommand'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> kv </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MockKeyValueStore</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> dir </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> ServiceDirectory</span><span class="sk-24292e-fff">(kv);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> dir.</span><span class="sk-6f42c1-ffc799">init</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Returns added services'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> addCmd </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AddCommand</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"add AdminPanel 'Internal Tools' 'Internal Tools Room' url 'alias' abc123"</span><span class="sk-24292e-fff">, dir, kv);            </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> addCmd.</span><span class="sk-6f42c1-ffc799">respond</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> queryCmd </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> QueryCommand</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"AdminPanel"</span><span class="sk-24292e-fff">, dir, kv);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> queryCmd.</span><span class="sk-6f42c1-ffc799">respond</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">        assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(res.success, </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Should have succeeded"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        assert</span><span class="sk-24292e-fff">(res.text.</span><span class="sk-6f42c1-ffc799">indexOf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Internal Tools'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"Should have returned the team name in the query response"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<h3>Demo</h3>
+<p>A lot of the code as been elided for brevity, but you can view the <a href="https://github.com/stevenpack/ownerbot" target="_blank" rel="noopener noreferrer">full source on GitHub</a>. Let's take it for a spin!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="444" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW49B737NBVHN05W7GRAKV1M.gif" alt="ownerbot1-1" width="715" height="444" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h3>Learnings</h3>
+<p>Some of the things I learned during the development of @ownerbot were:</p>
+<ul>
+	<li>Chatbots are an awesome use case for Serverless. You can deploy and not worry again about the infrastructure</li>
+	<li>Workers KV means extends the range of useful chatbots to include stateful bots like @ownerbot</li>
+	<li>The <code>Command</code> pattern provides a useful way to encapsulate the parsing and responding to commands in a chatbot.</li>
+</ul>
+<p>In <strong>Part 2</strong> we'll add authentication to ensure we're only responding to requests from our instance of Google Chat</p>
+<ol>
+	<li>For simplicity, I'm going to use a static shared key, but Google have recently rolled out a more <a href="https://developers.google.com/hangouts/chat/how-tos/bots-develop?hl=en_US#verifying_bot_authenticity" target="_blank" rel="noopener noreferrer">secure method</a> for verifying the caller's authenticity, which we'll expand on in Part 2. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></li>
+	<li>This UI is the multiscript version available to Enterprise customers. You can still implement the bot with a single Worker, you'll just need to recognize and route requests to your chatbot code. <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></li>
+</ol>

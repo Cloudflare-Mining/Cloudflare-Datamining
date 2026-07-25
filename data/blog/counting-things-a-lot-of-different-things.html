@@ -1,194 +1,105 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nuMdDZng8w9d6WhYiWIsv/09ff720934541c4d158b21da37796ae9/counting-things-a-lot-of-different-things.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Back in April we announced <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a> of requests for every Cloudflare customer. Being able to rate limit at the edge of the network has many advantages: it’s easier for customers to set up and operate, their origin servers are not bothered by excessive traffic or layer 7 attacks, the performance and memory cost of rate limiting is offloaded to the edge, and more.</p>
-	<p>In a nutshell, <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">rate limiting</a> works like this:</p>
-	<ul>
-		<li>
-			<p>Customers can define one or more rate limit rules that match particular HTTP requests (failed login attempts, expensive API calls, etc.)</p>
-		</li>
-		<li>
-			<p>Every request that matches the rule is counted per client IP address</p>
-		</li>
-		<li>
-			<p>Once that counter exceeds a threshold, further requests are not allowed to reach the origin server and an error page is returned to the client instead</p>
-		</li>
-	</ul>
-	<p>This is a simple yet effective protection against brute force attacks on login pages and other sorts of abusive traffic like <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer">L7 DoS attacks</a>.</p>
-	<p>Doing this with possibly millions of domains and even more millions of rules immediately becomes a bit more complicated. This article is a look at how we implemented a rate limiter able to run quickly and accurately at the edge of the network which is able to cope with the colossal volume of traffic we see at Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h3 id="lets-just-do-this-locally">Let’s just do this locally!</h3>
-		<a href="https://blog.cloudflare.com/#lets-just-do-this-locally" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As the Cloudflare edge servers are running NGINX, let’s first see how the stock <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html" target="_blank" rel="noopener noreferrer">rate limiting</a> module works:</p>
-	<pre class="language-bash"><code class="language-bash">http {
-    limit_req_zone $binary_remote_addr zone=ratelimitzone:10m rate=15r/m;
-    ...
-    server {
-        ...
-        location /api/expensive_endpoint {
-            limit_req zone=ratelimitzone;
-        }
-    }
-}</code></pre>
-	<p>This module works great: it is reasonably simple to use (but requires a config reload for each change), and very efficient. The only problem is that if the incoming requests are spread across a large number of servers, this doesn’t work any more. The obvious alternative is to use some kind of centralized data store. Thanks to NGINX’s Lua scripting module, that we already use extensively, we could easily implement similar logic using any kind of central data backend.</p>
-	<p>But then another problem arises: how to make this fast and efficient?</p>
-	<div class="flex anchor relative">
-		<h3 id="all-roads-lead-to-rome-not-with-anycast">All roads lead to Rome? Not with anycast!</h3>
-		<a href="https://blog.cloudflare.com/#all-roads-lead-to-rome-not-with-anycast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since Cloudflare has a vast and diverse network, reporting all counters to a single central point is not a realistic solution as the latency is far too high and guaranteeing the availability of the central service causes more challenges.</p>
-	<p>First let’s take a look at how the traffic is routed in the Cloudflare network. All the traffic going to our edge servers is <a href="https://en.wikipedia.org/wiki/Anycast" target="_blank" rel="noopener noreferrer">anycast</a> traffic. This means that we announce the same IP address for a given web application, site or API worldwide, and traffic will be automatically and consistently routed to the closest live data center.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MXm1hRKiJKtqZuSG8Ie0j/9b1869712dd6b0538cf7e3615fe4136d/world.png" alt="Anycast routing example" class="kg-image" width="1200" height="708" loading="lazy">
-
-	</figure>
-	<p>This property is extremely valuable: we are sure that, under normal conditions<a href="https://blog.cloudflare.com/#fn1">[1]</a>, the traffic from a single IP address will always reach the same PoP. Unfortunately each new TCP connection might hit a different server inside that PoP. But we can still narrow down our problem: we can actually create an isolated counting system inside each PoP. This mostly solves the latency problem and greatly improves the availability as well.</p>
-	<div class="flex anchor relative">
-		<h3 id="storing-counters">Storing counters</h3>
-		<a href="https://blog.cloudflare.com/#storing-counters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At Cloudflare, each server in our edge network is as independent as possible to make their administration simple. Unfortunately for rate limiting, we saw that we do need to share data across many different servers.</p>
-	<p>We actually had a similar problem in the past with <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Session_IDs" target="_blank" rel="noopener noreferrer">SSL session IDs</a>: each server needed to fetch TLS connection data about past connections. To solve that problem we created a <a href="https://github.com/twitter/twemproxy" target="_blank" rel="noopener noreferrer">Twemproxy</a> cluster inside each of our PoPs: this allows us to split a memcache<a href="https://blog.cloudflare.com/#fn2">[2]</a> database across many servers. A <a href="https://en.wikipedia.org/wiki/Consistent_hashing" target="_blank" rel="noopener noreferrer">consistent hashing</a> algorithm ensures that when the cluster is resized, only a few number of keys are hashed differently.</p>
-	<p>In our architecture, each server hosts a shard of the database. As we already had experience with this system, we wanted to leverage it for the rate limit as well.</p>
-	<div class="flex anchor relative">
-		<h3 id="algorithms">Algorithms</h3>
-		<a href="https://blog.cloudflare.com/#algorithms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now let’s take a deeper look at how the different rate limit algorithms work. What we call the <i>sampling period</i> in the next paragraph is the reference unit of time for the counter (1 second for a 10 req/sec rule, 1 minute for a 600 req/min rule, ...).</p>
-	<p>The most naive implementation is to simply increment a counter that we reset at the start of each sampling period. This works but is not terribly accurate as the counter will be arbitrarily reset at regular intervals, allowing regular traffic spikes to go through the rate limiter. This can be a problem for resource intensive endpoints.</p>
-	<p>Another solution is to store the timestamp of every request and count how many were received during the last sampling period. This is more accurate, but has huge processing and memory requirements as checking the state of the counter require reading and processing a lot of data, especially if you want to rate limit over long period of time (for instance 5,000 req per hour).</p>
-	<p>The <a href="https://en.wikipedia.org/wiki/Leaky_bucket" target="_blank" rel="noopener noreferrer">leaky bucket</a> algorithm allows a great level of accuracy while being nicer on resources (this is what the stock NGINX module is using). Conceptually, it works by incrementing a counter when each request comes in. That same counter is also decremented over time based on the allowed rate of requests until it reaches zero. The capacity of the bucket is what you are ready to accept as “burst” traffic (important given that legitimate traffic is not always perfectly regular). If the bucket is full despite its decay, further requests are mitigated.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/nur2wjEAyjE0S6VYblkr3/080ad1cbb09aa1bf6a294ffb4955e9e0/leakybucket.svg.png" alt="Leaky bucket algorithm schema" class="kg-image" width="1288" height="691" loading="lazy">
-
-	</figure>
-	<p>However, in our case, this approach has two drawbacks:</p>
-	<ul>
-		<li>
-			<p>It has two parameters (average rate and burst) that are not always easy to tune properly</p>
-		</li>
-		<li>
-			<p>We were constrained to use the memcached protocol and this algorithm requires multiple distinct operations that we cannot do atomically<a href="https://blog.cloudflare.com/#fn3">[3]</a></p>
-		</li>
-	</ul>
-	<p>So the situation was that the only operations available were <code>GET</code>, <code>SET</code> and <code>INCR</code> (atomic increment).</p>
-	<div class="flex anchor relative">
-		<h3 id="sliding-windows-to-the-rescue">Sliding windows to the rescue</h3>
-		<a href="https://blog.cloudflare.com/#sliding-windows-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gvU2RabELQEWsauNMm8cu/ac296e8bf4e122f18935500ef0bd1c2e/14247536929_1a6315311d_z.jpg" alt="" class="kg-image" width="640" height="431" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/halfrain/14247536929" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/halfrain" target="_blank" rel="noopener noreferrer">halfrain</a></p>
-	<p>The naive fixed window algorithm is actually not that bad: we just have to solve the problem of completely resetting the counter for each sampling period. But actually, can’t we just use the information from the previous counter in order to extrapolate an accurate approximation of the request rate?</p>
-	<p>Let’s say I set a limit of 50 requests per minute on an API endpoint. The counter can be thought of like this:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SfLGYqNjjjxfJo0C9rU4H/e000ba22680e27910c8963a7111a97c8/sliding.svg.png" alt="Sliding window example" class="kg-image" width="1063" height="453" loading="lazy">
-
-	</figure>
-	<p>In this situation, I did 18 requests during the current minute, which started 15 seconds ago, and 42 requests during the entire previous minute. Based on this information, the rate approximation is calculated like this:</p>
-	<pre class="language-bash"><code class="language-bash">rate = 42 * ((60-15)/60) + 18
-     = 42 * 0.75 + 18
-     = 49.5 requests</code></pre>
-	<p>One more request during the next second and the rate limiter will start being very angry!</p>
-	<p>This algorithm assumes a constant rate of requests during the previous sampling period (which can be any time span), this is why the result is only an approximation of the actual rate. This algorithm can be improved, but in practice it proved to be good enough:</p>
-	<ul>
-		<li>
-			<p>It smoothes the traffic spike issue that the fixed window method has</p>
-		</li>
-		<li>
-			<p>It very easy to understand and configure: no average vs. burst traffic, longer sampling periods can be used to achieve the same effect</p>
-		</li>
-		<li>
-			<p>It is still very accurate, as an analysis on 400 million requests from 270,000 distinct sources shown:</p>
-			<ul>
-				<li>
-					<p>0.003% of requests have been wrongly allowed or rate limited</p>
-				</li>
-				<li>
-					<p>An average difference of 6% between real rate and the approximate rate</p>
-				</li>
-				<li>
-					<p>3 sources have been allowed despite generating traffic slightly above the threshold (false negatives), the actual rate was less than 15% above the threshold rate</p>
-				</li>
-				<li>
-					<p>None of the mitigated sources was below the threshold (false positives)</p>
-				</li>
-			</ul>
-		</li>
-	</ul>
-	<p>Moreover, it offers interesting properties in our case:</p>
-	<ul>
-		<li>
-			<p>Tiny memory usage: only two numbers per counter</p>
-		</li>
-		<li>
-			<p>Incrementing a counter can be done by sending a single <code>INCR</code> command</p>
-		</li>
-		<li>
-			<p>Calculating the rate is reasonably easy: one GET command<a href="https://blog.cloudflare.com/#fn4">[4]</a> and some very simple, fast math</p>
-		</li>
-	</ul>
-	<p>So here we are: we can finally implement a good counting system using only a few memcache primitives and without much contention. Still we were not happy with that: it requires a memcached query to get the rate. At Cloudflare we’ve seen a few of the largest L7 attacks ever. We knew that large scale attacks would have crushed the memcached cluster like this. More importantly, such operations would slow down legitimate requests a little, even under normal conditions. This is not acceptable.</p>
-	<p>This is why the increment jobs are run asynchronously without slowing down the requests. If the request rate is above the threshold, another piece of data is stored asking all servers in the PoP to start applying the mitigation for that client. Only this bit of information is checked during request processing.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3pCPtEGvM5WPv1vUPzc0MH/ba54eae2f0aeaa2ae960c84bfe32be8c/el-sequence.svg.png" alt="Request processing example" class="kg-image" width="1200" height="863" loading="lazy">
-
-	</figure>
-	<p>Even more interesting: once a mitigation has started, we know exactly when it will end. This means that we can cache that information in the server memory itself. Once a server starts to mitigate a client, it will not even run another query for the subsequent requests it might see from that source!</p>
-	<p>This last tweak allowed us to efficiently mitigate large L7 attacks without noticeably penalizing legitimate requests.</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Despite being a young product, the rate limiter is already being used by many customers to control the rate of requests that their origin servers receive. The rate limiter already handles several billion requests per day and we recently mitigated attacks with as many as 400,000 requests per second to a single domain without degrading service for legitimate users.</p>
-	<p>We just started to explore how we can efficiently protect our customers with this new tool. We are looking into more advanced optimizations and create new features on the top of the existing work.</p>
-	<p>Interested in working on high-performance code running on thousands of servers at the edge of the network? Consider <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">applying</a> to one of our open positions!</p>
-	<hr>
-	<hr>
-	<ol>
-		<li>
-			<p>The inner workings of anycast route changes are outside of the scope of this article, but we can assume that they are rare enough in this case. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
-		</li>
-		<li>
-			<p>Twemproxy also supports Redis, but our existing infrastructure was backed by <a href="https://github.com/twitter/twemcache" target="_blank" rel="noopener noreferrer">Twemcache</a> (a Memcached fork) <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></p>
-		</li>
-		<li>
-			<p>Memcache does support <a href="https://github.com/memcached/memcached/wiki/Commands#cas" target="_blank" rel="noopener noreferrer">CAS</a> (Compare-And-Set) operations and so optimistic transactions are possible, but it is hard to use in our case: during attacks, we will have a lot of requests, creating a lot of contention, in turn resulting in a lot of CAS transactions failing. <a href="https://blog.cloudflare.com/#fnref3">↩︎</a></p>
-		</li>
-		<li>
-			<p>The counters for the previous and current minute can be retrieved with a single GET command <a href="https://blog.cloudflare.com/#fnref4">↩︎</a></p>
-		</li>
-	</ol>
+<p>Back in April we announced <a href="https://blog.cloudflare.com/rate-limiting">Rate Limiting</a> of requests for every Cloudflare customer. Being able to rate limit at the edge of the network has many advantages: it’s easier for customers to set up and operate, their origin servers are not bothered by excessive traffic or layer 7 attacks, the performance and memory cost of rate limiting is offloaded to the edge, and more.</p>
+<p>In a nutshell, <a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">rate limiting</a> works like this:</p>
+<ul>
+	<li>Customers can define one or more rate limit rules that match particular HTTP requests (failed login attempts, expensive API calls, etc.)</li>
+	<li>Every request that matches the rule is counted per client IP address</li>
+	<li>Once that counter exceeds a threshold, further requests are not allowed to reach the origin server and an error page is returned to the client instead</li>
+</ul>
+<p>This is a simple yet effective protection against brute force attacks on login pages and other sorts of abusive traffic like <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer">L7 DoS attacks</a>.</p>
+<p>Doing this with possibly millions of domains and even more millions of rules immediately becomes a bit more complicated. This article is a look at how we implemented a rate limiter able to run quickly and accurately at the edge of the network which is able to cope with the colossal volume of traffic we see at Cloudflare.</p>
+<h3>Let’s just do this locally!</h3>
+<p>As the Cloudflare edge servers are running NGINX, let’s first see how the stock <a href="https://nginx.org/en/docs/http/ngx_http_limit_req_module.html" target="_blank" rel="noopener noreferrer">rate limiting</a> module works:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    limit_req_zone</span><span class="sk-24292e-fff"> $binary_remote_addr </span><span class="sk-032f62-99ffe4">zone=ratelimitzone:10m</span><span class="sk-032f62-99ffe4"> rate=15r/m</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    ...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    server</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        ...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        location</span><span class="sk-032f62-99ffe4"> /api/expensive_endpoint</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            limit_req</span><span class="sk-032f62-99ffe4"> zone=ratelimitzone</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>This module works great: it is reasonably simple to use (but requires a config reload for each change), and very efficient. The only problem is that if the incoming requests are spread across a large number of servers, this doesn’t work any more. The obvious alternative is to use some kind of centralized data store. Thanks to NGINX’s Lua scripting module, that we already use extensively, we could easily implement similar logic using any kind of central data backend.</p>
+<p>But then another problem arises: how to make this fast and efficient?</p>
+<h3>All roads lead to Rome? Not with anycast!</h3>
+<p>Since Cloudflare has a vast and diverse network, reporting all counters to a single central point is not a realistic solution as the latency is far too high and guaranteeing the availability of the central service causes more challenges.</p>
+<p>First let’s take a look at how the traffic is routed in the Cloudflare network. All the traffic going to our edge servers is <a href="https://en.wikipedia.org/wiki/Anycast" target="_blank" rel="noopener noreferrer">anycast</a> traffic. This means that we announce the same IP address for a given web application, site or API worldwide, and traffic will be automatically and consistently routed to the closest live data center.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="422" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=715&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=640&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=715&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=750&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=828&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=1080&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=1280&amp;h=755&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=1430&amp;h=844&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Anycast routing example" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z6KD5TP2K31MTWS525KB.png&amp;w=1200&amp;h=708&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="708" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="422" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This property is extremely valuable: we are sure that, under normal conditions<a href="https://blog.cloudflare.com/#fn1">[1]</a>, the traffic from a single IP address will always reach the same PoP. Unfortunately each new TCP connection might hit a different server inside that PoP. But we can still narrow down our problem: we can actually create an isolated counting system inside each PoP. This mostly solves the latency problem and greatly improves the availability as well.</p>
+<h3>Storing counters</h3>
+<p>At Cloudflare, each server in our edge network is as independent as possible to make their administration simple. Unfortunately for rate limiting, we saw that we do need to share data across many different servers.</p>
+<p>We actually had a similar problem in the past with <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#Session_IDs" target="_blank" rel="noopener noreferrer">SSL session IDs</a>: each server needed to fetch TLS connection data about past connections. To solve that problem we created a <a href="https://github.com/twitter/twemproxy" target="_blank" rel="noopener noreferrer">Twemproxy</a> cluster inside each of our PoPs: this allows us to split a memcache<a href="https://blog.cloudflare.com/#fn2">[2]</a> database across many servers. A <a href="https://en.wikipedia.org/wiki/Consistent_hashing" target="_blank" rel="noopener noreferrer">consistent hashing</a> algorithm ensures that when the cluster is resized, only a few number of keys are hashed differently.</p>
+<p>In our architecture, each server hosts a shard of the database. As we already had experience with this system, we wanted to leverage it for the rate limit as well.</p>
+<h3>Algorithms</h3>
+<p>Now let’s take a deeper look at how the different rate limit algorithms work. What we call the <em>sampling period</em> in the next paragraph is the reference unit of time for the counter (1 second for a 10 req/sec rule, 1 minute for a 600 req/min rule, ...).</p>
+<p>The most naive implementation is to simply increment a counter that we reset at the start of each sampling period. This works but is not terribly accurate as the counter will be arbitrarily reset at regular intervals, allowing regular traffic spikes to go through the rate limiter. This can be a problem for resource intensive endpoints.</p>
+<p>Another solution is to store the timestamp of every request and count how many were received during the last sampling period. This is more accurate, but has huge processing and memory requirements as checking the state of the counter require reading and processing a lot of data, especially if you want to rate limit over long period of time (for instance 5,000 req per hour).</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Leaky_bucket" target="_blank" rel="noopener noreferrer">leaky bucket</a> algorithm allows a great level of accuracy while being nicer on resources (this is what the stock NGINX module is using). Conceptually, it works by incrementing a counter when each request comes in. That same counter is also decremented over time based on the allowed rate of requests until it reaches zero. The capacity of the bucket is what you are ready to accept as “burst” traffic (important given that legitimate traffic is not always perfectly regular). If the bucket is full despite its decay, further requests are mitigated.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="384" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=640&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=750&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=828&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=1080&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=1280&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=1430&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Leaky bucket algorithm schema" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49J28XXRAEHV3GWWRT1TPE.png&amp;w=1288&amp;h=691&amp;f=webp" data-lightbox-width="1288" data-lightbox-height="691" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="384" class="pt-portable-image-media"></div>
+</figure>
+<p>However, in our case, this approach has two drawbacks:</p>
+<ul>
+	<li>It has two parameters (average rate and burst) that are not always easy to tune properly</li>
+	<li>We were constrained to use the memcached protocol and this algorithm requires multiple distinct operations that we cannot do atomically<a href="https://blog.cloudflare.com/#fn3">[3]</a></li>
+</ul>
+<p>So the situation was that the only operations available were <code>GET</code>, <code>SET</code> and <code>INCR</code> (atomic increment).</p>
+<h3>Sliding windows to the rescue</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="431" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FKGWZ3VQ48J3MZXEA7PF.jpg&amp;w=640&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FKGWZ3VQ48J3MZXEA7PF.jpg&amp;w=640&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FKGWZ3VQ48J3MZXEA7PF.jpg&amp;w=750&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FKGWZ3VQ48J3MZXEA7PF.jpg&amp;w=828&amp;h=558&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FKGWZ3VQ48J3MZXEA7PF.jpg&amp;w=1080&amp;h=727&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FKGWZ3VQ48J3MZXEA7PF.jpg&amp;w=1280&amp;h=862&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="How we built rate limiting capable of scaling to millions of domains Embedded Image - l425NW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FKGWZ3VQ48J3MZXEA7PF.jpg&amp;w=640&amp;h=431&amp;f=webp" data-lightbox-width="640" data-lightbox-height="431" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="431" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/halfrain/14247536929" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/halfrain" target="_blank" rel="noopener noreferrer">halfrain</a></p>
+<p>The naive fixed window algorithm is actually not that bad: we just have to solve the problem of completely resetting the counter for each sampling period. But actually, can’t we just use the information from the previous counter in order to extrapolate an accurate approximation of the request rate?</p>
+<p>Let’s say I set a limit of 50 requests per minute on an API endpoint. The counter can be thought of like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="305" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=640&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=750&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=828&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=1080&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=1280&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=1430&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Sliding window example" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R4NNNBFMMAB4BXS006VG.png&amp;w=1063&amp;h=453&amp;f=webp" data-lightbox-width="1063" data-lightbox-height="453" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="305" class="pt-portable-image-media"></div>
+</figure>
+<p>In this situation, I did 18 requests during the current minute, which started 15 seconds ago, and 42 requests during the entire previous minute. Based on this information, the rate approximation is calculated like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">rate</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 42</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff"> ((60-15)/60) + 18</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     =</span><span class="sk-005cc5-ffc799"> 42</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 0.75</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-005cc5-ffc799"> 18</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     =</span><span class="sk-005cc5-ffc799"> 49.5</span><span class="sk-032f62-99ffe4"> requests</span></span></code></pre>
+</div>
+<p>One more request during the next second and the rate limiter will start being very angry!</p>
+<p>This algorithm assumes a constant rate of requests during the previous sampling period (which can be any time span), this is why the result is only an approximation of the actual rate. This algorithm can be improved, but in practice it proved to be good enough:</p>
+<ul>
+	<li>It smoothes the traffic spike issue that the fixed window method has</li>
+	<li>It very easy to understand and configure: no average vs. burst traffic, longer sampling periods can be used to achieve the same effect</li>
+	<li>It is still very accurate, as an analysis on 400 million requests from 270,000 distinct sources shown:<ul>
+			<li>0.003% of requests have been wrongly allowed or rate limited</li>
+			<li>An average difference of 6% between real rate and the approximate rate</li>
+			<li>3 sources have been allowed despite generating traffic slightly above the threshold (false negatives), the actual rate was less than 15% above the threshold rate</li>
+			<li>None of the mitigated sources was below the threshold (false positives)</li>
+		</ul>
+	</li>
+</ul>
+<p>Moreover, it offers interesting properties in our case:</p>
+<ul>
+	<li>Tiny memory usage: only two numbers per counter</li>
+	<li>Incrementing a counter can be done by sending a single <code>INCR</code> command</li>
+	<li>Calculating the rate is reasonably easy: one GET command<a href="https://blog.cloudflare.com/#fn4">[4]</a> and some very simple, fast math</li>
+</ul>
+<p>So here we are: we can finally implement a good counting system using only a few memcache primitives and without much contention. Still we were not happy with that: it requires a memcached query to get the rate. At Cloudflare we’ve seen a few of the largest L7 attacks ever. We knew that large scale attacks would have crushed the memcached cluster like this. More importantly, such operations would slow down legitimate requests a little, even under normal conditions. This is not acceptable.</p>
+<p>This is why the increment jobs are run asynchronously without slowing down the requests. If the request rate is above the threshold, another piece of data is stored asking all servers in the PoP to start applying the mitigation for that client. Only this bit of information is checked during request processing.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="514" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=715&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=640&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=715&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=750&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=828&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=1080&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=1280&amp;h=920&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=1430&amp;h=1028&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Request processing example" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A5RFHJQXJK9NW1P7PR45.png&amp;w=1200&amp;h=863&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="863" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="514" class="pt-portable-image-media"></div>
+</figure>
+<p>Even more interesting: once a mitigation has started, we know exactly when it will end. This means that we can cache that information in the server memory itself. Once a server starts to mitigate a client, it will not even run another query for the subsequent requests it might see from that source!</p>
+<p>This last tweak allowed us to efficiently mitigate large L7 attacks without noticeably penalizing legitimate requests.</p>
+<h3>Conclusion</h3>
+<p>Despite being a young product, the rate limiter is already being used by many customers to control the rate of requests that their origin servers receive. The rate limiter already handles several billion requests per day and we recently mitigated attacks with as many as 400,000 requests per second to a single domain without degrading service for legitimate users.</p>
+<p>We just started to explore how we can efficiently protect our customers with this new tool. We are looking into more advanced optimizations and create new features on the top of the existing work.</p>
+<p>Interested in working on high-performance code running on thousands of servers at the edge of the network? Consider <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">applying</a> to one of our open positions!</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<ol>
+	<li>The inner workings of anycast route changes are outside of the scope of this article, but we can assume that they are rare enough in this case. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></li>
+	<li>Twemproxy also supports Redis, but our existing infrastructure was backed by <a href="https://github.com/twitter/twemcache" target="_blank" rel="noopener noreferrer">Twemcache</a> (a Memcached fork) <a href="https://blog.cloudflare.com/#fnref2">↩︎</a></li>
+	<li>Memcache does support <a href="https://github.com/memcached/memcached/wiki/Commands#cas" target="_blank" rel="noopener noreferrer">CAS</a> (Compare-And-Set) operations and so optimistic transactions are possible, but it is hard to use in our case: during attacks, we will have a lot of requests, creating a lot of contention, in turn resulting in a lot of CAS transactions failing. <a href="https://blog.cloudflare.com/#fnref3">↩︎</a></li>
+	<li>The counters for the previous and current minute can be retrieved with a single GET command <a href="https://blog.cloudflare.com/#fnref4">↩︎</a></li>
+</ol>

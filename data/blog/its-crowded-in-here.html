@@ -1,331 +1,181 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zhLPX1wssfv3c4QvObgz9/66812e76990de528517d020dbca70638/idea_program_socket_lookup_with_bpf-2.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>We recently gave a presentation on <a href="https://linuxplumbersconf.org/event/4/contributions/487" target="_blank" rel="noopener noreferrer">Programming socket lookup with BPF</a> at the Linux Plumbers Conference 2019 in Lisbon, Portugal. This blog post is a recap of the problem statement and proposed solution we presented.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ODIBQvumtXQYscbSqjLFn/24257f7186eae5e62fcaf20a166490ea/birds_cable_wire.jpg" alt="birds cable wire" class="kg-image" width="1600" height="1067" loading="lazy">
-	</figure>
-	<p>CC0 Public Domain, <a href="https://pxhere.com/en/photo/1526517" target="_blank" rel="noopener noreferrer">PxHere</a></p>
-	<p>Our edge servers are crowded. We run more than a dozen public facing services, leaving aside the all internal ones that do the work behind the scenes.</p>
-	<p>Quick Quiz #1: How many can you name? We blogged about them! <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-1">Jump to answer</a>.</p>
-	<p>These services are exposed on more than a million Anycast <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">public IPv4 addresses</a> partitioned into 100+ network prefixes.</p>
-	<p>To keep things uniform every Cloudflare edge server runs all services and responds to every Anycast address. This allows us to make efficient use of the hardware by load-balancing traffic between all machines. We have shared the details of Cloudflare <a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation">edge</a><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world"> architecture</a> on the blog before.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MHwv0fusFTiEylSaWQeg3/dbbaa25e7093b0be4fa8ec6dbcd88bca/edge_data_center-1.png" alt="edge data center-1" class="kg-image" width="2000" height="965" loading="lazy">
-	</figure>
-	<p>Granted not all services work on all the addresses but rather on a subset of them, covering one or several network prefixes.</p>
-	<p>So how do you set up your network services to listen on hundreds of IP addresses without driving the network stack over the edge? Cloudflare engineers have had to ask themselves this question more than once over the years, and the answer has changed as our edge evolved. This evolution forced us to look for creative ways to work with the <a href="https://en.wikipedia.org/wiki/Berkeley_sockets" target="_blank" rel="noopener noreferrer">Berkeley sockets API</a>, a POSIX standard for assigning a network address and a port number to your application. It has been quite a journey, and we are not done yet.</p>
-	<div class="flex anchor relative">
-		<h2 id="when-life-is-simple-one-address-one-socket">When life is simple - one address, one socket</h2>
-		<a href="https://blog.cloudflare.com/#when-life-is-simple-one-address-one-socket" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aVlT1BbslJwQRzC0HnF0p/eb5b0651ba36da1010e1bd72b7c57a55/mapping_1_to_1-1.png" alt="mapping 1 to 1-1" class="kg-image" width="2000" height="842" loading="lazy">
-	</figure>
-	<p>The simplest kind of association between an (IP address, port number) and a service that we can imagine is one-to-one. A server responds to client requests on a single address, on a well known port. To set it up the application has to open one socket for each transport protocol (be it TCP or UDP) it wants to support. A network server like our <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">authoritative DNS</a> would open up two sockets (one for UDP, one for TCP):</p>
-	<p>(192.0.2.1, 53/tcp) ⇨ ("auth-dns", pid=1001, fd=3)
-		(192.0.2.1, 53/udp) ⇨ ("auth-dns", pid=1001, fd=4)</p>
-	<p>To take it to Cloudflare scale, the service is likely to have to receive on at least a /20 network prefix, which is a range of IPs with 4096 addresses in it.</p>
-	<p>This translates to opening 4096 sockets for each transport protocol. Something that is not likely to go unnoticed when looking at <a href="http://man7.org/linux/man-pages/man8/ss.8.html" target="_blank" rel="noopener noreferrer">ss tool</a> output.</p>
-	<p></p>
-	<p>$ sudo ss -ulpn 'sport = 53'
-		State Recv-Q Send-Q Local Address:Port Peer Address:Port
-		…
-		UNCONN 0 0 192.0.2.40:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11076))
-		UNCONN 0 0 192.0.2.39:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11075))
-		UNCONN 0 0 192.0.2.38:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11074))
-		UNCONN 0 0 192.0.2.37:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11073))
-		UNCONN 0 0 192.0.2.36:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11072))
-		UNCONN 0 0 192.0.2.31:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11071))
-		…</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2v9WUgAYqxc0JyRM6llZCa/5c29ebd8a06ab9ded6dc0c483431b88d/lots_of_socks.jpg" alt="lots of socks" class="kg-image" width="800" height="533" loading="lazy">
-	</figure>
-	<p>CC BY 2.0, Luca Nebuloni, <a href="https://flickr.com/photos/7897906@N06/20655224708" target="_blank" rel="noopener noreferrer">Flickr</a></p>
-	<p>The approach, while naive, has an advantage: when an IP from the range gets attacked with a UDP flood, the receive queues of sockets bound to the remaining IP addresses are not affected.</p>
-	<div class="flex anchor relative">
-		<h2 id="life-can-be-easier-all-addresses-one-socket">Life can be easier - all addresses, one socket</h2>
-		<a href="https://blog.cloudflare.com/#life-can-be-easier-all-addresses-one-socket" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nfFyQt9C1FLIKO6wnmV4Q/90405ed4e16846e092ecd7e0d88d5110/mapping_inaddr_any-1.png" alt="mapping inaddr any-1" class="kg-image" width="2000" height="1173" loading="lazy">
-	</figure>
-	<p>It seems rather silly to create so many sockets for one service to receive traffic on a range of addresses. Not only that, the more listening sockets there are, the longer the chains in the socket lookup hash table. We have learned the hard way that going in this direction <a href="https://blog.cloudflare.com/revenge-listening-sockets">can hurt packet processing latency</a>.</p>
-	<p>The sockets API comes with a big hammer that can make our life easier - the <code>INADDR_ANY</code> aka <code>0.0.0.0</code> wildcard address. With <code>INADDR_ANY</code> we can make a single socket receive on all addresses assigned to our host, specifying just the port.</p>
-	<pre class="language-undefined"><code class="language-undefined">s = socket(AF_INET, SOCK_STREAM, 0)
-s.bind(('0.0.0.0', 12345))
-s.listen(16)</code></pre>
-	<p></p>
-	<p>Quick Quiz #2: Is there another way to bind a socket to all local addresses? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-2">Jump to answer</a>.</p>
-	<p>In other words, compared to the naive “one address, one socket” approach, <code>INADDR_ANY</code> allows us to have a single catch-all listening socket for the whole IP range on which we accept incoming connections.</p>
-	<p>On Linux this is possible thanks to a two-phase listening socket lookup, where it falls back to search for an <code>INADDR_ANY</code> socket if a more specific match has not been found.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1B0Td9aV8dFNmmOZ7Z5Ell/51b479c1ed0abae1d71038ab030dd98b/tcp_socket_lookup-1.png" alt="tcp socket lookup-1" class="kg-image" width="2000" height="406" loading="lazy">
-	</figure>
-	<p>Another upside of binding to <code>0.0.0.0</code> is that our application doesn’t need to be aware of what addresses we have assigned to our host. We are also free to assign or remove the addresses after binding the listening socket. No need to reconfigure the service when its listening IP range changes.</p>
-	<p>On the other hand if our service should be listening on just <code>A.B.C.0/20</code> prefix, binding to all local addresses is more than we need. We might unintentionally expose an otherwise internal-only service to external traffic without a proper firewall or a socket filter in place.</p>
-	<p>Then there is the security angle. Since we now only have one socket, attacks attempting to flood any of the IPs assigned to our host on our service’s port, will hit the catch-all socket and its receive queue. While in such circumstances the Linux <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild">TCP stack has your back</a>, UDP needs special care or legitimate traffic might drown in the flood of dropped packets.</p>
-	<p>Possibly the biggest downside, though, is that a service listening on the wildcard <code>INADDR_ANY</code> address claims the port number exclusively for itself. Binding over the wildcard-listening socket with a specific IP and port fails miserably due to the address already being taken (<code>EADDRINUSE</code>).</p>
-	<pre class="language-undefined"><code class="language-undefined">bind(3, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 0
-bind(4, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, 16) = -1 EADDRINUSE (Address already in use)
-</code></pre>
-	<p>Unless your service is UDP-only, setting the <code>SO_REUSEADDR</code> socket option, will not help you overcome this restriction. The only way out is to turn to <code>SO_REUSEPORT</code>, normally used to construct a load-balancing socket group. And that is only if you are lucky enough to run the port-conflicting services as the same user (UID). That is a story for another post.Quick Quiz #3: Does setting the <code>SO_REUSEADDR</code> socket option have any effect at all when there is bind conflict? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-3">Jump to answer</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="life-gets-real-one-port-two-services">Life gets real - one port, two services</h2>
-		<a href="https://blog.cloudflare.com/#life-gets-real-one-port-two-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As it happens, at the Cloudflare edge we do host services that share the same port number but otherwise respond to requests on non-overlapping IP ranges. A prominent example of such port-sharing is our <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.1</a> recursive DNS resolver running side-by-side with the<a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"> authoritative DNS service</a> that we offer to all customers.</p>
-	<p>Sadly the s<a href="http://man7.org/linux/man-pages/man2/bind.2.html" target="_blank" rel="noopener noreferrer">ockets API</a> doesn’t allow us to express a setup in which two services share a port and accept requests on disjoint IP ranges.</p>
-	<p>However, as Linux development history shows, any networking API limitation can be overcome by introducing a new <a href="https://github.com/torvalds/linux/blame/master/include/uapi/asm-generic/socket.h" target="_blank" rel="noopener noreferrer">socket option</a>, with sixty-something options available (and counting!).</p>
-	<p>Enter <code>SO_BINDTOPREFIX</code>.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VW8uJH7XkJKqUt6HZXWiU/6995812a081001a31238f45c0455960b/mapping_bindtoprefix-1.png" alt="mapping bindtoprefix-1" class="kg-image" width="2000" height="1173" loading="lazy">
-	</figure>
-	<p>Back in 2016 we proposed <a href="https://lore.kernel.org/netdev/1458699966-3752-1-git-send-email-gilberto.bertin@gmail.com" target="_blank" rel="noopener noreferrer">an extension to the Linux network stack</a>. It allowed services to constrain a wildcard-bound socket to an IP range belonging to a network prefix.</p>
-	<pre class="language-undefined"><code class="language-undefined"># Service 1, 127.0.0.0/20, 1234/tcp
-net1, plen1 = '127.0.0.0', 20
-bindprefix1 = struct.pack('BBBBBxxx', *inet_aton(net1), plen1)
-
-s1 = socket(AF_INET, SOCK_STREAM, 0)
-s1.setsockopt(SOL_IP, IP_BINDTOPREFIX, bindprefix1)
-s1.bind(('0.0.0.0', 1234))
-s1.listen(1)
-
-# Service 2, 127.0.16.0/20, 1234/tcp
-net2, plen2 = '127.0.16.0', 20
-bindprefix2 = struct.pack('BBBBBxxx', *inet_aton(net2), plen2)
-
-s2 = socket(AF_INET, SOCK_STREAM, 0)
-s2.setsockopt(SOL_IP, IP_BINDTOPREFIX, bindprefix2)
-s2.bind(('0.0.0.0', 1234))
-s2.listen(1)
-</code></pre>
-	<p>This mechanism has served us well since then. Unfortunately, it didn’t get accepted upstream due to being too specific to our use-case. Having no better alternative we ended up maintaining patches in our kernel to this day.</p>
-	<div class="flex anchor relative">
-		<h2 id="life-gets-complicated-all-ports-one-service">Life gets complicated - all ports, one service</h2>
-		<a href="https://blog.cloudflare.com/#life-gets-complicated-all-ports-one-service" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Just when we thought we had things figured out, we were faced with a new challenge. How to build a service that accepts connections on any of the 65,535 ports? The ultimate reverse proxy, if you will, code named <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a>.The <code>bind</code> syscall offers very little flexibility when it comes to mapping a socket to a port number. You can either specify the number you want or let the network stack pick an unused one for you. There is no counterpart of <code>INADDR_ANY</code>, a wildcard value to select all ports (<code>INPORT_ANY</code>?).To achieve what we wanted, we had to turn to <a href="https://blog.cloudflare.com/how-we-built-spectrum">TPROXY</a>, a <a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">Netfilter / <code>iptables</code> extension</a> designed for intercepting remote-destined traffic on the forward path. However, we use it to steer local-destined packets, that is ones targeted to our host, to a catch-all-ports socket.</p>
-	<pre class="language-undefined"><code class="language-undefined">iptables -t mangle -I PREROUTING \
-         -d 192.0.2.0/24 -p tcp \
-         -j TPROXY --on-ip=127.0.0.1 --on-port=1234</code></pre>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3n0QTqrm2m4ZTiqPtiiF9a/fbbd5a464721df6ae8017805e2d540dd/mapping_tproxy-1.png" alt="mapping tproxy-1" class="kg-image" width="2000" height="848" loading="lazy">
-	</figure>
-	<p>TPROXY-based setup comes at a price. For starters, your service needs elevated privileges to create a special catch-all socket (see the <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer"><code>IP_TRANSPARENT</code> socket option</a>). Then you also have to understand and consider the subtle interactions between TPROXY and the receive path for your traffic profile, for example:</p>
-	<ul>
-		<li>
-			<p>does connection tracking register the flows redirected with TPROXY?</p>
-		</li>
-		<li>
-			<p>is listening socket contention during a SYN flood when using TPROXY a concern?</p>
-		</li>
-		<li>
-			<p>do other parts of the network stack, like XDP programs, need to know about TPROXY redirecting packets?</p>
-		</li>
-	</ul>
-	<p>These are some of the questions we needed to answer, and after running it in production for a while now, we have a good idea of what the consequences of using TPROXY are.That said, it would not come as a shock, if tomorrow we’d discovered something new about TPROXY. Due to its complexity we’ve always considered using it to steer local-destined traffic a <a href="https://blog.cloudflare.com/how-we-built-spectrum">hack</a>, a use-case outside its intended application. No matter how well understood, a hack remains a hack.</p>
-	<div class="flex anchor relative">
-		<h2 id="can-bpf-make-life-easier">Can BPF make life easier?</h2>
-		<a href="https://blog.cloudflare.com/#can-bpf-make-life-easier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Despite its complex nature TPROXY shows us something important. No matter what IP or port the listening socket is bound to, with a bit of support from the network stack, we can steer any connection to it. As long the application is ready to handle this situation, things work.</p>
-	<p>Quick Quiz #4: Are there really no problems with accepting any connection on any socket? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-4">Jump to answer</a>.</p>
-	<p>This is a really powerful concept. With a bunch of TPROXY rules, we can configure any mapping between (address, port) tuples and listening sockets.</p>
-	<p><b>? Idea #1:</b> A local-destined connection can be accepted by any listening socket.</p>
-	<p>We didn’t tell you the whole story before. When we published <code>SO_BINDTOPREFIX</code> patches, they did not just get rejected. <a href="https://meta.wikimedia.org/wiki/Cunningham%27s_Law" target="_blank" rel="noopener noreferrer">As sometimes happens</a> by posting the wrong answer, we got <a href="https://lore.kernel.org/netdev/1459261895.6473.176.camel@edumazet-glaptop3.roam.corp.google.com" target="_blank" rel="noopener noreferrer">the right answer</a> to our problem</p>
-	<blockquote>
-		<p>❝BPF is absolutely the way to go here, as it allows for whatever user specified tweaks, like a list of destination subnetwork, or/and a list of source network, or the date/time of the day, or port knocking without netfilter, or … you name it.❞</p>
-	</blockquote>
-	<p><b>? Idea #2:</b> How we pick a listening socket can be tweaked with BPF.</p>
-	<p>Combine the two ideas together, and we arrive at an exciting concept. Let’s run BPF code to match an incoming packet with a listening socket, ignoring the address the socket is bound to. ?</p>
-	<p>Here’s an example to illustrate it.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zhLPX1wssfv3c4QvObgz9/66812e76990de528517d020dbca70638/idea_program_socket_lookup_with_bpf-2.png" alt="idea program socket lookup with bpf-2" class="kg-image" width="2000" height="902" loading="lazy">
-	</figure>
-	<p>All packets coming on <code>192.0.2.0/24</code> prefix, port <code>53</code> are steered to socket <code>sk:2</code>, while traffic targeted at <code>203.0.113.1</code>, on any port number lands in socket <code>sk:4</code>.</p>
-	<div class="flex anchor relative">
-		<h2 id="welcome-bpf-inet_lookup">Welcome BPF inet_lookup</h2>
-		<a href="https://blog.cloudflare.com/#welcome-bpf-inet_lookup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Pg5Lou5IFLuZcFHbaY46O/590e5267f496e9ce2e1eb6d1460bbd45/bpf_inet_lookup_hook-1.png" alt="bpf inet lookup hook-1" class="kg-image" width="2000" height="813" loading="lazy">
-	</figure>
-	<p>To make this concept a reality we are proposing a new mechanism to program the socket lookup with BPF. What is socket lookup? It’s a stage on the receive path where the transport layer searches for a socket to dispatch the packet to. The last possible moment to steer packets before they land in the selected socket receive queue. In there we attach a new type of BPF program called <code>inet_lookup</code>.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yATE46s8d1no0gYCw6Asw/6cd9e449e7d6b0571a8c69ce9e4d9f33/tcp_socket_lookup_with_bpf-1.png" alt="tcp socket lookup with bpf-1" class="kg-image" width="2000" height="635" loading="lazy">
-	</figure>
-	<p>If you recall, socket lookup in the Linux TCP stack is a <a href="https://elixir.bootlin.com/linux/v5.4-rc2/source/include/net/inet_hashtables.h#L329" target="_blank" rel="noopener noreferrer">two phase process</a>. First the kernel will try to find an established (connected) socket matching the packet 4-tuple. If there isn’t one, it will continue by looking for a listening socket using just the packet 2-tuple as key.</p>
-	<p>Our proposed extension allows users to program the second phase, the listening socket lookup. If present, a BPF program is allowed to choose a listening socket and terminate the lookup. Our program is also free to ignore the packet, in which case the kernel will continue to look for a listening socket as usual.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bjoj0UUcthGLLGOSTbida/3e139697c9d897cd11aabbdf80946032/bpf_inet_lookup_operation-1.png" alt="bpf inet lookup operation-1" class="kg-image" width="2000" height="919" loading="lazy">
-	</figure>
-	<p>How does this new type of BPF program operate? On input, as context, it gets handed a subset of information extracted from packet headers, including the packet 4-tuple. Based on the input the program accesses a BPF map containing references to listening sockets, and selects one to yield as the socket lookup result.</p>
-	<p>If we take a look at the corresponding BPF code, the program structure resembles a firewall rule. We have some match statements followed by an action.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lhm5L9NH0AN8tnMh2cMpl/14656d47d0e81440617893422ac2140b/bpf_inet_lookup_code_sample-2.png" alt="bpf inet lookup code sample-2" class="kg-image" width="2000" height="929" loading="lazy">
-	</figure>
-	<p>You may notice that we don’t access the BPF map with sockets directly. Instead, we follow an established pattern in BPF called “map based redirection”, where a dedicated BPF helper accesses the map and carries out any steps necessary to redirect the packet.</p>
-	<p>We’ve skipped over one thing. Where does the BPF map of sockets come from? We create it ourselves and populate it with sockets. This is most easily done if your service uses systemd <a href="http://0pointer.de/blog/projects/socket-activation.html" target="_blank" rel="noopener noreferrer">socket activation</a>. systemd will let you associate more than one service unit with a socket unit, and both of the services will receive a file descriptor for the same socket. From there it’s just a matter of inserting the socket into the BPF map.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ufZk0QnR4cOf061PvseTW/a7bdf0a77d655be88adc527cadc4a5bf/bpf_inet_lookup_socket_activation-1.png" alt="bpf inet lookup socket activation-1" class="kg-image" width="2000" height="867" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="demo-time">Demo time!</h2>
-		<a href="https://blog.cloudflare.com/#demo-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is not just a concept. We have already published a first working <a href="https://lore.kernel.org/bpf/20190828072250.29828-1-jakub@cloudflare.com" target="_blank" rel="noopener noreferrer">set of patches for the kernel</a> together with ancillary <a href="https://github.com/majek/inet-tool" target="_blank" rel="noopener noreferrer">user-space tooling</a> to configure the socket lookup to your needs.</p>
-	<p>If you would like to see it in action, you are in luck. We’ve put together a demo that shows just how easily you can bind a network service to (i) a single port, (ii) all ports, or (iii) a network prefix. On-the-fly, without having to restart the service! There is a port scan running to prove it.</p>
-	<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p>
-	<script id="asciicast-266328" src="https://asciinema.org/a/266328.js" async=""></script>
-	<div class="flex anchor relative">
-		<h2 id="summary">Summary</h2>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have gone over how the way we bind services to network addresses on the Cloudflare edge has evolved over time. Each approach has its pros and cons, summarized below. We are currently working on a new BPF-based mechanism for binding services to addresses, which is intended to address the shortcomings of existing solutions.</p>
-	<p><b>bind to one address and port
-		</b>? flood traffic on one address hits one socket, doesn’t affect the rest
-		? as many sockets as listening addresses, doesn’t scale</p>
-	<p><b>bind to all addresses with </b><b><code>INADDR_ANY
-			</code></b>? just one socket for all addresses, the kernel thanks you
-		? application doesn’t need to know about listening addresses
-		? flood scenario requires custom protection, at least for UDP
-		? port sharing is tricky or impossible</p>
-	<p><b>bind to a network prefix with </b><b><code>SO_BINDTOPREFIX
-			</code></b>? two services can share a port if their IP ranges are non-overlapping
-		? custom kernel API extension that never went upstream</p>
-	<p><b>bind to all port with TPROXY
-		</b>? enables redirecting all ports to a listening socket and more
-		? meant for intercepting forwarded traffic early on the ingress path
-		? has subtle interactions with the network stack
-		? requires privileges from the application</p>
-	<p><b>bind to anything you want with BPF </b><b><code>inet_lookup
-			</code></b>? allows for the same flexibility as with TPROXY or <code>SO_BINDTOPREFIX</code>
-		? services don’t need extra capabilities, meant for local traffic only
-		? needs cooperation from services or PID 1 to build a socket map</p>
-	<hr>
-	<p>Getting to this point has been a team effort. A special thank you to Lorenz Bauer and <a href="https://blog.cloudflare.com/author/marek-majkowski">Marek Majkowski</a> who have contributed in an essential way to the BPF <code>inet_lookup</code> implementation. The <code>SO_BINDTOPREFIX</code> patches were authored by <a href="https://blog.cloudflare.com/author/gilberto-bertin">Gilberto Bertin</a>.Fancy joining the team? <a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog" target="_blank" rel="noopener noreferrer">Apply here!</a></p>
-	<div class="flex anchor relative">
-		<h2 id="quiz-answers">Quiz Answers</h2>
-		<a href="https://blog.cloudflare.com/#quiz-answers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="quiz-1">Quiz 1</h3>
-		<a href="https://blog.cloudflare.com/#quiz-1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Q: How many Cloudflare services can you name?</p>
-	<ol>
-		<li>
-			<p><a href="https://www.cloudflare.com/cdn" target="_blank" rel="noopener noreferrer">HTTP CDN</a> (tcp/80)</p>
-		</li>
-		<li>
-			<p><a href="https://www.cloudflare.com/ssl" target="_blank" rel="noopener noreferrer">HTTPS CDN</a> (tcp/443, <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">udp/443</a>)</p>
-		</li>
-		<li>
-			<p><a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">authoritative DNS</a> (udp/53)</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">recursive DNS</a> (udp/53, 853)</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/secure-time">NTP with NTS</a> (udp/1234)</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/roughtime">Roughtime time service</a> (udp/2002)</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/distributed-web-gateway">IPFS Gateway</a> (tcp/443)</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/cloudflare-ethereum-gateway">Ethereum Gateway</a> (tcp/443)</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/spectrum">Spectrum proxy</a> (tcp/any, udp/any)</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/announcing-warp-plus">WARP</a> (udp)</p>
-		</li>
-	</ol>
-	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-1-question">Go back</a></p>
-	<div class="flex anchor relative">
-		<h3 id="quiz-2">Quiz 2</h3>
-		<a href="https://blog.cloudflare.com/#quiz-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Q: Is there another way to bind a socket to all local addresses?Yes, there is - by not <code>bind()</code>’ing it at all. Calling <code>listen()</code> on an unbound socket is equivalent to binding it to <code>INADDR_ANY</code> and letting the kernel pick a free port.$ strace -e socket,bind,listen nc -l
-		socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
-		listen(3, 1) = 0
-		^Z
-		[1]+ Stopped strace -e socket,bind,listen nc -l
-		$ ss -4tlnp
-		State Recv-Q Send-Q Local Address:Port Peer Address:Port
-		LISTEN 0 1 *:42669 </p>
-	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-2-question">Go back</a></p>
-	<div class="flex anchor relative">
-		<h3 id="quiz-3">Quiz 3</h3>
-		<a href="https://blog.cloudflare.com/#quiz-3" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Q: Does setting the <code>SO_REUSEADDR</code> socket option have any effect at all when there is bind conflict?Yes. If two processes are racing to <code>bind</code> and <code>listen</code> on the same TCP port, on an overlapping IP, setting <code>SO_REUSEADDR</code> changes which syscall will report an error (<code>EADDRINUSE</code>). Without <code>SO_REUSEADDR</code> it will always be the second bind. With <code>SO_REUSEADDR</code> set there is a window of opportunity for a second <code>bind</code> to succeed but the subsequent <code>listen</code> to fail.</p>
-	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-3-question">Go back</a></p>
-	<div class="flex anchor relative">
-		<h3 id="quiz-4"><b>Quiz 4</b></h3>
-		<a href="https://blog.cloudflare.com/#quiz-4" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Q: Are there really no problems with accepting any connection on any socket?If the connection is destined for an address assigned to our host, i.e. a local address, there are no problems. However, for remote-destined connections, sending return traffic from a non-local address (i.e., one not present on any interface) will not get past the Linux network stack. The <code>IP_TRANSPARENT</code> socket option bypasses this protection mechanism known as <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=88ef4a5a78e63420dd1dd770f1bd1dc198926b04" target="_blank" rel="noopener noreferrer">source address check</a> to lift this restriction.</p>
-	<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-4-question">Go back</a></p>
+<p>We recently gave a presentation on <a href="https://linuxplumbersconf.org/event/4/contributions/487" target="_blank" rel="noopener noreferrer">Programming socket lookup with BPF</a> at the Linux Plumbers Conference 2019 in Lisbon, Portugal. This blog post is a recap of the problem statement and proposed solution we presented.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="birds cable wire" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZVGKWXZSS8BXG4S7D6AK.jpg&amp;w=1600&amp;h=1067&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1067" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>CC0 Public Domain, <a href="https://pxhere.com/en/photo/1526517" target="_blank" rel="noopener noreferrer">PxHere</a></p>
+<p>Our edge servers are crowded. We run more than a dozen public facing services, leaving aside the all internal ones that do the work behind the scenes.</p>
+<p>Quick Quiz #1: How many can you name? We blogged about them! <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-1" target="_blank" rel="noopener noreferrer">Jump to answer</a>.</p>
+<p>These services are exposed on more than a million Anycast <a href="https://www.cloudflare.com/ips" target="_blank" rel="noopener noreferrer">public IPv4 addresses</a> partitioned into 100+ network prefixes.</p>
+<p>To keep things uniform every Cloudflare edge server runs all services and responds to every Anycast address. This allows us to make efficient use of the hardware by load-balancing traffic between all machines. We have shared the details of Cloudflare <a href="https://blog.cloudflare.com/no-scrubs-architecture-unmetered-mitigation" target="_blank" rel="noopener noreferrer">edge</a><a href="https://blog.cloudflare.com/cloudflare-architecture-and-how-bpf-eats-the-world" target="_blank" rel="noopener noreferrer"> architecture</a> on the blog before.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="345" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=640&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=750&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=828&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=1080&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=1280&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=1430&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="edge data center-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483HDHQHY4Y4YTVHSN91F6.png&amp;w=1920&amp;h=926&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="926" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="345" class="pt-portable-image-media"></div>
+</figure>
+<p>Granted not all services work on all the addresses but rather on a subset of them, covering one or several network prefixes.</p>
+<p>So how do you set up your network services to listen on hundreds of IP addresses without driving the network stack over the edge? Cloudflare engineers have had to ask themselves this question more than once over the years, and the answer has changed as our edge evolved. This evolution forced us to look for creative ways to work with the <a href="https://en.wikipedia.org/wiki/Berkeley_sockets" target="_blank" rel="noopener noreferrer">Berkeley sockets API</a>, a POSIX standard for assigning a network address and a port number to your application. It has been quite a journey, and we are not done yet.</p>
+<h2>When life is simple - one address, one socket</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="301" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=715&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=640&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=715&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=750&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=828&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=1080&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=1280&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=1430&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="mapping 1 to 1-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886PYQE1353ERGE5RS5GZ.png&amp;w=1920&amp;h=808&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="808" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="301" class="pt-portable-image-media"></div>
+</figure>
+<p>The simplest kind of association between an (IP address, port number) and a service that we can imagine is one-to-one. A server responds to client requests on a single address, on a well known port. To set it up the application has to open one socket for each transport protocol (be it TCP or UDP) it wants to support. A network server like our <a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">authoritative DNS</a> would open up two sockets (one for UDP, one for TCP):</p>
+<p>(192.0.2.1, 53/tcp) ⇨ ("auth-dns", pid=1001, fd=3)<br>(192.0.2.1, 53/udp) ⇨ ("auth-dns", pid=1001, fd=4)</p>
+<p>To take it to Cloudflare scale, the service is likely to have to receive on at least a /20 network prefix, which is a range of IPs with 4096 addresses in it.</p>
+<p>This translates to opening 4096 sockets for each transport protocol. Something that is not likely to go unnoticed when looking at <a href="http://man7.org/linux/man-pages/man8/ss.8.html" target="_blank" rel="noopener noreferrer">ss tool</a> output.</p>
+<p>$ sudo ss -ulpn 'sport = 53'<br>State Recv-Q Send-Q Local Address:Port Peer Address:Port<br>…<br>UNCONN 0 0 192.0.2.40:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11076))<br>UNCONN 0 0 192.0.2.39:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11075))<br>UNCONN 0 0 192.0.2.38:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11074))<br>UNCONN 0 0 192.0.2.37:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11073))<br>UNCONN 0 0 192.0.2.36:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11072))<br>UNCONN 0 0 192.0.2.31:53 0.0.0.0:* users:(("auth-dns",pid=77556,fd=11071))<br>…</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="476" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=715&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=640&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=715&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=750&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=828&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=1080&amp;h=719&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=1280&amp;h=852&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=1430&amp;h=952&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="lots of socks" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N00BQDRM1EKVFD5XRMVZ.jpg&amp;w=800&amp;h=533&amp;f=webp" data-lightbox-width="800" data-lightbox-height="533" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="476" class="pt-portable-image-media"></div>
+</figure>
+<p>CC BY 2.0, Luca Nebuloni, <a href="https://flickr.com/photos/7897906@N06/20655224708" target="_blank" rel="noopener noreferrer">Flickr</a></p>
+<p>The approach, while naive, has an advantage: when an IP from the range gets attacked with a UDP flood, the receive queues of sockets bound to the remaining IP addresses are not affected.</p>
+<h2>Life can be easier - all addresses, one socket</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="419" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=640&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=750&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=828&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=1080&amp;h=633&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=1280&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=1430&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="mapping inaddr any-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZXT7MRV8FGZZ7HBCEAQY.png&amp;w=1920&amp;h=1126&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1126" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="419" class="pt-portable-image-media"></div>
+</figure>
+<p>It seems rather silly to create so many sockets for one service to receive traffic on a range of addresses. Not only that, the more listening sockets there are, the longer the chains in the socket lookup hash table. We have learned the hard way that going in this direction <a href="https://blog.cloudflare.com/revenge-listening-sockets" target="_blank" rel="noopener noreferrer">can hurt packet processing latency</a>.</p>
+<p>The sockets API comes with a big hammer that can make our life easier - the <code>INADDR_ANY</code> aka <code>0.0.0.0</code> wildcard address. With <code>INADDR_ANY</code> we can make a single socket receive on all addresses assigned to our host, specifying just the port.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>s = socket(AF_INET, SOCK_STREAM, 0)</span></span>
+<span class="line"><span>s.bind(('0.0.0.0', 12345))</span></span>
+<span class="line"><span>s.listen(16)</span></span></code></pre>
 </div>
+<p>Quick Quiz #2: Is there another way to bind a socket to all local addresses? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-2" target="_blank" rel="noopener noreferrer">Jump to answer</a>.</p>
+<p>In other words, compared to the naive “one address, one socket” approach, <code>INADDR_ANY</code> allows us to have a single catch-all listening socket for the whole IP range on which we accept incoming connections.</p>
+<p>On Linux this is possible thanks to a two-phase listening socket lookup, where it falls back to search for an <code>INADDR_ANY</code> socket if a more specific match has not been found.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="145" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=715&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=640&amp;h=130&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=715&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=750&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=828&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=1080&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=1280&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=1430&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="tcp socket lookup-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BPNB5J9WJQRBERMZ8JNM.png&amp;w=1920&amp;h=390&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="390" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="145" class="pt-portable-image-media"></div>
+</figure>
+<p>Another upside of binding to <code>0.0.0.0</code> is that our application doesn’t need to be aware of what addresses we have assigned to our host. We are also free to assign or remove the addresses after binding the listening socket. No need to reconfigure the service when its listening IP range changes.</p>
+<p>On the other hand if our service should be listening on just <code>A.B.C.0/20</code> prefix, binding to all local addresses is more than we need. We might unintentionally expose an otherwise internal-only service to external traffic without a proper firewall or a socket filter in place.</p>
+<p>Then there is the security angle. Since we now only have one socket, attacks attempting to flood any of the IPs assigned to our host on our service’s port, will hit the catch-all socket and its receive queue. While in such circumstances the Linux <a href="https://blog.cloudflare.com/syn-packet-handling-in-the-wild" target="_blank" rel="noopener noreferrer">TCP stack has your back</a>, UDP needs special care or legitimate traffic might drown in the flood of dropped packets.</p>
+<p>Possibly the biggest downside, though, is that a service listening on the wildcard <code>INADDR_ANY</code> address claims the port number exclusively for itself. Binding over the wildcard-listening socket with a specific IP and port fails miserably due to the address already being taken (<code>EADDRINUSE</code>).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>bind(3, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("0.0.0.0")}, 16) = 0</span></span>
+<span class="line"><span>bind(4, {sa_family=AF_INET, sin_port=htons(12345), sin_addr=inet_addr("127.0.0.1")}, 16) = -1 EADDRINUSE (Address already in use)</span></span>
+<span class="line"><span></span></span></code></pre>
+</div>
+<p>Unless your service is UDP-only, setting the <code>SO_REUSEADDR</code> socket option, will not help you overcome this restriction. The only way out is to turn to <code>SO_REUSEPORT</code>, normally used to construct a load-balancing socket group. And that is only if you are lucky enough to run the port-conflicting services as the same user (UID). That is a story for another post.Quick Quiz #3: Does setting the <code>SO_REUSEADDR</code> socket option have any effect at all when there is bind conflict? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-3" target="_blank" rel="noopener noreferrer">Jump to answer</a>.</p>
+<h2>Life gets real - one port, two services</h2>
+<p>As it happens, at the Cloudflare edge we do host services that share the same port number but otherwise respond to requests on non-overlapping IP ranges. A prominent example of such port-sharing is our <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1" target="_blank" rel="noopener noreferrer">1.1.1.1</a> recursive DNS resolver running side-by-side with the<a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"> authoritative DNS service</a> that we offer to all customers.</p>
+<p>Sadly the s<a href="http://man7.org/linux/man-pages/man2/bind.2.html" target="_blank" rel="noopener noreferrer">ockets API</a> doesn’t allow us to express a setup in which two services share a port and accept requests on disjoint IP ranges.</p>
+<p>However, as Linux development history shows, any networking API limitation can be overcome by introducing a new <a href="https://github.com/torvalds/linux/blame/master/include/uapi/asm-generic/socket.h" target="_blank" rel="noopener noreferrer">socket option</a>, with sixty-something options available (and counting!).</p>
+<p>Enter <code>SO_BINDTOPREFIX</code>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="419" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=640&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=715&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=750&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=828&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=1080&amp;h=633&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=1280&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=1430&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="mapping bindtoprefix-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KV1NM4EZ3DFMJSDWCG88.png&amp;w=1920&amp;h=1126&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1126" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="419" class="pt-portable-image-media"></div>
+</figure>
+<p>Back in 2016 we proposed <a href="https://lore.kernel.org/netdev/1458699966-3752-1-git-send-email-gilberto.bertin@gmail.com" target="_blank" rel="noopener noreferrer">an extension to the Linux network stack</a>. It allowed services to constrain a wildcard-bound socket to an IP range belonging to a network prefix.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Service 1, 127.0.0.0/20, 1234/tcp</span></span>
+<span class="line"><span>net1, plen1 = '127.0.0.0', 20</span></span>
+<span class="line"><span>bindprefix1 = struct.pack('BBBBBxxx', *inet_aton(net1), plen1)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>s1 = socket(AF_INET, SOCK_STREAM, 0)</span></span>
+<span class="line"><span>s1.setsockopt(SOL_IP, IP_BINDTOPREFIX, bindprefix1)</span></span>
+<span class="line"><span>s1.bind(('0.0.0.0', 1234))</span></span>
+<span class="line"><span>s1.listen(1)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Service 2, 127.0.16.0/20, 1234/tcp</span></span>
+<span class="line"><span>net2, plen2 = '127.0.16.0', 20</span></span>
+<span class="line"><span>bindprefix2 = struct.pack('BBBBBxxx', *inet_aton(net2), plen2)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>s2 = socket(AF_INET, SOCK_STREAM, 0)</span></span>
+<span class="line"><span>s2.setsockopt(SOL_IP, IP_BINDTOPREFIX, bindprefix2)</span></span>
+<span class="line"><span>s2.bind(('0.0.0.0', 1234))</span></span>
+<span class="line"><span>s2.listen(1)</span></span>
+<span class="line"><span></span></span></code></pre>
+</div>
+<p>This mechanism has served us well since then. Unfortunately, it didn’t get accepted upstream due to being too specific to our use-case. Having no better alternative we ended up maintaining patches in our kernel to this day.</p>
+<h2>Life gets complicated - all ports, one service</h2>
+<p>Just when we thought we had things figured out, we were faced with a new challenge. How to build a service that accepts connections on any of the 65,535 ports? The ultimate reverse proxy, if you will, code named <a href="https://www.cloudflare.com/products/cloudflare-spectrum" target="_blank" rel="noopener noreferrer">Spectrum</a>.The <code>bind</code> syscall offers very little flexibility when it comes to mapping a socket to a port number. You can either specify the number you want or let the network stack pick an unused one for you. There is no counterpart of <code>INADDR_ANY</code>, a wildcard value to select all ports (<code>INPORT_ANY</code>?).To achieve what we wanted, we had to turn to <a href="https://blog.cloudflare.com/how-we-built-spectrum" target="_blank" rel="noopener noreferrer">TPROXY</a>, a <a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">Netfilter / <code>iptables</code> extension</a> designed for intercepting remote-destined traffic on the forward path. However, we use it to steer local-destined packets, that is ones targeted to our host, to a catch-all-ports socket.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>iptables -t mangle -I PREROUTING \</span></span>
+<span class="line"><span>         -d 192.0.2.0/24 -p tcp \</span></span>
+<span class="line"><span>         -j TPROXY --on-ip=127.0.0.1 --on-port=1234</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="303" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=640&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=750&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=828&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=1080&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=1280&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=1430&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="mapping tproxy-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469B2808SWVXWNJPJ9MJ6E.png&amp;w=1920&amp;h=814&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="814" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="303" class="pt-portable-image-media"></div>
+</figure>
+<p>TPROXY-based setup comes at a price. For starters, your service needs elevated privileges to create a special catch-all socket (see the <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer"><code>IP_TRANSPARENT</code> socket option</a>). Then you also have to understand and consider the subtle interactions between TPROXY and the receive path for your traffic profile, for example:</p>
+<ul>
+	<li>does connection tracking register the flows redirected with TPROXY?</li>
+	<li>is listening socket contention during a SYN flood when using TPROXY a concern?</li>
+	<li>do other parts of the network stack, like XDP programs, need to know about TPROXY redirecting packets?</li>
+</ul>
+<p>These are some of the questions we needed to answer, and after running it in production for a while now, we have a good idea of what the consequences of using TPROXY are.That said, it would not come as a shock, if tomorrow we’d discovered something new about TPROXY. Due to its complexity we’ve always considered using it to steer local-destined traffic a <a href="https://blog.cloudflare.com/how-we-built-spectrum" target="_blank" rel="noopener noreferrer">hack</a>, a use-case outside its intended application. No matter how well understood, a hack remains a hack.</p>
+<h2>Can BPF make life easier?</h2>
+<p>Despite its complex nature TPROXY shows us something important. No matter what IP or port the listening socket is bound to, with a bit of support from the network stack, we can steer any connection to it. As long the application is ready to handle this situation, things work.</p>
+<p>Quick Quiz #4: Are there really no problems with accepting any connection on any socket? <a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-4" target="_blank" rel="noopener noreferrer">Jump to answer</a>.</p>
+<p>This is a really powerful concept. With a bunch of TPROXY rules, we can configure any mapping between (address, port) tuples and listening sockets.</p>
+<p><strong>? Idea #1:</strong> A local-destined connection can be accepted by any listening socket.</p>
+<p>We didn’t tell you the whole story before. When we published <code>SO_BINDTOPREFIX</code> patches, they did not just get rejected. <a href="https://meta.wikimedia.org/wiki/Cunningham%27s_Law" target="_blank" rel="noopener noreferrer">As sometimes happens</a> by posting the wrong answer, we got <a href="https://lore.kernel.org/netdev/1459261895.6473.176.camel@edumazet-glaptop3.roam.corp.google.com" target="_blank" rel="noopener noreferrer">the right answer</a> to our problem</p>
+<blockquote>❝BPF is absolutely the way to go here, as it allows for whatever user specified tweaks, like a list of destination subnetwork, or/and a list of source network, or the date/time of the day, or port knocking without netfilter, or … you name it.❞</blockquote>
+<p><strong>? Idea #2:</strong> How we pick a listening socket can be tweaked with BPF.</p>
+<p>Combine the two ideas together, and we arrive at an exciting concept. Let’s run BPF code to match an incoming packet with a listening socket, ignoring the address the socket is bound to. ?</p>
+<p>Here’s an example to illustrate it.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="322" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=715&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=640&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=715&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=750&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=828&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=1080&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=1280&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=1430&amp;h=644&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="idea program socket lookup with bpf-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47V3TDG96Y87EE2NM9VTTC.png&amp;w=1920&amp;h=866&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="866" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="322" class="pt-portable-image-media"></div>
+</figure>
+<p>All packets coming on <code>192.0.2.0/24</code> prefix, port <code>53</code> are steered to socket <code>sk:2</code>, while traffic targeted at <code>203.0.113.1</code>, on any port number lands in socket <code>sk:4</code>.</p>
+<h2>Welcome BPF inet_lookup</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="291" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=750&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=828&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=1080&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=1280&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=1430&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="bpf inet lookup hook-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q1W1ADC9RNMRNSSDAN15.png&amp;w=1920&amp;h=780&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="780" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="291" class="pt-portable-image-media"></div>
+</figure>
+<p>To make this concept a reality we are proposing a new mechanism to program the socket lookup with BPF. What is socket lookup? It’s a stage on the receive path where the transport layer searches for a socket to dispatch the packet to. The last possible moment to steer packets before they land in the selected socket receive queue. In there we attach a new type of BPF program called <code>inet_lookup</code>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="227" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=715&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=640&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=715&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=750&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=828&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=1080&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=1280&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=1430&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="tcp socket lookup with bpf-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45P85G304TM16RCEB0YFTT.png&amp;w=1920&amp;h=610&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="610" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="227" class="pt-portable-image-media"></div>
+</figure>
+<p>If you recall, socket lookup in the Linux TCP stack is a <a href="https://elixir.bootlin.com/linux/v5.4-rc2/source/include/net/inet_hashtables.h#L329" target="_blank" rel="noopener noreferrer">two phase process</a>. First the kernel will try to find an established (connected) socket matching the packet 4-tuple. If there isn’t one, it will continue by looking for a listening socket using just the packet 2-tuple as key.</p>
+<p>Our proposed extension allows users to program the second phase, the listening socket lookup. If present, a BPF program is allowed to choose a listening socket and terminate the lookup. Our program is also free to ignore the packet, in which case the kernel will continue to look for a listening socket as usual.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="329" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=640&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=750&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=828&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=1080&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=1280&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=1430&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="bpf inet lookup operation-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49E2G33JJPSMX5X5TXVPE5.png&amp;w=1920&amp;h=882&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="882" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="329" class="pt-portable-image-media"></div>
+</figure>
+<p>How does this new type of BPF program operate? On input, as context, it gets handed a subset of information extracted from packet headers, including the packet 4-tuple. Based on the input the program accesses a BPF map containing references to listening sockets, and selects one to yield as the socket lookup result.</p>
+<p>If we take a look at the corresponding BPF code, the program structure resembles a firewall rule. We have some match statements followed by an action.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="332" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=640&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=750&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=828&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=1080&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=1280&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=1430&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="bpf inet lookup code sample-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HEGNZVNRK8HT1FF2AMJ8.png&amp;w=1920&amp;h=892&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="892" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="332" class="pt-portable-image-media"></div>
+</figure>
+<p>You may notice that we don’t access the BPF map with sockets directly. Instead, we follow an established pattern in BPF called “map based redirection”, where a dedicated BPF helper accesses the map and carries out any steps necessary to redirect the packet.</p>
+<p>We’ve skipped over one thing. Where does the BPF map of sockets come from? We create it ourselves and populate it with sockets. This is most easily done if your service uses systemd <a href="http://0pointer.de/blog/projects/socket-activation.html" target="_blank" rel="noopener noreferrer">socket activation</a>. systemd will let you associate more than one service unit with a socket unit, and both of the services will receive a file descriptor for the same socket. From there it’s just a matter of inserting the socket into the BPF map.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="310" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=750&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=828&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=1080&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=1280&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=1430&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="bpf inet lookup socket activation-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MT5WMG4NR6386BEJV034.png&amp;w=1920&amp;h=832&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="310" class="pt-portable-image-media"></div>
+</figure>
+<h2>Demo time!</h2>
+<p>This is not just a concept. We have already published a first working <a href="https://lore.kernel.org/bpf/20190828072250.29828-1-jakub@cloudflare.com" target="_blank" rel="noopener noreferrer">set of patches for the kernel</a> together with ancillary <a href="https://github.com/majek/inet-tool" target="_blank" rel="noopener noreferrer">user-space tooling</a> to configure the socket lookup to your needs.</p>
+<p>If you would like to see it in action, you are in luck. We’ve put together a demo that shows just how easily you can bind a network service to (i) a single port, (ii) all ports, or (iii) a network prefix. On-the-fly, without having to restart the service! There is a port scan running to prove it.</p>
+<p>You can also bind to all-addresses-all-ports (<code>0.0.0.0/0</code>) because why not? Take that <code>INADDR_ANY</code>. All thanks to BPF superpowers.</p>
+<div id="html-block-k88" class="html-block">
+	<script id="asciicast-266328" src="https://asciinema.org/a/266328.js" async=""></script>
+</div>
+<h2>Summary</h2>
+<p>We have gone over how the way we bind services to network addresses on the Cloudflare edge has evolved over time. Each approach has its pros and cons, summarized below. We are currently working on a new BPF-based mechanism for binding services to addresses, which is intended to address the shortcomings of existing solutions.</p>
+<p><strong>bind to one address and port<br></strong>? flood traffic on one address hits one socket, doesn’t affect the rest<br>? as many sockets as listening addresses, doesn’t scale</p>
+<p><strong>bind to all addresses with <code>INADDR_ANY<br></code></strong>? just one socket for all addresses, the kernel thanks you<br>? application doesn’t need to know about listening addresses<br>? flood scenario requires custom protection, at least for UDP<br>? port sharing is tricky or impossible</p>
+<p><strong>bind to a network prefix with <code>SO_BINDTOPREFIX<br></code></strong>? two services can share a port if their IP ranges are non-overlapping<br>? custom kernel API extension that never went upstream</p>
+<p><strong>bind to all port with TPROXY<br></strong>? enables redirecting all ports to a listening socket and more<br>? meant for intercepting forwarded traffic early on the ingress path<br>? has subtle interactions with the network stack<br>? requires privileges from the application</p>
+<p><strong>bind to anything you want with BPF <code>inet_lookup<br></code></strong>? allows for the same flexibility as with TPROXY or <code>SO_BINDTOPREFIX</code><br>? services don’t need extra capabilities, meant for local traffic only<br>? needs cooperation from services or PID 1 to build a socket map</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p>Getting to this point has been a team effort. A special thank you to Lorenz Bauer and <a href="https://blog.cloudflare.com/author/marek-majkowski" target="_blank" rel="noopener noreferrer">Marek Majkowski</a> who have contributed in an essential way to the BPF <code>inet_lookup</code> implementation. The <code>SO_BINDTOPREFIX</code> patches were authored by <a href="https://blog.cloudflare.com/author/gilberto-bertin" target="_blank" rel="noopener noreferrer">Gilberto Bertin</a>.Fancy joining the team? <a href="https://www.cloudflare.com/careers/departments/?utm_referrer=blog" target="_blank" rel="noopener noreferrer">Apply here!</a></p>
+<h2>Quiz Answers</h2>
+<h3>Quiz 1</h3>
+<p>Q: How many Cloudflare services can you name?</p>
+<ol>
+	<li><a href="https://www.cloudflare.com/cdn" target="_blank" rel="noopener noreferrer">HTTP CDN</a> (tcp/80)</li>
+	<li><a href="https://www.cloudflare.com/ssl" target="_blank" rel="noopener noreferrer">HTTPS CDN</a> (tcp/443, <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">udp/443</a>)</li>
+	<li><a href="https://www.cloudflare.com/dns" target="_blank" rel="noopener noreferrer">authoritative DNS</a> (udp/53)</li>
+	<li><a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1" target="_blank" rel="noopener noreferrer">recursive DNS</a> (udp/53, 853)</li>
+	<li><a href="https://blog.cloudflare.com/secure-time" target="_blank" rel="noopener noreferrer">NTP with NTS</a> (udp/1234)</li>
+	<li><a href="https://blog.cloudflare.com/roughtime" target="_blank" rel="noopener noreferrer">Roughtime time service</a> (udp/2002)</li>
+	<li><a href="https://blog.cloudflare.com/distributed-web-gateway" target="_blank" rel="noopener noreferrer">IPFS Gateway</a> (tcp/443)</li>
+	<li><a href="https://blog.cloudflare.com/cloudflare-ethereum-gateway" target="_blank" rel="noopener noreferrer">Ethereum Gateway</a> (tcp/443)</li>
+	<li><a href="https://blog.cloudflare.com/spectrum" target="_blank" rel="noopener noreferrer">Spectrum proxy</a> (tcp/any, udp/any)</li>
+	<li><a href="https://blog.cloudflare.com/announcing-warp-plus" target="_blank" rel="noopener noreferrer">WARP</a> (udp)</li>
+</ol>
+<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-1-question" target="_blank" rel="noopener noreferrer">Go back</a></p>
+<h3>Quiz 2</h3>
+<p>Q: Is there another way to bind a socket to all local addresses?Yes, there is - by not <code>bind()</code>’ing it at all. Calling <code>listen()</code> on an unbound socket is equivalent to binding it to <code>INADDR_ANY</code> and letting the kernel pick a free port.$ strace -e socket,bind,listen nc -l<br>socket(AF_INET, SOCK_STREAM, IPPROTO_TCP) = 3<br>listen(3, 1) = 0<br>^Z<br>[1]+ Stopped strace -e socket,bind,listen nc -l<br>$ ss -4tlnp<br>State Recv-Q Send-Q Local Address:Port Peer Address:Port<br>LISTEN 0 1 *:42669 </p>
+<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-2-question" target="_blank" rel="noopener noreferrer">Go back</a></p>
+<h3>Quiz 3</h3>
+<p>Q: Does setting the <code>SO_REUSEADDR</code> socket option have any effect at all when there is bind conflict?Yes. If two processes are racing to <code>bind</code> and <code>listen</code> on the same TCP port, on an overlapping IP, setting <code>SO_REUSEADDR</code> changes which syscall will report an error (<code>EADDRINUSE</code>). Without <code>SO_REUSEADDR</code> it will always be the second bind. With <code>SO_REUSEADDR</code> set there is a window of opportunity for a second <code>bind</code> to succeed but the subsequent <code>listen</code> to fail.</p>
+<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-3-question" target="_blank" rel="noopener noreferrer">Go back</a></p>
+<h3><strong>Quiz 4</strong></h3>
+<p>Q: Are there really no problems with accepting any connection on any socket?If the connection is destined for an address assigned to our host, i.e. a local address, there are no problems. However, for remote-destined connections, sending return traffic from a non-local address (i.e., one not present on any interface) will not get past the Linux network stack. The <code>IP_TRANSPARENT</code> socket option bypasses this protection mechanism known as <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=88ef4a5a78e63420dd1dd770f1bd1dc198926b04" target="_blank" rel="noopener noreferrer">source address check</a> to lift this restriction.</p>
+<p><a href="https://blog.cloudflare.com/its-crowded-in-here/#quiz-4-question" target="_blank" rel="noopener noreferrer">Go back</a></p>

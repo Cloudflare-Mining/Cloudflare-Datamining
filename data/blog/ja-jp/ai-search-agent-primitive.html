@@ -1,425 +1,371 @@
-<div class="mb2 gray5">7分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/ai-search-agent-primitive">English</a>、<a href="https://blog.cloudflare.com/zh-tw/ai-search-agent-primitive">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/ai-search-agent-primitive">한국어</a>、<a href="https://blog.cloudflare.com/zh-cn/ai-search-agent-primitive">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3alMYdS7B71x5pzh2vMsie/4fbcce04bc19a761fa6b0b515ed9f5a9/BLOG-3240_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
-	<p>すべての<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>は検索が必要です。コーディングエージェントはリポジトリの数百万ファイルを検索し、サポートエージェントは顧客チケットや社内ドキュメントを検索します。ユースケースは異なりますが、根本的な問題は同じです。適切なタイミングでモデルに適切な情報を得ることです。</p>
-	<p>自分で検索を構築する場合は、ベクトルインデックス、ドキュメントを解析してチャンク化するインデックス作成パイプライン、そしてデータが変更されたときにインデックスを最新に保つためのものが必要になります。キーワード検索も必要な場合は、それは別のインデックスと融合ロジックです。また、各エージェントに独自の検索可能なコンテキストが必要な場合は、エージェントごとにすべて設定することができます。</p>
-	<p><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>（旧<a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare"><u>AutoRAG</u></a>）は、必要なプラグアンドプレイの検索プリミティブです。Worker、Agents SDK、またはWrangler CLIを使用して、インスタンスを動的に作成し、データを提供し、検索することができます。内容は以下の通りです。</p>
-	<ul>
-		<li>
-			<p><b>ハイブリッド検索</b>。同じクエリで、セマンティックとキーワードの一致を有効にします。ベクトル検索とBM25は並行して実行され、結果は融合されます。（現在、当社ブログの検索はAI Searchによって行われています。<i>右上の虫眼鏡アイコンをお試しください。</i>)</p>
-		</li>
-		<li>
-			<p><b>内蔵されたストレージとインデックス。</b>新しいインスタンスには、独自のストレージとベクトルインデックスが付属しています。APIを介してインスタンスに直接ファイルをアップロードすると、インデックスが作成されます。R2バケットのセットアップも、最初に接続する必要のある外部データソースもありません。新しい<code>ai_search_namespaces</code>バインディングでは、Workerから実行時にインスタンスを作成/削除できるため、再デプロイなしに、エージェントごと、顧客ごと、または言語ごとに1つをスピンアップできます。</p>
-		</li>
-	</ul>
-	<p>ドキュメントにメタデータを添付してクエリ時にランキングを上げるために使用したり、1回の呼び出しで複数のインスタンスにクエリを実行したりすることもできるようになりました。<b> </b></p>
-	<p>では、これが実際に何を意味するのかを見ていきましょう。</p>
-	<div class="flex anchor relative">
-		<h2 id="in-action-customer-support-agent">稼働中：カスタマーサポートエージェント</h2>
-		<a href="https://blog.cloudflare.com/#in-action-customer-support-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>共有製品ドキュメントと過去の解決方法のような顧客ごとの履歴という2種類のナレッジを検索するサポートエージェントについて説明します。製品ドキュメントはコンテキストウィンドウに収まらない容量です。また、解決された問題ごとに顧客の履歴も更新されるため、エージェントは情報を検索して関連性のある情報を見つける必要があります。</p>
-	<p>AI Searchと<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>を使用した場合の例を次に示します。まずはプロジェクトのスキャフォールディングから始めましょう：</p>
-	<pre class="language-Shell"><code class="language-Shell">npm create cloudflare@latest -- --template cloudflare/agents-starter
-</code></pre>
-	<p>まず、AI SearchネームスペースをWorkerにバインドします。</p>
-	<pre class="language-Typescript"><code class="language-Typescript">// wrangler.jsonc 
-{
-  "ai_search_namespaces": [
-    { "binding": "SUPPORT_KB", "namespace": "support" }
-  ],
-  "ai": { "binding": "AI" },
-  "durable_objects": {
-    "bindings": [
-      { "name": "SupportAgent", "class_name": "SupportAgent" }
-    ]
-  }
-}
-</code></pre>
-	<p>共有製品ドキュメントが<code>product-doc</code>というR2バケットにあるとします。Cloudflareダッシュボードの<code>support</code>名前空間内で、バケットにバックアップされた一度限りのAI Searchインスタンス（ <code>product-knowledge</code>という名前）を作成できます。</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1b8NdFL2HDBy8FqBHEI679/f17ed98d45fb9b42a616e0b464460489/BLOG-3240_2.png" alt="BLOG-3240 2" class="kg-image" width="1014" height="730" loading="lazy">
-	</figure>
-	<p>それが共有ナレッジベースであり、すべてのエージェントが参照できるドキュメントです。</p>
-	<p>お客様が新しい問題について再度報告してくれた場合、すでに試されたものを知ることができることで、誰もが時間を節約することができます。これは、顧客ごとにAI Searchインスタンスを作成することで追跡できます。各問題が解決されると、エージェントは何が問題だったのか、どのように修正したのかの概要を保存します。時間の経過とともに、これにより過去の解決状況を示す検索可能なログが蓄積されます。ネームスペースバインディングを使用して、動的にインスタンスを作成できます。</p>
-	<pre class="language-Typescript"><code class="language-Typescript">// create a per-customer instance when they first show up 
-await env.SUPPORT_KB.create({
-  id: `customer-${customerId}`,
-  index_method:{ keyword: true, vector: true }
-});
-</code></pre>
-	<p>各インスタンスは、<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>と<a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>を活用した独自の内蔵ストレージとベクトルインデックスを取得します。インスタンスは空から始まり、時間の経過とともにコンテキストを蓄積します。次回のお客様の訪問時には、そのすべてが検索可能です。</p>
-	<p>一部のお客様のネームスペースは次のようになります：</p>
-	<pre class="language-unset"><code class="language-unset">namespace: "support"
-├── product-knowledge     (R2 as source, shared across all agents)
-├── customer-abc123       (managed storage, per-customer)
-├── customer-def456       (managed storage, per-customer)
-└── customer-ghi789       (managed storage, per-customer)
-
-</code></pre>
-	<p>エージェント自体がそうです。Agents SDKの<code>AIChatAgent</code>を拡張し、2つのツールを定義しています。<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>を介し、LLMとしてKin <a href="https://blog.cloudflare.com/workers-ai-large-models"><u>K2.5を使用しています。</u></a>モデルがツールを呼び出すタイミングを決定：</p>
-	<pre class="language-Typescript"><code class="language-Typescript">import { AIChatAgent, type OnChatMessageOptions } from "@cloudflare/ai-chat";
-import { createWorkersAI } from "workers-ai-provider";
-import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
-import { routeAgentRequest } from "agents";
-import { z } from "zod";
-
-export class SupportAgent extends AIChatAgent&lt;Env&gt; {
-  async onChatMessage(_onFinish: unknown, options?: OnChatMessageOptions) {
-    // the client passes customerId in the request body
-    // via the Agent SDK's sendMessage({ body: { customerId } })
-    const customerId = options?.body?.customerId;
-
-    // create a per-customer instance when they first show up.
-    // each instance gets its own storage and vector index.
-    if (customerId) {
-      try {
-        await this.env.SUPPORT_KB.create({
-          id: `customer-${customerId}`,
-          index_method: { keyword: true, vector: true }
-        });
-      } catch {
-        // instance already exists
-      }
-    }
-
-    const workersai = createWorkersAI({ binding: this.env.AI });
-
-    const result = streamText({
-      model: workersai("@cf/moonshotai/kimi-k2.5"),
-      system: `You are a support agent. Use search_knowledge_base
-        to find relevant docs before answering. Search results
-        include both product docs and this customer's past
-        resolutions — use them to avoid repeating failed fixes
-        and to recognize recurring issues. When the issue is
-        resolved, call save_resolution before responding.`,
-      // this.messages is the full conversation history, automatically
-      // persisted by AIChatAgent across reconnects
-      messages: await convertToModelMessages(this.messages),
-      tools: {
-        // tool 1: search across shared product docs AND this
-        // customer's past resolutions in a single call
-        search_knowledge_base: tool({
-          description: "Search product docs and customer history",
-          inputSchema: z.object({
-            query: z.string().describe("The search query"),
-          }),
-          execute: async ({ query }) =&gt; {
-            // always search product docs;
-            // include customer history if available
-            const instances = ["product-knowledge"];
-            if (customerId) {
-              instances.push(`customer-${customerId}`);
-            }
-            return await this.env.SUPPORT_KB.search({
-              query: query,
-              ai_search_options: {
-                // surface recent docs over older ones
-                boost_by: [
-                  { field: "timestamp", direction: "desc" }
-                ],
-                // search across both instances at once
-                instance_ids: instances
-              }
-            });
-          }
-        }),
-
-        // tool 2: after resolving an issue, the agent saves a
-        // summary so future agents have full context
-        save_resolution: tool({
-          description:
-            "Save a resolution summary after solving a customer's issue",
-          inputSchema: z.object({
-            filename: z.string().describe(
-              "Short descriptive filename, e.g. 'billing-fix.md'"
-            ),
-            content: z.string().describe(
-              "What the problem was, what caused it, and how it was resolved"
-            ),
-          }),
-          execute: async ({ filename, content }) =&gt; {
-            if (!customerId) return { error: "No customer ID" };
-            const instance = this.env.SUPPORT_KB.get(
-              `customer-${customerId}`
-            );
-            // uploadAndPoll waits until indexing is complete,
-            // so the resolution is searchable before the next query
-            const item = await instance.items.uploadAndPoll(
-              filename, content
-            );
-            return { saved: true, filename, status: item.status };
-          }
-        }),
-      },
-      // cap agentic tool-use loops at 10 steps
-      stopWhen: stepCountIs(10),
-      abortSignal: options?.abortSignal,
-    });
-
-    return result.toUIMessageStreamResponse();
-  }
-}
-
-// route requests to the SupportAgent durable object
-export default {
-  async fetch(request: Request, env: Env) {
-    return (
-      (await routeAgentRequest(request, env)) ||
-      new Response("Not found", { status: 404 })
-    );
-  }
-} satisfies ExportedHandler&lt;Env&gt;;
-</code></pre>
-	<p>これによって、モデルは検索するタイミングと保存するタイミングを決定します。検索の際、<code>product-knowledge</code>とこの顧客の過去の解決策を一緒に問い合わせます。問題が解決されると、今後の会話ですぐに検索できる概要を保存します。</p>
-	<div class="flex anchor relative">
-		<h2 id="how-ai-search-finds-what-youre-looking-for">AI Searchが探している情報を見つける方法</h2>
-		<a href="https://blog.cloudflare.com/#how-ai-search-finds-what-youre-looking-for" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>内部では、AI Searchは複数ステップの検索パイプラインを実行しており、その中ではすべてのステップが設定可能です。</p>
-	<div class="flex anchor relative">
-		<h3 id="hybrid-search-search-that-understands-intent-and-matches-terms">ハイブリッド検索：意図を理解し、条件に一致する検索</h3>
-		<a href="https://blog.cloudflare.com/#hybrid-search-search-that-understands-intent-and-matches-terms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>これまでは、AI Searchはベクトル検索のみを提供していました。ベクトル検索は意図の理解に長けますが、具体性を失うことがあります。「ERR_CONNECTION_REFused timeout」クエリでは、エンベッディングは接続失敗の広範な概念を捉えています。しかし、ユーザーは一般的なネットワークドキュメントを探しているわけではありません。「ERR_CONNECTION_REFused」に記載された特定の文書を探しています。ベクトル検索は、その正確なエラー文字列を含むページを表示することなく、トラブルシューティングに関する結果を返す可能性があります。</p>
-	<p>キーワード検索がそのギャップを埋めるのです。AI Searchは、最も広く使用されている検索スコアリング機能の1つであるBM25をサポートするようになりました。BM25は、クエリー条件が表示される頻度、コーパス全体におけるその用語の出現頻度、文書に存在する期間によって文書を評価します。特定の条件で一致した場合に報酬を与え、一般的な単語を罰し、文書の長さを正規化します。「ERR_CONNECTION_REFused タイムアウト」を検索すると、BM25は実際に「ERR_CONNECTION_REFused」を用語として含むドキュメントを検索します。ただし、BM25では、同じ問題が記述されているにもかかわらず、「ネットワーク接続のトラブルシューティング」に関するページは見逃される可能性があります。そこではベクトル検索の出番であり、両方が必要なのです。</p>
-	<p>ハイブリッド検索を有効にすると、ベクトルとBM25を並行して実行し、結果を融合させ、必要に応じて再ランク付けします：</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27CV8IBS2dYTV5puCtIPmD/3c66c190127fa38c4a4275425de8f9c4/BLOG-3240_3.png" alt="BLOG-3240 3" class="kg-image" width="1999" height="1382" loading="lazy">
-	</figure>
-	<p>BM25の新しい設定とその組み合わせを見てみましょう。</p>
-	<ol>
-		<li>
-			<p><b>トークナイザー</b>は、インデックス作成時に文書が一致する条件にどう分割されるかを制御します。Porter Stemmer（オプション：<code>porter</code>）は、「running」を「run」に一致させるように単語を語幹に変換します。Trigram (オプション：<code>trigram</code>) は、文字の部分文字列と一致するため、"conf" は "configuration" と一致します。ドキュメントのような自然言語コンテンツにはporterを使用し、部分一致が重要なコードにはtrigramを使用することができます。</p>
-		</li>
-		<li>
-			<p><b>キーワード一致モード</b>で、クエリ時にBM25のスコアリング対象となるドキュメントを管理します。<code>AND</code>は、すべてのクエリー条件を文書内に表示する必要があるか、少なくとも1つの一致するものを含めます。</p>
-		</li>
-		<li>
-			<p><b>Fusion </b>は、クエリ時間中に、ベクトルとキーワードの結果をどのように最終的な結果リストに結合するかを制御します。再帰的ランクフュージョン（オプション：<code>rrf</code>）は、スコアではなくランク位置でマージします。これは、互換性のない2つのスコアリングスケールを比較することを回避しますが、最大融合（オプション：<code>max</code>）は、より高いスコアを取ります。</p>
-		</li>
-		<li>
-			<p><b>（オプション）再ランク付け</b>では、クエリとドキュメントをペアとして評価することで結果を再スコアリングするクロスエンコーダーパスが追加されます。これは、結果が適切な条件を備えているにもかかわらず、質問に答えていないケースを見つけるのに役立ちます。</p>
-		</li>
-	</ol>
-	<p>すべてのオプションは、省略された場合はきちんとしたデフォルトとなります。新しいインスタンスを作成するたびに、どのようなものを柔軟に構成することができます。</p>
-	<pre class="language-javascript"><code class="language-javascript">const instance = await env.AI_SEARCH.create({
-  id: "my-instance",
-  index_method: { keyword: true, vector: true },
-  indexing_options: {
-    keyword_tokenizer: "porter"
-  },
-  retrieval_options: {
-    keyword_match_mode: "or"
-  },
-  fusion_method: "rrf",
-  reranking: true,
-  reranking_model: "@cf/baai/bge-reranker-base"
-});
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="boost-relevance-surface-what-matters">関連性の向上：重要なことを表面化</h3>
-		<a href="https://blog.cloudflare.com/#boost-relevance-surface-what-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>検索により関連性のある結果が得られますが、関連性だけでは必ずしも十分とは言えません。たとえば、ニュース検索では、先週の記事と3年前の記事の両方が、「選挙結果」に意味的に関連するかもしれませんが、ほとんどのユーザーはおそらく最近の記事を求めているでしょう。Boostingを使用すると、ドキュメントのメタデータに基づいてランキングを急上昇させることで、検索の上にビジネスロジックを重ねることができます。</p>
-	<p>タイムスタンプ（すべての項目に組み込まれている）または定義した<a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>カスタムメタデータフィールド</u></a>に基づいてブーストできます。</p>
-	<pre class="language-javascript"><code class="language-javascript">// boost high priority docs
-const results = await instance.search({
-  query: "deployment guide",
-  ai_search_options: {
-    boost_by: [
-      { field: "timestamp", direction: "desc" }
-    ]
-  }
-});
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="cross-instance-search-query-across-boundaries">クロスインスタンス検索：境界を越えたクエリー</h3>
-		<a href="https://blog.cloudflare.com/#cross-instance-search-query-across-boundaries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>サポートエージェントの例では、製品ドキュメントとお客様の解決履歴は設計上、別々のインスタンスに存在します。しかし、エージェントが質問に応答する場合、一度に両方の場所からのコンテキストが必要です。インスタンス間検索がなければ、2つの別々の呼び出しを行い、結果を自分で統合することになります。</p>
-	<p>ネームスペースのバインディングは、これを処理する<code>search()</code>メソッドを公開します。インスタンス名の配列を渡して、ランク付けされたリストを 1 つ取得する：</p>
-	<pre class="language-javascript"><code class="language-javascript">const results = await env.SUPPORT_KB.search({
-  query: "billing error",
-  ai_search_options: {
-    instance_ids: ["product-knowledge", "customer-abc123"]
-  }
-});
-</code></pre>
-	<p>結果はインスタンス間で統合され、ランク付けされます。エージェントは、共有ドキュメントと顧客解決の履歴が別々の場所に存在することを知る必要はなく、気にする必要はありません。</p>
-	<div class="flex anchor relative">
-		<h2 id="how-ai-search-instances-work">AI Searchインスタンスの仕組み</h2>
-		<a href="https://blog.cloudflare.com/#how-ai-search-instances-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>ここまで、AI Searchが適切な結果を見つける方法について説明してきました。次は、検索インスタンスの作成と管理方法です。</p>
-	<p>このリリース以前にAI Searchを使用していれば、R2バケットを作成し、AI Searchインスタンスにリンクし、AI SearchはサービスAPIトークンを生成し、アカウントにプロビジョニングされるVectorizeインデックスを管理します。オブジェクトをアップロードするには、R2に書き込み、同期ジョブが実行されるのを待ってオブジェクトにインデックスを付ける必要があります。</p>
-	<p>作成された新しいインスタンスは、他とは異なる動作をします。<code>create()</code>を呼び出すと、インスタンスには独自のストレージとベクトルインデックスが組み込まれます。ファイルをアップロードすると、ファイルはすぐにインデックスに送信され、インデックス作成ステータスを1つの<code>uploadAndpoll()</code> APIで調査できます。完了したら、すぐにインスタンスを検索でき、外部依存関係も連携させる必要はありません。</p>
-	<pre class="language-javascript"><code class="language-javascript">const instance = env.AI_SEARCH.get("my-instance");
-
-// upload and wait for indexing to complete
-const item = await instance.items.uploadAndPoll("faq.md", content, {
-  metadata: { category: "onboarding" }
-});
-console.log(item.status); // "completed"
-
-// immediately search after indexing is completed
-const results = await instance.search({
-  // alternative way to pass in users' query other than using parameter query 
-  messages: [{ role: "user", content: "onboarding guide" }],
-});
-</code></pre>
-	<p>各インスタンスは、1つの外部データソース（R2バケットまたはWebサイト）に接続し、同期スケジュールで実行することもできます。提供されたビルトインストレージと並行して存在することができます。サポートエージェントの例では、<code>product-knowledge</code>は共有ドキュメント用にR2バケットによって支えられ、各お客様のインスタンスは内蔵型ストレージを使用してその場でアップロードされるコンテキストを使用します。</p>
-	<div class="flex anchor relative">
-		<h3 id="namespaces-create-search-instances-at-runtime">ネームスペース：実行時に検索インスタンスを作成</h3>
-		<a href="https://blog.cloudflare.com/#namespaces-create-search-instances-at-runtime" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><code>ai_search_namespaces</code>は、実行時に検索インスタンスを動的に作成するために活用できる新しいバインディングです。これは、以前の<code>env.AI.autorag()</code>を置き換えるものです。AIバインディングを通じて<code>AI</code> SearchにアクセスしたAPI。古いバインディングは、<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers の互換性日付</u></a>を使用して引き続き機能します。</p>
-	<pre class="language-javascript"><code class="language-javascript">// wrangler.jsonc 
-{
-  "ai_search_namespaces": [
-    { "binding": "AI_SEARCH", "namespace": "example" },
-  ]
-}
-</code></pre>
-	<p>ネームスペースバインディングは、ネームスペースレベルで<code>create()</code>、<code>delete()</code>、<code>list()</code>、<code>search()</code>などのAPIを提供します。インスタンスを動的に作成する場合（例：エージェントごと、カスタマー、テナントごと）、これは使用するバインディングです。</p>
-	<pre class="language-javascript"><code class="language-javascript">// create an instance 
-const instance = await env.AI_SEARCH.create({
-  id: "my-instance"
-});
-
-// delete an instance and all its indexed data
-await env.AI_SEARCH.delete("old-instance");
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="pricing-for-new-instances">新規インスタンスの価格設定</h3>
-		<a href="https://blog.cloudflare.com/#pricing-for-new-instances" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>本日作成された新規インスタンスは、内蔵ストレージとベクトルインデックスを自動的に取得します。</p>
-	<p>これらのインスタンスは、AI Searchのオープンベータ版中は、以下に記載された制限付きで無料でご利用いただけます。Webサイトをデータソースとして使用する場合、<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run（旧ブラウザレンダリング）</u></a>を使用したWebサイトのクローリングも、ビルトインのサービスとなり、個別に請求されることはありません。ベータ版提供後は、AI Searchを単一のサービスとして統一し、基本となるコンポーネントごとに個別に請求するのではなく、単一のサービスとして統一した価格設定を目指しています。Workers AIと<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>の使用量は引き続き個別に請求されます。</p>
-	<p>請求が開始される前に、少なくとも30日前に通知と価格の詳細をお伝えします。</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>制限</b></p>
+<p><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p>すべての<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>エージェント</u></a>は検索が必要です。コーディングエージェントはリポジトリの数百万ファイルを検索し、サポートエージェントは顧客チケットや社内ドキュメントを検索します。ユースケースは異なりますが、根本的な問題は同じです。適切なタイミングでモデルに適切な情報を得ることです。</p>
+<p>自分で検索を構築する場合は、ベクトルインデックス、ドキュメントを解析してチャンク化するインデックス作成パイプライン、そしてデータが変更されたときにインデックスを最新に保つためのものが必要になります。キーワード検索も必要な場合は、それは別のインデックスと融合ロジックです。また、各エージェントに独自の検索可能なコンテキストが必要な場合は、エージェントごとにすべて設定することができます。</p>
+<p><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>AI Search</u></a>（旧<a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>）は、必要なプラグアンドプレイの検索プリミティブです。Worker、Agents SDK、またはWrangler CLIを使用して、インスタンスを動的に作成し、データを提供し、検索することができます。内容は以下の通りです。</p>
+<ul>
+	<li><strong>ハイブリッド検索</strong>。同じクエリで、セマンティックとキーワードの一致を有効にします。ベクトル検索とBM25は並行して実行され、結果は融合されます。（現在、当社ブログの検索はAI Searchによって行われています。<em>右上の虫眼鏡アイコンをお試しください。</em>)</li>
+	<li><strong>内蔵されたストレージとインデックス。</strong>新しいインスタンスには、独自のストレージとベクトルインデックスが付属しています。APIを介してインスタンスに直接ファイルをアップロードすると、インデックスが作成されます。R2バケットのセットアップも、最初に接続する必要のある外部データソースもありません。新しい<code>ai_search_namespaces</code>バインディングでは、Workerから実行時にインスタンスを作成/削除できるため、再デプロイなしに、エージェントごと、顧客ごと、または言語ごとに1つをスピンアップできます。</li>
+</ul>
+<p>ドキュメントにメタデータを添付してクエリ時にランキングを上げるために使用したり、1回の呼び出しで複数のインスタンスにクエリを実行したりすることもできるようになりました。<strong> </strong></p>
+<p>では、これが実際に何を意味するのかを見ていきましょう。</p>
+<h2>稼働中：カスタマーサポートエージェント</h2>
+<p>共有製品ドキュメントと過去の解決方法のような顧客ごとの履歴という2種類のナレッジを検索するサポートエージェントについて説明します。製品ドキュメントはコンテキストウィンドウに収まらない容量です。また、解決された問題ごとに顧客の履歴も更新されるため、エージェントは情報を検索して関連性のある情報を見つける必要があります。</p>
+<p>AI Searchと<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>を使用した場合の例を次に示します。まずはプロジェクトのスキャフォールディングから始めましょう：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> cloudflare@latest</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-032f62-99ffe4"> cloudflare/agents-starter</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>まず、AI SearchネームスペースをWorkerにバインドします。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ai_search_namespaces"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"SUPPORT_KB"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"namespace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"support"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ai"</span><span class="sk-24292e-fff">: { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "durable_objects"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "bindings"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"SupportAgent"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"class_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"SupportAgent"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>共有製品ドキュメントが<code>product-doc</code>というR2バケットにあるとします。Cloudflareダッシュボードの<code>support</code>名前空間内で、バケットにバックアップされた一度限りのAI Searchインスタンス（ <code>product-knowledge</code>という名前）を作成できます。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44P0GQZERQB2DA1DACF4MC.png&amp;w=1014&amp;h=730&amp;f=webp" data-lightbox-width="1014" data-lightbox-height="730" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>それが共有ナレッジベースであり、すべてのエージェントが参照できるドキュメントです。</p>
+<p>お客様が新しい問題について再度報告してくれた場合、すでに試されたものを知ることができることで、誰もが時間を節約することができます。これは、顧客ごとにAI Searchインスタンスを作成することで追跡できます。各問題が解決されると、エージェントは何が問題だったのか、どのように修正したのかの概要を保存します。時間の経過とともに、これにより過去の解決状況を示す検索可能なログが蓄積されます。ネームスペースバインディングを使用して、動的にインスタンスを作成できます。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create a per-customer instance when they first show up </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">`customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  index_method:{ keyword: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, vector: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>各インスタンスは、<a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>と<a href="https://www.cloudflare.com/developer-platform/products/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>を活用した独自の内蔵ストレージとベクトルインデックスを取得します。インスタンスは空から始まり、時間の経過とともにコンテキストを蓄積します。次回のお客様の訪問時には、そのすべてが検索可能です。</p>
+<p>一部のお客様のネームスペースは次のようになります：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>namespace: "support"</span></span>
+<span class="line"><span>├── product-knowledge     (R2 as source, shared across all agents)</span></span>
+<span class="line"><span>├── customer-abc123       (managed storage, per-customer)</span></span>
+<span class="line"><span>├── customer-def456       (managed storage, per-customer)</span></span>
+<span class="line"><span>└── customer-ghi789       (managed storage, per-customer)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span></code></pre>
+</div>
+<p>エージェント自体がそうです。Agents SDKの<code>AIChatAgent</code>を拡張し、2つのツールを定義しています。<a href="https://www.cloudflare.com/developer-platform/products/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>を介し、LLMとしてKin <a href="https://blog.cloudflare.com/workers-ai-large-models" target="_blank" rel="noopener noreferrer"><u>K2.5を使用しています。</u></a>モデルがツールを呼び出すタイミングを決定：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AIChatAgent, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> OnChatMessageOptions } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai-chat"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkersAI } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "workers-ai-provider"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { streamText, convertToModelMessages, tool, stepCountIs } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "ai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { routeAgentRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { z } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "zod"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> SupportAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onChatMessage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">_onFinish</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> unknown</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">options</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-6f42c1-ffc799"> OnChatMessageOptions</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // the client passes customerId in the request body</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // via the Agent SDK's sendMessage({ body: { customerId } })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> customerId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> options?.body?.customerId;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // create a per-customer instance when they first show up.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // each instance gets its own storage and vector index.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (customerId) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          id: </span><span class="sk-032f62-99ffe4">`customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          index_method: { keyword: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, vector: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">      } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // instance already exists</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> workersai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createWorkersAI</span><span class="sk-24292e-fff">({ binding: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> streamText</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      model: </span><span class="sk-6f42c1-ffc799">workersai</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/moonshotai/kimi-k2.5"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">      system: </span><span class="sk-032f62-99ffe4">`You are a support agent. Use search_knowledge_base</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        to find relevant docs before answering. Search results</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        include both product docs and this customer's past</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        resolutions — use them to avoid repeating failed fixes</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        and to recognize recurring issues. When the issue is</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        resolved, call save_resolution before responding.`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // this.messages is the full conversation history, automatically</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // persisted by AIChatAgent across reconnects</span></span>
+<span class="line"><span class="sk-24292e-fff">      messages: </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> convertToModelMessages</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.messages),</span></span>
+<span class="line"><span class="sk-24292e-fff">      tools: {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // tool 1: search across shared product docs AND this</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // customer's past resolutions in a single call</span></span>
+<span class="line"><span class="sk-24292e-fff">        search_knowledge_base: </span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          description: </span><span class="sk-032f62-99ffe4">"Search product docs and customer history"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          inputSchema: z.</span><span class="sk-6f42c1-ffc799">object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            query: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"The search query"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">          }),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">query</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // always search product docs;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // include customer history if available</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-005cc5-fff"> instances</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"product-knowledge"</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (customerId) {</span></span>
+<span class="line"><span class="sk-24292e-fff">              instances.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">              query: query,</span></span>
+<span class="line"><span class="sk-24292e-fff">              ai_search_options: {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">                // surface recent docs over older ones</span></span>
+<span class="line"><span class="sk-24292e-fff">                boost_by: [</span></span>
+<span class="line"><span class="sk-24292e-fff">                  { field: </span><span class="sk-032f62-99ffe4">"timestamp"</span><span class="sk-24292e-fff">, direction: </span><span class="sk-032f62-99ffe4">"desc"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">                ],</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">                // search across both instances at once</span></span>
+<span class="line"><span class="sk-24292e-fff">                instance_ids: instances</span></span>
+<span class="line"><span class="sk-24292e-fff">              }</span></span>
+<span class="line"><span class="sk-24292e-fff">            });</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }),</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // tool 2: after resolving an issue, the agent saves a</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // summary so future agents have full context</span></span>
+<span class="line"><span class="sk-24292e-fff">        save_resolution: </span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          description:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "Save a resolution summary after solving a customer's issue"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          inputSchema: z.</span><span class="sk-6f42c1-ffc799">object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            filename: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              "Short descriptive filename, e.g. 'billing-fix.md'"</span></span>
+<span class="line"><span class="sk-24292e-fff">            ),</span></span>
+<span class="line"><span class="sk-24292e-fff">            content: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              "What the problem was, what caused it, and how it was resolved"</span></span>
+<span class="line"><span class="sk-24292e-fff">            ),</span></span>
+<span class="line"><span class="sk-24292e-fff">          }),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">filename</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">content</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">customerId) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> { error: </span><span class="sk-032f62-99ffe4">"No customer ID"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              `customer-${</span><span class="sk-24292e-fff">customerId</span><span class="sk-032f62-99ffe4">}`</span></span>
+<span class="line"><span class="sk-24292e-fff">            );</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // uploadAndPoll waits until indexing is complete,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            // so the resolution is searchable before the next query</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-005cc5-fff"> item</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.items.</span><span class="sk-6f42c1-ffc799">uploadAndPoll</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">              filename, content</span></span>
+<span class="line"><span class="sk-24292e-fff">            );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> { saved: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, filename, status: item.status };</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }),</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // cap agentic tool-use loops at 10 steps</span></span>
+<span class="line"><span class="sk-24292e-fff">      stopWhen: </span><span class="sk-6f42c1-ffc799">stepCountIs</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">10</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">      abortSignal: options?.abortSignal,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> result.</span><span class="sk-6f42c1-ffc799">toUIMessageStreamResponse</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// route requests to the SupportAgent durable object</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-24292e-fff">      (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> routeAgentRequest</span><span class="sk-24292e-fff">(request, env)) </span><span class="sk-d73a49-a0a0a0">||</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>これによって、モデルは検索するタイミングと保存するタイミングを決定します。検索の際、<code>product-knowledge</code>とこの顧客の過去の解決策を一緒に問い合わせます。問題が解決されると、今後の会話ですぐに検索できる概要を保存します。</p>
+<h2>AI Searchが探している情報を見つける方法</h2>
+<p>内部では、AI Searchは複数ステップの検索パイプラインを実行しており、その中ではすべてのステップが設定可能です。</p>
+<h3>ハイブリッド検索：意図を理解し、条件に一致する検索</h3>
+<p>これまでは、AI Searchはベクトル検索のみを提供していました。ベクトル検索は意図の理解に長けますが、具体性を失うことがあります。「ERR_CONNECTION_REFused timeout」クエリでは、エンベッディングは接続失敗の広範な概念を捉えています。しかし、ユーザーは一般的なネットワークドキュメントを探しているわけではありません。「ERR_CONNECTION_REFused」に記載された特定の文書を探しています。ベクトル検索は、その正確なエラー文字列を含むページを表示することなく、トラブルシューティングに関する結果を返す可能性があります。</p>
+<p>キーワード検索がそのギャップを埋めるのです。AI Searchは、最も広く使用されている検索スコアリング機能の1つであるBM25をサポートするようになりました。BM25は、クエリー条件が表示される頻度、コーパス全体におけるその用語の出現頻度、文書に存在する期間によって文書を評価します。特定の条件で一致した場合に報酬を与え、一般的な単語を罰し、文書の長さを正規化します。「ERR_CONNECTION_REFused タイムアウト」を検索すると、BM25は実際に「ERR_CONNECTION_REFused」を用語として含むドキュメントを検索します。ただし、BM25では、同じ問題が記述されているにもかかわらず、「ネットワーク接続のトラブルシューティング」に関するページは見逃される可能性があります。そこではベクトル検索の出番であり、両方が必要なのです。</p>
+<p>ハイブリッド検索を有効にすると、ベクトルとBM25を並行して実行し、結果を融合させ、必要に応じて再ランク付けします：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45225STKQCB8SYWRE615AK.png&amp;w=1920&amp;h=1327&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1327" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
+</figure>
+<p>BM25の新しい設定とその組み合わせを見てみましょう。</p>
+<ol>
+	<li><strong>トークナイザー</strong>は、インデックス作成時に文書が一致する条件にどう分割されるかを制御します。Porter Stemmer（オプション：<code>porter</code>）は、「running」を「run」に一致させるように単語を語幹に変換します。Trigram (オプション：<code>trigram</code>) は、文字の部分文字列と一致するため、"conf" は "configuration" と一致します。ドキュメントのような自然言語コンテンツにはporterを使用し、部分一致が重要なコードにはtrigramを使用することができます。</li>
+	<li><strong>キーワード一致モード</strong>で、クエリ時にBM25のスコアリング対象となるドキュメントを管理します。<code>AND</code>は、すべてのクエリー条件を文書内に表示する必要があるか、少なくとも1つの一致するものを含めます。</li>
+	<li><strong>Fusion </strong>は、クエリ時間中に、ベクトルとキーワードの結果をどのように最終的な結果リストに結合するかを制御します。再帰的ランクフュージョン（オプション：<code>rrf</code>）は、スコアではなくランク位置でマージします。これは、互換性のない2つのスコアリングスケールを比較することを回避しますが、最大融合（オプション：<code>max</code>）は、より高いスコアを取ります。</li>
+	<li><strong>（オプション）再ランク付け</strong>では、クエリとドキュメントをペアとして評価することで結果を再スコアリングするクロスエンコーダーパスが追加されます。これは、結果が適切な条件を備えているにもかかわらず、質問に答えていないケースを見つけるのに役立ちます。</li>
+</ol>
+<p>すべてのオプションは、省略された場合はきちんとしたデフォルトとなります。新しいインスタンスを作成するたびに、どのようなものを柔軟に構成することができます。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  index_method: { keyword: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">, vector: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  indexing_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    keyword_tokenizer: </span><span class="sk-032f62-99ffe4">"porter"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  retrieval_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    keyword_match_mode: </span><span class="sk-032f62-99ffe4">"or"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  fusion_method: </span><span class="sk-032f62-99ffe4">"rrf"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  reranking: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  reranking_model: </span><span class="sk-032f62-99ffe4">"@cf/baai/bge-reranker-base"</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>関連性の向上：重要なことを表面化</h3>
+<p>検索により関連性のある結果が得られますが、関連性だけでは必ずしも十分とは言えません。たとえば、ニュース検索では、先週の記事と3年前の記事の両方が、「選挙結果」に意味的に関連するかもしれませんが、ほとんどのユーザーはおそらく最近の記事を求めているでしょう。Boostingを使用すると、ドキュメントのメタデータに基づいてランキングを急上昇させることで、検索の上にビジネスロジックを重ねることができます。</p>
+<p>タイムスタンプ（すべての項目に組み込まれている）または定義した<a href="https://developers.cloudflare.com/ai-search/configuration/indexing/metadata" target="_blank" rel="noopener noreferrer"><u>カスタムメタデータフィールド</u></a>に基づいてブーストできます。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// boost high priority docs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  query: </span><span class="sk-032f62-99ffe4">"deployment guide"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ai_search_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    boost_by: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      { field: </span><span class="sk-032f62-99ffe4">"timestamp"</span><span class="sk-24292e-fff">, direction: </span><span class="sk-032f62-99ffe4">"desc"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>クロスインスタンス検索：境界を越えたクエリー</h3>
+<p>サポートエージェントの例では、製品ドキュメントとお客様の解決履歴は設計上、別々のインスタンスに存在します。しかし、エージェントが質問に応答する場合、一度に両方の場所からのコンテキストが必要です。インスタンス間検索がなければ、2つの別々の呼び出しを行い、結果を自分で統合することになります。</p>
+<p>ネームスペースのバインディングは、これを処理する<code>search()</code>メソッドを公開します。インスタンス名の配列を渡して、ランク付けされたリストを 1 つ取得する：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">SUPPORT_KB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  query: </span><span class="sk-032f62-99ffe4">"billing error"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ai_search_options: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    instance_ids: [</span><span class="sk-032f62-99ffe4">"product-knowledge"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"customer-abc123"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>結果はインスタンス間で統合され、ランク付けされます。エージェントは、共有ドキュメントと顧客解決の履歴が別々の場所に存在することを知る必要はなく、気にする必要はありません。</p>
+<h2>AI Searchインスタンスの仕組み</h2>
+<p>ここまで、AI Searchが適切な結果を見つける方法について説明してきました。次は、検索インスタンスの作成と管理方法です。</p>
+<p>このリリース以前にAI Searchを使用していれば、R2バケットを作成し、AI Searchインスタンスにリンクし、AI SearchはサービスAPIトークンを生成し、アカウントにプロビジョニングされるVectorizeインデックスを管理します。オブジェクトをアップロードするには、R2に書き込み、同期ジョブが実行されるのを待ってオブジェクトにインデックスを付ける必要があります。</p>
+<p>作成された新しいインスタンスは、他とは異なる動作をします。<code>create()</code>を呼び出すと、インスタンスには独自のストレージとベクトルインデックスが組み込まれます。ファイルをアップロードすると、ファイルはすぐにインデックスに送信され、インデックス作成ステータスを1つの<code>uploadAndpoll()</code> APIで調査できます。完了したら、すぐにインスタンスを検索でき、外部依存関係も連携させる必要はありません。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-instance"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// upload and wait for indexing to complete</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> item</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.items.</span><span class="sk-6f42c1-ffc799">uploadAndPoll</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"faq.md"</span><span class="sk-24292e-fff">, content, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  metadata: { category: </span><span class="sk-032f62-99ffe4">"onboarding"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(item.status); </span><span class="sk-6a737d-8b8b8b94">// "completed"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// immediately search after indexing is completed</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // alternative way to pass in users' query other than using parameter query </span></span>
+<span class="line"><span class="sk-24292e-fff">  messages: [{ role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">"onboarding guide"</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>各インスタンスは、1つの外部データソース（R2バケットまたはWebサイト）に接続し、同期スケジュールで実行することもできます。提供されたビルトインストレージと並行して存在することができます。サポートエージェントの例では、<code>product-knowledge</code>は共有ドキュメント用にR2バケットによって支えられ、各お客様のインスタンスは内蔵型ストレージを使用してその場でアップロードされるコンテキストを使用します。</p>
+<h3>ネームスペース：実行時に検索インスタンスを作成</h3>
+<p><code>ai_search_namespaces</code>は、実行時に検索インスタンスを動的に作成するために活用できる新しいバインディングです。これは、以前の<code>env.AI.autorag()</code>を置き換えるものです。AIバインディングを通じて<code>AI</code> SearchにアクセスしたAPI。古いバインディングは、<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"><u>Workers の互換性日付</u></a>を使用して引き続き機能します。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc </span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "ai_search_namespaces"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    { </span><span class="sk-032f62-99ffe4">"binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI_SEARCH"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"namespace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"example"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>ネームスペースバインディングは、ネームスペースレベルで<code>create()</code>、<code>delete()</code>、<code>list()</code>、<code>search()</code>などのAPIを提供します。インスタンスを動的に作成する場合（例：エージェントごと、カスタマー、テナントごと）、これは使用するバインディングです。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// create an instance </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  id: </span><span class="sk-032f62-99ffe4">"my-instance"</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// delete an instance and all its indexed data</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI_SEARCH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">delete</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"old-instance"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>新規インスタンスの価格設定</h3>
+<p>本日作成された新規インスタンスは、内蔵ストレージとベクトルインデックスを自動的に取得します。</p>
+<p>これらのインスタンスは、AI Searchのオープンベータ版中は、以下に記載された制限付きで無料でご利用いただけます。Webサイトをデータソースとして使用する場合、<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Run（旧ブラウザレンダリング）</u></a>を使用したWebサイトのクローリングも、ビルトインのサービスとなり、個別に請求されることはありません。ベータ版提供後は、AI Searchを単一のサービスとして統一し、基本となるコンポーネントごとに個別に請求するのではなく、単一のサービスとして統一した価格設定を目指しています。Workers AIと<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a>の使用量は引き続き個別に請求されます。</p>
+<p>請求が開始される前に、少なくとも30日前に通知と価格の詳細をお伝えします。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>制限</p>
 				</th>
-				<th>
-					<p><b>Workers 無料</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers 無料</p>
 				</th>
-				<th>
-					<p><b>Workers 有料</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers 有料</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>アカウントあたりのAI Searchインスタンス数</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>100</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5,000</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>インスタンスあたりのファイル数</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>100,000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>ハイブリッド検索は100万または50万</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>最大ファイルサイズ</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4MB</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4MB</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>月間のクエリー数</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20,000</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>無制限</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1日あたり最大クロールページ数</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>500</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>無制限</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><i>既存のインスタンスはどうですか？</i>&nbsp;</p>
-	<p>このリリース以前にインスタンスを作成した場合は、現在と同じように機能し続けます。R2バケット、Vectorizeインデックス、Browser Runの使用量はアカウントに引き続き使用され、課金も以前のままとなります。既存インスタンスの移行詳細は、近日中にお知らせいたします。</p>
-	<div class="flex anchor relative">
-		<h2 id="get-started-today">今すぐ始めましょう</h2>
-		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>検索は、エージェントができる最も基本的なことの1つです。AI Searchを使用すれば、インフラを構築する必要はありません。インスタンスを作成し、データを渡して、エージェントに検索させましょう。</p>
-	<p>今日から、このコマンドを実行して最初のインスタンスを作成しましょう。</p>
-	<pre class="language-Shell"><code class="language-Shell">npx wrangler ai-search create my-search
-</code></pre>
-	<p><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧になり、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>で何を構築しているか、ぜひお聞かせください。</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Y5WLWBuK7NBMLmY6ZWL96/ce7ca954f4f51ac21f8e9d3f15d0343c/BLOG-3240_4.png" alt="BLOG-3240 4" class="kg-image" width="1999" height="491" loading="lazy">
-	</figure>
-	<p></p>
 </div>
+<p><em>既存のインスタンスはどうですか？</em>&nbsp;</p>
+<p>このリリース以前にインスタンスを作成した場合は、現在と同じように機能し続けます。R2バケット、Vectorizeインデックス、Browser Runの使用量はアカウントに引き続き使用され、課金も以前のままとなります。既存インスタンスの移行詳細は、近日中にお知らせいたします。</p>
+<h2>今すぐ始めましょう</h2>
+<p>検索は、エージェントができる最も基本的なことの1つです。AI Searchを使用すれば、インフラを構築する必要はありません。インスタンスを作成し、データを渡して、エージェントに検索させましょう。</p>
+<p>今日から、このコマンドを実行して最初のインスタンスを作成しましょう。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> ai-search</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> my-search</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p><a href="https://developers.cloudflare.com/ai-search" target="_blank" rel="noopener noreferrer"><u>ドキュメント</u></a>をご覧になり、<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Discord</u></a>で何を構築しているか、ぜひお聞かせください。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3240 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HBJP0HHPEK8S5QDHTRQD.png&amp;w=1920&amp;h=472&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
+</figure>

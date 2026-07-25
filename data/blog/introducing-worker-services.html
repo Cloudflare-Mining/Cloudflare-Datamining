@@ -1,133 +1,80 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-worker-services">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/introducing-worker-services">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26bWRFg6lJegSjtm9POfYP/9f353d1618219c53c0d75a25138ce3ef/introducing-worker-services.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>First, there was the Worker script. It was simple, yet elegant. With just a few lines of code, you could rewrite an HTTP request, append a header, or make a quick fix to your website.</p>
-	<p>Though, what if you wanted to build an entire application on Workers? You’d need a lot more tools in your developer toolbox. That’s why we’ve introduced extensions to Workers platform like <a href="https://blog.cloudflare.com/workers-kv-is-ga">KV</a>, our distributed key-value store; <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>, — a strongly consistent, object-oriented database; and soon <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>, the <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">no-egress object storage</a>. While these tools allow you to build a more robust application, there’s still a gap when it comes to building a system architecture, composed of <i>many</i> applications or services.</p>
-	<p>Imagine you’ve built an authentication service that authorizes requests to your API. You’d want to re-use that logic among all your other services. Moreover, when you make changes to that authentication service, you’d want to test it in a controlled environment that doesn’t affect those other services in production. Well, you don’t need to imagine anymore.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-services">Introducing Services</h3>
-		<a href="https://blog.cloudflare.com/#introducing-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Services are the new building block for deploying applications on Cloudflare Workers. Unlike the script, a service is composable, which allows services to talk to each other. Services also support multiple environments, which allow you to test changes in a preview environment, then promote to production when you’re confident it worked.</p>
-	<p>To enable a seamless transition to services, we’ve automatically migrated every script to become a service with one “production” environment — no action needed.</p>
-	<div class="flex anchor relative">
-		<h3 id="services-have-environments">Services have environments</h3>
-		<a href="https://blog.cloudflare.com/#services-have-environments" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Each service comes with a production environment and the ability to create or clone dozens of preview environments. Every aspect of an environment is overridable: the code, environment variables, and even resources like a KV namespace. You can create and switch between environments with just a few clicks in the dashboard.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 77.57660167130919%;"><iframe src="https://iframe.videodelivery.net/1d87ef3b6dcdebcf1bd3874c8bbbf21e?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>Each environment is resolvable at a unique hostname, which is automatically generated when you create or rename the environment. There’s no waiting around after you deploy. Everything you need, like DNS records, <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">SSL certificates</a>, and more, is ready-to-go seconds later. If you’d like a more advanced setup, you can also add custom routes from your domain to an environment.</p>
-	<p>Once you’ve tested your changes in a preview environment, you’re ready to promote to production. We’ve made it really easy to promote code from one environment to another, without the need to rebuild or upload your code again. Environments also manage code separately from settings, so you don’t need to manually edit environment variables when you promote from staging to production.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 85.37604456824512%;"><iframe src="https://iframe.videodelivery.net/9ecdc37807c67e16562e396c02f52490?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="services-are-versioned">Services are versioned</h3>
-		<a href="https://blog.cloudflare.com/#services-are-versioned" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Every change to a service is versioned and audited. Mistakes do happen, but when they do, it’s important to be able to quickly roll back, then have the tools to answer the age-old question: “who changed what, when?”</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AJHfT2PjwB7j3BIP0ouSU/b33181ce481ad9acd6f7c1a34302117b/unnamed--1--6.png" alt="Each environment has a version history." class="kg-image" width="1600" height="406" loading="lazy">
-
-	</figure>
-	<p>Each environment in a service has its own version history. Every time there is a code change or an environment variable is updated, the version number of that environment is incremented. You can also append additional metadata to each version, like a git commit or a deployment tag.</p>
-	<div class="flex anchor relative">
-		<h3 id="services-can-talk-to-each-other">Services can talk to each other</h3>
-		<a href="https://blog.cloudflare.com/#services-can-talk-to-each-other" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Services are composable, allowing one service to talk to another service. To support this, we’re introducing a new API to facilitate service-to-service communication: service bindings.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7eealXyrW68mNRRRR6reuQ/238fa89f310c0a70ca66c9bd0194b79d/image2-10.png" alt="Service bindings open up a world of composability" class="kg-image" width="1676" height="358" loading="lazy">
-
-	</figure>
-	<p>A service binding allows you to send HTTP requests to another service, without those requests going over the Internet. That means you can invoke other Workers directly from your code! Service bindings open up a new world of composability. In the example below, requests are validated by an authentication service.</p>
-	<pre class="language-javascript"><code class="language-javascript">export default {
-  async fetch(request, environment) {
-    const response = await environment.AUTH.fetch(request);
-    if (response.status !== 200) {
-      return response;
-    }
-    return new Response("Authenticated!");
-  }
-}</code></pre>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nJXwQ6IMSgEPtnhP95yRn/ec33050f570daaf8dcf18d491ceecee7/image1-25.png" alt="Service Bindings allow for separation of concerns" class="kg-image" width="1260" height="500" loading="lazy">
-
-	</figure>
-	<p>Service bindings use the standard <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">fetch</a> API, so you can continue to use your existing utilities and libraries. You can also change the environment of a service binding, so you can test a new version of a service. In the next example, 1% of requests are routed to a “canary” deployment of a service. If a request to the canary fails, it’s sent to the production deployment for another chance.</p>
-	<pre class="language-javascript"><code class="language-javascript">export default {
-  canRetry(request) {
-    return request.method === "GET" || request.method === "HEAD";
-  },
-  async fetch(request, environment) {
-    if (Math.random() &lt; 0.01) {
-      const response = await environment.CANARY.fetch(request.clone());
-      if (response.status &lt; 500 || !canRetry(request)) {
-        return response;
-      }
-    }
-    return environment.PRODUCTION.fetch(request);
-  }
-}</code></pre>
-	<p>While the interface among services is HTTP, the networking is not. In fact, there is no networking! Unlike the typical “microservice architecture,” where services communicate over a network and can suffer from latency or interruption, service bindings are a zero-cost abstraction. When you deploy a service, we build a dependency graph of its service bindings, then package all of those services into a single deployment. When one service invokes another, there is no network delay; the request is executed immediately.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68l5AHIonTqDD9fpXLJQKh/fdf129dd6695975cd3073e00ed73ca07/image3-18.png" alt="Classic service-oriented architecture; versus service bindings" class="kg-image" width="1532" height="578" loading="lazy">
-
-	</figure>
-	<p>This zero-cost model enables teams to share and reuse code within their organizations, without sacrificing latency or performance. Forget the days of convoluted YAML templates or exponential back off to orchestrate services — just write code, and we’ll stitch it all together.</p>
-	<div class="flex anchor relative">
-		<h3 id="try-out-the-future-today">Try out the future, today!</h3>
-		<a href="https://blog.cloudflare.com/#try-out-the-future-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re excited to announce that you can start using Services today! If you’ve already used Workers, you’ll notice that each of your scripts have been upgraded to a service with one “production” environment. The dashboard and all the existing Cloudflare APIs will continue to “just work” with services.</p>
-	<p>You can also create and deploy code to multiple “preview” environments, as part of the open-beta launch. We’re still working on service bindings and versioning, and we’ll provide an update as soon as you can start using them.</p>
-	<p>For more information about Services, check out any of the resources below:</p>
-	<ul>
-		<li>
-			<p>Go to the <a href="https://workers.new" target="_blank" rel="noopener noreferrer">dashboard</a> and create your first service!</p>
-		</li>
-		<li>
-			<p>Sign up for the <a href="https://www.cloudflare.com/service-bindings-closed-beta-sign-up" target="_blank" rel="noopener noreferrer">early-access</a> to service bindings.</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hteH8Qu4zVjXKVWv9Q5PT/79b3ce57bfd3e619b8085733d6cfb4a9/Lego.png" alt="" class="kg-image" width="1200" height="385" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
+<p>First, there was the Worker script. It was simple, yet elegant. With just a few lines of code, you could rewrite an HTTP request, append a header, or make a quick fix to your website.</p>
+<p>Though, what if you wanted to build an entire application on Workers? You’d need a lot more tools in your developer toolbox. That’s why we’ve introduced extensions to Workers platform like <a href="https://blog.cloudflare.com/workers-kv-is-ga">KV</a>, our distributed key-value store; <a href="https://blog.cloudflare.com/durable-objects-open-beta">Durable Objects</a>, — a strongly consistent, object-oriented database; and soon <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>, the <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer">no-egress object storage</a>. While these tools allow you to build a more robust application, there’s still a gap when it comes to building a system architecture, composed of <em>many</em> applications or services.</p>
+<p>Imagine you’ve built an authentication service that authorizes requests to your API. You’d want to re-use that logic among all your other services. Moreover, when you make changes to that authentication service, you’d want to test it in a controlled environment that doesn’t affect those other services in production. Well, you don’t need to imagine anymore.</p>
+<h3>Introducing Services</h3>
+<p>Services are the new building block for deploying applications on Cloudflare Workers. Unlike the script, a service is composable, which allows services to talk to each other. Services also support multiple environments, which allow you to test changes in a preview environment, then promote to production when you’re confident it worked.</p>
+<p>To enable a seamless transition to services, we’ve automatically migrated every script to become a service with one “production” environment — no action needed.</p>
+<h3>Services have environments</h3>
+<p>Each service comes with a production environment and the ability to create or clone dozens of preview environments. Every aspect of an environment is overridable: the code, environment variables, and even resources like a KV namespace. You can create and switch between environments with just a few clicks in the dashboard.</p>
+<div id="html-block-kv" class="html-block">
+	<div style="padding-top:77.57660167130919%"><iframe src="https://iframe.videodelivery.net/1d87ef3b6dcdebcf1bd3874c8bbbf21e?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<p>Each environment is resolvable at a unique hostname, which is automatically generated when you create or rename the environment. There’s no waiting around after you deploy. Everything you need, like DNS records, <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">SSL certificates</a>, and more, is ready-to-go seconds later. If you’d like a more advanced setup, you can also add custom routes from your domain to an environment.</p>
+<p>Once you’ve tested your changes in a preview environment, you’re ready to promote to production. We’ve made it really easy to promote code from one environment to another, without the need to rebuild or upload your code again. Environments also manage code separately from settings, so you don’t need to manually edit environment variables when you promote from staging to production.</p>
+<div id="html-block-k13" class="html-block">
+	<div style="padding-top:85.37604456824512%"><iframe src="https://iframe.videodelivery.net/9ecdc37807c67e16562e396c02f52490?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<h3>Services are versioned</h3>
+<p>Every change to a service is versioned and audited. Mistakes do happen, but when they do, it’s important to be able to quickly roll back, then have the tools to answer the age-old question: “who changed what, when?”</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="181" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=640&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=750&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=828&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=1080&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=1280&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=1430&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Each environment has a version history." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494KVWQ2JP4JJDE28GKYYM.png&amp;w=1600&amp;h=406&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="406" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="181" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Each environment in a service has its own version history. Every time there is a code change or an environment variable is updated, the version number of that environment is incremented. You can also append additional metadata to each version, like a git commit or a deployment tag.</p>
+<h3>Services can talk to each other</h3>
+<p>Services are composable, allowing one service to talk to another service. To support this, we’re introducing a new API to facilitate service-to-service communication: service bindings.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="153" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=715&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=640&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=715&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=750&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=828&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=1080&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=1280&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=1430&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Service bindings open up a world of composability" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VVGF5JP491RPBGH6N2TX.png&amp;w=1676&amp;h=358&amp;f=webp" data-lightbox-width="1676" data-lightbox-height="358" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="153" class="pt-portable-image-media"></div>
+</figure>
+<p>A service binding allows you to send HTTP requests to another service, without those requests going over the Internet. That means you can invoke other Workers directly from your code! Service bindings open up a new world of composability. In the example below, requests are validated by an authentication service.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> environment.</span><span class="sk-005cc5-fff">AUTH</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (response.status </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Authenticated!"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="284" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=640&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=750&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=828&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=1080&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=1280&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=1430&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Service Bindings allow for separation of concerns" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z2GP2B2VKS06N599YT9M.png&amp;w=1260&amp;h=500&amp;f=webp" data-lightbox-width="1260" data-lightbox-height="500" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="284" class="pt-portable-image-media"></div>
+</figure>
+<p>Service bindings use the standard <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">fetch</a> API, so you can continue to use your existing utilities and libraries. You can also change the environment of a service binding, so you can test a new version of a service. In the next example, 1% of requests are routed to a “canary” deployment of a service. If a request to the canary fails, it’s sent to the production deployment for another chance.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  canRetry</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> request.method </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "GET"</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> request.method </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "HEAD"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (Math.</span><span class="sk-6f42c1-ffc799">random</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 0.01</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> environment.</span><span class="sk-005cc5-fff">CANARY</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request.</span><span class="sk-6f42c1-ffc799">clone</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (response.status </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 500</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-6f42c1-ffc799">canRetry</span><span class="sk-24292e-fff">(request)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> environment.</span><span class="sk-005cc5-fff">PRODUCTION</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>While the interface among services is HTTP, the networking is not. In fact, there is no networking! Unlike the typical “microservice architecture,” where services communicate over a network and can suffer from latency or interruption, service bindings are a zero-cost abstraction. When you deploy a service, we build a dependency graph of its service bindings, then package all of those services into a single deployment. When one service invokes another, there is no network delay; the request is executed immediately.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="270" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=715&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=640&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=715&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=750&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=828&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=1080&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=1280&amp;h=483&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=1430&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Classic service-oriented architecture; versus service bindings" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YFB2G25JW0CANX51JA1P.png&amp;w=1532&amp;h=578&amp;f=webp" data-lightbox-width="1532" data-lightbox-height="578" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="270" class="pt-portable-image-media"></div>
+</figure>
+<p>This zero-cost model enables teams to share and reuse code within their organizations, without sacrificing latency or performance. Forget the days of convoluted YAML templates or exponential back off to orchestrate services — just write code, and we’ll stitch it all together.</p>
+<h3>Try out the future, today!</h3>
+<p>We’re excited to announce that you can start using Services today! If you’ve already used Workers, you’ll notice that each of your scripts have been upgraded to a service with one “production” environment. The dashboard and all the existing Cloudflare APIs will continue to “just work” with services.</p>
+<p>You can also create and deploy code to multiple “preview” environments, as part of the open-beta launch. We’re still working on service bindings and versioning, and we’ll provide an update as soon as you can start using them.</p>
+<p>For more information about Services, check out any of the resources below:</p>
+<ul>
+	<li>Go to the <a href="https://workers.new" target="_blank" rel="noopener noreferrer">dashboard</a> and create your first service!</li>
+	<li>Sign up for the <a href="https://www.cloudflare.com/service-bindings-closed-beta-sign-up" target="_blank" rel="noopener noreferrer">early-access</a> to service bindings.</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="229" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=640&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=750&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=828&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=1080&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=1280&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=1430&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-783 Embedded Image - 4nyYPh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FZDH9SABBBAA6VZFTQMA.png&amp;w=1200&amp;h=385&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="385" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="229" class="pt-portable-image-media"></div>
+</figure>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k2g" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

@@ -1,325 +1,255 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32i82HuBXFSeBMcBsKu6en/f34b1e2fb6b4c4bd498d93674323ec55/webgpu-in-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>The browser as an app platform is real and stronger every day; long gone are the Browser Wars. Vendors and standard bodies have done amazingly well over the last years, working together and advancing web standards with new <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> that allow developers to build fast and powerful applications, finally comparable to those we got used to seeing in the native OS' environment.</p>
-	<p>Today, browsers can render web pages and run code that interfaces with an <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank" rel="noopener noreferrer">extensive catalog of modern Web APIs</a>. Things like networking, rendering accelerated graphics, or even accessing low-level hardware features like USB devices are all now possible within the browser sandbox.</p>
-	<p>One of the most exciting new browser APIs that browser vendors have been rolling out over the last months is WebGPU, a modern, low-level GPU programming interface designed for high-performance 2D and 3D graphics and general purpose GPU compute.</p>
-	<p>Today, we are introducing <a href="https://developer.chrome.com/blog/webgpu-release" target="_blank" rel="noopener noreferrer">WebGPU</a> support to Cloudflare Workers. This blog will explain why it's important, why we did it, how you can use it, and what comes next.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-history-of-the-gpu-in-the-browser">The history of the GPU in the browser</h3>
-		<a href="https://blog.cloudflare.com/#the-history-of-the-gpu-in-the-browser" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To understand why WebGPU is a big deal, we must revisit history and see how browsers went from relying only on the CPU for everything in the early days to taking advantage of GPUs over the years.</p>
-	<p>In 2011, <a href="https://en.wikipedia.org/wiki/WebGL" target="_blank" rel="noopener noreferrer">WebGL 1</a>, a limited port of <a href="https://www.khronos.org/opengles" target="_blank" rel="noopener noreferrer">OpenGL ES 2.0</a>, was introduced, providing an API for fast, accelerated 3D graphics in the browser for the first time. By then, this was somewhat of a revolution in enabling gaming and 3D visualizations in the browser. Some of the most popular 3D animation frameworks, like <a href="https://threejs.org" target="_blank" rel="noopener noreferrer">Three.js</a>, launched in the same period. Who doesn't remember going to the (now defunct) <a href="https://en.wikipedia.org/wiki/Google_Chrome_Experiments" target="_blank" rel="noopener noreferrer">Google Chrome Experiments</a> page and spending hours in awe exploring the demos? Another option then was using the Flash Player, which was still dominant in the desktop environment, and their <a href="https://en.wikipedia.org/wiki/Stage3D" target="_blank" rel="noopener noreferrer">Stage 3D</a> API.</p>
-	<p>Later, in 2017, based on the learnings and shortcomings of its predecessor, WebGL 2 was a significant upgrade and brought more advanced GPU capabilities like shaders and more flexible textures and rendering.</p>
-	<p>WebGL, however, has proved to be a steep and complex learning curve for developers who want to take control of things, do low-level 3D graphics using the GPU, and not use 3rd party abstraction libraries.</p>
-	<p>Furthermore and more importantly, with the advent of <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">machine learning</a> and cryptography, we discovered that GPUs are great not only at drawing graphics but can be used for other applications that can take advantage of things like high-speed data or blazing-fast matrix multiplications, and one can use them to perform general computation. This became known as <a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units" target="_blank" rel="noopener noreferrer">GPGPU</a>, short for general-purpose computing on graphics processing units.</p>
-	<p>With this in mind, in the native desktop and mobile operating system worlds, developers started using more advanced frameworks like <a href="https://en.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener noreferrer">CUDA</a>, <a href="https://developer.apple.com/metal" target="_blank" rel="noopener noreferrer">Metal</a>, <a href="https://en.wikipedia.org/wiki/DirectX#DirectX_12" target="_blank" rel="noopener noreferrer">DirectX 12</a>, or <a href="https://www.vulkan.org/learn#key-resources" target="_blank" rel="noopener noreferrer">Vulkan</a>. WebGL stayed behind. To fill this void and bring the browser up to date, in 2017, companies like Google, Apple, Intel, Microsoft, Kronos, and Mozilla created the <a href="https://www.w3.org/community/gpu" target="_blank" rel="noopener noreferrer">GPU for Web Community Working Group</a> to collaboratively design the successor of WebGL and create the next modern 3D graphics and computation capabilities APIs for the Web.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-webgpu">What is WebGPU</h3>
-		<a href="https://blog.cloudflare.com/#what-is-webgpu" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>WebGPU was developed with the following advantages in mind:</p>
-	<ul>
-		<li>
-			<p><b>Lower Level Access</b> - WebGPU provides lower-level, direct access to the GPU vs. the high-level abstractions in WebGL. This enables more control over GPU resources.</p>
-		</li>
-		<li>
-			<p><b>Multi-Threading</b> - WebGPU can leverage multi-threaded rendering and compute, allowing improved CPU/GPU parallelism compared to WebGL, which relies on a single thread.</p>
-		</li>
-		<li>
-			<p><b>Compute Shaders</b> - First-class support for general-purpose compute shaders for GPGPU tasks, not just graphics. WebGL compute is limited.</p>
-		</li>
-		<li>
-			<p><b>Safety</b> - WebGPU ensures memory and GPU access safety, avoiding common WebGL pitfalls.</p>
-		</li>
-		<li>
-			<p><b>Portability</b> - WGSL shader language targets cross-API portability across GPU vendors vs. GLSL in WebGL.</p>
-		</li>
-		<li>
-			<p><b>Reduced Driver Overhead</b> - The lower level Vulkan/Metal/D3D12 basis improves overhead vs. OpenGL drivers in WebGL.</p>
-		</li>
-		<li>
-			<p><b>Pipeline State Objects</b> - Predefined pipeline configs avoid per-draw driver overhead in WebGL.</p>
-		</li>
-		<li>
-			<p><b>Memory Management</b> - Finer-grained buffer and resource management vs. WebGL.</p>
-		</li>
-	</ul>
-	<p>The “too long didn't read” version is that WebGPU provides lower-level control over the GPU hardware with reduced overhead. It's safer, has multi-threading, is focused on compute, not just graphics, and has portability advantages compared to WebGL.</p>
-	<p>If these aren't reasons enough to get excited, developers are also looking at WebGPU as an option for native platforms, not just the Web. For instance, you can use this <a href="https://github.com/webgpu-native/webgpu-headers/blob/main/webgpu.h" target="_blank" rel="noopener noreferrer">C API</a> that mimics the JavaScript specification. If you think about this and the power of WebAssembly, you can effectively have a truly platform-agnostic GPU hardware layer that you can use to <a href="https://developer.chrome.com/blog/webgpu-cross-platform" target="_blank" rel="noopener noreferrer">develop</a> platforms for any operating system or browser.</p>
-	<div class="flex anchor relative">
-		<h3 id="more-than-just-graphics">More than just graphics</h3>
-		<a href="https://blog.cloudflare.com/#more-than-just-graphics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As explained above, besides being a graphics API, WebGPU makes it possible to perform tasks such as:</p>
-	<ul>
-		<li>
-			<p><b>Machine Learning</b> - Implement ML applications like <a href="https://www.cloudflare.com/learning/ai/what-is-neural-network" target="_blank" rel="noopener noreferrer">neural networks</a> and computer vision algorithms using WebGPU compute shaders and matrices.</p>
-		</li>
-		<li>
-			<p><b>Scientific Computing</b> - Perform complex scientific computation like physics simulations and mathematical modeling using the GPU.</p>
-		</li>
-		<li>
-			<p><b>High Performance Computing</b> - Unlock breakthrough performance for parallel workloads by connecting WebGPU to languages like Rust, C/C++ via <a href="https://webassembly.org" target="_blank" rel="noopener noreferrer">WebAssembly</a>.</p>
-		</li>
-	</ul>
-	<p><a href="https://gpuweb.github.io/gpuweb/wgsl" target="_blank" rel="noopener noreferrer">WGSL</a>, the shader language for WebGPU, is what enables the general-purpose compute feature. Shaders, or more precisely, <a href="https://www.khronos.org/opengl/wiki/Compute_Shader" target="_blank" rel="noopener noreferrer">compute shaders</a>, have no user-defined inputs or outputs and are used for computing arbitrary information. Here are <a href="https://webgpufundamentals.org/webgpu/lessons/webgpu-compute-shaders.html" target="_blank" rel="noopener noreferrer">some examples</a> of simple WebGPU compute shaders if you want to learn more.</p>
-	<div class="flex anchor relative">
-		<h3 id="webgpu-in-workers">WebGPU in Workers</h3>
-		<a href="https://blog.cloudflare.com/#webgpu-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We've been watching WebGPU since the API was published. Its general-purpose compute features perfectly fit our Workers' ecosystem and capabilities and align well with our vision of providing our customers multiple compute and hardware options and bringing GPU workloads to our global network, close to clients.</p>
-	<p>Cloudflare also has a track record of pioneering support for emerging web standards on our network and services, accelerating their adoption for our customers. Examples of these are <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto" target="_blank" rel="noopener noreferrer">Web Crypto API</a>, <a href="https://blog.cloudflare.com/introducing-http2">HTTP/2</a>, <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">HTTP/3</a>, <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a>, or <a href="https://blog.cloudflare.com/early-hints">Early hints</a>, but <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer">there are more</a>.</p>
-	<p>Bringing WebGPU to Workers was both natural and timely. Today, we are announcing that we have released a version of <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>, the open-sourced JavaScript / Wasm runtime that powers Cloudflare Workers, with <a href="https://github.com/cloudflare/workerd/tree/main/src/workerd/api/gpu" target="_blank" rel="noopener noreferrer">WebGPU support</a>, that you can start playing and developing applications with, locally.</p>
-	<p>Starting today anyone can run this on their personal computer and experiment with WebGPU-enabled workers. Implementing local development first allows us to put this API in the hands of our customers and developers earlier and get feedback that will guide the development of this feature for production use.</p>
-	<p>But before we dig into code examples, let's explain how we built it.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-we-built-webgpu-on-top-of-workers">How we built WebGPU on top of Workers</h3>
-		<a href="https://blog.cloudflare.com/#how-we-built-webgpu-on-top-of-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rem1ZyAcVa3LO7ue6OTC7/debccf54201fe93a9221a6dd01bc5338/image2-22.png" alt="" class="kg-image" width="1540" height="1350" loading="lazy">
-
-	</figure>
-	<p>To implement the WebGPU API, we took advantage of <a href="https://dawn.googlesource.com/dawn" target="_blank" rel="noopener noreferrer">Dawn</a>, an open-source library backed by Google, the same used in Chromium and Chrome, that provides applications with an implementation of the WebGPU standard. It also provides the <a href="https://github.com/webgpu-native/webgpu-headers/blob/main/webgpu.h" target="_blank" rel="noopener noreferrer">webgpu.h</a> headers file, the de facto reference for all the other implementations of the standard.</p>
-	<p>Dawn can interoperate with Linux, MacOS, and Windows GPUs by interfacing with each platform's native GPU frameworks. For example, when an application makes a WebGPU draw call, Dawn will convert that draw command into the equivalent Vulkan, Metal, or Direct3D 12 API call, depending on the platform.</p>
-	<p>From an application standpoint, Dawn handles the interactions with the underlying native graphics APIs that communicate directly with the GPU drivers. Dawn essentially acts as a middle layer that translates the WebGPU API calls into calls for the platform's native graphics API.</p>
-	<p>Cloudflare <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">workerd</a> is the underlying open-source runtime engine that executes Workers code. It shares most of its code with the same runtime that powers Cloudflare Workers' production environment but with some changes designed to make it more portable to other environments. We then have release cycles that aim to synchronize both codebases; more on that later. Workerd is also used with <a href="https://github.com/cloudflare/workers-sdk" target="_blank" rel="noopener noreferrer">wrangler</a>, our command-line tool for building and interacting with Cloudflare Workers, to support local development.</p>
-	<p>The WebGPU code that interfaces with the Dawn library can be found <a href="https://github.com/cloudflare/workerd/tree/main/src/workerd/api/gpu" target="_blank" rel="noopener noreferrer">here</a>, and can easily be enabled with a flag, checked <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/global-scope.c%2B%2B#L728" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<pre class="language-c++"><code class="language-c++">jsg::Ref&lt;api::gpu::GPU&gt; Navigator::getGPU(CompatibilityFlags::Reader flags) {
-  // is this a durable object?
-  KJ_IF_MAYBE (actor, IoContext::current().getActor()) {
-    JSG_REQUIRE(actor-&gt;getPersistent() != nullptr, TypeError,
-                "webgpu api is only available in Durable Objects (no storage)");
-  } else {
-    JSG_FAIL_REQUIRE(TypeError, "webgpu api is only available in Durable Objects");
-  };
-
-  JSG_REQUIRE(flags.getWebgpu(), TypeError, "webgpu needs the webgpu compatibility flag set");
-
-  return jsg::alloc&lt;api::gpu::GPU&gt;();
-}</code></pre>
-	<p>The WebGPU API can only be accessed using <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>, which are essentially global singleton instances of Cloudflare Workers. There are two important reasons for this:</p>
-	<ul>
-		<li>
-			<p>WebGPU code typically wants to store the state between requests, for example, loading an <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer">AI model</a> into the GPU memory once and using it multiple times for inference.</p>
-		</li>
-		<li>
-			<p>Not all Cloudflare servers have GPUs yet, so although the worker that receives the request is typically the closest one available, the Durable Object that uses WebGPU will be instantiated where there are GPU resources available, which may not be on the same machine.</p>
-		</li>
-	</ul>
-	<p>Using Durable Objects instead of regular Workers allow us to address both of these issues.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-webgpu-hello-world-in-workers">The WebGPU Hello World in Workers</h3>
-		<a href="https://blog.cloudflare.com/#the-webgpu-hello-world-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Wrangler uses Miniflare 3, a <a href="https://blog.cloudflare.com/wrangler3">fully-local simulator for Workers</a>, which in turn is powered by workerd. This means you can start experimenting and doing WebGPU code locally on your machine right now before we prepare things in our production environment.</p>
-	<p>Let’s get coding then.</p>
-	<p>Since Workers doesn't render graphics yet, we started with implementing the general-purpose GPU (GPGPU) APIs in the <a href="https://www.w3.org/TR/webgpu" target="_blank" rel="noopener noreferrer">WebGPU specification</a>. In other words, we fully support the part of the API that the <a href="https://www.w3.org/TR/webgpu/#gpucomputepipeline" target="_blank" rel="noopener noreferrer">compute shaders and the compute pipeline</a> require, but we are not yet focused on fragment or vertex shaders used in rendering pipelines.</p>
-	<p>Here’s a typical “hello world” in WebGPU. This Durable Object script will output the name of the GPU device that workerd found in your machine to your console.</p>
-	<pre class="language-javascript"><code class="language-javascript">const adapter = await navigator.gpu.requestAdapter();
-const adapterInfo = await adapter.requestAdapterInfo(["device"]);
-console.log(adapterInfo.device);</code></pre>
-	<p>A more interesting example, though, is a simple compute shader. In this case, we will fill a results buffer with an incrementing value taken from the iteration number via <code>global_invocation_id</code>.</p>
-	<p>For this, we need two buffers, one to store the results of the computations as they happen (<code>storageBuffer</code>) and another to copy the results at the end (<code>mappedBuffer</code>).</p>
-	<p>We then dispatch four workgroups, meaning that the increments can happen in parallel. This parallelism and programmability are two key reasons why compute shaders and GPUs provide an advantage for things like machine learning inference workloads. Other advantages are:</p>
-	<ul>
-		<li>
-			<p><b>Bandwidth</b> - GPUs have a very high memory bandwidth, up to 10-20x more than CPUs. This allows fast reading and writing of all the model parameters and data needed for inference.</p>
-		</li>
-		<li>
-			<p><b>Floating-point performance</b> - GPUs are optimized for high floating point operation throughput, which are used extensively in neural networks. They can deliver much higher <a href="https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html" target="_blank" rel="noopener noreferrer">TFLOPs than CPUs</a>.</p>
-		</li>
-	</ul>
-	<p>Let’s look at the code:</p>
-	<pre class="language-javascript"><code class="language-javascript">// Create device and command encoder
-const adapter = await navigator.gpu.requestAdapter();
-const device = await adapter.requestDevice();
-const encoder = device.createCommandEncoder();
-
-// Storage buffer
-const storageBuffer = device.createBuffer({
-  size: 4 * Float32Array.BYTES_PER_ELEMENT, // 4 float32 values
-  usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC,
-});
-
-// Mapped buffer
-const mappedBuffer = device.createBuffer({
-  size: 4 * Float32Array.BYTES_PER_ELEMENT,
-  usage: GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST,
-});
-
-// Create shader that writes incrementing numbers to storage buffer
-const computeShaderCode = `
-    @group(0) @binding(0)
-    var&lt;storage, read_write&gt; result : array&lt;f32&gt;;
-
-    @compute @workgroup_size(1)
-    fn main(@builtin(global_invocation_id) gid : vec3&lt;u32&gt;) {
-      result[gid.x] = f32(gid.x);
-    }
-`;
-
-// Create compute pipeline
-const computePipeline = device.createComputePipeline({
-  layout: "auto",
-  compute: {
-    module: device.createShaderModule({ code: computeShaderCode }),
-    entryPoint: "main",
-  },
-});
-
-// Bind group
-const bindGroup = device.createBindGroup({
-  layout: computePipeline.getBindGroupLayout(0),
-  entries: [{ binding: 0, resource: { buffer: storageBuffer } }],
-});
-
-// Dispatch compute work
-const computePass = encoder.beginComputePass();
-computePass.setPipeline(computePipeline);
-computePass.setBindGroup(0, bindGroup);
-computePass.dispatchWorkgroups(4);
-computePass.end();
-
-// Copy from storage to mapped buffer
-encoder.copyBufferToBuffer(
-  storageBuffer,
-  0,
-  mappedBuffer,
-  0,
-  4 * Float32Array.BYTES_PER_ELEMENT //mappedBuffer.size
-);
-
-// Submit and read back result
-const gpuBuffer = encoder.finish();
-device.queue.submit([gpuBuffer]);
-
-await mappedBuffer.mapAsync(GPUMapMode.READ);
-console.log(new Float32Array(mappedBuffer.getMappedRange()));
-// [0, 1, 2, 3]</code></pre>
-	<p>Now that we covered the basics of WebGPU and compute shaders, let's move to something more demanding. What if we could perform machine learning inference using Workers and GPUs?</p>
-	<div class="flex anchor relative">
-		<h3 id="onnx-webgpu-demo">ONNX WebGPU demo</h3>
-		<a href="https://blog.cloudflare.com/#onnx-webgpu-demo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://github.com/microsoft/onnxruntime" target="_blank" rel="noopener noreferrer">ONNX runtime</a> is a popular open-source cross-platform, high performance machine learning inferencing accelerator. <a href="https://github.com/webonnx/wonnx" target="_blank" rel="noopener noreferrer">Wonnx</a> is a GPU-accelerated version of the same engine, written in Rust, that can be compiled to WebAssembly and take advantage of WebGPU in the browser. We are going to run it in Workers using a combination of <a href="https://github.com/cloudflare/workers-rs" target="_blank" rel="noopener noreferrer">workers-rs</a>, our Rust bindings for Cloudflare Workers, and the workerd WebGPU APIs.</p>
-	<p>For this demo, we are using <a href="https://www.kdnuggets.com/2016/09/deep-learning-reading-group-squeezenet.html" target="_blank" rel="noopener noreferrer">SqueezeNet</a>. This small image classification model can run under lower resources but still achieves similar levels of accuracy on the <a href="https://en.wikipedia.org/wiki/ImageNet" target="_blank" rel="noopener noreferrer">ImageNet</a> image classification validation dataset as larger models like <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener noreferrer">AlexNet</a>.</p>
-	<p>In essence, our worker will receive any uploaded image and attempt to classify it according to the 1000 ImageNet classes. Once ONNX runs the machine learning model using the GPU, it will return the list of classes with the highest probability scores. Let’s go step by step.</p>
-	<p>First we load the model from R2 into the GPU memory the first time the Durable Object is called:</p>
-	<pre class="language-bash"><code class="language-bash">#[durable_object]
-pub struct Classifier {
-    env: Env,
-    session: Option&lt;wonnx::Session&gt;,
-}
-
-impl Classifier {
-    async fn ensure_session(&amp;mut self) -&gt; Result&lt;()&gt; {
-        match self.session {
-            Some(_) =&gt; worker::console_log!("DO already has a session"),
-            None =&gt; {
-                // No session, so this should be the first request. In this case
-                // we will fetch the model from R2, build a wonnx session, and
-                // store it for subsequent requests.
-                let model_bytes = fetch_model(&amp;self.env).await?;
-                let session = wonnx::Session::from_bytes(&amp;model_bytes)
-                    .await
-                    .map_err(|err| err.to_string())?;
-                worker::console_log!("session created in DO");
-                self.session = Some(session);
-            }
-        };
-        Ok(())
-    }
-}</code></pre>
-	<p>This is only required once, when the Durable Object is instantiated. For subsequent requests, we retrieve the model input tensor, call the existing session for the inference, and return to the calling worker the result tensor converted to JSON:</p>
-	<pre class="language-json"><code class="language-json">        let request_data: ArrayBase&lt;OwnedRepr&lt;f32&gt;, Dim&lt;[usize; 4]&gt;&gt; =
-            serde_json::from_str(&amp;req.text().await?)?;
-        let mut input_data = HashMap::new();
-        input_data.insert("data".to_string(), request_data.as_slice().unwrap().into());
-
-        let result = self
-            .session
-            .as_ref()
-            .unwrap() // we know the session exists
-            .run(&amp;input_data)
-            .await
-            .map_err(|err| err.to_string())?;
-...
-        let probabilities: Vec&lt;f32&gt; = result
-            .into_iter()
-            .next()
-            .ok_or("did not obtain a result tensor from session")?
-            .1
-            .try_into()
-            .map_err(|err: TensorConversionError| err.to_string())?;
-
-        let do_response = serde_json::to_string(&amp;probabilities)?;
-        Response::ok(do_response)</code></pre>
-	<p>On the Worker script itself, we load the uploaded image and pre-process it into a model input tensor:</p>
-	<pre class="language-bash"><code class="language-bash">    let image_file: worker::File = match req.form_data().await?.get("file") {
-        Some(FormEntry::File(buf)) =&gt; buf,
-        Some(_) =&gt; return Response::error("`file` part of POST form must be a file", 400),
-        None =&gt; return Response::error("missing `file`", 400),
-    };
-    let image_content = image_file.bytes().await?;
-    let image = load_image(&amp;image_content)?;</code></pre>
-	<p>Finally, we call the GPU Durable Object, which runs the model and returns the most likely classes of our image:</p>
-	<pre class="language-bash"><code class="language-bash">    let probabilities = execute_gpu_do(image, stub).await?;
-    let mut probabilities = probabilities.iter().enumerate().collect::&lt;Vec&lt;_&gt;&gt;();
-    probabilities.sort_unstable_by(|a, b| b.1.partial_cmp(a.1).unwrap());
-    Response::ok(LABELS[probabilities[0].0])</code></pre>
-	<p>We packaged this demo in a public repository, so you can also run it. Make sure that you have a <a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer">Rust</a> compiler, <a href="https://nodejs.org/en" target="_blank" rel="noopener noreferrer">Node.js</a>, <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer">Git</a> and <a href="https://curl.se" target="_blank" rel="noopener noreferrer">curl</a> installed, then clone the repository:</p>
-	<pre class="language-bash"><code class="language-bash">git clone https://github.com/cloudflare/workers-wonnx.git
-cd workers-wonnx</code></pre>
-	<p>Upload the model to the local R2 simulator:</p>
-	<pre class="language-bash"><code class="language-bash">npx wrangler@latest r2 object put model-bucket-dev/opt-squeeze.onnx --local --file models/opt-squeeze.onnx</code></pre>
-	<p>And then run the Worker locally:</p>
-	<pre class="language-bash"><code class="language-bash">npx wrangler@latest dev</code></pre>
-	<p>With the Worker running and waiting for requests you can then open another terminal window and upload one of the image examples in the same repository using curl:</p>
-	<pre class="language-curl"><code class="language-curl">&gt; curl -F "file=@images/pelican.jpeg" http://localhost:8787
-n02051845 pelican</code></pre>
-	<p>If everything goes according to plan the result of the curl command will be the most likely class of the image.</p>
-	<div class="flex anchor relative">
-		<h3 id="next-steps-and-final-words">Next steps and final words</h3>
-		<a href="https://blog.cloudflare.com/#next-steps-and-final-words" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Over the upcoming weeks, we will merge the workerd WebGPU code in the Cloudflare Workers production environment and make it available globally, on top of our growing GPU nodes fleet. We didn't do it earlier because that environment is subject to strict security and isolation requirements. For example, we can't break the <a href="https://developers.cloudflare.com/workers/learning/security-model" target="_blank" rel="noopener noreferrer">security model</a> of our process sandbox and have V8 talking to the GPU hardware directly, that would be a problem; we must create a configuration where another process is closer to the GPU and use IPC (inter-process communication) to talk to it. Other things like managing resource allocation and billing are being sorted out.</p>
-	<p>For now, we wanted to get the good news out that we will support WebGPU in Cloudflare Workers and ensure that you can start playing and coding with it today and learn from it. WebGPU and general-purpose computing on GPUs is still in its early days. We presented a machine-learning demo, but we can imagine other applications taking advantage of this new feature, and we hope you can show us some of them.</p>
-	<p>As usual, you can talk to us on our <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Developers Discord</a> or the <a href="https://community.cloudflare.com/c/developers/39" target="_blank" rel="noopener noreferrer">Community forum</a>; the team will be listening. We are eager to hear from you and learn about what you're building.</p>
+<p>The browser as an app platform is real and stronger every day; long gone are the Browser Wars. Vendors and standard bodies have done amazingly well over the last years, working together and advancing web standards with new <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> that allow developers to build fast and powerful applications, finally comparable to those we got used to seeing in the native OS' environment.</p>
+<p>Today, browsers can render web pages and run code that interfaces with an <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank" rel="noopener noreferrer">extensive catalog of modern Web APIs</a>. Things like networking, rendering accelerated graphics, or even accessing low-level hardware features like USB devices are all now possible within the browser sandbox.</p>
+<p>One of the most exciting new browser APIs that browser vendors have been rolling out over the last months is WebGPU, a modern, low-level GPU programming interface designed for high-performance 2D and 3D graphics and general purpose GPU compute.</p>
+<p>Today, we are introducing <a href="https://developer.chrome.com/blog/webgpu-release" target="_blank" rel="noopener noreferrer">WebGPU</a> support to Cloudflare Workers. This blog will explain why it's important, why we did it, how you can use it, and what comes next.</p>
+<h3>The history of the GPU in the browser</h3>
+<p>To understand why WebGPU is a big deal, we must revisit history and see how browsers went from relying only on the CPU for everything in the early days to taking advantage of GPUs over the years.</p>
+<p>In 2011, <a href="https://en.wikipedia.org/wiki/WebGL" target="_blank" rel="noopener noreferrer">WebGL 1</a>, a limited port of <a href="https://www.khronos.org/opengles" target="_blank" rel="noopener noreferrer">OpenGL ES 2.0</a>, was introduced, providing an API for fast, accelerated 3D graphics in the browser for the first time. By then, this was somewhat of a revolution in enabling gaming and 3D visualizations in the browser. Some of the most popular 3D animation frameworks, like <a href="https://threejs.org" target="_blank" rel="noopener noreferrer">Three.js</a>, launched in the same period. Who doesn't remember going to the (now defunct) <a href="https://en.wikipedia.org/wiki/Google_Chrome_Experiments" target="_blank" rel="noopener noreferrer">Google Chrome Experiments</a> page and spending hours in awe exploring the demos? Another option then was using the Flash Player, which was still dominant in the desktop environment, and their <a href="https://en.wikipedia.org/wiki/Stage3D" target="_blank" rel="noopener noreferrer">Stage 3D</a> API.</p>
+<p>Later, in 2017, based on the learnings and shortcomings of its predecessor, WebGL 2 was a significant upgrade and brought more advanced GPU capabilities like shaders and more flexible textures and rendering.</p>
+<p>WebGL, however, has proved to be a steep and complex learning curve for developers who want to take control of things, do low-level 3D graphics using the GPU, and not use 3rd party abstraction libraries.</p>
+<p>Furthermore and more importantly, with the advent of <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">machine learning</a> and cryptography, we discovered that GPUs are great not only at drawing graphics but can be used for other applications that can take advantage of things like high-speed data or blazing-fast matrix multiplications, and one can use them to perform general computation. This became known as <a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units" target="_blank" rel="noopener noreferrer">GPGPU</a>, short for general-purpose computing on graphics processing units.</p>
+<p>With this in mind, in the native desktop and mobile operating system worlds, developers started using more advanced frameworks like <a href="https://en.wikipedia.org/wiki/CUDA" target="_blank" rel="noopener noreferrer">CUDA</a>, <a href="https://developer.apple.com/metal" target="_blank" rel="noopener noreferrer">Metal</a>, <a href="https://en.wikipedia.org/wiki/DirectX#DirectX_12" target="_blank" rel="noopener noreferrer">DirectX 12</a>, or <a href="https://www.vulkan.org/learn#key-resources" target="_blank" rel="noopener noreferrer">Vulkan</a>. WebGL stayed behind. To fill this void and bring the browser up to date, in 2017, companies like Google, Apple, Intel, Microsoft, Kronos, and Mozilla created the <a href="https://www.w3.org/community/gpu" target="_blank" rel="noopener noreferrer">GPU for Web Community Working Group</a> to collaboratively design the successor of WebGL and create the next modern 3D graphics and computation capabilities APIs for the Web.</p>
+<h3>What is WebGPU</h3>
+<p>WebGPU was developed with the following advantages in mind:</p>
+<ul>
+	<li><strong>Lower Level Access</strong> - WebGPU provides lower-level, direct access to the GPU vs. the high-level abstractions in WebGL. This enables more control over GPU resources.</li>
+	<li><strong>Multi-Threading</strong> - WebGPU can leverage multi-threaded rendering and compute, allowing improved CPU/GPU parallelism compared to WebGL, which relies on a single thread.</li>
+	<li><strong>Compute Shaders</strong> - First-class support for general-purpose compute shaders for GPGPU tasks, not just graphics. WebGL compute is limited.</li>
+	<li><strong>Safety</strong> - WebGPU ensures memory and GPU access safety, avoiding common WebGL pitfalls.</li>
+	<li><strong>Portability</strong> - WGSL shader language targets cross-API portability across GPU vendors vs. GLSL in WebGL.</li>
+	<li><strong>Reduced Driver Overhead</strong> - The lower level Vulkan/Metal/D3D12 basis improves overhead vs. OpenGL drivers in WebGL.</li>
+	<li><strong>Pipeline State Objects</strong> - Predefined pipeline configs avoid per-draw driver overhead in WebGL.</li>
+	<li><strong>Memory Management</strong> - Finer-grained buffer and resource management vs. WebGL.</li>
+</ul>
+<p>The “too long didn't read” version is that WebGPU provides lower-level control over the GPU hardware with reduced overhead. It's safer, has multi-threading, is focused on compute, not just graphics, and has portability advantages compared to WebGL.</p>
+<p>If these aren't reasons enough to get excited, developers are also looking at WebGPU as an option for native platforms, not just the Web. For instance, you can use this <a href="https://github.com/webgpu-native/webgpu-headers/blob/main/webgpu.h" target="_blank" rel="noopener noreferrer">C API</a> that mimics the JavaScript specification. If you think about this and the power of WebAssembly, you can effectively have a truly platform-agnostic GPU hardware layer that you can use to <a href="https://developer.chrome.com/blog/webgpu-cross-platform" target="_blank" rel="noopener noreferrer">develop</a> platforms for any operating system or browser.</p>
+<h3>More than just graphics</h3>
+<p>As explained above, besides being a graphics API, WebGPU makes it possible to perform tasks such as:</p>
+<ul>
+	<li><strong>Machine Learning</strong> - Implement ML applications like <a href="https://www.cloudflare.com/learning/ai/what-is-neural-network" target="_blank" rel="noopener noreferrer">neural networks</a> and computer vision algorithms using WebGPU compute shaders and matrices.</li>
+	<li><strong>Scientific Computing</strong> - Perform complex scientific computation like physics simulations and mathematical modeling using the GPU.</li>
+	<li><strong>High Performance Computing</strong> - Unlock breakthrough performance for parallel workloads by connecting WebGPU to languages like Rust, C/C++ via <a href="https://webassembly.org" target="_blank" rel="noopener noreferrer">WebAssembly</a>.</li>
+</ul>
+<p><a href="https://gpuweb.github.io/gpuweb/wgsl" target="_blank" rel="noopener noreferrer">WGSL</a>, the shader language for WebGPU, is what enables the general-purpose compute feature. Shaders, or more precisely, <a href="https://www.khronos.org/opengl/wiki/Compute_Shader" target="_blank" rel="noopener noreferrer">compute shaders</a>, have no user-defined inputs or outputs and are used for computing arbitrary information. Here are <a href="https://webgpufundamentals.org/webgpu/lessons/webgpu-compute-shaders.html" target="_blank" rel="noopener noreferrer">some examples</a> of simple WebGPU compute shaders if you want to learn more.</p>
+<h3>WebGPU in Workers</h3>
+<p>We've been watching WebGPU since the API was published. Its general-purpose compute features perfectly fit our Workers' ecosystem and capabilities and align well with our vision of providing our customers multiple compute and hardware options and bringing GPU workloads to our global network, close to clients.</p>
+<p>Cloudflare also has a track record of pioneering support for emerging web standards on our network and services, accelerating their adoption for our customers. Examples of these are <a href="https://developers.cloudflare.com/workers/runtime-apis/web-crypto" target="_blank" rel="noopener noreferrer">Web Crypto API</a>, <a href="https://blog.cloudflare.com/introducing-http2">HTTP/2</a>, <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">HTTP/3</a>, <a href="https://blog.cloudflare.com/introducing-tls-1-3">TLS 1.3</a>, or <a href="https://blog.cloudflare.com/early-hints">Early hints</a>, but <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer">there are more</a>.</p>
+<p>Bringing WebGPU to Workers was both natural and timely. Today, we are announcing that we have released a version of <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a>, the open-sourced JavaScript / Wasm runtime that powers Cloudflare Workers, with <a href="https://github.com/cloudflare/workerd/tree/main/src/workerd/api/gpu" target="_blank" rel="noopener noreferrer">WebGPU support</a>, that you can start playing and developing applications with, locally.</p>
+<p>Starting today anyone can run this on their personal computer and experiment with WebGPU-enabled workers. Implementing local development first allows us to put this API in the hands of our customers and developers earlier and get feedback that will guide the development of this feature for production use.</p>
+<p>But before we dig into code examples, let's explain how we built it.</p>
+<h3>How we built WebGPU on top of Workers</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="627" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=715&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=640&amp;h=561&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=715&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=750&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=828&amp;h=726&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=1080&amp;h=947&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=1280&amp;h=1122&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=1430&amp;h=1254&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="You can now use WebGPU in Cloudflare Workers Embedded Image - uHxHgS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KME7XG13GWHVBSVFB3AG.png&amp;w=1540&amp;h=1350&amp;f=webp" data-lightbox-width="1540" data-lightbox-height="1350" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="627" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>To implement the WebGPU API, we took advantage of <a href="https://dawn.googlesource.com/dawn" target="_blank" rel="noopener noreferrer">Dawn</a>, an open-source library backed by Google, the same used in Chromium and Chrome, that provides applications with an implementation of the WebGPU standard. It also provides the <a href="https://github.com/webgpu-native/webgpu-headers/blob/main/webgpu.h" target="_blank" rel="noopener noreferrer">webgpu.h</a> headers file, the de facto reference for all the other implementations of the standard.</p>
+<p>Dawn can interoperate with Linux, MacOS, and Windows GPUs by interfacing with each platform's native GPU frameworks. For example, when an application makes a WebGPU draw call, Dawn will convert that draw command into the equivalent Vulkan, Metal, or Direct3D 12 API call, depending on the platform.</p>
+<p>From an application standpoint, Dawn handles the interactions with the underlying native graphics APIs that communicate directly with the GPU drivers. Dawn essentially acts as a middle layer that translates the WebGPU API calls into calls for the platform's native graphics API.</p>
+<p>Cloudflare <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">workerd</a> is the underlying open-source runtime engine that executes Workers code. It shares most of its code with the same runtime that powers Cloudflare Workers' production environment but with some changes designed to make it more portable to other environments. We then have release cycles that aim to synchronize both codebases; more on that later. Workerd is also used with <a href="https://github.com/cloudflare/workers-sdk" target="_blank" rel="noopener noreferrer">wrangler</a>, our command-line tool for building and interacting with Cloudflare Workers, to support local development.</p>
+<p>The WebGPU code that interfaces with the Dawn library can be found <a href="https://github.com/cloudflare/workerd/tree/main/src/workerd/api/gpu" target="_blank" rel="noopener noreferrer">here</a>, and can easily be enabled with a flag, checked <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/global-scope.c%2B%2B#L728" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">jsg</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Ref</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">api</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">gpu</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">GPU</span><span class="sk-24292e-fff">&gt; </span><span class="sk-6f42c1-ffc799">Navigator</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">getGPU</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">CompatibilityFlags</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">Reader</span><span class="sk-e36209-fff"> flags</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // is this a durable object?</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  KJ_IF_MAYBE</span><span class="sk-24292e-fff"> (actor, </span><span class="sk-6f42c1-ffc799">IoContext</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">current</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">getActor</span><span class="sk-24292e-fff">()) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    JSG_REQUIRE</span><span class="sk-24292e-fff">(actor-&gt;</span><span class="sk-6f42c1-ffc799">getPersistent</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nullptr</span><span class="sk-24292e-fff">, TypeError,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "webgpu api is only available in Durable Objects (no storage)"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    JSG_FAIL_REQUIRE</span><span class="sk-24292e-fff">(TypeError, </span><span class="sk-032f62-99ffe4">"webgpu api is only available in Durable Objects"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  JSG_REQUIRE</span><span class="sk-24292e-fff">(flags.</span><span class="sk-6f42c1-ffc799">getWebgpu</span><span class="sk-24292e-fff">(), TypeError, </span><span class="sk-032f62-99ffe4">"webgpu needs the webgpu compatibility flag set"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> jsg</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">alloc</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">api</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">gpu</span><span class="sk-24292e-fff">::</span><span class="sk-6f42c1-ffc799">GPU</span><span class="sk-24292e-fff">&gt;();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>The WebGPU API can only be accessed using <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>, which are essentially global singleton instances of Cloudflare Workers. There are two important reasons for this:</p>
+<ul>
+	<li>WebGPU code typically wants to store the state between requests, for example, loading an <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer">AI model</a> into the GPU memory once and using it multiple times for inference.</li>
+	<li>Not all Cloudflare servers have GPUs yet, so although the worker that receives the request is typically the closest one available, the Durable Object that uses WebGPU will be instantiated where there are GPU resources available, which may not be on the same machine.</li>
+</ul>
+<p>Using Durable Objects instead of regular Workers allow us to address both of these issues.</p>
+<h3>The WebGPU Hello World in Workers</h3>
+<p>Wrangler uses Miniflare 3, a <a href="https://blog.cloudflare.com/wrangler3">fully-local simulator for Workers</a>, which in turn is powered by workerd. This means you can start experimenting and doing WebGPU code locally on your machine right now before we prepare things in our production environment.</p>
+<p>Let’s get coding then.</p>
+<p>Since Workers doesn't render graphics yet, we started with implementing the general-purpose GPU (GPGPU) APIs in the <a href="https://www.w3.org/TR/webgpu" target="_blank" rel="noopener noreferrer">WebGPU specification</a>. In other words, we fully support the part of the API that the <a href="https://www.w3.org/TR/webgpu/#gpucomputepipeline" target="_blank" rel="noopener noreferrer">compute shaders and the compute pipeline</a> require, but we are not yet focused on fragment or vertex shaders used in rendering pipelines.</p>
+<p>Here’s a typical “hello world” in WebGPU. This Durable Object script will output the name of the GPU device that workerd found in your machine to your console.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> adapter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> navigator.gpu.</span><span class="sk-6f42c1-ffc799">requestAdapter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> adapterInfo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> adapter.</span><span class="sk-6f42c1-ffc799">requestAdapterInfo</span><span class="sk-24292e-fff">([</span><span class="sk-032f62-99ffe4">"device"</span><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(adapterInfo.device);</span></span></code></pre>
+</div>
+<p>A more interesting example, though, is a simple compute shader. In this case, we will fill a results buffer with an incrementing value taken from the iteration number via <code>global_invocation_id</code>.</p>
+<p>For this, we need two buffers, one to store the results of the computations as they happen (<code>storageBuffer</code>) and another to copy the results at the end (<code>mappedBuffer</code>).</p>
+<p>We then dispatch four workgroups, meaning that the increments can happen in parallel. This parallelism and programmability are two key reasons why compute shaders and GPUs provide an advantage for things like machine learning inference workloads. Other advantages are:</p>
+<ul>
+	<li><strong>Bandwidth</strong> - GPUs have a very high memory bandwidth, up to 10-20x more than CPUs. This allows fast reading and writing of all the model parameters and data needed for inference.</li>
+	<li><strong>Floating-point performance</strong> - GPUs are optimized for high floating point operation throughput, which are used extensively in neural networks. They can deliver much higher <a href="https://www.tomshardware.com/reviews/gpu-hierarchy,4388.html" target="_blank" rel="noopener noreferrer">TFLOPs than CPUs</a>.</li>
+</ul>
+<p>Let’s look at the code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create device and command encoder</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> adapter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> navigator.gpu.</span><span class="sk-6f42c1-ffc799">requestAdapter</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> device</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> adapter.</span><span class="sk-6f42c1-ffc799">requestDevice</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> encoder</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> device.</span><span class="sk-6f42c1-ffc799">createCommandEncoder</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Storage buffer</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> storageBuffer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> device.</span><span class="sk-6f42c1-ffc799">createBuffer</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  size: </span><span class="sk-005cc5-ffc799">4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> Float32Array.</span><span class="sk-005cc5-fff">BYTES_PER_ELEMENT</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// 4 float32 values</span></span>
+<span class="line"><span class="sk-24292e-fff">  usage: GPUBufferUsage.</span><span class="sk-005cc5-fff">STORAGE</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> GPUBufferUsage.</span><span class="sk-005cc5-fff">COPY_SRC</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Mapped buffer</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> mappedBuffer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> device.</span><span class="sk-6f42c1-ffc799">createBuffer</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  size: </span><span class="sk-005cc5-ffc799">4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> Float32Array.</span><span class="sk-005cc5-fff">BYTES_PER_ELEMENT</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  usage: GPUBufferUsage.</span><span class="sk-005cc5-fff">MAP_READ</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> GPUBufferUsage.</span><span class="sk-005cc5-fff">COPY_DST</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Create shader that writes incrementing numbers to storage buffer</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> computeShaderCode</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    @group(0) @binding(0)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    var&lt;storage, read_write&gt; result : array&lt;f32&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">    @compute @workgroup_size(1)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    fn main(@builtin(global_invocation_id) gid : vec3&lt;u32&gt;) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      result[gid.x] = f32(gid.x);</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Create compute pipeline</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> computePipeline</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> device.</span><span class="sk-6f42c1-ffc799">createComputePipeline</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  layout: </span><span class="sk-032f62-99ffe4">"auto"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  compute: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    module: device.</span><span class="sk-6f42c1-ffc799">createShaderModule</span><span class="sk-24292e-fff">({ code: computeShaderCode }),</span></span>
+<span class="line"><span class="sk-24292e-fff">    entryPoint: </span><span class="sk-032f62-99ffe4">"main"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Bind group</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> bindGroup</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> device.</span><span class="sk-6f42c1-ffc799">createBindGroup</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  layout: computePipeline.</span><span class="sk-6f42c1-ffc799">getBindGroupLayout</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">  entries: [{ binding: </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, resource: { buffer: storageBuffer } }],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Dispatch compute work</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> computePass</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> encoder.</span><span class="sk-6f42c1-ffc799">beginComputePass</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">computePass.</span><span class="sk-6f42c1-ffc799">setPipeline</span><span class="sk-24292e-fff">(computePipeline);</span></span>
+<span class="line"><span class="sk-24292e-fff">computePass.</span><span class="sk-6f42c1-ffc799">setBindGroup</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, bindGroup);</span></span>
+<span class="line"><span class="sk-24292e-fff">computePass.</span><span class="sk-6f42c1-ffc799">dispatchWorkgroups</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">computePass.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Copy from storage to mapped buffer</span></span>
+<span class="line"><span class="sk-24292e-fff">encoder.</span><span class="sk-6f42c1-ffc799">copyBufferToBuffer</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">  storageBuffer,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  mappedBuffer,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  0</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  4</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> Float32Array.</span><span class="sk-005cc5-fff">BYTES_PER_ELEMENT</span><span class="sk-6a737d-8b8b8b94"> //mappedBuffer.size</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Submit and read back result</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> gpuBuffer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> encoder.</span><span class="sk-6f42c1-ffc799">finish</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">device.queue.</span><span class="sk-6f42c1-ffc799">submit</span><span class="sk-24292e-fff">([gpuBuffer]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> mappedBuffer.</span><span class="sk-6f42c1-ffc799">mapAsync</span><span class="sk-24292e-fff">(GPUMapMode.</span><span class="sk-005cc5-fff">READ</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Float32Array</span><span class="sk-24292e-fff">(mappedBuffer.</span><span class="sk-6f42c1-ffc799">getMappedRange</span><span class="sk-24292e-fff">()));</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// [0, 1, 2, 3]</span></span></code></pre>
+</div>
+<p>Now that we covered the basics of WebGPU and compute shaders, let's move to something more demanding. What if we could perform machine learning inference using Workers and GPUs?</p>
+<h3>ONNX WebGPU demo</h3>
+<p>The <a href="https://github.com/microsoft/onnxruntime" target="_blank" rel="noopener noreferrer">ONNX runtime</a> is a popular open-source cross-platform, high performance machine learning inferencing accelerator. <a href="https://github.com/webonnx/wonnx" target="_blank" rel="noopener noreferrer">Wonnx</a> is a GPU-accelerated version of the same engine, written in Rust, that can be compiled to WebAssembly and take advantage of WebGPU in the browser. We are going to run it in Workers using a combination of <a href="https://github.com/cloudflare/workers-rs" target="_blank" rel="noopener noreferrer">workers-rs</a>, our Rust bindings for Cloudflare Workers, and the workerd WebGPU APIs.</p>
+<p>For this demo, we are using <a href="https://www.kdnuggets.com/2016/09/deep-learning-reading-group-squeezenet.html" target="_blank" rel="noopener noreferrer">SqueezeNet</a>. This small image classification model can run under lower resources but still achieves similar levels of accuracy on the <a href="https://en.wikipedia.org/wiki/ImageNet" target="_blank" rel="noopener noreferrer">ImageNet</a> image classification validation dataset as larger models like <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener noreferrer">AlexNet</a>.</p>
+<p>In essence, our worker will receive any uploaded image and attempt to classify it according to the 1000 ImageNet classes. Once ONNX runs the machine learning model using the GPU, it will return the list of classes with the highest probability scores. Let’s go step by step.</p>
+<p>First we load the model from R2 into the GPU memory the first time the Durable Object is called:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#[durable_object]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> Classifier</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    env:</span><span class="sk-032f62-99ffe4"> Env,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    session:</span><span class="sk-032f62-99ffe4"> Option</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">wonnx::Sessio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">impl</span><span class="sk-032f62-99ffe4"> Classifier</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> ensure_session</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> self</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result&lt;()</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        match</span><span class="sk-032f62-99ffe4"> self.session</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            Some(_</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> worker::console_log</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"DO already has a session"</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            None</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                //</span><span class="sk-032f62-99ffe4"> No</span><span class="sk-032f62-99ffe4"> session,</span><span class="sk-032f62-99ffe4"> so</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> first</span><span class="sk-032f62-99ffe4"> request.</span><span class="sk-032f62-99ffe4"> In</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> case</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                //</span><span class="sk-032f62-99ffe4"> we</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> model</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> R2,</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> wonnx</span><span class="sk-032f62-99ffe4"> session,</span><span class="sk-032f62-99ffe4"> and</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                //</span><span class="sk-032f62-99ffe4"> store</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> subsequent</span><span class="sk-032f62-99ffe4"> requests.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                let</span><span class="sk-032f62-99ffe4"> model_bytes</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> fetch_model</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">self.env</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.await?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                let</span><span class="sk-032f62-99ffe4"> session</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> wonnx::Session::from_bytes</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">model_bytes</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                    .await</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                    .map_err(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">err</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> err.to_string</span><span class="sk-24292e-fff">())</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                worker::console_log!(</span><span class="sk-6f42c1-ffc799">"session created in DO"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                self.session</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Some</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">session</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"><span class="sk-24292e-fff">        };</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Ok((</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This is only required once, when the Durable Object is instantiated. For subsequent requests, we retrieve the model input tensor, call the existing session for the inference, and return to the calling worker the result tensor converted to JSON:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">        let request_data: ArrayBase&lt;OwnedRepr&lt;f</span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">&gt;, Dim&lt;[</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">usize;</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff">]&gt;&gt; =</span></span>
+<span class="line"><span class="sk-24292e-fff">            serde_json::from_str(&amp;req.text().await?)?;</span></span>
+<span class="line"><span class="sk-24292e-fff">        let mut input_data = HashMap::new();</span></span>
+<span class="line"><span class="sk-24292e-fff">        input_data.insert(</span><span class="sk-032f62-99ffe4">"data"</span><span class="sk-24292e-fff">.to_string(), request_data.as_slice().unwrap().into());</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">        let result = self</span></span>
+<span class="line"><span class="sk-24292e-fff">            .session</span></span>
+<span class="line"><span class="sk-24292e-fff">            .as_ref()</span></span>
+<span class="line"><span class="sk-24292e-fff">            .unwrap() </span><span class="sk-6a737d-8b8b8b94">// we know the session exists</span></span>
+<span class="line"><span class="sk-24292e-fff">            .run(&amp;input_data)</span></span>
+<span class="line"><span class="sk-24292e-fff">            .await</span></span>
+<span class="line"><span class="sk-24292e-fff">            .map_err(|err| err.to_string())?;</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff">        let probabilities: Vec&lt;f</span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">&gt; = result</span></span>
+<span class="line"><span class="sk-24292e-fff">            .into_iter()</span></span>
+<span class="line"><span class="sk-24292e-fff">            .next()</span></span>
+<span class="line"><span class="sk-24292e-fff">            .ok_or(</span><span class="sk-032f62-99ffe4">"did not obtain a result tensor from session"</span><span class="sk-24292e-fff">)?</span></span>
+<span class="line"><span class="sk-24292e-fff">            .</span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">            .try_into()</span></span>
+<span class="line"><span class="sk-24292e-fff">            .map_err(|err: TensorConversionError| err.to_string())?;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">        let do_response = serde_json::to_string(&amp;probabilities)?;</span></span>
+<span class="line"><span class="sk-24292e-fff">        Response::ok(do_response)</span></span></code></pre>
+</div>
+<p>On the Worker script itself, we load the uploaded image and pre-process it into a model input tensor:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> image_file:</span><span class="sk-032f62-99ffe4"> worker::File</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> req.form_data</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.await?.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"file"</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Some(FormEntry::File(buf</span><span class="sk-24292e-fff">)) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> buf,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Some(_</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> return Response::error(</span><span class="sk-6f42c1-ffc799">"</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">file</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> part of POST form must be a file"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 400</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        None</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> return</span><span class="sk-032f62-99ffe4"> Response::error</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"missing </span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">file</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 400</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> image_content</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> image_file.bytes</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.await?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> image</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> load_image</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">image_content</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>Finally, we call the GPU Durable Object, which runs the model and returns the most likely classes of our image:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> probabilities</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> execute_gpu_do</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">image,</span><span class="sk-032f62-99ffe4"> stub</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.await?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> probabilities</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> probabilities.iter</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.enumerate</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.collect::</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Vec</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">_</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    probabilities.sort_unstable_by(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">a,</span><span class="sk-032f62-99ffe4"> b</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> b.1.partial_cmp(a.1</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">.unwrap</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Response::ok(LABELS[probabilities[0].0]</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>We packaged this demo in a public repository, so you can also run it. Make sure that you have a <a href="https://www.rust-lang.org" target="_blank" rel="noopener noreferrer">Rust</a> compiler, <a href="https://nodejs.org/en" target="_blank" rel="noopener noreferrer">Node.js</a>, <a href="https://git-scm.com" target="_blank" rel="noopener noreferrer">Git</a> and <a href="https://curl.se" target="_blank" rel="noopener noreferrer">curl</a> installed, then clone the repository:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/workers-wonnx.git</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> workers-wonnx</span></span></code></pre>
+</div>
+<p>Upload the model to the local R2 simulator:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler@latest</span><span class="sk-032f62-99ffe4"> r2</span><span class="sk-032f62-99ffe4"> object</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-032f62-99ffe4"> model-bucket-dev/opt-squeeze.onnx</span><span class="sk-005cc5-99ffe4"> --local</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> models/opt-squeeze.onnx</span></span></code></pre>
+</div>
+<p>And then run the Worker locally:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler@latest</span><span class="sk-032f62-99ffe4"> dev</span></span></code></pre>
+</div>
+<p>With the Worker running and waiting for requests you can then open another terminal window and upload one of the image examples in the same repository using curl:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>&gt; curl -F "file=@images/pelican.jpeg" http://localhost:8787</span></span>
+<span class="line"><span>n02051845 pelican</span></span></code></pre>
+</div>
+<p>If everything goes according to plan the result of the curl command will be the most likely class of the image.</p>
+<h3>Next steps and final words</h3>
+<p>Over the upcoming weeks, we will merge the workerd WebGPU code in the Cloudflare Workers production environment and make it available globally, on top of our growing GPU nodes fleet. We didn't do it earlier because that environment is subject to strict security and isolation requirements. For example, we can't break the <a href="https://developers.cloudflare.com/workers/learning/security-model" target="_blank" rel="noopener noreferrer">security model</a> of our process sandbox and have V8 talking to the GPU hardware directly, that would be a problem; we must create a configuration where another process is closer to the GPU and use IPC (inter-process communication) to talk to it. Other things like managing resource allocation and billing are being sorted out.</p>
+<p>For now, we wanted to get the good news out that we will support WebGPU in Cloudflare Workers and ensure that you can start playing and coding with it today and learn from it. WebGPU and general-purpose computing on GPUs is still in its early days. We presented a machine-learning demo, but we can imagine other applications taking advantage of this new feature, and we hope you can show us some of them.</p>
+<p>As usual, you can talk to us on our <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Developers Discord</a> or the <a href="https://community.cloudflare.com/c/developers/39" target="_blank" rel="noopener noreferrer">Community forum</a>; the team will be listening. We are eager to hear from you and learn about what you're building.</p>

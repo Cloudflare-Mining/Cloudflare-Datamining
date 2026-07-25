@@ -1,0 +1,71 @@
+<p>Cloudflare 的使命始终是帮助构建更好的互联网。有时，这意味着为现有的互联网而构建。有时，这意味着为未来的互联网而构建。</p>
+<p>今天，我们将开启 Agents Week 活动，聚焦面向未来的互联网解决方案。</p>
+<h2>互联网并非为 AI 时代而设计。云服务也不例外。</h2>
+<p>我们如今熟知的云计算，是上一次重大技术范式转变（即：智能手机）的产物。</p>
+<p>智能手机将互联网装进口袋，这不仅增加了用户数量，而且改变了上网体验的本质。时刻互联在线，时刻期待即时响应。应用必须处理数量级增加的用户需求，为这些应用提供支持的基础设施也必须不断演变发展。</p>
+<p>业界最终采用的方法很简单：用户越多，应用的副本也越多。随着应用复杂性的增加，团队将其拆分成更小的模块（微服务）以便每个团队都可以掌控自己的命运。但核心原则始终不变：应用数量有限，每个应用为许多用户提供服务。扩展意味着需要更多副本。</p>
+<p>Kubernetes 和容器成为默认选项。二者可轻松地快速启动实例、维持负载平衡，以及拆除不需要的实例。在这种一对多模式之下，单个实例可以服务于多个用户，即使用户数量增加到数十亿，需要管理的资源数量也仍然是有限的。</p>
+<p>智能体打破了这种模式。</p>
+<h2>一个智能体，服务一个用户，运行一项任务</h2>
+<p>与以往的应用不同，智能体都是一对一。每个智能体都是唯一的独特实例。服务一个用户，运行一项任务。传统的应用无论用户是谁，执行路径均相同，而智能体需要自己的执行环境：在这个环境中，LLM 指定代码路径，动态调用各种工具，调整其运行方式，并持续运行直至完成任务。</p>
+<p>我们可以把这想象成餐馆与私人厨师之间的区别。餐馆有固定的菜单（一组固定的选项）以及一个能够高效批量出餐的厨房。这就是当今大多数应用的现状。而智能体更像是私人厨师，它会询问：您想吃什么？每次所需的食材、用具或烹饪方法可能完全不同。您无法使用经营餐馆的同一套厨房设施来提供私人厨师服务。</p>
+<p>在过去的一年里，我们已经看到智能体迅速发展，其中编码智能体引领潮流；这不足为奇，因为开发人员往往是早期采用者。如今大多数编码智能体的工作方式是启动容器来为 LLM 提供它所需的一切：文件系统、git、bash，以及运行任意二进制文件的能力。</p>
+<p>但编码智能体仅仅只是开始。像 Claude Cowork 之类的工具已经让不太懂技术的用户也可以使用智能体。一旦智能体不再局限于开发人员之手而是普及到所有人，例如行政助理、研究分析师、客户服务代表、个人规划师，其规模数字将迅速变得使人清醒。</p>
+<h2>如何将智能体扩展到大规模应用</h2>
+<p>如果美国超过 1 亿名知识工作者每人使用一个智能助手，并发率约为 15%，则需要大约 2400 万个并发会话的计算能力来提供容量支持。假设每个 CPU 处理 25 到 50 个用户的请求，那么仅美国就需要 50 万到 100 万个服务器 CPU；仅以美国为例，每人使用一个智能体。</p>
+<p>现在，想象一下每个人并行运行多个智能体。再想象一下，世界其他地区拥有超过 10 亿名知识工作者。我们目前的计算资源不仅非常短缺，而且远远达不到这个水平。</p>
+<p>那么，我们应该如何弥合这种差距呢？</p>
+<h2>构建适用于智能体的基础设施</h2>
+<p>八年前，我们推出了 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>，这是 Cloudflare 开发人员平台的开端，也是我们在无容器、无服务器计算领域的一次大胆尝试。当时的动机很务实：我们需要轻量级计算能力，避免冷启动，以满足那些依赖 Cloudflare 获得速度的客户的需求。Workers 基于 V8 隔离区而不是容器而构建，结果证明它将效率提高了一个数量级：启动速度加快、运行成本降低，并且原生支持“启动、执行、拆除”模式。</p>
+<p>然而，我们当时并未预料到的一点是，这种模式与智能体时代的契合度很高。</p>
+<p>容器为每个智能体提供一个完整的商业厨房：固定式设备、步入式冷藏室等，应有尽有，无论智能体是否需要；另一方面，隔离区则为私人厨师精准地提供制作特定菜肴所需的台面空间、炉灶和刀具。所有资源在几毫秒内即可配置完毕。菜肴上桌后，所有清理工作也立即完成。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="439" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=640&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=750&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=828&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=1080&amp;h=663&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=1280&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=1430&amp;h=878&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3238 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46283X25HX6N7XH8TGE282.png&amp;w=1920&amp;h=1179&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1179" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="439" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>如今，我们需要支持的不是成千上万个长时间运行的应用，而是数十亿个短暂的、单一用途的执行环境，用适当的原语来描述就是“隔离区”。</p>
+<p>每个隔离区都可以在几毫秒内启动。每个隔离区都受到沙箱的安全保护。与容器相比，用户可以在相同的硬件上运行更多数量级的隔离区。</p>
+<p>几周前，我们推出 <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers 公测版</u></a>进一步拓展了这一领域：按需在运行时启动执行环境。隔离区的启动只需几毫秒，占用几兆字节的内存。与容器相比，启动速度大约加快 100 倍，内存效率也至多提高 100 倍。</p>
+<p>您可以为每个请求启动一个新隔离区，运行一段代码，然后将其丢弃，以每秒数百万个的速度来处理。</p>
+<p>为了让智能体不局限于早期采用者，真正普及到所有人，还必须使其价格实惠亲民。目前，在独立容器中运行每个智能体的成本非常高昂，因此，智能体工具大多仅限于那些能够承担得起成本的工程师使用的编码智能体。<strong>隔离区通过显著提高运行效率，使得智能体运行所需的规模下，单位成本变得可以承受。</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="300" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=715&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=640&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=715&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=750&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=828&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=1080&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=1280&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=1430&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3238 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AVDYCAAB1FRPSEBV41S6.png&amp;w=1920&amp;h=807&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="807" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="300" class="pt-portable-image-media"></div>
+</figure>
+<h2>初级阶段</h2>
+<p>虽然为未来奠定坚实的基础至关重要，但我们还没有做到这一点。每一次范式转变都会经历过渡阶段，我们需要尝试让新事物在旧模式下运行。最早的汽车被称为“无马马车”。最初的网站曾是数字宣传册。第一批移动应用是缩小版的桌面 UI。我们目前正处于智能体开发的这个初期阶段。</p>
+<p>其应用随处可见。</p>
+<p>我们为智能体提供无头浏览器来浏览为真人用户设计的网站；而它们真正需要的是 MCP 等结构化协议来直接发现并调用服务。</p>
+<p>许多早期的 MCP 服务器只是对现有 REST API 的简单封装：相同的 CRUD 操作，但使用新协议；LLM 实际上更擅长编写代码，而不是顺序调用工具。</p>
+<p>我们使用验证码和行为指纹来验证请求另一端的对象，但如今越来越多的对象是代表他人行事的智能体；因此，应该询问的正确问题不是“你是否为真人用户？”，而是“你是哪个智能体，谁授权给你，你获准做什么？”</p>
+<p>我们将为智能体启动完整的容器，只需调用几个 API 并返回结果。</p>
+<p>这只是几个示例，但是这一切都不足为奇。这就是过渡阶段的常态。</p>
+<h2>兼顾两者</h2>
+<p>互联网始终介于两个时代之间。客观来说，IPv6 优于 IPv4，但放弃对 IPv4 的支持会导致半个互联网瘫痪。HTTP/2 与 HTTP/3 共存。TLS 1.2 尚未完全被 1.3 取代。更先进的技术已经存在，旧技术也依然存在，基础设施的任务就是兼容两者。</p>
+<p>Cloudflare 一直致力于支持顺利完成过渡。向智能体的转变也不例外。</p>
+<p>编码智能体确实需要容器：文件系统、git、bash、任意二进制执行。这些都不会消失。本周，Cloudflare 将正式发布基于容器的沙箱环境，因为我们致力于尽量优化其功能和性能。我们将进一步深入研究智能体的浏览器渲染，因为未来仍会有大量服务不支持 MCP，而智能体仍然需要与这些服务进行交互。这些并非权宜之计，而是构建完整平台的一部分。</p>
+<p>同时，我们也在构建未来所需的功能：智能体真正需要的隔离区、协议和身份模型。我们的职责是确保用户无需在当下适用的方案与面向未来的方案之间做出权衡选择。</p>
+<h2>安全应融入模型，而非围绕模型</h2>
+<p>如果智能体要处理专业和个人任务，例如读取电子邮件、运行代码、与金融服务交互，则安全必须融入执行模型，而不是事后逐层添加。</p>
+<p>CISO 率先面对和意识到这一点。为每个用户配置智能体确实可以提高生产率，但如今，大多数智能体部署充满诸多风险：提示词注入、数据外泄、未经授权的 API 访问，以及不透明的工具使用。</p>
+<p>开发人员的氛围编码智能体需要访问代码存储库和部署管道。某企业的客户服务智能体需要访问内部 API 和用户数据。在这两种情况下，如今的保护环境意味着要将凭证、网络策略和访问控制整合在一起，而这些原本并不是为自主软件而设计。</p>
+<p>Cloudflare 一直在并行构建两个平台：面向开发人员（即：构建应用的人员）的开发人员平台，以及面向需要保护访问的企业的 Zero Trust 平台。一段时间以来，这两个平台服务于不同的用户群体。</p>
+<p>但是，他们面对的“如何构建这个智能体？”以及“如何确保它是安全性？”这两个问题正变得日益趋同。我们会将这两个平台整合在一起，使所有功能都原生集成到智能体的运行方式中，而不是作为额外的附加层。</p>
+<h2>遵守规则的智能体</h2>
+<p>智能体时代除了计算和安全问题之外，还有另一个维度：经济学与治理。</p>
+<p>当智能体代表用户与互联网进行交互时（阅读文章、使用 API、访问服务），需要一种方式来让创建这些内容和运营这些服务的个人及企业能够制定使用条款并获得报酬。如今，互联网的经济模式建立在用户的注意力之上：广告、付费墙、订阅。</p>
+<p>智能体没有注意力（嗯，至少不是<a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer"><u>那种注意力</u></a>）。他们看不到广告，也不会点击 cookie 横幅。</p>
+<p>如果我们希望构建让智能体能够自由运行，<em>并且</em>出版商、内容创作者和服务提供商都能获得公平报酬的互联网环境，我们就需要为此构建新的基础设施。Cloudflare 正在开发一些工具，让出版商和内容所有者能够轻松地设置并执行智能体与其内容交互的策略。</p>
+<p>构建更好的互联网始终意味着确保它服务于所有用户，不仅仅只是开发技术的人员，也包括那些通过自身工作和创造力让互联网变得有价值的人。在智能体时代，这一点并没有改变，反而变得更加重要。</p>
+<h2>面向开发者与智能体的平台</h2>
+<p>Cloudflare 对开发人员平台的愿景始终是提供开箱即用的全面平台：从实验到最小可行产品 (MVP)，再到扩展至数百万用户。但提供基础组件只是问题的一部分。一个卓越的平台还必须考虑所有功能如何协同发挥作用，以及如何集成到用户的开发流程。</p>
+<p>这项工作正在不断演变。过去，它纯粹侧重于开发人员体验，旨在让开发人员能够轻松地构建、测试和发布。而现在，它越来越关注如何帮助智能体更好地服务真人用户，并确保平台不仅服务于构建智能体的开发人员，也服务于智能体本身。智能体能否找到最新的最佳实践？它可以多么轻松地发现并调用所需的工具和命令行界面 (CLI)？从编写代码过渡到部署代码的流程有多顺畅？</p>
+<p>本周，我们将发布对这两个方面的改进，让 Cloudflare 更好地服务于在其平台上构建产品的开发人员，以及在其平台上运行的智能体。</p>
+<h2>构建面向未来的解决方案需要团队合作</h2>
+<p>构建面向未来的解决方案不是仅凭 Cloudflare 一己之力就能完成的事情。互联网从 HTTP/1.1 过渡到 HTTP/2 和 HTTP/3，从 TLS 1.2 迁移到 1.3 的每一次重大过渡，都离不开业界在共享标准上达成共识。向智能体的转变也不例外。</p>
+<p>Cloudflare 长期以来一直致力于做出贡献并帮助推动互联网运行标准的制定。十多年来，我们一直<a href="https://blog.cloudflare.com/tag/ietf" target="_blank" rel="noopener noreferrer"><u>深度参与了 IETF 的相关工作</u></a>，帮助制定并部署了 QUIC、TLS 1.3 和 Encrypted Client Hello 等协议。Cloudflare 也是 ECMA JavaScript 运行时互操作性技术委员会 WinterTC 的创始成员。我们将 Workers 运行时本身开源，因为我们认为基础架构应该保持开放。</p>
+<p>Cloudflare 将同样的理念带入智能体时代。我们很高兴能够成为 Linux 基金会和 AAIF 的一员，并支持和推动 MCP 等标准的制定，这将为智能体的未来发展奠定基础。自从 Anthropic 推出 MCP 以来，我们一直与他们密切合作，构建了远程 MCP 服务器的基础设施，开源了 Cloudflare 自己的实施标准，并投入资源推动该协议的大规模实际应用。</p>
+<p>去年，Cloudflare 与 Coinbase <a href="https://blog.cloudflare.com/x402" target="_blank" rel="noopener noreferrer"><u>合作创立了 x402 Foundation</u></a>，这个开放、中立的标准旨在恢复长期处于休眠状态的 HTTP 402 状态码，为智能体提供一种原生方式，用于为其消费的服务和内容付费。</p>
+<p>智能体身份、授权、支付、安全：这些都需要开放的标准，但任何一家公司都无法独自定义这些标准。</p>
+<h2>敬请关注</h2>
+<p>本周，我们将发布关于智能体技术栈各个方面的公告：计算、连接、安全性、身份、经济效益，以及开发者体验。</p>
+<p>互联网并非为 AI 时代而设计。云服务也不是为智能体而构建。但 Cloudflare 一直致力于帮助构建更好的互联网，而“更好”的含义随着时代的变化而变化。如今，我们正处于智能体时代。Cloudflare 本周将发布智能体相关产品和服务，<a href="https://blog.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>敬请关注</u></a>。</p>

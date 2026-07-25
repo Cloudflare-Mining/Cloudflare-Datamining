@@ -1,182 +1,134 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5qJu9MRz57Hr7ADuD0vyvp/1197816c370dcc274b5941ea7675e642/image2-33.png" alt="More Node.js APIs in Cloudflare Workers — Streams, Path, StringDecoder" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<p>Today we are announcing support for three additional APIs from Node.js in Cloudflare Workers. This increases compatibility with the existing ecosystem of open source npm packages, allowing you to use your preferred libraries in Workers, even if they depend on APIs from Node.js.</p>
-	<p>We recently <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage">added support</a> for AsyncLocalStorage, EventEmitter, Buffer, assert and parts of util. Today, we are adding support for:</p>
-	<ul>
-		<li>
-			<p>Node.js <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams" target="_blank" rel="noopener noreferrer">Streams</a></p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/path" target="_blank" rel="noopener noreferrer">Path</a></p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/string-decoder" target="_blank" rel="noopener noreferrer">StringDecoder</a></p>
-		</li>
-	</ul>
-	<p>We are also sharing a preview of a new module type, available in the <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">open-source Workers runtime</a>, that mirrors a Node.js environment more closely by making some APIs available as globals, and allowing imports without the node: specifier prefix.</p>
-	<p>You can start using these APIs today, in the <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">open-source runtime</a> that powers Cloudflare Workers, in local development, and when you deploy your Worker. Get started by <a href="https://developers.cloudflare.com/workers/platform/nodejs-compatibility" target="_blank" rel="noopener noreferrer">enabling the nodejs_compat compatibility flag</a> for your Worker.</p>
-	<div class="flex anchor relative">
-		<h3 id="stream">Stream</h3>
-		<a href="https://blog.cloudflare.com/#stream" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://nodejs.org/dist/latest-v20.x/docs/api/stream.html" target="_blank" rel="noopener noreferrer">Node.js streams API</a> is the original API for working with streaming data in JavaScript that predates the <a href="https://streams.spec.whatwg.org" target="_blank" rel="noopener noreferrer">WHATWG ReadableStream standard</a>. Now, a full implementation of Node.js streams (based directly on the <a href="https://www.npmjs.com/package/readable-stream" target="_blank" rel="noopener noreferrer">official implementation</a> provided by the Node.js project) is available within the Workers runtime.</p>
-	<p>Let's start with a quick example:</p>
-	<pre class="language-javascript"><code class="language-javascript">import {
-  Readable,
-  Transform,
-} from 'node:stream';
-
-import {
-  text,
-} from 'node:stream/consumers';
-
-import {
-  pipeline,
-} from 'node:stream/promises';
-
-// A Node.js-style Transform that converts data to uppercase
-// and appends a newline to the end of the output.
-class MyTransform extends Transform {
-  constructor() {
-    super({ encoding: 'utf8' });
-  }
-  _transform(chunk, _, cb) {
-    this.push(chunk.toString().toUpperCase());
-    cb();
-  }
-  _flush(cb) {
-    this.push('\n');
-    cb();
-  }
-}
-
-export default {
-  async fetch() {
-    const chunks = [
-      "hello ",
-      "from ",
-      "the ",
-      "wonderful ",
-      "world ",
-      "of ",
-      "node.js ",
-      "streams!"
-    ];
-
-    function nextChunk(readable) {
-      readable.push(chunks.shift());
-      if (chunks.length === 0) readable.push(null);
-      else queueMicrotask(() =&gt; nextChunk(readable));
-    }
-
-    // A Node.js-style Readable that emits chunks from the
-    // array...
-    const readable = new Readable({
-      encoding: 'utf8',
-      read() { nextChunk(readable); }
-    });
-
-    const transform = new MyTransform();
-    await pipeline(readable, transform);
-    return new Response(await text(transform));
-  }
-};</code></pre>
-	<p>In this example we create two Node.js stream objects: one stream.Readable and one stream.Transform. The stream.Readable simply emits a sequence of individual strings, piped through the stream.Transform which converts those to uppercase and appends a new-line as a final chunk.</p>
-	<p>The example is straightforward and illustrates the basic operation of the Node.js API. For anyone already familiar with using standard WHATWG streams in Workers the pattern here should be recognizable.</p>
-	<p>The Node.js streams API is used by countless numbers of modules published on <a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">npm</a>. Now that the Node.js streams API is available in Workers, many packages that depend on it can be used in your Workers. For example, the <a href="https://www.npmjs.com/package/split2" target="_blank" rel="noopener noreferrer">split2 module</a> is a simple utility that can break a stream of data up and reassemble it so that every line is a distinct chunk. While simple, the module is downloaded over 13 million times each week and has over a thousand direct dependents on npm (and many more indirect dependents). Previously it was not possible to use split2 within Workers without also pulling in a large and complicated polyfill implementation of streams along with it. Now split2 can be used directly within Workers with no modifications and no additional polyfills. This reduces the size and complexity of your Worker by thousands of lines.</p>
-	<pre class="language-javascript"><code class="language-javascript">import {
-  PassThrough,
-} from 'node:stream';
-
-import { default as split2 } from 'split2';
-
-const enc = new TextEncoder();
-
-export default {
-  async fetch() {
-    const pt = new PassThrough();
-    const readable = pt.pipe(split2());
-
-    pt.end('hello\nfrom\nthe\nwonderful\nworld\nof\nnode.js\nstreams!');
-    for await (const chunk of readable) {
-      console.log(chunk);
-    }
-
-    return new Response("ok");
-  }
-};</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="path">Path</h3>
-		<a href="https://blog.cloudflare.com/#path" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://nodejs.org/api/path.html" target="_blank" rel="noopener noreferrer">Node.js Path API</a> provides utilities for working with file and directory paths. For example:</p>
-	<pre class="language-javascript"><code class="language-javascript">import path from "node:path"
-path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
-
-// Returns: '/foo/bar/baz/asdf'</code></pre>
-	<p>Note that in the Workers implementation of path, the <a href="https://nodejs.org/api/path.html#pathwin32" target="_blank" rel="noopener noreferrer">path.win32</a> variants of the path API are not implemented, and will throw an exception.</p>
-	<div class="flex anchor relative">
-		<h3 id="stringdecoder">StringDecoder</h3>
-		<a href="https://blog.cloudflare.com/#stringdecoder" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <a href="https://nodejs.org/dist/latest-v20.x/docs/api/string_decoder.html" target="_blank" rel="noopener noreferrer">Node.js StringDecoder API</a> is a simple legacy utility that predates the <a href="https://encoding.spec.whatwg.org" target="_blank" rel="noopener noreferrer">WHATWG standard TextEncoder/TextDecoder API</a> and serves roughly the same purpose. It is used by Node.js' stream API implementation as well as a number of popular npm modules for the purpose of decoding UTF-8, UTF-16, Latin1, Base64, and Hex encoded data.</p>
-	<pre class="language-javascript"><code class="language-javascript">import { StringDecoder } from 'node:string_decoder';
-const decoder = new StringDecoder('utf8');
-
-const cent = Buffer.from([0xC2, 0xA2]);
-console.log(decoder.write(cent));
-
-const euro = Buffer.from([0xE2, 0x82, 0xAC]);
-console.log(decoder.write(euro)); </code></pre>
-	<p>In the vast majority of cases, your Worker should just keep on using the standard TextEncoder/TextDecoder APIs, but the StringDecoder is available directly for workers to use now without relying on polyfills.</p>
-	<div class="flex anchor relative">
-		<h3 id="node-js-compat-modules">Node.js Compat Modules</h3>
-		<a href="https://blog.cloudflare.com/#node-js-compat-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One Worker can already be a <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#bundling" target="_blank" rel="noopener noreferrer">bundle of multiple assets</a>. This allows a single Worker to be made up of multiple individual ESM modules, CommonJS modules, JSON, text, and binary data files.</p>
-	<p>Soon there will be a new type of module that can be included in a Worker bundles: the NodeJsCompatModule.</p>
-	<p>A NodeJsCompatModule is designed to emulate the Node.js environment as much as possible. Within these modules, common Node.js global variables such as process, Buffer, and even __filename will be available. More importantly, it is possible to require() our Node.js core API implementations without using the node: specifier prefix. This maximizes compatibility with existing NPM packages that depend on globals from Node.js being present, or don’t import Node.js APIs using the node: specifier prefix.</p>
-	<p>Support for this new module type has landed in the open source <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a> runtime, with deeper integration with Wrangler coming soon.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re adding support for more Node.js APIs each month, and as we introduce new APIs, they will be added under the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer">nodejs_compat compatibility flag</a> — no need to take any action or update your <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility date</a>.</p>
-	<p>Have an NPM package that you wish worked on Workers, or an API you’d like to be able to use? Join the <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a> and tell us what you’re building, and what you’d like to see next.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/56ddbbea460d0e736d45e6b4944c637d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F56ddbbea460d0e736d45e6b4944c637d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+<p>Today we are announcing support for three additional APIs from Node.js in Cloudflare Workers. This increases compatibility with the existing ecosystem of open source npm packages, allowing you to use your preferred libraries in Workers, even if they depend on APIs from Node.js.</p>
+<p>We recently <a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage">added support</a> for AsyncLocalStorage, EventEmitter, Buffer, assert and parts of util. Today, we are adding support for:</p>
+<ul>
+	<li>Node.js <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams" target="_blank" rel="noopener noreferrer">Streams</a></li>
+	<li><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/path" target="_blank" rel="noopener noreferrer">Path</a></li>
+	<li><a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/string-decoder" target="_blank" rel="noopener noreferrer">StringDecoder</a></li>
+</ul>
+<p>We are also sharing a preview of a new module type, available in the <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">open-source Workers runtime</a>, that mirrors a Node.js environment more closely by making some APIs available as globals, and allowing imports without the node: specifier prefix.</p>
+<p>You can start using these APIs today, in the <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">open-source runtime</a> that powers Cloudflare Workers, in local development, and when you deploy your Worker. Get started by <a href="https://developers.cloudflare.com/workers/platform/nodejs-compatibility" target="_blank" rel="noopener noreferrer">enabling the nodejs_compat compatibility flag</a> for your Worker.</p>
+<h3>Stream</h3>
+<p>The <a href="https://nodejs.org/dist/latest-v20.x/docs/api/stream.html" target="_blank" rel="noopener noreferrer">Node.js streams API</a> is the original API for working with streaming data in JavaScript that predates the <a href="https://streams.spec.whatwg.org" target="_blank" rel="noopener noreferrer">WHATWG ReadableStream standard</a>. Now, a full implementation of Node.js streams (based directly on the <a href="https://www.npmjs.com/package/readable-stream" target="_blank" rel="noopener noreferrer">official implementation</a> provided by the Node.js project) is available within the Workers runtime.</p>
+<p>Let's start with a quick example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  Readable,</span></span>
+<span class="line"><span class="sk-24292e-fff">  Transform,</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:stream'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  text,</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:stream/consumers'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  pipeline,</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:stream/promises'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// A Node.js-style Transform that converts data to uppercase</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// and appends a newline to the end of the output.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MyTransform</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Transform</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    super</span><span class="sk-24292e-fff">({ encoding: </span><span class="sk-032f62-99ffe4">'utf8'</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  _transform</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">chunk</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">_</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">cb</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(chunk.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toUpperCase</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    cb</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  _flush</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">cb</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    cb</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> chunks</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "hello "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "from "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "the "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "wonderful "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "world "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "of "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "node.js "</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "streams!"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    function</span><span class="sk-6f42c1-ffc799"> nextChunk</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">readable</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">      readable.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(chunks.</span><span class="sk-6f42c1-ffc799">shift</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (chunks.</span><span class="sk-005cc5-fff">length</span><span class="sk-d73a49-a0a0a0"> ===</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) readable.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      else</span><span class="sk-6f42c1-ffc799"> queueMicrotask</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> nextChunk</span><span class="sk-24292e-fff">(readable));</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // A Node.js-style Readable that emits chunks from the</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // array...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Readable</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      encoding: </span><span class="sk-032f62-99ffe4">'utf8'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      read</span><span class="sk-24292e-fff">() { </span><span class="sk-6f42c1-ffc799">nextChunk</span><span class="sk-24292e-fff">(readable); }</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> transform</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MyTransform</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-6f42c1-ffc799"> pipeline</span><span class="sk-24292e-fff">(readable, transform);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> text</span><span class="sk-24292e-fff">(transform));</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>In this example we create two Node.js stream objects: one stream.Readable and one stream.Transform. The stream.Readable simply emits a sequence of individual strings, piped through the stream.Transform which converts those to uppercase and appends a new-line as a final chunk.</p>
+<p>The example is straightforward and illustrates the basic operation of the Node.js API. For anyone already familiar with using standard WHATWG streams in Workers the pattern here should be recognizable.</p>
+<p>The Node.js streams API is used by countless numbers of modules published on <a href="https://www.npmjs.com" target="_blank" rel="noopener noreferrer">npm</a>. Now that the Node.js streams API is available in Workers, many packages that depend on it can be used in your Workers. For example, the <a href="https://www.npmjs.com/package/split2" target="_blank" rel="noopener noreferrer">split2 module</a> is a simple utility that can break a stream of data up and reassemble it so that every line is a distinct chunk. While simple, the module is downloaded over 13 million times each week and has over a thousand direct dependents on npm (and many more indirect dependents). Previously it was not possible to use split2 within Workers without also pulling in a large and complicated polyfill implementation of streams along with it. Now split2 can be used directly within Workers with no modifications and no additional polyfills. This reduces the size and complexity of your Worker by thousands of lines.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  PassThrough,</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:stream'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { </span><span class="sk-d73a49-a0a0a0">default</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> split2 } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'split2'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> enc</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> pt</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> PassThrough</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> readable</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> pt.</span><span class="sk-6f42c1-ffc799">pipe</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">split2</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    pt.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hello</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">from</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">the</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">wonderful</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">world</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">of</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">node.js</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">streams!'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> chunk</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> readable) {</span></span>
+<span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(chunk);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ok"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<h3>Path</h3>
+<p>The <a href="https://nodejs.org/api/path.html" target="_blank" rel="noopener noreferrer">Node.js Path API</a> provides utilities for working with file and directory paths. For example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> path </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "node:path"</span></span>
+<span class="line"><span class="sk-24292e-fff">path.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/foo'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'bar'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'baz/asdf'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'quux'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'..'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Returns: '/foo/bar/baz/asdf'</span></span></code></pre>
+</div>
+<p>Note that in the Workers implementation of path, the <a href="https://nodejs.org/api/path.html#pathwin32" target="_blank" rel="noopener noreferrer">path.win32</a> variants of the path API are not implemented, and will throw an exception.</p>
+<h3>StringDecoder</h3>
+<p>The <a href="https://nodejs.org/dist/latest-v20.x/docs/api/string_decoder.html" target="_blank" rel="noopener noreferrer">Node.js StringDecoder API</a> is a simple legacy utility that predates the <a href="https://encoding.spec.whatwg.org" target="_blank" rel="noopener noreferrer">WHATWG standard TextEncoder/TextDecoder API</a> and serves roughly the same purpose. It is used by Node.js' stream API implementation as well as a number of popular npm modules for the purpose of decoding UTF-8, UTF-16, Latin1, Base64, and Hex encoded data.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { StringDecoder } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:string_decoder'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> decoder</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> StringDecoder</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'utf8'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> cent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">([</span><span class="sk-005cc5-ffc799">0xC2</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0xA2</span><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(decoder.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(cent));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> euro</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">([</span><span class="sk-005cc5-ffc799">0xE2</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0x82</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0xAC</span><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(decoder.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(euro)); </span></span></code></pre>
+</div>
+<p>In the vast majority of cases, your Worker should just keep on using the standard TextEncoder/TextDecoder APIs, but the StringDecoder is available directly for workers to use now without relying on polyfills.</p>
+<h3>Node.js Compat Modules</h3>
+<p>One Worker can already be a <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#bundling" target="_blank" rel="noopener noreferrer">bundle of multiple assets</a>. This allows a single Worker to be made up of multiple individual ESM modules, CommonJS modules, JSON, text, and binary data files.</p>
+<p>Soon there will be a new type of module that can be included in a Worker bundles: the NodeJsCompatModule.</p>
+<p>A NodeJsCompatModule is designed to emulate the Node.js environment as much as possible. Within these modules, common Node.js global variables such as process, Buffer, and even __filename will be available. More importantly, it is possible to require() our Node.js core API implementations without using the node: specifier prefix. This maximizes compatibility with existing NPM packages that depend on globals from Node.js being present, or don’t import Node.js APIs using the node: specifier prefix.</p>
+<p>Support for this new module type has landed in the open source <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a> runtime, with deeper integration with Wrangler coming soon.</p>
+<h3>What’s next</h3>
+<p>We’re adding support for more Node.js APIs each month, and as we introduce new APIs, they will be added under the <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates/#nodejs-compatibility-flag" target="_blank" rel="noopener noreferrer">nodejs_compat compatibility flag</a> — no need to take any action or update your <a href="https://developers.cloudflare.com/workers/platform/compatibility-dates" target="_blank" rel="noopener noreferrer">compatibility date</a>.</p>
+<p>Have an NPM package that you wish worked on Workers, or an API you’d like to be able to use? Join the <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a> and tell us what you’re building, and what you’d like to see next.</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k3b" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/56ddbbea460d0e736d45e6b4944c637d/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F56ddbbea460d0e736d45e6b4944c637d%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

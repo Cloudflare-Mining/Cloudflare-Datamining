@@ -1,648 +1,552 @@
-<div class="mb2 gray5">Lesezeit: 10&nbsp;Min.</div>
-<div class="mt4">Dieser Beitrag ist auch auf <a href="https://blog.cloudflare.com/paris-2024-summer-olympics-impacted-internet-traffic">English</a>, <a href="https://blog.cloudflare.com/es-es/paris-2024-summer-olympics-impacted-internet-traffic">Español</a>, und <a href="https://blog.cloudflare.com/fr-fr/paris-2024-summer-olympics-impacted-internet-traffic">Français</a> verfügbar.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CiBP3qp9ZohZ6IkVrRQlr/22ef0981735e700746d23fffb5f7c915/1.png" alt="1" class="kg-image" width="1200" height="675" loading="lazy">
-	</figure>
-	<p>Die <a href="https://en.wikipedia.org/wiki/2024_Summer_Olympics" target="_blank" rel="noopener noreferrer">Olympischen Sommerspiele 2024 in Paris</a> mit dem Slogan „Offene Spiele“ (<i>Ouvrons Grand les Jeux</i>) sind am Freitag, dem 26. Juli, gestartet und laufen noch bis zum 11. August. Insgesamt 10.714 Athleten aus 204 Nationen, darunter Einzelsportler und Flüchtlingsmannschaften, nehmen an 329 Wettkämpfen in 32 Sportarten teil. Dieser Blog-Beitrag konzentriert sich auf die Eröffnungsfeier und die ersten Tage des Großereignisses. Untersucht werden die Auswirkungen auf den Internet-Traffic, insbesondere in Frankreich, die Beliebtheit der Olympia-Websites in den einzelnen Ländern und die Zunahme von Spam und schädlichen E-Mails, die mit den Olympischen Spielen in Verbindung stehen.</p>
-	<p>Cloudflare ist weltweit mit Rechenzentren in mehr als 320 Städten vertreten und unterstützt Millionen von Kunden. Dadurch verfügen wir einen guten Überblick darüber, was weltweit im Internet vor sich geht. Das ist hilfreich zur Steigerung von Sicherheit, Datenschutz, Effizienz und Geschwindigkeit, aber auch für die Beobachtung von Internetstörungen und Traffic-Trends.</p>
-	<p>Für unseren <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">Bericht zu den Olympischen Spielen 2024 auf Cloudflare Radar</a> beobachten wir das Event genau. Wir werden Sie daher über alle wichtigen Entwicklungen im Internet während dieser Zeit informieren.</p>
-	<div class="flex anchor relative">
-		<h3 id="an-opening-ceremony-to-remember">Eine denkwürdige Eröffnungsfeier</h3>
-		<a href="https://blog.cloudflare.com/#an-opening-ceremony-to-remember" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Zum ersten Mal in der modernen Geschichte der Olympischen Spiele hat die Eröffnungsfeier außerhalb eines Stadiums stattgefunden. Sie dauerte fast vier Stunden und hatte spürbare Auswirkungen auf den Internet-Traffic in Frankreich. Das Interesse innerhalb des Landes war während der Fernsehübertragung deutlich spürbar und führte zu signifikanten Rückgängen beim Internet-Datenverkehr, ähnlich wie <a href="https://blog.cloudflare.com/euro-2024s-impact-on-internet-traffic-a-closer-look-at-finalists-spain-and-england">bei der diesjährigen Fußballeuropameisterschaft</a>: Unsere Erfahrung zeigt, dass der Internet-Traffic während landesweiter Fernsehübertragungen solcher Veranstaltungen normalerweise abnimmt.</p>
-	<p>Die Olympischen Spiele sind mehr als nur Sportereignisse – sie sind voller inspirierender Momente und Geschichten, die in Echtzeit globale Aufmerksamkeit erregen und Erzählungen schaffen, die fortbestehen. Erhebliche Traffic-Rückgänge während der Eröffnungsfeier fielen mit den Auftritten von Céline Dion und Lady Gaga, der Entzündung des olympischen Feuers und der Darbietung des John Lennon-Songs „Imagine“ von Juliette Armanet zusammen. Es folgt eine Aufschlüsselung der fünf größten Traffic-Rückgänge im Vergleich zur Vorwoche, die während der Eröffnungsfeier verzeichnet wurden, mit Angabe der zugehörigen Ereignisse. Unsere Daten bieten Einblick mit einer Genauigkeit von 15 Minuten.</p>
-	<div class="flex anchor relative">
-		<h3 id="moments-of-the-ceremony-by-traffic-drop"><b>Traffic-Rückgang aufgeschlüsselt nach Programmpunkt der Eröffnungsfeier</b></h3>
-		<a href="https://blog.cloudflare.com/#moments-of-the-ceremony-by-traffic-drop" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+<p>Die <a href="https://en.wikipedia.org/wiki/2024_Summer_Olympics" target="_blank" rel="noopener noreferrer">Olympischen Sommerspiele 2024 in Paris</a> mit dem Slogan „Offene Spiele“ (<em>Ouvrons Grand les Jeux</em>) sind am Freitag, dem 26. Juli, gestartet und laufen noch bis zum 11. August. Insgesamt 10.714 Athleten aus 204 Nationen, darunter Einzelsportler und Flüchtlingsmannschaften, nehmen an 329 Wettkämpfen in 32 Sportarten teil. Dieser Blog-Beitrag konzentriert sich auf die Eröffnungsfeier und die ersten Tage des Großereignisses. Untersucht werden die Auswirkungen auf den Internet-Traffic, insbesondere in Frankreich, die Beliebtheit der Olympia-Websites in den einzelnen Ländern und die Zunahme von Spam und schädlichen E-Mails, die mit den Olympischen Spielen in Verbindung stehen.</p>
+<p>Cloudflare ist weltweit mit Rechenzentren in mehr als 320 Städten vertreten und unterstützt Millionen von Kunden. Dadurch verfügen wir einen guten Überblick darüber, was weltweit im Internet vor sich geht. Das ist hilfreich zur Steigerung von Sicherheit, Datenschutz, Effizienz und Geschwindigkeit, aber auch für die Beobachtung von Internetstörungen und Traffic-Trends.</p>
+<p>Für unseren <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">Bericht zu den Olympischen Spielen 2024 auf Cloudflare Radar</a> beobachten wir das Event genau. Wir werden Sie daher über alle wichtigen Entwicklungen im Internet während dieser Zeit informieren.</p>
+<h3>Eine denkwürdige Eröffnungsfeier</h3>
+<p>Zum ersten Mal in der modernen Geschichte der Olympischen Spiele hat die Eröffnungsfeier außerhalb eines Stadiums stattgefunden. Sie dauerte fast vier Stunden und hatte spürbare Auswirkungen auf den Internet-Traffic in Frankreich. Das Interesse innerhalb des Landes war während der Fernsehübertragung deutlich spürbar und führte zu signifikanten Rückgängen beim Internet-Datenverkehr, ähnlich wie <a href="http://blog.cloudflare.com/euro-2024s-impact-on-internet-traffic-a-closer-look-at-finalists-spain-and-england" target="_blank" rel="noopener noreferrer">bei der diesjährigen Fußballeuropameisterschaft</a>: Unsere Erfahrung zeigt, dass der Internet-Traffic während landesweiter Fernsehübertragungen solcher Veranstaltungen normalerweise abnimmt.</p>
+<p>Die Olympischen Spiele sind mehr als nur Sportereignisse – sie sind voller inspirierender Momente und Geschichten, die in Echtzeit globale Aufmerksamkeit erregen und Erzählungen schaffen, die fortbestehen. Erhebliche Traffic-Rückgänge während der Eröffnungsfeier fielen mit den Auftritten von Céline Dion und Lady Gaga, der Entzündung des olympischen Feuers und der Darbietung des John Lennon-Songs „Imagine“ von Juliette Armanet zusammen. Es folgt eine Aufschlüsselung der fünf größten Traffic-Rückgänge im Vergleich zur Vorwoche, die während der Eröffnungsfeier verzeichnet wurden, mit Angabe der zugehörigen Ereignisse. Unsere Daten bieten Einblick mit einer Genauigkeit von 15 Minuten.</p>
+<h3><strong>Traffic-Rückgang aufgeschlüsselt nach Programmpunkt der Eröffnungsfeier</strong></h3>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Zeitpunkt des Rückgangs (MESZ)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Umfang des Rückgangs</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Programmpunkt</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nr. 1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>ca. 23:15 Uhr</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-20 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Das olympische Feuer wird entzündet und entschwebt in einem Heißluftballon in den Himmel von Paris; Céline Dion bringt vom Eiffelturm aus ein Lied zur Darbietung.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nr. 2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>~17:45</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-17 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Lady Gaga singt den französischen Schlager „Mon truc en plumes“ von Zizi Jeanmaire.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nr. 3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>~19:45</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-16.9 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Das Boot des US-amerikanischen Olympia-Teams beginnt seine Fahrt auf der Seine, gefolgt vom dem des französischen Teams, dem letzten Boot, das sich auf den Weg zum Eiffelturm macht.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nr. 4</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>~20:15</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-16.9 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Dionymus singt den Song „Naked“ (Philippe Katerine); der John Lennon-Song „Imagine“ wird von Juliette Armanet von der Mitte der Seine aus performt; ein Pferd aus Metall fährt den Fluss hinunter.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nr. 5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>~18:00</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-16.7 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Während die Boote weiter die Seine hinunter fahren, führen rund 80 Künstler des Moulin Rouge den berühmten französischen Kabaret-Tanz Cancan auf.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Während der Eröffnungsfeier am 26. Juli war der Internet-Datenverkehr zwischen 19:30 Uhr und 23:20 Uhr MESZ deutlich niedriger als im selben Zeitraum der Vorwoche; die Abnahme belief sich auf 15–20 %. Allerdings gab es auch Momente mit kleineren Rückgängen. Um 21:30 Uhr MESZ sank der Traffic beispielsweise während der Bootsparade der Sportler auf der Seine nur um 4 %. Unmittelbar nach dem Ereignis stieg er dann um 01:45 Uhr MESZ (27. Juli) im Wochenvergleich wieder um bis zu 8 % an.</p>
-	<p></p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/jPW2UvCb66a7e2aeSnXxR/80a5f6e11522787f16ab8fbf7e4bcac0/2.png" alt="2" class="kg-image" width="1999" height="640" loading="lazy">
-	</figure>
-	<p>Die Eröffnungsfeier hatte auch zur Folge, dass der Anteil von Mobilgeräten am Datenverkehr höher war als sonst in Frankreich üblich. Um 22:45 Uhr MESZ, kurz vor Ende der Eröffnungsfeier, betrug der Anteil von Mobilgeräten am Internettraffic 61 %, gegenüber 57 % zum selben Zeitpunkt der Vorwoche.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6113ZXiQpMELJGiCfyQ37K/ca508cf3864514426d92c9734ebb79c1/3.png" alt="3" class="kg-image" width="1999" height="725" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="parisians-leaving-town-before-the-olympics">Einwohner verlassen Paris vor Olympia</h3>
-		<a href="https://blog.cloudflare.com/#parisians-leaving-town-before-the-olympics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Zu den Olympischen Spielen in Paris haben viele Einwohner <a href="https://www.barrons.com/articles/where-are-parisians-going-during-the-olympics-281b7676" target="_blank" rel="noopener noreferrer">die Stadt verlassen</a>, um entweder in den Urlaub zu fahren oder sich an weniger gut besuchte Orte zu begeben, während die Touristen wegen der Spiele in der Stadt eintrafen. Die stärksten Traffic-Einbußen waren unseren Daten zufolge in der Region Île-de-France, wo sich Paris befindet, und in der Region Grand Est östlich der französischen Hauptstadt zu verzeichnen. Die folgende Grafik zeigt den täglichen Traffic in diesen Gebieten, wobei am Wochenende vor den Olympischen Spielen in der Region Île-de-France ein deutlicher Rückgang zu verzeichnen war.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vRCUb6WDR3mgPMu7nOC8i/56202de6f064c4230a6e383584f81ad7/4.png" alt="4" class="kg-image" width="1999" height="504" loading="lazy">
-	</figure>
-	<p>Eine Analyse der prozentualen Veränderung des Anfrage-Traffics gegenüber der Vorwoche zeigt, dass die größten Einbußen in der ersten Juliwoche (1.-7. Juli) verzeichnet wurden, in der es zu einem Rückgang um 15 % kam, und in der Woche vor Beginn der Olympischen Spiele, wo sich eine Abnahme um 8 % ergab. Interessanterweise hat es in der ersten Olympia-Woche (22.-28. Juli) keine prozentuale Veränderung beim Traffic gegeben: In dieser Zeit sind auch die meisten Besucher für die Olympischen Spiele eingetroffen.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4q4PHY473B331F8VmsiLEF/50295705360d40980d7b3a3831de2afd/5.png" alt="5" class="kg-image" width="1999" height="513" loading="lazy">
-	</figure>
-	<p>Der tägliche Anteil des Mobilgeräte-Datenverkehrs aus Frankreich zeigt ebenfalls Verschiebungen gemäß der typischen Muster, wobei insbesondere nach dem Wochenende vom 30. Juni Zuwächse verbucht wurden, die sich auf eine erhöhte Nutzung des Internets zu Freizeitzwecken in der Urlaubszeit zurückführen lassen. Der Mobilgeräte-Traffic verzeichnete seinen Höchststand während des ersten Olympia-Wochenendes. Am 26. Juli, dem Tag der Eröffnungsfeier, erreichte er einen Anteil von 53 %. Das war mehr als an jeden anderen Freitag seit Juni. Am Sonntag, dem 28. Juli, kletterte der Anteil des von Mobilgeräten generierten Datenverkehrs auf 58 %, den höchsten Stand seit Juni.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28XkXwMdDy7AAWPwV86b8J/dfbe55f4165a866600a2fdfa776d538f/6.png" alt="6" class="kg-image" width="1844" height="607" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="impact-to-internet-traffic-outside-of-france">Auswirkungen auf den Internet-Traffic außerhalb Frankreichs</h3>
-		<a href="https://blog.cloudflare.com/#impact-to-internet-traffic-outside-of-france" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Im Rest der Welt waren die Schwankungen beim Internet-Datenverkehr weniger ausgeprägt als in Frankreich. Am 26. Juli, dem Tag der Eröffnungszeremonie, kam es während der Veranstaltung allerdings international zu einem merklichen Rückgang. Dies wurde an zwei wichtigen Momenten besonders deutlich, auf die wir bereits eingegangen sind: Während der Song-Performances um 22:15 Uhr MESZ sank der Traffic um 3 % im Wochenvergleich und gegen Ende der Zeremonie, um 01:15 Uhr MESZ (27. Juli), verringerte er sich um 2 %.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1rYB8UfWJmCc2ueB8kcODl/ee9aa6ed78b016fd9cebf1f031099682/7.png" alt="7" class="kg-image" width="1999" height="646" loading="lazy">
-	</figure>
-	<p>Wenn wir nun auch andere Länder in den Blick nehmen, sind Momente klar erkennbar, in denen der Traffic während der Eröffnungsfeier deutlich abgenommen hat. Es folgt eine zusammenfassende Liste von 30 Ländern, die auf Grundlage ihres Medaillenspiegels bei den Olympischen Sommerspielen ausgewählt wurden.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Land</b></p>
-				</td>
-				<td>
-					<p><b>Rückgang des Traffic</b></p>
-				</td>
-				<td>
-					<p><b>Zeitpunkt des Rückgangs (MESZ)</b></p>
-				</td>
+</div>
+<p>Während der Eröffnungsfeier am 26. Juli war der Internet-Datenverkehr zwischen 19:30 Uhr und 23:20 Uhr MESZ deutlich niedriger als im selben Zeitraum der Vorwoche; die Abnahme belief sich auf 15–20 %. Allerdings gab es auch Momente mit kleineren Rückgängen. Um 21:30 Uhr MESZ sank der Traffic beispielsweise während der Bootsparade der Sportler auf der Seine nur um 4 %. Unmittelbar nach dem Ereignis stieg er dann um 01:45 Uhr MESZ (27. Juli) im Wochenvergleich wieder um bis zu 8 % an.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="229" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=640&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=750&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=828&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=1080&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=1280&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=1430&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GMAY363BJ098SJ5HEZN3.png&amp;w=1920&amp;h=615&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="615" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="229" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Die Eröffnungsfeier hatte auch zur Folge, dass der Anteil von Mobilgeräten am Datenverkehr höher war als sonst in Frankreich üblich. Um 22:45 Uhr MESZ, kurz vor Ende der Eröffnungsfeier, betrug der Anteil von Mobilgeräten am Internettraffic 61 %, gegenüber 57 % zum selben Zeitpunkt der Vorwoche.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="259" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=715&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=640&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=715&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=750&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=828&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=1080&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=1280&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=1430&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VGGZR7CYJP56SSQ2K5RY.png&amp;w=1920&amp;h=696&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="696" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="259" class="pt-portable-image-media"></div>
+</figure>
+<h3>Einwohner verlassen Paris vor Olympia</h3>
+<p>Zu den Olympischen Spielen in Paris haben viele Einwohner <a href="https://www.barrons.com/articles/where-are-parisians-going-during-the-olympics-281b7676" target="_blank" rel="noopener noreferrer">die Stadt verlassen</a>, um entweder in den Urlaub zu fahren oder sich an weniger gut besuchte Orte zu begeben, während die Touristen wegen der Spiele in der Stadt eintrafen. Die stärksten Traffic-Einbußen waren unseren Daten zufolge in der Region Île-de-France, wo sich Paris befindet, und in der Region Grand Est östlich der französischen Hauptstadt zu verzeichnen. Die folgende Grafik zeigt den täglichen Traffic in diesen Gebieten, wobei am Wochenende vor den Olympischen Spielen in der Region Île-de-France ein deutlicher Rückgang zu verzeichnen war.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="180" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=715&amp;h=180&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=640&amp;h=161&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=715&amp;h=180&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=750&amp;h=189&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=828&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=1080&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=1280&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=1430&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z7C6P7DTVJMHPJD29TV.png&amp;w=1920&amp;h=484&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="484" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="180" class="pt-portable-image-media"></div>
+</figure>
+<p>Eine Analyse der prozentualen Veränderung des Anfrage-Traffics gegenüber der Vorwoche zeigt, dass die größten Einbußen in der ersten Juliwoche (1.-7. Juli) verzeichnet wurden, in der es zu einem Rückgang um 15 % kam, und in der Woche vor Beginn der Olympischen Spiele, wo sich eine Abnahme um 8 % ergab. Interessanterweise hat es in der ersten Olympia-Woche (22.-28. Juli) keine prozentuale Veränderung beim Traffic gegeben: In dieser Zeit sind auch die meisten Besucher für die Olympischen Spiele eingetroffen.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="183" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=715&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=640&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=715&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=750&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=828&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=1080&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=1280&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=1430&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470TNC7EPTYS66T5BCZPCF.png&amp;w=1920&amp;h=493&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="493" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="183" class="pt-portable-image-media"></div>
+</figure>
+<p>Der tägliche Anteil des Mobilgeräte-Datenverkehrs aus Frankreich zeigt ebenfalls Verschiebungen gemäß der typischen Muster, wobei insbesondere nach dem Wochenende vom 30. Juni Zuwächse verbucht wurden, die sich auf eine erhöhte Nutzung des Internets zu Freizeitzwecken in der Urlaubszeit zurückführen lassen. Der Mobilgeräte-Traffic verzeichnete seinen Höchststand während des ersten Olympia-Wochenendes. Am 26. Juli, dem Tag der Eröffnungsfeier, erreichte er einen Anteil von 53 %. Das war mehr als an jeden anderen Freitag seit Juni. Am Sonntag, dem 28. Juli, kletterte der Anteil des von Mobilgeräten generierten Datenverkehrs auf 58 %, den höchsten Stand seit Juni.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452J95C97XVPV352BJKNZG.png&amp;w=1844&amp;h=607&amp;f=webp" data-lightbox-width="1844" data-lightbox-height="607" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<h3>Auswirkungen auf den Internet-Traffic außerhalb Frankreichs</h3>
+<p>Im Rest der Welt waren die Schwankungen beim Internet-Datenverkehr weniger ausgeprägt als in Frankreich. Am 26. Juli, dem Tag der Eröffnungszeremonie, kam es während der Veranstaltung allerdings international zu einem merklichen Rückgang. Dies wurde an zwei wichtigen Momenten besonders deutlich, auf die wir bereits eingegangen sind: Während der Song-Performances um 22:15 Uhr MESZ sank der Traffic um 3 % im Wochenvergleich und gegen Ende der Zeremonie, um 01:15 Uhr MESZ (27. Juli), verringerte er sich um 2 %.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="231" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=715&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=640&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=715&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=750&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=828&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=1080&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=1280&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=1430&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VSREJNWZQFBRJK61K3KV.png&amp;w=1920&amp;h=620&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="620" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="231" class="pt-portable-image-media"></div>
+</figure>
+<p>Wenn wir nun auch andere Länder in den Blick nehmen, sind Momente klar erkennbar, in denen der Traffic während der Eröffnungsfeier deutlich abgenommen hat. Es folgt eine zusammenfassende Liste von 30 Ländern, die auf Grundlage ihres Medaillenspiegels bei den Olympischen Sommerspielen ausgewählt wurden.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Land</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Rückgang des Traffic</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Zeitpunkt des Rückgangs (MESZ)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Vereinigte Staaten</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-4 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Großbritannien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-8 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Frankreich</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-20 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Deutschland</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-4 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>China</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-4 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:00 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Italien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-11 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Australien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-2 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:00 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Ungarn</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-5 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Schweden</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-4 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Japan</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-12 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Russland</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-7 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>21:45 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Kanada</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-3 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Niederlande</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-6 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Rumänien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-12 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:00 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Finnland</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-12 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>19:30 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Polen</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-5 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Südkorea</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-4 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Kuba</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-3 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>21:00 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Bulgarien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-6 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Schweiz</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-10 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Dänemark</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-2 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Spanien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-8 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Norwegen</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-2 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Belgien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-5 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Brasilien</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-3 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Tschechische Republik</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-10 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20:00 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Slowakische Republik</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-11 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Ukraine</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-2 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22:45 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Neuseeland</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-9 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23:15 Uhr</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Griechenland</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-11 %</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20:00 Uhr</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Die folgende Weltkarte zeigt außerdem die Länder, in denen während der Eröffnungsfeier bemerkenswerte Auswirkungen auf den Internet-Traffic verzeichnet wurden.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xuE0PslAlP4mLSxcs0vc6/602ef3123ea83972d7271d3758f36648/8.png" alt="8" class="kg-image" width="1999" height="1179" loading="lazy">
-	</figure>
-	<p><i>(Quelle: Cloudflare; erstellt mit Datawrapper)</i></p>
-	<p>Außerhalb Europas waren die Länder mit den stärksten Rückgängen Neuseeland (-9 %), Usbekistan (-12 %), Argentinien (-13 %) und die Demokratische Republik Kongo (20 %). Diese verzeichneten alle eine stärkere Abnahme als die Staaten in Europa.​</p>
-	<div class="flex anchor relative">
-		<h3 id="significant-moments-at-the-games-from-simone-biles-to-olympic-records">Entscheidende Momente bei den Spielen: von Simone Biles bis zu olympischen Rekorden</h3>
-		<a href="https://blog.cloudflare.com/#significant-moments-at-the-games-from-simone-biles-to-olympic-records" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Im Folgenden gehen wir auf konkrete Ereignisse bei Olympia ein, die sich auf den Internet-Traffic auswirken – beginnend mit dem ersten vollständigen Wettkampftag am Samstag, dem 27. Juli.</p>
-	<p><b>Vereinigte Staaten</b>: Der Wettbewerb im Kunstturnen mit der vierfachen Olympiasiegerin Simone Biles wirkte sich auf den Internet-Datenverkehr in den USA deutlich stärker aus als die Eröffnungsfeier. Am 26. und 28. Juli sank der Traffic zu den Zeiten, in denen Biles antrat, am spürbarsten. Um 12:00 Uhr MESZ, zeitgleich mit ihrer Balkenübung, war der Datenverkehr bereits 4 % niedriger als in der Vorwoche. Um 12:45 Uhr MESZ, während ihrer Boden- und Sprungübungen, sank er um 6 %.</p>
-	<p><b>Frankreich</b>: Die Goldmedaille und der <a href="https://x.com/nytimes/status/1817641073994256735" target="_blank" rel="noopener noreferrer">olympische Rekord</a> des französischen Schwimmers Léon Marchand im 400-Meter-Einzellagenschwimmen der Männer am 28. Juli hatte die größten Auswirkungen im Gastgeberland. Der Traffic nahm um 20:30 Uhr MESZ während seines Wettkampfs um 17 % ab. Wie bereits erwähnt, führte jedoch die Eröffnungsfeier zu einem stärkeren Rückgang des Datenverkehrs.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46kATNlDmsf1XvlkVGPdM2/efd7a58db634cb7f64b462d8b178d3f4/9.png" alt="9" class="kg-image" width="1999" height="557" loading="lazy">
-	</figure>
-	<p><b>Australien</b>: Während des Sieges von Mollie O'Callaghan über 200 m Freistil der Frauen am 29. Juli gegen 22.00 Uhr MESZ war der Datenverkehr in Australien 5 % niedriger als eine Woche zuvor. Dies war ein größerer Rückgang als während der Eröffnungsfeier, bei der nur ein Minus von 2 % verzeichnet wurde.</p>
-	<p><b>Südkorea</b>: Der Gewinn der Goldmedaille durch das koreanische Bogenschützenteam der Frauen am 28. Juli um 17:30 Uhr MESZ führte zu einer Abnahme des Traffic um 8 %, dem stärksten Rückgang in dem Land zwischen dem 26. und dem 29. Juli.</p>
-	<p><b>Brasilien</b>: Der Datenverkehr in Brasilien war am 27. Juli gegen 21:30 Uhr MESZ 15 % niedriger als eine Woche zuvor, womit die Auswirkungen der Eröffnungsfeier übertroffen wurden. Dies geschah, als die brasilianischen Schwimmer Guilherme Costa und Maria Fernanda Costa beim Freistilschwimmen der Männer und Frauen über 400 m antraten.</p>
-	<div class="flex anchor relative">
-		<h3 id="dns-trends-to-official-olympic-websites-by-country">DNS-Trends bezüglich offizieller Olympia-Websites, aufgeschlüsselt nach Land</h3>
-		<a href="https://blog.cloudflare.com/#dns-trends-to-official-olympic-websites-by-country" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Am 22. Juli, vor Beginn der Olympischen Spiele, <a href="https://blog.cloudflare.com/de-de/countdown-to-paris-2024-france-leads-in-olympic-web-interest-de-de">berichteten</a> wir bereits über das gesteigerte Interesse an den offiziellen Olympia-Websites auf Grundlage der Daten zu Anfragen an unseren DNS-Resolver <a href="http://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a>. Wir stellten fest, dass Frankreich mit 24 % des DNS-Traffic zu offiziellen Olympia-Websites dominiert, gefolgt von Großbritannien (20 %) und den USA (17 %). Mit Beginn der Olympischen Spiele kam es jedoch zu einer Verschiebung, denn die Vereinigten Staaten übernahmen die Führung.</p>
-	<p>Am ersten vollständigen Wettkampftag, dem 27. Juli, waren die USA mit 16 % des gesamten DNS-Anfrage-Traffic zu offiziellen Olympia-Websites führend. Diese Veränderung deutet auf eine breitere Streuung des Interesses in den verschiedenen Ländern während Olympia hin. Eine dynamische Version der folgenden Karte finden Sie in unserem <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">Bericht zu den Olympischen Spielen in Paris 2024</a>.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59uVt1kbMAZTOagybdXbgY/1d340a17a52dba49d1c458c2607d10e4/10.png" alt="10" class="kg-image" width="1999" height="1154" loading="lazy">
-	</figure>
-	<p>Es folgen die zehn Länder mit dem höchsten Anteil an DNS-Anfragen für den ersten vollen Wettkampftag, den 27. Juli, an Olympia-Websites (gerundete Prozentsätze):</p>
-	<ol>
-		<li>
-			<p>Vereinigte Staaten: 16 %</p>
-		</li>
-		<li>
-			<p>Deutschland: 12 %</p>
-		</li>
-		<li>
-			<p>Frankreich: 9 %</p>
-		</li>
-		<li>
-			<p>Vietnam: 9 %</p>
-		</li>
-		<li>
-			<p>Brasilien: 5 %</p>
-		</li>
-		<li>
-			<p>Australien: 5 %</p>
-		</li>
-		<li>
-			<p>Großbritannien: 4 %</p>
-		</li>
-		<li>
-			<p>Niederlande: 4 %</p>
-		</li>
-		<li>
-			<p>Kanada: 3 %</p>
-		</li>
-		<li>
-			<p>Südafrika: 2 %</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="growth-in-interest-as-the-olympics-drew-closer">Mit Heranrücken der Olympischen Spiele wächst das Interesse</h3>
-		<a href="https://blog.cloudflare.com/#growth-in-interest-as-the-olympics-drew-closer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Der weltweite tägliche DNS-Traffic zu den offiziellen Olympia-Websites ist am 23. Juli auf den bisher höchsten Stand des Jahres geklettert und hat einen stetigen Anstieg verzeichnet. Seinen Höhepunkt erreichte er am 28. Juli, dem zweiten vollen Veranstaltungstag, mit einer Steigerung auf das Fünffache (509 %) gegenüber dem entsprechenden Zeitpunkt der Vorwoche. Am Tag der Eröffnungsfeier war der Datenverkehr bereits 110 % höher als eine Woche zuvor.</p>
-	<p>Zu den länderspezifischen Spitzenreitern gehörten die USA, deren an Olympia-Websites gerichteter Traffic am 28. Juli, dem ersten Wettkampftag von Simone Biles, um 719 % zulegte. In Frankreich erreichte er am selben Tag aufgrund eines Anstiegs um 391 % seinen Höhepunkt und in Deutschland steigerte er sich am 27. Juli um 2300 %.</p>
-	<p>Das vorläufige DNS-Ranking des für Olympia-Websites bestimmten Datenverkehrs nach Ländern zeigt, dass die Vereinigten Staaten ab dem 19. Juli vor Frankreich liegen. Außerdem stieg Deutschland am 27. Juli, dem ersten vollen Wettkampftag, auf Rang 2 auf, während Australien am 28. Juli auf Platz 4 kletterte. Der Spitzentag Kanadas war ebenfalls der 28. Juli.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1hvJt3mpx2yIDMpCK9ITnL/f9ec940e0a6d7f3dfa7596e2b37eba07/11.png" alt="11" class="kg-image" width="1999" height="732" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="railway-attacks-on-opening-ceremony-day-cause-surge-in-traffic">Angriffe auf die Bahn am Tag der Eröffnungsfeier verursachen Traffic-Steigerung</h3>
-		<a href="https://blog.cloudflare.com/#railway-attacks-on-opening-ceremony-day-cause-surge-in-traffic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Der Tag der Eröffnungsfeier, der 26. Juli, wurde durch <a href="https://en.wikipedia.org/wiki/2024_France_railway_arson_attacks" target="_blank" rel="noopener noreferrer">Brandanschläge auf Eisenbahnen</a> in Frankreich gestört, von denen die 800.000 Fahrgäste des Hochgeschwindigkeitsbahnsystems <a href="https://www.theguardian.com/sport/article/2024/jul/26/vandals-target-french-rail-network-olympics-opening-ceremony" target="_blank" rel="noopener noreferrer">betroffen</a> waren. Um 12:00 Uhr MESZ kam es zu einem erheblichen Anstieg des DNS-Datenverkehrs zu Websites öffentlicher Verkehrsmittel, einschließlich der Hochgeschwindigkeitszüge. Der Traffic erhöhte sich im Wochenvergleich um 2000 %, da die Nutzer auf diese Seiten zugriffen, um sich über die neuesten Entwicklungen zu informieren.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2VQoauax2hXAnBhvYNtAgt/36f069c878b0ae76e205a9050738e463/12.png" alt="12" class="kg-image" width="1500" height="638" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="ddos-attacks-always-around">DDoS-Angriffe sind allgegenwärtig</h3>
-		<a href="https://blog.cloudflare.com/#ddos-attacks-always-around" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Wie wir dieses Jahr bei <a href="https://blog.cloudflare.com/tag/election-security">Wahlen</a>, darunter denen in <a href="https://blog.cloudflare.com/2024-french-elections-political-cyber-attacks-and-internet-traffic-shifts">Frankreich</a>, beobachtet haben, sind politische Parteien nicht die einzigen Ziele von DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Distributed Denial of Service</a>)-Angriffen während wichtiger Ereignisse. Wir haben keinen koordinierten Strom größerer, auf Dienste, die möglicherweise während der Olympischen Spiele in Frankreich genutzt wurden, abzielenden DDoS-Attacken registriert. Einige Vorfälle konnten wir aber sehr wohl beobachten.</p>
-	<p>Eine stark genutzte Website der französischen Regierung war am 29. Juli Ziel eines DDoS-Angriffs, der neun Minuten dauerte und um 22:34 Uhr MESZ einen Spitzenwert von 207.000 Anfragen pro Sekunde erreichte.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3vuNjigeYMPmT9yPIoZv8r/b937f2c6162c51b903cb387cfb7a069a/13.png" alt="13" class="kg-image" width="1996" height="928" loading="lazy">
-	</figure>
-	<p>Vor Beginn der Olympischen Spiele war auch eine nationale Verkehrswebsite von einer kleineren DDoS-Attacke betroffen, die nur wenige Minuten dauerte und am 21. Juli um 12:20 Uhr MESZ ihren Höhepunkt bei 10.000 Anfragen pro Sekunde verzeichnete.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BTiio6bHujSTa2wF3PRHu/7adafe614213a89dcc272cafb33af74e/14.png" alt="14" class="kg-image" width="1999" height="921" loading="lazy">
-	</figure>
-	<p>Wie in unserem <a href="https://blog.cloudflare.com/de-de/ddos-threat-report-for-2024-q2-de-de">DDoS-Bericht für das zweite Quartal</a> erörtert, sind die meisten DDoS-Angriffe von kurzer Dauer, was sich bei den beiden genannten Attacken bestätigt. Außerdem erreichen 81 % der HTTP-DDoS-Angriffe ihren Höhepunkt bei weniger als 50.000 Anfragen pro Sekunde und nur 7 % kommen auf 100.000–250.000 Anfragen pro Sekunde. Während ein Angriff mit 10.000 Anfragen pro Sekunde für Cloudflare unbedeutend erscheinen mag, kann er für Websites verheerend sein, die nicht für so große Traffic-Mengen gerüstet sind.</p>
-	<div class="flex anchor relative">
-		<h3 id="olympics-and-paris-2024-emails-on-the-rise">E-Mails mit dem Betreff „Olympia“ und „Paris 2024“ auf dem Vormarsch</h3>
-		<a href="https://blog.cloudflare.com/#olympics-and-paris-2024-emails-on-the-rise" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Aus einem anderen Blickwinkel der Cybersicherheit betrachtet, ziehen Großereignisse oft Phishing und Spam an. Die Olympischen Spiele bilden da keine Ausnahme. Von Januar bis Ende Juli hat <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">der E-Mail-Sicherheitsdienst von Cloudflare</a> mehr als eine Million E-Mails mit „Olympia“ oder „Paris 2024“ im Betreff bearbeitet. In der Woche vom 22. bis 28. Juli, die mit den ersten Tagen der Olympischen Spiele zusammenfiel, gab es im Wochenvergleich einen Anstieg solcher E-Mails um 304 % und eine beachtliche Steigerung um 3111 % gegenüber der Woche mit der bislang höchsten Aktivität im Januar.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5TGRfpcQU8GKDWqooC5yR9/26d64c8e47ab73b15f5c7ae05d98bf20/15.png" alt="15" class="kg-image" width="1954" height="668" loading="lazy">
-	</figure>
-	<p>Was unerwünschte Nachrichten betraf, machte Spam 1,5 Prozent an allen E-Mails mit „Olympia“ oder „Paris 2024“ in der Betreffzeile aus. Bösartige E-Mails erreichen seit Januar einen Anteil von 0,1 Prozent. Somit würde eine Stichprobe von 1000 E-Mails etwa 15 Spam-Nachrichten und ca. eine bösartige E-Mail enthalten. Die meisten bösartigen E-Mails mit Bezug zu den Olympischen Spielen wurden in der Woche vom 6. Mai verschickt, wobei 0,6 % als bösartig eingestuft wurden. Obwohl nach diesem Höchststand ein Rückgang zu verzeichnen war, legte der Anteil im Juli wieder leicht zu. Am 8. Juli belief er sich auf 0,4 %. Trotz eines sprunghaften Anstiegs des E-Mail-Aufkommens in der Woche vom 22. Juli waren nur 0,05 % der E-Mails bösartig.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7jMHbikIFNolrJXaLa9YcT/734418210b3c2a86291374d493cf62d4/16.png" alt="16" class="kg-image" width="1999" height="672" loading="lazy">
-	</figure>
-	<p>In derselben Woche, in der die Olympischen Spiele begannen, stieg auch der Anteil der Spam-E-Mails auf über 2 %. Es handelte sich dabei um den höchsten Wert seit dem in der Woche vom 24. Juni verbuchten Spitzenniveau von 7 %.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OTQnTrsaO0BEqpApAgdfA/454e4d38afad2d32449bd2cc94f5a9cb/17.png" alt="17" class="kg-image" width="1944" height="658" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Fazit</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Die Olympischen Spiele in Paris haben am 26. Juli 2024 begonnen und hatten deutliche Auswirkungen auf den Internet-Datenverkehr in verschiedenen Ländern, vor allem im Gastgeberland Frankreich. Die erheblichen Traffic-Einbrüche während Schlüsselmomenten der Eröffnungsfeier und die Ausschläge des Datenverkehrs nach wichtigen Ereignissen verdeutlichen die allgegenwärtige Wechselwirkung zwischen solchen Events und der Art und Weise, in der Menschen mit der Online-Welt interagieren. Nur wenige Veranstaltungen lenken heute den Fokus vom Internet auf Fernsehübertragungen.</p>
-	<p>Wir haben auch beobachtet, dass das Interesse an den offiziellen Olympia-Websites stark zugenommen hat. So kam es zu einem deutlichen Anstieg des DNS-Traffic nach Beginn der Veranstaltung in verschiedenen Ländern, wobei die USA schließlich ganz oben auf dem Siegertreppchen standen.</p>
-	<p>Bezüglich der <a href="https://www.theregister.com/2024/07/29/french_fiber_cables_cut" target="_blank" rel="noopener noreferrer">Sabotage französischer Glasfaserkabel</a> am 29. Juli 2024 haben wir im Laufe des Tages keine nennenswerten Störungen des Internet-Datenverkehrs in Frankreich oder in bestimmten Städten des Landes beobachtet.</p>
-	<p>Während der Spiele veröffentlichen wir einen <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">Bericht zu Olympia 2024 in Paris</a> auf Cloudflare Radar, der aktualisiert wird, sobald sich wichtige Internet-Trends im Zusammenhang mit dem Großereignis herauskristallisieren.</p>
 </div>
+<p>Die folgende Weltkarte zeigt außerdem die Länder, in denen während der Eröffnungsfeier bemerkenswerte Auswirkungen auf den Internet-Traffic verzeichnet wurden.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="422" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=715&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=640&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=715&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=750&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=828&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=1080&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=1280&amp;h=755&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=1430&amp;h=844&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TEC1FWRAXRPDN3NNKFH3.png&amp;w=1920&amp;h=1132&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1132" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="422" class="pt-portable-image-media"></div>
+</figure>
+<p><em>(Quelle: Cloudflare; erstellt mit Datawrapper)</em></p>
+<p>Außerhalb Europas waren die Länder mit den stärksten Rückgängen Neuseeland (-9 %), Usbekistan (-12 %), Argentinien (-13 %) und die Demokratische Republik Kongo (20 %). Diese verzeichneten alle eine stärkere Abnahme als die Staaten in Europa.​</p>
+<h3>Entscheidende Momente bei den Spielen: von Simone Biles bis zu olympischen Rekorden</h3>
+<p>Im Folgenden gehen wir auf konkrete Ereignisse bei Olympia ein, die sich auf den Internet-Traffic auswirken – beginnend mit dem ersten vollständigen Wettkampftag am Samstag, dem 27. Juli.</p>
+<p><strong>Vereinigte Staaten</strong>: Der Wettbewerb im Kunstturnen mit der vierfachen Olympiasiegerin Simone Biles wirkte sich auf den Internet-Datenverkehr in den USA deutlich stärker aus als die Eröffnungsfeier. Am 26. und 28. Juli sank der Traffic zu den Zeiten, in denen Biles antrat, am spürbarsten. Um 12:00 Uhr MESZ, zeitgleich mit ihrer Balkenübung, war der Datenverkehr bereits 4 % niedriger als in der Vorwoche. Um 12:45 Uhr MESZ, während ihrer Boden- und Sprungübungen, sank er um 6 %.</p>
+<p><strong>Frankreich</strong>: Die Goldmedaille und der <a href="https://x.com/nytimes/status/1817641073994256735" target="_blank" rel="noopener noreferrer">olympische Rekord</a> des französischen Schwimmers Léon Marchand im 400-Meter-Einzellagenschwimmen der Männer am 28. Juli hatte die größten Auswirkungen im Gastgeberland. Der Traffic nahm um 20:30 Uhr MESZ während seines Wettkampfs um 17 % ab. Wie bereits erwähnt, führte jedoch die Eröffnungsfeier zu einem stärkeren Rückgang des Datenverkehrs.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="199" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=715&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=640&amp;h=178&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=715&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=750&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=828&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=1080&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=1280&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=1430&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46G82T85YBQMZ011RKXJM2.png&amp;w=1920&amp;h=535&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="535" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="199" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Australien</strong>: Während des Sieges von Mollie O'Callaghan über 200 m Freistil der Frauen am 29. Juli gegen 22.00 Uhr MESZ war der Datenverkehr in Australien 5 % niedriger als eine Woche zuvor. Dies war ein größerer Rückgang als während der Eröffnungsfeier, bei der nur ein Minus von 2 % verzeichnet wurde.</p>
+<p><strong>Südkorea</strong>: Der Gewinn der Goldmedaille durch das koreanische Bogenschützenteam der Frauen am 28. Juli um 17:30 Uhr MESZ führte zu einer Abnahme des Traffic um 8 %, dem stärksten Rückgang in dem Land zwischen dem 26. und dem 29. Juli.</p>
+<p><strong>Brasilien</strong>: Der Datenverkehr in Brasilien war am 27. Juli gegen 21:30 Uhr MESZ 15 % niedriger als eine Woche zuvor, womit die Auswirkungen der Eröffnungsfeier übertroffen wurden. Dies geschah, als die brasilianischen Schwimmer Guilherme Costa und Maria Fernanda Costa beim Freistilschwimmen der Männer und Frauen über 400 m antraten.</p>
+<h3>DNS-Trends bezüglich offizieller Olympia-Websites, aufgeschlüsselt nach Land</h3>
+<p>Am 22. Juli, vor Beginn der Olympischen Spiele, <a href="http://blog.cloudflare.com/de-de/countdown-to-paris-2024-france-leads-in-olympic-web-interest-de-de" target="_blank" rel="noopener noreferrer">berichteten</a> wir bereits über das gesteigerte Interesse an den offiziellen Olympia-Websites auf Grundlage der Daten zu Anfragen an unseren DNS-Resolver <a href="http://1.1.1.1" target="_blank" rel="noopener noreferrer">1.1.1.1</a>. Wir stellten fest, dass Frankreich mit 24 % des DNS-Traffic zu offiziellen Olympia-Websites dominiert, gefolgt von Großbritannien (20 %) und den USA (17 %). Mit Beginn der Olympischen Spiele kam es jedoch zu einer Verschiebung, denn die Vereinigten Staaten übernahmen die Führung.</p>
+<p>Am ersten vollständigen Wettkampftag, dem 27. Juli, waren die USA mit 16 % des gesamten DNS-Anfrage-Traffic zu offiziellen Olympia-Websites führend. Diese Veränderung deutet auf eine breitere Streuung des Interesses in den verschiedenen Ländern während Olympia hin. Eine dynamische Version der folgenden Karte finden Sie in unserem <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">Bericht zu den Olympischen Spielen in Paris 2024</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="413" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=640&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=715&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=750&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=828&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=1080&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=1280&amp;h=739&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=1430&amp;h=826&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="10" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478DEA4HJVF9K8T7CHZ632.png&amp;w=1920&amp;h=1108&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1108" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="413" class="pt-portable-image-media"></div>
+</figure>
+<p>Es folgen die zehn Länder mit dem höchsten Anteil an DNS-Anfragen für den ersten vollen Wettkampftag, den 27. Juli, an Olympia-Websites (gerundete Prozentsätze):</p>
+<ol>
+	<li>Vereinigte Staaten: 16 %</li>
+	<li>Deutschland: 12 %</li>
+	<li>Frankreich: 9 %</li>
+	<li>Vietnam: 9 %</li>
+	<li>Brasilien: 5 %</li>
+	<li>Australien: 5 %</li>
+	<li>Großbritannien: 4 %</li>
+	<li>Niederlande: 4 %</li>
+	<li>Kanada: 3 %</li>
+	<li>Südafrika: 2 %</li>
+</ol>
+<h3>Mit Heranrücken der Olympischen Spiele wächst das Interesse</h3>
+<p>Der weltweite tägliche DNS-Traffic zu den offiziellen Olympia-Websites ist am 23. Juli auf den bisher höchsten Stand des Jahres geklettert und hat einen stetigen Anstieg verzeichnet. Seinen Höhepunkt erreichte er am 28. Juli, dem zweiten vollen Veranstaltungstag, mit einer Steigerung auf das Fünffache (509 %) gegenüber dem entsprechenden Zeitpunkt der Vorwoche. Am Tag der Eröffnungsfeier war der Datenverkehr bereits 110 % höher als eine Woche zuvor.</p>
+<p>Zu den länderspezifischen Spitzenreitern gehörten die USA, deren an Olympia-Websites gerichteter Traffic am 28. Juli, dem ersten Wettkampftag von Simone Biles, um 719 % zulegte. In Frankreich erreichte er am selben Tag aufgrund eines Anstiegs um 391 % seinen Höhepunkt und in Deutschland steigerte er sich am 27. Juli um 2300 %.</p>
+<p>Das vorläufige DNS-Ranking des für Olympia-Websites bestimmten Datenverkehrs nach Ländern zeigt, dass die Vereinigten Staaten ab dem 19. Juli vor Frankreich liegen. Außerdem stieg Deutschland am 27. Juli, dem ersten vollen Wettkampftag, auf Rang 2 auf, während Australien am 28. Juli auf Platz 4 kletterte. Der Spitzentag Kanadas war ebenfalls der 28. Juli.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="262" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=750&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=828&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=1080&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=1280&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=1430&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="11" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RAF5WA797AYSPEAK5HQH.png&amp;w=1920&amp;h=703&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="703" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="262" class="pt-portable-image-media"></div>
+</figure>
+<h3>Angriffe auf die Bahn am Tag der Eröffnungsfeier verursachen Traffic-Steigerung</h3>
+<p>Der Tag der Eröffnungsfeier, der 26. Juli, wurde durch <a href="https://en.wikipedia.org/wiki/2024_France_railway_arson_attacks" target="_blank" rel="noopener noreferrer">Brandanschläge auf Eisenbahnen</a> in Frankreich gestört, von denen die 800.000 Fahrgäste des Hochgeschwindigkeitsbahnsystems <a href="https://www.theguardian.com/sport/article/2024/jul/26/vandals-target-french-rail-network-olympics-opening-ceremony" target="_blank" rel="noopener noreferrer">betroffen</a> waren. Um 12:00 Uhr MESZ kam es zu einem erheblichen Anstieg des DNS-Datenverkehrs zu Websites öffentlicher Verkehrsmittel, einschließlich der Hochgeschwindigkeitszüge. Der Traffic erhöhte sich im Wochenvergleich um 2000 %, da die Nutzer auf diese Seiten zugriffen, um sich über die neuesten Entwicklungen zu informieren.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="304" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=715&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=640&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=715&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=750&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=828&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=1080&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=1280&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=1430&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="12" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BJZ6655ZZ5ZV7VT6MP26.png&amp;w=1500&amp;h=638&amp;f=webp" data-lightbox-width="1500" data-lightbox-height="638" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="304" class="pt-portable-image-media"></div>
+</figure>
+<h3>DDoS-Angriffe sind allgegenwärtig</h3>
+<p>Wie wir dieses Jahr bei <a href="http://blog.cloudflare.com/tag/election-security" target="_blank" rel="noopener noreferrer">Wahlen</a>, darunter denen in <a href="http://blog.cloudflare.com/2024-french-elections-political-cyber-attacks-and-internet-traffic-shifts" target="_blank" rel="noopener noreferrer">Frankreich</a>, beobachtet haben, sind politische Parteien nicht die einzigen Ziele von DDoS (<a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Distributed Denial of Service</a>)-Angriffen während wichtiger Ereignisse. Wir haben keinen koordinierten Strom größerer, auf Dienste, die möglicherweise während der Olympischen Spiele in Frankreich genutzt wurden, abzielenden DDoS-Attacken registriert. Einige Vorfälle konnten wir aber sehr wohl beobachten.</p>
+<p>Eine stark genutzte Website der französischen Regierung war am 29. Juli Ziel eines DDoS-Angriffs, der neun Minuten dauerte und um 22:34 Uhr MESZ einen Spitzenwert von 207.000 Anfragen pro Sekunde erreichte.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="332" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=640&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=715&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=750&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=828&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=1080&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=1280&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=1430&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="13" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CA427GBHMCSW360V7CG2.png&amp;w=1920&amp;h=893&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="893" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="332" class="pt-portable-image-media"></div>
+</figure>
+<p>Vor Beginn der Olympischen Spiele war auch eine nationale Verkehrswebsite von einer kleineren DDoS-Attacke betroffen, die nur wenige Minuten dauerte und am 21. Juli um 12:20 Uhr MESZ ihren Höhepunkt bei 10.000 Anfragen pro Sekunde verzeichnete.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="329" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=640&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=715&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=750&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=828&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=1080&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=1280&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=1430&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="14" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V7ZVDETNVREV0GHETPTM.png&amp;w=1920&amp;h=885&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="885" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="329" class="pt-portable-image-media"></div>
+</figure>
+<p>Wie in unserem <a href="http://blog.cloudflare.com/de-de/ddos-threat-report-for-2024-q2-de-de" target="_blank" rel="noopener noreferrer">DDoS-Bericht für das zweite Quartal</a> erörtert, sind die meisten DDoS-Angriffe von kurzer Dauer, was sich bei den beiden genannten Attacken bestätigt. Außerdem erreichen 81 % der HTTP-DDoS-Angriffe ihren Höhepunkt bei weniger als 50.000 Anfragen pro Sekunde und nur 7 % kommen auf 100.000–250.000 Anfragen pro Sekunde. Während ein Angriff mit 10.000 Anfragen pro Sekunde für Cloudflare unbedeutend erscheinen mag, kann er für Websites verheerend sein, die nicht für so große Traffic-Mengen gerüstet sind.</p>
+<h3>E-Mails mit dem Betreff „Olympia“ und „Paris 2024“ auf dem Vormarsch</h3>
+<p>Aus einem anderen Blickwinkel der Cybersicherheit betrachtet, ziehen Großereignisse oft Phishing und Spam an. Die Olympischen Spiele bilden da keine Ausnahme. Von Januar bis Ende Juli hat <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">der E-Mail-Sicherheitsdienst von Cloudflare</a> mehr als eine Million E-Mails mit „Olympia“ oder „Paris 2024“ im Betreff bearbeitet. In der Woche vom 22. bis 28. Juli, die mit den ersten Tagen der Olympischen Spiele zusammenfiel, gab es im Wochenvergleich einen Anstieg solcher E-Mails um 304 % und eine beachtliche Steigerung um 3111 % gegenüber der Woche mit der bislang höchsten Aktivität im Januar.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=640&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=750&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=828&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=1080&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=1280&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=1430&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="15" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FNS793YNEPC9KE31JC6T.png&amp;w=1920&amp;h=656&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="656" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="244" class="pt-portable-image-media"></div>
+</figure>
+<p>Was unerwünschte Nachrichten betraf, machte Spam 1,5 Prozent an allen E-Mails mit „Olympia“ oder „Paris 2024“ in der Betreffzeile aus. Bösartige E-Mails erreichen seit Januar einen Anteil von 0,1 Prozent. Somit würde eine Stichprobe von 1000 E-Mails etwa 15 Spam-Nachrichten und ca. eine bösartige E-Mail enthalten. Die meisten bösartigen E-Mails mit Bezug zu den Olympischen Spielen wurden in der Woche vom 6. Mai verschickt, wobei 0,6 % als bösartig eingestuft wurden. Obwohl nach diesem Höchststand ein Rückgang zu verzeichnen war, legte der Anteil im Juli wieder leicht zu. Am 8. Juli belief er sich auf 0,4 %. Trotz eines sprunghaften Anstiegs des E-Mail-Aufkommens in der Woche vom 22. Juli waren nur 0,05 % der E-Mails bösartig.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="240" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=715&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=640&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=715&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=750&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=828&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=1080&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=1280&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=1430&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="16" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XMWEN34E4YA9FC9FBN8W.png&amp;w=1920&amp;h=645&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="645" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="240" class="pt-portable-image-media"></div>
+</figure>
+<p>In derselben Woche, in der die Olympischen Spiele begannen, stieg auch der Anteil der Spam-E-Mails auf über 2 %. Es handelte sich dabei um den höchsten Wert seit dem in der Woche vom 24. Juni verbuchten Spitzenniveau von 7 %.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="242" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=715&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=640&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=715&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=750&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=828&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=1080&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=1280&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=1430&amp;h=484&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="17" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZZTW740ST6PHVANSBD62.png&amp;w=1920&amp;h=650&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="650" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="242" class="pt-portable-image-media"></div>
+</figure>
+<h3>Fazit</h3>
+<p>Die Olympischen Spiele in Paris haben am 26. Juli 2024 begonnen und hatten deutliche Auswirkungen auf den Internet-Datenverkehr in verschiedenen Ländern, vor allem im Gastgeberland Frankreich. Die erheblichen Traffic-Einbrüche während Schlüsselmomenten der Eröffnungsfeier und die Ausschläge des Datenverkehrs nach wichtigen Ereignissen verdeutlichen die allgegenwärtige Wechselwirkung zwischen solchen Events und der Art und Weise, in der Menschen mit der Online-Welt interagieren. Nur wenige Veranstaltungen lenken heute den Fokus vom Internet auf Fernsehübertragungen.</p>
+<p>Wir haben auch beobachtet, dass das Interesse an den offiziellen Olympia-Websites stark zugenommen hat. So kam es zu einem deutlichen Anstieg des DNS-Traffic nach Beginn der Veranstaltung in verschiedenen Ländern, wobei die USA schließlich ganz oben auf dem Siegertreppchen standen.</p>
+<p>Bezüglich der <a href="https://www.theregister.com/2024/07/29/french_fiber_cables_cut" target="_blank" rel="noopener noreferrer">Sabotage französischer Glasfaserkabel</a> am 29. Juli 2024 haben wir im Laufe des Tages keine nennenswerten Störungen des Internet-Datenverkehrs in Frankreich oder in bestimmten Städten des Landes beobachtet.</p>
+<p>Während der Spiele veröffentlichen wir einen <a href="https://radar.cloudflare.com/reports/paris-2024-olympics" target="_blank" rel="noopener noreferrer">Bericht zu Olympia 2024 in Paris</a> auf Cloudflare Radar, der aktualisiert wird, sobald sich wichtige Internet-Trends im Zusammenhang mit dem Großereignis herauskristallisieren.</p>

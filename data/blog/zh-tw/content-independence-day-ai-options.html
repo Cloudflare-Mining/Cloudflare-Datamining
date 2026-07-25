@@ -1,0 +1,200 @@
+<p>一年前，我們宣布了第一個「<a href="https://blog.cloudflare.com/content-independence-day-no-ai-crawl-without-compensation" target="_blank" rel="noopener noreferrer"><u>內容獨立日</u></a>」，並賦予網站擁有者重新取回內容控制權的工具。過去三十年來，爬蟲與網站擁有者之間維持的那種「我抓取你的內容，你獲得流量引薦」的默契已不復存在。AI 拿走了一切，卻什麼也沒回饋，這對網站擁有者構成了生存威脅。因此，我們推出了一鍵「封鎖 AI 機器人」功能，以及<a href="https://blog.cloudflare.com/introducing-pay-per-crawl" target="_blank" rel="noopener noreferrer"><u>「依爬行次數付費」市場機制</u></a>。</p>
+<p>這一年來變化巨大。去年七月，關於「AI 機器人」的討論主要集中在如何阻止 AI 在無償的情況下利用內容進行訓練——這種模式本質上是一種「贏家通吃、輸家全失」的交易：內容被用於模型訓練，而網站擁有者卻無法獲得任何價值回饋。但如今，業界開始期待更細緻的做法：內容擁有者依然希望保護自己的內容，而他們辛苦創作、策劃和分享的原創內容，也應該得到補償。同時我們也明白，完全封鎖內容並非萬能之策；網站擁有者希望擁有更多選擇，而不只是簡單粗暴地「一律封鎖所有自動化行為」。</p>
+<p>對於小型網站而言，問題<em>不僅</em>在於他人可能利用其內容訓練模型，更在於它們往往根本無法被使用者發現。這迫使網站擁有者不得不做出一種「浮士德式」的艱難抉擇：要麼出現在搜尋結果中並任由 AI 利用其內容進行訓練，要麼冒著失去被發現機會的風險。如果現有的搜尋服務提供者同時利用同一套機器人進行搜尋索引和模型訓練，這種做法將賦予它們不公平的優勢；而這種不公平優勢也會促使新進業者為了縮短競爭差距，而採取規避手段。</p>
+<h3>如今，AI 可以無所不在</h3>
+<p>如今，AI 可以存在於任何事物中。Google 搜尋已經從「由 AI 排序」轉變為<a href="https://blog.google/products-and-platforms/products/search/search-io-2026" target="_blank" rel="noopener noreferrer"><u>完整的答案引擎</u></a>，直接在搜尋結果頁面上回答您的問題。Google 並非個例——這正是「搜尋」領域整體的發展方向。</p>
+<p>我們在今天爭論什麼才算是「AI」，但今天得出的標準可能在明天又會被推翻。因此，我們不再單純地以「是否為 AI」來定義機器人，而是採取一種更新的分類方法，深入探討機器人或智慧體的具體行為：它們在我的網站上做什麼？它們在儲存什麼資料？它們又將如何重新分享我的內容？</p>
+<h3>務實的分類法</h3>
+<p>為了解答這些問題，我們需要更細緻的視角——也就是一種與客戶所關注的 AI 應用場景相契合的務實分類法。因此，我們將討論範圍從單純的 AI 訓練擴展開來，重點關注我們希望所有客戶都能自主管理的三個 AI 應用場景：</p>
+<ul>
+	<li><strong>搜尋 (Search)：</strong>指收集或索引您的內容，以便日後回答相關問題的任何行為。其關鍵在於，「搜尋」行為會主動建立關於您網站的資料庫，用於後續回應查詢。網站擁有者理應因此獲得引薦流量或其他形式的公平補償。</li>
+	<li><strong>智慧體 (Agent)：</strong>代表真人執行任務的自動化行為，通常是在即時情境下完成當下的工作。這包括聊天擷取機器人（如 ChatGPT-User）和瀏覽器操作智慧體（如 Gemini 或操控 Chrome 瀏覽器的 Claude）。其關鍵在於，它為了完成某項工作而造訪您的 Web 應用程式，並且通常在另一端有真人使用者在等待結果。</li>
+	<li><strong>訓練 (Training)：</strong>爬蟲擷取您的內容以訓練或微調模型。關鍵在於，您的資料被永久吸收進 AI 的底層架構中，以提升其能力。</li>
+</ul>
+<p>網路上許多常見的爬蟲都屬於上述分類之一；有些則同時橫跨多類。除了這三類之外，我們也對許多其他行為進行分類——包括廣告驗證、摘要擷取和智慧體交易（詳見下文）。但我們認為，讓所有網站擁有者能輕鬆管理這三種以 AI 為中心的使用場景，應該是基本要求。我們認為，機器人營運商應將不同的爬蟲分開，因為這樣能為網站擁有者帶來更多透明度：讓他們更能理解特定爬蟲為何造訪他們的網站，也能讓他們更有效地管理授予該爬蟲的存取權限。如果一家公司同時營運用於建立<strong>搜尋</strong>索引、充當<strong>智慧體</strong>，以及收集資料以<strong>訓練</strong>模型的自動化程式，我們強烈建議該公司將這些自動化程式拆分為三個獨立的爬蟲。</p>
+<p>我們希望建立一套既有擴展性又能反映自動化流量發展現況的分類系統。追蹤機器人的目的並非新鮮事，但我們的新分類法加入了一些更新，以更能反映當前機器人流量的實際狀況。值得特別指出的是，我們認為對於具有多種用途的機器人，應追蹤其所有用途，而不僅僅是其中某一項。</p>
+<h3>管理 AI 流量的新選項</h3>
+<p><strong>我們希望為 Cloudflare 網路上的 <em>所有</em>網站擁有者提供更多選項，以管理不同類型的 AI 流量。</strong></p>
+<p>過去我們推出的「封鎖 AI 機器人」受管理預設設定，涵蓋了僅用於爬取資料以訓練模型的單一用途機器人，如下所示：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="514" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=715&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=640&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=715&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=750&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=828&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=1080&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=1280&amp;h=920&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=1430&amp;h=1028&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3337 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PQ117400G12BF7ZTTQBE.png&amp;w=852&amp;h=612&amp;f=webp" data-lightbox-width="852" data-lightbox-height="612" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="514" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>2025 年 7 月 1 日現有 AI 機器人流量管理設定螢幕擷取畫面。</em></sup></p>
+<p>但並非所有 AI 用途都相同，我們希望客戶能擁有他們所需的管控機制。因此，我們推出了一項新功能，讓客戶能<strong>依據<em>三大</em>使用情境來管理 AI 流量：搜尋 (Search)、智慧體 (Agent) 和訓練 (Training)</strong> 爬蟲。有了這些新選項，我們的客戶（包括免費方案的客戶）能更細緻地調整他們管理 AI 機器人流量的方式。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="432" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=640&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=750&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=828&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=1080&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=1280&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=1430&amp;h=864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3337 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PW0X5CKQ27JK93RZ1X2Q.png&amp;w=1920&amp;h=1161&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1161" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="432" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>2026 年 7 月 1 日管理 AI 機器人流量的新選項螢幕擷取畫面。</em></sup></p>
+<h3>設定新的預設值</h3>
+<p><strong>2026 年 9 月 15 日，我們將為這三種分類設定新的預設值。</strong>對於所有新加入 Cloudflare 的網域，<strong>在顯示廣告的頁面上</strong>，<strong>訓練 (Training)</strong> 和<strong>智慧體 (Agent)</strong> 這兩個類別將預設為封鎖，而<strong>搜尋 (Search)</strong> 則保持預設允許狀態。</p>
+<p>廣告代表著網站擁有者希望使用者造訪該頁面並看到廣告——這是能夠實現商業變現並支撐業務發展的關鍵。因此，在這些頁面上，我們將人類的注意力視為最終目標，並封鎖可能妨礙這種注意力的機器人（即訓練和智慧體機器人）。另一方面，搜尋是最能自然引流回訪客的行為，我們認為允許這種行為符合大多數網站擁有者的利益。</p>
+<p>另一項將於 9 月 15 日生效的變更是：針對多重用途爬蟲（特別是同時結合「搜尋」與「訓練」功能的爬蟲），將依據其<em>所有</em>行為來決定允許或封鎖，這體現了我們倡導的網站擁有者知情權與透明度原則。由於預設規則將採用最嚴格的適用條件，像 Googlebot、Applebot 與 BingBot 這類多重用途爬蟲，若客戶選擇封鎖「訓練」（無論是透過新的 <a href="https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots" target="_blank" rel="noopener noreferrer"><u>AI 流量管理</u></a>選項，或是舊有的「封鎖 AI 機器人」服務），這些爬蟲都將遭到封鎖。</p>
+<p>當然，客戶的選擇權至關重要：若網站擁有者不希望採用這些新預設設定，隨時可在 9 月 15 日前<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>於「安全性設定」中輕鬆進行標記</u></a>，確認他們<em>不希望對同時用於搜尋用途的訓練爬蟲進行任何變更</em>。我們也會在臨近 9 月 15 日時持續通知客戶此項預設變更，確保有意採用不同設定的客戶皆有足夠時間調整。</p>
+<h3>BotBase：企業客戶的全新可視化平台</h3>
+<p>我們也很高興推出 BotBase，這是 Enterprise Bot Management 的一項重大可視性更新功能。隨著 Cloudflare 所追蹤的機器人目錄不斷擴增，客戶對於以合理群組來管理這些機器人，以及瞭解特定機器人更多細節的需求也日益增加。</p>
+<p>隆重推出 <a href="https://developers.cloudflare.com/bots/botbase" target="_blank" rel="noopener noreferrer"><strong><u>BotBase</u></strong></a>。BotBase 是我們全新的資料庫，追蹤所有已知的機器人，包括經驗證機器人 (Verified bots) 和智慧體。這個資料庫在 Cloudflare 儀表板中，直接提供一個全面且可搜尋的完整機器人目錄檢視。我們<em>先從可視性</em>著手，但今年稍晚，我們將擴展 BotBase，為您網站上已知的自動化內容提供直接的控制中心。</p>
+<p>透過這個新介面，Enterprise Bot Management 的客戶可以查看所有經驗證機器人/智慧體的完整目錄，以及它們在這個更新後分類架構中的歸類方式——這是我們過去從未在 Cloudflare 儀表板上動態顯示過的資訊。想要精準鎖定特定機器人的客戶，也可以輕鬆篩選來自該機器人的所有流量，並複製偵測 ID 以在安全性規則中使用。以上功能現已上線，可透過 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings%2Fbot-traffic%2Fbot-base" target="_blank" rel="noopener noreferrer"><u>Bot Management 設定卡片</u></a>存取。</p>
+<p>在建構 BotBase 的過程中，我們力求整合各類關鍵資訊，以便針對不同的機器人產生可擴展且強大的深入解析。其中一項關鍵資訊構成了我們更新後分類架構的基石，即<strong>機器人可能在您網站上執行的操作——也就是其「行為」特徵</strong>。我們將這些類別劃分如下，每個機器人都歸入其中一種或多種行為類別。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>機器人分類</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>行為和用途</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>搜尋</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>透過抓取掃描您的網站，助其在搜尋引擎結果中顯示</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>智慧體</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>代表真人使用者存取頁面的使用者導向智慧體</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>訓練</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>爬取資料以訓練或微調模型</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>交易</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>代表使用者執行結帳動作</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>資料收集</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包含價格爬取、競爭情報收集和第三方分析</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>安全測試</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包括漏洞掃描和滲透測試</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SEO</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SEO 爬取、網站稽核、可存取性檢查</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>廣告驗證</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>廣告投放驗證、廣告詐騙偵測</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>社交/連結預覽</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>社交平台和即時通訊應用程式的連結預覽</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>摘要擷取</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包含 RSS 閱讀器、播客聚合器和新聞摘要機器人</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>監控與維運</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包含正常運作時間監控、Webhook 和健康檢查</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><sup><em>粗體斜體標示的列，代表所有客戶皆可使用的全新可設定選項。</em></sup></p>
+<h3>爬蟲如何使用我的內容？</h3>
+<p>我們瞭解到，客戶關心的另一個重要問題是機器人<strong>如何使用內容——即機器人在抓取內容後會保留並重新分享哪些資訊。</strong>為了解決這個問題，我們正在為 Bot Management 客戶建構一項功能，讓他們能夠根據「內容使用」來選擇和封鎖。這項設定可以分為三個層級，依許可程度從低到高排列：</p>
+<ul>
+	<li><code>immediate</code>：僅互動，不儲存或重複使用任何內容</li>
+	<li><code>reference</code>（預設值）：索引、摘要並提供反向連結</li>
+	<li><code>full</code>：總結並重製內容</li>
+</ul>
+<p>這些數值可以與機器人分類結合，以表達更細緻的規則，例如「允許所有用於<strong>搜尋</strong>、<strong>SEO</strong> 和<strong>廣告驗證</strong>的機器人，但僅限於 <code>reference</code> 使用層級」。這讓網站擁有者能按合理的類別進行管理，而無需針對每個機器人逐一制定規則<strong>。</strong></p>
+<p>為了進一步支援這項功能，從今天開始，我們正在測試一個新的信號 <code>use</code>，它擴展了 <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>Content Signals</u></a>，並存在於您的 robots.txt 檔案中。這是在首版 Content Signals 的三個欄位基礎上，新增的第四個選用欄位，用以表達前述相同的偏好設定：</p>
+<ul>
+	<li><code>use=immediate</code></li>
+	<li><code>use=reference</code></li>
+	<li><code>use=full</code></li>
+</ul>
+<p>如同 robots.txt 檔案中列出的所有其他項目一樣，內容使用訊號的數值表示的是網站擁有者的<em>偏好</em>，而非直接發出封鎖指令。我們現在正在加入對這個擴充功能的支援：對於所有已啟用受管理 robots.txt 的客戶（該功能會在 robots.txt 中預先加入「允許搜尋爬取，但不允許訓練爬取」的偏好設定），其 robots.txt 中將會額外加入 <code>use=reference</code> 的偏好設定。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># Cloudflare Managed content </span><span class="sk-d73a49-a0a0a0">with</span><span class="sk-24292e-fff"> original Content Signals</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">agent</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">*</span></span>
+<span class="line"><span class="sk-24292e-fff">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-24292e-fff">: search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes,ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre>
+</div>
+<p><sup><em>採用原始 Content Signals 值的 Cloudflare 受管理 robots.txt 內容。 </em></sup></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># Cloudflare Managed content </span><span class="sk-d73a49-a0a0a0">with</span><span class="sk-24292e-fff"> the </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">use signal</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">agent</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">*</span></span>
+<span class="line"><span class="sk-24292e-fff">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Signal</span><span class="sk-24292e-fff">: search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes,ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">no,use</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">reference</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Allow</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">/</span></span></code></pre>
+</div>
+<p><sup><em>包含新增參數的 Cloudflare 受管理 robots.txt 內容。</em></sup></p>
+<p>我們也開始在 BotBase 中追蹤每個機器人的內容使用方式，當我們發現某個機器人濫用這些訊號時，它將失去「經驗證」狀態，從而不再被允許存取。目前，會完整重製內容的機器人無法獲得「經驗證」狀態。</p>
+<h3>「經驗證」對機器人來說意味著什麼？</h3>
+<p>提到<a href="https://developers.cloudflare.com/bots/concepts/bot/verified-bots" target="_blank" rel="noopener noreferrer"><u>「經驗證」</u></a>，其定義也正隨著即將到來的預設允許/封鎖基準而更新。過往<em>所有</em>經驗證機器人皆預設允許，這也反映在我們基礎的「<a href="https://developers.cloudflare.com/bots/get-started/bot-fight-mode" target="_blank" rel="noopener noreferrer"><u>Bot Fight Mode</u></a>」服務（用於封鎖非預期自動流量），以及給 Enterprise Bot Management 客戶的規則範本中。</p>
+<p>即日起，我們調整此機制以增加細緻度：未經驗證機器人仍維持預設封鎖，但我們不再將「經驗證」等同於「預設允許」。現在，「經驗證」標籤代表該機器人在其所屬分類下「可被允許」；換言之，具體的<em>允許類別</em>（例如允許「搜尋」類機器人）將決定哪些機器人能夠存取網站。</p>
+<p>為了平衡這項變更，我們同時開放了成為經驗證機器人的流程，並使其更加透明。機器人營運商若要獲得「經驗證」資格，需證明兩點：如實表明身份，<em>以及</em>不濫用因這種誠實而獲得的存取權限。為了讓機器人營運商更容易做到這一點，我們目前正在為機器人營運商建構管理工具，以更好地確保他們被 Cloudflare 的分類系統準確呈現（將於近期公布）。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="386" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=640&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=750&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=828&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=1080&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=1280&amp;h=691&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=1430&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3337 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PTRYPWP287KSEYNRHZ54.png&amp;w=1920&amp;h=1037&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1037" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="386" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>預覽畫面：專為已加入或計劃加入 BotBase（Cloudflare 機器人目錄新一代版本）的機器人營運方打造的平台。</em></sup></p>
+<h3>試驗「遞移信任」機制</h3>
+<p>還有一點：造訪您網站的機器人（或智慧體），其營運方往往並非最初開發該機器人的公司。像 Cloudflare 開發人員平台這樣的平台，會同時為成千上萬不同營運商執行自動化程式，這些營運商既包括大型企業，也包括您從未聽說過的獨立開發者。您或許信任 Stripe，但未必信任每一個將 Stripe 工具整合到其業餘專案中的人。</p>
+<p>我們將（網站擁有者 → 機器人所屬公司 → 終端使用者）這種情況稱為<strong>「遞移信任 (transitive trust)」</strong>問題，我們提議利用 <a href="https://www.rfc-editor.org/info/rfc7239" target="_blank" rel="noopener noreferrer"><u>RFC 7239</u></a> 中定義的現有 Forwarded 標頭，該標頭伴隨請求一同傳送，允許「代理元件揭露在代理過程中遺失的資訊」。</p>
+<p>這類似於 <code>X-Forwarded-For</code> 處理 IP 位址的方式，或 <code>X-Forwarded-Host</code> 用來保留原始 Host 標頭的方式。因此，當網站擁有者說「允許這個營運商」時，無論該營運商是直接造訪您，還是透過三層受信任的中介層，這個偏好設定都將維持不變。更多詳細資訊請參閱<a href="https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth" target="_blank" rel="noopener noreferrer"><u>我們的技術文件</u></a>，以下為簡短格式範例：</p>
+<p><code>Forwarded: for="openai"</code></p>
+<p>若結合前述的內容使用擴充功能，標頭將如下所示，明確指出營運商聲稱其將如何使用所存取的內容：</p>
+<p><code>Forwarded: for="openai";use="reference"</code></p>
+<p>這也與我們希望培養的激勵機制相契合。在受 Cloudflare 保護的超過 20% 的網域中失去「受信任」狀態，將是一種極具威懾力的懲罰。信任成為一種可以攜帶、也可能失去的資產。</p>
+<p>然而，隨著<a href="https://blog.cloudflare.com/past-bots-and-humans" target="_blank" rel="noopener noreferrer"><u>機器人流量與真人流量日益交融</u></a>，此遞移信任機制可能無法涵蓋所有無法或不願公開身分的使用者。我們今日提出的措施有助於傳遞信任，但未必能永遠適用於整個網路。小型流量來源<a href="https://blog.cloudflare.com/internet-privacy" target="_blank" rel="noopener noreferrer"><u>需要隱私保護</u></a>，而希望維持自身隱私承諾的公司，也應該能夠探索未來自主式網際網路的公平建置區塊，例如<a href="https://blog.cloudflare.com/private-rate-limiting" target="_blank" rel="noopener noreferrer"><u>私有限速</u></a>。</p>
+<h3>立即設定您的條款</h3>
+<p>這些都是朝同一方向邁進的微小變革：賦予網站擁有者更多控制權，決定誰可以使用其內容以及如何使用。我們相信，今日討論並即將實施的新預設值，不僅能促進透明度，更順應了網際網路發展的未來趨勢。</p>
+<p>當然，網路的格局將持續演變，我們也會隨之不斷調整。但我們的核心方向不會改變，因為這正是 Cloudflare 創立之初的願景：一個以信任為基礎的網路生態系統。在這個生態系統中，創作者能夠決定其內容的用途；同時，坦誠公開自身行為將為您贏得更多的存取權限，而不是受到限制。</p>
+<p>這些管理 AI 流量的新選項現已上線，所有既有客戶都可以在其<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fsettings" target="_blank" rel="noopener noreferrer"><u>區域設定</u></a>中進行配置。還沒加入 Cloudflare？<a href="https://www.cloudflare.com/lp/pg-one-platform" target="_blank" rel="noopener noreferrer"><u>立即免費註冊</u></a>，即可設定您所需的流量控制規則。</p>
+<p>祝內容獨立日快樂。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="179" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=640&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=750&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=828&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=1080&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=1280&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=1430&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3337 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KWW2PN1VTNX1T9TV864P94QG.png&amp;w=1920&amp;h=480&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="179" class="pt-portable-image-media"></div>
+</figure>

@@ -1,0 +1,15 @@
+{
+	"initialReadingTime": null,
+	"locale": "zh-tw",
+	"post": {
+		"authors": [],
+		"excerpt": "過去，Rust Workers 中的 panic（恐慌）是致命的，會損毀整個執行個體。透過與上游的 wasm‑bindgen 專案合作，Rust Workers 現在支援了具韌性的關鍵錯誤復原，包括使用 WebAssembly 異常處理 (WebAssembly Exception Handling) 進行 panic unwind（恐慌展開）。",
+		"feature_image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW48HQEZP84STFXFD0H3EBY7.png",
+		"published_at": "2026-04-22T13:00:00.000Z",
+		"slug": "zh-tw/making-rust-workers-reliable",
+		"tags": [],
+		"title": "讓 Rust Workers 更加可靠：wasm‑bindgen 中的 panic 與 abort 復原",
+		"updated_at": "2026-07-15T16:48:09.330Z",
+		"url": "https://blog.cloudflare.com/zh-tw/making-rust-workers-reliable/"
+	}
+}

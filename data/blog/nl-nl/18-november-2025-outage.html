@@ -1,0 +1,269 @@
+<p>Op 18 november 2025 om 11:20 UTC (alle tijdstippen in deze blog zijn UTC) heeft het netwerk van Cloudflare ernstige problemen ondervonden bij het leveren van kernnetwerkverkeer. Internetgebruikers die de sites van onze klanten probeerden te bezoeken, zagen een foutpagina met de melding dat er problemen waren met het netwerk van Cloudflare. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="485" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=640&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=750&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=828&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1080&amp;h=733&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1280&amp;h=868&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1430&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP error page displayed during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1258&amp;h=854&amp;f=webp" data-lightbox-width="1258" data-lightbox-height="854" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="485" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>Het probleem werd niet, direct of indirect, veroorzaakt door een cyberaanval of een andere vorm van kwaadaardige activiteit.</strong> Het werd daarentegen veroorzaakt door een wijziging in de machtigingen van een van onze databasesystemen, waardoor de database meerdere vermeldingen uitvoerde in een feature-bestand dat werd gebruikt door ons botbeheer-systeem. Hierdoor verdubbelde het feature-bestand in omvang. Het groter dan verwachte feature-bestand werd vervolgens verspreid naar alle machines in ons netwerk.</p>
+<p>De software die op deze machines draait en het verkeer door ons netwerk leidt, leest dit functiebestand om ons botbeheersysteem up-to-date te houden in de context van voortdurend veranderende bedreigingen. De software was geconfigureerd met een limiet op de grootte van het feature-bestand. Deze limiet was kleiner dan het dubbele van de oorspronkelijke grootte. Daardoor faalde de software.</p>
+<p>We vermoedden aanvankelijk ten onrechte dat de symptomen die we zagen werden veroorzaakt door een grootschalige DDoS-aanval. Al snel slaagden we er in het kernprobleem correct te identificeren en konden we de verspreiding van het groter dan verwachte feature-bestand stoppen en het vervangen door een eerdere versie van het bestand. Vanaf 14:30 uur verliep het kernverkeer grotendeels normaal. De daaropvolgende uren hebben we gewerkt aan het beperken van de grotere belasting op verschillende onderdelen van ons netwerk, omdat het verkeer weer snel online kwam. Om 17:06 functioneerden alle systemen bij Cloudflare opnieuw normaal.</p>
+<p>Wij betreuren de gevolgen voor onze klanten en voor het internet in het algemeen. Gezien het belang van Cloudflare in het Internet-ecosysteem is elke storing van één van onze systemen niet aanvaardbaar. Het feit dat gedurende een bepaalde periode ons netwerk het verkeer niet kon doorsturen, is voor ieder lid van ons team zeer pijnlijk. Wij weten dat we u teleurgesteld hebben.</p>
+<p>In dit bericht leest u in detail wat er precies is gebeurd en welke systemen en processen faalden. Dit is meteen ook de eerste, maar zeker niet de laatste maatregel die we van plan zijn te treffen om ervoor te zorgen dat een dergelijke storing zich niet meer voordoet.</p>
+<h2>De storing</h2>
+<p>De onderstaande grafiek toont het aantal 5xx-fout-HTTP-statuscodes dat door het Cloudflare-netwerk werd verzonden. Dit is normaal gezien een zeer laag aantal, en dat was ook zo tot net voor de storing. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="348" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=640&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=750&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=828&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1080&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1280&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1430&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Volume of HTTP 5xx requests served by the Cloudflare network" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1507&amp;h=733&amp;f=webp" data-lightbox-width="1507" data-lightbox-height="733" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="348" class="pt-portable-image-media"></div>
+</figure>
+<p>Het volume vóór 11:20 is de verwachte basislijn van 5xx-fouten die in ons netwerk zijn waargenomen. De piek en de daaropvolgende schommelingen geven aan dat ons systeem faalt omdat het verkeerde feature-bestand is geladen. Opvallend is dat ons systeem zich daarna een tijdje heeft hersteld. Dit was zeer ongebruikelijk gedrag voor een interne fout.</p>
+<p>De verklaring was dat het bestand elke vijf minuten werd gegenereerd door een query die werd uitgevoerd op een ClickHouse-databasecluster, dat geleidelijk werd bijgewerkt om het beheer van machtigingen te verbeteren. Er werden alleen incorrecte gegevens gegenereerd wanneer de query werd uitgevoerd op een deel van het cluster dat was bijgewerkt. Hierdoor bestond de kans dat er elke vijf minuten een goede of slechte set configuratiebestanden werd gegenereerd en snel over het netwerk werd verspreid.</p>
+<p>Door deze schommelingen was het onduidelijk wat er precies aan de hand was. Het hele systeem herstelde zich en viel dan opnieuw uit, omdat soms goede en soms slechte configuratiebestanden op ons netwerk terechtkwamen. Aanvankelijk dachten we dat het om een aanval ging. Uiteindelijk genereerde elk ClickHouse-knooppunt het slechte configuratiebestand en stabiliseerde de schommeling zich in de falende status.</p>
+<p>De fouten bleven optreden totdat het onderliggende probleem om 14:30 uur werd geïdentificeerd en opgelost. We hebben het probleem opgelost door de generatie en verspreiding van het slechte feature-bestand te stoppen en handmatig een bekend goed bestand in te voegen in de distributiewachtrij voor feature-bestanden. Vervolgens hebben we een herstart van onze kernproxy geforceerd.</p>
+<p>De resterende 'long tail' in de grafiek hierboven is van ons team dat de resterende services die in een slechte staat waren terechtgekomen, opnieuw opstartte. Het volume met foutcode 5xx was om 17:06 weer normaal.</p>
+<p>De volgende diensten werden getroffen:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Dienst / Product</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Impactbeschrijving</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Kern-CDN en beveiligingsdiensten</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>HTTP 5xx-statuscodes. De schermafbeelding bovenaan dit bericht toont een typische foutpagina die aan eindgebruikers wordt getoond.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turnstile</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turnstile kon niet worden geladen.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV vertoonde een aanzienlijk hoger niveau van HTTP 5xx-fouten, omdat verzoeken aan de "front end"-gateway van KV mislukten vanwege een defecte kernproxy.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Dashboard</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Hoewel het dashboard grotendeels operationeel was, konden de meeste gebruikers niet inloggen omdat Turnstile niet beschikbaar was op de inlogpagina.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>E-mailbeveiliging</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De verwerking en bezorging van e-mails werden niet beïnvloed, maar we stelden wel vast dat er tijdelijk geen toegang was tot een IP-reputatiebron. Hierdoor werd de nauwkeurigheid van spamdetectie verminderd en werden enkele detecties van nieuwe domeinleeftijden niet geactiveerd. Er werden geen ernstige gevolgen voor de klant waargenomen. We zagen ook fouten in een aantal Auto Move-acties. Alle betreffende berichten werden gecontroleerd en opgelost.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Toegang</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De meeste gebruikers werden geconfronteerd met een groot aantal authenticatiefouten. Deze fouten begonnen bij de start van het incident en liepen door totdat om 13:05 uur de terugdraaiing werd uitgevoerd. Bestaande Access-sessies werden niet beïnvloed.<br>Bij alle mislukte authenticatiepogingen werd een foutpagina weergegeven. Dit betekent dat geen van deze gebruikers de doelapplicatie heeft bereikt zolang de authenticatie mislukte. Succesvolle inlogpogingen gedurende deze periode werden tijdens dit incident correct geregistreerd.&nbsp;<br>Eventuele Access-configuratie-updates die op dat moment werden uitgevoerd, zijn ofwel volledig mislukt ofwel zeer langzaam doorgevoerd. Alle configuratie-updates zijn nu hersteld.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Naast het vertonen van HTTP 5xx-fouten, observeerden we een veel hogere latentie in de reacties van ons CDN tijdens de impactperiode. Dit kwam doordat onze debug- en observatiesystemen een groot CPU-verbruik hadden. Deze systemen verbeteren automatisch niet-onderschepte fouten met extra debug-informatie.</p>
+<h2>Hoe Cloudflare verzoeken verwerkt en hoe dit vandaag foutliep</h2>
+<p>Elk verzoek aan Cloudflare verloopt via een duidelijk gedefinieerd pad door ons netwerk. Het kan afkomstig zijn van een browser die een webpagina laadt, een mobiele app die een API aanroept of geautomatiseerd verkeer van een andere service. Deze verzoeken eindigen eerst op onze HTTP- en TLS-laag en stromen vervolgens door naar ons kern-proxysysteem (dat we FL noemen, wat staat voor "Frontline"), en ten slotte via Pingora, dat cache-lookups uitvoert of indien nodig gegevens ophaalt uit de oorsprong.</p>
+<p>Eerder gaven we <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>hier</u></a> meer details over hoe de kernproxy.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="303" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=640&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=750&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=828&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1080&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1280&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1430&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Diagram of our reverse proxy architecture" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1920&amp;h=813&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="303" class="pt-portable-image-media"></div>
+</figure>
+<p>Terwijl een verzoek door de kernproxy loopt, voeren we de verschillende beveiligings- en prestatieproducten uit die beschikbaar zijn in ons netwerk. De proxy past de unieke configuratie en instellingen van elke klant toe, van het afdwingen van WAF-regels en DDoS-bescherming tot de routing van verkeer naar het Developer Platform en R2. Dit wordt bereikt door een set domeinspecifieke modules die de configuratie- en beleidsregels toepassen op het verkeer dat via onze proxy verloopt.</p>
+<p>Eén van die modules, het botbeheer, was de oorzaak van de storing van vandaag.&nbsp;</p>
+<p>Het <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>botbeheer</u></a> van Cloudflare omvat onder andere een machine learning-model dat we gebruiken om botscores te genereren voor elk verzoek dat via ons netwerk gaat. Onze klanten gebruiken botscores om te bepalen welke bots al of niet toegang krijgen tot hun sites.</p>
+<p>Het model neemt een 'feature'-configuratiebestand als invoer. Een kenmerk is in deze context een individueel kenmerk dat door het machine learning-model wordt gebruikt om te voorspellen of het verzoek geautomatiseerd is of niet. Het functieconfiguratiebestand is een verzameling van afzonderlijke functies.</p>
+<p>Dit feature-bestand wordt elke paar minuten vernieuwd en gepubliceerd in ons volledig netwerk. Zo kunnen we reageren op veranderingen in de verkeersstromen op het internet. Dit biedt ons de mogelijkheid te reageren op nieuwe soorten bots en nieuwe bot-aanvallen. Het is daarom van groot belang dat dit regelmatig en snel wordt doorgevoerd, aangezien kwaadaardige figuren snel van tactiek veranderen.</p>
+<p>Een wijziging in het onderliggende ClickHouse-querygedrag (hieronder uitgelegd) dat dit bestand genereert, resulteerde in een groot aantal dubbele 'feature'-rijen in dit bestand. Hierdoor werd de grootte van het eerder vaste functieconfiguratiebestand gewijzigd, waardoor de botmodule een foutmelding gaf.</p>
+<p>Als gevolg hiervan werden HTTP 5xx-foutcodes weergegeven door het kernproxysysteem dat de verwerking van het verkeer voor onze klanten afhandelt, voor al het verkeer dat afhankelijk was van de botmodule. Dit had ook gevolgen voor Workers KV en Access, die afhankelijk zijn van de kernproxy.</p>
+<p>Los van dit incident werken we momenteel aan de migratie van ons klantverkeer naar een nieuwe versie van onze proxyservice, intern bekend als <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>FL2</u></a>. Beide versies werden getroffen door het probleem, hoewel de waargenomen impact verschillend was.</p>
+<p>Klanten die de nieuwe FL2-proxy-engine gebruikten, zagen HTTP 5xx-fouten. Klanten op onze oude proxy-engine, FL, zagen geen fouten, maar de botscores werden niet correct gegenereerd. Hierdoor kreeg al het verkeer een botscore van nul. Klanten die regels hadden geïmplementeerd om bots te blokkeren, werden geconfronteerd met een hoog aantal valse positieven. Klanten die onze botscore niet in hun regels gebruikten, merkten geen impact.</p>
+<p>Een ander symptoom dat we zagen, bracht ons op het verkeerde been waardoor we aanvankelijk geloofden dat het om een aanval ging: de statuspagina van Cloudflare was offline. De statuspagina wordt volledig gehost op de infrastructuur van Cloudflare en is niet afhankelijk van Cloudflare. Hoewel het toeval bleek te zijn, vermoedde een aantal teamleden die het probleem moesten diagnosticeren, dat een aanvaller mogelijk zowel onze systemen als onze statuspagina had aangevallen. Bezoekers van de statuspagina kregen op dat moment een foutmelding:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="171" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=640&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=750&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=828&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1080&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1280&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1430&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Error on the Cloudflare status page" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1920&amp;h=459&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="459" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="171" class="pt-portable-image-media"></div>
+</figure>
+<p>In de interne chatroom voor incidenten waren we bezorgd dat dit een voortzetting zou kunnen zijn van de recente reeks grootschalige <a href="https://techcommunity.microsoft.com/blog/azureinfrastructureblog/defending-the-cloud-azure-neutralized-a-record-breaking-15-tbps-ddos-attack/4470422" target="_blank" rel="noopener noreferrer"><u>Aisuru</u></a> <a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos" target="_blank" rel="noopener noreferrer"><u>DDoS-aanvallen</u></a>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Internal chat screenshot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1188&amp;h=278&amp;f=webp" data-lightbox-width="1188" data-lightbox-height="278" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<h3>De verandering in het query-gedrag</h3>
+<p>Ik gaf hierboven al aan dat een wijziging in het onderliggende querygedrag ertoe leidde dat het feature-bestand een groot aantal dubbele rijen bevatte. Het betreffende databasesysteem maakt gebruik van de software van ClickHouse.</p>
+<p>Voor context is het nuttig te weten hoe gedistribueerde query's van ClickHouse werken. Een ClickHouse-cluster bestaat uit vele shards. Om gegevens uit alle shards op te vragen, hebben we zogenaamde gedistribueerde tabellen (aangestuurd door de tabel engine <code>Distributed</code>) in een database met de naam <code>default</code>. De Distributed engine vraagt onderliggende tabellen op in een database <code>r0</code>. De onderliggende tabellen zijn de locatie waar gegevens op elke shard van een ClickHouse-cluster worden opgeslagen.</p>
+<p>Query's naar de gedistribueerde tabellen worden via een gedeeld systeemaccount uitgevoerd. Als onderdeel van de inspanningen om de beveiliging en betrouwbaarheid van onze gedistribueerde query's te verbeteren, werken we er aan deze onder de oorspronkelijke gebruikersaccounts uit te voeren.</p>
+<p>Tot nu toe zagen ClickHouse-gebruikers alleen de tabellen in de <code>standaarddatabase</code> bij het opvragen van tabelmetagegevens uit ClickHouse-systeemtabellen, zoals <code>system.tables</code> of <code>system.columns</code>.</p>
+<p>Omdat gebruikers al impliciet toegang hebben tot onderliggende tabellen in <code>r0</code>, hebben we om 11:05 een wijziging doorgevoerd om deze toegang expliciet te maken, zodat gebruikers ook de metagegevens van deze tabellen kunnen zien. Door ervoor te zorgen dat alle gedistribueerde subquery's onder de initiële gebruiker kunnen worden uitgevoerd, kunnen query-limieten en toegangsverleningen op een meer gedetailleerde manier worden geëvalueerd. Zo wordt voorkomen dat één slechte subquery van een gebruiker gevolgen heeft voor anderen.</p>
+<p>Door de hierboven vermelde wijziging hebben alle gebruikers toegang tot nauwkeurige metagegevens over de tabellen waar zij toegang toe hebben. Helaas zijn er in het verleden aannames gedaan dat de lijst met kolommen die door een dergelijke query wordt geretourneerd, alleen de "<code>standaard</code> "-database zou bevatten:</p>
+<p><code>SELECTEER<br> naam,<br> type<br> VAN systeem.kolommen<br> WAAR<br> tabel = 'http_requests_features'<br> sorteren op naam;</code></p>
+<p>Merk op dat de query niet filtert op de naam van de database. Nu we de expliciete toekenningen geleidelijk aan uitrollen bij gebruikers van een bepaald ClickHouse-cluster begon de bovenstaande query na de wijziging om 11:05 "duplicaten" van kolommen weer te geven, omdat deze betrekking hadden op onderliggende tabellen die waren opgeslagen in de r0-database.</p>
+<p>Helaas was dit het type query dat werd uitgevoerd door de bestandsgeneratielogica van de botbeheerfunctie om elke invoer"functie" te bouwen voor het bestand dat aan het begin van deze sectie werd vermeld.&nbsp;</p>
+<p>De bovenstaande query retourneert een tabel met kolommen zoals de weergegeven tabel (vereenvoudigd voorbeeld):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="548" height="121" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 548w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=640&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=750&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=828&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1080&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1096&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1096w" alt="Example of code block" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp" data-lightbox-width="548" data-lightbox-height="121" data-astro-cid-7nvefuv6="true" sizes="(min-width: 548px) 548px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="548" height="121" class="pt-portable-image-media"></div>
+</figure>
+<p>Als onderdeel van de extra rechten die aan de gebruiker werden verleend, bevatte het antwoord nu echter alle metagegevens van het <code>r0-</code> schema, wat effectief meer dan het dubbele aantal rijen in het antwoord opleverde, wat uiteindelijk van invloed was op het aantal rijen (d.w.z. functies) in de uiteindelijke bestandsuitvoer.&nbsp;</p>
+<h3>Geheugentoewijzing vooraf</h3>
+<p>Elke module die op onze proxyservice draait, heeft een aantal limieten om onbeperkt geheugenverbruik te voorkomen en om geheugen vooraf toe te wijzen en de prestaties te optimaliseren. In dit specifieke geval heeft het botbeheer-systeem een limiet op het aantal machine learning-functies dat tijdens runtime kan worden gebruikt. Momenteel ligt die limiet op 200, ruim boven ons huidige gebruik van ongeveer 60 functies. Ook hier geldt dat de limiet bestaat omdat we om prestatieredenen vooraf geheugen toewijzen aan de functies.</p>
+<p>Toen het slechte bestand met meer dan 200 kenmerken naar onze servers werd verspreid, werd deze limiet bereikt, wat leidde tot paniek in het systeem. De FL2 Rust-code die de controle uitvoert en de bron is van de onverwerkte fout, wordt hieronder weergegeven:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="221" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1080&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1280&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1430&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="code that generated the error" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1472&amp;h=456&amp;f=webp" data-lightbox-width="1472" data-lightbox-height="456" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="221" class="pt-portable-image-media"></div>
+</figure>
+<p>Dit resulteerde in de daaropvolgende paniekreactie, die op haar beurt resulteerde in een 5xx-fout:</p>
+<p><code>thread fl2_worker_thread raakte in paniek: Result::unwrap() aangeroepen op een Err-waarde</code></p>
+<h3>Andere impact tijdens het incident</h3>
+<p>Andere systemen die afhankelijk zijn van onze proxy, werden getroffen tijdens het incident. Dit omvatte Workers KV en Cloudflare Access. Het team kon de impact op deze systemen om 13:04 uur beperken, toen er een patch werd gemaakt voor Workers KV om de kernproxy te omzeilen. Vervolgens werd bij alle downstream-systemen die afhankelijk zijn van Workers KV (zoals Access zelf) een lager foutenpercentage waargenomen.&nbsp;</p>
+<p>Het Cloudflare Dashboard werd ook beïnvloed doordat Workers KV intern werd gebruikt en Cloudflare Turnstile werd geïmplementeerd als onderdeel van onze inlogstroom.</p>
+<p>Turnstile ondervond hinder van deze storing, waardoor klanten die geen actieve dashboardsessie hadden, niet konden inloggen. Dit was te zien aan een verminderde beschikbaarheid gedurende twee tijdsperioden: van 11:30 tot 13:10 uur en van 14:40 tot 15:30 uur, zoals te zien is in de onderstaande grafiek.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="241" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=640&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=750&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=828&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1080&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1280&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1430&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="availability of Cloudflare internal APIs during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1920&amp;h=647&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="647" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="241" class="pt-portable-image-media"></div>
+</figure>
+<p>De eerste periode, van 11:30 tot 13:10, werd veroorzaakt door de impact op Workers KV, waarvan sommige controlepaneel- en dashboardfuncties afhankelijk zijn. Dit werd hersteld om 13:10, toen Workers KV het kernproxysysteem omzeilde.<br><br>De tweede periode van impact op het dashboard vond plaats nadat de configuratiegegevens van de functie waren hersteld. De achterstand aan inlogpogingen resulteerde in een overbelasting van het dashboard. Deze achterstand, in combinatie met het aantal nieuwe pogingen, resulteerde in een verhoogde latentie, waardoor het dashboard minder beschikbaar werd. Door het schalen van de gelijktijdigheid van het besturingsvlak werd de beschikbaarheid rond 15:30 uur hersteld.</p>
+<h2>Corrigerende maatregelen en vervolgstappen</h2>
+<p>Nu onze systemen opnieuw online zijn en normaal werken, zijn we alvast begonnen met de voorbereidingen om deze beter te beschermen tegen dit soort storingen in de toekomst. Zo werken we in het bijzonder aan:</p>
+<ul>
+	<li>Het beveiligen van de invoer van door Cloudflare gegenereerde configuratiebestanden op dezelfde manier als we dit doen voor door de gebruiker gegenereerde invoer</li>
+	<li>Meer globale noodstopschakeaar voor functies invoeren</li>
+	<li>Ervoor te zorgen dat kerndumps of andere foutrapporten de systeembronnen niet meer kunnen overbelasten</li>
+	<li>Het beoordelen van de faalmodi voor foutcondities in alle kernproxymodules</li>
+</ul>
+<p>Dit was de ergste storing bij Cloudflare <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019" target="_blank" rel="noopener noreferrer"><u>sinds 2019</u></a>. We hebben storingen gehad waardoor ons <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage" target="_blank" rel="noopener noreferrer"><u>dashboard niet beschikbaar</u></a> was. Sommige hebben ervoor gezorgd dat <a href="https://blog.cloudflare.com/cloudflare-service-outage-june-12-2025" target="_blank" rel="noopener noreferrer"><u>nieuwere functies</u></a> gedurende een bepaalde periode niet beschikbaar waren. Maar in de afgelopen 6+ jaar hebben we geen enkele storing meer gehad waarbij het merendeel van het kernverkeer niet meer door ons netwerk kon stromen.</p>
+<p>Een storing zoals vandaag is niet aanvaardbaar. Onze systemen zijn zo ontworpen dat ze bestand zijn tegen storingen om zeker te zijn dat het verkeer altijd doorstroomt. Storingen in het verleden hebben er altijd toe geleid dat we nieuwe, meer veerkrachtige systemen hebben gebouwd.</p>
+<p>Namens het hele team van Cloudflare wil ik mijn excuses aanbieden voor de problemen die we vandaag op internet hebben veroorzaakt. </p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Tijd (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Status</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Beschrijving</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Normaal.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wijziging in databasetoegangscontrole geïmplementeerd.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Impact begint.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Implementatie bereikt klantomgevingen, eerste fouten waargenomen in het HTTP-verkeer van de klant.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:32-13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Het team onderzocht de verhoogde verkeersdrukte en fouten in de Workers KV-dienst.<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Het eerste symptoom leek een lagere Workers KV-responssnelheid te zijn, wat gevolgen had voor andere Cloudflare-services.<br>Er werd geprobeerd de Workers KV-service weer op het normale niveau te krijgen door middel van migraties zoals verkeersmanipulatie en accountbeperking.<br>De eerste geautomatiseerde test detecteerde het probleem om 11:31 uur, waarna het handmatige onderzoek om 11:32 uur van start ging. De incidentoproep werd om 11:35 uur aangemaakt.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV en Cloudflare Access bypass geïmplementeerd — impact verminderd.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Tijdens het onderzoek hebben we interne systeemomleidingen gebruikt voor Workers KV en Cloudflare Access, zodat ze terugvielen op een eerdere versie van onze kernproxy. Hoewel het probleem zich ook voordeed in eerdere versies van onze proxy, was de impact kleiner, zoals hieronder wordt beschreven.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:37</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>De werkzaamheden waren gericht op het terugdraaien van het botbeheer-configuratiebestand naar de laatst bekende goede versie.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wij waren ervan overtuigd dat het botbeheer-configuratiebestand de trigger voor het incident was. Teams werkten in meerdere werkstromen aan manieren om de service te repareren. De snelste werkstroom was het herstellen van een eerdere versie van het bestand.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Het maken en verspreiden van nieuwe botbeheer-configuratiebestanden is gestopt.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>We hebben vastgesteld dat de botbeheermodule de bron was van de 500-fouten en dat dit werd veroorzaakt door een incorrect configuratiebestand. We hebben de automatische implementatie van nieuwe botbeheer-configuratiebestanden stopgezet.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Test van nieuw bestand voltooid.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>We hebben een succesvol herstel uitgevoerd met de oude versie van het configuratiebestand en hebben ons vervolgens gericht op het wereldwijd versnellen van de oplossing.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14.30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Meest ernstige impact opgelost. De getroffen diensten merkten dat er minder fouten werden gemaakt.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Er werd wereldwijd een correct botbeheer-configuratiebestand geïmplementeerd en de meeste services werkten correct.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17:06</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Alle services zijn opgelost. Impact eindigt.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Alle downstream-services zijn opnieuw opgestart en alle bewerkingen zijn volledig hersteld.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

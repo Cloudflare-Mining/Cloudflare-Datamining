@@ -1,73 +1,49 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5v3N0xLt1nWkQRwi4G7Z0l/428a5136f61ec6e051ff8f515dac1d2a/cloudflare-workers-database-integration-with-upstash.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i></i></p>
-	<p><i>This blog post references a feature which has updated documentation. For the latest reference content, visit </i><a href="https://developers.cloudflare.com/workers/databases/third-party-integrations" target="_blank" rel="noopener noreferrer"><i>https://developers.cloudflare.com/workers/databases/third-party-integrations/</i></a></p>
-	<p>During <a href="https://www.cloudflare.com/developer-week" target="_blank" rel="noopener noreferrer">Developer Week</a> we announced <a href="https://blog.cloudflare.com/announcing-database-integrations">Database Integrations on Workers</a> a new and seamless way to connect with some of the most popular databases. You select the provider, authorize through an OAuth2 flow and automatically get the right configuration stored as encrypted environment variables to your Worker.</p>
-	<p>Today we are thrilled to announce that we have been working with Upstash to expand our integrations catalog. We are now offering three new integrations: Upstash Redis, Upstash Kafka and Upstash QStash. These integrations allow our customers to unlock new capabilities on Workers. Providing them with a broader range of options to meet their specific requirements.</p>
-	<div class="flex anchor relative">
-		<h3 id="add-the-integration">Add the integration</h3>
-		<a href="https://blog.cloudflare.com/#add-the-integration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We are going to show the setup process using the Upstash Redis integration.</p>
-	<p>Select your Worker, go to the Settings tab, select the Integrations tab to see all the available integrations.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PgG63i9pFA5GtOuhGAAeE/5580ef72388faa48bb274d81edfd16ba/2.png" alt="Workers Integration tab showing all Integrations" class="kg-image" width="1600" height="969" loading="lazy">
-
-	</figure>
-	<p>After selecting the Upstash Redis integration we will get the following page.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4oL9KEz7NUDqw16aXrk2g0/2708bd58089fa1e8abc503bfd7074649/3.png" alt="Upstash Integration flow showing all steps to complete this Integration" class="kg-image" width="1484" height="1600" loading="lazy">
-
-	</figure>
-	<p>First, you need to review and grant permissions, so the Integration can add secrets to your Worker. Second, we need to connect to Upstash using the OAuth2 flow. Third, select the Redis database we want to use. Then, the Integration will fetch the right information to generate the credentials. Finally, click “Add Integration” and it's done! We can now use the credentials as environment variables on our Worker.</p>
-	<div class="flex anchor relative">
-		<h3 id="implementation-example">Implementation example</h3>
-		<a href="https://blog.cloudflare.com/#implementation-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On this occasion we are going to use the <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/http-request-headers/#cf-ipcountry" target="_blank" rel="noopener noreferrer">CF-IPCountry</a> &nbsp;header to conditionally return a custom greeting message to visitors from Paraguay, United States, Great Britain and Netherlands. While returning a generic message to visitors from other countries.</p>
-	<p>To begin we are going to load the custom greeting messages using Upstash’s online CLI tool.</p>
-	<pre class="language-bash"><code class="language-bash">➜ set PY "Mba'ẽichapa 🇵🇾"
-OK
-➜ set US "How are you? 🇺🇸"
-OK
-➜ set GB "How do you do? 🇬🇧"
-OK
-➜ set NL "Hoe gaat het met u? 🇳🇱"
-OK</code></pre>
-	<p>We also need to install <code>@upstash/redis</code> package on our Worker before we upload the following code.</p>
-	<pre class="language-javascript"><code class="language-javascript">import { Redis } from '@upstash/redis/cloudflare'
- 
-export default {
-  async fetch(request, env, ctx) {
-    const country = request.headers.get("cf-ipcountry");
-    const redis = Redis.fromEnv(env);
-    if (country) {
-      const localizedMessage = await redis.get(country);
-      if (localizedMessage) {
-        return new Response(localizedMessage);
-      }
-    }
-    return new Response("👋👋 Hello there! 👋👋");
-  },
-};</code></pre>
-	<p>Just like that we are returning a localized message from the Redis instance depending on the country which the request originated from. Furthermore, we have a couple ways to improve performance, for write heavy use cases we can use <a href="https://blog.cloudflare.com/announcing-workers-smart-placement">Smart Placement</a> with no replicas, so the Worker code will be executed near the Redis instance provided by Upstash. Otherwise, creating a <a href="https://docs.upstash.com/redis/features/globaldatabase" target="_blank" rel="noopener noreferrer">Global Database</a> on Upstash to have multiple read replicas across regions will help.</p>
-	<div class="flex anchor relative">
-		<h3 id=""><a href="https://developers.cloudflare.com/workers/databases/native-integrations/upstash">Try it now</a></h3>
-		<a href="https://blog.cloudflare.com/#" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Upstash Redis, Kafka and QStash are now available for all users! Stay tuned for more updates as we continue to expand our Database Integrations catalog.</p>
+<p><em>This blog post references a feature which has updated documentation. For the latest reference content, visit <a href="https://developers.cloudflare.com/workers/databases/third-party-integrations" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/workers/databases/third-party-integrations/</a></em></p>
+<p>During <a href="https://www.cloudflare.com/developer-week" target="_blank" rel="noopener noreferrer">Developer Week</a> we announced <a href="https://blog.cloudflare.com/announcing-database-integrations">Database Integrations on Workers</a> a new and seamless way to connect with some of the most popular databases. You select the provider, authorize through an OAuth2 flow and automatically get the right configuration stored as encrypted environment variables to your Worker.</p>
+<p>Today we are thrilled to announce that we have been working with Upstash to expand our integrations catalog. We are now offering three new integrations: Upstash Redis, Upstash Kafka and Upstash QStash. These integrations allow our customers to unlock new capabilities on Workers. Providing them with a broader range of options to meet their specific requirements.</p>
+<h3>Add the integration</h3>
+<p>We are going to show the setup process using the Upstash Redis integration.</p>
+<p>Select your Worker, go to the Settings tab, select the Integrations tab to see all the available integrations.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="433" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=715&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=640&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=715&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=750&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=828&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=1080&amp;h=654&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=1280&amp;h=775&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=1430&amp;h=866&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers Integration tab showing all Integrations" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q28CWBEKEW3AYH40KP4K.png&amp;w=1600&amp;h=969&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="969" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="433" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>After selecting the Upstash Redis integration we will get the following page.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="771" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=715&amp;h=771&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=640&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=715&amp;h=771&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=750&amp;h=809&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=828&amp;h=893&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=1080&amp;h=1165&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=1280&amp;h=1380&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=1430&amp;h=1542&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Upstash Integration flow showing all steps to complete this Integration" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4705DWJPTFJW947BAS9RKN.png&amp;w=1484&amp;h=1600&amp;f=webp" data-lightbox-width="1484" data-lightbox-height="1600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="771" class="pt-portable-image-media"></div>
+</figure>
+<p>First, you need to review and grant permissions, so the Integration can add secrets to your Worker. Second, we need to connect to Upstash using the OAuth2 flow. Third, select the Redis database we want to use. Then, the Integration will fetch the right information to generate the credentials. Finally, click “Add Integration” and it's done! We can now use the credentials as environment variables on our Worker.</p>
+<h3>Implementation example</h3>
+<p>On this occasion we are going to use the <a href="https://developers.cloudflare.com/fundamentals/get-started/reference/http-request-headers/#cf-ipcountry" target="_blank" rel="noopener noreferrer">CF-IPCountry</a> &nbsp;header to conditionally return a custom greeting message to visitors from Paraguay, United States, Great Britain and Netherlands. While returning a generic message to visitors from other countries.</p>
+<p>To begin we are going to load the custom greeting messages using Upstash’s online CLI tool.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> PY</span><span class="sk-032f62-99ffe4"> "Mba'ẽichapa 🇵🇾"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">OK</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> US</span><span class="sk-032f62-99ffe4"> "How are you? 🇺🇸"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">OK</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> GB</span><span class="sk-032f62-99ffe4"> "How do you do? 🇬🇧"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">OK</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">➜</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> NL</span><span class="sk-032f62-99ffe4"> "Hoe gaat het met u? 🇳🇱"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">OK</span></span></code></pre>
 </div>
+<p>We also need to install <code>@upstash/redis</code> package on our Worker before we upload the following code.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Redis } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@upstash/redis/cloudflare'</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> country</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"cf-ipcountry"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> redis</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Redis.</span><span class="sk-6f42c1-ffc799">fromEnv</span><span class="sk-24292e-fff">(env);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (country) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> localizedMessage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> redis.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(country);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (localizedMessage) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(localizedMessage);</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"👋👋 Hello there! 👋👋"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>Just like that we are returning a localized message from the Redis instance depending on the country which the request originated from. Furthermore, we have a couple ways to improve performance, for write heavy use cases we can use <a href="https://blog.cloudflare.com/announcing-workers-smart-placement">Smart Placement</a> with no replicas, so the Worker code will be executed near the Redis instance provided by Upstash. Otherwise, creating a <a href="https://docs.upstash.com/redis/features/globaldatabase" target="_blank" rel="noopener noreferrer">Global Database</a> on Upstash to have multiple read replicas across regions will help.</p>
+<h3><a href="https://developers.cloudflare.com/workers/databases/native-integrations/upstash" target="_blank" rel="noopener noreferrer">Try it now</a></h3>
+<p>Upstash Redis, Kafka and QStash are now available for all users! Stay tuned for more updates as we continue to expand our Database Integrations catalog.</p>

@@ -1,0 +1,217 @@
+<p>지난 6월 <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a>를 출시했을 때의 전제는 단순했습니다. <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI 에이전트</u></a>는 코드를 개발하고 실행해야 하며, 이를 안전한 환경에서 수행할 수 있어야 한다는 것이었습니다.</p>
+<p>에이전트가 개발자처럼 동작한다면, 이는 리포지토리를 복제하고, 다양한 언어로 코드를 빌드하며, 개발 서버를 실행하는 등의 작업을 의미합니다. 이러한 작업을 효과적으로 수행하려면 보통 전체 컴퓨터 환경이 필요합니다(필요하지 않은 경우에는 <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>더 가벼운 환경을 사용</u></a>할 수도 있습니다!).</p>
+<p>많은 개발자들이 VM이나 기존 컨테이너 솔루션을 조합해 사용하고 있지만, 해결해야 할 어려운 문제들이 여전히 많습니다.</p>
+<ul>
+	<li><strong>버스트성 -</strong> 각 세션마다 자체 샌드박스가 필요하기 때문에 많은 샌드박스를 빠르게 생성해야 하는 경우가 많지만, 대기 상태의 유휴 컴퓨팅에 비용을 지불하고 싶지는 않습니다.</li>
+	<li><strong>빠른 상태 복원</strong> - 각 세션은 빠르게 시작하고 빠르게 재시작되어 이전 상태를 이어서 복원할 수 있어야 합니다.</li>
+	<li><strong>보안</strong> - 에이전트는 서비스에 안전하게 액세스해야 하지만, 자격 증명을 맡길 수는 없습니다.</li>
+	<li><strong>제어</strong> - 샌드박스의 수명주기를 프로그래밍 방식으로 제어하고, 명령을 실행하며, 파일을 처리하는 등의 작업을 간단하게 수행할 수 있어야 합니다.</li>
+	<li><strong>인간공학</strong> - 인간과 에이전트 모두가 일반적인 작업을 수행할 수 있도록 간단한 인터페이스를 제공해야 합니다.</li>
+</ul>
+<p>이러한 문제를 여러분이 직접 해결하지 않아도 되도록 저희가 대신 해결해 왔습니다. 초기 출시 이후, Sandboxes는 대규모로 에이전트를 실행하기에 더욱 최적화된 환경으로 발전했습니다. 또한 Figma와 같은 초기 파트너들과 협력해 왔으며, 특히 Figma는 <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a>를 통해 컨테이너 환경에서 에이전트를 실행하고 있습니다.</p>
+<blockquote>
+	<p><em>“Figma Make는 다양한 배경을 가진 빌더와 메이커가 아이디어에서 프로덕션까지 더 빠르게 나아갈 수 있도록 구축되었습니다. 그 목표를 달성하기 위해, 신뢰할 수 없지만 에이전트 및 사용자가 작성한 코드를 실행할 수 있는 안정적이고 고도로 확장 가능한 샌드박스를 제공하는 인프라 솔루션이 필요했습니다. Cloudflare Containers가 바로 그 솔루션이죠.”</em></p>
+	<p><em>- <strong>Alex Mullans</strong>, AI 및 개발자 플랫폼 책임자, Figma</em></p>
+</blockquote>
+<p>더 많은 훌륭한 조직에 Sandboxes를 제공하고자 하며, 이에 따라 오늘 <strong>Sandboxes와 Cloudflare Containers가 모두 정식 출시</strong>되었다는 소식을 전해 드리게 되어 매우 기쁩니다.</p>
+<p>Sandboxes의 최근 변경 사항 몇 가지를 살펴보겠습니다.</p>
+<ul>
+	<li><strong>안전한 자격 증명 주입</strong>을 통해 에이전트가 자격 증명에 접근하지 않고도 인증된 호출을 수행</li>
+	<li><strong>PTY 지원</strong>을 통해 사용자와 에이전트 모두 실제 터미널을 사용</li>
+	<li><strong>지속형 코드 인터프리터</strong>를 통해 에이전트가 기본 제공 환경에서 상태를 유지하는 Python, JavaScript, TypeScript 코드를 실행</li>
+	<li><strong>백그라운드 프로세스 및 라이브 프리뷰 URL</strong>을 통해 개발 서버와 상호작용하고 진행 중인 변경 사항을 확인할 수 있는 간단한 방법을 제공</li>
+	<li><strong>파일 시스템 감시</strong>를 통해 에이전트가 변경을 수행할 때 반복 작업 속도를 향상</li>
+	<li><strong>스냅샷</strong>을 통해 에이전트의 코딩 세션을 빠르게 복구</li>
+	<li><strong>더 높은 한도와 Active CPU 요금제</strong>를 통해 사용되지 않는 CPU 사이클에 비용을 지불하지 않고도 대규모 에이전트 배포를 수행</li>
+</ul>
+<h2>Sandboxes 입문</h2>
+<p>몇 가지 최근 변경 사항을 설명하기 전에 기본 사항을 빠르게 살펴보겠습니다.</p>
+<p>Cloudflare Sandboxes는 <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>로 구동되는 지속형 격리 환경입니다. 이름으로 샌드박스를 요청하면, 실행 중인 경우 바로 사용할 수 있고 실행 중이 아니라면 자동으로 시작됩니다. 유휴 상태일 때는 자동으로 절전 상태로 전환되며, 요청을 받으면 다시 활성화됩니다. <code>exec</code>, <code>gitClone</code>, <code>writeFile</code> <a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>등</u></a>의 메서드를 사용해 샌드박스와 프로그래밍 방식으로 쉽게 상호작용할 수 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getSandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { Sandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Ask for a sandbox by name. It starts on demand.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> sandbox</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(env.Sandbox, </span><span class="sk-032f62-99ffe4">"agent-session-47"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Clone a repository into it.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">gitCheckout</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://github.com/org/repo"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      targetDir: </span><span class="sk-032f62-99ffe4">"/workspace"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      depth: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Run the test suite. Stream output back in real time.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm"</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">"test"</span><span class="sk-24292e-fff">], { stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>동일한 ID를 제공하면 전 세계 어디서든 이 동일한 샌드박스에 후속 요청을 보낼 수 있습니다.</p>
+<h2>안전한 자격 증명 주입</h2>
+<p>에이전트 기반 워크로드에서 가장 어려운 문제 중 하나는 인증입니다. 에이전트가 프라이빗 서비스에 액세스해야 하는 경우가 많지만, 원시 자격 증명을 완전히 맡길 수는 없습니다.&nbsp;</p>
+<p>Sandboxes는 프로그래밍 가능한 이그레스 프록시를 사용해 네트워크 계층에서 자격 증명을 주입함으로써 이 문제를 해결합니다. 이를 통해 샌드박스 에이전트는 자격 증명에 전혀 접근하지 못하며, 필요에 따라 인증 로직을 완전히 사용자 정의할 수 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> OpenCodeInABox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "my-internal-vcs.dev"</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> headersWithAuth</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">(request.headers);</span></span>
+<span class="line"><span class="sk-24292e-fff">      headersWithAuth.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x-auth-token"</span><span class="sk-24292e-fff">, env.</span><span class="sk-005cc5-fff">SECRET</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request, { headers: headersWithAuth });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>이 기능의 작동 방식에 대한 심층 내용인 아이덴티티 기반 자격 증명 주입, 동적 규칙 수정, <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers 바인딩</u></a>과의 통합에 대한 자세한 내용은 <a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>샌드박스 인증</u></a>에 대한 최근 블로그 게시물을 참고하세요.</p>
+<h2>시뮬레이션이 아닌 실제 터미널</h2>
+<p>초기 에이전트 시스템은 종종 셸 액세스를 요청-응답 루프로 모델링했습니다. 이는 명령을 실행하고, 출력을 기다린 뒤, 그 결과를 다시 프롬프트에 넣고, 이를 반복하는 방식입니다. 동작은 하지만, 실제 개발자가 터미널을 사용하는 방식과는 다릅니다.&nbsp;</p>
+<p>사람은 어떤 작업을 실행하고, 출력이 실시간으로 스트리밍되는 것을 지켜보다가, 필요하면 중단하고, 나중에 다시 연결해 이어서 작업을 계속합니다. 에이전트도 이러한 동일한 피드백 루프의 이점을 누릴 수 있습니다.</p>
+<p>2월에는 PTY 지원을 출시했습니다. 이는 Sandbox에서 실행되는 의사 터미널 세션으로, WebSocket을 통해 프록시되며 <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a>와 호환됩니다.</p>
+<p>백엔드를 제공하려면 <code>sandbox.terminal</code>을 호출하기만 하면 됩니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Worker: upgrade a WebSocket connection into a live terminal session</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/terminal"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> sandbox</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(env.Sandbox, </span><span class="sk-032f62-99ffe4">"my-session"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">terminal</span><span class="sk-24292e-fff">(request, { cols: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff">, rows: </span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+</div>
+<p>클라이언트에서는 <code>xterm addon</code>을 사용해 이를 호출하면 됩니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Browser: connect xterm.js to the sandbox shell</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Terminal } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "xterm"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { SandboxAddon } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox/xterm"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> term</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Terminal</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> addon</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> SandboxAddon</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getWebSocketUrl</span><span class="sk-24292e-fff">: ({ </span><span class="sk-e36209-fff">origin</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> `${</span><span class="sk-24292e-fff">origin</span><span class="sk-032f62-99ffe4">}/terminal`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">term.</span><span class="sk-6f42c1-ffc799">loadAddon</span><span class="sk-24292e-fff">(addon);</span></span>
+<span class="line"><span class="sk-24292e-fff">term.</span><span class="sk-6f42c1-ffc799">open</span><span class="sk-24292e-fff">(document.</span><span class="sk-6f42c1-ffc799">getElementById</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"terminal-container"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">addon.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">({ sandboxId: </span><span class="sk-032f62-99ffe4">"my-session"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>이를 통해 에이전트와 개발자는 전체 PTY를 사용해 해당 세션을 실시간으로 디버깅할 수 있습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46523K9AXQMVFN36FY21VP.gif" alt="BLOG-3264 2" width="715" height="244" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>각 터미널 세션은 고유하게 격리된 셸, 자체 작업 디렉터리, 자체 실행 환경을 가집니다. 로컬 환경에서처럼 필요한 만큼 자유롭게 여러 세션을 열 수 있습니다. 출력은 서버 측에서 버퍼링되므로, 재연결 시 놓친 내용을 다시 확인할 수 있습니다.</p>
+<h2>기억하는 코드 인터프리터</h2>
+<p>데이터 분석, 스크립팅, 탐색적 워크플로우를 위해, 보다 상위 수준의 추상화도 제공하는 지속형 코드 실행 컨텍스트입니다.</p>
+<p>핵심 단어는 “지속형”입니다. 많은 코드 인터프리터 구현은 각 스니펫을 격리된 상태에서 실행하기 때문에 호출 간에 상태가 사라집니다. 한 단계에서 변수를 설정해도 다음 단계에서 이를 읽을 수 없습니다.</p>
+<p>Sandboxes를 사용하면 상태를 유지하는 “컨텍스트”를 생성할 수 있습니다. 변수와 가져오기(import)는 Jupyter Notebook과 동일하게 호출 간에도 유지됩니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a Python context. State persists for its lifetime.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">createCodeContext</span><span class="sk-24292e-fff">({ language: </span><span class="sk-032f62-99ffe4">"python"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// First execution: load data</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">runCode</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  import pandas as pd</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  df = pd.read_csv('/workspace/sales.csv')</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  df['margin'] = (df['revenue'] - df['cost']) / df['revenue']</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">, { context: ctx });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Second execution: df is still there</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">runCode</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  df.groupby('region')['margin'].mean().sort_values(ascending=False)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">, { context: ctx, </span><span class="sk-6f42c1-ffc799">onStdout</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">line</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(line.text) });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// result contains matplotlib charts, structured json output, and Pandas tables in HTML</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>서버를 시작하세요. URL을 받으세요. 배포하세요.</h2>
+<p>에이전트는 무언가를 만들고 이를 즉시 사용자에게 보여줄 수 있을 때 더 유용합니다. Sandboxes는 백그라운드 프로세스, 준비 상태 확인, <a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>프리뷰 URL</u></a>을 지원합니다. 이를 통해 에이전트는 개발 서버를 실행하고, 대화에서 벗어나지 않고도 라이브 링크를 공유할 수 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Start a dev server as a background process</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">startProcess</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm run dev"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  cwd: </span><span class="sk-032f62-99ffe4">"/workspace"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Wait until the server is actually ready — don't just sleep and hope</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> server.</span><span class="sk-6f42c1-ffc799">waitForLog</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-a0a0a0">/Local:</span><span class="sk-005cc5-a0a0a0">.</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-a0a0a0">localhost:(</span><span class="sk-005cc5-a0a0a0">\d</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-a0a0a0">)/</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Expose the running service with a public URL</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">url</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exposePort</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">3000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// url is a live public URL the agent can share with the user</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Preview: ${</span><span class="sk-24292e-fff">url</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p><em><code>waitForPort()</code></em>와 <em><code>waitForLog()</code></em>를 사용하면, 에이전트는 추측에 의존하는 대신 실행 중인 프로그램의 실제 신호를 기반으로 작업을 순차적으로 진행할 수 있습니다. 이는 일반적인 대안인 <code>sleep(2000)</code>을 실행한 뒤 잘 되기를 바라는 방식보다 훨씬 더 나은 접근입니다.</p>
+<h2>파일 시스템을 감시하고 즉시 반응하세요</h2>
+<p>현대적인 개발 루프는 이벤트 기반으로 동작합니다. 파일을 저장하면 빌드를 다시 실행하고, 설정을 수정하면 서버를 재시작하며, 테스트를 변경하면 테스트 스위트를 다시 실행합니다.</p>
+<p>3월에 <em>sandbox.watch()</em>를 출시했습니다. 이는 Linux에서 파일 시스템 이벤트를 처리하기 위해 사용하는 커널 메커니즘인 <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a>를 기반으로 하는 SSE 스트림을 반환합니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { parseSSEStream, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> FileWatchSSEEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/sandbox'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">watch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/workspace/src'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  recursive: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  include: [</span><span class="sk-032f62-99ffe4">'*.ts'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'*.tsx'</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> event</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-6f42c1-ffc799"> parseSSEStream</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">FileWatchSSEEvent</span><span class="sk-24292e-fff">&gt;(stream)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (event.type </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'modify'</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> event.path.</span><span class="sk-6f42c1-ffc799">endsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'.ts'</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'npx tsc --noEmit'</span><span class="sk-24292e-fff">, { cwd: </span><span class="sk-032f62-99ffe4">'/workspace'</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>이러한 기본 기능은 조용히 에이전트의 가능성을 바꾸는 요소 중 하나입니다. 파일 시스템을 실시간으로 관찰할 수 있는 에이전트는 인간 개발자와 동일한 피드백 루프에 참여할 수 있습니다.</p>
+<h2>스냅샷으로 빠르게 재개하기</h2>
+<p>노트북으로 작업하는 (인간) 개발자를 상상해 보세요. 이들은 <code>git clone</code>으로 리포지토리를 복제하고, <code>npm install</code>을 실행하며, 코드를 작성하고, PR을 올린 뒤 코드 리뷰를 기다리는 동안 노트북을 닫습니다. 다시 작업을 재개할 때가 되면, 그냥 노트북을 다시 열고 중단했던 지점부터 이어서 작업합니다.</p>
+<p>에이전트가 이러한 워크플로우를 단순한 컨테이너 플랫폼에서 그대로 재현하려고 하면 문제가 생깁니다. 중단한 지점에서 어떻게 빠르게 다시 재개할 수 있을까요? 샌드박스를 계속 실행 상태로 유지할 수도 있지만, 그러면 유휴 컴퓨팅 비용을 계속 지불해야 합니다. 컨테이너 이미지에서 새로 시작할 수도 있지만, 그러면 긴 <code>git clone</code>과 <code>npm install</code>을 다시 기다려야 합니다.</p>
+<p>이에 대한 해답은 스냅샷이며, 이는 향후 몇 주 내에 순차적으로 제공될 예정입니다.</p>
+<p>스냅샷은 컨테이너의 전체 디스크 상태, OS 구성, 설치된 의존성, 수정된 파일, 데이터 파일 등을 모두 보존합니다. 이를 이용하면 나중에 빠르게 복원할 수 있습니다.</p>
+<p>샌드박스가 절전 상태로 전환될 때 자동으로 스냅샷을 생성하도록 구성할 수 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  sleepAfter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "5m"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  persistAcrossSessions</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {type: </span><span class="sk-032f62-99ffe4">"disk"</span><span class="sk-24292e-fff">}; </span><span class="sk-6a737d-8b8b8b94">// you can also specify individual directories</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>또한 스냅샷을 프로그래밍 방식으로 생성하고 수동으로 복원할 수도 있습니다. 이는 작업을 체크포인트로 저장하거나 세션을 분기할 때 유용합니다. 예를 들어, 하나의 에이전트를 병렬로 네 개 실행하려는 경우, 동일한 상태에서 네 개의 샌드박스를 쉽게 실행할 수 있습니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">forkDevEnvironment</span><span class="sk-24292e-fff">(baseId, numberOfForks) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> baseInstance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(baseId);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> snapshotId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> baseInstance.</span><span class="sk-6f42c1-ffc799">snapshot</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> forks</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Array.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">({ length: numberOfForks }, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">_</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">i</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> newInstance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">baseId</span><span class="sk-032f62-99ffe4">}-fork-${</span><span class="sk-24292e-fff">i</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> newInstance.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({ snapshot: snapshotId });</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">(forks);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>스냅샷은 계정 내 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>에 저장되어, 내구성과 위치 독립성을 제공합니다. R2의 <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>계층형 캐싱</u></a> 시스템을 통해 전 세계 모든 리전에서 빠른 복원이 가능합니다.</p>
+<p>향후 릴리스에서는 실행 중인 프로세스가 중단된 지점에서 정확히 다시 시작할 수 있도록 라이브 메모리 상태도 함께 캡처할 예정입니다. 터미널과 편집기도 마지막으로 닫혔던 상태 그대로 다시 열립니다.</p>
+<p>스냅샷이 정식 제공되기 전에 세션 상태를 복원하는 데 관심이 있다면, 지금은 <a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>backup 및 restore</u></code></a> 메서드를 사용할 수 있습니다. 이 역시 R2를 사용해 디렉터리를 유지하고 복원하지만, 실제 VM 수준 스냅샷만큼의 성능을 제공하지는 않습니다. 그럼에도 불구하고, 세션 상태를 단순히 처음부터 다시 생성하는 방식보다 상당한 속도 향상을 제공할 수 있습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="188" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW498BPY5VC065XFA2GZ34P5.gif" alt="BLOG-3264 3" width="715" height="188" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p><sup><em>샌드박스를 부팅하고 ‘axios’를 복제한 뒤 npm install을 수행하는 데 30초가 걸립니다. 백업에서 복원하는 데는 2초가 걸립니다.</em></sup></p>
+<p>정식 스냅샷 출시를 기대해 주세요.</p>
+<h2>더 높은 한도와 Active CPU 요금제</h2>
+<p>초기 출시 이후 지속적으로 용량을 확장해 왔습니다. 현재 기본 요금제 사용자도 lite 인스턴스 유형은 최대 15,000개, basic은 6,000개, 더 큰 인스턴스는 1,000개 이상을 동시에 실행할 수 있습니다. 더 많은 인스턴스를 운영하고 싶다면 <a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>문의하세요</u></a>!</p>
+<p>또한 대규모로 운영할 때 더욱 비용 효율적이도록 요금 모델을 변경했습니다. Sandboxes는 이제 <a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>실제로 사용된 CPU 사이클에 대해서만 과금</u></a>합니다. 즉, 에이전트가 LLM의 응답을 기다리는 동안에는 유휴 CPU에 대한 비용을 지불하지 않아도 됩니다.</p>
+<h2>이것이 바로 컴퓨터의 모습입니다&nbsp;</h2>
+<p>9개월 전, 명령을 실행하고 파일 시스템에 액세스할 수 있는 Sandboxes를 출시했습니다. 이는 개념을 입증하기에는 충분했습니다.</p>
+<p>지금의 모습은 질적으로 완전히 다릅니다. 오늘날의 Sandboxes는 완전한 개발 환경입니다. 브라우저에서 연결할 수 있는 터미널, 상태를 유지하는 코드 인터프리터, 라이브 프리뷰 URL을 제공하는 백그라운드 프로세스, 실시간으로 변경 이벤트를 발생시키는 파일 시스템, 안전한 자격 증명 주입을 위한 이그레스 프록시, 그리고 웜 스타트를 거의 즉시 가능하게 만드는 스냅샷 메커니즘까지 모두 포함됩니다.&nbsp;</p>
+<p>이 위에 구축하면, 만족스러운 패턴, 즉 실제 엔지니어링 작업을 수행하는 에이전트가 자연스럽게 나타납니다. 리포지토리를 복제하고, 설치하고, 테스트를 실행하고, 실패를 확인한 뒤 코드를 수정하고, 다시 테스트를 실행합니다. 인간 엔지니어를 효율적으로 만드는 그 촘촘한 피드백 루프를 이제 에이전트도 그대로 활용할 수 있습니다.</p>
+<p>현재 SDK 버전은 0.8.9입니다. 지금 바로 시작하세요.</p>
+<p><code>npm i @cloudflare/sandbox@latest</code></p>

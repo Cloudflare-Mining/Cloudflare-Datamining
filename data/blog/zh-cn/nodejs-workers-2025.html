@@ -1,0 +1,730 @@
+<p>我们最近一直很忙。</p>
+<p>我们始终将与广泛的 JavaScript 开发者生态系统保持兼容性视为重要的战略投资方向。我们坚信开放标准和开放网络的价值，希望您能将 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> 视为您开发平台的强大扩展，只需将代码放入其中即可运行。为了实现这一目标，Cloudflare Workers 团队在过去一年里大幅提升了与 Node.js 生态系统的兼容性，使得数百（甚至数千）个广受欢迎的 <a href="https://npmjs.com" target="_blank" rel="noopener noreferrer"><u>npm</u></a> 模块如今都能无缝运行，其中就包括备受青睐的 <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express</u></a> 框架。</p>
+<p>我们已经实现了 <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>Node.js 标准库的相当大一部分内容</u></a>，重点覆盖了最常用、也是开发者最常请求的 API。这些 API 包括：</p>
+<div id="html-block-ki" class="html-block">
+	<style>
+		#html-block-ki .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-ki .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ki .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ki .tg .tg-fgy3 {
+			font-family: "Courier New", Courier, monospace;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-ki .tg .tg-akbm {
+			font-weight: bold;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		#html-block-ki .tg .tg-z2pc {
+			background-color: #0FF;
+			font-family: "Courier New", Courier, monospace;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-ki .tg .tg-wu3h {
+			background-color: #0FF;
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		#html-block-ki .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:140.88889px">
+				<col style="width:317.88889px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-akbm"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#000;background-color:transparent">模块</span></th>
+					<th class="tg-akbm"><span style="font-weight:700;font-style:normal;text-decoration:underline;color:#000;background-color:transparent">API 文档</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:console</span></td>
+					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/console.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/console.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:crypto</span></td>
+					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/crypto.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/crypto.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:dns</span></td>
+					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/dns.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/dns.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:fs</span></td>
+					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/fs.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/fs.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:http</span></td>
+					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/http.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/http.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:https</span></td>
+					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/https.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/https.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:net</span></td>
+					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/net.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/net.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:process</span></td>
+					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/process.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/process.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:timers</span></td>
+					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/timers.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/timers.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:tls</span></td>
+					<td class="tg-zb5k"><a href="https://nodejs.org/docs/latest/api/tls.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/tls.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:zlib</span></td>
+					<td class="tg-wu3h"><a href="https://nodejs.org/docs/latest/api/zlib.html"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">https://nodejs.org/docs/latest/api/zlib.html</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>我们对每一项功能都进行了精心实现，力求在可行范围内最大程度还原 Node.js 的行为特性。对于那些无法完全匹配 <a href="http://nodejs.org" target="_blank" rel="noopener noreferrer"><u>Node.js</u></a> 行为的场景，我们的实现会在调用时抛出明确的错误提示，而不会选择静默失败或直接不提供该功能。这样一来，即使某些功能不可用，那些检查这些 API 是否存在的包也不会出现运行时错误。</p>
+<p>在某些情况下，我们不得不在运行时内部实现全新的能力，以便提供所需的功能。例如，针对 <code>node:fs</code>，我们在 Workers 环境中新增了一个虚拟文件系统。而在其他一些情况下，比如对于 <code>node:net</code>、<code>node:tls</code> 和 <code>node:http</code>，我们将新的 Node.js API 封装在了现有的 Workers 能力之上，例如 <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer"><u>Sockets API</u></a> 和 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><code><u>fetch</u></code></a>。</p>
+<p>最重要的是，<strong>所有这些实现均原生集成于 Workers 运行时环境</strong>，通过 TypeScript 与 C++ 的协同开发完成。我们之前的 Node.js 兼容性工作严重依赖于部署时通过开发者工具（例如 <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>）注入的 polyfill 和 shim，而我们现在正转向一种新模式：未来的 Workers 将原生内置这些 API，无需任何额外依赖。这样做不仅能显著提升性能、降低内存占用，还能确保其行为尽可能贴近原生 Node.js 环境。</p>
+<h2>网络堆栈</h2>
+<p>Node.js 提供了丰富的网络 API，允许应用程序创建服务器、发起 HTTP 请求、操作原始 TCP/UDP 套接字、发送 DNS 查询等多种功能。然而 Workers 无法直接访问底层内核级套接字，那么我们该如何支持这些 Node.js 网络 API，确保相关软件包仍能按预期运行呢？我们的解决方案是：基于现有的<a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer"><u>托管套接字</u></a>和 fetch API 进行构建。通过这些实现方案，大量依赖网络 API 的主流 Node.js 软件包都能在 Workers 环境中无缝运行。</p>
+<p>让我们从 HTTP API 开始。</p>
+<h3>HTTP 客户端和服务器支持</h3>
+<p>自从我们宣布将在 Workers 中推进 Node.js 兼容性以来，用户们就一直在特别呼吁实现 <code>node:http</code> 模块。生态系统中有着无数模块，它们直接依赖于诸如 <code>http.get(...)</code> 和 <code>http.createServer(...)</code> 这样的 API。</p>
+<p><code>node:http</code> 和 <code>node:https</code> 模块提供了用于创建 HTTP 客户端和服务器的 API。<a href="https://blog.cloudflare.com/bringing-node-js-http-servers-to-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>我们已经实现了这两个模块</u></a>，允许您使用 <code>http.request()</code> 创建 HTTP 客户端，使用 <code>http.createServer()</code> 创建 HTTP 服务器。<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/http" target="_blank" rel="noopener noreferrer"><u>HTTP 客户端的实现</u></a>基于 Fetch API 构建，而 HTTP 服务器的实现则基于 Workers 运行时现有的请求处理能力构建。</p>
+<p>客户端侧相当简单：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> http </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:http'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">resolve</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">reject</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> req</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> http.</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'http://example.com'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">res</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        res.</span><span class="sk-6f42c1-ffc799">setEncoding</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'utf8'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        res.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'data'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">chunk</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">          data </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> chunk;</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">        res.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'end'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          resolve</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(data));</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"><span class="sk-24292e-fff">      req.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'error'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">err</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        reject</span><span class="sk-24292e-fff">(err);</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"><span class="sk-24292e-fff">      req.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>服务端的使用同样简单，甚至可能更加令人兴奋。我们经常被问及是否能在 Workers 中支持 <a href="https://expressjs.com" target="_blank" rel="noopener noreferrer"><u>Express</u></a>、<a href="https://koajs.com" target="_blank" rel="noopener noreferrer"><u>Koa</u></a> 或 <a href="https://fastify.dev" target="_blank" rel="noopener noreferrer"><u>Fastify</u></a>，但由于这些框架高度依赖 Node.js 的 API，过去一直很难实现。随着新功能的加入，现在您已可以在 Workers 中使用 Express 和 Koa，我们也有望在未来添加对 Fastify 的支持。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "node:http"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { httpServerHandler } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:node"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createServer</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">res</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  res.</span><span class="sk-6f42c1-ffc799">writeHead</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">, { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/plain"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  res.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello from Node.js HTTP server!"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> httpServerHandler</span><span class="sk-24292e-fff">(server);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>来自 <code>cloudflare:node</code> 模块的 <code>httpServerHandler()</code> 函数，能够将 HTTP <code>server</code> 与 Workers 的 fetch 事件进行集成，从而允许其处理传入请求。</p>
+<h3><code>node:dns</code> 模块</h3>
+<p><code>node:dns</code> 模块提供了一个 API，用于执行 DNS 查询。</p>
+<p>在 Cloudflare，我们恰好提供了一项 <a href="https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https" target="_blank" rel="noopener noreferrer"><u>DNS-over-HTTPS (DoH)</u></a> 服务，同时我们还运营着自己的 <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>DNS 服务——1.1.1.1</u></a>。在向 Workers 暴露 <code>node:dns</code> 模块时，我们充分利用了这一优势。当您使用该模块发起 DNS 查询时，它将直接向 1.1.1.1 发起一个子请求来解析查询。如此一来，用户无需关心 DNS 服务器的配置，查询也能顺利执行。</p>
+<h3><code>node:net</code> 和 <code>node:tls</code> 模块</h3>
+<p><code>node:net</code> 模块提供了用于创建 TCP 套接字的 API，而 <code>node:tls</code> 模块提供了用于创建安全 TLS 套接字的 API。如前所述，这两个模块都基于现有的 <a href="https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets" target="_blank" rel="noopener noreferrer"><u>Workers Sockets API</u></a> 构建。请注意，并非所有 <code>node:net</code> 和 <code>node:tls</code> 模块的功能都可在 Workers 中使用。例如，目前尚无法使用 <code>net.createServer()</code> 创建 TCP 服务器（但可能很快就会实现！），但我们已经实现了足够多的 API，足以支持许多依赖这些模块的热门软件包在 Workers 中使用。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> net </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:net'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> tls </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:tls'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">promise</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">resolve</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">withResolvers</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> socket</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> net.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">({ host: </span><span class="sk-032f62-99ffe4">'example.com'</span><span class="sk-24292e-fff">, port: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">        () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> buf </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">      socket.</span><span class="sk-6f42c1-ffc799">setEncoding</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'utf8'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">      socket.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'data'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">chunk</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> buf </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> chunk);</span></span>
+<span class="line"><span class="sk-24292e-fff">      socket.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'end'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> resolve</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'ok'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">      socket.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> promise;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>一种新的虚拟文件系统和 <code>node:fs</code> 模块</h2>
+<p>在无服务器环境中支持文件系统 API 意味着什么？当您部署一个 Worker 时，它在“全球区域”(Region:Earth) 上运行，我们不希望您去操心一个个带有独立文件系统的服务器。然而，在生态系统中存在着无数现有的应用程序和模块，它们利用文件系统来存储配置数据、读写临时数据等等。</p>
+<p>Workers 与传统的 Node.js 进程不同，它们无法访问传统文件系统——而这样的设计其实大有讲究！这是因为单个 Worker 并非在某台固定的机器上运行，您发起的每一次 Worker 请求，都可能在 Cloudflare 全球<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>网络</u></a>中任意一台服务器上执行。若强行协调并同步访问传统文件系统这类共享物理资源，不仅会带来重大的技术挑战，还可能引发死锁等一系列问题——而这些挑战，恰恰是所有大规模分布式系统与生俱来的难题。好在我们为 Workers 提供了诸如 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> 这样的强大工具，它能帮助开发者在大规模场景下，有效协调并管理共享的持久化状态。针对开发者在 Workers 中对文件系统的需求，我们基于 Workers 原本就具备的强大能力，构建出了理想的解决方案。</p>
+<p>我们实施了一个虚拟文件系统，让您能够使用 node:fs API 来读写临时性的内存文件。这个虚拟文件系统是每个 Worker 独有的：在使用无状态 Worker 时，某个请求中创建的文件，在其他任何请求中都无法访问；但若使用 Durable Object，这个临时文件空间就能在多个用户的多次请求间共享。该文件系统目前是临时性的，也就是说，文件不会在 Worker 重启或重新部署后继续留存，所以它并不能替代 <a href="https://developers.cloudflare.com/durable-objects/api/storage-api" target="_blank" rel="noopener noreferrer"><u>Durable Object Storage</u></a> 机制，但它提供了一个强大的新工具，能大幅提升您使用 Durable Objects 的能力。</p>
+<p><code>node:fs</code> 模块提供了一组丰富的 API 来处理文件和目录：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fs </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:fs'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Write a temporary file</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> fs.promises.</span><span class="sk-6f42c1-ffc799">writeFile</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/tmp/hello.txt'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Hello, world!'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Read the file</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> fs.promises.</span><span class="sk-6f42c1-ffc799">readFile</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/tmp/hello.txt'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'utf-8'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`File contents: ${</span><span class="sk-24292e-fff">data</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>该虚拟文件系统支持广泛的文件操作，包括读取和写入文件、创建和删除目录，以及处理文件描述符。它还支持通过 <code>process.stdin</code>、<code>process.stdout</code> 和 <code>process.stderr</code> 实现的标准输入/输出/错误流，同时也支持符号链接、流等更多功能。</p>
+<p>虽然当前实现的虚拟文件系统仅支持内存存储，但我们正在探索未来添加持久化存储的方案，未来或将与 Cloudflare 现有的存储解决方案（如 R2 或 Durable Objects）实现联动。不过，您不必等待我们的更新！当结合 Durable Objects 和 <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>JavaScript RPC</u></a> 等强大工具时，您完全可以通过 SQLite 存储打造出属于自己的通用、持久化文件系统抽象层。</p>
+<h2>使用 <code>node:crypto</code> 进行加密</h2>
+<p><code>node:crypto</code> 模块提供了一整套全面的加密功能，包括哈希、加密、解密等。我们已经完整实现了 <code>node:crypto</code> 模块，使您可以在 Workers 应用程序中使用熟悉的加密 API。由于 Workers 底层使用的是 <a href="https://github.com/google/boringssl/blob/main/README.md" target="_blank" rel="noopener noreferrer"><u>BoringSSL</u></a>，而 Node.js 使用的是 <a href="https://github.com/openssl" target="_blank" rel="noopener noreferrer"><u>OpenSSL</u></a>，因此与 Node.js 相比会存在一些行为上的差异。不过，我们已尽力使这些 API 尽可能兼容，目前许多依赖 <code>node:crypto</code> 的流行包都可以在 Workers 中无缝运行。</p>
+<p>为实现这一目标，我们并未简单照搬 Node.js 中这些加密操作的实现方式。相反，我们深入 Node.js 项目内部，将核心加密功能提取出来，打造成了一个名为 <a href="https://github.com/nodejs/ncrypto" target="_blank" rel="noopener noreferrer"><code><u>ncrypto</u></code></a> 的独立依赖项目。这个项目不仅供 Workers 使用，Bun 也能借助它，通过直接运行与 Node.js 完全相同的代码，来实现与 Node.js 兼容的功能。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> crypto </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:crypto'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> hash</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> crypto.</span><span class="sk-6f42c1-ffc799">createHash</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'sha256'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    hash.</span><span class="sk-6f42c1-ffc799">update</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello, world!'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> digest</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> hash.</span><span class="sk-6f42c1-ffc799">digest</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hex'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`SHA-256 hash: ${</span><span class="sk-24292e-fff">digest</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>支持 <code>node:crypto</code> 模块的所有主要功能，包括：</p>
+<ul>
+	<li>哈希（例如，SHA-256、SHA-512）</li>
+	<li>HMAC</li>
+	<li>对称加密/解密</li>
+	<li>非对称加密/解密</li>
+	<li>数字签名</li>
+	<li>密钥生成和管理</li>
+	<li>随机字节生成</li>
+	<li>密钥推导函数（例如，PBKDF2、scrypt）</li>
+	<li>加密和解密数据流</li>
+	<li>签名和验证流</li>
+	<li>用于管理密钥的 KeyObject 类</li>
+	<li>证书处理（例如，X.509 证书）</li>
+	<li>支持各种编码格式（例如，PEM、DER、base64）。</li>
+	<li>以及更多……</li>
+</ul>
+<h2>过程与环境</h2>
+<p>在 Node.js 中，<code>node:process</code> 模块提供了一个全局对象，用于获取有关当前 Node.js 进程的信息并对该进程进行控制。它包含了一系列属性和方法，可用于访问环境变量、命令行参数、当前工作目录等。它是 Node.js 中最基础的模块之一，许多包都依赖它来实现基本功能，并默认其一定存在。然而，<code>node:process</code> 模块中的某些部分在 Workers 环境中是没有意义的，例如进程 ID 和用户/组 ID。这些概念与传统的服务器操作系统及进程模型紧密相关，而在 Workers 环境中并没有对应的机制。</p>
+<p>当启用 <code>nodejs_compat</code> 标志时，您可以在 Worker 脚本中直接使用全局对象 <code>process</code>，或者通过 <code>import process from 'node:process'</code> 显式导入该模块。需要注意的是，<code>process</code> 全局对象仅在启用 <code>nodejs_compat</code> 标志时可用。若在未启用该标志的情况下尝试访问 <code>process</code>，其值将为 <code>undefined</code>，且导入操作将抛出错误。</p>
+<p>让我们看一下在 Workers 中确实有意义并已完全实现的 <code>process</code> API，从 <code>process.env</code> 开始。</p>
+<h3>环境变量</h3>
+<p>Workers 很早就已经<a href="https://developers.cloudflare.com/workers/configuration/environment-variables" target="_blank" rel="noopener noreferrer"><u>支持环境变量</u></a>了，但在此之前，环境变量只能通过传递给 Worker 函数的 env 参数来访问。在 Worker 的顶层作用域中，是无法直接访问环境变量的：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> config</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_ENVIRONMENT_VARIABLE</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p> 通过全新的 <a href="https://developers.cloudflare.com/workers/configuration/environment-variables" target="_blank" rel="noopener noreferrer"><u><code>process.env </code>实现</u></a>，您现在可以像在 Node.js 中一样，以更熟悉的方式访问环境变量，并且可以在任意作用域（包括 Worker 的顶层作用域）中进行访问：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> process </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:process'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> config</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">MY_ENVIRONMENT_VARIABLE</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // You can still access env here if you need to</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> configFromEnv</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_ENVIRONMENT_VARIABLE</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p><a href="https://developers.cloudflare.com/workers/configuration/environment-variables" target="_blank" rel="noopener noreferrer"><u>环境变量</u></a>的设置方式与之前相同，可以通过 <code>wrangler.toml</code> 或 <code>wrangler.jsonc</code> 配置文件，也可以通过 Cloudflare 仪表板或 API 进行设置。它们既可以设置为简单的键值对，也可以设置为 JSON 对象：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"my-worker-dev"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "main"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"src/index.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_date"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-09-15"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_flags"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "nodejs_compat"</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "vars"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "API_HOST"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "API_ACCOUNT_ID"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"example_user"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "SERVICE_X_DATA"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "URL"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"service-x-api.dev.example"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "MY_ID"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">123</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>通过 <code>process.env</code> 访问时，所有环境变量值都是字符串，就像在 Node.js 中一样。</p>
+<p>由于 <code>process.env</code> 可在全局范围内访问，因此需要注意的是，环境变量可在 Worker 脚本中的任何位置访问，包括您可能正在使用的第三方库。这与 Node.js 的行为一致，但从安全和配置管理的角度来看，这是一个需要注意的地方。<a href="https://developers.cloudflare.com/secrets-store" target="_blank" rel="noopener noreferrer"><u>Cloudflare Secrets Store</u></a> 可以在 Workers 中提供增强的机密处理能力，作为使用环境变量的替代方案。</p>
+<h4>可导入环境和 waitUntil</h4>
+<p>当未启用 <code>nodejs_compat</code> 标志时，我们决定更进一步，使用户可以将环境变量和 <a href="https://developers.cloudflare.com/workers/configuration/environment-variables" target="_blank" rel="noopener noreferrer"><u>waitUntil 机制</u></a>作为模块导入，而不必总是通过传递给 Worker 函数的 <code>env</code> 和 <code>ctx</code> 参数来访问它们。这种方式可以让用户以更模块化的方式访问环境变量，也有助于避免在多层函数调用中反复传递 <code>env</code> 参数。这虽然不是 Node.js 兼容性方面的功能，但我们认为这是对 Workers 环境的一项实用增强。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { env, waitUntil } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> config</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_ENVIRONMENT_VARIABLE</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // You can still access env here if you need to</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> configFromEnv</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_ENVIRONMENT_VARIABLE</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> doSomething</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Bindings and waitUntil can now be accessed without</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // passing the env and ctx through every function call.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  waitUntil</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">RPC</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">doSomethingRemote</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>关于 <code>process.env</code>，有一个重要的注意事项：通过 <code>process.env</code> 对环境变量所做的更改，不会反映在传递给 Worker 函数的 <code>env</code> 参数中，反之亦然。<code>process.env</code> 是在 Worker 执行开始时填充的，并不会动态更新。这与 Node.js 的行为是一致的，在 Node.js 中，对 <code>process.env</code> 的修改也不会影响运行中进程的实际环境变量。我们之所以这样设计，是为了尽量降低第三方库（原本是为在 Node.js 中运行而编写的）无意中修改 Worker 其余代码所依赖的环境变量的风险。</p>
+<h3>Stdin、stdout、stderr</h3>
+<p>Worker 不像 Node.js 进程那样拥有传统的标准输入/输出/错误流。然而，我们实现了 <code>process.stdin</code>、<code>process.stdout</code> 和 <code>process.stderr</code>，它们作为类似流的对象，可以类似地使用。这些流并未连接到任何实际的进程标准输入和标准输出，但它们可用于捕获写入 Worker 日志的输出，其方式与 <code>console.log</code> 及其类似项相同，它们也会显示在 <a href="https://developers.cloudflare.com/workers/observability/logs/workers-logs" target="_blank" rel="noopener noreferrer"><u>Workers 日志</u></a>中。</p>
+<p><code>process.stdout</code> 和 <code>process.stderr</code> 是 Node.js 可写流：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> process </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:process'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    process.stdout.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'This will appear in the Worker logs</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    process.stderr.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'This will also appear in the Worker logs</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello, world!'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>对 <code>stdin</code>、<code>stdout</code> 和 <code>stderr</code> 的支持也已与虚拟文件系统集成，这让您能够使用 <code>node:fs</code> API 向标准文件描述符 <code>0</code>、<code>1</code> 和 <code>2</code>（分别对应 <code>stdin</code>、<code>stdout</code> 和 <code>stderr</code>）进行写入操作：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fs </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:fs'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> process </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:process'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Write to stdout</span></span>
+<span class="line"><span class="sk-24292e-fff">    fs.</span><span class="sk-6f42c1-ffc799">writeSync</span><span class="sk-24292e-fff">(process.stdout.fd, </span><span class="sk-032f62-99ffe4">'Hello, stdout!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Write to stderr</span></span>
+<span class="line"><span class="sk-24292e-fff">    fs.</span><span class="sk-6f42c1-ffc799">writeSync</span><span class="sk-24292e-fff">(process.stderr.fd, </span><span class="sk-032f62-99ffe4">'Hello, stderr!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Check the logs for stdout and stderr output!'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>其他流程 API</h3>
+<p>我们无法在此详细介绍每个 <code>node:process</code> API，但以下是我们已实现的其他一些值得注意的 API：</p>
+<ul>
+	<li><code>process.nextTick(fn)</code>：在当前执行上下文完成后调度回调函数执行。我们的实现采用了与 Promise 相同的微任务队列机制，因此其行为与 <code>queueMicrotask(fn)</code> 完全一致。</li>
+	<li><code>process.cwd()</code> 和 <code>process.chdir()</code>：用于获取和更改当前的虚拟工作目录。Worker 启动时，当前工作目录会被初始化为 /<code>bundle</code>，并且每个请求都有自己独立的工作目录视图。在一个请求中更改工作目录，不会影响其他请求中的工作目录。</li>
+	<li><code>process.exit()</code>：立即终止当前 Worker 请求的执行。这与 Node.js 不同，在 Node.js 中，<code>process.exit()</code> 会终止整个进程。而在 Workers 中，调用 <code>process.exit()</code> 将停止当前请求的执行，并向客户端返回一个错误响应。</li>
+</ul>
+<h2>使用 <code>node:zlib</code> 压缩</h2>
+<p><code>node:zlib</code> 模块提供了一系列 API，支持使用 gzip、deflate 和 brotli 等多种算法对数据进行压缩与解压缩。我们已经实现了 <code>node:zlib</code> 模块，让您能够在 Workers 应用中直接使用这些熟悉的压缩 API。由此可以支持多种应用场景，包括网络传输数据压缩、响应优化以及归档文件处理等。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> zlib </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:zlib'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'Hello, world! Hello, world! Hello, world!'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> compressed</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> zlib.</span><span class="sk-6f42c1-ffc799">gzipSync</span><span class="sk-24292e-fff">(input);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> decompressed</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> zlib.</span><span class="sk-6f42c1-ffc799">gunzipSync</span><span class="sk-24292e-fff">(compressed).</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'utf-8'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Decompressed data: ${</span><span class="sk-24292e-fff">decompressed</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>虽然 Workers 已经通过 <a href="https://compression.spec.whatwg.org" target="_blank" rel="noopener noreferrer"><u>Web 平台标准压缩 API</u></a> 内置支持了 gzip 和 deflate 压缩，但对 <code>node:zlib</code> 模块的支持则进一步增加了对 Brotli 压缩算法的支持，同时也为 Node.js 开发者提供了更加熟悉的 API。</p>
+<h2>定时和调度</h2>
+<p>Node.js 通过 <code>node:timers</code> 模块提供了一组定时和调度相关的 API。我们在运行时中也实现了这些 API。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> timers </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:timers'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    timers.</span><span class="sk-6f42c1-ffc799">setInterval</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'This will log every half-second'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }, </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    timers.</span><span class="sk-6f42c1-ffc799">setImmediate</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'This will log immediately after the current event loop'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">resolve</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      timers.</span><span class="sk-6f42c1-ffc799">setTimeout</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        resolve</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello after 1 second!'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">      }, </span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Node.js 中的定时器 API 与标准的 Web 平台非常相似，但有一个关键区别：Node.js 计时器 API 会返回 <code>Timeout</code> 对象，可用于在创建计时器后对其进行管理。我们在 Workers 中实现了 <code>Timeout </code>类来提供此功能，让您可以根据需要清除或重新启动计时器。</p>
+<h2>控制台</h2>
+<p><code>node:console</code> 模块提供了一组与标准 <code>console</code> 全局对象类似的控制台日志记录 API，但额外增加了一些功能。我们实现的 <code>node:console</code> 模块，是对 Workers 中已有的 <code>globalThis.console</code> 的一个轻量级封装。</p>
+<h2>如何启用 Node.js 兼容性功能</h2>
+<p>要在您的 Workers 中整体启用 Node.js 兼容功能，您可以在 <a href="https://developers.cloudflare.com/workers/wrangler/configuration" target="_blank" rel="noopener noreferrer"><code><u>wrangler.jsonc or wrangler.toml</u></code></a> 配置文件中设置 <code>nodejs_compat</code> <a href="https://developers.cloudflare.com/workers/configuration/compatibility-flags" target="_blank" rel="noopener noreferrer"><u>兼容性标志</u></a>。如果您没有使用 Wrangler，也可以通过 <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare 控制台</u></a>或 API 来设置该标志。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"my-worker"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "main"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"src/index.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_date"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-09-21"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_flags"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Get everything Node.js compatibility related</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "nodejs_compat"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p><strong>这里的兼容日期非常关键！将其更新为最新的日期，您就能始终使用到最新、最强大的功能。</strong></p>
+<p><code>nodejs_compat</code> 标志是一个综合性标志，能一次性启用所有 Node.js 兼容性功能。这是启用 Node.js 兼容性的推荐方式，因为它能确保所有功能都可用且彼此无缝协作。不过，如果您更倾向于单独控制，也可以通过各自对应的兼容性标志，逐个启用或禁用某些功能。</p>
+<div id="html-block-kcn" class="html-block">
+	<style>
+		#html-block-kcn .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-kcn .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kcn .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kcn .tg .tg-fgy3 {
+			font-family: "Courier New", Courier, monospace;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kcn .tg .tg-u0qz {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: x-large;
+			font-weight: bold;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		#html-block-kcn .tg .tg-z2pc {
+			background-color: #0FF;
+			font-family: "Courier New", Courier, monospace;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-u0qz"><span style="font-style:normal;color:#000;background-color:transparent">模块</span></th>
+					<th class="tg-u0qz"><span style="font-style:normal;color:#000;background-color:transparent">启用标记（默认）</span></th>
+					<th class="tg-u0qz"><span style="font-style:normal;color:#000;background-color:transparent">禁用标记</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:console</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_console_module</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_console_module</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:fs</span></td>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_fs_module</span></td>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_fs_module</span></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:http (client)</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_http_modules</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_http_modules</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:http (server)</span></td>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_http_server_modules</span></td>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_http_server_modules</span></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:os</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_os_module</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">disable_nodejs_os_module</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:process</span></td>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">enable_nodejs_process_v2</span></td>
+					<td class="tg-fgy3"></td>
+				</tr>
+				<tr>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">node:zlib</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nodejs_zlib</span></td>
+					<td class="tg-z2pc"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">no_nodejs_zlib</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">process.env</span></td>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nodejs_compat_populate_process_env</span></td>
+					<td class="tg-fgy3"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nodejs_compat_do_not_populate_process_env</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>通过将这些功能分开，您可以更精细地控制哪些 Node.js API 可以在您的 Workers 中使用。最初，我们是将这些功能统一放在一个 <code>nodejs_compat</code> 标志下逐步推出的，但我们很快意识到，有些用户会根据某些模块和 API 是否存在来进行功能检测，而如果一次性启用所有功能，就有可能破坏一些现有的 Workers。那些手动检查这些 API 是否存在的用户，可以通过选择不启用特定 API 来确保新变更不会影响他们的 Workers：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"my-worker"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "main"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"src/index.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_date"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-09-15"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_flags"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Get everything Node.js compatibility related</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "nodejs_compat"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // But disable the `node:zlib` module if necessary</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "no_nodejs_zlib"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>不过，为了简单起见，<strong>我们建议先开启 <code>nodejs_compat</code> 标志，这样会启用所有兼容功能。如果后续有需要，您也可以随时单独禁用某些功能。</strong>启用额外功能并不会带来任何性能上的影响。</p>
+<h3>处理已停用的 API</h3>
+<p>Node.js 与 Workers 之间的一个重要区别在于：Node.js 有一套<a href="https://nodejs.org/en/eol" target="_blank" rel="noopener noreferrer"><u>明确的长期支持 (LTS) 计划</u></a>，这使得它可以在特定的时间点进行不兼容的变更。更具体地说，当某些 API 或功能到达其生命周期终点 (EOL) 时，Node.js 是可以将其移除的。然而，在 Workers 平台上，我们有一条明确的原则：一旦某个 Worker 被部署，<a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>它就将永久以部署时的状态持续运行</u></a>，只要兼容日期没有改变，就不会发生任何不兼容的变更。这就意味着，我们不能像 Node.js 那样，仅仅因为某个 API 在 Node.js 中已经到达 EOL 就直接将其移除，因为这会导致现有的 Workers 出现运行错误。为了解决这个问题，我们引入了一组新的兼容性标志，允许用户指定他们不希望 <code>nodejs_compat</code> 功能包含那些已经到达生命周期终点的 API。这些标志基于已删除 API 的 Node.js 主要版本：</p>
+<p><code>remove_nodejs_compat_eol</code> 标记将删除截至您当前兼容性日期为止所有已达到 EOL 的 API：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"my-worker"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "main"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"src/index.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_date"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-09-15"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_flags"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Get everything Node.js compatibility related</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "nodejs_compat"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Remove Node.js APIs that have reached EOL up to your</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // current compatibility date</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "remove_nodejs_compat_eol"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<ul>
+	<li><code>remove_nodejs_compat_eol_v22</code> 标志将移除所有在 Node.js v22 版本中达到生命周期终点的 API。当您使用 <code>removenodejs_compat_eol</code> 功能时，如果将兼容性日期设置为晚于 Node.js v22 的 EOL 日期（2027 年 4 月 30 日），该标志将会自动启用。</li>
+	<li><code>remove_nodejs_compat_eol_v23</code> 标志将移除所有在 Node.js v23 版本中达到生命周期终点的 API。当您使用 <code>removenodejs_compat_eol</code> 功能时，如果将兼容性日期设置为晚于 Node.js v24 的 EOL 日期（2028 年 4 月 30 日），该标志将会自动启用。</li>
+	<li><code>remove_nodejs_compat_eol_v24</code> 标志将移除所有在 Node.js v24 版本中达到生命周期终点的 API。当您使用 <code>removenodejs_compat_eol</code> 功能时，如果将兼容性日期设置为晚于 Node.js v24 的 EOL 日期（2028 年 4 月 30 日），该标志将会自动启用。</li>
+</ul>
+<p>如果您查看 <code>remove_nodejs_compat_eol_v23</code> 的日期，会发现它与 <code>remove_nodejs_compat_eol_v24</code> 的日期相同。这并非笔误！Node.js v23 并非长期支持 (LTS) 版本，因此其支持周期非常短暂。该版本于 2023 年 10 月发布，2024 年 5 月就达到了生命周期终点 (EOL)。基于此，我们决定将非长期支持版本的生命末期处理合并至下一个长期支持版本中。这意味着，当您将兼容性日期设置为晚于 Node.js v24 的 EOL 日期时，您实际上也选择不再使用 Node.js v23 中已到达 EOL 的 API。需要特别说明的是，这些标志不会自动启用，只有当您的兼容性日期设置为晚于相关 Node.js 版本的 EOL 日期时，它们才会生效。这样能确保现有 Workers 有充足的时间在 API 被移除前完成迁移，或者您也可以选择通过使用 <code>add_nodejs_compat_eol_v24</code> 等反向兼容标志，无限期地继续使用旧版 API。</p>
+<h2>回馈社区</h2>
+<p>我们一直在进行的另一项重要工作是将 Cloudflare 的投入重新扩展到整个 Node.js 生态系统。目前，Workers 运行时团队的五名成员（另加一名暑期实习生）正在 GitHub 上积极为 <a href="https://github.com/nodejs/node" target="_blank" rel="noopener noreferrer"><u>Node.js 项目</u></a>做出贡献，其中两名成员是 Node.js 技术指导委员会的成员。虽然我们做出了许多新功能贡献，例如 Web 平台标准 <a href="https://blog.cloudflare.com/improving-web-standards-urlpattern" target="_blank" rel="noopener noreferrer"><u>URLPattern</u></a> API 的实现和<a href="https://github.com/nodejs/ncrypto" target="_blank" rel="noopener noreferrer"><u>加密</u></a>操作的改进，但我们的主要重点是提升其他运行时与 Node.js 的互操作性和兼容性，修复关键错误并提升性能。随着我们继续加大对 Node.js 兼容性的投入，我们也将持续加大对该项目及整个生态系统的贡献力度。</p>
+<div id="html-block-kef" class="html-block">
+	<style>
+		#html-block-kef .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-kef .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kef .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-kef .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kef .tg .tg-12li {
+			background-color: #0FF;
+			font-size: 100%;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kef .tg .tg-t978 {
+			background-color: #0FF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kef .tg .tg-wu3h {
+			background-color: #0FF;
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		#html-block-kef .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-kef .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			text-decoration: underline;
+			vertical-align: top
+		}
+
+		#html-block-kef .tg .tg-lvtv {
+			background-color: #0FF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-12li" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Aaron Snell</span></th>
+					<th class="tg-t978" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年夏季实习生，Cloudflare 容器</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js Web 基础设施团队</span></th>
+					<th class="tg-t978" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/2ud1DF6HOI3ha2ySAhPOve/803132cf224695a48698afb806bf147b/Aaron.png?h=250" alt="图片" width="85" height="85"></th>
+				</tr>
+				<tr>
+					<th class="tg-t978"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="图片" width="25" height="25"></th>
+					<th class="tg-wu3h"><a href="https://github.com/flakey5"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">flakey5</span></a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-1wig" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dario Piotrowicz</span></td>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">高级系统工程师</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js 协作者</span></td>
+					<td class="tg-0lax" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4K17bsjek1z4u2KRTtZ8uS/d7058dea515cb057a1727bcd01a0f5d2/Dario.png?h=250" alt="图片" width="85" height="85"></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="图片" width="25" height="25"></td>
+					<td class="tg-zb5k"><a href="https://github.com/dario-piotrowicz"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">dario-piotrowicz</span></a></td>
+				</tr>
+				<tr>
+					<td class="tg-lvtv" colspan="2"><span style="font-weight:700;font-style:normal">Guy Bedford</span></td>
+					<td class="tg-t978" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">首席系统工程师</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js 协作者</span></td>
+					<td class="tg-t978" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/iYM8oWWSK89MesmQwctfc/4d86847238b1f10e18717771e2ad5ee8/Guy.png?h=250" alt="图片" width="85" height="85"></td>
+				</tr>
+				<tr>
+					<td class="tg-t978"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="图片" width="25" height="25"></td>
+					<td class="tg-wu3h"><a href="https://github.com/guybedford"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">guybedford</span></a></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">James Snell</span></td>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">首席系统工程师</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js TSC</span></td>
+					<td class="tg-0lax" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4vN2YAqsEBlSnWtXRM0pTT/5e9130753ed71933fc94bc2c634425f3/James.png?h=250" width="85" height="85" alt=""></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="图片" width="25" height="25"></td>
+					<td class="tg-zb5k"><a href="https://github.com/jasnell"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">jasnell</span></a></td>
+				</tr>
+				<tr>
+					<td class="tg-lvtv" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nicholas Paun</span></td>
+					<td class="tg-t978" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">系统工程师</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js 贡献者</span></td>
+					<td class="tg-t978" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/4ePtfLAzk4pKYi4hU4dRLX/e4dcdfe86a4e54c4d02e356e2078d214/Nicholas.png?h=250" width="85" height="85" alt=""></td>
+				</tr>
+				<tr>
+					<td class="tg-t978"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="图片" width="25" height="25"></td>
+					<td class="tg-wu3h"><a href="https://github.com/npaun"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">npaun</span></a></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yagiz Nizipli</span></td>
+					<td class="tg-0lax" rowspan="2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">首席系统工程师</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Node.js TSC</span></td>
+					<td class="tg-0lax" rowspan="2"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nvpEqU0VHi3Se9fxJ5vE8/0f5628bc1756c7e3e363760be9c493ae/Yagiz.png?h=250" width="85" height="85" alt=""></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2nqff7ZSEryQfXbl2OdwfJ/6b4a56a3e71f439032d3bc0413d2d72f/GitHub.png?h=250" alt="图片" width="25" height="25"></td>
+					<td class="tg-zb5k"><a href="https://github.com/anonrig"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:#15C;background-color:transparent">anonrig</span></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>Cloudflare 也深感自豪，能够通过其与 OpenJS Foundation 的<a href="https://openjsf.org/blog/openjs-cloudflare-partnership" target="_blank" rel="noopener noreferrer"><u>持续战略合作关系</u></a>，继续为 Node.js 项目提供关键基础设施支持，让该项目能够免费使用 Cloudflare 提供的各类服务，包括 Workers、R2、DNS 等。</p>
+<h2>试试看！</h2>
+<p>我们在 Workers 中实现 Node.js 兼容性的愿景，不仅仅在于逐个实现单个 API，而是要打造一个全面的平台，让开发者能够在 Workers 环境中无缝运行现有的 Node.js 代码。这不仅包括实现这些 API 本身，还意味着要确保它们能够协同工作、和谐共存，并且能够与 Workers 平台的独特特性良好集成。</p>
+<p>在某些情况下，比如对于 <code>node:fs</code> 和 <code>node:crypto</code> 模块，我们不得不实现一些 Workers 原本并不具备的全新能力，并且是在原生运行时层面完成的。这使得我们能够根据 Workers 环境的独特特性来定制这些实现，从而同时保证性能与安全性。</p>
+<p>而且我们的工作还没有结束。我们正在持续推进更多 Node.js API 的实现，同时也在不断提升现有实现的性能与兼容性。我们也积极与社区互动，了解大家的需求和优先级，并收集对我们实现的反馈意见。如果您希望看到某些特定的 Node.js API 或 npm 包能够在 Workers 中得到支持，<a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>请告诉我们</u></a>！如果您在使用过程中遇到任何问题或错误，请在我们的 <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer"><u>GitHub 存储库</u></a>上提交反馈。虽然我们可能无法实现每一个 Node.js API，也无法在每种情况下都完全匹配 Node.js 的行为，但我们致力于提供一个强大且全面的 Node.js 兼容层，以满足社区的需求。</p>
+<p>本文中介绍的所有 Node.js 兼容性功能<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer"><u>现已正式推出</u></a>。如需开始使用，您只需在 <code>wrangler.toml</code> 或 <code>wrangler.jsonc</code> 文件中启用 <code>nodejs_compat</code> 兼容性标志，或者通过 Cloudflare 仪表板或 API 进行设置。设置完成后，您就可以立即在 Workers 应用程序中使用 Node.js API 了。</p>

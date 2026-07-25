@@ -1,0 +1,244 @@
+<p>Het is geen geheim dat <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>we bij Cloudflare optimistisch zijn</u></a> over de toekomst van agents. We zijn enthousiast over een toekomst waarin AI niet alleen met ons mee kan werken, maar waarin we zelfs volledige taken aan AI kunnen delegeren.&nbsp;</p>
+<p>Het is nog niet zo lang geleden dat we onze Agents SDK <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>aankondigden</u></a> om het voor ontwikkelaars eenvoudiger te maken om agents te bouwen. Om te bouwen aan een agentische toekomst moeten we dit doel echter continue blijven bereiken. Vandaag maken we verschillende aankondigingen om de ontwikkeling van agenten te versnellen, waaronder:</p>
+<ul>
+	<li><strong>Nieuwe Agents SDK-mogelijkheden:</strong> bouw een externe MCP-client met ingebouwde transport- en authenticatiefuncties, zodat AI-agenten verbinding kunnen maken met externe services.&nbsp;</li>
+	<li><strong><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization/#3-bring-your-own-oauth-provider" target="_blank" rel="noopener noreferrer"><u>BYO Auth-provider voor MCP</u></a>:</strong> integraties met <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>, <a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> en <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a> om authenticatie en autorisatie toe te voegen aan uw externe MCP-server.&nbsp;</li>
+	<li><strong><a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u>Hibernation voor McpAgent</u></a>:</strong> automatisch stateful, externe MCP-servers in de slaapstand zetten wanneer ze inactief zijn en ze weer activeren wanneer dat nodig is. Hierdoor kunt u verbindingen behouden tijdens langdurige sessies, zonder dat u betaalt voor inactieve tijd.&nbsp;</li>
+	<li><strong><a href="https://developers.cloudflare.com/changelog/2025-04-07-durable-objects-free-tier" target="_blank" rel="noopener noreferrer"><u>Gratis versie van Durable Objects</u></a>:</strong> Wij beschouwen Durable Objects als een belangrijk onderdeel voor het bouwen van agents. Als u onze Agents SDK gebruikt, hebt u toegang tot deze service nodig. Tot nu toe was Durable Objects alleen toegankelijk als onderdeel van onze betaalde abonnementen. Vandaag zijn we er trots op dat we het kunnen toevoegen aan ons gratis abonnement.</li>
+	<li><strong><a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution" target="_blank" rel="noopener noreferrer"><u>Workflows GA</u></a>:</strong> Hiermee kunt u productieklare, langlopende acties met meerdere stappen in agents verzenden.</li>
+	<li><strong><a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>:</strong> helpt u contextbewuste AI in uw applicaties te integreren, met slechts een paar klikken</li>
+	<li><strong><a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.Cloudflare.com</u></a>:</strong> onze nieuwe landingspagina voor alles wat met agents te maken heeft.</li>
+</ul>
+<h2>Nieuwe MCP-mogelijkheden in Agents SDK</h2>
+<p>AI-agents kunnen nu verbinding maken met externe services en ermee communiceren via MCP (<a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol</u></a>). We hebben de Agents SDK bijgewerkt, zodat u een externe MCP-client in uw AI-agent kunt bouwen, met alle componenten (authenticatiestromen, tooldetectie en verbindingsbeheer) ingebouwd.</p>
+<p>Hiermee kunt u agenten bouwen die:</p>
+<ol>
+	<li>de eindgebruiker vragen om toegang te verlenen aan een service van derden (MCP-server).</li>
+	<li>Gebruik hulpmiddelen van deze externe services, namens de eindgebruiker.</li>
+	<li>MCP-servers aanroepen vanuit Workflows, geplande taken of een ander onderdeel van uw agent.</li>
+	<li>verbinding maken met meerdere MCP-servers en ontdek automatisch nieuwe tools of mogelijkheden die de service van derden biedt.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="468" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=715&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=640&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=715&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=750&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=828&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1080&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1280&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1430&amp;h=936&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1920&amp;h=1257&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1257" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="468" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>MCP (Model Context Protocol) —&nbsp;<a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>voor het eerst geïntroduceerd door Anthropic</u></a> — wordt snel de standaardmanier voor AI-agenten om te communiceren met externe services, waarbij providers als OpenAI, Cursor en Copilot het protocol omarmen.</p>
+<p><a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp" target="_blank" rel="noopener noreferrer"><u>Onlangs hebben we ondersteuning aangekondigd</u></a> voor <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>het bouwen van externe MCP-servers</u></a> op Cloudflare en hebben we een <code>McpAgent-</code>klasse toegevoegd aan onze Agents SDK die automatisch de externe aspecten van MCP afhandelt: transport en authenticatie/autorisatie. We zijn er nu trots op dat we dezelfde mogelijkheden kunnen uitbreiden naar agenten die als MCP-client fungeren.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1810&amp;h=596&amp;f=webp" data-lightbox-width="1810" data-lightbox-height="596" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<p>Wilt u het in actie zien? Gebruik de onderstaande knop om een volledig externe MCP-client te implementeren waarmee u verbinding kunt maken met externe MCP-servers.</p>
+<div id="html-block-k2f" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-client"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementeren naar Cloudflare"></a>
+	<p></p>
+</div>
+<h2>AI-agenten kunnen nu fungeren als externe MCP-client, met transport en authenticatie inbegrepen</h2>
+<p>AI-agenten moeten verbinding maken met externe services om toegang te krijgen tot tools, gegevens en mogelijkheden die buiten hun ingebouwde kennis vallen. Dat betekent dat AI-agenten als externe MCP-client moeten kunnen optreden, zodat ze verbinding kunnen maken met externe MCP-servers die deze tools en mogelijkheden hosten.&nbsp;</p>
+<p>We hebben een nieuwe klasse, <code>MCPClientManager</code>, toegevoegd aan de Agents SDK. Hiermee krijgt u alle hulpmiddelen die u nodig hebt om uw AI-agent externe services via MCP te laten aanroepen. De klasse <code>MCPClientManager</code> verwerkt automatisch:&nbsp;</p>
+<ul>
+	<li><strong>Transport: </strong>Maak verbinding met externe MCP-servers via SSE en HTTP. Ondersteuning voor <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP</u></a> komt binnenkort beschikbaar.&nbsp;</li>
+	<li><strong>Verbindingsbeheer: </strong>De client houdt de status van alle verbindingen bij en maakt automatisch opnieuw verbinding wanneer een verbinding verloren gaat.</li>
+	<li><strong>Capaciteitsdetectie: </strong>Ontdekt automatisch alle capaciteiten, hulpmiddelen, bronnen en prompts die door de MCP-server worden gepresenteerd.</li>
+	<li><strong>Realtime-updates</strong>: wanneer de hulpmiddelen, bronnen of prompts van een server veranderen, ontvangt de client automatisch meldingen en wordt de interne status bijgewerkt.</li>
+	<li><strong>Naamruimte: </strong>Wanneer u verbinding maakt met meerdere MCP-servers, worden alle tools en bronnen automatisch van een naamruimte voorzien om conflicten te voorkomen.</li>
+</ul>
+<h3>Agents toegang verlenen tot tools met ingebouwde verificatiecontrole voor MCP-client</h3>
+<p>We hebben de volledige OAuth-authenticatiestroom rechtstreeks in de Agents SDK geïntegreerd, zodat uw AI-agenten veilig verbinding kunnen maken met en authenticatie kunnen uitvoeren op elke externe MCP-server, zonder dat u de authenticatiestroom helemaal opnieuw hoeft op te bouwen.</p>
+<p>Hiermee kunt u gebruikers een veilige manier bieden om in te loggen en expliciet toegang verlenen, zodat de agent namens hen kan handelen door automatisch:&nbsp;</p>
+<ul>
+	<li>Ondersteuning van het OAuth 2.1-protocol.</li>
+	<li>Gebruikers doorverwijzen naar de inlogpagina van de service.</li>
+	<li>Het genereren van de code-uitdaging en het uitwisselen van een autorisatiecode voor een token.</li>
+	<li>Het token gebruiken om geverifieerde verzoeken aan de MCP-server te doen.</li>
+</ul>
+<p>Hier is een voorbeeld van een agent die veilig verbinding kan maken met MCP-servers door de client te initialiseren, de server toe te voegen en de authenticatie-callbacks af te handelen:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onStart</span><span class="sk-24292e-fff">(): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // initialize MCPClientManager which manages multiple MCP clients with optional auth</span></span>
+<span class="line"><span class="sk-24292e-fff">  this.mcp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MCPClientManager</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-agent"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    baseCallbackUri: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">serverHost</span><span class="sk-032f62-99ffe4">}/agents/${</span><span class="sk-24292e-fff">agentNamespace</span><span class="sk-032f62-99ffe4">}/${</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}/callback`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    storage: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx.storage,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">addMcpServer</span><span class="sk-24292e-fff">(url: string): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">string</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Add one MCP client to our MCPClientManager</span></span>
+<span class="line"><span class="sk-24292e-fff">  const { id, authUrl } = await this.mcp.connect(url);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Return authUrl to redirect the user to if the user is unauthorized</span></span>
+<span class="line"><span class="sk-24292e-fff">  return authUrl</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onRequest</span><span class="sk-24292e-fff">(req: Request): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // handle the auth callback after being finishing the MCP server auth flow</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  if</span><span class="sk-24292e-fff"> (this.mcp.isCallbackRequest(</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.mcp.</span><span class="sk-6f42c1-ffc799">handleCallbackRequest</span><span class="sk-24292e-fff">(req);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Authorized"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Verbinding maken met meerdere MCP-servers en ontdekken welke mogelijkheden ze bieden</p>
+<p>Met de Agents SDK kunt u een MCP-client tegelijkertijd met meerdere MCP-servers verbinden. Dit is vooral handig als u wilt dat uw agent toegang heeft tot de tools en bronnen van verschillende serviceproviders en hiermee kan communiceren.&nbsp;</p>
+<p>De klasse <code>MCPClientManager</code> onderhoudt verbindingen met meerdere MCP-servers via het object <code>mcpConnections</code> , een woordenboek dat unieke servernamen toewijst aan hun respectieve <code>MCPClientConnection-</code> instanties.&nbsp;</p>
+<p>Wanneer u een nieuwe serververbinding registreert met behulp van <code>connect()</code>, doet de manager het volgende:&nbsp;</p>
+<ol>
+	<li>Maakt een nieuw verbindingsexemplaar met serverspecifieke authenticatie.</li>
+	<li>Initialiseert de verbindingen en registreert meldingen over servercapaciteit.</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onStart</span><span class="sk-24292e-fff">(): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Connect to an image generation MCP server</span></span>
+<span class="line"><span class="sk-24292e-fff">  await this.mcp.connect(</span><span class="sk-032f62-99ffe4">"https://image-gen.example.com/mcp/sse"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Connect to a code analysis MCP server</span></span>
+<span class="line"><span class="sk-24292e-fff">  await this.mcp.connect(</span><span class="sk-032f62-99ffe4">"https://code-analysis.example.org/sse"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Now we can access tools with proper namespacing</span></span>
+<span class="line"><span class="sk-24292e-fff">  const allTools = this.mcp.listTools();</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.log(</span><span class="sk-032f62-99ffe4">`Total tools available: ${</span><span class="sk-24292e-fff">allTools</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-99ffe4">length</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Elke verbinding beheert zijn eigen authenticatiecontext, waardoor één AI-agent zich tegelijkertijd bij meerdere servers kan authenticeren. Bovendien verwerkt <code>MCPClientManager</code> automatisch naamruimten om conflicten tussen tools met identieke namen van verschillende servers te voorkomen.&nbsp;</p>
+<p>Als bijvoorbeeld zowel een “Image MCP Server” als een “Code MCP Server” een tool met de naam “analyze” hebben, kunnen ze beide onafhankelijk van elkaar worden aangeroepen zonder naamgevingsconflicten.</p>
+<h2>Gebruik Stytch, Auth0 en WorkOS om authenticatie en autorisatie naar uw MCP-server te brengen&nbsp;</h2>
+<p>Met MCP kunnen gebruikers op een nieuwe manier met uw applicatie communiceren. Ze zijn niet langer afhankelijk van het dashboard of de API als toegangspunt. In plaats daarvan wordt de service nu gebruikt door AI-agenten die namens een gebruiker handelen. Om ervoor te zorgen dat gebruikers en agenten veilig verbinding kunnen maken met uw service, moet u uw bestaande authenticatie- en autorisatiesysteem uitbreiden om deze agentinteracties te ondersteunen. Hiervoor moet u inlogstromen, machtigingsbereiken, toestemmingsformulieren en toegangsafdwinging voor uw MCP-server implementeren.&nbsp;</p>
+<p>We voegen integraties toe met <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>, <a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> en <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a> , zodat iedereen die een MCP-server bouwt, eenvoudiger authenticatie en autorisatie voor zijn MCP-server kan configureren.&nbsp;</p>
+<p>U kunt onze MCP-serverintegratie met Stytch, Auth0 en WorkOS gebruiken om:&nbsp;</p>
+<ul>
+	<li>Geef gebruikers de mogelijkheid om zich bij uw MCP-server te verifiëren via e-mail, sociale logins, SSO (single sign-on) en MFA (multi-factor authentication).</li>
+	<li>Definieer scopes en machtigingen die rechtstreeks zijn gekoppeld aan uw MCP-tools.</li>
+	<li>Geef gebruikers een toestemmingspagina die overeenkomt met de gevraagde machtigingen.</li>
+</ul>
+<p>Zorg ervoor dat de machtigingen zo zijn ingesteld dat agenten alleen toegestane tools kunnen aanroepen.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="352" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=640&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=750&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=828&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1080&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1280&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1430&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1226&amp;h=604&amp;f=webp" data-lightbox-width="1226" data-lightbox-height="604" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="352" class="pt-portable-image-media"></div>
+</figure>
+<p>Ga aan de slag met de onderstaande voorbeelden door op de knop 'Implementeren in Cloudflare' te klikken om de demo MCP-servers in uw Cloudflare-account te implementeren. Deze demo's bevatten vooraf geconfigureerde authenticatie-eindpunten, toestemmingsstromen en toestemmingsmodellen die u kunt aanpassen aan uw behoeften. Nadat u de demo MCP-servers hebt geïmplementeerd, kunt u de <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers AI-speeltuin</u></a>, een browsergebaseerde externe MCP-client, gebruiken om de end-to-end gebruikersstroom te testen.&nbsp;</p>
+<h3>Stijl</h3>
+<p><a href="https://stytch.com/docs/guides/connected-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>Ga aan de slag</u></a> met een externe MCP-server die Stytch gebruikt, zodat gebruikers zich kunnen aanmelden met e-mailadres, Google Login of Enterprise SSO en hun AI-agent kunnen machtigen om namens hen de OKR's van hun bedrijf te bekijken en beheren. Stytch zorgt ervoor dat de scopes die aan de AI-agent worden toegekend, worden beperkt op basis van de rol en machtigingen van de gebruiker binnen zijn organisatie. Wanneer u de MCP-client autoriseert, ziet elke gebruiker een toestemmingspagina waarop de machtigingen worden beschreven die de agent aanvraagt en die zij kunnen verlenen op basis van hun rol.</p>
+<div id="html-block-k5h" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-b2b-okr-manager"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementeren naar Cloudflare"></a>
+	<p></p>
+</div>
+<p>Voor meer consumententoepassingen kunt u een externe MCP-server implementeren voor een To Do-app die Stytch gebruikt voor authenticatie en MCP- client . Gebruikers kunnen zich aanmelden met hun e-mailadres en direct toegang krijgen tot de takenlijsten die aan hun account zijn gekoppeld. Ook kunnen ze toegang verlenen aan elke AI-assistent die hen kan helpen bij het beheren van hun taken.</p>
+<div id="html-block-k5k" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-consumer-todo-list"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementeren naar Cloudflare"></a>
+	<p></p>
+</div>
+<p>Ongeacht het gebruiksscenario kunt u met Stytch uw applicatie eenvoudig omzetten in een OAuth 2.0-identiteitsprovider en uw externe MCP-server in een Relying Party, zodat deze eenvoudig identiteit en machtigingen van uw app kan overnemen. Wilt u meer weten over hoe Stytch veilige authenticatie voor externe MCP-servers mogelijk maakt, lees dan hun <a href="http://stytch.com/blog/remote-mcp-stytch-cloudflare" target="_blank" rel="noopener noreferrer"><u>blogpost</u></a>.</p>
+<blockquote><em>“Een van de uitdagingen bij het waarmaken van de belofte van AI-agenten is het in staat stellen van die agenten om op een veilige en betrouwbare manier toegang te krijgen tot gegevens van andere platforms. Stytch Connected Apps is speciaal ontwikkeld voor deze agentische use cases. Hiermee kunt u uw app eenvoudig omzetten in een OAuth 2.0-identiteitsprovider voor veilige toegang tot externe MCP-servers. Door Cloudflare Workers te combineren met Stytch Connected Apps, verwijderen we de barrières voor ontwikkelaars, waardoor ze snel de overstap kunnen maken van AI proofs-of-concept naar veilige, geïmplementeerde implementaties.” — Julianna Lamb, medeoprichter en CTO, Stytch.</em></blockquote>
+<h3>Auth0</h3>
+<p>Ga aan de slag met een externe MCP-server die Auth0 gebruikt om gebruikers te verifiëren via e-mail, sociale logins of Enterprise SSO om via AI-agents te communiceren met hun to do's en persoonsgegevens. De MCP-server maakt namens gebruikers een beveiligde verbinding met API-eindpunt, waarbij precies wordt aangegeven tot welke bronnen de agent toegang heeft zodra hij toestemming van de gebruiker heeft gekregen. Bij deze implementatie worden toegangstokens automatisch vernieuwd tijdens langdurige interacties.</p>
+<p>Om dit in te stellen, implementeert u eerst het beveiligde API-eindpunt: </p>
+<div id="html-block-k5y" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Ftodos-api"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementeren naar Cloudflare"></a>
+	<p></p>
+</div>
+<p>Implementeer vervolgens de MCP-server die authenticatie via Auth0 afhandelt en AI-agents veilig verbindt met uw API-eindpunt.&nbsp;</p>
+<div id="html-block-k61" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Fmcp-auth0-oidc"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementeren naar Cloudflare"></a>
+	<p></p>
+</div>
+<blockquote><em>"Cloudflare blijft ontwikkelaars die AI-producten bouwen de mogelijkheid bieden om tools als AI Gateway, Vectorize en Workers AI te gebruiken. De recente toevoeging van Remote MCP-servers laat verder zien dat Cloudflare Workers en Durable Objects een toonaangevend platform zijn voor de implementatie van serverless AI. We zijn er erg trots op dat Auth0 kan helpen bij het oplossen van de authenticatie- en autorisatiebehoeften voor deze geavanceerde workloads." — Sandrino Di Mattia, Auth0 Sr. Directeur, Productarchitectuur.</em></blockquote>
+<h3>WorkOS</h3>
+<p>Ga aan de slag met een externe MCP-server die gebruikmaakt van WorkOS's AuthKit om gebruikers te verifiëren en de machtigingen te beheren die aan AI-agents worden verleend. In dit voorbeeld stelt de MCP-server hulpmiddelen dynamisch beschikbaar op basis van de rol en toegangsrechten van de gebruiker. Alle geverifieerde gebruikers krijgen toegang tot de tool <code>voor het toevoegen</code> , maar alleen gebruikers met de machtiging <code>image_generation</code> in WorkOS kunnen de AI-agent toegang verlenen tot de tool voor het genereren van afbeeldingen. Dit laat zien hoe MCP-servers mogelijkheden voorwaardelijk kunnen blootstellen aan AI-agenten op basis van de rol en machtigingen van de geauthenticeerde gebruiker.</p>
+<div id="html-block-k6c" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authkit"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementeren naar Cloudflare"></a>
+	<p></p>
+</div>
+<blockquote><em>“MCP wordt de standaard voor AI-agentintegratie, maar authenticatie en autorisatie vormen nog steeds grote hiaten voor de acceptatie door ondernemingen. Met WorkOS Connect kan elke applicatie een OAuth 2.0-autorisatieserver worden, waardoor agenten en MCP-clients veilig tokens kunnen verkrijgen voor gedetailleerde machtigingsautorisatie en toegang tot bronnen. Met Cloudflare Workers kunnen ontwikkelaars snel externe MCP-servers implementeren met ingebouwde OAuth en toegangscontrole op ondernemingsniveau. Samen maken WorkOS en Cloudflare het eenvoudig om een veilige, bedrijfsklare agentinfrastructuur te leveren.” — Michael Grinich, CEO van WorkOS.</em></blockquote>
+<h2>WebSockets met slaapstand: zet AI-agents in slaapstand als ze niet in gebruik zijn</h2>
+<p>Vanaf vandaag is er een nieuwe verbetering beschikbaar in de McpAgent-klasse: ondersteuning voor de <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>WebSockets Hibernation API.</u></a> Hiermee kan uw MCP-server in slaapstand gaan wanneer er geen verzoeken worden ontvangen en direct weer worden geactiveerd wanneer dat wel nodig is. Dat betekent dat u nu alleen betaalt voor rekenkracht wanneer uw agent daadwerkelijk actief is.</p>
+<p><a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp" target="_blank" rel="noopener noreferrer"><u>Onlangs hebben</u></a> we de <a href="https://developers.cloudflare.com/agents/model-context-protocol/tools/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A11%2C%22targetId%22%3A%22DF3E523E0077ACCB6730439891CDD7D4%22%7D" target="_blank" rel="noopener noreferrer"><u>McpAgent-klasse</u></a> geïntroduceerd, waarmee ontwikkelaars externe MCP-servers op Cloudflare kunnen bouwen door gebruik te maken van Durable Objects om stateful verbindingen voor elke client te onderhouden. We hebben besloten om McpAgent vanaf het begin stateful te maken, zodat ontwikkelaars servers kunnen bouwen die context, gebruikersvoorkeuren en gespreksgeschiedenis kunnen onthouden. Maar als u client in stand houdt, kan de sessie lange tijd actief blijven, zelfs als deze niet wordt gebruikt.&nbsp;</p>
+<h3>MCP-agents kunnen standaard in de slaapstand worden gezet</h3>
+<p>U hoeft uw code niet te wijzigen om gebruik te maken van de slaapstand. Met onze nieuwste SDK-update bevatten alle McpAgent-instanties automatisch ondersteuning voor slaapstand, waardoor uw stateful MCP-servers in slaapstand kunnen gaan tijdens inactieve perioden en geactiveerd kunnen worden met behoud van hun status wanneer dat nodig is.&nbsp;</p>
+<h3>Hoe het werkt</h3>
+<p>Wanneer er een aanvraag binnenkomt op het Server-Sent Events-eindpunt, /sse, initialiseert de Worker een WebSocket-verbinding met het juiste Durable Object voor de sessie en retourneert een SSE-stream naar de client. Alle reacties stromen via deze stroom.</p>
+<p>De implementatie maakt gebruik van de WebSocket Hibernation API binnen Durable Objects. Wanneer er periodes van inactiviteit optreden, kan het duurzame object uit het geheugen worden verwijderd, terwijl de WebSocket-verbinding open blijft. Als de WebSocket later een bericht ontvangt, maakt de runtime het Durable Object opnieuw aan en levert het bericht af aan de juiste handler.</p>
+<h2>Durable Objects op gratis niveau</h2>
+<p>Om u te helpen bij het bouwen van AI-agents op Cloudflare, stellen we <a href="http://developers.cloudflare.com/durable-objects/what-are-durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> beschikbaar in de gratis versie, zodat u zonder enige verplichting aan de slag kunt. Met Agents SDK worden uw AI-agents geïmplementeerd in Cloudflare, waarbij ze op Durable Objects draaien.</p>
+<p>Durable Objects bieden rekenkracht en duurzame opslag, die in combinatie met Workers stateful, serverless applicaties mogelijk maken. Elk Durable Object is een stateful coordinator voor het verwerken van realtime interacties client, het maken van verzoeken aan externe services zoals LLM's en het creëren van agentisch 'geheugen' via statuspersistentie in <a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>SQLite-opslag met nul latentie</u></a> - allemaal taken die vereist zijn in een AI-agent. Durable Objects schalen moeiteloos op naar miljoenen agents, waarbij elke agent die in de buurt van de gebruiker wordt gemaakt, communiceert met zijn agent voor snelle prestaties, allemaal beheerd door Cloudflare.&nbsp;</p>
+<p>SQLite-opslag met nul latentie in Durable Objects werd in september 2024 <a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>geïntroduceerd als openbare bètaversie</u></a> voor Birthday Week. Sindsdien hebben we ons gericht op ontbrekende functies en robuustheid in vergelijking met de reeds bestaande sleutel-waardeopslag in Durable Objects. We zijn verheugd om SQLite-opslag algemeen beschikbaar te maken, met een SQLite-database van 10 GB per Durable Object. We raden SQLite-opslag aan voor alle nieuwe Durable Object-klassen. De gratis versie van Durable Objects heeft alleen toegang tot SQLite-opslag.</p>
+<p>Met de gratis versie van Cloudflare kunt u echte applicaties bouwen. Met het gratis abonnement kan elke Worker-aanvraag een Duurzaam Object aanroepen. Bij <a href="https://developers.cloudflare.com/durable-objects/platform/pricing" target="_blank" rel="noopener noreferrer"><u>prijzen op basis van gebruik</u></a> brengen Durable Objects reken- en opslaggebruik in rekening met de volgende limieten voor de gratis laag.</p>
+<div id="html-block-k7p" class="html-block">
+	<div style="margin-left:0pt">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
+				<colgroup>
+					<col style="width:33.33%">
+					<col style="width:33.33%">
+					<col style="width:33.34%">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">&nbsp;</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Workers Free</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Workers Paid</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Berekenen: Verzoeken</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">100.000 / dag</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">1 miljoen / maand inbegrepen</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ $ 0,15 / miljoen</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Berekenen: Duur</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">13.000 GB/dag</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">400.000 GB/maand inbegrepen&nbsp;</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ $ 12,50 / miljoen GB-s</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Opslag: Rijen gelezen</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5 miljoen / dag</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">25 miljard / maand inbegrepen</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ $ 0,001 / miljoen&nbsp;</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Opslag: Rijen geschreven</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">100.000 / dag</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">50 miljoen / maand inbegrepen</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ $ 1,00 / miljoen</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Opslag: SQL opgeslagen gegevens</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5 GB (totaal)</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5 GB per maand inbegrepen</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ $ 0,20 / GB-maand</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+</div>
+<h3>Vind ons op agents.cloudflare.com</h3>
+<p>We beseffen dat dit veel informatie is om te verwerken, maar maak je geen zorgen. Of u nu nieuw bent met agents in het algemeen, of meer wilt weten over hoe Cloudflare u kan helpen bij het bouwen van agents, vandaag hebben we een nieuwe site gelanceerd om u op weg te helpen: <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.Cloudflare.com</u></a>.&nbsp;</p>
+<p>Laat ons weten wat u bouwt!</p>

@@ -1,0 +1,121 @@
+<p>5 grudnia 2025 r. o godz. 08:47 UTC (wszystkie podane godziny odnoszą się do UTC) część sieci Cloudflare zaczęła doświadczać poważnych awarii. Incydent został rozwiązany o 09:12 (łączny czas trwania ok. 25 minut), gdy wszystkie usługi zostały w pełni przywrócone.</p>
+<p>Skutki incydentu odczuła część klientów, co stanowiło około 28 procent całego ruchu HTTP obsługiwanego przez Cloudflare. Aby konkretny klient odczuł skutki incydentu, musiało jednocześnie zaistnieć kilka czynników, jak opisano poniżej.</p>
+<p>Problem nie został spowodowany, bezpośrednio ani pośrednio, cyberatakiem na systemy Cloudflare ani żadną inną złośliwą aktywnością. Zamiast tego został wywołany przez zmiany wprowadzane w naszej logice przetwarzania treści żądań podczas próby wykrycia i ograniczenia <a href="https://blog.cloudflare.com/waf-rules-react-vulnerability" target="_blank" rel="noopener noreferrer"><u>ujawnionej w tym tygodniu</u></a> luki w komponentach serwerowych React.</p>
+<p>Jakakolwiek przerwa w działaniu naszych systemów jest nieakceptowalna i zdajemy sobie sprawę, że po incydencie z 18 listopada ponownie zawiedliśmy użytkowników Internetu. W przyszłym tygodniu opublikujemy szczegółowe informacje o naszych działaniach mających na celu zapobieganie tego typu incydentom.</p>
+<h3>Co się stało?</h3>
+<p>Poniższy wykres przedstawia błędy HTTP 500 obsługiwane przez naszą sieć w czasie incydentu (czerwona linia u dołu), w porównaniu z niezakłóconym całkowitym ruchem w sieci Cloudflare (zielona linia u góry).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=640&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=828&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1280&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1430&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="500 error codes served by Cloudflare’s network during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1920&amp;h=917&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="917" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="342" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Zapora aplikacji internetowych (WAF) Cloudflare zapewnia klientom ochronę przed złośliwymi payloadami, umożliwiając ich wykrywanie i blokowanie. W tym celu serwer proxy Cloudflare buforuje zawartość treści żądania HTTP w pamięci na potrzeby analizy. Przed dzisiejszym dniem rozmiar bufora był ustawiony na 128 KB.</p>
+<p>W ramach naszych bieżących działań mających na celu ochronę klientów korzystających z React przed krytyczną luką w zabezpieczeniach, <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182" target="_blank" rel="noopener noreferrer"><u>CVE-2025-55182</u></a>, rozpoczęliśmy zwiększanie rozmiaru bufora do 1 MB, tj. domyślnego limitu dozwolonego przez aplikacje Next.js, aby zapewnić ochronę jak największej liczbie klientów.</p>
+<p>Ta pierwsza zmiana była wdrażana przy użyciu naszego systemu stopniowego wdrażania. Podczas wdrażania zauważyliśmy, że nasze wewnętrzne narzędzie do testowania WAF nie obsługiwało zwiększonego rozmiaru bufora. Ponieważ to wewnętrzne narzędzie testowe nie było wówczas potrzebne i nie miało wpływu na ruch klientów, wprowadziliśmy drugą zmianę, aby je wyłączyć.</p>
+<p>Ta druga zmiana, polegająca na wyłączeniu naszego narzędzia testowego WAF, została wdrożona za pomocą naszego globalnego systemu konfiguracji. Ten system nie przeprowadza stopniowego wdrażania, lecz propaguje zmiany w ciągu kilku sekund do całej floty serwerów w naszej sieci i jest obecnie poddawany przeglądowi <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>w następstwie awarii, której doświadczyliśmy 18 listopada</u></a>.&nbsp;</p>
+<p>Niestety, w naszej wersji FL1 serwera proxy, w pewnych okolicznościach ta druga zmiana polegająca na wyłączeniu narzędzia do testowania reguł WAF spowodowała stan błędu, w wyniku którego nasza sieć zaczęła zwracać kody błędów HTTP 500.</p>
+<p>Gdy tylko zmiana została rozpropagowana w naszej sieci, wykonanie kodu w naszym serwerze proxy FL1 natrafiło na błąd w module reguł, co doprowadziło do następującego wyjątku LUA: </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[lua] </span><span class="sk-6f42c1-ffc799">Failed</span><span class="sk-24292e-fff"> to run module rulesets callback late_routing</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">usr</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">local</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">init</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">314</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> attempt to index field </span><span class="sk-032f62-99ffe4">'execute'</span><span class="sk-24292e-fff"> (a nil value)</span></span></code></pre>
+</div>
+<p>co powoduje generowanie błędów HTTP o kodzie 500.</p>
+<p>Problem zidentyfikowano krótko po wprowadzeniu zmiany, którą wycofano o 09:12, po czym cały ruch był obsługiwany prawidłowo.</p>
+<p>Zdarzenie dotyczyło klientów, których zasoby internetowe były obsługiwane przez nasz starszy serwer proxy FL1 <strong>ORAZ</strong> którzy mieli wdrożony zestaw reguł zarządzanych Cloudflare. Wszystkie żądania dotyczące witryn internetowych w tym stanie zwracały błąd HTTP 500, z niewielkim wyjątkiem niektórych testowych punktów końcowych, takich jak <code>/cdn-cgi/trace</code>.</p>
+<p>Klienci, u których nie zastosowano powyższej konfiguracji, nie odczuli żadnych skutków. Zdarzenie nie miało wpływu także na ruch klientów obsługiwany przez naszą sieć China Network.</p>
+<h3>Błąd wykonania</h3>
+<p>System zestawów reguł Cloudflare składa się z zestawów reguł, które są oceniane dla każdego żądania trafiającego do naszego systemu. Reguła składa się z filtra, który wybiera określony ruch, oraz działania, które stosuje wobec tego ruchu odpowiedni efekt. Typowe działania to „<code>block</code>”, „<code>log</code>” lub „<code>skip</code>”. Innym typem działania jest „<code>execute</code>”, które służy do wywoływania oceny innego zestawu reguł.</p>
+<p>Nasz wewnętrzny system rejestrowania wykorzystuje tę funkcję do oceny nowych reguł, zanim udostępnimy je publicznie. Zestaw reguł najwyższego poziomu wykonuje inny zestaw reguł zawierający reguły testowe. To właśnie te reguły testowe próbowaliśmy wyłączyć.</p>
+<p>W ramach systemu zestawów reguł posiadamy podsystem wyłącznika awaryjnego (killswitch), którego celem jest umożliwienie szybkiego wyłączenia reguły działającej nieprawidłowo. Ten system wyłącznika awaryjnego otrzymuje informacje z naszego globalnego systemu konfiguracji, o którym wspomniano w poprzednich sekcjach. W przeszłości wielokrotnie korzystaliśmy z tego systemu wyłącznika awaryjnego w celu łagodzenia skutków incydentów oraz dysponujemy jasno zdefiniowaną standardową procedurą operacyjną, którą zastosowano również w przypadku tego incydentu.</p>
+<p>Jednak nigdy wcześniej nie zastosowaliśmy wyłącznika awaryjnego do reguły z działaniem „<code>execute</code>”. Gdy zastosowano wyłącznik awaryjny, kod prawidłowo pominął ocenę działania „execute” i nie przeprowadził oceny podzestawu reguł, na który to działanie wskazywało. Wystąpił jednak błąd podczas przetwarzania ogólnych wyników oceny zestawu reguł:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">action </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "execute"</span><span class="sk-24292e-fff"> then</span></span>
+<span class="line"><span class="sk-24292e-fff">  rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ruleset_results[</span><span class="sk-6f42c1-ffc799">tonumber</span><span class="sk-24292e-fff">(rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results_index)]</span></span>
+<span class="line"><span class="sk-24292e-fff">end</span></span></code></pre>
+</div>
+<p>Kod ten zakłada, że jeśli zestaw reguł ma ustawiony parametr action="execute", to obiekt „rule_result.execute” będzie istniał. Ponieważ reguła została pominięta, obiekt rule_result.execute nie istniał, a skrypt Lua zwrócił błąd z powodu próby odczytu wartości z pola nieistniejącego obiektu (nil).</p>
+<p>To prosty błąd w kodzie, który przez wiele lat pozostawał niewykryty. Tego typu błędom zapobiegają języki o silnych systemach typów. W naszym nowym serwerze proxy FL2, w którym zastąpiono ten fragment kodu i który został napisany w języku Rust, błąd ten nie wystąpił.</p>
+<h3>A co ze zmianami wprowadzonymi po incydencie z 18 listopada 2025 r.?</h3>
+<p>Wprowadziliśmy niepowiązaną zmianę, która spowodowała podobny <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>dłuższy incydent dostępności</u></a> dwa tygodnie temu, 18 listopada 2025 roku. W obu przypadkach wdrożenie mające na celu złagodzenie problemu bezpieczeństwa u naszych klientów zostało rozpropagowane w całej naszej sieci i doprowadziło do wystąpienia błędów u niemal wszystkich naszych klientów.</p>
+<p>Po tym incydencie rozmawialiśmy bezpośrednio z setkami klientów i podzieliliśmy się naszymi planami wprowadzenia zmian mających na celu zapobieganie sytuacjom, w których pojedyncze aktualizacje powodują tak rozległe skutki. Uważamy, że zmiany te pomogłyby zapobiec skutkom dzisiejszego incydentu, ale niestety nie wdrożyliśmy ich jeszcze w całości.</p>
+<p>Wiemy, że rozczarowujące jest to, iż prace te nie zostały jeszcze ukończone. Pozostaje to naszym najwyższym priorytetem w całej organizacji. W szczególności poniższe projekty powinny pomóc ograniczyć wpływ tego rodzaju zmian:</p>
+<ul>
+	<li><strong>Ulepszone wdrażanie i wersjonowanie</strong> — podobnie jak w przypadku stopniowego wdrażania oprogramowania z rygorystyczną walidacją kondycji systemu, dane wykorzystywane do szybkiego reagowania na zagrożenia oraz ogólnej konfiguracji muszą mieć te same funkcje bezpieczeństwa i ograniczania zasięgu skutków awarii. Obejmuje to między innymi walidację kondycji systemu oraz możliwość szybkiego wycofania zmian.</li>
+	<li><strong>Usprawnione mechanizmy awaryjne (break glass)</strong> — zapewnienie możliwości wykonania operacji krytycznych nawet w obliczu dodatkowych typów awarii. Dotyczy to zarówno usług wewnętrznych, jak i wszystkich standardowych metod interakcji z płaszczyzną zarządzania Cloudflare, z których korzystają wszyscy klienci Cloudflare.</li>
+	<li><strong>Obsługa błędów typu „fail-open”</strong> — w ramach działań na rzecz zwiększenia odporności zastępujemy nieprawidłowo zastosowaną logikę twardego błędu (hard-fail) we wszystkich krytycznych komponentach płaszczyzny danych Cloudflare. Jeśli plik konfiguracyjny jest uszkodzony lub zawiera wartości spoza dopuszczalnego zakresu (np. przekracza limity funkcji), system zarejestruje błąd i przejdzie do znanego, poprawnego stanu albo przepuści ruch bez wykonywania oceny, zamiast odrzucać żądania. Niektóre usługi będą prawdopodobnie oferować klientom możliwość wyboru trybu fail-open lub fail-closed w określonych scenariuszach. Będzie to obejmować mechanizmy zapobiegania dryfowi konfiguracji, które zapewnią ciągłe egzekwowanie tych ustawień.</li>
+</ul>
+<p>Przed końcem przyszłego tygodnia opublikujemy szczegółowe zestawienie wszystkich realizowanych projektów dotyczących zwiększenia odporności, w tym wymienionych powyżej. W trakcie trwania tych prac blokujemy wprowadzanie wszelkich zmian w naszej sieci, aby zapewnić lepsze mechanizmy łagodzenia skutków i wycofywania zmian przed ponownym rozpoczęciem wdrożeń.</p>
+<p>Tego rodzaju incydenty, a także fakt, że występują w tak niewielkich odstępach czasu, są niedopuszczalne w przypadku takiej sieci jak nasza. W imieniu zespołu Cloudflare chcemy przeprosić za skutki i niedogodności, które sytuacja ta ponownie spowodowała dla naszych klientów oraz dla całego Internetu.</p>
+<h3>Oś czasu</h3>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Czas (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Status</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Opis</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:47</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Początek INCYDENTU</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wdrożono zmianę konfiguracji i rozpropagowano ją w sieci</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:48</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pełen wpływ</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pełna propagacja zmiany</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:50</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zgłoszono INCYDENT</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Automatyczne alerty</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>09:11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wycofano zmianę</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wycofano zmianę konfiguracji i rozpoczęto jej propagację</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>09:12</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Koniec INCYDENTU</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wycofanie w pełni rozpropagowane, cały ruch przywrócony</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

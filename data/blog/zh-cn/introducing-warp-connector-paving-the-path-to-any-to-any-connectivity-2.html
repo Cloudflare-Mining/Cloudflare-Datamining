@@ -1,0 +1,149 @@
+<p>在不断发展的企业安全领域，<a href="https://www.cloudflare.com/ciso" target="_blank" rel="noopener noreferrer">首席信息安全官</a>和首席信息官必须孜孜不倦地构建新的企业网络并维护旧的网络，以实现高性能的任意对任意连接。对于他们的网络架构师团队来说，调查自己的环境以跟上不断变化的需求是工作的一半，另一半通常是发掘可以无缝集成到现有环境中的创新解决方案。为追求安全、灵活的基础设施而进行这样的持续建设和强化，正是 Cloudflare 的 SASE 产品 Cloudflare One 的目的所在。</p>
+<p>Cloudflare One 根据客户和分析师的反馈不断改进。今天，我们很高兴向公众推出 Cloudflare WARP Connector，这是一种新工具，可以更轻松地确保双向、站点到站点和网状连接的安全性，而无需对现有网络基础设施进行任何破坏性更改。</p>
+<h2>弥合 Cloudflare Zero Trust 故事中的缺口</h2>
+<p>Cloudflare 始终致力于提供广泛的产品，并承认网络连接没有一体适用的解决方案。我们的愿景很简单：以您想要的任何方式实现任意对任意连接。</p>
+<p>在 WARP Connector 出现之前，将您的基础设施连接到 Cloudflare 的最简单方法之一（无论是本地 HTTP 服务器、由 Kubernetes 集群提供的 Web 服务还是私有网络段）是通过 <a href="https://www.cloudflare.com/products/tunnel" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a> 应用连接器 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><em>cloudflared</em></a>。在许多情况下，这种方法效果很好，但随着时间的推移，客户开始发现一系列基于 cloudflared 底层架构无法支持的用例。这包括客户使用 VOIP 电话的情况，需要 SIP 服务器与用户的软件电话建立传出连接，或者需要 CI/CD 服务器向 CI/CD 管道每个阶段的相关利益相关者发送通知。稍后，我们将在这篇博文中详细探讨这些用例。</p>
+<p>作为 <a href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer">OSI 模型</a>第 4 层的 <em>cloudflared</em> 代理，其设计专门针对代理对原始服务的请求进行了优化——它并非设计作为处理源自原始服务之请求的主动监听器。这种设计权衡意味着 cloudflared 需要将其代理到应用程序服务器的所有请求都进行源 NAT。对于客户无需更新路由表即可在其原始服务前面部署 cloudflared 的情况，这种设置非常方便。但是，这也意味着客户无法看到发送请求的客户端的真实源 IP。这在网络防火墙记录所有网络流量的情况下很重要，因为所有请求的源 IP 都将是 <em>cloudflared</em> 的 IP 地址，导致客户无法看到真正的客户端源。</p>
+<h2>自建还是借用</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="392" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=640&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=715&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=750&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=828&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=1080&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=1280&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=1430&amp;h=784&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2156 Embedded Image - fPOXRP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J2DB2G41BNR4C4RYNV4Z.png&amp;w=1826&amp;h=1000&amp;f=webp" data-lightbox-width="1826" data-lightbox-height="1000" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="392" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>为了解决这个问题，我们确定了两个潜在的解决方案：从头开始构建新的连接器，或者借用现有的连接器，可能是 cloudflared 或 WARP。</p>
+<p>下表概述了这两种方法的权衡：</p>
+<p>特性</p>
+<div id="html-block-k12" class="html-block">
+	<table style="border:none;border-collapse:collapse;table-layout:fixed;width:468pt">
+		<colgroup>
+			<col>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Features</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Build in </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:italic;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">cloudflared</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Borrow from WARP&nbsp;</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Bidirectional traffic flows</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">As described in the earlier section, limitations of Layer 4 proxying.</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">This does proxying at&nbsp;</span></p>
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Layer 3, because of which it can act as default gateway for that subnet, enabling it to support traffic flows from both directions.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">User experience</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">For Cloudflare One customers, they have to work with two distinct products (cloudflared and WARP) to connect their services and users.</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">For Cloudflare One customers, they just have to get familiar with a single product to connect their users as well as their networks.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Site-to-site connectivity between branches, data centers (on-premise and cloud) and headquarters.</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Not recommended</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">For sites where running&nbsp; agents on each device is not feasible, this could easily connect the sites to users running WARP clients in other sites/branches/data centers. This would work seamlessly where the underlying tunnels are all the same.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Visibility into true source IP</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">It does source NATting.</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Since it acts as the default gateway, it preserves the true source IP address for any traffic flow.</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">High availability</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Inherently reliable by </span><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/deploy-cloudflared-replicas" style="text-decoration:none"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#1155cc;background-color:transparent;font-weight:400;font-style:normal;text-decoration:underline;vertical-align:baseline;white-space:pre;white-space:pre-wrap">design </span></a><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">and supports replicas for failover scenarios.</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;text-align:justify;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Reliability specifications are very different for a default gateway use case vs endpoint device agent. Hence, there is opportunity to innovate here.&nbsp;</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>在 cloudflared 中构建</p>
+<p>从 WARP 借用&nbsp;</p>
+<p>双向流量</p>
+<p>如前面部分所述，第 4 层代理的局限性。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="384" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=640&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=750&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=828&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=1080&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=1280&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=1430&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2156 Embedded Image - QtDAv8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BWGQ4PAS4TB8FDYQYQ6H.png&amp;w=1256&amp;h=674&amp;f=webp" data-lightbox-width="1256" data-lightbox-height="674" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="384" class="pt-portable-image-media"></div>
+</figure>
+<p>这在第 3 层进行代理，&nbsp;</p>
+<p>因此它可以充当该子网的默认网关，使其能够支持来自两个方向的流量。</p>
+<p>用户体验</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="257" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=715&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=640&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=715&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=750&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=828&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=1080&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=1280&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=1430&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2156 Embedded Image - YvJdwc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NPS93M4H8V3KHWNPMJQ2.png&amp;w=1920&amp;h=690&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="690" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="257" class="pt-portable-image-media"></div>
+</figure>
+<p>对于 Cloudflare One 客户，他们必须使用两种不同的产品（cloudflared 和 WARP）来连接他们的服务和用户。</p>
+<p>对于 Cloudflare One 客户来说，他们只需熟悉单一产品即可连接他们的用户和网络。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="398" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=715&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=640&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=715&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=750&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=828&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=1080&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=1280&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=1430&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2156 Embedded Image - gxflUY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487JX6P5F8ZEXMB0WT1EQC.png&amp;w=1842&amp;h=1026&amp;f=webp" data-lightbox-width="1842" data-lightbox-height="1026" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="398" class="pt-portable-image-media"></div>
+</figure>
+<p>分支机构、数据中心（本地和云端）和总部之间的站点到站点连接。</p>
+<p>不推荐</p>
+<p>对于无法在每个设备上运行代理的站点，这可以轻松地将站点连接到在其他站点/分支机构/数据中心运行 WARP 客户端的用户。当底层隧道都相同时，这将无缝运行。</p>
+<p>对真实源 IP 的可见性</p>
+<p>会进行源 NAT。</p>
+<p>由于它充当默认网关，它会为任何流量保留真正的源 IP 地址。</p>
+<p>高可用性</p>
+<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/deploy-tunnels/deploy-cloudflared-replicas" target="_blank" rel="noopener noreferrer">设计</a>本质上可靠，并支持故障转移场景的副本。</p>
+<p>默认网关用例与端点设备代理的可靠性规范有很大不同。因此，这里存在创新的机会。&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="147" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=715&amp;h=147&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=640&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=715&amp;h=147&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=750&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=828&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=1080&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=1280&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=1430&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2156 Embedded Image - C1sqOM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FN5WVN825W5A8SMH8TZ3.png&amp;w=1920&amp;h=395&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="395" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="147" class="pt-portable-image-media"></div>
+</figure>
+<h2>隆重推出 WARP Connector</h2>
+<p>从今天开始，WARP Connector 的推出开启了新的<a href="https://developers.cloudflare.com/reference-architecture/sase-reference-architecture/#connecting-networks" target="_blank" rel="noopener noreferrer">可能性</a>：服务器发起的 (SIP/VoIP) 流；站点到站点连接，连接分支机构、总部和云平台；甚至使用 WARP-to-WARP 实现网状网络。从本质上讲，这个新的连接器是 warp-client 的扩展，可以充当网络内任何子网的虚拟路由器，通过 Cloudflare 开启/关闭流量。</p>
+<p>通过基于 WARP 进行构建，我们能够利用其设计，即在主机上创建虚拟网络接口，以逻辑上细分物理接口 (NIC) 来路由 IP 流量。这使我们能够通过主机和 Cloudflare 边缘之间维护的 WireGuard/<a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque">MASQUE</a> 隧道发送双向流量。利用这种架构，客户还可以获得查看客户端真实源 IP 的额外好处。</p>
+<p>WARP Connector 可以轻松部署在默认网关上，无需进行任何额外的路由更改。或者，可以为需要通过 WARP Connector 路由的特定 CIDR 配置静态路由，并且可以在默认网关或该子网中的每个主机上配置静态路由。</p>
+<h2>专用网络用例</h2>
+<p>在这里，我们将介绍部署我们的新连接器的几个主要理由，但请记住，此解决方案可以支持多种服务，例如 Microsoft 的 System Center Configuration Manager (SCCM)、Active Directory 服务器更新、VoIP 和 SIP 流量，以及具有复杂 CI/CD 管道交互的开发人员工作流程。还需要注意的是，该连接器既可以与 cloudflared 和 Magic WAN 一起运行，也可以作为 Cloudflare 全球网络的独立远程访问和站点到站点连接器。</p>
+<h3>软件电话和 VoIP 服务器</h3>
+<p>对于通过 VoIP 软件服务建立语音或视频通话的用户，专用网络中的 SIP 服务器通常会使用最终用户的最后一个已知 IP 地址来代理连接。但是，如果流量在路径上的任何地方被代理，这通常会导致参与者仅收到部分语音或数据信号。使用 WARP Connector，客户现在可以对这些服务应用细粒度的策略以实现安全访问，从而在其 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust 框架</a>内强化 VoIP 基础设施。</p>
+<h3>保护对 CI/CD 管道的访问</h3>
+<p>组织的 DevOps 生态系统通常由许多部分组成，但 Jenkins 或 Teamcity 之类的 CI/CD 服务器是所有开发活动的中心。因此，确保 CI/CD 服务器的安全至关重要。借助 WARP Connector 和 WARP 客户端，组织可以保护整个 CI/CD 管道并轻松简化它。</p>
+<p>让我们看一下 Kubernetes 应用程序的典型 CI/CD 管道。环境设置如上图所示，开发人员和 QA 笔记本电脑上有 WARP 客户端，WARP Connector 安全地连接不同网络上的 CI/CD 服务器和暂存服务器：</p>
+<ol>
+	<li>通常，当开发人员提交其代码更改并调用 CI/CD 服务器上的 webhook 时，就会触发 CI/CD 管道。</li>
+	<li>构建图像后，就可以部署代码，这通常分阶段进行：测试、暂存和生产。</li>
+	<li>当图像在测试/暂存环境中准备就绪时，会向开发人员和 QA 工程师发送通知。</li>
+	<li>QA 工程师通过 webhook 从 CI/CD 服务器接收通知，以启动监控和故障排除工作流程。</li>
+</ol>
+<p>借助 WARP Connector，客户可以轻松地将其开发人员连接到 DevOps 生态系统中的工具，同时保持生态系统的私密性，不向公众公开。在 DevOps 生态系统安全地连接到 Cloudflare 后，可以轻松应用细粒度的安全策略来保护对 CI/CD 管道的访问。</p>
+<h3>保留真实源 IP 地址</h3>
+<p>运行 Microsoft AD 服务器或非 Web 应用程序服务器的组织通常需要识别真实的源 IP 地址以进行审计或应用策略。如果存在这些要求，WARP Connector 可以简化此过程，提供无需添加 NAT 边界的解决方案。这对于<a href="https://www.cloudflare.com/learning/bots/what-is-rate-limiting" target="_blank" rel="noopener noreferrer">限制</a>不健康的源 IP 地址的速率、在边界内实施基于 ACL 的策略或从最终用户处收集其他诊断信息非常有用。</p>
+<h2>开始使用 WARP Connector</h2>
+<p>作为此次发布的一部分，我们对 Cloudflare One 仪表板进行了一些更改，以更好地突出我们不同的网络开启/关闭选项。从今天起，您的仪表板上将出现一个新的“网络”选项卡。这将成为 Cloudflare Tunnel UI 的新主页。</p>
+<p>我们还在“隧道”旁边引入了新的“路由”选项卡。此页面将显示客户虚拟网络、Cloudflare Tunnel 及其相关路由的结构化视图。这个新页面有助于回答客户有关其网络配置的问题，例如：“哪个 Cloudflare Tunnel 具有到我的主机 192.168.1.2 的路由”、“如果存在 CIDR 192.168.2.1/28 的路由，如何访问它”，或“我的环境中有哪些重叠的 CIDR，它们属于哪些 VNET？”。这对于拥有非常复杂的企业网络并使用 Cloudflare 仪表板来解决连接问题的客户非常有用。</p>
+<p>开始您的 WARP Connector 之旅非常简单。目前可在 Linux 主机上部署，用户可以选择“创建 Tunnel”，并从 cloudflared 或 WARP 中选择，直接从仪表板进行部署。遵循我们的<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/private-net/warp-connector/#set-up-warp-connector" target="_blank" rel="noopener noreferrer">开发人员文档</a>，只需几个简单的步骤即可开始。在不久的将来，我们将支持在更多平台上部署 WARP Connector。</p>
+<h2>接下来？</h2>
+<p>感谢所有私人测试版客户提供的宝贵反馈。展望未来，我们未来几个季度的首要任务是简化部署、效仿 cloudflared 的部署以及通过冗余和故障转移机制增强高可用性。</p>
+<p>随着我们继续创新和增强 Cloudflare One 平台，请继续关注更多更新。我们很期待看到我们的客户如何利用 WARP Connector 来改变他们的连接和安全格局。</p>

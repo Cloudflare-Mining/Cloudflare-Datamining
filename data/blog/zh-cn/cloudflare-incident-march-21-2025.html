@@ -1,0 +1,256 @@
+<p>2025 年 3 月 21 日 ，包括 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 对象存储</u></a> 在内的多项 Cloudflare 服务经历了持续 1 小时 7 分钟（UTC 时间 21:38 开始，22:45 结束）的错误率升高情况。在事件发生期间，全球范围内 R2 的 100% 写入操作失败，大约 35% 的读取操作失败。尽管该事件是从 R2 开始的，但它也影响了其他 Cloudflare 服务，包括<a href="https://www.cloudflare.com/developer-platform/products/cache-reserve" target="_blank" rel="noopener noreferrer"><u>Cache Reserve</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-images" target="_blank" rel="noopener noreferrer"><u>Images</u></a>、<a href="https://developers.cloudflare.com/logs/edge-log-delivery" target="_blank" rel="noopener noreferrer"><u>Log Delivery</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-stream" target="_blank" rel="noopener noreferrer"><u>Stream</u></a> 和 <a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>。</p>
+<p>在为 R2 Gateway 服务（R2 的 API 前端）轮换用于验证存储基础设施的凭据时，R2 工程团队无意中将新凭据（ID 和密钥对）部署到了服务的开发实例而非生产环境。当旧凭据从我们的存储基础设施中删除时（作为密钥轮换过程的一部分），生产 R2 Gateway 服务无法访问新凭据。这最终导致 R2 的 Gateway 服务无法与我们的存储后端进行身份验证。本事件中没有发生数据丢失或损坏：任何返回成功 HTTP 状态代码的进行中上传或修改操作均已被持久化保存。</p>
+<p>一旦确定了根本原因并意识到我们未能将新凭据部署到生产环境的 R2 Gateway 服务，我们立即部署了更新凭据，服务可用性随即恢复。</p>
+<p>本事件发生是由于人为错误，而持续时间过长是因为我们对 Gateway Worker 用于验证存储基础设施的凭据缺乏适当的可见性。</p>
+<p>对此事件及其给您或您的用户造成的中断，我们深表歉意。我们以高标准要求自己，这样的事件是不可接受的。本文详细说明了此次事件的影响、发生的经过和时间，以及我们为确保此类故障（及类似故障）不再发生而正在采取的措施。</p>
+<h2>什么受到影响？</h2>
+<p><strong>主要事件时段为 21:38 UTC 到 22:45 UTC 之间。</strong></p>
+<p>下表详细说明了 R2 和依赖于 R2 或与 R2 交互的 Cloudflare 服务受到的具体影响：</p>
+<div id="html-block-ky" class="html-block">
+	<style>
+		#html-block-ky .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-ky .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ky .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ky .tg .tg-fymr {
+			border-color: inherit;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-ky .tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-fymr"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000;background-color:transparent">产品/服务</span></th>
+					<th class="tg-0pky"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">影响</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">所有使用Cloudflare R2 的客户在主要事件时段内都会遇到错误率上升的情况。具体而言：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">* 对象写入操作的错误率为 100%。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">* 全球范围内对象读取错误率约为 35%。在此期间，个人客户错误率因访问模式而异。通过自定义域访问公共资产的客户会发现错误率较低，因为缓存对象读取不受影响。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">* 仅涉及元数据的操作（如，头部和列表操作）不受影响。</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 存储子系统中没有数据丢失或数据完整性风险。这一事件仅限于 R2 的 API 前端和我们的存储基础设施之间的临时身份验证问题。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">账单</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">计费系统使用 R2 存储客户发票。在主要事件时段内，客户在尝试下载/访问历史 Cloudflare 发票时可能会遇到错误。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cache Reserve</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">事件发生期间，Cache Reserve 客户发现对源服务器的请求增加，原因是 R2 的读取失败百分比增加。这导致在此期间向源服务器发送更多请求，以获取 Cache Reserve 中不可用的资源。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">对于启用了 Cache Reserve 的站点，面向用户的资源请求没有发生失败，因为缓存未命中时会故障转移到源站。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">电子邮件安全</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Email Security 依赖于 R2 来提供面向客户的指标。在主要事件窗口期间，面向客户的指标不会更新。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Images</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在主要事件时段内，所有（100% 的）上传操作均失败。成功交付存储图像的成功率下降到大约 25%。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">密钥透明度审计器</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">由于依赖 R2 写入和/或读取，所有（100%）操作在主要事件期间均失败。事件解决后，服务立即恢复正常运行。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Log Delivery</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在主要事件期间，Log Delivery （适用于 Logpush 和 Logpull）发生延迟，导致日志处理出现明显延迟（长达 70 分钟）。事件解决后，所有日志均已传送完成。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stream</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在主要事件期间，所有（100%）上传操作均失败。 Stream 视频片段交付成功率下降至 94%。观众可能每一分钟左右就会看到视频卡顿，但实际影响会有所不同。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Stream Live</span> 在主要事件期间宕机，因为它依赖于对象写入。</td>
+				</tr>
+				<tr>
+					<td class="tg-fymr"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">Vectorize</span></td>
+					<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">事件发生期间，针对 Vectorize 索引的查询和操作受到了影响。由于 Vectorize 依赖 R2 进行持久存储，在事件期间 Vectorize 的客户会发现索引读取查询的错误率较高，所有（100%）插入和更新插入操作失败。</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<h2>事件时间线</h2>
+<p><strong>所有时间戳均为协调世界时 (UTC)。</strong></p>
+<div id="html-block-k13" class="html-block">
+	<style>
+		#html-block-k13 .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k13 .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k13 .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k13 .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k13 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:185.88889px">
+				<col style="width:575.88889px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-0lax"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000;background-color:transparent">时间</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">事件</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 19:49 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 工程团队启动了凭据轮换流程。该团队为存储基础架构创建了一组新的凭据（ID 和密钥对）。为维护服务连续性，保留了旧凭据以确保凭据切换期间服务不中断。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 20:19 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">设置更新的生产密钥（</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">wrangler secret put</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">）并执行 </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">Wrangler deploy</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 命令以使用更新的凭据部署 R2 Gateway 服务。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">注：我们后来发现这两个Wrangler 命令都无意中省略了 </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">--env</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 参数。这导致凭据被部署到分配给</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">默认</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">环境的 Worker，而不是分配给</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">生产</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">环境的 Worker。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 20:20 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">分配给</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">默认</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">环境的 R2 Gateway 服务 Worker 现在使用更新的存储基础设施凭据。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">注意：这是一个错误的 Worker，</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">本应显式指定为生产环境。</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">但此时，我们错误地认为已在正确的生产 Worker 上更新了凭据。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 20:37 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">旧凭据从我们的存储基础架构中删除，以完成凭据轮换流程。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 21:38 UTC</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影响开始 –</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 可用性指标开始显示出服务性能下降迹象。对 R2 可用性指标的影响是渐进的，不会立即显现出来，因为此前的凭据删除向存储基础设施的传播存在延迟。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 21:45 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 全球可用性警报被触发（错误预算消耗率达到 2%）。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 工程团队开始查看运营仪表板和日志，以了解影响。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 21:50 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">宣布内部事件。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 21:51 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 工程团队观察到， R2 读写操作的可用性指标逐步但持续下降。仅涉及元数据的操作（例如， 头部和列表操作）不受影响。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">鉴于可用性指标的逐步下降，R2 工程团队怀疑存储基础设施中新凭据的传播存在潜在倒退。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 22:05 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">发布公共事件状态页面。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 22:15 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 工程团队创建了一组新的存储基础结构凭据（ID 和密钥对），以尝试强制重新传播。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">继续监控运营仪表板和日志。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 22:20 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 工程团队发现可用性指标没有改善。继续调查其他潜在的根本原因。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 22:30 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 工程团队向 R2 Gateway 服务 Worker 部署了一组新的凭据（ID 和密钥对）。这是为了验证我们推送给网关服务的凭据是否存在问题。</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">在 </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">deploy</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 和 </span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#188038;background-color:transparent">secret put</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> 命令中仍然省略了 Environment 参数，因此本次部署仍然指向错误的非生产 Worker。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 22:36 UTC</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 确定根本原因 –</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">R2 工程团队通过审查生产 Worker 发布历史记录，发现凭据被部署到非生产 Worker。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 22:45 UTC</span></td>
+					<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影响结束 –</span><br><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">将凭据部署到正确的生产 Worker。 R2 可用性恢复。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-1wig"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">2025 年 3 月 21 日 - 22:54 UTC</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">本事件被视为已解决。</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<h2>分析</h2>
+<p>R2 的架构主要由三部分组成：R2 生产 Gateway Worker（处理来自 S3 API、REST API、Workers API 的请求）、元数据服务和存储基础设施（存储加密的对象数据）。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="389" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=715&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=640&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=715&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=750&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=828&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1080&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1280&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1430&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2793 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1840&amp;h=1000&amp;f=webp" data-lightbox-width="1840" data-lightbox-height="1000" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="389" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>R2 Gateway Worker 使用凭据 （ID 和密钥对）为我们的分布式存储基础设施进行安全的身份验证。作为最佳安全预防实践，我们会定期轮换这些凭据。</p>
+<p>我们的密钥轮换流程涉及以下主要步骤：</p>
+<ol>
+	<li>为我们的存储基础设施创建一组新的凭据（ID 和密钥对）。在此阶段，旧凭据被保留，以避免在凭据切换期间出现停机。</li>
+	<li>使用 <code>wrangler secret put</code> 命令设置 R2 生产 Gateway Worker 的新凭据密钥。</li>
+	<li>使用 <code>wrangler deploy</code> 命令将新的更新凭据 ID 设置为 R2 生产 Gateway Worker 中的环境变量。此时，Gateway Worker 开始使用新的存储凭据。</li>
+	<li>从我们的存储基础设施中移除以前的凭据，以完成凭据轮换过程。</li>
+	<li>监视运行仪表板和日志以验证切换。</li>
+</ol>
+<p>R2 工程团队使用<a href="https://developers.cloudflare.com/workers/wrangler/environments" target="_blank" rel="noopener noreferrer"><u>Workers 环境</u></a>来分隔 R2 Gateway Worker 的生产和开发环境。每个环境都使用单独的环境变量和密钥定义一个单独的隔离 Cloudflare Worker。</p>
+<p>关键是，如果不包含 --env 命令行参数，<code>wrangler secret put</code> 和 <code>wrangler deploy</code> 命令都默认指向默认环境。在本例中，由于人为错误，我们无意中忽略了 --env 参数，并将新的存储凭据部署到了错误的 Worker（即 <code>默认</code>环境，而不是<code>生产</code>）。要将存储凭据正确部署到生产 R2 Gateway Worker，我们需要指定 <code>--env production</code> 。</p>
+<p>我们在上述第 4 步中执行从存储基础设施中删除旧凭据的操作，导致身份验证错误，因为 R2 Gateway 生产 Worker 仍然拥有旧凭据。这就是最终导致可用性下降的原因。</p>
+<p>R2 可用性指标的下降是渐进的，并没有立即显现出来，因为将上一个凭据删除传播到存储基础设施时存在延迟。这是导致我们首次发现问题推迟的原因。在更新旧凭据后，我们不应依赖可用性指标，而是应该显式验证 R2Gateway 服务使用哪个令牌来对 R2 的存储基础设施进行身份验证。</p>
+<p>总体而言，由于位于存储前的中间缓存及其继续为请求提供服务，对读取可用性的影响显著降低。</p>
+<h2>解决方案</h2>
+<p>在确定根本原因之后，我们通过将新凭据部署到生产 R2 Gateway Worker 来快速解决事件。这导致 R2 可用性立即恢复。</p>
+<h2>后续步骤</h2>
+<p>本事件发生是由于人为错误，而持续时间过长是因为我们对 Gateway Worker 用于验证存储基础设施的凭据缺乏适当的可见性。</p>
+<p>我们已立即采取措施防止这一故障（及其他类似故障）再次发生：</p>
+<ul>
+	<li>添加了日志记录标记，其中包含 R2 Gateway Worker 用于与我们的存储基础设施进行身份认证的凭据 ID 后缀。通过此变更，我们可以显式确认正在使用的凭证。</li>
+	<li>与上述步骤相关，我们的内部流程现在要求在删除先前的令牌之前，显式确认新令牌 ID 的后缀与我们存储基础设施的日志匹配。</li>
+	<li>要求密钥轮换通过我们的热修补发布工具进行，而不是依赖可能引入人为错误的手动 wrangler 命令输入。我们的热修补发布部署工具显式强制使用环境配置并包含其他安全检查。</li>
+	<li>虽然按照隐含标准，这个过程需要至少两个人来验证将进行的更改，但我们已经更新了相关的 SOP（标准操作程序） 以显式包含这一点。</li>
+	<li><strong>进行中的工作</strong>：扩展我们现有的闭环健康检查系统（负责监控端点以测试新密钥），通过我们的告警平台自动报告其状态，并确保在发布 Gateway Worker 之前完成全球传播。</li>
+	<li><strong>进行中的工作</strong>：加快对分布式存储端点未来问题的排查，我们正在更新可观测性平台，加入绕过缓存的上游成功率视图，以更清晰地指示任何原因导致的请求服务问题。</li>
+</ul>
+<p>上述列表并非详尽无遗：在我们处理上述项目的过程中，除常规工作外，我们很可能会发现需要对系统、控制和流程进行其他改进，并将应用以提升 R2 的韧性。我们相信这些变化将防止此类故障及相关的凭据轮换故障模式再次发生。我们再次为此事件真诚道歉，并对由此给您或您的用户造成的中断深表歉意。</p>

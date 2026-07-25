@@ -1,174 +1,103 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5x3aLlINzMShJK4anPOXaS/17359d254b8f621e69e874dbcd19f1df/image3-10-2.png" alt="Slicing and Dicing Instant Logs: Real-time Insights on the Command Line" class="kg-image" width="1235" height="639" loading="lazy">
-
-	</figure>
-	<p>During Speed Week 2021 we announced a new offering for Enterprise customers, <a href="https://blog.cloudflare.com/how-we-built-instant-logs">Instant Logs</a>. Since then, the team has not slowed down and has been working on new ways to enable our customers to consume their logs and gain powerful insights into their HTTP traffic in real time.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vhooHoc2Xv3yigrIOQBkW/362e50f9e8c80818a2888e20ffbdd8c4/image1-6.png" alt="Screenshot showing the Instant Logs dashboard with an expanded row showing details about a request" class="kg-image" width="1999" height="1459" loading="lazy">
-
-	</figure>
-	<p>We recognize that as developers, UIs are useful but sometimes there is the need for a more powerful alternative. Today, I am going to introduce you to Instant Logs in your terminal! In order to get started we need to install a few open-source tools to help us:</p>
-	<ul>
-		<li>
-			<p><a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a> - to connect to WebSockets.</p>
-		</li>
-		<li>
-			<p><a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="creating-an-instant-logs-session">Creating an Instant Log’s Session</h2>
-		<a href="https://blog.cloudflare.com/#creating-an-instant-logs-session" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For enterprise zones with access to Instant Logs, you can create a new session by sending a POST request to our jobs' endpoint. You will need:</p>
-	<ul>
-		<li>
-			<p>Your Zone Tag / ID</p>
-		</li>
-		<li>
-			<p>An Authentication Key or an API Token with at least the Zone Logs Read permission</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
--H 'X-Auth-Key: &lt;KEY&gt;' \
--H 'X-Auth-Email: &lt;EMAIL&gt;' \
--H 'Content-Type: application/json' \
---data-raw '{
-    "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-    "sample": 1,
-    "filter": "",
-    "kind": "instant-logs"
-}'</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="response">Response</h3>
-		<a href="https://blog.cloudflare.com/#response" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p>
-	<pre class="language-json"><code class="language-json">{
-    "errors": [],
-    "messages": [],
-    "result": {
-        "id": 401,
-        "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",
-        "sample": 1,
-        "filter": "",
-        "destination_conf": "wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2",
-        "kind": "instant-logs"
-    },
-    "success": true
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="connect-to-websocket">Connect to WebSocket</h2>
-		<a href="https://blog.cloudflare.com/#connect-to-websocket" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Using a CLI utility like <a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
-	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2
-{"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:05Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:05Z","RayID":"6d332ff74fa45fbe","sampleInterval":1}
-{"ClientRequestHost":"example.com","ClientRequestMethod":"GET","ClientRequestPath":"/","EdgeEndTimestamp":"2022-01-25T17:23:06Z","EdgeResponseBytes":363,"EdgeResponseStatus":200,"EdgeStartTimestamp":"2022-01-25T17:23:06Z","RayID":"6d332fffe9c4fc81","sampleInterval":1}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="the-scenario">The Scenario</h2>
-		<a href="https://blog.cloudflare.com/#the-scenario" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
-	<div class="flex anchor relative">
-		<h3 id="specifying-fields">Specifying Fields</h3>
-		<a href="https://blog.cloudflare.com/#specifying-fields" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
-	<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests" target="_blank" rel="noopener noreferrer">on our developer docs</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="choosing-a-sample-rate">Choosing a Sample Rate</h3>
-		<a href="https://blog.cloudflare.com/#choosing-a-sample-rate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Instant Logs users also have the ability to choose a sample rate. The <code>sample</code> parameter is the inverse probability of selecting a log. This means that <code>"sample": 1</code> is 100% of records, <code>"sample": 10</code> is 10% and so on.</p>
-	<p>Going back to our example of validating that our newly deployed firewall rule is working as expected, in this case, we are choosing not to sample the data by setting <code>"sample": 1</code>.</p>
-	<p>Please note that Instant Logs has a maximum data rate supported. For high volume domains, we sample server side as indicated in the "sampleInterval" parameter returned in the logs. For example, "sampleInterval": 10 indicates this log message is just one out of 10 logs received.</p>
-	<div class="flex anchor relative">
-		<h3 id="defining-the-filters">Defining the Filters</h3>
-		<a href="https://blog.cloudflare.com/#defining-the-filters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs" target="_blank" rel="noopener noreferrer">Instant Logs documentation</a>.</p>
-	<p>To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p>
-	<pre class="language-json"><code class="language-json">{
-  "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="creating-an-instant-logs-session-canadians-only">Creating an Instant Logs Session: Canadians Only</h2>
-		<a href="https://blog.cloudflare.com/#creating-an-instant-logs-session-canadians-only" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Using the information above, we can now craft the request for our custom Instant Logs session.</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs' \
--H 'X-Auth-Key: &lt;KEY&gt;' \
--H 'X-Auth-Email: &lt;EMAIL&gt;' \
--H 'Content-Type: application/json' \
---data-raw '{
-  "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,ClientCountry,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID,FirewallMatchesActions,FirewallMatchesRuleIDs",
-  "sample": 1,
-  "kind": "instant-logs",
-  "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"
-}'</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="angle-grinder">Angle Grinder</h3>
-		<a href="https://blog.cloudflare.com/#angle-grinder" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
-	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 | agrind '* | json | sum(sampleInterval) by ClientCountry'
-ClientCountry    	_sum
----------------------------------
-pt               	4
-fr               	3
-us               	3</code></pre>
-	<p>Using Angle Grinder, we can create a query to count the firewall actions by each country.</p>
-	<pre class="language-bash"><code class="language-bash">websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2 |  agrind '* | json | sum(sampleInterval) by ClientCountry,FirewallMatchesActions'
-ClientCountry        FirewallMatchesActions        _sum
----------------------------------------------------------------
-ca                   []                            5
-us                   [block]                       1</code></pre>
-	<p>Looks like our newly deployed firewall rule is working :)</p>
-	<p>Happy Logging!</p>
+<p>During Speed Week 2021 we announced a new offering for Enterprise customers, <a href="https://blog.cloudflare.com/how-we-built-instant-logs">Instant Logs</a>. Since then, the team has not slowed down and has been working on new ways to enable our customers to consume their logs and gain powerful insights into their HTTP traffic in real time.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="522" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=715&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=640&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=715&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=750&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=828&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1080&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1280&amp;h=934&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1430&amp;h=1044&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot showing the Instant Logs dashboard with an expanded row showing details about a request" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4738DJMPWQBTH6TF42SF7M.png&amp;w=1920&amp;h=1401&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1401" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="522" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We recognize that as developers, UIs are useful but sometimes there is the need for a more powerful alternative. Today, I am going to introduce you to Instant Logs in your terminal! In order to get started we need to install a few open-source tools to help us:</p>
+<ul>
+	<li><a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a> - to connect to WebSockets.</li>
+	<li><a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a> - a utility to slice-and-dice a stream of logs on the command line.</li>
+</ul>
+<h2>Creating an Instant Log’s Session</h2>
+<p>For enterprise zones with access to Instant Logs, you can create a new session by sending a POST request to our jobs' endpoint. You will need:</p>
+<ul>
+	<li>Your Zone Tag / ID</li>
+	<li>An Authentication Key or an API Token with at least the Zone Logs Read permission</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'X-Auth-Key: &lt;KEY&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'X-Auth-Email: &lt;EMAIL&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'Content-Type: application/json'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">--data-raw </span><span class="sk-032f62-99ffe4">'{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "sample": 1,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "filter": "",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "kind": "instant-logs"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
 </div>
+<h3>Response</h3>
+<p>The response will include a new field called <code>destination_conf</code>. The value of this field is your unique WebSocket address that will receive messages directly from our network!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "errors"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "messages"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "result"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "id"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">401</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "fields"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "sample"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "filter"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "destination_conf"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"instant-logs"</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>Connect to WebSocket</h2>
+<p>Using a CLI utility like <a href="https://github.com/vi/websocat" target="_blank" rel="noopener noreferrer">Websocat</a>, you can connect to the WebSocket and start immediately receiving logs of line-delimited JSON.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">websocat</span><span class="sk-032f62-99ffe4"> wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"ClientRequestHost"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"example.com"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestMethod"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"GET"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestPath"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"/"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeEndTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:05Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeResponseBytes"</span><span class="sk-6f42c1-ffc799">:363,</span><span class="sk-6f42c1-ffc799">"EdgeResponseStatus"</span><span class="sk-6f42c1-ffc799">:200,</span><span class="sk-6f42c1-ffc799">"EdgeStartTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:05Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"RayID"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"6d332ff74fa45fbe"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"sampleInterval"</span><span class="sk-6f42c1-ffc799">:1}</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"ClientRequestHost"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"example.com"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestMethod"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"GET"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"ClientRequestPath"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"/"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeEndTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:06Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"EdgeResponseBytes"</span><span class="sk-6f42c1-ffc799">:363,</span><span class="sk-6f42c1-ffc799">"EdgeResponseStatus"</span><span class="sk-6f42c1-ffc799">:200,</span><span class="sk-6f42c1-ffc799">"EdgeStartTimestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"2022-01-25T17:23:06Z"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"RayID"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-6f42c1-ffc799">"6d332fffe9c4fc81"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-6f42c1-ffc799">"sampleInterval"</span><span class="sk-6f42c1-ffc799">:1}</span></span></code></pre>
+</div>
+<h2>The Scenario</h2>
+<p>Now that you are able to create a new Instant Logs session let’s give it a purpose! Say you just recently deployed a new firewall rule blocking users from downloading a specific asset that is only available to users in Canada. For the purpose of this example, the asset is available at the path <code>/canadians-only</code>.</p>
+<h3>Specifying Fields</h3>
+<p>In order to see what firewall actions (if any) were taken, we need to make sure that we include <code>ClientRequestCountry</code>, <code>​​FirewallMatchesActions</code> and <code>FirewallMatchesRuleIDs</code> fields when creating our session.</p>
+<p>Additionally, any field available in our HTTP request dataset is usable by Instant Logs. You can view the entire list of HTTP Request fields <a href="https://developers.cloudflare.com/logs/reference/log-fields/zone/http_requests" target="_blank" rel="noopener noreferrer">on our developer docs</a>.</p>
+<h3>Choosing a Sample Rate</h3>
+<p>Instant Logs users also have the ability to choose a sample rate. The <code>sample</code> parameter is the inverse probability of selecting a log. This means that <code>"sample": 1</code> is 100% of records, <code>"sample": 10</code> is 10% and so on.</p>
+<p>Going back to our example of validating that our newly deployed firewall rule is working as expected, in this case, we are choosing not to sample the data by setting <code>"sample": 1</code>.</p>
+<p>Please note that Instant Logs has a maximum data rate supported. For high volume domains, we sample server side as indicated in the "sampleInterval" parameter returned in the logs. For example, "sampleInterval": 10 indicates this log message is just one out of 10 logs received.</p>
+<h3>Defining the Filters</h3>
+<p>Since we are only interested in requests with the path of <code>/canadians-only</code>, we can use filters to remove any logs that do not match that specific path. The filters consist of three parts: <code>key</code>, <code>operator</code> and <code>value</code>. The <code>key</code> can be any field specified in the <code>"fields": ""</code> list when creating the session. The complete list of supported operators can be found on our <a href="https://developers.cloudflare.com/logs/instant-logs" target="_blank" rel="noopener noreferrer">Instant Logs documentation</a>.</p>
+<p>To only get the logs of requests destined to <code>/canadians-only</code>, we can specify the following filter:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "filter"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">where</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">and</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:[{</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">key</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">ClientRequestPath</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">operator</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">eq</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">,</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">value</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">/canadians-only</span><span class="sk-005cc5-a0a0a0">\"</span><span class="sk-032f62-99ffe4">}]}}"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>Creating an Instant Logs Session: Canadians Only</h2>
+<p>Using the information above, we can now craft the request for our custom Instant Logs session.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> 'https://api.cloudflare.com/client/v4/zones/${ZONE_ID}/logpush/edge/jobs'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'X-Auth-Key: &lt;KEY&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'X-Auth-Email: &lt;EMAIL&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'Content-Type: application/json'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">--data-raw </span><span class="sk-032f62-99ffe4">'{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "fields": "ClientIP,ClientRequestHost,ClientRequestMethod,ClientRequestPath,ClientCountry,EdgeEndTimestamp,EdgeResponseBytes,EdgeResponseStatus,EdgeStartTimestamp,RayID,FirewallMatchesActions,FirewallMatchesRuleIDs",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "sample": 1,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "kind": "instant-logs",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "filter": "{\"where\":{\"and\":[{\"key\":\"ClientRequestPath\",\"operator\":\"eq\",\"value\":\"/canadians-only\"}]}}"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+</div>
+<h3>Angle Grinder</h3>
+<p>Now that we have a connection to our WebSocket and are receiving logs that match the request path <code>/canadians-only</code>, we can start slicing and dicing the logs to see that the rule is working as expected. A handy tool to use for this is <a href="https://github.com/rcoh/angle-grinder" target="_blank" rel="noopener noreferrer">Angle Grinder</a>. Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country we can sum the number of events by the <code>ClientCountry</code> field.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">websocat</span><span class="sk-032f62-99ffe4"> wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> agrind</span><span class="sk-032f62-99ffe4"> '* | json | sum(sampleInterval) by ClientCountry'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ClientCountry</span><span class="sk-032f62-99ffe4">    	_sum</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">---------------------------------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pt</span><span class="sk-005cc5-ffc799">               	4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">fr</span><span class="sk-005cc5-ffc799">               	3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">us</span><span class="sk-005cc5-ffc799">               	3</span></span></code></pre>
+</div>
+<p>Using Angle Grinder, we can create a query to count the firewall actions by each country.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">websocat</span><span class="sk-032f62-99ffe4"> wss://logs.cloudflare.com/instant-logs/ws/sessions/949f9eb846f06d8f8b7c91b186a349d2</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799">  agrind</span><span class="sk-032f62-99ffe4"> '* | json | sum(sampleInterval) by ClientCountry,FirewallMatchesActions'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ClientCountry</span><span class="sk-032f62-99ffe4">        FirewallMatchesActions</span><span class="sk-032f62-99ffe4">        _sum</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">---------------------------------------------------------------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ca</span><span class="sk-24292e-fff">                   []                            5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">us</span><span class="sk-24292e-fff">                   [block]                       1</span></span></code></pre>
+</div>
+<p>Looks like our newly deployed firewall rule is working :)</p>
+<p>Happy Logging!</p>

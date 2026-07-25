@@ -1,152 +1,90 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PJDqmx90z4PIOIyHZT9PC/0c95e723d63ee9fad4c569c9afe8a977/mapping-factorio-with-leaflet.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>The following is a guest post by </i><a href="https://twitter.com/jachands" target="_blank" rel="noopener noreferrer"><i>Jacob Hands</i></a><i>, Creator of </i><a href="https://factoriomaps.com/browse.html" target="_blank" rel="noopener noreferrer"><i>FactorioMaps.com</i></a><i>. He is building a community site for the game </i><a href="https://www.factorio.com" target="_blank" rel="noopener noreferrer"><i>Factorio</i></a><i> centered around sharing user creations.</i></p>
-	<p>Factorio is a game about building and maintaining factories. Players mine resources, research new technology and automate production. Resources move along the production line through multiple means of transportation such as belts and trains. Once production starts getting up to speed, alien bugs start to attack the factory requiring strong defenses.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TNrprtIuvw1mO132IQAJO/acc873ddc0b2c4bc750c86f62e3cc82e/Screen-Shot-2018-10-03-at-5.25.28-PM.png" alt="" class="kg-image" width="1248" height="704" loading="lazy">
-
-	</figure>
-	<p>A Factorio factory producing many different items.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UhpJmn4V4ssl4Z0xYL9F4/69f69a51d8a38c21ec73a10167fd0bbf/Screen-Shot-2018-10-03-at-5.26.28-PM.png" alt="" class="kg-image" width="1248" height="702" loading="lazy">
-
-	</figure>
-	<p>A Factorio military outpost fighting the alien bugs.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/31bhk36TBVSqbovlQfCOEt/85e40b1a94e09b8262874c2a74596b73/Screen-Shot-2018-10-03-at-5.27.24-PM.png" alt="" class="kg-image" width="1248" height="1248" loading="lazy">
-
-	</figure>
-	<p>A Factorio map view of a small factory, that’s still too big to easily share fully with screenshots.</p>
-	<p>At FactorioMaps.com, I am building a place for the community of Factorio players to share their factories as interactive Leaflet maps. Due to the size and detail of the game, it can be difficult to share an entire factory through a few screenshots. A Leaflet map provides a Google Maps-like experience allowing viewers to pan and zoom throughout the map almost as if they are playing the game.</p>
-	<div class="flex anchor relative">
-		<h3 id="hosting">Hosting</h3>
-		<a href="https://blog.cloudflare.com/#hosting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Leaflet maps contain thousands of small images for X/Y/Z coordinates. Amazon S3 and Google Cloud Storage are the obvious choices for <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">low-latency object storage</a>. However, after 3.5 &nbsp;months in operation, FactorioMaps.com contains 17 million map images (&gt;1TB). For this use-case, $0.05 per 10,000 upload API calls and $0.08 to 0.12/GB for egress would add up quickly. Backblaze B2 is a better fit because upload API calls are free, <a href="https://blog.cloudflare.com/bandwidth-alliance">egress bandwidth is $0.00/GB to Cloudflare</a>, and storage is 1/4th the price of the competition.</p>
-	<p>Backblaze B2 requires a prefix of /file/bucketName on all public files, which I don’t want. To remove it, I added a VPS proxy to rewrite paths and add a few 301 redirects. Unfortunately, the latency from the user -&gt; VPS -&gt; B2 was sub-par averaging 800-1200ms in the US.</p>
-	<div class="flex anchor relative">
-		<h3 id="a-closer-look-at-leaflet">A Closer Look At Leaflet</h3>
-		<a href="https://blog.cloudflare.com/#a-closer-look-at-leaflet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Leaflet maps work by loading images at the user's X/Y/Z coordinates to render the current view. As a map is zoomed in, it requires 4x as many images to show the same area. That means 75% of a map's images are in the max rendered zoom level.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2I3CK2L5HsxRJlY41MAl8j/1089aad7070f1334f941e26a71fa74bb/Screen-Shot-2018-10-03-at-5.29.14-PM.png" alt="" class="kg-image" width="1262" height="550" loading="lazy">
-
-	</figure>
-	<p>A diagram of how each zoom level is 4x larger than the previous</p>
-	<div class="flex anchor relative">
-		<h3 id="reducing-latency">Reducing Latency</h3>
-		<a href="https://blog.cloudflare.com/#reducing-latency" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With hosting working, it's time to start making the site faster. The majority of image requests come from the first few zoom levels, representing less than 25% of a given map's images. Adding a local SSD cache on the VPS containing all except the last 1-3 zoom levels for each map reduces latency for 66% of requests. The problem with SSD storage is it's difficult to scale with ever-increasing data and is still limited to the network and CPU performance of the server it occupies.</p>
-	<div class="flex anchor relative">
-		<h3 id="going-serverless-with-cloudflare-workers">Going Serverless with Cloudflare Workers</h3>
-		<a href="https://blog.cloudflare.com/#going-serverless-with-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Workers can run JavaScript using the Service Workers API which means the path rewrites and redirects the VPS was accomplishing could run on Cloudflare's edge.</p>
-	<p>While Google Cloud Storage is more expensive than B2, it has much lower latency to the US and worldwide destinations because of their network and multi-regional object storage. However, it's not time to move the whole site over to GCS just yet; the upload API calls alone would cost $85 for 17 million files.</p>
-	<div class="flex anchor relative">
-		<h3 id="multi-tier-object-storage">Multi-Tier Object Storage</h3>
-		<a href="https://blog.cloudflare.com/#multi-tier-object-storage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The first few zoom levels are stored in GCS, while the rest are in B2. Cloudflare Workers figure out where files are located by checking both sources simultaneously. By doing this, 66% of requested files come from GCS with a mean latency of &lt;350ms, while only storing 24% of files on GCS. Another benefit to using B2 as the primary storage is if GCS becomes too expensive in the future, I can move all requests to B2.</p>
-	<pre class="language-javascript"><code class="language-javascript">// Race GCS and B2
-let gcsReq = new Request('https://storage.googleapis.com/bucketName' + url.pathname, event.request)
-let b2Req = new Request(getB2Url(request) + '/bucketName' + url.pathname, event.request);
-
-// Fetch from GCS and B2 with Cloudflare caching enabled
-let gcsPromise = fetch(gcsReq, cfSettings);
-let b2Promise = fetch(b2Req, cfSettings);
-
-let response = await Promise.race([gcsPromise, b2Promise]);
-if (response.ok) {
-    return response;
-}
-
-// If the winner was bad, find the one that is good (if any)
-response = await gcsPromise;
-if (response.ok) {
-    return response;
-}
-
-response = await b2Promise;
-if (response.ok) {
-    return response;
-}
-
-// The request failed/doesn't exist
-return response;</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="tracking-subrequests">Tracking Subrequests</h3>
-		<a href="https://blog.cloudflare.com/#tracking-subrequests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Cloudflare Workers dashboard contains a few analytics for subrequests, but there is no way to see what responses came from B2 vs. GCS. Fortunately, it’s easy to send request stats to a 3rd party service like StatHat with a few lines of JavaScript.</p>
-	<pre class="language-javascript"><code class="language-javascript"> // Fetch from GCS and B2 with caching
-let reqStartTime = Date.now();
-let gcsPromise = fetch(gcsReq, cfSettings);
-let b2Promise = fetch(b2Req, cfSettings);
-
-let response = await Promise.race([gcsPromise, b2Promise]);
-if (response.ok) {
-    event.waitUntil(logResponse(event, response, (Date.now() - reqStartTime)));
-    return response;
-}</code></pre>
-	<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js" target="_blank" rel="noopener noreferrer"><b>here</b></a>. &nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="making-b2-faster-with-argo">Making B2 Faster with Argo</h3>
-		<a href="https://blog.cloudflare.com/#making-b2-faster-with-argo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Tracking request time surfaced another issue. Requests to B2 from countries outside of North America are still quite slow. Cloudflare's Argo can reduce latency by over 50%, but is too expensive to enable for the whole site. Additionally, it would be redundant to smart-route content from GCS that Google already does an excellent job of keeping latency down. Cloudflare request headers include the country of origin, making it trivial to route this subset of requests through an Argo-enabled domain.</p>
-	<pre class="language-javascript"><code class="language-javascript">// Use CF Argo for non-US/CA users
-function getB2Url(request) {
-    let b2BackendUrl = 'https://b2.my-argo-enabled-domain.com/file';
-    let country = request.headers.get('CF-IPCountry')
-    if (country === 'US' || country === 'CA') {
-        b2BackendUrl = 'https://f001.backblazeb2.com/file';
-    }
-    return b2BackendUrl;
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com" target="_blank" rel="noopener noreferrer">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit" target="_blank" rel="noopener noreferrer">submit</a> your <a href="https://www.factorio.com" target="_blank" rel="noopener noreferrer">Factorio</a> world to share with others!</p>
+<p><em>The following is a guest post by <a href="https://twitter.com/jachands" target="_blank" rel="noopener noreferrer">Jacob Hands</a>, Creator of <a href="https://factoriomaps.com/browse.html" target="_blank" rel="noopener noreferrer">FactorioMaps.com</a>. He is building a community site for the game <a href="https://www.factorio.com" target="_blank" rel="noopener noreferrer">Factorio</a> centered around sharing user creations.</em></p>
+<p>Factorio is a game about building and maintaining factories. Players mine resources, research new technology and automate production. Resources move along the production line through multiple means of transportation such as belts and trains. Once production starts getting up to speed, alien bugs start to attack the factory requiring strong defenses.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Mapping Factorio with Leaflet Embedded Image - QC1Rky" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JV3Z6XCQ3NWVRG4JQVAH.png&amp;w=1248&amp;h=704&amp;f=webp" data-lightbox-width="1248" data-lightbox-height="704" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>A Factorio factory producing many different items.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Mapping Factorio with Leaflet Embedded Image - 0sVizn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47G5CPAGN0FAB6C8MYQHS4.png&amp;w=1248&amp;h=702&amp;f=webp" data-lightbox-width="1248" data-lightbox-height="702" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>A Factorio military outpost fighting the alien bugs.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="715" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=640&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=715&amp;h=715&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=750&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=828&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=1080&amp;h=1080&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=1280&amp;h=1280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=1430&amp;h=1430&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Mapping Factorio with Leaflet Embedded Image - AJI8TD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QKSTXJTD6TSG2VZBW8HR.png&amp;w=1248&amp;h=1248&amp;f=webp" data-lightbox-width="1248" data-lightbox-height="1248" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="715" class="pt-portable-image-media"></div>
+</figure>
+<p>A Factorio map view of a small factory, that’s still too big to easily share fully with screenshots.</p>
+<p>At FactorioMaps.com, I am building a place for the community of Factorio players to share their factories as interactive Leaflet maps. Due to the size and detail of the game, it can be difficult to share an entire factory through a few screenshots. A Leaflet map provides a Google Maps-like experience allowing viewers to pan and zoom throughout the map almost as if they are playing the game.</p>
+<h3>Hosting</h3>
+<p>Leaflet maps contain thousands of small images for X/Y/Z coordinates. Amazon S3 and Google Cloud Storage are the obvious choices for <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage" target="_blank" rel="noopener noreferrer">low-latency object storage</a>. However, after 3.5 &nbsp;months in operation, FactorioMaps.com contains 17 million map images (&gt;1TB). For this use-case, $0.05 per 10,000 upload API calls and $0.08 to 0.12/GB for egress would add up quickly. Backblaze B2 is a better fit because upload API calls are free, <a href="https://blog.cloudflare.com/bandwidth-alliance">egress bandwidth is $0.00/GB to Cloudflare</a>, and storage is 1/4th the price of the competition.</p>
+<p>Backblaze B2 requires a prefix of /file/bucketName on all public files, which I don’t want. To remove it, I added a VPS proxy to rewrite paths and add a few 301 redirects. Unfortunately, the latency from the user -&gt; VPS -&gt; B2 was sub-par averaging 800-1200ms in the US.</p>
+<h3>A Closer Look At Leaflet</h3>
+<p>Leaflet maps work by loading images at the user's X/Y/Z coordinates to render the current view. As a map is zoomed in, it requires 4x as many images to show the same area. That means 75% of a map's images are in the max rendered zoom level.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="312" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=640&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=750&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=828&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=1080&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=1280&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=1430&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Mapping Factorio with Leaflet Embedded Image - uYHn2i" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4566JKVV117F3GV2WB1CM4.png&amp;w=1262&amp;h=550&amp;f=webp" data-lightbox-width="1262" data-lightbox-height="550" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="312" class="pt-portable-image-media"></div>
+</figure>
+<p>A diagram of how each zoom level is 4x larger than the previous</p>
+<h3>Reducing Latency</h3>
+<p>With hosting working, it's time to start making the site faster. The majority of image requests come from the first few zoom levels, representing less than 25% of a given map's images. Adding a local SSD cache on the VPS containing all except the last 1-3 zoom levels for each map reduces latency for 66% of requests. The problem with SSD storage is it's difficult to scale with ever-increasing data and is still limited to the network and CPU performance of the server it occupies.</p>
+<h3>Going Serverless with Cloudflare Workers</h3>
+<p>Cloudflare Workers can run JavaScript using the Service Workers API which means the path rewrites and redirects the VPS was accomplishing could run on Cloudflare's edge.</p>
+<p>While Google Cloud Storage is more expensive than B2, it has much lower latency to the US and worldwide destinations because of their network and multi-regional object storage. However, it's not time to move the whole site over to GCS just yet; the upload API calls alone would cost $85 for 17 million files.</p>
+<h3>Multi-Tier Object Storage</h3>
+<p>The first few zoom levels are stored in GCS, while the rest are in B2. Cloudflare Workers figure out where files are located by checking both sources simultaneously. By doing this, 66% of requested files come from GCS with a mean latency of &lt;350ms, while only storing 24% of files on GCS. Another benefit to using B2 as the primary storage is if GCS becomes too expensive in the future, I can move all requests to B2.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Race GCS and B2</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> gcsReq </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://storage.googleapis.com/bucketName'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> url.pathname, event.request)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> b2Req </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">getB2Url</span><span class="sk-24292e-fff">(request) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> '/bucketName'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> url.pathname, event.request);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Fetch from GCS and B2 with Cloudflare caching enabled</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> gcsPromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(gcsReq, cfSettings);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> b2Promise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(b2Req, cfSettings);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">race</span><span class="sk-24292e-fff">([gcsPromise, b2Promise]);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (response.ok) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// If the winner was bad, find the one that is good (if any)</span></span>
+<span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> gcsPromise;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (response.ok) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> b2Promise;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (response.ok) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The request failed/doesn't exist</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> response;</span></span></code></pre>
 </div>
+<h3>Tracking Subrequests</h3>
+<p>The Cloudflare Workers dashboard contains a few analytics for subrequests, but there is no way to see what responses came from B2 vs. GCS. Fortunately, it’s easy to send request stats to a 3rd party service like StatHat with a few lines of JavaScript.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"> // Fetch from GCS and B2 with caching</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> reqStartTime </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> gcsPromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(gcsReq, cfSettings);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> b2Promise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(b2Req, cfSettings);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">race</span><span class="sk-24292e-fff">([gcsPromise, b2Promise]);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (response.ok) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">logResponse</span><span class="sk-24292e-fff">(event, response, (Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> reqStartTime)));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The resulting stats prove that GCS is serving the majority of requests, and Cloudflare caches over 50% of those requests. The code for the logResponse function can be found <a href="https://gist.github.com/jahands/636e89a125f0352a3d50fff155bfa50f#file-stat-logging-to-stathat-js" target="_blank" rel="noopener noreferrer"><strong>here</strong></a>. &nbsp;</p>
+<h3>Making B2 Faster with Argo</h3>
+<p>Tracking request time surfaced another issue. Requests to B2 from countries outside of North America are still quite slow. Cloudflare's Argo can reduce latency by over 50%, but is too expensive to enable for the whole site. Additionally, it would be redundant to smart-route content from GCS that Google already does an excellent job of keeping latency down. Cloudflare request headers include the country of origin, making it trivial to route this subset of requests through an Argo-enabled domain.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Use CF Argo for non-US/CA users</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> getB2Url</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> b2BackendUrl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'https://b2.my-argo-enabled-domain.com/file'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> country </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'CF-IPCountry'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (country </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'US'</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> country </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'CA'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        b2BackendUrl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'https://f001.backblazeb2.com/file'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> b2BackendUrl;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Conclusion</h3>
+<p>Cloudflare Workers are an excellent fit for my project; they enabled me to make a cost-effective solution to hosting Leaflet maps at scale. Check out <a href="https://factoriomaps.com" target="_blank" rel="noopener noreferrer">https://factoriomaps.com</a> for performant Leaflet maps, and if you play Factorio, <a href="https://factoriomaps.com/submit" target="_blank" rel="noopener noreferrer">submit</a> your <a href="https://www.factorio.com" target="_blank" rel="noopener noreferrer">Factorio</a> world to share with others!</p>

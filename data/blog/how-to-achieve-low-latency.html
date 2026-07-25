@@ -1,355 +1,258 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AXJDvFdC3bUiMT8BurbcL/2a7b6da20f7f3aac257f891d75ea8434/how-to-achieve-low-latency.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Good morning!</p>
-	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">a recent blog post</a> we explained how to tweak a simple UDP application to maximize throughput. This time we are going to optimize our UDP application for <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">latency</a>. Fighting with latency is a great excuse to discuss modern features of multiqueue NICs. Some of the techniques covered here are also discussed in the <a href="https://www.kernel.org/doc/Documentation/networking/scaling.txt" target="_blank" rel="noopener noreferrer">scaling.txt kernel document</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Yd58jloFHjTHG1fQjAkRB/3c087350b7ed34cb19ea1d27c02b5dca/queue.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
-
-	</figure>
-	<p>CC BY-SA 2.0 <a href="https://www.flickr.com/photos/hktang/4243300265" target="_blank" rel="noopener noreferrer">image</a> by Xiaojun Deng</p>
-	<p>Our experiment will be setup up as follows:</p>
-	<ul>
-		<li>
-			<p>We will have two physical Linux hosts: the 'client' and the 'server'. They communicate with a simple UDP echo protocol.</p>
-		</li>
-		<li>
-			<p>Client sends a small UDP frame (32 bytes of payload) and waits for the reply, measuring the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round trip time (RTT)</a>. Server echoes back the packets immediately after they are received.</p>
-		</li>
-		<li>
-			<p>Both hosts have 2GHz Xeon CPU's, with two sockets of 6 cores and Hyper Threading (HT) enabled - so 24 CPUs per host.</p>
-		</li>
-		<li>
-			<p>The client has a Solarflare 10Gb NIC, the server has an Intel 82599 10Gb NIC. Both cards have fiber connected to a 10Gb switch.</p>
-		</li>
-		<li>
-			<p>We're going to measure the round trip time. Since the numbers are pretty small, there is a lot of jitter when counting the averages. Instead, it makes more sense to take a stable value - the lowest RTT from many runs done over one second.</p>
-		</li>
-		<li>
-			<p>As usual, code used here is available on GitHub: <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/udpclient.c" target="_blank" rel="noopener noreferrer"><code>udpclient.c</code></a>, <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/udpserver.c" target="_blank" rel="noopener noreferrer"><code>udpserver.c</code></a>.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="prerequisites">Prerequisites</h3>
-		<a href="https://blog.cloudflare.com/#prerequisites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First, let's explicitly assign the IP addresses:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ ip addr add 192.168.254.1/24 dev eth2
-server$ ip addr add 192.168.254.30/24 dev eth3</code></pre>
-	<p>Make sure <code>iptables</code> and <code>conntrack</code> don't interfere with our traffic:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ iptables -I INPUT 1 --src 192.168.254.0/24 -j ACCEPT
-client$ iptables -t raw -I PREROUTING 1 --src 192.168.254.0/24 -j NOTRACK
-server$ iptables -I INPUT 1 --src 192.168.254.0/24 -j ACCEPT
-server$ iptables -t raw -I PREROUTING 1 --src 192.168.254.0/24 -j NOTRACK</code></pre>
-	<p>Finally, ensure the interrupts of multiqueue network cards are evenly distributed between CPUs. The <code>irqbalance</code> service is stopped and the interrupts are manually assigned. For simplicity let's pin the RX queue #0 to CPU #0, RX queue #1 to CPU #1 and so on.</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ (let CPU=0; cd /sys/class/net/eth2/device/msi_irqs/;
-         for IRQ in *; do
-            echo $CPU &gt; /proc/irq/$IRQ/smp_affinity_list
-            let CPU+=1
-         done)
-server$ (let CPU=0; cd /sys/class/net/eth3/device/msi_irqs/;
-         for IRQ in *; do
-            echo $CPU &gt; /proc/irq/$IRQ/smp_affinity_list
-            let CPU+=1
-         done)</code></pre>
-	<p>These scripts assign the interrupts fired by each RX queue to a selected CPU. Finally, some network cards have <a href="https://en.wikipedia.org/wiki/Ethernet_flow_control" target="_blank" rel="noopener noreferrer">Ethernet flow control</a> enabled by default. In our experiment we won't push too many packets, so it shouldn't matter. In any case - it's unlikely the average user actually wants flow control - it can introduce unpredictable latency spikes during higher load:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ sudo ethtool -A eth2 autoneg off rx off tx off
-server$ sudo ethtool -A eth3 autoneg off rx off tx off</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="naive-round-trip">Naive round trip</h3>
-		<a href="https://blog.cloudflare.com/#naive-round-trip" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Here's the sketch of our client code. Nothing too fancy: send a packet and measure the time until we hear the response.</p>
-	<pre class="language-.python"><code class="language-.python">fd = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-fd.bind(("0.0.0.0", 65400)) # pin source port to reduce nondeterminism
-fd.connect(("192.168.254.30", 4321))
-while True:
-    t1 = time.time()
-    fd.sendmsg("\x00" * 32)
-    fd.readmsg()
-    t2 = time.time()
-    print "rtt=%.3fus" % ((t2-t1) * 1000000)</code></pre>
-	<p>The server is similarly uncomplicated. It waits for packets and echoes them back to the source:</p>
-	<pre class="language-.python"><code class="language-.python">fd = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-fd.bind(("0.0.0.0", 4321))
-while True:
-    data, client_addr = fd.recvmsg()
-    fd.sendmsg(data, client_addr)</code></pre>
-	<p>Let's run them:</p>
-	<pre class="language-.bash"><code class="language-.bash">server$ ./udpserver
-client$ ./udpclient 192.168.254.30:4321
-[*] Sending to 192.168.254.30:4321, src_port=65500
-pps= 16815 avg= 57.224us dev= 24.970us min=45.594us
-pps= 15910 avg= 60.170us dev= 28.810us min=45.679us
-pps= 15463 avg= 61.892us dev= 33.332us min=44.881us</code></pre>
-	<p>In the naive run we're able to do around 15k round trips a second, with an average RTT of 60 microseconds (us) and minimal 44us. The standard deviation is pretty scary and suggests high jitter.</p>
-	<div class="flex anchor relative">
-		<h3 id="kernel-polling-so_busy_poll">Kernel polling - SO_BUSY_POLL</h3>
-		<a href="https://blog.cloudflare.com/#kernel-polling-so_busy_poll" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Linux 3.11 added support for the <a href="http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/open-source-kernel-enhancements-paper.pdf" target="_blank" rel="noopener noreferrer"><code>SO_BUSY_POLL</code> socket option</a>. The idea is to ask the kernel to poll for incoming packets for <a href="http://man7.org/linux/man-pages/man7/socket.7.html" target="_blank" rel="noopener noreferrer">a given amount of time</a>. This, of course, increases the CPU usage on the machine, but will reduce the latency. The benefit comes from avoiding the major context switch when a packet is received. In our experiment enabling <code>SO_BUSY_POLL</code> brings the min latency down by 7us:</p>
-	<pre class="language-.bash"><code class="language-.bash">server$ sudo ./udpserver  --busy-poll=50
-client$ sudo ./udpclient 192.168.254.30:4321 --busy-poll=50
-pps= 19440 avg= 49.886us dev= 16.405us min=36.588us
-pps= 19316 avg= 50.224us dev= 15.764us min=37.283us
-pps= 19024 avg= 50.960us dev= 18.570us min=37.116us</code></pre>
-	<p>While I'm not thrilled by these numbers, there may be some valid use cases for <code>SO_BUSY_POLL</code>. To my understanding, as opposed to other approaches, it works well with interrupt coalescing (<code>rx-usecs</code>).</p>
-	<div class="flex anchor relative">
-		<h3 id="userspace-busy-polling">Userspace busy polling</h3>
-		<a href="https://blog.cloudflare.com/#userspace-busy-polling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Instead of doing polling in the kernel with <code>SO_BUSY_POLL</code>, we can just do it in the application. Let's avoid blocking on <code>recvmsg</code> and run a non-blocking variant in a busy loop. The server pseudo code will look like:</p>
-	<pre class="language-.python"><code class="language-.python">while True:
-    while True:
-        data, client_addr = fd.recvmsg(MSG_DONTWAIT)
-        if data:
-            break
-    fd.sendmsg(data, client_addr)</code></pre>
-	<p>This approach is surprisingly effective:</p>
-	<pre class="language-.bash"><code class="language-.bash">server$ ./udpserver  --polling
-client$ ./udpclient 192.168.254.30:4321 --polling
-pps= 25812 avg= 37.426us dev= 11.865us min=31.837us
-pps= 23877 avg= 40.399us dev= 14.665us min=31.832us
-pps= 24746 avg= 39.086us dev= 14.041us min=32.540us</code></pre>
-	<p>Not only has the min time dropped by further 4us, but also the average and deviation look healthier.</p>
-	<div class="flex anchor relative">
-		<h3 id="pin-processes">Pin processes</h3>
-		<a href="https://blog.cloudflare.com/#pin-processes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So far we allowed the Linux scheduler to allocate CPU for our busy polling applications. Some of the jitter came from the processes being moved around. Let's try pinning them to specific cores:</p>
-	<pre class="language-.bash"><code class="language-.bash">server$ taskset -c 3 ./udpserver --polling
-client$ taskset -c 3 ./udpclient 192.168.254.30:4321 --polling
-pps= 26824 avg= 35.879us dev= 11.450us min=30.060us
-pps= 26424 avg= 36.464us dev= 12.463us min=30.090us
-pps= 26604 avg= 36.149us dev= 11.321us min=30.421us</code></pre>
-	<p>This shaved off further 1us. Unfortunately running our applications on a "bad" CPU might actually degrade the numbers. To understand why we need to revisit how the packets are being dispatched across RX queues.</p>
-	<div class="flex anchor relative">
-		<h3 id="rss-receive-side-scaling">RSS - Receive Side Scaling</h3>
-		<a href="https://blog.cloudflare.com/#rss-receive-side-scaling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">the previous article</a> we mentioned that the NIC hashes packets in order to spread the load across many RX queues. This technique is called RSS - Receive Side Scaling. We can see it in action by observing the <code>/proc/net/softnet_stat</code> file with <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/softnet.sh" target="_blank" rel="noopener noreferrer">the softnet.sh script</a>:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fSRiGuv2ifzgyxdfm1yBi/1b2aa0c578a6851fcb50de600dffb8c2/softnet-rx.png" alt="" class="kg-image" width="215" height="213" loading="lazy">
-
-	</figure>
-	<p>This makes sense - since we send only one flow (connection) from the <code>udpclient</code>, all the packets hit the same RX queue. In this case it is RX queue #1, which is bound to CPU #1. Indeed, when we run the client on that very CPU the latency goes up by around 2us:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ taskset -c 1 ./udpclient 192.168.254.30:4321  --polling
-pps= 25517 avg= 37.615us dev= 12.551us min=31.709us
-pps= 25425 avg= 37.787us dev= 12.090us min=32.119us
-pps= 25279 avg= 38.041us dev= 12.565us min=32.235us</code></pre>
-	<p>Turns out that keeping the process on the same core as arriving interrupts slightly degrades the latency. But how can the process know if it's running on the offending CPU?</p>
-	<p>One way is for the application to query the kernel. Kernel 3.19 introduced <a href="https://lwn.net/Articles/619862" target="_blank" rel="noopener noreferrer"><code>SO_INCOMING_CPU</code></a> socket option. With that the process can figure out to which CPU the packet was originally delivered.</p>
-	<p>An alternative approach is to ensure the packets will be dispatched only to the CPUs we want. We can do that by adjusting NIC settings with <code>ethtool</code>.</p>
-	<div class="flex anchor relative">
-		<h3 id="indirection-table">Indirection Table</h3>
-		<a href="https://blog.cloudflare.com/#indirection-table" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>RSS is intended to distribute the load across RX queues. In our case, a UDP flow, the RX queue is chosen by this formula:</p>
-	<pre class="language-.txt"><code class="language-.txt">RX_queue = INDIR[hash(src_ip, dst_ip) % 128]</code></pre>
-	<p>As discussed previously, the hash function for UDP flows is not configurable on Solarflare NICs. Fortunately the <code>INDIR</code> table is!</p>
-	<p>But what is <code>INDIR</code> anyway? Well, it's an indirection table that maps the least significant bits of a hash to an RX queue number. To view the indirection table run <code>ethtool -x</code>:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aEJ2l39OFDhEOvDbK89md/58b46635f0132f5fc926ae82e500c0ad/indir-before.png" alt="" class="kg-image" width="443" height="294" loading="lazy">
-
-	</figure>
-	<p>This reads as: packets with hash equal to, say, 72 will go to RX queue #6, hash of 126 will go to RX queue #5, and so on.</p>
-	<p>This table can be configured. For example, to make sure all traffic goes only to CPUs #0-#5 (the first NUMA node in our setup), we run:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ sudo ethtool -X eth2 weight 1 1 1 1 1 1 0 0 0 0 0
-server$ sudo ethtool -X eth3 weight 1 1 1 1 1 1 0 0 0 0 0</code></pre>
-	<p>The adjusted indirection table:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60TeBiwuIiEE9xfAvQh4Fm/415f41806744c69dbe928fe997448964/indir-after.png" alt="" class="kg-image" width="437" height="292" loading="lazy">
-
-	</figure>
-	<p>With that set up our latency numbers don't change much, but at least we are sure the packets will always hit only the CPUs on the first NUMA node. The lack of NUMA locality usually costs around 2us.</p>
-	<p>I should mention that Intel 82599 supports adjusting the RSS hash function for UDP flows, but the driver does not support indirection table manipulation. To get it running I <a href="https://github.com/majek/ixgbe/commit/336d556cbada2974700f4d809b54ce472d11709d" target="_blank" rel="noopener noreferrer">used this patch</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="flow-steering">Flow steering</h3>
-		<a href="https://blog.cloudflare.com/#flow-steering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There is also another way to ensure packets hit specific CPU: flow steering rules. Flow steering rules are used to specify exceptions on top of the indirection table. They tell the NIC to send specific flow to specific RX queue. For example, in our case, this is how we could pin our flows to RX queue #1 on both the server and the client:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ sudo ethtool -N eth2 flow-type udp4 dst-ip 192.168.254.1 dst-port 65500 action 1
-Added rule with ID 12401
-server$ sudo ethtool -N eth3 flow-type udp4 dst-port 4321 action 1
-Added rule with ID 2045</code></pre>
-	<p>Flow steering can be used for more magical things. For example we can ask the NIC to drop selected traffic by specifying <code>action -1</code>. This is very useful during DDoS packet floods and is often a feasible alternative to dropping packets on a router firewall.</p>
-	<p>Some administrators also use flow steering to make sure things like <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH</a> or BGP continue working even during <a href="https://en.wikipedia.org/wiki/Interrupt_storm" target="_blank" rel="noopener noreferrer">high server load</a>. It can be achieved by manipulating the indirection table to move production traffic off, say, RX queue #0 and CPU #0. On top of that they explicitly forward packets going to destination port 22 or 179 to always hit only CPU #0 with flow steering rules. With that setup no matter how big the network load on the server, the SSH and <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">BGP</a> will keep on working since they hit a dedicated CPU and an RX queue.</p>
-	<div class="flex anchor relative">
-		<h3 id="xfs-transmit-flow-steering">XFS - Transmit flow steering</h3>
-		<a href="https://blog.cloudflare.com/#xfs-transmit-flow-steering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Going back to our experiment, let's take a look at <code>/proc/interrupts</code>:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sKCppzLcJoJYKesDSMU0L/f3b25006d9b3b90e886abbef75a931f3/interrupts-client.png" alt="" class="kg-image" width="604" height="201" loading="lazy">
-
-	</figure>
-	<p>We can see the 27k interrupts corresponding to received packets on RX queue #1. But what about these 27k interrupts on RX queue #7? We surely disabled this RX queue with our RSS / indirection table setup.</p>
-	<p>It turns out these interrupts are caused by packet transmissions. As weird as it sounds, Linux has no way of figuring out what is the "correct" transmit queue to send packets on. To avoid packet reordering and to play safe by default, transmissions are distributed based on another flow hash. This pretty much guarantees that the transmissions will be done on a different CPU than the one running our application, therefore increasing the latency.</p>
-	<p>To ensure the transmissions are done on a local TX queue, Linux has a mechanism called <a href="http://patchwork.ozlabs.org/patch/62440" target="_blank" rel="noopener noreferrer">XFS</a>. To configure it we need to set a CPU mask for every TX queue. It's a bit more complex since we have 24 CPUs and only 11 TX queues:</p>
-	<pre class="language-.bash"><code class="language-.bash">XPS=("0 12" "1 13" "2 14" "3 15" "4 16" "5 17" "6 18" "7 19" "8 20" "9 21" "10 22 11 23");
-(let TX=0; for CPUS in "$XPS[@]"; do
-     let mask=0
-     for CPU in $CPUS; do let mask=$((mask | 1 &lt;&lt; $CPU)); done
-     printf %X $mask &gt; /sys/class/net/eth2/queues/tx-$TX/xps_cpus
-     let TX+=1
-done)</code></pre>
-	<p>With XPS enabled and the CPU affinity carefully managed (to keep the process on different core than RX interrupts) I was able to squeeze 28us:</p>
-	<pre class="language-.txt"><code class="language-.txt">pps= 27613 avg= 34.724us dev= 12.430us min=28.536us
-pps= 27845 avg= 34.435us dev= 12.050us min=28.379us
-pps= 27046 avg= 35.365us dev= 12.577us min=29.234us</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="rfs-receive-flow-steering">RFS - Receive flow steering</h3>
-		<a href="https://blog.cloudflare.com/#rfs-receive-flow-steering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While RSS solves the problem of balancing the load across many CPUs, it doesn't solve the problem of locality. In fact, the NIC has no understanding on which core the relevant application is waiting. This is where RFS kicks in.</p>
-	<p>RFS is a kernel technology that keeps the map of (flow_hash, CPU) for all ongoing flows. When a packet is received the kernel uses this map to quickly figure out to which CPU to direct the packet. Of course, if the application is rescheduled to another CPU the RFS will miss. If you use RFS, consider pinning the applications to specific cores.</p>
-	<p>To enable RFS on the client we run:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ echo 32768 &gt; /proc/sys/net/core/rps_sock_flow_entries
-client$ for RX in `seq 0 10`; do
-            echo 2048 &gt; /sys/class/net/eth2/queues/rx-$RX/rps_flow_cnt
-        done</code></pre>
-	<p>To debug use sixth column <code>softnet.sh</code> script:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2u1j3D0bQeNf0yzBYFMOND/935835dd360dd100212ae42861da1312/softnet-rfs.png" alt="" class="kg-image" width="510" height="200" loading="lazy">
-
-	</figure>
-	<p>I don't fully understand why, but enabling software RFS increases the latency by around 2us. On the other hand RFS is said to be effective in increasing throughput.</p>
-	<div class="flex anchor relative">
-		<h3 id="rfs-on-solarflare-nics">RFS on Solarflare NICs</h3>
-		<a href="https://blog.cloudflare.com/#rfs-on-solarflare-nics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The software implementation of RFS is not perfect, since the kernel still needs to pass packets between CPUs. Fortunately, this can be improved with hardware support - it's called an Accelerated RFS. With network card drivers supporting ARFS, the kernel shares the (flow_hash, CPU) mapping with the NIC allowing it to correctly steer packets in hardware.</p>
-	<p>On Solarflare NICs <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Performance_Tuning_Guide/network-acc-rfs.html" target="_blank" rel="noopener noreferrer">ARFS</a> is automatically enabled whenever RFS is enabled. This is visible in <code>/proc/interrupts</code>:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3TZoUo25i6N762Hrnku5ym/defa4d7988249069c6c4d3ff34f39ba4/interrupts-arfs.png" alt="" class="kg-image" width="603" height="150" loading="lazy">
-
-	</figure>
-	<p>Here, I pinned the client process to CPU #2. As you see both receives and transmissions are visible on the same CPU. If the process was rescheduled to another CPU, the interrupts would "follow" it.</p>
-	<p>RFS works on any "connected" socket, whether TCP or UDP. In our case it will work on our <code>udpclient</code>, since it uses <code>connect()</code>, but it won't work on our <code>udpserver</code> since it sends messages directly on the <code>bind()</code> socket.</p>
-	<div class="flex anchor relative">
-		<h3 id="rfs-on-intel-82599">RFS on Intel 82599</h3>
-		<a href="https://blog.cloudflare.com/#rfs-on-intel-82599" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Intel drivers don't support ARFS, but they have their own branding of this technology called "Flow Director". It's enabled by default, but the documentation is misleading and it won't work with <code>ntuple</code> routing enabled. To make it work run:</p>
-	<pre class="language-.bash"><code class="language-.bash">$ sudo ethtool -K eth3 ntuple off</code></pre>
-	<p>To debug its effectiveness look for <code>fdir_miss</code> and <code>fdir_match</code> in <code>ethtool</code> statistics:</p>
-	<pre class="language-.bash"><code class="language-.bash">$ sudo ethtool -S eth3|grep fdir
-     fdir_match: 7169438
-     fdir_miss: 128191066</code></pre>
-	<p>One more thing - Flow Director is implemented by the NIC driver, and is not integrated with the kernel. It has no way of truly knowing on which core the application actually lives. Instead, it takes a guess by looking at the transmitted packets every now and then. In fact it inspects every 20th (ATR setting) packet or <a href="https://github.com/majek/ixgbe/blob/master/src/ixgbe_main.c#L8568" target="_blank" rel="noopener noreferrer">all packets with a SYN flag set</a>. Furthermore, it <a href="http://arxiv.org/pdf/1106.0443.pdf" target="_blank" rel="noopener noreferrer">may introduce packet reordering</a> and <a href="http://sourceforge.net/p/e1000/mailman/message/27482089" target="_blank" rel="noopener noreferrer">doesn't support UDP</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="low-level-tweaks">Low level tweaks</h3>
-		<a href="https://blog.cloudflare.com/#low-level-tweaks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, our last resort in fighting the latency is to adjust a series of <a href="http://www.intel.com/content/dam/doc/application-note/82575-82576-82598-82599-ethernet-controllers-latency-appl-note.pdf" target="_blank" rel="noopener noreferrer">low level network card</a> settings. <a href="https://en.wikipedia.org/wiki/Interrupt_coalescing" target="_blank" rel="noopener noreferrer">Interrupt coalescing</a> is often used to reduce the number of interrupts fired by a network card, but as a result it adds some latency to the system. To disable interrupt coalescing:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ sudo ethtool -C eth2 rx-usecs 0
-server$ sudo ethtool -C eth3 rx-usecs 0</code></pre>
-	<p>This reduces the latency by another couple of microseconds:</p>
-	<pre class="language-.txt"><code class="language-.txt">pps= 31096 avg= 30.703us dev=  8.635us min=25.681us
-pps= 30809 avg= 30.991us dev=  9.065us min=25.833us
-pps= 30179 avg= 31.659us dev=  9.978us min=25.735us</code></pre>
-	<p>Further tuning gets more complex. People recommend turning off advanced features like <a href="https://lwn.net/Articles/358910" target="_blank" rel="noopener noreferrer">GRO</a> or <a href="https://lwn.net/Articles/243949" target="_blank" rel="noopener noreferrer">LRO</a>, but I don't think they make much difference for our UDP application. Disabling them should improve the latency for TCP streams, but will harm the throughput.</p>
-	<p>An even more extreme option is to disable <a href="https://www.myricom.com/software/myri10ge/432-how-do-i-achieve-the-lowest-possible-latency-with-myri10ge.html" target="_blank" rel="noopener noreferrer">C-sleep states</a> of the processor in BIOS.</p>
-	<div class="flex anchor relative">
-		<h3 id="hardware-timestamps-with-so_timestampns">Hardware timestamps with SO_TIMESTAMPNS</h3>
-		<a href="https://blog.cloudflare.com/#hardware-timestamps-with-so_timestampns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On Linux we can retrieve a packet hardware timestamp with a <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank" rel="noopener noreferrer"><code>SO_TIMESTAMPNS</code> socket option</a>. Comparing that value with the wall clock allows us to measure the delay added by the kernel network stack:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ taskset -c 1 ./udpclient 192.168.254.30:4321 --polling --timestamp
-pps=27564 avg=34.722us dev=14.836us min=26.828us packet=4.796us/1.622
-pps=29385 avg=32.504us dev=10.670us min=26.897us packet=4.274us/1.415
-pps=28679 avg=33.282us dev=12.249us min=26.106us packet=4.491us/1.440</code></pre>
-	<p>It takes the kernel between 4.3 and 5us to deliver a packet to our busy-polling application.</p>
-	<div class="flex anchor relative">
-		<h3 id="openonload-for-the-extreme">OpenOnload for the extreme</h3>
-		<a href="https://blog.cloudflare.com/#openonload-for-the-extreme" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since we have a Solarflare network card handy, we can use the <a href="http://www.openonload.org" target="_blank" rel="noopener noreferrer">OpenOnload</a> kernel bypass technology to skip the kernel network stack all together:</p>
-	<pre class="language-.bash"><code class="language-.bash">client$ onload ./udpclient 192.168.254.30:4321 --polling --timestamp
-pps=48881 avg=19.187us dev=1.401us min=17.660us packet=0.470us/0.457
-pps=49733 avg=18.804us dev=1.306us min=17.702us packet=0.487us/0.390
-pps=49735 avg=18.788us dev=1.220us min=17.654us packet=0.491us/0.466</code></pre>
-	<p>The latency reduction is one thing, but look at the deviation! OpenOnload reduces the time spent in packet delivery 10x, from 4.3us to 0.47us.</p>
-	<div class="flex anchor relative">
-		<h3 id="final-notes">Final notes</h3>
-		<a href="https://blog.cloudflare.com/#final-notes" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this article we discussed what network latency to expect between two Linux hosts connected with 10Gb Ethernet. Without major tweaks it is possible to get 40us round trip time, with software tweaks like busy polling or CPU affinity, this can be trimmed to 30us. Reducing by further a 5us is harder, but can be done with some <code>ethtool</code> toggles.</p>
-	<p>Generally speaking it takes the kernel around 8us to deliver a packet to an idling application, and only ~4us to a busy-polling process. In our configuration it took around 4us to physically pass the packet between two network cards via a switch.</p>
-	<p>Low latency settings like low <code>rx-usecs</code> or disabled <code>LRO</code> may reduce throughput and increase the number of interrupts. This means tweaking the system for low latency makes it more vulnerable to denial of service problems.</p>
-	<p>While we haven't discussed TCP specifically, we've covered ARFS and XFS, the techniques which increase data locality. Enabling them reduces cross-CPU chatter and is said to increase the throughput of TCP connections. In practice, for TCP the throughput is often way more important than latency.</p>
-	<p>For a general setup I would suggest having one TX queue for each CPU, enabling XFS and RFS/ARFS. To dispatch incoming packets effectively I recommend setting the RSS indirection table to skip CPU #0 and all the fake HT cores. To increase locality for RFS I recommend pinning applications to dedicated CPUs.</p>
-	<p><i>Interested in this sort of low-level, high-performance packet wrangling? CloudFlare is </i><a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer"><i>hiring</i></a><i> in London, San Francisco and Singapore</i>.</p>
+<p>Good morning!</p>
+<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">a recent blog post</a> we explained how to tweak a simple UDP application to maximize throughput. This time we are going to optimize our UDP application for <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">latency</a>. Fighting with latency is a great excuse to discuss modern features of multiqueue NICs. Some of the techniques covered here are also discussed in the <a href="https://www.kernel.org/doc/Documentation/networking/scaling.txt" target="_blank" rel="noopener noreferrer">scaling.txt kernel document</a>.</p>
+<p>CC BY-SA 2.0 <a href="https://www.flickr.com/photos/hktang/4243300265" target="_blank" rel="noopener noreferrer">image</a> by Xiaojun Deng</p>
+<p>Our experiment will be setup up as follows:</p>
+<ul>
+	<li>We will have two physical Linux hosts: the 'client' and the 'server'. They communicate with a simple UDP echo protocol.</li>
+	<li>Client sends a small UDP frame (32 bytes of payload) and waits for the reply, measuring the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round trip time (RTT)</a>. Server echoes back the packets immediately after they are received.</li>
+	<li>Both hosts have 2GHz Xeon CPU's, with two sockets of 6 cores and Hyper Threading (HT) enabled - so 24 CPUs per host.</li>
+	<li>The client has a Solarflare 10Gb NIC, the server has an Intel 82599 10Gb NIC. Both cards have fiber connected to a 10Gb switch.</li>
+	<li>We're going to measure the round trip time. Since the numbers are pretty small, there is a lot of jitter when counting the averages. Instead, it makes more sense to take a stable value - the lowest RTT from many runs done over one second.</li>
+	<li>As usual, code used here is available on GitHub: <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/udpclient.c" target="_blank" rel="noopener noreferrer"><code>udpclient.c</code></a>, <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/udpserver.c" target="_blank" rel="noopener noreferrer"><code>udpserver.c</code></a>.</li>
+</ul>
+<h3>Prerequisites</h3>
+<p>First, let's explicitly assign the IP addresses:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ ip addr add 192.168.254.1/24 dev eth2</span></span>
+<span class="line"><span>server$ ip addr add 192.168.254.30/24 dev eth3</span></span></code></pre>
 </div>
+<p>Make sure <code>iptables</code> and <code>conntrack</code> don't interfere with our traffic:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ iptables -I INPUT 1 --src 192.168.254.0/24 -j ACCEPT</span></span>
+<span class="line"><span>client$ iptables -t raw -I PREROUTING 1 --src 192.168.254.0/24 -j NOTRACK</span></span>
+<span class="line"><span>server$ iptables -I INPUT 1 --src 192.168.254.0/24 -j ACCEPT</span></span>
+<span class="line"><span>server$ iptables -t raw -I PREROUTING 1 --src 192.168.254.0/24 -j NOTRACK</span></span></code></pre>
+</div>
+<p>Finally, ensure the interrupts of multiqueue network cards are evenly distributed between CPUs. The <code>irqbalance</code> service is stopped and the interrupts are manually assigned. For simplicity let's pin the RX queue #0 to CPU #0, RX queue #1 to CPU #1 and so on.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ (let CPU=0; cd /sys/class/net/eth2/device/msi_irqs/;</span></span>
+<span class="line"><span>         for IRQ in *; do</span></span>
+<span class="line"><span>            echo $CPU &gt; /proc/irq/$IRQ/smp_affinity_list</span></span>
+<span class="line"><span>            let CPU+=1</span></span>
+<span class="line"><span>         done)</span></span>
+<span class="line"><span>server$ (let CPU=0; cd /sys/class/net/eth3/device/msi_irqs/;</span></span>
+<span class="line"><span>         for IRQ in *; do</span></span>
+<span class="line"><span>            echo $CPU &gt; /proc/irq/$IRQ/smp_affinity_list</span></span>
+<span class="line"><span>            let CPU+=1</span></span>
+<span class="line"><span>         done)</span></span></code></pre>
+</div>
+<p>These scripts assign the interrupts fired by each RX queue to a selected CPU. Finally, some network cards have <a href="https://en.wikipedia.org/wiki/Ethernet_flow_control" target="_blank" rel="noopener noreferrer">Ethernet flow control</a> enabled by default. In our experiment we won't push too many packets, so it shouldn't matter. In any case - it's unlikely the average user actually wants flow control - it can introduce unpredictable latency spikes during higher load:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ sudo ethtool -A eth2 autoneg off rx off tx off</span></span>
+<span class="line"><span>server$ sudo ethtool -A eth3 autoneg off rx off tx off</span></span></code></pre>
+</div>
+<h3>Naive round trip</h3>
+<p>Here's the sketch of our client code. Nothing too fancy: send a packet and measure the time until we hear the response.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>fd = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span></span>
+<span class="line"><span>fd.bind(("0.0.0.0", 65400)) # pin source port to reduce nondeterminism</span></span>
+<span class="line"><span>fd.connect(("192.168.254.30", 4321))</span></span>
+<span class="line"><span>while True:</span></span>
+<span class="line"><span>    t1 = time.time()</span></span>
+<span class="line"><span>    fd.sendmsg("\x00" * 32)</span></span>
+<span class="line"><span>    fd.readmsg()</span></span>
+<span class="line"><span>    t2 = time.time()</span></span>
+<span class="line"><span>    print "rtt=%.3fus" % ((t2-t1) * 1000000)</span></span></code></pre>
+</div>
+<p>The server is similarly uncomplicated. It waits for packets and echoes them back to the source:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>fd = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span></span>
+<span class="line"><span>fd.bind(("0.0.0.0", 4321))</span></span>
+<span class="line"><span>while True:</span></span>
+<span class="line"><span>    data, client_addr = fd.recvmsg()</span></span>
+<span class="line"><span>    fd.sendmsg(data, client_addr)</span></span></code></pre>
+</div>
+<p>Let's run them:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>server$ ./udpserver</span></span>
+<span class="line"><span>client$ ./udpclient 192.168.254.30:4321</span></span>
+<span class="line"><span>[*] Sending to 192.168.254.30:4321, src_port=65500</span></span>
+<span class="line"><span>pps= 16815 avg= 57.224us dev= 24.970us min=45.594us</span></span>
+<span class="line"><span>pps= 15910 avg= 60.170us dev= 28.810us min=45.679us</span></span>
+<span class="line"><span>pps= 15463 avg= 61.892us dev= 33.332us min=44.881us</span></span></code></pre>
+</div>
+<p>In the naive run we're able to do around 15k round trips a second, with an average RTT of 60 microseconds (us) and minimal 44us. The standard deviation is pretty scary and suggests high jitter.</p>
+<h3>Kernel polling - SO_BUSY_POLL</h3>
+<p>Linux 3.11 added support for the <a href="http://www.intel.com/content/dam/www/public/us/en/documents/white-papers/open-source-kernel-enhancements-paper.pdf" target="_blank" rel="noopener noreferrer"><code>SO_BUSY_POLL</code> socket option</a>. The idea is to ask the kernel to poll for incoming packets for <a href="http://man7.org/linux/man-pages/man7/socket.7.html" target="_blank" rel="noopener noreferrer">a given amount of time</a>. This, of course, increases the CPU usage on the machine, but will reduce the latency. The benefit comes from avoiding the major context switch when a packet is received. In our experiment enabling <code>SO_BUSY_POLL</code> brings the min latency down by 7us:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>server$ sudo ./udpserver  --busy-poll=50</span></span>
+<span class="line"><span>client$ sudo ./udpclient 192.168.254.30:4321 --busy-poll=50</span></span>
+<span class="line"><span>pps= 19440 avg= 49.886us dev= 16.405us min=36.588us</span></span>
+<span class="line"><span>pps= 19316 avg= 50.224us dev= 15.764us min=37.283us</span></span>
+<span class="line"><span>pps= 19024 avg= 50.960us dev= 18.570us min=37.116us</span></span></code></pre>
+</div>
+<p>While I'm not thrilled by these numbers, there may be some valid use cases for <code>SO_BUSY_POLL</code>. To my understanding, as opposed to other approaches, it works well with interrupt coalescing (<code>rx-usecs</code>).</p>
+<h3>Userspace busy polling</h3>
+<p>Instead of doing polling in the kernel with <code>SO_BUSY_POLL</code>, we can just do it in the application. Let's avoid blocking on <code>recvmsg</code> and run a non-blocking variant in a busy loop. The server pseudo code will look like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>while True:</span></span>
+<span class="line"><span>    while True:</span></span>
+<span class="line"><span>        data, client_addr = fd.recvmsg(MSG_DONTWAIT)</span></span>
+<span class="line"><span>        if data:</span></span>
+<span class="line"><span>            break</span></span>
+<span class="line"><span>    fd.sendmsg(data, client_addr)</span></span></code></pre>
+</div>
+<p>This approach is surprisingly effective:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>server$ ./udpserver  --polling</span></span>
+<span class="line"><span>client$ ./udpclient 192.168.254.30:4321 --polling</span></span>
+<span class="line"><span>pps= 25812 avg= 37.426us dev= 11.865us min=31.837us</span></span>
+<span class="line"><span>pps= 23877 avg= 40.399us dev= 14.665us min=31.832us</span></span>
+<span class="line"><span>pps= 24746 avg= 39.086us dev= 14.041us min=32.540us</span></span></code></pre>
+</div>
+<p>Not only has the min time dropped by further 4us, but also the average and deviation look healthier.</p>
+<h3>Pin processes</h3>
+<p>So far we allowed the Linux scheduler to allocate CPU for our busy polling applications. Some of the jitter came from the processes being moved around. Let's try pinning them to specific cores:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>server$ taskset -c 3 ./udpserver --polling</span></span>
+<span class="line"><span>client$ taskset -c 3 ./udpclient 192.168.254.30:4321 --polling</span></span>
+<span class="line"><span>pps= 26824 avg= 35.879us dev= 11.450us min=30.060us</span></span>
+<span class="line"><span>pps= 26424 avg= 36.464us dev= 12.463us min=30.090us</span></span>
+<span class="line"><span>pps= 26604 avg= 36.149us dev= 11.321us min=30.421us</span></span></code></pre>
+</div>
+<p>This shaved off further 1us. Unfortunately running our applications on a "bad" CPU might actually degrade the numbers. To understand why we need to revisit how the packets are being dispatched across RX queues.</p>
+<h3>RSS - Receive Side Scaling</h3>
+<p>In <a href="https://blog.cloudflare.com/how-to-receive-a-million-packets">the previous article</a> we mentioned that the NIC hashes packets in order to spread the load across many RX queues. This technique is called RSS - Receive Side Scaling. We can see it in action by observing the <code>/proc/net/softnet_stat</code> file with <a href="https://github.com/majek/dump/blob/master/how-to-receive-a-packet/softnet.sh" target="_blank" rel="noopener noreferrer">the softnet.sh script</a>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="215" height="213" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QDCXQABN1A90ZP8XV2HS.png&amp;w=215&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QDCXQABN1A90ZP8XV2HS.png&amp;w=215&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 215w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QDCXQABN1A90ZP8XV2HS.png&amp;w=430&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 430w" alt="How to achieve low latency with 10Gbps Ethernet Embedded Image - RzUROa" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QDCXQABN1A90ZP8XV2HS.png&amp;w=215&amp;h=213&amp;f=webp" data-lightbox-width="215" data-lightbox-height="213" data-astro-cid-7nvefuv6="true" sizes="(min-width: 215px) 215px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="215" height="213" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This makes sense - since we send only one flow (connection) from the <code>udpclient</code>, all the packets hit the same RX queue. In this case it is RX queue #1, which is bound to CPU #1. Indeed, when we run the client on that very CPU the latency goes up by around 2us:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ taskset -c 1 ./udpclient 192.168.254.30:4321  --polling</span></span>
+<span class="line"><span>pps= 25517 avg= 37.615us dev= 12.551us min=31.709us</span></span>
+<span class="line"><span>pps= 25425 avg= 37.787us dev= 12.090us min=32.119us</span></span>
+<span class="line"><span>pps= 25279 avg= 38.041us dev= 12.565us min=32.235us</span></span></code></pre>
+</div>
+<p>Turns out that keeping the process on the same core as arriving interrupts slightly degrades the latency. But how can the process know if it's running on the offending CPU?</p>
+<p>One way is for the application to query the kernel. Kernel 3.19 introduced <a href="https://lwn.net/Articles/619862" target="_blank" rel="noopener noreferrer"><code>SO_INCOMING_CPU</code></a> socket option. With that the process can figure out to which CPU the packet was originally delivered.</p>
+<p>An alternative approach is to ensure the packets will be dispatched only to the CPUs we want. We can do that by adjusting NIC settings with <code>ethtool</code>.</p>
+<h3>Indirection Table</h3>
+<p>RSS is intended to distribute the load across RX queues. In our case, a UDP flow, the RX queue is chosen by this formula:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>RX_queue = INDIR[hash(src_ip, dst_ip) % 128]</span></span></code></pre>
+</div>
+<p>As discussed previously, the hash function for UDP flows is not configurable on Solarflare NICs. Fortunately the <code>INDIR</code> table is!</p>
+<p>But what is <code>INDIR</code> anyway? Well, it's an indirection table that maps the least significant bits of a hash to an RX queue number. To view the indirection table run <code>ethtool -x</code>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="443" height="294" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4882RFTB524BC7VXC7PSZE.png&amp;w=443&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4882RFTB524BC7VXC7PSZE.png&amp;w=443&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 443w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4882RFTB524BC7VXC7PSZE.png&amp;w=640&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4882RFTB524BC7VXC7PSZE.png&amp;w=750&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4882RFTB524BC7VXC7PSZE.png&amp;w=828&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4882RFTB524BC7VXC7PSZE.png&amp;w=886&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 886w" alt="How to achieve low latency with 10Gbps Ethernet Embedded Image - 0i1yZ5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4882RFTB524BC7VXC7PSZE.png&amp;w=443&amp;h=294&amp;f=webp" data-lightbox-width="443" data-lightbox-height="294" data-astro-cid-7nvefuv6="true" sizes="(min-width: 443px) 443px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="443" height="294" class="pt-portable-image-media"></div>
+</figure>
+<p>This reads as: packets with hash equal to, say, 72 will go to RX queue #6, hash of 126 will go to RX queue #5, and so on.</p>
+<p>This table can be configured. For example, to make sure all traffic goes only to CPUs #0-#5 (the first NUMA node in our setup), we run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ sudo ethtool -X eth2 weight 1 1 1 1 1 1 0 0 0 0 0</span></span>
+<span class="line"><span>server$ sudo ethtool -X eth3 weight 1 1 1 1 1 1 0 0 0 0 0</span></span></code></pre>
+</div>
+<p>The adjusted indirection table:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="437" height="292" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VA9SF9XMM3W85493VEZ0.png&amp;w=437&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VA9SF9XMM3W85493VEZ0.png&amp;w=437&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 437w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VA9SF9XMM3W85493VEZ0.png&amp;w=640&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VA9SF9XMM3W85493VEZ0.png&amp;w=750&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VA9SF9XMM3W85493VEZ0.png&amp;w=828&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VA9SF9XMM3W85493VEZ0.png&amp;w=874&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 874w" alt="How to achieve low latency with 10Gbps Ethernet Embedded Image - ZczWnT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VA9SF9XMM3W85493VEZ0.png&amp;w=437&amp;h=292&amp;f=webp" data-lightbox-width="437" data-lightbox-height="292" data-astro-cid-7nvefuv6="true" sizes="(min-width: 437px) 437px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="437" height="292" class="pt-portable-image-media"></div>
+</figure>
+<p>With that set up our latency numbers don't change much, but at least we are sure the packets will always hit only the CPUs on the first NUMA node. The lack of NUMA locality usually costs around 2us.</p>
+<p>I should mention that Intel 82599 supports adjusting the RSS hash function for UDP flows, but the driver does not support indirection table manipulation. To get it running I <a href="https://github.com/majek/ixgbe/commit/336d556cbada2974700f4d809b54ce472d11709d" target="_blank" rel="noopener noreferrer">used this patch</a>.</p>
+<h3>Flow steering</h3>
+<p>There is also another way to ensure packets hit specific CPU: flow steering rules. Flow steering rules are used to specify exceptions on top of the indirection table. They tell the NIC to send specific flow to specific RX queue. For example, in our case, this is how we could pin our flows to RX queue #1 on both the server and the client:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ sudo ethtool -N eth2 flow-type udp4 dst-ip 192.168.254.1 dst-port 65500 action 1</span></span>
+<span class="line"><span>Added rule with ID 12401</span></span>
+<span class="line"><span>server$ sudo ethtool -N eth3 flow-type udp4 dst-port 4321 action 1</span></span>
+<span class="line"><span>Added rule with ID 2045</span></span></code></pre>
+</div>
+<p>Flow steering can be used for more magical things. For example we can ask the NIC to drop selected traffic by specifying <code>action -1</code>. This is very useful during DDoS packet floods and is often a feasible alternative to dropping packets on a router firewall.</p>
+<p>Some administrators also use flow steering to make sure things like <a href="https://www.cloudflare.com/learning/access-management/what-is-ssh" target="_blank" rel="noopener noreferrer">SSH</a> or BGP continue working even during <a href="https://en.wikipedia.org/wiki/Interrupt_storm" target="_blank" rel="noopener noreferrer">high server load</a>. It can be achieved by manipulating the indirection table to move production traffic off, say, RX queue #0 and CPU #0. On top of that they explicitly forward packets going to destination port 22 or 179 to always hit only CPU #0 with flow steering rules. With that setup no matter how big the network load on the server, the SSH and <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">BGP</a> will keep on working since they hit a dedicated CPU and an RX queue.</p>
+<h3>XFS - Transmit flow steering</h3>
+<p>Going back to our experiment, let's take a look at <code>/proc/interrupts</code>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="604" height="201" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=604&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=604&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center 604w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=640&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=750&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=828&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=1080&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=1208&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 1208w" alt="How to achieve low latency with 10Gbps Ethernet Embedded Image - ssr1aa" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KXCAD5A37MD63BBEQ789.png&amp;w=604&amp;h=201&amp;f=webp" data-lightbox-width="604" data-lightbox-height="201" data-astro-cid-7nvefuv6="true" sizes="(min-width: 604px) 604px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="604" height="201" class="pt-portable-image-media"></div>
+</figure>
+<p>We can see the 27k interrupts corresponding to received packets on RX queue #1. But what about these 27k interrupts on RX queue #7? We surely disabled this RX queue with our RSS / indirection table setup.</p>
+<p>It turns out these interrupts are caused by packet transmissions. As weird as it sounds, Linux has no way of figuring out what is the "correct" transmit queue to send packets on. To avoid packet reordering and to play safe by default, transmissions are distributed based on another flow hash. This pretty much guarantees that the transmissions will be done on a different CPU than the one running our application, therefore increasing the latency.</p>
+<p>To ensure the transmissions are done on a local TX queue, Linux has a mechanism called <a href="http://patchwork.ozlabs.org/patch/62440" target="_blank" rel="noopener noreferrer">XFS</a>. To configure it we need to set a CPU mask for every TX queue. It's a bit more complex since we have 24 CPUs and only 11 TX queues:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>XPS=("0 12" "1 13" "2 14" "3 15" "4 16" "5 17" "6 18" "7 19" "8 20" "9 21" "10 22 11 23");</span></span>
+<span class="line"><span>(let TX=0; for CPUS in "$XPS[@]"; do</span></span>
+<span class="line"><span>     let mask=0</span></span>
+<span class="line"><span>     for CPU in $CPUS; do let mask=$((mask | 1 &lt;&lt; $CPU)); done</span></span>
+<span class="line"><span>     printf %X $mask &gt; /sys/class/net/eth2/queues/tx-$TX/xps_cpus</span></span>
+<span class="line"><span>     let TX+=1</span></span>
+<span class="line"><span>done)</span></span></code></pre>
+</div>
+<p>With XPS enabled and the CPU affinity carefully managed (to keep the process on different core than RX interrupts) I was able to squeeze 28us:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>pps= 27613 avg= 34.724us dev= 12.430us min=28.536us</span></span>
+<span class="line"><span>pps= 27845 avg= 34.435us dev= 12.050us min=28.379us</span></span>
+<span class="line"><span>pps= 27046 avg= 35.365us dev= 12.577us min=29.234us</span></span></code></pre>
+</div>
+<h3>RFS - Receive flow steering</h3>
+<p>While RSS solves the problem of balancing the load across many CPUs, it doesn't solve the problem of locality. In fact, the NIC has no understanding on which core the relevant application is waiting. This is where RFS kicks in.</p>
+<p>RFS is a kernel technology that keeps the map of (flow_hash, CPU) for all ongoing flows. When a packet is received the kernel uses this map to quickly figure out to which CPU to direct the packet. Of course, if the application is rescheduled to another CPU the RFS will miss. If you use RFS, consider pinning the applications to specific cores.</p>
+<p>To enable RFS on the client we run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ echo 32768 &gt; /proc/sys/net/core/rps_sock_flow_entries</span></span>
+<span class="line"><span>client$ for RX in `seq 0 10`; do</span></span>
+<span class="line"><span>            echo 2048 &gt; /sys/class/net/eth2/queues/rx-$RX/rps_flow_cnt</span></span>
+<span class="line"><span>        done</span></span></code></pre>
+</div>
+<p>To debug use sixth column <code>softnet.sh</code> script:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="510" height="200" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MH2CP06RB4D1AMD3BY3C.png&amp;w=510&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MH2CP06RB4D1AMD3BY3C.png&amp;w=510&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 510w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MH2CP06RB4D1AMD3BY3C.png&amp;w=640&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MH2CP06RB4D1AMD3BY3C.png&amp;w=750&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MH2CP06RB4D1AMD3BY3C.png&amp;w=828&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MH2CP06RB4D1AMD3BY3C.png&amp;w=1020&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 1020w" alt="How to achieve low latency with 10Gbps Ethernet Embedded Image - 37GNcJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MH2CP06RB4D1AMD3BY3C.png&amp;w=510&amp;h=200&amp;f=webp" data-lightbox-width="510" data-lightbox-height="200" data-astro-cid-7nvefuv6="true" sizes="(min-width: 510px) 510px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="510" height="200" class="pt-portable-image-media"></div>
+</figure>
+<p>I don't fully understand why, but enabling software RFS increases the latency by around 2us. On the other hand RFS is said to be effective in increasing throughput.</p>
+<h3>RFS on Solarflare NICs</h3>
+<p>The software implementation of RFS is not perfect, since the kernel still needs to pass packets between CPUs. Fortunately, this can be improved with hardware support - it's called an Accelerated RFS. With network card drivers supporting ARFS, the kernel shares the (flow_hash, CPU) mapping with the NIC allowing it to correctly steer packets in hardware.</p>
+<p>On Solarflare NICs <a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Performance_Tuning_Guide/network-acc-rfs.html" target="_blank" rel="noopener noreferrer">ARFS</a> is automatically enabled whenever RFS is enabled. This is visible in <code>/proc/interrupts</code>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="603" height="150" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=603&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=603&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center 603w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=640&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=750&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=828&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=1080&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=1206&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 1206w" alt="How to achieve low latency with 10Gbps Ethernet Embedded Image - hUJpl2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW461Y3VYVRRMYH4NYKKZ74P.png&amp;w=603&amp;h=150&amp;f=webp" data-lightbox-width="603" data-lightbox-height="150" data-astro-cid-7nvefuv6="true" sizes="(min-width: 603px) 603px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="603" height="150" class="pt-portable-image-media"></div>
+</figure>
+<p>Here, I pinned the client process to CPU #2. As you see both receives and transmissions are visible on the same CPU. If the process was rescheduled to another CPU, the interrupts would "follow" it.</p>
+<p>RFS works on any "connected" socket, whether TCP or UDP. In our case it will work on our <code>udpclient</code>, since it uses <code>connect()</code>, but it won't work on our <code>udpserver</code> since it sends messages directly on the <code>bind()</code> socket.</p>
+<h3>RFS on Intel 82599</h3>
+<p>Intel drivers don't support ARFS, but they have their own branding of this technology called "Flow Director". It's enabled by default, but the documentation is misleading and it won't work with <code>ntuple</code> routing enabled. To make it work run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo ethtool -K eth3 ntuple off</span></span></code></pre>
+</div>
+<p>To debug its effectiveness look for <code>fdir_miss</code> and <code>fdir_match</code> in <code>ethtool</code> statistics:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ sudo ethtool -S eth3|grep fdir</span></span>
+<span class="line"><span>     fdir_match: 7169438</span></span>
+<span class="line"><span>     fdir_miss: 128191066</span></span></code></pre>
+</div>
+<p>One more thing - Flow Director is implemented by the NIC driver, and is not integrated with the kernel. It has no way of truly knowing on which core the application actually lives. Instead, it takes a guess by looking at the transmitted packets every now and then. In fact it inspects every 20th (ATR setting) packet or <a href="https://github.com/majek/ixgbe/blob/master/src/ixgbe_main.c#L8568" target="_blank" rel="noopener noreferrer">all packets with a SYN flag set</a>. Furthermore, it <a href="http://arxiv.org/pdf/1106.0443.pdf" target="_blank" rel="noopener noreferrer">may introduce packet reordering</a> and <a href="http://sourceforge.net/p/e1000/mailman/message/27482089" target="_blank" rel="noopener noreferrer">doesn't support UDP</a>.</p>
+<h3>Low level tweaks</h3>
+<p>Finally, our last resort in fighting the latency is to adjust a series of <a href="http://www.intel.com/content/dam/doc/application-note/82575-82576-82598-82599-ethernet-controllers-latency-appl-note.pdf" target="_blank" rel="noopener noreferrer">low level network card</a> settings. <a href="https://en.wikipedia.org/wiki/Interrupt_coalescing" target="_blank" rel="noopener noreferrer">Interrupt coalescing</a> is often used to reduce the number of interrupts fired by a network card, but as a result it adds some latency to the system. To disable interrupt coalescing:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ sudo ethtool -C eth2 rx-usecs 0</span></span>
+<span class="line"><span>server$ sudo ethtool -C eth3 rx-usecs 0</span></span></code></pre>
+</div>
+<p>This reduces the latency by another couple of microseconds:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>pps= 31096 avg= 30.703us dev=  8.635us min=25.681us</span></span>
+<span class="line"><span>pps= 30809 avg= 30.991us dev=  9.065us min=25.833us</span></span>
+<span class="line"><span>pps= 30179 avg= 31.659us dev=  9.978us min=25.735us</span></span></code></pre>
+</div>
+<p>Further tuning gets more complex. People recommend turning off advanced features like <a href="https://lwn.net/Articles/358910" target="_blank" rel="noopener noreferrer">GRO</a> or <a href="https://lwn.net/Articles/243949" target="_blank" rel="noopener noreferrer">LRO</a>, but I don't think they make much difference for our UDP application. Disabling them should improve the latency for TCP streams, but will harm the throughput.</p>
+<p>An even more extreme option is to disable <a href="https://www.myricom.com/software/myri10ge/432-how-do-i-achieve-the-lowest-possible-latency-with-myri10ge.html" target="_blank" rel="noopener noreferrer">C-sleep states</a> of the processor in BIOS.</p>
+<h3>Hardware timestamps with SO_TIMESTAMPNS</h3>
+<p>On Linux we can retrieve a packet hardware timestamp with a <a href="https://www.kernel.org/doc/Documentation/networking/timestamping.txt" target="_blank" rel="noopener noreferrer"><code>SO_TIMESTAMPNS</code> socket option</a>. Comparing that value with the wall clock allows us to measure the delay added by the kernel network stack:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ taskset -c 1 ./udpclient 192.168.254.30:4321 --polling --timestamp</span></span>
+<span class="line"><span>pps=27564 avg=34.722us dev=14.836us min=26.828us packet=4.796us/1.622</span></span>
+<span class="line"><span>pps=29385 avg=32.504us dev=10.670us min=26.897us packet=4.274us/1.415</span></span>
+<span class="line"><span>pps=28679 avg=33.282us dev=12.249us min=26.106us packet=4.491us/1.440</span></span></code></pre>
+</div>
+<p>It takes the kernel between 4.3 and 5us to deliver a packet to our busy-polling application.</p>
+<h3>OpenOnload for the extreme</h3>
+<p>Since we have a Solarflare network card handy, we can use the <a href="http://www.openonload.org" target="_blank" rel="noopener noreferrer">OpenOnload</a> kernel bypass technology to skip the kernel network stack all together:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>client$ onload ./udpclient 192.168.254.30:4321 --polling --timestamp</span></span>
+<span class="line"><span>pps=48881 avg=19.187us dev=1.401us min=17.660us packet=0.470us/0.457</span></span>
+<span class="line"><span>pps=49733 avg=18.804us dev=1.306us min=17.702us packet=0.487us/0.390</span></span>
+<span class="line"><span>pps=49735 avg=18.788us dev=1.220us min=17.654us packet=0.491us/0.466</span></span></code></pre>
+</div>
+<p>The latency reduction is one thing, but look at the deviation! OpenOnload reduces the time spent in packet delivery 10x, from 4.3us to 0.47us.</p>
+<h3>Final notes</h3>
+<p>In this article we discussed what network latency to expect between two Linux hosts connected with 10Gb Ethernet. Without major tweaks it is possible to get 40us round trip time, with software tweaks like busy polling or CPU affinity, this can be trimmed to 30us. Reducing by further a 5us is harder, but can be done with some <code>ethtool</code> toggles.</p>
+<p>Generally speaking it takes the kernel around 8us to deliver a packet to an idling application, and only ~4us to a busy-polling process. In our configuration it took around 4us to physically pass the packet between two network cards via a switch.</p>
+<p>Low latency settings like low <code>rx-usecs</code> or disabled <code>LRO</code> may reduce throughput and increase the number of interrupts. This means tweaking the system for low latency makes it more vulnerable to denial of service problems.</p>
+<p>While we haven't discussed TCP specifically, we've covered ARFS and XFS, the techniques which increase data locality. Enabling them reduces cross-CPU chatter and is said to increase the throughput of TCP connections. In practice, for TCP the throughput is often way more important than latency.</p>
+<p>For a general setup I would suggest having one TX queue for each CPU, enabling XFS and RFS/ARFS. To dispatch incoming packets effectively I recommend setting the RSS indirection table to skip CPU #0 and all the fake HT cores. To increase locality for RFS I recommend pinning applications to dedicated CPUs.</p>
+<p><em>Interested in this sort of low-level, high-performance packet wrangling? CloudFlare is <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">hiring</a> in London, San Francisco and Singapore</em>.</p>

@@ -1,176 +1,129 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/52eWtOy0Q8BkS4fQzHVXJZ/1549609e53a7f9cbe4d555ac982726db/subdomains-vs-subdirectories-improved-seo-part-2.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<div class="flex anchor relative">
-		<h4 id="recap">Recap</h4>
-		<a href="https://blog.cloudflare.com/#recap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In Part 1, the merits and tradeoffs of <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1"><i>subdirectories and subdomains</i></a> were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <i>keyword</i> and <i>backlink dilution</i>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
-	<div class="flex anchor relative">
-		<h4 id="subdirectory-strategy-without-the-nginx">Subdirectory Strategy without the NGINX</h4>
-		<a href="https://blog.cloudflare.com/#subdirectory-strategy-without-the-nginx" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the first part, our friend Bob set up a hosted Ghost blog at <i>bobtopia.coolghosthost.com</i> that he connected to <i>blog.bobtopia.com</i> using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <i>bobtopia.com/blog</i> to gain the SEO advantages of subdirectories?</p>
-	<p>A reverse proxy like NGINX is normally needed to route traffic from subdirectories to remotely hosted services. &nbsp;We'll demonstrate how to implement the subdirectory strategy with Cloudflare Workers and eliminate our dependency on NGINX. (Cloudflare Workers are <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">serverless</a> functions that run on the Cloudflare global network.)</p>
-	<div class="flex anchor relative">
-		<h4 id="back-to-bobtopia">Back to Bobtopia</h4>
-		<a href="https://blog.cloudflare.com/#back-to-bobtopia" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let's write a Worker that proxies traffic from a subdirectory – <i>bobtopia.com/blog –</i> to a remotely hosted platform – <i>bobtopia.coolghosthost.com</i>. &nbsp;This means that if I go to <i>bobtopia.com/blog</i>, I should see the content of <i>bobtopia.coolghosthost.com,</i> but my browser should still think it's on <i>bobtopia.com</i>.</p>
-	<div class="flex anchor relative">
-		<h4 id="configuration-options">Configuration Options</h4>
-		<a href="https://blog.cloudflare.com/#configuration-options" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the <a href="https://dash.cloudflare.com/?zone=workers" target="_blank" rel="noopener noreferrer">Workers</a> editor, we'll start a new script with some basic configuration options.</p>
-	<pre class="language-bash"><code class="language-bash">// keep track of all our blog endpoints here
-const myBlog = {
-  hostname: "bobtopia.coolghosthost.com",
-  targetSubdirectory: "/articles",
-  assetsPathnames: ["/public/", "/assets/"]
-}</code></pre>
-	<p>The script will proxy traffic from <code>myBlog.targetSubdirectory</code> to Bob's hosted Ghost endpoint, <code>myBlog.hostname</code>. &nbsp;We'll talk about <code>myBlog.assetsPathnames</code> a little later.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4euHWaCm0YKJDnMpWIsFy9/90cb71bf33f1637863413a04af86f5e4/Screen-Shot-2019-01-27-at-2.47.39-PM.png" alt="" class="kg-image" width="2000" height="645" loading="lazy">
-
-	</figure>
-	<p>Requests are proxied from bobtopia.com/articles to bobtopia.coolghosthost.com (Uh oh... is because the hosted Ghost blog doesn't actually exist)</p>
-	<div class="flex anchor relative">
-		<h4 id="request-handlers">Request Handlers</h4>
-		<a href="https://blog.cloudflare.com/#request-handlers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Next, we'll add a request handler:</p>
-	<pre class="language-bash"><code class="language-bash">async function handleRequest(request) {
-  return fetch(request)
-}
-
-addEventListener("fetch", event =&gt; {
-  event.respondWith(handleRequest(event.request))
-})</code></pre>
-	<p>So far we're just passing requests through <code>handleRequest</code> unmodified. &nbsp;Let's make it do something:</p>
-	<pre class="language-bash"><code class="language-bash">
-async function handleRequest(request) { 
-  ...
-
-  // if the request is for blog html, get it
-  if (requestMatches(myBlog.targetSubdirectory)) {
-    console.log("this is a request for a blog document", parsedUrl.pathname)
-    const targetPath = formatPath(parsedUrl)
-    
-    return fetch(`https://${myBlog.hostname}/${targetPath}`)
-  }
-
-  ...
-  
-  console.log("this is a request to my root domain", parsedUrl.pathname)
-  // if its not a request blog related stuff, do nothing
-  return fetch(request)
-}
-
-addEventListener("fetch", event =&gt; {
-  event.respondWith(handleRequest(event.request))
-})</code></pre>
-	<p>In the above code, we added a conditional statement to handle traffic to <code>myBlog.targetSubdirectory</code>. &nbsp;Note that we've omitted our helper functions here. &nbsp;The relevant code lives inside the <code>if</code> block near the top of the function. The <code>requestMatches</code> helper checks if the incoming request contains <code>targetSubdirectory</code>. &nbsp;If it does, a request is made to <code>myBlog.hostname</code> to fetch the HTML document which is returned to the browser.</p>
-	<p>When the browser parses the HTML, it makes additional asset requests required by the document (think images, stylesheets, and scripts). &nbsp;We'll need another conditional statement to handle these kinds of requests.</p>
-	<pre class="language-bash"><code class="language-bash">// if its blog assets, get them
-if ([myBlog.assetsPathnames].some(requestMatches)) {
-    console.log("this is a request for blog assets", parsedUrl.pathname)
-    const assetUrl = request.url.replace(parsedUrl.hostname, myBlog.hostname);
-
-    return fetch(assetUrl)
-  }</code></pre>
-	<p>This similarly shaped block checks if the request matches any pathnames enumerated in <code>myBlog.assetPathnames</code> and fetches the assets required to fully render the page. &nbsp;Assets happen to live in <i>/public</i> and <i>/assets</i> on a Ghost blog. &nbsp;You'll be able to identify your assets directories when you <code>fetch</code> the HTML and see logs for scripts, images, and stylesheets.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/333FXL8DTk3xbnNH3CDM2G/9818beae76d36f64663d71a99e41fcb1/Screen-Shot-2019-01-27-at-5.51.44-PM.png" alt="" class="kg-image" width="2464" height="760" loading="lazy">
-
-	</figure>
-	<p>Logs show the various scripts and stylesheets required by Ghost live in <i>/assets</i> and <i>/public</i></p>
-	<p>The full script with helper functions included is:</p>
-	<pre class="language-bash"><code class="language-bash">
-// keep track of all our blog endpoints here
-const myBlog = {
-  hostname: "bobtopia.coolghosthost.com",
-  targetSubdirectory: "/articles",
-  assetsPathnames: ["/public/", "/assets/"]
-}
-
-async function handleRequest(request) {
-  // returns an empty string or a path if one exists
-  const formatPath = (url) =&gt; {
-    const pruned = url.pathname.split("/").filter(part =&gt; part)
-    return pruned &amp;&amp; pruned.length &gt; 1 ? `${pruned.join("/")}` : ""
-  }
-  
-  const parsedUrl = new URL(request.url)
-  const requestMatches = match =&gt; new RegExp(match).test(parsedUrl.pathname)
-  
-  // if its blog html, get it
-  if (requestMatches(myBlog.targetSubdirectory)) {
-    console.log("this is a request for a blog document", parsedUrl.pathname)
-    const targetPath = formatPath(parsedUrl)
-    
-    return fetch(`https://${myBlog.hostname}/${targetPath}`)
-  }
-  
-  // if its blog assets, get them
-  if ([myBlog.assetsPathnames].some(requestMatches)) {
-    console.log("this is a request for blog assets", parsedUrl.pathname)
-    const assetUrl = request.url.replace(parsedUrl.hostname, myBlog.hostname);
-
-    return fetch(assetUrl)
-  }
-
-  console.log("this is a request to my root domain", parsedUrl.host, parsedUrl.pathname);
-  // if its not a request blog related stuff, do nothing
-  return fetch(request)
-}
-
-addEventListener("fetch", event =&gt; {
-  event.respondWith(handleRequest(event.request))
-})</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="caveat">Caveat</h4>
-		<a href="https://blog.cloudflare.com/#caveat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There is one important caveat about the current implementation that bears mentioning. This script will not work if your hosted service assets are stored in a folder that shares a name with a route on your root domain. &nbsp;For example, if you're serving assets from the root directory of your hosted service, any request made to the <i>bobtopia.com</i> home page will be masked by these asset requests, and the home page won't load.</p>
-	<p>The solution here involves modifying the blog assets block to handle asset requests without using paths. &nbsp;I'll leave it to the reader to solve this, but a more general solution might involve changing <code>myBlog.assetPathnames</code> to <code>myBlog.assetFileExtensions</code>, which is a list of all asset file extensions (like .png and .css). &nbsp;Then, the assets block would handle requests that contain <code>assetFileExtensions</code> instead of <code>assetPathnames</code>.</p>
-	<div class="flex anchor relative">
-		<h4 id="conclusion">Conclusion</h4>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Bob is now enjoying the same SEO advantages as Alice after converting his subdomains to subdirectories using Cloudflare Workers. &nbsp;Bobs of the world, rejoice!</p>
-	<hr>
-	<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a>. <i>If you’re already a Cloudflare customer, you can add Workers to your existing website</i> <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><i>here</i></a>.</p>
-	<p><a href="https://workers.dev" target="_blank" rel="noopener noreferrer">Reserve a workers.dev subdomain</a></p>
-	<hr>
-	<p></p>
+<h4>Recap</h4>
+<p>In Part 1, the merits and tradeoffs of <a href="https://blog.cloudflare.com/subdomains-vs-subdirectories-best-practices-workers-part-1" target="_blank" rel="noopener noreferrer"><em>subdirectories and subdomains</em></a> were discussed. &nbsp;The subdirectory strategy is typically superior to subdomains because subdomains suffer from <em>keyword</em> and <em>backlink dilution</em>. &nbsp;The subdirectory strategy more effectively boosts a site's search rankings by ensuring that every keyword is attributed to the root domain instead of diluting across subdomains.</p>
+<h4>Subdirectory Strategy without the NGINX</h4>
+<p>In the first part, our friend Bob set up a hosted Ghost blog at <em>bobtopia.coolghosthost.com</em> that he connected to <em>blog.bobtopia.com</em> using a <code>CNAME</code> DNS record. &nbsp;But what if he wanted his blog to live at <em>bobtopia.com/blog</em> to gain the SEO advantages of subdirectories?</p>
+<p>A reverse proxy like NGINX is normally needed to route traffic from subdirectories to remotely hosted services. &nbsp;We'll demonstrate how to implement the subdirectory strategy with Cloudflare Workers and eliminate our dependency on NGINX. (Cloudflare Workers are <a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">serverless</a> functions that run on the Cloudflare global network.)</p>
+<h4>Back to Bobtopia</h4>
+<p>Let's write a Worker that proxies traffic from a subdirectory – <em>bobtopia.com/blog –</em> to a remotely hosted platform – <em>bobtopia.coolghosthost.com</em>. &nbsp;This means that if I go to <em>bobtopia.com/blog</em>, I should see the content of <em>bobtopia.coolghosthost.com,</em> but my browser should still think it's on <em>bobtopia.com</em>.</p>
+<h4>Configuration Options</h4>
+<p>In the <a href="https://dash.cloudflare.com/?zone=workers" target="_blank" rel="noopener noreferrer">Workers</a> editor, we'll start a new script with some basic configuration options.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> keep</span><span class="sk-032f62-99ffe4"> track</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> our</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> endpoints</span><span class="sk-032f62-99ffe4"> here</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> myBlog</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  hostname:</span><span class="sk-032f62-99ffe4"> "bobtopia.coolghosthost.com",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  targetSubdirectory:</span><span class="sk-032f62-99ffe4"> "/articles",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  assetsPathnames:</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"/public/"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"/assets/"]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>The script will proxy traffic from <code>myBlog.targetSubdirectory</code> to Bob's hosted Ghost endpoint, <code>myBlog.hostname</code>. &nbsp;We'll talk about <code>myBlog.assetsPathnames</code> a little later.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="231" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=715&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=640&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=715&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=750&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=828&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=1080&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=1280&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=1430&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="SEO Best Practices with Cloudflare Workers, Part 2: Implementing Subdomains Embedded Image - DPB4DK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WSRC4Z45ZKXHRCNX9T1P.png&amp;w=1920&amp;h=619&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="619" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="231" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Requests are proxied from bobtopia.com/articles to bobtopia.coolghosthost.com (Uh oh... is because the hosted Ghost blog doesn't actually exist)</p>
+<h4>Request Handlers</h4>
+<p>Next, we'll add a request handler:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">"fetch"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(handleRequest(event.request</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>So far we're just passing requests through <code>handleRequest</code> unmodified. &nbsp;Let's make it do something:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  ...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> html,</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> it</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">requestMatches(myBlog.targetSubdirectory</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    console.log(</span><span class="sk-6f42c1-ffc799">"this is a request for a blog document"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> parsedUrl.pathname</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> targetPath</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> formatPath</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parsedUrl</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">https://$</span><span class="sk-032f62-99ffe4">{myBlog.hostname}</span><span class="sk-6f42c1-ffc799">/$</span><span class="sk-032f62-99ffe4">{targetPath}`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">  ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  console.log(</span><span class="sk-6f42c1-ffc799">"this is a request to my root domain"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> parsedUrl.pathname</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> its</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> related</span><span class="sk-032f62-99ffe4"> stuff,</span><span class="sk-032f62-99ffe4"> do</span><span class="sk-032f62-99ffe4"> nothing</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">"fetch"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(handleRequest(event.request</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>In the above code, we added a conditional statement to handle traffic to <code>myBlog.targetSubdirectory</code>. &nbsp;Note that we've omitted our helper functions here. &nbsp;The relevant code lives inside the <code>if</code> block near the top of the function. The <code>requestMatches</code> helper checks if the incoming request contains <code>targetSubdirectory</code>. &nbsp;If it does, a request is made to <code>myBlog.hostname</code> to fetch the HTML document which is returned to the browser.</p>
+<p>When the browser parses the HTML, it makes additional asset requests required by the document (think images, stylesheets, and scripts). &nbsp;We'll need another conditional statement to handle these kinds of requests.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> its</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> assets,</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> them</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> ([myBlog.assetsPathnames].some(</span><span class="sk-6f42c1-ffc799">requestMatches</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    console.log(</span><span class="sk-6f42c1-ffc799">"this is a request for blog assets"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> parsedUrl.pathname</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> assetUrl</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> request.url.replace</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parsedUrl.hostname,</span><span class="sk-032f62-99ffe4"> myBlog.hostname</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">assetUrl</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+</div>
+<p>This similarly shaped block checks if the request matches any pathnames enumerated in <code>myBlog.assetPathnames</code> and fetches the assets required to fully render the page. &nbsp;Assets happen to live in <em>/public</em> and <em>/assets</em> on a Ghost blog. &nbsp;You'll be able to identify your assets directories when you <code>fetch</code> the HTML and see logs for scripts, images, and stylesheets.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="221" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=1080&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=1280&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=1430&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="SEO Best Practices with Cloudflare Workers, Part 2: Implementing Subdomains Embedded Image - LzCG4f" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R32HGRDETH9WQ7W01NXT.png&amp;w=1920&amp;h=592&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="592" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="221" class="pt-portable-image-media"></div>
+</figure>
+<p>Logs show the various scripts and stylesheets required by Ghost live in <em>/assets</em> and <em>/public</em></p>
+<p>The full script with helper functions included is:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> keep</span><span class="sk-032f62-99ffe4"> track</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> our</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> endpoints</span><span class="sk-032f62-99ffe4"> here</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> myBlog</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  hostname:</span><span class="sk-032f62-99ffe4"> "bobtopia.coolghosthost.com",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  targetSubdirectory:</span><span class="sk-032f62-99ffe4"> "/articles",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  assetsPathnames:</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"/public/"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"/assets/"]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> returns</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> empty</span><span class="sk-032f62-99ffe4"> string</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> path</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> one</span><span class="sk-032f62-99ffe4"> exists</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> formatPath</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (url) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> pruned</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> url.pathname.split</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"/"</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.filter</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">part</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> part</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> pruned</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">pruned.length</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> `${</span><span class="sk-24292e-fff">pruned</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">join</span><span class="sk-032f62-99ffe4">("/")}`</span><span class="sk-005cc5-ffc799"> :</span><span class="sk-032f62-99ffe4"> ""</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> parsedUrl</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request.url</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> requestMatches</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> RegExp</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">match</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.test</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parsedUrl.pathname</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> its</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> html,</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> it</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">requestMatches(myBlog.targetSubdirectory</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    console.log(</span><span class="sk-6f42c1-ffc799">"this is a request for a blog document"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> parsedUrl.pathname</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> targetPath</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> formatPath</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parsedUrl</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">https://$</span><span class="sk-032f62-99ffe4">{myBlog.hostname}</span><span class="sk-6f42c1-ffc799">/$</span><span class="sk-032f62-99ffe4">{targetPath}`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> its</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> assets,</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> them</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> ([myBlog.assetsPathnames].some(</span><span class="sk-6f42c1-ffc799">requestMatches</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    console.log(</span><span class="sk-6f42c1-ffc799">"this is a request for blog assets"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> parsedUrl.pathname</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> assetUrl</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> request.url.replace</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">parsedUrl.hostname,</span><span class="sk-032f62-99ffe4"> myBlog.hostname</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">assetUrl</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  console.log(</span><span class="sk-6f42c1-ffc799">"this is a request to my root domain"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> parsedUrl.host,</span><span class="sk-032f62-99ffe4"> parsedUrl.pathname</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> its</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> blog</span><span class="sk-032f62-99ffe4"> related</span><span class="sk-032f62-99ffe4"> stuff,</span><span class="sk-032f62-99ffe4"> do</span><span class="sk-032f62-99ffe4"> nothing</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">"fetch"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(handleRequest(event.request</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<h4>Caveat</h4>
+<p>There is one important caveat about the current implementation that bears mentioning. This script will not work if your hosted service assets are stored in a folder that shares a name with a route on your root domain. &nbsp;For example, if you're serving assets from the root directory of your hosted service, any request made to the <em>bobtopia.com</em> home page will be masked by these asset requests, and the home page won't load.</p>
+<p>The solution here involves modifying the blog assets block to handle asset requests without using paths. &nbsp;I'll leave it to the reader to solve this, but a more general solution might involve changing <code>myBlog.assetPathnames</code> to <code>myBlog.assetFileExtensions</code>, which is a list of all asset file extensions (like .png and .css). &nbsp;Then, the assets block would handle requests that contain <code>assetFileExtensions</code> instead of <code>assetPathnames</code>.</p>
+<h4>Conclusion</h4>
+<p>Bob is now enjoying the same SEO advantages as Alice after converting his subdomains to subdirectories using Cloudflare Workers. &nbsp;Bobs of the world, rejoice!</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p>Interested in deploying a Cloudflare Worker without setting up a domain on Cloudflare? We’re making it easier to get started building serverless applications with custom subdomains on <a href="https://workers.dev" target="_blank" rel="noopener noreferrer">workers.dev</a>. <em>If you’re already a Cloudflare customer, you can add Workers to your existing website</em> <a href="https://dash.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><em>here</em></a>.</p>
+<p><a href="https://workers.dev" target="_blank" rel="noopener noreferrer">Reserve a workers.dev subdomain</a></p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">

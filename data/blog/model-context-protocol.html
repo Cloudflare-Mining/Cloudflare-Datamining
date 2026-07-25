@@ -1,188 +1,137 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5UiFPHH7bP99GW6zrgn5tE/baa3bafbe7771e00efb57c55f3b85dd7/image4.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>In late November 2024, Anthropic <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>announced</u></a> a new way to interact with AI, called Model Context Protocol (MCP). Today, we’re excited to show you how to use MCP in combination with Cloudflare to extend the capabilities of Claude to build applications, generate images and more. You’ll learn how to build an MCP server on Cloudflare to make any service accessible through an AI assistant like Claude with just a few lines of code using Cloudflare Workers.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="a-quick-primer-on-the-model-context-protocol-mcp">A quick primer on the Model Context Protocol (MCP)</h2>
-		<a href="https://blog.cloudflare.com/#a-quick-primer-on-the-model-context-protocol-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>MCP is an open standard that provides a universal way for LLMs to interact with services and applications. As the introduction on the <a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>MCP website</u></a> puts it, </p>
-	<blockquote>
-		<p><i>“Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools.”</i>&nbsp;</p>
-	</blockquote>
-	<p>From an architectural perspective, MCP is comprised of several components:</p>
-	<ul>
-		<li>
-			<p><b>MCP hosts</b>: Programs or tools (like Claude) where AI models operate and interact with different services</p>
-		</li>
-		<li>
-			<p><b>MCP clients</b>: Client within an AI assistant that initiates requests and communicates with MCP servers to perform tasks or access resources</p>
-		</li>
-		<li>
-			<p><b>MCP servers</b>: Lightweight programs that each expose the capabilities of a service</p>
-		</li>
-		<li>
-			<p><b>Local data sources</b>: Files, databases, and services on your computer that MCP servers can securely access</p>
-		</li>
-		<li>
-			<p><b>Remote services</b>: External Internet-connected systems that MCP servers can connect to through APIs</p>
-		</li>
-	</ul>
-	<p>Imagine you ask Claude to send a message in a Slack channel. Before Claude can do this, Slack must communicate which tools are available. It does this by defining tools — such as “list channels”, “post messages”, and “reply to thread” — in the MCP server. Once the MCP client knows what tools it should invoke, it can complete the task. All you have to do is tell it what you need, and it will get it done.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="allowing-ai-to-not-just-generate-but-deploy-applications-for-you">Allowing AI to not just generate, but deploy applications for you</h2>
-		<a href="https://blog.cloudflare.com/#allowing-ai-to-not-just-generate-but-deploy-applications-for-you" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>What makes MCP so powerful? As a quick example, by combining it with a platform like Cloudflare Workers, it allows Claude users to deploy a Cloudflare Worker in just one sentence, resulting in a site like <a href="https://joke-site.dinas.workers.dev" target="_blank" rel="noopener noreferrer"><u>this</u></a>:&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JNebermBM0YNwpxqoMTj2/65224c915a3d12c4f8d11a4228855bf7/image1.png" alt="" class="kg-image" width="1602" height="1106" loading="lazy">
-	</figure>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KImc4ydvEzg8Rf0I0KRkQ/b87b4cca33df242eeabcae9e237e9fb5/image3.png" alt="" class="kg-image" width="1126" height="528" loading="lazy">
-	</figure>
-	<p>But that’s just one example. Today, we’re excited to show you how you can build and deploy your own MCP server to allow your users to interact with your application directly from an LLM like Claude, and how you can do that just by writing a Cloudflare Worker.</p>
-	<div class="flex anchor relative">
-		<h2 id="simplifying-your-mcp-server-deployment-with-workers-mcp">Simplifying your MCP Server deployment with workers-mcp</h2>
-		<a href="https://blog.cloudflare.com/#simplifying-your-mcp-server-deployment-with-workers-mcp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The new <a href="https://github.com/cloudflare/workers-mcp" target="_blank" rel="noopener noreferrer"><u>workers-mcp</u></a> tooling handles the translation between your code and the MCP standard, so that you don’t have to do the maintenance work to get it set up.</p>
-	<p>Once you create your Worker and install the MCP tooling, you’ll get a worker-mcp template set up for you. This boilerplate removes the overhead of configuring the MCP server yourself:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">import { WorkerEntrypoint } from 'cloudflare:workers'
-import { ProxyToSelf } from 'workers-mcp'
-export default class MyWorker extends WorkerEntrypoint&lt;Env&gt; {
-  /**
-   * A warm, friendly greeting from your new Workers MCP server.
-   * @param name {string} the name of the person we are greeting.
-   * @return {string} the contents of our greeting.
-   */
-  sayHello(name: string) {
-    return `Hello from an MCP Worker, ${name}!`
-  }
-  /**
-   * @ignore
-   **/
-  async fetch(request: Request): Promise&lt;Response&gt; {
-    return new ProxyToSelf(this).fetch(request)
-  }
-}</code></pre>
-	<p>Let’s unpack what’s happening here. This provides a direct link to MCP. The ProxyToSelf logic ensures that your Worker is wired up to respond as an MCP server, without any complex routing or schema definitions.&nbsp;</p>
-	<p>It also provides tool definition with <a href="https://jsdoc.app" target="_blank" rel="noopener noreferrer"><u>JSDoc</u></a>. You’ll notice that the `sayHello` method is annotated with JSDoc comments describing what it does, what arguments it takes, and what it returns. These comments aren’t just for human readers, but they’re also used to generate documentation that your AI assistant (Claude) can understand.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="adding-image-generation-to-claude">Adding image generation to Claude</h2>
-		<a href="https://blog.cloudflare.com/#adding-image-generation-to-claude" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you build an MCP server using Workers, adding custom functionality to an LLM is easy. Instead of setting up the server infrastructure, defining request schemas, all you have to do is write the code. Above, all we did was generate a “hello world”, but now let’s power up Claude to generate an image, using Workers AI:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">import { WorkerEntrypoint } from 'cloudflare:workers'
-import { ProxyToSelf } from 'workers-mcp'
-
-export default class ClaudeImagegen extends WorkerEntrypoint&lt;Env&gt; {
- /**
-   * Generate an image using the flux-1-schnell model.
-   * @param prompt {string} A text description of the image you want to generate.
-   * @param steps {number} The number of diffusion steps; higher values can improve quality but take longer.
-   */
-  async generateImage(prompt: string, steps: number): Promise&lt;string&gt; {
-    const response = await this.env.AI.run('@cf/black-forest-labs/flux-1-schnell', {
-      prompt,
-      steps,
-    });
-        // Convert from base64 string
-        const binaryString = atob(response.image);
-        // Create byte representation
-        const img = Uint8Array.from(binaryString, (m) =&gt; m.codePointAt(0)!);
-        
-        return new Response(img, {
-          headers: {
-            'Content-Type': 'image/jpeg',
-          },
-        });
-      }
-  /**
-   * @ignore
-   */
-  async fetch(request: Request): Promise&lt;Response&gt; {
-    return new ProxyToSelf(this).fetch(request)
-  }
-}</code></pre>
-	<p>Once you update the code and redeploy the Worker, Claude will now be able to use the new image generation tool. All you have to say is: <i>“Hey! Can you create an image of a lava lamp wall that lives in San Francisco?”</i></p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Izb6iVs8xPNSOnATJfK9D/9942ddc7b8787cfb1c2f7f3b9959be0b/image2.png" alt="" class="kg-image" width="1504" height="1438" loading="lazy">
-	</figure>
-	<p>If you’re looking for some inspiration, here are a few examples of what you can build with MCP and Workers:&nbsp;</p>
-	<ul>
-		<li>
-			<p>Let Claude send follow-up emails on your behalf using <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a></p>
-		</li>
-		<li>
-			<p>Ask Claude to capture and share website previews via <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Automation</u></a></p>
-		</li>
-		<li>
-			<p>Store and manage sessions, user data, or other persistent information with <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a></p>
-		</li>
-		<li>
-			<p>Query and update data from your <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> database&nbsp;</p>
-		</li>
-		<li>
-			<p>…or call any of your existing Workers directly!</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="why-use-workers-for-building-your-mcp-server">Why use Workers for building your MCP server?</h2>
-		<a href="https://blog.cloudflare.com/#why-use-workers-for-building-your-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To build out an MCP server without access to Cloudflare’s tooling, you would have to: initialize an instance of the server, define your APIs by creating explicit schemas for every interaction, handle request routing, ensure that the responses are formatted correctly, write handlers for every action, configure how the server will communicate, and more… As shown above, we do all of this for you.</p>
-	<p>For reference, an <a href="https://github.com/modelcontextprotocol/typescript-sdk?tab=readme-ov-file#creating-a-server" target="_blank" rel="noopener noreferrer"><u>implementation</u></a> may look something like this:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">import { Server } from "@modelcontextprotocol/sdk/server/index.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-
-const server = new Server({ name: "example-server", version: "1.0.0" }, {
-  capabilities: { resources: {} }
-});
-
-server.setRequestHandler(ListResourcesRequestSchema, async () =&gt; {
-  return {
-    resources: [{ uri: "file:///example.txt", name: "Example Resource" }]
-  };
-});
-
-server.setRequestHandler(ReadResourceRequestSchema, async (request) =&gt; {
-  if (request.params.uri === "file:///example.txt") {
-    return {
-      contents: [{
-        uri: "file:///example.txt",
-        mimeType: "text/plain",
-        text: "This is the content of the example resource."
-      }]
-    };
-  }
-  throw new Error("Resource not found");
-});
-
-const transport = new StdioServerTransport();
-await server.connect(transport);</code></pre>
-	<p>While this works, it requires quite a bit of code just to get started. Not only do you need to be familiar with the MCP protocol, but you need to complete a fair amount of set up work (e.g. defining schemas) for every action. Doing it through Workers removes all these barriers, allowing you to spin up an MCP server without the complexity.</p>
-	<p>We’re always looking for ways to simplify developer workflows, and we’re excited about this new standard to open up more possibilities for interacting with LLMs, and building agents.</p>
-	<div style="position: relative; padding-top: 64.67065868263472%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/0c1bd6c52807404a27eb3c4523dbc75c/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F0c1bd6c52807404a27eb3c4523dbc75c%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p>If you’re interested in setting this up, check out this <a href="https://www.youtube.com/watch?v=cbeOWKANtj8&amp;feature=youtu.be" target="_blank" rel="noopener noreferrer"><u>tutorial</u></a> which walks you through these examples. We’re excited to see what you build. Be sure to share your MCP server creations with us on <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, <a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u>X</u></a>, or <a href="https://bsky.app/profile/cloudflare.social" target="_blank" rel="noopener noreferrer"><u>Bluesky</u></a>!</p>
+<p>In late November 2024, Anthropic <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>announced</u></a> a new way to interact with AI, called Model Context Protocol (MCP). Today, we’re excited to show you how to use MCP in combination with Cloudflare to extend the capabilities of Claude to build applications, generate images and more. You’ll learn how to build an MCP server on Cloudflare to make any service accessible through an AI assistant like Claude with just a few lines of code using Cloudflare Workers.&nbsp;</p>
+<h2>A quick primer on the Model Context Protocol (MCP)</h2>
+<p>MCP is an open standard that provides a universal way for LLMs to interact with services and applications. As the introduction on the <a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>MCP website</u></a> puts it, </p>
+<blockquote><em>“Think of MCP like a USB-C port for AI applications. Just as USB-C provides a standardized way to connect your devices to various peripherals and accessories, MCP provides a standardized way to connect AI models to different data sources and tools.”</em>&nbsp;</blockquote>
+<p>From an architectural perspective, MCP is comprised of several components:</p>
+<ul>
+	<li><strong>MCP hosts</strong>: Programs or tools (like Claude) where AI models operate and interact with different services</li>
+	<li><strong>MCP clients</strong>: Client within an AI assistant that initiates requests and communicates with MCP servers to perform tasks or access resources</li>
+	<li><strong>MCP servers</strong>: Lightweight programs that each expose the capabilities of a service</li>
+	<li><strong>Local data sources</strong>: Files, databases, and services on your computer that MCP servers can securely access</li>
+	<li><strong>Remote services</strong>: External Internet-connected systems that MCP servers can connect to through APIs</li>
+</ul>
+<p>Imagine you ask Claude to send a message in a Slack channel. Before Claude can do this, Slack must communicate which tools are available. It does this by defining tools — such as “list channels”, “post messages”, and “reply to thread” — in the MCP server. Once the MCP client knows what tools it should invoke, it can complete the task. All you have to do is tell it what you need, and it will get it done.&nbsp;</p>
+<h2>Allowing AI to not just generate, but deploy applications for you</h2>
+<p>What makes MCP so powerful? As a quick example, by combining it with a platform like Cloudflare Workers, it allows Claude users to deploy a Cloudflare Worker in just one sentence, resulting in a site like <a href="https://joke-site.dinas.workers.dev" target="_blank" rel="noopener noreferrer"><u>this</u></a>:&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482CR4B69DX4A254DNHC52.png&amp;w=1602&amp;h=1106&amp;f=webp" data-lightbox-width="1602" data-lightbox-height="1106" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=640&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=750&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=828&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=1080&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=1280&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=1430&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4573DNFGGCWDQNPT0BWVXH.png&amp;w=1126&amp;h=528&amp;f=webp" data-lightbox-width="1126" data-lightbox-height="528" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="335" class="pt-portable-image-media"></div>
+</figure>
+<p>But that’s just one example. Today, we’re excited to show you how you can build and deploy your own MCP server to allow your users to interact with your application directly from an LLM like Claude, and how you can do that just by writing a Cloudflare Worker.</p>
+<h2>Simplifying your MCP Server deployment with workers-mcp</h2>
+<p>The new <a href="https://github.com/cloudflare/workers-mcp" target="_blank" rel="noopener noreferrer"><u>workers-mcp</u></a> tooling handles the translation between your code and the MCP standard, so that you don’t have to do the maintenance work to get it set up.</p>
+<p>Once you create your Worker and install the MCP tooling, you’ll get a worker-mcp template set up for you. This boilerplate removes the overhead of configuring the MCP server yourself:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { ProxyToSelf } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'workers-mcp'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorker</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  /**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * A warm, friendly greeting from your new Workers MCP server.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-24292e-fff"> name</span><span class="sk-6a737d-8b8b8b94"> {string} the name of the person we are greeting.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * </span><span class="sk-d73a49-a0a0a0">@return</span><span class="sk-6f42c1-ffc799"> {string}</span><span class="sk-6a737d-8b8b8b94"> the contents of our greeting.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sayHello</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> `Hello from an MCP Worker, ${</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}!`</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  /**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * </span><span class="sk-d73a49-a0a0a0">@ignore</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   **/</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> ProxyToSelf</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Let’s unpack what’s happening here. This provides a direct link to MCP. The ProxyToSelf logic ensures that your Worker is wired up to respond as an MCP server, without any complex routing or schema definitions.&nbsp;</p>
+<p>It also provides tool definition with <a href="https://jsdoc.app" target="_blank" rel="noopener noreferrer"><u>JSDoc</u></a>. You’ll notice that the `sayHello` method is annotated with JSDoc comments describing what it does, what arguments it takes, and what it returns. These comments aren’t just for human readers, but they’re also used to generate documentation that your AI assistant (Claude) can understand.&nbsp;</p>
+<h2>Adding image generation to Claude</h2>
+<p>When you build an MCP server using Workers, adding custom functionality to an LLM is easy. Instead of setting up the server infrastructure, defining request schemas, all you have to do is write the code. Above, all we did was generate a “hello world”, but now let’s power up Claude to generate an image, using Workers AI:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkerEntrypoint } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { ProxyToSelf } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'workers-mcp'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> ClaudeImagegen</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkerEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> /**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * Generate an image using the flux-1-schnell model.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-24292e-fff"> prompt</span><span class="sk-6a737d-8b8b8b94"> {string} A text description of the image you want to generate.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-24292e-fff"> steps</span><span class="sk-6a737d-8b8b8b94"> {number} The number of diffusion steps; higher values can improve quality but take longer.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> generateImage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">prompt</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">steps</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">string</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/black-forest-labs/flux-1-schnell'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      prompt,</span></span>
+<span class="line"><span class="sk-24292e-fff">      steps,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Convert from base64 string</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> binaryString</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> atob</span><span class="sk-24292e-fff">(response.image);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Create byte representation</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> img</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Uint8Array.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(binaryString, (</span><span class="sk-e36209-fff">m</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> m.</span><span class="sk-6f42c1-ffc799">codePointAt</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(img, {</span></span>
+<span class="line"><span class="sk-24292e-fff">          headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'image/jpeg'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          },</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  /**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   * </span><span class="sk-d73a49-a0a0a0">@ignore</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> ProxyToSelf</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Once you update the code and redeploy the Worker, Claude will now be able to use the new image generation tool. All you have to say is: <em>“Hey! Can you create an image of a lava lamp wall that lives in San Francisco?”</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="684" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=715&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=640&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=715&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=750&amp;h=717&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=828&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=1080&amp;h=1033&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=1280&amp;h=1225&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=1430&amp;h=1368&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497A8RKWET81DYJ20QJ2CX.png&amp;w=1504&amp;h=1438&amp;f=webp" data-lightbox-width="1504" data-lightbox-height="1438" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="684" class="pt-portable-image-media"></div>
+</figure>
+<p>If you’re looking for some inspiration, here are a few examples of what you can build with MCP and Workers:&nbsp;</p>
+<ul>
+	<li>Let Claude send follow-up emails on your behalf using <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email Routing</u></a></li>
+	<li>Ask Claude to capture and share website previews via <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Browser Automation</u></a></li>
+	<li>Store and manage sessions, user data, or other persistent information with <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a></li>
+	<li>Query and update data from your <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> database&nbsp;</li>
+	<li>…or call any of your existing Workers directly!</li>
+</ul>
+<h2>Why use Workers for building your MCP server?</h2>
+<p>To build out an MCP server without access to Cloudflare’s tooling, you would have to: initialize an instance of the server, define your APIs by creating explicit schemas for every interaction, handle request routing, ensure that the responses are formatted correctly, write handlers for every action, configure how the server will communicate, and more… As shown above, we do all of this for you.</p>
+<p>For reference, an <a href="https://github.com/modelcontextprotocol/typescript-sdk?tab=readme-ov-file#creating-a-server" target="_blank" rel="noopener noreferrer"><u>implementation</u></a> may look something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Server } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@modelcontextprotocol/sdk/server/index.js"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { StdioServerTransport } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@modelcontextprotocol/sdk/server/stdio.js"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Server</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">"example-server"</span><span class="sk-24292e-fff">, version: </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff"> }, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  capabilities: { resources: {} }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">server.</span><span class="sk-6f42c1-ffc799">setRequestHandler</span><span class="sk-24292e-fff">(ListResourcesRequestSchema, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    resources: [{ uri: </span><span class="sk-032f62-99ffe4">"file:///example.txt"</span><span class="sk-24292e-fff">, name: </span><span class="sk-032f62-99ffe4">"Example Resource"</span><span class="sk-24292e-fff"> }]</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">server.</span><span class="sk-6f42c1-ffc799">setRequestHandler</span><span class="sk-24292e-fff">(ReadResourceRequestSchema, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (request.params.uri </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "file:///example.txt"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      contents: [{</span></span>
+<span class="line"><span class="sk-24292e-fff">        uri: </span><span class="sk-032f62-99ffe4">"file:///example.txt"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        mimeType: </span><span class="sk-032f62-99ffe4">"text/plain"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        text: </span><span class="sk-032f62-99ffe4">"This is the content of the example resource."</span></span>
+<span class="line"><span class="sk-24292e-fff">      }]</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Resource not found"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> transport</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> StdioServerTransport</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> server.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">(transport);</span></span></code></pre>
+</div>
+<p>While this works, it requires quite a bit of code just to get started. Not only do you need to be familiar with the MCP protocol, but you need to complete a fair amount of set up work (e.g. defining schemas) for every action. Doing it through Workers removes all these barriers, allowing you to spin up an MCP server without the complexity.</p>
+<p>We’re always looking for ways to simplify developer workflows, and we’re excited about this new standard to open up more possibilities for interacting with LLMs, and building agents.</p>
+<div id="html-block-k31" class="html-block">
+	<div style="padding-top:64.67065868263472%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/0c1bd6c52807404a27eb3c4523dbc75c/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F0c1bd6c52807404a27eb3c4523dbc75c%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>If you’re interested in setting this up, check out this <a href="https://www.youtube.com/watch?v=cbeOWKANtj8&amp;feature=youtu.be" target="_blank" rel="noopener noreferrer"><u>tutorial</u></a> which walks you through these examples. We’re excited to see what you build. Be sure to share your MCP server creations with us on <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>, <a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u>X</u></a>, or <a href="https://bsky.app/profile/cloudflare.social" target="_blank" rel="noopener noreferrer"><u>Bluesky</u></a>!</p>

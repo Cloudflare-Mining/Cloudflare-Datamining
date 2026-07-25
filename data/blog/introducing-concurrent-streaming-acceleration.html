@@ -1,157 +1,77 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-concurrent-streaming-acceleration">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/introducing-concurrent-streaming-acceleration">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-concurrent-streaming-acceleration">日本語</a>, <a href="https://blog.cloudflare.com/es-es/introducing-concurrent-streaming-acceleration">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/introducing-concurrent-streaming-acceleration">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ONUtiW1HgrSfxEBi8yOBM/5dcd97df14ece217a420901d0ef66942/introducing-concurrent-streaming-acceleration.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Today we’re excited to introduce Concurrent Streaming Acceleration, a new technique for reducing the end-to-end latency of live video on the web when using <a href="https://www.cloudflare.com/products/stream-delivery" target="_blank" rel="noopener noreferrer">Stream Delivery</a>.</p>
-	<p>Let’s dig into live-streaming latency, why it’s important, and what folks have done to improve it.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-live-is-live-video">How “live” is “live” video?</h3>
-		<a href="https://blog.cloudflare.com/#how-live-is-live-video" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Live streaming makes up an increasing share of video on the web. Whether it’s a TV broadcast, a live game show, or an online classroom, users expect video to arrive quickly and smoothly. And the promise of “live” is that the user is seeing events as they happen. But just how close to “real-time” is “live” Internet video?</p>
-	<p>Delivering live video on the Internet is still <i>hard</i> and adds lots of latency:</p>
-	<ol>
-		<li>
-			<p>The content source records video and sends it to an encoding server;</p>
-		</li>
-		<li>
-			<p>The origin server transforms this video into a format like DASH, HLS or CMAF that can be delivered to millions of devices efficiently;</p>
-		</li>
-		<li>
-			<p>A <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> is typically used to deliver encoded video across the globe</p>
-		</li>
-		<li>
-			<p>Client players decode the video and render it on the scree</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/40U4L4lZHzdpS4NiSGbscr/43773418e54f5f8e58c1d7427dfe531a/Content-Processing.jpg" alt="" class="kg-image" width="1280" height="236" loading="lazy">
-
-	</figure>
-	<p>And all of this is under a time constraint — the whole process need to happen in a few seconds, or video experiences will suffer. We call the total delay between when the video was shot, and when it can be viewed on an end-user’s device, as “end-to-end latency” (think of it as the time from the camera lens to your phone’s screen).</p>
-	<div class="flex anchor relative">
-		<h3 id="traditional-segmented-delivery">Traditional segmented delivery</h3>
-		<a href="https://blog.cloudflare.com/#traditional-segmented-delivery" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Video formats like DASH, HLS, and CMAF work by splitting video into small files, called “segments”. A typical segment duration is 6 seconds.</p>
-	<p>If a client player needs to wait for a whole 6s segment to be encoded, sent through a CDN, and then decoded, it can be a long wait! It takes even longer if you want the client to build up a buffer of segments to protect against any interruptions in delivery. A typical player buffer for HLS is 3 segments:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tcODrUGXuyxbAcxPWiF4g/d148c796c8cc6e0ca2a7130c036691d2/Buffering.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
-
-	</figure>
-	<p>_Clients may have to buffer three 6-second chunks, introducing at least 18s of latency_‌‌</p>
-	<p>When you consider encoding delays, it’s easy to see why live streaming latency on the Internet has typically been about 20-30 seconds. We can do better.</p>
-	<div class="flex anchor relative">
-		<h3 id="reduced-latency-with-chunked-transfer-encoding">Reduced latency with chunked transfer encoding</h3>
-		<a href="https://blog.cloudflare.com/#reduced-latency-with-chunked-transfer-encoding" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A natural way to solve this problem is to enable client players to start playing the chunks while they’re downloading, or even while they’re still being created. Making this possible requires a clever bit of cooperation to encode and deliver the files in a particular way, known as “chunked encoding.” This involves splitting up segments into smaller, bite-sized pieces, or “chunks”. Chunked encoding can typically bring live latency down to 5 or 10 seconds.</p>
-	<p>Confusingly, the word “chunk” is overloaded to mean two different things:</p>
-	<ol>
-		<li>
-			<p>CMAF or HLS chunks, which are small pieces of a segment (typically 1s) that are aligned on key frames</p>
-		</li>
-		<li>
-			<p>HTTP chunks, which are just a way of delivering any file over the web</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DXyeaG7liLUlMff7v32vq/e1cbb7a57139f17a35fe0ad71a245c76/Chunked-Encoding.png" alt="" class="kg-image" width="720" height="64" loading="lazy">
-
-	</figure>
-	<p><i>Chunked Encoding splits segments into shorter chunks</i></p>
-	<p>HTTP chunks are important because web clients have limited ability to process streams of data. Most clients can only work with data once they’ve received the full HTTP response, or at least a complete HTTP chunk. By using HTTP chunked transfer encoding, we enable video players to start parsing and decoding video sooner.</p>
-	<p>CMAF chunks are important so that decoders can actually <i>play</i> the bits that are in the HTTP chunks. Without encoding video in a careful way, decoders would have random bits of a video file that can’t be played.</p>
-	<div class="flex anchor relative">
-		<h3 id="cdns-can-introduce-additional-buffering">CDNs can introduce additional buffering</h3>
-		<a href="https://blog.cloudflare.com/#cdns-can-introduce-additional-buffering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Chunked encoding with HLS and CMAF is growing in use across the web today. Part of what makes this technique great is that HTTP chunked encoding is widely supported by CDNs – it’s been part of the HTTP spec for 20 years.</p>
-	<p>CDN support is critical because it allows low-latency live video to scale up and reach audiences of thousands or millions of concurrent viewers – something that’s currently very difficult to do with other, non-HTTP based protocols.</p>
-	<p>Unfortunately, even if you enable chunking to optimise delivery, <a href="https://www.cloudflare.com/learning/cdn/common-cdn-issues" target="_blank" rel="noopener noreferrer">your CDN may be working against you</a> by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72cAKXFSt7jASVx88HncQH/70ac4a2acffeeab6fc60cd2e797392af/Bulk-Request.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
-
-	</figure>
-	<p>If the file is already in cache, great! CDNs do a great job at delivering cached files to huge audiences. But what happens when the segment isn’t in cache yet? Remember – this is the typical request pattern for live video!</p>
-	<p>Typically, CDNs are able to “stream on cache miss” from the origin. That looks something like this:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35E6JRDF51cSyaVMo1Rcuy/22abf6d762e78238356adf0920151fed/Stream-On-Cache-Misse.jpg" alt="" class="kg-image" width="1280" height="285" loading="lazy">
-
-	</figure>
-	<p>But again – what happens when multiple people request the file at once? CDNs typically need to <b>pull the entire file into cache before serving additional viewers</b>:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Qx4ILMftvAnN3zSx0KEll/843373561c266f0f005174d305a50e73/One-at-a-Time.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
-
-	</figure>
-	<p><i>Only one viewer can stream video, while other clients wait for the segment to buffer at the CDN</i></p>
-	<p>This behavior is understandable. CDN data centers consist of many servers. To avoid overloading origins, these servers typically coordinate amongst themselves using a “cache lock” (mutex) that allows only one server to request a particular file from origin at a given time. A side effect of this is that while a file is being pulled into cache, it can’t be served to any user other than the first one that requested it. Unfortunately, this cache lock also defeats the purpose of using chunked encoding!</p>
-	<p>To recap thus far:</p>
-	<ul>
-		<li>
-			<p>Chunked encoding splits up video segments into smaller pieces</p>
-		</li>
-		<li>
-			<p>This can reduce end-to-end latency by allowing chunks to be fetched and decoded by players, even while segments are being produced at the origin server</p>
-		</li>
-		<li>
-			<p>Some CDNs neutralize the benefits of chunked encoding by <b>buffering entire files inside the CDN</b> before they can be delivered to clients</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="cloudflares-solution-concurrent-streaming-acceleration">Cloudflare’s solution: Concurrent Streaming Acceleration</h3>
-		<a href="https://blog.cloudflare.com/#cloudflares-solution-concurrent-streaming-acceleration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As you may have guessed, we think we can do better. Put simply, we now have the ability to deliver un-cached files to <b>multiple clients simultaneously</b> while we pull the file once from the origin server.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/36X1svqoltq5egyP8fP5r2/68308cf8299e2e779973d42155e2e4ec/Simultaneously.jpg" alt="" class="kg-image" width="1280" height="800" loading="lazy">
-
-	</figure>
-	<p>This sounds like a simple change, but there’s a lot of subtlety to do this safely. Under the hood, we’ve made deep changes to our caching infrastructure to remove the cache lock and enable multiple clients to be able to safely read from a single file while it’s still being written.</p>
-	<p>The best part is – all of Cloudflare now works this way! There’s no need to opt-in, or even make a config change to get the benefit.</p>
-	<p>We rolled this feature out a couple months ago and have been really pleased with the results so far. We measure success by the “cache lock wait time,” i.e. how long a request must wait for other requests – a direct component of Time To First Byte. &nbsp;One OTT customer saw this metric drop from 1.5s at P99 to nearly 0, as expected:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ktb7f6UjResqOyWSoncyc/384471208538afdbea9134a592fe9107/Speed-Improvement.png" alt="" class="kg-image" width="1930" height="1118" loading="lazy">
-
-	</figure>
-	<p>This directly translates into a 1.5-second improvement in end-to-end latency. Live video just got more live!</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>New techniques like chunked encoding have revolutionized live delivery, enabling publishers to deliver low-latency live video at scale. Concurrent Streaming Acceleration helps you unlock the power of this technique at your CDN, potentially shaving precious seconds of end-to-end latency.</p>
-	<p>If you’re interested in using Cloudflare for live video delivery, <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">contact our enterprise sales team</a>.</p>
-	<p>And if you’re interested in working on projects like this and helping us improve live video delivery for the entire Internet, join our <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer">engineering team</a>!</p>
-</div>
+<p>Today we’re excited to introduce Concurrent Streaming Acceleration, a new technique for reducing the end-to-end latency of live video on the web when using <a href="https://www.cloudflare.com/products/stream-delivery" target="_blank" rel="noopener noreferrer">Stream Delivery</a>.</p>
+<p>Let’s dig into live-streaming latency, why it’s important, and what folks have done to improve it.</p>
+<h3>How “live” is “live” video?</h3>
+<p>Live streaming makes up an increasing share of video on the web. Whether it’s a TV broadcast, a live game show, or an online classroom, users expect video to arrive quickly and smoothly. And the promise of “live” is that the user is seeing events as they happen. But just how close to “real-time” is “live” Internet video?</p>
+<p>Delivering live video on the Internet is still <em>hard</em> and adds lots of latency:</p>
+<ol>
+	<li>The content source records video and sends it to an encoding server;</li>
+	<li>The origin server transforms this video into a format like DASH, HLS or CMAF that can be delivered to millions of devices efficiently;</li>
+	<li>A <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> is typically used to deliver encoded video across the globe</li>
+	<li>Client players decode the video and render it on the scree</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="132" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=715&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=640&amp;h=118&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=715&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=750&amp;h=138&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=828&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=1080&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=1280&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=1430&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - DzIkRA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DVA0YAV48H0NCSVQ1K84.jpg&amp;w=1280&amp;h=236&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="236" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="132" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>And all of this is under a time constraint — the whole process need to happen in a few seconds, or video experiences will suffer. We call the total delay between when the video was shot, and when it can be viewed on an end-user’s device, as “end-to-end latency” (think of it as the time from the camera lens to your phone’s screen).</p>
+<h3>Traditional segmented delivery</h3>
+<p>Video formats like DASH, HLS, and CMAF work by splitting video into small files, called “segments”. A typical segment duration is 6 seconds.</p>
+<p>If a client player needs to wait for a whole 6s segment to be encoded, sent through a CDN, and then decoded, it can be a long wait! It takes even longer if you want the client to build up a buffer of segments to protect against any interruptions in delivery. A typical player buffer for HLS is 3 segments:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="64" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=715&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=640&amp;h=57&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=715&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=750&amp;h=67&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=828&amp;h=74&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=1080&amp;h=97&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=1280&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=1430&amp;h=128&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - In90yV" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472DM75TBCTW35VSE9PJHD.png&amp;w=720&amp;h=64&amp;f=webp" data-lightbox-width="720" data-lightbox-height="64" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="64" class="pt-portable-image-media"></div>
+</figure>
+<p>_Clients may have to buffer three 6-second chunks, introducing at least 18s of latency_‌‌</p>
+<p>When you consider encoding delays, it’s easy to see why live streaming latency on the Internet has typically been about 20-30 seconds. We can do better.</p>
+<h3>Reduced latency with chunked transfer encoding</h3>
+<p>A natural way to solve this problem is to enable client players to start playing the chunks while they’re downloading, or even while they’re still being created. Making this possible requires a clever bit of cooperation to encode and deliver the files in a particular way, known as “chunked encoding.” This involves splitting up segments into smaller, bite-sized pieces, or “chunks”. Chunked encoding can typically bring live latency down to 5 or 10 seconds.</p>
+<p>Confusingly, the word “chunk” is overloaded to mean two different things:</p>
+<ol>
+	<li>CMAF or HLS chunks, which are small pieces of a segment (typically 1s) that are aligned on key frames</li>
+	<li>HTTP chunks, which are just a way of delivering any file over the web</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="64" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=715&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=640&amp;h=57&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=715&amp;h=64&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=750&amp;h=67&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=828&amp;h=74&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=1080&amp;h=97&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=1280&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=1430&amp;h=128&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - YftqR6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CRF4ZRX6WHCWER2N7X1Q.png&amp;w=720&amp;h=64&amp;f=webp" data-lightbox-width="720" data-lightbox-height="64" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="64" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Chunked Encoding splits segments into shorter chunks</em></p>
+<p>HTTP chunks are important because web clients have limited ability to process streams of data. Most clients can only work with data once they’ve received the full HTTP response, or at least a complete HTTP chunk. By using HTTP chunked transfer encoding, we enable video players to start parsing and decoding video sooner.</p>
+<p>CMAF chunks are important so that decoders can actually <em>play</em> the bits that are in the HTTP chunks. Without encoding video in a careful way, decoders would have random bits of a video file that can’t be played.</p>
+<h3>CDNs can introduce additional buffering</h3>
+<p>Chunked encoding with HLS and CMAF is growing in use across the web today. Part of what makes this technique great is that HTTP chunked encoding is widely supported by CDNs – it’s been part of the HTTP spec for 20 years.</p>
+<p>CDN support is critical because it allows low-latency live video to scale up and reach audiences of thousands or millions of concurrent viewers – something that’s currently very difficult to do with other, non-HTTP based protocols.</p>
+<p>Unfortunately, even if you enable chunking to optimise delivery, <a href="https://www.cloudflare.com/learning/cdn/common-cdn-issues" target="_blank" rel="noopener noreferrer">your CDN may be working against you</a> by buffering the entire segment. To understand why consider what happens when many people request a live segment at the same time:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - mOR3lI" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JDM1RQ2E639F0SXTKDCP.jpg&amp;w=1280&amp;h=800&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="800" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<p>If the file is already in cache, great! CDNs do a great job at delivering cached files to huge audiences. But what happens when the segment isn’t in cache yet? Remember – this is the typical request pattern for live video!</p>
+<p>Typically, CDNs are able to “stream on cache miss” from the origin. That looks something like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="159" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=715&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=640&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=715&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=750&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=828&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=1080&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=1280&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=1430&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - Wd1rCW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RZM67VJTQZC97QZCYBGQ.jpg&amp;w=1280&amp;h=285&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="285" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="159" class="pt-portable-image-media"></div>
+</figure>
+<p>But again – what happens when multiple people request the file at once? CDNs typically need to <strong>pull the entire file into cache before serving additional viewers</strong>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - lPiZSr" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A0ZE2F6857J6GVYPCQW5.jpg&amp;w=1280&amp;h=800&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="800" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Only one viewer can stream video, while other clients wait for the segment to buffer at the CDN</em></p>
+<p>This behavior is understandable. CDN data centers consist of many servers. To avoid overloading origins, these servers typically coordinate amongst themselves using a “cache lock” (mutex) that allows only one server to request a particular file from origin at a given time. A side effect of this is that while a file is being pulled into cache, it can’t be served to any user other than the first one that requested it. Unfortunately, this cache lock also defeats the purpose of using chunked encoding!</p>
+<p>To recap thus far:</p>
+<ul>
+	<li>Chunked encoding splits up video segments into smaller pieces</li>
+	<li>This can reduce end-to-end latency by allowing chunks to be fetched and decoded by players, even while segments are being produced at the origin server</li>
+	<li>Some CDNs neutralize the benefits of chunked encoding by <strong>buffering entire files inside the CDN</strong> before they can be delivered to clients</li>
+</ul>
+<h3>Cloudflare’s solution: Concurrent Streaming Acceleration</h3>
+<p>As you may have guessed, we think we can do better. Put simply, we now have the ability to deliver un-cached files to <strong>multiple clients simultaneously</strong> while we pull the file once from the origin server.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - z7jMGN" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SD05CBF4T07H4WD79A4J.jpg&amp;w=1280&amp;h=800&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="800" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<p>This sounds like a simple change, but there’s a lot of subtlety to do this safely. Under the hood, we’ve made deep changes to our caching infrastructure to remove the cache lock and enable multiple clients to be able to safely read from a single file while it’s still being written.</p>
+<p>The best part is – all of Cloudflare now works this way! There’s no need to opt-in, or even make a config change to get the benefit.</p>
+<p>We rolled this feature out a couple months ago and have been really pleased with the results so far. We measure success by the “cache lock wait time,” i.e. how long a request must wait for other requests – a direct component of Time To First Byte. &nbsp;One OTT customer saw this metric drop from 1.5s at P99 to nearly 0, as expected:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="414" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=640&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=750&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=828&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=1080&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=1280&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=1430&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Live video just got more live: Introducing Concurrent Streaming Acceleration Embedded Image - lTvoYW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468GRX0YMEXZABGCCWNQT0.png&amp;w=1920&amp;h=1112&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1112" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="414" class="pt-portable-image-media"></div>
+</figure>
+<p>This directly translates into a 1.5-second improvement in end-to-end latency. Live video just got more live!</p>
+<h3>Conclusion</h3>
+<p>New techniques like chunked encoding have revolutionized live delivery, enabling publishers to deliver low-latency live video at scale. Concurrent Streaming Acceleration helps you unlock the power of this technique at your CDN, potentially shaving precious seconds of end-to-end latency.</p>
+<p>If you’re interested in using Cloudflare for live video delivery, <a href="https://www.cloudflare.com/plans/enterprise/contact" target="_blank" rel="noopener noreferrer">contact our enterprise sales team</a>.</p>
+<p>And if you’re interested in working on projects like this and helping us improve live video delivery for the entire Internet, join our <a href="https://www.cloudflare.com/careers/jobs/?department=Engineering" target="_blank" rel="noopener noreferrer">engineering team</a>!</p>

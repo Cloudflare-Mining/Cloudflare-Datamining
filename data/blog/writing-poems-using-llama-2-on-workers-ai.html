@@ -1,90 +1,96 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ww2miDg3Hr7kSylyEwaMC/61fb4b80bf2ec0cee54ce10d2f0ac4a9/writing-poems-using-llama-2-on-workers-ai.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Matthew and Michelle, co-founders of Cloudflare, published their <a href="https://blog.cloudflare.com/cloudflares-annual-founders-letter-2023">annual founders’ letter today</a>. The letter ends with a poem written by an AI running using Workers AI on Cloudflare’s global network.</p>
-	<p>Here’s the code that wrote the poem. It uses <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> and the Meta <a href="https://ai.meta.com/llama" target="_blank" rel="noopener noreferrer">Llama 2 model with 7B parameters and 8-bit integers</a>. Just 14 lines of code running on the Cloudflare global network, and you’ve got your very own <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer">AI</a> to chat with.</p>
-	<pre class="language-javascript"><code class="language-javascript">import { Ai } from "@cloudflare/ai";
-
-export default {
-    async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
-        const body = await request.json();
-        const ai = new Ai(env.AI);
-        const response = await ai.run("@cf/meta/llama-2-7b-chat-int8", body);
-        return new Response(JSON.stringify(response));
-    },
-};
-
-export interface Env {
-    AI: any;
-}</code></pre>
-	<p>That was deployed on Workers AI and all I had to do was ask for poems. Here’s my terminal output (with just the domain name changed).</p>
-	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
-that talks about the connectivity cloud"}' | jq -r .response</code></pre>
-	<p><code>Cloud computing provides a connectivity that's unmatched,</code></p>
-	<p><code>A bridge that spans the globe with ease and grace.</code></p>
-	<p><code>It brings us closer, no matter where we are,</code></p>
-	<p><code>And makes the world a smaller, more intimate place.</code></p>
-	<p><code>With just a click, we can connect and share,</code></p>
-	<p><code>Our thoughts and ideas, our hopes and dreams.</code></p>
-	<p><code>The cloud unites us, in a way that's fair,</code></p>
-	<p><code>And makes the world a more harmonious theme.</code></p>
-	<p><code>So let us embrace this connectivity,</code></p>
-	<p><code>And use it to build a better world for all.</code></p>
-	<p><code>For in the cloud, we find a unity,</code></p>
-	<p><code>That can help us reach new heights, and stand tall.</code></p>
-	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
-that talks about the connectivity cloud and contrast it with the  \
-captivity cloud"}' | jq -r .response</code></pre>
-	<p><code>The connectivity cloud, a wondrous sight to see,</code></p>
-	<p><code>Where data flows and knowledge is set free,</code></p>
-	<p><code>A place where minds meet and ideas take flight,</code></p>
-	<p><code>A world of endless possibility in sight.</code></p>
-	<p><code>But then there's the captivity cloud, a darker place,</code></p>
-	<p><code>Where thoughts are trapped and minds are in disgrace,</code></p>
-	<p><code>A prison of the mind, where freedom's lost,</code></p>
-	<p><code>A world of endless sorrow and cost.</code></p>
-	<p><code>So let us choose the connectivity cloud,</code></p>
-	<p><code>And let our minds be free and allowed,</code></p>
-	<p><code>To soar and glide and reach for the sky,</code></p>
-	<p><code>And never be held back, but always fly.</code></p>
-	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
-that talks about the connectivity cloud and contrast it with the  \
-captivity cloud using Elizabethan English"}' | jq -r .response</code></pre>
-	<p><code>In the connectivity cloud, I find my peace,</code></p>
-	<p><code>Where thoughts and dreams and hopes do cease to flee.</code></p>
-	<p><code>The captivity cloud doth but darken my day,</code></p>
-	<p><code>With chains of sorrow that will not away.</code></p>
-	<p><code>In the connectivity cloud, I find my home,</code></p>
-	<p><code>Where love and joy and laughter do make their moan.</code></p>
-	<p><code>The captivity cloud doth but lock me in,</code></p>
-	<p><code>With sorrow's shackles that will not give in.</code></p>
-	<p><code>In the connectivity cloud, I find my fate,</code></p>
-	<p><code>Where fortune smiles and misery doth wait.</code></p>
-	<p><code>The captivity cloud doth but bring me woe,</code></p>
-	<p><code>With darkness that will not let me go.</code></p>
-	<p><code>In the connectivity cloud, I find my heart,</code></p>
-	<p><code>Where love and hope and joy do play their part.</code></p>
-	<p><code>The captivity cloud doth but tear it apart,</code></p>
-	<p><code>With sorrow's hand that will not let it start.</code></p>
-	<pre class="language-bash"><code class="language-bash">% curl -X POST https://example.com/ -d '{"prompt":"Write a poem \
-that talks about the connectivity cloud and contrast it with the  \
-captivity cloud in the style of Lord Byron"}' | jq -r .response</code></pre>
-	<p><code>In the realm of the cloud, where data reigns supreme,</code></p>
-	<p><code>A new divide has emerged, a digital dream,</code></p>
-	<p><code>The connectivity cloud, a place of delight,</code></p>
-	<p><code>Where knowledge and wisdom take flight.</code></p>
-	<p><code>But then there's the captivity cloud, a darker hue,</code></p>
-	<p><code>Where privacy and security are hard to pursue,</code></p>
-	<p><code>A prison of sorts, where freedom's light is lost,</code></p>
-	<p><code>And data's secrets are forever crossed.</code></p>
-	<p><code>Yet still, we cling to the captivity cloud,</code></p>
-	<p><code>For in its depths, we find a measure of proof,</code></p>
-	<p><code>That though the connectivity cloud may be bright,</code></p>
-	<p><code>The captivity cloud holds a certain allure in sight.</code></p>
-	<p><code>So let us embrace both, the light and the dark,</code></p>
-	<p><code>For in their union, we find a digital spark,</code></p>
-	<p><code>That illuminates the path to a brighter day,</code></p>
-	<p><code>Where knowledge and privacy reign in a digital way.</code></p>
-	<p>What are you going to build on Workers AI? It’s ready and waiting. We’ll help you go from idea to deployed in minutes.</p>
-	<p>If you want to know exactly how to deploy something like this <a href="https://blog.cloudflare.com/workers-ai">read the Workers AI announcement blog</a>.</p>
+<p>Matthew and Michelle, co-founders of Cloudflare, published their <a href="https://blog.cloudflare.com/cloudflares-annual-founders-letter-2023">annual founders’ letter today</a>. The letter ends with a poem written by an AI running using Workers AI on Cloudflare’s global network.</p>
+<p>Here’s the code that wrote the poem. It uses <a href="https://blog.cloudflare.com/workers-ai">Workers AI</a> and the Meta <a href="https://ai.meta.com/llama" target="_blank" rel="noopener noreferrer">Llama 2 model with 7B parameters and 8-bit integers</a>. Just 14 lines of code running on the Cloudflare global network, and you’ve got your very own <a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer">AI</a> to chat with.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> ai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Ai</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/meta/llama-2-7b-chat-int8"</span><span class="sk-24292e-fff">, body);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(response));</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">    AI</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>That was deployed on Workers AI and all I had to do was ask for poems. Here’s my terminal output (with just the domain name changed).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://example.com/</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"prompt":"Write a poem \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">that talks about the connectivity cloud"}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> .response</span></span></code></pre>
+</div>
+<p><code>Cloud computing provides a connectivity that's unmatched,</code></p>
+<p><code>A bridge that spans the globe with ease and grace.</code></p>
+<p><code>It brings us closer, no matter where we are,</code></p>
+<p><code>And makes the world a smaller, more intimate place.</code></p>
+<p><code>With just a click, we can connect and share,</code></p>
+<p><code>Our thoughts and ideas, our hopes and dreams.</code></p>
+<p><code>The cloud unites us, in a way that's fair,</code></p>
+<p><code>And makes the world a more harmonious theme.</code></p>
+<p><code>So let us embrace this connectivity,</code></p>
+<p><code>And use it to build a better world for all.</code></p>
+<p><code>For in the cloud, we find a unity,</code></p>
+<p><code>That can help us reach new heights, and stand tall.</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://example.com/</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"prompt":"Write a poem \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">that talks about the connectivity cloud and contrast it with the  \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">captivity cloud"}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> .response</span></span></code></pre>
+</div>
+<p><code>The connectivity cloud, a wondrous sight to see,</code></p>
+<p><code>Where data flows and knowledge is set free,</code></p>
+<p><code>A place where minds meet and ideas take flight,</code></p>
+<p><code>A world of endless possibility in sight.</code></p>
+<p><code>But then there's the captivity cloud, a darker place,</code></p>
+<p><code>Where thoughts are trapped and minds are in disgrace,</code></p>
+<p><code>A prison of the mind, where freedom's lost,</code></p>
+<p><code>A world of endless sorrow and cost.</code></p>
+<p><code>So let us choose the connectivity cloud,</code></p>
+<p><code>And let our minds be free and allowed,</code></p>
+<p><code>To soar and glide and reach for the sky,</code></p>
+<p><code>And never be held back, but always fly.</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://example.com/</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"prompt":"Write a poem \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">that talks about the connectivity cloud and contrast it with the  \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">captivity cloud using Elizabethan English"}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> .response</span></span></code></pre>
+</div>
+<p><code>In the connectivity cloud, I find my peace,</code></p>
+<p><code>Where thoughts and dreams and hopes do cease to flee.</code></p>
+<p><code>The captivity cloud doth but darken my day,</code></p>
+<p><code>With chains of sorrow that will not away.</code></p>
+<p><code>In the connectivity cloud, I find my home,</code></p>
+<p><code>Where love and joy and laughter do make their moan.</code></p>
+<p><code>The captivity cloud doth but lock me in,</code></p>
+<p><code>With sorrow's shackles that will not give in.</code></p>
+<p><code>In the connectivity cloud, I find my fate,</code></p>
+<p><code>Where fortune smiles and misery doth wait.</code></p>
+<p><code>The captivity cloud doth but bring me woe,</code></p>
+<p><code>With darkness that will not let me go.</code></p>
+<p><code>In the connectivity cloud, I find my heart,</code></p>
+<p><code>Where love and hope and joy do play their part.</code></p>
+<p><code>The captivity cloud doth but tear it apart,</code></p>
+<p><code>With sorrow's hand that will not let it start.</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://example.com/</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"prompt":"Write a poem \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">that talks about the connectivity cloud and contrast it with the  \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">captivity cloud in the style of Lord Byron"}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-032f62-99ffe4"> .response</span></span></code></pre>
+</div>
+<p><code>In the realm of the cloud, where data reigns supreme,</code></p>
+<p><code>A new divide has emerged, a digital dream,</code></p>
+<p><code>The connectivity cloud, a place of delight,</code></p>
+<p><code>Where knowledge and wisdom take flight.</code></p>
+<p><code>But then there's the captivity cloud, a darker hue,</code></p>
+<p><code>Where privacy and security are hard to pursue,</code></p>
+<p><code>A prison of sorts, where freedom's light is lost,</code></p>
+<p><code>And data's secrets are forever crossed.</code></p>
+<p><code>Yet still, we cling to the captivity cloud,</code></p>
+<p><code>For in its depths, we find a measure of proof,</code></p>
+<p><code>That though the connectivity cloud may be bright,</code></p>
+<p><code>The captivity cloud holds a certain allure in sight.</code></p>
+<p><code>So let us embrace both, the light and the dark,</code></p>
+<p><code>For in their union, we find a digital spark,</code></p>
+<p><code>That illuminates the path to a brighter day,</code></p>
+<p><code>Where knowledge and privacy reign in a digital way.</code></p>
+<p>What are you going to build on Workers AI? It’s ready and waiting. We’ll help you go from idea to deployed in minutes.</p>
+<p>If you want to know exactly how to deploy something like this <a href="https://blog.cloudflare.com/workers-ai">read the Workers AI announcement blog</a>.</p>

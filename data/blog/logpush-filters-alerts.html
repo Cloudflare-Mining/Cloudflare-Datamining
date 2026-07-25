@@ -1,116 +1,82 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5sHEoy0a0HvlOJFzWINNMl/ba2a60a14fb8f5827158f7853cecf24e/logpush-filters-alerts.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Logs are a critical part of every successful application. Cloudflare products and services around the world generate massive amounts of logs upon which customers of all sizes depend. Structured logging from our products are used by customers for purposes including analytics, debugging performance issues, <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer">monitoring application health</a>, maintaining security standards for compliance reasons, and much more.</p>
-	<p>Logpush is Cloudflare’s product for pushing these critical logs to customer systems for consumption and analysis. Whenever our products generate logs as a result of traffic or data passing through our systems from anywhere in the world, we buffer these logs and push them directly to customer-defined destinations like <a href="https://www.cloudflare.com/products/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>, Splunk, AWS S3, and many more.</p>
-	<p>Today we are announcing three new key features related to Cloudflare’s <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer">Logpush</a> product. First, the ability to have only logs matching certain criteria be sent. Second, the ability to get alerted when logs are failing to be pushed due to customer destinations having issues or network issues occurring between Cloudflare and the customer destination. In addition, customers will also be able to query for analytics around the health of Logpush jobs like how many bytes and records were pushed, number of successful pushes, and number of failing pushes.</p>
-	<div class="flex anchor relative">
-		<h3 id="filtering-logs-before-they-are-pushed">Filtering logs before they are pushed</h3>
-		<a href="https://blog.cloudflare.com/#filtering-logs-before-they-are-pushed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Because logs are both critical and generated with high volume, many customers have to maintain complex infrastructure just to ingest and store logs, as well as deal with ever-increasing related costs. On a typical day, a real, example customer receives about 21 billion records, or 2.1 terabytes (about 24.9 TB uncompressed) of gzip compressed logs. Over the course of a month, that could easily be hundreds of billions of events and hundreds of terabytes of data.</p>
-	<p>It is often unnecessary to store and analyze all of this data, and customers could get by with specific subsets of the data matching certain criteria. For example, a customer might want just the set of HTTP data that had status code &gt;= 400, or the set of firewall data where the action taken was to block the user.We can now achieve this in our Logpush jobs by setting specific filters on the fields of the log messages themselves. You can use either our <a href="https://developers.cloudflare.com/logs/reference/filters" target="_blank" rel="noopener noreferrer">API</a> or the Cloudflare dashboard to set up filters.</p>
-	<p>To do this in the dashboard, either create a new Logpush job or modify an existing job. You will see the option to set certain filters. For example, an ecommerce customer might want to receive logs only for the checkout page where the bot score was non-zero:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AA0ciHtY8MWoYGyHOKMnQ/bc24585b7d80216f039b8fea1d003086/image2-30.png" alt="" class="kg-image" width="1076" height="353" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="logpush-job-alerting">Logpush job alerting</h3>
-		<a href="https://blog.cloudflare.com/#logpush-job-alerting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When logs are a critical part of your infrastructure, you want peace of mind that logging infrastructure is healthy. With that in mind, we are announcing the ability to get notified when your Logpush jobs have been retrying to push and failing for 24 hours.</p>
-	<p>To set up alerts in the Cloudflare dashboard:</p>
-	<p>1. First, navigate to “Notifications” in the left-panel of the account view</p>
-	<p>2. Next, Click the “add” button</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JLWRGmLeEDAsWSgD6QNGY/8226b630dcee4b2963a8a1447ebfccb5/image3-22.png" alt="" class="kg-image" width="1999" height="417" loading="lazy">
-
-	</figure>
-	<p>3. Select the alert “Failing Logpush Job Disabled”</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xw94OPKQCGuN9GwOUnanf/bf6179316ec0ed87075debd816777b93/image1-35.png" alt="" class="kg-image" width="1986" height="166" loading="lazy">
-
-	</figure>
-	<p>4. Configure the alert and click Save.</p>
-	<p>That’s it — you will receive an email alert if your Logpush job is disabled.</p>
-	<div class="flex anchor relative">
-		<h3 id="logpush-job-health-api">Logpush Job Health API</h3>
-		<a href="https://blog.cloudflare.com/#logpush-job-health-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have also added the ability to query for stats related to the health of your Logpush jobs to our graphql API. Customers can now use our GraphQL API to query for things like the number of bytes pushed, number of compressed bytes pushed, number of records pushed, the status of each push, and much more. Using these stats, customers can have greater visibility into a core part of infrastructure. The GraphQL API is self documenting so full details about the new <code>logpushHealthAdaptiveGroups</code> node can be found using any GraphQL client, but head to <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL docs</a> for more information.</p>
-	<p>Below are a couple example queries of how you can use the GraphQL to find stats related to your Logpush jobs.</p>
-	<p>Query for number of pushes to S3 that resulted in status code != 200</p>
-	<pre class="language-bash"><code class="language-bash">query
-{
-  viewer
-  {
-    zones(filter: { zoneTag: $zoneTag})
-    {
-      logpushHealthAdaptiveGroups(filter: {
-        datetime_gt:"2022-08-15T00:00:00Z",
-        destinationType:"s3",
-        status_neq:200
-      }, 
-      limit:10)
-      {
-        count,
-        dimensions {
-          jobId,
-          status,
-          destinationType
-        }
-      }
-    }
-  }
-}</code></pre>
-	<p>Getting the number of bytes, compressed bytes and records that were pushed</p>
-	<pre class="language-bash"><code class="language-bash">query
-{
-  viewer
-  {
-    zones(filter: { zoneTag: $zoneTag})
-    {
-      logpushHealthAdaptiveGroups(filter: {
-        datetime_gt:"2022-08-15T00:00:00Z",
-        destinationType:"s3",
-        status:200
-      }, 
-      limit:10)
-      {
-        sum {
-          bytes,
-          bytesCompressed,
-          records
-        }
-      }
-    }
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Logpush is a robust and flexible platform for customers who need to integrate their own logging and monitoring systems with Cloudflare. Different Logpush jobs can be deployed to support multiple destinations or, with filtering, multiple subsets of logs.</p>
-	<p>Customers who haven't created Logpush jobs are encouraged to do so. Try pushing your logs to R2 for safe-<a href="https://blog.cloudflare.com/store-and-retrieve-logs-on-r2">keeping</a>! For customers who don't currently have access to this powerful tool, consider upgrading your plan.</p>
+<p>Logs are a critical part of every successful application. Cloudflare products and services around the world generate massive amounts of logs upon which customers of all sizes depend. Structured logging from our products are used by customers for purposes including analytics, debugging performance issues, <a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer">monitoring application health</a>, maintaining security standards for compliance reasons, and much more.</p>
+<p>Logpush is Cloudflare’s product for pushing these critical logs to customer systems for consumption and analysis. Whenever our products generate logs as a result of traffic or data passing through our systems from anywhere in the world, we buffer these logs and push them directly to customer-defined destinations like <a href="https://www.cloudflare.com/products/r2" target="_blank" rel="noopener noreferrer">Cloudflare R2</a>, Splunk, AWS S3, and many more.</p>
+<p>Today we are announcing three new key features related to Cloudflare’s <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer">Logpush</a> product. First, the ability to have only logs matching certain criteria be sent. Second, the ability to get alerted when logs are failing to be pushed due to customer destinations having issues or network issues occurring between Cloudflare and the customer destination. In addition, customers will also be able to query for analytics around the health of Logpush jobs like how many bytes and records were pushed, number of successful pushes, and number of failing pushes.</p>
+<h3>Filtering logs before they are pushed</h3>
+<p>Because logs are both critical and generated with high volume, many customers have to maintain complex infrastructure just to ingest and store logs, as well as deal with ever-increasing related costs. On a typical day, a real, example customer receives about 21 billion records, or 2.1 terabytes (about 24.9 TB uncompressed) of gzip compressed logs. Over the course of a month, that could easily be hundreds of billions of events and hundreds of terabytes of data.</p>
+<p>It is often unnecessary to store and analyze all of this data, and customers could get by with specific subsets of the data matching certain criteria. For example, a customer might want just the set of HTTP data that had status code &gt;= 400, or the set of firewall data where the action taken was to block the user.We can now achieve this in our Logpush jobs by setting specific filters on the fields of the log messages themselves. You can use either our <a href="https://developers.cloudflare.com/logs/reference/filters" target="_blank" rel="noopener noreferrer">API</a> or the Cloudflare dashboard to set up filters.</p>
+<p>To do this in the dashboard, either create a new Logpush job or modify an existing job. You will see the option to set certain filters. For example, an ecommerce customer might want to receive logs only for the checkout page where the bot score was non-zero:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1384 Embedded Image - BGbvKW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494HE66ZE4SS9N1VK7BZDV.png&amp;w=1076&amp;h=353&amp;f=webp" data-lightbox-width="1076" data-lightbox-height="353" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Logpush job alerting</h3>
+<p>When logs are a critical part of your infrastructure, you want peace of mind that logging infrastructure is healthy. With that in mind, we are announcing the ability to get notified when your Logpush jobs have been retrying to push and failing for 24 hours.</p>
+<p>To set up alerts in the Cloudflare dashboard:</p>
+<p>1. First, navigate to “Notifications” in the left-panel of the account view</p>
+<p>2. Next, Click the “add” button</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="149" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=715&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=640&amp;h=133&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=715&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=750&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=828&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=1080&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=1280&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=1430&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1384 Embedded Image - q28ay0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497DDMK69HDDKZFQS8Z7QE.png&amp;w=1920&amp;h=401&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="401" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="149" class="pt-portable-image-media"></div>
+</figure>
+<p>3. Select the alert “Failing Logpush Job Disabled”</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="60" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=715&amp;h=60&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=640&amp;h=54&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=715&amp;h=60&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=750&amp;h=63&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=828&amp;h=69&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=1080&amp;h=91&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=1280&amp;h=107&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=1430&amp;h=120&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1384 Embedded Image - XksbKl" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492X88JQ4AMWTCV6RFQJNP.png&amp;w=1920&amp;h=160&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="160" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="60" class="pt-portable-image-media"></div>
+</figure>
+<p>4. Configure the alert and click Save.</p>
+<p>That’s it — you will receive an email alert if your Logpush job is disabled.</p>
+<h3>Logpush Job Health API</h3>
+<p>We have also added the ability to query for stats related to the health of your Logpush jobs to our graphql API. Customers can now use our GraphQL API to query for things like the number of bytes pushed, number of compressed bytes pushed, number of records pushed, the status of each push, and much more. Using these stats, customers can have greater visibility into a core part of infrastructure. The GraphQL API is self documenting so full details about the new <code>logpushHealthAdaptiveGroups</code> node can be found using any GraphQL client, but head to <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL docs</a> for more information.</p>
+<p>Below are a couple example queries of how you can use the GraphQL to find stats related to your Logpush jobs.</p>
+<p>Query for number of pushes to S3 that resulted in status code != 200</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">query</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  viewer</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    zones(filter:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> zoneTag:</span><span class="sk-24292e-fff"> $zoneTag</span><span class="sk-032f62-99ffe4">}</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      logpushHealthAdaptiveGroups(filter:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        datetime_gt:</span><span class="sk-6f42c1-ffc799">"2022-08-15T00:00:00Z"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        destinationType:</span><span class="sk-6f42c1-ffc799">"s3"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        status_neq:200</span></span>
+<span class="line"><span class="sk-24292e-fff">      }, </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      limit:10</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        count,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        dimensions</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          jobId,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          status,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          destinationType</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Getting the number of bytes, compressed bytes and records that were pushed</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">query</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  viewer</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    zones(filter:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> zoneTag:</span><span class="sk-24292e-fff"> $zoneTag</span><span class="sk-032f62-99ffe4">}</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      logpushHealthAdaptiveGroups(filter:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        datetime_gt:</span><span class="sk-6f42c1-ffc799">"2022-08-15T00:00:00Z"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        destinationType:</span><span class="sk-6f42c1-ffc799">"s3"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        status:200</span></span>
+<span class="line"><span class="sk-24292e-fff">      }, </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      limit:10</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        sum</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          bytes,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          bytesCompressed,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          records</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Summary</h3>
+<p>Logpush is a robust and flexible platform for customers who need to integrate their own logging and monitoring systems with Cloudflare. Different Logpush jobs can be deployed to support multiple destinations or, with filtering, multiple subsets of logs.</p>
+<p>Customers who haven't created Logpush jobs are encouraged to do so. Try pushing your logs to R2 for safe-<a href="https://blog.cloudflare.com/store-and-retrieve-logs-on-r2">keeping</a>! For customers who don't currently have access to this powerful tool, consider upgrading your plan.</p>

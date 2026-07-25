@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "Defending QUIC from acknowledgement-based DDoS attacks",
+	"url": "https://blog.cloudflare.com/defending-quic-from-acknowledgement-based-ddos-attacks/",
+	"datePublished": "2025-10-29T13:00:00.000Z",
+	"dateModified": "2026-07-15T12:41:15.950Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW461DH8S6R25TG4PXHM49CK.png",
+	"description": "We identified and patched two DDoS vulnerabilities in our QUIC implementation related to packet acknowledgements. Cloudflare customers were not affected. We examine the \"Optimistic ACK\" attack vector and our solution, which dynamically skips packet numbers to validate client behavior."
+}

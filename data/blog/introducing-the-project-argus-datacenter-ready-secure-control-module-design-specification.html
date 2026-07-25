@@ -1,134 +1,56 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/n9oSspU8Ke85r3PvzDfed/8f356634f5f25b660c5ad51172da1030/Project-Argus-DC-SCM.png" alt="" class="kg-image" width="1600" height="905" loading="lazy">
-
-	</figure>
-	<p>Historically, data center servers have used motherboards that included all key components on a single circuit board. The DC-SCM (Datacenter-ready Secure Control Module) decouples server management and security functions from a traditional server motherboard, enabling development of server management and security solutions independent of server architecture. It also provides opportunities for reducing server printed circuit board (PCB) material cost, and allows unified firmware images to be developed.</p>
-	<p>Today, Cloudflare is announcing that it has partnered with Lenovo to design a DC-SCM for our next-generation servers. The design specification has been published to the OCP (Open Compute Project) contribution database under the name <a href="https://www.opencompute.org/documents/cloudfare-lenovo-project-argus-dc-scm2-0-module-design-spec-rev1-0-pdf" target="_blank" rel="noopener noreferrer">Project Argus</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="a-brief-introduction-to-baseboard-management-controllers">A brief introduction to baseboard management controllers</h2>
-		<a href="https://blog.cloudflare.com/#a-brief-introduction-to-baseboard-management-controllers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A baseboard management controller (BMC) is a specialized processor that can be found in virtually every server product. It allows remote access to the server through a network connection, and provides a rich set of server management features. Some of the commonly used BMC features include server power management, device discovery, sensor monitoring, remote firmware update, system event logging, and error reporting.</p>
-	<p>In a typical server design, the BMC resides on the server motherboard, along with other key components such as the processor, memory, CPLD and so on. This was the norm for generations of server products, but that has changed in recent years as motherboards are increasingly optimized for high-speed signal bandwidth, and servers need to support specialized security requirements. This has made it necessary to decouple the BMC and its related components from the server motherboard, and move them to a smaller common form factor module known as the Datacenter Secure Control Module (DC-SCM).</p>
-	<p>Figure 1 is a picture of a motherboard used on Cloudflare’s previous generation of edge servers. The BMC and its related circuit components are placed on the same printed circuit board as the host CPU.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25m73U3ZAvQYw4peJw4hVq/9d7a4910216dc0e40f97fb0be54e7185/Figure-1.png" alt="" class="kg-image" width="1489" height="1327" loading="lazy">
-
-	</figure>
-	<p>Figure 1: Previous Generation Server Motherboard</p>
-	<p>For Cloudflare’s next generation of edge servers, we are partnering with Lenovo to create a DC-SCM based design. On the left-hand side of Figure 2 is the printed circuit board assembly (PCBA) for the Host Processor Module (HPM). It hosts the CPU, the memory slots, and other components required for the operation and features of the server design. But the BMC and its related circuits have been relocated to a separate PCBA, which is the DC-SCM.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2iVAXVeCVpZn5i06prDbu7/0da85620c8523df66ac7b1b4185baab9/Figure-2.png" alt="" class="kg-image" width="1600" height="863" loading="lazy">
-
-	</figure>
-	<p>Figure 2: Next Generation HPM and DC-SCM</p>
-	<div class="flex anchor relative">
-		<h2 id="benefits-of-dc-scm-based-server-design">Benefits of DC-SCM based server design</h2>
-		<a href="https://blog.cloudflare.com/#benefits-of-dc-scm-based-server-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="pcb-cost-reduction">PCB cost reduction</h3>
-		<a href="https://blog.cloudflare.com/#pcb-cost-reduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As of today, DDR5 memory runs at 6400MT/s (mega transfers per second). In the future DDR5 speed may even increase to 7200MT/s or 8800MT/s. Meanwhile, PCIe Gen5 is running at 32 GT/s (giga transfers per second), doubling the speed rate of PCIe Gen4. Both DDR5 and PCIE Gen5 are key interfaces for the processors used on our next-generation servers.</p>
-	<p>The increasing rates of high-speed IO signals and memory buses are pushing the next generation of server motherboard designs to transition from low-loss to ultra-low loss dielectric printed circuit board (PCB) materials, and higher layer counts in the PCB. At the same time, the speed of BMC and its related circuitry are not progressing so quickly. For example, the physical layer interface of ASPEED AST2600 BMC is only at PCIe Gen2 (5 GT/s).</p>
-	<p>Ultra-low loss dielectric PCB material and higher PCB layer count are both driving factors for higher PCB cost. Another driving factor of PCB cost is the size of the PCB. In a traditional server motherboard design, the size of the server motherboard is larger, since the BMC and its related circuits are placed on the same PCB as the host CPU.</p>
-	<p>By decoupling the BMC and its related circuitry from the host processor module (HPM), we can reduce the size of the relatively more expensive PCB for the HPM. BMC and its related circuitry can be placed on relatively cheaper PCB, with reduced layer count and lossier PCB dielectric materials. For example, in the design of Cloudflare’s next generation of servers, the server motherboard PCB needs to be 14 or more layers, whereas the BMC and its related components can be easily routed with 8 or 10 layers of PCB. In addition, the dielectric material used on DC-SCM PCB is low-loss dielectric — another cost saver compared to ultra-low loss dielectric materials used on HPM PCB.</p>
-	<div class="flex anchor relative">
-		<h3 id="modularized-design-enables-flexibility">Modularized design enables flexibility</h3>
-		<a href="https://blog.cloudflare.com/#modularized-design-enables-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>DC-SCM modularizes server management and security components into a common add-in card form factor, enabling developers to remove customer specific solutions from the more complex components, such as motherboards, to the DC-SCM. This provides flexibility for developers to offer multiple customer-specific solutions, without the need to redesign multiple motherboards for each solution.</p>
-	<p>Developers are able to reuse the DC-SCM from a previous generation of server design, if the management and security requirements remain the same. This reduces the overall cost of upgrading to a new generation of servers, and has the potential to reduce e-waste when a server is decommissioned.</p>
-	<p>Likewise, management and security solution upgrades within a server generation can be carried out separately by modifying or replacing the DC-SCM. The more complex components on the HPM do not need to be redesigned. From a data center perspective, it speeds up the upgrade of management and security hardware across multiple server platforms.</p>
-	<div class="flex anchor relative">
-		<h3 id="unified-interoperable-openbmc-firmware-development">Unified interoperable OpenBMC firmware development</h3>
-		<a href="https://blog.cloudflare.com/#unified-interoperable-openbmc-firmware-development" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Data center secure control interface (DC-SCI) is a standardized hardware interface between DC-SCM and the Host Processor Module (HPM). It provides a basis for electrical interoperability between different DC-SCM and host processor module (HPM) designs.</p>
-	<p>This interoperability makes it possible to have a unified firmware image across multiple DC-SCM designs, concentrating development resources on a single firmware rather than an array of them. The publicly-accessible <a href="https://github.com/openbmc/openbmc" target="_blank" rel="noopener noreferrer">OpenBMC repository</a> provides a perfect platform for firmware developers of different companies to collaborate and develop such unified OpenBMC images. Instead of maintaining a separate BMC firmware image for each platform, we now use a single image that can be applied across multiple server platforms. The device tree specific to each respective server is automatically loaded based on device product information.</p>
-	<p>Using a unified OpenBMC image significantly simplifies the process of releasing BMC firmware to multiple server platforms. Firmware updates and changes are propagated to all supported platforms in a single firmware release.</p>
-	<div class="flex anchor relative">
-		<h2 id="project-argus">Project Argus</h2>
-		<a href="https://blog.cloudflare.com/#project-argus" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The DC-SCM specifications have been driven by the Open Compute Project (OCP) Foundation hardware management workstream, as a way to standardize server management, security, and control features.</p>
-	<p>Cloudflare has partnered with Lenovo on what we call Project Augus, Cloudflare’s first DC-SCM implementation that fully adheres to the <a href="https://www.opencompute.org/wiki/Hardware_Management/Hardware_Management_Module" target="_blank" rel="noopener noreferrer">DC-SCM 2.0 specification</a>. In the DC-SCM 2.0 specifications, a few design items are left open for implementers to decide on the most suitable architectural choices. With the goal of improving interoperability of Cloudflare DC-SCM designs across server vendors and server designs, Project Argus includes documentation on implementation details and design decisions on form factor, mechanical locking mechanism, faceplate design, DC-SCI pin out, BMC chip, BMC pinout, Hardware Root of Trust (HWRoT), HWRoT pinout, and minimum bootable device tree.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7oNQuIJuDpumw8xxTqPtGF/a417a77a0b56b1e5c59e6ee2a093aae1/Figure-3.png" alt="" class="kg-image" width="1139" height="1600" loading="lazy">
-
-	</figure>
-	<p>Figure 3: Project Argus DC-SCM 2.0</p>
-	<p>At the heart of the Project Argus DC-SCM is the ASPEED AST2600 BMC System on Chip (SoC), which when loaded with a compatible OpenBMC firmware, provides a rich set of common features necessary for remote server management. ASPEED AST1060 is used on Project Argus DC-SCM as the HWRoT solution, providing secure firmware authentication, firmware recovery, and firmware update capability. Project Argus DC-SCM 2.0 uses Lattice MachXO3D CPLD with secure boot and dual boot ability as the DC-SCM CPLD to support a variety of IO interfaces including LTPI, SGPIO, UART and GPIOs.</p>
-	<p>The mechanical form factor of Project Argus DC-SCM 2.0 is the horizontal External Form Factor (EFF).</p>
-	<p>Cloudflare and Lenovo have contributed <a href="https://www.opencompute.org/documents/cloudfare-lenovo-project-argus-dc-scm2-0-module-design-spec-rev1-0-pdf" target="_blank" rel="noopener noreferrer">Project Argus Design Specification</a> and reference design files to the <a href="https://www.opencompute.org/documents/9e2b0d227655c9ea04414626aa958a72a913f315-zip" target="_blank" rel="noopener noreferrer">OCP contribution database</a>. Below is a detailed list of our contribution:</p>
-	<ul>
-		<li>
-			<p>SPI, I2C/I3C, UART, LTPI/SGPIO block diagrams</p>
-		</li>
-		<li>
-			<p>DC-SCM PCB stackup</p>
-		</li>
-		<li>
-			<p>DC-SCM Board placements (TOP and BOTTOM layers)</p>
-		</li>
-		<li>
-			<p>DC-SCM schematic PDF file</p>
-		</li>
-		<li>
-			<p>DC-SCI pin definition PDF file</p>
-		</li>
-		<li>
-			<p>Power sequence PDF file</p>
-		</li>
-		<li>
-			<p>DC-SCM bill of materials Excel spreadsheet</p>
-		</li>
-		<li>
-			<p>Minimum bootable device tree requirements</p>
-		</li>
-		<li>
-			<p>Mechanical Drawings PDF files, including card assembly drawing and interlock rail drawing</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="the-security-foundation-for-our-gen-12-hardware">The security foundation for our Gen 12 hardware</h3>
-		<a href="https://blog.cloudflare.com/#the-security-foundation-for-our-gen-12-hardware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare has been innovating around <a href="https://blog.cloudflare.com/tag/hardware">server design</a> for many years, delivering increased performance per watt and reduced carbon footprints. We are excited to integrate Project Argus DC-SCM 2.0 into our next-generation, Cloudflare Gen 12 servers. Stay tuned for more exciting updates on Cloudflare Gen 12 hardware design!</p>
-</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="404" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=715&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=640&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=715&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=750&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=828&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=1080&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=1280&amp;h=723&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=1430&amp;h=808&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2022 Embedded Image - B9yezA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HT2ZNJF079C0Q35JMAJ8.png&amp;w=1600&amp;h=905&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="905" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="404" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Historically, data center servers have used motherboards that included all key components on a single circuit board. The DC-SCM (Datacenter-ready Secure Control Module) decouples server management and security functions from a traditional server motherboard, enabling development of server management and security solutions independent of server architecture. It also provides opportunities for reducing server printed circuit board (PCB) material cost, and allows unified firmware images to be developed.</p>
+<p>Today, Cloudflare is announcing that it has partnered with Lenovo to design a DC-SCM for our next-generation servers. The design specification has been published to the OCP (Open Compute Project) contribution database under the name <a href="https://www.opencompute.org/documents/cloudfare-lenovo-project-argus-dc-scm2-0-module-design-spec-rev1-0-pdf" target="_blank" rel="noopener noreferrer">Project Argus</a>.</p>
+<h2>A brief introduction to baseboard management controllers</h2>
+<p>A baseboard management controller (BMC) is a specialized processor that can be found in virtually every server product. It allows remote access to the server through a network connection, and provides a rich set of server management features. Some of the commonly used BMC features include server power management, device discovery, sensor monitoring, remote firmware update, system event logging, and error reporting.</p>
+<p>In a typical server design, the BMC resides on the server motherboard, along with other key components such as the processor, memory, CPLD and so on. This was the norm for generations of server products, but that has changed in recent years as motherboards are increasingly optimized for high-speed signal bandwidth, and servers need to support specialized security requirements. This has made it necessary to decouple the BMC and its related components from the server motherboard, and move them to a smaller common form factor module known as the Datacenter Secure Control Module (DC-SCM).</p>
+<p>Figure 1 is a picture of a motherboard used on Cloudflare’s previous generation of edge servers. The BMC and its related circuit components are placed on the same printed circuit board as the host CPU.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="637" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=715&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=640&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=715&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=750&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=828&amp;h=738&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=1080&amp;h=962&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=1280&amp;h=1140&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=1430&amp;h=1274&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2022 Embedded Image - 3SDnms" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451AVPB05E494Y90TXPND3.png&amp;w=1489&amp;h=1327&amp;f=webp" data-lightbox-width="1489" data-lightbox-height="1327" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="637" class="pt-portable-image-media"></div>
+</figure>
+<p>Figure 1: Previous Generation Server Motherboard</p>
+<p>For Cloudflare’s next generation of edge servers, we are partnering with Lenovo to create a DC-SCM based design. On the left-hand side of Figure 2 is the printed circuit board assembly (PCBA) for the Host Processor Module (HPM). It hosts the CPU, the memory slots, and other components required for the operation and features of the server design. But the BMC and its related circuits have been relocated to a separate PCBA, which is the DC-SCM.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="386" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=640&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=750&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=828&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=1080&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=1280&amp;h=691&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=1430&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2022 Embedded Image - EwyAT6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45G8EA939W28SBKNC4VWSX.png&amp;w=1600&amp;h=863&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="863" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="386" class="pt-portable-image-media"></div>
+</figure>
+<p>Figure 2: Next Generation HPM and DC-SCM</p>
+<h2>Benefits of DC-SCM based server design</h2>
+<h3>PCB cost reduction</h3>
+<p>As of today, DDR5 memory runs at 6400MT/s (mega transfers per second). In the future DDR5 speed may even increase to 7200MT/s or 8800MT/s. Meanwhile, PCIe Gen5 is running at 32 GT/s (giga transfers per second), doubling the speed rate of PCIe Gen4. Both DDR5 and PCIE Gen5 are key interfaces for the processors used on our next-generation servers.</p>
+<p>The increasing rates of high-speed IO signals and memory buses are pushing the next generation of server motherboard designs to transition from low-loss to ultra-low loss dielectric printed circuit board (PCB) materials, and higher layer counts in the PCB. At the same time, the speed of BMC and its related circuitry are not progressing so quickly. For example, the physical layer interface of ASPEED AST2600 BMC is only at PCIe Gen2 (5 GT/s).</p>
+<p>Ultra-low loss dielectric PCB material and higher PCB layer count are both driving factors for higher PCB cost. Another driving factor of PCB cost is the size of the PCB. In a traditional server motherboard design, the size of the server motherboard is larger, since the BMC and its related circuits are placed on the same PCB as the host CPU.</p>
+<p>By decoupling the BMC and its related circuitry from the host processor module (HPM), we can reduce the size of the relatively more expensive PCB for the HPM. BMC and its related circuitry can be placed on relatively cheaper PCB, with reduced layer count and lossier PCB dielectric materials. For example, in the design of Cloudflare’s next generation of servers, the server motherboard PCB needs to be 14 or more layers, whereas the BMC and its related components can be easily routed with 8 or 10 layers of PCB. In addition, the dielectric material used on DC-SCM PCB is low-loss dielectric — another cost saver compared to ultra-low loss dielectric materials used on HPM PCB.</p>
+<h3>Modularized design enables flexibility</h3>
+<p>DC-SCM modularizes server management and security components into a common add-in card form factor, enabling developers to remove customer specific solutions from the more complex components, such as motherboards, to the DC-SCM. This provides flexibility for developers to offer multiple customer-specific solutions, without the need to redesign multiple motherboards for each solution.</p>
+<p>Developers are able to reuse the DC-SCM from a previous generation of server design, if the management and security requirements remain the same. This reduces the overall cost of upgrading to a new generation of servers, and has the potential to reduce e-waste when a server is decommissioned.</p>
+<p>Likewise, management and security solution upgrades within a server generation can be carried out separately by modifying or replacing the DC-SCM. The more complex components on the HPM do not need to be redesigned. From a data center perspective, it speeds up the upgrade of management and security hardware across multiple server platforms.</p>
+<h3>Unified interoperable OpenBMC firmware development</h3>
+<p>Data center secure control interface (DC-SCI) is a standardized hardware interface between DC-SCM and the Host Processor Module (HPM). It provides a basis for electrical interoperability between different DC-SCM and host processor module (HPM) designs.</p>
+<p>This interoperability makes it possible to have a unified firmware image across multiple DC-SCM designs, concentrating development resources on a single firmware rather than an array of them. The publicly-accessible <a href="https://github.com/openbmc/openbmc" target="_blank" rel="noopener noreferrer">OpenBMC repository</a> provides a perfect platform for firmware developers of different companies to collaborate and develop such unified OpenBMC images. Instead of maintaining a separate BMC firmware image for each platform, we now use a single image that can be applied across multiple server platforms. The device tree specific to each respective server is automatically loaded based on device product information.</p>
+<p>Using a unified OpenBMC image significantly simplifies the process of releasing BMC firmware to multiple server platforms. Firmware updates and changes are propagated to all supported platforms in a single firmware release.</p>
+<h2>Project Argus</h2>
+<p>The DC-SCM specifications have been driven by the Open Compute Project (OCP) Foundation hardware management workstream, as a way to standardize server management, security, and control features.</p>
+<p>Cloudflare has partnered with Lenovo on what we call Project Augus, Cloudflare’s first DC-SCM implementation that fully adheres to the <a href="https://www.opencompute.org/wiki/Hardware_Management/Hardware_Management_Module" target="_blank" rel="noopener noreferrer">DC-SCM 2.0 specification</a>. In the DC-SCM 2.0 specifications, a few design items are left open for implementers to decide on the most suitable architectural choices. With the goal of improving interoperability of Cloudflare DC-SCM designs across server vendors and server designs, Project Argus includes documentation on implementation details and design decisions on form factor, mechanical locking mechanism, faceplate design, DC-SCI pin out, BMC chip, BMC pinout, Hardware Root of Trust (HWRoT), HWRoT pinout, and minimum bootable device tree.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1004" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=715&amp;h=1004&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=640&amp;h=899&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=715&amp;h=1004&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=750&amp;h=1053&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=828&amp;h=1163&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=1080&amp;h=1517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=1280&amp;h=1797&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=1430&amp;h=2008&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2022 Embedded Image - 6iUuAI" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZJED2Y3335BS50PH2QGS.png&amp;w=1139&amp;h=1600&amp;f=webp" data-lightbox-width="1139" data-lightbox-height="1600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1004" class="pt-portable-image-media"></div>
+</figure>
+<p>Figure 3: Project Argus DC-SCM 2.0</p>
+<p>At the heart of the Project Argus DC-SCM is the ASPEED AST2600 BMC System on Chip (SoC), which when loaded with a compatible OpenBMC firmware, provides a rich set of common features necessary for remote server management. ASPEED AST1060 is used on Project Argus DC-SCM as the HWRoT solution, providing secure firmware authentication, firmware recovery, and firmware update capability. Project Argus DC-SCM 2.0 uses Lattice MachXO3D CPLD with secure boot and dual boot ability as the DC-SCM CPLD to support a variety of IO interfaces including LTPI, SGPIO, UART and GPIOs.</p>
+<p>The mechanical form factor of Project Argus DC-SCM 2.0 is the horizontal External Form Factor (EFF).</p>
+<p>Cloudflare and Lenovo have contributed <a href="https://www.opencompute.org/documents/cloudfare-lenovo-project-argus-dc-scm2-0-module-design-spec-rev1-0-pdf" target="_blank" rel="noopener noreferrer">Project Argus Design Specification</a> and reference design files to the <a href="https://www.opencompute.org/documents/9e2b0d227655c9ea04414626aa958a72a913f315-zip" target="_blank" rel="noopener noreferrer">OCP contribution database</a>. Below is a detailed list of our contribution:</p>
+<ul>
+	<li>SPI, I2C/I3C, UART, LTPI/SGPIO block diagrams</li>
+	<li>DC-SCM PCB stackup</li>
+	<li>DC-SCM Board placements (TOP and BOTTOM layers)</li>
+	<li>DC-SCM schematic PDF file</li>
+	<li>DC-SCI pin definition PDF file</li>
+	<li>Power sequence PDF file</li>
+	<li>DC-SCM bill of materials Excel spreadsheet</li>
+	<li>Minimum bootable device tree requirements</li>
+	<li>Mechanical Drawings PDF files, including card assembly drawing and interlock rail drawing</li>
+</ul>
+<h3>The security foundation for our Gen 12 hardware</h3>
+<p>Cloudflare has been innovating around <a href="https://blog.cloudflare.com/tag/hardware">server design</a> for many years, delivering increased performance per watt and reduced carbon footprints. We are excited to integrate Project Argus DC-SCM 2.0 into our next-generation, Cloudflare Gen 12 servers. Stay tuned for more exciting updates on Cloudflare Gen 12 hardware design!</p>

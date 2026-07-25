@@ -1,0 +1,839 @@
+<p>AI (<a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>Artificial Intelligence ofwel kunstmatige intelligentie</u></a>) is een breed concept dat machines omvat die menselijke cognitieve taken simuleren of kopiëren, waarbij <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer"><u>machine learning</u></a> (ML) als de datagestuurde motor dienst doet. Zowel AI als ML bestaan al tientallen jaren, maar kregen een nieuwe impuls toen <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>Generative AI</u></a> (AI-modellen die tekst, afbeeldingen, audio, code en video kunnen creëren) na de <a href="https://openai.com/index/chatgpt" target="_blank" rel="noopener noreferrer"><u>release</u></a> van ChatGPT van OpenAI eind 2022 enorm populair werd. In dit blogartikel onderzoeken we de populairste generatieve AI-tools en hoe die zich in 2024 en begin 2025 hebben ontwikkeld. We proberen ook antwoord te geven op vragen zoals: met hoeveel is het verkeer naar deze generative AI-websites volgens Cloudflare toegenomen? Hoeveel van dat verkeer was schadelijk? En meer.</p>
+<p>Hiervoor gebruiken we de geaggregeerde gegevens van onze <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 DNS-resolver</u></a> om de populariteit van specifieke generatieve AI-tools te meten. We doen dit voor ons <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>jaaroverzicht</u></a> en nu ook op de <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>DNS-domeinenranglijstpagina</u></a> van Cloudflare Radar, waar we gerelateerde domeinen voor elke tool samenvoegen en sites identificeren die tools aan gebruikers leveren. Voor de algemene verkeerstoenames en aanvalstrends vertrouwen we op de geaggregeerde gegevens van de generative AI-klanten die Cloudflare gebruiken voor hun prestaties (inclusief AI-inferentie) en beveiliging.</p>
+<p>Belangrijkste punten:</p>
+<ul>
+	<li><strong>ChatGPT staat nog steeds op de eerste plaats:</strong> ChatGPT van OpenAI blijft de meest populaire generatieve AI en schommelt rond de top 50 van alle internetdomeinen. Eind 2023 was dat nog een 200e plaats.</li>
+	<li><strong>Snelle verkeerstoename:</strong> het maandelijkse verkeer naar generatieve AI-tools is van 1 februari 2024 tot 1 maart 2025 met met 251% toegenomen.</li>
+	<li><strong>Nieuwkomers in opkomst:</strong> de Chinese chatbot DeepSeek en Grok/xAI zijn snel geklommen, wat aangeeft hoe snel nieuwkomers in de AI-sector voet aan de grond kunnen krijgen.</li>
+	<li><strong>Wereldwijd bereik met regionale verschillen:</strong> de VS staat op kop met 23% van de bezoekers aan generatieve AI-websites, maar Azië domineert sommige platforms zoals poe.com. Brazilië blijkt ook een grote gebruiker van diverse AI-tools te zijn.</li>
+	<li><strong>Doelwit van cyberaanvallen:</strong> Cloudflare heeft het afgelopen jaar meer dan 197 miljard potentiële aanvalsverzoeken geblokkeerd, waarvan 39 miljard deel uitmaakten van DDoS-aanvalscampagnes die met name algemene AI-chatbots en sites voor het genereren van afbeeldingen hebben getroffen.</li>
+</ul>
+<h3>Populariteitsranglijst voor generatieve AI-tools: nieuwkomers</h3>
+<p>We onderzoeken eerst de populariteit van generatieve AI-tools met behulp van het <a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>nieuwe AI-tabblad van Cloudflare Radar</u></a>. Het nieuwste lid van onze top 10 is DeepSeek, een Chinese chatbot die op 10 januari 2025 werd gelanceerd. DeepSeek kwam op 26 januari 2025 binnen op nummer 9, steeg naar nummer 3 op 29 januari (samenvallend met het Chinese Nieuwjaar) en behield die positie tot 4 februari toen de chatbot zakte naar de huidig 6e plaats.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Generative AI services popularity worldwide" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1600&amp;h=900&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Ook wordt hier een andere AI-chatbot uitgelicht die de laatste tijd steeds populairder is geworden: Grok/xAI van X. Deze generatieve AI-tool bracht in februari de Android-app uit en kreeg pas na 17 februari 2025 meer <a href="https://edition.cnn.com/2025/02/18/tech/grok-3-release-elon-musk/index.html" target="_blank" rel="noopener noreferrer"><u>aandacht</u></a> na de lancering van het Grok-3-model. In onze generative AI-ranglijst kwam DeepSeek voor het eerst op 21 februari 2025 in de top 10 terecht, op de 9e plaats. Daarna stond DeepSeek kortstondig op 8, de gebruikelijke plek van Claude, en momenteel schommelt de tool tussen de 9e en 10e plaats.</p>
+<p>Dit is de huidige generative AI top 10 van de <a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-01-01&amp;dateEnd=2025-03-06" target="_blank" rel="noopener noreferrer"><u>AI-pagina</u></a> van Cloudflare Radar op 9 maart 2025, met ChatGPT/OpenAI op nummer 1 sinds het begin van het jaar (een trend die ook in de voorgaande jaren werd waargenomen, zie onderstaande tabel).</p>
+<div id="html-block-k1o" class="html-block"><iframe class="cf-radar-embed" width="800" height="450" src="https://radar.cloudflare.com/embed/AiServicesRankingXY?dateStart=2025-01-01&amp;dateEnd=2025-03-09&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.hoveredSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - De populariteit van generatieve AI-tools" loading="lazy" style="border:0;max-width:100%"></iframe></div>
+<p>Teneinde de wijzigingen in de rangschikking en trends duidelijker te maken, worden in de onderstaande tabel aan de linkerkant de posities van 1 februari tot en met 1 maart 2025 weergegeven (maandelijks gemiddelde), met een kleurgecodeerde vergelijking met de lijst uit 2024. De tools die sinds 2024 zijn gedaald, worden in het rood weergegeven en nieuwe of hoger gerangschikte tools in het groen. De tweede kolom toont de top 10 van ons <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>jaaroverzicht van 2024</u></a> (inclusief een vergelijking met het voorgaande jaar) en de derde kolom de top 10 uit 2023.</p>
+<div id="html-block-k1u" class="html-block">
+	<style>
+		#html-block-k1u .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k1u .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1u .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1u .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<figure class="table" style="width:100%">
+		<table class="tg ck-table-resized">
+			<colgroup>
+				<col style="width:31.68%">
+				<col style="width:33.12%">
+				<col style="width:35.2%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>Top 10 generatieve AI-tools&nbsp;</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>in februari 2025</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT/OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nr. 4 in 2024</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Codeium (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>nr. 3</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nr. 7</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">DeepSeek (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nieuw</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity </span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>(nr. 6</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Claude/Anthropic (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>nr. 5</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Hugging Face(</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nieuw</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Suno AI (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nieuw</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>Top 10 generatieve AI-tools in 2024 (</strong></span></span><a target="_blank" href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services/#ready-to-face-the-generative-ai-era"><span style="background-color:transparent;color:#15C"><span style="font-style:normal"><strong><u>Radar Year in Review</u></strong></span></span></a><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>)</strong></span></span><br><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT/OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Codeium (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nieuw</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot (nr. 3 in 2023)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Claude/Anthropic (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nieuw</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nieuw</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Wordtune (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>nr. 7</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Poe (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>nr. 5</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Tabnine (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>nieuw</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>Top 10 generatieve AI-tools in 2023 (</strong></span></span><a target="_blank" href="https://radar.cloudflare.com/year-in-review/2023#internet-services"><span style="background-color:transparent;color:#15C"><span style="font-style:normal"><strong><u>Radar Year in Review</u></strong></span></span></a><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>)</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT/OpenAI</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Hugging Face</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Poe</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Wordtune</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Google Bard</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ProWritingAid</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Voicemod</span></span></th>
+				</tr>
+			</thead>
+		</table>
+	</figure>
+</div>
+<p>Behalve de eerder genoemde DeepSeek, Grok/xAI en ChatGPT/OpenAI, bevat de top 10 ook andere chatbots, zoals Claude van Anthropic, en andere soorten generatieve AI-tools. Character.AI is een gespecialiseerd platform voor de creatie van en interactie met op karakters gebaseerde persoonlijkheden, en staat op 2. En Perplexity (nr. 7) functioneert als een AI-zoekmachine, terwijl QuillBot (nr. 3) een door AI aangestuurde schrijfassistent is voor parafraseringen, grammatica en samenvattingen. Codeium (nr. 4) met productiviteitsdiensten voor ontwikkelaars, zoals Windsurf AI, en GitHub Copilot (nr. 5) doen dienst als AI-coderingsassistenten.</p>
+<p>Dan is er ook Hugging Face (nr. 9), een open-sourcehub voor AI-modellen (we tellen deze dienst mee als een generatief AI-platform, net zoals we dat doen voor andere AI-modelfacilitators zoals Replicate en Stability AI), en Suno AI (nr. 10), een muziekgenerator die liedjes maakt op basis van tekstprompts.</p>
+<p>We zeiden eerder dat Grok/xAI eind februari in de top 10 terechtkwam, maar aangezien we het maandelijkse gemiddelde van februari gebruiken, staat deze dienst hier op nr. 11. Benieuwd naar de rest van de top 20 van februari 2025? Hier volgt het overzicht van diverse AI-coderingstools die sterk vertegenwoordigd zijn: naast Codeium en GitHub Copilot staan ook Sider AI en Tabnine op de lijst.</p>
+<p>11 Grok / xAI</p>
+<p>12 Poe</p>
+<p>13 Sider AI</p>
+<p>14 Civitai</p>
+<p>15 Tabnine</p>
+<p>16 Google Gemini</p>
+<p>17 Voicemod</p>
+<p>18 GliaCloud</p>
+<p>19 Runway ml</p>
+<p>20 Midjourney</p>
+<p>We hebben de populariteitsranglijsten voor generative AI in het jaaroverzicht <a href="https://radar.cloudflare.com/year-in-review/2023#internet-services" target="_blank" rel="noopener noreferrer"><u>van 2023</u></a> en <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024</u></a> van Cloudflare Radar gepubliceerd. In beide lijsten staat ChatGPT van OpenAI consequent op nummer 1. Zoals vermeld in ons <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>blogartikel</u></a> steeg ChatGPT in <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024</u></a> ook in onze algemene domeinenranglijst, en tegen het einde van het jaar bereikte deze tool bijna de top 50. (In 2023 eindigde ChatGPT net niet in de top 100).</p>
+<h3>De invloed van ChatGPT op de algemene ranglijst&nbsp;</h3>
+<p>Een recente toevoeging aan Cloudflare Radar is de bijgewerkte pagina met domeinenranglijsten in onze <a href="https://radar.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS-sectie</u></a>, met enkele duidelijke trends. Daar staat nu onze <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>top 100 van algemene internetservices</u></a> naast een lijst met de top 100 domeinen. ChatGPT/OpenAI, de toonaangevende generatieve AI-tool, staat doorgaans op of rond de 55e plaats op weekdagen en op of rond de 60e plaats in het weekend (gebaseerd op data van begin maart 2025), naast niet-AI-services zoals Temu, eBay en Disney Plus.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="574" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=640&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=750&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=828&amp;h=665&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1080&amp;h=867&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1280&amp;h=1028&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1430&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2764" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1294&amp;h=1038&amp;f=webp" data-lightbox-width="1294" data-lightbox-height="1038" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="574" class="pt-portable-image-media"></div>
+</figure>
+<p>Kijken we naar eerdere trends, zoals vermeld in onze&nbsp;<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>Jaaroverzichtsblog</u></a>, dan stond ChatGPT/OpenAI begin 2023 rond de 200e plaats en had tegen het einde van het jaar bijna de top 100 bereikt. In 2024 startte ChatGPT net buiten de top 100, bereikte de top 60 in mei na de <a href="https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free" target="_blank" rel="noopener noreferrer"><u>introductie van het 4o-model</u></a> en staat sinds september 2024 bijna in de top 50, omdat dan de werknemers en studenten weer terug aan het werk zijn.</p>
+<h3>Locatieverdeling van webbezoekers: N&amp;Z-Amerika, Europa en Azië</h3>
+<p>Op de <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>pagina Domeininformatie van Cloudflare Radar</u></a> kunnen gebruikers de locatiepopulariteit van een <a href="https://radar.cloudflare.com/domains/domain" target="_blank" rel="noopener noreferrer"><u>specifiek domein</u></a> bekijken (afgelopen zeven dagen), afgeleid van de <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> resolververkeersgegevens van Cloudflare gedurende een periode van 48 uur (standaardinstelling van Radar) op 3-4 maart 2025.</p>
+<p>In dit geval verkrijgt het domein <a href="https://radar.cloudflare.com/domains/domain/chatgpt.com" target="_blank" rel="noopener noreferrer"><u>chatgpt.com</u></a> het grootste deel van het DNS-verkeer uit de Verenigde Staten (17%), gevolgd door Duitsland (7%), Brazilië (4%), Indonesië (4%) en India (4%).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="394" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=640&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=750&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=828&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1080&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1280&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1430&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1920&amp;h=1057&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1057" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="394" class="pt-portable-image-media"></div>
+</figure>
+<p>In het geval van de nieuwkomeling <a href="https://radar.cloudflare.com/domains/domain/deepseek.com" target="_blank" rel="noopener noreferrer"><u>deepseek.com</u></a>, is de VS de hoofdlocatie, met 14% van het DNS-verkeer van dat domein, gevolgd door China (11%), Duitsland (10%), Brazilië (7%) en Hongkong (5%).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image10" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1920&amp;h=1057&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1057" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://radar.cloudflare.com/domains/domain/grok.com" target="_blank" rel="noopener noreferrer"><u>Grok.com</u></a> verkrijgt daarentegen 20% van al het verkeer uit de VS, 8% uit Hongkong, 6% uit Duitsland, 6% uit Japan en 6% uit Vietnam, wat duidt op een sterke Aziatische vertegenwoordiging in de top 5-locaties. Azië is nog dominanter voor een ander bekend Generative AI chatbot-domein, <a href="https://radar.cloudflare.com/domains/domain/poe.com" target="_blank" rel="noopener noreferrer"><u>poe.com</u></a>, met Hongkong op nummer 1 (29% van het verkeer), gevolgd door de VS (13%), Japan (6%), China (6%) en Singapore (5%).</p>
+<p>Hugging Face (<a href="https://radar.cloudflare.com/domains/domain/huggingface.co" target="_blank" rel="noopener noreferrer"><u>huggingface.co</u></a>), het Generative AI-modellenplatform heeft ook de VS als toplocatie (34% van het verkeer), maar de top 5 bestaat uit vier Europese landen: Frankrijk (6%), het Verenigd Koninkrijk (6%), Duitsland (4%) en Zweden (4%).</p>
+<p>Als we specifieker kijken naar door AI aangestuurde coderingstools, komt het DNS-verkeer voor <a href="https://radar.cloudflare.com/domains/domain/githubcopilot.com" target="_blank" rel="noopener noreferrer"><u>githubcopilot.com</u></a> voornamelijk uit de Verenigde Staten (22%), gevolgd door Duitsland (6%), Hongkong (5%), India (5%) en Japan (5%). Een soortgelijk patroon is zichtbaar voor <a href="https://radar.cloudflare.com/domains/domain/codeium.com" target="_blank" rel="noopener noreferrer"><u>codeium.com</u></a>, waarbij de VS voorop loopt met 15%, gevolgd door Hongkong (8%), Japan (7%), Brazilië (5%) en Nederland (5%). Evenzo verkrijgt <a href="https://radar.cloudflare.com/domains/domain/cursor.com" target="_blank" rel="noopener noreferrer"><u>Cursor.com</u></a> 20% van zijn DNS-verkeer uit de VS, gevolgd door Hongkong (10%), India (6%), China (6%) en Japan (5%). <a href="https://radar.cloudflare.com/domains/domain/tabnine.com" target="_blank" rel="noopener noreferrer"><u>Tabnine.com</u></a>, een andere AI-tool voor coderingsassistentie, verkrijgt het meeste verkeer uit de VS (15%), gevolgd door India (6%), Brazilië (5%), Duitsland (5%) en Hongkong (5%).</p>
+<p>De DNS-verkeersgegevens van Cloudflare Radar wijzen op een sterk gebruik van alle grote generative AI- en AI-coderingstools in de VS, waarbij de regionale acceptatie per platform verschilt. (Het is vermeldenswaard dat 1.1.1.1 een grotere gebruikersbasis in de VS heeft, maar dat deze specifieke trends op basis van de domeinen variëren.)</p>
+<ul>
+	<li>Azië domineert op poe.com en de AI-coderingstools zoals Codeium en Cursor.</li>
+	<li>Europa speelt een belangrijke rol voor Hugging Face en GitHub Copilot.</li>
+	<li>Brazilië levert een opvallende bijdrage, vooral wat betreft DeepSeek en Tabnine.</li>
+</ul>
+<h3>Algemene verkeerstoename voor generatieve AI &nbsp;</h3>
+<p>Wat generative AI-klanten betreft heeft Cloudflare een uniek perspectief op de sector. Wij beschermen veel generatieve AI-tools, zowel groot als klein. Van een groep generative AI-klanten (sommige recent populair geworden, andere gevestigde chatbot- of AI-generatoren en weer andere pure nieuwkomers) hebben we zowel de HTTP-verzoekgegevens van de afgelopen maanden als de <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer"><u>applicatielaag-aanvalstrends</u></a> verzameld.</p>
+<p>We beginnen met de toename van het HTTP-verzoekverkeer van het afgelopen jaar. Van 1 februari 2024 tot en met 1 maart 2025 (13 maanden, zodat we februari 2024 met februari 2025 kunnen vergelijken) <strong>groeide het maandelijkse verkeer met in totaal 251%</strong> en werd meer dan 2% van de door Cloudflare verwerkte verzoeken als potentiële aanvallen geïdentificeerd en onschadelijk gemaakt.</p>
+<p>We zeiden al dat er bij de meeste generative AI-websites sprake was van een verkeerstoename. Deze groei van 251% omvat ook recente generative AI-klanten, hoewel deze de groeitrend over het algemeen niet sterk hebben beïnvloed. Als we generative AI-klanten uitsluiten die zich van eind 2024 tot begin 2025 bij Cloudflare hebben aangesloten, is de jaarlijkse groei 234%.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=640&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=750&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=828&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1080&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1280&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1430&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image11" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1920&amp;h=900&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="335" class="pt-portable-image-media"></div>
+</figure>
+<p>De volgende weergave op dagniveau maakt de verwachte daling tijdens de kerst- en nieuwjaarsvakantie duidelijk zichtbaar. En er is een andere duidelijke trend: Cloudflare's generative AI-klanten zien meer gebruik doordeweeks dan in het weekend, wat suggereert dat deze tools voornamelijk voor werk worden gebruikt. De duidelijke daling tijdens de feestdagen is ook in de zomer op het noordelijk halfrond zichtbaar. Zo is er bijvoorbeeld een lichte daling van het piekverkeer in de maand juli (vergelijkbaar met wat we doorgaans ook voor het algemene verkeer in de meeste landen zien).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="222" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=715&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=640&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=715&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=750&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=828&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1080&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1280&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1430&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image12" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1920&amp;h=596&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="596" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="222" class="pt-portable-image-media"></div>
+</figure>
+<p>We beschikken ook over informatie over de locaties met de meeste generative AI-webbezoekers. De VS staat op nummer 1 van de top 5, met 23% van alle verzoeken in deze categorie, gevolgd door India (8%), Brazilië (5%), Indonesië (4%) en de Filipijnen (4%). Europese landen, zoals het Verenigd Koninkrijk en Duitsland, staan op de tweede plaats. Hieronder staat de top 50 die we onder de loep zullen nemen. Merk op dat Egypte het eerste Afrikaanse land is dat op de ranglijst verschijnt, op nr. 32, met 0,7%, hetzelfde percentage als Zuid-Afrika.</p>
+<p><strong>Toplocaties op basis van verkeersaandeel naar generative AI-websites</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Plaats</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Land</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Percentage van totaal</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Plaats</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Land</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Percentage van totaal</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Verenigde Staten</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>22,7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>26</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Singapore</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,1%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>India</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8,3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>27</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Oekraïne</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Brazilië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,9%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Taiwan</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,9%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Indonesië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>29</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Thailand</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,9%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Filippijnen</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Chili</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>6</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Verenigd Koninkrijk</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>31</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Verenigde Arabische Emiraten</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Duitsland</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>32</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Egypte</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Canada</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>33</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Saoedi-Arabië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>9</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Frankrijk</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>34</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zuid-Afrika</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Mexico</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>35</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zweden</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Japan</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>36</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>België</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>12</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Rusland</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>37</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bangladesh</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Spanje</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>38</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zwitserland</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Australië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>39</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Marokko</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>15</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zuid-Korea</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>40</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Ecuador</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>16</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Vietnam</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,6%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>41</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Israël</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Italië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>42</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Nigeria</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>18</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Maleisië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>43</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Roemenië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>19</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turkije</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>44</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Portugal</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>20</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Polen</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>45</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Kazachstan</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>21</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Nederland</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>46</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Oostenrijk</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>22</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Argentinië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>47</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Tsjechië</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>23</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Colombia</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>48</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Hongkong</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pakistan</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>49</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Algerije</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>25</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Peru</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>50</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Denemarken</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,4%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Aanvallen gericht op Generative AI-websites</h3>
+<p>Op het gebied van beveiliging zijn websites met generatieve AI belangrijke doelwitten voor DDoS-aanvallen geworden, omdat ze steeds meer aandacht hebben gekregen en populairder zijn worden. Onlangs heeft ons Cloudforce One team een dreigingsanalyse gepubliceerd over aanvallen door Anonymous Sudan die gericht zijn op AI-gerelateerde bedrijven: <a href="https://www.cloudflare.com/threat-intelligence/research/report/inside-lameduck-analyzing-anonymous-sudans-threat-operations" target="_blank" rel="noopener noreferrer"><u>Inside LameDuck: Analyzing Anonymous Sudan’s Threat Operations</u></a>. In dit rapport leggen ze uit hoe het Amerikaanse ministerie van Justitie twee Soedanese broers achter LameDuck heeft aangeklaagd en hen in verband heeft gebracht met meer dan 35.000 DDoS-aanvallen via het Skynet-botnet. De zaak legt zowel de politieke als financiële motieven achter hun activiteiten bloot en onderstreept de wereldwijde inspanningen — waaronder die van Cloudflare — om de cyberveiligheid te versterken.</p>
+<p>In de afgelopen 13 maanden, van 1 februari 2024 tot 1 maart 2025, heeft Cloudflare <strong>197 miljard verzoeken </strong>geblokkeerd als potentiële aanvallen. Daarvan waren <strong>39 miljard</strong> verzoeken onderdeel van <strong>DDoS-aanvallen</strong> gericht op de generative AI-websites.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1920&amp;h=912&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="912" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
+</figure>
+<p>Wat betreft het aantal geblokkeerde kwaadaardige verzoeken, werd in juni 2024 het hoogste aantal potentiële aanvallen door Cloudflare geblokkeerd, gevolgd door januari 2025. De hoogste activiteit op het gebied van DDoS-aanvallen vond plaats in januari 2025, gevolgd door november 2024 en februari 2024.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="331" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=715&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=640&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=715&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=750&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=828&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1080&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1280&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1430&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image14" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1920&amp;h=888&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="888" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="331" class="pt-portable-image-media"></div>
+</figure>
+<p>Als we het dagelijkse DDoS-verkeer nader bekijken, vond de grootste aanval plaats op 23 februari 2024, toen 3,7 miljard verzoeken werden geblokkeerd als onderdeel van een DDoS-aanval. De op één na grootste was een DDoS-aanval met 1,5 miljard verzoeken op 13 november 2024. Daarnaast vonden er tussen 20 en 31 januari 2025 een reeks meerdaagse DDoS-aanvallen plaats, waarbij op 29 januari het hoogste aantal DDoS-aanvalsgerelateerde verzoeken werd geregistreerd, meer dan een miljard (in totaal 7,3 miljard gedurende de maand).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="228" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=640&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=750&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=828&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1080&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1280&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1430&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1920&amp;h=612&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="612" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="228" class="pt-portable-image-media"></div>
+</figure>
+<p>Tijdens de DDoS-aanval van 23 februari 2024, die gericht was op een specifieke generative AI-klant, werd meer dan 20% van alle verzoeken voor alle generative AI-klanten als onderdeel van de aanval geblokkeerd.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="223" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=640&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=750&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=828&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1080&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1280&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1430&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1920&amp;h=599&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="599" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="223" class="pt-portable-image-media"></div>
+</figure>
+<p>Als we de DDoS-aanvallen op die specifieke generative AI-klant nader bekijken, zien we dat de aanval op 22 februari 2024 om 22:45 uur UTC begon en ruim acht uur lang duurde, met onafgebroken verkeerspieken (de hoogste piek was 270.000 verzoeken per seconde). Er volgden nog meer aanvallen, waarvan de grootste plaatsvond op 26 februari 2024 om 3.45 uur UTC. De aanval duurde drie minuten en bereikte een piek van 309.000 verzoeken per seconde.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="345" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=640&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=750&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=828&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1080&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1280&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1430&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1422&amp;h=687&amp;f=webp" data-lightbox-width="1422" data-lightbox-height="687" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="345" class="pt-portable-image-media"></div>
+</figure>
+<p>Een andere populaire generative AI-klant werd van 25 tot en met 31 januari 2025 het doelwit van een DDoS-campagne, waarbij het verkeer op 30 januari een piek van 523.000 verzoeken per seconde bereikte.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="334" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=640&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=750&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=828&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1080&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1280&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1430&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1920&amp;h=897&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="897" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="334" class="pt-portable-image-media"></div>
+</figure>
+<p>Een andere meting in dezelfde periode van februari 2024 tot februari 2025 is het type generatieve AI-websites waarop de meeste DDoS-aanvallen waren gericht. Algemene AI-chatbots ontvingen ruim 80% van alle geblokkeerde verzoeken. Daarmee waren zij het voornaamste doelwit.</p>
+<p><strong>Doelwitten voor DDoS-aanvallen per generatieve AI-categorie</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Categorie</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Percentage</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Algemene chatbots</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>82,7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-afbeeldinggeneratoren</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8,2%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Code-assistenten</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Overige</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-onderzoek en -infrastructuur</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,3%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-muziekgenerator</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1,2%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI voor schrijven &amp; content</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI voor spraak en video</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0,3%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Als we echter kijken naar het percentage van het totale verkeer dat binnen elke categorie als een DDoS-aanval werd geblokkeerd, dan blijkt dat AI-afbeeldinggeneratorwebsites het hoogste percentage te verduren kregen: meer dan 50% van het totale verkeer werd geblokkeerd.</p>
+<p><strong>Websitecategorie met het hoogste percentage verkeer dat als een DDoS-aanval werd geblokkeerd&nbsp;</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Categorie</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Geblokkeerde DDoS (%)</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-afbeeldinggenerator</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>50,8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-chatbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>31%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-zoekopdracht</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>9,4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-code-assistent</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>6,8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-model</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5,8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-muziek</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI-bedrijf</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,9%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Conclusie: AI-transformatie</h3>
+<p>Generatieve AI blijft groeien en transformeert het internet, wat het afgelopen jaar voor een verkeerstoename van ruim 250% naar AI-tools heeft gezorgd. ChatGPT is absoluut de populairste service en staat bijna in de top 50 van alle internet-diensten, zoals uit de verkeersanalyse van onze 1.1.1.1 DNS-resolver blijkt. Nieuwkomers zoals DeepSeek en Grok/xAI zijn snel populair geworden, terwijl regionale acceptatiepatronen laten zien dat de VS, India en Brazilië koplopers zijn in het webbezoekersverkeer.</p>
+<p>Deze snelle toename heeft ook cyberaanvallen veroorzaakt: het afgelopen jaar werden 39 miljard verzoeken als DDoS-aanvallen geïdentificeerd die op specifieke generative AI-websites waren gericht. Hoewel de meeste aanvallen algemene AI-chatbots als doel hebben, vertonen sites voor het genereren van afbeeldingen het hoogste percentage geblokkeerde verzoeken, namelijk ruim 50%. Aangezien de generatieve AI zich zal blijven ontwikkelen, creëert het volgen van deze trends een historisch overzicht van de groeipieken, het wereldwijd bereik en de nieuwste dreigingen.</p>
+<p>Als je geïnteresseerd bent in meer trends en inzichten over het internet, ga dan naar de <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>. Volg ons op social media via <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a> (X), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a> (Mastodon) en <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.Cloudflare.com</u></a> (Bluesky), of stuur ons een e-mail.</p>

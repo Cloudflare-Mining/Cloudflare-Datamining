@@ -1,101 +1,50 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4BO3E5TgJv6ihfHIo2vsVm/4a9bf8ec0c2ad2c78b310d1ff94d2dfa/today-we-mitigated-1-1-1-1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>On May 31, 2018 we had a 17 minute outage on our 1.1.1.1 resolver service; this was our doing and not the result of an attack.</p>
-	<p>Cloudflare is protected from attacks by the Gatebot DDoS mitigation pipeline. Gatebot performs hundreds of mitigations a day, shielding our infrastructure and our customers from L3/L4 and L7 attacks. Here is a chart of a count of daily Gatebot actions this year:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4afmhlOoruRjYpiDVEnb6L/1c58c4fab1a06fd06f61b9bbc6a62ee5/gatebot-stats.png" alt="gatebot-stats" class="kg-image" width="1209" height="680" loading="lazy">
-
-	</figure>
-	<p>In the past, we have blogged about our systems:</p>
-	<ul>
-		<li>
-			<p><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Meet Gatebot, a bot that allows us to sleep</a></p>
-		</li>
-	</ul>
-	<p>Today, things didn't go as planned.</p>
-	<div class="flex anchor relative">
-		<h3 id="gatebot">Gatebot</h3>
-		<a href="https://blog.cloudflare.com/#gatebot" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pW1whDtkORpQAEePgmHo/63c2705e59c6eca69a413b190604b955/gatebot-parts.png" alt="gatebot-parts" class="kg-image" width="1018" height="522" loading="lazy">
-
-	</figure>
-	<p>Cloudflare’s network is large, handles many different types of traffic and mitigates different types of known and not-yet-seen attacks. The Gatebot pipeline manages this complexity in three separate stages:</p>
-	<ul>
-		<li>
-			<p><i>attack detection</i> - collects live traffic measurements across the globe and detects attacks</p>
-		</li>
-		<li>
-			<p><i>reactive automation</i> - chooses appropriate mitigations</p>
-		</li>
-		<li>
-			<p><i>mitigations</i> - executes mitigation logic on the edge</p>
-		</li>
-	</ul>
-	<p>The benign-sounding "reactive automation" part is actually the most complicated stage in the pipeline. We expected that from the start, which is why we implemented this stage using a custom <a href="https://en.wikipedia.org/wiki/Functional_reactive_programming" target="_blank" rel="noopener noreferrer">Functional Reactive Programming (FRP)</a> framework. If you want to know more about it, see <a href="https://idea.popcount.org/2016-02-01-enigma---building-a-dos-mitigation-pipeline" target="_blank" rel="noopener noreferrer">the talk</a> and <a href="https://speakerdeck.com/majek04/gatelogic-somewhat-functional-reactive-framework-in-python" target="_blank" rel="noopener noreferrer">the presentation</a>.</p>
-	<p>Our mitigation logic often combines multiple inputs from different internal systems, to come up with the best, most appropriate mitigation. One of the most important inputs is the metadata about our IP address allocations: we mitigate attacks hitting HTTP and DNS IP ranges differently. Our FRP framework allows us to express this in clear and readable code. For example, this is part of the code responsible for performing DNS attack mitigation:</p>
-	<pre class="language-python"><code class="language-python">def action_gk_dns(...):
-
-    [...]
-
-    if port != 53:
-        return None
-
-    if whitelisted_ip.get(ip):
-        return None
-
-    if ip not in ANYCAST_IPS:
-        return None
-        [...] </code></pre>
-	<p>It's the last check in this code that we tried to improve today.</p>
-	<p>Clearly, the code above is a huge oversimplification of all that goes into attack mitigation, but making an early decision about whether the attacked IP serves DNS traffic or not is important. It's that check that went wrong today. If the IP does serve DNS traffic then attack mitigation is handled differently from IPs that never serve DNS.</p>
-	<div class="flex anchor relative">
-		<h3 id="cloudflare-is-growing-so-must-gatebot">Cloudflare is growing, so must Gatebot</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-is-growing-so-must-gatebot" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Gatebot was created in early 2015. Three years may not sound like much time, but since then we've grown dramatically and added layers of services to our software stack. Many of the internal integration points that we rely on today didn't exist then.</p>
-	<p>One of them is what we call the <i>Provision API</i>. When Gatebot sees an IP address, it needs to be able to figure out whether or not it’s one of Cloudflare’s addresses. <i>Provision API</i> is a simple RESTful API used to provide this kind of information.</p>
-	<p>This is a relatively new API, and prior to its existence, Gatebot had to figure out which IP addresses were Cloudflare addresses by reading a list of networks from a hard-coded file. In the code snippet above, the <i>ANYCAST_IPS</i> variable is populated using this file.</p>
-	<div class="flex anchor relative">
-		<h3 id="things-went-wrong">Things went wrong</h3>
-		<a href="https://blog.cloudflare.com/#things-went-wrong" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Today, in an effort to reclaim some technical debt, we deployed new code that introduced Gatebot to <i>Provision API</i>.</p>
-	<p>What we did not account for, and what <i>Provision API</i> didn’t know about, was that <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.0/24 and 1.0.0.0/24</a> are special IP ranges. Frankly speaking, almost every IP range is "special" for one reason or another, since our IP configuration is rather complex. But our recursive DNS resolver ranges are even more special: they are relatively new, and we're using them in a very unique way. Our hardcoded list of Cloudflare addresses contained a manual exception specifically for these ranges.</p>
-	<p>As you might be able to guess by now, we didn't implement this manual exception while we were doing the integration work. Remember, the whole idea of the fix was to remove the hardcoded gotchas!</p>
-	<div class="flex anchor relative">
-		<h3 id="impact">Impact</h3>
-		<a href="https://blog.cloudflare.com/#impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The effect was that, after pushing the new code release, our systems interpreted the resolver traffic as an attack. The automatic systems deployed DNS mitigations for our DNS resolver IP ranges for 17 minutes, between 17:58 and 18:13 May 31st UTC. This caused 1.1.1.1 DNS resolver to be globally inaccessible.</p>
-	<div class="flex anchor relative">
-		<h3 id="lessons-learned">Lessons Learned</h3>
-		<a href="https://blog.cloudflare.com/#lessons-learned" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While Gatebot, the DDoS mitigation system, has great power, we failed to test the changes thoroughly. We are using today’s incident to improve our internal systems.</p>
-	<p>Our team is incredibly proud of 1.1.1.1 and Gatebot, but today we fell short. We want to apologize to all of our customers. We will use today’s incident to improve. The next time we mitigate 1.1.1.1 traffic, we will make sure there is a legitimate attack hitting us.</p>
+<p>On May 31, 2018 we had a 17 minute outage on our 1.1.1.1 resolver service; this was our doing and not the result of an attack.</p>
+<p>Cloudflare is protected from attacks by the Gatebot DDoS mitigation pipeline. Gatebot performs hundreds of mitigations a day, shielding our infrastructure and our customers from L3/L4 and L7 attacks. Here is a chart of a count of daily Gatebot actions this year:</p>
+<p>In the past, we have blogged about our systems:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/meet-gatebot-a-bot-that-allows-us-to-sleep">Meet Gatebot, a bot that allows us to sleep</a></li>
+</ul>
+<p>Today, things didn't go as planned.</p>
+<h3>Gatebot</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="367" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=640&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=750&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=828&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=1080&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=1280&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=1430&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Meet Gatebot - a bot that allows us to sleep Embedded Image - Vjd6K3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475XYD4D23KJ40PMVZVA5A.png&amp;w=1018&amp;h=522&amp;f=webp" data-lightbox-width="1018" data-lightbox-height="522" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="367" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare’s network is large, handles many different types of traffic and mitigates different types of known and not-yet-seen attacks. The Gatebot pipeline manages this complexity in three separate stages:</p>
+<ul>
+	<li><em>attack detection</em> - collects live traffic measurements across the globe and detects attacks</li>
+	<li><em>reactive automation</em> - chooses appropriate mitigations</li>
+	<li><em>mitigations</em> - executes mitigation logic on the edge</li>
+</ul>
+<p>The benign-sounding "reactive automation" part is actually the most complicated stage in the pipeline. We expected that from the start, which is why we implemented this stage using a custom <a href="https://en.wikipedia.org/wiki/Functional_reactive_programming" target="_blank" rel="noopener noreferrer">Functional Reactive Programming (FRP)</a> framework. If you want to know more about it, see <a href="https://idea.popcount.org/2016-02-01-enigma---building-a-dos-mitigation-pipeline" target="_blank" rel="noopener noreferrer">the talk</a> and <a href="https://speakerdeck.com/majek04/gatelogic-somewhat-functional-reactive-framework-in-python" target="_blank" rel="noopener noreferrer">the presentation</a>.</p>
+<p>Our mitigation logic often combines multiple inputs from different internal systems, to come up with the best, most appropriate mitigation. One of the most important inputs is the metadata about our IP address allocations: we mitigate attacks hitting HTTP and DNS IP ranges differently. Our FRP framework allows us to express this in clear and readable code. For example, this is part of the code responsible for performing DNS attack mitigation:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> action_gk_dns</span><span class="sk-24292e-fff">(...):</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    [</span><span class="sk-005cc5-fff">...</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> port </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-fff"> None</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> whitelisted_ip.get(ip):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-fff"> None</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> ip </span><span class="sk-d73a49-a0a0a0">not</span><span class="sk-d73a49-a0a0a0"> in</span><span class="sk-005cc5-fff"> ANYCAST_IPS</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-fff"> None</span></span>
+<span class="line"><span class="sk-24292e-fff">        [</span><span class="sk-005cc5-fff">...</span><span class="sk-24292e-fff">] </span></span></code></pre>
 </div>
+<p>It's the last check in this code that we tried to improve today.</p>
+<p>Clearly, the code above is a huge oversimplification of all that goes into attack mitigation, but making an early decision about whether the attacked IP serves DNS traffic or not is important. It's that check that went wrong today. If the IP does serve DNS traffic then attack mitigation is handled differently from IPs that never serve DNS.</p>
+<h3>Cloudflare is growing, so must Gatebot</h3>
+<p>Gatebot was created in early 2015. Three years may not sound like much time, but since then we've grown dramatically and added layers of services to our software stack. Many of the internal integration points that we rely on today didn't exist then.</p>
+<p>One of them is what we call the <em>Provision API</em>. When Gatebot sees an IP address, it needs to be able to figure out whether or not it’s one of Cloudflare’s addresses. <em>Provision API</em> is a simple RESTful API used to provide this kind of information.</p>
+<p>This is a relatively new API, and prior to its existence, Gatebot had to figure out which IP addresses were Cloudflare addresses by reading a list of networks from a hard-coded file. In the code snippet above, the <em>ANYCAST_IPS</em> variable is populated using this file.</p>
+<h3>Things went wrong</h3>
+<p>Today, in an effort to reclaim some technical debt, we deployed new code that introduced Gatebot to <em>Provision API</em>.</p>
+<p>What we did not account for, and what <em>Provision API</em> didn’t know about, was that <a href="https://blog.cloudflare.com/dns-resolver-1-1-1-1">1.1.1.0/24 and 1.0.0.0/24</a> are special IP ranges. Frankly speaking, almost every IP range is "special" for one reason or another, since our IP configuration is rather complex. But our recursive DNS resolver ranges are even more special: they are relatively new, and we're using them in a very unique way. Our hardcoded list of Cloudflare addresses contained a manual exception specifically for these ranges.</p>
+<p>As you might be able to guess by now, we didn't implement this manual exception while we were doing the integration work. Remember, the whole idea of the fix was to remove the hardcoded gotchas!</p>
+<h3>Impact</h3>
+<p>The effect was that, after pushing the new code release, our systems interpreted the resolver traffic as an attack. The automatic systems deployed DNS mitigations for our DNS resolver IP ranges for 17 minutes, between 17:58 and 18:13 May 31st UTC. This caused 1.1.1.1 DNS resolver to be globally inaccessible.</p>
+<h3>Lessons Learned</h3>
+<p>While Gatebot, the DDoS mitigation system, has great power, we failed to test the changes thoroughly. We are using today’s incident to improve our internal systems.</p>
+<p>Our team is incredibly proud of 1.1.1.1 and Gatebot, but today we fell short. We want to apologize to all of our customers. We will use today’s incident to improve. The next time we mitigate 1.1.1.1 traffic, we will make sure there is a legitimate attack hitting us.</p>

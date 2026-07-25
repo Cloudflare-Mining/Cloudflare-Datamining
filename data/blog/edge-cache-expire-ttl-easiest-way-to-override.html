@@ -1,95 +1,42 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/62ibGKQx3eZtMLdCpX4ydP/7c3b2388ede737bc666722a9af80a7a1/edge-cache-expire-ttl-easiest-way-to-override.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>CloudFlare makes caching easy. Our service automatically determines what files to cache based on file extensions. Performance benefits kick in automatically.</p>
-	<p>For customers that want advanced caching, beyond the defaults, we have <a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache Everything</a> available as Page Rules. Designate a URL and CloudFlare will cache everything, including HTML, out at the edges of our global network.</p>
-	<p>With Cache Everything, we respect all headers. If there is any header in place from the server or a CMS solution like WordPress, we will respect it. However, we got many requests from customers who wanted an easy way to override any existing headers. Today, we are releasing a new feature called 'Edge cache expire TTL' that does just that.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-edge-cache-expire-ttl">What is Edge Cache Expire TTL?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-edge-cache-expire-ttl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Edge cache expire TTL is the setting that controls how long CloudFlare's edge servers will cache a resource before requesting a fresh copy from your server. When you create a Cache Everything Page Rule, you now may choose whether to respect all existing headers or to override any headers that are in place from your server. By overwriting the headers, CloudFlare will cache more content at the CloudFlare edge network, decreasing load to your server.</p>
-	<p>Common situations where you may choose to overwrite existing headers:</p>
-	<ul>
-		<li>
-			<p>You expect a large surge in traffic</p>
-		</li>
-		<li>
-			<p>You are under DDOS attack</p>
-		</li>
-		<li>
-			<p>You are not sure what the headers on WordPress or your server are set to</p>
-		</li>
-		<li>
-			<p>You are using WordPress and want to easily overwrite the default settings</p>
-		</li>
-	</ul>
-	<p>It is important to emphasize when you <i>do not</i> want to use Cache Everything. If you have any personalized information on the page like login information or credit card information, you do not want to use the Cache Everything option.**What is Browser Cache Expire TTL?**Browser cache expire TTL is the time that CloudFlare instructs a visitor's browser to cache a resource. Until this time expires, the browser will load the resource from its local cache thus speeding up the request significantly. CloudFlare will respect the headers that you give us from your web server, and then we will communicate with the browser based on the time selected in this drop down menu.</p>
-	<div class="flex anchor relative">
-		<h4 id="using-both-edge-cache-expire-ttl-and-browser-cache-expire-ttl">Using both Edge Cache Expire TTL and Browser Cache Expire TTL</h4>
-		<a href="https://blog.cloudflare.com/#using-both-edge-cache-expire-ttl-and-browser-cache-expire-ttl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you'd like to have CloudFlare cache your content but want your visitors to always get a fresh copy of the page, you can use the new 'Edge cache expire TTL' setting to express this differentiation. Set a value for 'Edge cache expire TTL' to how often you want the CloudFlare CDN to refresh from your server, and 'Browser cache expire TTL' to how often you want your visitors' browsers to refresh the page content. This is useful when you have a rapidly changing page but still want the benefit of the CloudFlare cache to reduce your server load.</p>
-	<div class="flex anchor relative">
-		<h4 id="plan-details">Plan Details</h4>
-		<a href="https://blog.cloudflare.com/#plan-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare offers a range of edge cache expire TTLs based on plan type:</p>
-	<ul>
-		<li>
-			<p>Free 2 hours</p>
-		</li>
-		<li>
-			<p>Pro 1 hour</p>
-		</li>
-		<li>
-			<p>Business 30 minutes</p>
-		</li>
-		<li>
-			<p>Enterprise as low as 30 seconds</p>
-		</li>
-	</ul>
-	<p>A Pro customer may set the refetch time to 1 hour. After 60 minutes, we return to your server for a fresh copy of the resource. Business customers may lower the refetch interval to 30 minutes. Enterprise customers may set this interval as low as 30 seconds.</p>
-	<div class="flex anchor relative">
-		<h4 id="how-to-turn-it-on">How to Turn It On</h4>
-		<a href="https://blog.cloudflare.com/#how-to-turn-it-on" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Login in to your CloudFlare account and choose "Page Rules" from under the gear icon. Enter the URL that you want to Cache Everything (under Custom Caching):</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kXsRHrZ4nstgW7TaJlKmV/073e6b665580d4c944ffb78117f293cf/Cache_Everything.tiff.scaled500.jpg" alt="Edge Cache Expire TTL: Easiest way to override any existing headers" class="kg-image" width="500" height="142" loading="lazy">
-
-	</figure>
-	<p>The edge cache server TTL option will appear:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4wwlEobfieqiWI9Jg1kEqO/97302650c2c19a907a729dfbcd8c19ff/Edge_cache_expire_TTL_appears.tiff.scaled500.jpg" alt="Edge Cache Expire TTL: Easiest way to override any existing headers" class="kg-image" width="500" height="267" loading="lazy">
-
-	</figure>
-	<p>The default setting is set to "Respect all existing headers." To override this setting, choose a time from the drop down menu:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3peJFc7kv5OTBpMknvhfT1/c6d6cc45f75697ccf769ef9333438ca0/Edge_cache_expire_TTL_dropdown.tiff.scaled500.jpg" alt="Edge Cache Expire
+<p>CloudFlare makes caching easy. Our service automatically determines what files to cache based on file extensions. Performance benefits kick in automatically.</p>
+<p>For customers that want advanced caching, beyond the defaults, we have <a href="https://blog.cloudflare.com/introducing-pagerules-advanced-caching">Cache Everything</a> available as Page Rules. Designate a URL and CloudFlare will cache everything, including HTML, out at the edges of our global network.</p>
+<p>With Cache Everything, we respect all headers. If there is any header in place from the server or a CMS solution like WordPress, we will respect it. However, we got many requests from customers who wanted an easy way to override any existing headers. Today, we are releasing a new feature called 'Edge cache expire TTL' that does just that.</p>
+<h3>What is Edge Cache Expire TTL?</h3>
+<p>Edge cache expire TTL is the setting that controls how long CloudFlare's edge servers will cache a resource before requesting a fresh copy from your server. When you create a Cache Everything Page Rule, you now may choose whether to respect all existing headers or to override any headers that are in place from your server. By overwriting the headers, CloudFlare will cache more content at the CloudFlare edge network, decreasing load to your server.</p>
+<p>Common situations where you may choose to overwrite existing headers:</p>
+<ul>
+	<li>You expect a large surge in traffic</li>
+	<li>You are under DDOS attack</li>
+	<li>You are not sure what the headers on WordPress or your server are set to</li>
+	<li>You are using WordPress and want to easily overwrite the default settings</li>
+</ul>
+<p>It is important to emphasize when you <em>do not</em> want to use Cache Everything. If you have any personalized information on the page like login information or credit card information, you do not want to use the Cache Everything option.**What is Browser Cache Expire TTL?**Browser cache expire TTL is the time that CloudFlare instructs a visitor's browser to cache a resource. Until this time expires, the browser will load the resource from its local cache thus speeding up the request significantly. CloudFlare will respect the headers that you give us from your web server, and then we will communicate with the browser based on the time selected in this drop down menu.</p>
+<h4>Using both Edge Cache Expire TTL and Browser Cache Expire TTL</h4>
+<p>When you'd like to have CloudFlare cache your content but want your visitors to always get a fresh copy of the page, you can use the new 'Edge cache expire TTL' setting to express this differentiation. Set a value for 'Edge cache expire TTL' to how often you want the CloudFlare CDN to refresh from your server, and 'Browser cache expire TTL' to how often you want your visitors' browsers to refresh the page content. This is useful when you have a rapidly changing page but still want the benefit of the CloudFlare cache to reduce your server load.</p>
+<h4>Plan Details</h4>
+<p>CloudFlare offers a range of edge cache expire TTLs based on plan type:</p>
+<ul>
+	<li>Free 2 hours</li>
+	<li>Pro 1 hour</li>
+	<li>Business 30 minutes</li>
+	<li>Enterprise as low as 30 seconds</li>
+</ul>
+<p>A Pro customer may set the refetch time to 1 hour. After 60 minutes, we return to your server for a fresh copy of the resource. Business customers may lower the refetch interval to 30 minutes. Enterprise customers may set this interval as low as 30 seconds.</p>
+<h4>How to Turn It On</h4>
+<p>Login in to your CloudFlare account and choose "Page Rules" from under the gear icon. Enter the URL that you want to Cache Everything (under Custom Caching):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="142" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NY156H5TTZB7J4J61CH1.jpg&amp;w=500&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NY156H5TTZB7J4J61CH1.jpg&amp;w=500&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NY156H5TTZB7J4J61CH1.jpg&amp;w=640&amp;h=182&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NY156H5TTZB7J4J61CH1.jpg&amp;w=750&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NY156H5TTZB7J4J61CH1.jpg&amp;w=828&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NY156H5TTZB7J4J61CH1.jpg&amp;w=1000&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Edge Cache Expire TTL: Easiest way to override any existing headers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NY156H5TTZB7J4J61CH1.jpg&amp;w=500&amp;h=142&amp;f=webp" data-lightbox-width="500" data-lightbox-height="142" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="142" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The edge cache server TTL option will appear:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="267" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473KY90RM27T3MN1TXXR52.jpg&amp;w=500&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473KY90RM27T3MN1TXXR52.jpg&amp;w=500&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473KY90RM27T3MN1TXXR52.jpg&amp;w=640&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473KY90RM27T3MN1TXXR52.jpg&amp;w=750&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473KY90RM27T3MN1TXXR52.jpg&amp;w=828&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473KY90RM27T3MN1TXXR52.jpg&amp;w=1000&amp;h=534&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Edge Cache Expire TTL: Easiest way to override any existing headers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW473KY90RM27T3MN1TXXR52.jpg&amp;w=500&amp;h=267&amp;f=webp" data-lightbox-width="500" data-lightbox-height="267" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="267" class="pt-portable-image-media"></div>
+</figure>
+<p>The default setting is set to "Respect all existing headers." To override this setting, choose a time from the drop down menu:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="361" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AAM375Y57VW98R3BH9EM.jpg&amp;w=500&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AAM375Y57VW98R3BH9EM.jpg&amp;w=500&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AAM375Y57VW98R3BH9EM.jpg&amp;w=640&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AAM375Y57VW98R3BH9EM.jpg&amp;w=750&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AAM375Y57VW98R3BH9EM.jpg&amp;w=828&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AAM375Y57VW98R3BH9EM.jpg&amp;w=1000&amp;h=722&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Edge Cache Expire
 TTL: Easiest way to override any existing
-headers" class="kg-image" width="500" height="361" loading="lazy">
-
-	</figure>
-	<p>You can find more information in our knowledge base articles <a href="https://support.cloudflare.com/entries/23023893-what-does-edge-cache-expire-ttl-mean" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://support.cloudflare.com/entries/23009261-what-does-browser-cache-expire-ttl-mean" target="_blank" rel="noopener noreferrer">here.</a></p>
-	<p>Give it a try and let us know what you think.</p>
-</div>
+headers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46AAM375Y57VW98R3BH9EM.jpg&amp;w=500&amp;h=361&amp;f=webp" data-lightbox-width="500" data-lightbox-height="361" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="361" class="pt-portable-image-media"></div>
+</figure>
+<p>You can find more information in our knowledge base articles <a href="https://support.cloudflare.com/entries/23023893-what-does-edge-cache-expire-ttl-mean" target="_blank" rel="noopener noreferrer">here</a> and <a href="https://support.cloudflare.com/entries/23009261-what-does-browser-cache-expire-ttl-mean" target="_blank" rel="noopener noreferrer">here.</a></p>
+<p>Give it a try and let us know what you think.</p>

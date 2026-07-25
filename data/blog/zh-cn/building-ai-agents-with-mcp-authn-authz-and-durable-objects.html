@@ -1,0 +1,244 @@
+<p>众所周知， <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>Cloudflare 非常看好智能体（agent）的未来</u></a>。我们对未来充满期待：AI 不仅能够作为副驾与我们并肩工作，也能够开始逐步承担整体任务。</p>
+<p>尽管距离我们<a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>首次发布</u></a> Agent SDK 以帮助开发人员更容易构建智能体没多长时间，但朝着智能体驱动的未来迈进，需要我们持续不断地交付成果。今天，我们发布若干旨在加速智能体开发的公告，具体包括：</p>
+<ul>
+	<li><strong>Agents SDK 新能力：</strong> 构建远程 MCP 客户端，内置传输层和身份验证机制，使 AI 智能体能够连接外部服务。</li>
+	<li><strong><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization/#3-bring-your-own-oauth-provider" target="_blank" rel="noopener noreferrer"><u>MCP 自带（BYO）认证提供者</u></a>：</strong>集成 <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>、<a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> 和 <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a>，向您的远程 MCP 服务器添加身份验证和授权。</li>
+	<li><strong><a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u>McpAgent 休眠</u></a>：</strong>有状态的远程 MCP 服务器在空闲时自动休眠，并在需要时唤醒。这使您能够为长时间运行的会话维持连接，同时确保无需为闲置时间付费。</li>
+	<li><strong><a href="https://developers.cloudflare.com/changelog/2025-04-07-durable-objects-free-tier" target="_blank" rel="noopener noreferrer"><u>Durable Objects 免费层</u></a>：</strong>我们认为 Durable Objects 是构建智能体的关键组件，如果您正在使用我们的代理 SDK，您就需要使用它。在此之前， Durable Objects 只能作为我们付费计划的一部分使用，今天我们很高兴将它包含在我们的免费计划中。</li>
+	<li><strong><a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution" target="_blank" rel="noopener noreferrer"><u>Workflows GA</u></a>：</strong>使您能够在智能体中部署生产就绪、长时间运行的多步骤操作。</li>
+	<li><strong><a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>：</strong> 仅需点击数下鼠标，即可将上下文感知 AI 集成到应用中</li>
+	<li><strong><a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.cloudflare.com</u></a>:</strong> 我们全新的智能体综合门户页面。</li>
+</ul>
+<h2>Agents SDK 中的全新 MCP 功能</h2>
+<p>AI 智能体现在可通过 MCP（<a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>模型上下文协议</u></a>）连接到外部服务并进行交互。我们已更新 Agents SDK，使您能够在 AI 智能体中构建远程 MCP 客户端，并内置身份验证流程、工具发现和连接管理等所有组件。</p>
+<p>这使您能够构建具备以下功能的智能体：</p>
+<ol>
+	<li>提示最终用户授权访问第三方服务（MCP 服务器）。</li>
+	<li>使用这些外部服务中的工具，代表最终用户进行操作。</li>
+	<li>从工作流、计划任务或智能体的任何部分调用 MCP 服务器。</li>
+	<li>连接到多个 MCP 服务器，并自动发现第三方服务提供的新工具或新功能。</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="468" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=715&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=640&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=715&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=750&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=828&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1080&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1280&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1430&amp;h=936&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1920&amp;h=1257&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1257" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="468" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>MCP（模型上下文协议）<a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>最初由 Anthropic 提出</u></a>，已迅速成为 AI 智能体与外部服务交互的标准方式， OpenAI、Cursor 和 Copilot 等提供商已采用该协议。</p>
+<p>我们<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp" target="_blank" rel="noopener noreferrer"><u>最近宣布</u></a>支持在 Cloudflare 上<a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>构建远程 MCP 服务器</u></a>，并在 Agents SDK 中新增了 <code>McpAgent</code> 类，用于自动处理 MCP 的远程交互，包括传输和身份验证和授权。现在，我们很高兴能将相同的功能扩展到作为 MCP 客户端的智能体。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1810&amp;h=596&amp;f=webp" data-lightbox-width="1810" data-lightbox-height="596" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<p>希望亲身体验一下吗？使用下方按钮部署一个完全远程的 MCP 客户端，可用于连接远程 MCP 服务器。</p>
+<div id="html-block-k2g" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-client"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<h2>AI 智能体现可充当远程 MCP 客户端，并内置传输和身份验证功能</h2>
+<p>AI 智能体需要连接外部服务，以访问超出其内置知识的工具、数据和功能。这意味着 AI 智能体需要能够充当远程 MCP 客户端，以便连接托管这些工具和功能的远程 MCP 服务器。</p>
+<p>我们在 Agents SDK 中新增了 <code>MCPClientManager </code>类，提供在 AI 智能体中通过 MCP 调用外部服务所需的全部工具。<code>MCPClientManager</code> 类自动处理：</p>
+<ul>
+	<li><strong>传输：</strong> 通过 SSE 和 HTTP 连接到远程 MCP 服务器，并即将支持 <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP</u></a>。</li>
+	<li><strong>连接管理：</strong>客户端跟踪所有连接的状态，并在连接丢失时自动重新连接。</li>
+	<li><strong>能力发现：</strong> 自动发现 MCP 服务器提供的所有能力、工具、资源和提示词。</li>
+	<li><strong>实时更新</strong> ：当服务器的工具、资源或提示词发生变化时，客户端会自动收到通知并更新其内部状态。</li>
+	<li><strong>命名空间：</strong> 连接多个 MCP 服务器时，所有工具和资源将自动进行命名空间隔离，以避免冲突。</li>
+</ul>
+<h3>授权智能体访问带有内置 MCP 客户端授权检查功能的工具</h3>
+<p>我们已将完整的 OAuth 身份验证流程直接集成到 Agents SDK 中，使您的 AI 智能体能够安全地连接并向任何远程 MCP 服务器进行身份认证，无需从头构建身份验证流程。</p>
+<p>这使您能够为用户提供一种安全的登录方式，并通过自动化流程明确授权，使 AI 智能体能够代表用户执行操作：</p>
+<ul>
+	<li>支持 OAuth 2.1 协议。</li>
+	<li>将用户重定向到服务的登录页面。</li>
+	<li>生成代码质询并用授权代码交换访问令牌。</li>
+	<li>使用访问令牌向 MCP 服务器发出经过身份验证的请求。</li>
+</ul>
+<p>下面是一个示例，AI 智能体通过初始化客户端管理器、添加服务器并处理身份认证回调，安全连接 MCP 服务器：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onStart</span><span class="sk-24292e-fff">(): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // initialize MCPClientManager which manages multiple MCP clients with optional auth</span></span>
+<span class="line"><span class="sk-24292e-fff">  this.mcp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MCPClientManager</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-agent"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    baseCallbackUri: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">serverHost</span><span class="sk-032f62-99ffe4">}/agents/${</span><span class="sk-24292e-fff">agentNamespace</span><span class="sk-032f62-99ffe4">}/${</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}/callback`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    storage: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx.storage,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">addMcpServer</span><span class="sk-24292e-fff">(url: string): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">string</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Add one MCP client to our MCPClientManager</span></span>
+<span class="line"><span class="sk-24292e-fff">  const { id, authUrl } = await this.mcp.connect(url);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Return authUrl to redirect the user to if the user is unauthorized</span></span>
+<span class="line"><span class="sk-24292e-fff">  return authUrl</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onRequest</span><span class="sk-24292e-fff">(req: Request): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // handle the auth callback after being finishing the MCP server auth flow</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  if</span><span class="sk-24292e-fff"> (this.mcp.isCallbackRequest(</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.mcp.</span><span class="sk-6f42c1-ffc799">handleCallbackRequest</span><span class="sk-24292e-fff">(req);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Authorized"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>连接到多个 MCP 服务器并发现它们提供的能力</p>
+<p>您可以使用 Agents SDK 将 MCP 客户端同时连接到多个 MCP 服务器。当您希望 AI 智能体访问由不同服务提供商提供的工具和资源并进行交互时，这一特性尤其有用。</p>
+<p><code>MCPClientManager</code> 类通过 <code>mcpConnections</code> 对象维护与多个 MCP 服务器的连接。该对象是一个字典，将唯一服务器名称映射到各自的 <code>MCPClientConnection</code> 实例。</p>
+<p>当您使用 <code>connect()</code> 注册一个新的服务器连接时，管理器：</p>
+<ol>
+	<li>使用服务器特定的身份验证创建一个新的连接实例。</li>
+	<li>初始化连接并注册服务器能力通知。</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onStart</span><span class="sk-24292e-fff">(): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Connect to an image generation MCP server</span></span>
+<span class="line"><span class="sk-24292e-fff">  await this.mcp.connect(</span><span class="sk-032f62-99ffe4">"https://image-gen.example.com/mcp/sse"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Connect to a code analysis MCP server</span></span>
+<span class="line"><span class="sk-24292e-fff">  await this.mcp.connect(</span><span class="sk-032f62-99ffe4">"https://code-analysis.example.org/sse"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Now we can access tools with proper namespacing</span></span>
+<span class="line"><span class="sk-24292e-fff">  const allTools = this.mcp.listTools();</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.log(</span><span class="sk-032f62-99ffe4">`Total tools available: ${</span><span class="sk-24292e-fff">allTools</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-99ffe4">length</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>每个连接管理自己的身份验证上下文，从而允许一个 AI 智能体同时对多个服务器进行身份验证。此外，<code>MCPClientManager</code> 会自动处理命名空间，以防止来自不同服务器的同名工具发生冲突。</p>
+<p>例如，如果“图像 MCP 服务器”和“代码 MCP 服务器”都有一个名为“analyze”的工具，则它们都可以独立调用，而不会出现任何命名冲突。</p>
+<h2>使用 Stytch、Auth0 和 WorkOS 将身份验证和授权引入您的 MCP 服务器</h2>
+<p>通过 MCP，用户将能以一种新的方式与您的应用交互，不再依赖仪表板或 API 作为入口。取而代之，服务现在将通过代表用户操作的 AI 智能体进行访问。为确保用户和智能体能够安全地连接您的服务，您需要扩展现有的身份认证和访问授权系统，以支持这些智能体交互，实现登录流程、权限范围、同意表单以及对 MCP 服务器的访问控制。</p>
+<p>我们正在增加与 <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>、<a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> 和 <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a> 的集成，以便构建 MCP 服务器的任何人都能更轻松地为其 MCP 服务器配置身份验证和授权。</p>
+<p>您可以利用我们与 Stytch、Auth0 和 WorkOS 集成的 MCP 服务器来：</p>
+<ul>
+	<li>允许用户通过电子邮件、社交登录、单点登录（SSO）和多因素认证（MFA）对您的 MCP 服务器进行身份验证。</li>
+	<li>定义直接映射到 MCP 工具的范围和权限。</li>
+	<li>向用户呈现与所请求权限对应的同意页面。</li>
+</ul>
+<p>执行权限控制，确保智能体只能调用被允许的工具。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="352" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=640&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=750&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=828&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1080&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1280&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1430&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1226&amp;h=604&amp;f=webp" data-lightbox-width="1226" data-lightbox-height="604" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="352" class="pt-portable-image-media"></div>
+</figure>
+<p>欢迎尝试如下示例，使用“部署到 Cloudflare”按钮在您的 Cloudflare 帐户中部署演示 MCP 服务器。这些演示包含预配置的身份认证端点、同意流程和权限模型，可以根据需要进行定制。部署演示 MCP 服务器后，您可使用 <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers AI 操练场</u></a>（一个基于浏览器的远程 MCP客户端）来测试端到端用户流。</p>
+<h3>Stytch</h3>
+<p><a href="https://stytch.com/docs/guides/connected-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>从</u></a>一个使用 Stytch 的远程 MCP 服务器开始，它允许用户使用电子邮件、Google 登录凭据或企业 SSO 登录，授权其 AI 智能体代表他们查看和管理公司的 OKR。Stytch 将根据用户在组织中的角色和权限，管理对 AI 智能体的授权范围。在授权 MCP 客户端时，每个用户都将看到一个同意页面，其中概述了智能体根据用户角色可以申请的权限。</p>
+<div id="html-block-k5h" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-b2b-okr-manager"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>对于更多消费者用例，为一个待办事项应用部署一个远程 MCP 服务器，其使用 Stytch 进行身份认证和 MCP 客户端授权。用户可以使用电子邮件登录，立即访问与其帐户关联的待办事项列表，并授权任何 AI 助手来帮助他们管理任务。</p>
+<div id="html-block-k5k" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-consumer-todo-list"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>无论用于哪种用例，Stytch 都可以轻松将您的应用变成 OAuth 2.0 身份提供者，并使您的远程 MCP 服务器成为依赖方，使其能够轻松从您的应用继承身份和权限。要进一步了解 Stytch 如何对远程 MCP 服务器启用安全身份验证，请阅读其<a href="http://stytch.com/blog/remote-mcp-stytch-cloudflare" target="_blank" rel="noopener noreferrer"><u>博客文章</u></a> 。</p>
+<blockquote><em>“实现 AI 智能体潜力的挑战之一，是使这些智能体能够从其他平台安全且可靠地访问数据。Stytch Connected Apps 专为这些智能体用例而构建，让您能够轻松地将应用转变为 OAuth 2.0 身份提供者，从而实现对远程 MCP 服务器的安全访问。通过将 Cloudflare Workers 与 Stytch Connected Apps 结合起来，我们为开发人员消除了障碍，使他们能够从 AI 概念验证快速过渡到安全、可部署的实现。”— Julianna Lamb， 联合创始人兼首席技术官， Stytch</em></blockquote>
+<h3>Auth0</h3>
+<p>从远程 MCP 服务器开始，该服务器使用 Auth0 对通过电子邮件、社交媒体登录或企业 SSO 的用户进行身份验证，以通过 AI 智能体与他们的工具和个人数据进行交互。MCP 服务器代表用户安全地连接到 API 端点，在获得用户同意后准确展示智能体能够访问哪些资源。在这种实现中，访问令牌会在长时间运行的交互过程中自动刷新。</p>
+<p>如要配置，请首先部署如下受保护的 API 端点： </p>
+<div id="html-block-k5y" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Ftodos-api"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>然后，部署 MCP 服务器，以通过 Auth0 处理身份验证并将 AI 智能体安全地连接到您的 API 端点。</p>
+<div id="html-block-k61" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Fmcp-auth0-oidc"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<blockquote><em>“Cloudflare 继续赋能开发人员使用 AI Gateway、Vectorize 和 Workers AI 等工具构建 AI 产品。最近新增的 Remote MCP 服务器进一步表明， Cloudflare Workers 和 Durable Objects 是部署无服务器 AI 的领先平台。Auth0 能够帮助解决这些最先进工作负载的身份验证和授权需求，我们感到非常自豪。”— Sandrano Di Mattia，产品架构高级总监，Auth0</em></blockquote>
+<h3>WorkOS</h3>
+<p>从一个远程 MCP 服务器开始，该服务器使用 WorkOS 的 AuthKit 来验证用户并管理授予 AI 智能体的权限。在此示例中，MCP 服务器根据用户的角色和访问权限动态地公开工具。所有经过身份验证的用户都可以访问 <code>add</code> 工具，但只有已在 WorkOS 中被分配了<code>image_generation</code> 权限的用户可以授予 AI 智能体对图像生成工具的访问权限。这个展示了 MCP 服务器如何根据经过身份认证的用户的角色和权限，有条件地向 AI 智能体公开能力。</p>
+<div id="html-block-k6c" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authkit"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<blockquote><em>“MCP 正在成为 AI 智能体集成的标准，但身份认证和授权仍是企业采用过程中的主要障碍。WorkOS Connect 使任何应用都能成为 OAuth 2.0 授权服务器，允许智能体和 MCP 客户端安全地获取令牌，用于细粒度的权限授权和资源访问。利用 Cloudflare Workers，开发人员可以快速部署具有内置 OAuth 和企业级访问控制的远程 MCP 服务器。WorkOS 和 Cloudflare 携手合作，助力轻松交付安全、企业级的智能体基础设施。”—— Michael Grinich，首席执行官，WorkOS</em></blockquote>
+<h2>可休眠 WebSocket：使 AI 智能体在未使用时进入休眠状态</h2>
+<p>今天开始，一项新的改进将引入到 McpAgent 类：<a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>WebSocket Hibernation API</u></a> 支持，让您的 MCP 服务器在没有接收请求时进入休眠状态，并在需要时立即唤醒。这意味着您仅为智能体实际工作时才需支付计算资源费用。</p>
+<p>我们<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp" target="_blank" rel="noopener noreferrer"><u>最近推出</u></a> <a href="https://developers.cloudflare.com/agents/model-context-protocol/tools/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A11%2C%22targetId%22%3A%22DF3E523E0077ACCB6730439891CDD7D4%22%7D" target="_blank" rel="noopener noreferrer"><u>McpAgent 类</u></a>，使开发人员能够使用 Durable Objects 在 Cloudflare 上构建远程 MCP 服务器，并为每个客户端会话维护有状态连接。我们决定从一开始就将 McpAgent 打造成有状态的，允许开发人员构建可以记住上下文、用户首选项和对话历史的服务器。然而，维护客户端连接意味着会话可能会长时间保持活跃状态，即便其并未被实际使用。</p>
+<h3>MCP 智能体默认可休眠</h3>
+<p>您无需修改代码即可利用休眠功能。通过最新的 SDK 更新，所有 McpAgent 实例将自动包含休眠支持，使您的有状态 MCP 服务器能够在非活动期间进入休眠，并在需要时以保存到状态唤醒。</p>
+<h3>工作方式</h3>
+<p>当 Server-Sent Events 端点 /see 收到请求时，Worker 将为会话初始化一个与适当 Durable Object 的 WebSocket 连接，并将 SSE 数据流返回给客户端。所有响应都通过该数据流传输。</p>
+<p>该实现利用 Durable Objects 中的 WebSocket Hibernation API 。当出现不活动时，Durable Object 可从内存中逐出，同时保持 WebSocket 连接打开。如果 WebSocket 后来收到消息，则运行时将重新创建 Durable Object 并将消息传递给适当的处理程序。</p>
+<h2>Durable Objects 免费层</h2>
+<p>为了帮助您在 Cloudflare 上构建 AI 智能体 ，我们为免费层提供 <a href="http://developers.cloudflare.com/durable-objects/what-are-durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> ，使您可以零承诺地开始使用。通过 Agents SDK，您的 AI 智能体将部署到运行 Durable Objects 的 Cloudflare 上。</p>
+<p>Durable Objects 提供计算和持久存储，与 Workers 结合即可解锁有状态的无服务器应用。每个 Durable Object 都是一个有状态的协调者，用于处理客户端实时交互，向外部服务（如 LLM）发出请求，以及通过<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>零延迟 SQLite 存储</u></a>中的状态持久性创建智能体“记忆”——这些是 AI 智能体中要求的所有任务。Durable Objects 可以毫不费力地扩展到数百万个智能体，每个智能体都在用户与其交互的地方创建，以获得快速性能，全部由 Cloudflare 管理。</p>
+<p>2024 年 9 月的生日周期间，我们发布了 Durable Objects 零延迟 SQLite 存储的<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>公测版</u></a>。从那时起，我们一直专注于研究与 Durable Objects 中现有键值存储相比缺少的功能和稳健性。我们很高兴地宣布 SQLite 存储普遍可用，每个 Durable Object 提供 10 GB 的 SQLite 数据库，并推荐为所有新的 Durable Object 类使用 SQLite 存储。Durable Objects 免费层只能访问 SQLite 存储。</p>
+<p>Cloudflare 的免费层级使您能够构建面向实际应用的项目。在免费计划中，每个 Worker 请求都可以调用一个 Durable Object。对于<a href="https://developers.cloudflare.com/durable-objects/platform/pricing" target="_blank" rel="noopener noreferrer"><u>基于使用量的定价</u></a>，Durable Objects 产生计算和存储使用量，有如下免费层级限制。</p>
+<div id="html-block-k7q" class="html-block">
+	<div style="margin-left:0pt">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
+				<colgroup>
+					<col style="width:33.33%">
+					<col style="width:33.33%">
+					<col style="width:33.34%">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">&nbsp;</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Workers Free</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Workers Paid</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">计算：请求</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">100,000 /日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">包含 100 万次/月</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 0.15 美元/百万次</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">计算：持续时间</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">13,000 GB-s/日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">包含 400,000 GB-s/月</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 12.50 美元/百万 GB-s</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">存储：读取行数</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">500 万/日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">包含 250 亿行/月</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 0.001 美元/百万行</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">存储：写入行数</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">100,000 /日</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">包含 5000 万行/月</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 1.00 美元 / 百万行</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">存储: SQL 存储数据</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5 GB（总计）</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">包含 5 GB/月</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 0.20 美元 / GB-月</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+</div>
+<h3>欢迎访问 agents.cloudflaredflare.com</h3>
+<p>我们意识到需要接收的信息量很大，但不用担心。无论您是首次接触智能体，还是希望进一步了解 Cloudflare 如何帮助您构建智能体，我们今天推出的全新网站都能够帮助您入门——<a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agents.cloudflare.com</u></a> 。</p>
+<p>欢迎与我们分享您构建的项目。</p>

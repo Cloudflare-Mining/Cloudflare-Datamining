@@ -1,0 +1,142 @@
+<p>本日、当社のストリーミング取り込み製品であるPipelinesのオープンベータ版の提供を開始します。パイプラインを使用すると、大量の構造化されたリアルタイムデータを取り込み、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>オブジェクトストレージサービスである R2</u></a> にロードすることができます。基盤となるインフラストラクチャを管理する必要はなく、シャードやメタデータサービスのスケーリングについて心配する必要もありません。また、処理されたデータに対して料金を支払います（時間単位ではありません）。Workers有料プランをご利用であれば、どなたでもご利用いただけます。1秒あたり数万リクエスト（RPS）のデータをR2に直接取り込み、バッチ処理することができます。</p>
+<p>しかし、これは氷山の一角に過ぎません。多くの場合、取り込んでいるデータを変換し、他のソースからそのデータをリアルタイムで抽出し、オープンテーブルフォーマット（Apacheicebergなど）に書き込んで、オブジェクトストレージに格納した データを、効率的にクエリーを実行できます。</p>
+<p>良いニュースは、当社でもこの点について考えており、それを実現するために、クラウドネイティブの分散型ストリーム処理エンジンである <a href="https://www.arroyo.dev" target="_blank" rel="noopener noreferrer"><u>Arroyo</u></a> を買収したことを発表できることを嬉しく思います。</p>
+<p>Arroyo<em>および</em>最近発表された<a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer">R2 Data Catalog</a>を使用して、地球全体からデータを取り込み、大規模に保存し、<em>計算処理</em>を実行できるようなデータプラットフォームの構築にますます真剣に取り組んでいます。</p>
+<p>まずは、<a href="http://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>Pipelinesの開発者向けドキュメント</u></a>をご覧いただくか、この<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>コマンドを実行して最初のパイプラインを作成してください。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest pipelines create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">r2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
+<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre>
+</div>
+<p>...そして、最初のレコードを書きます：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{"payload": [],"id":"abc-def"}]'</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre>
+</div>
+<p>しかし、真のパワーは、取り込みとR2のようなシンクに書き込まれるときの間のデータストリームの処理から来ます。<em>取り込み ているデータのウィンドウに作用する</em>SQLを書き、変換・集約し、さらにはデータからリアルタイムでインサイトを抽出することもできるため、非常に強力であることが判明します。</p>
+<p>ここでArroyoが登場します。Arroyoの優れた部分をPipelinesに取り込み、 Workers、R2、および他の開発者プラットフォームと深く統合することになります。</p>
+<h2>Arroyoの原点</h2>
+<p><em>（Arroyo創設者 Micah Wyldeより）</em></p>
+<p>当社は、データで働くすべての人にリアルタイム（<em>ストリーム</em>）処理を提供するために、2023年にArroyoを立ち上げました。現代企業は、ユーザーカスタマイズ、レコメンデーション、不正対策、新しいAIエージェントの世界など、アプリケーションとビジネスを強化するために、データパイプラインに依存しています。</p>
+<p>しかし現在では、これらのパイプラインのほとんどはバッチ処理で稼働しており、1時間に1回、1日に1回、あるいは1か月に1回稼働しています。その理由は、LyftやSplunkのような企業で長年ストリーム処理に取り組んできた結果、疑問の余地がありませんでした。開発者やデータサイエンティストにとって、正しく、機能性、信頼性の高いパイプラインを構築することは、あまりにも困難でした。大規模テクノロジー企業はストリーミングの専門家を雇ってこれらのシステムを構築・運用していますが、それ以外の企業はバッチが到着するのを待つしかありません。</p>
+<p>設立当時、ストリーミングパイプラインの主流的なソリューションはApache Flinkであり、LyftやSplunkで実行していました。Flinkは、フォールトトラレント（障害から一貫して回復できる）で、分散型（複数のマシンにまたがる）でステートフル（過去のイベントに関するデータを記憶する）なデータフローと グラフ構築APIをうまく組み合わせる最初のシステムでした。このような機能の組み合わせにより、ウィンドウ、集計、結合などの機能を備えた強力なリアルタイムデータアプリケーションを構築できるようになりました。しかし、Flinkには必要なパワーがあったものの、実際にはAPIは専門家でないユーザーにとってはあまりにも難しく、低レベルであることが判明し、結果として得られるサービスのステートフルな性質は無限の操作を必要としました。</p>
+<p>当社は、新しいストリーミングエンジンを構築する必要があることに気づきました。Flinkのパワーを備え、製品エンジニアやデータサイエンティスト向けに設計され、最新のクラウドストラクチャで実行できるエンジンです。使いやすく、広く知られており、宣言的であるため、 APIとしてSQLを使用することにしました。CloudflareはRustで構築し、スピードと運用のシンプルさを実現しました（JVMのチューニングは不要です！）。Cloudflareではオブジェクトストレージネイティブのステートバックエンドを構築し、ステートフルパイプラインの実行という課題を簡素化しました。パイプラインはそれぞれが奇妙で専用のデータベースのようなものです。そして、2023年の夏、オープンソース化しました。現在、数十社がArroyoパイプラインを稼働し、データの取り込み、不正行為防止、 IoTの可観測性、金融取引などのユースケースを用いています。</p>
+<p>しかし、エンジンはパズルの1ピースであることは常に認識していました。バッチのように簡単にストリーミングを行うには、ユーザーはクラスタのサイズや継続的な操作を気にすることなく、クエリロジックの開発とテスト、過去のデータでのバックフィル、サーバーレスデプロイを行う必要があります。ストリーミングの民主化は、完全なデータプラットフォームを構築する必要がありました。そして、 Cloudflareに問い合わせてみたところ、同社はすでにすべてのピースを持ち込んでいることがわかりました。R2は状態と保管中のデータを保存するためのオブジェクトストレージ、転送中のデータのためのCloudflare <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>、そして安全かつ効率的にユーザーコードを実行するためのWorkersを提供します。そして、 Cloudflareは、独自のものであり、これらのシステムをエッジまで推進し、 データ主権とAI の未来にとって鍵となるローカルストリーム処理の新しいパラダイムを可能にします。</p>
+<p>だからこそ、 Cloudflareチームと共に、このビジョンを実現することを大変嬉しく思います。</p>
+<h2>大規模な取り込み</h2>
+<p>Pipelinesは、変換とSQLストリーミングAPIの実装が予定されていますが、データジャーニーの2つの重要な部分、グローバルに分散、高スループットの取り込み、およびオブジェクトストレージへの効率的な読み込みはすでに解決しています。</p>
+<p>パイプラインの作成は、1つのコマンドを実行するのと同じくらい簡単です：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest pipelines create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">r2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">🌀 </span><span class="sk-6f42c1-ffc799">Creating</span><span class="sk-24292e-fff"> pipeline named </span><span class="sk-032f62-99ffe4">"my-clickstream-pipeline"</span></span>
+<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created pipeline my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">0e00c5ff09b34d018152af98d06f5a1xvc</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">    0e00c5ff09b34d018152af98d06f5a1xvc</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">  my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Sources</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-005cc5-fff">  HTTP</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Endpoint</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">        https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Authentication</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">  off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Format</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">          JSON</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Worker</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Format</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">  JSON</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Destination</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">         R2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Bucket</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">       my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Format</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">       newline</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">delimited </span><span class="sk-005cc5-fff">JSON</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Compression</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">  GZIP</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Batch</span><span class="sk-24292e-fff"> hints</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Max</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">     100</span><span class="sk-005cc5-fff"> MB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Max</span><span class="sk-24292e-fff"> duration</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">  300</span><span class="sk-24292e-fff"> seconds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Max</span><span class="sk-24292e-fff"> records</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">   100</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">000</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">🎉 </span><span class="sk-6f42c1-ffc799">You</span><span class="sk-24292e-fff"> can now send data to your </span><span class="sk-6f42c1-ffc799">pipeline!</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff"> data to your pipeline'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-005cc5-fff"> HTTP</span><span class="sk-24292e-fff"> endpoint</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre>
+</div>
+<p>デフォルトでは、パイプラインはWorkersとHTTPエンドポイントの2つのソースからデータを取り込み、バッチ処理されたイベントを R2バケットにロードできます。これにより、未加工のイベントデータをオブジェクトストレージにストリーミングするための、すぐに使えるソリューションが提供されます。デフォルトが機能しない場合は、作成中、または作成後いつでもパイプラインを設定できます。HTTPエンドポイントへの認証の追加、ブラウザがオリジン間リクエストを行えるようにCORSの設定、出力ファイルの圧縮とバッチ設定の指定などがあります。</p>
+<p>初日から大量の取り込みのためのパイプラインを構築しました。各パイプラインは毎秒100,000レコードまで拡張できます（ここではまだ始まったばかりです）。レコードがパイプラインに書き込まれると、耐久性のある格納、バッチ処理、および R2バケット内のファイルとしての書き込みが行われます。ここではバッチ処理が重要になります。もしデータに基づいてクエリーを実行するのであれば、クエリーエンジンに何百万もの（あるいは何千万もの）小さなファイルをクエリーさせる必要はありません。低速（ファイル単位およびリクエストのオーバーヘッド）、非効率性（読み込むファイルの数が増える）、コストがかかる（より多くの操作）。その代わり、クエリエンジンのバッチサイズと遅延の適正なバランスを見つける必要があります。パイプラインでは、これを設定することができます。</p>
+<p>クエリをさらに最適化するために、出力ファイルは標準的なHive分割スキームを使用して、日付と時間で分割されます。クエリーエンジンは、実行中のクエリーと無関係なデータをスキップすることができるため、クエリーをさらに最適化することができます。R2バケットへの出力は以下のようになります。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="232" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=715&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=640&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=715&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=750&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=828&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1080&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1280&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1430&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2785 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1920&amp;h=624&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="624" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="232" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>R2バケットのパイプラインからハイ分割されたファイル</em></sup></p>
+<p>出力ファイルは、新しい行で区切られたJSON（NDJSON）として保存され、これらのファイルからストリームを具体化することが容易になります（ヒント：将来的にはR2をパイプラインソースとして使用できるようになります）。最後に、ファイル名は<a href="https://github.com/ulid/spec" target="_blank" rel="noopener noreferrer"><u>ULID</u></a>であるため、デフォルトで時間でソートされています。</p>
+<h2>最初にシャードネットワークに接続し、</h2>
+<p>Pipelinesを水平方向にスケーラブルにし、書き込みを素早く認識できるようにしているのは、当社の構築方法です。Durable Durable Objectsと各Durable<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u> Object内の埋め込まれたゼロ遅延SQLiteストレージを使用して、書き込まれたデータをすぐに保持し、その後、処理して書き込む前に、</u></a> R2にします。</p>
+<p>たとえば、eコマースまたはSaaSサイトであり、 Webサイトの利用状況データ（<em>クリックストリームデータ</em>と呼ばれる）を取り込み、データサイエンスチームがクエリできるようにする必要があるとします。このワークロードを処理するインフラストラクチャは、いくつかの障害シナリオに耐性がある必要があります。取り込みサービスは、トラフィックの急増に直面しても高い可用性を維持する必要があります。取り込んだデータはバッファリングして、ダウンストリームの呼び出しを最小限に抑え、ダウンストリームのコストを最小限に抑える必要があります。最後に、バッファリングされたデータは、シンクが利用できない場合、適切なリトライおよび失敗処理を行って、シンクに提供する必要があります。このプロセスの各ステップは、過負荷時にバックプレッシャーをアップストリームに知らせる必要があります。また、スケールも必要で、大規模なセールやイベント中は増加し、1日の中で静かな時間帯には減少しています。</p>
+<p>この記事を読んでいるデータエンジニアの皆さんは、Kafkaとその処理に関連するエコシステムの使用の現状をご存知かもしれません。しかし、あなたがアプリケーションエンジニアであれば、<em>Kafka、Zookeeper、Kafkaストリームについて学ぶことなく</em>、Pipelinesを使用して取り込みサービスを構築することになります。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2785 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>パイプラインの水平シャーディング</em></sup></p>
+<p>上の図は、Pipelinesが、課金、追跡シャード、パイプラインのライフサイクルイベントを担当するコントロールプレーンと、 Durable Objectsシャードのスケーラブルなグループであるデータパスを分割する方法を示しています。</p>
+<p>レコード（またはレコードのバッチ）がパイプラインに書き込まれると：</p>
+<ol>
+	<li>Pipelines Workerは、フェッチハンドラーまたはworkerバインディングを通じてレコードを受け取ります。</li>
+	<li><code>Pipeline_id</code>に基づいて、コーディネーターに連絡を取り、実行プランを取得します。それ以降の読み取りは、コーディネーターの負荷を軽減するためにキャッシュされます。</li>
+	<li>主に読み取りリクエストの処理をスケール化し、</li>
+	<li>これらはその後、実際に書き込みを処理する別のエグゼクティブにリシャードされます。Durable Object ストレージに保持されることから始め、これは<a href="https://blog.cloudflare.com/sqlite-in-durable-objects/#under-the-hood-storage-relay-service" target="_blank" rel="noopener noreferrer"><u>ストレージリレーサービス</u></a>（SRS）によって複製され、耐久性と可用性が確保されます。</li>
+	<li>SRSの後、設定されたTransform Workersに移り、データをカスタマイズします。</li>
+	<li>データはバッチ処理され、出力ファイルに書き込まれ、（該当する場合）圧縮されます。</li>
+	<li>ファイルは圧縮され、データは最終的なバッチにパッケージ化され、設定された R2バケットに書き込まれます。</li>
+</ol>
+<p>このパイプラインの各ステップは、アップストリームにバックプレッシャーを知らせることができます。これは、<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target="_blank" rel="noopener noreferrer"><u>ReadableStreams</u></a>を活用し、書き込み待ちのバイト数の総数がしきい値を超えた場合に<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/429" target="_blank" rel="noopener noreferrer"><u>429</u></a>で応答することによって行われます。各ReadableStreamは、 Durable Objects間で<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>JSRPC</u></a>コールを使用することで、 Durable Object の境界を越えることができます。パフォーマンスを向上させるために、 Durable Objects間で接続を再利用するためにRPCスタブを使用します。各ステップは、Durable ObjectsまたはR2が一時的に使用できない場合に対処するために、操作を再試行することもできます。</p>
+<p>また、既存のパイプラインを更新している間でも配信を保証します。既存のパイプラインを更新すると、上記のすべてのシャードとDurable Objectsを含む新しいデプロイメントが作成されます。リクエストは新しいパイプラインに安全に再ルーティングされます。古いパイプラインは、すべてのDurable Objectストレージが枯渇するまで、R2にデータを書き込み続けます。すべてのデータが書き込まれた後にのみ、古いパイプラインをスピンダウンします。こうすることで、パイプラインを更新しながらデータを失うことはありません。</p>
+<p>ここに、まだ公開していない興味深い部分があることにお気づきいただけるかと思います。ArroyoのストリーミングエンジンをPipelinesと統合することに取り組んでおり、これはArroyoへのデータの引き渡し方法において重要な部分となります。</p>
+<h2>では、そのコストは？</h2>
+<p>オープンベータの第1段階では、データの読み込み時やアクセス時に発生する標準R2のストレージ料金と運用コスト以外の追加料金は発生しません。また、R2バケットからの直接のエグレスは無料ですので、データ転送コストの追加を心配することなく、どのクラウドや地域からでもデータを処理し、クエリーを行うことができます。</p>
+<p>将来的には、Pipelineに取り込まれ、Pipelineから配信されるデータの量に基づく料金設定を導入する予定です。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers有料版 ($5 /月)</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>取り込み</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>月々50GBまで込み追加GBごとに$0.02</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>R2への配信</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>月々50GBまで込み追加GBごとに$0.02</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>また、ベータ版の進捗に合わせて、PipelinesをWorkers Freeプランで利用できるようにする予定です。</p>
+<p>Pipelinesに変換や追加のシンクを導入する際に、より多くのことを共有していきます。変更を行う前、または使用量に対する課金を開始する前に、少なくとも30日前に通知を行います。この通知は、2025年9月15日までに行う予定です。</p>
+<h2>今後の展開は？</h2>
+<p>ここには多くのことを構築する必要がありますし、Arroyoが構築した多くの強力なコンポーネントを基に構築したいと考えています。UDF（ユーザー定義機能）としてのWorkersの統合、Kafkaクライアントのような新しいソースの追加、新しいシンクでのパイプラインの拡張などです。 （R2以上）。</p>
+<p>また、Pipelinesを ローンチしたばかりの <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer">R2 Data Catalog</a> と統合します。Icebergテーブルに直接データストリームを取り込み、すぐにクエリーを実行できるようにします。他のシステムに依存する必要はありません。</p>
+<p>同時に、以下が可能です：</p>
+<ul>
+	<li>始めて、<a href="http://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>最初のパイプラインを作成</u></a>しましょう</li>
+	<li><a href="http://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>ドキュメントを読む</u></a></li>
+	<li><a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Developer</u></a> <code>Discordの#pipelines-betaチャンネルにご参加ください</code></li>
+</ul>
+<p>...または、サンプルプロジェクトを直接デプロイする：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> pipelines</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre>
+</div>

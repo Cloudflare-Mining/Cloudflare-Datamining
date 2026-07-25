@@ -1,179 +1,116 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cMFwGMw9rUQ9gASHO8lzx/628c204e32c9d3762f0f2035cda53e5f/the-curious-case-of-slow-downloads.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Some time ago we discovered that certain very slow downloads were getting abruptly terminated and began investigating whether that was a client (i.e. web browser) or server (i.e. us) problem.</p>
-	<p>Some users were unable to download a binary file a few megabytes in length. The story was simple—the download connection was abruptly terminated even though the file was in the process of being downloaded. After a brief investigation we confirmed the problem: somewhere in our stack there was a bug.</p>
-	<p>Describing the problem was simple, reproducing the problem was easy with a single <code>curl</code> command, but fixing it took surprising amount of effort.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JwG0LvBjz8MECWtw2lI7l/429381559a543fbe8478fe7af4e4c2e6/6784957048_4661ea7dfc_z.jpg" alt="" class="kg-image" width="640" height="424" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/jonicdao" target="_blank" rel="noopener noreferrer">jojo nicdao</a></p>
-	<p>In this article I'll describe the symptoms we saw, how we reproduced it and how we fixed it. Hopefully, by sharing our experiences we will save others from the tedious debugging we went through.</p>
-	<div class="flex anchor relative">
-		<h3 id="failing-downloads">Failing downloads</h3>
-		<a href="https://blog.cloudflare.com/#failing-downloads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Two things caught our attention in the bug report. First, only users on mobile phones were experiencing the problem. Second, the asset causing issues—a binary file—was pretty large, at around 30MB.</p>
-	<p>After a fruitful session with <code>tcpdump</code> one of our engineers was able to prepare a test case that reproduced the problem. As so often happens, once you know what you are looking for reproducing a problem is easy. In this case setting up a large file on a test domain and using the <code>--limit-rate</code> option to <code>curl</code> was enough:</p>
-	<pre class="language-bash"><code class="language-bash">$ curl -v http://example.com/large.bin --limit-rate 10k &gt; /dev/null
-* Closing connection #0
-curl: (56) Recv failure: Connection reset by peer</code></pre>
-	<p>Poking with <code>tcpdump</code> showed there was RST packet coming from our server exactly 60 seconds after the connection was established:</p>
-	<pre class="language-bash"><code class="language-bash">$ tcpdump -tttttni eth0 port 80
-00:00:00 IP 192.168.1.10.50112 &gt; 1.2.3.4.80: Flags [S], seq 3193165162, win 43690, options [mss 65495,sackOK,TS val 143660119 ecr 0,nop,wscale 7], length 0
-...
-00:01:00 IP 1.2.3.4.80 &gt; 192.168.1.10.50112: Flags [R.], seq 1579198, ack 88, win 342, options [nop,nop,TS val 143675137 ecr 143675135], length 0
-</code></pre>
-	<p>Clearly our server was doing something wrong. The RST packet coming from CloudFlare server is just bad. The client behaves, sends ACK packets politely, consumes the data at its own pace, and then we just abruptly cut the conversation.</p>
-	<div class="flex anchor relative">
-		<h3 id="not-our-problem">Not our problem</h3>
-		<a href="https://blog.cloudflare.com/#not-our-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We are a heavy users of NGINX. In order to isolate the problem we set up a basic off-the-shelf NGINX server. The issue was easily <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx.conf" target="_blank" rel="noopener noreferrer">reproducible locally</a>:</p>
-	<pre class="language-bash"><code class="language-bash">$ curl --limit-rate 10k  localhost:8080/large.bin &gt; /dev/null
-* Closing connection #0
-curl: (56) Recv failure: Connection reset by peer</code></pre>
-	<p>This proved the problem was not specific to our setup—it was a broader NGINX issue!</p>
-	<p>After some further poking we found two culprits. First, we were using the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#reset_timedout_connection" target="_blank" rel="noopener noreferrer"><code>reset_timedout_connection</code></a> setting. This causes NGINX to close connections abruptly. When NGINX wants to time out a connection it sets <code>SO_LINGER</code> without a timeout on a socket, followed by a <code>close()</code>. This triggers the RST packet, instead of a usual graceful TCP finalization. Here's an <code>strace</code> log from NGINX:</p>
-	<pre class="language-bash"><code class="language-bash">04:20:22 setsockopt(5, SOL_SOCKET, SO_LINGER, {onoff=1, linger=0}, 8) = 0
-04:20:22 close(5) = 0</code></pre>
-	<p>We could just have disabled the <code>reset_timedout_connection</code> setting, but that wouldn't have solved the underlying problem. Why was NGINX closing the connection in the first place?</p>
-	<p>After further investigation we looked at the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#send_timeout" target="_blank" rel="noopener noreferrer"><code>send_timeout</code></a> configuration option. The default value is 60 seconds, exactly the timeout we were seeing.</p>
-	<pre class="language-bash"><code class="language-bash">http {
-     send_timeout 60s;
-     ...</code></pre>
-	<p>The <code>send_timeout</code> option is used by NGINX to ensure that all connections will eventually drain. It controls the time allowed between successive <code>send</code>/<code>sendfile</code> calls on each connection. Generally speaking it's not fine for a single connection to use precious server resources for too long. If the download is going on too long or is plain stuck, it's okay for the HTTP server to be upset.</p>
-	<p>But there was more to it than that.</p>
-	<div class="flex anchor relative">
-		<h3 id="not-an-nginx-problem-either">Not an NGINX problem either</h3>
-		<a href="https://blog.cloudflare.com/#not-an-nginx-problem-either" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Armed with <code>strace</code> we investigated what NGINX actually did:</p>
-	<pre class="language-bash"><code class="language-bash">04:54:05 accept4(4, ...) = 5
-04:54:05 sendfile(5, 9, [0], 51773484) = 5325752
-04:55:05 close(5) = 0</code></pre>
-	<p>In the config we ordered NGINX to use <code>sendfile</code> to transmit the data. The call to <code>sendfile</code> succeeds and pushes 5MB of data to the send buffer. This value is interesting—it's about the amount of space we have in our default write buffer setting:</p>
-	<pre class="language-bash"><code class="language-bash">$ sysctl net.ipv4.tcp_wmem
-net.ipv4.tcp_wmem = 4096 5242880 33554432</code></pre>
-	<p>A minute after the first long <code>sendfile</code> the socket is closed. Let's see what happens when we increase the <code>send_timeout</code> value to some big value (like 600 seconds):</p>
-	<pre class="language-bash"><code class="language-bash">08:21:37 accept4(4, ...) = 5
-08:21:37 sendfile(5, 9, [0], 51773484) = 6024754
-08:24:21 sendfile(5, 9, [6024754], 45748730) = 1768041
-08:27:09 sendfile(5, 9, [7792795], 43980689) = 1768041
-08:30:07 sendfile(5, 9, [9560836], 42212648) = 1768041
-...</code></pre>
-	<p>After the first large push of data, <code>sendfile</code> is called more times. Between each successive call it transfers about 1.7 MB. Between these syscalls, about every 180 seconds, the socket was constantly being drained by the slow <code>curl</code>, so why didn't NGINX refill it constantly?</p>
-	<div class="flex anchor relative">
-		<h3 id="the-asymmetry">The asymmetry</h3>
-		<a href="https://blog.cloudflare.com/#the-asymmetry" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A motto of Unix design is "everything is a file". I prefer to think about this as: "in Unix everything can be readable and writeable when given to <code>poll</code>". But what exactly does "being readable" mean? Let's discuss the behavior of network sockets on Linux.</p>
-	<p>The semantics of reading from a socket are simple:</p>
-	<ul>
-		<li>
-			<p>Calling <code>read()</code> will return the data available on the socket, until it's empty.</p>
-		</li>
-		<li>
-			<p><code>poll</code> reports the socket as readable when any data is available on it.</p>
-		</li>
-	</ul>
-	<p>One might think this is symmetrical and similar conditions hold for writing to a socket, like this:</p>
-	<ul>
-		<li>
-			<p>Calling <code>write()</code> will copy data to the write buffer, up until "send buffer" memory is exhausted.</p>
-		</li>
-		<li>
-			<p><code>poll</code> reports the socket is writeable if there is any space available in the send buffer.</p>
-		</li>
-	</ul>
-	<p>Surprisingly, the last point is <i>not</i> true.</p>
-	<div class="flex anchor relative">
-		<h3 id="different-code-paths">Different code paths</h3>
-		<a href="https://blog.cloudflare.com/#different-code-paths" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It's very important to realize that in the Linux Kernel, there are two separate code paths: one for sending data and another one for checking if a socket is writeable.</p>
-	<p>In order for <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L1167" target="_blank" rel="noopener noreferrer"><code>send()</code></a> to succeed two conditions must be met:</p>
-	<ul>
-		<li>
-			<p>There must be <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v=4.5#L1070" target="_blank" rel="noopener noreferrer">some space available in the send buffer</a>.</p>
-		</li>
-		<li>
-			<p>The amount of enqueued, not sent, data <a href="http://lxr.free-electrons.com/source/include/net/tcp.h?v=4.5#L1691" target="_blank" rel="noopener noreferrer">must be lower than the LOWAT setting</a>. We will ignore the <a href="https://lwn.net/Articles/560082" target="_blank" rel="noopener noreferrer">LOWAT setting</a> in this blog post.</p>
-		</li>
-	</ul>
-	<p>On the other hand, the conditions for a socket to be reported as <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L519" target="_blank" rel="noopener noreferrer">"writeable" by <code>poll</code></a> are slightly narrower:</p>
-	<ul>
-		<li>
-			<p>There must be some space available in the send buffer.</p>
-		</li>
-		<li>
-			<p>The amount of enqueued, not sent, data must be lower than the LOWAT setting.</p>
-		</li>
-		<li>
-			<p>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5=#L1079" target="_blank" rel="noopener noreferrer">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5=#L785" target="_blank" rel="noopener noreferrer">half of the used send buffer space</a>.</p>
-		</li>
-	</ul>
-	<p>The last condition is critical. This means that after you fill the socket send buffer to 100%, the socket will become writeable again only when it's drained below 66% of send buffer size.</p>
-	<p>Going back to our NGINX trace, the second <code>sendfile</code> we saw:</p>
-	<pre class="language-bash"><code class="language-bash">08:24:21 sendfile(5, 9, [6024754], 45748730) = 1768041</code></pre>
-	<p>The call succeeded in sending 1.7 MiB of data. This is close to 33% of 5 MiB, our default <code>wmem</code> send buffer size.</p>
-	<p>I presume this threshold was implemented in Linux in order to avoid refilling the buffers too often. It is undesirable to wake up the sending program after each byte of the data was acknowledged by the client.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-solution">The solution</h3>
-		<a href="https://blog.cloudflare.com/#the-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With full understanding of the problem we can decisively say when it happens:</p>
-	<ol>
-		<li>
-			<p>The socket send buffer is filled to at least 66%.</p>
-		</li>
-		<li>
-			<p>The customer download speed is poor and it fails to drain the buffer to below 66% in 60 seconds.</p>
-		</li>
-		<li>
-			<p>When that happens, the send buffer is not refilled in time, it's not reported as writeable, and the connection gets reset with a timeout.</p>
-		</li>
-	</ol>
-	<p>There are a couple of ways to fix the problem.</p>
-	<p>One option is to increase the <code>send_timeout</code> to, say, 280 seconds. This would ensure that given the default send buffer size, consumers faster than 50Kbps will never time out.</p>
-	<p>Another choice is to reduce the <code>tcp_wmem</code> send buffers sizes.</p>
-	<p>The final option is to patch NGINX to react differently on timeout. Instead of closing the connection, we could inspect the amount of data remaining in the send buffer. We can do that with <code>ioctl(TIOCOUTQ)</code>. With this information we know exactly how quickly the connection is being drained. If it's above some configurable threshold, we could decide to grant the connection some more time.</p>
-	<p>My colleague Chris Branch prepared <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx_send_minimum_rate.patch" target="_blank" rel="noopener noreferrer">a Linux specific patch to NGINX</a>. It implements a <code>send_minimum_rate</code> option, which is used to specify the minimum permitted client throughput.</p>
-	<div class="flex anchor relative">
-		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Linux networking stack is very complex. While it usually works really well, sometimes it gives us a surprise. Even very experienced programmers don't fully understand all the corner cases. During debugging we learned that setting timeouts in the "write" path of the code requires special attention. You can't just treat the "write" timeouts in the same way as "read" timeouts.</p>
-	<p>It was a surprise to me that the semantics of a socket being "writeable" are not symmetrical to the "readable" state.</p>
-	<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally different—NGINX send timeouts.</p>
-	<p>Tuning a CDN to work well for all the users takes a lot of work. This write up is a result of hard work done by four engineers (special thanks to Chris Branch!). If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">consider applying</a>!</p>
+<p>Some time ago we discovered that certain very slow downloads were getting abruptly terminated and began investigating whether that was a client (i.e. web browser) or server (i.e. us) problem.</p>
+<p>Some users were unable to download a binary file a few megabytes in length. The story was simple—the download connection was abruptly terminated even though the file was in the process of being downloaded. After a brief investigation we confirmed the problem: somewhere in our stack there was a bug.</p>
+<p>Describing the problem was simple, reproducing the problem was easy with a single <code>curl</code> command, but fixing it took surprising amount of effort.</p>
+<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/jonicdao/6784957048" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/jonicdao" target="_blank" rel="noopener noreferrer">jojo nicdao</a></p>
+<p>In this article I'll describe the symptoms we saw, how we reproduced it and how we fixed it. Hopefully, by sharing our experiences we will save others from the tedious debugging we went through.</p>
+<h3>Failing downloads</h3>
+<p>Two things caught our attention in the bug report. First, only users on mobile phones were experiencing the problem. Second, the asset causing issues—a binary file—was pretty large, at around 30MB.</p>
+<p>After a fruitful session with <code>tcpdump</code> one of our engineers was able to prepare a test case that reproduced the problem. As so often happens, once you know what you are looking for reproducing a problem is easy. In this case setting up a large file on a test domain and using the <code>--limit-rate</code> option to <code>curl</code> was enough:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-032f62-99ffe4"> http://example.com/large.bin</span><span class="sk-005cc5-99ffe4"> --limit-rate</span><span class="sk-032f62-99ffe4"> 10k</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /dev/null</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Closing connection </span><span class="sk-6a737d-8b8b8b94">#0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">curl:</span><span class="sk-24292e-fff"> (56) Recv failure: Connection reset by peer</span></span></code></pre>
 </div>
+<p>Poking with <code>tcpdump</code> showed there was RST packet coming from our server exactly 60 seconds after the connection was established:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -tttttni</span><span class="sk-032f62-99ffe4"> eth0</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 80</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:00:00</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 192.168.1.10.50112</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 1.2.3.4.80:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [S], seq 3193165162, win 43690, options [mss 65495,sackOK,TS val </span><span class="sk-005cc5-ffc799">143660119</span><span class="sk-24292e-fff"> ecr 0,nop,wscale 7], length 0</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:01:00</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 1.2.3.4.80</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 192.168.1.10.50112:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [R.], seq 1579198, ack 88, win 342, options [nop,nop,TS val </span><span class="sk-005cc5-ffc799">143675137</span><span class="sk-24292e-fff"> ecr 143675135], length 0</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Clearly our server was doing something wrong. The RST packet coming from CloudFlare server is just bad. The client behaves, sends ACK packets politely, consumes the data at its own pace, and then we just abruptly cut the conversation.</p>
+<h3>Not our problem</h3>
+<p>We are a heavy users of NGINX. In order to isolate the problem we set up a basic off-the-shelf NGINX server. The issue was easily <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx.conf" target="_blank" rel="noopener noreferrer">reproducible locally</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> --limit-rate</span><span class="sk-032f62-99ffe4"> 10k</span><span class="sk-032f62-99ffe4">  localhost:8080/large.bin</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> /dev/null</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Closing connection </span><span class="sk-6a737d-8b8b8b94">#0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">curl:</span><span class="sk-24292e-fff"> (56) Recv failure: Connection reset by peer</span></span></code></pre>
+</div>
+<p>This proved the problem was not specific to our setup—it was a broader NGINX issue!</p>
+<p>After some further poking we found two culprits. First, we were using the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#reset_timedout_connection" target="_blank" rel="noopener noreferrer"><code>reset_timedout_connection</code></a> setting. This causes NGINX to close connections abruptly. When NGINX wants to time out a connection it sets <code>SO_LINGER</code> without a timeout on a socket, followed by a <code>close()</code>. This triggers the RST packet, instead of a usual graceful TCP finalization. Here's an <code>strace</code> log from NGINX:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">04:20:22</span><span class="sk-032f62-99ffe4"> setsockopt</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5,</span><span class="sk-032f62-99ffe4"> SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> SO_LINGER,</span><span class="sk-032f62-99ffe4"> {onoff=1,</span><span class="sk-032f62-99ffe4"> linger=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-032f62-99ffe4">},</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">04:20:22</span><span class="sk-032f62-99ffe4"> close</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 0</span></span></code></pre>
+</div>
+<p>We could just have disabled the <code>reset_timedout_connection</code> setting, but that wouldn't have solved the underlying problem. Why was NGINX closing the connection in the first place?</p>
+<p>After further investigation we looked at the <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#send_timeout" target="_blank" rel="noopener noreferrer"><code>send_timeout</code></a> configuration option. The default value is 60 seconds, exactly the timeout we were seeing.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     send_timeout</span><span class="sk-032f62-99ffe4"> 60s</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">     ...</span></span></code></pre>
+</div>
+<p>The <code>send_timeout</code> option is used by NGINX to ensure that all connections will eventually drain. It controls the time allowed between successive <code>send</code>/<code>sendfile</code> calls on each connection. Generally speaking it's not fine for a single connection to use precious server resources for too long. If the download is going on too long or is plain stuck, it's okay for the HTTP server to be upset.</p>
+<p>But there was more to it than that.</p>
+<h3>Not an NGINX problem either</h3>
+<p>Armed with <code>strace</code> we investigated what NGINX actually did:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">04:54:05</span><span class="sk-032f62-99ffe4"> accept4</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">4,</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">04:54:05</span><span class="sk-032f62-99ffe4"> sendfile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5,</span><span class="sk-032f62-99ffe4"> 9,</span><span class="sk-24292e-fff"> [0], 51773484) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 5325752</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">04:55:05</span><span class="sk-032f62-99ffe4"> close</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 0</span></span></code></pre>
+</div>
+<p>In the config we ordered NGINX to use <code>sendfile</code> to transmit the data. The call to <code>sendfile</code> succeeds and pushes 5MB of data to the send buffer. This value is interesting—it's about the amount of space we have in our default write buffer setting:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sysctl</span><span class="sk-032f62-99ffe4"> net.ipv4.tcp_wmem</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">net.ipv4.tcp_wmem</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 4096</span><span class="sk-005cc5-ffc799"> 5242880</span><span class="sk-005cc5-ffc799"> 33554432</span></span></code></pre>
+</div>
+<p>A minute after the first long <code>sendfile</code> the socket is closed. Let's see what happens when we increase the <code>send_timeout</code> value to some big value (like 600 seconds):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">08:21:37</span><span class="sk-032f62-99ffe4"> accept4</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">4,</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">08:21:37</span><span class="sk-032f62-99ffe4"> sendfile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5,</span><span class="sk-032f62-99ffe4"> 9,</span><span class="sk-24292e-fff"> [0], 51773484) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 6024754</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">08:24:21</span><span class="sk-032f62-99ffe4"> sendfile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5,</span><span class="sk-032f62-99ffe4"> 9,</span><span class="sk-24292e-fff"> [6024754], 45748730) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 1768041</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">08:27:09</span><span class="sk-032f62-99ffe4"> sendfile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5,</span><span class="sk-032f62-99ffe4"> 9,</span><span class="sk-24292e-fff"> [7792795], 43980689) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 1768041</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">08:30:07</span><span class="sk-032f62-99ffe4"> sendfile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5,</span><span class="sk-032f62-99ffe4"> 9,</span><span class="sk-24292e-fff"> [9560836], 42212648) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 1768041</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>After the first large push of data, <code>sendfile</code> is called more times. Between each successive call it transfers about 1.7 MB. Between these syscalls, about every 180 seconds, the socket was constantly being drained by the slow <code>curl</code>, so why didn't NGINX refill it constantly?</p>
+<h3>The asymmetry</h3>
+<p>A motto of Unix design is "everything is a file". I prefer to think about this as: "in Unix everything can be readable and writeable when given to <code>poll</code>". But what exactly does "being readable" mean? Let's discuss the behavior of network sockets on Linux.</p>
+<p>The semantics of reading from a socket are simple:</p>
+<ul>
+	<li>Calling <code>read()</code> will return the data available on the socket, until it's empty.</li>
+	<li><code>poll</code> reports the socket as readable when any data is available on it.</li>
+</ul>
+<p>One might think this is symmetrical and similar conditions hold for writing to a socket, like this:</p>
+<ul>
+	<li>Calling <code>write()</code> will copy data to the write buffer, up until "send buffer" memory is exhausted.</li>
+	<li><code>poll</code> reports the socket is writeable if there is any space available in the send buffer.</li>
+</ul>
+<p>Surprisingly, the last point is <em>not</em> true.</p>
+<h3>Different code paths</h3>
+<p>It's very important to realize that in the Linux Kernel, there are two separate code paths: one for sending data and another one for checking if a socket is writeable.</p>
+<p>In order for <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L1167" target="_blank" rel="noopener noreferrer"><code>send()</code></a> to succeed two conditions must be met:</p>
+<ul>
+	<li>There must be <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v=4.5#L1070" target="_blank" rel="noopener noreferrer">some space available in the send buffer</a>.</li>
+	<li>The amount of enqueued, not sent, data <a href="http://lxr.free-electrons.com/source/include/net/tcp.h?v=4.5#L1691" target="_blank" rel="noopener noreferrer">must be lower than the LOWAT setting</a>. We will ignore the <a href="https://lwn.net/Articles/560082" target="_blank" rel="noopener noreferrer">LOWAT setting</a> in this blog post.</li>
+</ul>
+<p>On the other hand, the conditions for a socket to be reported as <a href="http://lxr.free-electrons.com/source/net/ipv4/tcp.c?v=4.5#L519" target="_blank" rel="noopener noreferrer">"writeable" by <code>poll</code></a> are slightly narrower:</p>
+<ul>
+	<li>There must be some space available in the send buffer.</li>
+	<li>The amount of enqueued, not sent, data must be lower than the LOWAT setting.</li>
+	<li>The amount of <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v4.5=#L1079" target="_blank" rel="noopener noreferrer">free buffer space</a> in the send buffer must be greater than <a href="http://lxr.free-electrons.com/source/include/net/sock.h?v.4.5=#L785" target="_blank" rel="noopener noreferrer">half of the used send buffer space</a>.</li>
+</ul>
+<p>The last condition is critical. This means that after you fill the socket send buffer to 100%, the socket will become writeable again only when it's drained below 66% of send buffer size.</p>
+<p>Going back to our NGINX trace, the second <code>sendfile</code> we saw:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">08:24:21</span><span class="sk-032f62-99ffe4"> sendfile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5,</span><span class="sk-032f62-99ffe4"> 9,</span><span class="sk-24292e-fff"> [6024754], 45748730) </span><span class="sk-032f62-99ffe4">=</span><span class="sk-005cc5-ffc799"> 1768041</span></span></code></pre>
+</div>
+<p>The call succeeded in sending 1.7 MiB of data. This is close to 33% of 5 MiB, our default <code>wmem</code> send buffer size.</p>
+<p>I presume this threshold was implemented in Linux in order to avoid refilling the buffers too often. It is undesirable to wake up the sending program after each byte of the data was acknowledged by the client.</p>
+<h3>The solution</h3>
+<p>With full understanding of the problem we can decisively say when it happens:</p>
+<ol>
+	<li>The socket send buffer is filled to at least 66%.</li>
+	<li>The customer download speed is poor and it fails to drain the buffer to below 66% in 60 seconds.</li>
+	<li>When that happens, the send buffer is not refilled in time, it's not reported as writeable, and the connection gets reset with a timeout.</li>
+</ol>
+<p>There are a couple of ways to fix the problem.</p>
+<p>One option is to increase the <code>send_timeout</code> to, say, 280 seconds. This would ensure that given the default send buffer size, consumers faster than 50Kbps will never time out.</p>
+<p>Another choice is to reduce the <code>tcp_wmem</code> send buffers sizes.</p>
+<p>The final option is to patch NGINX to react differently on timeout. Instead of closing the connection, we could inspect the amount of data remaining in the send buffer. We can do that with <code>ioctl(TIOCOUTQ)</code>. With this information we know exactly how quickly the connection is being drained. If it's above some configurable threshold, we could decide to grant the connection some more time.</p>
+<p>My colleague Chris Branch prepared <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-03-slow-downloads/nginx_send_minimum_rate.patch" target="_blank" rel="noopener noreferrer">a Linux specific patch to NGINX</a>. It implements a <code>send_minimum_rate</code> option, which is used to specify the minimum permitted client throughput.</p>
+<h3>Summary</h3>
+<p>The Linux networking stack is very complex. While it usually works really well, sometimes it gives us a surprise. Even very experienced programmers don't fully understand all the corner cases. During debugging we learned that setting timeouts in the "write" path of the code requires special attention. You can't just treat the "write" timeouts in the same way as "read" timeouts.</p>
+<p>It was a surprise to me that the semantics of a socket being "writeable" are not symmetrical to the "readable" state.</p>
+<p>In past <a href="https://blog.cloudflare.com/the-story-of-one-latency-spike">we found that raising receive buffers</a> can have unexpected consequences. Now we know tweaking <code>wmem</code> values can affect something totally different—NGINX send timeouts.</p>
+<p>Tuning a CDN to work well for all the users takes a lot of work. This write up is a result of hard work done by four engineers (special thanks to Chris Branch!). If this sounds interesting, <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">consider applying</a>!</p>

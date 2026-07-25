@@ -1,0 +1,269 @@
+<p>18 listopada 2025 roku o godz. 11:20 UTC (wszystkie podane godziny odnoszą się do UTC) w sieci Cloudflare zaczęły występować poważne zakłócenia w obsłudze kluczowego ruchu sieciowego. Dla użytkowników Internetu próbujących uzyskać dostęp do witryn internetowych naszych klientów problem ten objawiał się stroną błędu sygnalizującą awarię w ramach sieci Cloudflare. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="485" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=640&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=750&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=828&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1080&amp;h=733&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1280&amp;h=868&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1430&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP error page displayed during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1258&amp;h=854&amp;f=webp" data-lightbox-width="1258" data-lightbox-height="854" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="485" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>Przyczyną problemu nie był, ani bezpośrednio, ani pośrednio, cyberatak czy jakakolwiek forma złośliwej aktywności.</strong> Zamiast tego problem został wywołany zmianą uprawnień w jednym z naszych systemów bazodanowych, która spowodowała wygenerowanie wielu wpisów w „pliku cech” (feature file) wykorzystywanego przez nasz system zarządzania ruchem botów. W rezultacie ten plik cech podwoił swoją objętość. Większy niż zakładano plik cech został następnie rozpropagowany na wszystkie maszyny tworzące naszą sieć.</p>
+<p>Oprogramowanie działające na tych maszynach, odpowiedzialne za przekierowywanie ruchu w naszej sieci, odczytuje ten plik cech, aby utrzymać system zarządzania ruchem botów w pełnej aktualności wobec stale ewoluujących zagrożeń. Oprogramowanie miało ograniczenie dotyczące maksymalnej wielkości tego pliku cech, a jego nowy, podwojony rozmiar przekraczał ten limit. To spowodowało awarię oprogramowania.</p>
+<p>Po tym, jak początkowo błędnie założyliśmy, że obserwowane symptomy wynikają z hiperskalowego ataku DDoS, właściwie zidentyfikowaliśmy źródło problemu i zdołaliśmy zatrzymać propagację pliku cech o większym niż oczekiwano rozmiarze, zastępując go wcześniejszą wersją. Zasadniczy ruch sieciowy w dużej mierze wrócił do normy około 14:30. Przez kolejne kilka godzin pracowaliśmy nad ograniczeniem zwiększonego obciążenia różnych elementów naszej sieci, gdy ruch gwałtownie wracał do trybu online. O godzinie 17:06 wszystkie systemy Cloudflare działały już normalnie.</p>
+<p>Przepraszamy naszych klientów oraz całą społeczność Internetu za skutki tego incydentu. Biorąc pod uwagę rolę Cloudflare w ekosystemie Internetu, jakakolwiek przerwa w działaniu któregokolwiek z naszych systemów jest nie do przyjęcia. To, że przez pewien czas nasza sieć nie była w stanie prawidłowo kierować ruchu, jest dla każdego członka naszego zespołu wyjątkowo bolesne. Wiemy, że dziś Państwa zawiedliśmy.</p>
+<p>Niniejszy wpis stanowi szczegółowy opis przebiegu zdarzeń oraz wskazuje, które systemy i procesy zawiodły. Jest to również początek, choć nie koniec, działań planowanych po to, aby zapewnić, że podobna awaria nie wystąpi ponownie.</p>
+<h2>Awaria</h2>
+<p>Poniższy wykres przedstawia liczbę kodów odpowiedzi HTTP z grupy 5xx zwracanych przez sieć Cloudflare. Zazwyczaj wartość ta powinna być bardzo niska — i taka pozostawała aż do chwili wystąpienia awarii. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="348" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=640&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=750&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=828&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1080&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1280&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1430&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Volume of HTTP 5xx requests served by the Cloudflare network" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1507&amp;h=733&amp;f=webp" data-lightbox-width="1507" data-lightbox-height="733" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="348" class="pt-portable-image-media"></div>
+</figure>
+<p>Wolumen odnotowany przed 11:20 stanowi oczekiwany poziom bazowy błędów 5xx występujących w naszej sieci. Nagły skok i późniejsze fluktuacje odzwierciedlają awarię naszego systemu spowodowaną wczytaniem nieprawidłowego pliku cech. Co istotne, system potrafił okresowo samoczynnie wracać do normalnego działania. Było to bardzo nietypowe zachowanie jak na błąd wewnętrzny.</p>
+<p>Wyjaśnienie okazało się następujące: plik był generowany co pięć minut przez zapytanie uruchamiane na klastrze bazy danych ClickHouse, który był stopniowo aktualizowany w celu usprawnienia zarządzania uprawnieniami. Nieprawidłowe dane były generowane wyłącznie wtedy, gdy zapytanie wykonywało się na tej części klastra, która została już zaktualizowana. W efekcie co pięć minut istniało ryzyko wygenerowania i szybko rozpropagowania w sieci albo poprawnego, albo wadliwego zestawu plików konfiguracyjnych.</p>
+<p>Ta zmienność utrudniała ustalenie, co dokładnie się dzieje, ponieważ cały system potrafił wracać do normalnego działania, po czym ponownie ulegał awarii — w zależności od tego, czy w danej iteracji do naszej sieci trafiały poprawne, czy wadliwe pliki konfiguracyjne. Początkowo skłoniło nas to do przypuszczenia, że przyczyną może być atak. Ostatecznie każdy węzeł ClickHouse zaczął generować wadliwy plik konfiguracyjny, a wahania ustabilizowały się w stanie awarii.</p>
+<p>Błędy utrzymywały się aż do momentu zidentyfikowania i usunięcia źródła problemu, co rozpoczęto około 14:30. Rozwiązaliśmy problem, zatrzymując generowanie i propagację wadliwego pliku cech oraz ręcznie wprowadzając sprawdzony, poprawny plik do kolejki jego dystrybucji. Następnie wymuszono ponowne uruchomienie naszego głównego serwera proxy.</p>
+<p>Pozostały „długi ogon” widoczny na powyższym wykresie odzwierciedla pracę naszego zespołu polegającą na ponownym uruchamianiu pozostałych usług, które znalazły się w stanie nieprawidłowym. Wolumen błędów 5xx wrócił do normy o 17:06.</p>
+<p>Incydent miał wpływ na następujące usługi:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Usługa/produkt</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Opis wpływu</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Podstawowe usługi CDN i bezpieczeństwa</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Kody odpowiedzi HTTP z grupy 5xx. Zrzut ekranu na początku wpisu przedstawia typową stronę błędu wyświetlaną użytkownikom końcowym.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turnstile</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Nie można załadować Turnstile.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Usługa Workers KV zwróciła istotnie podwyższony poziom błędów HTTP 5xx, ponieważ żądania kierowane do bramy „front end” KV kończyły się niepowodzeniem wskutek awarii głównego serwera proxy.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pulpit nawigacyjny</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Choć pulpit nawigacyjny pozostawał w dużej mierze sprawny, większość użytkowników nie mogła się zalogować, ponieważ usługa Turnstile była niedostępna na stronie logowania.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Email Security</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Choć przetwarzanie i dostarczanie poczty elektronicznej przebiegało bez zakłóceń, odnotowaliśmy chwilową utratę dostępu do źródła reputacji adresów IP. Spowodowało to obniżenie skuteczności wykrywania spamu oraz uniemożliwiło uruchamianie niektórych mechanizmów wykrywania opartych na wieku domen, przy czym nie stwierdzono żadnego istotnego wpływu na klientów. Zaobserwowaliśmy również nieprawidłowe działanie części operacji Auto Move; wszystkie objęte nimi wiadomości zostały przeanalizowane i odpowiednio skorygowane.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>U większości użytkowników występowały powszechne błędy uwierzytelniania — zaczęły się wraz z początkiem incydentu i utrzymywały aż do rozpoczęcia wycofywania zmian o 13:05. Istniejące sesje Access pozostały niezakłócone.<br>Wszystkie nieudane próby uwierzytelnienia kończyły się wyświetleniem strony błędu, co oznacza, że żaden z tych użytkowników nie uzyskał dostępu do aplikacji docelowej w okresie, gdy mechanizm uwierzytelniania nie działał poprawnie. Pomyślne logowania w tym okresie były prawidłowo rejestrowane w trakcie incydentu.&nbsp;<br>Wszelkie próby aktualizacji konfiguracji Access podjęte w tym czasie kończyłyby się niepowodzeniem albo propagowałyby się bardzo wolno. Wszystkie aktualizacje konfiguracji zostały już przywrócone.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Oprócz zwracania błędów HTTP 5xx zaobserwowaliśmy istotne zwiększenie opóźnień odpowiedzi z naszej sieci CDN w okresie trwania incydentu. Było to spowodowane znacznym wykorzystaniem zasobów CPU przez nasze systemy debugowania i obserwowalności, które automatycznie wzbogacają nieprzechwycone błędy o dodatkowe informacje diagnostyczne.</p>
+<h2>Jak Cloudflare przetwarza żądania i w jaki sposób doszło dziś do nieprawidłowości</h2>
+<p>Każde żądanie kierowane do Cloudflare przechodzi jasno zdefiniowaną ścieżkę w naszej sieci. Może pochodzić z przeglądarki ładującej stronę internetową, z aplikacji mobilnej wywołującej interfejs API albo z ruchu automatycznego generowanego przez inną usługę. Takie żądania najpierw trafiają do naszej warstwy HTTP i TLS, następnie przechodzą do naszego głównego systemu proxy (określanego jako FL — „Frontline”), a na końcu do systemu Pingora, który wykonuje wyszukiwanie w pamięci podręcznej lub — jeśli to konieczne — pobiera dane z serwera pochodzenia.</p>
+<p>Szczegółowy opis działania naszego głównego serwera proxy udostępniliśmy wcześniej <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>tutaj</u></a>.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="303" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=640&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=750&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=828&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1080&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1280&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1430&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Diagram of our reverse proxy architecture" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1920&amp;h=813&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="303" class="pt-portable-image-media"></div>
+</figure>
+<p>Gdy żądanie przechodzi przez główny serwer proxy, uruchamiane są różne produkty zabezpieczające i optymalizujące wydajność dostępne w naszej sieci. Serwer proxy stosuje unikalną konfigurację i ustawienia dla każdego klienta — od egzekwowania reguł WAF i ochrony przed atakami DDoS po kierowanie ruchu do Developer Platform i R2. Realizuje to za pomocą zestawu modułów specyficznych dla danej domeny, które stosują konfigurację oraz reguły dotyczące zasad do ruchu przechodzącego przez nasz serwer proxy.</p>
+<p>Jeden z tych modułów, zarządzanie ruchem botów, był przyczyną dzisiejszej awarii.&nbsp;</p>
+<p>Oferowana przez Cloudflare funkcja <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>zarządzania ruchem botów</u></a> obejmuje między innymi model uczenia maszynowego, który nadaje oceny botom dla każdego żądania przechodzącego przez naszą sieć. Nasi klienci wykorzystują te oceny do kontrolowania, które boty mogą uzyskiwać dostęp do ich witryn internetowych, a które nie.</p>
+<p>Model jako dane wejściowe wykorzystuje plik konfiguracyjny zawierający zestaw „cech”. W tym kontekście „cecha” oznacza pojedynczy atrybut wykorzystywany przez model uczenia maszynowego do przewidywania, czy dane żądanie zostało wygenerowane automatycznie, czy nie. Plik konfiguracyjny cech stanowi zbiór poszczególnych cech.</p>
+<p>Ten plik cech jest odświeżany co kilka minut i publikowany w całej naszej sieci, co umożliwia nam reagowanie na zmiany w przepływach ruchu w Internecie. Pozwala nam to również reagować na nowe typy botów oraz nowe formy ataków z wykorzystaniem botów. Z tego względu kluczowe jest, aby był on wdrażany często i szybko, ponieważ cyberprzestępcy bardzo szybko zmieniają swoją taktykę.</p>
+<p>Zmiana w sposobie działania zapytania ClickHouse (wyjaśniona poniżej), które generuje ten plik, spowodowała pojawienie się w nim dużej liczby zduplikowanych wierszy „cech”. Zmiana ta wpłynęła na rozmiar pliku konfiguracyjnego cech (dotychczas o stałej wielkości), co spowodowało wywołanie błędu w module zarządzania ruchem botów.</p>
+<p>W efekcie system głównego serwera proxy, który obsługuje przetwarzanie ruchu dla naszych klientów, zwracał kody błędów HTTP 5xx dla każdego ruchu zależnego od modułu zarządzania ruchem botów. Wpłynęło to również na usługi Workers KV i Access, które polegają na działaniu głównego serwera proxy.</p>
+<p>Niezależnie od tego incydentu prowadziliśmy — i nadal prowadzimy — migrację ruchu naszych klientów do nowej wersji usługi proxy, wewnętrznie znanej jako <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>FL2</u></a>. Obie wersje zostały dotknięte tym problemem, choć obserwowany wpływ był w ich przypadku różny.</p>
+<p>Klienci korzystający z nowego silnika proxy FL2 obserwowali błędy HTTP 5xx. Klienci korzystający ze starszego silnika proxy, znanego jako FL, nie obserwowali błędów, jednak oceny botów nie były generowane prawidłowo, wskutek czego cały ruch uzyskiwał wskaźnik dotyczący botów równy zero. Klienci, którzy mieli wdrożone reguły blokujące boty, obserwowali dużą liczbę fałszywych alarmów. Z kolei klienci, którzy nie wykorzystywali wskaźnika dotyczącego botów w swoich regułach, nie odnotowali żadnego wpływu.</p>
+<p>Kolejnym wyraźnym symptomem, który wprowadził nas w błąd i skłonił do podejrzeń o możliwy atak, był fakt, że strona statusu Cloudflare przestała działać. Strona statusu jest hostowana całkowicie poza infrastrukturą Cloudflare i nie ma żadnych zależności od naszych usług. Choć okazało się to być jedynie zbiegiem okoliczności, doprowadziło to niektórych członków zespołu diagnozującego problem do przypuszczenia, że atakujący może celować zarówno w nasze systemy, jak i w naszą stronę statusu. Odwiedzający stronę statusu w tym czasie widzieli komunikat o błędzie:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="171" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=640&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=750&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=828&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1080&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1280&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1430&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Error on the Cloudflare status page" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1920&amp;h=459&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="459" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="171" class="pt-portable-image-media"></div>
+</figure>
+<p>Na wewnętrznym czacie dotyczącym incydentów wyrażaliśmy swoje obawy, że może to być kontynuacja niedawnej serii <a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos" target="_blank" rel="noopener noreferrer"><u>ataków DDoS</u></a> na dużą skalę, prowadzonych z sieci botów <a href="https://techcommunity.microsoft.com/blog/azureinfrastructureblog/defending-the-cloud-azure-neutralized-a-record-breaking-15-tbps-ddos-attack/4470422" target="_blank" rel="noopener noreferrer"><u>Aisuru</u></a>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Internal chat screenshot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1188&amp;h=278&amp;f=webp" data-lightbox-width="1188" data-lightbox-height="278" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<h3>Zmiana w sposobie działania zapytań</h3>
+<p>Wspomniałem powyżej, że zmiana w sposobie działania zapytania bazowego spowodowała, iż plik cech zawierał dużą liczbę zduplikowanych wierszy. Przedmiotowy system bazodanowy opiera się na oprogramowaniu ClickHouse.</p>
+<p>Aby poznać kontekst, warto zrozumieć, w jaki sposób działają zapytania rozproszone w ClickHouse. Klaster ClickHouse składa się z wielu shardów. Aby zapytać o dane ze wszystkich shardów, korzystamy z tzw. tabel rozproszonych (opartych na silniku tabel <code>Distributed</code>) w bazie danych o nazwie <code>default</code>. Silnik Distributed odpytuje tabele bazowe znajdujące się w bazie danych <code>r0</code>. Tabele bazowe to miejsce przechowywania danych na każdym shardzie klastra ClickHouse.</p>
+<p>Zapytania kierowane do tabel rozproszonych są wykonywane za pośrednictwem współdzielonego konta systemowego. W ramach działań mających na celu zwiększenie bezpieczeństwa i niezawodności zapytań rozproszonych trwają prace nad tym, aby zamiast tego były one uruchamiane pod pierwotnymi kontami użytkowników.</p>
+<p>Do tej pory użytkownicy ClickHouse, podczas wykonywania zapytań o metadane z tabel systemowych ClickHouse, takich jak <code>system.tables</code> lub <code>system.columns</code>, widzieli wyłącznie tabele znajdujące się w bazie <code>default</code>.</p>
+<p>Ponieważ użytkownicy mieli już niejawny dostęp do tabel bazowych w <code>r0</code>, wprowadziliśmy o 11:05 zmianę, aby dostęp ten był jawny, dzięki czemu użytkownicy mogli również zobaczyć metadane tych tabel. Zapewnienie, że wszystkie zapytania podrzędne w ramach zapytań rozproszonych mogą być uruchamiane pod pierwotnym użytkownikiem, umożliwia bardziej precyzyjną ocenę limitów zapytań i przyznanych uprawnień, zapobiegając sytuacji, w której nieprawidłowe zapytanie podrzędne danego użytkownika wpływa na innych.</p>
+<p>Opisana powyżej zmiana spowodowała, że wszyscy użytkownicy uzyskiwali poprawne metadane dotyczące tabel, do których mieli dostęp. Niestety, w przeszłości przyjęto założenie, że lista kolumn zwracana przez takie zapytanie będzie obejmować wyłącznie bazę danych <code>default</code>:</p>
+<p><code>SELECT<br> name,<br> type<br>FROM system.columns<br>WHERE<br> table = 'http_requests_features'<br>order by name;</code></p>
+<p>Należy zwrócić uwagę, że zapytanie nie filtruje według nazwy bazy danych. Wraz ze stopniowym wdrażaniem jawnych uprawnień dla użytkowników danego klastra ClickHouse, po zmianie wprowadzonej o 11:05 powyższe zapytanie zaczęło zwracać „duplikaty” kolumn, ponieważ dotyczyły one tabel bazowych przechowywanych w bazie r0.</p>
+<p>Niestety tego typu zapytanie było wykonywane przez logikę generowania pliku cech na potrzeby zarządzania ruchem botów w celu utworzenia każdej wejściowej „cechy” dla pliku, o którym mowa na początku tej sekcji.&nbsp;</p>
+<p>Powyższe zapytanie zwracało tabelę kolumn podobną do przedstawionej poniżej (uproszczony przykład):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="548" height="121" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 548w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=640&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=750&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=828&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1080&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1096&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1096w" alt="Example of code block" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp" data-lightbox-width="548" data-lightbox-height="121" data-astro-cid-7nvefuv6="true" sizes="(min-width: 548px) 548px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="548" height="121" class="pt-portable-image-media"></div>
+</figure>
+<p>Jednak w ramach dodatkowych uprawnień przyznanych użytkownikowi odpowiedź zaczęła zawierać pełne metadane schematu <code>r0</code>, co w praktyce więcej niż podwoiło liczbę zwracanych wierszy. W konsekwencji zwiększyło to także liczbę wierszy (czyli cech) w finalnym pliku wynikowym.&nbsp;</p>
+<h3>Wstępna alokacja pamięci</h3>
+<p>Każdy moduł działający w naszej usłudze proxy posiada zestaw ograniczeń mających zapobiegać niekontrolowanemu zużyciu pamięci oraz umożliwiać jej wstępną alokację jako mechanizm optymalizacji wydajności. W tym konkretnym przypadku system zarządzania ruchem botów ma ograniczenie dotyczące liczby cech wykorzystywanych przez modele uczenia maszynowego w trakcie działania. Obecnie limit ten wynosi 200, czyli znacznie powyżej naszego bieżącego wykorzystania na poziomie około 60 cech. Limit ten istnieje, ponieważ ze względów wydajnościowych wstępnie alokujemy pamięć na potrzeby obsługi cech.</p>
+<p>Gdy wadliwy plik zawierający ponad 200 cech został rozpropagowany na nasze serwery, osiągnięto ten limit — co spowodowało awaryjne przerwanie działania systemu. Kod modułu FL2 w języku Rust, który wykonuje to sprawdzenie i był źródłem nieobsłużonego błędu, przedstawiono poniżej:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="221" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1080&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1280&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1430&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="code that generated the error" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1472&amp;h=456&amp;f=webp" data-lightbox-width="1472" data-lightbox-height="456" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="221" class="pt-portable-image-media"></div>
+</figure>
+<p>Doprowadziło to do następującej paniki, co z kolei skutkowało błędem 5xx:</p>
+<p><code>thread fl2_worker_thread panicked: called Result::unwrap() on an Err value</code></p>
+<h3>Inne skutki podczas incydentu</h3>
+<p>Inne systemy oparte na naszym głównym serwerze proxy zostały również dotknięte skutkami incydentu. Dotyczyło to m.in. usług Workers KV oraz Cloudflare Access. Zespół zdołał ograniczyć wpływ na te systemy o 13:04, kiedy w usłudze Workers KV wprowadzono poprawkę pozwalającą ominąć główny serwer proxy. W konsekwencji wszystkie systemy zależne od usługi Workers KV (w tym Access) zaczęły odnotowywać niższy wskaźnik błędów.&nbsp;</p>
+<p>To również wpłynęło na pulpit nawigacyjny Cloudflare, ponieważ wewnętrznie wykorzystywano usługę Workers KV, a mechanizm Cloudflare Turnstile był używany jako element procesu logowania.</p>
+<p>Omawiana awaria miała wpływ na mechanizm Turnstile, w wyniku czego klienci bez aktywnej sesji w pulpicie nawigacyjnym nie mogli się zalogować. Objawiało się to obniżoną dostępnością w dwóch przedziałach czasowych: od 11:30 do 13:10 oraz między 14:40 a 15:30, co widać na poniższym wykresie.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="241" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=640&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=750&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=828&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1080&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1280&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1430&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="availability of Cloudflare internal APIs during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1920&amp;h=647&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="647" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="241" class="pt-portable-image-media"></div>
+</figure>
+<p>Pierwszy okres, od 11:30 do 13:10, wynikał z wpływu incydentu na usługę Workers KV, od której zależą niektóre funkcje płaszczyzny zarządzania oraz pulpitu nawigacyjnego. Dostępność została przywrócona o 13:10, gdy usługa Workers KV zaczęła omijać system głównego serwera proxy.<br><br>Drugi okres obniżonej dostępności pulpitu nawigacyjnego wystąpił po przywróceniu danych konfiguracyjnych dotyczących cech. Zaległość prób logowania zaczęła przeciążać pulpit nawigacyjny. Ta zaległość, w połączeniu z ponawianymi próbami logowania, spowodowała zwiększone opóźnienia, co przełożyło się na obniżoną dostępność pulpitu nawigacyjnego. Zwiększenie współbieżności na płaszczyźnie zarządzania skutkowało przywróceniem dostępności około 15:30.</p>
+<h2>Działania naprawcze i kolejne kroki</h2>
+<p>Teraz, gdy nasze systemy ponownie działają w trybie online i funkcjonują normalnie, rozpoczęliśmy już prace nad ich wzmocnieniem na wypadek podobnych awarii w przyszłości. W szczególności skupiamy się na następujących kwestiach:</p>
+<ul>
+	<li>Wzmocnienie procesu przyjmowania plików konfiguracyjnych generowanych przez Cloudflare w taki sam sposób, w jaki zabezpieczamy dane wprowadzane przez użytkowników</li>
+	<li>Uwzględnienie większej liczby globalnych mechanizmów wyłączania cech (global kill switches)</li>
+	<li>Wyeliminowanie możliwości przeciążenia zasobów systemowych przez zrzuty pamięci (core dumps) lub inne raporty o błędach</li>
+	<li>Przegląd trybów awarii związanych z warunkami błędów we wszystkich głównych modułach proxy</li>
+</ul>
+<p>Dzisiejsza awaria była najpoważniejszym incydentem Cloudflare <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019" target="_blank" rel="noopener noreferrer"><u>od 2019 roku</u></a>. Zdarzały się awarie powodujące <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage" target="_blank" rel="noopener noreferrer"><u>niedostępność pulpitu nawigacyjnego</u></a>, a także takie, które sprawiały, że <a href="https://blog.cloudflare.com/cloudflare-service-outage-june-12-2025" target="_blank" rel="noopener noreferrer"><u>nowsze funkcje</u></a> były czasowo niedostępne. Jednak w ciągu ostatnich ponad 6 lat nie mieliśmy awarii, która spowodowałaby zatrzymanie większości podstawowego ruchu przepływającego przez naszą sieć.</p>
+<p>Awaria taka jak dzisiejsza jest niedopuszczalna. Nasze systemy zostały zaprojektowane tak, aby były wysoce odporne na awarie i gwarantowały nieprzerwane przekazywanie ruchu. Każdy wcześniejszy incydent prowadził nas do tworzenia nowych, jeszcze bardziej odpornych rozwiązań.</p>
+<p>W imieniu całego zespołu Cloudflare chciałbym przeprosić za zakłócenia, jakie dziś spowodowaliśmy w działaniu Internetu. </p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Czas (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Status</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Opis</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Normalne działanie.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wdrożono zmianę w mechanizmie kontroli dostępu do bazy danych.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zaczyna być widoczny wpływ incydentu.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wdrożenie dociera do środowisk klientów; pojawiają się pierwsze błędy w ruchu HTTP klientów.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:32–13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zespół przeanalizował podwyższony poziom ruchu oraz błędy dotyczące usługi Workers KV.<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Początkowym objawem wydawała się obniżona szybkość odpowiedzi usługi Workers KV, co miało wtórny wpływ na inne usługi Cloudflare.<br>Podjęto działania zaradcze, takie jak manipulacja ruchem oraz ograniczenia na poziomie kont, aby przywrócić usługę Workers KV do normalnych parametrów pracy.<br>Pierwszy test automatyczny wykrył problem o 11:31, a analiza ręczna rozpoczęła się o 11:32. Połączenie dotyczące incydentu nawiązano o 11:35.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wdrożono obejście dla usług Workers KV i Cloudflare Access — wpływ incydentu został ograniczony.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Podczas dochodzenia wykorzystaliśmy wewnętrzne mechanizmy obejścia dla Workers KV i Cloudflare Access, dzięki czemu usługi te przełączyły się na wcześniejszą wersję naszego głównego serwera proxy. Choć problem występował również w poprzednich wersjach naszego serwera proxy, jego wpływ był mniejszy, co opisano poniżej.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:37</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Prace skoncentrowano na wycofaniu pliku konfiguracyjnego modułu zarządzania ruchem botów do ostatniej znanej, poprawnie działającej wersji.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Byliśmy przekonani, że to plik konfiguracyjny modułu zarządzania ruchem botów był przyczyną incydentu. Zespoły pracowały nad przywróceniem działania usługi w kilku równoległych strumieniach, z których najszybszym było odtworzenie poprzedniej wersji pliku.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wstrzymano tworzenie i propagację nowych plików konfiguracyjnych modułu zarządzania ruchem botów.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Ustaliliśmy, że moduł zarządzania ruchem botów był źródłem błędów 500, a przyczyną — nieprawidłowy plik konfiguracyjny. Wstrzymaliśmy automatyczne wdrażanie nowych plików konfiguracyjnych modułu zarządzania ruchem botów.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Ukończono test nowego pliku.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zaobserwowaliśmy skuteczne przywrócenie działania po użyciu starej wersji pliku konfiguracyjnego, a następnie skoncentrowaliśmy się na przyspieszeniu wdrożenia poprawki w skali globalnej.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Usunięto główny wpływ incydentu. Usługi zależne zaczęły odnotowywać spadek liczby błędów.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Prawidłowy plik konfiguracyjny modułu zarządzania ruchem botów został wdrożony globalnie, a większość usług zaczęła działać poprawnie.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17:06</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wszystkie usługi przywrócono do pełnej sprawności. Wpływ incydentu ustąpił.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wszystkie usługi zależne zostały ponownie uruchomione, a pełna funkcjonalność — przywrócona.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

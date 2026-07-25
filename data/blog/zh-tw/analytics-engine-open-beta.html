@@ -1,0 +1,28 @@
+<p>Workers Analytics Engine（或簡稱 Analytics Engine）是開發人員使用 Cloudflare Workers 儲存和分析有關任何內容之時間序列分析的新方法，現已進入公開測試階段！Analytics Engine 非常擅長從 Cloudflare Workers 收集真正高基數和大容量資料集的時間序列資料。在 Cloudflare，我們使用 Analytics Engine 來深入瞭解我們的客戶如何使用 Cloudflare 產品。</p>
+<h3>記錄，記錄，日誌記錄！</h3>
+<p>例如， Analytics Engine 用於觀察為 <a href="https://developers.cloudflare.com/logs/instant-logs" target="_blank" rel="noopener noreferrer">Instant Logs</a> 提供支援的後端。Instant Logs 允許 Cloudflare 客戶將其網域之 HTTP 記錄的即時工作階段流式傳輸到 Cloudflare 儀表板。Instant Logs 的後端建立在 Cloudflare Workers 之上。</p>
+<p>簡而言之，<a href="https://blog.cloudflare.com/how-we-built-instant-logs">Instant Logs 後端的工作方式</a>是從處理客戶 HTTP 流量的每個 Cloudflare 伺服器處接收請求。這些請求包含客戶的 HTTP 流量的 HTTP 記錄。然後，Instant Logs 後端透過 WebSocket 將這些 HTTP 記錄轉寄到客戶的瀏覽器。</p>
+<p>為了確保 HTTP 記錄順利傳送到客戶的瀏覽器，我們需要追蹤所有作用中 Instant Logs 工作階段的請求速率。我們還需要追蹤所有 Cloudflare 資料中心的請求速率，因為 Instant Logs 建立在 Cloudflare Workers 之上，而 Cloudflare Workers 建立在Cloudflare龐大的<a href="https://www.cloudflare.com/en-gb/network" target="_blank" rel="noopener noreferrer">網路</a>上。因此，Instant Logs 後端的資料集具有非常巨大的基數！</p>
+<p>像 Prometheus 這樣的「傳統」度量系統<a href="https://prometheus.io/docs/practices/naming/#labels" target="_blank" rel="noopener noreferrer">不適合提供高基數資料</a>。幸運的是，這正是 Analytics Engine 旨在解決的問題。因此，我們將所有 Instant Logs 後端請求記錄傳送到 Analytics Engine。記錄，記錄，日誌記錄！</p>
+<p>使用 Analytics Engine API（具有 SQL 介面），我們能夠可視化上個月排名靠前的工作階段和排名靠前的資料中心的 Instant Logs 後端請求速率。還能非常快速地「放大」到一個感興趣的時間段。我們設計了 Analytics Engine，以便查詢始終在互動視窗內回應（稍後會詳細介紹）。這使得它非常適合使用儀表板工具進行互動式偵錯（在本例中，我們使用 Grafana）。</p>
+<h3>我們在封閉測試階段所得到的經驗教訓</h3>
+<div id="html-block-kt" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/04622c18290a721de8f19979c35fb580/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F04622c18290a721de8f19979c35fb580%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+	<p></p>
+</div>
+<p>在封閉測試期間，我們收到了很多很好的反饋。開發人員對 SQL API、與 Workers 的輕鬆整合、在 Grafana 中查詢資料的能力（未來有更多整合）以及我們簡單的定價模型（免費！）感到興奮。但是，在進入公開測試階段之前，我們需要解決許多問題。</p>
+<p>開發人員支援我們使用 SQL（世界上的資料語言）作為 Analytics Engine API 的介面。但是，當開發人員使用 Analytics Engine API 時，他們發現錯誤訊息不透明且難以偵錯。對於開放測試版，我們從頭開始重寫了 API，大大改進了錯誤訊息傳遞。</p>
+<p><em>改進前：</em><code>&gt; SELECT column_that_does_not_exist FROM your_dataset FORMAT JSONSorry, we were unable to evaluate your query</code></p>
+<p><em>改進後：</em><code>&gt; SELECT column_that_does_not_exist FROM your_dataset FORMAT JSONcannot select unknown column: "column_that_does_not_exist"</code></p>
+<p>除了瞭解出了什麼問題之外，開發人員還想瞭解 API 能夠做什麼。對於開放測試版，我們為 Analytics Engine 編寫了一個全面的 SQL 參照。我們還有一些「操作方法」指南，包括有關如何<a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">將 API 連接到 Grafana</a> 的資訊。</p>
+<h3>ABR 和 Analytics Engine</h3>
+<p>Analytics Engine 使用 <a href="https://blog.cloudflare.com/explaining-cloudflares-abr-analytics">Cloudflare 的 ABR 技術</a>來快速進行查詢。這意味著每個查詢都透過與查詢匹配的資料的解析度來滿足。例如，如果我們查看上個月的資料，那麼相比查看上一個小時的資料，我們可能會使用解析度更低的 Analytics Engine 資料版本。較低解析度的資料能夠提供正確答案，但將在互動視窗內回應。透過使用相同資料的多種不同解析度，ABR 可提供一致的回應時間。</p>
+<p>為了考慮不同的資料解析度，每個事件都帶有關於事件來源的資料解析度的資訊。此資訊在 <code>_sample_interval</code> 欄中編碼。例如，如果事件來源資料的解析度是原始資料的 1%，則其 <code>_sample_interval</code> 將設定為 100。要重新建構原始資料中的事件數，我們可以使用查詢：</p>
+<p><code>SELECT sum(_sample_interval) AS count FROM dataset</code></p>
+<p>對於公開測試版，我們將直接向開發人員公開 <code>_sample_interval</code>。將來，我們將透過提供自動考慮資料不同解析度的方便函數，讓客戶更輕鬆地使用該欄位。我們還希望提供一種功能，來瞭解這些函數傳回的估計值的信賴等級。</p>
+<h3>即將推出</h3>
+<p>這只是 Workers Analytics Engine 的開始。在內部，對根據 Analytics Engine 擷取的資料定義警示的能力有很高的需求。這也是我們希望開發人員能夠做到的。</p>
+<p>與封閉測試版一樣，透過具有從 1 開始索引的名稱（blob1、blob2、double1、double2 等）存取欄位。將來，我們將允許開發人員將名稱附加到欄位，這些名稱將可用於透過 SQL API 擷取資料。</p>
+<p>我們希望在 Cloudflare 儀表板中提供豐富的使用者體驗（想像一下可以在 Cloudflare 儀表板中使用 Grafana 之類的產品）。最後，我們不希望開發人員必須設定自己的基礎結構來探索使用 Analytics Engine 擷取的資料。</p>
+<h3>結論</h3>
+<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fanalytics-engine" target="_blank" rel="noopener noreferrer">立即試用 Workers Analytics Engine</a>！如果您有任何尚不受支援的想法或更進階的使用案例，請告訴我們。我們還會在 <a href="https://discord.gg/mkTRayHntk" target="_blank" rel="noopener noreferrer">discord 頻道</a>中討論有關 Analytics Engine 的所有內容——加入交談！</p>

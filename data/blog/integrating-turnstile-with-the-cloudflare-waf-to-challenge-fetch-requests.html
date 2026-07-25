@@ -1,202 +1,145 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">Français</a>, <a href="https://blog.cloudflare.com/de-de/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">한국어</a>, <a href="https://blog.cloudflare.com/pt-br/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">Português</a>, <a href="https://blog.cloudflare.com/es-es/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">Español</a>, <a href="https://blog.cloudflare.com/pl-pl/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">Polski</a> and <a href="https://blog.cloudflare.com/zh-tw/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests">繁體中文</a>.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UV6CnIMI92jBmCr4VeqCU/98b0de9d9ca221f3d60bc7d02213264c/image8.png" alt="Integrating Turnstile with the Cloudflare WAF to challenge fetch requests" class="kg-image" width="1999" height="1126" loading="lazy">
-
-	</figure>
-	<p>Two months ago, we made Cloudflare Turnstile <a href="https://blog.cloudflare.com/turnstile-ga">generally available</a> — giving website owners everywhere an easy way to fend off bots, without ever issuing a CAPTCHA. Turnstile allows any website owner to embed a frustration-free Cloudflare challenge on their website with a simple code snippet, making it easy to help ensure that only human traffic makes it through. In addition to protecting a website’s frontend, Turnstile also empowers web administrators to harden browser-initiated (AJAX) API calls running under the hood. These APIs are commonly used by dynamic single-page web apps, like those created with React, Angular, Vue.js.</p>
-	<p>Today, we’re excited to announce that we have integrated Turnstile with the <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer">Cloudflare Web Application Firewall (WAF)</a>. This means that web admins can add the Turnstile code snippet to their websites, and then configure the Cloudflare WAF to manage these requests. This is completely customizable using WAF Rules; for instance, you can allow a user authenticated by Turnstile to interact with all of an application’s API endpoints without facing any further challenges, or you can configure certain sensitive endpoints, like Login, to always issue a challenge.</p>
-	<div class="flex anchor relative">
-		<h3 id="challenging-fetch-requests-in-the-cloudflare-waf">Challenging fetch requests in the Cloudflare WAF</h3>
-		<a href="https://blog.cloudflare.com/#challenging-fetch-requests-in-the-cloudflare-waf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Millions of websites protected by Cloudflare’s WAF leverage our JS Challenge, Managed Challenge, and Interactive Challenge to stop bots while letting humans through. For each of these challenges, Cloudflare intercepts the matching request and responds with an HTML page rendered by the browser, where the user completes a basic task to demonstrate that they’re human. When a user successfully completes a challenge, they receive a <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#additional-cookies-used-by-the-challenge-platform" target="_blank" rel="noopener noreferrer">cf_clearance cookie</a>, which tells Cloudflare that a user has successfully passed a challenge, the type of challenge, and when it was completed. A clearance cookie can’t be shared between users, and is only valid for the time set by the Cloudflare customer in their Security Settings dashboard.</p>
-	<p>This process works well, except when a browser receives a challenge on a fetch request and the browser has not previously passed a challenge. On a fetch request, or an XML HTTP Request (XHR), the browser expects to get back simple text (in JSON or XML formats) and cannot render the HTML necessary to run a challenge.</p>
-	<p>As an example, let’s imagine a pizzeria owner who built an online ordering form in React with a payment page that submits data to an API endpoint that processes payments. When a user views the web form to add their credit card details they can pass a Managed Challenge, but when the user submits their credit card details by making a fetch request, the browser won’t execute the code necessary for a challenge to run. The pizzeria owner’s only option for handling suspicious (but potentially legitimate) requests is to block them, which runs the risk of false positives that could cause the restaurant to lose a sale.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fOg2KPmEgB5nyeywCc0X0/8ddf84d382f902ad633fb30a3f8226a2/Group-3955.png" alt="" class="kg-image" width="1048" height="515" loading="lazy">
-
-	</figure>
-	<p>This is where Turnstile can help. Turnstile allows anyone on the Internet to embed a Cloudflare challenge anywhere on their website. Before today, the output of Turnstile was only a one-time use token. To enable customers to issue challenges for these fetch requests, Turnstile can now issue a clearance cookie for the domain that it's embedded on. Customers can issue their challenge within the HTML page before a fetch request, <i>pre-clearing</i> the visitor to interact with the Payment API.</p>
-	<div class="flex anchor relative">
-		<h3 id="turnstile-pre-clearance-mode">Turnstile Pre-Clearance mode</h3>
-		<a href="https://blog.cloudflare.com/#turnstile-pre-clearance-mode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Returning to our pizzeria example, the three big advantages of using Pre-Clearance to integrate Turnstile with the Cloudflare WAF are:</p>
-	<ol>
-		<li>
-			<p><b>Improved user experience</b>: Turnstile’s embedded challenge can run in the background while the visitor is entering their payment details.</p>
-		</li>
-		<li>
-			<p><b>Blocking more requests at the edge</b>: Because Turnstile now issues a clearance cookie for the domain that it’s embedded on, our pizzeria owner can use a Custom Rule to issue a Managed Challenge for every request to the payment API. This ensures that automated attacks attempting to target the payment API directly are stopped by Cloudflare before they can reach the API.</p>
-		</li>
-		<li>
-			<p><b>(Optional) Securing the action and the user</b>: No backend code changes are necessary to get the benefit of Pre-Clearance. However, further Turnstile integration will increase security for the integrated API. The pizzeria owner can adjust their payment form to <a href="https://developers.cloudflare.com/turnstile/get-started/server-side-validation" target="_blank" rel="noopener noreferrer">validate the received Turnstile token</a>, ensuring that every payment attempt is individually validated by Turnstile to protect their payment endpoint from session hijacking.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Er3Qa9TvxheeCOxbYeCQh/50afffa59cef839aba3a256484ea6ea5/Pre-clearance.png" alt="" class="kg-image" width="1059" height="582" loading="lazy">
-
-	</figure>
-	<p>A Turnstile widget with Pre-Clearance enabled will still issue turnstile tokens, which gives customers the flexibility to decide if an endpoint is critical enough to require a security check on every request to it, or just once a session. Clearance cookies issued by a Turnstile widget are automatically applied to the Cloudflare zone the Turnstile widget is embedded on, with no configuration necessary. The clearance time the token is valid for is still controlled by the zone specific “Challenge Passage” time.</p>
-	<div class="flex anchor relative">
-		<h3 id="implementing-turnstile-with-pre-clearance">Implementing Turnstile with Pre-Clearance</h3>
-		<a href="https://blog.cloudflare.com/#implementing-turnstile-with-pre-clearance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s make this concrete by walking through a basic implementation. Before we start, we’ve set up a simple demo application where we emulate a frontend talking to a backend on a <code>/your-api</code> endpoint.</p>
-	<p>To this end, we have the following code:</p>
-	<pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-   &lt;title&gt;Turnstile Pre-Clearance Demo &lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;main class="pre-clearance-demo"&gt;
-    &lt;h2&gt;Pre-clearance Demo&lt;/h2&gt;
-    &lt;button id="fetchBtn"&gt;Fetch Data&lt;/button&gt;
-    &lt;div id="response"&gt;&lt;/div&gt;
-&lt;/main&gt;
-
-&lt;script&gt;
-  const button = document.getElementById('fetchBtn');
-  const responseDiv = document.getElementById('response');
-  button.addEventListener('click', async () =&gt; {
-  try {
-    let result = await fetch('/your-api');
-    if (result.ok) {
-      let data = await result.json();
-      responseDiv.textContent = JSON.stringify(data);
-    } else {
-      responseDiv.textContent = 'Error fetching data';
-    }
-  } catch (error) {
-    responseDiv.textContent = 'Network error';
-  }
-});
-&lt;/script&gt;</code></pre>
-	<p>We've created a button. Upon clicking, Cloudflare makes a <code>fetch()</code> request to the <code>/your-api</code> endpoint, showing the result in the response container.</p>
-	<p>Now let’s consider that we have a Cloudflare WAF rule set up that protects the <code>/your-api</code> endpoint with a Managed Challenge.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sjpmlJe4atSe3ztUjbL2M/99335880b870554a9c1dd3e5c8d70614/pasted-image-0-3.png" alt="" class="kg-image" width="1237" height="975" loading="lazy">
-
-	</figure>
-	<p>Due to this rule, the app that we just wrote is going to fail for the reason described earlier (the browser is expecting a JSON response, but instead receives the challenge page as HTML).</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4HJrHiNoxjmSdRwEcZrYuA/a62895eaa382e160eb17fce51acde32c/Screenshot-2023-12-18-at-12.00.16.png" alt="" class="kg-image" width="704" height="132" loading="lazy">
-
-	</figure>
-	<p>If we inspect the Network Tab, we can see that the request to <code>/your-api</code> has been given a 403 response.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DiC7Lus2CVxUJKw5pr7mi/ab45a3af70f411998ebb4892977a255d/image10.png" alt="" class="kg-image" width="928" height="54" loading="lazy">
-
-	</figure>
-	<p>Upon inspection, the Cf-Mitigated header shows that the response was challenged by Cloudflare’s firewall, as the visitor has not solved a challenge before.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2D81qpEEa60G1W1pZMUr2U/f04a2571ed6f52a16f6bf28adaee9ee4/image6.png" alt="" class="kg-image" width="1658" height="381" loading="lazy">
-
-	</figure>
-	<p>To address this problem in our app, we set up a Turnstile Widget in Pre-Clearance mode for the Turnstile sitekey that we want to use.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xLOm4TvNFK32gEf45I1XF/7e04c0a1fdc746a64dc8cf1e08ec3bf1/image2-4.png" alt="" class="kg-image" width="858" height="504" loading="lazy">
-
-	</figure>
-	<p>In our application, we override the <code>fetch()</code> function to invoke Turnstile once a Cf-Mitigated response has been received.</p>
-	<pre class="language-javascript"><code class="language-javascript">&lt;script&gt;
-turnstileLoad = function () {
-  // Save a reference to the original fetch function
-  const originalFetch = window.fetch;
-
-  // A simple modal to contain Cloudflare Turnstile
-  const overlay = document.createElement('div');
-  overlay.style.position = 'fixed';
-  overlay.style.top = '0';
-  overlay.style.left = '0';
-  overlay.style.right = '0';
-  overlay.style.bottom = '0';
-  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-  overlay.style.border = '1px solid grey';
-  overlay.style.zIndex = '10000';
-  overlay.style.display = 'none';
-  overlay.innerHTML =       '&lt;p style="color: white; text-align: center; margin-top: 50vh;"&gt;One more step before you proceed...&lt;/p&gt;&lt;div style=”display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;” id="turnstile_widget"&gt;&lt;/div&gt;';
-  document.body.appendChild(overlay);
-
-  // Override the native fetch function
-  window.fetch = async function (...args) {
-      let response = await originalFetch(...args);
-
-      // If the original request was challenged...
-      if (response.headers.has('cf-mitigated') &amp;&amp; response.headers.get('cf-mitigated') === 'challenge') {
-          // The request has been challenged...
-          overlay.style.display = 'block';
-
-          await new Promise((resolve, reject) =&gt; {
-              turnstile.render('#turnstile_widget', {
-                  'sitekey': ‘YOUR_TURNSTILE_SITEKEY',
-                  'error-callback': function (e) {
-                      overlay.style.display = 'none';
-                      reject(e);
-                  },
-                  'callback': function (token, preClearanceObtained) {
-                      if (preClearanceObtained) {
-                          // The visitor successfully solved the challenge on the page. 
-                          overlay.style.display = 'none';
-                          resolve();
-                      } else {
-                          reject(new Error('Unable to obtain pre-clearance'));
-                      }
-                  },
-              });
-          });
-
-          // Replay the original fetch request, this time it will have the cf_clearance Cookie
-          response = await originalFetch(...args);
-      }
-      return response;
-  };
-};
-&lt;/script&gt;
-&lt;script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoad" async defer&gt;&lt;/script&gt;</code></pre>
-	<p>There is a lot going on in the snippet above: First, we create a hidden overlay element and override the browser’s <code>fetch()</code> function. The <code>fetch()</code> function is changed to introspect the Cf-Mitigated header for ‘challenge’. If a challenge is issued, the initial result will be unsuccessful; instead, a Turnstile overlay (with Pre-Clearance enabled) will appear in our web application. Once the Turnstile challenge has been completed we will retry the previous request after Turnstile has obtained the cf_clearance cookie to get through the Cloudflare WAF.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HNSoEaOmTMmQFuc8kKY2p/1877b884856e092cfc51637f3f050c2c/image1-2.png" alt="" class="kg-image" width="749" height="582" loading="lazy">
-
-	</figure>
-	<p>Upon solving the Turnstile widget, the overlay disappears, and the requested API result is shown successfully:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aPtaSfD7JdV0jYb1iDX50/dd9807c4807f6234dcb453471f43db99/Screenshot-2023-12-18-at-12.02.56.png" alt="" class="kg-image" width="892" height="186" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="pre-clearance-is-available-to-all-cloudflare-customers">Pre-Clearance is available to all Cloudflare customers</h3>
-		<a href="https://blog.cloudflare.com/#pre-clearance-is-available-to-all-cloudflare-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Every Cloudflare user with a <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer">free plan</a> or above can use Turnstile in managed mode free for an unlimited number of requests. If you’re a Cloudflare user looking to improve your security and user experience for your critical API endpoints, head over to our dashboard and <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile" target="_blank" rel="noopener noreferrer">create a Turnstile widget with Pre-Clearance</a> today.</p>
+<p>Two months ago, we made Cloudflare Turnstile <a href="https://blog.cloudflare.com/turnstile-ga">generally available</a> — giving website owners everywhere an easy way to fend off bots, without ever issuing a CAPTCHA. Turnstile allows any website owner to embed a frustration-free Cloudflare challenge on their website with a simple code snippet, making it easy to help ensure that only human traffic makes it through. In addition to protecting a website’s frontend, Turnstile also empowers web administrators to harden browser-initiated (AJAX) API calls running under the hood. These APIs are commonly used by dynamic single-page web apps, like those created with React, Angular, Vue.js.</p>
+<p>Today, we’re excited to announce that we have integrated Turnstile with the <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer">Cloudflare Web Application Firewall (WAF)</a>. This means that web admins can add the Turnstile code snippet to their websites, and then configure the Cloudflare WAF to manage these requests. This is completely customizable using WAF Rules; for instance, you can allow a user authenticated by Turnstile to interact with all of an application’s API endpoints without facing any further challenges, or you can configure certain sensitive endpoints, like Login, to always issue a challenge.</p>
+<h3>Challenging fetch requests in the Cloudflare WAF</h3>
+<p>Millions of websites protected by Cloudflare’s WAF leverage our JS Challenge, Managed Challenge, and Interactive Challenge to stop bots while letting humans through. For each of these challenges, Cloudflare intercepts the matching request and responds with an HTML page rendered by the browser, where the user completes a basic task to demonstrate that they’re human. When a user successfully completes a challenge, they receive a <a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/#additional-cookies-used-by-the-challenge-platform" target="_blank" rel="noopener noreferrer">cf_clearance cookie</a>, which tells Cloudflare that a user has successfully passed a challenge, the type of challenge, and when it was completed. A clearance cookie can’t be shared between users, and is only valid for the time set by the Cloudflare customer in their Security Settings dashboard.</p>
+<p>This process works well, except when a browser receives a challenge on a fetch request and the browser has not previously passed a challenge. On a fetch request, or an XML HTTP Request (XHR), the browser expects to get back simple text (in JSON or XML formats) and cannot render the HTML necessary to run a challenge.</p>
+<p>As an example, let’s imagine a pizzeria owner who built an online ordering form in React with a payment page that submits data to an API endpoint that processes payments. When a user views the web form to add their credit card details they can pass a Managed Challenge, but when the user submits their credit card details by making a fetch request, the browser won’t execute the code necessary for a challenge to run. The pizzeria owner’s only option for handling suspicious (but potentially legitimate) requests is to block them, which runs the risk of false positives that could cause the restaurant to lose a sale.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="351" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=715&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=640&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=715&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=750&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=828&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=1080&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=1280&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=1430&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - x6jvzH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48W5J1T096HNF0KG8BDP7R.png&amp;w=1048&amp;h=515&amp;f=webp" data-lightbox-width="1048" data-lightbox-height="515" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="351" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This is where Turnstile can help. Turnstile allows anyone on the Internet to embed a Cloudflare challenge anywhere on their website. Before today, the output of Turnstile was only a one-time use token. To enable customers to issue challenges for these fetch requests, Turnstile can now issue a clearance cookie for the domain that it's embedded on. Customers can issue their challenge within the HTML page before a fetch request, <em>pre-clearing</em> the visitor to interact with the Payment API.</p>
+<h3>Turnstile Pre-Clearance mode</h3>
+<p>Returning to our pizzeria example, the three big advantages of using Pre-Clearance to integrate Turnstile with the Cloudflare WAF are:</p>
+<ol>
+	<li><strong>Improved user experience</strong>: Turnstile’s embedded challenge can run in the background while the visitor is entering their payment details.</li>
+	<li><strong>Blocking more requests at the edge</strong>: Because Turnstile now issues a clearance cookie for the domain that it’s embedded on, our pizzeria owner can use a Custom Rule to issue a Managed Challenge for every request to the payment API. This ensures that automated attacks attempting to target the payment API directly are stopped by Cloudflare before they can reach the API.</li>
+	<li><strong>(Optional) Securing the action and the user</strong>: No backend code changes are necessary to get the benefit of Pre-Clearance. However, further Turnstile integration will increase security for the integrated API. The pizzeria owner can adjust their payment form to <a href="https://developers.cloudflare.com/turnstile/get-started/server-side-validation" target="_blank" rel="noopener noreferrer">validate the received Turnstile token</a>, ensuring that every payment attempt is individually validated by Turnstile to protect their payment endpoint from session hijacking.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - nzGUIH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44D7M20PP02BDXY3F9Z97K.png&amp;w=1059&amp;h=582&amp;f=webp" data-lightbox-width="1059" data-lightbox-height="582" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<p>A Turnstile widget with Pre-Clearance enabled will still issue turnstile tokens, which gives customers the flexibility to decide if an endpoint is critical enough to require a security check on every request to it, or just once a session. Clearance cookies issued by a Turnstile widget are automatically applied to the Cloudflare zone the Turnstile widget is embedded on, with no configuration necessary. The clearance time the token is valid for is still controlled by the zone specific “Challenge Passage” time.</p>
+<h3>Implementing Turnstile with Pre-Clearance</h3>
+<p>Let’s make this concrete by walking through a basic implementation. Before we start, we’ve set up a simple demo application where we emulate a frontend talking to a backend on a <code>/your-api</code> endpoint.</p>
+<p>To this end, we have the following code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-6f42c1-ffc799"> lang</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"en"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">   &lt;</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Turnstile Pre-Clearance Demo </span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">main</span><span class="sk-6f42c1-ffc799"> class</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"pre-clearance-demo"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">h2</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Pre-clearance Demo</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">h2</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">button</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"fetchBtn"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Fetch Data</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">button</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">div</span><span class="sk-6f42c1-ffc799"> id</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"response"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">div</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">main</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> button</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">getElementById</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetchBtn'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> responseDiv</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">getElementById</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'response'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  button.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'click'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/your-api'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (result.ok) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> result.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">      responseDiv.textContent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(data);</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      responseDiv.textContent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'Error fetching data'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    responseDiv.textContent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'Network error'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
 </div>
+<p>We've created a button. Upon clicking, Cloudflare makes a <code>fetch()</code> request to the <code>/your-api</code> endpoint, showing the result in the response container.</p>
+<p>Now let’s consider that we have a Cloudflare WAF rule set up that protects the <code>/your-api</code> endpoint with a Managed Challenge.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="564" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=715&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=640&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=715&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=750&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=828&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=1080&amp;h=852&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=1280&amp;h=1010&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=1430&amp;h=1128&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - dsgsaR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W5SAF42MKX9GJ34WNX1A.png&amp;w=1237&amp;h=975&amp;f=webp" data-lightbox-width="1237" data-lightbox-height="975" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="564" class="pt-portable-image-media"></div>
+</figure>
+<p>Due to this rule, the app that we just wrote is going to fail for the reason described earlier (the browser is expecting a JSON response, but instead receives the challenge page as HTML).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="704" height="132" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=704&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=640&amp;h=120&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=704&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 704w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=750&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=828&amp;h=155&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=1080&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=1280&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=1408&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 1408w" alt="BLOG-2134 Embedded Image - dDljfa" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M1638T1WZHH7XE8H624A.png&amp;w=704&amp;h=132&amp;f=webp" data-lightbox-width="704" data-lightbox-height="132" data-astro-cid-7nvefuv6="true" sizes="(min-width: 704px) 704px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="704" height="132" class="pt-portable-image-media"></div>
+</figure>
+<p>If we inspect the Network Tab, we can see that the request to <code>/your-api</code> has been given a 403 response.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="42" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=715&amp;h=42&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=640&amp;h=38&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=715&amp;h=42&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=750&amp;h=44&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=828&amp;h=49&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=1080&amp;h=63&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=1280&amp;h=75&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=1430&amp;h=84&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - 3AFE7x" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454NAFJ3NBSBRVT6JWVX3B.png&amp;w=928&amp;h=54&amp;f=webp" data-lightbox-width="928" data-lightbox-height="54" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="42" class="pt-portable-image-media"></div>
+</figure>
+<p>Upon inspection, the Cf-Mitigated header shows that the response was challenged by Cloudflare’s firewall, as the visitor has not solved a challenge before.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="164" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=715&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=640&amp;h=147&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=715&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=750&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=828&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=1080&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=1280&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=1430&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - upnapb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454F1FPKE88H60XGYA5PZK.png&amp;w=1658&amp;h=381&amp;f=webp" data-lightbox-width="1658" data-lightbox-height="381" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="164" class="pt-portable-image-media"></div>
+</figure>
+<p>To address this problem in our app, we set up a Turnstile Widget in Pre-Clearance mode for the Turnstile sitekey that we want to use.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="420" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=715&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=640&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=715&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=750&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=828&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=1080&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=1280&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=1430&amp;h=840&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - 5mhV7x" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GG0Z1PDR776FX5VWVS5R.png&amp;w=858&amp;h=504&amp;f=webp" data-lightbox-width="858" data-lightbox-height="504" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="420" class="pt-portable-image-media"></div>
+</figure>
+<p>In our application, we override the <code>fetch()</code> function to invoke Turnstile once a Cf-Mitigated response has been received.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">turnstileLoad = function () </span><span class="sk-24292e-a0a0a0">{</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Save a reference to the original fetch function</span></span>
+<span class="line"><span class="sk-24292e-fff">  const originalFetch </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> window.fetch;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // A simple modal to contain Cloudflare Turnstile</span></span>
+<span class="line"><span class="sk-24292e-fff">  const overlay </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">createElement</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'div'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.position </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'fixed'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.top </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '0'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.left </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '0'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.right </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '0'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.bottom </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '0'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.backgroundColor </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'rgba(0, 0, 0, 0.7)'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.border </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '1px solid grey'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.zIndex </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '10000'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.style.display </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'none'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  overlay.innerHTML </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">       '&lt;p style="color: white; text-align: center; margin-top: 50vh;"&gt;One more step before you proceed...&lt;/p&gt;&lt;div style=”display: flex; flex-wrap: nowrap; align-items: center; justify-content: center;” id="turnstile_widget"&gt;&lt;/div&gt;'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  document.body.</span><span class="sk-6f42c1-ffc799">appendChild</span><span class="sk-24292e-fff">(overlay);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Override the native fetch function</span></span>
+<span class="line"><span class="sk-24292e-fff">  window.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-e36209-fff">args</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> originalFetch</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">args);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // If the original request was challenged...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (response.headers.</span><span class="sk-6f42c1-ffc799">has</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'cf-mitigated'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> response.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'cf-mitigated'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'challenge'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">          // The request has been challenged...</span></span>
+<span class="line"><span class="sk-24292e-fff">          overlay.style.display </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'block'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          await</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">resolve</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">reject</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">              turnstile.</span><span class="sk-6f42c1-ffc799">render</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'#turnstile_widget'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  'sitekey'</span><span class="sk-24292e-fff">: ‘</span><span class="sk-005cc5-fff">YOUR_TURNSTILE_SITEKEY</span><span class="sk-032f62-99ffe4">'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  'error-callback'</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">e</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">                      overlay.style.display </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'none'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                      reject</span><span class="sk-24292e-fff">(e);</span></span>
+<span class="line"><span class="sk-24292e-fff">                  },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  'callback'</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">token</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">preClearanceObtained</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                      if</span><span class="sk-24292e-fff"> (preClearanceObtained) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">                          // The visitor successfully solved the challenge on the page. </span></span>
+<span class="line"><span class="sk-24292e-fff">                          overlay.style.display </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'none'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          resolve</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">                      } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                          reject</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Unable to obtain pre-clearance'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">                      }</span></span>
+<span class="line"><span class="sk-24292e-fff">                  },</span></span>
+<span class="line"><span class="sk-24292e-fff">              });</span></span>
+<span class="line"><span class="sk-24292e-fff">          });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">          // Replay the original fetch request, this time it will have the cf_clearance Cookie</span></span>
+<span class="line"><span class="sk-24292e-fff">          response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> originalFetch</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">args);</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">}</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-a0a0a0"> src</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileLoad"</span><span class="sk-6f42c1-a0a0a0"> async</span><span class="sk-6f42c1-a0a0a0"> defer</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>There is a lot going on in the snippet above: First, we create a hidden overlay element and override the browser’s <code>fetch()</code> function. The <code>fetch()</code> function is changed to introspect the Cf-Mitigated header for ‘challenge’. If a challenge is issued, the initial result will be unsuccessful; instead, a Turnstile overlay (with Pre-Clearance enabled) will appear in our web application. Once the Turnstile challenge has been completed we will retry the previous request after Turnstile has obtained the cf_clearance cookie to get through the Cloudflare WAF.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="556" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=715&amp;h=556&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=640&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=715&amp;h=556&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=750&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=828&amp;h=644&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=1080&amp;h=840&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=1280&amp;h=995&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=1430&amp;h=1112&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - R9HydL" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E76DP1GCCBNHM4CCZQC2.png&amp;w=749&amp;h=582&amp;f=webp" data-lightbox-width="749" data-lightbox-height="582" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="556" class="pt-portable-image-media"></div>
+</figure>
+<p>Upon solving the Turnstile widget, the overlay disappears, and the requested API result is shown successfully:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="149" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=715&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=640&amp;h=133&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=715&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=750&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=828&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=1080&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=1280&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=1430&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2134 Embedded Image - xVNx2E" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4RZ5MHNP8KQPZ7A1MT6.png&amp;w=892&amp;h=186&amp;f=webp" data-lightbox-width="892" data-lightbox-height="186" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="149" class="pt-portable-image-media"></div>
+</figure>
+<h3>Pre-Clearance is available to all Cloudflare customers</h3>
+<p>Every Cloudflare user with a <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer">free plan</a> or above can use Turnstile in managed mode free for an unlimited number of requests. If you’re a Cloudflare user looking to improve your security and user experience for your critical API endpoints, head over to our dashboard and <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fturnstile" target="_blank" rel="noopener noreferrer">create a Turnstile widget with Pre-Clearance</a> today.</p>

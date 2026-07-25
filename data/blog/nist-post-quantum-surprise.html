@@ -1,556 +1,312 @@
-<div class="mb2 gray5">16 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zM38lDzJKWsTpGp3rBGui/386823ddac944149da17e1b87c62466a/nist-post-quantum-surprise.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>On Tuesday, the US National Institute of Standards and Technology (NIST) <a href="https://www.nist.gov/news-events/news/2022/07/nist-announces-first-four-quantum-resistant-cryptographic-algorithms" target="_blank" rel="noopener noreferrer">announced</a> which post-quantum cryptography they will standardize. We were already drafting this post with an educated guess on the choice NIST would make. We almost got it right, except for a single choice we didn’t expect—and which changes everything.</p>
-	<p>At Cloudflare, <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography" target="_blank" rel="noopener noreferrer">post-quantum cryptography</a> is a topic close to our heart, as the future of a secure and private Internet is on the line. We have been working towards this day for <a href="https://blog.cloudflare.com/tag/post-quantum">many years</a>, by <a href="https://blog.cloudflare.com/introducing-circl">implementing</a> post-quantum cryptography, contributing <a href="https://sphincs.org" target="_blank" rel="noopener noreferrer">to</a> <a href="https://datatracker.ietf.org/doc/draft-celi-wiggers-tls-authkem" target="_blank" rel="noopener noreferrer">standards</a>, and testing <a href="https://blog.cloudflare.com/post-quantumify-cloudflare">post-quantum cryptography</a> <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">in</a> <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">practice</a>, and we are excited to share our perspective.</p>
-	<p>In this long blog post, we explain how we got here, what NIST chose to standardize, what it will mean for the Internet, and what you need to know to get started with your own post-quantum preparations.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-we-got-here">How we got here</h2>
-		<a href="https://blog.cloudflare.com/#how-we-got-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="shors-algorithm">Shor’s algorithm</h3>
-		<a href="https://blog.cloudflare.com/#shors-algorithm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our story starts in 1994, when mathematician Peter Shor discovered a <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank" rel="noopener noreferrer">marvelous algorithm</a> that efficiently factors numbers and computes discrete logarithms. With it, you can break nearly all public-key cryptography deployed today, including RSA and elliptic curve cryptography. Luckily, Shor’s algorithm doesn’t run on just any computer: it needs a <i>quantum computer</i>. Back in 1994, quantum computers existed only on paper.</p>
-	<p>But in the years since, physicists started building actual quantum computers. Initially, these machines were (and still are) too small and too error-prone to be threatening to the integrity of public-key cryptography, but there is a clear and impending danger: it only seems a matter of time now before a quantum computer is built that has the capability to break public-key cryptography. So what can we do?</p>
-	<div class="flex anchor relative">
-		<h3 id="encryption-key-agreement-and-signatures">Encryption, key agreement and signatures</h3>
-		<a href="https://blog.cloudflare.com/#encryption-key-agreement-and-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To understand the risk, we need to distinguish between the three cryptographic primitives that are used to protect your connection when browsing on the Internet:</p>
-	<blockquote>
-		<p><b>Symmetric encryption</b>. With a symmetric cipher there is <i>one</i> key to encrypt and decrypt a message. They’re the workhorse of cryptography: they’re fast, well understood and luckily, as far as known, secure against quantum attacks. (We’ll touch on this later when we get to <a href="https://blog.cloudflare.com/#post-quantumsecuritylevels">security levels</a>.) Examples are <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">AES</a> and <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20</a>.</p>
-	</blockquote>
-	<p>Symmetric encryption alone is not enough: which key do we use when visiting a website for the first time? We can’t just pick a random key and send it along in the clear, as then anyone surveilling that session would know that key as well. You’d think it’s impossible to communicate securely without ever having met, but there is some clever math to solve this.</p>
-	<blockquote>
-		<p><b>Key agreement</b>, also called a key exchange, allows two parties that never met to agree on a shared key. Even if someone is snooping, they are not able to figure out the agreed key. Examples include <a href="https://developers.cloudflare.com/internet/protocols/tls#ephemeral-diffie-hellman-handshake" target="_blank" rel="noopener noreferrer">Diffie–Hellman</a> over elliptic curves, such as <a href="https://datatracker.ietf.org/doc/html/rfc7748" target="_blank" rel="noopener noreferrer">X25519</a>.</p>
-	</blockquote>
-	<p>The key agreement prevents a passive observer from reading the contents of a session, but it doesn’t help defend against an attacker who sits in the middle and does two separate key agreements: one with you and one with the website you want to visit. To solve this, we need the final piece of cryptography:</p>
-	<blockquote>
-		<p><b>Digital signatures</b>, such as <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank" rel="noopener noreferrer">RSA</a>, <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate" target="_blank" rel="noopener noreferrer">allow you to check</a> that you’re actually talking to the right website with a chain of certificates going up to a <a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreferrer">certificate authority</a>.</p>
-	</blockquote>
-	<p>Shor’s algorithm breaks all widely deployed key agreement and digital signature schemes, which are both critical to the security of the Internet. However, the urgency and mitigation challenges between them are quite different.</p>
-	<div class="flex anchor relative">
-		<h4 id="impact">Impact</h4>
-		<a href="https://blog.cloudflare.com/#impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Most signatures on the Internet have a relatively short lifespan. If we replace them before quantum computers can crack them, we’re golden. We shouldn’t be too complacent here: signatures aren’t that easy to replace as we will see later on.</p>
-	<p>More urgently, though, an attacker <b>can store traffic today and decrypt later</b> by breaking the key agreement using a quantum computer. Everything that’s sent on the Internet today (personal information, credit card numbers, keys, messages) is at risk.</p>
-	<div class="flex anchor relative">
-		<h3 id="nist-competition">NIST Competition</h3>
-		<a href="https://blog.cloudflare.com/#nist-competition" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Luckily cryptographers took note of Shor’s work early on and started working on <i>post-quantum cryptography</i>: cryptography not broken by quantum algorithms. In 2016, NIST, known for standardizing AES and SHA, <a href="https://csrc.nist.gov/CSRC/media/Projects/Post-Quantum-Cryptography/documents/call-for-proposals-final-dec-2016.pdf" target="_blank" rel="noopener noreferrer">opened</a> a public competition to select which post-quantum algorithms they will standardize. Cryptographers from all over the world submitted algorithms and <a href="https://groups.google.com/a/list.nist.gov/g/pqc-forum" target="_blank" rel="noopener noreferrer">publicly scrutinized</a> each other’s submissions. To focus attention, the list of potential candidates were whittled down over three rounds. From the original 82 submissions, eight made it into the final third round. From those eight, NIST chose one key agreement scheme and three signature schemes. Let’s have a look at the key agreement first.</p>
-	<div class="flex anchor relative">
-		<h2 id="what-nist-announced">What NIST announced</h2>
-		<a href="https://blog.cloudflare.com/#what-nist-announced" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="key-agreement">Key agreement</h3>
-		<a href="https://blog.cloudflare.com/#key-agreement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For key agreement, NIST picked only <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank" rel="noopener noreferrer"><b>Kyber</b></a>, which is a Key Encapsulation Mechanism (KEM). Let’s compare it side-by-side to an RSA-based KEM and the X25519 Diffie–Hellman key agreement:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ltGYyYPY4GtLzE4ETzpE/81b57ba49a5753ba576e0501a0f15821/Screen-Shot-2022-07-08-at-7.37.04-AM.png" alt="" class="kg-image" width="1006" height="232" loading="lazy">
-
-	</figure>
-	<p>Performance characteristics of Kyber and RSA. We compare instances of security level 1, see below. Timings vary considerably by platform and implementation constraints and should be taken as a rough indication only.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3JiVHnH2VbzrTs4aZow5Tf/caec70701cd0affee28d47e7dafe6a23/Screen-Shot-2022-07-08-at-7.37.25-AM.png" alt="" class="kg-image" width="1006" height="160" loading="lazy">
-
-	</figure>
-	<p>Performance characteristics of the X25519 Diffie–Hellman key agreement commonly used in TLS 1.3.</p>
-	<div class="flex anchor relative">
-		<h5 id="kem-versus-diffie-hellman">KEM versus Diffie–Hellman</h5>
-		<a href="https://blog.cloudflare.com/#kem-versus-diffie-hellman" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To properly compare these numbers, we have to explain how KEM and Diffie–Hellman key agreements are different.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cseVDL5dz3hAakfQ3gVgM/4a229fa440511b1cf8af65616a9e545b/IMG_3E98764E5A4C-1.jpeg.jpeg" alt="" class="kg-image" width="1600" height="815" loading="lazy">
-
-	</figure>
-	<p>Protocol flow of KEM and Diffie-Hellman key agreement.</p>
-	<p>Let’s start with the KEM. A KEM is essentially a <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">Public-Key Encryption</a> (PKE) scheme tailored to encrypt shared secrets. To agree on a key, the initiator, typically the client, generates a fresh keypair and sends the public key over. The receiver, typically the server, generates a shared secret and encrypts (“encapsulates”) it for the initiator’s public key. It returns the ciphertext to the initiator, who finally decrypts (“decapsulates”) the shared secret with its private key.</p>
-	<p>With Diffie–Hellman, both parties generate a keypair. Because of the magic of Diffie–Hellman, there is a unique shared secret between every combination of a public and private key. Again, the initiator sends its public key. The receiver <i>combines</i> the received public key with its own private key to create the shared secret and returns its public key with which the initiator can also compute the shared secret.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5rLtpAeaZvMzWQwUks07xt/35595ea8f8eeb9f44cfee55035c016ba/Screen-Shot-2022-07-08-at-7.40.57-AM.png" alt="" class="kg-image" width="1006" height="304" loading="lazy">
-
-	</figure>
-	<h6><i>Interactive versus non-interactive key agreement</i></h6>
-	<p>As an aside, in this simple key agreement (such as in TLS), there is not a big difference between using a KEM or Diffie–Hellman: the number of round-trips is exactly the same. In fact, we’re using Diffie–Hellman essentially as a KEM. This, however, is not the case for all protocols: for instance, the <a href="https://signal.org/docs/specifications/x3dh" target="_blank" rel="noopener noreferrer">3XDH</a> handshake of Signal <a href="https://eprint.iacr.org/2019/1356" target="_blank" rel="noopener noreferrer">can’t be done</a> with plain KEMs and requires the full flexibility of Diffie–Hellman.</p>
-	<p>Now that we know how to compare KEMs and Diffie–Hellman, how does Kyber measure up?</p>
-	<div class="flex anchor relative">
-		<h5 id="kyber">Kyber</h5>
-		<a href="https://blog.cloudflare.com/#kyber" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Kyber is a balanced post-quantum KEM. It is very fast: much faster than X25519, which is already known for its speed. Its main drawback, common to many post-quantum KEMs, is that Kyber has relatively large ciphertext and key sizes: compared to X25519 it adds 1,504 bytes. Is this problematic?</p>
-	<p>We have some indirect data. Back in 2019 together with Google we tested two post-quantum KEMs, NTRU-HRSS and SIKE in Chrome. SIKE has very small keys, but is computationally very expensive. NTRU-HRSS, on the other hand, has similar performance characteristics to Kyber, but is slightly bigger and slower. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">This is what we found</a>:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZeN5ueGHiWynRKFenllBk/4994a0a4c970fcbf8111a9a1fe44080a/pasted-image-0.png" alt="" class="kg-image" width="1600" height="850" loading="lazy">
-
-	</figure>
-	<p>Handshake times for TLS with X25519 (control), NTRU-HRSS (CECPQ2) and SIKE (CECPQ2b). Both post-quantum KEMs were combined with a X25519 key agreement.</p>
-	<p>In this experiment we used a combination (a <i>hybrid</i>) of the post-quantum KEM and X25519. Thus, NTRU-HRSS couldn’t benefit from its speed compared to X25519. Even with this disadvantage, the difference in performance is very small. Thus, we expect that switching to a hybrid of Kyber and X25519 will have little performance impact.</p>
-	<p>So can we switch to post-quantum TLS today? We would love to. However, we have to be a bit careful: some TLS implementations are brittle and crash on the larger <i>KeyShare</i> message that contains the bigger post-quantum keys. We will work hard to find ways to mitigate these issues, as was done <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">to deploy TLS 1.3</a>. Stay tuned!</p>
-	<div class="flex anchor relative">
-		<h5 id="the-other-finalists">The other finalists</h5>
-		<a href="https://blog.cloudflare.com/#the-other-finalists" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It’s interesting to have a look at the KEMs that didn’t make the cut. NIST intends to standardize some of these in a fourth round. One reason is to increase the diversity in security assumptions in case there is a breakthrough in attacks on structured lattices on which Kyber is based. Another reason is that some of these schemes have specialized, but very useful applications. Finally, some of these schemes might be standardized outside of NIST.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Structured lattices</b></p>
+<p>On Tuesday, the US National Institute of Standards and Technology (NIST) <a href="https://www.nist.gov/news-events/news/2022/07/nist-announces-first-four-quantum-resistant-cryptographic-algorithms" target="_blank" rel="noopener noreferrer">announced</a> which post-quantum cryptography they will standardize. We were already drafting this post with an educated guess on the choice NIST would make. We almost got it right, except for a single choice we didn’t expect—and which changes everything.</p>
+<p>At Cloudflare, <a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography" target="_blank" rel="noopener noreferrer">post-quantum cryptography</a> is a topic close to our heart, as the future of a secure and private Internet is on the line. We have been working towards this day for <a href="https://blog.cloudflare.com/tag/post-quantum">many years</a>, by <a href="https://blog.cloudflare.com/introducing-circl">implementing</a> post-quantum cryptography, contributing <a href="https://sphincs.org" target="_blank" rel="noopener noreferrer">to</a> <a href="https://datatracker.ietf.org/doc/draft-celi-wiggers-tls-authkem" target="_blank" rel="noopener noreferrer">standards</a>, and testing <a href="https://blog.cloudflare.com/post-quantumify-cloudflare">post-quantum cryptography</a> <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">in</a> <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">practice</a>, and we are excited to share our perspective.</p>
+<p>In this long blog post, we explain how we got here, what NIST chose to standardize, what it will mean for the Internet, and what you need to know to get started with your own post-quantum preparations.</p>
+<h2>How we got here</h2>
+<h3>Shor’s algorithm</h3>
+<p>Our story starts in 1994, when mathematician Peter Shor discovered a <a href="https://en.wikipedia.org/wiki/Shor%27s_algorithm" target="_blank" rel="noopener noreferrer">marvelous algorithm</a> that efficiently factors numbers and computes discrete logarithms. With it, you can break nearly all public-key cryptography deployed today, including RSA and elliptic curve cryptography. Luckily, Shor’s algorithm doesn’t run on just any computer: it needs a <em>quantum computer</em>. Back in 1994, quantum computers existed only on paper.</p>
+<p>But in the years since, physicists started building actual quantum computers. Initially, these machines were (and still are) too small and too error-prone to be threatening to the integrity of public-key cryptography, but there is a clear and impending danger: it only seems a matter of time now before a quantum computer is built that has the capability to break public-key cryptography. So what can we do?</p>
+<h3>Encryption, key agreement and signatures</h3>
+<p>To understand the risk, we need to distinguish between the three cryptographic primitives that are used to protect your connection when browsing on the Internet:</p>
+<blockquote><strong>Symmetric encryption</strong>. With a symmetric cipher there is <em>one</em> key to encrypt and decrypt a message. They’re the workhorse of cryptography: they’re fast, well understood and luckily, as far as known, secure against quantum attacks. (We’ll touch on this later when we get to <a href="https://blog.cloudflare.com/#post-quantumsecuritylevels">security levels</a>.) Examples are <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">AES</a> and <a href="https://blog.cloudflare.com/it-takes-two-to-chacha-poly">ChaCha20</a>.</blockquote>
+<p>Symmetric encryption alone is not enough: which key do we use when visiting a website for the first time? We can’t just pick a random key and send it along in the clear, as then anyone surveilling that session would know that key as well. You’d think it’s impossible to communicate securely without ever having met, but there is some clever math to solve this.</p>
+<blockquote><strong>Key agreement</strong>, also called a key exchange, allows two parties that never met to agree on a shared key. Even if someone is snooping, they are not able to figure out the agreed key. Examples include <a href="https://developers.cloudflare.com/internet/protocols/tls#ephemeral-diffie-hellman-handshake" target="_blank" rel="noopener noreferrer">Diffie–Hellman</a> over elliptic curves, such as <a href="https://datatracker.ietf.org/doc/html/rfc7748" target="_blank" rel="noopener noreferrer">X25519</a>.</blockquote>
+<p>The key agreement prevents a passive observer from reading the contents of a session, but it doesn’t help defend against an attacker who sits in the middle and does two separate key agreements: one with you and one with the website you want to visit. To solve this, we need the final piece of cryptography:</p>
+<blockquote><strong>Digital signatures</strong>, such as <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)" target="_blank" rel="noopener noreferrer">RSA</a>, <a href="https://www.cloudflare.com/learning/ssl/what-is-an-ssl-certificate" target="_blank" rel="noopener noreferrer">allow you to check</a> that you’re actually talking to the right website with a chain of certificates going up to a <a href="https://en.wikipedia.org/wiki/Certificate_authority" target="_blank" rel="noopener noreferrer">certificate authority</a>.</blockquote>
+<p>Shor’s algorithm breaks all widely deployed key agreement and digital signature schemes, which are both critical to the security of the Internet. However, the urgency and mitigation challenges between them are quite different.</p>
+<h4>Impact</h4>
+<p>Most signatures on the Internet have a relatively short lifespan. If we replace them before quantum computers can crack them, we’re golden. We shouldn’t be too complacent here: signatures aren’t that easy to replace as we will see later on.</p>
+<p>More urgently, though, an attacker <strong>can store traffic today and decrypt later</strong> by breaking the key agreement using a quantum computer. Everything that’s sent on the Internet today (personal information, credit card numbers, keys, messages) is at risk.</p>
+<h3>NIST Competition</h3>
+<p>Luckily cryptographers took note of Shor’s work early on and started working on <em>post-quantum cryptography</em>: cryptography not broken by quantum algorithms. In 2016, NIST, known for standardizing AES and SHA, <a href="https://csrc.nist.gov/CSRC/media/Projects/Post-Quantum-Cryptography/documents/call-for-proposals-final-dec-2016.pdf" target="_blank" rel="noopener noreferrer">opened</a> a public competition to select which post-quantum algorithms they will standardize. Cryptographers from all over the world submitted algorithms and <a href="https://groups.google.com/a/list.nist.gov/g/pqc-forum" target="_blank" rel="noopener noreferrer">publicly scrutinized</a> each other’s submissions. To focus attention, the list of potential candidates were whittled down over three rounds. From the original 82 submissions, eight made it into the final third round. From those eight, NIST chose one key agreement scheme and three signature schemes. Let’s have a look at the key agreement first.</p>
+<h2>What NIST announced</h2>
+<h3>Key agreement</h3>
+<p>For key agreement, NIST picked only <a href="https://pq-crystals.org/kyber/index.shtml" target="_blank" rel="noopener noreferrer"><strong>Kyber</strong></a>, which is a Key Encapsulation Mechanism (KEM). Let’s compare it side-by-side to an RSA-based KEM and the X25519 Diffie–Hellman key agreement:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="165" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=640&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=715&amp;h=165&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=750&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=828&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=1080&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=1280&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=1430&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - DvPAbD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PA1ZMN49V2MNQHEC31NK.png&amp;w=1006&amp;h=232&amp;f=webp" data-lightbox-width="1006" data-lightbox-height="232" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="165" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Performance characteristics of Kyber and RSA. We compare instances of security level 1, see below. Timings vary considerably by platform and implementation constraints and should be taken as a rough indication only.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="114" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=715&amp;h=114&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=640&amp;h=102&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=715&amp;h=114&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=750&amp;h=120&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=828&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=1080&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=1280&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=1430&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - VAwnfu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4ZVGWSJ3Y08AHD6BM73.png&amp;w=1006&amp;h=160&amp;f=webp" data-lightbox-width="1006" data-lightbox-height="160" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="114" class="pt-portable-image-media"></div>
+</figure>
+<p>Performance characteristics of the X25519 Diffie–Hellman key agreement commonly used in TLS 1.3.</p>
+<h5>KEM versus Diffie–Hellman</h5>
+<p>To properly compare these numbers, we have to explain how KEM and Diffie–Hellman key agreements are different.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - SsJ2Mz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PMSTS8T0GZJMCZ0M4JBB.jpeg&amp;w=1600&amp;h=815&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="815" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
+</figure>
+<p>Protocol flow of KEM and Diffie-Hellman key agreement.</p>
+<p>Let’s start with the KEM. A KEM is essentially a <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">Public-Key Encryption</a> (PKE) scheme tailored to encrypt shared secrets. To agree on a key, the initiator, typically the client, generates a fresh keypair and sends the public key over. The receiver, typically the server, generates a shared secret and encrypts (“encapsulates”) it for the initiator’s public key. It returns the ciphertext to the initiator, who finally decrypts (“decapsulates”) the shared secret with its private key.</p>
+<p>With Diffie–Hellman, both parties generate a keypair. Because of the magic of Diffie–Hellman, there is a unique shared secret between every combination of a public and private key. Again, the initiator sends its public key. The receiver <em>combines</em> the received public key with its own private key to create the shared secret and returns its public key with which the initiator can also compute the shared secret.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="216" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=715&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=640&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=715&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=750&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=828&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=1080&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=1280&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=1430&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - p117mp" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47R76E2P8X39G9B4N8WRHK.png&amp;w=1006&amp;h=304&amp;f=webp" data-lightbox-width="1006" data-lightbox-height="304" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="216" class="pt-portable-image-media"></div>
+</figure>
+<h6><em>Interactive versus non-interactive key agreement</em></h6>
+<p>As an aside, in this simple key agreement (such as in TLS), there is not a big difference between using a KEM or Diffie–Hellman: the number of round-trips is exactly the same. In fact, we’re using Diffie–Hellman essentially as a KEM. This, however, is not the case for all protocols: for instance, the <a href="https://signal.org/docs/specifications/x3dh" target="_blank" rel="noopener noreferrer">3XDH</a> handshake of Signal <a href="https://eprint.iacr.org/2019/1356" target="_blank" rel="noopener noreferrer">can’t be done</a> with plain KEMs and requires the full flexibility of Diffie–Hellman.</p>
+<p>Now that we know how to compare KEMs and Diffie–Hellman, how does Kyber measure up?</p>
+<h5>Kyber</h5>
+<p>Kyber is a balanced post-quantum KEM. It is very fast: much faster than X25519, which is already known for its speed. Its main drawback, common to many post-quantum KEMs, is that Kyber has relatively large ciphertext and key sizes: compared to X25519 it adds 1,504 bytes. Is this problematic?</p>
+<p>We have some indirect data. Back in 2019 together with Google we tested two post-quantum KEMs, NTRU-HRSS and SIKE in Chrome. SIKE has very small keys, but is computationally very expensive. NTRU-HRSS, on the other hand, has similar performance characteristics to Kyber, but is slightly bigger and slower. <a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">This is what we found</a>:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="380" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=715&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=640&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=715&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=750&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=828&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=1080&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=1280&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=1430&amp;h=760&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - rA2rct" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46463YH0TWHH2C0TPZY69E.png&amp;w=1600&amp;h=850&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="850" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="380" class="pt-portable-image-media"></div>
+</figure>
+<p>Handshake times for TLS with X25519 (control), NTRU-HRSS (CECPQ2) and SIKE (CECPQ2b). Both post-quantum KEMs were combined with a X25519 key agreement.</p>
+<p>In this experiment we used a combination (a <em>hybrid</em>) of the post-quantum KEM and X25519. Thus, NTRU-HRSS couldn’t benefit from its speed compared to X25519. Even with this disadvantage, the difference in performance is very small. Thus, we expect that switching to a hybrid of Kyber and X25519 will have little performance impact.</p>
+<p>So can we switch to post-quantum TLS today? We would love to. However, we have to be a bit careful: some TLS implementations are brittle and crash on the larger <em>KeyShare</em> message that contains the bigger post-quantum keys. We will work hard to find ways to mitigate these issues, as was done <a href="https://blog.cloudflare.com/why-tls-1-3-isnt-in-browsers-yet">to deploy TLS 1.3</a>. Stay tuned!</p>
+<h5>The other finalists</h5>
+<p>It’s interesting to have a look at the KEMs that didn’t make the cut. NIST intends to standardize some of these in a fourth round. One reason is to increase the diversity in security assumptions in case there is a breakthrough in attacks on structured lattices on which Kyber is based. Another reason is that some of these schemes have specialized, but very useful applications. Finally, some of these schemes might be standardized outside of NIST.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Structured lattices</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Backup</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Specialists</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>NTRU</p>
 				</td>
-				<td>
-					<p><b>Backup</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>BIKE 4️⃣</p>
 				</td>
-				<td>
-					<p><b>Specialists</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Classic McEliece 4️⃣</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://ntru.org" target="_blank" rel="noopener noreferrer">NTRU</a></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>NTRU Prime</p>
 				</td>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://bikesuite.org" target="_blank" rel="noopener noreferrer">BIKE</a> 4️⃣</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>HQC 4️⃣</p>
 				</td>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://classic.mceliece.org" target="_blank" rel="noopener noreferrer">Classic McEliece</a> 4️⃣</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://ntruprime.cr.yp.to" target="_blank" rel="noopener noreferrer">NTRU Prime</a></p>
-				</td>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://pqc-hqc.org" target="_blank" rel="noopener noreferrer">HQC</a> 4️⃣</p>
-				</td>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://sike.org" target="_blank" rel="noopener noreferrer">SIKE</a> 4️⃣</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SIKE 4️⃣</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://www.esat.kuleuven.be/cosic/pqcrypto/saber" target="_blank" rel="noopener noreferrer">SABER</a></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SABER</p>
 				</td>
-				<td>
-					<p><a href="http://web.archive.org/web/20221018220946/https://frodokem.org" target="_blank" rel="noopener noreferrer">FrodoKEM</a></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>FrodoKEM</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>The finalists and candidates of the third round of the competition. The ones marked with 4️⃣ are proceeding to a fourth round and might yet be standardized.</p>
-	<h6><i>The structured lattice generalists</i></h6>
-	<p>Just like Kyber, the KEMs <b>SABER</b>, <b>NTRU</b> and <b>NTRU Prime</b> are all structured lattice schemes that are very similar in performance to Kyber. There are some finer differences, but any one of these KEMs would’ve been a great pick. And they still are: OpenSSH 9.0 <a href="https://www.openssh.com/txt/release-9.0" target="_blank" rel="noopener noreferrer">chose to implement</a> NTRU Prime.</p>
-	<h6><i>The backup generalists</i></h6>
-	<p><b>BIKE</b>, <b>HQC</b> and <b>FrodoKEM</b> are also balanced KEMs, but they’re based on three different underlying hard problems. Unfortunately they’re noticeably less efficient, both in key sizes and computation. A breakthrough in the cryptanalysis of structured lattices is possible, though, and in that case it’s nice to have backups. Thus, NIST is advancing BIKE and HQC to a fourth round.</p>
-	<p>While NIST chose not to advance FrodoKEM, which is based on unstructured lattices, Germany’s BSI <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Crypto/Migration_to_Post_Quantum_Cryptography.pdf?__blob=publicationFile&amp;v=2" target="_blank" rel="noopener noreferrer">prefers</a> it.</p>
-	<h6><i>The specialists</i></h6>
-	<p>The last group of post-quantum cryptographic algorithms under NIST’s consideration are the specialists. We’re happy that both are advancing to the fourth round as they can be of great value in just the right application.</p>
-	<p>First up is <b>Classic McEliece</b>: it has rather unbalanced performance characteristics with its large public key (261kB) and small ciphertexts (128 bytes). This makes McEliece unsuitable for the ephemeral key exchange of TLS, where we need to transmit the public key. On the other hand, McEliece is ideal when the public key is distributed out-of-band anyway, as is often the case in applications and mobile apps that pin certificates. To use McEliece in this way, we need to change TLS a bit. Normally the server authenticates itself by sending a signature on the handshake. Instead, the client can encrypt a challenge to the KEM public key of the server. Being able to decrypt it is an implicit authentication. This variation of TLS is known as <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">KEMTLS</a> and also works great with Kyber when the public key isn’t known beforehand.</p>
-	<p>Finally, there is <b>SIKE,</b> which is based on super singular isogenies. It has very small key and ciphertext sizes. Unfortunately, it is computationally more expensive than the other contenders.</p>
-	<div class="flex anchor relative">
-		<h3 id="digital-signatures">Digital signatures</h3>
-		<a href="https://blog.cloudflare.com/#digital-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As we just saw, the situation for post-quantum key agreement isn’t too bad: Kyber, the chosen scheme is somewhat larger, but it offers computational efficiency in return. The situation for post-quantum signatures is worse: none of the schemes fit the bill on their own for different reasons. We discussed these issues at length for ten of them <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">in a deep-dive last year</a>. Let’s restrict ourselves for the moment to the schemes that were most likely to be standardized and compare them against Ed25519 and RSA-2048, the schemes that are in common use today.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5wlbFCsTjsWtsugi5Q9cIJ/705931a2c0c18b2efe9d77c57733a3e4/Screenshot-2022-07-09-at-08.45.51.png" alt="" class="kg-image" width="1376" height="546" loading="lazy">
-
-	</figure>
-	<p>Performance characteristics of NIST’s chosen signature schemes compared to Ed25519 and RSA-2048. We compare instances of security level 1, see below. Timings vary considerably by platform and implementation constraints and should be taken as a rough indication only. SPHINCS+ was timed with simple haraka as the underlying hash function. (*) Falcon requires a suitable double-precision floating-point unit for fast signing.</p>
-	<div class="flex anchor relative">
-		<h4 id="floating-points-falcons-achilles">Floating points: Falcon’s achilles</h4>
-		<a href="https://blog.cloudflare.com/#floating-points-falcons-achilles" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All of these schemes have much larger signatures than those commonly used today. Looking at just these numbers, <b>Falcon</b> is the best of the worst. It, however, has a weakness that this table doesn’t show: it requires <i>fast constant-time double-precision floating-point arithmetic</i> to have acceptable signing performance.</p>
-	<p>Let’s break that down. <b>Constant time</b> means that the time the operation takes does not depend on the data processed. If the time to create a signature depends on the private key, then the private key can often be recovered by <a href="https://crypto.stanford.edu/~dabo/papers/ssl-timing.pdf" target="_blank" rel="noopener noreferrer">measuring</a> how long it takes to create a signature. Writing constant-time code is hard, but over the years cryptographers have got it figured out for integer arithmetic.</p>
-	<p>Falcon, crucially, is the first big cryptographic algorithm to use <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" target="_blank" rel="noopener noreferrer">double-precision floating-point</a> arithmetic. Initially it wasn’t clear at all whether Falcon could be implemented in constant-time, but impressively, Falcon was implemented in constant-time for <a href="https://eprint.iacr.org/2019/893.pdf" target="_blank" rel="noopener noreferrer">several different CPUs</a>, which required several <a href="https://falcon-sign.info/impl/fpr.h.html" target="_blank" rel="noopener noreferrer">clever workarounds</a> for certain CPU instructions.</p>
-	<p>Despite this achievement, Falcon’s constant-timeness is built on shaky grounds. The next generation of Intel CPUs might add an optimization that breaks Falcon’s constant-timeness. Also, <a href="https://eprint.iacr.org/2022/405.pdf" target="_blank" rel="noopener noreferrer">many CPUs</a> today do not even have fast constant-time double-precision operations. And then still, there might be an <a href="https://twitter.com/bwesterb/status/1509583201848672258" target="_blank" rel="noopener noreferrer">obscure bug</a> that has been overlooked.</p>
-	<p>In time, it might be figured out how to do constant-time arithmetic on the FPU robustly, but we feel it’s too early to deploy Falcon where the timing of signature minting can be measured. Notwithstanding, Falcon is a great choice for offline signatures such as those in certificates.</p>
-	<div class="flex anchor relative">
-		<h4 id="dilithiums-size">Dilithium’s size</h4>
-		<a href="https://blog.cloudflare.com/#dilithiums-size" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This brings us to <b>Dilithium</b>. Compared to Falcon it’s easy to implement safely and has better signing performance to boot. Its signatures and public keys are much larger though, which is problematic. For example, to each browser visiting this very page, we sent six signatures and two public keys. If we’d replace them all with Dilithium2 we would be looking at <b>17KB of additional data</b>. Last year, <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we ran an experiment</a> to see the impact of additional data in the TLS handshake:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75kLinYj12cYdK8eHQvRx8/d880e06a52625cb0fc8f681ddc3b6cfc/pasted-image-0--1--1.png" alt="" class="kg-image" width="1600" height="800" loading="lazy">
-
-	</figure>
-	<p>Impact of larger signatures on TLS handshake time. For the details, see <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">this blog</a>.</p>
-	<p>There are some caveats to point out: first, we used a big 30-segment initial congestion window (icwnd). With a normal icwnd, the <i>bump</i> at 40KB moves to 10KB. Secondly, the height of this bump is the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round-trip time (RTT)</a>, which due to our broadly distributed network, is <a href="https://blog.cloudflare.com/cdn-latency-passive-measurement">very low</a> for us. Thus, switching to Dilithium alone might well double your TLS handshake times. More disturbingly, we saw that some connections stopped working when we added too much data:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3QHAZZc6N74wSbYRJlgZDy/bf8af43d90ad6a2144dc2504167a80cb/Screen-Shot-2022-07-08-at-10.04.10-AM.png" alt="" class="kg-image" width="2000" height="1036" loading="lazy">
-
-	</figure>
-	<p>Amount of failed TLS handshakes by size of added signatures. For the details, see <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">this blog</a>.</p>
-	<p>We expect this was caused by misbehaving middleboxes. Taken together, we concluded that early adoption of post-quantum signatures on the Internet would likely be more successful if those six signatures and two public keys would fit in 9KB. This can be achieved by using Dilithium for the handshake signature and Falcon for the other (offline) signatures.</p>
-	<div class="flex anchor relative">
-		<h4 id="at-most-one-of-dilithium-or-falcon">At most one of Dilithium or Falcon</h4>
-		<a href="https://blog.cloudflare.com/#at-most-one-of-dilithium-or-falcon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Unfortunately, NIST stated on <a href="https://csrc.nist.gov/CSRC/media/Presentations/pqc-update-round-2-and-beyond/images-media/pqcrypto-sept2020-moody.pdf" target="_blank" rel="noopener noreferrer">several</a> <a href="https://nvlpubs.nist.gov/nistpubs/ir/2020/NIST.IR.8309.pdf" target="_blank" rel="noopener noreferrer">occasions</a> that it would choose only two signature schemes, but not both Falcon and Dilithium:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rOBpuWZKsYrCB14qBI8UD/d1cbbd680a6c3ebf5ec720c1c77ae708/Screenshot-2022-07-06-at-13.20.43.png" alt="" class="kg-image" width="1600" height="688" loading="lazy">
-
-	</figure>
-	<p><a href="https://csrc.nist.gov/CSRC/media/Presentations/pqc-update-round-2-and-beyond/images-media/pqcrypto-sept2020-moody.pdf" target="_blank" rel="noopener noreferrer">Slides</a> of NIST’s status update after the conclusion of round 2</p>
-	<p>The reason given is that both Dilithium and Falcon are based on structured lattices and thus do not add more security diversity. Because of the difficulty of implementing Falcon correctly, we expected NIST to standardize Dilithium and as a backup SPHINCS+. With that guess, we saw a big challenge ahead: to keep the Internet fast we would need some difficult and rigorous changes to the protocols.</p>
-	<div class="flex anchor relative">
-		<h5 id="the-twist">The twist</h5>
-		<a href="https://blog.cloudflare.com/#the-twist" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>However, to everyone’s surprise, NIST <b>picked both</b>! NIST chose to standardize Dilithium, Falcon <i>and</i> SPHINCS+. This is a very pleasant surprise for the Internet: it means that post-quantum authentication will be much simpler to adopt.</p>
-	<div class="flex anchor relative">
-		<h4 id="sphincs-the-conservative-choice">SPHINCS+, the conservative choice</h4>
-		<a href="https://blog.cloudflare.com/#sphincs-the-conservative-choice" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the excitement of the fight between Dilithium and Falcon, we could almost forget about SPHINCS+, a stateless hash-based signature. Its big advantage is that its security is based on the second-preimage resistance of the underlying hash-function, which is well understood. It is not a stretch to say that SPHINCS+ is the most conservative choice for a signature scheme, post-quantum or otherwise. But even as a co-submitter of SPHINCS+, I have to admit that its performance isn’t that great.</p>
-	<p>There is a lot of flexibility in the parameter choices for SPHINCS+: there are tradeoffs between signature size, signing time, verification time and the maximum number of signatures that can be minted. Of the current parameter sets, the “s” are optimized for size and “f” for signing speed; both chosen to allow 264 signatures. NIST has hinted at reducing the signature limit, which would improve performance. A custom choice of parameters for a particular application would improve it even more, but would still trail Dilithium.</p>
-	<p>Having discussed NIST choices, let’s have a look at those that were left out.</p>
-	<div class="flex anchor relative">
-		<h4 id="the-other-finalists">The other finalists</h4>
-		<a href="https://blog.cloudflare.com/#the-other-finalists" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There were three other finalists: GeMSS, Picnic and Rainbow. None of these are progressing to a fourth round.</p>
-	<p><b>Picnic</b> is a conservative choice similar to SPHINCS+. Its construction is interesting: it is based on the <a href="https://en.wikipedia.org/wiki/Secure_multi-party_computation" target="_blank" rel="noopener noreferrer">secure multiparty computation</a> of a block cipher. To be efficient, a non-standard block cipher is chosen. This makes Picnic’s assumptions a bit less conservative, which is why NIST preferred SPHINCS+.</p>
-	<p><b>GeMSS</b> and <b>Rainbow</b> are specialists: they have large public key sizes (hundreds of kilobytes), but very small signatures (33–66 bytes). They would be great for applications where the public key can be distributed out of band, such as for the Signed Certificate Timestamps included in certificates for <a href="https://certificate.transparency.dev" target="_blank" rel="noopener noreferrer">Certificate Transparency</a>. Unfortunately, both turned out to <a href="https://eprint.iacr.org/2022/214.pdf" target="_blank" rel="noopener noreferrer">be</a> <a href="https://hal.archives-ouvertes.fr/hal-03533455/document" target="_blank" rel="noopener noreferrer">broken</a>.</p>
-	<div class="flex anchor relative">
-		<h4 id="signature-schemes-on-the-horizon">Signature schemes on the horizon</h4>
-		<a href="https://blog.cloudflare.com/#signature-schemes-on-the-horizon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Although we expect Falcon and Dilithium to be practical for the Internet, there is ample room for improvement. Many new signature schemes have been proposed after the start of the competition, which could help out a lot. NIST recognizes this and is <a href="https://csrc.nist.gov/News/2022/pqc-candidates-to-be-standardized-and-round-4#new-call" target="_blank" rel="noopener noreferrer">opening a new competition</a> for post-quantum signature schemes.</p>
-	<p>A few schemes that have caught our eye already are <b>UOV</b>, which has similar <i>performance</i> trade-offs to those for GeMSS and Rainbow; <b>SQISign</b>, which has small signatures, but is computationally expensive; and <b>MAYO</b>, which looks like it might be a great general-purpose signature scheme.</p>
-	<div class="flex anchor relative">
-		<h4 id="stateful-hash-based-signatures">Stateful hash-based signatures</h4>
-		<a href="https://blog.cloudflare.com/#stateful-hash-based-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, we’d be remiss not to mention the post-quantum signature scheme that already <a href="https://csrc.nist.gov/publications/detail/sp/800-208/final" target="_blank" rel="noopener noreferrer">has been standardized by NIST</a>: the stateful hash-based signature schemes <b>LMS</b> and <b>XMSS</b>. They share the same conservative security as their sibling SPHINCS+, but have much better performance. The rub is that for each keypair there are a finite number of signature <i>slots</i> and each signature slot can only be used once. If it’s used twice, it <a href="https://research.tue.nl/en/publications/oops-i-did-it-again-security-of-one-time-signatures-under-two-mes" target="_blank" rel="noopener noreferrer">is insecure</a>. This is why they are called <i>stateful</i>; as the signer must remember the state of all slots that have been used in the past, and any mistake is fatal. Keeping the state perfectly can be very challenging.</p>
-	<div class="flex anchor relative">
-		<h2 id="what-else">What else</h2>
-		<a href="https://blog.cloudflare.com/#what-else" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>NIST will draft standards for the selected schemes and request public feedback on them. There might be changes to the algorithms, but we do not expect anything major. The standards are expected to be finalized in 2024.</p>
-	<p>In the coming months, many languages, libraries and protocols will already add preliminary support for the current version of Kyber and the other post-quantum algorithms. We’re helping out to make post-quantum available to the Internet as soon as possible: we’re working within the IETF to add Kyber to TLS and will contribute upstream support to popular open-source libraries.</p>
-	<div class="flex anchor relative">
-		<h4 id="start-experimenting-with-kyber-today">Start experimenting with Kyber today</h4>
-		<a href="https://blog.cloudflare.com/#start-experimenting-with-kyber-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now is a good time for you to try out Kyber in your software stacks. We were lucky to correctly guess Kyber would be picked and have experience running it internally. Our tests so far show it performs great. Your requirements might differ, so try it out yourself.</p>
-	<p>The <a href="https://github.com/pq-crystals/kyber" target="_blank" rel="noopener noreferrer">reference implementation</a> in C is excellent. The Open Quantum Safe project <a href="https://openquantumsafe.org/applications/tls.html" target="_blank" rel="noopener noreferrer">integrates</a> it with various TLS libraries, but beware: the algorithm identifiers and scheme might still change, so be ready to migrate.</p>
-	<p>Our <a href="https://github.com/cloudflare/circl" target="_blank" rel="noopener noreferrer">CIRCL</a> library has a fast independent implementation of <a href="https://github.com/cloudflare/circl/tree/main/kem" target="_blank" rel="noopener noreferrer">Kyber in Go</a>. We implemented Kyber ourselves so that we could help tease out any implementation bugs or subtle under specification.</p>
-	<div class="flex anchor relative">
-		<h4 id="experimenting-with-post-quantum-signatures">Experimenting with post-quantum signatures</h4>
-		<a href="https://blog.cloudflare.com/#experimenting-with-post-quantum-signatures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Post-quantum signatures are not as urgent, but might require more engineering to get right. First off, which signature scheme to pick?</p>
-	<ul>
-		<li>
-			<p>Are large signatures and slow operations acceptable? Go for SPHINCS+.</p>
-		</li>
-		<li>
-			<p>Do you need more performance?</p>
-			<ul>
-				<li>
-					<p>Can your signature generation be timed, for instance when generated on-the-fly? Then go for (a <i>hybrid</i>, see below, with) Dilithium.</p>
-				</li>
-				<li>
-					<p>For offline signatures, go for (a hybrid with) Falcon.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p>If you can keep a state perfectly, check out XMSS/LMS.</p>
-		</li>
-	</ul>
-	<p><a href="https://openquantumsafe.org" target="_blank" rel="noopener noreferrer">Open Quantum Safe</a> can be used to test these out. Our CIRCL library also has a fast independent implementation of <a href="https://github.com/cloudflare/circl/tree/master/sign/dilithium" target="_blank" rel="noopener noreferrer">Dilithium in Go</a>. We’ll add Falcon and SPHINCS+ soon.</p>
-	<div class="flex anchor relative">
-		<h3 id="hybrids">Hybrids</h3>
-		<a href="https://blog.cloudflare.com/#hybrids" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A <b>hybrid</b> is a combination of a classical and a post-quantum scheme. For instance, we can combine Kyber512 with X25519 to create a single <b>Kyber512X</b> key agreement. The advantage of a hybrid is that the data remains secure against non-quantum attackers even if Kyber512 turns out broken. It is important to note that it’s not just about the algorithm, but also the implementation: Kyber512 might be perfectly secure, but an implementation might leak via side-channels. The downside is that two key-exchanges are performed, which takes more CPU cycles and bytes on the wire. For the moment, we prefer sticking with hybrids, but we will revisit this soon.</p>
-	<div class="flex anchor relative">
-		<h3 id="post-quantum-security-levels">Post-quantum security levels</h3>
-		<a href="https://blog.cloudflare.com/#post-quantum-security-levels" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Each algorithm has different parameters targeting various post-quantum security levels. Up till now we’ve only discussed the performance characteristics of security level 1 (or 2 in case of Dilithium, which doesn’t have level 1 parameters.) The definition of the security levels is rather interesting: they’re defined as being as hard to crack by a classical or quantum attacker as specific instances of AES and SHA:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Level</b></p>
-				</td>
-				<td>
-					<p><b>Definition, as least as hard to break as…</b></p>
-				</td>
+</div>
+<p>The finalists and candidates of the third round of the competition. The ones marked with 4️⃣ are proceeding to a fourth round and might yet be standardized.</p>
+<h6><em>The structured lattice generalists</em></h6>
+<p>Just like Kyber, the KEMs <strong>SABER</strong>, <strong>NTRU</strong> and <strong>NTRU Prime</strong> are all structured lattice schemes that are very similar in performance to Kyber. There are some finer differences, but any one of these KEMs would’ve been a great pick. And they still are: OpenSSH 9.0 <a href="https://www.openssh.com/txt/release-9.0" target="_blank" rel="noopener noreferrer">chose to implement</a> NTRU Prime.</p>
+<h6><em>The backup generalists</em></h6>
+<p><strong>BIKE</strong>, <strong>HQC</strong> and <strong>FrodoKEM</strong> are also balanced KEMs, but they’re based on three different underlying hard problems. Unfortunately they’re noticeably less efficient, both in key sizes and computation. A breakthrough in the cryptanalysis of structured lattices is possible, though, and in that case it’s nice to have backups. Thus, NIST is advancing BIKE and HQC to a fourth round.</p>
+<p>While NIST chose not to advance FrodoKEM, which is based on unstructured lattices, Germany’s BSI <a href="https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/Crypto/Migration_to_Post_Quantum_Cryptography.pdf?__blob=publicationFile&amp;v=2" target="_blank" rel="noopener noreferrer">prefers</a> it.</p>
+<h6><em>The specialists</em></h6>
+<p>The last group of post-quantum cryptographic algorithms under NIST’s consideration are the specialists. We’re happy that both are advancing to the fourth round as they can be of great value in just the right application.</p>
+<p>First up is <strong>Classic McEliece</strong>: it has rather unbalanced performance characteristics with its large public key (261kB) and small ciphertexts (128 bytes). This makes McEliece unsuitable for the ephemeral key exchange of TLS, where we need to transmit the public key. On the other hand, McEliece is ideal when the public key is distributed out-of-band anyway, as is often the case in applications and mobile apps that pin certificates. To use McEliece in this way, we need to change TLS a bit. Normally the server authenticates itself by sending a signature on the handshake. Instead, the client can encrypt a challenge to the KEM public key of the server. Being able to decrypt it is an implicit authentication. This variation of TLS is known as <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">KEMTLS</a> and also works great with Kyber when the public key isn’t known beforehand.</p>
+<p>Finally, there is <strong>SIKE,</strong> which is based on super singular isogenies. It has very small key and ciphertext sizes. Unfortunately, it is computationally more expensive than the other contenders.</p>
+<h3>Digital signatures</h3>
+<p>As we just saw, the situation for post-quantum key agreement isn’t too bad: Kyber, the chosen scheme is somewhat larger, but it offers computational efficiency in return. The situation for post-quantum signatures is worse: none of the schemes fit the bill on their own for different reasons. We discussed these issues at length for ten of them <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">in a deep-dive last year</a>. Let’s restrict ourselves for the moment to the schemes that were most likely to be standardized and compare them against Ed25519 and RSA-2048, the schemes that are in common use today.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="284" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=640&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=715&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=750&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=828&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=1080&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=1280&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=1430&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - dWbsFz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T0AJP6CBC86A4GSYNPFH.png&amp;w=1376&amp;h=546&amp;f=webp" data-lightbox-width="1376" data-lightbox-height="546" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="284" class="pt-portable-image-media"></div>
+</figure>
+<p>Performance characteristics of NIST’s chosen signature schemes compared to Ed25519 and RSA-2048. We compare instances of security level 1, see below. Timings vary considerably by platform and implementation constraints and should be taken as a rough indication only. SPHINCS+ was timed with simple haraka as the underlying hash function. (*) Falcon requires a suitable double-precision floating-point unit for fast signing.</p>
+<h4>Floating points: Falcon’s achilles</h4>
+<p>All of these schemes have much larger signatures than those commonly used today. Looking at just these numbers, <strong>Falcon</strong> is the best of the worst. It, however, has a weakness that this table doesn’t show: it requires <em>fast constant-time double-precision floating-point arithmetic</em> to have acceptable signing performance.</p>
+<p>Let’s break that down. <strong>Constant time</strong> means that the time the operation takes does not depend on the data processed. If the time to create a signature depends on the private key, then the private key can often be recovered by <a href="https://crypto.stanford.edu/~dabo/papers/ssl-timing.pdf" target="_blank" rel="noopener noreferrer">measuring</a> how long it takes to create a signature. Writing constant-time code is hard, but over the years cryptographers have got it figured out for integer arithmetic.</p>
+<p>Falcon, crucially, is the first big cryptographic algorithm to use <a href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format" target="_blank" rel="noopener noreferrer">double-precision floating-point</a> arithmetic. Initially it wasn’t clear at all whether Falcon could be implemented in constant-time, but impressively, Falcon was implemented in constant-time for <a href="https://eprint.iacr.org/2019/893.pdf" target="_blank" rel="noopener noreferrer">several different CPUs</a>, which required several <a href="https://falcon-sign.info/impl/fpr.h.html" target="_blank" rel="noopener noreferrer">clever workarounds</a> for certain CPU instructions.</p>
+<p>Despite this achievement, Falcon’s constant-timeness is built on shaky grounds. The next generation of Intel CPUs might add an optimization that breaks Falcon’s constant-timeness. Also, <a href="https://eprint.iacr.org/2022/405.pdf" target="_blank" rel="noopener noreferrer">many CPUs</a> today do not even have fast constant-time double-precision operations. And then still, there might be an <a href="https://twitter.com/bwesterb/status/1509583201848672258" target="_blank" rel="noopener noreferrer">obscure bug</a> that has been overlooked.</p>
+<p>In time, it might be figured out how to do constant-time arithmetic on the FPU robustly, but we feel it’s too early to deploy Falcon where the timing of signature minting can be measured. Notwithstanding, Falcon is a great choice for offline signatures such as those in certificates.</p>
+<h4>Dilithium’s size</h4>
+<p>This brings us to <strong>Dilithium</strong>. Compared to Falcon it’s easy to implement safely and has better signing performance to boot. Its signatures and public keys are much larger though, which is problematic. For example, to each browser visiting this very page, we sent six signatures and two public keys. If we’d replace them all with Dilithium2 we would be looking at <strong>17KB of additional data</strong>. Last year, <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we ran an experiment</a> to see the impact of additional data in the TLS handshake:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="358" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=640&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=715&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=750&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=828&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=1080&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=1280&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=1430&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - eUfNQO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KMZSGCTB8KAZZCQ6M4MV.png&amp;w=1600&amp;h=800&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="800" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="358" class="pt-portable-image-media"></div>
+</figure>
+<p>Impact of larger signatures on TLS handshake time. For the details, see <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">this blog</a>.</p>
+<p>There are some caveats to point out: first, we used a big 30-segment initial congestion window (icwnd). With a normal icwnd, the <em>bump</em> at 40KB moves to 10KB. Secondly, the height of this bump is the <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">round-trip time (RTT)</a>, which due to our broadly distributed network, is <a href="https://blog.cloudflare.com/cdn-latency-passive-measurement">very low</a> for us. Thus, switching to Dilithium alone might well double your TLS handshake times. More disturbingly, we saw that some connections stopped working when we added too much data:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="370" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=640&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=750&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=828&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=1080&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=1280&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=1430&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - wSBkrE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460HWAY7MK9TG4NBWTSFJE.png&amp;w=1920&amp;h=995&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="995" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="370" class="pt-portable-image-media"></div>
+</figure>
+<p>Amount of failed TLS handshakes by size of added signatures. For the details, see <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">this blog</a>.</p>
+<p>We expect this was caused by misbehaving middleboxes. Taken together, we concluded that early adoption of post-quantum signatures on the Internet would likely be more successful if those six signatures and two public keys would fit in 9KB. This can be achieved by using Dilithium for the handshake signature and Falcon for the other (offline) signatures.</p>
+<h4>At most one of Dilithium or Falcon</h4>
+<p>Unfortunately, NIST stated on <a href="https://csrc.nist.gov/CSRC/media/Presentations/pqc-update-round-2-and-beyond/images-media/pqcrypto-sept2020-moody.pdf" target="_blank" rel="noopener noreferrer">several</a> <a href="https://nvlpubs.nist.gov/nistpubs/ir/2020/NIST.IR.8309.pdf" target="_blank" rel="noopener noreferrer">occasions</a> that it would choose only two signature schemes, but not both Falcon and Dilithium:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="307" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=640&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=715&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=750&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=828&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=1080&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=1280&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=1430&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - j1drG7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KDWE7G5D7DAH39983FRM.png&amp;w=1600&amp;h=688&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="688" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="307" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://csrc.nist.gov/CSRC/media/Presentations/pqc-update-round-2-and-beyond/images-media/pqcrypto-sept2020-moody.pdf" target="_blank" rel="noopener noreferrer">Slides</a> of NIST’s status update after the conclusion of round 2</p>
+<p>The reason given is that both Dilithium and Falcon are based on structured lattices and thus do not add more security diversity. Because of the difficulty of implementing Falcon correctly, we expected NIST to standardize Dilithium and as a backup SPHINCS+. With that guess, we saw a big challenge ahead: to keep the Internet fast we would need some difficult and rigorous changes to the protocols.</p>
+<h5>The twist</h5>
+<p>However, to everyone’s surprise, NIST <strong>picked both</strong>! NIST chose to standardize Dilithium, Falcon <em>and</em> SPHINCS+. This is a very pleasant surprise for the Internet: it means that post-quantum authentication will be much simpler to adopt.</p>
+<h4>SPHINCS+, the conservative choice</h4>
+<p>In the excitement of the fight between Dilithium and Falcon, we could almost forget about SPHINCS+, a stateless hash-based signature. Its big advantage is that its security is based on the second-preimage resistance of the underlying hash-function, which is well understood. It is not a stretch to say that SPHINCS+ is the most conservative choice for a signature scheme, post-quantum or otherwise. But even as a co-submitter of SPHINCS+, I have to admit that its performance isn’t that great.</p>
+<p>There is a lot of flexibility in the parameter choices for SPHINCS+: there are tradeoffs between signature size, signing time, verification time and the maximum number of signatures that can be minted. Of the current parameter sets, the “s” are optimized for size and “f” for signing speed; both chosen to allow 264 signatures. NIST has hinted at reducing the signature limit, which would improve performance. A custom choice of parameters for a particular application would improve it even more, but would still trail Dilithium.</p>
+<p>Having discussed NIST choices, let’s have a look at those that were left out.</p>
+<h4>The other finalists</h4>
+<p>There were three other finalists: GeMSS, Picnic and Rainbow. None of these are progressing to a fourth round.</p>
+<p><strong>Picnic</strong> is a conservative choice similar to SPHINCS+. Its construction is interesting: it is based on the <a href="https://en.wikipedia.org/wiki/Secure_multi-party_computation" target="_blank" rel="noopener noreferrer">secure multiparty computation</a> of a block cipher. To be efficient, a non-standard block cipher is chosen. This makes Picnic’s assumptions a bit less conservative, which is why NIST preferred SPHINCS+.</p>
+<p><strong>GeMSS</strong> and <strong>Rainbow</strong> are specialists: they have large public key sizes (hundreds of kilobytes), but very small signatures (33–66 bytes). They would be great for applications where the public key can be distributed out of band, such as for the Signed Certificate Timestamps included in certificates for <a href="https://certificate.transparency.dev" target="_blank" rel="noopener noreferrer">Certificate Transparency</a>. Unfortunately, both turned out to <a href="https://eprint.iacr.org/2022/214.pdf" target="_blank" rel="noopener noreferrer">be</a> <a href="https://hal.archives-ouvertes.fr/hal-03533455/document" target="_blank" rel="noopener noreferrer">broken</a>.</p>
+<h4>Signature schemes on the horizon</h4>
+<p>Although we expect Falcon and Dilithium to be practical for the Internet, there is ample room for improvement. Many new signature schemes have been proposed after the start of the competition, which could help out a lot. NIST recognizes this and is <a href="https://csrc.nist.gov/News/2022/pqc-candidates-to-be-standardized-and-round-4#new-call" target="_blank" rel="noopener noreferrer">opening a new competition</a> for post-quantum signature schemes.</p>
+<p>A few schemes that have caught our eye already are <strong>UOV</strong>, which has similar <em>performance</em> trade-offs to those for GeMSS and Rainbow; <strong>SQISign</strong>, which has small signatures, but is computationally expensive; and <strong>MAYO</strong>, which looks like it might be a great general-purpose signature scheme.</p>
+<h4>Stateful hash-based signatures</h4>
+<p>Finally, we’d be remiss not to mention the post-quantum signature scheme that already <a href="https://csrc.nist.gov/publications/detail/sp/800-208/final" target="_blank" rel="noopener noreferrer">has been standardized by NIST</a>: the stateful hash-based signature schemes <strong>LMS</strong> and <strong>XMSS</strong>. They share the same conservative security as their sibling SPHINCS+, but have much better performance. The rub is that for each keypair there are a finite number of signature <em>slots</em> and each signature slot can only be used once. If it’s used twice, it <a href="https://research.tue.nl/en/publications/oops-i-did-it-again-security-of-one-time-signatures-under-two-mes" target="_blank" rel="noopener noreferrer">is insecure</a>. This is why they are called <em>stateful</em>; as the signer must remember the state of all slots that have been used in the past, and any mistake is fatal. Keeping the state perfectly can be very challenging.</p>
+<h2>What else</h2>
+<h3>What’s next?</h3>
+<p>NIST will draft standards for the selected schemes and request public feedback on them. There might be changes to the algorithms, but we do not expect anything major. The standards are expected to be finalized in 2024.</p>
+<p>In the coming months, many languages, libraries and protocols will already add preliminary support for the current version of Kyber and the other post-quantum algorithms. We’re helping out to make post-quantum available to the Internet as soon as possible: we’re working within the IETF to add Kyber to TLS and will contribute upstream support to popular open-source libraries.</p>
+<h4>Start experimenting with Kyber today</h4>
+<p>Now is a good time for you to try out Kyber in your software stacks. We were lucky to correctly guess Kyber would be picked and have experience running it internally. Our tests so far show it performs great. Your requirements might differ, so try it out yourself.</p>
+<p>The <a href="https://github.com/pq-crystals/kyber" target="_blank" rel="noopener noreferrer">reference implementation</a> in C is excellent. The Open Quantum Safe project <a href="https://openquantumsafe.org/applications/tls.html" target="_blank" rel="noopener noreferrer">integrates</a> it with various TLS libraries, but beware: the algorithm identifiers and scheme might still change, so be ready to migrate.</p>
+<p>Our <a href="https://github.com/cloudflare/circl" target="_blank" rel="noopener noreferrer">CIRCL</a> library has a fast independent implementation of <a href="https://github.com/cloudflare/circl/tree/main/kem" target="_blank" rel="noopener noreferrer">Kyber in Go</a>. We implemented Kyber ourselves so that we could help tease out any implementation bugs or subtle under specification.</p>
+<h4>Experimenting with post-quantum signatures</h4>
+<p>Post-quantum signatures are not as urgent, but might require more engineering to get right. First off, which signature scheme to pick?</p>
+<ul>
+	<li>Are large signatures and slow operations acceptable? Go for SPHINCS+.</li>
+	<li>Do you need more performance?<ul>
+			<li>Can your signature generation be timed, for instance when generated on-the-fly? Then go for (a <em>hybrid</em>, see below, with) Dilithium.</li>
+			<li>For offline signatures, go for (a hybrid with) Falcon.</li>
+		</ul>
+	</li>
+	<li>If you can keep a state perfectly, check out XMSS/LMS.</li>
+</ul>
+<p><a href="https://openquantumsafe.org" target="_blank" rel="noopener noreferrer">Open Quantum Safe</a> can be used to test these out. Our CIRCL library also has a fast independent implementation of <a href="https://github.com/cloudflare/circl/tree/master/sign/dilithium" target="_blank" rel="noopener noreferrer">Dilithium in Go</a>. We’ll add Falcon and SPHINCS+ soon.</p>
+<h3>Hybrids</h3>
+<p>A <strong>hybrid</strong> is a combination of a classical and a post-quantum scheme. For instance, we can combine Kyber512 with X25519 to create a single <strong>Kyber512X</strong> key agreement. The advantage of a hybrid is that the data remains secure against non-quantum attackers even if Kyber512 turns out broken. It is important to note that it’s not just about the algorithm, but also the implementation: Kyber512 might be perfectly secure, but an implementation might leak via side-channels. The downside is that two key-exchanges are performed, which takes more CPU cycles and bytes on the wire. For the moment, we prefer sticking with hybrids, but we will revisit this soon.</p>
+<h3>Post-quantum security levels</h3>
+<p>Each algorithm has different parameters targeting various post-quantum security levels. Up till now we’ve only discussed the performance characteristics of security level 1 (or 2 in case of Dilithium, which doesn’t have level 1 parameters.) The definition of the security levels is rather interesting: they’re defined as being as hard to crack by a classical or quantum attacker as specific instances of AES and SHA:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Level</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Definition, as least as hard to break as…</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>To recover the key of AES-128 by exhaustive search</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>To find a collision in SHA256 by exhaustive search</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>To recover the key of AES-192 by exhaustive search</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>To find a collision in SHA384 by exhaustive search</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>To recover the key of AES-256 by exhaustive search</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>So which security level should we pick? Is level 1 good enough? We’d need to understand how hard it is for a quantum computer to crack AES-128.</p>
-	<div class="flex anchor relative">
-		<h4 id="grovers-algorithm">Grover’s algorithm</h4>
-		<a href="https://blog.cloudflare.com/#grovers-algorithm" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In 1996, two years after Shor’s paper, Lov Grover <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.79.325" target="_blank" rel="noopener noreferrer">published</a> his <b>quantum search algorithm</b>. With it, you can find the AES-128 key (given known plain and ciphertext) with only 264 executions of the cipher <i>in superposition</i>. That sounds much faster than the 2127 tries on average for a classical brute-force attempt. In fact, it sounds like security level 1 isn’t that secure at all. Don’t be alarmed: level 1 is much more secure than it sounds, but it requires some context.</p>
-	<p>To start, a classical brute-force attempt can be parallelized — millions of machines can participate, sharing the work. Grover’s algorithm, on the other hand, <a href="https://arxiv.org/abs/quant-ph/9711070" target="_blank" rel="noopener noreferrer">doesn’t parallelize</a> well because the quadratic speedup disappears over that portion. To wit, a billion quantum computers would still have to do 249 iterations each to crack AES-128.</p>
-	<p>Then each iteration requires many gates. It’s <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8961201" target="_blank" rel="noopener noreferrer">estimated</a> that these 249 operations take roughly 264 noiseless quantum gates. If each of our billion quantum computers could execute a billion noiseless quantum gates per second, then it’d still take 500 years.</p>
-	<p>That already sounds more secure, but we’re not done. Quantum computers do not execute noiseless quantum gates: they’re analogue machines. Every operation has a little bit of noise. Does this mean that quantum computing is hopeless? Not at all! There are <a href="https://en.wikipedia.org/wiki/Quantum_error_correction" target="_blank" rel="noopener noreferrer">clever algorithms</a> to turn, say, a million noisy qubits into one less noisy qubit. It doesn’t just add qubits, but also extra gates. How much depends very much on the exact details of the quantum computer.</p>
-	<p>It is not inconceivable that in the future there will be quantum computers that effectively execute far more than a billion noiseless gates per second, but it will likely be decades after Shor’s algorithm is practical. This all is a long-winded way of saying that security level 1 seems solid for the foreseeable future.</p>
-	<div class="flex anchor relative">
-		<h4 id="hedging-against-attacks">Hedging against attacks</h4>
-		<a href="https://blog.cloudflare.com/#hedging-against-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A different reason to pick a higher security level is to hedge against better attacks on the algorithm. This makes a lot of sense, but it is important to note that this isn’t a foolproof strategy:</p>
-	<ul>
-		<li>
-			<p>Not all attacks are small improvements. It’s possible that improvements in cryptanalysis break all security levels at once.</p>
-		</li>
-		<li>
-			<p>Higher security levels do not protect against implementation flaws, such as (<a href="https://blog.cloudflare.com/hertzbleed-explained">new</a>) timing vulnerabilities.</p>
-		</li>
-	</ul>
-	<p>A different aspect, that’s arguably more important than picking a high number, is <b>crypto agility</b>: being able to switch to a new algorithm/implementation in case of a break of trouble. Let’s hope that we will not need it, but now we’re going to switch, it’s nice to make it easier in the future.</p>
-	<div class="flex anchor relative">
-		<h3 id="circl-is-post-quantum-enabled">CIRCL is Post-Quantum Enabled</h3>
-		<a href="https://blog.cloudflare.com/#circl-is-post-quantum-enabled" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We already mentioned CIRCL a few times, it’s our optimized crypto-library for Go whose <a href="https://blog.cloudflare.com/introducing-circl">development we started</a> in 2019. CIRCL already contains support for several post-quantum algorithms such as the KEMs Kyber and SIKE and signature schemes Dilithium and Frodo. The code is up-to-date and compliant with test vectors from the third round. CIRCL is readily usable in Go programs either as a library or natively as part of Go using <a href="https://github.com/cloudflare/go" target="_blank" rel="noopener noreferrer">this fork</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13Yr1CAgGUVkNU48YQcowR/0e79dde272e73143135795d2cb78b521/pasted-image-0--2-.png" alt="" class="kg-image" width="1200" height="250" loading="lazy">
-
-	</figure>
-	<p>One goal of CIRCL is to enable experimentation with post-quantum algorithms in TLS. For instance, we ran a <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">measurement study</a> to <a href="https://eprint.iacr.org/2021/1019" target="_blank" rel="noopener noreferrer">evaluate</a> the feasibility of the KEMTLS protocol for which we’ve adapted the TLS package of the Go library.</p>
-	<p>As an example, this code uses CIRCL to sign a message with eddilithium2, a hybrid signature scheme pairing Ed25519 with Dilithium mode 2.</p>
-	<pre class="language-bash"><code class="language-bash">package main
-
-import (
-  "crypto"
-  "crypto/rand"
-  "fmt"
-
-  "github.com/cloudflare/circl/sign/eddilithium2"
-)
-
-func main() {
-  // Generating random keypair.
-  pk, sk, err := eddilithium2.GenerateKey(rand.Reader)
-
-  // Signing a message.
-  msg := []byte("Signed with CIRCL using " + eddilithium2.Scheme().Name())
-  signature, err := sk.Sign(rand.Reader, msg, crypto.Hash(0))
-
-  // Verifying signature.
-  valid := eddilithium2.Verify(pk, msg, signature[:])
-
-  fmt.Printf("Message: %v\n", string(msg))
-  fmt.Printf("Signature (%v bytes): %x...\n", len(signature), signature[:4])
-  fmt.Printf("Signature Valid: %v\n", valid)
-  fmt.Printf("Errors: %v\n", err)
-}</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">Message: Signed with CIRCL using Ed25519-Dilithium2
-Signature (2484 bytes): 84d6882a...
-Signature Valid: true
-Errors: &lt;nil&gt;</code></pre>
-	<p>As can be seen the application programming interface is the same as the <a href="https://pkg.go.dev/crypto#Signer" target="_blank" rel="noopener noreferrer">crypto.Signer</a> interface from the standard library. Try it out, and we’re happy to hear your <a href="https://github.com/cloudflare/circl/issues/new" target="_blank" rel="noopener noreferrer">feedback</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is a big moment for the Internet. From a set of excellent options for post-quantum key agreement, NIST chose Kyber. With it, we can secure the data on the Internet today against quantum adversaries of the future, without compromising on performance.</p>
-	<p>On the authentication side, NIST pleasantly surprised us by choosing both Falcon and Dilithium against their earlier statements. This was a great choice, as it will make post-quantum authentication more practical than <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we expected</a> it would be.</p>
-	<p>Together with the cryptography community, we have our work cut out for us: we aim to make the Internet post-quantum secure as fast as possible.</p>
-	<p>Want to follow along? Keep an eye on <a href="https://blog.cloudflare.com/tag/post-quantum">this blog</a> or have a look at <a href="https://research.cloudflare.com" target="_blank" rel="noopener noreferrer">research.cloudflare.com</a>.</p>
-	<p>Want to help out? We’re <a href="https://www.cloudflare.com/careers/jobs/?title=research+engineer" target="_blank" rel="noopener noreferrer">hiring</a> and open to <a href="https://research.cloudflare.com/outreach/academic-programs/researchers" target="_blank" rel="noopener noreferrer">research visits</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/2386e5712753504c4306cf41de1633fb?poster=https%3A%2F%2Fcloudflarestream.com%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D19s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
 </div>
+<p>So which security level should we pick? Is level 1 good enough? We’d need to understand how hard it is for a quantum computer to crack AES-128.</p>
+<p><strong>Grover’s algorithm</strong></p>
+<p>In 1996, two years after Shor’s paper, Lov Grover <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.79.325" target="_blank" rel="noopener noreferrer">published</a> his <strong>quantum search algorithm</strong>. With it, you can find the AES-128 key (given known plain and ciphertext) with only 264 executions of the cipher <em>in superposition</em>. That sounds much faster than the 2127 tries on average for a classical brute-force attempt. In fact, it sounds like security level 1 isn’t that secure at all. Don’t be alarmed: level 1 is much more secure than it sounds, but it requires some context.</p>
+<p>To start, a classical brute-force attempt can be parallelized — millions of machines can participate, sharing the work. Grover’s algorithm, on the other hand, <a href="https://arxiv.org/abs/quant-ph/9711070" target="_blank" rel="noopener noreferrer">doesn’t parallelize</a> well because the quadratic speedup disappears over that portion. To wit, a billion quantum computers would still have to do 2^49 iterations each to crack AES-128.</p>
+<p>Then each iteration requires many gates. It’s <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8961201" target="_blank" rel="noopener noreferrer">estimated</a> that these 2^49 operations take roughly 264 noiseless quantum gates. If each of our billion quantum computers could execute a billion noiseless quantum gates per second, then it’d still take 500 years.</p>
+<p>That already sounds more secure, but we’re not done. Quantum computers do not execute noiseless quantum gates: they’re analogue machines. Every operation has a little bit of noise. Does this mean that quantum computing is hopeless? Not at all! There are <a href="https://en.wikipedia.org/wiki/Quantum_error_correction" target="_blank" rel="noopener noreferrer">clever algorithms</a> to turn, say, a million noisy qubits into one less noisy qubit. It doesn’t just add qubits, but also extra gates. How much depends very much on the exact details of the quantum computer.</p>
+<p>It is not inconceivable that in the future there will be quantum computers that effectively execute far more than a billion noiseless gates per second, but it will likely be decades after Shor’s algorithm is practical. This all is a long-winded way of saying that security level 1 seems solid for the foreseeable future.</p>
+<p><strong>Hedging against attacks</strong></p>
+<p>A different reason to pick a higher security level is to hedge against better attacks on the algorithm. This makes a lot of sense, but it is important to note that this isn’t a foolproof strategy:</p>
+<ul>
+	<li>Not all attacks are small improvements. It’s possible that improvements in cryptanalysis break all security levels at once.</li>
+	<li>Higher security levels do not protect against implementation flaws, such as (<a href="https://blog.cloudflare.com/hertzbleed-explained">new</a>) timing vulnerabilities.</li>
+</ul>
+<p>A different aspect, that’s arguably more important than picking a high number, is <strong>crypto agility</strong>: being able to switch to a new algorithm/implementation in case of a break of trouble. Let’s hope that we will not need it, but now we’re going to switch, it’s nice to make it easier in the future.</p>
+<h3>CIRCL is Post-Quantum Enabled</h3>
+<p>We already mentioned CIRCL a few times, it’s our optimized crypto-library for Go whose <a href="https://blog.cloudflare.com/introducing-circl">development we started</a> in 2019. CIRCL already contains support for several post-quantum algorithms such as the KEMs Kyber and SIKE and signature schemes Dilithium and Frodo. The code is up-to-date and compliant with test vectors from the third round. CIRCL is readily usable in Go programs either as a library or natively as part of Go using <a href="https://github.com/cloudflare/go" target="_blank" rel="noopener noreferrer">this fork</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="149" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=715&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=640&amp;h=133&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=715&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=750&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=828&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=1080&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=1280&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=1430&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1013 Embedded Image - GadMcY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448JY3EJ2J19W3F5P0BGRT.png&amp;w=1200&amp;h=250&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="250" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="149" class="pt-portable-image-media"></div>
+</figure>
+<p>One goal of CIRCL is to enable experimentation with post-quantum algorithms in TLS. For instance, we ran a <a href="https://blog.cloudflare.com/kemtls-post-quantum-tls-without-signatures">measurement study</a> to <a href="https://eprint.iacr.org/2021/1019" target="_blank" rel="noopener noreferrer">evaluate</a> the feasibility of the KEMTLS protocol for which we’ve adapted the TLS package of the Go library.</p>
+<p>As an example, this code uses CIRCL to sign a message with eddilithium2, a hybrid signature scheme pairing Ed25519 with Dilithium mode 2.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">package</span><span class="sk-032f62-99ffe4"> main</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "crypto"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "crypto/rand"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "fmt"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "github.com/cloudflare/circl/sign/eddilithium2"</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">func</span><span class="sk-032f62-99ffe4"> main</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> Generating</span><span class="sk-032f62-99ffe4"> random</span><span class="sk-032f62-99ffe4"> keypair.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  pk,</span><span class="sk-032f62-99ffe4"> sk,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> eddilithium2.GenerateKey</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">rand.Reader</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> Signing</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> message.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  msg</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-24292e-fff"> []byte(</span><span class="sk-6f42c1-ffc799">"Signed with CIRCL using "</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> eddilithium2.Scheme</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.Name</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  signature,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> sk.Sign</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">rand.Reader,</span><span class="sk-032f62-99ffe4"> msg,</span><span class="sk-032f62-99ffe4"> crypto.Hash</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">0</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> Verifying</span><span class="sk-032f62-99ffe4"> signature.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  valid</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> eddilithium2.Verify</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pk,</span><span class="sk-032f62-99ffe4"> msg,</span><span class="sk-032f62-99ffe4"> signature[:]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fmt.Printf(</span><span class="sk-6f42c1-ffc799">"Message: %v\n"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> string</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">msg</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fmt.Printf(</span><span class="sk-6f42c1-ffc799">"Signature (%v bytes): %x...\n"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">signature</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> signature[:4]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fmt.Printf(</span><span class="sk-6f42c1-ffc799">"Signature Valid: %v\n"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> valid</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fmt.Printf(</span><span class="sk-6f42c1-ffc799">"Errors: %v\n"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> err</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Message:</span><span class="sk-032f62-99ffe4"> Signed</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> CIRCL</span><span class="sk-032f62-99ffe4"> using</span><span class="sk-032f62-99ffe4"> Ed25519-Dilithium2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-24292e-fff"> (2484 </span><span class="sk-032f62-99ffe4">bytes</span><span class="sk-24292e-fff">): 84d6882a...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-032f62-99ffe4"> Valid:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Errors:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">ni</span><span class="sk-24292e-fff">l</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>As can be seen the application programming interface is the same as the <a href="https://pkg.go.dev/crypto#Signer" target="_blank" rel="noopener noreferrer">crypto.Signer</a> interface from the standard library. Try it out, and we’re happy to hear your <a href="https://github.com/cloudflare/circl/issues/new" target="_blank" rel="noopener noreferrer">feedback</a>.</p>
+<h2>Conclusion</h2>
+<p>This is a big moment for the Internet. From a set of excellent options for post-quantum key agreement, NIST chose Kyber. With it, we can secure the data on the Internet today against quantum adversaries of the future, without compromising on performance.</p>
+<p>On the authentication side, NIST pleasantly surprised us by choosing both Falcon and Dilithium against their earlier statements. This was a great choice, as it will make post-quantum authentication more practical than <a href="https://blog.cloudflare.com/sizing-up-post-quantum-signatures">we expected</a> it would be.</p>
+<p>Together with the cryptography community, we have our work cut out for us: we aim to make the Internet post-quantum secure as fast as possible.</p>
+<p>Want to follow along? Keep an eye on <a href="https://blog.cloudflare.com/tag/post-quantum">this blog</a> or have a look at <a href="https://research.cloudflare.com" target="_blank" rel="noopener noreferrer">research.cloudflare.com</a>.</p>
+<p>Want to help out? We’re <a href="https://www.cloudflare.com/careers/jobs/?title=research+engineer" target="_blank" rel="noopener noreferrer">hiring</a> and open to <a href="https://research.cloudflare.com/outreach/academic-programs/researchers" target="_blank" rel="noopener noreferrer">research visits</a>.</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-j9rwnuqz7" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/2386e5712753504c4306cf41de1633fb?poster=https%3A%2F%2Fcloudflarestream.com%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%2F2386e5712753504c4306cf41de1633fb%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D19s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<p></p>

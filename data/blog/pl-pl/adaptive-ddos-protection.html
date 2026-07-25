@@ -1,0 +1,114 @@
+<p>Każdy zasób internetowy jest wyjątkowy, ma własne zachowania i wzorce ruchu. Na przykład na stronie internetowej można spodziewać się ruchu użytkowników tylko z określonych obszarów geograficznych, a w danej sieci wyłącznie ograniczonego zestawu protokołów.</p>
+<p>Rozumiejąc, że wzorce ruchu każdego zasobu internetowego są inne, opracowaliśmy Adaptive DDoS Protection — system adaptacyjnej ochrony przed DDoS. Adaptive DDoS Protection dołącza do naszego pakietu <a href="https://blog.cloudflare.com/deep-dive-cloudflare-autonomous-edge-ddos-protection">zautomatyzowanych zabezpieczeń przed DDoS</a> i wznosi go na wyższy poziom. Nowy system uczy się unikatowych wzorców ruchu i dostosowuje się do nich, zapewniając ochronę przed wyrafinowanymi atakami DDoS.</p>
+<p>System Adaptive DDoS Protection jest teraz ogólnie dostępny dla klientów korzystających z planu Enterprise:</p>
+<ul>
+	<li><strong>HTTP Adaptive DDoS Protection —</strong> dostępny dla klientów WAF/CDN korzystających z planu Enterprise, którzy mają również subskrypcję usługi Adaptive DDoS Protection.</li>
+	<li><strong>L3/4 Adaptive DDoS Protection —</strong> dostępny dla klientów Magic Transit i Spectrum korzystających z planu Enterprise.</li>
+</ul>
+<h3>Adaptive DDoS Protection uczy się Twoich wzorców ruchu</h3>
+<p>System Adaptive DDoS Protection tworzy profil ruchu na podstawie maksymalnej prędkości ruchu klienta każdego z ostatnich siedmiu dni. Profile są codziennie kalkulowane na nowo na podstawie historii z ostatniego tygodnia. Następnie przechowujemy maksymalne prędkości ruchu odnotowane dla każdej wstępnie zdefiniowanej wartości wymiaru. Każdy profil wykorzystuje jeden wymiar. Wymiary stanowią kraj źródłowy żądania, kraj centrum danych Cloudflare, które otrzymało pakiet IP, agent użytkownika, protokół IP, port docelowy i nie tylko.</p>
+<p>Przykładowo w <a href="https://blog.cloudflare.com/location-aware-ddos-protection">profilu, którego wymiarem jest kraj źródłowy</a>, system odnotuje maksymalne prędkości ruchu z danego kraju, np. 2000 żądań na sekundę (RPS) z Niemiec, 3000 RPS z Francji, 10 000 RPS z Brazylii itd. Ten przykład dotyczy ruchu HTTP, ale Adaptive DDoS Protection profiluje też ruch L3/4 dla naszych klientów korzystających z Magic Transit i Spectrum z planem Enterprise.</p>
+<p>Przy wyliczaniu prędkości maksymalnych bierzemy pod uwagę percentyl 95. Oznacza to, że odnotowujemy wszystkie prędkości maksymalne i odrzucamy najwyższe 5%. Ma to na celu wykluczenie z kalkulacji wartości skrajnie wysokich.</p>
+<p>Kalkulowanie profili ruchu jest przeprowadzane asynchronicznie, co oznacza, że nie powoduje opóźnień w ruchu naszych klientów. Następnie system rozprasza kompaktową reprezentację profilu po naszej sieci, gdzie konsumują ją nasze systemy ochrony przed DDoS w celu wykrywania i łagodzenia ataków DDoS w bardziej ekonomiczny sposób.</p>
+<p>Oprócz profili ruchu system Adaptive DDoS Protection wykorzystuje także generowane prez <a href="https://developers.cloudflare.com/bots/concepts/bot-score/#machine-learning" target="_blank" rel="noopener noreferrer">uczenie maszynowe</a> <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">wskaźniki prawdopodobieństwa, że żądanie pochodzi od bota</a>, jako dodatkowy sygnał pozwalający rozróżnić zautomatyzowany ruch od ruchu użytkowników. Ma to na celu rozróżnienie między faktycznym wzrostem ruchu użytkowników, który odbiega od profilu, a wzrostem zautomatyzowanego i potencjalnie złośliwego ruchu.</p>
+<h3>Gotowy do działania i łatwy w użyciu</h3>
+<p>System Adaptive DDoS Protection działa od razu i automatycznie tworzy profile, a klienci mogą później modyfikować ustawienia według potrzeb za pośrednictwem <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets" target="_blank" rel="noopener noreferrer">zarządzanych reguł DDoS</a>. Klienci mogą zmienić poziom wrażliwości, wykorzystać pola wyrażenia do tworzenia zastąpień (np. wykluczenia <em>tego</em> typu ruchu) i zmienić działanie łagodzące, by dostosować zachowanie systemu do własnych potrzeb i wzorców ruchu.</p>
+<p>Adaptive DDoS Protection dopełnia istniejący system ochrony przed atakami DDoS, który wykorzystuje dynamiczne tworzenie odcisków cyfrowych do wykrywania i łagodzenia ataków DDoS. Systemy współpracują w celu zapewnienia naszym klientom ochrony przed atakami DDoS. Kiedy klienci dodają nowy zasób do Cloudflare, dynamiczne tworzenie odcisków cyfrowych chroni ich automatycznie, nie wymagając żadnych działań użytkownika. Gdy system Adaptive DDoS Protection nauczy się wzorców ruchu użytkowników i utworzy profil, klienci mogą go włączyć w celu zapewnienia dodatkowej warstwy ochrony.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="474" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=715&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=715&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=750&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=828&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1080&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1280&amp;h=849&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1430&amp;h=948&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A screenshot of Cloudflare Adaptive DDoS Protection rules" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BDSTA1SXG8JJ4ADJJQ4.png&amp;w=1920&amp;h=1274&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1274" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="474" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Reguły zawarte w systemie Adaptive DDoS Protection</h3>
+<p>Mamy przyjemność ogłosić, że obecna wersja systemu Adaptive DDoS Protection Cloudflare zawiera następujące funkcje:</p>
+<div id="html-block-k1h" class="html-block">
+	<style>
+		#html-block-k1h .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k1h .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1h .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1h .tg .tg-q2ib {
+			background-color: #CFE2F3;
+			font-family: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1h .tg .tg-u5z2 {
+			font-family: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-q2ib" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Wymiar profilowania</span></th>
+				<th class="tg-q2ib" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dostępność</span></th>
+			</tr>
+			<tr>
+				<th class="tg-q2ib"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Klienci WAF/CDN na planie Enterprise z&nbsp;zaawansowaną ochroną przed DDoS</span></th>
+				<th class="tg-q2ib"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Klienci Magic Transit i&nbsp;Spectrum na planie Enterprise</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Błędy źródła</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Kraj i region adresu IP klienta</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Wkrótce</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Agent użytkownika (globalnie, nie na&nbsp;klienta*)</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Protokół IP</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+			<tr>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Połączenie protokołu IP i&nbsp;portu docelowego</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">❌</span></td>
+				<td class="tg-u5z2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Wkrótce</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>*Funkcja rozpoznająca agenta użytkownika analizuje, uczy się i profiluje wszystkich najważniejszych agentów użytkowników, jakich widzimy w sieci Cloudflare. Ta funkcja pomaga nam wykrywać ataki DDoS wykorzystujące starszych lub niepoprawnie skonfigurowanych agentów użytkownika.</p>
+<p>Za wyjątkiem ochrony przed DDoS rozpoznającej agenta użytkownika wszystkie reguły systemu Adaptive DDoS Protection są wdrażane w trybie dziennika. Klienci mogą obserwować oflagowany ruch, w razie konieczności zmienić wrażliwość i wdrożyć reguły w trybie łagodzenia ryzyka. Szczegółowe instrukcje znajdują się w <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adjust-rules/false-positive" target="_blank" rel="noopener noreferrer">tym przewodniku</a>.</p>
+<h3>Ryzyko ataków DDoS przejdzie do historii</h3>
+<p>Misją Cloudflare jest pomóc budować lepszy Internet. Na tej podstawie powstała wizja zespołu odpowiedzialnego za ochronę przed DDoS — chcemy sprawić, by ryzyko ataków DDoS przeszło do historii. System Adaptive DDoS Protection Cloudflare przybliża nas o jeden krok do realizacji tej wizji. Sprawia, że nasza ochrona przed DDoS jest jeszcze bardziej inteligentna, wyrafinowana i dostosowana do unikatowych wzorców ruchu oraz potrzeb naszych klientów.</p>
+<p>Chcesz dowiedzieć się więcej o systemie Adaptive DDoS Protection Cloudflare? Odwiedź naszą <a href="https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection" target="_blank" rel="noopener noreferrer">witrynę dewelopera</a>.</p>
+<p>Chcesz przejść z obecnego systemu na Adaptive DDoS Protection? Skontaktuj się z zespołem opiekującym się Twoim kontem.</p>
+<p>Nie jesteś jeszcze klientem Cloudflare? <a href="https://www.cloudflare.com/plans/enterprise/discover/contact" target="_blank" rel="noopener noreferrer">Porozmawiaj z jednym z naszych ekspertów</a>.</p>
+<h3>Obejrzyj na Cloudflare TV</h3>

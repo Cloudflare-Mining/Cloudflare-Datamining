@@ -1,16 +1,9 @@
 {
-	"author": {
-		"name": "André Cruz",
-		"url": "http://blog.cloudflare.com/author/andre-cruz/",
-		"sameAs": [
-			"https://twitter.com/edevil"
-		]
-	},
+	"author": {},
 	"headline": "The benefits of serving stale DNS entries when using Consul",
-	"url": "http://blog.cloudflare.com/the-benefits-of-serving-stale-dns-entries-when-using-consul/",
+	"url": "https://blog.cloudflare.com/the-benefits-of-serving-stale-dns-entries-when-using-consul/",
 	"datePublished": "2021-03-08T14:00:00.000Z",
-	"dateModified": "2021-03-08T14:00:01.000Z",
-	"image": "http://blog.cloudflare.com/content/images/2021/03/image15-update.png",
-	"keywords": "DNS, Cache",
+	"dateModified": "2026-07-15T13:25:55.033Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW48QPZKB72PDDYPYCJ8D6AN.png",
 	"description": "We use Consul for service discovery, and we’ve deployed a cluster that spans several of our data centers. We were aware from the start that the DNS query latencies were not great from certain parts of the world that were furthest away from these data centers."
 }

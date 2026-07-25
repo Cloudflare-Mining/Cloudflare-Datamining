@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "我們的帳單處理管道突然變得非常緩慢。罪魁禍首是 ClickHouse 內部一個隱藏的瓶頸",
+	"url": "https://blog.cloudflare.com/zh-tw/clickhouse-query-plan-contention/",
+	"datePublished": "2026-05-14T13:00:00.000Z",
+	"dateModified": "2026-07-15T17:09:54.886Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW4999A46M2F3BCY3QF5F258.png",
+	"description": "當我們 PB 級 ClickHouse 叢集的一次分區調整，導致關鍵帳單作業陷入停滯，而標準監控指標卻毫無異常時，我們不得不深入系統內部尋找答案。本文將回顧我們如何發現 ClickHouse 查詢規劃器中嚴重的鎖競爭問題，並透過提交上游修補程式來修復該問題的完整歷程。"
+}

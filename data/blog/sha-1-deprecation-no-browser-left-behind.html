@@ -1,640 +1,579 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6jypCGxMdIUhzbE8Lm7qLH/94edfb991f368e8d2db9d7342f3c413b/sha-1-deprecation-no-browser-left-behind.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>After December 31, 2015, <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">SSL certificates</a> that use the SHA-1 hash algorithm for their signature will be declared technology non grata on the modern Internet. Google's Chrome browser has already begun displaying a warning for SHA-1 based certs that expire after 2015. Other browsers are mirroring Google and, over the course of 2016, will begin issuing warnings and eventually completely distrust connections to sites using SHA-1 signed certs. And, starting January 1, 2016, you will no longer be able to get a new SHA-1 certificate from most certificate authorities.</p>
-	<p>For the most part, that's a good thing. Prohibitively difficult to forge certificate signatures are part of what keeps encryption systems secure. As computers get faster, the risk that, for any given hashing algorithm, you can forge a certificate with the same signature increases. If an attacker can forge a certificate then they could potentially impersonate the identity of a real site and intercept its encrypted traffic or masquerade as that site.</p>
-	<div class="flex anchor relative">
-		<h3 id="deprecating-old-standards">Deprecating Old Standards</h3>
-		<a href="https://blog.cloudflare.com/#deprecating-old-standards" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This isn't the first time we've been through this exercise. The original hashing algorithm used for most certificate signatures in the early days of the web was MD5. In 2008, researchers demonstrated they were able to create a collision, generating a <a href="https://events.ccc.de/congress/2008/Fahrplan/attachments/1251_md5-collisions-1.0.pdf" target="_blank" rel="noopener noreferrer">forged MD5-signed intermediate certificate that could then be used to impersonate any domain on the Internet</a>. It took browser makers until 2013 to fully deprecate MD5 support and switch to the stronger SHA-1 algorithm. The good news was browsers, back to the first versions of Mozilla and Internet Explorer, supported SHA-1 alongside MD5 so the transition, while still painful, left virtually no one behind.</p>
-	<p>Computers keep getting faster and now SHA-1 is increasingly vulnerable to potential collision attacks. The estimate today is that it would likely cost around USD \$700,000 to generate a SHA-1 collision. By 2021, the price is forecast to fall to just USD \$43,000. There’s concern those estimates are optimistic, if anything. To ensure security, it therefore makes sense for modern browsers to deprecate SHA-1 support and move to the more secure SHA-256 algorithm, also known as SHA-2.</p>
-	<div class="flex anchor relative">
-		<h4 id="sha-2-this-time-its-different">SHA-2: This Time It’s Different</h4>
-		<a href="https://blog.cloudflare.com/#sha-2-this-time-its-different" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Unfortunately, unlike with the deprecation of MD5, where SHA-1 was widely available across even legacy browsers, SHA-2 support is more limited. Windows XP older than Service Pack 3, for instance, has no SHA-2 support. In addition, many less than 5-year-old Android phones (pre-Gingerbread) don't support SHA-2 completely. Given how difficult some carriers make it to upgrade phones, many of these legacy phones are still in use today.</p>
-	<p>In a Silicon Valley tech company, where most employees get a new laptop every year and having a 5-year-old phone is unheard of, this may not seem like a problem. But the Internet is used by billions of people around the world and most of them don’t have the latest technology. To understand the impact, we spent the last few weeks testing browser connections to CloudFlare's network for SHA-2 support. We see approximately 1 trillion page views for more than 2.2 billion unique visitors every month, which gives us a pretty representative sample of global traffic.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11dNe3uCetrBC0oWKoO4js/2b10be60736439b5800f7bf6ffe66202/image_1-1.png" alt="SHA-1/SHA-2 browser support" class="kg-image" width="720" height="564" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="global-sha-2-support-not-equal">Global SHA-2 Support, Not Equal</h4>
-		<a href="https://blog.cloudflare.com/#global-sha-2-support-not-equal" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The seemingly good news is that globally, SHA-2 is supported by at least 98.31% of browsers. Cutting 1.69% off the encrypted Internet may not seem like a lot, but it represents over 37 million people. That's the equivalent of the population of California not having access to encryption unless they upgrade their devices. As SHA-2 only sites proliferate, if these users on SHA-1-only browsers try and access an encrypted site, they’ll see an error page that completely blocks their access.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2l93Kv2fvRmZuSl1gvJNV8/31aa98363b964cdfb0ad48fad767de43/image_2.png" alt="Error page for SHA-1 failure" class="kg-image" width="2052" height="1496" loading="lazy">
-
-	</figure>
-	<p>Now, if it were just a bunch of large enterprises in the United States that refused to get off old versions of Windows XP, then you could make an argument that this is actually a good thing. Unfortunately, the data shows that's not the case. The United States has 99.26% SHA-2 support, making it the 15th most modern browser market (out of more than 190 countries we saw traffic from during our test). In fact, SHA-2 support in Western Europe and North America is universally over 99%.</p>
-	<p>So where isn't SHA-2 supported? Here are the 25 countries with the lowest SHA-2 support:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Country</b></p>
-				</td>
-				<td>
-					<p><b>Percentage of Browsers Without SHA-2 Support</b></p>
-				</td>
+<p>After December 31, 2015, <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">SSL certificates</a> that use the SHA-1 hash algorithm for their signature will be declared technology non grata on the modern Internet. Google's Chrome browser has already begun displaying a warning for SHA-1 based certs that expire after 2015. Other browsers are mirroring Google and, over the course of 2016, will begin issuing warnings and eventually completely distrust connections to sites using SHA-1 signed certs. And, starting January 1, 2016, you will no longer be able to get a new SHA-1 certificate from most certificate authorities.</p>
+<p>For the most part, that's a good thing. Prohibitively difficult to forge certificate signatures are part of what keeps encryption systems secure. As computers get faster, the risk that, for any given hashing algorithm, you can forge a certificate with the same signature increases. If an attacker can forge a certificate then they could potentially impersonate the identity of a real site and intercept its encrypted traffic or masquerade as that site.</p>
+<h3>Deprecating Old Standards</h3>
+<p>This isn't the first time we've been through this exercise. The original hashing algorithm used for most certificate signatures in the early days of the web was MD5. In 2008, researchers demonstrated they were able to create a collision, generating a <a href="https://events.ccc.de/congress/2008/Fahrplan/attachments/1251_md5-collisions-1.0.pdf" target="_blank" rel="noopener noreferrer">forged MD5-signed intermediate certificate that could then be used to impersonate any domain on the Internet</a>. It took browser makers until 2013 to fully deprecate MD5 support and switch to the stronger SHA-1 algorithm. The good news was browsers, back to the first versions of Mozilla and Internet Explorer, supported SHA-1 alongside MD5 so the transition, while still painful, left virtually no one behind.</p>
+<p>Computers keep getting faster and now SHA-1 is increasingly vulnerable to potential collision attacks. The estimate today is that it would likely cost around USD $700,000 to generate a SHA-1 collision. By 2021, the price is forecast to fall to just USD $43,000. There’s concern those estimates are optimistic, if anything. To ensure security, it therefore makes sense for modern browsers to deprecate SHA-1 support and move to the more secure SHA-256 algorithm, also known as SHA-2.</p>
+<h4>SHA-2: This Time It’s Different</h4>
+<p>Unfortunately, unlike with the deprecation of MD5, where SHA-1 was widely available across even legacy browsers, SHA-2 support is more limited. Windows XP older than Service Pack 3, for instance, has no SHA-2 support. In addition, many less than 5-year-old Android phones (pre-Gingerbread) don't support SHA-2 completely. Given how difficult some carriers make it to upgrade phones, many of these legacy phones are still in use today.</p>
+<p>In a Silicon Valley tech company, where most employees get a new laptop every year and having a 5-year-old phone is unheard of, this may not seem like a problem. But the Internet is used by billions of people around the world and most of them don’t have the latest technology. To understand the impact, we spent the last few weeks testing browser connections to CloudFlare's network for SHA-2 support. We see approximately 1 trillion page views for more than 2.2 billion unique visitors every month, which gives us a pretty representative sample of global traffic.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="560" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=715&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=640&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=715&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=750&amp;h=587&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=828&amp;h=649&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=1080&amp;h=846&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=1280&amp;h=1003&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=1430&amp;h=1120&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="SHA-1/SHA-2 browser support" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447SNEMY76W6V47EQB5JC3.png&amp;w=720&amp;h=564&amp;f=webp" data-lightbox-width="720" data-lightbox-height="564" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="560" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h4>Global SHA-2 Support, Not Equal</h4>
+<p>The seemingly good news is that globally, SHA-2 is supported by at least 98.31% of browsers. Cutting 1.69% off the encrypted Internet may not seem like a lot, but it represents over 37 million people. That's the equivalent of the population of California not having access to encryption unless they upgrade their devices. As SHA-2 only sites proliferate, if these users on SHA-1-only browsers try and access an encrypted site, they’ll see an error page that completely blocks their access.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="521" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=715&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=640&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=715&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=750&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=828&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=1080&amp;h=787&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=1280&amp;h=933&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=1430&amp;h=1042&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Error page for SHA-1 failure" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HA22NKYDCY2EBGD9SCDQ.png&amp;w=1920&amp;h=1400&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1400" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="521" class="pt-portable-image-media"></div>
+</figure>
+<p>Now, if it were just a bunch of large enterprises in the United States that refused to get off old versions of Windows XP, then you could make an argument that this is actually a good thing. Unfortunately, the data shows that's not the case. The United States has 99.26% SHA-2 support, making it the 15th most modern browser market (out of more than 190 countries we saw traffic from during our test). In fact, SHA-2 support in Western Europe and North America is universally over 99%.</p>
+<p>So where isn't SHA-2 supported? Here are the 25 countries with the lowest SHA-2 support:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Country</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Percentage of Browsers Without SHA-2 Support</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>China</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.08%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cameroon</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.39%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Yemen</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.25%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Sudan</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.69%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Egypt</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.85%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Libya</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.83%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Ivory Coast</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.67%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nepal</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.52%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Ghana</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.42%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nigeria</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.32%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Ethiopia</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.82%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Iran</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.78%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Tanzania</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.72%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Syria</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.63%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Paraguay</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.53%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Angola</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.50%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Kenya</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.29%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Algeria</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.12%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Bahrain</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.09%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Nicaragua</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.08%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Myanmar</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.01%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Senegal</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.94%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Bangladesh</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.58%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Venezuela</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.58%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Pakistan</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.55%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>We double-checked these numbers with other large Internet providers who had conducted similar surveys and confirmed their results were similar.</p>
-	<p>Unfortunately, this list largely overlaps with lists of the <a href="http://data.worldbank.org/indicator/NY.GDP.PCAP.CD?order=wbapi_data_value_2013+wbapi_data_value&amp;sort=asc" target="_blank" rel="noopener noreferrer">poorest</a>, <a href="https://freedomhouse.org/report/special-reports/worst-worst-2012-worlds-most-repressive-societies" target="_blank" rel="noopener noreferrer">most repressive</a>, and <a href="https://en.wikipedia.org/wiki/List_of_ongoing_armed_conflicts" target="_blank" rel="noopener noreferrer">most war torn</a> countries in the world. In other words, after December 31st most of the encrypted web will be cut off from the most vulnerable populations of Internet users who need encryption the most. And, unfortunately, if we're going to bring the next 2 billion Internet users online, a lot of them are going to be doing so on secondhand Android phones, so this problem isn't going away any time soon.</p>
-	<div class="flex anchor relative">
-		<h4 id="sha-1-fallback">SHA-1 Fallback</h4>
-		<a href="https://blog.cloudflare.com/#sha-1-fallback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The practical solution is to serve SHA-2 signed certificates for modern browsers and fall back to SHA-1 certificates for browsers that cannot support SHA-2. That ensures modern browsers can deprecate SHA-1, but we can continue to support users in the developing world on legacy devices.</p>
-	<p>That's what we have built for CloudFlare's customers. As of today, for all paid CloudFlare customers, we now automatically support SHA-1 fallback. (Free customers' SSL support was already limited to SHA-2 and modern browsers due to the need for SNI.) If you'd prefer not to fall back to SHA-1 you can disable the feature from the Crypto Application in the CloudFlare control panel. This is available for <a href="https://www.cloudflare.com/plans/business" target="_blank" rel="noopener noreferrer">Business</a> and <a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Enterprise</a> customers today, and we’ll be adding support for disabling SHA-1 fallback before the end of the year for Pro customers.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6o4W75kwZYSrfUpzxbaaxr/b64e7059ef7501ac2b42674bc4bac57e/disable-standalone.png" alt="image alt text" class="kg-image" width="1926" height="488" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="who-else-is-falling-back">Who Else Is Falling Back?</h4>
-		<a href="https://blog.cloudflare.com/#who-else-is-falling-back" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare isn't the only company doing this. In order to understand who else is supporting SHA-1 fallback we crawled the world's top 100,000 websites. While it's an exclusive club of sites that support SHA-1 fallback, the results are telling.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6c15d0pQ3ZeJPfsXFcUTGI/1604cc2ea31aeb47662acf6ecc454ff4/facebook_alibaba2.png" alt="image alt text" class="kg-image" width="599" height="211" loading="lazy">
-
-	</figure>
-	<p>For instance, Alibaba, the Chinese Internet commerce giant, supports SHA-1 fallback across many of its sites. That's not surprising given more than 6% of their Chinese customers could not securely buy from their online store if they only supported SHA-2.</p>
-	<p>Facebook also supports SHA-1 fallback across many of their sites. Again, that's not surprising given the company's breadth of user base and ambitions to bring more users online across the developing world.</p>
-	<p>Here is the exclusive club of non-CloudFlare sites in the top-100,000 that support SHA-1 fallback:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Website</b></p>
-				</td>
-				<td>
-					<p><b>Notes</b></p>
-				</td>
+</div>
+<p>We double-checked these numbers with other large Internet providers who had conducted similar surveys and confirmed their results were similar.</p>
+<p>Unfortunately, this list largely overlaps with lists of the <a href="http://data.worldbank.org/indicator/NY.GDP.PCAP.CD?order=wbapi_data_value_2013+wbapi_data_value&amp;sort=asc" target="_blank" rel="noopener noreferrer">poorest</a>, <a href="https://freedomhouse.org/report/special-reports/worst-worst-2012-worlds-most-repressive-societies" target="_blank" rel="noopener noreferrer">most repressive</a>, and <a href="https://en.wikipedia.org/wiki/List_of_ongoing_armed_conflicts" target="_blank" rel="noopener noreferrer">most war torn</a> countries in the world. In other words, after December 31st most of the encrypted web will be cut off from the most vulnerable populations of Internet users who need encryption the most. And, unfortunately, if we're going to bring the next 2 billion Internet users online, a lot of them are going to be doing so on secondhand Android phones, so this problem isn't going away any time soon.</p>
+<h4>SHA-1 Fallback</h4>
+<p>The practical solution is to serve SHA-2 signed certificates for modern browsers and fall back to SHA-1 certificates for browsers that cannot support SHA-2. That ensures modern browsers can deprecate SHA-1, but we can continue to support users in the developing world on legacy devices.</p>
+<p>That's what we have built for CloudFlare's customers. As of today, for all paid CloudFlare customers, we now automatically support SHA-1 fallback. (Free customers' SSL support was already limited to SHA-2 and modern browsers due to the need for SNI.) If you'd prefer not to fall back to SHA-1 you can disable the feature from the Crypto Application in the CloudFlare control panel. This is available for <a href="https://www.cloudflare.com/plans/business" target="_blank" rel="noopener noreferrer">Business</a> and <a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Enterprise</a> customers today, and we’ll be adding support for disabling SHA-1 fallback before the end of the year for Pro customers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="181" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=640&amp;h=162&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=715&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=750&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=828&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=1080&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=1280&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=1430&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image alt text" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D0KCDMYGP45ZXHQXRJEG.png&amp;w=1920&amp;h=486&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="486" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="181" class="pt-portable-image-media"></div>
+</figure>
+<h4>Who Else Is Falling Back?</h4>
+<p>CloudFlare isn't the only company doing this. In order to understand who else is supporting SHA-1 fallback we crawled the world's top 100,000 websites. While it's an exclusive club of sites that support SHA-1 fallback, the results are telling.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="599" height="211" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=599&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=599&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 599w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=640&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=750&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=828&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=1080&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=1198&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 1198w" alt="image alt text" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488PM63J25603W2351ZBE5.png&amp;w=599&amp;h=211&amp;f=webp" data-lightbox-width="599" data-lightbox-height="211" data-astro-cid-7nvefuv6="true" sizes="(min-width: 599px) 599px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="599" height="211" class="pt-portable-image-media"></div>
+</figure>
+<p>For instance, Alibaba, the Chinese Internet commerce giant, supports SHA-1 fallback across many of its sites. That's not surprising given more than 6% of their Chinese customers could not securely buy from their online store if they only supported SHA-2.</p>
+<p>Facebook also supports SHA-1 fallback across many of their sites. Again, that's not surprising given the company's breadth of user base and ambitions to bring more users online across the developing world.</p>
+<p>Here is the exclusive club of non-CloudFlare sites in the top-100,000 that support SHA-1 fallback:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Website</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Notes</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>tmall.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>taobao.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1688.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>etao.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>tmall.hk</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>alitrip.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>taiwan.tmall.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jiyoujia.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>yunos.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Alibaba</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>facebook.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Facebook</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>whatsapp.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Facebook</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fbcdn.net</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Facebook</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>messenger.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Facebook</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fbsbx.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Facebook</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fb.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Facebook</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>sogou.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Primarily Chinese audience</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>voc.com.cn</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Primarily Chinese audience</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>dresslink.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Primarily Chinese audience</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mongodb.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>220-volt.ru</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>infostart.ru</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expires in 2024 (!)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>sailthru.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>invitro.ru</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>relax.by</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>ligabbva.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>deindeal.ch</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>webtatic.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>liftmaster.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jobvite.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>udsm.ac.tz</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>rdvmedicaux.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>univ-nantes.fr</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>l2inc.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>hellweg.de</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>meintrendyhandy.de</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>inweb24.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>planetnatural.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SHA-1 certificate expired</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>CloudFlare, as of today, adds another 4,000 sites of the top 100,000 to this soon-to-be-less-exclusive club.</p>
-	<div class="flex anchor relative">
-		<h4 id="chicken-egg-mozilla">Chicken &amp; Egg: Mozilla</h4>
-		<a href="https://blog.cloudflare.com/#chicken-egg-mozilla" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One example brought home the importance of SHA-1 fallback. Mozilla, the maker of Firefox, has always been a proponent of strong cryptography. Firefox has supported SHA-2 since its first version. As a result, earlier this year they switched their site to an SHA-2 certificate. In retrospect, the results weren't a surprise. The Firefox team has <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387#c6" target="_blank" rel="noopener noreferrer">spoken publicly about the drop in downloads they experienced when they moved mozilla.org to only support SHA-2 certificates</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42K28oUV57ioVVJA6ncoRb/7bb6f415d1328859765c90a7edc91299/image_5.png" alt="Mozilla logo" class="kg-image" width="267" height="272" loading="lazy">
-
-	</figure>
-	<p>It's a classic chicken-and-egg problem: customers with legacy browsers can't upgrade if the site where you download the modern browser requires a modern browser. So, as much as it's convenient for those of us with brand-new MacBooks and 4k monitors to say that everyone should just upgrade their browser, the case of Mozilla proves that's literally impossible if we force an SHA-2 only Internet.</p>
-	<p>We worked with the Mozilla team as we developed our SHA-1 fallback feature. They helped us kick the tires on the feature and ensure that we were able to fingerprint connections to deliver the most secure experience possible based on what the browser could support. In the new year, we'll open source the algorithm we're using so even sites that are not on CloudFlare can properly support SHA-1 fallback.</p>
-	<div class="flex anchor relative">
-		<h4 id="recommendations">Recommendations</h4>
-		<a href="https://blog.cloudflare.com/#recommendations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>What should the industry do? <a href="https://www.facebook.com/notes/alex-stamos/the-sha-1-sunset/10153782990367929" target="_blank" rel="noopener noreferrer">Along with Facebook</a>, we propose the following to ensure the most up-to-date security for modern browsers while responsibly supporting legacy clients that can't support SHA-2. First, modern browsers should continue to remove support for SHA-1 certificates. There is no doubt that their security is in question. If a user is running a modern browser, all connections should require SHA-256 or better for the certificate signature algorithm.</p>
-	<p>Second, we urge the CA/B Forum, the industry group that sets encryption policy for certificate authorities and browsers, to create a new class of certificate. Today certificates come in multiple classes: Domain Validated (DV), which can be issued just by proving someone controls a domain; Organization Validated (OV), which can be issued if the domain is validated and some vetting is done on the organization requesting the certificate; and Extended Validation (EV), which require a more thorough vetting of the organization requesting the certificate.</p>
-	<p>We propose a new Legacy Verified (LV) certificate. These certificates would allow legacy signature protocols, such as SHA-1, and only be issued to organizations that can confirm they properly only issue certs based on modern protocols to modern browsers while falling back for legacy browsers.</p>
-	<p>Finally, the organizations that provide SHA-1 fallback support should commit that if a vulnerability is discovered which allows some form of downgrade attack — where a modern browser can be tricked into receiving a certificate signed with an insecure protocol — and the vulnerability cannot be patched then they will withdraw fallback support. The CA/B Forum should make this a requirement of an organization being issued LV certificates.</p>
-	<p>CloudFlare has worked to ensure that we can continue to responsibly provide SHA-1 support for all our paid customers even after the new year. We believe this is critical for ensuring that we don't cut off the world's most vulnerable populations from access to encrypted content online. If you’re not a CloudFlare customer, and you are worried about supporting legacy browsers, make sure you get yourself an SHA-1 certificate before the end of the year. After that, unless our proposal for LV certificates is adopted, if you want to enable encryption for all Internet users it will be too late.</p>
-	<div class="flex anchor relative">
-		<h4 id="december-23-2015-update">December 23, 2015 Update</h4>
-		<a href="https://blog.cloudflare.com/#december-23-2015-update" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Twitter has indicated their <a href="https://blog.twitter.com/2015/sunsetting-sha-1" target="_blank" rel="noopener noreferrer">backing for the proposal</a> to create LV certs.</p>
 </div>
+<p>CloudFlare, as of today, adds another 4,000 sites of the top 100,000 to this soon-to-be-less-exclusive club.</p>
+<h4>Chicken &amp; Egg: Mozilla</h4>
+<p>One example brought home the importance of SHA-1 fallback. Mozilla, the maker of Firefox, has always been a proponent of strong cryptography. Firefox has supported SHA-2 since its first version. As a result, earlier this year they switched their site to an SHA-2 certificate. In retrospect, the results weren't a surprise. The Firefox team has <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1064387#c6" target="_blank" rel="noopener noreferrer">spoken publicly about the drop in downloads they experienced when they moved mozilla.org to only support SHA-2 certificates</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="267" height="272" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EHGF6BM5EGM7FP32440Q.png&amp;w=267&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EHGF6BM5EGM7FP32440Q.png&amp;w=267&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 267w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EHGF6BM5EGM7FP32440Q.png&amp;w=534&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 534w" alt="Mozilla logo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EHGF6BM5EGM7FP32440Q.png&amp;w=267&amp;h=272&amp;f=webp" data-lightbox-width="267" data-lightbox-height="272" data-astro-cid-7nvefuv6="true" sizes="(min-width: 267px) 267px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="267" height="272" class="pt-portable-image-media"></div>
+</figure>
+<p>It's a classic chicken-and-egg problem: customers with legacy browsers can't upgrade if the site where you download the modern browser requires a modern browser. So, as much as it's convenient for those of us with brand-new MacBooks and 4k monitors to say that everyone should just upgrade their browser, the case of Mozilla proves that's literally impossible if we force an SHA-2 only Internet.</p>
+<p>We worked with the Mozilla team as we developed our SHA-1 fallback feature. They helped us kick the tires on the feature and ensure that we were able to fingerprint connections to deliver the most secure experience possible based on what the browser could support. In the new year, we'll open source the algorithm we're using so even sites that are not on CloudFlare can properly support SHA-1 fallback.</p>
+<h4>Recommendations</h4>
+<p>What should the industry do? <a href="https://www.facebook.com/notes/alex-stamos/the-sha-1-sunset/10153782990367929" target="_blank" rel="noopener noreferrer">Along with Facebook</a>, we propose the following to ensure the most up-to-date security for modern browsers while responsibly supporting legacy clients that can't support SHA-2. First, modern browsers should continue to remove support for SHA-1 certificates. There is no doubt that their security is in question. If a user is running a modern browser, all connections should require SHA-256 or better for the certificate signature algorithm.</p>
+<p>Second, we urge the CA/B Forum, the industry group that sets encryption policy for certificate authorities and browsers, to create a new class of certificate. Today certificates come in multiple classes: Domain Validated (DV), which can be issued just by proving someone controls a domain; Organization Validated (OV), which can be issued if the domain is validated and some vetting is done on the organization requesting the certificate; and Extended Validation (EV), which require a more thorough vetting of the organization requesting the certificate.</p>
+<p>We propose a new Legacy Verified (LV) certificate. These certificates would allow legacy signature protocols, such as SHA-1, and only be issued to organizations that can confirm they properly only issue certs based on modern protocols to modern browsers while falling back for legacy browsers.</p>
+<p>Finally, the organizations that provide SHA-1 fallback support should commit that if a vulnerability is discovered which allows some form of downgrade attack — where a modern browser can be tricked into receiving a certificate signed with an insecure protocol — and the vulnerability cannot be patched then they will withdraw fallback support. The CA/B Forum should make this a requirement of an organization being issued LV certificates.</p>
+<p>CloudFlare has worked to ensure that we can continue to responsibly provide SHA-1 support for all our paid customers even after the new year. We believe this is critical for ensuring that we don't cut off the world's most vulnerable populations from access to encrypted content online. If you’re not a CloudFlare customer, and you are worried about supporting legacy browsers, make sure you get yourself an SHA-1 certificate before the end of the year. After that, unless our proposal for LV certificates is adopted, if you want to enable encryption for all Internet users it will be too late.</p>
+<h4>December 23, 2015 Update</h4>
+<p>Twitter has indicated their <a href="https://blog.twitter.com/2015/sunsetting-sha-1" target="_blank" rel="noopener noreferrer">backing for the proposal</a> to create LV certs.</p>

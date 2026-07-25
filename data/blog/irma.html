@@ -1,46 +1,22 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lPHHwhf2o0ih1VABSasSX/b6ce8a6ec5a20d96a85ccf2d0170fcc0/irma.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Yesterday, we described how Hurricane Irma impacted several Caribbean islands, with the damage including a significant <a href="https://blog.cloudflare.com/the-story-of-two-outages">disruption to Internet access</a>.</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="https://www.accuweather.com/en/weather-news/major-hurricane-irma-likely-to-deliver-destructive-blow-to-florida-this-weekend/70002657">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/15C0Sv2OYS3PGzBuEuNwzR/8de3d21e2fa83117eb3d07ce4f8e216c/irma.jpeg.jpeg" alt="" class="kg-image" width="590" height="332" loading="lazy">
-		</a>
-	</figure>
-	<p>As Irma is now forecast to hit southern Florida as category 5 this weekend with gusty winds reaching up to 155mph, it is also expected that Internet infrastructure in the region will suffer.</p>
-	<p>At the time of writing, we haven’t noticed any decrease in traffic in the region of Miami despite calls to evacuate.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2mOeFVhbXloT1EwcHBx0PD/ee4777b8d1534db18090ddbe48310e65/Screen-Shot-2017-09-09-at-8.23.20-AM.png" alt="" class="kg-image" width="2170" height="574" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="resilient-data-centers">Resilient Data Centers</h3>
-		<a href="https://blog.cloudflare.com/#resilient-data-centers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Contrary to popular belief, <a href="https://en.wikipedia.org/wiki/ARPANET#Debate_on_design_goals" target="_blank" rel="noopener noreferrer">Internet wasn't built for the purpose of resisting a nuclear attack</a>. That doesn't mean that datacenters aren't built to resist catastrophic events.</p>
-	<p>The Miami datacenter housing servers for Cloudflare and other Internet operators is classified as Tier IV. What does this tiering mean? As defined by the ANSI (American National Standards Institute), a <a href="https://journal.uptimeinstitute.com/explaining-uptime-institutes-tier-classification-system" target="_blank" rel="noopener noreferrer">Tier IV datacenter</a> is the stringent classification in term of redundancy of the critical components of a datacenter: power and cooling. It guarantees 99.995% uptime per year, that is only 26 minutes of unavailability. Tier IV datacenters provide this level of uptime by being connected to separate power grids, allowing their customers to connect their devices to both of these grids. They also provide fuel-powered backup generators, which can themselves be made redundant, for up to 96 hours of autonomy.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TRBQ9ONCW5zs2KdjTJZ38/0baac386d083c01e9667b3ecb0ac80a1/tier-4-data-center.jpg" alt="" class="kg-image" width="640" height="446" loading="lazy">
-
-	</figure>
-	<p>Data center facilities have already taken precautionary measures during these last days, one of them contacting their customers with the following (excerpt):</p>
-	<ul>
-		<li>
-			<p><i>The generators have been tested, fuel tanks are full, levels verified.</i></p>
-		</li>
-		<li>
-			<p><i>Special arrangements have been made to make sure staff is available on site as necessary to maintain operability standards.</i></p>
-		</li>
-		<li>
-			<p><i>We will secure hotel rooms near the sites, and have cots, MREs, and other emergency supplies on site should the situation become extreme.</i></p>
-		</li>
-	</ul>
-	<p>Due to their importance in Internet infrastructure, Tier IV datacenters also have the most available connectivity to the Internet. This is the case for our Miami data center, which is connected to multiple Tier 1 transit providers and Internet Exchanges and will provide backup routes in case of an outage with a particular infrastructure.</p>
-	<p>As a last resort, in the event our Miami datacenter would be taken offline, our Anycast routing will smoothly reroute packets to our nearest data centers in the United States: Tampa, Atlanta and Ashburn (Washington DC).</p>
-	<p>Our technical teams will take all the necessary steps to ensure our services stay online during these unfortunate events. We’d like to remind our users to follow all precautions, and <a href="http://www.floridadisaster.org/info/knowyourzone.htm" target="_blank" rel="noopener noreferrer">evacuate the regions as advised by the local authorities</a>.</p>
-</div>
+<p>Yesterday, we described how Hurricane Irma impacted several Caribbean islands, with the damage including a significant <a href="https://blog.cloudflare.com/the-story-of-two-outages">disruption to Internet access</a>.</p>
+<p>As Irma is now forecast to hit southern Florida as category 5 this weekend with gusty winds reaching up to 155mph, it is also expected that Internet infrastructure in the region will suffer.</p>
+<p>At the time of writing, we haven’t noticed any decrease in traffic in the region of Miami despite calls to evacuate.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="189" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=715&amp;h=189&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=640&amp;h=169&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=715&amp;h=189&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=750&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=828&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=1080&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=1280&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=1430&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Hurricane Irma Embedded Image - TsB8qa" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HRG3DETFP0SBF9G1Y3Y6.png&amp;w=1920&amp;h=508&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="508" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="189" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Resilient Data Centers</h3>
+<p>Contrary to popular belief, <a href="https://en.wikipedia.org/wiki/ARPANET#Debate_on_design_goals" target="_blank" rel="noopener noreferrer">Internet wasn't built for the purpose of resisting a nuclear attack</a>. That doesn't mean that datacenters aren't built to resist catastrophic events.</p>
+<p>The Miami datacenter housing servers for Cloudflare and other Internet operators is classified as Tier IV. What does this tiering mean? As defined by the ANSI (American National Standards Institute), a <a href="https://journal.uptimeinstitute.com/explaining-uptime-institutes-tier-classification-system" target="_blank" rel="noopener noreferrer">Tier IV datacenter</a> is the stringent classification in term of redundancy of the critical components of a datacenter: power and cooling. It guarantees 99.995% uptime per year, that is only 26 minutes of unavailability. Tier IV datacenters provide this level of uptime by being connected to separate power grids, allowing their customers to connect their devices to both of these grids. They also provide fuel-powered backup generators, which can themselves be made redundant, for up to 96 hours of autonomy.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="446" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485S3V5N8KVWFTE3Y09KEP.jpg&amp;w=640&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485S3V5N8KVWFTE3Y09KEP.jpg&amp;w=640&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485S3V5N8KVWFTE3Y09KEP.jpg&amp;w=750&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485S3V5N8KVWFTE3Y09KEP.jpg&amp;w=828&amp;h=577&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485S3V5N8KVWFTE3Y09KEP.jpg&amp;w=1080&amp;h=753&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485S3V5N8KVWFTE3Y09KEP.jpg&amp;w=1280&amp;h=892&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="Hurricane Irma Embedded Image - fN6Ykn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485S3V5N8KVWFTE3Y09KEP.jpg&amp;w=640&amp;h=446&amp;f=webp" data-lightbox-width="640" data-lightbox-height="446" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="446" class="pt-portable-image-media"></div>
+</figure>
+<p>Data center facilities have already taken precautionary measures during these last days, one of them contacting their customers with the following (excerpt):</p>
+<ul>
+	<li><em>The generators have been tested, fuel tanks are full, levels verified.</em></li>
+	<li><em>Special arrangements have been made to make sure staff is available on site as necessary to maintain operability standards.</em></li>
+	<li><em>We will secure hotel rooms near the sites, and have cots, MREs, and other emergency supplies on site should the situation become extreme.</em></li>
+</ul>
+<p>Due to their importance in Internet infrastructure, Tier IV datacenters also have the most available connectivity to the Internet. This is the case for our Miami data center, which is connected to multiple Tier 1 transit providers and Internet Exchanges and will provide backup routes in case of an outage with a particular infrastructure.</p>
+<p>As a last resort, in the event our Miami datacenter would be taken offline, our Anycast routing will smoothly reroute packets to our nearest data centers in the United States: Tampa, Atlanta and Ashburn (Washington DC).</p>
+<p>Our technical teams will take all the necessary steps to ensure our services stay online during these unfortunate events. We’d like to remind our users to follow all precautions, and <a href="http://www.floridadisaster.org/info/knowyourzone.htm" target="_blank" rel="noopener noreferrer">evacuate the regions as advised by the local authorities</a>.</p>

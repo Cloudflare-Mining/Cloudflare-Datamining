@@ -1,113 +1,62 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6pQz6oB0VI71VeS3rKfHn2/f9ee1ae93fb8515fa1f06f24f3b4c998/radar-routing.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Routing is one of the most critical operations of the Internet. Routing decides how and where the Internet traffic should flow from the source to the destination, and can be categorized into two major types: intra-domain routing and inter-domain routing. Intra-domain routing handles making decisions on how individual packets should be routed among the servers and routers within an organization/network. When traffic reaches the edge of a network, the inter-domain routing kicks in to decide what the next hop is and forward the traffic along to the corresponding networks. <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">Border Gateway Protocol</a> (BGP) is the de facto inter-domain routing protocol used on the Internet.</p>
-	<p>Today, we are introducing another section on Cloudflare Radar: the <a href="https://radar.cloudflare.com/routing" target="_blank" rel="noopener noreferrer">Routing</a> page, which focuses on monitoring the BGP messages exchanged to extract and present insights on the IP prefixes, individual networks, countries, and the Internet overall. The new routing data allows users to quickly examine routing status of the Internet, examine secure routing protocol deployment for a country, identify routing anomalies, validate IP block reachability and much more from globally distributed vantage points.</p>
-	<p>It’s a detailed view of how the Internet itself holds together.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zxLtx3iFn9UlEBkUZWhjR/5e6b2a6f4bb10662875dbc83b89375c6/image6-4.png" alt="" class="kg-image" width="1999" height="1232" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="collecting-routing-statistics">Collecting routing statistics</h2>
-		<a href="https://blog.cloudflare.com/#collecting-routing-statistics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Internet consists of tens of thousands of interconnected organizations. Each organization manages its own internal networking infrastructure autonomously, and is referred to as an autonomous system (AS). ASes establish connectivity among each other and exchange routing information via BGP messages to form the current Internet.</p>
-	<p>When we open the Radar Routing page the “Routing Statistics” block provides a quick glance on the sizes and status of an autonomous system (AS), a country, or the Internet overall. The routing statistics component contains the following count information:</p>
-	<ul>
-		<li>
-			<p>The number of ASes on the Internet or registered from a given country;</p>
-		</li>
-		<li>
-			<p>The number of distinct prefixes and the routes toward them observed on the global routing table, worldwide, by country, or by AS;</p>
-		</li>
-		<li>
-			<p>The number of routes categorized by Resource Public Key Infrastructure (RPKI) validation results (valid, invalid, or unknown).</p>
-		</li>
-	</ul>
-	<p>We also show the breakdown of these numbers for IPv4 and IPv6 separately, so users may have a better understanding of such information with respect to different IP protocols.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Y2m16cdOzvg2PrSIXE8iy/194cb2be2903da4723d9e4826023714e/image5-3.png" alt="" class="kg-image" width="1014" height="405" loading="lazy">
-
-	</figure>
-	<p>For a given network, we also show the BGP announcements volume chart for the past week as well as other basic information like network name, registration country, estimated user count, and sibling networks.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1i5Z8LS0bHW3QZPSJJhUzP/57957224e6101e54d95fe0e45da34039/image7.png" alt="" class="kg-image" width="1100" height="630" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="identifying-routing-anomalies">Identifying routing anomalies</h2>
-		<a href="https://blog.cloudflare.com/#identifying-routing-anomalies" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>BGP as a routing protocol suffers from a number of <a href="https://blog.cloudflare.com/is-bgp-safe-yet-rpki-routing-security-initiative">security weaknesses</a>. In the new Routing page we consolidate the <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar">BGP route leaks</a> and BGP hijacks detection results in one single place, showing the relevant detected events for any given network or globally.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1pro2exMMo1OOpmQNAB6E2/b4be157c3df4165e20d9c0df7e3e1552/image1-11.png" alt="" class="kg-image" width="1256" height="1055" loading="lazy">
-
-	</figure>
-	<p>The BGP Route Leaks table shows the <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar">detected BGP route leak events</a>. Each entry in the table contains the information about the related ASes of the leak event, start and end time, as well as other numeric statistics that reflect the scale and impact of the event. The BGP Origin Hijacks table shows the detected potential <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking" target="_blank" rel="noopener noreferrer">BGP origin hijacks</a>. Apart from the relevant ASes, time, and impact information, we also show the key evidence that we collected for each event to provide additional context on why and how likely one event being a BGP hijack.</p>
-	<p>With this release, we introduce another anomaly detection: RPKI Invalid <a href="https://www.cs.colostate.edu/~massey/pubs/conf/massey_imw01.pdf" target="_blank" rel="noopener noreferrer">Multiple Origin AS (MOAS)</a> is one type of routing conflict where multiple networks (ASes) originate the same IP prefixes at the same time, which goes against <a href="https://datatracker.ietf.org/doc/html/rfc1930#section-7" target="_blank" rel="noopener noreferrer">the best practice recommendation</a>. Our system examines the most recent global routing tables and identifies MOASes on the routing tables. With the help of <a href="https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure" target="_blank" rel="noopener noreferrer">Resource Public Key Infrastructure (RPKI)</a>, we can further identify MOAS events that have origins that were proven RPKI invalid, which are less likely to be <a href="https://www.usenix.org/system/files/sec22-qin.pdf" target="_blank" rel="noopener noreferrer">legitimate cases</a>. Users and operators can quickly identify such anomalies relevant to the networks of interest and take actions accordingly.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/35iYJXb43qkHHrwPmjaDfd/a6f7a8dd556fa19922e9c5a6a3e17dd4/image8.png" alt="" class="kg-image" width="1270" height="609" loading="lazy">
-
-	</figure>
-	<p>The Routing page will be the permanent home for all things BGP and routing data in the future; we will gradually introduce more anomaly detections and improve our pipeline to provide more security insights.</p>
-	<div class="flex anchor relative">
-		<h2 id="examining-routing-assets-and-connectivity">Examining routing assets and connectivity</h2>
-		<a href="https://blog.cloudflare.com/#examining-routing-assets-and-connectivity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Apart from examining the overall routing statistics and anomalies, we also gather information on the routing assets (IP prefixes for a network and networks for a country) and networks’ connectivity.</p>
-	<p>Tens of thousands autonomous systems (ASes) connect to each other to form the current Internet. The ASes differ in size and operate in different geolocations. Generally, larger networks are more well-connected and considered “upstream” and smaller networks are less connected and considered “downstream” on the Internet. Below is an example connectivity diagram showing how two smaller networks may connect to each other. AS1 announces its IP prefixes to its upstream providers and propagates upwards until it reaches the large networks AS3 and <code>AS4</code>, and then the route propagates downstream to smaller networks until it reaches AS6.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6T5ihQQzQjHUqEx25twDLa/a26decef0f209c733e2ca2c039a61d94/image4-5.png" alt="" class="kg-image" width="1666" height="681" loading="lazy">
-
-	</figure>
-	<p>In the routing page, we examine what IP prefixes any given AS originates, as well as the interconnections among ASes. We show the full list of IP prefixes originated for any given AS, including the breakdown lists by RPKI validation status. We also show the detected connectivity among other ASes categorized into upstream, downstream and peering connections. Users can easily search for any ASes upstream, downstream, or peers.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pT2PBWcRIhpIRT4HVovXZ/f8486a73af2e7d9058105467de16746f/image3-4.png" alt="" class="kg-image" width="1315" height="899" loading="lazy">
-
-	</figure>
-	<p>For a given country, we show the full list of networks registered in the country, sorted by the number of IP prefixes originated from the corresponding networks. This allows users to quickly glance and find networks from any given country. The table is also searchable by network name or AS number.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1URRi90NGshwcyBWIu58cP/3b9cef1364f2341a2a9bff13ef39489f/image2-14.png" alt="" class="kg-image" width="1102" height="818" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="routing-data-api-access">Routing data API access</h2>
-		<a href="https://blog.cloudflare.com/#routing-data-api-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Like all the other data, the Cloudflare Radar Routing data is powered by our developer API. The data API is freely available under <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)</a> license. In the following table, we list all of our data APIs available at launch. As we improve the routing section, we will introduce more APIs in the future.</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>Routing is one of the most critical operations of the Internet. Routing decides how and where the Internet traffic should flow from the source to the destination, and can be categorized into two major types: intra-domain routing and inter-domain routing. Intra-domain routing handles making decisions on how individual packets should be routed among the servers and routers within an organization/network. When traffic reaches the edge of a network, the inter-domain routing kicks in to decide what the next hop is and forward the traffic along to the corresponding networks. <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">Border Gateway Protocol</a> (BGP) is the de facto inter-domain routing protocol used on the Internet.</p>
+<p>Today, we are introducing another section on Cloudflare Radar: the <a href="https://radar.cloudflare.com/routing" target="_blank" rel="noopener noreferrer">Routing</a> page, which focuses on monitoring the BGP messages exchanged to extract and present insights on the IP prefixes, individual networks, countries, and the Internet overall. The new routing data allows users to quickly examine routing status of the Internet, examine secure routing protocol deployment for a country, identify routing anomalies, validate IP block reachability and much more from globally distributed vantage points.</p>
+<p>It’s a detailed view of how the Internet itself holds together.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="441" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=640&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=715&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=750&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=828&amp;h=511&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=1080&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=1280&amp;h=789&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=1430&amp;h=882&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - KT3BRn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493MZ19P796D818SMW1NXP.png&amp;w=1920&amp;h=1183&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1183" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="441" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>Collecting routing statistics</h2>
+<p>The Internet consists of tens of thousands of interconnected organizations. Each organization manages its own internal networking infrastructure autonomously, and is referred to as an autonomous system (AS). ASes establish connectivity among each other and exchange routing information via BGP messages to form the current Internet.</p>
+<p>When we open the Radar Routing page the “Routing Statistics” block provides a quick glance on the sizes and status of an autonomous system (AS), a country, or the Internet overall. The routing statistics component contains the following count information:</p>
+<ul>
+	<li>The number of ASes on the Internet or registered from a given country;</li>
+	<li>The number of distinct prefixes and the routes toward them observed on the global routing table, worldwide, by country, or by AS;</li>
+	<li>The number of routes categorized by Resource Public Key Infrastructure (RPKI) validation results (valid, invalid, or unknown).</li>
+</ul>
+<p>We also show the breakdown of these numbers for IPv4 and IPv6 separately, so users may have a better understanding of such information with respect to different IP protocols.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="286" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=715&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=640&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=715&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=750&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=828&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=1080&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=1280&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=1430&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - 009fnw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SZYVKY4AWX8Z4FXH5SJ7.png&amp;w=1014&amp;h=405&amp;f=webp" data-lightbox-width="1014" data-lightbox-height="405" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="286" class="pt-portable-image-media"></div>
+</figure>
+<p>For a given network, we also show the BGP announcements volume chart for the past week as well as other basic information like network name, registration country, estimated user count, and sibling networks.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="410" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=715&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=640&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=715&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=750&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=828&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=1080&amp;h=619&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=1280&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=1430&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - l4hGFb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RC5KMZ5E1VQZK3FY5STG.png&amp;w=1100&amp;h=630&amp;f=webp" data-lightbox-width="1100" data-lightbox-height="630" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="410" class="pt-portable-image-media"></div>
+</figure>
+<h2>Identifying routing anomalies</h2>
+<p>BGP as a routing protocol suffers from a number of <a href="https://blog.cloudflare.com/is-bgp-safe-yet-rpki-routing-security-initiative">security weaknesses</a>. In the new Routing page we consolidate the <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar">BGP route leaks</a> and BGP hijacks detection results in one single place, showing the relevant detected events for any given network or globally.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="601" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=640&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=750&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=828&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=1080&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=1280&amp;h=1076&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=1430&amp;h=1202&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - Ykfn2D" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V5R7M4H6GG7PZC2QNT3X.png&amp;w=1256&amp;h=1055&amp;f=webp" data-lightbox-width="1256" data-lightbox-height="1055" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="601" class="pt-portable-image-media"></div>
+</figure>
+<p>The BGP Route Leaks table shows the <a href="https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar">detected BGP route leak events</a>. Each entry in the table contains the information about the related ASes of the leak event, start and end time, as well as other numeric statistics that reflect the scale and impact of the event. The BGP Origin Hijacks table shows the detected potential <a href="https://www.cloudflare.com/learning/security/glossary/bgp-hijacking" target="_blank" rel="noopener noreferrer">BGP origin hijacks</a>. Apart from the relevant ASes, time, and impact information, we also show the key evidence that we collected for each event to provide additional context on why and how likely one event being a BGP hijack.</p>
+<p>With this release, we introduce another anomaly detection: RPKI Invalid <a href="https://www.cs.colostate.edu/~massey/pubs/conf/massey_imw01.pdf" target="_blank" rel="noopener noreferrer">Multiple Origin AS (MOAS)</a> is one type of routing conflict where multiple networks (ASes) originate the same IP prefixes at the same time, which goes against <a href="https://datatracker.ietf.org/doc/html/rfc1930#section-7" target="_blank" rel="noopener noreferrer">the best practice recommendation</a>. Our system examines the most recent global routing tables and identifies MOASes on the routing tables. With the help of <a href="https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure" target="_blank" rel="noopener noreferrer">Resource Public Key Infrastructure (RPKI)</a>, we can further identify MOAS events that have origins that were proven RPKI invalid, which are less likely to be <a href="https://www.usenix.org/system/files/sec22-qin.pdf" target="_blank" rel="noopener noreferrer">legitimate cases</a>. Users and operators can quickly identify such anomalies relevant to the networks of interest and take actions accordingly.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="343" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=715&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=640&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=715&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=750&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=828&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=1080&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=1280&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=1430&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - DeAuND" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S44AXDMW5GKY3P6TQD49.png&amp;w=1270&amp;h=609&amp;f=webp" data-lightbox-width="1270" data-lightbox-height="609" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="343" class="pt-portable-image-media"></div>
+</figure>
+<p>The Routing page will be the permanent home for all things BGP and routing data in the future; we will gradually introduce more anomaly detections and improve our pipeline to provide more security insights.</p>
+<h2>Examining routing assets and connectivity</h2>
+<p>Apart from examining the overall routing statistics and anomalies, we also gather information on the routing assets (IP prefixes for a network and networks for a country) and networks’ connectivity.</p>
+<p>Tens of thousands autonomous systems (ASes) connect to each other to form the current Internet. The ASes differ in size and operate in different geolocations. Generally, larger networks are more well-connected and considered “upstream” and smaller networks are less connected and considered “downstream” on the Internet. Below is an example connectivity diagram showing how two smaller networks may connect to each other. AS1 announces its IP prefixes to its upstream providers and propagates upwards until it reaches the large networks AS3 and <code>AS4</code>, and then the route propagates downstream to smaller networks until it reaches AS6.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="292" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=640&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=750&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=828&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=1080&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=1280&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=1430&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - TuhWlP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485KQX9FYS4CCVA1NSHBXY.png&amp;w=1666&amp;h=681&amp;f=webp" data-lightbox-width="1666" data-lightbox-height="681" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="292" class="pt-portable-image-media"></div>
+</figure>
+<p>In the routing page, we examine what IP prefixes any given AS originates, as well as the interconnections among ASes. We show the full list of IP prefixes originated for any given AS, including the breakdown lists by RPKI validation status. We also show the detected connectivity among other ASes categorized into upstream, downstream and peering connections. Users can easily search for any ASes upstream, downstream, or peers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="489" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=715&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=640&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=715&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=750&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=828&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=1080&amp;h=739&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=1280&amp;h=875&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=1430&amp;h=978&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - GRIU4R" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KMX7F0W6G4V2D7XFKHJ.png&amp;w=1315&amp;h=899&amp;f=webp" data-lightbox-width="1315" data-lightbox-height="899" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="489" class="pt-portable-image-media"></div>
+</figure>
+<p>For a given country, we show the full list of networks registered in the country, sorted by the number of IP prefixes originated from the corresponding networks. This allows users to quickly glance and find networks from any given country. The table is also searchable by network name or AS number.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="531" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=715&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=640&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=715&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=750&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=828&amp;h=615&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=1080&amp;h=802&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=1280&amp;h=951&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=1430&amp;h=1062&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1965 Embedded Image - 7oPdTs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44K9KX243DT3MVMBDP4RTE.png&amp;w=1102&amp;h=818&amp;f=webp" data-lightbox-width="1102" data-lightbox-height="818" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="531" class="pt-portable-image-media"></div>
+</figure>
+<h2>Routing data API access</h2>
+<p>Like all the other data, the Cloudflare Radar Routing data is powered by our developer API. The data API is freely available under <a href="https://creativecommons.org/licenses/by-nc/4.0" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)</a> license. In the following table, we list all of our data APIs available at launch. As we improve the routing section, we will introduce more APIs in the future.</p>
+<div id="html-block-k2i" class="html-block">
+	<style>
+		#html-block-k2i .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k2i .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -120,7 +69,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k2i .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -134,23 +83,23 @@
 			word-break: normal;
 		}
 
-		.tg .tg-baqh {
+		#html-block-k2i .tg .tg-baqh {
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-zb5k {
+		#html-block-k2i .tg .tg-zb5k {
 			color: #15C;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k2i .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">API </span></th>
@@ -187,68 +136,59 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Routing information</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="example-1-lookup-origin-as-for-a-given-prefix-with-curl">Example 1: lookup origin AS for a given prefix with cURL</h3>
-		<a href="https://blog.cloudflare.com/#example-1-lookup-origin-as-for-a-given-prefix-with-curl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Cloudflare Radar <a href="https://developers.cloudflare.com/api/operations/radar-get-bgp-pfx2as" target="_blank" rel="noopener noreferrer">prefix-to-origin mapping API</a> returns the matching prefix-origin pairs observed on the global routing tables, allowing users to quickly examine the networks that originate a given prefix or listing all the prefixes a network originates.</p>
-	<p>In this example, we ask of “which network(s) originated the prefix 1.1.1.0/24?” using the following cURL command:</p>
-	<pre class="language-curl"><code class="language-curl">curl --request GET \
-  --url "https://api.cloudflare.com/client/v4/radar/bgp/routes/pfx2as?prefix=1.1.1.0/24" \
-  --header 'Content-Type: application/json' \
---header "Authorization: Bearer YOUR_TOKEN"</code></pre>
-	<p>The returned JSON result shows that Cloudflare (AS13335) originates the prefix <code>1.1.1.0/24</code> and it is a RPKI valid origin. It also returns the meta information such as the UTC timestamp of the query as well as when the dataset is last updated (<code>data_time</code> field).</p>
-	<pre class="language-curl"><code class="language-curl">{
-  "success": true,
-  "errors": [],
-  "result": {
-    "prefix_origins": [
-      {
-        "origin": 13335,
-        "peer_count": 82,
-        "prefix": "1.1.1.0/24",
-        "rpki_validation": "Valid"
-      }
-    ],
-    "meta": {
-      "data_time": "2023-07-24T16:00:00",
-      "query_time": "2023-07-24T18:04:55",
-      "total_peers": 82
-    }
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="example-2-integrate-radar-api-into-command-line-tool">Example 2: integrate Radar API into command-line tool</h3>
-		<a href="https://blog.cloudflare.com/#example-2-integrate-radar-api-into-command-line-tool" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://github.com/bgpkit/monocle" target="_blank" rel="noopener noreferrer">BGPKIT monocle</a> is an open-source command-line application that provides multiple utility functions like searching BGP messages on public archives, network lookup by name, RPKI validation status for a given IP prefix, etc.</p>
-	<p>By <a href="https://github.com/bgpkit/monocle/pull/50" target="_blank" rel="noopener noreferrer">integrating Cloudflare Radar APIs into monocle</a>, users can now quickly lookup routing statistics or prefix-to-origin mapping by running <code>monocle radar stats [QUERY]</code> and <code>monocle radar pfx2as</code> commands.</p>
-	<pre class="language-monocle"><code class="language-monocle">➜  monocle radar stats   
-┌─────────────┬─────────┬──────────┬─────────────────┬───────────────┬─────────────────┐
-│ scope       │ origins │ prefixes │ rpki_valid      │ rpki_invalid  │ rpki_unknown    │
-├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤
-│ global      │ 81769   │ 1204488  │ 551831 (45.38%) │ 15652 (1.29%) │ 648462 (53.33%) │
-├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤
-│ global ipv4 │ 74990   │ 1001973  │ 448170 (44.35%) │ 11879 (1.18%) │ 550540 (54.48%) │
-├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤
-│ global ipv6 │ 31971   │ 202515   │ 103661 (50.48%) │ 3773 (1.84%)  │ 97922 (47.68%)  │
-└─────────────┴─────────┴──────────┴─────────────────┴───────────────┴─────────────────┘
-
-➜  monocle radar pfx2as 1.1.1.0/24
-┌────────────┬─────────┬───────┬───────────────┐
-│ prefix     │ origin  │ rpki  │ visibility    │
-├────────────┼─────────┼───────┼───────────────┤
-│ 1.1.1.0/24 │ as13335 │ valid │ high (98.78%) │
-└────────────┴─────────┴───────┴───────────────┘</code></pre>
-	<p>Visit <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> for additional insights around (Internet disruptions, routing issues, Internet traffic trends, attacks, Internet quality, etc.). Follow us on social media at <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a> (Twitter), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer">radar.cloudflare.com</a> (Bluesky), or contact us via <a href="https://blog.cloudflare.com/#">e-mail</a>.</p>
+	</table>
 </div>
+<h3>Example 1: lookup origin AS for a given prefix with cURL</h3>
+<p>The Cloudflare Radar <a href="https://developers.cloudflare.com/api/operations/radar-get-bgp-pfx2as" target="_blank" rel="noopener noreferrer">prefix-to-origin mapping API</a> returns the matching prefix-origin pairs observed on the global routing tables, allowing users to quickly examine the networks that originate a given prefix or listing all the prefixes a network originates.</p>
+<p>In this example, we ask of “which network(s) originated the prefix 1.1.1.0/24?” using the following cURL command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl --request GET \</span></span>
+<span class="line"><span>  --url "https://api.cloudflare.com/client/v4/radar/bgp/routes/pfx2as?prefix=1.1.1.0/24" \</span></span>
+<span class="line"><span>  --header 'Content-Type: application/json' \</span></span>
+<span class="line"><span>--header "Authorization: Bearer YOUR_TOKEN"</span></span></code></pre>
+</div>
+<p>The returned JSON result shows that Cloudflare (AS13335) originates the prefix <code>1.1.1.0/24</code> and it is a RPKI valid origin. It also returns the meta information such as the UTC timestamp of the query as well as when the dataset is last updated (<code>data_time</code> field).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>{</span></span>
+<span class="line"><span>  "success": true,</span></span>
+<span class="line"><span>  "errors": [],</span></span>
+<span class="line"><span>  "result": {</span></span>
+<span class="line"><span>    "prefix_origins": [</span></span>
+<span class="line"><span>      {</span></span>
+<span class="line"><span>        "origin": 13335,</span></span>
+<span class="line"><span>        "peer_count": 82,</span></span>
+<span class="line"><span>        "prefix": "1.1.1.0/24",</span></span>
+<span class="line"><span>        "rpki_validation": "Valid"</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span>    ],</span></span>
+<span class="line"><span>    "meta": {</span></span>
+<span class="line"><span>      "data_time": "2023-07-24T16:00:00",</span></span>
+<span class="line"><span>      "query_time": "2023-07-24T18:04:55",</span></span>
+<span class="line"><span>      "total_peers": 82</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<h3>Example 2: integrate Radar API into command-line tool</h3>
+<p><a href="https://github.com/bgpkit/monocle" target="_blank" rel="noopener noreferrer">BGPKIT monocle</a> is an open-source command-line application that provides multiple utility functions like searching BGP messages on public archives, network lookup by name, RPKI validation status for a given IP prefix, etc.</p>
+<p>By <a href="https://github.com/bgpkit/monocle/pull/50" target="_blank" rel="noopener noreferrer">integrating Cloudflare Radar APIs into monocle</a>, users can now quickly lookup routing statistics or prefix-to-origin mapping by running <code>monocle radar stats [QUERY]</code> and <code>monocle radar pfx2as</code> commands.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>➜  monocle radar stats   </span></span>
+<span class="line"><span>┌─────────────┬─────────┬──────────┬─────────────────┬───────────────┬─────────────────┐</span></span>
+<span class="line"><span>│ scope       │ origins │ prefixes │ rpki_valid      │ rpki_invalid  │ rpki_unknown    │</span></span>
+<span class="line"><span>├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤</span></span>
+<span class="line"><span>│ global      │ 81769   │ 1204488  │ 551831 (45.38%) │ 15652 (1.29%) │ 648462 (53.33%) │</span></span>
+<span class="line"><span>├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤</span></span>
+<span class="line"><span>│ global ipv4 │ 74990   │ 1001973  │ 448170 (44.35%) │ 11879 (1.18%) │ 550540 (54.48%) │</span></span>
+<span class="line"><span>├─────────────┼─────────┼──────────┼─────────────────┼───────────────┼─────────────────┤</span></span>
+<span class="line"><span>│ global ipv6 │ 31971   │ 202515   │ 103661 (50.48%) │ 3773 (1.84%)  │ 97922 (47.68%)  │</span></span>
+<span class="line"><span>└─────────────┴─────────┴──────────┴─────────────────┴───────────────┴─────────────────┘</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>➜  monocle radar pfx2as 1.1.1.0/24</span></span>
+<span class="line"><span>┌────────────┬─────────┬───────┬───────────────┐</span></span>
+<span class="line"><span>│ prefix     │ origin  │ rpki  │ visibility    │</span></span>
+<span class="line"><span>├────────────┼─────────┼───────┼───────────────┤</span></span>
+<span class="line"><span>│ 1.1.1.0/24 │ as13335 │ valid │ high (98.78%) │</span></span>
+<span class="line"><span>└────────────┴─────────┴───────┴───────────────┘</span></span></code></pre>
+</div>
+<p>Visit <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> for additional insights around (Internet disruptions, routing issues, Internet traffic trends, attacks, Internet quality, etc.). Follow us on social media at <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">@CloudflareRadar</a> (Twitter), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer">https://noc.social/@cloudflareradar</a> (Mastodon), and <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer">radar.cloudflare.com</a> (Bluesky), or contact us via <a href="mailto:radar@cloudflare.com">e-mail</a>.</p>

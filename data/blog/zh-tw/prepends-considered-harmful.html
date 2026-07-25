@@ -1,0 +1,198 @@
+<p>網際網路最純粹的形式是一個鬆散連線的獨立網路圖（亦稱<a href="https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system" target="_blank" rel="noopener noreferrer">自主系統</a>，簡稱 AS）。這些網路使用稱為 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">BGP</a>（邊界閘道通訊協定）的信令通訊協定來通知其相鄰網路（亦稱對等體）有關其網路中以及通過其網路的 IP 首碼（一組 IP 位址）之連通性。此交換的一部分包含有關 IP 首碼的有用中繼資料，這些中繼資料可用於通知網路路由決定。中繼資料的一個範例是完整自主系統路徑，由 IP 封包到達目的地所需經過的不同自主系統組成。</p>
+<p>我們皆希望封包能夠盡快到達目的地，因此，為給定的首碼選擇最短自主系統路徑不失為一個好主意。這種稱為預置的事物就在這裡發揮作用。</p>
+<h2>網際網路上的路由入門</h2>
+<p>我們先簡要談談網際網路在其最基本層面上的運作方式，再深入探討一些具體細節。</p>
+<p>網際網路的核心是一個由數千個網路組成的大規模互連式網路。每個網路皆有兩個關鍵項：</p>
+<p>1. 自主系統碼 (ASN)：可唯一識別網路的 32 位整數。例如，其中一個 Cloudflare ASN（我們擁有多個）為 13335。</p>
+<p>2. IP 首碼：IP 首碼為一系列 IP 位址，以 2 的指數繫結：在 IPv4 空間中，兩個位址形成 /31 首碼，四個位址形成 /30 首碼，依此類推，一直到 /0，這是「所有 IPv4 首碼」的簡寫。這同樣適用於 IPv6，但您最多可以彙整 128 位元，而非彙整最多 32 位元。下圖反向顯示了 IP 首碼之間的這種關係：一個 /24 包含兩個 /25（其中包含兩個 /26），依此類推。</p>
+<p>要在網際網路上進行通訊，您必須能夠到達目的地，路由通訊協定會在此發揮作用。它們會告知網際網路上的每個節點要將訊息傳送至何處（並讓接收者把訊息傳送回去）。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="546" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=715&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=640&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=715&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=750&amp;h=573&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=828&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=1080&amp;h=825&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=1280&amp;h=977&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=1430&amp;h=1092&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - FvUgm8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47H4XHK7278EFCXWMSSGT1.png&amp;w=724&amp;h=553&amp;f=webp" data-lightbox-width="724" data-lightbox-height="553" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="546" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>如前所述，這些目的地由 IP 位址標識，連續的 IP 位址範圍會以 IP 首碼表示。我們使用 IP 首碼進行路由，以最佳化效率：追蹤 IPv4 中 40 億 (232) 個 IP 位址的去向非常複雜，需要用到大量資源。堅持使用首碼會將此數字減少至大約一百萬。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="348" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=640&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=750&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=828&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=1080&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=1280&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=1430&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - cyTVR8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4858SAPRTN587WTPX40BBT.png&amp;w=1701&amp;h=829&amp;f=webp" data-lightbox-width="1701" data-lightbox-height="829" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="348" class="pt-portable-image-media"></div>
+</figure>
+<p>現在回顧一下，自主系統係獨立運作及控制。在網際網路的網路所構成的網路中，如何告知其他一些網路中的來源 A，有一條可用的路徑能夠到達（或通過）我的網路中的目的地 B？BGP 閃亮登場！BGP 是邊界閘道通訊協定，可用於發出連通性資訊的訊號。來源 ASN 產生的訊號訊息稱為「公告」，因為它們會向網際網路聲明，首碼中的 IP 位址已連線且可連通。</p>
+<p>來看一看上圖。來源 A 現在應知曉如何透過 2 個不同網路到達目的地 B！</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="348" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=640&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=750&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=828&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=1080&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=1280&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=1430&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - x6f8Ai" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EBPQ98NQK6WEM7QYH7DY.png&amp;w=1701&amp;h=829&amp;f=webp" data-lightbox-width="1701" data-lightbox-height="829" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="348" class="pt-portable-image-media"></div>
+</figure>
+<p>這是實際 BGP 訊息所呈現的樣子：</p>
+<p>如您所見，BGP 訊息不僅包含 IP 首碼（NLRI 位元）及路徑，還包含一堆其他中繼資料，這些中繼資料提供有關路徑的其他資訊。其他欄位包括社群（稍後詳細介紹）以及 MED 或原始程式碼。MED 是向其他直接連線之網路提供的建議，如有多個選項可供使用，則應採用此路徑，並取最低值。原始程式碼可能為以下三個值之一：IGP、EGP 或不完整。如透過 BGP 產生首碼，會設定 IGP，EGP 不再使用（這是一種古老的路由通訊協定）；當您將首碼從其他路由通訊協定（如 IS-IS 或 OSPF）分發至 BGP 時，會設定為不完整。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BGP</span><span class="sk-032f62-99ffe4"> Message</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Type:</span><span class="sk-032f62-99ffe4"> UPDATE</span><span class="sk-032f62-99ffe4"> Message</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Path</span><span class="sk-032f62-99ffe4"> Attributes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Origin:</span><span class="sk-032f62-99ffe4"> IGP</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> AS_PATH:</span><span class="sk-005cc5-ffc799"> 64500</span><span class="sk-005cc5-ffc799"> 64496</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> NEXT_HOP:</span><span class="sk-005cc5-ffc799"> 198.51.100.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> COMMUNITIES:</span><span class="sk-032f62-99ffe4"> 64500:13335</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Multi</span><span class="sk-032f62-99ffe4"> Exit</span><span class="sk-032f62-99ffe4"> Discriminator</span><span class="sk-24292e-fff"> (MED): 100</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Network</span><span class="sk-032f62-99ffe4"> Layer</span><span class="sk-032f62-99ffe4"> Reachability</span><span class="sk-032f62-99ffe4"> Information</span><span class="sk-24292e-fff"> (NLRI):</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre>
+</div>
+<p>現在，來源 A 知曉如何透過兩個不同網路到達目的地 B，我們來談談流量工程！</p>
+<h2>流量工程</h2>
+<p>流量工程是任何網路日常管理的關鍵部分。正如實體世界，營運商能夠設定彎路，以此最佳化流入（傳入）及流出（傳出）其網路的流量。傳出流量工程比傳入流量工程要容易得多，因為營運商能夠從相鄰網路中作出選擇，甚至可將某些流量設定為優先於其他流量。相比之下，傳入流量工程需要影響完全由其他人運作的網路。網路的自主及自治至關重要，因此營運商使用可用的工具來通知或塑造來自其他網路的傳入封包流程。對這些工具的理解及使用較複雜，可能構成一種挑戰。</p>
+<p>可用的流量工程工具集（傳入及傳出）依賴於處理給定路由的屬性（中繼資料）。談論獨立網路之間的流量工程時，我們將處理 EBGP 所獲知路由的屬性。BGP 可拆分為兩個類別：</p>
+<ol>
+	<li>EBGP：兩個不同 ASN 之間的 BGP 通訊</li>
+	<li>IBGP：同一 ASN 內的 BGP 通訊</li>
+</ol>
+<p>雖然通訊協定相同，但某些屬性可在 IBGP 工作階段上進行交換，而這些屬性不會在 EBGP 工作階段上交換。其中一項是本地優先級。稍後我們會做詳細介紹。</p>
+<h3>BGP 最佳路徑選擇</h3>
+<p>當一個網路連線至多個其他網路及服務提供者時，可從其中許多網路接收相同 IP 首碼的路徑資訊，每個網路的屬性略有差異。隨後，由此資訊的接收網路使用 BGP 最佳路徑選擇演算法，來選擇「最佳」首碼（及路由），並使用其轉寄 IP 流量。我會對「最佳」加上引號，因為這是一項主觀要求。「最佳」往往最短，但對我的網路最佳的結果可能並非另一個網路的最佳結果。</p>
+<p>BGP 在篩選收到的選項時會將多個首碼屬性納入考量。不過，BGP 最佳路徑選擇不是將所有這些屬性合併至單個選擇標準，而是使用分層的屬性。在任何層級，如果可用屬性足以選擇最佳路徑，則演算法將終止此選擇。</p>
+<p>BGP 最佳路徑選擇演算法非常廣泛，包含 15 個離散的步驟，可為給定首碼選擇最佳的可用路徑。考慮到步驟很多，盡早決定最佳路徑符合網路利益。前四個步驟的使用頻率最高且最具影響力（在下圖中以過濾漏斗描繪）。</p>
+<p>選擇可能最短的路徑通常是一個好主意，為此，演算法早期會執行「自主系統路徑長度」這一步驟。不過，從上圖可以看出，儘管「自主系統路徑長度」為查找最短路徑的屬性，但卻顯示在第二位。因此，我們來講講第一步：本地優先級。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1049" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=715&amp;h=1049&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=640&amp;h=939&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=715&amp;h=1049&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=750&amp;h=1100&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=828&amp;h=1215&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=1080&amp;h=1585&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=1280&amp;h=1878&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=1430&amp;h=2098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - IXIfpu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452NTCH9GBXDBFKZ067XZ6.png&amp;w=1018&amp;h=1494&amp;f=webp" data-lightbox-width="1018" data-lightbox-height="1494" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1049" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>本地優先級</strong>本地優先級深受營運商喜愛，因為這讓他們能夠仔細挑選所選擇的路由+路徑組合。這是演算法中的第一個屬性，因為對於任何給定路由+相鄰網路+自主系統路徑組合而言，此屬性都是唯一的。</p>
+<p>網路在匯入路由時會設定本地優先級（從相鄰網路獲悉路由資訊）。這是一種不可轉移屬性，這就表示，這種屬性絕不會在 EBGP 訊息中傳送至其他網路。例如，這在本質上意味著，AS 64496 的營運商無法將路由的本地優先級設為相鄰 AS 64511 內的專用（或傳輸）IP 首碼。很難透過 EBGP 進行傳入流量工程，部分原因就在於無法做到這一點。</p>
+<p><strong>預置可人為地增加自主系統路徑的長度</strong>由於沒有網路能夠直接為另一個網路內部的首碼設定本地優先級，因此影響其他網路選擇的第一個機會是修改自主系統路徑。如果下一個躍點有效，且給定路由的所有不同路徑之本地優先級相同，則修改自主系統路徑是變更流向網路之路徑流量的明顯選項。在 BGP 訊息中，預置看起來像這樣：</p>
+<p>之前：</p>
+<p>之後：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BGP</span><span class="sk-032f62-99ffe4"> Message</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Type:</span><span class="sk-032f62-99ffe4"> UPDATE</span><span class="sk-032f62-99ffe4"> Message</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Path</span><span class="sk-032f62-99ffe4"> Attributes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Origin:</span><span class="sk-032f62-99ffe4"> IGP</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> AS_PATH:</span><span class="sk-005cc5-ffc799"> 64500</span><span class="sk-005cc5-ffc799"> 64496</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> NEXT_HOP:</span><span class="sk-005cc5-ffc799"> 198.51.100.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> COMMUNITIES:</span><span class="sk-032f62-99ffe4"> 64500:13335</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Multi</span><span class="sk-032f62-99ffe4"> Exit</span><span class="sk-032f62-99ffe4"> Discriminator</span><span class="sk-24292e-fff"> (MED): 100</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Network</span><span class="sk-032f62-99ffe4"> Layer</span><span class="sk-032f62-99ffe4"> Reachability</span><span class="sk-032f62-99ffe4"> Information</span><span class="sk-24292e-fff"> (NLRI):</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre>
+</div>
+<p>具體而言，營運商能夠執行自主系統路徑預置。執行自主系統路徑預置時，營運商會向路徑新增其他自主系統（營運者通常會使用專有的自主系統，但不會在通訊協定中強制執行）。如此一來，自主系統路徑的長度可能從 1 到 255 不等。由於長度現在大幅增加，因而不會選擇此路由的特定路徑。透過變更通告給不同對等體的自主系統路徑，營運商能夠控制進入其網路的流量流程。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">BGP</span><span class="sk-032f62-99ffe4"> Message</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Type:</span><span class="sk-032f62-99ffe4"> UPDATE</span><span class="sk-032f62-99ffe4"> Message</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Path</span><span class="sk-032f62-99ffe4"> Attributes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Origin:</span><span class="sk-032f62-99ffe4"> IGP</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> AS_PATH:</span><span class="sk-005cc5-ffc799"> 64500</span><span class="sk-005cc5-ffc799"> 64496</span><span class="sk-005cc5-ffc799"> 64496</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> NEXT_HOP:</span><span class="sk-005cc5-ffc799"> 198.51.100.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> COMMUNITIES:</span><span class="sk-032f62-99ffe4"> 64500:13335</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Path</span><span class="sk-032f62-99ffe4"> Attribute</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Multi</span><span class="sk-032f62-99ffe4"> Exit</span><span class="sk-032f62-99ffe4"> Discriminator</span><span class="sk-24292e-fff"> (MED): 100</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Network</span><span class="sk-032f62-99ffe4"> Layer</span><span class="sk-032f62-99ffe4"> Reachability</span><span class="sk-032f62-99ffe4"> Information</span><span class="sk-24292e-fff"> (NLRI):</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        192.0.2.0/24</span></span></code></pre>
+</div>
+<p>可惜的是，預置有一個問題：要成為決定因素，所有其他屬性均需相等。這很少能夠成立，對於能從多條可能的路由中作出選擇來到達目的地的大型網路而言，尤其是這樣。</p>
+<h2>業務策略引擎</h2>
+<p>BGP 的通俗說法為業務策略引擎：BGP <strong>不會</strong>從效能角度來選擇最佳路徑，而往往會從_業務_角度選擇最佳路徑。業務標準可能從投資（連接埠）效率到提高收入不等。這聽起來可能有些奇怪，但不管您信不信，這就是 BGP 的設計初衷！BGP 的強大功能（及複雜性）在於，能夠使網路營運商根據自身需求、合約及策略來做出選擇，其中許多是傳統工程效能概念所無法體現的。</p>
+<h3>不同的本地優先級</h3>
+<p>許多網路（包括 Cloudflare）會根據向我們傳送路由所使用的連線類型來指派本地優先級。值越高，優先級越高。例如，從中轉網路連線中獲得的路由將獲得較低的本地優先級 100，因為其使用成本最高；從骨幹網路中獲得的路由將為 150，網際網路交換中心 (IX) 路由為 200，而最後的專用網路互連 (PNI) 路由為 250。這就是說，對於輸出（傳出）流量，預設情況下，Cloudflare 網路將首選 PNI 獲知的路由，即使透過網路交換中心 (IX) 或中轉相鄰網路可以使用較短的自主系統路徑，亦是如此。</p>
+<p>專用網路互連 (PNI) 優於網路交換中心 (IX) 的部分原因是可靠性，因為沒有超出我們掌控範圍的第三方交換平台，這一點非常重要，原因在於，我們假設所有硬體皆可能且最終會中斷。還有部分原因是連接埠效率。此處的效率由各連接埠上傳輸的每兆位元成本予以定義。大致來說，成本的計算公式為：</p>
+<p><code>((交換機成本/連接埠計數) + 收發器成本)</code></p>
+<p>與交叉連接成本（可能是每月定期費用 (MRC) 或一次性費用）相結合。PNI 更受青睞，因為這有助於透過降低每兆位元傳輸的整體成本來最佳化價值，因為單價會隨連接埠利用率的提高而有所降低。</p>
+<p>這種推理與眾多其他網路相似，在轉接網路中非常普遍。BGP 最起碼與成本及業務策略有關，與效能有關。</p>
+<h3>轉接本地優先級</h3>
+<p>為簡單起見，凡提及轉接，皆指<a href="https://en.wikipedia.org/wiki/Tier_1_network" target="_blank" rel="noopener noreferrer">傳統的一級轉接網路</a>。由於這些網路的性質，它們具有兩組不同的網路對等體：</p>
+<p>1. 客戶（如 Cloudflare）2. 免結算對等體（如同其他一級網路）</p>
+<p>在正常情況下，與免結算對等體所採用的本地優先級相比，轉接客戶將獲得更高的本地優先級。這就表示，無論您對首碼加多少預置，如果流量進入此轉接網路，流量<strong>始終</strong>會著陸於您與此轉接網路的互連上，並不會卸載至另一個對等體。</p>
+<p>如果要從一個轉接網路的單鏈路切換/卸載流量，並與它們有多個可分辨的鏈路，或者流量來源在多個轉接網路後面採用多重主目錄（且它們沒有專門的本地優先級劇本，優先一個轉接網路而非另一個轉接網路），則仍可使用預置。但是，透過自主系統路徑預置從一個轉接連接埠到另一個轉接連接埠的傳入流量工程流量的回報會顯著減少：一旦預置超過三個，則不太可能在此時發生太大變化（如有）。</p>
+<p><strong>範例</strong></p>
+<p>在上述情境中，無論 Cloudflare 在其自主系統路徑中向 AS 64496 作出何種調整，流量皆會繼續流經轉接 B &lt;&gt; Cloudflare 互連，即使從自主系統路徑角度來看，路徑原始 A → 轉接 B → 轉接 A → Cloudflare 較短。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="262" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=715&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=750&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=828&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=1080&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=1280&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=1430&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - QH5nCB" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VX84MMTEBK2HMFB6J24.png&amp;w=1331&amp;h=487&amp;f=webp" data-lightbox-width="1331" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="262" class="pt-portable-image-media"></div>
+</figure>
+<p>在這個情境中，並沒有很大的變化，但原始 A 目前在兩個轉接提供者後面有多個主目錄。在這種情況下，自主系統路徑預置是有效的，因為在原始 A 一側看到的路徑既是預置路徑，也是非預置路徑。只要原始 A 不執行任何輸出流量工程，並且平等對待兩個轉接網路，那麼選擇的路徑將為原始 A →轉接 A → Cloudflare。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="266" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=715&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=640&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=715&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=750&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=828&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=1080&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=1280&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=1430&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - JE64DJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MQNJRNZKVX3E01D574GC.png&amp;w=1311&amp;h=487&amp;f=webp" data-lightbox-width="1311" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="266" class="pt-portable-image-media"></div>
+</figure>
+<h3>基於社群的流量工程</h3>
+<p>因此，我們目前已在針對營運商的網際網路生態系中發現一個極為關鍵的問題：使用上述工具並不總是（有些人甚至可能說完全不可能）準確指示流量可輸入您自有網路的路徑，從而減少自主系統對自有網路的控制。幸運的是，這個問題有一個解決方案：基於社群的本地優先級。</p>
+<p>一些轉接網路服務提供者允許其客戶透過使用 BGP 社群來影響轉接網路中的本地優先級。BGP 社群是路由通告的可選傳遞屬性。社群可以提供資訊（「我在羅馬獲知此首碼」），但它們亦可用來觸發接收方的行動。例如，Cogent 發布以下行動社群：</p>
+<p>社群</p>
+<div id="html-block-k3m" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Community</th>
+				<th>Local preference</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>174:10</td>
+				<td>10</td>
+			</tr>
+			<tr>
+				<td>174:70</td>
+				<td>70</td>
+			</tr>
+			<tr>
+				<td>174:120</td>
+				<td>120</td>
+			</tr>
+			<tr>
+				<td>174:125</td>
+				<td>125</td>
+			</tr>
+			<tr>
+				<td>174:135</td>
+				<td>135</td>
+			</tr>
+			<tr>
+				<td>174:140</td>
+				<td>140</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>本地優先級</p>
+<p>174:10</p>
+<p>10</p>
+<p>174:70</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">term</span><span class="sk-032f62-99ffe4"> ADV-SITELOCAL</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    from</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        prefix-list</span><span class="sk-032f62-99ffe4"> SITE-LOCAL</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        route-type</span><span class="sk-032f62-99ffe4"> internal</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    then</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        as-path-prepend</span><span class="sk-032f62-99ffe4"> "13335 13335"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        accept</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="264" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=640&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=750&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=828&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1080&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1280&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1430&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - nVDqQ5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459KGD67K5Q20SAVVWVYHG.png&amp;w=1321&amp;h=487&amp;f=webp" data-lightbox-width="1321" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="264" class="pt-portable-image-media"></div>
+</figure>
+<p>70</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">term</span><span class="sk-032f62-99ffe4"> ADV-SITELOCAL</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    from</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        prefix-list</span><span class="sk-032f62-99ffe4"> SITE-LOCAL</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        route-type</span><span class="sk-032f62-99ffe4"> internal</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    then</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> COGENT_LPREF70</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        accept</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>174:120</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="264" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=640&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=715&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=750&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=828&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=1080&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=1280&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=1430&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1511 Embedded Image - AUKjrc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R3C5HH43QVSSB728CSKB.png&amp;w=1321&amp;h=487&amp;f=webp" data-lightbox-width="1321" data-lightbox-height="487" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="264" class="pt-portable-image-media"></div>
+</figure>
+<p>120</p>
+<p>174:125</p>
+<p>125</p>
+<p>174:135</p>
+<p>135</p>
+<p>174:140</p>
+<p>140</p>
+<p>當您知道 Cogent 在其網路中使用以下預設本地優先級時：</p>
+<p>對等體→本地優先級 100客戶→本地優先級 130</p>
+<p>我們如何利用提供的社群來變更所使用路線，這是顯而易見的。但需要注意的是，由於我們無法將路由的本地優先級設定為 100（或 130），因而自主系統路徑預置在很大程度上仍然沒有相關性，因為本地優先級絕不會相同。</p>
+<p>以下列設定來舉例說明：</p>
+<p>我們預置 Cloudflare ASN 兩次，產生了總共三條自主系統路徑，但我們仍然看到大量（太多）流量進入我們的 Cogent 鏈路。此時，工程師可以新增另一個預置，但對於 Cloudflare 等連線良好的網路，如果兩個或三個預置並未起到很大的作用，則四個或五個預置也不會好太多。我們反而能夠利用上面記錄的 Cogent 社群來變更 Cogent 中的路由：</p>
+<p>上述設定會將流量流程變更為：</p>
+<p>這正是我們想要的效果！</p>
+<h2>結論</h2>
+<p>自主系統路徑預置仍然有用，並已將其用作營運商進行流量工程之工具鏈的一部分，但應謹慎使用。<a href="https://ripe79.ripe.net/presentations/64-prepending_madory2.pdf" target="_blank" rel="noopener noreferrer">過多的預置會讓網路遭遇更廣泛的路由劫持</a>，應不惜一切代價避免出現這種情況。因此，使用基於社群的輸入流量工程非常可取（並建議使用）。在社群不可使用（或無法引導客戶流量）的情況下，可以套用預置，但鼓勵營運商積極監控其所帶來的影響，如果無效，則回滾至之前的版本。</p>
+<p>（補充說明）P Marcos 等人發表了一篇關於自主系統路徑預置的有趣論文，探討了與預置相關的一些趨勢，強烈建議您閱讀這篇論文：<a href="https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf" target="_blank" rel="noopener noreferrer">https://www.caida.org/catalog/papers/2020_aspath_prepending/aspath_prepending.pdf</a></p>

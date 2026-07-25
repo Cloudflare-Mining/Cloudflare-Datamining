@@ -1,216 +1,130 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/tackling-email-spoofing">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/tackling-email-spoofing">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/tackling-email-spoofing">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/tackling-email-spoofing">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rbkcMnVh5LQWwqGjLe2Wp/797cec5e3b8d92014111c9d61805dd87/tackling-email-spoofing.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Today we’re rolling out a new tool to tackle email spoofing and phishing and improve email deliverability: The new <i>Email Security DNS Wizard</i> can be used to create DNS records that prevent others from sending malicious emails on behalf of your domain. This new feature also warns users about insecure DNS configurations on their domain and shows recommendations on how to fix them. The feature will first be rolled out to users on the <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer">Free plan</a> and over the next weeks be made available for Pro, Business and Enterprise customers, as well.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aEZCdU9gaKn96DeylxQ6o/35f01fb59be4eb7cafbbe1cc44d3d77f/image4-24.png" alt="" class="kg-image" width="1800" height="751" loading="lazy">
-
-	</figure>
-	<p>Before we dive into what magic this wizard is capable of, let’s take a step back and take a look at the problem: <a href="https://www.cloudflare.com/learning/email-security/what-is-email-spoofing" target="_blank" rel="noopener noreferrer">email spoofing</a> and phishing.</p>
-	<div class="flex anchor relative">
-		<h2 id="what-is-email-spoofing-and-phishing">What is email spoofing and phishing?</h2>
-		<a href="https://blog.cloudflare.com/#what-is-email-spoofing-and-phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Spoofing is the process of posing as someone else which can be used in order to gain some kind of illicit advantage. One example is <b>domain spoofing</b> where someone hosts a website like <code>mycoolwebpaqe.xyz</code> &nbsp;to trick users of <code>mycoolwebpage.xyz</code> to provide sensitive information without knowing they landed on a false website. When looking at the address bar side by side in a browser, it’s very hard to spot the difference.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PxVe1b4Hez5NOq5XvzIh7/5524b5746727c82b0a97ab7783153edf/Screen-Shot-2021-09-25-at-10.05.21-AM.png" alt="" class="kg-image" width="1482" height="804" loading="lazy">
-
-	</figure>
-	<p>Then, there is <b>email spoofing</b>. In order to understand how this works, let’s take a look at a Cloudflare product update email I received on my personal email address. With most email providers you can look at the full source of an email which contains a number of headers and of course the body of the email.</p>
-	<pre class="language-bash"><code class="language-bash">Date: Thu, 23 Sep 2021 10:30:02 -0500 (CDT)
-From: Cloudflare &lt;product-updates@cloudflare.com&gt;
-Reply-To: product-updates@cloudflare.com
-To: &lt;my_personal_email_address&gt;</code></pre>
-	<p>Above you can see four headers of the email, when it was received, who it came from, who I should reply to, and my personal email address. The value of the <code>From</code> header is used to display the sender in my email program.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28pGQD2E3P3ONQn0pQY9Vb/16e561d34f8891d069a79fee7c034450/image3-30.png" alt="" class="kg-image" width="712" height="156" loading="lazy">
-
-	</figure>
-	<p>When I receive an email as above, I automatically assume this email has been sent from Cloudflare. However, nobody is stopped from sending an email with a modified <code>From</code> header from their mail server. If my email provider is not performing the right checks, which we will cover later in this blog post, I could be tricked into believing that an email was sent from Cloudflare, but it actually was not.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/PaMxRQLG5BwnK5ZIzwwg6/53a70fcc30e37930c23e7ab94311242e/image13-4.png" alt="" class="kg-image" width="1800" height="749" loading="lazy">
-
-	</figure>
-	<p>This brings us to the second attack type: <b>phishing</b>. Let’s say a malicious actor has successfully used email spoofing to send emails to your company’s customers that seem to originate from one of your corporate service emails. The content of these emails look exactly like a legitimate email from your company using the same styling and format. The email text could be an urgent message to update some account information including a hyperlink to the alleged web portal. If the receiving mail server of a user does not flag the email as spam or insecure origin, the user might click on the link which could execute malicious code or lead them to a spoofed domain asking for sensitive information.</p>
-	<p>According to the <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2020_IC3Report.pdf" target="_blank" rel="noopener noreferrer">FBI’s 2020 Internet Crime Report</a>, phishing was the most common cyber crime in 2020 with over 240,000 victims leading to a loss of over $50M. And the number of victims has more than doubled since 2019 and is almost ten times higher than in 2018.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6VvX416Rl6OBzDvGgNav1V/685b7969b190b249c4b9bec3d1f7d0f9/image5-23.png" alt="" class="kg-image" width="1200" height="742" loading="lazy">
-
-	</figure>
-	<p>In order to understand how most phishing attacks are carried out, let's take a closer look at the findings of the <a href="https://enterprise.verizon.com/resources/reports/2020/2020-data-breach-investigations-report.pdf" target="_blank" rel="noopener noreferrer">2020 Verizon Data Breach Investigations Report</a>. It lays out that phishing accounts for more than 80% of all "social actions", another word for social engineering attacks, making it by far the most common type of such an attack. Furthermore, the report states that 96% of social actions are sent via email and only 3% through a website and 1% via phone or text.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Ke7b9XwyfjM1Y2jAU56uO/774ad9250113105fe79f44e2403cb135/zJaupW_6sFUgHngoCJ6naiTt_XpKHahn5P63J9jlxpynfThhNpDb9wAREZbAkL9SSIuUfu4l_K0rnYUP-iOQZvmZinl5Kt9BNKrreXFyQ07q0YZApEAdw927zjk7.png" alt="" class="kg-image" width="1214" height="752" loading="lazy">
-
-	</figure>
-	<p>This clearly shows that email phishing is a serious problem causing Internet users a big headache. So let’s see what domain owners can do to stop bad actors from misusing their domain for email phishing.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-can-dns-help-prevent-this">How can DNS help prevent this?</h2>
-		<a href="https://blog.cloudflare.com/#how-can-dns-help-prevent-this" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Luckily, there are three anti-spoofing mechanisms already built into the <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">Domain Name System (DNS)</a>:</p>
-	<ul>
-		<li>
-			<p>Sender Policy Framework (SPF)</p>
-		</li>
-		<li>
-			<p>DomainKeys Identified Mail (DKIM)</p>
-		</li>
-		<li>
-			<p>Domain-based Message Authentication Reporting and Conformance (DMARC)</p>
-		</li>
-	</ul>
-	<p>However, it is not trivial to configure them correctly, especially for someone less experienced. In case your configuration is too strict, legitimate emails will be dropped or marked as spam. And if you keep your configuration too relaxed, your domain might be misused for email spoofing.</p>
-	<div class="flex anchor relative">
-		<h3 id="sender-policy-framework-spf">Sender Policy Framework (SPF)</h3>
-		<a href="https://blog.cloudflare.com/#sender-policy-framework-spf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>SPF is used to specify which IP addresses and domains are permitted to send email on behalf of your domain. An SPF policy is published as a TXT record on your domain, so everyone can access it via DNS. Let’s inspect the TXT record for <code>cloudflare.com</code>:</p>
-	<pre class="language-bash"><code class="language-bash">cloudflare.com 	TXT	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</code></pre>
-	<p>An SPF TXT record always needs to start with <code>v=spf1</code>. It usually contains a list of IP addresses of sending email servers using the <code>ip4</code> or <code>ip6</code> mechanism. The <code>include</code> mechanism is used to reference another SPF record on another domain. This is usually done if you are relying on other providers that need to send emails on our behalf. You can see a few examples in the SPF record of <code>cloudflare.com</code> above: we’re using Zendesk as customer support software and Mandrill for marketing and transactional emails.</p>
-	<p>Finally, there is the catch-all mechanism <code>-all</code> which specifies how all incoming, but unspecified emails should be treated The catch-all mechanism is preceded by a qualifier that can be either + (Allow), ~ (Softfail) or - (Fail). Using the <code>Allow</code> qualifier is not recommended as it basically makes the SPF record useless and allows all IP addresses and domains to send email on behalf of your domain. <code>Softfail</code> is interpreted differently by receiving mail servers, marking an email as Spam or insecure, depending on the server. <code>Fail</code> tells a server not to accept any emails originating from unspecified sources.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YneN2p3yGEEOsBQpwDcDg/b820270fc74d219fd6b66ac0c4d0d56f/image12-7.png" alt="" class="kg-image" width="1602" height="1191" loading="lazy">
-
-	</figure>
-	<p>The diagram above shows the steps taken to ensure a received email is SPF compliant.</p>
-	<ol>
-		<li>
-			<p>The email is sent from the IP address <code>203.0.113.10</code> and contains a <code>From</code> header with the value of <code>hannes@mycoolwebpage.xyz</code>.</p>
-		</li>
-		<li>
-			<p>After receiving the email, the receiver queries the SPF record on <code>mycoolwebpage.xyz</code> to retrieve the SPF policy for this domain.</p>
-		</li>
-		<li>
-			<p>The receiver checks if the sending IP address <code>203.0.113.10</code> is listed in the SPF record. If it is, the email succeeds the SPF check. If it is not, the qualifier of the <code>all</code> mechanism defines the outcome.</p>
-		</li>
-	</ol>
-	<p>For a full list of all mechanisms and more details about SPF, refer to <a href="https://datatracker.ietf.org/doc/html/rfc7208" target="_blank" rel="noopener noreferrer">RFC7208</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="domainkeys-identified-mail-dkim">DomainKeys Identified Mail (DKIM)</h3>
-		<a href="https://blog.cloudflare.com/#domainkeys-identified-mail-dkim" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Okay, with SPF we’ve ensured that only permitted IP addresses and domains can send emails on behalf of cloudflare.com. But what if one of the IPs changes owner without us noticing and updating the SPF record? Or what if someone else who is also using Google’s email server on the same IP tries to spoof emails coming from cloudflare.com?</p>
-	<p>This is where DKIM comes in. DKIM provides a mechanism to cryptographically sign parts of an email — usually the body and certain headers — using <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work" target="_blank" rel="noopener noreferrer">public key encryption</a>. Before we dive into how this works, let’s take a look at the DKIM record used for cloudflare.com:</p>
-	<pre class="language-bash"><code class="language-bash">google._domainkey.cloudflare.com.	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</code></pre>
-	<p>The structure of a DKIM record is <code>&lt;selector&gt;._domainkey.&lt;domain&gt;</code>, where the selector is provided by your email provider. The content of the <code>DKIM TXT</code> record always starts with <code>v=DKIM1</code> followed by the public key. We can see the public key type, referenced by the <code>k</code> tag, and the public key itself, preceded by the <code>p</code> tag.</p>
-	<p>Besides the TXT record that contains the public DKIM key, receiving email servers will parse an email header that contains the DKIM signature -- the part that has been signed with the private DKIM key -- besides some other information the email receiver needs to perform the DKIM check. Below is an example of this email header which is part of a Cloudflare product update email:</p>
-	<pre class="language-bash"><code class="language-bash">DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-   t=1632416903; s=m1; d=cloudflare.com; i=@cloudflare.com;
-   h=Content-Type:MIME-Version:Subject:To:From:Date;
-   bh=uMixy0BsCqhbru4fqPZQdeZY5Pq865sNAnOAxNgUS0s=;
-   b=LiIvJeRyqMo0gngiCygwpiKphJjYezb5kXBKCNj8DqRVcCk7obK6OUg4o+EufEbB
-    tRYQfQhgIkx5m70IqA6dP+DBZUcsJyS9C+vm2xRK7qyHi2hUFpYS5pkeiNVoQk/Wk4w
-    ZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU=</code></pre>
-	<p>You can see the email domain <code>d=cloudflare.com</code>, the selector <code>s=google</code>, the list of headers that are part of the DKIM signature preceded by <code>h=</code> and the DKIM signature following <code>b=</code>.</p>
-	<p>Below is a simplified sequence how the signing and DKIM check work:</p>
-	<ol>
-		<li>
-			<p>The sending email server processes certain email headers (listed in <code>h</code>) and the email message.</p>
-		</li>
-		<li>
-			<p>The sending email server signs the canonicalized result with the private DKIM key.</p>
-		</li>
-		<li>
-			<p>The email is sent, containing the signature in the <code>DKIM-Signature</code> email header.</p>
-		</li>
-		<li>
-			<p>The receiving email server retrieves the public key from the DKIM TXT record published on the email domain.</p>
-		</li>
-		<li>
-			<p>The receiving email server reproduces the canonicalized result, similar to step 1.</p>
-		</li>
-		<li>
-			<p>The receiving email server verifies the signature (<code>b</code>) using the public DKIM key.</p>
-		</li>
-		<li>
-			<p>If the DKIM signature is valid, email authenticity is proven. Otherwise, the DKIM check fails.</p>
-		</li>
-	</ol>
-	<p>The full DKIM specification can be found in <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank" rel="noopener noreferrer">RFC4871</a> and <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank" rel="noopener noreferrer">RFC5672</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="domain-based-message-authentication-reporting-and-conformance-dmarc">Domain-based Message Authentication Reporting and Conformance (DMARC)</h3>
-		<a href="https://blog.cloudflare.com/#domain-based-message-authentication-reporting-and-conformance-dmarc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Domain-based Message Authentication Reporting and Conformance, that’s definitely a mouthful. Let’s focus on two words: <i>Reporting</i> and <i>Conformance</i>. DMARC provides exactly that. Regular reports let the email sender know how many emails are non-conforming and potentially spoofed. Conformance helps provide a clear signal to the email receiver how to treat non-conforming emails. Email receivers might impose their own policies for emails that fail SPF or DKIM checks even without a DMARC record. However, the policy configured on the DMARC record is an explicit instruction by the email sender, so it increases the confidence for email receivers what to do with non-conforming emails.</p>
-	<p>Here is the DMARC record for <code>cloudflare.com</code></p>
-	<pre class="language-bash"><code class="language-bash">_dmarc.cloudflare.com.   TXT   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</code></pre>
-	<p>The DMARC TXT record is always set on the <code>_dmarc</code> subdomain of the email domain and — similar to SPF and DKIM — the content needs to start with <code>v=DMARC1</code>. Then we see three additional tags:</p>
-	<p>The policy tag (<code>p</code>) indicates how email receivers should treat emails that fail SPF and DKIM checks. Possible values are <code>none</code>, <code>reject</code>, and <code>quarantine</code>. The <code>none</code> policy is also called monitoring only and allows emails failing the checks to still be accepted. By specifying <code>quarantine</code>, email receivers will put SPF or DKIM non-conforming emails in the Spam folder. With <code>reject</code>, emails are dropped and not delivered at all if they fail SPF or DKIM.</p>
-	<p>The percentage tag (<code>pct</code>) can be used to apply the specified policy to a subset of incoming emails. This is helpful if you’re just rolling out DMARC and want to make sure everything is configured correctly by testing on a subset.</p>
-	<p>The last tag we can find on the record is the reporting URI (<code>rua</code>). This is used to specify an email address that will receive aggregate reports (usually daily) about non-conforming emails.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4Vsly4zfa661vaySq9OFm5/f3eaa88003ea3ebce2a2e6822c63049b/unnamed3.png" alt="" class="kg-image" width="1792" height="1232" loading="lazy">
-
-	</figure>
-	<p>Above, we can see how DMARC works step by step.</p>
-	<ol>
-		<li>
-			<p>An email is sent with a From header containing <code>hannes@mycoolwebpage.xyz</code>.</p>
-		</li>
-		<li>
-			<p>The receiver queries SPF, DKIM and DMARC records from the domain <code>mycoolwebpage.xyz</code> to retrieve the required policies and the DKIM public key.</p>
-		</li>
-		<li>
-			<p>The receiver performs SPF and DKIM checks as outlined previously. If both succeed, the email is accepted and delivered to the inbox. If both SPF and DKIM checks fail, the DMARC policy will be followed and determines if the email is still accepted, dropped or sent to the spam folder.</p>
-		</li>
-		<li>
-			<p>Finally, the receiver sends back an aggregate report. Depending on the email specified in the <code>rua</code> tag this report could also be sent to a different email server which is responsible for that email address.</p>
-		</li>
-	</ol>
-	<p>Other optional tags and the complete DMARC specification is described in <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">RFC7489</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="a-few-numbers-on-the-current-adoption">A few numbers on the current adoption</h3>
-		<a href="https://blog.cloudflare.com/#a-few-numbers-on-the-current-adoption" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that we’ve learned what the problem is and how to tackle it using SPF, DKIM, and DMARC, let’s see how widely they’re adopted.</p>
-	<p><a href="https://dmarc.org/stats/farsight/dmarc" target="_blank" rel="noopener noreferrer">Dmarc.org</a> has published the adoption of DMARC records of domains in a representative dataset. It shows that by the end of 2020, still less than 50% of domains even had a DMARC record. And remember, without a DMARC record there is no clear enforcement of SPF and DKIM checks. The study further shows that, of the domains that have a DMARC record, more than 65% are using the monitoring only policy (<code>p=none</code>), so there is a significant potential to drive this adoption higher. The study does not mention if these domains are sending or receiving emails, but even if they didn’t, a secure configuration should include a DMARC record (more about this later).</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LZQMSYmzWUIFhTD2JfTuZ/46f5a4d4626ef5978449cc63ed3ce58a/image2-37.png" alt="" class="kg-image" width="950" height="524" loading="lazy">
-
-	</figure>
-	<p>Another <a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank" rel="noopener noreferrer">report</a> from August 1, 2021 tells a similar story for domains that belong to entities in the banking sector. Of 2,881 banking entities in the United States, only 44% have published a DMARC record on their domain. Of those that have a DMARC record, roughly 2 out of 5 have set the DMARC policy to <code>None</code> and another 8% are considered “Misconfigured”. Denmark has a very high adoption of DMARC on domains in the banking sector of 94%, in contrast to Japan where only 13% of domains are using DMARC. SPF adoption is on average significantly higher than DMARC, which might have to do with the fact that the SPF standard was first introduced as <a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank" rel="noopener noreferrer">experimental RFC</a> in 2006 and DMARC only <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">became a standard</a> in 2015.</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>Today we’re rolling out a new tool to tackle email spoofing and phishing and improve email deliverability: The new <em>Email Security DNS Wizard</em> can be used to create DNS records that prevent others from sending malicious emails on behalf of your domain. This new feature also warns users about insecure DNS configurations on their domain and shows recommendations on how to fix them. The feature will first be rolled out to users on the <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer">Free plan</a> and over the next weeks be made available for Pro, Business and Enterprise customers, as well.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="298" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=640&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=750&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=828&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1080&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1280&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1430&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - 1JJBFv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T2R1QEZP9WESWYNEGTFT.png&amp;w=1800&amp;h=751&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="751" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="298" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Before we dive into what magic this wizard is capable of, let’s take a step back and take a look at the problem: <a href="https://www.cloudflare.com/learning/email-security/what-is-email-spoofing" target="_blank" rel="noopener noreferrer">email spoofing</a> and phishing.</p>
+<h2>What is email spoofing and phishing?</h2>
+<p>Spoofing is the process of posing as someone else which can be used in order to gain some kind of illicit advantage. One example is <strong>domain spoofing</strong> where someone hosts a website like <code>mycoolwebpaqe.xyz</code> &nbsp;to trick users of <code>mycoolwebpage.xyz</code> to provide sensitive information without knowing they landed on a false website. When looking at the address bar side by side in a browser, it’s very hard to spot the difference.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="388" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=640&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=750&amp;h=407&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=828&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1080&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1280&amp;h=695&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1430&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - vOnDls" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46Q8R1Q0Q7M19VVZP5RF1D.png&amp;w=1482&amp;h=804&amp;f=webp" data-lightbox-width="1482" data-lightbox-height="804" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="388" class="pt-portable-image-media"></div>
+</figure>
+<p>Then, there is <strong>email spoofing</strong>. In order to understand how this works, let’s take a look at a Cloudflare product update email I received on my personal email address. With most email providers you can look at the full source of an email which contains a number of headers and of course the body of the email.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Date:</span><span class="sk-032f62-99ffe4"> Thu,</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-032f62-99ffe4"> Sep</span><span class="sk-005cc5-ffc799"> 2021</span><span class="sk-032f62-99ffe4"> 10:30:02</span><span class="sk-005cc5-99ffe4"> -0500</span><span class="sk-24292e-fff"> (CDT)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">From:</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">product-updates@cloudflare.co</span><span class="sk-24292e-fff">m</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Reply-To:</span><span class="sk-032f62-99ffe4"> product-updates@cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">To:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my_personal_email_addres</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>Above you can see four headers of the email, when it was received, who it came from, who I should reply to, and my personal email address. The value of the <code>From</code> header is used to display the sender in my email program.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="156" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=640&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 712w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=750&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=828&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1080&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1280&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=1424&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 1424w" alt="BLOG-667 Embedded Image - qPVxMF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452PP5AG8T6XMJR6HJGD7W.png&amp;w=712&amp;h=156&amp;f=webp" data-lightbox-width="712" data-lightbox-height="156" data-astro-cid-7nvefuv6="true" sizes="(min-width: 712px) 712px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="712" height="156" class="pt-portable-image-media"></div>
+</figure>
+<p>When I receive an email as above, I automatically assume this email has been sent from Cloudflare. However, nobody is stopped from sending an email with a modified <code>From</code> header from their mail server. If my email provider is not performing the right checks, which we will cover later in this blog post, I could be tricked into believing that an email was sent from Cloudflare, but it actually was not.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="298" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=640&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=750&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=828&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1080&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1280&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1430&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - frP5sQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499JWHSMGVYX2ADKC0JFR3.png&amp;w=1800&amp;h=749&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="749" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="298" class="pt-portable-image-media"></div>
+</figure>
+<p>This brings us to the second attack type: <strong>phishing</strong>. Let’s say a malicious actor has successfully used email spoofing to send emails to your company’s customers that seem to originate from one of your corporate service emails. The content of these emails look exactly like a legitimate email from your company using the same styling and format. The email text could be an urgent message to update some account information including a hyperlink to the alleged web portal. If the receiving mail server of a user does not flag the email as spam or insecure origin, the user might click on the link which could execute malicious code or lead them to a spoofed domain asking for sensitive information.</p>
+<p>According to the <a href="https://www.ic3.gov/Media/PDF/AnnualReport/2020_IC3Report.pdf" target="_blank" rel="noopener noreferrer">FBI’s 2020 Internet Crime Report</a>, phishing was the most common cyber crime in 2020 with over 240,000 victims leading to a loss of over $50M. And the number of victims has more than doubled since 2019 and is almost ten times higher than in 2018.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - iWsJxA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486HWGVKH627911D67HMYZ.png&amp;w=1200&amp;h=742&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="742" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
+</figure>
+<p>In order to understand how most phishing attacks are carried out, let's take a closer look at the findings of the <a href="https://enterprise.verizon.com/resources/reports/2020/2020-data-breach-investigations-report.pdf" target="_blank" rel="noopener noreferrer">2020 Verizon Data Breach Investigations Report</a>. It lays out that phishing accounts for more than 80% of all "social actions", another word for social engineering attacks, making it by far the most common type of such an attack. Furthermore, the report states that 96% of social actions are sent via email and only 3% through a website and 1% via phone or text.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - YGoL5r" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482TP835WBE99QD4QQBYKE.png&amp;w=1214&amp;h=752&amp;f=webp" data-lightbox-width="1214" data-lightbox-height="752" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media"></div>
+</figure>
+<p>This clearly shows that email phishing is a serious problem causing Internet users a big headache. So let’s see what domain owners can do to stop bad actors from misusing their domain for email phishing.</p>
+<h2>How can DNS help prevent this?</h2>
+<p>Luckily, there are three anti-spoofing mechanisms already built into the <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">Domain Name System (DNS)</a>:</p>
+<ul>
+	<li>Sender Policy Framework (SPF)</li>
+	<li>DomainKeys Identified Mail (DKIM)</li>
+	<li>Domain-based Message Authentication Reporting and Conformance (DMARC)</li>
+</ul>
+<p>However, it is not trivial to configure them correctly, especially for someone less experienced. In case your configuration is too strict, legitimate emails will be dropped or marked as spam. And if you keep your configuration too relaxed, your domain might be misused for email spoofing.</p>
+<h3>Sender Policy Framework (SPF)</h3>
+<p>SPF is used to specify which IP addresses and domains are permitted to send email on behalf of your domain. An SPF policy is published as a TXT record on your domain, so everyone can access it via DNS. Let’s inspect the TXT record for <code>cloudflare.com</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">cloudflare.com</span><span class="sk-032f62-99ffe4"> 	TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 ip4:199.15.212.0/22 ip4:173.245.48.0/20 include:_spf.google.com include:spf1.mcsv.net include:spf.mandrillapp.com include:mail.zendesk.com include:stspg-customer.com include:_spf.salesforce.com -all"</span></span></code></pre>
+</div>
+<p>An SPF TXT record always needs to start with <code>v=spf1</code>. It usually contains a list of IP addresses of sending email servers using the <code>ip4</code> or <code>ip6</code> mechanism. The <code>include</code> mechanism is used to reference another SPF record on another domain. This is usually done if you are relying on other providers that need to send emails on our behalf. You can see a few examples in the SPF record of <code>cloudflare.com</code> above: we’re using Zendesk as customer support software and Mandrill for marketing and transactional emails.</p>
+<p>Finally, there is the catch-all mechanism <code>-all</code> which specifies how all incoming, but unspecified emails should be treated The catch-all mechanism is preceded by a qualifier that can be either + (Allow), ~ (Softfail) or - (Fail). Using the <code>Allow</code> qualifier is not recommended as it basically makes the SPF record useless and allows all IP addresses and domains to send email on behalf of your domain. <code>Softfail</code> is interpreted differently by receiving mail servers, marking an email as Spam or insecure, depending on the server. <code>Fail</code> tells a server not to accept any emails originating from unspecified sources.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="532" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=715&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=640&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=715&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=750&amp;h=558&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=828&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1080&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1280&amp;h=952&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1430&amp;h=1064&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - Hr7Dx2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CWGTNPQW06PDKD5CHTJF.png&amp;w=1602&amp;h=1191&amp;f=webp" data-lightbox-width="1602" data-lightbox-height="1191" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="532" class="pt-portable-image-media"></div>
+</figure>
+<p>The diagram above shows the steps taken to ensure a received email is SPF compliant.</p>
+<ol>
+	<li>The email is sent from the IP address <code>203.0.113.10</code> and contains a <code>From</code> header with the value of <code>hannes@mycoolwebpage.xyz</code>.</li>
+	<li>After receiving the email, the receiver queries the SPF record on <code>mycoolwebpage.xyz</code> to retrieve the SPF policy for this domain.</li>
+	<li>The receiver checks if the sending IP address <code>203.0.113.10</code> is listed in the SPF record. If it is, the email succeeds the SPF check. If it is not, the qualifier of the <code>all</code> mechanism defines the outcome.</li>
+</ol>
+<p>For a full list of all mechanisms and more details about SPF, refer to <a href="https://datatracker.ietf.org/doc/html/rfc7208" target="_blank" rel="noopener noreferrer">RFC7208</a>.</p>
+<h3>DomainKeys Identified Mail (DKIM)</h3>
+<p>Okay, with SPF we’ve ensured that only permitted IP addresses and domains can send emails on behalf of cloudflare.com. But what if one of the IPs changes owner without us noticing and updating the SPF record? Or what if someone else who is also using Google’s email server on the same IP tries to spoof emails coming from cloudflare.com?</p>
+<p>This is where DKIM comes in. DKIM provides a mechanism to cryptographically sign parts of an email — usually the body and certain headers — using <a href="https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work" target="_blank" rel="noopener noreferrer">public key encryption</a>. Before we dive into how this works, let’s take a look at the DKIM record used for cloudflare.com:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">google._domainkey.cloudflare.com.</span><span class="sk-032f62-99ffe4">	TXT</span><span class="sk-032f62-99ffe4">	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMxbNxA2V84XMpZgzMgHHey3TQFvHkwlPF2a11Ex6PGD71Sp8elVMMCdZhPYqDlzbehg9aWVwPz0+n3oRD73o+JXoSswgUXPV82O8s8dGny/BAJklo0+y+Bh2Op4YPGhClT6mRO2i5Qiqo4vPCuc6GB34Fyx7yhreDNKY9BNMUtQIDAQAB"</span></span></code></pre>
+</div>
+<p>The structure of a DKIM record is <code>&lt;selector&gt;._domainkey.&lt;domain&gt;</code>, where the selector is provided by your email provider. The content of the <code>DKIM TXT</code> record always starts with <code>v=DKIM1</code> followed by the public key. We can see the public key type, referenced by the <code>k</code> tag, and the public key itself, preceded by the <code>p</code> tag.</p>
+<p>Besides the TXT record that contains the public DKIM key, receiving email servers will parse an email header that contains the DKIM signature -- the part that has been signed with the private DKIM key -- besides some other information the email receiver needs to perform the DKIM check. Below is an example of this email header which is part of a Cloudflare product update email:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">DKIM-Signature:</span><span class="sk-032f62-99ffe4"> v=</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">; a</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">rsa-sha256</span><span class="sk-24292e-fff">; q</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">dns/txt</span><span class="sk-24292e-fff">; c</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">relaxed/relaxed</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1632416903</span><span class="sk-24292e-fff">; s</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">m1</span><span class="sk-24292e-fff">; d</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">cloudflare.com</span><span class="sk-24292e-fff">; i</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">@cloudflare.com</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   h</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">Content-Type:MIME-Version:Subject:To:From:Date</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   bh</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">uMixy0BsCqhbru4fqPZQdeZY5Pq865sNAnOAxNgUS0s</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">   b</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">LiIvJeRyqMo0gngiCygwpiKphJjYezb5kXBKCNj8DqRVcCk7obK6OUg4o+EufEbB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tRYQfQhgIkx5m70IqA6dP+DBZUcsJyS9C+vm2xRK7qyHi2hUFpYS5pkeiNVoQk/Wk4w</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    ZG4tu/g+OA49mS7VX+64FXr79MPwOMRRmJ3lNwJU</span><span class="sk-032f62-99ffe4">=</span></span></code></pre>
+</div>
+<p>You can see the email domain <code>d=cloudflare.com</code>, the selector <code>s=google</code>, the list of headers that are part of the DKIM signature preceded by <code>h=</code> and the DKIM signature following <code>b=</code>.</p>
+<p>Below is a simplified sequence how the signing and DKIM check work:</p>
+<ol>
+	<li>The sending email server processes certain email headers (listed in <code>h</code>) and the email message.</li>
+	<li>The sending email server signs the canonicalized result with the private DKIM key.</li>
+	<li>The email is sent, containing the signature in the <code>DKIM-Signature</code> email header.</li>
+	<li>The receiving email server retrieves the public key from the DKIM TXT record published on the email domain.</li>
+	<li>The receiving email server reproduces the canonicalized result, similar to step 1.</li>
+	<li>The receiving email server verifies the signature (<code>b</code>) using the public DKIM key.</li>
+	<li>If the DKIM signature is valid, email authenticity is proven. Otherwise, the DKIM check fails.</li>
+</ol>
+<p>The full DKIM specification can be found in <a href="https://datatracker.ietf.org/doc/html/rfc4871" target="_blank" rel="noopener noreferrer">RFC4871</a> and <a href="https://datatracker.ietf.org/doc/html/rfc5672" target="_blank" rel="noopener noreferrer">RFC5672</a>.</p>
+<h3>Domain-based Message Authentication Reporting and Conformance (DMARC)</h3>
+<p>Domain-based Message Authentication Reporting and Conformance, that’s definitely a mouthful. Let’s focus on two words: <em>Reporting</em> and <em>Conformance</em>. DMARC provides exactly that. Regular reports let the email sender know how many emails are non-conforming and potentially spoofed. Conformance helps provide a clear signal to the email receiver how to treat non-conforming emails. Email receivers might impose their own policies for emails that fail SPF or DKIM checks even without a DMARC record. However, the policy configured on the DMARC record is an explicit instruction by the email sender, so it increases the confidence for email receivers what to do with non-conforming emails.</p>
+<p>Here is the DMARC record for <code>cloudflare.com</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">_dmarc.cloudflare.com.</span><span class="sk-032f62-99ffe4">   TXT</span><span class="sk-032f62-99ffe4">   "v=DMARC1; p=reject; pct=100; rua=mailto:rua@cloudflare.com"</span></span></code></pre>
+</div>
+<p>The DMARC TXT record is always set on the <code>_dmarc</code> subdomain of the email domain and — similar to SPF and DKIM — the content needs to start with <code>v=DMARC1</code>. Then we see three additional tags:</p>
+<p>The policy tag (<code>p</code>) indicates how email receivers should treat emails that fail SPF and DKIM checks. Possible values are <code>none</code>, <code>reject</code>, and <code>quarantine</code>. The <code>none</code> policy is also called monitoring only and allows emails failing the checks to still be accepted. By specifying <code>quarantine</code>, email receivers will put SPF or DKIM non-conforming emails in the Spam folder. With <code>reject</code>, emails are dropped and not delivered at all if they fail SPF or DKIM.</p>
+<p>The percentage tag (<code>pct</code>) can be used to apply the specified policy to a subset of incoming emails. This is helpful if you’re just rolling out DMARC and want to make sure everything is configured correctly by testing on a subset.</p>
+<p>The last tag we can find on the record is the reporting URI (<code>rua</code>). This is used to specify an email address that will receive aggregate reports (usually daily) about non-conforming emails.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="492" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=715&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=640&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=715&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=750&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=828&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1080&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1280&amp;h=881&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1430&amp;h=984&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - E2ThNW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46S6R2XP1DFRQ30BQA5MRN.png&amp;w=1792&amp;h=1232&amp;f=webp" data-lightbox-width="1792" data-lightbox-height="1232" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="492" class="pt-portable-image-media"></div>
+</figure>
+<p>Above, we can see how DMARC works step by step.</p>
+<ol>
+	<li>An email is sent with a From header containing <code>hannes@mycoolwebpage.xyz</code>.</li>
+	<li>The receiver queries SPF, DKIM and DMARC records from the domain <code>mycoolwebpage.xyz</code> to retrieve the required policies and the DKIM public key.</li>
+	<li>The receiver performs SPF and DKIM checks as outlined previously. If both succeed, the email is accepted and delivered to the inbox. If both SPF and DKIM checks fail, the DMARC policy will be followed and determines if the email is still accepted, dropped or sent to the spam folder.</li>
+	<li>Finally, the receiver sends back an aggregate report. Depending on the email specified in the <code>rua</code> tag this report could also be sent to a different email server which is responsible for that email address.</li>
+</ol>
+<p>Other optional tags and the complete DMARC specification is described in <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">RFC7489</a>.</p>
+<h3>A few numbers on the current adoption</h3>
+<p>Now that we’ve learned what the problem is and how to tackle it using SPF, DKIM, and DMARC, let’s see how widely they’re adopted.</p>
+<p><a href="https://dmarc.org/stats/farsight/dmarc" target="_blank" rel="noopener noreferrer">Dmarc.org</a> has published the adoption of DMARC records of domains in a representative dataset. It shows that by the end of 2020, still less than 50% of domains even had a DMARC record. And remember, without a DMARC record there is no clear enforcement of SPF and DKIM checks. The study further shows that, of the domains that have a DMARC record, more than 65% are using the monitoring only policy (<code>p=none</code>), so there is a significant potential to drive this adoption higher. The study does not mention if these domains are sending or receiving emails, but even if they didn’t, a secure configuration should include a DMARC record (more about this later).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="394" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=640&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=750&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=828&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=1080&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=1280&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=1430&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - Bun4Cx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4986G344D050V6P3FMJMJM.png&amp;w=950&amp;h=524&amp;f=webp" data-lightbox-width="950" data-lightbox-height="524" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="394" class="pt-portable-image-media"></div>
+</figure>
+<p>Another <a href="https://www.dmarc360.com/dmarc-adoption-rate" target="_blank" rel="noopener noreferrer">report</a> from August 1, 2021 tells a similar story for domains that belong to entities in the banking sector. Of 2,881 banking entities in the United States, only 44% have published a DMARC record on their domain. Of those that have a DMARC record, roughly 2 out of 5 have set the DMARC policy to <code>None</code> and another 8% are considered “Misconfigured”. Denmark has a very high adoption of DMARC on domains in the banking sector of 94%, in contrast to Japan where only 13% of domains are using DMARC. SPF adoption is on average significantly higher than DMARC, which might have to do with the fact that the SPF standard was first introduced as <a href="https://datatracker.ietf.org/doc/html/rfc4408" target="_blank" rel="noopener noreferrer">experimental RFC</a> in 2006 and DMARC only <a href="https://datatracker.ietf.org/doc/html/rfc7489" target="_blank" rel="noopener noreferrer">became a standard</a> in 2015.</p>
+<div id="html-block-k7u" class="html-block">
+	<style>
+		#html-block-k7u .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k7u .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -223,7 +137,7 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k7u .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -237,19 +151,19 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 			word-break: normal;
 		}
 
-		.tg .tg-2bn0 {
+		#html-block-k7u .tg .tg-2bn0 {
 			font-size: 22px;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-auka {
+		#html-block-k7u .tg .tg-auka {
 			font-size: 22px;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-ozhh {
+		#html-block-k7u .tg .tg-ozhh {
 			font-size: 22px;
 			font-weight: bold;
 			text-align: center;
@@ -303,77 +217,47 @@ To: &lt;my_personal_email_address&gt;</code></pre>
 				<td class="tg-2bn0">13%</td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>This shows us there is quite some room for improvement.</p>
-	<div class="flex anchor relative">
-		<h3 id="enter-email-security-dns-wizard">Enter: Email Security DNS Wizard</h3>
-		<a href="https://blog.cloudflare.com/#enter-email-security-dns-wizard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So what are we doing to increase the adoption of SPF, DKIM, and DMARC and tackle email spoofing and phishing? Enter the new Cloudflare <i>Email Security DNS Wizard</i>.</p>
-	<p>Starting today, when you’re navigating to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS tab</a> of the Cloudflare dashboard, you’ll see two new features:</p>
-	<ol>
-		<li>
-			<p>A new section called Email Security</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4pY3PXTalaZ8MW18dHjfvK/7de935fceeb1ae55409442d8aaa388c8/7yW39Yx6BIcxLPOaHCJJkQHMCfihi6ZI1TeIw26hoYNslR0Dpm0E0A2QT7zA-78TWXvK_wAxbxcFdK815bu-2xx8046O5rOgVavTZLPT8k6pWoMMfSvjc0LDN5d8.png" alt="" class="kg-image" width="2048" height="323" loading="lazy">
-
-	</figure>
-	<ol>
-		<li>
-			<p>New warnings about insecure configurations</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mzRxukzm24D0TyFcRZl2m/c02c0c75777b33c3d90e62b63e3c8a28/image.png" alt="" class="kg-image" width="2074" height="452" loading="lazy">
-
-	</figure>
-	<p>In order to start using the <i>Email Security DNS Wizard,</i> you can either directly click the link in the warning which brings you to the relevant section of the wizard or click <b>Configure</b> in the new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard" target="_blank" rel="noopener noreferrer">Email Security section</a>. The latter will show you the following available options:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2sB5AoCErbZ3TAUWdJ2cFS/151cf3fade55dae8f8378cd01e58b66f/HTcq6CITW8kzRBSoK23qWiekQRf2cfGwKp_aNoIcIdJOSw7ZeNXAoR3UtJ2-jZ9RDgweHIZQqrpDzLvy210kwRNjRT8lBeS1cUd0D4LLawcOJ_xT-6v4SY81-shQ.png" alt="" class="kg-image" width="1547" height="2048" loading="lazy">
-
-	</figure>
-	<p>There are two scenarios. You’re using your domain to send email, or you don’t. If you do, you can configure SPF, DKIM, and DMARC records by following a few simple steps. Here you can see the steps for SPF:</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 57.28155339805825%;"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: html-->
-	<p>If your domain is not sending email, there is an easy way to configure all three records with just one click:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cV5y3W01eHkbNU0DCj7kf/32138a1b15dd747a32012e976ac0992d/Azbl1cjgQw2_iThjg-8djR52IWooTAg9J5PJ-ak-TtZc3UnqMOLN9LqsKw1-mGyn5SsJ9mYzIth9IxWXjiLHnLHAFHetl6Fy1DIB0fXBLwQr3hXq2giVs52YNLNu.png" alt="" class="kg-image" width="2048" height="928" loading="lazy">
-
-	</figure>
-	<p>Once you click <b>Submit</b>, this will create all three records configured in such a way that all emails will fail the checks and be rejected by incoming email servers.</p>
-	<pre class="language-bash"><code class="language-bash">example.com			TXT	"v=spf1 -all"
-*._domainkey.example.com.	TXT	"v=DKIM1; p="
-_dmarc.example.com.		TXT	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="help-tackle-email-spoofing-and-phishing">Help tackle email spoofing and phishing</h3>
-		<a href="https://blog.cloudflare.com/#help-tackle-email-spoofing-and-phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Out you go and make sure your domain is secured against email spoofing and phishing. Just head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS tab</a> in the Cloudflare dashboard or if you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">sign up for free</a> in just a few minutes on <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a>.</p>
-	<p>If you want to read more about SPF, DKIM and DMARC, go check out our <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record" target="_blank" rel="noopener noreferrer">new learning pages</a> about email related DNS records.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/b994d925816888ee88bfd6a3e4984572?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+	</table>
+</div>
+<p>This shows us there is quite some room for improvement.</p>
+<h3>Enter: Email Security DNS Wizard</h3>
+<p>So what are we doing to increase the adoption of SPF, DKIM, and DMARC and tackle email spoofing and phishing? Enter the new Cloudflare <em>Email Security DNS Wizard</em>.</p>
+<p>Starting today, when you’re navigating to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS tab</a> of the Cloudflare dashboard, you’ll see two new features:</p>
+<ol>
+	<li>A new section called Email Security</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="113" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=715&amp;h=113&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=640&amp;h=101&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=715&amp;h=113&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=750&amp;h=119&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=828&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1080&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1280&amp;h=202&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1430&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - nyKigs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470KHV7E00WSK2SWKYBA4R.png&amp;w=1920&amp;h=303&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="303" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="113" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li>New warnings about insecure configurations</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="156" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=715&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=640&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=715&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=750&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=828&amp;h=181&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1080&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1280&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1430&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - 5INhbX" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PMBKK72XXXDFM76FEKRZ.png&amp;w=1920&amp;h=418&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="418" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="156" class="pt-portable-image-media"></div>
+</figure>
+<p>In order to start using the <em>Email Security DNS Wizard,</em> you can either directly click the link in the warning which brings you to the relevant section of the wizard or click <strong>Configure</strong> in the new <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns%2Fwizard" target="_blank" rel="noopener noreferrer">Email Security section</a>. The latter will show you the following available options:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="947" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=715&amp;h=947&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=640&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=715&amp;h=947&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=750&amp;h=993&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=828&amp;h=1097&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1080&amp;h=1430&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1280&amp;h=1695&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1430&amp;h=1894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - KKswfR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KT1YBVCJYMDXSSBR0MMF.png&amp;w=1547&amp;h=2048&amp;f=webp" data-lightbox-width="1547" data-lightbox-height="2048" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="947" class="pt-portable-image-media"></div>
+</figure>
+<p>There are two scenarios. You’re using your domain to send email, or you don’t. If you do, you can configure SPF, DKIM, and DMARC records by following a few simple steps. Here you can see the steps for SPF:</p>
+<div id="html-block-k8q" class="html-block">
+	<div style="padding-top:57.28155339805825%"><iframe src="https://iframe.videodelivery.net/256d8b89df970f4e8157692599e7e81f?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
+</div>
+<p>If your domain is not sending email, there is an easy way to configure all three records with just one click:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=750&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1080&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1280&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1430&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-667 Embedded Image - hj8c5z" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PFQFKHHETXYQ2TWHJJ6S.png&amp;w=1920&amp;h=870&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="870" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="324" class="pt-portable-image-media"></div>
+</figure>
+<p>Once you click <strong>Submit</strong>, this will create all three records configured in such a way that all emails will fail the checks and be rejected by incoming email servers.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">example.com</span><span class="sk-032f62-99ffe4">			TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 -all"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">._domainkey.example.com.	TXT	</span><span class="sk-032f62-99ffe4">"v=DKIM1; p="</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">_dmarc.example.com.</span><span class="sk-032f62-99ffe4">		TXT</span><span class="sk-032f62-99ffe4">	"v=DMARC1; p=reject; sp=reject; adkim=s; aspf=s;"</span></span></code></pre>
+</div>
+<h3>Help tackle email spoofing and phishing</h3>
+<p>Out you go and make sure your domain is secured against email spoofing and phishing. Just head over to the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fdns" target="_blank" rel="noopener noreferrer">DNS tab</a> in the Cloudflare dashboard or if you are not yet using Cloudflare DNS, <a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">sign up for free</a> in just a few minutes on <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a>.</p>
+<p>If you want to read more about SPF, DKIM and DMARC, go check out our <a href="https://www.cloudflare.com/learning/dns/dns-records/dns-txt-record" target="_blank" rel="noopener noreferrer">new learning pages</a> about email related DNS records.</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k9j" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/b994d925816888ee88bfd6a3e4984572?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

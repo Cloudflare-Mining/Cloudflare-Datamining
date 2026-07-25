@@ -1,146 +1,114 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/marimo-cloudflare-notebooks">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/marimo-cloudflare-notebooks">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oG6mdDzYexnj81cxyzgOp/4f08cf243019e9d88724aaffbb56a609/image1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Many developers, data scientists, and researchers do much of their work in Python notebooks: they’ve been the de facto standard for data science and sharing for well over a decade. Notebooks are popular because they make it easy to code, explore data, prototype ideas, and share results. We use them heavily at Cloudflare, and we’re seeing more and more developers use notebooks to work with data – from analyzing trends in HTTP traffic, querying <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer"><u>Workers Analytics Engine</u></a> through to querying their own <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta"><u>Iceberg tables stored in R2</u></a>.</p>
-	<p>Traditional notebooks are incredibly powerful — but they were not built with collaboration, reproducibility, or deployment as data apps in mind. As usage grows across teams and workflows, these limitations face the reality of work at scale.</p>
-	<p><a href="https://marimo.io" target="_blank" rel="noopener noreferrer"><b><u>marimo</u></b></a> reimagines the notebook experience with these <a href="https://marimo.io/blog/lessons-learned" target="_blank" rel="noopener noreferrer"><u>challenges in mind</u></a>. It’s an <a href="https://github.com/marimo-team/marimo" target="_blank" rel="noopener noreferrer"><u>open-source</u></a> reactive Python notebook that’s built to be reproducible, easy to track in Git, executable as a standalone script, and deployable. We have partnered with the marimo team to bring this streamlined, production-friendly experience to Cloudflare developers. Spend less time wrestling with tools and more time exploring your data.</p>
-	<p>Today, we’re excited to announce three things:</p>
-	<ul>
-		<li>
-			<p><a href="https://notebooks.cloudflare.com/html-wasm/_start" target="_blank" rel="noopener noreferrer"><u>Cloudflare auth built into marimo notebooks</u></a> – Sign in with your Cloudflare account directly from a notebook and use Cloudflare APIs without needing to create API tokens</p>
-		</li>
-		<li>
-			<p><a href="https://github.com/cloudflare/notebook-examples" target="_blank" rel="noopener noreferrer"><u>Open-source notebook examples</u></a> – Explore your Cloudflare data with ready-to-run notebook examples for services like <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, and more</p>
-		</li>
-		<li>
-			<p><a href="https://github.com/cloudflare/containers-demos" target="_blank" rel="noopener noreferrer"><u>Run marimo on Cloudflare Containers</u></a> – Easily deploy marimo notebooks to Cloudflare Containers for scalable, long-running data workflows</p>
-		</li>
-	</ul>
-	<p>Want to start exploring your Cloudflare data with marimo right now? Head over to <a href="http://notebooks.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>notebooks.cloudflare.com</u></a>. Or, keep reading to learn more about marimo, how we’ve made authentication easy from within notebooks, and how you can use marimo to explore and share notebooks and apps on Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h3 id="why-marimo">Why marimo?</h3>
-		<a href="https://blog.cloudflare.com/#why-marimo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>marimo is an <a href="https://docs.marimo.io" target="_blank" rel="noopener noreferrer"><u>open-source</u></a> reactive Python notebook designed specifically for working with data, built from the ground up to solve many problems with traditional notebooks.</p>
-	<p>The core feature that sets marimo apart from traditional notebooks is its <a href="https://marimo.io/blog/lessons-learned" target="_blank" rel="noopener noreferrer"><u>reactive execution model</u></a>, powered by a statically inferred dataflow graph on cells. Run a cell or interact with a <a href="https://docs.marimo.io/guides/interactivity" target="_blank" rel="noopener noreferrer"><u>UI element</u></a>, and marimo either runs dependent cells or marks them as stale (your choice). This keeps code and outputs consistent, prevents bugs before they happen, and dramatically increases the speed at which you can experiment with data.&nbsp;</p>
-	<p>Thanks to reactive execution, notebooks are also deployable as data applications, making them easy to share. While you can run marimo notebooks locally, on cloud servers, GPUs — anywhere you can traditionally run software —&nbsp;you can also run them entirely in the browser <a href="https://docs.marimo.io/guides/wasm" target="_blank" rel="noopener noreferrer"><u>with WebAssembly</u></a>, bringing the cost of sharing down to zero.</p>
-	<p>Because marimo notebooks are stored as Python, they <a href="https://marimo.io/blog/python-not-json" target="_blank" rel="noopener noreferrer"><u>enjoy all the benefits of software</u></a>: version with Git, execute as a script or pipeline, test with pytest, inline package requirements with uv, and import symbols from your notebook into other Python modules. Though stored as Python, marimo also <a href="https://docs.marimo.io/guides/working_with_data/sql" target="_blank" rel="noopener noreferrer"><u>supports SQL</u></a> and data sources like DuckDB, Postgres, and Iceberg-based data catalogs (which marimo's <a href="https://docs.marimo.io/guides/generate_with_ai" target="_blank" rel="noopener noreferrer"><u>AI assistant</u></a> can access, in addition to data in RAM).</p>
-	<p>To get an idea of what a marimo notebook is like, check out the embedded example notebook below:</p>
-	<div class="post-content lh-copy gray1" max-width="1000px" width="1000px">
+<p>Many developers, data scientists, and researchers do much of their work in Python notebooks: they’ve been the de facto standard for data science and sharing for well over a decade. Notebooks are popular because they make it easy to code, explore data, prototype ideas, and share results. We use them heavily at Cloudflare, and we’re seeing more and more developers use notebooks to work with data – from analyzing trends in HTTP traffic, querying <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer"><u>Workers Analytics Engine</u></a> through to querying their own <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer"><u>Iceberg tables stored in R2</u></a>.</p>
+<p>Traditional notebooks are incredibly powerful — but they were not built with collaboration, reproducibility, or deployment as data apps in mind. As usage grows across teams and workflows, these limitations face the reality of work at scale.</p>
+<p><a href="https://marimo.io" target="_blank" rel="noopener noreferrer"><strong><u>marimo</u></strong></a> reimagines the notebook experience with these <a href="https://marimo.io/blog/lessons-learned" target="_blank" rel="noopener noreferrer"><u>challenges in mind</u></a>. It’s an <a href="https://github.com/marimo-team/marimo" target="_blank" rel="noopener noreferrer"><u>open-source</u></a> reactive Python notebook that’s built to be reproducible, easy to track in Git, executable as a standalone script, and deployable. We have partnered with the marimo team to bring this streamlined, production-friendly experience to Cloudflare developers. Spend less time wrestling with tools and more time exploring your data.</p>
+<p>Today, we’re excited to announce three things:</p>
+<ul>
+	<li><a href="https://notebooks.cloudflare.com/html-wasm/_start" target="_blank" rel="noopener noreferrer"><u>Cloudflare auth built into marimo notebooks</u></a> – Sign in with your Cloudflare account directly from a notebook and use Cloudflare APIs without needing to create API tokens</li>
+	<li><a href="https://github.com/cloudflare/notebook-examples" target="_blank" rel="noopener noreferrer"><u>Open-source notebook examples</u></a> – Explore your Cloudflare data with ready-to-run notebook examples for services like <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>, <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, and more</li>
+	<li><a href="https://github.com/cloudflare/containers-demos" target="_blank" rel="noopener noreferrer"><u>Run marimo on Cloudflare Containers</u></a> – Easily deploy marimo notebooks to Cloudflare Containers for scalable, long-running data workflows</li>
+</ul>
+<p>Want to start exploring your Cloudflare data with marimo right now? Head over to <a href="http://notebooks.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>notebooks.cloudflare.com</u></a>. Or, keep reading to learn more about marimo, how we’ve made authentication easy from within notebooks, and how you can use marimo to explore and share notebooks and apps on Cloudflare.</p>
+<h3>Why marimo?</h3>
+<p>marimo is an <a href="https://docs.marimo.io" target="_blank" rel="noopener noreferrer"><u>open-source</u></a> reactive Python notebook designed specifically for working with data, built from the ground up to solve many problems with traditional notebooks.</p>
+<p>The core feature that sets marimo apart from traditional notebooks is its <a href="https://marimo.io/blog/lessons-learned" target="_blank" rel="noopener noreferrer"><u>reactive execution model</u></a>, powered by a statically inferred dataflow graph on cells. Run a cell or interact with a <a href="https://docs.marimo.io/guides/interactivity" target="_blank" rel="noopener noreferrer"><u>UI element</u></a>, and marimo either runs dependent cells or marks them as stale (your choice). This keeps code and outputs consistent, prevents bugs before they happen, and dramatically increases the speed at which you can experiment with data.&nbsp;</p>
+<p>Thanks to reactive execution, notebooks are also deployable as data applications, making them easy to share. While you can run marimo notebooks locally, on cloud servers, GPUs — anywhere you can traditionally run software —&nbsp;you can also run them entirely in the browser <a href="https://docs.marimo.io/guides/wasm" target="_blank" rel="noopener noreferrer"><u>with WebAssembly</u></a>, bringing the cost of sharing down to zero.</p>
+<p>Because marimo notebooks are stored as Python, they <a href="https://marimo.io/blog/python-not-json" target="_blank" rel="noopener noreferrer"><u>enjoy all the benefits of software</u></a>: version with Git, execute as a script or pipeline, test with pytest, inline package requirements with uv, and import symbols from your notebook into other Python modules. Though stored as Python, marimo also <a href="https://docs.marimo.io/guides/working_with_data/sql" target="_blank" rel="noopener noreferrer"><u>supports SQL</u></a> and data sources like DuckDB, Postgres, and Iceberg-based data catalogs (which marimo's <a href="https://docs.marimo.io/guides/generate_with_ai" target="_blank" rel="noopener noreferrer"><u>AI assistant</u></a> can access, in addition to data in RAM).</p>
+<p>To get an idea of what a marimo notebook is like, check out the embedded example notebook below:</p>
+<div id="html-block-k2d" class="html-block">
+	<div class="post-content lh-copy gray1">
 		<div>
-			<iframe allow="fullscreen; autoplay; encrypted-media; picture-in-picture; clipboard-read; clipboard-write" src="https://koaning.github.io/drawdata/" style="margin:0 auto;border: 1px solid var;border-radius: 5px;max-height: 750px;"></iframe>
+			<iframe allow="fullscreen; autoplay; encrypted-media; picture-in-picture" src="https://koaning.github.io/drawdata/" style="margin:0 auto;border:1px solid var;border-radius:5px;max-height:750px"></iframe>
 		</div>
 	</div>
 	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="exploring-your-cloudflare-data-with-marimo">Exploring your Cloudflare data with marimo</h3>
-		<a href="https://blog.cloudflare.com/#exploring-your-cloudflare-data-with-marimo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Ready to explore your own Cloudflare data in a marimo notebook? The easiest way to begin is to visit <a href="http://notebooks.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>notebooks.cloudflare.com</u></a> and run one of our example notebooks directly in your browser via <a href="https://webassembly.org" target="_blank" rel="noopener noreferrer"><u>WebAssembly (Wasm)</u></a>. You can also browse the source in our <a href="https://github.com/cloudflare/notebook-examples" target="_blank" rel="noopener noreferrer"><u>notebook examples GitHub repo</u></a>.</p>
-	<p>Want to create your own notebook to run locally instead? Here’s a quick example that shows you how to authenticate with your Cloudflare account and list the zones you have access to:</p>
-	<ol>
-		<li>
-			<p>Install <a href="https://docs.astral.sh/uv" target="_blank" rel="noopener noreferrer"><u>uv</u></a> if you haven’t already by following the <a href="https://docs.astral.sh/uv/getting-started/installation" target="_blank" rel="noopener noreferrer"><u>installation guide</u></a>.</p>
-		</li>
-		<li>
-			<p>Create a new project directory for your notebook:</p>
-		</li>
-	</ol>
-	<pre class="language-Rust"><code class="language-Rust">mkdir cloudflare-zones-notebook
-cd cloudflare-zones-notebook</code></pre>
-	<p>3. Initialize a new uv project (this creates a <code>.venv</code> and a <code>pyproject.toml</code>):</p>
-	<pre class="language-Rust"><code class="language-Rust">uv init</code></pre>
-	<p>4. Add marimo and required dependencies:</p>
-	<pre class="language-Rust"><code class="language-Rust">uv add marimo</code></pre>
-	<p>5. Create a file called <code>list-zones.py</code> and paste in the following notebook:</p>
-	<pre class="language-Python"><code class="language-Python">import marimo
-
-__generated_with = "0.14.10"
-app = marimo.App(width="full", auto_download=["ipynb", "html"])
-
-
-@app.cell
-def _():
-    from moutils.oauth import PKCEFlow
-    import requests
-
-    # Start OAuth PKCE flow to authenticate with Cloudflare
-    auth = PKCEFlow(provider="cloudflare")
-
-    # Renders login UI in notebook
-    auth
-    return (auth,)
-
-
-@app.cell
-def _(auth):
-    import marimo as mo
-    from cloudflare import Cloudflare
-
-    mo.stop(not auth.access_token, mo.md("Please **sign in** using the button above."))
-    client = Cloudflare(api_token=auth.access_token)
-
-    zones = client.zones.list()
-    [zone.name for zone in zones.result]
-    return
-
-
-if __name__ == "__main__":
-    app.run()</code></pre>
-	<p>6. Open the notebook editor:</p>
-	<pre class="language-Rust"><code class="language-Rust">uv run marimo edit list-zones.py --sandbox</code></pre>
-	<p>7. Log in via the OAuth prompt in the notebook. Once authenticated, you’ll see a list of your Cloudflare zones in the final cell.</p>
-	<p>That’s it! From here, you can expand the notebook to call <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> models, query Iceberg tables in <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a>, or interact with any Cloudflare API.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-oauth-works-in-notebooks">How OAuth works in notebooks</h3>
-		<a href="https://blog.cloudflare.com/#how-oauth-works-in-notebooks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Think of OAuth like a secure handshake between your notebook and Cloudflare. Instead of copying and pasting API tokens, you just click “Sign in with Cloudflare” and the notebook handles the rest.</p>
-	<p>We built this experience using PKCE (Proof Key for Code Exchange), a secure OAuth 2.0 flow that avoids client secrets and protects against code interception attacks. PKCE works by generating a one-time code that’s exchanged for a token after login, without ever sharing a client secret. <a href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce" target="_blank" rel="noopener noreferrer"><u>Learn more about how PKCE works</u></a>.</p>
-	<p>The login widget lives in <a href="https://github.com/marimo-team/moutils/blob/main/notebooks/pkceflow_login.py" target="_blank" rel="noopener noreferrer"><u>moutils.oauth</u></a>, a collaboration between Cloudflare and marimo to make OAuth authentication simple and secure in notebooks. To use it, just create a cell like this:</p>
-	<pre class="language-Python"><code class="language-Python">auth = PKCEFlow(provider="cloudflare")
-
-# Renders login UI in notebook
-auth</code></pre>
-	<p>When you run the cell, you’ll see a Sign in with Cloudflare button:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2r3Dmuwcm4AZrhV39Gkhyl/c3f98a3780bc29f1c01ea945621fc005/image2.png" alt="Example sign in with Cloudflare button" class="kg-image" width="1600" height="682" loading="lazy">
-	</figure>
-	<p>Once logged in, you’ll have a read-only access token you can pass when using the Cloudflare API.</p>
-	<div class="flex anchor relative">
-		<h3 id="running-marimo-on-cloudflare-workers-and-containers">Running marimo on Cloudflare: Workers and Containers</h3>
-		<a href="https://blog.cloudflare.com/#running-marimo-on-cloudflare-workers-and-containers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In addition to running marimo notebooks locally, you can use Cloudflare to share and run them via <a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>Workers Static Assets</u></a> or <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>.</p>
-	<p>If you have a local notebook you want to share, you can publish it to Workers. This works because marimo can export notebooks to WebAssembly, allowing them to run entirely in the browser. You can get started with just two commands:</p>
-	<pre class="language-Rust"><code class="language-Rust">marimo export html-wasm notebook.py -o output_dir --mode edit --include-cloudflare
-npx wrangler deploy
-</code></pre>
-	<p>If your notebook needs authentication, you can layer in <a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> for secure, authenticated access.</p>
-	<p>For notebooks that require more compute, persistent sessions, or long-running tasks, you can deploy marimo on our <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable"><u>new container platform</u></a>. To get started, check out our <a href="https://github.com/cloudflare/containers-demos/tree/main/marimo" target="_blank" rel="noopener noreferrer"><u>marimo container example</u></a> on GitHub.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-next-for-cloudflare-marimo">What’s next for Cloudflare + marimo</h3>
-		<a href="https://blog.cloudflare.com/#whats-next-for-cloudflare-marimo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This blog post marks just the beginning of Cloudflare's partnership with marimo. While we're excited to see how you use our joint WebAssembly-based notebook platform to explore your Cloudflare data, we also want to help you bring serious compute to bear on your data — to empower you to run large scale analyses and batch jobs straight from marimo notebooks. Stay tuned!</p>
 </div>
+<h3>Exploring your Cloudflare data with marimo</h3>
+<p>Ready to explore your own Cloudflare data in a marimo notebook? The easiest way to begin is to visit <a href="http://notebooks.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>notebooks.cloudflare.com</u></a> and run one of our example notebooks directly in your browser via <a href="https://webassembly.org" target="_blank" rel="noopener noreferrer"><u>WebAssembly (Wasm)</u></a>. You can also browse the source in our <a href="https://github.com/cloudflare/notebook-examples" target="_blank" rel="noopener noreferrer"><u>notebook examples GitHub repo</u></a>.</p>
+<p>Want to create your own notebook to run locally instead? Here’s a quick example that shows you how to authenticate with your Cloudflare account and list the zones you have access to:</p>
+<ol>
+	<li>Install <a href="https://docs.astral.sh/uv" target="_blank" rel="noopener noreferrer"><u>uv</u></a> if you haven’t already by following the <a href="https://docs.astral.sh/uv/getting-started/installation" target="_blank" rel="noopener noreferrer"><u>installation guide</u></a>.</li>
+	<li>Create a new project directory for your notebook:</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">mkdir cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">zones</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">notebook</span></span>
+<span class="line"><span class="sk-24292e-fff">cd cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">zones</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">notebook</span></span></code></pre>
+</div>
+<p>3. Initialize a new uv project (this creates a <code>.venv</code> and a <code>pyproject.toml</code>):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">uv init</span></span></code></pre>
+</div>
+<p>4. Add marimo and required dependencies:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">uv add marimo</span></span></code></pre>
+</div>
+<p>5. Create a file called <code>list-zones.py</code> and paste in the following notebook:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> marimo</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">__generated_with </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "0.14.10"</span></span>
+<span class="line"><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> marimo.App(</span><span class="sk-e36209-fff">width</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"full"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">auto_download</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">[</span><span class="sk-032f62-99ffe4">"ipynb"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"html"</span><span class="sk-24292e-fff">])</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@app.cell</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> _</span><span class="sk-24292e-fff">():</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    from</span><span class="sk-24292e-fff"> moutils.oauth </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> PKCEFlow</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    import</span><span class="sk-24292e-fff"> requests</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # Start OAuth PKCE flow to authenticate with Cloudflare</span></span>
+<span class="line"><span class="sk-24292e-fff">    auth </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> PKCEFlow(</span><span class="sk-e36209-fff">provider</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # Renders login UI in notebook</span></span>
+<span class="line"><span class="sk-24292e-fff">    auth</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> (auth,)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@app.cell</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> _</span><span class="sk-24292e-fff">(auth):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    import</span><span class="sk-24292e-fff"> marimo </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> mo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    from</span><span class="sk-24292e-fff"> cloudflare </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Cloudflare</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    mo.stop(</span><span class="sk-d73a49-a0a0a0">not</span><span class="sk-24292e-fff"> auth.access_token, mo.md(</span><span class="sk-032f62-99ffe4">"Please **sign in** using the button above."</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">    client </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Cloudflare(</span><span class="sk-e36209-fff">api_token</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">auth.access_token)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    zones </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> client.zones.list()</span></span>
+<span class="line"><span class="sk-24292e-fff">    [zone.name </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> zone </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> zones.result]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-005cc5-fff"> __name__</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-032f62-99ffe4"> "__main__"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    app.run()</span></span></code></pre>
+</div>
+<p>6. Open the notebook editor:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">uv run marimo edit list</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">zones</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">py </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">sandbox</span></span></code></pre>
+</div>
+<p>7. Log in via the OAuth prompt in the notebook. Once authenticated, you’ll see a list of your Cloudflare zones in the final cell.</p>
+<p>That’s it! From here, you can expand the notebook to call <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> models, query Iceberg tables in <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a>, or interact with any Cloudflare API.</p>
+<h3>How OAuth works in notebooks</h3>
+<p>Think of OAuth like a secure handshake between your notebook and Cloudflare. Instead of copying and pasting API tokens, you just click “Sign in with Cloudflare” and the notebook handles the rest.</p>
+<p>We built this experience using PKCE (Proof Key for Code Exchange), a secure OAuth 2.0 flow that avoids client secrets and protects against code interception attacks. PKCE works by generating a one-time code that’s exchanged for a token after login, without ever sharing a client secret. <a href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce" target="_blank" rel="noopener noreferrer"><u>Learn more about how PKCE works</u></a>.</p>
+<p>The login widget lives in <a href="https://github.com/marimo-team/moutils/blob/main/notebooks/pkceflow_login.py" target="_blank" rel="noopener noreferrer"><u>moutils.oauth</u></a>, a collaboration between Cloudflare and marimo to make OAuth authentication simple and secure in notebooks. To use it, just create a cell like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">auth </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> PKCEFlow(</span><span class="sk-e36209-fff">provider</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Renders login UI in notebook</span></span>
+<span class="line"><span class="sk-24292e-fff">auth</span></span></code></pre>
+</div>
+<p>When you run the cell, you’ll see a Sign in with Cloudflare button:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="305" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=640&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=750&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=828&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1080&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1280&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1430&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example sign in with Cloudflare button" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1600&amp;h=682&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="682" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="305" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Once logged in, you’ll have a read-only access token you can pass when using the Cloudflare API.</p>
+<h3>Running marimo on Cloudflare: Workers and Containers</h3>
+<p>In addition to running marimo notebooks locally, you can use Cloudflare to share and run them via <a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>Workers Static Assets</u></a> or <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a>.</p>
+<p>If you have a local notebook you want to share, you can publish it to Workers. This works because marimo can export notebooks to WebAssembly, allowing them to run entirely in the browser. You can get started with just two commands:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">marimo export html</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">wasm notebook</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">py </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">o output_dir </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">mode edit </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">include</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span></span>
+<span class="line"><span class="sk-24292e-fff">npx wrangler deploy</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>If your notebook needs authentication, you can layer in <a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a> for secure, authenticated access.</p>
+<p>For notebooks that require more compute, persistent sessions, or long-running tasks, you can deploy marimo on our <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>new container platform</u></a>. To get started, check out our <a href="https://github.com/cloudflare/containers-demos/tree/main/marimo" target="_blank" rel="noopener noreferrer"><u>marimo container example</u></a> on GitHub.</p>
+<h3>What’s next for Cloudflare + marimo</h3>
+<p>This blog post marks just the beginning of Cloudflare's partnership with marimo. While we're excited to see how you use our joint WebAssembly-based notebook platform to explore your Cloudflare data, we also want to help you bring serious compute to bear on your data — to empower you to run large scale analyses and batch jobs straight from marimo notebooks. Stay tuned!</p>

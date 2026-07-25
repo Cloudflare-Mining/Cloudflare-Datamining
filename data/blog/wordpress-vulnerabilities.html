@@ -1,0 +1,81 @@
+<p>Cloudflare has deployed new Web Application Firewall (WAF) protections for two critical vulnerabilities affecting WordPress. The protections address an Unauthenticated Remote Code Execution (RCE) vulnerability in WordPress's REST API and a related SQL Injection vulnerability.</p>
+<p>The WordPress security team disclosed the vulnerabilities to Cloudflare before public release so that we could prepare protections for customers. <strong>Cloudflare has deployed the new rules to protect all customers, including those on free and paid plans, as long as their application traffic is proxied through the Cloudflare WAF.</strong> The rules were deployed at 17:03 UTC on July 17 2026.</p>
+<p>WAF protections reduce exposure while customers update, but they are not a substitute for patching. WordPress has released fixes in version 7.0.2, with backports to affected earlier branches: 6.9.5, 6.8.6, and 7.1 Beta 2 (<a href="https://wordpress.org/news/2026/07/wordpress-7-0-2-release" target="_blank" rel="noopener noreferrer"><u>see release details</u></a>). Versions earlier than 6.8 are not affected. WordPress is treating this as its highest-severity, highest-priority class of issue and is forcing automatic updates to affected sites, so most sites will be updated automatically. We still recommend confirming that you are on a patched release or the backports for your branch and follow the guidance in the official WordPress security release <a href="https://wordpress.org/news/2026/07/wordpress-7-0-2-release" target="_blank" rel="noopener noreferrer"><u>announcement</u></a>.&nbsp;</p>
+<h3>What you need to know</h3>
+<p>The vulnerabilities affect different parts of the request path:</p>
+<ul>
+	<li><strong>CVE-2026-60137: SQL injection. </strong>A vulnerability in WordPress version 6.8 and later allows crafted input to alter a database query. Rating High.</li>
+	<li><strong>CVE-2026-63030: Unauthenticated remote code execution. </strong>A vulnerability in WordPress version 6.9 and later allows an unauthenticated attacker to execute code through the batch endpoint of the REST API when a persistent object cache is not in use. This vulnerability is related to the SQL injection described above. No login or user interaction is required to exploit this vulnerability. Rating Critical.</li>
+</ul>
+<p>The SQL injection vulnerability is present from version 6.8 onwards, while the RCE only affects versions from 6.9. So 6.8.6 addresses the SQLi only since the RCE isn't present on 6.8, while 6.9.5, 7.0.2, and 7.1 Beta 2 get fixes for both.</p>
+<p>Cloudflare created two rules to detect requests associated with these vulnerabilities:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Rule description</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>CVE</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Rule ID for Managed Ruleset</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Rule ID for Free Ruleset</strong></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><strong>Default action</strong></p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wordpress - SQL Injection - CVE:CVE-2026-60137</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>CVE-2026-60137</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>1c060d3a371549219ee290d7ed933fcc</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>db003b39b7774859a8d588ce33697a1a</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Block</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wordpress - Remote Code Execution - CVE:CVE-2026-63030</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>CVE-2026-63030</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>7dfb2bd4708d4b88b9911dc0550664b6</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><code>ebd3f2df15c74ddcbf6220c9b5ec246a</code></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Block</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Cloudflare customers running WordPress sites on Pro, Business, or Enterprise plans should ensure that Cloudflare Managed Rules are enabled. Customers can follow the steps in our <a href="https://developers.cloudflare.com/waf/get-started/#1-deploy-the-cloudflare-managed-ruleset" target="_blank" rel="noopener noreferrer"><u>WAF Managed Rules documentation</u></a>. Customers on free plans are automatically protected through the Free Ruleset.</p>
+<p>The new rules are deployed with the default Managed Ruleset action of Block. Customers running WordPress sites should review any ruleset-level overrides, including those that change all rules from Block to Log, and ensure the new rules use the recommended action while they update WordPress. Cloudflare customers should also monitor Security Events for requests matching either rule.&nbsp;</p>
+<h3>Defense in depth while you patch</h3>
+<p>The SQL injection rule detects crafted parameter values before they reach WordPress. The unauthenticated RCE rule targets requests attempting to reach the remote code execution path. Together, they detect the attack at two different points.</p>
+<p>These rules reduce risk while organizations update affected systems; they do not fix the underlying vulnerable code. Updating WordPress remains the most effective way to address the vulnerabilities.<br>If an immediate update is not possible, verify that both Cloudflare rules are active with the recommended action and review logs for suspicious requests to the affected REST API endpoint.</p>
+<h3>Looking forward</h3>
+<p>Cloudflare will monitor matching traffic and test the rules against new attack variations, updating detections when needed.</p>
+<p>We thank the WordPress security team for coordinating with Cloudflare and other infrastructure providers to help protect users before details of the vulnerabilities became public.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/bmp;base64,Qk32BAAAAAAAADYAAAAoAAAACAAAAAgAAAABABgAAAAAAMAAAAATCwAAEwsAAAAAAAAAAAAA7uvr6Obm3N3d09jZ1Nrb2d3f29zd2dfX9vTz8O7v4eLl1trh1tzj3eHn4eLl4N7f////+/n66uvx3ODs3OLv5Ojz6uzx6+nq////////9vf+5+v55+388PT/9/j++Pb2////////////9vr/9/v/////////////////////////////////////////////////////////////////////////////////////////////////////////////" alt="" width="715" height="158" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=715&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=640&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=715&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=750&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=828&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=1080&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=1280&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=1430&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458F6D3TCXWZY4940259V4.png&amp;w=1200&amp;h=266&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="266" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="158" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p></p>

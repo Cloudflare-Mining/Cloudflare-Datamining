@@ -1,47 +1,21 @@
-<div class="mb2 gray5">1 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/developer-week-2024-wrap-up">简体中文</a>, <a href="https://blog.cloudflare.com/fr-fr/developer-week-2024-wrap-up">Français</a>, <a href="https://blog.cloudflare.com/de-de/developer-week-2024-wrap-up">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/developer-week-2024-wrap-up">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/developer-week-2024-wrap-up">한국어</a>, <a href="https://blog.cloudflare.com/es-es/developer-week-2024-wrap-up">Español</a> and <a href="https://blog.cloudflare.com/zh-tw/developer-week-2024-wrap-up">繁體中文</a>.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7fwPu75tSubJgSS8nJ5gOt/6e2fd9b7cc6f9dcd7b86d73988a6e5fb/Dev-week-wrap-up-1.jpg" alt="Developer Week 2024 wrap-up" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
-	<p>Developer Week 2024 has officially come to a close. Each day last week, we shipped new products and functionality geared towards giving developers the components they need to build full-stack applications on Cloudflare.</p>
-	<p>Even though Developer Week is now over, we are continuing to innovate with the over two million developers who build on our platform. Building a platform is only as exciting as seeing what developers build on it. Before we dive into a recap of the announcements, to send off the week, we wanted to share how a couple of companies are using Cloudflare to power their applications:</p>
-	<blockquote>
-		<p><i>We have been using Workers for image delivery using R2 and have been able to maintain stable operations for a year after implementation. The speed of deployment and the flexibility of detailed configurations have greatly reduced the time and effort required for traditional server management. In particular, we have seen a noticeable cost savings and are deeply appreciative of the support we have received from Cloudflare Workers.</i>- <a href="http://www.fancs.com" target="_blank" rel="noopener noreferrer">FAN Communications</a></p>
-	</blockquote>
-	<blockquote>
-		<p><i>Milkshake helps creators, influencers, and business owners create engaging web pages directly from their phone, to simply and creatively promote their projects and passions. Cloudflare has helped us migrate data quickly and affordably with R2. We use Workers as a routing layer between our users' websites and their images and assets, and to build a personalized analytics offering affordably. Cloudflare’s innovations have consistently allowed us to run infrastructure at a fraction of the cost of other developer platforms and we have been eagerly awaiting updates to D1 and Queues to sustainably scale Milkshake as the product continues to grow.</i>- <a href="https://milkshake.app" target="_blank" rel="noopener noreferrer">Milkshake</a></p>
-	</blockquote>
-	<p>In case you missed anything, here’s a quick recap of the announcements and in-depth technical explorations that went out last week:</p>
-	<div class="flex anchor relative">
-		<h2 id="summary-of-announcements">Summary of announcements</h2>
-		<a href="https://blog.cloudflare.com/#summary-of-announcements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="monday">Monday</h3>
-		<a href="https://blog.cloudflare.com/#monday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>Developer Week 2024 has officially come to a close. Each day last week, we shipped new products and functionality geared towards giving developers the components they need to build full-stack applications on Cloudflare.</p>
+<p>Even though Developer Week is now over, we are continuing to innovate with the over two million developers who build on our platform. Building a platform is only as exciting as seeing what developers build on it. Before we dive into a recap of the announcements, to send off the week, we wanted to share how a couple of companies are using Cloudflare to power their applications:</p>
+<blockquote>
+	<p><em>We have been using Workers for image delivery using R2 and have been able to maintain stable operations for a year after implementation. The speed of deployment and the flexibility of detailed configurations have greatly reduced the time and effort required for traditional server management. In particular, we have seen a noticeable cost savings and are deeply appreciative of the support we have received from Cloudflare Workers.</em>- <a href="http://www.fancs.com" target="_blank" rel="noopener noreferrer">FAN Communications</a></p>
+	<p><em>Milkshake helps creators, influencers, and business owners create engaging web pages directly from their phone, to simply and creatively promote their projects and passions. Cloudflare has helped us migrate data quickly and affordably with R2. We use Workers as a routing layer between our users' websites and their images and assets, and to build a personalized analytics offering affordably. Cloudflare’s innovations have consistently allowed us to run infrastructure at a fraction of the cost of other developer platforms and we have been eagerly awaiting updates to D1 and Queues to sustainably scale Milkshake as the product continues to grow.</em>- <a href="https://milkshake.app" target="_blank" rel="noopener noreferrer">Milkshake</a></p>
+</blockquote>
+<p>In case you missed anything, here’s a quick recap of the announcements and in-depth technical explorations that went out last week:</p>
+<h2>Summary of announcements</h2>
+<h3>Monday</h3>
+<div id="html-block-ko" class="html-block">
+	<style>
+		#html-block-ko .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-ko .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -54,7 +28,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-ko .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -68,19 +42,19 @@
 			word-break: normal;
 		}
 
-		.tg .tg-amwm {
+		#html-block-ko .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-zb5k {
+		#html-block-ko .tg .tg-zb5k {
 			color: #15C;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-ko .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
@@ -106,24 +80,18 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bindings don't just reduce boilerplate. They are a core design feature of the Workers platform which simultaneously improve developer experience and application security in several ways. Usually these two goals are in opposition to each other, but bindings elegantly solve for both at the same time.</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="tuesday">Tuesday</h3>
-		<a href="https://blog.cloudflare.com/#tuesday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<h3>Tuesday</h3>
+<div id="html-block-kr" class="html-block">
+	<style>
+		#html-block-kr .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-kr .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -136,7 +104,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-kr .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -150,13 +118,13 @@
 			word-break: normal;
 		}
 
-		.tg .tg-buh4 {
+		#html-block-kr .tg .tg-buh4 {
 			background-color: #f9f9f9;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-68av {
+		#html-block-kr .tg .tg-68av {
 			background-color: #f9f9f9;
 			color: #15C;
 			text-align: left;
@@ -164,25 +132,25 @@
 			vertical-align: top
 		}
 
-		.tg .tg-amwm {
+		#html-block-kr .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-zb5k {
+		#html-block-kr .tg .tg-zb5k {
 			color: #15C;
 			text-align: left;
 			text-decoration: underline;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-kr .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
@@ -203,24 +171,18 @@
 				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We introduced Python support for Cloudflare Workers, now in open beta. We've revamped our systems to support Python, from the Workers runtime itself to the way Workers are deployed to Cloudflare’s network. Learn about a Python Worker's lifecycle, Pyodide, dynamic linking, and memory snapshots in this post.</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="wednesday">Wednesday</h3>
-		<a href="https://blog.cloudflare.com/#wednesday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<h3>Wednesday</h3>
+<div id="html-block-ku" class="html-block">
+	<style>
+		#html-block-ku .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-ku .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -233,7 +195,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-ku .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -247,37 +209,37 @@
 			word-break: normal;
 		}
 
-		.tg .tg-buh4 {
+		#html-block-ku .tg .tg-buh4 {
 			background-color: #f9f9f9;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-68av {
+		#html-block-ku .tg .tg-68av {
 			background-color: #f9f9f9;
 			color: #15C;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-amwm {
+		#html-block-ku .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-zb5k {
+		#html-block-ku .tg .tg-zb5k {
 			color: #15C;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-ku .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
@@ -302,24 +264,18 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Picsart, one of the world’s largest digital creation platforms, encountered performance challenges in catering to its global audience. Adopting Cloudflare's global-by-default Developer Platform emerged as the optimal solution, empowering Picsart to enhance performance and scalability substantially.</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="thursday">Thursday</h3>
-		<a href="https://blog.cloudflare.com/#thursday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<h3>Thursday</h3>
+<div id="html-block-kx" class="html-block">
+	<style>
+		#html-block-kx .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-kx .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -332,7 +288,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-kx .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -346,13 +302,13 @@
 			word-break: normal;
 		}
 
-		.tg .tg-buh4 {
+		#html-block-kx .tg .tg-buh4 {
 			background-color: #f9f9f9;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-68av {
+		#html-block-kx .tg .tg-68av {
 			background-color: #f9f9f9;
 			color: #15C;
 			text-align: left;
@@ -360,25 +316,25 @@
 			vertical-align: top
 		}
 
-		.tg .tg-amwm {
+		#html-block-kx .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-zb5k {
+		#html-block-kx .tg .tg-zb5k {
 			color: #15C;
 			text-align: left;
 			text-decoration: underline;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-kx .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
@@ -403,24 +359,18 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare Calls is a serverless SFU and TURN service running at Cloudflare’s edge. It’s now in open beta and costs $0.05/ real-time GB. It’s 100% anycast WebRTC.</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="friday">Friday</h3>
-		<a href="https://blog.cloudflare.com/#friday" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<h3>Friday</h3>
+<div id="html-block-k10" class="html-block">
+	<style>
+		#html-block-k10 .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k10 .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -433,7 +383,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k10 .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -447,13 +397,13 @@
 			word-break: normal;
 		}
 
-		.tg .tg-buh4 {
+		#html-block-k10 .tg .tg-buh4 {
 			background-color: #f9f9f9;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-68av {
+		#html-block-k10 .tg .tg-68av {
 			background-color: #f9f9f9;
 			color: #15C;
 			text-align: left;
@@ -461,25 +411,25 @@
 			vertical-align: top
 		}
 
-		.tg .tg-amwm {
+		#html-block-k10 .tg .tg-amwm {
 			font-weight: bold;
 			text-align: center;
 			vertical-align: top
 		}
 
-		.tg .tg-zb5k {
+		#html-block-k10 .tg .tg-zb5k {
 			color: #15C;
 			text-align: left;
 			text-decoration: underline;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k10 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Announcement</span></th>
@@ -512,19 +462,14 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">We closed out Developer Week by sharing updates on our Workers Launchpad program, our latest Developer Challenge, and the work we’re doing to ensure our community spaces – like our Discord and Community forums – are safe and inclusive for all developers.</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Here's a video summary, by Craig Dennis, Developer Educator, AI:</p><!--kg-card-begin: html-->
-	<blockquote class="twitter-tweet" data-media-max-width="800">
-		<p lang="en" dir="ltr">🏃<a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Etfw">@CloudflareDev</a> Developer Week 2024 🧡 ICYMI 🧡 Speed run <a href="https://t.co/0uzPJshC93">pic.twitter.com/0uzPJshC93</a></p>— Craig Dennis (@craigsdennis) <a href="https://twitter.com/craigsdennis/status/1778875721575989734?ref_src=twsrc%5Etfw">April 12, 2024</a>
-	</blockquote>
-	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="continue-the-conversation">Continue the conversation</h3>
-		<a href="https://blog.cloudflare.com/#continue-the-conversation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Thank you for being a part of Developer Week! Want to continue the conversation and share what you’re building? Join us on <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord</a>. To get started building on Workers, check out our <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
+	</table>
 </div>
+<p>Here's a video summary, by Craig Dennis, Developer Educator, AI:</p>
+<div id="html-block-k13" class="html-block">
+	<blockquote class="twitter-tweet" data-media-max-width="800">
+		<p>🏃<a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Etfw">@CloudflareDev</a> Developer Week 2024 🧡 ICYMI 🧡 Speed run <a href="https://t.co/0uzPJshC93">pic.twitter.com/0uzPJshC93</a></p>— Craig Dennis (@craigsdennis) <a href="https://twitter.com/craigsdennis/status/1778875721575989734?ref_src=twsrc%5Etfw">April 12, 2024</a>
+	</blockquote>
+	<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<h3>Continue the conversation</h3>
+<p>Thank you for being a part of Developer Week! Want to continue the conversation and share what you’re building? Join us on <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord</a>. To get started building on Workers, check out our <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>

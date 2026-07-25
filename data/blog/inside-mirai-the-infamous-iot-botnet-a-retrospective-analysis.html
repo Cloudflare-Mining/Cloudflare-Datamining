@@ -1,557 +1,381 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/BQmPHUwiobcC1JPPSbpON/8582449eecb0249d05541db63fa0e001/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis.gif" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p><i>This is a guest post by Elie Bursztein who writes about security and anti-abuse research. It was first published on </i><a href="http://web.archive.org/web/20180104210057/https://elie.net/blog/security/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis" target="_blank" rel="noopener noreferrer"><i>his blog</i></a><i> and has been lightly edited.</i></p>
-	<p>This post provides a retrospective analysis of Mirai — the infamous Internet-of-Things botnet that took down major websites via massive distributed denial-of-service using hundreds of thousands of compromised Internet-Of-Things devices. This research was conducted by a team of researchers from Cloudflare (Jaime Cochran, Nick Sullivan), Georgia Tech, Google, Akamai, the University of Illinois, the University of Michigan, and Merit Network and resulted in <a href="http://web.archive.org/web/20180104210057/https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-antonakakis.pdf" target="_blank" rel="noopener noreferrer">a paper published at USENIX Security 2017</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lLZbSL8SEkofCrJXVyrg2/5c2e54715318491e944719920294fd82/the-guardian-mirai-largest-in-history.jpg" alt="" class="kg-image" width="1200" height="592" loading="lazy">
-
-	</figure>
-	<p>At its peak in September 2016, Mirai temporarily crippled several high-profile services such as <a href="http://web.archive.org/web/20180104210057/https://www.ovh.com/us" target="_blank" rel="noopener noreferrer">OVH</a>, <a href="http://web.archive.org/web/20180104210057/https://dyn.com" target="_blank" rel="noopener noreferrer">Dyn</a>, and <a href="http://web.archive.org/web/20180104210057/https://krebsonsecurity.com" target="_blank" rel="noopener noreferrer">Krebs on Security</a> via massive distributed <a href="http://web.archive.org/web/20180104210057/https://en.wikipedia.org/wiki/Denial-of-service_attack#Distributed_DoS" target="_blank" rel="noopener noreferrer">Denial of service attacks (DDoS)</a>. <a href="http://web.archive.org/web/20180104210057/https://www.ovh.com/us/news/articles/a2367.the-ddos-that-didnt-break-the-camels-vac" target="_blank" rel="noopener noreferrer">OVH reported</a> that these attacks exceeded 1 Tbps—the largest on public record.</p>
-	<p>What’s remarkable about these record-breaking attacks is they were carried out via small, innocuous Internet-of-Things (IoT) devices like home routers, air-quality monitors, and personal surveillance cameras. At its peak, Mirai infected over 600,000 vulnerable IoT devices, according to our measurements.</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2017/12/mirai-major-events-timeline.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Pf3BnahqRTCDrJRMNvGAw/e899a4fb18b6c491ba7ad082e732289c/mirai-major-events-timeline.png" alt="" class="kg-image" width="1200" height="677" loading="lazy">
-		</a>
-	</figure>
-	<ul>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-1">Mirai Genesis</a>: Discusses Mirai’s early days and provides a brief technical overview of how Mirai works and propagates.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-k">Krebs on Security attack</a>: Recounts how Mirai briefly silenced Brian Krebs website.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-2">OVH DDoS attack</a>: Examines the Mirai author’s attempt to take down one of the world’s largest hosting providers.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-c">The rise of copycats</a>: Covers the Mirai code release and how multiple hacking groups end-up reusing the code. This section also describes the techniques we used to track down the many variants of Mirai that arose after the release. Finally, this section discusses the targets and the motive behind each major variants.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-3">Mirai's takedown of the Internet</a>: Tells the insider story behind Dyn attacks including the fact that the major sites (e.g., Amazon) taken down were just massive collateral damage.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-4">Mirai’s attempted takedown of an entire country</a>: Looks at the multiple attacks carried out against Lonestar, Liberia’s largest operator.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-d">Deutsche Telekom goes dark</a>: Discusses how the addition of a router exploit to one of the Mirai variant brought a major German Internet provider to its knees.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-5">Mirai original author outed?</a>: Details Brian Krebs’ in-depth investigation into uncovering Mirai’s author.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/#toc-6">Deutsche Telekom attacker arrested</a>: Recounts the arrest of the hacker who took down Deutsche Telekom and what we learned from his trial.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="mirai-genesis">Mirai Genesis</h3>
-		<a href="https://blog.cloudflare.com/#mirai-genesis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DTQat2LJQ8Y2JOJ3rY7T7/18778fa29eecdb09653f5e0b54f98e31/mirai-intial-report.png" alt="" class="kg-image" width="959" height="509" loading="lazy">
-
-	</figure>
-	<p>The first public report of Mirai late <a href="http://blog.malwaremustdie.org/2016/08/mmd-0056-2016-linuxmirai-just.html" target="_blank" rel="noopener noreferrer">August 2016</a> generated little notice, and Mirai mostly remained in the shadows until mid-September. At that time, It was propelled in the spotlight when it was used to carry massive DDoS attacks against <a href="https://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos" target="_blank" rel="noopener noreferrer">Krebs on Security</a> the blog of a famous security journalist and <a href="https://www.ovh.com/us/news/articles/a2367.the-ddos-that-didnt-break-the-camels-vac" target="_blank" rel="noopener noreferrer">OVH</a>, one of the largest web hosting provider in the world.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tutmPQu7lod0Q5CrfJgyl/2f265d8da79fb91634a63c530a75d30f/mirai-initial-day-scanning-ips.png" alt="" class="kg-image" width="1200" height="750" loading="lazy">
-
-	</figure>
-	<p>While the world did not learn about Mirai until at the end of August, our telemetry reveals that it became active August 1st when the infection started out from a single bulletproof hosting IP. From thereon, Mirai spread quickly, doubling its size every 76 minutes in those early hours.</p>
-	<p>By the end of its first day, Mirai had infected over 65,000 IoT devices. By its second day, Mirai already accounted for half of all Internet telnet scans observed by our collective set of honeypots, as shown in the figure above. At its peak in November 2016 Mirai had infected over 600,000 IoT devices.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sA3idN9tsCnTEibksrFx1/1c8c27d014d94cc2b2c89e8c81ff8517/mirai-devices-breakdown.png" alt="" class="kg-image" width="1200" height="720" loading="lazy">
-
-	</figure>
-	<p>Retroactively looking at the infected device services banners using <a href="https://censys.io" target="_blank" rel="noopener noreferrer">Censys'</a> Internet-wide scanning reveals that most of the devices appear to be routers and cameras as reported in the chart above. Each type of banner is represented separately as the identification process was different for each, so it might be that a device is counted multiple times. Mirai was actively removing any banner identification which partially explains why we were unable to identify most of the devices.</p>
-	<p>Before delving further into Mirai’s story, let’s briefly look at how Mirai works, specifically how it propagates and its offensive capabilities.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-mirai-works">How Mirai works</h3>
-		<a href="https://blog.cloudflare.com/#how-mirai-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At its core, Mirai is a <a href="https://en.wikipedia.org/wiki/Computer_worm" target="_blank" rel="noopener noreferrer">self-propagating worm</a>, that is, it’s a malicious program that replicates itself by finding, attacking and infecting vulnerable IoT devices. It is also considered a botnet because the infected devices are controlled via a central set of command and control (C&amp;C) servers. These servers tell the infected devices which sites to attack next. Overall, Mirai is made of two key components: a replication module and an attack module.</p>
-	<div class="flex anchor relative">
-		<h3 id="replication-module">Replication module</h3>
-		<a href="https://blog.cloudflare.com/#replication-module" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7MPhfLTL6E6WUAS4xdlaJK/df41e701b5a6a815da33b075dbe96d96/mirai-infection-process.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>The replication module is responsible for growing the botnet size by enslaving as many vulnerable IoT devices as possible. It accomplishes this by (randomly) scanning the entire Internet for viable targets and attacking. Once it compromises a vulnerable device, the module reports it to the C&amp;C servers, so it can be infected with the latest Mirai payload, as the diagram above illustrates.</p>
-	<p>To compromise devices, the initial version of Mirai relied exclusively on a fixed set of 64 well-known default login/password combinations commonly used by IoT devices. While this attack was very low tech, it proved extremely effective and led to the compromise of over 600,000 devices. For more information about DDoS techniques, read this <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Cloudflare primer</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="attack-module">Attack module</h3>
-		<a href="https://blog.cloudflare.com/#attack-module" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CXRDsQBru2mC2SRjMEKmA/d4c18b04ebdecc7813831f95702b2819/mirai-attack-module.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>The attack module is responsible for carrying out DDoS attacks against the targets specified by the C&amp;C servers. This module implements most of the code DDoS techniques such as HTTP flooding, UDP flooding, and all TCP flooding options. This wide range of methods allowed Mirai to perform volumetric attacks, application-layer attacks, and TCP state-exhaustion attacks.</p>
-	<div class="flex anchor relative">
-		<h3 id="krebs-on-security-attack">Krebs on Security attack</h3>
-		<a href="https://blog.cloudflare.com/#krebs-on-security-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2QDBF6lY3eznSnre1Tllhn/bc842612f4050a94a5a1ae151845c170/krebs-on-security-timeline.png" alt="" class="kg-image" width="1200" height="750" loading="lazy">
-
-	</figure>
-	<p><a href="https://krebsonsecurity.com" target="_blank" rel="noopener noreferrer">Krebs on Security</a> is Brian Krebs’ blog. Krebs is a widely known independent journalist who specializes in cyber-crime. Given Brian’s line of work, his blog has been targeted, unsurprisingly, by many DDoS attacks launched by the cyber-criminals he exposes. According to his telemetry (thanks for sharing, Brian!), his blog suffered 269 DDoS attacks between July 2012 and September 2016. As seen in the chart above, the Mirai assault was by far the largest, topping out at 623 Gbps.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Kh8i6bd0zsu6DiCbd2J13/b44383857ee07cbb5c36baa519774a32/mirai-top-countries.png" alt="" class="kg-image" width="1200" height="720" loading="lazy">
-
-	</figure>
-	<p>Looking at the geolocation of the IPs that targeted Brian’s site reveals that a disproportionate number of the devices involved in the attack are coming from South American and South-east Asia. As reported in the chart above Brazil, Vietnam and Columbia appear to be the main sources of compromised devices.</p>
-	<p>One dire consequence of this massive attack against Krebs was that Akamai, the CDN service that provided Brian’s DDoS protection, had to withdraw its support. This forced <a href="https://www.csoonline.com/article/3123806/security/krebsonsecurity-moves-to-project-shield-for-protection-against-ddos-attack-censorship.html" target="_blank" rel="noopener noreferrer">Brian to move his site to Project Shield</a>. As he discussed in depth in <a href="https://krebsonsecurity.com/2016/09/the-democratization-of-censorship" target="_blank" rel="noopener noreferrer">a blog post</a>, this incident highlights how DDoS attacks have become a common and cheap way to censor people.</p>
-	<div class="flex anchor relative">
-		<h3 id="ovh-attack">OVH attack</h3>
-		<a href="https://blog.cloudflare.com/#ovh-attack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5CQ1HTPbEW8L92x2rbvHXV/189496f1b774d9e429b65d68e9e1f8c1/ovh-record-breaking-ddos-attack-ars-technica.jpg" alt="" class="kg-image" width="1200" height="462" loading="lazy">
-
-	</figure>
-	<p>Brian was not Mirai’s first high-profile victim. A few days before he was struck, Mirai attacked <a href="https://en.wikipedia.org/wiki/OVH" target="_blank" rel="noopener noreferrer">OVH</a>, one of the largest European hosting providers. According to their <a href="https://www.ovh.com/us/news/articles/a2367.the-ddos-that-didnt-break-the-camels-vac" target="_blank" rel="noopener noreferrer">official numbers</a>, OVH hosts roughly 18 million applications for over one million clients, <a href="https://wikileaks.org" target="_blank" rel="noopener noreferrer">Wikileaks</a> being one of their most famous and <a href="http://www.datacenterdynamics.com/content-tracks/security-risk/british-spies-monitored-ceo-of-ovh/97461.fullarticle" target="_blank" rel="noopener noreferrer">controversial</a>.</p>
-	<p>We know little about that attack as OVH did not participate in our joint study. As a result, the best information about it comes from a blog post OVH released after the event. From this post, it seems that the attack lasted about a week and involved large, intermittent bursts of DDoS traffic that targeted one undisclosed OVH customer.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4EGBcm6AzLQYAbpOMIV9ty/49afbdc85d44558f83418e6f60d68040/octave-klaba-ovh-ceo-tweet-about-mirai-attack.jpg" alt="" class="kg-image" width="1024" height="350" loading="lazy">
-
-	</figure>
-	<p>Octave Klaba, OVH’s founder, reported on Twitter that the attacks were targeting Minecraft servers. As we will see through this post, Mirai has been extensively used in gamer wars and is likely the reason why it was created in the first place.</p>
-	<p>According to OVH telemetry, the attack peaked at 1TBs and was carried out using 145,000 IoT devices. While the number of IoT devices is consistent with what we observed, the volume of the attack reported is significantly higher than what we observed with other attacks. For example, as mentioned earlier, Brian’s one topped out at 623 Gbps.</p>
-	<p>Regardless of the exact size, the Mirai attacks are clearly the largest ever recorded. They dwarf the previous public record holder, an attack against Cloudflare that topped out at <a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">~400Gpbs</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-rise-of-copycats">The rise of copycats</h3>
-		<a href="https://blog.cloudflare.com/#the-rise-of-copycats" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/xH2mtNePk44v5s9FQA2Yq/f842456fab6dab7041d03b496631bb4d/mirai-code-leaked-on-blackmarket-forums.png" alt="" class="kg-image" width="1200" height="480" loading="lazy">
-
-	</figure>
-	<p>In an unexpected development, on September 30, 2017, Anna-senpai, Mirai’s alleged author, <a href="https://krebsonsecurity.com/2016/10/source-code-for-iot-botnet-mirai-released" target="_blank" rel="noopener noreferrer">released the Mirai source code</a> via an infamous hacking forum. He also wrote a forum post, shown in the screenshot above, announcing his retirement.</p>
-	<p>This code release sparked a proliferation of copycat hackers who started to run their own Mirai botnets. From that point forward, the Mirai attacks were not tied to a single actor or infrastructure but to multiple groups, which made attributing the attacks and discerning the motive behind them significantly harder.</p>
-	<div class="flex anchor relative">
-		<h3 id="clustering-mirai-infrastructure">Clustering Mirai infrastructure</h3>
-		<a href="https://blog.cloudflare.com/#clustering-mirai-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To keep up with the Mirai variants proliferation and track the various hacking groups behind them, we turned to infrastructure clustering. Reverse engineering all the Mirai versions we can find allowed us to extract the IP addresses and domains used as C&amp;C by the various hacking groups than ran their own Mirai variant. In total, we recovered two IP addresses and 66 distinct domains.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1faeNrvBOwlBs5NidT4BFN/1d5f2ac063d174b4968adac17cdec3ff/mirai-botnet-graph-labels.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>Applying DNS expansion on the extracted domains and clustering them led us to identify 33 independent C&amp;C clusters that had no shared infrastructure. The smallest of these clusters used a single IP as C&amp;C. The largest sported 112 domains and 92 IP address. The figure above depicts the six largest clusters we found.</p>
-	<p>These top clusters used very different naming schemes for their domain names: for example, “cluster 23” favors domains related to animals such as 33kitensspecial.pw, while “cluster 1” has many domains related to e-currencies such as walletzone.ru. The existence of many distinct infrastructures with different characteristics confirms that multiple groups ran Mirai independently after the source code was leaked.</p>
-	<div class="flex anchor relative">
-		<h3 id="clusters-over-time">Clusters over time</h3>
-		<a href="https://blog.cloudflare.com/#clusters-over-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Looking at how many DNS lookups were made to their respective C&amp;C infrastructures allowed us to reconstruct the timeline of each individual cluster and estimate its relative size. This accounting is possible because each bot must regularly perform a DNS lookup to know which IP address its C&amp;C domains resolves to.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SNKlCPLxxYJh5EDwXxp9f/3a6a057b498bd0b0eaa65c45f94744bd/mirai-variants-dns-lookup-overtime-splitted-graph.png" alt="" class="kg-image" width="1200" height="750" loading="lazy">
-
-	</figure>
-	<p>The chart above reports the number of DNS lookups over time for some of the largest clusters. It highlights the fact that many were active at the same time. Having multiple variants active simultaneously once again emphasizes that multiple actors with different motives were competing to infect vulnerable IoT devices to carry out their DDoS attacks.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GU3BOCTyKr6zh8L1baXLn/13301e42e67cd4837449ebcaeea1936a/mirai-variants-dns-lookup-overtime.png" alt="" class="kg-image" width="1200" height="768" loading="lazy">
-
-	</figure>
-	<p>Plotting all the variants in the graph clearly shows that the ranges of IoT devices infect by each variant differ widely. As the graph above reveals, while there were many Mirai variants, very few succeeded at growing a botnet large enough to take down major websites.</p>
-	<div class="flex anchor relative">
-		<h3 id="from-cluster-to-motive">From cluster to motive</h3>
-		<a href="https://blog.cloudflare.com/#from-cluster-to-motive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Notable clusters</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Cluster</b></p>
-				</td>
-				<td>
-					<p><b>Notes</b></p>
-				</td>
+<p><em>This is a guest post by Elie Bursztein who writes about security and anti-abuse research. It was first published on <a href="http://web.archive.org/web/20180104210057/https://elie.net/blog/security/inside-mirai-the-infamous-iot-botnet-a-retrospective-analysis" target="_blank" rel="noopener noreferrer">his blog</a> and has been lightly edited.</em></p>
+<p>This post provides a retrospective analysis of Mirai — the infamous Internet-of-Things botnet that took down major websites via massive distributed denial-of-service using hundreds of thousands of compromised Internet-Of-Things devices. This research was conducted by a team of researchers from Cloudflare (Jaime Cochran, Nick Sullivan), Georgia Tech, Google, Akamai, the University of Illinois, the University of Michigan, and Merit Network and resulted in <a href="http://web.archive.org/web/20180104210057/https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-antonakakis.pdf" target="_blank" rel="noopener noreferrer">a paper published at USENIX Security 2017</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="353" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=640&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=750&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=828&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=1080&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=1280&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=1430&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - jwzOt9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H7GRRREW0H8SPXQCT6SF.jpg&amp;w=1200&amp;h=592&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="592" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="353" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>At its peak in September 2016, Mirai temporarily crippled several high-profile services such as <a href="http://web.archive.org/web/20180104210057/https://www.ovh.com/us" target="_blank" rel="noopener noreferrer">OVH</a>, <a href="http://web.archive.org/web/20180104210057/https://dyn.com" target="_blank" rel="noopener noreferrer">Dyn</a>, and <a href="http://web.archive.org/web/20180104210057/https://krebsonsecurity.com" target="_blank" rel="noopener noreferrer">Krebs on Security</a> via massive distributed <a href="http://web.archive.org/web/20180104210057/https://en.wikipedia.org/wiki/Denial-of-service_attack#Distributed_DoS" target="_blank" rel="noopener noreferrer">Denial of service attacks (DDoS)</a>. <a href="http://web.archive.org/web/20180104210057/https://www.ovh.com/us/news/articles/a2367.the-ddos-that-didnt-break-the-camels-vac" target="_blank" rel="noopener noreferrer">OVH reported</a> that these attacks exceeded 1 Tbps—the largest on public record.</p>
+<p>What’s remarkable about these record-breaking attacks is they were carried out via small, innocuous Internet-of-Things (IoT) devices like home routers, air-quality monitors, and personal surveillance cameras. At its peak, Mirai infected over 600,000 vulnerable IoT devices, according to our measurements.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - HFwSXq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW499K99Y7296D8DDA62ES46.png&amp;w=1200&amp;h=677&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="677" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li><a href="https://blog.cloudflare.com/#toc-1">Mirai Genesis</a>: Discusses Mirai’s early days and provides a brief technical overview of how Mirai works and propagates.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-k">Krebs on Security attack</a>: Recounts how Mirai briefly silenced Brian Krebs website.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-2">OVH DDoS attack</a>: Examines the Mirai author’s attempt to take down one of the world’s largest hosting providers.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-c">The rise of copycats</a>: Covers the Mirai code release and how multiple hacking groups end-up reusing the code. This section also describes the techniques we used to track down the many variants of Mirai that arose after the release. Finally, this section discusses the targets and the motive behind each major variants.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-3">Mirai's takedown of the Internet</a>: Tells the insider story behind Dyn attacks including the fact that the major sites (e.g., Amazon) taken down were just massive collateral damage.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-4">Mirai’s attempted takedown of an entire country</a>: Looks at the multiple attacks carried out against Lonestar, Liberia’s largest operator.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-d">Deutsche Telekom goes dark</a>: Discusses how the addition of a router exploit to one of the Mirai variant brought a major German Internet provider to its knees.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-5">Mirai original author outed?</a>: Details Brian Krebs’ in-depth investigation into uncovering Mirai’s author.</li>
+	<li><a href="https://blog.cloudflare.com/#toc-6">Deutsche Telekom attacker arrested</a>: Recounts the arrest of the hacker who took down Deutsche Telekom and what we learned from his trial.</li>
+</ul>
+<h3>Mirai Genesis</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="379" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=640&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=750&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=828&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=1080&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=1280&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=1430&amp;h=758&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - 2V32eu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JMNCEJVVPGXVC125Q1W1.png&amp;w=959&amp;h=509&amp;f=webp" data-lightbox-width="959" data-lightbox-height="509" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="379" class="pt-portable-image-media"></div>
+</figure>
+<p>The first public report of Mirai late <a href="http://blog.malwaremustdie.org/2016/08/mmd-0056-2016-linuxmirai-just.html" target="_blank" rel="noopener noreferrer">August 2016</a> generated little notice, and Mirai mostly remained in the shadows until mid-September. At that time, It was propelled in the spotlight when it was used to carry massive DDoS attacks against <a href="https://krebsonsecurity.com/2016/09/krebsonsecurity-hit-with-record-ddos" target="_blank" rel="noopener noreferrer">Krebs on Security</a> the blog of a famous security journalist and <a href="https://www.ovh.com/us/news/articles/a2367.the-ddos-that-didnt-break-the-camels-vac" target="_blank" rel="noopener noreferrer">OVH</a>, one of the largest web hosting provider in the world.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - nIGVv9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491J95DAEDSB18WE590X1F.png&amp;w=1200&amp;h=750&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="750" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<p>While the world did not learn about Mirai until at the end of August, our telemetry reveals that it became active August 1st when the infection started out from a single bulletproof hosting IP. From thereon, Mirai spread quickly, doubling its size every 76 minutes in those early hours.</p>
+<p>By the end of its first day, Mirai had infected over 65,000 IoT devices. By its second day, Mirai already accounted for half of all Internet telnet scans observed by our collective set of honeypots, as shown in the figure above. At its peak in November 2016 Mirai had infected over 600,000 IoT devices.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - I7xs1u" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VXER96BWQH569A92MXRS.png&amp;w=1200&amp;h=720&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="720" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
+</figure>
+<p>Retroactively looking at the infected device services banners using <a href="https://censys.io" target="_blank" rel="noopener noreferrer">Censys'</a> Internet-wide scanning reveals that most of the devices appear to be routers and cameras as reported in the chart above. Each type of banner is represented separately as the identification process was different for each, so it might be that a device is counted multiple times. Mirai was actively removing any banner identification which partially explains why we were unable to identify most of the devices.</p>
+<p>Before delving further into Mirai’s story, let’s briefly look at how Mirai works, specifically how it propagates and its offensive capabilities.</p>
+<h3>How Mirai works</h3>
+<p>At its core, Mirai is a <a href="https://en.wikipedia.org/wiki/Computer_worm" target="_blank" rel="noopener noreferrer">self-propagating worm</a>, that is, it’s a malicious program that replicates itself by finding, attacking and infecting vulnerable IoT devices. It is also considered a botnet because the infected devices are controlled via a central set of command and control (C&amp;C) servers. These servers tell the infected devices which sites to attack next. Overall, Mirai is made of two key components: a replication module and an attack module.</p>
+<h3>Replication module</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - N3jw0k" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SJZ4CX7JQHZV7SBSMCW6.png&amp;w=1200&amp;h=675&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="675" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>The replication module is responsible for growing the botnet size by enslaving as many vulnerable IoT devices as possible. It accomplishes this by (randomly) scanning the entire Internet for viable targets and attacking. Once it compromises a vulnerable device, the module reports it to the C&amp;C servers, so it can be infected with the latest Mirai payload, as the diagram above illustrates.</p>
+<p>To compromise devices, the initial version of Mirai relied exclusively on a fixed set of 64 well-known default login/password combinations commonly used by IoT devices. While this attack was very low tech, it proved extremely effective and led to the compromise of over 600,000 devices. For more information about DDoS techniques, read this <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer">Cloudflare primer</a>.</p>
+<h3>Attack module</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - 9MhDzP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C9VHK54ZKMTFGSR3JSMV.png&amp;w=1200&amp;h=675&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="675" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>The attack module is responsible for carrying out DDoS attacks against the targets specified by the C&amp;C servers. This module implements most of the code DDoS techniques such as HTTP flooding, UDP flooding, and all TCP flooding options. This wide range of methods allowed Mirai to perform volumetric attacks, application-layer attacks, and TCP state-exhaustion attacks.</p>
+<h3>Krebs on Security attack</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - N8yuGl" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459GTWXYVM9Z110J9G67SG.png&amp;w=1200&amp;h=750&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="750" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://krebsonsecurity.com" target="_blank" rel="noopener noreferrer">Krebs on Security</a> is Brian Krebs’ blog. Krebs is a widely known independent journalist who specializes in cyber-crime. Given Brian’s line of work, his blog has been targeted, unsurprisingly, by many DDoS attacks launched by the cyber-criminals he exposes. According to his telemetry (thanks for sharing, Brian!), his blog suffered 269 DDoS attacks between July 2012 and September 2016. As seen in the chart above, the Mirai assault was by far the largest, topping out at 623 Gbps.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - 999mHs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497WWZTDRBJSFVPR7ZQFJA.png&amp;w=1200&amp;h=720&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="720" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
+</figure>
+<p>Looking at the geolocation of the IPs that targeted Brian’s site reveals that a disproportionate number of the devices involved in the attack are coming from South American and South-east Asia. As reported in the chart above Brazil, Vietnam and Columbia appear to be the main sources of compromised devices.</p>
+<p>One dire consequence of this massive attack against Krebs was that Akamai, the CDN service that provided Brian’s DDoS protection, had to withdraw its support. This forced <a href="https://www.csoonline.com/article/3123806/security/krebsonsecurity-moves-to-project-shield-for-protection-against-ddos-attack-censorship.html" target="_blank" rel="noopener noreferrer">Brian to move his site to Project Shield</a>. As he discussed in depth in <a href="https://krebsonsecurity.com/2016/09/the-democratization-of-censorship" target="_blank" rel="noopener noreferrer">a blog post</a>, this incident highlights how DDoS attacks have become a common and cheap way to censor people.</p>
+<h3>OVH attack</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="275" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=715&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=640&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=715&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=750&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=828&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=1080&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=1280&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=1430&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - rb7MdY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4798T51J8KR6P43T4Q3QWK.jpg&amp;w=1200&amp;h=462&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="462" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="275" class="pt-portable-image-media"></div>
+</figure>
+<p>Brian was not Mirai’s first high-profile victim. A few days before he was struck, Mirai attacked <a href="https://en.wikipedia.org/wiki/OVH" target="_blank" rel="noopener noreferrer">OVH</a>, one of the largest European hosting providers. According to their <a href="https://www.ovh.com/us/news/articles/a2367.the-ddos-that-didnt-break-the-camels-vac" target="_blank" rel="noopener noreferrer">official numbers</a>, OVH hosts roughly 18 million applications for over one million clients, <a href="https://wikileaks.org" target="_blank" rel="noopener noreferrer">Wikileaks</a> being one of their most famous and <a href="http://www.datacenterdynamics.com/content-tracks/security-risk/british-spies-monitored-ceo-of-ovh/97461.fullarticle" target="_blank" rel="noopener noreferrer">controversial</a>.</p>
+<p>We know little about that attack as OVH did not participate in our joint study. As a result, the best information about it comes from a blog post OVH released after the event. From this post, it seems that the attack lasted about a week and involved large, intermittent bursts of DDoS traffic that targeted one undisclosed OVH customer.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=640&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=750&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=828&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=1080&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=1280&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=1430&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - BvAMm3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46K0DTJWR7EAG92N01754E.jpg&amp;w=1024&amp;h=350&amp;f=webp" data-lightbox-width="1024" data-lightbox-height="350" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="244" class="pt-portable-image-media"></div>
+</figure>
+<p>Octave Klaba, OVH’s founder, reported on Twitter that the attacks were targeting Minecraft servers. As we will see through this post, Mirai has been extensively used in gamer wars and is likely the reason why it was created in the first place.</p>
+<p>According to OVH telemetry, the attack peaked at 1TBs and was carried out using 145,000 IoT devices. While the number of IoT devices is consistent with what we observed, the volume of the attack reported is significantly higher than what we observed with other attacks. For example, as mentioned earlier, Brian’s one topped out at 623 Gbps.</p>
+<p>Regardless of the exact size, the Mirai attacks are clearly the largest ever recorded. They dwarf the previous public record holder, an attack against Cloudflare that topped out at <a href="https://blog.cloudflare.com/technical-details-behind-a-400gbps-ntp-amplification-ddos-attack">~400Gpbs</a>.</p>
+<h3>The rise of copycats</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="286" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=715&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=640&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=715&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=750&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=828&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=1080&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=1280&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=1430&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - aJY8rz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NAPP9EQDJZHC5B57J7NE.png&amp;w=1200&amp;h=480&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="286" class="pt-portable-image-media"></div>
+</figure>
+<p>In an unexpected development, on September 30, 2017, Anna-senpai, Mirai’s alleged author, <a href="https://krebsonsecurity.com/2016/10/source-code-for-iot-botnet-mirai-released" target="_blank" rel="noopener noreferrer">released the Mirai source code</a> via an infamous hacking forum. He also wrote a forum post, shown in the screenshot above, announcing his retirement.</p>
+<p>This code release sparked a proliferation of copycat hackers who started to run their own Mirai botnets. From that point forward, the Mirai attacks were not tied to a single actor or infrastructure but to multiple groups, which made attributing the attacks and discerning the motive behind them significantly harder.</p>
+<h3>Clustering Mirai infrastructure</h3>
+<p>To keep up with the Mirai variants proliferation and track the various hacking groups behind them, we turned to infrastructure clustering. Reverse engineering all the Mirai versions we can find allowed us to extract the IP addresses and domains used as C&amp;C by the various hacking groups than ran their own Mirai variant. In total, we recovered two IP addresses and 66 distinct domains.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - Z3lDt4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QECKAVHVEGWW5MX80A6A.png&amp;w=1200&amp;h=675&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="675" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>Applying DNS expansion on the extracted domains and clustering them led us to identify 33 independent C&amp;C clusters that had no shared infrastructure. The smallest of these clusters used a single IP as C&amp;C. The largest sported 112 domains and 92 IP address. The figure above depicts the six largest clusters we found.</p>
+<p>These top clusters used very different naming schemes for their domain names: for example, “cluster 23” favors domains related to animals such as 33kitensspecial.pw, while “cluster 1” has many domains related to e-currencies such as walletzone.ru. The existence of many distinct infrastructures with different characteristics confirms that multiple groups ran Mirai independently after the source code was leaked.</p>
+<h3>Clusters over time</h3>
+<p>Looking at how many DNS lookups were made to their respective C&amp;C infrastructures allowed us to reconstruct the timeline of each individual cluster and estimate its relative size. This accounting is possible because each bot must regularly perform a DNS lookup to know which IP address its C&amp;C domains resolves to.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - xX1wwt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R1KMMYRVWT973D8YNVP0.png&amp;w=1200&amp;h=750&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="750" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<p>The chart above reports the number of DNS lookups over time for some of the largest clusters. It highlights the fact that many were active at the same time. Having multiple variants active simultaneously once again emphasizes that multiple actors with different motives were competing to infect vulnerable IoT devices to carry out their DDoS attacks.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="458" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=640&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=750&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=828&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=1080&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=1280&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=1430&amp;h=916&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - MVCK5l" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QFJZMBXFDNS3D4E9HZ31.png&amp;w=1200&amp;h=768&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="768" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="458" class="pt-portable-image-media"></div>
+</figure>
+<p>Plotting all the variants in the graph clearly shows that the ranges of IoT devices infect by each variant differ widely. As the graph above reveals, while there were many Mirai variants, very few succeeded at growing a botnet large enough to take down major websites.</p>
+<h3>From cluster to motive</h3>
+<p>Notable clusters</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Cluster</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Notes</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Attacked Dyn and gaming related targets</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Original botnet. Attacked Krebs and OVH</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Attacked Lonestar Cell</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Looking at which sites were targeted by the largest clusters illuminates the specific motives behind those variants. For instance, as reported in the table above, the original Mirai botnet (cluster 1) targeted OVH and Krebs, whereas Mirai’s largest instance (cluster 6) targeted DYN and other gaming-related sites. Mirai’s third-largest variant (cluster 2), in contrast, went after African telecom operators, as recounted later in this post.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Target</b></p>
-				</td>
-				<td>
-					<p><b>Attacks</b></p>
-				</td>
-				<td>
-					<p><b>Clusters</b></p>
-				</td>
-				<td>
-					<p><b>Notes</b></p>
-				</td>
+</div>
+<p>Looking at which sites were targeted by the largest clusters illuminates the specific motives behind those variants. For instance, as reported in the table above, the original Mirai botnet (cluster 1) targeted OVH and Krebs, whereas Mirai’s largest instance (cluster 6) targeted DYN and other gaming-related sites. Mirai’s third-largest variant (cluster 2), in contrast, went after African telecom operators, as recounted later in this post.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Target</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Attacks</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Clusters</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Notes</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Lonestar Cell</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>616</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Liberian telecom targeted by 102 reflection attacks</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Sky Network</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>318</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>15, 26, 6</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Brazilian Minecraft servers hosted in Psychz Networks data centers</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>104.85.165.1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>192</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1, 2, 6, 8, 11, 15 ...</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Unknown router in Akamai’s network</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>feseli.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>157</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Russian cooking blog</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Minomortaruolo.it</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>157</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Italian politician site</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Voxility hosted C2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>106</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1, 2, 6, 7, 15 ...</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Known decoy target</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Tuidang websites</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>100</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>--</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>HTTP attacks on two Chinese political dissidence sites</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>execrypt.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>96</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-0-</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Binary obfuscation service</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Auktionshilfe.info</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>85</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2, 13</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Russian auction site</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>houtai.longqikeji.com</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>85</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>25</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SYN attacks on a former game commerce site</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Runescape</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>73</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>—</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>World 26th of a popular online game</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>184.84.240.54</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>72</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1, 10, 11, 15 ...</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Unknown target hosted at Akamai</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>antiddos.solutions</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>71</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>—</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AntiDDoS service offered at react.su.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Looking at the most attacked services across all Mirai variants reveals the following:</p>
-	<ol>
-		<li>
-			<p><b>Booter services monetized Mirai</b>: The wide diversity of targets shows that booter services ran at least some of the largest clusters. A booter service is a service provided by cyber criminals that offers on-demand DDoS attack capabilities to paying customers.</p>
-		</li>
-		<li>
-			<p><b>There are fewer actors than clusters</b>: Some clusters have strong overlapping targets, which tends to indicate that they were run by the same actors. For example, clusters 15, 26, and 6 were used to target specific Minecraft servers.</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="mirais-takedown-of-the-internet">Mirai’s takedown of the Internet</h3>
-		<a href="https://blog.cloudflare.com/#mirais-takedown-of-the-internet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On October 21, a <a href="http://money.cnn.com/2016/10/21/technology/ddos-attack-popular-sites/index.html" target="_blank" rel="noopener noreferrer">Mirai attack</a> targeted the popular DNS provider DYN. This event prevented Internet users from <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack" target="_blank" rel="noopener noreferrer">accessing many popular websites</a>, including AirBnB, Amazon, GitHub, HBO, Netflix, PayPal, Reddit, and Twitter, by disturbing the DYN name-resolution service.</p>
-	<p>We believe this attack was not meant to “take down the Internet,” as it was painted by the press, but rather was linked to a larger set of attacks against gaming platforms.</p>
-	<p>We reached this conclusion by looking at the other targets of the DYN variant (cluster 6). They are all gaming related. Additionally, this is also consistent with the OVH attack as it was also targeted because it hosted specific game servers as discussed earlier. As sad as it seems, all the prominent sites affected by the DYN attack were apparently just the spectacular collateral damage to a war between gamers.</p>
-	<div class="flex anchor relative">
-		<h3 id="mirais-attempted-takedown-of-an-entire-countrys-network-october-31">Mirai’s attempted takedown of an entire country's network? October 31</h3>
-		<a href="https://blog.cloudflare.com/#mirais-attempted-takedown-of-an-entire-countrys-network-october-31" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RuhwBi0AWQgL2q82OCE7s/50a53ca7f0aa658a378ac543f51a3279/mirai-shutdown-internet-in-liberia-hackernews.jpg" alt="" class="kg-image" width="1200" height="560" loading="lazy">
-
-	</figure>
-	<p>Lonestar Cell, one of the largest Liberian telecom operators started to be targeted by Mirai on October 31. Over the next few months, it suffered 616 attacks, the most of any Mirai victim.</p>
-	<p>The fact that the Mirai cluster responsible for these attack has no common infrastructure with the original Mirai or the DYN variant indicate that they were orchestrated by a totally different actor than the original author.</p>
-	<p>A few weeks after our study was published, this assessment was confirmed when the author of one of the most aggressive Mirai variant <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware" target="_blank" rel="noopener noreferrer">confessed during his trial</a> that he was paid to takedown Lonestar. He acknowledged that an unnamed Liberia’s ISP paid him $10,000 to take out its competitors. This validated that our clustering approach is able to accurately track and attribute Mirai’s attacks.</p>
-	<div class="flex anchor relative">
-		<h3 id="deutsche-telekom-going-dark">Deutsche Telekom going dark</h3>
-		<a href="https://blog.cloudflare.com/#deutsche-telekom-going-dark" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On November 26, 2016, one of the largest German Internet provider Deutsche Telekom suffered a <a href="https://www.csoonline.com/article/3144197/security/upgraded-mirai-botnet-disrupts-deutsche-telekom-by-infecting-routers.html" target="_blank" rel="noopener noreferrer">massive outage</a> after 900,000 of its routers were compromised.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/56okNq2XipDTr1CAZ2oHjZ/5d4295fbbdc6aa4fbe7447542ddffd29/mira-german-outage-failed-attempt-reuters.jpg" alt="" class="kg-image" width="1200" height="634" loading="lazy">
-
-	</figure>
-	<p>Ironically, this outage was not due to yet another Mirai DDoS attack but instead due to a particularly innovative and buggy version of Mirai that knocked these devices offline while attempting to compromise them. This variant also affected thousands of <a href="https://motherboard.vice.com/en_us/article/nz7ky7/hackers-say-knocking-thousands-of-brits-offline-was-an-accident-mirai" target="_blank" rel="noopener noreferrer">TalkTalk routers</a>.</p>
-	<p>What allowed this variant to infect so many routers was the addition to its replication module of a router exploit targeting at the <a href="https://en.wikipedia.org/wiki/TR-069" target="_blank" rel="noopener noreferrer">CPE WAN Management Protocol (CWMP)</a>. The CWMP protocol is an HTTP-based protocol used by many Internet providers to autoconfigure and remotely manage home routers, modems, and other customer-on-premises (CPE) equipment.</p>
-	<p>Beside its scale, this incident is significant because it demonstrates how the weaponizations of more complex IoT vulnerabilities by hackers can lead to very potent botnets. We hope the Deutsche Telekom event acts as a wake-up call and push toward making IoT auto-update mandatory. This is much needed to curb the significant risk posed by vulnerable IoT device given the poor track record of Internet users manually patching their IoT devices.</p>
-	<div class="flex anchor relative">
-		<h3 id="mirai-original-author-outed">Mirai original author outed?</h3>
-		<a href="https://blog.cloudflare.com/#mirai-original-author-outed" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the months following his website being taken offline, Brian Krebs devoted hundreds of hours to investigating Anna-Senpai, the infamous Mirai author. In early January 2017, Brian announced that he <a href="https://krebsonsecurity.com/2017/01/who-is-anna-senpai-the-mirai-worm-author" target="_blank" rel="noopener noreferrer">believes</a> Anna-senpai to be Paras Jha, a Rutgers student who apparently has been involved in previous game-hacking related schemes. Brian also identified Josia White as a person of interest. After being outed, Paras Jha and Josia White and another individual were questioned by authorities and <a href="https://krebsonsecurity.com/2017/12/mirai-iot-botnet-co-authors-plead-guilty" target="_blank" rel="noopener noreferrer">plead guilty</a> in federal court to a variety of charges, some including their activity related to Mirai.</p>
-	<div class="flex anchor relative">
-		<h3 id="deutsche-telekom-attacker-arrested">Deutsche Telekom attacker arrested</h3>
-		<a href="https://blog.cloudflare.com/#deutsche-telekom-attacker-arrested" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In November 2016, Daniel Kaye (aka BestBuy) the author of the Mirai botnet variant that brought down Deutsche Telekom was arrested at the <a href="http://www.bbc.com/news/technology-37510502" target="_blank" rel="noopener noreferrer">Luton airport</a>. Prior to Mirai, a 29-year-old British citizen was infamous for selling his hacking services on various dark web markets.</p>
-	<p>In July 2017 a few months after being extradited to Germany Daniel Kaye <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware" target="_blank" rel="noopener noreferrer">plead guilty</a> and was sentenced to a one year and a half imprisonment with suspension. During the trial, Daniel admitted that he never intended for the routers to cease functioning. He only wanted to silently control them, so he can use them as part of a DDoS botnet to increase his botnet firepower. As discussed earlier he also confessed being paid by competitors to takedown Lonestar.</p>
-	<p>In Aug 2017 Daniel was <a href="https://www.theguardian.com/uk-news/2017/aug/30/alleged-mastermind-daniel-kaye-lloyds-bank-cyber-attacks-extradited-uk" target="_blank" rel="noopener noreferrer">extradited back to the UK to face extortion charges</a> after attempting to blackmail Lloyds and Barclays banks. According to press reports, he asked the Lloyds to pay about £75,000 in bitcoins for the attack to be called off.</p>
-	<div class="flex anchor relative">
-		<h3 id="takeaways">Takeaways</h3>
-		<a href="https://blog.cloudflare.com/#takeaways" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The prevalence of insecure IoT devices on the Internet makes it very likely that, for the foreseeable future, they will be the main source of DDoS attacks.</p>
-	<p>Mirai and subsequent IoT botnets can be averted if IoT vendors start to follow basic security best practices. In particular, we recommend that the following should be required of all IoT device makers:</p>
-	<ul>
-		<li>
-			<p><b>Eliminate default credentials</b>: This will prevent hackers from constructing a credential main list that allows them to compromise a myriad of devices as MIRAI did.</p>
-		</li>
-		<li>
-			<p><b>Make auto-patching mandatory</b>: IoT devices are meant to be “set and forget,” which makes manual patching unlikely. Having them auto-patch is the only reasonable option to ensure that no widespread vulnerability like the Deutsche Telekom one can be exploited to take down a large chunk of the Internet.</p>
-		</li>
-		<li>
-			<p><b>Implement rate limiting</b>: Enforcing login rate limiting to prevent brute-force attack is a good way to mitigate the tendency of people to use weak passwords. Another alternative would be using a captcha or a proof or work.</p>
-		</li>
-	</ul>
-	<p>Thank you for reading this post until the end!</p>
 </div>
+<p>Looking at the most attacked services across all Mirai variants reveals the following:</p>
+<ol>
+	<li><strong>Booter services monetized Mirai</strong>: The wide diversity of targets shows that booter services ran at least some of the largest clusters. A booter service is a service provided by cyber criminals that offers on-demand DDoS attack capabilities to paying customers.</li>
+	<li><strong>There are fewer actors than clusters</strong>: Some clusters have strong overlapping targets, which tends to indicate that they were run by the same actors. For example, clusters 15, 26, and 6 were used to target specific Minecraft servers.</li>
+</ol>
+<h3>Mirai’s takedown of the Internet</h3>
+<p>On October 21, a <a href="http://money.cnn.com/2016/10/21/technology/ddos-attack-popular-sites/index.html" target="_blank" rel="noopener noreferrer">Mirai attack</a> targeted the popular DNS provider DYN. This event prevented Internet users from <a href="https://en.wikipedia.org/wiki/2016_Dyn_cyberattack" target="_blank" rel="noopener noreferrer">accessing many popular websites</a>, including AirBnB, Amazon, GitHub, HBO, Netflix, PayPal, Reddit, and Twitter, by disturbing the DYN name-resolution service.</p>
+<p>We believe this attack was not meant to “take down the Internet,” as it was painted by the press, but rather was linked to a larger set of attacks against gaming platforms.</p>
+<p>We reached this conclusion by looking at the other targets of the DYN variant (cluster 6). They are all gaming related. Additionally, this is also consistent with the OVH attack as it was also targeted because it hosted specific game servers as discussed earlier. As sad as it seems, all the prominent sites affected by the DYN attack were apparently just the spectacular collateral damage to a war between gamers.</p>
+<h3>Mirai’s attempted takedown of an entire country's network? October 31</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="334" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=640&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=750&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=828&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=1080&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=1280&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=1430&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - 0UnPK5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AC3286W43TTN2RBRX893.jpg&amp;w=1200&amp;h=560&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="560" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="334" class="pt-portable-image-media"></div>
+</figure>
+<p>Lonestar Cell, one of the largest Liberian telecom operators started to be targeted by Mirai on October 31. Over the next few months, it suffered 616 attacks, the most of any Mirai victim.</p>
+<p>The fact that the Mirai cluster responsible for these attack has no common infrastructure with the original Mirai or the DYN variant indicate that they were orchestrated by a totally different actor than the original author.</p>
+<p>A few weeks after our study was published, this assessment was confirmed when the author of one of the most aggressive Mirai variant <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware" target="_blank" rel="noopener noreferrer">confessed during his trial</a> that he was paid to takedown Lonestar. He acknowledged that an unnamed Liberia’s ISP paid him $10,000 to take out its competitors. This validated that our clustering approach is able to accurately track and attribute Mirai’s attacks.</p>
+<h3>Deutsche Telekom going dark</h3>
+<p>On November 26, 2016, one of the largest German Internet provider Deutsche Telekom suffered a <a href="https://www.csoonline.com/article/3144197/security/upgraded-mirai-botnet-disrupts-deutsche-telekom-by-infecting-routers.html" target="_blank" rel="noopener noreferrer">massive outage</a> after 900,000 of its routers were compromised.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="378" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=715&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=640&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=715&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=750&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=828&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=1080&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=1280&amp;h=677&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=1430&amp;h=756&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Inside the infamous Mirai IoT Botnet: A Retrospective Analysis Embedded Image - hNfQqH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47744SACK6QSX04FEMKRPE.jpg&amp;w=1200&amp;h=634&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="634" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="378" class="pt-portable-image-media"></div>
+</figure>
+<p>Ironically, this outage was not due to yet another Mirai DDoS attack but instead due to a particularly innovative and buggy version of Mirai that knocked these devices offline while attempting to compromise them. This variant also affected thousands of <a href="https://motherboard.vice.com/en_us/article/nz7ky7/hackers-say-knocking-thousands-of-brits-offline-was-an-accident-mirai" target="_blank" rel="noopener noreferrer">TalkTalk routers</a>.</p>
+<p>What allowed this variant to infect so many routers was the addition to its replication module of a router exploit targeting at the <a href="https://en.wikipedia.org/wiki/TR-069" target="_blank" rel="noopener noreferrer">CPE WAN Management Protocol (CWMP)</a>. The CWMP protocol is an HTTP-based protocol used by many Internet providers to autoconfigure and remotely manage home routers, modems, and other customer-on-premises (CPE) equipment.</p>
+<p>Beside its scale, this incident is significant because it demonstrates how the weaponizations of more complex IoT vulnerabilities by hackers can lead to very potent botnets. We hope the Deutsche Telekom event acts as a wake-up call and push toward making IoT auto-update mandatory. This is much needed to curb the significant risk posed by vulnerable IoT device given the poor track record of Internet users manually patching their IoT devices.</p>
+<h3>Mirai original author outed?</h3>
+<p>In the months following his website being taken offline, Brian Krebs devoted hundreds of hours to investigating Anna-Senpai, the infamous Mirai author. In early January 2017, Brian announced that he <a href="https://krebsonsecurity.com/2017/01/who-is-anna-senpai-the-mirai-worm-author" target="_blank" rel="noopener noreferrer">believes</a> Anna-senpai to be Paras Jha, a Rutgers student who apparently has been involved in previous game-hacking related schemes. Brian also identified Josia White as a person of interest. After being outed, Paras Jha and Josia White and another individual were questioned by authorities and <a href="https://krebsonsecurity.com/2017/12/mirai-iot-botnet-co-authors-plead-guilty" target="_blank" rel="noopener noreferrer">plead guilty</a> in federal court to a variety of charges, some including their activity related to Mirai.</p>
+<h3>Deutsche Telekom attacker arrested</h3>
+<p>In November 2016, Daniel Kaye (aka BestBuy) the author of the Mirai botnet variant that brought down Deutsche Telekom was arrested at the <a href="http://www.bbc.com/news/technology-37510502" target="_blank" rel="noopener noreferrer">Luton airport</a>. Prior to Mirai, a 29-year-old British citizen was infamous for selling his hacking services on various dark web markets.</p>
+<p>In July 2017 a few months after being extradited to Germany Daniel Kaye <a href="https://www.bleepingcomputer.com/news/security/hacker-bestbuy-admits-to-hijacking-deutsche-telekom-routers-with-mirai-malware" target="_blank" rel="noopener noreferrer">plead guilty</a> and was sentenced to a one year and a half imprisonment with suspension. During the trial, Daniel admitted that he never intended for the routers to cease functioning. He only wanted to silently control them, so he can use them as part of a DDoS botnet to increase his botnet firepower. As discussed earlier he also confessed being paid by competitors to takedown Lonestar.</p>
+<p>In Aug 2017 Daniel was <a href="https://www.theguardian.com/uk-news/2017/aug/30/alleged-mastermind-daniel-kaye-lloyds-bank-cyber-attacks-extradited-uk" target="_blank" rel="noopener noreferrer">extradited back to the UK to face extortion charges</a> after attempting to blackmail Lloyds and Barclays banks. According to press reports, he asked the Lloyds to pay about £75,000 in bitcoins for the attack to be called off.</p>
+<h3>Takeaways</h3>
+<p>The prevalence of insecure IoT devices on the Internet makes it very likely that, for the foreseeable future, they will be the main source of DDoS attacks.</p>
+<p>Mirai and subsequent IoT botnets can be averted if IoT vendors start to follow basic security best practices. In particular, we recommend that the following should be required of all IoT device makers:</p>
+<ul>
+	<li><strong>Eliminate default credentials</strong>: This will prevent hackers from constructing a credential main list that allows them to compromise a myriad of devices as MIRAI did.</li>
+	<li><strong>Make auto-patching mandatory</strong>: IoT devices are meant to be “set and forget,” which makes manual patching unlikely. Having them auto-patch is the only reasonable option to ensure that no widespread vulnerability like the Deutsche Telekom one can be exploited to take down a large chunk of the Internet.</li>
+	<li><strong>Implement rate limiting</strong>: Enforcing login rate limiting to prevent brute-force attack is a good way to mitigate the tendency of people to use weak passwords. Another alternative would be using a captcha or a proof or work.</li>
+</ul>
+<p>Thank you for reading this post until the end!</p>

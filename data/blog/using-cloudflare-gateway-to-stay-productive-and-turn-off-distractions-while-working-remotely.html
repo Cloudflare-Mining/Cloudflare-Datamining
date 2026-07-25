@@ -1,90 +1,48 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DguuragluUrKw3ySvW7bb/962af4fea57bccabc0ae1b8c356926da/using-cloudflare-gateway-to-stay-productive-and-turn-off-distractions-while-working-remotely.gif" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>This week, like many of you reading this article, I am working from home. I don’t know about you, but I’ve found it hard to stay focused when the Internet is full of news related to the coronavirus.</p>
-	<p>CNN. Twitter. Fox News. It doesn’t matter where you look, everyone is vying for your attention. It’s totally riveting…</p>
-	<p>… and it’s really hard not to get distracted.</p>
-	<p>It got me annoyed enough that I decided to do something about it. Using Cloudflare’s <a href="https://teams.cloudflare.com/gateway/index.html" target="_blank" rel="noopener noreferrer">new product, Cloudflare Gateway,</a> I removed all the online distractions I normally get snared by — at least during working hours.</p>
-	<p>This blog post isn’t very long, but that’s a function of how easy it is to get Gateway up and running!</p>
-	<div class="flex anchor relative">
-		<h2 id="getting-started">Getting Started</h2>
-		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To get started, you’ll want to set up Gateway under your Cloudflare account. Head to the <a href="https://dash.teams.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare for Teams dashboard</a> to set it up for free (if you don’t already have a Cloudflare account, hit the ‘Sign up’ button beneath the login form).</p>
-	<p>If you are using Gateway for the first time, the dashboard will take you through an onboarding experience:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lFkfxTeOS4EvgngLGsfYj/52c3788760f69a70386be4d202af7e9c/1.gif" alt="" class="kg-image" width="1572" height="771" loading="lazy">
-
-	</figure>
-	<p>The onboarding flow will help you set up your first location. A location is usually a physical entity like your home, office, store or a data center.</p>
-	<p>When you are setting up your location, the dashboard will automatically identify your IP address and create a location using that IP. Gateway will associate requests from your router or device by matching requests with your location by using the linked IP address of your location (for an IPv4 network). If you are curious, you can read more about how Gateway determines your location <a href="https://developers.cloudflare.com/gateway/locations/match-query-to-location" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<p>Before you complete the setup you will have to change your router’s DNS settings by removing the existing DNS resolvers and adding Cloudflare Gateway’s recursive DNS resolvers:</p>
-	<ul>
-		<li>
-			<p>172.64.36.1</p>
-		</li>
-		<li>
-			<p>172.64.36.2</p>
-		</li>
-	</ul>
-	<p>How you configure your DNS settings may vary by router or a device, so we <a href="https://developers.cloudflare.com/gateway/locations/setup-instructions" target="_blank" rel="noopener noreferrer">created a page</a> to show you how to change DNS settings for different devices.</p>
-	<p>You can also watch this video to learn how to setup Gateway:</p>
-	<div class="flex anchor relative">
-		<h2 id="deep-work">Deep Work</h2>
-		<a href="https://blog.cloudflare.com/#deep-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Next up, in the dashboard, I am going to go to my policies and create a policy that will block my access to distracting sites. You can call your policy anything you want, but I am going to call mine “Deep work.”</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/28c4V0EDP1aLZTLgD7chc8/5d484fd48dc619647c4f0de6e904c00b/2-1.png" alt="" class="kg-image" width="1600" height="1430" loading="lazy">
-
-	</figure>
-	<p>And I will add a few websites that I don’t want to get distracted by, like CNN, Fox News and Twitter.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27zOQlDV1Rw5bPxMwKGFk0/219d2d689189ffcda7e4adf988392788/3-1.png" alt="" class="kg-image" width="1600" height="1551" loading="lazy">
-
-	</figure>
-	<p>After I add the domains, I hit Save.</p>
-	<p>If you find the prospect of blocking all of these websites cumbersome, you can use category-based DNS filtering to block all domains that are associated with a category (‘Content categories’ have limited capabilities on Gateway’s free tier).</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pUCaw8tWwVF7a90HLHgxt/4fb11fef3d278dac1633694d290a2f95/4-1.png" alt="" class="kg-image" width="1600" height="901" loading="lazy">
-
-	</figure>
-	<p>So if I select Sports, all websites that are related to Sports will now be blocked by Gateway. This will take most people a few minutes to complete.</p>
-	<p>And once you set the rules by hitting ‘Save’, it will take just seconds for the selected policies to propagate across all of Cloudflare’s data centers, spread across more than 200 cities around the world.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-can-i-test-if-gateway-is-blocking-the-websites">How can I test if Gateway is blocking the websites?</h2>
-		<a href="https://blog.cloudflare.com/#how-can-i-test-if-gateway-is-blocking-the-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you now try to go to one of the blocked websites, you will see the following page on your browser:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41ohJ8ViJNlpQnSg0U2lui/31a1be3bb2144ba19ec0bd040fc20563/5.png" alt="" class="kg-image" width="1600" height="874" loading="lazy">
-
-	</figure>
-	<p>Cloudflare Gateway is letting your browser know that the website you blocked is unreachable. You can also test if Gateway is working by using dig or nslookup on your machine:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sncQ9FhDKMtHuta8Se20H/f8ad20a29702a3e2aeee1faf059667ae/6.png" alt="" class="kg-image" width="1132" height="578" loading="lazy">
-
-	</figure>
-	<p>If a domain is blocked, you will see the following in the DNS response <code>status: **REFUSED.**</code></p>
-	<p>This means that the policy you created is working!</p>
-	<p>And once working hours are over, it’s back to being glued to the latest news.</p>
-	<p>If you’d rather watch this in video format, here’s one I recorded earlier:</p>
-	<p>And to everyone dealing with the challenges of COVID-19 and working from home — stay safe!</p>
-</div>
+<p>This week, like many of you reading this article, I am working from home. I don’t know about you, but I’ve found it hard to stay focused when the Internet is full of news related to the coronavirus.</p>
+<p>CNN. Twitter. Fox News. It doesn’t matter where you look, everyone is vying for your attention. It’s totally riveting…</p>
+<p>… and it’s really hard not to get distracted.</p>
+<p>It got me annoyed enough that I decided to do something about it. Using Cloudflare’s <a href="https://teams.cloudflare.com/gateway/index.html" target="_blank" rel="noopener noreferrer">new product, Cloudflare Gateway,</a> I removed all the online distractions I normally get snared by — at least during working hours.</p>
+<p>This blog post isn’t very long, but that’s a function of how easy it is to get Gateway up and running!</p>
+<h2>Getting Started</h2>
+<p>To get started, you’ll want to set up Gateway under your Cloudflare account. Head to the <a href="https://dash.teams.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare for Teams dashboard</a> to set it up for free (if you don’t already have a Cloudflare account, hit the ‘Sign up’ button beneath the login form).</p>
+<p>If you are using Gateway for the first time, the dashboard will take you through an onboarding experience:</p>
+<p>The onboarding flow will help you set up your first location. A location is usually a physical entity like your home, office, store or a data center.</p>
+<p>When you are setting up your location, the dashboard will automatically identify your IP address and create a location using that IP. Gateway will associate requests from your router or device by matching requests with your location by using the linked IP address of your location (for an IPv4 network). If you are curious, you can read more about how Gateway determines your location <a href="https://developers.cloudflare.com/gateway/locations/match-query-to-location" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>Before you complete the setup you will have to change your router’s DNS settings by removing the existing DNS resolvers and adding Cloudflare Gateway’s recursive DNS resolvers:</p>
+<ul>
+	<li>172.64.36.1</li>
+	<li>172.64.36.2</li>
+</ul>
+<p>How you configure your DNS settings may vary by router or a device, so we <a href="https://developers.cloudflare.com/gateway/locations/setup-instructions" target="_blank" rel="noopener noreferrer">created a page</a> to show you how to change DNS settings for different devices.</p>
+<p>You can also watch this video to learn how to setup Gateway:</p>
+<h2>Deep Work</h2>
+<p>Next up, in the dashboard, I am going to go to my policies and create a policy that will block my access to distracting sites. You can call your policy anything you want, but I am going to call mine “Deep work.”</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="639" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=715&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=640&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=715&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=750&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=828&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=1080&amp;h=965&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=1280&amp;h=1144&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=1430&amp;h=1278&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using Cloudflare Gateway to Stay Productive (and turn off distractions) While Working Remotely Embedded Image - d2qwKr" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452KYHR8N8GXD9DFVD6S45.png&amp;w=1600&amp;h=1430&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1430" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="639" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>And I will add a few websites that I don’t want to get distracted by, like CNN, Fox News and Twitter.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="693" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=715&amp;h=693&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=640&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=715&amp;h=693&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=750&amp;h=727&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=828&amp;h=803&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=1080&amp;h=1047&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=1280&amp;h=1241&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=1430&amp;h=1386&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using Cloudflare Gateway to Stay Productive (and turn off distractions) While Working Remotely Embedded Image - 5yfv7Z" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW452AK1BD25ZPYVDE0WDNTE.png&amp;w=1600&amp;h=1551&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1551" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="693" class="pt-portable-image-media"></div>
+</figure>
+<p>After I add the domains, I hit Save.</p>
+<p>If you find the prospect of blocking all of these websites cumbersome, you can use category-based DNS filtering to block all domains that are associated with a category (‘Content categories’ have limited capabilities on Gateway’s free tier).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using Cloudflare Gateway to Stay Productive (and turn off distractions) While Working Remotely Embedded Image - TJRDqZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZYFEC48ZE43E1C9X9ESK.png&amp;w=1600&amp;h=901&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="901" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<p>So if I select Sports, all websites that are related to Sports will now be blocked by Gateway. This will take most people a few minutes to complete.</p>
+<p>And once you set the rules by hitting ‘Save’, it will take just seconds for the selected policies to propagate across all of Cloudflare’s data centers, spread across more than 200 cities around the world.</p>
+<h2>How can I test if Gateway is blocking the websites?</h2>
+<p>If you now try to go to one of the blocked websites, you will see the following page on your browser:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="391" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=715&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=640&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=715&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=750&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=828&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=1080&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=1280&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=1430&amp;h=782&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using Cloudflare Gateway to Stay Productive (and turn off distractions) While Working Remotely Embedded Image - pC34xD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EAK1450M1TJ8E356R15P.png&amp;w=1600&amp;h=874&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="874" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="391" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare Gateway is letting your browser know that the website you blocked is unreachable. You can also test if Gateway is working by using dig or nslookup on your machine:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using Cloudflare Gateway to Stay Productive (and turn off distractions) While Working Remotely Embedded Image - XHhogY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44W6NXWCHC7JMYAE3ZD55V.png&amp;w=1132&amp;h=578&amp;f=webp" data-lightbox-width="1132" data-lightbox-height="578" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<p>If a domain is blocked, you will see the following in the DNS response <code>status: **REFUSED.**</code></p>
+<p>This means that the policy you created is working!</p>
+<p>And once working hours are over, it’s back to being glued to the latest news.</p>
+<p>If you’d rather watch this in video format, here’s one I recorded earlier:</p>
+<p>And to everyone dealing with the challenges of COVID-19 and working from home — stay safe!</p>

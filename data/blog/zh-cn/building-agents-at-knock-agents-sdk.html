@@ -1,0 +1,325 @@
+<p><em>此内容已使用自动机器翻译服务进行翻译，仅供您参考及阅读便利。其中可能包含错误、遗漏，或与原始英文版本存在理解方面的细微差别。如有疑问，请参考原始英文版本。</em></p>
+<p><sub><em>这是<a href="https://knock.app" target="_blank" rel="noopener noreferrer"><u> Knock 首席技术官 Chris Bell 的客座帖子</u></a></em></sub></p>
+<p>现在有很多关于构建 <a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI 代理</a>的讨论，但却很少讨论如何使这些代理真正<em>有用</em>。</p>
+<p>代理是一种自治系统，旨在做出决策和执行行动以实现特定目标或一组目标，而无需人工输入。</p>
+<p>无论您的智能体多么擅长决策，您都需要有人为它实现目标提供指导或建议。毕竟，一个无法与外界互动或响应的智能体及管理它的系统将是有限的，它能够解决的问题将会是有限的。</p>
+<p>这就是“人机交互”交互模式的用武之地了。您让一个人<em>进入</em>智能体的控制循环，并要求人类进行输入，然后智能体才能继续执行其任务。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="625" height="565" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=625&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=625&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 625w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=640&amp;h=579&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=750&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=828&amp;h=749&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=1080&amp;h=976&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=1250&amp;h=1130&amp;f=webp&amp;fit=cover&amp;position=center 1250w" alt="BLOG-2809 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4898YAFZHB7GEBXJW520N4.png&amp;w=625&amp;h=565&amp;f=webp" data-lightbox-width="625" data-lightbox-height="565" data-astro-cid-7nvefuv6="true" sizes="(min-width: 625px) 625px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="625" height="565" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>在本篇博客文章中，我们将使用<a href="https://knock.app" target="_blank" rel="noopener noreferrer"> <u>Knock</u></a> 和 Cloudflare<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"> <u>Agents SDK</u></a> 为虚拟发卡工作流程构建 AI 代理，该工作流程在请求新信用卡时需要人工批准。</p>
+<p>您可以<a href="https://github.com/knocklabs/ai-agent-examples/tree/main/card-issue-agent" target="_blank" rel="noopener noreferrer"><u>在存储库中</u></a>找到此示例的完整代码。</p>
+<h2>什么是 Knock？</h2>
+<p><a href="https://knock.app" target="_blank" rel="noopener noreferrer"><u>Knock</u></a> 是一种消息传递基础设施，可让您用于在应用内、电子邮件、短信、推送和 Slack 中发送多渠道消息，无需编写任何集成代码。</p>
+<p>使用 Knock，您可以完全了解发送给用户的消息，同时处理可靠交付、用户通知首选项等。</p>
+<p>您可以使用 Knock 的<a href="https://docs.knock.app/developer-tools/agent-toolkit/overview" target="_blank" rel="noopener noreferrer"> <u>Agent Toolkit</u></a>为您的智能体提供人机交互流程，这是一套工具，向您的 AI 智能体公开 Knock 的 API 和消息传递功能。</p>
+<h2>使用 Agent SDK 作为 AI 智能体的基础</h2>
+<p>Agents SDK 提供了一个抽象概念，用于在 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Object</u></a> 之上构建有状态的实时代理，这些代理是全局可寻址的，并使用嵌入式、<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>零延迟</u></a> SQLite 数据库持久状态。</p>
+<p>使用 Agents SDK 和 Cloudflare 平台之外构建 AI 智能体意味着我们需要考虑 WebSocket 服务器、状态持久性以及如何水平扩展服务。由于 Durable Object 支持 Agents SDK，我们免费获得了这些好处，同时拥有一个全球可寻址的内置存储的计算资源，完全无服务器，可扩展至零。</p>
+<p>在本示例中，我们将使用这些功能来构建一个代理。用户可以通过聊天与之实时交互，并且可以根据需要暂停和恢复聊天。Agents SDK 是支持异步智能体工作流程的理想平台，例如人机交互交互中所需的工作流程。</p>
+<h2>设置 Knock 消息传递工作流程</h2>
+<p>在 Knock 中，我们使用可视化工作流构建器来创建跨渠道消息传递逻辑，从而设计审批工作流。然后，我们制作与要将消息发送到的每个渠道相关联的通知模板。</p>
+<p>作为工作流执行的一部分，Knock 会自动应用<a href="https://docs.knock.app/concepts/preferences" target="_blank" rel="noopener noreferrer"><u>用户的首选项</u></a>，确保用户的通知设置得到尊重。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="465" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=640&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=750&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=828&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=1080&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=1280&amp;h=832&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=1430&amp;h=930&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2809 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQYJHW2XNJSRTDKKM1Y3.png&amp;w=1920&amp;h=1248&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1248" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="465" class="pt-portable-image-media"></div>
+</figure>
+<p>您可以在存储库中找到我们已经为此演示创建的示例工作流程。您可以通过 <a href="https://docs.knock.app/cli" target="_blank" rel="noopener noreferrer"><u>Knock CLI</u></a> 将这个工作流模板导入您的帐户，以使用该工作流模板。</p>
+<h2>构建聊天 UI</h2>
+<p>我们在 Cloudflare Agents SDK 的 <code>AIChatAgent</code> 抽象基础上构建了这个聊天界面的 AI 智能体（<a href="https://developers.cloudflare.com/agents/api-reference/agents-api/#chat-agent" target="_blank" rel="noopener noreferrer"><u>文档</u></a>）。Agents SDK 在这里解决了大部分复杂问题，剩下来就是利用系统提示词实现 LLM 调用代码。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/index.ts</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AIChatAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/ai-chat-agent"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { openai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@ai-sdk/openai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createDataStreamResponse, streamText } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "ai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AIAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onChatMessage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">onFinish</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> createDataStreamResponse</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">dataStream</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> streamText</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            model: </span><span class="sk-6f42c1-ffc799">openai</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"gpt-4o-mini"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">            system: </span><span class="sk-032f62-99ffe4">`You are a helpful assistant for a financial services company. You help customers with credit card issuing.`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            messages: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.messages,</span></span>
+<span class="line"><span class="sk-24292e-fff">            onFinish,</span></span>
+<span class="line"><span class="sk-24292e-fff">            maxSteps: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">          stream.</span><span class="sk-6f42c1-ffc799">mergeIntoDataStream</span><span class="sk-24292e-fff">(dataStream);</span></span>
+<span class="line"><span class="sk-24292e-fff">        } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-24292e-fff">          console.</span><span class="sk-6f42c1-ffc799">error</span><span class="sk-24292e-fff">(error);</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>在客户端，我们使用<code> agents/ai-react</code> 包中的<code> useAgentChat</code> hook 来支持用户与智能体的实时聊天。</p>
+<p>我们已将代理建模为每个用户的聊天，通过将进程的名称指定为<code> userId</code> ，来使用 <code>useAgent</code> 钩子来设置代理。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/index.ts</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/react"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useAgentChat } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/ai-react"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> Chat</span><span class="sk-24292e-fff">({ </span><span class="sk-e36209-fff">userId</span><span class="sk-24292e-fff"> }</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">userId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff"> }) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> agent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> useAgent</span><span class="sk-24292e-fff">({ agent: </span><span class="sk-032f62-99ffe4">"AIAgent"</span><span class="sk-24292e-fff">, name: userId });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">messages</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">input</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">handleInputChange</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">handleSubmit</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">isLoading</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> useAgentChat</span><span class="sk-24292e-fff">({ agent });</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... </span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>这意味着我们有一个代理进程，因此每个用户的对象也有一个持久化。对于我们的人机交互用例，这在稍后我们要恢复延迟的工具调用时会变得很重要。</p>
+<h2>推迟对 Knock 的工具调用</h2>
+<p>我们通过公开 <code>issueCard</code> 工具，为代理提供我们的发卡能力。但是，我们没有自己编写审批流程和跨渠道逻辑，而是通过将问题卡工具包装在 <code>requireHumanInput</code> 方法中，将其完全委托给 Knock。</p>
+<p>现在，当用户要求申请新卡片时，我们会调用 Knock 以发起我们的卡片请求，这将通知组织中相应的管理员以请求批准。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="237" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=640&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=750&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=828&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=1080&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=1280&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=1430&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2809 image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BDGT06TG0S4E18SD780X.png&amp;w=1920&amp;h=638&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="638" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="237" class="pt-portable-image-media"></div>
+</figure>
+<p>为此，我们需要使用 Knock 的智能体工具包，该工具包提供了在我们的 AI 智能体中与 Knock 协同工作的方法，并支持跨渠道消息传递。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createKnockToolkit } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@knocklabs/agent-toolkit/ai-sdk"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { tool } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "ai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { z } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "zod"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AIAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./index"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { issueCard } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./api"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { BASE_URL } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./constants"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> initializeToolkit</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AIAgent</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> toolkit</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> createKnockToolkit</span><span class="sk-24292e-fff">({ serviceToken: agent.env.</span><span class="sk-005cc5-fff">KNOCK_SERVICE_TOKEN</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> issueCardTool</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> tool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    description: </span><span class="sk-032f62-99ffe4">"Issue a new credit card to a customer."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    parameters: z.</span><span class="sk-6f42c1-ffc799">object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      customerId: z.</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">    }),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">customerId</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> issueCard</span><span class="sk-24292e-fff">(customerId);</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">issueCard</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> toolkit.</span><span class="sk-6f42c1-ffc799">requireHumanInput</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">    { issueCard: issueCardTool },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-24292e-fff">      workflow: </span><span class="sk-032f62-99ffe4">"approve-issued-card"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      actor: agent.name,</span></span>
+<span class="line"><span class="sk-24292e-fff">      recipients: [</span><span class="sk-032f62-99ffe4">"admin_user_1"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">      metadata: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        approve_url: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-005cc5-fff">BASE_URL</span><span class="sk-032f62-99ffe4">}/card-issued/approve`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        reject_url: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-005cc5-fff">BASE_URL</span><span class="sk-032f62-99ffe4">}/card-issued/reject`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  );</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> { toolkit, tools: { issueCard } };  </span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>这里包含很多内容，让我们过一下关键部分：</p>
+<ul>
+	<li>我们将 <code>issueCard</code> 工具包装在 <code>requireHumanInput</code> 方法中，由 Knock Agent 工具包公开</li>
+	<li>我们希望调用消息传递工作流，成为<code>批准发放卡</code>工作流</li>
+	<li>我们传递 Agent.name 作为请求的<code>参与者</code>，后者会转换为用户 ID</li>
+	<li>我们将此工作流的收件人设置为用户 <code>admin_user_1</code></li>
+	<li>我们传递批准和拒绝 URL，以便在我们的消息模板中使用</li>
+	<li>包装的工具将作为<code>issueCard</code>返回</li>
+</ul>
+<p>在底层，这些选项被传递到<a href="https://docs.knock.app/api-reference/workflows/trigger" target="_blank" rel="noopener noreferrer"><u>Knock 工作流触发器 API</u></a>以调用每个收件人的工作流。此处列出的收件人集可以是动态的，或者转到通过<a href="https://docs.knock.app/concepts/subscriptions" target="_blank" rel="noopener noreferrer"><u>Knock 的订阅 API</u></a>的一组用户。</p>
+<p>然后，我们可以将打包的发行卡工具传递给代理上 <code>onChatMessage</code> 方法中的 LLM 调用，以便可以在与代理进行交互的过程中调用工具调用。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AIAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... other methods</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onChatMessage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">onFinish</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">tools</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> initializeToolkit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> createDataStreamResponse</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      execute</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">dataStream</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> streamText</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">          model: </span><span class="sk-6f42c1-ffc799">openai</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"gpt-4o-mini"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">          system: </span><span class="sk-032f62-99ffe4">"You are a helpful assistant for a financial services company. You help customers with credit card issuing."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          messages: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.messages,</span></span>
+<span class="line"><span class="sk-24292e-fff">          onFinish,</span></span>
+<span class="line"><span class="sk-24292e-fff">          tools,</span></span>
+<span class="line"><span class="sk-24292e-fff">          maxSteps: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">        stream.</span><span class="sk-6f42c1-ffc799">mergeIntoDataStream</span><span class="sk-24292e-fff">(dataStream);</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>现在，当智能体调用<code>issueCardTool</code> 时，我们调用 Knock 来发送审批通知，从而推迟了工具调用以发行卡片，直到收到批准为止。Knock 的工作流程负责将消息发送到一组指定的收件人，根据每个用户的偏好生成并传递消息。</p>
+<p>将 Knock<a href="https://docs.knock.app/concepts/workflows" target="_blank" rel="noopener noreferrer"> <u>工作流程</u></a>用于审批消息，可以轻松构建跨渠道消息传递，以根据用户的通信<a href="https://docs.knock.app/concepts/preferences" target="_blank" rel="noopener noreferrer"> <u>偏好</u></a>到达用户。我们还可以利用<a href="https://docs.knock.app/designing-workflows/delay-function" target="_blank" rel="noopener noreferrer"><u>延迟</u></a>、<a href="https://docs.knock.app/designing-workflows/throttle-function" target="_blank" rel="noopener noreferrer"><u>限流</u></a>、<a href="https://docs.knock.app/designing-workflows/batch-function" target="_blank" rel="noopener noreferrer"><u>批处理</u></a>和<a href="https://docs.knock.app/designing-workflows/step-conditions" target="_blank" rel="noopener noreferrer"><u>条件</u></a>来编排更复杂的消息传递。</p>
+<h2>处理审批</h2>
+<p>消息发送给批准者后，下一步就是处理返回的批准，将人工交互带入智能体的循环中。</p>
+<p>批准请求是异步的，这意味着响应可以在未来的任何时候到达。幸运的是，Knock 已经为您处理这里的繁重工作，通过一个跟踪与底层消息交互的<a href="https://docs.knock.app/developer-tools/outbound-webhooks/overview" target="_blank" rel="noopener noreferrer"><u> webhook</u></a> 将事件路由到智能体 worker。在我们的例子中，只需点击“批准”或“拒绝”按钮。</p>
+<p>首先，我们在 Knock 仪表板中设置一个 <code>message.interacted</code> webhook 处理程序，将交互转发给我们的 Worker，并最终转发给我们的代理进程。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="465" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=640&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=750&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=828&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=1080&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=1280&amp;h=832&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=1430&amp;h=930&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2809 image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479AD0WTM2T84DFCQX20T9.png&amp;w=1920&amp;h=1248&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1248" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="465" class="pt-portable-image-media"></div>
+</figure>
+<p>在我们的示例中，我们将批准点击路由回 Worker 进行处理，将 Knock 消息 ID 附加到<code>批准 URL</code> 和<code>拒绝 URL</code>的末尾，以跟踪对所发送特定消息的参与度。我们通过 Knock 中消息模板中的 Liquid 来实现这一点：<code>{{ data.approve_url }}?messageId={{ current_message.id }} </code>。需要注意的是，如果这是一个生产应用程序，我们很可能会在另一个应用程序中处理批准点击，而不是运行此代理。我们将其放在这里仅为了演示之目的。</p>
+<p>点击链接后，worker 中的处理程序将使用 Knock 的<a href="https://docs.knock.app/api-reference/messages/mark_as_interacted" target="_blank" rel="noopener noreferrer"><u>消息交互 API</u></a>将消息标记为已交互，并将状态作为元数据传递，以便以后使用。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Knock </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@knocklabs/node'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Hono } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "hono"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> app</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Hono</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Knock</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/card-issued/approve"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">messageId</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">query</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">messageId) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"No message ID found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">400</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> client.messages.</span><span class="sk-6f42c1-ffc799">markAsInteracted</span><span class="sk-24292e-fff">(messageId, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    status: </span><span class="sk-032f62-99ffe4">"approved"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Approved"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>消息交互将通过我们设置的 webhook 从 Knock 进行，确保这个过程完全异步。webhook 的恶意有效负载包括完整的消息，其中包括有关生成原始请求的用户的元数据，并保留了有关请求本身的详细信息（在我们的例子中包含了工具调用）。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getAgentByName, routeAgentRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Hono } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "hono"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> app</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Hono</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">post</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/incoming/knock/webhook"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> env</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> c.env </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Find the user ID from the tool call for the calling user</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> userId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> body?.data?.actors[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">userId) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"No user ID found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">400</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Find the agent DO for the user</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> existingAgent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getAgentByName</span><span class="sk-24292e-fff">(env.AIAgent, userId);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (existingAgent) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Route the request to the agent DO to process</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> existingAgent.</span><span class="sk-6f42c1-ffc799">handleIncomingWebhook</span><span class="sk-24292e-fff">(body);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>我们利用代理通过命名标识符寻址的能力，将请求从 Worker 路由到代理。在我们的例子中，就是 <code>userId</code> 。因为代理由一个 Durable 对象提供支持，所以从传入 Worker 请求到查找并恢复代理的过程非常简单。</p>
+<h2>恢复推迟的工具调用</h2>
+<p>然后，我们使用原始工具调用的上下文（传递给 Knock 并往返回给智能体），恢复工具执行并发放卡片。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AIAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... other methods</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> handleIncomingWebhook</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">body</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">toolkit</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> initializeToolkit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> deferredToolCall</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> toolkit.</span><span class="sk-6f42c1-ffc799">handleMessageInteraction</span><span class="sk-24292e-fff">(body);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">deferredToolCall) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> { error: </span><span class="sk-032f62-99ffe4">"No deferred tool call given"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // If we received an "approved" status then we know the call was approved </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // so we can resume the deferred tool call execution</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (result.interaction.status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "approved"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> toolCallResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	      await</span><span class="sk-24292e-fff"> toolkit.</span><span class="sk-6f42c1-ffc799">resumeToolExecution</span><span class="sk-24292e-fff">(result.toolCall);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">response</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> generateText</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        model: </span><span class="sk-6f42c1-ffc799">openai</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"gpt-4o-mini"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">        prompt: </span><span class="sk-032f62-99ffe4">`You were asked to issue a card for a customer. The card is now approved. The result was: ${</span><span class="sk-005cc5-fff">JSON</span><span class="sk-032f62-99ffe4">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">toolCallResult</span><span class="sk-032f62-99ffe4">)</span><span class="sk-032f62-99ffe4">}.`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> message</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> responseToAssistantMessage</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">        response.messages[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">        result.toolCall,</span></span>
+<span class="line"><span class="sk-24292e-fff">        toolCallResult</span></span>
+<span class="line"><span class="sk-24292e-fff">      );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Save the message so that it's displayed to the user</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">persistMessages</span><span class="sk-24292e-fff">([</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.messages, message]);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> { status: </span><span class="sk-032f62-99ffe4">"success"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>同样，这里发生了很多事情，所以我们来逐步了解重要的部分：</p>
+<ul>
+	<li>我们尝试通过 <code>handleMessageInteraction</code> 方法将正文（来自 Knock 的 webhook 有效负载）转换为延迟工具调用</li>
+	<li>如果我们传递给之前交互调用的元数据状态为“approved”，那么我们通过 <code>restoreToolExecution</code> 方法恢复工具调用</li>
+	<li>最后，我们从 LLM 生成一条消息并将其保留，以确保用户了解已批准的信用卡</li>
+</ul>
+<p>完成最后一部分后，我们现在可以要求签发新卡，从代理发出批准请求，发送批准消息，并将这些批准路由回我们的代理进行处理。只需很少的代码，代理将异步处理我们的发卡请求，并为我们恢复延迟的工具调用。</p>
+<h2>防止重复批准</h2>
+<p>上述实现的一个问题是，如果有人点击批准按钮以上，我们很容易发放多张卡。为纠正这一问题，我们要跟踪正在发出的工具调用，并确保最多处理一次调用。</p>
+<p>为了驱动这一点，我们利用<a href="https://developers.cloudflare.com/agents/api-reference/store-and-sync-state" target="_blank" rel="noopener noreferrer"> <u>代理的内置 state</u></a>，它可用于持久化信息，而无需访问其他持久性存储（如数据库或 Redis），尽管如果我们愿意，我们绝对可以这样做。我们可以通过工具 ID 跟踪工具调用，并在代理进程内捕获其当前状态。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> ToolCallStatus</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "requested"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-032f62-99ffe4"> "approved"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-032f62-99ffe4"> "rejected"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> AgentState</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  toolCalls</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Record</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">string</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">ToolCallStatus</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AIAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">AgentState</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-e36209-fff">  initialState</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AgentState</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    toolCalls: {},</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  setToolCallStatus</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">toolCallId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">status</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ToolCallStatus</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">setState</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      ...</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.state,</span></span>
+<span class="line"><span class="sk-24292e-fff">      toolCalls: { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.state.toolCalls, [toolCallId]: status },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ... </span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>在这里，我们将工具调用的初始状态创建为空对象。我们还添加了一个快速设置辅助方法，以便更轻松地交互。</p>
+<p>下一步，我们需要记录正在进行的工具调用。为此，我们可以使用<code> requireHumanInput</code> 帮助程序中的<code> onAfterCallKnock 选项来捕获已为用户请求工具调用。</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">issueCard</span><span class="sk-24292e-fff"> }  </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> toolkit.</span><span class="sk-6f42c1-ffc799">requireHumanInput</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">  { issueCard: issueCardTool },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Keep track of the tool call state once it's been sent to Knock</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    onAfterCallKnock</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">toolCall</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">      agent.</span><span class="sk-6f42c1-ffc799">setToolCallStatus</span><span class="sk-24292e-fff">(toolCall.id, </span><span class="sk-032f62-99ffe4">"requested"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ... as before</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>最后，我们需要在处理传入 webhook 时检查状态，并将工具调用标记为已批准（为简洁起见，省略了一些代码）。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AIAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> AIChatAgent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> handleIncomingWebhook</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">body</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">toolkit</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> initializeToolkit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> deferredToolCall</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> toolkit.</span><span class="sk-6f42c1-ffc799">handleMessageInteraction</span><span class="sk-24292e-fff">(body);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> toolCallId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> result.toolCall.id;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Make sure this is a tool call that can be processed</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.state.toolCalls[toolCallId] </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> "requested"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> { error: </span><span class="sk-032f62-99ffe4">"Tool call is not requested"</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (result.interaction.status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "approved"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> toolCallResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> toolkit.</span><span class="sk-6f42c1-ffc799">resumeToolExecution</span><span class="sk-24292e-fff">(result.toolCall);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">setToolCallStatus</span><span class="sk-24292e-fff">(toolCallId, </span><span class="sk-032f62-99ffe4">"approved"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // ... rest as before</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>总结</h2>
+<p>使用 Agents SDK 和 Knock，可轻松构建推迟工具调用的高级人机交互体验。</p>
+<p>Knock 的工作流构建器和通知引擎为您提供构建块，为您的代理创建复杂的跨渠道消息传递。您能轻松创建升级流程，通过短信、推送、电子邮件或 Slack 发送消息，同时尊重用户的通知偏好。Knock 还可以让您对用户接收的消息拥有完全的可见性。</p>
+<p>Agents SDK 下方的 Durable Object 抽象意味着我们获得了一个可全局寻址的代理进程，很容易让出并恢复到这个进程。利用 Durable Object 中的持久性存储，我们可以保留每个用户的完整聊天历史记录，以及在智能体进程中恢复智能体所需的任何其他状态（例如我们的工具调用）。最后，底层 Durable Object 的无服务器特性意味着我们能够水平扩展，毫不费力地支持大量用户。</p>
+<p>如果您希望利用多人循环体验构建自己的 AI 智能体聊天体验，可在<a href="https://github.com/knocklabs/ai-agent-examples/tree/main/card-issue-agent" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a>中找到本指南中的完整代码。</p>

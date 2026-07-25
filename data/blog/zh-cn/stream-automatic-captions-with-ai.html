@@ -1,0 +1,78 @@
+<p>使用 Stream 的最新功能，客户现在只需单击一下即可轻松生成视频字幕：AI 生成的点播视频和直播录制字幕。作为 Cloudflare 帮助构建更好的互联网使命的一部分，此功能可供所有 Stream 客户免费使用。</p>
+<p>此解决方案旨在简化流程，消除对第三方转录服务和复杂工作流程的需求。对于缺少字幕等辅助功能的视频，手动转录可能非常耗时且不切实际，对于大型视频库而言则尤为如此。传统上，它需要专业服务，有时甚至是专门的团队来转录音频并将文本与视频一起交付，以便在播放期间显示。由于各种原因（包括道德义务、法律合规性和不断变化的观众偏好），字幕变得越来越普遍，我们希望减轻这种负担。</p>
+<p>借助 <a href="https://www.cloudflare.com/products/cloudflare-stream" target="_blank" rel="noopener noreferrer">Stream 的集成解决方案</a>，字幕生成过程可以无缝集成到您现有的视频管理工作流程中，从而节省时间和资源。无论您何时上传视频，都可以轻松添加自动字幕以增强可访问性。现在可以在 Cloudflare 仪表板中或通过 API 请求生成字幕，所有这些都在熟悉且统一的 Stream 平台中完成。</p>
+<p>此功能在设计时充分考虑了隐私和数据保护。与其他可能与外部实体共享内容的第三方转录服务不同，您的数据在整个字幕生成过程中都安全地保留在 Cloudflare 的生态系统中。Cloudflare 不会将您的内容用于模型训练目的。有关数据保护的更多信息，请查看<a href="https://developers.cloudflare.com/workers-ai/privacy" target="_blank" rel="noopener noreferrer">您的数据和 Workers AI</a>。</p>
+<h2>开始使用</h2>
+<p>从 2024 年 6 月 20 日开始，此测试版可供所有 Stream 客户以及 Professional 和 Business 计划的订阅者使用，其中包括 100 分钟的视频存储。</p>
+<p>要开始使用，请先将视频上传到 Stream（从 Cloudflare <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream" target="_blank" rel="noopener noreferrer">仪表板</a>或通过 <a href="https://developers.cloudflare.com/stream/uploading-videos/upload-video-file" target="_blank" rel="noopener noreferrer">API</a>）。</p>
+<p>接下来，导航到视频上的“字幕”选项卡，点击“添加字幕”，然后选择语言和“使用 AI 生成字幕”。最后，点击保存，几分钟后，新字幕就会显示在字幕管理器中，并自动在播放器中可用。也可以<a href="https://developers.cloudflare.com/stream/edit-videos/adding-captions" target="_blank" rel="noopener noreferrer">通过 API 生成</a>字幕。</p>
+<div id="html-block-kw" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/c92f8ddaa17659355d27401d20ca68e7/iframe?muted=true&amp;preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fc92f8ddaa17659355d27401d20ca68e7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<p>字幕通常在几分钟内生成。字幕准备好后，Stream 播放器将自动更新以将其提供给用户。HLS 和 DASH 清单也会更新，以便支持文本轨道的第三方播放器也可以显示它们。</p>
+<p>支持点播视频和直播录制，无论它们是何时创建的。在测试版中，只能生成英文字幕，且视频时长不得超过 2 小时。语音清晰且背景噪音最小的视频转录质量最好。</p>
+<p>我们对 AI 模型在测试中转录不同类型内容的效果感到满意。不过，有时结果并不完美，另一种方法可能更适合某些用例。请务必检查所生成字幕的准确性是否适合您的需求。</p>
+<h2>技术细节</h2>
+<h3>使用 Workers AI 构建</h3>
+<p>Stream 工程团队使用 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a> 构建了这项新功能，使我们能够通过单个 API 调用访问 <a href="https://developers.cloudflare.com/workers-ai/models/whisper" target="_blank" rel="noopener noreferrer">Whisper</a> 模型（一种开源自动语音识别模型）。使用 Workers AI，通过开箱即用的解决方案从根本上简化了 AI 模型的部署、集成和扩展。我们的团队不再需要处理基础设施的复杂性，从而能够专注于构建自动字幕功能。</p>
+<p>编写利用 AI 模型的软件可能涉及多个挑战。首先，难以配置适当的硬件基础设施。AI 模型需要大量计算资源才能高效运行，并且需要 GPU 等专用硬件，而这些硬件可能成本高昂且难以管理。大规模部署 AI 模型也是一项艰巨的任务，涉及平衡工作负载分配、最小化延迟、优化吞吐量和保持高可用性等复杂性。Workers AI 不仅解决了管理底层基础设施的难题，还可以根据需要自动扩展。</p>
+<p>使用 Workers AI 将一项艰巨的任务转变为只需不到 30 行代码即可转录音频文件的 Worker。</p>
+<h3>快速且大规模地为视频添加字幕</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/ai'</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff"> AI</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> type</span><span class="sk-6f42c1-ffc799"> AiVTTOutput</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff"> vtt</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-005cc5-ffc799"> string</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> blob</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> ai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Ai</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">     audio: [</span><span class="sk-d73a49-a0a0a0">...new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(blob)],</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> AiVTTOutput</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">       '@cf/openai/whisper-tiny-en'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">       input</span></span>
+<span class="line"><span class="sk-24292e-fff">     )) </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-005cc5-ffc799"> any</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({ vtt: response.vtt })</span></span>
+<span class="line"><span class="sk-24292e-fff">   } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> errMsg</span><span class="sk-d73a49-a0a0a0"> =</span></span>
+<span class="line"><span class="sk-24292e-fff">       e </span><span class="sk-d73a49-a0a0a0">instanceof</span><span class="sk-6f42c1-ffc799"> Error</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         ?</span><span class="sk-032f62-99ffe4"> `${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">message</span><span class="sk-032f62-99ffe4">}</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">stack</span><span class="sk-032f62-99ffe4">}`</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         :</span><span class="sk-032f62-99ffe4"> 'unknown error type'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">errMsg</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">       status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">       statusText: </span><span class="sk-032f62-99ffe4">'Internal error'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">     })</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Stream 团队希望确保此功能在大规模运行时能够快速且高性能，这需要工程工作来处理大量视频，无论时长如何。</p>
+<p>首先，我们的团队需要在运行 <a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer">AI 推理</a>之前对音频进行预处理，以确保输入与 Whisper 的输入格式和要求兼容。</p>
+<p>视频内容千差万别，从用手机拍摄的短小粗糙的视频，到长达数小时的高质量好莱坞电影，应有尽有。视频可能无声，也可能包含动作驱动的杂音。此外，Stream 的点播视频包括直播录制，这些录制的打包方式与作为完整文件上传的视频不同。由于存在这种多样性，音频输入存储在一系列不同的容器格式中，具有不同的持续时间和不同的文件大小。我们确保我们的音频文件格式正确，符合 Whisper 的要求。</p>
+<p>预处理的一个方面是确保文件具有合理的时长，以优化推理。Whisper 的音频文件转录时长“最佳点”是 30 秒。正如他们在 <a href="https://github.com/openai/whisper/discussions/1118" target="_blank" rel="noopener noreferrer">Github 讨论</a>中指出的那样：“<em>如果太短，会缺乏周围的背景。你会更频繁地删减句子。很多句子会变得毫无意义。如果太长，你需要越来越大的模型，来容纳你希望模型跟踪的含义的复杂性。</em>”幸运的是，Stream 已经将视频分割成更小的片段，以确保在 Web 上播放时快速交付。我们编写了功能，在发送给 Workers AI 之前将这些小片段连接成 30 秒的批次。</p>
+<p>为了优化处理速度，我们的团队尽可能多地并行化操作。通过同时创建 30 秒的音频批次并向 Workers AI 发送请求，我们充分利用了 Workers AI 平台的可扩展性。这样做大大减少了生成字幕所需的时间，但增加了一些额外的复杂性。由于我们并行向 Workers AI 发送请求，因此转录响应可能会无序到达。例如，如果视频时长为一分钟，则生成视频后 30 秒字幕的请求可能会在生成视频前 30 秒字幕的请求之前完成。字幕需要按顺序排列才能与视频对齐，因此我们的团队必须保持对音频批次顺序的理解，以确保我们最终组合的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API" target="_blank" rel="noopener noreferrer">WebVTT 字幕文件</a>与视频正确同步。我们对传入的 Workers AI 响应进行排序，并重新排序时间戳以获得最终准确的转录。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=640&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=750&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=828&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=1080&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=1280&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=1430&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2409 Embedded Image - hVSrK2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XKT05XCHJT659BPGNH51.png&amp;w=1440&amp;h=677&amp;f=webp" data-lightbox-width="1440" data-lightbox-height="677" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="336" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>最终结果是能够快速、高效且大规模地为较长视频生成字幕。</p>
+<h2>马上试试吧</h2>
+<p>今天，我们为所有订阅者以及 <a href="https://www.cloudflare.com/plans/pro" target="_blank" rel="noopener noreferrer">Pro</a> 和 <a href="https://www.cloudflare.com/plans/business" target="_blank" rel="noopener noreferrer">Business</a> 计划客户提供此功能的公开测试版，我们对此感到非常兴奋！如要开始使用，请先<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fstream" target="_blank" rel="noopener noreferrer">将视频上传到 Stream</a>。查看<a href="https://developers.cloudflare.com/stream/edit-videos/adding-captions" target="_blank" rel="noopener noreferrer">我们的文档</a>以了解教程和当前测试版的限制。接下来，我们将着重于添加更多语言并支持更长的视频。</p>

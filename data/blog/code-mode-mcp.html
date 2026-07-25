@@ -1,213 +1,179 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/code-mode-mcp">简体中文</a>, <a href="https://blog.cloudflare.com/it-it/code-mode-mcp">Italiano</a>, <a href="https://blog.cloudflare.com/ja-jp/code-mode-mcp">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/code-mode-mcp">한국어</a>, <a href="https://blog.cloudflare.com/vi-vn/code-mode-mcp">Tiếng Việt</a> and <a href="https://blog.cloudflare.com/zh-tw/code-mode-mcp">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6YAHY3FwNCFMGMYtIDuri7/139b77ff4e1b71ca706af22064222f67/images_BLOG-3184_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol (MCP)</u></a> has become the standard way for AI agents to use external tools. But there is a tension at its core: agents need many tools to do useful work, yet every tool added fills the model's context window, leaving less room for the actual task. </p>
-	<p><a href="https://blog.cloudflare.com/code-mode"><u>Code Mode</u></a> is a technique we first introduced for reducing context window usage during agent tool use. Instead of describing every operation as a separate tool, let the model write code against a typed SDK and execute the code safely in a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker Loader</u></a>. The code acts as a compact plan. The model can explore tool operations, compose multiple calls, and return just the data it needs. Anthropic independently explored the same pattern in their <a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank" rel="noopener noreferrer"><u>Code Execution with MCP</u></a> post.</p>
-	<p>Today we are introducing <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>a new MCP server</u></a> for the <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer"><u>entire Cloudflare API</u></a> — from <a href="https://developers.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS</u></a> and <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Zero Trust</u></a> to <a href="https://workers.cloudflare.com/product/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> and <a href="https://workers.cloudflare.com/product/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> — that uses Code Mode. With just two tools, search() and execute(), the server is able to provide access to the entire Cloudflare API over MCP, while consuming only around 1,000 tokens. The footprint stays fixed, no matter how many API endpoints exist.</p>
-	<p>For a large API like the Cloudflare API, Code Mode reduces the number of input tokens used by 99.9%. An equivalent MCP server without Code Mode would consume 1.17 million tokens —&nbsp;more than the entire context window of the most advanced foundation models.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KqjQiI09KubtUSe9Dgf0N/6f37896084c7f34abca7dc36ab18d8e0/image2.png" alt="images/BLOG-3184 3" class="kg-image" width="1999" height="501" loading="lazy">
-	</figure>
-	<p><sup><i>Code mode savings vs native MCP, measured with </i></sup><a href="https://github.com/openai/tiktoken" target="_blank" rel="noopener noreferrer"><sup><i><u>tiktoken</u></i></sup></a><sup></sup></p>
-	<p>You can start using this new Cloudflare MCP server today. And we are also open-sourcing a new <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>Code Mode SDK</u></a> in the <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a>, so you can use the same approach in your own MCP servers and AI Agents.</p>
-	<div class="flex anchor relative">
-		<h3 id="server-side-code-mode">Server‑side Code Mode</h3>
-		<a href="https://blog.cloudflare.com/#server-side-code-mode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ir1KOZHIjVNyqdC9FSuZs/334456a711fb2b5fa612b3fc0b4adc48/images_BLOG-3184_2.png" alt="images/BLOG-3184 2" class="kg-image" width="1999" height="1248" loading="lazy">
-	</figure>
-	<p>This new MCP server applies Code Mode server-side. Instead of thousands of tools, the server exports just two: <code>search()</code> and <code>execute()</code>. Both are powered by Code Mode. Here is the full tool surface area that gets loaded into the model context:</p>
-	<pre class="language-javascript"><code class="language-javascript">[
-  {
-    "name": "search",
-    "description": "Search the Cloudflare OpenAPI spec. All $refs are pre-resolved inline.",
-    "inputSchema": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string",
-          "description": "JavaScript async arrow function to search the OpenAPI spec"
-        }
-      },
-      "required": ["code"]
-    }
-  },
-  {
-    "name": "execute",
-    "description": "Execute JavaScript code against the Cloudflare API.",
-    "inputSchema": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string",
-          "description": "JavaScript async arrow function to execute"
-        }
-      },
-      "required": ["code"]
-    }
-  }
-]
-</code></pre>
-	<p>To discover what it can do, the agent calls <code>search()</code>. It writes JavaScript against a typed representation of the OpenAPI spec. The agent can filter endpoints by product, path, tags, or any other metadata and narrow thousands of endpoints to the handful it needs. The full OpenAPI spec never enters the model context. The agent only interacts with it through code.</p>
-	<p>When the agent is ready to act, it calls <code>execute()</code>. The agent writes code that can make Cloudflare API requests, handle pagination, check responses, and chain operations together in a single execution.&nbsp;</p>
-	<p>Both tools run the generated code inside a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker</u></a> isolate — a lightweight V8 sandbox with no file system, no environment variables to leak through prompt injection and external fetches disabled by default. Outbound requests can be explicitly controlled with outbound fetch handlers when needed.</p>
-	<div class="flex anchor relative">
-		<h4 id="example-protecting-an-origin-from-ddos-attacks">Example: Protecting an origin from DDoS attacks</h4>
-		<a href="https://blog.cloudflare.com/#example-protecting-an-origin-from-ddos-attacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Suppose a user tells their agent: "protect my origin from DDoS attacks." The agent's first step is to consult documentation. It might call the <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>Cloudflare Docs MCP Server</u></a>, use a <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflare Skill</u></a>, or search the web directly. From the docs it learns: put <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>Cloudflare WAF</u></a> and <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><u>DDoS protection</u></a> rules in front of the origin.</p>
-	<p><b>Step 1: Search for the right endpoints
-		</b>The <code>search</code> tool gives the model a <code>spec</code> object: the full Cloudflare OpenAPI spec with all <code>$refs</code> pre-resolved. The model writes JavaScript against it. Here the agent looks for WAF and ruleset endpoints on a zone:</p>
-	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
-  const results = [];
-  for (const [path, methods] of Object.entries(spec.paths)) {
-    if (path.includes('/zones/') &amp;&amp;
-        (path.includes('firewall/waf') || path.includes('rulesets'))) {
-      for (const [method, op] of Object.entries(methods)) {
-        results.push({ method: method.toUpperCase(), path, summary: op.summary });
-      }
-    }
-  }
-  return results;
-}
-</code></pre>
-	<p>The server runs this code in a Workers isolate and returns:</p>
-	<pre class="language-javascript"><code class="language-javascript">[
-  { "method": "GET",    "path": "/zones/{zone_id}/firewall/waf/packages",              "summary": "List WAF packages" },
-  { "method": "PATCH",  "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}", "summary": "Update a WAF package" },
-  { "method": "GET",    "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules", "summary": "List WAF rules" },
-  { "method": "PATCH",  "path": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}", "summary": "Update a WAF rule" },
-  { "method": "GET",    "path": "/zones/{zone_id}/rulesets",                           "summary": "List zone rulesets" },
-  { "method": "POST",   "path": "/zones/{zone_id}/rulesets",                           "summary": "Create a zone ruleset" },
-  { "method": "GET",    "path": "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint", "summary": "Get a zone entry point ruleset" },
-  { "method": "PUT",    "path": "/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint", "summary": "Update a zone entry point ruleset" },
-  { "method": "POST",   "path": "/zones/{zone_id}/rulesets/{ruleset_id}/rules",        "summary": "Create a zone ruleset rule" },
-  { "method": "PATCH",  "path": "/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}", "summary": "Update a zone ruleset rule" }
-]
-</code></pre>
-	<p>The full Cloudflare API spec has over 2,500 endpoints. The model narrowed that to the WAF and ruleset endpoints it needs, without any of the spec entering the context window.&nbsp;</p>
-	<p>The model can also drill into a specific endpoint's schema before calling it. Here it inspects what phases are available on zone rulesets:</p>
-	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
-  const op = spec.paths['/zones/{zone_id}/rulesets']?.get;
-  const items = op?.responses?.['200']?.content?.['application/json']?.schema;
-  // Walk the schema to find the phase enum
-  const props = items?.allOf?.[1]?.properties?.result?.items?.allOf?.[1]?.properties;
-  return { phases: props?.phase?.enum };
-}
-
-{
-  "phases": [
-    "ddos_l4", "ddos_l7",
-    "http_request_firewall_custom", "http_request_firewall_managed",
-    "http_response_firewall_managed", "http_ratelimit",
-    "http_request_redirect", "http_request_transform",
-    "magic_transit", "magic_transit_managed"
-  ]
-}
-</code></pre>
-	<p>The agent now knows the exact phases it needs: <code>ddos_l7 </code>for DDoS protection and <code>http_request_firewall_managed</code> for WAF.</p>
-	<p><b>Step 2: Act on the API
-		</b>The agent switches to using <code>execute</code>. The sandbox gets a <code>cloudflare.request()</code> client that can make authenticated calls to the Cloudflare API. First the agent checks what rulesets already exist on the zone:</p>
-	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
-  const response = await cloudflare.request({
-    method: "GET",
-    path: `/zones/${zoneId}/rulesets`
-  });
-  return response.result.map(rs =&gt; ({
-    name: rs.name, phase: rs.phase, kind: rs.kind
-  }));
-}
-
-[
-  { "name": "DDoS L7",          "phase": "ddos_l7",                        "kind": "managed" },
-  { "name": "Cloudflare Managed","phase": "http_request_firewall_managed", "kind": "managed" },
-  { "name": "Custom rules",     "phase": "http_request_firewall_custom",   "kind": "zone" }
-]
-</code></pre>
-	<p>The agent sees that managed DDoS and WAF rulesets already exist. It can now chain calls to inspect their rules and update sensitivity levels in a single execution:</p>
-	<pre class="language-javascript"><code class="language-javascript">async () =&gt; {
-  // Get the current DDoS L7 entrypoint ruleset
-  const ddos = await cloudflare.request({
-    method: "GET",
-    path: `/zones/${zoneId}/rulesets/phases/ddos_l7/entrypoint`
-  });
-
-  // Get the WAF managed ruleset
-  const waf = await cloudflare.request({
-    method: "GET",
-    path: `/zones/${zoneId}/rulesets/phases/http_request_firewall_managed/entrypoint`
-  });
-}
-</code></pre>
-	<p>This entire operation, from searching the spec and inspecting a schema to listing rulesets and fetching DDoS and WAF configurations, took four tool calls.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-cloudflare-mcp-server">The Cloudflare MCP server</h3>
-		<a href="https://blog.cloudflare.com/#the-cloudflare-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We started with MCP servers for individual products. Want an agent that manages DNS? Add the <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics" target="_blank" rel="noopener noreferrer"><u>DNS MCP server</u></a>. Want Workers logs? Add the <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>Workers Observability MCP server</u></a>. Each server exported a fixed set of tools that mapped to API operations. This worked when the tool set was small, but the Cloudflare API has over 2,500 endpoints. No collection of hand-maintained servers could keep up.</p>
-	<p>The Cloudflare MCP server simplifies this. Two tools, roughly 1,000 tokens, and coverage of every endpoint in the API. When we add new products, the same <code>search()</code> and <code>execute()</code> code paths discover and call them — no new tool definitions, no new MCP servers. It even has support for the <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer"><u>GraphQL Analytics API</u></a>.</p>
-	<p>Our MCP server is built on the latest MCP specifications. It is OAuth 2.1 compliant, using <a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><u>Workers OAuth Provider</u></a> to downscope the token to selected permissions approved by the user when connecting. The agent&nbsp; only gets the capabilities the user explicitly granted.&nbsp;</p>
-	<p>For developers, this means you can use a simple agent loop and still give your agent access to the full Cloudflare API with built-in progressive capability discovery.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60ZoSFdK6t6hR6DpAn6Bub/93b86239cedb06d7fb265859be7590e8/images_BLOG-3184_4.png" alt="images/BLOG-3184 4" class="kg-image" width="1552" height="1601" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="comparing-approaches-to-context-reduction">Comparing approaches to context reduction</h3>
-		<a href="https://blog.cloudflare.com/#comparing-approaches-to-context-reduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Several approaches have emerged to reduce how many tokens MCP tools consume:</p>
-	<p><b>Client-side Code Mode</b> was our first experiment. The model writes TypeScript against typed SDKs and runs it in a Dynamic Worker Loader on the client. The tradeoff is that it requires the agent to ship with secure sandbox access. Code Mode is implemented in <a href="https://block.github.io/goose/blog/2025/12/15/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>Goose</u></a> and Anthropics Claude SDK as <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling" target="_blank" rel="noopener noreferrer"><u>Programmatic Tool Calling</u></a>.</p>
-	<p><b>Command-line interfaces </b>are another path. CLIs are self-documenting and reveal capabilities as the agent explores. Tools like <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a> and <a href="https://blog.cloudflare.com/moltworker-self-hosted-ai-agent"><u>Moltworker</u></a> convert MCP servers into CLIs using <a href="https://github.com/steipete/mcporter" target="_blank" rel="noopener noreferrer"><u>MCPorter</u></a> to give agents progressive disclosure. The limitation is obvious: the agent needs a shell, which not every environment provides and which introduces a much broader attack surface than a sandboxed isolate.</p>
-	<p><b>Dynamic tool search</b>, as used by <a href="https://x.com/trq212/status/2011523109871108570" target="_blank" rel="noopener noreferrer"><u>Anthropic in Claude Code</u></a>, surfaces a smaller set of tools hopefully relevant to the current task. It shrinks context use but now requires a search function that must be maintained and evaluated, and each matched tool still uses tokens.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FPxVAuJggv7A08DbPsksb/aacb9087a79d08a1430ea87bb6960ad3/images_BLOG-3184_5.png" alt="images/BLOG-3184 5" class="kg-image" width="1999" height="1966" loading="lazy">
-	</figure>
-	<p>Each approach solves a real problem. But for MCP servers specifically, server-side Code Mode combines their strengths: fixed token cost regardless of API size, no modifications needed on the agent side, progressive discovery built in, and safe execution inside a sandboxed isolate. The agent just calls two tools with code. Everything else happens on the server.</p>
-	<div class="flex anchor relative">
-		<h3 id="get-started-today">Get started today</h3>
-		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Cloudflare MCP server is available now. Point your MCP client at the server URL and you'll be redirected to Cloudflare to authorize and select the permissions to grant to your agent. Add this config to your MCP client:&nbsp;</p>
-	<pre class="language-javascript"><code class="language-javascript">{
-  "mcpServers": {
-    "cloudflare-api": {
-      "url": "https://mcp.cloudflare.com/mcp"
-    }
-  }
-}
-</code></pre>
-	<p>For CI/CD, automation, or if you prefer managing tokens yourself, create a Cloudflare API token with the permissions you need. Both user tokens and account tokens are supported and can be passed as bearer tokens in the <code>Authorization</code> header.</p>
-	<p>More information on different MCP setup configurations can be found at the <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP repository</u></a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="looking-forward">Looking forward</h3>
-		<a href="https://blog.cloudflare.com/#looking-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Code Mode solves context costs for a single API. But agents rarely talk to one service. A developer's agent might need the Cloudflare API alongside GitHub, a database, and an internal docs server. Each additional MCP server brings the same context window pressure we started with.</p>
-	<p><a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals"><u>Cloudflare MCP Server Portals</u></a> let you compose multiple MCP servers behind a single gateway with unified auth and access control. We are building a first-class Code Mode integration for all your MCP servers, and exposing them to agents with built-in progressive discovery and the same fixed-token footprint, regardless of how many services sit behind the gateway.</p>
+<p><a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer"><u>Model Context Protocol (MCP)</u></a> has become the standard way for AI agents to use external tools. But there is a tension at its core: agents need many tools to do useful work, yet every tool added fills the model's context window, leaving less room for the actual task. </p>
+<p><a href="https://blog.cloudflare.com/code-mode" target="_blank" rel="noopener noreferrer"><u>Code Mode</u></a> is a technique we first introduced for reducing context window usage during agent tool use. Instead of describing every operation as a separate tool, let the model write code against a typed SDK and execute the code safely in a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker Loader</u></a>. The code acts as a compact plan. The model can explore tool operations, compose multiple calls, and return just the data it needs. Anthropic independently explored the same pattern in their <a href="https://www.anthropic.com/engineering/code-execution-with-mcp" target="_blank" rel="noopener noreferrer"><u>Code Execution with MCP</u></a> post.</p>
+<p>Today we are introducing <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>a new MCP server</u></a> for the <a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer"><u>entire Cloudflare API</u></a> — from <a href="https://developers.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS</u></a> and <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Zero Trust</u></a> to <a href="https://workers.cloudflare.com/product/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> and <a href="https://workers.cloudflare.com/product/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> — that uses Code Mode. With just two tools, search() and execute(), the server is able to provide access to the entire Cloudflare API over MCP, while consuming only around 1,000 tokens. The footprint stays fixed, no matter how many API endpoints exist.</p>
+<p>For a large API like the Cloudflare API, Code Mode reduces the number of input tokens used by 99.9%. An equivalent MCP server without Code Mode would consume 1.17 million tokens —&nbsp;more than the entire context window of the most advanced foundation models.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="179" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=640&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=750&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=828&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=1080&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=1280&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=1430&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="images/BLOG-3184 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S1W1QET0HW2VBF96B97E.png&amp;w=1920&amp;h=481&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="481" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="179" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>Code mode savings vs native MCP, measured with <a href="https://github.com/openai/tiktoken" target="_blank" rel="noopener noreferrer"><u>tiktoken</u></a></em></sup></p>
+<p>You can start using this new Cloudflare MCP server today. And we are also open-sourcing a new <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>Code Mode SDK</u></a> in the <a href="https://github.com/cloudflare/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a>, so you can use the same approach in your own MCP servers and AI Agents.</p>
+<h3>Server‑side Code Mode</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="446" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=715&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=640&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=715&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=750&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=828&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=1080&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=1280&amp;h=798&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=1430&amp;h=892&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="images/BLOG-3184 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GDDXDC3J77QYJRE40PVA.png&amp;w=1920&amp;h=1199&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1199" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="446" class="pt-portable-image-media"></div>
+</figure>
+<p>This new MCP server applies Code Mode server-side. Instead of thousands of tools, the server exports just two: <code>search()</code> and <code>execute()</code>. Both are powered by Code Mode. Here is the full tool surface area that gets loaded into the model context:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"search"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Search the Cloudflare OpenAPI spec. All $refs are pre-resolved inline."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "inputSchema"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"object"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "properties"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "code"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"string"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"JavaScript async arrow function to search the OpenAPI spec"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "required"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"code"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"execute"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Execute JavaScript code against the Cloudflare API."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "inputSchema"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"object"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "properties"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "code"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"string"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"JavaScript async arrow function to execute"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "required"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"code"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span></code></pre>
 </div>
+<p>To discover what it can do, the agent calls <code>search()</code>. It writes JavaScript against a typed representation of the OpenAPI spec. The agent can filter endpoints by product, path, tags, or any other metadata and narrow thousands of endpoints to the handful it needs. The full OpenAPI spec never enters the model context. The agent only interacts with it through code.</p>
+<p>When the agent is ready to act, it calls <code>execute()</code>. The agent writes code that can make Cloudflare API requests, handle pagination, check responses, and chain operations together in a single execution.&nbsp;</p>
+<p>Both tools run the generated code inside a <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Worker</u></a> isolate — a lightweight V8 sandbox with no file system, no environment variables to leak through prompt injection and external fetches disabled by default. Outbound requests can be explicitly controlled with outbound fetch handlers when needed.</p>
+<h4>Example: Protecting an origin from DDoS attacks</h4>
+<p>Suppose a user tells their agent: "protect my origin from DDoS attacks." The agent's first step is to consult documentation. It might call the <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>Cloudflare Docs MCP Server</u></a>, use a <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflare Skill</u></a>, or search the web directly. From the docs it learns: put <a href="https://www.cloudflare.com/application-services/products/waf" target="_blank" rel="noopener noreferrer"><u>Cloudflare WAF</u></a> and <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer"><u>DDoS protection</u></a> rules in front of the origin.</p>
+<p><strong>Step 1: Search for the right endpoints<br></strong>The <code>search</code> tool gives the model a <code>spec</code> object: the full Cloudflare OpenAPI spec with all <code>$refs</code> pre-resolved. The model writes JavaScript against it. Here the agent looks for WAF and ruleset endpoints on a zone:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">path</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">methods</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">of</span><span class="sk-24292e-fff"> Object.</span><span class="sk-6f42c1-ffc799">entries</span><span class="sk-24292e-fff">(spec.paths)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (path.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/zones/'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span></span>
+<span class="line"><span class="sk-24292e-fff">        (path.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'firewall/waf'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> path.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'rulesets'</span><span class="sk-24292e-fff">))) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">method</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">op</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">of</span><span class="sk-24292e-fff"> Object.</span><span class="sk-6f42c1-ffc799">entries</span><span class="sk-24292e-fff">(methods)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        results.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({ method: method.</span><span class="sk-6f42c1-ffc799">toUpperCase</span><span class="sk-24292e-fff">(), path, summary: op.summary });</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> results;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>The server runs this code in a Workers isolate and returns:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,    </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/firewall/waf/packages"</span><span class="sk-24292e-fff">,              </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"List WAF packages"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PATCH"</span><span class="sk-24292e-fff">,  </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/firewall/waf/packages/{package_id}"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a WAF package"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,    </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/firewall/waf/packages/{package_id}/rules"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"List WAF rules"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PATCH"</span><span class="sk-24292e-fff">,  </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a WAF rule"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,    </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets"</span><span class="sk-24292e-fff">,                           </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"List zone rulesets"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,   </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets"</span><span class="sk-24292e-fff">,                           </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Create a zone ruleset"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,    </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Get a zone entry point ruleset"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PUT"</span><span class="sk-24292e-fff">,    </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/phases/{ruleset_phase}/entrypoint"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a zone entry point ruleset"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,   </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/{ruleset_id}/rules"</span><span class="sk-24292e-fff">,        </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Create a zone ruleset rule"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PATCH"</span><span class="sk-24292e-fff">,  </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/zones/{zone_id}/rulesets/{ruleset_id}/rules/{rule_id}"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"summary"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a zone ruleset rule"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>The full Cloudflare API spec has over 2,500 endpoints. The model narrowed that to the WAF and ruleset endpoints it needs, without any of the spec entering the context window.&nbsp;</p>
+<p>The model can also drill into a specific endpoint's schema before calling it. Here it inspects what phases are available on zone rulesets:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> op</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> spec.paths[</span><span class="sk-032f62-99ffe4">'/zones/{zone_id}/rulesets'</span><span class="sk-24292e-fff">]?.get;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> items</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> op?.responses?.[</span><span class="sk-032f62-99ffe4">'200'</span><span class="sk-24292e-fff">]?.content?.[</span><span class="sk-032f62-99ffe4">'application/json'</span><span class="sk-24292e-fff">]?.schema;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Walk the schema to find the phase enum</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> props</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> items?.allOf?.[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">]?.properties?.result?.items?.allOf?.[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">]?.properties;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> { phases: props?.phase?.enum };</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "phases"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "ddos_l4"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"ddos_l7"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "http_request_firewall_custom"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"http_request_firewall_managed"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "http_response_firewall_managed"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"http_ratelimit"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "http_request_redirect"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"http_request_transform"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "magic_transit"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"magic_transit_managed"</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>The agent now knows the exact phases it needs: <code>ddos_l7 </code>for DDoS protection and <code>http_request_firewall_managed</code> for WAF.</p>
+<p><strong>Step 2: Act on the API<br></strong>The agent switches to using <code>execute</code>. The sandbox gets a <code>cloudflare.request()</code> client that can make authenticated calls to the Cloudflare API. First the agent checks what rulesets already exist on the zone:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> cloudflare.</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/zones/${</span><span class="sk-24292e-fff">zoneId</span><span class="sk-032f62-99ffe4">}/rulesets`</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response.result.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">rs</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> ({</span></span>
+<span class="line"><span class="sk-24292e-fff">    name: rs.name, phase: rs.phase, kind: rs.kind</span></span>
+<span class="line"><span class="sk-24292e-fff">  }));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"DDoS L7"</span><span class="sk-24292e-fff">,          </span><span class="sk-032f62-99ffe4">"phase"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ddos_l7"</span><span class="sk-24292e-fff">,                        </span><span class="sk-032f62-99ffe4">"kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"managed"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cloudflare Managed"</span><span class="sk-24292e-fff">,</span><span class="sk-032f62-99ffe4">"phase"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"http_request_firewall_managed"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"managed"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  { </span><span class="sk-032f62-99ffe4">"name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Custom rules"</span><span class="sk-24292e-fff">,     </span><span class="sk-032f62-99ffe4">"phase"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"http_request_firewall_custom"</span><span class="sk-24292e-fff">,   </span><span class="sk-032f62-99ffe4">"kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"zone"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>The agent sees that managed DDoS and WAF rulesets already exist. It can now chain calls to inspect their rules and update sensitivity levels in a single execution:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Get the current DDoS L7 entrypoint ruleset</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> ddos</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> cloudflare.</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/zones/${</span><span class="sk-24292e-fff">zoneId</span><span class="sk-032f62-99ffe4">}/rulesets/phases/ddos_l7/entrypoint`</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Get the WAF managed ruleset</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> waf</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> cloudflare.</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">`/zones/${</span><span class="sk-24292e-fff">zoneId</span><span class="sk-032f62-99ffe4">}/rulesets/phases/http_request_firewall_managed/entrypoint`</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>This entire operation, from searching the spec and inspecting a schema to listing rulesets and fetching DDoS and WAF configurations, took four tool calls.</p>
+<h3>The Cloudflare MCP server</h3>
+<p>We started with MCP servers for individual products. Want an agent that manages DNS? Add the <a href="https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics" target="_blank" rel="noopener noreferrer"><u>DNS MCP server</u></a>. Want Workers logs? Add the <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>Workers Observability MCP server</u></a>. Each server exported a fixed set of tools that mapped to API operations. This worked when the tool set was small, but the Cloudflare API has over 2,500 endpoints. No collection of hand-maintained servers could keep up.</p>
+<p>The Cloudflare MCP server simplifies this. Two tools, roughly 1,000 tokens, and coverage of every endpoint in the API. When we add new products, the same <code>search()</code> and <code>execute()</code> code paths discover and call them — no new tool definitions, no new MCP servers. It even has support for the <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer"><u>GraphQL Analytics API</u></a>.</p>
+<p>Our MCP server is built on the latest MCP specifications. It is OAuth 2.1 compliant, using <a href="https://github.com/cloudflare/workers-oauth-provider" target="_blank" rel="noopener noreferrer"><u>Workers OAuth Provider</u></a> to downscope the token to selected permissions approved by the user when connecting. The agent&nbsp; only gets the capabilities the user explicitly granted.&nbsp;</p>
+<p>For developers, this means you can use a simple agent loop and still give your agent access to the full Cloudflare API with built-in progressive capability discovery.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="738" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=715&amp;h=738&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=640&amp;h=661&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=715&amp;h=738&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=750&amp;h=774&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=828&amp;h=855&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=1080&amp;h=1115&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=1280&amp;h=1321&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=1430&amp;h=1476&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="images/BLOG-3184 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VC53BWNJ923RVB2YGTHM.png&amp;w=1552&amp;h=1601&amp;f=webp" data-lightbox-width="1552" data-lightbox-height="1601" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="738" class="pt-portable-image-media"></div>
+</figure>
+<h3>Comparing approaches to context reduction</h3>
+<p>Several approaches have emerged to reduce how many tokens MCP tools consume:</p>
+<p><strong>Client-side Code Mode</strong> was our first experiment. The model writes TypeScript against typed SDKs and runs it in a Dynamic Worker Loader on the client. The tradeoff is that it requires the agent to ship with secure sandbox access. Code Mode is implemented in <a href="https://block.github.io/goose/blog/2025/12/15/code-mode-mcp" target="_blank" rel="noopener noreferrer"><u>Goose</u></a> and Anthropics Claude SDK as <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling" target="_blank" rel="noopener noreferrer"><u>Programmatic Tool Calling</u></a>.</p>
+<p><strong>Command-line interfaces </strong>are another path. CLIs are self-documenting and reveal capabilities as the agent explores. Tools like <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a> and <a href="https://blog.cloudflare.com/moltworker-self-hosted-ai-agent" target="_blank" rel="noopener noreferrer"><u>Moltworker</u></a> convert MCP servers into CLIs using <a href="https://github.com/steipete/mcporter" target="_blank" rel="noopener noreferrer"><u>MCPorter</u></a> to give agents progressive disclosure. The limitation is obvious: the agent needs a shell, which not every environment provides and which introduces a much broader attack surface than a sandboxed isolate.</p>
+<p><strong>Dynamic tool search</strong>, as used by <a href="https://x.com/trq212/status/2011523109871108570" target="_blank" rel="noopener noreferrer"><u>Anthropic in Claude Code</u></a>, surfaces a smaller set of tools hopefully relevant to the current task. It shrinks context use but now requires a search function that must be maintained and evaluated, and each matched tool still uses tokens.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="703" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=715&amp;h=703&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=640&amp;h=629&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=715&amp;h=703&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=750&amp;h=737&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=828&amp;h=814&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=1080&amp;h=1062&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=1280&amp;h=1259&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=1430&amp;h=1406&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="images/BLOG-3184 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47A6RDKCN3G22F2NEMK5FT.png&amp;w=1920&amp;h=1888&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1888" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="703" class="pt-portable-image-media"></div>
+</figure>
+<p>Each approach solves a real problem. But for MCP servers specifically, server-side Code Mode combines their strengths: fixed token cost regardless of API size, no modifications needed on the agent side, progressive discovery built in, and safe execution inside a sandboxed isolate. The agent just calls two tools with code. Everything else happens on the server.</p>
+<h3>Get started today</h3>
+<p>The Cloudflare MCP server is available now. Point your MCP client at the server URL and you'll be redirected to Cloudflare to authorize and select the permissions to grant to your agent. Add this config to your MCP client:&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "mcpServers"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "cloudflare-api"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "url"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://mcp.cloudflare.com/mcp"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>For CI/CD, automation, or if you prefer managing tokens yourself, create a Cloudflare API token with the permissions you need. Both user tokens and account tokens are supported and can be passed as bearer tokens in the <code>Authorization</code> header.</p>
+<p>More information on different MCP setup configurations can be found at the <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP repository</u></a>.</p>
+<h3>Looking forward</h3>
+<p>Code Mode solves context costs for a single API. But agents rarely talk to one service. A developer's agent might need the Cloudflare API alongside GitHub, a database, and an internal docs server. Each additional MCP server brings the same context window pressure we started with.</p>
+<p><a href="https://blog.cloudflare.com/zero-trust-mcp-server-portals" target="_blank" rel="noopener noreferrer"><u>Cloudflare MCP Server Portals</u></a> let you compose multiple MCP servers behind a single gateway with unified auth and access control. We are building a first-class Code Mode integration for all your MCP servers, and exposing them to agents with built-in progressive discovery and the same fixed-token footprint, regardless of how many services sit behind the gateway.</p>

@@ -1,107 +1,65 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XMO286LD7p6DrNNNxyYB0/f0bfad9aeeca37469b219d6b091a2497/introducing-workers-browser-rendering-api.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>If you’ve ever created a website that shows any kind of analytics, you’ve probably also thought about adding a “Save Image” or “Save as PDF” button to store and share results. This isn’t as easy as it seems (I can attest to this firsthand) and it’s not long before you go down a rabbit hole of trying 10 different libraries, hoping one will work.</p>
-	<p>This is why we’re excited to announce a private beta of the Workers Browser Rendering API, improving the browser automation experience for developers. With browser automation, you can programmatically do anything that a user can do when interacting with a browser.</p>
-	<p>The Workers Browser Rendering API, or just Rendering API for short, is our out-of-the-box solution for simplifying developer workflows, including capturing images or screenshots, by running browser automation in Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="browser-automation-everywhere">Browser automation, everywhere</h3>
-		<a href="https://blog.cloudflare.com/#browser-automation-everywhere" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As with many of the best Cloudflare products, Rendering API was born out of an internal need. Many of our teams were setting up or wanted to set up their own tools to perform what sounds like an incredibly simple task: taking automated screenshots.</p>
-	<p>When gathering use cases, we realized that much of what our internal teams wanted would also be useful for our customers. Some notable ones are:</p>
-	<ul>
-		<li>
-			<p>Taking screenshots for social sharing thumbnails or preview images</p>
-		</li>
-		<li>
-			<p>Emailed daily screenshots of dashboards (requested specifically by our SVP of Engineering)</p>
-		</li>
-		<li>
-			<p>Reporting bugs on websites and sending them directly to frontend teams</p>
-		</li>
-	</ul>
-	<p>Not to mention use cases for other browser automation functions like:</p>
-	<p><b>Testing UI/UX Flows</b>End-to-end (E2E) testing is used to minimic user behaviour and can identify bugs that unit tests or integration tests have missed. And let’s be honest – no developer wants to manually check the user flow each time they make changes to their application. E2E tests can be especially useful to verify logic on your customer’s critical path like account creation, authentication or checkout.</p>
-	<p><b>Performance Tests</b>Application performance metrics, such as page load time, directly impact your user’s experience and your SEO rankings. To avoid performance regressions, you want to test impact on latency in conditions that are as close as possible to your production environment before you merge. By automating performance testing you can measure if your proposed changes will result in a degraded experience for your uses and make improvements accordingly. &nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="unlocking-a-new-building-block">Unlocking a new building block</h3>
-		<a href="https://blog.cloudflare.com/#unlocking-a-new-building-block" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One of the most common browser automation frameworks is <a href="https://github.com/puppeteer/puppeteer" target="_blank" rel="noopener noreferrer">Puppeteer</a>. It’s common to run Puppeteer in a containerization tool like Docker or in a serverless environment. Taking automated screenshots should be as easy as writing some code, hitting deploy and having it run when a particular event is triggered or on a regular schedule.</p>
-	<p>It should be, but it's not.</p>
-	<p>Even on a serverless solution like AWS Lambda, running Puppeteer means packaging it, making sure dependencies are covered, uploading packages to S3 and deploying using Layers. Whether using Docker or something like Lambda, it’s clear that this is not easy to set up.</p>
-	<p>One of the pillars of Cloudflare’s development platform is to provide our developers with tools that are incredibly simple, yet powerful to build on. Rendering API is our out-of-the-box solution for running Puppeteer in Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="screenshotting-made-simple">Screenshotting made simple</h3>
-		<a href="https://blog.cloudflare.com/#screenshotting-made-simple" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To start, the Rendering API will have support for navigating to a webpage and taking a screenshot, with more functions to follow. To use it, all you need to do is add our new browser binding to your project’s <code>wrangler.toml</code> file</p>
-	<p>wrangler.toml</p>
-	<pre class="language-toml"><code class="language-toml">bindings = [
- { name = "my_browser” type = "browser" }
-]</code></pre>
-	<p>From there, taking a screenshot and saving it to R2 is as simple as:</p>
-	<p>script.ts</p>
-	<pre class="language-ts"><code class="language-ts">import puppeteer from '@cloudflare/puppeteer'
-
-export default {
-    async fetch(request: Request, env: Env): Promise&lt;Response&gt; {
-        const browser = await puppeteer.launch({
-            browserBinding: env.MY_BROWSER
-        })
-        const page = await browser.newPage()
-
-        await page.goto("https://example.com/")
-        const img = await page.screenshot() as Buffer
-        await browser.close()
-
-        //upload to R2
-        try {
-            await env.MY_BUCKET.put("screenshot.jpg", img);
-            return new Response(`Success!`);
-        } catch (e) {
-            return new Response('', { status: 400 })
-        }
-    }
-}</code></pre>
-	<p>Down the line, we have plans to add full Puppeteer support, including functions like <code>page.type</code>, <code>page.click</code>, <code>page.evaluate</code>!</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-happening-under-the-hood">What’s happening under the hood?</h3>
-		<a href="https://blog.cloudflare.com/#whats-happening-under-the-hood" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">Remote browser isolation technology</a> is an integral part of our <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> product offering. Remote browser isolation lets users interact with a web browser that instead of running on the client’s device, runs in a remote environment. The Rendering API repurposes this under the hood!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vVRXYPzKbQekTnLyMRyW6/4df732b07e3b883341b40bc81826d1b2/image2-32.png" alt="Rendering API architecture diagram" class="kg-image" width="1402" height="390" loading="lazy">
-
-	</figure>
-	<p>We’ve wrapped the Puppeteer library so that it can be run directly from your own Worker. You can think of your Worker as the client. Each of Cloudflare’s data centers has a pool of warm browsers ready to go and when a Worker requests a browser, the browser is instantly returned and is connected to via a WebSocket. Once the WebSocket connection is established, our internal browser API Worker handles all communication to the browser session via the Chrome Devtools Protocol.</p>
-	<p>To ensure the security of your Worker, individual remote browsers are run as disposable instances – one instance per request, and never shared. They are secured using gVisor to protect against kernel level exploits. On top of that, the browser is running sandboxed processes with the lowest privilege level using a Linux seccomp profile.</p>
-	<p>The Rendering API should be used when you’re building and testing your applications. &nbsp;To prevent abuse, <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">Cloudflare Bot Management</a> has baked in signals to indicate that a request is coming from a Worker running Puppeteer. As a Cloudflare Bot Management customer, this will automatically be added to your blocklist, with the option to explicitly opt in and allow it.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-can-you-get-started">How can you get started?</h3>
-		<a href="https://blog.cloudflare.com/#how-can-you-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re introducing the Workers Browser Rendering API in closed beta. If you’re interested, please tell us a bit about your use case and join the <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api" target="_blank" rel="noopener noreferrer">waitlist</a>. We would love to hear what else you want to build using the Workers Browser Rendering API, let us know in the Workers channel on the <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>!</p>
+<p>If you’ve ever created a website that shows any kind of analytics, you’ve probably also thought about adding a “Save Image” or “Save as PDF” button to store and share results. This isn’t as easy as it seems (I can attest to this firsthand) and it’s not long before you go down a rabbit hole of trying 10 different libraries, hoping one will work.</p>
+<p>This is why we’re excited to announce a private beta of the Workers Browser Rendering API, improving the browser automation experience for developers. With browser automation, you can programmatically do anything that a user can do when interacting with a browser.</p>
+<p>The Workers Browser Rendering API, or just Rendering API for short, is our out-of-the-box solution for simplifying developer workflows, including capturing images or screenshots, by running browser automation in Workers.</p>
+<h3>Browser automation, everywhere</h3>
+<p>As with many of the best Cloudflare products, Rendering API was born out of an internal need. Many of our teams were setting up or wanted to set up their own tools to perform what sounds like an incredibly simple task: taking automated screenshots.</p>
+<p>When gathering use cases, we realized that much of what our internal teams wanted would also be useful for our customers. Some notable ones are:</p>
+<ul>
+	<li>Taking screenshots for social sharing thumbnails or preview images</li>
+	<li>Emailed daily screenshots of dashboards (requested specifically by our SVP of Engineering)</li>
+	<li>Reporting bugs on websites and sending them directly to frontend teams</li>
+</ul>
+<p>Not to mention use cases for other browser automation functions like:</p>
+<p><strong>Testing UI/UX Flows</strong>End-to-end (E2E) testing is used to minimic user behaviour and can identify bugs that unit tests or integration tests have missed. And let’s be honest – no developer wants to manually check the user flow each time they make changes to their application. E2E tests can be especially useful to verify logic on your customer’s critical path like account creation, authentication or checkout.</p>
+<p><strong>Performance Tests</strong>Application performance metrics, such as page load time, directly impact your user’s experience and your SEO rankings. To avoid performance regressions, you want to test impact on latency in conditions that are as close as possible to your production environment before you merge. By automating performance testing you can measure if your proposed changes will result in a degraded experience for your uses and make improvements accordingly. &nbsp;</p>
+<h3>Unlocking a new building block</h3>
+<p>One of the most common browser automation frameworks is <a href="https://github.com/puppeteer/puppeteer" target="_blank" rel="noopener noreferrer">Puppeteer</a>. It’s common to run Puppeteer in a containerization tool like Docker or in a serverless environment. Taking automated screenshots should be as easy as writing some code, hitting deploy and having it run when a particular event is triggered or on a regular schedule.</p>
+<p>It should be, but it's not.</p>
+<p>Even on a serverless solution like AWS Lambda, running Puppeteer means packaging it, making sure dependencies are covered, uploading packages to S3 and deploying using Layers. Whether using Docker or something like Lambda, it’s clear that this is not easy to set up.</p>
+<p>One of the pillars of Cloudflare’s development platform is to provide our developers with tools that are incredibly simple, yet powerful to build on. Rendering API is our out-of-the-box solution for running Puppeteer in Workers.</p>
+<h3>Screenshotting made simple</h3>
+<p>To start, the Rendering API will have support for navigating to a webpage and taking a screenshot, with more functions to follow. To use it, all you need to do is add our new browser binding to your project’s <code>wrangler.toml</code> file</p>
+<p>wrangler.toml</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>bindings = [</span></span>
+<span class="line"><span> { name = "my_browser” type = "browser" }</span></span>
+<span class="line"><span>]</span></span></code></pre>
 </div>
+<p>From there, taking a screenshot and saving it to R2 is as simple as:</p>
+<p>script.ts</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> puppeteer </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/puppeteer'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> browser</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> puppeteer.</span><span class="sk-6f42c1-ffc799">launch</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            browserBinding: env.</span><span class="sk-005cc5-fff">MY_BROWSER</span></span>
+<span class="line"><span class="sk-24292e-fff">        })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> page</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> browser.</span><span class="sk-6f42c1-ffc799">newPage</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">goto</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com/"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> img</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">screenshot</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-6f42c1-ffc799"> Buffer</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> browser.</span><span class="sk-6f42c1-ffc799">close</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        //upload to R2</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_BUCKET</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"screenshot.jpg"</span><span class="sk-24292e-fff">, img);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Success!`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">400</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Down the line, we have plans to add full Puppeteer support, including functions like <code>page.type</code>, <code>page.click</code>, <code>page.evaluate</code>!</p>
+<h3>What’s happening under the hood?</h3>
+<p><a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">Remote browser isolation technology</a> is an integral part of our <a href="https://www.cloudflare.com/products/zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> product offering. Remote browser isolation lets users interact with a web browser that instead of running on the client’s device, runs in a remote environment. The Rendering API repurposes this under the hood!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="199" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=715&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=640&amp;h=178&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=715&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=750&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=828&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=1080&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=1280&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=1430&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Rendering API architecture diagram" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N4NWGEDWT6ERVG7F3M09.png&amp;w=1402&amp;h=390&amp;f=webp" data-lightbox-width="1402" data-lightbox-height="390" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="199" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We’ve wrapped the Puppeteer library so that it can be run directly from your own Worker. You can think of your Worker as the client. Each of Cloudflare’s data centers has a pool of warm browsers ready to go and when a Worker requests a browser, the browser is instantly returned and is connected to via a WebSocket. Once the WebSocket connection is established, our internal browser API Worker handles all communication to the browser session via the Chrome Devtools Protocol.</p>
+<p>To ensure the security of your Worker, individual remote browsers are run as disposable instances – one instance per request, and never shared. They are secured using gVisor to protect against kernel level exploits. On top of that, the browser is running sandboxed processes with the lowest privilege level using a Linux seccomp profile.</p>
+<p>The Rendering API should be used when you’re building and testing your applications. &nbsp;To prevent abuse, <a href="https://www.cloudflare.com/products/bot-management" target="_blank" rel="noopener noreferrer">Cloudflare Bot Management</a> has baked in signals to indicate that a request is coming from a Worker running Puppeteer. As a Cloudflare Bot Management customer, this will automatically be added to your blocklist, with the option to explicitly opt in and allow it.</p>
+<h3>How can you get started?</h3>
+<p>We’re introducing the Workers Browser Rendering API in closed beta. If you’re interested, please tell us a bit about your use case and join the <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api" target="_blank" rel="noopener noreferrer">waitlist</a>. We would love to hear what else you want to build using the Workers Browser Rendering API, let us know in the Workers channel on the <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a>!</p>

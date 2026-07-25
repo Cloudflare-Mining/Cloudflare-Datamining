@@ -1,0 +1,133 @@
+<p>Cloudflare 有一個傳統，就是在 4 月 1 日推出真正的產品，而不是像現在網路上流傳的那樣發佈玩笑式的產品公告。在前幾年，我們已推出 <a href="https://blog.cloudflare.com/announcing-1111" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> 和 <a href="https://blog.cloudflare.com/introducing-1-1-1-1-for-families" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 家庭版</u></a>等頗具影響力的產品。今天，我們很高興能夠延續這一傳統，<strong>將所有清除方法開放給所有客戶，無論其方案類型為何。</strong></p>
+<p>在 2024 年生日週期間，我們<a href="https://blog.cloudflare.com/instant-purge" target="_blank" rel="noopener noreferrer"><u>宣佈打算</u></a>將一整套清除方法（包括依 URL 清除、依主機名稱清除、依標記清除、依字首清除，以及清除所有內容 ）引入所有 Cloudflare 方案。過去，除了「依 URL 清除」和「清除所有內容」以外， 其他方法供企業方案客戶專屬使用。但在過去幾年裡，我們一直公開重建清除管道 （希望您已閱讀<a href="https://blog.cloudflare.com/part1-coreless-purge" target="_blank" rel="noopener noreferrer"><u>我們的一些</u></a> <u><a href="https://blog.cloudflare.com/rethinking-cache-purge-architecture" target="_blank" rel="noopener noreferrer">部落格</a><a href="https://blog.cloudflare.com/instant-purge" target="_blank" rel="noopener noreferrer">系列</a></u>），我們很高興能更廣泛地分享成果。近幾個月來，我們一直致力於確保即使在負載增加的情境中，全新即時清除管道亦能始終在 150 毫秒以內執行，從而供每位客戶使用。&nbsp;&nbsp;</p>
+<p>不僅如此，我們還針對企業方案客戶顯著提升了預設清除速率限制，得益於我們新開發的<a href="https://blog.cloudflare.com/instant-purge" target="_blank" rel="noopener noreferrer"><u>即時清除</u></a>系統的高效率，現在可實現更大的清除輸送量。</p>
+<h2>構建更好的清除系統：兩年之旅</h2>
+<p>回顧一下，今天的公告代表大約兩年的專注工程。臨近 2022 年底，我們的團隊開始專注於重建 Cloudflare 的清除管道，並提出一個明確但具有挑戰性的目標：顯著提高我們的輸送量，同時在全球網路中保持近乎即時的失效。</p>
+<p>Cloudflare 在全球超過 335 座城市營運<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>資料中心</u></a> 。常用的快取資產可駐留在我們所有的資料中心，這意味著每項清除請求必須快速傳播至快取該內容的每個位置。收到清除命令後，每個資料中心必須有效地找到快取內容並使其無效，從而防止提供過時的回應。必須失效的內容量可能有很大差異，從單一檔案到與特定主機名稱關聯的所有快取資產。清除內容之後，任何後續請求都將觸發從來源伺服器擷取新副本，該副本將在回應期間儲存在 Cloudflare 的快取中。&nbsp;</p>
+<p>確保清除請求在龐大的網路中持續、快速地傳播，會帶來巨大的技術挑戰，考慮到偶爾的資料中心服務中斷、維護或網路中斷時尤其如此。在這些條件下確保一致性需要強大的分散式系統工程。</p>
+<h2>我們是如何擴展清除的？</h2>
+<p>我們<a href="https://blog.cloudflare.com/instant-purge" target="_blank" rel="noopener noreferrer"><u>之前討論過</u></a>如何構建全新的即時清除系統，以實現不到 150 毫秒的清除時間。值得注意的是，效能改善只是新架構實現的一小部分，因為它還協助我們解決儲存和輸送量方面的重大擴展挑戰，這讓我們能夠為所有使用者提供即時清除功能。</p>
+<p>最初，我們的清除系統擴展良好，但隨著客戶的迅速增長，每日需要儲存數百萬個清除金鑰，該儲存消耗減少了可用的快取空間。早期管理這種儲存和輸送量需求的嘗試，涉及使用<a href="https://www.boltic.io/blog/kafka-queue" target="_blank" rel="noopener noreferrer"><u>佇列</u></a>和批次處理以緩解流量暴增，但這會導致延遲，並凸顯使用量增加與儲存成本上升之間的緊密聯繫。</p>
+<p>我們需要重新審視如何更好地儲存清除金鑰，以及何時移除已清除的內容，以便回收空間。過去，當客戶依標記、字首或主機名稱清除時， Cloudflare 會將內容標記為到期，並允許稍後將其逐出。這稱為消極式清除，因為不會從磁碟中主動移除任何內容。消極式清除速度很快，但不一定有效率，因為它會消耗儲存空間來儲存到期但尚未逐出的內容。在審查清除金鑰的全域或資料中心層級索引之後，我們認為不可行，因為這會增加系統複雜性，並且這些索引可能會因我們的網路規模而帶來延遲。因此，我們選擇對每部機器進行索引，將索引直接與我們的快取代理一起整合。這最大限度地降低了網路複雜性，簡化了可靠性，並提供可預測的擴展。</p>
+<p>經過仔細分析和基準測試之後，我們選擇了一個可根據我們的需求進行最佳化的嵌入式鍵值存放區 <a href="https://rocksdb.org" target="_blank" rel="noopener noreferrer"><u>RocksDB</u></a>，這構成了 <a href="https://blog.cloudflare.com/instant-purge/#putting-it-all-together" target="_blank" rel="noopener noreferrer"><u>CacheDB</u></a> 的基礎，能夠與每個快取代理一起執行基於 Rust 的服務。CacheDB 可管理索引建立和立即清除執行（主動清除），從而顯著減少儲存需求並釋放快取空間。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="305" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=640&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=750&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=828&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=1080&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=1280&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=1430&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2704 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KDDVDACEKWGX2YFRWGK4.png&amp;w=1920&amp;h=820&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="820" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="305" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>CacheDB 緩衝區清除操作中的本機佇列，可確保一致的輸送量而沒有延遲暴增，而快取代理則查詢 CacheDB 以保證快速、主動的清除。我們更新的分發管道將清除直接廣播至機器上的 CacheDB 執行個體，從而顯著改善輸送量和清除速度。</p>
+<p>使用 CacheDB 時，我們消除了被動清除儲存積累，將儲存需求減少了 10 倍，從而立即釋放寶貴的磁碟空間。釋放的儲存增強了快取保留，提升了快取命中率，並最大限度地減少原始伺服器輸出。儲存方面的節省和輸送量的增加讓我們可進行擴展，從而向更多客戶提供即時清除。</p>
+<p>如需我們如何設計全新即時清除系統的詳細資訊，請參閱上一期<a href="https://blog.cloudflare.com/instant-purge" target="_blank" rel="noopener noreferrer"><u>清除系列部落格文章</u></a>。</p>
+<h2>實現適當的平衡：清除的內容和時間</h2>
+<p>繼續討論使用這些新清除方法的實際考量，針對您想要使其無效的內容採用正確的方法很重要。過於積極的清除可能會使來源伺服器因不必要的請求而不堪重負，從而增加輸出成本並可能導致停機時間。相反，清除不足則會給訪客留下過時的內容。平衡精準度與速度至關重要。</p>
+<p>Cloudflare 支援多種針對性清除方法，可協助客戶實現這種平衡。</p>
+<ul>
+	<li><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything" target="_blank" rel="noopener noreferrer"><strong><u>清除所有內容</u></strong></a>：清除與網站關聯的所有快取內容。</li>
+	<li><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix" target="_blank" rel="noopener noreferrer"><strong><u>依字首清除</u></strong></a>：針對共用相同字首的 URL。</li>
+	<li><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname" target="_blank" rel="noopener noreferrer"><strong><u>依主機名稱清除</u></strong></a>：依特定主機名稱將內容失效。</li>
+	<li><strong><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file" target="_blank" rel="noopener noreferrer"><u>依 URL 清除（單一檔案清除</u></a>）</strong> ：精確針對單一 URL。</li>
+	<li><a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags" target="_blank" rel="noopener noreferrer"><strong><u>依標記清除</u></strong></a>：使用<a href="https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#add-cache-tag-http-response-headers" target="_blank" rel="noopener noreferrer"><u>快取標記</u></a>標頭將分組資產失效，從而針對複雜的快取管理情境提供靈活性。</li>
+</ul>
+<p>即日起，所有這些方法可供所有 Cloudflare 客戶使用。&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<h2>如何清除&nbsp;</h2>
+<p>使用者可直接在 Cloudflare 儀表板（位於<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fcaching%2Fconfiguration" target="_blank" rel="noopener noreferrer"><u>設定區段</u></a>的快取索引標籤下方）或透過 <a href="https://developers.cloudflare.com/api/resources/cache" target="_blank" rel="noopener noreferrer"><u>Cloudflare API</u></a> 選取清除方法。每項清除請求都應明確指定與所選清除類型相關的目標 URL、主機名稱、字首或快取標記（稱為清除金鑰）。例如，字首清除請求可能會指定一個目錄，例如 example.com/foo/bar。為了最大限度地提高效率和輸送量，建議在單一請求中批次處理多個清除金鑰，而不是傳送包含單一金鑰的個別清除請求。</p>
+<h2>清除的內容量有多少？</h2>
+<p>對於每種方案類型，Cloudflare 依標記、字首、主機名稱清除，以及清除所有內容的新速率限制有所差異。我們使用<a href="https://en.wikipedia.org/wiki/Token_bucket" target="_blank" rel="noopener noreferrer"><u>權杖貯體</u></a>速率限制系統，因此每個帳戶有一個權杖貯體，其大小上限取決於方案類型。我們收到清除請求後，首先會根據自帳戶上次發出清除請求以來經過的時間，除以其方案類型（可以是權杖的一小部分）的回填速率，將權杖新增至帳戶的貯體。然後，我們會檢查貯體中是否至少有一個完整權杖，如果是，我們會將其移除並處理清除請求。否則，清除要求將受到速率限制。若要考慮此速率限制，一個簡單的方法是回填速率表示使用者在指定時段可傳送請求的一致速率，而貯體大小表示可用請求的最大爆量。</p>
+<p>例如，免費使用者以大小為 25 項請求的貯體開始，回填速率為每分鐘 5 項請求（每 12 秒一項請求）。如果使用者同時傳送 26 項請求，則前 25 項請求將得到處理，但最後一項請求將受到速率限制。他們需要等待 12 秒，然後重試最後一項請求才能成功。&nbsp;</p>
+<p>目前限制適用於每個<strong>帳戶</strong> ：&nbsp;</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>計劃</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>貯體大小</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>請求回填速率</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>每項請求的最大金鑰數</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>金鑰總數</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Free 方案</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>25 項請求</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每分鐘 5 項</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每分鐘 500 項</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pro</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>25 項請求</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每秒 5 項</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每秒 500 項</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Biz</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>50 項請求</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每秒 10 項</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每秒 1,000 項</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Enterprise</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>500 項請求</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每秒 50 項</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每秒 5,000 項</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>如需有關所有清除速率限制更詳細的文件，請參閱我們的<a href="https://developers.cloudflare.com/cache/how-to/purge-cache" target="_blank" rel="noopener noreferrer"><u>文件</u></a> 。</p>
+<h2>接下來是什麼？</h2>
+<p>我們花費了很多時間來最佳化我們的清除平台。但我們不會止步於此。展望未來，我們將繼續提升 Cloudflare 的單一檔案清除效能。目前的 P50 效能約為 250 毫秒，我們預計可進一步最佳化，將其降至 200 毫秒以下。此外，我們還將增強提高所有系統清除輸送量的能力，並將繼續尋找實作篩選技術的方法，以確保我們能繼續有效地擴展，並允許客戶隨時隨地進行清除。</p>
+<p>我們誠邀您立即試用我們的全新清除系統，為您的訪客提供即時、順暢的體驗。</p>

@@ -1,83 +1,68 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hoTYAOwnUWJQLyYXGENQT/f1e0ffc6c9fefe10d682cfc3120a953c/introducing-deploy-buttons.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>When I first try out new development platforms, the first thing I do is get an OSS (Open Source Software) project I find on Github up and running. I used to start by following tutorials or digging through documentation. It’s a little bit counterintuitive. Let me share with you why. One reason is that Hello, World! examples rarely show the real “magic” of the platform. I want to feel excited and get a sense of how other people are creatively using the platform.</p>
-	<p>For example, I love it when I can build and deploy an OSS <a href="https://github.com/scitbiz/flutter_pokedex" target="_blank" rel="noopener noreferrer">Pokedex</a> app in a few minutes on Flutter to see if the platform actually lives up to the hype. It’s so much easier to do this than to spend a few hours following tutorials and documentation to get through the initial learning curve. You can think of it as shortening the <a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless">time to first dopamine</a>.</p>
-	<p>Another reason is that it makes learning the new platform much faster. Building off of an experienced developer’s work shows me which classes and functions are most useful to learn. There’s more nuance to building out full applications than is usually explained in the documentation. I can see how the pieces fit together and get a deeper understanding.</p>
-	<p>When I started my internship on the Workers team, I realized I could help create the magical experience of trying out a new platform quickly for the Workers dev experience. The team and I have spent the last few months working hard with the Workers team to make this possible. Today, I’m happy to share with you: Deploy Buttons.</p>
-	<p>Deploy Buttons let you deploy a project to the Workers Platform without even needing to set up a local development environment. Before Deploy Buttons, new developers had to jump between multiple places like the signup pages, the docs, the dashboard, and Wrangler to deploy a project. Now, it’s as easy as clicking a Deploy Button and three short steps to deploy using our new web-based deploy tool. This is the fastest way for beginners to get something live in less than five minutes, and for developers to share their projects with others by creating their own deploy buttons.</p>
-	<p>Try this button to deploy a GraphQL db:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fsignalnerve%2Fworkers-graphql-server">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6mIGxNuovWilwnhFBVpWUM/c16e5d8c19b51f10f87f83e3474f7ea4/button.svg_xml" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
-		</a>
-	</figure>
-	<p>We’ve also curated a <a href="http://deploy.workers.cloudflare.com" target="_blank" rel="noopener noreferrer">few awesome projects</a> to try deploying now with this new deploy flow.</p>
-	<p>Before Deploy Buttons, things were a bit more complicated. When you found a project you like on GitHub or an example on our template gallery, you had to go to cloudflare.com to create an account, go to the docs to set up a local development environment, clone the project, and finally, learn how to use wrangler to deploy it. Now, you can just click on the deploy button to quickly get a project up and running with Workers to experience the magic of serverless.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11cLi5av4Q8vhzvZm6kxOt/0571890de73be1ed68f359be204a502d/deploytool.png" alt="" class="kg-image" width="792" height="784" loading="lazy">
-
-	</figure>
-	<p>Here’s how it works. For example, if you find an interesting Workers project on GitHub and want to deploy it, you would click the “Deploy to Workers Button” on the <a href="https://github.com/bytesizedxyz/cloudflare-worker-cra" target="_blank" rel="noopener noreferrer">repo README</a>. This would take you to our new web-based deploy tool where you can deploy that project in just three steps. First, connect your Github account. Second, connect your Cloudflare account. Third, click “Deploy” and the project will be forked to your Github account and deployed to Workers with our Github action.</p><!--kg-card-begin: html-->
-	<stream src="39da2fae496af93951c63c0a374d50e1" controls=""></stream>
-	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=39da2fae496af93951c63c0a374d50e1"></script><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="want-to-create-your-own-deploy-button-for-your-projects">Want to create your own Deploy Button for your projects?</h3>
-		<a href="https://blog.cloudflare.com/#want-to-create-your-own-deploy-button-for-your-projects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ol>
-		<li>
-			<p>Add a GitHub Actions workflow to your project.</p>
-		</li>
-	</ol>
-	<p>Add a new file to .github/workflows, such as .github/workflows/deploy.yml, and create a GitHub workflow for deploying your project. It should include a set of events, including at least repository_dispatch, but probably push and maybe schedule as well. Add a step for publishing your project using wrangler-action:</p>
-	<pre class="language-bash"><code class="language-bash">name: Build
-on:
-  push:
-  pull_request:
-  repository_dispatch:
-deploy:
-  runs-on: ubuntu-latest
-  timeout-minutes: 60
-  needs: test
-  steps:
-    - uses: actions/checkout@v2
-    - name: Publish
-      uses: cloudflare/wrangler-action@1.2.0</code></pre>
-	<ol>
-		<li>
-			<p>Add support for CF_API_TOKEN and CF_ACCOUNT_ID in your repo workflow:</p>
-		</li>
-	</ol>
-	<pre class="language-bash"><code class="language-bash"># Update "Publish" step from last code snippet
-- name: Publish
-  uses: cloudflare/wrangler-action@1.2.0
-  with:
-    apiToken: ${{ secrets.CF_API_TOKEN }}
-  env:
-    CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}</code></pre>
-	<ol>
-		<li>
-			<p>Add the Markdown code for your button to your project's README, replacing the example url parameter with your repository URL.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FYOURUSERNAME%2FYOURREPO">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59lOKk9dO4ihyDPCik5Yso/762e86effd0f44b5bb1885d8e10abc7d/button.svg_xml" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
-		</a>
-	</figure>
-	<pre class="language-bash"><code class="language-bash">[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO)</code></pre>
-	<p>Does your project use features only available in a paid Workers plan like Workers KV? Providing the paid=true query parameter to the /button and the deploy application paths will render a "Deploy to Workers Bundled" button, as seen below -- it will also render a notice in the UI that the project requires Workers Bundled:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FYOURUSERNAME%2FYOURREPO&amp;paid=true">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4TlG5fqH4m4NUBe8pml5SI/7c138e438e015d54e0ab99927a923f16/button" alt="Deploy to Cloudflare Workers" class="kg-image" width="184" height="39" loading="lazy">
-		</a>
-	</figure>
-	<pre class="language-bash"><code class="language-bash">[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO&amp;paid=true)</code></pre>
-	<p>Thanks for tuning in. If you have any feedback, please fill out our <a href="https://docs.google.com/forms/d/e/1FAIpQLScD29hGSr_ArVWuOhn7izRMw9aXfoCbkeud3qGUlZdgw32tFQ/viewform" target="_blank" rel="noopener noreferrer">feedback survey</a>. We have more exciting features and improvements to announce soon for making the developer experience for Workers even better.</p>
+<p>When I first try out new development platforms, the first thing I do is get an OSS (Open Source Software) project I find on Github up and running. I used to start by following tutorials or digging through documentation. It’s a little bit counterintuitive. Let me share with you why. One reason is that Hello, World! examples rarely show the real “magic” of the platform. I want to feel excited and get a sense of how other people are creatively using the platform.</p>
+<p>For example, I love it when I can build and deploy an OSS <a href="https://github.com/scitbiz/flutter_pokedex" target="_blank" rel="noopener noreferrer">Pokedex</a> app in a few minutes on Flutter to see if the platform actually lives up to the hype. It’s so much easier to do this than to spend a few hours following tutorials and documentation to get through the initial learning curve. You can think of it as shortening the <a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless">time to first dopamine</a>.</p>
+<p>Another reason is that it makes learning the new platform much faster. Building off of an experienced developer’s work shows me which classes and functions are most useful to learn. There’s more nuance to building out full applications than is usually explained in the documentation. I can see how the pieces fit together and get a deeper understanding.</p>
+<p>When I started my internship on the Workers team, I realized I could help create the magical experience of trying out a new platform quickly for the Workers dev experience. The team and I have spent the last few months working hard with the Workers team to make this possible. Today, I’m happy to share with you: Deploy Buttons.</p>
+<p>Deploy Buttons let you deploy a project to the Workers Platform without even needing to set up a local development environment. Before Deploy Buttons, new developers had to jump between multiple places like the signup pages, the docs, the dashboard, and Wrangler to deploy a project. Now, it’s as easy as clicking a Deploy Button and three short steps to deploy using our new web-based deploy tool. This is the fastest way for beginners to get something live in less than five minutes, and for developers to share their projects with others by creating their own deploy buttons.</p>
+<p>Try this button to deploy a GraphQL db:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="184" height="39" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center 184w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=368&amp;h=78&amp;f=webp&amp;fit=cover&amp;position=center 368w" alt="Deploy to Cloudflare Workers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp" data-lightbox-width="184" data-lightbox-height="39" data-astro-cid-7nvefuv6="true" sizes="(min-width: 184px) 184px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="184" height="39" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We’ve also curated a <a href="http://deploy.workers.cloudflare.com" target="_blank" rel="noopener noreferrer">few awesome projects</a> to try deploying now with this new deploy flow.</p>
+<p>Before Deploy Buttons, things were a bit more complicated. When you found a project you like on GitHub or an example on our template gallery, you had to go to cloudflare.com to create an account, go to the docs to set up a local development environment, clone the project, and finally, learn how to use wrangler to deploy it. Now, you can just click on the deploy button to quickly get a project up and running with Workers to experience the magic of serverless.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="708" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=715&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=640&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=715&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=750&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=828&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=1080&amp;h=1069&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=1280&amp;h=1267&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=1430&amp;h=1416&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing Deploy Buttons Embedded Image - 92Vurq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447RVRDZA6QDWXYNDE63M0.png&amp;w=792&amp;h=784&amp;f=webp" data-lightbox-width="792" data-lightbox-height="784" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="708" class="pt-portable-image-media"></div>
+</figure>
+<p>Here’s how it works. For example, if you find an interesting Workers project on GitHub and want to deploy it, you would click the “Deploy to Workers Button” on the <a href="https://github.com/bytesizedxyz/cloudflare-worker-cra" target="_blank" rel="noopener noreferrer">repo README</a>. This would take you to our new web-based deploy tool where you can deploy that project in just three steps. First, connect your Github account. Second, connect your Cloudflare account. Third, click “Deploy” and the project will be forked to your Github account and deployed to Workers with our Github action.</p>
+<div id="html-block-kx" class="html-block">
+	<script data-cfasync="false" defer="" type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=39da2fae496af93951c63c0a374d50e1"></script>
 </div>
+<h3>Want to create your own Deploy Button for your projects?</h3>
+<ol>
+	<li>Add a GitHub Actions workflow to your project.</li>
+</ol>
+<p>Add a new file to .github/workflows, such as .github/workflows/deploy.yml, and create a GitHub workflow for deploying your project. It should include a set of events, including at least repository_dispatch, but probably push and maybe schedule as well. Add a step for publishing your project using wrangler-action:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">name:</span><span class="sk-032f62-99ffe4"> Build</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">on:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  push:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  pull_request:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  repository_dispatch:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">deploy:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  runs-on:</span><span class="sk-032f62-99ffe4"> ubuntu-latest</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  timeout-minutes:</span><span class="sk-005cc5-ffc799"> 60</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  needs:</span><span class="sk-032f62-99ffe4"> test</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  steps:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    -</span><span class="sk-032f62-99ffe4"> uses:</span><span class="sk-032f62-99ffe4"> actions/checkout@v2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    -</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> Publish</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      uses:</span><span class="sk-032f62-99ffe4"> cloudflare/wrangler-action@1.2.0</span></span></code></pre>
+</div>
+<ol>
+	<li>Add support for CF_API_TOKEN and CF_ACCOUNT_ID in your repo workflow:</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Update "Publish" step from last code snippet</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> Publish</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  uses:</span><span class="sk-032f62-99ffe4"> cloudflare/wrangler-action@1.2.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  with:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    apiToken:</span><span class="sk-24292e-fff"> ${{ secrets.CF_API_TOKEN }</span><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  env:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    CF_ACCOUNT_ID:</span><span class="sk-24292e-fff"> ${{ secrets.CF_ACCOUNT_ID }</span><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+</div>
+<ol>
+	<li>Add the Markdown code for your button to your project's README, replacing the example url parameter with your repository URL.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="184" height="39" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center 184w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=368&amp;h=78&amp;f=webp&amp;fit=cover&amp;position=center 368w" alt="Deploy to Cloudflare Workers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp" data-lightbox-width="184" data-lightbox-height="39" data-astro-cid-7nvefuv6="true" sizes="(min-width: 184px) 184px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="184" height="39" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">[Deploy to Cloudflare Workers](https</span><span class="sk-d73a49-a0a0a0">://</span><span class="sk-24292e-fff">deploy.workers.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">button)](</span><span class="sk-6f42c1-ffc799">https://deploy.workers.cloudflare.com/?url</span><span class="sk-032f62-99ffe4">=https://github.com/YOURUSERNAME/YOURREPO</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Does your project use features only available in a paid Workers plan like Workers KV? Providing the paid=true query parameter to the /button and the deploy application paths will render a "Deploy to Workers Bundled" button, as seen below -- it will also render a notice in the UI that the project requires Workers Bundled:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="184" height="39" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp&amp;fit=cover&amp;position=center 184w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=368&amp;h=78&amp;f=webp&amp;fit=cover&amp;position=center 368w" alt="Deploy to Cloudflare Workers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46REVNRCPZ904D8BA65GES.svg%2Bxml&amp;w=184&amp;h=39&amp;f=webp" data-lightbox-width="184" data-lightbox-height="39" data-astro-cid-7nvefuv6="true" sizes="(min-width: 184px) 184px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="184" height="39" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">[Deploy to Cloudflare Workers](https</span><span class="sk-d73a49-a0a0a0">://</span><span class="sk-24292e-fff">deploy.workers.cloudflare.com</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">button</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">paid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">true)](</span><span class="sk-6f42c1-ffc799">https://deploy.workers.cloudflare.com/?url</span><span class="sk-032f62-99ffe4">=https://github.com/YOURUSERNAME/YOURREPO</span><span class="sk-24292e-fff">&amp;paid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">true</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Thanks for tuning in. If you have any feedback, please fill out our <a href="https://docs.google.com/forms/d/e/1FAIpQLScD29hGSr_ArVWuOhn7izRMw9aXfoCbkeud3qGUlZdgw32tFQ/viewform" target="_blank" rel="noopener noreferrer">feedback survey</a>. We have more exciting features and improvements to announce soon for making the developer experience for Workers even better.</p>

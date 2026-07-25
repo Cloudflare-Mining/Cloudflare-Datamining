@@ -1,0 +1,67 @@
+<p>Page Shield 現在可以監視第三方 JavaScript 程式碼建立的惡意輸出連線</p>
+<p>許多網站使用第三方 JavaScript 庫，透過使用預先建立的功能來縮短開發時間。常見範例包括結帳服務、分析工具或即時聊天整合。這些 JavaScript 庫中任何一個都可能將網站訪客的資料傳送到未知位置。</p>
+<p>如果您管理一個網站，並且曾經想知道終端使用者資料可能去哪裡以及誰可以存取它，那麼從今天開始，您可以使用 <a href="https://blog.cloudflare.com/page-shield-generally-available">Page Shield</a> 的 Connection Monitor 找到答案。</p>
+<p>Page Shield 是我們的用戶端安全性解決方案，旨在偵測直接影響瀏覽器環境的惡意行為和危害，例如利用第三方 JavaScript 庫中漏洞的行為和危害。</p>
+<p>即日起提供的 Connection Monitor 是 Page Shield 的最新成員，讓您能夠查看由新增到您網站的第三方 JavaScript 發起的使用者瀏覽器建立的輸出連線。然後，您可以檢閱此資訊，以確保只有適當的第三方才能接收敏感資料。</p>
+<p>我們的 Business 和 Enterprise 方案的客戶可以獲得由 Connection Monitor 提供的輸出連線可見性。如果您正在使用我們的 Page Shield 企業附加元件，則每當發現連接可能存在惡意時，您也會收到通知。</p>
+<h3>使用 Connection Monitor 涵蓋更多攻擊面</h3>
+<p>Connection Monitor 補充了 <a href="https://developers.cloudflare.com/page-shield/use-dashboard/monitor-scripts" target="_blank" rel="noopener noreferrer">Script Monitor</a>（Page Shield 之前的核心功能）提供的可見性，擴展了擷取使用者瀏覽器中可能發生之惡意行為的機會網。</p>
+<p>Script Monitor 專注於分析 JavaScript 代碼以查找惡意訊號，而 Connection Monitor 則查看向其傳送資料的位置。這兩個功能完美地協同工作。</p>
+<p>實際上，Web 應用程式環境中的用戶端入侵經常會導致資料外流。最知名的例子是 <a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield">Magecart 式攻擊</a>，惡意行為者會在不改變應用程式行為的情況下，嘗試直接從應用程式的結賬流程（通常在電子商務網站上）竊取信用卡資料。</p>
+<p>這些攻擊通常很難偵測到，因為它們利用了您未直接控制的 JavaScript（如內嵌小工具），並且對使用者體驗沒有任何明顯影響。</p>
+<h3>對內容安全性原則進行補充</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="574" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=640&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=750&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=828&amp;h=665&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=1080&amp;h=867&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=1280&amp;h=1028&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=1430&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Page Shield Connection Monitor" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45RPMVYFVZSCFK8SNNS97S.png&amp;w=1920&amp;h=1542&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1542" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="574" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Page Shield 使用<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#:~:text=Content%20Security%20Policy%20(CSP)%20is,site%20defacement%2C%20to%20malware%20distribution." target="_blank" rel="noopener noreferrer">內容安全性原則</a> (CSP) 從瀏覽器接收資料，但透過關注核心問題來對其進行補充：偵測惡意行為，以及 CSP 未現成提供的內容。</p>
+<p>內容安全性原則被廣泛採用，讓網站管理員能夠告訴瀏覽器允許載入哪些內容以及從何處載入。這在原則上是有用的，但在實踐中，CSP 對於大型應用程式很難維護，而且通常會因為範圍太廣而導致無效。更重要的是，CSP 不提供內建機制來偵測惡意行為。這就是 Page Shield 能夠有所幫助的地方。</p>
+<p>在今天之前，借助 Script Monitor，Page Shield 透過僅關注 JavaScript 文檔，透過在 <a href="https://blog.cloudflare.com/detecting-magecart-style-attacks-for-pageshield">JavaScript 程式碼上執行我們的分類器</a>等方式來偵測惡意行為。從今天開始，借助 Connection Monitor，我們還針對連線 URL 端點執行威脅情報提要查找，使我們能夠快速發現潛在的可疑資料洩漏。</p>
+<h3>Connection Monitor：背後的原理</h3>
+<p>Connection Monitor 使用<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP#:~:text=Content%20Security%20Policy%20(CSP)%20is,site%20defacement%2C%20to%20malware%20distribution." target="_blank" rel="noopener noreferrer">內容安全性原則</a> (CSP) 中的 <code>connect-src</code> 指令從瀏覽器接收有關輸出連線的資訊。</p>
+<p>然後儲存此資訊以便於存取，並透過其他見解進行增強，包括連線狀態、連線頁面來源、網域資訊，以及您是否有權存取我們的企業附加元件、威脅源情報。</p>
+<p>要使用 Connection Monitor，您需要透過 Cloudflare 代理應用程式。開啟後，它將僅在 HTML 頁面載入的抽樣百分比上插入以下 HTTP 回應標頭，該標頭實施用於接收資料的內容安全性原則：</p>
+<p><code>content-security-policy-report-only: script-src 'none'; connect-src 'none'; report-uri &lt;HOSTNAME&gt;/cdn-cgi/script_monitor/report?&lt;QUERY_STRING&gt;</code></p>
+<p>此 HTTP 回應標頭要求瀏覽器將有關指令碼 (<code>script-src</code>) 和連線 (<code>connect-src</code>) 的資訊傳送到給定端點。依預設，端點主機名稱為 <code>csp-reporting.cloudflare.com</code>，但如果您使用我們的企業附加元件，您可以將其變更為與您網站相同的主機名稱。</p>
+<p>使用上述 CSP，瀏覽器將報告由<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src" target="_blank" rel="noopener noreferrer">以下各項發起的任何連線</a>：</p>
+<ul>
+	<li><code>&lt;a&gt;</code> ping,</li>
+	<li><code>fetch()</code>,</li>
+	<li><code>XMLHttpRequest</code>,</li>
+	<li><code>WebSocket</code>,</li>
+	<li><code>EventSource</code>，以及</li>
+	<li><code>Navigator.sendBeacon()</code></li>
+</ul>
+<p>連線報告範例如下所示：</p>
+<p>然後，使用如上所示的報告，我們可以建立輸出連線 URL 的清單，並記錄它們是由哪些頁面發起的。然後，使用儀表板提供這些資料，並透過以下方式增強：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">"csp-report"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "document-uri"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "https://cloudflare.com/",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "referrer"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "violated-directive"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "connect-src",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "effective-directive"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "connect-src",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "original-policy"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "disposition"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "report",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "blocked-uri"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "wss://example.com/",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "line-number"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 5,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "column-number"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 16,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "source-file"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "status-code"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 200,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "script-sample"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> ""</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<ul>
+	<li>**連線狀態：**如果最近看到連線，則處於「作用中」狀態</li>
+	<li>**時間戳記：**首次看到和最後一次看到</li>
+	<li>**中繼資料：**WHOIS 資訊、SSL 憑證資訊（如果有）、網域註冊資訊</li>
+	<li>**惡意訊號：**威脅源網域和 URL 查找*</li>
+</ul>
+<p>* URL 源查找僅在儲存完整連線路徑時可用。</p>
+<h3>關於隱私的說明</h3>
+<p>Cloudflare 希望確保直接客戶和終端客戶的隱私。因此，預設情況下，Connection Monitor 將僅儲存和收集連線 URL 的配置和主機部分，例如，如果瀏覽器向其傳送資料的端點是：</p>
+<p><code>https://connection.example.com/session/abc</code></p>
+<p>Connection Monitor 將僅儲存 <code>https://connection.example.com</code> ，並刪除路徑 <code>/session/abc</code>。這樣可以盡可能減少儲存工作階段 ID 或可能在完整 URL 中找到的其他敏感資料的風險。</p>
+<p>不儲存路徑確實意味著在某些特定情況下，我們無法從威脅情報中執行完整的 URL 源查找。因此，如果您知道您沒有在連線路徑中插入敏感資料，則可以從儀表板中輕鬆打開路徑儲存。網域查找將繼續按預期工作。將來還將新增對儲存查詢字串的支援。</p>
+<h3>走得更遠</h3>
+<p>我們將在 Page Shield 中支援 CSP 提供的 Script Monitor 和 Connection Monitor 這兩個指令，但我們的計劃遠不止於此。展望未來，我們已經在著手開發許多附加功能，包括直接從儀表板建議和實施正面和負面原則的能力。</p>
+<p>我們很高興看到 Connection Monitor 提供了有關應用程式行為的更多可見性，並期待下一次進展。</p>

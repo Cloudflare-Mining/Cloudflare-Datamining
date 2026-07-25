@@ -1,0 +1,188 @@
+<p>代理程式改變了我們思考來源控制、檔案系統和持久化狀態的方式。開發人員和代理程式生成的程式碼比以往任何時候都要多，未來 5 年編寫的程式碼數量將超過所有程式設計歷史記錄，這促使系統規模發生了數量級變化來滿足此需求。在這一點上，原始碼控制平台尤其困難重重：這些平台旨在滿足人類的需求，而不是應對不眠不休、同時處理多個問題、永不疲倦的代理程式驅動的 10 倍數量變化。</p>
+<p>我們認為有必要開發一種新的基元：分散式的版本化檔案系統，其首先是為代理程式而建置，並且能支援現今正在開發的應用程式類型。</p>
+<p>我們稱之為 Artifacts：支援 Git 的版本化檔案系統。您可透過程式設計方式建立儲存庫，與您的代理程式、沙箱、Workers 或任何其他運算範例並排放置，並從任何常規 Git 用戶端與之連線。</p>
+<p>是否要為每個代理程式工作階段提供儲存庫？Artifacts 能夠做到。每個沙箱執行個體呢？還是 Artifacts。是否需要透過已知良好的起點建立 10,000 個進程複製？您猜對了：同樣靠 Artifacts。Artifacts 可公開 REST API 和原生 Workers API，以便在不適合 Git 用戶端的環境中（例如任何無伺服器功能）建立儲存庫、生成憑證並提交。</p>
+<p>付費 Workers 方案的所有開發人員都可使用 Artifacts 的私人測試版，我們的目標是在 5 月初之前將其作為公開測試版。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a repo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> repo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AGENT_REPOS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">(name)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Pass back the token &amp; remote to your agent</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> { repo.remote, repo.token }</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Clone it and use it like any regular git remote</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://x:</span><span class="sk-24292e-fff">${TOKEN}</span><span class="sk-032f62-99ffe4">@123def456abc.artifacts.cloudflare.net/git/repo-13194.git</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>就是這樣。一個隨時可用，動態建立的裸機儲存庫，任何 Git 用戶端都可操作。</p>
+<p>如果您想要從現有的 Git 儲存庫啟動一個 Artifacts 儲存庫，以便代理程式可獨立運作並推送獨立變更，您也可使用 .import() 來實現：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  ARTIFACTS</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Artifacts</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Import from GitHub</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">remote</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">token</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">ARTIFACTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">import</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      source: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        url: </span><span class="sk-032f62-99ffe4">"https://github.com/cloudflare/workers-sdk"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        branch: </span><span class="sk-032f62-99ffe4">"main"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      target: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">"workers-sdk"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Get a handle to the imported repo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> repo</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">ARTIFACTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workers-sdk"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Fork to an isolated, read-only copy</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> fork</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> repo.</span><span class="sk-6f42c1-ffc799">fork</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workers-sdk-review"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      readOnly: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({ remote: fork.remote, token: fork.token })</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><a href="http://developers.cloudflare.com/artifacts" target="_blank" rel="noopener noreferrer"><u>查看文件</u></a>以開始使用，或者如果您想要瞭解 Artifacts 的使用方式、建置方式及其內部運作方式，請繼續閱讀。</p>
+<h2>為什麼要選擇 Git？什麼是版本化檔案系統？</h2>
+<p>代理程式瞭解 Git。其存在於大多數模型的訓練資料中。代理程式知道順利路徑<em>和</em>邊緣情況，而程式碼最佳化模型（和/或整套系統）特別擅長使用 Git。</p>
+<p>此外，Git 的資料模型不僅適用於來源控制，還適用於您需要追蹤狀態、時間回溯和保留大量小型資料的<em>任何事物</em>。程式碼、設定、工作階段提示和代理程式歷程記錄：所有這些都是內容（「物件」），您通常希望以較小的區塊儲存（「提交」），並且能夠還原或以其他方式回復（「歷程記錄」）。&nbsp;</p>
+<p>我們本可以發明一種全新、專屬的通訊協定…但這樣就會遇到啟動問題。AI 模型不知道，因此您必須分配技能或 CLI，或希望使用者已插入您的文件 MCP…所有這些都會增加摩擦。<br><br>但是，如果我們可以為代理程式提供一個經驗證的安全 HTTPS Git 遠端 URL，並讓其像 Git 儲存庫一樣運作，結果證明效果相當不錯。對於不支援 Git 的用戶端，例如 Cloudflare Worker、Lambda 函數或 Node.js 應用程式，我們已推出 REST API 以及（很快）推出語言特定的 SDK。這些用戶端亦可使用 <a href="https://isomorphic-git.org" target="_blank" rel="noopener noreferrer"><u>isomorphic-git</u></a>，但在許多情況下，更簡單的 TypeScript API 可減少所需的 API 介面。</p>
+<h3>不僅僅適用於來源控制</h3>
+<p>Artifacts 的 Git API 可能會讓您認為其只是用於來源控制，但事實證明，Git API 和資料模型是一種保持狀態的強大方式，允許您對<em>任何</em>資料進行進程複製、時間回溯以及區分狀態。</p>
+<p>在 Cloudflare 內部，我們將 Artifacts 用於我們的內部代理程式：自動將檔案系統的目前狀態<em>和</em>工作階段歷程記錄保留在每個工作階段的 Artifacts 儲存庫中。這讓我們能夠：</p>
+<ul>
+	<li>保持沙箱狀態，而不必佈建（和保留）區塊儲存體。</li>
+	<li>與他人共用工作階段，並允許其回溯工作階段（提示）狀態<em>和</em>檔案狀態，無論是否提交至「實際」儲存庫（來源控制）。</li>
+	<li>還有最棒的：從任何點對一個工作階段進行<em>進程複製</em>，讓我們的團隊能與同事共用工作階段，並讓他們從中接手。正在偵錯並需要另一雙眼睛？傳送 URL 並進行派生。想要復制一個 API？可讓同事進行工作階段，並從中斷之處繼續。</li>
+</ul>
+<p>我們還與團隊交談過，他們希望在根本不需要 Git 通訊協定，但語義（還原、複製、差異化）<em>為</em>必要條件的情況下使用 Artifacts。將每個客戶的設定儲存在產品中，並希望能夠復原？Artifacts 可以很好地體現這一點。</p>
+<p>我們樂見團隊不僅探索以 Git 為中心的使用案例，而且同樣積極探索 Artifacts 的非 Git 使用案例。</p>
+<h2>背後原理</h2>
+<p>Artifacts 在 Durable Objects 之上建置。能夠建立數百萬（或數千萬）具狀態、隔離式運算執行個體，正是 Durable Objects 如今運作方式所固有的特徵；而這恰恰是我們支援每個命名空間容納數百萬個 Git 儲存庫所必需的能力。</p>
+<p>美國職業棒球大聯盟（即時比賽扇出）、Confluence 白板以及我們自有的 <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>，都在內部大規模地使用了 Durable Objects，因此，我們是在生產環境中執行一段時間的基元技術基礎上來建置此服務。</p>
+<p>然而，我們確實需要一項能在 Cloudflare Workers 上執行的 Git 實作。其必須小巧、盡可能完整、可擴展（<a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>備註</u></a>、<a href="https://git-lfs.com" target="_blank" rel="noopener noreferrer"><u>LFS</u></a>），而且高效。因此，我們使用 <a href="https://ziglang.org" target="_blank" rel="noopener noreferrer"><u>Zig</u></a> 建置了一個，並將其編譯為 Wasm。</p>
+<p>我們為什麼要使用 Zig？三個理由：</p>
+<ol>
+	<li>&nbsp;整個 Git 通訊協定引擎以純 Zig （無 libc）編寫，編譯為約 100KB WASM 二進位（具有最佳化空間！）。其實作了 SHA-1、zlib inflate/deflate、增量編碼/解碼、封裝剖析和完整的 Git Smart HTTP 通訊協定 — 全部從頭開始，除了標準庫之外，沒有其他外部相依項。</li>
+	<li>&nbsp;Zig 讓我們能夠&nbsp;手動控制記憶體分配，這在 Durable Objects 等受限環境中非常重要。Zig 建置系統還讓我們能夠輕鬆地在 WASM 執行階段（生產）和原生建置（針對 libgit2 進行測試以進行正確性驗證）之間共用程式碼。</li>
+	<li>WASM 模組透過精簡回呼介面來與 JS 主機通訊：11 個主機匯入函數用於儲存操作（host_get_object、host_put_object 等），1 個用於串流輸出 (host_emit_bytes)。WASM 端可完全隔離測試。</li>
+</ol>
+<p>在內部，Artifacts 還使用 R2（用於快照）和 KV（用於追蹤驗證權杖）：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="397" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=640&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=750&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=828&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1080&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1280&amp;h=711&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1430&amp;h=794&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45S247GA9Q8YG0QFTFXH3E.png&amp;w=1800&amp;h=1000&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="1000" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="397" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em><code>Artifacts 運作方式 (Workers、Durable Objects 和 WebAssembly)</code></em></sup></p>
+<p>Worker 充當前端，處理驗證和授權、關鍵指標（錯誤、延遲），並動態地查找每個 Artifacts 儲存庫（Durable Object）。</p>
+<p>具體而言：</p>
+<ul>
+	<li>檔案儲存在基礎 Durable Object 的 SQLite 資料庫中。<ul>
+			<li>Durable Object 儲存體的資料列大小上限為 2 MB，因此大型 Git 物件會被分塊並儲存在多個資料列中。</li>
+			<li>我們利用 sync KV API (state.storage.kv)其由 SQLite 在內部提供支援。</li>
+		</ul>
+	</li>
+	<li>&nbsp;DO 有約 128 MB 的記憶體限制：這意味著我們可產生數千萬個 DO（其快速且輕巧），但必須在這些限制內運作。<ul>
+			<li>我們在提取和推送路徑中大量使用串流，直接傳回從原始 WASM 輸出區塊建置的 ReadableStream&lt;Uint8Array&gt;。</li>
+			<li>我們避免計算自己的 Git 增量，而是將原始增量和基礎雜湊與解析的物件一起保留。在擷取時，如果請求的用戶端已有基礎物件，則 Zig 會發出增量，而非完整的物件，這可節省頻寬<em>和</em>記憶體。</li>
+		</ul>
+	</li>
+	<li>支援 Git 通訊協定 v1 和 v2。<ul>
+			<li>我們支援的功能包括 ls-ref 、淺層複製 (deepen 、deep-since、deep-relative) 以及透過 have/want 協商進行增量擷取。</li>
+			<li>我們擁有豐富的測試套件，包含針對 Git 用戶端的一致性測試，以及針對 libgit2 伺服器的驗證測試，旨在驗證通訊協定支援。</li>
+		</ul>
+	</li>
+</ul>
+<p>除此之外，我們還原生支援 <a href="https://git-scm.com/docs/git-notes" target="_blank" rel="noopener noreferrer"><u>git-notes</u></a>。Artifacts 以代理程式優先的方式設計，而註釋使代理程式能夠將註釋（中繼資料）新增至 Git 物件。這包括可從儲存庫讀取/寫入而無需改變物件本身的提示、代理程式屬性和其他中繼資料。</p>
+<h2>大型儲存庫，產生大問題？認識 ArtifactFS。</h2>
+<p>大多數儲存庫並沒有那麼大，Git 在儲存方面<a href="https://github.blog/open-source/git/gits-database-internals-i-packed-object-store" target="_blank" rel="noopener noreferrer"><u>被設計得非常高效</u></a>：大多數儲存庫最多只需要幾秒鐘即可複製，而這主要取決於網路設定時間、授權和<a href="https://git-scm.com/book/ms/v2/Git-Internals-Git-Objects" target="_blank" rel="noopener noreferrer"><u>總和檢查碼</u></a>。在大多數代理程式或沙箱情境中，這是可行的：只需在沙箱啟動時複製儲存庫並開始運作。</p>
+<p>但是，多 GB 儲存庫和/或包含數百萬個物件的儲存庫呢？如何快速複製該儲存庫，而又不會阻止代理程式在數分鐘內開始工作並取用運算？</p>
+<p>一個常用的 Web 框架（2.4GB，歷史悠久！）需要將近 2 分鐘才能複製。淺層複製更快，但不足以達到個位數秒，而且我們並不總是希望忽略歷程記錄（代理程式覺得這很有用）。</p>
+<p>我們能否將大型儲存庫縮減至約 10-15 秒，以便我們的代理程式開始運作？嗯，是的：使用一些技巧。</p>
+<p>作為我們發布 Artifacts 的一部分，<a href="https://github.com/cloudflare/artifact-fs" target="_blank" rel="noopener noreferrer"><u>我們對 ArtifactFS 使用開放原始碼</u></a>，這是一個檔案系統驅動程式，旨在盡快裝載大型 Git 儲存庫，即時載入檔案內容而不是在初始複製時封鎖。適用於代理程式、沙箱、容器，以及其他注重啟動時間非常關鍵。如果您可將沙箱針對每個大型儲存庫的啟動時間縮短約 90-100 秒，並且每月執行 10,000 個此類沙箱工作：那就能節省 2,778 沙箱小時。</p>
+<p>您可將 ArtifactFS 視為「非同步 Git 複製」：</p>
+<ul>
+	<li>ArtifactFS 執行 Git 儲存庫的無 blob 複製：其擷取檔案樹和參考，但不會擷取檔案內容。還可在沙箱啟動期間執行此操作，然後您的代理程式工具便可開始運作。</li>
+	<li>在後台，它會透過輕量級精靈同時開始下載檔案內容。</li>
+	<li>它會優先處理代理程式通常想要先操作的檔案：套件資訊清單 (<code>package.json、go.mod</code>)、設定檔和程式碼，並在可能的情況下降低二進位大型物件（影像、可執行檔和其他非文字檔案）的優先順序，以便代理程式在檔案本身載入時掃描檔案樹。</li>
+	<li>如果代理程式嘗試讀取時檔案尚未完全水合，則讀取會被封鎖，直至檔案完全水合。</li>
+</ul>
+<p>檔案系統不會嘗試將檔案「同步」回遠端儲存庫：因為有數千或數百萬個物件，這通常會非常慢，而且因為我們使用的是 Git，所以不需要這樣做。您的代理只需要提交並推送，就像對待任何儲存庫一樣。無需學習新的 API。</p>
+<p>重要的是，ArtifactFS 適用於任何 Git 遠端，而不僅僅是我們自己的 Artifacts。如果您從 GitHub、GitLab 或自託管 Git 基礎架構複製大型儲存庫，您仍可使用 ArtifactFS。</p>
+<h2>後續計畫？</h2>
+<p>今天的發布只是測試版，我們已經在開發許多功能，這些功能將在接下來的幾週內推出：</p>
+<ul>
+	<li>擴充我們公開的<a href="https://developers.cloudflare.com/artifacts/observability/metrics" target="_blank" rel="noopener noreferrer"><u>可用指標</u></a>。今天，我們將發布每個命名空間關鍵作業計數、儲存庫、以及每個儲存庫的儲存位元組的指標，以便讓管理數百萬個 Artifact 不再繁瑣。</li>
+	<li>支援儲存庫層級事件的<a href="https://developers.cloudflare.com/queues/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>事件訂閱</u></a>，以便我們能夠在推送、提取、複製和進程複製時發出事件至命名空間內的任何儲存庫。此外還允許您取用事件、寫入 Webhook，並使用這些事件來通知最終使用者，在產品中驅動生命週期事件，和/或執行推送後作業（如 CI/CD）。</li>
+	<li>原生 TypeScript、Go 和 Python 用戶端 SDK，用於與 Artifacts API 互動</li>
+	<li>存放庫層級的搜尋 API 和命名空間範圍的搜尋 API，例如「尋找所有包含 <code>package.json</code> 檔案的儲存庫」</li>
+</ul>
+<p>此外，我們還規劃了一個適用於 <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers 組建</u></a>的 API，讓您能夠在任何代理程式驅動的工作流程上執行 CI/CD 任務。</p>
+<h2>需要多少費用？</h2>
+<p>我們使用 Artifacts 仍處於早期，但希望我們的定價適用於代理程式規模：擁有數百萬個儲存庫必須具有成本效益，未使用（或很少使用）的儲存庫不應成為拖累，我們的定價應符合代理程式的大規模單租用戶性質。</p>
+<p>而且您不需要考慮某個儲存庫是否會被使用、是熱儲存庫還是冷儲存庫，和/或是否會有代理程式將其喚醒。我們會針對每個儲存庫，依您取用的儲存體和操作（例如，複製、進程複製、推送和提取）來計費。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>單位價格</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>已內含</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>操作</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每 1,000 次操作 0.15 美元</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包含前 10,000（每月）</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>儲存</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每月每 GB 0.50 美元</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包含前 1GB</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>無論您有 1,000 個、100,000 個還是 1,000 萬個儲存庫，繁忙的大型儲存庫比不常用的小型儲存庫成本更高。</p>
+<p>隨著測試版的進行，我們還將在 Workers 免費方案中納入 Artifacts（有一些公平的限制），而且如果定價發生變化，我們會在整個測試版中提供更新，並在對任何使用量計費之前提供更新。</p>
+<h2>我從哪裡開始著手？&nbsp;</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3269 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CRH8TBN363M4DK9663NA.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>Artifacts 推出私人測試版，我們預計公開測試版將於 5 月初推出（具體來說，是 2026 年！）。我們將在接下來的幾週內逐步允許客戶使用，<a href="https://forms.gle/DwBoPRa3CWQ8ajFp7" target="_blank" rel="noopener noreferrer"><u>如果您對私人測試版感興趣，可直接註冊</u></a>。</p>
+<p>同時，您可透過以下方式瞭解有關 Artifacts 的更多資訊：</p>
+<ul>
+	<li>閱讀文件中的<a href="http://developers.cloudflare.com/artifacts/get-started/workers" target="_blank" rel="noopener noreferrer"><u>入門指南</u></a>。</li>
+	<li>造訪 Cloudflare 儀表板（建置 &gt; 儲存和資料庫 &gt; Artifacts）</li>
+	<li>完整閱讀 <a href="http://developers.cloudflare.com/artifacts/api/rest-api" target="_blank" rel="noopener noreferrer"><u>REST API 範例</u></a></li>
+	<li>深入瞭解 <a href="http://developers.cloudflare.com/artifacts/concepts/how-artifacts-works" target="_blank" rel="noopener noreferrer"><u>Artifacts 內部運作方式</u></a></li>
+</ul>
+<p>檢視<a href="http://developers.cloudflare.com/changelog/product/artifacts" target="_blank" rel="noopener noreferrer"><u>變更記錄</u></a>以追蹤測試版的進度。</p>
+<h2>在 Cloudflare TV 上觀看</h2>
+<div id="html-block-k6g" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/a94bcc550a1079f7aa1d77ec4d2bfd04/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Fa94bcc550a1079f7aa1d77ec4d2bfd04%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>

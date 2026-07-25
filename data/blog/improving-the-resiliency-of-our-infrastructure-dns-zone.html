@@ -1,204 +1,107 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ez3BsqcG7Lzn097HAva9u/c2be13648f0d2281aa7d91f54562da8e/improving-the-resiliency-of-our-infrastructure-dns-zone.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>In this blog post we will discuss how we made our infrastructure DNS zone more reliable by using multiple primary nameservers to leverage our own DNS product running on our edge as well as a third-party DNS provider.</p>
-	<div class="flex anchor relative">
-		<h2 id="authoritative-nameservers">Authoritative Nameservers</h2>
-		<a href="https://blog.cloudflare.com/#authoritative-nameservers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can think of an authoritative nameserver as the source of truth for the records of a given DNS zone. When a recursive resolver wants to look up a record, it will eventually need to talk to the authoritative nameserver(s) for the zone in question. If you’d like to read more on the topic, our learning center provides some <a href="https://www.cloudflare.com/learning/dns/dns-server-types" target="_blank" rel="noopener noreferrer">additional information</a>.</p>
-	<p>Here’s an example of our authoritative nameservers (replacing our actual domain with example.com):</p>
-	<pre class="language-bash"><code class="language-bash">~$ dig NS example.com +short
-ns1.example.com.
-ns2.example.com.
-ns3.example.com.</code></pre>
-	<p>As you can see, there are three nameservers listed. You’ll notice that the nameservers happen to reside in the same zone, but they don’t have to. Those three nameservers point to six anycasted IP addresses (3 x IPv4, 3 x IPv6) announced from our edge, comprising data centers from <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">200+ cities</a> around the world.</p>
-	<div class="flex anchor relative">
-		<h2 id="the-problem">The Problem</h2>
-		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We store the hostnames for all of our machines, both the ones at the edge and the ones at core data centers, in a DNS zone we refer to as our infrastructure zone. By using our own DNS product to run our infrastructure zone, we get the reliability and performance of our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Global Anycast Network</a>. However, what would happen if those nameservers became unavailable due to an issue on our edge? Eventually DNS lookups would fail, as resolvers would not be able to connect to the only authoritative nameservers configured on the zone: the ones hosted on our edge. This is the main problem we set out to solve.</p>
-	<p>When an incident occurs, our engineering teams are busy investigating, debugging, and fixing the issue at hand. If they cannot resolve the hostnames of the infrastructure they need to use, it will lead to confusion and delays in resolving the incident.</p>
-	<p>Imagine you are part of a team tackling an incident. As you quickly begin to investigate, you try to connect to a specific machine to gather some debugging information, but you get a DNS resolution error. What now? You know you are using the right hostname. Is this a result of the incident at hand, some side effect, or is this completely unrelated? You need to keep investigating, so you try another way. Maybe you have memorized the IP address of the machine and you can connect. More likely, you ask another resolver which still has the answer in its cache and resolve the IP that way. One thing is certain, the extra “mini-debug” step costs you precious time and detracts from debugging the real root cause.</p>
-	<p>Unavailable nameservers and the problems they cause are not unique to Cloudflare, and are not specific to our use case. Even if we hosted our authoritative nameservers with a single external provider, they could also experience their own issues causing the nameservers to fail.</p>
-	<p>Within the DNS community it is always understood that the more diversity, the better. Some common methods include diversifying network/routing configurations and software choices between a standard primary/secondary setup. However, no matter how resilient the network or software stack is, a single authority is still responsible for the zone. Luckily, there are ways to solve this problem!</p>
-	<div class="flex anchor relative">
-		<h2 id="our-solution-multiple-primary-nameservers">Our Solution: Multiple Primary Nameservers</h2>
-		<a href="https://blog.cloudflare.com/#our-solution-multiple-primary-nameservers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our solution was to set up our infrastructure zone with multiple primary nameservers. This type of setup is referred to as split authority, multi-primary, or primary/primary. This way, instead of using just one provider for our authoritative nameservers, we use two.</p>
-	<p>We added three nameservers from our additional provider to our zone at our <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar" target="_blank" rel="noopener noreferrer">registrar</a>. Using multiple primaries allows changes to our zone at each provider, to be controlled separately and completely by us. Instead of using zone transfers to keep our zone in sync, we use <a href="https://github.com/github/octodns" target="_blank" rel="noopener noreferrer">OctoDNS</a> to independently and simultaneously manage the zone at both providers. We’ll talk more about our use of OctoDNS in a bit.</p>
-	<p>This setup is similar to using a primary and secondary server. The main difference is that the nameservers operate independently from one another, and do not use the usual DNS AXFR/IXFR method to keep the zone up to date. If you’d like to learn more about this type of solution, here is a great <a href="https://blog.cloudflare.com/secondary-dns-a-faster-more-resilient-way-to-serve-your-dns-records">blog post</a> by Dina Kozlov, our Product Manager for DNS, about Secondary DNS.</p>
-	<p>The nameservers in our zone after adding an additional provider would look something like:</p>
-	<pre class="language-bash"><code class="language-bash">~$ dig NS example.com +short
-ns1.example.com.
-ns2.example.com.
-ns3.example.com.
-ns1.additional-provider.net.
-ns2.additional-provider.net.
-ns3.additional-provider.net.</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="predictable-query-routing">Predictable Query Routing</h2>
-		<a href="https://blog.cloudflare.com/#predictable-query-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Currently, we cannot coordinate which provider should be used when querying a record within the zone. Recursive resolvers have different methods of choosing which nameserver should be used when presented with multiple NS records. A popular choice is to use the server with the lowest RTT (round trip time). A great blog post from <a href="https://www.apnic.net" target="_blank" rel="noopener noreferrer">APNIC</a> on <a href="https://blog.apnic.net/2019/08/16/recursive-resolver-authoritative-nameserver-selection" target="_blank" rel="noopener noreferrer">recursive resolver authoritative nameserver selection</a> can be consulted for a detailed explanation.</p>
-	<p>We needed to enforce specific routing decisions between the two authorities. Our requirement was for a weighted routing policy preferring Cloudflare based on availability checks for requests originating from our infrastructure servers. This reduces <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">RTT</a>, since the queries originate from the same servers hosting our nameservers in the same data center, and do not need to travel further to the external provider when all is well.</p>
-	<p>Our edge infrastructure servers are configured to use <a href="https://www.dnsdist.org" target="_blank" rel="noopener noreferrer">DNSDist</a> as their primary system resolver. DNSDist load balances queries using multiple upstream recursive DNS servers (<a href="https://nlnetlabs.nl/projects/unbound/about" target="_blank" rel="noopener noreferrer">Unbound</a>) in each data center to provide DNS resolution. This setup is used for internal DNS resolution only, and as such, it is independent from our authoritative DNS and public resolver 1.1.1.1 service.</p>
-	<p>Additionally, we modified our DNSDist configuration by adding two server pools for our infrastructure zone authoritative servers, and set up active checks with weighted routes to always use the Cloudflare pool when available. With the active checking and weighted routing in place, our queries are always routed internally when available. In the event of a Cloudflare authoritative DNS failure, DNSDist will route all requests for the zone to our external provider.</p>
-	<div class="flex anchor relative">
-		<h2 id="maintaining-our-infrastructure-dns-zone">Maintaining Our Infrastructure DNS Zone</h2>
-		<a href="https://blog.cloudflare.com/#maintaining-our-infrastructure-dns-zone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In addition to a more reliable infrastructure zone, we also wanted to further automate the provisioning of DNS records. We had been relying on an older manual tool that became quite slow handling our growing number of DNS records. In a nutshell, this tool queried our provisioning database to gather all of the machine names, and then created, deleted, or updated the required DNS records using the Cloudflare API. We had to run this tool whenever we provisioned or decommissioned &nbsp;machines that serve our customers’ requests.</p>
-	<p>Part of the procedure for running this tool was to first run it in dry-run mode, and then paste the results for review in our team chat room. This review step ensured the changes the tool found were expected and safe to run, and it is something we want to keep as part of our plan to automate the process.</p>
-	<p>Here’s what the old tool looked like:</p>
-	<pre class="language-bash"><code class="language-bash">$ cf-provision update-example -l ${USER}@cloudflare.com -u
-Running update-example.sh -t /var/tmp/cf-provision -l user@cloudflare.com -u
-* Loading up possible records …
-
-deleting: {"name":"node44.example.com","ttl":300, "type":"A","content":"192.0.2.2","proxied":false}
- rec_id:abcdefg
-updating: { "name":"build-ts.example.com", "ttl":120, "type":"TXT", "content":"1596722274"} rec_id:123456 previous content: 1596712896
-
-Result    : SUCCESS
-Task      : BUILD
-Dest dir  :
-Started   : Thu, 06 Aug 2020 13:57:40 +0000
-Finished  : Thu, 06 Aug 2020 13:58:16 +0000
-Elapsed   : 36 secs
-Records Changed In API  : 1 record(s) changed
-Records Deleted In API  : 1 record(s) deleted</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="zone-management-with-octodns">Zone Management with OctoDNS</h3>
-		<a href="https://blog.cloudflare.com/#zone-management-with-octodns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As we mentioned earlier, when using a multi-primary setup for our infrastructure zone, we are required to maintain the zone data outside of traditional DNS replication. Before rolling out our own solution we wanted to see what was out there, and we stumbled upon <a href="https://github.blog/2017-04-27-enabling-split-authority-dns-with-octodns" target="_blank" rel="noopener noreferrer">OctoDNS</a>, a project from <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>. OctoDNS provides a set of tools that make it easy to manage your DNS records across multiple providers.</p>
-	<p><a href="https://github.com/github/octodns" target="_blank" rel="noopener noreferrer">OctoDNS</a> uses a pluggable architecture. This means we can rewrite our old script as a plugin (which is called a ‘source’), and use other existing provider plugins (called ‘providers’) to interact with both the Cloudflare and our other provider’s APIs. Should we decide to sync to more external DNS providers in the future, we would just need to add them to our OctoDNS configuration. This allows our records to stay up to date, and, as an added benefit, records OctoDNS doesn’t know about will be removed during operation (for example, changes made outside of OctoDNS). This ensures that manual changes do not diverge from what is present in the provisioning database.</p>
-	<p>Our goal was to keep the zone management workflow as simple as possible. At Cloudflare, we use <a href="https://www.jetbrains.com/teamcity" target="_blank" rel="noopener noreferrer">TeamCity</a> for <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD</a>, and we realized that it could not only facilitate code builds of our OctoDNS implementation, but it could also be used to deploy the zone.</p>
-	<p>There are a number of benefits to using our existing TeamCity infrastructure.</p>
-	<ul>
-		<li>
-			<p>Our DevTools team can reliably manage it as a service</p>
-		</li>
-		<li>
-			<p>It has granular permissions, which allow us to control who can deploy the changes</p>
-		</li>
-		<li>
-			<p>It provides storage of the logs for auditing</p>
-		</li>
-		<li>
-			<p>It allows easy rollback of zone revisions</p>
-		</li>
-		<li>
-			<p>It integrates easily with our chat ops workflow via Google Chat webhooks</p>
-		</li>
-	</ul>
-	<p>Below is a high-level overview of how we manage our zone through OctoDNS.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1PbhNRYUkQlrkuRFzD6Cep/b70aa4f481a5ad9a2fe192cd227c7f98/image4-10.png" alt="" class="kg-image" width="1485" height="334" loading="lazy">
-
-	</figure>
-	<p>There are three steps in the workflow:</p>
-	<ol>
-		<li>
-			<p><b>Build</b> - evaluate the sources and build the complete zone.</p>
-		</li>
-		<li>
-			<p><b>Compare</b> - parse the built zone and compare to the records on the providers. Changes found are sent to SRE for evaluation.</p>
-		</li>
-		<li>
-			<p><b>Deploy</b> - deploy the changes to the providers.</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="step-1-build">Step 1: Build</h3>
-		<a href="https://blog.cloudflare.com/#step-1-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Sources</b>OctoDNS consumes data from our internal systems via custom source modules. So far, we have built two source modules for querying data:</p>
-	<ol>
-		<li>
-			<p>ProvAPI queries our internal provisioning API providing data center and node configuration.</p>
-		</li>
-		<li>
-			<p>NetBox queries our internal <a href="https://github.com/netbox-community/netbox" target="_blank" rel="noopener noreferrer">NetBox</a> deployment providing hardware metadata.</p>
-		</li>
-	</ol>
-	<p>Additionally, static records are defined in a YAML file. These sources form the infrastructure zone source of truth.</p>
-	<p><b>Providers</b>The build process establishes a staging area per execution. The YAML provider builds a static YAML file containing the complete zone. The hosts file provider is used to generate an emergency hosts file for the zone. Contents from the staging area are revision controlled in CI, which allows us to easily deploy previous versions if required.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xePnepEQcxhgx3AStHJ9y/cd587552504028e0631ab2a476fa5c23/image1-22.png" alt="" class="kg-image" width="1007" height="479" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="step-2-compare">Step 2: Compare</h3>
-		<a href="https://blog.cloudflare.com/#step-2-compare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Following a successful zone build CI executes the compare build. During this phase, OctoDNS performs an octodns-sync in dry-run mode. The compare build consumes the staging YAML zone configuration, and compares the records against the records on our authoritative providers via their respective APIs. Any identified zone changes are parsed, and a summary line is generated and sent to the SRE Chat room for approval. SRE are automatically linked to the changes and associated CI build for deployment.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2SalUW1S1hE2GDPKecwEIv/3afc9223bf83667db21403bb1d005d2c/image3-19.png" alt="" class="kg-image" width="940" height="861" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="step-3-deploy">Step 3: Deploy</h3>
-		<a href="https://blog.cloudflare.com/#step-3-deploy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The deployment CI build is access-controlled and scoped to the SRE group using our single sign-on provider. Following successful approval and peer review, an SRE can deploy the changes by executing the deploy build.</p>
-	<p>The deployment process is simple; consume the YAML zone data from our staging area and deploy the changes to the zone’s authoritative providers via ‘octodns-sync --doit’. The hosts file generated for the zone is packaged and deployed, to be used in the event of complete DNS failure.</p>
-	<p>Here’s an example of how the message looks. When the deploy is finished, the thread is updated to indicate which user initiated it.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2tK9hAv28bERamurtfZ2LF/223adb19e4d2d2cacd7c96a05aa876c1/image5-6.png" alt="" class="kg-image" width="1033" height="281" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="future-improvements">Future Improvements</h2>
-		<a href="https://blog.cloudflare.com/#future-improvements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the future, we would like to automate the process further by reducing the need for approvals. There is usually no harm in adding new records, and it is done very often during the provisioning of new machines. Removing the need to approve those records would take out another step in the provisioning process, which is something we are always looking to optimize.</p>
-	<p>Introducing OctoDNS and an additional provider allowed us to make our infrastructure DNS zone more reliable and easier to manage. We can now easily include new sources of record data, with OctoDNS allowing us to focus more on new and exciting projects and less on managing DNS records.</p>
+<p>In this blog post we will discuss how we made our infrastructure DNS zone more reliable by using multiple primary nameservers to leverage our own DNS product running on our edge as well as a third-party DNS provider.</p>
+<h2>Authoritative Nameservers</h2>
+<p>You can think of an authoritative nameserver as the source of truth for the records of a given DNS zone. When a recursive resolver wants to look up a record, it will eventually need to talk to the authoritative nameserver(s) for the zone in question. If you’d like to read more on the topic, our learning center provides some <a href="https://www.cloudflare.com/learning/dns/dns-server-types" target="_blank" rel="noopener noreferrer">additional information</a>.</p>
+<p>Here’s an example of our authoritative nameservers (replacing our actual domain with example.com):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ dig NS example.com +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns1.example.com.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns2.example.com.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns3.example.com.</span></span></code></pre>
 </div>
+<p>As you can see, there are three nameservers listed. You’ll notice that the nameservers happen to reside in the same zone, but they don’t have to. Those three nameservers point to six anycasted IP addresses (3 x IPv4, 3 x IPv6) announced from our edge, comprising data centers from <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">200+ cities</a> around the world.</p>
+<h2>The Problem</h2>
+<p>We store the hostnames for all of our machines, both the ones at the edge and the ones at core data centers, in a DNS zone we refer to as our infrastructure zone. By using our own DNS product to run our infrastructure zone, we get the reliability and performance of our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Global Anycast Network</a>. However, what would happen if those nameservers became unavailable due to an issue on our edge? Eventually DNS lookups would fail, as resolvers would not be able to connect to the only authoritative nameservers configured on the zone: the ones hosted on our edge. This is the main problem we set out to solve.</p>
+<p>When an incident occurs, our engineering teams are busy investigating, debugging, and fixing the issue at hand. If they cannot resolve the hostnames of the infrastructure they need to use, it will lead to confusion and delays in resolving the incident.</p>
+<p>Imagine you are part of a team tackling an incident. As you quickly begin to investigate, you try to connect to a specific machine to gather some debugging information, but you get a DNS resolution error. What now? You know you are using the right hostname. Is this a result of the incident at hand, some side effect, or is this completely unrelated? You need to keep investigating, so you try another way. Maybe you have memorized the IP address of the machine and you can connect. More likely, you ask another resolver which still has the answer in its cache and resolve the IP that way. One thing is certain, the extra “mini-debug” step costs you precious time and detracts from debugging the real root cause.</p>
+<p>Unavailable nameservers and the problems they cause are not unique to Cloudflare, and are not specific to our use case. Even if we hosted our authoritative nameservers with a single external provider, they could also experience their own issues causing the nameservers to fail.</p>
+<p>Within the DNS community it is always understood that the more diversity, the better. Some common methods include diversifying network/routing configurations and software choices between a standard primary/secondary setup. However, no matter how resilient the network or software stack is, a single authority is still responsible for the zone. Luckily, there are ways to solve this problem!</p>
+<h2>Our Solution: Multiple Primary Nameservers</h2>
+<p>Our solution was to set up our infrastructure zone with multiple primary nameservers. This type of setup is referred to as split authority, multi-primary, or primary/primary. This way, instead of using just one provider for our authoritative nameservers, we use two.</p>
+<p>We added three nameservers from our additional provider to our zone at our <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar" target="_blank" rel="noopener noreferrer">registrar</a>. Using multiple primaries allows changes to our zone at each provider, to be controlled separately and completely by us. Instead of using zone transfers to keep our zone in sync, we use <a href="https://github.com/github/octodns" target="_blank" rel="noopener noreferrer">OctoDNS</a> to independently and simultaneously manage the zone at both providers. We’ll talk more about our use of OctoDNS in a bit.</p>
+<p>This setup is similar to using a primary and secondary server. The main difference is that the nameservers operate independently from one another, and do not use the usual DNS AXFR/IXFR method to keep the zone up to date. If you’d like to learn more about this type of solution, here is a great <a href="https://blog.cloudflare.com/secondary-dns-a-faster-more-resilient-way-to-serve-your-dns-records">blog post</a> by Dina Kozlov, our Product Manager for DNS, about Secondary DNS.</p>
+<p>The nameservers in our zone after adding an additional provider would look something like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">$ dig NS example.com +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns1.example.com.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns2.example.com.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns3.example.com.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns1.additional-provider.net.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns2.additional-provider.net.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ns3.additional-provider.net.</span></span></code></pre>
+</div>
+<h2>Predictable Query Routing</h2>
+<p>Currently, we cannot coordinate which provider should be used when querying a record within the zone. Recursive resolvers have different methods of choosing which nameserver should be used when presented with multiple NS records. A popular choice is to use the server with the lowest RTT (round trip time). A great blog post from <a href="https://www.apnic.net" target="_blank" rel="noopener noreferrer">APNIC</a> on <a href="https://blog.apnic.net/2019/08/16/recursive-resolver-authoritative-nameserver-selection" target="_blank" rel="noopener noreferrer">recursive resolver authoritative nameserver selection</a> can be consulted for a detailed explanation.</p>
+<p>We needed to enforce specific routing decisions between the two authorities. Our requirement was for a weighted routing policy preferring Cloudflare based on availability checks for requests originating from our infrastructure servers. This reduces <a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">RTT</a>, since the queries originate from the same servers hosting our nameservers in the same data center, and do not need to travel further to the external provider when all is well.</p>
+<p>Our edge infrastructure servers are configured to use <a href="https://www.dnsdist.org" target="_blank" rel="noopener noreferrer">DNSDist</a> as their primary system resolver. DNSDist load balances queries using multiple upstream recursive DNS servers (<a href="https://nlnetlabs.nl/projects/unbound/about" target="_blank" rel="noopener noreferrer">Unbound</a>) in each data center to provide DNS resolution. This setup is used for internal DNS resolution only, and as such, it is independent from our authoritative DNS and public resolver 1.1.1.1 service.</p>
+<p>Additionally, we modified our DNSDist configuration by adding two server pools for our infrastructure zone authoritative servers, and set up active checks with weighted routes to always use the Cloudflare pool when available. With the active checking and weighted routing in place, our queries are always routed internally when available. In the event of a Cloudflare authoritative DNS failure, DNSDist will route all requests for the zone to our external provider.</p>
+<h2>Maintaining Our Infrastructure DNS Zone</h2>
+<p>In addition to a more reliable infrastructure zone, we also wanted to further automate the provisioning of DNS records. We had been relying on an older manual tool that became quite slow handling our growing number of DNS records. In a nutshell, this tool queried our provisioning database to gather all of the machine names, and then created, deleted, or updated the required DNS records using the Cloudflare API. We had to run this tool whenever we provisioned or decommissioned &nbsp;machines that serve our customers’ requests.</p>
+<p>Part of the procedure for running this tool was to first run it in dry-run mode, and then paste the results for review in our team chat room. This review step ensured the changes the tool found were expected and safe to run, and it is something we want to keep as part of our plan to automate the process.</p>
+<p>Here’s what the old tool looked like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cf-provision</span><span class="sk-032f62-99ffe4"> update-example</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-24292e-fff"> ${USER}</span><span class="sk-032f62-99ffe4">@cloudflare.com</span><span class="sk-005cc5-99ffe4"> -u</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Running</span><span class="sk-032f62-99ffe4"> update-example.sh</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> /var/tmp/cf-provision</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> user@cloudflare.com</span><span class="sk-005cc5-99ffe4"> -u</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> Loading up possible records …</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">deleting:</span><span class="sk-032f62-99ffe4"> {"name":"node44.example.com","ttl":300,</span><span class="sk-032f62-99ffe4"> "type":"A","content":"192.0.2.2","proxied":</span><span class="sk-005cc5-99ffe4">false</span><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> rec_id:abcdefg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">updating:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> "name":"build-ts.example.com",</span><span class="sk-032f62-99ffe4"> "ttl":120,</span><span class="sk-032f62-99ffe4"> "type":"TXT",</span><span class="sk-032f62-99ffe4"> "content":"1596722274"}</span><span class="sk-032f62-99ffe4"> rec_id:123456</span><span class="sk-032f62-99ffe4"> previous</span><span class="sk-032f62-99ffe4"> content:</span><span class="sk-005cc5-ffc799"> 1596712896</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Result</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-032f62-99ffe4"> SUCCESS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Task</span><span class="sk-032f62-99ffe4">      :</span><span class="sk-032f62-99ffe4"> BUILD</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Dest</span><span class="sk-032f62-99ffe4"> dir</span><span class="sk-032f62-99ffe4">  :</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Started</span><span class="sk-032f62-99ffe4">   :</span><span class="sk-032f62-99ffe4"> Thu,</span><span class="sk-005cc5-ffc799"> 06</span><span class="sk-032f62-99ffe4"> Aug</span><span class="sk-005cc5-ffc799"> 2020</span><span class="sk-032f62-99ffe4"> 13:57:40</span><span class="sk-032f62-99ffe4"> +0000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Finished</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-032f62-99ffe4"> Thu,</span><span class="sk-005cc5-ffc799"> 06</span><span class="sk-032f62-99ffe4"> Aug</span><span class="sk-005cc5-ffc799"> 2020</span><span class="sk-032f62-99ffe4"> 13:58:16</span><span class="sk-032f62-99ffe4"> +0000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Elapsed</span><span class="sk-032f62-99ffe4">   :</span><span class="sk-005cc5-ffc799"> 36</span><span class="sk-032f62-99ffe4"> secs</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Records</span><span class="sk-032f62-99ffe4"> Changed</span><span class="sk-032f62-99ffe4"> In</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">changed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Records</span><span class="sk-032f62-99ffe4"> Deleted</span><span class="sk-032f62-99ffe4"> In</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">deleted</span></span></code></pre>
+</div>
+<h3>Zone Management with OctoDNS</h3>
+<p>As we mentioned earlier, when using a multi-primary setup for our infrastructure zone, we are required to maintain the zone data outside of traditional DNS replication. Before rolling out our own solution we wanted to see what was out there, and we stumbled upon <a href="https://github.blog/2017-04-27-enabling-split-authority-dns-with-octodns" target="_blank" rel="noopener noreferrer">OctoDNS</a>, a project from <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>. OctoDNS provides a set of tools that make it easy to manage your DNS records across multiple providers.</p>
+<p><a href="https://github.com/github/octodns" target="_blank" rel="noopener noreferrer">OctoDNS</a> uses a pluggable architecture. This means we can rewrite our old script as a plugin (which is called a ‘source’), and use other existing provider plugins (called ‘providers’) to interact with both the Cloudflare and our other provider’s APIs. Should we decide to sync to more external DNS providers in the future, we would just need to add them to our OctoDNS configuration. This allows our records to stay up to date, and, as an added benefit, records OctoDNS doesn’t know about will be removed during operation (for example, changes made outside of OctoDNS). This ensures that manual changes do not diverge from what is present in the provisioning database.</p>
+<p>Our goal was to keep the zone management workflow as simple as possible. At Cloudflare, we use <a href="https://www.jetbrains.com/teamcity" target="_blank" rel="noopener noreferrer">TeamCity</a> for <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD</a>, and we realized that it could not only facilitate code builds of our OctoDNS implementation, but it could also be used to deploy the zone.</p>
+<p>There are a number of benefits to using our existing TeamCity infrastructure.</p>
+<ul>
+	<li>Our DevTools team can reliably manage it as a service</li>
+	<li>It has granular permissions, which allow us to control who can deploy the changes</li>
+	<li>It provides storage of the logs for auditing</li>
+	<li>It allows easy rollback of zone revisions</li>
+	<li>It integrates easily with our chat ops workflow via Google Chat webhooks</li>
+</ul>
+<p>Below is a high-level overview of how we manage our zone through OctoDNS.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="161" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=715&amp;h=161&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=640&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=715&amp;h=161&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=750&amp;h=169&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=828&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=1080&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=1280&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=1430&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Improving the Resiliency of Our Infrastructure DNS Zone Embedded Image - jjkW4p" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44H6FWNAP47D35N9XXTVCK.png&amp;w=1485&amp;h=334&amp;f=webp" data-lightbox-width="1485" data-lightbox-height="334" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="161" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>There are three steps in the workflow:</p>
+<ol>
+	<li><strong>Build</strong> - evaluate the sources and build the complete zone.</li>
+	<li><strong>Compare</strong> - parse the built zone and compare to the records on the providers. Changes found are sent to SRE for evaluation.</li>
+	<li><strong>Deploy</strong> - deploy the changes to the providers.</li>
+</ol>
+<h3>Step 1: Build</h3>
+<p><strong>Sources</strong>OctoDNS consumes data from our internal systems via custom source modules. So far, we have built two source modules for querying data:</p>
+<ol>
+	<li>ProvAPI queries our internal provisioning API providing data center and node configuration.</li>
+	<li>NetBox queries our internal <a href="https://github.com/netbox-community/netbox" target="_blank" rel="noopener noreferrer">NetBox</a> deployment providing hardware metadata.</li>
+</ol>
+<p>Additionally, static records are defined in a YAML file. These sources form the infrastructure zone source of truth.</p>
+<p><strong>Providers</strong>The build process establishes a staging area per execution. The YAML provider builds a static YAML file containing the complete zone. The hosts file provider is used to generate an emergency hosts file for the zone. Contents from the staging area are revision controlled in CI, which allows us to easily deploy previous versions if required.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Improving the Resiliency of Our Infrastructure DNS Zone Embedded Image - ALRSxc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CVS9SZE4FM3AWGSSR7SQ.png&amp;w=1007&amp;h=479&amp;f=webp" data-lightbox-width="1007" data-lightbox-height="479" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
+</figure>
+<h3>Step 2: Compare</h3>
+<p>Following a successful zone build CI executes the compare build. During this phase, OctoDNS performs an octodns-sync in dry-run mode. The compare build consumes the staging YAML zone configuration, and compares the records against the records on our authoritative providers via their respective APIs. Any identified zone changes are parsed, and a summary line is generated and sent to the SRE Chat room for approval. SRE are automatically linked to the changes and associated CI build for deployment.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="655" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=715&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=640&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=715&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=750&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=828&amp;h=759&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=1080&amp;h=989&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=1280&amp;h=1173&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=1430&amp;h=1310&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Improving the Resiliency of Our Infrastructure DNS Zone Embedded Image - njwTaT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ADPXHKKQ00FJ1A8BWWP0.png&amp;w=940&amp;h=861&amp;f=webp" data-lightbox-width="940" data-lightbox-height="861" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="655" class="pt-portable-image-media"></div>
+</figure>
+<h3>Step 3: Deploy</h3>
+<p>The deployment CI build is access-controlled and scoped to the SRE group using our single sign-on provider. Following successful approval and peer review, an SRE can deploy the changes by executing the deploy build.</p>
+<p>The deployment process is simple; consume the YAML zone data from our staging area and deploy the changes to the zone’s authoritative providers via ‘octodns-sync --doit’. The hosts file generated for the zone is packaged and deployed, to be used in the event of complete DNS failure.</p>
+<p>Here’s an example of how the message looks. When the deploy is finished, the thread is updated to indicate which user initiated it.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="194" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=640&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=750&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=828&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=1080&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=1280&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=1430&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Improving the Resiliency of Our Infrastructure DNS Zone Embedded Image - edgpKn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45MA06A7WGCVPJZ5P3TK6M.png&amp;w=1033&amp;h=281&amp;f=webp" data-lightbox-width="1033" data-lightbox-height="281" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="194" class="pt-portable-image-media"></div>
+</figure>
+<h2>Future Improvements</h2>
+<p>In the future, we would like to automate the process further by reducing the need for approvals. There is usually no harm in adding new records, and it is done very often during the provisioning of new machines. Removing the need to approve those records would take out another step in the provisioning process, which is something we are always looking to optimize.</p>
+<p>Introducing OctoDNS and an additional provider allowed us to make our infrastructure DNS zone more reliable and easier to manage. We can now easily include new sources of record data, with OctoDNS allowing us to focus more on new and exciting projects and less on managing DNS records.</p>

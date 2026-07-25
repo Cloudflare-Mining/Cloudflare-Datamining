@@ -1,56 +1,21 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SsqRyUodUJvfR8K5nsON7/d9256fabeae435abf8051b8039804000/what-is-cloudflare.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>I just got off the phone with a reporter. Like many reporters or analysts we talk to, she wanted to put CloudFlare into a defined category. Specifically, she wanted to call us a content delivery network (CDN) and compare us with companies like Akamai (at the high end) or Amazon's CloudFront (at the low end). While I hemmed and hawed about how we have more than 10x the number of customers as the two services combined, the real problem is that "CDN" isn't an accurate and complete description of CloudFlare. So I'm left with the puzzle: what are we?</p>
-	<div class="flex anchor relative">
-		<h3 id="cdn-is-a-feature">CDN Is A Feature</h3>
-		<a href="https://blog.cloudflare.com/#cdn-is-a-feature" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It is true that CloudFlare uses CDN-like technology in order to do some of the things we do. Like a CDN, we run multiple data centers and cache static content at the edge in order to make it faster. Traditional CDNs, however, only receive the requests for some subset of requests and require users to choose what content to host on the CDN's network. Traditional CDNs can be accurately described as massively distributed hosting, where CloudFlare is more accurately described as a caching reverse proxy. What this means is that, unlike traditional CDNs, CloudFlare handles all requests to a website. As a result, we are able to:</p>
-	<ul>
-		<li>
-			<p><a href="https://blog.cloudflare.com/thats-freaking-awesome-cloudflare-automatical">Stop attacks</a> directed at a website</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/56590463">Dynamically modify content</a> in order to improve performance</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/cloudflare-apps">Insert applications</a> into web pages</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/understanding-analytics-when-is-a-page-view-n">Provide rich analytics</a> on all the requests to your website</p>
-		</li>
-		<li>
-			<p>Automatically determine what objects are <a href="https://blog.cloudflare.com/cloudflares-free-cdn-and-you">static and cacheable at the network's edge</a> without any user configuration</p>
-		</li>
-		<li>
-			<p>Provide a <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">network gateway</a> between protocols like IPv6 \&lt;-&gt; IPv4</p>
-		</li>
-		<li>
-			<p>Make installing <a href="https://blog.cloudflare.com/easiest-ssl-ever-now-included-automatically-w">SSL flexible and one-click easy</a></p>
-		</li>
-		<li>
-			<p>And many more things a traditional CDN can't provide....</p>
-		</li>
-	</ul>
-	<p>One test of whether a category thoroughly describes a product is to ask whether using one product already in the category would exclude the use of another product proposed to be in the category. In our case, we have many customers that use CloudFlare in conjunction with traditional CDNs, including Akamai and CloudFront. In other words, we think of CDN as a feature that we include by default, but if you'd prefer to use another CDN then that'll work just fine too. And there's this: today there are more websites using CloudFlare than all traditional CDNs combined.</p>
-	<div class="flex anchor relative">
-		<h3 id="new-category">New Category</h3>
-		<a href="https://blog.cloudflare.com/#new-category" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>More than a year after our public launch we're still struggling to find a category that accurately describes what we do. An analyst recently asked: "What do you call the category CloudFlare fits in?" I said, "Ihave no idea, I thought it was your job to tell me." We laughed but, unfortunately, his report didn't suggest anything other than "Next Generation CDN." I think we can do better.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Q2ZbygYlQE6yOvVgNALcz/b43f5125d6ad009a81dd18e7875aac17/adam_naming_animals.png.scaled500.png" alt="What Is CloudFlare?" class="kg-image" width="400" height="255" loading="lazy">
-
-	</figure>
-	<p>So, I thought, maybe CloudFlare's users could come up with a name for the category. Ideally something catchy and short while still being descriptive and accurate. Suggest your ideas in the comments and we'll see if anything sticks.</p>
-</div>
+<p>I just got off the phone with a reporter. Like many reporters or analysts we talk to, she wanted to put CloudFlare into a defined category. Specifically, she wanted to call us a content delivery network (CDN) and compare us with companies like Akamai (at the high end) or Amazon's CloudFront (at the low end). While I hemmed and hawed about how we have more than 10x the number of customers as the two services combined, the real problem is that "CDN" isn't an accurate and complete description of CloudFlare. So I'm left with the puzzle: what are we?</p>
+<h3>CDN Is A Feature</h3>
+<p>It is true that CloudFlare uses CDN-like technology in order to do some of the things we do. Like a CDN, we run multiple data centers and cache static content at the edge in order to make it faster. Traditional CDNs, however, only receive the requests for some subset of requests and require users to choose what content to host on the CDN's network. Traditional CDNs can be accurately described as massively distributed hosting, where CloudFlare is more accurately described as a caching reverse proxy. What this means is that, unlike traditional CDNs, CloudFlare handles all requests to a website. As a result, we are able to:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/thats-freaking-awesome-cloudflare-automatical">Stop attacks</a> directed at a website</li>
+	<li><a href="https://blog.cloudflare.com/56590463">Dynamically modify content</a> in order to improve performance</li>
+	<li><a href="https://blog.cloudflare.com/cloudflare-apps">Insert applications</a> into web pages</li>
+	<li><a href="https://blog.cloudflare.com/understanding-analytics-when-is-a-page-view-n">Provide rich analytics</a> on all the requests to your website</li>
+	<li>Automatically determine what objects are <a href="https://blog.cloudflare.com/cloudflares-free-cdn-and-you">static and cacheable at the network's edge</a> without any user configuration</li>
+	<li>Provide a <a href="https://blog.cloudflare.com/introducing-cloudflares-automatic-ipv6-gatewa">network gateway</a> between protocols like IPv6 \&lt;-&gt; IPv4</li>
+	<li>Make installing <a href="https://blog.cloudflare.com/easiest-ssl-ever-now-included-automatically-w">SSL flexible and one-click easy</a></li>
+	<li>And many more things a traditional CDN can't provide....</li>
+</ul>
+<p>One test of whether a category thoroughly describes a product is to ask whether using one product already in the category would exclude the use of another product proposed to be in the category. In our case, we have many customers that use CloudFlare in conjunction with traditional CDNs, including Akamai and CloudFront. In other words, we think of CDN as a feature that we include by default, but if you'd prefer to use another CDN then that'll work just fine too. And there's this: today there are more websites using CloudFlare than all traditional CDNs combined.</p>
+<h3>New Category</h3>
+<p>More than a year after our public launch we're still struggling to find a category that accurately describes what we do. An analyst recently asked: "What do you call the category CloudFlare fits in?" I said, "Ihave no idea, I thought it was your job to tell me." We laughed but, unfortunately, his report didn't suggest anything other than "Next Generation CDN." I think we can do better.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="400" height="255" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QE0NXWS8DS7WFPJC2AH.png&amp;w=400&amp;h=255&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QE0NXWS8DS7WFPJC2AH.png&amp;w=400&amp;h=255&amp;f=webp&amp;fit=cover&amp;position=center 400w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QE0NXWS8DS7WFPJC2AH.png&amp;w=640&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QE0NXWS8DS7WFPJC2AH.png&amp;w=750&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QE0NXWS8DS7WFPJC2AH.png&amp;w=800&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 800w" alt="What Is CloudFlare?" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484QE0NXWS8DS7WFPJC2AH.png&amp;w=400&amp;h=255&amp;f=webp" data-lightbox-width="400" data-lightbox-height="255" data-astro-cid-7nvefuv6="true" sizes="(min-width: 400px) 400px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="400" height="255" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>So, I thought, maybe CloudFlare's users could come up with a name for the category. Ideally something catchy and short while still being descriptive and accurate. Suggest your ideas in the comments and we'll see if anything sticks.</p>

@@ -1,0 +1,52 @@
+<p>在過去兩個多季的時間裡，我們進行了一項大規模技術攻堅工作，內部代號為「<a href="https://blog.cloudflare.com/fail-small-resilience-plan" target="_blank" rel="noopener noreferrer"><u>Code Orange: Fail Small</u></a>」，核心目標是持續最佳化 Cloudflare 基礎架構，為每位客戶提升其韌性、安全性與可靠性。</p>
+<p>本月初，Cloudflare 團隊完成了這項工作。</p>
+<p>雖然提升系統韌性永無止境，在我們的開發生命週期中也始終是首要工作，但本次最佳化改造已全部落地，足以避免 <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>2025 年 11 月 18 日</u></a>與 <a href="https://blog.cloudflare.com/5-december-2025-outage" target="_blank" rel="noopener noreferrer"><u>2025 年 12 月 5 日</u></a>的兩次全球性服務中斷事故再次發生。</p>
+<p>這項工作聚焦於幾個關鍵領域：更安全的設定變更、降低故障影響範圍、修訂我們的「緊急應變」程序與事件管理機制。我們也導入了防止設定隨時間偏移或退化的措施，並強化了在服務中斷期間與客戶溝通的方式。</p>
+<p>本文將詳細闡述我們交付的成果，以及這些改進對您意味著什麼。</p>
+<h3>更安全的設定變更</h3>
+<p><em><strong>對您的意義：</strong>在多數情況下，Cloudflare 的內部設定變更將不再立即對整個網路生效，而是會逐步推送，並搭配即時健康狀態監控。這讓我們的可觀測性工具能夠即時發現問題，並在影響您的流量之前將變更復原。</em></p>
+<p>為了在設定變更進入正式環境前就能發現潛在危險的部署行為，我們已辨識出高風險的設定流程，並建置了新工具來更妥善地管理設定變更。</p>
+<p>對於那些在我們網路上處理客戶流量並接收設定變更的產品，我們不再將這些變更立即部署到整個網路。取而代之的是，相關團隊已針對所有設定部署採用「健康狀態中介部署」方法，這與<a href="https://blog.cloudflare.com/safe-change-at-any-scale" target="_blank" rel="noopener noreferrer"><u>我們在發布軟體時所使用的方法</u></a>相同。這包括但不限於直接受到上述事件影響的產品團隊。</p>
+<p>這項方法的核心是一個名為 Snapstone 的新內部元件，我們為了向設定變更導入健康狀態中介部署而專門打造了這個系統。Snapstone 能將設定變更打包成一個套件，然後根據健康狀態中介原則，允許設定變更逐步發布。在 Snapstone 出現之前，雖然可以將這種方法套用至設定變更，但相當困難。每個團隊需要投入大量心力，而且無法在整個網路上一致地執行。Snapstone 彌補了這個缺口，提供一個統一的方式，預設即為設定部署提供逐步推出、即時健康狀態監控和自動回退功能。</p>
+<p>Snapstone 的強大之處在於它的靈活性。它並非只是用來修正過去特定事件造成的故障，而是讓團隊可以動態定義任何需要健康狀態中介的設定單元——無論是像導致 <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>11 月 18 日中斷事件</u></a>的那種資料檔案，還是像 <a href="https://blog.cloudflare.com/5-december-2025-outage" target="_blank" rel="noopener noreferrer"><u>12 月 5 日中斷事件</u></a>中涉及的全域設定系統中的控制旗標。團隊可以隨需建立這些設定單元，而 Snapstone 會確保這些設定單元在其所使用之處都能安全地部署。</p>
+<p>這給了我們一項過去沒有的能力：當風險審查或營運經驗發現了危險的設定模式時，解決方式很直接——將它納入 Snapstone，這個設定模式立即就能繼承安全部署。</p>
+<h3>減輕故障的影響</h3>
+<p><em><strong>對您的意義：</strong>在我們的網路上觀察到問題時，我們的系統現在能夠以更平穩的方式失效。這極大地縮小了潛在的影響範圍，確保即使在最糟的情況下，您的流量仍能被送達。</em></p>
+<p>產品團隊已透過手動與程式化方式，仔細審視了對於服務客戶流量至關重要的產品可能出現的故障模式。團隊移除了非必要的執行時期依賴項目，並實作了更完善的故障模式。現在，我們會盡可能使用最近一次已知的良好設定（「使用過期資料繼續運作 (fail stale)」）；若不可行，我們已逐一審查每個故障案例，並根據「在功能減損的情況下繼續提供流量」與「完全無法提供流量」兩者間的取捨，來實作「故障時保持開放 (fail open)」或「故障時保持關閉 (fail close)」的模式。</p>
+<p>讓我們看一個範例，瞭解這是如何運作的。2025 年 11 月發生的服務中斷，起因是 Bot Management 檢測的機器學習分類器部署失敗。根據我們的新程序，如果再次產生系統無法讀取的資料，系統將拒絕使用更新後的設定，轉而使用舊的設定。如果舊設定因某種原因無法取得，系統將會以「故障時保持開放 (fail open)」的方式運作，以確保客戶的正式環境流量持續獲得服務，這比停機要好得多。</p>
+<p>因此，如果當初導致 11 月服務中斷的那個 Bot Management 變更現在重新部署，系統會在部署的初期階段就偵測到故障，此時僅會影響到極小部分的流量。</p>
+<p>我們也開始進一步分割我們的系統，以便為不同的流量群組執行服務的獨立副本。Cloudflare 目前已利用這些客戶群組，搭配流量管理技術來縮小故障影響範圍，而這項額外的處理序劃分工作，將為後續的服務穩定性提供強有力的可靠性保障。</p>
+<p>例如，Workers 執行時期系統被劃分為多個獨立的服務，分別處理不同群組的流量，其中一個服務僅處理我們免費客戶的流量。變更會根據客戶群組部署到這些劃分的區段，從免費客戶開始。我們也會更快速、更頻繁地將更新傳送到重要性最低的區段，並以較慢的速度傳送到最關鍵的區段。</p>
+<p>因此，即使部署到 Workers 執行時期系統的變更導致流量中斷，也只會影響一小部分免費客戶，系統就會自動偵測到故障並執行回退。</p>
+<p>仍以 Workers 執行時期系統為例，在本月初的七天內，部署流程被觸發了超過 50 次。您可以看到每個變更波浪式傳播到邊緣，通常與後續和先前的發布並行：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="476" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=715&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=640&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=715&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=750&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=828&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=1080&amp;h=719&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=1280&amp;h=852&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=1430&amp;h=952&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Edge-worker module change deployment graph -- over 50 changes in less than a week." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4526WAP987XRN6NCSE4DBD.png&amp;w=1473&amp;h=981&amp;f=webp" data-lightbox-width="1473" data-lightbox-height="981" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="476" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>我們正致力於未來將這種部署模式擴展到更多系統。</p>
+<h3>修訂「緊急應變」與事件管理程序</h3>
+<p><em><strong>對您的意義：</strong>如果真的發生事件，我們擁有相關工具與團隊，能夠更清晰地溝通並更快解決問題，將停機時間降到最低。</em></p>
+<p>Cloudflare 依賴於自己的產品來運作。我們使用自己的 Zero Trust 產品來保護基礎架構，但這也產生了一個依賴關係：如果整個網路的大規模中斷影響了這些工具，我們便會失去修復它們所需的路徑。在此次 Code Orange 計畫之前，我們的「緊急應變」途徑僅限少數人使用，且提供的工具存取權限有限。我們需要這些工具與途徑在服務中斷期間能夠更廣泛地被使用。</p>
+<p>為了解決這個問題，我們對系統可見性、偵錯以及正式環境變更所必需的工具進行了全面審計。我們最終為 18 項關鍵服務建立了備用授權路徑，並設定了新的緊急指令碼和代理。</p>
+<p>在整個 Code Orange 計畫期間，我們從理論走向實踐。經過小組演練後，我們於 2026 年 4 月 7 日進行了一次全工程部門的演習，涉及超過 200 名團隊成員。雖然自動化能確保這些路徑正常運作，但像這樣的演練能確保我們的工程師在壓力下仍能熟練地使用它們。</p>
+<p>這項工作也同樣關注資訊的傳遞流暢度。當內部可見性中斷時，我們的事件回應速度就會變慢，而我們與外界溝通的能力也會受到影響。過去，在危急時刻得到的技術觀察結果，不一定能轉換成提供給客戶的明確更新。</p>
+<p>為了解決這個落差，我們成立了一個專責的溝通團隊，在重大事件期間與事件回應人員密切合作。就像我們的工程師演練他們的「緊急應變」程序一樣，這個團隊也利用 Code Orange 計畫來演練如何最佳化向客戶發布更新資訊的節奏與清晰度。透過確保確保我們既有觀察的工具，也有發聲的架構，我們可以更快地解決事件，並讓客戶更好地掌握情況。</p>
+<h3>我們已將改善措施制度化</h3>
+<p><em><strong>對您的意義：</strong>我們將銘記從相關事件中汲取的經驗教訓，並將解決方案制度化。我們的網路只會變得更具韌性。</em></p>
+<p>為了避免隨時間推移而偏離方向，或讓 Code Orange 計畫中已完成的改進出現退化，團隊建立了一套內部《規范文件》(Codex)，將所有指導方針固化為清晰簡潔的規則。</p>
+<p>這套《規范文件》現在是所有工程與產品團隊的強制遵循標準，並已成為 Cloudflare 內部程序的核心。其規則透過 AI 程式碼審查來強制執行，系統會自動標記任何可能偏離指導方針的地方，並要求進行額外的人工審查。這項規定無一例外地套用至我們所有的程式碼庫。目標很簡單：建立能夠自我強化的組織記憶。</p>
+<p>11 月與 12 月的服務中斷有一個共同的故障模式：程式碼預設輸入永遠有效，而當這個假設被打破時，卻沒有平穩降級的機制。一個 Rust 服務呼叫了 <code>.unwrap()</code> 而非處理錯誤；Lua 程式碼索引了一個不存在的物件。如果能夠確實記取教訓並強制執行，這兩種模式都是可以預防的。</p>
+<p>這份《規范文件》正是解決方案的一部分。它是一個持續演進的工程標準存放庫，由領域專家透過我們的「意見徵求」(RFC) 流程撰寫，然後轉化為可執行的規則。過去只存在於資深工程師腦海中的最佳做法，或是在事件發生後才被發現的經驗，現在都變成了人人都能取用的共用知識。每條規則都遵循簡單的格式：「如果你需要 X，請使用 Y」，並附上解釋原因的 RFC 連結。</p>
+<p>例如，現在有一份 RFC 規定：「請勿在測試與 <code>build.rs</code> 之外使用 <code>.unwrap()</code>」。另一份則闡述了更廣泛的原則：「服務在處理請求前，必須驗證上游依賴項處於預期狀態。」</p>
+<p>如果這些規則能更早執行，那麼 11 月與 12 月的服務中斷就不會成為全球性事件，而只是被拒絕的合併請求。</p>
+<p>沒有強制執行的規則只是建議。《規范文件》在軟體開發生命週期的每個階段（從設計審查、部署到事件分析）都與 AI 驅動的智慧體整合。這將強制執行時程大幅向左推移，從「全球中斷」變成「拒絕合併請求」。違規行為的波及範圍，也從影響數百萬個請求，縮小到單一開發人員在程式碼進入生產環境前獲得可操作的意見回饋。</p>
+<p>《規范文件》是一份持續更新的文件，將會隨著時間不斷改進。領域專家撰寫 RFC 來將最佳做法制度化。事件暴露出不足之處，進而成為新的 RFC。這些規則會提供給智慧體，用來審查下一個合併請求。這就像一個飛輪：專業知識變成標準，標準變成強制執行，強制執行為所有人提升了基準。</p>
+<h3>這不僅關乎程式碼：溝通同樣關鍵</h3>
+<p><em><strong>對您的意義：</strong>透明度對我們來說非常重要。如果出了問題，我們承諾會在每一步都讓您掌握最新情況，以便您可以專注於對您重要的事情。</em></p>
+<p>這兩次全球服務中斷，促使我們檢討了工程與產品開發之外的核心流程與文化方針。作為 Code Orange 廣泛計畫的一部分，我們已為所有服務導入新的服務層級目標 (SLO)、強制實施全域變更記錄、讓所有團隊加入我們的維護協調系統，並在公司內部改善了關於事件「預防」待辦事項的透明度。</p>
+<p>我們還強化了在服務中斷期間與客戶溝通的方式。我們的目標是在確認問題的當下就立即通知您，甚至早於您自己發現問題之前。我們的目標是，當您注意到延遲或錯誤時，您的通知匣中已經有我們的更新訊息等待著您。</p>
+<p>在事件正在發生的期間，我們現在會以可預測的間隔（例如每 30 或 60 分鐘）提供更新，即使更新內容只是「我們仍在測試修復方案，目前尚無新的進展」。這讓您可以規劃自己的一天，而不是不斷重新整理狀態頁面。</p>
+<p>當服務狀態恢復正常後，我們的工作並未結束。我們會提供詳細的事後檢討報告，說明發生了什麼事、為什麼會發生，以及我們正在進行的具體結構性變革，以確保問題不再重演。</p>
+<h3>這項計畫已經完成。但我們在韌性方面的工作永不停歇。</h3>
+<p>我們非常重視這些事件，並透過要求每個團隊回答「當初有哪些地方可以做得更好？」，在整個 Cloudflare 組織內採取共同承擔責任的態度。這項提問指引了我們過去兩個多季度以來的所有工作。</p>
+<p>雖然這項工作永遠沒有真正的終點，但我們相信，現在的我們處於一個更好的狀態，而 Cloudflare 也因此變得比以前更加穩健。</p>

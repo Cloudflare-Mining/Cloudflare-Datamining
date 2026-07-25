@@ -1,184 +1,166 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1x0JbvWmETQId5r0cL2tyX/f4ac7316e6694f349c8551b7d29e4e71/deploying-firmware-at-cloudflare-scale-how-we-update-thousands-of-servers-in-more-than-285-cities.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>As a security company, it’s critical that we have good processes for dealing with security issues. We regularly release software to our servers - on a daily basis even - which includes new features, bug fixes, and as required, security patches. But just as critical is the software which is <i>embedded</i> into the server hardware, known as firmware. Primarily of interest is the BIOS and <a href="https://blog.cloudflare.com/bmc-vuln">Baseboard Management Controller</a> (BMC), but many other components also have firmware such as Network Interface Cards (NICs).</p>
-	<p>As the world becomes more digital, software which needs updating is appearing in more and more devices. As well as my computer, over the last year, I have waited patiently while firmware has updated in my TV, vacuum cleaner, lawn mower and light bulbs. It can be a cumbersome process, including obtaining the firmware, deploying it to the device which needs updating, navigating menus and other commands to initiate the update, and then waiting several minutes for the update to complete.</p>
-	<p>Firmware updates can be annoying even if you only have a couple of devices. We have more than a few devices at Cloudflare. We have a huge number of servers of varying kinds, from varying vendors, spread over 285 cities worldwide. We need to be able to rapidly deploy various types of firmware updates to all of them, reliably, and automatically, without any kind of manual intervention.</p>
-	<p>In this blog post I will outline the methods that we use to automate firmware deployment to our entire fleet. We have been using this method for several years now, and have deployed firmware without interrupting our SRE team, entirely automatically.</p>
-	<div class="flex anchor relative">
-		<h3 id="background">Background</h3>
-		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A key component of our ability to deploy firmware at scale is the iPXE, an open source boot loader. iPXE is the glue which operates between the server and operating system, and is responsible for loading the operating system after the server has completed the Power On Self Test (POST). It is very flexible and contains a scripting language. With iPXE, we can write boot scripts which query the firmware version, continue booting if the correct firmware version is deployed, or if not, boot into a flashing environment to flash the correct firmware.</p>
-	<p>We only deploy new firmware when our systems are out of production, so we need a method to coordinate deployment only on out of production systems. The simplest way to do this is when they are rebooting, because by definition they are out of production then. We reboot our entire fleet every month, and have the ability to schedule reboots more urgently if required to deal with a security issue. Regularly rebooting our fleets has many advantages. We can <a href="https://www.youtube.com/watch?v=8mlJu8hPpQQ" target="_blank" rel="noopener noreferrer">deploy the latest Linux kerne</a>l, base operating system, and ensure that we do not have any breaking changes in our operating system and configuration management environment that breaks on fresh boot.</p>
-	<p>Our entire fleet operates in <a href="https://en.wikipedia.org/wiki/UEFI" target="_blank" rel="noopener noreferrer">UEFI mode</a>. UEFI is a modern replacement for the BIOS and offers more features and more security, such as Secure Boot. A full description of all of these changes is outside the scope of this article, but essentially UEFI provides a minimal environment and shell capable of executing binaries. <a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story">Secure Boot ensures</a> that the binaries are signed with keys embedded in the system, to prevent a bad actor from tampering with our software.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-we-update-the-bios">How we update the BIOS</h3>
-		<a href="https://blog.cloudflare.com/#how-we-update-the-bios" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We are able to update the BIOS without booting any operating system, purely by taking advantage of features offered by iPXE and the UEFI shell. This requires a <a href="https://wiki.osdev.org/UEFI#UEFI_applications_in_detail" target="_blank" rel="noopener noreferrer">flashing binary written for the UEFI environment</a>.</p>
-	<p>Upon boot, iPXE is started. Through iPXE’s built-in variable <code>${smbios/0.5.0}</code> &nbsp;it is possible to <a href="https://forum.ipxe.org/showthread.php?tid=7749" target="_blank" rel="noopener noreferrer">query the current BIOS version</a>, and compare it to the latest version, and trigger a flash only if there is a mis-match. &nbsp;iPXE then downloads the files required for the firmware update to a ramdisk.</p>
-	<p>The following is an example of a very basic iPXE script which performs such an action:</p>
-	<pre class="language-bash"><code class="language-bash"># Check whether the BIOS version is 2.03
-iseq ${smbios/0.5.0} 2.03 || goto biosupdate
-echo Nothing to do for {{ model }}
-exit 0
-
-:biosupdate
-echo Trying to update BIOS/UEFI...
-echo Current: ${smbios/0.5.0}
-echo New: 2.03
-
-imgfetch ${boot_prefix}/tools/x64/shell.efi || goto unexpected_error
-imgfetch startup.nsh || goto unexpected_error
-
-imgfetch AfuEfix64.efi || goto unexpected_error
-imgfetch bios-2.03.bin || goto unexpected_error
-
-imgexec shell.efi || goto unexpected_error</code></pre>
-	<p>Meanwhile, startup.nsh contains the binary to run and command line arguments to effect the flash:</p>
-	<p><code>startup.nsh</code>:</p>
-	<pre class="language-bash"><code class="language-bash">%homefilesystem%\AfuEfix64.efi %homefilesystem%\bios-2.03.bin /P /B /K /N /X /RLC:E /REBOOT</code></pre>
-	<p>After rebooting, the machine will boot using its new BIOS firmware, version 2.03. Since <code>${smbios/0.5.0}</code> now contains 2.03, the machine continues to boot and enter production.</p>
-	<div class="flex anchor relative">
-		<h3 id="other-firmware-updates-such-as-bmc-network-cards-and-more">Other firmware updates such as BMC, network cards and more</h3>
-		<a href="https://blog.cloudflare.com/#other-firmware-updates-such-as-bmc-network-cards-and-more" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Unfortunately, the number of vendors that support firmware updates with UEFI flashing binaries is limited. There are a large number of other updates that we need to perform such as BMC and NIC.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Bnbihh4sYojHTFzb0VX5k/d4e818e8959aaacdcff156a64b30bd89/image1-6.png" alt="" class="kg-image" width="1999" height="523" loading="lazy">
-
-	</figure>
-	<p>Consequently, we need another way to flash these binaries. Thankfully, these vendors invariably support flashing from Linux. Consequently we can perform flashing from a minimal Linux environment. Since vendor firmware updates are typically closed source utilities and vendors are often highly secretive about firmware flashing, we can ensure that the flashing environment does not provide an attackable surface by ensuring that the network is not configured. If it’s not on the network, it can’t be attacked and exploited.</p>
-	<p>Not being on the network means that we need to inject files into the boot process when the machine boots. We can accomplish this with an <a href="https://docs.kernel.org/admin-guide/initrd.html" target="_blank" rel="noopener noreferrer">initial ramdisk</a> (<code>initrd</code>), and iPXE makes it easy to add additional <code>initrd</code> to the boot.</p>
-	<p>Creating an <code>initrd</code> is as simple as creating an archive of the files using cpio using the newc archive format.</p>
-	<p>Let’s imagine we are going to flash Broadcom NIC firmware. We’ll use the bnxtnvm firmware update utility, the firmware image <code>firmware.pkg</code>, and a shell script called <code>flash</code> to automate the task.</p>
-	<p>The files are laid out in the file system like this:</p>
-	<pre class="language-bash"><code class="language-bash">cd broadcom
-find .
-./opt/preflight
-./opt/preflight/scripts
-./opt/preflight/scripts/flash
-./opt/broadcom
-./opt/broadcom/firmware.pkg
-./opt/broadcom/bnxtnvm</code></pre>
-	<p>Now we compress all of these files into an image called <code>broadcom.img</code>.</p>
-	<pre class="language-bash"><code class="language-bash">find . | cpio --quiet -H newc -o | gzip -9 -n &gt; ../broadcom.img</code></pre>
-	<p>This is the first step completed; we have the firmware packaged up into an <code>initrd</code>.</p>
-	<p>Since it’s challenging to read, say, the firmware version of the NIC, from the EFI shell, we store firmware versions as UEFI variables. These can be written from Linux via <a href="https://www.kernel.org/doc/html/next/filesystems/efivarfs.html" target="_blank" rel="noopener noreferrer"><code>efivars</code></a>, the UEFI variable file system, and then read by iPXE on boot.</p>
-	<p>An example of writing an EFI variable from Linux looks like this:</p>
-	<pre class="language-bash"><code class="language-bash">declare -r fw_path='/sys/firmware/efi/efivars/broadcom-fw-9ca25c23-368a-4c21-943f-7d91f2b76008'
-declare -r efi_header='\x07\x00\x00\x00'
-declare -r version='1.05'
-
-/bin/mount -o remount,rw,nosuid,nodev,noexec,noatime none /sys/firmware/efi/efivars
-
-# Files on efivarfs are immutable by default, so remove the immutable flag so that we can write to it: https://docs.kernel.org/filesystems/efivarfs.html
-if [ -f "${fw_path}" ] ; then
-    /usr/bin/chattr -i "${fw_path}"
-fi
-
-echo -n -e "${efi_header}${version}" &gt;| "$fw_path"</code></pre>
-	<p>Then we can write an iPXE configuration file to load the flashing kernel, userland and flashing utilities.</p>
-	<pre class="language-bash"><code class="language-bash">set cf/guid 9ca25c23-368a-4c21-943f-7d91f2b76008
-
-iseq ${efivar/broadcom-fw-${cf/guid}} 1.05 &amp;&amp; echo Not flashing broadcom firmware, version already at 1.05 || goto update
-exit
-
-:update
-echo Starting broadcom firmware update
-kernel ${boot_prefix}/vmlinuz initrd=baseimg.img initrd=linux-initramfs-modules.img initrd=broadcom.img
-initrd ${boot_prefix}/baseimg.img
-initrd ${boot_prefix}/linux-initramfs-modules.img
-initrd ${boot_prefix}/firmware/broadcom.img</code></pre>
-	<p>Flashing scripts are deposited into <code>/opt/preflight/scripts</code> and we use <code>systemd</code> to execute them with <a href="https://manpages.debian.org/stretch/debianutils/run-parts.8.en.html" target="_blank" rel="noopener noreferrer">run-parts</a> on boot:</p>
-	<p><code>/etc/systemd/system/preflight.service</code>:</p>
-	<pre class="language-bash"><code class="language-bash">[Unit]
-Description=Pre-salt checks and simple configurations on boot
-Before=salt-highstate.service
-After=network.target
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/bin/run-parts --verbose /opt/preflight/scripts
-
-[Install]
-WantedBy=multi-user.target
-RequiredBy=salt-highstate.service</code></pre>
-	<p>An example flashing script in <code>/opt/preflight/scripts</code> might look like:</p>
-	<pre class="language-bash"><code class="language-bash">#!/bin/bash
-
-trap 'catch $? $LINENO' ERR
-catch(){
-    #error handling goes here
-    echo "Error $1 occured on line $2"
-}
-
-declare -r fw_path='/sys/firmware/efi/efivars/broadcom-fw-9ca25c23-368a-4c21-943f-7d91f2b76008'
-declare -r efi_header='\x07\x00\x00\x00'
-declare -r version='1.05'
-
-lspci | grep -q Broadcom
-if [ $? -eq 0 ]; then
-    echo "Broadcom firmware flashing starting"
-    if [ ! -f "$fw_path" ] ; then
-        chmod +x /opt/broadcom/bnxtnvm
-        declare -r interface=$(/opt/broadcom/bnxtnvm listdev | grep "Device Interface Name" | awk -F ": " '{print $2}')
-        /opt/broadcom/bnxtnvm -dev=${interface} -force -y install /opt/broadcom/BCM957414M4142C.pkg
-        declare -r status=$?
-        declare -r currentversion=$(/opt/broadcom/bnxtnvm -dev=${interface} device_info | grep "Package version on NVM" | awk -F ": " '{print $2}')
-        declare -r expectedversion=$(echo $version | awk '{print $2}')
-        if [ $status -eq 0 -a "$currentversion" = "$expectedversion" ]; then
-            echo "Broadcom firmware $version flashed successfully"
-            /bin/mount -o remount,rw,nosuid,nodev,noexec,noatime none /sys/firmware/efi/efivars
-            echo -n -e "${efi_header}${version}" &gt;| "$fw_path"
-            echo "Created $fw_path"
-        else
-            echo "Failed to flash Broadcom firmware $version"
-            /opt/broadcom/bnxtnvm -dev=${interface} device_info
-        fi
-    else
-        echo "Broadcom firmware up-to-date"
-    fi
-else
-    echo "No Broadcom NIC installed"
-    /bin/mount -o remount,rw,nosuid,nodev,noexec,noatime none /sys/firmware/efi/efivars
-    if [ -f "${fw_path}" ] ; then
-        /usr/bin/chattr -i "${fw_path}"
-    fi
-    echo -n -e "${efi_header}${version}" &gt;| "$fw_path"
-    echo "Created $fw_path"
-fi
-
-if [ -f "${fw_path}" ]; then
-    echo "rebooting in 60 seconds"
-    sleep 60
-    /sbin/reboot
-fi</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Whether you manage just your laptop or desktop computer, or a fleet of servers, it’s important to keep the firmware updated to ensure that the availability, performance and security of the devices is maintained.</p>
-	<p>If you have a few devices and would benefit from automating the deployment process, we hope that we have inspired you to have a go by making use of some basic open source tools such as the iPXE boot loader and some scripting.</p>
-	<p>Final thanks to my colleague <a href="https://blog.cloudflare.com/author/ignat">Ignat Korchagin</a> who did a large amount of the original work on the UEFI BIOS firmware flashing infrastructure.</p>
+<p>As a security company, it’s critical that we have good processes for dealing with security issues. We regularly release software to our servers - on a daily basis even - which includes new features, bug fixes, and as required, security patches. But just as critical is the software which is <em>embedded</em> into the server hardware, known as firmware. Primarily of interest is the BIOS and <a href="https://blog.cloudflare.com/bmc-vuln">Baseboard Management Controller</a> (BMC), but many other components also have firmware such as Network Interface Cards (NICs).</p>
+<p>As the world becomes more digital, software which needs updating is appearing in more and more devices. As well as my computer, over the last year, I have waited patiently while firmware has updated in my TV, vacuum cleaner, lawn mower and light bulbs. It can be a cumbersome process, including obtaining the firmware, deploying it to the device which needs updating, navigating menus and other commands to initiate the update, and then waiting several minutes for the update to complete.</p>
+<p>Firmware updates can be annoying even if you only have a couple of devices. We have more than a few devices at Cloudflare. We have a huge number of servers of varying kinds, from varying vendors, spread over 285 cities worldwide. We need to be able to rapidly deploy various types of firmware updates to all of them, reliably, and automatically, without any kind of manual intervention.</p>
+<p>In this blog post I will outline the methods that we use to automate firmware deployment to our entire fleet. We have been using this method for several years now, and have deployed firmware without interrupting our SRE team, entirely automatically.</p>
+<h3>Background</h3>
+<p>A key component of our ability to deploy firmware at scale is the iPXE, an open source boot loader. iPXE is the glue which operates between the server and operating system, and is responsible for loading the operating system after the server has completed the Power On Self Test (POST). It is very flexible and contains a scripting language. With iPXE, we can write boot scripts which query the firmware version, continue booting if the correct firmware version is deployed, or if not, boot into a flashing environment to flash the correct firmware.</p>
+<p>We only deploy new firmware when our systems are out of production, so we need a method to coordinate deployment only on out of production systems. The simplest way to do this is when they are rebooting, because by definition they are out of production then. We reboot our entire fleet every month, and have the ability to schedule reboots more urgently if required to deal with a security issue. Regularly rebooting our fleets has many advantages. We can <a href="https://www.youtube.com/watch?v=8mlJu8hPpQQ" target="_blank" rel="noopener noreferrer">deploy the latest Linux kerne</a>l, base operating system, and ensure that we do not have any breaking changes in our operating system and configuration management environment that breaks on fresh boot.</p>
+<p>Our entire fleet operates in <a href="https://en.wikipedia.org/wiki/UEFI" target="_blank" rel="noopener noreferrer">UEFI mode</a>. UEFI is a modern replacement for the BIOS and offers more features and more security, such as Secure Boot. A full description of all of these changes is outside the scope of this article, but essentially UEFI provides a minimal environment and shell capable of executing binaries. <a href="https://blog.cloudflare.com/anchoring-trust-a-hardware-secure-boot-story">Secure Boot ensures</a> that the binaries are signed with keys embedded in the system, to prevent a bad actor from tampering with our software.</p>
+<h3>How we update the BIOS</h3>
+<p>We are able to update the BIOS without booting any operating system, purely by taking advantage of features offered by iPXE and the UEFI shell. This requires a <a href="https://wiki.osdev.org/UEFI#UEFI_applications_in_detail" target="_blank" rel="noopener noreferrer">flashing binary written for the UEFI environment</a>.</p>
+<p>Upon boot, iPXE is started. Through iPXE’s built-in variable <code>${smbios/0.5.0}</code> &nbsp;it is possible to <a href="https://forum.ipxe.org/showthread.php?tid=7749" target="_blank" rel="noopener noreferrer">query the current BIOS version</a>, and compare it to the latest version, and trigger a flash only if there is a mis-match. &nbsp;iPXE then downloads the files required for the firmware update to a ramdisk.</p>
+<p>The following is an example of a very basic iPXE script which performs such an action:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Check whether the BIOS version is 2.03</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">iseq</span><span class="sk-24292e-fff"> ${smbios</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">0.5.0} </span><span class="sk-005cc5-ffc799">2.03</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> biosupdate</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> Nothing</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> do</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> {{</span><span class="sk-032f62-99ffe4"> model</span><span class="sk-032f62-99ffe4"> }}</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">exit</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">:biosupdate</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> Trying</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> update</span><span class="sk-032f62-99ffe4"> BIOS/UEFI...</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> Current:</span><span class="sk-24292e-fff"> ${smbios</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">0.5.0}</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> New:</span><span class="sk-005cc5-ffc799"> 2.03</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">imgfetch</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/tools/x64/shell.efi</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">imgfetch</span><span class="sk-032f62-99ffe4"> startup.nsh</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">imgfetch</span><span class="sk-032f62-99ffe4"> AfuEfix64.efi</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">imgfetch</span><span class="sk-032f62-99ffe4"> bios-2.03.bin</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">imgexec</span><span class="sk-032f62-99ffe4"> shell.efi</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> unexpected_error</span></span></code></pre>
 </div>
+<p>Meanwhile, startup.nsh contains the binary to run and command line arguments to effect the flash:</p>
+<p><code>startup.nsh</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">%homefilesystem%\AfuEfix64.efi</span><span class="sk-032f62-99ffe4"> %homefilesystem%</span><span class="sk-005cc5-a0a0a0">\b</span><span class="sk-032f62-99ffe4">ios-2.03.bin</span><span class="sk-032f62-99ffe4"> /P</span><span class="sk-032f62-99ffe4"> /B</span><span class="sk-032f62-99ffe4"> /K</span><span class="sk-032f62-99ffe4"> /N</span><span class="sk-032f62-99ffe4"> /X</span><span class="sk-032f62-99ffe4"> /RLC:E</span><span class="sk-032f62-99ffe4"> /REBOOT</span></span></code></pre>
+</div>
+<p>After rebooting, the machine will boot using its new BIOS firmware, version 2.03. Since <code>${smbios/0.5.0}</code> now contains 2.03, the machine continues to boot and enter production.</p>
+<h3>Other firmware updates such as BMC, network cards and more</h3>
+<p>Unfortunately, the number of vendors that support firmware updates with UEFI flashing binaries is limited. There are a large number of other updates that we need to perform such as BMC and NIC.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="187" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=640&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=750&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=828&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=1080&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=1280&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=1430&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1636 Embedded Image - QNt6nj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C05BNNV4XW4ETT0QNKQP.png&amp;w=1920&amp;h=502&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="502" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="187" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Consequently, we need another way to flash these binaries. Thankfully, these vendors invariably support flashing from Linux. Consequently we can perform flashing from a minimal Linux environment. Since vendor firmware updates are typically closed source utilities and vendors are often highly secretive about firmware flashing, we can ensure that the flashing environment does not provide an attackable surface by ensuring that the network is not configured. If it’s not on the network, it can’t be attacked and exploited.</p>
+<p>Not being on the network means that we need to inject files into the boot process when the machine boots. We can accomplish this with an <a href="https://docs.kernel.org/admin-guide/initrd.html" target="_blank" rel="noopener noreferrer">initial ramdisk</a> (<code>initrd</code>), and iPXE makes it easy to add additional <code>initrd</code> to the boot.</p>
+<p>Creating an <code>initrd</code> is as simple as creating an archive of the files using cpio using the newc archive format.</p>
+<p>Let’s imagine we are going to flash Broadcom NIC firmware. We’ll use the bnxtnvm firmware update utility, the firmware image <code>firmware.pkg</code>, and a shell script called <code>flash</code> to automate the task.</p>
+<p>The files are laid out in the file system like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> broadcom</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">find</span><span class="sk-032f62-99ffe4"> .</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./opt/preflight</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./opt/preflight/scripts</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./opt/preflight/scripts/flash</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./opt/broadcom</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./opt/broadcom/firmware.pkg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./opt/broadcom/bnxtnvm</span></span></code></pre>
+</div>
+<p>Now we compress all of these files into an image called <code>broadcom.img</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">find</span><span class="sk-032f62-99ffe4"> .</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cpio</span><span class="sk-005cc5-99ffe4"> --quiet</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> newc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> gzip</span><span class="sk-005cc5-99ffe4"> -9</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> ../broadcom.img</span></span></code></pre>
+</div>
+<p>This is the first step completed; we have the firmware packaged up into an <code>initrd</code>.</p>
+<p>Since it’s challenging to read, say, the firmware version of the NIC, from the EFI shell, we store firmware versions as UEFI variables. These can be written from Linux via <a href="https://www.kernel.org/doc/html/next/filesystems/efivarfs.html" target="_blank" rel="noopener noreferrer"><code>efivars</code></a>, the UEFI variable file system, and then read by iPXE on boot.</p>
+<p>An example of writing an EFI variable from Linux looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> fw_path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'/sys/firmware/efi/efivars/broadcom-fw-9ca25c23-368a-4c21-943f-7d91f2b76008'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> efi_header</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'\x07\x00\x00\x00'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> version</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'1.05'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">/bin/mount</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> remount,rw,nosuid,nodev,noexec,noatime</span><span class="sk-032f62-99ffe4"> none</span><span class="sk-032f62-99ffe4"> /sys/firmware/efi/efivars</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Files on efivarfs are immutable by default, so remove the immutable flag so that we can write to it: https://docs.kernel.org/filesystems/efivarfs.html</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> [ </span><span class="sk-d73a49-a0a0a0">-f</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">fw_path</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-24292e-fff"> ] ; </span><span class="sk-d73a49-a0a0a0">then</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    /usr/bin/chattr</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">fw_path</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">fi</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">efi_header</span><span class="sk-032f62-99ffe4">}${</span><span class="sk-24292e-fff">version</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-d73a49-a0a0a0"> &gt;|</span><span class="sk-6f42c1-ffc799"> "</span><span class="sk-24292e-fff">$fw_path</span><span class="sk-6f42c1-ffc799">"</span></span></code></pre>
+</div>
+<p>Then we can write an iPXE configuration file to load the flashing kernel, userland and flashing utilities.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">set</span><span class="sk-032f62-99ffe4"> cf/guid</span><span class="sk-032f62-99ffe4"> 9ca25c23-368a-4c21-943f-7d91f2b76008</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">iseq</span><span class="sk-24292e-fff"> ${efivar</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">broadcom-fw-${cf</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">guid}} </span><span class="sk-005cc5-ffc799">1.05</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> Not</span><span class="sk-032f62-99ffe4"> flashing</span><span class="sk-032f62-99ffe4"> broadcom</span><span class="sk-032f62-99ffe4"> firmware,</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-032f62-99ffe4"> already</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-005cc5-ffc799"> 1.05</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> goto</span><span class="sk-032f62-99ffe4"> update</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">exit</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">:update</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> Starting</span><span class="sk-032f62-99ffe4"> broadcom</span><span class="sk-032f62-99ffe4"> firmware</span><span class="sk-032f62-99ffe4"> update</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kernel</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/vmlinuz</span><span class="sk-032f62-99ffe4"> initrd=baseimg.img</span><span class="sk-032f62-99ffe4"> initrd=linux-initramfs-modules.img</span><span class="sk-032f62-99ffe4"> initrd=broadcom.img</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">initrd</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/baseimg.img</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">initrd</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/linux-initramfs-modules.img</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">initrd</span><span class="sk-24292e-fff"> ${boot_prefix}</span><span class="sk-032f62-99ffe4">/firmware/broadcom.img</span></span></code></pre>
+</div>
+<p>Flashing scripts are deposited into <code>/opt/preflight/scripts</code> and we use <code>systemd</code> to execute them with <a href="https://manpages.debian.org/stretch/debianutils/run-parts.8.en.html" target="_blank" rel="noopener noreferrer">run-parts</a> on boot:</p>
+<p><code>/etc/systemd/system/preflight.service</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[Unit]</span></span>
+<span class="line"><span class="sk-24292e-fff">Description</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">Pre-salt</span><span class="sk-6f42c1-ffc799"> checks</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> simple</span><span class="sk-032f62-99ffe4"> configurations</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> boot</span></span>
+<span class="line"><span class="sk-24292e-fff">Before</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">salt-highstate.service</span></span>
+<span class="line"><span class="sk-24292e-fff">After</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">network.target</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[Service]</span></span>
+<span class="line"><span class="sk-24292e-fff">Type</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">oneshot</span></span>
+<span class="line"><span class="sk-24292e-fff">RemainAfterExit</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">yes</span></span>
+<span class="line"><span class="sk-24292e-fff">ExecStart</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">/bin/run-parts</span><span class="sk-6f42c1-ffc799"> --verbose</span><span class="sk-032f62-99ffe4"> /opt/preflight/scripts</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[Install]</span></span>
+<span class="line"><span class="sk-24292e-fff">WantedBy</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">multi-user.target</span></span>
+<span class="line"><span class="sk-24292e-fff">RequiredBy</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">salt-highstate.service</span></span></code></pre>
+</div>
+<p>An example flashing script in <code>/opt/preflight/scripts</code> might look like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#!/bin/bash</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">trap</span><span class="sk-032f62-99ffe4"> 'catch $? $LINENO'</span><span class="sk-032f62-99ffe4"> ERR</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">catch</span><span class="sk-24292e-fff">(){</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    #error handling goes here</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-032f62-99ffe4"> "Error </span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4"> occured on line </span><span class="sk-005cc5-fff">$2</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> fw_path</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'/sys/firmware/efi/efivars/broadcom-fw-9ca25c23-368a-4c21-943f-7d91f2b76008'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> efi_header</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'\x07\x00\x00\x00'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> version</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">'1.05'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lspci</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-005cc5-99ffe4"> -q</span><span class="sk-032f62-99ffe4"> Broadcom</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> [ </span><span class="sk-005cc5-a0a0a0">$?</span><span class="sk-d73a49-a0a0a0"> -eq</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff"> ]; </span><span class="sk-d73a49-a0a0a0">then</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-032f62-99ffe4"> "Broadcom firmware flashing starting"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> [ </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-d73a49-a0a0a0"> -f</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$fw_path</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff"> ] ; </span><span class="sk-d73a49-a0a0a0">then</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        chmod</span><span class="sk-032f62-99ffe4"> +x</span><span class="sk-032f62-99ffe4"> /opt/broadcom/bnxtnvm</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> interface</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">/opt/broadcom/bnxtnvm</span><span class="sk-032f62-99ffe4"> listdev</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "Device Interface Name"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> ": "</span><span class="sk-032f62-99ffe4"> '{print $2}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        /opt/broadcom/bnxtnvm</span><span class="sk-005cc5-99ffe4"> -dev=${</span><span class="sk-24292e-fff">interface</span><span class="sk-005cc5-99ffe4">}</span><span class="sk-005cc5-99ffe4"> -force</span><span class="sk-005cc5-99ffe4"> -y</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> /opt/broadcom/BCM957414M4142C.pkg</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> status</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0">$?</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> currentversion</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">/opt/broadcom/bnxtnvm</span><span class="sk-005cc5-99ffe4"> -dev=${</span><span class="sk-24292e-fff">interface</span><span class="sk-005cc5-99ffe4">}</span><span class="sk-032f62-99ffe4"> device_info</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "Package version on NVM"</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> ": "</span><span class="sk-032f62-99ffe4"> '{print $2}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        declare</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-24292e-fff"> expectedversion</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">$(</span><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $version </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{print $2}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> [ $status </span><span class="sk-d73a49-a0a0a0">-eq</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-d73a49-a0a0a0"> -a</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$currentversion</span><span class="sk-032f62-99ffe4">"</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$expectedversion</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff"> ]; </span><span class="sk-d73a49-a0a0a0">then</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            echo</span><span class="sk-032f62-99ffe4"> "Broadcom firmware </span><span class="sk-24292e-fff">$version</span><span class="sk-032f62-99ffe4"> flashed successfully"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            /bin/mount</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> remount,rw,nosuid,nodev,noexec,noatime</span><span class="sk-032f62-99ffe4"> none</span><span class="sk-032f62-99ffe4"> /sys/firmware/efi/efivars</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            echo</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">efi_header</span><span class="sk-032f62-99ffe4">}${</span><span class="sk-24292e-fff">version</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-d73a49-a0a0a0"> &gt;|</span><span class="sk-6f42c1-ffc799"> "</span><span class="sk-24292e-fff">$fw_path</span><span class="sk-6f42c1-ffc799">"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            echo</span><span class="sk-032f62-99ffe4"> "Created </span><span class="sk-24292e-fff">$fw_path</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        else</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            echo</span><span class="sk-032f62-99ffe4"> "Failed to flash Broadcom firmware </span><span class="sk-24292e-fff">$version</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            /opt/broadcom/bnxtnvm</span><span class="sk-005cc5-99ffe4"> -dev=${</span><span class="sk-24292e-fff">interface</span><span class="sk-005cc5-99ffe4">}</span><span class="sk-032f62-99ffe4"> device_info</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        fi</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    else</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        echo</span><span class="sk-032f62-99ffe4"> "Broadcom firmware up-to-date"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    fi</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">else</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-032f62-99ffe4"> "No Broadcom NIC installed"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    /bin/mount</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> remount,rw,nosuid,nodev,noexec,noatime</span><span class="sk-032f62-99ffe4"> none</span><span class="sk-032f62-99ffe4"> /sys/firmware/efi/efivars</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> [ </span><span class="sk-d73a49-a0a0a0">-f</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">fw_path</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-24292e-fff"> ] ; </span><span class="sk-d73a49-a0a0a0">then</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        /usr/bin/chattr</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">fw_path</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    fi</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">efi_header</span><span class="sk-032f62-99ffe4">}${</span><span class="sk-24292e-fff">version</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-d73a49-a0a0a0"> &gt;|</span><span class="sk-6f42c1-ffc799"> "</span><span class="sk-24292e-fff">$fw_path</span><span class="sk-6f42c1-ffc799">"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-032f62-99ffe4"> "Created </span><span class="sk-24292e-fff">$fw_path</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">fi</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> [ </span><span class="sk-d73a49-a0a0a0">-f</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">fw_path</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-24292e-fff"> ]; </span><span class="sk-d73a49-a0a0a0">then</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    echo</span><span class="sk-032f62-99ffe4"> "rebooting in 60 seconds"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    sleep</span><span class="sk-005cc5-ffc799"> 60</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    /sbin/reboot</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">fi</span></span></code></pre>
+</div>
+<h3>Conclusion</h3>
+<p>Whether you manage just your laptop or desktop computer, or a fleet of servers, it’s important to keep the firmware updated to ensure that the availability, performance and security of the devices is maintained.</p>
+<p>If you have a few devices and would benefit from automating the deployment process, we hope that we have inspired you to have a go by making use of some basic open source tools such as the iPXE boot loader and some scripting.</p>
+<p>Final thanks to my colleague <a href="https://blog.cloudflare.com/author/ignat">Ignat Korchagin</a> who did a large amount of the original work on the UEFI BIOS firmware flashing infrastructure.</p>

@@ -1,0 +1,364 @@
+<p>上周，Cloudflare 收到通知称，我们（以及我们的客户）受到 Salesloft Drift 入侵事件的影响。由于这一入侵事件，Cloudflare 外部的攻击者获得了对我们的 Salesforce 实例（用于客户支持和内部客户个案管理）及其中部分数据的访问权限。这些信息大部分是客户联系信息和基本支持个案数据，但某些客户支持交互可能会泄露有关客户配置的信息，并可能包含访问令牌等敏感信息。鉴于 Salesforce 支持个案数据包含 Cloudflare 支持工单内容，客户可能通过我们的支持系统与 Cloudflare 共享的任何信息——包括日志、令牌或密码——都应视为已被泄露，我们强烈建议您轮换任何可能通过此渠道与我们共享的凭据。 </p>
+<p>作为我们对这一事件的响应的一部分，我们在泄露的数据中搜索令牌或密码，并发现了 104 个 Cloudflare API 令牌。我们未发现与这些令牌相关的可疑活动，但出于谨慎考虑，所有这些令牌都已轮换。Cloudflare 已直接通知所有在此次事件中受影响的客户。</p>
+<p>没有任何 Cloudflare 服务或基础设施因此次事件而受到破坏。</p>
+<p>我们对选择用于支持我们业务的工具负有责任。此次安全事件辜负了客户的信任。为此，我们深表歉意。本博客的其余部分提供了详细的时间线以及我们如何调查这一事件的详细信息。</p>
+<h2>Salesloft Drift 入侵事件</h2>
+<p>上周，Cloudflare 发现其 Salesforce 租户中存在可疑活动，并获悉我们与数百家其他企业一样，成为了威胁行为者的攻击目标。该攻击者成功从我们的 Salesforce 实例中外泄了支持个案的文本字段。我们的安全团队立即启动调查，切断了威胁行为者的访问，并采取了若干措施（详见下文）以保障我们的环境安全。我们撰写本博客旨在详述事件经过、我们的应对措施，并帮助我们的客户和其他用户了解如何保护自身免受这一事件影响。</p>
+<p>Cloudflare 使用 Salesforce 来跟踪客户信息及其使用我们服务的方式，并将其用作与客户互动的支持工具。此次事件中需要了解的一个重要细节是，威胁行为者仅访问了 Salesforce “个案”（cases）中的数据。Cloudflare 销售团队和支持团队成员在为客户提供支持而需要进行内部沟通时，就可能创建个案；当客户与 Cloudflare 支持团队互动时也会创建相应个案。Salesforce 提供 Salesloft Drift 聊天机器人集成，Cloudflare 利用该集成为访问我们网站的任何人提供了一种联系方法。</p>
+<p>正如 <a href="https://trust.salesloft.com/?uid=Drift%2FSalesforce+Security+Update" target="_blank" rel="noopener noreferrer"><u>Salesloft 在公告中所称</u></a>，一位威胁行为者入侵了他们的系统。作为入侵的一部分，该威胁行为者能够获取与 Salesloft Drift 聊天智能体的 Salesforce 集成相关的 OAuth 凭据，从而从 Salesloft 客户的 Salesforce 实例中获取数据。我们的调查显示，这是一次针对企业对企业第三方集成的复杂供应链攻击的一部分，影响了全球数百家作为 Salesloft 客户的组织。<a href="https://www.cloudflare.com/en-au/application-services/products/cloudforceone" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a>——Cloudflare 的威胁情报和研究团队——已将高级威胁行为者归类为 <strong>GRUB1</strong>。<a href="https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift" target="_blank" rel="noopener noreferrer"><u>Google 威胁情报组</u></a>披露了更多信息，与我们在自身环境中观察到的活动相符。</p>
+<p>我们的调查显示，在 2025 年 8 月 9 日观察到的初步侦察活动后，该威胁行为者于 2025 年 8 月 12 日至 17 日期间入侵了我们的 Salesforce 租户，并从中窃取了数据。详细分析确认，暴露仅限于 Salesforce 个案对象，主要包括我们 Salesforce 租户中的客户支持工单及其相关数据。这些个案对象包含与支持个案相关的客户联系信息、个案主题行和个案通信正文，但<em>不包括</em>个案的任何附件。Cloudflare 不会要求或请求客户在支持个案中分享机密、凭据或 API 密钥。然而，在某些故障排除场景中，客户可能会将密钥、日志或其他敏感信息粘贴到个案文本字段中。通过此渠道共享的任何内容都应视为已被泄露。</p>
+<p>我们认为这起事件并非孤立事件，威胁行为者意图收集凭据和客户信息，以便用于未来的攻击。鉴于数百家企业受到这次 Drift 事件的影响，我们怀疑威胁行为者会利用这些信息对受影响企业的客户发起针对性的攻击。</p>
+<p>这篇文章提供攻击的时间线，详细介绍了我们的应对措施，并提供安全建议，以帮助其他企业减轻类似威胁的影响。</p>
+<p><em>本文提及的所有日期和时间均为世界协调时（UTC）。</em></p>
+<h2>Cloudflare 的响应与补救</h2>
+<p>2025 年 8 月 23 日，当 Salesforce 和 Salesloft 通知我们称 Drift 集成在包括 Cloudflare 在内的多个组织被滥用时，我们立即启动了全公司范围的安全事件响应。我们启动了跨职能团队，将来自安全、IT、产品、法务、通信和业务领导层的专家整合起来，纳入统一的事件指挥架构之下。</p>
+<p>我们设立了四个明确的优先工作流，目标是保护我们的客户和 Cloudflare：</p>
+<ol>
+	<li><strong>立即遏制威胁：</strong>我们通过禁用遭入侵的 Drift 集成来切断所有威胁行为者的访问，进行取证分析以了解入侵范围，并从我们的环境中消除了该活动威胁。</li>
+	<li><strong>保护我们的第三方生态系统</strong>：我们立即断开了所有第三方集成与 Salesforce 的连接。我们为所有服务签发了新密钥，并部署了每周轮换密钥的新流程。</li>
+	<li><strong>保护我们更广泛系统的完整性</strong>：作为预防措施，我们将凭据轮换扩展到我们所有第三方互联网服务和账户，以防止攻击者利用被泄露的数据访问其他 Cloudflare 系统。</li>
+	<li><strong>客户影响分析：</strong>我们分析了我们的 Salesforce 个案对象数据，以确定客户是否可能受到威胁，并确保他们及时和准确地了解有关潜在风险的信息。</li>
+</ol>
+<h2>攻击时间线与 Cloudflare 响应</h2>
+<p>我们的取证调查还原了威胁行为者在 2025 年 8 月 9 日至 17 日期间针对 Cloudflare 发起的攻击活动。以下是威胁行为者行动的时间顺序摘要，包括在首次入侵前的初步侦察活动。</p>
+<h3>2025 年 8 月 9 日：侦察的初步迹象</h3>
+<p><strong>11:51</strong>，GRUB1 尝试使用一个客户由 Cloudflare 颁发的 API 令牌对 Salesforce API 进行验证。攻击者使用 Truffeog（一种流行的开源秘密扫描器）作为其用户代理，向 <code>client/v4/user/tokens/verify</code> 发送了验证请求。请求失败，返回 <code>404 Not Found</code>，确认令牌无效。这个 API 令牌的来源尚不明确——它可能来自多个来源，包括 GRUB1 在 Cloudflare 之前可能已入侵的其他 Drift 客户。</p>
+<h3>2025 年 8 月 12 日：Cloudflare 遭到初始入侵</h3>
+<p>在 <strong>22:14</strong>，GRUB1 通过 Salesloft 集成所用的一个被盗凭据获得了对 Cloudflare Salesforce 租户的访问权限。利用此凭据，GRUB1 从 IP 地址 <code>44[.]215[.]108[.]109</code> 登录并对 <code>/services/data/v58.0/sobjects/</code> API 端点发出一个 GET 请求。此操作似乎枚举了我们 Salesforce 环境中的所有对象，使威胁行为者对存储在其中的数据获得了高层级概览。</p>
+<h3>2025 年 8 月 13 日：扩大侦察</h3>
+<p>在初始入侵的一天后，威胁行为者 GRUB1 从同一 IP 地址 <code>44[.]215[.]108[.]109</code> 发起了后续攻击。<strong>从 19:33 开始</strong>，威胁行为者从 Salesforce 个案对象中窃取了客户数据。他们首先重新运行对象枚举以确认数据结构，然后立即使用 <code>/sobjects/Case/describe/</code> 端点检索个案对象的模式。接下来是一个广泛的 Salesforce 查询，枚举了 Salesforce 个案对象中的字段。</p>
+<h3>2025 年 8 月 14 日：了解我们的 Salesforce 环境</h3>
+<p>威胁行为者 GRUB1 花费了数小时，从 IP 地址 <code>44[.]215[.]108[.]109</code> 对 Cloudflare 的 Salesforce 租户进行了全面侦察。看来，他们的目标是了解我们的环境。在数小时内，他们执行了一系列有针对性的<a href="https://blog.cloudflare.com/#detailed-event-timeline">查询</a>：</p>
+<ul>
+	<li><strong>00:17 - </strong>他们通过统计账户、联系人和用户来衡量租户的规模；</li>
+	<li><strong>04:34 - </strong>通过查询 CaseTeamMemberHistory 来分析个案工作流；</li>
+	<li><strong>11:09 -</strong>对组织对象进行指纹识别，确认其处于生产环境中。</li>
+</ul>
+<p>威胁行为者通过额外的查询完成了侦察，以了解我们的客户支持系统如何运作——包括团队成员如何处理不同类型的个案、个案如何分配和升级，以及我们的支持流程如何运作——然后查询了 /limits/ 端点以了解 API 的操作阈值。GRUB1 运行的查询为他们提供了如下信息：对其访问级别，个案对象大小，以及在我们的 Salesforce 环境中需要遵守的精确 API 限制，以避免检测。</p>
+<h3>2025 年 8 月 16 日：准备攻击</h3>
+<p>在 2025 年 8 月 14 日的侦察之后，我们在接近 48 小时内没有观察到来自威胁行为者 GRUB1 的流量或成功登录。</p>
+<p>他们于 2025 年 8 月 16 日返回。<strong>19:26</strong>，GRUB1 从 IP 地址 <code>44[.]215[.]108[.]109</code> 重新登录到 Cloudflare 的 Salesforce 租户，并在 <strong>19:28</strong> 执行了最后一次查询：<code>SELECT COUNT() FROM Case</code> 。此举作为最后的“演练”，以验证他们即将窃取的数据集的确切大小，标志着侦察阶段的明确结束，并为主要攻击做好准备。</p>
+<h3>2025 年 8 月 17 日：最终的数据窃取与踪迹掩盖</h3>
+<p>GRUB1 通过切换至新的基础设施启动了数据窃取阶段，于 <strong>11:11:23</strong> 从 IP 地址 <code>208[.]68[.]36[.]90</code> 登录。对个案对象的大小进行最后一次检查后，他们在 <strong>11:11:56</strong> 启动了一个 Salesforce Bulk API 2.0 作业。在短短三分多钟的时间里，他们成功窃取了一个数据集，其中包含我们 Salesforce 实例中支持个案文本的数据集，但没有任何附件或文件。在 <strong>11:15:42</strong>，GRUB1 试图通过删除 API 作业来掩盖踪迹。虽然此举隐藏了主要证据，但我们的团队能够通过残留日志重构攻击过程。</p>
+<p>2025 年 8 月 17 日之后，我们没有观察到该威胁行为者的进一步活动。</p>
+<h3>2025 年 8 月 20 日：供应商在通知前采取行动</h3>
+<p>Salesloft 撤销了其客户群中所有 Drift 到 Salesforce 的连接，并在其网站上发布了公告。当时，Cloudflare 尚未收到通知，也没有任何迹象表明此供应商行动可能与我们的环境相关。</p>
+<h3>2025 年 8 月 23 日：Salesforce 和 Salesloft 向 Cloudflare 发送通知</h3>
+<p>当 Salesforce 和 Salesloft 通知我们与 Drift 相关的异常活动时，我们启动对此事件的响应。我们迅速实施了供应商推荐的遏制措施，并与他们合作以收集情报。</p>
+<h3>2025 年 8 月 25 日：Cloudflare 启动响应活动</h3>
+<p>到 8 月 25 日，我们已收到关于该事件的更多威胁情报，并将响应措施升级，超越了最初供应商建议的遏制措施。我们启动了自己的全面调查和补救工作。</p>
+<p>我们的首要任务是从源头切断 GRUB1 的访问。我们禁用了 Drift 用户帐户，撤销了其客户端 ID 和密钥，并从 Cloudflare 系统中完全清除了所有 Salesloft 软件和浏览器扩展。这一全面的清除措施减轻了威胁行为重新使用已泄露令牌、通过过期会话重新获取访问权限或利用软件扩展实现持久化的风险。<br><br>另外，我们扩大了安全审查范围，涵盖了所有连接到我们 Salesforce 环境的第三方服务，并作为预防措施轮换了凭据，以防止威胁行为者的任何潜在横向移动。</p>
+<p>由于我们使用 Salesforce 作为管理客户支持数据的主要工具，风险在于客户可能在客户服务请求中提交了密钥、密码或其他敏感数据。我们需要了解攻击者现在掌握了哪些敏感信息。</p>
+<p>我们立即重点关注这些数据是否可能被用于入侵我们客户的账户、系统或基础设施。我们检查了威胁行为者获取的数据，以查看其是否包含暴露的凭据，因为个案信息中包含自由文本字段，客户可能会在其中向我们的支持团队提交 Cloudflare API 令牌、密钥或日志。我们的团队使用正则表达式、熵和模式匹配技术开发了自定义扫描工具，以大规模检测可能的 Cloudflare 秘密。</p>
+<p>我们的调查证实，暴露范围仅限于 Salesforce 个案对象中的自由格式文本——不包括附件或文件。销售和支持团队使用个案在内部就客户支持问题进行沟通，以及直接与客户沟通。因此，这些个案对象包含仅由文本组成的数据，包括：</p>
+<ul>
+	<li>Salesforce 个案的主题行</li>
+	<li>个案正文（自由格式文本，如果由客户向 Cloudflare 提供，则可包括任何通信内容，包括密钥、秘密等）</li>
+	<li>客户联系信息（例如，公司名称、请求者的电子邮件地址和电话号码、公司域名以及公司所在国家）</li>
+</ul>
+<p>这一结论通过对集成、身份验证活动、端点遥测和网络日志的广泛审查得到验证。</p>
+<h3>2025 年 8 月 26 日至 29 日：扩大响应规模和主动防护措施</h3>
+<p>虽然 Salesforce 和 Salesloft 的主要凭据已经轮换，我们的下一步是终止并安全地重新建立我们的第三方集成。我们开始有条不紊地重新启用已终止的服务，确保为每项服务提供新的密钥，并使其受到更严格的安全控制。</p>
+<p>与此同时，我们的团队继续分析被窃取的数据。根据分析，我们对潜在的暴露进行了分类和验证，遵循的原则是对任何可能已暴露的数据都进行检查。这使我们能够采取直接行动，在发现后立即轮换 Cloudflare 平台发行的令牌——总共轮换了 104 个 API 令牌。未发现与这些令牌相关的可疑活动。</p>
+<h3>2025 年 9 月 2 日：通知客户<strong>&nbsp;</strong></h3>
+<p>根据 Cloudflare 的详细分析，所有受影响的客户都通过电子邮件和我们仪表板中的横幅正式通知，知悉该事件相关信息和建议的后续步骤。</p>
+<h2>适用于所有组织的建议</h2>
+<p>这一事件凸显了在保护 SaaS 应用和其他第三方集成方面提高警惕的关键重要性。在这次攻击中，数百家公司的数据被泄露，这些数据可能会被用来发动更多的攻击。我们强烈敦促所有组织采取以下安全措施：</p>
+<ul>
+	<li><strong>断开 Salesloft 及其应用序的连接：</strong>立即断开 Salesforce 环境中的所有 Salesloft 连接，并卸载任何相关软件或浏览器扩展程序。</li>
+	<li><strong>轮换凭据：</strong>重置连接到您的 Salesforce 实例的所有第三方应用和集成的凭据。轮换之前可能已在支持个案中向 Cloudflare 共享的任何凭据。根据此次攻击的范围和意图，我们还建议更换您环境中的所有第三方凭据，以及在与任何其他供应商的支持个案中可能包含的任何凭据。</li>
+	<li><strong>实施频繁的凭据轮换：</strong>为集成中使用的所有 API 密钥和其他机密制定定期轮换计划，以减少暴露窗口。</li>
+	<li><strong>审查支持个案数据：</strong>与您的第三方提供商审查所有客户支持个案数据，以确定哪些敏感信息可能已被暴露。查找包含凭据、API 密钥、配置详细信息或其他客户可能已共享的其他敏感数据的个案。对于 Cloudflare 客户：您可以通过 Cloudflare 仪表板中的支持 &gt; 技术支持 &gt; 我的活动，访问您的支持个案历史记录，您可以在其中筛选个案或使用“下载个案”功能进行全面审查。</li>
+	<li><strong>进行取证：</strong> <strong> </strong>审查所有第三方集成的访问日志和权限，审查与 Drift 事件相关的<a href="https://cloud.google.com/blog/topics/threat-intelligence/data-theft-salesforce-instances-via-salesloft-drift" target="_blank" rel="noopener noreferrer"><u>公开资料</u></a>，并根据需要对您的环境进行安全审查。</li>
+	<li><strong>实施最低权限：</strong>审计所有第三方应用，以确保它们以其功能所需的最低访问级别（最低权限）运行，并确保管理员帐户不用于供应商。此外，对所有第三方和企业对企业（B2B） 连接执行严格的控制措施，例如 IP 地址限制和会话绑定。</li>
+	<li><strong>加强监控和控制：</strong>部署增强监控以检测异常情况，例如大量数据导出或来自陌生位置的登录。虽然捕获第三方到第三方的日志可能很困难，但这些日志必须成为您安全运营团队的一部分。</li>
+</ul>
+<h2>入侵指标</h2>
+<p>以下是我们从 GRUB1 观察到的入侵指标（IOC）。我们发布这些指标是为了让其他组织，特别是可能受到 Salesloft 数据泄露事件影响的组织，能够搜索其日志以确认同一威胁行为者未曾访问其系统或第三方服务。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>指标</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>在提示下键入</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>208[.]68[.]36[.]90</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>IPV4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>基于 DigitalOcean 的基础设施</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>44[.]215[.]108[.]109</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>IPV4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>基于 AWS 的基础设施</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>TruffleHog</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用户代理</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>开放源代码机密扫描工具</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Salesforce-Multi-Org-Fetcher/1.0</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用户代理</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>与恶意工具相关的用户代理字符串</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Salesforce-CLI/1.0</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用户代理</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Salesforce 命令行界面 (CLI)，</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>python-requests/2.32.4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用户代理</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>该用户代理可能表明使用自定义脚本</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Python/3.11aiohttp/3.12.15</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用户代理</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>该用户代理可能允许多个并行 API 调用</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>总结</h2>
+<p>我们对我们选择的工具负责，当这些工具被老练的威胁行为者破坏时，我们承担相应后果。我们的团队对该通知做出了响应，调查确认影响严格限制在 Salesforce 个案对象数据中，未对其他 Cloudflare 系统或基础设施进行入侵。</p>
+<p>话虽如此，我们认为<em>任何</em>数据泄露都是不可接受的。我们的客户信任并将其数据、基础设施和安全托付给 Cloudflare。相应地，我们有时会信任第三方工具，而这些工具需要监控并严格限定其访问范围。这是我们的责任。我们让客户失望了。为此，我们深表歉意。</p>
+<p>随着第三方工具越来越多地与行业中的内部企业数据集成，我们需要对每个新工具进行仔细审查。这一事件通过单一的集成点影响了数百个组织，凸显了当今技术环境中风险的相互关联性。我们致力于开发新的功能，以帮助我们和我们的客户防御此类攻击。请关注本月晚些时候 Cloudflare 生日周期间发布的公告。</p>
+<p>我们也致力于与更广泛的安全社区分享威胁情报和研究。在接下来的几周内，我们的 Cloudforce One 威胁研究团队将发布一篇深入分析 GRUB1 技术手段的博客文章，以帮助更广泛的社区防御类似的攻击活动。</p>
+<h2>详细的事件时间线</h2>
+<p>下表提供了 GRUB1 在事件期间具体行为的详细时间线视图。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>日期/时间 (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>事件描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 9 日 11:51:13</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>观察到 GRUB1 利用 Trufflehog 并尝试使用 Cloudflare 客户租户 client/v4/user/tokens/verify 验证一个令牌，并从 44[.]215[.]108[.]109 收到 404 错误。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 12 日 22:14:08</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 从 44[.]215[.]108[.]109 登录 Cloudflare 的 Salesforce 租户</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 12 日 22:14:09</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 发送了一个 GET 请求，以获取 Cloudflare Salesforce 租户 /services/data/v58.0/sobjects/ 中的对象列表：</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 13 日 19:33:02</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 从 44[.]215[.]108[.]109 登录 Cloudflare 的 Salesforce 租户</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 13 日 19:33:03</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 发送了一个 GET 请求，以获取 Cloudflare Salesforce 租户 /services/data/v58.0/sobjects/ 中的对象列表：</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 13 日 19:33:07 和 19:33:09</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 发送了 GET 请求，以获取 Cloudflare Salesforce 租户/services/data/v58.0/sobjects/Case/describe/ 个案的元数据信息：</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 13 日 19:33:11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>首次观察到 GRUB1 执行 Salesforce 查询：从 44[.]215[.]108[.]109 对个案对象进行的广泛查询。这产生了最早且规模较大的数据响应之一，与通过批量记录检索进行侦察的结果一致</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 0:17:40</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 列出可用对象并统计“Account”、“Contact”和“User”对象。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 00:17:47</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 查询了 Cloudflare 的 Salesforce 租户中的 Account 表：在 Cloudflare 的 Salesforce 租户上执行“SELECT COUNT() FROM Account”查询</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 00:17:51</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 查询了 Cloudflare 的 Salesforce 租户中的联系人表：在 Cloudflare 的 Salesforce 租户上执行“SELECT COUNT() FROM Contact”查询</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 00:18:00</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 查询了 Cloudflare 的 Salesforce 租户中的 User 表：在 Cloudflare 的 Salesforce 租户上执行“SELECT COUNT() FROM User”查询</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 04:34:39</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 在 Cloudflare 的 Salesforce 租户中查询了“CaseTeamMemberHistory”：“SELECT Id, IsDeleted, Name, CreatedDate, CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp, LastViewedDate, LastReferencedDate, Case__c FROM CaseTeamMemberHistory__c LIMIT 5000”</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 11:09:14</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 在 Cloudflare 的 Salesforce 租户中查询了 Organization 表： “SELECT Id, Name, OrganizationType, InstanceName, IsSandbox FROM Organization LIMIT 1”</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 11:09:21</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 查询了 Cloudflare 的 Salesforce 租户中的 User 表： “SELECT Id, Username, Email, FirstName, LastName, Name, Title, CompanyName, Department, Division, Phone, MobilePhone, IsActive, LastLoginDate, CreatedDate, LastModifiedDate, TimeZoneSidKey, LocaleSidKey, LanguageLocaleKey, EmailEncodingKey FROM User WHERE IsActive = :x ORDER BY LastLoginDate DESC NULLS LAST LIMIT 20”</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 14 日 11:09:22</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 向 Cloudflare 的 Salesforce 租户中的 LimitSnapshot 发送了 GET 请求：/services/data/v58.0/limits/</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 16 日 19:26:37</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 从 44[.]215[.]108[.]109 登录 Cloudflare 的 Salesforce 租户</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 08 月 16 日 19:28:08</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 在 Cloudflare 的 Salesforce 租户中查询 Cases 表：SELECT COUNT() FROM Case</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 17 日 11:11:23</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 从 208[.]68[.]36[.]90 登录 Cloudflare 的 Salesforce 租户</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 17 日 11:11:55</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 查询 Cloudflare Salesforce 租户中的 Case 表： SELECT COUNT() FROM Case</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 17 日 11:11:56－11:15:18</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 利用来自 208[.]68[.]36[.]90 的 Salesforce BulkAPI 2.0 来 执行 一项作业，以窃取 Cases 对象数据。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 8 月 17 日 11:15:42</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GRUB1 利用来自 208[.]68[.]36[.]90 的 Salesforce Bulk API 2.0 来删除用于窃取 Cases 对象的最近执行作业</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

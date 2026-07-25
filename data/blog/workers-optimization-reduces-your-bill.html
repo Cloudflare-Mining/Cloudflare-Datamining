@@ -1,93 +1,61 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73dygAhS9763wLeQh24KQb/e66246cf1145aa84ffe53a598122982d/image2-20.png" alt="A Workers optimization that reduces your bill" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>Recently, we made an optimization to the Cloudflare Workers runtime which reduces the amount of time Workers need to spend in memory. We're passing the savings on to you for all your Unbound Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="background">Background</h3>
-		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Workers are often used to implement HTTP proxies, where JavaScript is used to rewrite an HTTP request before sending it on to an origin server, and then to rewrite the response before sending it back to the client. You can implement any kind of rewrite in a Worker, including both rewriting headers and bodies.</p>
-	<p>Many Workers, though, do not actually modify the response body, but instead simply allow the bytes to pass through from the origin to the client. In this case, the Worker's application code has finished executing as soon as the response headers are sent, before the body bytes have passed through. Historically, the Worker was nevertheless considered to be "in use" until the response body had fully finished streaming.</p>
-	<p>For billing purposes, under the Workers Unbound pricing model, we charge duration-memory (gigabyte-seconds) for the time in which the Worker is in use.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-change">The change</h3>
-		<a href="https://blog.cloudflare.com/#the-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On December 15-16, we made a change to the way we handle requests that are streaming through the response without modifying the content. This change means that we can mark application code as “idle” as soon as the response headers are returned.</p>
-	<p>Since no further application code will execute on behalf of the request, the system does not need to keep the request state in memory – it only needs to track the low-level native sockets and pump the bytes through. So now, during this time, the Worker will be considered idle, and could even be evicted before the stream completes (though this would be unlikely unless the stream lasts for a very long time).</p>
-	<p>Visualized it looks something like this:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7djse9b1v1MjBGgpym4A5F/fd4d66770445f7fa4978b88bf0a50810/DES-4045-Diagram.png" alt="A sequence diagram with before and after that shows that after the change, Workers are considered “idle” as soon as the response headers have been forwarded from the origin to the client." class="kg-image" width="1200" height="732" loading="lazy">
-
-	</figure>
-	<p>As a result of this change, we've seen that the time a Worker is considered "in use" by any particular request has dropped by an average of 70%. Of course, this number varies a lot depending on the details of each Worker. Some may see no benefit, others may see an even larger benefit.</p>
-	<p>This change is totally invisible to the application. To any external observer, everything behaves as it did before. But, since the system now considers a Worker to be idle during response streaming, the response streaming time will no longer be billed. So, if you saw a drop in your bill, this is why!</p>
-	<div class="flex anchor relative">
-		<h3 id="but-it-doesnt-stop-there">But it doesn’t stop there!</h3>
-		<a href="https://blog.cloudflare.com/#but-it-doesnt-stop-there" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The change also applies to a few other frequently used scenarios, namely Websocket proxying, reading from the cache and streaming from KV.</p>
-	<p><b>WebSockets</b>: once a Worker has arranged to proxy through a WebSocket, as long as it isn't handling individual messages in your Worker code, the Worker does not remain in use during the proxying. The change applies to regular stateless Workers, but not to Durable Objects, which are not usually used for proxying.</p>
-	<pre class="language-typescript"><code class="language-typescript">export default {
-  async fetch(request: Request) {
-    //Do anything before
-    const upgradeHeader = request.headers.get('Upgrade')
-    if (upgradeHeader || upgradeHeader === 'websocket') {
-      return await fetch(request)
-    }
-    //Or with other requests
-  }
-}</code></pre>
-	<p><b>Reading from Cache</b>: If you return the response from a <code>cache.match</code> call, the Worker is considered idle as soon as the response headers are returned.</p>
-	<pre class="language-typescript"><code class="language-typescript">export default {
-  async fetch(request: Request) {
-    let response = await caches.default.match('https://example.com')
-    if (response) {
-      return response
-    }
-    // get/create response and put into cache
-  }
-}</code></pre>
-	<p><b>Streaming from KV</b>: And lastly, when you stream from KV. This one is a bit trickier to get right, because often people retrieve the value from KV as a string, or JSON object and then create a response with that value. But if you fetch the value as a stream, as done in the example below, you can create a Response with the ReadableStream.</p>
-	<pre class="language-typescript"><code class="language-typescript">interface Env {
-  MY_KV_NAME: KVNamespace
-}
-
-export default {
-  async fetch(request: Request, env: Env) {
-    const readableStream = await env.MY_KV_NAME.get('hello_world.pdf', { type: 'stream' })
-    if (readableStream) {
-      return new Response(readableStream, { headers: { 'content-type': 'application/pdf' } })
-    }
-  },
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="interested-in-workers-unbound">Interested in Workers Unbound?</h3>
-		<a href="https://blog.cloudflare.com/#interested-in-workers-unbound" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you are already using Unbound, your bill will have automatically dropped already.</p>
-	<p>Now is a great time to check out Unbound if you haven’t already, especially since recently, we’ve also <a href="https://blog.cloudflare.com/workers-now-even-more-unbound">removed the egress fees</a>. Unbound allows you to build more complex workloads on our platform and only pay for what you use.</p>
-	<p>We are always looking for opportunities to make Workers better. Often that improvement takes the form of powerful new features such as the soon-to-be released <a href="https://blog.cloudflare.com/introducing-worker-services">Service Bindings</a> and, of course, <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">performance enhancements</a>. This time, we are delighted to make Cloudflare Workers even cheaper than they already were.</p>
+<p>Recently, we made an optimization to the Cloudflare Workers runtime which reduces the amount of time Workers need to spend in memory. We're passing the savings on to you for all your Unbound Workers.</p>
+<h3>Background</h3>
+<p>Workers are often used to implement HTTP proxies, where JavaScript is used to rewrite an HTTP request before sending it on to an origin server, and then to rewrite the response before sending it back to the client. You can implement any kind of rewrite in a Worker, including both rewriting headers and bodies.</p>
+<p>Many Workers, though, do not actually modify the response body, but instead simply allow the bytes to pass through from the origin to the client. In this case, the Worker's application code has finished executing as soon as the response headers are sent, before the body bytes have passed through. Historically, the Worker was nevertheless considered to be "in use" until the response body had fully finished streaming.</p>
+<p>For billing purposes, under the Workers Unbound pricing model, we charge duration-memory (gigabyte-seconds) for the time in which the Worker is in use.</p>
+<h3>The change</h3>
+<p>On December 15-16, we made a change to the way we handle requests that are streaming through the response without modifying the content. This change means that we can mark application code as “idle” as soon as the response headers are returned.</p>
+<p>Since no further application code will execute on behalf of the request, the system does not need to keep the request state in memory – it only needs to track the low-level native sockets and pump the bytes through. So now, during this time, the Worker will be considered idle, and could even be evicted before the stream completes (though this would be unlikely unless the stream lasts for a very long time).</p>
+<p>Visualized it looks something like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="436" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=715&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=640&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=715&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=750&amp;h=457&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=828&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=1080&amp;h=659&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=1280&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=1430&amp;h=872&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A sequence diagram with before and after that shows that after the change, Workers are considered “idle” as soon as the response headers have been forwarded from the origin to the client." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VFSY1DNAAM1P9D0GEXNN.png&amp;w=1200&amp;h=732&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="732" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="436" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>As a result of this change, we've seen that the time a Worker is considered "in use" by any particular request has dropped by an average of 70%. Of course, this number varies a lot depending on the details of each Worker. Some may see no benefit, others may see an even larger benefit.</p>
+<p>This change is totally invisible to the application. To any external observer, everything behaves as it did before. But, since the system now considers a Worker to be idle during response streaming, the response streaming time will no longer be billed. So, if you saw a drop in your bill, this is why!</p>
+<h3>But it doesn’t stop there!</h3>
+<p>The change also applies to a few other frequently used scenarios, namely Websocket proxying, reading from the cache and streaming from KV.</p>
+<p><strong>WebSockets</strong>: once a Worker has arranged to proxy through a WebSocket, as long as it isn't handling individual messages in your Worker code, the Worker does not remain in use during the proxying. The change applies to regular stateless Workers, but not to Durable Objects, which are not usually used for proxying.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    //Do anything before</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> upgradeHeader</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Upgrade'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (upgradeHeader </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> upgradeHeader </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'websocket'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    //Or with other requests</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p><strong>Reading from Cache</strong>: If you return the response from a <code>cache.match</code> call, the Worker is considered idle as soon as the response headers are returned.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> caches.default.</span><span class="sk-6f42c1-ffc799">match</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://example.com'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (response) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // get/create response and put into cache</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><strong>Streaming from KV</strong>: And lastly, when you stream from KV. This one is a bit trickier to get right, because often people retrieve the value from KV as a string, or JSON object and then create a response with that value. But if you fetch the value as a stream, as done in the example below, you can create a Response with the ReadableStream.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  MY_KV_NAME</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> KVNamespace</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> readableStream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_KV_NAME</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'hello_world.pdf'</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">'stream'</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (readableStream) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(readableStream, { headers: { </span><span class="sk-032f62-99ffe4">'content-type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'application/pdf'</span><span class="sk-24292e-fff"> } })</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Interested in Workers Unbound?</h3>
+<p>If you are already using Unbound, your bill will have automatically dropped already.</p>
+<p>Now is a great time to check out Unbound if you haven’t already, especially since recently, we’ve also <a href="https://blog.cloudflare.com/workers-now-even-more-unbound">removed the egress fees</a>. Unbound allows you to build more complex workloads on our platform and only pay for what you use.</p>
+<p>We are always looking for opportunities to make Workers better. Often that improvement takes the form of powerful new features such as the soon-to-be released <a href="https://blog.cloudflare.com/introducing-worker-services">Service Bindings</a> and, of course, <a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">performance enhancements</a>. This time, we are delighted to make Cloudflare Workers even cheaper than they already were.</p>

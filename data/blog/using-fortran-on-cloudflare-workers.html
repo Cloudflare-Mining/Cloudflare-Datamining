@@ -1,110 +1,95 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Kn5DGfYh6Y2nW0Gu9H006/3fa8a3395c21daf2334788789216fede/using-fortran-on-cloudflare-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>In April 2020, we blogged about how to get <a href="https://blog.cloudflare.com/cloudflare-workers-now-support-cobol">COBOL running on Cloudflare Workers</a> by compiling to WebAssembly. The ecosystem around WebAssembly has grown significantly since then, and it has become a solid foundation for all types of projects, be they client-side or server-side.</p>
-	<p>As WebAssembly support has grown, more and more languages are able to compile to WebAssembly for execution on servers and in browsers. As Cloudflare Workers uses the V8 engine and supports WebAssembly natively, we’re able to support languages that compile to WebAssembly on the platform.</p>
-	<p>Recently, work on LLVM has enabled Fortran to compile to WebAssembly. So, today, we’re writing about running Fortran code on Cloudflare Workers.</p>
-	<p>Before we dive into how to do this, here’s a little demonstration of number recognition in Fortran. Draw a number from 0 to 9 and Fortran code running somewhere on Cloudflare’s network will predict the number you drew.</p><!--kg-card-begin: html--><iframe src="https://handwritten-digit-classifier.fortran.demos.cloudflare.com/" style="height: 300px"></iframe><!--kg-card-end: html-->
-	<p>This is taken from the wonderful <a href="https://gws.phd/posts/fortran_wasm" target="_blank" rel="noopener noreferrer">Fortran on WebAssembly</a> post but instead of running client-side, the Fortran code is running on Cloudflare Workers. Read on to find out how you can use Fortran on Cloudflare Workers and how that demonstration works.</p>
-	<div class="flex anchor relative">
-		<h3 id="wait-fortran-no-one-uses-that">Wait, Fortran? No one uses that!</h3>
-		<a href="https://blog.cloudflare.com/#wait-fortran-no-one-uses-that" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Not so fast! Or rather, actually pretty darn fast if you’re doing a lot of numerical programming or have scientific data to work with. Fortran <a href="https://en.wikipedia.org/wiki/Fortran#Naming" target="_blank" rel="noopener noreferrer">(originally FORmula TRANslator)</a> is very well suited for scientific workloads because of its native functionality for things like arithmetic and handling large arrays and matrices.</p>
-	<p>If you look at the <a href="https://en.wikipedia.org/wiki/TOP500" target="_blank" rel="noopener noreferrer">ranking</a> of the fastest supercomputers in the world you’ll discover that the measurement of “fast” is based on these supercomputers running a piece of software called <a href="https://en.wikipedia.org/wiki/LINPACK" target="_blank" rel="noopener noreferrer">LINPACK</a> that was originally written in Fortran. LINPACK is designed to help with problems solvable using linear algebra.</p>
-	<p>The <a href="https://en.wikipedia.org/wiki/LINPACK_benchmarks" target="_blank" rel="noopener noreferrer">LINPACK benchmarks</a> use LINPACK to solve an n x n system of linear equations using matrix operations and, in doing so, determine how fast supercomputers are. The code is available in <a href="https://www.netlib.org/benchmark/linpackd" target="_blank" rel="noopener noreferrer">Fortran</a>, <a href="https://www.netlib.org/benchmark/linpackc" target="_blank" rel="noopener noreferrer">C</a> and <a href="https://www.netlib.org/benchmark/linpackjava" target="_blank" rel="noopener noreferrer">Java</a>.</p>
-	<p>A related Fortran package, <a href="https://www.netlib.org/blas" target="_blank" rel="noopener noreferrer">BLAS</a>, also does linear algebra and forms the basis of the number identifying code above. But other Fortran packages are still relevant. Back in 2017, NASA ran a <a href="https://www.bbc.com/news/technology-39803425" target="_blank" rel="noopener noreferrer">competition</a> to make FUN3D (used to perform calculations of airflow over simulated aircraft). <a href="https://fun3d.larc.nasa.gov" target="_blank" rel="noopener noreferrer">FUN3D</a> is written in Fortran.</p>
-	<p>So, although Fortran (or at the time FORTRAN) first came to life in 1957, it’s alive and well and being used widely for scientific applications (there’s even <a href="https://developer.nvidia.com/cuda-fortran" target="_blank" rel="noopener noreferrer">Fortran for CUDA</a>). One particular application left Earth 20 years after Fortran was born: Voyager. The Voyager probes use a combination of <a href="https://www.popularmechanics.com/space/a17991/voyager-1-voyager-2-retiring-engineer" target="_blank" rel="noopener noreferrer">assembly language and Fortran</a> to keep chugging along.</p>
-	<p>But back in our solar system, and back on Region: Earth, you can now use Fortran on Cloudflare Workers. Here’s how.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-to-get-your-fortran-code-running-on-cloudflare-workers">How to get your Fortran code running on Cloudflare Workers</h3>
-		<a href="https://blog.cloudflare.com/#how-to-get-your-fortran-code-running-on-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To make it easy to run your Fortran code on Cloudflare Workers, we created a tool called <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> (translates to smart in French). It uses <a href="https://flang.llvm.org/docs" target="_blank" rel="noopener noreferrer">Flang</a> and <a href="https://emscripten.org" target="_blank" rel="noopener noreferrer">Emscripten</a> under the hood.</p>
-	<p><a href="https://flang.llvm.org/docs" target="_blank" rel="noopener noreferrer">Flang</a> is a frontend in <a href="https://en.wikipedia.org/wiki/LLVM" target="_blank" rel="noopener noreferrer">LLVM</a> and, if you read the <a href="https://gws.phd/posts/fortran_wasm" target="_blank" rel="noopener noreferrer">Fortran on WebAssembly</a> blog post, we currently have to patch <a href="https://en.wikipedia.org/wiki/LLVM" target="_blank" rel="noopener noreferrer">LLVM</a> to work around a few issues.</p>
-	<p><a href="https://emscripten.org" target="_blank" rel="noopener noreferrer">Emscripten</a> is used to compile <a href="https://en.wikipedia.org/wiki/LLVM" target="_blank" rel="noopener noreferrer">LLVM</a> output and produce code that is compatible with Cloudflare Workers.</p>
-	<p>This is all packaged in the <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> Docker image. Let’s see a simple example.</p>
-	<p>add.f90:</p>
-	<pre class="language-bash"><code class="language-bash">SUBROUTINE add(a, b, res)
-    INTEGER, INTENT(IN) :: a, b
-    INTEGER, INTENT(OUT) :: res
-
-    res = a + b
-END</code></pre>
-	<p>Here we defined a subroutine called add that takes <code>a</code> and <code>b</code>, sums them together and places the result in <code>res</code>.</p>
-	<p>Compile with <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a>:</p>
-	<pre class="language-bash"><code class="language-bash">docker run -v $PWD:/input -v $PWD/output:/output xtuc/fortiche --export-func=add add.f90</code></pre>
-	<p>Passing <code>--export-func=add</code> to <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> makes the Fortran <code>add</code> subroutine available to JavaScript.</p>
-	<p>The output folder contains the compiled WebAssembly module and JavaScript from <a href="https://emscripten.org" target="_blank" rel="noopener noreferrer">Emscripten</a>, and a JavaScript endpoint generated by <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a>:</p>
-	<pre class="language-bash"><code class="language-bash">$ ls -lh ./output
-total 84K
--rw-r--r-- 1 root root 392 avril 22 12:00 index.mjs
--rw-r--r-- 1 root root 27K avril 22 12:00 out.mjs
--rwxr-xr-x 1 root root 49K avril 22 12:00 out.wasm</code></pre>
-	<p>And finally the Cloudflare Worker:</p>
-	<pre class="language-js"><code class="language-js">// Import what Fortiche generated
-import {load} from "../output/index.mjs"
-
-export default {
-    async fetch(request: Request): Promise&lt;Response&gt; {
-        // Load the Fortran program
-        const program = await load();
-
-        // Allocate space in memory for the arguments and result
-        const aPtr = program.malloc(4);
-        const bPtr = program.malloc(4);
-        const outPtr = program.malloc(4);
-
-        // Set argument values
-        program.HEAP32[aPtr / 4] = 123;
-        program.HEAP32[bPtr / 4] = 321;
-
-        // Run the Fortran add subroutine
-        program.add(aPtr, bPtr, outPtr);
-
-        // Read the result
-        const res = program.HEAP32[outPtr / 4];
-
-        // Free everything
-        program.free(aPtr);
-        program.free(bPtr);
-        program.free(outPtr);
-
-        return Response.json({ res });
-    },
-};</code></pre>
-	<p>Interestingly, the values we pass to Fortran are all pointers, therefore we have to allocate space for each argument and result (the Fortran integer type is four bytes wide), and pass the pointers to the <code>add</code> subroutine.</p>
-	<p>Running the Worker gives us the right answer:</p>
-	<pre class="language-bash"><code class="language-bash">$ curl https://fortran-add.cfdemos.workers.dev
-
-{"res":444}</code></pre>
-	<p>You can find the <a href="https://github.com/cloudflare/fortiche/tree/main/examples/add" target="_blank" rel="noopener noreferrer">full example here</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="handwritten-digit-classifier">Handwritten digit classifier</h3>
-		<a href="https://blog.cloudflare.com/#handwritten-digit-classifier" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PKFBCv6bCWa20pqrFTEnV/58813ef64d5d8a8aa728ba4bcfde6840/image1-2.png" alt="" class="kg-image" width="1688" height="858" loading="lazy">
-
-	</figure>
-	<p>This example is taken from <a href="https://gws.phd/posts/fortran_wasm/#mnist" target="_blank" rel="noopener noreferrer">https://gws.phd/posts/fortran_wasm/#mnist</a>. It relies on the <a href="https://www.netlib.org/blas" target="_blank" rel="noopener noreferrer">BLAS</a> library, which is available in Fortiche with the flag: <code>--with-BLAS-3-12-0</code>.</p>
-	<p>Note that the <a href="https://en.wikipedia.org/wiki/LAPACK" target="_blank" rel="noopener noreferrer">LAPACK</a> library is also available in <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> with the flag: <code>--with-LAPACK-3-12-0</code>.</p>
-	<p>You can try it below:</p><!--kg-card-begin: html--><iframe src="https://handwritten-digit-classifier.fortran.demos.cloudflare.com/" style="height: 300px"></iframe><!--kg-card-end: html-->
-	<p>And you can access the <a href="https://github.com/cloudflare/fortiche/tree/main/examples/handwritten-digit-classifier" target="_blank" rel="noopener noreferrer">source code here</a>.</p>
-	<p>Let us know what you write using Fortran and Cloudflare Workers!</p>
-	<p><code>END</code></p>
+<p>In April 2020, we blogged about how to get <a href="https://blog.cloudflare.com/cloudflare-workers-now-support-cobol">COBOL running on Cloudflare Workers</a> by compiling to WebAssembly. The ecosystem around WebAssembly has grown significantly since then, and it has become a solid foundation for all types of projects, be they client-side or server-side.</p>
+<p>As WebAssembly support has grown, more and more languages are able to compile to WebAssembly for execution on servers and in browsers. As Cloudflare Workers uses the V8 engine and supports WebAssembly natively, we’re able to support languages that compile to WebAssembly on the platform.</p>
+<p>Recently, work on LLVM has enabled Fortran to compile to WebAssembly. So, today, we’re writing about running Fortran code on Cloudflare Workers.</p>
+<p>Before we dive into how to do this, here’s a little demonstration of number recognition in Fortran. Draw a number from 0 to 9 and Fortran code running somewhere on Cloudflare’s network will predict the number you drew.</p>
+<div id="html-block-kc" class="html-block"><iframe src="https://handwritten-digit-classifier.fortran.demos.cloudflare.com/" style="height:300px"></iframe></div>
+<p>This is taken from the wonderful <a href="https://gws.phd/posts/fortran_wasm" target="_blank" rel="noopener noreferrer">Fortran on WebAssembly</a> post but instead of running client-side, the Fortran code is running on Cloudflare Workers. Read on to find out how you can use Fortran on Cloudflare Workers and how that demonstration works.</p>
+<h3>Wait, Fortran? No one uses that!</h3>
+<p>Not so fast! Or rather, actually pretty darn fast if you’re doing a lot of numerical programming or have scientific data to work with. Fortran <a href="https://en.wikipedia.org/wiki/Fortran#Naming" target="_blank" rel="noopener noreferrer">(originally FORmula TRANslator)</a> is very well suited for scientific workloads because of its native functionality for things like arithmetic and handling large arrays and matrices.</p>
+<p>If you look at the <a href="https://en.wikipedia.org/wiki/TOP500" target="_blank" rel="noopener noreferrer">ranking</a> of the fastest supercomputers in the world you’ll discover that the measurement of “fast” is based on these supercomputers running a piece of software called <a href="https://en.wikipedia.org/wiki/LINPACK" target="_blank" rel="noopener noreferrer">LINPACK</a> that was originally written in Fortran. LINPACK is designed to help with problems solvable using linear algebra.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/LINPACK_benchmarks" target="_blank" rel="noopener noreferrer">LINPACK benchmarks</a> use LINPACK to solve an n x n system of linear equations using matrix operations and, in doing so, determine how fast supercomputers are. The code is available in <a href="https://www.netlib.org/benchmark/linpackd" target="_blank" rel="noopener noreferrer">Fortran</a>, <a href="https://www.netlib.org/benchmark/linpackc" target="_blank" rel="noopener noreferrer">C</a> and <a href="https://www.netlib.org/benchmark/linpackjava" target="_blank" rel="noopener noreferrer">Java</a>.</p>
+<p>A related Fortran package, <a href="https://www.netlib.org/blas" target="_blank" rel="noopener noreferrer">BLAS</a>, also does linear algebra and forms the basis of the number identifying code above. But other Fortran packages are still relevant. Back in 2017, NASA ran a <a href="https://www.bbc.com/news/technology-39803425" target="_blank" rel="noopener noreferrer">competition</a> to make FUN3D (used to perform calculations of airflow over simulated aircraft). <a href="https://fun3d.larc.nasa.gov" target="_blank" rel="noopener noreferrer">FUN3D</a> is written in Fortran.</p>
+<p>So, although Fortran (or at the time FORTRAN) first came to life in 1957, it’s alive and well and being used widely for scientific applications (there’s even <a href="https://developer.nvidia.com/cuda-fortran" target="_blank" rel="noopener noreferrer">Fortran for CUDA</a>). One particular application left Earth 20 years after Fortran was born: Voyager. The Voyager probes use a combination of <a href="https://www.popularmechanics.com/space/a17991/voyager-1-voyager-2-retiring-engineer" target="_blank" rel="noopener noreferrer">assembly language and Fortran</a> to keep chugging along.</p>
+<p>But back in our solar system, and back on Region: Earth, you can now use Fortran on Cloudflare Workers. Here’s how.</p>
+<h3>How to get your Fortran code running on Cloudflare Workers</h3>
+<p>To make it easy to run your Fortran code on Cloudflare Workers, we created a tool called <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> (translates to smart in French). It uses <a href="https://flang.llvm.org/docs" target="_blank" rel="noopener noreferrer">Flang</a> and <a href="https://emscripten.org" target="_blank" rel="noopener noreferrer">Emscripten</a> under the hood.</p>
+<p><a href="https://flang.llvm.org/docs" target="_blank" rel="noopener noreferrer">Flang</a> is a frontend in <a href="https://en.wikipedia.org/wiki/LLVM" target="_blank" rel="noopener noreferrer">LLVM</a> and, if you read the <a href="https://gws.phd/posts/fortran_wasm" target="_blank" rel="noopener noreferrer">Fortran on WebAssembly</a> blog post, we currently have to patch <a href="https://en.wikipedia.org/wiki/LLVM" target="_blank" rel="noopener noreferrer">LLVM</a> to work around a few issues.</p>
+<p><a href="https://emscripten.org" target="_blank" rel="noopener noreferrer">Emscripten</a> is used to compile <a href="https://en.wikipedia.org/wiki/LLVM" target="_blank" rel="noopener noreferrer">LLVM</a> output and produce code that is compatible with Cloudflare Workers.</p>
+<p>This is all packaged in the <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> Docker image. Let’s see a simple example.</p>
+<p>add.f90:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SUBROUTINE</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">a,</span><span class="sk-032f62-99ffe4"> b,</span><span class="sk-032f62-99ffe4"> res</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    INTEGER,</span><span class="sk-032f62-99ffe4"> INTENT</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">IN</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">::</span><span class="sk-032f62-99ffe4"> a,</span><span class="sk-032f62-99ffe4"> b</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    INTEGER,</span><span class="sk-032f62-99ffe4"> INTENT</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">OUT</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">::</span><span class="sk-032f62-99ffe4"> res</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    res</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> b</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">END</span></span></code></pre>
 </div>
+<p>Here we defined a subroutine called add that takes <code>a</code> and <code>b</code>, sums them together and places the result in <code>res</code>.</p>
+<p>Compile with <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-24292e-fff"> $PWD</span><span class="sk-032f62-99ffe4">:/input</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-24292e-fff"> $PWD</span><span class="sk-032f62-99ffe4">/output:/output</span><span class="sk-032f62-99ffe4"> xtuc/fortiche</span><span class="sk-005cc5-99ffe4"> --export-func=add</span><span class="sk-032f62-99ffe4"> add.f90</span></span></code></pre>
+</div>
+<p>Passing <code>--export-func=add</code> to <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> makes the Fortran <code>add</code> subroutine available to JavaScript.</p>
+<p>The output folder contains the compiled WebAssembly module and JavaScript from <a href="https://emscripten.org" target="_blank" rel="noopener noreferrer">Emscripten</a>, and a JavaScript endpoint generated by <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span><span class="sk-005cc5-99ffe4"> -lh</span><span class="sk-032f62-99ffe4"> ./output</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">total</span><span class="sk-032f62-99ffe4"> 84K</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-005cc5-ffc799"> 392</span><span class="sk-032f62-99ffe4"> avril</span><span class="sk-005cc5-ffc799"> 22</span><span class="sk-032f62-99ffe4"> 12:00</span><span class="sk-032f62-99ffe4"> index.mjs</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-rw-r--r--</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-032f62-99ffe4"> 27K</span><span class="sk-032f62-99ffe4"> avril</span><span class="sk-005cc5-ffc799"> 22</span><span class="sk-032f62-99ffe4"> 12:00</span><span class="sk-032f62-99ffe4"> out.mjs</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-rwxr-xr-x</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-032f62-99ffe4"> root</span><span class="sk-032f62-99ffe4"> 49K</span><span class="sk-032f62-99ffe4"> avril</span><span class="sk-005cc5-ffc799"> 22</span><span class="sk-032f62-99ffe4"> 12:00</span><span class="sk-032f62-99ffe4"> out.wasm</span></span></code></pre>
+</div>
+<p>And finally the Cloudflare Worker:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Import what Fortiche generated</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {load} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "../output/index.mjs"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Load the Fortran program</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> program</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> load</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Allocate space in memory for the arguments and result</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> aPtr</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> program.</span><span class="sk-6f42c1-ffc799">malloc</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> bPtr</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> program.</span><span class="sk-6f42c1-ffc799">malloc</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> outPtr</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> program.</span><span class="sk-6f42c1-ffc799">malloc</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Set argument values</span></span>
+<span class="line"><span class="sk-24292e-fff">        program.</span><span class="sk-005cc5-fff">HEAP32</span><span class="sk-24292e-fff">[aPtr </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 123</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        program.</span><span class="sk-005cc5-fff">HEAP32</span><span class="sk-24292e-fff">[bPtr </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 321</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Run the Fortran add subroutine</span></span>
+<span class="line"><span class="sk-24292e-fff">        program.</span><span class="sk-6f42c1-ffc799">add</span><span class="sk-24292e-fff">(aPtr, bPtr, outPtr);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Read the result</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> program.</span><span class="sk-005cc5-fff">HEAP32</span><span class="sk-24292e-fff">[outPtr </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799"> 4</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Free everything</span></span>
+<span class="line"><span class="sk-24292e-fff">        program.</span><span class="sk-6f42c1-ffc799">free</span><span class="sk-24292e-fff">(aPtr);</span></span>
+<span class="line"><span class="sk-24292e-fff">        program.</span><span class="sk-6f42c1-ffc799">free</span><span class="sk-24292e-fff">(bPtr);</span></span>
+<span class="line"><span class="sk-24292e-fff">        program.</span><span class="sk-6f42c1-ffc799">free</span><span class="sk-24292e-fff">(outPtr);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({ res });</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>Interestingly, the values we pass to Fortran are all pointers, therefore we have to allocate space for each argument and result (the Fortran integer type is four bytes wide), and pass the pointers to the <code>add</code> subroutine.</p>
+<p>Running the Worker gives us the right answer:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://fortran-add.cfdemos.workers.dev</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span><span class="sk-6f42c1-ffc799">"res"</span><span class="sk-6f42c1-ffc799">:444}</span></span></code></pre>
+</div>
+<p>You can find the <a href="https://github.com/cloudflare/fortiche/tree/main/examples/add" target="_blank" rel="noopener noreferrer">full example here</a>.</p>
+<h3>Handwritten digit classifier</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="363" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=640&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=750&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=828&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=1080&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=1280&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=1430&amp;h=726&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2405 Embedded Image - e42XHF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYY0ZJTAG7BQEQFGZBK4.png&amp;w=1688&amp;h=858&amp;f=webp" data-lightbox-width="1688" data-lightbox-height="858" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="363" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This example is taken from <a href="https://gws.phd/posts/fortran_wasm/#mnist" target="_blank" rel="noopener noreferrer">https://gws.phd/posts/fortran_wasm/#mnist</a>. It relies on the <a href="https://www.netlib.org/blas" target="_blank" rel="noopener noreferrer">BLAS</a> library, which is available in Fortiche with the flag: <code>--with-BLAS-3-12-0</code>.</p>
+<p>Note that the <a href="https://en.wikipedia.org/wiki/LAPACK" target="_blank" rel="noopener noreferrer">LAPACK</a> library is also available in <a href="https://github.com/cloudflare/fortiche" target="_blank" rel="noopener noreferrer">Fortiche</a> with the flag: <code>--with-LAPACK-3-12-0</code>.</p>
+<p>You can try it below:</p>
+<div id="html-block-k51" class="html-block"><iframe src="https://handwritten-digit-classifier.fortran.demos.cloudflare.com/" style="height:300px"></iframe></div>
+<p>And you can access the <a href="https://github.com/cloudflare/fortiche/tree/main/examples/handwritten-digit-classifier" target="_blank" rel="noopener noreferrer">source code here</a>.</p>
+<p>Let us know what you write using Fortran and Cloudflare Workers!</p>
+<p><code>END</code></p>

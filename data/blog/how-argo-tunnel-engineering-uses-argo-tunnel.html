@@ -1,231 +1,178 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6kNMhxd9fAFFv38cxFLYWp/115ec321cf8ba33df9c3d6becb47ae9a/how-argo-tunnel-engineering-uses-argo-tunnel.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Whether you are managing a fleet of machines or sharing a private site from your localhost, Argo Tunnel is here to help. On the Argo Tunnel team we help make origins accessible from the Internet in a secure and seamless manner. We also care deeply about productivity and developer experience for the team, so naturally we want to make sure we have a development environment that is reliable, easy to set up and fast to iterate on.</p>
-	<div class="flex anchor relative">
-		<h2 id="a-brief-history-of-our-development-environment-dev-stack">A brief history of our development environment (dev-stack)</h2>
-		<a href="https://blog.cloudflare.com/#a-brief-history-of-our-development-environment-dev-stack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="docker-compose">Docker compose</h3>
-		<a href="https://blog.cloudflare.com/#docker-compose" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When our development team was still small, we used a docker-compose file to orchestrate the services needed to develop Argo Tunnel. There was no native support for hot reload, so every time an engineer made a change, they had to restart their dev-stack.</p>
-	<p>We could hack around it to hot reload with docker-compose, but when that failed, we had to waste time debugging the internals of Docker. As the team grew, we realized we needed to invest in improving our dev stack.</p>
-	<p>At the same time Cloudflare was in the process of migrating from Marathon to kubernetes (k8s). We set out to find a tool that could detect changes in source code and automatically upgrade pods with new images.</p>
-	<div class="flex anchor relative">
-		<h3 id="skaffold-minikube">Skaffold + Minikube</h3>
-		<a href="https://blog.cloudflare.com/#skaffold-minikube" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Initially <a href="https://skaffold.dev/docs/quickstart" target="_blank" rel="noopener noreferrer">Skaffold</a> seemed to match the criteria. It watches for change in source code, builds new images and deploys applications onto any k8s. Following Skaffold’s tutorial, we picked minikube as the local k8s, but together they didn’t meet our expectations. Port forwarding wasn’t stable, we got frequent connections refused or timeout.</p>
-	<p>In addition, iteration time didn’t improve, because spinning up minikube takes a long time and it doesn’t use the host's docker registry and so it can’t take advantage of caching. At this point we considered reverting back to using docker compose, but the k8s ecosystem is booming, so we did some more research.</p>
-	<div class="flex anchor relative">
-		<h3 id="tilt-docker-for-mac-k8s">Tilt + Docker for mac k8s</h3>
-		<a href="https://blog.cloudflare.com/#tilt-docker-for-mac-k8s" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Eventually we found a great <a href="https://docs.tilt.dev/choosing_clusters.html" target="_blank" rel="noopener noreferrer">blog post</a> from Tilt comparing different options for local k8s, and they seem to be solving the exact problem we are having. Tilt is a tool that makes local development on k8s easier. It detects changes in local sources and updates your deployment accordingly.</p>
-	<p>In addition, it supports live updates without having to rebuild containers, a process that used to take around 20 minutes. With live updates, we can copy the newest source into the container, run <code>cargo build</code> within the container, and restart the service without building a new image. Following Tilt’s blog post, we switched to Docker for Mac’s built-in k8s. Combining Tilt and Docker for Mac k8s, we finally have a development environment that meets our needs.</p>
-	<p>Rust services that could take 20 minutes to rebuild now take less than a minute.</p>
-	<div class="flex anchor relative">
-		<h2 id="collaborating-with-a-distributed-team">Collaborating with a distributed team</h2>
-		<a href="https://blog.cloudflare.com/#collaborating-with-a-distributed-team" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We reached a much happier state with our dev-stack, but one problem remained: we needed a way to share it. As our teams became distributed with people in Austin, Lisbon and Seattle, we needed better ways to help each other.</p>
-	<p>One day, I was helping our newest member understand an error observed in <code>cloudflared</code>, Argo Tunnel’s command line interface (CLI) client. I knew the error could either originate from the backend service or a mock API gateway service, but I couldn’t tell for sure without looking at logs.</p>
-	<p>To get them, I had to ask our new teammate to manually send me the logs of the two services. By the time I discovered the source of the error, reviewed the deployment manifest, and determined the error was caused by a secret set as an empty string, two full hours had elapsed!</p>
-	<p>I could have solved this in minutes if I had remote access to her development environment. That’s exactly what Argo Tunnel can do! Argo Tunnel provides remote access to development environments by creating secure outbound-only connections to Cloudflare’s edge network from a resource exposing it to the Internet. That model helps protect servers and resources from being vulnerable to attack by an exposed IP address.</p>
-	<p>I can use Argo Tunnel to expose a remote dev environment, but the information stored is sensitive. Once exposed, we needed a way to prevent users from reaching it unless they are an authenticated member of my team. Cloudflare Access solves that challenge. Access sits in front of the hostname powered by Argo Tunnel and checks for identity on every request. I can combine both services to share the dev-stack details with the rest of the team in a secure deployment.</p>
-	<p>The built-in k8s dashboard gives a great overview of the dev-stack, with the list of pods, deployments, services, config maps, secrets, etc. It also allows us to inspect pod logs and exec into a container. By default, it is secured by a token that changes every time the service restarts. To avoid the hassle of distributing the service token to everyone on the team, we wrote a simple reverse proxy that injects the service token in the authorization header before forwarding requests to the dashboard service.</p>
-	<p>Then we run Argo Tunnel as a sidecar to this reverse proxy, so it is accessible from the Internet. Finally, to make sure no random person can see our dashboard, we put an Access policy that only allows team members to access the hostname.</p>
-	<p>The request flow is eyeball -&gt; Access -&gt; Argo Tunnel -&gt; reverse proxy -&gt; dashboard service</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5WXj2BDFGXX2TzlcH5b5y0/6ec84bb848e272a0619d39eb468988dc/image5-3.png" alt="" class="kg-image" width="1001" height="261" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="working-example">Working example</h2>
-		<a href="https://blog.cloudflare.com/#working-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Your team can use the same model to develop remotely. Here’s how to get started.</p>
-	<ol>
-		<li>
-			<p>Start a local k8s cluster. <a href="https://docs.tilt.dev/choosing_clusters.html" target="_blank" rel="noopener noreferrer">https://docs.tilt.dev/choosing_clusters.html</a> offers great advice in choosing a local cluster based on your OS and experience with k8s</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3MAKtp7Q2gNCiC4o60KyaX/1455eca1f8f75c44a040632988503f5a/image3-7.png" alt="" class="kg-image" width="1999" height="1263" loading="lazy">
-
-	</figure>
-	<p>2. Enable dashboard service:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aiXLesCpLni724ZNznPkp/411535dcd0afab9a76ce5563ee63ac3d/image2-8.png" alt="" class="kg-image" width="1758" height="494" loading="lazy">
-
-	</figure>
-	<p>3. Create a reverse proxy that will inject the service token of the kubernetes-dashboard service account in the Authorization header before forwarding requests to kubernetes dashboard service</p>
-	<pre class="language-go"><code class="language-go">package main
- 
-import (
-   "crypto/tls"
-   "fmt"
-   "net/http"
-   "net/http/httputil"
-   "net/url"
-   "os"
-)
- 
-func main() {
-   config, err := loadConfigFromEnv()
-   if err != nil {
-       panic(err)
-   }
-   reverseProxy := httputil.NewSingleHostReverseProxy(config.proxyURL)
-   // The default Director builds the request URL. We want our custom Director to add Authorization, in
-   // addition to building the URL
-   singleHostDirector := reverseProxy.Director
-   reverseProxy.Director = func(r *http.Request) {
-       singleHostDirector(r)
-       r.Header.Add("Authorization", fmt.Sprintf("Bearer %s", config.token))
-       fmt.Println("request header", r.Header)
-       fmt.Println("request host", r.Host)
-       fmt.Println("request ULR", r.URL)
-   }
-   reverseProxy.Transport = &amp;http.Transport{
-       TLSClientConfig: &amp;tls.Config{
-           InsecureSkipVerify: true,
-       },
-   }
-   server := http.Server{
-       Addr:    config.listenAddr,
-       Handler: reverseProxy,
-   }
-   server.ListenAndServe()
-}
- 
-type config struct {
-   listenAddr string
-   proxyURL   *url.URL
-   token      string
-}
- 
-func loadConfigFromEnv() (*config, error) {
-   listenAddr, err := requireEnv("LISTEN_ADDRESS")
-   if err != nil {
-       return nil, err
-   }
-   proxyURLStr, err := requireEnv("DASHBOARD_PROXY_URL")
-   if err != nil {
-       return nil, err
-   }
-   proxyURL, err := url.Parse(proxyURLStr)
-   if err != nil {
-       return nil, err
-   }
-   token, err := requireEnv("DASHBOARD_TOKEN")
-   if err != nil {
-       return nil, err
-   }
-   return &amp;config{
-       listenAddr: listenAddr,
-       proxyURL:   proxyURL,
-       token:      token,
-   }, nil
-}
- 
-func requireEnv(key string) (string, error) {
-   result := os.Getenv(key)
-   if result == "" {
-       return "", fmt.Errorf("%v not provided", key)
-   }
-   return result, nil
-}
-</code></pre>
-	<p>4. Create an Argo Tunnel sidecar to expose this reverse proxy</p>
-	<pre class="language-yaml"><code class="language-yaml">apiVersion: apps/v1
-kind: Deployment
-metadata:
- name: dashboard-auth-proxy
- namespace: kubernetes-dashboard
- labels:
-   app: dashboard-auth-proxy
-spec:
- replicas: 1
- selector:
-   matchLabels:
-     app: dashboard-auth-proxy
- template:
-   metadata:
-     labels:
-       app: dashboard-auth-proxy
-   spec:
-     containers:
-       - name: dashboard-tunnel
-         # Image from https://hub.docker.com/r/cloudflare/cloudflared
-         image: cloudflare/cloudflared:2020.8.0
-         command: ["cloudflared", "tunnel"]
-         ports:
-           - containerPort: 5000
-         env:
-           - name: TUNNEL_URL
-             value: "http://localhost:8000"
-           - name: NO_AUTOUPDATE
-             value: "true"
-           - name: TUNNEL_METRICS
-             value: "localhost:5000"
-       # dashboard-proxy is a proxy that injects the dashboard token into Authorization header before forwarding
-       # the request to dashboard_proxy service
-       - name: dashboard-auth-proxy
-         image: dashboard-auth-proxy
-         ports:
-           - containerPort: 8000
-         env:
-           - name: LISTEN_ADDRESS
-             value: localhost:8000
-           - name: DASHBOARD_PROXY_URL
-             value: https://kubernetes-dashboard
-           - name: DASHBOARD_TOKEN
-             valueFrom:
-               secretKeyRef:
-                 name: ${TOKEN_NAME}
-                 key: token</code></pre>
-	<p>5. Find out the URL to access your dashboard from Tilt’s UI</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3aubLRXDHG7YRQDWir8wYd/216a31d185d112b6997b4a0c59ec4359/image1-17.png" alt="" class="kg-image" width="1999" height="959" loading="lazy">
-
-	</figure>
-	<p>6. Share the URL with your collaborators so they can access your dashboard anywhere they are through the tunnel!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/61Z1uIFPgr41mOw524Z0tC/ac3cf2116f14d74394b173061f834808/image4-7.png" alt="" class="kg-image" width="1999" height="1378" loading="lazy">
-
-	</figure>
-	<p>You can find the source code for the example in <a href="https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard</a></p>
-	<p>If this sounds like a team you want to be on, we are <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">hiring</a>!</p>
+<p>Whether you are managing a fleet of machines or sharing a private site from your localhost, Argo Tunnel is here to help. On the Argo Tunnel team we help make origins accessible from the Internet in a secure and seamless manner. We also care deeply about productivity and developer experience for the team, so naturally we want to make sure we have a development environment that is reliable, easy to set up and fast to iterate on.</p>
+<h2>A brief history of our development environment (dev-stack)</h2>
+<h3>Docker compose</h3>
+<p>When our development team was still small, we used a docker-compose file to orchestrate the services needed to develop Argo Tunnel. There was no native support for hot reload, so every time an engineer made a change, they had to restart their dev-stack.</p>
+<p>We could hack around it to hot reload with docker-compose, but when that failed, we had to waste time debugging the internals of Docker. As the team grew, we realized we needed to invest in improving our dev stack.</p>
+<p>At the same time Cloudflare was in the process of migrating from Marathon to kubernetes (k8s). We set out to find a tool that could detect changes in source code and automatically upgrade pods with new images.</p>
+<h3>Skaffold + Minikube</h3>
+<p>Initially <a href="https://skaffold.dev/docs/quickstart" target="_blank" rel="noopener noreferrer">Skaffold</a> seemed to match the criteria. It watches for change in source code, builds new images and deploys applications onto any k8s. Following Skaffold’s tutorial, we picked minikube as the local k8s, but together they didn’t meet our expectations. Port forwarding wasn’t stable, we got frequent connections refused or timeout.</p>
+<p>In addition, iteration time didn’t improve, because spinning up minikube takes a long time and it doesn’t use the host's docker registry and so it can’t take advantage of caching. At this point we considered reverting back to using docker compose, but the k8s ecosystem is booming, so we did some more research.</p>
+<h3>Tilt + Docker for mac k8s</h3>
+<p>Eventually we found a great <a href="https://docs.tilt.dev/choosing_clusters.html" target="_blank" rel="noopener noreferrer">blog post</a> from Tilt comparing different options for local k8s, and they seem to be solving the exact problem we are having. Tilt is a tool that makes local development on k8s easier. It detects changes in local sources and updates your deployment accordingly.</p>
+<p>In addition, it supports live updates without having to rebuild containers, a process that used to take around 20 minutes. With live updates, we can copy the newest source into the container, run <code>cargo build</code> within the container, and restart the service without building a new image. Following Tilt’s blog post, we switched to Docker for Mac’s built-in k8s. Combining Tilt and Docker for Mac k8s, we finally have a development environment that meets our needs.</p>
+<p>Rust services that could take 20 minutes to rebuild now take less than a minute.</p>
+<h2>Collaborating with a distributed team</h2>
+<p>We reached a much happier state with our dev-stack, but one problem remained: we needed a way to share it. As our teams became distributed with people in Austin, Lisbon and Seattle, we needed better ways to help each other.</p>
+<p>One day, I was helping our newest member understand an error observed in <code>cloudflared</code>, Argo Tunnel’s command line interface (CLI) client. I knew the error could either originate from the backend service or a mock API gateway service, but I couldn’t tell for sure without looking at logs.</p>
+<p>To get them, I had to ask our new teammate to manually send me the logs of the two services. By the time I discovered the source of the error, reviewed the deployment manifest, and determined the error was caused by a secret set as an empty string, two full hours had elapsed!</p>
+<p>I could have solved this in minutes if I had remote access to her development environment. That’s exactly what Argo Tunnel can do! Argo Tunnel provides remote access to development environments by creating secure outbound-only connections to Cloudflare’s edge network from a resource exposing it to the Internet. That model helps protect servers and resources from being vulnerable to attack by an exposed IP address.</p>
+<p>I can use Argo Tunnel to expose a remote dev environment, but the information stored is sensitive. Once exposed, we needed a way to prevent users from reaching it unless they are an authenticated member of my team. Cloudflare Access solves that challenge. Access sits in front of the hostname powered by Argo Tunnel and checks for identity on every request. I can combine both services to share the dev-stack details with the rest of the team in a secure deployment.</p>
+<p>The built-in k8s dashboard gives a great overview of the dev-stack, with the list of pods, deployments, services, config maps, secrets, etc. It also allows us to inspect pod logs and exec into a container. By default, it is secured by a token that changes every time the service restarts. To avoid the hassle of distributing the service token to everyone on the team, we wrote a simple reverse proxy that injects the service token in the authorization header before forwarding requests to the dashboard service.</p>
+<p>Then we run Argo Tunnel as a sidecar to this reverse proxy, so it is accessible from the Internet. Finally, to make sure no random person can see our dashboard, we put an Access policy that only allows team members to access the hostname.</p>
+<p>The request flow is eyeball -&gt; Access -&gt; Argo Tunnel -&gt; reverse proxy -&gt; dashboard service</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="186" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=715&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=640&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=715&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=750&amp;h=195&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=828&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=1080&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=1280&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=1430&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How Argo Tunnel engineering uses Argo Tunnel Embedded Image - CaQS6a" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47GT4VJMGC0REESPEWNXAH.png&amp;w=1001&amp;h=261&amp;f=webp" data-lightbox-width="1001" data-lightbox-height="261" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="186" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>Working example</h2>
+<p>Your team can use the same model to develop remotely. Here’s how to get started.</p>
+<ol>
+	<li>Start a local k8s cluster. <a href="https://docs.tilt.dev/choosing_clusters.html" target="_blank" rel="noopener noreferrer">https://docs.tilt.dev/choosing_clusters.html</a> offers great advice in choosing a local cluster based on your OS and experience with k8s</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="452" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=715&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=640&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=715&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=750&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=828&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=1080&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=1280&amp;h=809&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=1430&amp;h=904&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How Argo Tunnel engineering uses Argo Tunnel Embedded Image - vbamip" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z3DFVSMY8EMD1BGMKRN1.png&amp;w=1920&amp;h=1213&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1213" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="452" class="pt-portable-image-media"></div>
+</figure>
+<p>2. Enable dashboard service:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="201" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=715&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=640&amp;h=180&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=715&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=750&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=828&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=1080&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=1280&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=1430&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How Argo Tunnel engineering uses Argo Tunnel Embedded Image - 9j5CTK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NTWXX79PFRQ2YDDY3BNE.png&amp;w=1758&amp;h=494&amp;f=webp" data-lightbox-width="1758" data-lightbox-height="494" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="201" class="pt-portable-image-media"></div>
+</figure>
+<p>3. Create a reverse proxy that will inject the service token of the kubernetes-dashboard service account in the Authorization header before forwarding requests to kubernetes dashboard service</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">package</span><span class="sk-6f42c1-ffc799"> main</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "</span><span class="sk-6f42c1-ffc799">crypto/tls</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "</span><span class="sk-6f42c1-ffc799">fmt</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "</span><span class="sk-6f42c1-ffc799">net/http</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "</span><span class="sk-6f42c1-ffc799">net/http/httputil</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "</span><span class="sk-6f42c1-ffc799">net/url</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   "</span><span class="sk-6f42c1-ffc799">os</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-24292e-fff">   config, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-6f42c1-ffc799"> loadConfigFromEnv</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       panic</span><span class="sk-24292e-fff">(err)</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">   reverseProxy </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> httputil.</span><span class="sk-6f42c1-ffc799">NewSingleHostReverseProxy</span><span class="sk-24292e-fff">(config.proxyURL)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // The default Director builds the request URL. We want our custom Director to add Authorization, in</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // addition to building the URL</span></span>
+<span class="line"><span class="sk-24292e-fff">   singleHostDirector </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> reverseProxy.Director</span></span>
+<span class="line"><span class="sk-24292e-fff">   reverseProxy.Director </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> func</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">r</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-6f42c1-ffc799">http</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       singleHostDirector</span><span class="sk-24292e-fff">(r)</span></span>
+<span class="line"><span class="sk-24292e-fff">       r.Header.</span><span class="sk-6f42c1-ffc799">Add</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Authorization"</span><span class="sk-24292e-fff">, fmt.</span><span class="sk-6f42c1-ffc799">Sprintf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Bearer </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, config.token))</span></span>
+<span class="line"><span class="sk-24292e-fff">       fmt.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"request header"</span><span class="sk-24292e-fff">, r.Header)</span></span>
+<span class="line"><span class="sk-24292e-fff">       fmt.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"request host"</span><span class="sk-24292e-fff">, r.Host)</span></span>
+<span class="line"><span class="sk-24292e-fff">       fmt.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"request ULR"</span><span class="sk-24292e-fff">, r.URL)</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">   reverseProxy.Transport </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">http</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Transport</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">       TLSClientConfig: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">tls</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Config</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">           InsecureSkipVerify: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">       },</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">   server </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-6f42c1-ffc799"> http</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Server</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">       Addr:    config.listenAddr,</span></span>
+<span class="line"><span class="sk-24292e-fff">       Handler: reverseProxy,</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">   server.</span><span class="sk-6f42c1-ffc799">ListenAndServe</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> config</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">   listenAddr </span><span class="sk-d73a49-a0a0a0">string</span></span>
+<span class="line"><span class="sk-24292e-fff">   proxyURL   </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-6f42c1-ffc799">url</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">URL</span></span>
+<span class="line"><span class="sk-24292e-fff">   token      </span><span class="sk-d73a49-a0a0a0">string</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> loadConfigFromEnv</span><span class="sk-24292e-fff">() (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-6f42c1-ffc799">config</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">error</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">   listenAddr, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-6f42c1-ffc799"> requireEnv</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"LISTEN_ADDRESS"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff">, err</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">   proxyURLStr, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-6f42c1-ffc799"> requireEnv</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"DASHBOARD_PROXY_URL"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff">, err</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">   proxyURL, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> url.</span><span class="sk-6f42c1-ffc799">Parse</span><span class="sk-24292e-fff">(proxyURLStr)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff">, err</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">   token, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-6f42c1-ffc799"> requireEnv</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"DASHBOARD_TOKEN"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff">, err</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">config</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">       listenAddr: listenAddr,</span></span>
+<span class="line"><span class="sk-24292e-fff">       proxyURL:   proxyURL,</span></span>
+<span class="line"><span class="sk-24292e-fff">       token:      token,</span></span>
+<span class="line"><span class="sk-24292e-fff">   }, </span><span class="sk-005cc5-fff">nil</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> requireEnv</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">key</span><span class="sk-d73a49-a0a0a0"> string</span><span class="sk-24292e-fff">) (</span><span class="sk-d73a49-a0a0a0">string</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">error</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">   result </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> os.</span><span class="sk-6f42c1-ffc799">Getenv</span><span class="sk-24292e-fff">(key)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> result </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">, fmt.</span><span class="sk-6f42c1-ffc799">Errorf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-fff">%v</span><span class="sk-032f62-99ffe4"> not provided"</span><span class="sk-24292e-fff">, key)</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-24292e-fff"> result, </span><span class="sk-005cc5-fff">nil</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
 </div>
+<p>4. Create an Argo Tunnel sidecar to expose this reverse proxy</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-22863a-ffc799">apiVersion</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">apps/v1</span></span>
+<span class="line"><span class="sk-22863a-ffc799">kind</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">Deployment</span></span>
+<span class="line"><span class="sk-22863a-ffc799">metadata</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799"> name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dashboard-auth-proxy</span></span>
+<span class="line"><span class="sk-22863a-ffc799"> namespace</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">kubernetes-dashboard</span></span>
+<span class="line"><span class="sk-22863a-ffc799"> labels</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">   app</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dashboard-auth-proxy</span></span>
+<span class="line"><span class="sk-22863a-ffc799">spec</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799"> replicas</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-22863a-ffc799"> selector</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">   matchLabels</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">     app</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dashboard-auth-proxy</span></span>
+<span class="line"><span class="sk-22863a-ffc799"> template</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">   metadata</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">     labels</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">       app</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dashboard-auth-proxy</span></span>
+<span class="line"><span class="sk-22863a-ffc799">   spec</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">     containers</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">       - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dashboard-tunnel</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">         # Image from https://hub.docker.com/r/cloudflare/cloudflared</span></span>
+<span class="line"><span class="sk-22863a-ffc799">         image</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">cloudflare/cloudflared:2020.8.0</span></span>
+<span class="line"><span class="sk-22863a-ffc799">         command</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"cloudflared"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"tunnel"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-22863a-ffc799">         ports</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">containerPort</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5000</span></span>
+<span class="line"><span class="sk-22863a-ffc799">         env</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">TUNNEL_URL</span></span>
+<span class="line"><span class="sk-22863a-ffc799">             value</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"http://localhost:8000"</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">NO_AUTOUPDATE</span></span>
+<span class="line"><span class="sk-22863a-ffc799">             value</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"true"</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">TUNNEL_METRICS</span></span>
+<span class="line"><span class="sk-22863a-ffc799">             value</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"localhost:5000"</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">       # dashboard-proxy is a proxy that injects the dashboard token into Authorization header before forwarding</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">       # the request to dashboard_proxy service</span></span>
+<span class="line"><span class="sk-24292e-fff">       - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dashboard-auth-proxy</span></span>
+<span class="line"><span class="sk-22863a-ffc799">         image</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">dashboard-auth-proxy</span></span>
+<span class="line"><span class="sk-22863a-ffc799">         ports</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">containerPort</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">8000</span></span>
+<span class="line"><span class="sk-22863a-ffc799">         env</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">LISTEN_ADDRESS</span></span>
+<span class="line"><span class="sk-22863a-ffc799">             value</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">localhost:8000</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">DASHBOARD_PROXY_URL</span></span>
+<span class="line"><span class="sk-22863a-ffc799">             value</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">https://kubernetes-dashboard</span></span>
+<span class="line"><span class="sk-24292e-fff">           - </span><span class="sk-22863a-ffc799">name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">DASHBOARD_TOKEN</span></span>
+<span class="line"><span class="sk-22863a-ffc799">             valueFrom</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">               secretKeyRef</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">                 name</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">${TOKEN_NAME}</span></span>
+<span class="line"><span class="sk-22863a-ffc799">                 key</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">token</span></span></code></pre>
+</div>
+<p>5. Find out the URL to access your dashboard from Tilt’s UI</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="343" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=715&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=640&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=715&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=750&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=828&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=1080&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=1280&amp;h=614&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=1430&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How Argo Tunnel engineering uses Argo Tunnel Embedded Image - LvI2W9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW464QNMCAK3FBYXG7DGDVDA.png&amp;w=1920&amp;h=921&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="921" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="343" class="pt-portable-image-media"></div>
+</figure>
+<p>6. Share the URL with your collaborators so they can access your dashboard anywhere they are through the tunnel!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="493" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=640&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=750&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=828&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=1080&amp;h=745&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=1280&amp;h=883&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=1430&amp;h=986&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How Argo Tunnel engineering uses Argo Tunnel Embedded Image - tAI5SZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47VRC4QWR6KSBVYNNW557Z.png&amp;w=1920&amp;h=1324&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1324" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="493" class="pt-portable-image-media"></div>
+</figure>
+<p>You can find the source code for the example in <a href="https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard" target="_blank" rel="noopener noreferrer">https://github.com/cloudflare/argo-tunnel-examples/tree/master/sharing-k8s-dashboard</a></p>
+<p>If this sounds like a team you want to be on, we are <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">hiring</a>!</p>

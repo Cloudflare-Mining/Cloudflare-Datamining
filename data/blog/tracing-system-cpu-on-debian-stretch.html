@@ -1,712 +1,647 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3g2xrmIfJIGHgqqL9PyoFb/47034cfa218818054ecb8446be9dbbec/tracing-system-cpu-on-debian-stretch.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This is a heavily truncated version of an internal blog post from August 2017. For more recent updates on Kafka, check out </i><a href="https://blog.cloudflare.com/squeezing-the-firehose"><i>another blog post on compression</i></a><i>, where we optimized throughput 4.5x for both disks and network.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6o0r4Jk1oqG6ncMv8xWNb3/08bd0256a7509447b87aa08a7e7305f5/photo-1511971523672-53e6411f62b9" alt="" class="kg-image" width="1080" height="720" loading="lazy">
-
-	</figure>
-	<p>Photo by <a href="https://unsplash.com/@alex_povolyashko?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Alex Povolyashko</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
-	<div class="flex anchor relative">
-		<h3 id="upgrading-our-systems-to-debian-stretch">Upgrading our systems to Debian Stretch</h3>
-		<a href="https://blog.cloudflare.com/#upgrading-our-systems-to-debian-stretch" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For quite some time we've been rolling out Debian Stretch, to the point where we have reached ~10% adoption in our core datacenters. As part of upgarding the underlying OS, we also evaluate the higher level software stack, e.g. taking a look at our ClickHouse and Kafka clusters.</p>
-	<p>During our upgrade of Kafka, we sucessfully migrated two smaller clusters, <code>logs</code> and <code>dns</code>, but ran into issues when attempting to upgrade one of our larger clusters, <code>http</code>.</p>
-	<p>Thankfully, we were able to roll back the <code>http</code> cluster upgrade relatively easily, due to heavy versioning of both the OS and the higher level software stack. If there's one takeaway from this blog post, it's to take advantage of consistent versioning.</p>
-	<div class="flex anchor relative">
-		<h3 id="high-level-differences">High level differences</h3>
-		<a href="https://blog.cloudflare.com/#high-level-differences" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We upgraded one Kafka <code>http</code> node, and it did not go as planned:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/1.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hbPsT1ahBYgS806ztIpG3/070d402c9a5c1d38f257d65d87252f6c/1.png" alt="1" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<p>Having 5x CPU usage was definitely an unexpected outcome. For control datapoints, we compared to a node where no upgrade happened, and an intermediary node that received a software stack upgrade, but not an OS upgrade. Neither of these two nodes experienced the same CPU saturation issues, even though their setups were practically identical.</p>
-	<p>For debugging CPU saturation issues, we call on <code>perf</code> to fish out details:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/2-3.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2FsdAiwWMDh5t6VTTLuSV9/14c09b1b8fc3053a3dd4d49ff467f19a/2-3.png" alt="2-3" class="kg-image" width="1849" height="1640" loading="lazy">
-		</a>
-	</figure>
-	<p><i>The command used was: </i><code><i>perf top -F 99</i></code><i>.</i></p>
-	<div class="flex anchor relative">
-		<h3 id="rcu-stalls">RCU stalls</h3>
-		<a href="https://blog.cloudflare.com/#rcu-stalls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html" target="_blank" rel="noopener noreferrer">read-copy update (RCU)</a> stalls:</p>
-	<pre class="language-bash"><code class="language-bash">[ 4909.110009] logfwdr (26887) used greatest stack depth: 11544 bytes left
-[ 4909.392659] oom_reaper: reaped process 26861 (logfwdr), now anon-rss:8kB, file-rss:0kB, shmem-rss:0kB
-[ 4923.462841] INFO: rcu_sched self-detected stall on CPU
-[ 4923.462843]  13-...: (2 GPs behind) idle=ea7/140000000000001/0 softirq=1/2 fqs=4198
-[ 4923.462845]   (t=8403 jiffies g=110722 c=110721 q=6440)</code></pre>
-	<p>We've seen RCU stalls before, and our (suboptimal) solution was to reboot the machine.</p>
-	<p>However, one can only handle so many reboots before the problem becomes severe enough to warrant a deep dive. During our deep dive, we noticed in <code>dmesg</code> that we had issues allocating memory, while trying to write errors:</p>
-	<pre class="language-bash"><code class="language-bash">Aug 15 21:51:35 myhost kernel: INFO: rcu_sched detected stalls on CPUs/tasks:
-Aug 15 21:51:35 myhost kernel:         26-...: (1881 ticks this GP) idle=76f/140000000000000/0 softirq=8/8 fqs=365
-Aug 15 21:51:35 myhost kernel:         (detected by 0, t=2102 jiffies, g=1837293, c=1837292, q=262)
-Aug 15 21:51:35 myhost kernel: Task dump for CPU 26:
-Aug 15 21:51:35 myhost kernel: java            R  running task    13488  1714   1513 0x00080188
-Aug 15 21:51:35 myhost kernel:  ffffc9000d1f7898 ffffffff814ee977 ffff88103f410400 000000000000000a
-Aug 15 21:51:35 myhost kernel:  0000000000000041 ffffffff82203142 ffffc9000d1f78c0 ffffffff814eea10
-Aug 15 21:51:35 myhost kernel:  0000000000000041 ffffffff82203142 ffff88103f410400 ffffc9000d1f7920
-Aug 15 21:51:35 myhost kernel: Call Trace:
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff814ee977&gt;] ? scrup+0x147/0x160
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff814eea10&gt;] ? lf+0x80/0x90
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff814eecb5&gt;] ? vt_console_print+0x295/0x3c0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b1193&gt;] ? call_console_drivers.isra.22.constprop.30+0xf3/0x100
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b1f51&gt;] ? console_unlock+0x281/0x550
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b2498&gt;] ? vprintk_emit+0x278/0x430
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b27ef&gt;] ? vprintk_default+0x1f/0x30
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff811588df&gt;] ? printk+0x48/0x50
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff810b30ee&gt;] ? dump_stack_print_info+0x7e/0xc0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8142d41f&gt;] ? dump_stack+0x44/0x65
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81162e64&gt;] ? warn_alloc+0x124/0x150
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81163842&gt;] ? __alloc_pages_slowpath+0x932/0xb80
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81163c92&gt;] ? __alloc_pages_nodemask+0x202/0x250
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff811ae9c2&gt;] ? alloc_pages_current+0x92/0x120
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81159d2f&gt;] ? __page_cache_alloc+0xbf/0xd0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8115cdfa&gt;] ? filemap_fault+0x2ea/0x4d0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8136dc95&gt;] ? xfs_filemap_fault+0x45/0xa0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8118b3eb&gt;] ? __do_fault+0x6b/0xd0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff81190028&gt;] ? handle_mm_fault+0xe98/0x12b0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8110756b&gt;] ? __seccomp_filter+0x1db/0x290
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8104fa5c&gt;] ? __do_page_fault+0x22c/0x4c0
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff8104fd10&gt;] ? do_page_fault+0x20/0x70
-Aug 15 21:51:35 myhost kernel:  [&lt;ffffffff819bea02&gt;] ? page_fault+0x22/0x30</code></pre>
-	<p>This suggested that we were logging too many errors, and the actual failure may be earlier in the process. Armed with this hypothesis, we looked at the very beginning of the error chain:</p>
-	<pre class="language-bash"><code class="language-bash">Aug 16 01:14:51 myhost systemd-journald[13812]: Missed 17171 kernel messages
-Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff81171754&gt;] shrink_inactive_list+0x1f4/0x4f0
-Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff8117234b&gt;] shrink_node_memcg+0x5bb/0x780
-Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811725e2&gt;] shrink_node+0xd2/0x2f0
-Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811728ef&gt;] do_try_to_free_pages+0xef/0x310
-Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff81172be5&gt;] try_to_free_pages+0xd5/0x180
-Aug 16 01:14:51 myhost kernel:  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpath+0x31b/0xb80</code></pre>
-	<p>As much as <code>shrink_node</code> may scream "NUMA issues", you're looking primarily at:</p>
-	<pre class="language-bash"><code class="language-bash">Aug 16 01:14:51 myhost systemd-journald[13812]: Missed 17171 kernel messages</code></pre>
-	<p>In addition, we also found memory allocation issues:</p>
-	<pre class="language-bash"><code class="language-bash">[78972.506644] Mem-Info:
-[78972.506653] active_anon:3936889 inactive_anon:371971 isolated_anon:0
-[78972.506653]  active_file:25778474 inactive_file:1214478 isolated_file:2208
-[78972.506653]  unevictable:0 dirty:1760643 writeback:0 unstable:0
-[78972.506653]  slab_reclaimable:1059804 slab_unreclaimable:141694
-[78972.506653]  mapped:47285 shmem:535917 pagetables:10298 bounce:0
-[78972.506653]  free:202928 free_pcp:3085 free_cma:0
-[78972.506660] Node 0 active_anon:8333016kB inactive_anon:989808kB active_file:50622384kB inactive_file:2401416kB unevictable:0kB isolated(anon):0kB isolated(file):3072kB mapped:96624kB dirty:3422168kB writeback:0kB shmem:1261156kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB unstable:0kB pages_scanned:15744 all_unreclaimable? no
-[78972.506666] Node 1 active_anon:7414540kB inactive_anon:498076kB active_file:52491512kB inactive_file:2456496kB unevictable:0kB isolated(anon):0kB isolated(file):5760kB mapped:92516kB dirty:3620404kB writeback:0kB shmem:882512kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB unstable:0kB pages_scanned:9080974 all_unreclaimable? no
-[78972.506671] Node 0 DMA free:15900kB min:100kB low:124kB high:148kB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15996kB managed:15900kB mlocked:0kB slab_reclaimable:0kB slab_unreclaimable:0kB kernel_stack:0kB pagetables:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB
-** 9 printk messages dropped ** [78972.506716] Node 0 Normal: 15336*4kB (UMEH) 4584*8kB (MEH) 2119*16kB (UME) 775*32kB (MEH) 106*64kB (UM) 81*128kB (MH) 29*256kB (UM) 25*512kB (M) 19*1024kB (M) 7*2048kB (M) 2*4096kB (M) = 236080kB
-[78972.506725] Node 1 Normal: 31740*4kB (UMEH) 3879*8kB (UMEH) 873*16kB (UME) 353*32kB (UM) 286*64kB (UMH) 62*128kB (UMH) 28*256kB (MH) 20*512kB (UMH) 15*1024kB (UM) 7*2048kB (UM) 12*4096kB (M) = 305752kB
-[78972.506726] Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
-[78972.506727] Node 1 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
-[78972.506728] 27531091 total pagecache pages
-[78972.506729] 0 pages in swap cache
-[78972.506730] Swap cache stats: add 0, delete 0, find 0/0
-[78972.506730] Free swap  = 0kB
-[78972.506731] Total swap = 0kB
-[78972.506731] 33524975 pages RAM
-[78972.506732] 0 pages HighMem/MovableOnly
-[78972.506732] 546255 pages reserved
-[78972.620129] ntpd: page allocation stalls for 272380ms, order:0, mode:0x24000c0(GFP_KERNEL)
-[78972.620132] CPU: 16 PID: 13099 Comm: ntpd Tainted: G           O    4.9.43-cloudflare-2017.8.4 #1
-[78972.620133] Hardware name: Quanta Computer Inc D51B-2U (dual 1G LoM)/S2B-MB (dual 1G LoM), BIOS S2B_3A21 10/01/2015
-[78972.620136]  ffffc90022f9b6f8 ffffffff8142d668 ffffffff81ca31b8 0000000000000001
-[78972.620138]  ffffc90022f9b778 ffffffff81162f14 024000c022f9b740 ffffffff81ca31b8
-[78972.620140]  ffffc90022f9b720 0000000000000010 ffffc90022f9b788 ffffc90022f9b738
-[78972.620140] Call Trace:
-[78972.620148]  [&lt;ffffffff8142d668&gt;] dump_stack+0x4d/0x65
-[78972.620152]  [&lt;ffffffff81162f14&gt;] warn_alloc+0x124/0x150
-[78972.620154]  [&lt;ffffffff811638f2&gt;] __alloc_pages_slowpath+0x932/0xb80
-[78972.620157]  [&lt;ffffffff81163d42&gt;] __alloc_pages_nodemask+0x202/0x250
-[78972.620160]  [&lt;ffffffff811aeae2&gt;] alloc_pages_current+0x92/0x120
-[78972.620162]  [&lt;ffffffff8115f6ee&gt;] __get_free_pages+0xe/0x40
-[78972.620165]  [&lt;ffffffff811e747a&gt;] __pollwait+0x9a/0xe0
-[78972.620168]  [&lt;ffffffff817c9ec9&gt;] datagram_poll+0x29/0x100
-[78972.620170]  [&lt;ffffffff817b9d48&gt;] sock_poll+0x48/0xa0
-[78972.620172]  [&lt;ffffffff811e7c35&gt;] do_select+0x335/0x7b0</code></pre>
-	<p>This specific error message did seem fun:</p>
-	<pre class="language-bash"><code class="language-bash">[78991.546088] systemd-network: page allocation stalls for 287000ms, order:0, mode:0x24200ca(GFP_HIGHUSER_MOVABLE)</code></pre>
-	<p>You don't want your page allocations to stall for 5 minutes, especially when it's order zero allocation (smallest allocation of one 4 KiB page).</p>
-	<p>Comparing to our control nodes, the only two possible explanations were: a kernel upgrade, and the switch from Debian Jessie to Debian Stretch. We suspected the former, since CPU usage implies a kernel issue. However, just to be safe, we rolled both the kernel back to 4.4.55, and downgraded the affected nodes back to Debian Jessie. This was a reasonable compromise, since we needed to minimize downtime on production nodes.</p>
-	<div class="flex anchor relative">
-		<h3 id="digging-a-bit-deeper">Digging a bit deeper</h3>
-		<a href="https://blog.cloudflare.com/#digging-a-bit-deeper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Keeping servers running on older kernel and distribution is not a viable long term solution. Through bisection, we found the issue lay in the Jessie to Stretch upgrade, contrary to our initial hypothesis.</p>
-	<p>Now that we knew what the problem was, we proceeded to investigate why. With the help from existing automation around <code>perf</code> and Java, we generated the following flamegraphs:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/9.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3fhMCSmQj4IC8MLxPN2d1V/60a107967bdede0ba8c4465090fb6ec4/9.png" alt="9" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/10.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6b523AB48TNUF2jj6OYhxi/9cadde05d8cf89187f182b56c48b3c1b/10.png" alt="10" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<p>At first it looked like Jessie was doing <code>writev</code> instead of <code>sendfile</code>, but the full flamegraphs revealed that Strech was executing <code>sendfile</code> a lot slower.</p>
-	<p>If you highlight <code>sendfile</code>:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/11.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XXts4Hvy58nwa8FG3ZNfT/2e36ce3aa2b111059bcff6a21e3da712/11.png" alt="11" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/12.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/32BB3vFsnbl7ul6b6Aa5MP/10788cfa90962c2034e7be7fc6b76a1f/12.png" alt="12" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<p>And zoomed in:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/13.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75TU9Q58iCRcCKAt6eZxf3/4cdf2f2038bb4e7ef813ba7e21562121/13.png" alt="13" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/14.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/fgUsgL2hUrhJHg3ns5HeE/3b733ecc2ed4ebee2a751394a81804fb/14.png" alt="14" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<p>These two look very different.</p>
-	<p>Some colleagues suggested that the differences in the graphs may be due to TCP offload being disabled, but upon checking our NIC settings, we found that the feature flags were identical.</p>
-	<p>We'll dive into the differences in the next section.</p>
-	<div class="flex anchor relative">
-		<h3 id="and-deeper">And deeper</h3>
-		<a href="https://blog.cloudflare.com/#and-deeper" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt" target="_blank" rel="noopener noreferrer"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc" target="_blank" rel="noopener noreferrer">bcc-tools</a>:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funclatency -uTi 1 do_sendfile
-Tracing 1 functions for "do_sendfile"... Hit Ctrl-C to end.
-23:27:25
-     usecs               : count     distribution
-         0 -&gt; 1          : 9        |                                        |
-         2 -&gt; 3          : 47       |****                                    |
-         4 -&gt; 7          : 53       |*****                                   |
-         8 -&gt; 15         : 379      |****************************************|
-        16 -&gt; 31         : 329      |**********************************      |
-        32 -&gt; 63         : 101      |**********                              |
-        64 -&gt; 127        : 23       |**                                      |
-       128 -&gt; 255        : 50       |*****                                   |
-       256 -&gt; 511        : 7        |                                        |</code></pre>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funclatency -uTi 1 do_sendfile
-Tracing 1 functions for "do_sendfile"... Hit Ctrl-C to end.
-23:27:28
-     usecs               : count     distribution
-         0 -&gt; 1          : 1        |                                        |
-         2 -&gt; 3          : 20       |***                                     |
-         4 -&gt; 7          : 46       |*******                                 |
-         8 -&gt; 15         : 56       |********                                |
-        16 -&gt; 31         : 65       |**********                              |
-        32 -&gt; 63         : 75       |***********                             |
-        64 -&gt; 127        : 75       |***********                             |
-       128 -&gt; 255        : 258      |****************************************|
-       256 -&gt; 511        : 144      |**********************                  |
-       512 -&gt; 1023       : 24       |***                                     |
-      1024 -&gt; 2047       : 27       |****                                    |
-      2048 -&gt; 4095       : 28       |****                                    |
-      4096 -&gt; 8191       : 35       |*****                                   |
-      8192 -&gt; 16383      : 1        |                                        |</code></pre>
-	<p>In the flamegraphs, you can see timers being set at the tip (<code>mod_timer</code> function), with these timers taking locks. On Stretch we installed 3x more timers, resulting in 10x the amount of contention:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 mod_timer
-Tracing 1 functions for "mod_timer"... Hit Ctrl-C to end.
-00:33:36
-FUNC                                    COUNT
-mod_timer                               60482
-00:33:37
-FUNC                                    COUNT
-mod_timer                               58263
-00:33:38
-FUNC                                    COUNT
-mod_timer                               54626</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 lock_timer_base
-Tracing 1 functions for "lock_timer_base"... Hit Ctrl-C to end.
-00:32:36
-FUNC                                    COUNT
-lock_timer_base                         15962
-00:32:37
-FUNC                                    COUNT
-lock_timer_base                         16261
-00:32:38
-FUNC                                    COUNT
-lock_timer_base                         15806</code></pre>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 mod_timer
-Tracing 1 functions for "mod_timer"... Hit Ctrl-C to end.
-00:33:28
-FUNC                                    COUNT
-mod_timer                              149068
-00:33:29
-FUNC                                    COUNT
-mod_timer                              155994
-00:33:30
-FUNC                                    COUNT
-mod_timer                              160688</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 lock_timer_base
-Tracing 1 functions for "lock_timer_base"... Hit Ctrl-C to end.
-00:32:32
-FUNC                                    COUNT
-lock_timer_base                        119189
-00:32:33
-FUNC                                    COUNT
-lock_timer_base                        196895
-00:32:34
-FUNC                                    COUNT
-lock_timer_base                        140085</code></pre>
-	<p>The Linux kernel includes debugging facilities for timers, which <a href="https://elixir.bootlin.com/linux/v4.9.43/source/kernel/time/timer.c#L1010" target="_blank" rel="noopener noreferrer">call</a> the <code>timer:timer_start</code> <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/trace/events/timer.h#L44" target="_blank" rel="noopener noreferrer">tracepoint</a> on every timer start. This allowed us to pull up timer names:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo perf record -e timer:timer_start -p 23485 -- sleep 10 &amp;&amp; sudo perf script | sed 's/.* function=//g' | awk '{ print $1 }' | sort | uniq -c
-[ perf record: Woken up 54 times to write data ]
-[ perf record: Captured and wrote 17.778 MB perf.data (173520 samples) ]
-      6 blk_rq_timed_out_timer
-      2 clocksource_watchdog
-      5 commit_timeout
-      5 cursor_timer_handler
-      2 dev_watchdog
-     10 garp_join_timer
-      2 ixgbe_service_timer
-     36 reqsk_timer_handler
-   4769 tcp_delack_timer
-    171 tcp_keepalive_timer
- 168512 tcp_write_timer</code></pre>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo perf record -e timer:timer_start -p 3416 -- sleep 10 &amp;&amp; sudo perf script | sed 's/.* function=//g' | awk '{ print $1 }' | sort | uniq -c
-[ perf record: Woken up 671 times to write data ]
-[ perf record: Captured and wrote 198.273 MB perf.data (1988650 samples) ]
-      6 clocksource_watchdog
-      4 commit_timeout
-     12 cursor_timer_handler
-      2 dev_watchdog
-     18 garp_join_timer
-      4 ixgbe_service_timer
-      1 neigh_timer_handler
-      1 reqsk_timer_handler
-   4622 tcp_delack_timer
-      1 tcp_keepalive_timer
-1983978 tcp_write_timer
-      1 writeout_period</code></pre>
-	<p>So basically we install 12x more <code>tcp_write_timer</code> timers, resulting in higher kernel CPU usage.</p>
-	<p>Taking specific flamegraphs of the timers revealed the differences in their operation:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/15.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4PJjYK3FzgAeQxpbHPGn5i/06f546c8ea1cda3d58c4c54dd3618a15/15.png" alt="15" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/16.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7M8XyRvy7vHDytdpWJQXAr/784aa92acf4f92c8896d08e2fede9bcd/16.png" alt="16" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<p>We then traced the functions that were different:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 tcp_sendmsg
-Tracing 1 functions for "tcp_sendmsg"... Hit Ctrl-C to end.
-03:33:33
-FUNC                                    COUNT
-tcp_sendmsg                             21166
-03:33:34
-FUNC                                    COUNT
-tcp_sendmsg                             21768
-03:33:35
-FUNC                                    COUNT
-tcp_sendmsg                             21712</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 tcp_push_one
-Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
-03:37:14
-FUNC                                    COUNT
-tcp_push_one                              496
-03:37:15
-FUNC                                    COUNT
-tcp_push_one                              432
-03:37:16
-FUNC                                    COUNT
-tcp_push_one                              495</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/trace -p 23485 'tcp_sendmsg "%d", arg3' -T -M 100000 | awk '{ print $NF }' | sort | uniq -c | sort -n | tail
-   1583 4
-   2043 54
-   3546 18
-   4016 59
-   4423 50
-   5349 8
-   6154 40
-   6620 38
-  17121 51
-  39528 44</code></pre>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 tcp_sendmsg
-Tracing 1 functions for "tcp_sendmsg"... Hit Ctrl-C to end.
-03:33:30
-FUNC                                    COUNT
-tcp_sendmsg                             53834
-03:33:31
-FUNC                                    COUNT
-tcp_sendmsg                             49472
-03:33:32
-FUNC                                    COUNT
-tcp_sendmsg                             51221</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/funccount -T -i 1 tcp_push_one
-Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
-03:37:10
-FUNC                                    COUNT
-tcp_push_one                            64483
-03:37:11
-FUNC                                    COUNT
-tcp_push_one                            65058
-03:37:12
-FUNC                                    COUNT
-tcp_push_one                            72394</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/trace -p 3416 'tcp_sendmsg "%d", arg3' -T -M 100000 | awk '{ print $NF }' | sort | uniq -c | sort -n | tail
-    396 46
-    409 4
-   1124 50
-   1305 18
-   1547 40
-   1672 59
-   1729 8
-   2181 38
-  19052 44
-  64504 4096</code></pre>
-	<p>The traces showed huge variations of <code>tcp_sendmsg</code> and <code>tcp_push_one</code> within <code>sendfile</code>.</p>
-	<p>To further introspect, we leveraged a kernel feature available since 4.9: the ability to count stacks. This led us to measuring what hits <code>tcp_push_one</code>:</p>
-	<ul>
-		<li>
-			<p>Jessie</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/stackcount -i 10 tcp_push_one
-Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
-  tcp_push_one
-  inet_sendmsg
-  sock_sendmsg
-  sock_write_iter
-  do_iter_readv_writev
-  do_readv_writev
-  vfs_writev
-  do_writev
-  SyS_writev
-  do_syscall_64
-  return_from_SYSCALL_64
-    1
-  tcp_push_one
-  inet_sendpage
-  kernel_sendpage
-  sock_sendpage
-  pipe_to_sendpage
-  __splice_from_pipe
-  splice_from_pipe
-  generic_splice_sendpage
-  direct_splice_actor
-  splice_direct_to_actor
-  do_splice_direct
-  do_sendfile
-  sys_sendfile64
-  do_syscall_64
-  return_from_SYSCALL_64
-    4950</code></pre>
-	<ul>
-		<li>
-			<p>Stretch</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">$ sudo /usr/share/bcc/tools/stackcount -i 10 tcp_push_one
-Tracing 1 functions for "tcp_push_one"... Hit Ctrl-C to end.
-  tcp_push_one
-  inet_sendmsg
-  sock_sendmsg
-  sock_write_iter
-  do_iter_readv_writev
-  do_readv_writev
-  vfs_writev
-  do_writev
-  SyS_writev
-  do_syscall_64
-  return_from_SYSCALL_64
-    123
-  tcp_push_one
-  inet_sendmsg
-  sock_sendmsg
-  sock_write_iter
-  __vfs_write
-  vfs_write
-  SyS_write
-  do_syscall_64
-  return_from_SYSCALL_64
-    172
-  tcp_push_one
-  inet_sendmsg
-  sock_sendmsg
-  kernel_sendmsg
-  sock_no_sendpage
-  tcp_sendpage
-  inet_sendpage
-  kernel_sendpage
-  sock_sendpage
-  pipe_to_sendpage
-  __splice_from_pipe
-  splice_from_pipe
-  generic_splice_sendpage
-  direct_splice_actor
-  splice_direct_to_actor
-  do_splice_direct
-  do_sendfile
-  sys_sendfile64
-  do_syscall_64
-  return_from_SYSCALL_64
-    735110</code></pre>
-	<p>If you diff the most popular stacks, you'll get:</p>
-	<pre class="language-bash"><code class="language-bash">--- jessie.txt  2017-08-16 21:14:13.000000000 -0700
-+++ stretch.txt 2017-08-16 21:14:20.000000000 -0700
-@@ -1,4 +1,9 @@
- tcp_push_one
-+inet_sendmsg
-+sock_sendmsg
-+kernel_sendmsg
-+sock_no_sendpage
-+tcp_sendpage
- inet_sendpage
- kernel_sendpage
- sock_sendpage</code></pre>
-	<p>Let's look closer at <a href="https://elixir.bootlin.com/linux/v4.9.43/source/net/ipv4/tcp.c#L1012" target="_blank" rel="noopener noreferrer"><code>tcp_sendpage</code></a>:</p>
-	<pre class="language-bash"><code class="language-bash">int tcp_sendpage(struct sock *sk, struct page *page, int offset,
-         size_t size, int flags)
-{
-    ssize_t res;
-
-    if (!(sk-&gt;sk_route_caps &amp; NETIF_F_SG) ||
-        !sk_check_csum_caps(sk))
-        return sock_no_sendpage(sk-&gt;sk_socket, page, offset, size,
-                    flags);
-
-    lock_sock(sk);
-
-    tcp_rate_check_app_limited(sk);  /* is sending application-limited? */
-
-    res = do_tcp_sendpages(sk, page, offset, size, flags);
-    release_sock(sk);
-    return res;
-}</code></pre>
-	<p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h#L115" target="_blank" rel="noopener noreferrer">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload" target="_blank" rel="noopener noreferrer">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
-	<div class="flex anchor relative">
-		<h3 id="even-deeper-to-the-crux">Even deeper, to the crux</h3>
-		<a href="https://blog.cloudflare.com/#even-deeper-to-the-crux" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It turned out that we had segmentation offload enabled for only a few of our NICs: <code>eth2</code>, <code>eth3</code>, and <code>bond0</code>. Our network setup can be described as follows:</p>
-	<pre class="language-bash"><code class="language-bash">eth2 --&gt;|              |--&gt; vlan10
-        |---&gt; bond0 --&gt;|
-eth3 --&gt;|              |--&gt; vlan100</code></pre>
-	<p><b>The missing piece was that we were missing segmentation offload on VLAN interfaces, where the actual IPs live.</b></p>
-	<p>Here's the diff from <code>ethtook -k vlan10</code>:</p>
-	<pre class="language-bash"><code class="language-bash">$ diff -rup &lt;(ssh jessie sudo ethtool -k vlan10) &lt;(ssh stretch sudo ethtool -k vlan10)
---- /dev/fd/63  2017-08-16 21:21:12.000000000 -0700
-+++ /dev/fd/62  2017-08-16 21:21:12.000000000 -0700
-@@ -1,21 +1,21 @@
- Features for vlan10:
- rx-checksumming: off [fixed]
--tx-checksumming: off
-+tx-checksumming: on
-        tx-checksum-ipv4: off [fixed]
--       tx-checksum-ip-generic: off
-+       tx-checksum-ip-generic: on
-        tx-checksum-ipv6: off [fixed]
-        tx-checksum-fcoe-crc: off
-        tx-checksum-sctp: off
--scatter-gather: off
--       tx-scatter-gather: off
-+scatter-gather: on
-+       tx-scatter-gather: on
-        tx-scatter-gather-fraglist: off
--tcp-segmentation-offload: off
--       tx-tcp-segmentation: off [requested on]
--       tx-tcp-ecn-segmentation: off [requested on]
--       tx-tcp-mangleid-segmentation: off [requested on]
--       tx-tcp6-segmentation: off [requested on]
--udp-fragmentation-offload: off [requested on]
--generic-segmentation-offload: off [requested on]
-+tcp-segmentation-offload: on
-+       tx-tcp-segmentation: on
-+       tx-tcp-ecn-segmentation: on
-+       tx-tcp-mangleid-segmentation: on
-+       tx-tcp6-segmentation: on
-+udp-fragmentation-offload: on
-+generic-segmentation-offload: on
- generic-receive-offload: on
- large-receive-offload: off [fixed]
- rx-vlan-offload: off [fixed]</code></pre>
-	<p>So we entusiastically enabled segmentation offload:</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo ethtool -K vlan10 sg on</code></pre>
-	<p>And it didn't help! Will the suffering ever end? Let's also enable TCP transmission checksumming offload:</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo ethtool -K vlan10 tx on
-Actual changes:
-tx-checksumming: on
-        tx-checksum-ip-generic: on
-tcp-segmentation-offload: on
-        tx-tcp-segmentation: on
-        tx-tcp-ecn-segmentation: on
-        tx-tcp-mangleid-segmentation: on
-        tx-tcp6-segmentation: on
-udp-fragmentation-offload: on</code></pre>
-	<p>Nothing. The diff is essentially empty now:</p>
-	<pre class="language-bash"><code class="language-bash">$ diff -rup &lt;(ssh jessie sudo ethtool -k vlan10) &lt;(ssh stretch sudo ethtool -k vlan10)
---- /dev/fd/63  2017-08-16 21:31:27.000000000 -0700
-+++ /dev/fd/62  2017-08-16 21:31:27.000000000 -0700
-@@ -4,11 +4,11 @@ tx-checksumming: on
-        tx-checksum-ipv4: off [fixed]
-        tx-checksum-ip-generic: on
-        tx-checksum-ipv6: off [fixed]
--       tx-checksum-fcoe-crc: off [requested on]
--       tx-checksum-sctp: off [requested on]
-+       tx-checksum-fcoe-crc: off
-+       tx-checksum-sctp: off
- scatter-gather: on
-        tx-scatter-gather: on
--       tx-scatter-gather-fraglist: off [requested on]
-+       tx-scatter-gather-fraglist: off
- tcp-segmentation-offload: on
-        tx-tcp-segmentation: on
-        tx-tcp-ecn-segmentation: on</code></pre>
-	<p>The last missing piece we found was that offload changes are applied only during connection initiation, so we restarted Kafka, and we immediately saw a performance improvement (green line):</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/17.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/73uyXt5y4F1L6AUULX8S9g/e80494d09daf7d0b87884c62fd5341e6/17.png" alt="17" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<p>Not enabling offload features when possible seems like a pretty bad regression, so we filed a ticket for <code>systemd</code>:</p>
-	<ul>
-		<li>
-			<p><a href="https://github.com/systemd/systemd/issues/6629" target="_blank" rel="noopener noreferrer">https://github.com/systemd/systemd/issues/6629</a></p>
-		</li>
-	</ul>
-	<p>In the meantime, we work around our upstream issue by enabling offload features automatically on boot if they are disabled on VLAN interfaces.</p>
-	<p>Having a fix enabled, we rebooted our <code>logs</code> Kafka cluster to upgrade to the latest kernel, and our 5 day CPU usage history yielded positive results:</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/18.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VBuiRySNEfFiN8LQ9nUg5/a5a1881b229cb1e173663af52f3eb136/18.png" alt="18" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<p>The DNS cluster also yielded positive results, with just 2 nodes rebooted (purple line going down):</p>
-	<figure class="kg-card kg-image-card ">
-		<a href="http://staging.blog.mrk.cfdata.org/content/images/2018/04/19.png">
-			<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CWuJQCmMt7QarvAdU0b3g/c35ad9f7a9ab6113614f736f0e682d64/19.png" alt="19" class="kg-image" width="3104" height="1972" loading="lazy">
-		</a>
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It was an error on our part to hit performance degradation without a good regression framework in place to catch the issue. Luckily, due to our heavy use of version control, we managed to bisect the issue rather quickly, and had a temp rollback in place while root causing the problem.</p>
-	<p>In the end, enabling offload also removed RCU stalls. It's not really clear whether it was the cause or just a catalyst, but the end result speaks for itself.</p>
-	<p>On the bright side, we dug pretty deep into Linux kernel internals, and although there were fleeting moments of giving up, moving to the woods to become a park ranger, we persevered and came out of the forest successful.</p>
-	<hr>
-	<p><i>If deep diving from high level symptoms to kernel/OS issues makes you excited, </i><a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>drop us a line</i></a><i>.</i></p>
-	<hr>
+<p><em>This is a heavily truncated version of an internal blog post from August 2017. For more recent updates on Kafka, check out <a href="https://blog.cloudflare.com/squeezing-the-firehose">another blog post on compression</a>, where we optimized throughput 4.5x for both disks and network.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Tracing System CPU on Debian Stretch Embedded Image - NHVM7W" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CZHQBPHDJQ2KYA5HG1DR.jpeg&amp;w=1080&amp;h=720&amp;f=webp" data-lightbox-width="1080" data-lightbox-height="720" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Photo by <a href="https://unsplash.com/@alex_povolyashko?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Alex Povolyashko</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+<h3>Upgrading our systems to Debian Stretch</h3>
+<p>For quite some time we've been rolling out Debian Stretch, to the point where we have reached ~10% adoption in our core datacenters. As part of upgarding the underlying OS, we also evaluate the higher level software stack, e.g. taking a look at our ClickHouse and Kafka clusters.</p>
+<p>During our upgrade of Kafka, we sucessfully migrated two smaller clusters, <code>logs</code> and <code>dns</code>, but ran into issues when attempting to upgrade one of our larger clusters, <code>http</code>.</p>
+<p>Thankfully, we were able to roll back the <code>http</code> cluster upgrade relatively easily, due to heavy versioning of both the OS and the higher level software stack. If there's one takeaway from this blog post, it's to take advantage of consistent versioning.</p>
+<h3>High level differences</h3>
+<p>We upgraded one Kafka <code>http</code> node, and it did not go as planned:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FTVT8S9TWJVJP3RRRX66.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<p>Having 5x CPU usage was definitely an unexpected outcome. For control datapoints, we compared to a node where no upgrade happened, and an intermediary node that received a software stack upgrade, but not an OS upgrade. Neither of these two nodes experienced the same CPU saturation issues, even though their setups were practically identical.</p>
+<p>For debugging CPU saturation issues, we call on <code>perf</code> to fish out details:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="634" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=715&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=640&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=715&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=750&amp;h=665&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=828&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=1080&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=1280&amp;h=1135&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=1430&amp;h=1268&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="2-3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455EXNKV39DKW2C28CGDV3.png&amp;w=1849&amp;h=1640&amp;f=webp" data-lightbox-width="1849" data-lightbox-height="1640" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="634" class="pt-portable-image-media"></div>
+</figure>
+<p><em>The command used was: <code>perf top -F 99</code>.</em></p>
+<h3>RCU stalls</h3>
+<p>In addition to higher system CPU usage, we found secondary slowdowns, including <a href="http://www.rdrop.com/~paulmck/RCU/whatisRCU.html" target="_blank" rel="noopener noreferrer">read-copy update (RCU)</a> stalls:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[ 4909.110009] logfwdr (</span><span class="sk-6f42c1-ffc799">26887</span><span class="sk-24292e-fff">) used greatest stack depth: 11544 bytes left</span></span>
+<span class="line"><span class="sk-24292e-fff">[ 4909.392659] oom_reaper: reaped process 26861 (</span><span class="sk-6f42c1-ffc799">logfwdr</span><span class="sk-24292e-fff">), now anon-rss:8kB, file-rss:0kB, shmem-rss:0kB</span></span>
+<span class="line"><span class="sk-24292e-fff">[ 4923.462841] INFO: rcu_sched self-detected stall on CPU</span></span>
+<span class="line"><span class="sk-24292e-fff">[ 4923.462843]  13-...: (</span><span class="sk-6f42c1-ffc799">2</span><span class="sk-032f62-99ffe4"> GPs</span><span class="sk-032f62-99ffe4"> behind</span><span class="sk-24292e-fff">) idle</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">ea7/140000000000001/0</span><span class="sk-24292e-fff"> softirq</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1/2</span><span class="sk-24292e-fff"> fqs</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">4198</span></span>
+<span class="line"><span class="sk-24292e-fff">[ 4923.462845]   (t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">8403</span><span class="sk-6f42c1-ffc799"> jiffies</span><span class="sk-032f62-99ffe4"> g=</span><span class="sk-005cc5-ffc799">110722</span><span class="sk-032f62-99ffe4"> c=</span><span class="sk-005cc5-ffc799">110721</span><span class="sk-032f62-99ffe4"> q=</span><span class="sk-005cc5-ffc799">6440</span><span class="sk-24292e-fff">)</span></span></code></pre>
 </div>
+<p>We've seen RCU stalls before, and our (suboptimal) solution was to reboot the machine.</p>
+<p>However, one can only handle so many reboots before the problem becomes severe enough to warrant a deep dive. During our deep dive, we noticed in <code>dmesg</code> that we had issues allocating memory, while trying to write errors:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-032f62-99ffe4"> INFO:</span><span class="sk-032f62-99ffe4"> rcu_sched</span><span class="sk-032f62-99ffe4"> detected</span><span class="sk-032f62-99ffe4"> stalls</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> CPUs/tasks:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-032f62-99ffe4">         26-...:</span><span class="sk-24292e-fff"> (1881 </span><span class="sk-032f62-99ffe4">ticks</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> GP</span><span class="sk-24292e-fff">) idle</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">76f/140000000000000/0</span><span class="sk-24292e-fff"> softirq</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">8/8</span><span class="sk-24292e-fff"> fqs</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">365</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">         (detected </span><span class="sk-032f62-99ffe4">by</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-032f62-99ffe4"> t=</span><span class="sk-005cc5-ffc799">2102</span><span class="sk-032f62-99ffe4"> jiffies,</span><span class="sk-032f62-99ffe4"> g=1837293,</span><span class="sk-032f62-99ffe4"> c=1837292,</span><span class="sk-032f62-99ffe4"> q=</span><span class="sk-005cc5-ffc799">262</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-032f62-99ffe4"> Task</span><span class="sk-032f62-99ffe4"> dump</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> CPU</span><span class="sk-032f62-99ffe4"> 26:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-032f62-99ffe4"> java</span><span class="sk-032f62-99ffe4">            R</span><span class="sk-032f62-99ffe4">  running</span><span class="sk-032f62-99ffe4"> task</span><span class="sk-005cc5-ffc799">    13488</span><span class="sk-005cc5-ffc799">  1714</span><span class="sk-005cc5-ffc799">   1513</span><span class="sk-005cc5-ffc799"> 0x00080188</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-032f62-99ffe4">  ffffc9000d1f7898</span><span class="sk-032f62-99ffe4"> ffffffff814ee977</span><span class="sk-032f62-99ffe4"> ffff88103f410400</span><span class="sk-032f62-99ffe4"> 000000000000000a</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-005cc5-ffc799">  0000000000000041</span><span class="sk-032f62-99ffe4"> ffffffff82203142</span><span class="sk-032f62-99ffe4"> ffffc9000d1f78c0</span><span class="sk-032f62-99ffe4"> ffffffff814eea10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-005cc5-ffc799">  0000000000000041</span><span class="sk-032f62-99ffe4"> ffffffff82203142</span><span class="sk-032f62-99ffe4"> ffff88103f410400</span><span class="sk-032f62-99ffe4"> ffffc9000d1f7920</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-032f62-99ffe4"> Call</span><span class="sk-032f62-99ffe4"> Trace:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff814ee977&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> scrup+0x147/0x160</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff814eea10&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> lf+0x80/0x90</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff814eecb5&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> vt_console_print+0x295/0x3c0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff810b1193&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> call_console_drivers.isra.22.constprop.30+0xf3/0x100</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff810b1f51&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> console_unlock+0x281/0x550</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff810b2498&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> vprintk_emit+0x278/0x430</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff810b27ef&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> vprintk_default+0x1f/0x30</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811588df&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> printk+0x48/0x50</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff810b30ee&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> dump_stack_print_info+0x7e/0xc0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8142d41f&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> dump_stack+0x44/0x65</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81162e64&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> warn_alloc+0x124/0x150</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81163842&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __alloc_pages_slowpath+0x932/0xb80</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81163c92&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __alloc_pages_nodemask+0x202/0x250</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811ae9c2&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> alloc_pages_current+0x92/0x120</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81159d2f&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __page_cache_alloc+0xbf/0xd0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8115cdfa&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> filemap_fault+0x2ea/0x4d0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8136dc95&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> xfs_filemap_fault+0x45/0xa0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8118b3eb&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __do_fault+0x6b/0xd0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81190028&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> handle_mm_fault+0xe98/0x12b0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8110756b&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __seccomp_filter+0x1db/0x290</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8104fa5c&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> __do_page_fault+0x22c/0x4c0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8104fd10&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> do_page_fault+0x20/0x70</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> 21:51:35</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff819bea02&gt;] </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> page_fault+0x22/0x30</span></span></code></pre>
+</div>
+<p>This suggested that we were logging too many errors, and the actual failure may be earlier in the process. Armed with this hypothesis, we looked at the very beginning of the error chain:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> systemd-journald[13812]:</span><span class="sk-032f62-99ffe4"> Missed</span><span class="sk-005cc5-ffc799"> 17171</span><span class="sk-032f62-99ffe4"> kernel</span><span class="sk-032f62-99ffe4"> messages</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81171754&gt;] shrink_inactive_list+0x1f4/0x4f0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff8117234b&gt;] shrink_node_memcg+0x5bb/0x780</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811725e2&gt;] shrink_node+0xd2/0x2f0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811728ef&gt;] do_try_to_free_pages+0xef/0x310</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff81172be5&gt;] try_to_free_pages+0xd5/0x180</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> kernel:</span><span class="sk-24292e-fff">  [&lt;ffffffff811632db&gt;] __alloc_pages_slowpath+0x31b/0xb80</span></span></code></pre>
+</div>
+<p>As much as <code>shrink_node</code> may scream "NUMA issues", you're looking primarily at:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Aug</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-032f62-99ffe4"> 01:14:51</span><span class="sk-032f62-99ffe4"> myhost</span><span class="sk-032f62-99ffe4"> systemd-journald[13812]:</span><span class="sk-032f62-99ffe4"> Missed</span><span class="sk-005cc5-ffc799"> 17171</span><span class="sk-032f62-99ffe4"> kernel</span><span class="sk-032f62-99ffe4"> messages</span></span></code></pre>
+</div>
+<p>In addition, we also found memory allocation issues:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[78972.506644] Mem-Info:</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506653] active_anon:3936889 inactive_anon:371971 isolated_anon:0</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506653]  active_file:25778474 inactive_file:1214478 isolated_file:2208</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506653]  unevictable:0 dirty:1760643 writeback:0 unstable:0</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506653]  slab_reclaimable:1059804 slab_unreclaimable:141694</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506653]  mapped:47285 shmem:535917 pagetables:10298 bounce:0</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506653]  free:202928 free_pcp:3085 free_cma:0</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506660] Node 0 active_anon:8333016kB inactive_anon:989808kB active_file:50622384kB inactive_file:2401416kB unevictable:0kB isolated(</span><span class="sk-6f42c1-ffc799">anon</span><span class="sk-24292e-fff">):0kB isolated(</span><span class="sk-6f42c1-ffc799">file</span><span class="sk-24292e-fff">):3072kB mapped:96624kB dirty:3422168kB writeback:0kB shmem:1261156kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB unstable:0kB pages_scanned:15744 all_unreclaimable</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> no</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506666] Node 1 active_anon:7414540kB inactive_anon:498076kB active_file:52491512kB inactive_file:2456496kB unevictable:0kB isolated(</span><span class="sk-6f42c1-ffc799">anon</span><span class="sk-24292e-fff">):0kB isolated(</span><span class="sk-6f42c1-ffc799">file</span><span class="sk-24292e-fff">):5760kB mapped:92516kB dirty:3620404kB writeback:0kB shmem:882512kB shmem_thp: 0kB shmem_pmdmapped: 0kB anon_thp: 0kB writeback_tmp:0kB unstable:0kB pages_scanned:9080974 all_unreclaimable</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff"> no</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506671] Node 0 DMA free:15900kB min:100kB low:124kB high:148kB active_anon:0kB inactive_anon:0kB active_file:0kB inactive_file:0kB unevictable:0kB writepending:0kB present:15996kB managed:15900kB mlocked:0kB slab_reclaimable:0kB slab_unreclaimable:0kB kernel_stack:0kB pagetables:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">**</span><span class="sk-24292e-fff"> 9 printk messages dropped </span><span class="sk-d73a49-a0a0a0">**</span><span class="sk-24292e-fff"> [78972.506716] Node 0 Normal: 15336</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">4kB (</span><span class="sk-6f42c1-ffc799">UMEH</span><span class="sk-24292e-fff">) 4584</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">8kB (</span><span class="sk-6f42c1-ffc799">MEH</span><span class="sk-24292e-fff">) 2119</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">16kB (</span><span class="sk-6f42c1-ffc799">UME</span><span class="sk-24292e-fff">) 775</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">32kB (</span><span class="sk-6f42c1-ffc799">MEH</span><span class="sk-24292e-fff">) 106</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">64kB (</span><span class="sk-6f42c1-ffc799">UM</span><span class="sk-24292e-fff">) 81</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">128kB (</span><span class="sk-6f42c1-ffc799">MH</span><span class="sk-24292e-fff">) 29</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">256kB (</span><span class="sk-6f42c1-ffc799">UM</span><span class="sk-24292e-fff">) 25</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">512kB (</span><span class="sk-6f42c1-ffc799">M</span><span class="sk-24292e-fff">) 19</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">1024kB (</span><span class="sk-6f42c1-ffc799">M</span><span class="sk-24292e-fff">) 7</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">2048kB (</span><span class="sk-6f42c1-ffc799">M</span><span class="sk-24292e-fff">) 2</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">4096kB (</span><span class="sk-6f42c1-ffc799">M</span><span class="sk-24292e-fff">) = 236080kB</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506725] Node 1 Normal: 31740</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">4kB (</span><span class="sk-6f42c1-ffc799">UMEH</span><span class="sk-24292e-fff">) 3879</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">8kB (</span><span class="sk-6f42c1-ffc799">UMEH</span><span class="sk-24292e-fff">) 873</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">16kB (</span><span class="sk-6f42c1-ffc799">UME</span><span class="sk-24292e-fff">) 353</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">32kB (</span><span class="sk-6f42c1-ffc799">UM</span><span class="sk-24292e-fff">) 286</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">64kB (</span><span class="sk-6f42c1-ffc799">UMH</span><span class="sk-24292e-fff">) 62</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">128kB (</span><span class="sk-6f42c1-ffc799">UMH</span><span class="sk-24292e-fff">) 28</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">256kB (</span><span class="sk-6f42c1-ffc799">MH</span><span class="sk-24292e-fff">) 20</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">512kB (</span><span class="sk-6f42c1-ffc799">UMH</span><span class="sk-24292e-fff">) 15</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">1024kB (</span><span class="sk-6f42c1-ffc799">UM</span><span class="sk-24292e-fff">) 7</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">2048kB (</span><span class="sk-6f42c1-ffc799">UM</span><span class="sk-24292e-fff">) 12</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">4096kB (</span><span class="sk-6f42c1-ffc799">M</span><span class="sk-24292e-fff">) = 305752kB</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506726] Node 0 hugepages_total</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> hugepages_free</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> hugepages_surp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> hugepages_size</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">2048kB</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506727] Node 1 hugepages_total</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> hugepages_free</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> hugepages_surp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff"> hugepages_size</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">2048kB</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506728] 27531091 total pagecache pages</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506729] 0 pages in swap cache</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506730] Swap cache stats: add 0, delete 0, find 0/0</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506730] Free swap  = 0kB</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506731] Total swap = 0kB</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506731] 33524975 pages RAM</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506732] 0 pages HighMem/MovableOnly</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.506732] 546255 pages reserved</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620129] ntpd: page allocation stalls </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> 272380ms, order:0, mode:0x24000c0(</span><span class="sk-6f42c1-ffc799">GFP_KERNEL</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620132] CPU: 16 PID: 13099 Comm: ntpd Tainted: G           O    4.9.43-cloudflare-2017.8.4 </span><span class="sk-6a737d-8b8b8b94">#1</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620133] Hardware name: Quanta Computer Inc D51B-2U (</span><span class="sk-6f42c1-ffc799">dual</span><span class="sk-032f62-99ffe4"> 1G</span><span class="sk-032f62-99ffe4"> LoM</span><span class="sk-24292e-fff">)/S2B-MB (</span><span class="sk-6f42c1-ffc799">dual</span><span class="sk-032f62-99ffe4"> 1G</span><span class="sk-032f62-99ffe4"> LoM</span><span class="sk-24292e-fff">), BIOS S2B_3A21 10/01/2015</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620136]  ffffc90022f9b6f8 ffffffff8142d668 ffffffff81ca31b8 0000000000000001</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620138]  ffffc90022f9b778 ffffffff81162f14 024000c022f9b740 ffffffff81ca31b8</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620140]  ffffc90022f9b720 0000000000000010 ffffc90022f9b788 ffffc90022f9b738</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620140] Call Trace:</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620148]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff8142d668</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] dump_stack+0x4d/0x65</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620152]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff81162f14</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] warn_alloc+0x124/0x150</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620154]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff811638f2</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] __alloc_pages_slowpath+0x932/0xb80</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620157]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff81163d42</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] __alloc_pages_nodemask+0x202/0x250</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620160]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff811aeae2</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] alloc_pages_current+0x92/0x120</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620162]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff8115f6ee</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] __get_free_pages+0xe/0x40</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620165]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff811e747a</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] __pollwait+0x9a/0xe0</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620168]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff817c9ec9</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] datagram_poll+0x29/0x100</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620170]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff817b9d48</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] sock_poll+0x48/0xa0</span></span>
+<span class="line"><span class="sk-24292e-fff">[78972.620172]  [</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">ffffffff811e7c35</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">] do_select+0x335/0x7b0</span></span></code></pre>
+</div>
+<p>This specific error message did seem fun:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[78991.546088] systemd-network: page allocation stalls </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> 287000ms, order:0, mode:0x24200ca(</span><span class="sk-6f42c1-ffc799">GFP_HIGHUSER_MOVABLE</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>You don't want your page allocations to stall for 5 minutes, especially when it's order zero allocation (smallest allocation of one 4 KiB page).</p>
+<p>Comparing to our control nodes, the only two possible explanations were: a kernel upgrade, and the switch from Debian Jessie to Debian Stretch. We suspected the former, since CPU usage implies a kernel issue. However, just to be safe, we rolled both the kernel back to 4.4.55, and downgraded the affected nodes back to Debian Jessie. This was a reasonable compromise, since we needed to minimize downtime on production nodes.</p>
+<h3>Digging a bit deeper</h3>
+<p>Keeping servers running on older kernel and distribution is not a viable long term solution. Through bisection, we found the issue lay in the Jessie to Stretch upgrade, contrary to our initial hypothesis.</p>
+<p>Now that we knew what the problem was, we proceeded to investigate why. With the help from existing automation around <code>perf</code> and Java, we generated the following flamegraphs:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW466FJAH06QGQJ5VYFXM1SF.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li>Stretch</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="10" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488DXWVCDR3G6KEBYWG8ZV.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<p>At first it looked like Jessie was doing <code>writev</code> instead of <code>sendfile</code>, but the full flamegraphs revealed that Strech was executing <code>sendfile</code> a lot slower.</p>
+<p>If you highlight <code>sendfile</code>:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="11" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4876HNFFGX68Y73HKP4F76.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li>Stretch</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="12" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QRX6N0FACQ0K6RBQJQ71.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<p>And zoomed in:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="13" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KHAH8TPHXCC72VF05M7P.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li>Stretch</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="14" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FAEGDVCC7P52WT7TET6X.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<p>These two look very different.</p>
+<p>Some colleagues suggested that the differences in the graphs may be due to TCP offload being disabled, but upon checking our NIC settings, we found that the feature flags were identical.</p>
+<p>We'll dive into the differences in the next section.</p>
+<h3>And deeper</h3>
+<p>To trace latency distributions of <code>sendfile</code> syscalls between Jessie and Stretch, we used <a href="https://github.com/iovisor/bcc/blob/master/tools/funclatency_example.txt" target="_blank" rel="noopener noreferrer"><code>funclatency</code></a> from <a href="https://iovisor.github.io/bcc" target="_blank" rel="noopener noreferrer">bcc-tools</a>:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funclatency</span><span class="sk-005cc5-99ffe4"> -uTi</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> do_sendfile</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "do_sendfile"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">23:27:25</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     usecs</span><span class="sk-032f62-99ffe4">               :</span><span class="sk-032f62-99ffe4"> count</span><span class="sk-032f62-99ffe4">     distribution</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         0</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4">          :</span><span class="sk-005cc5-ffc799"> 9</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         2</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4">          :</span><span class="sk-005cc5-ffc799"> 47</span><span class="sk-d73a49-a0a0a0">       |****</span><span class="sk-d73a49-a0a0a0">                                    |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         4</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4">          :</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-d73a49-a0a0a0">       |*****</span><span class="sk-d73a49-a0a0a0">                                   |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         8</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-005cc5-ffc799"> 379</span><span class="sk-d73a49-a0a0a0">      |****************************************|</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        16</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 31</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-005cc5-ffc799"> 329</span><span class="sk-d73a49-a0a0a0">      |**********************************</span><span class="sk-d73a49-a0a0a0">      |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        32</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 63</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-005cc5-ffc799"> 101</span><span class="sk-d73a49-a0a0a0">      |**********</span><span class="sk-d73a49-a0a0a0">                              |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        64</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 127</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 23</span><span class="sk-d73a49-a0a0a0">       |**</span><span class="sk-d73a49-a0a0a0">                                      |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       128</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 255</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 50</span><span class="sk-d73a49-a0a0a0">       |*****</span><span class="sk-d73a49-a0a0a0">                                   |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       256</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 511</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span></code></pre>
+</div>
+<ul>
+	<li>Stretch</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funclatency</span><span class="sk-005cc5-99ffe4"> -uTi</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> do_sendfile</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "do_sendfile"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">23:27:28</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     usecs</span><span class="sk-032f62-99ffe4">               :</span><span class="sk-032f62-99ffe4"> count</span><span class="sk-032f62-99ffe4">     distribution</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         0</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4">          :</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         2</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4">          :</span><span class="sk-005cc5-ffc799"> 20</span><span class="sk-d73a49-a0a0a0">       |***</span><span class="sk-d73a49-a0a0a0">                                     |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         4</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4">          :</span><span class="sk-005cc5-ffc799"> 46</span><span class="sk-d73a49-a0a0a0">       |*******</span><span class="sk-d73a49-a0a0a0">                                 |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         8</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-005cc5-ffc799"> 56</span><span class="sk-d73a49-a0a0a0">       |********</span><span class="sk-d73a49-a0a0a0">                                |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        16</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 31</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-005cc5-ffc799"> 65</span><span class="sk-d73a49-a0a0a0">       |**********</span><span class="sk-d73a49-a0a0a0">                              |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        32</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 63</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-005cc5-ffc799"> 75</span><span class="sk-d73a49-a0a0a0">       |***********</span><span class="sk-d73a49-a0a0a0">                             |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        64</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 127</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 75</span><span class="sk-d73a49-a0a0a0">       |***********</span><span class="sk-d73a49-a0a0a0">                             |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       128</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 255</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 258</span><span class="sk-d73a49-a0a0a0">      |****************************************|</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       256</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 511</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-005cc5-ffc799"> 144</span><span class="sk-d73a49-a0a0a0">      |**********************</span><span class="sk-d73a49-a0a0a0">                  |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       512</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 1023</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 24</span><span class="sk-d73a49-a0a0a0">       |***</span><span class="sk-d73a49-a0a0a0">                                     |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      1024</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 2047</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 27</span><span class="sk-d73a49-a0a0a0">       |****</span><span class="sk-d73a49-a0a0a0">                                    |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      2048</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 4095</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 28</span><span class="sk-d73a49-a0a0a0">       |****</span><span class="sk-d73a49-a0a0a0">                                    |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      4096</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 8191</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 35</span><span class="sk-d73a49-a0a0a0">       |*****</span><span class="sk-d73a49-a0a0a0">                                   |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      8192</span><span class="sk-24292e-fff"> -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 16383</span><span class="sk-032f62-99ffe4">      :</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-d73a49-a0a0a0">                                        |</span></span></code></pre>
+</div>
+<p>In the flamegraphs, you can see timers being set at the tip (<code>mod_timer</code> function), with these timers taking locks. On Stretch we installed 3x more timers, resulting in 10x the amount of contention:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> mod_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "mod_timer"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:33:36</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                               60482</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:33:37</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                               58263</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:33:38</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                               54626</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> lock_timer_base</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "lock_timer_base"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:32:36</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                         15962</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:32:37</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                         16261</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:32:38</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                         15806</span></span></code></pre>
+</div>
+<ul>
+	<li>Stretch</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> mod_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "mod_timer"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:33:28</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                              149068</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:33:29</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                              155994</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:33:30</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mod_timer</span><span class="sk-005cc5-ffc799">                              160688</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> lock_timer_base</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "lock_timer_base"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:32:32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                        119189</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:32:33</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                        196895</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:32:34</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lock_timer_base</span><span class="sk-005cc5-ffc799">                        140085</span></span></code></pre>
+</div>
+<p>The Linux kernel includes debugging facilities for timers, which <a href="https://elixir.bootlin.com/linux/v4.9.43/source/kernel/time/timer.c#L1010" target="_blank" rel="noopener noreferrer">call</a> the <code>timer:timer_start</code> <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/trace/events/timer.h#L44" target="_blank" rel="noopener noreferrer">tracepoint</a> on every timer start. This allowed us to pull up timer names:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> perf</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> timer:timer_start</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 23485</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> sleep</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> perf</span><span class="sk-032f62-99ffe4"> script</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sed</span><span class="sk-032f62-99ffe4"> 's/.* function=//g'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{ print $1 }'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span>
+<span class="line"><span class="sk-24292e-fff">[ perf record: Woken up </span><span class="sk-005cc5-ffc799">54</span><span class="sk-24292e-fff"> times to write data ]</span></span>
+<span class="line"><span class="sk-24292e-fff">[ perf record: Captured and wrote </span><span class="sk-005cc5-ffc799">17.778</span><span class="sk-24292e-fff"> MB perf.data (</span><span class="sk-005cc5-ffc799">173520</span><span class="sk-24292e-fff"> samples) ]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      6</span><span class="sk-032f62-99ffe4"> blk_rq_timed_out_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      2</span><span class="sk-032f62-99ffe4"> clocksource_watchdog</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      5</span><span class="sk-032f62-99ffe4"> commit_timeout</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      5</span><span class="sk-032f62-99ffe4"> cursor_timer_handler</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      2</span><span class="sk-032f62-99ffe4"> dev_watchdog</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     10</span><span class="sk-032f62-99ffe4"> garp_join_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      2</span><span class="sk-032f62-99ffe4"> ixgbe_service_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     36</span><span class="sk-032f62-99ffe4"> reqsk_timer_handler</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4769</span><span class="sk-032f62-99ffe4"> tcp_delack_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    171</span><span class="sk-032f62-99ffe4"> tcp_keepalive_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> 168512</span><span class="sk-032f62-99ffe4"> tcp_write_timer</span></span></code></pre>
+</div>
+<ul>
+	<li>Stretch</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> perf</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> timer:timer_start</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 3416</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-032f62-99ffe4"> sleep</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> perf</span><span class="sk-032f62-99ffe4"> script</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sed</span><span class="sk-032f62-99ffe4"> 's/.* function=//g'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{ print $1 }'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span></span>
+<span class="line"><span class="sk-24292e-fff">[ perf record: Woken up </span><span class="sk-005cc5-ffc799">671</span><span class="sk-24292e-fff"> times to write data ]</span></span>
+<span class="line"><span class="sk-24292e-fff">[ perf record: Captured and wrote </span><span class="sk-005cc5-ffc799">198.273</span><span class="sk-24292e-fff"> MB perf.data (</span><span class="sk-005cc5-ffc799">1988650</span><span class="sk-24292e-fff"> samples) ]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      6</span><span class="sk-032f62-99ffe4"> clocksource_watchdog</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      4</span><span class="sk-032f62-99ffe4"> commit_timeout</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     12</span><span class="sk-032f62-99ffe4"> cursor_timer_handler</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      2</span><span class="sk-032f62-99ffe4"> dev_watchdog</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     18</span><span class="sk-032f62-99ffe4"> garp_join_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      4</span><span class="sk-032f62-99ffe4"> ixgbe_service_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      1</span><span class="sk-032f62-99ffe4"> neigh_timer_handler</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      1</span><span class="sk-032f62-99ffe4"> reqsk_timer_handler</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4622</span><span class="sk-032f62-99ffe4"> tcp_delack_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      1</span><span class="sk-032f62-99ffe4"> tcp_keepalive_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">1983978</span><span class="sk-032f62-99ffe4"> tcp_write_timer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      1</span><span class="sk-032f62-99ffe4"> writeout_period</span></span></code></pre>
+</div>
+<p>So basically we install 12x more <code>tcp_write_timer</code> timers, resulting in higher kernel CPU usage.</p>
+<p>Taking specific flamegraphs of the timers revealed the differences in their operation:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="15" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PYPA6S4J0J5P1NFPGQS4.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li>Stretch</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="16" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SG38D90B89EBTVHRW8RK.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<p>We then traced the functions that were different:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> tcp_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "tcp_sendmsg"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:33:33</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             21166</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:33:34</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             21768</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:33:35</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             21712</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "tcp_push_one"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:37:14</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                              496</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:37:15</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                              432</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:37:16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                              495</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/trace</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 23485</span><span class="sk-032f62-99ffe4"> 'tcp_sendmsg "%d", arg3'</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -M</span><span class="sk-005cc5-ffc799"> 100000</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{ print $NF }'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   1583</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   2043</span><span class="sk-005cc5-ffc799"> 54</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   3546</span><span class="sk-005cc5-ffc799"> 18</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4016</span><span class="sk-005cc5-ffc799"> 59</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   4423</span><span class="sk-005cc5-ffc799"> 50</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   5349</span><span class="sk-005cc5-ffc799"> 8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   6154</span><span class="sk-005cc5-ffc799"> 40</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   6620</span><span class="sk-005cc5-ffc799"> 38</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  17121</span><span class="sk-005cc5-ffc799"> 51</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  39528</span><span class="sk-005cc5-ffc799"> 44</span></span></code></pre>
+</div>
+<ul>
+	<li>Stretch</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> tcp_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "tcp_sendmsg"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:33:30</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             53834</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:33:31</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             49472</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:33:32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_sendmsg</span><span class="sk-005cc5-ffc799">                             51221</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/funccount</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "tcp_push_one"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:37:10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                            64483</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:37:11</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                            65058</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">03:37:12</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FUNC</span><span class="sk-032f62-99ffe4">                                    COUNT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp_push_one</span><span class="sk-005cc5-ffc799">                            72394</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/trace</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-005cc5-ffc799"> 3416</span><span class="sk-032f62-99ffe4"> 'tcp_sendmsg "%d", arg3'</span><span class="sk-005cc5-99ffe4"> -T</span><span class="sk-005cc5-99ffe4"> -M</span><span class="sk-005cc5-ffc799"> 100000</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{ print $NF }'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> uniq</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tail</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    396</span><span class="sk-005cc5-ffc799"> 46</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    409</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   1124</span><span class="sk-005cc5-ffc799"> 50</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   1305</span><span class="sk-005cc5-ffc799"> 18</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   1547</span><span class="sk-005cc5-ffc799"> 40</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   1672</span><span class="sk-005cc5-ffc799"> 59</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   1729</span><span class="sk-005cc5-ffc799"> 8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   2181</span><span class="sk-005cc5-ffc799"> 38</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  19052</span><span class="sk-005cc5-ffc799"> 44</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  64504</span><span class="sk-005cc5-ffc799"> 4096</span></span></code></pre>
+</div>
+<p>The traces showed huge variations of <code>tcp_sendmsg</code> and <code>tcp_push_one</code> within <code>sendfile</code>.</p>
+<p>To further introspect, we leveraged a kernel feature available since 4.9: the ability to count stacks. This led us to measuring what hits <code>tcp_push_one</code>:</p>
+<ul>
+	<li>Jessie</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/stackcount</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-032f62-99ffe4"> tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "tcp_push_one"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  inet_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_write_iter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_iter_readv_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_readv_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  vfs_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  SyS_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_syscall_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  return_from_SYSCALL_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  inet_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  kernel_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  pipe_to_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  __splice_from_pipe</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  splice_from_pipe</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  generic_splice_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  direct_splice_actor</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  splice_direct_to_actor</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_splice_direct</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_sendfile</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sys_sendfile64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_syscall_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  return_from_SYSCALL_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    4950</span></span></code></pre>
+</div>
+<ul>
+	<li>Stretch</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> /usr/share/bcc/tools/stackcount</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-032f62-99ffe4"> tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tracing</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> "tcp_push_one"...</span><span class="sk-032f62-99ffe4"> Hit</span><span class="sk-032f62-99ffe4"> Ctrl-C</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> end.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  inet_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_write_iter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_iter_readv_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_readv_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  vfs_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  SyS_writev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_syscall_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  return_from_SYSCALL_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    123</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  inet_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_write_iter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  __vfs_write</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  vfs_write</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  SyS_write</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_syscall_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  return_from_SYSCALL_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    172</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  inet_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  kernel_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_no_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tcp_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  inet_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  kernel_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sock_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  pipe_to_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  __splice_from_pipe</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  splice_from_pipe</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  generic_splice_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  direct_splice_actor</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  splice_direct_to_actor</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_splice_direct</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_sendfile</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sys_sendfile64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  do_syscall_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  return_from_SYSCALL_64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    735110</span></span></code></pre>
+</div>
+<p>If you diff the most popular stacks, you'll get:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">---</span><span class="sk-032f62-99ffe4"> jessie.txt</span><span class="sk-032f62-99ffe4">  2017-08-16</span><span class="sk-032f62-99ffe4"> 21:14:13.000000000</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+++</span><span class="sk-032f62-99ffe4"> stretch.txt</span><span class="sk-032f62-99ffe4"> 2017-08-16</span><span class="sk-032f62-99ffe4"> 21:14:20.000000000</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@@</span><span class="sk-005cc5-99ffe4"> -1,4</span><span class="sk-032f62-99ffe4"> +1,9</span><span class="sk-032f62-99ffe4"> @@</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> tcp_push_one</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+inet_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+sock_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+kernel_sendmsg</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+sock_no_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+tcp_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> inet_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> kernel_sendpage</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> sock_sendpage</span></span></code></pre>
+</div>
+<p>Let's look closer at <a href="https://elixir.bootlin.com/linux/v4.9.43/source/net/ipv4/tcp.c#L1012" target="_blank" rel="noopener noreferrer"><code>tcp_sendpage</code></a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">int</span><span class="sk-032f62-99ffe4"> tcp_sendpage</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> sock</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">sk,</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> page</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">page,</span><span class="sk-032f62-99ffe4"> int</span><span class="sk-032f62-99ffe4"> offset,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         size_t</span><span class="sk-032f62-99ffe4"> size,</span><span class="sk-032f62-99ffe4"> int</span><span class="sk-032f62-99ffe4"> flags</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    ssize_t</span><span class="sk-032f62-99ffe4"> res</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">sk-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">sk_route_caps</span><span class="sk-24292e-fff"> &amp; </span><span class="sk-6f42c1-ffc799">NETIF_F_SG</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        !</span><span class="sk-6f42c1-ffc799">sk_check_csum_caps(sk</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> sock_no_sendpage</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">sk-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">sk_socket,</span><span class="sk-032f62-99ffe4"> page,</span><span class="sk-032f62-99ffe4"> offset,</span><span class="sk-032f62-99ffe4"> size,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                    flags</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    lock_sock(sk</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tcp_rate_check_app_limited(sk</span><span class="sk-24292e-fff">);  </span><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> sending</span><span class="sk-032f62-99ffe4"> application-limited?</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    res</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> do_tcp_sendpages</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">sk,</span><span class="sk-032f62-99ffe4"> page,</span><span class="sk-032f62-99ffe4"> offset,</span><span class="sk-032f62-99ffe4"> size,</span><span class="sk-032f62-99ffe4"> flags</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    release_sock(sk</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> res</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>It looks like we don't enter the <code>if</code> body. We looked up what <a href="https://elixir.bootlin.com/linux/v4.9.43/source/include/linux/netdev_features.h#L115" target="_blank" rel="noopener noreferrer">NET_F_SG</a> does: <a href="https://en.wikipedia.org/wiki/Large_send_offload" target="_blank" rel="noopener noreferrer">segmentation offload</a>. This difference is peculiar, since both OS'es should have this enabled.</p>
+<h3>Even deeper, to the crux</h3>
+<p>It turned out that we had segmentation offload enabled for only a few of our NICs: <code>eth2</code>, <code>eth3</code>, and <code>bond0</code>. Our network setup can be described as follows:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">eth2</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-d73a49-a0a0a0">              |</span><span class="sk-6f42c1-ffc799">--</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">vlan10</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-6f42c1-ffc799">---</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">bond0</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">|</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">eth3</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-d73a49-a0a0a0">              |</span><span class="sk-6f42c1-ffc799">--</span><span class="sk-24292e-fff">&gt; </span><span class="sk-032f62-99ffe4">vlan100</span></span></code></pre>
+</div>
+<p><strong>The missing piece was that we were missing segmentation offload on VLAN interfaces, where the actual IPs live.</strong></p>
+<p>Here's the diff from <code>ethtook -k vlan10</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> diff</span><span class="sk-005cc5-99ffe4"> -rup</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-6f42c1-ffc799">ssh</span><span class="sk-032f62-99ffe4"> jessie sudo ethtool </span><span class="sk-005cc5-99ffe4">-k</span><span class="sk-032f62-99ffe4"> vlan10)</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-6f42c1-ffc799">ssh</span><span class="sk-032f62-99ffe4"> stretch sudo ethtool </span><span class="sk-005cc5-99ffe4">-k</span><span class="sk-032f62-99ffe4"> vlan10)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">---</span><span class="sk-032f62-99ffe4"> /dev/fd/63</span><span class="sk-032f62-99ffe4">  2017-08-16</span><span class="sk-032f62-99ffe4"> 21:21:12.000000000</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+++</span><span class="sk-032f62-99ffe4"> /dev/fd/62</span><span class="sk-032f62-99ffe4">  2017-08-16</span><span class="sk-032f62-99ffe4"> 21:21:12.000000000</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@@</span><span class="sk-005cc5-99ffe4"> -1,21</span><span class="sk-032f62-99ffe4"> +1,21</span><span class="sk-032f62-99ffe4"> @@</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> Features</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> vlan10:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> rx-checksumming:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-tx-checksumming:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+tx-checksumming:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-ipv4:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-checksum-ip-generic:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-checksum-ip-generic:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-ipv6:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-fcoe-crc:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-sctp:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-scatter-gather:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-scatter-gather:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+scatter-gather:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-scatter-gather:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-scatter-gather-fraglist:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-tcp-segmentation-offload:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-tcp-segmentation:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-tcp-ecn-segmentation:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-tcp-mangleid-segmentation:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-tcp6-segmentation:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-udp-fragmentation-offload:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-generic-segmentation-offload:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+tcp-segmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-tcp-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-tcp-ecn-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-tcp-mangleid-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-tcp6-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+udp-fragmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+generic-segmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> generic-receive-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> large-receive-offload:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> rx-vlan-offload:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span></code></pre>
+</div>
+<p>So we entusiastically enabled segmentation offload:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -K</span><span class="sk-032f62-99ffe4"> vlan10</span><span class="sk-032f62-99ffe4"> sg</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre>
+</div>
+<p>And it didn't help! Will the suffering ever end? Let's also enable TCP transmission checksumming offload:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -K</span><span class="sk-032f62-99ffe4"> vlan10</span><span class="sk-032f62-99ffe4"> tx</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Actual</span><span class="sk-032f62-99ffe4"> changes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tx-checksumming:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-ip-generic:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tcp-segmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-ecn-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-mangleid-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp6-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">udp-fragmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre>
+</div>
+<p>Nothing. The diff is essentially empty now:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> diff</span><span class="sk-005cc5-99ffe4"> -rup</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-6f42c1-ffc799">ssh</span><span class="sk-032f62-99ffe4"> jessie sudo ethtool </span><span class="sk-005cc5-99ffe4">-k</span><span class="sk-032f62-99ffe4"> vlan10)</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-6f42c1-ffc799">ssh</span><span class="sk-032f62-99ffe4"> stretch sudo ethtool </span><span class="sk-005cc5-99ffe4">-k</span><span class="sk-032f62-99ffe4"> vlan10)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">---</span><span class="sk-032f62-99ffe4"> /dev/fd/63</span><span class="sk-032f62-99ffe4">  2017-08-16</span><span class="sk-032f62-99ffe4"> 21:31:27.000000000</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+++</span><span class="sk-032f62-99ffe4"> /dev/fd/62</span><span class="sk-032f62-99ffe4">  2017-08-16</span><span class="sk-032f62-99ffe4"> 21:31:27.000000000</span><span class="sk-005cc5-99ffe4"> -0700</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@@</span><span class="sk-005cc5-99ffe4"> -4,11</span><span class="sk-032f62-99ffe4"> +4,11</span><span class="sk-032f62-99ffe4"> @@</span><span class="sk-032f62-99ffe4"> tx-checksumming:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-ipv4:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-ip-generic:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-checksum-ipv6:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [fixed]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-checksum-fcoe-crc:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-checksum-sctp:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-checksum-fcoe-crc:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-checksum-sctp:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> scatter-gather:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-scatter-gather:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-</span><span class="sk-032f62-99ffe4">       tx-scatter-gather-fraglist:</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-24292e-fff"> [requested </span><span class="sk-032f62-99ffe4">on]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">       tx-scatter-gather-fraglist:</span><span class="sk-032f62-99ffe4"> off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> tcp-segmentation-offload:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tx-tcp-ecn-segmentation:</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre>
+</div>
+<p>The last missing piece we found was that offload changes are applied only during connection initiation, so we restarted Kafka, and we immediately saw a performance improvement (green line):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="17" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JZ2JKP7FHK6V2TM4B9E2.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<p>Not enabling offload features when possible seems like a pretty bad regression, so we filed a ticket for <code>systemd</code>:</p>
+<ul>
+	<li><a href="https://github.com/systemd/systemd/issues/6629" target="_blank" rel="noopener noreferrer">https://github.com/systemd/systemd/issues/6629</a></li>
+</ul>
+<p>In the meantime, we work around our upstream issue by enabling offload features automatically on boot if they are disabled on VLAN interfaces.</p>
+<p>Having a fix enabled, we rebooted our <code>logs</code> Kafka cluster to upgrade to the latest kernel, and our 5 day CPU usage history yielded positive results:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="18" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BFPSEY0QNG3PZ677A5Q4.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<p>The DNS cluster also yielded positive results, with just 2 nodes rebooted (purple line going down):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="19" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JBZEFPMX5NNJQMZ8J8TN.png&amp;w=1920&amp;h=1220&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1220" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<h3>Conclusion</h3>
+<p>It was an error on our part to hit performance degradation without a good regression framework in place to catch the issue. Luckily, due to our heavy use of version control, we managed to bisect the issue rather quickly, and had a temp rollback in place while root causing the problem.</p>
+<p>In the end, enabling offload also removed RCU stalls. It's not really clear whether it was the cause or just a catalyst, but the end result speaks for itself.</p>
+<p>On the bright side, we dug pretty deep into Linux kernel internals, and although there were fleeting moments of giving up, moving to the woods to become a park ranger, we persevered and came out of the forest successful.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><em>If deep diving from high level symptoms to kernel/OS issues makes you excited, <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">drop us a line</a>.</em></p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">

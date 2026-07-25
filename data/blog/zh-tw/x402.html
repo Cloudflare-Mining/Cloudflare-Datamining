@@ -1,0 +1,161 @@
+<p>Cloudflare 正在與 Coinbase 合作成立 x402 Foundation。該基金會的使命是鼓勵採用 <a href="https://github.com/coinbase/x402" target="_blank" rel="noopener noreferrer">x402 通訊協定</a>，這是一個更新的架構，允許用戶端和服務在網路上使用通用語言來交換值。除了今天建立合作夥伴關係之外，我們還將推出一個功能集，可讓開發人員在 <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> 和我們的 <a href="https://developers.cloudflare.com/agents/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>MCP</u></a> 整合項中使用 x402，並提議新的延遲付款方案。</p>
+<h3>代理程式時代的付款服務</h3>
+<p>網路上的付款方式歷來都是為人類設計。我們瀏覽商家的網站，透過將商品加入購物車來顯示購買意圖，以及透過輸入信用卡資訊並按下「付款」來確認購買意圖。但是，如果您想在數位服務之間啟用直接交易，該怎麼辦？我們需要通訊協定來允許機器間的交易。&nbsp;</p>
+<p>每天，Cloudflare 上的網站向試圖存取其內容和電子商務商店的機器人和網路爬蟲傳送超過十億個 HTTP 402 回應碼。此回應碼附帶一個簡單的訊息：「需要付款。」</p>
+<p>然而，這些 402 回應往往未被聽見。&nbsp;原因之一是缺乏標準化。&nbsp;如果沒有規範，如何格式化和回應這些回應碼，內容創作者、出版商和網站營運者缺乏足夠的工具來傳達他們的付款請求。x402 可為開發人員提供清晰、開放的通訊協定，讓網站和自動化代理程式在全球範圍內協商付款。&nbsp;</p>
+<h3>x402 初學指南</h3>
+<p>Coinbase 編寫了 x402 交易流程（概述如下），以協助機器透過 HTTP 直接支付資源費用：</p>
+<ol>
+	<li>用戶端嘗試存取由 x402 閘道控制的資源。&nbsp;</li>
+	<li>伺服器回應狀態碼 402 付款要求。回應正文包含付款說明，其中包括付款金額和收款人。</li>
+	<li>用戶端請求帶有付款授權標頭且由 x402 閘道控制的資源。</li>
+	<li>付款服務商會驗證客戶的惡意負載並結算交易。</li>
+	<li>伺服器在回應中提供請求的資源，並附上確認付款結果的付款回應標頭。&nbsp;</li>
+</ol>
+<p>此流程會建立對網際網路上資源的程式化存取。能夠解釋 x402 通訊協定的客戶端和伺服器可在不需要帳戶、訂閱或 API 金鑰的情況下進行交易。</p>
+<p>使用 x402，不僅可讓傳統使用案例獲利，全新類別的使用案例亦可如此。例如：</p>
+<ul>
+	<li>一個助理能夠從多個商家為您的萬聖節服裝購買配件。</li>
+	<li>一個 AI 代理程式可依瀏覽器轉譯工作階段付費，而不是支付每月訂閱費用。</li>
+	<li>一個自主股票交易系統可進行小額支付，以獲取高品質的即時資料饋送來驅動決策。</li>
+</ul>
+<p>x402 的未來版本可能不受支付系統的限制，除了穩定幣外，還能支援信用卡和銀行帳戶。&nbsp;</p>
+<h3>Cloudflare 的依爬行次數付費：提議 x402 延期付款方案&nbsp;</h3>
+<p>代理程式和網路爬蟲通常需要兩項重要功能，這些功能已經存在於當今大部分的金融基礎架構中：延遲結算以處理爭議；以及單一匯總付款，以簡化會計。例如，網路爬蟲參與我們的<a href="https://blog.cloudflare.com/introducing-pay-per-crawl" target="_blank" rel="noopener noreferrer"><u>依爬行次數付費私有測試版</u></a>，能夠輕鬆爬行大量頁面，產生稽核記錄，然後在每天結束時透過連接的信用卡或銀行帳戶支付單筆費用。&nbsp;</p>
+<p>為了考慮這些付款情境，我們提議針對 x402 通訊協定引入一種新的延後付款方案。&nbsp;這項新方案專為代理式付款而設計，不需要立即結算，並且可透過傳統付款方式或穩定幣處理。藉由提議這項新增功能，我們可協助確保任何合規的伺服器都能選擇將加密交握與付款結算本身分離，讓代理程式和伺服器能夠使用預先協商的授權協議、批次結算或訂閱。</p>
+<p>隨著我們擴展和演進該私有測試版，我們將引入這種新的依爬行次數付費的延遲付款方案。&nbsp;</p>
+<h4>交握介紹</h4>
+<p>以下是我們針對可能在下一個主要版本 x402 中發布的交握功能的初步提議：</p>
+<h5>1.伺服器的服務</h5>
+<p>如今，未經驗證或未經授權的用戶端嘗試存取資源，並且會收到 <code>402 需要付款</code>的回應。伺服器會提供一個付款承諾有效負載，用戶端可用於構建再次請求。此回應是一個機器可讀的提議，並且我們的提議包括一種新的<strong>延遲</strong>方案。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 402</span><span class="sk-6f42c1-ffc799"> Payment</span><span class="sk-6f42c1-ffc799"> Required</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> application</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">json</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "accepts"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "scheme"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "deferred"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "network"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "resource"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://example.com/page"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "..."</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "..."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "extras"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "id"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "abc123"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "termsUrl"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "https://example.com/terms"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h5>2. 客戶簽署的承諾</h5>
+<p>接下來，用戶端會重新傳送請求，並附上包含其付款承諾的已簽署有效負載。<strong>延遲</strong>方案使用 HTTP 訊息簽名，其中 <a href="https://datatracker.ietf.org/doc/html/rfc7517?cf_target_id=D4770F028006FD3F2FEE26B65F35A502" target="_blank" rel="noopener noreferrer"><u>JWK 格式的公開金鑰</u></a>可在託管目錄中取得。<code>簽名-輸入</code>標頭清楚地解釋了<code>簽名</code>中包含請求的哪些部分，以充當用戶端意圖的加密證明，而無需服務提供者進行鏈式交易即可驗證。&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">GET</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">path</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">to</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">resource </span><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Host</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> www</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">User</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Mozilla</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">5.0</span><span class="sk-6f42c1-ffc799"> Chrome</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">113.0</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0</span><span class="sk-6f42c1-ffc799"> MyBotCrawler</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Payment</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    scheme</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"deferred"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    network</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"abc123"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Agent</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> signer</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Input</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"payment"</span><span class="sk-032f62-99ffe4"> "signature-agent"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    created</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1700000000</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    expires</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1700011111</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    keyid</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ba3e64=="</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    tag</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"web-bot-auth"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signature</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> sig</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">abc</span><span class="sk-d73a49-a0a0a0">==</span></span></code></pre>
+</div>
+<h5>3. 成功的回應</h5>
+<p>資源伺服器可驗證簽名，並傳回帶有確認標頭的內容。伺服器負責將付款歸因於與 <strong>HTTP 訊息簽章</strong>關聯的帳戶，驗證用戶端的身分，然後傳遞內容。在這種情境下，沒有與付款關聯的區塊鏈。&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-005cc5-fff"> OK</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">html</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Payment</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    scheme</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"deferred"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    network</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"example-network-provider"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"abc123"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1730872968</span></span></code></pre>
+</div>
+<h5>4. 付款結算</h5>
+<p>伺服器現在可靈活地處理結算。交握中經驗證的 ID 作為交易的參考。此方法實現了靈活的使用模型，免除每次請求的開銷，讓伺服器能夠以訂閱、每日或批量方式累計付款。這可建立一個靈活的框架，在其中立即建立加密信任，而財務結算則可使用傳統支付管道或穩定幣。&nbsp;</p>
+<h3>Cloudflare 的 MCP 伺服器、Agents SDK 和 x402 付款</h3>
+<p>執行程式碼能夠將開放慣例從理論層面，轉化為真正實用的技術，並最終使其成為廣泛認可的標準。使用 Cloudflare 的 <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>Agent SDK</u></a> 建置的代理程式，現在可透過 x402 為資源付費，並且 MCP 伺服器可公開透過 x402 付費的各種工具。為了展示此運作方式，我們建立了 <a href="https://playground.x402.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>x402 試煉場</u></a>，這是一個使用 x402 的即時示範。x402 試煉場由 <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> 提供技術支援，可存取 Cloudflare 上部署的 <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>MCP 伺服器</u></a>中的各種工具。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B777PMJ9V7ZHK1RBYSZM.png&amp;w=1920&amp;h=977&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="977" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>開啟 x402 試煉場後，可建立一個新的錢包，並使用 <a href="https://docs.base.org/learn/deployment-to-testnet/test-networks" target="_blank" rel="noopener noreferrer"><u>Base 區塊鏈測試網</u></a>上的 Testnet USDC 為其注資。代理程式使用 Agents SDK 進行建置，能夠存取包含免費和付費工具的 MCP 伺服器。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpServer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@modelcontextprotocol/sdk/server/mcp.js"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { McpAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/mcp"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { withX402 } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/x402"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> PayMCP</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> McpAgent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> withX402</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    new</span><span class="sk-6f42c1-ffc799"> McpServer</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">"PayMCP"</span><span class="sk-24292e-fff">, version: </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-005cc5-fff">    X402_CONFIG</span></span>
+<span class="line"><span class="sk-24292e-fff">  );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Paid tool</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">paidTool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "square"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "Squares a number"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      0.01</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// Tool price</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        a: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {},</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">number</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> { content: [{ type: </span><span class="sk-032f62-99ffe4">"text"</span><span class="sk-24292e-fff">, text: </span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">(a </span><span class="sk-d73a49-a0a0a0">**</span><span class="sk-005cc5-ffc799"> 2</span><span class="sk-24292e-fff">) }] };</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Free tool</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.server.</span><span class="sk-6f42c1-ffc799">tool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "add-two-numbers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "Adds two numbers"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        a: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">        b: z.</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> { content: [{ type: </span><span class="sk-032f62-99ffe4">'text'</span><span class="sk-24292e-fff">, text: </span><span class="sk-6f42c1-ffc799">String</span><span class="sk-24292e-fff">(a </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> b) }] };</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>代理程式嘗試使用付費工具時，MCP 伺服器會回應「402 需要付款」。代理程式能夠解譯付款指令，並提示使用者是否要繼續進行交易。要建置與 x402 相容的用戶端，需要對工具調用進行基本封裝：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { withX402Client } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/x402"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Your Agent definitions...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onToolCall</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Build the x402 client</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> x402Client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> withX402Client</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">      myMcpClient,</span></span>
+<span class="line"><span class="sk-24292e-fff">      { network: </span><span class="sk-032f62-99ffe4">"base-sepolia"</span><span class="sk-24292e-fff">, account: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.account }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // The first parameter becomes the confirmation callback.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // We can set it to `null` if we want the agent to pay automatically.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> x402Client.</span><span class="sk-6f42c1-ffc799">callTool</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.onPaymentRequired,</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: toolName,</span></span>
+<span class="line"><span class="sk-24292e-fff">        arguments: toolArgs</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>此測試代理程式從錢包中提取資金，並將有效負載傳送至 MCP 伺服器，該伺服器負責結算交易。交易可設定為在有或沒有人工確認的情況下執行，讓您設計最適合應用程式的介面。</p>
+<h3>接下來做什麼？&nbsp;</h3>
+<p>您現在可使用 <a href="https://developers.cloudflare.com/agents/x402" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> 或部署自己的 <a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>MCP 伺服器</u></a>來開始使用。</p>
+<p>我們將繼續與 Coinbase 密切合作，建立 x402 Foundation。關於具體架構的更多資訊，我們很快會發布公告，敬請期待。</p>
+<p>我們認為，開放且互通的協議具有重要價值 – 因此，我們鼓勵所有人直接參與 <a href="https://github.com/coinbase/x402" target="_blank" rel="noopener noreferrer"><u>x402 通訊協定</u></a>的開發和改進。想要與 Cloudflare 的 x402 團隊聯繫，請寄送電子郵件至 <a href="mailto:x402@cloudflare.com"><u>x402@cloudflare.com</u></a>。</p>

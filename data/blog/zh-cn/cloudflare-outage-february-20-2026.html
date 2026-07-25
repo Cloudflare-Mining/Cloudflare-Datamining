@@ -1,0 +1,291 @@
+<p>2026 年 2 月 20 日 17:48（世界标准时间），Cloudflare 经历了服务中断，部分使用 Cloudflare 自带 IP (BYOIP) 服务的客户发现其通过边界网关协议 (BGP) 连接到互联网的路由被撤销。</p>
+<p>此问题并不是任何类型的网络攻击或恶意活动直接或间接引起。之所以造成此问题，原因是 Cloudflare 更改了通过 BYOIP 管道来管理启用 IP 地址的方式。这一更改导致 Cloudflare 意外地撤回了客户前缀。</p>
+<p>对于一些 BYOIP 客户来说，这导致他们无法从互联网访问服务和应用，从而导致其使用 BYOIP 的 Cloudflare 部署连接超时和失败。Cloudflare 的递归 DNS 解析器 (1.1.1.1) 网站出现了 403 错误。该事件总持续时间为 6 小时 7 分钟，其中大部分时间用于将前缀配置恢复到更改前的状态。</p>
+<p>我们开始观察到故障后，Cloudflare 工程师恢复了更改，并且停止撤回前缀。然而，在工程师能够恢复更改之前，约 1,100 个 BYOIP 前缀已从 Cloudflare 网络中撤回。部分客户能够通过使用 Cloudflare 仪表板，重新播发其 IP 地址来恢复其自己的服务。在恢复所有前缀配置后，我们解决了该事件。</p>
+<p>我们对客户造成的影响深表歉意。今天的服务中断让大家失望了。本文将详细回顾事件的来龙去脉，以及哪些系统和流程出现了故障。我们还将概述正在采取的措施，以防止此类中断再次发生。</p>
+<h2>这次中断对客户有何影响？</h2>
+<p>下图显示了在事件发生期间 Cloudflare 向 BGP 邻居播发的前缀数量（这与影响程度相关），因为未播发的前缀在互联网上无法连接。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="570" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=715&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=640&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=715&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=750&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=828&amp;h=660&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1080&amp;h=861&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1280&amp;h=1020&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1430&amp;h=1140&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3193 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ERHMNJEMZ68WYB0TQWAP.png&amp;w=1920&amp;h=1530&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1530" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="570" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>在播发给对等互连的 6,500 个前缀中，其中 4,306 个是 BYOIP 前缀。这些 BYOIP 前缀被播发到每个对等互连，代表我们在全球播发的所有 BYOIP 前缀。&nbsp; </p>
+<p>此次事件发生期间（世界标准时间 17:56 至 18:46），共计 6,500 个前缀中，有 1,100 个前缀被撤回。共计 4,306 个 BYOIP 前缀中，25% 的 BYOIP 前缀被无意中撤回。我们能够检测对 one.one.one.one 的影响，并在更多前缀受到影响之前恢复产生影响的更改。在 19:19（世界标准时间），我们向客户发布了指南，他们可通过前往 Cloudflare 仪表板并重新播发其前缀来自行修复此事件。</p>
+<p>在 20:20（世界标准时间）左右，Cloudflare 成功恢复了许多播发更改，使 800 个前缀得到恢复。还有约 300 个前缀无法通过仪表板进行修复，因为这些前缀的服务配置因软件错误而从边缘删除。Cloudflare 工程师于 23:03（世界标准时间）手动恢复了这些前缀。&nbsp;</p>
+<p>此次事件没有影响所有 BYOIP 客户，因为配置更改为迭代应用，而非在所有 BYOIP 客户即时应用。一旦发现配置更改会造成影响，在所有客户受到影响之前，该更改就被撤销了。&nbsp;</p>
+<p>受影响的 BYOIP 客户首先经历了一种称为 <a href="https://blog.cloudflare.com/going-bgp-zombie-hunting" target="_blank" rel="noopener noreferrer"><u>BGP 路径搜索</u></a>的行为。在这种状态下，最终用户连接会遍历网络，尝试找到到目标 IP 的路由。这种情况会持续存在，直到打开的连接超时并失败。在将该前缀播发到某处之前，客户会继续看到这种故障模式。出现这种循环直到故障的情况，会影响任何使用 BYOIP 向互联网播发的产品。另外，访客在访问 one.one.one.one（Cloudflare 递归 DNS 解析器网站）时，会遇到 HTTP 403 错误和“边缘 IP 受限”错误消息。基于 1.1.1.1 的 DNS 解析。公共解析器不受影响，包括基于 HTTPS 的 DNS。受影响服务完整明细如下。</p>
+<div id="html-block-ks" class="html-block">
+	<style>
+		#html-block-ks .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-ks .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ks .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ks .tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-ks .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:251px">
+				<col style="width:451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">服务/产品</span></th>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">影响描述</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">核心 CDN 与安全服务</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">流量没有吸引到 Cloudflare，用户如果连接到在这些范围上播发的网站，会发现连接失败</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Spectrum</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">BYOIP 上的 Spectrum 应用无法代理流量，因为流量没有被吸引到 Cloudflare</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">专用出口</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">如果客户使用 Gateway 专用出口并利用 BYOIP，或者使用专用 IP 进行 CDN 出口并利用 BYOIP，则无法将流量发送到其目的地。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Magic Transit</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">最终用户若连接到受 Magic Transit 保护的应用，则不会在互联网播发，并且会看到连接超时和失败。</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>还有一些客户通过在 Cloudflare 仪表板上切换前缀无法恢复服务。随着工程师开始重新公告前缀，以便为这些客户恢复服务，尽管这些客户的 IP 地址被播发，但延迟和故障可能有所增加。其原因是，由于我们自己的软件问题，一些用户的寻址设置被从边缘服务器上删除，且状态必须传播回边缘。&nbsp;</p>
+<p>我们下面将讲述寻址系统中的具体故障，但首先需要快速了解寻址 API，这是 Cloudflare 客户 IP 地址的底层真实来源。</p>
+<h2>Cloudflare 的寻址 API</h2>
+<p>寻址 API 是 Cloudflare 网络上存在的地址的权威数据集。对该数据集做出任何更改，都会立即反映在 Cloudflare 的全球网络中。虽然作为<a href="https://blog.cloudflare.com/fail-small-resilience-plan" target="_blank" rel="noopener noreferrer"><u>橙色警报：小规模故障</u></a>计划的一部分，我们正在改进这些系统发布更改的方式，但今天客户可以通过与面向公众的 API 交互来配置其 IP 地址，这可配置一组数据库，触发操作工作流，将更改传播到 Cloudflare 的边缘网络。这意味着，对寻址 API 的更改会立即传播到 Cloudflare 边缘。</p>
+<p>在 Cloudflare 上播发和配置 IP 地址涉及几个步骤：</p>
+<ul>
+	<li>客户通过寻址 API 或 BGP，控制向 Cloudflare 发送有关 IP 地址的播发/撤回的信号。</li>
+	<li>寻址 API 会指示机器更改前缀播发。</li>
+	<li>一旦足够多的机器收到了更新前缀的通知，就会在路由器上更新 BGP</li>
+	<li>最后，客户可通过<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>服务绑定</u></a>，将 Cloudflare 产品配置为使用 BYOIP 地址，这会将产品分配到这些范围</li>
+</ul>
+<p>寻址 API 让我们能够自动化处理如何播发或撤回地址的大多数流程，但某些流程仍需手动操作。由于这些手动流程最接近生产环境，因此存在风险。作为<a href="https://blog.cloudflare.com/fail-small-resilience-plan" target="_blank" rel="noopener noreferrer"><u>橙色警报：小规模故障</u></a>计划的一部分，补救的目标之一是删除在寻址 API 中执行的手动操作，而使用安全的工作流程取而代之。</p>
+<h2>这一事件是如何发生的？</h2>
+<p>出错的具体配置部分是一项修改，尝试自动执行客户从 Cloudflare 的 BYOIP 服务中删除前缀的操作，这是目前客户经常提出的手动请求。取消这个手动流程是我们“橙色警报：小规模故障”计划的一部分，旨在推动所有更改，以实现安全、自动化、以运行状况为中介的部署。由于 BYOIP 前缀的相关对象列表可能较大，这会作为定期运行的子任务的一部分来实施，该子任务检查应删除的 BYOIP 前缀，然后将其删除。遗憾的是，这个定期清理子任务查询 API 时发现了一个错误。</p>
+<p>下面是清理子任务的 API 查询：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"> resp, </span><span class="sk-6f42c1-ffc799">err</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> d.</span><span class="sk-6f42c1-ffc799">doRequest</span><span class="sk-24292e-fff">(ctx, http.MethodGet, </span><span class="sk-032f62-99ffe4">`/v1/prefixes?pending_delete`</span><span class="sk-24292e-fff">, nil)</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>以下是 API 实现的相关部分：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-6f42c1-ffc799"> v</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req.</span><span class="sk-005cc5-fff">URL</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Query</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">Get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"pending_delete"</span><span class="sk-24292e-fff">); v </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// ignore other behavior and fetch pending objects from the ip_prefixes_deleted table</span></span>
+<span class="line"><span class="sk-24292e-fff">		prefixes, </span><span class="sk-6f42c1-ffc799">err</span><span class="sk-24292e-fff"> :</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">RO</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">IPPrefixes</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">FetchPrefixesPendingDeletion</span><span class="sk-24292e-fff">(ctx)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> nil {</span></span>
+<span class="line"><span class="sk-24292e-fff">			api.</span><span class="sk-6f42c1-ffc799">RenderError</span><span class="sk-24292e-fff">(ctx, w, ErrInternalError)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">		api.</span><span class="sk-6f42c1-ffc799">Render</span><span class="sk-24292e-fff">(ctx, w, http.StatusOK, </span><span class="sk-6f42c1-ffc799">renderIPPrefixAPIResponse</span><span class="sk-24292e-fff">(prefixes, nil))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>由于客户端传递的 pending_delete 没有值，这里 Query().Get(“pending_delete”) 的结果将是一个空字符串 (“”)，于是 API 服务器会将其解释为对所有 BYOIP 前缀的请求，而不仅仅是那些本应删除的前缀。系统将其解释为所有返回的前缀都在排队等待删除。然后，新的子任务开始系统地删除所有 BYOIP 前缀及其所有相关依赖对象，包括<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>服务绑定</u></a>，直到发现影响、工程师识别出子任务并将其关闭。</p>
+<h3>为什么 Cloudflare 没有在我们的暂存环境或测试中捕获这个错误？</h3>
+<p>我们的暂存环境包含与生产环境尽可能匹配的数据，但在这种情况下仍显不足，我们用来模拟将要发生情况的模拟数据也不够充分。 </p>
+<p>此外，虽然我们对此功能进行了测试，但我们在测试过程和环境中对这种场景的覆盖并不完整。初始测试和代码审查的重点是 BYOIP 自助服务 API，并且已成功完成。虽然我们的工程师成功地测试了客户会遵循的确切流程，但测试并未涵盖任务运行程序服务在不显式输入的情况下独立执行更改用户数据的情况。</p>
+<h3>为什么没有立即恢复？</h3>
+<p>并非所有受影响的 BYOIP 前缀都以相同的方式受到影响，需要更密集的数据恢复步骤。作为“橙色警报：小规模故障”计划的一部分，我们正在构建一个系统，可通过以运行状况为中介的部署安全地推出操作状态快照。如果出现某些问题并导致意外行为，可以非常迅速地回滚到已知良好的状态。不过，该系统目前尚未进入生产阶段。</p>
+<p>在此次事件中，BYOIP 前缀处于不同的影响状态，而这些不同的状态需要采取不同的行动：</p>
+<ul>
+	<li>大多数受影响的客户只是撤回其前缀。在此配置中，客户可进入仪表板并切换其播放，这样即可恢复服务。</li>
+	<li>部分客户的前缀被撤销，并删除了部分绑定。这些客户处于部分恢复状态，他们可以切换某些前缀，但其他前缀不可用。</li>
+	<li>部分客户的前缀被撤销，且所有服务绑定被删除。他们无法在仪表板中切换其前缀，因为没有绑定任何<a href="https://developers.cloudflare.com/byoip/service-bindings" target="_blank" rel="noopener noreferrer"><u>服务</u></a>（Magic Transit、Spectrum、CDN）。这些客户花了最长时间来缓解风险，因为必须启动全局配置更新，以便将所有这些客户的服务绑定重新应用到 Cloudflare 边缘上的每一台计算机。</li>
+</ul>
+<h3>这一事件与“橙色警报：小规模故障”有什么关系？</h3>
+<p>发生此事件时，我们正在进行的更改是“橙色警报：小规模故障”计划的一部分，该计划旨在提高 Cloudflare 代码和配置的韧性。在<a href="https://blog.cloudflare.com/fail-small-resilience-plan" target="_blank" rel="noopener noreferrer"><u>橙色警报：小规模故障</u></a>计划简介中，工作可分为三个部分：</p>
+<ul>
+	<li>对传播到网络的任何配置更改进行受控部署，就像我们目前对软件二进制版本发布所做的一样。</li>
+	<li>更改 Cloudflare 内部的“紧急访问”规程并消除任何循环依赖关系，以便我们和客户在发生事件期间都能快速行动，并顺利访问所有系统。</li>
+	<li>审核、改进并测试所有处理网络流量的系统的故障模式，确保这些系统在所有条件下（包括意外错误状态）均表现出明确定义的行为。</li>
+</ul>
+<p>我们尝试部署的更改属于第一个存储桶。通过将有风险的手动更改转移到安全的自动化配置更新，这会以基于运行状况的方式进行部署，我们旨在提高服务的可靠性。</p>
+<p>关键工作已经在进行中，通过分阶段的测试中介和更佳的正确性检查，来增强寻址 API 对配置更改的支持。这项工作与部署更改同时进行。尽管中断前尚未完全部署预防措施，但事件发生时，这些团队正在对这些系统进行积极的维护工作。我们的“橙色警报：小规模故障”计划承诺，要求以受控方式推出到生产环境，我们的工程团队一直深入到堆栈的所有层，以识别并修复所有有问题的结果。虽然这次中断本身并非全球性，但其影响范围和影响却大到不可接受，这进一步强化了“橙色警报：小规模故障”计划状态下的优先事项，直到我们重新树立起信心，确信所有网络变化将尽可能循序渐进。现在我们来更加具体地谈谈对这些系统的改进。</p>
+<h2>补救及后续步骤</h2>
+<h3>API 模式标准化</h3>
+<p>此事件中的问题之一是 pending_delete 标志被解释为字符串，使客户端和服务器都难以合理化该标志的值。我们将改进 API 模式以确保更好的标准化，这将使测试和系统更容易验证 API 调用是否正确构成。这项工作是第三个“橙色警报”工作流的一部分，该工作流旨在创建在所有条件下定义明确的行为。</p>
+<h3>更好地分离操作和配置状态</h3>
+<p>如今，客户对寻址模式做出的更改会持久存储在一个权威数据库中，这个数据库就是用于操作的数据库。这样一来，手动回滚过程更具挑战性，因为工程师需要利用数据库快照，而不是在期望状态和实际状态之间进行合理化。我们将重新设计回滚机制和数据库配置，以确保我们可以轻松快速地回滚更改，并在客户配置和生产之间引入层。 </p>
+<p>我们将为从数据库读取的数据创建快照并应用到生产，并以部署所有其他生产更改的相同方式来应用这些快照，以及通过运行状况指标进行调解，以便在出现问题时自动停止部署。这意味着，下次遇到数据库进入错误状态的问题时，我们几乎可以即时将个别客户（或所有客户）恢复到一个正常运作的版本。</p>
+<p>虽然这会暂时阻止客户在发生中断时通过我们的 API 进行直接更新，但这意味着我们能够在我们设法修复数据库的同时，继续为客户提供流量，而不必一段时间处于停机状态。这项工作与第一个和第二个“橙色警报”工作流一致，涉及快速回滚以及配置的安全、基于运行状况的部署。</p>
+<h3>更好地对大额提款诉讼进行仲裁</h3>
+<p>我们将改进监控，以检测何时发生过快或过大的更改（例如快速撤回或删除 BGP 前缀），并在发生这种情况时禁用快照部署。这会形成一种断路器，以阻止任何操作数据库的失控过程具有很大的影响范围，就像我们在这个事件中看到的那样。</p>
+<p>此外，我们还在进行一些工作，以直接监控客户运行的服务是否正常运行，这些信号也可以用于跳闸断路器，并阻止应用潜在的危险更改，直到我们有时间进行调查。这项工作与“橙色警报”的第一个工作流一致，涉及安全部署更改。</p>
+<p>以下是事件的时间表，包括部署变更和补救措施。 </p>
+<div id="html-block-k3p" class="html-block">
+	<style>
+		#html-block-k3p .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k3p .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3p .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3p .tg .tg-7fle {
+			background-color: #efefef;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k3p .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k3p .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:151px">
+				<col style="width:201px">
+				<col style="width:451px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-7fle"><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000">时间（世界标准时间）</span><span style="font-style:normal;text-decoration:none;color:#000"></span><span style="font-weight:bold;font-style:normal;text-decoration:none;color:#000"></span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">状态</span></th>
+					<th class="tg-7fle"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">描述</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 5 日 21:53</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">代码合并到系统中</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">损坏的子流程已合并到代码库中</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 02 月 20 日 17:46</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">代码部署到系统中</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">带有损坏子流程的 API 发布已完成</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 17:56</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">影响开始</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">损坏的子流程开始执行。前缀播发更新开始传播，前缀开始被撤回 </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影响开始 – </span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 18:13</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 介入</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 因 one.one.one.one 上的故障而介入。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 18:18</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">宣布内部事件</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 的工程师继续调查影响。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 18:21</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">寻呼寻址 API 团队</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">负责寻址 API 的工程团队介入并开始调试。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 02 月 20 日 18:46</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">发现问题</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">损坏的子流程被工程师终止，且常规执行被禁用；开始补救</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 02 月 20 日 19:11:00</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">开始缓解</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare 工程师开始恢复已撤销前缀的可服务性，而其他工程师则专注于已被删除的前缀。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 19:19</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">部分前缀缓解</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">客户开始通过仪表板重新播发其前缀以恢复服务。</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影响降级 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 19:44</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">持续提供额外缓解措施</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">工程师开始对删除前缀的数据库采用恢复方法。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 20:30</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">最终缓解过程开始</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">工程师完成发布，以恢复仍具有现有服务绑定的已撤回前缀。其他人员仍在处理已删除的前缀 </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影响降级 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 2 月 20 日 21:08</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">配置更新部署。</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">工程启动全局机器配置部署，以恢复无法自行缓解或通过之前的工作缓解的前缀。</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影响降级 –</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2026 年 02 月 20 日 23:03</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">配置更新完成。</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">完成全球机器配置部署，以恢复剩余前缀。</span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">– 影响结束 –</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>对于发生今天这一事件，以及对我们提供给客户的服务，乃至整个互联网造成的影响深表歉意。我们的目标是提供一个能灵活应对变化的网络，但我们并未兑现对您的承诺。我们正在积极实施这些改进，以确保未来改进后的稳定性，并防止这个问题再次发生。</p>

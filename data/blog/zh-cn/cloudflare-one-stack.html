@@ -1,0 +1,73 @@
+<p>部署或迁移至 Zero Trust 网络架构往往令人望而生畏。在修改任何策略之前，团队必须先厘清其网络的实际构建方式：现有哪些应用、它们的认证与授权机制如何设计、应用间的流量如何流转，以及当前架构所依赖的全部假设。这一实操过程要求安全从业者解读现有每一条安全策略与路由策略背后的意图。</p>
+<p>今天，我们正式推出 Cloudflare One Stack，这是一套您可以赋予智能体的<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>技能集合</u></a>，用于配置、部署和管理 Zero Trust 环境。此工具包可助您自动完成全新安全套件的学习，并将现有安全套件无缝迁移至 Cloudflare。</p>
+<p>Cloudflare 已帮助成千上万的客户完成了这一过程。通过以上反复实践获得的经验，我们得以掌握迁移卡点、高频问题及推进落地的核心要素。Cloudflare One Stack 凝聚了这些专业经验，让其触手可及。</p>
+<h3>网络安全领域的智能体能力缺失</h3>
+<p>团队现已利用智能体编写代码、处理告警分级，并实现工作流自动化。越来越多的组织希望 Cloudflare 提供专用工具，赋能智能体高效执行安全工作流。智能体本身并未接受有关训练，不掌握组织特定网络拓扑或供应商配置的细节。</p>
+<p>组织若能获得明确可行且具备权威性的操作指引，便可将其上下文信息整合至现有工具体系中，充分释放已部署安全产品的效能。</p>
+<p>Cloudflare 长期以来一直是市场上最容易部署的 SASE 供应商。本套件将这一理念延伸至智能体：为其提供在企业安全基础设施上运作所需的上下文、工具和结构化推理能力。</p>
+<h2>什么是 Cloudflare One Stack？</h2>
+<p>Cloudflare One 套件是一套专为智能体设计的<a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>技能集合</u></a>。与<a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank" rel="noopener noreferrer"><u>任何技能</u></a>一样，可单独使用，融入您自身的上下文，或在其基础上构建工具。它专门用于在评估、部署和管理 <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a> 的整个生命周期为安全从业者提供协助。</p>
+<p>本套件是通过整合拥有数万小时 Cloudflare One 产品客户服务经验的员工所精心整理的知识而构建。其中包含各种工具，用于规划、管理及实现您在 Cloudflare 上的用户和智能体安全基础设施。其中还集成了专为从 <a href="https://blog.cloudflare.com/descaler-program" target="_blank" rel="noopener noreferrer"><u>Zscaler</u></a>、Palo Alto Networks 等传统安全厂商迁移而精心设计的逻辑。</p>
+<p>配合 <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>Cloudflare 代码模式 MCP 服务器</u></a>使用时，该套件可为智能体提供一个具备类型支持的 Cloudflare API 接口。智能体可通过一套由 Cloudflare 官方推荐的标准化工作流，查询您的实时账户、核查配置并执行修改操作，而非采用临时调用 API 的方式。</p>
+<h2>套件内容</h2>
+<p>Cloudflare One stack 以两份轻量技能文件的形式交付：cloudflare-one 与 cloudflare-one-migration。二者结合完整覆盖 Cloudflare One 部署全流程：平台迁移、方案实施、日常管理及故障排查：</p>
+<ul>
+	<li>通过 Cloudflare Access 实现<strong>远程访问及 VPN 替代</strong></li>
+	<li>通过 Cloudflare Gateway 保障<strong>用户、网络、设备与数据安全</strong></li>
+	<li>通过 Cloudflare Tunnel、Cloudflare Mesh 和 Cloudflare WAN 的<strong>构建网络连接能力</strong></li>
+	<li><strong>迁移指南</strong>，包含从其他 SASE 厂商迁移的明确详细信息</li>
+	<li><strong>网络拓扑图解析与生成</strong>，便于您和团队清晰、直观地可视化有关网络的拟议变更方案</li>
+	<li><strong>供应商概念转化</strong>，建立不同 SASE 厂商间术语概念的对应映射，降低评估与更换服务商的门槛</li>
+	<li><strong>故障排除和运营</strong>，使用 Digital Experience Monitoring（DEX）工具包和自动规则建议</li>
+</ul>
+<h2>工作原理</h2>
+<p>该套件已上架 <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflare Skills</u></a> 代码仓库。每个技能文件均包含结构化知识库、决策树及工具定义，由智能体在上下文匹配时自动加载。将此信息提供给您的代理，让它帮助您设置、配置和管理您的 Zero Trust 环境：</p>
+<div id="html-block-k20" class="html-block">
+	<style>
+		#html-block-k20 .prompt-container {
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			padding: 16px;
+			margin: 2px 2px 6px 2px;
+		}
+
+		#html-block-k20 .prompt-text {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+			color: #2b2b2b;
+			margin-bottom: 12px;
+			font-weight: 500;
+		}
+	</style><iframe width="100%" height="125" frameborder="0" scrolling="no" style="display:block !important;width:100% !important;min-height:125px !important;max-height:125px !important;margin:0 0 10px 0 !important;padding:0 !important;border:none !important"></iframe>
+</div>
+<p>cloudflare-one 技能文件提供各类产品通用使用指引。例如，如果您向智能体询问如何使用 Cloudflare Tunnel 或 Cloudflare Mesh 替代您的 VPN 基础设施，该技能知道如何：</p>
+<ol>
+	<li>盘点您的现有 VPN 应用，并确定各应用所需的网络连接模式</li>
+	<li>将各应用映射至适配的 Cloudflare 基础组件：自托管 Access 应用、通过 Tunnel 连接的服务，或通过 Mesh 连接的网段</li>
+	<li>生成推荐部署顺序，最大限度减少割接期间业务中断</li>
+	<li>生成配置汇总文档，供您的团队在执行变更前复核审阅</li>
+</ol>
+<p>cloudflare-one-migration 技能文件涵盖不同服务商之间的概念对照转换。例如，如果您要求智能体将 Zscaler Private Access 应用迁移到 Cloudflare Access，该技能知道如何：</p>
+<ol>
+	<li>将 Zscaler 应用定义映射至 Cloudflare Access 应用定义</li>
+	<li>将 Zscaler 用户组和策略转换为 Cloudflare Access 策略</li>
+	<li>使用 Cloudflare API 在您的帐户中创建等效资源</li>
+	<li>生成迁移内容汇总，并标注需人工复核的项目</li>
+</ol>
+<p>该套件内置的迁移逻辑，与 Cloudflare 的 <a href="https://blog.cloudflare.com/descaler-program" target="_blank" rel="noopener noreferrer"><u>Descaler </u></a>及 <a href="https://blog.cloudflare.com/deskope-program-and-asdp-for-descaler" target="_blank" rel="noopener noreferrer"><u>Deskope </u></a>程序所采用的逻辑完全一致。借助上述程序，企业客户可在数小时内（而非耗时数月）完成从 Zscaler、Netskope 至 Cloudflare One 的迁移工作。该套件可为任意客户或合作伙伴随时提供上述能力，无需等待预约服务。</p>
+<h3>使用套件的更多方式</h3>
+<p>Cloudflare One stack 还可以：</p>
+<ul>
+	<li>根据您真实帐户中的流量推荐安全规则</li>
+	<li>自动将您现有的 Zscaler Private Access 应用迁移到自托管的 Cloudflare Access 应用</li>
+	<li>调查安全 Web 网关 HTTP 日志中的异常并构建规则以解决用户遇到的问题</li>
+	<li>使用 DEX 工具包报告用户在关键场景中的稳定性，并采取措施改善用户访问延迟</li>
+</ul>
+<p>无论是从智能体加载技能，还是在其上构建自定义工具，Cloudflare One stack 均可覆盖上述全部场景，并满足其他使用需求。</p>
+<h2>合作伙伴亦可使用</h2>
+<p>该套件不仅能够为部署 Cloudflare One 产品套件的客户简化日常运维工作，也为 Cloudflare 合作伙伴网络提供了一个实用工具。合作伙伴可利用它来帮助客户更快地部署、更有效地管理、更准确地排除故障，并推动问题得到解决。</p>
+<h2>下一步</h2>
+<p>您现在就可以开始使用 Cloudflare One stack。若要充分发挥该套件的全部能力，请搭配 Cloudflare <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#code-mode" target="_blank" rel="noopener noreferrer"><u>code mode MCP 服务器</u></a>一同使用。MCP 服务器使您的智能体通过单个压缩接口实时访问 Cloudflare API，使身份验证凭据保持在模型上下文之外。</p>
+<p>Cloudflare One stack 将随着 Cloudflare One 产品的发展而继续扩展。支持更多迁移来源的新技能以及更完善的高级故障排查流程现已进入开发阶段。</p>
+<p>随着我们进一步了解客户和合作伙伴如何利用这些技能文件，我们计划围绕这些技能构建更强大的工具。若您是客户或合作伙伴，且希望反馈该套件后续需新增支持的功能，可联系专属客户经理，或在代码仓库中提交 issue。</p>

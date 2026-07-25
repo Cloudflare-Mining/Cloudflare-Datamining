@@ -1,102 +1,35 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<p>[</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6eLdKa5XU8ZoVypVmTTicX/29db62cdebaa4cad989c47c896af4390/5934859823_979c223bab.jpg" alt="multiplicity-II-pagination" class="kg-image" width="300" height="191" loading="lazy">
-
-	</figure>
-	<p>](<a href="http://www.flickr.com/photos/damonbillian/5934859823" target="_blank" rel="noopener noreferrer">http://www.flickr.com/photos/damonbillian/5934859823/</a> "multiplicity-II-pagination by dbillian, on Flickr")</p>
-	<p>CloudFlare gets a lot of questions about caching and our free CDN (content delivery network), so I thought I would put together a really quick guide about what CloudFlare caches and more.</p>
-	<div class="flex anchor relative">
-		<h4 id="why-should-i-cache-my-static-content-at-all">Why should I cache my static content at all?</h4>
-		<a href="https://blog.cloudflare.com/#why-should-i-cache-my-static-content-at-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Distributing your static content with CloudFlare's CDN will lead to faster page loading times for your visitors. As visitors are more inclined to bounce away from a slow loading site, you will reduce your bounce rate and increase the amount of time that people spend on your site. Or, in other words, a faster a website means your visitors will stay longer.</p>
-	<div class="flex anchor relative">
-		<h4 id="do-i-need-to-do-anything-special-to-have-cloudflare-cache-my-content">Do I need to do anything special to have CloudFlare cache my content?</h4>
-		<a href="https://blog.cloudflare.com/#do-i-need-to-do-anything-special-to-have-cloudflare-cache-my-content" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>No. Unlike many other traditional CDNs, CloudFlare is zero configuration. What this means is that there is no configuration once you sign up for CloudFlare. CloudFlare's technology will automatically cache the static <a href="http://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache" target="_blank" rel="noopener noreferrer">content based on file extensions</a>.</p>
-	<div class="flex anchor relative">
-		<h4 id="i-already-use-a-cdn-can-i-still-use-cloudflare">I already use a CDN. Can I still use CloudFlare?</h4>
-		<a href="https://blog.cloudflare.com/#i-already-use-a-cdn-can-i-still-use-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Absolutely. There are two setup options.</p>
-	<p><b>Option 1:</b>If you want to use both CloudFlare and your current CDN, in your CloudFlare DNS Settings page, you want to make sure that the CNAME for the CDN subdomain is listed and that the cloud is orange. This means that the traffic passes through CloudFlare first, before hitting your other CDN. As a result, your bill for your other CDN provider should decrease.</p>
-	<p><b>Option 2:</b>If you don't want to use CloudFlare on the same subdomains as your other CDN, you can turn CloudFlare 'off' for those subdomains by marking the cloud as gray. This means that none of the traffic to those subdomains will pass through CloudFlare's network.</p>
-	<p>To access your CloudFlare DNS Settings page:</p>
-	<p>My Websites-&gt;Settings-&gt;DNS settings</p>
-	<div class="flex anchor relative">
-		<h4 id="will-cloudflare-conflict-with-any-of-my-wordpress-caching-plugins">Will CloudFlare conflict with any of my WordPress caching plugins?</h4>
-		<a href="https://blog.cloudflare.com/#will-cloudflare-conflict-with-any-of-my-wordpress-caching-plugins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare is a complementary offering to <a href="http://www.tutorial9.net/tutorials/web-tutorials/wordpress-caching-whats-the-best-caching-plugin" target="_blank" rel="noopener noreferrer">popular WordPress caching plugins</a>. Where as most WordPress caching plugins focus on optimizing your database and server, CloudFlare optimizes at the network level. CloudFlare has partnered with the popular W3 Total Cache plugin and is included as an option in <a href="https://blog.cloudflare.com/w3-total-cache-w3tc-total-cloudflare-integrat">W3 TotalCache</a> (W3TC).</p>
-	<p>On the topic of WordPress, <a href="http://wordpress.org/extend/plugins/cloudflare" target="_blank" rel="noopener noreferrer">CloudFlare has a WordPress plugin</a> as well. This ensures that WordPress users get the most out of the service. Note: If you activate CloudFlare through W3TC, then you do not need to use the CloudFlare WordPress plugin as well.</p>
-	<div class="flex anchor relative">
-		<h4 id="what-kind-of-static-content-does-cloudflare-cache">What kind of static content does CloudFlare cache?</h4>
-		<a href="https://blog.cloudflare.com/#what-kind-of-static-content-does-cloudflare-cache" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare caches common static content file extensions, including JavaScript, CSS and images. The full list of what CloudFlare caches can be found <a href="http://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<div class="flex anchor relative">
-		<h4 id="does-cloudflare-cache-dynamic-content-such-as-html-or-php">Does CloudFlare cache dynamic content, such as HTML or PHP?</h4>
-		<a href="https://blog.cloudflare.com/#does-cloudflare-cache-dynamic-content-such-as-html-or-php" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare does not currently cache these content types.</p>
-	<div class="flex anchor relative">
-		<h4 id="will-caching-my-static-content-affect-dynamic-updates-to-mysite">Will caching my static content affect dynamic updates to mysite?</h4>
-		<a href="https://blog.cloudflare.com/#will-caching-my-static-content-affect-dynamic-updates-to-mysite" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>No, dynamic updates to your site will still occur as they do now. CloudFlare is fully compatible.</p>
-	<div class="flex anchor relative">
-		<h4 id="i-need-to-update-my-static-content-that-cloudflare-is-caching-what-do-i-do">I need to update my static content that CloudFlare is caching. What do I do?</h4>
-		<a href="https://blog.cloudflare.com/#i-need-to-update-my-static-content-that-cloudflare-is-caching-what-do-i-do" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you plan on changing the static content on your site, like an image, we recommend going to <a href="http://support.cloudflare.com/kb/what-do-the-various-cloudflare-settings-do/what-does-cloudflare-development-mode-mean" target="_blank" rel="noopener noreferrer">Development Mode</a> on your CloudFlare Settings page. Development Mode will bypass CloudFlare's cache and so any change that you make will be immediately live around the world. Development Mode is turned on and off with one click.</p>
-	<p>If you forget to enable Development Mode before making the change, you can simply <a href="https://blog.cloudflare.com/introducing-the-cloudflare-cache-purge-featur">purge your CloudFlare cache</a>.</p>
-	<p>It takes less than one minute to purge your cache and by doing this, your new resources will automatically be live around the world.</p>
-	<p>If you don't want to purge your CloudFlare cache, then CloudFlare's cache will automatically expire after two to four hours.</p>
-	<p>Directions for getting to your Development Mode and Purge Cache settings: My websites-&gt;Settings-&gt;CloudFlare Settings.</p>
-	<div class="flex anchor relative">
-		<h4 id="how-can-cloudflare-offer-a-free-cdn">How can CloudFlare offer a Free CDN?</h4>
-		<a href="https://blog.cloudflare.com/#how-can-cloudflare-offer-a-free-cdn" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare believes that all websites should be fast. Because of CloudFlare's technology, we've been able to build a CDN that is available to any website online. From the beginning, we worked to minimize the costs of serving every byte. Wherever possible, we use our own custom-built systems that are designed for this purpose. We buy our bandwidth through the wholesale market, which means we're paying for the size of our pipe, not for each byte we serve through it. We also peer with other networks wherever possible in order to drive the cost of bandwidth as close to zero as possible. In addition to a Free service, CloudFlare offers additional paid plans and services.</p>
-	<p><a href="http://cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Sign up today</a> to get all of the benefits of CloudFlare's free CDN.</p>
-</div>
+<p>[</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="300" height="191" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489G1T7QWC0Z5GJ0BHCNZ7.jpg&amp;w=300&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489G1T7QWC0Z5GJ0BHCNZ7.jpg&amp;w=300&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 300w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489G1T7QWC0Z5GJ0BHCNZ7.jpg&amp;w=600&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 600w" alt="multiplicity-II-pagination" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489G1T7QWC0Z5GJ0BHCNZ7.jpg&amp;w=300&amp;h=191&amp;f=webp" data-lightbox-width="300" data-lightbox-height="191" data-astro-cid-7nvefuv6="true" sizes="(min-width: 300px) 300px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="300" height="191" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>](<a href="http://www.flickr.com/photos/damonbillian/5934859823" target="_blank" rel="noopener noreferrer">http://www.flickr.com/photos/damonbillian/5934859823/</a> "multiplicity-II-pagination by dbillian, on Flickr")</p>
+<p>CloudFlare gets a lot of questions about caching and our free CDN (content delivery network), so I thought I would put together a really quick guide about what CloudFlare caches and more.</p>
+<h4>Why should I cache my static content at all?</h4>
+<p>Distributing your static content with CloudFlare's CDN will lead to faster page loading times for your visitors. As visitors are more inclined to bounce away from a slow loading site, you will reduce your bounce rate and increase the amount of time that people spend on your site. Or, in other words, a faster a website means your visitors will stay longer.</p>
+<h4>Do I need to do anything special to have CloudFlare cache my content?</h4>
+<p>No. Unlike many other traditional CDNs, CloudFlare is zero configuration. What this means is that there is no configuration once you sign up for CloudFlare. CloudFlare's technology will automatically cache the static <a href="http://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache" target="_blank" rel="noopener noreferrer">content based on file extensions</a>.</p>
+<h4>I already use a CDN. Can I still use CloudFlare?</h4>
+<p>Absolutely. There are two setup options.</p>
+<p><strong>Option 1:</strong>If you want to use both CloudFlare and your current CDN, in your CloudFlare DNS Settings page, you want to make sure that the CNAME for the CDN subdomain is listed and that the cloud is orange. This means that the traffic passes through CloudFlare first, before hitting your other CDN. As a result, your bill for your other CDN provider should decrease.</p>
+<p><strong>Option 2:</strong>If you don't want to use CloudFlare on the same subdomains as your other CDN, you can turn CloudFlare 'off' for those subdomains by marking the cloud as gray. This means that none of the traffic to those subdomains will pass through CloudFlare's network.</p>
+<p>To access your CloudFlare DNS Settings page:</p>
+<p>My Websites-&gt;Settings-&gt;DNS settings</p>
+<h4>Will CloudFlare conflict with any of my WordPress caching plugins?</h4>
+<p>CloudFlare is a complementary offering to <a href="http://www.tutorial9.net/tutorials/web-tutorials/wordpress-caching-whats-the-best-caching-plugin" target="_blank" rel="noopener noreferrer">popular WordPress caching plugins</a>. Where as most WordPress caching plugins focus on optimizing your database and server, CloudFlare optimizes at the network level. CloudFlare has partnered with the popular W3 Total Cache plugin and is included as an option in <a href="https://blog.cloudflare.com/w3-total-cache-w3tc-total-cloudflare-integrat">W3 TotalCache</a> (W3TC).</p>
+<p>On the topic of WordPress, <a href="http://wordpress.org/extend/plugins/cloudflare" target="_blank" rel="noopener noreferrer">CloudFlare has a WordPress plugin</a> as well. This ensures that WordPress users get the most out of the service. Note: If you activate CloudFlare through W3TC, then you do not need to use the CloudFlare WordPress plugin as well.</p>
+<h4>What kind of static content does CloudFlare cache?</h4>
+<p>CloudFlare caches common static content file extensions, including JavaScript, CSS and images. The full list of what CloudFlare caches can be found <a href="http://support.cloudflare.com/kb/top-frequently-asked-questions/which-kind-of-file-extensions-does-cloudflare-cache" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<h4>Does CloudFlare cache dynamic content, such as HTML or PHP?</h4>
+<p>CloudFlare does not currently cache these content types.</p>
+<h4>Will caching my static content affect dynamic updates to mysite?</h4>
+<p>No, dynamic updates to your site will still occur as they do now. CloudFlare is fully compatible.</p>
+<h4>I need to update my static content that CloudFlare is caching. What do I do?</h4>
+<p>If you plan on changing the static content on your site, like an image, we recommend going to <a href="http://support.cloudflare.com/kb/what-do-the-various-cloudflare-settings-do/what-does-cloudflare-development-mode-mean" target="_blank" rel="noopener noreferrer">Development Mode</a> on your CloudFlare Settings page. Development Mode will bypass CloudFlare's cache and so any change that you make will be immediately live around the world. Development Mode is turned on and off with one click.</p>
+<p>If you forget to enable Development Mode before making the change, you can simply <a href="https://blog.cloudflare.com/introducing-the-cloudflare-cache-purge-featur">purge your CloudFlare cache</a>.</p>
+<p>It takes less than one minute to purge your cache and by doing this, your new resources will automatically be live around the world.</p>
+<p>If you don't want to purge your CloudFlare cache, then CloudFlare's cache will automatically expire after two to four hours.</p>
+<p>Directions for getting to your Development Mode and Purge Cache settings: My websites-&gt;Settings-&gt;CloudFlare Settings.</p>
+<h4>How can CloudFlare offer a Free CDN?</h4>
+<p>CloudFlare believes that all websites should be fast. Because of CloudFlare's technology, we've been able to build a CDN that is available to any website online. From the beginning, we worked to minimize the costs of serving every byte. Wherever possible, we use our own custom-built systems that are designed for this purpose. We buy our bandwidth through the wholesale market, which means we're paying for the size of our pipe, not for each byte we serve through it. We also peer with other networks wherever possible in order to drive the cost of bandwidth as close to zero as possible. In addition to a Free service, CloudFlare offers additional paid plans and services.</p>
+<p><a href="http://cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">Sign up today</a> to get all of the benefits of CloudFlare's free CDN.</p>

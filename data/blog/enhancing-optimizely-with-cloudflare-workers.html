@@ -1,135 +1,89 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/69ihDq7N6UUHCzS7djZROB/8f535735ba879883690924b4898a892c/enhancing-optimizely-with-cloudflare-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p><i>This is a joint post by </i><a href="https://www.linkedin.com/in/whelan-boyd-411b1174" target="_blank" rel="noopener noreferrer"><i>Whelan Boyd</i></a><i>, Senior Product Manager at Optimizely and </i><a href="https://twitter.com/remyguercio" target="_blank" rel="noopener noreferrer"><i>Remy Guercio</i></a><i>, Product Marketing Manager for Cloudflare Workers.</i></p>
-	<p>Experimentation is an important ingredient in driving business growth: whether you’re iterating on a product or testing new messaging, there’s no substitute for the data and insights gathered from conducting rigorous experiments in the wild.</p>
-	<p>Optimizely is the world’s leading experimentation platform, with thousands of customers worldwide running tests for over 140 million visitors daily. If Optimizely were a website, it would be the third most trafficked in the US. &nbsp;And when it came time to experiment with reinvigorating their own platform, Optimizely chose Cloudflare Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="improving-performance-and-agility-with-cloudflare-workers">Improving Performance and Agility with Cloudflare Workers</h3>
-		<a href="https://blog.cloudflare.com/#improving-performance-and-agility-with-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Workers is a globally distributed serverless compute platform that runs across Cloudflare’s network of 180 locations worldwide. Workers are designed for flexibility, with many different use cases ranging from customizing configuration of Cloudflare services and features to building full, independent applications.</p>
-	<p>In this post, we’re going to focus on how Workers can be used to improve performance and increase agility for more complex applications. One of the key benefits of Workers is that they allow developers to move decision logic and data into a highly efficient runtime operating in close proximity to end users — resulting in significant performance benefits and flexibility. Which brings us to Optimizely...</p>
-	<div class="flex anchor relative">
-		<h3 id="how-optimizely-works">How Optimizely Works</h3>
-		<a href="https://blog.cloudflare.com/#how-optimizely-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Every week Optimizely delivers billions of experiences to help teams A/B test new products, de-risk new feature launches, and validate alternative designs. Optimizely lets companies test client-side changes like layouts and copy, as well as server-side changes like algorithms and feature rollouts.</p>
-	<p>Let’s explore how both have challenges that can be overcome with Workers, starting with Optimizely’s client-side A/B testing, or Optimizely Web, product.</p>
-	<div class="flex anchor relative">
-		<h3 id="use-case-optimizely-web">Use Case: Optimizely Web</h3>
-		<a href="https://blog.cloudflare.com/#use-case-optimizely-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The main benefit of <a href="https://www.optimizely.com/platform/experimentation" target="_blank" rel="noopener noreferrer">Optimizely Web</a> — Optimizely’s client-side testing framework — is that it supports A/B testing via straightforward insertion of a JavaScript tag on the web page. The test is designed via the Optimizely WYSIWYG editor, and is live within minutes. Common use cases include style updates, image swaps, headlines and other text changes. You can also write any custom JavaScript or CSS you want.</p>
-	<p>With client-side A/B testing, the browser downloads JavaScript that modifies the page as it’s loading. &nbsp;To avoid “flash-of-unstyled-content” (FOUC), developers need to implement this JavaScript synchronously in their tag. &nbsp;This constraint, though, can lead to page performance issues, especially on slower connections and devices. &nbsp;Downloading and executing JavaScript in the browser has a cost, and this cost increases if the amount of JavaScript is large. &nbsp;With a normal Optimizely Web implementation, all experiments are included in the JavaScript loaded on every page.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QMd8nkUV19B2n7iPIlIL4/7c38d11e9f19c543f69d7a37e6d3aa2e/Screen-Shot-2019-06-03-at-9.26.52-AM.png" alt="" class="kg-image" width="1820" height="1022" loading="lazy">
-
-	</figure>
-	<p>A traditional Optimizely implementation</p>
-	<p>With Workers, Optimizely can support many of these same use cases, but hoists critical logic to the edge to avoid much of the performance cost. Here’s how it works:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SaZx513TGy50njaeRXFjW/9897bfca232f9e11ad9a3cad88f55f93/Optimizely-Diagram--4-.png" alt="" class="kg-image" width="960" height="540" loading="lazy">
-
-	</figure>
-	<p>Implementing tests with Optimizely and Cloudflare Workers</p>
-	<p>This diagram shows how Optimizely customers can execute experiments created in the point-and-click UI through a Cloudflare Worker. &nbsp;Rather than the browser downloading a large JavaScript file, your Worker handling HTTP/S requests calls out to Optimizely’s Worker. &nbsp;Optimizely’s Worker determines which A/B tests should be active on this page and returns a small amount of JavaScript back to your Worker. &nbsp;In fact, it is the JavaScript required to execute A/B test variations on just that specific page load. &nbsp;Your Worker inlines the code in the page and returns it to the visitor’s browser. &nbsp;</p>
-	<p>Not only does this avoid a browser bottleneck downloading a lot of data, the amount of code to execute is a fraction of a normal client-side implementation. &nbsp;Since the experiments are set up inside the Optimizely interface just like any other Web experiment, you can run as many as you want without waiting for code deploy cycles. &nbsp;Better yet, your non-technical (e.g. marketing) teams can still run these without depending on developers for each test. &nbsp;It’s a one-time implementation.</p>
-	<div class="flex anchor relative">
-		<h3 id="use-case-going-further-with-feature-rollouts">Use Case: Going Further with Feature Rollouts</h3>
-		<a href="https://blog.cloudflare.com/#use-case-going-further-with-feature-rollouts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.optimizely.com/products/full-stack" target="_blank" rel="noopener noreferrer">Optimizely Full Stack</a> is Optimizely’s <a href="https://www.optimizely.com/optimization-glossary/server-side-testing" target="_blank" rel="noopener noreferrer">server-side experimentation</a> and feature flagging platform for websites, mobile apps, chatbots, APIs, smart devices, and anything else with a network connection. &nbsp;You can deploy code behind feature flags, experiment with A/B tests, and roll out or roll back features immediately. &nbsp;<a href="https://www.optimizely.com/rollouts/?utm_source=blog&amp;utm_campaign=cloudflare" target="_blank" rel="noopener noreferrer">Optimizely Rollouts</a> is a free version of Full Stack that supports key feature rollout capabilities.</p>
-	<p>Full Stack SDKs are often implemented and instantiated directly in application code.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AajNeJQ0CO30bm3MBr8K1/27388e0a62543bafaac607ffc409e3eb/Screen-Shot-2019-06-03-at-10.42.52-AM.png" alt="" class="kg-image" width="1812" height="1016" loading="lazy">
-
-	</figure>
-	<p>An Optimizely full stack experimentation setup</p>
-	<p>The main blocker to high velocity <i>server-side</i> testing is that experiments and feature rollouts must go through the code-deploy cycle — and to further add to the headache, many sites <a href="https://docs.developers.optimizely.com/full-stack/docs/content-delivery-networks" target="_blank" rel="noopener noreferrer">cache content on CDNs</a>, so experiments or rollouts running at the origin never execute. &nbsp;</p>
-	<p>In this example, we’ll consider a new feature you’d like to roll out gradually, exposing more and more users over time between code deploys. With Workers, you can implement feature rollouts by running the Optimizely JavaScript SDK at the edge. &nbsp;The Worker is effectively a <a href="https://docs.developers.optimizely.com/full-stack/docs/content-delivery-networks#section-1-make-decisions-on-the-edge" target="_blank" rel="noopener noreferrer">decision service</a>. &nbsp;Instead of installing the JS SDK inside each <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">application service</a> where you might need to gate or roll out features, centralize instantiation in a Worker.</p>
-	<p>From your application, simply hit the Worker and the response will tell you whether a feature is enabled for that particular user. &nbsp;In the example below, we supply via query parameters a <code>userId</code>, <code>feature</code>, and account-specific SDK <code>key</code> and the Worker responds with its decision in <code>result</code>. &nbsp;Below is a sample Cloudflare Worker:</p>
-	<pre class="language-js"><code class="language-js">import { createManager } from '../index'
-
-/// &lt;reference lib="es2015" /&gt;
-/// &lt;reference lib="webworker" /&gt;
-
-addEventListener('fetch', (event: any) =&gt; {
-  event.respondWith(handleRequest(event.request))
-})
-
-/**
- * Fetch and log a request
- * @param {Request} request
- */
-async function handleRequest(request: Request): Promise&lt;Response&gt; {
-  const url = new URL(request.url)
-  const key = url.searchParams.get('key')
-  const userId = url.searchParams.get('userId')
-  const feature = url.searchParams.get('feature')
-  if (!feature || !key || !userId) {
-    throw new Error('must supply "feature", "userId" and "key"')
-  }
-
-  try {
-    const manager = createManager({
-      sdkKey: key,
-    })
-
-    await manager.onReady().catch(err =&gt; {
-      return new Response(JSON.stringify({ status: 'error' }))
-    })
-    const client = manager.getClient()
-
-    const result = await client.feature({
-      key: feature,
-      userId,
-    })
-
-    return new Response(JSON.stringify(result))
-  } catch (e) {
-    return new Response(JSON.stringify({ status: 'error' }))
-  }
-}</code></pre>
-	<p>This kind of setup is common for React applications, which may update store values based on decisions returned by the Worker. No need to force a request all the way back to origin.</p>
-	<p>All in all, using Workers as a centralized decision service can reduce the complexity of your Full Stack implementation and support applications that rely on heavy caching.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-to-improve-your-experimentation-setup">How to Improve Your Experimentation Setup</h3>
-		<a href="https://blog.cloudflare.com/#how-to-improve-your-experimentation-setup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Both of the examples above demonstrate how Workers can provide speed and flexibility to experimentation and feature flagging. &nbsp;But this is just the tip of the iceberg! &nbsp;There are plenty of other ways you can use these two technologies together. We’d love to hear from you and explore them together!</p>
-	<p>Are you a developer looking for a feature flagging or server-side testing solution? The Optimizely Rollouts product is free and ready for you to <a href="https://www.optimizely.com/rollouts/?utm_source=blog&amp;utm_campaign=cloudflare" target="_blank" rel="noopener noreferrer">sign up</a>!</p>
-	<p>Or does your marketing team need a high performance A/B testing solution? The Optimizely Web use case is in <i>developer preview</i>.</p>
-	<ul>
-		<li>
-			<p><b>Cloudflare Enterprise Customers:</b> Reach out to your dedicated Cloudflare account manager learn more and start the process.</p>
-		</li>
-		<li>
-			<p><b>Optimizely Customers and Cloudflare Customers (who aren’t on an enterprise plan):</b> Reach out to your Optimizely contact to learn more and start the process.</p>
-		</li>
-	</ul>
-	<p>You can sign up for and learn more about using Cloudflare Workers <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">here</a>!</p>
+<p><em>This is a joint post by <a href="https://www.linkedin.com/in/whelan-boyd-411b1174" target="_blank" rel="noopener noreferrer">Whelan Boyd</a>, Senior Product Manager at Optimizely and <a href="https://twitter.com/remyguercio" target="_blank" rel="noopener noreferrer">Remy Guercio</a>, Product Marketing Manager for Cloudflare Workers.</em></p>
+<p>Experimentation is an important ingredient in driving business growth: whether you’re iterating on a product or testing new messaging, there’s no substitute for the data and insights gathered from conducting rigorous experiments in the wild.</p>
+<p>Optimizely is the world’s leading experimentation platform, with thousands of customers worldwide running tests for over 140 million visitors daily. If Optimizely were a website, it would be the third most trafficked in the US. &nbsp;And when it came time to experiment with reinvigorating their own platform, Optimizely chose Cloudflare Workers.</p>
+<h3>Improving Performance and Agility with Cloudflare Workers</h3>
+<p>Cloudflare Workers is a globally distributed serverless compute platform that runs across Cloudflare’s network of 180 locations worldwide. Workers are designed for flexibility, with many different use cases ranging from customizing configuration of Cloudflare services and features to building full, independent applications.</p>
+<p>In this post, we’re going to focus on how Workers can be used to improve performance and increase agility for more complex applications. One of the key benefits of Workers is that they allow developers to move decision logic and data into a highly efficient runtime operating in close proximity to end users — resulting in significant performance benefits and flexibility. Which brings us to Optimizely...</p>
+<h3>How Optimizely Works</h3>
+<p>Every week Optimizely delivers billions of experiences to help teams A/B test new products, de-risk new feature launches, and validate alternative designs. Optimizely lets companies test client-side changes like layouts and copy, as well as server-side changes like algorithms and feature rollouts.</p>
+<p>Let’s explore how both have challenges that can be overcome with Workers, starting with Optimizely’s client-side A/B testing, or Optimizely Web, product.</p>
+<h3>Use Case: Optimizely Web</h3>
+<p>The main benefit of <a href="https://www.optimizely.com/platform/experimentation" target="_blank" rel="noopener noreferrer">Optimizely Web</a> — Optimizely’s client-side testing framework — is that it supports A/B testing via straightforward insertion of a JavaScript tag on the web page. The test is designed via the Optimizely WYSIWYG editor, and is live within minutes. Common use cases include style updates, image swaps, headlines and other text changes. You can also write any custom JavaScript or CSS you want.</p>
+<p>With client-side A/B testing, the browser downloads JavaScript that modifies the page as it’s loading. &nbsp;To avoid “flash-of-unstyled-content” (FOUC), developers need to implement this JavaScript synchronously in their tag. &nbsp;This constraint, though, can lead to page performance issues, especially on slower connections and devices. &nbsp;Downloading and executing JavaScript in the browser has a cost, and this cost increases if the amount of JavaScript is large. &nbsp;With a normal Optimizely Web implementation, all experiments are included in the JavaScript loaded on every page.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Enhancing the Optimizely Experimentation Platform with Cloudflare Workers Embedded Image - oxpLOP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HFBDXHKSZ6Z81Q8Q8JP8.png&amp;w=1820&amp;h=1022&amp;f=webp" data-lightbox-width="1820" data-lightbox-height="1022" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>A traditional Optimizely implementation</p>
+<p>With Workers, Optimizely can support many of these same use cases, but hoists critical logic to the edge to avoid much of the performance cost. Here’s how it works:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Enhancing the Optimizely Experimentation Platform with Cloudflare Workers Embedded Image - 44VEHm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JF25QMKBNZPJK02JS9FK.png&amp;w=960&amp;h=540&amp;f=webp" data-lightbox-width="960" data-lightbox-height="540" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>Implementing tests with Optimizely and Cloudflare Workers</p>
+<p>This diagram shows how Optimizely customers can execute experiments created in the point-and-click UI through a Cloudflare Worker. &nbsp;Rather than the browser downloading a large JavaScript file, your Worker handling HTTP/S requests calls out to Optimizely’s Worker. &nbsp;Optimizely’s Worker determines which A/B tests should be active on this page and returns a small amount of JavaScript back to your Worker. &nbsp;In fact, it is the JavaScript required to execute A/B test variations on just that specific page load. &nbsp;Your Worker inlines the code in the page and returns it to the visitor’s browser. &nbsp;</p>
+<p>Not only does this avoid a browser bottleneck downloading a lot of data, the amount of code to execute is a fraction of a normal client-side implementation. &nbsp;Since the experiments are set up inside the Optimizely interface just like any other Web experiment, you can run as many as you want without waiting for code deploy cycles. &nbsp;Better yet, your non-technical (e.g. marketing) teams can still run these without depending on developers for each test. &nbsp;It’s a one-time implementation.</p>
+<h3>Use Case: Going Further with Feature Rollouts</h3>
+<p><a href="https://www.optimizely.com/products/full-stack" target="_blank" rel="noopener noreferrer">Optimizely Full Stack</a> is Optimizely’s <a href="https://www.optimizely.com/optimization-glossary/server-side-testing" target="_blank" rel="noopener noreferrer">server-side experimentation</a> and feature flagging platform for websites, mobile apps, chatbots, APIs, smart devices, and anything else with a network connection. &nbsp;You can deploy code behind feature flags, experiment with A/B tests, and roll out or roll back features immediately. &nbsp;<a href="https://www.optimizely.com/rollouts/?utm_source=blog&amp;utm_campaign=cloudflare" target="_blank" rel="noopener noreferrer">Optimizely Rollouts</a> is a free version of Full Stack that supports key feature rollout capabilities.</p>
+<p>Full Stack SDKs are often implemented and instantiated directly in application code.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="401" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=715&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=640&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=715&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=750&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=828&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=1080&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=1280&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=1430&amp;h=802&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Enhancing the Optimizely Experimentation Platform with Cloudflare Workers Embedded Image - 1n1Jml" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453D9PP14D977CGQ6J8XW0.png&amp;w=1812&amp;h=1016&amp;f=webp" data-lightbox-width="1812" data-lightbox-height="1016" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="401" class="pt-portable-image-media"></div>
+</figure>
+<p>An Optimizely full stack experimentation setup</p>
+<p>The main blocker to high velocity <em>server-side</em> testing is that experiments and feature rollouts must go through the code-deploy cycle — and to further add to the headache, many sites <a href="https://docs.developers.optimizely.com/full-stack/docs/content-delivery-networks" target="_blank" rel="noopener noreferrer">cache content on CDNs</a>, so experiments or rollouts running at the origin never execute. &nbsp;</p>
+<p>In this example, we’ll consider a new feature you’d like to roll out gradually, exposing more and more users over time between code deploys. With Workers, you can implement feature rollouts by running the Optimizely JavaScript SDK at the edge. &nbsp;The Worker is effectively a <a href="https://docs.developers.optimizely.com/full-stack/docs/content-delivery-networks#section-1-make-decisions-on-the-edge" target="_blank" rel="noopener noreferrer">decision service</a>. &nbsp;Instead of installing the JS SDK inside each <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">application service</a> where you might need to gate or roll out features, centralize instantiation in a Worker.</p>
+<p>From your application, simply hit the Worker and the response will tell you whether a feature is enabled for that particular user. &nbsp;In the example below, we supply via query parameters a <code>userId</code>, <code>feature</code>, and account-specific SDK <code>key</code> and the Worker responds with its decision in <code>result</code>. &nbsp;Below is a sample Cloudflare Worker:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createManager } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '../index'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/// </span><span class="sk-6a737d-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">reference</span><span class="sk-6f42c1-a0a0a0"> lib</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"es2015"</span><span class="sk-6a737d-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/// </span><span class="sk-6a737d-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">reference</span><span class="sk-6f42c1-a0a0a0"> lib</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"webworker"</span><span class="sk-6a737d-a0a0a0"> /&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Fetch and log a request</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-6f42c1-ffc799"> {Request}</span><span class="sk-24292e-fff"> request</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> key</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'key'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> userId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'userId'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> feature</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'feature'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">feature </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">key </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-24292e-fff">userId) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'must supply "feature", "userId" and "key"'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> manager</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createManager</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      sdkKey: key,</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> manager.</span><span class="sk-6f42c1-ffc799">onReady</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">catch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">err</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ status: </span><span class="sk-032f62-99ffe4">'error'</span><span class="sk-24292e-fff"> }))</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> manager.</span><span class="sk-6f42c1-ffc799">getClient</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">feature</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      key: feature,</span></span>
+<span class="line"><span class="sk-24292e-fff">      userId,</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(result))</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ status: </span><span class="sk-032f62-99ffe4">'error'</span><span class="sk-24292e-fff"> }))</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>This kind of setup is common for React applications, which may update store values based on decisions returned by the Worker. No need to force a request all the way back to origin.</p>
+<p>All in all, using Workers as a centralized decision service can reduce the complexity of your Full Stack implementation and support applications that rely on heavy caching.</p>
+<h3>How to Improve Your Experimentation Setup</h3>
+<p>Both of the examples above demonstrate how Workers can provide speed and flexibility to experimentation and feature flagging. &nbsp;But this is just the tip of the iceberg! &nbsp;There are plenty of other ways you can use these two technologies together. We’d love to hear from you and explore them together!</p>
+<p>Are you a developer looking for a feature flagging or server-side testing solution? The Optimizely Rollouts product is free and ready for you to <a href="https://www.optimizely.com/rollouts/?utm_source=blog&amp;utm_campaign=cloudflare" target="_blank" rel="noopener noreferrer">sign up</a>!</p>
+<p>Or does your marketing team need a high performance A/B testing solution? The Optimizely Web use case is in <em>developer preview</em>.</p>
+<ul>
+	<li><strong>Cloudflare Enterprise Customers:</strong> Reach out to your dedicated Cloudflare account manager learn more and start the process.</li>
+	<li><strong>Optimizely Customers and Cloudflare Customers (who aren’t on an enterprise plan):</strong> Reach out to your Optimizely contact to learn more and start the process.</li>
+</ul>
+<p>You can sign up for and learn more about using Cloudflare Workers <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">here</a>!</p>

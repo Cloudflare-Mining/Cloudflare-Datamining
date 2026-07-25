@@ -1,0 +1,73 @@
+<p>Adotar ou migrar para uma arquitetura de rede Zero Trust pode ser uma tarefa complexa. Antes mesmo de qualquer alteração em uma política, as equipes precisam se lembrar de como sua rede está estruturada: quais aplicativos existem, seus mecanismos de autenticação e autorização, como o tráfego flui entre eles e quaisquer suposições feitas pela arquitetura atual. Esse processo prático exige que os profissionais decifrem a intenção por trás de cada política de segurança e roteamento em vigor.</p>
+<p>Hoje, estamos lançando a pilha do Cloudflare One, um <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>conjunto de habilidades</u></a> que você concede ao seu agente para configurar, implantar e gerenciar seu ambiente Zero Trust. Este kit de ferramentas foi projetado para ajudar a automatizar o processo de aprendizado de um conjunto de segurança totalmente novo e mapear o seu conjunto existente para a Cloudflare.</p>
+<p>A Cloudflare já trabalhou com milhares de clientes exatamente nesse processo. Essa experiência repetida gerou conhecimento sobre onde as migrações encontram dificuldades, quais perguntas surgem com frequência e o que é necessário para avançar. A pilha do Cloudflare One reúne esse conhecimento e o torna mais acessível do que nunca.&nbsp;</p>
+<h3>A lacuna de agentes na segurança de rede</h3>
+<p>As equipes já estão usando agentes para escrever códigos, fazer triagem de alertas e automatizar fluxos de trabalho. As organizações estão solicitando cada vez mais as ferramentas fornecidas pela Cloudflare para ajudar os agentes a executar os fluxos de trabalho de segurança. Por si só, os agentes não são treinados nas nuances da topologia de rede específica de uma organização ou nas configurações de um fornecedor.</p>
+<p>Ao fornecer orientação prescritiva e autoritativa, as organizações podem adicionar esse contexto ao kit de ferramentas existente para fazer melhor uso dos produtos de segurança que já estão implantando.</p>
+<p>A Cloudflare é há muito tempo o fornecedor SASE mais fácil de implantar do mercado. A pilha estende essa filosofia aos agentes: ela fornece a eles o contexto, as ferramentas e o raciocínio estruturado de que precisam para operar em sua infraestrutura de segurança.</p>
+<h2>O que é a pilha do Cloudflare One?</h2>
+<p>A pilha do Cloudflare One é <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>uma coleção de habilidades</u></a> que podem ser usadas com qualquer agente. Como acontece com <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank" rel="noopener noreferrer"><u>qualquer habilidade</u></a>, você pode usá-las de forma autônoma, em camadas em seu próprio contexto ou criar ferramentas por cima. Ela foi desenvolvida especificamente para ajudar os profissionais de segurança em todo o ciclo de vida de avaliação, implantação e gerenciamento do <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>.</p>
+<p>A pilha foi construída sintetizando o conhecimento selecionado manualmente de funcionários com dezenas de milhares de horas de experiência trabalhando com clientes em produtos Cloudflare One. Ela contém ferramentas para planejar, gerenciar e implementar a infraestrutura de segurança de usuários e agentes na Cloudflare. Ela também contém lógica escolhida a dedo para migrar de fornecedores legados, como <a href="https://blog.cloudflare.com/descaler-program" target="_blank" rel="noopener noreferrer"><u>Zscaler</u></a> e Palo Alto Networks.</p>
+<p>Quando usada em conjunto com o <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>servidor MCP em modo de código da Cloudflare</u></a>, a pilha fornece aos agentes uma interface tipada para a API da Cloudflare. Os agentes podem consultar sua conta ativa, inspecionar configurações e fazer alterações por meio de um conjunto selecionado de fluxos de trabalho recomendados pela Cloudflare, em vez de chamadas de API ad hoc.</p>
+<h2>O que está incluído na pilha?</h2>
+<p>A pilha do Cloudflare One é enviada como dois arquivos de habilidades leves: cloudflare-one e cloudflare-one-migration. Juntos, eles abrangem a migração, a criação de uma implementação, o gerenciamento e a solução de problemas de sua implantação do Cloudflare One:</p>
+<ul>
+	<li><strong>Acesso remoto e substituição de VPN</strong> com o Cloudflare Access</li>
+	<li><strong>Segurança de usuários, redes, dispositivos e dados</strong> com o Cloudflare Gateway</li>
+	<li><strong>Conectividade</strong> com o Cloudflare Tunnel, Cloudflare Mesh e Cloudflare WAN</li>
+	<li><strong>Orientação sobre migração</strong> com detalhes explícitos para migrar de outros fornecedores de SASE</li>
+	<li><strong>Interpretação e geração de diagramas de rede</strong>, para que você possa visualizar as alterações propostas para sua rede de uma forma fácil de entender para você e sua equipe</li>
+	<li><strong>Tradução de conceitos de fornecedores</strong>, que mapeia os conceitos entre fornecedores de SASE para reduzir a barreira na avaliação e troca de provedores</li>
+	<li><strong>Solução de problemas e operações</strong>, com o kit de ferramentas Digital Experience Monitoring (DEX) e recomendações de regras automatizadas</li>
+</ul>
+<h2>Como funciona</h2>
+<p>A pilha está disponível no repositório <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflare Skills</u></a>. Todos os arquivos de habilidades contêm conhecimento estruturado, árvores de decisão e definições de ferramentas que os agentes carregam automaticamente quando o contexto corresponde. Forneça isso ao seu agente e deixe que ele ajude você a definir, configurar e gerenciar seu ambiente Zero Trust:</p>
+<div id="html-block-k20" class="html-block">
+	<style>
+		#html-block-k20 .prompt-container {
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			padding: 16px;
+			margin: 2px 2px 6px 2px;
+		}
+
+		#html-block-k20 .prompt-text {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+			color: #2b2b2b;
+			margin-bottom: 12px;
+			font-weight: 500;
+		}
+	</style><iframe width="100%" height="125" frameborder="0" scrolling="no" style="display:block !important;width:100% !important;min-height:125px !important;max-height:125px !important;margin:0 0 10px 0 !important;padding:0 !important;border:none !important"></iframe>
+</div>
+<p>A habilidade cloudflare-one abrange orientações gerais sobre produtos. Por exemplo, se você perguntar a um agente a melhor maneira de substituir sua infraestrutura de VPN pelo Cloudflare Tunnel ou Cloudflare Mesh, a habilidade sabe como:</p>
+<ol>
+	<li>Fazer inventário de aplicativos de VPN existentes e identificar qual modelo de conectividade cada um requer</li>
+	<li>Mapear cada aplicativo para a primitiva Cloudflare apropriada, aplicativo Access auto-hospedado, serviço conectado ao Tunnel ou segmento de rede conectado ao Mesh</li>
+	<li>Gerar uma sequência de implantação recomendada que minimize as interrupções durante a transição</li>
+	<li>Produzir um resumo da configuração que sua equipe possa analisar antes de fazer qualquer alteração</li>
+</ol>
+<p>A habilidade cloudflare-one-migration abrange a tradução de fornecedor para fornecedor. Por exemplo, se você solicitar a um agente que migre seus aplicativos do Zscaler Private Access para o Cloudflare Access, a habilidade saberá como:</p>
+<ol>
+	<li>Mapear definições de aplicativos do Zscaler para definições de aplicativos do Cloudflare Access</li>
+	<li>Transformar grupos de usuários e políticas do Zscaler em políticas do Cloudflare Access</li>
+	<li>Usar a API da Cloudflare para criar os recursos equivalentes em sua conta</li>
+	<li>Gerar um resumo do que foi migrado e do que requer análise manual</li>
+</ol>
+<p>A lógica de migração na pilha é a mesma usada nos programas <a href="https://blog.cloudflare.com/descaler-program" target="_blank" rel="noopener noreferrer"><u>Descaler</u></a> e <a href="https://blog.cloudflare.com/deskope-program-and-asdp-for-descaler" target="_blank" rel="noopener noreferrer"><u>Deskope</u></a> da Cloudflare. Esses programas já migraram clientes corporativos do Zscaler e do Netskope para o Cloudflare One em horas, em vez de meses. A pilha disponibiliza esse recurso para qualquer cliente ou parceiro, a qualquer momento, sem precisar esperar por um agendamento prévio.</p>
+<h3>Mais maneiras de usar a pilha</h3>
+<p>A pilha do Cloudflare One também pode:</p>
+<ul>
+	<li>Recomendar regras de segurança com base no tráfego observado em sua conta ativa</li>
+	<li>Migrar automaticamente seus aplicativos do Zscaler Private Access existentes para aplicativos auto-hospedados do Cloudflare Access</li>
+	<li>Investigar anomalias em logs HTTP de seu gateway seguro da web e criar regras para resolver os problemas que os usuários estão enfrentando</li>
+	<li>Gerar relatórios sobre a estabilidade de usuários com o kit de ferramentas DEX e tomar medidas para melhorar a latência de usuários em cenários importantes</li>
+</ul>
+<p>Seja carregando a habilidade de um agente ou criando ferramentas personalizadas por cima, a pilha do Cloudflare One lida com todos esses casos de uso e muito mais.</p>
+<h2>Para parceiros também</h2>
+<p>Embora isso simplifique o gerenciamento contínuo para clientes que já adotaram o conjunto de produtos Cloudflare One, também é uma ferramenta para a rede de parceiros da Cloudflare. Os parceiros podem usá-la para ajudar seus clientes a implantar mais rapidamente, gerenciar com mais eficiência, solucionar problemas com maior precisão e resolver problemas com mais facilidade.</p>
+<h2>O que vem a seguir</h2>
+<p>Você pode começar a usar a pilha do Cloudflare One hoje mesmo. Para aproveitar ao máximo a pilha, combine-a com o <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#code-mode" target="_blank" rel="noopener noreferrer"><u>servidor MCP em modo de código</u></a> da Cloudflare. O servidor MCP dá ao seu agente acesso em tempo real à API da Cloudflare por meio de uma interface única compactada que mantém as credenciais de autenticação fora do contexto do modelo.&nbsp;</p>
+<p>A pilha do Cloudflare One continuará a se expandir de acordo com a evolução dos produtos Cloudflare One. Novas habilidades para fontes de migração adicionais e fluxos de trabalho de solução de problemas mais avançados já estão em desenvolvimento.</p>
+<p>À medida que aprendemos mais sobre como os clientes e parceiros utilizam esses arquivos de habilidades, planejamos desenvolver ferramentas mais robustas em torno dessas habilidades. Se você é cliente ou parceiro e quer compartilhar feedback sobre o que a pilha deve abordar a seguir, entre em contato com sua equipe de conta ou abra uma solicitação no repositório.</p>

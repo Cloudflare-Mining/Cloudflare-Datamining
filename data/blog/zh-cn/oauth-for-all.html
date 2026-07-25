@@ -1,0 +1,231 @@
+<p>Cloudflare 提供的服务支撑着全球 20% 的 Web 流量运行，但我们并不是单独做到这一点。我们平台上的开发人员也使用来自其他公司的各种工具和服务。Cloudflare 平台提供丰富的 API，让开发人员能够创建将基础设施的各个部分连接起来的自动化流程、CI/CD 以及集成。本月初，我们发布了<a href="https://developers.cloudflare.com/changelog/post/2026-06-03-public-oauth-clients" target="_blank" rel="noopener noreferrer"><u>自托管 OAuth</u></a>，让客户可以更轻松地创建并管理其 OAuth 客户端，以授权访问 Cloudflare API。</p>
+<p>Cloudflare 并不是刚开始接触 OAuth。如果您使用过 Wrangler 或 PlanetScale 等合作伙伴的集成，则您已经使用过 OAuth。然而，到目前为止，第三方 OAuth 仅通过少数手动集成才能使用，并没有向更广泛的开发人员群体提供。也就是说，开发人员构建自己的集成时不得不依赖 API 令牌，这些令牌更难以管理，并且不适合许多授权访问应用流程。</p>
+<p>过去一年来，我们不断拓展早期合作伙伴，同时改进 Cloudflare OAuth 背后的授权同意、权限撤销和安全模型。随着我们的开发人员平台不断发展，智能体工具推动了授权访问的需求，我们意识到，向所有客户开放 OAuth 是我们平台取得成功的关键。</p>
+<p>利用自托管 OAuth，开发人员现在可以提供标准 OAuth 流程，客户可以直接授予特定范围的访问权限，从而更轻松地构建 SaaS 集成、内部开发人员平台和智能体工具，同时为用户提供更清晰的授权同意、更便捷的权限撤销，以及增强对应用操作的控制。</p>
+<h2>安全地扩展生态系统</h2>
+<p>虽然我们早期的 OAuth 解决方案足以满足少数精心管理的合作伙伴的需求，但我们意识到，我们的权限模型、授权体验以及缓解潜在滥用途径的方式还不够成熟。</p>
+<p>今年早些时候，我们<a href="https://blog.cloudflare.com/improved-developer-security/#improving-the-oauth-consent-experience" target="_blank" rel="noopener noreferrer"><u>更新了授权同意体验</u></a>，让客户更清楚地了解哪个应用正在请求访问权限，以及它将获得哪些权限。我们还在仪表板中添加了权限撤销功能，以便开发人员可以轻松控制哪些应用可以访问其数据并更好地了解应用所有权，从而防范 OAuth 网络钓鱼攻击。</p>
+<p>向所有客户开放自托管 OAuth 也需要对底层 OAuth 引擎进行重大升级。这个过程需要大量规划，以尽可能减轻对用户的影响，同时确保数据的稳定性和安全性。</p>
+<h2>规划 OAuth 引擎升级</h2>
+<p>几年前，我们部署了 <a href="https://github.com/ory/hydra" target="_blank" rel="noopener noreferrer"><u>Hydra</u></a>，这是一个开源 OAuth 引擎，为 Cloudflare OAuth 提供底层支持。在用户数量有限的情况下，该部署方案运行良好。但随着开发人员平台的发展和智能体工作流程的日益普及，我们意识到需要进行重大升级，以解锁新功能并提升性能。</p>
+<p>在规划升级时，我们决定执行两次渐进式升级，而不是执行单次大规模升级。首先，我们将升级到最新的 1.X 版本，评估任何行为或性能变化，然后执行 2.X 版本的升级。</p>
+<p>在升级规划过程中，我们发现，即使是 1.X 版本的升级也会对客户造成影响，因为 Hydra 数据库需要进行大规模数据库模式迁移，这会：</p>
+<ol>
+	<li>创建索引的方式对数据库中的关键表使用独占锁，进而阻止活跃用户执行重要的 OAuth 操作</li>
+	<li>添加列到关键表，并将其他列移动到新表</li>
+</ol>
+<p>此外，我们使用的 Hydra 版本还存在一个缺陷，即：SDK 会执行 SELECT * 操作，导致模式更改后出现反序列化问题。</p>
+<p>为避免影响用户，我们重新编写了 SQL 迁移脚本，使用 CREATE INDEX CONCURRENTLY 之类的功能，并构建了一个自定义版本的 Hydra，该版本会选择显式列，而不是 SELECT *。</p>
+<p>在制定了最新的 1.X 版本升级计划之后，我们现在需要制定更大规模的 2.X 版本升级计划。我们确定了三种潜在方案，并权衡了每种方案的优缺点。由于主要版本升级带来了大量的架构变更，因此，就地升级对我们来说行不通。我们决定采用蓝绿部署策略，但这并不是简单地切换开关就能开始使用新版本那么简单。升级和迁移过程会耗费数小时，我们需要确保系统在这段时间内继续维持正常运行。</p>
+<p>第一种蓝绿部署方案涉及禁用数据库写入，以阻止任何新的授权。也就是说，用户数据不会在升级过程中丢失，但也意味着除非用户已经拥有了有效凭证，否则将无法使用现有的 OAuth 应用。这也带来了另一个重大问题：如果用户出于任何原因需要撤销应用访问权限，则在执行升级时将无法撤销。</p>
+<p>为了解决这些问题，我们想出了一种方法：保持启用数据库写入功能，但代价是在切换到绿色版本时丢失部分写入数据。首先要解决的问题是，最大限度地减少新令牌的写入次数。我们采取了一项运维应急措施：将令牌的过期时间延长至数小时。这样一来，在升级前已接收新令牌的应用可以继续使用这些令牌，而无需刷新。</p>
+<p>解决写入次数减少的问题之后，我们需要找到一种方法，确保用户在升级期间执行的任何撤销操作都不会丢失。为此，我们创建了一个队列系统（使用 <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queues</u></a>！），在撤销事件发生后，该系统会将一条记录写入队列，其中包含与撤销相关的信息。如此一来，我们可以在数据库切换到绿色版本后清空队列，重放切换窗口期内可能丢失的所有撤销事件。以适当的方式做到这一点至关重要，否则，用户已撤销权限的应用访问权限将会意外恢复。</p>
+<h2>执行升级</h2>
+<h3>升级到 1.X 版本</h3>
+<p>从运维角度来看，我们首次升级到 1.X 最新版本的过程非常顺利。自定义数据库迁移速度比预期更快，且未对用户造成任何影响。由于旧版本无法验证新版本生成的令牌，我们不得不强制切换到新版本。</p>
+<p>切换之后，我们发现刷新令牌错误数量增加，这是之前从未出现过的情况。最终发现，这是由于新版本中更严格的刷新失效机制造成；如果重复使用刷新令牌，Hydra 会使整个访问令牌和刷新令牌链失效。这对 Wrangler 和 MCP 客户端来说是个问题。因为这两个客户端的请求量都很高，而单个重复使用的刷新令牌会导致整个会话失效。</p>
+<p>我们通过在 Worker 中引入刷新令牌合并机制来缓解这个问题，该机制会将 OAuth 流量路由到正确的目的地。这样一来，我们可以在刷新令牌请求到达 Hydra 之前将其暂时缓存，以便在检测到重试时能够绕过该请求并做出响应，而不会使令牌失效。幸运的是，Hydra 2.X 版本提供一个可配置的“刷新令牌宽限期”，它通过支持在一段时间内重试刷新令牌（而不使整个令牌链失效）解决了这个问题。</p>
+<h3>升级到 2.X 版本</h3>
+<p>由于对用户造成数小时的严重影响不可接受，我们制定了蓝绿升级策略。从高层次来看，这听起来很简单：迁移的数据将会在生产数据库副本上运行，然后在迁移完成后与新的 Hydra 版本一同切换。实际上，还涉及<em>很多</em>其他环节：</p>
+<ul>
+	<li>启用撤销重放捕获队列</li>
+	<li>将数据库复制并恢复到新目标</li>
+	<li>针对性数据清理：现有数据违反了新版本中引入的一些新约束，这可能会导致迁移失败</li>
+	<li>同时对 Hydra 服务和另外两个关键内部系统执行切换，以防止出现任何错误</li>
+	<li>切换后持续监测和验证</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="604" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=715&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=640&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=715&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=750&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=828&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=1080&amp;h=912&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=1280&amp;h=1081&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=1430&amp;h=1208&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3319 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW9WMWRTA0J3190FHBHVXAHQ.png&amp;w=819&amp;h=692&amp;f=webp" data-lightbox-width="819" data-lightbox-height="692" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="604" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>我们选择在 Hydra 每秒请求量最低的时间段进行升级，以最大限度地减少令牌写入丢失。除了对超时进行一些调整之外，我们的生产环境迁移在新数据库上运行良好：生产环境中的净运行时间大约为三小时。迁移完成后，我们谨慎地推出了 Hydra 新版本服务，同时添加了两个额外的系统配置，将我们的系统切换为使用新的 SDK 版本。</p>
+<p>切换流量后不久，我们发现授权服务中的一项数据清理作业（依赖于 Hydra 同意会话 API）在清除 OAuth 策略数据方面过于热切。经过调查，我们发现其中一次 Hydra 迁移存在问题，导致某些有效的 OAuth 会话状态被破坏，从而使该次迁移被标记为无效。有效会话被损坏导致 Hydra 与我们的授权服务之间出现分歧，具体表现为 403 错误数量增加。为了缓解这个问题，我们进行了数据恢复，并开始改进 OAuth 授权行为，以消除对静态策略数据的依赖。</p>
+<p>除了数据清理问题之外，还有由特定客户行为引发的一些其他小问题，我们已快速修复。</p>
+<p>Hydra 版本升级完成后，OAuth 流量保持稳定，系统性能和可靠性均提升，从而更好地服务于我们的客户。此次升级还将生产环境迁移到与我们新版 OAuth API 在预发布环境中已验证的相同基础架构上，为我们 6 月 3 日发布<a href="https://developers.cloudflare.com/changelog/post/2026-06-03-public-oauth-clients" target="_blank" rel="noopener noreferrer"><u>自托管 OAuth</u></a>铺平了道路。</p>
+<h2>性能提升</h2>
+<p>完成如此大规模的升级后，查看一些关于影响的宏观指标总是令人满足且富有启发性。我们在数据库迁移期间收集了其他指标，并且观察到升级完成之后的性能显著提升。</p>
+<h3>数据库</h3>
+<div id="html-block-k2o" class="html-block">
+	<style>
+		#html-block-k2o .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k2o .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2o .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2o .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-9uby {
+			background-color: #ffffff;
+			border-color: inherit;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<colgroup>
+			<col style="width:350px">
+			<col style="width:350px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-9uby"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">指标</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">近似值</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">更新的行数</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">132.5M</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">插入的行数</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">114.7M</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">临时字节数</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">136.97GB</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">交易提交数</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.22 万</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Hydra 性能</h3>
+<div id="html-block-k2r" class="html-block">
+	<style>
+		#html-block-k2r .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k2r .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2r .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2r .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2r .tg .tg-9uby {
+			background-color: #ffffff;
+			border-color: inherit;
+			font-size: 16px;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2r .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<colgroup>
+			<col style="width:250px">
+			<col style="width:150px">
+			<col style="width:150px">
+			<col style="width:150px">
+		</colgroup>
+		<thead>
+			<tr>
+				<th class="tg-9uby"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">指标（平均值）</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">之前</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用之后</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">变化</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">API P95</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">185ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">101ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-45%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RSS 内存</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">888MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">763MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Go 堆分配</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">449MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">271MB</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-40%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Go 协程数量</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4015</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3076</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-23%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CPU</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.07 个核心</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.67 个核心</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-37%</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>面向所有客户的自托管 OAuth</h2>
+<p>向所有客户开放 OAuth 是构建更广泛的 Cloudflare 应用生态系统的重要一步。如今，任何 Cloudflare 客户均可创建自己的 OAuth 应用，并在 Cloudflare 平台上构建集成。我们非常高兴地推出面向所有客户的 Cloudflare 自托管 OAuth。</p>
+<p>若要开始使用，请查看我们的<a href="https://developers.cloudflare.com/fundamentals/oauth" target="_blank" rel="noopener noreferrer"><u>文档</u></a>，或者直接跳转到<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Foauth-clients" target="_blank" rel="noopener noreferrer"><u>仪表板</u></a>中的 OAuth 应用页面，创建您的第一个 OAuth 应用。</p>

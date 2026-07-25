@@ -1,0 +1,309 @@
+<p>API 是连入互联网的现代应用程序的命脉。它们每分每秒都在执行来自移动应用程序的请求：下达这份外卖订单、“点赞”这张图片、发送命令到 IoT 设备、解锁车门、启动洗涤周期，通知有人刚跑完五千米，以及不计其数的其他指令。</p>
+<p>意图执行未经授权操作或泄露数据的攻击四处蔓延，也将这些 API 作为攻击目标。正如 Gartner 数据所示，“到 2021 年，90％ 支持 Web 的应用程序因为开放 API 而非 UI 而具有更大的攻击表面，2019 年的比例为 40％”，并且“Gartner 预计到 2022 年，API 滥用将从不常见的攻击手段转变为最频繁的攻击手段，导致企业 Web 应用程序发生数据泄露”[1][2]。在每秒穿越 Cloudflare 网络的 1800 万个请求中，50％ 是针对 API 的，其中大多数请求因为恶意而被阻止。</p>
+<p>为了应对这些威胁，Cloudflare 通过使用强大的基于客户端证书的身份识别和严格的基于模式的验证，来简化 API 的安全保护。截至今天，这些功能已在新发产品“API Shield”中面向我们的所有计划免费提供给客户。安全性优势目前也已<a href="https://blog.cloudflare.com/announcing-grpc">扩展到基于 gRPC 的 API</a> ，这类 API 使用二进制格式（例如协议缓冲区）而非 JSON，在我们客户群中也越来越受到欢迎。</p>
+<p>继续阅读可进一步了解新功能的更多信息；或者，直接跳转至“演示”段落，获取有关如何开始配置第一条 API Shield 规则的示例。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="593" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=715&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=640&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=715&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=750&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=828&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=1080&amp;h=896&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=1280&amp;h=1062&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=1430&amp;h=1186&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing API Shield Embedded Image - V1hj4q" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477FGQJC6S2SQNS7YQNXS7.png&amp;w=976&amp;h=809&amp;f=webp" data-lightbox-width="976" data-lightbox-height="809" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="593" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>正向安全模型和客户端证书</h3>
+<p>所谓“正向安全”模型，指的是仅允许已知行为和身份而拒绝其他一切的模型。它与 Web 应用程序防火墙（WAF）实施的传统“负向安全性”模型相反，后者允许除了源自有问题的 IP、ASN、国家或地区的请求或具有问题签名（SQL 注入行为等）的请求以外的所有内容。</p>
+<p>为 API 实施正向安全模型是消除证书填充攻击和其他自动扫描工具的噪声的最直接方法。若要采用正向模型，第一步是部署强大的身份验证，例如双向 TLS 身份验证，这种身份验证不易受到<a href="https://spycloud.com/2020-annual-credential-exposure-report" target="_blank" rel="noopener noreferrer">重用或共用密码</a>的影响。</p>
+<p>我们在 2014 年通过推出 <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a> 来简化服务器证书的颁发，与之类似，API Shield 可将颁发客户端证书的过程缩减为只需点击 Cloudflare 仪表板中的几个按钮。通过提供完全托管的私有公钥基础结构（PKI），您可以专注于开发应用程序和功能，而不必操作和保护自己的证书颁发机构（CA）。</p>
+<h3>使用模式验证执行有效的请求</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing API Shield Embedded Image - CNEgCI" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462TXBETTD4G341Q9QANA8.png&amp;w=1244&amp;h=859&amp;f=webp" data-lightbox-width="1244" data-lightbox-height="859" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
+</figure>
+<p>一旦开发人员能够确信只有合法客户端（持有 SSL 证书）才可连接他们的 API，那么实施正向安全模型的下一步就是确保这些客户端发出有效的请求。从设备提取客户端证书并在其他地方重用比较困难，但也并非毫无可能，因此确保 API 调用符合预期也很重要。</p>
+<p>API 开发人员可能没有预料到含有无关输入的请求，如果应用程序直接处理这些请求，那么可能会导致问题。因此，应尽可能在边缘丢弃这些请求。在 API 模式验证工作时，它会将 API 请求的内容（URL 后面的查询参数和 POST 正文的内容）与包含用来规定预期内容的规则的协定或“模式”进行匹配。如果验证失败，则阻止 API 调用，以保护源站免受无效请求或恶意有效载荷的侵害。</p>
+<p>模式验证当前处于 JSON 有效载荷封闭测试中，gRPC/协议缓冲区则已在路线图中有相应计划。如果您想参加测试，请打开主题为“API Schema Validation Beta”的支持票证。测试结束后，我们计划将模式验证作为 API Shield 用户界面的一部分提供。</p>
+<h3>演示</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="625" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=715&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=640&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=715&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=750&amp;h=656&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=828&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1080&amp;h=944&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1280&amp;h=1119&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1430&amp;h=1250&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing API Shield Embedded Image - yPkjJt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VK3JGE8YT2RCFW74PN6M.png&amp;w=1502&amp;h=1312&amp;f=webp" data-lightbox-width="1502" data-lightbox-height="1312" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="625" class="pt-portable-image-media"></div>
+</figure>
+<p>为演示如何保护为 IoT 设备和移动应用程序提供支持的 API，我们制作了一个使用客户端证书和模式验证的 API Shield 演示。</p>
+<p>由 IoT 设备（演示中为带有外置红外温度传感器的 Raspberry Pi 3 Model B+）采集温度，然后通过 POST 请求传输到受 Cloudflare 保护的 API。随后通过 GET 请求检索温度，再将其显示在用 Swift for iOS 开发的移动应用程序中。</p>
+<p>在这两个情形中，API 实际上都是使用 Cloudflare Workers® 和 Workers KV 构建的，但可以被任何可通过互联网访问的端点所代替。</p>
+<h3>1. API 配置</h3>
+<p>在将 IoT 设备和移动应用程序配置为与 API 安全通信之前，我们需要引导 API 端点。为了简化示例，同时允许进行其他自定义，我们将 API 实施为 Cloudflare Worker（借用来自 <a href="https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app" target="_blank" rel="noopener noreferrer">To-Do List 教程</a>的代码）。</p>
+<p>在这个特定示例中，通过将源 IP 地址作为密钥将温度存储在 Workers KV 中，但这可以轻松地用<a href="https://developers.cloudflare.com/access/service-auth/mtls-headers" target="_blank" rel="noopener noreferrer">客户端证书的值</a>（例如，指纹）来取代。以下代码在发出 POST 后将温度和时间戳存储到 KV 中，并在发出 GET 请求时返回最近的 5 个温度。</p>
+<p>在添加双向 TLS 身份验证之前，我们先测试 POST 随机温度读数：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> defaultData</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> temperatures:</span><span class="sk-24292e-fff"> [] }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> getCache</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> TEMPERATURES.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">key</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> setCache</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (key, </span><span class="sk-032f62-99ffe4">data</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> TEMPERATURES.put(</span><span class="sk-6f42c1-ffc799">key,</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> addTemperature</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> pull</span><span class="sk-032f62-99ffe4"> previously</span><span class="sk-032f62-99ffe4"> recorded</span><span class="sk-032f62-99ffe4"> temperatures</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> client</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> request.headers.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'CF-Connecting-IP'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> cacheKey</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">data-$</span><span class="sk-032f62-99ffe4">{ip}`</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> data</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> cache</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> getCache</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cacheKey</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">cache</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        await</span><span class="sk-032f62-99ffe4"> setCache</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cacheKey,</span><span class="sk-032f62-99ffe4"> JSON.stringify</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">defaultData</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> defaultData</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> JSON.parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cache</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> append</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> recorded</span><span class="sk-032f62-99ffe4"> temperatures</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> submitted</span><span class="sk-032f62-99ffe4"> reading</span><span class="sk-24292e-fff"> (assuming </span><span class="sk-032f62-99ffe4">it</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> both</span><span class="sk-032f62-99ffe4"> temperature</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> timestamp</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    try</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        const</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> request.text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        const</span><span class="sk-032f62-99ffe4"> val</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> JSON.parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">body</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">val.temperature</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">val.time</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            data.temperatures.push(val</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            await</span><span class="sk-032f62-99ffe4"> setCache</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cacheKey,</span><span class="sk-032f62-99ffe4"> JSON.stringify</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">""</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-005cc5-ffc799"> 201</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Unable to parse temperature and/or timestamp from JSON POST body"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-005cc5-ffc799"> 400</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    } catch (</span><span class="sk-6f42c1-ffc799">err</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">err,</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-005cc5-ffc799"> 500</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> compareTimestamps</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">a,b</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-99ffe4"> -1</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff"> (Date.parse(a.time) - Date.parse(</span><span class="sk-6f42c1-ffc799">b.time</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> return</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> most</span><span class="sk-032f62-99ffe4"> recent</span><span class="sk-032f62-99ffe4"> temperature</span><span class="sk-032f62-99ffe4"> measurements</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> getTemperatures</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> request.headers.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'CF-Connecting-IP'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> cacheKey</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">data-$</span><span class="sk-032f62-99ffe4">{ip}`</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    const</span><span class="sk-032f62-99ffe4"> cache</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> getCache</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cacheKey</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">cache</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">JSON.stringify(defaultData</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-032f62-99ffe4"> 200,</span><span class="sk-032f62-99ffe4"> headers:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 'content-type':</span><span class="sk-032f62-99ffe4"> 'application/json'</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> JSON.parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cache</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        const</span><span class="sk-032f62-99ffe4"> retval</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> JSON.stringify</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data.temperatures.sort(compareTimestamps</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.splice</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">0,5</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">retval,</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-032f62-99ffe4"> 200,</span><span class="sk-032f62-99ffe4"> headers:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 'content-type':</span><span class="sk-032f62-99ffe4"> 'application/json'</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">request.method</span><span class="sk-032f62-99ffe4"> ===</span><span class="sk-032f62-99ffe4"> 'POST'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> addTemperature</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-032f62-99ffe4"> getTemperatures</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(handleRequest(event.request</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>以下是这个温度的后续读数，以及之前提交的 4 个读数：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> TEMPERATURE=</span><span class="sk-24292e-fff">$(</span><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $((</span><span class="sk-6f42c1-ffc799">361</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> RANDOM</span><span class="sk-032f62-99ffe4"> %11</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> awk</span><span class="sk-032f62-99ffe4"> '{printf("%.2f",$1/10.0)}'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> TIMESTAMP=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">date</span><span class="sk-005cc5-99ffe4"> -u</span><span class="sk-032f62-99ffe4"> +"%Y-%m-%dT%H:%M:%SZ"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> echo</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$TEMPERATURE</span><span class="sk-032f62-99ffe4">\n</span><span class="sk-24292e-fff">$TIMESTAMP</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">36.30</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2020-09-28T02:57:49Z</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> '{"temperature":'''</span><span class="sk-24292e-fff">$TEMPERATURE</span><span class="sk-032f62-99ffe4">''', "time": "'''</span><span class="sk-24292e-fff">$TIMESTAMP</span><span class="sk-032f62-99ffe4">'''"}'</span><span class="sk-032f62-99ffe4"> https://shield.upinatoms.com/temps</span><span class="sk-d73a49-a0a0a0"> 2&gt;&amp;1</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> "&lt; HTTP/2"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/2 201 </span></span></code></pre>
+</div>
+<h3>2. 颁发客户端证书</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> https://shield.upinatoms.com/temps</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .</span></span>
+<span class="line"><span class="sk-24292e-fff">[</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "temperature"</span><span class="sk-24292e-fff">: 36.3,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-09-28T02:57:49Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "temperature"</span><span class="sk-24292e-fff">: 36.7,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-09-28T02:54:56Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "temperature"</span><span class="sk-24292e-fff">: 36.2,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-09-28T02:33:08Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "temperature"</span><span class="sk-24292e-fff">: 36.5,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-09-28T02:29:22Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "temperature"</span><span class="sk-24292e-fff">: 36.9,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2020-09-28T02:27:19Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>有了我们的 API 后，便可将其锁定，以请求有效客户端证书。在这样做之前，首先要生成这些证书。为此，可以转到 Cloudflare 仪表板的 SSL/TLS → Client Certificates 选项卡，再单击“Create Certificate”，或者可以通过调用 API 来自动执行此过程。</p>
+<p>由于大多数开发人员会生成自己的私钥和 CSR，并要求通过 API 对其进行签名，因此这里将演示这个过程。使用 Cloudflare 的 PKI 工具包 <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL，</a>，先为 iOS 应用程序创建引导证书，再为 IoT 设备创建证书：</p>
+<p>为 IoT 设备和 iOS 应用程序生成私钥及 CSR</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-fff">'EOF'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> tee</span><span class="sk-005cc5-99ffe4"> -a</span><span class="sk-032f62-99ffe4"> csr.json</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "hosts": [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "ios-bootstrap.devices.upinatoms.com"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "CN": "ios-bootstrap.devices.upinatoms.com",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "key": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "algo": "rsa",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "size": 2048</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "names": [{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "C": "US",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "L": "Austin",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "O": "Temperature Testers, Inc.",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "OU": "Tech Operations",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "ST": "Texas"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-fff">EOF</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cfssl</span><span class="sk-032f62-99ffe4"> genkey</span><span class="sk-032f62-99ffe4"> csr.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cfssljson</span><span class="sk-005cc5-99ffe4"> -bare</span><span class="sk-032f62-99ffe4"> certificate</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2020/09/27</span><span class="sk-032f62-99ffe4"> 21:28:46</span><span class="sk-24292e-fff"> [INFO] generate received request</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2020/09/27</span><span class="sk-032f62-99ffe4"> 21:28:46</span><span class="sk-24292e-fff"> [INFO] received CSR</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2020/09/27</span><span class="sk-032f62-99ffe4"> 21:28:46</span><span class="sk-24292e-fff"> [INFO] generating key: rsa-2048</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2020/09/27</span><span class="sk-032f62-99ffe4"> 21:28:47</span><span class="sk-24292e-fff"> [INFO] encoded CSR</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate-key.pem</span><span class="sk-032f62-99ffe4"> ios-key.pem</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate.csr</span><span class="sk-032f62-99ffe4"> ios.csr</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> do</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> same</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> IoT</span><span class="sk-032f62-99ffe4"> sensor</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sed</span><span class="sk-005cc5-99ffe4"> -i.bak</span><span class="sk-032f62-99ffe4"> 's/ios-bootstrap/sensor-001/g'</span><span class="sk-032f62-99ffe4"> csr.json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cfssl</span><span class="sk-032f62-99ffe4"> genkey</span><span class="sk-032f62-99ffe4"> csr.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cfssljson</span><span class="sk-005cc5-99ffe4"> -bare</span><span class="sk-032f62-99ffe4"> certificate</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate-key.pem</span><span class="sk-032f62-99ffe4"> sensor-key.pem</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mv</span><span class="sk-032f62-99ffe4"> certificate.csr</span><span class="sk-032f62-99ffe4"> sensor.csr</span></span></code></pre>
+</div>
+<p>请 Cloudflare 使用为您的区域颁发的私有 CA 签署CSR</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> we</span><span class="sk-032f62-99ffe4"> need</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> actual</span><span class="sk-032f62-99ffe4"> newlines</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> CSR</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> ‘</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">’</span><span class="sk-032f62-99ffe4"> before</span><span class="sk-032f62-99ffe4"> POST’ing</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> CSR=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> ios.csr</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -pe</span><span class="sk-032f62-99ffe4"> 's/\n/\\n/g'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> request_body=</span><span class="sk-24292e-fff">$(</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-6f42c1-ffc799">cat</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-99ffe4">EOF</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "validity_days": 3650,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "csr":"</span><span class="sk-24292e-fff">$CSR</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">EOF</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">)</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> save</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> so</span><span class="sk-032f62-99ffe4"> we</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> view</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> then</span><span class="sk-032f62-99ffe4"> extract</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> certificate</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: YOUR_EMAIL'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key: YOUR_API_KEY'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> “</span><span class="sk-24292e-fff">$request_body</span><span class="sk-032f62-99ffe4">”</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> response.json</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> response.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "errors"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "messages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "7bf7f70c-7600-42e1-81c4-e4c0da9aa515",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "certificate_authority"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "8f5606d9-5133-4e53-b062-a2e5da51be5e",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Cloudflare Managed CA for account 11cbe197c050c9e422aaa103cfe30ed8"</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "certificate"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "-----BEGIN CERTIFICATE-----\nMIIEkzCCA...\n-----END CERTIFICATE-----\n",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "csr"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "-----BEGIN CERTIFICATE REQUEST-----\nMIIDITCCA...\n-----END CERTIFICATE REQUEST-----\n",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "ski"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "eb2a48a19802a705c0e8a39489a71bd586638fdf",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "serial_number"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "133270673305904147240315902291726509220894288063",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "signature"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "SHA256WithRSA",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "common_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ios-bootstrap.devices.upinatoms.com",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "organization"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Temperature Testers, Inc.",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "organizational_unit"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Tech Operations",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "country"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "US",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "state"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Texas",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "location"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Austin",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "expires_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2030-09-26T02:41:00Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "issued_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2020-09-28T02:41:00Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "fingerprint_sha256"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "84b045d498f53a59bef53358441a3957de81261211fc9b6d46b0bf5880bdaf25",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "validity_days"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-ffc799"> 3650</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> response.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .result.certificate</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -npe</span><span class="sk-032f62-99ffe4"> 's/\\n/\n/g; s/"//g'</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> ios.pem</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> now</span><span class="sk-032f62-99ffe4"> ask</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> second</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-032f62-99ffe4"> certificate</span><span class="sk-032f62-99ffe4"> signing</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> signed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> CSR=</span><span class="sk-24292e-fff">$(</span><span class="sk-6f42c1-ffc799">cat</span><span class="sk-032f62-99ffe4"> sensor.csr</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -pe</span><span class="sk-032f62-99ffe4"> 's/\n/\\n/g'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> request_body=</span><span class="sk-24292e-fff">$(</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4"> &lt;(</span><span class="sk-6f42c1-ffc799">cat</span><span class="sk-d73a49-a0a0a0"> &lt;&lt;</span><span class="sk-032f62-99ffe4">EOF</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "validity_days": 3650,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "csr":"</span><span class="sk-24292e-fff">$CSR</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">EOF</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">)</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Email: YOUR_EMAIL'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'X-Auth-Key: YOUR_API_KEY'</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> 'Content-Type: application/json'</span><span class="sk-005cc5-99ffe4"> -d</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$request_body</span><span class="sk-032f62-99ffe4">"</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/zones/YOUR_ZONE_ID/client_certificates</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> perl</span><span class="sk-005cc5-99ffe4"> -npe</span><span class="sk-032f62-99ffe4"> 's/\\n/\n/g; s/"//g'</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> sensor.pem</span></span></code></pre>
+</div>
+<h3>3. 创建 API Shield 规则</h3>
+<p>有了证书后，便可配置 API 端点以要求使用证书。下方显示了如何创建这样的规则。</p>
+<p>这些步骤包括指定要提示提供证书的主机名，例如 shield.upinatoms.com，然后创建 API Shield 规则。</p>
+<h3>4. IoT 设备通信</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="600" height="469" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46HP4RTHMF5MFZ9XP387E2.gif" alt="Introducing API Shield Embedded Image - l6bqhb" width="600" height="469" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>为了使 IoT 设备准备好与我们的 API 端点进行安全通信，需要将证书嵌入到设备上，然后使我们的应用程序指向这一证书，以便在向 API 端点发出 POST 请求时可以使用它。</p>
+<p>将私钥和证书安全复制到 /etc/ssl/private/sensor-key.pem 和 /etc/ssl/certs/sensor.pem 中，然后修改示例脚本以指向这些文件：</p>
+<p>当脚本尝试连接 <a href="https://shield.upinatoms.com/temps" target="_blank" rel="noopener noreferrer">https://shield.upinatoms.com/temps</a> 时，Cloudflare 会请求发送 ClientCertificate，我们的脚本也会发送 sensor.pem 的内容，再表明其持有完成 SSL/TLS 握手所需的 sensor-key.pem。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> requests</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">from</span><span class="sk-032f62-99ffe4"> datetime</span><span class="sk-032f62-99ffe4"> import</span><span class="sk-032f62-99ffe4"> datetime</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">def</span><span class="sk-032f62-99ffe4"> readSensor</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # Takes a reading from a temperature sensor and store it to temp_measurement </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    dateTimeObj</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> datetime.now</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    timestampStr</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> dateTimeObj.strftime</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">‘%Y-%m-%dT%H:%M:%SZ’</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    measurement</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {'temperature':str</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">36.5</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,'time':timestampStr}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> measurement</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">def</span><span class="sk-032f62-99ffe4"> main</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Cloudflare API Shield [IoT device demonstration]"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    temperature</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> readSensor</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    payload</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> json.dumps</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">temperature</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    url</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 'https://shield.upinatoms.com/temps'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    json_headers</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {'Content-Type':</span><span class="sk-032f62-99ffe4"> 'application/json'}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    cert_file</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">'/etc/ssl/certs/sensor.pem'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'/etc/ssl/private/sensor-key.pem'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    r</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> requests.post</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">url,</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> json_headers,</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> payload,</span><span class="sk-032f62-99ffe4"> cert</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> cert_file</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Request body: "</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> r.request.body</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"Response status code: %d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-032f62-99ffe4"> r.status_code</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>如果未能成功发送客户端证书，或者试图在 API 请求中包含无关的字段，则模式验证（配置未显示）将失败，而请求也会被拒绝：</p>
+<p>相反，如果出示的证书有效，并且有效载荷遵循先前上传的模式，那么我们的脚本会通过 POST 将最新的温度读数发布到 API。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:52:19Z"}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 403</span></span></code></pre>
+</div>
+<h3>5. 移动应用程序（iOS）通信</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> Shield</span><span class="sk-24292e-fff"> [IoT </span><span class="sk-032f62-99ffe4">device</span><span class="sk-032f62-99ffe4"> demonstration]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Request</span><span class="sk-032f62-99ffe4"> body:</span><span class="sk-032f62-99ffe4">  {"temperature":</span><span class="sk-032f62-99ffe4"> "36.5",</span><span class="sk-032f62-99ffe4"> "time":</span><span class="sk-032f62-99ffe4"> "2020-09-28T15:56:45Z"}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Response</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code:</span><span class="sk-005cc5-ffc799"> 201</span></span></code></pre>
+</div>
+<p>现在，温度请求已发送到我们的 API 端点，是时候使用其中一个客户端证书从我们的移动应用程序安全读取它们了。</p>
+<p>为了简洁起见，我们将以 PKCS#12 文件形式在应用程序捆绑包中嵌入“引导”证书和密钥。在实际部署中，此引导证书应当仅与用户凭据一起使用，向可以返回唯一用户证书的 API 端点进行身份验证。企业用户应使用 MDM 来分发证书，以获得其他控制和持久选项。</p>
+<h4>封装证书和私钥</h4>
+<p>在添加引导证书和私钥之前，我们需要把它们组合成二进制 PKCS#12 文件。这个二进制文件而后会添加到我们的 iOS 应用程序捆绑包中。</p>
+<h4>将证书捆绑包添加到您的 iOS 应用程序</h4>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> pkcs12</span><span class="sk-005cc5-99ffe4"> -export</span><span class="sk-005cc5-99ffe4"> -out</span><span class="sk-032f62-99ffe4"> bootstrap-cert.pfx</span><span class="sk-005cc5-99ffe4"> -inkey</span><span class="sk-032f62-99ffe4"> ios-key.pem</span><span class="sk-005cc5-99ffe4"> -in</span><span class="sk-032f62-99ffe4"> ios.pem</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Verifying</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Enter</span><span class="sk-032f62-99ffe4"> Export</span><span class="sk-032f62-99ffe4"> Password:</span></span></code></pre>
+</div>
+<p>在 XCode 中，点击 File → Add Files To "[项目名称]"，再选择您的 .pfx文件。在确认之前，请确保选中“Add to target”。</p>
+<h4>修改 URLSession 代码以使用客户端证书</h4>
+<p><a href="https://leenarts.net/2020/02/28/client-certificate-with-urlsession-in-swift" target="_blank" rel="noopener noreferrer">本文</a>提供了一个不错的演练，使用 PKCS#11 类和 <a href="https://developer.apple.com/documentation/foundation/urlsessiondelegate" target="_blank" rel="noopener noreferrer">URLSessionDelegate</a> 来修改您的应用程序，使其在连接需要的 API 时完成双向 TLS 身份验证。</p>
+<h3>展望未来</h3>
+<p>在未来几个月中，我们计划扩展 API Shield，添加一些旨在保护 API 流量的其他功能。如果客户想要使用自己的 PKI，我们也提供了导入自有 CA 的功能，这些功能目前已作为 Cloudflare Access 的一部分<a href="https://developers.cloudflare.com/access/service-auth/mtls" target="_blank" rel="noopener noreferrer">提供</a>。</p>
+<p>收到有关 Beta 版模式验证的反馈后，我们会设法面向所有客户提供这个功能。如果您正在试用 Beta 版并想分享自己的想法，欢迎您提供反馈。</p>
+<p>除了证书和模式验证外，我们也将布置其他 API 安全功能和深度分析功能，以帮助您更好地了解 API。如果有您期待获得的功能，请在下方评论中告诉我们！</p>
+<p><em>1</em>：<em>“<em>到 <em>2021</em> 年，<em>90</em>％ 支持 <em>Web</em> 的应用程序因为开放 <em>API</em> 而非 <em>UI</em> 而具有更大的攻击表面，<em>2019</em> 年的比例为 <em>40</em>％</em>”</em>。资料来源：<em>Gartner“Gartner</em> 的 <em>API</em> 战略成熟度模型_”_，<em>Saniye Alaybeyi</em> 和 <em>Mark O'Neill</em>，<em>2019</em> 年 <em>10</em> 月 <em>21</em> 日。（需要订阅 <em>Gartner</em>）</p>
+<p><em>2</em>：<em>“Gartner</em> 预计到 <em>2022</em> 年，<em>API</em> 滥用将从不常见的攻击手段转变为最频繁的攻击手段，导致企业 <em>Web</em> 应用程序发生数据泄露_”<em>。资料来源：<em>Gartner</em>，</em>“API_ 战略中的冷静供应商_”_，<em>Shameen Pillai</em>、<em>Paolo Malinverno</em>、<em>Mark O'Neill</em> 和 <em>Jeremy D'Hoinne</em>，<em>2020</em> 年 <em>5</em> 月 <em>18</em> 日（需要订阅 <em>Gartner</em>）</p>

@@ -1,0 +1,166 @@
+<p>In april 2025 hebben we in Developer Week <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer"><u>de openbare bètaversie van R2 Data Catalog</u></a> aangekondigd, een volledig beheerde <a href="https://iceberg.apache.org/docs/nightly" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a>-catalogus als aanvulling op de <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2-objectopslag</u></a>. Vandaag presenteren we drie producten die daarop zijn gebaseerd:</p>
+<ul>
+	<li><strong>Cloudflare Pipelines</strong> ontvangt gebeurtenissen die via Workers of HTTP worden verzonden, transformeert ze met SQL en neemt ze op in Iceberg of als bestanden in R2</li>
+	<li><strong>R2 Data Catalog</strong> beheert de Iceberg-metadata en voert nu doorlopend onderhoud uit, inclusief compressie, om de queryprestaties te verbeteren</li>
+	<li><strong>R2 SQL</strong> is onze interne, gedistribueerde SQL-engine, ontworpen om query's op petabyte-schaal op jouw data in R2 uit te voeren</li>
+</ul>
+<p>Samen vormen deze producten het <strong>Cloudflare Data Platform</strong>, een complete oplossing voor het opnemen, opslaan en raadplegen van analytische datatabellen.</p>
+<p>Net als alle <a href="https://www.cloudflare.com/developer-platform/products" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developer Platform-producten</u></a>, draaien ze op onze wereldwijde computerinfrastructuur. Ze zijn op basis van open standaarden en met het oog op interoperabiliteit gebouwd. Dat betekent dat jij je eigen Iceberg-query-engine (PyIceberg, DuckDB of Spark) kunt gebruiken en verbinden met andere platforms zoals Databricks en Snowflake, en dat je geen kosten voor uitgaand dataverkeer hoeft te betalen om toegang te krijgen tot jouw data.</p>
+<p>Analytische data is essentieel voor moderne bedrijven. Hiermee krijg je inzicht in het gedrag van je gebruikers en de prestaties van je bedrijf en ontvang je informatie over problemen. Maar een traditionele data-infrastructuur is duur en moeilijk te gebruiken. Er is een vaste cloudinfrastructuur en interne expertise voor nodig. We hebben het Cloudflare Data Platform zo gebouwd dat het voor iedereen gebruiksvriendelijk is, met betaalbare prijzen op basis van het gebruik.</p>
+<p>Als je meteen aan de slag wilt, volg dan de <a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>Data Platform-tutorial</u></a> voor een stapsgewijze handleiding voor het maken van een <a href="https://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>Pipeline</u></a> die gebeurtenissen verwerkt en aan een <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a>-tabel levert die vervolgens met <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> kan worden ondervraagd. Of lees verder en ontdek hoe we hier zijn aanbeland en hoe dit allemaal werkt.</p>
+<h3>Waarom hebben we een dataplatform gebouwd?</h3>
+<p><a href="https://blog.cloudflare.com/introducing-r2-object-storage" target="_blank" rel="noopener noreferrer"><u>In 2021 hebben we R2 Object Storage gelanceerd</u></a> met een radicale prijsstrategie: geen <a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer"><u>egress kosten</u></a> (de bandbreedtekosten die traditionele cloud providers in rekening brengen voor uitgaand dataverkeer, waardoor jouw data feitelijk gegijzeld wordt). Dit was mogelijk, omdat we al een van de grootste wereldwijde netwerken hadden gebouwd, met verbindingen met duizenden internetproviders, clouddiensten en andere ondernemingen.</p>
+<p>Objectopslag is geschikt voor allerlei verschillende toepassingen, van media en statische activa tot AI-trainingsdata. Maar in de loop der tijd hebben we gemerkt dat steeds meer bedrijven open data- en tabelindelingen gebruiken om hun analytische datawarehouses in R2 op te slaan.</p>
+<p>De technologie die dit mogelijk maakt, is <a href="https://iceberg.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a>. Iceberg is een <em>tabelindeling</em> die database-achtige functies biedt (waaronder updates, ACID-transacties en schema-evolutie) naast de databestanden in de objectopslag. Met andere woorden: het is een metadata-laag die cliënten vertelt welke databestanden een bepaalde logische tabel vormen, wat de schema's zijn en hoe die op efficiënte wijze ondervraagd kunnen worden.</p>
+<p>Dankzij het gebruik van Iceberg in de gehele sector waren gebruikers niet langer aan één query-engine gebonden. Maar vanwege de egress kosten is het nog steeds onbetaalbaar om data in verschillende regio's en clouds te ondervragen. R2, <a href="https://www.cloudflare.com/the-net/egress-fees-exit" target="_blank" rel="noopener noreferrer"><u>zonder egress kosten</u></a>, loste dat probleem op: gebruikers zaten ook niet langer aan hun clouds vast. Ze konden hun data op een leveranciersonafhankelijke locatie opslaan en hun teams de query-engine laten gebruiken die het beste bij hun data en query-patronen paste.</p>
+<p>Maar gebruikers moesten nog steeds zelf alle metadata en andere infrastructuur beheren. We begrepen dat hier een kans voor ons lag om een groot knelpunt te verwijderen en de problemen rondom de opslag van data lakes op R2 te reduceren. Zo ontstond R2 Data Catalog, onze beheerde Iceberg-catalogus.</p>
+<p>Ondanks het feit dat de data op R2 was opgeslagen en de metadata beheerd werd, stonden gebruikers toch nog voor enkele uitdagingen.</p>
+<p>Hoe wordt de data in de Iceberg-tabellen overgedragen? Hoe worden de query-prestaties geoptimaliseerd, zodra de data is overgedragen? En hoe kan deze data waarde creëren zonder dat je zelf een query-engine hoeft te hosten of een ander cloudplatform hoeft te gebruiken?</p>
+<p>In de rest van dit bericht leggen we uit hoe de drie producten van het Data Platform deze uitdagingen aanpakken.</p>
+<h3>Cloudflare Pipelines</h3>
+<p>Analytische datatabellen bestaan uit <em>gebeurtenissen</em>, dingen die op een bepaald moment hebben plaatsgevonden. Ze kunnen afkomstig zijn van serverlogs, mobiele applicaties of IoT-apparaten en zijn gecodeerd in data-indelingen zoals JSON, Avro of Protobuf. Idealiter hebben de tabellen een schema (een gestandaardiseerde set velden) maar het kan ook zijn dat ze gewoon bevatten wat een bepaald team erin wilde gooien.</p>
+<p>Voordat je deze gebeurtenissen met Iceberg kunt ondervragen, moeten ze eerst verzameld, goed gestructureerd en in objectopslag opgenomen zijn. Dat is de rol van <a href="https://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>Cloudflare Pipelines</u></a>.</p>
+<p>Pipelines werd gebouwd op basis van <a href="https://www.arroyo.dev" target="_blank" rel="noopener noreferrer"><u>Arroyo</u></a>, een streamverwerkingsengine die we eerder dit jaar hebben overgenomen. Pipelines ontvangt gebeurtenissen, transformeert ze met SQL-query's en slaat ze op in R2 en R2 Data Catalog.</p>
+<p>Pipelines omvat drie centrale objecten:</p>
+<p><a href="https://developers.cloudflare.com/pipelines/streams" target="_blank" rel="noopener noreferrer"><strong><u>Streams</u></strong></a> is de manier waarop data naar Cloudflare wordt verzonden. Het zijn duurzame, gebufferde wachtrijen die gebeurtenissen ontvangen en voor verwerking opslaan. Streams kan gebeurtenissen op twee manieren accepteren: via een HTTP-eindpunt of via een <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Cloudflare Worker-verbinding</u></a>.</p>
+<p><a href="https://developers.cloudflare.com/pipelines/sinks" target="_blank" rel="noopener noreferrer"><strong><u>Sinks</u></strong></a> definieert de bestemming van jouw data. Wij ondersteunen de opname in R2 Data Catalog en de opslag van onbewerkte bestanden in R2 als JSON of <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a>. Sinks kan zo worden geconfigureerd dat er regelmatig bestanden worden opgeslagen, waarbij prioriteit wordt gegeven aan opnames met een lage latentie, of zo dat er minder vaak grotere bestanden worden opgeslagen om de query-prestaties te verbeteren. In beide gevallen wordt de gebeurtenis <em>precies één keer</em> opgenomen, wat betekent dat we nooit gebeurtenissen dupliceren of verwijderen terwijl die naar R2 worden gestuurd.</p>
+<p><a href="https://developers.cloudflare.com/pipelines/pipelines" target="_blank" rel="noopener noreferrer"><strong><u>Pipelines</u></strong></a> verbindt streams en sinks via <a href="https://developers.cloudflare.com/pipelines/sql-reference" target="_blank" rel="noopener noreferrer"><u>SQL-transformaties</u></a> die gebeurtenissen kunnen wijzigen voordat ze worden opgeslagen. Hierdoor kun je naar <em>links verschuiven</em>, waardoor de validatie, schematisering en verwerking in de opnamelaag gebeurt, zodat jouw query's eenvoudig, snel en correct zijn.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=640&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=750&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=828&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1080&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1280&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1430&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2972 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1200&amp;h=409&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="409" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="244" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Hier is bijvoorbeeld een Pipeline die gebeurtenissen uit een clickstream-databron opneemt en naar Iceberg stuurt:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">INSERT into</span><span class="sk-24292e-fff"> events_table</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  user_id,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  lower</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> event_type,</span></span>
+<span class="line"><span class="sk-24292e-fff">  to_timestamp_micros(ts_us) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> event_time,</span></span>
+<span class="line"><span class="sk-24292e-fff">  regexp_match(</span><span class="sk-d73a49-ffc799">url</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'^https?://([^/]+)'</span><span class="sk-24292e-fff">)[1]  </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> domain,</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  url</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  referrer,</span></span>
+<span class="line"><span class="sk-24292e-fff">  user_agent</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> events_json</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-ffc799"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'page_view'</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>SQL-transformaties zijn zeer krachtig en geven je volledige controle over hoe de data wordt gestructureerd en in de tabel wordt opgenomen. Dit zijn mogelijke functies:</p>
+<ul>
+	<li>Data schematiseren of normaliseren, zelfs met gebruik van <a href="https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json" target="_blank" rel="noopener noreferrer"><u>JSON-functies</u></a> om velden uit willekeurige JSON te halen</li>
+	<li>Gebeurtenissen uitfilteren of splitsen in afzonderlijke tabellen met hun eigen schema's</li>
+	<li>Gevoelige informatie vóór de opslag met regexes redigeren</li>
+	<li>Geneste arrays en objecten als afzonderlijke gebeurtenissen uitrollen</li>
+</ul>
+<p>Pipelines ondersteunt in eerste instantie stateless transformaties. In de toekomst zullen we vaker <a href="https://www.arroyo.dev/blog/stateful-stream-processing" target="_blank" rel="noopener noreferrer"><u>de stateful verwerkingsfuncties van Arroyo</u></a> gebruiken om aggregaties, incrementeel bijgewerkte gematerialiseerde weergaven en joins te ondersteunen.</p>
+<p>Cloudflare Pipelines is vanaf vandaag als open bètaversie beschikbaar. Je kunt een pijplijn aanmaken met behulp van het dashboard, Wrangler of de REST API. Lees eerst onze <a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>documentatie voor ontwikkelaars.</u></a></p>
+<p>Tijdens de open bètafase is Pipelines gratis. Voor de R2-opslag en -bewerkingen die nodig zijn voor het opslaan van gegevens naar R2, gelden echter onze <a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>standaardtarieven</u></a>. Wanneer we beginnen met factureren, baseren we de kosten op de hoeveelheid gelezen data, de hoeveelheid verwerkte data via SQL-transformaties en de geleverde data.</p>
+<h3>R2 Data Catalog</h3>
+<p>In april hebben we de open bètaversie van <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a> gelanceerd en we staan versteld van de positieve respons. Query-engines, zoals DuckDB, <a href="https://duckdb.org/docs/stable/guides/network_cloud_storage/cloudflare_r2_import.html" target="_blank" rel="noopener noreferrer"><u>hebben ingebouwde ondersteuning toegevoegd</u></a> en we hebben handige integraties gezien, zoals <a href="https://blog.cloudflare.com/marimo-cloudflare-notebooks" target="_blank" rel="noopener noreferrer"><u>marimo notebooks</u></a>.</p>
+<p>Hiermee kun je eenvoudig met Iceberg aan de slag. Het is niet nodig om een databasecluster op te zetten, verbinding te maken met objectopslag of infrastructuur te beheren. Je kunt met een aantal <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>-opdrachten een catalogus aanmaken:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler bucket create mycatalog </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre>
+</div>
+<p>Hiermee beschik je over een data lake dat naar petabytes aan opslagruimte kan worden geschaald en dat kan worden ondervraagd door elke engine die je maar wilt gebruiken, zonder enige egress kosten.</p>
+<p>Maar het is niet voldoende om de data alleen op te slaan. Na verloop van tijd en naarmate er meer data wordt verwerkt, neemt het aantal onderliggende databestanden waaruit een tabel bestaat toe, met steeds tragere query-prestaties als gevolg.</p>
+<p>Dit is vooral een probleem bij het opnemen van data met een lage latentie, waarbij het de bedoeling is om gebeurtenissen zo snel mogelijk opvraagbaar te maken. Als de data vaker wordt opgeslagen, zijn de bestanden kleiner en zijn er meer bestanden. Elk bestand dat nodig is voor een query moet vermeld, gedownload en gelezen worden. Het afzoeken van te veel kleine bestanden kan een groot deel van de totale query-tijd in beslag nemen.</p>
+<p>De oplossing is <em>compressie</em>, een periodieke onderhoudsbeurt die automatisch door de catalogus wordt uitgevoerd. De compressie maakt van kleine bestanden grotere bestanden, waardoor er minder metadata is en de query-prestaties worden verbeterd.&nbsp;</p>
+<p>Vandaag presenteren we compressie-ondersteuning voor R2 Data Catalog. Je kunt die heel eenvoudig voor jouw catalogus activeren:<br></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre>
+</div>
+<p>We beginnen met ondersteuning voor het comprimeren van kleine bestanden en zullen dit in de toekomst met andere comprimeringsstrategieën uitbreiden. Lees de <a href="https://developers.cloudflare.com/r2/data-catalog/about-compaction" target="_blank" rel="noopener noreferrer"><u>compressie-documentatie</u></a> voor meer informatie over hoe het werkt en hoe je deze functie kunt inschakelen.</p>
+<p>Op dit moment, tijdens de open bètafase, is R2 Data Catalog gratis. Hieronder staat onze huidige indicatie van de toekomstige prijzen:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Prijzen*</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>R2 StorageVoor de standaard opslagklasse</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$ 0,015 per GB-maand (geen verandering)</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>R2 Class A-bewerkingen</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$ 4,50 per miljoen bewerkingen (geen verandering)</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>R2 Class B-bewerkingen</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$ 0,36 per miljoen bewerkingen (geen verandering)</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Data Catalog-bewerkingenbijv. tabel aanmaken, metadata van tabel ophalen, tabelkenmerken updaten</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$ 9,00 per miljoen catalogusbewerkingen</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Verwerkte Data Catalogus-compressiedata</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$ 0,005 per verwerkte GB$ 2,00 per miljoen verwerkte objecten</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Uitgaand dataverkeer</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$ 0 (geen verandering, altijd gratis)</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><em>*De prijzen kunnen voorafgaand aan de algemene beschikbaarheid worden gewijzigd</em></p>
+<p>Wij zullen je ten minste 30 dagen van tevoren informeren voordat de facturering start of als er iets verandert.</p>
+<h3>R2 SQL</h3>
+<p>De data in R2 Data Catalog opslaan, is de eerste stap. Het echte doel is om inzichten en waarde uit de data te halen. Normaal gesproken betekent dit dat je DuckDB, Spark, Trino of een andere query-engine moet instellen en beheren, waardoor er een operationele overheadslaag tussen jou en die inzichten wordt toegevoegd. Maar wat als je query's rechtstreeks via Cloudflare zou kunnen uitvoeren?</p>
+<p>Nu is dat mogelijk. We hebben een query-engine gebouwd die speciaal voor R2 Data Catalog en de edge-infrastructuur van Cloudflare is ontworpen. We noemen die engine <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> en die is vanaf vandaag als open bètaversie beschikbaar.</p>
+<p>Met Wrangler is het uitvoeren van een query op een R2 Data Catalog-tabel niet moeilijker dan:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 sql query </span><span class="sk-032f62-99ffe4">"{WAREHOUSE}"</span><span class="sk-032f62-99ffe4"> "\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  SELECT user_id, url FROM events \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre>
+</div>
+<p>Het vermogen van Cloudflare om overal op zijn wereldwijde netwerk rekenkracht in te zetten, vormt de basis van het ontwerp van R2 SQL. Hierdoor kunnen wij data direct verwerken waar die zich bevindt, zodat jij geen gecentraliseerde clusters voor je analytische workloads hoeft te beheren.</p>
+<p>R2 SQL is sterk geïntegreerd met R2 Data Catalog en R2, waardoor de query-planner verder kan gaan dan alleen de opslag scannen, en diepgaand gebruik kan maken van de uitgebreide statistieken die in de R2 Data Catalog-metagegevens zijn opgeslagen. Dit is een krachtige basis voor een nieuw soort query-optimalisatie, zoals hulpindexen of het mogelijk maken van complexere analytische functies in de toekomst.</p>
+<p>Het resultaat is een volledig serverloze ervaring voor gebruikers. Jij kunt je concentreren op jouw SQL, zonder dat je veel kennis hoeft te hebben van de werking van de engine. Als je geïnteresseerd bent in de werking van R2 SQL, heeft het team <a href="https://blog.cloudflare.com/r2-sql-deep-dive" target="_blank" rel="noopener noreferrer"><u>een uitgebreid artikel geschreven over hoe de gedistribueerde query-engine van R2 SQL op grote schaal functioneert.</u></a></p>
+<p>De open bètaversie is een vroege preview van de R2 SQL-query-mogelijkheden en is in eerste instantie gericht op filterquery's. Na verloop van tijd zullen we de mogelijkheden ervan met meer SQL-functies uitbreiden, bijv. complexe aggregaties.</p>
+<p>We zijn erg benieuwd wat onze gebruikers met R2 SQL zullen doen. Als je het wilt proberen, lees dan <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>de documentatie</u></a> en volg de <a href="https://developers.cloudflare.com/r2-sql/get-started" target="_blank" rel="noopener noreferrer"><u>tutorials</u></a><strong>. </strong>Tijdens de bètafase hoef je niet voor het gebruik van R2 SQL te betalen, maar voor de opslag en bewerkingen van R2 die door query's worden uitgevoerd gelden onze standaardtarieven. We zijn van plan om in de toekomst kosten in rekening te brengen voor de hoeveelheid data die door query's wordt gescand. We zullen je op de hoogte stellen voordat de facturering start.</p>
+<h3>Tot slot</h3>
+<p>Tegenwoordig kun je het Cloudflare Data Platform gebruiken om gebeurtenissen in R2 Data Catalog op te nemen en deze via R2 SQL te raadplegen. In de eerste helft van 2026 zullen we de functionaliteit van al deze producten uitbreiden, zoals:</p>
+<ul>
+	<li>Integratie met <a href="https://developers.cloudflare.com/logs/logpush" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a>, zodat je jouw logs rechtstreeks in Cloudflare kunt transformeren, opslaan en raadplegen</li>
+	<li>Door de gebruiker gedefinieerde functies via Workers en ondersteuning voor stateful processing voor streaming-transformaties</li>
+	<li>Uitbreiding van de functionaliteit van R2 SQL naar aggregaties en joins</li>
+</ul>
+<p>In de tussentijd kun je aan de slag met het Cloudflare Data Platform door <a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>de tutorial</u></a> te volgen om een end-to-end analytisch datasysteem aan te maken, van opname via Pipelines, en opslag in R2 Data Catalog tot query's met R2 SQL.&nbsp;<br><br>Wij zijn benieuwd wat jullie gaan bouwen! Deel alle feedback op ons <a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Developer Discord</u></a>.</p>
+<div id="html-block-k72" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/5ba9884c376445afc963b00e36fa0f9c/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F5ba9884c376445afc963b00e36fa0f9c%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>

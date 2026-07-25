@@ -1,0 +1,147 @@
+<h3>Browser Rendering API 现已向所有付费 Workers 客户提供，并改进了会话管理功能</h3>
+<p>我们<a href="https://blog.cloudflare.com/browser-rendering-open-beta">于 2023 年 5 月宣布了</a>Browser Rendering API 的<a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer">开放测试计划</a>。Browser Rendering 允许开发人员以编程方式控制无头浏览器实例并与之交互，为其应用程序和产品创建自动化流程。</p>
+<p>与此同时，我们还推出了可与 Browser Rendering 搭配使用的<a href="https://developers.cloudflare.com/browser-rendering/platform/puppeteer" target="_blank" rel="noopener noreferrer">Puppeteer 库版本</a>。借助这一版本，开发人员可在 Cloudflare Workers 之上使用熟悉的 API 来创建各种工作流，例如页面截图或自动软件测试。</p>
+<p>今天，我们将 Browser Rendering 功能向前推进了一步，结束了测试，并将提供给所有 Workers 计划的付费用户使用。此外，我们还将强化 API，并推出一项在开放测试社区讨论已久的新功能：会话管理。</p>
+<h3>会话管理</h3>
+<p>会话管理允许开发人员在 Worker 的脚本中重复使用之前打开的浏览器。重复使用浏览器会话的优势在于，您无需为每个请求和任务实例化新的浏览器，而这能够显著提升性能并降低成本。</p>
+<p>以往，要保持浏览器实例的活动状态并对其进行重复使用，您必须使用 Durable Objects 实施复杂的代码。如今，我们简化了这一过程，让浏览器在后台运行，并通过新的 <a href="https://developers.cloudflare.com/browser-rendering/platform/puppeteer/#session-management" target="_blank" rel="noopener noreferrer">会话管理方法</a>扩展了 Puppeteer API ，让您可以访问所有运行中的会话、活动历史和活动限制。</p>
+<p>以下是列出活动会话的方法：</p>
+<p>我们已将有关如何使用会话管理的 Worker 脚本示例添加到<a href="https://developers.cloudflare.com/browser-rendering/get-started/reuse-sessions/#4-code" target="_blank" rel="noopener noreferrer">开发者文档中</a>。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> sessions</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> puppeteer.</span><span class="sk-6f42c1-ffc799">sessions</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">RENDERING</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(sessions);</span></span>
+<span class="line"><span class="sk-24292e-fff">[</span></span>
+<span class="line"><span class="sk-24292e-fff">   {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "connectionId"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2a2246fa-e234-4dc1-8433-87e6cee80145"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "connectionStartTime"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1711621704607</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "sessionId"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"478f4d7d-e943-40f6-a414-837d3736a1dc"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "startTime"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1711621703708</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-24292e-fff">   {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "sessionId"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"565e05fb-4d2a-402b-869b-5b65b1381db7"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "startTime"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1711621703808</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<h3>分析和日志</h3>
+<p>可观察性是 Cloudflare 产品的重要组成部分。您可以在仪表板中的账户 Worker &amp; Pages 部分找到Browser Rendering 使用情况的详细分析和日志。</p>
+<p>Browser Rendering 功能现已向所有已付费的 Workers 计划客户开放。 在此期间，每个账户每分钟<a href="https://developers.cloudflare.com/browser-rendering/platform/limits" target="_blank" rel="noopener noreferrer">仅限</a>免费运行两个新浏览器和两个并发浏览器。请查看我们的<a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer">开发人员页面</a>，以便开始使用。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2308 Embedded Image - 3PAWRV" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GTR5BSNMZD7560MYJTN0.png&amp;w=1920&amp;h=964&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="964" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>我们正在推出针对 Cloudflare Snippets 的访问</h3>
+<p>Snippets 功能强大、可编程且免费，是在 Cloudflare 上执行复杂 HTTP 请求和响应修改的最佳方式。以往使用 Rules 产品难以实现的功能如今可通过Snippets实现。自 <a href="https://blog.cloudflare.com/snippets-announcement">Developer Week 2022 首次宣布</a>以来，通过编写简单的 JavaScript 代码即可扩展开箱即用的 Rules 功能的承诺，让社区兴奋不已。</p>
+<p>仅在 2024 年的前 3 个月，通过 Snippets 处理的流量就增加了 7 倍多，从 1 月初的平均每秒 2200 次请求增加到 3 月份的逾 17000 次请求。</p>
+<p>但我们不会一次性放开所有限制，让数百万 Cloudflare 用户以最意想不到的方式来进行测试（并可能破坏）Snippets，而是采取分阶段推出的方式，就像新发布的Workers<a href="https://blog.cloudflare.com/workers-production-safety">的逐步推出策略</a>。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="315" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=640&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=750&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=828&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=1080&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=1280&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=1430&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2308 Embedded Image - 8emnQN" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4871J7W1871GKDSE0EW5HM.png&amp;w=1920&amp;h=847&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="847" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="315" class="pt-portable-image-media"></div>
+</figure>
+<p>在接下来的几周内，5% 的 Cloudflare 用户将开始在其仪表板中区域级菜单的规则选项卡下看到 "Snippets"。如果您恰好是前 5%的用户，请即刻行动，<a href="https://blog.cloudflare.com/cloudflare-snippets-alpha%20-%20what-can-you-build-with-cloudflare-snippets">试试Snippets的速度和强大功能</a>， 例如动态更改标题中的日期或利用 `math.random` 函数进行 A / B 测试。无论您如何使用Snippets，请牢记一点：这仍是一个 Alpha 版，因此暂时请不要将 Snippets 用于生产流量。</p>
+<p>在此之前，请留意 Cloudflare 仪表板中的新 Snippets 选项卡，并同时<a href="https://developers.cloudflare.com/rules/snippets" target="_blank" rel="noopener noreferrer">查阅开发者文档，</a> 了解Snippets 的强大功能和灵活性。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="384" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=640&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=750&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=828&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=1080&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=1280&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=1430&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2308 Embedded Image - 7NRPEh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FZ7P2HXNSAN807RMPDW2.png&amp;w=1188&amp;h=638&amp;f=webp" data-lightbox-width="1188" data-lightbox-height="638" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="384" class="pt-portable-image-media"></div>
+</figure>
+<h3>即将推出：利用 stale-while-revalidate 进行异步重新验证</h3>
+<p>客户要求最多的功能之一是带有 stale-while-revalidate (SWR) 缓存指令的异步重验证，我们将于 2024 年下半年为您带来这一功能。该功能将作为将作为我们基于 Rust 构建的全新CDN架构设计的一部分，注重性能和内存安全。</p>
+<p>目前，当客户端请求资源（如网页或图片）时，Cloudflare 会检查资产是否在缓存中，并在缓存副本可用时提供缓存副本。若文件不在缓存中，或已过期并成为过期文件，则 Cloudflare 会连接到源服务器，检查文件的最新版本，并将新版本转发给最终用户。这种等待时间会导致这些请求的延迟增加，从而影响性能。</p>
+<p>作为一种缓存指令，Stale-while-revalidate 允许在向最终用户提供已过期或陈旧版本的资源的同时，由 Cloudflare 检查源以查看是否有更新版本的资源可用。如果存在更新版本，则源会将其转发给 Cloudflare，并在此过程中更新缓存。这种机制允许客户端从缓存中快速接收响应，同时确保其始终可以访问最新的内容。Stale-while-revalidate 在高效提供内容和确保内容的新鲜度之间取得了平衡，从而提高了性能，使用户体验更加流畅。</p>
+<p>想成为我们的 Beta 测试者并“享受”乐趣的客户可在 <a href="https://forms.gle/EEFDtB97sLG5G5Ui9" target="_blank" rel="noopener noreferrer">此处</a>注册 ，我们会在功能可用于测试时通知您！</p>
+<h3>即将于 2024 年 4 月 16 日发布：Workers for Platforms 按需付费计划</h3>
+<p>我们于今日欣然宣布，4 月 16 日，所有开发人员都可以通过我们新推出的 25 美元按需付费计划使用 Workers for Platforms！</p>
+<p>Workers for Platforms 正在改变我们构建软件的方式——其让您能够直接在产品中嵌入个性化和定制功能。借助 Workers for Platforms，您可以代表用户部署自定义代码，或者让用户直接将其自己的代码部署到您的平台上，而无需您或您的用户管理任何基础设施。您可以将 Workers for Platforms 与本次 Developer Week 中发布的所有令人兴奋的新功能搭配使用——其支持所有与 Workers 配套的<a href="https://developers.cloudflare.com/workers/configuration/bindings" target="_blank" rel="noopener noreferrer">绑定</a>（包括<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a>、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a> 和<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>）以及 <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer">PythonWorkers</a>。</p>
+<p>以下是我们的一些客户（从企业到初创公司）在 Workers for Platforms 上的构建情况：</p>
+<ul>
+	<li><a href="https://www.shopify.com/plus/solutions/headless-commerce" target="_blank" rel="noopener noreferrer">Shopify Oxygen</a> 是其基于 Remix 的电子商务框架 Hydrogen 托管平台，它基于 Workers for Platforms 构建！Hydrogen/Oxygen 组合让 Shopify商家能够自由掌控其购买体验，摆脱了通用商店模板的束缚。</li>
+	<li>作为一个数据平台，<a href="https://grafbase.com" target="_blank" rel="noopener noreferrer">Grafbase</a>供开发人员创建无服务器 GraphQL API，将整个业务的数据源统一到一个端点下。其使用 Workers for Platforms 为开发人员提供控制和灵活性，以部署自己用 JavaScript/TypeScript 或 WASM 编写的代码。</li>
+	<li>作为一个开源数据库，<a href="https://www.triplit.dev" target="_blank" rel="noopener noreferrer">Triplit</a>可在服务器和浏览器之间实时同步数据。它允许用户构建低延迟、实时的应用程序，具有关系查询、模式管理和内置服务器端存储等功能。其查询和同步引擎基于 Durable Objects 构建，并使用 Workers for Platforms，让客户能够将自定义 JavaScript 打包到 Triplit DB 实例中。</li>
+</ul>
+<h3>可观测性和平台级控制</h3>
+<p>Workers for Platforms 在允许您将 Workers 部署到您平台上的同时，还让我们知晓针对用户的 Workers 的可观测性和控制有多么重要。我们有若干解决方案可以帮助应对该情况：</p>
+<ul>
+	<li><a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/platform/custom-limits" target="_blank" rel="noopener noreferrer">自定义限制</a>：在用户的Workers 上设置 CPU 时间或子请求限制。这可以用来设定限制，以便控制在Cloudflare上的成本，或者设计自己的定价和打包模式。例如，如果您在平台上采用免费增值模式，则可以降低免费用户的 CPU 时间限制。</li>
+	<li><a href="https://developers.cloudflare.com/workers/observability/logging/tail-workers" target="_blank" rel="noopener noreferrer">Tail Workers</a> Tail Workers 事件包含有关Worker 的元数据、console.log() 消息，并能够捕获任何未处理的异常。其可以用于为开发人员提供实时日志，以便实时监控错误并进行故障排除。</li>
+	<li><a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/reference/outbound-workers" target="_blank" rel="noopener noreferrer">Outbound Workers</a>:获得对用户Workers发出的所有外部请求的可见性。Outbound Workers 位于用户 Workers和其发出的 fetch()请求之间，因此您可以在请求发送到互联网之前全面了解请求。</li>
+</ul>
+<h3>定价</h3>
+<p>我们希望确保业余爱好者、个人开发者和独立开发者都能负担得起 Workers for Platforms 的价格。作为全新 25 美元按需付费计划的一部分，Workers for Platforms 包括以下内容：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-k42" class="html-block">
+	<style>
+		#html-block-k42 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k42 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k42 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k42 .tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k42 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Included Amounts</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Requests</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20 million requests/month </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+$0.30 per additional million</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CPU time</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">60 million CPU milliseconds/month</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+$0.02 per additional million CPU milliseconds</span></td>
+			</tr>
+			<tr>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Scripts</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1000 scripts</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+0.02 per additional script/month</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>包含的金额</p>
+<p>请求</p>
+<p>每月 2000 万次请求+ 0.30 美元/每增加 100 万</p>
+<p>CPU 时间</p>
+<p>每月 6000 万 CPU 毫秒CPU 毫秒每增加 100 万 +0.02 美元</p>
+<p>脚本</p>
+<p>1000 个脚本每增加一个额外脚本每月 +0.02</p>
+<h3>Workers for Platforms 将于 2024 年 4 月 16 日正式发售！</h3>
+<p>2024 年 4 月 16 日起，您可以在 Cloudflare 仪表板的 Workers for Platforms 选项卡下购买 Workers for Platforms。</p>
+<p>同时，欲了解有关 Workers for Platforms 的更多信息，请查阅我们的<a href="https://github.com/cloudflare/workers-for-platforms-example" target="_blank" rel="noopener noreferrer">启动项目</a> 和 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer">开发人员文档</a>。</p>

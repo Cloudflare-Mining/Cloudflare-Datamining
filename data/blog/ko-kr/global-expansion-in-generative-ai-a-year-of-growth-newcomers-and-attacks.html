@@ -1,48 +1,31 @@
-<div class="mb2 gray5">11분 읽기</div>
-<div class="mt4">이 게시물은 <a href="https://blog.cloudflare.com/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">English</a>, <a href="https://blog.cloudflare.com/zh-tw/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">繁體中文</a>, <a href="https://blog.cloudflare.com/fr-fr/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Français</a>, <a href="https://blog.cloudflare.com/de-de/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">日本語</a>, <a href="https://blog.cloudflare.com/nl-nl/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">Nederlands</a> 및 <a href="https://blog.cloudflare.com/zh-cn/global-expansion-in-generative-ai-a-year-of-growth-newcomers-and-attacks">简体中文</a>로도 이용할 수 있습니다.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ieTEQGalyYWqU0FkjLKKp/6395034c8fe69dd90646cf05ff92f833/image4.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>AI(<a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>인공 지능</u></a>)는 인간의 인지 작업을 시뮬레이션하거나 복제하는 기계를 포괄하는 광범위한 개념이며, 데이터 기반 엔진인 <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer"><u>머신 러닝</u></a>(ML)을 사용합니다. AI와 ML 모두 수십 년 동안 존재해 왔지만, 2022년 말 OpenAI의 ChatGPT가 <a href="https://openai.com/index/chatgpt" target="_blank" rel="noopener noreferrer"><u>출시</u></a>된 후 텍스트, 이미지, 오디오, 코드, 비디오를 생성할 수 있는 AI 모델인 <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>생성형 AI</u></a>의 인기가 급증하면서 새로운 추진력을 얻었습니다. 이 블로그 게시물에서는 가장 인기 있는 생성형 AI 서비스와 2024년과 2025년 초 사이에 해당 서비스가 어떻게 발전했는지 살펴봅니다. 또한 저희는 Cloudflare의 관점에서 이러한 생성형 AI 웹 사이트가 얼마나 많은 트래픽 증가를 경험했는지, 해당 트래픽 중 얼마나 많은 트래픽이 악의적인지 등의 질문에 답변을 드려보겠습니다. 또한, 기타 인사이트도 제공해 드립니다.</p>
-	<p>이를 위해 Cloudflare는 <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 DNS 확인자</u></a>에서 집계한 데이터를 사용하여 특정 생성형 AI 서비스의 인기도를 측정합니다. Cloudflare는 일반적으로 <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>연례 검토</u></a>를 위해 이 작업을 수행하며, 각 서비스에 대한 관련 도메인을 집계하고 사용자에게 서비스를 제공하는 사이트를 식별하는 Cloudflare Radar의 <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>DNS 도메인 순위 페이지</u></a>에서도 이 작업을 진행합니다. 전반적인 트래픽 증가 및 공격 동향은 성능(AI 추론 포함) 및 보안을 위해 Cloudflare를 사용하는 생성형 AI 고객 집단에서 집계한 데이터를 사용합니다.</p>
-	<p>핵심 사항:</p>
-	<ul>
-		<li>
-			<p><b>ChatGPT, 1위 유지:</b> OpenAI의 ChatGPT는 2023년 말 200위였던 인터넷 도메인에서 상위 50위를 유지하며 생성형 AI 인기 1위를 유지하고 있습니다.</p>
-		</li>
-		<li>
-			<p><b>빠른 트래픽 증가:</b> 생성형 AI 서비스의 월간 트래픽은 2024년 2월 1일부터 2025년 3월 1일까지 1년 동안 251% 증가했습니다.</p>
-		</li>
-		<li>
-			<p><b>새롭게 떠오르는 기업:</b> 중국의 챗봇 DeepSeek와 Grok/xAI가 빠르게 순위에 오르며 신규 기업이 AI 분야에서 얼마나 빨리 주목을 받을 수 있는지 보여주었습니다.</p>
-		</li>
-		<li>
-			<p><b>지역별 차이가 있는 글로벌 도달 범위:</b> 미국은 생성형 AI 방문자의 23%로 선두를 차지하지만, poe.com과 같은 특정 플랫폼에서는 아시아가 압도적입니다. 또한 브라질은 여러 AI 서비스를 자주 사용하는 국가로 나타났습니다.</p>
-		</li>
-		<li>
-			<p><b>사이버 공격 대상:</b> 지난 한 해 동안 Cloudflare가 차단한 잠재적 공격 요청은 1,970억 건이 넘었으며, 그 중 390억 건의 DDoS 공격 캠페인이 일반 AI 챗봇과 이미지 생성 사이트에 특히 영향을 미쳤습니다.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="generative-ai-services-popularity-ranking-new-kids-in-town">생성형 AI 서비스의 인기 순위: 새로운 등장 인물</h3>
-		<a href="https://blog.cloudflare.com/#generative-ai-services-popularity-ranking-new-kids-in-town" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>먼저 <a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar의 새로운 AI 탭</u></a>을 사용하여 생성형 AI 서비스 인기도를 살펴보겠습니다. 상위 10위권에 가장 최근 진입한 기업은 2025년 1월 10일에 출시된 중국 챗봇인 DeepSeek입니다. 2025년 1월 26일 9위로 데뷔한 후 1월 29일(음력 설날)에 3위로 상승했으며, 2월 4일까지 순위를 유지하다가 현재의 6위 자리에 안착했습니다.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/s9pGGWSp87CqvIOcbZ4gb/8a5a83deabdf8a0ed7f9898fc384c74d/image1.png" alt="Generative AI services popularity worldwide" class="kg-image" width="1600" height="900" loading="lazy">
-	</figure>
-	<p>여기에서는 최근 인기를 얻은 또 다른 AI 챗봇인 X의 Grok/xAI도 함께 소개합니다. 이 생성형 AI 서비스는 2월에 안드로이드 앱을 출시했으며, 2025년 2월 17일 Grok-3 모델을 출시하면서 <a href="https://edition.cnn.com/2025/02/18/tech/grok-3-release-elon-musk/index.html" target="_blank" rel="noopener noreferrer"><u>주목</u></a>을 받았습니다. Cloudflare의 생성형 AI 순위에서는 2025년 2월 21일에 9위를 차지하며 처음으로 상위 10위권에 진입했으며, Claude와 같은 순위인 8위에 잠시 진입한 후, 현재 9위와 10위 사이에서 오르내리고 있습니다.</p>
-	<p>다음은 2025년 3월 9일 기준 Cloudflare Radar <a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-01-01&amp;dateEnd=2025-03-06" target="_blank" rel="noopener noreferrer"><u>AI 페이지</u></a>의 생성형 AI 상위 10위입니다. 올해 초부터 ChatGPT/OpenAI가 1위를 차지하고 있습니다(아래 표에 나와 있듯이 작년에도이 러한 추세가 관찰되었습니다).</p><iframe class="cf-radar-embed" width="800" height="450" src="https://radar.cloudflare.com/embed/AiServicesRankingXY?dateStart=2025-01-01&amp;dateEnd=2025-03-09&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.hoveredSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - 생성형 AI 서비스 인기도" loading="lazy" style="border:0;max-width:100%;"></iframe>
-	<p>순위 변화와 추이를 더 쉽게 파악할 수 있도록, 아래 표에서는 2025년 2월 1일부터 3월 1일(월 평균)의 순위를 왼쪽에 표시합니다. 2024년 목록과 색상별로 비교하여 2024년 이후 하락한 서비스는 빨간색으로, 신규 또는 순위가 높은 항목은 초록색으로 표시했습니다. 참고로, 두 번째 열에는 <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024년 연례 검토</u></a>의 상위 10개 항목(전년도 비교 포함)이 표시되며, 세 번째 열에는 2023년 상위 10개 항목이 표시됩니다.</p>
-	<style type="text/css">
-		.tg {
+<p>AI(<a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>인공 지능</u></a>)는 인간의 인지 작업을 시뮬레이션하거나 복제하는 기계를 포괄하는 광범위한 개념이며, 데이터 기반 엔진인 <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer"><u>머신 러닝</u></a>(ML)을 사용합니다. AI와 ML 모두 수십 년 동안 존재해 왔지만, 2022년 말 OpenAI의 ChatGPT가 <a href="https://openai.com/index/chatgpt" target="_blank" rel="noopener noreferrer"><u>출시</u></a>된 후 텍스트, 이미지, 오디오, 코드, 비디오를 생성할 수 있는 AI 모델인 <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>생성형 AI</u></a>의 인기가 급증하면서 새로운 추진력을 얻었습니다. 이 블로그 게시물에서는 가장 인기 있는 생성형 AI 서비스와 2024년과 2025년 초 사이에 해당 서비스가 어떻게 발전했는지 살펴봅니다. 또한 저희는 Cloudflare의 관점에서 이러한 생성형 AI 웹 사이트가 얼마나 많은 트래픽 증가를 경험했는지, 해당 트래픽 중 얼마나 많은 트래픽이 악의적인지 등의 질문에 답변을 드려보겠습니다. 또한, 기타 인사이트도 제공해 드립니다.</p>
+<p>이를 위해 Cloudflare는 <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 DNS 확인자</u></a>에서 집계한 데이터를 사용하여 특정 생성형 AI 서비스의 인기도를 측정합니다. Cloudflare는 일반적으로 <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>연례 검토</u></a>를 위해 이 작업을 수행하며, 각 서비스에 대한 관련 도메인을 집계하고 사용자에게 서비스를 제공하는 사이트를 식별하는 Cloudflare Radar의 <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>DNS 도메인 순위 페이지</u></a>에서도 이 작업을 진행합니다. 전반적인 트래픽 증가 및 공격 동향은 성능(AI 추론 포함) 및 보안을 위해 Cloudflare를 사용하는 생성형 AI 고객 집단에서 집계한 데이터를 사용합니다.</p>
+<p>핵심 사항:</p>
+<ul>
+	<li><strong>ChatGPT, 1위 유지:</strong> OpenAI의 ChatGPT는 2023년 말 200위였던 인터넷 도메인에서 상위 50위를 유지하며 생성형 AI 인기 1위를 유지하고 있습니다.</li>
+	<li><strong>빠른 트래픽 증가:</strong> 생성형 AI 서비스의 월간 트래픽은 2024년 2월 1일부터 2025년 3월 1일까지 1년 동안 251% 증가했습니다.</li>
+	<li><strong>새롭게 떠오르는 기업:</strong> 중국의 챗봇 DeepSeek와 Grok/xAI가 빠르게 순위에 오르며 신규 기업이 AI 분야에서 얼마나 빨리 주목을 받을 수 있는지 보여주었습니다.</li>
+	<li><strong>지역별 차이가 있는 글로벌 도달 범위:</strong> 미국은 생성형 AI 방문자의 23%로 선두를 차지하지만, poe.com과 같은 특정 플랫폼에서는 아시아가 압도적입니다. 또한 브라질은 여러 AI 서비스를 자주 사용하는 국가로 나타났습니다.</li>
+	<li><strong>사이버 공격 대상:</strong> 지난 한 해 동안 Cloudflare가 차단한 잠재적 공격 요청은 1,970억 건이 넘었으며, 그 중 390억 건의 DDoS 공격 캠페인이 일반 AI 챗봇과 이미지 생성 사이트에 특히 영향을 미쳤습니다.</li>
+</ul>
+<h3>생성형 AI 서비스의 인기 순위: 새로운 등장 인물</h3>
+<p>먼저 <a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar의 새로운 AI 탭</u></a>을 사용하여 생성형 AI 서비스 인기도를 살펴보겠습니다. 상위 10위권에 가장 최근 진입한 기업은 2025년 1월 10일에 출시된 중국 챗봇인 DeepSeek입니다. 2025년 1월 26일 9위로 데뷔한 후 1월 29일(음력 설날)에 3위로 상승했으며, 2월 4일까지 순위를 유지하다가 현재의 6위 자리에 안착했습니다.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Generative AI services popularity worldwide" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1600&amp;h=900&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>여기에서는 최근 인기를 얻은 또 다른 AI 챗봇인 X의 Grok/xAI도 함께 소개합니다. 이 생성형 AI 서비스는 2월에 안드로이드 앱을 출시했으며, 2025년 2월 17일 Grok-3 모델을 출시하면서 <a href="https://edition.cnn.com/2025/02/18/tech/grok-3-release-elon-musk/index.html" target="_blank" rel="noopener noreferrer"><u>주목</u></a>을 받았습니다. Cloudflare의 생성형 AI 순위에서는 2025년 2월 21일에 9위를 차지하며 처음으로 상위 10위권에 진입했으며, Claude와 같은 순위인 8위에 잠시 진입한 후, 현재 9위와 10위 사이에서 오르내리고 있습니다.</p>
+<p>다음은 2025년 3월 9일 기준 Cloudflare Radar <a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-01-01&amp;dateEnd=2025-03-06" target="_blank" rel="noopener noreferrer"><u>AI 페이지</u></a>의 생성형 AI 상위 10위입니다. 올해 초부터 ChatGPT/OpenAI가 1위를 차지하고 있습니다(아래 표에 나와 있듯이 작년에도이 러한 추세가 관찰되었습니다).</p>
+<div id="html-block-k1o" class="html-block"><iframe class="cf-radar-embed" width="800" height="450" src="https://radar.cloudflare.com/embed/AiServicesRankingXY?dateStart=2025-01-01&amp;dateEnd=2025-03-09&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.hoveredSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - 생성형 AI 서비스 인기도" loading="lazy" style="border:0;max-width:100%"></iframe></div>
+<p>순위 변화와 추이를 더 쉽게 파악할 수 있도록, 아래 표에서는 2025년 2월 1일부터 3월 1일(월 평균)의 순위를 왼쪽에 표시합니다. 2024년 목록과 색상별로 비교하여 2024년 이후 하락한 서비스는 빨간색으로, 신규 또는 순위가 높은 항목은 초록색으로 표시했습니다. 참고로, 두 번째 열에는 <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024년 연례 검토</u></a>의 상위 10개 항목(전년도 비교 포함)이 표시되며, 세 번째 열에는 2023년 상위 10개 항목이 표시됩니다.</p>
+<div id="html-block-k1u" class="html-block">
+	<style>
+		#html-block-k1u .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k1u .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -53,7 +36,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k1u .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -65,821 +48,792 @@
 			word-break: normal;
 		}
 
-		.tg .tg-1wig {
+		#html-block-k1u .tg .tg-1wig {
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<figure class="table" style="width:100%;">
+	<figure class="table" style="width:100%">
 		<table class="tg ck-table-resized">
 			<colgroup>
-				<col style="width:31.68%;">
-				<col style="width:33.12%;">
-				<col style="width:35.2%;">
+				<col style="width:31.68%">
+				<col style="width:33.12%">
+				<col style="width:35.2%">
 			</colgroup>
 			<thead>
 				<tr>
-					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>2025년 2월 기준&nbsp;</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>생성형 AI 서비스 상위 10위</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT / OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>2024년 4위</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Codeium (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>3위</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>7위</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">DeepSeek (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity </span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>(6위</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Claude / Anthropic (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>5위</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Hugging Face (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Suno AI (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span></th>
-					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>2024년 생성형 AI 서비스 상위 10위(</strong></span></span><a target="_blank" rel="noopener noreferrer" href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services/#ready-to-face-the-generative-ai-era"><span style="background-color:transparent;color:#15C;"><span style="font-style:normal;"><strong><u>Radar 연례 검토</u></strong></span></span></a><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>)</strong></span></span><br><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT / OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Codeium (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot (2023년 3위)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Claude / Anthropic (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity (=)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Wordtune (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>7위</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Poe (</span></span><span style="background-color:transparent;color:#F00;"><span style="font-style:normal;text-decoration:none;"><strong>5위</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Tabnine (</span></span><span style="background-color:transparent;color:#0F0;"><span style="font-style:normal;text-decoration:none;"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">)</span></span></th>
-					<th class="tg-1wig"><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>2023년 생성형 AI 서비스 상위 10위(</strong></span></span><a target="_blank" rel="noopener noreferrer" href="https://radar.cloudflare.com/year-in-review/2023#internet-services"><span style="background-color:transparent;color:#15C;"><span style="font-style:normal;"><strong><u>Radar 연례 검토</u></strong></span></span></a><span style="background-color:transparent;color:#000;"><span style="font-style:normal;text-decoration:none;"><strong>)</strong></span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ChatGPT / OpenAI</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Character.AI</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">QuillBot</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Hugging Face</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Poe</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Perplexity</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Wordtune</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Google Bard</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">ProWritingAid</span></span><br><span style="background-color:transparent;color:#000;"><span style="font-style:normal;font-weight:400;text-decoration:none;">Voicemod</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>2025년 2월 기준&nbsp;</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>생성형 AI 서비스 상위 10위</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT / OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>2024년 4위</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Codeium (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>3위</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>7위</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">DeepSeek (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity </span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>(6위</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Claude / Anthropic (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>5위</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Hugging Face (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Suno AI (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>2024년 생성형 AI 서비스 상위 10위(</strong></span></span><a target="_blank" href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services/#ready-to-face-the-generative-ai-era"><span style="background-color:transparent;color:#15C"><span style="font-style:normal"><strong><u>Radar 연례 검토</u></strong></span></span></a><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>)</strong></span></span><br><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT / OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Codeium (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot (2023년 3위)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Claude / Anthropic (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Wordtune (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>7위</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Poe (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>5위</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Tabnine (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>신규</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>2023년 생성형 AI 서비스 상위 10위(</strong></span></span><a target="_blank" href="https://radar.cloudflare.com/year-in-review/2023#internet-services"><span style="background-color:transparent;color:#15C"><span style="font-style:normal"><strong><u>Radar 연례 검토</u></strong></span></span></a><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>)</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT / OpenAI</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Hugging Face</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Poe</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Wordtune</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Google Bard</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ProWritingAid</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Voicemod</span></span></th>
 				</tr>
 			</thead>
 		</table>
 	</figure>
-	<p>상위 10개 항목에는 앞서 언급한 DeepSeek, Grok/xAI, ChatGPT/OpenAI 외에도 Anthropic의 Claude와 같은 챗봇과 기타 유형의 생성형 AI 서비스도 포함됩니다. 캐릭터 기반 인격과 상호 작용을 위한 전문 플랫폼인 Character.AI가 2위, AI 검색 엔진 역할을 하는 Perplexity가 7위, 3위는 요약, 문법, 재구성을 위한 AI 기반 글쓰기 보조 도구인 QuillBot이 차지하고 있습니다. Windsurtf AI와 같은 개발자 생산성 서비스를 포함하는 Codeium(4위)과 GitHub Copilot(5위)은 AI 코딩 어시스턴트 역할을 합니다.</p>
-	<p>또한 AI 모델을 위한 오픈 소스 허브인 Hugging Face(9위)(Replicate, Stability AI 등 다른 AI 모델 구현 도구와 마찬가지로 여기에서는 생성형 AI 플랫폼으로 포함시킵니다)와 텍스트 프롬프트에서 노래를 생성하는 음악 생성기인 Suno AI(10위)도 있습니다.</p>
-	<p>2월의 마지막 날에는 Grok/xAI가 상위 10위권에 진입했지만, 여기에서는 2월 월 평균을 기준으로 하고 있기 때문에 11위로 표시합니다. 2025년 2월 상위 20위권의 나머지 부분이 궁금하신가요? 여기에서는 Codeium과 GitHub Copilot 외에도 Sider AI와 Tabnine도 목록에 이름을 올리는 등 AI 코딩 서비스가 강세를 보이고 있습니다.</p>
-	<p>11 Grok / xAI</p>
-	<p>12 Poe</p>
-	<p>13 Sider AI</p>
-	<p>14 Civitai</p>
-	<p>15 Tabnine</p>
-	<p>16 Google Gemini</p>
-	<p>17 Voicemod</p>
-	<p>18 GliaCloud</p>
-	<p>19 Runway ml</p>
-	<p>20 Midjourney</p>
-	<p>Cloudflare Radar 연례 검토에서 <a href="https://radar.cloudflare.com/year-in-review/2023#internet-services" target="_blank" rel="noopener noreferrer"><u>2023</u></a>년과 <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024</u></a>년에 생성형 AI 인기 순위를 발표했는데, OpenAI의 ChatGPT가 꾸준히 1위를 차지했습니다. <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024년</u></a>에 <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>블로그 게시물</u></a>에서 설명한 바와 같이, ChatGPT의 전체 순위 역시 상승하여 연말까지 상위 50위권에 거의 진입했습니다. (2023년에는 상위 100위권에서 조금 벗어났습니다).</p>
-	<div class="flex anchor relative">
-		<h3 id="chatgpts-influence-in-the-overall-ranking">전체 순위에서 ChatGPT의 영향력&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#chatgpts-influence-in-the-overall-ranking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>최근 Cloudflare Radar에 <a href="https://radar.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS 섹션</u></a>의 도메인 순위 페이지가 업데이트되었으며, 여기에는 여러 가지 세부 동향이 포함되어 있습니다. 이제 도메인 목록 상위 100위권 옆에 <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>전체 인터넷 서비스 순위 상위 100위권</u></a>이 표시됩니다. 대표적인 생성형 AI 서비스인 ChatGPT/OpenAI는 일반적으로 평일에는 50위권 중반, 주말에는 60위권(2025년 3월 초 인사이트 기준)에 랭크되어 있으며, Temu, eBay, Disney Plus와 같은 비AI 서비스에 이어 두 번째로 높은 순위를 차지하고 있습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4miBGzkADr0y6XTYzyFpCR/cea822eb3c9b7c8c25d27858a72762ca/image5.png" alt="BLOG-2764" class="kg-image" width="1294" height="1038" loading="lazy">
-	</figure>
-	<p><a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services"><u>연례 검토 블로그</u></a>에서 언급한 바와 같이, 2023년 초에 200위를 기록한 ChatGPT/OpenAI는 연말에 상위 100위권 가까이 올라섰습니다. 2024년에는 100위권 밖에서 시작하여 <a href="https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free" target="_blank" rel="noopener noreferrer"><u>4o 모델 출시</u></a>와 함께 5월에 상위 60위권에 진입했으며, 직원과 학생들이 일상으로 복귀하는 시기에 맞춰 2024년 9월부터는 50위권 가까이 위치하고 있습니다.</p>
-	<div class="flex anchor relative">
-		<h3 id="visitor-location-distribution-americas-europe-and-asia">방문자 위치 분포: 미주, 유럽, 아시아</h3>
-		<a href="https://blog.cloudflare.com/#visitor-location-distribution-americas-europe-and-asia" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar의 도메인 정보 페이지</u></a>에서, 사용자는 3월 3일부터 4일까지 48시간(Radar 기본값) 동안 Cloudflare <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> 확인자 트래픽 데이터에서 파생된 <a href="https://radar.cloudflare.com/domains/domain" target="_blank" rel="noopener noreferrer"><u>특정 도메인</u></a>의 위치별 인기도(지난 7일간)를 확인할 수 있습니다.</p>
-	<p>이 경우, <a href="https://radar.cloudflare.com/domains/domain/chatgpt.com" target="_blank" rel="noopener noreferrer"><u>chatgpt.com</u></a> 도메인의 DNS 트래픽이 미국(17%)에서 가장 많이 발생했고, 독일(7%), 브라질(4%), 인도네시아(4%), 인도(4%)가 그 뒤를 이었습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/MsCFiTsGRVF1N3c1oa87b/d5e02c68d7558b16e4fdb518ef5c776a/image2.png" alt="" class="kg-image" width="1999" height="1101" loading="lazy">
-	</figure>
-	<p>새롭게 등장한 <a href="https://radar.cloudflare.com/domains/domain/deepseek.com" target="_blank" rel="noopener noreferrer"><u>deepseek.com</u></a>의 경우, 미국이 해당 도메인 DNS 트래픽의 14%를 차지하며 1위를 기록했고, 중국(11%), 독일(10%), 브라질(7%), 홍콩(5%)이 그 뒤를 이었습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YKbSmz0ksNrbef2Xt7UE0/3fd694750f2cb413cd0e6e5001dfb248/image10.png" alt="" class="kg-image" width="1999" height="1100" loading="lazy">
-	</figure>
-	<p>반면 <a href="https://radar.cloudflare.com/domains/domain/grok.com" target="_blank" rel="noopener noreferrer"><u>Grok.com</u></a>은 트래픽의 20%가 미국에서, 8%가 홍콩, 6%가 독일, 6%가 일본, 6%가 베트남에서 발생하여 상위 5위권 내에서는 아시아 지역이 강세를 보이고 있습니다. 또 다른 유명한 생성형 AI 챗봇 도메인인 <a href="https://radar.cloudflare.com/domains/domain/poe.com" target="_blank" rel="noopener noreferrer"><u>poe.com</u></a>의 경우 홍콩이 1위(트래픽의 29%)를 차지했으며, 미국(13%), 일본(6%), 중국(6%), 싱가포르(5%)가 그 뒤를 이어 아시아 지역이 더욱 우세했습니다.</p>
-	<p>Hugging Face(<a href="https://radar.cloudflare.com/domains/domain/huggingface.co" target="_blank" rel="noopener noreferrer"><u>Huggingface.co</u></a>)라고 하는 생성형 AI 모델 플랫폼 역시 미국이 가장 많은 트래픽을 발생시키지만(34%), 상위 5위권에는 프랑스(6%), 영국(6%), 독일(4%), 스웨덴(4%)으로 유럽 4개국이 포함되어 있습니다.</p>
-	<p>AI 기반 코딩 도구를 좀 더 구체적으로 살펴보면, <a href="https://radar.cloudflare.com/domains/domain/githubcopilot.com" target="_blank" rel="noopener noreferrer"><u>githubcopilot.com</u></a>의 DNS 트래픽은 주로 미국(22%)이 주도하고 있으며, 독일(6%), 홍콩(5%), 인도(5%), 일본(5%)이 그 뒤를 잇고 있습니다. <a href="https://radar.cloudflare.com/domains/domain/codeium.com" target="_blank" rel="noopener noreferrer"><u>codeium.com</u></a>의 경우에도 비슷한 패턴이 나타납니다. 미국이 15%로 1위이고 홍콩(8%), 일본(7%), 브라질(5%), 네덜란드(5%)가 그 뒤를 이었습니다. 마찬가지로, <a href="https://radar.cloudflare.com/domains/domain/cursor.com" target="_blank" rel="noopener noreferrer"><u>cursor.com</u></a>의 DNS 트래픽 중 20%가 미국에서 발생했고, 홍콩(10%), 인도(6%), 중국(6%), 일본(5%)이 그 뒤를 이었습니다. <a href="https://radar.cloudflare.com/domains/domain/tabnine.com" target="_blank" rel="noopener noreferrer"><u>Tabnine.com</u></a>이라고 하는 또 다른 AI 코드 완성 도구는 미국(15%)에서 가장 많은 트래픽이 발생하고 있으며, 인도(6%), 브라질(5%), 독일(5%), 홍콩(5%)이 그 뒤를 잇고 있습니다.</p>
-	<p>Cloudflare Radar에서 제공하는 DNS 트래픽 데이터에 따르면, 모든 주요 생성형 AI 및 AI 코딩 도구는 미국 내 사용량이 높으며, 지역적 채택률은 플랫폼별로 다양합니다. (1.1.1.1은 미국에서 더 많은 사용자 기반을 보유하고 있지만, 이러한 구체적인 추세는 도메인에 따라 다릅니다.)</p>
-	<ul>
-		<li>
-			<p>아시아는 poe.com과 Codeium, Cursor 등의 AI 코딩 도구를 주로 사용합니다.</p>
-		</li>
-		<li>
-			<p>유럽은 Hugging Face와 GitHub Copilot에서 중요한 역할을 합니다.</p>
-		</li>
-		<li>
-			<p>브라질은 특히 DeepSeek와 Tabnine에서 주목할 만한 사용 지역으로 떠올랐습니다.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="generative-ai-general-traffic-growth">생성형 AI 일반 트래픽 증가&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#generative-ai-general-traffic-growth" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare는 생성형 AI 고객의 관점에서 업계를 독특한 관점으로 바라봅니다. Cloudflare는 크고 작은 다양한 생성형 AI 서비스를 지원합니다. 최근 인기를 끌고 있는 고객, 챗봇이나 이미지 AI 생성기를 구축한 고객, 이제 막 시작한 고객 등 다양한 생성형 AI 고객 집단으로부터 지난 몇 달 동안의 HTTP 요청 데이터와 <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer"><u>애플리케이션 계층 공격</u></a> 동향을 집계했습니다.</p>
-	<p>지난 1년 동안 증가한 HTTP 요청 트래픽부터 시작해 보겠습니다. 2024년 2월 1일부터 2025년 3월 1일까지(2024년 2월을 2025년 2월과 비교하기 위한 13개월 기간) <b>월별 트래픽은 총 251% 증가했으며</b>, Cloudflare에서 처리한 요청의 2% 이상이 잠재적 공격으로 완화되었습니다.</p>
-	<p>대부분의 생성형 AI 웹 사이트 그룹에서 성장이 있었다는 점을 주목하십시오. 이 251% 성장률에는 최근의 생성형 AI 고객도 포함되어 있지만, 대부분 성장 추세에 큰 영향을 미치지는 않습니다. 2024년 말과 2025년 초에 Cloudflare에 온보딩한 생성형 AI 고객을 제외하면 연간 성장률은 234%에 달합니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4323TeVxE3VqSEoFjopa8t/640305a2b4b3583218115f7a9c35cd60/image11.png" alt="" class="kg-image" width="1999" height="937" loading="lazy">
-	</figure>
-	<p>일 단위로 표시된 다음 관점에서는 크리스마스와 연말연시 기간에 예상되는 감소세가 매우 명확합니다. 또 다른 추세는 Cloudflare의 생성형 AI 고객 집단이 주말보다 평일에 더 많이 사용하는 것으로 나타나며, 이는 업무 공간에 집중하고 있음을 시사합니다. 휴일 동안의 뚜렷한 감소세에는 북반구의 여름도 포함됩니다. 예를 들어, 7월에는 피크 트래픽이 약간 감소합니다(대부분의 국가에서 일반적인 보는 트래픽과 유사합니다).</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1NvzlVxeom6omVtgFjwauB/a3088b03dc870581c9b6b1f86a810f6d/image12.png" alt="" class="kg-image" width="1960" height="608" loading="lazy">
-	</figure>
-	<p>또한 생성형 AI 웹 사이트를 가장 많이 방문하는 국가를 살펴보면, 미국이 전체 요청의 23%를 차지하며 1위를 차지했고 인도(8%), 브라질(5%), 인도네시아(4%), 필리핀(4%)이 상위 5위권 안에 들었습니다. 영국과 독일 등 유럽 국가들이 그 뒤를 이었습니다. 아래에는 추가로 살펴볼 필요가 있는 상위 50개 목록이 나와 있습니다. 이집트는 남아프리카공화국과 동일한 0.7%로 32위를 차지하며 아프리카 국가로는 처음으로 순위에 이름을 올렸습니다.</p>
-	<p><b>생성형 AI 웹 사이트 트래픽 점유율 기준 상위 지역</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>순위</b></p>
-				</td>
-				<td>
-					<p><b>국가</b></p>
-				</td>
-				<td>
-					<p><b>전체 비율</b></p>
-				</td>
-				<td>
-					<p><b>순위</b></p>
-				</td>
-				<td>
-					<p><b>국가</b></p>
-				</td>
-				<td>
-					<p><b>전체 비율</b></p>
-				</td>
+</div>
+<p>상위 10개 항목에는 앞서 언급한 DeepSeek, Grok/xAI, ChatGPT/OpenAI 외에도 Anthropic의 Claude와 같은 챗봇과 기타 유형의 생성형 AI 서비스도 포함됩니다. 캐릭터 기반 인격과 상호 작용을 위한 전문 플랫폼인 Character.AI가 2위, AI 검색 엔진 역할을 하는 Perplexity가 7위, 3위는 요약, 문법, 재구성을 위한 AI 기반 글쓰기 보조 도구인 QuillBot이 차지하고 있습니다. Windsurtf AI와 같은 개발자 생산성 서비스를 포함하는 Codeium(4위)과 GitHub Copilot(5위)은 AI 코딩 어시스턴트 역할을 합니다.</p>
+<p>또한 AI 모델을 위한 오픈 소스 허브인 Hugging Face(9위)(Replicate, Stability AI 등 다른 AI 모델 구현 도구와 마찬가지로 여기에서는 생성형 AI 플랫폼으로 포함시킵니다)와 텍스트 프롬프트에서 노래를 생성하는 음악 생성기인 Suno AI(10위)도 있습니다.</p>
+<p>2월의 마지막 날에는 Grok/xAI가 상위 10위권에 진입했지만, 여기에서는 2월 월 평균을 기준으로 하고 있기 때문에 11위로 표시합니다. 2025년 2월 상위 20위권의 나머지 부분이 궁금하신가요? 여기에서는 Codeium과 GitHub Copilot 외에도 Sider AI와 Tabnine도 목록에 이름을 올리는 등 AI 코딩 서비스가 강세를 보이고 있습니다.</p>
+<p>11 Grok / xAI</p>
+<p>12 Poe</p>
+<p>13 Sider AI</p>
+<p>14 Civitai</p>
+<p>15 Tabnine</p>
+<p>16 Google Gemini</p>
+<p>17 Voicemod</p>
+<p>18 GliaCloud</p>
+<p>19 Runway ml</p>
+<p>20 Midjourney</p>
+<p>Cloudflare Radar 연례 검토에서 <a href="https://radar.cloudflare.com/year-in-review/2023#internet-services" target="_blank" rel="noopener noreferrer"><u>2023</u></a>년과 <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024</u></a>년에 생성형 AI 인기 순위를 발표했는데, OpenAI의 ChatGPT가 꾸준히 1위를 차지했습니다. <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024년</u></a>에 <a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>블로그 게시물</u></a>에서 설명한 바와 같이, ChatGPT의 전체 순위 역시 상승하여 연말까지 상위 50위권에 거의 진입했습니다. (2023년에는 상위 100위권에서 조금 벗어났습니다).</p>
+<h3>전체 순위에서 ChatGPT의 영향력&nbsp;</h3>
+<p>최근 Cloudflare Radar에 <a href="https://radar.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS 섹션</u></a>의 도메인 순위 페이지가 업데이트되었으며, 여기에는 여러 가지 세부 동향이 포함되어 있습니다. 이제 도메인 목록 상위 100위권 옆에 <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>전체 인터넷 서비스 순위 상위 100위권</u></a>이 표시됩니다. 대표적인 생성형 AI 서비스인 ChatGPT/OpenAI는 일반적으로 평일에는 50위권 중반, 주말에는 60위권(2025년 3월 초 인사이트 기준)에 랭크되어 있으며, Temu, eBay, Disney Plus와 같은 비AI 서비스에 이어 두 번째로 높은 순위를 차지하고 있습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="574" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=640&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=750&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=828&amp;h=665&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1080&amp;h=867&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1280&amp;h=1028&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1430&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2764" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1294&amp;h=1038&amp;f=webp" data-lightbox-width="1294" data-lightbox-height="1038" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="574" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>연례 검토 블로그</u></a>에서 언급한 바와 같이, 2023년 초에 200위를 기록한 ChatGPT/OpenAI는 연말에 상위 100위권 가까이 올라섰습니다. 2024년에는 100위권 밖에서 시작하여 <a href="https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free" target="_blank" rel="noopener noreferrer"><u>4o 모델 출시</u></a>와 함께 5월에 상위 60위권에 진입했으며, 직원과 학생들이 일상으로 복귀하는 시기에 맞춰 2024년 9월부터는 50위권 가까이 위치하고 있습니다.</p>
+<h3>방문자 위치 분포: 미주, 유럽, 아시아</h3>
+<p><a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar의 도메인 정보 페이지</u></a>에서, 사용자는 3월 3일부터 4일까지 48시간(Radar 기본값) 동안 Cloudflare <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> 확인자 트래픽 데이터에서 파생된 <a href="https://radar.cloudflare.com/domains/domain" target="_blank" rel="noopener noreferrer"><u>특정 도메인</u></a>의 위치별 인기도(지난 7일간)를 확인할 수 있습니다.</p>
+<p>이 경우, <a href="https://radar.cloudflare.com/domains/domain/chatgpt.com" target="_blank" rel="noopener noreferrer"><u>chatgpt.com</u></a> 도메인의 DNS 트래픽이 미국(17%)에서 가장 많이 발생했고, 독일(7%), 브라질(4%), 인도네시아(4%), 인도(4%)가 그 뒤를 이었습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="394" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=640&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=750&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=828&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1080&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1280&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1430&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1920&amp;h=1057&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1057" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="394" class="pt-portable-image-media"></div>
+</figure>
+<p>새롭게 등장한 <a href="https://radar.cloudflare.com/domains/domain/deepseek.com" target="_blank" rel="noopener noreferrer"><u>deepseek.com</u></a>의 경우, 미국이 해당 도메인 DNS 트래픽의 14%를 차지하며 1위를 기록했고, 중국(11%), 독일(10%), 브라질(7%), 홍콩(5%)이 그 뒤를 이었습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image10" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1920&amp;h=1057&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1057" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<p>반면 <a href="https://radar.cloudflare.com/domains/domain/grok.com" target="_blank" rel="noopener noreferrer"><u>Grok.com</u></a>은 트래픽의 20%가 미국에서, 8%가 홍콩, 6%가 독일, 6%가 일본, 6%가 베트남에서 발생하여 상위 5위권 내에서는 아시아 지역이 강세를 보이고 있습니다. 또 다른 유명한 생성형 AI 챗봇 도메인인 <a href="https://radar.cloudflare.com/domains/domain/poe.com" target="_blank" rel="noopener noreferrer"><u>poe.com</u></a>의 경우 홍콩이 1위(트래픽의 29%)를 차지했으며, 미국(13%), 일본(6%), 중국(6%), 싱가포르(5%)가 그 뒤를 이어 아시아 지역이 더욱 우세했습니다.</p>
+<p>Hugging Face(<a href="https://radar.cloudflare.com/domains/domain/huggingface.co" target="_blank" rel="noopener noreferrer"><u>Huggingface.co</u></a>)라고 하는 생성형 AI 모델 플랫폼 역시 미국이 가장 많은 트래픽을 발생시키지만(34%), 상위 5위권에는 프랑스(6%), 영국(6%), 독일(4%), 스웨덴(4%)으로 유럽 4개국이 포함되어 있습니다.</p>
+<p>AI 기반 코딩 도구를 좀 더 구체적으로 살펴보면, <a href="https://radar.cloudflare.com/domains/domain/githubcopilot.com" target="_blank" rel="noopener noreferrer"><u>githubcopilot.com</u></a>의 DNS 트래픽은 주로 미국(22%)이 주도하고 있으며, 독일(6%), 홍콩(5%), 인도(5%), 일본(5%)이 그 뒤를 잇고 있습니다. <a href="https://radar.cloudflare.com/domains/domain/codeium.com" target="_blank" rel="noopener noreferrer"><u>codeium.com</u></a>의 경우에도 비슷한 패턴이 나타납니다. 미국이 15%로 1위이고 홍콩(8%), 일본(7%), 브라질(5%), 네덜란드(5%)가 그 뒤를 이었습니다. 마찬가지로, <a href="https://radar.cloudflare.com/domains/domain/cursor.com" target="_blank" rel="noopener noreferrer"><u>cursor.com</u></a>의 DNS 트래픽 중 20%가 미국에서 발생했고, 홍콩(10%), 인도(6%), 중국(6%), 일본(5%)이 그 뒤를 이었습니다. <a href="https://radar.cloudflare.com/domains/domain/tabnine.com" target="_blank" rel="noopener noreferrer"><u>Tabnine.com</u></a>이라고 하는 또 다른 AI 코드 완성 도구는 미국(15%)에서 가장 많은 트래픽이 발생하고 있으며, 인도(6%), 브라질(5%), 독일(5%), 홍콩(5%)이 그 뒤를 잇고 있습니다.</p>
+<p>Cloudflare Radar에서 제공하는 DNS 트래픽 데이터에 따르면, 모든 주요 생성형 AI 및 AI 코딩 도구는 미국 내 사용량이 높으며, 지역적 채택률은 플랫폼별로 다양합니다. (1.1.1.1은 미국에서 더 많은 사용자 기반을 보유하고 있지만, 이러한 구체적인 추세는 도메인에 따라 다릅니다.)</p>
+<ul>
+	<li>아시아는 poe.com과 Codeium, Cursor 등의 AI 코딩 도구를 주로 사용합니다.</li>
+	<li>유럽은 Hugging Face와 GitHub Copilot에서 중요한 역할을 합니다.</li>
+	<li>브라질은 특히 DeepSeek와 Tabnine에서 주목할 만한 사용 지역으로 떠올랐습니다.</li>
+</ul>
+<h3>생성형 AI 일반 트래픽 증가&nbsp;</h3>
+<p>Cloudflare는 생성형 AI 고객의 관점에서 업계를 독특한 관점으로 바라봅니다. Cloudflare는 크고 작은 다양한 생성형 AI 서비스를 지원합니다. 최근 인기를 끌고 있는 고객, 챗봇이나 이미지 AI 생성기를 구축한 고객, 이제 막 시작한 고객 등 다양한 생성형 AI 고객 집단으로부터 지난 몇 달 동안의 HTTP 요청 데이터와 <a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer"><u>애플리케이션 계층 공격</u></a> 동향을 집계했습니다.</p>
+<p>지난 1년 동안 증가한 HTTP 요청 트래픽부터 시작해 보겠습니다. 2024년 2월 1일부터 2025년 3월 1일까지(2024년 2월을 2025년 2월과 비교하기 위한 13개월 기간) <strong>월별 트래픽은 총 251% 증가했으며</strong>, Cloudflare에서 처리한 요청의 2% 이상이 잠재적 공격으로 완화되었습니다.</p>
+<p>대부분의 생성형 AI 웹 사이트 그룹에서 성장이 있었다는 점을 주목하십시오. 이 251% 성장률에는 최근의 생성형 AI 고객도 포함되어 있지만, 대부분 성장 추세에 큰 영향을 미치지는 않습니다. 2024년 말과 2025년 초에 Cloudflare에 온보딩한 생성형 AI 고객을 제외하면 연간 성장률은 234%에 달합니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=640&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=750&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=828&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1080&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1280&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1430&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image11" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1920&amp;h=900&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="335" class="pt-portable-image-media"></div>
+</figure>
+<p>일 단위로 표시된 다음 관점에서는 크리스마스와 연말연시 기간에 예상되는 감소세가 매우 명확합니다. 또 다른 추세는 Cloudflare의 생성형 AI 고객 집단이 주말보다 평일에 더 많이 사용하는 것으로 나타나며, 이는 업무 공간에 집중하고 있음을 시사합니다. 휴일 동안의 뚜렷한 감소세에는 북반구의 여름도 포함됩니다. 예를 들어, 7월에는 피크 트래픽이 약간 감소합니다(대부분의 국가에서 일반적인 보는 트래픽과 유사합니다).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="222" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=715&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=640&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=715&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=750&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=828&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1080&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1280&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1430&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image12" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1920&amp;h=596&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="596" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="222" class="pt-portable-image-media"></div>
+</figure>
+<p>또한 생성형 AI 웹 사이트를 가장 많이 방문하는 국가를 살펴보면, 미국이 전체 요청의 23%를 차지하며 1위를 차지했고 인도(8%), 브라질(5%), 인도네시아(4%), 필리핀(4%)이 상위 5위권 안에 들었습니다. 영국과 독일 등 유럽 국가들이 그 뒤를 이었습니다. 아래에는 추가로 살펴볼 필요가 있는 상위 50개 목록이 나와 있습니다. 이집트는 남아프리카공화국과 동일한 0.7%로 32위를 차지하며 아프리카 국가로는 처음으로 순위에 이름을 올렸습니다.</p>
+<p><strong>생성형 AI 웹 사이트 트래픽 점유율 기준 상위 지역</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>순위</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>국가</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>전체 비율</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>순위</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>국가</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>전체 비율</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>미국</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22.7%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>26</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>싱가포르</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.1%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>인도</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.3%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>27</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>우크라이나</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>브라질</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.9%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>28</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>대만</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.9%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>인도네시아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>29</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>태국</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.9%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>필리핀</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>30</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>칠레</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.8%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>영국</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.8%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>31</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>아랍에미리트</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.7%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>독일</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.7%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>32</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>이집트</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.7%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>캐나다</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>33</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>사우디 아라비아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.7%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>프랑스</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>34</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>남아프리카 공화국</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.7%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>10</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>멕시코</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.7%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>35</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>스웨덴</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>11</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>일본</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.4%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>36</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>벨기에</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>12</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>러시아 연방</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>37</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>방글라데시</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>13</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>스페인</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>38</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>스위스</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>14</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>호주</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>39</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>모로코</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>15</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>대한민국</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.8%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>40</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>에콰도르</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>16</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>베트남</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.6%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>41</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>이스라엘</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.5%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>17</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>이탈리아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.5%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>42</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>나이지리아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.5%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>18</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>말레이시아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.5%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>43</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>루마니아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.5%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>19</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>터키</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.4%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>44</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>포르투갈</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.5%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>20</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>폴란드</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.4%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>45</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>카자흐스탄</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.5%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>21</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>네덜란드</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.4%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>46</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>오스트리아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>22</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>아르헨티나</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>47</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>체코 공화국</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>콜롬비아</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>48</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>홍콩</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>24</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>파키스탄</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.2%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>49</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>알제리</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>25</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>페루</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.1%</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>50</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>덴마크</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.4%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h3 id="attacks-targeting-generative-ai-websites">생성형 AI 웹 사이트를 겨냥한 공격</h3>
-		<a href="https://blog.cloudflare.com/#attacks-targeting-generative-ai-websites" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>보안 측면에서는 생성형 AI 웹 사이트가 주목을 받고 인기가 높아지면서 DDoS 공격의 주요 표적이 되고 있습니다. 최근 Cloudforce One 팀에서는 AI 관련 업체를 겨냥한 Anonymous Sudan의 공격에 대한 위협 분석을 발표했습니다. <a href="https://www.cloudflare.com/threat-intelligence/research/report/inside-lameduck-analyzing-anonymous-sudans-threat-operations" target="_blank" rel="noopener noreferrer"><u>LameDuck 소개: Anonymous Sudan의 위협 작전 분석</u></a>. 이 보고서에서는 미국 법무부가 어떻게 LameDuck의 배후에 있는 수단 형제 두 명을 기소하고 Skynet 봇넷을 통한 35,000건 이상의 DDoS 공격에 연관시켰는지 설명했습니다. 이 사례는 그들의 운영 배후에 있는 정치적, 재정적 동기를 드러내고, 사이버 보안을 강화하려는 Cloudflare를 포함한 전 세계의 노력을 강조합니다.</p>
-	<p>2024년 2월 1일부터 2025년 3월 1일까지 지난 13개월 동안 Cloudflare는 <b>1,970억 건의 요청</b>을 잠재적 공격으로 차단했습니다. 이 중 <b>390억</b> 건의 요청은 생성형 AI 웹 사이트를 겨냥한 <b>DDoS 공격</b>에 속했습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4R9GfQsKixZ3CcGB4GPazz/2e43fa46125d22a3058e2099a1c8c38e/image6.png" alt="" class="kg-image" width="1988" height="944" loading="lazy">
-	</figure>
-	<p>차단된 악성 요청의 경우, 2024년 6월에 Cloudflare가 차단한 잠재적 공격 건수가 가장 많았고, 2025년 1월이 그 뒤를 이었습니다. DDoS 공격의 경우, 2025년 1월이 가장 많은 활동을 기록했으며, 2024년 11월과 2024년 2월이 그 뒤를 이었습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7KtuwFvwQWbjHL464kDbUG/45bc21c813d9a0ab0fb621da4eb4367d/image14.png" alt="" class="kg-image" width="1999" height="925" loading="lazy">
-	</figure>
-	<p>DDoS 트래픽을 일별로 더 자세히 살펴보면, 가장 큰 공격은 2024년 2월 23일에 발생했으며, DDoS 공격의 일환으로 37억 건의 요청이 차단되었습니다. 두 번째로 큰 공격은 2024년 11월 13일에 발생한 15억 건 요청의 DDoS 공격이었습니다. 또한, 2025년 1월 20일부터 31일 사이에 여러 날에 걸친 DDoS 공격이 발생했으며, 1월 29일에는 10억 건(한 달 동안 총 73억 건)이 넘는 가장 많은 DDoS 공격 관련 요청을 기록했습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2DpI9bSIUziw2mVCA6WwUh/06d00c656656af711cba830f6380ae98/image3.png" alt="" class="kg-image" width="1946" height="620" loading="lazy">
-	</figure>
-	<p>2024년 2월 23일, 특정 생성형 AI 고객을 대상으로 한 DDoS 공격이 발생했을 때, 모든 생성형 AI 고객의 전체 요청 중 20% 이상이 이 공격의 일환으로 차단되었습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gh467o7mEZBvm0wu3s9eI/1e2a21f47e3645de4257549937bc5ba0/image8.png" alt="" class="kg-image" width="1956" height="610" loading="lazy">
-	</figure>
-	<p>특정 생성형 AI 고객에 대한 DDoS 공격을 더 세분화하여 살펴보면, 이 공격은 2024년 2월 22일 22:45(UTC)에 시작되어 8시간 이상 연속적으로 트래픽이 급증하면서 초당 최대 270,000건의 요청을 기록했습니다. 추가 공격이 이어졌고, 2024년 2월 26일 03시 45분(UTC)에 가장 큰 공격이 발생하여 3분 동안 지속되었으며 초당 309,000건의 요청으로 최고치를 기록했습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ccxcb4WCqyoZOpZvJkv8/1748a4044e7de327aff9f289d51e4fdc/image9.png" alt="" class="kg-image" width="1422" height="687" loading="lazy">
-	</figure>
-	<p>또 다른 인기 있는 생성형 AI 고객은 2025년 1월 25일부터 1월 31일까지 DDoS 캠페인의 표적이 되었으며, 1월 30일에 초당 523,000건의 요청으로 트래픽이 최고조에 달했습니다.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ZBMBJXBlyk7kHc85TthBG/ba0309a070b3d920b9ba2f9651fb1343/image7.png" alt="" class="kg-image" width="1966" height="918" loading="lazy">
-	</figure>
-	<p>2024년 2월부터 2025년 2월까지 같은 기간 동안 고려해야 할 또 다른 관점은 DDoS 공격의 가장 큰 표적이 되는 생성형 AI 웹사이트의 유형입니다. 일반 AI 챗봇이 차단된 전체 요청의 80% 이상을 차지하여 주요 공격 대상이 되었습니다.</p>
-	<p><b>생성형 AI 카테고리별 DDoS 공격 대상</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>카테고리</b></p>
-				</td>
-				<td>
-					<p><b>백분율</b></p>
-				</td>
+</div>
+<h3>생성형 AI 웹 사이트를 겨냥한 공격</h3>
+<p>보안 측면에서는 생성형 AI 웹 사이트가 주목을 받고 인기가 높아지면서 DDoS 공격의 주요 표적이 되고 있습니다. 최근 Cloudforce One 팀에서는 AI 관련 업체를 겨냥한 Anonymous Sudan의 공격에 대한 위협 분석을 발표했습니다. <a href="https://www.cloudflare.com/threat-intelligence/research/report/inside-lameduck-analyzing-anonymous-sudans-threat-operations" target="_blank" rel="noopener noreferrer"><u>LameDuck 소개: Anonymous Sudan의 위협 작전 분석</u></a>. 이 보고서에서는 미국 법무부가 어떻게 LameDuck의 배후에 있는 수단 형제 두 명을 기소하고 Skynet 봇넷을 통한 35,000건 이상의 DDoS 공격에 연관시켰는지 설명했습니다. 이 사례는 그들의 운영 배후에 있는 정치적, 재정적 동기를 드러내고, 사이버 보안을 강화하려는 Cloudflare를 포함한 전 세계의 노력을 강조합니다.</p>
+<p>2024년 2월 1일부터 2025년 3월 1일까지 지난 13개월 동안 Cloudflare는 <strong>1,970억 건의 요청</strong>을 잠재적 공격으로 차단했습니다. 이 중 <strong>390억</strong> 건의 요청은 생성형 AI 웹 사이트를 겨냥한 <strong>DDoS 공격</strong>에 속했습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1920&amp;h=912&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="912" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
+</figure>
+<p>차단된 악성 요청의 경우, 2024년 6월에 Cloudflare가 차단한 잠재적 공격 건수가 가장 많았고, 2025년 1월이 그 뒤를 이었습니다. DDoS 공격의 경우, 2025년 1월이 가장 많은 활동을 기록했으며, 2024년 11월과 2024년 2월이 그 뒤를 이었습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="331" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=715&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=640&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=715&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=750&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=828&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1080&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1280&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1430&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image14" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1920&amp;h=888&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="888" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="331" class="pt-portable-image-media"></div>
+</figure>
+<p>DDoS 트래픽을 일별로 더 자세히 살펴보면, 가장 큰 공격은 2024년 2월 23일에 발생했으며, DDoS 공격의 일환으로 37억 건의 요청이 차단되었습니다. 두 번째로 큰 공격은 2024년 11월 13일에 발생한 15억 건 요청의 DDoS 공격이었습니다. 또한, 2025년 1월 20일부터 31일 사이에 여러 날에 걸친 DDoS 공격이 발생했으며, 1월 29일에는 10억 건(한 달 동안 총 73억 건)이 넘는 가장 많은 DDoS 공격 관련 요청을 기록했습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="228" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=640&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=750&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=828&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1080&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1280&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1430&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1920&amp;h=612&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="612" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="228" class="pt-portable-image-media"></div>
+</figure>
+<p>2024년 2월 23일, 특정 생성형 AI 고객을 대상으로 한 DDoS 공격이 발생했을 때, 모든 생성형 AI 고객의 전체 요청 중 20% 이상이 이 공격의 일환으로 차단되었습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="223" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=640&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=750&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=828&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1080&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1280&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1430&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1920&amp;h=599&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="599" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="223" class="pt-portable-image-media"></div>
+</figure>
+<p>특정 생성형 AI 고객에 대한 DDoS 공격을 더 세분화하여 살펴보면, 이 공격은 2024년 2월 22일 22:45(UTC)에 시작되어 8시간 이상 연속적으로 트래픽이 급증하면서 초당 최대 270,000건의 요청을 기록했습니다. 추가 공격이 이어졌고, 2024년 2월 26일 03시 45분(UTC)에 가장 큰 공격이 발생하여 3분 동안 지속되었으며 초당 309,000건의 요청으로 최고치를 기록했습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="345" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=640&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=750&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=828&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1080&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1280&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1430&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1422&amp;h=687&amp;f=webp" data-lightbox-width="1422" data-lightbox-height="687" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="345" class="pt-portable-image-media"></div>
+</figure>
+<p>또 다른 인기 있는 생성형 AI 고객은 2025년 1월 25일부터 1월 31일까지 DDoS 캠페인의 표적이 되었으며, 1월 30일에 초당 523,000건의 요청으로 트래픽이 최고조에 달했습니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="334" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=640&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=750&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=828&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1080&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1280&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1430&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1920&amp;h=897&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="897" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="334" class="pt-portable-image-media"></div>
+</figure>
+<p>2024년 2월부터 2025년 2월까지 같은 기간 동안 고려해야 할 또 다른 관점은 DDoS 공격의 가장 큰 표적이 되는 생성형 AI 웹사이트의 유형입니다. 일반 AI 챗봇이 차단된 전체 요청의 80% 이상을 차지하여 주요 공격 대상이 되었습니다.</p>
+<p><strong>생성형 AI 카테고리별 DDoS 공격 대상</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>카테고리</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>백분율</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>일반 챗봇</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>82.7%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>이미지 AI 생성기</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.2%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>코드 어시스턴트</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>기타</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 연구 및 인프라</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.3%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 음악 창작</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.2%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>글쓰기 및 콘텐츠 AI</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>음성 및 비디오 AI</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.3%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>그러나 각 카테고리 내에서 DDoS 공격으로 차단된 전체 트래픽 비율을 살펴보았을 때, 이미지 AI 관련 웹 사이트가 가장 높은 비율을 보였으며 전체 트래픽 중 50% 이상이 차단되었습니다.</p>
-	<p><b>DDoS 공격으로 차단된 트래픽 비율이 가장 높은 웹 사이트 카테고리&nbsp;</b></p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>카테고리</b></p>
-				</td>
-				<td>
-					<p><b>차단된 DDoS(%)</b></p>
-				</td>
+</div>
+<p>그러나 각 카테고리 내에서 DDoS 공격으로 차단된 전체 트래픽 비율을 살펴보았을 때, 이미지 AI 관련 웹 사이트가 가장 높은 비율을 보였으며 전체 트래픽 중 50% 이상이 차단되었습니다.</p>
+<p><strong>DDoS 공격으로 차단된 트래픽 비율이 가장 높은 웹 사이트 카테고리&nbsp;</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>카테고리</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>차단된 DDoS(%)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>이미지 AI</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>50.8%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 챗봇</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>31%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 검색</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.4%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 코드 어시스턴트</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.8%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 모델</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.8%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 음악</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.6%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AI 회사</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.9%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h3 id="conclusion-ai-transformation">결론: AI 전환</h3>
-		<a href="https://blog.cloudflare.com/#conclusion-ai-transformation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>생성형 AI는 지속적으로 성장하며 인터넷 사용을 혁신하고 있으며, 작년 한 해 동안 AI 서비스의 트래픽이 250% 이상 증가했습니다. ChatGPT는 가장 인기 있는 서비스이며 전체 인터넷 서비스 중 상위 50위 안에 드는 서비스입니다. 이는 1.1.1.1 DNS 확인자의 트래픽을 분석한 결과입니다. DeepSeek, Grok/xAI 등 새롭게 등장한 기업의 인기 순위가 빠르게 상승했으며, 지역별 채택 패턴을 보면 미국, 인도, 브라질이 방문자 트래픽에서 1위를 차지하고 있습니다.</p>
-	<p>이러한 급격한 증가로 인해 사이버 공격도 증가했으며, 지난 한 해 동안 특정 생성형 AI 웹 사이트를 표적으로 삼은 DDoS 공격으로 확인된 요청은 390억 건에 달했습니다. 대부분의 공격은 일반적인 AI 챗봇에 초점을 맞추지만, 이미지 생성 사이트는 차단된 요청 비율이 50% 이상으로 가장 높습니다. AI가 진화함에 따라 이러한 추세를 추적하면 성장 급증, 글로벌 범위, 새로운 위협에 대한 과거 기록을 확인할 수 있습니다.</p>
-	<p>인터넷에 대한 더 많은 동향과 인사이트에 관심이 있다면 <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>를 확인하세요. <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a> (X), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a> (Mastodon), <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.cloudflare.com</u></a> (Bluesky) 등의 소셜 미디어에서 Cloudflare를 팔로우하거나 이메일을 통해 문의하세요.</p>
 </div>
+<h3>결론: AI 전환</h3>
+<p>생성형 AI는 지속적으로 성장하며 인터넷 사용을 혁신하고 있으며, 작년 한 해 동안 AI 서비스의 트래픽이 250% 이상 증가했습니다. ChatGPT는 가장 인기 있는 서비스이며 전체 인터넷 서비스 중 상위 50위 안에 드는 서비스입니다. 이는 1.1.1.1 DNS 확인자의 트래픽을 분석한 결과입니다. DeepSeek, Grok/xAI 등 새롭게 등장한 기업의 인기 순위가 빠르게 상승했으며, 지역별 채택 패턴을 보면 미국, 인도, 브라질이 방문자 트래픽에서 1위를 차지하고 있습니다.</p>
+<p>이러한 급격한 증가로 인해 사이버 공격도 증가했으며, 지난 한 해 동안 특정 생성형 AI 웹 사이트를 표적으로 삼은 DDoS 공격으로 확인된 요청은 390억 건에 달했습니다. 대부분의 공격은 일반적인 AI 챗봇에 초점을 맞추지만, 이미지 생성 사이트는 차단된 요청 비율이 50% 이상으로 가장 높습니다. AI가 진화함에 따라 이러한 추세를 추적하면 성장 급증, 글로벌 범위, 새로운 위협에 대한 과거 기록을 확인할 수 있습니다.</p>
+<p>인터넷에 대한 더 많은 동향과 인사이트에 관심이 있다면 <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>를 확인하세요. <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a> (X), <a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a> (Mastodon), <a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.cloudflare.com</u></a> (Bluesky) 등의 소셜 미디어에서 Cloudflare를 팔로우하거나 이메일을 통해 문의하세요.</p>

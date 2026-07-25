@@ -1,230 +1,178 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/how-we-built-spectrum">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/how-we-built-spectrum">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/how-we-built-spectrum">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/how-we-built-spectrum">한국어</a>, <a href="https://blog.cloudflare.com/es-es/how-we-built-spectrum">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/how-we-built-spectrum">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fBc1UfFU6JKIdXFfqTLE1/4068183ffdde5483b46ed5f857b20bcd/how-we-built-spectrum.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Today we are <a href="https://blog.cloudflare.com/spectrum">introducing Spectrum</a>: a new Cloudflare feature that brings <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection</a>, load balancing, and content acceleration to any TCP-based protocol.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Gm96owfEOWttanNpmKl0l/6e45398b0d60ed2730a9d838bc47a0e4/13334109713_0b32435032_z.jpg" alt="13334109713_0b32435032_z" class="kg-image" width="640" height="425" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/liftarn" target="_blank" rel="noopener noreferrer">Staffan Vilcans</a></p>
-	<p>Soon after we started building Spectrum, we hit a major technical obstacle: Spectrum requires us to accept connections on any valid TCP port, from 1 to 65535. On our Linux edge servers it's impossible to "accept inbound connections on <i>any</i> port number". This is not a Linux-specific limitation: it's a characteristic of the BSD sockets API, the basis for network applications on most operating systems. Under the hood there are two overlapping problems that we needed to solve in order to deliver Spectrum:</p>
-	<ul>
-		<li>
-			<p>how to accept TCP connections on all port numbers from 1 to 65535</p>
-		</li>
-		<li>
-			<p>how to configure a single Linux server to accept connections on a very large number of IP addresses (we have many thousands of IP addresses in our anycast ranges)</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="assigning-millions-of-ips-to-a-server">Assigning millions of IPs to a server</h3>
-		<a href="https://blog.cloudflare.com/#assigning-millions-of-ips-to-a-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare’s edge servers have an almost identical configuration. In our early days, we used to assign specific /32 (and /128) IP addresses to the loopback network interface<a href="https://blog.cloudflare.com/#fn1">[1]</a>. This worked well when we had dozens of IP addresses, but failed to scale as we grew.</p>
-	<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank" rel="noopener noreferrer">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
-	<p>This trick is applicable to more than the 127.0.0.1/8 block. To treat the whole range of 192.0.2.0/24 as assigned locally, run:</p>
-	<pre class="language-bash"><code class="language-bash">ip route add local 192.0.2.0/24 dev lo</code></pre>
-	<p>Following this, you can bind to port 8080 on one of these IP addresses just fine:</p>
-	<pre class="language-bash"><code class="language-bash">nc -l 192.0.2.1 8080</code></pre>
-	<p>Getting IPv6 to work is a bit harder:</p>
-	<pre class="language-bash"><code class="language-bash">ip route add local 2001:db8::/64 dev lo</code></pre>
-	<p>Sadly, you can't just bind to these attached v6 IP addresses like in the v4 example. To get this working you must use the <code>IP_FREEBIND</code> socket option, which requires elevated privileges. For completeness, there is also a sysctl <code>net.ipv6.ip_nonlocal_bind</code>, but we don't recommend touching it.</p>
-	<p>This AnyIP trick allows us to have millions of IP addresses assigned locally to each server:</p>
-	<pre class="language-bash"><code class="language-bash">$ ip addr show
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536
-    inet 1.1.1.0/24 scope global lo
-       valid_lft forever preferred_lft forever
-    inet 104.16.0.0/16 scope global lo
-       valid_lft forever preferred_lft forever
-...</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="binding-to-all-ports">Binding to ALL ports</h3>
-		<a href="https://blog.cloudflare.com/#binding-to-all-ports" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The second major issue is the ability to open TCP sockets for any port number. In Linux, and generally in any system supporting the BSD sockets API, you can only bind to a specific TCP port number with a single <code>bind</code> system call. It’s not possible to bind to multiple ports in a single operation.</p>
-	<p>A naive solution would be to <code>bind</code> 65535 times, once for each of the 65535 possible ports. Indeed, this could have been an option, but with terrible consequences:</p>
-	<ul>
-		<li>
-			<p><a href="https://blog.cloudflare.com/revenge-listening-sockets">The revenge of the listening sockets</a></p>
-		</li>
-	</ul>
-	<p>Internally, the Linux kernel stores listening sockets in a hash table indexed by port numbers, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank" rel="noopener noreferrer">LHTABLE</a>, using exactly 32 buckets:</p>
-	<pre class="language-bash"><code class="language-bash">/* Yes, really, this is all you need. */
-#define INET_LHTABLE_SIZE       32</code></pre>
-	<p>Had we opened 65k ports, lookups to this table would slow drastically: each hash table bucket would contain two thousand items.</p>
-	<p>Another way to solve our problem would be to use iptables’ rich NAT features: we could rewrite the destination of inbound packets to some specific address/port, and our application would bind to that.</p>
-	<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566" target="_blank" rel="noopener noreferrer">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
-	<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank" rel="noopener noreferrer">the code doesn't look encouraging</a>.</p>
-	<p>Fortunately, there is a way to achieve our goals that does not involve binding to all 65k ports, or use <code>conntrack</code>.</p>
-	<div class="flex anchor relative">
-		<h3 id="firewall-to-the-rescue">Firewall to the rescue</h3>
-		<a href="https://blog.cloudflare.com/#firewall-to-the-rescue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Before we go any further, let’s revisit the general flow of network packets in an operating system.</p>
-	<p>Commonly, there are two distinct layers in the inbound packet path:</p>
-	<ul>
-		<li>
-			<p>IP firewall</p>
-		</li>
-		<li>
-			<p>network stack</p>
-		</li>
-	</ul>
-	<p>These are conceptually distinct. The IP firewall is usually a stateless piece of software (let's ignore <code>conntrack</code> and IP fragment reassembly for now). The firewall analyzes IP packets and decides whether to ACCEPT or DROP them. Please note: at this layer we are talking about <i>packets</i> and <i>port numbers</i> - not <i>applications</i> or <i>sockets</i>.</p>
-	<p>Then there is the network stack. This beast maintains plenty of state. Its main task is to dispatch inbound IP packets into <i>sockets</i>, which are then handled by userspace <i>applications</i>. The network stack manages abstractions which are shared with userspace. It reassembles TCP flows, deals with routing, and knows which IP addresses are local.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-magic-dust">The magic dust</h3>
-		<a href="https://blog.cloudflare.com/#the-magic-dust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3AmbKOGpP2SLYGI4dCFTvG/26b0fe28a0379e3a0203d0fcbe5b50f5/upload-1.jpg" alt="upload-1" class="kg-image" width="640" height="360" loading="lazy">
-
-	</figure>
-	<p>Source: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank" rel="noopener noreferrer">still from YouTube</a></p>
-	<p>At some point we stumbled upon the <code>TPROXY</code> iptables module. The <a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank" rel="noopener noreferrer">official documentation</a> is easy to overlook:</p>
-	<pre class="language-bash"><code class="language-bash">TPROXY
-This target is only valid in the mangle table, in the 
-PREROUTING chain and user-defined chains which are only 
-called from this chain.  It redirects the packet to a local 
-socket without changing the packet header in any way. It can
-also change the mark value which can then be used in 
-advanced routing rules. </code></pre>
-	<p>Another piece of documentation can be found in the kernel:</p>
-	<ul>
-		<li>
-			<p><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">docs/networking/tproxy.txt</a></p>
-		</li>
-	</ul>
-	<p>The more we thought about it, the more curious we became...</p>
-	<p>So... What does TPROXY actually <i>do</i>?</p>
-	<div class="flex anchor relative">
-		<h3 id="revealing-the-magic-trick">Revealing the magic trick</h3>
-		<a href="https://blog.cloudflare.com/#revealing-the-magic-trick" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <code>TPROXY</code> code is <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank" rel="noopener noreferrer">surprisingly trivial</a>:</p>
-	<pre class="language-bash"><code class="language-bash">case NFT_LOOKUP_LISTENER:
-  sk = inet_lookup_listener(net, &amp;tcp_hashinfo, skb,
-				    ip_hdrlen(skb) +
-				      __tcp_hdrlen(tcph),
-				    saddr, sport,
-				    daddr, dport,
-				    in-&gt;ifindex, 0);</code></pre>
-	<p>Let me read this out loud for you: in an <code>iptables</code> module, which is part of the firewall, we call <code>inet_lookup_listener</code>. This function takes a src/dst port/IP 4-tuple, and returns the listening socket that is able to accept that connection. This is a core functionality of the network stack’s socket dispatch.</p>
-	<p>Once again: firewall code calls a socket dispatch routine.</p>
-	<p>Later on <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank" rel="noopener noreferrer"><code>TPROXY</code> actually <i>does</i> the socket dispatch</a>:</p>
-	<pre class="language-bash"><code class="language-bash">skb-&gt;sk = sk;</code></pre>
-	<p>This line assigns a socket <code>struct sock</code> to an inbound packet - completing the dispatch.</p>
-	<div class="flex anchor relative">
-		<h3 id="pulling-the-rabbit-from-the-hat">Pulling the rabbit from the hat</h3>
-		<a href="https://blog.cloudflare.com/#pulling-the-rabbit-from-the-hat" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/51PUlTDqve3FXm5AhGdfZt/c57a4956155d52e7c3b447d7887bce4e/3649474619_3b800400e9_z-1.jpg" alt="3649474619_3b800400e9_z-1" class="kg-image" width="640" height="424" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank" rel="noopener noreferrer">Angela Boothroyd</a></p>
-	<p>Armed with <code>TPROXY</code>, we can perform the bind-to-all-ports trick very easily. Here's the configuration:</p>
-	<pre class="language-bash"><code class="language-bash"># Set 192.0.2.0/24 to be routed locally with AnyIP.
-# Make it explicit that the source IP used for this network
-# when connecting locally should be in 127.0.0.0/8 range.
-# This is needed since otherwise the TPROXY rule would match
-# both forward and backward traffic. We want it to catch 
-# forward traffic only.
-sudo ip route add local 192.0.2.0/24 dev lo src 127.0.0.1
-
-# Set the magical TPROXY routing
-sudo iptables -t mangle -I PREROUTING \
-        -d 192.0.2.0/24 -p tcp \
-        -j TPROXY --on-port=1234 --on-ip=127.0.0.1</code></pre>
-	<p>In addition to setting this in place, you need to start a TCP server with the magical <code>IP_TRANSPARENT</code> socket option. Our example below needs to listen on tcp://127.0.0.1:1234. The <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer">man page for <code>IP_TRANSPARENT</code></a> shows:</p>
-	<pre class="language-bash"><code class="language-bash">IP_TRANSPARENT (since Linux 2.6.24)
-Setting this boolean option enables transparent proxying on
-this socket.  This socket option allows the calling applica‐
-tion to bind to a nonlocal IP address and operate both as a
-client and a server with the foreign address as the local
-end‐point.  NOTE: this requires that routing be set up in
-a way that packets going to the foreign address are routed 
-through the TProxy box (i.e., the system hosting the 
-application that employs the IP_TRANSPARENT socket option).
-Enabling this socket option requires superuser privileges
-(the CAP_NET_ADMIN capability).
-
-TProxy redirection with the iptables TPROXY target also
-requires that this option be set on the redirected socket.</code></pre>
-	<p>Here's a simple Python server:</p>
-	<pre class="language-bash"><code class="language-bash">import socket
-
-IP_TRANSPARENT = 19
-
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-s.setsockopt(socket.IPPROTO_IP, IP_TRANSPARENT, 1)
-
-s.bind(('127.0.0.1', 1234))
-s.listen(32)
-print("[+] Bound to tcp://127.0.0.1:1234")
-while True:
-    c, (r_ip, r_port) = s.accept()
-    l_ip, l_port = c.getsockname()
-    print("[ ] Connection from tcp://%s:%d to tcp://%s:%d" % (r_ip, r_port, l_ip, l_port))
-    c.send(b"hello world\n")
-    c.close()</code></pre>
-	<p>After running the server you can connect to it from arbitrary IP addresses:</p>
-	<pre class="language-bash"><code class="language-bash">$ nc -v 192.0.2.1 9999
-Connection to 192.0.2.1 9999 port [tcp/*] succeeded!
-hello world</code></pre>
-	<p>Most importantly, the server will report the connection indeed was directed to 192.0.2.1 port 9999, <i>even though nobody actually listens on that IP address and port</i>:</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo python3 transparent2.py
-[+] Bound to tcp://127.0.0.1:1234
-[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</code></pre>
-	<p>Tada! This is how to <i>bind to any port</i> on Linux, without using <code>conntrack</code>.</p>
-	<div class="flex anchor relative">
-		<h3 id="thats-all-folks">That's all folks</h3>
-		<a href="https://blog.cloudflare.com/#thats-all-folks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this post we described how to use an obscure iptables module, originally designed to help transparent proxying, for something slightly different. With its help we can perform things we thought impossible using the standard BSD sockets API, avoiding the need for any custom kernel patches.</p>
-	<p>The <code>TPROXY</code> module is very unusual - in the context of the Linux firewall it performs things typically done by the Linux network stack. The official documentation is rather lacking, and I don't believe many Linux users understand the full power of this module.</p>
-	<p>It's fair to say that <code>TPROXY</code> allows our Spectrum product to run smoothly on the vanilla kernel. It’s yet another reminder of how important it is to try to understand iptables and the network stack!</p>
-	<hr>
-	<p><i>Doing low level socket work sound interesting? Join our </i><a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer"><i>world famous team</i></a><i> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</i>.</p>
-	<hr>
-	<ol>
-		<li>
-			<p>Assigning IP addresses to loopback interface, together with appropriate <code>rp_filter</code> and BGP configuration allows us to handle arbitrary IP ranges on our edge servers. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></p>
-		</li>
-	</ol>
+<p>Today we are <a href="https://blog.cloudflare.com/spectrum">introducing Spectrum</a>: a new Cloudflare feature that brings <a href="https://www.cloudflare.com/ddos" target="_blank" rel="noopener noreferrer">DDoS protection</a>, load balancing, and content acceleration to any TCP-based protocol.</p>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/liftarn" target="_blank" rel="noopener noreferrer">Staffan Vilcans</a></p>
+<p>Soon after we started building Spectrum, we hit a major technical obstacle: Spectrum requires us to accept connections on any valid TCP port, from 1 to 65535. On our Linux edge servers it's impossible to "accept inbound connections on <em>any</em> port number". This is not a Linux-specific limitation: it's a characteristic of the BSD sockets API, the basis for network applications on most operating systems. Under the hood there are two overlapping problems that we needed to solve in order to deliver Spectrum:</p>
+<ul>
+	<li>how to accept TCP connections on all port numbers from 1 to 65535</li>
+	<li>how to configure a single Linux server to accept connections on a very large number of IP addresses (we have many thousands of IP addresses in our anycast ranges)</li>
+</ul>
+<h3>Assigning millions of IPs to a server</h3>
+<p>Cloudflare’s edge servers have an almost identical configuration. In our early days, we used to assign specific /32 (and /128) IP addresses to the loopback network interface<a href="https://blog.cloudflare.com/#fn1">[1]</a>. This worked well when we had dozens of IP addresses, but failed to scale as we grew.</p>
+<p>Along came the <a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank" rel="noopener noreferrer">"AnyIP" trick</a>. AnyIP allows us to assign whole IP prefixes (subnets) to the loopback interface, expanding from specific IP addresses. There is already common use of AnyIP: your computer has 127.0.0.0/8 assigned to the loopback interface. From the point of view of your computer, all IP addresses from 127.0.0.1 to 127.255.255.254 belong to the local machine.</p>
+<p>This trick is applicable to more than the 127.0.0.1/8 block. To treat the whole range of 192.0.2.0/24 as assigned locally, run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre>
 </div>
+<p>Following this, you can bind to port 8080 on one of these IP addresses just fine:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 8080</span></span></code></pre>
+</div>
+<p>Getting IPv6 to work is a bit harder:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 2001:db8::/64</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre>
+</div>
+<p>Sadly, you can't just bind to these attached v6 IP addresses like in the v4 example. To get this working you must use the <code>IP_FREEBIND</code> socket option, which requires elevated privileges. For completeness, there is also a sysctl <code>net.ipv6.ip_nonlocal_bind</code>, but we don't recommend touching it.</p>
+<p>This AnyIP trick allows us to have millions of IP addresses assigned locally to each server:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> addr</span><span class="sk-032f62-99ffe4"> show</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">1:</span><span class="sk-032f62-99ffe4"> lo:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">LOOPBACK,UP,LOWER_U</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> mtu</span><span class="sk-005cc5-ffc799"> 65536</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    inet</span><span class="sk-032f62-99ffe4"> 1.1.1.0/24</span><span class="sk-032f62-99ffe4"> scope</span><span class="sk-032f62-99ffe4"> global</span><span class="sk-032f62-99ffe4"> lo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       valid_lft</span><span class="sk-032f62-99ffe4"> forever</span><span class="sk-032f62-99ffe4"> preferred_lft</span><span class="sk-032f62-99ffe4"> forever</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    inet</span><span class="sk-032f62-99ffe4"> 104.16.0.0/16</span><span class="sk-032f62-99ffe4"> scope</span><span class="sk-032f62-99ffe4"> global</span><span class="sk-032f62-99ffe4"> lo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       valid_lft</span><span class="sk-032f62-99ffe4"> forever</span><span class="sk-032f62-99ffe4"> preferred_lft</span><span class="sk-032f62-99ffe4"> forever</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<h3>Binding to ALL ports</h3>
+<p>The second major issue is the ability to open TCP sockets for any port number. In Linux, and generally in any system supporting the BSD sockets API, you can only bind to a specific TCP port number with a single <code>bind</code> system call. It’s not possible to bind to multiple ports in a single operation.</p>
+<p>A naive solution would be to <code>bind</code> 65535 times, once for each of the 65535 possible ports. Indeed, this could have been an option, but with terrible consequences:</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/revenge-listening-sockets">The revenge of the listening sockets</a></li>
+</ul>
+<p>Internally, the Linux kernel stores listening sockets in a hash table indexed by port numbers, <a href="https://elixir.bootlin.com/linux/latest/source/include/net/inet_hashtables.h#L118" target="_blank" rel="noopener noreferrer">LHTABLE</a>, using exactly 32 buckets:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> Yes,</span><span class="sk-032f62-99ffe4"> really,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> need.</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#define INET_LHTABLE_SIZE       32</span></span></code></pre>
+</div>
+<p>Had we opened 65k ports, lookups to this table would slow drastically: each hash table bucket would contain two thousand items.</p>
+<p>Another way to solve our problem would be to use iptables’ rich NAT features: we could rewrite the destination of inbound packets to some specific address/port, and our application would bind to that.</p>
+<p>We didn't want to do this though, since it requires enabling the iptables <code>conntrack</code> module. Historically we found some <a href="http://patchwork.ozlabs.org/cover/810566" target="_blank" rel="noopener noreferrer">performance edge cases</a>, and conntrack cannot cope with some of the large DDoS attacks that we encounter.</p>
+<p>Additionally, with the NAT approach we would lose destination IP address information. To remediate this, there exists a poorly known <code>SO_ORIGINAL_DST</code> socket option, but <a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank" rel="noopener noreferrer">the code doesn't look encouraging</a>.</p>
+<p>Fortunately, there is a way to achieve our goals that does not involve binding to all 65k ports, or use <code>conntrack</code>.</p>
+<h3>Firewall to the rescue</h3>
+<p>Before we go any further, let’s revisit the general flow of network packets in an operating system.</p>
+<p>Commonly, there are two distinct layers in the inbound packet path:</p>
+<ul>
+	<li>IP firewall</li>
+	<li>network stack</li>
+</ul>
+<p>These are conceptually distinct. The IP firewall is usually a stateless piece of software (let's ignore <code>conntrack</code> and IP fragment reassembly for now). The firewall analyzes IP packets and decides whether to ACCEPT or DROP them. Please note: at this layer we are talking about <em>packets</em> and <em>port numbers</em> - not <em>applications</em> or <em>sockets</em>.</p>
+<p>Then there is the network stack. This beast maintains plenty of state. Its main task is to dispatch inbound IP packets into <em>sockets</em>, which are then handled by userspace <em>applications</em>. The network stack manages abstractions which are shared with userspace. It reassembles TCP flows, deals with routing, and knows which IP addresses are local.</p>
+<h3>The magic dust</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="360" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=1080&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="upload-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=640&amp;h=360&amp;f=webp" data-lightbox-width="640" data-lightbox-height="360" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="360" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Source: <a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank" rel="noopener noreferrer">still from YouTube</a></p>
+<p>At some point we stumbled upon the <code>TPROXY</code> iptables module. The <a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank" rel="noopener noreferrer">official documentation</a> is easy to overlook:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">TPROXY</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">This</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> only</span><span class="sk-032f62-99ffe4"> valid</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-032f62-99ffe4"> table,</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">PREROUTING</span><span class="sk-032f62-99ffe4"> chain</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> user-defined</span><span class="sk-032f62-99ffe4"> chains</span><span class="sk-032f62-99ffe4"> which</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> only</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">called</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> chain.</span><span class="sk-032f62-99ffe4">  It</span><span class="sk-032f62-99ffe4"> redirects</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">socket</span><span class="sk-032f62-99ffe4"> without</span><span class="sk-032f62-99ffe4"> changing</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> header</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> any</span><span class="sk-032f62-99ffe4"> way.</span><span class="sk-032f62-99ffe4"> It</span><span class="sk-032f62-99ffe4"> can</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">also</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> mark</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> which</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> then</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> used</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">advanced</span><span class="sk-032f62-99ffe4"> routing</span><span class="sk-032f62-99ffe4"> rules.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<p>Another piece of documentation can be found in the kernel:</p>
+<ul>
+	<li><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">docs/networking/tproxy.txt</a></li>
+</ul>
+<p>The more we thought about it, the more curious we became...</p>
+<p>So... What does TPROXY actually <em>do</em>?</p>
+<h3>Revealing the magic trick</h3>
+<p>The <code>TPROXY</code> code is <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank" rel="noopener noreferrer">surprisingly trivial</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">case NFT_LOOKUP_LISTENER:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sk</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> inet_lookup_listener</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">net,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">tcp_hashinfo,</span><span class="sk-032f62-99ffe4"> skb,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				    ip_hdrlen(skb</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">+</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				      __tcp_hdrlen(tcph</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				    saddr,</span><span class="sk-032f62-99ffe4"> sport,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				    daddr,</span><span class="sk-032f62-99ffe4"> dport,</span></span>
+<span class="line"><span class="sk-24292e-fff">				    in-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">ifindex, 0);</span></span></code></pre>
+</div>
+<p>Let me read this out loud for you: in an <code>iptables</code> module, which is part of the firewall, we call <code>inet_lookup_listener</code>. This function takes a src/dst port/IP 4-tuple, and returns the listening socket that is able to accept that connection. This is a core functionality of the network stack’s socket dispatch.</p>
+<p>Once again: firewall code calls a socket dispatch routine.</p>
+<p>Later on <a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank" rel="noopener noreferrer"><code>TPROXY</code> actually <em>does</em> the socket dispatch</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">skb-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">sk</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sk</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>This line assigns a socket <code>struct sock</code> to an inbound packet - completing the dispatch.</p>
+<h3>Pulling the rabbit from the hat</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="424" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=750&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=828&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=1080&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=1280&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="3649474619_3b800400e9_z-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=640&amp;h=424&amp;f=webp" data-lightbox-width="640" data-lightbox-height="424" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="424" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank" rel="noopener noreferrer">Angela Boothroyd</a></p>
+<p>Armed with <code>TPROXY</code>, we can perform the bind-to-all-ports trick very easily. Here's the configuration:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Set 192.0.2.0/24 to be routed locally with AnyIP.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Make it explicit that the source IP used for this network</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># when connecting locally should be in 127.0.0.0/8 range.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># This is needed since otherwise the TPROXY rule would match</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># both forward and backward traffic. We want it to catch </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># forward traffic only.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> src</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Set the magical TPROXY routing</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">        -d</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">        -j</span><span class="sk-032f62-99ffe4"> TPROXY</span><span class="sk-005cc5-99ffe4"> --on-port=1234</span><span class="sk-005cc5-99ffe4"> --on-ip=127.0.0.1</span></span></code></pre>
+</div>
+<p>In addition to setting this in place, you need to start a TCP server with the magical <code>IP_TRANSPARENT</code> socket option. Our example below needs to listen on tcp://127.0.0.1:1234. The <a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer">man page for <code>IP_TRANSPARENT</code></a> shows:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">IP_TRANSPARENT</span><span class="sk-24292e-fff"> (since </span><span class="sk-032f62-99ffe4">Linux</span><span class="sk-005cc5-ffc799"> 2.6.24</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Setting</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> boolean</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> enables</span><span class="sk-032f62-99ffe4"> transparent</span><span class="sk-032f62-99ffe4"> proxying</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">this</span><span class="sk-032f62-99ffe4"> socket.</span><span class="sk-032f62-99ffe4">  This</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> allows</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> calling</span><span class="sk-032f62-99ffe4"> applica‐</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tion</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> bind</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> nonlocal</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> operate</span><span class="sk-032f62-99ffe4"> both</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> a</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">client</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> server</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> foreign</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> local</span></span>
+<span class="line"><span class="sk-24292e-fff">end‐point.  NOTE: this requires that routing be set up in</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">a</span><span class="sk-032f62-99ffe4"> way</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-032f62-99ffe4"> going</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> foreign</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> routed</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">through</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> TProxy</span><span class="sk-032f62-99ffe4"> box</span><span class="sk-24292e-fff"> (i.e., </span><span class="sk-032f62-99ffe4">the</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> hosting</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">application</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> employs</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> IP_TRANSPARENT</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-24292e-fff">).</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Enabling</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> requires</span><span class="sk-032f62-99ffe4"> superuser</span><span class="sk-032f62-99ffe4"> privileges</span></span>
+<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">the</span><span class="sk-032f62-99ffe4"> CAP_NET_ADMIN</span><span class="sk-032f62-99ffe4"> capability</span><span class="sk-24292e-fff">)</span><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">TProxy</span><span class="sk-032f62-99ffe4"> redirection</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-032f62-99ffe4"> TPROXY</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-032f62-99ffe4"> also</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">requires</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> redirected</span><span class="sk-032f62-99ffe4"> socket.</span></span></code></pre>
+</div>
+<p>Here's a simple Python server:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> socket</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IP_TRANSPARENT</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 19</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">socket.AF_INET,</span><span class="sk-032f62-99ffe4"> socket.SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.setsockopt(socket.SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> socket.SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.setsockopt(socket.IPPROTO_IP,</span><span class="sk-032f62-99ffe4"> IP_TRANSPARENT,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.bind((</span><span class="sk-6f42c1-ffc799">'127.0.0.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.listen(32</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"[+] Bound to tcp://127.0.0.1:1234"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-6f42c1-ffc799"> True:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    c,</span><span class="sk-24292e-fff"> (r_ip, </span><span class="sk-032f62-99ffe4">r_port</span><span class="sk-24292e-fff">) = </span><span class="sk-6f42c1-ffc799">s.accept</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    l_ip,</span><span class="sk-032f62-99ffe4"> l_port</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> c.getsockname</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"[ ] Connection from tcp://%s:%d to tcp://%s:%d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-24292e-fff"> (r_ip, </span><span class="sk-032f62-99ffe4">r_port,</span><span class="sk-032f62-99ffe4"> l_ip,</span><span class="sk-032f62-99ffe4"> l_port</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    c.send(b</span><span class="sk-6f42c1-ffc799">"hello world\n"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    c.close</span><span class="sk-24292e-fff">()</span></span></code></pre>
+</div>
+<p>After running the server you can connect to it from arbitrary IP addresses:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 9999</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Connection</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 9999</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-24292e-fff"> [tcp/*] succeeded</span><span class="sk-d73a49-a0a0a0">!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hello</span><span class="sk-032f62-99ffe4"> world</span></span></code></pre>
+</div>
+<p>Most importantly, the server will report the connection indeed was directed to 192.0.2.1 port 9999, <em>even though nobody actually listens on that IP address and port</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> python3</span><span class="sk-032f62-99ffe4"> transparent2.py</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] Bound to tcp://127.0.0.1:1234</span></span>
+<span class="line"><span class="sk-24292e-fff">[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</span></span></code></pre>
+</div>
+<p>Tada! This is how to <em>bind to any port</em> on Linux, without using <code>conntrack</code>.</p>
+<h3>That's all folks</h3>
+<p>In this post we described how to use an obscure iptables module, originally designed to help transparent proxying, for something slightly different. With its help we can perform things we thought impossible using the standard BSD sockets API, avoiding the need for any custom kernel patches.</p>
+<p>The <code>TPROXY</code> module is very unusual - in the context of the Linux firewall it performs things typically done by the Linux network stack. The official documentation is rather lacking, and I don't believe many Linux users understand the full power of this module.</p>
+<p>It's fair to say that <code>TPROXY</code> allows our Spectrum product to run smoothly on the vanilla kernel. It’s yet another reminder of how important it is to try to understand iptables and the network stack!</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><em>Doing low level socket work sound interesting? Join our <a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer">world famous team</a> in London, Austin, San Francisco, Champaign and our elite office in Warsaw, Poland</em>.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<ol>
+	<li>Assigning IP addresses to loopback interface, together with appropriate <code>rp_filter</code> and BGP configuration allows us to handle arbitrary IP ranges on our edge servers. <a href="https://blog.cloudflare.com/#fnref1">↩︎</a></li>
+</ol>

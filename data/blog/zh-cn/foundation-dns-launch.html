@@ -1,0 +1,302 @@
+<p>我们很高兴地宣布正式发布 <a href="https://blog.cloudflare.com/zh-cn/foundation-dns-zh-cn">Foundation DNS</a>，其中包含新的高级域名服务器，其韧性更强，以及高级分析功能，可满足企业客户的复杂需求。Foundation DNS 是 Cloudflare 自 2010 年推出权威性 DNS 产品以来取得的最重要的突破之一，我们深知客户有兴趣了解兼具高性能、可靠性、安全性、灵活性和高级分析功能的企业级权威性 DNS 服务。</p>
+<p>从今天开始，签订了包含权威性 DNS 服务的每一份企业合同的新客户，都将有权使用 Foundation DNS 功能集；同时，现有企业客户将在今年内可以使用 Foundation DNS 功能。如果您是已经在使用权威性 DNS 服务在内的现有企业客户且有兴趣尽早使用 Foundation DNS，请联系客户团队，他们可以为您启用相应的功能。让我们开始吧……</p>
+<h2>为什么 DNS 如此重要？</h2>
+<p>从最终用户的角度来看，DNS 使互联网可用。<a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> 是互联网的电话簿，它负责将 <code>www.cloudflare.com</code> 之类的主机名转换成 IP 地址，供浏览器、应用程序以及设备用来连接到各种服务。如果没有 DNS，则用户每次想要在移动设备或桌面应用程序中访问某个网站时，都必须记住 IP 地址，例如 <code>108.162.193.147</code> 或 <code>2606:4700:58::adf5:3b93</code>。想象一下，您需要记住这样一长串数字，而不是 <code>www.cloudflare.com</code>。DNS 广泛用于互联网上的每个最终用户应用程序，从社交媒体到银行和医疗保健门户均在其列。人们对互联网的使用完全离不开 DNS。</p>
+<p>从商业角度来看，DNS 是访问网站和连接应用程序的第一步。设备需要知道连接的目的地，才能访问服务、进行用户身份验证以及提供所请求的信息。快速解析 DNS 查询会产生两种不同的结果：网站或应用程序被视为可以响应或无法响应，这可能会对用户体验产生切实的影响。</p>
+<p>DNS 服务中断的影响显而易见。想象一下，您常访问的电子商务网站无法加载，就像 <a href="https://blog.cloudflare.com/how-the-dyn-outage-affected-cloudflare">2016 年 Dyn 服务中断</a>一样，导致多个热门电子商务网站瘫痪。或者想象另一种情景，如果您与某公司关联，而客户无法访问该公司网站来购买商品或服务，则 DNS 服务中断会使您蒙受经济损失。DNS 通常被视为理所当然，但要知道，当 DNS 无法正常发挥作用时，您可能会察觉其重要性。好在如果您使用 Cloudflare 权威性 DNS 服务，就不必过于担心这些问题。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="321" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=715&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=640&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=715&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=750&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=828&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=1080&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=1280&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=1430&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - gzSayT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GJ3SC11SXNYKP52059GX.png&amp;w=1796&amp;h=806&amp;f=webp" data-lightbox-width="1796" data-lightbox-height="806" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="321" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>总有改进空间</h2>
+<p>Cloudflare 十多年来一直在提供权威性 DNS 服务。Cloudflare 权威性 DNS 服务托管着许多不同顶级域 (TLD) 的数百万个域。我们有各种规模的客户，既有只拥有几条记录的单个域的客户，又有跨多个域拥有数千万条记录的客户。企业客户要求我们的 DNS 服务提供高水平的性能、可靠性、安全性和灵活性以及详细的分析功能，这是合理的诉求。虽然客户喜欢 Cloudflare 权威性 DNS 服务，但是我们意识到，某些类别的服务总有改进空间。为此，我们对 DNS 架构进行了重大改进，包括新增功能和结构调整。我们自豪地将这个改进后的产品命名为 Foundation DNS。</p>
+<h2>了解 Foundation DNS</h2>
+<p>作为全新的企业级权威性 DNS 产品，Foundation DNS 旨在提高现有权威性 DNS 服务的可靠性、安全性、灵活性并增强其分析功能。在深入了解 Foundation DNS 的所有具体细节之前，请先看看关于 Foundation DNS 给 Cloudflare 权威性 DNS 服务带来的优势的简单概述：</p>
+<ul>
+	<li><strong>高级域名服务器</strong>将 DNS 可靠性提升到新的水平。</li>
+	<li><strong>新的区域级 DNS 设置</strong>提供更灵活的 DNS 特定设置配置。</li>
+	<li><strong>每个账户和每个区域的唯一 DNSSEC 密钥</strong>为 DNSSEC 提供额外的安全性和灵活性。</li>
+	<li><strong>基于 GraphQL 的 DNS 分析</strong>提供关于 DNS 查询的更多见解。</li>
+	<li><strong>新的发布流程</strong>确保企业客户享有极高的稳定性和可靠性。</li>
+	<li><strong>更简单的 DNS 定价</strong>为仅限 DNS 区域和 DNS 记录服务提供更丰富的配额。</li>
+</ul>
+<p>现在，我们来深入了解 Foundation DNS 的每一项新增功能：</p>
+<h3>高级名称服务器</h3>
+<p>通过 Foundation DNS，我们推出了高级域名服务器，重点关注提高企业 DNS 服务的可靠性。您可能比较熟悉 Cloudflare 标准权威性域名服务器，每个区域有一对且使用 Cloudflare .com 域中的域名。示例如下：</p>
+<p>现在，我们来看看使用 Foundation DNS 高级域名服务器的同一区域</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	kelly.ns.cloudflare.com.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	christian.ns.cloudflare.com.</span></span></code></pre>
+</div>
+<p>高级域名服务器通过几种不同的方式提高可靠性。第一个改进是跨多个顶级域 (TLD) 分布的 Foundation DNS 权威性服务器。这可以防范更大规模的 DNS 服务中断和抵御 DDoS 攻击，这些攻击可能会进一步影响树状结构上的 DNS 基础设施，包括 TLD 域名服务器。现在，Foundation DNS 权威性域名服务器散布在 Cloudflare 全球 DNS 树状结构的多个分支上，进一步保护客户免受潜在的服务中断和攻击所带来的影响。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> mycoolwebpage.xyz</span><span class="sk-032f62-99ffe4"> ns</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.com.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.net.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mycoolwebpage.xyz.</span><span class="sk-005cc5-ffc799">	86400</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	NS</span><span class="sk-032f62-99ffe4">	blue.foundationdns.org.</span></span></code></pre>
+</div>
+<p>您可能还注意到，Foundation DNS 中列出了另一个域名服务器。虽然这也是一种改进，但并不是出于您认为的那种原因。若将每一个域名服务器解析到它们各自的 IP 地址，便更易于理解。为此，我们先从标准域名服务器开始：</p>
+<p>这两个域名服务器总共有六个 IP 地址。事实证明，这是 DNS 解析器在查询权威性域名服务器时，实际关心的全部内容。DNS 解析器通常不会跟踪权威性服务器的实际域名，而只是维护一份 IP 地址的无序列表，将其用于解析特定的域查询。因此，使用 Cloudflare 标准权威性域名服务器，我们为解析器提供六个 IP 地址用来解析 DNS 查询。现在，我们来看看 Foundation DNS 高级域名服务器的 IP 地址：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> kelly.ns.cloudflare.com.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kelly.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       108.162.194.91</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kelly.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       162.159.38.91</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kelly.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.34.91</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> christian.ns.cloudflare.com.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       108.162.195.247</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       162.159.44.247</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">christian.ns.cloudflare.com.</span><span class="sk-005cc5-ffc799"> 86353</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-032f62-99ffe4">   A</span><span class="sk-005cc5-ffc799">       172.64.35.247</span></span></code></pre>
+</div>
+<p>您看！Foundation DNS 为 Cloudflare 提供给区域的每个权威性域名服务器提供了相同的 IP 地址。在这种情况下，我们只提供了三个 IP 地址供解析器用来解析 DNS 查询。您可能会想“六个不是比三个好吗？这不是一种性能下降吗？”事实证明，并不总是越多越好。我们来探讨一下其中的原因。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> blue.foundationdns.com.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.com.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       108.162.198.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.com.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       162.159.60.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.com.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> blue.foundationdns.net.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.net.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       108.162.198.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.net.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       162.159.60.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.net.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> blue.foundationdns.org.</span><span class="sk-032f62-99ffe4"> +noall</span><span class="sk-032f62-99ffe4"> +answer</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       108.162.198.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       162.159.60.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blue.foundationdns.org.</span><span class="sk-005cc5-ffc799"> 300</span><span class="sk-032f62-99ffe4">     IN</span><span class="sk-032f62-99ffe4">      A</span><span class="sk-005cc5-ffc799">       172.64.40.1</span></span></code></pre>
+</div>
+<p>您可能知道 Cloudflare 使用 <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a>，并且您可能会认为 Cloudflare DNS 服务利用 Anycast 来确保权威性 DNS 服务器在全球范围内可用，并尽可能地靠近互联网上的用户和解析器。Cloudflare 标准域名服务器均由单个 Anycast 组从每个 Cloudflare 数据中心广播出去。如果放大欧洲地区的图示，您可以看到在标准域名服务器部署中，两个域名服务器均从每个数据中心广播。</p>
+<p>我们可以从上述标准域名服务器中取出六个 IP 地址，并查找其中是否包含“hostname.bind”。TXT 记录会显示机场代码，或负责解析 DNS 查询的最近距离数据中心的物理位置。此输出有助于阐释为什么说“并不总是越多越好”。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="406" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=715&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=750&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=828&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=1080&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=1280&amp;h=727&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=1430&amp;h=812&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - qVsVfX" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QS3XXE3WVF3F8B1DRQ5H.png&amp;w=1600&amp;h=909&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="909" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="406" class="pt-portable-image-media"></div>
+</figure>
+<p>如您所见，当从伦敦附近进行查询时，所有这六个 IP 地址均路由到同一个伦敦 (LHR) 数据中心。也就是说，当位于伦敦的解析器使用 Cloudflare 标准权威性 DNS 服务解析 DNS 查询时，无论查询的是哪个域名服务器 IP 地址，它们总是会连接到相同的物理位置。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @108.162.194.91</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @162.159.38.91</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.34.91</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @108.162.195.247</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @162.159.44.247</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.35.247</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span></code></pre>
+</div>
+<p>您可能会问“那又怎样？这对我而言又有什么意义呢？”，我们来看一个示例。如果您想要从伦敦使用 Cloudflare 标准域名服务器解析某个域，而我也正在使用位于伦敦的某个公共解析器，则无论解析器尝试访问哪个域名服务器，它总是会连接到 Cloudflare LHR 数据中心。因为使用了 Anycast，解析器没有任何其他选项。</p>
+<p>因为使用了 Anycast，在 LHR 数据中心完全离线的情况下，所有打算发送到 LHR 的流量会被路由到附近的其他数据中心，且解析器会继续正常运行。不过，在 LHR 数据中心在线但 Cloudflare DNS 服务无法响应 DNS 查询这种不太可能出现的情况下，解析器将没有办法解析 DNS 查询，因为它们无法连接到任何其他数据中心。我们可能有 100 个 IP 地址，但在这种情况下也无济于事。最终，缓存的响应失效并停止解析域。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="171" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=640&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=750&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=828&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=1080&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=1280&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=1430&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - ClrxIO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW447C44AAVK6PTHMZN6EWNR.png&amp;w=1228&amp;h=294&amp;f=webp" data-lightbox-width="1228" data-lightbox-height="294" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="171" class="pt-portable-image-media"></div>
+</figure>
+<p>Foundation DNS 高级域名服务器通过利用两个 Anycast 组来改变使用 Anycast 的方式，这打破了之前从每个数据中心广播每个权威性域名服务器的常规范式。使用两个 Anycast 组，这意味着 Foundation DNS 权威性域名服务器实际上拥有不同的物理位置，而不是从每个数据中心广播每个域名服务器。下图是同一区域使用两个 Anycast 组时的效果：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="171" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=640&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=750&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=828&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=1080&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=1280&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=1430&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - bnhmbw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482ZZ5BKBZA6YKG87YXFF7.png&amp;w=1228&amp;h=294&amp;f=webp" data-lightbox-width="1228" data-lightbox-height="294" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="171" class="pt-portable-image-media"></div>
+</figure>
+<p>我们结束对标准权威性 DNS 服务解析的 6 个 IP 地址与 Foundation DNS 解析的 3 个 IP 地址的比较并回头想一想。现在已经明白，Foundation DNS 使用两个 Anycast 组来广播域名服务器。我们来看看在这个示例中，Foundation DNS 服务器的广播来源：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - VlrtDu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459ZRNYAG7XAKD8XVQWVR4.png&amp;w=1600&amp;h=880&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="880" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<p>我们从中可以看到，三个域名服务器 IP 地址中有一个是从其他数据中心，也就是曼彻斯特 (MAN) 广播出去，这让 Foundation DNS 在前文所述的服务中断的情况下更可靠、更有韧性。值得一提的是，Cloudflare 在某些城市运营了多个数据中心，这会导致所有三个查询均返回相同的机场代码。虽然 Cloudflare 保证这些 IP 地址中至少有一个是从其他数据中心广播出去，但我们也可以理解，某些客户希望自行测试。在这些情况下，附加查询可能会显示 IP 地址是从其他数据中心广播出去。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @108.162.198.1</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @162.159.60.1</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"LHR"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @172.64.40.1</span><span class="sk-032f62-99ffe4"> ch</span><span class="sk-032f62-99ffe4"> txt</span><span class="sk-032f62-99ffe4"> hostname.bind</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"MAN"</span></span></code></pre>
+</div>
+<p>在粗体文本中，“<strong>m</strong>”前面的数字代表回答查询的数据中心。只要三个响应中有一个的数字不同，便可知某个 Foundation DNS 权威性域名服务器是从不同的物理位置广播出来。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @108.162.198.1</span><span class="sk-032f62-99ffe4"> +nsid</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> NSID:</span></span>
+<span class="line"><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">NSID:</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-005cc5-ffc799"> 34</span><span class="sk-032f62-99ffe4"> 6d</span><span class="sk-005cc5-ffc799"> 33</span><span class="sk-005cc5-ffc799"> 39</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"94m39"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>借助利用两个 Anycast 组的 Foundation DNS，可以流畅地应对前文所述的服务中断情况。DNS 解析器会监测为特定域返回的所有权威性域名服务器请求，但主要使用提供最快速响应的域名服务器。</p>
+<p>使用这种配置，DNS 解析器能够将请求发送到两个不同的 Cloudflare 数据中心，因此，如果一个物理位置发生故障，会自动将查询发送到第二个数据中心并在这里进行适当的解析。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - VLDGDT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WQAR6TWVDYT8MW5AA2WN.png&amp;w=1228&amp;h=616&amp;f=webp" data-lightbox-width="1228" data-lightbox-height="616" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<p>对于企业客户而言，Foundation DNS 高级域名服务器的可靠性得到了显著提升。Cloudflare 欢迎企业客户立即为现有区域启用高级域名服务器。迁移到 Foundation DNS 不会使客户陷入停机，因为即使在为某个区域启用 Foundation DNS 高级域名服务器之后，之前的标准权威性 DNS 域名服务器仍然会继续运行，并对该区域的查询作出响应。客户无需为切换或其他影响服务的事件做好规划，即可迁移到 Foundation DNS 高级域名服务器。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - iFBqeh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468C2YV8FHX2YA4Q91RYEH.png&amp;w=1228&amp;h=616&amp;f=webp" data-lightbox-width="1228" data-lightbox-height="616" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<h3>新的区域级 DNS 设置</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="273" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=715&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=640&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=715&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=750&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=828&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=1080&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=1280&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=1430&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - t7GLtW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CSV53P228GMWG25D03Y4.png&amp;w=1600&amp;h=610&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="610" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="273" class="pt-portable-image-media"></div>
+</figure>
+<p>过去，我们经常收到企业客户的要求，称希望调整 Cloudflare API 或仪表板未公开显示的特定 DNS 设置，例如启用辅助 DNS 覆盖。如果客户想要调整这些设置，则必须联系客户团队，让客户团队更改配置。Foundation DNS 通过 <a href="https://developers.cloudflare.com/api/operations/dns-settings-for-a-zone-update-dns-settings" target="_blank" rel="noopener noreferrer">API</a> 和仪表板公开显示最常见请求的设置，这让客户可以使用 Cloudflare 权威性 DNS 解决方案来提高调整设置的灵活性。</p>
+<p>现在，企业客户可以配置如下所述的区域级 DNS 设置：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-buh4{background-color:#f9f9f9;text-align:left;vertical-align:top} .tg .tg-p7vi{background-color:#C9DAF8;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-68av{background-color:#f9f9f9;color:#15C;text-align:left;vertical-align:top} .tg .tg-zb5k{color:#15C;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-k3i" class="html-block">
+	<style>
+		#html-block-k3i .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k3i .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3i .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3i .tg .tg-buh4 {
+			background-color: #f9f9f9;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k3i .tg .tg-p7vi {
+			background-color: #C9DAF8;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k3i .tg .tg-68av {
+			background-color: #f9f9f9;
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k3i .tg .tg-zb5k {
+			color: #15C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k3i .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-p7vi"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Setting</span></th>
+				<th class="tg-p7vi"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zone Type</span></th>
+				<th class="tg-p7vi"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-68av"><a href="https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Foundation DNS advanced nameservers</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Primary and secondary zones</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allows you to enable advanced nameservers on your zone.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-zb5k"><a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Secondary DNS override</span></a></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Secondary zones</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allows you to enable </span><a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Secondary DNS Override</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> on your zone in order to proxy HTTP/S traffic through Cloudflare.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-68av"><a href="https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns"><span style="font-weight:400;font-style:normal;color:#15C;background-color:transparent">Multi-provider DNS</span></a></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Primary and secondary zones</span></td>
+				<td class="tg-buh4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allows you to have multiple authoritative DNS providers while using Cloudflare as a primary nameserver.</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>设置</p>
+<p>区域类型</p>
+<p>描述</p>
+<p><a href="https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers" target="_blank" rel="noopener noreferrer">Foundation DNS 高级域名服务器</a></p>
+<p>主要和次要区域</p>
+<p>让客户可以启用区域级高级域名服务器。</p>
+<p><a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic" target="_blank" rel="noopener noreferrer">辅助 DNS 覆盖</a></p>
+<p>次要区域</p>
+<p>让客户可以启用区域级<a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic" target="_blank" rel="noopener noreferrer">辅助 DNS 覆盖，</a>通过 Cloudflare 代理 HTTP/S 流量。</p>
+<p><a href="https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns" target="_blank" rel="noopener noreferrer">多 DNS 服务提供商</a></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "query"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    viewer {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      zones(filter: { zoneTag: $zoneTag }) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        dnsAnalyticsAdaptiveGroups(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          filter: $filter</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          limit: 10</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          orderBy: [datetime_ASC]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        ) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          avg {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            processingTimeUs</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          quantiles {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            processingTimeUsP90</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          dimensions {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            datetimeFifteenMinutes</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            sourceIP</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "variables"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "zoneTag"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;zone-tag&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "filter"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "datetime_geq"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2024-05-01T00:00:00Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "datetime_leq"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2024-06-01T00:00:00Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>主要和次要区域</p>
+<p>让您可以拥有多个权威性 DNS 服务提供商，同时将 Cloudflare 作为主域名服务器。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="353" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=640&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=750&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=828&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=1080&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=1280&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=1430&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2097 Embedded Image - 1CToXc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NSK8E841SD99JRVGH45F.png&amp;w=1600&amp;h=791&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="791" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="353" class="pt-portable-image-media"></div>
+</figure>
+<h3>每个帐户和每个区域的唯一 DNSSEC 密钥</h3>
+<p><a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a> 的全称是域名系统安全扩展，通过提供一种方法来检查接收到的 DNS 查询响应是否真实且未被修改，提高域或区域安全性。DNSSEC 可防范 <a href="https://www.cloudflare.com/learning/dns/dns-cache-poisoning" target="_blank" rel="noopener noreferrer">DNS 缓存投毒</a>（DNS 欺骗），有助于确保 DNS 解析器使用正确的 IP 地址来响应 DNS 查询。</p>
+<p>自从我们在 2015 年<a href="https://blog.cloudflare.com/introducing-universal-dnssec">推出通用 DNSSEC</a> 以来，我们已经做了不少改进，例如添加了<a href="https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec" target="_blank" rel="noopener noreferrer">次要区域的预签名 DNSSEC</a> 以及<a href="https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec" target="_blank" rel="noopener noreferrer">多签名者 DNSSEC</a> 支持。默认情况下，Cloudflare 会在响应 DNS 查询时动态签名 DNS 记录（实时签名）。这让 Cloudflare 可以托管受 DNSSEC 保护的域，同时为代理源动态分配 IP 地址。它还支持某些负载平衡用例，因为在这些用例中，DNS 响应中提供的 IP 地址会根据转向而发生变化。</p>
+<p>Cloudflare 使用比当今使用的大多数 RSA 密钥更强大的<a href="https://blog.cloudflare.com/dnssec-done-right">椭圆曲线加密算法 ECDSA P-256</a>。它使用更少的 CPU 来生成签名，从而更高效地动态生成签名。DNSSEC 通常使用区域签名密钥 (ZSK) 和密钥签名密钥 (KSK) 这两种密钥。按照最简单的形式，ZSK 用于对查询响应中提供的 DNS 记录进行签名；KSK 则用于对 <a href="https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records" target="_blank" rel="noopener noreferrer">DNSKEY</a> 进行签名，包括 ZSK，以确保其真实性。</p>
+<p>如今，Cloudflare 在全球范围内为所有 DNSSEC 签名使用一个共享的 ZSK 和 KSK。由于我们使用了如此强大的加密算法，我们知道这套密钥集的安全性，因此，不认为有必要定期轮换 ZSK 或 KSK，至少从安全性角度来看是这样。然而，有些客户制定的安全策略要求每隔一段时间轮换这些密钥。因此，我们为新的 Foundation DNS 高级域名服务器增加了一项功能，让客户可以根据每个帐户或每个区域的需要，轮换其 ZSK 和 KSK。将首先通过 API 然后通过 Cloudflare 仪表板来提供这项功能。所以现在，客户使用 Cloudflare Foundation DNS，可以满足严苛的安全策略对于轮换 DNSSEC 密钥的要求。</p>
+<h3>基于 GraphQL 的 DNS 分析</h3>
+<p>对于不熟悉这个术语的用户而言，<a href="https://graphql.org" target="_blank" rel="noopener noreferrer">GraphQL</a> 是一种 API 查询语言，也是用于执行查询的运行时。它让客户可以准确提出所需内容的请求，不多不少恰好合适，从而让客户能够通过单个 API 调用整合多个数据源的数据，并且支持通过订阅来获取实时更新。</p>
+<p>如您所知，Cloudflare 推出 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL API</a> 已有一段时间，但作为 Foundation DNS 的一部分，我们将向此 API 添加新的 DNS 数据集，仅供与新的 Foundation DNS 高级域名服务器搭配使用。</p>
+<p>GraphQL API 中新添加的 DNS 数据集，可用于获取关于区域已收到的 DNS 查询的信息。这是比 Cloudflare 现有 <a href="https://developers.cloudflare.com/api/operations/dns-analytics-table" target="_blank" rel="noopener noreferrer">DNS Analytics API</a> 更快速、更强大的替代方案，让您能够快速高效地查询较长时间范围的数据，且不会遇到限制或超时。GraphQL API 接受的查询类型更加灵活，并且比 DNS Analytics API 显示的信息更多。</p>
+<p>例如，您可以运行查询，来获取查询的平均处理时间和第 90 个百分位处理时间，按源 IP 地址分组，以 15 分钟为单位。此类查询有助于了解哪些 IPS 在特定时段内最频繁地查询您的记录：</p>
+<p>过去，无法进行此类查询但现在可以，原因有几个。首先，我们添加了新字段，例如 <strong>sourceIP</strong>，这让我们能够根据正在进行 DNS 查询的客户端 IP 地址（通常是解析器）来过滤数据。其次，GraphQL API 查询能够处理并返回更长时间范围的数据。以前，拥有足够多查询数量的 DNS 区域只能查询几天之内的流量信息，而新的 GraphQL API 可以提供长达 31 天的数据。我们计划进一步扩大这个时间范围，以及可以存储和查询多久之前的历史数据。</p>
+<p>GraphQL API 让我们还可以将新的 DNS 分析信息添到 Cloudflare 仪表板。客户将能够跟踪查询最多的记录，了解哪些数据中心在回答这些查询，了解查询数量等等。</p>
+<p>GraphQL API 中的新添加的 DNS 数据集和新的 DNS 分析页面，都有助于我们的 DNS 客户监测、分析其 Foundation DNS 部署并进行故障排除。</p>
+<h3>新的发布流程</h3>
+<p>Cloudflare 的权威性 DNS 产品大约每周会进行一次软件更新。Cloudflare 制定了复杂巧妙的发布流程，有助于防止性能下降影响生产流量。虽然性能下降不常见，但只有在新版本受到生产流量的数量和独特性影响时，问题才有可能浮现。</p>
+<p>由于企业客户对稳定性的渴望超过对新功能的期望，因此，新版本将使用 Cloudflare 标准域名服务器进行两周的试用准备，然后再正式升级 Foundation DNS 高级域名服务器。如果两周内没有出现任何问题，Foundation DNS 高级域名服务器也将升级。</p>
+<p>使用 Foundation DNS 高级域名服务器的区域将会见证可靠性的提高，因为在新版软件中，它们可以更好地防范性能下滑问题。</p>
+<h3>更简单的 DNS 定价</h3>
+<p>过去，Cloudflare 根据每月 DNS 查询和账户中的域数量对权威性 DNS 服务进行收费。企业客户通常对仅限 DNS 区域服务感兴趣，它是指将 DNS 区域托管在 Cloudflare 中，但不使用我们的反向代理（第 7 层）服务，例如 CDN、WAF 或机器人管理。通过 Foundation DNS，我们简化了适用于绝大多数客户的定价，具体做法是默认<strong>包含 10,000 个仅 DNS 域</strong>。这一变化意味着大多数客户将只需为其使用的 DNS 查询数量付费。</p>
+<p>我们还在单个账户个的所有域中设置<strong>包含 100 万条 DNS 记录</strong>。但这并不意味着我们无法支持更多数量的记录。事实上，我们平台上最大的单个区域拥有超过 390 万条记录，而我们最大的 DNS 账户分布在多个区域中的 DNS 记录总量接近 3000 万条。使用 Cloudflare DNS，即使是最大规模的部署也可以轻松应对。</p>
+<h3>更多信息，敬请持续关注</h3>
+<p>我们才刚刚开始。未来，我们将为 Foundation DNS 添加更多专属功能。其中一项呼声很高的功能是<strong>按记录限定范围的 API 令牌和用户权限</strong>。这让客户可以配置更精细的权限。例如，您可以指定账户中的某个特定成员只能创建并管理 TXT 和 MX 类型的记录，这样他/她就不会意外删除或编辑影响到域 Web 流量的地址记录。另一个示例是根据子域指定权限，进一步限制特定用户的权限范围。</p>
+<p>如果您是现有企业客户并且希望使用 Foundation DNS，请联系客户团队为您的账户配置 Foundation DNS。</p>

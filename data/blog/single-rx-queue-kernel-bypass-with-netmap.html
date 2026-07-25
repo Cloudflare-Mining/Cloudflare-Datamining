@@ -1,216 +1,136 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mtwkycUiz0G5AOoqkjs4Q/56858180757ef757eab1cc96bbe4bbb3/single-rx-queue-kernel-bypass-with-netmap.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>In <a href="https://blog.cloudflare.com/kernel-bypass">a previous post</a> we discussed the performance limitations of the Linux kernel network stack. We detailed the available kernel bypass techniques allowing user space programs to receive packets with high throughput. Unfortunately, none of the discussed open source solutions supported our needs. To improve the situation we decided to contribute to the <a href="http://info.iet.unipi.it/~luigi/netmap" target="_blank" rel="noopener noreferrer">Netmap project</a>. In this blog post we'll describe our proposed changes.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wUCqE4w1PE0nbGFJLjIX3/8e30b5ce1a117131d4929b29bf536fc1/122715232_32da8cd353_o-1.jpg" alt="network card" class="kg-image" width="861" height="536" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232" target="_blank" rel="noopener noreferrer">image</a> by Binary Koala</p>
-	<div class="flex anchor relative">
-		<h3 id="our-needs">Our needs</h3>
-		<a href="https://blog.cloudflare.com/#our-needs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At CloudFlare we are constantly dealing with large packet floods. Our network constantly receives a large volume of packets, often coming from many, simultaneous attacks. In fact, it is entirely possible that the server which just served you this blog post is dealing with a many-million packets per second flood <i>right now</i>.</p>
-	<p>Since the Linux Kernel can't really handle a large volume of packets, we need to work around it. During packet floods we offload selected network flows (belonging to a flood) to a user space application. This application filters the packets at very high speed. Most of the packets are dropped, as they belong to a flood. The small number of "valid" packets are injected back to the kernel and handled in the same way as usual traffic.</p>
-	<p>It’s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
-	<p>This setup works perfectly on our servers with Solarflare network cards - we can use the <code>ef_vi</code> API to achieve the kernel bypass. Unfortunately, we don’t have this functionality on our servers with Intel IXGBE NIC’s.</p>
-	<p>This is when <a href="http://info.iet.unipi.it/~luigi/netmap" target="_blank" rel="noopener noreferrer">Netmap</a> comes in.</p>
-	<div class="flex anchor relative">
-		<h4 id="netmap">Netmap</h4>
-		<a href="https://blog.cloudflare.com/#netmap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Over the last few months we’ve been thinking hard about how to achieve bypass for selected flows (aka: bifurcated driver) on non-Solarflare network cards.</p>
-	<p>We’ve considered PF_RING, DPDK and other custom solutions, but sadly all of them take over the whole network card. Eventually we decided that the best way would be to patch Netmap with the functionality we need.</p>
-	<p>We chose Netmap because:</p>
-	<ul>
-		<li>
-			<p>It’s fully open source and released under a BSD license.</p>
-		</li>
-		<li>
-			<p>It has a great NIC-agnostic API.</p>
-		</li>
-		<li>
-			<p>It’s very fast: can reach line rate easily.</p>
-		</li>
-		<li>
-			<p>The project is well maintained and reasonably mature.</p>
-		</li>
-		<li>
-			<p>The code is very high quality.</p>
-		</li>
-		<li>
-			<p>The driver-specific modifications are trivial: most of the magic happens in the shared Netmap module. It’s easy to add support for new hardware.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="introducing-the-single-rx-queue-mode">Introducing the single RX queue mode</h3>
-		<a href="https://blog.cloudflare.com/#introducing-the-single-rx-queue-mode" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Usually, when a network card goes into the Netmap mode, all the RX queues get disconnected from the kernel and are available to the Netmap applications.</p>
-	<p>We don't want that. We want to keep most of the RX queues back in the kernel mode, and enable Netmap mode only on selected RX queues. We call this functionality: "single RX queue mode".</p>
-	<p>The intention was to expose a minimal API which could:</p>
-	<ul>
-		<li>
-			<p>Open a network interface in "a single RX queue mode".</p>
-		</li>
-		<li>
-			<p>This would allow netmap applications to receive packets from that specific RX queue.</p>
-		</li>
-		<li>
-			<p>While leaving all the other queues attached to the host network stack.</p>
-		</li>
-		<li>
-			<p>On demand add or remove RX queues from the "single RX queue mode".</p>
-		</li>
-		<li>
-			<p>Eventually remove the interface from the Netmap mode and reattach the RX queues to the host stack.</p>
-		</li>
-	</ul>
-	<p>The patch to Netmap is awaiting code review and is available here:</p>
-	<ul>
-		<li>
-			<p><a href="https://github.com/luigirizzo/netmap/pull/87" target="_blank" rel="noopener noreferrer">https://github.com/luigirizzo/netmap/pull/87</a></p>
-		</li>
-	</ul>
-	<p>The minimal program receiving packets from <code>eth3</code> RX queue #4 would look like:</p>
-	<pre class="language-.c"><code class="language-.c">d = nm_open("netmap:eth3~4", NULL, 0, 0);
-while (1) {
-    fds = {fds: d-&gt;fd, events: POLLIN};
-    poll(&amp;fds, 1, -1);
-
-    ring = NETMAP_RXRING(d-&gt;nifp, 4);
-    while (!nm_ring_empty(ring)) {
-        i   = ring-&gt;cur;
-        buf = NETMAP_BUF(ring, ring-&gt;slot[i].buf_idx);
-        len = ring-&gt;slot[i].len;
-        //process(buf, len)
-        ring-&gt;head = ring-&gt;cur = nm_ring_next(ring, i);
-    }
-}</code></pre>
-	<p>This code is very close to a Netmap example program. Indeed the only difference is the <code>nm_open()</code> call, which uses the new syntax <code>netmap:ifname~queue_number</code>.</p>
-	<p>Once again, when running this code only packets arriving on the RX queue #4 will go to the netmap program. All other RX and TX queues will be handled by the Linux kernel network stack.</p>
-	<p>You can find a more complete example here:</p>
-	<ul>
-		<li>
-			<p><a href="https://github.com/jibi/nm-single-rx-queue" target="_blank" rel="noopener noreferrer">https://github.com/jibi/nm-single-rx-queue</a></p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2a0bUYxkJn3js1Nnve8vV6/cabf675555d51efb16d90372405aa07e/RX_bypass.png" alt="" class="kg-image" width="1024" height="500" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="isolating-a-queue">Isolating a queue</h4>
-		<a href="https://blog.cloudflare.com/#isolating-a-queue" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In multiqueue network cards, any packet can end up in almost any RX queue due to RSS. This is why before enabling the single RX mode it is necessary to make sure only the selected flow goes to the Netmap queue.</p>
-	<p>To do so it is necessary to:</p>
-	<ul>
-		<li>
-			<p>Modify the <b>indirection table</b> to ensure no new RSS-hashed packets will go there.</p>
-		</li>
-		<li>
-			<p>Use <b>flow steering</b> to specifically direct some flows to the isolated queue.</p>
-		</li>
-		<li>
-			<p>Work around <b>RFS</b> - make sure no other application is running on the CPU Netmap will run on.</p>
-		</li>
-	</ul>
-	<p>For example:</p>
-	<pre class="language-bash"><code class="language-bash">$ ethtool -X eth3 weight 1 1 1 1 0 1 1 1 1 1
-$ ethtool -K eth3 ntuple on
-$ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
-	<p>Here we are setting the indirection table to prevent traffic from going to RX queue #4. Then we are enabling flow steering to enqueue all UDP traffic with destination port 53 into queue #4.</p>
-	<div class="flex anchor relative">
-		<h4 id="trying-it-out">Trying it out</h4>
-		<a href="https://blog.cloudflare.com/#trying-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Here's how to run it with the IXGBE NIC. First grab the sources:</p>
-	<pre class="language-bash"><code class="language-bash">$ git clone https://github.com/jibi/netmap.git
-$ cd netmap
-$ git checkout -B single-rx-queue-mode
-$ ./configure --drivers=ixgbe --kernel-sources=/path/to/kernel</code></pre>
-	<p>Load the netmap-patched modules and setup the interface:</p>
-	<pre class="language-bash"><code class="language-bash">$ insmod ./LINUX/netmap.ko
-$ insmod ./LINUX/ixgbe/ixgbe.ko
-$ # Distribute the interrupts:
-$ (let CPU=0; cd /sys/class/net/eth3/device/msi_irqs/; for IRQ in *; do \
-  echo $CPU &gt; /proc/irq/$IRQ/smp_affinity_list; let CPU+=1
-         done)
-$ # Enable RSS:
-$ ethtool -K eth3 ntuple on</code></pre>
-	<p>At this point we started flooding the interface with 6M short UDP packets. <code>htop</code> shows the server being totally busy with handling the flood:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7etmtoEPnxIeh6CPP8mrJd/ef05cbd9ff6626ab3adf6d4ded361877/htop1-1.png" alt="" class="kg-image" width="248" height="339" loading="lazy">
-
-	</figure>
-	<p>To counter the flood we started Netmap. First, we needed to edit the indirection table, to isolate the RX queue #4:</p>
-	<pre class="language-bash"><code class="language-bash">$ ethtool -X eth3 weight 1 1 1 1 0 1 1 1 1 1
-$ ethtool -N eth3 flow-type udp4 dst-port 53 action 4</code></pre>
-	<p>This caused all the flood packets to go to RX queue #4.</p>
-	<p>Before putting an interface in Netmap mode it is necessary to turn off hardware offload features:</p>
-	<pre class="language-bash"><code class="language-bash">$ ethtool -K eth3 lro off gro off</code></pre>
-	<p>Finally we launched the netmap offload:</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo taskset -c 15 ./nm_offload eth3 4
-[+] starting test02 on interface eth3 ring 4
-[+] UDP pps: 5844714
-[+] UDP pps: 5996166
-[+] UDP pps: 5863214
-[+] UDP pps: 5986365
-[+] UDP pps: 5867302
-[+] UDP pps: 5964911
-[+] UDP pps: 5909715
-[+] UDP pps: 5865769
-[+] UDP pps: 5906668
-[+] UDP pps: 5875486</code></pre>
-	<p>As you see the netmap program on a single RX queue was able to receive about 5.8M packets.</p>
-	<p>For completeness, here's an <code>htop</code> showing only a single core being busy with Netmap:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/72C2hRcoZTkoaTJZLaqgoi/5563f1256fe254287e9d77272da0ea97/htop2-1.png" alt="" class="kg-image" width="246" height="335" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="thanks">Thanks</h4>
-		<a href="https://blog.cloudflare.com/#thanks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html" target="_blank" rel="noopener noreferrer">the initial hack</a> we based our work on.</p>
-	<p>We would also like to thank Luigi Rizzo, for his Netmap work and great feedback on our patches.</p>
-	<div class="flex anchor relative">
-		<h4 id="final-words">Final words</h4>
-		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At CloudFlare our application stack is based on open source software. We’re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>
-	<p>You can find more CloudFlare open source <a href="https://cloudflare.github.io" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>In <a href="https://blog.cloudflare.com/kernel-bypass">a previous post</a> we discussed the performance limitations of the Linux kernel network stack. We detailed the available kernel bypass techniques allowing user space programs to receive packets with high throughput. Unfortunately, none of the discussed open source solutions supported our needs. To improve the situation we decided to contribute to the <a href="http://info.iet.unipi.it/~luigi/netmap" target="_blank" rel="noopener noreferrer">Netmap project</a>. In this blog post we'll describe our proposed changes.</p>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/binary_koala/122715232" target="_blank" rel="noopener noreferrer">image</a> by Binary Koala</p>
+<h3>Our needs</h3>
+<p>At CloudFlare we are constantly dealing with large packet floods. Our network constantly receives a large volume of packets, often coming from many, simultaneous attacks. In fact, it is entirely possible that the server which just served you this blog post is dealing with a many-million packets per second flood <em>right now</em>.</p>
+<p>Since the Linux Kernel can't really handle a large volume of packets, we need to work around it. During packet floods we offload selected network flows (belonging to a flood) to a user space application. This application filters the packets at very high speed. Most of the packets are dropped, as they belong to a flood. The small number of "valid" packets are injected back to the kernel and handled in the same way as usual traffic.</p>
+<p>It’s important to emphasize that the kernel bypass is enabled only for selected flows, which means that all other packets go to the kernel as usual.</p>
+<p>This setup works perfectly on our servers with Solarflare network cards - we can use the <code>ef_vi</code> API to achieve the kernel bypass. Unfortunately, we don’t have this functionality on our servers with Intel IXGBE NIC’s.</p>
+<p>This is when <a href="http://info.iet.unipi.it/~luigi/netmap" target="_blank" rel="noopener noreferrer">Netmap</a> comes in.</p>
+<h4>Netmap</h4>
+<p>Over the last few months we’ve been thinking hard about how to achieve bypass for selected flows (aka: bifurcated driver) on non-Solarflare network cards.</p>
+<p>We’ve considered PF_RING, DPDK and other custom solutions, but sadly all of them take over the whole network card. Eventually we decided that the best way would be to patch Netmap with the functionality we need.</p>
+<p>We chose Netmap because:</p>
+<ul>
+	<li>It’s fully open source and released under a BSD license.</li>
+	<li>It has a great NIC-agnostic API.</li>
+	<li>It’s very fast: can reach line rate easily.</li>
+	<li>The project is well maintained and reasonably mature.</li>
+	<li>The code is very high quality.</li>
+	<li>The driver-specific modifications are trivial: most of the magic happens in the shared Netmap module. It’s easy to add support for new hardware.</li>
+</ul>
+<h3>Introducing the single RX queue mode</h3>
+<p>Usually, when a network card goes into the Netmap mode, all the RX queues get disconnected from the kernel and are available to the Netmap applications.</p>
+<p>We don't want that. We want to keep most of the RX queues back in the kernel mode, and enable Netmap mode only on selected RX queues. We call this functionality: "single RX queue mode".</p>
+<p>The intention was to expose a minimal API which could:</p>
+<ul>
+	<li>Open a network interface in "a single RX queue mode".</li>
+	<li>This would allow netmap applications to receive packets from that specific RX queue.</li>
+	<li>While leaving all the other queues attached to the host network stack.</li>
+	<li>On demand add or remove RX queues from the "single RX queue mode".</li>
+	<li>Eventually remove the interface from the Netmap mode and reattach the RX queues to the host stack.</li>
+</ul>
+<p>The patch to Netmap is awaiting code review and is available here:</p>
+<ul>
+	<li><a href="https://github.com/luigirizzo/netmap/pull/87" target="_blank" rel="noopener noreferrer">https://github.com/luigirizzo/netmap/pull/87</a></li>
+</ul>
+<p>The minimal program receiving packets from <code>eth3</code> RX queue #4 would look like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>d = nm_open("netmap:eth3~4", NULL, 0, 0);</span></span>
+<span class="line"><span>while (1) {</span></span>
+<span class="line"><span>    fds = {fds: d-&gt;fd, events: POLLIN};</span></span>
+<span class="line"><span>    poll(&amp;fds, 1, -1);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    ring = NETMAP_RXRING(d-&gt;nifp, 4);</span></span>
+<span class="line"><span>    while (!nm_ring_empty(ring)) {</span></span>
+<span class="line"><span>        i   = ring-&gt;cur;</span></span>
+<span class="line"><span>        buf = NETMAP_BUF(ring, ring-&gt;slot[i].buf_idx);</span></span>
+<span class="line"><span>        len = ring-&gt;slot[i].len;</span></span>
+<span class="line"><span>        //process(buf, len)</span></span>
+<span class="line"><span>        ring-&gt;head = ring-&gt;cur = nm_ring_next(ring, i);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>}</span></span></code></pre>
 </div>
+<p>This code is very close to a Netmap example program. Indeed the only difference is the <code>nm_open()</code> call, which uses the new syntax <code>netmap:ifname~queue_number</code>.</p>
+<p>Once again, when running this code only packets arriving on the RX queue #4 will go to the netmap program. All other RX and TX queues will be handled by the Linux kernel network stack.</p>
+<p>You can find a more complete example here:</p>
+<ul>
+	<li><a href="https://github.com/jibi/nm-single-rx-queue" target="_blank" rel="noopener noreferrer">https://github.com/jibi/nm-single-rx-queue</a></li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="349" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=640&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=750&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=828&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=1080&amp;h=527&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=1280&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=1430&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Single RX queue kernel bypass in Netmap for high packet rate networking Embedded Image - U6gNyn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DANVRK5DBYN8W2R72XQ8.png&amp;w=1024&amp;h=500&amp;f=webp" data-lightbox-width="1024" data-lightbox-height="500" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="349" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h4>Isolating a queue</h4>
+<p>In multiqueue network cards, any packet can end up in almost any RX queue due to RSS. This is why before enabling the single RX mode it is necessary to make sure only the selected flow goes to the Netmap queue.</p>
+<p>To do so it is necessary to:</p>
+<ul>
+	<li>Modify the <strong>indirection table</strong> to ensure no new RSS-hashed packets will go there.</li>
+	<li>Use <strong>flow steering</strong> to specifically direct some flows to the isolated queue.</li>
+	<li>Work around <strong>RFS</strong> - make sure no other application is running on the CPU Netmap will run on.</li>
+</ul>
+<p>For example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-032f62-99ffe4"> weight</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -K</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-032f62-99ffe4"> ntuple</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -N</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-032f62-99ffe4"> flow-type</span><span class="sk-032f62-99ffe4"> udp4</span><span class="sk-032f62-99ffe4"> dst-port</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-005cc5-ffc799"> 4</span></span></code></pre>
+</div>
+<p>Here we are setting the indirection table to prevent traffic from going to RX queue #4. Then we are enabling flow steering to enqueue all UDP traffic with destination port 53 into queue #4.</p>
+<h4>Trying it out</h4>
+<p>Here's how to run it with the IXGBE NIC. First grab the sources:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/jibi/netmap.git</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> netmap</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> checkout</span><span class="sk-005cc5-99ffe4"> -B</span><span class="sk-032f62-99ffe4"> single-rx-queue-mode</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./configure</span><span class="sk-005cc5-99ffe4"> --drivers=ixgbe</span><span class="sk-005cc5-99ffe4"> --kernel-sources=/path/to/kernel</span></span></code></pre>
+</div>
+<p>Load the netmap-patched modules and setup the interface:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> insmod</span><span class="sk-032f62-99ffe4"> ./LINUX/netmap.ko</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> insmod</span><span class="sk-032f62-99ffe4"> ./LINUX/ixgbe/ixgbe.ko</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-6a737d-8b8b8b94"> # Distribute the interrupts:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-24292e-fff"> (let </span><span class="sk-032f62-99ffe4">CPU=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> /sys/class/net/eth3/device/msi_irqs/</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> IRQ </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> *</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  echo</span><span class="sk-24292e-fff"> $CPU </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /proc/irq/</span><span class="sk-24292e-fff">$IRQ</span><span class="sk-032f62-99ffe4">/smp_affinity_list</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4"> CPU+=</span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">         done)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-6a737d-8b8b8b94"> # Enable RSS:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -K</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-032f62-99ffe4"> ntuple</span><span class="sk-032f62-99ffe4"> on</span></span></code></pre>
+</div>
+<p>At this point we started flooding the interface with 6M short UDP packets. <code>htop</code> shows the server being totally busy with handling the flood:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="248" height="339" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VYJQE378E1N8JRK75X3G.png&amp;w=248&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VYJQE378E1N8JRK75X3G.png&amp;w=248&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 248w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VYJQE378E1N8JRK75X3G.png&amp;w=496&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 496w" alt="Single RX queue kernel bypass in Netmap for high packet rate networking Embedded Image - OHZcBD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VYJQE378E1N8JRK75X3G.png&amp;w=248&amp;h=339&amp;f=webp" data-lightbox-width="248" data-lightbox-height="339" data-astro-cid-7nvefuv6="true" sizes="(min-width: 248px) 248px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="248" height="339" class="pt-portable-image-media"></div>
+</figure>
+<p>To counter the flood we started Netmap. First, we needed to edit the indirection table, to isolate the RX queue #4:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-032f62-99ffe4"> weight</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -N</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-032f62-99ffe4"> flow-type</span><span class="sk-032f62-99ffe4"> udp4</span><span class="sk-032f62-99ffe4"> dst-port</span><span class="sk-005cc5-ffc799"> 53</span><span class="sk-032f62-99ffe4"> action</span><span class="sk-005cc5-ffc799"> 4</span></span></code></pre>
+</div>
+<p>This caused all the flood packets to go to RX queue #4.</p>
+<p>Before putting an interface in Netmap mode it is necessary to turn off hardware offload features:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ethtool</span><span class="sk-005cc5-99ffe4"> -K</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-032f62-99ffe4"> lro</span><span class="sk-032f62-99ffe4"> off</span><span class="sk-032f62-99ffe4"> gro</span><span class="sk-032f62-99ffe4"> off</span></span></code></pre>
+</div>
+<p>Finally we launched the netmap offload:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> taskset</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> ./nm_offload</span><span class="sk-032f62-99ffe4"> eth3</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] starting test02 on interface eth3 ring 4</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5844714</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5996166</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5863214</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5986365</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5867302</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5964911</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5909715</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5865769</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5906668</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] UDP pps: 5875486</span></span></code></pre>
+</div>
+<p>As you see the netmap program on a single RX queue was able to receive about 5.8M packets.</p>
+<p>For completeness, here's an <code>htop</code> showing only a single core being busy with Netmap:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="246" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JA0EXF69CQTRC0X6B2GY.png&amp;w=246&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JA0EXF69CQTRC0X6B2GY.png&amp;w=246&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 246w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JA0EXF69CQTRC0X6B2GY.png&amp;w=492&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 492w" alt="Single RX queue kernel bypass in Netmap for high packet rate networking Embedded Image - JrtcCH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48JA0EXF69CQTRC0X6B2GY.png&amp;w=246&amp;h=335&amp;f=webp" data-lightbox-width="246" data-lightbox-height="335" data-astro-cid-7nvefuv6="true" sizes="(min-width: 246px) 246px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="246" height="335" class="pt-portable-image-media"></div>
+</figure>
+<h4>Thanks</h4>
+<p>We would like to thank Pavel Odintsov who suggested the possibility of using Netmap this way. He even prepared <a href="http://www.stableit.ru/2015/06/how-to-run-netmap-on-single-queue-and.html" target="_blank" rel="noopener noreferrer">the initial hack</a> we based our work on.</p>
+<p>We would also like to thank Luigi Rizzo, for his Netmap work and great feedback on our patches.</p>
+<h4>Final words</h4>
+<p>At CloudFlare our application stack is based on open source software. We’re grateful to so many open source programmers for their awesome work. Whenever we can we try to contribute back to the community - we hope "the single RX Netmap mode" will be useful to others.</p>
+<p>You can find more CloudFlare open source <a href="https://cloudflare.github.io" target="_blank" rel="noopener noreferrer">here</a>.</p>

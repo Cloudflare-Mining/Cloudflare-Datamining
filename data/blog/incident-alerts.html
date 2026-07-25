@@ -1,135 +1,52 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/incident-alerts">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/incident-alerts">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/incident-alerts">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/incident-alerts">繁體中文</a>.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5zBBFxvFHSVMKPKZZ6sIhN/99bd2ca484df99774b400629df2758b0/image2-5.png" alt="Announcing Cloudflare Incident Alerts" class="kg-image" width="1999" height="1126" loading="lazy">
-
-	</figure>
-	<p>A lot of people rely on Cloudflare. We serve over 46 million HTTP requests per second on average; millions of customers use our services, including 31% of the Fortune 1000. And these numbers are only growing.</p>
-	<p>Given the privileged position we sit in to help the Internet to operate, we’ve always placed a very large emphasis on <a href="https://developers.cloudflare.com/support/about-cloudflare/enterprise-documentation/customer-incident-management-policy" target="_blank" rel="noopener noreferrer">transparency during incidents. But we’re constantly striving to do better.</a></p>
-	<p>That’s why today we are excited to announce Incident Alerts — available via <a href="https://developers.cloudflare.com/notifications/create-notifications" target="_blank" rel="noopener noreferrer">email, webhook, or PagerDuty</a>. These notifications are accessible easily in the Cloudflare dashboard, and they’re customizable to prevent notification overload. And best of all, they’re available to everyone; you simply need a free account to get started.</p>
-	<div class="flex anchor relative">
-		<h3 id="lifecycle-of-an-incident">Lifecycle of an incident</h3>
-		<a href="https://blog.cloudflare.com/#lifecycle-of-an-incident" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6P0JRUijhlkJUdsVhCn9Zs/e229f73088b616881e991ec7903829c9/Incident-Workflow.png" alt="" class="kg-image" width="1600" height="746" loading="lazy">
-
-	</figure>
-	<p>Without proper transparency, incidents cause confusion and waste resources for anyone that relies on the Internet. With so many different entities working together to make the Internet operate, diagnosing and troubleshooting can be complicated and time-consuming. By far the best solution is for providers to have transparent and proactive alerting, so any time something goes wrong, it’s clear exactly where the problem is.</p>
-	<div class="flex anchor relative">
-		<h3 id="cloudflare-incident-response">Cloudflare incident response</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-incident-response" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We understand the importance of proactive and transparent alerting around incidents. We have worked to improve communications by directly alerting enterprise level customers and allowing everyone to subscribe to an RSS feed or leverage the <a href="https://www.cloudflarestatus.com/api" target="_blank" rel="noopener noreferrer">Cloudflare Status API</a>. Additionally, we update the <a href="https://www.cloudflarestatus.com" target="_blank" rel="noopener noreferrer">Cloudflare status page</a> — which catalogs incident reports, updates, and resolutions — throughout an incident’s lifecycle, as well as tracking scheduled maintenance.</p>
-	<p>However, not everyone wants to use the Status API or subscribe to an RSS feed. Both of these options require some infrastructure and programmatic efforts from the customer’s end, and neither offers simple configuration to filter out noise like scheduled maintenance. For those who don’t want to build anything themselves, visiting the status page is still a pull, rather than a push, model. Customers themselves need to take it upon themselves to monitor Cloudflare’s status — and timeliness in these situations can make a world of difference.</p>
-	<p>Without a proactive channel of communication, there can be a disconnect between Cloudflare and our customers during incidents. Although we update the status page as soon as possible, the lack of a push notification represents a gap in meeting our customers’ expectations. The new Cloudflare Incident Alerts aim to remedy that.</p>
-	<div class="flex anchor relative">
-		<h3 id="simple-free-and-fast-notifications">Simple, free, and fast notifications</h3>
-		<a href="https://blog.cloudflare.com/#simple-free-and-fast-notifications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We want to proactively notify you as soon as a Cloudflare incident may be affecting your service —- without any programmatic steps on your end. Unlike the Status API and an RSS feed, Cloudflare Incident Alerts are configurable through just a few clicks in the dashboard, and you can choose to receive email, PagerDuty, or web hook alerts for incidents involving specific products at different levels of impact. The Status API will continue to be available.</p>
-	<p>With this multidimensional granularity, you can filter notifications by specific service and severity. If you are, for example, a Cloudflare for SaaS customer, you may want alerts for delays in custom hostname activation but not for increased latency on Stream. Likewise, you may only care about critical incidents instead of getting notified for minor incidents. Incident Alerts give you the ability to choose.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/w52Ra0KXOX0yPPmfMo72w/8e6987f0f4606c7b63ae2d8c2bd14c48/Incident-Workflow-with-alerts.png" alt="Lifecycle of an Incident" class="kg-image" width="1600" height="772" loading="lazy">
-
-	</figure>
-	<p>Lifecycle of an Incident</p>
-	<div class="flex anchor relative">
-		<h3 id="how-to-filter-incidents-to-fit-your-needs">How to filter incidents to fit your needs</h3>
-		<a href="https://blog.cloudflare.com/#how-to-filter-incidents-to-fit-your-needs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can filter incident notifications with the following categories:</p>
-	<ul>
-		<li>
-			<p>Cloudflare Sites and Services: get notified when an incident is affecting certain products or product areas.</p>
-		</li>
-		<li>
-			<p>Impact level: get notified for critical, major, and/or minor incidents.</p>
-		</li>
-	</ul>
-	<p>These categories are not mutually exclusive. Here are a few possible configurations:</p>
-	<ul>
-		<li>
-			<p>Notify me via email for <b>all critical incidents.</b></p>
-		</li>
-		<li>
-			<p>Notify me via webhook for <b>critical &amp; major incidents affecting Pages.</b></p>
-		</li>
-		<li>
-			<p>Notify me via PagerDuty for <b>all incidents affecting Stream.</b></p>
-		</li>
-	</ul>
-	<p>With over fifty different <a href="https://developers.cloudflare.com/fundamentals/notifications/notification-available" target="_blank" rel="noopener noreferrer">alerts available via the dashboard</a>, you can tailor your notifications to what you need. You can customize not only which alerts you are receiving but also how you would like to be notified. With PagerDuty, webhooks, and email integrated into the system, you have the flexibility of choosing what will work best with your working environment. Plus, with multiple configurations within many of the available notifications, we make it easy to only get alerts about what you want, when you want them.</p>
-	<div class="flex anchor relative">
-		<h3 id="try-it-out">Try it out</h3>
-		<a href="https://blog.cloudflare.com/#try-it-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can start to configure incident alerts on your Cloudflare account today. Here’s how:</p>
-	<ol>
-		<li>
-			<p>Navigate to the Cloudflare dashboard → Notifications.</p>
-		</li>
-		<li>
-			<p>Select “Add”.</p>
-		</li>
-		<li>
-			<p>Select “Incident Alerts”.</p>
-		</li>
-		<li>
-			<p>Enter your notification name and description.</p>
-		</li>
-		<li>
-			<p>Select the impact level(s) and component(s) for which you would like to be notified. If either field is left blank, it will default to all impact levels or all components, respectively.</p>
-		</li>
-		<li>
-			<p>Select how you want to receive the notifications:</p>
-		</li>
-		<li>
-			<p>Check PagerDuty</p>
-		</li>
-		<li>
-			<p>Add Webhook</p>
-		</li>
-		<li>
-			<p>Add email recipient</p>
-		</li>
-		<li>
-			<p>Select “Save”.</p>
-		</li>
-		<li>
-			<p>Test the notification by selecting “Test” on the right side of its row.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6UVSTYyXZ7n66QlV8KppM7/2d3d8388d03e858d4082ec1aa44a0df6/Screenshot-2023-09-22-at-11.40.01.png" alt="" class="kg-image" width="1614" height="564" loading="lazy">
-
-	</figure>
-	<p>For more information on Cloudflare’s Alert Notification System, visit our documentation <a href="https://developers.cloudflare.com/fundamentals/notifications" target="_blank" rel="noopener noreferrer">here</a>.</p>
-</div>
+<p>A lot of people rely on Cloudflare. We serve over 46 million HTTP requests per second on average; millions of customers use our services, including 31% of the Fortune 1000. And these numbers are only growing.</p>
+<p>Given the privileged position we sit in to help the Internet to operate, we’ve always placed a very large emphasis on <a href="https://developers.cloudflare.com/support/about-cloudflare/enterprise-documentation/customer-incident-management-policy" target="_blank" rel="noopener noreferrer">transparency during incidents. But we’re constantly striving to do better.</a></p>
+<p>That’s why today we are excited to announce Incident Alerts — available via <a href="https://developers.cloudflare.com/notifications/create-notifications" target="_blank" rel="noopener noreferrer">email, webhook, or PagerDuty</a>. These notifications are accessible easily in the Cloudflare dashboard, and they’re customizable to prevent notification overload. And best of all, they’re available to everyone; you simply need a free account to get started.</p>
+<h3>Lifecycle of an incident</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="333" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=640&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=715&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=750&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=828&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=1080&amp;h=503&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=1280&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=1430&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2015 Embedded Image - kNlZtE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484CTQBCCZ6NWXD61BQ1ZM.png&amp;w=1600&amp;h=746&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="746" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="333" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Without proper transparency, incidents cause confusion and waste resources for anyone that relies on the Internet. With so many different entities working together to make the Internet operate, diagnosing and troubleshooting can be complicated and time-consuming. By far the best solution is for providers to have transparent and proactive alerting, so any time something goes wrong, it’s clear exactly where the problem is.</p>
+<h3>Cloudflare incident response</h3>
+<p>We understand the importance of proactive and transparent alerting around incidents. We have worked to improve communications by directly alerting enterprise level customers and allowing everyone to subscribe to an RSS feed or leverage the <a href="https://www.cloudflarestatus.com/api" target="_blank" rel="noopener noreferrer">Cloudflare Status API</a>. Additionally, we update the <a href="https://www.cloudflarestatus.com" target="_blank" rel="noopener noreferrer">Cloudflare status page</a> — which catalogs incident reports, updates, and resolutions — throughout an incident’s lifecycle, as well as tracking scheduled maintenance.</p>
+<p>However, not everyone wants to use the Status API or subscribe to an RSS feed. Both of these options require some infrastructure and programmatic efforts from the customer’s end, and neither offers simple configuration to filter out noise like scheduled maintenance. For those who don’t want to build anything themselves, visiting the status page is still a pull, rather than a push, model. Customers themselves need to take it upon themselves to monitor Cloudflare’s status — and timeliness in these situations can make a world of difference.</p>
+<p>Without a proactive channel of communication, there can be a disconnect between Cloudflare and our customers during incidents. Although we update the status page as soon as possible, the lack of a push notification represents a gap in meeting our customers’ expectations. The new Cloudflare Incident Alerts aim to remedy that.</p>
+<h3>Simple, free, and fast notifications</h3>
+<p>We want to proactively notify you as soon as a Cloudflare incident may be affecting your service —- without any programmatic steps on your end. Unlike the Status API and an RSS feed, Cloudflare Incident Alerts are configurable through just a few clicks in the dashboard, and you can choose to receive email, PagerDuty, or web hook alerts for incidents involving specific products at different levels of impact. The Status API will continue to be available.</p>
+<p>With this multidimensional granularity, you can filter notifications by specific service and severity. If you are, for example, a Cloudflare for SaaS customer, you may want alerts for delays in custom hostname activation but not for increased latency on Stream. Likewise, you may only care about critical incidents instead of getting notified for minor incidents. Incident Alerts give you the ability to choose.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="345" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=640&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=750&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=828&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=1080&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=1280&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=1430&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Lifecycle of an Incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MY16ZTFQEXGR44ZYF74D.png&amp;w=1600&amp;h=772&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="772" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="345" class="pt-portable-image-media"></div>
+</figure>
+<p>Lifecycle of an Incident</p>
+<h3>How to filter incidents to fit your needs</h3>
+<p>You can filter incident notifications with the following categories:</p>
+<ul>
+	<li>Cloudflare Sites and Services: get notified when an incident is affecting certain products or product areas.</li>
+	<li>Impact level: get notified for critical, major, and/or minor incidents.</li>
+</ul>
+<p>These categories are not mutually exclusive. Here are a few possible configurations:</p>
+<ul>
+	<li>Notify me via email for <strong>all critical incidents.</strong></li>
+	<li>Notify me via webhook for <strong>critical &amp; major incidents affecting Pages.</strong></li>
+	<li>Notify me via PagerDuty for <strong>all incidents affecting Stream.</strong></li>
+</ul>
+<p>With over fifty different <a href="https://developers.cloudflare.com/fundamentals/notifications/notification-available" target="_blank" rel="noopener noreferrer">alerts available via the dashboard</a>, you can tailor your notifications to what you need. You can customize not only which alerts you are receiving but also how you would like to be notified. With PagerDuty, webhooks, and email integrated into the system, you have the flexibility of choosing what will work best with your working environment. Plus, with multiple configurations within many of the available notifications, we make it easy to only get alerts about what you want, when you want them.</p>
+<h3>Try it out</h3>
+<p>You can start to configure incident alerts on your Cloudflare account today. Here’s how:</p>
+<ol>
+	<li>Navigate to the Cloudflare dashboard → Notifications.</li>
+	<li>Select “Add”.</li>
+	<li>Select “Incident Alerts”.</li>
+	<li>Enter your notification name and description.</li>
+	<li>Select the impact level(s) and component(s) for which you would like to be notified. If either field is left blank, it will default to all impact levels or all components, respectively.</li>
+	<li>Select how you want to receive the notifications:</li>
+	<li>Check PagerDuty</li>
+	<li>Add Webhook</li>
+	<li>Add email recipient</li>
+	<li>Select “Save”.</li>
+	<li>Test the notification by selecting “Test” on the right side of its row.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="250" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=715&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=640&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=715&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=750&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=828&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=1080&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=1280&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=1430&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2015 Embedded Image - 45nHx3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4865J04Z47WYM9H3GDG0EB.png&amp;w=1614&amp;h=564&amp;f=webp" data-lightbox-width="1614" data-lightbox-height="564" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="250" class="pt-portable-image-media"></div>
+</figure>
+<p>For more information on Cloudflare’s Alert Notification System, visit our documentation <a href="https://developers.cloudflare.com/fundamentals/notifications" target="_blank" rel="noopener noreferrer">here</a>.</p>

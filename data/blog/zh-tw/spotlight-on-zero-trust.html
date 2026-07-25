@@ -1,0 +1,1729 @@
+<p>在 <a href="https://blog.cloudflare.com/zh-tw/network-performance-update-cio-edition-zh-tw">1 月</a>和 <a href="https://blog.cloudflare.com/network-performance-update-security-week-2023">3 月</a>，我們發布了部落格，概述了 Cloudflare 在 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> 領域與其他廠商的表現對比。兩個案例的結論是，在各種 Zero Trust 場景中，Cloudflare 都比 Zscaler 和 Netskope 更快。在 Speed Week 期間，我們將恢復這些測試並加大賭注：與過去相比，我們正在更多地區針對更多公用網際網路端點測試更多提供者。</p>
+<p>在這些測試中，我們測試了三種 Zero Trust 情境：安全 Web 閘道 (SWG)、<a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer">Zero Trust 網路存取 (ZTNA)</a> 和遠端瀏覽器隔離 (RBI)。我們針對三個競爭對手進行了測試：Zscaler、Netskope 和 Palo Alto Networks。我們在全球 12 個地區測試了這些場景，而之前測試的地區只有 4 個。結果表明，在 42% 的測試場景中，Cloudflare 是最快的安全 Web 閘道，在所有提供者中佔據最大份額。在 ZTNA 場景中，Cloudflare 比 Zscaler 快 46%，比 Netskope 快 56%，比 Palo Alto 快 10%；在 RBI 場景中，比 Zscaler 快 64%。</p>
+<p>在本部落格中，我們將回顧為何效能如此重要，深入探討我們為何能在每種場景中提供更快的速度，並討論如何衡量每種產品的效能。</p>
+<h3>效能是一個威脅向量</h3>
+<p>Zero Trust 的效能很重要；當 Zero Trust 表現不佳時，使用者會停用它，從而使組織面臨風險。Zero Trust 服務不應該引人注目，因為當服務變得引人注目時，就會妨礙使用者完成工作。</p>
+<p>Zero Trust 服務可能有很多可協助保護客戶的花哨功能，但如果員工無法使用這些服務快速有效地完成工作，那麼這些都無關緊要。快速的效能有助於推動採用，並讓終端使用者對安全性有清晰的瞭解。在 Cloudflare，我們優先考慮讓我們的產品快速、順暢，結果不言自明。現在讓我們來看看結果，從我們的安全 Web 閘道開始。</p>
+<h3>Cloudflare Gateway：網際網路上的安全性</h3>
+<p><a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">安全 Web 閘道</a>需要速度快，因為它可作為組織所有網際網路相關流量的漏斗。如果安全 Web 閘道很慢，那麼從使用者到網際網路的任何流量都會很慢。如果流向網際網路的流量很慢，使用者可能會看到網頁載入緩慢、視訊通話出現抖動或遺失，或者通常無法完成工作。使用者可能決定關閉閘道，使組織面臨遭受攻擊的風險。</p>
+<p>除了靠近使用者之外，高效能的 Web 閘道還需要與網際網路的其他部分保持良好的對等關係，以避免使用者想要造訪的網站路徑緩慢。許多網站使用 <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> 來加速其內容並提供更好的體驗。這些 CDN 通常是對等良好的，並且嵌入在最後一英里網路中。但通過安全 Web 閘道的流量遵循正向代理路徑：使用者連接到代理，代理連接到使用者嘗試存取的網站。如果該代理不像目標網站那樣具有良好的對等關係，則相比使用者直接前往網站本身，使用者流量需要傳輸更遠的距離來到達代理，這會導致一個彎道，如下圖所示：</p>
+<p>連接良好的代理可確保使用者流量傳輸的距離較短，從而盡可能快。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="658" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=715&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=640&amp;h=589&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=715&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=750&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=828&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=1080&amp;h=994&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=1280&amp;h=1178&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=1430&amp;h=1316&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1866 Embedded Image - CFmOLt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRE20BFE6DAPKPX1876E.png&amp;w=1358&amp;h=1250&amp;f=webp" data-lightbox-width="1358" data-lightbox-height="1250" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="658" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>為了比較安全 Web 閘道產品，我們將 Cloudflare Gateway 和 WARP 用戶端與 Zscaler、Netskope 和 Palo Alto 進行比較，這些產品都具有執行相同功能的產品。Cloudflare 使用者受益於 Gateway 和 Cloudflare 的網路，該網路深入嵌入到靠近使用者的最後一英里網路中，與超過 12,000 個網路進行對等互連。這種提升的連線性得到了證明，因為 Cloudflare Gateway 在 42% 的測試場景中是最快的網路：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-l2oz{font-weight:bold;text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="443" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=640&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=715&amp;h=443&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=750&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=828&amp;h=513&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=1080&amp;h=669&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=1280&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=1430&amp;h=886&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1866 Embedded Image - 8g9MLk" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45GAGREYQW7YG4G763KE5S.png&amp;w=1192&amp;h=738&amp;f=webp" data-lightbox-width="1192" data-lightbox-height="738" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="443" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k18" class="html-block">
+	<style>
+		#html-block-k18 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k18 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k18 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k18 .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k18 .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k18 .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k18 .tg .tg-l2oz {
+			font-weight: bold;
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k18 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Number of testing scenarios where each provider is fastest for 95th percentile HTTP Response time (higher is better)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Provider</span></td>
+				<td class="tg-l2oz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Scenarios where this provider is fastest</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">48</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">42</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>每個提供者在第 95 個百分位的 HTTP 回應時間上最快的測試場景數量（越高越好）</p>
+<div id="html-block-k1b" class="html-block">
+	<style>
+		#html-block-k1b .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k1b .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1b .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1b .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1b .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k1b .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1b .tg .tg-l2oz {
+			font-weight: bold;
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k1b .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95th percentile HTTP response across all tests</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Provider</span></td>
+				<td class="tg-l2oz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95th percentile response (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">515</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">595</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">550</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">529</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>提供者</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="535" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=715&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=640&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=715&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=750&amp;h=561&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=828&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=1080&amp;h=808&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=1280&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=1430&amp;h=1070&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1866 Embedded Image - A7JJn1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RR2KXXMFVMMEW5CRGPVD.png&amp;w=1342&amp;h=1004&amp;f=webp" data-lightbox-width="1342" data-lightbox-height="1004" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="535" class="pt-portable-image-media"></div>
+</figure>
+<p>該提供者速度最快的場景數</p>
+<p>Cloudflare</p>
+<p>48</p>
+<div id="html-block-k1l" class="html-block">
+	<style>
+		#html-block-k1l .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k1l .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1l .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1l .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1l .tg .tg-kziw {
+			background-color: #F9CB9C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1l .tg .tg-e0oo {
+			background-color: #EA9999;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1l .tg .tg-f41v {
+			background-color: #D9EAD3;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1l .tg .tg-4dna {
+			background-color: #B6D7A8;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1l .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1l .tg .tg-skn0 {
+			background-color: #A4C2F4;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Endpoints</span></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+				<th class="tg-0lax"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SWG Regions</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Shopify</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Walmart</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zendesk</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ServiceNow</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Azure Site</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Slack</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zoom</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Box</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M365</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GitHub</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bitbucket</span></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">East US</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">West US</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">South Central US</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Brazil South</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">UK South</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Central India</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Southeast Asia</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Canada Central</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Switzerland North</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Australia East</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">UAE Dubai</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+			</tr>
+			<tr>
+				<td class="tg-f41v"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">South Africa North</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-e0oo"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Zscaler</p>
+<p>14</p>
+<p>Netskope</p>
+<p>10</p>
+<p>Palo Alto Networks</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="197" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=715&amp;h=197&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=640&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=715&amp;h=197&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=750&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=828&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=1080&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=1280&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=1430&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1866 Embedded Image - kWkWub" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4851P0P5J7AKFHMTKA63CS.png&amp;w=1920&amp;h=529&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="529" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="197" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k1x" class="html-block">
+	<style>
+		#html-block-k1x .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k1x .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1x .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1x .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1x .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k1x .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k1x .tg .tg-l2oz {
+			font-weight: bold;
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k1x .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zero Trust Network Access P95 HTTP Response times</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Provider</span></td>
+				<td class="tg-l2oz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">P95 HTTP response (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1252</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2388</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2974</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1471</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>42</p>
+<p>這些資料表明，我們能夠比所有競爭對手更快地從更多地點存取更多網站。為了測量這一點，我們查看第 95 個百分位的 HTTP 回應時間：使用者通過代理、讓代理向網際網路上的網站發出請求、最後傳回回應需要多長時間。這類測量非常重要，因為它準確地表現了使用者看到的情況。當我們查看所有測試的第 95 個百分位時，我們發現 Cloudflare 比 Palo Alto Networks 快 2.5%，比 Zscaler 快 13%，比 Netskope 快 6.5%。</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-l2oz{font-weight:bold;text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>所有測試中第 95 個百分位的 HTTP 回應</p>
+<p>提供者</p>
+<p>第 95 個百分位回應（毫秒）</p>
+<div id="html-block-k2a" class="html-block">
+	<style>
+		#html-block-k2a .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k2a .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2a .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2a .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2a .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2a .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k2a .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-baqh" colspan="4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95th percentile HTTP Response times (ms) for applications hosted in Ashburn, VA</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AWS East US</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Total (ms)</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">New Sessions (ms)</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Existing Sessions (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2849</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1749</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1353</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5340</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2953</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2491</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6513</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3748</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2897</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Azure East US</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1692</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">989</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1169</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5403</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2951</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2412</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6601</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3805</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2964</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GCP East US</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2811</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1615</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1320</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6694</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3819</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3023</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2258</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">894</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1464</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Cloudflare</p>
+<p>515</p>
+<p>Zscaler</p>
+<div id="html-block-k2h" class="html-block">
+	<style>
+		#html-block-k2h .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k2h .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2h .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2h .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2h .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2h .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k2h .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-baqh" colspan="4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">95th percentile HTTP Response times (ms) for applications hosted in Singapore</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AWS Singapore</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Total (ms)</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">New Sessions (ms)</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Existing Sessions (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2748</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1568</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1310</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5349</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3033</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2500</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6402</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3598</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2990</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Azure Singapore</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1831</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1022</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1181</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5699</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3037</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2577</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6722</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3834</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3040</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GCP</span><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent"> </span><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Singapore</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2820</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1641</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1355</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5499</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3037</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2412</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6525</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3713</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2992</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2293</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">922</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1476</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>595</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="356" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=640&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=715&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=750&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=828&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=1080&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=1280&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=1430&amp;h=712&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1866 Embedded Image - exggPS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QM08W28F2JYGR5VHSEZW.png&amp;w=1920&amp;h=956&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="956" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="356" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k2l" class="html-block">
+	<style>
+		#html-block-k2l .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k2l .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2l .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2l .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2l .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k2l .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2l .tg .tg-l2oz {
+			font-weight: bold;
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k2l .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-amwm" colspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zero Trust Network Access 95th percentile HTTP Response times for warm connections with testing locations in North America</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Provider</span></td>
+				<td class="tg-l2oz"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">P95 HTTP response (ms)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">810</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1290</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netskope</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1351</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Palo Alto Networks</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">871</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Netskope</p>
+<div id="html-block-k2o" class="html-block">
+	<style>
+		#html-block-k2o .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k2o .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2o .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2o .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-kziw {
+			background-color: #F9CB9C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-4dna {
+			background-color: #B6D7A8;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-7yig {
+			background-color: #FFF;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2o .tg .tg-skn0 {
+			background-color: #A4C2F4;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-7yig" colspan="4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Fastest ZTNA provider in each cloud provider and region by 95th percentile HTTP Response</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-ktyi"></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AWS</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Azure</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GCP</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Australia East</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Brazil South</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Canada Central</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Central India</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">East US</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">South Africa North</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">South Central US</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-skn0"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Zscaler</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Southeast Asia</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Switzerland North</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">UAE Dubai</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">UK South</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-4dna"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">netskope</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">West US</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>550</p>
+<p>Palo Alto Networks</p>
+<p>529</p>
+<p>Cloudflare 在此勝出，因為 Cloudflare 卓越的對等互連使我們能夠在其他人無法成功的地方取得成功。我們能夠在全球難以到達的地方建立本地對等互連，這為我們帶來了優勢。例如，看看 Cloudflare 與澳洲其他提供者的表現對比，我們比第二快的提供者快了 30%：</p>
+<p>Cloudflare 在世界各國建立了良好的對等互連關係：在澳大利亞，我們與所有主要的澳大利亞網際網路提供者都建立了本地對等互連關係，因此我們能夠為世界各地的許多使用者提供快速的體驗。在全球範圍內，我們與超過 12,000 個網路建立了對等互連，盡可能靠近終端使用者，以縮短請求在公用網際網路上花費的時間。這項工作之前使我們能夠快速向使用者交付內容，但在 Zero Trust 世界中，它縮短了使用者到達其 SWG 的路徑，這意味著他們可以快速獲得所需的服務。</p>
+<div id="html-block-k2z" class="html-block">
+	<style>
+		#html-block-k2z .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k2z .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2z .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2z .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2z .tg .tg-kziw {
+			background-color: #F9CB9C;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2z .tg .tg-7yig {
+			background-color: #FFF;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2z .tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k2z .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-7yig" colspan="4"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Fastest RBI provider in each cloud provider and region by 95th percentile HTTP Response</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-ktyi"></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AWS</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Azure</span></td>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GCP</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Australia East</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Brazil South</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Canada Central</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Central India</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">East US</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">South Africa North</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">South Central US</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Southeast Asia</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Switzerland North</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">UAE Dubai</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">UK South</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">West US</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-kziw"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>以前，<a href="https://blog.cloudflare.com/zh-tw/network-performance-update-cio-edition-zh-tw">當我們執行這些測試時</a>，我們僅測試了單一 Azure 區域到五個網站。Catchpoint 等現有測試框架不適合此任務，因為效能測試要求您在測試端點上執行 SWG 用戶端。我們還需要確保所有測試都在相同位置的類似機器上執行，以盡可能好地測量效能。這使我們能夠測量有兩個測試環境在其中執行的同一位置的端對端回應。</p>
+<p>在本輪評估的測試設定中，我們將四台虛擬機器並排放置在 12 個雲端區域中：一台執行連接到我們閘道的 Cloudflare WARP，一台執行 ZIA，一台執行 Netskope，一台執行 Palo Alto Networks。這些虛擬機器每五分鐘向下面提及的 11 個不同的網站發出請求，並記錄每個請求所需的 HTTP 瀏覽器計時。根據這些資料，我們能夠得到一個面向使用者的效能檢視，這是很有意義的。以下是我們測試的位置、我們測試的網站以及哪個提供者更快的完整矩陣：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-kziw{background-color:#F9CB9C;text-align:left;vertical-align:top} .tg .tg-e0oo{background-color:#EA9999;text-align:left;vertical-align:top} .tg .tg-f41v{background-color:#D9EAD3;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-4dna{background-color:#B6D7A8;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-skn0{background-color:#A4C2F4;text-align:left;vertical-align:top}</p>
+<p>端點</p>
+<p>SWG 區域</p>
+<p>Shopify</p>
+<p>Walmart</p>
+<p>Zendesk</p>
+<p>ServiceNow</p>
+<p>Azure 網站</p>
+<p>Slack</p>
+<p>Zoom</p>
+<p>Box</p>
+<p>M365</p>
+<p>GitHub</p>
+<p>Bitbucket</p>
+<p>美國東部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>美國西部</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>美國中南部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>巴西南部</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Zscaler</p>
+<p>Zscaler</p>
+<p>Zscaler</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>英國南部</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>印度中部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>東南亞</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>加拿大中部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Zscaler</p>
+<p>Cloudflare</p>
+<p>Zscaler</p>
+<p>瑞士北部</p>
+<p>netskope</p>
+<p>Zscaler</p>
+<p>Zscaler</p>
+<p>Cloudflare</p>
+<p>netskope</p>
+<p>netskope</p>
+<p>netskope</p>
+<p>netskope</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>netskope</p>
+<p>澳洲東部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>netskope</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>阿聯酋杜拜</p>
+<p>Zscaler</p>
+<p>Zscaler</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Zscaler</p>
+<p>netskope</p>
+<p>Palo Alto Networks</p>
+<p>Zscaler</p>
+<p>Zscaler</p>
+<p>netskope</p>
+<p>netskope</p>
+<p>南非北部</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Zscaler</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>Zscaler</p>
+<p>Palo Alto Networks</p>
+<p>Palo Alto Networks</p>
+<p>空白單元格表示對該特定網站的測試未報告準確的結果或在超過 50% 的測試期間經歷了失敗。根據這些資料，Cloudflare 通常更快，但我們的速度沒有我們希望的那麼快。我們仍然有一些領域需要改進，特別是在南非、阿聯酋和巴西。到 9 月的生日週，我們希望成為每個地區所有網站中最快的網站，這將使我們的數字從在 54% 的測試中最快增加到在 79% 的測試中最快。</p>
+<p>總而言之，Cloudflare 的 Gateway 仍然是網際網路上最快的 SWG。但 Zero Trust 不僅與 SWG 有關。讓我們來談談 Cloudflare 在 Zero Trust 網路存取場景中的表現如何。</p>
+<h3>即時 (Zero Trust) 存取</h3>
+<p><a href="https://www.cloudflare.com/learning/access-management/what-is-access-control" target="_blank" rel="noopener noreferrer">存取控制</a>需要對使用者來說順暢且透明：對 Zero Trust 解決方案的最佳讚美就是員工幾乎不會注意到它的存在。Cloudflare Access 等服務透過公用網際網路保護應用程式，允許基於角色的驗證存取，而不是依賴 VPN 之類的東西來限制和保護應用程式。這種形式的存取管理更安全，但透過高效能的 ZTNA 服務，它甚至可以更快。</p>
+<p>Cloudflare 在這一領域的表現優於我們的競爭對手，比 Zscaler 快 46%，比 Netskope 快 56%，比 Palo Alto Networks 快 10%：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-l2oz{font-weight:bold;text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>Zero Trust 網路存取 P95 HTTP 回應時間</p>
+<p>提供者</p>
+<p>P95 HTTP 回應（毫秒）</p>
+<p>Cloudflare</p>
+<p>1252</p>
+<p>Zscaler</p>
+<p>2388</p>
+<p>Netskope</p>
+<p>2974</p>
+<p>Palo Alto Networks</p>
+<p>1471</p>
+<p>為此測試，我們在 12 個不同的位置中建立了託管在三個不同雲端平台（AWS、GCP 和 Azure）上的應用程式。但需要注意的是，Palo Alto Networks 是個例外。由於設定測試時遇到的困難，我們只能使用託管在一個雲端中的應用程式，從兩個區域進行測試：美國東部和新加坡。</p>
+<p>對於每個應用程式，我們從 Catchpoint 建立了測試，從全球 400 個位置存取該應用程式。每個 Catchpoint 節點都嘗試執行兩個動作：</p>
+<ul>
+	<li>新工作階段：登入應用程式並接收驗證權杖</li>
+	<li>現有工作階段：重新整理頁面並透過先前獲得的憑證登入</li>
+</ul>
+<p>我們要單獨測量這些情境，因為當我們查看第 95 百分位值時，如果將新工作階段和現有工作階段組合在一起，則幾乎總是看到新工作階段。但為了完整起見，我們也將顯示新工作階段和現有工作階段組合的第 95 個百分位延遲。</p>
+<p>Cloudflare 在美國東部和新加坡的速度更快，但讓我們聚焦幾個需要深入研究的區域。首先是一個各競爭對手的資源同等緊密互連的區域：美國東部，具體來說是維吉尼亞州阿什本。</p>
+<p>在維吉尼亞州阿什本，Cloudflare 的 ZTNA P95 HTTP 回應時間輕鬆擊敗了 Zscaler 和 Netskope：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-baqh{text-align:center;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>維吉尼亞州阿什本託管應用程式的 P95 HTTP 回應時間（毫秒）</p>
+<p>AWS 美國東部</p>
+<p>總計（毫秒）</p>
+<p>新工作階段（毫秒）</p>
+<p>現有工作階段（毫秒）</p>
+<p>Cloudflare</p>
+<p>2849</p>
+<p>1749</p>
+<p>1353</p>
+<p>Zscaler</p>
+<p>5340</p>
+<p>2953</p>
+<p>2491</p>
+<p>Netskope</p>
+<p>6513</p>
+<p>3748</p>
+<p>2897</p>
+<p>Palo Alto Networks</p>
+<p>Azure 美國東部</p>
+<p>Cloudflare</p>
+<p>1692</p>
+<p>989</p>
+<p>1169</p>
+<p>Zscaler</p>
+<p>5403</p>
+<p>2951</p>
+<p>2412</p>
+<p>Netskope</p>
+<p>6601</p>
+<p>3805</p>
+<p>2964</p>
+<p>Palo Alto Networks</p>
+<p>GCP 美國東部</p>
+<p>Cloudflare</p>
+<p>2811</p>
+<p>1615</p>
+<p>1320</p>
+<p>Zscaler</p>
+<p>Netskope</p>
+<p>6694</p>
+<p>3819</p>
+<p>3023</p>
+<p>Palo Alto Networks</p>
+<p>2258</p>
+<p>894</p>
+<p>1464</p>
+<p>您可能會注意到，Palo Alto Networks 在現有工作階段（及因此在 P95 總體時間）方面似乎領先於 Cloudflare。但這些數字具有誤導性，因為 Palo Alto Networks 的 ZTNA 行為與我們、Zscaler 或 Netskope 的行為略有不同。當他們執行新工作階段時，會執行完整的連線攔截並從其處理器傳回回應，而不是將使用者引導到其嘗試存取的應用程式的登入頁面。</p>
+<p>這意味著 Palo Alto Networks 的新工作階段回應時間實際上並不能測量我們所需求的端對端延遲。因此，他們的新工作階段延遲和總工作階段延遲數據具有誤導性，這意味著我們只能將自己與他們的現有工作階段延遲進行有意義的比較。現有工作階段方面，當 Palo Alto Networks 充當傳遞者時，Cloudflare 仍然領先 10%。</p>
+<p>在新加坡也是如此，在現有工作階段方面，Cloudflare 比 Zcaler 和 Netskope 快 50%，也比 Palo Alto Networks 快 10%：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-baqh{text-align:center;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>新加坡託管應用程式的 P95 HTTP 回應時間（毫秒）</p>
+<p>AWS 新加坡</p>
+<p>總計（毫秒）</p>
+<p>新工作階段（毫秒）</p>
+<p>現有工作階段（毫秒）</p>
+<p>Cloudflare</p>
+<p>2748</p>
+<p>1568</p>
+<p>1310</p>
+<p>Zscaler</p>
+<p>5349</p>
+<p>3033</p>
+<p>2500</p>
+<p>Netskope</p>
+<p>6402</p>
+<p>3598</p>
+<p>2990</p>
+<p>Palo Alto Networks</p>
+<p>Azure 新加坡</p>
+<p>Cloudflare</p>
+<p>1831</p>
+<p>1022</p>
+<p>1181</p>
+<p>Zscaler</p>
+<p>5699</p>
+<p>3037</p>
+<p>2577</p>
+<p>Netskope</p>
+<p>6722</p>
+<p>3834</p>
+<p>3040</p>
+<p>Palo Alto Networks</p>
+<p>GCP 新加坡</p>
+<p>Cloudflare</p>
+<p>2820</p>
+<p>1641</p>
+<p>1355</p>
+<p>Zscaler</p>
+<p>5499</p>
+<p>3037</p>
+<p>2412</p>
+<p>Netskope</p>
+<p>6525</p>
+<p>3713</p>
+<p>2992</p>
+<p>Palo Alto Networks</p>
+<p>2293</p>
+<p>922</p>
+<p>1476</p>
+<p>對這項資料的一種批評可能是，我們將所有 Catchpoint 節點的時間彙總於 P95，以及我們沒有查看與應用程式相同地區的 Catchpoint 節點的 P95。我們也研究了這一點，Cloudflare 的 ZTNA 效能仍然更好。僅從基於北美的 Catchpoint 節點來看，Cloudflare 效能比 Netskope 快 50%，比 Zscaler 快 40%，並在現有連線的 P95 比 Palo Alto Networks 快 10%：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top} .tg .tg-l2oz{font-weight:bold;text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>北美測試位置 Zero Trust 網路存取現有工作階段的 P95 HTTP 回應時間</p>
+<p>提供者</p>
+<p>P95 HTTP 回應（毫秒）</p>
+<p>Cloudflare</p>
+<p>810</p>
+<p>Zscaler</p>
+<p>1290</p>
+<p>Netskope</p>
+<p>1351</p>
+<p>Palo Alto Networks</p>
+<p>871</p>
+<p>最後，我們希望展示 Cloudflare 的 ZTNA 在每個地區每個雲端平台上的效能表現。下圖顯示了雲端提供者和測試區域的矩陣：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-kziw{background-color:#F9CB9C;text-align:left;vertical-align:top} .tg .tg-4dna{background-color:#B6D7A8;text-align:left;vertical-align:top} .tg .tg-7yig{background-color:#FFF;text-align:center;vertical-align:top} .tg .tg-ktyi{background-color:#FFF;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} .tg .tg-skn0{background-color:#A4C2F4;text-align:left;vertical-align:top}</p>
+<p>每個雲端提供者和區域中最快的 ZTNA 提供者（以 P95 HTTP 回應計算）</p>
+<p>AWS</p>
+<p>Azure</p>
+<p>GCP</p>
+<p>澳洲東部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>巴西南部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>不適用</p>
+<p>加拿大中部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>印度中部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>美國東部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>南非北部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>不適用</p>
+<p>美國中南部</p>
+<p>不適用</p>
+<p>Cloudflare</p>
+<p>Zscaler</p>
+<p>東南亞</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>瑞士北部</p>
+<p>不適用</p>
+<p>不適用</p>
+<p>Cloudflare</p>
+<p>阿聯酋杜拜</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>英國南部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>netskope</p>
+<p>美國西部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>不適用</p>
+<p>部分雲端中的部分虛擬機器發生故障，未報告準確的資料。但在我們擁有準確資料的 30 個可用雲端區域中，Cloudflare 是其中 28 個區域中最快的 ZT 提供者，這意味著我們在 93% 的測試雲端區域中速度更快。</p>
+<p>總而言之，在 Zero Trust 網路存取方面，Cloudflare 也提供了最佳體驗。那麼，在<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">遠端瀏覽器隔離 (RBI)</a> 中情況又如何呢？</p>
+<h3>遠端瀏覽器隔離：託管在雲端的安全瀏覽器</h3>
+<p>遠端瀏覽器隔離產品對公共網際網路有很強的依賴性：如果您與瀏覽器隔離產品的連線不是太好，則您的瀏覽器體驗就會感覺有些怪異，並且非常緩慢。遠端瀏覽器隔離是否會為使用者帶來順暢的體驗，很大程度上要取決於效能：如果一切都像正常情況下一樣快速，則使用者甚至都不會注意到自己正在使用瀏覽器隔離。</p>
+<p>在本次測試中，我們再次將 Cloudflare 與 Zscaler 進行比較。雖然 Netskope 確實有 RBI 產品，但我們無法對其進行測試，因為它需要 SWG 用戶端，這意味著我們無法像測試 Cloudflare 和 Zscaler 時那樣獲得測試位置的完全保真度。我們的測試表明，對於遠端瀏覽場景，Cloudflare 比 Zcaler 快 64%。以下表格顯示我們 RBI 測試中各雲端平台各地區的最快提供者：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-kziw{background-color:#F9CB9C;text-align:left;vertical-align:top} .tg .tg-7yig{background-color:#FFF;text-align:center;vertical-align:top} .tg .tg-ktyi{background-color:#FFF;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>每個雲端提供者和區域中最快的 RBI 提供者（以 P95 HTTP 回應計算）</p>
+<p>AWS</p>
+<p>Azure</p>
+<p>GCP</p>
+<p>澳洲東部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>巴西南部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>加拿大中部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>印度中部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>美國東部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>南非北部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>美國中南部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>東南亞</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>瑞士北部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>阿聯酋杜拜</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>英國南部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>美國西部</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>Cloudflare</p>
+<p>此圖表顯示了從 Cloudflare 和 Zscaler 對託管在 12 個不同位置的三個不同雲端平台的應用程式執行的所有測試的結果，這些測試來自與 ZTNA 測試相同的 400 個 Catchpoint 節點。在每種情況下，Cloudflare 都更快。事實上，對任何 Cloudflare 保護端點進行的測試所獲得的 P95 HTTP 回應時間都低於 2105 毫秒，而對任何 Zscaler 保護端點進行的測試所獲得的 P95 HTTP 回應時間都高於 5000 毫秒。</p>
+<p>為了取得這些資料，我們利用相同的虛擬機器來託管透過 RBI 服務存取的應用程式。每個 Catchpoint 節點都會嘗試透過 RBI 登入應用程式，接收驗證憑證，然後嘗試透過傳遞憑證來存取頁面。與 ZTNA 一樣，我們也查看新工作階段和現有工作階段，Cloudflare 在新工作階段和現有工作階段場景中都速度更快。</p>
+<h3>必须（更）快</h3>
+<p>我們的 Zero Trust 客戶希望我們速度快，不是因為他們想要最快的網際網路存取，而是因為他們想要確保其員工生產力不會因切換到 Cloudflare 而受到影響。這並不意味著對我們來說最重要的是比我們的競爭對手更快，儘管我們確實更快。對我們來說，最重要的是改善我們的體驗，以便我們的使用者知道我們認真對待他們的體驗，進而感到放心。當我們在9 月生日週公佈新的數據並顯示我們比之前更快時，這並不意味著我們只是提高了數據：而是意味著我們不斷評估和改進我們的服務，以便為客戶提供最佳體驗。我們更關心的是，讓我們位於阿聯酋的客戶在使用 Office365 時獲得更佳體驗，而不是在測試中擊敗競爭對手。我們展示這些數據是為了向您表明：我們認真對待效能，並致力於為您提供最佳體驗，無論您身在何處。</p>

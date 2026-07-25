@@ -1,0 +1,121 @@
+<p>Op 5 december 2025 om 8:47 uur UTC (alle tijden in deze blog zijn UTC) ontstonden er ernstige storingen in een deel van het Cloudflare-netwerk. Het incident was om 9:12 uur verholpen (totale impact: ongeveer 25 minuten), toen alle diensten volledig waren hersteld.</p>
+<p>Een deel van onze klanten werd door deze storing geraakt, goed voor ongeveer 28% van al het HTTP-verkeer dat door Cloudflare werd verwerkt. Zoals hieronder staat uitgelegd, moest er sprake zijn van een combinatie van verschillende factoren voordat individuele klanten last kregen van deze storing.</p>
+<p>Het probleem werd niet direct of indirect veroorzaakt door een cyberaanval op de systemen van Cloudflare of door kwaadwillige activiteiten van welke aard dan ook. De storing was echter het gevolg van wijzigingen die we aan onze body-parsinglogica hebben aangebracht toen we bezig waren om een sectorbrede kwetsbaarheid die deze week in React Server Components <a href="https://blog.cloudflare.com/waf-rules-react-vulnerability" target="_blank" rel="noopener noreferrer"><u>werd bekendgemaakt</u></a>, te detecteren en te beperken.</p>
+<p>Elke storing van onze systemen is onacceptabel en we weten dat we het internet opnieuw in de steek hebben gelaten na het incident van 18 november. Volgende week publiceren we meer informatie over de maatregelen die we momenteel treffen om dit soort incidenten te voorkomen.</p>
+<h3>Wat is er gebeurd?</h3>
+<p>De onderstaande grafiek toont de HTTP 500-fouten die tijdens het incident door ons netwerk werden geserveerd (rode lijn onderaan) vergeleken met het totale Cloudflare-verkeer dat geen last van de storing had (groene lijn bovenaan).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=640&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=828&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1280&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1430&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="500 error codes served by Cloudflare’s network during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1920&amp;h=917&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="917" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="342" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>De Web Application Firewall (WAF) van Cloudflare biedt klanten bescherming tegen schadelijke payloads, waardoor die gedetecteerd en geblokkeerd kunnen worden. Hiervoor buffert de proxy van Cloudflare de inhoud van het HTTP-verzoek in het geheugen voor analysedoeleinden. Vóór vandaag was de buffergrootte ingesteld op 128 KB.</p>
+<p>Als onderdeel van ons voortdurende werk om klanten die React gebruiken tegen de kritieke kwetsbaarheid <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182" target="_blank" rel="noopener noreferrer"><u>CVE-2025-55182</u></a> te beschermen, zijn we begonnen met het vergroten van de buffer naar 1 MB, de standaardlimiet die door Next.js-applicaties wordt geaccepteerd. Hiermee willen we zoveel mogelijk klanten beschermen.</p>
+<p>Deze eerste wijziging werd geleidelijk uitgerold. Tijdens de uitrol merkten we dat onze interne WAF-testtool de grotere buffergrootte niet ondersteunde. Aangezien deze interne testtool op dat moment niet nodig was en geen effect had op het klantverkeer, hebben we een tweede wijziging doorgevoerd om de tool uit te schakelen.</p>
+<p>Deze tweede wijziging, waarbij we onze WAF-testtool uitschakelden, werd toegepast via ons wereldwijde configuratiesysteem. Dit systeem voert geen geleidelijke uitrol uit, maar zorgt binnen enkele seconden voor de toepassing van de wijzigingen in het gehele netwerk. Dit systeem wordt momenteel geëvalueerd <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>na de storing die we onlangs op 18 november hebben ondervonden</u></a>.&nbsp;</p>
+<p>Helaas heeft de tweede wijziging in onze FL1-versie van onze proxy, waarbij we onze WAF-regeltesttool uitschakelden, onder bepaalde omstandigheden een foutstatus veroorzaakt die resulteerde in 500 HTTP-foutcodes die vanuit ons netwerk werden verzonden.</p>
+<p>Zodra de wijziging zich door ons netwerk verspreidde, stuitte de code-uitvoering in onze FL1-proxy op een bug in onze regelmodule, wat de volgende Lua-foutmelding veroorzaakte: </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[lua] </span><span class="sk-6f42c1-ffc799">Failed</span><span class="sk-24292e-fff"> to run module rulesets callback late_routing</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">usr</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">local</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">init</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">314</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> attempt to index field </span><span class="sk-032f62-99ffe4">'execute'</span><span class="sk-24292e-fff"> (a nil value)</span></span></code></pre>
+</div>
+<p>en dit was de reden voor de veroorzaakte HTTP 500-fouten.</p>
+<p>Het probleem werd kort na de toepassing van de wijziging vastgesteld en om 9:12 uur teruggedraaid, waarna al het verkeer weer probleemloos werd verwerkt.</p>
+<p>Klanten met webassets die via onze oudere FL1-proxy werden bediend <strong>én</strong> de Cloudflare Managed Ruleset gebruikten, werden door deze storing getroffen. Bij al het HTTP-verkeer voor websites in deze status werd een HTTP 500-fout teruggezonden, met enkele kleine uitzonderingen voor testeindpunten zoals <code>/cdn-cgi/trace</code>.</p>
+<p>Klanten zonder de bovenstaande configuratie ondervonden geen last van de storing. Ook het klantenverkeer dat via ons China network verliep had hier geen last van.</p>
+<h3>De runtime-fout</h3>
+<p>Het regelssysteem van Cloudflare bestaat uit een verzameling regels die elke aanvraag naar ons systeem beoordeelt. Een regel bestaat uit een filter dat specifiek verkeer selecteert en een actie die een effect op dat verkeer heeft. Voorbeelden van deze acties zijn '<code>blokkeren</code>', '<code>loggen</code>' of '<code>overslaan</code>'. Een ander soort actie is '<code>uitvoeren</code>', en die wordt gebruikt om de beoordeling van een andere regelset te activeren.</p>
+<p>Ons interne logsysteem gebruikt deze functie om nieuwe regels te beoordelen voordat die openbaar gemaakt worden. Een regelset op het hoogste niveau voert een andere regelset uit die testregels bevat. Wij wilden juist deze testregels uitschakelen.</p>
+<p>We beschikken over een killswitch-subsysteem als onderdeel van het regelsetsysteem, waarmee we alle regels die zich misdragen snel kunnen uitschakelen. Dit killswitch-systeem ontvangt informatie van ons wereldwijde configuratiesysteem dat hierboven werd genoemd. We hebben dit killswitch-systeem in het verleden al een aantal keer gebruikt om incidenten te beperken en hebben een duidelijk gedefinieerde werkprocedure, die ook bij dit incident werd toegepast.</p>
+<p>We hebben echter nooit eerder een killswitch gebruikt voor een regel met de actie '<code>uitvoeren</code>'. Toen de killswitch werd geactiveerd, sloeg de code inderdaad de beoordeling van de actie 'uitvoeren' over, waardoor de subregelset waarnaar de killswitch verwees dus niet werd geëvalueerd. Er is echter een fout opgetreden tijdens de verwerking van de algehele resultaten van de beoordeling van de regelset:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">action </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "execute"</span><span class="sk-24292e-fff"> then</span></span>
+<span class="line"><span class="sk-24292e-fff">  rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ruleset_results[</span><span class="sk-6f42c1-ffc799">tonumber</span><span class="sk-24292e-fff">(rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results_index)]</span></span>
+<span class="line"><span class="sk-24292e-fff">end</span></span></code></pre>
+</div>
+<p>Deze code verwacht dat, als de regelset de action='execute' bevat, het 'rule_result.execute'- object bestaat. Aangezien de regel echter was overgeslagen, bestond het 'rule_result.execute'-object niet en retourneerde Lua een foutmelding, omdat er een waarde in een nil-waarde werd gezocht.</p>
+<p>Het gaat hier om een eenvoudige fout in de code, die al jarenlang onopgemerkt was. Dit soort codefouten wordt voorkomen door een taal met een sterk typesysteem te gebruiken. Na de vervanging van deze code in onze nieuwe FL2-proxy, die in Rust is geschreven, trad de fout niet langer op.</p>
+<h3>Hoe zit het met de wijzigingen die na het incident van 18 november 2025 zijn doorgevoerd?</h3>
+<p>Twee weken geleden, op 18 november 2025, hebben we een andere wijziging doorgevoerd die een soortgelijk, <a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>langer durend incident</u></a> veroorzaakte. In beide gevallen werd de oplossing voor een algemeen beveiligingsprobleem door het gehele netwerk verspreid, wat leidde tot fouten bij vrijwel al onze klanten.</p>
+<p>Na dit incident hebben we rechtstreeks met honderden klanten gesproken en onze plannen voor het doorvoeren van wijzigingen met hen gedeeld om te voorkomen dat individuele updates voortaan zulke grote gevolgen kunnen hebben. Wij zijn ervan overtuigd dat deze wijzigingen het incident van vandaag hadden kunnen voorkomen, maar helaas is de implementatie daarvan nog niet helemaal afgerond.</p>
+<p>Wij weten dat dat teleurstellend is. Het is en blijft onze prioriteit binnen de gehele organisatie. Met name de onderstaande projecten zullen de impact van dergelijke veranderingen beperken:</p>
+<ul>
+	<li><strong>Verbeterde uitrol en versiebeheer</strong>: op dezelfde manier waarop we de software langzaam en met strikte gezondheidsvalidatie uitrollen, moet de data die gebruikt wordt voor een snelle dreigingsrespons en algemene configuraties dezelfde impact beperkende en veiligheidsfuncties hebben. Dit omvat onder andere een gezondheidsvalidatie en snelle terugdraaifuncties.</li>
+	<li><strong>Gestroomlijnde noodprocedures:</strong> om ervoor te zorgen dat essentiële werkzaamheden nog steeds kunnen worden uitgevoerd ook als zich bijkomende storingen voordoen. Dit geldt voor de interne services en voor alle standaard interactiemethoden met het Cloudflare-controlepaneel die door alle Cloudflare-klanten worden gebruikt.</li>
+	<li><strong>Afhandeling van 'Fail-Open'-fouten: </strong>als onderdeel van onze inspanningen om de veerkracht te vergroten, vervangen we de onjuist toegepaste hard-fail-logica in alle kritieke Cloudflare-dataplane-componenten. Als een configuratiebestand beschadigd of buiten bereik is (bijv. als de functielimieten worden overschreden), registreert het systeem de fout en wordt standaard een bekende goede status gebruikt of wordt het verkeer zonder beoordeling doorgelaten, in plaats van HTTP-verkeer te weigeren. Sommige diensten bieden de klant waarschijnlijk de optie voor 'fail open' of 'fail closed' in bepaalde scenario's. Dit omvat functies voor driftpreventie om te waarborgen dat dit continu wordt toegepast.</li>
+</ul>
+<p>Tegen eind volgende week zullen we een uitgebreid overzicht van alle lopende resilience-projecten publiceren, inclusief de bovenstaande. Terwijl deze werkzaamheden worden uitgevoerd, vergrendelen we alle wijzigingen van ons netwerk om ervoor te zorgen dat we betere systemen hebben om problemen te beperken en handelingen terug te draaien voordat we opnieuw beginnen.</p>
+<p>Dergelijke incidenten, en de snelheid waarmee ze op elkaar volgen, zijn voor een netwerk als het onze onacceptabel. Namens het hele Cloudflare-team willen we onze excuses aanbieden voor de impact en de pijn die deze storing opnieuw heeft veroorzaakt bij onze klanten en op het internet in het algemeen.</p>
+<h3>Tijdlijn</h3>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Tijd (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Status</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Beschrijving</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:47</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Start van het INCIDENT</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Configuratiewijziging toegepast en verspreid door het netwerk</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:48</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Grootste impact</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wijziging volledig verspreid</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:50</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Officieel INCIDENT</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Geautomatiseerde waarschuwingen</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>09:11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wijziging teruggedraaid</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Configuratiewijziging teruggedraaid en start van de verspreiding</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>09:12</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Einde van het INCIDENT</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Wijziging volledig teruggedraaid, al het verkeer hersteld</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

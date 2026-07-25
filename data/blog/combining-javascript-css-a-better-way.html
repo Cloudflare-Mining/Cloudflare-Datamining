@@ -1,79 +1,27 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1sHOUZxpPxK1WMhqUQa9pB/e8eae112553bf8de0681cd57de7a0840/combining-javascript-css-a-better-way.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>The conventional wisdom in web performance circles is that you want to <a href="http://developer.yahoo.com/performance/rules.html#num_http" target="_blank" rel="noopener noreferrer">combine multiple javascript and CSS files</a>. The reason for this is that there is significant overhead every time you setup a new HTTP request. More requests, more wasted overhead.</p>
-	<div class="flex anchor relative">
-		<h3 id="why-minimize-http-requests">Why Minimize HTTP Requests?</h3>
-		<a href="https://blog.cloudflare.com/#why-minimize-http-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This problem is magnified on mobile devices. Your smart phone can stream video from YouTube without stuttering, because it is a single HTTP connection, but it often falters on seemingly simple web pages, because they are made up of a number of separate objects that need to all be loaded through their own HTTP requests. Mobile networks have reasonable bandwidth once a connection is established, but each new connection has a probability of failing that can block page loading.</p>
-	<p>Combining Javascript and CSS seems like a sensible solution, but it runs into multiple problems:</p>
-	<ul>
-		<li>
-			<p>Combined Javascript or CSS can clobber the namespace of other scripts and create unpredictable bugs.</p>
-		</li>
-		<li>
-			<p>Combined Javascript or CSS can become large and unwieldy with all code that is needed site-wide leading to a slow initial-load time.</p>
-		</li>
-		<li>
-			<p>One change to any part of the combined Javascript and CSS file invalidates the whole file in the browser's cache and requires a slow re-download.</p>
-		</li>
-		<li>
-			<p>Combined files can lose the benefits of cross-site Javascript CDNs (like <a href="http://www.cdnjs.com" target="_blank" rel="noopener noreferrer">CDNJS.com</a>) which effectively pre-load common scripts into the visitor's cache before they arrive at your site.</p>
-		</li>
-		<li>
-			<p>It can be difficult or impossible to combine third party scripts like those used for things like Google AdSense, Facebook's Like Button, or the Twitter Follow Button.</p>
-		</li>
-	</ul>
-	<p>At CloudFlare, we decided that while the goal of reducing the number of HTTP requests was important for improving web performance, there had to be a better way than naively concatenating Javascript and CSS.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-rocket-loader">Introducing Rocket Loader</h3>
-		<a href="https://blog.cloudflare.com/#introducing-rocket-loader" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/hGovYyUe1XvRhKG3lJyu6/d649322e1799bf2840699ad383146bff/optimizer-rocket-loader.png.scaled500.png" alt="Combining Javascript &amp; CSS, a Better Way" class="kg-image" width="485" height="364" loading="lazy">
-
-	</figure>
-	<p>CloudFlare's approach to reducing HTTP requests is revolutionary. Dubbed "Rocket Loader," the system automatically detects tags that would require a new HTTP request. Instead of combining the files and leading to the issues above, Rocket Loader instead focuses on combining what really matters for performance: requests.</p>
-	<p>Just as YouTube opens a single HTTP connection and then streams down the video, Rocket Loader opens a single HTTP connection to CloudFlare's network and then streams the individual files through one request. The benefit is that, while there's only one request, the files remain atomic. As a result, unpredictable bugs are avoided, the browser can cache files locally and not re-request them, if one file changes it doesn't invalidate all the sites' other scripts, and it works as well with your own scripts as it does for third party scripts like AdSense and Facebook.</p>
-	<p>The net effect is you get the benefits of HTTP request reduction without the downsides of file combination. What does that translate into? Usually another 20% performance benefit on top of what CloudFlare already delivered, and even more for mobile devices.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4gtcHw3GWXWgqdayj2pOD6/dc8fb03d34314c7817af8cfe2c05c9f6/optimizer-asynchronous.png.scaled500.png" alt="Combining Javascript &amp; CSS, a Better Way" class="kg-image" width="330" height="230" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="manual-or-automatic">Manual or Automatic</h3>
-		<a href="https://blog.cloudflare.com/#manual-or-automatic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare allows you to have full control over how Rocket Loader is enabled. You can choose Manual mode, in which case you need to mark the scripts you want to be combined on the page. You do this by adding <b>cf-async="true"</b> as the first attribute in the script tag:</p>
-	<blockquote>
-		<p>\</p>
-	</blockquote>
-	<p>Alternatively, you can have CloudFlare automatically apply Rocket Loader to all the resources on your page. In this case, if there's one resource that you don't want to be loaded via Rocket Loader, you can exclude it by adding <b>cf-async="false"</b> as the first attribute in the script tag:</p>
-	<blockquote>
-		<p>\]</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="solve-the-real-problem">Solve the Real Problem</h3>
-		<a href="https://blog.cloudflare.com/#solve-the-real-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Rocket Loader is a great example of technology that CloudFlare has developed to solve a real problem the right way rather than sheepishly following the conventional wisdom. Rocket Loader leverages CloudFlare's <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">global CDN platform</a> in order to get the best possible performance for our users. We have big plans on how to expand Rocket Loader and help reduce the number of HTTP requests even more. Because it makes such a difference in web performance, we include Rocket Loader for free for every CloudFlare website. You can activate it from your CloudFlare Settings page with a single click, or learn more about <a href="https://www.cloudflare.com/features-optimizer.html" target="_blank" rel="noopener noreferrer">all the ways CloudFlare can help optimizes your site</a>.</p>
-</div>
+<p>The conventional wisdom in web performance circles is that you want to <a href="http://developer.yahoo.com/performance/rules.html#num_http" target="_blank" rel="noopener noreferrer">combine multiple javascript and CSS files</a>. The reason for this is that there is significant overhead every time you setup a new HTTP request. More requests, more wasted overhead.</p>
+<h3>Why Minimize HTTP Requests?</h3>
+<p>This problem is magnified on mobile devices. Your smart phone can stream video from YouTube without stuttering, because it is a single HTTP connection, but it often falters on seemingly simple web pages, because they are made up of a number of separate objects that need to all be loaded through their own HTTP requests. Mobile networks have reasonable bandwidth once a connection is established, but each new connection has a probability of failing that can block page loading.</p>
+<p>Combining Javascript and CSS seems like a sensible solution, but it runs into multiple problems:</p>
+<ul>
+	<li>Combined Javascript or CSS can clobber the namespace of other scripts and create unpredictable bugs.</li>
+	<li>Combined Javascript or CSS can become large and unwieldy with all code that is needed site-wide leading to a slow initial-load time.</li>
+	<li>One change to any part of the combined Javascript and CSS file invalidates the whole file in the browser's cache and requires a slow re-download.</li>
+	<li>Combined files can lose the benefits of cross-site Javascript CDNs (like <a href="http://www.cdnjs.com" target="_blank" rel="noopener noreferrer">CDNJS.com</a>) which effectively pre-load common scripts into the visitor's cache before they arrive at your site.</li>
+	<li>It can be difficult or impossible to combine third party scripts like those used for things like Google AdSense, Facebook's Like Button, or the Twitter Follow Button.</li>
+</ul>
+<p>At CloudFlare, we decided that while the goal of reducing the number of HTTP requests was important for improving web performance, there had to be a better way than naively concatenating Javascript and CSS.</p>
+<h3>Introducing Rocket Loader</h3>
+<p>CloudFlare's approach to reducing HTTP requests is revolutionary. Dubbed "Rocket Loader," the system automatically detects tags that would require a new HTTP request. Instead of combining the files and leading to the issues above, Rocket Loader instead focuses on combining what really matters for performance: requests.</p>
+<p>Just as YouTube opens a single HTTP connection and then streams down the video, Rocket Loader opens a single HTTP connection to CloudFlare's network and then streams the individual files through one request. The benefit is that, while there's only one request, the files remain atomic. As a result, unpredictable bugs are avoided, the browser can cache files locally and not re-request them, if one file changes it doesn't invalidate all the sites' other scripts, and it works as well with your own scripts as it does for third party scripts like AdSense and Facebook.</p>
+<p>The net effect is you get the benefits of HTTP request reduction without the downsides of file combination. What does that translate into? Usually another 20% performance benefit on top of what CloudFlare already delivered, and even more for mobile devices.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="330" height="230" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XGEQXJ7872TPXGHQJTJM.png&amp;w=330&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XGEQXJ7872TPXGHQJTJM.png&amp;w=330&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 330w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XGEQXJ7872TPXGHQJTJM.png&amp;w=640&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XGEQXJ7872TPXGHQJTJM.png&amp;w=660&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 660w" alt="Combining Javascript &amp; CSS, a Better Way" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XGEQXJ7872TPXGHQJTJM.png&amp;w=330&amp;h=230&amp;f=webp" data-lightbox-width="330" data-lightbox-height="230" data-astro-cid-7nvefuv6="true" sizes="(min-width: 330px) 330px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="330" height="230" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Manual or Automatic</h3>
+<p>CloudFlare allows you to have full control over how Rocket Loader is enabled. You can choose Manual mode, in which case you need to mark the scripts you want to be combined on the page. You do this by adding <strong>cf-async="true"</strong> as the first attribute in the script tag:</p>
+<blockquote>\</blockquote>
+<p>Alternatively, you can have CloudFlare automatically apply Rocket Loader to all the resources on your page. In this case, if there's one resource that you don't want to be loaded via Rocket Loader, you can exclude it by adding <strong>cf-async="false"</strong> as the first attribute in the script tag:</p>
+<blockquote>\]</blockquote>
+<h3>Solve the Real Problem</h3>
+<p>Rocket Loader is a great example of technology that CloudFlare has developed to solve a real problem the right way rather than sheepishly following the conventional wisdom. Rocket Loader leverages CloudFlare's <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">global CDN platform</a> in order to get the best possible performance for our users. We have big plans on how to expand Rocket Loader and help reduce the number of HTTP requests even more. Because it makes such a difference in web performance, we include Rocket Loader for free for every CloudFlare website. You can activate it from your CloudFlare Settings page with a single click, or learn more about <a href="https://www.cloudflare.com/features-optimizer.html" target="_blank" rel="noopener noreferrer">all the ways CloudFlare can help optimizes your site</a>.</p>

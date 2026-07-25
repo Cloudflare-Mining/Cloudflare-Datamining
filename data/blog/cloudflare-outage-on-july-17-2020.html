@@ -1,111 +1,60 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-outage-on-july-17-2020">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-outage-on-july-17-2020">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/cloudflare-outage-on-july-17-2020">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/cloudflare-outage-on-july-17-2020">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cIPl5f67VVwOcCpR8s8vI/45872f03e903a8ee62861fd15b0e7005/cloudflare-outage-on-july-17-2020.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Today a configuration error in our backbone network caused an outage for Internet properties and Cloudflare services that lasted 27 minutes. We saw traffic drop by about 50% across our network. Because of the architecture of our backbone this outage didn’t affect the entire Cloudflare network and was localized to certain geographies.</p>
-	<p>The outage occurred because, while working on an unrelated issue with a segment of the backbone from Newark to Chicago, our network engineering team updated the configuration on a router in Atlanta to alleviate congestion. This configuration contained an error that caused all traffic across our backbone to be sent to Atlanta. This quickly overwhelmed the Atlanta router and caused Cloudflare network locations connected to the backbone to fail.</p>
-	<p>The affected locations were San Jose, Dallas, Seattle, Los Angeles, Chicago, Washington, DC, Richmond, Newark, Atlanta, London, Amsterdam, Frankfurt, Paris, Stockholm, Moscow, St. Petersburg, São Paulo, Curitiba, and Porto Alegre. Other locations continued to operate normally.</p>
-	<p>For the avoidance of doubt: this was not caused by an attack or breach of any kind.</p>
-	<p>We are sorry for this outage and have already made a global change to the backbone configuration that will prevent it from being able to occur again.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-cloudflare-backbone">The Cloudflare Backbone</h3>
-		<a href="https://blog.cloudflare.com/#the-cloudflare-backbone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4lxqQ2vEuos6lPh4nPIxec/6227b0963540779f2a6c1e1a2d3bfab8/1a.png" alt="" class="kg-image" width="1043" height="749" loading="lazy">
-
-	</figure>
-	<p>Cloudflare operates a <i>backbone</i> between many of our data centers around the world. The backbone is a series of private lines between our data centers that we use for faster and more reliable paths between them. These links allow us to carry traffic between different data centers, without going over the public Internet.</p>
-	<p>We use this, for example, to reach a website origin server sitting in New York, carrying requests over our private backbone to both San Jose, California, as far as Frankfurt or São Paulo. This additional option to avoid the public Internet allows a higher quality of service, as the private network can be used to avoid Internet congestion points. With the backbone, we have far greater control over where and how to route Internet requests and traffic than the public Internet provides.</p>
-	<div class="flex anchor relative">
-		<h3 id="timeline">Timeline</h3>
-		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All timestamps are UTC.</p>
-	<p>First, an issue occurred on the backbone link between Newark and Chicago which led to backbone congestion in between Atlanta and Washington, DC.</p>
-	<p>In responding to that issue, a configuration change was made in Atlanta. That change started the outage at 21:12. Once the outage was understood, the Atlanta router was disabled and traffic began flowing normally again at 21:39.</p>
-	<p>Shortly after, we saw congestion at one of our core data centers that processes logs and metrics, causing some logs to be dropped. During this period the edge network continued to operate normally.</p>
-	<ul>
-		<li>
-			<p>20:25: Loss of backbone link between EWR and ORD</p>
-		</li>
-		<li>
-			<p>20:25: Backbone between ATL and IAD is congesting</p>
-		</li>
-		<li>
-			<p>21:12 to 21:39: ATL attracted traffic from across the backbone</p>
-		</li>
-		<li>
-			<p>21:39 to 21:47: ATL dropped from the backbone, service restored</p>
-		</li>
-		<li>
-			<p>21:47 to 22:10: Core congestion caused some logs to drop, edge continues operating</p>
-		</li>
-		<li>
-			<p>22:10: Full recovery, including logs and metrics</p>
-		</li>
-	</ul>
-	<p>Here’s a view of the impact from Cloudflare’s internal traffic manager tool. The red and orange region at the top shows CPU utilization in Atlanta reaching overload, and the white regions show affected data centers seeing CPU drop to near zero as they were no longer handling traffic. This is the period of the outage.</p>
-	<p>Other, unaffected data centers show no change in their CPU utilization during the incident. That’s indicated by the fact that the green color does not change during the incident for those data centers.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UOZSLl9J7PyVPw3kePKnO/5e0f993255ee89d7d7170b6a800c4f14/tm.png" alt="" class="kg-image" width="1151" height="1141" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="what-happened-and-what-were-doing-about-it">What happened and what we’re doing about it</h3>
-		<a href="https://blog.cloudflare.com/#what-happened-and-what-were-doing-about-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As there was backbone congestion in Atlanta, the team had decided to remove some of Atlanta’s backbone traffic. But instead of removing the Atlanta routes from the backbone, a one line change started leaking all BGP routes into the backbone.</p>
-	<pre class="language-bash"><code class="language-bash">{master}[edit]
-atl01# show | compare 
-[edit policy-options policy-statement 6-BBONE-OUT term 6-SITE-LOCAL from]
-!       inactive: prefix-list 6-SITE-LOCAL { ... }</code></pre>
-	<p>The complete term looks like this:</p>
-	<pre class="language-bash"><code class="language-bash">from {
-    prefix-list 6-SITE-LOCAL;
-}
-then {
-    local-preference 200;
-    community add SITE-LOCAL-ROUTE;
-    community add ATL01;
-    community add NORTH-AMERICA;
-    accept;
-}</code></pre>
-	<p>This term sets the local-preference, adds some communities, and accepts the routes that match the prefix-list. Local-preference is a transitive property on iBGP sessions (it will be transferred to the next BGP peer).</p>
-	<p>The correct change would have been to deactivate the term instead of the prefix-list.</p>
-	<p>By removing the prefix-list condition, the router was instructed to send all its BGP routes to all other backbone routers, with an increased local-preference of 200. Unfortunately at the time, local routes that the edge routers received from our compute nodes had a local-preference of 100. As the higher local-preference wins, all the traffic meant for local compute nodes went to Atlanta compute nodes instead.</p>
-	<p>With the routes sent out, Atlanta started attracting traffic from across the backbone.</p>
-	<p>We are making the following changes:</p>
-	<ul>
-		<li>
-			<p>Introduce a maximum-prefix limit on our backbone BGP sessions - this would have shut down the backbone in Atlanta, but our network is built to function properly without a backbone. This change will be deployed on Monday, July 20.</p>
-		</li>
-		<li>
-			<p>Change the BGP local-preference for local server routes. This change will prevent a single location from attracting other locations’ traffic similarly. This change has been deployed following the incident.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve never experienced an outage on our backbone and our team responded quickly to restore service in the affected locations, but this was a very painful period for everyone involved. We are sorry for the disruption to our customers and to all the users who were unable to access Internet properties while the outage was happening.</p>
-	<p>We’ve already made changes to the backbone configuration to make sure that this cannot happen again, and further changes will resume on Monday.</p>
+<p>Today a configuration error in our backbone network caused an outage for Internet properties and Cloudflare services that lasted 27 minutes. We saw traffic drop by about 50% across our network. Because of the architecture of our backbone this outage didn’t affect the entire Cloudflare network and was localized to certain geographies.</p>
+<p>The outage occurred because, while working on an unrelated issue with a segment of the backbone from Newark to Chicago, our network engineering team updated the configuration on a router in Atlanta to alleviate congestion. This configuration contained an error that caused all traffic across our backbone to be sent to Atlanta. This quickly overwhelmed the Atlanta router and caused Cloudflare network locations connected to the backbone to fail.</p>
+<p>The affected locations were San Jose, Dallas, Seattle, Los Angeles, Chicago, Washington, DC, Richmond, Newark, Atlanta, London, Amsterdam, Frankfurt, Paris, Stockholm, Moscow, St. Petersburg, São Paulo, Curitiba, and Porto Alegre. Other locations continued to operate normally.</p>
+<p>For the avoidance of doubt: this was not caused by an attack or breach of any kind.</p>
+<p>We are sorry for this outage and have already made a global change to the backbone configuration that will prevent it from being able to occur again.</p>
+<h3>The Cloudflare Backbone</h3>
+<p>Cloudflare operates a <em>backbone</em> between many of our data centers around the world. The backbone is a series of private lines between our data centers that we use for faster and more reliable paths between them. These links allow us to carry traffic between different data centers, without going over the public Internet.</p>
+<p>We use this, for example, to reach a website origin server sitting in New York, carrying requests over our private backbone to both San Jose, California, as far as Frankfurt or São Paulo. This additional option to avoid the public Internet allows a higher quality of service, as the private network can be used to avoid Internet congestion points. With the backbone, we have far greater control over where and how to route Internet requests and traffic than the public Internet provides.</p>
+<h3>Timeline</h3>
+<p>All timestamps are UTC.</p>
+<p>First, an issue occurred on the backbone link between Newark and Chicago which led to backbone congestion in between Atlanta and Washington, DC.</p>
+<p>In responding to that issue, a configuration change was made in Atlanta. That change started the outage at 21:12. Once the outage was understood, the Atlanta router was disabled and traffic began flowing normally again at 21:39.</p>
+<p>Shortly after, we saw congestion at one of our core data centers that processes logs and metrics, causing some logs to be dropped. During this period the edge network continued to operate normally.</p>
+<ul>
+	<li>20:25: Loss of backbone link between EWR and ORD</li>
+	<li>20:25: Backbone between ATL and IAD is congesting</li>
+	<li>21:12 to 21:39: ATL attracted traffic from across the backbone</li>
+	<li>21:39 to 21:47: ATL dropped from the backbone, service restored</li>
+	<li>21:47 to 22:10: Core congestion caused some logs to drop, edge continues operating</li>
+	<li>22:10: Full recovery, including logs and metrics</li>
+</ul>
+<p>Here’s a view of the impact from Cloudflare’s internal traffic manager tool. The red and orange region at the top shows CPU utilization in Atlanta reaching overload, and the white regions show affected data centers seeing CPU drop to near zero as they were no longer handling traffic. This is the period of the outage.</p>
+<p>Other, unaffected data centers show no change in their CPU utilization during the incident. That’s indicated by the fact that the green color does not change during the incident for those data centers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="709" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=715&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=640&amp;h=635&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=715&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=750&amp;h=744&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=828&amp;h=821&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=1080&amp;h=1071&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=1280&amp;h=1269&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=1430&amp;h=1418&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare outage on July 17, 2020 Embedded Image - QqRlsw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RPX0MBM7GFZT4N2SRS36.png&amp;w=1151&amp;h=1141&amp;f=webp" data-lightbox-width="1151" data-lightbox-height="1141" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="709" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>What happened and what we’re doing about it</h3>
+<p>As there was backbone congestion in Atlanta, the team had decided to remove some of Atlanta’s backbone traffic. But instead of removing the Atlanta routes from the backbone, a one line change started leaking all BGP routes into the backbone.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{master}[edit]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">atl01#</span><span class="sk-032f62-99ffe4"> show</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> compare</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">[edit policy-options policy-statement 6-BBONE-OUT term 6-SITE-LOCAL from]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">!</span><span class="sk-6f42c1-ffc799">       inactive:</span><span class="sk-032f62-99ffe4"> prefix-list</span><span class="sk-032f62-99ffe4"> 6-SITE-LOCAL</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
 </div>
+<p>The complete term looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">from</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    prefix-list</span><span class="sk-032f62-99ffe4"> 6-SITE-LOCAL</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">then</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    local-preference</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> SITE-LOCAL-ROUTE</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> ATL01</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    community</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> NORTH-AMERICA</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    accept</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This term sets the local-preference, adds some communities, and accepts the routes that match the prefix-list. Local-preference is a transitive property on iBGP sessions (it will be transferred to the next BGP peer).</p>
+<p>The correct change would have been to deactivate the term instead of the prefix-list.</p>
+<p>By removing the prefix-list condition, the router was instructed to send all its BGP routes to all other backbone routers, with an increased local-preference of 200. Unfortunately at the time, local routes that the edge routers received from our compute nodes had a local-preference of 100. As the higher local-preference wins, all the traffic meant for local compute nodes went to Atlanta compute nodes instead.</p>
+<p>With the routes sent out, Atlanta started attracting traffic from across the backbone.</p>
+<p>We are making the following changes:</p>
+<ul>
+	<li>Introduce a maximum-prefix limit on our backbone BGP sessions - this would have shut down the backbone in Atlanta, but our network is built to function properly without a backbone. This change will be deployed on Monday, July 20.</li>
+	<li>Change the BGP local-preference for local server routes. This change will prevent a single location from attracting other locations’ traffic similarly. This change has been deployed following the incident.</li>
+</ul>
+<h3>Conclusion</h3>
+<p>We’ve never experienced an outage on our backbone and our team responded quickly to restore service in the affected locations, but this was a very painful period for everyone involved. We are sorry for the disruption to our customers and to all the users who were unable to access Internet properties while the outage was happening.</p>
+<p>We’ve already made changes to the backbone configuration to make sure that this cannot happen again, and further changes will resume on Monday.</p>

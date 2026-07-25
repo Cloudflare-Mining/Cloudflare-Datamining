@@ -1,268 +1,162 @@
-<div class="mb2 gray5">9 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/the-rum-diaries-enabling-web-analytics-by-default">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kEhTVrInMarDtXh9DYxHu/9fe5de94098034d44572c12c9a7ef2fd/BLOG-2675_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Measuring and improving performance on the Internet can be a daunting task because it spans multiple layers: from the user’s device and browser, to DNS lookups and the network routes, to edge configurations and origin server location. Each layer introduces its own variability such as last-mile bandwidth constraints, third-party scripts, or limited CPU resources, that are often invisible unless you have robust <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability tooling</a> in place. Even if you gather data from most of these Internet hops, performance engineers still need to correlate different metrics like front-end events, network processing times, and server-side logs in order to pinpoint where and why elusive “latency” occurs to understand how to fix it. </p>
-	<p>We want to solve this problem by providing a powerful, in-depth monitoring solution that helps you debug and optimize applications, so you can understand and trace performance issues across the Internet, end to end.</p>
-	<p>That’s why we’re excited to announce the <b><i>start</i></b> of a major upgrade to Cloudflare’s performance analytics suite: Web Analytics as part of our real user monitoring (RUM) tools will soon be combined with network-level insights to help you pinpoint performance issues anywhere on a packet’s journey — from a visitor’s browser, through Cloudflare’s network, to your origin.</p>
-	<p>Some popular web performance monitoring tools have also sacrificed user privacy in order to achieve depth of visibility. We’re also going to remove that tradeoff. By correlating client-side metrics (like <a href="https://web.dev/articles/vitals#core_web_vitals" target="_blank" rel="noopener noreferrer"><u>Core Web Vitals</u></a>) with detailed network and origin data, developers can see where slowdowns occur — and why —&nbsp; all while preserving end user privacy (by dropping client-specific information and aggregating data by visits as explained in greater detail below).</p>
-	<p>Over the next several months we’ll share:</p>
-	<ul>
-		<li>
-			<p>How Web Analytics work</p>
-		</li>
-		<li>
-			<p>Real-world debugging examples from across the Internet</p>
-		</li>
-		<li>
-			<p>Tips to get the most value from Cloudflare’s analytics tools</p>
-		</li>
-	</ul>
-	<p>The journey starts on <b>October 15, 2025</b>, when Cloudflare will enable <a href="https://www.cloudflare.com/web-analytics" target="_blank" rel="noopener noreferrer"><u>Web Analytics</u></a> <b>for all free domains by default</b> — helping you see how your site actually performs for visitors around the world in real time, without ever collecting any personal data (not applicable to traffic originating from the EU or UK, <a href="https://blog.cloudflare.com/#what-does-privacy-first-mean">see below</a>). By the middle of 2026, we’ll deliver something nobody has ever had before: a comprehensive, <a href="https://blog.cloudflare.com/privacy-first-web-analytics"><u>privacy-first platform</u></a> for performance monitoring and debugging. Unlike many other tools, this platform won’t just show you where latency lives, it will help you fix it, all in one place. From untangling the trickiest bottlenecks, to getting a crystal-clear view of global performance, this new tool will change how you see your web application and experiment with new performance features. And we’re not building it behind closed doors, we want to bring you along as we launch it in public. Follow along in this series, <i>The RUM Diaries</i>, as we share the journey.</p>
-	<div class="flex anchor relative">
-		<h2 id="why-this-matters">Why this matters</h2>
-		<a href="https://blog.cloudflare.com/#why-this-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Performance monitoring is only as good as the detail you can see — and the trust your users have that while you’re watching traffic performance, you aren’t watching <i>them</i>. As we explain below, by combining <b>real user metrics</b> with <b>deep, in-network instrumentation</b>, we’ll give developers the visibility to debug any layer of the stack while maintaining Cloudflare’s zero-compromise stance on privacy.</p>
-	<div class="flex anchor relative">
-		<h2 id="what-problem-are-we-solving">What problem are we solving?&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#what-problem-are-we-solving" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Many performance monitoring solutions provide only a narrow slice of the performance layer cake, focusing on either the client or the origin while lumping everything in between under a vague “processing time” due to lack of visibility. But as web applications get more complex and user expectations continue to rise, traditional analytics alone don’t cut it. Knowing <i>what</i> happened is just the tip of the iceberg; modern teams need to understand <i>why</i> a bottleneck occurred and <i>how</i> network conditions, code changes, or even a single external script can degrade load times. Moreover, often the tools available can only <i>observe</i> performance rather than helping to optimize it, which leaves teams unable to understand what to try to move the needle on latency.</p>
-	<p>We want to pull back the curtain so you can understand performance implications of the services you use on our platform and how you can make sure you’re getting the best performance possible.&nbsp;</p>
-	<p>Consider Shannon in Detroit, Michigan. She operates an e-commerce site selling hard-to-find watches to horology enthusiasts around the globe. Shannon knows that her customers are impatient (she pictures them frequently checking their wrists). If her site loads slowly, she loses sales, her SEO drops, and her customers go to a different store where they have a better online shopping experience.&nbsp;</p>
-	<p>As a result, Shannon continually monitors her site performance, but she frequently runs into problems trying to understand how her site is experienced by customers in different parts of the world. After updating her site, she frequently spot checks its performance using her browser on her office wifi in Detroit, but she continually hears complaints about slow load from her customers in Germany. So Shannon shops around for a solution that monitors performance around the globe.&nbsp;</p>
-	<p>This off-the-shelf performance monitoring solution offers her the ability to run similar tests from virtual machines situated around the world across various desktops, mobile devices, and even ISPs, close to her customers. Shannon receives data from these tests, ranging from how fast these synthetic clients’ DNS resolved, how quickly they connected to a particular server, and even when a response was on its way back to a client. Thankfully for Shannon, the off-the-shelf performance monitoring solution identified “server processing time” as the latency culprit in Germany. However, she can’t help but wonder, is it my server that is slow or the transit connection of my users in Germany? Can I make my site faster by adding another server in Germany, or updating my CDN configuration? It’s a three option head-scratcher: is it a networking problem, a server problem, or something else?</p>
-	<p>Cloudflare can help Shannon (and others!) because we sit in a unique place to provide richer performance analytics. As a reverse proxy positioned between the client and the origin, we are often the first web server a user connects to when requesting content. In addition to moving what’s important closer to your customers, our product suite can generate responses at our edge (e.g. <a href="https://developers.cloudflare.com/learning-paths/workers/get-started/first-worker" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>), steer traffic through our <a href="https://blog.cloudflare.com/backbone2024"><u>dedicated backbone</u></a> (e.g. cloudflared and more), and route around Internet traffic jams (e.g. <a href="https://blog.cloudflare.com/argo-v2"><u>Argo</u></a>). By tailoring a solution that brings together:&nbsp;</p>
-	<ul>
-		<li>
-			<p>client performance data,&nbsp;</p>
-		</li>
-		<li>
-			<p>real-time network metrics,</p>
-		</li>
-		<li>
-			<p>customer configuration settings, and</p>
-		</li>
-		<li>
-			<p>origin performance measurements</p>
-		</li>
-	</ul>
-	<p>we can provide more insightful information about what’s happening in the vague “processing time.” This will allow developers like Shannon to understand what they should tweak to make their site more performant, build her business and her customers happier.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="what-is-web-analytics">What is Web Analytics?&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#what-is-web-analytics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Turning back to what’s happening on <b>October 15, 2025</b>: We’re enabling Web Analytics so teams can track down performance bottlenecks. Web Analytics works by adding a lightweight JavaScript snippet to your website, which helps monitor performance metrics from visitors to your site. In the Web Analytics dashboard you can see aggregate performance data related to: how a browser has painted the page (via <a href="https://web.dev/articles/lcp" target="_blank" rel="noopener noreferrer"><u>LCP</u></a>, <a href="https://web.dev/articles/inp" target="_blank" rel="noopener noreferrer"><u>INP</u></a>, and <a href="https://web.dev/articles/cls" target="_blank" rel="noopener noreferrer"><u>CLS</u></a>), general load time metrics associated with server processing, as well as aggregate counts of visitors.</p>
-	<p>If you’ve ever popped open DevTools in your browser and stared at the waterfall chart of a slow-loading page, you’ve had a taste of what Web Analytics is doing, except instead of measuring <i>your</i> load times from <i>your</i> laptop, it’s measuring it directly from the browsers of real visitors.</p>
-	<p>Here’s the high-level architecture:</p>
-	<p><b>A lightweight beacon in the browser
-		</b>Every page that you track with Cloudflare’s Web Analytics includes a tiny JavaScript snippet, optimized to load asynchronously so it won’t block rendering.</p>
-	<ul>
-		<li>
-			<p>This snippet hooks into modern browser APIs like the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank" rel="noopener noreferrer"><u>Performance API</u></a>, Resource Timing, etc</p>
-		</li>
-		<li>
-			<p>This is how Cloudflare collects Core Web Vital metrics like <b>Largest Contentful Paint</b> and <b>Interaction to Next Paint</b>, plus data about resource load times, TLS handshake duration from the perspective of the client.</p>
-		</li>
-	</ul>
-	<p><b>Aggregation at the edge
-		</b>When the browser sends performance data, it goes to the nearest Cloudflare data center. Instead of pushing raw events straight to a database, we pre-process at the edge. This reduces storage needs, minimizes latency, and removes personal information like IP addresses. After this pre-processing, it is sent to a core datacenter to be processed and queried by users.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6QLjAwnkmYM5tXv9hbVv79/98684d34b3555532b3c2bc94039aacc2/BLOG-2675_2.png" alt="BLOG-2675 2" class="kg-image" width="1666" height="1248" loading="lazy">
-	</figure>
-	<p><b>Web Analytics </b>sits under the <b>Analytics &amp; Logs</b> section of the dashboard (at both the account and domain level of the dashboard). Starting on October 15, 2025, free domains will begin to see Web Analytics enabled by default and will be able to view the performance of their visitors in their dashboard. Pro, Biz and ENT accounts can enable Web Analytics by selecting the hostname of the website to add the snippet to and selecting <b>Automatic Setup</b>. Alternatively, you can manually paste the JavaScript beacon before the closing <code>&lt;/body&gt;</code> tag on any HTML page you’d like to track from your origin. Just select “manage site” from the Web Analytics tab in the dashboard.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ucGMd53CtM2Y5pGVPpaSa/8444898164ee7c45afa7755960000d38/BLOG-2675_3.png" alt="BLOG-2675 3" class="kg-image" width="548" height="152" loading="lazy">
-	</figure>
-	<p>Once enabled, the JS snippet works with visitors’ browsers to measure how the user experienced page load times and reports on critical client-side metrics. Below these metrics are resource attribution tables that help users understand which assets are taking the most time per metrics to load so that users can better optimize their site performance.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RrhjEuT91lp4OfEKi9dxm/490f270eebebd5cbd648c315d222d3d6/BLOG-2675_4.png" alt="BLOG-2675 4" class="kg-image" width="1488" height="708" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="what-does-privacy-first-mean">What does privacy-first mean?</h2>
-		<a href="https://blog.cloudflare.com/#what-does-privacy-first-mean" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>From the beginning, our Web Analytics tools have centered on providing insights without compromising privacy. Being privacy-first means we don’t track individual users for analytics. We don’t use any client-side state (like cookies or localStorage) for analytics purposes, and we don’t track users over time by IP address, User Agent, or any other fingerprinting technique.</p>
-	<p>Moreover, when enabling Web Analytics, you can choose to drop requests from European and UK visitors if you so desire (listed <a href="https://developers.cloudflare.com/speed/speed-test/rum-beacon/#rum-excluding-eeaeu" target="_blank" rel="noopener noreferrer"><u>here</u></a> specifically), meaning we will not collect any RUM metrics from traffic that passes through our European and UK data centers. <b>The version of Web Analytics that will be enabled by default excludes data from EU visitors (this can be changed in the dashboard if you want).&nbsp;</b></p>
-	<p>The concept of a <i>visit</i> is key to our privacy approach. Rather than count unique IP addresses (requiring storing state about each visitor), we simply count page views that originate from a distinct referral or navigation event, avoiding the need to store information that might be considered personal data. We believe this same concept that we’ve used for years in providing our privacy-first Web Analytics can be logically extended to network and origin metrics. This will allow customers to gain the insights they need to debug and solve performance issues while ensuring they are not collecting unneeded data on visitors.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4UdLc8qugqv29lZUYyB41d/c4def741c23a6cbf2937d3b05a804c03/BLOG-2675_5.png" alt="BLOG-2675 5" class="kg-image" width="1772" height="1328" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="opting-out">Opting-out</h2>
-		<a href="https://blog.cloudflare.com/#opting-out" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We built our Web Analytics service to give you the insights you need to run your website, all while maintaining a privacy-first approach. However, if you do want to opt-out, here are the steps to do so.</p>
-	<div class="flex anchor relative">
-		<h3 id="via-dashboard">Via Dashboard</h3>
-		<a href="https://blog.cloudflare.com/#via-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you have a free domain and do not want Web Analytics automatically enabled for your zone you should do the following before October 15, 2025:&nbsp;</p>
-	<ol>
-		<li>
-			<p>Navigate to the zone in the Cloudflare dashboard</p>
-		</li>
-		<li>
-			<p>In the list on the left of the screen, navigate to Web Analytics
-			</p>
-			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/lWwBak29Cmv1UijeKGhH6/14c3980ddcf9845cd4e97571b362a8e4/Screenshot_2025-09-17_at_11.48.13%C3%A2__AM.png" alt="BLOG-2675 6" class="kg-image" width="1159" height="750" loading="lazy">
-			</figure>
-			<p></p>
-		</li>
-		<li>
-			<p>On the next page, select either `Enable Globally` or `Exclude EU` to activate the feature
-			</p>
-			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4M8Gb1cqDkCmC1u45Xn1iG/bda1ffe64212b3a2e10befd7a01c9eb3/BLOG-2675_7.png" alt="BLOG-2675 7" class="kg-image" width="1999" height="1050" loading="lazy">
-			</figure>
-			<p></p>
-		</li>
-		<li>
-			<p>Once Web Analytics has been activated, navigate to `Manage RUM Settings` in the Web Analytics dashboard
-			</p>
-			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LXl9FnYS2JRnfl4fsMXle/a5e74ed39dfd888514ed6e489db911f0/Screenshot_2025-09-17_at_11.47.46%C3%A2__AM.png" alt="BLOG-2675 8" class="kg-image" width="1165" height="626" loading="lazy">
-			</figure>
-			<p></p>
-		</li>
-		<li>
-			<p>Then, on the next page, select `Disable` to disable Web Analytics for the zone
-			</p>
-			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6JCslLOmHqnqw7BXR4JHZf/fa9a391f399e70c525c2b947a8ed16a0/BLOG-2675_9.png" alt="BLOG-2675 9" class="kg-image" width="1999" height="720" loading="lazy">
-			</figure>
-			<p></p>
-		</li>
-		<li>
-			<p>OR, to remove Web Analytics from the zone entirely, delete the configs by clicking <code>Advanced Options</code> and then <code>Delete
-				</code></p>
-			<figure class="kg-card kg-image-card">
-				<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/GYyPsNL6mXt1SIVWsrm5M/ecd627e14ab398db1e1cc87edbb66030/BLOG-2675_10.png" alt="BLOG-2675 10" class="kg-image" width="1999" height="1116" loading="lazy">
-			</figure>
-			<p>Once you have disabled the product once, we will not re-enable it again. You can choose to enable it whenever you want, however.</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="via-api">Via API</h3>
-		<a href="https://blog.cloudflare.com/#via-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ol>
-		<li>
-			<p>Create a Web Analytics configuration with the following API call:
-			</p>
-			<pre class="language-unset"><code class="language-unset">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info \
-    -H 'Content-Type: application/json' \
-    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-    -d '{
-          "auto_install": false,
-          "host": "example.com",
-          "zone_tag": "023e105f4ecef8ad9ca31a8372d0c353"
-        }'
-</code></pre>
-			<p><sub><i>Note: This will not cause your zone to collect RUM data because auto_install is set to `false`</i></sub></p>
-		</li>
-		<li>
-			<p>Collect the <code>site_tag</code> and <code>zone_tag</code> fields from the response to this call</p>
-			<ol>
-				<li>
-					<p><code>site_tag</code> in this response will correspond to <code>$SITE_ID</code> in the following calls</p>
-				</li>
-			</ol>
-		</li>
-		<li>
-			<p>EITHER Disable the Web Analytics configuration with the following API call:
-			</p>
-			<pre class="language-none"><code class="language-none">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info/$SITE_ID \
-    -X PUT \
-    -H 'Content-Type: application/json' \
-    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \
-    -d '{
-          "auto_install": true,
-          "enabled": false,
-          "host": "example.com",
-          "zone_tag": "023e105f4ecef8ad9ca31a8372d0c353"
-        }'
-
-</code></pre>
-			<p></p>
-		</li>
-		<li>
-			<p>OR Delete the Web Analytics configuration with the following API call:
-			</p>
-			<pre class="language-none"><code class="language-none">curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info/$SITE_ID \
-    -X DELETE \
-    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \
-    -H "X-Auth-Key: $CLOUDFLARE_API_KEY"</code></pre>
-			<p></p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h2 id="where-were-going-next">Where We’re Going Next</h2>
-		<a href="https://blog.cloudflare.com/#where-were-going-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Today, Web Analytics gives you visibility into how <i>people</i> experience your site in the browser. Next, we’re expanding that lens to show <i>what’s happening across the entire request path</i>, from the click in a user’s browser, through Cloudflare’s global network, to your origin servers, and back.</p>
-	<p>Here’s what’s coming:</p>
-	<ol>
-		<li>
-			<p><b>Correlating Across Layers
-				</b>We’ll match RUM data from the client with network timing, Cloudflare edge processing, and origin response latency, allowing you to pinpoint whether a spike in TTFB comes from a slow script, a cache miss, or an origin bottleneck.</p>
-		</li>
-		<li>
-			<p><b>Proactive Alerting
-				</b>Configurable alerts will tell you when performance regresses in specific geographies, when a data center underperforms, or when origin latency spikes.</p>
-		</li>
-		<li>
-			<p><b>Actionable Insights
-				</b>We’ll go beyond “processing time” as a single number, breaking it into the real-world steps that make up the journey: proxy routing, security checks, cache lookups, origin fetches, and more.</p>
-		</li>
-		<li>
-			<p><b>Unified View
-				</b>All of this will live in one place (your Cloudflare dashboard) alongside your analytics, logs, firewall events, and configuration settings, so you can see cause and effect in one workflow.</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Stay tuned as we work alongside you, in public, to build the most comprehensive, privacy-focused performance analytics platform. Together, we will illuminate every corner of the request journey so you can optimize, innovate, and deliver the best experiences to your users, every time.</p>
-	<p>The next chapters of this journey will unlock proactive alerts, cross-layer correlation, and actionable insights you can’t get anywhere else. Follow along as the RUM Diaries are just getting started.</p>
+<p>Measuring and improving performance on the Internet can be a daunting task because it spans multiple layers: from the user’s device and browser, to DNS lookups and the network routes, to edge configurations and origin server location. Each layer introduces its own variability such as last-mile bandwidth constraints, third-party scripts, or limited CPU resources, that are often invisible unless you have robust <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">observability tooling</a> in place. Even if you gather data from most of these Internet hops, performance engineers still need to correlate different metrics like front-end events, network processing times, and server-side logs in order to pinpoint where and why elusive “latency” occurs to understand how to fix it. </p>
+<p>We want to solve this problem by providing a powerful, in-depth monitoring solution that helps you debug and optimize applications, so you can understand and trace performance issues across the Internet, end to end.</p>
+<p>That’s why we’re excited to announce the <strong><em>start</em></strong> of a major upgrade to Cloudflare’s performance analytics suite: Web Analytics as part of our real user monitoring (RUM) tools will soon be combined with network-level insights to help you pinpoint performance issues anywhere on a packet’s journey — from a visitor’s browser, through Cloudflare’s network, to your origin.</p>
+<p>Some popular web performance monitoring tools have also sacrificed user privacy in order to achieve depth of visibility. We’re also going to remove that tradeoff. By correlating client-side metrics (like <a href="https://web.dev/articles/vitals#core_web_vitals" target="_blank" rel="noopener noreferrer"><u>Core Web Vitals</u></a>) with detailed network and origin data, developers can see where slowdowns occur — and why —&nbsp; all while preserving end user privacy (by dropping client-specific information and aggregating data by visits as explained in greater detail below).</p>
+<p>Over the next several months we’ll share:</p>
+<ul>
+	<li>How Web Analytics work</li>
+	<li>Real-world debugging examples from across the Internet</li>
+	<li>Tips to get the most value from Cloudflare’s analytics tools</li>
+</ul>
+<p>The journey starts on <strong>October 15, 2025</strong>, when Cloudflare will enable <a href="https://www.cloudflare.com/web-analytics" target="_blank" rel="noopener noreferrer"><u>Web Analytics</u></a> <strong>for all free domains by default</strong> — helping you see how your site actually performs for visitors around the world in real time, without ever collecting any personal data (not applicable to traffic originating from the EU or UK, <a href="https://blog.cloudflare.com/#what-does-privacy-first-mean">see below</a>). By the middle of 2026, we’ll deliver something nobody has ever had before: a comprehensive, <a href="https://blog.cloudflare.com/privacy-first-web-analytics" target="_blank" rel="noopener noreferrer"><u>privacy-first platform</u></a> for performance monitoring and debugging. Unlike many other tools, this platform won’t just show you where latency lives, it will help you fix it, all in one place. From untangling the trickiest bottlenecks, to getting a crystal-clear view of global performance, this new tool will change how you see your web application and experiment with new performance features. And we’re not building it behind closed doors, we want to bring you along as we launch it in public. Follow along in this series, <em>The RUM Diaries</em>, as we share the journey.</p>
+<h2>Why this matters</h2>
+<p>Performance monitoring is only as good as the detail you can see — and the trust your users have that while you’re watching traffic performance, you aren’t watching <em>them</em>. As we explain below, by combining <strong>real user metrics</strong> with <strong>deep, in-network instrumentation</strong>, we’ll give developers the visibility to debug any layer of the stack while maintaining Cloudflare’s zero-compromise stance on privacy.</p>
+<h2>What problem are we solving?&nbsp;</h2>
+<p>Many performance monitoring solutions provide only a narrow slice of the performance layer cake, focusing on either the client or the origin while lumping everything in between under a vague “processing time” due to lack of visibility. But as web applications get more complex and user expectations continue to rise, traditional analytics alone don’t cut it. Knowing <em>what</em> happened is just the tip of the iceberg; modern teams need to understand <em>why</em> a bottleneck occurred and <em>how</em> network conditions, code changes, or even a single external script can degrade load times. Moreover, often the tools available can only <em>observe</em> performance rather than helping to optimize it, which leaves teams unable to understand what to try to move the needle on latency.</p>
+<p>We want to pull back the curtain so you can understand performance implications of the services you use on our platform and how you can make sure you’re getting the best performance possible.&nbsp;</p>
+<p>Consider Shannon in Detroit, Michigan. She operates an e-commerce site selling hard-to-find watches to horology enthusiasts around the globe. Shannon knows that her customers are impatient (she pictures them frequently checking their wrists). If her site loads slowly, she loses sales, her SEO drops, and her customers go to a different store where they have a better online shopping experience.&nbsp;</p>
+<p>As a result, Shannon continually monitors her site performance, but she frequently runs into problems trying to understand how her site is experienced by customers in different parts of the world. After updating her site, she frequently spot checks its performance using her browser on her office wifi in Detroit, but she continually hears complaints about slow load from her customers in Germany. So Shannon shops around for a solution that monitors performance around the globe.&nbsp;</p>
+<p>This off-the-shelf performance monitoring solution offers her the ability to run similar tests from virtual machines situated around the world across various desktops, mobile devices, and even ISPs, close to her customers. Shannon receives data from these tests, ranging from how fast these synthetic clients’ DNS resolved, how quickly they connected to a particular server, and even when a response was on its way back to a client. Thankfully for Shannon, the off-the-shelf performance monitoring solution identified “server processing time” as the latency culprit in Germany. However, she can’t help but wonder, is it my server that is slow or the transit connection of my users in Germany? Can I make my site faster by adding another server in Germany, or updating my CDN configuration? It’s a three option head-scratcher: is it a networking problem, a server problem, or something else?</p>
+<p>Cloudflare can help Shannon (and others!) because we sit in a unique place to provide richer performance analytics. As a reverse proxy positioned between the client and the origin, we are often the first web server a user connects to when requesting content. In addition to moving what’s important closer to your customers, our product suite can generate responses at our edge (e.g. <a href="https://developers.cloudflare.com/learning-paths/workers/get-started/first-worker" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>), steer traffic through our <a href="https://blog.cloudflare.com/backbone2024" target="_blank" rel="noopener noreferrer"><u>dedicated backbone</u></a> (e.g. cloudflared and more), and route around Internet traffic jams (e.g. <a href="https://blog.cloudflare.com/argo-v2" target="_blank" rel="noopener noreferrer"><u>Argo</u></a>). By tailoring a solution that brings together:&nbsp;</p>
+<ul>
+	<li>client performance data,&nbsp;</li>
+	<li>real-time network metrics,</li>
+	<li>customer configuration settings, and</li>
+	<li>origin performance measurements</li>
+</ul>
+<p>we can provide more insightful information about what’s happening in the vague “processing time.” This will allow developers like Shannon to understand what they should tweak to make their site more performant, build her business and her customers happier.&nbsp;</p>
+<h2>What is Web Analytics?&nbsp;</h2>
+<p>Turning back to what’s happening on <strong>October 15, 2025</strong>: We’re enabling Web Analytics so teams can track down performance bottlenecks. Web Analytics works by adding a lightweight JavaScript snippet to your website, which helps monitor performance metrics from visitors to your site. In the Web Analytics dashboard you can see aggregate performance data related to: how a browser has painted the page (via <a href="https://web.dev/articles/lcp" target="_blank" rel="noopener noreferrer"><u>LCP</u></a>, <a href="https://web.dev/articles/inp" target="_blank" rel="noopener noreferrer"><u>INP</u></a>, and <a href="https://web.dev/articles/cls" target="_blank" rel="noopener noreferrer"><u>CLS</u></a>), general load time metrics associated with server processing, as well as aggregate counts of visitors.</p>
+<p>If you’ve ever popped open DevTools in your browser and stared at the waterfall chart of a slow-loading page, you’ve had a taste of what Web Analytics is doing, except instead of measuring <em>your</em> load times from <em>your</em> laptop, it’s measuring it directly from the browsers of real visitors.</p>
+<p>Here’s the high-level architecture:</p>
+<p><strong>A lightweight beacon in the browser<br></strong>Every page that you track with Cloudflare’s Web Analytics includes a tiny JavaScript snippet, optimized to load asynchronously so it won’t block rendering.</p>
+<ul>
+	<li>This snippet hooks into modern browser APIs like the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance" target="_blank" rel="noopener noreferrer"><u>Performance API</u></a>, Resource Timing, etc</li>
+	<li>This is how Cloudflare collects Core Web Vital metrics like <strong>Largest Contentful Paint</strong> and <strong>Interaction to Next Paint</strong>, plus data about resource load times, TLS handshake duration from the perspective of the client.</li>
+</ul>
+<p><strong>Aggregation at the edge<br></strong>When the browser sends performance data, it goes to the nearest Cloudflare data center. Instead of pushing raw events straight to a database, we pre-process at the edge. This reduces storage needs, minimizes latency, and removes personal information like IP addresses. After this pre-processing, it is sent to a core datacenter to be processed and queried by users.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484TG767TG9QH52K54F055.png&amp;w=1666&amp;h=1248&amp;f=webp" data-lightbox-width="1666" data-lightbox-height="1248" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>Web Analytics </strong>sits under the <strong>Analytics &amp; Logs</strong> section of the dashboard (at both the account and domain level of the dashboard). Starting on October 15, 2025, free domains will begin to see Web Analytics enabled by default and will be able to view the performance of their visitors in their dashboard. Pro, Biz and ENT accounts can enable Web Analytics by selecting the hostname of the website to add the snippet to and selecting <strong>Automatic Setup</strong>. Alternatively, you can manually paste the JavaScript beacon before the closing <code>&lt;/body&gt;</code> tag on any HTML page you’d like to track from your origin. Just select “manage site” from the Web Analytics tab in the dashboard.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="548" height="152" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=548&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=548&amp;h=152&amp;f=webp&amp;fit=cover&amp;position=center 548w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=640&amp;h=178&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=750&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=828&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=1080&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=1096&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 1096w" alt="BLOG-2675 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47S8RFZHQQ778W0H2QCEEH.png&amp;w=548&amp;h=152&amp;f=webp" data-lightbox-width="548" data-lightbox-height="152" data-astro-cid-7nvefuv6="true" sizes="(min-width: 548px) 548px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="548" height="152" class="pt-portable-image-media"></div>
+</figure>
+<p>Once enabled, the JS snippet works with visitors’ browsers to measure how the user experienced page load times and reports on critical client-side metrics. Below these metrics are resource attribution tables that help users understand which assets are taking the most time per metrics to load so that users can better optimize their site performance.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49AB54T7EVHPEVYMNNSHR0.png&amp;w=1488&amp;h=708&amp;f=webp" data-lightbox-width="1488" data-lightbox-height="708" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
+</figure>
+<h2>What does privacy-first mean?</h2>
+<p>From the beginning, our Web Analytics tools have centered on providing insights without compromising privacy. Being privacy-first means we don’t track individual users for analytics. We don’t use any client-side state (like cookies or localStorage) for analytics purposes, and we don’t track users over time by IP address, User Agent, or any other fingerprinting technique.</p>
+<p>Moreover, when enabling Web Analytics, you can choose to drop requests from European and UK visitors if you so desire (listed <a href="https://developers.cloudflare.com/speed/speed-test/rum-beacon/#rum-excluding-eeaeu" target="_blank" rel="noopener noreferrer"><u>here</u></a> specifically), meaning we will not collect any RUM metrics from traffic that passes through our European and UK data centers. <strong>The version of Web Analytics that will be enabled by default excludes data from EU visitors (this can be changed in the dashboard if you want).&nbsp;</strong></p>
+<p>The concept of a <em>visit</em> is key to our privacy approach. Rather than count unique IP addresses (requiring storing state about each visitor), we simply count page views that originate from a distinct referral or navigation event, avoiding the need to store information that might be considered personal data. We believe this same concept that we’ve used for years in providing our privacy-first Web Analytics can be logically extended to network and origin metrics. This will allow customers to gain the insights they need to debug and solve performance issues while ensuring they are not collecting unneeded data on visitors.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46RSRM817GRZR0MDR1J3M8.png&amp;w=1772&amp;h=1328&amp;f=webp" data-lightbox-width="1772" data-lightbox-height="1328" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<h2>Opting-out</h2>
+<p>We built our Web Analytics service to give you the insights you need to run your website, all while maintaining a privacy-first approach. However, if you do want to opt-out, here are the steps to do so.</p>
+<h3>Via Dashboard</h3>
+<p>If you have a free domain and do not want Web Analytics automatically enabled for your zone you should do the following before October 15, 2025:&nbsp;</p>
+<ol>
+	<li>Navigate to the zone in the Cloudflare dashboard</li>
+	<li>In the list on the left of the screen, navigate to Web Analytics<br></li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HBMGWKM6ZKA1KPEDWH7W.png&amp;w=1159&amp;h=750&amp;f=webp" data-lightbox-width="1159" data-lightbox-height="750" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li></li>
+	<li>On the next page, select either `Enable Globally` or `Exclude EU` to activate the feature<br></li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="376" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=715&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=750&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=828&amp;h=435&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=1080&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=1280&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=1430&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46NNH059PJQC6E71C13GAM.png&amp;w=1920&amp;h=1009&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1009" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="376" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li></li>
+	<li>Once Web Analytics has been activated, navigate to `Manage RUM Settings` in the Web Analytics dashboard<br></li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="384" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=640&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=750&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=828&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=1080&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=1280&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=1430&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CQHB0FP8HMNV533V0TBT.png&amp;w=1165&amp;h=626&amp;f=webp" data-lightbox-width="1165" data-lightbox-height="626" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="384" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li></li>
+	<li>Then, on the next page, select `Disable` to disable Web Analytics for the zone<br></li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="258" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=640&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=750&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=828&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=1080&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=1280&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=1430&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4828XF4N9QC1RAVD8FQZWG.png&amp;w=1920&amp;h=692&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="692" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="258" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li></li>
+	<li>OR, to remove Web Analytics from the zone entirely, delete the configs by clicking <code>Advanced Options</code> and then <code>Delete<br></code></li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="399" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=715&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=640&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=715&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=750&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=828&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=1080&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=1280&amp;h=714&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=1430&amp;h=798&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2675 10" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW496M0C3NHSMT6YD3TQGA9P.png&amp;w=1920&amp;h=1072&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1072" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="399" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li>Once you have disabled the product once, we will not re-enable it again. You can choose to enable it whenever you want, however.</li>
+</ol>
+<h3>Via API</h3>
+<ol>
+	<li>Create a Web Analytics configuration with the following API call:<br></li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info \</span></span>
+<span class="line"><span>    -H 'Content-Type: application/json' \</span></span>
+<span class="line"><span>    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \</span></span>
+<span class="line"><span>    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \</span></span>
+<span class="line"><span>    -d '{</span></span>
+<span class="line"><span>          "auto_install": false,</span></span>
+<span class="line"><span>          "host": "example.com",</span></span>
+<span class="line"><span>          "zone_tag": "023e105f4ecef8ad9ca31a8372d0c353"</span></span>
+<span class="line"><span>        }'</span></span>
+<span class="line"><span></span></span></code></pre>
 </div>
+<ol>
+	<li><sub><em>Note: This will not cause your zone to collect RUM data because auto_install is set to `false`</em></sub></li>
+	<li>Collect the <code>site_tag</code> and <code>zone_tag</code> fields from the response to this call<ol>
+			<li><code>site_tag</code> in this response will correspond to <code>$SITE_ID</code> in the following calls</li>
+		</ol>
+	</li>
+	<li>EITHER Disable the Web Analytics configuration with the following API call:<br></li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info/$SITE_ID \</span></span>
+<span class="line"><span>    -X PUT \</span></span>
+<span class="line"><span>    -H 'Content-Type: application/json' \</span></span>
+<span class="line"><span>    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \</span></span>
+<span class="line"><span>    -H "X-Auth-Key: $CLOUDFLARE_API_KEY" \</span></span>
+<span class="line"><span>    -d '{</span></span>
+<span class="line"><span>          "auto_install": true,</span></span>
+<span class="line"><span>          "enabled": false,</span></span>
+<span class="line"><span>          "host": "example.com",</span></span>
+<span class="line"><span>          "zone_tag": "023e105f4ecef8ad9ca31a8372d0c353"</span></span>
+<span class="line"><span>        }'</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span></code></pre>
+</div>
+<ol>
+	<li></li>
+	<li>OR Delete the Web Analytics configuration with the following API call:<br></li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/rum/site_info/$SITE_ID \</span></span>
+<span class="line"><span>    -X DELETE \</span></span>
+<span class="line"><span>    -H "X-Auth-Email: $CLOUDFLARE_EMAIL" \</span></span>
+<span class="line"><span>    -H "X-Auth-Key: $CLOUDFLARE_API_KEY"</span></span></code></pre>
+</div>
+<ol>
+	<li></li>
+</ol>
+<h2>Where We’re Going Next</h2>
+<p>Today, Web Analytics gives you visibility into how <em>people</em> experience your site in the browser. Next, we’re expanding that lens to show <em>what’s happening across the entire request path</em>, from the click in a user’s browser, through Cloudflare’s global network, to your origin servers, and back.</p>
+<p>Here’s what’s coming:</p>
+<ol>
+	<li><strong>Correlating Across Layers<br></strong>We’ll match RUM data from the client with network timing, Cloudflare edge processing, and origin response latency, allowing you to pinpoint whether a spike in TTFB comes from a slow script, a cache miss, or an origin bottleneck.</li>
+	<li><strong>Proactive Alerting<br></strong>Configurable alerts will tell you when performance regresses in specific geographies, when a data center underperforms, or when origin latency spikes.</li>
+	<li><strong>Actionable Insights<br></strong>We’ll go beyond “processing time” as a single number, breaking it into the real-world steps that make up the journey: proxy routing, security checks, cache lookups, origin fetches, and more.</li>
+	<li><strong>Unified View<br></strong>All of this will live in one place (your Cloudflare dashboard) alongside your analytics, logs, firewall events, and configuration settings, so you can see cause and effect in one workflow.</li>
+</ol>
+<h2>Conclusion</h2>
+<p>Stay tuned as we work alongside you, in public, to build the most comprehensive, privacy-focused performance analytics platform. Together, we will illuminate every corner of the request journey so you can optimize, innovate, and deliver the best experiences to your users, every time.</p>
+<p>The next chapters of this journey will unlock proactive alerts, cross-layer correlation, and actionable insights you can’t get anywhere else. Follow along as the RUM Diaries are just getting started.</p>

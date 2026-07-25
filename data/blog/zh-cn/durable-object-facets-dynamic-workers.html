@@ -1,0 +1,170 @@
+<p>几周前，我们宣布推出 <a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>，Workers 平台的一项全新特性，支持您将 Worker 代码实时加载至安全沙盒中。动态 Worker 加载器 API 本质上提供了对 Worker 底层一直以来所依赖的基础计算隔离组件的直接访问能力：即隔离环境（isolates），而非容器（containers）。Isolates 比容器轻量得多，因此加载速度可提升 100 倍，且仅占用 1/10 的内存。它们非常高效，可被视作“一次性”资源：启动一个实例运行几行代码，执行完毕即销毁。类似于安全版本的 eval () 函数。 </p>
+<p>Dynamic Workers 有很多用途。在最初的发布公告中，我们重点介绍了如何利用 Dynamic Workers 运行由 AI 智能体生成的代码，以此作为工具调用的替代方案。在此场景中，AI 智能体可根据您的请求，通过编写并执行几行代码来完成相应操作。此类代码为一次性使用，仅用于单次执行一项任务，且在执行完毕后会立即被销毁。</p>
+<p>但如果您希望 AI 生成更具持久性的代码，又该如何实现？那如果您希望 AI 构建一款带有自定义 UI、可供用户交互的小型应用，又该如何实现？如果您希望该应用具备持久化状态，又该如何实现？但是，当然，您仍然希望它在安全的沙盒环境中运行。</p>
+<p>其中一种方法是使用 Dynamic Workers，并且只需为 Worker 提供一个<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC</u></a> API，让其可以访问存储。使用 <a href="https://developers.cloudflare.com/dynamic-workers/usage/bindings" target="_blank" rel="noopener noreferrer"><u>绑定（bindings）</u></a>，您可以为 Dynamic Worker 提供一个 API，使其指回您的远程 SQL 数据库 (可能由 <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>Cloudflare D1</u></a> 支持，或您通过 <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a> 访问的 Postgres 数据库，取决于您)。</p>
+<p>不过，Workers 还提供了一种独特且性能极高的存储类型，它或许非常适用于该场景：<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects。</u></a>Durable Object 是一类特殊的 Worker，拥有唯一名称，且每个名称全局仅存在一个实例。该实例附加了一个 SQLite 数据库，该数据库位于运行 Durable Object 机器的<em>本地磁盘</em>上。这使得存储访问速度极快：接近<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>零延迟</u></a>。</p>
+<p>那么，也许您真正想要的是让 AI 为 Durable Object 编写代码，然后在 Dynamic Worker 中运行该代码。</p>
+<h2><strong>但如何做到呢？</strong></h2>
+<p>这就带来了一个奇怪的问题。通常，要使用 Durable Objects，您必须：</p>
+<ol>
+	<li>编写一个扩展 <code>DurableObject</code> 的类。</li>
+	<li>从 Worker 的主模块将其导出。</li>
+	<li><a href="https://developers.cloudflare.com/durable-objects/get-started/#5-configure-durable-object-class-with-sqlite-storage-backend" target="_blank" rel="noopener noreferrer"><u>在 Wrangler 配置中指定</u></a>应该需为此类配置存储。这将创建一个 Durable Object 命名空间，指向用于您处理传入请求的类。</li>
+	<li><a href="https://developers.cloudflare.com/durable-objects/get-started/#4-configure-durable-object-bindings" target="_blank" rel="noopener noreferrer"><u>声明 Durable Object 命名空间绑定</u></a>指向您的命名空间 (或使用 <a href="https://developers.cloudflare.com/workers/runtime-apis/context/#exports" target="_blank" rel="noopener noreferrer"><u>ctx.exports</u></a>)，并使用它向您的 Durable Object 发出请求。</li>
+</ol>
+<p>这种模式无法自然适配至 Dynamic Workers。首先，一个显而易见的问题是：代码是动态加载的。您无需调用任何 Cloudflare API 即可运行它。但 Durable Object 存储必须通过 API 配置开通，且命名空间必须指向一个实现类。它不能指向您的 Dynamic Worker。</p>
+<p>但还有一个更深层的问题：即便您能通过某种方式将 Durable Object 命名空间直接指向一个 Dynamic Worker，您真的希望这样做吗？您是否希望您的智能体（或用户）能够创建一整个包含大量 Durable Object 的命名空间？随意使用遍布全球的无限制存储？</p>
+<p>您很可能不希望这样做。您可能需要一些管控。您可能希望限制，或至少追踪其创建的 Durable Object 数量。也许您希望将其限制为一个对象（对于采用氛围编码的个人应用可能已经足够）。您可能希望添加日志记录及其他可观测性能力。指标，账单，等等。</p>
+<p>要实现这一切，您真正想要的是：将发往这些 Durable Object 的请求<em>首先</em>转发至<em>您的</em>代码，由您的代码完成所有调度与管控逻辑处理后，<em>再</em>将请求转发至智能体代码。您需要编写一个<em>监管程序</em>，使其作为每个 Durable Object 的一部分运行。</p>
+<h2><strong>解决方案：Durable Object Facets</strong></h2>
+<p>我们今天推出公测版的这一全新功能就是为了解决上述问题。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=750&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=828&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1080&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1280&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1430&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3211 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HKZJANBGF7YV1BB7BZMD.png&amp;w=1920&amp;h=1064&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1064" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="396" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Durable Object Facets</u></a> 允许您动态加载和实例化 Durable Object 类，同时为其提供 SQLite 数据库用于存储。通过 Facets：</p>
+<ul>
+	<li>首先，创建一个普通的 Durable Object 命名空间，指向<em>您</em>编写的一个类。</li>
+	<li>在该类中，您将智能体的代码作为 Dynamic Worker 加载，并对其进行调用。</li>
+	<li>Dynamic Worker 的代码可以直接实现一个 Durable Object 类。换句话说，它导出了一个<code>继承自 DurableObject</code> 的类。</li>
+	<li>您正在将该类实例化为您的 Durable Object 的一个facet（面）。</li>
+	<li>该面拥有自己的 SQLite 数据库，可通过普通的 Durable Object 存储 API 使用该数据库。该数据库与监管程序的数据库相互独立，但二者作为同一整体 Durable Object 的组成部分共同存储。</li>
+</ul>
+<h2><strong>工作原理</strong></h2>
+<p>以下是一个简单且完整的应用平台实现示例，可动态加载并运行一个 Durable Object 类：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DurableObject } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "cloudflare:workers"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// For the purpose of this example, we'll use this static</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// application code, but in the real world this might be generated</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// by AI (or even, perhaps, a human user).</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> AGENT_CODE</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  import { DurableObject } from "cloudflare:workers";</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">  // Simple app that remembers how many times it has been invoked</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  // and returns it.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  export class App extends DurableObject {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    fetch(request) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      // We use storage.kv here for simplicity, but storage.sql is</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      // also available. Both are backed by SQLite.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      let counter = this.ctx.storage.kv.get("counter") || 0;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      ++counter;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      this.ctx.storage.kv.put("counter", counter);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">      return new Response("You've made " + counter + " requests.</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">n");</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// AppRunner is a Durable Object you write that is responsible for</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// dynamically loading applications and delivering requests to them.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Each instance of AppRunner contains a different app.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> AppRunner</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> DurableObject</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // We've received an HTTP request, which we want to forward into</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // the app.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // The app itself runs as a child facet named "app". One Durable</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Object can have any number of facets (subject to storage limits)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // with different names, but in this case we have only one. Call</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // this.ctx.facets.get() to get a stub pointing to it.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> facet </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.facets.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"app"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // If this callback is called, it means the facet hasn't</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // started yet (or has hibernated). In this callback, we can</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // tell the system what code we want it to load.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Load the Dynamic Worker.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> worker </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">#loadDynamicWorker</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Get the exported class we're interested in.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> appClass </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> worker.</span><span class="sk-6f42c1-ffc799">getDurableObjectClass</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"App"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> { class: appClass };</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Forward request to the facet.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // (Alternatively, you could call RPC methods here.)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> facet.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // RPC method that a client can call to set the dynamic code</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // for this app.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  setCode</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">code</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Store the code in the AppRunner's SQLite storage.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Each unique code must have a unique ID to pass to the</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Dynamic Worker Loader API, so we generate one randomly.</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.ctx.storage.kv.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"codeId"</span><span class="sk-24292e-fff">, crypto.</span><span class="sk-6f42c1-ffc799">randomUUID</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.ctx.storage.kv.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"code"</span><span class="sk-24292e-fff">, code);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  #</span><span class="sk-6f42c1-ffc799">loadDynamicWorker</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Use the Dynamic Worker Loader API like normal. Use get()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // rather than load() since we may load the same Worker many</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // times.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> codeId </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.storage.kv.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"codeId"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(codeId, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // This Worker hasn't been loaded yet. Load its code from</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // our own storage.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> code </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.ctx.storage.kv.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"code"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        compatibilityDate: </span><span class="sk-032f62-99ffe4">"2026-04-01"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        mainModule: </span><span class="sk-032f62-99ffe4">"worker.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        modules: { </span><span class="sk-032f62-99ffe4">"worker.js"</span><span class="sk-24292e-fff">: code },</span></span>
+<span class="line"><span class="sk-24292e-fff">        globalOutbound: </span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">,  </span><span class="sk-6a737d-8b8b8b94">// block network access</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// This is a simple Workers HTTP handler that uses AppRunner.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Get the instance of AppRunner named "my-app".</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // (Each name has exactly one Durable Object instance in the</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // world.)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> obj </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ctx.exports.AppRunner.</span><span class="sk-6f42c1-ffc799">getByName</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-app"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Initialize it with code. (In a real use case, you'd only</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // want to call this once, not on every request.)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> obj.</span><span class="sk-6f42c1-ffc799">setCode</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">AGENT_CODE</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Forward the request to it.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> obj.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(req);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>在本例中：</p>
+<ul>
+	<li><code>AppRunner</code> 是由平台开发人员（您）编写的“普通” Durable Object。</li>
+	<li><code>AppRunner</code> 的每个实例管理一个应用。它存储应用的代码并按需加载。</li>
+	<li>应用本身实现并导出一个 Durable Object 类，平台要求该类命名为 <code>App</code>。</li>
+	<li><code>AppRunner</code> 使用 Dynamic Workers 加载应用代码，然后作为一个 Durable Object Facet 执行代码。</li>
+	<li><code>AppRunner</code> 的每个实例都是一个由 <em>两个</em> SQLite 数据库组成的 Durable Object：一个属于父级 （<code>AppRunner</code> 本身），一个属于该 facet （<code>App</code>）。这些数据库是隔离的：应用无法读取 <code>AppRunner</code> 的数据库，只能读取自己的数据库。</li>
+</ul>
+<p>要运行该示例，请将上面的代码复制到文件 <code>worker.j</code>s 中，配置如下 <code>wrangler.jsonc</code>，并使用 <code>npx wrangler dev</code> 在本地运行。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc for the above sample worker.</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "compatibility_date"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2026-04-01"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "main"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"worker.js"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "migrations"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "tag"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"v1"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "new_sqlite_classes"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "AppRunner"</span></span>
+<span class="line"><span class="sk-24292e-fff">      ]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "worker_loaders"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"LOADER"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2><strong>开始构建</strong></h2>
+<p>Facets 是 Dynamic Workers 的一项特性，测试版已向 Workers Paid 计划用户开放。</p>
+<p>请查看文档以了解有关 <a href="https://developers.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a> 和 <a href="https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets" target="_blank" rel="noopener noreferrer"><u>Facets</u></a> 的更多信息。</p>

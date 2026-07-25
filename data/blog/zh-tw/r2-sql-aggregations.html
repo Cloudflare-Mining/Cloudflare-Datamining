@@ -1,0 +1,91 @@
+<p>在處理大量資料時，快速獲取概觀是非常有幫助的——這正是 SQL 中的彙總所提供的功能。彙總，也被稱為「GROUP BY 查詢」，能提供鳥瞰式的視角，讓您能迅速從海量資料中獲得見解。</p>
+<p>正因如此，我們非常激動地宣佈：<a href="https://blog.cloudflare.com/r2-sql-deep-dive" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> 現已支援彙總功能。R2 SQL 是 Cloudflare 推出的無伺服器、分散式分析查詢引擎，能夠對儲存在 <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a> 中的資料進行 SQL 查詢。彙總功能將協助 <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> 使用者發現資料中的重要趨勢與變化、產生報告，並在記錄中找出異常。</p>
+<p>此次發佈基於已支援的篩選查詢功能，後者是分析工作負載的基礎，允許使用者在 <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> 檔案的大量資料中找到所需的資訊。</p>
+<p>在本文中，我們將詳細介紹彙總功能的用途和特點，然後深入探討我們如何擴展 R2 SQL 以支援在儲存在 R2 Data Catalog 中的海量資料上執行此類查詢。</p>
+<h2>彙總於分析的重要性</h2>
+<p>彙總也稱為「GROUP BY 查詢」，可以產生底層資料的簡要匯總。</p>
+<p>一個常見的彙總用例是產生報告。假設有一個名為「sales」的表格，其中包含某組織在各個國家/地區和部門的歷史銷售資料。我們可以使用如下彙總查詢輕鬆產生按部門統計的銷售報告：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span></code></pre>
+</div>
+<p><br>我們可以使用「GROUP BY」陳述式，將表中的列劃分為多個儲存桶。每個儲存桶都有一個標籤，對應一個特定部門。當所有列被劃分進各自的儲存桶後，我們就可以對每個儲存桶中的所有列計算「sum(value)」，從而得到該部門的總銷售量。</p>
+<p>對於某些報告，我們可能只關心銷售量最高的部門。這時，「ORDER BY」陳述式就派上用場了：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">DESC</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
+</div>
+<p>這裡我們指示查詢引擎按照各部門的總銷售量降序排列，並僅返回前 10 個銷售量最高的部門。</p>
+<p>最後，我們有時可能希望濾除異常資料。例如，我們只想在報告中包含總銷售量大於 5 的部門。我們可以輕鬆地透過「HAVING」陳述式實現這一點：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">), </span><span class="sk-005cc5-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">HAVING</span><span class="sk-005cc5-ffc799"> count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 5</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">value</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">DESC</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 10</span></span></code></pre>
+</div>
+<p>我們在查詢中添加了一個新的彙總函式「count(*)」，它用於計算每個儲存桶中有多少列。這直接對應於該部門的銷售次數，因此我們也在「HAVING」陳述式中新增了一個條件，確保只保留那些列數大於 5 的儲存桶。</p>
+<h2>兩種彙總方式：早計算還是晚計算</h2>
+<p>彙總查詢有一個有趣的特性：它們可以參照並不實際存在於原始資料中的欄。以「sum(value)」為例：這個欄是由查詢引擎在執行時動態計算出來的，而像「department」這樣的欄則是直接從儲存在 R2 上的 Parquet 檔案中讀取的。這個細微差別意味著，任何參照了如「sum」、「count」等彙總函式的查詢，都需要分成兩個階段來處理。</p>
+<p>第一階段是計算新欄。如果我們要使用「ORDER BY」陳述式按「count(*)」欄對資料進行排序，或使用「HAVING」陳述式基於該欄篩選列，我們需要知道該欄的值。一旦知道「count(*)」等欄的值，我們就可以繼續執行查詢的其餘部分。</p>
+<p>請注意，如果查詢在「HAVING」或「ORDER BY」子句中沒有參照彙總函式，但仍在「SELECT」子句中使用它們，我們可以使用一種技巧。由於我們直到最後才需要彙總函式的值，因此我們可以部分計算它們，並在準備向使用者傳回結果之前再合併結果。</p>
+<p>這兩種方法之間的關鍵區別在於我們何時計算彙總函式：是提前算好，以便後續做更多處理；還是按需即時計算，邊處理邊建立最終結果。</p>
+<p>首先，我們來探討「即時建立結果」的方式——我們稱之為「分散-聚集彙總」(scatter-gather aggregations)。接著在此基礎上，我們會介紹「洗牌式彙總」(shuffling aggregations)，它支持在彙總函式之上執行額外的操作，例如「HAVING」和「ORDER BY」。</p>
+<h2>分散-聚集彙總</h2>
+<p>沒有使用「HAVING」和「ORDER BY」子句的彙總查詢能夠以類似於篩選查詢的方式執行。對於篩選查詢，R2 SQL 會選擇一個節點作為查詢執行的協調節點。該節點分析查詢內容，並查閱 R2 Data Catalog，以確定哪些 Parquet 列群組可能包含與查詢相關的資料。每一個 Parquet 列群組代表一個相對較小的任務單元，可由單個計算節點處理。協調節點將任務分發給多個工作節點，收集結果並傳回給使用者。</p>
+<p>為了執行彙總查詢，我們遵循相同的步驟，將小任務分發給工作節點。但這一次，工作節點不僅要依據「WHERE」陳述式中的條件篩選列，還要計算<strong>「預彙總」(pre-aggregates)</strong>。</p>
+<p>預彙總是彙總過程的中間狀態。它是對一部分資料做部分彙總後的不完整結果。多個預彙總可以被合併，以計算出彙總函式的最終值。將彙總函式拆分為多個預彙總，使我們可以水平擴展彙總計算，充分利用 Cloudflare 網路中的龐大計算資源。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="674" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=640&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=750&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=828&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1080&amp;h=1018&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1280&amp;h=1207&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1430&amp;h=1348&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3082 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45BPPXJKC47WPRR8TQZR5H.png&amp;w=1920&amp;h=1811&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1811" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="674" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>例如，「count(*)」的預彙總結果就是一個數字，代表資料子集中列的數量。計算最終的「count(*)」就像將這些數字相加一樣簡單。「avg(value)」的預彙總結果包含兩個數字：「sum(value)」和「count(*)」。然後，可以透過將所有「sum(value)」值相加，將所有「count(*)」值相加，最後將第一個數位除以第二個數位來計算「avg(value)」的值。</p>
+<p>當工作節點完成預彙總的計算後，會將結果資料流給協調節點。協調節點收集所有結果，根據預彙總計算出彙總函式的最終值，並將最終結果傳回給使用者。</p>
+<h2>洗牌機制：超越分散-聚集</h2>
+<p>當協調節點可以透過合併來自各個工作節點的小型、部分狀態來計算最終結果時，分散-彙總的方式非常高效。如果您執行類似 <code>SELECT sum(sales) FROM orders</code> 這樣的查詢，協調節點會從每個工作節點收到一個單一數值並相加。無論 R2 中儲存了多少資料，協調節點的記憶體佔用都可以忽略不計。</p>
+<p>然而，當查詢需要根據彙總<em>結果</em>進行排序或篩選時，這種方式就會變得低效。考慮下面這個查詢——它用於找出銷售額最高的前兩個部門：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">SELECT</span><span class="sk-24292e-fff"> department, </span><span class="sk-005cc5-ffc799">sum</span><span class="sk-24292e-fff">(sales)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> sales</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">GROUP BY</span><span class="sk-24292e-fff"> department</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">ORDER BY</span><span class="sk-005cc5-ffc799"> sum</span><span class="sk-24292e-fff">(sales) </span><span class="sk-d73a49-ffc799">DESC</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">LIMIT</span><span class="sk-005cc5-ffc799"> 2</span></span></code></pre>
+</div>
+<p>要正確確定全域的前 2 名，需要知道整個資料集中每個部門的銷售總額。由於資料在底層 Parquet 檔案中是隨機分佈的，某個特定部門的銷售記錄很可能分散在許多不同的工作節點上。一個部門在每個單獨的工作節點上的銷售額可能都很低，因此不會進入任何本地的「前 2」清單，但在全域匯總後卻可能是銷售額最高的部門。</p>
+<p>下圖展示了分散-彙總方法為何不適用於此查詢。「Dept A」是全球銷售額冠軍，但由於它的銷售記錄均勻分佈在多個工作節點上，它沒有進入某些本地的前 2 清單，最終被協調節點丟棄。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="674" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=640&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=715&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=750&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=828&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1080&amp;h=1018&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1280&amp;h=1207&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1430&amp;h=1348&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3082 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463ZP69R3N5R25QG4E9T0V.png&amp;w=1920&amp;h=1811&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1811" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="674" class="pt-portable-image-media"></div>
+</figure>
+<p>因此，當查詢按全域彙總結果排序時，協調節點無法依賴來自工作節點的預篩選結果。它必須向<em>每個</em>工作節點請求<em>每個</em>部門的銷售總額，以便在計算全域總數後進行排序。如果按高基數欄（如 IP 位址或使用者 ID）進行分組，這就會迫使協調節點接收並合併數百萬列資料，從而在單個節點上造成資源瓶頸。</p>
+<p>為了解決這個問題，我們需要引入<strong>洗牌 (shuffling)</strong>——一種在最終彙總發生之前，將特定分組的資料重新聚集到一起的方法。</p>
+<h3>彙總資料的洗牌</h3>
+<p>為了解決資料隨機分佈帶來的挑戰，我們引入了一個<strong>洗牌階段</strong>。工作節點不再將結果傳送給協調節點，而是直接相互交換資料，根據分組鍵將列資料進行歸類。</p>
+<p>這種路由依賴於<strong>確定性雜湊分區</strong>。當工作節點處理一列資料時，它會對 <code>GROUP BY</code> 列進行雜湊計算，以確定目標工作節點。由於該雜湊是確定性的，叢集中的每個工作節點都能獨立地就特定資料應傳送到哪裡達成一致。例如，如果「Engineering」的雜湊值指向工作節點 5，那麼所有工作節點都知道應將「Engineering」相關的列路由到工作節點 5。無需中央註冊表。</p>
+<p>下圖展示了這一流程。注意「Dept A」最初位於工作節點 1、2 和 3 上。因為雜湊函數將「Dept A」對應到工作節點 1，所有工作節點都會將這些列路由到同一個目的地。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="622" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=715&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=640&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=715&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=750&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=828&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1080&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1280&amp;h=1114&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1430&amp;h=1244&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3082 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45ZD7B5A4ZRR0NG4HHEKV4.png&amp;w=1920&amp;h=1671&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1671" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="622" class="pt-portable-image-media"></div>
+</figure>
+<p>洗牌彙總能夠產生正確的結果。然而，這種「全部對全部」(all-to-all) 的資料交換會引入時序依賴。如果工作節點 1 在工作節點 3 尚未完成傳送其「Dept A」資料份額時就提前開始計算最終總額，那麼結果將是不完整的。</p>
+<p>為了解決這個問題，我們強制執行嚴格的<strong>同步屏障</strong>。協調節點追蹤整個叢集的進度，而工作節點則緩衝它們的輸出資料，並透過 <a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC</u></a> 流刷新到對等節點。只有當每個工作節點確認已完成輸入檔案的處理並已刷新完洗牌緩衝區時，協調節點才會發出繼續執行的命令。這一屏障保證在進入下一階段時，每個工作節點上的資料集都是完整且準確的。</p>
+<h3>本地最終化</h3>
+<p>一旦同步屏障解除，每個工作節點都持有其被指派群組的完整資料集。此時，工作節點 1 擁有「Dept A」100% 的銷售記錄，並能確定地計算出最終總額。</p>
+<p>這使得我們可以將篩選、排序等計算邏輯下推到工作節點執行，而不必讓協調節點承擔這些負擔。例如，如果查詢包含 <code>HAVING count(*) &gt; 5</code>，工作節點可以在彙總完成後立即濾除不滿足該條件的群組。</p>
+<p>在此階段的末尾，每個工作節點會為它所負責的群組產生一個已排序的最終結果流。</p>
+<h3>流式歸併</h3>
+<p>最後一塊拼圖是協調節點。在分散-彙總模型中，協調節點需要承擔對整個資料集進行彙總與排序的高開銷任務。而在洗牌模型中，它的角色發生了變化。</p>
+<p>由於工作節點已經在本地計算出了最終的彙總結果並完成了排序，協調節點只需執行一次 <strong>k 路歸併 (k-way merge)</strong>。它會為每個工作節點打開一個資料流程，逐列讀取結果；比較每個工作節點當前列的排序值，根據排序規則選出「勝出者」，並將其加入即將傳回給使用者的最終查詢結果中。</p>
+<p>這種方法對於 <code>LIMIT</code> 查詢尤其高效。如果使用者請求前 10 個部門，協調節點會在歸併過程中找到前 10 條記錄後立即停止處理，而無需載入或歸併剩餘的數百萬行資料。這樣可以在不大量消耗計算資源的前提下，支援更大規模的操作。</p>
+<h2>用於處理海量資料集的強大引擎</h2>
+<p>隨著彙總功能的加入，<a href="https://developers.cloudflare.com/r2-sql/?cf_target_id=84F4CFDF79EFE12291D34EF36907F300" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> 從一個擅長篩選資料的工具，轉變為能夠在海量資料集上進行資料處理的強大引擎。這得益于我們實現了諸如「分散-彙總」與「洗牌」等分散式執行策略，使我們能夠將計算推送到資料儲存的位置，充分利用 Cloudflare 的全球計算與網路規模。</p>
+<p>無論您是要產生報表、監控大批量記錄以發現異常，還是僅僅想從資料中洞察趨勢，現在都可以在 Cloudflare 開發人員平台內輕鬆完成這一切，而無需承擔管理複雜 OLAP 基礎架構的開銷，也不必將資料移出 R2。</p>
+<h2>立即嘗試</h2>
+<p>R2 SQL 的彙總功能現已可用。我們非常期待看到您使用這些新功能處理 R2 Data Catalog 中的資料。</p>
+<ul>
+	<li><strong>開始使用：</strong>查看我們的<a href="https://developers.cloudflare.com/r2-sql/sql-reference" target="_blank" rel="noopener noreferrer"><u>文件</u></a>，獲取有關執行彙總查詢的範例和語法指南。</li>
+	<li><strong>加入對話：</strong>如果您有任何問題、回饋，或想要分享您正在建置的專案，歡迎加入 Cloudflare <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>開發人員 Discord</u></a> 與我們交流。</li>
+</ul>

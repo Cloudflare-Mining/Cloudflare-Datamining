@@ -1,166 +1,92 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1b2F0nrpxexHoWaoD5g5GI/e5e21f5ba0779317a03cdc61fdc23fe5/how-we-decreased-pages-latency.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>In an era where visitors expect instant gratification and content on-demand, every millisecond counts. If you’re a web application developer, it’s an excellent time to be in this line of business, but with great power comes great responsibility. You’re tasked with creating an experience that is not only intuitive and delightful but also quick, reactive and responsive – sometimes with the two sides being at odds with each other. To add to this, if your business completely runs on the internet (say ecommerce), then your site’s Core Web Vitals could make or break your bottom line.</p>
-	<p>You don’t just need fast – you need <i>magic</i> fast. For the past two years, Cloudflare Pages has been serving up performant applications for users across the globe, but this week, we’re showing off our brand new, lightning fast architecture, decreasing the TTFB by up to 10X when serving assets.</p>
-	<p>And while a magician never reveals their secrets, this trick is too good to keep to ourselves. For all our application builders, we’re thrilled to share the juicy technical details on how we adopted Workers for Platforms — our extension of Workers to build SaaS businesses on top of — to make Pages one of the fastest ways to serve your sites.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-problem">The problem</h3>
-		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When we <a href="https://blog.cloudflare.com/cloudflare-pages-ga">launched Pages in 2021</a>, we didn’t anticipate the exponential growth we would experience for our platform in the months and years to come. As our users began to adopt Pages into their development workflows, usage of our platform began to skyrocket. However, while riding the high of Pages’ success, we began to notice a problem – a rather large one. As projects grew in size, with every deployment came a pinch more latency, slowly affecting the end users visiting the Pages site. Customers with tens of thousands of deployments were at risk of introducing latency to their site – a problem that needed to be solved.</p>
-	<p>Before we dive into our technical solution, let’s first explore further the setup of Pages and the relationship between number of deployments and the observed latency.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-could-this-be">How could this be?</h3>
-		<a href="https://blog.cloudflare.com/#how-could-this-be" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Built on top of Cloudflare Workers, Pages serves static assets through a highly optimised Worker. We refer to this as the Asset Server Worker.</p>
-	<p>Users can also add dynamic content through Pages Functions which eventually get compiled into a separate Worker. Every single Pages deployment corresponds to unique instances of these Workers composed in a pipeline.</p>
-	<p>When a request hits Cloudflare we need to look up which pipeline to execute. As you’d expect, this is a function of the hostname in the URL.</p>
-	<p>If a user requested <a href="https://2b469e16.example.pages.dev/index.html" target="_blank" rel="noopener noreferrer">https://2b469e16.example.pages.dev/index.html</a>, the hostname is <a href="https://2b469e16.example.pages.dev/index.html" target="_blank" rel="noopener noreferrer">2b469e16.example.pages.dev</a> which is unique across all deployments on Pages — 2b469e16 is typically the commit hash and example in this case refers to the name of the project.</p>
-	<p>Every Pages project has its own routing table which is used to look up the pipeline to execute. The routing table happens to be a JSON object with a list of regexes for possible paths in that project (in our case, one for every deployment) and their corresponding pipelines.</p>
-	<p>The script_hash in the example below refers to the pipeline identifier. Naming is hard indeed.</p>
-	<pre class="language-json"><code class="language-json">{
- "filters": [
-   {
-     "pattern": "^(?:2b469e16.example.pages.dev(?:[:][0-9]+)?\\/(?&lt;p1&gt;.*))$",
-     "script_hash": "..."
-   },
-   {
-     "pattern": "^(?:example.pages.dev(?:[:][0-9]+)?\\/(?&lt;p1&gt;.*))$",
-     "script_hash": "..."
-   },
-   {
-     "pattern": "^(?:test.example.com(?:[:][0-9]+)?\\/(?&lt;p1&gt;.*))$",
-     "script_hash": "..."
-   }
- ],
- "v": 1
-}</code></pre>
-	<p>So to look up the pipeline in question, we would: download this JSON object from Quicksilver, parse it, and then iterate through this until it finds a regex that matches the current request.</p>
-	<p>Unsurprisingly, this is expensive. Let’s take a look at a quick real world example to see <i>how</i> expensive.</p>
-	<p>In one realistic case, it took us 107ms just to <i>parse</i> the JSON. The larger the JSON object gets, the more compute it takes to parse it — with tens of thousands of deployments (not unusual for very active projects that deploy immutable preview deployments for every git commit), this JSON could be several megabytes in size!</p>
-	<p>It doesn’t end there though. After parsing this, it took 29ms to then iterate and test several regexes to find the one that matched the current request.</p>
-	<p>To summarise, every single request to this project would take 136ms to just pick the right pipeline to execute. While this was the median case for projects with 10,000 deployments on average, we’ve seen projects with <b>seconds</b> in added latency making them unusable after 50,000 deployments, punishing users for using our platform.</p>
-	<p>Given most web sites load more than one asset for a page, this leads to timeouts and breakage leading to an unstable and unacceptable user experience.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-secret-sauce-is-workers-for-platforms">The secret sauce is Workers for Platforms</h3>
-		<a href="https://blog.cloudflare.com/#the-secret-sauce-is-workers-for-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We launched <a href="https://blog.cloudflare.com/workers-for-platforms">Workers for Platforms</a> last year as a way to build ambitious platforms on top of Workers. Workers for Platforms lets one build complex pipelines where a request may be served by a Worker built and maintained by you but could then dispatch to a Worker written by a user of your platform. This allows your platform’s users to write their own Worker like they’ve been used to but while you control how and when they are executed.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/27P8dholN414dEiSnVKtUb/87156e682888a0a329799a756e0578ef/image4-23.png" alt="" class="kg-image" width="1366" height="711" loading="lazy">
-
-	</figure>
-	<p>This isn’t very different from what we do with Pages. Users write their Pages functions which compile into a Worker. Users also upload their own static assets which are then bound to our special Asset Server Worker in unique pipelines for each of their deployments. And we control how and when which Worker gets executed based on a hostname in their URL.</p>
-	<p>Runtime lookups shouldn’t be O(n) though but O(1). Because Workers for Platforms was designed to build entire platforms on top of, lookups when trying to dispatch to a user’s Worker were designed as O(1) ensuring latency wasn’t a function of number of Workers in an account.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-solution">The solution</h3>
-		<a href="https://blog.cloudflare.com/#the-solution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>By default, Workers for Platforms hashes the name of the Worker with a secret and uses that for lookups at runtime. However, because we need to dispatch by hostname, we had a different idea. At deployment time, we could hash the pipeline for the deployment by its hostname — <a href="https://2b469e16.example.pages.dev/index.html" target="_blank" rel="noopener noreferrer">2b469e16.example.pages.dev</a>, for example.</p>
-	<p>When a request comes in, we hash the hostname from the URL with our predefined secret and then use that value to look up the pipeline to execute. This entirely removes the necessity to fetch, parse and traverse the routing table JSON from before, now making our lookup O(1).</p>
-	<p>Once we were happy with our new setup from internal testing we wanted to onboard a real user. Our <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">Developer Docs</a> have been <a href="https://blog.cloudflare.com/new-dev-docs">running on Pages</a> since the start of 2022 and during that time, we’ve dogfooded many different features and experiments. Due to the great relationship between our two teams and them being a sizable customer of ours we wanted to bring them onto our new Workers for Platform routing.</p>
-	<p>Before opting them in, TTFB was averaging at about 600ms.</p>
-	<p>After opting them in, TTFB is now 60ms. <a href="https://developers.cloudflare.com/analytics/web-analytics" target="_blank" rel="noopener noreferrer">Web Analytics</a> shows a noticeable drop in entire page load time as a result.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2hOpJu5iOcgDj5g7A9MR6W/690f8c5c96c4cc9a07f17d0a5d784472/Untitled.png" alt="Web Analytics showing Page Load going from averaging roughly 3 seconds to 1.5 seconds" class="kg-image" width="1600" height="1203" loading="lazy">
-
-	</figure>
-	<p>This improvement was also visible through <a href="https://developer.chrome.com/en/docs/lighthouse/performance/performance-scoring" target="_blank" rel="noopener noreferrer">Lighthouse scores</a> now approaching a perfect score of 100 instead of 78 which was the average we saw previously.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DOMSoGft9tLCzg68wtXSN/bb3440d4f5e0c82a906dfb9793d71cfd/Untitled--1-.png" alt="" class="kg-image" width="1600" height="649" loading="lazy">
-
-	</figure>
-	<p>The team was ecstatic about this especially given all of this happened under the hood with no downtime or required engineering team on their end. Not only is <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/</a> faster, we’re using less compute to serve it to all of you.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-big-migration">The big migration</h3>
-		<a href="https://blog.cloudflare.com/#the-big-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Migrating <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">developers.cloudflare.com</a> was a big milestone for us and meant our new infrastructure was capable of handling traffic at scale. But a goal we were very certain of was migrating every Pages deployment ever created. We didn’t want to leave any users behind.</p>
-	<p>Turns out, that wasn’t a small number. There’d been over 14 million deployments so far over the years. This was about to be one of the biggest migrations we’d done to runtime assets and the risk was that we’d take down someone’s site.</p>
-	<p>We approached this migration with some key goals:</p>
-	<ul>
-		<li>
-			<p>Customer impact in terms of downtime was a no go, all of this needed to happen under the hood without anyone’s site being affected;</p>
-		</li>
-		<li>
-			<p>We needed the ability to A/B test the old and new setup so we could revert on a per site basis if something went wrong or was incompatible;</p>
-		</li>
-		<li>
-			<p>Migrations at this scale have the ability to cause incidents because they exceed the typical request capacity of our APIs in a short window so they need to run slowly;</p>
-		</li>
-		<li>
-			<p>Because this was likely to be a long running migration, we needed the ability to look at metrics and retry failures.</p>
-		</li>
-	</ul>
-	<p>The first step to all of this was to add the ability to A/B test between the legacy setup and the new one. To ensure we could A/B between the legacy setup and new one at any time, we needed to deploy both a regular pipeline (and updated routing table) and new Workers for Platforms hashed one for every deployment.</p>
-	<p>We also added a feature flag that allowed us to route to either the legacy setup or the new one per site or per data centre with the ability to explicitly opt out a site when an edgecase didn’t work.</p>
-	<p>With this setup, we started running our long running migration behind the scenes that duplicated every single deployment to the new Workers for Platforms enabled pipelines.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cH3RPk39q50jgPD42nDej/d1ef38c399ffe3a8bb9a2e889863f267/unnamed--1-.png" alt="" class="kg-image" width="1600" height="474" loading="lazy">
-
-	</figure>
-	<p>Duplicating them instead of replacing them meant that risk was low and A/B would be possible with the tradeoff of more cleanup after we finished but we picked that with reliability for users in mind.</p>
-	<p>A few days in after all 14 million deployments had finished migrating over, we started rollout to the new infrastructure with a percentage based rollout. This was a great way for us to find issues and ensure we were ready to serve all runtime traffic for Pages without the risk of an incident.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UKjjt2upheD8aALjmDMT4/9634075b6f2d3d823ff7e257ed1e1f98/image--2-.png" alt="" class="kg-image" width="1368" height="608" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="feeding-three-birds-with-one-scone">Feeding three birds with one scone</h3>
-		<a href="https://blog.cloudflare.com/#feeding-three-birds-with-one-scone" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Alongside the significant latency improvements for Pages projects, this change also gave improvements in other areas:</p>
-	<ul>
-		<li>
-			<p><b><b><b>Lower CPU usage</b></b></b> - Since we no longer need to parse a huge JSON blob and do potentially thousands of regex matches, we saved a nice amount of CPU time across thousands of machines across our data centres.</p>
-		</li>
-		<li>
-			<p><b><b><b>Higher LRU hit rate</b></b></b> - We have LRU caches for things we fetch from <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> this is to reduce load on Quicksilver and improve performance. However, with the large routing tables we had previously, we could easily fill up this cache with one or just a few routing tables. Now that we have turned this into tiny single entry JSONs, we have improved the cache hit rate for <i>all Workers</i>.</p>
-		</li>
-		<li>
-			<p><b><b><b>Quicksilver storage reduction</b></b></b> - We also reduced the storage we take up with our routing tables by <b>92%</b>. This is a reduction of approximately 12 GiB on each of our hundreds of data centres.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="were-just-getting-started">We’re just getting started</h3>
-		<a href="https://blog.cloudflare.com/#were-just-getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Pages is now the <a href="https://www.webpagetest.org/video/compare.php?tests=230323_BiDcFV_ABE%2C230323_BiDcMX_ABF" target="_blank" rel="noopener noreferrer">fastest way</a> to serve your sites across Netlify, <a href="https://www.webpagetest.org/video/compare.php?tests=230323_AiDc65_AFF%2C230323_BiDcGD_ABX" target="_blank" rel="noopener noreferrer">Vercel</a> and many others and we’re so proud.</p>
-	<p>But it’s going to get even faster. With projects like <a href="https://blog.cloudflare.com/building-cloudflare-on-cloudflare">Flame</a>, we can’t wait to shave off many more milliseconds to every request a user makes to your site.</p>
-	<p>To a faster web for all of us.</p>
+<p>In an era where visitors expect instant gratification and content on-demand, every millisecond counts. If you’re a web application developer, it’s an excellent time to be in this line of business, but with great power comes great responsibility. You’re tasked with creating an experience that is not only intuitive and delightful but also quick, reactive and responsive – sometimes with the two sides being at odds with each other. To add to this, if your business completely runs on the internet (say ecommerce), then your site’s Core Web Vitals could make or break your bottom line.</p>
+<p>You don’t just need fast – you need <em>magic</em> fast. For the past two years, Cloudflare Pages has been serving up performant applications for users across the globe, but this week, we’re showing off our brand new, lightning fast architecture, decreasing the TTFB by up to 10X when serving assets.</p>
+<p>And while a magician never reveals their secrets, this trick is too good to keep to ourselves. For all our application builders, we’re thrilled to share the juicy technical details on how we adopted Workers for Platforms — our extension of Workers to build SaaS businesses on top of — to make Pages one of the fastest ways to serve your sites.</p>
+<h3>The problem</h3>
+<p>When we <a href="https://blog.cloudflare.com/cloudflare-pages-ga">launched Pages in 2021</a>, we didn’t anticipate the exponential growth we would experience for our platform in the months and years to come. As our users began to adopt Pages into their development workflows, usage of our platform began to skyrocket. However, while riding the high of Pages’ success, we began to notice a problem – a rather large one. As projects grew in size, with every deployment came a pinch more latency, slowly affecting the end users visiting the Pages site. Customers with tens of thousands of deployments were at risk of introducing latency to their site – a problem that needed to be solved.</p>
+<p>Before we dive into our technical solution, let’s first explore further the setup of Pages and the relationship between number of deployments and the observed latency.</p>
+<h3>How could this be?</h3>
+<p>Built on top of Cloudflare Workers, Pages serves static assets through a highly optimised Worker. We refer to this as the Asset Server Worker.</p>
+<p>Users can also add dynamic content through Pages Functions which eventually get compiled into a separate Worker. Every single Pages deployment corresponds to unique instances of these Workers composed in a pipeline.</p>
+<p>When a request hits Cloudflare we need to look up which pipeline to execute. As you’d expect, this is a function of the hostname in the URL.</p>
+<p>If a user requested <a href="https://2b469e16.example.pages.dev/index.html" target="_blank" rel="noopener noreferrer">https://2b469e16.example.pages.dev/index.html</a>, the hostname is <a href="https://2b469e16.example.pages.dev/index.html" target="_blank" rel="noopener noreferrer">2b469e16.example.pages.dev</a> which is unique across all deployments on Pages — 2b469e16 is typically the commit hash and example in this case refers to the name of the project.</p>
+<p>Every Pages project has its own routing table which is used to look up the pipeline to execute. The routing table happens to be a JSON object with a list of regexes for possible paths in that project (in our case, one for every deployment) and their corresponding pipelines.</p>
+<p>The script_hash in the example below refers to the pipeline identifier. Naming is hard indeed.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799"> "filters"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">   {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">     "pattern"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"^(?:2b469e16.example.pages.dev(?:[:][0-9]+)?</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">/(?&lt;p1&gt;.*))$"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">     "script_hash"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"..."</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-24292e-fff">   {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">     "pattern"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"^(?:example.pages.dev(?:[:][0-9]+)?</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">/(?&lt;p1&gt;.*))$"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">     "script_hash"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"..."</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-24292e-fff">   {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">     "pattern"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"^(?:test.example.com(?:[:][0-9]+)?</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-032f62-99ffe4">/(?&lt;p1&gt;.*))$"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">     "script_hash"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"..."</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff"> ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799"> "v"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>So to look up the pipeline in question, we would: download this JSON object from Quicksilver, parse it, and then iterate through this until it finds a regex that matches the current request.</p>
+<p>Unsurprisingly, this is expensive. Let’s take a look at a quick real world example to see <em>how</em> expensive.</p>
+<p>In one realistic case, it took us 107ms just to <em>parse</em> the JSON. The larger the JSON object gets, the more compute it takes to parse it — with tens of thousands of deployments (not unusual for very active projects that deploy immutable preview deployments for every git commit), this JSON could be several megabytes in size!</p>
+<p>It doesn’t end there though. After parsing this, it took 29ms to then iterate and test several regexes to find the one that matched the current request.</p>
+<p>To summarise, every single request to this project would take 136ms to just pick the right pipeline to execute. While this was the median case for projects with 10,000 deployments on average, we’ve seen projects with <strong>seconds</strong> in added latency making them unusable after 50,000 deployments, punishing users for using our platform.</p>
+<p>Given most web sites load more than one asset for a page, this leads to timeouts and breakage leading to an unstable and unacceptable user experience.</p>
+<h3>The secret sauce is Workers for Platforms</h3>
+<p>We launched <a href="https://blog.cloudflare.com/workers-for-platforms">Workers for Platforms</a> last year as a way to build ambitious platforms on top of Workers. Workers for Platforms lets one build complex pipelines where a request may be served by a Worker built and maintained by you but could then dispatch to a Worker written by a user of your platform. This allows your platform’s users to write their own Worker like they’ve been used to but while you control how and when they are executed.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="372" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=715&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=640&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=715&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=750&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=828&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=1080&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=1280&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=1430&amp;h=744&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1902 Embedded Image - RiCvgw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4525S8MBENQ1HF8XNRNSR0.png&amp;w=1366&amp;h=711&amp;f=webp" data-lightbox-width="1366" data-lightbox-height="711" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="372" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This isn’t very different from what we do with Pages. Users write their Pages functions which compile into a Worker. Users also upload their own static assets which are then bound to our special Asset Server Worker in unique pipelines for each of their deployments. And we control how and when which Worker gets executed based on a hostname in their URL.</p>
+<p>Runtime lookups shouldn’t be O(n) though but O(1). Because Workers for Platforms was designed to build entire platforms on top of, lookups when trying to dispatch to a user’s Worker were designed as O(1) ensuring latency wasn’t a function of number of Workers in an account.</p>
+<h3>The solution</h3>
+<p>By default, Workers for Platforms hashes the name of the Worker with a secret and uses that for lookups at runtime. However, because we need to dispatch by hostname, we had a different idea. At deployment time, we could hash the pipeline for the deployment by its hostname — <a href="https://2b469e16.example.pages.dev/index.html" target="_blank" rel="noopener noreferrer">2b469e16.example.pages.dev</a>, for example.</p>
+<p>When a request comes in, we hash the hostname from the URL with our predefined secret and then use that value to look up the pipeline to execute. This entirely removes the necessity to fetch, parse and traverse the routing table JSON from before, now making our lookup O(1).</p>
+<p>Once we were happy with our new setup from internal testing we wanted to onboard a real user. Our <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">Developer Docs</a> have been <a href="https://blog.cloudflare.com/new-dev-docs">running on Pages</a> since the start of 2022 and during that time, we’ve dogfooded many different features and experiments. Due to the great relationship between our two teams and them being a sizable customer of ours we wanted to bring them onto our new Workers for Platform routing.</p>
+<p>Before opting them in, TTFB was averaging at about 600ms.</p>
+<p>After opting them in, TTFB is now 60ms. <a href="https://developers.cloudflare.com/analytics/web-analytics" target="_blank" rel="noopener noreferrer">Web Analytics</a> shows a noticeable drop in entire page load time as a result.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="538" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=715&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=640&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=715&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=750&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=828&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=1080&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=1280&amp;h=963&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=1430&amp;h=1076&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Web Analytics showing Page Load going from averaging roughly 3 seconds to 1.5 seconds" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FSPC7XMX3HQEGYZX54EE.png&amp;w=1600&amp;h=1203&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1203" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="538" class="pt-portable-image-media"></div>
+</figure>
+<p>This improvement was also visible through <a href="https://developer.chrome.com/en/docs/lighthouse/performance/performance-scoring" target="_blank" rel="noopener noreferrer">Lighthouse scores</a> now approaching a perfect score of 100 instead of 78 which was the average we saw previously.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="290" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=750&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=828&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=1080&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=1280&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=1430&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1902 Embedded Image - 7zIkZN" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CPS2Q0CM5B1ZE8ZYQT00.png&amp;w=1600&amp;h=649&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="649" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="290" class="pt-portable-image-media"></div>
+</figure>
+<p>The team was ecstatic about this especially given all of this happened under the hood with no downtime or required engineering team on their end. Not only is <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/</a> faster, we’re using less compute to serve it to all of you.</p>
+<h3>The big migration</h3>
+<p>Migrating <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">developers.cloudflare.com</a> was a big milestone for us and meant our new infrastructure was capable of handling traffic at scale. But a goal we were very certain of was migrating every Pages deployment ever created. We didn’t want to leave any users behind.</p>
+<p>Turns out, that wasn’t a small number. There’d been over 14 million deployments so far over the years. This was about to be one of the biggest migrations we’d done to runtime assets and the risk was that we’d take down someone’s site.</p>
+<p>We approached this migration with some key goals:</p>
+<ul>
+	<li>Customer impact in terms of downtime was a no go, all of this needed to happen under the hood without anyone’s site being affected;</li>
+	<li>We needed the ability to A/B test the old and new setup so we could revert on a per site basis if something went wrong or was incompatible;</li>
+	<li>Migrations at this scale have the ability to cause incidents because they exceed the typical request capacity of our APIs in a short window so they need to run slowly;</li>
+	<li>Because this was likely to be a long running migration, we needed the ability to look at metrics and retry failures.</li>
+</ul>
+<p>The first step to all of this was to add the ability to A/B test between the legacy setup and the new one. To ensure we could A/B between the legacy setup and new one at any time, we needed to deploy both a regular pipeline (and updated routing table) and new Workers for Platforms hashed one for every deployment.</p>
+<p>We also added a feature flag that allowed us to route to either the legacy setup or the new one per site or per data centre with the ability to explicitly opt out a site when an edgecase didn’t work.</p>
+<p>With this setup, we started running our long running migration behind the scenes that duplicated every single deployment to the new Workers for Platforms enabled pipelines.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="212" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=715&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=640&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=715&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=750&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=828&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=1080&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=1280&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=1430&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1902 Embedded Image - 4QJHH7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488R367T8GTM5V966ZC325.png&amp;w=1600&amp;h=474&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="474" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="212" class="pt-portable-image-media"></div>
+</figure>
+<p>Duplicating them instead of replacing them meant that risk was low and A/B would be possible with the tradeoff of more cleanup after we finished but we picked that with reliability for users in mind.</p>
+<p>A few days in after all 14 million deployments had finished migrating over, we started rollout to the new infrastructure with a percentage based rollout. This was a great way for us to find issues and ensure we were ready to serve all runtime traffic for Pages without the risk of an incident.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="318" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=715&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=640&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=715&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=750&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=828&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=1080&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=1280&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=1430&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1902 Embedded Image - obmv1R" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4627CQZFWD2BPYXJ4W7B38.png&amp;w=1368&amp;h=608&amp;f=webp" data-lightbox-width="1368" data-lightbox-height="608" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="318" class="pt-portable-image-media"></div>
+</figure>
+<h3>Feeding three birds with one scone</h3>
+<p>Alongside the significant latency improvements for Pages projects, this change also gave improvements in other areas:</p>
+<ul>
+	<li><strong><strong><strong>Lower CPU usage</strong></strong></strong> - Since we no longer need to parse a huge JSON blob and do potentially thousands of regex matches, we saved a nice amount of CPU time across thousands of machines across our data centres.</li>
+	<li><strong><strong><strong>Higher LRU hit rate</strong></strong></strong> - We have LRU caches for things we fetch from <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> this is to reduce load on Quicksilver and improve performance. However, with the large routing tables we had previously, we could easily fill up this cache with one or just a few routing tables. Now that we have turned this into tiny single entry JSONs, we have improved the cache hit rate for <em>all Workers</em>.</li>
+	<li><strong><strong><strong>Quicksilver storage reduction</strong></strong></strong> - We also reduced the storage we take up with our routing tables by <strong>92%</strong>. This is a reduction of approximately 12 GiB on each of our hundreds of data centres.</li>
+</ul>
+<h3>We’re just getting started</h3>
+<p>Pages is now the <a href="https://www.webpagetest.org/video/compare.php?tests=230323_BiDcFV_ABE%2C230323_BiDcMX_ABF" target="_blank" rel="noopener noreferrer">fastest way</a> to serve your sites across Netlify, <a href="https://www.webpagetest.org/video/compare.php?tests=230323_AiDc65_AFF%2C230323_BiDcGD_ABX" target="_blank" rel="noopener noreferrer">Vercel</a> and many others and we’re so proud.</p>
+<p>But it’s going to get even faster. With projects like <a href="https://blog.cloudflare.com/building-cloudflare-on-cloudflare">Flame</a>, we can’t wait to shave off many more milliseconds to every request a user makes to your site.</p>
+<p>To a faster web for all of us.</p>

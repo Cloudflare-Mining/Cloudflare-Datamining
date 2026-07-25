@@ -1,0 +1,86 @@
+<p>AI 模型正在飞速变化：当下最适合智能体编程的模型，三个月后可能会变成来自不同提供商的完全不同的模型。此外，实际用例往往需要调用多个模型。贵公司的客户服务智能体可能会使用快速、低成本模型来分类用户消息；使用大型推理模型来规划各项操作；以及使用轻量级模型来执行单个任务。</p>
+<p>这意味着需要访问所有模型，同时不在财务和运营方面受限于单个提供商。此外，还需要部署适当的系统来监测不同提供商的成本，确保在某个提供商出现服务中断时服务依旧可靠，以及无论用户身在何处都能妥善管理延迟。</p>
+<p>虽然在使用 AI 构建应用时会面临这些挑战，但在构建<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>智能体</u></a>时，此类问题会变得更加紧迫。某个简单的聊天机器人可能会对每个用户提示词进行一次<a href="https://www.cloudflare.com/learning/ai/inference-vs-training" target="_blank" rel="noopener noreferrer"><u>推理</u></a>调用。而一个智能体可能需要将十次调用串联起来才能完成单个任务，这种情况下，运行缓慢的提供商带来的延迟不是增加 50 毫秒，而是增加 500 毫秒。一次失败的请求并非重试，而是会突然引发下游一系列失败。</p>
+<p>自从推出 AI Gateway 和 Workers AI 以来，我们已经看到开发人员积极采用这些工具在 Cloudflare 上构建 AI 应用，同时我们也一直在快速迭代！在过去短短几个月内，我们更新了仪表板，添加了零配置默认网关、上游故障自动重试，以及更精细化的日志控制等功能。目前，我们正努力将 Cloudflare 打造成统一的推理层：通过一个 API 即可访问任何提供商的任何 AI 模型，快速且可靠。</p>
+<h3>一个目录，单个统一端点</h3>
+<p>从今天起，您可以使用与 Workers AI 相同的 AI.run() 绑定来调用第三方模型。如果您正在使用 Workers，则只需一行代码，即可将 Cloudflare 托管的模型切换到 OpenAI、Anthropic 或任何其他提供商的模型。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'anthropic/claude-opus-4-6'</span><span class="sk-24292e-fff">,{</span></span>
+<span class="line"><span class="sk-24292e-fff">input: </span><span class="sk-032f62-99ffe4">'What is Cloudflare?'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}, {</span></span>
+<span class="line"><span class="sk-24292e-fff">gateway: { id: </span><span class="sk-032f62-99ffe4">"default"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>对于未使用 Workers 的用户，我们将在未来几周内发布 REST API 支持，以便您可以从任何环境访问完整的模型目录。</p>
+<p>我们也很高兴地宣布，用户现在可以通过一个 API、一行代码在模型之间切换，访问超过 12 个提供商的 70 多个模型，以及使用积分来支付费用。我们将在未来开发过程中扩大模型支持范围。</p>
+<p>用户可以浏览我们的<a href="https://developers.cloudflare.com/ai/models" target="_blank" rel="noopener noreferrer"><u>模型目录</u></a>，找到最适合其用例的模型，从 Cloudflare Workers AI 上托管的开源模型到主要模型提供商的专有模型，应有尽有。我们很高兴地扩展支持用户访问<strong>阿里云、AssemblyAI、字节跳动、Google、InWorld、MiniMax、OpenAI、Pixverse、Recraft、Runway 和生数科技</strong>的模型，这些提供商均通过 AI Gateway 提供各自的模型。值得一提的是，我们将扩展模型产品组合，纳入图像、视频和语音模型，以便用户可以构建多模态应用。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="496" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=640&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=715&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=750&amp;h=520&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=828&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=1080&amp;h=749&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=1280&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=1430&amp;h=992&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3209 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45F01WY0SW9XDPDPXXBTSM.png&amp;w=1920&amp;h=1333&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1333" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="496" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>通过一个 API 访问所有模型，也意味着用户可以集中管理所有 AI 支出。如今，大多数公司<a href="https://aidbintel.com/pulse-survey" target="_blank" rel="noopener noreferrer"><u>平均调用 3.5 个</u></a>不同提供商的模型，这意味着没有哪个提供商能够全面了解您的 AI 使用情况。<strong>使用 AI Gateway，您可以从一个集中位置来监测和管理 AI 支出。</strong></p>
+<p>通过在请求中添加自定义元数据，用户可以获得按自己最关心的属性（例如免费用户与付费用户、单个客户，或应用中的特定工作流程）统计的成本明细。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/moonshotai/kimi-k2.5'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">prompt: </span><span class="sk-032f62-99ffe4">'What is AI Gateway?'</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">metadata: { </span><span class="sk-032f62-99ffe4">"teamId"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"AI"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"userId"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">12345</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="488" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=640&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=715&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=750&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=828&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1080&amp;h=737&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1280&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1430&amp;h=976&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3209 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW489RK4RXV3E7VKSSDZBAT3.png&amp;w=1920&amp;h=1310&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1310" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="488" class="pt-portable-image-media"></div>
+</figure>
+<h3>自带模型</h3>
+<p>AI Gateway 让用户可以通过一个 API 访问所有提供商的模型。但有时，用户需要运行一个已根据自有数据进行了微调的模型，或者一个针对特定用例进行了优化的模型。为此，我们正在努力让用户将自有模型导入 Workers AI。</p>
+<p>Cloudflare 的绝大多数流量均来自 Enterprise 客户的专用实例，这些客户在我们平台上运行自定义模型，我们希望让更多客户体验这项功能。为此，我们利用 Replicate 的 <a href="https://cog.run" target="_blank" rel="noopener noreferrer"><u>Cog</u></a> 技术，帮助用户将机器学习模型容器化。</p>
+<p>Cog 的设计理念非常简单：只需在 cog.yaml 文件中编写依赖项，以及在 Python 文件中编写推理代码即可。Cog 会抽象化与打包机器学习模型相关的所有困难事项，例如 CUDA 依赖项、Python 版本、权重加载等。 </p>
+<p><code>cog.yaml</code> 文件示例：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">build:</span></span>
+<span class="line"><span class="sk-24292e-fff">  python_version: "3.13"</span></span>
+<span class="line"><span class="sk-24292e-fff">  python_requirements: requirements.txt</span></span>
+<span class="line"><span class="sk-24292e-fff">predict: "predict.py:Predictor"</span></span></code></pre>
+</div>
+<p><a href="http://predict.py" target="_blank" rel="noopener noreferrer"><code><u>predict.py</u></code></a> 文件示例如下所示，其中包含一个用于设置模型的函数，以及一个在收到推理请求（预测）后运行的函数：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> cog </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> BasePredictor, Path, Input</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> torch</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> Predictor</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-fff">BasePredictor</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    def</span><span class="sk-6f42c1-ffc799"> setup</span><span class="sk-24292e-fff">(self):</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        """Load the model into memory to make running multiple predictions efficient"""</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">        self</span><span class="sk-24292e-fff">.net </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> torch.load(</span><span class="sk-032f62-99ffe4">"weights.pth"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    def</span><span class="sk-6f42c1-ffc799"> predict</span><span class="sk-24292e-fff">(self,</span></span>
+<span class="line"><span class="sk-24292e-fff">            image: Path </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Input(</span><span class="sk-e36209-fff">description</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"Image to enlarge"</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">            scale: </span><span class="sk-005cc5-ffc799">float</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Input(</span><span class="sk-e36209-fff">description</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"Factor to scale image by"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">default</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799">1.5</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    ) -&gt; Path:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        """Run a single prediction on the model"""</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # ... pre-processing ...</span></span>
+<span class="line"><span class="sk-24292e-fff">        output </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> self</span><span class="sk-24292e-fff">.net(</span><span class="sk-005cc5-ffc799">input</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # ... post-processing ...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> output</span></span></code></pre>
+</div>
+<p>然后，运行 cog build 来构建容器映像，并将 Cog 容器推送到 Workers AI。我们将为用户部署和提供模型，随后，用户可以通过常用的 Workers AI API 访问模型。</p>
+<p>我们正在推进一些大型项目，以便让这项技术服务更多客户，例如面向客户的 API 和 Wrangler 命令，方便用户推送自己的容器，以及通过 GPU 快照来加速冷启动。我们一直在与 Cloudflare 团队以及一些外部客户进行内部测试，他们的反馈为我们的开发目标指明方向。如果您有兴趣成为我们的设计合作伙伴，请联系我们！不久之后，任何用户均可将其自有模型打包并通过 Workers AI 来使用。</p>
+<h3>快速获取首个令牌</h3>
+<p>如果构建实时智能体，则组合使用 Workers AI 模型与 AI Gateway 的功能是相当强大的：在这种场景下，用户对速度的感知取决于获取首个令牌的时间或智能体开始响应的速度，而不是完整响应会花费的时间。即使总推理耗时为 3 秒，但获取首个令牌的时间加快 50 毫秒也会产生重大影响，让智能体的响应变得流畅而不是迟缓。</p>
+<p>Cloudflare 的数据中心网络覆盖全球 330 个城市，这意味着 AI Gateway 部署在靠近用户和推理端点的位置，从而最大限度地缩短启动流式传输之前的延迟。</p>
+<p>Workers AI 还在其公共目录中托管开源模型，包括专为智能体构建的大模型，例如 <a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>Kimi K2.5</u></a> 和实时语音模型。由于代码和推理均在同一个全球网络上运行，因此，当通过 AI Gateway 调用这些 Cloudflare 托管的模型时，无需通过公共互联网进行额外的跳转，从而最大限度地降低延迟。</p>
+<h3>以可靠性为目标，具备自动故障转移功能</h3>
+<p>在构建智能体时，速度并非用户唯一关注的因素，可靠性同样重要。智能体工作流中的每一个步骤都依赖于它的上一步。对于智能体而言，可靠的推理至关重要，因为一次调用失败可能会影响整个下游服务链。</p>
+<p>通过 AI Gateway，如果用户调用某个在多个提供商平台上均可用的模型但其中一个提供商出现故障，则我们会自动路由到另一个可用的提供商，无需用户自行编写任何故障转移逻辑。</p>
+<p>如果用户使用 <a href="https://blog.cloudflare.com/project-think" target="_blank" rel="noopener noreferrer"><u>Agents SDK 构建长时间运行的智能体</u></a>，则流式推理调用也能适应断开连接的情况。AI Gateway 会在流式响应生成时进行缓存，与智能体的生命周期无关。如果智能体在推理过程中中断，它可以重新连接到 AI Gateway 并检索响应，无需进行新的推理调用或为相同的输出令牌支付两次费用。结合 Agent SDK 的内置检查点功能，最终用户根本不会察觉到任何中断。</p>
+<h3>Replicate</h3>
+<p>Replicate 团队已正式<a href="https://blog.cloudflare.com/replicate-joins-cloudflare" target="_blank" rel="noopener noreferrer"><u>加入了</u></a> Cloudflare AI 平台团队，我们不再是两个独立的团队。我们一直在努力推进 Replicate 与 Cloudflare 之间的集成，包括将所有 Replicate 模型引入 AI Gateway，以及对托管模型进行平台迁移，将其部署到 Cloudflare 基础设施上。不久之后，用户可以通过 AI Gateway 访问自己喜爱的 Replicate 模型，也可以将自己部署在 Replicate 上的模型托管到 Workers AI 上。</p>
+<h3>开始使用</h3>
+<p>若要开始使用，请参阅我们的 <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><u>AI Gateway</u></a> 或 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> 文档。了解关于利用 <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> 在 Cloudflare 上构建智能体的更多信息。</p>
+<h3>在 Cloudflare TV 上观看</h3>
+<div id="html-block-k31" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/952f874333c5cdcb89acf49c272e99f4/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F952f874333c5cdcb89acf49c272e99f4%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>

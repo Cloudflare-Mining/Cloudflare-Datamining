@@ -1,206 +1,160 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1OSSK7k7T85s0oCIGiRUo1/84f007b436545806f76299c63cdbc993/how-we-built-an-open-source-seo-tool-using-workers-d1-and-queues.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Building applications on Cloudflare Workers has always been fun. Workers applications have low latency response times by default, and easy developer ergonomics thanks to Wrangler. It's no surprise that for years now, developers have been going from idea to production with Workers in just a few minutes.</p>
-	<p>Internally, we're no different. When a member of our team has a project idea, we often reach for Workers first, and not just for the MVP stage, but in production, too. Workers have been a secret ingredient to Cloudflare’s innovation for some time now, allowing us to build products like Access, Stream and Workers KV. Even better, when we have new ideas <i>and</i> we can use new Cloudflare products to build them, it's a great way to give feedback on those products.</p>
-	<p>We've discussed this in the past on the Cloudflare blog - in May last year, <a href="https://blog.cloudflare.com/new-dev-docs">I wrote how we rebuilt Cloudflare's developer documentation</a> using many of the tools that had recently been released in the Workers ecosystem: Cloudflare Pages for hosting, and Bulk Redirects for the redirect rules. In November, <a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation">we released a new version of our API documentation</a>, which again used Pages for hosting, and Pages functions for intelligent caching and transformation of our API schema.</p>
-	<p>In this blog post, I’m excited to show off some of the new tools in Cloudflare’s developer arsenal, <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">D1</a> and <a href="https://blog.cloudflare.com/introducing-cloudflare-queues">Queues</a>, to prototype and ship an internal tool for our SEO experts at Cloudflare. We've made this project, which we're calling Prospector, open-source too - check it out in our <code>[cloudflare/templates](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-prospector)</code> repo on GitHub. Whether you're a developer looking to understand how to use multiple parts of Cloudflare's developer stack together, or an SEO specialist who may want to deploy the tool in production, we've made it incredibly easy to get up and running.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6AbvyVpEkBfnOITizlfkhT/73156db0a0fe274ead622a677b6eb959/image1.png" alt="" class="kg-image" width="1376" height="714" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="what-were-building">What we're building</h2>
-		<a href="https://blog.cloudflare.com/#what-were-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Prospector is a tool that allows Cloudflare's SEO experts to monitor our blog and marketing site for specific keywords. When a keyword is matched on a page, Prospector will notify an email address. This allows our SEO experts to stay informed of any changes to our website, and take action accordingly.</p>
-	<p><a href="https://blog.cloudflare.com/sending-email-from-workers-with-mailchannels">Using MailChannels' integration with Workers</a>, we can quickly and easily send emails from our application using a single API call. This allows us to focus on the core functionality of the application, and not worry about the details of sending emails.</p>
-	<p>Prospector uses Cloudflare Workers as the user-facing API for the application. It uses D1 to store and retrieve data in real-time, and Queues to handle the fetching of all URLs and the notification process. We've also included an intuitive user interface for the application, which is built with HTML, CSS, and JavaScript.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/339I5LA7CAciIdEOyfKkl3/fc05a5f4b5d41ef794d638df5e41d1fb/image3-1.png" alt="" class="kg-image" width="1493" height="762" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="why-we-built-it">Why we built it</h2>
-		<a href="https://blog.cloudflare.com/#why-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It is widely known in SEO that both internal and external links help Google and other search engines understand what a website is about, which impacts keyword rankings. Not only do these links guide readers to additional helpful information, they also allow <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer">web crawlers</a> for search engines to discover and index content on the site.</p>
-	<p>Acquiring external links is often a time-consuming process and at the discretion of third parties, whereas website owners typically have much more control over internal links. As a result, internal linking is one of the most useful levers available in SEO.</p>
-	<p>In an ideal world, every piece of content would be fully formed upon publication, replete with helpful internal links throughout the piece. However, this is often not the case. Many times, content is edited after the fact or additional pieces of relevant content come along after initial publication. These situations result in missed opportunities for internal linking.</p>
-	<p>Like other large organizations, Cloudflare has published thousands of blogs and web pages over the years. We share new content every time a product/technology is introduced and improved. Ultimately, that also means it's become more challenging to identify opportunities for internal linking in a timely, automated fashion. We needed a tool that would allow us to identify internal linking opportunities as they appear, and speed up the time it takes to identify new internal linking opportunities.</p>
-	<p>Although we tested several tools that might solve this problem, we found that they were limited in several ways. First, some tools only scanned the first 2,000 characters of a web page. Any opportunities found beyond that limit would not be detected. Next, some tools did not allow us to limit searches to certain areas of the site and resulted in many false positives. Finally, other potential solutions required manual operation, leaving the process at the mercy of human memory.</p>
-	<p>To solve our problem (and ultimately, improve our SEO), we needed an automated tool that could discover and notify us of new instances of targeted phrases on a specified range of pages.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-it-works">How it works</h2>
-		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="data-model">Data model</h3>
-		<a href="https://blog.cloudflare.com/#data-model" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First, let's explore the data model for Prospector. We have two main tables: <code>notifiers</code> and <code>urls</code>. The <code>notifiers</code> table stores the email address and keyword that we want to monitor. The <code>urls</code> table stores the URL and sitemap that we want to scrape. The <code>notifiers</code> table has a one-to-many relationship with the <code>urls</code> table, meaning that each notifier can have many URLs associated with it.</p>
-	<p>In addition, we have a <code>sitemaps</code> table that stores the sitemap URLs that we've scraped. Many larger websites don't just have a single sitemap: the Cloudflare blog, for instance, has a primary sitemap that contains four sub-sitemaps. When the application is deployed, a primary sitemap is provided as configuration, and Prospector will parse it to find all of the sub-sitemaps.</p>
-	<p>Finally, <code>notifier_matches</code> is a table that stores the matches between a notifier and a URL. This allows us to keep track of which URLs have already been matched, and which ones still need to be processed. When a match has been found, the <code>notifier_matches</code> table is updated to reflect that, and "matches" for a keyword are no longer processed. This saves our SEO experts from a crowded inbox, and allows them to focus and act on new matches.</p>
-	<p><b>Connecting the pieces with Cloudflare Queues</b>Cloudflare Queues acts as the work queue for Prospector. When a new notifier is added, a new job is created for it and added to the queue. Behind the scenes, Queues will distribute the work across multiple Workers, allowing us to scale the application as needed. When a job is processed, Prospector will scrape the URL and check for matches. If a match is found, Prospector will send an email to the notifier's email address.</p>
-	<p>Using the Cron Triggers functionality in Workers, we can schedule the scraping process to run at a regular interval - by default, once a day. This allows us to keep our data up-to-date, and ensures that we're always notified of any changes to our website. It also allows the end-user to configure when they receive emails in case they want to receive them more or less frequently, or at the beginning of their workday.</p>
-	<p>The Module Workers syntax for Workers makes accessing the application bindings - the constants available in the application for querying D1, Queues, and other services - incredibly easy. <code>src/index.ts</code>, the entrypoint for the application, looks like this:</p>
-	<pre class="language-tsx"><code class="language-tsx">import { DBUrl, Env } from './types'
-
-import {
-  handleQueuedUrl,
-  scheduled,
-} from './functions';
-
-import h from './api'
-
-export default {
-  async fetch(
-	request: Request,
-	env: Env,
-	ctx: ExecutionContext
-  ): Promise&lt;Response&gt; {
-	return h.fetch(request, env, ctx)
-  },
-
-  async queue(
-	batch: MessageBatch&lt;Error&gt;,
-	env: Env
-  ): Promise&lt;void&gt; {
-	for (const message of batch.messages) {
-  	const url: DBUrl = JSON.parse(message.body)
-  	await handleQueuedUrl(url, env.DB)
-	}
-  },
-
-  async scheduled(
-	env: Env,
-  ): Promise&lt;void&gt; {
-	await scheduled({
-  	authToken: env.AUTH_TOKEN,
-  	db: env.DB,
-  	queue: env.QUEUE,
-  	sitemapUrl: env.SITEMAP_URL,
-	})
-  }
-};</code></pre>
-	<p>With this syntax, we can see where the various events incoming to the application - the <code>fetch</code> event, the <code>queue</code> event, and the <code>scheduled</code> event - are handled. The <code>fetch</code> event is the main entrypoint for the application, and is where we handle all of the API routes. The <code>queue</code> event is where we handle the work that's been added to the queue, and the <code>scheduled</code> event is where we handle the scheduled scraping process.</p>
-	<p>Central to the application, of course, is Workers - acting as the API gateway and coordinator. We've elected to use the popular open-source framework <a href="https://honojs.dev" target="_blank" rel="noopener noreferrer">Hono</a>, an Express-style API for Workers, in Prospector. With Hono, we can quickly map out a REST API in just a few lines of code. Here's an example of a few API routes and how they're defined with Hono:</p>
-	<pre class="language-tsx"><code class="language-tsx">const app = new Hono()
-
-app.get("/", (context) =&gt; {
-  return context.html(index)
-})
-
-app.post("/notifiers", async context =&gt; {
-  try {
-	const { keyword, email } = await context.req.parseBody()
-	await context.env.DB.prepare(
-  	"insert into notifiers (keyword, email) values (?, ?)"
-	).bind(keyword, email).run()
-	return context.redirect('/')
-  } catch (err) {
-	context.status(500)
-	return context.text("Something went wrong")
-  }
-})
-
-app.get('/sitemaps', async (context) =&gt; {
-  const query = await context.env.DB.prepare(
-	"select * from sitemaps"
-  ).all();
-  const sitemaps: Array&lt;DBSitemap&gt; = query.results
-  return context.json(sitemaps)
-})</code></pre>
-	<p>Crucial to the development of Prospector are the improved TypeScript bindings for Workers. <a href="https://blog.cloudflare.com/improving-workers-types">As announced in November of last year</a>, TypeScript bindings for Workers are now automatically generated based on <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">our open source runtime, <code>workerd</code></a>. This means that whenever we use the types provided from the <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer"><code>@cloudflare/workers-types</code> package</a> in our application, we can be sure that the types are always up-to-date.</p>
-	<p>With these bindings, we can define the types for our environment variables, and use them in our application. Here's an example of the <code>Env</code> type, which defines the environment variables that we use in the application:</p>
-	<pre class="language-tsx"><code class="language-tsx">export interface Env {
-  AUTH_TOKEN: string
-  DB: D1Database
-  QUEUE: Queue
-  SITEMAP_URL: string
-}</code></pre>
-	<p>Notice the types of the <code>DB</code> and <code>QUEUE</code> bindings - <code>D1Database</code> and <code>Queue</code>, respectively. These types are automatically generated, complete with type signatures for each method inside of the D1 and Queue APIs. This means that we can be sure that we're using the correct methods, and that we're passing the correct arguments to them, directly from our text editor - without having to refer to the documentation.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6uqW1v9MEpdsEMieihxKFk/e865da1397167301f051616d61f83a1a/image4.png" alt="" class="kg-image" width="920" height="389" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="how-to-use-it">How to use it</h2>
-		<a href="https://blog.cloudflare.com/#how-to-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One of my favorite things about Workers is that deploying applications is quick and easy. Using `wrangler.toml` and some simple build scripts, we can deploy a fully-functional application in just a few minutes. Prospector is no different. With just a few commands, we can create the necessary D1 database and Queues instance, and deploy the application to our account.</p>
-	<p>First, you'll need to clone the repository from our cloudflare/templates repository:</p>
-	<p><code>git clone $URL</code></p>
-	<p>If you haven't installed wrangler yet, you can do so by running:</p>
-	<p><code>npm install @cloudflare/wrangler -g</code></p>
-	<p>With Wrangler installed, you can login to your account by running:</p>
-	<p><code>wrangler login</code></p>
-	<p>After you've done that, you'll need to create a new D1 database, as well as a Queues instance. You can do this by running the following commands:</p>
-	<p><code>wrangler d1 create $DATABASE_NAMEwrangler queues create $QUEUE_NAME</code></p>
-	<p>Configure your <code>wrangler.toml</code> with the appropriate bindings (see [the README](URL) for an example):</p>
-	<pre class="language-bash"><code class="language-bash">[[ d1_databases ]]
-binding = "DB"
-database_name = "keyword-tracker-db"
-database_id = "ab4828aa-723b-4a77-a3f2-a2e6a21c4f87"
-preview_database_id = "8a77a074-8631-48ca-ba41-a00d0206de32"
-	
-[[queues.producers]]
-  queue = "queue"
-  binding = "QUEUE"
-
-[[queues.consumers]]
-  queue = "queue"
-  max_batch_size = 10
-  max_batch_timeout = 30
-  max_retries = 10
-  dead_letter_queue = "queue-dlq"</code></pre>
-	<p>Next, you can run the <code>bin/migrate</code> script to create the tables in your database:</p>
-	<p><code>bin/migrate</code></p>
-	<p>This will create all the needed tables in your database, both in development (locally) and in production. Note that you'll even see the creation of a honest-to-goodness <code>.sqlite3</code> file in your project directory - this is the local development database, which you can connect to directly using the same SQLite CLI that you're used to:</p>
-	<p><code>$ sqlite3 .wrangler/state/d1/DB.sqlite3sqlite&gt; .tables notifier_matches &nbsp;notifiers &nbsp; &nbsp;  sitemaps &nbsp; &nbsp; &nbsp; urls</code></p>
-	<p>Finally, you can deploy the application to your account:</p>
-	<p><code>npm run deploy</code></p>
-	<p>With a deployed application, you can visit your Workers URL to see the user interface. From there, you can add new notifiers and URLs, and see the results of your scraping process. When a new keyword match is found, you’ll receive an email with the details of the match instantly:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2P59U5wQRoysgE8nWLbwLD/b1e7240ddd90dd36676163b201998cb3/image2-1.png" alt="" class="kg-image" width="623" height="208" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For some time, there have been a great deal of applications that were hard to build on Workers without relational data or background task tooling. Now, with D1 and Queues, we can build applications that seamlessly integrate between real-time user interfaces, geographically distributed data, background processing, and more, all using the same developer ergonomics and low latency that Workers is known for.</p>
-	<p>D1 has been crucial for building this application. On larger sites, the number of URLs that need to be scraped can be quite large. If we were to use Workers KV, our key-value store, for storing this data, we would quickly struggle with how to model, retrieve, and update the data needed for this use-case. With D1, we can build relational data models and quickly query <i>just</i> the data we need for each queued processing task.</p>
-	<p>Using these tools, developers can build internal tools and applications for their companies that are more powerful and more scalable than ever before. With the integration of Cloudflare's Zero Trust suite, developers can make these applications secure by default, and deploy them to Cloudflare's global network. This allows developers to build applications that are fast, secure, and reliable, all without having to worry about the underlying infrastructure.</p>
-	<p>Prospector is a great example of how easy it is to build applications on Cloudflare Workers. With the recent addition of D1 and Queues, we've been able to build fully-functional applications that require real-time data and background processing in just a few hours. We're excited to share the open-source code for Prospector, and we'd love to hear your feedback on the project.</p>
-	<p>If you have any questions, feel free to reach out to us on Twitter at <a href="https://twitter.com/cloudflaredev" target="_blank" rel="noopener noreferrer">@cloudflaredev</a>, or join us in the Cloudflare Workers Discord community, which recently hit 20k members and is a great place to ask questions and get help from other developers.</p>
+<p>Building applications on Cloudflare Workers has always been fun. Workers applications have low latency response times by default, and easy developer ergonomics thanks to Wrangler. It's no surprise that for years now, developers have been going from idea to production with Workers in just a few minutes.</p>
+<p>Internally, we're no different. When a member of our team has a project idea, we often reach for Workers first, and not just for the MVP stage, but in production, too. Workers have been a secret ingredient to Cloudflare’s innovation for some time now, allowing us to build products like Access, Stream and Workers KV. Even better, when we have new ideas <em>and</em> we can use new Cloudflare products to build them, it's a great way to give feedback on those products.</p>
+<p>We've discussed this in the past on the Cloudflare blog - in May last year, <a href="https://blog.cloudflare.com/new-dev-docs">I wrote how we rebuilt Cloudflare's developer documentation</a> using many of the tools that had recently been released in the Workers ecosystem: Cloudflare Pages for hosting, and Bulk Redirects for the redirect rules. In November, <a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation">we released a new version of our API documentation</a>, which again used Pages for hosting, and Pages functions for intelligent caching and transformation of our API schema.</p>
+<p>In this blog post, I’m excited to show off some of the new tools in Cloudflare’s developer arsenal, <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">D1</a> and <a href="https://blog.cloudflare.com/introducing-cloudflare-queues">Queues</a>, to prototype and ship an internal tool for our SEO experts at Cloudflare. We've made this project, which we're calling Prospector, open-source too - check it out in our <code>[cloudflare/templates](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-prospector)</code> repo on GitHub. Whether you're a developer looking to understand how to use multiple parts of Cloudflare's developer stack together, or an SEO specialist who may want to deploy the tool in production, we've made it incredibly easy to get up and running.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="371" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=715&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=640&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=715&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=750&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=828&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=1080&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=1280&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=1430&amp;h=742&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1662 Embedded Image - fryuBT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47ZA2Q0H9T6CEEGJ20YEZ0.png&amp;w=1376&amp;h=714&amp;f=webp" data-lightbox-width="1376" data-lightbox-height="714" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="371" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>What we're building</h2>
+<p>Prospector is a tool that allows Cloudflare's SEO experts to monitor our blog and marketing site for specific keywords. When a keyword is matched on a page, Prospector will notify an email address. This allows our SEO experts to stay informed of any changes to our website, and take action accordingly.</p>
+<p><a href="https://blog.cloudflare.com/sending-email-from-workers-with-mailchannels">Using MailChannels' integration with Workers</a>, we can quickly and easily send emails from our application using a single API call. This allows us to focus on the core functionality of the application, and not worry about the details of sending emails.</p>
+<p>Prospector uses Cloudflare Workers as the user-facing API for the application. It uses D1 to store and retrieve data in real-time, and Queues to handle the fetching of all URLs and the notification process. We've also included an intuitive user interface for the application, which is built with HTML, CSS, and JavaScript.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1662 Embedded Image - YFWlak" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R43JC32VWHJ8M330YKRF.png&amp;w=1493&amp;h=762&amp;f=webp" data-lightbox-width="1493" data-lightbox-height="762" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<h2>Why we built it</h2>
+<p>It is widely known in SEO that both internal and external links help Google and other search engines understand what a website is about, which impacts keyword rankings. Not only do these links guide readers to additional helpful information, they also allow <a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer">web crawlers</a> for search engines to discover and index content on the site.</p>
+<p>Acquiring external links is often a time-consuming process and at the discretion of third parties, whereas website owners typically have much more control over internal links. As a result, internal linking is one of the most useful levers available in SEO.</p>
+<p>In an ideal world, every piece of content would be fully formed upon publication, replete with helpful internal links throughout the piece. However, this is often not the case. Many times, content is edited after the fact or additional pieces of relevant content come along after initial publication. These situations result in missed opportunities for internal linking.</p>
+<p>Like other large organizations, Cloudflare has published thousands of blogs and web pages over the years. We share new content every time a product/technology is introduced and improved. Ultimately, that also means it's become more challenging to identify opportunities for internal linking in a timely, automated fashion. We needed a tool that would allow us to identify internal linking opportunities as they appear, and speed up the time it takes to identify new internal linking opportunities.</p>
+<p>Although we tested several tools that might solve this problem, we found that they were limited in several ways. First, some tools only scanned the first 2,000 characters of a web page. Any opportunities found beyond that limit would not be detected. Next, some tools did not allow us to limit searches to certain areas of the site and resulted in many false positives. Finally, other potential solutions required manual operation, leaving the process at the mercy of human memory.</p>
+<p>To solve our problem (and ultimately, improve our SEO), we needed an automated tool that could discover and notify us of new instances of targeted phrases on a specified range of pages.</p>
+<h2>How it works</h2>
+<h3>Data model</h3>
+<p>First, let's explore the data model for Prospector. We have two main tables: <code>notifiers</code> and <code>urls</code>. The <code>notifiers</code> table stores the email address and keyword that we want to monitor. The <code>urls</code> table stores the URL and sitemap that we want to scrape. The <code>notifiers</code> table has a one-to-many relationship with the <code>urls</code> table, meaning that each notifier can have many URLs associated with it.</p>
+<p>In addition, we have a <code>sitemaps</code> table that stores the sitemap URLs that we've scraped. Many larger websites don't just have a single sitemap: the Cloudflare blog, for instance, has a primary sitemap that contains four sub-sitemaps. When the application is deployed, a primary sitemap is provided as configuration, and Prospector will parse it to find all of the sub-sitemaps.</p>
+<p>Finally, <code>notifier_matches</code> is a table that stores the matches between a notifier and a URL. This allows us to keep track of which URLs have already been matched, and which ones still need to be processed. When a match has been found, the <code>notifier_matches</code> table is updated to reflect that, and "matches" for a keyword are no longer processed. This saves our SEO experts from a crowded inbox, and allows them to focus and act on new matches.</p>
+<p><strong>Connecting the pieces with Cloudflare Queues</strong>Cloudflare Queues acts as the work queue for Prospector. When a new notifier is added, a new job is created for it and added to the queue. Behind the scenes, Queues will distribute the work across multiple Workers, allowing us to scale the application as needed. When a job is processed, Prospector will scrape the URL and check for matches. If a match is found, Prospector will send an email to the notifier's email address.</p>
+<p>Using the Cron Triggers functionality in Workers, we can schedule the scraping process to run at a regular interval - by default, once a day. This allows us to keep our data up-to-date, and ensures that we're always notified of any changes to our website. It also allows the end-user to configure when they receive emails in case they want to receive them more or less frequently, or at the beginning of their workday.</p>
+<p>The Module Workers syntax for Workers makes accessing the application bindings - the constants available in the application for querying D1, Queues, and other services - incredibly easy. <code>src/index.ts</code>, the entrypoint for the application, looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { DBUrl, Env } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './types'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  handleQueuedUrl,</span></span>
+<span class="line"><span class="sk-24292e-fff">  scheduled,</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './functions'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> h </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './api'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-e36209-fff">	request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-e36209-fff">	env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-e36209-fff">	ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-24292e-fff"> h.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request, env, ctx)</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> queue</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-e36209-fff">	batch</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> MessageBatch</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Error</span><span class="sk-24292e-fff">&gt;,</span></span>
+<span class="line"><span class="sk-e36209-fff">	env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> message</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> batch.messages) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  	const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DBUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(message.body)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  	await</span><span class="sk-6f42c1-ffc799"> handleQueuedUrl</span><span class="sk-24292e-fff">(url, env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> scheduled</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-e36209-fff">	env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-6f42c1-ffc799"> scheduled</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  	authToken: env.</span><span class="sk-005cc5-fff">AUTH_TOKEN</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  	db: env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  	queue: env.</span><span class="sk-005cc5-fff">QUEUE</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  	sitemapUrl: env.</span><span class="sk-005cc5-fff">SITEMAP_URL</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	})</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
 </div>
+<p>With this syntax, we can see where the various events incoming to the application - the <code>fetch</code> event, the <code>queue</code> event, and the <code>scheduled</code> event - are handled. The <code>fetch</code> event is the main entrypoint for the application, and is where we handle all of the API routes. The <code>queue</code> event is where we handle the work that's been added to the queue, and the <code>scheduled</code> event is where we handle the scheduled scraping process.</p>
+<p>Central to the application, of course, is Workers - acting as the API gateway and coordinator. We've elected to use the popular open-source framework <a href="https://honojs.dev" target="_blank" rel="noopener noreferrer">Hono</a>, an Express-style API for Workers, in Prospector. With Hono, we can quickly map out a REST API in just a few lines of code. Here's an example of a few API routes and how they're defined with Hono:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> app</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Hono</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">html</span><span class="sk-24292e-fff">(index)</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">post</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/notifiers"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> context</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">keyword</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">email</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> context.req.</span><span class="sk-6f42c1-ffc799">parseBody</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> context.env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  	"insert into notifiers (keyword, email) values (?, ?)"</span></span>
+<span class="line"><span class="sk-24292e-fff">	).</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(keyword, email).</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">redirect</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (err) {</span></span>
+<span class="line"><span class="sk-24292e-fff">	context.</span><span class="sk-6f42c1-ffc799">status</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Something went wrong"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/sitemaps'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> query</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> context.env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"select * from sitemaps"</span></span>
+<span class="line"><span class="sk-24292e-fff">  ).</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> sitemaps</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">DBSitemap</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> query.results</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(sitemaps)</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>Crucial to the development of Prospector are the improved TypeScript bindings for Workers. <a href="https://blog.cloudflare.com/improving-workers-types">As announced in November of last year</a>, TypeScript bindings for Workers are now automatically generated based on <a href="https://blog.cloudflare.com/workerd-open-source-workers-runtime">our open source runtime, <code>workerd</code></a>. This means that whenever we use the types provided from the <a href="https://github.com/cloudflare/workers-types" target="_blank" rel="noopener noreferrer"><code>@cloudflare/workers-types</code> package</a> in our application, we can be sure that the types are always up-to-date.</p>
+<p>With these bindings, we can define the types for our environment variables, and use them in our application. Here's an example of the <code>Env</code> type, which defines the environment variables that we use in the application:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  AUTH_TOKEN</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span></span>
+<span class="line"><span class="sk-e36209-fff">  DB</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> D1Database</span></span>
+<span class="line"><span class="sk-e36209-fff">  QUEUE</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Queue</span></span>
+<span class="line"><span class="sk-e36209-fff">  SITEMAP_URL</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Notice the types of the <code>DB</code> and <code>QUEUE</code> bindings - <code>D1Database</code> and <code>Queue</code>, respectively. These types are automatically generated, complete with type signatures for each method inside of the D1 and Queue APIs. This means that we can be sure that we're using the correct methods, and that we're passing the correct arguments to them, directly from our text editor - without having to refer to the documentation.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="302" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=640&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=750&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=828&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=1080&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=1280&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=1430&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1662 Embedded Image - Utuhps" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FEFQSVHKC1DAG3MTCB3T.png&amp;w=920&amp;h=389&amp;f=webp" data-lightbox-width="920" data-lightbox-height="389" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="302" class="pt-portable-image-media"></div>
+</figure>
+<h2>How to use it</h2>
+<p>One of my favorite things about Workers is that deploying applications is quick and easy. Using `wrangler.toml` and some simple build scripts, we can deploy a fully-functional application in just a few minutes. Prospector is no different. With just a few commands, we can create the necessary D1 database and Queues instance, and deploy the application to our account.</p>
+<p>First, you'll need to clone the repository from our cloudflare/templates repository:</p>
+<p><code>git clone $URL</code></p>
+<p>If you haven't installed wrangler yet, you can do so by running:</p>
+<p><code>npm install @cloudflare/wrangler -g</code></p>
+<p>With Wrangler installed, you can login to your account by running:</p>
+<p><code>wrangler login</code></p>
+<p>After you've done that, you'll need to create a new D1 database, as well as a Queues instance. You can do this by running the following commands:</p>
+<p><code>wrangler d1 create $DATABASE_NAMEwrangler queues create $QUEUE_NAME</code></p>
+<p>Configure your <code>wrangler.toml</code> with the appropriate bindings (see [the README](URL) for an example):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[[ d1_databases ]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "keyword-tracker-db"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "ab4828aa-723b-4a77-a3f2-a2e6a21c4f87"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">preview_database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "8a77a074-8631-48ca-ba41-a00d0206de32"</span></span>
+<span class="line"><span class="sk-24292e-fff">	</span></span>
+<span class="line"><span class="sk-24292e-fff">[[queues.producers]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  queue</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "queue"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "QUEUE"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[[queues.consumers]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  queue</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "queue"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  max_batch_size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  max_batch_timeout</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 30</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  max_retries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  dead_letter_queue</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "queue-dlq"</span></span></code></pre>
+</div>
+<p>Next, you can run the <code>bin/migrate</code> script to create the tables in your database:</p>
+<p><code>bin/migrate</code></p>
+<p>This will create all the needed tables in your database, both in development (locally) and in production. Note that you'll even see the creation of a honest-to-goodness <code>.sqlite3</code> file in your project directory - this is the local development database, which you can connect to directly using the same SQLite CLI that you're used to:</p>
+<p><code>$ sqlite3 .wrangler/state/d1/DB.sqlite3sqlite&gt; .tables notifier_matches &nbsp;notifiers &nbsp; &nbsp;  sitemaps &nbsp; &nbsp; &nbsp; urls</code></p>
+<p>Finally, you can deploy the application to your account:</p>
+<p><code>npm run deploy</code></p>
+<p>With a deployed application, you can visit your Workers URL to see the user interface. From there, you can add new notifiers and URLs, and see the results of your scraping process. When a new keyword match is found, you’ll receive an email with the details of the match instantly:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="623" height="208" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=623&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=623&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 623w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=640&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=750&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=828&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=1080&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=1246&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 1246w" alt="BLOG-1662 Embedded Image - D3fv54" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459288E5GNZ0HYF6FCD8VD.png&amp;w=623&amp;h=208&amp;f=webp" data-lightbox-width="623" data-lightbox-height="208" data-astro-cid-7nvefuv6="true" sizes="(min-width: 623px) 623px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="623" height="208" class="pt-portable-image-media"></div>
+</figure>
+<h2>Conclusion</h2>
+<p>For some time, there have been a great deal of applications that were hard to build on Workers without relational data or background task tooling. Now, with D1 and Queues, we can build applications that seamlessly integrate between real-time user interfaces, geographically distributed data, background processing, and more, all using the same developer ergonomics and low latency that Workers is known for.</p>
+<p>D1 has been crucial for building this application. On larger sites, the number of URLs that need to be scraped can be quite large. If we were to use Workers KV, our key-value store, for storing this data, we would quickly struggle with how to model, retrieve, and update the data needed for this use-case. With D1, we can build relational data models and quickly query <em>just</em> the data we need for each queued processing task.</p>
+<p>Using these tools, developers can build internal tools and applications for their companies that are more powerful and more scalable than ever before. With the integration of Cloudflare's Zero Trust suite, developers can make these applications secure by default, and deploy them to Cloudflare's global network. This allows developers to build applications that are fast, secure, and reliable, all without having to worry about the underlying infrastructure.</p>
+<p>Prospector is a great example of how easy it is to build applications on Cloudflare Workers. With the recent addition of D1 and Queues, we've been able to build fully-functional applications that require real-time data and background processing in just a few hours. We're excited to share the open-source code for Prospector, and we'd love to hear your feedback on the project.</p>
+<p>If you have any questions, feel free to reach out to us on Twitter at <a href="https://twitter.com/cloudflaredev" target="_blank" rel="noopener noreferrer">@cloudflaredev</a>, or join us in the Cloudflare Workers Discord community, which recently hit 20k members and is a great place to ask questions and get help from other developers.</p>

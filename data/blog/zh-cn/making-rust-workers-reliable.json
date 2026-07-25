@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "提高 Rust Workers 可靠性：wasm-bindgen 中的 panic 错误与中止恢复机制",
+	"url": "https://blog.cloudflare.com/zh-cn/making-rust-workers-reliable/",
+	"datePublished": "2026-04-22T13:00:00.000Z",
+	"dateModified": "2026-07-15T17:09:40.384Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW48HQEZP84STFXFD0H3EBY7.png",
+	"description": "过去，Rust Workers 中的 panic 会产生致命影响，污染整个实例。通过 wasm-bindgen 项目方面的上游合作，Rust Workers 现在支持韧性关键错误恢复，包括使用 WebAssembly Exception Handling 进行 panic unwind 处理。"
+}

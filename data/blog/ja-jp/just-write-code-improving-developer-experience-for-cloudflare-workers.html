@@ -1,141 +1,67 @@
-<div class="mb2 gray5">4分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/just-write-code-improving-developer-experience-for-cloudflare-workers">English</a>、<a href="https://blog.cloudflare.com/fr-fr/just-write-code-improving-developer-experience-for-cloudflare-workers">Français</a>、<a href="https://blog.cloudflare.com/de-de/just-write-code-improving-developer-experience-for-cloudflare-workers">Deutsch</a>、<a href="https://blog.cloudflare.com/es-es/just-write-code-improving-developer-experience-for-cloudflare-workers">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/just-write-code-improving-developer-experience-for-cloudflare-workers">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4P9ELSmYMDKjf0sYujpMid/051cd4723c03fcd3860213ece6797118/just-write-code-improving-developer-experience-for-cloudflare-workers.jpeg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>本日、Cloudflare Workers®で、CLI、新しく改良されたドキュメント、すべての人が使える複数のスクリプト、ならびにご自身のドメインを使用せずにworkers.dev上でアプリケーションを実行可能な無料利用枠の提供が開始し、過去になかったほどに実験が容易になりましたことを発表します。弊社で構築を進めている未来のサーバーレスプラットフォーム上で、皆様にも今日、アプリケーションの構築を行っていただけます。この記事では、未来のサーバーレスプラットフォームの概要について、また、今日のパラダイムがいかに変わるのか、そしてこのプラットフォーム上で素晴らしい体験を構築するための弊社の取り組みについて説明します。</p>
-	<p>3年前、私はソリューションエンジニアリングの役割に応募し、Cloudflareの面接を受けました。面接には、Cloudflareに自分のドメインをセットアップする課題も含まれていました。週末を使って課題に取り組みましたが、あせったり設定で迷ったり、EC2のインスタンスのセットアップに悩み、IPv6経由での接続、Ubuntu 16.4へのNGINXのインストール方法などを考えながら進め、最後に_自分のネコの写真を置いた静的サイトを仕上げました_。私はコンピュータサイエンスを専攻し、それまでソフトウェアエンジニアとして働いてきましたが、このシンプルなアプリの構築はひどい経験でした。サーバーのことを考えずに週末をコーディングに費やしたら、もっと内容の濃いアプリケーションが出来上がったと思います。</p>
-	<p>ですが、このことはまだ、梯子の一段目にすぎなかったのです。プリミティブを上のスタックに移動するなか、実際、アプリケーションの開発や、それをインターネットに載せること、そしてMVPから拡張性ある高性能な製品に育てるには、まだまだ開発プロセスには明らかに手順が残っていました。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CNamrq69wPhKeFeFQBNe4/b65099939b3140c3cf947898ffea271f/Workers-diagram-MVP--copy-3_3x-8--1-.png" alt="" class="kg-image" width="1602" height="434" loading="lazy">
-
-	</figure>
-	<p>これが、「サーバーレス」によって必ず解決できる部分です。プロセスのすべての段階でサーバーを抽象化し、開発者が最も得意な部分つまり開発を、インフラストラクチャに対する不安なく行えるようにすることです。</p>
-	<p>ですが、現在の多くのサーバーレス製品では、開発者はまず、自身の担当ではないサーバーの心配をしなければならないのです。「あなたはどの地域が好きですか？」（私の頭の中に最初に浮かんだ質問：なぜ、東海岸と西海岸のどちらの顧客を最も心配しているのかについて考えざるを得なくさせるのですか。私の代わりに解決してくれないのですか？）あるいは、「どのくらいのメモリが必要だと思いますか？（再度：どうしてこれが私の問題になるのですか？！あなたが解決してください！）</p>
-	<p>このようなことになってはならないと思います。</p>
-	<p>私は、3年前に自身が直面していた問題、そして世界中の開発者が直面している問題を、よく思い出します。開発者は、コードに集中できる状態でなければなりません。インフラストラクチャのセットアップから、そのインフラストラクチャを高速に動作させ拡張性を持たせるまでの部分は、すべて誰か他の人が対処するべきです。私たちはWorkersの構築において、このような、より良いアーキテクチャを作るためのいくつかの決定にも関わりましたが、今日は、その説明をする機会ではありません（この部分について、詳しくは<a href="https://blog.cloudflare.com/cloud-computing-without-containers">ここに良く書かれた投稿があります</a>のでご覧ください）。今日は、Workersの機能を開発者向けに向上させていくことについてお話します。</p>
-	<p>私たちは、Workersを、開発者がコードのバグだけに集中できるようなサーバーレス、という夢を実現する製品にしたいと考えています。今日は、Workersで開発者に素晴らしい体験を実現するという目標達成のためのCloudflareにとってのスタートの日です。今日も素晴らしい発表がいくつかありますが、これはまだ始まりに過ぎません。</p>
-	<div class="flex anchor relative">
-		<h3 id="wrangler-the-official-workers-cli"><b>Wrangler：Workersの公式CLI</b></h3>
-		<a href="https://blog.cloudflare.com/#wrangler-the-official-workers-cli" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Wranglerは、もともとWorkers用のオープンソースのRust CLIだったものを正式なWokers CLIに格上げし、現在Workersの展開に関わるすべてのニーズに対応しています。</p>
-	<p>Wranglerをインストールして開始</p>
-	<pre class="language-sh"><code class="language-sh">npm install -g @cloudflare/wrangler</code></pre>
-	<p><code>npm install -g @cloudflare/wrangler</code></p>
-	<pre class="language-bash"><code class="language-bash">`wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]`</code></pre>
-
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5upDjn3HVlVDDBwXu1ECTQ/763b2395d6c80ca22aeaab580e8a0f97/worker_generate.gif" alt="" class="kg-image" width="1280" height="301" loading="lazy">
-
-	</figure>
-	<p><a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">テンプレート</a>ギャラリーから、最初のプロジェクトを生成します</p>
-	<p><code>wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]</code></p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60BJrINgnzEMXgBAiZrd5v/77b992fc3aa48faac5368de6596ff71a/utFG7RmahwQuXvQ9cuwDYZYK8WtxJDarspvCrbidSrT1OKxPlZhgcJURcBjFcDmpf22v5WPEebq-SPeoAmgjKIfUx9u805Dsd3P8ZMhvkDmFp-tesh5WVOwcoscv.gif" alt="" class="kg-image" width="1350" height="503" loading="lazy">
-
-	</figure>
-	<p>Wranglerは、プロジェクトのウェブパック、WebAssemblyへのコンパイル、プロジェクトのWorkersへのアップロードを、1つのシンプルな手順で行います。</p>
-	<p><code>Wranglerの公開</code></p>
-	<p>Wranglerを使用する嬉しいその他のメリット：</p>
-	<ul>
-		<li>
-			<p>Rust、C、およびC++を、WebAssemblyにコンパイルする</p>
-		</li>
-		<li>
-			<p>単一ファイルまたは複数ファイルのJavaScriptアプリケーションを作成する</p>
-		</li>
-		<li>
-			<p>NPM依存関係をインストールする（webpackは弊社で行います）</p>
-		</li>
-		<li>
-			<p>KV名前空間とバインディングを追加する</p>
-		</li>
-		<li>
-			<p>あらかじめ作成済みの<a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">テンプレート</a>で開始する</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="new-and-improved-docs"><b>新しいドキュメントと改良されたドキュメント</b></h3>
-		<a href="https://blog.cloudflare.com/#new-and-improved-docs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>ドキュメントを更新し（Wranglerを使用）、Workersでの最初のアプリケーションの展開開始がこれまでになく容易になりました。</p>
-	<p>新しいチュートリアルをご確認ください。</p>
-	<ul>
-		<li>
-			<p><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application" target="_blank" rel="noopener noreferrer">Workersを使用したSlackボットの展開</a></p>
-		</li>
-		<li>
-			<p><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function" target="_blank" rel="noopener noreferrer">QRコードジェネレータの構築</a></p>
-		</li>
-		<li>
-			<p><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank" rel="noopener noreferrer">クラウドストレージからのファイルの提供とキャッシュ</a></p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="multiscript-for-all"><b>誰でも使えるマルチスクリプト</b></h3>
-		<a href="https://blog.cloudflare.com/#multiscript-for-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>皆様から寄せられる質問にも耳を傾けました。Workers導入時、なるべくシンプルなものを作ろうと考えました。開発者は、コードを論理的なコンポーネントに分割したいのです。モノリシックなスクリプトを1つ用意するのではなく、使う方にとって意味ある方法でコードを配置できるようにしたいと考えています。</p>
-	<div class="flex anchor relative">
-		<h3 id="no-domain-required-workers-dev"><b>no-domain-required.workers.dev</b></h3>
-		<a href="https://blog.cloudflare.com/#no-domain-required-workers-dev" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>ソフトウェアを書くことはクリエイティブなプロセスです。新しいプロジェクトとは、ゼロからなにかを創造することです。何が出来上がるか、どのような名前を付けるかもまったくわからないこともあります。</p>
-	<p>Workersでは、(お客様のサブドメイン).workers.dev上での展開を可能にすることで、このスタートの部分を変えます。</p>
-	<p>2月にご覧になられたでしょうか、<a href="https://blog.cloudflare.com/announcing-workers-dev">この発表</a>を、ついに提供できることになりました。事前登録された皆様は、用意されているサブドメインにサインアップしてWorkersをクリックすることで、これをご利用いただくことができます。</p>
-	<div class="flex anchor relative">
-		<h3 id="a-free-tier-to-experiment"><b>実験に使える無料利用枠</b></h3>
-		<a href="https://blog.cloudflare.com/#a-free-tier-to-experiment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>素晴らしい製品が常に素晴らしいアイデアから生まれるとは限らず、いろいろやってみる自由があるために生まれることも多くあります。私たちは、ちょっとした作業にでも値段が付けば、たとえ5ドルでも、皆さんの実験の自由を制限してしまうことに気がついたのです。</p>
-	<p>そこで本日より、Workersに無料利用枠を設定することを発表します。</p>
-	<p>無料利用枠では、ご自身のドメインでもworkers.devでも、1日あたり最大100,000リクエストまで使用することができます。詳しい制限については、<a href="https://workers.cloudflare.com/docs/reference/runtime/limits" target="_blank" rel="noopener noreferrer">こちら</a>からご覧ください。</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mYvx3UtHkLBsZDW4DTFIo/2b6f6a2a46b1dc6c2034407b511dbd94/get-started.gif" alt="" class="kg-image" width="2874" height="1592" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="new-and-improved-ui"><b>新たに機能向上したUI</b></h3>
-		<a href="https://blog.cloudflare.com/#new-and-improved-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Workersへのサインアップから展開までが2分以内の、クリーンで使いやすいパッケージを作りました。</p>
-	<div class="flex anchor relative">
-		<h3 id="our-commitment"><b>Cloudflareのコミットメント</b></h3>
-		<a href="https://blog.cloudflare.com/#our-commitment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>まだまだこの先には長い道のりがあります。開発者にとっての使いやすさについては、現段階に留まることなく、さらに私たちの使命を果たしていきたいと考えています。共同創業者であるMichelleがよく言うように、「私たちはまだ始まったばかり」です。</p>
-	<p>目の前にはすることがたくさんあるし、この先ももっと色々なことが待っています。<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">workers.cloudflare.com</a>にアクセスすると詳細情報をご覧いただけるほか、実際に使用される場合には同じページからサインアップすることができます。</p>
-	<p>皆様の積極的なご利用をお待ちしています。</p>
+<p>本日、Cloudflare Workers®で、CLI、新しく改良されたドキュメント、すべての人が使える複数のスクリプト、ならびにご自身のドメインを使用せずにworkers.dev上でアプリケーションを実行可能な無料利用枠の提供が開始し、過去になかったほどに実験が容易になりましたことを発表します。弊社で構築を進めている未来のサーバーレスプラットフォーム上で、皆様にも今日、アプリケーションの構築を行っていただけます。この記事では、未来のサーバーレスプラットフォームの概要について、また、今日のパラダイムがいかに変わるのか、そしてこのプラットフォーム上で素晴らしい体験を構築するための弊社の取り組みについて説明します。</p>
+<p>3年前、私はソリューションエンジニアリングの役割に応募し、Cloudflareの面接を受けました。面接には、Cloudflareに自分のドメインをセットアップする課題も含まれていました。週末を使って課題に取り組みましたが、あせったり設定で迷ったり、EC2のインスタンスのセットアップに悩み、IPv6経由での接続、Ubuntu 16.4へのNGINXのインストール方法などを考えながら進め、最後に_自分のネコの写真を置いた静的サイトを仕上げました_。私はコンピュータサイエンスを専攻し、それまでソフトウェアエンジニアとして働いてきましたが、このシンプルなアプリの構築はひどい経験でした。サーバーのことを考えずに週末をコーディングに費やしたら、もっと内容の濃いアプリケーションが出来上がったと思います。</p>
+<p>ですが、このことはまだ、梯子の一段目にすぎなかったのです。プリミティブを上のスタックに移動するなか、実際、アプリケーションの開発や、それをインターネットに載せること、そしてMVPから拡張性ある高性能な製品に育てるには、まだまだ開発プロセスには明らかに手順が残っていました。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="194" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=640&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=750&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=828&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1080&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1280&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1430&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - lzc5XS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1602&amp;h=434&amp;f=webp" data-lightbox-width="1602" data-lightbox-height="434" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="194" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>これが、「サーバーレス」によって必ず解決できる部分です。プロセスのすべての段階でサーバーを抽象化し、開発者が最も得意な部分つまり開発を、インフラストラクチャに対する不安なく行えるようにすることです。</p>
+<p>ですが、現在の多くのサーバーレス製品では、開発者はまず、自身の担当ではないサーバーの心配をしなければならないのです。「あなたはどの地域が好きですか？」（私の頭の中に最初に浮かんだ質問：なぜ、東海岸と西海岸のどちらの顧客を最も心配しているのかについて考えざるを得なくさせるのですか。私の代わりに解決してくれないのですか？）あるいは、「どのくらいのメモリが必要だと思いますか？（再度：どうしてこれが私の問題になるのですか？！あなたが解決してください！）</p>
+<p>このようなことになってはならないと思います。</p>
+<p>私は、3年前に自身が直面していた問題、そして世界中の開発者が直面している問題を、よく思い出します。開発者は、コードに集中できる状態でなければなりません。インフラストラクチャのセットアップから、そのインフラストラクチャを高速に動作させ拡張性を持たせるまでの部分は、すべて誰か他の人が対処するべきです。私たちはWorkersの構築において、このような、より良いアーキテクチャを作るためのいくつかの決定にも関わりましたが、今日は、その説明をする機会ではありません（この部分について、詳しくは<a href="https://blog.cloudflare.com/cloud-computing-without-containers">ここに良く書かれた投稿があります</a>のでご覧ください）。今日は、Workersの機能を開発者向けに向上させていくことについてお話します。</p>
+<p>私たちは、Workersを、開発者がコードのバグだけに集中できるようなサーバーレス、という夢を実現する製品にしたいと考えています。今日は、Workersで開発者に素晴らしい体験を実現するという目標達成のためのCloudflareにとってのスタートの日です。今日も素晴らしい発表がいくつかありますが、これはまだ始まりに過ぎません。</p>
+<h3><strong>Wrangler：Workersの公式CLI</strong></h3>
+<p>Wranglerは、もともとWorkers用のオープンソースのRust CLIだったものを正式なWokers CLIに格上げし、現在Workersの展開に関わるすべてのニーズに対応しています。</p>
+<p>Wranglerをインストールして開始</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> @cloudflare/wrangler</span></span></code></pre>
 </div>
+<p><code>npm install -g @cloudflare/wrangler</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">name</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">template</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> --type=[</span><span class="sk-032f62-99ffe4">"webpack"</span><span class="sk-005cc5-99ffe4">, </span><span class="sk-032f62-99ffe4">"javascript"</span><span class="sk-005cc5-99ffe4">, </span><span class="sk-032f62-99ffe4">"rust"</span><span class="sk-005cc5-99ffe4">]</span><span class="sk-032f62-99ffe4">`</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="168" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47SAD6AJGK0SZ16TMJ9V8K.gif" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - Yt3PGJ" width="715" height="168" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p><a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">テンプレート</a>ギャラリーから、最初のプロジェクトを生成します</p>
+<p><code>wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]</code></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="266" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47V812EVZDE87R43R4FPMS.gif" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - AuM47y" width="715" height="266" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>Wranglerは、プロジェクトのウェブパック、WebAssemblyへのコンパイル、プロジェクトのWorkersへのアップロードを、1つのシンプルな手順で行います。</p>
+<p><code>Wranglerの公開</code></p>
+<p>Wranglerを使用する嬉しいその他のメリット：</p>
+<ul>
+	<li>Rust、C、およびC++を、WebAssemblyにコンパイルする</li>
+	<li>単一ファイルまたは複数ファイルのJavaScriptアプリケーションを作成する</li>
+	<li>NPM依存関係をインストールする（webpackは弊社で行います）</li>
+	<li>KV名前空間とバインディングを追加する</li>
+	<li>あらかじめ作成済みの<a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">テンプレート</a>で開始する</li>
+</ul>
+<h3><strong>新しいドキュメントと改良されたドキュメント</strong></h3>
+<p>ドキュメントを更新し（Wranglerを使用）、Workersでの最初のアプリケーションの展開開始がこれまでになく容易になりました。</p>
+<p>新しいチュートリアルをご確認ください。</p>
+<ul>
+	<li><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application" target="_blank" rel="noopener noreferrer">Workersを使用したSlackボットの展開</a></li>
+	<li><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function" target="_blank" rel="noopener noreferrer">QRコードジェネレータの構築</a></li>
+	<li><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank" rel="noopener noreferrer">クラウドストレージからのファイルの提供とキャッシュ</a></li>
+</ul>
+<h3><strong>誰でも使えるマルチスクリプト</strong></h3>
+<p>皆様から寄せられる質問にも耳を傾けました。Workers導入時、なるべくシンプルなものを作ろうと考えました。開発者は、コードを論理的なコンポーネントに分割したいのです。モノリシックなスクリプトを1つ用意するのではなく、使う方にとって意味ある方法でコードを配置できるようにしたいと考えています。</p>
+<h3><strong>no-domain-required.workers.dev</strong></h3>
+<p>ソフトウェアを書くことはクリエイティブなプロセスです。新しいプロジェクトとは、ゼロからなにかを創造することです。何が出来上がるか、どのような名前を付けるかもまったくわからないこともあります。</p>
+<p>Workersでは、(お客様のサブドメイン).workers.dev上での展開を可能にすることで、このスタートの部分を変えます。</p>
+<p>2月にご覧になられたでしょうか、<a href="https://blog.cloudflare.com/announcing-workers-dev">この発表</a>を、ついに提供できることになりました。事前登録された皆様は、用意されているサブドメインにサインアップしてWorkersをクリックすることで、これをご利用いただくことができます。</p>
+<h3><strong>実験に使える無料利用枠</strong></h3>
+<p>素晴らしい製品が常に素晴らしいアイデアから生まれるとは限らず、いろいろやってみる自由があるために生まれることも多くあります。私たちは、ちょっとした作業にでも値段が付けば、たとえ5ドルでも、皆さんの実験の自由を制限してしまうことに気がついたのです。</p>
+<p>そこで本日より、Workersに無料利用枠を設定することを発表します。</p>
+<p>無料利用枠では、ご自身のドメインでもworkers.devでも、1日あたり最大100,000リクエストまで使用することができます。詳しい制限については、<a href="https://workers.cloudflare.com/docs/reference/runtime/limits" target="_blank" rel="noopener noreferrer">こちら</a>からご覧ください。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47PH1JFDY4XCXDFGK9EE9Z.gif" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - WO0CcY" width="715" height="396" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h3><strong>新たに機能向上したUI</strong></h3>
+<p>Workersへのサインアップから展開までが2分以内の、クリーンで使いやすいパッケージを作りました。</p>
+<h3><strong>Cloudflareのコミットメント</strong></h3>
+<p>まだまだこの先には長い道のりがあります。開発者にとっての使いやすさについては、現段階に留まることなく、さらに私たちの使命を果たしていきたいと考えています。共同創業者であるMichelleがよく言うように、「私たちはまだ始まったばかり」です。</p>
+<p>目の前にはすることがたくさんあるし、この先ももっと色々なことが待っています。<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">workers.cloudflare.com</a>にアクセスすると詳細情報をご覧いただけるほか、実際に使用される場合には同じページからサインアップすることができます。</p>
+<p>皆様の積極的なご利用をお待ちしています。</p>

@@ -1,0 +1,145 @@
+<p>今天，我们很高兴地宣布为 Workers 和 Pages 推出<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">改进的 Node.js 兼容性</a>预览。更广泛的兼容性让您可以使用更多 NPM 包，并在编写 Workers 时利用 JavaScript 生态系统的优势。</p>
+<p>我们最新版本的 Node.js 兼容性结合了我们先前努力的最佳特征。<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> 以某种形式支持 Node.js 有相当长一段时间了。我们于<a href="https://blog.cloudflare.com/node-js-support-cloudflare-workers" target="_blank" rel="noopener noreferrer"> 2021 年</a> 首次宣布 polyfill 支持 ，后来随着时间的推移不断<a href="https://blog.cloudflare.com/workers-node-js-apis-stream-path" target="_blank" rel="noopener noreferrer"> 扩展</a><a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage" target="_blank" rel="noopener noreferrer">对部分 Node.js API 的内置支持</a> 。</p>
+<p>最新的改进使其变得更好：</p>
+<ul>
+	<li>您可在 Workers 上使用更多 <a href="https://en.wikipedia.org/wiki/Npm" target="_blank" rel="noopener noreferrer">NPM</a> 包。</li>
+	<li>您可以使用不是用 node : prefix 导入 Node.js API 的包</li>
+	<li>您可以<a href="https://workers-nodejs-compat-matrix.pages.dev" target="_blank" rel="noopener noreferrer">在 Workers 上使用更多 Node.js API</a> ，包括<code> <a href="https://nodejs.org/docs/latest/api/async_hooks.html" target="_blank" rel="noopener noreferrer">async_hooks</a> 、 <a href="https://nodejs.org/api/buffer.html" target="_blank" rel="noopener noreferrer">Buffer</a> 、 <a href="https://nodejs.org/api/dns.html" target="_blank" rel="noopener noreferrer">dns</a> 、 <a href="https://nodejs.org/docs/latest/api/os.html" target="_blank" rel="noopener noreferrer">os</a> </code>和<code> <a href="https://nodejs.org/docs/latest/api/events.html" target="_blank" rel="noopener noreferrer">events</a></code> 上的大多数方法。许多其他方法（例如<code> <a href="https://nodejs.org/api/fs.html" target="_blank" rel="noopener noreferrer">fs</a></code> 或 <a href="https://nodejs.org/docs/latest/api/process.html" target="_blank" rel="noopener noreferrer"><code>process</code></a> ）都可以使用模拟方法来导入。</li>
+</ul>
+<p>如要尝试，请将以下标志添加到 <code>wrangler.toml</code> ，并使用<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"> Wrangler 部署您的</a> Worker ：</p>
+<p><code>compatibility_flags = ["nodejs_compat_v2"]</code></p>
+<p>无法使用 <code>nodejs_compat</code> 导入的包（即使是作为另一个包的依赖）现已可以加载。其中包括流行的包，例如 <a href="https://www.npmjs.com/package/body-parser" target="_blank" rel="noopener noreferrer">body-parser</a> 、 <a href="https://www.npmjs.com/package/jsonwebtoken" target="_blank" rel="noopener noreferrer">jsonwebtoken</a> 、 {} <a href="https://www.npmjs.com/package/got" target="_blank" rel="noopener noreferrer">Got</a> 、<a href="https://www.npmjs.com/package/passport" target="_blank" rel="noopener noreferrer">passport</a>、 <a href="https://www.npmjs.com/package/md5" target="_blank" rel="noopener noreferrer">md5</a> 、 <a href="https://www.npmjs.com/package/knex" target="_blank" rel="noopener noreferrer">knex</a> 、 <a href="https://www.npmjs.com/package/mailparser" target="_blank" rel="noopener noreferrer">mailparser</a> 、 <a href="https://www.npmjs.com/package/csv-stringify" target="_blank" rel="noopener noreferrer">csv-stringify</a> 、 <a href="https://www.npmjs.com/package/cookie-signature" target="_blank" rel="noopener noreferrer">cookie-signature</a> 、 <a href="https://www.npmjs.com/package/stream-slice" target="_blank" rel="noopener noreferrer">stream-slice</a> 等。</p>
+<p>对于所有启用了<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">现有 nodejs_compat 兼容性标志</a>且<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer">兼容性日期</a>为 2024-09-23 或之后的 Workers，此行为很快将成为默认。在您试验改进的 Node.js 兼容性时，欢迎通过<a href="https://github.com/cloudflare/workers-sdk/issues/new?assignees=&amp;labels=bug&amp;projects=&amp;template=bug-template.yaml&amp;title=%F0%9F%90%9B+BUG%3A" target="_blank" rel="noopener noreferrer">在 GitHub 提交问题来分享您的反馈</a> 。</p>
+<h3><strong>Workerd 不是 Node.js</strong></h3>
+<p>要了解这些最新变化，我们先来简单了解一下 Workers 运行时与 <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">Node.js</a> 的不同之处。</p>
+<p>Node.js 主要专为直接在主机操作系统上运行的服务而构建，是服务器端 JavaScript 的先驱。因此，它包括与主机交互所需的功能（例如 <a href="https://nodejs.org/api/process.html" target="_blank" rel="noopener noreferrer">process</a> 或 <a href="https://nodejs.org/api/fs.html" target="_blank" rel="noopener noreferrer">fs</a> ），以及各种实用模块（例如 <a href="https://nodejs.org/api/crypto.html" target="_blank" rel="noopener noreferrer">crypto</a> ）。</p>
+<p>Cloudflare Workers 在一个名为 <a href="https://github.com/cloudflare/workerd" target="_blank" rel="noopener noreferrer">workerd</a> 的开源 JavaScript/Wasm 运行时上运行。虽然 Node.js 和 workerd 都是在 <a href="https://v8.dev" target="_blank" rel="noopener noreferrer">V8</a> 上构建的 ，但 workerd 设计为在共享<a href="https://blog.cloudflare.com/cloud-computing-without-containers" target="_blank" rel="noopener noreferrer">进程中运行不受信任的代码</a> ，暴露<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"> 绑定</a>以便与其他 Cloudflare 服务进行互操作，包括 <a href="https://blog.cloudflare.com/javascript-native-rpc" target="_blank" rel="noopener noreferrer">&nbsp;JavaScript 原生 RPC</a> ，并尽可能使用 <a href="https://blog.cloudflare.com/introducing-the-wintercg" target="_blank" rel="noopener noreferrer">Web 标准 API</a> 。</p>
+<p>Cloudflare<a href="https://blog.cloudflare.com/introducing-the-wintercg" target="_blank" rel="noopener noreferrer"> 帮助建立了 </a>&nbsp;<a href="https://wintercg.org" target="_blank" rel="noopener noreferrer">WinterCG</a> （Web 互操作运行时社区小组） ，其旨在提高 JavaScript 运行时之间以及运行时与 Web 平台的互操作性。您可以仅使用 Web 标准 API 构建许多应用，但是当您想从 NPM 导入依赖于 Node.js API 的依赖项时，该怎么办呢？</p>
+<p>例如，如果您在未开启Node.js 兼容性的情况下尝试导入<a href="https://www.npmjs.com/package/pg" target="_blank" rel="noopener noreferrer"> pg </a>&nbsp;（一个 PostgreSQL 驱动程序）……</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> pg </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'pg'</span></span></code></pre>
+</div>
+<p>当运行 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#dev" target="_blank" rel="noopener noreferrer">wrangler dev</a> 以构建您的 Worker 时，将看到如下错误：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">✘ [</span><span class="sk-005cc5-fff">ERROR</span><span class="sk-24292e-fff">] Could not resolve </span><span class="sk-032f62-99ffe4">"events"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ..</span><span class="sk-032f62-a0a0a0">/node_modules/</span><span class="sk-24292e-fff">.pnpm</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare@</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">node_modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dist</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">index.js:</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">29</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      1</span><span class="sk-24292e-fff"> │ </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { EventEmitter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        ╵                              </span><span class="sk-d73a49-a0a0a0">~~~~~~~~</span></span>
+<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre>
+</div>
+<p>发生这种情况是因为 pg 包从 Node.js 导入 <a href="https://nodejs.org/api/events.html" target="_blank" rel="noopener noreferrer">events 模块</a>，而 workerd 默认情况下不提供该模块。</p>
+<p>我们如何实现这一点？</p>
+<h3><strong>我们的第一种方法 —— 构建时 polyfills</strong></h3>
+<p>Polyfill 是为原生不支持某项功能的运行时添加功能的代码。这些代码通常用于为旧版浏览器提供现代 JavaScript 功能，但也可以用于服务器端运行时。</p>
+<p>在 2022 年，我们<a href="https://github.com/cloudflare/workers-sdk/pull/869" target="_blank" rel="noopener noreferrer"> 为 Wrangler 添加了功能， 如果您在 wrangler.toml 中设置</a> <code>node_compat = true</code> ， 则可以将一些 Node.js API 的 polyfill 实现注入 Worker 中。以下代码在开启该标志时可以正常工作，但在关闭时则不行：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> EventEmitter </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { inherits } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'util'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>这些 polyfill 本质上就是在部署 Worker 时由 <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer">Wrangler</a> 添加到 Worker 的额外 JavaScript 代码。这个行为由 <a href="https://www.npmjs.com/package/@esbuild-plugins/node-globals-polyfill" target="_blank" rel="noopener noreferrer"><code>@esbuild-plugins/node-globals- polyfill</code></a> 支持实现，后者本身使用 <code>&nbsp;<a href="https://github.com/ionic-team/rollup-plugin-node-polyfills" target="_blank" rel="noopener noreferrer">rollup-plugin-node-polyfills</a></code>。</p>
+<p>这允许您导入和使用一些 NPM 包，例如 pg。然而，许多模块无法用足够快的代码进行 polyfill，或者根本无法被 polyfill。</p>
+<p>例如， <a href="https://nodejs.org/api/buffer.html" target="_blank" rel="noopener noreferrer">Buffer</a> 是用于处理二进制数据的常见 Node.js API。存在支持它的 polyfill，但 JavaScript 通常并没有针对它在内部执行的操作进行优化，例如 <code>copy、concat</code>、子字符串搜索或转码。虽然可以用纯 JavaScript 实现，但如果底层运行时可以使用来自不同语言的基元，那么速度还会快得多。其他流行的 API，如 <a href="https://nodejs.org/api/crypto.html" target="_blank" rel="noopener noreferrer">Crypto</a> 、 <a href="https://nodejs.org/api/async_context.html" target="_blank" rel="noopener noreferrer">AsyncLocalStorage</a> 和 <a href="https://nodejs.org/api/stream.html" target="_blank" rel="noopener noreferrer">Stream</a> ，也存在类似的限制。</p>
+<h3><strong>我们的第二种方法——在 Workers 运行时中原生支持一些 Node.js API</strong></h3>
+<p>2023 年，我们<a href="https://blog.cloudflare.com/workers-node-js-asynclocalstorage" target="_blank" rel="noopener noreferrer">开始将</a>一部分 Node.js API 直接添加到 Workers 运行时中。您可以通过向 Worker 添加<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">nodejs_compatcompatible 标志</a>来启用这些 API ，但不能同时将 polyfills 与 <code>node_compat = true </code>一起使用。</p>
+<p>此外，在导入 Node.js API 时，必须使用<code> node : </code>prefix：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'node:buffer'</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>由于这些 Node.js API 直接内置于 Workers 运行时中，因此可以<a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/buffer.c%2B%2B" target="_blank" rel="noopener noreferrer">用 C++ 编写</a>，这使得它们比 JavaScript polyfill 更快。像 <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs/asynclocalstorage" target="_blank" rel="noopener noreferrer">AsyncLocalStorage</a> 这样的 API （不能在不影响安全性和性能的情况下进行 polyfill）可以原生提供。</p>
+<p>要求 &nbsp;<code>node:</code> prefix 使导入更加明确，并与现代 Node.js 约定保持一致。不幸的是，现有的 NPM 包可能不使用 <code>&nbsp;node:</code> 导入。例如，回顾一下上面的示例，如果您在带有 &nbsp;<code>nodejs_compat</code> 标志的 Worker 中导入流行程序包 <code>pg</code>，您仍然会看到以下错误：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">✘ [</span><span class="sk-005cc5-fff">ERROR</span><span class="sk-24292e-fff">] Could not resolve </span><span class="sk-032f62-99ffe4">"events"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ..</span><span class="sk-032f62-a0a0a0">/node_modules/</span><span class="sk-24292e-fff">.pnpm</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare@</span><span class="sk-005cc5-ffc799">1.1</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">node_modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">pg</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">dist</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">index.js:</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">29</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      1</span><span class="sk-24292e-fff"> │ </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { EventEmitter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'events'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        ╵                              </span><span class="sk-d73a49-a0a0a0">~~~~~~~~</span></span>
+<span class="line"><span class="sk-24292e-fff">  The </span><span class="sk-d73a49-a0a0a0">package</span><span class="sk-032f62-99ffe4"> "events"</span><span class="sk-24292e-fff"> wasn</span><span class="sk-032f62-99ffe4">'t found on the file system but is built into node</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span></code></pre>
+</div>
+<p>即使您启用了 <code>nodejs_compat</code> 兼容性标志，许多 NPM 包仍然不能在 Workers 中运行。您必须在较小的高性能 API 集（以许多 NPM 包无法访问的方式暴露）之间进行选择，而是在较大的不完整、性能较低的 API 集之间进行选择。而在 Node.js 中暴露为全局变量的 API ，例如 <code>process</code> ，仍然只能通过将其作为模块导入来访问。</p>
+<h3><strong>新方式：混合模型</strong></h3>
+<p>如果我们可以两全其美并能顺利运行，那会如何？</p>
+<ul>
+	<li>在 Workers 运行时中直接实现的 Node.js API 子集&nbsp;</li>
+	<li>适用于其他大多数 Node.js API 的 Polyfill</li>
+	<li>不需要 <code>node :</code> prefix</li>
+	<li>一个简单的选择使用方式</li>
+</ul>
+<p>改进后的 Node.js 兼容性就能做到这一点。</p>
+<p>我们来看看两行代码，看起来相似，但在启用 <code>nodejs_compat_v2</code> 后，内部行为有所不同：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Buffer } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'buffer'</span><span class="sk-24292e-fff">;  </span><span class="sk-6a737d-8b8b8b94">// natively implemented</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { isIP } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'net'</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// polyfilled</span></span></code></pre>
+</div>
+<p>第一行从 workerd 中的 JavaScript<a href="https://github.com/cloudflare/workerd/blob/main/src/node/internal/internal_buffer.ts" target="_blank" rel="noopener noreferrer"> 模块导入 </a><code>Buffer</code>，<a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/buffer.c%2B%2B" target="_blank" rel="noopener noreferrer">该模块由 <code>C++</code> 代码</a>支持。其他各种 Node.js 模块也类似地以 Typescript 和 C++ 的组合实现，包括 <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/async-hooks.h" target="_blank" rel="noopener noreferrer">&nbsp;<code>AsyncLocalStorage</code></a> 和 <a href="https://github.com/cloudflare/workerd/blob/main/src/workerd/api/node/crypto.h" target="_blank" rel="noopener noreferrer">&nbsp;<code>Crypto</code></a> 。这样允许编写与 Node.js 行为相匹配的高性能代码。</p>
+<p>请注意，导入 <code>buffer</code> 时不需要 <code>node:</code> prefix ，但使用 <code>node:buffer</code> 代码也能工作。</p>
+<p>第二行导入 <code>net</code>，Wrangler 使用一个名为 <a href="https://github.com/unjs/unenv" target="_blank" rel="noopener noreferrer">unenv</a> 的库自动 polyfill 。 Polyfill 和内置运行时 API 现在可以协同工作。</p>
+<p>在以前的版本中，当您设置 <code>node_compat = true</code> 时，Wrangler 会在能够的情况下为每个 Node.js API 添加 polyfill，即使您的 Worker 及其依赖项都没有使用该 API。当您启用 <a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">nodejs_compat_v2compatible_flag</a> 时，Wrangler 只会为您的 Worker 或其依赖项实际使用的 Node.js API 添加 polyfill。结果是，即使使用了 polyfill，Worker 也会很小。</p>
+<p>对于某些 Node.js API，Workers 运行时中尚未提供原生支持，也没有 polyfill 实现。在这些情况下，unenv 会“模拟”接口。这意味着它将将该模块及其方法添加到您的 Worker，但调用该模块的方法要么不执行任何操作，要么抛出错误，并显示类似以下的消息：</p>
+<p><code>[unenv] &lt;method name&gt; is not implemented yet!</code></p>
+<p>这比看起来更重要。因为如果一个 Node.js API 被“模拟”，那么依赖它的 NPM 包仍然可以被导入。请考虑以下代码：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Package name: my-module</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fs </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "fs"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> foo</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">path</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> fs.</span><span class="sk-6f42c1-ffc799">readFileSync</span><span class="sk-24292e-fff">(path, </span><span class="sk-032f62-99ffe4">'utf8'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> data;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> bar</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> "baz"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { bar } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "my-module"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">bar</span><span class="sk-24292e-fff">(); </span><span class="sk-6a737d-8b8b8b94">// returns "baz"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">foo</span><span class="sk-24292e-fff">(); </span><span class="sk-6a737d-8b8b8b94">// throws readFileSync is not implemented yet!</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>以前，即使启用了<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">现有的 nodejs_compat 兼容性标志</a>，尝试导入 my-module 也会在构建时失败，因为无法解析 <code>fs</code> 模块。现在，<code>fs</code> 模块可以解析，不依赖于未实现的 Node.js API 的方法可以工作，而那些确实抛出错误的方法会给出更具体的错误信息——一个运行时错误，表明某个特定的 Node.js API 方法尚不支持，而不是构建时错误，指明模块无法被解析。</p>
+<p>这就是为什么某些包从“在 Workers 上甚至不加载”转变为“可以加载，但有一些不受支持的方法”。</p>
+<h3><strong>依然缺少 Node.js 的某个 API？模块别名来帮忙</strong></h3>
+<p>假设您需要一个 NPM 包在 Workers 上工作，其依赖于尚未在 Workers 运行时中实现的 Node.js API ，或作为 unenv 中的 polyfill 。您可以使用<a href="https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing" target="_blank" rel="noopener noreferrer">模块别名</a>来实现刚好足够正常工作的 API。</p>
+<p>例如，假设您需要工作的 NPM 包调用 <a href="https://nodejs.org/api/fs.html#fsreadfilepath-options-callback" target="_blank" rel="noopener noreferrer">fs.readFile</a> 。您可以通过将以下内容添加到 Worker 的 wrangler.toml 来为 fs 模块起别名：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[alias]</span></span>
+<span class="line"><span>"fs" = "./fs-polyfill"</span></span></code></pre>
+</div>
+<p>然后，在 fs- polyfill.js 文件中，您可以定义自己对 fs 模块的任何方法的实现：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> readFile</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"readFile was called"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>以下代码之前抛出错误信息“[unenv] readFile is not implemented yet!”，现在可以正常运行：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { readFile } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'fs'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    readFile</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Hello World!'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>您还可以使用模块别名来提供一个在 Workers 上不起作用的 NPM 包的实现，即使您只是间接依赖该 NPM 包（作为您的 Worker 的某个依赖项的依赖项）。</p>
+<p>例如， <a href="https://www.npmjs.com/package/cross-fetch" target="_blank" rel="noopener noreferrer">cross-fetch</a> 等一些 NPM 包依赖于 <a href="https://www.npmjs.com/package/node-fetch" target="_blank" rel="noopener noreferrer">node-fetch</a> ，后者在 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer">fetch() API</a>在内置到 Node.js 之前提供其 polyfill。 Workers 中不需要 node-fetch 包，因为 fetch() API 由 Workers 运行时提供。node-fetch 在 Workers 不能工作 ，因为它依赖的 <a href="https://nodejs.org/api/http.html" target="_blank" rel="noopener noreferrer">http</a> 和 <a href="https://nodejs.org/api/https.html" target="_blank" rel="noopener noreferrer">https</a> 模块中的 Node.js API 目前不受支持。</p>
+<p>您可以为 node-fetch 的所有导入设置别名，使其直接指向使用流行的 <a href="https://github.com/SukkaW/nolyfill" target="_blank" rel="noopener noreferrer">nolyfill</a> 包内置于 Workers 运行时的 fetch() API ：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[alias]</span></span>
+<span class="line"><span>"node-fetch" = "./fetch-nolyfill"</span></span></code></pre>
+</div>
+<p>在这种情况下，您的替代模块只需重新导出 Workers 运行时内置的 fetch API 即可：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> fetch;</span></span></code></pre>
+</div>
+<h3><strong>向 unenv 回报贡献</strong></h3>
+<p>Cloudflare 正在为 unenv 积极做贡献。我们认为 unenv 正在以正确的方式解决跨运行时兼容性问题——它会根据您使用的 API 和针对的运行时，仅向您的应用程序添加必要的 polyfill。该项目支持也 workerd 之外的各种运行时，并且已经被包括 <a href="https://nuxt.com" target="_blank" rel="noopener noreferrer">Nuxt</a> 和 <a href="https://nitro.unjs.io" target="_blank" rel="noopener noreferrer">Nitro</a> &nbsp;在内的其他流行项目使用。我们要感谢 <a href="https://github.com/pi0" target="_blank" rel="noopener noreferrer">Pooya Parsa</a>和 unenv 的维护者，并鼓励生态系统中的其他人采用或贡献。</p>
+<h3><strong>前进道路</strong></h3>
+<p>目前，您可以通过在 <code>wrangler.toml </code>中设置 <code>nodejs_compat_v2</code> 标志来启用改进的 Node.js 兼容性 。我们计划从 9 月 23 日起使该新行为成为使用 <code>nodejs_compat</code> 标志时的默认行为。这将需要更新<a href="https://developers.cloudflare.com/workers/configuration/compatibility-dates" target="_blank" rel="noopener noreferrer"> <code>compatibility_date</code></a>。</p>
+<p>我们对即将到来的 Node.js 兼容性变化感到兴奋，鼓励您今天就尝试一下。<a href="https://developers.cloudflare.com/workers/runtime-apis/nodejs" target="_blank" rel="noopener noreferrer">查看文档</a>，了解如何为你的 Workers 选择加入。如果有任何反馈或错误，请<a href="https://github.com/cloudflare/workers-sdk/issues/new?assignees=&amp;labels=bug&amp;projects=&amp;template=bug-template.yaml&amp;title=%F0%9F%90%9B+BUG%3A" target="_blank" rel="noopener noreferrer">通过提交问题</a>告知我们。这样可以帮助我们识别支持中的任何错漏，确保尽可能多的 Node.js 生态系统能够在 Workers 上运行。</p>

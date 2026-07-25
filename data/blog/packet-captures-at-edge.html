@@ -1,92 +1,55 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/packet-captures-at-edge">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/packet-captures-at-edge">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mk6xHDcVFErI6ZlQKUh1F/5cfb5ae73ab2701906a5132cd086797e/packet-captures-at-edge.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Packet captures are a critical tool used by network and security engineers every day. As more network functions migrate from legacy on-prem hardware to cloud-native services, teams risk losing the visibility they used to get by capturing 100% of traffic funneled through a single device in a datacenter rack. We know having easy access to packet captures across all your network traffic is important for troubleshooting problems and deeply understanding traffic patterns, so today, we’re excited to announce the general availability of on-demand packet captures from Cloudflare’s global network.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-are-packet-captures-and-how-are-they-used">What are packet captures and how are they used?</h3>
-		<a href="https://blog.cloudflare.com/#what-are-packet-captures-and-how-are-they-used" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A packet capture is a file that contains all packets that were seen by a particular network box, usually a firewall or router, during a specific time frame. Packet captures are a powerful and commonly used tool for debugging network issues or getting better visibility into attack traffic to tighten security (e.g. by adding firewall rules to block a specific attack pattern).</p>
-	<p>A network engineer might use a pcap file in combination with other tools, like <a href="https://www.cloudflare.com/learning/network-layer/what-is-mtr" target="_blank" rel="noopener noreferrer">mtr</a>, to troubleshoot problems with reachability to their network. For example, if an end user reports intermittent connectivity to a specific application, an engineer can set up a packet capture filtered to the user’s source IP address to record all packets received from their device. They can then analyze that packet capture and compare it to other sources of information (e.g. pcaps from the end user’s side of the network path, traffic logs and analytics) to understand the magnitude and isolate the source of the problem.</p>
-	<p>Security engineers can also use packet captures to gain a better understanding of potentially malicious traffic. Let’s say an engineer notices an unexpected spike in traffic that they suspect could be an attempted attack. They can grab a packet capture to record the traffic as it’s hitting their network and analyze it to determine whether the packets are valid. If they’re not, for example, if the packet payload is randomly generated gibberish, the security engineer can create a firewall rule to block traffic that looks like this from entering their network.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OKUEiSlnlCSXLryTslrWR/2a862de65c9be324e99751a35b0cee69/image1-65.png" alt="Example of a packet capture from a recent DDoS attack targeted at Cloudflare infrastructure. The contents of this pcap can be used to create a “signature” to block the attack." class="kg-image" width="1999" height="1395" loading="lazy">
-
-	</figure>
-	<p><i>Example of a packet capture from a recent DDoS attack targeted at Cloudflare infrastructure. The contents of this pcap can be used to create a “signature” to block the attack.</i></p>
-	<div class="flex anchor relative">
-		<h3 id="fragmenting-traffic-creates-gaps-in-visibility">Fragmenting traffic creates gaps in visibility</h3>
-		<a href="https://blog.cloudflare.com/#fragmenting-traffic-creates-gaps-in-visibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Traditionally, users capture packets by logging into their router or firewall and starting a process like <a href="https://www.tcpdump.org" target="_blank" rel="noopener noreferrer">tcpdump</a>. They’d set up a filter to only match on certain packets and grab the file. But as networks have become more fragmented and users are moving security functions out to the edge, it’s become increasingly challenging to collect packet captures for relevant traffic. Instead of just one device that all traffic flows through (think of a drawbridge in the “<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security" target="_blank" rel="noopener noreferrer">castle and moat</a>” analogy) engineers may have to capture packets across many different physical and virtual devices spread across locations. Many of these packets may not allow taking pcaps at all, and then users have to try to &nbsp;stitch them back together to create a full picture of their network traffic. This is a nearly impossible task today and only getting harder as networks become more fractured and complex.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2oAYhpR8RTzQKGijeIYDbq/a815a486f88dc8a31a5d9bcb0a91df78/image2-56.png" alt="" class="kg-image" width="1802" height="1001" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="on-demand-packet-captures-from-the-cloudflare-global-network">On-demand packet captures from the Cloudflare global network</h3>
-		<a href="https://blog.cloudflare.com/#on-demand-packet-captures-from-the-cloudflare-global-network" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With Cloudflare, you can regain this visibility. With <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> and <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a>, customers route all their public and private IP traffic through Cloudflare’s network to make it more secure, faster, and more reliable, but also to increase visibility. You can think of Cloudflare like a giant, globally distributed version of the drawbridge in our old analogy: because we act as a single cloud-based router and firewall across all your traffic, we can capture packets across your entire network and deliver them back to you in one place.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-does-it-work">How does it work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-it-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Customers can request a packet capture using our <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps" target="_blank" rel="noopener noreferrer">Packet Captures API</a>. To get the packets you’re looking for you can provide a filter with the IP address, ports, and protocol of the packets you want.</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST https://api.cloudflare.com/client/v4/accounts/${account_id}/pcaps \
--H 'Content-Type: application/json' \
--H 'X-Auth-Email: user@example.com' \
--H 'X-Auth-Key: 00000000000' \
---data '{
-        "filter_v1": {
-               "source_address": "1.2.3.4",
-               "protocol": 6
-        },
-        "time_limit": 300,
-        "byte_limit": "10mb",
-        "packet_limit": 10000,
-        "type": "simple",
-        "system": "magic-transit"
-}'</code></pre>
-	<p>Example of a request for packet capture using our API.</p>
-	<p>We leverage <a href="https://netfilter.org/projects/nftables" target="_blank" rel="noopener noreferrer">nftables</a> to apply the filter to the customer’s incoming packets and log them using <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank" rel="noopener noreferrer">nflog</a>:</p>
-	<pre class="language-bash"><code class="language-bash">table inet pcaps_1 {
-    chain pcap_1 {
-        ip protocol 6 ip saddr 1.2.3.4 log group 1 comment “packet capture”
-    }
-}</code></pre>
-	<p>Example nftables configuration used to filter log customer packets</p>
-	<p>nflog creates a netfilter socket through which logs of a packet are sent from the Linux kernel to user space. In user space, we use tcpdump to read packets off the netfilter socket and generate a packet capture file:</p>
-	<pre class="language-bash"><code class="language-bash">tcpdump -i nflog:1 -w pcap_1.pcap</code></pre>
-	<p>Example tcpdump command to create a packet capture file.</p>
-	<p>Usually tcpdump is used by listening to incoming packets on a network interface, but in our case we configure it to read packet logs from an nflog group. tcpdump will convert the packet logs into a packet capture file.</p>
-	<p>Once we have a packet capture file, we need to deliver it to customers. Because packet capture files can be large and contain sensitive information (e.g. packet payloads), we send them to customers directly from our machines to a cloud storage service of their choice. This means we never store sensitive data, and it’s easy for customers to manage and store these large files.</p>
-	<div class="flex anchor relative">
-		<h3 id="get-started-today">Get started today</h3>
-		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On-demand packet captures are now generally available for customers who have purchased the Advanced features of Magic Firewall. The <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps" target="_blank" rel="noopener noreferrer">packet capture API</a> allows customers to capture the first 160 bytes of packets, sampled at a default rate of 1/100. More functionality including full packet captures and on-demand packet capture control in the Cloudflare Dashboard is coming in the following weeks. Contact your account team to stay updated on the latest!</p>
+<p>Packet captures are a critical tool used by network and security engineers every day. As more network functions migrate from legacy on-prem hardware to cloud-native services, teams risk losing the visibility they used to get by capturing 100% of traffic funneled through a single device in a datacenter rack. We know having easy access to packet captures across all your network traffic is important for troubleshooting problems and deeply understanding traffic patterns, so today, we’re excited to announce the general availability of on-demand packet captures from Cloudflare’s global network.</p>
+<h3>What are packet captures and how are they used?</h3>
+<p>A packet capture is a file that contains all packets that were seen by a particular network box, usually a firewall or router, during a specific time frame. Packet captures are a powerful and commonly used tool for debugging network issues or getting better visibility into attack traffic to tighten security (e.g. by adding firewall rules to block a specific attack pattern).</p>
+<p>A network engineer might use a pcap file in combination with other tools, like <a href="https://www.cloudflare.com/learning/network-layer/what-is-mtr" target="_blank" rel="noopener noreferrer">mtr</a>, to troubleshoot problems with reachability to their network. For example, if an end user reports intermittent connectivity to a specific application, an engineer can set up a packet capture filtered to the user’s source IP address to record all packets received from their device. They can then analyze that packet capture and compare it to other sources of information (e.g. pcaps from the end user’s side of the network path, traffic logs and analytics) to understand the magnitude and isolate the source of the problem.</p>
+<p>Security engineers can also use packet captures to gain a better understanding of potentially malicious traffic. Let’s say an engineer notices an unexpected spike in traffic that they suspect could be an attempted attack. They can grab a packet capture to record the traffic as it’s hitting their network and analyze it to determine whether the packets are valid. If they’re not, for example, if the packet payload is randomly generated gibberish, the security engineer can create a firewall rule to block traffic that looks like this from entering their network.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="499" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=715&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=640&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=715&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=750&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=828&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=1080&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=1280&amp;h=893&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=1430&amp;h=998&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example of a packet capture from a recent DDoS attack targeted at Cloudflare infrastructure. The contents of this pcap can be used to create a “signature” to block the attack." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48476N28CHPM6HYZMANQX9.png&amp;w=1920&amp;h=1340&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1340" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="499" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>Example of a packet capture from a recent DDoS attack targeted at Cloudflare infrastructure. The contents of this pcap can be used to create a “signature” to block the attack.</em></p>
+<h3>Fragmenting traffic creates gaps in visibility</h3>
+<p>Traditionally, users capture packets by logging into their router or firewall and starting a process like <a href="https://www.tcpdump.org" target="_blank" rel="noopener noreferrer">tcpdump</a>. They’d set up a filter to only match on certain packets and grab the file. But as networks have become more fragmented and users are moving security functions out to the edge, it’s become increasingly challenging to collect packet captures for relevant traffic. Instead of just one device that all traffic flows through (think of a drawbridge in the “<a href="https://www.cloudflare.com/learning/access-management/castle-and-moat-network-security" target="_blank" rel="noopener noreferrer">castle and moat</a>” analogy) engineers may have to capture packets across many different physical and virtual devices spread across locations. Many of these packets may not allow taking pcaps at all, and then users have to try to &nbsp;stitch them back together to create a full picture of their network traffic. This is a nearly impossible task today and only getting harder as networks become more fractured and complex.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="397" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=640&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=715&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=750&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=828&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=1080&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=1280&amp;h=711&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=1430&amp;h=794&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-962 Embedded Image - vSZ1DR" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J9W5S605RB2FRFDFGEME.png&amp;w=1802&amp;h=1001&amp;f=webp" data-lightbox-width="1802" data-lightbox-height="1001" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="397" class="pt-portable-image-media"></div>
+</figure>
+<h3>On-demand packet captures from the Cloudflare global network</h3>
+<p>With Cloudflare, you can regain this visibility. With <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> and <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a>, customers route all their public and private IP traffic through Cloudflare’s network to make it more secure, faster, and more reliable, but also to increase visibility. You can think of Cloudflare like a giant, globally distributed version of the drawbridge in our old analogy: because we act as a single cloud-based router and firewall across all your traffic, we can capture packets across your entire network and deliver them back to you in one place.</p>
+<h3>How does it work?</h3>
+<p>Customers can request a packet capture using our <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps" target="_blank" rel="noopener noreferrer">Packet Captures API</a>. To get the packets you’re looking for you can provide a filter with the IP address, ports, and protocol of the packets you want.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> https://api.cloudflare.com/client/v4/accounts/</span><span class="sk-24292e-fff">${account_id}</span><span class="sk-032f62-99ffe4">/pcaps</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'Content-Type: application/json'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'X-Auth-Email: user@example.com'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">'X-Auth-Key: 00000000000'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">--data </span><span class="sk-032f62-99ffe4">'{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "filter_v1": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">               "source_address": "1.2.3.4",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">               "protocol": 6</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "time_limit": 300,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "byte_limit": "10mb",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "packet_limit": 10000,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "type": "simple",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "system": "magic-transit"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
 </div>
+<p>Example of a request for packet capture using our API.</p>
+<p>We leverage <a href="https://netfilter.org/projects/nftables" target="_blank" rel="noopener noreferrer">nftables</a> to apply the filter to the customer’s incoming packets and log them using <a href="https://www.netfilter.org/projects/libnetfilter_log/index.html" target="_blank" rel="noopener noreferrer">nflog</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">table</span><span class="sk-032f62-99ffe4"> inet</span><span class="sk-032f62-99ffe4"> pcaps_1</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    chain</span><span class="sk-032f62-99ffe4"> pcap_1</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        ip</span><span class="sk-032f62-99ffe4"> protocol</span><span class="sk-005cc5-ffc799"> 6</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> saddr</span><span class="sk-005cc5-ffc799"> 1.2.3.4</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> group</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> comment</span><span class="sk-032f62-99ffe4"> “packet</span><span class="sk-032f62-99ffe4"> capture”</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Example nftables configuration used to filter log customer packets</p>
+<p>nflog creates a netfilter socket through which logs of a packet are sent from the Linux kernel to user space. In user space, we use tcpdump to read packets off the netfilter socket and generate a packet capture file:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcpdump</span><span class="sk-005cc5-99ffe4"> -i</span><span class="sk-032f62-99ffe4"> nflog:1</span><span class="sk-005cc5-99ffe4"> -w</span><span class="sk-032f62-99ffe4"> pcap_1.pcap</span></span></code></pre>
+</div>
+<p>Example tcpdump command to create a packet capture file.</p>
+<p>Usually tcpdump is used by listening to incoming packets on a network interface, but in our case we configure it to read packet logs from an nflog group. tcpdump will convert the packet logs into a packet capture file.</p>
+<p>Once we have a packet capture file, we need to deliver it to customers. Because packet capture files can be large and contain sensitive information (e.g. packet payloads), we send them to customers directly from our machines to a cloud storage service of their choice. This means we never store sensitive data, and it’s easy for customers to manage and store these large files.</p>
+<h3>Get started today</h3>
+<p>On-demand packet captures are now generally available for customers who have purchased the Advanced features of Magic Firewall. The <a href="https://developers.cloudflare.com/magic-firewall/how-to/collect-pcaps" target="_blank" rel="noopener noreferrer">packet capture API</a> allows customers to capture the first 160 bytes of packets, sampled at a default rate of 1/100. More functionality including full packet captures and on-demand packet capture control in the Cloudflare Dashboard is coming in the following weeks. Contact your account team to stay updated on the latest!</p>

@@ -1,76 +1,66 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ko-kr/experiment-with-http-3-using-nginx-and-quiche">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5S3sSj49psOqOu1XFbbeHW/e96c476073228c99a34ef9203cc68866/experiment-with-http-3-using-nginx-and-quiche.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Just a few weeks ago <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">we announced</a> the availability on our edge network of <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer">HTTP/3</a>, the new revision of HTTP intended to improve security and performance on the Internet. Everyone can now enable HTTP/3 on their Cloudflare zone and experiment with it using <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a> as well as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a>, among other clients.</p>
-	<p>We have previously made available <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-server.rs" target="_blank" rel="noopener noreferrer">an example HTTP/3 server as part of the quiche project</a> to allow people to experiment with the protocol, but it’s quite limited in the functionality that it offers, and was never intended to replace other general-purpose web servers.</p>
-	<p>We are now happy to announce that <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">our implementation of HTTP/3 and QUIC</a> can be integrated into your own installation of NGINX as well. This is made available <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx" target="_blank" rel="noopener noreferrer">as a patch</a> to NGINX, that can be applied and built directly with the upstream NGINX codebase.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RGn7FpVUT1wQ1v5yu74c3/d6db309a2e2d99da184b3bbb123f3fb5/quiche-banner-copy_2x.png" alt="" class="kg-image" width="1600" height="804" loading="lazy">
-
-	</figure>
-	<p>It’s important to note that <b>this is not officially supported or endorsed by the NGINX project</b>, it is just something that we, Cloudflare, want to make available to the wider community to help push adoption of QUIC and HTTP/3.</p>
-	<div class="flex anchor relative">
-		<h3 id="building">Building</h3>
-		<a href="https://blog.cloudflare.com/#building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The first step is to <a href="https://nginx.org/en/download.html" target="_blank" rel="noopener noreferrer">download and unpack the NGINX source code</a>. Note that the HTTP/3 and QUIC patch only works with the 1.16.x release branch (the latest stable release being 1.16.1).</p>
-	<pre class="language-bash"><code class="language-bash"> % curl -O https://nginx.org/download/nginx-1.16.1.tar.gz
- % tar xvzf nginx-1.16.1.tar.gz</code></pre>
-	<p>As well as quiche, the underlying implementation of HTTP/3 and QUIC:</p>
-	<pre class="language-bash"><code class="language-bash"> % git clone --recursive https://github.com/cloudflare/quiche</code></pre>
-	<p>Next you’ll need to apply the patch to NGINX:</p>
-	<pre class="language-bash"><code class="language-bash"> % cd nginx-1.16.1
- % patch -p01 &lt; ../quiche/extras/nginx/nginx-1.16.patch</code></pre>
-	<p>And finally build NGINX with HTTP/3 support enabled:</p>
-	<pre class="language-bash"><code class="language-bash"> % ./configure                          	\
-   	--prefix=$PWD                       	\
-   	--with-http_ssl_module              	\
-   	--with-http_v2_module               	\
-   	--with-http_v3_module               	\
-   	--with-openssl=../quiche/deps/boringssl \
-   	--with-quiche=../quiche
- % make</code></pre>
-	<p>The above command instructs the NGINX build system to enable the HTTP/3 support ( <code>--with-http_v3_module</code>) by using the quiche library found in the path it was previously downloaded into ( <code>--with-quiche=../quiche</code>), as well as TLS and HTTP/2. Additional build options can be added as needed.</p>
-	<p>You can check out the full instructions <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx#readme" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="running">Running</h3>
-		<a href="https://blog.cloudflare.com/#running" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once built, NGINX can be configured to accept incoming HTTP/3 connections by adding the <code>quic</code> and <code>reuseport</code> options to the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen" target="_blank" rel="noopener noreferrer">listen</a> configuration directive.</p>
-	<p>Here is a minimal configuration example that you can start from:</p>
-	<pre class="language-bash"><code class="language-bash">events {
-    worker_connections  1024;
-}
-
-http {
-    server {
-        # Enable QUIC and HTTP/3.
-        listen 443 quic reuseport;
-
-        # Enable HTTP/2 (optional).
-        listen 443 ssl http2;
-
-        ssl_certificate      cert.crt;
-        ssl_certificate_key  cert.key;
-
-        # Enable all TLS versions (TLSv1.3 is required for QUIC).
-        ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
-        
-        # Add Alt-Svc header to negotiate HTTP/3.
-        add_header alt-svc 'h3-23=":443"; ma=86400';
-    }
-}</code></pre>
-	<p>This will enable both HTTP/2 and HTTP/3 on the TCP/443 and UDP/443 ports respectively.</p>
-	<p>You can then use one of the available HTTP/3 clients (such as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a>, <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a> or even the <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-quiche-s-http3-client">example HTTP/3 client provided as part of quiche</a>) to connect to your NGINX instance using HTTP/3.</p>
-	<p>We are excited to make this available for everyone to experiment and play with HTTP/3, but it’s important to note that <b>the implementation is still experimental</b> and it’s likely to have bugs as well as limitations in functionality. Feel free to submit a ticket to the <a href="https://github.com/cloudflare/quiche" target="_blank" rel="noopener noreferrer">quiche project</a> if you run into problems or find any bug.</p>
+<p>Just a few weeks ago <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">we announced</a> the availability on our edge network of <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer">HTTP/3</a>, the new revision of HTTP intended to improve security and performance on the Internet. Everyone can now enable HTTP/3 on their Cloudflare zone and experiment with it using <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a> as well as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a>, among other clients.</p>
+<p>We have previously made available <a href="https://github.com/cloudflare/quiche/blob/master/examples/http3-server.rs" target="_blank" rel="noopener noreferrer">an example HTTP/3 server as part of the quiche project</a> to allow people to experiment with the protocol, but it’s quite limited in the functionality that it offers, and was never intended to replace other general-purpose web servers.</p>
+<p>We are now happy to announce that <a href="https://blog.cloudflare.com/enjoy-a-slice-of-quic-and-rust">our implementation of HTTP/3 and QUIC</a> can be integrated into your own installation of NGINX as well. This is made available <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx" target="_blank" rel="noopener noreferrer">as a patch</a> to NGINX, that can be applied and built directly with the upstream NGINX codebase.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Experiment with HTTP/3 using NGINX and quiche Embedded Image - pWy05F" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5E0YRVWFVE3HAMG6Y3C.png&amp;w=1600&amp;h=804&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="804" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>It’s important to note that <strong>this is not officially supported or endorsed by the NGINX project</strong>, it is just something that we, Cloudflare, want to make available to the wider community to help push adoption of QUIC and HTTP/3.</p>
+<h3>Building</h3>
+<p>The first step is to <a href="https://nginx.org/en/download.html" target="_blank" rel="noopener noreferrer">download and unpack the NGINX source code</a>. Note that the HTTP/3 and QUIC patch only works with the 1.16.x release branch (the latest stable release being 1.16.1).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -O</span><span class="sk-032f62-99ffe4"> https://nginx.org/download/nginx-1.16.1.tar.gz</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> tar</span><span class="sk-032f62-99ffe4"> xvzf</span><span class="sk-032f62-99ffe4"> nginx-1.16.1.tar.gz</span></span></code></pre>
 </div>
+<p>As well as quiche, the underlying implementation of HTTP/3 and QUIC:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-005cc5-99ffe4"> --recursive</span><span class="sk-032f62-99ffe4"> https://github.com/cloudflare/quiche</span></span></code></pre>
+</div>
+<p>Next you’ll need to apply the patch to NGINX:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> nginx-1.16.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> patch</span><span class="sk-005cc5-99ffe4"> -p01</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> ../quiche/extras/nginx/nginx-1.16.patch</span></span></code></pre>
+</div>
+<p>And finally build NGINX with HTTP/3 support enabled:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> ./configure</span><span class="sk-005cc5-a0a0a0">                          	\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   	--prefix=</span><span class="sk-24292e-fff">$PWD</span><span class="sk-005cc5-a0a0a0">                       	\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   	--with-http_ssl_module</span><span class="sk-005cc5-a0a0a0">              	\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   	--with-http_v2_module</span><span class="sk-005cc5-a0a0a0">               	\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   	--with-http_v3_module</span><span class="sk-005cc5-a0a0a0">               	\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   	--with-openssl=../quiche/deps/boringssl</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   	--with-quiche=../quiche</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> %</span><span class="sk-032f62-99ffe4"> make</span></span></code></pre>
+</div>
+<p>The above command instructs the NGINX build system to enable the HTTP/3 support ( <code>--with-http_v3_module</code>) by using the quiche library found in the path it was previously downloaded into ( <code>--with-quiche=../quiche</code>), as well as TLS and HTTP/2. Additional build options can be added as needed.</p>
+<p>You can check out the full instructions <a href="https://github.com/cloudflare/quiche/tree/master/extras/nginx#readme" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<h3>Running</h3>
+<p>Once built, NGINX can be configured to accept incoming HTTP/3 connections by adding the <code>quic</code> and <code>reuseport</code> options to the <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#listen" target="_blank" rel="noopener noreferrer">listen</a> configuration directive.</p>
+<p>Here is a minimal configuration example that you can start from:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">events</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    worker_connections</span><span class="sk-005cc5-ffc799">  1024</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">http</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    server</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Enable QUIC and HTTP/3.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        listen</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-032f62-99ffe4"> quic</span><span class="sk-032f62-99ffe4"> reuseport</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Enable HTTP/2 (optional).</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        listen</span><span class="sk-005cc5-ffc799"> 443</span><span class="sk-032f62-99ffe4"> ssl</span><span class="sk-032f62-99ffe4"> http2</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        ssl_certificate</span><span class="sk-032f62-99ffe4">      cert.crt</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        ssl_certificate_key</span><span class="sk-032f62-99ffe4">  cert.key</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Enable all TLS versions (TLSv1.3 is required for QUIC).</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        ssl_protocols</span><span class="sk-032f62-99ffe4"> TLSv1</span><span class="sk-032f62-99ffe4"> TLSv1.1</span><span class="sk-032f62-99ffe4"> TLSv1.2</span><span class="sk-032f62-99ffe4"> TLSv1.3</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Add Alt-Svc header to negotiate HTTP/3.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        add_header</span><span class="sk-032f62-99ffe4"> alt-svc</span><span class="sk-032f62-99ffe4"> 'h3-23=":443"; ma=86400'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This will enable both HTTP/2 and HTTP/3 on the TCP/443 and UDP/443 ports respectively.</p>
+<p>You can then use one of the available HTTP/3 clients (such as <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-google-chrome-as-an-http-3-client">Chrome Canary</a>, <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-curl">curl</a> or even the <a href="https://blog.cloudflare.com/http3-the-past-present-and-future/#using-quiche-s-http3-client">example HTTP/3 client provided as part of quiche</a>) to connect to your NGINX instance using HTTP/3.</p>
+<p>We are excited to make this available for everyone to experiment and play with HTTP/3, but it’s important to note that <strong>the implementation is still experimental</strong> and it’s likely to have bugs as well as limitations in functionality. Feel free to submit a ticket to the <a href="https://github.com/cloudflare/quiche" target="_blank" rel="noopener noreferrer">quiche project</a> if you run into problems or find any bug.</p>

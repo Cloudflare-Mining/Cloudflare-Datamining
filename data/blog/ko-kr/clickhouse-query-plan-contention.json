@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "청구 파이프라인이 갑자기 느려졌습니다. 원인은 ClickHouse의 숨겨진 병목 현상이었습니다",
+	"url": "https://blog.cloudflare.com/ko-kr/clickhouse-query-plan-contention/",
+	"datePublished": "2026-05-14T13:00:00.000Z",
+	"dateModified": "2026-07-15T16:48:29.680Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW4999A46M2F3BCY3QF5F258.png",
+	"description": "페타바이트급 ClickHouse 클러스터의 파티셔닝 변경으로 인해 중요한 청구 작업이 중단된 경우에도 표준 지표에서는 뚜렷한 오류가 보이지 않았습니다. 이 게시물에서는 Cloudflare가 ClickHouse의 쿼리 플래너에서 심각한 잠금 경합을 식별하고 이를 해결하기 위한 업스트림 패치를 구축한 방법을 살펴봅니다."
+}

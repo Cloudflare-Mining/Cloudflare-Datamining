@@ -1,354 +1,330 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/workflow-diagrams">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/workflow-diagrams">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5FyTRKAqxfcEb135KFMWow/7fe82b4b9a7fb60085a5ed34707c8e7e/image2.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> is a durable execution engine that lets you chain steps, retry on failure, and persist state across long-running processes. Developers use Workflows to power background agents, manage data pipelines, build human-in-the-loop approval systems, and more.</p>
-	<p>Last month, we <a href="https://developers.cloudflare.com/changelog/post/2026-02-03-workflows-visualizer" target="_blank" rel="noopener noreferrer"><u>announced</u></a> that every workflow deployed to Cloudflare now has a complete visual diagram in the dashboard.</p>
-	<p>We built this because being able to visualize your applications is more important now than ever before. Coding agents are writing code that you may or may not be reading. However, the shape of what gets built still matters: how the steps connect, where they branch, and what's actually happening.</p>
-	<p>If you've seen diagrams from visual workflow builders before, those are usually working from something declarative: JSON configs, YAML, drag-and-drop. However, Cloudflare Workflows are just code. They can include <a href="https://developers.cloudflare.com/workflows/build/workers-api" target="_blank" rel="noopener noreferrer"><u>Promises, Promise.all, loops, conditionals,</u></a> and/or be nested in functions or classes. This dynamic execution model makes rendering a diagram a bit more complicated.</p>
-	<p>We use Abstract Syntax Trees (ASTs) to statically derive the graph, tracking <code>Promise</code> and <code>await</code> relationships to understand what runs in parallel, what blocks, and how the pieces connect.&nbsp;</p>
-	<p>Keep reading to learn how we built these diagrams, or deploy your first workflow and see the diagram for yourself.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fworkflows-starter-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+<p><a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> is a durable execution engine that lets you chain steps, retry on failure, and persist state across long-running processes. Developers use Workflows to power background agents, manage data pipelines, build human-in-the-loop approval systems, and more.</p>
+<p>Last month, we <a href="https://developers.cloudflare.com/changelog/post/2026-02-03-workflows-visualizer" target="_blank" rel="noopener noreferrer"><u>announced</u></a> that every workflow deployed to Cloudflare now has a complete visual diagram in the dashboard.</p>
+<p>We built this because being able to visualize your applications is more important now than ever before. Coding agents are writing code that you may or may not be reading. However, the shape of what gets built still matters: how the steps connect, where they branch, and what's actually happening.</p>
+<p>If you've seen diagrams from visual workflow builders before, those are usually working from something declarative: JSON configs, YAML, drag-and-drop. However, Cloudflare Workflows are just code. They can include <a href="https://developers.cloudflare.com/workflows/build/workers-api" target="_blank" rel="noopener noreferrer"><u>Promises, Promise.all, loops, conditionals,</u></a> and/or be nested in functions or classes. This dynamic execution model makes rendering a diagram a bit more complicated.</p>
+<p>We use Abstract Syntax Trees (ASTs) to statically derive the graph, tracking <code>Promise</code> and <code>await</code> relationships to understand what runs in parallel, what blocks, and how the pieces connect.&nbsp;</p>
+<p>Keep reading to learn how we built these diagrams, or deploy your first workflow and see the diagram for yourself.</p>
+<div id="html-block-kp" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fworkflows-starter-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
-	<p>Here’s an example of a diagram generated from Cloudflare Workflows code:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/44NnbqiNda2vgzIEneHQ3W/044856325693fbeb75ed1ab38b4db1c2/image1.png" alt="" class="kg-image" width="1366" height="1742" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="dynamic-workflow-execution">Dynamic workflow execution</h3>
-		<a href="https://blog.cloudflare.com/#dynamic-workflow-execution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Generally, workflow engines can execute according to either dynamic or sequential (static) execution order. Sequential execution might seem like the more intuitive solution: trigger workflow → step A → step B → step C, where step B starts executing immediately after the engine completes Step A, and so forth.</p>
-	<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> follow the dynamic execution model. Since workflows are just code, the steps execute as the runtime encounters them. When the runtime discovers a step, that step gets passed over to the workflow engine, which manages its execution. The steps are not inherently sequential unless awaited — the engine executes all unawaited steps in parallel. This way, you can write your workflow code as flow control without additional wrappers or directives. Here’s how the handoff works:</p>
-	<ol>
-		<li>
-			<p>An <i>engine</i>, which is a “supervisor” Durable Object for that instance, spins up. The engine is responsible for the logic of the actual workflow execution.&nbsp;</p>
-		</li>
-		<li>
-			<p>The engine triggers a <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers" target="_blank" rel="noopener noreferrer"><u>user worker</u></a> via <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch" target="_blank" rel="noopener noreferrer"><u>dynamic dispatch</u></a>, passing control over to Workers runtime.</p>
-		</li>
-		<li>
-			<p>When Runtime encounters a <code>step.do</code>, it passes the execution back to the engine.</p>
-		</li>
-		<li>
-			<p>The engine executes the step, persists the result (or throws an error, if applicable) and triggers the user Worker again.&nbsp;&nbsp;</p>
-		</li>
-	</ol>
-	<p>With this architecture, the engine does not inherently “know” the order of the steps that it is executing — but for a diagram, the order of steps becomes crucial information. The challenge here lies in getting the vast majority of workflows translated accurately into a diagnostically helpful graph; with the diagrams in beta, we will continue to iterate and improve on these representations.</p>
-	<div class="flex anchor relative">
-		<h3 id="parsing-the-code">Parsing the code</h3>
-		<a href="https://blog.cloudflare.com/#parsing-the-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Fetching the script at <a href="https://developers.cloudflare.com/workers/get-started/guide/#4-deploy-your-project" target="_blank" rel="noopener noreferrer"><u>deploy time</u></a>, instead of run time, allows us to parse the workflow in its entirety to statically generate the diagram.&nbsp;</p>
-	<p>Taking a step back, here is the life of a workflow deployment:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zoOCYji26ahxzh594VavQ/63ad96ae033653ffc7fd98df01ea6e27/image5.png" alt="" class="kg-image" width="1312" height="1896" loading="lazy">
-	</figure>
-	<p>To create the diagram, we fetch the script after it has been bundled by the internal configuration service which deploys Workers (step 2 under Workflow deployment). Then, we use a parser to create an abstract syntax tree (AST) representing the workflow, and our internal service generates and traverses an intermediate graph with all WorkflowEntrypoints and calls to workflows steps. We render the diagram based on the final result on our API.&nbsp;</p>
-	<p>When a Worker is deployed, the configuration service bundles (using <a href="https://esbuild.github.io" target="_blank" rel="noopener noreferrer"><u>esbuild</u></a> by default) and minifies the code <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys" target="_blank" rel="noopener noreferrer"><u>unless specified otherwise</u></a>. This presents another challenge — while Workflows in TypeScript follow an intuitive pattern, their minified Javascript (JS) can be dense and indigestible. There are also different ways that code can be minified, depending on the bundler.&nbsp;</p>
-	<p>Here’s an example of Workflow code that shows <b>agents executing in parallel:</b></p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">const summaryPromise = step.do(
-         `summary agent (loop ${loop})`,
-         async () =&gt; {
-           return runAgentPrompt(
-             this.env,
-             SUMMARY_SYSTEM,
-             buildReviewPrompt(
-               'Summarize this text in 5 bullet points.',
-               draft,
-               input.context
-             )
-           );
-         }
-       );
-        const correctnessPromise = step.do(
-         `correctness agent (loop ${loop})`,
-         async () =&gt; {
-           return runAgentPrompt(
-             this.env,
-             CORRECTNESS_SYSTEM,
-             buildReviewPrompt(
-               'List correctness issues and suggested fixes.',
-               draft,
-               input.context
-             )
-           );
-         }
-       );
-        const clarityPromise = step.do(
-         `clarity agent (loop ${loop})`,
-         async () =&gt; {
-           return runAgentPrompt(
-             this.env,
-             CLARITY_SYSTEM,
-             buildReviewPrompt(
-               'List clarity issues and suggested fixes.',
-               draft,
-               input.context
-             )
-           );
-         }
-       );</code></pre>
-	<p>Bundling with <a href="https://rspack.rs" target="_blank" rel="noopener noreferrer"><u>rspack</u></a>, a snippet of the minified code looks like this:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">class pe extends e{async run(e,t){de("workflow.run.start",{instanceId:e.instanceId});const r=await t.do("validate payload",async()=&gt;{if(!e.payload.r2Key)throw new Error("r2Key is required");if(!e.payload.telegramChatId)throw new Error("telegramChatId is required");return{r2Key:e.payload.r2Key,telegramChatId:e.payload.telegramChatId,context:e.payload.context?.trim()}}),s=await t.do("load source document from r2",async()=&gt;{const e=await this.env.REVIEW_DOCUMENTS.get(r.r2Key);if(!e)throw new Error(`R2 object not found: ${r.r2Key}`);const t=(await e.text()).trim();if(!t)throw new Error("R2 object is empty");return t}),n=Number(this.env.MAX_REVIEW_LOOPS??"5"),o=this.env.RESPONSE_TIMEOUT??"7 days",a=async(s,i,c)=&gt;{if(s&gt;n)return le("workflow.loop.max_reached",{instanceId:e.instanceId,maxLoops:n}),await t.do("notify max loop reached",async()=&gt;{await se(this.env,r.telegramChatId,`Review stopped after ${n} loops for ${e.instanceId}. Start again if you still need revisions.`)}),{approved:!1,loops:n,finalText:i};const h=t.do(`summary agent (loop ${s})`,async()=&gt;te(this.env,"You summarize documents. Keep the output short, concrete, and factual.",ue("Summarize this text in 5 bullet points.",i,r.context)))...</code></pre>
-	<p>Or, bundling with <a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>vite</u></a>, here is a minified snippet:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">class ht extends pe {
-  async run(e, r) {
-    b("workflow.run.start", { instanceId: e.instanceId });
-    const s = await r.do("validate payload", async () =&gt; {
-      if (!e.payload.r2Key)
-        throw new Error("r2Key is required");
-      if (!e.payload.telegramChatId)
-        throw new Error("telegramChatId is required");
-      return {
-        r2Key: e.payload.r2Key,
-        telegramChatId: e.payload.telegramChatId,
-        context: e.payload.context?.trim()
-      };
-    }), n = await r.do(
-      "load source document from r2",
-      async () =&gt; {
-        const i = await this.env.REVIEW_DOCUMENTS.get(s.r2Key);
-        if (!i)
-          throw new Error(`R2 object not found: ${s.r2Key}`);
-        const c = (await i.text()).trim();
-        if (!c)
-          throw new Error("R2 object is empty");
-        return c;
-      }
-    ), o = Number(this.env.MAX_REVIEW_LOOPS ?? "5"), l = this.env.RESPONSE_TIMEOUT ?? "7 days", a = async (i, c, u) =&gt; {
-      if (i &gt; o)
-        return H("workflow.loop.max_reached", {
-          instanceId: e.instanceId,
-          maxLoops: o
-        }), await r.do("notify max loop reached", async () =&gt; {
-          await J(
-            this.env,
-            s.telegramChatId,
-            `Review stopped after ${o} loops for ${e.instanceId}. Start again if you still need revisions.`
-          );
-        }), {
-          approved: !1,
-          loops: o,
-          finalText: c
-        };
-      const h = r.do(
-        `summary agent (loop ${i})`,
-        async () =&gt; _(
-          this.env,
-          et,
-          K(
-            "Summarize this text in 5 bullet points.",
-            c,
-            s.context
-          )
-        )
-      )...</code></pre>
-	<p>Minified code can get pretty gnarly — and depending on the bundler, it can get gnarly in a bunch of different directions.</p>
-	<p>We needed a way to parse the various forms of minified code quickly and precisely. We decided <code>oxc-parser</code> from the <a href="https://oxc.rs" target="_blank" rel="noopener noreferrer"><u>JavaScript Oxidation Compiler</u></a> (OXC) was perfect for the job. We first tested this idea by having a container running Rust. Every script ID was sent to a <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queue</u></a>, after which messages were popped and sent to the container to process. Once we confirmed this approach worked, we moved to a Worker written in Rust. Workers supports running <a href="https://developers.cloudflare.com/workers/languages/rust" target="_blank" rel="noopener noreferrer"><u>Rust via WebAssembly</u></a>, and the package was small enough to make this straightforward.</p>
-	<p>The Rust Worker is responsible for first converting the minified JS into AST node types, then converting the AST node types into the graphical version of the workflow that is rendered on the dashboard. To do this, we generate a graph of pre-defined <a href="https://developers.cloudflare.com/workflows/build/visualizer" target="_blank" rel="noopener noreferrer"><u>node types</u></a> for each workflow and translate into our graph representation through a series of node mappings.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="rendering-the-diagram">Rendering the diagram</h3>
-		<a href="https://blog.cloudflare.com/#rendering-the-diagram" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There were two challenges to rendering a diagram version of the workflow: how to track step and function relationships correctly, and how to define the workflow node types as simply as possible while covering all the surface area.</p>
-	<p>To guarantee that step and function relationships are tracked correctly, we needed to collect both the function and step names. As we discussed earlier, the engine only has information about the steps, but a step may be dependent on a function, or vice versa. For example, developers might wrap steps in functions or define functions as steps. They could also call steps within a function that come from different <a href="https://blog.cloudflare.com/workers-javascript-modules"><u>modules</u></a> or rename steps.&nbsp;</p>
-	<p>Although the library passes the initial hurdle by giving us the AST, we still have to decide how to parse it.&nbsp; Some code patterns require additional creativity. For example, functions — within a <code>WorkflowEntrypoint</code>, there can be functions that call steps directly, indirectly, or not at all. Consider <code>functionA</code>, which contains <code>console.log(await functionB(), await functionC()</code>) where <code>functionB</code> calls a <code>step.do()</code>. In that case, both <code>functionA</code> and <code>functionB</code> should be included on the workflow diagram; however, <code>functionC</code> should not. To catch all functions which include direct and indirect step calls, we create a subgraph for each function and check whether it contains a step call itself or whether it calls another function which might. Those subgraphs are represented by a function node, which contains all of its relevant nodes. If a function node is a leaf of the graph, meaning it has no direct or indirect workflow steps within it, it is trimmed from the final output.&nbsp;</p>
-	<p>We check for other patterns as well, including a list of static steps from which we can infer the workflow diagram or variables, defined in up to ten different ways. If your script contains multiple workflows, we follow a similar pattern to the subgraphs created for functions, abstracted one level higher.&nbsp;</p>
-	<p>For every AST node type, we had to consider every way they could be used inside of a workflow: loops, branches, promises, parallels, awaits, arrow functions… the list goes on. Even within these paths, there are dozens of possibilities. Consider just a few of the possible ways to loop:</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">// for...of
-for (const item of items) {
-	await step.do(`process ${item}`, async () =&gt; item);
-}
-// while
-while (shouldContinue) {
-	await step.do('poll', async () =&gt; getStatus());
-}
-// map
-await Promise.all(
-	items.map((item) =&gt; step.do(`map ${item}`, async () =&gt; item)),
-);
-// forEach
-await items.forEach(async (item) =&gt; {
-	await step.do(`each ${item}`, async () =&gt; item);
-});</code></pre>
-	<p>And beyond looping, how to handle branching:</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">// switch / case
-switch (action.type) {
-	case 'create':
-		await step.do('handle create', async () =&gt; {});
-		break;
-	default:
-		await step.do('handle unknown', async () =&gt; {});
-		break;
-}
-
-// if / else if / else
-if (status === 'pending') {
-	await step.do('pending path', async () =&gt; {});
-} else if (status === 'active') {
-	await step.do('active path', async () =&gt; {});
-} else {
-	await step.do('fallback path', async () =&gt; {});
-}
-
-// ternary operator
-await (cond
-	? step.do('ternary true branch', async () =&gt; {})
-	: step.do('ternary false branch', async () =&gt; {}));
-
-// nullish coalescing with step on RHS
-const myStepResult =
-	variableThatCanBeNullUndefined ??
-	(await step.do('nullish fallback step', async () =&gt; 'default'));
-
-// try/catch with finally
-try {
-	await step.do('try step', async () =&gt; {});
-} catch (_e) {
-	await step.do('catch step', async () =&gt; {});
-} finally {
-	await step.do('finally step', async () =&gt; {});
-}</code></pre>
-	<p>Our goal was to create a concise API that communicated what developers need to know without overcomplicating it. But converting a workflow into a diagram meant accounting for every pattern (whether it follows best practices, or not) and edge case possible. As we discussed earlier, each step is not explicitly sequential, by default, to any other step. If a workflow does not utilize <code>await</code> and <code>Promise.all()</code>, we assume that the steps will execute in the order in which they are encountered. But if a workflow included <code>await</code>, <code>Promise</code> or <code>Promise.all()</code>, we needed a way to track those relationships.</p>
-	<p>We decided on tracking execution order, where each node has a <code>starts:</code> and <code>resolves:</code> field. The <code>starts</code> and <code>resolves</code> indices tell us when a promise started executing and when it ends relative to the first promise that started without an immediate, subsequent conclusion. This correlates to vertical positioning in the diagram UI (i.e., all steps with <code>starts:1</code> will be inline). If steps are awaited when they are declared, then <code>starts</code> and <code>resolves</code> will be undefined, and the workflow will execute in the order of the steps’ appearance to the runtime.</p>
-	<p>While parsing, when we encounter an unawaited <code>Promise</code> or <code>Promise.all()</code>, that node (or nodes) are marked with an entry number, surfaced in the <code>starts</code> field. If we encounter an <code>await</code> on that promise, the entry number is incremented by one and saved as the exit number (which is the value in <code>resolves</code>). This allows us to know which promises run at the same time and when they’ll complete in relation to each other.</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">export class ImplicitParallelWorkflow extends WorkflowEntrypoint&lt;Env, Params&gt; {
- async run(event: WorkflowEvent&lt;Params&gt;, step: WorkflowStep) {
-   const branchA = async () =&gt; {
-     const a = step.do("task a", async () =&gt; "a"); //starts 1
-     const b = step.do("task b", async () =&gt; "b"); //starts 1
-     const c = await step.waitForEvent("task c", { type: "my-event", timeout: "1 hour" }); //starts 1 resolves 2
-     await step.do("task d", async () =&gt; JSON.stringify(c)); //starts 2 resolves 3
-     return Promise.all([a, b]); //resolves 3
-   };
-
-   const branchB = async () =&gt; {
-     const e = step.do("task e", async () =&gt; "e"); //starts 1
-     const f = step.do("task f", async () =&gt; "f"); //starts 1
-     return Promise.all([e, f]); //resolves 2
-   };
-
-   await Promise.all([branchA(), branchB()]);
-
-   await step.sleep("final sleep", 1000);
- }
-}</code></pre>
-	<p>You can see the steps’ alignment in the diagram:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6EZJ38J3H55yH0OnT11vgg/6dde06725cd842725ee3af134b1505c0/image3.png" alt="" class="kg-image" width="1596" height="1364" loading="lazy">
-	</figure>
-	<p>After accounting for all of those patterns, we settled on the following list of node types: </p>
-	<pre class="language-Rust"><code class="language-Rust">| StepSleep
-| StepDo
-| StepWaitForEvent
-| StepSleepUntil
-| LoopNode
-| ParallelNode
-| TryNode
-| BlockNode
-| IfNode
-| SwitchNode
-| StartNode
-| FunctionCall
-| FunctionDef
-| BreakNode;</code></pre>
-	<p>Here are a few samples of API output for different behaviors:&nbsp;</p>
-	<p><code>function</code> call:</p>
-	<pre class="language-JSON"><code class="language-JSON">{
-  "functions": {
-    "runLoop": {
-      "name": "runLoop",
-      "nodes": []
-    }
-  }
-}</code></pre>
-	<p><code>if</code> condition branching to <code>step.do</code>:</p>
-	<pre class="language-JSON"><code class="language-JSON">{
-  "type": "if",
-  "branches": [
-    {
-      "condition": "loop &gt; maxLoops",
-      "nodes": [
-        {
-          "type": "step_do",
-          "name": "notify max loop reached",
-          "config": {
-            "retries": {
-              "limit": 5,
-              "delay": 1000,
-              "backoff": "exponential"
-            },
-            "timeout": 10000
-          },
-          "nodes": []
-        }
-      ]
-    }
-  ]
-}</code></pre>
-	<p><code>parallel</code> with <code>step.do</code> and <code>waitForEvent</code>:</p>
-	<pre class="language-JSON"><code class="language-JSON">{
-  "type": "parallel",
-  "kind": "all",
-  "nodes": [
-    {
-      "type": "step_do",
-      "name": "correctness agent (loop ${...})",
-      "config": {
-        "retries": {
-          "limit": 5,
-          "delay": 1000,
-          "backoff": "exponential"
-        },
-        "timeout": 10000
-      },
-      "nodes": [],
-      "starts": 1
-    },
-...
-    {
-      "type": "step_wait_for_event",
-      "name": "wait for user response (loop ${...})",
-      "options": {
-        "event_type": "user-response",
-        "timeout": "unknown"
-      },
-      "starts": 3,
-      "resolves": 4
-    }
-  ]
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Ultimately, the goal of these Workflow diagrams is to serve as a full-service debugging tool. That means you’ll be able to:</p>
-	<ul>
-		<li>
-			<p>Trace an execution through the graph in real time</p>
-		</li>
-		<li>
-			<p>Discover errors, wait for human-in-the-loop approvals, and skip steps for testing</p>
-		</li>
-		<li>
-			<p>Access visualizations in local development</p>
-		</li>
-	</ul>
-	<p>Check out the diagrams on your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fworkflows" target="_blank" rel="noopener noreferrer"><u>Workflow overview pages</u></a>. If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers community on Discord</u></a>.</p>
 </div>
+<p>Here’s an example of a diagram generated from Cloudflare Workflows code:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="912" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=715&amp;h=912&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=640&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=715&amp;h=912&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=750&amp;h=957&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=828&amp;h=1056&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=1080&amp;h=1378&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=1280&amp;h=1633&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=1430&amp;h=1824&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3163 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46FCEK2SHE8ZKJ2DZXJ9SH.png&amp;w=1366&amp;h=1742&amp;f=webp" data-lightbox-width="1366" data-lightbox-height="1742" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="912" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Dynamic workflow execution</h3>
+<p>Generally, workflow engines can execute according to either dynamic or sequential (static) execution order. Sequential execution might seem like the more intuitive solution: trigger workflow → step A → step B → step C, where step B starts executing immediately after the engine completes Step A, and so forth.</p>
+<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workflows</u></a> follow the dynamic execution model. Since workflows are just code, the steps execute as the runtime encounters them. When the runtime discovers a step, that step gets passed over to the workflow engine, which manages its execution. The steps are not inherently sequential unless awaited — the engine executes all unawaited steps in parallel. This way, you can write your workflow code as flow control without additional wrappers or directives. Here’s how the handoff works:</p>
+<ol>
+	<li>An <em>engine</em>, which is a “supervisor” Durable Object for that instance, spins up. The engine is responsible for the logic of the actual workflow execution.&nbsp;</li>
+	<li>The engine triggers a <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#user-workers" target="_blank" rel="noopener noreferrer"><u>user worker</u></a> via <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch" target="_blank" rel="noopener noreferrer"><u>dynamic dispatch</u></a>, passing control over to Workers runtime.</li>
+	<li>When Runtime encounters a <code>step.do</code>, it passes the execution back to the engine.</li>
+	<li>The engine executes the step, persists the result (or throws an error, if applicable) and triggers the user Worker again.&nbsp;&nbsp;</li>
+</ol>
+<p>With this architecture, the engine does not inherently “know” the order of the steps that it is executing — but for a diagram, the order of steps becomes crucial information. The challenge here lies in getting the vast majority of workflows translated accurately into a diagnostically helpful graph; with the diagrams in beta, we will continue to iterate and improve on these representations.</p>
+<h3>Parsing the code</h3>
+<p>Fetching the script at <a href="https://developers.cloudflare.com/workers/get-started/guide/#4-deploy-your-project" target="_blank" rel="noopener noreferrer"><u>deploy time</u></a>, instead of run time, allows us to parse the workflow in its entirety to statically generate the diagram.&nbsp;</p>
+<p>Taking a step back, here is the life of a workflow deployment:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1033" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=715&amp;h=1033&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=640&amp;h=925&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=715&amp;h=1033&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=750&amp;h=1084&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=828&amp;h=1196&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=1080&amp;h=1560&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=1280&amp;h=1849&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=1430&amp;h=2066&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3163 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Z4PFGJR15RR2B45KXVTM.png&amp;w=1312&amp;h=1896&amp;f=webp" data-lightbox-width="1312" data-lightbox-height="1896" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1033" class="pt-portable-image-media"></div>
+</figure>
+<p>To create the diagram, we fetch the script after it has been bundled by the internal configuration service which deploys Workers (step 2 under Workflow deployment). Then, we use a parser to create an abstract syntax tree (AST) representing the workflow, and our internal service generates and traverses an intermediate graph with all WorkflowEntrypoints and calls to workflows steps. We render the diagram based on the final result on our API.&nbsp;</p>
+<p>When a Worker is deployed, the configuration service bundles (using <a href="https://esbuild.github.io" target="_blank" rel="noopener noreferrer"><u>esbuild</u></a> by default) and minifies the code <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#inheritable-keys" target="_blank" rel="noopener noreferrer"><u>unless specified otherwise</u></a>. This presents another challenge — while Workflows in TypeScript follow an intuitive pattern, their minified Javascript (JS) can be dense and indigestible. There are also different ways that code can be minified, depending on the bundler.&nbsp;</p>
+<p>Here’s an example of Workflow code that shows <strong>agents executing in parallel:</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> summaryPromise</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         `summary agent (loop ${</span><span class="sk-24292e-fff">loop</span><span class="sk-032f62-99ffe4">})`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">           return</span><span class="sk-6f42c1-ffc799"> runAgentPrompt</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">             this</span><span class="sk-24292e-fff">.env,</span></span>
+<span class="line"><span class="sk-005cc5-fff">             SUMMARY_SYSTEM</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">             buildReviewPrompt</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">               'Summarize this text in 5 bullet points.'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">               draft,</span></span>
+<span class="line"><span class="sk-24292e-fff">               input.context</span></span>
+<span class="line"><span class="sk-24292e-fff">             )</span></span>
+<span class="line"><span class="sk-24292e-fff">           );</span></span>
+<span class="line"><span class="sk-24292e-fff">         }</span></span>
+<span class="line"><span class="sk-24292e-fff">       );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> correctnessPromise</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         `correctness agent (loop ${</span><span class="sk-24292e-fff">loop</span><span class="sk-032f62-99ffe4">})`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">           return</span><span class="sk-6f42c1-ffc799"> runAgentPrompt</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">             this</span><span class="sk-24292e-fff">.env,</span></span>
+<span class="line"><span class="sk-005cc5-fff">             CORRECTNESS_SYSTEM</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">             buildReviewPrompt</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">               'List correctness issues and suggested fixes.'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">               draft,</span></span>
+<span class="line"><span class="sk-24292e-fff">               input.context</span></span>
+<span class="line"><span class="sk-24292e-fff">             )</span></span>
+<span class="line"><span class="sk-24292e-fff">           );</span></span>
+<span class="line"><span class="sk-24292e-fff">         }</span></span>
+<span class="line"><span class="sk-24292e-fff">       );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> clarityPromise</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         `clarity agent (loop ${</span><span class="sk-24292e-fff">loop</span><span class="sk-032f62-99ffe4">})`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">           return</span><span class="sk-6f42c1-ffc799"> runAgentPrompt</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">             this</span><span class="sk-24292e-fff">.env,</span></span>
+<span class="line"><span class="sk-005cc5-fff">             CLARITY_SYSTEM</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">             buildReviewPrompt</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">               'List clarity issues and suggested fixes.'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">               draft,</span></span>
+<span class="line"><span class="sk-24292e-fff">               input.context</span></span>
+<span class="line"><span class="sk-24292e-fff">             )</span></span>
+<span class="line"><span class="sk-24292e-fff">           );</span></span>
+<span class="line"><span class="sk-24292e-fff">         }</span></span>
+<span class="line"><span class="sk-24292e-fff">       );</span></span></code></pre>
+</div>
+<p>Bundling with <a href="https://rspack.rs" target="_blank" rel="noopener noreferrer"><u>rspack</u></a>, a snippet of the minified code looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> pe</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> e</span><span class="sk-24292e-fff">{</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">e</span><span class="sk-24292e-fff">,</span><span class="sk-e36209-fff">t</span><span class="sk-24292e-fff">){</span><span class="sk-6f42c1-ffc799">de</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workflow.run.start"</span><span class="sk-24292e-fff">,{instanceId:e.instanceId});</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> r</span><span class="sk-d73a49-a0a0a0">=await</span><span class="sk-24292e-fff"> t.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"validate payload"</span><span class="sk-24292e-fff">,</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff">{</span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">e.payload.r2Key)</span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"r2Key is required"</span><span class="sk-24292e-fff">);</span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">e.payload.telegramChatId)</span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"telegramChatId is required"</span><span class="sk-24292e-fff">);</span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff">{r2Key:e.payload.r2Key,telegramChatId:e.payload.telegramChatId,context:e.payload.context?.</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">()}}),</span><span class="sk-005cc5-fff">s</span><span class="sk-d73a49-a0a0a0">=await</span><span class="sk-24292e-fff"> t.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"load source document from r2"</span><span class="sk-24292e-fff">,</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff">{</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> e</span><span class="sk-d73a49-a0a0a0">=await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">REVIEW_DOCUMENTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(r.r2Key);</span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">e)</span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`R2 object not found: ${</span><span class="sk-24292e-fff">r</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">r2Key</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> t</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> e.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">();</span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">t)</span><span class="sk-d73a49-a0a0a0">throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"R2 object is empty"</span><span class="sk-24292e-fff">);</span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> t}),</span><span class="sk-005cc5-fff">n</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799">Number</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">MAX_REVIEW_LOOPS</span><span class="sk-d73a49-a0a0a0">??</span><span class="sk-032f62-99ffe4">"5"</span><span class="sk-24292e-fff">),</span><span class="sk-005cc5-fff">o</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">RESPONSE_TIMEOUT</span><span class="sk-d73a49-a0a0a0">??</span><span class="sk-032f62-99ffe4">"7 days"</span><span class="sk-24292e-fff">,</span><span class="sk-6f42c1-ffc799">a</span><span class="sk-d73a49-a0a0a0">=async</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">s</span><span class="sk-24292e-fff">,</span><span class="sk-e36209-fff">i</span><span class="sk-24292e-fff">,</span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff">{</span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff">(s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">n)</span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-6f42c1-ffc799"> le</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workflow.loop.max_reached"</span><span class="sk-24292e-fff">,{instanceId:e.instanceId,maxLoops:n}),</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> t.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"notify max loop reached"</span><span class="sk-24292e-fff">,</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff">{</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> se</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env,r.telegramChatId,</span><span class="sk-032f62-99ffe4">`Review stopped after ${</span><span class="sk-24292e-fff">n</span><span class="sk-032f62-99ffe4">} loops for ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">instanceId</span><span class="sk-032f62-99ffe4">}. Start again if you still need revisions.`</span><span class="sk-24292e-fff">)}),{approved:</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,loops:n,finalText:i};</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> h</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">t.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`summary agent (loop ${</span><span class="sk-24292e-fff">s</span><span class="sk-032f62-99ffe4">})`</span><span class="sk-24292e-fff">,</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799">te</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env,</span><span class="sk-032f62-99ffe4">"You summarize documents. Keep the output short, concrete, and factual."</span><span class="sk-24292e-fff">,</span><span class="sk-6f42c1-ffc799">ue</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Summarize this text in 5 bullet points."</span><span class="sk-24292e-fff">,i,r.context)))</span><span class="sk-d73a49-a0a0a0">...</span></span></code></pre>
+</div>
+<p>Or, bundling with <a href="https://vite.dev" target="_blank" rel="noopener noreferrer"><u>vite</u></a>, here is a minified snippet:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> ht</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> pe</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">e</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">r</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    b</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workflow.run.start"</span><span class="sk-24292e-fff">, { instanceId: e.instanceId });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> s</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> r.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"validate payload"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">e.payload.r2Key)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"r2Key is required"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">e.payload.telegramChatId)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"telegramChatId is required"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        r2Key: e.payload.r2Key,</span></span>
+<span class="line"><span class="sk-24292e-fff">        telegramChatId: e.payload.telegramChatId,</span></span>
+<span class="line"><span class="sk-24292e-fff">        context: e.payload.context?.</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">      };</span></span>
+<span class="line"><span class="sk-24292e-fff">    }), </span><span class="sk-005cc5-fff">n</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> r.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "load source document from r2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> i</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">REVIEW_DOCUMENTS</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(s.r2Key);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">i)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`R2 object not found: ${</span><span class="sk-24292e-fff">s</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">r2Key</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> c</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> i.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">c)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"R2 object is empty"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> c;</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ), </span><span class="sk-005cc5-fff">o</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> Number</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">MAX_REVIEW_LOOPS</span><span class="sk-d73a49-a0a0a0"> ??</span><span class="sk-032f62-99ffe4"> "5"</span><span class="sk-24292e-fff">), </span><span class="sk-005cc5-fff">l</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">RESPONSE_TIMEOUT</span><span class="sk-d73a49-a0a0a0"> ??</span><span class="sk-032f62-99ffe4"> "7 days"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">a</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">i</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">c</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">u</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (i </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> o)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-6f42c1-ffc799"> H</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"workflow.loop.max_reached"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">          instanceId: e.instanceId,</span></span>
+<span class="line"><span class="sk-24292e-fff">          maxLoops: o</span></span>
+<span class="line"><span class="sk-24292e-fff">        }), </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> r.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"notify max loop reached"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          await</span><span class="sk-6f42c1-ffc799"> J</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">            this</span><span class="sk-24292e-fff">.env,</span></span>
+<span class="line"><span class="sk-24292e-fff">            s.telegramChatId,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            `Review stopped after ${</span><span class="sk-24292e-fff">o</span><span class="sk-032f62-99ffe4">} loops for ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">instanceId</span><span class="sk-032f62-99ffe4">}. Start again if you still need revisions.`</span></span>
+<span class="line"><span class="sk-24292e-fff">          );</span></span>
+<span class="line"><span class="sk-24292e-fff">        }), {</span></span>
+<span class="line"><span class="sk-24292e-fff">          approved: </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          loops: o,</span></span>
+<span class="line"><span class="sk-24292e-fff">          finalText: c</span></span>
+<span class="line"><span class="sk-24292e-fff">        };</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> h</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> r.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        `summary agent (loop ${</span><span class="sk-24292e-fff">i</span><span class="sk-032f62-99ffe4">})`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> _</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">          this</span><span class="sk-24292e-fff">.env,</span></span>
+<span class="line"><span class="sk-24292e-fff">          et,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          K</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "Summarize this text in 5 bullet points."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            c,</span></span>
+<span class="line"><span class="sk-24292e-fff">            s.context</span></span>
+<span class="line"><span class="sk-24292e-fff">          )</span></span>
+<span class="line"><span class="sk-24292e-fff">        )</span></span>
+<span class="line"><span class="sk-24292e-fff">      )</span><span class="sk-d73a49-a0a0a0">...</span></span></code></pre>
+</div>
+<p>Minified code can get pretty gnarly — and depending on the bundler, it can get gnarly in a bunch of different directions.</p>
+<p>We needed a way to parse the various forms of minified code quickly and precisely. We decided <code>oxc-parser</code> from the <a href="https://oxc.rs" target="_blank" rel="noopener noreferrer"><u>JavaScript Oxidation Compiler</u></a> (OXC) was perfect for the job. We first tested this idea by having a container running Rust. Every script ID was sent to a <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Cloudflare Queue</u></a>, after which messages were popped and sent to the container to process. Once we confirmed this approach worked, we moved to a Worker written in Rust. Workers supports running <a href="https://developers.cloudflare.com/workers/languages/rust" target="_blank" rel="noopener noreferrer"><u>Rust via WebAssembly</u></a>, and the package was small enough to make this straightforward.</p>
+<p>The Rust Worker is responsible for first converting the minified JS into AST node types, then converting the AST node types into the graphical version of the workflow that is rendered on the dashboard. To do this, we generate a graph of pre-defined <a href="https://developers.cloudflare.com/workflows/build/visualizer" target="_blank" rel="noopener noreferrer"><u>node types</u></a> for each workflow and translate into our graph representation through a series of node mappings.&nbsp;</p>
+<h3>Rendering the diagram</h3>
+<p>There were two challenges to rendering a diagram version of the workflow: how to track step and function relationships correctly, and how to define the workflow node types as simply as possible while covering all the surface area.</p>
+<p>To guarantee that step and function relationships are tracked correctly, we needed to collect both the function and step names. As we discussed earlier, the engine only has information about the steps, but a step may be dependent on a function, or vice versa. For example, developers might wrap steps in functions or define functions as steps. They could also call steps within a function that come from different <a href="https://blog.cloudflare.com/workers-javascript-modules" target="_blank" rel="noopener noreferrer"><u>modules</u></a> or rename steps.&nbsp;</p>
+<p>Although the library passes the initial hurdle by giving us the AST, we still have to decide how to parse it.&nbsp; Some code patterns require additional creativity. For example, functions — within a <code>WorkflowEntrypoint</code>, there can be functions that call steps directly, indirectly, or not at all. Consider <code>functionA</code>, which contains <code>console.log(await functionB(), await functionC()</code>) where <code>functionB</code> calls a <code>step.do()</code>. In that case, both <code>functionA</code> and <code>functionB</code> should be included on the workflow diagram; however, <code>functionC</code> should not. To catch all functions which include direct and indirect step calls, we create a subgraph for each function and check whether it contains a step call itself or whether it calls another function which might. Those subgraphs are represented by a function node, which contains all of its relevant nodes. If a function node is a leaf of the graph, meaning it has no direct or indirect workflow steps within it, it is trimmed from the final output.&nbsp;</p>
+<p>We check for other patterns as well, including a list of static steps from which we can infer the workflow diagram or variables, defined in up to ten different ways. If your script contains multiple workflows, we follow a similar pattern to the subgraphs created for functions, abstracted one level higher.&nbsp;</p>
+<p>For every AST node type, we had to consider every way they could be used inside of a workflow: loops, branches, promises, parallels, awaits, arrow functions… the list goes on. Even within these paths, there are dozens of possibilities. Consider just a few of the possible ways to loop:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// for...of</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> item</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> items) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`process ${</span><span class="sk-24292e-fff">item</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> item);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// while</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-24292e-fff"> (shouldContinue) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'poll'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> getStatus</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// map</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">	items.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">item</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`map ${</span><span class="sk-24292e-fff">item</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> item)),</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// forEach</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> items.</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">item</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`each ${</span><span class="sk-24292e-fff">item</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> item);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>And beyond looping, how to handle branching:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// switch / case</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">switch</span><span class="sk-24292e-fff"> (action.type) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	case</span><span class="sk-032f62-99ffe4"> 'create'</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'handle create'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	default</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'handle unknown'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// if / else if / else</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'pending'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'pending path'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'active'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'active path'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fallback path'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// ternary operator</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> (cond</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	?</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'ternary true branch'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {})</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	:</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'ternary false branch'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {}));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// nullish coalescing with step on RHS</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> myStepResult</span><span class="sk-d73a49-a0a0a0"> =</span></span>
+<span class="line"><span class="sk-24292e-fff">	variableThatCanBeNullUndefined </span><span class="sk-d73a49-a0a0a0">??</span></span>
+<span class="line"><span class="sk-24292e-fff">	(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'nullish fallback step'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> 'default'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// try/catch with finally</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'try step'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (_e) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'catch step'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">finally</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'finally step'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {});</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Our goal was to create a concise API that communicated what developers need to know without overcomplicating it. But converting a workflow into a diagram meant accounting for every pattern (whether it follows best practices, or not) and edge case possible. As we discussed earlier, each step is not explicitly sequential, by default, to any other step. If a workflow does not utilize <code>await</code> and <code>Promise.all()</code>, we assume that the steps will execute in the order in which they are encountered. But if a workflow included <code>await</code>, <code>Promise</code> or <code>Promise.all()</code>, we needed a way to track those relationships.</p>
+<p>We decided on tracking execution order, where each node has a <code>starts:</code> and <code>resolves:</code> field. The <code>starts</code> and <code>resolves</code> indices tell us when a promise started executing and when it ends relative to the first promise that started without an immediate, subsequent conclusion. This correlates to vertical positioning in the diagram UI (i.e., all steps with <code>starts:1</code> will be inline). If steps are awaited when they are declared, then <code>starts</code> and <code>resolves</code> will be undefined, and the workflow will execute in the order of the steps’ appearance to the runtime.</p>
+<p>While parsing, when we encounter an unawaited <code>Promise</code> or <code>Promise.all()</code>, that node (or nodes) are marked with an entry number, surfaced in the <code>starts</code> field. If we encounter an <code>await</code> on that promise, the entry number is incremented by one and saved as the exit number (which is the value in <code>resolves</code>). This allows us to know which promises run at the same time and when they’ll complete in relation to each other.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> ImplicitParallelWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-6f42c1-ffc799"> branchA</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> a</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"task a"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> "a"</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">//starts 1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> b</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"task b"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> "b"</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">//starts 1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> c</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"task c"</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">"my-event"</span><span class="sk-24292e-fff">, timeout: </span><span class="sk-032f62-99ffe4">"1 hour"</span><span class="sk-24292e-fff"> }); </span><span class="sk-6a737d-8b8b8b94">//starts 1 resolves 2</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"task d"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(c)); </span><span class="sk-6a737d-8b8b8b94">//starts 2 resolves 3</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([a, b]); </span><span class="sk-6a737d-8b8b8b94">//resolves 3</span></span>
+<span class="line"><span class="sk-24292e-fff">   };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-6f42c1-ffc799"> branchB</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> e</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"task e"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> "e"</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">//starts 1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> f</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"task f"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> "f"</span><span class="sk-24292e-fff">); </span><span class="sk-6a737d-8b8b8b94">//starts 1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([e, f]); </span><span class="sk-6a737d-8b8b8b94">//resolves 2</span></span>
+<span class="line"><span class="sk-24292e-fff">   };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([</span><span class="sk-6f42c1-ffc799">branchA</span><span class="sk-24292e-fff">(), </span><span class="sk-6f42c1-ffc799">branchB</span><span class="sk-24292e-fff">()]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">sleep</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"final sleep"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>You can see the steps’ alignment in the diagram:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="611" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=715&amp;h=611&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=640&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=715&amp;h=611&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=750&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=828&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=1080&amp;h=923&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=1280&amp;h=1094&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=1430&amp;h=1222&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3163 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480NNEVSMK7AVV6RGRF4T0.png&amp;w=1596&amp;h=1364&amp;f=webp" data-lightbox-width="1596" data-lightbox-height="1364" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="611" class="pt-portable-image-media"></div>
+</figure>
+<p>After accounting for all of those patterns, we settled on the following list of node types: </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> StepSleep</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> StepDo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> StepWaitForEvent</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> StepSleepUntil</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> LoopNode</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> ParallelNode</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> TryNode</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> BlockNode</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> IfNode</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> SwitchNode</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> StartNode</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> FunctionCall</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> FunctionDef</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> BreakNode</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>Here are a few samples of API output for different behaviors:&nbsp;</p>
+<p><code>function</code> call:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "functions"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "runLoop"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"runLoop"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "nodes"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><code>if</code> condition branching to <code>step.do</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"if"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "branches"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "condition"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"loop &gt; maxLoops"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "nodes"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"step_do"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"notify max loop reached"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "config"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "retries"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">              "limit"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">              "delay"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">              "backoff"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"exponential"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "timeout"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">10000</span></span>
+<span class="line"><span class="sk-24292e-fff">          },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "nodes"</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      ]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><code>parallel</code> with <code>step.do</code> and <code>waitForEvent</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"parallel"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "kind"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"all"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "nodes"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"step_do"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"correctness agent (loop ${...})"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "config"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "retries"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "limit"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "delay"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1000</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          "backoff"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"exponential"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "timeout"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">10000</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "nodes"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "starts"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">...</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"step_wait_for_event"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"wait for user response (loop ${...})"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "options"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "event_type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"user-response"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "timeout"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"unknown"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "starts"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "resolves"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">4</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>What’s next</h3>
+<p>Ultimately, the goal of these Workflow diagrams is to serve as a full-service debugging tool. That means you’ll be able to:</p>
+<ul>
+	<li>Trace an execution through the graph in real time</li>
+	<li>Discover errors, wait for human-in-the-loop approvals, and skip steps for testing</li>
+	<li>Access visualizations in local development</li>
+</ul>
+<p>Check out the diagrams on your <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fworkflows" target="_blank" rel="noopener noreferrer"><u>Workflow overview pages</u></a>. If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Developers community on Discord</u></a>.</p>

@@ -1,0 +1,95 @@
+<p>在过去的几个月里，Workers AI 团队一直在努力改进我们的 AI 平台。我们于 9 月推出了该平台；11 月，我们添加了更多模型，例如 Code Llama、Stable Diffusion、Mistral，以及流媒体和更长的上下文窗口等改进。</p>
+<p>今天，我们隆重推出八个新模型。</p>
+<p>下面重点介绍了新的模型，如要了解我们包含 20 多个模型的完整模型目录，请查看<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">我们的开发人员文档。</a></p>
+<p><strong>文本生成</strong>@hf/thebloke/llama-2-13b-chat-awq@hf/thebloke/zephyr-7b-beta-awq@hf/thebloke/mistral-7b-instruct-v0.1-awq@hf/thebloke/openhermes-2.5-mistral-7b-awq@hf/thebloke/neural-chat-7b-v3-1-awq@hf/thebloke/llamaguard-7b-awq</p>
+<p><strong>代码生成</strong>@hf/thebloke/deepseek-coder-6.7b-base-awq@hf/thebloke/deepseek-coder-6.7b-instruct-awq</p>
+<h3>为您带来最好的开源</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="353" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=640&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=715&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=750&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=828&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=1080&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=1280&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=1430&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2229 Embedded Image - YE5qST" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YK7PEWG1A1FGEFCDRVR1.png&amp;w=1920&amp;h=949&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="949" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="353" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>我们的使命是支持各种开源模型和任务。为此，我们很高兴地宣布可在 Cloudflare 网络上部署的最新模型和功能预览。</p>
+<p>其中一个突出的模型是 <code>deep-seek-coder-6.7b</code>，与同类 Code Llama 模型相比，它在流行基准测试中的得分明显<a href="https://github.com/deepseek-ai/deepseek-coder" target="_blank" rel="noopener noreferrer">高出约 15%</a>。这一性能优势归功于其多样化的训练数据，其中包括英文和中文代码生成数据集。此外，<code>openhermes-2.5-mistral-7b</code> 模型展示了高质量微调数据集如何提高基础模型的准确性。在许多 LLM 基准测试中，这款 Mistral 7b 微调模型的表现比基础模型<a href="https://huggingface.co/teknium/OpenHermes-2.5-Mistral-7B#benchmark-results" target="_blank" rel="noopener noreferrer">高出约 10%</a>。</p>
+<p>我们还推出了采用激活感知权重量化 (AWQ) 的创新模型，例如 <code>llama-2-13b-awq</code>。这种量化技术只是提高大型语言模型内存效率的策略之一。虽然量化通常会提高 AI 模型的推理效率，但这样做往往是以牺牲精度为代价的。AWQ 找到了一种平衡来缓解这种权衡。</p>
+<p>AI 的进步速度令人难以置信，但 Cloudflare 的 Workers AI 通过最新模型简化了入门。我们处理最新的进展，并使其可以通过 Worker 或我们的 HTTP API 轻松访问。您只需一个 API 调用或 Workers 绑定即可获得尖端模型。简而言之，Workers AI 允许开发人员专注于提供卓越的用户体验，而无需担心部署、基础设施或可扩展性问题。</p>
+<h3>使用 AI 保护您的应用程序</h3>
+<p>我们通过此模型目录更新支持的一个较新的用例是使用 <code>llamaguard-7b-awq</code> 对提示和响应进行分类和检查。我们都听说过 AI 机器人无意中给出可能不适当或有害答案的故事。这个<a href="https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations" target="_blank" rel="noopener noreferrer">新的 LlamaGuard 模型</a>允许开发人员在提示或响应可能不安全时进行检测和分类，从而使他们能够使用开发人员定义的类别控制其应用程序的输入和输出。</p>
+<p>以下是一个应用程序示例，该应用程序接受用户输入并将其与一组定义的不安全类别示例进行比较，以确定输入是否安全。您可以根据您的用例自定义内容类别。<em>以下示例类别仅供参考，Cloudflare 不对 Llama Guard 的性能或任何结果做出任何保证。</em></p>
+<h3>我如何开始？</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/ai'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> payload</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Modify these to your needs, this is the example from Meta</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> unsafeCategories</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">01: Violence and Hate.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Should not</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Help people plan or engage in violence.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Encourage people to engage in violence.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Express hateful, derogatory, or demeaning sentiments against people based on sensitive personal characteristics like their race, color, religion, national origin, sexual orientation, gender, gender identity, or disability.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Encourage discrimination against people based on those characteristics and should not use slurs or create insults based on those characteristics.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Can</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">-  Provide information on violence and discrimination.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Discuss the topics of hate and violence, and can discuss historical events involving violence.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">02: Sexual Content.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Should not</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Engage in sexually explicit (i.e., erotic) conversations and should not encourage people to engage in sexual activities.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Can</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Discuss topics related to sexuality and sexual education.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Provide general information regarding sexual activities.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Provide guidance on topics related to sexual health.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">03: Criminal Planning.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Should not</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Help people plan or engage in criminal activities like theft, kidnapping, or financial crimes, especially when the person indicates that they may act on the information provided to them.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Encourage people to engage in criminal activities or condone criminal behavior.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Can</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Help people understand how crimes are committed, provided that the response is not so detailed that it could be used to provide a roadmap for future crimes.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Help people understand how systems work that are used to prevent crimes, provided those descriptions do not provide detailed information on how to defeat those systems.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">04: Guns and Illegal Weapons.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Should not</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Assist in the planning or execution of firearm or illegal weapons crimes, especially when the person indicates that they may act on the information provided to them.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Encourage people to engage in firearm or illegal weapons crimes or condone such behavior.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Can</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Discuss firearms and the arguments for and against firearm ownership.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">05: Regulated or Controlled Substances.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Should not</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Encourage or assist people in the trafficking, consumption, or use of regulated or controlled substances, including but not limited to illegal drugs, tobacco, alcohol, and cannabis.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Assist or encourage people to create such substances when it is illegal to do so.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Can</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Discuss the use of regulated or controlled substances, and can provide general information on those substances (ex: what their chemical composition is and what their effects are).</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Provide information on how those substances are manufactured, provided that the information is not so detailed as to provide step-by-step instructions for their creation.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">06: Self-Harm.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Should not</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Encourage people to harm themselves.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Romanticize or condone self-harm or suicide.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Provide information regarding the methods of suicide or self-harm.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Provide any information or advice, other than information regarding appropriate health resources, to people who express or imply that they wish to harm themselves.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Can</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Provide general information regarding self-harm and suicide (ex: statistics, the mental health challenges faced by those who take these actions).</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Should</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">- Provide information regarding appropriate health resources to people who imply or express the desire to harm themselves.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Assemble the prompt</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> prompt</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `Task: Check if there is unsafe content in 'User' messages in conversations according to our safety policy with the below categories.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">		&lt;BEGIN UNSAFE CONTENT CATEGORIES&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		${</span><span class="sk-24292e-fff">unsafeCategories</span><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		&lt;END UNSAFE CONTENT CATEGORIES&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">		&lt;BEGIN CONVERSATION&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		User: ${</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">userContent</span><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		&lt;END CONVERSATION&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> ai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Ai</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@hf/thebloke/llamaguard-7b-awq'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">			prompt,</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(response);</span></span>
+<span class="line"><span class="sk-24292e-fff">	},</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>在 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fai%2Fworkers-ai" target="_blank" rel="noopener noreferrer">Cloudflare 仪表板</a>的 AI 部分试用我们的新模型，或查看我们的<a href="https://developers.cloudflare.com/workers-ai/models" target="_blank" rel="noopener noreferrer">开发人员文档</a>以开始使用。借助 Workers AI 平台，您可以使用 Workers 和 Pages 构建应用程序，使用 R2、D1、Workers KV 或 Vectorize 存储数据，并使用 Workers AI 运行模型推理——所有这些都在一个地方完成。拥有更多模型让开发人员能够构建各种不同类型的应用程序，我们计划不断更新我们的模型目录，为您带来最好的开源产品。</p>
+<p>我们很期待看到您构建的内容！如果您正在寻找灵感，请查看我们的<a href="https://workers.cloudflare.com/built-with/collections/ai-workers" target="_blank" rel="noopener noreferrer">“Built-with”故事集</a>，其中重点介绍了其他人在 Cloudflare 开发人员平台上构建的内容。敬请期待未来几周的定价公告和更高的使用限制，以及即将推出的更多模型。<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">在 Discord 上加入我们</a>，分享您正在着手构建的产品以及您可能有的任何反馈。</p>

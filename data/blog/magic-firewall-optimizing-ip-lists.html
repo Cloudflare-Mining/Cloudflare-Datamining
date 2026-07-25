@@ -1,162 +1,127 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zFdYwbtRYUyrtIQSZpYpy/b82a4ecec768b7663c6237ff934209a6/magic-firewall-optimizing-ip-lists.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Magic Firewall is Cloudflare’s replacement for network-level firewall hardware. It evaluates gigabits of traffic every second against user-defined rules that can include millions of IP addresses. Writing a firewall rule for each IP address is cumbersome and verbose, so we have been building out support for various <a href="https://developers.cloudflare.com/magic-firewall/about/list-types" target="_blank" rel="noopener noreferrer">IP lists</a> in Magic Firewall—essentially named groups that make the rules easier to read and write. Some users want to reject packets based on our growing <a href="https://blog.cloudflare.com/magic-firewall-gets-smarter">threat intelligence</a> of bad actors, while others know the exact set of IPs they want to match, which Magic Firewall supports via the same <a href="https://api.cloudflare.com/#rules-lists-create-list" target="_blank" rel="noopener noreferrer">API</a> as Cloudflare’s WAF.</p>
-	<p>With all those IPs, the system was using more of our memory budget than we’d like. To understand why, we need to first peek behind the curtain of our magic.</p>
-	<div class="flex anchor relative">
-		<h3 id="life-inside-a-network-namespace">Life inside a network namespace</h3>
-		<a href="https://blog.cloudflare.com/#life-inside-a-network-namespace" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://developers.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> and <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN</a> enable Cloudflare to route layer 3 traffic, and they are the front door for Magic Firewall. We have <a href="https://blog.cloudflare.com/magic-transit-network-functions">previously written</a> about how Magic Transit uses network namespaces to route packets and isolate customer configuration. Magic Firewall operates inside these namespaces, using <a href="https://wiki.nftables.org" target="_blank" rel="noopener noreferrer">nftables</a> as the primary implementation of packet filtering.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gwHgvyY5XXUf6woaifxHT/eb28b9a02a8754e5c18af4f1cd15345f/image1-111.png" alt="Optimizing Magic Firewall’s IP Lists" class="kg-image" width="1379" height="718" loading="lazy">
-
-	</figure>
-	<p>When a user makes an API request to configure their firewall, a daemon running on every server detects the change and makes the corresponding changes to nftables. Because nftables configuration is stored within the namespace, each user’s firewall rules are isolated from the next. Every Cloudflare server routes traffic for all of our customers, so it’s important that the firewall only applies a customer’s rules to their own traffic.</p>
-	<p>Using our existing technologies, we built IP lists using <a href="https://wiki.nftables.org/wiki-nftables/index.php/Sets" target="_blank" rel="noopener noreferrer">nftables sets</a>. In practice, this means that the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language" target="_blank" rel="noopener noreferrer">wirefilter</a> expression</p>
-	<pre class="language-bash"><code class="language-bash">ip.geoip.country == “US”</code></pre>
-	<p>is implemented as</p>
-	<pre class="language-bash"><code class="language-bash">table ip mfw {
-	set geoip.US {
-		typeof ip saddr
-		elements = { 192.0.2.0, … }
-	}
-	chain input {
-		ip saddr @geoip.US block
-	}
-}</code></pre>
-	<p>This design for the feature made it very easy to extend our wirefilter syntax so that <a href="https://developers.cloudflare.com/magic-firewall/how-to/use-rules-list" target="_blank" rel="noopener noreferrer">users could write rules</a> using all the different IP lists we support.</p>
-	<div class="flex anchor relative">
-		<h3 id="scaling-to-many-customers">Scaling to many customers</h3>
-		<a href="https://blog.cloudflare.com/#scaling-to-many-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We chose this design since sets fit easily into our existing use of nftables. We shipped quickly with just a few, relatively small lists to a handful of customers. This approach worked well at first, but we eventually started to observe a dramatic increase in our system’s memory use. It’s common practice for our team to enable a new feature for just a few customers at first. Here’s what we observed as those customers started using IP lists:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qNc0vJJ8jp9IhXibKbbN8/f604ed58adafdf000fcca203939e42b6/image3-45.png" alt="Kmalloc64 slab memory Q4" class="kg-image" width="900" height="289" loading="lazy">
-
-	</figure>
-	<p>It turns out you can’t store millions of IPs in the kernel without someone noticing, but the real problem is that we pay that cost for each customer that uses them. Each network namespace gets a complete copy of all the lists that its rules reference. Just to make it perfectly clear, if 10 users have a rule that uses the anonymizer list, then a server has 10 copies of that list stored in the kernel. Yikes!</p>
-	<p>And it isn’t just the storage of these IPs that caused alarm; the sheer size of the nftables configuration causes nft (the command-line program for configuring nftables) to use quite a bit of compute power.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/JFdD6qQkleN1cunjVdado/0d325484293b815b570ac74bac889ba1/image5-25.png" alt="CPU time during nftables updates" class="kg-image" width="900" height="291" loading="lazy">
-
-	</figure>
-	<p>Can you guess when the nftables updates take place? &nbsp;Now the CPU usage wasn’t particularly problematic, as the service is already quite lean. However, those spikes also create competition with other services that heavily use netlink sockets. At one point, a monitoring alert for another service started firing for high CPU, and a fellow development team went through the incident process only to realize our system was the primary contributor to the problem. They made use of the <code>-terse</code> flag to prevent nft from wasting precious time rendering huge lists of IPs, but degrading another team’s service was a harsh way to learn that lesson.</p>
-	<p>We put quite a bit of effort into working around this problem. We tried doing incremental updates of the sets, only adding or deleting the elements that had changed since the last update. It was helpful sometimes, but the complexity ended up not being worth the small savings. Through a lot of profiling, we found that splitting an update across multiple statements improved the situation some. This means we changed</p>
-	<pre class="language-bash"><code class="language-bash">add element ip mfw set0 { 192.0.2.0, 192.0.2.2, …, 198.51.100.0, 198.51.100.2, … }</code></pre>
-	<p>to</p>
-	<pre class="language-bash"><code class="language-bash">add element ip mfw set0 { 192.0.2.0, … }
-add element ip mfw set0 { 198.51.100.0, … }</code></pre>
-	<p>just to squeeze out a second or two of reduced time that nft took to process our configuration. We were spending a fair amount of development cycles looking for optimizations, and we needed to find a way to turn the tides.</p>
-	<div class="flex anchor relative">
-		<h3 id="one-more-step-with-ebpf">One more step with eBPF</h3>
-		<a href="https://blog.cloudflare.com/#one-more-step-with-ebpf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As we mentioned <a href="https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall">on our blog</a> recently, Magic Firewall leverages eBPF for some advanced packet-matching. And it may not be a big surprise that eBPF can match an IP in a list, but it wasn’t a tool we thought to reach for a year ago. What makes eBPF relevant to this problem is that eBPF maps exist regardless of a network namespace. That’s right; eBPF gives us a way to share this data across all the network namespaces we create for our customers.</p>
-	<p>Since several of our IP lists contain ranges, we can’t use a simple <code>BPF_MAP_TYPE_HASH</code> or <code>BPF_MAP_TYPE_ARRAY</code> to perform a lookup. Fortunately, Linux already has a data structure that we can use to accommodate ranges: the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/bpf/lpm_trie.c" target="_blank" rel="noopener noreferrer"><code>BPF_MAP_TYPE_LPM_TRIE</code></a>.</p>
-	<p>Given an IP address, the trie’s implementation of <code>bpf_map_lookup_elem()</code> will return a non-null result if the IP falls within any of the ranges already inserted into the map. And using the map is about as simple as it gets for eBPF programs. Here’s an example:</p>
-	<pre class="language-bash"><code class="language-bash">typedef struct {
-	__u32 prefix_len;
-	__u8 ip[4];
-} trie_key_t;
-
-SEC("maps")
-struct bpf_map_def ip_list = {
-    .type = BPF_MAP_TYPE_LPM_TRIE,
-    .key_size = sizeof(trie_key_t),
-    .value_size = 1,
-    .max_entries = 1,
-    .map_flags = BPF_F_NO_PREALLOC,
-};
-
-SEC("socket/saddr_in_list")
-int saddr_in_list(struct __sk_buff *skb) {
-	struct iphdr iph;
-	trie_key_t trie_key;
-
-	bpf_skb_load_bytes(skb, 0, &amp;iph, sizeof(iph));
-
-	trie_key.prefix_len = 32;
-	trie_key.ip[0] = iph.saddr &amp; 0xff;
-	trie_key.ip[1] = (iph.saddr &gt;&gt; 8) &amp; 0xff;
-	trie_key.ip[2] = (iph.saddr &gt;&gt; 16) &amp; 0xff;
-	trie_key.ip[3] = (iph.saddr &gt;&gt; 24) &amp; 0xff;
-
-	void *val = bpf_map_lookup_elem(&amp;ip_list, &amp;trie_key);
-	return val == NULL ? BPF_OK : BPF_DROP;
-}
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="nftables-befriends-ebpf">nftables befriends eBPF</h3>
-		<a href="https://blog.cloudflare.com/#nftables-befriends-ebpf" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One of the limitations of our prior work incorporating eBPF into the firewall involves how the program is loaded into the nftables ruleset. Because the nft command-line program does not support calling a BPF program from a rule, we formatted the Netlink messages ourselves. While this allowed us to insert a rule that executes an eBPF program, it came at the cost of losing out on <a href="https://wiki.nftables.org/wiki-nftables/index.php/Atomic_rule_replacement" target="_blank" rel="noopener noreferrer">atomic rule replacements</a>.</p>
-	<p>So any native nftables rules could be applied in one transaction, but any eBPF-based rules would have to be inserted afterwards. This introduces some headaches for handling failures—if inserting an eBPF rule fails, should we simply retry, or perhaps roll back the nftables ruleset as well? And what if those follow-up operations fail?</p>
-	<p>In other words, we went from a relatively simple operation—the new firewall configuration either fully applied or didn’t—to a much more complex one. We didn’t want to keep using more and more eBPF without solving this problem. After hacking on the nftables repo for a few days, we came out with a patch that adds a BPF keyword to the nftables configuration syntax.</p>
-	<p>I won’t cover all the changes, which we hope to upstream soon, but there were two key parts. The first is implementing <a href="https://git.netfilter.org/nftables/tree/include/expression.h?v1.0.1=#n158" target="_blank" rel="noopener noreferrer">struct expr_ops</a> and some methods required, which is how nft’s parser knows what to do with each keyword in its configuration language (like the “bpf” keyword we introduced). The second is just a different approach for what we solved previously. Instead of directly formatting <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h?h=v1.8.7#n27" target="_blank" rel="noopener noreferrer">struct xt_bpf_info_v1</a> into a byte array as iptables does, nftables uses the nftnl library to create the netlink messages.</p>
-	<p>Once we had our footing working in a foreign codebase, that code turned out fairly simple.</p>
-	<pre class="language-bash"><code class="language-bash">static void netlink_gen_bpf(struct netlink_linearize_ctx *ctx,
-                            const struct expr *expr,
-                            enum nft_registers dreg)
-{
-       struct nftnl_expr *nle;
-
-       nle = alloc_nft_expr("match");
-       nftnl_expr_set_str(nle, NFTNL_EXPR_MT_NAME, "bpf");
-       nftnl_expr_set_u8(nle, NFTNL_EXPR_MT_REV, 1);
-       nftnl_expr_set(nle, NFTNL_EXPR_MT_INFO, expr-&gt;bpf.info, sizeof(struct xt_bpf_info_v1));
-       nft_rule_add_expr(ctx, nle, &amp;expr-&gt;location);
-}</code></pre>
-	<p>With the patch finally built, it became possible for us to write configuration like this where we can provide a path to any pinned eBPF program.</p>
-	<pre class="language-bash"><code class="language-bash"># nft -f - &lt;&lt;EOF
-table ip mfw {
-  chain input {
-    bpf pinned "/sys/fs/bpf/filter" drop
-  }
-}
-EOF</code></pre>
-	<p>And now we can mix native nftables matches with eBPF programs without giving up the atomic nature of nft commands. This unlocks the opportunity for us to build even more advanced packet inspection and protocol detection in eBPF.</p>
-	<div class="flex anchor relative">
-		<h3 id="results">Results</h3>
-		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This plot shows kernel memory during the time of the deployment - the change was rolled out to each namespace over a few hours.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4R2XBHvddjD1yV4wXwUSi4/7314d46335537621ca76c6023ef1e8f3/image2-97.png" alt="Kmalloc64 slab memory during release" class="kg-image" width="901" height="288" loading="lazy">
-
-	</figure>
-	<p>Though at this point, we’ve merely moved memory out of this slab. Fortunately, the eBPF map memory now appears in the cgroup for our Golang process, so it’s relatively easy to report. Here’s the point at which we first started populating the maps:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7dSr4Z9sfd7CqmhDQf9Ux2/abd4220ce4510b852a77fd3d3be48f17/image4-29.png" alt="Cgroup memory during release" class="kg-image" width="897" height="328" loading="lazy">
-
-	</figure>
-	<p>This change was pushed a couple of weeks before the maps were actually used in the firewall (i.e. the graph just above). And it has remained constant ever since—unlike our original design, the number of customers is no longer a predominant factor in this feature’s resource usage. &nbsp;The new model makes us more confident about how the service will behave as our product continues to grow.</p>
-	<p>Other than being better positioned to use eBPF more in the future, we made a significant improvement on the efficiency of the product today. In any project that grows rapidly for a while, an engineer can often see a few pesky pitfalls looming on the horizon. It is very satisfying to dive deep into these technologies and come out with a creative, novel solution before experiencing too much pain. We love solving hard problems and improving our systems to handle rapid growth in addition to pushing lots of new features.</p>
-	<p>Does that sound like an environment you want to work in? Consider <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">applying</a>!</p>
+<p>Magic Firewall is Cloudflare’s replacement for network-level firewall hardware. It evaluates gigabits of traffic every second against user-defined rules that can include millions of IP addresses. Writing a firewall rule for each IP address is cumbersome and verbose, so we have been building out support for various <a href="https://developers.cloudflare.com/magic-firewall/about/list-types" target="_blank" rel="noopener noreferrer">IP lists</a> in Magic Firewall—essentially named groups that make the rules easier to read and write. Some users want to reject packets based on our growing <a href="https://blog.cloudflare.com/magic-firewall-gets-smarter">threat intelligence</a> of bad actors, while others know the exact set of IPs they want to match, which Magic Firewall supports via the same <a href="https://api.cloudflare.com/#rules-lists-create-list" target="_blank" rel="noopener noreferrer">API</a> as Cloudflare’s WAF.</p>
+<p>With all those IPs, the system was using more of our memory budget than we’d like. To understand why, we need to first peek behind the curtain of our magic.</p>
+<h3>Life inside a network namespace</h3>
+<p><a href="https://developers.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> and <a href="https://blog.cloudflare.com/magic-wan-firewall">Magic WAN</a> enable Cloudflare to route layer 3 traffic, and they are the front door for Magic Firewall. We have <a href="https://blog.cloudflare.com/magic-transit-network-functions">previously written</a> about how Magic Transit uses network namespaces to route packets and isolate customer configuration. Magic Firewall operates inside these namespaces, using <a href="https://wiki.nftables.org" target="_blank" rel="noopener noreferrer">nftables</a> as the primary implementation of packet filtering.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="372" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=715&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=640&amp;h=333&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=715&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=750&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=828&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=1080&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=1280&amp;h=666&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=1430&amp;h=744&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Optimizing Magic Firewall’s IP Lists" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QZN5B9NNW7BWVR74F05X.png&amp;w=1379&amp;h=718&amp;f=webp" data-lightbox-width="1379" data-lightbox-height="718" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="372" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>When a user makes an API request to configure their firewall, a daemon running on every server detects the change and makes the corresponding changes to nftables. Because nftables configuration is stored within the namespace, each user’s firewall rules are isolated from the next. Every Cloudflare server routes traffic for all of our customers, so it’s important that the firewall only applies a customer’s rules to their own traffic.</p>
+<p>Using our existing technologies, we built IP lists using <a href="https://wiki.nftables.org/wiki-nftables/index.php/Sets" target="_blank" rel="noopener noreferrer">nftables sets</a>. In practice, this means that the <a href="https://developers.cloudflare.com/ruleset-engine/rules-language" target="_blank" rel="noopener noreferrer">wirefilter</a> expression</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip.geoip.country</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> “US”</span></span></code></pre>
 </div>
+<p>is implemented as</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">table</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	set</span><span class="sk-032f62-99ffe4"> geoip.US</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		typeof</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> saddr</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		elements</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 192.0.2.0,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	chain</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		ip</span><span class="sk-032f62-99ffe4"> saddr</span><span class="sk-032f62-99ffe4"> @geoip.US</span><span class="sk-032f62-99ffe4"> block</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This design for the feature made it very easy to extend our wirefilter syntax so that <a href="https://developers.cloudflare.com/magic-firewall/how-to/use-rules-list" target="_blank" rel="noopener noreferrer">users could write rules</a> using all the different IP lists we support.</p>
+<h3>Scaling to many customers</h3>
+<p>We chose this design since sets fit easily into our existing use of nftables. We shipped quickly with just a few, relatively small lists to a handful of customers. This approach worked well at first, but we eventually started to observe a dramatic increase in our system’s memory use. It’s common practice for our team to enable a new feature for just a few customers at first. Here’s what we observed as those customers started using IP lists:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="230" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=640&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=750&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=828&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=1080&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=1280&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=1430&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Kmalloc64 slab memory Q4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DTTTH205J2ZXYYPT75QB.png&amp;w=900&amp;h=289&amp;f=webp" data-lightbox-width="900" data-lightbox-height="289" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="230" class="pt-portable-image-media"></div>
+</figure>
+<p>It turns out you can’t store millions of IPs in the kernel without someone noticing, but the real problem is that we pay that cost for each customer that uses them. Each network namespace gets a complete copy of all the lists that its rules reference. Just to make it perfectly clear, if 10 users have a rule that uses the anonymizer list, then a server has 10 copies of that list stored in the kernel. Yikes!</p>
+<p>And it isn’t just the storage of these IPs that caused alarm; the sheer size of the nftables configuration causes nft (the command-line program for configuring nftables) to use quite a bit of compute power.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="231" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=715&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=640&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=715&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=750&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=828&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=1080&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=1280&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=1430&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="CPU time during nftables updates" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497CH9QFF3VRP4B93WXD9A.png&amp;w=900&amp;h=291&amp;f=webp" data-lightbox-width="900" data-lightbox-height="291" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="231" class="pt-portable-image-media"></div>
+</figure>
+<p>Can you guess when the nftables updates take place? &nbsp;Now the CPU usage wasn’t particularly problematic, as the service is already quite lean. However, those spikes also create competition with other services that heavily use netlink sockets. At one point, a monitoring alert for another service started firing for high CPU, and a fellow development team went through the incident process only to realize our system was the primary contributor to the problem. They made use of the <code>-terse</code> flag to prevent nft from wasting precious time rendering huge lists of IPs, but degrading another team’s service was a harsh way to learn that lesson.</p>
+<p>We put quite a bit of effort into working around this problem. We tried doing incremental updates of the sets, only adding or deleting the elements that had changed since the last update. It was helpful sometimes, but the complexity ended up not being worth the small savings. Through a lot of profiling, we found that splitting an update across multiple statements improved the situation some. This means we changed</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 192.0.2.0,</span><span class="sk-032f62-99ffe4"> 192.0.2.2,</span><span class="sk-032f62-99ffe4"> …,</span><span class="sk-032f62-99ffe4"> 198.51.100.0,</span><span class="sk-032f62-99ffe4"> 198.51.100.2,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+</div>
+<p>to</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 192.0.2.0,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add</span><span class="sk-032f62-99ffe4"> element</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> set0</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> 198.51.100.0,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+</div>
+<p>just to squeeze out a second or two of reduced time that nft took to process our configuration. We were spending a fair amount of development cycles looking for optimizations, and we needed to find a way to turn the tides.</p>
+<h3>One more step with eBPF</h3>
+<p>As we mentioned <a href="https://blog.cloudflare.com/programmable-packet-filtering-with-magic-firewall">on our blog</a> recently, Magic Firewall leverages eBPF for some advanced packet-matching. And it may not be a big surprise that eBPF can match an IP in a list, but it wasn’t a tool we thought to reach for a year ago. What makes eBPF relevant to this problem is that eBPF maps exist regardless of a network namespace. That’s right; eBPF gives us a way to share this data across all the network namespaces we create for our customers.</p>
+<p>Since several of our IP lists contain ranges, we can’t use a simple <code>BPF_MAP_TYPE_HASH</code> or <code>BPF_MAP_TYPE_ARRAY</code> to perform a lookup. Fortunately, Linux already has a data structure that we can use to accommodate ranges: the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/kernel/bpf/lpm_trie.c" target="_blank" rel="noopener noreferrer"><code>BPF_MAP_TYPE_LPM_TRIE</code></a>.</p>
+<p>Given an IP address, the trie’s implementation of <code>bpf_map_lookup_elem()</code> will return a non-null result if the IP falls within any of the ranges already inserted into the map. And using the map is about as simple as it gets for eBPF programs. Here’s an example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">typedef</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	__u32</span><span class="sk-032f62-99ffe4"> prefix_len</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	__u8</span><span class="sk-032f62-99ffe4"> ip[4]</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">} trie_key_t;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">SEC(</span><span class="sk-6f42c1-ffc799">"maps"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> bpf_map_def</span><span class="sk-032f62-99ffe4"> ip_list</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    .type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> BPF_MAP_TYPE_LPM_TRIE,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    .key_size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">trie_key_t</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    .value_size</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    .max_entries</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    .map_flags</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> BPF_F_NO_PREALLOC,</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">SEC(</span><span class="sk-6f42c1-ffc799">"socket/saddr_in_list"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">int</span><span class="sk-032f62-99ffe4"> saddr_in_list</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> __sk_buff</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">skb</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	struct</span><span class="sk-032f62-99ffe4"> iphdr</span><span class="sk-032f62-99ffe4"> iph</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	trie_key_t</span><span class="sk-032f62-99ffe4"> trie_key</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	bpf_skb_load_bytes(skb,</span><span class="sk-032f62-99ffe4"> 0,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">iph,</span><span class="sk-032f62-99ffe4"> sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">iph</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	trie_key.prefix_len</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 32</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	trie_key.ip[0]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> iph.saddr</span><span class="sk-24292e-fff"> &amp; </span><span class="sk-6f42c1-ffc799">0xff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	trie_key.ip[1]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (iph.saddr </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 8</span><span class="sk-24292e-fff">) &amp; </span><span class="sk-6f42c1-ffc799">0xff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	trie_key.ip[2]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (iph.saddr </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-24292e-fff">) &amp; </span><span class="sk-6f42c1-ffc799">0xff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	trie_key.ip[3]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (iph.saddr </span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-005cc5-ffc799"> 24</span><span class="sk-24292e-fff">) &amp; </span><span class="sk-6f42c1-ffc799">0xff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	void</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">val</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> bpf_map_lookup_elem</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">ip_list,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">trie_key</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	return</span><span class="sk-032f62-99ffe4"> val</span><span class="sk-032f62-99ffe4"> ==</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-032f62-99ffe4"> ?</span><span class="sk-032f62-99ffe4"> BPF_OK</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> BPF_DROP</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>nftables befriends eBPF</h3>
+<p>One of the limitations of our prior work incorporating eBPF into the firewall involves how the program is loaded into the nftables ruleset. Because the nft command-line program does not support calling a BPF program from a rule, we formatted the Netlink messages ourselves. While this allowed us to insert a rule that executes an eBPF program, it came at the cost of losing out on <a href="https://wiki.nftables.org/wiki-nftables/index.php/Atomic_rule_replacement" target="_blank" rel="noopener noreferrer">atomic rule replacements</a>.</p>
+<p>So any native nftables rules could be applied in one transaction, but any eBPF-based rules would have to be inserted afterwards. This introduces some headaches for handling failures—if inserting an eBPF rule fails, should we simply retry, or perhaps roll back the nftables ruleset as well? And what if those follow-up operations fail?</p>
+<p>In other words, we went from a relatively simple operation—the new firewall configuration either fully applied or didn’t—to a much more complex one. We didn’t want to keep using more and more eBPF without solving this problem. After hacking on the nftables repo for a few days, we came out with a patch that adds a BPF keyword to the nftables configuration syntax.</p>
+<p>I won’t cover all the changes, which we hope to upstream soon, but there were two key parts. The first is implementing <a href="https://git.netfilter.org/nftables/tree/include/expression.h?v1.0.1=#n158" target="_blank" rel="noopener noreferrer">struct expr_ops</a> and some methods required, which is how nft’s parser knows what to do with each keyword in its configuration language (like the “bpf” keyword we introduced). The second is just a different approach for what we solved previously. Instead of directly formatting <a href="https://git.netfilter.org/iptables/tree/include/linux/netfilter/xt_bpf.h?h=v1.8.7#n27" target="_blank" rel="noopener noreferrer">struct xt_bpf_info_v1</a> into a byte array as iptables does, nftables uses the nftnl library to create the netlink messages.</p>
+<p>Once we had our footing working in a foreign codebase, that code turned out fairly simple.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">static</span><span class="sk-032f62-99ffe4"> void</span><span class="sk-032f62-99ffe4"> netlink_gen_bpf</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> netlink_linearize_ctx</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">ctx,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                            const</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> expr</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">expr,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                            enum</span><span class="sk-032f62-99ffe4"> nft_registers</span><span class="sk-032f62-99ffe4"> dreg</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       struct</span><span class="sk-032f62-99ffe4"> nftnl_expr</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">nle</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       nle</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> alloc_nft_expr</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"match"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       nftnl_expr_set_str(nle,</span><span class="sk-032f62-99ffe4"> NFTNL_EXPR_MT_NAME,</span><span class="sk-032f62-99ffe4"> "bpf"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       nftnl_expr_set_u8(nle,</span><span class="sk-032f62-99ffe4"> NFTNL_EXPR_MT_REV,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       nftnl_expr_set(nle,</span><span class="sk-032f62-99ffe4"> NFTNL_EXPR_MT_INFO,</span><span class="sk-032f62-99ffe4"> expr</span><span class="sk-24292e-fff">-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">bpf.info,</span><span class="sk-032f62-99ffe4"> sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> xt_bpf_info_v1</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       nft_rule_add_expr(ctx,</span><span class="sk-032f62-99ffe4"> nle,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">expr-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">location</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>With the patch finally built, it became possible for us to write configuration like this where we can provide a path to any pinned eBPF program.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># nft -f - &lt;&lt;EOF</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">table</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> mfw</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  chain</span><span class="sk-032f62-99ffe4"> input</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    bpf</span><span class="sk-032f62-99ffe4"> pinned</span><span class="sk-032f62-99ffe4"> "/sys/fs/bpf/filter"</span><span class="sk-032f62-99ffe4"> drop</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">EOF</span></span></code></pre>
+</div>
+<p>And now we can mix native nftables matches with eBPF programs without giving up the atomic nature of nft commands. This unlocks the opportunity for us to build even more advanced packet inspection and protocol detection in eBPF.</p>
+<h3>Results</h3>
+<p>This plot shows kernel memory during the time of the deployment - the change was rolled out to each namespace over a few hours.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="229" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=640&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=750&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=828&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=1080&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=1280&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=1430&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Kmalloc64 slab memory during release" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QKRBK1V1K45Q9FT9PKGX.png&amp;w=901&amp;h=288&amp;f=webp" data-lightbox-width="901" data-lightbox-height="288" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="229" class="pt-portable-image-media"></div>
+</figure>
+<p>Though at this point, we’ve merely moved memory out of this slab. Fortunately, the eBPF map memory now appears in the cgroup for our Golang process, so it’s relatively easy to report. Here’s the point at which we first started populating the maps:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="261" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=715&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=640&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=715&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=750&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=828&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=1080&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=1280&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=1430&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cgroup memory during release" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48VCRXT8PQGDGW4NC2AMXT.png&amp;w=897&amp;h=328&amp;f=webp" data-lightbox-width="897" data-lightbox-height="328" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="261" class="pt-portable-image-media"></div>
+</figure>
+<p>This change was pushed a couple of weeks before the maps were actually used in the firewall (i.e. the graph just above). And it has remained constant ever since—unlike our original design, the number of customers is no longer a predominant factor in this feature’s resource usage. &nbsp;The new model makes us more confident about how the service will behave as our product continues to grow.</p>
+<p>Other than being better positioned to use eBPF more in the future, we made a significant improvement on the efficiency of the product today. In any project that grows rapidly for a while, an engineer can often see a few pesky pitfalls looming on the horizon. It is very satisfying to dive deep into these technologies and come out with a creative, novel solution before experiencing too much pain. We love solving hard problems and improving our systems to handle rapid growth in addition to pushing lots of new features.</p>
+<p>Does that sound like an environment you want to work in? Consider <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">applying</a>!</p>

@@ -1,0 +1,169 @@
+<p>W Święto Dziękczynienia, 23 listopada 2023 roku, Cloudflare wykryła aktywność cyberprzestępcy na naszym samodzielnie hostowanym serwerze Atlassian. Nasz zespół ds. bezpieczeństwa niezwłocznie rozpoczął dochodzenie i odciął cyberprzestępcy dostęp, a w niedzielę, 26 listopada, zleciliśmy technikom CrowdStrike przeprowadzenie własnej niezależnej analizy.</p>
+<p>Wczoraj firma CrowdStrike zakończyła swoje dochodzenie, a my publikujemy niniejszy wpis na blogu, aby omówić szczegóły tego incydentu bezpieczeństwa.</p>
+<p>Chcemy podkreślić naszym klientom, że to zdarzenie nie miało wpływu na żadne dane dotyczące klientów Cloudflare ani na nasze systemy. Dzięki naszym środkom kontroli dostępu, regułom zapory oraz stosowaniu silnych kluczy bezpieczeństwa, co wymuszają nasze własne narzędzia Zero Trust, możliwości wykonywania przez cyberprzestępcę ruchów bocznych były ograniczone. W incydent nie były zamieszane żadne usługi, ani nie wprowadzono żadnych zmian w naszych globalnych systemach sieciowych bądź w konfiguracji. To właśnie cecha architektury typu Zero Trust — podobnie jak w przypadku grodzi na statku, skutki ataku w jednym systemie są ograniczone, aby nie narażać całej organizacji.</p>
+<p>Między 14 a 17 listopada cyberprzestępca przeprowadził rozpoznanie, a następnie uzyskał dostęp do naszych wewnętrznych stron wiki (korzystających z narzędzia Atlassian Confluence) oraz naszej bazy danych dotyczącej błędów (Atlassian Jira). W dniach 20 i 21 listopada zaobserwowaliśmy dodatkowy dostęp wskazujący, że cyberprzestępca mógł powrócić w celu przetestowania dostępu i zapewnienia sobie łączności.</p>
+<p>Następnie powrócił 22 listopada i zapewnił sobie stały dostęp do naszego serwera Atlassian, używając aplikacji ScriptRunner for Jira, uzyskał dostęp do naszego systemu zarządzania kodem źródłowym (używającego narzędzia Atlassian Bitbucket) oraz bez powodzenia próbował zdobyć dostęp do serwera konsolowego z dostępem do centrum danych Cloudflare w São Paulo, w Brazylii, które nie zostało jeszcze oddane do eksploatacji.</p>
+<p>Dokonał tego, używając jednego tokena dostępu oraz trzech poświadczeń kont usług, które zostały przejęte, a których nie zmieniliśmy po <a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">pokonaniu zabezpieczeń systemów Okta w październiku 2023 roku</a>. Wszystkie próby dostępu i połączenia cyberprzestępcy zakończyły się 24 listopada, a firma CrowdStrike potwierdziła, że ostatnie dowody jego aktywności wykryto 24 listopada o godzinie 10:44.</p>
+<p>(W całym tym wpisie na blogu wszystkie daty i godziny są podane w czasie uniwersalnym UTC).</p>
+<p>Chociaż rozumiemy, że wpływ operacyjny incydentu był niezwykle ograniczony, potraktowaliśmy to zdarzenie bardzo poważnie, ponieważ cyberprzestępca użył skradzionych poświadczeń, aby uzyskać dostęp do naszego serwera Atlassian, jak również zdobył dostęp do pewnej dokumentacji oraz ograniczonej ilości kodu źródłowego. Na podstawie współpracy z kolegami z branży i władzami uważamy, że atak ten został przeprowadzony na zlecenie państwa narodowego z zamiarem uzyskania trwałego i powszechnego dostępu do globalnej sieci Cloudflare.</p>
+<h3>Naprawcze i wzmacniające działania zespołu „Code Red”</h3>
+<p>24 listopada, po pozbyciu się cyberprzestępcy z naszego środowiska, nasz zespół ds. bezpieczeństwa zaangażował wszystkie niezbędne osoby z całej firmy w celu zbadania wtargnięcia i upewnienia się, że cyberprzestępca został całkowicie pozbawiony dostępu do naszych systemów, a także w celu poznania skali uzyskanego dostępu lub prób jego uzyskania.</p>
+<p>Następnie, od 27 listopada, przekierowaliśmy wysiłki dużej części personelu technicznego Cloudflare (w ramach zespołu ds. bezpieczeństwa i poza nim) do pracy nad jednorazowym projektem o nazwie „Code Red”. Skupiliśmy się na wzmocnieniu, weryfikacji i naprawie wszelkich mechanizmów kontrolnych w naszym środowisku, aby zabezpieczyć nas przed przyszłymi wtargnięciami oraz potwierdzić, że cyberprzestępca nie mógł uzyskać dostępu do naszego środowiska. Ponadto kontynuowaliśmy dochodzenie dotyczące każdego systemu, konta i dziennika, aby upewnić się, że cyberprzestępca nie miał stałego dostępu oraz że w pełni zrozumieliśmy, które systemy zostały zinfiltrowane i do których próbowano uzyskać dostęp.</p>
+<p>Firma CrowdStrike dokonała niezależnej oceny zakresu i zasięgu działalności cyberprzestępcy, w szczególności zaś przeprowadziła poszukiwania jakichkolwiek dowodów na to, że nadal infiltruje on nasze systemy. Dochodzenie przeprowadzone przez CrowdStrike stanowiło cenne potwierdzenie i wsparcie dla naszego śledztwa, lecz nie ujawniło żadnych aktywności, które mogliśmy przeoczyć. Ten wpis na blogu szczegółowo opisuje wszystko, co zostało odkryte przez firmy Cloudflare i CrowdStrike na temat działalności cyberprzestępcy.</p>
+<p>Jedynym systemem produkcyjnym, do którego cyberprzestępca mógł uzyskać dostęp za pomocą skradzionych poświadczeń, było nasze środowisko Atlassian. Po analizie stron wiki, do których uzyskał dostęp, zgłoszeń w bazie danych dotyczącej błędów oraz repozytoriów kodu źródłowego można przypuszczać, że szukał on informacji na temat architektury, zabezpieczeń i zarządzania naszą siecią globalną, niewątpliwie z zamiarem zdobycia lepszego punktu zaczepienia. Z tego względu postanowiliśmy podjąć ogromny wysiłek na rzecz dodatkowego wzmocnienia naszych protokołów bezpieczeństwa, aby uniemożliwić cyberprzestępcy uzyskanie takiego punktu zaczepienia w sytuacji, gdybyśmy przeoczyli coś w naszych plikach dziennika.</p>
+<p>Naszym celem było uniemożliwienie atakującemu wykorzystania informacji technicznych na temat działania naszej sieci jako sposobu na ponowne włamanie. Mimo że wierzyliśmy, a później potwierdziliśmy, że atakujący miał ograniczony dostęp, podjęliśmy kompleksowe działania, aby zmienić każde poświadczenie produkcyjne (ponad 5000 indywidualnych poświadczeń) oraz fizycznie oddzielić systemy testowe i pomostowe. Co więcej, przeprowadzono triaże kryminalistyczne w odniesieniu do 4893 systemów, a także usunięto całe oprogramowanie, ponownie je zainstalowano i uruchomiono na każdym komputerze w naszej sieci globalnej, co w szczególności dotyczyło wszystkich systemów, do których cyberprzestępca miał dostęp, oraz wszystkich produktów Atlassian (Jira, Confluence i Bitbucket).</p>
+<p>Cyberprzestępca próbował również uzyskać dostęp do serwera konsolowego w naszym nowym, nieoddanym jeszcze do eksploatacji centrum danych w São Paulo. Wszystkie próby uzyskania dostępu zakończyły się niepowodzeniem. Aby zapewnić pełne bezpieczeństwo tym systemom, sprzęt w brazylijskim centrum danych został zwrócony producentom. Technicy producentów zbadali wszystkie nasze systemy, aby upewnić się, że nie uzyskano dostępu ani trwałej obecności. Niczego nie znaleziono, ale mimo to wymieniliśmy sprzęt.</p>
+<p>Poszukiwaliśmy również niezaktualizowanych pakietów oprogramowania, potencjalnie utworzonych kont użytkownika oraz nieużywanych aktywnych kont pracowników. Zabraliśmy się za szukanie sekretów, które mogły zostać pozostawione w zgłoszeniach Jira lub kodzie źródłowym, jak również przeanalizowaliśmy i usunęliśmy wszystkie przesłane do wiki pliki HAR na wypadek, gdyby zawierały jakiekolwiek tokeny. W razie jakichkolwiek wątpliwości zakładaliśmy najgorszy scenariusz i wprowadzaliśmy zmiany, aby zapewnić, że wszystko, do czego cyberprzestępca mógł uzyskać dostęp, nie będzie już używane i tym samym nie będzie już dla niego cenne.</p>
+<p>Wszyscy członkowie zespołu byli zachęcani do wskazywania obszarów, które mogły zostać zinfiltrowane przez cyberprzestępcę, abyśmy mogli zbadać pliki dziennika i określić zakres takiego nieuprawnionego dostępu. Celem uwzględnienia w tych pracach tak wielu osób z całej firmy było przetrząśnięcie każdego zakamarka w poszukiwaniu dowodów na dostęp lub zmian, które trzeba wprowadzić, aby poprawić bezpieczeństwo.</p>
+<p>Bezpośrednie działania zespołu „Code Red” zakończyły się 5 stycznia, lecz prace dotyczące m.in. zarządzania poświadczeniami, wzmacniania oprogramowania, zarządzania podatnościami czy dodatkowych alertów są kontynuowane w całej firmie.</p>
+<h3>Oś czasu ataku</h3>
+<p>Atak rozpoczął się w październiku od pokonania zabezpieczeń systemów Okta, ale dopiero od połowy listopada cyberprzestępca zaczął atakować nasze systemy z wykorzystaniem poświadczeń zdobytych podczas tego naruszenia.</p>
+<p>Na poniższej osi czasu przedstawiono najważniejsze zdarzenia:</p>
+<h3>18 października — pokonanie zabezpieczeń systemów Okta</h3>
+<p><a href="https://blog.cloudflare.com/how-cloudflare-mitigated-yet-another-okta-compromise">Pisaliśmy już o tym wcześniej</a>, ale, mówiąc w skrócie, staliśmy się (po raz drugi) ofiarami pokonania zabezpieczeń systemów Okta, co skutkowało uzyskaniem przez cyberprzestępcę dostępu do zestawu poświadczeń. Wszystkie te poświadczenia miały zostać zmienione.</p>
+<p>Niestety, nie udało nam się zmienić jednego tokena usługi oraz trzech kont usług (spośród tysięcy) dotyczących poświadczeń, które wyciekły z chwilą pokonania zabezpieczeń systemów Okta.</p>
+<p>Jednym z nich był token usługi Moveworks, który zapewniał dostęp zdalny do naszego systemu Atlassian. Drugim poświadczeniem było konto usług używane przez aplikację Smartsheet opartą na rozwiązaniu SaaS, które miało dostęp administracyjny do naszej instancji bazy danych Atlassian Jira, trzecie konto było kontem usług narzędzia Bitbucket używanym do dostępu do naszego systemu zarządzania kodem źródłowym, natomiast czwarte było środowisko AWS niemające dostępu do sieci globalnej i niezawierające żadnych danych klientów ani danych wrażliwych.</p>
+<p>Jeden token usługi i trzy konta nie zostały zmienione, ponieważ błędnie uznano, że nie są używane. Właśnie przez tę pomyłkę cyberprzestępca po raz pierwszy dostał się do naszych systemów i uzyskał trwały dostęp do naszych produktów Atlassian. Należy zauważyć, że w żadnym razie nie był to błąd AWS, Moveworks ani Smartsheet. Były to po prostu poświadczenia, których nie zmieniliśmy.</p>
+<h3>14 listopada, godz. 09:22:49 — cyberprzestępca rozpoczyna sondowanie</h3>
+<p>Nasze dzienniki pokazują, że 14 listopada cyberprzestępca rozpoczął sondowanie i przeprowadzanie rozpoznania naszych systemów, szukając sposobu wykorzystania poświadczeń oraz wykrycia dostępnych systemów. Podejmował próby zalogowania się do naszej instancji Okta oraz uzyskania dostępu do pulpitu nawigacyjnego Cloudflare, ale w obydwu przypadkach spotkał się z odmową dostępu.</p>
+<p>Cyberprzestępca uzyskał ponadto dostęp do środowiska AWS wykorzystywanego do obsługi rynku Cloudflare Apps. To środowisko było posegmentowane, bez dostępu do sieci globalnej lub danych dotyczących klientów. Konto usługi zapewniające dostęp do tego środowiska zostało unieważnione, a następnie przeprowadzono weryfikację integralności tego środowiska.</p>
+<h3>15 listopada, godz. 16:28:38 — cyberprzestępca uzyskuje dostęp do usług Atlassian</h3>
+<p>15 listopada cyberprzestępca uzyskał pomyślnie dostęp do Atlassian Jira i Confluence, wykorzystując token usługi Moveworks do uwierzytelnienia przejścia przez naszą bramę, a następnie użył konta usług Smartsheet, aby uzyskać dostęp do pakietu Atlassian. Następnego dnia zaczął szukać informacji o konfiguracji i zarządzaniu naszą siecią globalną oraz uzyskał dostęp do różnych zgłoszeń Jira.</p>
+<p>Na stronach wiki cyberprzestępca wyszukiwał takie frazy jak „remote access”, „secret”, „client-secret”, „openconnect”, „cloudflared” i „token”. Uzyskał dostęp do 36 zgłoszeń Jira (z łącznej liczby 2059357 zgłoszeń) oraz 202 stron wiki (z łącznej liczby 14099 stron).</p>
+<p>Cyberprzestępca uzyskał dostęp do zgłoszeń Jira dotyczących zarządzania podatnościami, rotacji sekretów, obejścia MFA, dostępu do sieci, a nawet naszej reakcji na incydent dotyczący platformy Okta.</p>
+<p>Przeszukiwania wiki i strony, do których uzyskano dostęp, wskazują, że cyberprzestępca był bardzo zainteresowany wszelkimi aspektami dostępu do naszych systemów: resetowaniem haseł, dostępem zdalnym, konfiguracją, naszym wykorzystaniem produktu Salt, lecz jego celem nie były dane ani konfiguracje dotyczące klientów.</p>
+<h3>16 listopada, godz. 14:36:37 — cyberprzestępca tworzy konto użytkownika Atlassian</h3>
+<p>Cyberprzestępca wykorzystał poświadczenie Smartsheet do utworzenia konta Atlassian, które wyglądało jak zwykłe konto użytkownika Cloudflare. Dodał tego użytkownika do wielu grup w ramach Atlassian, aby zapewnić sobie trwały dostęp do tego środowiska na wypadek usunięcia konta usług Smartsheet.</p>
+<h3>Od 17 listopada, godz. 14:33:52 do 20 listopada, godz. 09:26:53 — cyberprzestępca czasowo zaprzestaje prób uzyskania dostępu do systemów Cloudflare</h3>
+<p>W tym okresie atakujący zrobił przerwę w przeprowadzaniu prób uzyskania dostępu do naszych systemów (poza krótkim, pozornym testowaniem, czy nadal ma dostęp), a następnie powrócił tuż przed Świętem Dziękczynienia.</p>
+<h3>22 listopada, godz. 14:18:22 — cyberprzestępca zyskuje trwały dostęp</h3>
+<p>Ponieważ konto usług Smartsheet miało dostęp administracyjny do bazy danych Atlassian Jira, cyberprzestępca był w stanie zainstalować narzędzie Sliver Adversary Emulation Framework, które jest powszechnie wykorzystywane przez zespoły testujące zabezpieczenia oraz atakujących do zapewnienia sobie łączności C2 (command and control) pozwalającej uzyskać trwały i ukryty dostęp do komputera, na którym jest ono zainstalowane. Narzędzie Sliver zainstalowano przy użyciu wtyczki ScriptRunner for Jira.</p>
+<p>To zapewniło mu ciągły dostęp do serwera Atlassian, którego używał przy próbach ruchu bocznego. Dzięki temu dostępowi cyberprzestępca próbował uzyskać dostęp do nieprodukcyjnego serwera konsolowego w naszym centrum danych w São Paulo, w Brazylii, a powodem tego była nieegzekwowana lista kontroli dostępu (ACL). Po odmowie dostępu nie mógł się on przedostać do sieci globalnej.</p>
+<p>W ciągu następnego dnia cyberprzestępca przejrzał 120 repozytoriów kodu (z łącznej liczby 11904 repozytoriów). W ramach tej grupy wykorzystał funkcję archiwizacji git narzędzia Atlassian Bitbucket w odniesieniu do 76 repozytoriów, aby pobrać je na serwer Atlassian. Mimo że nie byliśmy w stanie potwierdzić, czy zostały one poddane eksfiltracji, postanowiliśmy traktować je tak, jakby eksfiltracja miała miejsce.</p>
+<p>Prawie wszystkie spośród 76 repozytoriów kodu źródłowego były związane z tym, jak tworzone są kopie zapasowe, jak jest konfigurowana i zarządzana sieć globalna, jak odbywa się identyfikacja w Cloudflare, na czym polega dostęp zdalny oraz w jaki sposób korzystamy z usług Terraform i Kubernetes. Niewielka liczba repozytoriów zawierała zaszyfrowane sekrety, które zostały natychmiast zmienione, nawet jeśli same były silnie zaszyfrowane.</p>
+<p>W szczególności skoncentrowaliśmy się na tych 76 repozytoriach kodu źródłowego, aby szukać wbudowanych sekretów (tj. sekretów przechowywanych w kodzie, które zostały zmienione), luk oraz sposobów, przy użyciu których atakujący mógłby przeprowadzić kolejny atak. Prace te zostały przeprowadzone priorytetowo przez zespoły inżynierskie w całej firmie w ramach zespołu „Code Red”.</p>
+<p>Jako firma oferująca rozwiązania SaaS od dawna uważamy, że nasz kod źródłowy sam w sobie nie jest tak cenny, jak kod źródłowy producentów oprogramowania dystrybuowanego do użytkowników końcowych. Prawdę mówiąc, dużą część naszego kodu źródłowego udostępniliśmy na zasadach open source, a na naszym blogu otwarcie mówimy o używanych przez nas algorytmach i technikach. Z tego względu skupiliśmy się nie na tym, czy ktoś ma dostęp do kodu źródłowego, lecz na tym, czy ten kod źródłowy zawiera wbudowane sekrety (takie jak klucz lub token) oraz luki.</p>
+<h3>23 listopada — wykrycie cyberprzestępcy i początek procesu blokowania mu dostępu</h3>
+<p>Nasz zespół ds. bezpieczeństwa został zaalarmowany o obecności cyberprzestępcy o godzinie 16:00, a 35 minut później dezaktywował konto usług Smartsheet. 48 minut później znaleziono i dezaktywowano konto użytkownika utworzone przez cyberprzestępcę. Oto szczegółowa oś czasu głównych działań podjętych w celu zablokowania cyberprzestępcy po wszczęciu pierwszego alarmu.</p>
+<p>15:58 — cyberprzestępca dodaje konto usług Smartsheet do grupy administratorów.16:00 — zespół ds. bezpieczeństwa otrzymuje automatyczny alert o zmianie wprowadzonej o godz. 15:58.16:12 — centrum operacji bezpieczeństwa (SOC) firmy Cloudflare rozpoczyna dochodzenie w sprawie alertu.16:35 — konto usług Smartsheet zostaje dezaktywowane przez SOC Cloudflare.17:23 — znaleziono i dezaktywowano konto użytkownika Atlassian utworzone przez cyberprzestępcę.17:43 — ogłoszono wewnętrzny incydent Cloudflare.21:31 — wprowadzono reguły zapory, aby zablokować znane adresy IP cyberprzestępcy.</p>
+<h3>24 listopada — usunięto narzędzie Sliver; zablokowano cyberprzestępcy wszystkie możliwości dostępu</h3>
+<p>10:44 — ostatnia znana aktywność cyberprzestępcy.11:59 — usunięto narzędzie Sliver.</p>
+<p>W ramach tej osi czasu cyberprzestępca próbował uzyskać dostęp do wielu innych systemów Cloudflare, ale nie udało mu się to za sprawą naszych kontroli dostępu, reguł zapory oraz stosowania trudnych do złamania kluczy bezpieczeństwa, egzekwowanych za pomocą naszych własnych narzędzi Zero Trust.</p>
+<p>Dla jasności, nie znaleźliśmy żadnych dowodów na to, że cyberprzestępca uzyskał dostęp do naszej sieci globalnej, centrów danych, kluczy SSL, baz danych klientów lub informacji konfiguracyjnych, platformy Cloudflare Workers wdrożonej przez nas lub klientów, modeli sztucznej inteligencji, infrastruktury sieciowej czy jakichkolwiek naszych magazynów danych, takich jak Workers KV, R2 lub Quicksilver. Jego dostęp był ograniczony wyłącznie do pakietu Atlassian i serwera, na którym on działa.</p>
+<p>Znaczna część naszych działań w ramach zespołu „Code Red” miała na celu zrozumienie, do czego cyberprzestępca uzyskał dostęp i do czego próbował go uzyskać. Analizując dane logowania dotyczące różnych systemów, byliśmy w stanie prześledzić próby dostępu do naszych wewnętrznych danych statystycznych, konfiguracji sieci, systemu kompilacji, systemów alarmowych oraz systemu zarządzania wydaniami. Nasza inspekcja wykazała, że żadna z prób dostępu do tych systemów nie zakończyła się powodzeniem. Firma CrowdStrike przeprowadziła niezależną ocenę zakresu i zasięgu aktywności cyberprzestępcy, która nie ujawniła przeoczonych przez nas działań, jak również doszła do wniosku, że ostatni dowód aktywności związanej z zagrożeniem wystąpił 24 listopada o godzinie 10:44.</p>
+<p>Jesteśmy przekonani, że dzięki naszemu dochodzeniu oraz ocenie CrowdStrike w pełni poznaliśmy działania cyberprzestępcy i że były one ograniczone do systemów, na których zaobserwowaliśmy jego aktywność.</p>
+<h3>Wnioski</h3>
+<p>Był to incydent bezpieczeństwa z udziałem wyrafinowanego sprawcy, prawdopodobnie państwa narodowego, który działał w sposób przemyślany i metodyczny. Dzięki podjętym przez nas działaniom trwałe skutki incydentu były ograniczone, a także dowiedliśmy, że jesteśmy dobrze przygotowani do odparcia wszelkich zaawansowanych ataków w przyszłości. Wymagało to wysiłków znacznej liczby pracowników inżynieryjnych Cloudflare i przez ponad miesiąc miało najwyższy priorytet w naszej firmie. Cały zespół Cloudflare pracował nad zapewnieniem bezpieczeństwa naszych systemów, poznaniem metod dostępu wykorzystywanych przez cyberprzestępcę, zrealizowaniem bezpośrednich priorytetów (takich jak masowa rotacja poświadczeń) oraz opracowaniem planu długoterminowych działań mających na celu poprawę ogólnego stanu bezpieczeństwa (na podstawie obszarów wymagających poprawy wykrytych w trakcie tego procesu).</p>
+<p>Jesteśmy niezmiernie wdzięczni wszystkim osobom w firmie Cloudflare, które szybko zareagowały podczas weekendu Świąt Dziękczynienia, przeprowadzając wstępną analizę i blokując działania cyberprzestępcy, a także wszystkim tym, którzy przyczynili się do tych starań. Niemożliwe byłoby wymienienie wszystkich zaangażowanych osób, lecz długie godziny ich pracy i poświęcenie umożliwiły przeprowadzenie niezbędnej inspekcji oraz wprowadzenie zmian dotyczących bezpieczeństwa Cloudflare, przy jednoczesnym utrzymaniu działania naszej globalnej sieci i dostępności usług dla naszych klientów.</p>
+<p>Jesteśmy wdzięczni firmie CrowdStrike za natychmiastową gotowość do przeprowadzenia niezależnej oceny. Teraz, gdy ukończony jest jej raport końcowy, mamy pewność co do naszej wewnętrznej analizy i naprawy skutków włamania oraz publikujemy ten wpis na blogu.</p>
+<h4>Oznaki pokonania zabezpieczeń</h4>
+<p>Poniżej znajdują się oznaki pokonania zabezpieczeń (IOC), które zaobserwowaliśmy w przypadku tego cyberprzestępcy. Publikujemy je, aby inne organizacje, w szczególności te, które mogły odczuć negatywne skutki naruszenia zabezpieczeń systemów Okta, mogły przeszukać swoje dzienniki w celu potwierdzenia, że ten sam cyberprzestępca nie uzyskał dostępu do ich systemów.</p>
+<div id="html-block-k3o" class="html-block">
+	<style>
+		#html-block-k3o .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k3o .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3o .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3o .tg .tg-c3ow {
+			border-color: inherit;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k3o .tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Indicator</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Indicator Type</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SHA256</span></th>
+				<th class="tg-c3ow"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">193.142.58[.]126 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Primary threat actor</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infrastructure, owned by</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">M247 Europe SRL (Bucharest,</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Romania)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">198.244.174[.]214 </span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">IPv4</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver C2 server, owned by</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OVH SAS (London, England)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">idowall[.]com</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Domain</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">N/A</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Infrastructure serving Sliver</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">payload</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">jvm-agent</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Filename</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">bdd1a085d651082ad567b03e5186d1d4<br>6d822bb7794157ab8cce95d850a3caaf</span></td>
+				<td class="tg-0pky"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sliver payload</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Wskaźnik</p>
+<p>Typ wskaźnika</p>
+<p>SHA256</p>
+<p>Opis</p>
+<p>193.142.58[.]126&nbsp;</p>
+<p>IPv4</p>
+<p>Nie dotyczy</p>
+<p>Główna infrastruktura</p>
+<p>cyberprzestępcy, właściciel:</p>
+<p>M247 Europe SRL (Bukareszt,</p>
+<p>Rumunia</p>
+<p>198.244.174[.]214&nbsp;</p>
+<p>IPv4</p>
+<p>Nie dotyczy</p>
+<p>Serwer C2 narzędzia Sliver, właściciel:</p>
+<p>OVH SAS (Londyn, Anglia)</p>
+<p>idowall[.].com</p>
+<p>Domena</p>
+<p>Nie dotyczy</p>
+<p>Infrastruktura obsługująca</p>
+<p>payload narzędzia Sliver</p>
+<p>jvm-agent</p>
+<p>Nazwa pliku</p>
+<p>bdd1a085d651082ad567b03e5186d1d46d822bb7794157ab8cce95d850a3caaf</p>
+<p>Payload narzędzia Sliver</p>

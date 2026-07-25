@@ -1,186 +1,103 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/38pbnujhmJ8qz7MTyQ5B6V/3ceafd1241de33f3a61bc2900be4c5b9/image1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>You can now add a <a href="http://developers.cloudflare.com/workers/platform/deploy-buttons" target="_blank" rel="noopener noreferrer"><u>Deploy to Cloudflare button</u></a> to the README of your Git repository containing a Workers application — making it simple for other developers to quickly set up and deploy your project!&nbsp;</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fsaas-admin-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+<p>You can now add a <a href="http://developers.cloudflare.com/workers/platform/deploy-buttons" target="_blank" rel="noopener noreferrer"><u>Deploy to Cloudflare button</u></a> to the README of your Git repository containing a Workers application — making it simple for other developers to quickly set up and deploy your project!&nbsp;</p>
+<div id="html-block-k5" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fsaas-admin-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
-	<p>The Deploy to Cloudflare button:&nbsp;</p>
-	<ol>
-		<li>
-			<p><b>Creates a new Git repository on your GitHub/ GitLab account: </b>Cloudflare will automatically clone and create a new repository on your account, so you can continue developing.&nbsp;</p>
-		</li>
-		<li>
-			<p><b>Automatically provisions resources the app needs:</b> If your repository requires Cloudflare primitives like a <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV namespace</u></a>, a <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer"><u>D1 database</u></a>, or an <a href="https://developers.cloudflare.com/r2/buckets" target="_blank" rel="noopener noreferrer"><u>R2 bucket</u></a>, Cloudflare will automatically provision them on your account and bind them to your Worker upon deployment.&nbsp;</p>
-		</li>
-		<li>
-			<p><b>Configures Workers Builds (CI/CD): </b>Every new push to your production branch on your newly created repository will <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">automatically build and deploy</a> courtesy of <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>.&nbsp;</p>
-		</li>
-		<li>
-			<p><b>Adds preview URLs to each pull request: </b>If you’d like to test your changes before deploying, you can push changes to a <a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>non-production branch</u></a> and <a href="https://developers.cloudflare.com/workers/configuration/previews" target="_blank" rel="noopener noreferrer"><u>preview URLs</u></a> will be generated and <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>posted back to GitHub as a comment</u></a>.&nbsp;&nbsp;&nbsp;</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mViUpslwRWYrQqkr1I0dU/a890e9ae5d4d36278c4b6ff3a002c3b5/Introducing_Deploy_to_Cloudflare_Buttons_2.png" alt="" class="kg-image" width="3600" height="1140" loading="lazy">
-	</figure>
-	<p>There is nothing more frustrating than struggling to kick the tires on a new project because you don’t know where to start. Over the past couple of months, we’ve launched some improvements to getting started on Workers, including a gallery of <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Ftemplates" target="_blank" rel="noopener noreferrer"><u>Git-connected templates</u></a> that help you kickstart your development journey.&nbsp;</p>
-	<p>But we think there’s another part of the story. Everyday, we see new Workers applications being built and open-sourced by developers in the community, ranging from starter projects to mission critical applications. These projects are designed to be shared, deployed, customized, and contributed to. But first and foremost, they must be simple to deploy.</p>
-	<div class="flex anchor relative">
-		<h2 id="ditch-the-setup-instructions">Ditch the setup instructions</h2>
-		<a href="https://blog.cloudflare.com/#ditch-the-setup-instructions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you’ve open-sourced a new Workers application before, you may have listed in your README the following in order to get others going with your repository:</p>
-	<ol>
-		<li>
-			<p>“Clone this repo”&nbsp;</p>
-		</li>
-		<li>
-			<p>“Install these packages”</p>
-		</li>
-		<li>
-			<p>“Install Wrangler”&nbsp;</p>
-		</li>
-		<li>
-			<p>“Create this database”</p>
-		</li>
-		<li>
-			<p>“Paste the database ID back into your config file”&nbsp;</p>
-		</li>
-		<li>
-			<p>“Run this command to deploy”&nbsp;</p>
-		</li>
-		<li>
-			<p>“Push to a new Git repo”&nbsp;</p>
-		</li>
-		<li>
-			<p>“Set up CI”&nbsp;</p>
-		</li>
-	</ol>
-	<p>And the list goes on the more complicated your application gets, deterring other developers and making your project feel intimidating to deploy. Now, your project can be up and running in one shot — which means more traction, more feedback, and more contributions.</p>
-	<div class="flex anchor relative">
-		<h2 id="self-hosting-made-easy">Self-hosting made easy&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#self-hosting-made-easy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re not just talking about building and sharing small starter apps but also complex pieces of software. If you’ve ever <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">self-hosted your own instance of an application</a> on a traditional cloud provider before, you’re likely familiar with the pain of tedious setup, operational overhead, or hidden costs of your infrastructure.&nbsp;</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Self-hosting with traditional cloud provider</b></p>
-				</td>
-				<td>
-					<p><b>Self-hosting with Cloudflare&nbsp;</b></p>
-				</td>
+</div>
+<p>The Deploy to Cloudflare button:&nbsp;</p>
+<ol>
+	<li><strong>Creates a new Git repository on your GitHub/ GitLab account: </strong>Cloudflare will automatically clone and create a new repository on your account, so you can continue developing.&nbsp;</li>
+	<li><strong>Automatically provisions resources the app needs:</strong> If your repository requires Cloudflare primitives like a <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV namespace</u></a>, a <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer"><u>D1 database</u></a>, or an <a href="https://developers.cloudflare.com/r2/buckets" target="_blank" rel="noopener noreferrer"><u>R2 bucket</u></a>, Cloudflare will automatically provision them on your account and bind them to your Worker upon deployment.&nbsp;</li>
+	<li><strong>Configures Workers Builds (CI/CD): </strong>Every new push to your production branch on your newly created repository will <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">automatically build and deploy</a> courtesy of <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a>.&nbsp;</li>
+	<li><strong>Adds preview URLs to each pull request: </strong>If you’d like to test your changes before deploying, you can push changes to a <a href="https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds" target="_blank" rel="noopener noreferrer"><u>non-production branch</u></a> and <a href="https://developers.cloudflare.com/workers/configuration/previews" target="_blank" rel="noopener noreferrer"><u>preview URLs</u></a> will be generated and <a href="https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#pull-request-comment" target="_blank" rel="noopener noreferrer"><u>posted back to GitHub as a comment</u></a>.&nbsp;&nbsp;&nbsp;</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="226" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=715&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=640&amp;h=202&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=715&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=750&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=828&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=1080&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=1280&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=1430&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2711 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SSW4194KTDY51PGSHBVT.png&amp;w=1920&amp;h=608&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="608" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="226" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>There is nothing more frustrating than struggling to kick the tires on a new project because you don’t know where to start. Over the past couple of months, we’ve launched some improvements to getting started on Workers, including a gallery of <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Ftemplates" target="_blank" rel="noopener noreferrer"><u>Git-connected templates</u></a> that help you kickstart your development journey.&nbsp;</p>
+<p>But we think there’s another part of the story. Everyday, we see new Workers applications being built and open-sourced by developers in the community, ranging from starter projects to mission critical applications. These projects are designed to be shared, deployed, customized, and contributed to. But first and foremost, they must be simple to deploy.</p>
+<h2>Ditch the setup instructions</h2>
+<p>If you’ve open-sourced a new Workers application before, you may have listed in your README the following in order to get others going with your repository:</p>
+<ol>
+	<li>“Clone this repo”&nbsp;</li>
+	<li>“Install these packages”</li>
+	<li>“Install Wrangler”&nbsp;</li>
+	<li>“Create this database”</li>
+	<li>“Paste the database ID back into your config file”&nbsp;</li>
+	<li>“Run this command to deploy”&nbsp;</li>
+	<li>“Push to a new Git repo”&nbsp;</li>
+	<li>“Set up CI”&nbsp;</li>
+</ol>
+<p>And the list goes on the more complicated your application gets, deterring other developers and making your project feel intimidating to deploy. Now, your project can be up and running in one shot — which means more traction, more feedback, and more contributions.</p>
+<h2>Self-hosting made easy&nbsp;</h2>
+<p>We’re not just talking about building and sharing small starter apps but also complex pieces of software. If you’ve ever <a href="https://www.cloudflare.com/developer-platform/solutions/hosting" target="_blank" rel="noopener noreferrer">self-hosted your own instance of an application</a> on a traditional cloud provider before, you’re likely familiar with the pain of tedious setup, operational overhead, or hidden costs of your infrastructure.&nbsp;</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Self-hosting with traditional cloud provider</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Self-hosting with Cloudflare&nbsp;</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
-					<p>Setup a VPC</p>
-					<p>Install tools and dependencies&nbsp;&nbsp;</p>
-					<p>Set up and provision storage&nbsp;</p>
-					<p>Manually configure CI/CD pipeline to automate deployments&nbsp;</p>
-					<p>Scramble to manually secure your environment if a runtime vulnerability is discovered</p>
-					<p>Configure autoscaling policies and manage idle servers</p>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Setup a VPCInstall tools and dependencies&nbsp;&nbsp;Set up and provision storage&nbsp;Manually configure CI/CD pipeline to automate deployments&nbsp;Scramble to manually secure your environment if a runtime vulnerability is discoveredConfigure autoscaling policies and manage idle servers</p>
 				</td>
-				<td>
-					<p>✅Serverless</p>
-					<p>✅Highly-available global network</p>
-					<p>✅Automatic provisioning of datastores like D1 databases and R2 buckets</p>
-					<p>✅Built-in CI/CD workflow configured out of the box</p>
-					<p>✅Automatic runtime updates to keep your environment secure</p>
-					<p>✅Scale automatically and only pay for what you use.</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>✅Serverless✅Highly-available global network✅Automatic provisioning of datastores like D1 databases and R2 buckets✅Built-in CI/CD workflow configured out of the box✅Automatic runtime updates to keep your environment secure✅Scale automatically and only pay for what you use.</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>By making your open-source repository accessible with a Deploy to Cloudflare button, you can allow other developers to deploy their own instance of your app without requiring deep infrastructure expertise.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="from-starter-projects-to-full-stack-applications">From starter projects to full-stack applications</h2>
-		<a href="https://blog.cloudflare.com/#from-starter-projects-to-full-stack-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re inviting all Workers developers looking to open-source their project to add Deploy to Cloudflare buttons to their projects and help others get up and running faster. We’ve already started working with open-source app developers! Here are a few great examples to explore:&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="test-and-explore-your-apis-with-fiberplane">Test and explore your APIs with Fiberplane&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#test-and-explore-your-apis-with-fiberplane" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://fiberplane.com" target="_blank" rel="noopener noreferrer"><u>Fiberplane</u></a> helps developers build, test and explore <a href="https://hono.dev" target="_blank" rel="noopener noreferrer"><u>Hono</u></a> APIs and AI Agents in an embeddable playground. This Developer Week, Fiberplane released a set of sample Worker applications built on the ‘<a href="http://honc.dev" target="_blank" rel="noopener noreferrer"><u>HONC</u></a>' stack — Hono, <a href="https://orm.drizzle.team" target="_blank" rel="noopener noreferrer"><u>Drizzle</u></a> ORM, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1 Database</u></a>, and <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> — that you can use as the foundation for your own projects. With an easy one-click Deploy to Cloudflare, each application comes preconfigured with the <a href="https://github.com/fiberplane/fiberplane" target="_blank" rel="noopener noreferrer"><u>open source</u></a> Fiberplane API Playground, making it easy to generate OpenAPI docs, test your handlers, and explore your API, all within one embedded interface.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Ffiberplane%2Fcreate-honc-app%2Ftree%2Fmain%2Fexamples%2Fuptime-monitor"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="deploy-your-first-remote-mcp-server">Deploy your first remote MCP server&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#deploy-your-first-remote-mcp-server" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can now <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp"><u>build and deploy remote Model Context Protocol (MCP) servers</u></a> on Cloudflare Workers! <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer">MCP servers</a> provide a standardized way for AI agents to interact with services directly, enabling them to complete actions on users' behalf. Cloudflare's remote MCP server implementation supports authentication, allowing users to login to their service from the agent to give it scoped permissions. This gives users the ability to interact with services without navigating dashboards or learning APIs — they simply tell their AI agent what they want to accomplish.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-server"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="start-building-your-first-agent">Start building your first agent&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#start-building-your-first-agent" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI agents are intelligent systems</a> capable of autonomously executing tasks by making real-time decisions about which tools to use and how to structure their workflows. Unlike traditional automation (which follows rigid, predefined steps), agents dynamically adapt their strategies based on context and evolving inputs. This template serves as a starting point for building AI-driven chat agents on Cloudflare's Agent platform. Powered by Cloudflare’s <a href="https://www.npmjs.com/package/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>, it provides a solid foundation for creating interactive AI chat experiences with a modern UI and tool integrations capabilities.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagents-starter"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
-	<p></p>
-	<div class="flex anchor relative">
-		<h2 id="try-it-now">Try it now</h2>
-		<a href="https://blog.cloudflare.com/#try-it-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can start using <a href="http://developers.cloudflare.com/workers/platform/deploy-buttons" target="_blank" rel="noopener noreferrer"><u>Deploy to Cloudflare buttons</u></a> today!</p>
-	<div class="flex anchor relative">
-		<h3 id="add-a-deploy-to-cloudflare-button-to-your-readme">Add a Deploy to Cloudflare button to your README</h3>
-		<a href="https://blog.cloudflare.com/#add-a-deploy-to-cloudflare-button-to-your-readme" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Be sure to make your Git repository public and add the following snippet including your Git repository URL.</p>
-	<pre class="language-Rust"><code class="language-Rust">[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=&lt;YOUR_GIT_REPO_URL&gt;)</code></pre>
-	<p>When another developer clicks your Deploy to Cloudflare button, Cloudflare will parse the Wrangler configuration file, provision any resources detected, and create a new repo on their account that’s updated with information about newly created resources. For example:</p>
-	<pre class="language-Rust"><code class="language-Rust">{
-  "compatibility_date": "2024-04-03",
-
-  "d1_databases": [
-    {
-      "binding": "MY_D1_DATABASE",
-
-	//will be updated with newly created database ID
-      "database_id": "1234567890abcdef1234567890abcdef"
-    }
-  ]
-}</code></pre>
-	<p>Check out our <a href="http://developers.cloudflare.com/workers/platform/deploy-buttons" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> for more information on how to set up a deploy button for your application and best practices to ensure a successful deployment for other developers.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="start-building">Start building&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#start-building" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For new Cloudflare developers, keep an eye out for “Deploy to Cloudflare” buttons across the web, or simply paste the URL of any public GitHub or GitLab repository containing a Workers application into the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%2Fdeploy-to-workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare dashboard</u></a> to get started.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/64oCplgDSH0jgE9Nsqt4VL/57083c66d1c6240c03973a43642da9e9/Screenshot_2025-04-07_at_17.29.16.png" alt="" class="kg-image" width="1868" height="564" loading="lazy">
-	</figure>
-	<p>During Developer Week, <a href="https://blog.cloudflare.com"><u>tune in to our blog</u></a> as we unveil new features and announcements — many including Deploy to Cloudflare buttons — so you can jump right in and start building!</p>
 </div>
+<p>By making your open-source repository accessible with a Deploy to Cloudflare button, you can allow other developers to deploy their own instance of your app without requiring deep infrastructure expertise.&nbsp;</p>
+<h2>From starter projects to full-stack applications</h2>
+<p>We’re inviting all Workers developers looking to open-source their project to add Deploy to Cloudflare buttons to their projects and help others get up and running faster. We’ve already started working with open-source app developers! Here are a few great examples to explore:&nbsp;</p>
+<h3>Test and explore your APIs with Fiberplane&nbsp;</h3>
+<p><a href="https://fiberplane.com" target="_blank" rel="noopener noreferrer"><u>Fiberplane</u></a> helps developers build, test and explore <a href="https://hono.dev" target="_blank" rel="noopener noreferrer"><u>Hono</u></a> APIs and AI Agents in an embeddable playground. This Developer Week, Fiberplane released a set of sample Worker applications built on the ‘<a href="http://honc.dev" target="_blank" rel="noopener noreferrer"><u>HONC</u></a>' stack — Hono, <a href="https://orm.drizzle.team" target="_blank" rel="noopener noreferrer"><u>Drizzle</u></a> ORM, <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1 Database</u></a>, and <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> — that you can use as the foundation for your own projects. With an easy one-click Deploy to Cloudflare, each application comes preconfigured with the <a href="https://github.com/fiberplane/fiberplane" target="_blank" rel="noopener noreferrer"><u>open source</u></a> Fiberplane API Playground, making it easy to generate OpenAPI docs, test your handlers, and explore your API, all within one embedded interface.</p>
+<div id="html-block-k37" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Ffiberplane%2Fcreate-honc-app%2Ftree%2Fmain%2Fexamples%2Fuptime-monitor"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+</div>
+<h3>Deploy your first remote MCP server&nbsp;</h3>
+<p>You can now <a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp" target="_blank" rel="noopener noreferrer"><u>build and deploy remote Model Context Protocol (MCP) servers</u></a> on Cloudflare Workers! <a href="https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp" target="_blank" rel="noopener noreferrer">MCP servers</a> provide a standardized way for AI agents to interact with services directly, enabling them to complete actions on users' behalf. Cloudflare's remote MCP server implementation supports authentication, allowing users to login to their service from the agent to give it scoped permissions. This gives users the ability to interact with services without navigating dashboards or learning APIs — they simply tell their AI agent what they want to accomplish.</p>
+<div id="html-block-k3i" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-server"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+</div>
+<h3>Start building your first agent&nbsp;</h3>
+<p><a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer">AI agents are intelligent systems</a> capable of autonomously executing tasks by making real-time decisions about which tools to use and how to structure their workflows. Unlike traditional automation (which follows rigid, predefined steps), agents dynamically adapt their strategies based on context and evolving inputs. This template serves as a starting point for building AI-driven chat agents on Cloudflare's Agent platform. Powered by Cloudflare’s <a href="https://www.npmjs.com/package/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>, it provides a solid foundation for creating interactive AI chat experiences with a modern UI and tool integrations capabilities.</p>
+<div id="html-block-k3t" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fagents-starter"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+</div>
+<h2>Try it now</h2>
+<p>You can start using <a href="http://developers.cloudflare.com/workers/platform/deploy-buttons" target="_blank" rel="noopener noreferrer"><u>Deploy to Cloudflare buttons</u></a> today!</p>
+<h3>Add a Deploy to Cloudflare button to your README</h3>
+<p>Be sure to make your Git repository public and add the following snippet including your Git repository URL.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">[</span><span class="sk-6f42c1-ffc799">Deploy</span><span class="sk-24292e-fff"> to </span><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-24292e-fff">](https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=&lt;YOUR_GIT_REPO_URL&gt;)</span></span></code></pre>
+</div>
+<p>When another developer clicks your Deploy to Cloudflare button, Cloudflare will parse the Wrangler configuration file, provision any resources detected, and create a new repo on their account that’s updated with information about newly created resources. For example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "compatibility_date"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "2024-04-03"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "d1_databases"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "binding"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "MY_D1_DATABASE"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	//will be updated with newly created database ID</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "database_id"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "1234567890abcdef1234567890abcdef"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Check out our <a href="http://developers.cloudflare.com/workers/platform/deploy-buttons" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> for more information on how to set up a deploy button for your application and best practices to ensure a successful deployment for other developers.&nbsp;</p>
+<h3>Start building&nbsp;</h3>
+<p>For new Cloudflare developers, keep an eye out for “Deploy to Cloudflare” buttons across the web, or simply paste the URL of any public GitHub or GitLab repository containing a Workers application into the <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages%2Fcreate%2Fdeploy-to-workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare dashboard</u></a> to get started.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="216" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=715&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=640&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=715&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=750&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=828&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=1080&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=1280&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=1430&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2711 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WTQ181F10MMG1N9EG6PS.png&amp;w=1868&amp;h=564&amp;f=webp" data-lightbox-width="1868" data-lightbox-height="564" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="216" class="pt-portable-image-media"></div>
+</figure>
+<p>During Developer Week, <a href="https://blog.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>tune in to our blog</u></a> as we unveil new features and announcements — many including Deploy to Cloudflare buttons — so you can jump right in and start building!</p>

@@ -1,0 +1,142 @@
+<p>今天，我们推出流式摄取产品 Pipelines 的 公测版 。Pipelines 让您能够获取大量结构化、实时数据，并将其加载到我们的<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>对象存储服务 R2</u></a>中。您无需管理任何底层基础设施，不必担心扩展分片或元数据服务，而且只需要为处理的数据量付费（而不是按小时）。任何Workers付费计划的任何人都可以开始使用它来摄取和批处理数据（每秒数万个请求)并直接传输到 R2 中。</p>
+<p>但这只是冰山一角：您通常需要转换正在获取的数据，从其他来源实时整合后，并将其写入开放的表格格式（如 Apacheiceberg），以便一旦数据进入对象存储，你就可以高效地查询这些数据</p>
+<p>好消息是，我们也已经考虑到了这一点，并且我们很高兴地宣布，我们收购了 <a href="https://www.arroyo.dev" target="_blank" rel="noopener noreferrer"><u>Arroyo</u></a> —— 一个云原生的分布式流处理引擎——来实现这个目标。</p>
+<p>通过 Arroyo <em>和</em>我们刚刚推出的 <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer">R2 Data Catalog</a>，我们越来越认真地致力于建立一个数据平台，让您能够在全球范围内获取数据，大规模存储数据，并<em>对其进行计算</em>。</p>
+<p>首先，您可以深入研究<a href="http://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>管道开发人员文档</u></a>，或直接运行以下<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a>命令来创建您的第一个管道：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest pipelines create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">r2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
+<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created </span><span class="sk-6f42c1-ffc799">Pipeline</span><span class="sk-24292e-fff"> my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> 0e00c5ff09b34d018152af98d06f5a1xv</span></span></code></pre>
+</div>
+<p>…… 然后撰写您的第一条记录：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{"payload": [],"id":"abc-def"}]'</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflarestorage.com/"</span></span></code></pre>
+</div>
+<p>然而，真正的力量来自于在摄取数据和将数据写入 R2 等接收器之间对数据流的处理。能够编写 SQL 在<em>获取数据时</em>作用于数据窗口，可以转换和聚合数据，甚至从数据中实时提取见解，这将是非常强大的。</p>
+<p>这就是 Arroyo 的用武之地，我们将把 Arroyo 最好的部分引入管道，并与Workers、 R2 和我们开发人员平台的其他部分深度集成。</p>
+<h2>Arroyo 的起源故事</h2>
+<p><em>（作者：Arroyo 创始人 Micah Wylde）</em></p>
+<p>我们于 2023 年创立了 Arroyo，旨在为每个与数据打交道的人带来实时（<em>流</em>）处理。现代公司依赖数据管道来驱动他们的应用和业务——从用户定制、推荐、反欺诈，到新兴的 AI 代理世界。</p>
+<p>但如今，这些管道大多是以批量方式运行，每小时、每天甚至每月运行一次。对于 Lyft 和 Splunk 这样的公司从事流处理工作多年后，其原因显而易见：对于开发人员和数据科学家来说，构建正确、高性能和可靠的管道太难了。大型科技公司会雇佣流媒体专家来构建和运营这些系统，但其他人都在等待批次到达。</p>
+<p>我们在创业时，流式管道的主要解决方案是 Apache Flink，这也是我们在 Lyft 和 Splunk 中使用的解决方案。Flink 是第一个成功地将 容错（能够从故障中恢复）、分布式（跨多台机器）有状态（并记住过去事件的数据）数据流与 图构建API结合起来的系统。这些功能的组合意味着我们最终可以构建强大的实时数据应用程序，具有窗口、聚合和连接等功能。尽管 Flink 具有必要的能力，但在实践中，该API对于非专家用户来说过于困难和低级，而且生成的服务的有状态需要无休止的操作。</p>
+<p>我们意识到需要打造一个新的流引擎——一个具有 Flink 的强大能力，但为产品工程师和数据科学家而设计，并在现代云基础设施上运行。我们一开始使用 SQL 作为我们的API ，因为它易于使用、众所周知，并且是声明性的。我们用 Rust 构建它，目的是为了提高速度和操作简单性（无需调整 JVM！）。我们构建了一个对象存储的原生状态后端，简化了运行有状态管道的挑战——每个有状态管道都像一个怪异的专用数据库。在 2023 年夏天，我们将其开源。如今，数十家公司正在运行 Arroyo 管道，用例包括数据摄取、反欺诈、IoT可观察性和金融交易。</p>
+<p>但我们始终都知道，该引擎只是拼图中的一块。为了使流式传输像批处理一样简单，用户需要能够开发和测试查询逻辑，回填历史数据，以及无服务器部署而不必担心集群大小或持续运营。大众化流媒体最终意味着建立一个完整的数据平台。当我们开始与Cloudflare交谈时，我们意识到他们已经具备了所有要求：R2 为静态状态和数据提供对象存储， Cloudflare<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u> Queues用于传输中的数据，以及Workers来安全、高效地运行用户代码。</u></a>Cloudflare的独特之处在于，允许我们将这些系统一直推到边缘，实现一种本地流处理的新范式，这将是数据主权和 AI 未来的关键。</p>
+<p>因此，我们非常高兴能与Cloudflare团队一起将这一愿景变成现实。</p>
+<h2>大规模摄取</h2>
+<p>虽然正在为 Pipelines 提供转换和流式 SQL API ，但它已经解决了数据旅程的两个关键部分：全球分布式的高吞吐量摄取和高效加载到对象存储中。</p>
+<p>创建管道就像运行命令一样简单：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest pipelines create my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">r2</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">🌀 </span><span class="sk-6f42c1-ffc799">Creating</span><span class="sk-24292e-fff"> pipeline named </span><span class="sk-032f62-99ffe4">"my-clickstream-pipeline"</span></span>
+<span class="line"><span class="sk-24292e-fff">✅ </span><span class="sk-6f42c1-ffc799">Successfully</span><span class="sk-24292e-fff"> created pipeline my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline with </span><span class="sk-005cc5-fff">ID</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">0e00c5ff09b34d018152af98d06f5a1xvc</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">    0e00c5ff09b34d018152af98d06f5a1xvc</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">  my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">clickstream</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">pipeline</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Sources</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-005cc5-fff">  HTTP</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Endpoint</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">        https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Authentication</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">  off</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Format</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">          JSON</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Worker</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Format</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">  JSON</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Destination</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799">         R2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Bucket</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">       my</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">bucket</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Format</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">       newline</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">delimited </span><span class="sk-005cc5-fff">JSON</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Compression</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff">  GZIP</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Batch</span><span class="sk-24292e-fff"> hints</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Max</span><span class="sk-24292e-fff"> bytes</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">     100</span><span class="sk-005cc5-fff"> MB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Max</span><span class="sk-24292e-fff"> duration</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">  300</span><span class="sk-24292e-fff"> seconds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Max</span><span class="sk-24292e-fff"> records</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">   100</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">000</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">🎉 </span><span class="sk-6f42c1-ffc799">You</span><span class="sk-24292e-fff"> can now send data to your </span><span class="sk-6f42c1-ffc799">pipeline!</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Send</span><span class="sk-24292e-fff"> data to your pipeline'</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-005cc5-fff"> HTTP</span><span class="sk-24292e-fff"> endpoint</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-032f62-99ffe4">"https://0e00c5ff09b34d018152af98d06f5a1xvc.pipelines.cloudflare.com/"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'[{ ...JSON_DATA... }]'</span></span></code></pre>
+</div>
+<p>默认情况下，管道可以从两个源获取数据（ Workers和一个 HTTP端点），并将成批事件加载到一个 R2存储桶中。对于将原始事件数据流式传输到对象存储，这是一个开箱即用的解决方案。如果默认值不起作用，您可以在创建管道时或创建后的任何时间进行配置。选项包括：向 HTTP端点添加 验证 ，配置 CORS 以允许浏览器发出跨源请求，以及指定输出文件压缩和 批量 设置。</p>
+<p>我们从第一天就开始构建可用于高摄取量的管道。每个管道可以扩展到约 100,000 条记录/秒（这只是我们的开端）。将记录写入管道后，就会在 R2存储桶中作为文件进行持久存储、批量并写出。批处理在这里至关重要：如果您要对这些数据采取行动，就应该让查询引擎查询数百万（或数千万）个小文件。速度慢（每个文件和请求的开销）、效率低（需要读取更多文件）和成本高昂（更多操作）。相反，您希望在查询引擎的批量大小和延迟（批处理不会等待太长时间）之间找到适当的平衡： Pipelines 允许您进行配置。</p>
+<p>为进一步优化查询，使用标准 Hive 分区方案，按日期和时间对输出文件进行分区。这可以进一步优化查询，因为您的查询引擎可以跳过与您正在运行的查询无关的数据。R2存储桶中的输出可能如下所示：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="232" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=715&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=640&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=715&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=750&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=828&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1080&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1280&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1430&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2785 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4906NZ5RY4J1NBZJ1PKVJS.png&amp;w=1920&amp;h=624&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="624" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="232" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>在 R2存储桶中对来自管道的 Hive 分区文件</em></sup></p>
+<p>输出文件存储为换行符分隔的 JSON (NDJSON)——可以很容易地从这些文件中实现流（提示：将来您也可以使用 R2 作为管道源）。最后，文件名是<a href="https://github.com/ulid/spec" target="_blank" rel="noopener noreferrer"><u>ULID</u></a>，所以默认是按时间排序的。</p>
+<h2>首先进行分片，然后进一步分片</h2>
+<p>Pipeline 的构建方式使其水平可扩展<em>并</em>能够快速确认写入：我们使用 Durable Objects 和每个 Durable Object 中的<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>嵌入式零延迟 SQLite</u></a> 存储，在数据写入时立即持久化，然后再进行处理和写入连接到 R2。</p>
+<p>例如：假设您是一个电子商务或SaaS网站，需要获取网站使用数据（称为 <em>点击流数据</em>），并将其提供给您的数据科学团队进行查询。处理此类工作负载的基础设施必须能够可靠地应对多种故障情景。面对流量激增，摄取服务需要保持高可用性。数据在被摄取后，需要进行缓冲，以最小化下游调用，从而降低成本。最后，缓冲的数据需要传递到接收器，并在接收器不可用时进行适当的重试和故障处理。当过载时，此过程的每一步都需要向上游发出反压信号。还需要扩展规模：在重大销售或活动期间扩大规模，在一天中知名度较低的时期缩小规模。</p>
+<p>阅读本文的数据工程师可能会熟悉使用 Kafka 及相关生态系统来处理该问题的现状。但是，如果您是一名应用工程师：您可以使用 Pipelines 构建一个摄取服务<em>，而无需</em>了解有关 Kafka、Zookeeper 和 Kafka Streams 的知识。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2785 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49EVQHDYKTT00PEDPCYY90.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>管道水平分片</em></sup></p>
+<p>上图显示了 Pipelines 如何拆分控制平面和数据路径，前者负责记账、跟踪分片和生命周期事件，后者是一组可扩展的Durable Objects分片。</p>
+<p>将一条记录（或一批记录）写入 Pipelines 时：</p>
+<ol>
+	<li>Pipelines Worker 通过提取处理程序或 Worker 绑定接收记录。</li>
+	<li>根据<code>pipeline_id</code> 联系协调者以获取执行计划：后续读取被缓存以减少协调者的压力。</li>
+	<li>执行计划，首先分片为一组执行器，同时主要用于扩展读取请求处理</li>
+	<li>然后，它们重新分片到另一组实际处理写入的执行器，首先是持久存储到 Durable Object 存储，再通过<a href="https://blog.cloudflare.com/sqlite-in-durable-objects/#under-the-hood-storage-relay-service" target="_blank" rel="noopener noreferrer"><u>存储中继服务</u></a>（SRS）复制这些执行器，以提高持久性和可用性。</li>
+	<li>在 SRS 之后，我们会将数据传递给任何已配置的 Transform Workers来自定义数据。</li>
+	<li>数据被批处理，写入输出文件并压缩（如果适用）。</li>
+	<li>文件被压缩，数据被打包到最终批次，并写入配置的 R2存储桶。</li>
+</ol>
+<p>管道的每一步都可能发出上游反压信号。通过利用<a href="https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream" target="_blank" rel="noopener noreferrer"><u>ReadableStreams</u></a> 并在等待写入的总字节数超过某个阈值时以<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/429" target="_blank" rel="noopener noreferrer"><u>429</u></a>错误响应来执行此操作。每个 ReadableStream 都能够通过使用Durable Objects之间的<a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u> JSRPC 调用来跨越 Durable Object 边界。</u></a>为了提高性能，我们使用 RPC 存根在Durable Objects之间进行连接重用。还可以重试每个步骤操作，以处理Durable Objects或 R2 中的任何临时不可用情况。</p>
+<p>即使在更新现有的管道时，我们也能保证交付。更新现有管道时，我们会创建一个新的 Deployment，包括上述所有分片和Durable Objects 。请求正常重新路由到新的管道。旧管道继续将数据写入 R2，直到所有 Durable Object 存储耗尽。只有在所有数据都被写出后，我们才会停止运行旧管道。这样，即使在更新管道时，您也不会丢失数据。</p>
+<p>您会注意到这里有一个有趣的部分—— Transform Workers我们还没有公开。随着我们努力将 Arroyo 的流式传输引擎与管道集成在一起，这将成为我们将数据移交给 Arroyo 进行处理的关键部分。</p>
+<h2>那么，它的成本是多少？</h2>
+<p>在公测的第一阶段，除了标准的 R2 存储以及加载和访问数据产生的操作费用外，不会有任何额外费用。一如既往，直接从 R2 存储桶的出口是免费的，因此您可以从云或地区处理和查询数据，而不必担心增加数据传输成本。</p>
+<p>未来，我们计划推出根据引入 Pipelines 和从 Pipelines 交付的数据量定价的做法。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers付费 (5 美元/月)</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>摄取</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包含每月前 50 GB增加每 GB 0.02 美元</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>交付到 R2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>包含每月前 50 GB增加每 GB 0.02 美元</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>随着测试的进行，我们还计划在Workers Free计划中提供 Pipelines。</p>
+<p>我们将分享更多信息，为 Pipelines 带来转换和更多接收器。我们会至少提前 30 天通知，再进行任何更改或开始收费（预计在 2025 年 9 月 15 日前）。</p>
+<h2>接下来？</h2>
+<p>这里需要构建很多东西，我们渴望在 Arroyo 已经构建的许多强大组件的基础上再构建：将Workers集成为 UDF（用户定义函数），添加新的来源（如 Kafka 客户端），以及使用新的接收器扩展管道（超越 R2）。</p>
+<p>我们还将管道与我们刚刚推出的 <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer">R2 数据目录</a> 集成：使您能够将数据流直接摄取到 冰山表 中并立即进行查询，而不需要依赖于其他系统。</p>
+<p>同时，您可以：</p>
+<ul>
+	<li>开始并<a href="http://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>创建您的第一个 Pipeline</u></a></li>
+	<li><a href="http://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>阅读文档</u></a></li>
+	<li><a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>加入我们的 Developer Discord</u></a> 上的<code> #pipelines-beta</code> 频道</li>
+</ul>
+<p>或者直接部署示例项目：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> pipelines</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/pipelines-starter"</span></span></code></pre>
+</div>

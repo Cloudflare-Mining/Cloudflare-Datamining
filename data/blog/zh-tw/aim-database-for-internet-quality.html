@@ -1,0 +1,595 @@
+<p>您正在度假探望家人，連接到 WiFi，然後注意到 Netflix 的載入速度沒有平時那麼快。您可以造訪 speed.cloudflare.com、fast.com、speedtest.net，或在 Google Chrome 中輸入「speed test」來確定您的網際網路連線是否有問題，並得到如下所示的資訊：</p>
+<p>如果您想看看自己的網際網路速度，可以在<a href="https://speed.cloudflare.com" target="_blank" rel="noopener noreferrer">這裡</a>親自嘗試一下。但這些數字意味著什麼？這些數字與您的 Netflix 是否載入或任何其他常見用例（玩遊戲或與朋友和親人進行音訊/視訊聊天）有何關係？即使是網路工程師也發現速度測試很難與使用網際網路的使用者體驗聯繫起來。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="294" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=640&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=750&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=828&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1080&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1280&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1430&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1507 Embedded Image - HfPLti" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1600&amp;h=657&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="657" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="294" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>令人驚訝的是，儘管進二十年來我們使用網際網路的方式發生了很大變化，但速度測試幾乎沒有變化。隨著網際網路上的使用者越來越多，速度測試與使用者網路品質體驗之間的差距越來越大。這個問題非常重要，以至於網際網路標準組織也<a href="https://datatracker.ietf.org/doc/rfc9318" target="_blank" rel="noopener noreferrer">開始關注</a>。</p>
+<p>從高層次來看，有三大網路測試挑戰：</p>
+<ol>
+	<li>尋找有效、準確地測量網路品質的方法，並告知終端使用者該品質是否以及如何影響他們的體驗。</li>
+	<li>當發現問題時，找出問題所在，是無線連線，還是構成網際網路的諸多電纜和機器中的一個。</li>
+	<li>瞭解單一使用者在其鄰居的背景下的測試結果，或將結果封存以進行比較，例如與鄰居比較或瞭解網路是變得更好還是更差。</li>
+</ol>
+<p>Cloudflare 很高興地宣佈推出一項新的聚合網際網路測量 (AIM) 計畫，以協助解決上述三個挑戰。AIM 是一種新的開放格式，用於以對網際網路終端使用者有意義的方式，圍繞需要特定類型網際網路效能的用例，來顯示網際網路品質，同時仍保留工程師對網際網路上的問題進行疑難排解所需的網路資料。我們很高興與 <a href="https://www.measurementlab.net" target="_blank" rel="noopener noreferrer">Measurement Lab</a> 合作開展此專案，並將所有這些資料儲存在一個<a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank" rel="noopener noreferrer">公開可用的存放庫</a>中，您可以存取該存放庫來分析您在速度測試頁面上看到的分數背後的資料，現已<a href="https://github.com/cloudflare/speedtest" target="_blank" rel="noopener noreferrer">開放原始碼</a>並提供 AIM 分數計算。</p>
+<h2>什麼是速度測試？</h2>
+<p>速度測試是對您的網際網路連線的時間點測量。當您連接到任何速度測試時，它通常會嘗試擷取大檔案（對於<a href="https://www.cloudflare.com/developer-platform/solutions/live-streaming" target="_blank" rel="noopener noreferrer">影片串流</a>很重要）、執行封包丟失測試（對於遊戲很重要）、測量抖動（對於視訊/VOIP 通話很重要）和延遲（對於所有網際網路用例都很重要）。此測試的目的是測量您的網際網路連線執行基本任務的能力。</p>
+<p>這種方法存在一些挑戰，首先是簡單的觀察：在移動資料和封包的網際網路「<a href="https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer" target="_blank" rel="noopener noreferrer">網路層</a>」，有且僅有三個可以直接觀察到的指標。它們是：</p>
+<ul>
+	<li>可用_頻寬_，有時稱為「輸送量」；</li>
+	<li>封包_遺失，<em>在穩定狀態下整個網際網路上發生封包遺失的概率極低</em>；_以及</li>
+	<li><em>延遲</em>，通常稱為<a href="https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt" target="_blank" rel="noopener noreferrer">往返時間 (RTT)</a>。</li>
+</ul>
+<p>這三個屬性緊密地交織在一起。特別是，使用者實際獲得的可用頻寬部分（輸送量）直接受到遺失和延遲的影響。您的電腦根據遺失和延遲來決定何時傳送封包。一些遺失和延遲是預料之中的，甚至是必要的！其中任何一種過多，頻寬就會開始下降。</p>
+<p>這些都是簡單的數字，但它們之間的關係卻並不簡單。想想將兩個數字相加_小於等於_一百的所有方法，x + y ≤ 100。如果 x 和 y 正好合適，那麼它們相加就是一百。然而，滿足條件的 x 和 y 組合有很多。更糟的是，如果 x 或 y 或兩者都有一些錯誤，那麼它們相加就不到一百。在此範例中，x 和 y 是遺失和延遲，100 是可用頻寬。</p>
+<p>還有其他力量在起作用。這些數字並不能說明一切，但它們是唯一可以直接觀察到的數字。它們的意義以及對診斷有重要影響的原因非常重要，因此讓我們按順序逐一討論，以及聚合網際網路測量如何嘗試解決這些問題。</p>
+<h2>速度測試中的數字有何意義？</h2>
+<p>大多數速度測試執行後都產生您在上面看到的數字：頻寬、延遲、抖動和封包遺失。讓我們一一分解這些數字來解釋它們的含義：</p>
+<h3>頻寬</h3>
+<p>頻寬是通訊連結上的最大輸送量/容量。用於定義頻寬的常見類比是，如果您的網際網路連線是高速公路，則頻寬就是該高速公路上有多少車道以及可容納的汽車數量。頻寬在過去經常被稱為「速度」，因為網際網路服務提供者 (ISP) 以下載大檔案所需的時間來衡量速度，而連線上擁有更多頻寬可以使得這一下載進行得更快。</p>
+<h3>封包遺失</h3>
+<p>封包遺失顧名思義：有些封包從來源傳送到目的地，但目的地沒有收到這些封包。這對許多應用程式來說影響很大，因為如果資訊在傳輸到接收者的途中遺失，接收者可能很難理解正在傳送的內容。</p>
+<h3>延遲</h3>
+<p><a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">延遲</a>是指封包/訊息從 A 點傳輸到 B 點所需的時間。網際網路的核心是電腦，這些電腦透過纜線以電訊號或光束的形式向其他電腦傳送訊號。延遲通常被定義為電訊號透過線纜或光纖從一台電腦傳輸到另一台電腦所需的時間。因此，減少延遲的一種方法是縮短訊號到達目的地所需的距離。</p>
+<p>空閒延遲和負載延遲之間存在延遲差值。這是因為路由器和交換器上存在佇列，當封包到達速度快於傳輸速度時，它們會儲存封包。按照設計，排隊是正常的，並且可以保持資料正確流動。但是，如果佇列太大，或者其他應用程式的行為與您的應用程式非常不同，則連線感覺上可能會比實際速度慢。該事件稱為 <a href="https://www.bufferbloat.net/projects" target="_blank" rel="noopener noreferrer">bufferbloat</a>。</p>
+<p>在我們的 AIM 測試中，我們會查看空閒延遲，以向您展示您的延遲_可能_是多少，但我們也會收集負載延遲，這可以更好地反映您在日常網際網路體驗中的延遲情況。</p>
+<h3>抖動</h3>
+<p>抖動是一種測量延遲的特殊方法。這是您的網際網路連線上的延遲差值。如果抖動較高，某些封包可能需要較長時間才能到達，這可能會影響需要即時傳送內容的網際網路場景，例如語音通訊。</p>
+<p>抖動可以比喻成沿著某條路線或路徑上下班的情況。但就延遲而言，問題是：「按時間衡量，我距離目的地還有多遠？」例如，列車的平均行程為 40 分鐘。抖動問的不是行程時間，而是問「我的行程時間的一致性如何？」從通勤的角度來考慮，抖動為零意味著火車始終需要 40 分鐘。然而，如果抖動為 15，那麼通勤就會變得更具挑戰性，因為可能需要 25 到 55 分鐘。</p>
+<p>但即使我們理解了這些數字，儘管它們可能告訴我們正在發生_什麼_，但它們無法告訴我們是_哪裡_發生了事情。</p>
+<h2>是 WiFi 還是我的網際網路連線有問題？</h2>
+<p>當您執行速度測試時，您不僅連接到您的網際網路服務提供者，還連接到連接到同一 ISP 的本地網路。您的本地網路可能存在其自身的問題。執行速度測試並得出高封包遺失和抖動：這通常意味著網路上的某些地方可能會捨棄封包。通常，您會致電網際網路服務提供者，他們通常會說「靠近 WiFi 接入點或安裝延伸器」之類的話。</p>
+<p>這一點很重要——WiFi 使用無線電波來傳輸資訊，而磚塊、石膏和混凝土等材料會幹擾訊號，距離接入點越遠，訊號就越弱。Nest WiFi 和 Eero 等網狀 WiFi 設備會定期從其主要存取點進行速度測試，專門協助偵測此類問題。因此，針對高封包遺失和抖動等問題提供<a href="https://developers.cloudflare.com/fundamentals/speed/aim" target="_blank" rel="noopener noreferrer">潛在的快速解決方案</a>，並將其預先提供給使用者，可以幫助使用者更好地確定問題是否與其無線連線設定有關。</p>
+<p>雖然對於我們在網際網路上看到的大多數問題都是如此，但如果網路營運商在除了簡單地告訴使用者更靠近存取點之外，還能夠彙總這些資料，通常會有所幫助。如果在網路營運商以及您所在區域的其他人可以看到的地方執行速度測試，則網路工程師可能能夠在使用者報告問題之前主動偵測到問題。這不僅對使用者有幫助，對網路提供者也有幫助，因為針對使用者設定導致的問題接聽電話並派出技術人員不僅耗時，而且成本高昂。</p>
+<p>這是 AIM 的目標之一：在需要出動客戶服務之前幫助解決問題。終端使用者可以獲得一系列提示，幫助他們以易於閱讀的格式瞭解他們的網際網路連線可以做什麼、不能做什麼以及如何改進它，而網路營運商可以獲得他們需要的所有資料，在客戶服務接到電話之前偵測到最後一公里問題，從而節省時間和金錢。讓我們透過一個真實的範例來討論一下其運作方式。</p>
+<h2>現實生活中的範例</h2>
+<p>當您獲得速度測試結果時，您得到的數字可能會令人困惑。這是因為您可能不明白這些數字如何結合起來影響您的網際網路體驗。讓我們討論一個現實生活中的範例以及它對您有何影響。</p>
+<p>假設您在一棟有四間辦公室和一個主要區域的大樓裡工作，如下所示：</p>
+<p>您必須整天與她的用戶端進行視訊通話，並且您坐在距離無線存取點最遠的辦公室。您的通話不斷斷線，體驗非常糟糕。當您在她的辦公室進行速度測試時，她會看到以下結果：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="493" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=640&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=715&amp;h=493&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=750&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=828&amp;h=571&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=1080&amp;h=745&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=1280&amp;h=883&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=1430&amp;h=986&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1507 Embedded Image - Ga4XLG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZHRG95GTSFZGER0Z7HJ2.png&amp;w=1588&amp;h=1096&amp;f=webp" data-lightbox-width="1588" data-lightbox-height="1096" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="493" class="pt-portable-image-media"></div>
+</figure>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-k3c" class="html-block">
+	<style>
+		#html-block-k3c .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k3c .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3c .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3c .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Far away from access point</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Close to access point</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Download Bandwidth</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21.8 Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25.7 Mbps</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Upload Bandwidth</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.66 Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.26 Mbps</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Unloaded Latency</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19.6 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19.5 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Jitter</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">61.4 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37.9 ms</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Packet Loss</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.7%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0%</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>指標</p>
+<p>遠離存取點</p>
+<p>靠近存取點</p>
+<p>下載頻寬</p>
+<div id="html-block-k3l" class="html-block">
+	<style>
+		#html-block-k3l .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k3l .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3l .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3l .tg .tg-d6mv {
+			background-color: #666;
+			color: #FFF;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k3l .tg .tg-kyaz {
+			background-color: #D9D9D9;
+			color: #172B4D;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k3l .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">Metric</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">0 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">5 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">10 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">20 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">30 points</span></th>
+				<th class="tg-d6mv"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#FFF;background-color:transparent">50 points</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Loss Rate</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 5%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 5%</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1%</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Jitter</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 20 ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Unloaded latency</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 100ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Download Throughput</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 100Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1000Mbps</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Upload Throughput</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 100Mbps</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 1000Mbps</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-kyaz"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#172B4D;background-color:transparent">Difference between loaded and unloaded latency</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&gt; 50ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 50ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 20ms</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt; 10ms</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>21.8 Mbps</p>
+<p>25.7 Mbps</p>
+<p>上傳頻寬</p>
+<div id="html-block-k3s" class="html-block">
+	<style>
+		#html-block-k3s .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k3s .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3s .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3s .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Result</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25/70 pts (Average)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15/40 pts (Poor)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RTC Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15/50 pts (Average)</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>5.66 Mbps</p>
+<div id="html-block-k3v" class="html-block">
+	<style>
+		#html-block-k3v .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k3v .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3v .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3v .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Metric</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Result</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">45/70 pts (Good)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Gaming Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35/40 pts (Great)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">RTC Score</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35/50 pts (Great)</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>5.26 Mbps</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="294" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=640&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=715&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=750&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=828&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1080&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1280&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1430&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1507 Embedded Image - HfPLti" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480Z9ACK53WZE31QT6E46M.png&amp;w=1600&amp;h=657&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="657" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="294" class="pt-portable-image-media"></div>
+</figure>
+<p>空載延遲</p>
+<p>19.6 毫秒</p>
+<p>19.5 毫秒</p>
+<p>抖動</p>
+<p>61.4 毫秒</p>
+<p>37.9 毫秒</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="224" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=715&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=640&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=715&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=750&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=828&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=1080&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=1280&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=1430&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1507 Embedded Image - 8OGIBq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QV17CMB839FKVVZFZTJ5.png&amp;w=1920&amp;h=601&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="601" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="224" class="pt-portable-image-media"></div>
+</figure>
+<p>封包遺失</p>
+<p>7.7 %</p>
+<p>0 %</p>
+<p>如何理解這些數字？網路工程師會查看高抖動和封包遺失，並認為「該使用者可能需要更靠近路由器才能獲得更好的訊號」。但您看了這些結果後可能毫無頭緒，只好向網路工程師尋求幫助，您可能會因此而打電話給您的網際網路服務提供者，浪費大家的時間和金錢。但實際上，您本不需要諮詢網路工程師來確定您是否需要靠近 WiFi 存取點，或者您的網際網路服務提供者是否無法為她帶來良好的體驗。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1507 Embedded Image - SHowNZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46HMAJ4MAY1NBCAGTR3P1R.png&amp;w=1600&amp;h=1199&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1199" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<p>聚合網際網路測量對速度測試中的數字進行定性評估，以幫助您理解這些數字。我們建立了特定於場景的分數，這是在場景層級上計算的單一定性值：我們根據您嘗試執行的操作計算不同的品質分數。作為開始，我們建立了三個 AIM 分數：串流、遊戲和 WebChat/RTC。這些分數根據應用程式成功運行所需的網際網路條件對每個指標進行不同的權衡。</p>
+<div id="html-block-k4n" class="html-block">
+	<style>
+		#html-block-k4n .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k4n .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k4n .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k4n .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">City</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Average Streaming Score</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Average Gaming Score</span></th>
+				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Average RTC Score</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tokyo</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">31</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">New York</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">33</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Mumbai</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dublin</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>AIM 評分標準會根據測驗為您的連線指派分數。我們正在發佈帶有「加權分數」的 AIM，其中分數是根據這些場景中最重要的指標來計算的。這些分數並不是靜態的，而是根據應用程式開發人員、網路營運商和網際網路社群發現的不同效能特徵如何影響每種場景的應用程式體驗而不斷發展——這也是將資料發佈至 M-Lab 的另一個原因，這樣社群就能幫助設計和匯集良好的評分機制。</p>
+<p>以下是完整的評分標準以及與目前的指標相關的每個分數：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-d6mv{background-color:#666;color:#FFF;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-kyaz{background-color:#D9D9D9;color:#172B4D;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>指標</p>
+<p>0 分</p>
+<p>5 分</p>
+<p>10 分</p>
+<p>20 分</p>
+<p>30 分</p>
+<p>50 分</p>
+<p>遺失率</p>
+<p>&gt; 5 %</p>
+<p>&lt; 5 %</p>
+<p>&lt; 1 %</p>
+<p>抖動</p>
+<p>&gt; 20 毫秒</p>
+<p>&lt; 20 毫秒</p>
+<p>&lt; 10 毫秒</p>
+<p>空載延遲</p>
+<p>&gt; 100 毫秒</p>
+<p>&lt; 50 毫秒</p>
+<p>&lt; 20 毫秒</p>
+<p>&lt; 10 毫秒</p>
+<p>下載輸送量</p>
+<p>&lt; 1 Mbps</p>
+<p>&lt; 10 Mbps</p>
+<p>&lt; 50 Mbps</p>
+<p>&lt; 100 Mbps</p>
+<p>&lt; 1000 Mbps</p>
+<p>上傳輸送量</p>
+<p>&lt; 1 Mbps</p>
+<p>&lt; 10 Mbps</p>
+<p>&lt; 50 Mbps</p>
+<p>&lt; 100 Mbps</p>
+<p>&lt; 1000 Mbps</p>
+<p>負載和空載延遲之間的差值</p>
+<p>&gt; 50 毫秒</p>
+<p>&lt; 50 毫秒</p>
+<p>&lt; 20 毫秒</p>
+<p>&lt; 10 毫秒</p>
+<p>以下是分數重要性以及如何計算每個場景分數的快速概觀：</p>
+<ul>
+	<li>串流：下載頻寬 + 空載延遲 + 封包遺失+（負載延遲 - 空載延遲差值）</li>
+	<li>遊戲：封包遺失 + 空載延遲+（負載延遲 - 空載延遲差值）</li>
+	<li>RTC/視訊：封包遺失 + 抖動 + 空載延遲+（負載延遲 - 空載延遲差值）</li>
+</ul>
+<p>在計算每項分數時，我們會從速度測試中取得分值，並將其與該場景的可能總分進行對比。因此，根據結果，我們可以針對每個場景提供有關網際網路連線的判斷：糟糕、較差、一般、良好和優秀。例如，對於視訊通話，在確定您的網際網路品質是否適合視訊通話時，封包遺失、抖動、空載延遲以及負載和空載延遲之差都很重要。我們將根據您的速度測試值得出的分數相加，以獲得一個分數，該分數表明您的網際網路品質距離完美視訊通話體驗有多遠。根據您的速度測試，以下是遠離存取點的辦公室的 AIM 分數：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>指標</p>
+<p>結果</p>
+<p>串流分數</p>
+<p>25/70 分（一般）</p>
+<p>遊戲分數</p>
+<p>15/40 分（較差）</p>
+<p>RTC 分數</p>
+<p>15/50 分（一般）</p>
+<p>在這裡，我們不再說「您的頻寬是 X，您的抖動是 Y」，而是說「您的網際網路對於 Netflix 來說還可以，但對於遊戲來說很差，對於 Zoom 來說只是一般水平」。在這種情況下，將 WiFi 存取點移至更中央的位置是解決方案，並將您的 AIM 分數變為：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>指標</p>
+<p>結果</p>
+<p>串流分數</p>
+<p>45/70 分（良好）</p>
+<p>遊戲分數</p>
+<p>35/40 分（優秀）</p>
+<p>RTC 分數</p>
+<p>35/50 分（優秀）</p>
+<p>在如今的 Cloudflare 速度測試中，您甚至能夠以網路品質分數的形式查看這些結果：</p>
+<p>在這種特殊情況下，我們不需要致電網際網路服務提供者，也不用諮詢網路工程師。只需將存取點移至更靠近辦公室中部的位置即可改善每個人的體驗，客戶服務也不需要接起電話，從而為每個人提供更順暢的體驗。</p>
+<p>AIM 取得網路工程師關心的指標，並基於您嘗試使用的應用程式將其轉換為更易於理解的指標。聚合資料是匿名的（符合我們的<a href="https://www.cloudflare.com/privacypolicy" target="_blank" rel="noopener noreferrer">隱私權政策</a>），因此您的網際網路服務提供者實際上可以查找您的都會區域內以及使用您的網際網路服務提供者的速度測試，並獲取基礎資料來協助將使用者投訴轉化為網路工程師可以採取行動的內容。此外，原則制定者和研究人員可以檢查聚合資料，以更好地瞭解其社群中使用者的體驗，從而幫助遊說以獲得更好的網路品質。</p>
+<h2>工作條件</h2>
+<p>這裡有一個有趣的問題：當您執行速度測試時，您連線到哪裡以及連線另一端的網際網路是什麼樣的？速度測試經常面臨的挑戰之一是，執行測試的伺服器與執行或保護網站的伺服器並不相同。因此，您的速度測試通往另一端主機的網路路徑可能會大不相同，甚至可能被最佳化以服務盡可能多的速度測試。這意味著您的速度測試實際上並不是在測試流量到達您通常使用的應用程式時所經過的路徑。您執行的測試確實在測量網路路徑，但這不是您經常使用的網路路徑。</p>
+<p>速度測試應該在真實世界的網路條件下執行，這個條件要能反映人們使用網際網路的情況，其中多個應用程式、瀏覽器頁簽和裝置都在競爭連線性。使用面向應用程式的工具測量您的網際網路連線，並盡可能在您的網路正在使用時執行測試，這種概念稱為在工作條件下測量。如今，當執行速度測試時，他們會與一個為測試網路效能而保留的網站建立全新的連線。遺憾的是，日常的網際網路使用並不是在專用速度測試網站的新連線上完成的。這實際上是許多網際網路應用程式的設計初衷，這些應用程式依靠重複使用與網站的相同連線來消除因建立加密、交換憑證等而產生的昂貴的延遲，從而為終端使用者提供更好的效能體驗。</p>
+<p>AIM 透過多種方式幫助解決這個問題。首先，我們以與應用程式相同的方式實作了所有測試，並在工作條件下進行測量。我們測量負載延遲，以向您展示網際網路連線在實際使用時的情況。您可以在今天的速度測試中看到它：</p>
+<p>第二個是我們會收集您目前使用的端點的速度測試結果。透過對 Cloudflare 和其他網站進行速度測試，我們向終端使用者展示了日常生活中經常使用的網路的網際網路品質，從而更好地瞭解實際工作條件。</p>
+<h2>AIM 資料庫</h2>
+<p>我們很高興地宣佈，透過與 Measurement Lab (M-Lab) 合作，AIM 資料<a href="https://colab.research.google.com/drive/1xgc-7L1Okr04MSjsYJfiFeUN0Gu05bpQ?usp=sharing" target="_blank" rel="noopener noreferrer">今天已公開可用</a>，終端使用者和網路工程師都可以剖析各種網路的網路品質數據。M-Lab 和 Cloudflare 都將計算從速度測試中得出的 AIM 分數，並將其放入共用資料庫中，以便終端使用者和網路營運商等可以在多種不同的速度測試中從盡可能多的點瞭解網際網路品質。</p>
+<p>為了舉例說明我們看到的內容，讓我們來看看我們使用此資料繪製的分數的視覺效果，這些資料僅來自日本東京 10 月第一周的每個場景的 Cloudflare 資料：</p>
+<p>基於此，您可以看到，在執行的 5,814 次速度測試中，50.7% 的使用者具有良好的串流品質，但 48.2% 的使用者的串流品質僅為一般水平。在東京，遊戲似乎相對困難，39% 的使用者遊戲體驗較差，但大多數使用者的 RTC 體驗還算不錯。讓我們來看看它與我們看到的其他一些城市的比較：</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>市</p>
+<p>平均串流分數</p>
+<p>平均遊戲分數</p>
+<p>平均 RTC 分數</p>
+<p>東京</p>
+<p>31</p>
+<p>13</p>
+<p>16</p>
+<p>紐約</p>
+<p>33</p>
+<p>13</p>
+<p>17</p>
+<p>孟買</p>
+<p>25</p>
+<p>13</p>
+<p>16</p>
+<p>都柏林</p>
+<p>32</p>
+<p>14</p>
+<p>18</p>
+<p>根據我們的資料，我們可以看到大多數使用者的影片串流體驗還不錯，但孟買除外，這個城市的影片串流體驗稍微落後。由於高延遲是導致目前遊戲得分的主要原因，使用者通常擁有不穩定的遊戲體驗，但他們的 RTC 應用程式表現稍好一些，在所有區域中表現一般。</p>
+<h2>與 M-Lab 合作</h2>
+<p>M-Lab 是一個開放的網際網路測量存放庫，其使命是測量網際網路、儲存資料並使其普遍可存取和有用。除了為網路營運商提供免費和開放的 AIM 資料存取之外，M-Lab 還將為原則制定者、學術研究人員、記者、數位包容性倡導者以及為作出改善網際網路的重要決策而有意存取所需資料的任何人提供服務。</p>
+<p>M-Lab 因為向原則制定者和學者開放共用網際網路品質資料而知名，但除此之外，M-Lab 還提供了一種稱為網路診斷測試(NDT) 的「速度」測試，該測試與在 Google 中輸入「speed test」後進行的速度測試相同。透過與 M-Lab 合作，我們從更多使用者那裡獲得了聚合網際網路測量指標。我們還希望與其他速度測試合作，為盡可能多的使用者提供全球網際網路品質的全貌。如果您要測量網際網路的效能，我們希望您加入我們，幫助向使用者展示他們的網際網路在哪些方面表現出色。</p>
+<h2>速度測試，現已開放原始碼</h2>
+<p>除了與 M-Lab 合作之外，我們還對我們的速度測試用戶端開放原始碼。對速度測試開放原始碼是讓應用程式透過 Cloudflare 存取速度測量的重要一步，也是開始計算應用程式 AIM 分數的簡單方法。我們的速度測試現在可作為 JavaScript 應用程式嵌入，您無需導覽到瀏覽器即可執行網路品質測試。該應用程式不僅為您提供我們今天用於速度測試的所有測量結果，還以私密方式將結果上傳到 Cloudflare。該存放庫還顯示了我們如何計算 AIM 分數，以便您可以瞭解如何向終端使用者定義網路品質的內部運作方式以及網路品質如何即時變化。要開始使用我們開放原始碼的速度測試進行開發，請查看<a href="https://github.com/cloudflare/speedtest" target="_blank" rel="noopener noreferrer">開放原始碼連結</a>。</p>
+<h2>網際網路品質的美好未來</h2>
+<p>我們很高興能夠將這些資料放在一起，來表明各種測試和網路的網際網路品質。我們將分析這些資料並改進我們的評分系統，並且我們將開放原始碼，以便您可以看到我們如何使用速度測試測量值來對各種不同應用程式的網際網路品質進行評分，甚至您可以自己實作 AIM。我們還將 AIM 分數與您今天看到的所有測試一起納入了速度測試中，以便您最終可以更好地瞭解您的網際網路在哪些方面表現出色。</p>
+<p>如果您今天正在執行速度測試，並且有興趣與我們合作，幫助收集有關使用者體驗網際網路品質的資料，請與我們<a href="mailto:aim-owners@cloudflare.com">聯絡</a>，讓我們共同努力，幫助改善網際網路。如果您正在執行一個想要測量其網際網路品質的應用程式，請查看我們的<a href="https://github.com/cloudflare/speedtest" target="_blank" rel="noopener noreferrer">開放原始碼存放庫</a>，以便您今天就可以開始開發。</p>
+<p>弄清楚您的網際網路在哪些方面表現出色並不需要您成為網路專家，這正是我們存在的意義。透過 AIM 和我們在 MLab 的合作者，我們希望能夠告訴您，您的網際網路可以做什麼，並使用這些資訊來幫助所有人打造更好的網際網路。</p>

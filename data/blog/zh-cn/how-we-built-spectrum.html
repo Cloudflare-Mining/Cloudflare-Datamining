@@ -1,0 +1,178 @@
+<p>今天，我们将<a href="https://blog.cloudflare.com/spectrum">介绍Spectrum</a>：一个可为任意基于TCP的协议提供DDoS保护、负载均衡和内容加速的Cloudflare新特性。</p>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/liftarn/13334109713" target="_blank" rel="noopener noreferrer">图片</a>由<a href="https://www.flickr.com/photos/liftarn" target="_blank" rel="noopener noreferrer">Staffan Vilcans提供</a></p>
+<p>在开始构建Spectrum之后不久，我们就遇到了一个主要的技术障碍：Spectrum要求我们可以在任何有效的TCP端口（从1到65535）上接受连接。在我们的Linux边缘服务器上，我们不可能实现“在任何端口上接受入站连接”。这不是特定于Linux的限制：这是BSD sockets API的一个特性，它是大多数操作系统上网络应用程序的基础。为了能够交付Spectrum，我们需要解决两个重叠的问题：</p>
+<ul>
+	<li>如何在1到65535的所有端口号上接受TCP连接</li>
+	<li>如何配置单个Linux服务器以接受大量IP地址上的连接（在我们的任播范围内有数千个IP地址）</li>
+</ul>
+<h2>为服务器分配数百万个IP</h2>
+<p>Cloudflare的边缘服务器拥有几乎相同的配置。在早期，我们通常将特定的/32（和/128）IP地址分配给环回网络接口[1]。当我们有几十个IP地址时，这种方法效果甚好。但随着我们的发展，这种方法却无法扩展。</p>
+<p>随之而来的是<a href="https://blog.widodh.nl/2016/04/anyip-bind-a-whole-subnet-to-your-linux-machine" target="_blank" rel="noopener noreferrer">“AnyIP”技巧</a>。AnyIP允许我们将整个IP前缀（子网）分配给环回接口，扩展特定的IP地址。AnyIP的应用已经非常普遍了：您的计算机就已将127.0.0.0/8分配给了环回接口。从您的计算机的角度来看，从127.0.0.1到127.255.255.254的所有IP地址都属于本地计算机。</p>
+<p>此技巧不仅仅适用于127.0.0.1/8的块。要在本地分配整个192.0.2.0/24范围，只需要运行：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre>
+</div>
+<p>然后，您可以将以下IP地址之一绑定到端口8080：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">nc</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 8080</span></span></code></pre>
+</div>
+<p>使IPv6正常工作会更加困难：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 2001:db8::/64</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span></span></code></pre>
+</div>
+<p>遗憾的是，您不能像IPv4示例那样对v6的IP地址进行绑定。要实现这一工作，您必须使用IP_FREEBIND套接字选项，这需要更高级的权限。出于完整性，这里还给出了一个sysctl net.ipv6.ip_nonlocal_bind，但我们不建议您接触它：</p>
+<p>这个AnyIP技巧使我们能够在本地为每台服务器分配数百万个IP地址：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> addr</span><span class="sk-032f62-99ffe4"> show</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">1:</span><span class="sk-032f62-99ffe4"> lo:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">LOOPBACK,UP,LOWER_U</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> mtu</span><span class="sk-005cc5-ffc799"> 65536</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    inet</span><span class="sk-032f62-99ffe4"> 1.1.1.0/24</span><span class="sk-032f62-99ffe4"> scope</span><span class="sk-032f62-99ffe4"> global</span><span class="sk-032f62-99ffe4"> lo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       valid_lft</span><span class="sk-032f62-99ffe4"> forever</span><span class="sk-032f62-99ffe4"> preferred_lft</span><span class="sk-032f62-99ffe4"> forever</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    inet</span><span class="sk-032f62-99ffe4"> 104.16.0.0/16</span><span class="sk-032f62-99ffe4"> scope</span><span class="sk-032f62-99ffe4"> global</span><span class="sk-032f62-99ffe4"> lo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       valid_lft</span><span class="sk-032f62-99ffe4"> forever</span><span class="sk-032f62-99ffe4"> preferred_lft</span><span class="sk-032f62-99ffe4"> forever</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<h2>绑定到所有端口</h2>
+<p>第二个主要问题是为任意端口号开启TCP套接字。在Linux中，通常在任意支持BSD sockets API的系统中，您只能通过一个bind系统调用绑定特定的TCP端口号。在一个操作中不可能绑定到多个端口。</p>
+<p>一个简单的解决方案是绑定65535次，在每个可能的端口都绑定一次。事实上，这可能是一个解决方案，但这会带来可怕的后果：</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/revenge-listening-sockets">监听套接字的“复仇</a>”</li>
+</ul>
+<p>在内部，Linux内核将监听套接字存储在一个按端口号LHTABLE索引的哈希表中，使用了32个bucket（存储桶）：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/*</span><span class="sk-032f62-99ffe4"> Yes,</span><span class="sk-032f62-99ffe4"> really,</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> need.</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#define INET_LHTABLE_SIZE       32</span></span></code></pre>
+</div>
+<p>如果我们打开65k个端口，那么对该表的查找将大大减慢：每个哈希表存储桶将包含2000个项目。</p>
+<p>解决这个问题的另一种方法是使用iptables丰富的NAT特性：我们可以将入站数据包的目的地重写为某个特定的地址/端口，我们的应用程序将绑定到这个地址/端口。</p>
+<p>但我们不想这样做，因为这需要启用iptables conntrack模块。从历史上看，我们发现了一些<a href="http://patchwork.ozlabs.org/cover/810566" target="_blank" rel="noopener noreferrer">性能边缘情况</a>，conntrack无法应对我们遇到的一些大型DDoS攻击。</p>
+<p>另外，使用NAT方法，我们会丢失目标IP地址信息。为了解决这个问题，还有一个鲜为人知的SO_ORIGINAL_DST套接字选项，但是<a href="https://github.com/torvalds/linux/blob/b5dbc28762fd3fd40ba76303be0c7f707826f982/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c" target="_blank" rel="noopener noreferrer">代码看起来并不令人鼓舞</a>。</p>
+<p>幸运的是，有一种方法可以实现我们的目标，而不涉及绑定到所有65k个端口或使用conntrack。</p>
+<h2>防火墙援助</h2>
+<p>在进一步讨论之前，让我们先回顾一下操作系统中网络数据包入站的一般流程。</p>
+<p>通常，入站数据包路径中有两个不同的层：</p>
+<ul>
+	<li>IP防火墙</li>
+	<li>网络堆栈</li>
+</ul>
+<p>它们在概念上是不同的。IP防火墙通常是一个无状态软件（现在让我们忽略conntrack和IP分片重组）。防火墙分析IP数据包并决定是否接受或丢弃它们。请注意：在这一层，我们讨论的是_数据包_和_端口号_，而不是_应用程序_或_套接字_。</p>
+<p>然后是网络堆栈。这只“野兽”有着大量的态。它的主要任务是将入站IP数据包分派到套接字中，然后由用户空间应用程序进行处理。网络堆栈管理着（与用户空间共享的）抽象。它负责重组TCP流，处理路由，并了解哪些IP地址是本地的。</p>
+<h2>魔术粉尘</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="360" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=1080&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="upload-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V16KF1141QKP2QTJM6F1.jpg&amp;w=640&amp;h=360&amp;f=webp" data-lightbox-width="640" data-lightbox-height="360" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="360" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>资料来源：<a href="https://www.youtube.com/watch?v=9CS7j5I6aOc" target="_blank" rel="noopener noreferrer">YouTube</a></p>
+<p>在某个时候，我们偶然发现了TPROXY iptables模块。这一<a href="http://ipset.netfilter.org/iptables-extensions.man.html" target="_blank" rel="noopener noreferrer">官方文件</a>很容易被忽视:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">TPROXY</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">This</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> only</span><span class="sk-032f62-99ffe4"> valid</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-032f62-99ffe4"> table,</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">PREROUTING</span><span class="sk-032f62-99ffe4"> chain</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> user-defined</span><span class="sk-032f62-99ffe4"> chains</span><span class="sk-032f62-99ffe4"> which</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> only</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">called</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> chain.</span><span class="sk-032f62-99ffe4">  It</span><span class="sk-032f62-99ffe4"> redirects</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">socket</span><span class="sk-032f62-99ffe4"> without</span><span class="sk-032f62-99ffe4"> changing</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> packet</span><span class="sk-032f62-99ffe4"> header</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> any</span><span class="sk-032f62-99ffe4"> way.</span><span class="sk-032f62-99ffe4"> It</span><span class="sk-032f62-99ffe4"> can</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">also</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> mark</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> which</span><span class="sk-032f62-99ffe4"> can</span><span class="sk-032f62-99ffe4"> then</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> used</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">advanced</span><span class="sk-032f62-99ffe4"> routing</span><span class="sk-032f62-99ffe4"> rules.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<p>我们可以在内核中找到另一篇文档：</p>
+<ul>
+	<li><a href="https://www.kernel.org/doc/Documentation/networking/tproxy.txt" target="_blank" rel="noopener noreferrer">docs/networking/tproxy.txt</a></li>
+</ul>
+<p>我们思考的越多，我们就越好奇……</p>
+<p>那么……TPROXY_实际是做什么的_？</p>
+<h2>揭秘魔术</h2>
+<p>该TPROXY代码<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L119" target="_blank" rel="noopener noreferrer">出人意料的简单</a>：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">case NFT_LOOKUP_LISTENER:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  sk</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> inet_lookup_listener</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">net,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">tcp_hashinfo,</span><span class="sk-032f62-99ffe4"> skb,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				    ip_hdrlen(skb</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">+</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				      __tcp_hdrlen(tcph</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				    saddr,</span><span class="sk-032f62-99ffe4"> sport,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">				    daddr,</span><span class="sk-032f62-99ffe4"> dport,</span></span>
+<span class="line"><span class="sk-24292e-fff">				    in-</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">ifindex, 0);</span></span></code></pre>
+</div>
+<p>让我为您大声读出来：在iptables模块（这也是防火墙的一部分）中，我们调用inet_lookup_listener。该函数读取src/dst port/IP 4-tuple，并返回能够接受该连接的监听套接字。这是网络堆栈的套接字调度的核心功能。</p>
+<p>再总结一次：防火墙代码调用套接字分配例程。</p>
+<p>稍后在<a href="https://elixir.bootlin.com/linux/v4.16.1/source/net/netfilter/xt_TPROXY.c#L299" target="_blank" rel="noopener noreferrer">TPROXY上实际做的套接字调度</a>：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">skb-</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">sk</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> sk</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>这一行将一个套接字struct sock分配给一个入站包——完成调度。</p>
+<h2>从帽子里变出兔子</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="424" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=750&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=828&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=1080&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=1280&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="3649474619_3b800400e9_z-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475B6E6KWBFRMM268YX25R.jpg&amp;w=640&amp;h=424&amp;f=webp" data-lightbox-width="640" data-lightbox-height="424" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="424" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/angelaboothroyd/3649474619" target="_blank" rel="noopener noreferrer">图片</a>由<a href="https://www.flickr.com/photos/angelaboothroyd" target="_blank" rel="noopener noreferrer">Angela Boothroyd提供</a></p>
+<p>有了TPROXY，我们可以非常轻松地执行“绑定到所有端口”的技巧。配置如下：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Set 192.0.2.0/24 to be routed locally with AnyIP.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Make it explicit that the source IP used for this network</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># when connecting locally should be in 127.0.0.0/8 range.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># This is needed since otherwise the TPROXY rule would match</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># both forward and backward traffic. We want it to catch </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># forward traffic only.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> ip</span><span class="sk-032f62-99ffe4"> route</span><span class="sk-032f62-99ffe4"> add</span><span class="sk-032f62-99ffe4"> local</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-032f62-99ffe4"> dev</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> src</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Set the magical TPROXY routing</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">sudo</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-032f62-99ffe4"> mangle</span><span class="sk-005cc5-99ffe4"> -I</span><span class="sk-032f62-99ffe4"> PREROUTING</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">        -d</span><span class="sk-032f62-99ffe4"> 192.0.2.0/24</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">        -j</span><span class="sk-032f62-99ffe4"> TPROXY</span><span class="sk-005cc5-99ffe4"> --on-port=1234</span><span class="sk-005cc5-99ffe4"> --on-ip=127.0.0.1</span></span></code></pre>
+</div>
+<p>除了设置这个选项之外，您还需要使用神奇的IP_TRANSPARENT套接字选项启动TCP服务器。下面的示例需要监听tcp://127.0.0.1:1234。<a href="http://man7.org/linux/man-pages/man7/ip.7.html" target="_blank" rel="noopener noreferrer">IP_TRANSPARENT的手册页</a>显示:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">IP_TRANSPARENT</span><span class="sk-24292e-fff"> (since </span><span class="sk-032f62-99ffe4">Linux</span><span class="sk-005cc5-ffc799"> 2.6.24</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Setting</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> boolean</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> enables</span><span class="sk-032f62-99ffe4"> transparent</span><span class="sk-032f62-99ffe4"> proxying</span><span class="sk-032f62-99ffe4"> on</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">this</span><span class="sk-032f62-99ffe4"> socket.</span><span class="sk-032f62-99ffe4">  This</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> allows</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> calling</span><span class="sk-032f62-99ffe4"> applica‐</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tion</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> bind</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> nonlocal</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> operate</span><span class="sk-032f62-99ffe4"> both</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> a</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">client</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> server</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> foreign</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> local</span></span>
+<span class="line"><span class="sk-24292e-fff">end‐point.  NOTE: this requires that routing be set up in</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">a</span><span class="sk-032f62-99ffe4"> way</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> packets</span><span class="sk-032f62-99ffe4"> going</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> foreign</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> are</span><span class="sk-032f62-99ffe4"> routed</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">through</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> TProxy</span><span class="sk-032f62-99ffe4"> box</span><span class="sk-24292e-fff"> (i.e., </span><span class="sk-032f62-99ffe4">the</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> hosting</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">application</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> employs</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> IP_TRANSPARENT</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-24292e-fff">).</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Enabling</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> requires</span><span class="sk-032f62-99ffe4"> superuser</span><span class="sk-032f62-99ffe4"> privileges</span></span>
+<span class="line"><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">the</span><span class="sk-032f62-99ffe4"> CAP_NET_ADMIN</span><span class="sk-032f62-99ffe4"> capability</span><span class="sk-24292e-fff">)</span><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">TProxy</span><span class="sk-032f62-99ffe4"> redirection</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> iptables</span><span class="sk-032f62-99ffe4"> TPROXY</span><span class="sk-032f62-99ffe4"> target</span><span class="sk-032f62-99ffe4"> also</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">requires</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> option</span><span class="sk-032f62-99ffe4"> be</span><span class="sk-032f62-99ffe4"> set</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> redirected</span><span class="sk-032f62-99ffe4"> socket.</span></span></code></pre>
+</div>
+<p>这是一个简单的Python服务器：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">import</span><span class="sk-032f62-99ffe4"> socket</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IP_TRANSPARENT</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 19</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> socket.socket</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">socket.AF_INET,</span><span class="sk-032f62-99ffe4"> socket.SOCK_STREAM</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.setsockopt(socket.SOL_SOCKET,</span><span class="sk-032f62-99ffe4"> socket.SO_REUSEADDR,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.setsockopt(socket.IPPROTO_IP,</span><span class="sk-032f62-99ffe4"> IP_TRANSPARENT,</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.bind((</span><span class="sk-6f42c1-ffc799">'127.0.0.1'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 1234</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">s.listen(32</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"[+] Bound to tcp://127.0.0.1:1234"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-6f42c1-ffc799"> True:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    c,</span><span class="sk-24292e-fff"> (r_ip, </span><span class="sk-032f62-99ffe4">r_port</span><span class="sk-24292e-fff">) = </span><span class="sk-6f42c1-ffc799">s.accept</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    l_ip,</span><span class="sk-032f62-99ffe4"> l_port</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> c.getsockname</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    print</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"[ ] Connection from tcp://%s:%d to tcp://%s:%d"</span><span class="sk-032f62-99ffe4"> %</span><span class="sk-24292e-fff"> (r_ip, </span><span class="sk-032f62-99ffe4">r_port,</span><span class="sk-032f62-99ffe4"> l_ip,</span><span class="sk-032f62-99ffe4"> l_port</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    c.send(b</span><span class="sk-6f42c1-ffc799">"hello world\n"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    c.close</span><span class="sk-24292e-fff">()</span></span></code></pre>
+</div>
+<p>运行服务器后，您可以从任意IP地址连接到它：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 9999</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Connection</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 192.0.2.1</span><span class="sk-005cc5-ffc799"> 9999</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-24292e-fff"> [tcp/*] succeeded</span><span class="sk-d73a49-a0a0a0">!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hello</span><span class="sk-032f62-99ffe4"> world</span></span></code></pre>
+</div>
+<p>最重要的是，服务器将报告连接确实指向了192.0.2.1端口9999，<em>即便实际上没有人监听这个IP地址和端口</em>：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> python3</span><span class="sk-032f62-99ffe4"> transparent2.py</span></span>
+<span class="line"><span class="sk-24292e-fff">[+] Bound to tcp://127.0.0.1:1234</span></span>
+<span class="line"><span class="sk-24292e-fff">[ ] Connection from tcp://127.0.0.1:60036 to tcp://192.0.2.1:9999</span></span></code></pre>
+</div>
+<p>请看！这就是在不使用conntrack的情况下绑定Linux 上任意端口的方法。</p>
+<h2>就是这些</h2>
+<p>在这篇文章中，我们描述了如何使用一个鲜有人关注的iptables模块，这个模块最初是为了帮助透明代理而设计的。在它的帮助下，我们可以使用标准的BSD sockets API执行我们认为不可能完成的事情，从而避免了任何自定义内核补丁的需要。</p>
+<p>该TPROXY模块非同寻常——在Linux防火墙的环境中，它执行的事情通常是由Linux网络栈完成的。关于这一模块的官方文档非常之少，我不认为有很多Linux用户可以理解这个模块的全部功能。</p>
+<p>可以说，TPROXY使我们的Spectrum产品可以在普通内核上平稳运行。这再次提醒我们，理解iptables和网络堆栈有多重要！</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><em>你是否对底层套接字工作感兴趣呢？快来加入我们在伦敦，奥斯汀，旧金山，尚佩恩（Champaign）的<a href="https://boards.greenhouse.io/cloudflare/jobs/589572" target="_blank" rel="noopener noreferrer">世界闻名团队</a>以及在波兰华沙的精英办公室吧</em>。</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<ol>
+	<li>将IP地址分配给环回接口，加上适当的rp_filter和BGP配置，使我们能够在边缘服务器上处理任意的IP范围。 <a href="https://blog.cloudflare.com/how-we-built-spectrum/#fnref1">↩︎</a></li>
+</ol>

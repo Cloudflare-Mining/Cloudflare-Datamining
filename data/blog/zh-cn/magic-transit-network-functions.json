@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "Magic Transit：Cloudflare规模的网络功能",
+	"url": "https://blog.cloudflare.com/zh-cn/magic-transit-network-functions/",
+	"datePublished": "2019-08-13T13:00:00.000Z",
+	"dateModified": "2026-07-15T16:13:15.609Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW48JCNHNJQM3NB2058HV40E.png",
+	"description": "今天我们发布了Cloudflare Magic Transit，它使Cloudflare的网络可被互联网上的任意IP流量使用。到目前为止，Cloudflare主要运营代理服务：我们的服务器终止与Internet用户的HTTP、TCP和UDP会话，并通过与原始服务器创建的新会话传递这些数据。通过Magic Transit，我们现在还在IP层进行运营：除了终止会话之外，我们的服务器还在逐个数据包的基础上应用一套网络功能（DoS缓解、防火墙、路由等等）。"
+}

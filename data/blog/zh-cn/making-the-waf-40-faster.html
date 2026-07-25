@@ -1,0 +1,104 @@
+<p>Cloudflare 的 <a href="https://www.cloudflare.com/zh-cn/waf" target="_blank" rel="noopener noreferrer">应用程序防火墙 (WAF)</a> 可以防止针对 Web 应用程序漏洞的恶意攻击。它不断更新以提供针对最新威胁的全面覆盖，同时确保低误报率。</p>
+<p>与所有 Cloudflare 安全产品一样，WAF 的设计不会为了安全性而牺牲性能，但总是有改进的空间。</p>
+<p>这篇博客文章简要介绍了我们向客户推出的最新性能改进。访问我们的学习中心，了解更多关于 <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">Web 应用程序防火墙 (WAF) 如何工作</a>的信息。</p>
+<h3>从 PCRE 到 RE2 的过渡</h3>
+<p>回到 2019 年 7 月，WAF 从使用基于 <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions" target="_blank" rel="noopener noreferrer">PCRE</a> 的正则表达式引擎转变为受 <a href="https://github.com/rust-lang/regex" target="_blank" rel="noopener noreferrer">RE2 启发</a>的正则表达式引擎，RE2 是基于<a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton" target="_blank" rel="noopener noreferrer">确定性有限自动机 (DFA)</a> 而不是回溯算法。此更改是由于更新添加了正则表达式而导致的中断，该正则表达式对某些 HTTP 请求进行了大量回溯，导致执行时间呈指数级增长。</p>
+<p>迁移完成后，我们在边缘处没有看到 CPU 消耗的可测量差异，但注意到第 95 百分位和第 99 百分位的执行时间异常值下降了，这是我们预期的结果，因为 RE2 保证的执行时间与输入的大小是线性的。</p>
+<p>由于 <a href="https://blog.cloudflare.com/the-problem-with-event-loops">WAF 引擎使用一个线程池</a>，我们还必须实现和调优线程间共享的 regex 缓存，以避免过度的内存消耗（第一个实现使用了惊人的内存）。</p>
+<p>这些变化，以及在<a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/#what-s-happened-since-last-tuesday">事后分析博文中概述</a>的其他变化，帮助我们在边缘上提高了可靠性和安全性，并有信心进一步探索性能改进。</p>
+<p>但是，虽然我们强调了正则表达式，但它们只是 WAF 引擎的众多功能之一。</p>
+<h3>匹配阶段</h3>
+<p>当一个 HTTP 请求到达 WAF 时，它被组织成几个逻辑部分以进行分析：方法、路径、头和主体。这些部分都存储在 <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua 变量</a>中。如果您对 WAF 实现本身的更多细节感兴趣，可以<a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank" rel="noopener noreferrer">查看这个旧的演示</a>。</p>
+<p>在将这些变量与特定的恶意请求签名匹配之前，需要应用一些转换。这些转换的功能范围很广泛，从简单的修改（如小写字符串）到复杂的标记器和解析器，它们试图识别某些恶意有效负载。</p>
+<p>由于 WAF 目前使用的是 ModSecurity 语法的变体，规则可能是这样的：</p>
+<p>它接受存储在 REQUEST_BODY 变量中的请求体，对其应用 urlDecode() 和小写()函数，然后将结果与正则表达式签名\x00+evil进行比较。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SecRule</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-032f62-99ffe4"> "@rx /\x00+evil"</span><span class="sk-032f62-99ffe4"> "drop, t:urlDecode, t:lowercase"</span></span></code></pre>
+</div>
+<p>在伪代码中，我们可以表示为：</p>
+<p>这反过来会匹配一个请求，它的请求体包含了<a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener noreferrer">百分比编码</a>的空字节，后面跟着单词 “evil”，例如：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+</div>
+<p>WAF 包含数千条这样的规则，其目标是尽可能快地执行这些规则，以最小化请求所增加的延迟。更困难的是，它需要在几乎每个请求上运行大多数规则。这是因为几乎所有的 HTTP 请求都是无恶意的，并且没有匹配的规则。所以我们必须针对最坏的情况进行优化：执行所有内容!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">POST</span><span class="sk-032f62-99ffe4"> /cms/admin?action=post</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content-Type:</span><span class="sk-032f62-99ffe4"> text/plain</span><span class="sk-24292e-fff">; charset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">utf-8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content-Length:</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">thiSis%2F%00eVil</span></span></code></pre>
+</div>
+<p>为了帮助缓解这个问题，对许多规则执行的第一个匹配步骤之一是预过滤。通过检查请求是否包含某些字节或字符串集，我们可能会跳过相当多的表达式。</p>
+<p>在前面的例子中，快速检查 NULL 字节（在正则表达式中由\ x00 表示），如果没有找到，我们可以完全跳过该规则：</p>
+<p>由于大多数请求不匹配任何规则，而且这些检查执行起来很快，所以总体上我们不会通过添加它们来执行更多的操作。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">contains(</span><span class="sk-032f62-99ffe4"> "\x00",</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">and</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+</div>
+<p>还可以使用其他步骤来扫描和组合多个正则表达式，以避免执行规则表达式。和往常一样，做更少的工作通常是使系统更快的最简单的方法。</p>
+<h3>记忆有关</h3>
+<p>这就给我们带来了<a href="https://en.wikipedia.org/wiki/Memoization" target="_blank" rel="noopener noreferrer">记忆化</a>——缓存函数调用的输出，以便在以后的调用中重用。</p>
+<p>假设我们有以下表达式：</p>
+<p>在这种情况下,我们可以重用嵌套的函数调用的结果 (1) (4) 他们是相同的。通过保存中间结果我们也能够利用的结果 url_decode(body) 从 (1) 和 (2) 和 (4) 中使用它。有时也可以交换顺序函数应用于提高缓存,尽管在这种情况下,我们会得到不同的结果。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">1.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+EVIL"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> remove_spaces</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-24292e-fff"> ) ) )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">4.</span><span class="sk-032f62-99ffe4"> streq</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+</div>
+<p>该系统的简单实现可以是一个散列表，每个条目都以函数名和参数作为键，其输出作为值。</p>
+<p>其中一些函数是昂贵的，缓存结果可以显著节省成本。为了给人一种重要性的感觉，我们修改了一个规则，以确保记忆能够发生，它的执行时间减少了大约 95%：</p>
+<p>Execution time per rule</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="411" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=640&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=750&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=828&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1080&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1280&amp;h=736&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1430&amp;h=822&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Making the WAF 40% faster Embedded Image - Df038k" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1400&amp;h=804&amp;f=webp" data-lightbox-width="1400" data-lightbox-height="804" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="411" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>&nbsp;WAF 引擎实现了记忆，规则利用了这一点，但总有增加缓存命中的空间。</p>
+<h3>重写规则和结果</h3>
+<p>Cloudflare 定期向托管规则集<a href="https://developers.cloudflare.com/waf/change-log" target="_blank" rel="noopener noreferrer">发布更新和新规则</a>。然而，随着规则的增加和新函数的实现，记忆缓存命中率有下降的趋势。</p>
+<p>为了改进这一点，我们首先使用一些性能指标来研究需要花费<a href="https://en.wikipedia.org/wiki/Elapsed_real_time" target="_blank" rel="noopener noreferrer">大量时间</a>的规则：</p>
+<p>Execution time per rule&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=750&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1080&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1280&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1430&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Making the WAF 40% faster Embedded Image - HX7eHD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1166&amp;h=528&amp;f=webp" data-lightbox-width="1166" data-lightbox-height="528" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="324" class="pt-portable-image-media"></div>
+</figure>
+<p>有了这些，我们就可以将它们与缓存未命中的数据进行交叉引用（ 输出用 […] 截断 ）：</p>
+<p>在确定了 40 多个规则后，我们重新编写了它们，以充分利用记忆的优势，并在可能的情况下添加了预过滤检查。这些变化中的许多并不是很明显，这就是为什么我们也在创建工具来帮助分析师创建更有效的规则。这也有助于确保它们按照团队设置的延迟预算运行。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./parse.py</span><span class="sk-005cc5-99ffe4"> --profile</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hit</span><span class="sk-032f62-99ffe4"> Ratio:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0.5608</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hot</span><span class="sk-032f62-99ffe4"> entries:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------------</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, replaceComments, REQUEST_URI, REQUEST_HEADERS, ARGS_POST]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, REQUEST_URI]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, htmlEntityDecode, jsDecode, replaceNulls, removeWhitespace, REQUEST_URI, REQUEST_HEADERS]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, lowercase, REQUEST_FILENAME]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, REQUEST_FILENAME]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, lowercase, replaceComments, compressWhitespace, ARGS, REQUEST_FILENAME]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, replaceNulls, removeWhitespace, REQUEST_URI, REQUEST_HEADERS, ARGS_POST]</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Candidates:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100152A</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> t:removeWhitespace</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> t:compressWhitespace,t:removeWhitespace</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100214</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> t:lowercase</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-24292e-fff"> (?i)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100215</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> t:lowercase</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-24292e-fff"> (?i)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100300</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> consider</span><span class="sk-032f62-99ffe4"> REQUEST_URI</span><span class="sk-032f62-99ffe4"> over</span><span class="sk-032f62-99ffe4"> REQUEST_FILENAME</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100137D</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> invert</span><span class="sk-032f62-99ffe4"> order</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> t:replaceNulls,t:lowercase</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+</div>
+<p>这一变化导致缓存命中率从 56% 增加到 <strong>74%</strong> ，这至关重要，其中包括最昂贵的转换。</p>
+<p>最重要的是，我们还观察到 WAF 在 Cloudflare 边缘处理和分析 HTTP 请求的平均时间急剧减少了 <strong>40%</strong>。</p>
+<p>WAF Request Processing - Time Average</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="370" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=640&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=750&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=828&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1080&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1280&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1430&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Making the WAF 40% faster" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1395&amp;h=722&amp;f=webp" data-lightbox-width="1395" data-lightbox-height="722" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="370" class="pt-portable-image-media"></div>
+</figure>
+<p>在第 95 百分位和第 99 百分位也观察到类似的下降。</p>
+<p>最后，我们看到 CPU 消耗下降了大约 <strong>4.3%</strong> 。</p>
+<h3>下一个步骤</h3>
+<p>虽然这些年来 Lua WAF 一直很好地服务于我们，但我们目前正在将其移植到使用同样的引擎支持防火墙规则的地方。它基于我们的开源 <a href="https://github.com/cloudflare/wirefilter" target="_blank" rel="noopener noreferrer">wirefilter</a> 执行引擎，该引擎使用了 Wireshark® 启发的过滤语法。除了允许更灵活的过滤表达式外，它还提供了更好的性能和安全性。</p>
+<p>然而，在迁移到新引擎时，我们在这篇博文中所描述的规则优化并没有丢失，因为这些更改并不特定于当前 Lua 引擎的实现。当我们例行地对防火墙堆栈进行分析、基准测试和复杂的优化时，有时仅仅是相对简单的更改就可以产生惊人的巨大影响。</p>

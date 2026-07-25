@@ -1,0 +1,177 @@
+<p>Cloudflare 在工程工作负载方面非常依赖 Kubernetes：用于支持我们的 API 后端，进行批处理，例如分析汇总和自动程序检测，以及 CI/CD 管道等工程工具。但在负载平衡器、API 服务器、etcd、入口和 pod 之间，Kubernetes 暴露的表面区域可能相当之大。</p>
+<p>本文分享了我们工程团队的一些经验——如何使用 Cloudflare Zero Trust 来保护 Kubernetes 安全，而且无需代理即可启用 kubectl。</p>
+<h2>保护 Kubernetes 安全的一般方法</h2>
+<p>我们的安全措施严格限制了哪些流量可以通过网络访问我们的集群。在网络服务暴露之处，我们还增加了额外的保护措施，例如要求 Cloudflare Access 身份验证或双向 TLS（或两者）才能访问入口资源。</p>
+<p>这些网络限制包括对集群 API 服务器的访问。没有该访问权限，Cloudflare 的工程师就无法使用 kubectl 等工具从内部观察其团队资源。虽然我们相信持续部署和 GitOps 是最佳实践，但允许开发人员使用 Kubernetes API 有助于排除故障，提高开发人员的速度。没有访问权限会破坏计划。</p>
+<p>为满足我们的安全要求，我们正在使用 Cloudflare Zero Trust。我们想分享我们的使用方法及调整过程。</p>
+<h3>Zero Trust 之前</h3>
+<p>在 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> 之前，工程师可以通过连接 VPN 设备来访问 Kubernetes API。虽然这是整个行业的常见方法，也确实可以访问 API，但这将工程师作为客户端引入了内部网络：他们的网络访问权限远超所需。</p>
+<p>我们对这种情况并不满意，但这是近几年来的现状。2020 年初，我们弃用了 VPN，因此 Kubernetes 团队需要寻找其他解决方案。</p>
+<h3>使用 Cloudflare Tunnel 支持 Kubernetes</h3>
+<p>当时，我们与 Cloudflare Tunnel 的开发团队密切合作，希望增进支持<a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access">使用 Access</a>和 cloudflared 隧道处理 kubectl 连接。</p>
+<p>这于我们的工程用户是有效的，但对刚入职的新员工则是一个巨大障碍。每个 Kubernetes 集群都需要从工程师的设备上获得自己的隧道连接，使得集群随机打乱非常烦人。虽然 kubectl 支持通过 SOCKS 代理连接，但这种支持并不适用于 Kubernetes 生态系统的所有工具。</p>
+<p>我们在内部继续使用这个解决方案，同时努力寻找更好的解决方案。</p>
+<h2>使用 Zero Trust 支持 Kubernetes</h2>
+<p>自 Cloudflare One 推出以来，我们一直使用各种配置对 Zero Trust 代理进行内部测试。起初，我们一直用它来实施安全的 DNS 1.1.1.1。后来，我们开始用它来测试其他 Zero Trust 功能。</p>
+<p>现在，我们利用 Cloudflare Zero Trust 中的专用网络路由来允许工程师访问 Kubernetes API，无需设置 cloudflared 隧道，也无需配置 kubectl 和其他 Kubernetes 生态系统工具来使用隧道。这并不是 Cloudflare 特有的做法，您也可以立即让团队采用这种方法。</p>
+<h3>配置 Zero Trust</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="408" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=640&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=750&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=828&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1080&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1280&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1430&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1190 Embedded Image - 0iJIrm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1069&amp;h=610&amp;f=webp" data-lightbox-width="1069" data-lightbox-height="610" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="408" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>我们使用了一个<a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">配置管理工具</a>来完成 Zero Trust 配置，以实现基础设施即代码，并进行了如下调整。不过，使用 Cloudflare Zero Trust 仪表板也可以完成相同的配置。</p>
+<p>首先，我们需要创建一个新隧道。该隧道将用于连接 Cloudflare 边缘网络和 Kubernetes API。我们使用后文所述配置，在 Kubernetes 内运行隧道端点。</p>
+<p>“tunnel_secret”密钥应该是一个 32 字节的随机数，您应该暂时保存，因为后面我们会在 Kubernetes 设置中再次使用它。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_argo_tunnel"</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  secret</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.tunnel_secret</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>创建隧道后，我们需要创建路由，让 Cloudflare 网络知道哪些流量需要通过隧道发送。</p>
+<p>我们支持通过 IPv4 和 IPv6 地址访问 Kubernetes API，所以两者都要配置路由。如果通过主机名连接 API 服务器，这些 IP 地址应该与通过 DNS 查询返回的内容一致。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_tunnel_route"</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel_ipv4"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tunnel_id</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  network</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "198.51.100.101/32"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  comment</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "Kubernetes API Server (IPv4)"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_tunnel_route"</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel_ipv6"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tunnel_id</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  network</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "2001:DB8::101/128"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  comment</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "Kubernetes API Server (IPv6)"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>接下来我们将配置 Cloudflare Gateway 的设置，使其与 API 服务器和客户端兼容。</p>
+<p>由于我们在客户端和 API 服务器之间使用了双向 TLS，而 kubectl 和 API 服务器之间的流量并不都是 HTTP，所以我们对这些连接禁用了 HTTP 检查。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_teams_list"</span><span class="sk-032f62-99ffe4"> "k8s_apiserver_ips"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "Kubernetes API IPs"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "IP"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  items</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"198.51.100.101/32"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"2001:DB8::101/128"]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_teams_rule"</span><span class="sk-032f62-99ffe4"> "k8s_apiserver_zero_trust_http"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> "Don't inspect Kubernetes API"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  description</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Allow connections from kubectl to API"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  precedence</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-005cc5-ffc799"> 10000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  action</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> "off"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  enabled</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  filters</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"http"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  traffic</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"any(http.conn.dst_ip[*] in $%s)"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cloudflare_teams_list.k8s_apiserver_ips.id,</span><span class="sk-032f62-99ffe4"> "-",</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>您还可以搭配其他 Zero Trust 规则，例如<a href="https://developers.cloudflare.com/cloudflare-one/identity/devices" target="_blank" rel="noopener noreferrer">设备证明</a>、<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions" target="_blank" rel="noopener noreferrer">会话生存期</a>以及<a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors" target="_blank" rel="noopener noreferrer">用户和组</a>访问策略，进一步定制您的安全策略。</p>
+<h3>部署隧道</h3>
+<p>创建并配置隧道后，您便可以将端点部署到网络中。我们选择将隧道部署为 pod，这样便可使用 Kubernetes 的部署策略来推出升级，处理节点故障。</p>
+<p>这将创建一个具有基本配置的 Kubernetes ConfigMap，为指定的隧道 ID 启用 WARP 路由。您可从配置管理系统、Cloudflare Zero Trust 仪表板，或在登录同一账户的另一设备上运行以下命令，获得该隧道 ID。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> v1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> ConfigMap</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> tunnel-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  namespace:</span><span class="sk-032f62-99ffe4"> example</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  config.yaml:</span><span class="sk-d73a49-a0a0a0"> |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tunnel:</span><span class="sk-032f62-99ffe4"> 8e343b13-a087-48ea-825f-9783931ff2a5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    credentials-file:</span><span class="sk-032f62-99ffe4"> /opt/zt/creds/creds.json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    metrics:</span><span class="sk-032f62-99ffe4"> 0.0.0.0:8081</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    warp-routing:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        enabled:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+</div>
+<p><code>cloudflared tunnel list</code></p>
+<p>接下来，我们需要为隧道凭证创建密钥。虽然您应该使用密钥管理系统，但为简单起见，我们现在直接创建一个密钥。</p>
+<p>这就在“示例”命名空间中创建了一个新的密钥“tunnel-creds”，其中包含隧道要求的凭证文件。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">jq</span><span class="sk-005cc5-99ffe4"> -cn</span><span class="sk-005cc5-99ffe4"> --arg</span><span class="sk-032f62-99ffe4"> accountTag</span><span class="sk-24292e-fff"> $CF_ACCOUNT_TAG </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelID</span><span class="sk-24292e-fff"> $CF_TUNNEL_ID </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelName</span><span class="sk-24292e-fff"> $CF_TUNNEL_NAME </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelSecret</span><span class="sk-24292e-fff"> $CF_TUNNEL_SECRET </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   '{AccountTag: $accountTag, TunnelID: $tunnelID, TunnelName: $tunnelName, TunnelSecret: $tunnelSecret}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> generic</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> example</span><span class="sk-032f62-99ffe4"> tunnel-creds</span><span class="sk-005cc5-99ffe4"> --from-file=creds.json=/dev/stdin</span></span></code></pre>
+</div>
+<p>现在我们可以部署隧道本身了。我们部署了多个副本，以确保有些副本即使在节点耗尽时也始终可用。</p>
+<h2>使用 Cloudflare Zero Trust 支持 Kubectl</h2>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> apps/v1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> Deployment</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> tunnel-api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  namespace:</span><span class="sk-032f62-99ffe4"> example</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">spec:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  replicas:</span><span class="sk-005cc5-ffc799"> 3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  selector:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    matchLabels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  strategy:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    rollingUpdate:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      maxSurge:</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      maxUnavailable:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  template:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      labels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    spec:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      containers:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> args:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> tunnel</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-005cc5-99ffe4"> --config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> /opt/zt/config/config.yaml</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> run</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          env:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> GOMAXPROCS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              value:</span><span class="sk-032f62-99ffe4"> "2"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> TZ</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              value:</span><span class="sk-032f62-99ffe4"> UTC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          image:</span><span class="sk-032f62-99ffe4"> cloudflare/cloudflared:2022.5.3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          livenessProbe:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            failureThreshold:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            httpGet:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              path:</span><span class="sk-032f62-99ffe4"> /ready</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              port:</span><span class="sk-005cc5-ffc799"> 8081</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            initialDelaySeconds:</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            periodSeconds:</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> tunnel</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          ports:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> containerPort:</span><span class="sk-005cc5-ffc799"> 8081</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              name:</span><span class="sk-032f62-99ffe4"> http-metrics</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          resources:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            limits:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              cpu:</span><span class="sk-032f62-99ffe4"> "1"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              memory:</span><span class="sk-032f62-99ffe4"> 100Mi</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          volumeMounts:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> mountPath:</span><span class="sk-032f62-99ffe4"> /opt/zt/config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              name:</span><span class="sk-032f62-99ffe4"> config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              readOnly:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> mountPath:</span><span class="sk-032f62-99ffe4"> /opt/zt/creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              name:</span><span class="sk-032f62-99ffe4"> creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              readOnly:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      volumes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> secret:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            name:</span><span class="sk-032f62-99ffe4"> tunnel-creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> configMap:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            name:</span><span class="sk-032f62-99ffe4"> tunnel-api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> config</span></span></code></pre>
+</div>
+<p>部署 Cloudflare Zero Trust 代理后，您的团队成员就可以访问 Kubernetes API 了，无需设置任何特殊的 SOCKS 隧道</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="479" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=640&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=750&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=828&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1080&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1280&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1430&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot of the Cloudflare WARP app showing it connected to Teams" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1920&amp;h=1286&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1286" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="479" class="pt-portable-image-media"></div>
+</figure>
+<h2>下一步是什么？</h2>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-99ffe4"> --short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Client</span><span class="sk-032f62-99ffe4"> Version:</span><span class="sk-032f62-99ffe4"> v1.24.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Server</span><span class="sk-032f62-99ffe4"> Version:</span><span class="sk-032f62-99ffe4"> v1.24.1</span></span></code></pre>
+</div>
+<p>如果您尝试了该方法，请向我们发送反馈意见。我们正在继续改进非 HTTP 工作流程的 Zero Trust。</p>

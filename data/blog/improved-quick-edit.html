@@ -1,178 +1,121 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2B1L3aFtxDPZhKGtqfkFxy/f35e5927cfc211894c5fed5c17466eeb/image1-42.png" alt="A whole new Quick Edit in Cloudflare Workers" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<p>Quick Edit is a development experience for Cloudflare Workers, embedded right within the Cloudflare dashboard. It’s the fastest way to get up and running with a new worker, and lets you quickly preview and deploy changes to your code.</p>
-	<p>We’ve spent a lot of recent time working on upgrading the <i>local</i> development experience to be as <a href="https://blog.cloudflare.com/miniflare-and-workerd">useful as possible</a>, but the Quick Edit experience for editing Workers has stagnated since the release of <a href="https://blog.cloudflare.com/just-write-code-improving-developer-experience-for-cloudflare-workers">workers.dev</a>. It’s time to give Quick Edit some love and bring it up to scratch with the expectations of today's developers.</p>
-	<p>Before diving into what’s changed—a quick overview of the current Quick Edit experience:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/68vBJYkfVP0kh5oNFxCXFX/a977ab2c917072d0b7cbd359b95bc486/download-11.png" alt="" class="kg-image" width="1600" height="813" loading="lazy">
-
-	</figure>
-	<p>We used the robust <a href="https://microsoft.github.io/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco editor</a>, which took us pretty far—it’s even what VSCode uses under the hood! However, Monaco is fairly limited in what it can do. Developers are used to the full power of their local development environment, with advanced IntelliSense support and all the power of a full-fledged IDE. Compared to that, a single file text editor is a step-down in expressiveness and functionality.</p>
-	<div class="flex anchor relative">
-		<h2 id="vscode-for-web">VSCode for Web</h2>
-		<a href="https://blog.cloudflare.com/#vscode-for-web" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Today, we’re rolling out a new Quick Edit experience for Workers, powered by <a href="https://code.visualstudio.com/docs/editor/vscode-web" target="_blank" rel="noopener noreferrer">VSCode for Web</a>. This is a huge upgrade, allowing developers to work in a familiar environment. This isn’t just about familiarity though—using VSCode for Web to power Quick Edit unlocks significant new functionality that was previously only possible with a local development setup using <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">Wrangler</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Dg5Pph7cGcx3fKb4zMiYZ/f26625e62400119738e40a0d366d57c0/download--1--7.png" alt="" class="kg-image" width="1600" height="814" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="support-for-multiple-modules">Support for multiple modules!</h3>
-		<a href="https://blog.cloudflare.com/#support-for-multiple-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Workers released support for the <a href="https://blog.cloudflare.com/workers-javascript-modules">Modules syntax</a> in 2021, which is the recommended way to write Workers. It leans into modern JavaScript by leveraging the ES Module syntax, and lets you define Workers by exporting a default object containing event handlers.</p>
-	<pre class="language-javascript"><code class="language-javascript">export default {
- async fetch(request, env) {
-   return new Response("Hello, World!")
- }
-}</code></pre>
-	<p>There are two sides of the coin when it comes to ES Modules though: exports <i>and imports</i>. Until now, if you wanted to organise your worker in multiple modules you had to use Wrangler and a local development setup. Now, you’ll be able to write multiple modules in the dashboard editor, and import them, just as you can locally. We haven’t enabled support for importing modules from npm yet, but that’s something we’re actively exploring—stay tuned!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7iWt9JogEsGbMwwlZgI9dt/0ca18de31eba4518ec230707211cceb6/download--2--6.png" alt="" class="kg-image" width="1600" height="813" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="edge-preview">Edge Preview</h3>
-		<a href="https://blog.cloudflare.com/#edge-preview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BCsQLD1rEt5zDC2FMVN58/06ac07ce324b0a3e1ba9ddfd41c009dc/download--3--4.png" alt="" class="kg-image" width="1534" height="1238" loading="lazy">
-
-	</figure>
-	<p>When editing a worker in the dashboard, Cloudflare spins up a preview of your worker, deployed from the code you’re currently working on. This helps speed up the feedback loop when developing a worker, and makes it easy to test changes without impacting production traffic (see also, <a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost">wrangler dev</a>).</p>
-	<p>However, the in-dashboard preview hasn’t historically been a high-fidelity match for the deployed Workers runtime. There were various differences in behaviour between the dashboard preview environment and a deployed worker, and it was difficult to have full confidence that a worker that worked in the preview would work in the deployed environment.</p>
-	<p>That changes today! We’ve changed the dashboard preview environment to use the same system that powers <a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost"><code>wrangler dev</code></a>. This means that your preview worker will be run on Cloudflare's global network, the same environment as your deployed workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="helpful-error-messages">Helpful error messages</h3>
-		<a href="https://blog.cloudflare.com/#helpful-error-messages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the previous dashboard editor, the experience when your code throws an error wasn’t great. Unless you wrap your worker code in a try-catch handler, the preview will show a blank page when your worker throws an error. This can make it really tricky to debug your worker, and is pretty frustrating. With the release of the new Quick Editor, we now wrap your worker with error handling code that shows helpful error pages, complete with error stack traces and detailed descriptions.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39MmsVyio0cM7lPDy4JtEg/570a8fed7b3aa76cd4ef547bff819224/download--4--4.png" alt="" class="kg-image" width="1600" height="930" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="typechecking">Typechecking</h3>
-		<a href="https://blog.cloudflare.com/#typechecking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>TypeScript is incredibly popular, and developers are more and more used to writing their workers in TypeScript. While the dashboard editor still only allows JavaScript files (and you’re unable to write TypeScript directly) we wanted to support modern typed JavaScript development as much as we could. To that end, the new dashboard editor has full support for <a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html" target="_blank" rel="noopener noreferrer">JSDoc TypeScript syntax</a>, with <a href="https://www.npmjs.com/package/@cloudflare/workers-types" target="_blank" rel="noopener noreferrer">the TypeScript environment for workers preloaded</a>. This means that writing code with type errors will show a familiar squiggly red line, and Cloudflare APIs like HTMLRewriter will be autocompleted.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4vXG2YZQvTAdXe9hghyD67/164bb87679259a6a27bb6bb92dcb3cea/download--5--4.png" alt="" class="kg-image" width="1600" height="1227" loading="lazy">
-
-	</figure><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 57.19844357976653%;"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/11d946b7aeaee40fe9f35c6a0e412c3f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F11d946b7aeaee40fe9f35c6a0e412c3f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2m17s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h2 id="how-we-built-it">How we built it</h2>
-		<a href="https://blog.cloudflare.com/#how-we-built-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It wouldn’t be a Cloudflare blog post without a deep dive into the nuts and bolts of what we’ve built!</p>
-	<p>First, an overview—how does this work at a high level? We embed VSCode for Web in the Cloudflare dashboard as an <code>iframe</code>, and communicate with it over a <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel" target="_blank" rel="noopener noreferrer"><code>MessageChannel</code></a>. When the <code>iframe</code> is loaded, the Cloudflare dashboard sends over the contents of your worker to a VSCode for Web extension. This extension seeds an in-memory filesystem from which VSCode for Web reads. When you edit files in VSCode for Web, the updated files are sent back over the same <code>MessageChannel</code> to the Cloudflare dashboard, where they’re uploaded as a previewed worker to Cloudflare's global network.</p>
-	<p>As with any project of this size, the devil is in the details. Let’s focus on a specific area —how we communicate with VSCode for Web’s <code>iframe</code> from the Cloudflare dashboard.</p>
-	<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel" target="_blank" rel="noopener noreferrer"><code>MessageChannel</code></a> browser API enables relatively easy cross-frame communication—in this case, from an iframe embedder to the iframe itself. To use it, you construct an instance and access the <code>port1</code> and <code>port2</code> properties:</p>
-	<pre class="language-javascript"><code class="language-javascript">const channel = new MessageChannel()
-
-// The MessagePort you keep a hold of
-channel.port1
-
-// The MessagePort you send to the iframe
-channel.port2</code></pre>
-	<p>We store a reference to the <code>MessageChannel</code> to use across component renders with <code>useRef()</code>, since React would otherwise create a new <code>MessageChannel</code> instance with every render.</p>
-	<p>With that out of the way, all that remains is to send <code>channel.port2</code> to VSCode for Web’s iframe, via a call to <code>postMessage()</code>.</p>
-	<pre class="language-javascript"><code class="language-javascript">// A reference to the iframe embedding VSCode for Web
-const editor = document.getElementById("vscode")
-
-// Wait for the iframe to load 
-editor.addEventListener('load', () =&gt; {
-	// Send over the MessagePort
-editor.contentWindow.postMessage('PORT', '*', [
-channel.port2
-]);
-});</code></pre>
-	<p>An interesting detail here is how the <code>MessagePort</code> is sent over to the iframe. The third argument to <code>postMessage()</code> indicates a sequence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects" target="_blank" rel="noopener noreferrer">Transferable objects</a>. This <i>transfers</i> ownership of <code>port2</code> to the iframe, which means that any attempts to access it in the original context will throw an exception.</p>
-	<p>At this stage the dashboard has loaded an iframe containing VSCode for Web, initialised a <code>MessageChannel</code>, and sent over a <code>MessagePort</code> to the iframe. Let’s switch context—the iframe now needs to catch the <code>MessagePort</code> and start using it to communicate with the embedder (Cloudflare’s dashboard).</p>
-	<pre class="language-javascript"><code class="language-javascript">window.onmessage = (e) =&gt; {
-if (e.data === "PORT") {
-	// An instance of a MessagePort
-const port = e.ports[0]
-}
-};</code></pre>
-	<p>Relatively straightforward! With not <i>that</i> much code, we’ve set up communication and can start sending more complex messages across. Here’s an example of how we send over the initial worker content from the dashboard to the VSCode for Web iframe:</p>
-	<pre class="language-javascript"><code class="language-javascript">// In the Cloudflare dashboard
-
-// The modules that make up your worker
-const files = [
-  {
-    path: 'index.js',
-    contents: `
-		import { hello } from "./world.js"
-export default {
-			fetch(request) {
-				return new Response(hello)
-			}
-		}`
-  },
-  {
-    path: 'world.js',
-    contents: `export const hello = "Hello World"`
-  }
-];
-
-channel.port1.postMessage({
-  type: 'WorkerLoaded',
-  // The worker name
-  name: 'your-worker-name',
-  // The worker's main module
-  entrypoint: 'index.js',
-  // The worker's modules
-  files: files
-});</code></pre>
-	<p>If you’d like to learn more about our approach, you can explore the code we’ve open sourced as part of this project, including the <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit-extension" target="_blank" rel="noopener noreferrer">VSCode extension</a> we’ve written to load data from the Cloudflare dashboard, our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit" target="_blank" rel="noopener noreferrer">patches to VSCode</a>, and our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/solarflare-theme" target="_blank" rel="noopener noreferrer">VSCode theme</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="were-not-done">We’re not done!</h2>
-		<a href="https://blog.cloudflare.com/#were-not-done" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is a huge overhaul of the dashboard editing experience for Workers, but we’re not resting on our laurels! We know there’s a long way to go before developing a worker in the browser will offer the same experience as developing a worker locally with Wrangler, and we’re working on ways to close that gap. In particular, we’re working on adding Typescript support to the editor, and supporting syncing to external Git providers like GitHub and GitLab.</p>
-	<p>We’d love to hear any feedback from you on the new editing experience—come say hi and ask us any questions you have on the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Discord</a>!</p>
+<p>Quick Edit is a development experience for Cloudflare Workers, embedded right within the Cloudflare dashboard. It’s the fastest way to get up and running with a new worker, and lets you quickly preview and deploy changes to your code.</p>
+<p>We’ve spent a lot of recent time working on upgrading the <em>local</em> development experience to be as <a href="https://blog.cloudflare.com/miniflare-and-workerd">useful as possible</a>, but the Quick Edit experience for editing Workers has stagnated since the release of <a href="https://blog.cloudflare.com/just-write-code-improving-developer-experience-for-cloudflare-workers">workers.dev</a>. It’s time to give Quick Edit some love and bring it up to scratch with the expectations of today's developers.</p>
+<p>Before diving into what’s changed—a quick overview of the current Quick Edit experience:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="363" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=640&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=750&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=828&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=1080&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=1280&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=1430&amp;h=726&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1800 Embedded Image - T0hlqM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47YHBB404VY72P8M9QV5YY.png&amp;w=1600&amp;h=813&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="363" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We used the robust <a href="https://microsoft.github.io/monaco-editor" target="_blank" rel="noopener noreferrer">Monaco editor</a>, which took us pretty far—it’s even what VSCode uses under the hood! However, Monaco is fairly limited in what it can do. Developers are used to the full power of their local development environment, with advanced IntelliSense support and all the power of a full-fledged IDE. Compared to that, a single file text editor is a step-down in expressiveness and functionality.</p>
+<h2>VSCode for Web</h2>
+<p>Today, we’re rolling out a new Quick Edit experience for Workers, powered by <a href="https://code.visualstudio.com/docs/editor/vscode-web" target="_blank" rel="noopener noreferrer">VSCode for Web</a>. This is a huge upgrade, allowing developers to work in a familiar environment. This isn’t just about familiarity though—using VSCode for Web to power Quick Edit unlocks significant new functionality that was previously only possible with a local development setup using <a href="https://blog.cloudflare.com/10-things-i-love-about-wrangler">Wrangler</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1800 Embedded Image - 8r93jU" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJW4XMVMQ74D2SN67EMG.png&amp;w=1600&amp;h=814&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="814" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
+</figure>
+<h3>Support for multiple modules!</h3>
+<p>Cloudflare Workers released support for the <a href="https://blog.cloudflare.com/workers-javascript-modules">Modules syntax</a> in 2021, which is the recommended way to write Workers. It leans into modern JavaScript by leveraging the ES Module syntax, and lets you define Workers by exporting a default object containing event handlers.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, World!"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>There are two sides of the coin when it comes to ES Modules though: exports <em>and imports</em>. Until now, if you wanted to organise your worker in multiple modules you had to use Wrangler and a local development setup. Now, you’ll be able to write multiple modules in the dashboard editor, and import them, just as you can locally. We haven’t enabled support for importing modules from npm yet, but that’s something we’re actively exploring—stay tuned!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="363" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=640&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=750&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=828&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=1080&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=1280&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=1430&amp;h=726&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1800 Embedded Image - oJxyIn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48XA57GZ3Q0WCTQPAMKQJM.png&amp;w=1600&amp;h=813&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="363" class="pt-portable-image-media"></div>
+</figure>
+<h3>Edge Preview</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="577" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=715&amp;h=577&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=640&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=715&amp;h=577&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=750&amp;h=605&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=828&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=1080&amp;h=872&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=1280&amp;h=1033&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=1430&amp;h=1154&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1800 Embedded Image - ZLDoQO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453PV1Q090F1JZS8RY4GWS.png&amp;w=1534&amp;h=1238&amp;f=webp" data-lightbox-width="1534" data-lightbox-height="1238" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="577" class="pt-portable-image-media"></div>
+</figure>
+<p>When editing a worker in the dashboard, Cloudflare spins up a preview of your worker, deployed from the code you’re currently working on. This helps speed up the feedback loop when developing a worker, and makes it easy to test changes without impacting production traffic (see also, <a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost">wrangler dev</a>).</p>
+<p>However, the in-dashboard preview hasn’t historically been a high-fidelity match for the deployed Workers runtime. There were various differences in behaviour between the dashboard preview environment and a deployed worker, and it was difficult to have full confidence that a worker that worked in the preview would work in the deployed environment.</p>
+<p>That changes today! We’ve changed the dashboard preview environment to use the same system that powers <a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost"><code>wrangler dev</code></a>. This means that your preview worker will be run on Cloudflare's global network, the same environment as your deployed workers.</p>
+<h3>Helpful error messages</h3>
+<p>In the previous dashboard editor, the experience when your code throws an error wasn’t great. Unless you wrap your worker code in a try-catch handler, the preview will show a blank page when your worker throws an error. This can make it really tricky to debug your worker, and is pretty frustrating. With the release of the new Quick Editor, we now wrap your worker with error handling code that shows helpful error pages, complete with error stack traces and detailed descriptions.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="416" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=715&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=640&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=715&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=750&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=828&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=1080&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=1280&amp;h=745&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=1430&amp;h=832&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1800 Embedded Image - HeiCND" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TETK5TGZR985GM27E994.png&amp;w=1600&amp;h=930&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="930" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="416" class="pt-portable-image-media"></div>
+</figure>
+<h3>Typechecking</h3>
+<p>TypeScript is incredibly popular, and developers are more and more used to writing their workers in TypeScript. While the dashboard editor still only allows JavaScript files (and you’re unable to write TypeScript directly) we wanted to support modern typed JavaScript development as much as we could. To that end, the new dashboard editor has full support for <a href="https://www.typescriptlang.org/docs/handbook/type-checking-javascript-files.html" target="_blank" rel="noopener noreferrer">JSDoc TypeScript syntax</a>, with <a href="https://www.npmjs.com/package/@cloudflare/workers-types" target="_blank" rel="noopener noreferrer">the TypeScript environment for workers preloaded</a>. This means that writing code with type errors will show a familiar squiggly red line, and Cloudflare APIs like HTMLRewriter will be autocompleted.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="548" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=715&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=715&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=750&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=828&amp;h=635&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=1080&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=1280&amp;h=981&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=1430&amp;h=1096&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1800 Embedded Image - NMErix" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4735X3Z9M0G2BANTESTXGV.png&amp;w=1600&amp;h=1227&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1227" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="548" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k24" class="html-block">
+	<div style="padding-top:57.19844357976653%"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/11d946b7aeaee40fe9f35c6a0e412c3f/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F11d946b7aeaee40fe9f35c6a0e412c3f%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2m17s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+	<p></p>
+</div>
+<h2>How we built it</h2>
+<p>It wouldn’t be a Cloudflare blog post without a deep dive into the nuts and bolts of what we’ve built!</p>
+<p>First, an overview—how does this work at a high level? We embed VSCode for Web in the Cloudflare dashboard as an <code>iframe</code>, and communicate with it over a <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel" target="_blank" rel="noopener noreferrer"><code>MessageChannel</code></a>. When the <code>iframe</code> is loaded, the Cloudflare dashboard sends over the contents of your worker to a VSCode for Web extension. This extension seeds an in-memory filesystem from which VSCode for Web reads. When you edit files in VSCode for Web, the updated files are sent back over the same <code>MessageChannel</code> to the Cloudflare dashboard, where they’re uploaded as a previewed worker to Cloudflare's global network.</p>
+<p>As with any project of this size, the devil is in the details. Let’s focus on a specific area —how we communicate with VSCode for Web’s <code>iframe</code> from the Cloudflare dashboard.</p>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel" target="_blank" rel="noopener noreferrer"><code>MessageChannel</code></a> browser API enables relatively easy cross-frame communication—in this case, from an iframe embedder to the iframe itself. To use it, you construct an instance and access the <code>port1</code> and <code>port2</code> properties:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> channel</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MessageChannel</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The MessagePort you keep a hold of</span></span>
+<span class="line"><span class="sk-24292e-fff">channel.port1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The MessagePort you send to the iframe</span></span>
+<span class="line"><span class="sk-24292e-fff">channel.port2</span></span></code></pre>
+</div>
+<p>We store a reference to the <code>MessageChannel</code> to use across component renders with <code>useRef()</code>, since React would otherwise create a new <code>MessageChannel</code> instance with every render.</p>
+<p>With that out of the way, all that remains is to send <code>channel.port2</code> to VSCode for Web’s iframe, via a call to <code>postMessage()</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A reference to the iframe embedding VSCode for Web</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> editor</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> document.</span><span class="sk-6f42c1-ffc799">getElementById</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"vscode"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Wait for the iframe to load </span></span>
+<span class="line"><span class="sk-24292e-fff">editor.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'load'</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// Send over the MessagePort</span></span>
+<span class="line"><span class="sk-24292e-fff">editor.contentWindow.</span><span class="sk-6f42c1-ffc799">postMessage</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'PORT'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'*'</span><span class="sk-24292e-fff">, [</span></span>
+<span class="line"><span class="sk-24292e-fff">channel.port2</span></span>
+<span class="line"><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>An interesting detail here is how the <code>MessagePort</code> is sent over to the iframe. The third argument to <code>postMessage()</code> indicates a sequence of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects" target="_blank" rel="noopener noreferrer">Transferable objects</a>. This <em>transfers</em> ownership of <code>port2</code> to the iframe, which means that any attempts to access it in the original context will throw an exception.</p>
+<p>At this stage the dashboard has loaded an iframe containing VSCode for Web, initialised a <code>MessageChannel</code>, and sent over a <code>MessagePort</code> to the iframe. Let’s switch context—the iframe now needs to catch the <code>MessagePort</code> and start using it to communicate with the embedder (Cloudflare’s dashboard).</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">window.</span><span class="sk-6f42c1-ffc799">onmessage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">e</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (e.data </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "PORT"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// An instance of a MessagePort</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> port</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> e.ports[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>Relatively straightforward! With not <em>that</em> much code, we’ve set up communication and can start sending more complex messages across. Here’s an example of how we send over the initial worker content from the dashboard to the VSCode for Web iframe:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// In the Cloudflare dashboard</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The modules that make up your worker</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> files</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">'index.js'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    contents: </span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		import { hello } from "./world.js"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">export default {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">			fetch(request) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">				return new Response(hello)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">			}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">		}`</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: </span><span class="sk-032f62-99ffe4">'world.js'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    contents: </span><span class="sk-032f62-99ffe4">`export const hello = "Hello World"`</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">channel.port1.</span><span class="sk-6f42c1-ffc799">postMessage</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  type: </span><span class="sk-032f62-99ffe4">'WorkerLoaded'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // The worker name</span></span>
+<span class="line"><span class="sk-24292e-fff">  name: </span><span class="sk-032f62-99ffe4">'your-worker-name'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // The worker's main module</span></span>
+<span class="line"><span class="sk-24292e-fff">  entrypoint: </span><span class="sk-032f62-99ffe4">'index.js'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // The worker's modules</span></span>
+<span class="line"><span class="sk-24292e-fff">  files: files</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>If you’d like to learn more about our approach, you can explore the code we’ve open sourced as part of this project, including the <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit-extension" target="_blank" rel="noopener noreferrer">VSCode extension</a> we’ve written to load data from the Cloudflare dashboard, our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/quick-edit" target="_blank" rel="noopener noreferrer">patches to VSCode</a>, and our <a href="https://github.com/cloudflare/workers-sdk/tree/main/packages/solarflare-theme" target="_blank" rel="noopener noreferrer">VSCode theme</a>.</p>
+<h2>We’re not done!</h2>
+<p>This is a huge overhaul of the dashboard editing experience for Workers, but we’re not resting on our laurels! We know there’s a long way to go before developing a worker in the browser will offer the same experience as developing a worker locally with Wrangler, and we’re working on ways to close that gap. In particular, we’re working on adding Typescript support to the editor, and supporting syncing to external Git providers like GitHub and GitLab.</p>
+<p>We’d love to hear any feedback from you on the new editing experience—come say hi and ask us any questions you have on the <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Discord</a>!</p>

@@ -1,366 +1,223 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-realtime-voice-ai">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6TmkqTftswQVhsBxOIWb8Q/132ec3fc627309adb9d5838a548956b1/image5.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>The way we interact with AI is fundamentally changing. While text-based interfaces like ChatGPT have shown us what's possible, in terms of interaction, it’s only the beginning. Humans communicate not only by texting, but also talking — we show things, we interrupt and clarify in real-time. Voice AI brings these natural interaction patterns to our applications.</p>
-	<p>Today, we're excited to announce new capabilities that make it easier than ever to build real-time, voice-enabled AI applications on Cloudflare's global network. These new features create a complete platform for developers building the next generation of conversational AI experiences or can function as building blocks for more advanced AI agents running across platforms.</p>
-	<p>We're launching:</p>
-	<ul>
-		<li>
-			<p><b>Cloudflare Realtime Agents</b> - A runtime for orchestrating voice AI pipelines at the edge</p>
-		</li>
-		<li>
-			<p><b>Pipe raw WebRTC audio as PCM in Workers</b> - You can now connect WebRTC audio directly to your AI models or existing complex media pipelines already built on&nbsp;</p>
-		</li>
-		<li>
-			<p><b>Workers AI WebSocket support</b> - Realtime AI inference with models like PipeCat's smart-turn-v2</p>
-		</li>
-		<li>
-			<p><b>Deepgram on Workers AI</b> - Speech-to-text and text-to-speech running in over 330 cities worldwide</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="why-realtime-ai-matters-now">Why realtime AI matters now</h2>
-		<a href="https://blog.cloudflare.com/#why-realtime-ai-matters-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Today, building voice AI applications is hard. You need to coordinate multiple services such as speech-to-text, language models, text-to-speech while managing complex audio pipelines, handling interruptions, and keeping latency low enough for natural conversation.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/a2D2mbrkDnb0tRo5466DN/8a4643e52a5f23b6948f1d15671140ac/image4.jpg" alt="" class="kg-image" width="1999" height="594" loading="lazy">
-	</figure>
-	<p>Building production voice AI requires orchestrating a complex symphony of technologies. You need low latency speech recognition, intelligent language models that understand context and can handle interruptions, natural-sounding voice synthesis, and all of this needs to happen in under 800 milliseconds — the threshold where conversation feels natural rather than stilted. This latency budget is unforgiving. Every millisecond counts: 40ms for microphone input, 300ms for transcription, 400ms for LLM inference, 150ms for text-to-speech. Any additional latency from poor infrastructure choices or distant servers transforms a delightful experience into a frustrating one.</p>
-	<p>That's why we're building real-time AI tools: we want to make real-time voice AI as easy to deploy as a static website. We're also witnessing a critical inflection point where conversational AI moves from experimental demos to production-ready systems that can scale globally. If you’re already a developer in the real-time AI ecosystem, we want to build the best building blocks for you to get the lowest latency by leveraging the 330+ datacenters Cloudflare has built.</p>
-	<div class="flex anchor relative">
-		<h2 id="introducing-cloudflare-realtime-agents">Introducing Cloudflare Realtime Agents</h2>
-		<a href="https://blog.cloudflare.com/#introducing-cloudflare-realtime-agents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Realtime Agents is a simple runtime for orchestrating voice AI pipelines that run on our global network, as close to your users as possible. Instead of managing complex infrastructure yourself, you can focus on building great conversational experiences.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1QcKOdouzGYP8DecqqSzM8/022a33e9b7bcbcbd0461fa83df39b1ba/image1.png" alt="" class="kg-image" width="1458" height="1218" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="how-it-works">How it works</h3>
-		<a href="https://blog.cloudflare.com/#how-it-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When a user connects to your voice AI application, here's what happens:</p>
-	<ol>
-		<li>
-			<p><b>WebRTC connection</b> - Audio streams from the user's device is sent to the nearest Cloudflare location via WebRTC, using Cloudflare RealtimeKit mobile or web SDKs</p>
-		</li>
-		<li>
-			<p><b>AI pipeline orchestration</b> - Your pre-configured pipeline runs: speech-to-text → LLM → text-to-speech, with support for interruption detection and turn-taking</p>
-		</li>
-		<li>
-			<p><b>Your configured runtime options/callbacks/tools run</b></p>
-		</li>
-		<li>
-			<p><b>Response delivery</b> - Generated audio streams back to the user with minimal latency</p>
-		</li>
-	</ol>
-	<p>The magic is in how we've designed this as composable building blocks. You're not locked into a rigid pipeline — you can configure data flows, add tee and join operations, and control exactly how your AI agent behaves.</p>
-	<p>Take a look at the <code>MyTextHandler</code> function from the above diagram, for example. It’s just a function that takes in text and returns text back, inserted after speech-to-text and before text-to-speech:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">class MyTextHandler extends TextComponent {
-	env: Env;
-
-	constructor(env: Env) {
-		super();
-		this.env = env;
-	}
-
-	async onTranscript(text: string) {
-		const { response } = await this.env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-			prompt: "You are a wikipedia bot, answer the user query:" + text,
-		});
-		this.speak(response!);
-	}
-}</code></pre>
-	<p>Your agent is a JavaScript class that extends RealtimeAgent, where you initialize a pipeline consisting of the various text-to-speech, speech-to-text, text-to-text and even speech-to-speech transformations.</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">export class MyAgent extends RealtimeAgent&lt;Env&gt; {
-	constructor(ctx: DurableObjectState, env: Env) {
-		super(ctx, env);
-	}
-
-	async init(agentId: string ,meetingId: string, authToken: string, workerUrl: string, accountId: string, apiToken: string) {
-		// Construct your text processor for generating responses to text
-		const textHandler = new MyTextHandler(this.env);
-		// Construct a Meeting object to join the RTK meeting
-		const transport = new RealtimeKitTransport(meetingId, authToken, [
-			{
-				media_kind: 'audio',
-				stream_kind: 'microphone',
-			},
-		]);
-		const { meeting } = transport;
-
-		// Construct a pipeline to take in meeting audio, transcribe it using
-		// Deepgram, and pass our generated responses through ElevenLabs to
-		// be spoken in the meeting
-		await this.initPipeline(
-			[transport, new DeepgramSTT(this.env.DEEPGRAM_API_KEY), textHandler, new ElevenLabsTTS(this.env.ELEVENLABS_API_KEY), transport],
-			agentId,
-			workerUrl,
-			accountId,
-			apiToken,
-		);
-
-		// The RTK meeting object is accessible to us, so we can register handlers
-		// on various events like participant joins/leaves, chat, etc.
-		// This is optional
-		meeting.participants.joined.on('participantJoined', (participant) =&gt; {
-			textHandler.speak(`Participant Joined ${participant.name}`);
-		});
-		meeting.participants.joined.on('participantLeft', (participant) =&gt; {
-			textHandler.speak(`Participant Left ${participant.name}`);
-		});
-
-		// Make sure to actually join the meeting after registering all handlers
-		await meeting.rtkMeeting.join();
-	}
-
-	async deinit() {
-		// Add any other cleanup logic required
-		await this.deinitPipeline();
-	}
-}</code></pre>
-	<p>View a full example in the <a href="https://developers.cloudflare.com/realtime/agents/getting-started" target="_blank" rel="noopener noreferrer"><u>developer docs</u></a> and get your own Realtime Agent running. View <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Frealtime%2Fagents" target="_blank" rel="noopener noreferrer"><u>Realtime Agents</u></a> on your dashboard.</p>
-	<div class="flex anchor relative">
-		<h3 id="built-for-flexibility">Built for flexibility</h3>
-		<a href="https://blog.cloudflare.com/#built-for-flexibility" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>What makes Realtime Agents powerful is its flexibility:</p>
-	<ul>
-		<li>
-			<p><b>Many AI provider options</b> - Use the models on Workers AI, OpenAI, Anthropic, or any provider through AI Gateway</p>
-		</li>
-		<li>
-			<p><b>Multiple input/output modes</b> - Accept audio and/or text and respond with audio and/or text</p>
-		</li>
-		<li>
-			<p><b>Stateful coordination</b> - Maintain context across the conversation without managing complex state yourself</p>
-		</li>
-		<li>
-			<p><b>Speed and flexibility</b> - use <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>RealtimeKit</u></a> to manage WebRTC sessions and UI for faster development, or for full control over your stack, you can also connect directly using any standard WebRTC client or raw WebSockets</p>
-		</li>
-		<li>
-			<p><b>Integrate</b> with the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a></p>
-		</li>
-	</ul>
-	<p>During the open beta starting today, Cloudflare Realtime Agents runtime is free to use and works with various AI models:</p>
-	<ul>
-		<li>
-			<p>Speech and Audio: Integration with platforms like ElevenLabs and Deepgram.</p>
-		</li>
-		<li>
-			<p>LLM Inference: Flexible options to use large language models through Cloudflare Workers AI and AI Gateway, connect to third-party models like OpenAi, Gemini, Grok, Claude, or bring your own custom models.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="pipe-raw-webrtc-audio-as-pcm-in-workers">Pipe raw WebRTC audio as PCM in Workers</h2>
-		<a href="https://blog.cloudflare.com/#pipe-raw-webrtc-audio-as-pcm-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For developers who need the most flexibility with their applications beyond Realtime Agents, we're exposing the raw WebRTC audio pipeline directly to Workers.&nbsp;</p>
-	<p>WebRTC audio in Workers works by leveraging Cloudflare’s Realtime SFU, which converts WebRTC audio in Opus codec to PCM and streams it to any WebSocket endpoint you specify. This means you can use Workers to implement:</p>
-	<ul>
-		<li>
-			<p><b>Live transcription</b> - Stream audio from a video call directly to a transcription service</p>
-		</li>
-		<li>
-			<p><b>Custom AI pipelines</b> - Send audio to AI models without setting up complex infrastructure</p>
-		</li>
-		<li>
-			<p><b>Recording and processing</b> - Save, audit, or analyze audio streams in real-time</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2b15xG5EfUiNYLtH8cNRTh/116f1e195cada59a61874c74ee499159/image2.png" alt="" class="kg-image" width="1736" height="692" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="websockets-vs-webrtc-for-voice-ai">WebSockets vs WebRTC for voice AI</h3>
-		<a href="https://blog.cloudflare.com/#websockets-vs-webrtc-for-voice-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>WebSockets and WebRTC can handle audio for AI services, but they work best in different situations. WebSockets are perfect for server-to-server communication and work fine when you don't need super-fast responses, making them great for testing and experimenting. However, if you're building an app where users need real-time conversations with low delay, WebRTC is the better choice.</p>
-	<p>WebRTC has several advantages that make it superior for live audio streaming. It uses UDP instead of TCP, which prevents audio delays caused by lost packets holding up the entire stream (<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking"><u>head of line blocking</u></a> is a common topic discussed on this blog). The Opus audio codec in WebRTC automatically adjusts to network conditions and can handle packet loss gracefully. WebRTC also includes built-in features like echo cancellation and noise reduction that WebSockets would require you to build separately.&nbsp;</p>
-	<p>With this feature, you can use WebRTC for client to server communication and leveraging Cloudflare to convert to familiar WebSockets for server-to-server communication and backend processing.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-power-of-workers-webrtc">The power of Workers + WebRTC</h3>
-		<a href="https://blog.cloudflare.com/#the-power-of-workers-webrtc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When WebRTC audio gets converted to WebSockets, you get PCM audio at the original sample rate, and from there, you can run any task in and out of the Cloudflare developer platform:</p>
-	<ul>
-		<li>
-			<p>Resample audio and send to different AI providers</p>
-		</li>
-		<li>
-			<p>Run WebAssembly-based audio processing</p>
-		</li>
-		<li>
-			<p>Build complex applications with <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Alarms</u></a> and other Workers primitives</p>
-		</li>
-		<li>
-			<p>Deploy containerized processing pipelines with <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Workers Containers</u></a></p>
-		</li>
-	</ul>
-	<p>The WebSocket works bidirectionally, so data sent back on the WebSocket becomes available as a WebRTC track on the Realtime SFU, ready to be consumed within WebRTC.</p>
-	<p>To illustrate this setup, we’ve made a simple <a href="https://github.com/cloudflare/realtime-examples/tree/main/tts-ws" target="_blank" rel="noopener noreferrer"><u>WebRTC application demo</u></a> that uses the ElevenLabs API for&nbsp; text-to-speech.</p>
-	<p>Visit the <a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>Realtime SFU developer docs</u></a> on how to get started.</p>
-	<div class="flex anchor relative">
-		<h2 id="realtime-ai-inference-with-websockets">Realtime AI inference with WebSockets</h2>
-		<a href="https://blog.cloudflare.com/#realtime-ai-inference-with-websockets" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>WebSockets provide the backbone of real-time AI pipelines because it is a low-latency, bidirectional primitive with ubiquitous support in developer tooling, especially for server to server communication. Although HTTP works great for many use cases like chat or batch inference, real-time voice AI needs persistent, low-latency connections when talking to AI inference servers. To support your real-time AI workloads, Workers AI now supports WebSocket connections in select models.</p>
-	<div class="flex anchor relative">
-		<h3 id="launching-with-pipecat-smartturn-v2">Launching with PipeCat SmartTurn V2</h3>
-		<a href="https://blog.cloudflare.com/#launching-with-pipecat-smartturn-v2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The first model with WebSocket support is PipeCat's <a href="https://developers.cloudflare.com/workers-ai/models/smart-turn-v2" target="_blank" rel="noopener noreferrer"><u>smart-turn-v2</u></a> turn detection model — a critical component for natural conversation. Turn detection models determine when a speaker has finished talking and it's appropriate for the AI to respond. Getting this right is the difference between an AI that constantly interrupts and one that feels natural to talk to.</p>
-	<p>Below is an example on how to call smart-turn-v2 running on Workers AI.</p>
-	<pre class="language-Python"><code class="language-Python">"""
-Cloudflare AI WebSocket Inference - With PipeCat's smart-turn-v2
-"""
-
-import asyncio
-import websockets
-import json
-import numpy as np
-
-# Configuration
-ACCOUNT_ID = "your-account-id"
-API_TOKEN = "your-api-token"
-MODEL = "@cf/pipecat-ai/smart-turn-v2"
-
-# WebSocket endpoint
-WEBSOCKET_URL = f"wss://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/{MODEL}?dtype=uint8"
-
-async def run_inference(audio_data: bytes) -&gt; dict:
-    async with websockets.connect(
-        WEBSOCKET_URL,
-        additional_headers={
-            "Authorization": f"Bearer {API_TOKEN}"
-        }
-    ) as websocket:
-        await websocket.send(audio_data)
-        
-        response = await websocket.recv()
-        result = json.loads(response)
-        
-        # Response format: {'is_complete': True, 'probability': 0.87}
-        return result
-
-def generate_test_audio():    
-    noise = np.random.normal(128, 20, 8192).astype(np.uint8)
-    noise = np.clip(noise, 0, 255) 
-    
-    return noise
-
-async def demonstrate_inference():
-    # Generate test audio
-    noise = generate_test_audio()
-    
-    try:
-        print("\nTesting noise...")
-        noise_result = await run_inference(noise.tobytes())
-        print(f"Noise result: {noise_result}")
-        
-    except Exception as e:
-        print(f"Error: {e}")
-
-if __name__ == "__main__":
-    asyncio.run(demonstrate_inference())</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="deepgram-in-workers-ai">Deepgram in Workers AI</h2>
-		<a href="https://blog.cloudflare.com/#deepgram-in-workers-ai" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>On Wednesday, we announced that Deepgram's speech-to-text and text-to-speech models are available on Workers AI, running in Cloudflare locations worldwide. This means:</p>
-	<ul>
-		<li>
-			<p><b>Lower latency</b> - Speech recognition happens at the edge, close to users running in the same network as Workers</p>
-		</li>
-		<li>
-			<p><b>WebRTC audio processing</b> without leaving the Cloudflare network</p>
-		</li>
-		<li>
-			<p><b>State-of-the-art audio ML models</b> powerful, capable, and fast audio models, available directly through Workers AI</p>
-		</li>
-		<li>
-			<p><b>Global scale</b> - leverages Cloudflare’s global network in 330+ cities automatically</p>
-		</li>
-	</ul>
-	<p>Deepgram is a popular choice for voice AI applications. By building your voice AI systems on the Cloudflare platform, you get access to powerful models and the lowest latency infrastructure to give your application a natural, responsive experience.</p>
-	<div class="flex anchor relative">
-		<h3 id="interested-in-other-realtime-ai-models-running-on-cloudflare">Interested in other realtime AI models running on Cloudflare?</h3>
-		<a href="https://blog.cloudflare.com/#interested-in-other-realtime-ai-models-running-on-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you're developing AI models for real-time applications, we want to run them on Cloudflare's network. Whether you have proprietary models or need ultra-low latency inference at scale with open source models reach out to us.</p>
-	<div class="flex anchor relative">
-		<h2 id="get-started-today">Get started today</h2>
-		<a href="https://blog.cloudflare.com/#get-started-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All of these features are available now:</p>
-	<ul>
-		<li>
-			<p><b>Cloudflare Realtime Agents</b> - <a href="https://developers.cloudflare.com/realtime/agents/getting-started" target="_blank" rel="noopener noreferrer"><u>Start testing in beta</u></a></p>
-		</li>
-		<li>
-			<p><b>WebRTC audio as PCM in Workers</b> - <a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>Read the documentation</u></a> and integrate with your applications</p>
-		</li>
-		<li>
-			<p><b>Workers AI WebSocket support</b> - Try out PipeCat’s <a href="https://developers.cloudflare.com/workers-ai/models/smart-turn-v2" target="_blank" rel="noopener noreferrer"><u>smart-turn-v2</u></a> model</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/workers-ai-partner-models"><b><u>Deepgram on Workers AI</u></b></a> - Available now at <a href="https://developers.cloudflare.com/workers-ai/models/aura-1" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/aura-1</u></a> and <a href="https://developers.cloudflare.com/workers-ai/models/nova-3" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/nova-3&nbsp;</u></a></p>
-		</li>
-	</ul>
-	<p>Want to pick the brains of the engineers who built this? Join them for technical deep dives, live demos Q&amp;A at Cloudflare Connect in Las Vegas. Explore the <a href="https://events.cloudflare.com/connect/2025" target="_blank" rel="noopener noreferrer"><u>full schedule and register</u></a>.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wpPvADZYXKpbuqXcJWGfn/0c93500141d1f8dd443c04e5e3d69155/image3.png" alt="" class="kg-image" width="1199" height="230" loading="lazy">
-	</figure>
-	<p>
-	</p>
+<p>The way we interact with AI is fundamentally changing. While text-based interfaces like ChatGPT have shown us what's possible, in terms of interaction, it’s only the beginning. Humans communicate not only by texting, but also talking — we show things, we interrupt and clarify in real-time. Voice AI brings these natural interaction patterns to our applications.</p>
+<p>Today, we're excited to announce new capabilities that make it easier than ever to build real-time, voice-enabled AI applications on Cloudflare's global network. These new features create a complete platform for developers building the next generation of conversational AI experiences or can function as building blocks for more advanced AI agents running across platforms.</p>
+<p>We're launching:</p>
+<ul>
+	<li><strong>Cloudflare Realtime Agents</strong> - A runtime for orchestrating voice AI pipelines at the edge</li>
+	<li><strong>Pipe raw WebRTC audio as PCM in Workers</strong> - You can now connect WebRTC audio directly to your AI models or existing complex media pipelines already built on&nbsp;</li>
+	<li><strong>Workers AI WebSocket support</strong> - Realtime AI inference with models like PipeCat's smart-turn-v2</li>
+	<li><strong>Deepgram on Workers AI</strong> - Speech-to-text and text-to-speech running in over 330 cities worldwide</li>
+</ul>
+<h2>Why realtime AI matters now</h2>
+<p>Today, building voice AI applications is hard. You need to coordinate multiple services such as speech-to-text, language models, text-to-speech while managing complex audio pipelines, handling interruptions, and keeping latency low enough for natural conversation.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="212" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=715&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=640&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=715&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=750&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=828&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=1080&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=1280&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=1430&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2899 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D9VP9A2TWJQP6MWD1Q3K.jpg&amp;w=1920&amp;h=571&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="571" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="212" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Building production voice AI requires orchestrating a complex symphony of technologies. You need low latency speech recognition, intelligent language models that understand context and can handle interruptions, natural-sounding voice synthesis, and all of this needs to happen in under 800 milliseconds — the threshold where conversation feels natural rather than stilted. This latency budget is unforgiving. Every millisecond counts: 40ms for microphone input, 300ms for transcription, 400ms for LLM inference, 150ms for text-to-speech. Any additional latency from poor infrastructure choices or distant servers transforms a delightful experience into a frustrating one.</p>
+<p>That's why we're building real-time AI tools: we want to make real-time voice AI as easy to deploy as a static website. We're also witnessing a critical inflection point where conversational AI moves from experimental demos to production-ready systems that can scale globally. If you’re already a developer in the real-time AI ecosystem, we want to build the best building blocks for you to get the lowest latency by leveraging the 330+ datacenters Cloudflare has built.</p>
+<h2>Introducing Cloudflare Realtime Agents</h2>
+<p>Cloudflare Realtime Agents is a simple runtime for orchestrating voice AI pipelines that run on our global network, as close to your users as possible. Instead of managing complex infrastructure yourself, you can focus on building great conversational experiences.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="597" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=715&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=640&amp;h=534&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=715&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=750&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=828&amp;h=691&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=1080&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=1280&amp;h=1069&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=1430&amp;h=1194&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2899 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HJWANVNR5ERWPYW3KB6G.png&amp;w=1458&amp;h=1218&amp;f=webp" data-lightbox-width="1458" data-lightbox-height="1218" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="597" class="pt-portable-image-media"></div>
+</figure>
+<h3>How it works</h3>
+<p>When a user connects to your voice AI application, here's what happens:</p>
+<ol>
+	<li><strong>WebRTC connection</strong> - Audio streams from the user's device is sent to the nearest Cloudflare location via WebRTC, using Cloudflare RealtimeKit mobile or web SDKs</li>
+	<li><strong>AI pipeline orchestration</strong> - Your pre-configured pipeline runs: speech-to-text → LLM → text-to-speech, with support for interruption detection and turn-taking</li>
+	<li><strong>Your configured runtime options/callbacks/tools run</strong></li>
+	<li><strong>Response delivery</strong> - Generated audio streams back to the user with minimal latency</li>
+</ol>
+<p>The magic is in how we've designed this as composable building blocks. You're not locked into a rigid pipeline — you can configure data flows, add tee and join operations, and control exactly how your AI agent behaves.</p>
+<p>Take a look at the <code>MyTextHandler</code> function from the above diagram, for example. It’s just a function that takes in text and returns text back, inserted after speech-to-text and before text-to-speech:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> MyTextHandler</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> TextComponent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">	env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		super</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.env </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env;</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> onTranscript</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">text</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">response</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/meta/llama-3.1-8b-instruct'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">			prompt: </span><span class="sk-032f62-99ffe4">"You are a wikipedia bot, answer the user query:"</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> text,</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">speak</span><span class="sk-24292e-fff">(response</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Your agent is a JavaScript class that extends RealtimeAgent, where you initialize a pipeline consisting of the various text-to-speech, speech-to-text, text-to-text and even speech-to-speech transformations.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> RealtimeAgent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectState</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		super</span><span class="sk-24292e-fff">(ctx, env);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> init</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">agentId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff"> ,</span><span class="sk-e36209-fff">meetingId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">authToken</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">workerUrl</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">accountId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">apiToken</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Construct your text processor for generating responses to text</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> textHandler</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MyTextHandler</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Construct a Meeting object to join the RTK meeting</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> transport</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> RealtimeKitTransport</span><span class="sk-24292e-fff">(meetingId, authToken, [</span></span>
+<span class="line"><span class="sk-24292e-fff">			{</span></span>
+<span class="line"><span class="sk-24292e-fff">				media_kind: </span><span class="sk-032f62-99ffe4">'audio'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">				stream_kind: </span><span class="sk-032f62-99ffe4">'microphone'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">			},</span></span>
+<span class="line"><span class="sk-24292e-fff">		]);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">meeting</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> transport;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Construct a pipeline to take in meeting audio, transcribe it using</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Deepgram, and pass our generated responses through ElevenLabs to</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// be spoken in the meeting</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">initPipeline</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">			[transport, </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> DeepgramSTT</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">DEEPGRAM_API_KEY</span><span class="sk-24292e-fff">), textHandler, </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> ElevenLabsTTS</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">ELEVENLABS_API_KEY</span><span class="sk-24292e-fff">), transport],</span></span>
+<span class="line"><span class="sk-24292e-fff">			agentId,</span></span>
+<span class="line"><span class="sk-24292e-fff">			workerUrl,</span></span>
+<span class="line"><span class="sk-24292e-fff">			accountId,</span></span>
+<span class="line"><span class="sk-24292e-fff">			apiToken,</span></span>
+<span class="line"><span class="sk-24292e-fff">		);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// The RTK meeting object is accessible to us, so we can register handlers</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// on various events like participant joins/leaves, chat, etc.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// This is optional</span></span>
+<span class="line"><span class="sk-24292e-fff">		meeting.participants.joined.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'participantJoined'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">participant</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			textHandler.</span><span class="sk-6f42c1-ffc799">speak</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Participant Joined ${</span><span class="sk-24292e-fff">participant</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"><span class="sk-24292e-fff">		meeting.participants.joined.</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'participantLeft'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">participant</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			textHandler.</span><span class="sk-6f42c1-ffc799">speak</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Participant Left ${</span><span class="sk-24292e-fff">participant</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Make sure to actually join the meeting after registering all handlers</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> meeting.rtkMeeting.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> deinit</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Add any other cleanup logic required</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">deinitPipeline</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>View a full example in the <a href="https://developers.cloudflare.com/realtime/agents/getting-started" target="_blank" rel="noopener noreferrer"><u>developer docs</u></a> and get your own Realtime Agent running. View <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Frealtime%2Fagents" target="_blank" rel="noopener noreferrer"><u>Realtime Agents</u></a> on your dashboard.</p>
+<h3>Built for flexibility</h3>
+<p>What makes Realtime Agents powerful is its flexibility:</p>
+<ul>
+	<li><strong>Many AI provider options</strong> - Use the models on Workers AI, OpenAI, Anthropic, or any provider through AI Gateway</li>
+	<li><strong>Multiple input/output modes</strong> - Accept audio and/or text and respond with audio and/or text</li>
+	<li><strong>Stateful coordination</strong> - Maintain context across the conversation without managing complex state yourself</li>
+	<li><strong>Speed and flexibility</strong> - use <a href="https://realtime.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>RealtimeKit</u></a> to manage WebRTC sessions and UI for faster development, or for full control over your stack, you can also connect directly using any standard WebRTC client or raw WebSockets</li>
+	<li><strong>Integrate</strong> with the <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agents SDK</u></a></li>
+</ul>
+<p>During the open beta starting today, Cloudflare Realtime Agents runtime is free to use and works with various AI models:</p>
+<ul>
+	<li>Speech and Audio: Integration with platforms like ElevenLabs and Deepgram.</li>
+	<li>LLM Inference: Flexible options to use large language models through Cloudflare Workers AI and AI Gateway, connect to third-party models like OpenAi, Gemini, Grok, Claude, or bring your own custom models.</li>
+</ul>
+<h2>Pipe raw WebRTC audio as PCM in Workers</h2>
+<p>For developers who need the most flexibility with their applications beyond Realtime Agents, we're exposing the raw WebRTC audio pipeline directly to Workers.&nbsp;</p>
+<p>WebRTC audio in Workers works by leveraging Cloudflare’s Realtime SFU, which converts WebRTC audio in Opus codec to PCM and streams it to any WebSocket endpoint you specify. This means you can use Workers to implement:</p>
+<ul>
+	<li><strong>Live transcription</strong> - Stream audio from a video call directly to a transcription service</li>
+	<li><strong>Custom AI pipelines</strong> - Send audio to AI models without setting up complex infrastructure</li>
+	<li><strong>Recording and processing</strong> - Save, audit, or analyze audio streams in real-time</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="285" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=715&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=640&amp;h=255&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=715&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=750&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=828&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=1080&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=1280&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=1430&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2899 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45DKACFRK3963J6KBFJRYE.png&amp;w=1736&amp;h=692&amp;f=webp" data-lightbox-width="1736" data-lightbox-height="692" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="285" class="pt-portable-image-media"></div>
+</figure>
+<h3>WebSockets vs WebRTC for voice AI</h3>
+<p>WebSockets and WebRTC can handle audio for AI services, but they work best in different situations. WebSockets are perfect for server-to-server communication and work fine when you don't need super-fast responses, making them great for testing and experimenting. However, if you're building an app where users need real-time conversations with low delay, WebRTC is the better choice.</p>
+<p>WebRTC has several advantages that make it superior for live audio streaming. It uses UDP instead of TCP, which prevents audio delays caused by lost packets holding up the entire stream (<a href="https://blog.cloudflare.com/the-road-to-quic/#head-of-line-blocking" target="_blank" rel="noopener noreferrer"><u>head of line blocking</u></a> is a common topic discussed on this blog). The Opus audio codec in WebRTC automatically adjusts to network conditions and can handle packet loss gracefully. WebRTC also includes built-in features like echo cancellation and noise reduction that WebSockets would require you to build separately.&nbsp;</p>
+<p>With this feature, you can use WebRTC for client to server communication and leveraging Cloudflare to convert to familiar WebSockets for server-to-server communication and backend processing.</p>
+<h3>The power of Workers + WebRTC</h3>
+<p>When WebRTC audio gets converted to WebSockets, you get PCM audio at the original sample rate, and from there, you can run any task in and out of the Cloudflare developer platform:</p>
+<ul>
+	<li>Resample audio and send to different AI providers</li>
+	<li>Run WebAssembly-based audio processing</li>
+	<li>Build complex applications with <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>, <a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Alarms</u></a> and other Workers primitives</li>
+	<li>Deploy containerized processing pipelines with <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Workers Containers</u></a></li>
+</ul>
+<p>The WebSocket works bidirectionally, so data sent back on the WebSocket becomes available as a WebRTC track on the Realtime SFU, ready to be consumed within WebRTC.</p>
+<p>To illustrate this setup, we’ve made a simple <a href="https://github.com/cloudflare/realtime-examples/tree/main/tts-ws" target="_blank" rel="noopener noreferrer"><u>WebRTC application demo</u></a> that uses the ElevenLabs API for&nbsp; text-to-speech.</p>
+<p>Visit the <a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>Realtime SFU developer docs</u></a> on how to get started.</p>
+<h2>Realtime AI inference with WebSockets</h2>
+<p>WebSockets provide the backbone of real-time AI pipelines because it is a low-latency, bidirectional primitive with ubiquitous support in developer tooling, especially for server to server communication. Although HTTP works great for many use cases like chat or batch inference, real-time voice AI needs persistent, low-latency connections when talking to AI inference servers. To support your real-time AI workloads, Workers AI now supports WebSocket connections in select models.</p>
+<h3>Launching with PipeCat SmartTurn V2</h3>
+<p>The first model with WebSocket support is PipeCat's <a href="https://developers.cloudflare.com/workers-ai/models/smart-turn-v2" target="_blank" rel="noopener noreferrer"><u>smart-turn-v2</u></a> turn detection model — a critical component for natural conversation. Turn detection models determine when a speaker has finished talking and it's appropriate for the AI to respond. Getting this right is the difference between an AI that constantly interrupts and one that feels natural to talk to.</p>
+<p>Below is an example on how to call smart-turn-v2 running on Workers AI.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"""</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Cloudflare AI WebSocket Inference - With PipeCat's smart-turn-v2</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"""</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> asyncio</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> websockets</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> json</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> numpy </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> np</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Configuration</span></span>
+<span class="line"><span class="sk-005cc5-fff">ACCOUNT_ID</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "your-account-id"</span></span>
+<span class="line"><span class="sk-005cc5-fff">API_TOKEN</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "your-api-token"</span></span>
+<span class="line"><span class="sk-005cc5-fff">MODEL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "@cf/pipecat-ai/smart-turn-v2"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># WebSocket endpoint</span></span>
+<span class="line"><span class="sk-005cc5-fff">WEBSOCKET_URL</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> f</span><span class="sk-032f62-99ffe4">"wss://api.cloudflare.com/client/v4/accounts/</span><span class="sk-005cc5-ffc799">{</span><span class="sk-005cc5-fff">ACCOUNT_ID</span><span class="sk-005cc5-ffc799">}</span><span class="sk-032f62-99ffe4">/ai/run/</span><span class="sk-005cc5-ffc799">{</span><span class="sk-005cc5-fff">MODEL</span><span class="sk-005cc5-ffc799">}</span><span class="sk-032f62-99ffe4">?dtype=uint8"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> def</span><span class="sk-6f42c1-ffc799"> run_inference</span><span class="sk-24292e-fff">(audio_data: </span><span class="sk-005cc5-ffc799">bytes</span><span class="sk-24292e-fff">) -&gt; </span><span class="sk-005cc5-ffc799">dict</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-d73a49-a0a0a0"> with</span><span class="sk-24292e-fff"> websockets.connect(</span></span>
+<span class="line"><span class="sk-005cc5-fff">        WEBSOCKET_URL</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-e36209-fff">        additional_headers</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "Authorization"</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">f</span><span class="sk-032f62-99ffe4">"Bearer </span><span class="sk-005cc5-ffc799">{</span><span class="sk-005cc5-fff">API_TOKEN</span><span class="sk-005cc5-ffc799">}</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ) </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> websocket:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> websocket.send(audio_data)</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-24292e-fff">        response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> websocket.recv()</span></span>
+<span class="line"><span class="sk-24292e-fff">        result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> json.loads(response)</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        # Response format: {'is_complete': True, 'probability': 0.87}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> result</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> generate_test_audio</span><span class="sk-24292e-fff">():    </span></span>
+<span class="line"><span class="sk-24292e-fff">    noise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> np.random.normal(</span><span class="sk-005cc5-ffc799">128</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">20</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">8192</span><span class="sk-24292e-fff">).astype(np.uint8)</span></span>
+<span class="line"><span class="sk-24292e-fff">    noise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> np.clip(noise, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">255</span><span class="sk-24292e-fff">) </span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> noise</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> def</span><span class="sk-6f42c1-ffc799"> demonstrate_inference</span><span class="sk-24292e-fff">():</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # Generate test audio</span></span>
+<span class="line"><span class="sk-24292e-fff">    noise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> generate_test_audio()</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        print</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">Testing noise..."</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        noise_result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> run_inference(noise.tobytes())</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        print</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">f</span><span class="sk-032f62-99ffe4">"Noise result: </span><span class="sk-005cc5-ffc799">{</span><span class="sk-24292e-fff">noise_result</span><span class="sk-005cc5-ffc799">}</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    except</span><span class="sk-005cc5-ffc799"> Exception</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> e:</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        print</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">f</span><span class="sk-032f62-99ffe4">"Error: </span><span class="sk-005cc5-ffc799">{</span><span class="sk-24292e-fff">e</span><span class="sk-005cc5-ffc799">}</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-005cc5-fff"> __name__</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-032f62-99ffe4"> "__main__"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    asyncio.run(demonstrate_inference())</span></span></code></pre>
+</div>
+<h2>Deepgram in Workers AI</h2>
+<p>On Wednesday, we announced that Deepgram's speech-to-text and text-to-speech models are available on Workers AI, running in Cloudflare locations worldwide. This means:</p>
+<ul>
+	<li><strong>Lower latency</strong> - Speech recognition happens at the edge, close to users running in the same network as Workers</li>
+	<li><strong>WebRTC audio processing</strong> without leaving the Cloudflare network</li>
+	<li><strong>State-of-the-art audio ML models</strong> powerful, capable, and fast audio models, available directly through Workers AI</li>
+	<li><strong>Global scale</strong> - leverages Cloudflare’s global network in 330+ cities automatically</li>
+</ul>
+<p>Deepgram is a popular choice for voice AI applications. By building your voice AI systems on the Cloudflare platform, you get access to powerful models and the lowest latency infrastructure to give your application a natural, responsive experience.</p>
+<h3>Interested in other realtime AI models running on Cloudflare?</h3>
+<p>If you're developing AI models for real-time applications, we want to run them on Cloudflare's network. Whether you have proprietary models or need ultra-low latency inference at scale with open source models reach out to us.</p>
+<h2>Get started today</h2>
+<p>All of these features are available now:</p>
+<ul>
+	<li><strong>Cloudflare Realtime Agents</strong> - <a href="https://developers.cloudflare.com/realtime/agents/getting-started" target="_blank" rel="noopener noreferrer"><u>Start testing in beta</u></a></li>
+	<li><strong>WebRTC audio as PCM in Workers</strong> - <a href="https://developers.cloudflare.com/realtime/sfu" target="_blank" rel="noopener noreferrer"><u>Read the documentation</u></a> and integrate with your applications</li>
+	<li><strong>Workers AI WebSocket support</strong> - Try out PipeCat’s <a href="https://developers.cloudflare.com/workers-ai/models/smart-turn-v2" target="_blank" rel="noopener noreferrer"><u>smart-turn-v2</u></a> model</li>
+	<li><a href="https://blog.cloudflare.com/workers-ai-partner-models" target="_blank" rel="noopener noreferrer"><strong><u>Deepgram on Workers AI</u></strong></a> - Available now at <a href="https://developers.cloudflare.com/workers-ai/models/aura-1" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/aura-1</u></a> and <a href="https://developers.cloudflare.com/workers-ai/models/nova-3" target="_blank" rel="noopener noreferrer"><u>@cf/deepgram/nova-3&nbsp;</u></a></li>
+</ul>
+<p>Want to pick the brains of the engineers who built this? Join them for technical deep dives, live demos Q&amp;A at Cloudflare Connect in Las Vegas. Explore the <a href="https://events.cloudflare.com/connect/2025" target="_blank" rel="noopener noreferrer"><u>full schedule and register</u></a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="137" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=715&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=640&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=715&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=750&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=828&amp;h=159&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=1080&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=1280&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=1430&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2899 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GAM1AN0AXQ0JGZGHM9P9.png&amp;w=1199&amp;h=230&amp;f=webp" data-lightbox-width="1199" data-lightbox-height="230" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="137" class="pt-portable-image-media"></div>
+</figure>
+<p><br></p>

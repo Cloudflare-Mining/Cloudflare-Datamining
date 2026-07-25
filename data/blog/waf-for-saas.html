@@ -1,136 +1,77 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/waf-for-saas">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/waf-for-saas">日本語</a> and <a href="https://blog.cloudflare.com/it-it/waf-for-saas">Italiano</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/46uWDdxLpMjw8fL2eI1OJO/1618bb7a05c716c0d57b4220e86b7fa6/waf-for-saas.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Some of the largest Software-as-a-Service (SaaS) providers use Cloudflare as the underlying infrastructure to provide their customers with fast loading times, unparalleled redundancy, and the strongest security — all through our <a href="https://blog.cloudflare.com/cloudflare-for-saas">Cloudflare for SaaS</a> product. Today, we’re excited to give our SaaS providers new tools that will help them enhance the security of their customers’ applications.</p>
-	<p>For our Enterprise customers, we’re bringing WAF for SaaS — the ability for SaaS providers to easily create and deploy different sets of WAF rules for their customers. This gives SaaS providers the ability to segment customers into different groups based on their security requirements.</p>
-	<p>For developers who are getting their application off the ground, we’re thrilled to announce a Free tier of Cloudflare for SaaS for the Free, Pro, and Biz plans, giving our customers 100 custom hostnames free of charge to provision and test across their account. In addition to that, we want to make it easier for developers to scale their applications, so we’re happy to announce that we are lowering our custom hostname price from \$2 to \$0.10 a month.</p>
-	<p>But that’s not all! At Cloudflare, we believe security should be available for all. That’s why we’re extending a new selection of <a href="https://blog.cloudflare.com/waf-for-everyone">WAF rules to Free customers</a> — giving all customers the ability to secure both their applications and their customers’.</p>
-	<div class="flex anchor relative">
-		<h2 id="making-saas-infrastructure-available-to-all">Making SaaS infrastructure available to all</h2>
-		<a href="https://blog.cloudflare.com/#making-saas-infrastructure-available-to-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At Cloudflare, we take pride in our Free tier which gives any customer the ability to make use of our Network to stay secure and online. We are eager to extend the same support to customers looking to build a new SaaS offering, giving them a Free tier of Cloudflare for SaaS and allowing them to onboard 100 custom hostnames at no charge. The 100 custom hostnames will be automatically allocated to new and existing Cloudflare for SaaS customers. Beyond that, we are also dropping the custom hostname price from \$2 to \$0.10 a month, giving SaaS providers the power to onboard and scale their application. Existing Cloudflare for SaaS customers will see the updated custom hostname pricing reflected in their next billing cycle.</p>
-	<p>Cloudflare for SaaS started as a <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers" target="_blank" rel="noopener noreferrer">TLS certificate issuance product for SaaS providers</a>. Now, we’re helping our customers go a step further in keeping their customers safe and secure.</p>
-	<div class="flex anchor relative">
-		<h2 id="introducing-waf-for-saas">Introducing WAF for SaaS</h2>
-		<a href="https://blog.cloudflare.com/#introducing-waf-for-saas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>SaaS providers may have varying customer bases — from mom-and-pop shops to well established banks. No matter the customer, it's important that as a SaaS provider you’re able to extend the best protection for your customers, regardless of their size.</p>
-	<p>At Cloudflare, we have spent years building out the best Web Application Firewall for our customers. From managed rules that offer advanced zero-day vulnerability protections to OWASP rules that block popular attack techniques, we have given our customers the best tools to keep themselves protected. Now, we want to hand off the tools to our SaaS providers who are responsible for keeping their customer base safe and secure.</p>
-	<p>One of the benefits of Cloudflare for SaaS is that SaaS providers can configure security rules and settings on their SaaS zone which their customers automatically inherit. But one size does not fit all, which is why we are excited to give Enterprise customers the power to create various sets of WAF rules that they can then extend as different security packages to their customers — giving end users differing levels of protection depending on their needs.</p>
-	<div class="flex anchor relative">
-		<h2 id="getting-started">Getting Started</h2>
-		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>WAF for SaaS can be easily set up. We have an example below that shows how you can configure different buckets of WAF rules to your various customers.</p>
-	<p>There’s no limit to the number of rulesets that you can create, so feel free to create a handful of configurations for your customers, or deploy one ruleset per customer — whatever works for you!</p>
-	<div class="flex anchor relative">
-		<h2 id="end-to-end-example">End-to-end example</h2>
-		<a href="https://blog.cloudflare.com/#end-to-end-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="step-1-define-custom-hostname">Step 1 - Define custom hostname</h3>
-		<a href="https://blog.cloudflare.com/#step-1-define-custom-hostname" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare for SaaS customers define their customer’s domains by creating custom hostnames. Custom hostnames indicate which domains need to be routed to the SaaS provider’s origin. Custom hostnames can define specific domains, like <code>example.com</code>, or they can extend to wildcards like <code>*.example.com</code> which allows subdomains under example.com to get routed to the SaaS service. WAF for SaaS supports both types of custom hostnames, so that SaaS providers have flexibility in choosing the scope of their protection.</p>
-	<p>The first step is to create a custom hostname to define your customer’s domain. This can be done through the dashboard or the API.</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames" \
-     -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
-     -H "Content-Type: application/json" \
-     --data '{
-
-"Hostname":{“example.com”},
-"Ssl":{wildcard: true}
-}'</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="step-2-associate-custom-metadata-to-a-custom-hostname">Step 2 - Associate custom metadata to a custom hostname</h3>
-		<a href="https://blog.cloudflare.com/#step-2-associate-custom-metadata-to-a-custom-hostname" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Next, create an association between the custom hostnames — your customer’s domain — and the firewall ruleset that you’d like to attach to it.</p>
-	<p>This is done by associating a JSON blob to a custom hostname. Our product, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata" target="_blank" rel="noopener noreferrer">Custom Metadata</a> allows customers to easily do this via API.</p>
-	<p>In the example below, a JSON blob with two fields (“customer_id” and “security_level”) will be associated to each request for <code>*.example.com</code> and <code>example.com</code>.</p>
-	<p>There is no predetermined schema for custom metadata. Field names and structure are fully customisable based on our customer’s needs. In this example, we have chosen the tag “security_level” to which we expect to assign three values (low, medium or high). These will, in turn, trigger three different sets of rules.</p>
-	<pre class="language-bash"><code class="language-bash">curl -sXPATCH "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"\
-    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
-    -H "Content-Type: application/json"\
-    -d '{
-"Custom_metadata":{
-"customer_id":"12345",
-“security_level”: “low”
-}
-}'</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="step-3-trigger-security-products-based-on-tags">Step 3 - Trigger security products based on tags</h3>
-		<a href="https://blog.cloudflare.com/#step-3-trigger-security-products-based-on-tags" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, you can trigger a rule based on the custom hostname. The custom metadata field e.g. “security_level” is available in the Ruleset Engine where the WAF runs. In this example, “security_level” can be used to trigger different configurations of products such as WAF, Firewall Rules, Advanced Rate Limiting and Transform Rules.</p>
-	<p>Rules can be built through the dashboard or via the API, as shown below. Here, a rate limiting rule is triggered on traffic with “security_level” set to <i>low</i>.</p>
-	<pre class="language-bash"><code class="language-bash">curl -X PUT "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint" \
-    -H "X-Auth-Email: {email}" -H "X-Auth-Key: {key}"\
-    -H "Content-Type: application/json"\
-    -d '{
-
-"rules": [
-              {
-                "action": "block",
-                "ratelimit": {
-                  "characteristics": [
-                    "cf.colo.id",
-                    "ip.src"
-                  ],
-                  "period": 10,
-                  "requests_per_period": 2,
-                  "mitigation_timeout": 60
-                },
-                "expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""
-              }
-            ]
-          }}'</code></pre>
-	<p>If you’d like to learn more about our Advanced Rate Limiting rules, check out our <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3t61u0EnyFpfimgd7J5QPr/14082a32a9be92818d799d478c6f8671/image2-30.png" alt="" class="kg-image" width="1801" height="599" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re excited to be the provider for our SaaS customers’ infrastructure needs. From custom domains to T<a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">LS certificates</a> to Web Application Firewall, we’re here to help. Sign up for Cloudflare for SaaS today, or if you’re an Enterprise customer, reach out to your account team to get started with WAF for SaaS.</p>
+<p>Some of the largest Software-as-a-Service (SaaS) providers use Cloudflare as the underlying infrastructure to provide their customers with fast loading times, unparalleled redundancy, and the strongest security — all through our <a href="https://blog.cloudflare.com/cloudflare-for-saas">Cloudflare for SaaS</a> product. Today, we’re excited to give our SaaS providers new tools that will help them enhance the security of their customers’ applications.</p>
+<p>For our Enterprise customers, we’re bringing WAF for SaaS — the ability for SaaS providers to easily create and deploy different sets of WAF rules for their customers. This gives SaaS providers the ability to segment customers into different groups based on their security requirements.</p>
+<p>For developers who are getting their application off the ground, we’re thrilled to announce a Free tier of Cloudflare for SaaS for the Free, Pro, and Biz plans, giving our customers 100 custom hostnames free of charge to provision and test across their account. In addition to that, we want to make it easier for developers to scale their applications, so we’re happy to announce that we are lowering our custom hostname price from $2 to $0.10 a month.</p>
+<p>But that’s not all! At Cloudflare, we believe security should be available for all. That’s why we’re extending a new selection of <a href="https://blog.cloudflare.com/waf-for-everyone">WAF rules to Free customers</a> — giving all customers the ability to secure both their applications and their customers’.</p>
+<h2>Making SaaS infrastructure available to all</h2>
+<p>At Cloudflare, we take pride in our Free tier which gives any customer the ability to make use of our Network to stay secure and online. We are eager to extend the same support to customers looking to build a new SaaS offering, giving them a Free tier of Cloudflare for SaaS and allowing them to onboard 100 custom hostnames at no charge. The 100 custom hostnames will be automatically allocated to new and existing Cloudflare for SaaS customers. Beyond that, we are also dropping the custom hostname price from $2 to $0.10 a month, giving SaaS providers the power to onboard and scale their application. Existing Cloudflare for SaaS customers will see the updated custom hostname pricing reflected in their next billing cycle.</p>
+<p>Cloudflare for SaaS started as a <a href="https://www.cloudflare.com/application-services/products/ssl-for-saas-providers" target="_blank" rel="noopener noreferrer">TLS certificate issuance product for SaaS providers</a>. Now, we’re helping our customers go a step further in keeping their customers safe and secure.</p>
+<h2>Introducing WAF for SaaS</h2>
+<p>SaaS providers may have varying customer bases — from mom-and-pop shops to well established banks. No matter the customer, it's important that as a SaaS provider you’re able to extend the best protection for your customers, regardless of their size.</p>
+<p>At Cloudflare, we have spent years building out the best Web Application Firewall for our customers. From managed rules that offer advanced zero-day vulnerability protections to OWASP rules that block popular attack techniques, we have given our customers the best tools to keep themselves protected. Now, we want to hand off the tools to our SaaS providers who are responsible for keeping their customer base safe and secure.</p>
+<p>One of the benefits of Cloudflare for SaaS is that SaaS providers can configure security rules and settings on their SaaS zone which their customers automatically inherit. But one size does not fit all, which is why we are excited to give Enterprise customers the power to create various sets of WAF rules that they can then extend as different security packages to their customers — giving end users differing levels of protection depending on their needs.</p>
+<h2>Getting Started</h2>
+<p>WAF for SaaS can be easily set up. We have an example below that shows how you can configure different buckets of WAF rules to your various customers.</p>
+<p>There’s no limit to the number of rulesets that you can create, so feel free to create a handful of configurations for your customers, or deploy one ruleset per customer — whatever works for you!</p>
+<h2>End-to-end example</h2>
+<h3>Step 1 - Define custom hostname</h3>
+<p>Cloudflare for SaaS customers define their customer’s domains by creating custom hostnames. Custom hostnames indicate which domains need to be routed to the SaaS provider’s origin. Custom hostnames can define specific domains, like <code>example.com</code>, or they can extend to wildcards like <code>*.example.com</code> which allows subdomains under example.com to get routed to the SaaS service. WAF for SaaS supports both types of custom hostnames, so that SaaS providers have flexibility in choosing the scope of their protection.</p>
+<p>The first step is to create a custom hostname to define your customer’s domain. This can be done through the dashboard or the API.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {email}"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {key}"</span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">"Hostname":{“example.com”},</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"Ssl":{wildcard: true}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
 </div>
+<h3>Step 2 - Associate custom metadata to a custom hostname</h3>
+<p>Next, create an association between the custom hostnames — your customer’s domain — and the firewall ruleset that you’d like to attach to it.</p>
+<p>This is done by associating a JSON blob to a custom hostname. Our product, <a href="https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-metadata" target="_blank" rel="noopener noreferrer">Custom Metadata</a> allows customers to easily do this via API.</p>
+<p>In the example below, a JSON blob with two fields (“customer_id” and “security_level”) will be associated to each request for <code>*.example.com</code> and <code>example.com</code>.</p>
+<p>There is no predetermined schema for custom metadata. Field names and structure are fully customisable based on our customer’s needs. In this example, we have chosen the tag “security_level” to which we expect to assign three values (low, medium or high). These will, in turn, trigger three different sets of rules.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -sXPATCH</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/zones/{zone:id}/custom_hostnames/{custom_hostname:id}"</span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {email}"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {key}"</span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"Custom_metadata":{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"customer_id":"12345",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">“security_level”: “low”</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}'</span></span></code></pre>
+</div>
+<h3>Step 3 - Trigger security products based on tags</h3>
+<p>Finally, you can trigger a rule based on the custom hostname. The custom metadata field e.g. “security_level” is available in the Ruleset Engine where the WAF runs. In this example, “security_level” can be used to trigger different configurations of products such as WAF, Firewall Rules, Advanced Rate Limiting and Transform Rules.</p>
+<p>Rules can be built through the dashboard or via the API, as shown below. Here, a rate limiting rule is triggered on traffic with “security_level” set to <em>low</em>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/zones/{zone:id}/rulesets/phases/http_ratelimit/entrypoint"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {email}"</span><span class="sk-005cc5-99ffe4"> -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {key}"</span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">"rules": [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "action": "block",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "ratelimit": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  "characteristics": [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "cf.colo.id",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "ip.src"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  "period": 10,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  "requests_per_period": 2,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                  "mitigation_timeout": 60</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "expression": "lookup_json_string(cf.hostname.metadata, \"security_level\") eq \"low\" and http.request.uri contains \"login\""</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            ]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          }}'</span></span></code></pre>
+</div>
+<p>If you’d like to learn more about our Advanced Rate Limiting rules, check out our <a href="https://developers.cloudflare.com/waf/custom-rules/rate-limiting" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="238" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=715&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=640&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=715&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=750&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=828&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=1080&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=1280&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=1430&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-949 Embedded Image - A7BVks" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BFJ238R31WJHCCP4ZJWN.png&amp;w=1801&amp;h=599&amp;f=webp" data-lightbox-width="1801" data-lightbox-height="599" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="238" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>Conclusion</h2>
+<p>We’re excited to be the provider for our SaaS customers’ infrastructure needs. From custom domains to T<a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">LS certificates</a> to Web Application Firewall, we’re here to help. Sign up for Cloudflare for SaaS today, or if you’re an Enterprise customer, reach out to your account team to get started with WAF for SaaS.</p>

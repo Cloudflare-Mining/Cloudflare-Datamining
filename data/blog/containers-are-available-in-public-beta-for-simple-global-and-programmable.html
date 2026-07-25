@@ -1,297 +1,209 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/LMNkP0jBIJwYeaNwiLhqU/804dab58f328e8a30069f81793d47bec/image1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>We’re excited to announce that <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025"><u>Cloudflare Containers</u></a> are now available in beta for all users on paid plans.</p>
-	<p>You can now run new kinds of applications alongside your Workers. From media and data processing at the edge, to backend services in any language, to CLI tools in batch workloads — Containers open up a world of possibilities.</p>
-	<p>Containers are tightly integrated with Workers and the rest of the developer platform, which means that:</p>
-	<ul>
-		<li>
-			<p>Your workflow stays <b>simple</b>: just define a Container in a few lines of code, and run<code> wrangler deploy</code>, just like you would with a Worker.</p>
-		</li>
-		<li>
-			<p>Containers are <b>global: </b>as with Workers, you just deploy to Region:Earth. No need to manage configs across 5 different regions for a global app.</p>
-		</li>
-		<li>
-			<p>You can <b>use the right tool for the job</b>: routing requests between Workers and Containers is easy. Use a Worker when you need to be ultra light-weight and scalable. Use a Container when you need more power and flexibility.</p>
-		</li>
-		<li>
-			<p>Containers are <b>programmable</b>: container instances are spun up on-demand and controlled by Workers code. If you need custom logic, just write some JavaScript instead of spending time chaining together API calls or writing Kubernetes operators.</p>
-		</li>
-	</ul>
-	<p>Want to try it today? Deploy your first Container-enabled Worker:</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fcontainers-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+<p>We’re excited to announce that <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a> are now available in beta for all users on paid plans.</p>
+<p>You can now run new kinds of applications alongside your Workers. From media and data processing at the edge, to backend services in any language, to CLI tools in batch workloads — Containers open up a world of possibilities.</p>
+<p>Containers are tightly integrated with Workers and the rest of the developer platform, which means that:</p>
+<ul>
+	<li>Your workflow stays <strong>simple</strong>: just define a Container in a few lines of code, and run<code> wrangler deploy</code>, just like you would with a Worker.</li>
+	<li>Containers are <strong>global: </strong>as with Workers, you just deploy to Region:Earth. No need to manage configs across 5 different regions for a global app.</li>
+	<li>You can <strong>use the right tool for the job</strong>: routing requests between Workers and Containers is easy. Use a Worker when you need to be ultra light-weight and scalable. Use a Container when you need more power and flexibility.</li>
+	<li>Containers are <strong>programmable</strong>: container instances are spun up on-demand and controlled by Workers code. If you need custom logic, just write some JavaScript instead of spending time chaining together API calls or writing Kubernetes operators.</li>
+</ul>
+<p>Want to try it today? Deploy your first Container-enabled Worker:</p>
+<div id="html-block-kt" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fcontainers-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
 	<p></p>
-	<div class="flex anchor relative">
-		<h2 id="a-tour-of-containers">A tour of Containers</h2>
-		<a href="https://blog.cloudflare.com/#a-tour-of-containers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s take a deeper look at Containers, using an example use case: code sandboxing.</p>
-	<p>Let’s imagine that you want to run user-generated (or AI-generated) code as part of a platform you’re building. To do this, you want to spin up containers on demand. Each user needs their own isolated container, the users are distributed globally, and you need to start each container quickly so the users aren’t waiting.</p>
-	<p>You can set this up easily on Cloudflare Containers.</p>
-	<div class="flex anchor relative">
-		<h4 id="configuring-a-container">Configuring a Container</h4>
-		<a href="https://blog.cloudflare.com/#configuring-a-container" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In your Worker, use the <a href="https://github.com/cloudflare/containers" target="_blank" rel="noopener noreferrer"><u>Container class</u></a> and <a href="https://developers.cloudflare.com//workers/wrangler/configuration/#containers" target="_blank" rel="noopener noreferrer"><u>wrangler.jsonc</u></a> to declare some basic configuration, such as your Container’s default port, a sleep timeout, and which image to use, then route to it via the Worker.</p>
-	<p>For each unique ID passed to the Container’s binding, Cloudflare will spin up a new Container instance and route requests to it. When a new instance is requested, Cloudflare picks the best location across our global network where we’ve pre-provisioned a ready-to-go container. This means that you can deploy a container close to an end user no matter where they are. And the initial container start takes just a few seconds. You don’t have to worry about routing, provisioning, or scaling.</p>
-	<p>This example Worker will route requests to a unique container instance for each sandbox ID given at the path <code>/sandbox/ID</code> and will be handled by standard Worker JavaScript otherwise:</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">export class MyContainer extends Container {
-  defaultPort = 8080; // The default port for the container to listen on
-  sleepAfter = '5m'; // Sleep the container if no requests are made in this timeframe
-}
-
-export default {
-  async fetch(request, env) {
-    const pathname = new URL(request.url).pathname;
-
-    // handle request with an on-demand container instance
-    if (pathname.startsWith('/sandbox/')) {
-      const sessionId = pathname.split("/")[2]
-      const containerInstance = getContainer(env.CONTAINER_SANDBOX, sessionId)
-      return await containerInstance.fetch(request);
-    }
-
-    // handle request with my Worker code otherwise
-    return myWorkerRequestHandler(request);
-  },
-};</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="familiar-and-easy-development-workflow-with-wrangler-dev">Familiar and easy development workflow with <code>wrangler dev</code></h4>
-		<a href="https://blog.cloudflare.com/#familiar-and-easy-development-workflow-with-wrangler-dev" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To configure which container image to use, you can provide an image URL in wrangler config or a path to a local Dockerfile.&nbsp;</p>
-	<p>This config tells wrangler to use a locally defined image:</p>
-	<pre class="language-JSON"><code class="language-JSON">"containers": [
-  {
-    "class_name": "ContainerSandbox",
-    "image": "./Dockerfile",
-    "max_instances": 80,
-    "instance_type": "basic"
-  }
-]</code></pre>
-	<p>When developing your application, you just run <code>wrangler dev</code> and the container image will be automatically built and routable via your local Worker. This makes it easy to iterate on container code while making changes to your Worker at the same time. When you want to rebuild your image, just press “R” on your keyboard from your terminal running <code>wrangler dev</code>, and the Container is rebuilt and restarted.</p>
-	<div class="flex anchor relative">
-		<h4 id="shipping-your-container-enabled-worker-to-production-with-wrangler-deploy">Shipping your Container-enabled Worker to production with <code>wrangler deploy</code></h4>
-		<a href="https://blog.cloudflare.com/#shipping-your-container-enabled-worker-to-production-with-wrangler-deploy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When it’s time to deploy, just run <code>wrangler deploy</code>. Wrangler will push your image to your account, then it will be provisioned in various locations across Cloudflare’s global network.</p>
-	<p>You don’t have to worry about “artifact management”, or distribution, or auth, or jump through hoops to integrate your container with Workers. You just write your code and deploy it.</p>
-	<div class="flex anchor relative">
-		<h4 id="observability-is-built-in">Observability is built-in</h4>
-		<a href="https://blog.cloudflare.com/#observability-is-built-in" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once your Container is in production, you have the visibility you need into how things are going, with end-to-end <a href="https://www.cloudflare.com/developer-platform/products/workers-observability" target="_blank" rel="noopener noreferrer">observability</a>.&nbsp;</p>
-	<p>From the Cloudflare dashboard, you can easily track status and resource usage across Container instances with built-in metrics:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cMDL8qejpD9TnaVYgKeLD/cf42573c1315f0364c0d225bb77a76af/image4.png" alt="" class="kg-image" width="1999" height="1146" loading="lazy">
-	</figure>
-	<p>
-		And if you need to dive deeper, you can dig into logs, which will be retained in the Cloudflare UI for seven days or <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>pushed to an external sink</u></a> of your choice:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2AusbmokynDaErssVFyu4A/3bb617ff9c2e488cdaee20612cb6bd15/image3.png" alt="" class="kg-image" width="1999" height="1142" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="try-it-yourself">Try it yourself</h4>
-		<a href="https://blog.cloudflare.com/#try-it-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Want to give it a shot? Check out <a href="https://github.com/craigsdennis/sandboxing-day-containers" target="_blank" rel="noopener noreferrer"><u>this example Worker for running sandboxed code</u></a> in a Container, and deploy it with one click.</p>
-	<p>Or better yet, if you have an image sitting around that you’ve been dying to deploy to Cloudflare, you can get started with <a href="https://developers.cloudflare.com//containers/get-started" target="_blank" rel="noopener noreferrer"><u>our docs here</u></a>.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="a-world-of-possibilities">A world of possibilities</h2>
-		<a href="https://blog.cloudflare.com/#a-world-of-possibilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re excited about all the new types of applications that are now possible to build on Workers. We’ve heard many of you tell us over the years that you would love to run your entire application on Cloudflare, if only you could deploy this one piece that needs to run in a container.</p>
-	<p>Today, you can run libraries that you couldn't run in Workers before. For instance, try <a href="https://github.com/megaconfidence/wifski" target="_blank" rel="noopener noreferrer"><u>this Worker that uses FFmpeg to convert video to a GIF</u></a>.&nbsp;</p>
-	<p>Or you can <a href="https://github.com/mikenomitch/cron-container" target="_blank" rel="noopener noreferrer"><u>run a container as part of a cron job</u></a>. Or deploy a <a href="https://github.com/mikenomitch/static-frontend-container-backend" target="_blank" rel="noopener noreferrer"><u>static frontend with a containerized backend</u></a>. Or even run a <a href="https://github.com/ghostwriternr/claude-code-containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agent that uses a Container to run Claude Code</u></a> on your behalf.</p>
-	<p>The <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#integrating-with-more-of-cloudflares-developer-platform"><u>integration with the rest of the Developer Platform</u></a> makes Containers even more powerful: <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#durable-objects-as-programmable-sidecars"><u>use Durable Objects</u></a> for state management, <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>, and <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Agents</u></a> to compose complex behaviors, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> to store Container data or media, and more.</p>
-	<div class="flex anchor relative">
-		<h2 id="pricing-and-packaging">Pricing and packaging</h2>
-		<a href="https://blog.cloudflare.com/#pricing-and-packaging" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As with the rest of our Cloudflare developer products, we wanted to apply the same principles to our developer platform with transparent pricing that scales up and down with your usage.</p>
-	<p>Today, you can select from the following instances at launch (and yes, we plan to add larger instances over time): </p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Name</b></p>
-				</td>
-				<td>
-					<p><b>Memory </b></p>
-				</td>
-				<td>
-					<p><b>CPU</b></p>
-				</td>
-				<td>
-					<p><b>Disk</b></p>
-				</td>
+</div>
+<h2>A tour of Containers</h2>
+<p>Let’s take a deeper look at Containers, using an example use case: code sandboxing.</p>
+<p>Let’s imagine that you want to run user-generated (or AI-generated) code as part of a platform you’re building. To do this, you want to spin up containers on demand. Each user needs their own isolated container, the users are distributed globally, and you need to start each container quickly so the users aren’t waiting.</p>
+<p>You can set this up easily on Cloudflare Containers.</p>
+<h4>Configuring a Container</h4>
+<p>In your Worker, use the <a href="https://github.com/cloudflare/containers" target="_blank" rel="noopener noreferrer"><u>Container class</u></a> and <a href="https://developers.cloudflare.com//workers/wrangler/configuration/#containers" target="_blank" rel="noopener noreferrer"><u>wrangler.jsonc</u></a> to declare some basic configuration, such as your Container’s default port, a sleep timeout, and which image to use, then route to it via the Worker.</p>
+<p>For each unique ID passed to the Container’s binding, Cloudflare will spin up a new Container instance and route requests to it. When a new instance is requested, Cloudflare picks the best location across our global network where we’ve pre-provisioned a ready-to-go container. This means that you can deploy a container close to an end user no matter where they are. And the initial container start takes just a few seconds. You don’t have to worry about routing, provisioning, or scaling.</p>
+<p>This example Worker will route requests to a unique container instance for each sandbox ID given at the path <code>/sandbox/ID</code> and will be handled by standard Worker JavaScript otherwise:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyContainer</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Container</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  defaultPort</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 8080</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// The default port for the container to listen on</span></span>
+<span class="line"><span class="sk-e36209-fff">  sleepAfter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '5m'</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// Sleep the container if no requests are made in this timeframe</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> pathname</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url).pathname;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // handle request with an on-demand container instance</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (pathname.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/sandbox/'</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> sessionId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> pathname.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">)[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> containerInstance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getContainer</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">CONTAINER_SANDBOX</span><span class="sk-24292e-fff">, sessionId)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> containerInstance.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // handle request with my Worker code otherwise</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> myWorkerRequestHandler</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<h4>Familiar and easy development workflow with <code>wrangler dev</code></h4>
+<p>To configure which container image to use, you can provide an image URL in wrangler config or a path to a local Dockerfile.&nbsp;</p>
+<p>This config tells wrangler to use a locally defined image:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"containers"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "class_name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"ContainerSandbox"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "image"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"./Dockerfile"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "max_instances"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "instance_type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"basic"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>When developing your application, you just run <code>wrangler dev</code> and the container image will be automatically built and routable via your local Worker. This makes it easy to iterate on container code while making changes to your Worker at the same time. When you want to rebuild your image, just press “R” on your keyboard from your terminal running <code>wrangler dev</code>, and the Container is rebuilt and restarted.</p>
+<h4>Shipping your Container-enabled Worker to production with <code>wrangler deploy</code></h4>
+<p>When it’s time to deploy, just run <code>wrangler deploy</code>. Wrangler will push your image to your account, then it will be provisioned in various locations across Cloudflare’s global network.</p>
+<p>You don’t have to worry about “artifact management”, or distribution, or auth, or jump through hoops to integrate your container with Workers. You just write your code and deploy it.</p>
+<h4>Observability is built-in</h4>
+<p>Once your Container is in production, you have the visibility you need into how things are going, with end-to-end <a href="https://www.cloudflare.com/developer-platform/products/workers-observability" target="_blank" rel="noopener noreferrer">observability</a>.&nbsp;</p>
+<p>From the Cloudflare dashboard, you can easily track status and resource usage across Container instances with built-in metrics:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="410" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=715&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=640&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=715&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=750&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=828&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=1080&amp;h=619&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=1280&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=1430&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2853 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PEFB7DNB2ZM5GEAQQAHG.png&amp;w=1920&amp;h=1101&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1101" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="410" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><br>And if you need to dive deeper, you can dig into logs, which will be retained in the Cloudflare UI for seven days or <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>pushed to an external sink</u></a> of your choice:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="408" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=640&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=750&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=828&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=1080&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=1280&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=1430&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2853 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453J4MGGVG85RHKRKYKV94.png&amp;w=1920&amp;h=1097&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1097" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="408" class="pt-portable-image-media"></div>
+</figure>
+<h4>Try it yourself</h4>
+<p>Want to give it a shot? Check out <a href="https://github.com/craigsdennis/sandboxing-day-containers" target="_blank" rel="noopener noreferrer"><u>this example Worker for running sandboxed code</u></a> in a Container, and deploy it with one click.</p>
+<p>Or better yet, if you have an image sitting around that you’ve been dying to deploy to Cloudflare, you can get started with <a href="https://developers.cloudflare.com//containers/get-started" target="_blank" rel="noopener noreferrer"><u>our docs here</u></a>.&nbsp;</p>
+<h2>A world of possibilities</h2>
+<p>We’re excited about all the new types of applications that are now possible to build on Workers. We’ve heard many of you tell us over the years that you would love to run your entire application on Cloudflare, if only you could deploy this one piece that needs to run in a container.</p>
+<p>Today, you can run libraries that you couldn't run in Workers before. For instance, try <a href="https://github.com/megaconfidence/wifski" target="_blank" rel="noopener noreferrer"><u>this Worker that uses FFmpeg to convert video to a GIF</u></a>.&nbsp;</p>
+<p>Or you can <a href="https://github.com/mikenomitch/cron-container" target="_blank" rel="noopener noreferrer"><u>run a container as part of a cron job</u></a>. Or deploy a <a href="https://github.com/mikenomitch/static-frontend-container-backend" target="_blank" rel="noopener noreferrer"><u>static frontend with a containerized backend</u></a>. Or even run a <a href="https://github.com/ghostwriternr/claude-code-containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Agent that uses a Container to run Claude Code</u></a> on your behalf.</p>
+<p>The <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#integrating-with-more-of-cloudflares-developer-platform" target="_blank" rel="noopener noreferrer"><u>integration with the rest of the Developer Platform</u></a> makes Containers even more powerful: <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#durable-objects-as-programmable-sidecars" target="_blank" rel="noopener noreferrer"><u>use Durable Objects</u></a> for state management, <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>, and <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Agents</u></a> to compose complex behaviors, <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> to store Container data or media, and more.</p>
+<h2>Pricing and packaging</h2>
+<p>As with the rest of our Cloudflare developer products, we wanted to apply the same principles to our developer platform with transparent pricing that scales up and down with your usage.</p>
+<p>Today, you can select from the following instances at launch (and yes, we plan to add larger instances over time): </p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Name</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Memory </p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>CPU</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Disk</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>dev</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>256 MiB</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1/16 vCPU</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2 GB</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>basic</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1 GiB</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1/4 vCPU</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4 GB</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>standard</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4 GiB</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1/2 vCPU</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4 GB</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>You only pay for what you use —&nbsp;charges start when a request is sent to the container or when it is manually started. Charges stop after the container instance goes to sleep, which can happen automatically after a timeout. This makes it easy to scale to zero, and allows you to get high utilization even with bursty traffic.</p>
-	<p>Containers are billed for every 10ms that they are actively running at the following rates, with monthly amounts included in <i>Workers Standard</i>:</p>
-	<ul>
-		<li>
-			<p><b>Memory</b>: $0.0000025 per GiB-second, with 25 GiB-hours included</p>
-		</li>
-		<li>
-			<p><b>CPU</b>: $0.000020 per vCPU-second, with 375 vCPU-minutes included</p>
-		</li>
-		<li>
-			<p><b>Disk</b> $0.00000007 per GB-second, with 200 GB-hours included</p>
-		</li>
-	</ul>
-	<p>Egress from Containers is priced at the following rates, with monthly amounts included in <i>Workers Standard</i>:</p>
-	<ul>
-		<li>
-			<p>North America and Europe: $0.025 per GB with 1 TB included</p>
-		</li>
-		<li>
-			<p>Australia, New Zealand, Taiwan, and Korea: $0.050 per GB with 500 GB included</p>
-		</li>
-		<li>
-			<p>Everywhere else: $0.040 per GB with 500 GB included</p>
-		</li>
-	</ul>
-	<p>
-		See <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#pay-for-what-you-use-and-use-the-right-tool"><u>our previous blog post</u></a> for a more in-depth look into pricing with an example app.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-coming-next">What’s coming next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-coming-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With today’s release, we’ve only just begun to scratch the surface of what Containers will do on Workers. This is the first step of many towards our vision of a simple, global, and highly programmable Container platform.</p>
-	<p>We’re already thinking about what’s next, and wanted to give you a preview:</p>
-	<ul>
-		<li>
-			<p><b>Higher limits and larger instances</b> – We currently limit your concurrent instances to 40 total GiB of memory and 40 total vCPU. This is enough for some workloads, but many users will want to go higher —&nbsp; a lot higher. Select customers are already scaling well into the thousands of concurrent containers, and we want to bring this ability to more users. We will be raising our limits over the coming months to allow for more total containers and larger instance sizes.</p>
-		</li>
-		<li>
-			<p><b>Global autoscaling and latency-aware routing</b> – Currently, containers are addressed by ID and started on-demand. For many use cases, users want to route to one of many stateless container instances deployed across the globe, then autoscale live instances automatically. Autoscaling will be activated with a single line of code, and will enable easy routing to the nearest ready instance.</p>
-		</li>
-	</ul>
-	<pre class="language-Rust"><code class="language-Rust">class MyBackend extends Container {
-  defaultPort = 8080;
-  autoscale = true; // global autoscaling on - new instances spin up when memory or CPU utilization is high
-}
-
-// routes requests to the nearest ready container and load balance globally
-async fetch(request, env) {
-  return getContainer(env.MY_BACKEND).fetch(request);
-}</code></pre>
-	<ul>
-		<li>
-			<p><b>More ways to communicate between Containers and Workers</b> – We will be adding more ways for your Worker to communicate with your container and vice versa. We will add an <code>exec</code> command to run shell commands in your instance and handlers for HTTP requests <i>from</i> the container to Workers. This will allow you to more easily extend your containers with functionality from the entire developer platform, reach out to other containers, and programmatically set up each container instance.</p>
-		</li>
-	</ul>
-	<pre class="language-Rust"><code class="language-Rust">class MyContainer extends Container {
-  // sets up container-to-worker communication with handlers
-  handlers = {
-    "example.cf": "handleRequestFromContainer"
-  };
-
-  handleRequestFromContainer(req) {
-    return new Response("You are responding from Workers to a Container request to a specific hostname")
-  }
-
-  // use exec to run commands in your container instance
-  async cloneRepo(repoUrl) {
-    let command = this.exec(`git clone ${repoUrl}`)
-    await command.print()
-  }  
-}</code></pre>
-	<ul>
-		<li>
-			<p><b>Further integrations with the Developer Platform</b> – We will continue to integrate with the developer platform with first-party APIs for our various services. We want it to be dead simple to mount <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 buckets</u></a>, reach <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>, access <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, and more.</p>
-		</li>
-	</ul>
-	<p>And we are just getting started. Stay tuned for more updates this summer and over the course of the entire year.</p>
-	<div class="flex anchor relative">
-		<h2 id="try-containers-today">Try Containers today</h2>
-		<a href="https://blog.cloudflare.com/#try-containers-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The first step is to deploy your own container. Run <code>npm create cloudflare@latest -- --template=cloudflare/templates/containers-template</code> or click the button below to deploy your first Container to Workers.</p><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fcontainers-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
-	<p></p>
-	<p>
-		We’re excited to see all the ways you will use Containers. From new languages and tools, to simplified Cloudflare-only architectures, to advanced programmatic control over container creation, you now have the ability to do even more on the Developer Platform. It is just a wrangler deploy away.</p>
 </div>
+<p>You only pay for what you use —&nbsp;charges start when a request is sent to the container or when it is manually started. Charges stop after the container instance goes to sleep, which can happen automatically after a timeout. This makes it easy to scale to zero, and allows you to get high utilization even with bursty traffic.</p>
+<p>Containers are billed for every 10ms that they are actively running at the following rates, with monthly amounts included in <em>Workers Standard</em>:</p>
+<ul>
+	<li><strong>Memory</strong>: $0.0000025 per GiB-second, with 25 GiB-hours included</li>
+	<li><strong>CPU</strong>: $0.000020 per vCPU-second, with 375 vCPU-minutes included</li>
+	<li><strong>Disk</strong> $0.00000007 per GB-second, with 200 GB-hours included</li>
+</ul>
+<p>Egress from Containers is priced at the following rates, with monthly amounts included in <em>Workers Standard</em>:</p>
+<ul>
+	<li>North America and Europe: $0.025 per GB with 1 TB included</li>
+	<li>Australia, New Zealand, Taiwan, and Korea: $0.050 per GB with 500 GB included</li>
+	<li>Everywhere else: $0.040 per GB with 500 GB included</li>
+</ul>
+<p><br>See <a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025/#pay-for-what-you-use-and-use-the-right-tool" target="_blank" rel="noopener noreferrer"><u>our previous blog post</u></a> for a more in-depth look into pricing with an example app.</p>
+<h2>What’s coming next?</h2>
+<p>With today’s release, we’ve only just begun to scratch the surface of what Containers will do on Workers. This is the first step of many towards our vision of a simple, global, and highly programmable Container platform.</p>
+<p>We’re already thinking about what’s next, and wanted to give you a preview:</p>
+<ul>
+	<li><strong>Higher limits and larger instances</strong> – We currently limit your concurrent instances to 40 total GiB of memory and 40 total vCPU. This is enough for some workloads, but many users will want to go higher —&nbsp; a lot higher. Select customers are already scaling well into the thousands of concurrent containers, and we want to bring this ability to more users. We will be raising our limits over the coming months to allow for more total containers and larger instance sizes.</li>
+	<li><strong>Global autoscaling and latency-aware routing</strong> – Currently, containers are addressed by ID and started on-demand. For many use cases, users want to route to one of many stateless container instances deployed across the globe, then autoscale live instances automatically. Autoscaling will be activated with a single line of code, and will enable easy routing to the nearest ready instance.</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">class </span><span class="sk-6f42c1-ffc799">MyBackend</span><span class="sk-24292e-fff"> extends </span><span class="sk-6f42c1-ffc799">Container</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  defaultPort </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 8080</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  autoscale </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> true</span><span class="sk-24292e-fff">; </span><span class="sk-6a737d-8b8b8b94">// global autoscaling on - new instances spin up when memory or CPU utilization is high</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// routes requests to the nearest ready container and load balance globally</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request, env) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> getContainer</span><span class="sk-24292e-fff">(env</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-fff">MY_BACKEND</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<ul>
+	<li><strong>More ways to communicate between Containers and Workers</strong> – We will be adding more ways for your Worker to communicate with your container and vice versa. We will add an <code>exec</code> command to run shell commands in your instance and handlers for HTTP requests <em>from</em> the container to Workers. This will allow you to more easily extend your containers with functionality from the entire developer platform, reach out to other containers, and programmatically set up each container instance.</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">class </span><span class="sk-6f42c1-ffc799">MyContainer</span><span class="sk-24292e-fff"> extends </span><span class="sk-6f42c1-ffc799">Container</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // sets up container-to-worker communication with handlers</span></span>
+<span class="line"><span class="sk-24292e-fff">  handlers </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "example.cf"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "handleRequestFromContainer"</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  handleRequestFromContainer</span><span class="sk-24292e-fff">(req) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> new </span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"You are responding from Workers to a Container request to a specific hostname"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // use exec to run commands in your container instance</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  async</span><span class="sk-6f42c1-ffc799"> cloneRepo</span><span class="sk-24292e-fff">(repoUrl) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> command </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> this</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(`git clone </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">{repoUrl}`)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> command</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">print</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  }  </span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<ul>
+	<li><strong>Further integrations with the Developer Platform</strong> – We will continue to integrate with the developer platform with first-party APIs for our various services. We want it to be dead simple to mount <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 buckets</u></a>, reach <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>, access <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>KV</u></a>, and more.</li>
+</ul>
+<p>And we are just getting started. Stay tuned for more updates this summer and over the course of the entire year.</p>
+<h2>Try Containers today</h2>
+<p>The first step is to deploy your own container. Run <code>npm create cloudflare@latest -- --template=cloudflare/templates/containers-template</code> or click the button below to deploy your first Container to Workers.</p>
+<div id="html-block-k6c" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fcontainers-template"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a>
+	<p></p>
+</div>
+<p><br>We’re excited to see all the ways you will use Containers. From new languages and tools, to simplified Cloudflare-only architectures, to advanced programmatic control over container creation, you now have the ability to do even more on the Developer Platform. It is just a wrangler deploy away.</p>

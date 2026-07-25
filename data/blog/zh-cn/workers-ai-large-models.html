@@ -1,0 +1,96 @@
+<p>我们正在努力将 Cloudflare 打造成构建和部署智能体的一流平台。但可靠的智能体并不只是建立在提示词的基础之上，这需要一个强大且协调的底层基础组件。 </p>
+<p>Cloudflare 多年来一直在构建这些基础组件：用于状态持久化的 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>，用于长时间运行任务的 <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>，以及用于安全执行的 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a> 或<a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>沙箱</u></a>容器。<a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a> 等强大的抽象层旨在帮助用户在 Cloudflare 开发人员平台上构建智能体。</p>
+<p>但这些基础组件只提供了执行环境。智能体仍然需要一个能够为它提供支持的模型。</p>
+<p>从今天开始，Workers AI 正式进军大模型领域。Cloudflare AI 推理平台现在提供前沿的开源模型。我们首先在 <a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a> 上发布<a href="https://www.kimi.com/blog/kimi-k2-5" target="_blank" rel="noopener noreferrer"><u> Moonshot AI 的 Kimi K2.5</u></a> 模型。Kimi K2.5 模型拥有完整的 256k 上下文窗口，并支持多轮工具调用、视觉输入和结构化输出，非常适合执行各种类型的智能体任务。通过将前沿的模型直接引入 Cloudflare 开发人员平台，我们可以在单个统一平台上运行整个智能体生命周期。</p>
+<p>智能体的核心是为其提供支持的 AI 模型，该模型必须足够智能，且具备先进的推理能力和较大的上下文窗口。Workers AI 现在能够运行这些模型。</p>
+<h2>性价比之选</h2>
+<p>在过去的几周里，我们一直在测试 Kimi K2.5 模型，将其用作我们内部开发工具的引擎。在我们的 <a href="https://opencode.ai" target="_blank" rel="noopener noreferrer"><u>OpenCode</u></a> 环境中，Cloudflare 工程师使用 Kimi 模型来处理日常的智能体编码任务。我们还将该模型集成到自动化代码审查管道；您可以通过 Cloudflare GitHub 代码库，查看公共代码审查智能体 <a href="https://github.com/ask-bonk/ask-bonk" target="_blank" rel="noopener noreferrer"><u>Bonk</u></a> 的实际应用效果。在生产环境中，该模型已被证明是一种快速、高效的替代解决方案，可以替代大型专有模型，且不会牺牲质量。</p>
+<p>最初，部署 Kimi K2.5 只是一项实验，但在评估了该模型的性能和成本效益后，它很快变得至关重要。举个例子：我们有一个智能体负责对 Cloudflare 的代码库进行安全审查。该智能体每天处理超过 70 亿个词元，使用 Kimi 后，它在单个代码库中发现了超过 15 个已确认的问题。粗略计算一下，如果我们使用中型专有模型来运行该智能体，那么仅针对这个用例，我们在单个代码库上每年就需要花费 240 万美元。使用 Kimi K2.5 运行该智能体的成本只是其中一小部分：通过将其切换应用到 Workers AI，我们的推理成本降低了 77%。</p>
+<p>随着 AI 采用的普及，我们看到工程团队的工作模式与个人的工作模式都发生了根本性转变。现在，越来越多的人使用 <a href="https://openclaw.ai" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a> 之类的个人智能体 24/7 全天候运行。推理量正在飞速增长。</p>
+<p>个人智能体和编码智能体的兴起，意味着成本不再是次要问题，这是扩展规模的主要障碍。如果每个员工都拥有多个智能体且每小时处理数十万个词元，专有模型的计算方式就行不通了。企业将寻求过渡到开源模型，这些模型能够提供前沿的推理能力，而无需支付专有模型的费用。Workers AI 旨在促进这种转变，提供从个人智能体的无服务器端点到为整个企业内的自主智能体提供支持的专用实例等各项服务。</p>
+<h2>大模型推理栈</h2>
+<p>自两年前推出以来，Workers AI 一直为包括 LLM 在内的模型提供服务，但我们一向优先考虑的是小型模型。部分原因是，一段时间以来，开源 LLM 的性能远远落后于来自模型实验室的前沿模型。这种情况随着 Kimi K2.5 等模型的出现而改变，但为了部署这种超大型 LLM，我们不得不对推理栈进行一些调整。我们希望在此分享一些支持 Kimi 之类的大模型的幕后工作。</p>
+<p>Cloudflare 一直在为 Kimi K2.5 开发自定义内核以优化其部署方式。该内核基于我们专有的 <a href="https://blog.cloudflare.com/cloudflares-most-efficient-ai-inference-engine" target="_blank" rel="noopener noreferrer"><u>Infire 推理引擎</u></a>而构建。自定义内核可以改善模型的性能和提高 GPU 利用率，从而释放开箱即用模型原本无法获得的益处。此外，还有多种技术和硬件配置均可用于部署大模型。开发人员通常会组合使用数据并行、张量并行以及专家并行来优化模型性能。解耦预填充之类的策略也非常重要，它将预填充阶段与生成阶段分离到不同的机器上，以提高吞吐量或提高 GPU 利用率。实施这些技术并将其纳入推理栈，需要大量的专门经验才能完成。</p>
+<p>Workers AI 已经在 Kimi K2.5 模型上进行了部署技术试验，获得了优异的吞吐量。如果您自行托管开源模型，很多功能都无法开箱即用。使用 Workers AI 这类平台的优势在于，您无需成为机器学习工程师、DevOps 专家或网站可靠性工程师即可完成托管所需的优化：因为我们已完成困难的任务，您只需调用 API 即可。</p>
+<h2>超越模型，针对智能体工作负载的平台优化</h2>
+<p>配合此次发布，我们也优化了 Cloudflare 平台并发布了多项新功能，以帮助您构建更强大的智能体。</p>
+<h3>前缀缓存与呈现缓存的词元</h3>
+<p>使用智能体时，您可能会发送大量输入词元作为上下文的一部分：这可能包括详细的系统提示词、工具定义、MCP 服务器工具或整个代码库。输入可能与模型上下文窗口一样大，因此，理论上来说，您要发送的请求可能包含接近 256k 输入词元。这是非常庞大的词元数量。</p>
+<p>当 LLM 处理请求时，请求会被分解成两个阶段：一是预填充阶段，处理输入词元；二是输出阶段，生成输出词元。两个阶段通常按顺序执行，必须完全处理输入词元，然后才生成输出词元。也就是说，在模型进行预填充时，GPU 有时无法得到充分利用。</p>
+<p>在多轮对话中，当您发送新的提示词后，客户端会将会话中所有之前的提示词、工具以及上下文发送给模型。连续请求之间的差异通常只是几行新输入；所有其他上下文已在上一次请求期间完成了预填充阶段。这就是前缀缓存发挥作用的地方。我们可以缓存源自之前请求的输入张量，仅对新输入词元进行预填充，而不是对整个请求进行预填充。这将节省大量预填充阶段的时间和计算资源，这意味着加快首个词元时间 (TTFT) 和提高每秒词元数 (TPS) 吞吐量，因为不会在预填充阶段受阻。</p>
+<p>Workers AI 一直在进行前缀缓存，但我们现在将缓存词元作为一项使用指标公开，并提供缓存的词元（相比新输入词元）折扣。可以在<a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>模型页面</u></a>上找到定价。我们还提供一些新技术，您可以利用这些技术提高前缀缓存命中率，进而降低成本。</p>
+<h3>新的会话亲和性请求头，提高缓存命中率</h3>
+<p>为了将请求路由到相同模型实例并利用前缀缓存，我们使用新的 <code>x-session-affinity</code> 请求头。如果发送该请求头，则将会提高缓存命中率，从而获得更多缓存的词元，进而加快 TTFT、提高 TPS 以及降低推理成本。</p>
+<p>您可以传递如下所示的新的请求头，每个会话或每个智能体使用唯一字符串。一些客户端（例如 OpenCode）已开箱即用地自动部署了这项功能。我们的 <a href="https://github.com/cloudflare/agents-starter" target="_blank" rel="noopener noreferrer"><u>Agents SDK starter</u></a> 也已为您配置好相关设置。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/{ACCOUNT_ID}/ai/run/@cf/moonshotai/kimi-k2.5"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer {API_TOKEN}"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -H</span><span class="sk-032f62-99ffe4"> "x-session-affinity: ses_12345678"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -d</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "messages": [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "role": "system",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "content": "You are a helpful assistant."</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "role": "user",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "content": "What is prefix caching and why does it matter?"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "max_tokens": 2400,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "stream": true</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }'</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>重新设计的异步 API</h3>
+<p>无服务器推理确实非常困难。采用按词元付费的商业模式，按单个请求计算的成本更便宜，因为无需为整个 GPU 付费来处理请求。但这也带来一些弊端：您必须应对其他用户的流量和容量限制，并且无法保证您的请求一定会得到处理。这不是 Workers AI 独有的问题，鉴于频繁报道的与服务商过载以及服务中断相关的事件，这显然是无服务器模型提供商普遍存在的问题。虽然 Cloudflare 始终致力于服务客户请求，并内置自动扩展和重新平衡功能，但某些硬性限制（例如硬件）使这成为一个挑战。</p>
+<p>对于超出同步速率限制的请求量，可以提交批量推理任务，以异步方式完成。Cloudflare 推出了经过改进的异步 API，这意味着对于异步用例，您不会遇到容量不足错误，并且推理任务将在某个时点持久执行。我们的异步 API 更像是灵活处理，而不是批处理 API。只要模型实例还有足够的容量空间，我们就会处理异步队列中的请求。内部测试表明，我们的异步请求通常在 5 分钟内执行，但实际执行时间取决于实际流量情况。随着我们在 Cloudflare 产品中正式推出 Kimi 模型，我们将相应地调整扩展能力，但异步 API 是确保您在持久工作流中不会遇到容量错误的最佳方式。这非常适合非实时用例，例如代码扫描智能体或研究智能体。</p>
+<p>Workers AI 之前也提供异步 API，但我们最近对其底层系统进行了改进。我们现在采用拉取系统，而不是过去的推送系统，这样我们就能在有可用容量时立即拉取已排队的请求。我们还添加了更完善的控制功能来调整异步请求的吞吐量，实时监测 GPU 利用率，以及在利用率较低时拉取异步请求，从而确保关键的同步请求获得优先处理，同时高效地处理异步请求。</p>
+<p>若要使用异步 API，您可以按如下所示发送请求。我们还提供一种<a href="https://developers.cloudflare.com/workers-ai/platform/event-subscriptions" target="_blank" rel="noopener noreferrer"><u>设置事件通知</u></a>的方法，让您无需轮询请求即可了解推理何时完成。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// (1.) Push a request in queue</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// pass queueRequest: true</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/moonshotai/kimi-k2.5"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "requests"</span><span class="sk-24292e-fff">: [{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "messages"</span><span class="sk-24292e-fff">: [{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "role"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Tell me a joke"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }, {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "messages"</span><span class="sk-24292e-fff">: [{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "role"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Explain the Pythagoras theorem"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">{&lt;add more requests in a batch&gt;} ];</span></span>
+<span class="line"><span class="sk-24292e-fff">}, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  queueRequest: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// (2.) grab the request id</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> request_id;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff">(res </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> res.request_id){</span></span>
+<span class="line"><span class="sk-24292e-fff">  request_id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> res.request_id;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// (3.) poll the status</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"@cf/moonshotai/kimi-k2.5"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  request_id: request_id</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff">(res </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> res.status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "queued"</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-24292e-fff"> res.status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "running"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> // retry by polling again</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(res); </span><span class="sk-6a737d-8b8b8b94">// This will contain the final completed response </span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>立即试用</h2>
+<p>立即在 Workers AI 上开始使用 Kimi K2.5。您可以阅读我们的开发人员文档，了解<a href="https://developers.cloudflare.com/workers-ai/models/kimi-k2.5" target="_blank" rel="noopener noreferrer"><u>模型信息和定价</u></a>，以及如何通过<a href="https://developers.cloudflare.com/workers-ai/features/prompt-caching" target="_blank" rel="noopener noreferrer"><u>会话亲和性请求头</u></a>和<a href="https://developers.cloudflare.com/workers-ai/features/batch-api" target="_blank" rel="noopener noreferrer"><u>异步 API</u></a> 来充分利用提示词缓存。<a href="https://github.com/cloudflare/agents-starter" target="_blank" rel="noopener noreferrer"><u>Agents SDK starter</u></a> 现在也使用 Kimi K2.5 作为其默认模型。您还可以<a href="https://opencode.ai/docs/providers" target="_blank" rel="noopener noreferrer"><u>通过 Opencode 连接到 Workers AI 上的 Kimi K2.5</u></a>。如需体验实时演示，请在我们的 <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Playground</u></a> 中尝试。</p>
+<p>如果您对无服务器推理、机器学习优化和 GPU 基础架构相关的各种问题感兴趣，请联系我们，<a href="https://job-boards.greenhouse.io/cloudflare/jobs/6297179?gh_jid=6297179" target="_blank" rel="noopener noreferrer"><u>我们正在招聘</u></a>！</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="191" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=715&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=640&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=715&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=750&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=828&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=1080&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=1280&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=1430&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3247 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SA67RKNFBA2YB3KJTXAD.png&amp;w=1920&amp;h=512&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="512" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="191" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>

@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "What came first- the CNAME or the A record",
+	"url": "https://blog.cloudflare.com/cname-a-record-order-dns-standards/",
+	"datePublished": "2026-01-14T00:00:00.000Z",
+	"dateModified": "2026-07-15T14:30:07.267Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW474E15H2VVCNT3T26MNW8A.png",
+	"description": "A recent change to 1.1.1.1 accidentally altered the order of CNAME records in DNS responses, breaking resolution for some clients. This post explores the technical root cause, examines the source code of affected resolvers, and dives into the inherent ambiguities of the DNS RFCs."
+}

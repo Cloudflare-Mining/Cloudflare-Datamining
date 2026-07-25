@@ -1,57 +1,25 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uKQSJrlUZx8iOboeY8bVL/badc4be2e7522482fa270903715d9bfa/introducing-pagerules-advanced-caching.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>On Monday, CloudFlare officially announced Page Rules. The new feature allows you to customize behavior on a page-by-page basis. The previous two blog posts have outlined how you can <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">turn off CloudFlare's features based on URL patterns</a>, or accomplish advanced URL forwarding.</p>
-	<p>In addition to the ability to these abilities, Page Rules also enables a powerful new way that you can enhance CloudFlare's caching. This post is dedicated to that.</p>
-	<div class="flex anchor relative">
-		<h3 id="default-cloudflare-caching">Default CloudFlare Caching</h3>
-		<a href="https://blog.cloudflare.com/#default-cloudflare-caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare operates <a href="http://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">14 data centers around the world</a>. When a visitor comes to a CloudFlare-powered website, they are directed to the data center closest to them. CloudFlare analyzes the traffic that passes back through each data center to find the parts of a website that are static. We then cache these objects at the edge for a short period of time.</p>
-	<p>There are two primary benefits of caching. The first is that it moves static objects closer to the visitor requesting them, which makes their delivery faster. The second is that it decreases the load on the origin web server. Caching plays a big part in how we are able to, on average, reduce server loads, bandwidth costs, and page load times by more than half.</p>
-	<p>The challenge of caching is making sure you don't cache dynamic content. We are, by default, conservative with what we cache. We refresh the cache, by default, at least every 2 hours and we don't display cached HTML to normal visitors unless the origin server is unreachable.</p>
-	<p>While this is a safe general rule, one of the most requested features has been the ability for us to cache HTML. A lot of sites are largely static, and the owners of those sites would prefer we serve the contents unless it is marked as dynamic. While we have advanced support for cache headers, we've found that they are often misconfigured or difficult for many site owners on hosted platforms to change. With Page Rules, we realized we were able to provide much more advanced caching for those users who wanted it.</p>
-	<div class="flex anchor relative">
-		<h3 id="custom-caching-with-page-rules">Custom Caching with Page Rules</h3>
-		<a href="https://blog.cloudflare.com/#custom-caching-with-page-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>From the Page Rules interface, which you access from the Settings menu next to each domain on your My Websites dashboard, you can setup custom caching. There are lots of different configurations but, since it is one of the most requested options, for this first example, I'll walk through how to specify certain pages as static so their HTML will be cached by CloudFlare.</p>
-	<p>Like all Page Rules, the first step is creating a pattern and then applying a rule to that pattern. You'll need to find or create a way to differentiate static versus dynamic content by the URL. Some possibilities could be creating a directory for static content, appending a unique file extension to static pages, or adding a query parameter to mark content as static. Here are three examples of patterns you could create for each of those options:</p>
-	<ul>
-		<li>
-			<p><code>*example.com/static/*</code> <i>[/static/ subdirectory for static HTML pages]</i></p>
-		</li>
-		<li>
-			<p><code>*example.com/*.shtml</code> <i>[.shtml file extension to signify HTML that is static]</i></p>
-		</li>
-		<li>
-			<p><code>*example.com/*?*static=true*</code> <i>[adding static=true query parameter]</i></p>
-		</li>
-	</ul>
-	<p>These are just three possible examples. There are virtually infinite ways to create a pattern and the best way to do this will depend on your particular website's setup. You'll want to design the pattern to only describe pages you know are static. For example, you'll want to make sure you exclude pages like the administrative page. If necessary, you can create multiple rules to get the exact caching setup you want.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6OJP9oms5dxjJzLSdZMGAr/ce0a165377794f213b6be8a9cbfdf46c/caching_menu.png.scaled500.png" alt="Introducing Page Rules: Advanced Caching (Including Configurable HTML Caching)" class="kg-image" width="188" height="174" loading="lazy">
-
-	</figure>
-	<p>Once you have created a pattern, you can select the Cache Everything option from the Custom Cache menu. Click the Add Rule button and, going forward, anything that matches the rule will get cached by CloudFlare.</p>
-	<div class="flex anchor relative">
-		<h3 id="limitations-and-variations-on-page-rules-caching">Limitations and Variations on Page Rules Caching</h3>
-		<a href="https://blog.cloudflare.com/#limitations-and-variations-on-page-rules-caching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We will attempt to cache objects that match the rule, but the caching is limited by the resources available and the number of objects in the cache. Even with the Cache Everything option set, CloudFlare will still periodically check back to refresh the cache. If, at any time, you want to clear the cache then you can do so from the CloudFlare Settings page by selecting the Purge Cache button. Just like with the traditional caching, this will purge Page Rules-based caching immediately and fetch a new copy of content from your server.</p>
-	<p>In addition to the Cache Everything setting, Page Rules can also be used to override the default cache setting used throughout the rest of your site. For example, you can specify that certain URLs either ignore or respect the query parameters. Respecting the query parameter can be handy if you'd like to be able to invalidate the traditional cache on an object-by-object basis by updating the query string. Alternatively, ignoring the query string can be useful for Javascript but where you want to pass in variables into the script via GET parameters.</p>
-	<p>Overall, Page Rules makes CloudFlare's caching much more adaptable to accommodate multiple caching strategies under the same domain. We'll continue to add more flexibility to the powerful framework created by Page Rules. If there are particular options you'd like us to support, please don't hesitate to <a href="http://cloudflare.com/contact" target="_blank" rel="noopener noreferrer">let us know</a>.</p>
-</div>
+<p>On Monday, CloudFlare officially announced Page Rules. The new feature allows you to customize behavior on a page-by-page basis. The previous two blog posts have outlined how you can <a href="https://blog.cloudflare.com/introducing-pagerules-fine-grained-feature-co">turn off CloudFlare's features based on URL patterns</a>, or accomplish advanced URL forwarding.</p>
+<p>In addition to the ability to these abilities, Page Rules also enables a powerful new way that you can enhance CloudFlare's caching. This post is dedicated to that.</p>
+<h3>Default CloudFlare Caching</h3>
+<p>CloudFlare operates <a href="http://www.cloudflare.com/network-map" target="_blank" rel="noopener noreferrer">14 data centers around the world</a>. When a visitor comes to a CloudFlare-powered website, they are directed to the data center closest to them. CloudFlare analyzes the traffic that passes back through each data center to find the parts of a website that are static. We then cache these objects at the edge for a short period of time.</p>
+<p>There are two primary benefits of caching. The first is that it moves static objects closer to the visitor requesting them, which makes their delivery faster. The second is that it decreases the load on the origin web server. Caching plays a big part in how we are able to, on average, reduce server loads, bandwidth costs, and page load times by more than half.</p>
+<p>The challenge of caching is making sure you don't cache dynamic content. We are, by default, conservative with what we cache. We refresh the cache, by default, at least every 2 hours and we don't display cached HTML to normal visitors unless the origin server is unreachable.</p>
+<p>While this is a safe general rule, one of the most requested features has been the ability for us to cache HTML. A lot of sites are largely static, and the owners of those sites would prefer we serve the contents unless it is marked as dynamic. While we have advanced support for cache headers, we've found that they are often misconfigured or difficult for many site owners on hosted platforms to change. With Page Rules, we realized we were able to provide much more advanced caching for those users who wanted it.</p>
+<h3>Custom Caching with Page Rules</h3>
+<p>From the Page Rules interface, which you access from the Settings menu next to each domain on your My Websites dashboard, you can setup custom caching. There are lots of different configurations but, since it is one of the most requested options, for this first example, I'll walk through how to specify certain pages as static so their HTML will be cached by CloudFlare.</p>
+<p>Like all Page Rules, the first step is creating a pattern and then applying a rule to that pattern. You'll need to find or create a way to differentiate static versus dynamic content by the URL. Some possibilities could be creating a directory for static content, appending a unique file extension to static pages, or adding a query parameter to mark content as static. Here are three examples of patterns you could create for each of those options:</p>
+<ul>
+	<li><code>*example.com/static/*</code> <em>[/static/ subdirectory for static HTML pages]</em></li>
+	<li><code>*example.com/*.shtml</code> <em>[.shtml file extension to signify HTML that is static]</em></li>
+	<li><code>*example.com/*?*static=true*</code> <em>[adding static=true query parameter]</em></li>
+</ul>
+<p>These are just three possible examples. There are virtually infinite ways to create a pattern and the best way to do this will depend on your particular website's setup. You'll want to design the pattern to only describe pages you know are static. For example, you'll want to make sure you exclude pages like the administrative page. If necessary, you can create multiple rules to get the exact caching setup you want.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="188" height="174" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4845WWWWY36ZP4P0WDKHND.png&amp;w=188&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4845WWWWY36ZP4P0WDKHND.png&amp;w=188&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 188w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4845WWWWY36ZP4P0WDKHND.png&amp;w=376&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 376w" alt="Introducing Page Rules: Advanced Caching (Including Configurable HTML Caching)" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4845WWWWY36ZP4P0WDKHND.png&amp;w=188&amp;h=174&amp;f=webp" data-lightbox-width="188" data-lightbox-height="174" data-astro-cid-7nvefuv6="true" sizes="(min-width: 188px) 188px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="188" height="174" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Once you have created a pattern, you can select the Cache Everything option from the Custom Cache menu. Click the Add Rule button and, going forward, anything that matches the rule will get cached by CloudFlare.</p>
+<h3>Limitations and Variations on Page Rules Caching</h3>
+<p>We will attempt to cache objects that match the rule, but the caching is limited by the resources available and the number of objects in the cache. Even with the Cache Everything option set, CloudFlare will still periodically check back to refresh the cache. If, at any time, you want to clear the cache then you can do so from the CloudFlare Settings page by selecting the Purge Cache button. Just like with the traditional caching, this will purge Page Rules-based caching immediately and fetch a new copy of content from your server.</p>
+<p>In addition to the Cache Everything setting, Page Rules can also be used to override the default cache setting used throughout the rest of your site. For example, you can specify that certain URLs either ignore or respect the query parameters. Respecting the query parameter can be handy if you'd like to be able to invalidate the traditional cache on an object-by-object basis by updating the query string. Alternatively, ignoring the query string can be useful for Javascript but where you want to pass in variables into the script via GET parameters.</p>
+<p>Overall, Page Rules makes CloudFlare's caching much more adaptable to accommodate multiple caching strategies under the same domain. We'll continue to add more flexibility to the powerful framework created by Page Rules. If there are particular options you'd like us to support, please don't hesitate to <a href="http://cloudflare.com/contact" target="_blank" rel="noopener noreferrer">let us know</a>.</p>

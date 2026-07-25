@@ -1,352 +1,187 @@
-<div class="mb2 gray5">14 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7zutUIASTHfCfTFoXmuV1F/32d0dd6231a8f06e5ffaeb8b6f906d23/image5.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>According to a survey done by <a href="https://w3techs.com/technologies/overview/dns_server" target="_blank" rel="noopener noreferrer"><u>W3Techs</u></a>, as of October 2024, Cloudflare is used as an <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-server-types" target="_blank" rel="noopener noreferrer"><u>authoritative DNS</u></a> provider by 14.5% of all websites. As an authoritative DNS provider, we are responsible for managing and serving all the DNS records for our clients’ domains. This means we have an enormous responsibility to provide the best service possible, starting at the data plane. As such, we are constantly investing in our infrastructure to ensure the reliability and performance of our systems.</p>
-	<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer"><u>DNS</u></a> is often referred to as the phone book of the Internet, and is a key component of the Internet. If you have ever used a phone book, you know that they can become extremely large depending on the size of the physical area it covers. A <a href="https://www.cloudflare.com/en-gb/learning/dns/glossary/dns-zone/#:~:text=What%20is%20a%20DNS%20zone%20file%3F" target="_blank" rel="noopener noreferrer"><u>zone file</u></a> in DNS is no different from a phone book. It has a list of records that provide details about a domain, usually including critical information like what IP address(es) each hostname is associated with. For example:</p>
-	<pre class="language-Rust"><code class="language-Rust">example.com      59 IN A 198.51.100.0
-blog.example.com 59 IN A 198.51.100.1
-ask.example.com  59 IN A 198.51.100.2</code></pre>
-	<p>It is not unusual for these zone files to reach millions of records in size, just for a single domain. The biggest single zone on Cloudflare holds roughly 4 million DNS records, but the vast majority of zones hold fewer than 100 DNS records. Given our scale according to W3Techs, you can imagine how much DNS data alone Cloudflare is responsible for. Given this volume of data, and all the complexities that come at that scale, there needs to be a very good reason to move it from one database cluster to another.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="why-migrate">Why migrate&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#why-migrate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When initially measured in 2022, DNS data took up approximately 40% of the storage capacity in Cloudflare’s main database cluster (<b>cfdb</b>). This database cluster, consisting of a primary system and multiple replicas, is responsible for storing DNS zones, propagated to our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>data centers in over 330 cities</u></a> via our distributed KV store <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale"><u>Quicksilver</u></a>. <b>cfdb</b> is accessed by most of Cloudflare's APIs, including the <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records" target="_blank" rel="noopener noreferrer"><u>DNS Records API</u></a>. Today, the DNS Records API is the API most used by our customers, with each request resulting in a query to the database. As such, it’s always been important to optimize the DNS Records API and its surrounding infrastructure to ensure we can successfully serve every request that comes in.</p>
-	<p>As Cloudflare scaled, <b>cfdb</b> was becoming increasingly strained under the pressures of several services, many unrelated to DNS. During spikes of requests to our DNS systems, other Cloudflare services experienced degradation in the database performance. It was understood that in order to properly scale, we needed to optimize our database access and improve the systems that interact with it. However, it was evident that system level improvements could only be just so useful, and the growing pains were becoming unbearable. In late 2022, the DNS team decided, along with the help of 25 other teams, to detach itself from <b>cfdb</b> and move our DNS records data to another database cluster.</p>
-	<div class="flex anchor relative">
-		<h2 id="pre-migration">Pre-migration</h2>
-		<a href="https://blog.cloudflare.com/#pre-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>From a DNS perspective, this migration to an improved database cluster was in the works for several years. Cloudflare initially relied on a single <a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer"><u>Postgres</u></a> database cluster, <b>cfdb</b>. At Cloudflare's inception, <b>cfdb</b> was responsible for storing information about zones and accounts and the majority of services on the Cloudflare control plane depended on it. Since around 2017, as Cloudflare grew, many services moved their data out of <b>cfdb</b> to be served by a <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank" rel="noopener noreferrer"><u>microservice</u></a>. Unfortunately, the difficulty of these migrations are directly proportional to the amount of services that depend on the data being migrated, and in this case, most services require knowledge of both zones and DNS records.</p>
-	<p>Although the term “zone” was born from the DNS point of view, it has since evolved into something more. Today, zones on Cloudflare store many different types of non-DNS related settings and help link several non-DNS related products to customers' websites. Therefore, it didn’t make sense to move both zone data and DNS record data together. This separation of two historically tightly coupled DNS concepts proved to be an incredibly challenging problem, involving many engineers and systems. In addition, it was clear that if we were going to dedicate the resources to solving this problem, we should also remove some of the legacy issues that came along with the original solution.&nbsp;</p>
-	<p>One of the main issues with the legacy database was that the DNS team had little control over which systems accessed exactly what data and at what rate. Moving to a new database gave us the opportunity to create a more tightly controlled interface to the DNS data. This was manifested as an internal DNS Records <a href="https://blog.cloudflare.com/moving-k8s-communication-to-grpc"><u>gRPC API</u></a> which allows us to make sweeping changes to our data while only requiring a single change to the API, rather than coordinating with other systems.&nbsp; For example, the DNS team can alter access logic and auditing procedures under the hood. In addition, it allows us to appropriately rate-limit and cache data depending on our needs. The move to this new API itself was no small feat, and with the help of several teams, we managed to migrate over 20 services, using 5 different programming languages, from direct database access to using our managed gRPC API. Many of these services touch very important areas such as <a href="https://developers.cloudflare.com/dns/dnssec" target="_blank" rel="noopener noreferrer"><u>DNSSEC</u></a>, <a href="https://developers.cloudflare.com/ssl" target="_blank" rel="noopener noreferrer"><u>TLS</u></a>, <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Tunnels</u></a>, <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/spectrum" target="_blank" rel="noopener noreferrer"><u>Spectrum</u></a>, and <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 storage</u></a>. Therefore, it was important to get it right.&nbsp;</p>
-	<p>One of the last issues to tackle was the logical decoupling of common DNS database functions from zone data. Many of these functions expect to be able to access both DNS record data and DNS zone data at the same time. For example, at record creation time, our API needs to check that the zone is not over its maximum record allowance. Originally this check occurred at the SQL level by verifying that the record count was lower than the record limit for the zone. However, once you remove access to the zone itself, you are no longer able to confirm this. Our DNS Records API also made use of SQL functions to audit record changes, which requires access to both DNS record and zone data. Luckily, over the past several years, we have migrated this functionality out of our monolithic API and into separate microservices. This allowed us to move the auditing and zone setting logic to the application level rather than the database level. Ultimately, we are still taking advantage of SQL functions in the new database cluster, but they are fully independent of any other legacy systems, and are able to take advantage of the latest Postgres version.</p>
-	<p>Now that Cloudflare DNS was mostly decoupled from the zones database, it was time to proceed with the data migration. For this, we built what would become our <b>Change Data Capture and Transfer Service (CDCTS).</b></p>
-	<div class="flex anchor relative">
-		<h2 id="requirements-for-the-change-data-capture-and-transfer-service">Requirements for the Change Data Capture and Transfer Service</h2>
-		<a href="https://blog.cloudflare.com/#requirements-for-the-change-data-capture-and-transfer-service" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Database team is responsible for all Postgres clusters within Cloudflare, and were tasked with executing the data migration of two tables that store DNS data: <i>cf_rec</i> and <i>cf_archived_rec</i>, from the original <b>cfdb </b>cluster to a new cluster we called <b>dnsdb</b>.&nbsp; We had several key requirements that drove our design:</p>
-	<ul>
-		<li>
-			<p><b>Don’t lose data. </b>This is the number one priority when handling any sort of data. Losing data means losing trust, and it is incredibly difficult to regain that trust once it’s lost.&nbsp; Important in this is the ability to prove no data had been lost.&nbsp; The migration process would, ideally, be easily auditable.</p>
-		</li>
-		<li>
-			<p><b>Minimize downtime</b>.&nbsp; We wanted a solution with less than a minute of downtime during the migration, and ideally with just a few seconds of delay.</p>
-		</li>
-	</ul>
-	<p>These two requirements meant that we had to be able to migrate data changes in near real-time, meaning we either needed to implement logical replication, or some custom method to capture changes, migrate them, and apply them in a table in a separate Postgres cluster.</p>
-	<p>We first looked at using Postgres logical replication using <a href="https://github.com/2ndQuadrant/pglogical" target="_blank" rel="noopener noreferrer"><u>pgLogical</u></a>, but had concerns about its performance and our ability to audit its correctness.&nbsp; Then some additional requirements emerged that made a pgLogical implementation of logical replication impossible:</p>
-	<ul>
-		<li>
-			<p><b>The ability to move data must be bidirectional.</b> We had to have the ability to switch back to <b>cfdb</b> without significant downtime in case of unforeseen problems with the new implementation.&nbsp;</p>
-		</li>
-		<li>
-			<p><b>Partition the </b><b><i>cf_rec</i></b><b> table in the new database.</b> This was a long-desired improvement and since most access to <i>cf_rec</i> is by zone_id, it was decided that <b>mod(zone_id, num_partitions)</b> would be the partition key.</p>
-		</li>
-		<li>
-			<p><b>Transferred data accessible from original database.&nbsp; </b>In case we had functionality that still needed access to data, a foreign table pointing to <b>dnsdb</b> would be available in <b>cfdb</b>. This could be used as emergency access to avoid needing to roll back the entire migration for a single missed process.</p>
-		</li>
-		<li>
-			<p><b>Only allow writes in one database. </b>&nbsp;Applications should know where the primary database is, and should be blocked from writing to both databases at the same time.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="details-about-the-tables-being-migrated">Details about the tables being migrated</h2>
-		<a href="https://blog.cloudflare.com/#details-about-the-tables-being-migrated" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The primary table, <i>cf_rec</i>, stores DNS record information, and its rows are regularly inserted, updated, and deleted. At the time of the migration, this table had 1.7 billion records, and with several indexes took up 1.5 TB of disk. Typical daily usage would observe 3-5 million inserts, 1 million updates, and 3-5 million deletes.</p>
-	<p>The second table, <i>cf_archived_rec</i>, stores copies of <i>cf_rec</i> that are obsolete — this table generally only has records inserted and is never updated or deleted.&nbsp; As such, it would see roughly 3-5 million inserts per day, corresponding to the records deleted from <i>cf_rec</i>. At the time of the migration, this table had roughly 4.3 billion records.</p>
-	<p>Fortunately, neither table made use of database triggers or foreign keys, which meant that we could insert/update/delete records in this table without triggering changes or worrying about dependencies on other tables.</p>
-	<p>Ultimately, both of these tables are highly active and are the source of truth for many highly critical systems at Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h2 id="designing-the-change-data-capture-and-transfer-service">Designing the Change Data Capture and Transfer Service</h2>
-		<a href="https://blog.cloudflare.com/#designing-the-change-data-capture-and-transfer-service" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There were two main parts to this database migration:</p>
-	<ol>
-		<li>
-			<p><b>Initial copy:</b> Take all the data from <b>cfdb </b>and put it in <b>dnsdb.</b></p>
-		</li>
-		<li>
-			<p><b>Change copy:</b> Take all the changes in <b>cfdb </b>since the initial copy and update <b>dnsdb</b> to reflect them. This is the more involved part of the process.</p>
-		</li>
-	</ol>
-	<p>Normally, logical replication replays every insert, update, and delete on a copy of the data in the same transaction order, making a single-threaded pipeline.&nbsp; We considered using a queue-based system but again, speed and auditability were both concerns as any queue would typically replay one change at a time.&nbsp; We wanted to be able to apply large sets of changes, so that after an initial dump and restore, we could quickly catch up with the changed data. For the rest of the blog, we will only speak about <i>cf_rec</i> for simplicity, but the process for <i>cf_archived_rec</i> is the same.</p>
-	<p>What we decided on was a simple change capture table. Rows from this capture table would be loaded in real-time by a database trigger, with a transfer service that could migrate and apply thousands of changed records to <b>dnsdb</b> in each batch. Lastly, we added some auditing logic on top to ensure that we could easily verify that all data was safely transferred without downtime.</p>
-	<div class="flex anchor relative">
-		<h3 id="basic-model-of-change-data-capture">Basic model of change data capture&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#basic-model-of-change-data-capture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For <i>cf_rec</i> to be migrated, we would create a change logging table, along with a trigger function and a&nbsp; table trigger to capture the new state of the record after any insert/update/delete.&nbsp;&nbsp;</p>
-	<p>The change logging table named <i>log_cf_rec</i> had the same columns as <i>cf_rec</i>, as well as four new columns:</p>
-	<ul>
-		<li>
-			<p><b>change_id</b>:&nbsp; a sequence generated unique identifier of the record</p>
-		</li>
-		<li>
-			<p><b>action</b>: a single character indicating whether this record represents an [i]nsert, [u]pdate, or [d]elete</p>
-		</li>
-		<li>
-			<p><b>change_timestamp</b>: the date/time when the change record was created</p>
-		</li>
-		<li>
-			<p><b>change_user:</b> the database user that made the change.&nbsp;&nbsp;</p>
-		</li>
-	</ul>
-	<p>A trigger was placed on the <i>cf_rec</i> table so that each insert/update would copy the new values of the record into the change table, and for deletes, create a 'D' record with the primary key value.&nbsp;</p>
-	<p>Here is an example of the change logging where we delete, re-insert, update, and finally select from the <i>log_cf_rec</i><b> </b>table. Note that the actual <i>cf_rec</i> and <i>log_cf_rec</i> tables have many more columns, but have been edited for simplicity.</p>
-	<pre class="language-Rust"><code class="language-Rust">dns_records=# DELETE FROM  cf_rec WHERE rec_id = 13;
-
-dns_records=# SELECT * from log_cf_rec;
-Change_id | action | rec_id | zone_id | name
-----------------------------------------------
-1         | D      | 13     |         |   
-
-dns_records=# INSERT INTO cf_rec VALUES(13,299,'cloudflare.example.com');  
-
-dns_records=# UPDATE cf_rec SET name = 'test.example.com' WHERE rec_id = 13;
-
-dns_records=# SELECT * from log_cf_rec;
-Change_id | action | rec_id | zone_id | name
-----------------------------------------------
-1         | D      | 13     |         |  
-2         | I      | 13     | 299     | cloudflare.example.com
-3         | U      | 13     | 299     | test.example.com </code></pre>
-	<p>In addition to <i>log_cf_rec</i>, we also introduced 2 more tables in <b>cfdb </b>and 3 more tables in <b>dnsdb:</b></p>
-	<p><b>cfdb</b></p>
-	<ol>
-		<li>
-			<p><i>transferred_log_cf_rec</i>: Responsible for auditing the batches transferred to <b>dnsdb</b>.</p>
-		</li>
-		<li>
-			<p><i>log_change_action</i>:<i> </i>Responsible for summarizing the transfer size in order to compare with the <i>log_change_action </i>in <b>dnsdb.</b></p>
-		</li>
-	</ol>
-	<p><b>dnsdb</b></p>
-	<ol>
-		<li>
-			<p><i>migrate_log_cf_rec</i>:<i> </i>Responsible for collecting batch changes in <b>dnsdb</b>, which would later be applied to <i>cf_rec </i>in <b>dnsdb</b><i>.</i></p>
-		</li>
-		<li>
-			<p><i>applied_migrate_log_cf_rec</i>:<i> </i>Responsible for auditing the batches that had been successfully applied to cf_rec in <b>dnsdb.</b></p>
-		</li>
-		<li>
-			<p><i>log_change_action</i>:<i> </i>Responsible for summarizing the transfer size in order to compare with the <i>log_change_action </i>in <b>cfdb.</b></p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="initial-copy">Initial copy</h3>
-		<a href="https://blog.cloudflare.com/#initial-copy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With change logging in place, we were now ready to do the initial copy of the tables from <b>cfdb</b> to <b>dnsdb</b>. Because we were changing the structure of the tables in the destination database and because of network timeouts, we wanted to bring the data over in small pieces and validate that it was brought over accurately, rather than doing a single multi-hour copy or <a href="https://www.postgresql.org/docs/current/app-pgdump.html" target="_blank" rel="noopener noreferrer"><u>pg_dump</u></a>.&nbsp; We also wanted to ensure a long-running read could not impact production and that the process could be paused and resumed at any time.&nbsp; The basic model to transfer data was done with a simple psql copy statement piped into another psql copy statement.&nbsp; No intermediate files were used.</p>
-	<p><code>psql_cfdb -c "COPY (SELECT * FROM cf_rec WHERE id BETWEEN n and n+1000000 TO STDOUT)" |&nbsp;</code></p>
-	<p><code>psql_dnsdb -c "COPY cf_rec FROM STDIN"</code></p>
-	<p>Prior to a batch being moved, the count of records to be moved was recorded in <b>cfdb</b>, and after each batch was moved, a count was recorded in <b>dnsdb</b> and compared to the count in <b>cfdb</b> to ensure that a network interruption or other unforeseen error did not cause data to be lost. The bash script to copy data looked like this, where we included files that could be touched to pause or end the copy (if they cause load on production or there was an incident).&nbsp; Once again, this code below has been heavily simplified.</p>
-	<pre class="language-Python"><code class="language-Python">#!/bin/bash
-for i in "$@"; do
-   # Allow user to control whether this is paused or not via pause_copy file
-   while [ -f pause_copy ]; do
-      sleep 1
-   done
-   # Allow user to end migration by creating end_copy file
-   if [ ! -f end_copy ]; then
-      # Copy a batch of records from cfdb to dnsdb
-      # Get count of records from cfdb 
-	# Get count of records from dnsdb
- 	# Compare cfdb count with dnsdb count and alert if different 
-   fi
-done
-</code></pre>
-	<p><sup><i>Bash copy script</i></sup></p>
-	<div class="flex anchor relative">
-		<h3 id="change-copy">Change copy</h3>
-		<a href="https://blog.cloudflare.com/#change-copy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once the initial copy was completed, we needed to update <b>dnsdb</b> with any changes that had occurred in <b>cfdb</b> since the start of the initial copy. To implement this change copy, we created a function <i>fn_log_change_transfer_log_cf_rec </i>that could be passed a <i>batch_id</i> and <i>batch_size</i>, and did 5 things, all of which were executed in a single database <a href="https://www.postgresql.org/docs/current/tutorial-transactions.html" target="_blank" rel="noopener noreferrer"><u>transaction</u></a>:</p>
-	<ol>
-		<li>
-			<p>Select a <i>batch_size</i> of records from <i>log_cf_rec</i> in <b>cfdb</b>.</p>
-		</li>
-		<li>
-			<p>Copy the batch to <i>transferred_log_cf_rec</i> in <b>cfdb </b>to mark it as transferred.</p>
-		</li>
-		<li>
-			<p>Delete the batch from <i>log_cf_rec</i>.</p>
-		</li>
-		<li>
-			<p>Write a summary of the action to <i>log_change_action</i> table. This will later be used to compare transferred records with <b>cfdb</b>.</p>
-		</li>
-		<li>
-			<p>Return the batch of records.</p>
-		</li>
-	</ol>
-	<p>We then took the returned batch of records and copied them to <i>migrate_log_cf_rec </i>in <b>dnsdb</b>. We used the same bash script as above, except this time, the copy command looked like this:</p>
-	<p><code>psql_cfdb -c "COPY (SELECT * FROM </code><code><i>fn_log_change_transfer_log_cf_rec(&lt;batch_id&gt;,&lt;batch_size&gt;</i></code><code>) TO STDOUT" |&nbsp;</code></p>
-	<p><code>psql_dnsdb -c "COPY migrate_log_cf_rec FROM STDIN"</code></p>
-	<div class="flex anchor relative">
-		<h3 id="applying-changes-in-the-destination-database">Applying changes in the destination database</h3>
-		<a href="https://blog.cloudflare.com/#applying-changes-in-the-destination-database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now, with a batch of data in the <i>migrate_log_cf_rec </i>table, we called a newly created function <i>log_change_apply</i> to apply and audit the changes. Once again, this was all executed within a single database transaction. The function did the following:</p>
-	<ol>
-		<li>
-			<p>Move a batch from the <i>migrate_log_cf_rec</i> table to a new temporary table.</p>
-		</li>
-		<li>
-			<p>Write the counts for the batch_id to the <i>log_change_action</i> table.</p>
-		</li>
-		<li>
-			<p>Delete from the temporary table all but the latest record for a unique id (last action). For example, an insert followed by 30 updates would have a single record left, the final update. There is no need to apply all the intermediate updates.</p>
-		</li>
-		<li>
-			<p>Delete any record from <i>cf_rec</i> that has any corresponding changes.</p>
-		</li>
-		<li>
-			<p>Insert any [i]nsert or [u]pdate records in <i>cf_rec</i>.</p>
-		</li>
-		<li>
-			<p>Copy the batch to <i>applied_migrate_log_cf_rec</i> for a full audit trail.</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="putting-it-all-together">Putting it all together</h3>
-		<a href="https://blog.cloudflare.com/#putting-it-all-together" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There were 4 distinct phases, each of which was part of a different database transaction:</p>
-	<ol>
-		<li>
-			<p>Call <i>fn_log_change_transfer_log_cf_rec </i>in <b>cfdb </b>to get a batch of records.</p>
-		</li>
-		<li>
-			<p>Copy the batch of records to <b>dnsdb.</b></p>
-		</li>
-		<li>
-			<p>Call <i>log_change_apply </i>in <b>dnsdb </b>to apply the batch of records.</p>
-		</li>
-		<li>
-			<p>Compare the <i>log_change_action</i> table in each respective database to ensure counts match.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2REIq71tc7M4jKPLZSJzS9/11f22f700300f2ad3a5ee5ca85a75480/Applying_changes_in_the_destination_database.png" alt="" class="kg-image" width="3406" height="1873" loading="lazy">
-	</figure>
-	<p>This process was run every 3 seconds for several weeks before the migration to ensure that we could keep <b>dnsdb</b> in sync with <b>cfdb</b>.</p>
-	<div class="flex anchor relative">
-		<h2 id="managing-which-database-is-live">Managing which database is live</h2>
-		<a href="https://blog.cloudflare.com/#managing-which-database-is-live" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The last major pre-migration task was the construction of the request locking system that would be used throughout the actual migration. The aim was to create a system that would allow the database to communicate with the DNS Records API, to allow the DNS Records API to handle HTTP connections more gracefully. If done correctly, this could reduce downtime for DNS Record API users to nearly zero.</p>
-	<p>In order to facilitate this, a new table called <i>cf_migration_manager</i> was created. The table would be periodically polled by the DNS Records API, communicating two critical pieces of information:</p>
-	<ol>
-		<li>
-			<p><b>Which database was active.</b> Here we just used a simple A or B naming convention.</p>
-		</li>
-		<li>
-			<p><b>If the database was locked for writing</b>. In the event the database was locked for writing, the DNS Records API would hold HTTP requests until the lock was released by the database.</p>
-		</li>
-	</ol>
-	<p>Both pieces of information would be controlled within a migration manager script.</p>
-	<p>The benefit of migrating the 20+ internal services from direct database access to using our internal DNS Records gRPC API is that we were able to control access to the database to ensure that no one else would be writing without going through the <i>cf_migration_manager</i>.</p>
-	<div class="flex anchor relative">
-		<h2 id="during-the-migration">During the migration&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#during-the-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Although we aimed to complete this migration in a matter of seconds, we announced a DNS maintenance window that could last a couple of hours just to be safe. Now that everything was set up, and both <b>cfdb</b> and <b>dnsdb</b> were roughly in sync, it was time to proceed with the migration. The steps were as follows:</p>
-	<ol>
-		<li>
-			<p>Lower the time between copies from 3s to 0.5s.</p>
-		</li>
-		<li>
-			<p>Lock <b>cfdb</b> for writes via <i>cf_migration_manager</i>. This would tell the DNS Records API to hold write connections.</p>
-		</li>
-		<li>
-			<p>Make <b>cfdb</b> read-only and migrate the last logged changes to <b>dnsdb</b>.&nbsp;</p>
-		</li>
-		<li>
-			<p>Enable writes to <b>dnsdb</b>.&nbsp;</p>
-		</li>
-		<li>
-			<p>Tell DNS Records API that <b>dnsdb</b> is the new primary database and that write connections can proceed via the <i>cf_migration_manager</i>.</p>
-		</li>
-	</ol>
-	<p>Since we needed to ensure that the last changes were copied to <b>dnsdb</b> before enabling writing, this entire process took no more than 2 seconds. During the migration we saw a spike of API latency as a result of the migration manager locking writes, and then dealing with a backlog of queries. However, we recovered back to normal latencies after several minutes.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6agUpD8BQVxgDupBrwtTw3/38c96f91879c6539011866821ad6f11a/image3.png" alt="" class="kg-image" width="1230" height="503" loading="lazy">
-	</figure>
-	<p><sup><i>DNS Records API Latency and Requests during migration</i></sup></p>
-	<p>Unfortunately, due to the far-reaching impact that DNS has at Cloudflare, this was not the end of the migration. There were 3 lesser-used services that had slipped by in our scan of services accessing DNS records via <b>cfdb</b>. Fortunately, the setup of the foreign table meant that we could very quickly fix any residual issues by simply changing the table name.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="post-migration">Post-migration</h2>
-		<a href="https://blog.cloudflare.com/#post-migration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Almost immediately, as expected, we saw a steep drop in usage across <b>cfdb</b>. This freed up a lot of resources for other services to take advantage of.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Xfnbc9MZLwJB91ypItWsi/1eb21362893b31a1e3c846d1076a9f5b/image6.jpg" alt="" class="kg-image" width="1999" height="909" loading="lazy">
-	</figure>
-	<p><sup><i><b>cfdb</b></i></sup><sup><i> usage dropped significantly after the migration period.</i></sup></p>
-	<p>Since the migration, the average <b>requests</b> per second to the DNS Records API has more than <b>doubled</b>. At the same time, our CPU usage across both <b>cfdb</b> and <b>dnsdb</b> has settled at below 10% as seen below, giving us room for spikes and future growth.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39su35dkb5Pl8uwYfYjHLg/0eb26ced30b44efb71abb73830e01f3a/image2.png" alt="" class="kg-image" width="1550" height="672" loading="lazy">
-	</figure>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5AdlLKXtD68QWCsMVLKnkt/9137beee9c941827eb57c53825ffe209/image4.png" alt="" class="kg-image" width="1568" height="678" loading="lazy">
-	</figure>
-	<p><sup><i><b>cfdb</b></i></sup><sup><i> and </i></sup><sup><i><b>dnsdb</b></i></sup><sup><i> CPU usage now</i></sup></p>
-	<p>As a result of this improved capacity, our database-related incident rate dropped dramatically.</p>
-	<p>As for query latencies, our latency post-migration is slightly lower on average, with fewer sustained spikes above 500ms. However, the performance improvement is largely noticed during high load periods, when our database handles spikes without significant issues. Many of these spikes come as a result of clients making calls to collect a large amount of DNS records or making several changes to their zone in short bursts. Both of these actions are common use cases for large customers onboarding zones.</p>
-	<p>In addition to these improvements, the DNS team also has more granular control over <b>dnsdb</b> cluster-specific settings that can be tweaked for our needs rather than catering to all the other services. For example, we were able to make custom changes to replication lag limits to ensure that services using replicas were able to read with some amount of certainty that the data would exist in a consistent form. Measures like this reduce overall load on the primary because almost all read queries can now go to the replicas.</p>
-	<p>Although this migration was a resounding success, we are always working to improve our systems. As we grow, so do our customers, which means the need to scale never really ends. We have more exciting improvements on the roadmap, and we are looking forward to sharing more details in the future.</p>
-	<p>The DNS team at Cloudflare isn’t the only team solving challenging problems like the one above. If this sounds interesting to you, we have many more tech deep dives on our blog, and we are always looking for curious engineers to join our team — see open opportunities <a href="https://www.cloudflare.com/en-gb/careers/jobs" target="_blank" rel="noopener noreferrer"><u>here</u></a>.</p>
+<p>According to a survey done by <a href="https://w3techs.com/technologies/overview/dns_server" target="_blank" rel="noopener noreferrer"><u>W3Techs</u></a>, as of October 2024, Cloudflare is used as an <a href="https://www.cloudflare.com/en-gb/learning/dns/dns-server-types" target="_blank" rel="noopener noreferrer"><u>authoritative DNS</u></a> provider by 14.5% of all websites. As an authoritative DNS provider, we are responsible for managing and serving all the DNS records for our clients’ domains. This means we have an enormous responsibility to provide the best service possible, starting at the data plane. As such, we are constantly investing in our infrastructure to ensure the reliability and performance of our systems.</p>
+<p><a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer"><u>DNS</u></a> is often referred to as the phone book of the Internet, and is a key component of the Internet. If you have ever used a phone book, you know that they can become extremely large depending on the size of the physical area it covers. A <a href="https://www.cloudflare.com/en-gb/learning/dns/glossary/dns-zone/#:~:text=What%20is%20a%20DNS%20zone%20file%3F" target="_blank" rel="noopener noreferrer"><u>zone file</u></a> in DNS is no different from a phone book. It has a list of records that provide details about a domain, usually including critical information like what IP address(es) each hostname is associated with. For example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com      </span><span class="sk-005cc5-ffc799">59</span><span class="sk-005cc5-fff"> IN</span><span class="sk-6f42c1-ffc799"> A</span><span class="sk-005cc5-ffc799"> 198.51</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">100.0</span></span>
+<span class="line"><span class="sk-24292e-fff">blog</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com </span><span class="sk-005cc5-ffc799">59</span><span class="sk-005cc5-fff"> IN</span><span class="sk-6f42c1-ffc799"> A</span><span class="sk-005cc5-ffc799"> 198.51</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">100.1</span></span>
+<span class="line"><span class="sk-24292e-fff">ask</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com  </span><span class="sk-005cc5-ffc799">59</span><span class="sk-005cc5-fff"> IN</span><span class="sk-6f42c1-ffc799"> A</span><span class="sk-005cc5-ffc799"> 198.51</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">100.2</span></span></code></pre>
 </div>
+<p>It is not unusual for these zone files to reach millions of records in size, just for a single domain. The biggest single zone on Cloudflare holds roughly 4 million DNS records, but the vast majority of zones hold fewer than 100 DNS records. Given our scale according to W3Techs, you can imagine how much DNS data alone Cloudflare is responsible for. Given this volume of data, and all the complexities that come at that scale, there needs to be a very good reason to move it from one database cluster to another.&nbsp;</p>
+<h2>Why migrate&nbsp;</h2>
+<p>When initially measured in 2022, DNS data took up approximately 40% of the storage capacity in Cloudflare’s main database cluster (<strong>cfdb</strong>). This database cluster, consisting of a primary system and multiple replicas, is responsible for storing DNS zones, propagated to our <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>data centers in over 330 cities</u></a> via our distributed KV store <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale" target="_blank" rel="noopener noreferrer"><u>Quicksilver</u></a>. <strong>cfdb</strong> is accessed by most of Cloudflare's APIs, including the <a href="https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records" target="_blank" rel="noopener noreferrer"><u>DNS Records API</u></a>. Today, the DNS Records API is the API most used by our customers, with each request resulting in a query to the database. As such, it’s always been important to optimize the DNS Records API and its surrounding infrastructure to ensure we can successfully serve every request that comes in.</p>
+<p>As Cloudflare scaled, <strong>cfdb</strong> was becoming increasingly strained under the pressures of several services, many unrelated to DNS. During spikes of requests to our DNS systems, other Cloudflare services experienced degradation in the database performance. It was understood that in order to properly scale, we needed to optimize our database access and improve the systems that interact with it. However, it was evident that system level improvements could only be just so useful, and the growing pains were becoming unbearable. In late 2022, the DNS team decided, along with the help of 25 other teams, to detach itself from <strong>cfdb</strong> and move our DNS records data to another database cluster.</p>
+<h2>Pre-migration</h2>
+<p>From a DNS perspective, this migration to an improved database cluster was in the works for several years. Cloudflare initially relied on a single <a href="https://www.postgresql.org" target="_blank" rel="noopener noreferrer"><u>Postgres</u></a> database cluster, <strong>cfdb</strong>. At Cloudflare's inception, <strong>cfdb</strong> was responsible for storing information about zones and accounts and the majority of services on the Cloudflare control plane depended on it. Since around 2017, as Cloudflare grew, many services moved their data out of <strong>cfdb</strong> to be served by a <a href="https://en.wikipedia.org/wiki/Microservices" target="_blank" rel="noopener noreferrer"><u>microservice</u></a>. Unfortunately, the difficulty of these migrations are directly proportional to the amount of services that depend on the data being migrated, and in this case, most services require knowledge of both zones and DNS records.</p>
+<p>Although the term “zone” was born from the DNS point of view, it has since evolved into something more. Today, zones on Cloudflare store many different types of non-DNS related settings and help link several non-DNS related products to customers' websites. Therefore, it didn’t make sense to move both zone data and DNS record data together. This separation of two historically tightly coupled DNS concepts proved to be an incredibly challenging problem, involving many engineers and systems. In addition, it was clear that if we were going to dedicate the resources to solving this problem, we should also remove some of the legacy issues that came along with the original solution.&nbsp;</p>
+<p>One of the main issues with the legacy database was that the DNS team had little control over which systems accessed exactly what data and at what rate. Moving to a new database gave us the opportunity to create a more tightly controlled interface to the DNS data. This was manifested as an internal DNS Records <a href="https://blog.cloudflare.com/moving-k8s-communication-to-grpc" target="_blank" rel="noopener noreferrer"><u>gRPC API</u></a> which allows us to make sweeping changes to our data while only requiring a single change to the API, rather than coordinating with other systems.&nbsp; For example, the DNS team can alter access logic and auditing procedures under the hood. In addition, it allows us to appropriately rate-limit and cache data depending on our needs. The move to this new API itself was no small feat, and with the help of several teams, we managed to migrate over 20 services, using 5 different programming languages, from direct database access to using our managed gRPC API. Many of these services touch very important areas such as <a href="https://developers.cloudflare.com/dns/dnssec" target="_blank" rel="noopener noreferrer"><u>DNSSEC</u></a>, <a href="https://developers.cloudflare.com/ssl" target="_blank" rel="noopener noreferrer"><u>TLS</u></a>, <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer"><u>Email</u></a>, <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Tunnels</u></a>, <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a>, <a href="https://developers.cloudflare.com/spectrum" target="_blank" rel="noopener noreferrer"><u>Spectrum</u></a>, and <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2 storage</u></a>. Therefore, it was important to get it right.&nbsp;</p>
+<p>One of the last issues to tackle was the logical decoupling of common DNS database functions from zone data. Many of these functions expect to be able to access both DNS record data and DNS zone data at the same time. For example, at record creation time, our API needs to check that the zone is not over its maximum record allowance. Originally this check occurred at the SQL level by verifying that the record count was lower than the record limit for the zone. However, once you remove access to the zone itself, you are no longer able to confirm this. Our DNS Records API also made use of SQL functions to audit record changes, which requires access to both DNS record and zone data. Luckily, over the past several years, we have migrated this functionality out of our monolithic API and into separate microservices. This allowed us to move the auditing and zone setting logic to the application level rather than the database level. Ultimately, we are still taking advantage of SQL functions in the new database cluster, but they are fully independent of any other legacy systems, and are able to take advantage of the latest Postgres version.</p>
+<p>Now that Cloudflare DNS was mostly decoupled from the zones database, it was time to proceed with the data migration. For this, we built what would become our <strong>Change Data Capture and Transfer Service (CDCTS).</strong></p>
+<h2>Requirements for the Change Data Capture and Transfer Service</h2>
+<p>The Database team is responsible for all Postgres clusters within Cloudflare, and were tasked with executing the data migration of two tables that store DNS data: <em>cf_rec</em> and <em>cf_archived_rec</em>, from the original <strong>cfdb </strong>cluster to a new cluster we called <strong>dnsdb</strong>.&nbsp; We had several key requirements that drove our design:</p>
+<ul>
+	<li><strong>Don’t lose data. </strong>This is the number one priority when handling any sort of data. Losing data means losing trust, and it is incredibly difficult to regain that trust once it’s lost.&nbsp; Important in this is the ability to prove no data had been lost.&nbsp; The migration process would, ideally, be easily auditable.</li>
+	<li><strong>Minimize downtime</strong>.&nbsp; We wanted a solution with less than a minute of downtime during the migration, and ideally with just a few seconds of delay.</li>
+</ul>
+<p>These two requirements meant that we had to be able to migrate data changes in near real-time, meaning we either needed to implement logical replication, or some custom method to capture changes, migrate them, and apply them in a table in a separate Postgres cluster.</p>
+<p>We first looked at using Postgres logical replication using <a href="https://github.com/2ndQuadrant/pglogical" target="_blank" rel="noopener noreferrer"><u>pgLogical</u></a>, but had concerns about its performance and our ability to audit its correctness.&nbsp; Then some additional requirements emerged that made a pgLogical implementation of logical replication impossible:</p>
+<ul>
+	<li><strong>The ability to move data must be bidirectional.</strong> We had to have the ability to switch back to <strong>cfdb</strong> without significant downtime in case of unforeseen problems with the new implementation.&nbsp;</li>
+	<li><strong>Partition the <em>cf_rec</em> table in the new database.</strong> This was a long-desired improvement and since most access to <em>cf_rec</em> is by zone_id, it was decided that <strong>mod(zone_id, num_partitions)</strong> would be the partition key.</li>
+	<li><strong>Transferred data accessible from original database.&nbsp; </strong>In case we had functionality that still needed access to data, a foreign table pointing to <strong>dnsdb</strong> would be available in <strong>cfdb</strong>. This could be used as emergency access to avoid needing to roll back the entire migration for a single missed process.</li>
+	<li><strong>Only allow writes in one database. </strong>&nbsp;Applications should know where the primary database is, and should be blocked from writing to both databases at the same time.</li>
+</ul>
+<h2>Details about the tables being migrated</h2>
+<p>The primary table, <em>cf_rec</em>, stores DNS record information, and its rows are regularly inserted, updated, and deleted. At the time of the migration, this table had 1.7 billion records, and with several indexes took up 1.5 TB of disk. Typical daily usage would observe 3-5 million inserts, 1 million updates, and 3-5 million deletes.</p>
+<p>The second table, <em>cf_archived_rec</em>, stores copies of <em>cf_rec</em> that are obsolete — this table generally only has records inserted and is never updated or deleted.&nbsp; As such, it would see roughly 3-5 million inserts per day, corresponding to the records deleted from <em>cf_rec</em>. At the time of the migration, this table had roughly 4.3 billion records.</p>
+<p>Fortunately, neither table made use of database triggers or foreign keys, which meant that we could insert/update/delete records in this table without triggering changes or worrying about dependencies on other tables.</p>
+<p>Ultimately, both of these tables are highly active and are the source of truth for many highly critical systems at Cloudflare.</p>
+<h2>Designing the Change Data Capture and Transfer Service</h2>
+<p>There were two main parts to this database migration:</p>
+<ol>
+	<li><strong>Initial copy:</strong> Take all the data from <strong>cfdb </strong>and put it in <strong>dnsdb.</strong></li>
+	<li><strong>Change copy:</strong> Take all the changes in <strong>cfdb </strong>since the initial copy and update <strong>dnsdb</strong> to reflect them. This is the more involved part of the process.</li>
+</ol>
+<p>Normally, logical replication replays every insert, update, and delete on a copy of the data in the same transaction order, making a single-threaded pipeline.&nbsp; We considered using a queue-based system but again, speed and auditability were both concerns as any queue would typically replay one change at a time.&nbsp; We wanted to be able to apply large sets of changes, so that after an initial dump and restore, we could quickly catch up with the changed data. For the rest of the blog, we will only speak about <em>cf_rec</em> for simplicity, but the process for <em>cf_archived_rec</em> is the same.</p>
+<p>What we decided on was a simple change capture table. Rows from this capture table would be loaded in real-time by a database trigger, with a transfer service that could migrate and apply thousands of changed records to <strong>dnsdb</strong> in each batch. Lastly, we added some auditing logic on top to ensure that we could easily verify that all data was safely transferred without downtime.</p>
+<h3>Basic model of change data capture&nbsp;</h3>
+<p>For <em>cf_rec</em> to be migrated, we would create a change logging table, along with a trigger function and a&nbsp; table trigger to capture the new state of the record after any insert/update/delete.&nbsp;&nbsp;</p>
+<p>The change logging table named <em>log_cf_rec</em> had the same columns as <em>cf_rec</em>, as well as four new columns:</p>
+<ul>
+	<li><strong>change_id</strong>:&nbsp; a sequence generated unique identifier of the record</li>
+	<li><strong>action</strong>: a single character indicating whether this record represents an [i]nsert, [u]pdate, or [d]elete</li>
+	<li><strong>change_timestamp</strong>: the date/time when the change record was created</li>
+	<li><strong>change_user:</strong> the database user that made the change.&nbsp;&nbsp;</li>
+</ul>
+<p>A trigger was placed on the <em>cf_rec</em> table so that each insert/update would copy the new values of the record into the change table, and for deletes, create a 'D' record with the primary key value.&nbsp;</p>
+<p>Here is an example of the change logging where we delete, re-insert, update, and finally select from the <em>log_cf_rec</em><strong> </strong>table. Note that the actual <em>cf_rec</em> and <em>log_cf_rec</em> tables have many more columns, but have been edited for simplicity.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">dns_records</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">DELETE</span><span class="sk-005cc5-fff"> FROM</span><span class="sk-24292e-fff">  cf_rec </span><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> rec_id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">dns_records</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">SELECT</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> from log_cf_rec;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Change_id</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff"> action </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> rec_id </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> zone_id </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> name</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">----------------------------------------------</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0">         |</span><span class="sk-6f42c1-ffc799"> D</span><span class="sk-d73a49-a0a0a0">      |</span><span class="sk-005cc5-ffc799"> 13</span><span class="sk-d73a49-a0a0a0">     |</span><span class="sk-d73a49-a0a0a0">         |</span><span class="sk-24292e-fff">   </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">dns_records</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">INSERT</span><span class="sk-005cc5-fff"> INTO</span><span class="sk-24292e-fff"> cf_rec </span><span class="sk-005cc5-fff">VALUES</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">13</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">299</span><span class="sk-24292e-fff">,'</span><span class="sk-6f42c1-ffc799">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com</span><span class="sk-032f62-99ffe4">');  </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">dns_records=# UPDATE cf_rec SET name = '</span><span class="sk-24292e-fff">test</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">example</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com</span><span class="sk-032f62-99ffe4">' WHERE rec_id = 13;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">dns_records=# SELECT * from log_cf_rec;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">Change_id | action | rec_id | zone_id | name</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">----------------------------------------------</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">1         | D      | 13     |         |  </span></span>
+<span class="line"><span class="sk-032f62-99ffe4">2         | I      | 13     | 299     | cloudflare.example.com</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">3         | U      | 13     | 299     | test.example.com </span></span></code></pre>
+</div>
+<p>In addition to <em>log_cf_rec</em>, we also introduced 2 more tables in <strong>cfdb </strong>and 3 more tables in <strong>dnsdb:</strong></p>
+<p><strong>cfdb</strong></p>
+<ol>
+	<li><em>transferred_log_cf_rec</em>: Responsible for auditing the batches transferred to <strong>dnsdb</strong>.</li>
+	<li><em>log_change_action</em>:<em> </em>Responsible for summarizing the transfer size in order to compare with the <em>log_change_action </em>in <strong>dnsdb.</strong></li>
+</ol>
+<p><strong>dnsdb</strong></p>
+<ol>
+	<li><em>migrate_log_cf_rec</em>:<em> </em>Responsible for collecting batch changes in <strong>dnsdb</strong>, which would later be applied to <em>cf_rec </em>in <strong>dnsdb</strong><em>.</em></li>
+	<li><em>applied_migrate_log_cf_rec</em>:<em> </em>Responsible for auditing the batches that had been successfully applied to cf_rec in <strong>dnsdb.</strong></li>
+	<li><em>log_change_action</em>:<em> </em>Responsible for summarizing the transfer size in order to compare with the <em>log_change_action </em>in <strong>cfdb.</strong></li>
+</ol>
+<h3>Initial copy</h3>
+<p>With change logging in place, we were now ready to do the initial copy of the tables from <strong>cfdb</strong> to <strong>dnsdb</strong>. Because we were changing the structure of the tables in the destination database and because of network timeouts, we wanted to bring the data over in small pieces and validate that it was brought over accurately, rather than doing a single multi-hour copy or <a href="https://www.postgresql.org/docs/current/app-pgdump.html" target="_blank" rel="noopener noreferrer"><u>pg_dump</u></a>.&nbsp; We also wanted to ensure a long-running read could not impact production and that the process could be paused and resumed at any time.&nbsp; The basic model to transfer data was done with a simple psql copy statement piped into another psql copy statement.&nbsp; No intermediate files were used.</p>
+<p><code>psql_cfdb -c "COPY (SELECT * FROM cf_rec WHERE id BETWEEN n and n+1000000 TO STDOUT)" |&nbsp;</code></p>
+<p><code>psql_dnsdb -c "COPY cf_rec FROM STDIN"</code></p>
+<p>Prior to a batch being moved, the count of records to be moved was recorded in <strong>cfdb</strong>, and after each batch was moved, a count was recorded in <strong>dnsdb</strong> and compared to the count in <strong>cfdb</strong> to ensure that a network interruption or other unforeseen error did not cause data to be lost. The bash script to copy data looked like this, where we included files that could be touched to pause or end the copy (if they cause load on production or there was an incident).&nbsp; Once again, this code below has been heavily simplified.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#!/bin/bash</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> "$@"</span><span class="sk-24292e-fff">; do</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   # Allow user to control whether this is paused or not via pause_copy file</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   while</span><span class="sk-24292e-fff"> [ </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">f pause_copy ]; do</span></span>
+<span class="line"><span class="sk-24292e-fff">      sleep </span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">   done</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   # Allow user to end migration by creating end_copy file</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> [ ! </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">f end_copy ]; then</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      # Copy a batch of records from cfdb to dnsdb</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      # Get count of records from cfdb </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	# Get count of records from dnsdb</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> 	# Compare cfdb count with dnsdb count and alert if different </span></span>
+<span class="line"><span class="sk-24292e-fff">   fi</span></span>
+<span class="line"><span class="sk-24292e-fff">done</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p><sup><em>Bash copy script</em></sup></p>
+<h3>Change copy</h3>
+<p>Once the initial copy was completed, we needed to update <strong>dnsdb</strong> with any changes that had occurred in <strong>cfdb</strong> since the start of the initial copy. To implement this change copy, we created a function <em>fn_log_change_transfer_log_cf_rec </em>that could be passed a <em>batch_id</em> and <em>batch_size</em>, and did 5 things, all of which were executed in a single database <a href="https://www.postgresql.org/docs/current/tutorial-transactions.html" target="_blank" rel="noopener noreferrer"><u>transaction</u></a>:</p>
+<ol>
+	<li>Select a <em>batch_size</em> of records from <em>log_cf_rec</em> in <strong>cfdb</strong>.</li>
+	<li>Copy the batch to <em>transferred_log_cf_rec</em> in <strong>cfdb </strong>to mark it as transferred.</li>
+	<li>Delete the batch from <em>log_cf_rec</em>.</li>
+	<li>Write a summary of the action to <em>log_change_action</em> table. This will later be used to compare transferred records with <strong>cfdb</strong>.</li>
+	<li>Return the batch of records.</li>
+</ol>
+<p>We then took the returned batch of records and copied them to <em>migrate_log_cf_rec </em>in <strong>dnsdb</strong>. We used the same bash script as above, except this time, the copy command looked like this:</p>
+<p><code>psql_cfdb -c "COPY (SELECT * FROM <em>fn_log_change_transfer_log_cf_rec(&lt;batch_id&gt;,&lt;batch_size&gt;</em>) TO STDOUT" |&nbsp;</code></p>
+<p><code>psql_dnsdb -c "COPY migrate_log_cf_rec FROM STDIN"</code></p>
+<h3>Applying changes in the destination database</h3>
+<p>Now, with a batch of data in the <em>migrate_log_cf_rec </em>table, we called a newly created function <em>log_change_apply</em> to apply and audit the changes. Once again, this was all executed within a single database transaction. The function did the following:</p>
+<ol>
+	<li>Move a batch from the <em>migrate_log_cf_rec</em> table to a new temporary table.</li>
+	<li>Write the counts for the batch_id to the <em>log_change_action</em> table.</li>
+	<li>Delete from the temporary table all but the latest record for a unique id (last action). For example, an insert followed by 30 updates would have a single record left, the final update. There is no need to apply all the intermediate updates.</li>
+	<li>Delete any record from <em>cf_rec</em> that has any corresponding changes.</li>
+	<li>Insert any [i]nsert or [u]pdate records in <em>cf_rec</em>.</li>
+	<li>Copy the batch to <em>applied_migrate_log_cf_rec</em> for a full audit trail.</li>
+</ol>
+<h3>Putting it all together</h3>
+<p>There were 4 distinct phases, each of which was part of a different database transaction:</p>
+<ol>
+	<li>Call <em>fn_log_change_transfer_log_cf_rec </em>in <strong>cfdb </strong>to get a batch of records.</li>
+	<li>Copy the batch of records to <strong>dnsdb.</strong></li>
+	<li>Call <em>log_change_apply </em>in <strong>dnsdb </strong>to apply the batch of records.</li>
+	<li>Compare the <em>log_change_action</em> table in each respective database to ensure counts match.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459XKSCWX3DMD57VW7NYSY.png&amp;w=1920&amp;h=1056&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1056" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This process was run every 3 seconds for several weeks before the migration to ensure that we could keep <strong>dnsdb</strong> in sync with <strong>cfdb</strong>.</p>
+<h2>Managing which database is live</h2>
+<p>The last major pre-migration task was the construction of the request locking system that would be used throughout the actual migration. The aim was to create a system that would allow the database to communicate with the DNS Records API, to allow the DNS Records API to handle HTTP connections more gracefully. If done correctly, this could reduce downtime for DNS Record API users to nearly zero.</p>
+<p>In order to facilitate this, a new table called <em>cf_migration_manager</em> was created. The table would be periodically polled by the DNS Records API, communicating two critical pieces of information:</p>
+<ol>
+	<li><strong>Which database was active.</strong> Here we just used a simple A or B naming convention.</li>
+	<li><strong>If the database was locked for writing</strong>. In the event the database was locked for writing, the DNS Records API would hold HTTP requests until the lock was released by the database.</li>
+</ol>
+<p>Both pieces of information would be controlled within a migration manager script.</p>
+<p>The benefit of migrating the 20+ internal services from direct database access to using our internal DNS Records gRPC API is that we were able to control access to the database to ensure that no one else would be writing without going through the <em>cf_migration_manager</em>.</p>
+<h2>During the migration&nbsp;</h2>
+<p>Although we aimed to complete this migration in a matter of seconds, we announced a DNS maintenance window that could last a couple of hours just to be safe. Now that everything was set up, and both <strong>cfdb</strong> and <strong>dnsdb</strong> were roughly in sync, it was time to proceed with the migration. The steps were as follows:</p>
+<ol>
+	<li>Lower the time between copies from 3s to 0.5s.</li>
+	<li>Lock <strong>cfdb</strong> for writes via <em>cf_migration_manager</em>. This would tell the DNS Records API to hold write connections.</li>
+	<li>Make <strong>cfdb</strong> read-only and migrate the last logged changes to <strong>dnsdb</strong>.&nbsp;</li>
+	<li>Enable writes to <strong>dnsdb</strong>.&nbsp;</li>
+	<li>Tell DNS Records API that <strong>dnsdb</strong> is the new primary database and that write connections can proceed via the <em>cf_migration_manager</em>.</li>
+</ol>
+<p>Since we needed to ensure that the last changes were copied to <strong>dnsdb</strong> before enabling writing, this entire process took no more than 2 seconds. During the migration we saw a spike of API latency as a result of the migration manager locking writes, and then dealing with a backlog of queries. However, we recovered back to normal latencies after several minutes.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="292" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=640&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=750&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=828&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=1080&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=1280&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=1430&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4888GJZQEJG4MNJXPKQPTE.png&amp;w=1230&amp;h=503&amp;f=webp" data-lightbox-width="1230" data-lightbox-height="503" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="292" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>DNS Records API Latency and Requests during migration</em></sup></p>
+<p>Unfortunately, due to the far-reaching impact that DNS has at Cloudflare, this was not the end of the migration. There were 3 lesser-used services that had slipped by in our scan of services accessing DNS records via <strong>cfdb</strong>. Fortunately, the setup of the foreign table meant that we could very quickly fix any residual issues by simply changing the table name.&nbsp;</p>
+<h2>Post-migration</h2>
+<p>Almost immediately, as expected, we saw a steep drop in usage across <strong>cfdb</strong>. This freed up a lot of resources for other services to take advantage of.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CEZT36KATKRVEBYX9XQX.jpg&amp;w=1920&amp;h=873&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="873" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em><strong>cfdb</strong> usage dropped significantly after the migration period.</em></sup></p>
+<p>Since the migration, the average <strong>requests</strong> per second to the DNS Records API has more than <strong>doubled</strong>. At the same time, our CPU usage across both <strong>cfdb</strong> and <strong>dnsdb</strong> has settled at below 10% as seen below, giving us room for spikes and future growth.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="310" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=750&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=828&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=1080&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=1280&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=1430&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TN9TE6FMWZW60BQPHRVF.png&amp;w=1550&amp;h=672&amp;f=webp" data-lightbox-width="1550" data-lightbox-height="672" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="310" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="309" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=715&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=715&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=750&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=828&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=1080&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=1280&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=1430&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478MKW0FFW53ZA6YG20NMZ.png&amp;w=1568&amp;h=678&amp;f=webp" data-lightbox-width="1568" data-lightbox-height="678" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="309" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em><strong>cfdb</strong> and <strong>dnsdb</strong> CPU usage now</em></sup></p>
+<p>As a result of this improved capacity, our database-related incident rate dropped dramatically.</p>
+<p>As for query latencies, our latency post-migration is slightly lower on average, with fewer sustained spikes above 500ms. However, the performance improvement is largely noticed during high load periods, when our database handles spikes without significant issues. Many of these spikes come as a result of clients making calls to collect a large amount of DNS records or making several changes to their zone in short bursts. Both of these actions are common use cases for large customers onboarding zones.</p>
+<p>In addition to these improvements, the DNS team also has more granular control over <strong>dnsdb</strong> cluster-specific settings that can be tweaked for our needs rather than catering to all the other services. For example, we were able to make custom changes to replication lag limits to ensure that services using replicas were able to read with some amount of certainty that the data would exist in a consistent form. Measures like this reduce overall load on the primary because almost all read queries can now go to the replicas.</p>
+<p>Although this migration was a resounding success, we are always working to improve our systems. As we grow, so do our customers, which means the need to scale never really ends. We have more exciting improvements on the roadmap, and we are looking forward to sharing more details in the future.</p>
+<p>The DNS team at Cloudflare isn’t the only team solving challenging problems like the one above. If this sounds interesting to you, we have many more tech deep dives on our blog, and we are always looking for curious engineers to join our team — see open opportunities <a href="https://www.cloudflare.com/en-gb/careers/jobs" target="_blank" rel="noopener noreferrer"><u>here</u></a>.</p>

@@ -1,0 +1,73 @@
+<p>Przyjęcie architektury sieciowej Zero Trust lub migracja do niej może być trudnym zadaniem. Zanim zmieni się choć jedna zasada, zespoły muszą sobie przypomnieć, jak faktycznie zbudowana jest ich sieć: jakie aplikacje istnieją, jakie mechanizmy uwierzytelniania i autoryzacji wykorzystują, jak przepływa między nimi ruch oraz jakie założenia przyjęto w aktualnej architekturze. Ten praktyczny proces wymaga od specjalistów odczytania intencji stojących za każdą obowiązującą zasadą bezpieczeństwa i routingu.</p>
+<p>Dziś udostępniamy stos Cloudflare One, <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>zestaw umiejętności</u></a>, który można przekazać agentowi, aby konfigurował, wdrażał i zarządzał środowiskiem Zero Trust. Ten zestaw narzędzi zaprojektowano tak, aby pomóc zautomatyzować proces poznawania całkowicie nowego pakietu zabezpieczeń i odwzorowywania dotychczasowego środowiska w Cloudflare.</p>
+<p>Właśnie w taki sposób firma Cloudflare współpracowała z tysiącami klientów. Ta powtarzalność pozwoliła zbudować wiedzę o tym, gdzie migracje się zatrzymują, jakie pytania pojawiają się za każdym razem i czego potrzeba, aby ruszyć dalej. Stos Cloudflare One skupia tę wiedzę i sprawia, że jest ona dostępna szerzej niż kiedykolwiek.&nbsp;</p>
+<h3>Luka agentowa w bezpieczeństwie sieci</h3>
+<p>Zespoły już wykorzystują agenty do pisania kodu, klasyfikowania alertów i automatyzowania przepływów pracy. Organizacje coraz częściej oczekują narzędzi dostarczanych przez Cloudflare, które pomogą agentom wykonywać przepływy pracy związane z bezpieczeństwem. Same agenty nie są wytrenowane pod kątem niuansów konkretnej topologii sieci organizacji ani konfiguracji dostawców.</p>
+<p>Dzięki preskryptywnym i autorytatywnym wskazówkom organizacje mogą dodać ten kontekst do swojego obecnego zestawu narzędzi, aby lepiej wykorzystywać aktualnie wdrażane produkty zabezpieczające.</p>
+<p>Cloudflare od dawna należy do dostawców rozwiązań SASE najłatwiejszych do wdrożenia. Stos rozszerza tę filozofię na agenty: zapewnia im kontekst, narzędzia i uporządkowane rozumowanie potrzebne do działania w obrębie infrastruktury bezpieczeństwa.</p>
+<h2>Czym jest stos Cloudflare One?</h2>
+<p>Stos Cloudflare One to <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>zbiór umiejętności</u></a>, których można używać z dowolnym agentem. Podobnie jak w przypadku <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills" target="_blank" rel="noopener noreferrer"><u>każdej umiejętności</u></a>, można używać ich samodzielnie, dodawać własny kontekst albo budować na ich podstawie narzędzia. Rozwiązanie opracowano specjalnie po to, aby wspierać specjalistów ds. bezpieczeństwa w całym procesie oceny, wdrażania i zarządzania <a href="https://developers.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>.</p>
+<p>Stos powstał poprzez syntezę ręcznie dobranej wiedzy pracowników mających dziesiątki tysięcy godzin doświadczenia we współpracy z klientami korzystającymi z produktów Cloudflare One. Zawiera narzędzia do planowania, zarządzania i wdrażania infrastruktury bezpieczeństwa użytkowników i agentów w Cloudflare. Obejmuje także starannie dobraną logikę migracji od starszych dostawców, takich jak <a href="https://blog.cloudflare.com/descaler-program" target="_blank" rel="noopener noreferrer"><u>Zscaler</u></a> i Palo Alto Networks.</p>
+<p>W połączeniu z <a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-servers-for-cloudflare" target="_blank" rel="noopener noreferrer"><u>serwerem MCP trybu kodu Cloudflare</u></a> stos zapewnia agentom uporządkowany dostęp do API Cloudflare z jasno zdefiniowanymi typami danych. Agenty mogą wykonywać zapytania dotyczące aktywnego konta, sprawdzać konfiguracje i wprowadzać zmiany za pomocą starannie dobranego zestawu przepływów pracy rekomendowanych przez Cloudflare, zamiast korzystać z doraźnych wywołań interfejsu API.</p>
+<h2>Co znajduje się w stosie?</h2>
+<p>Stos Cloudflare One jest dostarczany w postaci dwóch lekkich plików umiejętności: cloudflare-one i cloudflare-one-migration. Razem obejmują one migrację do Cloudflare One, tworzenie implementacji, zarządzanie nią oraz rozwiązywanie problemów:</p>
+<ul>
+	<li><strong>Dostęp zdalny i zastąpienie VPN</strong> dzięki Cloudflare Access</li>
+	<li><strong>Bezpieczeństwo użytkowników, sieci, urządzeń i danych</strong> dzięki Cloudflare Gateway</li>
+	<li><strong>Łączność</strong> z usługami Cloudflare Tunnel, Cloudflare Mesh i Cloudflare WAN</li>
+	<li><strong>Wytyczne dotyczące migracji</strong> ze szczegółowymi informacjami o przejściu od innych dostawców SASE</li>
+	<li><strong>Interpretowanie i generowanie diagramów sieciowych</strong>, aby można było wizualizować proponowane zmiany w sieci w sposób łatwy do zrozumienia dla zespołu</li>
+	<li><strong>Tłumaczenie pojęć między dostawcami</strong>, które odwzorowuje pojęcia stosowane przez różnych dostawców SASE w celu zmniejszenia bariery utrudniającej ocenę i zmianę dostawców</li>
+	<li><strong>Rozwiązywanie problemów i działania operacyjne</strong> z zestawem narzędzi Digital Experience Monitoring (DEX) oraz automatycznymi rekomendacjami reguł</li>
+</ul>
+<h2>Jak to działa?</h2>
+<p>Stos jest dostępny w repozytorium <a href="https://github.com/cloudflare/skills" target="_blank" rel="noopener noreferrer"><u>Cloudflare Skills</u></a>. Każdy plik umiejętności obejmuje uporządkowaną wiedzę, drzewa decyzyjne i definicje narzędzi, które agenty automatycznie wczytują, gdy kontekst jest zgodny. Przekaż to agentowi, aby pomógł Ci w konfigurowaniu, ustawianiu oraz zarządzaniu środowiskiem Zero Trust:</p>
+<div id="html-block-k20" class="html-block">
+	<style>
+		#html-block-k20 .prompt-container {
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			padding: 16px;
+			margin: 2px 2px 6px 2px;
+		}
+
+		#html-block-k20 .prompt-text {
+			font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			font-size: 14px;
+			line-height: 1.5;
+			color: #2b2b2b;
+			margin-bottom: 12px;
+			font-weight: 500;
+		}
+	</style><iframe width="100%" height="125" frameborder="0" scrolling="no" style="display:block !important;width:100% !important;min-height:125px !important;max-height:125px !important;margin:0 0 10px 0 !important;padding:0 !important;border:none !important"></iframe>
+</div>
+<p>Umiejętność cloudflare-one obejmuje ogólne wskazówki dotyczące produktów. Jeśli na przykład zapytanie do agenta dotyczy najlepszego sposobu zastąpienia infrastruktury VPN za pomocą Cloudflare Tunnel lub Cloudflare Mesh, ta umiejętność podpowie agentowi, jak:</p>
+<ol>
+	<li>Przeprowadzić inwentaryzację istniejących aplikacji VPN i określić, jakiego modelu łączności wymaga każda z nich</li>
+	<li>Odwzorować każdą aplikację na odpowiedni element podstawowy Cloudflare — aplikację Access z własnym hostingiem, usługę połączoną przez Tunnel albo segment sieci połączony przez Mesh</li>
+	<li>Wygenerować zalecaną sekwencję wdrożenia, która minimalizuje zakłócenia podczas przełączenia</li>
+	<li>Przygotować podsumowanie konfiguracji, które zespół może przejrzeć przed wprowadzeniem jakichkolwiek zmian</li>
+</ol>
+<p>Umiejętność cloudflare-one-migration obejmuje tłumaczenie pojęć między dostawcami. Jeśli na przykład zapytanie do agenta dotyczy migracji aplikacji Zscaler Private Access do Cloudflare Access, ta umiejętność podpowie agentowi, jak:</p>
+<ol>
+	<li>Odwzorować definicje aplikacji Zscaler na definicje aplikacji Cloudflare Access</li>
+	<li>Przekształcić grupy użytkowników i zasady Zscaler w zasady Cloudflare Access</li>
+	<li>Użyć interfejsu API Cloudflare do utworzenia równoważnych zasobów na koncie</li>
+	<li>Wygenerować podsumowanie tego, co zostało przeniesione, oraz tego, co wymaga ręcznego sprawdzenia</li>
+</ol>
+<p>Logika migracji w stosie jest taka sama jak logika stosowana w programach Cloudflare <a href="https://blog.cloudflare.com/descaler-program" target="_blank" rel="noopener noreferrer"><u>Descaler</u></a> i <a href="https://blog.cloudflare.com/deskope-program-and-asdp-for-descaler" target="_blank" rel="noopener noreferrer"><u>Deskope</u></a>. Programy te umożliwiły już klientom firmowym przejście z rozwiązań Zscaler i Netskope na Cloudflare One w ciągu godzin, a nie miesięcy. Stos zapewnia tę możliwość każdemu klientowi lub partnerowi, w dowolnym momencie, bez czekania na zaplanowane wsparcie.</p>
+<h3>Więcej sposobów korzystania ze stosu</h3>
+<p>Stos Cloudflare One może również:</p>
+<ul>
+	<li>Rekomendować reguły zabezpieczeń na podstawie ruchu obserwowanego na aktywnym koncie</li>
+	<li>Automatycznie migrować istniejące aplikacje Zscaler Private Access do aplikacji Cloudflare Access z własnym hostingiem</li>
+	<li>Badać anomalie w dziennikach HTTP bramy SWG oraz tworzyć reguły rozwiązujące problemy zgłaszane przez użytkowników</li>
+	<li>Opracowywać raporty na temat stabilności po stronie użytkowników za pomocą zestawu narzędzi DEX oraz podejmować działania w celu zmniejszenia opóźnień w kluczowych scenariuszach</li>
+</ul>
+<p>Niezależnie od tego, czy umiejętność jest ładowana z poziomu agenta, czy stanowi podstawę do tworzenia narzędzi niestandardowych, stos Cloudflare One obsługuje wszystkie te przypadki użycia i wiele innych.</p>
+<h2>Także dla partnerów</h2>
+<p>Choć upraszcza to bieżące zarządzanie klientom, którzy już wdrożyli pakiet produktów Cloudflare One, jest to również narzędzie dla sieci partnerskiej Cloudflare. Partnerzy mogą go używać, aby pomagać swoim klientom szybciej wdrażać rozwiązania, skuteczniej nimi zarządzać, dokładniej diagnozować problemy oraz doprowadzać do ich rozwiązania.</p>
+<h2>Co dalej</h2>
+<p>Ze stosu Cloudflare One można zacząć korzystać już dziś. Aby w pełni wykorzystać możliwości stosu, warto połączyć go z <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#code-mode" target="_blank" rel="noopener noreferrer"><u>serwerem MCP trybu kodu Cloudflare</u></a>. Serwer MCP zapewnia agentowi bieżący dostęp do API Cloudflare przez pojedynczy, skompresowany interfejs, który utrzymuje dane uwierzytelniające poza kontekstem modelu.&nbsp;</p>
+<p>Stos Cloudflare One będzie nadal rozwijany wraz z ewolucją produktów Cloudflare One. Trwają już prace nad nowymi umiejętnościami dla dodatkowych źródeł migracji i bardziej zaawansowanych przepływów pracy związanych z rozwiązywaniem problemów.</p>
+<p>W miarę jak będziemy dowiadywać się więcej o tym, jak klienci i partnerzy korzystają z tych plików umiejętności, planujemy tworzyć wokół nich bardziej rozbudowane narzędzia. Klienci i partnerzy, którzy chcą przekazać opinię na temat tego, co stos powinien obsługiwać w następnej kolejności, mogą skontaktować się ze swoim zespołem ds. obsługi klienta lub otworzyć zgłoszenie w repozytorium.</p>

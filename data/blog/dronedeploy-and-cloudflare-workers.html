@@ -1,210 +1,185 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5m3AkSJ2KyZ5gIsgpSZgM8/7a56181bb1b1a8727f9886e36b5b5194/dronedeploy-and-cloudflare-workers.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Images courtesty of <a href="https://www.dronedeploy.com" target="_blank" rel="noopener noreferrer">DroneDeploy</a></p>
-	<p>When we launched <a href="https://blog.cloudflare.com/cloudflare-workers-is-now-on-open-beta">Workers</a> a few months ago, much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site, introduce a raft of personalization capabilities, A/B test changes or even aggregate a set of API responses around a range of services. In short by layering in Cloudflare Workers we can take origin websites and do transformational things.</p>
-	<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com" target="_blank" rel="noopener noreferrer">DroneDeploy</a></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OM3J7Ic30OYj2Ha59eYAI/47cd5c3c81fb8d2e13e13cc714143356/image3.png" alt="image3" class="kg-image" width="1586" height="506" loading="lazy">
-
-	</figure>
-	<p>DroneDeploy is a cloud platform that makes it easy to collect and analyze drone imagery and data. Simply install DroneDeploy on your mobile device and connect to a DJI drone. DroneDeploy flies the drone, collects the imagery, then stitches the photos into maps.</p>
-	<p>The maps can show things like crop conditions &amp; stress, construction project progress, or even thermal temperature ranges across vast solar farms or for search and rescue situations.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6rcQSI5FDuk6f07bzDruMt/f8348b8dd66ff21e8f9db57bea80caf2/image6.png" alt="image6" class="kg-image" width="584" height="637" loading="lazy">
-
-	</figure>
-	<p>Using plant health algorithms applied to drone-generated maps, growers can pinpoint crop stress in their fields and stomp out pests, disease, or irrigation issues.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3gv9ODUNXk7i4USJpQ7uWq/d2fb1aab0843b9071414706503fab54b/image1.png" alt="image1" class="kg-image" width="800" height="480" loading="lazy">
-
-	</figure>
-	<p>With Thermal Live Map, it’s possible to inspect solar farms from the sky in minutes to detect broken photocells in solar panels that are in need of repair.</p>
-	<p>You can then upload the images to the cloud and make high res maps and 3D models. With these you can perform deeper analysis (such as volumes, distances, plant health, etc), share and collaborate with coworkers, or move the maps and models into applications like CAD or Agriculture Management Platforms.</p>
-	<p>Check out how we were able to draw a flight path over Cloudflare’s HQ. The drone flew around the building and captured imagery that we turned into a map and 3D model.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xRPCYci9Oe5uZ7Pc5iIeF/34e45982965978da43155ab1bd9e4c4a/Screen-Shot-2018-06-21-at-10.08.50-AM.png" alt="Screen-Shot-2018-06-21-at-10.08.50-AM" class="kg-image" width="1026" height="982" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="so-how-is-dronedeploy-using-workers-and-why-is-it-important-to-dronedeploy">So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
-		<a href="https://blog.cloudflare.com/#so-how-is-dronedeploy-using-workers-and-why-is-it-important-to-dronedeploy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It’s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
-	<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
-	<p>Commenting on this Eric Hauser, VP Engineering of DroneDeploy detailed the upside of Cloudflare Workers for his team:</p>
-	<blockquote>
-		<p><i>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</i></p>
-	</blockquote>
-	<p>Let's peel back the layers and understand how they use Workers.</p>
-	<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">here</a>. So the general flow requires the Worker to:</p>
-	<ol>
-		<li>
-			<p>Intercept requests for images from the DroneDeploy mobile app or website. These requests can number in the hundreds or thousands of image tiles all of which are needed to render a typical map or 3D model and are stored on either S3 or Google Cloud Storage.</p>
-		</li>
-		<li>
-			<p>Ensure the correct JSON Web Token (JWT) is present.</p>
-		</li>
-		<li>
-			<p>Assuming the token is valid, HMAC sign the URL, set cache headers, and return the appropriate file.</p>
-		</li>
-	</ol>
-	<p>Let's look at each step - note we filtered out some components of the code for security reasons.</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
-  event.respondWith(handleFetch(event.request))
-});
-
-/**
- * Intercept a request
- * Validate the provided JWT credentials
- * If valid: 
- *   rewrite the request to the storage backend 
- *   sign the request with our backend credentials
- *   return the response from the storage backend
- * If not valid:
- *   return a 403 Forbidden response
- */
-function handleFetch(request) {
-  if (!(await isValidJwt(request))) {
-    return new Response('Invalid JWT', { status: 403 })
-  }
-  const gsBaseUrl = createGoogleStorageUrl(request);
-  const gsHeaders = new Headers();
-  gsHeaders.set('Date', new Date().toUTCString());  // Required by Google for HMAC signed URLs
-  const signature =  await hmacSignature(gsBaseUrl, gsHeaders);
-  gsHeaders.set('Authorization', 'AWS ' + HMAC_KEY + ':' + signature);
-  return fetch(new Request(gsBaseUrl, {headers: gsHeaders}))
-}</code></pre>
-	<p>Now check for the JWT Token</p>
-	<pre class="language-javascript"><code class="language-javascript">/**
- * Parse the JWT and validate it.
- *
- * We are just checking that the signature is valid, but you can do more that. 
- * For example, check that the payload has the expected entries or if the signature is expired..
- */ 
-async function isValidJwt(request) {
-  const encodedToken = getJwt(request);
-  if (encodedToken === null) {
-    return false
-  }
-  const token = decodeJwt(encodedToken);
-  return isValidJwtSignature(token)
-}
-
-/**
- * For this example, the JWT is passed in as part of the Authorization header,
- * after the Bearer scheme.
- * Parse the JWT out of the header and return it.
- */
-function getJwt(request) {
-  const authHeader = request.headers.get('Authorization');
-  if (!authHeader || authHeader.substring(0, 6) !== 'Bearer') {
-    return null
-  }
-  return authHeader.substring(6).trim()
-}</code></pre>
-	<p>Now decode the JWT Token</p>
-	<pre class="language-javascript"><code class="language-javascript">/**
- * Parse and decode a JWT.
- * A JWT is three, base64 encoded, strings concatenated with ‘.’:
- *   a header, a payload, and the signature.
- * The signature is “URL safe”, in that ‘/+’ characters have been replaced by ‘_-’
- * 
- * Steps:
- * 1. Split the token at the ‘.’ character
- * 2. Base64 decode the individual parts
- * 3. Retain the raw Bas64 encoded strings to verify the signature
- */
-function decodeJwt(token) {
-  const parts = token.split('.');
-  const header = JSON.parse(atob(parts[0]));
-  const payload = JSON.parse(atob(parts[1]));
-  const signature = atob(parts[2].replace(/_/g, '/').replace(/-/g, '+'));
-  return {
-    header: header,
-    payload: payload,
-    signature: signature,
-    raw: { header: parts[0], payload: parts[1], signature: parts[2] }
-  }
-}
-
-/**
- * Validate the JWT.
- *
- * Steps:
- * Reconstruct the signed message from the Base64 encoded strings.
- * Load the RSA public key into the crypto library.
- * Verify the signature with the message and the key.
- */
-async function isValidJwtSignature(token) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode([token.raw.header, token.raw.payload].join('.'));
-  const signature = new Uint8Array(Array.from(token.signature).map(c =&gt; c.charCodeAt(0)));
-  const jwk = {
-    alg: 'RS256',
-    e: 'AQAB',
-    ext: true,
-    key_ops: ['verify'],
-    kty: 'RSA',
-    n: RSA_PUBLIC_KEY
-  };
-  const key = await crypto.subtle.importKey('jwk', jwk, { name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256' }, false, ['verify']);
-  return crypto.subtle.verify('RSASSA-PKCS1-v1_5', key, signature, data)
-}</code></pre>
-	<p>Now HMAC sign the URL, and return the file.</p>
-	<pre class="language-javascript"><code class="language-javascript">/**
- * Rewrite the URL from the original request to Google Storage API and bucket.
- */
-function createGoogleStorageUrl(request) {
-  const googlePrefix = 'https://storage.googleapis.com/BUCKET_NAME';
-  const path = new URL(request.url).pathname;
-  return new URL(googlePrefix + path)
-}
-
-/**
- * Create the HMAC signature for the Google Storage URL.
- */
-async function hmacSignature(url, headers) {
-  const encoder = new TextEncoder()
-  const message = createMessage(url, headers)
-  const key = await crypto.subtle.importKey('raw', encoder.encode(HMAC_SECRET), {name: 'HMAC', hash: 'SHA-1'}, false, ['sign'])
-  const mac = await crypto.subtle.sign('HMAC', key, encoder.encode(message))
-  return btoa(String.fromCharCode(...new Uint8Array(mac)))
-}
-
-/**
- * Google requires a specific format for the message that is signed.
- * More documentation can be found here:
- * https://cloud.google.com/storage/docs/migrating
- */
-function createMessage(url, headers) {
-  const verb = 'GET'
-  return [
-    verb,
-    ‘’,  // GET requests don’t have Content-MD5 or Content-Type headers, so use empty strings
-    ‘’,
-    headers.get(‘Date’),
-    url.pathname
-  ].join('\n')
-}</code></pre>
-	<p>So the upside is clear - Authentication at the Edge provides flexibility, and scale but also means that DroneDeploy is not locked into an architecture that would prevent their ability to choose the best-in-class capabilities they need from GCP, AWS and more.</p>
-	<div class="flex anchor relative">
-		<h4 id="so-where-to-from-here">So where to from here?</h4>
-		<a href="https://blog.cloudflare.com/#so-where-to-from-here" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
-	<hr>
-	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer"><i>Cloudflare Community Forum</i></a><i>.</i></p>
+<p>Images courtesty of <a href="https://www.dronedeploy.com" target="_blank" rel="noopener noreferrer">DroneDeploy</a></p>
+<p>When we launched <a href="https://blog.cloudflare.com/cloudflare-workers-is-now-on-open-beta">Workers</a> a few months ago, much of the focus was on use cases surrounding websites running on origins that needed extra oomph. With Workers you can easily take a site, introduce a raft of personalization capabilities, A/B test changes or even aggregate a set of API responses around a range of services. In short by layering in Cloudflare Workers we can take origin websites and do transformational things.</p>
+<p>One of the joys of a platform, is that you never know where you are going to see the next use case. Enter <a href="https://www.dronedeploy.com" target="_blank" rel="noopener noreferrer">DroneDeploy</a></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="228" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=640&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=750&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=828&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=1080&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=1280&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=1430&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PJ70NSGR2ZQTXRPRBFGD.png&amp;w=1586&amp;h=506&amp;f=webp" data-lightbox-width="1586" data-lightbox-height="506" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="228" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>DroneDeploy is a cloud platform that makes it easy to collect and analyze drone imagery and data. Simply install DroneDeploy on your mobile device and connect to a DJI drone. DroneDeploy flies the drone, collects the imagery, then stitches the photos into maps.</p>
+<p>The maps can show things like crop conditions &amp; stress, construction project progress, or even thermal temperature ranges across vast solar farms or for search and rescue situations.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="584" height="637" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=584&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=584&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 584w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=640&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=750&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=828&amp;h=903&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=1080&amp;h=1178&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=1168&amp;h=1274&amp;f=webp&amp;fit=cover&amp;position=center 1168w" alt="image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48EA90NP83NDHHP17Y1J9Y.png&amp;w=584&amp;h=637&amp;f=webp" data-lightbox-width="584" data-lightbox-height="637" data-astro-cid-7nvefuv6="true" sizes="(min-width: 584px) 584px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="584" height="637" class="pt-portable-image-media"></div>
+</figure>
+<p>Using plant health algorithms applied to drone-generated maps, growers can pinpoint crop stress in their fields and stomp out pests, disease, or irrigation issues.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4670V40YS0SVTM0QY9GDWW.png&amp;w=800&amp;h=480&amp;f=webp" data-lightbox-width="800" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
+</figure>
+<p>With Thermal Live Map, it’s possible to inspect solar farms from the sky in minutes to detect broken photocells in solar panels that are in need of repair.</p>
+<p>You can then upload the images to the cloud and make high res maps and 3D models. With these you can perform deeper analysis (such as volumes, distances, plant health, etc), share and collaborate with coworkers, or move the maps and models into applications like CAD or Agriculture Management Platforms.</p>
+<p>Check out how we were able to draw a flight path over Cloudflare’s HQ. The drone flew around the building and captured imagery that we turned into a map and 3D model.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="684" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=715&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=640&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=715&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=750&amp;h=717&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=828&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=1080&amp;h=1033&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=1280&amp;h=1225&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=1430&amp;h=1368&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screen-Shot-2018-06-21-at-10.08.50-AM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47T7EREZNAC697R9EDK095.png&amp;w=1026&amp;h=982&amp;f=webp" data-lightbox-width="1026" data-lightbox-height="982" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="684" class="pt-portable-image-media"></div>
+</figure>
+<h4>So how is DroneDeploy using Workers? And why is it important to DroneDeploy?</h4>
+<p>It’s important to understand that they want to maintain architectural freedom around the many services they use to make their service. As with many software stacks today, they use GCP, AWS, and others, but they want to maintain flexibility in their network routing and authentication layer.</p>
+<p>By offering a dramatically better experience to drone users in the field, they can both push the authentication out in front of a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a> and also serve collected images directly from our CDN (typically hundreds or thousands of tiles used to render maps or 3D models). Many of DroneDeploy’s users operate in highly variable network conditions on job sites or in the field. Workers allows them to push their authentication to the edge; and use Workers to build a custom signed URL to ensure the correct images are surfaced to the correct consumer - in effect ensuring their multi-tenancy image storage model is safe guarded at the edge. To do this, DroneDeploy employs a URL authentication method commonly known as request signing which uses the Web Crypto API.</p>
+<p>Commenting on this Eric Hauser, VP Engineering of DroneDeploy detailed the upside of Cloudflare Workers for his team:</p>
+<blockquote><em>Cloudflare Workers provided us with flexibility when we ran into limitations with the shared capabilities of our primary infrastructure providers CDNs. Unique enterprise requirements around authentication, data security, and locality require us to have flexibility at our routing layer. From just the work we’ve done around authentication to date, we see an exciting and productive relationship with Cloudflare.</em></blockquote>
+<p>Let's peel back the layers and understand how they use Workers.</p>
+<p>DroneDeploy uses standard JWT authentication - if you are not sure what a JWT Token is, read more <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">here</a>. So the general flow requires the Worker to:</p>
+<ol>
+	<li>Intercept requests for images from the DroneDeploy mobile app or website. These requests can number in the hundreds or thousands of image tiles all of which are needed to render a typical map or 3D model and are stored on either S3 or Google Cloud Storage.</li>
+	<li>Ensure the correct JSON Web Token (JWT) is present.</li>
+	<li>Assuming the token is valid, HMAC sign the URL, set cache headers, and return the appropriate file.</li>
+</ol>
+<p>Let's look at each step - note we filtered out some components of the code for security reasons.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleFetch</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Intercept a request</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Validate the provided JWT credentials</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * If valid: </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> *   rewrite the request to the storage backend </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> *   sign the request with our backend credentials</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> *   return the response from the storage backend</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * If not valid:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> *   return a 403 Forbidden response</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> handleFetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> isValidJwt</span><span class="sk-24292e-fff">(request))) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Invalid JWT'</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> gsBaseUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createGoogleStorageUrl</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> gsHeaders</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  gsHeaders.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Date'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toUTCString</span><span class="sk-24292e-fff">());  </span><span class="sk-6a737d-8b8b8b94">// Required by Google for HMAC signed URLs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> signature</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> hmacSignature</span><span class="sk-24292e-fff">(gsBaseUrl, gsHeaders);</span></span>
+<span class="line"><span class="sk-24292e-fff">  gsHeaders.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Authorization'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'AWS '</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-fff"> HMAC_KEY</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-032f62-99ffe4"> ':'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> signature);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(gsBaseUrl, {headers: gsHeaders}))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Now check for the JWT Token</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Parse the JWT and validate it.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> *</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * We are just checking that the signature is valid, but you can do more that. </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * For example, check that the payload has the expected entries or if the signature is expired..</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> isValidJwt</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> encodedToken</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getJwt</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (encodedToken </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> false</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> token</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> decodeJwt</span><span class="sk-24292e-fff">(encodedToken);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> isValidJwtSignature</span><span class="sk-24292e-fff">(token)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * For this example, the JWT is passed in as part of the Authorization header,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * after the Bearer scheme.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Parse the JWT out of the header and return it.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> getJwt</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> authHeader</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Authorization'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">authHeader </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> authHeader.</span><span class="sk-6f42c1-ffc799">substring</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> 'Bearer'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-fff"> null</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> authHeader.</span><span class="sk-6f42c1-ffc799">substring</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Now decode the JWT Token</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Parse and decode a JWT.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * A JWT is three, base64 encoded, strings concatenated with ‘.’:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> *   a header, a payload, and the signature.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * The signature is “URL safe”, in that ‘/+’ characters have been replaced by ‘_-’</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Steps:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * 1. Split the token at the ‘.’ character</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * 2. Base64 decode the individual parts</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * 3. Retain the raw Bas64 encoded strings to verify the signature</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> decodeJwt</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">token</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> parts</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> token.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'.'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> header</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">atob</span><span class="sk-24292e-fff">(parts[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> payload</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">atob</span><span class="sk-24292e-fff">(parts[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">]));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> signature</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> atob</span><span class="sk-24292e-fff">(parts[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">].</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-a0a0a0">/_/</span><span class="sk-d73a49-ffc799">g</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'/'</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-a0a0a0">/-/</span><span class="sk-d73a49-ffc799">g</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'+'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    header: header,</span></span>
+<span class="line"><span class="sk-24292e-fff">    payload: payload,</span></span>
+<span class="line"><span class="sk-24292e-fff">    signature: signature,</span></span>
+<span class="line"><span class="sk-24292e-fff">    raw: { header: parts[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">], payload: parts[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">], signature: parts[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">] }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Validate the JWT.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> *</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Steps:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Reconstruct the signed message from the Base64 encoded strings.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Load the RSA public key into the crypto library.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Verify the signature with the message and the key.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> isValidJwtSignature</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">token</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> encoder</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> encoder.</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">([token.raw.header, token.raw.payload].</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'.'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> signature</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(Array.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(token.signature).</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">c</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">charCodeAt</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">)));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> jwk</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    alg: </span><span class="sk-032f62-99ffe4">'RS256'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    e: </span><span class="sk-032f62-99ffe4">'AQAB'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    ext: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    key_ops: [</span><span class="sk-032f62-99ffe4">'verify'</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">    kty: </span><span class="sk-032f62-99ffe4">'RSA'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    n: </span><span class="sk-005cc5-fff">RSA_PUBLIC_KEY</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> key</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">importKey</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'jwk'</span><span class="sk-24292e-fff">, jwk, { name: </span><span class="sk-032f62-99ffe4">'RSASSA-PKCS1-v1_5'</span><span class="sk-24292e-fff">, hash: </span><span class="sk-032f62-99ffe4">'SHA-256'</span><span class="sk-24292e-fff"> }, </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">'verify'</span><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">verify</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'RSASSA-PKCS1-v1_5'</span><span class="sk-24292e-fff">, key, signature, data)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Now HMAC sign the URL, and return the file.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Rewrite the URL from the original request to Google Storage API and bucket.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> createGoogleStorageUrl</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> googlePrefix</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'https://storage.googleapis.com/BUCKET_NAME'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> path</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url).pathname;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(googlePrefix </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> path)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Create the HMAC signature for the Google Storage URL.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> hmacSignature</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">headers</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> encoder</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> message</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> createMessage</span><span class="sk-24292e-fff">(url, headers)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> key</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">importKey</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'raw'</span><span class="sk-24292e-fff">, encoder.</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">HMAC_SECRET</span><span class="sk-24292e-fff">), {name: </span><span class="sk-032f62-99ffe4">'HMAC'</span><span class="sk-24292e-fff">, hash: </span><span class="sk-032f62-99ffe4">'SHA-1'</span><span class="sk-24292e-fff">}, </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">'sign'</span><span class="sk-24292e-fff">])</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> mac</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">sign</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'HMAC'</span><span class="sk-24292e-fff">, key, encoder.</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(message))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> btoa</span><span class="sk-24292e-fff">(String.</span><span class="sk-6f42c1-ffc799">fromCharCode</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(mac)))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Google requires a specific format for the message that is signed.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * More documentation can be found here:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * https://cloud.google.com/storage/docs/migrating</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> createMessage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">headers</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> verb</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'GET'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    verb,</span></span>
+<span class="line"><span class="sk-24292e-fff">    ‘’,  </span><span class="sk-6a737d-8b8b8b94">// GET requests don’t have Content-MD5 or Content-Type headers, so use empty strings</span></span>
+<span class="line"><span class="sk-24292e-fff">    ‘’,</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(‘Date’),</span></span>
+<span class="line"><span class="sk-24292e-fff">    url.pathname</span></span>
+<span class="line"><span class="sk-24292e-fff">  ].</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>So the upside is clear - Authentication at the Edge provides flexibility, and scale but also means that DroneDeploy is not locked into an architecture that would prevent their ability to choose the best-in-class capabilities they need from GCP, AWS and more.</p>
+<h4>So where to from here?</h4>
+<p>This Worker is the first of a few DroneDeploy are exploring. In next generation Workers, DroneDeploy is looking to deliver a range of improvements all with a view of optimizing their customers experience by using Cloudflare’s cache in addition to other features Cloudflare has to offer. We’ll update the blog at that time.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><em>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Cloudflare Community Forum</a>.</em></p>

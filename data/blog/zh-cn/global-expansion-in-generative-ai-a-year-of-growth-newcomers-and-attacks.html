@@ -1,0 +1,839 @@
+<p><a href="https://www.cloudflare.com/learning/ai/what-is-artificial-intelligence" target="_blank" rel="noopener noreferrer"><u>人工智能</u></a> (AI) 是一个广泛的概念，涵盖模拟或重复人类认知任务的机器，以<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer"><u>机器学习</u></a> (ML) 作为其数据驱动引擎。两者都已经存在了几十年，但在 2022 年底 OpenAI <a href="https://openai.com/index/chatgpt" target="_blank" rel="noopener noreferrer"><u>发布</u></a> ChatGPT 之后，<a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>生成式 AI</u></a>（可以创建文本、图像、音频、代码和视频的 AI 模型）迅速普及，受欢迎程度飙升，这为它们的发展带来了新的动力。在这篇博文中，我们将介绍最受欢迎的生成式 AI 服务，以及它们在 2024 年全年和 2025 年年初的变化情况。我们还尝试回答各种问题，例如根据 Cloudflare 的监测，这些生成式 AI 网站的流量增长了多少，其中恶意流量占比是多少，以及提供其他见解。</p>
+<p>为此，我们使用了来自 <a href="https://1.1.1.1/dns" target="_blank" rel="noopener noreferrer"><u>1.1.1.1 DNS 解析器</u></a>的汇总数据，来衡量特定生成式 AI 服务的受欢迎程度。我们通常会在<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>年度回顾</u></a>中这样做，现在也会在 Cloudflare Radar 的 <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>DNS 域排名页面</u></a>上这样做，也就是汇总每项服务的相关域信息，并识别为用户提供服务的网站。至于整体流量增长和攻击趋势，我们依赖于生成式 AI 客户群的汇总数据，这些客户使用 Cloudflare 解决方案来提高性能（包括 AI 推理）和安全性。</p>
+<p>关键要点：</p>
+<ul>
+	<li><strong>ChatGPT 稳居榜首：</strong>在生成式 AI 服务受欢迎程度方面，OpenAI 推出的 ChatGPT 仍然高居第一，它徘徊在整体互联网域服务的前 50 名左右，从 2023 年底第 200 名上升到这一水平。</li>
+	<li><strong>流量快速增长：</strong>在过去一年里（自 2024 年 2 月 1 日至 2025 年 3 月 1 日），生成式 AI 服务的每月流量增长了 251%。</li>
+	<li><strong>新进入者不断涌现：</strong>中国的聊天机器人 DeepSeek 以及 Grok/xAI 的排名均迅速攀升，这表明新进入者可以在 AI 领域迅速获得广泛关注。</li>
+	<li><strong>全球影响力与地区差异：</strong>美国以 23% 的生成式 AI 服务访问者领先，但亚洲在某些平台（如 poe.com）的访问中占据主导地位。巴西也是多种 AI 服务的重要用户。</li>
+	<li><strong>成为网络攻击的目标：</strong>在过去一年里，Cloudflare 阻止了超过 1970 亿次潜在的攻击请求，其中 390 亿次属于 DDoS 攻击活动的一个环节，这对通用 AI 聊天机器人和图像生成网站产生的影响尤为明显。</li>
+</ul>
+<h3>生成式 AI 服务受欢迎程度排名：新进入者</h3>
+<p>首先，我们使用 <a href="https://radar.cloudflare.com/ai-insights" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar 中的新增 AI 选项卡</u></a>，查看生成式 AI 服务的受欢迎程度。DeepSeek 是前十名中的最新进入者，这是 2025 年 1 月 10 日上线的一款来自中国的聊天机器人。它在 2025 年 1 月 26 日首次登上排行榜第 9，随后在 1 月 29 日（恰逢农历新年）攀升至第 3 并保持这个排名直到 2 月 4 日，然后排名稳定在目前的第 6。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Generative AI services popularity worldwide" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KQJ8T15BWT2P1R4ZKZN8.png&amp;w=1600&amp;h=900&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>这里还要重点介绍最近另一个广受欢迎的 AI 聊天机器人，也就是 X 的 Grok/xAI。这项生成式 AI 服务在 2 月发布了其 Android 版应用，并在 2025 年 2 月 17 日推出 Grok-3 模型后引发<a href="https://edition.cnn.com/2025/02/18/tech/grok-3-release-elon-musk/index.html" target="_blank" rel="noopener noreferrer"><u>关注</u></a>。在我们的生成式 AI 服务排行榜中，它于 2025 年 2 月 21 日首次进入前 10 名，排名第 9，随后短暂地达到了 Claude 通常所处的位置，也就是排名第 8，目前在第 9 名和第 10 名之间波动。</p>
+<p>下面是截至 2025 年 3 月 9 日，Cloudflare Radar <a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-01-01&amp;dateEnd=2025-03-06" target="_blank" rel="noopener noreferrer"><u>AI 页面</u></a> 上最新排名前十的生成式 AI 服务，其中 ChatGPT/OpenAI 自今年年初以来一直高居第一（前几年也观察到这种趋势，如下表所示）。</p>
+<div id="html-block-k1n" class="html-block"><iframe class="cf-radar-embed" width="800" height="450" src="https://radar.cloudflare.com/embed/AiServicesRankingXY?dateStart=2025-01-01&amp;dateEnd=2025-03-09&amp;chartState=%7B%22showAnnotations%22%3Atrue%2C%22xy.hiddenSeries%22%3A%5B%5D%2C%22xy.highlightedSeries%22%3Anull%2C%22xy.hoveredSeries%22%3Anull%2C%22xy.previousVisible%22%3Atrue%7D" title="Cloudflare Radar - 生成式 AI 服务的受欢迎程度" loading="lazy" style="border:0;max-width:100%"></iframe></div>
+<p>为了让排名变化和趋势更加一目了然，下表左侧显示了 2025 年 2 月 1 日至 3 月 1 日（月平均值）的排名，并用颜色编码与 2024 年的排名列表进行比较：红色表示 2024 年以来排名下降的服务，而绿色则表示新进入者或排名升高的服务。作为参考，第二列显示了 Cloudflare <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024 年度回顾</u></a>（包括与上一年的比较）中的前 10 名，第三列显示了 2023 年的前 10 名。</p>
+<div id="html-block-k1t" class="html-block">
+	<style>
+		#html-block-k1t .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k1t .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1t .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1t .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<figure class="table" style="width:100%">
+		<table class="tg ck-table-resized">
+			<colgroup>
+				<col style="width:31.68%">
+				<col style="width:33.12%">
+				<col style="width:35.2%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>2025 年 2 月排名前十的&nbsp;</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>生成式 AI 服务</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT/OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>2024 年第四</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Codeium (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>#3</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">GitHub Copilot (</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>#7</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">DeepSeek（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>新</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity </span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>(#6</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Claude/Anthropic (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>#5</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Hugging Face（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>新</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Suno AI（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>新</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>2024 年排名前十的生成式 AI 服务（</strong></span></span><a target="_blank" href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services/#ready-to-face-the-generative-ai-era"><span style="background-color:transparent;color:#15C"><span style="font-style:normal"><strong><u>Radar 年度回顾</u></strong></span></span></a><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>）</strong></span></span><br><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">ChatGPT/OpenAI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Character.AI (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Codeium（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>新</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">QuillBot（2023 年第三）</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Claude/Anthropic（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>新</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Perplexity (=)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">GitHub Copilot（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>新</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Wordtune (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>#7</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Poe (</span></span><span style="background-color:transparent;color:#F00"><span style="font-style:normal;text-decoration:none"><strong>#5</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">)</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">Tabnine（</span></span><span style="background-color:transparent;color:#0F0"><span style="font-style:normal;text-decoration:none"><strong>新</strong></span></span><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none">）</span></span></th>
+					<th class="tg-1wig"><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>2023 年排名前十的生成式 AI 服务（</strong></span></span><a target="_blank" href="https://radar.cloudflare.com/year-in-review/2023#internet-services"><span style="background-color:transparent;color:#15C"><span style="font-style:normal"><strong><u>Radar 年度回顾</u></strong></span></span></a><span style="background-color:transparent;color:#000"><span style="font-style:normal;text-decoration:none"><strong>）</strong></span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> ChatGPT/OpenAI</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> Character.AI</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> QuillBot</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> Hugging Face</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> Poe</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> Perplexity</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> Wordtune</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> Google Bard</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> ProWritingAid</span></span><br><span style="background-color:transparent;color:#000"><span style="font-style:normal;font-weight:400;text-decoration:none"> Voicemod</span></span></th>
+				</tr>
+			</thead>
+		</table>
+	</figure>
+</div>
+<p>除了前面提到的 DeepSeek、Grok/xAI 和 ChatGPT/OpenAI 之外，排名前十的其他聊天机器人还包括 Anthropic 公司的 Claude，以及其他类型的生成式 AI 服务。Character.AI 是一个专门用于创建 AI 角色并与之聊天的平台，它排名第二；然后是 AI 搜索引擎 Perplexity，它排名第 7；以及 QuillBot 排名第 3，它是 AI 驱动的写作润色修改工具，用于改述、语法检查和摘要生成。Codeium（排名第 4）推出了 Windsurf AI 之类的服务，提升开发人员的编程效率；GitHub Copilot（排名第 5）则是一款 AI 编码助手。</p>
+<p>另外还有 Hugging Face（排名第 9），这是一个 AI 模型的开源中心，（我们在此将其作为生成式 AI 平台纳入榜单，就像我们对待 Replicate 和 Stability AI 之类的其他 AI 模型引擎一样），以及 Suno AI（排名第 10），它是可以根据文本提示来创建歌曲的音乐生成器。</p>
+<p>我们看到 Grok/xAI 在 2 月的最后几天进入了前 10 名，但由于我们使用的是 2 月月平均值，因此，它在这里排在第 11 名。是否好奇想要了解 2025 年 2 月排名前 20 的其它服务？请看，就在这里，其中 AI 编码服务引人注目，除了 Codeium 和 GitHub Copilot 之外，Sider AI 和 Tabnine 也榜上有名。</p>
+<p>11 Grok/xAI</p>
+<p>12 Poe</p>
+<p>13 Sider AI</p>
+<p>14 Civitai</p>
+<p>15 Tabnine</p>
+<p>16 Google Gemini</p>
+<p>17 Voicemod</p>
+<p>18 GliaCloud</p>
+<p>19 Runway ml</p>
+<p>20 Midjourney</p>
+<p>我们在 Cloudflare Radar <a href="https://radar.cloudflare.com/year-in-review/2023#internet-services" target="_blank" rel="noopener noreferrer"><u>2023 年度回顾</u></a>和 <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024 年度回顾</u></a>中发布了生成式 AI 服务的受欢迎程度排行榜，OpenAI 推出的 ChatGPT 连续两年稳居榜首。正如我们在 <a href="https://radar.cloudflare.com/year-in-review/2024#internet-services" target="_blank" rel="noopener noreferrer"><u>2024 年</u></a>的一篇<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>博客文章</u></a>中所述，ChatGPT 的整体排名也有所提升，在年底几乎进入前 50 名。（它在 2023 年未进入前 100 名）。</p>
+<h3>ChatGPT 在整体排名中的影响力</h3>
+<p>Cloudflare Radar 最近的新增功能是在 <a href="https://radar.cloudflare.com/dns" target="_blank" rel="noopener noreferrer"><u>DNS 部分</u></a>更新域排名页面，其中包含一系列详细趋势。在此处，我们现在会在排名前 100 的域列表旁边显示<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>排名前 100 的整体互联网服务</u></a>。ChatGPT/OpenAI 是业界领先的生成式 AI 服务，其工作日排名通常在 50 名左右，周末排名则接近 60 名（基于 2025 年 3 月初的统计），仅次于 Temu、eBay 或 Disney Plus 等非 AI 服务。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="574" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=640&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=715&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=750&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=828&amp;h=665&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1080&amp;h=867&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1280&amp;h=1028&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1430&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2764" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ZMYF3H07ZXZEFFMC6PYD.png&amp;w=1294&amp;h=1038&amp;f=webp" data-lightbox-width="1294" data-lightbox-height="1038" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="574" class="pt-portable-image-media"></div>
+</figure>
+<p>回顾之前的趋势，正如我们在<a href="https://blog.cloudflare.com/radar-2024-year-in-review-internet-services" target="_blank" rel="noopener noreferrer"><u>年度回顾博客文章</u></a>中所述，ChatGPT/OpenAI 在 2023 年初排名约为第 200 名，并在当年年底攀升至接近前 100 名。2024 年，它一开始排在前 100 名之外，随着 <a href="https://openai.com/index/gpt-4o-and-more-tools-to-chatgpt-free" target="_blank" rel="noopener noreferrer"><u>4o 模型的发布</u></a>，它在 5 月进入前 60 名，并且自 2024 年 9 月以来一直接近前 50 名，与员工和学生恢复日常生活/学习的趋势吻合。</p>
+<h3>访问者地区分布：美洲、欧洲和亚洲</h3>
+<p><a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar 上的域信息页面</u></a>让用户能够查看<a href="https://radar.cloudflare.com/domains/domain" target="_blank" rel="noopener noreferrer"><u>特定域</u></a>在过去 7 天最受欢迎的地区，此信息源自 2025 年 3 月 3 日至 4 日 48 小时内（Radar 默认设置）的 Cloudflare <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> 解析器流量数据。</p>
+<p>在这种情况下，<a href="https://radar.cloudflare.com/domains/domain/chatgpt.com" target="_blank" rel="noopener noreferrer"><u>chatgpt.com</u></a> 域的大部分 DNS 流量来自美国 (17%)，其次是德国 (7%)、巴西 (4%)、印度尼西亚 (4%) 和印度 (4%)。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="394" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=640&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=750&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=828&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1080&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1280&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1430&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW498MGAJN1C2TM0ECN34VXM.png&amp;w=1920&amp;h=1057&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1057" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="394" class="pt-portable-image-media"></div>
+</figure>
+<p>至于新进入者 <a href="https://radar.cloudflare.com/domains/domain/deepseek.com" target="_blank" rel="noopener noreferrer"><u>deepseek.com</u></a>，此域 DNS 流量美国居于首位 (14%)，其次是中国大陆 (11%)、德国 (10%)、巴西 (7%) 和中国香港 (5%)。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image10" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CN48RRRAJKJN4Q4QAF8T.png&amp;w=1920&amp;h=1057&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1057" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<p>另一方面，<a href="https://radar.cloudflare.com/domains/domain/grok.com" target="_blank" rel="noopener noreferrer"><u>Grok.com</u></a> 流量有 20% 来自美国，8% 来自中国香港，6% 来自德国，6% 来自日本，还有 6% 来自越南，这体现了其在亚洲地区的强大影响力，排名前 5 里有三个。至于另一个知名的生成式 AI 聊天机器人域 <a href="https://radar.cloudflare.com/domains/domain/poe.com" target="_blank" rel="noopener noreferrer"><u>poe.com</u></a>，亚洲流量占据主导地位，中国香港的流量排名第一 (29%)，其次是美国 (13%)、日本 (6%)、中国大陆 (6%) 和新加坡 (5%)。</p>
+<p>生成式 AI 模型平台 Hugging Face (<a href="https://radar.cloudflare.com/domains/domain/huggingface.co" target="_blank" rel="noopener noreferrer"><u>huggingface.co</u></a>) 的流量最主要来自美国 (34%)，但排名前 5 的地区包括四个欧洲国家：法国 (6%)、英国 (6%)、德国 (4%) 和瑞典 (4%)。</p>
+<p>更具体地说，从 AI 编码工具来看，<a href="https://radar.cloudflare.com/domains/domain/githubcopilot.com" target="_blank" rel="noopener noreferrer"><u>githubcopilot.com</u></a> 的 DNS 流量主要来自美国 (22%)，其次是德国 (6%)、中国香港 (5%)、印度 (5%) 和日本 (5%)。<a href="https://radar.cloudflare.com/domains/domain/codeium.com" target="_blank" rel="noopener noreferrer"><u>codeium.com</u></a> 也呈现类似的趋势，其中美国居首 (15%)，其次是中国香港 (8%)、日本 (7%)、巴西 (5%) 和荷兰 (5%)。同样，<a href="https://radar.cloudflare.com/domains/domain/cursor.com" target="_blank" rel="noopener noreferrer"><u>cursor.com</u></a> 的 DNS 流量有 20% 来自美国，其次是中国香港 (10%)、印度 (6%)、中国大陆 (6%) 和日本 (5%)。另一款 AI 代码补全工具 <a href="https://radar.cloudflare.com/domains/domain/tabnine.com" target="_blank" rel="noopener noreferrer"><u>Tabnine.com</u></a>，其最大流量来自美国 (15%)，其次是印度 (6%)、巴西 (5%)、德国 (5%) 和中国香港 (5%)。</p>
+<p>Cloudflare Radar 中的 DNS 流量数据显示，美国对所有主要生成式 AI 平台和 AI 编码工具的使用率很高，但不同地区的采用率因平台而异。（值得注意的是，虽然 1.1.1.1 在美国拥有更大的用户群，但这些具体的流量趋势因域而异。）</p>
+<ul>
+	<li>亚洲对 poe.com 以及 Codeium 和 Cursor 等 AI 编码工具的使用占主导地位。</li>
+	<li>欧洲对 Hugging Face 和 GitHub Copilot 的使用发挥着重要作用。</li>
+	<li>巴西的表现值得关注，尤其是它对 DeepSeek 和 Tabnine 的使用。</li>
+</ul>
+<h3>生成式 AI 的总体流量增长</h3>
+<p>在生成式 AI 客户方面，Cloudflare 对行业趋势有着独特的见解。我们为众多大大小小的生成式 AI 服务提供支持。根据一组生成式 AI 客户群（其中一些是近期热门，另一些是成熟的聊天机器人或图像 AI 生成器，还有一些则是刚刚起步），我们汇总了过去几个月的 HTTP 请求数据和<a href="https://www.cloudflare.com/learning/ddos/application-layer-ddos-attack" target="_blank" rel="noopener noreferrer"><u>应用程序层攻击</u></a>趋势。</p>
+<p>我们首先来看一看过去一年 HTTP 请求流量的增长情况。自 2024 年 2 月 1 日至 2025 年 3 月 1 日（比较 2024 年 2 月与 2025 年 2 月），在这 13 个月期间，<strong>每月流量总计增长了 251%</strong>，并且 Cloudflare 处理的请求中有超过 2% 的潜在攻击已被缓解。</p>
+<p>值得注意的是，生成式 AI 网站群组中的大多数实体的流量均有所增长，并且 251% 的增长中也包括近期涌现的生成式 AI 客户，尽管这些客户大多数对增长趋势的影响不大。如果我们排除在 2024 年底和 2025 年初启用 Cloudflare 服务的生成式 AI 客户，年增长率为 234%。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="335" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=640&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=715&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=750&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=828&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1080&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1280&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1430&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image11" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EW3G40B1RVCFHF84YR7D.png&amp;w=1920&amp;h=900&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="335" class="pt-portable-image-media"></div>
+</figure>
+<p>接着看一看日均流量变化，圣诞节和年底假期期间的预期下降趋势非常明显。也出现了另一个趋势：Cloudflare 的生成式 AI 客户群体在工作日的使用量确实超过周末，这表明其更关注职场。假日期间降幅明显的时段还包括北半球的夏季，例如 7 月的峰值流量略有下降（与我们通常看到的大多数国家/地区总体流量趋势相似）。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="222" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=715&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=640&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=715&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=750&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=828&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1080&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1280&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1430&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image12" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GKEJ5EHPR7QET7FKRBVR.png&amp;w=1920&amp;h=596&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="596" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="222" class="pt-portable-image-media"></div>
+</figure>
+<p>此外，我们来看一看生成式 AI 网站的访问者地区排名，其中美国位居第一，占此类别所有请求的 23%，其次是印度 (8%)、巴西 (5%)、印度尼西亚 (4%) 和菲律宾 (4%)，这五个国家排在前五名。紧随其后的是英国和德国等欧洲国家/地区。我们列出了前 50 名，具体如下所示。请注意，埃及是第一个进入排行榜的非洲国家，位列第 32 名，与南非一样，占比均为 0.7%。</p>
+<p><strong>生成式 AI 网站流量占比最高的地区</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>排名</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>国家/地区</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>占总数的百分比</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>排名</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>国家/地区</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>占总数的百分比</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>美国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>22.7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>26</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>新加坡</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.1%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>印度</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8.3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>27</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>乌克兰</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>巴西</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.9%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>台湾地区</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.9%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>印度尼西亚</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>29</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>泰国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.9%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>菲律宾</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>智利</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>6</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>英国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>31</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>阿拉伯联合酋长国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>德国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>32</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>埃及</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>加拿大</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>33</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>沙特阿拉伯</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>9</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>法国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>34</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>南非</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>墨西哥</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>35</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>瑞典</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>日本</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>36</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>比利时</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>12</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>俄罗斯联邦</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>37</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>孟加拉国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>西班牙</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2％</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>38</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>瑞士</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>澳大利亚</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2％</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>39</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>摩洛哥</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>15</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>韩国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>40</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>厄瓜多尔</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>16</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>越南</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.6%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>41</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>以色列</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>意大利语</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>42</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>尼日利亚</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>18</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>马来西亚</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>43</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>罗马尼亚</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>19</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>土耳其</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>44</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>葡萄牙</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>20</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>波兰</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>45</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>哈萨克斯坦</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.5%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>21</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>荷兰</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>46</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>奥地利</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>22</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>阿根廷</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>47</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>捷克共和国</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>23 个</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>哥伦比亚</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>48</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>香港</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>巴基斯坦</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>49</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>阿尔及利亚</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>25</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>秘鲁</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>50</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>丹麦</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.4%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>针对生成式 AI 网站的攻击</h3>
+<p>在安全方面，随着生成式 AI 网站越来越受到关注和欢迎，其已成为 DDoS 攻击的主要目标。最近，Cloudforce One 团队发布了一份关于 Anonymous Sudan 针对 AI 服务相关公司的攻击威胁分析报告：<a href="https://www.cloudflare.com/threat-intelligence/research/report/inside-lameduck-analyzing-anonymous-sudans-threat-operations" target="_blank" rel="noopener noreferrer"><u>LameDuck 内幕：分析 Anonymous Sudan 的威胁行动</u></a>。在这份报告中，他们解释了美国司法部如何起诉两名苏丹兄弟，称他们为 LameDuck 的幕后实控人，二人通过 Skynet 僵尸网络发动了逾 15000 次 DDoS 攻击。此案件揭露了二人行动背后的政治和经济动机，凸显了包括 Cloudflare 在内的全球各方为加强网络安全所做的努力。</p>
+<p>在过去的 13 个月内（自 2024 年 2 月 1 日至 2025 年 3 月 1 日），Cloudflare 阻止了 <strong>1970 亿次潜在攻击请求</strong>。其中，针对生成式 AI 网站的 <strong>DDoS 攻击</strong>请求达到了 <strong>390 亿次</strong>。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="340" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=640&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=715&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=750&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=828&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1080&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1280&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1430&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QN07AW9GFGC2QZNTENJ3.png&amp;w=1920&amp;h=912&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="912" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="340" class="pt-portable-image-media"></div>
+</figure>
+<p>就已阻止的恶意请求数量而言，Cloudflare 在 2024 年 6 月阻止的潜在攻击数量最多，其次是 2025 年 1 月。至于 DDoS 攻击数量而言，2025 年 1 月记录的攻击活动最多，其次为 2024 年 11 月和 2024 年 2 月。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="331" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=715&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=640&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=715&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=750&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=828&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1080&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1280&amp;h=593&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1430&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image14" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48S2FR2ETCGW727VSTHJNK.png&amp;w=1920&amp;h=888&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="888" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="331" class="pt-portable-image-media"></div>
+</figure>
+<p>更仔细地查看每日 DDoS 流量可知，最大规模的攻击发生在 2024 年 2 月 23 日，当天有 37 亿次请求被视为 DDoS 攻击而被阻止。第二大攻击发生在 2024 年 11 月 13 日，当天有 15 亿请求的 DDoS 攻击。此外，2025 年 1 月 20 日至 31 日期间发生了一系列持续数日的 DDoS 攻击，其中 1 月 29 日 DDoS 攻击相关的请求数量最多，超过 10 亿次（当月总计为 73 亿次）。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="228" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=640&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=750&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=828&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1080&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1280&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1430&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454PFBEG7Z9K4PRQZ52RRT.png&amp;w=1920&amp;h=612&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="612" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="228" class="pt-portable-image-media"></div>
+</figure>
+<p>在 2024 年 2 月 23 日针对特定生成式 AI 客户的 DDoS 攻击期间，所有生成式 AI 客户超过 20% 的请求在攻击过程中被阻止。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="223" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=640&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=715&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=750&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=828&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1080&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1280&amp;h=399&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1430&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QWX1A2684E7ZS1X8DJA8.png&amp;w=1920&amp;h=599&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="599" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="223" class="pt-portable-image-media"></div>
+</figure>
+<p>我们来更详细地了解针对该特定生成式 AI 客户的 DDoS 攻击：攻击活动始于 UTC 时间 2024 年 2 月 22 日 22:45，持续了八个多小时的不间断流量峰值，峰值请求达到每秒 270,000 次。随后又发生了进一步攻击，其中最严重的一次攻击发生在 UTC 时间 2024 年 2 月 26 日 03:45，活动持续了 3 分钟，峰值请求达到每秒 309,000 次。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="345" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=640&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=750&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=828&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1080&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1280&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1430&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JYXPV6W2ZRCFR4KWT92V.png&amp;w=1422&amp;h=687&amp;f=webp" data-lightbox-width="1422" data-lightbox-height="687" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="345" class="pt-portable-image-media"></div>
+</figure>
+<p>在 2025 年 1 月 25 日至 1 月 31 日期间，另一个热门的生成式 AI 客户遭受了一次 DDoS 攻击活动，流量峰值出现在 1 月 30 日，达到每秒 523,000 次请求。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="334" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=640&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=750&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=828&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1080&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1280&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1430&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D01EM4A09X24WEAXK35M.png&amp;w=1920&amp;h=897&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="897" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="334" class="pt-portable-image-media"></div>
+</figure>
+<p>在 2024 年 2 月至 2025 年 2 月同一时期，需要考虑的另一个角度是，遭受最多 DDoS 攻击的生成式 AI 网站的类型。通用 AI 聊天机器人占所有已阻止的请求流量超过 80%，使其成为主要的攻击目标。</p>
+<p><strong>按生成式 AI 类别划分的 DDoS 攻击目标</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>类别</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>百分比</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>通用聊天机器人</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>82.7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>图像 AI 生成器</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8.2％</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>代码助手</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>其他</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 研究和基础设施</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.3%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 音乐创作</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.2%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 写作与内容</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 语音和视频</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.3%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>不过，从每个类别中已阻止的 DDoS 攻击占总流量的百分比来看，图像 AI 相关网站的比例最高，其已阻止的流量占总流量的 50% 以上。</p>
+<p><strong>因 DDoS 攻击而被阻止的流量占比最高的网站类别</strong></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>类别</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>已阻止的 DDoS 攻击 (%)</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>图像 AI</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>50.8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 聊天机器人</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>31%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 搜索</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>9.4%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 代码助手</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>6.8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 模型</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.8%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 音乐</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.6%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 公司</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.9%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>结论：AI 转型</h3>
+<p>生成式 AI 不断继续发展，彻底改变了互联网的使用方式，推动 AI 服务流量在过去一年增长超过 250%。通过分析 Cloudflare 1.1.1.1 DNS 解析器的流量可知，ChatGPT 毫无无疑是最受欢迎的 AI 服务，并且其整体互联网服务排名接近前 50 名。DeepSeek 和 Grok/xAI 等新进入者的受欢迎程度排名迅速攀升，而各地区的 AI 服务采用趋势显示，美国、印度以及巴西的访问者流量处于领先地位。</p>
+<p>这种快速增长也招致了网络攻击，过去一年来针对特定生成式 AI 网站的 DDoS 攻击请求达到 390 亿次。虽然大多数攻击主要针对通用 AI 聊天机器人，但图像生成网站的请求被阻止的比例最高，超过 50%。随着生成式 AI 不断发展，跟踪这些趋势可以记录关于增长激增、全球影响力和新兴威胁的演变历程。</p>
+<p>如果您有兴趣了解更多关于互联网的趋势和见解，请查看 <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a>。欢迎在社交媒体上关注我们：<a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer"><u>@CloudflareRadar</u></a> (X)、<a href="https://noc.social/@cloudflareradar" target="_blank" rel="noopener noreferrer"><u>noc.social/@cloudflareradar</u></a> (Mastodon) 和<a href="https://bsky.app/profile/radar.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>radar.cloudflare.com</u></a> (Bluesky)，或通过电子邮件联系我们。</p>

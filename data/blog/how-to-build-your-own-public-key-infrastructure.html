@@ -1,368 +1,213 @@
-<div class="mb2 gray5">11 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LC1p6PrWu7qrgu2PA716i/6c564a1cfae23adac3e2854e4b70515e/how-to-build-your-own-public-key-infrastructure.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>A major part of securing a network as geographically diverse as CloudFlare’s is protecting data as it travels between datacenters. Customer data and logs are important to protect but so is all the control data that our applications use to communicate with each other. For example, our application servers need to securely communicate with our new datacenter in <a href="https://blog.cloudflare.com/osaka-data-center">Osaka, Japan</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4LLkau2uBvAD4G7wNt1wWt/faf1e0ac7ce890c8800ee0bd06bbf156/23390123_b6caaefc16_z.jpg" alt="" class="kg-image" width="640" height="429" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/kk/23390123/in/photolist-34T4Z-eCaWn2-98sYER-7Hx7ig-ejcw3L-n7qDvJ-dYj3cw-ayZi8V-8qi3MQ-8vR8W5-73xSvY-ehPXNM-oaLWEs-qKGKFC-29GeC-7oEdaD-dAFKPa-az45tU-hjsKL-bikriH-dCz8na-6UKyJq-cJLzGh-drbr3g-5ru4oK-9gGswk-dU3PK3-edjQhq-d7exeW-cdBJCm-9XE9R5-62J5N-brKi7f-4uwyQL-6u3Npt-ccX3-qixk9G-2vj3k2-4DjUnW-cXXqXy-92Cgam-cv6bco-dA29Tj-87az7W-98P4W5-9AipNF-buwS46-9nKh7L-69WpZo-evqszn" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/kk" target="_blank" rel="noopener noreferrer">kris krüg</a></p>
-	<p>Great security architecture requires a defense system with multiple layers of protection. As CloudFlare’s services have grown, the need to secure application-to-application communication has grown with it. As a result, we needed a simple and maintainable way to ensure that all communication between CloudFlare’s internal services stay protected, so we built one based on known and reliable protocols.</p>
-	<p>Our system of trust is based on a Public Key Infrastructure (PKI) using internally-hosted Certificate Authorities (CAs). In this post we will describe how we built our PKI, how we use it internally, and how to run your own with our open source software. This is a long post with lots of information, grab a coffee!</p>
-	<div class="flex anchor relative">
-		<h2 id="protection-at-the-application-layer">Protection at the application layer</h2>
-		<a href="https://blog.cloudflare.com/#protection-at-the-application-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Most reasonably complex modern web services are not made up of one monolithic application. In order to handle complex operations, an application is often split up into multiple “services” that handle different portions of the business logic or data storage. Each of these services may live on different machines or even in different datacenters.</p>
-	<p>The software stacks of large service providers are made up of many components. For CloudFlare, this includes a web application to handle user actions, a main database to maintain DNS records and user rules, a data pipeline to distribute these rules to the edge network, services for caching, a log transport pipeline, data analysis services and much, much more.</p>
-	<p>Some service-to-service communication can happen within a machine, some within a datacenter and some across a broader network like the Internet. Managing which communications should use which type of network in our evolving services is not a simple task. A single accidental configuration change could result in messages that are supposed to never leave a machine going through an untrusted connection on the Internet. The system should be designed so that these messages are secure even if they go over the wrong network.</p>
-	<div class="flex anchor relative">
-		<h2 id="enter-tls">Enter TLS</h2>
-		<a href="https://blog.cloudflare.com/#enter-tls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One approach to mitigate the risks posed by attackers is to encrypt and authenticate data in transit. Our approach is to require that all new services use an encrypted protocol, Transport Layer Security (TLS), to keep inter-service communication protected. It was a natural choice: TLS is the “S” in HTTPS and is the foundation of the encrypted web. Furthermore, modern web services and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> have embraced TLS as the de-facto standard for application layer encryption. It works seamlessly with RESTful services, is supported in <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">Kyoto Tycoon</a>, <a href="http://www.postgresql.org/docs/8.3/static/libpq-ssl.html" target="_blank" rel="noopener noreferrer">PostgreSQL</a>, and the Go standard library.</p>
-	<p>As we have described in <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos">previous blog posts</a>, unauthenticated encryption can be foiled by <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">on-path attackers</a>. Encryption without authentication does not protect data in transit. For connections to be safe, each party needs to prove their identity to the other. Public key cryptography provides many mechanisms for trust, including PGP’s “web of trust” and HTTPS’s public key infrastructure (PKI) model. We chose the PKI model because of ease of use and deployment. TLS with PKI provides trusted communication.</p>
-	<div class="flex anchor relative">
-		<h2 id="be-picky-with-your-pki">Be picky with your PKI</h2>
-		<a href="https://blog.cloudflare.com/#be-picky-with-your-pki" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Trust is the bedrock of secure communication. For two parties to securely exchange information, they need to know that the other party is legitimate. PKI provides just that: a mechanism for trusting identities online.</p>
-	<p>The tools that enable this are digital certificates and public key cryptography. A certificate lets a website or service prove its identity. Practically speaking, a certificate is a file with some identity information about the owner, a public key, and a signature from a certificate authority (CA). Each certificate also contains a public key. Each public key has an associated private key, which is kept securely under the certificate owner’s control. The private key can be used to create digital signatures that can be verified by the associated public key.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4zk0sFLWqQIg6Fh9Qc5kPU/8105c11afdaffc285ec06c30e9418eee/anatomy-of-a-certificate.png" alt="" class="kg-image" width="645" height="595" loading="lazy">
-
-	</figure>
-	<p>A certificate typically contains</p>
-	<ul>
-		<li>
-			<p>Information about the organization that the certificate is issued to</p>
-		</li>
-		<li>
-			<p>A public key</p>
-		</li>
-		<li>
-			<p>Information about the organization that issued the certificate</p>
-		</li>
-		<li>
-			<p>The rights granted by the issuer</p>
-		</li>
-		<li>
-			<p>The validity period for the certificate</p>
-		</li>
-		<li>
-			<p>Which hostnames the certificate is valid for</p>
-		</li>
-		<li>
-			<p>The allowed uses (client authentication, server authentication)</p>
-		</li>
-		<li>
-			<p>A digital signature by the issuer certificate’s private key</p>
-		</li>
-	</ul>
-	<p>A certificate is a powerful tool for proving your identity online. The owner of a certificate can digitally sign data, and a verifier can use the public key from the certificate to verify it. The fact that the certificate is itself digitally signed by a third party CA means that if the verifier trusts the third party, they have assurances that the certificate is legitimate. The CA can give a certificate certain rights, such as a period of time in which the identity of the certificate should be trusted.</p>
-	<p>Sometimes certificates are signed by what’s called an intermediate CA, which is itself signed by a different CA. In this case, a certificate verifier can follow the chain until they find a certificate that they trust — the root.</p>
-	<p>This chain of trust model can be very useful for the CA. It allows the root certificate’s private key to be kept offline and only used for signing intermediate certificates. Intermediate CA certificates can be shorter lived and be used to sign endpoint certificates on demand. Shorter-lived online intermediates are easier to manage and revoke if compromised.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1mgZiSD0E5rW6KjaGEFPa0/0428f6fc0637a81525dcbed41586192b/certificate-chain-of-trust.png" alt="" class="kg-image" width="645" height="541" loading="lazy">
-
-	</figure>
-	<p>This is the same system used for HTTPS on the web. For example, cloudflare.com has a certificate signed by Comodo’s Intermediate certificate, which is in turn signed by the Comodo offline root. Browsers trust the Comodo root, and therefore also trust the intermediate and web site certificate.</p>
-	<p>This model works for the web because browsers only trust a small set of certificate authorities, who each have stringent requirements to only issue certificates after validating the ownership of a website. For internal services that are not accessed via browsers, there is *no need * to go through a third party certificate authority. Trusted certificates do not have to be from Globalsign, Comodo, Verisign or any other CA — they can be from a CA you operate yourself.</p>
-	<div class="flex anchor relative">
-		<h2 id="building-your-own-ca">Building your own CA</h2>
-		<a href="https://blog.cloudflare.com/#building-your-own-ca" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The most painful part of getting a certificate for a website is going through the process of obtaining it. For websites, we eliminated this pain by launching <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>. The most painful part of running a CA is the administration. When we decided to build our internal CA, we sought to make both obtaining certificates and operating the CA painless and even fun.</p>
-	<p>The software we are using is <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a>, CloudFlare’s open source PKI toolkit. This tool was open sourced last year and has all the capabilities needed to run a certificate authority. Although CFSSL was built for an internal CA, it’s robust enough to be use a publicly trusted CA; in fact, the <a href="https://letsencrypt.org" target="_blank" rel="noopener noreferrer">Let’s Encrypt</a> project is using CFSSL as a core part of their CA infrastructure.</p>
-	<div class="flex anchor relative">
-		<h3 id="key-protection">Key protection</h3>
-		<a href="https://blog.cloudflare.com/#key-protection" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To run a CA, you need the CA certificate and corresponding private key. This private key is extremely sensitive. Any person who knows the value of the key can act as the CA and issue certificates. Browser-trusted certificate authorities are required to keep their private keys inside of specialized hardware known as Hardware Security Modules (HSMs). The requirements for protecting private keys for corporate infrastructures are not necessarily as stringent, so we provided several mechanisms to protect keys.</p>
-	<p>CFSSL supports three different modes of protection for private keys:</p>
-	<ol>
-		<li>
-			<p><i>Hardware Security Module (HSM)</i>CFSSL allows the CA server to use an HSM to compute digital signatures. Most HSMs use an interface called PKCS#11 to interact with them, and CFSSL natively supports this interface. Using an HSM ensures that private keys do not live in memory and it provides tamper protection against physical adversaries.</p>
-		</li>
-		<li>
-			<p><i>Red October</i>Private Keys can be encrypted using <a href="https://blog.cloudflare.com/red-october-cloudflares-open-source-implementation-of-the-two-man-rule">Red October</a> (another open source CloudFlare project). A key protected with Red October can only be decrypted with the permission of multiple key owners. In order to use CFSSL with a Red October key, the key owners need to authorize the use of the private key. This ensures that the CA key is never unencrypted on disk, in source control, or in configuration management. Note: Red October support in CFSSL is experimental and subject to change.</p>
-		</li>
-		<li>
-			<p><i>Plaintext</i>CFSSL accepts plain unencrypted private keys. This works well when the private key is generated on the machine running CFSSL or by another program. If the machine that is running the CA is highly secure, this mode is a compromise between security, cost, and usability. This is also useful in development mode, allowing users to test changes to their infrastructure designs.</p>
-		</li>
-	</ol>
-	<p>Next I’ll show you how to quickly configure an internal CA using plaintext private keys. Note: The following expects <a href="https://github.com/cloudflare/cfssl#readme" target="_blank" rel="noopener noreferrer">CFSSL to be installed</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="generating-a-ca-key-and-certificate">Generating a CA key and certificate</h3>
-		<a href="https://blog.cloudflare.com/#generating-a-ca-key-and-certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To start, you need some information about what metadata you want to include in your certificate. Start by creating a file called <code>csr_ca.json</code> containing this basic information (feel free to fill in your own organization's details):</p>
-	<pre class="language-bash"><code class="language-bash">{
-  "CN": "My Awesome CA",
-  "key": {
-    "algo": "rsa",
-    "size": 2048
-  },
-    "names": [
-       {
-         "C": "US",
-         "L": "San Francisco",
-         "O": "My Awesome Company",
-         "OU": "CA Services",
-         "ST": "California"
-       }
-    ]
-}</code></pre>
-	<p>With this you can create your CA with a single call"<code>$ cfssl gencert -initca csr_ca.json | cfssljson -bare ca</code></p>
-	<p>This generates the two files you need to start your CA:</p>
-	<ul>
-		<li>
-			<p><code>ca-key.pem</code>: your private key</p>
-		</li>
-		<li>
-			<p><code>ca.pem</code>: your certificate</p>
-		</li>
-		<li>
-			<p><code>ca.csr</code>: your certificate signing request (needed to get your CA cross-signed by another CA)</p>
-		</li>
-	</ul>
-	<p>The key and certificate are the bare minimum you need to start running a CA.</p>
-	<div class="flex anchor relative">
-		<h3 id="policy">Policy</h3>
-		<a href="https://blog.cloudflare.com/#policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once the CA certificate and key are created, the CA software needs to know what kind of certificates it will issue. This is determined in the CFSSL configuration file’s signing policy section.</p>
-	<p>Here’s an example of a simple policy for a CA that can issue certificates that are valid for a year and can be used for server authentication.</p>
-	<pre class="language-bash"><code class="language-bash">config_ca.json
-{
-  "signing": {
-    "default": {
-      "auth_key": "key1",
-      "expiry": "8760h",
-      "usages": [
-         "signing",
-         "key encipherment",
-         "server auth"
-       ]
-     }
-  },
-  "auth_keys": {
-    "key1": {
-      "key": &lt;16 byte hex API key here&gt;,
-      "type": "standard"
-    }
-  }
-}</code></pre>
-	<p>We also added an authentication key to this signing policy. This authentication key should be randomly generated and kept private. The API key is a basic authentication mechanism that prevents unauthorized parties from requesting certificates. There are several other features you can use for the CA (subject name allowlisting, etc.), <a href="https://github.com/cloudflare/cfssl/tree/master/doc" target="_blank" rel="noopener noreferrer">CFSSL documentation</a> for more information.</p>
-	<p>To run the service, call<code>$ cfssl serve -ca-key ca-key.pem -ca ca.pem -config config_ca.json</code></p>
-	<p>This opens up a CA service listening on port 8888.</p>
-	<div class="flex anchor relative">
-		<h3 id="issuing-certificates">Issuing certificates</h3>
-		<a href="https://blog.cloudflare.com/#issuing-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Certificate authorities do not just create certificates out of a private key and thin air, they need a public key and metadata to populate the certificate’s data fields. This information is typically communicated to a CA via a certificate signing request (CSR).</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1XFNOUGDbNZ98c8QiaJ8hA/12c40f70676beb344b0adbae792cbf16/illustrations-ssl-blog-june-2015-03.png" alt="" class="kg-image" width="2688" height="1080" loading="lazy">
-
-	</figure>
-	<p>A CSR is very similar in structure to a certificate. The CSR contains:</p>
-	<ul>
-		<li>
-			<p>Information about the organization that is requesting the certificate</p>
-		</li>
-		<li>
-			<p>A public key</p>
-		</li>
-		<li>
-			<p>A digital signature by the requestor’s private key</p>
-		</li>
-	</ul>
-	<p>Given a CSR, a certificate authority can create a certificate. First, it verifies that the requestor has control over the associated private key. It does this by checking the CSR’s signature. Then the CA will check to see if the requesting party should be given a certificate and which domains/IPs it should be valid for. This can be done with a database lookup or through a registration authority. If everything checks out, the CA uses its private key to create and sign the certificate to send back to the requestor.</p>
-	<div class="flex anchor relative">
-		<h3 id="requesting-certificates">Requesting Certificates</h3>
-		<a href="https://blog.cloudflare.com/#requesting-certificates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s say you have CFSSL set up as CA as described above and it’s running on a server called “ca1.mysite.com” with an authentication API key. How do you get this CA to issue a certificate? CFSSL provides two commands to help with that: <code>gencert</code> and <code>sign</code>. They are available as JSON API endpoints or command line options.</p>
-	<p>The <code>gencert</code> command will automatically handle the whole certificate generation process. It will create your private key, generate a CSR, send the CSR to the CA to be signed and return your signed certificate.</p>
-	<p>There are two configuration files needed for this. One to tell the local CFSSL client where the CA is and how to authenticate the request, and a CSR configuration used to populate the CSR.</p>
-	<p>Here’s an example for creating a certificate for a generic database server, db1.mysite.com.</p>
-	<p><code>csr_client.json</code></p>
-	<pre class="language-bash"><code class="language-bash">{
-  "hosts": [
-    	"db1.mysite.com"
-  ],
-  "key": {
-    "algo": "rsa",
-    "size": 2048
-  },
-  "names": [
-    {
-      "C": "US",
-      "L": "San Francisco",
-      "O": “My Awesome Company",
-      "OU": “Data Services",
-      "ST": "California"
-    }
-  ]
-}</code></pre>
-	<p><code>config_client.json</code></p>
-	<pre class="language-bash"><code class="language-bash">{
-  "signing": {
-    "default": {
-      "auth_key": "key1",
-      "remote": "caserver"
-    }
-  },
-  "auth_keys": {
-    "key1": {
-    "key": &lt;16 byte hex API key here&gt;,
-    "type": "standard"
-    }
-  },
-  "remotes": {
-    "caserver": “ca1.mysite.com:8888"
-  }
-}</code></pre>
-	<p>With these two configuration files set, you can create your certificate.<code>$ cfssl gencert -config config_client.json csr_client.json | cfssljson -bare db</code></p>
-	<p>This results in three files:</p>
-	<ul>
-		<li>
-			<p><code>db-key.pem</code>: your private key</p>
-		</li>
-		<li>
-			<p><code>db.pem</code>: your certificate</p>
-		</li>
-		<li>
-			<p><code>db.csr</code>: your CSR</p>
-		</li>
-	</ul>
-	<p>The CSR can be resubmitted to the CA to be signed again at any point with the <code>sign</code> command</p>
-	<p><code>$ cfssl sign -config config_client.json db.csr | cfssljson -bare db-new</code></p>
-	<p>resulting in:</p>
-	<ul>
-		<li>
-			<p><code>db-new.pem</code>: your re-signed certificate</p>
-		</li>
-	</ul>
-	<p>These two commands let you easily and conveniently set up a private PKI. As a startup or a growing business moving to a service-oriented or even a microservice architecture, having a PKI can be very convenient. Next we’ll describe how CloudFlare set up its own internal PKI to help make its services encrypted by default.</p>
-	<div class="flex anchor relative">
-		<h2 id="using-a-pki-for-services">Using a PKI for services</h2>
-		<a href="https://blog.cloudflare.com/#using-a-pki-for-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So now you have a complex set of services that can all speak TLS, and a central certificate authority server that can issue certificates. What’s next? Getting certificates and keys for the applications. There are several ways to do this including a centrally managed way and a distributed way.</p>
-	<div class="flex anchor relative">
-		<h3 id="centralized-distribution-vs-on-demand">Centralized distribution vs on demand</h3>
-		<a href="https://blog.cloudflare.com/#centralized-distribution-vs-on-demand" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One way to create certificates and keys for your applications is to create them all on a central provisioning server and then send them out to each of the servers. In this model, a central server creates certificates and keys and sends them over a secure tunnel to the application servers.</p>
-	<p>This model creates a sort of chicken and egg problem. How do you transport private keys if you need those private keys to encrypt your transport?</p>
-	<p>A distributed key management model fits better with the way modern services are typically deployed and run. The trick is creating the private keys directly in the application server. At install or run time, a service creates its own private key and sends a request to a certificate authority to issue a certificate. This can be repeated on demand if the current certificate is close to expiring.</p>
-	<p>For example, many companies are starting to use Docker, or other lightweight container technologies, to encapsulate and run individual services. Under load, services can be scaled up by automatically running new containers. In a centralized distribution model, certificates and keys for each container need to be created before the containers are deployed.</p>
-	<p>In the centralized distribution model, the provisioning service needs to create and manage a key and certificate for each service. Keeping this sort of central database in a complex and dynamic topology seems like the wrong approach. It would be preferable if the CA itself was stateless and generated a set of logs.</p>
-	<p>The idea that keys need to be transported to their destination instead of generated locally is also troubling. Transporting private keys introduces an unnecessary risk to the system. When a new service comes into being, it should generate its key locally and request a certificate for use.</p>
-	<div class="flex anchor relative">
-		<h3 id="trust-across-services">Trust across services</h3>
-		<a href="https://blog.cloudflare.com/#trust-across-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Internal services need to trust each other. Browsers validate website certificates by checking the signature on the certificate and checking the hostname against the list of Subject Alternative Names (SANs) in the certificate. This type of explicit check is useful, but it has a record of <a href="https://cwe.mitre.org/data/definitions/297.html" target="_blank" rel="noopener noreferrer">not working as expected</a>. Another way for services to trust each other is an implicit check based on per-service CAs.</p>
-	<p>The idea is simple: use a different CA for each set of services. Issue all database certificates from a database CA and all API servers from an API server CA.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/25QdARnmhs56cQyEzRWRZs/c0abd815cfbbc0267b7f19aeaccdaa7c/provisioning-app-certificates.png" alt="" class="kg-image" width="645" height="585" loading="lazy">
-
-	</figure>
-	<p>When setting these services up to talk to each other with mutual TLS authentication configure the trust stores as follows:</p>
-	<ul>
-		<li>
-			<p>API server only trusts DB CA</p>
-		</li>
-		<li>
-			<p>DB only trusts API CA</p>
-		</li>
-	</ul>
-	<p>This approach is less fine-grained than an explicit check against a SAN, but it is more robust and easier to manage on the CA policy side. With an implicit trust system in place, you can guarantee that services of type A can only communicate with services of type B.</p>
-	<p>The following diagram describes how two applications can trust each other with mutually authenticated TLS.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6zHWhhn4tWw94Y9yGmBFjy/a76107c0a0268e886c15c7f54261c669/service-to-service-communication.png" alt="" class="kg-image" width="645" height="837" loading="lazy">
-
-	</figure>
-	<p>In this diagram, the API server trusts the DB CA (in red). It will therefore only accept certificates that are signed by the DB CA (i.e. with a red ribbon). Conversely, the database server only accepts certificates with a signature from the API CA (orange ribbon). To establish a trusted connection, each party sends a key share to the other, signed with their certificate’s private key. The key shares are combined to create a session key, with which both parties can encrypt their data. The chain of verification from key share to certificate to CA assure that the other party is authentic.</p>
-	<p>Establishing a mutually authenticated trusted tunnel between services prevents attackers from accessing or modifying data in transit and causing havoc on your services. With a strong PKI in place, every service can communicate securely and confidentially over any network, even the Internet.</p>
-	<div class="flex anchor relative">
-		<h2 id="using-a-pki-for-remote-services">Using a PKI for remote services</h2>
-		<a href="https://blog.cloudflare.com/#using-a-pki-for-remote-services" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Internal PKIs are very flexible and can be used to issue certificates to third parties who are integrating with your network. For example, CloudFlare has a service called <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a> that can be used to optimize connections between CloudFlare and an origin server. Communication between Railgun and CloudFlare is done over an encrypted and authenticated channel using certificates from a CloudFlare certificate authority.</p>
-	<p>This ensures that data is secure in transit. When a new Railgun instance is set up on the origin server, it creates a private key and sends a CSR to CloudFlare, which then issues the appropriate certificate. The Railgun server keeps the private key in memory and deletes it when it shuts down, preventing other services from getting access to it.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MzHk6TL9t4sBWgQz4kEQ6/009bdae54937d9e446064477f494cb87/illustrations-ssl-blog-june-2015-02-1.png" alt="" class="kg-image" width="645" height="263" loading="lazy">
-
-	</figure>
-	<p>This model works great for not only Railgun, but several other initiatives at CloudFlare such as the <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">Origin CA</a> and <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Securing data at the application level is an important step for securing a distributed systems architecture, but is only truly effective with a strong PKI in place.</p>
+<p>A major part of securing a network as geographically diverse as CloudFlare’s is protecting data as it travels between datacenters. Customer data and logs are important to protect but so is all the control data that our applications use to communicate with each other. For example, our application servers need to securely communicate with our new datacenter in <a href="https://blog.cloudflare.com/osaka-data-center">Osaka, Japan</a>.</p>
+<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/kk/23390123/in/photolist-34T4Z-eCaWn2-98sYER-7Hx7ig-ejcw3L-n7qDvJ-dYj3cw-ayZi8V-8qi3MQ-8vR8W5-73xSvY-ehPXNM-oaLWEs-qKGKFC-29GeC-7oEdaD-dAFKPa-az45tU-hjsKL-bikriH-dCz8na-6UKyJq-cJLzGh-drbr3g-5ru4oK-9gGswk-dU3PK3-edjQhq-d7exeW-cdBJCm-9XE9R5-62J5N-brKi7f-4uwyQL-6u3Npt-ccX3-qixk9G-2vj3k2-4DjUnW-cXXqXy-92Cgam-cv6bco-dA29Tj-87az7W-98P4W5-9AipNF-buwS46-9nKh7L-69WpZo-evqszn" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/kk" target="_blank" rel="noopener noreferrer">kris krüg</a></p>
+<p>Great security architecture requires a defense system with multiple layers of protection. As CloudFlare’s services have grown, the need to secure application-to-application communication has grown with it. As a result, we needed a simple and maintainable way to ensure that all communication between CloudFlare’s internal services stay protected, so we built one based on known and reliable protocols.</p>
+<p>Our system of trust is based on a Public Key Infrastructure (PKI) using internally-hosted Certificate Authorities (CAs). In this post we will describe how we built our PKI, how we use it internally, and how to run your own with our open source software. This is a long post with lots of information, grab a coffee!</p>
+<h2>Protection at the application layer</h2>
+<p>Most reasonably complex modern web services are not made up of one monolithic application. In order to handle complex operations, an application is often split up into multiple “services” that handle different portions of the business logic or data storage. Each of these services may live on different machines or even in different datacenters.</p>
+<p>The software stacks of large service providers are made up of many components. For CloudFlare, this includes a web application to handle user actions, a main database to maintain DNS records and user rules, a data pipeline to distribute these rules to the edge network, services for caching, a log transport pipeline, data analysis services and much, much more.</p>
+<p>Some service-to-service communication can happen within a machine, some within a datacenter and some across a broader network like the Internet. Managing which communications should use which type of network in our evolving services is not a simple task. A single accidental configuration change could result in messages that are supposed to never leave a machine going through an untrusted connection on the Internet. The system should be designed so that these messages are secure even if they go over the wrong network.</p>
+<h2>Enter TLS</h2>
+<p>One approach to mitigate the risks posed by attackers is to encrypt and authenticate data in transit. Our approach is to require that all new services use an encrypted protocol, Transport Layer Security (TLS), to keep inter-service communication protected. It was a natural choice: TLS is the “S” in HTTPS and is the foundation of the encrypted web. Furthermore, modern web services and <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">APIs</a> have embraced TLS as the de-facto standard for application layer encryption. It works seamlessly with RESTful services, is supported in <a href="https://blog.cloudflare.com/kyoto-tycoon-secure-replication">Kyoto Tycoon</a>, <a href="http://www.postgresql.org/docs/8.3/static/libpq-ssl.html" target="_blank" rel="noopener noreferrer">PostgreSQL</a>, and the Go standard library.</p>
+<p>As we have described in <a href="https://blog.cloudflare.com/an-introduction-to-javascript-based-ddos">previous blog posts</a>, unauthenticated encryption can be foiled by <a href="https://blog.cloudflare.com/introducing-strict-ssl-protecting-against-a-man-in-the-middle-attack-on-origin-traffic">on-path attackers</a>. Encryption without authentication does not protect data in transit. For connections to be safe, each party needs to prove their identity to the other. Public key cryptography provides many mechanisms for trust, including PGP’s “web of trust” and HTTPS’s public key infrastructure (PKI) model. We chose the PKI model because of ease of use and deployment. TLS with PKI provides trusted communication.</p>
+<h2>Be picky with your PKI</h2>
+<p>Trust is the bedrock of secure communication. For two parties to securely exchange information, they need to know that the other party is legitimate. PKI provides just that: a mechanism for trusting identities online.</p>
+<p>The tools that enable this are digital certificates and public key cryptography. A certificate lets a website or service prove its identity. Practically speaking, a certificate is a file with some identity information about the owner, a public key, and a signature from a certificate authority (CA). Each certificate also contains a public key. Each public key has an associated private key, which is kept securely under the certificate owner’s control. The private key can be used to create digital signatures that can be verified by the associated public key.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="645" height="595" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=645&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=640&amp;h=590&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=645&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 645w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=750&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=828&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=1080&amp;h=996&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=1280&amp;h=1181&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=1290&amp;h=1190&amp;f=webp&amp;fit=cover&amp;position=center 1290w" alt="How to build your own public key infrastructure Embedded Image - CjdvK9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW474QA3NRSQMJKK0N9WAQPZ.png&amp;w=645&amp;h=595&amp;f=webp" data-lightbox-width="645" data-lightbox-height="595" data-astro-cid-7nvefuv6="true" sizes="(min-width: 645px) 645px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="645" height="595" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>A certificate typically contains</p>
+<ul>
+	<li>Information about the organization that the certificate is issued to</li>
+	<li>A public key</li>
+	<li>Information about the organization that issued the certificate</li>
+	<li>The rights granted by the issuer</li>
+	<li>The validity period for the certificate</li>
+	<li>Which hostnames the certificate is valid for</li>
+	<li>The allowed uses (client authentication, server authentication)</li>
+	<li>A digital signature by the issuer certificate’s private key</li>
+</ul>
+<p>A certificate is a powerful tool for proving your identity online. The owner of a certificate can digitally sign data, and a verifier can use the public key from the certificate to verify it. The fact that the certificate is itself digitally signed by a third party CA means that if the verifier trusts the third party, they have assurances that the certificate is legitimate. The CA can give a certificate certain rights, such as a period of time in which the identity of the certificate should be trusted.</p>
+<p>Sometimes certificates are signed by what’s called an intermediate CA, which is itself signed by a different CA. In this case, a certificate verifier can follow the chain until they find a certificate that they trust — the root.</p>
+<p>This chain of trust model can be very useful for the CA. It allows the root certificate’s private key to be kept offline and only used for signing intermediate certificates. Intermediate CA certificates can be shorter lived and be used to sign endpoint certificates on demand. Shorter-lived online intermediates are easier to manage and revoke if compromised.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="645" height="541" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=645&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=640&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=645&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 645w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=750&amp;h=629&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=828&amp;h=694&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=1080&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=1280&amp;h=1074&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=1290&amp;h=1082&amp;f=webp&amp;fit=cover&amp;position=center 1290w" alt="How to build your own public key infrastructure Embedded Image - zZV6ps" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44SVQVJ0DE8PYMSZ1NJTBG.png&amp;w=645&amp;h=541&amp;f=webp" data-lightbox-width="645" data-lightbox-height="541" data-astro-cid-7nvefuv6="true" sizes="(min-width: 645px) 645px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="645" height="541" class="pt-portable-image-media"></div>
+</figure>
+<p>This is the same system used for HTTPS on the web. For example, cloudflare.com has a certificate signed by Comodo’s Intermediate certificate, which is in turn signed by the Comodo offline root. Browsers trust the Comodo root, and therefore also trust the intermediate and web site certificate.</p>
+<p>This model works for the web because browsers only trust a small set of certificate authorities, who each have stringent requirements to only issue certificates after validating the ownership of a website. For internal services that are not accessed via browsers, there is *no need * to go through a third party certificate authority. Trusted certificates do not have to be from Globalsign, Comodo, Verisign or any other CA — they can be from a CA you operate yourself.</p>
+<h2>Building your own CA</h2>
+<p>The most painful part of getting a certificate for a website is going through the process of obtaining it. For websites, we eliminated this pain by launching <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>. The most painful part of running a CA is the administration. When we decided to build our internal CA, we sought to make both obtaining certificates and operating the CA painless and even fun.</p>
+<p>The software we are using is <a href="https://github.com/cloudflare/cfssl" target="_blank" rel="noopener noreferrer">CFSSL</a>, CloudFlare’s open source PKI toolkit. This tool was open sourced last year and has all the capabilities needed to run a certificate authority. Although CFSSL was built for an internal CA, it’s robust enough to be use a publicly trusted CA; in fact, the <a href="https://letsencrypt.org" target="_blank" rel="noopener noreferrer">Let’s Encrypt</a> project is using CFSSL as a core part of their CA infrastructure.</p>
+<h3>Key protection</h3>
+<p>To run a CA, you need the CA certificate and corresponding private key. This private key is extremely sensitive. Any person who knows the value of the key can act as the CA and issue certificates. Browser-trusted certificate authorities are required to keep their private keys inside of specialized hardware known as Hardware Security Modules (HSMs). The requirements for protecting private keys for corporate infrastructures are not necessarily as stringent, so we provided several mechanisms to protect keys.</p>
+<p>CFSSL supports three different modes of protection for private keys:</p>
+<ol>
+	<li><em>Hardware Security Module (HSM)</em>CFSSL allows the CA server to use an HSM to compute digital signatures. Most HSMs use an interface called PKCS#11 to interact with them, and CFSSL natively supports this interface. Using an HSM ensures that private keys do not live in memory and it provides tamper protection against physical adversaries.</li>
+	<li><em>Red October</em>Private Keys can be encrypted using <a href="https://blog.cloudflare.com/red-october-cloudflares-open-source-implementation-of-the-two-man-rule">Red October</a> (another open source CloudFlare project). A key protected with Red October can only be decrypted with the permission of multiple key owners. In order to use CFSSL with a Red October key, the key owners need to authorize the use of the private key. This ensures that the CA key is never unencrypted on disk, in source control, or in configuration management. Note: Red October support in CFSSL is experimental and subject to change.</li>
+	<li><em>Plaintext</em>CFSSL accepts plain unencrypted private keys. This works well when the private key is generated on the machine running CFSSL or by another program. If the machine that is running the CA is highly secure, this mode is a compromise between security, cost, and usability. This is also useful in development mode, allowing users to test changes to their infrastructure designs.</li>
+</ol>
+<p>Next I’ll show you how to quickly configure an internal CA using plaintext private keys. Note: The following expects <a href="https://github.com/cloudflare/cfssl#readme" target="_blank" rel="noopener noreferrer">CFSSL to be installed</a>.</p>
+<h3>Generating a CA key and certificate</h3>
+<p>To start, you need some information about what metadata you want to include in your certificate. Start by creating a file called <code>csr_ca.json</code> containing this basic information (feel free to fill in your own organization's details):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "CN"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "My Awesome CA",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "key"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "algo"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "rsa",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "size"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-ffc799"> 2048</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "names"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">       {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "C"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "US",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "L"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "San Francisco",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "O"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "My Awesome Company",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "OU"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "CA Services",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "ST"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "California"</span></span>
+<span class="line"><span class="sk-24292e-fff">       }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>With this you can create your CA with a single call"<code>$ cfssl gencert -initca csr_ca.json | cfssljson -bare ca</code></p>
+<p>This generates the two files you need to start your CA:</p>
+<ul>
+	<li><code>ca-key.pem</code>: your private key</li>
+	<li><code>ca.pem</code>: your certificate</li>
+	<li><code>ca.csr</code>: your certificate signing request (needed to get your CA cross-signed by another CA)</li>
+</ul>
+<p>The key and certificate are the bare minimum you need to start running a CA.</p>
+<h3>Policy</h3>
+<p>Once the CA certificate and key are created, the CA software needs to know what kind of certificates it will issue. This is determined in the CFSSL configuration file’s signing policy section.</p>
+<p>Here’s an example of a simple policy for a CA that can issue certificates that are valid for a year and can be used for server authentication.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">config_ca.json</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "signing"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "default"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "auth_key"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "key1",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "expiry"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "8760h",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "usages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "signing"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "key encipherment"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         "server auth"</span></span>
+<span class="line"><span class="sk-24292e-fff">       ]</span></span>
+<span class="line"><span class="sk-24292e-fff">     }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "auth_keys"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "key1"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "key"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">16</span><span class="sk-032f62-99ffe4"> byte</span><span class="sk-032f62-99ffe4"> hex</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> her</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "standard"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We also added an authentication key to this signing policy. This authentication key should be randomly generated and kept private. The API key is a basic authentication mechanism that prevents unauthorized parties from requesting certificates. There are several other features you can use for the CA (subject name allowlisting, etc.), <a href="https://github.com/cloudflare/cfssl/tree/master/doc" target="_blank" rel="noopener noreferrer">CFSSL documentation</a> for more information.</p>
+<p>To run the service, call<code>$ cfssl serve -ca-key ca-key.pem -ca ca.pem -config config_ca.json</code></p>
+<p>This opens up a CA service listening on port 8888.</p>
+<h3>Issuing certificates</h3>
+<p>Certificate authorities do not just create certificates out of a private key and thin air, they need a public key and metadata to populate the certificate’s data fields. This information is typically communicated to a CA via a certificate signing request (CSR).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="287" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=640&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=750&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=828&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=1080&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=1280&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=1430&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How to build your own public key infrastructure Embedded Image - dH37nI" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MMB5NH5C6BFRX91HG3B6.png&amp;w=1920&amp;h=771&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="771" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="287" class="pt-portable-image-media"></div>
+</figure>
+<p>A CSR is very similar in structure to a certificate. The CSR contains:</p>
+<ul>
+	<li>Information about the organization that is requesting the certificate</li>
+	<li>A public key</li>
+	<li>A digital signature by the requestor’s private key</li>
+</ul>
+<p>Given a CSR, a certificate authority can create a certificate. First, it verifies that the requestor has control over the associated private key. It does this by checking the CSR’s signature. Then the CA will check to see if the requesting party should be given a certificate and which domains/IPs it should be valid for. This can be done with a database lookup or through a registration authority. If everything checks out, the CA uses its private key to create and sign the certificate to send back to the requestor.</p>
+<h3>Requesting Certificates</h3>
+<p>Let’s say you have CFSSL set up as CA as described above and it’s running on a server called “ca1.mysite.com” with an authentication API key. How do you get this CA to issue a certificate? CFSSL provides two commands to help with that: <code>gencert</code> and <code>sign</code>. They are available as JSON API endpoints or command line options.</p>
+<p>The <code>gencert</code> command will automatically handle the whole certificate generation process. It will create your private key, generate a CSR, send the CSR to the CA to be signed and return your signed certificate.</p>
+<p>There are two configuration files needed for this. One to tell the local CFSSL client where the CA is and how to authenticate the request, and a CSR configuration used to populate the CSR.</p>
+<p>Here’s an example for creating a certificate for a generic database server, db1.mysite.com.</p>
+<p><code>csr_client.json</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "hosts"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    	"db1.mysite.com"</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "key"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "algo"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "rsa",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "size"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-ffc799"> 2048</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "names"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "C"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "US",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "L"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "San Francisco",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "O"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> “My</span><span class="sk-032f62-99ffe4"> Awesome</span><span class="sk-032f62-99ffe4"> Company",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "OU": “Data Services",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "ST"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "California"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><code>config_client.json</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "signing"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "default"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "auth_key"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "key1",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "remote"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "caserver"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "auth_keys"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "key1"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "key"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">16</span><span class="sk-032f62-99ffe4"> byte</span><span class="sk-032f62-99ffe4"> hex</span><span class="sk-032f62-99ffe4"> API</span><span class="sk-032f62-99ffe4"> key</span><span class="sk-032f62-99ffe4"> her</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "standard"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "remotes"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "caserver"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> “ca1.mysite.com:8888"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+</div>
+<p>With these two configuration files set, you can create your certificate.<code>$ cfssl gencert -config config_client.json csr_client.json | cfssljson -bare db</code></p>
+<p>This results in three files:</p>
+<ul>
+	<li><code>db-key.pem</code>: your private key</li>
+	<li><code>db.pem</code>: your certificate</li>
+	<li><code>db.csr</code>: your CSR</li>
+</ul>
+<p>The CSR can be resubmitted to the CA to be signed again at any point with the <code>sign</code> command</p>
+<p><code>$ cfssl sign -config config_client.json db.csr | cfssljson -bare db-new</code></p>
+<p>resulting in:</p>
+<ul>
+	<li><code>db-new.pem</code>: your re-signed certificate</li>
+</ul>
+<p>These two commands let you easily and conveniently set up a private PKI. As a startup or a growing business moving to a service-oriented or even a microservice architecture, having a PKI can be very convenient. Next we’ll describe how CloudFlare set up its own internal PKI to help make its services encrypted by default.</p>
+<h2>Using a PKI for services</h2>
+<p>So now you have a complex set of services that can all speak TLS, and a central certificate authority server that can issue certificates. What’s next? Getting certificates and keys for the applications. There are several ways to do this including a centrally managed way and a distributed way.</p>
+<h3>Centralized distribution vs on demand</h3>
+<p>One way to create certificates and keys for your applications is to create them all on a central provisioning server and then send them out to each of the servers. In this model, a central server creates certificates and keys and sends them over a secure tunnel to the application servers.</p>
+<p>This model creates a sort of chicken and egg problem. How do you transport private keys if you need those private keys to encrypt your transport?</p>
+<p>A distributed key management model fits better with the way modern services are typically deployed and run. The trick is creating the private keys directly in the application server. At install or run time, a service creates its own private key and sends a request to a certificate authority to issue a certificate. This can be repeated on demand if the current certificate is close to expiring.</p>
+<p>For example, many companies are starting to use Docker, or other lightweight container technologies, to encapsulate and run individual services. Under load, services can be scaled up by automatically running new containers. In a centralized distribution model, certificates and keys for each container need to be created before the containers are deployed.</p>
+<p>In the centralized distribution model, the provisioning service needs to create and manage a key and certificate for each service. Keeping this sort of central database in a complex and dynamic topology seems like the wrong approach. It would be preferable if the CA itself was stateless and generated a set of logs.</p>
+<p>The idea that keys need to be transported to their destination instead of generated locally is also troubling. Transporting private keys introduces an unnecessary risk to the system. When a new service comes into being, it should generate its key locally and request a certificate for use.</p>
+<h3>Trust across services</h3>
+<p>Internal services need to trust each other. Browsers validate website certificates by checking the signature on the certificate and checking the hostname against the list of Subject Alternative Names (SANs) in the certificate. This type of explicit check is useful, but it has a record of <a href="https://cwe.mitre.org/data/definitions/297.html" target="_blank" rel="noopener noreferrer">not working as expected</a>. Another way for services to trust each other is an implicit check based on per-service CAs.</p>
+<p>The idea is simple: use a different CA for each set of services. Issue all database certificates from a database CA and all API servers from an API server CA.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="645" height="585" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=645&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=640&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=645&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 645w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=750&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=828&amp;h=751&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=1080&amp;h=980&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=1280&amp;h=1161&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=1290&amp;h=1170&amp;f=webp&amp;fit=cover&amp;position=center 1290w" alt="How to build your own public key infrastructure Embedded Image - 6QbD3F" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4515JWAVEK8W1QJECZXBR6.png&amp;w=645&amp;h=585&amp;f=webp" data-lightbox-width="645" data-lightbox-height="585" data-astro-cid-7nvefuv6="true" sizes="(min-width: 645px) 645px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="645" height="585" class="pt-portable-image-media"></div>
+</figure>
+<p>When setting these services up to talk to each other with mutual TLS authentication configure the trust stores as follows:</p>
+<ul>
+	<li>API server only trusts DB CA</li>
+	<li>DB only trusts API CA</li>
+</ul>
+<p>This approach is less fine-grained than an explicit check against a SAN, but it is more robust and easier to manage on the CA policy side. With an implicit trust system in place, you can guarantee that services of type A can only communicate with services of type B.</p>
+<p>The following diagram describes how two applications can trust each other with mutually authenticated TLS.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="645" height="837" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=645&amp;h=837&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=640&amp;h=831&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=645&amp;h=837&amp;f=webp&amp;fit=cover&amp;position=center 645w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=750&amp;h=973&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=828&amp;h=1074&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=1080&amp;h=1401&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=1280&amp;h=1661&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=1290&amp;h=1674&amp;f=webp&amp;fit=cover&amp;position=center 1290w" alt="How to build your own public key infrastructure Embedded Image - Ojm6B0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H6RB6A28BSTKZ11BZBYE.png&amp;w=645&amp;h=837&amp;f=webp" data-lightbox-width="645" data-lightbox-height="837" data-astro-cid-7nvefuv6="true" sizes="(min-width: 645px) 645px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="645" height="837" class="pt-portable-image-media"></div>
+</figure>
+<p>In this diagram, the API server trusts the DB CA (in red). It will therefore only accept certificates that are signed by the DB CA (i.e. with a red ribbon). Conversely, the database server only accepts certificates with a signature from the API CA (orange ribbon). To establish a trusted connection, each party sends a key share to the other, signed with their certificate’s private key. The key shares are combined to create a session key, with which both parties can encrypt their data. The chain of verification from key share to certificate to CA assure that the other party is authentic.</p>
+<p>Establishing a mutually authenticated trusted tunnel between services prevents attackers from accessing or modifying data in transit and causing havoc on your services. With a strong PKI in place, every service can communicate securely and confidentially over any network, even the Internet.</p>
+<h2>Using a PKI for remote services</h2>
+<p>Internal PKIs are very flexible and can be used to issue certificates to third parties who are integrating with your network. For example, CloudFlare has a service called <a href="https://www.cloudflare.com/railgun" target="_blank" rel="noopener noreferrer">Railgun</a> that can be used to optimize connections between CloudFlare and an origin server. Communication between Railgun and CloudFlare is done over an encrypted and authenticated channel using certificates from a CloudFlare certificate authority.</p>
+<p>This ensures that data is secure in transit. When a new Railgun instance is set up on the origin server, it creates a private key and sends a CSR to CloudFlare, which then issues the appropriate certificate. The Railgun server keeps the private key in memory and deletes it when it shuts down, preventing other services from getting access to it.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="645" height="263" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=645&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=640&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=645&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 645w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=750&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=828&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=1080&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=1280&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=1290&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1290w" alt="How to build your own public key infrastructure Embedded Image - stgJgP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW483S53W85KA253RPYPDGP6.png&amp;w=645&amp;h=263&amp;f=webp" data-lightbox-width="645" data-lightbox-height="263" data-astro-cid-7nvefuv6="true" sizes="(min-width: 645px) 645px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="645" height="263" class="pt-portable-image-media"></div>
+</figure>
+<p>This model works great for not only Railgun, but several other initiatives at CloudFlare such as the <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">Origin CA</a> and <a href="https://blog.cloudflare.com/keyless-ssl-the-nitty-gritty-technical-details">Keyless SSL</a>.</p>
+<h2>Conclusion</h2>
+<p>Securing data at the application level is an important step for securing a distributed systems architecture, but is only truly effective with a strong PKI in place.</p>

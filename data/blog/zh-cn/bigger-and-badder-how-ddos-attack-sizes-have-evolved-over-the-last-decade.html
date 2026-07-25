@@ -1,0 +1,158 @@
+<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>分布式拒绝服务</u></a> (DDoS) 攻击是一种网络攻击，旨在压垮和破坏在线服务，使用户无法访问这些服务。通过利用分布式设备网络，DDoS 攻击会向目标系统发送过多请求，消耗其带宽或耗尽计算资源，直至发生故障。这些攻击对未受保护的站点非常有效，而且攻击者发动攻击的成本相对较低。尽管 DDoS 攻击是最古老的攻击类型之一，但它仍然是一个持续的威胁，通常针对知名或高流量的网站、服务或关键基础设施。自 2024 年初以来，Cloudflare 已经缓解了超过 1450 万次 DDoS 攻击，平均每小时 2200 次 DDoS 攻击。（我们的《<a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q3" target="_blank" rel="noopener noreferrer"><u>2024 年第三季度 DDoS 威胁报告</u></a>》中包含了其他相关统计数据）。</p>
+<p>如果我们查看与过去 10 年缓解的大型攻击相关的指标，图表中会显示一条稳步增长的指数曲线并在过去几年里越来越陡峭，还是更接近线性增长？我们发现增长不是直线式的，而是指数曲线，斜率取决于我们正在查看的指标。</p>
+<p>为什么这个问题很有趣？这很简单。这个问题的答案为了解攻击者不断演变的策略、其工具的复杂程度以及防御机制的准备程度提供了宝贵的见解。</p>
+<p>例如，每秒请求数 (rps) 呈上升曲线表明攻击者正在更改其端侧的某些内容，从而能够生成大量请求。这一发现提示我们进行更多调查并查看其他数据，以了解是否有任何新情况发生。</p>
+<p>例如，在其中一个时刻，我们查看了流量来源，发现从订阅者/企业 IP 地址空间（表明是 IoT）转移到了云提供商 IP 地址空间（表明是 VM），并意识到攻击者使用的设备类型和功能发生了变化。</p>
+<p>再举一个例子：当 <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack" target="_blank" rel="noopener noreferrer"><u>HTTP/2 Rapid Reset</u></a> 攻击发生时，当时每秒创纪录的请求数表明攻击者正在采用一种新技术，促使我们迅速调查正在执行的操作并调整我们的防御措施。</p>
+<h2>定义单次攻击</h2>
+<p>对单个攻击的时间划分出奇的模糊。首先，攻击分析可能会在 <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer"><u>OSI 模型</u></a>的不同层提供不一致的观察结果。对于同一攻击，在所有这些不同层看到的足迹可能展现的是不同的情况。然而，我们可以将一些变量组合在一起来创建一个指纹，并对一系列事件进行分组，从而确定它们是否属于同一次攻击。示例包括：</p>
+<ul>
+	<li>我们是否发现这组事件使用了相同的<a href="https://www.cloudflare.com/en-gb/learning/security/glossary/attack-vector" target="_blank" rel="noopener noreferrer"><u>攻击手段</u></a>？</li>
+	<li>所有攻击事件是否都针对相同的目标？</li>
+	<li>事件的有效负载是否共用相同的签名？（特定数据有效负载或请求类型是特定攻击或僵尸网络所独有的，例如 Mirai，它可能使用独特的 HTTP 请求标头或数据包结构。）</li>
+</ul>
+<h2>DDoS 攻击规模</h2>
+<p>在深入分析过去 10 年 DDoS 攻击的增长情况之前，让我们先回顾一下通常用于衡量 DDoS 攻击的指标：每秒请求数 (rps)、每秒数据包数 (pps) 和每秒比特数 (bps)。每个指标都反映了攻击规模和影响的不同方面。</p>
+<ul>
+	<li><strong>每秒请求数 (rps)：</strong>衡量每秒发出的 HTTP 或类似协议请求数。此指标与应用程序层攻击（第 7 层）特别相关，此类攻击的目的是<strong>使用超过其处理能力的请求数来压垮特定应用程序或服务</strong>。该指标对于衡量针对 Web 服务器、API 或应用程序的攻击非常有用，因为它反映的是请求量，而不仅仅是原始数据传输量。</li>
+	<li><strong>每秒数据包数 (pps)：</strong>表示每秒发送到目标的单个数据包的数量，无论其大小如何。此指标对于网络层攻击（第 3 层和第 4 层）至关重要，此类攻击的目标是<strong>使用超出其数据包处理能力的数据包量来压垮网络基础设施</strong>。pps 测量值对于容量耗尽攻击非常有用，可以识别可能影响路由器、交换机或防火墙的数据包数量。</li>
+	<li><strong>每秒比特数 (bps)：</strong>该指标衡量的是每秒传输的总数据量，尤其适用于评估旨在使目标或其上游提供商的带宽饱和的网络层攻击。bps 广泛用于衡量第 3 层和第 4 层攻击，例如 UDP 洪水攻击，此类攻击旨在阻塞网络带宽。该指标在 DDoS 攻击中通常尤为重要，因为高 bps 值（通常以 GB 或 TB 为单位）表示<strong>带宽饱和</strong>，这是大规模 DDoS 活动的共同目标。</li>
+</ul>
+<h2>过去十年 DDoS 攻击规模的变化</h2>
+<p>那么，过去十年间 DDoS 攻击规模有何变化？在此期间，DDoS 攻击规模越来越大，攻击强度也越来越大，每年都有可能造成更大的破坏。</p>
+<p>看看过去十年间与大型攻击相关的指标，是呈指数曲线稳定增长并不断变得陡峭（特别是在过去几年里），还是更接近于线性增长？我们发现它是呈指数曲线增长的，所以让我们来详细看看我们得出这一结论的原因。</p>
+<p>在本次分析中，我们使用了 <a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer"><u>Google 在 2010 年到 2022 年间观察到的攻击</u></a>作为基线（图 1），再加上 Cloudflare 在 2023 年和 2024 年观察到的攻击（图 2）。</p>
+<p>回顾过去，在 21 世纪 10 年代初期，最大规模的攻击以每秒千兆位 (Gbps) 为单位，但如今，攻击以每秒太比特 (Tbps) 为单位。正如我们将看到的，如今每秒请求数 (rps) 和每秒比特数 (bps) 也显著增加。</p>
+<p>下方图 1 中显示的 Google 历史数据表明，在 2010 年至 2022 年期间观察到的 DDoS 攻击中，每秒请求数呈上升趋势，在 2020 年达到每秒 600 万个请求 (Mrps) 的峰值。这一增长凸显了这十年间攻击量的显著增加。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2616 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1800&amp;h=905&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="905" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>图 1：2010-2022 年已知最大的 DDoS 攻击。（<a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer">来源：Google</a>）</em></sup></p>
+<p>图 2（下图）展示了不同指标的趋势。Google 统计数据中的上升趋势也体现在 Cloudflare 2023 年和 2024 年观察到且已缓解的大规模 DDoS 攻击数据中，在 2024 年 9 月达到 201 Mrps（绿线）。每秒数据包数 (pps) 的速率（蓝线）随着时间的推移呈现轻微的指数增长，从 2015 年的 230 Mpps 上升到 2024 年的 2,100 Mpps，这表明攻击者正在实现更高的吞吐量。每秒比特数 (bps) 的趋势线也是指数曲线，并且更为陡峭（红线），从 2013 年的 309 Gbps 攻击发展到 2024 年的 5.6 Tbps (5,600 Gbps) 攻击。</p>
+<p>大约在过去十年间，推动这些指标的攻击显著增长：</p>
+<ul>
+	<li>2013 年至 2024 年期间，每秒比特数增长了 20 倍</li>
+	<li>2015 年至 2024 年期间，每秒数据包数增长了 10 倍</li>
+	<li>2014 年到 2024 年期间，每秒请求数增长了 70 倍</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="357" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=715&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=640&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=715&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=750&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=828&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1080&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1280&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1430&amp;h=714&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2616 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1920&amp;h=958&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="958" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="357" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>图 2：图 1 中的数据加上 Cloudflare 在 2023 年和 2024 年观察到的大规模攻击。</em></sup></p>
+<p>表 1 中列出的博客文章重点介绍了我们在 2021 年至 2024 年期间观察到的一些攻击。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>月</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>攻击规模</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>博客文章</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2021 年 8 月</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17.2 Mrps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 成功抵抗有史以来最大规模的攻击—高达1720 万 rps 的 DDoS 攻击</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2022 年 4 月</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>15 Mrps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 阻止了一起 1500 万 rps 的 HTTPS DDoS 攻击</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2022 年 6 月</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2600 万 rps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 成功缓解每秒 2600 万次请求的 DDoS 攻击</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2023 年 2 月</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>71 Mrps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 缓解了破纪录的 7100 万个请求/秒的 DDoS 攻击</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2024 年 9 月</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.8 Tbps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 如何自动缓解了创世界纪录的 3.8 Tbps DDoS 攻击</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2024 年 10 月</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.2 Tbps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.2 Tbps 的恶意数据包以及丰富内容，尽在 Cloudflare 第三季度 DDoS 报告&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2024 年 10 月</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.6 Tbps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.6 Tbps 攻击</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><sup><strong>表 1：</strong>Cloudflare 在 2021-2024 年期间观察到的值得注意的 DDoS 攻击。</sup></p>
+<p><a href="https://www.cloudflare.com/learning/ddos/famous-ddos-attacks" target="_blank" rel="noopener noreferrer"><u>Cloudflare 学习中心</u></a>中提供了过去十年发生的其他重大高流量 DDoS 攻击的概述，包括 <a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211" target="_blank" rel="noopener noreferrer"><u>2018 年的 Memcached 滥用</u></a>和 <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack" target="_blank" rel="noopener noreferrer"><u>2023 年的 HTTP/2 “Rapid Reset” 攻击</u></a>。</p>
+<h2>攻击持续时间指标</h2>
+<p>攻击持续时间并不是衡量攻击强度的有效指标，因为确定单次攻击或攻击活动的持续时间具有挑战性，这是因为它们可能具有间歇性，可能同时使用多种攻击手段，或者随着时间的推移而触发不同的防御层。</p>
+<p>攻击模式可能差异很大，有些只有一个大的峰值，而另一些则包含多个紧密聚集的峰值，或者在一段时间内保持连续负载，以及其他不断变化的特征。</p>
+<h2>用于发起攻击的设备类型趋势</h2>
+<p>DDoS 攻击正逐渐从基于 IoT 的僵尸网络转向更强大的基于 VM 的僵尸网络。这种变化主要是因为云托管虚拟机具有更高的计算能力和吞吐量，这让攻击者能够使用更少的设备发动大规模攻击。</p>
+<p>这种转变是由多种因素促成的：VM 僵尸网络比 IoT 僵尸网络更容易建立，因为它们不一定需要大范围的恶意软件感染，因为攻击者可以使用从数据泄露或 <a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart" target="_blank" rel="noopener noreferrer"><u>Magecart 攻击</u></a>中窃取的支付信息匿名将它们部署在云提供商基础设施上。</p>
+<p>这一趋势表明 DDoS 策略正在演变，因为攻击者利用虚拟机的处理能力和对云资源的匿名访问，使得更小、更高效的僵尸网络能够发动大规模攻击，省去了感染和管理大量 IoT 设备所带来的复杂性。</p>
+<h2>Cloudflare 如何帮助防御 DDoS 攻击？</h2>
+<p>Cloudflare 的全球连通云建立在我们广泛的 Anycast 全球网络上，通过利用自动检测、流量分配和快速响应功能，在防御 DDoS 攻击方面发挥着至关重要的作用。以下是其增强 DDoS 防护的方法：</p>
+<p><strong>自动攻击检测和缓解</strong>：Cloudflare 的 DDoS 防护在很大程度上依赖于自动化，使用机器学习算法实时识别可疑流量模式。通过<a href="https://blog.cloudflare.com/training-a-million-models-per-day-to-save-customers-of-all-sizes-from-ddos" target="_blank" rel="noopener noreferrer"><u>自动化检测过程</u></a>，Cloudflare 可以快速识别和阻止 DDoS 攻击，而无需人工干预，这一点在抵御足以压垮人类响应者的大规模攻击时至关重要。</p>
+<p><strong>使用 IP Anycast 进行全球流量分配</strong>：Cloudflare 的网络覆盖全球 330 多座城市，DDoS 流量会在我们的多个数据中心之间分散。<a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>IP Anycast</u></a> 使我们能够在整个全球网络中分配流量，这种广泛的分布有助于吸收和缓解大规模攻击，因为攻击流量不会流向单个点，从而减轻了单个服务器和网络的压力。</p>
+<p><strong>分层防御</strong>：Cloudflare 的全球连通云提供跨多个层的防御，包括网络层（第 3 层）、传输层（第 4 层）和应用程序层（第 7 层）。这种分层方法允许根据攻击类型部署定制的防御策略，确保能有效缓解复杂的多层攻击。欢迎阅读<a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>我们的 DDoS 防护文档</u></a>，进一步了解第 3 层、第 4 层和第 7 层的DDoS 防护。</p>
+<p><strong>不计量的 DDoS 缓解</strong>：Cloudflare 自 2017 年以来率先采用这种方法来确保互联网安全，提供<a href="https://blog.cloudflare.com/unmetered-mitigation" target="_blank" rel="noopener noreferrer"><u>不计量的 DDoS 防护</u></a>，这意味着客户可以在攻击期间受到保护，而无需担心带宽或成本限制。这种方法有助于确保不同规模或预算的企业都能受益于强大的 DDoS 防护。</p>
+<p>Cloudflare 的分布式云基础设施和先进技术使我们能够以可扩展且响应迅速的方式检测、吸收和缓解 DDoS 攻击，避免停机并保持服务可靠性，与传统选项相比，这提供了强大的解决方案来应对不断上升的 DDoS 攻击强度和频率。</p>
+<p>对于任何规模的组织来说，防范 DDoS 攻击都至关重要。虽然这些攻击是由人类发起的，但它们是由机器人执行的，因此有效的防御需要自动化工具来对抗机器人驱动的威胁。实时检测和缓解应尽可能自动化，仅依靠人工干预会使防御者处于不利地位，因为攻击者会适应新的障碍，且能够改变攻击手段、流量行为、恶意有效负载签名等，从而产生不可预测的情况，使一些手动配置变得毫无用处。Cloudflare 的自动化系统会代表我们的客户持续识别和阻止 DDoS 攻击，从而提供满足个人需求的定制保护。</p>
+<p>我们的使命是帮助构建更好的互联网，而在面对 DDoS 威胁时提供弹性是完成这一使命的一部分。</p>
+<p>阅读我们公开的<a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>技术文档</u></a>，了解有关 Cloudflare DDoS 防护的更多信息。</p>

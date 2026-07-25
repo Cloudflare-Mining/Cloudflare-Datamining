@@ -1,0 +1,321 @@
+<p>考慮一下惡意行為者試圖透過 API 插入、剽竊、收集或外洩資料的情況。此類惡意活動通常以攻擊者向 API 端點發起請求的特定順序為特徵。此外，單獨使用容量技術通常不容易偵測到此類惡意活動，因為攻擊者可能會故意緩慢地執行 API 請求，以試圖阻止容量濫用防護。因此，為了可靠地防止此類惡意活動，我們需要考慮 API 請求的順序。我們使用術語「<strong>順序濫用</strong>」來指稱惡意 API 請求行為。因此，我們的基本目標包括區分惡意 API 請求序列和良性 API 請求序列。</p>
+<p>在這篇部落格文章中，您將瞭解我們如何應對挑戰，幫助客戶保護其 API 免遭順序濫用。為此，我們將展示目前支援我們 <a href="https://developers.cloudflare.com/api-shield/security/sequence-analytics" target="_blank" rel="noopener noreferrer">Sequence Analytics</a> 產品的統計機器學習 (ML) 技術。我們將以<a href="https://blog.cloudflare.com/zh-tw/api-sequence-analytics" target="_blank" rel="noopener noreferrer"><u>先前的部落格文章</u></a>中提供的 Sequence Analytics 進階介紹為基礎。</p>
+<h3><strong>API 工作階段</strong></h3>
+<p>在上一篇部落格文章中提及了一個理念，即考慮由特定使用者發起的一系列按時間排序的 HTTP API 請求。這在使用者與服務互動的過程中發生，例如在瀏覽網站或使用行動應用程式時。我們將使用者按時間排序的一系列 API 請求稱為工作階段。選擇一個熟悉的範例，客戶與銀行服務互動的工作階段可能如下所示：</p>
+<div id="html-block-kg" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>時間順序</th>
+				<th>方式</th>
+				<th>路徑</th>
+				<th>描述</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>POST</td>
+				<td>/api/v1/auth</td>
+				<td>驗證使用者</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>GET</td>
+				<td>/api/v1/accounts/{account_id}</td>
+				<td>顯示帳戶餘額，其中 account_id 是屬於使用者的帳戶</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>POST</td>
+				<td>/api/v1/transferFunds</td>
+				<td>包含一個請求正文，其中詳細說明了要從中轉移資金的帳戶、要向其轉移資金的帳戶以及要轉移的金額</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+</div>
+<p>我們的目標之一是透過自動建議適用於我們的 <a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">Sequence Mitigation</a> 產品的規則來強制執行所需的序列行為，從而使我們的客戶能夠<a href="https://www.cloudflare.com/learning/security/api/what-is-api-security" target="_blank" rel="noopener noreferrer">保護他們的 API</a>。如果我們強制執行預期的行為，我們就可以防止不必要的順序行為。在我們的範例中，所需的順序行為可能需要 /api/v1/auth 必須始終位於 /api/v1/accounts/{account_id} 之前。</p>
+<p>我們必須解決的一個重要挑戰是，<a href="https://blog.cloudflare.com/zh-tw/api-sequence-analytics" target="_blank" rel="noopener noreferrer"><u>可能的工作階段數量會隨著工作階段時長的增加而快速增長</u></a>。為了瞭解原因，我們可以考慮使用者與範例銀行服務互動的其他方式：例如，使用者可以以任何順序執行多次轉帳和/或檢查多個帳戶的餘額。假設有 3 個可能的<strong>端點</strong>，下圖說明了使用者與銀行服務互動時可能的工作階段：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1975-IMG-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1600&amp;h=900&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>由於可能存在大量工作階段，建議緩解規則要求我們從過去的工作階段資料中總結順序行為作為中間步驟。在範例中，我們將工作階段中的一系列連續端點（例如 /api/v1/accounts/{account_id} → /api/v1/transferFunds）稱為<strong>序列</strong>。具體來說，我們需要解決的一個挑戰是，與建立規則相關的順序行為並不一定僅從數量本身就顯而易見：例如，考慮 /api/transferFunds 幾乎總是在 /api/v1/accounts/{account_id} 之前，而且與序列 /api/v1/auth → /api/v1/accounts/{account_id} 相比，序列 /api/v1/accounts/{account_id} → /api/v1/transferFunds 可能相對很少出現。因此，可以想像，如果我們僅根據數量進行總結，我們可能會認為序列 /api/v1/accounts/{account_id} → /api/v1/transferFunds 不重要，而實際上我們應該將其視為潛在的規則。</p>
+<h3><strong>從 API 工作階段學習重要序列</strong></h3>
+<p>適用於順序資料的廣泛應用的建模方法是<a href="https://en.wikipedia.org/wiki/Markov_chain" target="_blank" rel="noopener noreferrer"><strong>馬爾可夫鏈</strong></a>，其中工作階段資料中每個端點的機率僅取決於固定數量的前面端點。首先，我們將展示如何將標準馬爾可夫鏈套用至我們的工作階段資料，同時指出它們的一些限制。其次，我們將展示如何使用不太知名但功能強大的馬可夫鏈類型來確定重要序列。</p>
+<p>出於說明目的，我們假設工作階段資料中有 3 個可能的端點。我們將使用字母 <em>a</em>、<em>b</em> 和 <em>c</em> 來表示這些端點：</p>
+<ul>
+	<li><em>a</em>: /api/v1/auth</li>
+	<li><em>b</em>: /api/v1/accounts/{account_id}</li>
+	<li><em>c</em>: /api/v1/transferFunds</li>
+</ul>
+<p>最簡單的馬爾可夫鏈不過是一個表格，告訴我們在知道了前一個字母的情況下，出現下一個字母的概率。如果我們使用最簡單的馬爾可夫鏈對過去的工作階段資料進行建模，最終可能會得到如下表格：</p>
+<div id="html-block-k1r" class="html-block">
+	<table>
+		<tbody>
+			<tr>
+				<td rowspan="2" style="width:30%">工作階段中已知的前面端點</td>
+				<td colspan="3">工作階段中下一個端點的估計機率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>a</td>
+				<td>0.10 (1555)</td>
+				<td>0.89 (13718)</td>
+				<td>0.01 (169)</td>
+			</tr>
+			<tr>
+				<td>b</td>
+				<td>0.03 (9618)</td>
+				<td>0.63 (205084)</td>
+				<td>0.35 (113382)</td>
+			</tr>
+			<tr>
+				<td>c</td>
+				<td>0.02 (3340)</td>
+				<td>0.67 (109896)</td>
+				<td>0.31 (51553)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 1</small>
+	<br>
+</div>
+<p>表 1 列出了馬爾可夫鏈的參數，即在已知工作階段中緊鄰的前一個端點的情況下，觀察到 <em>a</em>、<em>b</em> 或 <em>c</em> 作為工作階段中下一個端點的估計機率。例如，第三列單元格的值為 0.67 表示，如果已知前面緊鄰的端點為 <em>c</em>，則不論 <em>c</em> 前面的端點是什麼，觀察到 <em>b</em> 作為工作階段中下一個端點的估計機率為 67%。因此，表格中的每個項目對應於兩個端點的序列。括號中的值是我們在過去的工作階段資料中看到每一個二端點序列的次數，用於計算表格中的機率。例如，值 0.01 是計算分數 169/(1555+13718+169) 的結果。這種估計機率的方法稱為<a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation" target="_blank" rel="noopener noreferrer">最大似然估計</a>。</p>
+<p>為了確定重要的序列，我們依靠<a href="https://en.wikipedia.org/wiki/Credible_interval" target="_blank" rel="noopener noreferrer">可信區間</a>來估計機率，而不是最大似然估計。可信區間不是產生單點估計值（如上所示），而是代表合理的機率範圍。此範圍反映了可用資料量，即每列中序列出現的總數。資料越多，可信區間越窄（確定性程度越高），相反；資料越少，可信區間越寬（確定性程度越低）。根據上表中括號內的數值，我們可以得到以下可信區間（粗體部分將在後面進一步解釋）：</p>
+<div id="html-block-k2e" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">工作階段中已知的前面端點</td>
+				<td colspan="3">工作階段中下一個端點的估計機率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>a</td>
+				<td><b>0.09-0.11 (1555)</b></td>
+				<td><b>0.88-0.89 (13718)</b></td>
+				<td><b>0.01-0.01 (169)</b></td>
+			</tr>
+			<tr>
+				<td>b</td>
+				<td>0.03-0.03 (9618)</td>
+				<td>0.62-0.63 (205084)</td>
+				<td>0.34-0.35 (113382)</td>
+			</tr>
+			<tr>
+				<td>c</td>
+				<td>0.02-0.02 (3340)</td>
+				<td>0.66-0.67 (109896)</td>
+				<td>0.31-0.32 (51553)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 2</small>
+	<br>
+</div>
+<p>為簡潔起見，我們不會在這裡示範如何手動計算出可信區間（它們涉及評估 <a href="https://en.wikipedia.org/wiki/Beta_distribution" target="_blank" rel="noopener noreferrer">beta 分佈</a>的<a href="https://en.wikipedia.org/wiki/Quantile_function" target="_blank" rel="noopener noreferrer">分位數函數</a>）。儘管如此，修訂後的表格表明了更多資料可如何縮小可信區間：請注意，第一列總共出現 15442 次，而第二列總共出現 328084 次。</p>
+<p>為了確定重要的序列，我們使用比上面那些稍微複雜一些的馬爾可夫鏈。作為中間步驟，讓我們首先考慮每個表格項目對應於 3 個端點序列（而不是如上所示的 2 個端點）的情況，如下表所示：</p>
+<div id="html-block-k2p" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">工作階段中已知的前面端點</td>
+				<td colspan="3">工作階段中下一個端點的估計機率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>aa</td>
+				<td><b>0.09-0.13 (173)</b></td>
+				<td><b>0.86-0.90 (1367)</b></td>
+				<td><b>0.00-0.02 (13)</b></td>
+			</tr>
+			<tr>
+				<td>ba</td>
+				<td><b>0.09-0.11 (940)</b></td>
+				<td><b>0.88-0.90 (8552)</b></td>
+				<td><b>0.01-0.01 (109)</b></td>
+			</tr>
+			<tr>
+				<td>ca</td>
+				<td><b>0.09-0.12 (357)</b></td>
+				<td><b>0.87-0.90 (2945)</b></td>
+				<td><b>0.01-0.02 (35)</b></td>
+			</tr>
+			<tr>
+				<td>ab</td>
+				<td>0.02-0.02 (272)</td>
+				<td>0.56-0.58 (7823)</td>
+				<td>0.40-0.42 (5604)</td>
+			</tr>
+			<tr>
+				<td>bb</td>
+				<td>0.03-0.03 (6067)</td>
+				<td>0.60-0.60 (122796)</td>
+				<td>0.37-0.37 (75801)</td>
+			</tr>
+			<tr>
+				<td>cb</td>
+				<td>0.03-0.03 (3279)</td>
+				<td>0.68-0.68 (74449)</td>
+				<td>0.29-0.29 (31960)</td>
+			</tr>
+			<tr>
+				<td>ac</td>
+				<td>0.01-0.09 (6)</td>
+				<td>0.77-0.91 (144)</td>
+				<td>0.06-0.19 (19)</td>
+			</tr>
+			<tr>
+				<td>bc</td>
+				<td>0.02-0.02 (2326)</td>
+				<td>0.77-0.77 (87215)</td>
+				<td>0.21-0.21 (23612)</td>
+			</tr>
+			<tr>
+				<td>cc</td>
+				<td>0.02-0.02 (1008)</td>
+				<td>0.43-0.44 (22527)</td>
+				<td>0.54-0.55 (27919)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 3</small>
+	<br>
+</div>
+<p>表 3 列出了在已知工作階段中緊鄰的前 2 個端點（而不是像之前那樣緊鄰的前 1 個端點）的情況下，觀察到 <em>a</em>、<em>b</em> 或 <em>c</em> 作為工作階段中下一個端點的估計機率。也就是說，第三列單元格的間隔為 0.09-0.13 表示，如果知道前面緊鄰的端點為 <em>ca</em>，則無論 <em>ca</em> 之前的端點是什麼，觀察到 <em>a</em> 作為下一個端點的機率為 9% 到 13% 的可信區間。換句話說，我們說上表表示一個 <strong>2 階</strong>馬爾可夫鏈。這是因為表格中的項目表示，在<strong>已知</strong>緊鄰的前 2 個端點的情況下，觀察到下一個端點的機率。</p>
+<p>作為一種特殊情況，0 階馬爾可夫鏈僅表示工作階段中端點的分佈。我們可以將與「空上下文」對應的單列相關的機率製成如下表格：</p>
+<div id="html-block-k3a" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">工作階段中已知的前面端點</td>
+				<td colspan="3">工作階段中下一個端點的估計機率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>0.03-0.03 (15466)</td>
+				<td>0.64-0.65 (328732)</td>
+				<td>0.32-0.33 (165117)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 4</small>
+	<br>
+</div>
+<p>請注意，表 4 中的機率並不僅僅代表工作階段中沒有前面端點的情況。這些機率是工作階段中端點出現的機率，適用於我們不知道前面的端點且無論前面出現了多少個端點的一般情況。&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>回到我們識別重要序列的任務，一種可能的方法是簡單地使用某個固定階數 <em>N</em> 的馬爾可夫鏈。例如，如果我們對表 3 中可信區間的下限套用閾值 0.85，那麼我們將總共保留 3 個序列。另一方面，這種方法有兩個值得注意的局限性：</p>
+<ol>
+	<li>我們需要一種方法來為模型階數<em> N</em> 選擇合適的值。</li>
+	<li>由於模型階數保持固定，因此識別的序列全都具有相同的長度 <em>N</em>+1。</li>
+</ol>
+<h3><strong>可變階數馬爾可夫鏈</strong></h3>
+<p><strong>可變階數馬爾可夫鏈</strong> (VOMC) 是所述固定階數馬爾可夫鏈的更強大擴展，可解決前面所說的局限性。VOMC 利用了這樣一個事實，即對於固定階數 <em>N</em> 的馬爾可夫鏈中的某些選定值，機率表可能包含統計上多餘的資訊：讓我們比較上面的表 3 和表 2，並考慮表 3 中對應於上下文 <em>aa</em>、<em>ba</em>、<em>ca</em>（這 3 個上下文都共用 <em>a</em> 作為尾碼）的粗體列。</p>
+<p>對於全部 3 個可能的下一個端點 <em>a、b、c</em>，這些列指定了可信區間，這些區間與表 2 中對應於上下文 <em>a</em> 的相應估計值重疊（也以粗體表示）。我們可以將這些重疊區間解釋為，在已知前面的端點為 <em>a</em> 的情況下，機率估計值之間沒有明顯差異。由於 <em>a</em> 之前的端點對下一個端點的機率沒有明顯影響，我們可以認為表 3 中的這 3 列是多餘的：</p>
+<p>我們可以將這 3 列替換為表 2 中與上下文 <em>a</em> 相對應的列，從而將其「折疊」。</p>
+<p>按照上文所述修改表 3，結果如下所示（新行以粗體顯示）：</p>
+<div id="html-block-k4k" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">工作階段中已知的前面端點</td>
+				<td colspan="3">工作階段中下一個端點的估計機率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> a</td>
+				<td><b>0.09-0.11 (1555)</b></td>
+				<td><b>0.88-0.89 (13718)</b></td>
+				<td><b>0.01-0.01 (169)</b></td>
+			</tr>
+			<tr>
+				<td>ab</td>
+				<td>0.02-0.02 (272)</td>
+				<td>0.56-0.58 (7823)</td>
+				<td>0.40-0.42 (5604)</td>
+			</tr>
+			<tr>
+				<td>ac</td>
+				<td>0.03-0.03 (6067)</td>
+				<td>0.60-0.60 (122796)</td>
+				<td>0.37-0.37 (75801)</td>
+			</tr>
+			<tr>
+				<td>bb</td>
+				<td>0.03-0.03 (3279)</td>
+				<td>0.68-0.68 (74449)</td>
+				<td>0.29-0.29 (31960)</td>
+			</tr>
+			<tr>
+				<td>bc</td>
+				<td>0.01-0.09 (6)</td>
+				<td>0.77-0.91 (144)</td>
+				<td>0.06-0.19 (19)</td>
+			</tr>
+			<tr>
+				<td>cb</td>
+				<td>0.02-0.02 (2326)</td>
+				<td>0.77-0.77 (87215)</td>
+				<td>0.21-0.21 (23612)</td>
+			</tr>
+			<tr>
+				<td>cc</td>
+				<td>0.02-0.02 (1008)</td>
+				<td>0.43-0.44 (22527)</td>
+				<td>0.54-0.55 (27919)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 5</small>
+	<br>
+</div>
+<p>表 5 代表一個 VOMC，因為上下文長度會變化：在範例中，我們有上下文長度 1 和 2。因此，表中的項目表示長度在 2 到 3 個端點之間變化的序列，具體取決於上下文長度。概括所描述的折疊上下文的方法，可得出以下用於在離線環境中學習 VOMC 的演算法概略：</p>
+<p><code>(1) 定義一個表格 <em>T</em>，其中包含在給定工作階段中 <em>0、1、2、…、N_max</em> 個前面端點的情況下，該工作階段中下一個端點的估計機率。也就是說，透過連接對應於固定階數 <em>0、1、2、…、N_max</em> 的馬爾可夫鏈的列，形成一個表格。</code></p>
+<p><code>(2) is_modified := true&nbsp;</code></p>
+<p><code>(3) DO WHILE is_modified</code></p>
+<p><code> (4) <em>D</em> := all contexts in <em>T </em>which are not suffixes of at least 1 other context in <em>T</em></code></p>
+<p><code> (5) is_modified = false</code></p>
+<p><code> (6) FOR <em>ctx</em> IN <em>C</em></code></p>
+<p><code> (7) IF length(<em>ctx</em>) &gt; 0</code></p>
+<p><code> (8) <em>parent_ctx</em> := the context obtained by deleting the leftmost endpoint in <em>ctx</em></code></p>
+<p><code> (9) IF is_collapsible(<em>ctx</em>, <em>parent_ctx</em>)</code></p>
+<p><code> (10) Modify <em>T</em> by discarding <em>ctx</em></code></p>
+<p><code> (11) is_modified = true</code></p>
+<p>在上面的虛擬程式碼中，length(<em>ctx</em>) 是上下文 <em>ctx</em> 的長度。在第 9 行，is_collapsible() 涉及以產生表 5 所描述的方式比較上下文 <em>ctx</em> 和 <em>parent_ctx</em> 的可信區間：當且僅當我們在為每個可能的下一個端點分別比較上下文 <em>ctx</em> 和 <em>parent_ctx</em> 時觀察到所有可信區間重疊時，is_collapsible() 計算結果才為 true。最大序列長度為 <em>N_max</em>+1<em>，</em>其中 <em>N_max</em> 為某個常數。在第 4 行，如果我們可以透過在 <em>q</em> 前面加上零個或多個端點來形成 <em>p</em>，則我們說上下文 <em>q</em> 是另一個上下文 <em>p</em> 的<strong>尾碼</strong>。（根據這個定義，上述的 0 階模型的「空上下文」是 <em>T</em> 中所有上下文的尾碼。）上面的演算法概略是 Rissanen [<a href="https://ieeexplore.ieee.org/abstract/document/1056741" target="_blank" rel="noopener noreferrer">1</a>]、Ron [<a href="https://link.springer.com/article/10.1023/A:1026490906255" target="_blank" rel="noopener noreferrer">2</a>] 等人首先提出的想法的變體。</p>
+<p>最後，我們將結果表 <em>T</em> 中的項目作為重要序列。因此，套用 VOMC 的結果是我們認為重要的一組序列。然而，對於 Sequence Analytics，我們認為對序列進行排名也是有用的。為此，我們計算一個介於 0.0 和 1.0 之間的「優先順序分數」，該分數是序列的出現次數除以序列中最後一個端點的出現次數。因此，接近 1.0 的優先順序分數表示，給定端點幾乎總是優先於序列中的其餘端點。這樣，對最高分數的序列進行手動檢查是一種半自動的啟發式方法，可用於在我們的 Sequence Mitigation 產品中建立優先順序規則。</p>
+<h3><strong>大規模學習序列</strong></h3>
+<p>前述內容為我們在 Sequence Analytics 中使用的統計機器學習技術的高度概觀。在實踐中，我們設計了一種有效的演算法，這種演算法不需要前期訓練步驟，而是在資料到達時不斷更新模型，並產生重要序列的頻繁更新摘要。這種方法使我們能夠克服本部落格文章中未提及的記憶體成本方面的其他挑戰。最重要的是，直接執行上面的演算法概略仍然會導致表格列（內容）的數量隨著最大序列長度的增加而爆炸式增長。我們必須解決的另一個挑戰是，如何確保我們的系統能夠處理高流量 API，而不會對 CPU 負載產生不利影響。我們預先使用可水平擴展的適應性採樣策略，以便對大容量 API 套用更積極的採樣。然後，我們的演算法會使用採樣的 API 請求流。在客戶部署後，序列會隨著時間的推移組裝和學習，因此重要序列的當前摘要代表一個回顧間隔約為 24 小時的滑動時段。Sequence Analytics 進一步將序列儲存在 <a href="https://blog.cloudflare.com/tag/clickhouse" target="_blank" rel="noopener noreferrer">Clickhouse</a> 中，並透過 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL API</a> 和 <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare 儀表板</a>公開它們。想要強制執行序列規則的客戶可以使用 <a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">Sequence Mitigation</a>。Sequence Mitigation 負責確保在 Cloudflare 全球網路上以分散式方式共用和比對規則，這是另一個令人興奮的主題，我們將在未來的部落格文章中詳述！</p>
+<h3><strong>下一步驟</strong></h3>
+<p>現在您已對我們如何展示重要的 API 請求序列有了更深入的瞭解，請繼續關注本系列未來的部落格文章，我們將介紹如何找到客戶可能想要阻止的異常 API 請求序列。目前，API Gateway 客戶可以透過兩種方式開始使用：使用 <a href="https://developers.cloudflare.com/api-shield/security/sequence-analytics" target="_blank" rel="noopener noreferrer">Sequence Analytics</a> 來探索重要的 API 請求序列，使用 <a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">Sequence Mitigation</a> 來強制執行 API 請求序列。尚未購買 API Gateway 的 Enterprise 方案客戶可以透過在 Cloudflare 儀表板內<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">啟用 API Gateway 試用版</a>或聯絡客戶經理來開始使用。</p>

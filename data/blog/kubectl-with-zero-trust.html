@@ -1,234 +1,177 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/kubectl-with-zero-trust">简体中文</a>, <a href="https://blog.cloudflare.com/ko-kr/kubectl-with-zero-trust">한국어</a>, <a href="https://blog.cloudflare.com/es-es/kubectl-with-zero-trust">Español</a> and <a href="https://blog.cloudflare.com/ja-jp/kubectl-with-zero-trust">日本語</a>.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qFUylvIuAuqfStdkrEDvb/c289f67a78b01fc25c7ec2d910aa2f02/Proxyless-KubeCTL-Support.png" alt="Kubectl with Cloudflare Zero Trust" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
-	<p>Cloudflare is a heavy user of Kubernetes for engineering workloads: it's used to power the backend of our APIs, to handle batch-processing such as analytics aggregation and bot detection, and engineering tools such as our <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipelines</a>. But between load balancers, API servers, etcd, ingresses, and pods, the surface area exposed by Kubernetes can be rather large.</p>
-	<p>In this post, we share a little bit about how our engineering team dogfoods Cloudflare Zero Trust to secure Kubernetes — and enables kubectl without proxies.</p>
-	<div class="flex anchor relative">
-		<h2 id="our-general-approach-to-kubernetes-security">Our General Approach to Kubernetes Security</h2>
-		<a href="https://blog.cloudflare.com/#our-general-approach-to-kubernetes-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As part of our security measures, we heavily limit what can access our clusters over the network. Where a network service is exposed, we add additional protections, such as requiring Cloudflare Access authentication or Mutual TLS (or both) to access ingress resources.</p>
-	<p>These network restrictions include access to the cluster's API server. Without access to this, engineers at Cloudflare would not be able to use tools like kubectl to introspect their team's resources. While we believe Continuous Deployments and GitOps are best practices, allowing developers to use the Kubernetes API aids in troubleshooting and increasing developer velocity. Not having access would have been a deal breaker.</p>
-	<p>To satisfy our security requirements, we're using Cloudflare Zero Trust, and we wanted to share how we're using it, and the process that brought us here.</p>
-	<div class="flex anchor relative">
-		<h3 id="before-zero-trust">Before Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#before-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the world before <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>, engineers could access the Kubernetes API by connecting to a VPN appliance. While this is common across the industry, and it does allow access to the API, it also dropped engineers as clients into the internal network: they had much more network access than necessary.</p>
-	<p>We weren't happy with this situation, but it was the status quo for several years. At the beginning of 2020, we retired our VPN and thus the Kubernetes team needed to find another solution.</p>
-	<div class="flex anchor relative">
-		<h3 id="kubernetes-with-cloudflare-tunnels">Kubernetes with Cloudflare Tunnels</h3>
-		<a href="https://blog.cloudflare.com/#kubernetes-with-cloudflare-tunnels" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At the time we worked closely with the team developing Cloudflare Tunnels to add support for handling <a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access">kubectl connections using Access</a> and cloudflared tunnels.</p>
-	<p>While this worked for our engineering users, it was a significant hurdle to on-boarding new employees. Each Kubernetes cluster required its own tunnel connection from the engineer's device, which made shuffling between clusters annoying. While kubectl supported connecting through SOCKS proxies, this support was not universal to all tools in the Kubernetes ecosystem.</p>
-	<p>We continued using this solution internally while we worked towards a better solution.</p>
-	<div class="flex anchor relative">
-		<h2 id="kubernetes-with-zero-trust">Kubernetes with Zero Trust</h2>
-		<a href="https://blog.cloudflare.com/#kubernetes-with-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since the launch of Cloudflare One, we've been dogfooding the Zero Trust agent in various configurations. At first we'd been using it to implement secure <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> with 1.1.1.1. As time went on, we began to use it to dogfood additional Zero Trust features.</p>
-	<p>We're now leveraging the private network routing in Cloudflare Zero Trust to allow engineers to access the Kubernetes APIs without needing to setup cloudflared tunnels or configure kubectl and other Kubernetes ecosystem tools to use tunnels. This isn't something specific to Cloudflare, you can do this for your team today!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3BYeJk98ZxUpcycaPOjfOi/be71df17cceed62dd8df98c6f39d5e9d/Kubectl-WIth-Warp-Diagram--2-.png" alt="" class="kg-image" width="1069" height="610" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="configuring-zero-trust">Configuring Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#configuring-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We use a <a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">configuration management tool</a> for our Zero Trust configuration to enable infrastructure-as-code, which we've adapted below. However, the same configuration can be achieved using the Cloudflare Zero Trust dashboard.</p>
-	<p>The first thing we need to do is create a new tunnel. This tunnel will be used to connect the Cloudflare edge network to the Kubernetes API. We run the tunnel endpoints within Kubernetes, using configuration shown later in this post.</p>
-	<pre class="language-bash"><code class="language-bash">resource "cloudflare_argo_tunnel" "k8s_zero_trust_tunnel" {
-  account_id = var.account_id
-  name       = "k8s_zero_trust_tunnel"
-  secret     = var.tunnel_secret
-}</code></pre>
-	<p>The "tunnel_secret" secret should be a 32-byte random number, which you should temporarily save as we'll reuse it later for the Kubernetes setup later.</p>
-	<p>After we've created the tunnel, we need to create the routes so the Cloudflare network knows what traffic to send through the tunnel.</p>
-	<pre class="language-bash"><code class="language-bash">resource "cloudflare_tunnel_route" "k8s_zero_trust_tunnel_ipv4" {
-  account_id = var.account_id
-  tunnel_id  = cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id
-  network    = "198.51.100.101/32"
-  comment    = "Kubernetes API Server (IPv4)"
-}
- 
-resource "cloudflare_tunnel_route" "k8s_zero_trust_tunnel_ipv6" {
-  account_id = var.account_id
-  tunnel_id  = cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id
-  network    = "2001:DB8::101/128"
-  comment    = "Kubernetes API Server (IPv6)"
-}</code></pre>
-	<p>We support accessing the Kubernetes API via both IPv4 and IPv6 addresses, so we configure routes for both. If you're connecting to your API server via a hostname, these IP addresses should match what is returned via a DNS lookup.</p>
-	<p>Next we'll configure settings for Cloudflare Gateway so that it's compatible with the API servers and clients.</p>
-	<pre class="language-bash"><code class="language-bash">resource "cloudflare_teams_list" "k8s_apiserver_ips" {
-  account_id = var.account_id
-  name       = "Kubernetes API IPs"
-  type       = "IP"
-  items      = ["198.51.100.101/32", "2001:DB8::101/128"]
-}
- 
-resource "cloudflare_teams_rule" "k8s_apiserver_zero_trust_http" {
-  account_id  = var.account_id
-  name        = "Don't inspect Kubernetes API"
-  description = "Allow connections from kubectl to API"
-  precedence  = 10000
-  action      = "off"
-  enabled     = true
-  filters     = ["http"]
-  traffic     = format("any(http.conn.dst_ip[*] in $%s)", replace(cloudflare_teams_list.k8s_apiserver_ips.id, "-", ""))
-}</code></pre>
-	<p>As we use mutual TLS between clients and the API server, and not all the traffic between kubectl and the API servers are HTTP, we've disabled HTTP inspection for these connections.</p>
-	<p>You can pair these rules with additional Zero Trust rules, such as <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices" target="_blank" rel="noopener noreferrer">device attestation</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions" target="_blank" rel="noopener noreferrer">session lifetimes</a>, and <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors" target="_blank" rel="noopener noreferrer">user and group</a> access policies to further customize your security.</p>
-	<div class="flex anchor relative">
-		<h3 id="deploying-tunnels">Deploying Tunnels</h3>
-		<a href="https://blog.cloudflare.com/#deploying-tunnels" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once you have your tunnels created and configured, you can deploy their endpoints into your network. We've chosen to deploy the tunnels as pods, as this allows us to use Kubernetes's deployment strategies for rolling out upgrades and handling node failures.</p>
-	<pre class="language-bash"><code class="language-bash">apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: tunnel-zt
-  namespace: example
-  labels:
-    tunnel: api-zt
-data:
-  config.yaml: |
-    tunnel: 8e343b13-a087-48ea-825f-9783931ff2a5
-    credentials-file: /opt/zt/creds/creds.json
-    metrics: 0.0.0.0:8081
-    warp-routing:
-        enabled: true</code></pre>
-	<p>This creates a Kubernetes ConfigMap with a basic configuration that enables WARP routing for the tunnel ID specified. You can get this tunnel ID from your configuration management system, the Cloudflare Zero Trust dashboard, or by running the following command from another device logged into the same account.</p>
-	<p><code>cloudflared tunnel list</code></p>
-	<p>Next, we'll need to create a secret for our tunnel credentials. While you should use a secret management system, for simplicity we'll create one directly here.</p>
-	<pre class="language-bash"><code class="language-bash">jq -cn --arg accountTag $CF_ACCOUNT_TAG \
-       --arg tunnelID $CF_TUNNEL_ID \
-       --arg tunnelName $CF_TUNNEL_NAME \
-       --arg tunnelSecret $CF_TUNNEL_SECRET \
-   '{AccountTag: $accountTag, TunnelID: $tunnelID, TunnelName: $tunnelName, TunnelSecret: $tunnelSecret}' | \
-kubectl create secret generic -n example tunnel-creds --from-file=creds.json=/dev/stdin</code></pre>
-	<p>This creates a new secret "tunnel-creds" in the "example" namespace with the credentials file the tunnel expects.</p>
-	<p>Now we can deploy the tunnels themselves. We deploy multiple replicas to ensure some are always available, even while nodes are being drained.</p>
-	<pre class="language-bash"><code class="language-bash">apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    tunnel: api-zt
-  name: tunnel-api-zt
-  namespace: example
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      tunnel: api-zt
-  strategy:
-    rollingUpdate:
-      maxSurge: 0
-      maxUnavailable: 1
-  template:
-    metadata:
-      labels:
-        tunnel: api-zt
-    spec:
-      containers:
-        - args:
-            - tunnel
-            - --config
-            - /opt/zt/config/config.yaml
-            - run
-          env:
-            - name: GOMAXPROCS
-              value: "2"
-            - name: TZ
-              value: UTC
-          image: cloudflare/cloudflared:2022.5.3
-          livenessProbe:
-            failureThreshold: 1
-            httpGet:
-              path: /ready
-              port: 8081
-            initialDelaySeconds: 10
-            periodSeconds: 10
-          name: tunnel
-          ports:
-            - containerPort: 8081
-              name: http-metrics
-          resources:
-            limits:
-              cpu: "1"
-              memory: 100Mi
-          volumeMounts:
-            - mountPath: /opt/zt/config
-              name: config
-              readOnly: true
-            - mountPath: /opt/zt/creds
-              name: creds
-              readOnly: true
-      volumes:
-        - secret:
-            name: tunnel-creds
-          name: creds
-        - configMap:
-            name: tunnel-api-zt
-          name: config</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="using-kubectl-with-cloudflare-zero-trust">Using Kubectl with Cloudflare Zero Trust</h2>
-		<a href="https://blog.cloudflare.com/#using-kubectl-with-cloudflare-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2BGV6YJLH0Hnt1vh19F2lC/07c8806cd7c65674ddac42f8d2923b93/Screen-Shot-2022-06-23-at-3.43.37-PM.png" alt="Screenshot of the Cloudflare WARP app showing it connected to Teams" class="kg-image" width="2000" height="1340" loading="lazy">
-
-	</figure>
-	<p>After deploying the Cloudflare Zero Trust agent, members of your team can now access the Kubernetes API without needing to set up any special SOCKS tunnels!</p>
-	<pre class="language-bash"><code class="language-bash">kubectl version --short
-Client Version: v1.24.1
-Server Version: v1.24.1</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="whats-next">What's next?</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you try this out, send us your feedback! We're continuing to improve Zero Trust for non-HTTP workflows.</p>
+<p>Cloudflare is a heavy user of Kubernetes for engineering workloads: it's used to power the backend of our APIs, to handle batch-processing such as analytics aggregation and bot detection, and engineering tools such as our <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">CI/CD pipelines</a>. But between load balancers, API servers, etcd, ingresses, and pods, the surface area exposed by Kubernetes can be rather large.</p>
+<p>In this post, we share a little bit about how our engineering team dogfoods Cloudflare Zero Trust to secure Kubernetes — and enables kubectl without proxies.</p>
+<h2>Our General Approach to Kubernetes Security</h2>
+<p>As part of our security measures, we heavily limit what can access our clusters over the network. Where a network service is exposed, we add additional protections, such as requiring Cloudflare Access authentication or Mutual TLS (or both) to access ingress resources.</p>
+<p>These network restrictions include access to the cluster's API server. Without access to this, engineers at Cloudflare would not be able to use tools like kubectl to introspect their team's resources. While we believe Continuous Deployments and GitOps are best practices, allowing developers to use the Kubernetes API aids in troubleshooting and increasing developer velocity. Not having access would have been a deal breaker.</p>
+<p>To satisfy our security requirements, we're using Cloudflare Zero Trust, and we wanted to share how we're using it, and the process that brought us here.</p>
+<h3>Before Zero Trust</h3>
+<p>In the world before <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>, engineers could access the Kubernetes API by connecting to a VPN appliance. While this is common across the industry, and it does allow access to the API, it also dropped engineers as clients into the internal network: they had much more network access than necessary.</p>
+<p>We weren't happy with this situation, but it was the status quo for several years. At the beginning of 2020, we retired our VPN and thus the Kubernetes team needed to find another solution.</p>
+<h3>Kubernetes with Cloudflare Tunnels</h3>
+<p>At the time we worked closely with the team developing Cloudflare Tunnels to add support for handling <a href="https://blog.cloudflare.com/releasing-kubectl-support-in-access">kubectl connections using Access</a> and cloudflared tunnels.</p>
+<p>While this worked for our engineering users, it was a significant hurdle to on-boarding new employees. Each Kubernetes cluster required its own tunnel connection from the engineer's device, which made shuffling between clusters annoying. While kubectl supported connecting through SOCKS proxies, this support was not universal to all tools in the Kubernetes ecosystem.</p>
+<p>We continued using this solution internally while we worked towards a better solution.</p>
+<h2>Kubernetes with Zero Trust</h2>
+<p>Since the launch of Cloudflare One, we've been dogfooding the Zero Trust agent in various configurations. At first we'd been using it to implement secure <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS</a> with 1.1.1.1. As time went on, we began to use it to dogfood additional Zero Trust features.</p>
+<p>We're now leveraging the private network routing in Cloudflare Zero Trust to allow engineers to access the Kubernetes APIs without needing to setup cloudflared tunnels or configure kubectl and other Kubernetes ecosystem tools to use tunnels. This isn't something specific to Cloudflare, you can do this for your team today!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="408" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=640&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=715&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=750&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=828&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1080&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1280&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1430&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1190 Embedded Image - 0iJIrm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V8VRJBQJ5JJHC0JM6EXH.png&amp;w=1069&amp;h=610&amp;f=webp" data-lightbox-width="1069" data-lightbox-height="610" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="408" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Configuring Zero Trust</h3>
+<p>We use a <a href="https://github.com/cloudflare/terraform-provider-cloudflare" target="_blank" rel="noopener noreferrer">configuration management tool</a> for our Zero Trust configuration to enable infrastructure-as-code, which we've adapted below. However, the same configuration can be achieved using the Cloudflare Zero Trust dashboard.</p>
+<p>The first thing we need to do is create a new tunnel. This tunnel will be used to connect the Cloudflare edge network to the Kubernetes API. We run the tunnel endpoints within Kubernetes, using configuration shown later in this post.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_argo_tunnel"</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  secret</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.tunnel_secret</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>The "tunnel_secret" secret should be a 32-byte random number, which you should temporarily save as we'll reuse it later for the Kubernetes setup later.</p>
+<p>After we've created the tunnel, we need to create the routes so the Cloudflare network knows what traffic to send through the tunnel.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_tunnel_route"</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel_ipv4"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tunnel_id</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  network</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "198.51.100.101/32"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  comment</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "Kubernetes API Server (IPv4)"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_tunnel_route"</span><span class="sk-032f62-99ffe4"> "k8s_zero_trust_tunnel_ipv6"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  tunnel_id</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> cloudflare_argo_tunnel.k8s_zero_trust_tunnel.id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  network</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "2001:DB8::101/128"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  comment</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "Kubernetes API Server (IPv6)"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We support accessing the Kubernetes API via both IPv4 and IPv6 addresses, so we configure routes for both. If you're connecting to your API server via a hostname, these IP addresses should match what is returned via a DNS lookup.</p>
+<p>Next we'll configure settings for Cloudflare Gateway so that it's compatible with the API servers and clients.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_teams_list"</span><span class="sk-032f62-99ffe4"> "k8s_apiserver_ips"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "Kubernetes API IPs"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "IP"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  items</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"198.51.100.101/32"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"2001:DB8::101/128"]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_teams_rule"</span><span class="sk-032f62-99ffe4"> "k8s_apiserver_zero_trust_http"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  account_id</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> var.account_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> "Don't inspect Kubernetes API"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  description</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Allow connections from kubectl to API"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  precedence</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-005cc5-ffc799"> 10000</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  action</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> "off"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  enabled</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  filters</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"http"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  traffic</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> format</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"any(http.conn.dst_ip[*] in $%s)"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cloudflare_teams_list.k8s_apiserver_ips.id,</span><span class="sk-032f62-99ffe4"> "-",</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>As we use mutual TLS between clients and the API server, and not all the traffic between kubectl and the API servers are HTTP, we've disabled HTTP inspection for these connections.</p>
+<p>You can pair these rules with additional Zero Trust rules, such as <a href="https://developers.cloudflare.com/cloudflare-one/identity/devices" target="_blank" rel="noopener noreferrer">device attestation</a>, <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/enforce-sessions" target="_blank" rel="noopener noreferrer">session lifetimes</a>, and <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/identity-selectors" target="_blank" rel="noopener noreferrer">user and group</a> access policies to further customize your security.</p>
+<h3>Deploying Tunnels</h3>
+<p>Once you have your tunnels created and configured, you can deploy their endpoints into your network. We've chosen to deploy the tunnels as pods, as this allows us to use Kubernetes's deployment strategies for rolling out upgrades and handling node failures.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> v1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> ConfigMap</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> tunnel-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  namespace:</span><span class="sk-032f62-99ffe4"> example</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  config.yaml:</span><span class="sk-d73a49-a0a0a0"> |</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tunnel:</span><span class="sk-032f62-99ffe4"> 8e343b13-a087-48ea-825f-9783931ff2a5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    credentials-file:</span><span class="sk-032f62-99ffe4"> /opt/zt/creds/creds.json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    metrics:</span><span class="sk-032f62-99ffe4"> 0.0.0.0:8081</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    warp-routing:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        enabled:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+</div>
+<p>This creates a Kubernetes ConfigMap with a basic configuration that enables WARP routing for the tunnel ID specified. You can get this tunnel ID from your configuration management system, the Cloudflare Zero Trust dashboard, or by running the following command from another device logged into the same account.</p>
+<p><code>cloudflared tunnel list</code></p>
+<p>Next, we'll need to create a secret for our tunnel credentials. While you should use a secret management system, for simplicity we'll create one directly here.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">jq</span><span class="sk-005cc5-99ffe4"> -cn</span><span class="sk-005cc5-99ffe4"> --arg</span><span class="sk-032f62-99ffe4"> accountTag</span><span class="sk-24292e-fff"> $CF_ACCOUNT_TAG </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelID</span><span class="sk-24292e-fff"> $CF_TUNNEL_ID </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelName</span><span class="sk-24292e-fff"> $CF_TUNNEL_NAME </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">       --arg</span><span class="sk-032f62-99ffe4"> tunnelSecret</span><span class="sk-24292e-fff"> $CF_TUNNEL_SECRET </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   '{AccountTag: $accountTag, TunnelID: $tunnelID, TunnelName: $tunnelName, TunnelSecret: $tunnelSecret}'</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> generic</span><span class="sk-005cc5-99ffe4"> -n</span><span class="sk-032f62-99ffe4"> example</span><span class="sk-032f62-99ffe4"> tunnel-creds</span><span class="sk-005cc5-99ffe4"> --from-file=creds.json=/dev/stdin</span></span></code></pre>
+</div>
+<p>This creates a new secret "tunnel-creds" in the "example" namespace with the credentials file the tunnel expects.</p>
+<p>Now we can deploy the tunnels themselves. We deploy multiple replicas to ensure some are always available, even while nodes are being drained.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">apiVersion:</span><span class="sk-032f62-99ffe4"> apps/v1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kind:</span><span class="sk-032f62-99ffe4"> Deployment</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  labels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  name:</span><span class="sk-032f62-99ffe4"> tunnel-api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  namespace:</span><span class="sk-032f62-99ffe4"> example</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">spec:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  replicas:</span><span class="sk-005cc5-ffc799"> 3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  selector:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    matchLabels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  strategy:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    rollingUpdate:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      maxSurge:</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      maxUnavailable:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  template:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    metadata:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      labels:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        tunnel:</span><span class="sk-032f62-99ffe4"> api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    spec:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      containers:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> args:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> tunnel</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-005cc5-99ffe4"> --config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> /opt/zt/config/config.yaml</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> run</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          env:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> GOMAXPROCS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              value:</span><span class="sk-032f62-99ffe4"> "2"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> TZ</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              value:</span><span class="sk-032f62-99ffe4"> UTC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          image:</span><span class="sk-032f62-99ffe4"> cloudflare/cloudflared:2022.5.3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          livenessProbe:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            failureThreshold:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            httpGet:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              path:</span><span class="sk-032f62-99ffe4"> /ready</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              port:</span><span class="sk-005cc5-ffc799"> 8081</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            initialDelaySeconds:</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            periodSeconds:</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> tunnel</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          ports:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> containerPort:</span><span class="sk-005cc5-ffc799"> 8081</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              name:</span><span class="sk-032f62-99ffe4"> http-metrics</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          resources:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            limits:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              cpu:</span><span class="sk-032f62-99ffe4"> "1"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              memory:</span><span class="sk-032f62-99ffe4"> 100Mi</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          volumeMounts:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> mountPath:</span><span class="sk-032f62-99ffe4"> /opt/zt/config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              name:</span><span class="sk-032f62-99ffe4"> config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              readOnly:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            -</span><span class="sk-032f62-99ffe4"> mountPath:</span><span class="sk-032f62-99ffe4"> /opt/zt/creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              name:</span><span class="sk-032f62-99ffe4"> creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              readOnly:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      volumes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> secret:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            name:</span><span class="sk-032f62-99ffe4"> tunnel-creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> creds</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> configMap:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            name:</span><span class="sk-032f62-99ffe4"> tunnel-api-zt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          name:</span><span class="sk-032f62-99ffe4"> config</span></span></code></pre>
+</div>
+<h2>Using Kubectl with Cloudflare Zero Trust</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="479" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=640&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=715&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=750&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=828&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1080&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1280&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1430&amp;h=958&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot of the Cloudflare WARP app showing it connected to Teams" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453QXJCCBYJ4V4PVTRK90N.png&amp;w=1920&amp;h=1286&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1286" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="479" class="pt-portable-image-media"></div>
+</figure>
+<p>After deploying the Cloudflare Zero Trust agent, members of your team can now access the Kubernetes API without needing to set up any special SOCKS tunnels!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">kubectl</span><span class="sk-032f62-99ffe4"> version</span><span class="sk-005cc5-99ffe4"> --short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Client</span><span class="sk-032f62-99ffe4"> Version:</span><span class="sk-032f62-99ffe4"> v1.24.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Server</span><span class="sk-032f62-99ffe4"> Version:</span><span class="sk-032f62-99ffe4"> v1.24.1</span></span></code></pre>
+</div>
+<h2>What's next?</h2>
+<p>If you try this out, send us your feedback! We're continuing to improve Zero Trust for non-HTTP workflows.</p>

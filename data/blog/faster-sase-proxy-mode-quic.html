@@ -1,71 +1,38 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HYihaOT087krUdrNrh9Lv/a93a30073cfa77299bdbd3e0d715cffd/image3.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>When you need to use a <a href="https://blog.cloudflare.com/a-primer-on-proxies"><u>proxy</u></a> to keep your zero trust environment secure, it often comes with a cost: poor performance for your users. Soon after deploying a client proxy, security teams are generally slammed with support tickets from users frustrated with sluggish browser speed, slow file transfers, and video calls glitching at just the wrong moment. After a while, you start to chalk it up to the proxy — potentially blinding yourself to other issues affecting performance.&nbsp;</p>
-	<p>We knew it didn’t have to be this way. We knew users could go faster, without sacrificing security, if we completely re-built our approach to <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/configure-warp/warp-modes/#local-proxy-mode" target="_blank" rel="noopener noreferrer"><u>proxy mode</u></a>. So we did.</p>
-	<p>In the early days of developing the device client for our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>SASE</u></a> platform, <a href="https://www.cloudflare.com/sase" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>, we prioritized universal compatibility. When an admin enabled proxy mode, the Client acted as a local SOCKS5 or HTTP proxy. However, because our underlying tunnel architecture was built on WireGuard, a Layer 3 (L3) protocol, we faced a technical hurdle: how to get application-layer (L4) TCP traffic into an L3 tunnel. Moving from L4 to L3 was especially difficult because our desktop Client works across multiple platforms (Windows, macOS, Linux) so we couldn’t <a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/#from-an-ip-flow-to-a-tcp-stream"><u>use the kernel </u></a>to achieve this.</p>
-	<p>To get over this hurdle, we used smoltcp, a Rust-based user-space TCP implementation. When a packet hit the local proxy, the Client had to perform a conversion, using smoltcp to convert the L4 stream into L3 packets for the WireGuard tunnel.</p>
-	<p>While this worked, it wasn't efficient. Smoltcp is optimized for embedded systems, and does not support modern TCP features. In addition, in the Cloudflare edge, we had to convert the L3 packets back into an L4 stream. For users, this manifested as a performance ceiling. On media-heavy sites where a browser might open dozens of concurrent connections for images and video, and the lack of a high performing TCP stack led to high latency and sluggish load times when even on high-speed fiber connections, proxy mode felt significantly slower than all the other device client modes.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-direct-l4-proxying-with-quic">Introducing direct L4 proxying with QUIC</h3>
-		<a href="https://blog.cloudflare.com/#introducing-direct-l4-proxying-with-quic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To solve this, we’ve re-built the Cloudflare One Client’s proxy mode from the ground up and deprecated the use of WireGuard for proxy mode, so we can capitalize on the capabilities of QUIC. We were already leveraging <a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque"><u>MASQUE</u></a> (part of QUIC) for proxying IP packets, and added the usage of QUIC streams for direct L4 proxying.</p>
-	<p>By leveraging HTTP/3 (<a href="https://datatracker.ietf.org/doc/rfc9114" target="_blank" rel="noopener noreferrer"><u>RFC 9114</u></a>) with the CONNECT method, we can now keep traffic at Layer 4, where it belongs. When your browser sends a SOCKS5 or HTTP request to the Client, it is no longer broken down into L3 packets.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/w9mIuKa8usLgxDxVqaHax/9861604fc84508b7fc6666bf8b82a874/image1.png" alt="" class="kg-image" width="1810" height="764" loading="lazy">
-	</figure>
-	<p>Instead, it is encapsulated directly into a QUIC stream.</p>
-	<p>This architectural shift provides three immediate technical advantages:</p>
-	<ul>
-		<li>
-			<p>Bypassing smoltcp: By removing the L3 translation layer, we eliminate IP packet handling and the limitations of smoltcp’s TCP implementation.</p>
-		</li>
-		<li>
-			<p>Native QUIC Benefits: We benefit from modern congestion control and flow control, which are handled natively by the transport layer.</p>
-		</li>
-		<li>
-			<p>Tuneability: The Client and Cloudflare’s edge can tune QUIC’s parameters to optimize performance.</p>
-		</li>
-	</ul>
-	<p>In our internal testing, the results were clear: <b>download and upload speeds doubled, and latency decreased significantly</b>.</p>
-	<div class="flex anchor relative">
-		<h3 id="who-benefits-the-most">Who benefits the most</h3>
-		<a href="https://blog.cloudflare.com/#who-benefits-the-most" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While faster is always better, this update specifically unblocks three key common use cases.</p>
-	<p>First, in <b>coexistence with third-party VPNs </b>where a legacy VPN is still required for specific on-prem resources or where having a dual SASE setup is required for redundancy/compliance, the local proxy mode is the go-to solution for adding zero trust security to web traffic. This update ensures that "layering" security doesn't mean sacrificing the user experience.</p>
-	<p>Second, for <b>high-bandwidth application partitioning</b>, proxy mode is often used to steer specific browser traffic through Cloudflare Gateway while leaving the rest of the OS on the local network. Users can now stream high-definition content or handle large datasets without sacrificing performance.</p>
-	<p>Finally, <b>developers and power users</b> who rely on the SOCKS5 secondary listener for CLI tools or scripts will see immediate improvements. Remote API calls and data transfers through the proxy now benefit from the same low-latency connection as the rest of the Cloudflare global network.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-to-get-started">How to get started</h3>
-		<a href="https://blog.cloudflare.com/#how-to-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The proxy mode improvements are available with minimum client version 2025.8.779.0 for Windows, macOS, and Linux devices. To take advantage of these performance gains, ensure you are running the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/download-warp" target="_blank" rel="noopener noreferrer"><u>latest version of the Cloudflare One Client</u></a>.</p>
-	<ol>
-		<li>
-			<p>Log in to the <b>Cloudflare One dashboard</b>.</p>
-		</li>
-		<li>
-			<p>Navigate to <b>Teams &amp; Resources &gt; Devices &gt; Device profiles &gt; General profiles</b>.</p>
-		</li>
-		<li>
-			<p>Select a profile to edit or create a new one and ensure the <b>Service mode</b> is set to <b>Local proxy mode</b> and the <b>Device tunnel protocol</b> is set to <b>MASQUE</b>.</p>
-		</li>
-	</ol>
-	<p>You can verify your active protocol on a client machine by running the following command in your terminal:&nbsp;</p>
-	<pre class="language-Rust"><code class="language-Rust">warp-cli settings | grep protocol</code></pre>
-	<p>Visit our <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/configure-warp/warp-modes/#set-up-local-proxy-mode" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> for detailed guidance on enabling proxy mode for your devices.</p>
-	<p>If you haven't started your SASE journey yet, you can sign up for a<a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u> free Cloudflare One account</u></a> for up to 50 users today. Simply <a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>create an account</u></a>, download the<a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer"> <u>Cloudflare One Client</u></a>, and follow our<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"> <u>onboarding guide</u></a> to experience a faster, more stable connection for your entire team.</p>
+<p>When you need to use a <a href="https://blog.cloudflare.com/a-primer-on-proxies" target="_blank" rel="noopener noreferrer"><u>proxy</u></a> to keep your zero trust environment secure, it often comes with a cost: poor performance for your users. Soon after deploying a client proxy, security teams are generally slammed with support tickets from users frustrated with sluggish browser speed, slow file transfers, and video calls glitching at just the wrong moment. After a while, you start to chalk it up to the proxy — potentially blinding yourself to other issues affecting performance.&nbsp;</p>
+<p>We knew it didn’t have to be this way. We knew users could go faster, without sacrificing security, if we completely re-built our approach to <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/configure-warp/warp-modes/#local-proxy-mode" target="_blank" rel="noopener noreferrer"><u>proxy mode</u></a>. So we did.</p>
+<p>In the early days of developing the device client for our <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>SASE</u></a> platform, <a href="https://www.cloudflare.com/sase" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a>, we prioritized universal compatibility. When an admin enabled proxy mode, the Client acted as a local SOCKS5 or HTTP proxy. However, because our underlying tunnel architecture was built on WireGuard, a Layer 3 (L3) protocol, we faced a technical hurdle: how to get application-layer (L4) TCP traffic into an L3 tunnel. Moving from L4 to L3 was especially difficult because our desktop Client works across multiple platforms (Windows, macOS, Linux) so we couldn’t <a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework/#from-an-ip-flow-to-a-tcp-stream" target="_blank" rel="noopener noreferrer"><u>use the kernel </u></a>to achieve this.</p>
+<p>To get over this hurdle, we used smoltcp, a Rust-based user-space TCP implementation. When a packet hit the local proxy, the Client had to perform a conversion, using smoltcp to convert the L4 stream into L3 packets for the WireGuard tunnel.</p>
+<p>While this worked, it wasn't efficient. Smoltcp is optimized for embedded systems, and does not support modern TCP features. In addition, in the Cloudflare edge, we had to convert the L3 packets back into an L4 stream. For users, this manifested as a performance ceiling. On media-heavy sites where a browser might open dozens of concurrent connections for images and video, and the lack of a high performing TCP stack led to high latency and sluggish load times when even on high-speed fiber connections, proxy mode felt significantly slower than all the other device client modes.</p>
+<h3>Introducing direct L4 proxying with QUIC</h3>
+<p>To solve this, we’ve re-built the Cloudflare One Client’s proxy mode from the ground up and deprecated the use of WireGuard for proxy mode, so we can capitalize on the capabilities of QUIC. We were already leveraging <a href="https://blog.cloudflare.com/zero-trust-warp-with-a-masque" target="_blank" rel="noopener noreferrer"><u>MASQUE</u></a> (part of QUIC) for proxying IP packets, and added the usage of QUIC streams for direct L4 proxying.</p>
+<p>By leveraging HTTP/3 (<a href="https://datatracker.ietf.org/doc/rfc9114" target="_blank" rel="noopener noreferrer"><u>RFC 9114</u></a>) with the CONNECT method, we can now keep traffic at Layer 4, where it belongs. When your browser sends a SOCKS5 or HTTP request to the Client, it is no longer broken down into L3 packets.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="302" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=640&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=750&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=828&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=1080&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=1280&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=1430&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3155 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MYB1SJRBNQ31HAXJB2M2.png&amp;w=1810&amp;h=764&amp;f=webp" data-lightbox-width="1810" data-lightbox-height="764" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="302" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Instead, it is encapsulated directly into a QUIC stream.</p>
+<p>This architectural shift provides three immediate technical advantages:</p>
+<ul>
+	<li>Bypassing smoltcp: By removing the L3 translation layer, we eliminate IP packet handling and the limitations of smoltcp’s TCP implementation.</li>
+	<li>Native QUIC Benefits: We benefit from modern congestion control and flow control, which are handled natively by the transport layer.</li>
+	<li>Tuneability: The Client and Cloudflare’s edge can tune QUIC’s parameters to optimize performance.</li>
+</ul>
+<p>In our internal testing, the results were clear: <strong>download and upload speeds doubled, and latency decreased significantly</strong>.</p>
+<h3>Who benefits the most</h3>
+<p>While faster is always better, this update specifically unblocks three key common use cases.</p>
+<p>First, in <strong>coexistence with third-party VPNs </strong>where a legacy VPN is still required for specific on-prem resources or where having a dual SASE setup is required for redundancy/compliance, the local proxy mode is the go-to solution for adding zero trust security to web traffic. This update ensures that "layering" security doesn't mean sacrificing the user experience.</p>
+<p>Second, for <strong>high-bandwidth application partitioning</strong>, proxy mode is often used to steer specific browser traffic through Cloudflare Gateway while leaving the rest of the OS on the local network. Users can now stream high-definition content or handle large datasets without sacrificing performance.</p>
+<p>Finally, <strong>developers and power users</strong> who rely on the SOCKS5 secondary listener for CLI tools or scripts will see immediate improvements. Remote API calls and data transfers through the proxy now benefit from the same low-latency connection as the rest of the Cloudflare global network.</p>
+<h3>How to get started</h3>
+<p>The proxy mode improvements are available with minimum client version 2025.8.779.0 for Windows, macOS, and Linux devices. To take advantage of these performance gains, ensure you are running the <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/download-warp" target="_blank" rel="noopener noreferrer"><u>latest version of the Cloudflare One Client</u></a>.</p>
+<ol>
+	<li>Log in to the <strong>Cloudflare One dashboard</strong>.</li>
+	<li>Navigate to <strong>Teams &amp; Resources &gt; Devices &gt; Device profiles &gt; General profiles</strong>.</li>
+	<li>Select a profile to edit or create a new one and ensure the <strong>Service mode</strong> is set to <strong>Local proxy mode</strong> and the <strong>Device tunnel protocol</strong> is set to <strong>MASQUE</strong>.</li>
+</ol>
+<p>You can verify your active protocol on a client machine by running the following command in your terminal:&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">warp</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cli settings </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> grep protocol</span></span></code></pre>
 </div>
+<p>Visit our <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/warp/configure-warp/warp-modes/#set-up-local-proxy-mode" target="_blank" rel="noopener noreferrer"><u>documentation</u></a> for detailed guidance on enabling proxy mode for your devices.</p>
+<p>If you haven't started your SASE journey yet, you can sign up for a<a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u> free Cloudflare One account</u></a> for up to 50 users today. Simply <a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>create an account</u></a>, download the<a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer"> <u>Cloudflare One Client</u></a>, and follow our<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/warp" target="_blank" rel="noopener noreferrer"> <u>onboarding guide</u></a> to experience a faster, more stable connection for your entire team.</p>

@@ -1,0 +1,168 @@
+<p>我们很高兴地宣布，Cloudflare Workers 上现已支持 JavaScript 模块。如果您看过使用 JavaScript 编写的示例 Worker，您可能能够认出过去几年一直在互联网上流传的以下代码片段：</p>
+<p>以上语法称为“<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Worker</a>”API，它需要进行标准化以用于 Web 浏览器。具体想法是您可以将 JavaScript 文件附加到网页以修改其 HTTP 请求和响应，充当虚拟端点。这恰好是 Workers 所需的，甚至能够很好地与 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><code>fetch()</code></a> 和 <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><code>caches</code></a> 之类的标准 Web API 集成。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello Worker!"</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>介绍模块之前，我们想明确的是，我们会继续支持 Service Worker API。作为开发者，您肯定不愿意收到电子邮件称_您_由于某个 API 或功能被停用而需要重写_您的_代码；我们不会向您发送这样的电子邮件。如果您有兴趣了解我们为何会做出这个决定，您可以阅读我们对于 Workers <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">向后兼容性</a>的承诺。</p>
+<h3>JavaScript 模块是什么？</h3>
+<p>JavaScript 模块也称为 ECMAScript（缩略为“ES”）模块，是用于在 JavaScript 中导入和导出代码的标准 API。这是 JavaScript 的“ES6”语言规范引入的，已由大部分 Web 浏览器、Node.js、Deno 实施，现在，Cloudflare Workers 也实施了该模块。下面的例子演示了其工作方式：</p>
+<p>“export”关键字指示“getDate”函数应该从当前模块中导出。然后，您可以使用另一个模块中的“import”来使用该函数。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/util.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getDate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">time</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">(time).</span><span class="sk-6f42c1-ffc799">toISOString</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"T"</span><span class="sk-24292e-fff">)[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]; </span><span class="sk-6a737d-8b8b8b94">// "YYYY-MM-DD"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>这些是基本操作，但您还可以使用模块执行更多操作。您可以很优雅地整理、维护和复用您的代码，效果也很不错。虽然我们无法在这里探讨模块的_每个_方面，但如果您想了解更多信息，我们鼓励您阅读有关模块的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank" rel="noopener noreferrer">MDN 指南</a>，或 Lin Clark 所写的<a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive" target="_blank" rel="noopener noreferrer">技术深入研究</a>。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/index.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getDate } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./util.js"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Today’s date:"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">getDate</span><span class="sk-24292e-fff">());</span></span></code></pre>
+</div>
+<h3>我如何在 Workers 中使用模块？</h3>
+<p>您可以导出默认模块，它将代表您的 Worker。不再使用“addEventListener”，每个事件处理程序会定义为该模块上的函数。现在我们支持将“<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">fetch</a>”用于 HTTP 和 WebSocket 请求，并将“<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">scheduled</a>”用于 cron 触发器。</p>
+<p>您还可能注意到其他一些差异，例如每个事件处理程序上的参数。您最需要的参数各自分散开，而不是使用单个“Event”对象。第一个参数特定于事件类型：对于“fetch”，为 <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">Request</a> 对象，对于“scheduled”，为包含 cron 计划的 <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1" target="_blank" rel="noopener noreferrer">controller</a>。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"I’m a module!"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> scheduled</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">controller</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // await doATask();</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>第二个参数是包含环境变量的对象（也称为“<a href="https://developers.cloudflare.com/workers/platform/environment-variables" target="_blank" rel="noopener noreferrer">bindings</a>”）。之前，每个变量插入到 Worker 的全局作用域。虽然这是简单的解决方案，但变量像变魔术一样出现在代码中会让人感到困惑。现在，使用环境对象，您可以控制哪些模块和库可访问您的环境变量。这种机制更安全，因为它可以防止遭入侵或不安分的第三方库枚举您的所有变量或密钥。</p>
+<p>第三个参数是上下文对象，允许您使用 <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil" target="_blank" rel="noopener noreferrer">waitUntil()</a> 注册后台任务。这很适合那些不得阻止事件执行的任务，如日志记录或错误报告。</p>
+<p>综合使用上述代码，您可以导入和导出多个模块，以及使用新的事件处理程序语法。</p>
+<p>别忘了在本周早些时候已<a href="https://blog.cloudflare.com/zh-cn/durable-objects-ga-zh-cn">广泛可用</a>的 Durable Objects！您还可以导出类，通过这种方式来定义 Durable Object 类。下面是“Counter”Durable Object 的另一个示例，使用递增值进行响应。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/error.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> logError</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">error</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(url, {</span></span>
+<span class="line"><span class="sk-24292e-fff">     method: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">     body: error.stack</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/worker.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { logError } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./error.js"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       context.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">logError</span><span class="sk-24292e-fff">(environment.</span><span class="sk-005cc5-fff">ERROR_URL</span><span class="sk-24292e-fff">, error));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Oops!"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>有非 JavaScript 模块吗？</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/counter.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Counter</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fetch</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.value</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.value.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/worker.js</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// We need to re-export the Durable Object class in the Worker module.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { Counter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./counter.js"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> clientId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"cf-connecting-ip"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> counterId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> environment.Counter.</span><span class="sk-6f42c1-ffc799">idFromName</span><span class="sk-24292e-fff">(clientId);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Each IP address gets its own Counter.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> counter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> environment.Counter.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(counterId);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> counter.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://counter.object/increment"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>有！虽然模块主要用于 JavaScript，但我们还支持其他模块类型，其中一些尚未标准化。</p>
+<p>例如，您可以导入 <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" rel="noopener noreferrer">WebAssembly</a> 作为一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module" target="_blank" rel="noopener noreferrer">模块</a>。之前，利用 Service Worker API，WebAssembly 包含为绑定。我们认为这是错误的，因为 WebAssembly 应该表示为代码，而不是外部资源。下面是利用模块导入 WebAssembly 的新方式：</p>
+<p>虽然目前不支持，但我们计划在未来可以更紧密地集成 WebAssembly 和 JavaScript 模块，如该<a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration" target="_blank" rel="noopener noreferrer">提议</a>中所概述。下面所示的人体工程学改进能够发挥非常大的作用，促进在 JavaScript 生态系统中更多地包含 WebAssembly。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> module </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./lib/hello.wasm"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> WebAssembly.</span><span class="sk-6f42c1-ffc799">instantiate</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> instance.exports.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>我们还增加了对文本和二进制模块的支持，这些模块分别允许您导入 <code>String</code> 和 <code>ArrayBuffer</code>。虽然这些模块未标准化，但可让您轻松导入 HTML 文件或图像之类的资源。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { hello } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./lib/hello.wasm"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>我如何开始？</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">&lt;!-- filename: ./public/index.html --&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;&lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Hello!</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> html </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "../public/index.html"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (request.url.</span><span class="sk-6f42c1-ffc799">endsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/index.html"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       return new </span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">html</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-e36209-fff">          headers</span><span class="sk-24292e-fff">: { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/html"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">       });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">    return </span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>有许多方法可以开始使用模块。</p>
+<p>首先，您可以在浏览器中使用 <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank" rel="noopener noreferrer">playground</a>（这不需要帐户）或通过使用仪表板<a href="https://workers.new" target="_blank" rel="noopener noreferrer">快速编辑器</a>试用模块。浏览器将自动检测您何时在使用模块，以允许您从 Service Worker API 无缝切换。目前，您只能在浏览器中创建一个 JavaScript 模块，不过我们很快会加以改进，以支持多个模块。</p>
+<p>如果您有冒险精神，想要使用模块开始_新_项目，您可以试用测试版 <a href="https://blog.cloudflare.com/zh-cn/wrangler-v2-beta-zh-cn">wrangler 2.0</a>，这是适用于 Workers 的下一代命令行界面 (CLI)。</p>
+<p>对于现有项目，我们仍推荐使用 <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler 1.0</a>（版本 1.17 或更高版本）。要启用模块，您可以按以下示例调整“<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank" rel="noopener noreferrer">wrangler.toml</a>”配置：</p>
+<p>我们更新了<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">文档</a>，以提供有关<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">模块</a>的更多详细信息，不过在我们过渡为显示两种格式时，一些示例仍使用 Service Worker API。（还有意外收获，就是 TypeScript！）</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name = "my-worker"</span></span>
+<span class="line"><span>type = "javascript"</span></span>
+<span class="line"><span>workers_dev = true</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[build.upload]</span></span>
+<span class="line"><span>format = "modules"</span></span>
+<span class="line"><span>dir = "./src"</span></span>
+<span class="line"><span>main = "./worker.js" # becomes "./src/worker.js"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[[build.upload.rules]]</span></span>
+<span class="line"><span>type = "ESModule"</span></span>
+<span class="line"><span>globs = ["**/*.js"]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Uncomment if you have a build script.</span></span>
+<span class="line"><span># [build]</span></span>
+<span class="line"><span># command = "npm run build"</span></span></code></pre>
+</div>
+<p>如果您遇到模块问题或注意到模块的异常情况，请告诉我们，我们会进行检查。祝您编码愉快，我们很期待看到您使用模块构建的成果！</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="229" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=640&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=750&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=828&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1080&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1280&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1430&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-785 Embedded Image - Erw4Ne" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1200&amp;h=385&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="385" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="229" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<div id="html-block-k3w" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>

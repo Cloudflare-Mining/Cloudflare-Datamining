@@ -1,50 +1,29 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7EJpTQifyL2qEZqp3vZ7XE/fb959506cdc1701b418215e1dd052205/Network-Performance-Update.png" alt="Network performance update: Birthday Week 2023" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
-	<p>We constantly measure our own network’s performance against other networks, look for ways to improve our performance compared to them, and share the results of our efforts. Since <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">June 2021</a>, we’ve been sharing benchmarking results we’ve run against other networks to see how we compare.</p>
-	<p>In this post we are going to share the most recent updates since our <a href="https://blog.cloudflare.com/speed-week-2023-network-performance-update">last post in June</a>, and tell you about our tools and processes that we use to monitor and improve our network performance.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-we-stack-up">How we stack up</h2>
-		<a href="https://blog.cloudflare.com/#how-we-stack-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since June 2021, we’ve been taking a close look at every single network and taking actions for the specific networks where we have some room for improvement. Cloudflare was already the fastest provider for most of the networks around the world (we define a network as country and AS number pair). Taking a closer look at the numbers; in July 2022, Cloudflare was ranked #1 in 33% of the networks and was within 2 ms (95th percentile TCP Connection Time) or 5% of the #1 provider for 8% of the networks that we measured. For reference, our closest competitor on that front was the fastest for 20% of networks.</p>
-	<p>As of August 30, 2023, Cloudflare is the fastest provider for 44% of networks—and was within 2 ms (95th percentile TCP Connection Time) or 5% of the fastest provider for 10% of the networks that we measured—whereas our closest competitor is now the fastest for 19% of networks.</p>
-	<p>Below is the change in percentage of networks in which each provider is the fastest plotted over time.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3X2KyKbEtsy8LOpjF30SlK/e105ec40b4fc842f00da45a4f3dcb3d5/pasted-image-0-7.png" alt="" class="kg-image" width="1600" height="988" loading="lazy">
-
-	</figure>
-	<p>Cloudflare is maintaining our steady growth in the percentage of networks where we’re the fastest. Despite the slight tick down the past couple of months, the trendline is still positive and with a higher rate of increase than other networks.</p>
-	<p>Now that we’ve reviewed how we stack up compared to other networks, let’s dig a little more into the other metrics we use to make us the fastest.</p>
-	<div class="flex anchor relative">
-		<h2 id="our-tooling">Our tooling</h2>
-		<a href="https://blog.cloudflare.com/#our-tooling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To provide insight into network performance, we use Real User Measurements (RUM) and fetch a small file from Cloudflare, <a href="https://www.cloudflare.com/cloudflare-vs-akamai" target="_blank" rel="noopener noreferrer">Akamai</a>, <a href="https://www.cloudflare.com/cloudflare-vs-cloudfront" target="_blank" rel="noopener noreferrer">Amazon CloudFront</a>, Fastly and Google Cloud CDN. Browsers around the world report the performance of those providers from the perspective of the end-user network they are on. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
-	<p>Using the RUM data, we are able to measure various performance metrics, such as TCP Connection Time, Time to First Byte (TTFB), Time to Last Byte (TTLB), for ourselves and other networks.</p>
-	<p>Let’s take a look at some of the metrics we monitor and what’s changed since our last blog in June.</p>
-	<p>The first metric we closely monitor is the percent of networks that we are ranked #1 in terms of TCP Connection Time. That's a key performance indicator that we evaluate ourselves against. This first line of the table shows that Cloudflare was ranked #1 in 45% of networks in June 2023 and 44% in August 2023. Here’s the full picture of how we looked in June versus how we look today.</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>We constantly measure our own network’s performance against other networks, look for ways to improve our performance compared to them, and share the results of our efforts. Since <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">June 2021</a>, we’ve been sharing benchmarking results we’ve run against other networks to see how we compare.</p>
+<p>In this post we are going to share the most recent updates since our <a href="https://blog.cloudflare.com/speed-week-2023-network-performance-update">last post in June</a>, and tell you about our tools and processes that we use to monitor and improve our network performance.</p>
+<h2>How we stack up</h2>
+<p>Since June 2021, we’ve been taking a close look at every single network and taking actions for the specific networks where we have some room for improvement. Cloudflare was already the fastest provider for most of the networks around the world (we define a network as country and AS number pair). Taking a closer look at the numbers; in July 2022, Cloudflare was ranked #1 in 33% of the networks and was within 2 ms (95th percentile TCP Connection Time) or 5% of the #1 provider for 8% of the networks that we measured. For reference, our closest competitor on that front was the fastest for 20% of networks.</p>
+<p>As of August 30, 2023, Cloudflare is the fastest provider for 44% of networks—and was within 2 ms (95th percentile TCP Connection Time) or 5% of the fastest provider for 10% of the networks that we measured—whereas our closest competitor is now the fastest for 19% of networks.</p>
+<p>Below is the change in percentage of networks in which each provider is the fastest plotted over time.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2111 Embedded Image - P7Ywja" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4634T41AK9CK60R0FTDF1A.png&amp;w=1600&amp;h=988&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="988" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare is maintaining our steady growth in the percentage of networks where we’re the fastest. Despite the slight tick down the past couple of months, the trendline is still positive and with a higher rate of increase than other networks.</p>
+<p>Now that we’ve reviewed how we stack up compared to other networks, let’s dig a little more into the other metrics we use to make us the fastest.</p>
+<h2>Our tooling</h2>
+<p>To provide insight into network performance, we use Real User Measurements (RUM) and fetch a small file from Cloudflare, <a href="https://www.cloudflare.com/cloudflare-vs-akamai" target="_blank" rel="noopener noreferrer">Akamai</a>, <a href="https://www.cloudflare.com/cloudflare-vs-cloudfront" target="_blank" rel="noopener noreferrer">Amazon CloudFront</a>, Fastly and Google Cloud CDN. Browsers around the world report the performance of those providers from the perspective of the end-user network they are on. The goal is to provide an accurate picture of where different providers are faster, and more importantly, where Cloudflare can improve. You can read more about the methodology in the original Speed Week blog post <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance">here</a>.</p>
+<p>Using the RUM data, we are able to measure various performance metrics, such as TCP Connection Time, Time to First Byte (TTFB), Time to Last Byte (TTLB), for ourselves and other networks.</p>
+<p>Let’s take a look at some of the metrics we monitor and what’s changed since our last blog in June.</p>
+<p>The first metric we closely monitor is the percent of networks that we are ranked #1 in terms of TCP Connection Time. That's a key performance indicator that we evaluate ourselves against. This first line of the table shows that Cloudflare was ranked #1 in 45% of networks in June 2023 and 44% in August 2023. Here’s the full picture of how we looked in June versus how we look today.</p>
+<div id="html-block-k17" class="html-block">
+	<style>
+		#html-block-k17 .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k17 .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -57,7 +36,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k17 .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -71,12 +50,12 @@
 			word-break: normal;
 		}
 
-		.tg .tg-0lax {
+		#html-block-k17 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare’s rank by TCP connection time</span></th>
@@ -111,35 +90,31 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Overall, these metrics align with what we saw above: Cloudflare is still the fastest provider in the most last mile networks, and while there has been slight changes in the month-to-month fluctuations, the overall trend shows us as being the fastest.</p>
-	<p>The second metric we monitor is our overall performance in each country. This gives us visibility into the countries or regions that we need to pay closer attention to and take action towards improving our performance. Those actions will be listed later. Orange indicates the countries that Cloudflare is the fastest provider based on the TCP Connection Time. Here’s how we look as of September 2023:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/59DUJVRDTbxRb9jQ3YA0p4/a51c8660aeae42e0478c62f4376e9b2b/pasted-image-0--1--7.png" alt="" class="kg-image" width="1600" height="820" loading="lazy">
-
-	</figure>
-	<p>For comparison, this is what that map looks like from June 2023:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aM0Jq0XhJHKna8ScZ3cRn/9e2ca18af20b180e4b6673eb4d3205a4/pasted-image-0--2--5.png" alt="" class="kg-image" width="1600" height="813" loading="lazy">
-
-	</figure>
-	<p>We’ve become faster in Iran and Paraguay, and in the few cases where we are no longer number 1, we are within 2ms of the fastest provider. In Brazil and Norway for example, we trail Fastly by only 1ms. In various countries in Africa, Amazon CloudFront pulled ahead but only by 2ms. We aim to fix that in the coming weeks and months and return to the #1 spot there also.</p>
-	<p>The third set of metrics we use are TCP Connection Time and TTLB. The number of networks where we are #1 in terms of 95th percentile TCP Connection Time is one of our key performance indicators. We actively monitor and work on improving that metric so that we are #1 in the most metrics for 95th percentile TCP Connection Time. For September 2023, we are still #1 in the most networks for TCP Connection Time, more than double the next best provider.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0gQGWakPkLF2I1aj5SLD3/ec1d62e8b85badaef29062bc3df35525/pasted-image-0--3--7.png" alt="" class="kg-image" width="1600" height="233" loading="lazy">
-
-	</figure><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>Overall, these metrics align with what we saw above: Cloudflare is still the fastest provider in the most last mile networks, and while there has been slight changes in the month-to-month fluctuations, the overall trend shows us as being the fastest.</p>
+<p>The second metric we monitor is our overall performance in each country. This gives us visibility into the countries or regions that we need to pay closer attention to and take action towards improving our performance. Those actions will be listed later. Orange indicates the countries that Cloudflare is the fastest provider based on the TCP Connection Time. Here’s how we look as of September 2023:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2111 Embedded Image - DXsGhO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47844BA05T3BN4Z57WJB9T.png&amp;w=1600&amp;h=820&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="820" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
+</figure>
+<p>For comparison, this is what that map looks like from June 2023:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="363" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=640&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=715&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=750&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=828&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=1080&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=1280&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=1430&amp;h=726&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2111 Embedded Image - YS7ske" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DCY0PQD032M2FX207T90.png&amp;w=1600&amp;h=813&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="363" class="pt-portable-image-media"></div>
+</figure>
+<p>We’ve become faster in Iran and Paraguay, and in the few cases where we are no longer number 1, we are within 2ms of the fastest provider. In Brazil and Norway for example, we trail Fastly by only 1ms. In various countries in Africa, Amazon CloudFront pulled ahead but only by 2ms. We aim to fix that in the coming weeks and months and return to the #1 spot there also.</p>
+<p>The third set of metrics we use are TCP Connection Time and TTLB. The number of networks where we are #1 in terms of 95th percentile TCP Connection Time is one of our key performance indicators. We actively monitor and work on improving that metric so that we are #1 in the most metrics for 95th percentile TCP Connection Time. For September 2023, we are still #1 in the most networks for TCP Connection Time, more than double the next best provider.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="104" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=715&amp;h=104&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=640&amp;h=93&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=715&amp;h=104&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=750&amp;h=109&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=828&amp;h=120&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=1080&amp;h=157&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=1280&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=1430&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2111 Embedded Image - 6wTeiY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44729SX7EKM5S0Q9MJ8F3J.png&amp;w=1600&amp;h=233&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="233" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="104" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k1l" class="html-block">
+	<style>
+		#html-block-k1l .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-k1l .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -152,7 +127,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k1l .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -166,12 +141,12 @@
 			word-break: normal;
 		}
 
-		.tg .tg-0lax {
+		#html-block-k1l .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Provider</span></th>
@@ -200,15 +175,8 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">52</span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>The way we achieve these great results is by having our engineering teams constantly investigate the underlying reasons for degraded performance if there are any, and we track open work items until they are resolved.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-next">What’s next</h2>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re sharing our updates on our journey to become #1 everywhere so that you can see what goes into running the fastest network in the world. From here, our plan is the same as always: identify where we’re slower, fix it, and then tell you how we’ve gotten faster.</p>
+	</table>
 </div>
+<p>The way we achieve these great results is by having our engineering teams constantly investigate the underlying reasons for degraded performance if there are any, and we track open work items until they are resolved.</p>
+<h2>What’s next</h2>
+<p>We’re sharing our updates on our journey to become #1 everywhere so that you can see what goes into running the fastest network in the world. From here, our plan is the same as always: identify where we’re slower, fix it, and then tell you how we’ve gotten faster.</p>

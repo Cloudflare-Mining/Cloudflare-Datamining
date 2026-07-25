@@ -1,0 +1,195 @@
+<p>当您选择在 Cloudflare 平台上构建应用时，我们始终将为您承担核心工作视为己任。自 2017 年<a href="https://blog.cloudflare.com/introducing-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>推出 Cloudflare Workers</u></a> 以来，我们便一直致力于为您提供一个无需操心底层环境、只需专注业务开发的运行时环境，这一初心始终未变。</p>
+<p>我们至今仍坚守这一承诺，今天的多项发布也正是聚焦于此——尽最大可能消除阻碍，让您能心无旁骛地打造卓越成果。</p>
+<p>我们能撰写的博客文章数量有限（您能阅读的也同样有限！）。这一年里，我们一直在马不停蹄地推进一长串新功能改进计划，其中许多改进已陆续在全年各个阶段上线。今天的公告将一次性详细解读所有新上线的功能，具体包括：</p>
+<ul>
+	<li><a href="https://blog.cloudflare.com/#more-node-js-apis-and-packages-just-work-on-workers"><u>使用更多来自 Node.js 的 API</u></a>——包括 node:fs 和 node:https</li>
+	<li><a href="https://blog.cloudflare.com/#ai-search-formerly-autorag-now-with-more-models-to-choose-from"><u>在 AI Search（原 AutoRAG）中使用来自不同提供商的模型</u></a></li>
+	<li>将<u>更大的</u>容器实例和更多的并发实例部署到我们的容器平台</li>
+	<li>通过 <a href="https://blog.cloudflare.com/#playwright-in-browser-rendering-is-now-ga"><u>Browser Rendering API</u></a> 运行 30 个并发的无头 Web 浏览器（之前是 10 个）</li>
+	<li>通过 Browser Rendering API 使用 <a href="https://blog.cloudflare.com/#playwright-in-browser-rendering-is-now-ga"><u>Playwright 浏览器自动化库</u></a>——现已完全支持并正式发布</li>
+	<li>现在使用 <a href="https://blog.cloudflare.com/#more-node-js-apis-and-packages-just-work-on-workers"><u>Workers Builds（已正式发布）</u></a>，可配置 4 个 vCPU（之前为 2 个）和 20GB 磁盘空间（之前为 8GB）</li>
+	<li>通过远程绑定 (Remote Bindings) 功能，您可以直接从本地开发环境连接至生产服务和资源——该功能现已正式发布</li>
+	<li><a href="https://blog.cloudflare.com/#infrequent-access-in-r2-is-now-ga"><u>R2 Infrequent Access 正式推出</u></a>——适用于备份数据、日志文件及长尾内容的低成本存储类别</li>
+	<li>使用 Media Transformations 按需调整视频文件尺寸、剪辑并重新设置格式——现已正式发布</li>
+</ul>
+<p>除此之外，我们还在持续不断地添加新的基础模块，以确保您拥有构建目标所需的全套工具。今天同步发布的其他功能（这些功能需要稍作说明）包括：</p>
+<ul>
+	<li>连接到<a href="http://blog.cloudflare.com/planetscale-postgres-workers" target="_blank" rel="noopener noreferrer"><u>在 Planetscale 上运行的</u></a> Postgres 数据库</li>
+	<li>通过新的 <a href="http://blog.cloudflare.com/email-service" target="_blank" rel="noopener noreferrer"><u>Cloudflare Email Service</u></a> 发送交易电子邮件</li>
+	<li>在新的 <a href="http://blog.cloudflare.com/cloudflare-data-platform" target="_blank" rel="noopener noreferrer"><u>Cloudflare 数据平台</u></a>上运行分布式 SQL 查询</li>
+	<li>通过<a href="https://blog.cloudflare.com/deploy-your-own-ai-vibe-coding-platform" target="_blank" rel="noopener noreferrer"><u> VibeSDK</u></a> 将您自己的 <a href="https://www.cloudflare.com/learning/ai/how-to-get-started-with-vibe-coding" target="_blank" rel="noopener noreferrer">AI 氛围编码</a>平台部署到 Cloudflare</li>
+</ul>
+<h2>AI Search（原 AutoRAG）——现已提供更多模型以供选择</h2>
+<p>AutoRAG 现已更名为 AI Search！新名称标志着一项更宏大的使命：让每一位开发者和企业都能使用世界一流的搜索基础设施。AI Search 不再仅仅为 LLM 应用提供检索功能，而是为您的内容提供快速、灵活的索引，随时支持任何 AI 体验。随着近期诸如 <a href="https://blog.cloudflare.com/conversational-search-with-nlweb-and-autorag" target="_blank" rel="noopener noreferrer"><u>NLWeb 支持</u></a> 等功能的推出，我们正突破简单的检索范畴，致力于构建一个开放且面向未来网络的高质量搜索体验基础。</p>
+<p>现在，借助 AI Search 功能，您可以使用来自不同提供商（如 OpenAI 和 Anthropic）的模型。上个月 AI Week 期间，我们宣布推出 <a href="https://blog.cloudflare.com/ai-gateway-aug-2025-refresh" target="_blank" rel="noopener noreferrer"><u>AI Gateway 的自带提供商密钥功能</u></a>，如今该功能已拓展至 AI Search。您只需将密钥关联到与 AI Search 实例相连的 AI Gateway，就能使用更多模型进行嵌入和推理。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="448" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=715&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=640&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=715&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=750&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=828&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=1080&amp;h=677&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=1280&amp;h=802&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=1430&amp;h=896&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2970 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47F2RKFC1H9GWF4S6EQG95.png&amp;w=1132&amp;h=709&amp;f=webp" data-lightbox-width="1132" data-lightbox-height="709" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="448" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>配置完成后，您的 AI Search 实例将能够在发出 <code>/ai-search</code> 请求时，通过 AI Gateway 引用可用的模型：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Query your AI Search instance with a natural language question to an OpenAI model</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">autorag</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-ai-search"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">aiSearch</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      query: </span><span class="sk-032f62-99ffe4">"What's new for Cloudflare Birthday Week?"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      model: </span><span class="sk-032f62-99ffe4">"openai/gpt-5"</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Return only the generated answer as plain text</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(result.response, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/plain"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>在接下来的几周内，我们还将推出一系列更新，使 API 与新名称保持一致。现有的 API 在短期内仍将继续得到支持。请继续关注 AI Search 的 <a href="https://developers.cloudflare.com/changelog/?product=ai-search" target="_blank" rel="noopener noreferrer"><u>Changelog</u></a> 和 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>，获取更多动态！</p>
+<h2>通过远程绑定 (Remote Bindings) 功能，您可以直接从本地开发环境连接至生产服务和资源——该功能现已正式发布</h2>
+<p>用于本地开发的<a href="https://developers.cloudflare.com/workers/development-testing/#remote-bindings" target="_blank" rel="noopener noreferrer"><u>远程绑定</u></a>现已正式发布，<a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> v4.37.0、<a href="https://developers.cloudflare.com/workers/vite-plugin" target="_blank" rel="noopener noreferrer"><u>Cloudflare Vite 插件</u></a>以及 <code>@cloudflare/vitest-pool-workers</code> 软件包均支持此功能。远程绑定是指将您的开发环境配置为连接至 Cloudflare 帐户中已部署的实际资源（<em>而非</em>本地模拟资源）的特殊绑定方式。</p>
+<p>例如，下面将演示如何配置 Wrangler 或 Vite，使其将所有发往 <code>env.MY_BUCKET</code> 的请求定向至真实的已部署 R2 存储桶，而非本地模拟环境。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "name"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "my-worker"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "compatibility_date"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "2025-09-25"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "r2_buckets"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "bucket_name"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "my-bucket"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "binding"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "MY_BUCKET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "remote"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>使用上述配置，所有对 <code>env.MY_BUCKET</code> 的请求都会被代理到远程资源，但 Worker 代码仍会在本地执行。这意味着您可以获得本地开发的所有优势，比如更快的执行速度，而且无需用数据填充本地数据库。</p>
+<p>您可以将远程绑定与<a href="https://developers.cloudflare.com/workers/wrangler/environments" target="_blank" rel="noopener noreferrer"><strong><u>环境</u></strong></a>配对，以便在本地开发期间使用暂存数据，而不改动生产数据。</p>
+<p>例如，当您运行 <code>wrangler dev --env staging</code> 时（如果使用 Vite，则为 <code>CLOUDFLARE_ENV=staging vite dev</code>），您可以这样指示 Wrangler 或 Vite 将所有请求发送到 <code>env.MY_BUCKET</code> 到 <code>staging-storage-bucket</code>。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "name"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "my-worker"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "compatibility_date"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "2025-09-25"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">"env"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "staging"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "r2_buckets"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "binding"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "MY_BUCKET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "bucket_name"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "staging-storage-bucket"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "remote"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      ]</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "production"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "r2_buckets"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "binding"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "MY_BUCKET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "bucket_name"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "production-storage-bucket"</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      ]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>更多 Node.js API 和软件包在 Workers 平台上“开箱即用”</h2>
+<p>在过去一年中，我们一直致力于使 Workers 更好地兼容 Node.js 包和 API。</p>
+<p>数周前，我们发布了关于<a href="https://blog.cloudflare.com/bringing-node-js-http-servers-to-cloudflare-workers" target="_blank" rel="noopener noreferrer"><u>如何在 Workers 上支持 node:http 和 node:https API 的技术分享</u></a>。这意味着您只需添加少量代码，就能在 Workers 上运行基于 Express 和 Koa.js 的后端服务。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">import { httpServerHandler } from '</span><span class="sk-6f42c1-ffc799">cloudflare</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">node</span><span class="sk-032f62-99ffe4">';</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">import express from '</span><span class="sk-24292e-fff">express</span><span class="sk-032f62-99ffe4">';</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">const app = express();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">app.get('</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-032f62-99ffe4">', (req, res) =&gt; {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  res.json({ message: '</span><span class="sk-6f42c1-ffc799">Express</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js running on </span><span class="sk-6f42c1-ffc799">Cloudflare</span><span class="sk-6f42c1-ffc799"> Workers!</span><span class="sk-032f62-99ffe4">' });</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">app.listen(3000);</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">export default httpServerHandler({ port: 3000 });</span></span></code></pre>
+</div>
+<p>除此之外，还有更多精彩功能。您现在可以：</p>
+<ul>
+	<li>使用 <code>node:fs</code> 在 Workers 中读取和写入临时文件</li>
+	<li>使用 <a href="https://one.one.one.one" target="_blank" rel="noopener noreferrer"><u>1.1.1.1</u></a> 和 <code>node:dns</code> 进行 DNS 查找</li>
+	<li>使用 <code>node:net</code> 和 <code>node:tls</code> 获得一流的 Socket 支持</li>
+	<li>使用通用哈希库搭配 <code>node:crypto</code></li>
+	<li>在 <code>process.env</code> 上，以类似 Node 的方式访问环境变量</li>
+</ul>
+<p><a href="https://blog.cloudflare.com/nodejs-workers-2025" target="_blank" rel="noopener noreferrer"><u>阅读我们对去年 Node.js 相关变化的完整回顾</u></a>，了解所有详细信息。</p>
+<p>经过这些升级，Workers 变得更为强大且更易上手，无论您来自何种技术背景。您熟悉的 API 接口悉数保留，更多所需的功能包皆可开箱即用。</p>
+<h2>更大的容器实例，更多并发实例</h2>
+<p><a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a> 现已提高并发实例的上限，并即将推出一种全新的更大实例类型。</p>
+<p>以前，您可以同时运行 50 个 <code>dev</code> 实例类型或 25 个 <code>basic</code> 实例类型。现在，您可以同时运行拥有高达 400 GiB 内存、100 个 vCPU 和 2 TB 磁盘空间的容器。这意味着您可以同时运行多达 1000 个 <code>dev</code> 实例或 400 个 <code>basic</code> 实例。Enterprise 计划的客户可以突破这些限制——如果您需要更多实例，请联系我们。如果您使用容器来支持您的应用，并且该应用迅速走红，您将能够在 Cloudflare 上进行扩展。</p>
+<p>Cloudflare 容器服务即将推出全新<a href="https://developers.cloudflare.com/containers/platform-details/limits" target="_blank" rel="noopener noreferrer"><u>实例类型</u></a>——<code>standard-2</code>，该实例配备 8 GiB 内存、1 个 vCPU 以及 12 GB 磁盘空间。对于从 <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>AI 沙箱环境</u></a>到各类数据处理工作等需要更多资源的各类工作负载而言，这款新实例类型堪称理想的默认之选。</p>
+<h2>Workers Builds 提供更多磁盘和 CPU——现已正式发布</h2>
+<p>在上一个生日周，我们<a href="https://blog.cloudflare.com/builder-day-2024-announcements/#continuous-integration-and-delivery" target="_blank" rel="noopener noreferrer"><u>宣布推出</u></a>了集成 CI/CD 管道 Workers Builds 的公测版，还<a href="https://blog.cloudflare.com/workers-builds-integrated-ci-cd-built-on-the-workers-platform" target="_blank" rel="noopener noreferrer"><u>详细介绍</u></a>了我们使用 <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a>、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>、<a href="https://developers.cloudflare.com/log-explorer/log-search" target="_blank" rel="noopener noreferrer"><u>Workers Logs</u></a> 和 <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer"><u>Smart Placement</u></a> 在 <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers 平台</u></a>上构建这个系统的过程。</p>
+<p>今年，我们很高兴地宣布，Workers Builds 现已正式发布。以下是新功能：</p>
+<ul>
+	<li><a href="https://developers.cloudflare.com/changelog/2025-08-04-builds-increased-disk-size" target="_blank" rel="noopener noreferrer"><strong><u>所有计划的硬盘空间扩容</u></strong></a>：我们已将免费版和付费版的存储空间统一从 8GB 提升至 20GB，为您的项目及依赖项提供更大存储容量</li>
+	<li><a href="https://developers.cloudflare.com/changelog/2025-09-07-builds-increased-cpu-paid" target="_blank" rel="noopener noreferrer"><strong><u>付费计划提供更多计算能力</u></strong></a>：我们将付费计划的 CPU 能力翻倍，从 2 个 vCPU 提升至 4 个 vCPU，从而显著提升构建速度</li>
+	<li><strong>更快的单核和多核性能</strong>：为确保构建过程始终保持高性能，我们会在每次构建运行时，调度当前可用的最快 CPU 资源来执行您的构建任务</li>
+</ul>
+<p>还没有使用过 <a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>Workers Builds</u></a> 吗？您可以通过<a href="https://developers.cloudflare.com/workers/ci-cd/builds" target="_blank" rel="noopener noreferrer"><u>将 Git 存储库连接到现有 Worker</u></a> 来尝试，或者通过点击任何<a href="https://developers.cloudflare.com/workers/platform/deploy-buttons" target="_blank" rel="noopener noreferrer"><u>部署到 Cloudflare 按钮</u></a>在全新项目上尝试，例如下面的按钮，它将<a href="https://github.com/cloudflare/templates/tree/main/astro-blog-starter-template" target="_blank" rel="noopener noreferrer"><u>使用 Astro 构建的博客</u></a>部署到您的 Cloudflare 帐户：</p>
+<div id="html-block-k77" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fdeploy.workers.cloudflare.com%2F%3Furl%3Dhttps%3A%2F%2Fgithub.com%2Fcloudflare%2Ftemplates%2Ftree%2Fmain%2Fastro-blog-starter-template"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<h2>Cloudflare 仪表板的外观更加一致</h2>
+<p><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fdurable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fr2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 和 <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> 如今都与我们的开发者平台其他部分拥有更加统一的视觉风格。当您浏览这些页面时，会发现内容加载更快、操作更流畅，使用起来也更加轻松便捷。</p>
+<p>在所有存储产品中，您现在可以自定义帐户资源列表表格——自由选择要查看的数据字段、按任意列排序，以及隐藏无需显示的列。针对 Workers 和 Pages 仪表板，我们精简了界面元素并采用现代化设计，让您能更高效地获取所需数据。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2970 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW446YCYRPSTY7QDC8BJ142Q.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>当您创建新的 <a href="https://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>Pipeline </u></a> 或 <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a> 配置时，系统将为您提供全新界面来助您快速入门，同时会在每一个步骤提供指引。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2970 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW457V9QCBNXG2ZHWXJNSGNP.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>这项工作正在进行中，我们很高兴在您的反馈帮助下不断改进，请继续提供反馈！</p>
+<h2>使用 Media Transformations 按需调整视频文件尺寸、剪辑并重新设置格式——现已正式发布</h2>
+<p>2025 年 3 月，我们<a href="https://blog.cloudflare.com/media-transformations-for-video-open-beta" target="_blank" rel="noopener noreferrer"><u>宣布推出 Media Transformations</u></a> 公测版，将 <a href="https://developers.cloudflare.com/images/transform-images" target="_blank" rel="noopener noreferrer"><u>Image Transformations</u></a> 的魔力带到短视频文件上——包括存储在 Cloudflare 外部的视频文件。此后，我们提高了输入和输出限制，并增加了对纯音频提取的支持。Media Transformations 现已正式发布。</p>
+<p>如果您拥有大量短视频，例如生成式 AI 输出、电子商务产品视频、社交媒体短片或简短的营销内容，那么 Media Transformations 是理想之选。此类内容应直接从您现有的存储（例如 R2 或 S3）中提取，由 Cloudflare 快速优化，并以小型 MP4 文件的形式高效交付，或用于提取静态图像和音频。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/cdn-cgi/media/&lt;OPTIONS&gt;/&lt;SOURCE-VIDEO&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-fff">EXAMPLE</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">RESIZE</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/cdn-cgi/media/width=760/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-fff">EXAMPLE</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">STILL</span><span class="sk-005cc5-fff"> THUMBNAIL</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-24292e-fff">https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/cdn-cgi/media/mode=frame,time=3s,width=120,height=120,fit=cover/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/aus-mobile.mp4</span></span></code></pre>
+</div>
+<p>Media Transformations 功能为所有用户提供免费使用额度，并已包含在媒体平台订阅服务中。如需了解最新功能详情，请查阅<a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>转换视频文档</u></a>，即刻为您的区域启用转换服务！</p>
+<h2>R2 中的 Infrequent Access 现已正式发布</h2>
+<p>R2 Infrequent Access 现已正式发布。去年，我们推出了 <a href="https://blog.cloudflare.com/r2-events-gcs-migration-infrequent-access/#infrequent-access-private-beta" target="_blank" rel="noopener noreferrer"><u>Infrequent Access</u></a> 存储类别，专为无需频繁访问的数据而设计。它非常适合长尾用户内容、日志或数据备份等用例。</p>
+<p>自推出以来，Infrequent Access 已在大规模运行此类工作负载的客户生产环境中得到验证。结果证实了我们的目标：打造一个既能降低存储成本，又能保持性能和耐用性的存储类别。</p>
+<p><a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>定价</u></a>非常简单：您的数据存储费用更低，而数据检索按每 GB 计费——这反映了从针对低频访问优化的底层存储中提取数据时所需的额外计算成本。与所有 R2 服务一样，<strong>我们不收取数据输出费用</strong>，因此您无需为移出数据的带宽付费。<br><br>以下是通过 Workers 向 R2 Infrequent Access 类别上传对象的方法：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Upload the incoming request body to R2 in Infrequent Access class</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_BUCKET</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-object"</span><span class="sk-24292e-fff">, request.body, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      storageClass: </span><span class="sk-032f62-99ffe4">"InfrequentAccess"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Object uploaded to Infrequent Access!"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      headers: { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/plain"</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>您还可以直接在 R2 仪表板中监控每个存储桶的 Infrequent Access 和标准存储空间使用情况。立即开始使用 <a href="https://developers.cloudflare.com/r2/get-started" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 吧！</p>
+<h2>浏览器渲染中的 Playwright 功能现已正式发布</h2>
+<p>我们很高兴地宣布对 Browser Rendering 的三项更新：</p>
+<ol>
+	<li>我们现已正式推出对 <a href="https://developers.cloudflare.com/browser-rendering/platform/playwright" target="_blank" rel="noopener noreferrer"><u>Playwright</u></a> 的全面支持，为开发者提供稳定可靠的环境来执行关键的浏览器自动化任务。</li>
+	<li>我们新推出了对 <a href="https://developers.cloudflare.com/browser-rendering/platform/stagehand" target="_blank" rel="noopener noreferrer"><u>Stagehand</u></a> 的支持，使开发人员能够在 Cloudflare Workers AI 的支持下使用自然语言构建 AI 智能体。</li>
+	<li>最后，为助力开发者实现扩展，我们将<a href="https://developers.cloudflare.com/browser-rendering/platform/limits/#workers-paid" target="_blank" rel="noopener noreferrer"><u>付费计划的使用限额</u></a>提升至三倍，并且后续还将继续提高限额。</li>
+</ol>
+<p>浏览器不再仅仅是人类的专属。AI 智能体需要能够像人类一样可靠地浏览浏览器，无论是预订航班、填写客户信息还是抓取结构化数据。Playwright 使 AI 智能体能够与网页交互并代表人类执行复杂的任务。然而，大规模运行浏览器是一项重大的基础设施挑战。Cloudflare 浏览器渲染通过按需提供无头浏览器解决了这一问题。通过将 Playwright 支持迁移到正式版，并与最新版本 v1.55 同步，客户拥有了一个可用于生产的基础架构，可以在此基础上构建可靠、可扩展的应用程序。</p>
+<p>为助力 AI 智能体更高效地畅游网络世界，我们正式推出对开源浏览器自动化框架 Stagehand 的支持。与传统的精准步骤指令或特定元素选择器设定不同，Stagehand 创新性地让开发者能够将代码与 AI 驱动的自然语言指令相结合，从而构建出可靠性更强、灵活性更高的自动化方案。这使得 AI 智能体在面对网站改版时，能够像人类一样智能导航并自适应调整。</p>
+<p>要开始使用 Playwright 和 Stagehand，请查看我们的 <a href="https://developers.cloudflare.com/changelog/2025-09-25-br-playwright-ga-stagehand-limits" target="_blank" rel="noopener noreferrer"><u>changelog</u></a>，其中包含代码示例等。 </p>
+<div id="html-block-k9t" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/9cb05fa43b4628bb03ed8d4fea7b28ba/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F9cb05fa43b4628bb03ed8d4fea7b28ba%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>

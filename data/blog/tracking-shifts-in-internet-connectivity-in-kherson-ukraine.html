@@ -1,120 +1,106 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Pk1cLPYfiOAQK0TiCXQJU/7e9faf51e0eb15d4f0eb7b6ea13b44f7/tracking-shifts-in-internet-connectivity-in-kherson-ukraine.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>The Internet is not only a <a href="https://en.wikipedia.org/wiki/Right_to_Internet_access" target="_blank" rel="noopener noreferrer">human right</a> according to the United Nations, and a way to get <a href="https://blog.cloudflare.com/the-deluge-of-digital-attacks-against-journalists">information</a>, but it has also become an important element in geopolitical conflicts, like the war going on in Ukraine. We have previously written about Ukrainians moving westward to escape the war <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">and Internet outages</a> in the country, but also about the importance of the <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">open Internet in Russia</a>.</p>
-	<p>Over this past week, we observed an outage in the occupied city of Kherson, south Ukraine, coupled with an apparent shift in who controls the Internet within the region. First, let’s give some context and show what we saw.</p>
-	<p>The <a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast" target="_blank" rel="noopener noreferrer">Russian-occupied Kherson</a> (a city of 280,000 people) experienced an Internet outage on Saturday, April 30, 2022, that began just after 16:00 UTC. The outage lasted until Wednesday, May 4, with traffic starting to return around 04:30 UTC traffic.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/22LeUWNKRHuGy0h6wEUmzY/4f0a046436618c9185e28f5dac3f46ec/image1-3.png" alt="The outage lasted until Wednesday, May 4, with traffic starting to return around 04:30 UTC traffic." class="kg-image" width="1999" height="790" loading="lazy">
-
-	</figure>
-	<p>In the chart below, we can see that there was a 43% decrease in traffic from Kherson from February 23 to 24, after the war started. However, this weekend’s outage is the most significant disruption to Internet traffic in Kherson since the start of the war.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3PuxCnx6OvnWNLrc4bSCgv/49649a6b88b08ef99b4c0d1e7de5e0db/image2.png" alt="There was a 43% decrease in traffic from Kherson from February 23 to 24, after the war started. However, this weekend’s outage is the most significant disruption to Internet traffic in Kherson since the start of the war." class="kg-image" width="1999" height="816" loading="lazy">
-
-	</figure>
-	<p>According to Ukraine’s <a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664" target="_blank" rel="noopener noreferrer">vice Prime-Minister</a>, Mykhailo Fedorov, and also the <a href="https://www.facebook.com/dsszzi/posts/306820328295777" target="_blank" rel="noopener noreferrer">State Service of Special Communications and Information Protection</a>, on Wednesday morning, May 4, “the communication cut off by the occupiers in Kherson and Kherson region was restored” using “backup power channels”. The reasons presented for the lack of communication “were interruptions of fiber-optic trunk lines and disconnection from the power supply of equipment of operators in the region”.</p>
-	<p>Yuriy Shchyhol, head of the organization, also said during a briefing that the occupiers had connected Ukrainian Internet users to the Russian network by switching fiber-optic lines and communication stations. “This is a gross violation of international law. We have already appealed to the International Telecommunication Union to impose sanctions on the Russian Federation”, he <a href="https://www.facebook.com/dsszzi/posts/306820328295777" target="_blank" rel="noopener noreferrer">explained</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="shift-in-routing">Shift in routing</h3>
-		<a href="https://blog.cloudflare.com/#shift-in-routing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Around the time that the outage referenced above began, we also observed a shift in routing for the <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank" rel="noopener noreferrer">IPv4 prefix</a> announced by <a href="https://radar.cloudflare.com/asn/47598" target="_blank" rel="noopener noreferrer">AS47598</a> (Khersontelecom). As shown in the table below, prior to the outage, it reached the Internet through several other Ukrainian network providers, including <a href="https://radar.cloudflare.com/asn/12883" target="_blank" rel="noopener noreferrer">AS12883</a>, <a href="https://radar.cloudflare.com/asn/3326" target="_blank" rel="noopener noreferrer">AS3326</a>, and <a href="https://radar.cloudflare.com/asn/35213" target="_blank" rel="noopener noreferrer">AS35213</a>. However, a day later, its routing path now showed a Russian network, <a href="https://radar.cloudflare.com/asn/201776" target="_blank" rel="noopener noreferrer">AS201776</a> (Miranda) as the upstream provider. The path through Miranda also includes <a href="https://radar.cloudflare.com/asn/12389" target="_blank" rel="noopener noreferrer">AS12389</a> (Rostelecom), which bills itself as “<a href="https://www.company.rt.ru/en" target="_blank" rel="noopener noreferrer">the largest digital services provider in Russia</a>”. This aligns with the claims noted above about connecting Ukrainian Internet users to the Russian network.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Peer AS</b></p>
-				</td>
-				<td>
-					<p><b>Last Update&nbsp;</b></p>
-				</td>
-				<td>
-					<p><b>AS Path</b></p>
-				</td>
+<p>The Internet is not only a <a href="https://en.wikipedia.org/wiki/Right_to_Internet_access" target="_blank" rel="noopener noreferrer">human right</a> according to the United Nations, and a way to get <a href="https://blog.cloudflare.com/the-deluge-of-digital-attacks-against-journalists">information</a>, but it has also become an important element in geopolitical conflicts, like the war going on in Ukraine. We have previously written about Ukrainians moving westward to escape the war <a href="https://blog.cloudflare.com/internet-traffic-patterns-in-ukraine-since-february-21-2022">and Internet outages</a> in the country, but also about the importance of the <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">open Internet in Russia</a>.</p>
+<p>Over this past week, we observed an outage in the occupied city of Kherson, south Ukraine, coupled with an apparent shift in who controls the Internet within the region. First, let’s give some context and show what we saw.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/Russian_occupation_of_Kherson_Oblast" target="_blank" rel="noopener noreferrer">Russian-occupied Kherson</a> (a city of 280,000 people) experienced an Internet outage on Saturday, April 30, 2022, that began just after 16:00 UTC. The outage lasted until Wednesday, May 4, with traffic starting to return around 04:30 UTC traffic.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="283" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=640&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=750&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=828&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=1080&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=1280&amp;h=507&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=1430&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The outage lasted until Wednesday, May 4, with traffic starting to return around 04:30 UTC traffic." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4504JBH5DHBVXWVXE0KNZV.png&amp;w=1920&amp;h=759&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="759" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="283" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>In the chart below, we can see that there was a 43% decrease in traffic from Kherson from February 23 to 24, after the war started. However, this weekend’s outage is the most significant disruption to Internet traffic in Kherson since the start of the war.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="292" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=640&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=750&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=828&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=1080&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=1280&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=1430&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="There was a 43% decrease in traffic from Kherson from February 23 to 24, after the war started. However, this weekend’s outage is the most significant disruption to Internet traffic in Kherson since the start of the war." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460EH5P04BK9Z0SWB963HS.png&amp;w=1920&amp;h=784&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="784" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="292" class="pt-portable-image-media"></div>
+</figure>
+<p>According to Ukraine’s <a href="https://twitter.com/FedorovMykhailo/status/1521798960003825664" target="_blank" rel="noopener noreferrer">vice Prime-Minister</a>, Mykhailo Fedorov, and also the <a href="https://www.facebook.com/dsszzi/posts/306820328295777" target="_blank" rel="noopener noreferrer">State Service of Special Communications and Information Protection</a>, on Wednesday morning, May 4, “the communication cut off by the occupiers in Kherson and Kherson region was restored” using “backup power channels”. The reasons presented for the lack of communication “were interruptions of fiber-optic trunk lines and disconnection from the power supply of equipment of operators in the region”.</p>
+<p>Yuriy Shchyhol, head of the organization, also said during a briefing that the occupiers had connected Ukrainian Internet users to the Russian network by switching fiber-optic lines and communication stations. “This is a gross violation of international law. We have already appealed to the International Telecommunication Union to impose sanctions on the Russian Federation”, he <a href="https://www.facebook.com/dsszzi/posts/306820328295777" target="_blank" rel="noopener noreferrer">explained</a>.</p>
+<h3>Shift in routing</h3>
+<p>Around the time that the outage referenced above began, we also observed a shift in routing for the <a href="https://bgpview.io/prefix/91.206.110.0/23" target="_blank" rel="noopener noreferrer">IPv4 prefix</a> announced by <a href="https://radar.cloudflare.com/asn/47598" target="_blank" rel="noopener noreferrer">AS47598</a> (Khersontelecom). As shown in the table below, prior to the outage, it reached the Internet through several other Ukrainian network providers, including <a href="https://radar.cloudflare.com/asn/12883" target="_blank" rel="noopener noreferrer">AS12883</a>, <a href="https://radar.cloudflare.com/asn/3326" target="_blank" rel="noopener noreferrer">AS3326</a>, and <a href="https://radar.cloudflare.com/asn/35213" target="_blank" rel="noopener noreferrer">AS35213</a>. However, a day later, its routing path now showed a Russian network, <a href="https://radar.cloudflare.com/asn/201776" target="_blank" rel="noopener noreferrer">AS201776</a> (Miranda) as the upstream provider. The path through Miranda also includes <a href="https://radar.cloudflare.com/asn/12389" target="_blank" rel="noopener noreferrer">AS12389</a> (Rostelecom), which bills itself as “<a href="https://www.company.rt.ru/en" target="_blank" rel="noopener noreferrer">the largest digital services provider in Russia</a>”. This aligns with the claims noted above about connecting Ukrainian Internet users to the Russian network.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Peer AS</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Last Update&nbsp;</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>AS Path</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AS1299 (TWELVE99 Arelion, fka Telia Carrier)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5/1/2022 16:02:26</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1299 12389 201776 47598</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AS6777 (AMS-IX-RS)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4/28/2022 11:23:33</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>12883 47598</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Because <a href="https://blog.cloudflare.com/a-brief-anycast-primer">Cloudflare uses Anycast</a> to route content requests to data centers on our network, routing changes such as this one can impact data center selection. This is clearly evident in the graph below. Prior to the outage, when Khersontelecom reached the Internet through other Ukrainian providers, requests from the network were handled by Cloudflare data centers in Kyiv, Ukraine and Frankfurt, Germany. On May 1, after the Russian network began to route traffic for Khersontelecom, requests were sent to our Moscow data center.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4jbsCvF3ON7us0bVzaUfeo/6576f127ede912aafb1b319df9f55d5a/image3-1.png" alt="" class="kg-image" width="1664" height="526" loading="lazy">
-
-	</figure>
-	<p>These requests continued to be handled by our Moscow data center for approximately three days. However, the graph also shows that traffic started being handled again by the Kyiv and Frankfurt data centers, with the Moscow data center no longer in the mix, around 06:00 UTC on May 4. This aligns with the observed update to the routing path for AS47598 shown in the table below – it no longer had Russian networks as upstream providers, but instead returned to reaching the Internet through other Ukrainian networks.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Peer AS</b></p>
-				</td>
-				<td>
-					<p><b>Last Update&nbsp;</b></p>
-				</td>
-				<td>
-					<p><b>AS Path</b></p>
-				</td>
+</div>
+<p>Because <a href="https://blog.cloudflare.com/a-brief-anycast-primer">Cloudflare uses Anycast</a> to route content requests to data centers on our network, routing changes such as this one can impact data center selection. This is clearly evident in the graph below. Prior to the outage, when Khersontelecom reached the Internet through other Ukrainian providers, requests from the network were handled by Cloudflare data centers in Kyiv, Ukraine and Frankfurt, Germany. On May 1, after the Russian network began to route traffic for Khersontelecom, requests were sent to our Moscow data center.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="226" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=715&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=640&amp;h=202&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=715&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=750&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=828&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=1080&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=1280&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=1430&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1124 Embedded Image - iti1ld" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46YHHXS9X2MC4SW0RQ9R6G.png&amp;w=1664&amp;h=526&amp;f=webp" data-lightbox-width="1664" data-lightbox-height="526" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="226" class="pt-portable-image-media"></div>
+</figure>
+<p>These requests continued to be handled by our Moscow data center for approximately three days. However, the graph also shows that traffic started being handled again by the Kyiv and Frankfurt data centers, with the Moscow data center no longer in the mix, around 06:00 UTC on May 4. This aligns with the observed update to the routing path for AS47598 shown in the table below – it no longer had Russian networks as upstream providers, but instead returned to reaching the Internet through other Ukrainian networks.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Peer AS</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Last Update&nbsp;</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>AS Path</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AS174 (COGENT-174)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5/4/2022 05:56:27</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>174 3326 3326 3326 47598</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>AS1273 (CW Vodafone Group PLC)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5/4/2022 03:11:25</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1273 12389 201776 47598</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As we saw, not only was there an Internet outage in the Kherson region, but there was also a shift in routing at least in one Kherson network that, for a few days, left traffic passing through Russian networks (along with all the restrictions and limitations, such as content blocking, such an arrangement <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">could potentially have</a>).</p>
-	<p>Availability of and control over physical resources have always been a key focus of war, but it is now clear that Internet resources now hold similar importance during times of conflict. This is also demonstrated by what happened to the Internet in Crimea after the <a href="https://en.wikipedia.org/wiki/Annexation_of_Crimea_by_the_Russian_Federation" target="_blank" rel="noopener noreferrer">annexation of 2014</a>, as explained <a href="https://hal.archives-ouvertes.fr/hal-03100247/document" target="_blank" rel="noopener noreferrer">in-depth in this 2020 study</a>.</p>
-	<p>You can follow Internet trends (including details about <a href="https://blog.cloudflare.com/asn-on-radar">ASNs</a>) on <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>, and also on <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">Radar’s Twitter account</a>.</p>
 </div>
+<h3>Conclusion</h3>
+<p>As we saw, not only was there an Internet outage in the Kherson region, but there was also a shift in routing at least in one Kherson network that, for a few days, left traffic passing through Russian networks (along with all the restrictions and limitations, such as content blocking, such an arrangement <a href="https://blog.cloudflare.com/what-cloudflare-is-doing-to-keep-the-open-internet-flowing-into-russia-and-keep-attacks-from-getting-out">could potentially have</a>).</p>
+<p>Availability of and control over physical resources have always been a key focus of war, but it is now clear that Internet resources now hold similar importance during times of conflict. This is also demonstrated by what happened to the Internet in Crimea after the <a href="https://en.wikipedia.org/wiki/Annexation_of_Crimea_by_the_Russian_Federation" target="_blank" rel="noopener noreferrer">annexation of 2014</a>, as explained <a href="https://hal.archives-ouvertes.fr/hal-03100247/document" target="_blank" rel="noopener noreferrer">in-depth in this 2020 study</a>.</p>
+<p>You can follow Internet trends (including details about <a href="https://blog.cloudflare.com/asn-on-radar">ASNs</a>) on <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a>, and also on <a href="https://twitter.com/CloudflareRadar" target="_blank" rel="noopener noreferrer">Radar’s Twitter account</a>.</p>

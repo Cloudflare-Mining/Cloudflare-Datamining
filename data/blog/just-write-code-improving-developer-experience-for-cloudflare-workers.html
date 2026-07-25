@@ -1,139 +1,65 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/just-write-code-improving-developer-experience-for-cloudflare-workers">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/just-write-code-improving-developer-experience-for-cloudflare-workers">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/just-write-code-improving-developer-experience-for-cloudflare-workers">日本語</a>, <a href="https://blog.cloudflare.com/es-es/just-write-code-improving-developer-experience-for-cloudflare-workers">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/just-write-code-improving-developer-experience-for-cloudflare-workers">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4P9ELSmYMDKjf0sYujpMid/051cd4723c03fcd3860213ece6797118/just-write-code-improving-developer-experience-for-cloudflare-workers.jpeg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>We’re excited to announce that starting today, Cloudflare Workers® gets a CLI, new and improved docs, multiple scripts for everyone, the ability to run applications on workers.dev without bringing your own domain, and a free tier to make experimentation easier than ever. We are building the serverless platform of the future, and want you to build your application on it, today. In this post, we’ll elaborate on what a serverless platform of the future looks like, how it changes today’s paradigms, and our commitment to making building on it a great experience.</p>
-	<p>Three years ago, I was interviewing with Cloudflare for a Solutions Engineering role. As a part of an interview assignment, I had to set up an origin behind Cloudflare on my own &nbsp;domain. I spent my weekend, frustrated and lost in configurations, trying to figure out how to set up an EC2 instance, connect to it over IPv6, and install NGINX on Ubuntu 16.4 just so I could end up with <i>a static site with a picture of my cat on it</i>. I have a computer science degree, and spent my career up until that point as a software engineer — building this simple app was a horrible experience. A weekend spent coding, without worrying about servers, would have yielded a much richer application.</p>
-	<p>And this is just one rung in the ladder — the first one. While the primitives have moved up the stack, the fact is, developing an application, putting it on the Internet, and growing it from MVP to a scalable, performant product all still remain distinct steps in the development process.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4CNamrq69wPhKeFeFQBNe4/b65099939b3140c3cf947898ffea271f/Workers-diagram-MVP--copy-3_3x-8--1-.png" alt="" class="kg-image" width="1602" height="434" loading="lazy">
-
-	</figure>
-	<p>This is what “serverless” has promised to solve. Abstract away the servers at all stages of the process, and allow developers to do what they do best: develop, without having to worry about infrastructure.</p>
-	<p>And yet, with many serverless offerings today, the first thing they do is the thing that they promised you they wouldn’t — they make you think about servers. “What region would you like?” (the first question that comes to my mind: why are you forcing me to think about which customers I care more about: East Coast, or West Coast? Why can’t you solve this for me?). Or: “how much memory do you think you’ll need?” (again: why are you making this my problem?! You figure it out!).</p>
-	<p>We don’t think it should work like this.</p>
-	<p>I often think back to that problem I was facing myself three years ago, and that I know developers all around the world face every day. Developers should be able to just focus on the code. Someone else should deal with everything else from setting up infrastructure through making that infrastructure fast and scalable. While we’ve made some architectural decisions in building Workers that enable us to do this better than anyone else, today isn’t about expounding on them (though if you’d like to read more, <a href="https://blog.cloudflare.com/cloud-computing-without-containers">here’s a great blog post detailing some of them</a>). What today is about is really honing Workers in on the needs of developers.</p>
-	<p>We want Workers to bring the dream of serverless to life — &nbsp;of letting developers only worry about bugs in their code. Today marks the start of a sustained push that Cloudflare is making towards building a great developer experience with Workers. We have some exciting things to announce today — but this is just the beginning.</p>
-	<div class="flex anchor relative">
-		<h3 id="wrangler-the-official-workers-cli">Wrangler: the official Workers CLI</h3>
-		<a href="https://blog.cloudflare.com/#wrangler-the-official-workers-cli" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Wrangler, originally open sourced as the Rust CLI for Workers, has graduated into being the official Workers CLI, supporting all your Workers deployment needs.</p>
-	<p>Get started now by installing Wrangler</p>
-	<pre class="language-sh"><code class="language-sh">npm install -g @cloudflare/wrangler</code></pre>
-	<p>Generate your first project from our <a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">template</a> gallery</p>
-	<pre class="language-bash"><code class="language-bash">`wrangler generate &lt;name&gt; &lt;template&gt; --type=["webpack", "javascript", "rust"]`</code></pre>
-
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5upDjn3HVlVDDBwXu1ECTQ/763b2395d6c80ca22aeaab580e8a0f97/worker_generate.gif" alt="" class="kg-image" width="1280" height="301" loading="lazy">
-
-	</figure>
-	<p>Wrangler will take care of webpacking your project, compiling to WebAssembly, and uploading your project to Workers, all in one simple step:</p>
-	<p><code>wrangler publish</code></p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/60BJrINgnzEMXgBAiZrd5v/77b992fc3aa48faac5368de6596ff71a/utFG7RmahwQuXvQ9cuwDYZYK8WtxJDarspvCrbidSrT1OKxPlZhgcJURcBjFcDmpf22v5WPEebq-SPeoAmgjKIfUx9u805Dsd3P8ZMhvkDmFp-tesh5WVOwcoscv.gif" alt="" class="kg-image" width="1350" height="503" loading="lazy">
-
-	</figure>
-	<p>A few of the other goodies we’re excited for you to use Wrangler for:</p>
-	<ul>
-		<li>
-			<p>Compile Rust, C, and C++ to WebAssembly</p>
-		</li>
-		<li>
-			<p>Create single or multi-file JavaScript applications</p>
-		</li>
-		<li>
-			<p>Install NPM dependencies (we take care of webpack for you)</p>
-		</li>
-		<li>
-			<p>Add KV namespaces and bindings</p>
-		</li>
-		<li>
-			<p>Get started with pre-made <a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">templates</a></p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="new-and-improved-docs">New and Improved Docs</h3>
-		<a href="https://blog.cloudflare.com/#new-and-improved-docs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve updated our docs (and used Wrangler to do so!) to make it easier than ever for you to get started and deploy your first application with Workers.</p>
-	<p>Check out our new tutorials:</p>
-	<ul>
-		<li>
-			<p><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application" target="_blank" rel="noopener noreferrer">Deploy a Slack bot with Workers</a></p>
-		</li>
-		<li>
-			<p><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function" target="_blank" rel="noopener noreferrer">Build a QR code generator</a></p>
-		</li>
-		<li>
-			<p><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank" rel="noopener noreferrer">Serve and cache files from cloud storage</a></p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="multiscript-for-all">Multiscript for All</h3>
-		<a href="https://blog.cloudflare.com/#multiscript-for-all" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You asked, we listened. When we introduced Workers, we wanted to keep things as simple as possible. As a developer, you want to break up your code into logical components. Rather than having a single monolithic script, we want to allow you to deploy your code in a way that makes sense to you.</p>
-	<div class="flex anchor relative">
-		<h3 id="no-domain-required-workers-dev">no-domain-required.workers.dev</h3>
-		<a href="https://blog.cloudflare.com/#no-domain-required-workers-dev" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Writing software is a creative process: a new project means creating something out of nothing. You may not entirely know what exactly it’s going to be yet, let alone what to name it.</p>
-	<p>We are changing the way you get started on Workers, by allowing you to deploy to a-subdomain-of-your-choice.workers.dev.</p>
-	<p>You may have heard about <a href="https://blog.cloudflare.com/announcing-workers-dev">this announcement</a> back in February, and we’re excited to deliver. For those of you who pre-registered, your subdomains will be waiting for you upon signing up and clicking into Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="a-free-tier-to-experiment">A Free Tier to Experiment</h3>
-		<a href="https://blog.cloudflare.com/#a-free-tier-to-experiment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Great products don’t always come from great ideas, they often come from freedom to tinker. When tinkering comes at a price, even if it’s $5, we realized we were limiting peoples’ ability to experiment.</p>
-	<p>Starting today, we are announcing a free tier for Workers.</p>
-	<p>The free tier will allow you to use Workers at up to 100,000 requests per day, on your own domain or workers.dev. You can learn more about the limits <a href="https://workers.cloudflare.com/docs/reference/runtime/limits" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="new-and-improved-ui">New and improved UI</h3>
-		<a href="https://blog.cloudflare.com/#new-and-improved-ui" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have packaged this up into a clean, and easy experience that allows you to go from sign up to a deployed Worker in less than 2 minutes:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5mYvx3UtHkLBsZDW4DTFIo/2b6f6a2a46b1dc6c2034407b511dbd94/get-started.gif" alt="" class="kg-image" width="2874" height="1592" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="our-commitment">Our commitment</h3>
-		<a href="https://blog.cloudflare.com/#our-commitment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have a long way to go. This is not about crossing developer experience off our list, rather, about emphasizing our commitment to it. As our co-founder, Michelle likes to say, “we’re only getting started”.</p>
-	<p>There’s a lot here, and there’s a lot more to come. Join us over at <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">workers.cloudflare.com</a> to find out more, and if you’re ready to give it a spin, you can sign up there.</p>
-	<p>We’re excited to see what you build!</p>
+<p>We’re excited to announce that starting today, Cloudflare Workers® gets a CLI, new and improved docs, multiple scripts for everyone, the ability to run applications on workers.dev without bringing your own domain, and a free tier to make experimentation easier than ever. We are building the serverless platform of the future, and want you to build your application on it, today. In this post, we’ll elaborate on what a serverless platform of the future looks like, how it changes today’s paradigms, and our commitment to making building on it a great experience.</p>
+<p>Three years ago, I was interviewing with Cloudflare for a Solutions Engineering role. As a part of an interview assignment, I had to set up an origin behind Cloudflare on my own &nbsp;domain. I spent my weekend, frustrated and lost in configurations, trying to figure out how to set up an EC2 instance, connect to it over IPv6, and install NGINX on Ubuntu 16.4 just so I could end up with <em>a static site with a picture of my cat on it</em>. I have a computer science degree, and spent my career up until that point as a software engineer — building this simple app was a horrible experience. A weekend spent coding, without worrying about servers, would have yielded a much richer application.</p>
+<p>And this is just one rung in the ladder — the first one. While the primitives have moved up the stack, the fact is, developing an application, putting it on the Internet, and growing it from MVP to a scalable, performant product all still remain distinct steps in the development process.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="194" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=640&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=715&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=750&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=828&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1080&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1280&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1430&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - lzc5XS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JB7N418HS6KSECK6MKCW.png&amp;w=1602&amp;h=434&amp;f=webp" data-lightbox-width="1602" data-lightbox-height="434" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="194" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This is what “serverless” has promised to solve. Abstract away the servers at all stages of the process, and allow developers to do what they do best: develop, without having to worry about infrastructure.</p>
+<p>And yet, with many serverless offerings today, the first thing they do is the thing that they promised you they wouldn’t — they make you think about servers. “What region would you like?” (the first question that comes to my mind: why are you forcing me to think about which customers I care more about: East Coast, or West Coast? Why can’t you solve this for me?). Or: “how much memory do you think you’ll need?” (again: why are you making this my problem?! You figure it out!).</p>
+<p>We don’t think it should work like this.</p>
+<p>I often think back to that problem I was facing myself three years ago, and that I know developers all around the world face every day. Developers should be able to just focus on the code. Someone else should deal with everything else from setting up infrastructure through making that infrastructure fast and scalable. While we’ve made some architectural decisions in building Workers that enable us to do this better than anyone else, today isn’t about expounding on them (though if you’d like to read more, <a href="https://blog.cloudflare.com/cloud-computing-without-containers">here’s a great blog post detailing some of them</a>). What today is about is really honing Workers in on the needs of developers.</p>
+<p>We want Workers to bring the dream of serverless to life — &nbsp;of letting developers only worry about bugs in their code. Today marks the start of a sustained push that Cloudflare is making towards building a great developer experience with Workers. We have some exciting things to announce today — but this is just the beginning.</p>
+<h3>Wrangler: the official Workers CLI</h3>
+<p>Wrangler, originally open sourced as the Rust CLI for Workers, has graduated into being the official Workers CLI, supporting all your Workers deployment needs.</p>
+<p>Get started now by installing Wrangler</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -g</span><span class="sk-032f62-99ffe4"> @cloudflare/wrangler</span></span></code></pre>
 </div>
+<p>Generate your first project from our <a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">template</a> gallery</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">name</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">template</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> --type=[</span><span class="sk-032f62-99ffe4">"webpack"</span><span class="sk-005cc5-99ffe4">, </span><span class="sk-032f62-99ffe4">"javascript"</span><span class="sk-005cc5-99ffe4">, </span><span class="sk-032f62-99ffe4">"rust"</span><span class="sk-005cc5-99ffe4">]</span><span class="sk-032f62-99ffe4">`</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="168" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47SAD6AJGK0SZ16TMJ9V8K.gif" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - Yt3PGJ" width="715" height="168" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>Wrangler will take care of webpacking your project, compiling to WebAssembly, and uploading your project to Workers, all in one simple step:</p>
+<p><code>wrangler publish</code></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="266" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47V812EVZDE87R43R4FPMS.gif" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - AuM47y" width="715" height="266" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>A few of the other goodies we’re excited for you to use Wrangler for:</p>
+<ul>
+	<li>Compile Rust, C, and C++ to WebAssembly</li>
+	<li>Create single or multi-file JavaScript applications</li>
+	<li>Install NPM dependencies (we take care of webpack for you)</li>
+	<li>Add KV namespaces and bindings</li>
+	<li>Get started with pre-made <a href="https://workers.cloudflare.com/docs/templates" target="_blank" rel="noopener noreferrer">templates</a></li>
+</ul>
+<h3>New and Improved Docs</h3>
+<p>We’ve updated our docs (and used Wrangler to do so!) to make it easier than ever for you to get started and deploy your first application with Workers.</p>
+<p>Check out our new tutorials:</p>
+<ul>
+	<li><a href="https://workers.cloudflare.com/docs/tutorials/build-an-application" target="_blank" rel="noopener noreferrer">Deploy a Slack bot with Workers</a></li>
+	<li><a href="https://workers.cloudflare.com/docs/tutorials/build-a-serverless-function" target="_blank" rel="noopener noreferrer">Build a QR code generator</a></li>
+	<li><a href="https://workers.cloudflare.com/docs/tutorials/configure-your-cdn" target="_blank" rel="noopener noreferrer">Serve and cache files from cloud storage</a></li>
+</ul>
+<h3>Multiscript for All</h3>
+<p>You asked, we listened. When we introduced Workers, we wanted to keep things as simple as possible. As a developer, you want to break up your code into logical components. Rather than having a single monolithic script, we want to allow you to deploy your code in a way that makes sense to you.</p>
+<h3>no-domain-required.workers.dev</h3>
+<p>Writing software is a creative process: a new project means creating something out of nothing. You may not entirely know what exactly it’s going to be yet, let alone what to name it.</p>
+<p>We are changing the way you get started on Workers, by allowing you to deploy to a-subdomain-of-your-choice.workers.dev.</p>
+<p>You may have heard about <a href="https://blog.cloudflare.com/announcing-workers-dev">this announcement</a> back in February, and we’re excited to deliver. For those of you who pre-registered, your subdomains will be waiting for you upon signing up and clicking into Workers.</p>
+<h3>A Free Tier to Experiment</h3>
+<p>Great products don’t always come from great ideas, they often come from freedom to tinker. When tinkering comes at a price, even if it’s $5, we realized we were limiting peoples’ ability to experiment.</p>
+<p>Starting today, we are announcing a free tier for Workers.</p>
+<p>The free tier will allow you to use Workers at up to 100,000 requests per day, on your own domain or workers.dev. You can learn more about the limits <a href="https://workers.cloudflare.com/docs/reference/runtime/limits" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<h3>New and improved UI</h3>
+<p>We have packaged this up into a clean, and easy experience that allows you to go from sign up to a deployed Worker in less than 2 minutes:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47PH1JFDY4XCXDFGK9EE9Z.gif" alt="Just write code: improving developer experience for Cloudflare Workers Embedded Image - WO0CcY" width="715" height="396" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h3>Our commitment</h3>
+<p>We have a long way to go. This is not about crossing developer experience off our list, rather, about emphasizing our commitment to it. As our co-founder, Michelle likes to say, “we’re only getting started”.</p>
+<p>There’s a lot here, and there’s a lot more to come. Join us over at <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">workers.cloudflare.com</a> to find out more, and if you’re ready to give it a spin, you can sign up there.</p>
+<p>We’re excited to see what you build!</p>

@@ -1,34 +1,20 @@
-<div class="mb2 gray5">4分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-incident-on-october-30-2023">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-incident-on-october-30-2023">繁體中文</a>、<a href="https://blog.cloudflare.com/fr-fr/cloudflare-incident-on-october-30-2023">Français</a>、<a href="https://blog.cloudflare.com/de-de/cloudflare-incident-on-october-30-2023">Deutsch</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-incident-on-october-30-2023">한국어</a>、<a href="https://blog.cloudflare.com/es-es/cloudflare-incident-on-october-30-2023">Español</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-on-october-30-2023">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/aGFjt2xnNYMcO5Khj5no1/5c2e5b66f9a636343d6fc96cefaa766c/cloudflare-incident-on-october-30-2023.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>2023年10月30日、複数のCloudflareサービスが37分間利用できませんでした。これは、Workers KVが使用しているデプロイツールの設定ミスが原因でした。Cloudflareは自社製品群に依存していたため、本インシデントはより困難なものとなりました。お客様に多大なご迷惑をおかけしたことを深くお詫び申し上げます。以下では、何が問題だったのか、インシデントはどのように解決されたのか、そして再発防止に向けた取り組みについてまとめています。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1fuf2Zu6hQEVim57ZP2cze/0c4311c85148c448749069bf6cb900a4/Vulnerabilitiy-1.png" alt="" class="kg-image" width="2401" height="1350" loading="lazy">
-
-	</figure>
-	<p>Workers KVは、グローバルに分散されたキーバリューストアです。設定データ、ルーティングルックアップ、静的アセットバンドル、認証トークン、その他低遅延アクセスを必要とするデータを管理するために、お客様とCloudflareチームの双方に使用されています。</p>
-	<p>このインシデントにおいて、KVは、KVが使用する新しいデプロイツールのバグにより、要求されたキーと値のペアの代わりに、HTTP 401（Unauthorized）ステータスコードと思われるものを返しました。</p>
-	<p>これらのエラーは、KVが各サービスでどのように使用されているかによって、各製品で異なる形で現れ、その影響を以下に詳しく記載します。</p>
-	<div class="flex anchor relative">
-		<h3 id="what-was-impacted">影響を受けたもの</h3>
-		<a href="https://blog.cloudflare.com/#what-was-impacted" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>多くのCloudflareサービスは、設定、ルーティング情報、静的アセットサービス、認証状態をグローバルに配布するためにWorkers KVに依存しています。これらのサービスでは、KVネームスペースに対してget、put、delete、またはlist操作を実行すると、代わりにHTTP 401（Unauthorized）エラーが発生しました。</p>
-	<p>以下のCloudflare製品をご利用のお客様は、インシデントが発生している間、エラー発生率の上昇や、一部またはすべての機能にアクセスできない可能性がありました。</p>
-	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-7s56{background-color:#F4F5F7;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+<p>2023年10月30日、複数のCloudflareサービスが37分間利用できませんでした。これは、Workers KVが使用しているデプロイツールの設定ミスが原因でした。Cloudflareは自社製品群に依存していたため、本インシデントはより困難なものとなりました。お客様に多大なご迷惑をおかけしたことを深くお詫び申し上げます。以下では、何が問題だったのか、インシデントはどのように解決されたのか、そして再発防止に向けた取り組みについてまとめています。</p>
+<p>Workers KVは、グローバルに分散されたキーバリューストアです。設定データ、ルーティングルックアップ、静的アセットバンドル、認証トークン、その他低遅延アクセスを必要とするデータを管理するために、お客様とCloudflareチームの双方に使用されています。</p>
+<p>このインシデントにおいて、KVは、KVが使用する新しいデプロイツールのバグにより、要求されたキーと値のペアの代わりに、HTTP 401（Unauthorized）ステータスコードと思われるものを返しました。</p>
+<p>これらのエラーは、KVが各サービスでどのように使用されているかによって、各製品で異なる形で現れ、その影響を以下に詳しく記載します。</p>
+<h3>影響を受けたもの</h3>
+<p>多くのCloudflareサービスは、設定、ルーティング情報、静的アセットサービス、認証状態をグローバルに配布するためにWorkers KVに依存しています。これらのサービスでは、KVネームスペースに対してget、put、delete、またはlist操作を実行すると、代わりにHTTP 401（Unauthorized）エラーが発生しました。</p>
+<p>以下のCloudflare製品をご利用のお客様は、インシデントが発生している間、エラー発生率の上昇や、一部またはすべての機能にアクセスできない可能性がありました。</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-7s56{background-color:#F4F5F7;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-kh" class="html-block">
+	<style>
+		#html-block-kh .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-kh .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -41,7 +27,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-kh .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -55,18 +41,18 @@
 			word-break: normal;
 		}
 
-		.tg .tg-7s56 {
+		#html-block-kh .tg .tg-7s56 {
 			background-color: #F4F5F7;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-kh .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-7s56"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Product</span></th>
@@ -119,17 +105,19 @@
 				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Parts of the Cloudflare dashboard that rely on Turnstile and/or our internal feature flag tooling (which uses KV for configuration) returned errors to users for the duration. </span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>製品</p>
-	<p>影響</p><!--kg-card-begin: html-->
-	<style type="text/css">
-		.tg {
+	</table>
+</div>
+<p>製品</p>
+<p>影響</p>
+<div id="html-block-km" class="html-block">
+	<style>
+		#html-block-km .tg {
 			border-collapse: collapse;
 			border-color: #ccc;
 			border-spacing: 0;
 		}
 
-		.tg td {
+		#html-block-km .tg td {
 			background-color: #fff;
 			border-color: #ccc;
 			border-style: solid;
@@ -142,7 +130,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-km .tg th {
 			background-color: #f0f0f0;
 			border-color: #ccc;
 			border-style: solid;
@@ -156,7 +144,7 @@
 			word-break: normal;
 		}
 
-		.tg .tg-ppch {
+		#html-block-km .tg .tg-ppch {
 			background-color: #F4F5F7;
 			color: #000000;
 			font-weight: bold;
@@ -164,13 +152,13 @@
 			vertical-align: top
 		}
 
-		.tg .tg-096r {
+		#html-block-km .tg .tg-096r {
 			color: #000000;
 			text-align: left;
 			vertical-align: top
 		}
 	</style>
-	<table class="tg" width="100%">
+	<table class="tg">
 		<thead>
 			<tr>
 				<th class="tg-ppch"><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">Time</span></th>
@@ -207,113 +195,74 @@
 				<td class="tg-096r"><span style="font-weight:400;font-style:normal;text-decoration:none;background-color:transparent">Impact resolved </span><span style="font-weight:700;font-style:normal;text-decoration:none;background-color:transparent">— IMPACT END — </span></td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<p>Workers KV</p>
-	<p>KVを活用したアプリケーションをお使いのお客様では、このインシデントの期間中、Workers内のKV APIとREST APIの両方を含め、これらのアプリケーションに障害が発生しました。Workers KVを使用していないアプリケーションに影響はありませんでした。</p>
-	<p>Pages</p>
-	<p>Cloudflare Pages上でホストされているアプリケーションは、インシデントが発生している間アクセスできず、ユーザーにHTTP 500エラーが返されました。また、Cloudflare Pagesの新規デプロイでは、インシデント中、ユーザーにHTTP 500エラーが返されました。</p>
-	<p>Access</p>
-	<p>認証されていないユーザーはログインできませんでした。/certsエンドポイントを使用してJWTを検証しようとするオリジンは失敗しました。いずれのユーザーでも、デバイスポスチャーを持つアプリケーションで障害が発生しました。/certsエンドポイントまたはポスチャーチェックを使用しない既存のログインセッションは影響を受けませんでした。全体として、既存のセッションの大部分は依然として影響を受けました。</p>
-	<p>WARP / Zero Trust</p>
-	<p>ユーザーが新しいデバイスを登録できなかったり、デバイスポスチャーチェックやWarpセッションタイムアウトを強制するポリシーの対象となるリソースに接続できませんでした。すでに登録されているデバイス、デバイスポスチャーを使用しないリソース、またはこのウィンドウ外で再認証されたリソースは影響を受けませんでした。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YKI1LYglUMvikcDlkZF41/ff8ba4a17059a4139884ee71524a8209/image1.png" alt="" class="kg-image" width="1749" height="894" loading="lazy">
-
-	</figure>
-	<p>画像</p>
-	<p>インシデントの間、Images APIはエラーを返しました。既存の画像配信に影響はありませんでした。</p>
-	<p>キャッシュのパージ（単一ファイル）</p>
-	<p>一部のデータセンターがKVの設定データにアクセスできなかったため、インシデントの間、単一ファイルのパージを部分的に利用できませんでした。既存の設定データをローカルにキャッシュしていたデータセンターは影響を受けませんでした。タグによるパージを含む他のキャッシュのパージメカニズムは影響を受けませんでした。</p>
-	<p>Workers</p>
-	<p>ダッシュボード、Wrangler、またはAPIを使用してWorkersをアップロードまたは編集すると、インシデント中にエラーが返されました。デプロイ済みのWorkersは、KVを使用していない限り影響を受けませんでした。</p>
-	<p>AI Gateway</p>
-	<p>AI Gatewayはインシデントの間、リクエストのプロキシができませんでした。</p>
-	<p>Waiting Room</p>
-	<p>Waiting Roomの設定はWorkers KVでエッジに保存されます。インシデントの間、Waiting Roomの設定や設定変更が利用できず、サービスを開くことができませんでした。KVへのアクセスが回復したとき、一部のWaiting Roomユーザーはサービス回復時にキューに入ることがありました。</p>
-	<p>Turnstileとチャレンジページ</p>
-	<p>TurnstileのJavaScriptアセットがKVに保存されており、Turnstileのエントリーポイント（API.js）を提供できませんでした。インシデントの間、Turnstileを使用してページにアクセスするクライアントが、Turnstileウィジェットを初期化できず、障害が発生しました。チャレンジページ（カスタム、マネージド、レート制限ルールなどの製品が使用する）も、特定の条件下でユーザーにチャレンジページを提示するためのTurnstileインフラストラクチャを使用しており、その期間中にチャレンジが提示されたユーザーはブロックされました。</p>
-	<p>Cloudflareダッシュボード</p>
-	<p>Turnstileや（設定にKVを使用する）内部機能フラグツールを使用するCloudflareダッシュボードの一部は、インシデントの間、ユーザーにエラーを返しました。</p>
-	<div class="flex anchor relative">
-		<h3 id="timeline">タイムライン</h3>
-		<a href="https://blog.cloudflare.com/#timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><i>参照されるタイムスタンプはすべて協定世界時（UTC）です。</i></p>
-	<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ppch{background-color:#F4F5F7;color:#000000;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-096r{color:#000000;text-align:left;vertical-align:top}</p>
-	<p>時間</p>
-	<p>説明</p>
-	<p>2023-10-30 18:58 UTC</p>
-	<p>Workers KVチームは、新しいKVビルドの本番環境へのプログレッシブデプロイを開始しました。</p>
-	<p>2023-10-30 19:29 UTC</p>
-	<p>内部プログレッシブデプロイAPIは、本番ビルドを一覧表示する呼び出しに対してステージングビルドGUIDを返しました。</p>
-	<p>2023-10-30 19:40 UTC</p>
-	<p>プログレッシブデプロイAPIは、リリースを継続的に展開するために使用されました。このため、トラフィックの何割かが誤った宛先にルーティングされ、警告が発せられ、ロールバックの決定につながりました。</p>
-	<p>2023-10-30 19:54 UTC</p>
-	<p>プログレッシブデプロイAPIによるロールバックを試みましたが、規模が大きくなるにつれてトラフィックに障害が発生しました。—影響開始—</p>
-	<p>2023-10-30 20:15 UTC</p>
-	<p>Cloudflareのエンジニアは、（break-glassメカニズムを使って）デプロイルートを手動で編集し、大部分のトラフィックについては、直近の正常なビルドに戻すことができました。</p>
-	<p>2023-10-30 20:29 UTC</p>
-	<p>Workers KVのエラー率はインシデント前の通常のレベルに戻り、影響を受けたサービスは次の数分以内に復旧しました。</p>
-	<p>2023-10-30 20:31 UTC</p>
-	<p>影響解決 —影響終了—</p>
-	<p>上記のタイムラインに示されているように、19:54 UTCに問題を認識してから、20:15 UTCに実際にロールバックを実行できるようになるまでには遅れがありました。</p>
-	<p>これは、Cloudflare内の複数のツールが、Cloudflare Accessを含むWorkers KVに依存していることが原因でした。Accessは、リクエスト検証プロセスの一環として、Workers KVを使用しています。このため、内部ツールを活用することができず、通常のツールをバイパスするためにbreak-glassメカニズムを使用せざるを得ませんでした。後述するように、Cloudflareはロールバックメカニズムのテストに十分な時間を費やしていませんでした。今後、これを強化していく所存です。</p>
-	<div class="flex anchor relative">
-		<h3 id="resolution">解決方法</h3>
-		<a href="https://blog.cloudflare.com/#resolution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflareのエンジニアは、（break-glassメカニズムを使用して）本番用ルートを以前の作業バージョンのWorkers KVに手動で切り替えました。これにより、失敗したリクエストパスがすぐに解消され、Workers KVのデプロイに関する問題が解決されました。</p>
-	<div class="flex anchor relative">
-		<h3 id="analysis">分析</h3>
-		<a href="https://blog.cloudflare.com/#analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Workers KVは、Cloudflareのネットワーク上で、可能な限りユーザーの近くに永続的なデータを保存することを可能にする、遅延の少ないキーバリューストアです。この分散型キーバリューストアは多くのアプリケーションで使用されており、その中にはCloudflare Pages、Access、Zero TrustのようなCloudflareのファーストパーティ製品もあります。</p>
-	<p>Workers KVチームは、専用のデプロイツールを使って新しいリリースのプログレッシブデプロイを進めていました。デプロイメカニズムには、ステージング環境と本番環境が含まれ、すべての本番環境が最新の本番ビルドにアップグレードされるまで、本番環境が新しいバージョンにプログレッシブデプロイの割合に従ってアップグレードされるプロセスが利用されます。デプロイツールには、リリースとそれぞれのバージョンを返す方法に潜在的なバグがありました。このツールは単一の環境からリリースを返すのではなく、意図したよりも幅広いリリースのリストを返し、その結果、本番リリースとステージングリリースが一緒に返されました。</p>
-	<p>このインシデントでは、サービスはステージングでデプロイされ、テストされました。しかし、デプロイ自動化のバグにより、本番環境へのデプロイ時に、本番アカウントのプレプロダクションバージョンではなく、ステージングアカウントにデプロイされたスクリプトが、誤って参照されました。その結果、デプロイメカニズムは、本番環境のどこにも実行されていないバージョンを本番環境に指し示し、トラフィックをブラックホールにルーティングしました。</p>
-	<p>このような事態が発生すると、本番稼動中のWorkers KVは、製品へのアクセスが許可されていないバージョンに誘導され、HTTP 401エラーコードを返すため、アクセス不能となりました。このため、KVにキーバリューペアを保存している製品では、そのキーバリューペアがローカルにキャッシュされているかどうかに関係なく、障害が発生しました。</p>
-	<p>自動アラートは問題をすぐに検出しましたが、問題の発生を認識してから実際にロールバックを実行できるまでに時間がかかりました。これは、Cloudflare内の複数のツールが、Cloudflare Accessを含むWorkers KVに依存していることが原因でした。Accessは、ユーザーJWT（JSON Webトークン）の検証プロセスの一部として、Workers KVを使用しています。</p>
-	<p>これらのツールには、変更を戻すために使用されたダッシュボードや、継続的インテグレーション（CI）システムにアクセスするための認証メカニズムが含まれます。Workers KVがダウンしたため、これらのサービスもダウンしました。CIシステムによる自動ロールバックは以前にもテストされていましたが、今回のインシデントによる認証の問題（AccessはKVに依存しているため）により、デプロイをロールバックするために必要なシークレットにアクセスすることができませんでした。</p>
-	<p>最終的な修正は、本番用ビルドパスを既知の良好なものに手動で変更することで行われました。このパスはデプロイされたことが知られており、デプロイを試みる前の本番ビルドでした。</p>
-	<div class="flex anchor relative">
-		<h3 id="next-steps">次のステップ</h3>
-		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflareのより多くのチームがWorkersを基盤とするにつれ、私たちは「有機的に」Workers KVが今や私たちの製品やサービスの膨大な部分を支えるに至っています。このインシデントにより、私たちは重要な依存関係の広範な影響を小さくする方法を再検討する必要性がさらに強まりました。これには、デプロイツールの洗練度の向上、社内チームにとっての使いやすさ、これらの依存関係にある製品レベルでの制御などが含まれます。私たちは、このようなインシデントを繰り返さないために、これらの取り組みに優先順位をつけて対応中です。</p>
-	<p>これはまた、Cloudflareが社内およびお客様向けにWorkersアプリケーションのプログレッシブデプロイの際のツールの改善と、当該ツールの安全性を向上させる必要性を補強するものでもあります。</p>
-	<p>これには、今四半期の主なフォローアップ活動の以下のリスト（順不同）が含まれます（ただし、これに限定されません）。</p>
-	<ol>
-		<li>
-			<p>標準化されたWorkersデプロイモデルにKVを搭載し、影響の検出と復旧に自動システムを使用する。</p>
-		</li>
-		<li>
-			<p>ロールバックプロセスが既知の正常なデプロイ識別子にアクセスできること、およびCloudflare Accessがダウンしているときにロールバックプロセスが機能することを確認する。</p>
-		</li>
-		<li>
-			<p>デプロイに事前チェックを追加し、入力パラメーターを検証することで、バージョンの不一致が本番環境に伝播しないようにする。</p>
-		</li>
-		<li>
-			<p>プログレッシブデプロイツールを強化し、マルチテナント用に設計された方法で動作するようにする。現在の設計では、シングルテナントモデルを想定しています。</p>
-		</li>
-		<li>
-			<p>プログレッシブデプロイスクリプトに新たな検証を追加し、デプロイがアプリ環境（本番環境、ステージング環境など）と一致していることを検証する。</p>
-		</li>
-	</ol>
-	<p>繰り返しになりますが、この件がお客様に与えた影響を非常に深刻に受け止めており、このような事態が発生したことを深くお詫びいたします。</p>
+	</table>
 </div>
+<p>Workers KV</p>
+<p>KVを活用したアプリケーションをお使いのお客様では、このインシデントの期間中、Workers内のKV APIとREST APIの両方を含め、これらのアプリケーションに障害が発生しました。Workers KVを使用していないアプリケーションに影響はありませんでした。</p>
+<p>Pages</p>
+<p>Cloudflare Pages上でホストされているアプリケーションは、インシデントが発生している間アクセスできず、ユーザーにHTTP 500エラーが返されました。また、Cloudflare Pagesの新規デプロイでは、インシデント中、ユーザーにHTTP 500エラーが返されました。</p>
+<p>Access</p>
+<p>認証されていないユーザーはログインできませんでした。/certsエンドポイントを使用してJWTを検証しようとするオリジンは失敗しました。いずれのユーザーでも、デバイスポスチャーを持つアプリケーションで障害が発生しました。/certsエンドポイントまたはポスチャーチェックを使用しない既存のログインセッションは影響を受けませんでした。全体として、既存のセッションの大部分は依然として影響を受けました。</p>
+<p>WARP / Zero Trust</p>
+<p>ユーザーが新しいデバイスを登録できなかったり、デバイスポスチャーチェックやWarpセッションタイムアウトを強制するポリシーの対象となるリソースに接続できませんでした。すでに登録されているデバイス、デバイスポスチャーを使用しないリソース、またはこのウィンドウ外で再認証されたリソースは影響を受けませんでした。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2169 Embedded Image - Grx8Gb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44MY0EH259W6Z3V313S1QA.png&amp;w=1749&amp;h=894&amp;f=webp" data-lightbox-width="1749" data-lightbox-height="894" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>画像</p>
+<p>インシデントの間、Images APIはエラーを返しました。既存の画像配信に影響はありませんでした。</p>
+<p>キャッシュのパージ（単一ファイル）</p>
+<p>一部のデータセンターがKVの設定データにアクセスできなかったため、インシデントの間、単一ファイルのパージを部分的に利用できませんでした。既存の設定データをローカルにキャッシュしていたデータセンターは影響を受けませんでした。タグによるパージを含む他のキャッシュのパージメカニズムは影響を受けませんでした。</p>
+<p>Workers</p>
+<p>ダッシュボード、Wrangler、またはAPIを使用してWorkersをアップロードまたは編集すると、インシデント中にエラーが返されました。デプロイ済みのWorkersは、KVを使用していない限り影響を受けませんでした。</p>
+<p>AI Gateway</p>
+<p>AI Gatewayはインシデントの間、リクエストのプロキシができませんでした。</p>
+<p>Waiting Room</p>
+<p>Waiting Roomの設定はWorkers KVでエッジに保存されます。インシデントの間、Waiting Roomの設定や設定変更が利用できず、サービスを開くことができませんでした。KVへのアクセスが回復したとき、一部のWaiting Roomユーザーはサービス回復時にキューに入ることがありました。</p>
+<p>Turnstileとチャレンジページ</p>
+<p>TurnstileのJavaScriptアセットがKVに保存されており、Turnstileのエントリーポイント（API.js）を提供できませんでした。インシデントの間、Turnstileを使用してページにアクセスするクライアントが、Turnstileウィジェットを初期化できず、障害が発生しました。チャレンジページ（カスタム、マネージド、レート制限ルールなどの製品が使用する）も、特定の条件下でユーザーにチャレンジページを提示するためのTurnstileインフラストラクチャを使用しており、その期間中にチャレンジが提示されたユーザーはブロックされました。</p>
+<p>Cloudflareダッシュボード</p>
+<p>Turnstileや（設定にKVを使用する）内部機能フラグツールを使用するCloudflareダッシュボードの一部は、インシデントの間、ユーザーにエラーを返しました。</p>
+<h3>タイムライン</h3>
+<p><em>参照されるタイムスタンプはすべて協定世界時（UTC）です。</em></p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-ppch{background-color:#F4F5F7;color:#000000;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-096r{color:#000000;text-align:left;vertical-align:top}</p>
+<p>時間</p>
+<p>説明</p>
+<p>2023-10-30 18:58 UTC</p>
+<p>Workers KVチームは、新しいKVビルドの本番環境へのプログレッシブデプロイを開始しました。</p>
+<p>2023-10-30 19:29 UTC</p>
+<p>内部プログレッシブデプロイAPIは、本番ビルドを一覧表示する呼び出しに対してステージングビルドGUIDを返しました。</p>
+<p>2023-10-30 19:40 UTC</p>
+<p>プログレッシブデプロイAPIは、リリースを継続的に展開するために使用されました。このため、トラフィックの何割かが誤った宛先にルーティングされ、警告が発せられ、ロールバックの決定につながりました。</p>
+<p>2023-10-30 19:54 UTC</p>
+<p>プログレッシブデプロイAPIによるロールバックを試みましたが、規模が大きくなるにつれてトラフィックに障害が発生しました。—影響開始—</p>
+<p>2023-10-30 20:15 UTC</p>
+<p>Cloudflareのエンジニアは、（break-glassメカニズムを使って）デプロイルートを手動で編集し、大部分のトラフィックについては、直近の正常なビルドに戻すことができました。</p>
+<p>2023-10-30 20:29 UTC</p>
+<p>Workers KVのエラー率はインシデント前の通常のレベルに戻り、影響を受けたサービスは次の数分以内に復旧しました。</p>
+<p>2023-10-30 20:31 UTC</p>
+<p>影響解決 —影響終了—</p>
+<p>上記のタイムラインに示されているように、19:54 UTCに問題を認識してから、20:15 UTCに実際にロールバックを実行できるようになるまでには遅れがありました。</p>
+<p>これは、Cloudflare内の複数のツールが、Cloudflare Accessを含むWorkers KVに依存していることが原因でした。Accessは、リクエスト検証プロセスの一環として、Workers KVを使用しています。このため、内部ツールを活用することができず、通常のツールをバイパスするためにbreak-glassメカニズムを使用せざるを得ませんでした。後述するように、Cloudflareはロールバックメカニズムのテストに十分な時間を費やしていませんでした。今後、これを強化していく所存です。</p>
+<h3>解決方法</h3>
+<p>Cloudflareのエンジニアは、（break-glassメカニズムを使用して）本番用ルートを以前の作業バージョンのWorkers KVに手動で切り替えました。これにより、失敗したリクエストパスがすぐに解消され、Workers KVのデプロイに関する問題が解決されました。</p>
+<h3>分析</h3>
+<p>Workers KVは、Cloudflareのネットワーク上で、可能な限りユーザーの近くに永続的なデータを保存することを可能にする、遅延の少ないキーバリューストアです。この分散型キーバリューストアは多くのアプリケーションで使用されており、その中にはCloudflare Pages、Access、Zero TrustのようなCloudflareのファーストパーティ製品もあります。</p>
+<p>Workers KVチームは、専用のデプロイツールを使って新しいリリースのプログレッシブデプロイを進めていました。デプロイメカニズムには、ステージング環境と本番環境が含まれ、すべての本番環境が最新の本番ビルドにアップグレードされるまで、本番環境が新しいバージョンにプログレッシブデプロイの割合に従ってアップグレードされるプロセスが利用されます。デプロイツールには、リリースとそれぞれのバージョンを返す方法に潜在的なバグがありました。このツールは単一の環境からリリースを返すのではなく、意図したよりも幅広いリリースのリストを返し、その結果、本番リリースとステージングリリースが一緒に返されました。</p>
+<p>このインシデントでは、サービスはステージングでデプロイされ、テストされました。しかし、デプロイ自動化のバグにより、本番環境へのデプロイ時に、本番アカウントのプレプロダクションバージョンではなく、ステージングアカウントにデプロイされたスクリプトが、誤って参照されました。その結果、デプロイメカニズムは、本番環境のどこにも実行されていないバージョンを本番環境に指し示し、トラフィックをブラックホールにルーティングしました。</p>
+<p>このような事態が発生すると、本番稼動中のWorkers KVは、製品へのアクセスが許可されていないバージョンに誘導され、HTTP 401エラーコードを返すため、アクセス不能となりました。このため、KVにキーバリューペアを保存している製品では、そのキーバリューペアがローカルにキャッシュされているかどうかに関係なく、障害が発生しました。</p>
+<p>自動アラートは問題をすぐに検出しましたが、問題の発生を認識してから実際にロールバックを実行できるまでに時間がかかりました。これは、Cloudflare内の複数のツールが、Cloudflare Accessを含むWorkers KVに依存していることが原因でした。Accessは、ユーザーJWT（JSON Webトークン）の検証プロセスの一部として、Workers KVを使用しています。</p>
+<p>これらのツールには、変更を戻すために使用されたダッシュボードや、継続的インテグレーション（CI）システムにアクセスするための認証メカニズムが含まれます。Workers KVがダウンしたため、これらのサービスもダウンしました。CIシステムによる自動ロールバックは以前にもテストされていましたが、今回のインシデントによる認証の問題（AccessはKVに依存しているため）により、デプロイをロールバックするために必要なシークレットにアクセスすることができませんでした。</p>
+<p>最終的な修正は、本番用ビルドパスを既知の良好なものに手動で変更することで行われました。このパスはデプロイされたことが知られており、デプロイを試みる前の本番ビルドでした。</p>
+<h3>次のステップ</h3>
+<p>Cloudflareのより多くのチームがWorkersを基盤とするにつれ、私たちは「有機的に」Workers KVが今や私たちの製品やサービスの膨大な部分を支えるに至っています。このインシデントにより、私たちは重要な依存関係の広範な影響を小さくする方法を再検討する必要性がさらに強まりました。これには、デプロイツールの洗練度の向上、社内チームにとっての使いやすさ、これらの依存関係にある製品レベルでの制御などが含まれます。私たちは、このようなインシデントを繰り返さないために、これらの取り組みに優先順位をつけて対応中です。</p>
+<p>これはまた、Cloudflareが社内およびお客様向けにWorkersアプリケーションのプログレッシブデプロイの際のツールの改善と、当該ツールの安全性を向上させる必要性を補強するものでもあります。</p>
+<p>これには、今四半期の主なフォローアップ活動の以下のリスト（順不同）が含まれます（ただし、これに限定されません）。</p>
+<ol>
+	<li>標準化されたWorkersデプロイモデルにKVを搭載し、影響の検出と復旧に自動システムを使用する。</li>
+	<li>ロールバックプロセスが既知の正常なデプロイ識別子にアクセスできること、およびCloudflare Accessがダウンしているときにロールバックプロセスが機能することを確認する。</li>
+	<li>デプロイに事前チェックを追加し、入力パラメーターを検証することで、バージョンの不一致が本番環境に伝播しないようにする。</li>
+	<li>プログレッシブデプロイツールを強化し、マルチテナント用に設計された方法で動作するようにする。現在の設計では、シングルテナントモデルを想定しています。</li>
+	<li>プログレッシブデプロイスクリプトに新たな検証を追加し、デプロイがアプリ環境（本番環境、ステージング環境など）と一致していることを検証する。</li>
+</ol>
+<p>繰り返しになりますが、この件がお客様に与えた影響を非常に深刻に受け止めており、このような事態が発生したことを深くお詫びいたします。</p>

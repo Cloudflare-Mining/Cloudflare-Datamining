@@ -1,0 +1,42 @@
+<p>將網域轉移至新的網域名稱註冊商並非日常工作，而流程的任何一步出錯都意味著停機和中斷。這就是為什麼在此 Speed Week 期間，我們準備了網域轉移檢查清單。我們希望讓所有人都能快速將其網域轉移到 Cloudflare Registrar，而不必擔心錯過任何步驟或留下任何未解答的問題。</p>
+<h2>域名轉移檢查清單</h2>
+<h3>確認資格</h3>
+<ul>
+	<li>**確認您想要使用 Cloudflare 的名稱伺服器：**我們專門為使用其他 Cloudflare 產品的<a href="https://blog.cloudflare.com/cloudflare-registrar">客戶構建了我們的 Registrar</a>。這意味著向 Cloudflare 註冊的網域只能使用我們的名稱伺服器。<em>如果您的網域需要非 Cloudflare 名稱伺服器，那麼我們不是適合您的網域名稱註冊商。</em></li>
+	<li>**確認 Cloudflare 支援持您網域的 TLD：**您可以在此處檢視<a href="https://www.cloudflare.com/tld-policies" target="_blank" rel="noopener noreferrer">我們當前支援的 TLD 完整清單</a>。<em>注意：我們計劃在 2023 年 7 月中旬之前支持 .dev 和 .app。</em></li>
+	<li>**確認您的網域不是高端網域或國際化網域名稱 (IDN)：**Cloudflare 目前不支援高端網域或國際化網域名稱 (Unicode)。</li>
+	<li>**確認您的網域未在過去 60 天內註冊或轉移：**根據 ICANN 規則，如果在過去 60 天內註冊或轉移了網域，則禁止轉移網域。</li>
+	<li>**確認您的 WHOIS 註冊人聯絡資訊在過去 60 天內未更新：**根據 ICANN 規則，如果在過去 60 天內修改了 WHOIS 註冊人聯絡資訊，則禁止轉移網域。</li>
+</ul>
+<h3>轉移之前</h3>
+<ul>
+	<li>**收集當前網域名稱註冊商的認證：**確保您擁有當前網域名稱註冊商的認證。您可能已經有很多年沒有登入，且可能需要重設密碼。</li>
+	<li>**記下您當前的 DNS 設定：**轉移網域時，Cloudflare 將自動掃描您的 DNS 記錄，但您需要記下當前設定，以防出現任何問題。</li>
+	<li>**移除 WHOIS 隱私（如有必要）：**在大多數情況下，即使啟用了 WHOIS 隱私服務，也可以轉移網域。但是，部分網域名稱註冊商可能禁止在啟用 WHOIS 隱私服務的情況下進行轉移。</li>
+	<li>**停用 DNSSEC：**您可以透過移除當前 DNS 主機上的 DS 記錄並<a href="https://developers.cloudflare.com/registrar/account-options/enable-dnssec" target="_blank" rel="noopener noreferrer">在 Cloudflare 儀表板中停用 DNSSEC</a> 來停用 <a href="https://www.cloudflare.com/dns/dnssec/how-dnssec-works" target="_blank" rel="noopener noreferrer">DNSSEC</a>。</li>
+	<li>**如果準備在接下來的 15 天內續約網域，請先續約網域：**如果您準備續約網域，則需要先進行續約，再啟動轉移作業。</li>
+	<li>**解除鎖定網域：**網域名稱註冊商包含輕量級防護，可防止未經授權的使用者啟動網域轉移，這通常稱為註冊商或網域鎖定。此鎖定可防止任何其他註冊商嘗試啟動轉移。只有註冊人可以啟用或停用此鎖定，通常是透過註冊商的管理介面來啟用或停用此鎖定。</li>
+	<li>**註冊 Cloudflare：**如果您還沒有 Cloudflare 帳戶，可以<a href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener noreferrer">在此處註冊</a>。</li>
+	<li>**將您的網域新增到 Cloudflare：**您可以<a href="https://developers.cloudflare.com/fundamentals/get-started/setup/add-site" target="_blank" rel="noopener noreferrer">按照此處說明</a>將新網域新增到您的 Cloudflare帳戶。</li>
+	<li>**將有效的信用卡新增到您的 Cloudflare 帳戶：**如果您尚未將付款方式新增到您的 Cloudflare 儀表板帳單設定檔中，則在您新增網域時系統會提示您新增一種付款方式。</li>
+	<li>**在 Cloudflare 中檢閱 DNS 記錄：**新增網域後，<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#review-dns-records" target="_blank" rel="noopener noreferrer">檢閱 Cloudflare 使用您當前網域名稱註冊商處的記錄自動設定的 DNS 記錄</a>，以確保沒有遺漏任何內容。</li>
+	<li>**將您的 DNS 名稱伺服器變更為 Cloudflare：**要轉移您的網域，您的<a href="https://developers.cloudflare.com/dns/zone-setups/full-setup" target="_blank" rel="noopener noreferrer">名稱伺服器需要設定為 Cloudflare</a>。</li>
+	<li><strong>（選用）設定 Cloudflare 電子郵件路由：</strong> 如果您使用<a href="https://www.cloudflare.com/learning/email-security/what-is-email-routing" target="_blank" rel="noopener noreferrer">電子郵件轉寄</a>，請確保<a href="https://blog.cloudflare.com/migrating-to-cloudflare-email-routing">按照本指南遷移到 Cloudflare 電子郵件路由</a>。</li>
+	<li><strong>等待您的 DNS 變更傳播</strong>：網域名稱註冊商最多可能需要 24 小時來處理名稱伺服器更新。當 Cloudflare 確認這些變更已實施時，您將收到一封電子郵件。需要先完成此過程，才能繼續轉移網域。</li>
+</ul>
+<h3>啟動和確認轉移過程</h3>
+<ul>
+	<li>**請求授權碼：**Cloudflare 需要與您的舊網域名稱註冊商確認轉移流程已獲得授權。這需要您的舊註冊商向您提供授權碼。此代碼通常稱為授權代碼、auth 代碼、authinfo 代碼或轉移代碼。您需要輸入該代碼才能完成向 Cloudflare 的轉移。我們將用它來確認轉移的真實性。</li>
+	<li>**開始轉移到 Cloudflare：**造訪 Cloudflare 儀表板的<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fdomains%2Ftransfer" target="_blank" rel="noopener noreferrer">轉移網域區段</a>。在這裡，您將看到所有可轉移的網域。如果您的網域未顯示，請確保您已完成所有前置步驟。如果已完成，<a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#5-initiate-your-transfer-to-cloudflare" target="_blank" rel="noopener noreferrer">請檢閱此頁面上的清單</a>，看看是否有任何情況適用於您的網域。</li>
+	<li>**查看轉移價格：**轉移網域時，ICANN 要求您支付費用，以便將其註冊期限從到期日起延長一年。此步驟不會向您收費。僅當您輸入授權碼並在轉移請求結束確認聯絡資訊時，Cloudflare 才從您的卡中收取費用。</li>
+	<li>**輸入您的授權碼：**在下一頁輸入您要轉移的每個網域的授權碼。</li>
+	<li>**確認或輸入您的聯絡資訊：**在轉移過程的最後階段，輸入您註冊時的聯絡資訊。依預設，Cloudflare Registrar 會編輯此資訊，但需要收集此註冊的真實聯絡資訊</li>
+	<li>**Cloudflare 核准轉移：**在您請求轉移後，Cloudflare 將開始處理該轉移，並向註冊人傳送授權表格 (FOA) 電子郵件（如果公用 WHOIS 資料庫中提供了該資訊）。FOA 是授權網域轉移的機構。</li>
+	<li>**您之前的網域名稱註冊商核准轉移：**執行此步驟後，您之前的註冊商還將向您傳送電子郵件以確認您的轉移請求。大多數註冊商都會包含一個連結來確認轉移請求。如果您點擊該連結，則可以加速轉移操作。如果您不對電子郵件採取動作，註冊商最多可以等待五天來處理向 Cloudflare 的轉移。您也可以從當前註冊商儀表板中核准轉移。</li>
+	<li>**在 Cloudflare 儀表板中追蹤您的轉移狀態：**可以在網域的「帳戶主頁 &gt; 概觀 &gt; 網域註冊」下檢視網域的<a href="https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#transfer-statuses" target="_blank" rel="noopener noreferrer">轉移狀態</a>。</li>
+</ul>
+<h3>轉移之後</h3>
+<ul>
+	<li>**測試您的網站和電子郵件：**轉移完成後，您需要測試您的網站以確保一切正常工作。如果您遇到任何問題或有任何疑問，您可以隨時在我們的<a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">社群論壇</a>或 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord 伺服器</a>上與我們交談。</li>
+	<li>**建置新內容：**也許這是您已購買但尚未啟動任何內容的網域。現在您已經轉移了它，正是在其上建置和啟動新內容的好時機。您可以<a href="https://developers.cloudflare.com/pages/get-started/c3" target="_blank" rel="noopener noreferrer">使用 C3 在您最喜歡的前端框架上啟動一個新專案</a>，<a href="https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity" target="_blank" rel="noopener noreferrer">在 Cloudflare Pages 上使用 Nuxt.js 和 Sanity.io 建置部落格</a>，或者<a href="https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers">嘗試使用 Cloudflare Workers 建置您的第一個 ChatGPT 外掛程式</a>。</li>
+</ul>

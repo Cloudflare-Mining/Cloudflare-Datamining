@@ -1,0 +1,33 @@
+<p>Cloudflare 認為，部署有效的網路安全措施是對個人資訊隱私的<a href="https://blog.cloudflare.com/investing-in-security-to-protect-data-privacy">最佳保護方式</a>，比確保資訊保持在特定轄區內更有效。然而，來自歐洲、印度、澳大利亞、日本和許多其他地區的客戶卻不這樣想，在他們的隱私權計畫中，他們需要解決方案能夠將資料保留在當地，以便履行法規義務。</p>
+<p>因此，當我們想到將於 1 月 28 日舉行的「資料隱私保護日」時，我們處於一種很微妙的境地，雖然不讚同資料當地化代表更好的資料隱私權的觀點，但也希望支援那些必須遵守某些法規的客戶。</p>
+<p>為此，我們於 2020 年<a href="https://blog.cloudflare.com/introducing-the-cloudflare-data-localization-suite">推出了 Data Localization Suite</a> (DLS)，以協助客戶應對越來越注重資料當地化的資料保護環境。借助 DLS，客戶可以使用 Cloudflare 強大的全球網路和安全措施來保護自己的企業，同時將我們代表他們處理的資料保留在當地。自推出以來，我們已經有許多客戶採用了 Data Localization Suite。在本篇部落格文章中，我們想分享一些有關如何使 DLS 更全面、更易於使用的更新。</p>
+<h3>令人困惑的資料保護法規狀態</h3>
+<p>我們經常回答客戶的一些問題，他們在得知新的當地法律或對現有法規的解釋之後，認為這些法規似乎限制了他們使用資料可以執行的操作。對於那些基於全球網際網路開展業務的客戶而言，這一點尤其令人困惑，因為他們必須遵守這些法規，即某個國家/地區的客戶不得使用來自其他國家/地區的公司的產品，除非採取了全面的安全措施。</p>
+<p>我們認為，這樣並不能夠規範網際網路。隨著我們將在明天的部落格文章中對跨境資料傳輸進行更詳細的討論，我們也很高興地看到新的事態發展——旨在跨轄區建立一套通用的資料保護措施，以確保這些資料傳輸更加無縫。</p>
+<p>與此同時，我們還提供 Data Localization Suite，來協助客戶應對這些挑戰。</p>
+<h3>Data Localization Suite 的運作方式回顧</h3>
+<p>我們開發 DLS 是為了幫助客戶解決三大問題：</p>
+<ol>
+	<li>如何確保我的加密金鑰保留在我的轄區內？</li>
+	<li>如何確保快取和 WAF 等應用程式服務僅在我的轄區內執行？</li>
+	<li>如何確保記錄和中繼資料永遠不會傳輸到我的轄區之外？</li>
+</ol>
+<p>為了解決這些問題，我們的 DLS 包含一個加密金鑰元件、一個處理傳輸中內容終止和檢查位置的元件，以及一個將中繼資料保留在客戶轄區內的元件：</p>
+<p><strong>1. 加密金鑰</strong>長期以來，Cloudflare 一直提供 <a href="https://www.cloudflare.com/ssl/keyless-ssl" target="_blank" rel="noopener noreferrer">Keyless SSL</a> 和 <a href="https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager">Geo Key Manager</a>，從而確保私有 SSL/TLS 金鑰資料永遠不會離開歐盟。使用 Geo Key Manager 的客戶可以選擇僅將加密金鑰儲存在客戶指定地區的資料中心。Keyless SSL 可確保 Cloudflare 永遠不會擁有任何私密金鑰資料；Geo Key Manager 可確保金鑰受到密碼編譯存取控制的保護，因此只能在指定的地區使用。</p>
+<p><strong>2.</strong> <a href="https://blog.cloudflare.com/introducing-regional-services"><strong>Regional Services</strong></a>：Regional Services 可確保 Cloudflare 只能在客戶選擇的地區內解密和檢查 HTTPS 流量的內容。當 Regional Services 啟用後，無論哪個資料中心流量先到達我們的全球網路，我們都會以加密形式轉送 TCP 資料流，而不是在第一個資料中心進行解密。當它到達客戶所選地區內的資料中心後，我們會解密並套用第 7 層安全措施，以防止惡意流量進入我們客戶的網站。</p>
+<p><strong>3.</strong> <a href="https://blog.cloudflare.com/introducing-the-customer-metadata-boundary"><strong>Customer Metadata Boundary</strong></a>：啟用此選項後，Cloudflare 代表客戶處理的終端使用者流量記錄 (包含 IP 位址) 不會離開客戶選擇的地區。（目前僅在歐盟和美國提供。）</p>
+<h3>將 Data Localization Suite 擴展至新地區</h3>
+<p>雖然我們最初是以歐洲和美洲為考量而推出了 Data Localization Suite，但很快意識到很多客戶也對亞太地區的特定版本感興趣。去年 9 月，我們在日本、澳大利亞和印度增加了 <a href="https://blog.cloudflare.com/regional-services-comes-to-apac">Regional Services 支援</a>。</p>
+<p>然後，2022 年 12 月，我們宣佈現在可以在 <a href="https://blog.cloudflare.com/configurable-and-scalable-geo-key-manager-closed-beta">15 個地區</a>使用 Geo Key Manager。客戶可以將希望我們支援的地區列入允許和拒絕清單，以對其金鑰資料的儲存位置進行精細控制。</p>
+<p>另請參閱<a href="https://blog.cloudflare.com/zh-tw/inside-geo-key-manager-v2-zh-tw">技術深度解讀</a>，瞭解 Geo Key Manager v2 的構建過程。</p>
+<h3>讓資料當地化更容易存取</h3>
+<p>Regional Services 和 Customer Metadata Boundary 為我們的客戶提供了重要的保護，但它們太難以使用了。兩者都需要 Cloudflare 團隊採取手動步驟，並且公用 API 很容易混淆（或沒有）。</p>
+<p>今天，我們將解決這些問題！我們很高興地宣佈可用性的兩項重大改進：</p>
+<ol>
+	<li>現在，Regional Services 客戶擁有專用的 UI 和 <a href="https://developers.cloudflare.com/data-localization/regional-services/get-started/#regional-services-via-api" target="_blank" rel="noopener noreferrer">API 來啟用 Regional Services</a>，可直接從 DNS 索引標籤存取。現在可以根據每個主機名稱設定不同的地區</li>
+	<li>想要使用 Metadata Boundary 的客戶可以使用<a href="https://developers.cloudflare.com/data-localization/metadata-boundary/get-started" target="_blank" rel="noopener noreferrer">我們的自助 API</a> 來啟用它。</li>
+</ol>
+<p>我們很高興能夠幫助客戶更輕鬆地使用 Data Localization Suite，並更好地控制如何將流量的哪些部分保留在當地。</p>
+<h3>下一步驟</h3>
+<p>現在，企業客戶可以使用 Data Localization Suite 了。如果您想使用它，請與客戶代表聯繫，您也可以參閱我們的開發人員文件，瞭解有關如何設定的<a href="https://developers.cloudflare.com/data-localization" target="_blank" rel="noopener noreferrer">更多資訊</a>。</p>
+<p>今年，我們對 Data Localization Suite 制定了更多的計劃。我們計劃在更多地區支援 Regional Services 和 Metadata Boundary。我們也計劃為所有 Zero Trust 產品提供完整的資料當地化支援。敬請關注部落格，瞭解更多精彩資訊！</p>

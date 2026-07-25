@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "connect() - why are you so slow?",
+	"url": "https://blog.cloudflare.com/linux-transport-protocol-port-selection-performance/",
+	"datePublished": "2024-02-08T14:00:27.000Z",
+	"dateModified": "2026-07-15T14:08:32.555Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW44SBC0B3XV9MPRSNW53AQK.png",
+	"description": "This is our story of what we learned about the connect() implementation for TCP in Linux. Both its strong and weak points. How connect() latency changes under pressure, and how to open connection so that the syscall latency is deterministic and time-bound"
+}

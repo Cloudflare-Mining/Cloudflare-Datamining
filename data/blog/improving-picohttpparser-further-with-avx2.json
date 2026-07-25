@@ -1,14 +1,9 @@
 {
-	"author": {
-		"name": "Vlad Krasnov",
-		"url": "http://blog.cloudflare.com/author/vlad-krasnov/",
-		"sameAs": []
-	},
+	"author": {},
 	"headline": "Improving PicoHTTPParser further with AVX2",
-	"url": "http://blog.cloudflare.com/improving-picohttpparser-further-with-avx2/",
+	"url": "https://blog.cloudflare.com/improving-picohttpparser-further-with-avx2/",
 	"datePublished": "2014-12-18T16:21:00.000Z",
-	"dateModified": "2018-08-23T16:51:24.000Z",
-	"image": "http://blog.cloudflare.com/content/images/2018/08/11359813146_2b5b7f815e_z.jpg",
-	"keywords": "Speed & Reliability",
-	"description": "In a recent post, Kazuho&#x27;s Weblog describes an improvement to PicoHTTPParser. This improvement utilizes the SSE4.2 instruction PCMPESTRI in order to find the delimiters in a HTTP request/response and parse them accordingly. "
+	"dateModified": "2026-07-15T12:51:47.368Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW45NCRZPS2AZ86466Z2H8VY.jpg",
+	"description": "In a recent post, Kazuho's Weblog describes an improvement to PicoHTTPParser. This improvement utilizes the SSE4.2 instruction PCMPESTRI in order to find the delimiters in a HTTP request/response and parse them accordingly. "
 }

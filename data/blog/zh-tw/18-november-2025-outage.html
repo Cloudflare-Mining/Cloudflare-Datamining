@@ -1,0 +1,269 @@
+<p>2025 年 11 月 18 日 11:20 UTC（本部落格中所有時間均為格林威治時間），Cloudflare 的網路開始出現嚴重故障，無法傳遞核心網路流量。這會向嘗試存取我們客戶網站的網際網路使用者顯示為錯誤頁面，指示 Cloudflare 網路內部發生故障。 </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="485" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=640&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=750&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=828&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1080&amp;h=733&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1280&amp;h=868&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1430&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP error page displayed during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1258&amp;h=854&amp;f=webp" data-lightbox-width="1258" data-lightbox-height="854" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="485" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>發生該問題，並非由任何類型的網路攻擊或者惡意活動直接或間接導致。</strong>而是由於我們其中一個資料庫系統的權限變更所觸發，該變更導致資料庫將多個項目輸出至我們的 Bot Management 系統使用的「特徵檔案」中。該特徵檔案的大小隨之增加了一倍。然後，大小超出預期的特徵檔案被傳播至構成我們網路的所有機器。</p>
+<p>在這些機器上執行的軟體會讀取此特徵檔案，以在我們的網路中路由流量，並讓我們的 Bot Management 系統能夠隨著不斷變化的威脅而保持最新狀態。軟體對特徵檔案的大小有低於其兩倍的限制。這會導致軟體發生故障。</p>
+<p>最初，我們錯誤地懷疑看到的狀況是由超大規模 DDoS 攻擊引起，在此之後，我們正確地識別出核心問題，並能阻止大小超出預期的特徵檔案傳播，以及將其取代為早期版本。截至下午 14:30，核心流量大致已恢復正常。在接下來的幾小時內，隨著流量恢復上線，我們努力緩解對網路各部分造成的負載增加。截至 17:06，Cloudflare 的所有系統皆運作正常。</p>
+<p>故障對我們的客戶和整個網際網路造成影響，我們對此深感抱歉。鑑於 Cloudflare 在網際網路生態系統中的重要性，我們的任何系統出現任何中斷都不可接受。我們的網路曾有一段時間無法路由流量，這讓團隊的每個成員都感到非常痛苦。我們知道今天讓您失望了。</p>
+<p>這篇文章深入地敘述了事件的來龍去脈，以及哪些系統和程序出現故障。這也只是我們計畫的開端，而並非結束，目的是為了確保類似的服務中斷事件不再重演。</p>
+<h2>服務中斷</h2>
+<p>下圖顯示了 Cloudflare 網路提供的 5xx 錯誤 HTTP 狀態代碼的數量。通常情況下，這個數值應非常低，直至中斷開始之前都是如此。 </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="348" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=640&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=750&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=828&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1080&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1280&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1430&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Volume of HTTP 5xx requests served by the Cloudflare network" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1507&amp;h=733&amp;f=webp" data-lightbox-width="1507" data-lightbox-height="733" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="348" class="pt-portable-image-media"></div>
+</figure>
+<p>在 11:20 之前的流量是我們網路上觀測到的 5xx 錯誤的預期基準。峰值及後續的波動表明，我們的系統因載入錯誤的特徵檔案而發生故障。值得注意的是，我們的系統隨後復原了一段時間。對於內部錯誤而言，這是極其不尋常的行為。</p>
+<p>據解釋，該檔案由 ClickHouse 資料庫叢集上執行的查詢每五分鐘產生一次，同時該資料庫叢集正在逐步更新，以改善權限管理。僅當查詢在已更新的叢集部分執行時，才會產生不良資料。因此，每五分鐘就有可能產生一組良好或一組不良的組態檔案，並在網路上快速傳播。</p>
+<p>由於這種波動，讓人不清楚具體發生了什麼，整個系統時而復原，時而再次崩潰，因為好壞不一的組態檔案被分發到我們的網路中。最初，這讓我們認為故障可能是由攻擊引起。最終，每個 ClickHouse 節點都會產生不良的組態檔案，波動最終穩定在故障狀態。</p>
+<p>從 14:30 開始，在發現並解決根本問題之前，錯誤一直持續。我們透過停止不良特徵檔案的產生與傳播，並將已知良好的檔案手動插入特徵檔案分發佇列中，來解決此問題。然後強制重新啟動我們的核心代理。</p>
+<p>上圖中剩餘的長尾是指，我們的團隊重新啟動了其餘處於不良狀態的服務，並且 5xx 錯誤碼的數量已於 17:06 恢復正常。</p>
+<p>下列服務受到影響：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>服務/產品</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>影響描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>核心 CDN 與安全服務</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>HTTP 5xx 狀態代碼。本文頂端的螢幕截圖顯示了傳遞給終端使用者的典型錯誤頁面。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turnstile</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turnstile 無法載入。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>由於核心代理發生故障，導致傳送至 KV「前端」閘道的請求失敗，Workers KV 因此傳回了顯著升高的 HTTP 5xx 錯誤。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>儀表板</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>雖然儀表板大部分運作正常，但由於登入頁面的 Turnstile 無法使用，因此大多數使用者無法登入。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>電子郵件安全性</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>雖然電子郵件處理和傳遞未受影響，但我們觀測到暫時無法存取 IP 信譽來源，這降低了垃圾郵件偵測的準確性，以及阻止觸發某些新網域年齡偵測，但未觀測到對客戶造成重大影響。我們還發現部分「自動移動」操作故障；所有受影響的訊息皆已完成審查與修正。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>對於大多數使用者來說，驗證失敗非常普遍，從事件開始時一直持續到 13:05 開始回復。任何現有的 Access 工作階段皆未受到影響。<br>所有驗證失敗的嘗試都會導致錯誤頁面，意味著驗證失敗時，沒有任何使用者能夠到達目標應用程式。在此事件期間，成功的登入已正確記錄。&nbsp;<br>此時嘗試的任何 Access 組態更新，要麼完全失敗，要麼傳播速度非常緩慢。所有組態更新現已復原。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>除了傳回 HTTP 5xx 錯誤外，我們還觀測到在影響期間，我們 CDN 的回應延遲顯著增加。這是由於我們的偵錯與可觀測性系統取用了大量 CPU，這些系統會自動使用額外的偵錯資訊來增強未捕獲的錯誤。</p>
+<h2>Cloudflare 如何處理請求，以及今天怎麼會出錯</h2>
+<p>向 Cloudflare 發出的每個請求都會經過我們網路中定義完善的路徑。請求可能來自載入網頁的瀏覽器、呼叫 API 的行動應用程式，或來自其他服務的自動流量。這些請求首先在我們的 HTTP 和 TLS 層終止，接著流入我們的核心代理系統（我們稱之為「前線」的 FL），最後透過 Pingora 處理，Pingora 會執行快取查詢，或在需要時從原始伺服器擷取資料。</p>
+<p>我們之前曾在<a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>這里</u></a>分享過核心代理運作方式的更多細節。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="303" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=640&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=750&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=828&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1080&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1280&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1430&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Diagram of our reverse proxy architecture" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1920&amp;h=813&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="303" class="pt-portable-image-media"></div>
+</figure>
+<p>當請求通過核心代理時，我們會執行網路中提供的各種安全和效能產品。代理會套用每個客戶的獨特組態與設定，從強制執行 WAF 規則和 DDoS 防護，到將流量路由至開發人員平台和 R2。其透過一組特定網域的模組來完成，這些模組會將組態和原則規則套用至通過我們代理的流量。</p>
+<p>其中一個模組 Bot Management 是造成今天服務中斷的原因。&nbsp;</p>
+<p>除其他系統外，Cloudflare 的 <a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>Bot Management</u></a> 還包括一個機器學習模型，我們可以使用該模型為每個通過我們網路的請求產生機器人分數。我們的客戶使用機器人分數來控制允許哪些機器人存取其網站，或不允許存取。</p>
+<p>該模型將「特徵」組態檔案作為輸入。在這種情況下，特徵是指機器學習模型用於預測請求是否為自動化請求的個別特徵。特徵組態檔案是個別特徵的集合。</p>
+<p>此特徵檔案每隔幾分鐘會重新整理，並發布至我們的整個網路，以便我們對網際網路流量變化做出回應。這讓我們能夠對新型機器人和新的機器人攻擊做出回應。因此，隨著惡意執行者快速變更手段，頻繁且快速地推出更新至關重要。</p>
+<p>由於底層 ClickHouse 查詢行為發生變更（如下所述），產生此檔案導致其具有大量重複的「特徵」列。這樣一來，變更了先前固定大小的特徵組態檔案大小，導致機器人模組觸發錯誤。</p>
+<p>因此，處理客戶流量的核心代理系統，針對任何依賴機器人模組的流量，傳回了 HTTP 5xx 錯誤代碼。這亦影響了依賴於核心代理的 Workers KV 和 Access。</p>
+<p>與此事件無關，我們過去和現在都在將客戶流量遷移至新版代理服務，內部稱為 <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>FL2</u></a>。儘管觀測到的影響不同，兩個版本都已受到該問題的影響。</p>
+<p>部署於新 FL2 代理引擎的客戶觀察到 HTTP 5xx 錯誤。使用我們舊版代理引擎（稱為 FL）的客戶沒有觀察到錯誤，但未正確產生機器人分數，導致所有流量收到的機器人分數皆為零。已部署規則來封鎖機器人的客戶可能會看到大量誤判。未在其規則中使用我們的機器人評分的客戶則未受到任何影響。</p>
+<p>我們觀測到的另一個明顯狀況讓我們大吃一驚，並且讓我們相信這可能是一次攻擊：Cloudflare 的狀態頁面發生故障。狀態頁面完全託管於 Cloudflare 基礎架構之外，與 Cloudflare 無任何相依性。雖然事實證明這只是一個巧合，但團隊中負責診斷問題的部分人員因此認為，攻擊者可能同時以我們的系統和狀態頁面為目標。當時狀態頁面的訪客會看到以下錯誤訊息：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="171" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=640&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=750&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=828&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1080&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1280&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1430&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Error on the Cloudflare status page" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1920&amp;h=459&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="459" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="171" class="pt-portable-image-media"></div>
+</figure>
+<p>在內部事件聊天室中，我們擔心這可能是近期大量 <a href="https://techcommunity.microsoft.com/blog/azureinfrastructureblog/defending-the-cloud-azure-neutralized-a-record-breaking-15-tbps-ddos-attack/4470422" target="_blank" rel="noopener noreferrer"><u>Aisuru</u></a> <a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos" target="_blank" rel="noopener noreferrer"><u>DDoS 攻擊</u></a>的延續：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Internal chat screenshot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1188&amp;h=278&amp;f=webp" data-lightbox-width="1188" data-lightbox-height="278" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<h3>查詢行為變更</h3>
+<p>我在上面提到，基礎查詢行為的變更導致特徵檔案包含大量重複列。相關資料庫系統採用 ClickHouse 的軟體。</p>
+<p>為了方便理解，瞭解 ClickHouse 分散式查詢的運作方式會很有幫助。一個 ClickHouse 叢集由許多分片組成。為了從所有分片查詢資料，我們在名為<code>預設</code>的資料庫中提供了所謂的分散式資料表（由<code>分散式</code>資料表引擎提供支援)。分散式引擎會查詢資料庫 <code>r0</code> 中的基礎表格。基礎表格是 ClickHouse 叢集中用於儲存各個分片資料的位置。</p>
+<p>分散式資料表查詢透過共用系統帳戶執行。為改善分散式查詢的安全性與可靠性，我們正在努力使其在初始使用者帳戶下執行。</p>
+<p>在今天之前，ClickHouse 使用者從 ClickHouse 系統資料表（例如 <code>system.tables</code> 或 <code>system.columns</code>）查詢資料表中繼資料時，只能看到<code>預設</code>資料庫中的資料表。</p>
+<p>由於使用者已經擁有對 <code>r0</code> 中的基礎資料表的隱式存取權，我們在 11:05 做出變更，使此存取變得明確，以便使用者也可以看到這些資料表的中繼資料。透過確保所有分散式子查詢都能在初始使用者下執行，查詢限制和存取授權就能以更精細的方式評估，從而避免使用者的不良子查詢影響其他使用者。</p>
+<p>藉助上述變更，所有使用者都能存取其有權存取的資料表中相關的準確中繼資料。遺憾的是，過去曾有假設，認為此類查詢傳回的欄位清單僅會包含「<code>預設</code>」資料庫：</p>
+<p><code>SELECT<br> name,<br> type<br>FROM system.columns<br>WHERE<br> table = 'http_requests_features'<br>order by name;</code></p>
+<p>請注意，查詢未針對資料庫名稱進行篩選。隨著我們逐步向指定 ClickHouse 叢集的使用者推出顯式授權，在 11:05 變更之後，由於這些欄位用於 r0 資料庫中儲存的基礎資料表，上述查詢開始傳回欄位的「重複項」。</p>
+<p>遺憾的是，Bot Management 特徵檔案產生邏輯所執行的查詢類型，正是為了建構本節開頭提及檔案的每個輸入「特徵」。</p>
+<p>上面的查詢會傳回一個資料表，其中包含如範例中顯示的欄位（簡化範例）：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="548" height="121" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 548w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=640&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=750&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=828&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1080&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1096&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1096w" alt="Example of code block" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp" data-lightbox-width="548" data-lightbox-height="121" data-astro-cid-7nvefuv6="true" sizes="(min-width: 548px) 548px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="548" height="121" class="pt-portable-image-media"></div>
+</figure>
+<p>然而，作為授予使用者額外權限的一部分，回應現在包含 <code>r0</code> 結構描述的所有中繼資料，實際上使回應中的列數增加了一倍以上，最終影響了最終檔案輸入中的列數（即特徵）。</p>
+<h3>記憶體預先配置</h3>
+<p>在我們的代理服務上執行的每個模組都有許多限制，目的是為了避免無限制的記憶體取用，以及為了最佳化效能而預先分配記憶體。在此特定情況下，Bot Management 系統在執行階段可以使用的機器學習特徵數有限制。目前該限制設定為 200，遠高於我們目前使用的大約 60 項特徵。同樣，之所以存在限制，是因為出於效能原因，我們為特徵預先配置了記憶體。</p>
+<p>當具有超過 200 項特徵的不良檔案傳播到我們的伺服器時，便會達到此限制，導致系統發生異常。進行檢查的 FL2 Rust 程式碼是未處理錯誤的來源，如下所示：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="221" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1080&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1280&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1430&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="code that generated the error" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1472&amp;h=456&amp;f=webp" data-lightbox-width="1472" data-lightbox-height="456" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="221" class="pt-portable-image-media"></div>
+</figure>
+<p>這導致出現以下緊急情況，進而導致 5xx 錯誤。</p>
+<p><code>thread fl2_worker_thread panicked: called Result::unwrap() on an Err value</code></p>
+<h3>事件期間的其他影響</h3>
+<p>在此事件期間，其他依賴我們核心 Proxy 的系統也受到影響。這包括 Workers KV 和 Cloudflare Access。團隊在 13:04 成功緩解了這些系統受到的影響，當時對 Workers KV 進行了修補程式，以繞過核心代理。隨後，所有依賴 Workers KV 的下游系統（例如 Access 本身）都觀測到錯誤率下降。&nbsp;</p>
+<p>Cloudflare 儀表板也受到影響，原因是在內部使用了 Workers KV，以及在登入流程中部署了 Cloudflare Turnstile。</p>
+<p>Turnstile 受到本次服務中斷的影響，導致沒有作用中儀表板工作階段的客戶無法登入。如下圖所示，這表現為兩個時間段的可用性下降：11:30 至 13:10，以及 14:40 至 15:30。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="241" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=640&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=750&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=828&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1080&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1280&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1430&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="availability of Cloudflare internal APIs during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1920&amp;h=647&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="647" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="241" class="pt-portable-image-media"></div>
+</figure>
+<p>第一個時間段（從 11:30 到 13:10）由於 Workers KV 受到影響，部分控制平面和儀表板功能依賴 Workers KV。此問題已在 13:10 還原，當時 Workers KV 繞過了核心代理系統。<br><br>還原特徵組態資料後，儀表板在第二個時間段受到影響。大量登入嘗試開始湧入，導致儀表板不堪重負。此待處理項目，加上重試嘗試，導致延遲升高，從而降低了儀表板的可用性。透過擴展控制平面並行性，可用性大約在 15:30 還原。</p>
+<h2>補救措施和後續步驟</h2>
+<p>現在我們的系統已恢復連線並正常運作，我們已開始研究如何強化系統，以避免未來再次發生類似的故障。特別是：</p>
+<ul>
+	<li>採用了我們處理使用者產生的輸入相同的方式，來強化 Cloudflare 產生的組態檔案的擷取</li>
+	<li>針對特徵啟用全域停止切換</li>
+	<li>避免核心傾印或其他錯誤報告佔用過多系統資源</li>
+	<li>審查所有核心 Proxy 模組中錯誤狀況的失敗模式</li>
+</ul>
+<p>今天是 Cloudflare <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019" target="_blank" rel="noopener noreferrer"><u>自 2019 年以來</u></a>最嚴重的服務中斷。我們曾遇到過導致<a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage" target="_blank" rel="noopener noreferrer"><u>儀表板無法使用</u></a>的服務中斷。一些服務中斷導致<a href="https://blog.cloudflare.com/cloudflare-service-outage-june-12-2025" target="_blank" rel="noopener noreferrer"><u>較新特徵</u></a>在一段時間內無法使用。但在過去六年多的時間裡，我們沒有再發生過導致大部分核心流量停止流經我們網路的服務中斷。</p>
+<p>今天這樣的服務中斷不可接受。我們已將系統架構設計為具備高度的失敗復原能力，以確保流量持續不間斷。過去，當我們遇到服務中斷時，總是會促使我們構建新的、更具復原能力的系統。</p>
+<p>我謹代表 Cloudflare 全體團隊，對於今日網際網路故障帶來的困擾，致上誠摯的歉意。 </p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>時間 (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>狀態</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>正常。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>已部署資料庫存取控制變更。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>影響開始。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>部署已送達客戶環境，首先在客戶 HTTP 流量上觀測到錯誤。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:32 – 13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>該團隊調查了 Workers KV 服務流量層級提升與錯誤。<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>最初的狀況顯示 Workers KV 回應率下降，進而對其他 Cloudflare 服務造成下游影響。<br>已嘗試流量操縱和帳戶限制等緩解措施，以便讓 Workers KV 服務恢復到正常運作水準。<br>第一次自動化測試在 11:31 偵測到該問題，手動調查於 11:32 開始。事件呼籲已於 11:35 建立。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>已實作 Workers KV 和 Cloudflare Access 繞過 — 影響下降。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>在調查期間，我們使用了內部系統繞道，針對 Workers KV 和 Cloudflare Access，使其回復到我們核心代理的先前版本。儘管我們的代理先前版本也存在此問題，但如下所述，其影響較小。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:37</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>工作專注於將 Bot Management 組態檔案回復至上次已知良好的版本。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們確信該事件由 Bot Management 組態檔案觸發。各團隊致力於透過多個工作流修復此服務，其中最快的工作流是還原檔案的先前版本。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>停止建立及傳播新的 Bot Management 組態檔案。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們確認 Bot Management 模組是 500 錯誤的來源，且由不良的組態檔案引起。我們已停止自動部署新的 Bot Management 組態檔案。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>新檔案測試完成。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們觀測到使用舊版組態檔案已成功復原，然後專注於加速全域修正。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>主要影響已排除。下游受影響的服務開始觀測到錯誤減少。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>正確的 Bot Management 組態檔案已在全球部署，且大多數服務已開始正常運作。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17:06</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>所有服務均已解決。影響結束。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>所有下游服務均已重新啟動，且所有作業也已完全還原。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

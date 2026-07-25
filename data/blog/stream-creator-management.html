@@ -1,90 +1,56 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2qpe4PGBVjX4KtYfjaL20r/278088f9027bdb998a3a83ec2e205ee7/stream-creator-management.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Creator platforms across the world use Cloudflare Stream to rapidly build video experiences into their apps. These platforms serve a diverse range of creators, enabling them to share their passion with their beloved audience. While working with creator platforms, we learned that many Stream customers track video usage on a per-creator basis in order to answer critical questions such as:</p>
-	<ul>
-		<li>
-			<p><b><i>“Who are our fastest growing creators?”</i></b></p>
-		</li>
-		<li>
-			<p><b><i>“How much do we charge or pay creators each month?”</i></b></p>
-		</li>
-		<li>
-			<p><b><i>“What can we do more of in order to serve our creators?”</i></b></p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="introducing-the-creator-property">Introducing the Creator Property</h3>
-		<a href="https://blog.cloudflare.com/#introducing-the-creator-property" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Creator platforms enable artists, teachers and hobbyists to express themselves through various media, including video. We built Cloudflare Stream for these platforms, enabling them to rapidly build video use cases without needing to build and maintain a video pipeline at scale.</p>
-	<p>At its heart, every creator platform must manage ownership of user-generated content. When a video is uploaded to Stream, Stream returns a video ID. Platforms using Stream have traditionally had to maintain their own index to track content ownership. For example, when a user with internal user ID <code>83721759</code> uploads a video to Stream with video ID <code>06aadc28eb1897702d41b4841b85f322</code>, the platform must maintain a database table of some sort to keep track of the fact that Stream video ID <code>06aadc28eb1897702d41b4841b85f322</code> belongs to internal user <code>83721759</code>.</p>
-	<p>With the introduction of the creator property, platforms no longer need to maintain this index. Stream already has a direct creator upload feature to enable users to upload videos directly to Stream using tokenized URLs and without exposing account-wide auth information. You can now set the creator field with your user’s internal user ID at the time of requesting a tokenized upload URL:</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/direct_upload" \
-     -H "X-Auth-Email: user@example.com" \
-     -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" \
-     -H "Content-Type: application/json" \
-     --data '{"maxDurationSeconds":300,"expiry":"2021-01-02T02:20:00Z","creator": "&lt;CREATOR_ID&gt;", "thumbnailTimestampPct":0.529241,"allowedOrigins":["example.com"],"requireSignedURLs":true,"watermark":{"uid":"ea95132c15732412d22c1476fa83f27a"}}'</code></pre>
-	<p>When the user uploads the video, the creator property would be automatically set to your internal user ID and can be leveraged for operations such as pulling analytics data for your creators.</p>
-	<div class="flex anchor relative">
-		<h3 id="query-by-creator-property">Query By Creator Property</h3>
-		<a href="https://blog.cloudflare.com/#query-by-creator-property" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Setting the creator property on your video uploads is just the beginning. You can now filter Stream Analytics via the Dashboard or the GraphQL API using the creator property.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AL3kZM4W7vpwNEmeuTAvO/86e0c2c72d73319007c02bef85d94c59/kGrcO1JYFhPo8gGDBCqvgLsaJO3Ky0lGQhiqoq92CJtWSFMQ0dgCod0smGH2ET9les1c3C2SXf6NFoizfKLKn8TwOExFIfEazIJrSMzDVqY42EavfavcDMrUg_O4.png" alt="" class="kg-image" width="1254" height="610" loading="lazy">
-
-	</figure>
-	<p><i>Filter Stream Analytics in the Dashboard using the Creator property</i></p>
-	<p>Previously, if you wanted to generate a monthly report of all your creators and the number of minutes of watch time recorded for their videos, you’d likely use a scripting language such as Python to do the following:</p>
-	<ol>
-		<li>
-			<p>Call the Stream GraphQL API requesting a list of videos and their watch time</p>
-		</li>
-		<li>
-			<p>Traverse through the list of videos and query your internal index to determine which creator each video belongs to</p>
-		</li>
-		<li>
-			<p>Sum up the video watch time for each creator to get a clean report showing you video consumption grouped by the video creator</p>
-		</li>
-	</ol>
-	<p>The creator property eliminates this three step manual process. You can make a single API call to the GraphQL API to request a list of creators and the consumption of their videos for a given time period. Here is an example GraphQL API query that returns minutes delivered by creator:</p>
-	<pre class="language-json"><code class="language-json">query {
-  viewer {
-    accounts(filter: { accountTag: "&lt;ACCOUNT_ID&gt;" }) {
-      streamMinutesViewedAdaptiveGroups(
-        limit: 10
-        orderBy: [sum_minutesViewed_DESC]
-        filter: { date_lt: "2022-04-01", date_gt: "2022-04-31" }
-      ) {
-        sum {
-          minutesViewed
-        }
-        dimensions {
-          creator
-        }
-      }
-    }
-  }
-}</code></pre>
-	<p>Stream is focused on helping creator platforms innovate and scale. Matt Ober, CTO of NFT media management platform <a href="https://www.pinata.cloud" target="_blank" rel="noopener noreferrer">Piñata</a>, says "By allowing us to upload and then query using creator IDs, large-scale analytics of Cloudflare Stream is about to get a lot easier."</p>
-	<div class="flex anchor relative">
-		<h3 id="getting-started">Getting Started</h3>
-		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://developers.cloudflare.com/stream/uploading-videos/creator-id" target="_blank" rel="noopener noreferrer">Read the docs</a> to learn more about setting the creator property on new and previously uploaded videos. You can also set the creator property on live inputs, so the recorded videos generated from the live event will already have the creator field populated.</p>
-	<p>Being able to filter analytics is just the beginning. We can’t wait to enable more creator-level operations, so you can spend more time on what makes your idea unique and less time maintaining table stakes infrastructure.</p>
+<p>Creator platforms across the world use Cloudflare Stream to rapidly build video experiences into their apps. These platforms serve a diverse range of creators, enabling them to share their passion with their beloved audience. While working with creator platforms, we learned that many Stream customers track video usage on a per-creator basis in order to answer critical questions such as:</p>
+<ul>
+	<li><strong><em>“Who are our fastest growing creators?”</em></strong></li>
+	<li><strong><em>“How much do we charge or pay creators each month?”</em></strong></li>
+	<li><strong><em>“What can we do more of in order to serve our creators?”</em></strong></li>
+</ul>
+<h3>Introducing the Creator Property</h3>
+<p>Creator platforms enable artists, teachers and hobbyists to express themselves through various media, including video. We built Cloudflare Stream for these platforms, enabling them to rapidly build video use cases without needing to build and maintain a video pipeline at scale.</p>
+<p>At its heart, every creator platform must manage ownership of user-generated content. When a video is uploaded to Stream, Stream returns a video ID. Platforms using Stream have traditionally had to maintain their own index to track content ownership. For example, when a user with internal user ID <code>83721759</code> uploads a video to Stream with video ID <code>06aadc28eb1897702d41b4841b85f322</code>, the platform must maintain a database table of some sort to keep track of the fact that Stream video ID <code>06aadc28eb1897702d41b4841b85f322</code> belongs to internal user <code>83721759</code>.</p>
+<p>With the introduction of the creator property, platforms no longer need to maintain this index. Stream already has a direct creator upload feature to enable users to upload videos directly to Stream using tokenized URLs and without exposing account-wide auth information. You can now set the creator field with your user’s internal user ID at the time of requesting a tokenized upload URL:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/023e105f4ecef8ad9ca31a8372d0c353/stream/direct_upload"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"maxDurationSeconds":300,"expiry":"2021-01-02T02:20:00Z","creator": "&lt;CREATOR_ID&gt;", "thumbnailTimestampPct":0.529241,"allowedOrigins":["example.com"],"requireSignedURLs":true,"watermark":{"uid":"ea95132c15732412d22c1476fa83f27a"}}'</span></span></code></pre>
 </div>
+<p>When the user uploads the video, the creator property would be automatically set to your internal user ID and can be leveraged for operations such as pulling analytics data for your creators.</p>
+<h3>Query By Creator Property</h3>
+<p>Setting the creator property on your video uploads is just the beginning. You can now filter Stream Analytics via the Dashboard or the GraphQL API using the creator property.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="348" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=640&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=750&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=828&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=1080&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=1280&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=1430&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1079 Embedded Image - IUS7Rj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494MCXY9CQF1WV78CVJHCD.png&amp;w=1254&amp;h=610&amp;f=webp" data-lightbox-width="1254" data-lightbox-height="610" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="348" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>Filter Stream Analytics in the Dashboard using the Creator property</em></p>
+<p>Previously, if you wanted to generate a monthly report of all your creators and the number of minutes of watch time recorded for their videos, you’d likely use a scripting language such as Python to do the following:</p>
+<ol>
+	<li>Call the Stream GraphQL API requesting a list of videos and their watch time</li>
+	<li>Traverse through the list of videos and query your internal index to determine which creator each video belongs to</li>
+	<li>Sum up the video watch time for each creator to get a clean report showing you video consumption grouped by the video creator</li>
+</ol>
+<p>The creator property eliminates this three step manual process. You can make a single API call to the GraphQL API to request a list of creators and the consumption of their videos for a given time period. Here is an example GraphQL API query that returns minutes delivered by creator:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">query {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">  viewer</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    accounts(filter</span><span class="sk-24292e-fff">: { </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">accountTag</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;ACCOUNT_ID&gt;"</span><span class="sk-24292e-fff"> }</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">)</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">      streamMinutesViewedAdaptiveGroups(</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        limit</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">10</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        orderBy:</span><span class="sk-24292e-fff"> [</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">sum_minutesViewed_DESC</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        filter:</span><span class="sk-24292e-fff"> { </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">date_lt</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2022-04-01"</span><span class="sk-24292e-fff">, </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">date_gt</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2022-04-31"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">      )</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        sum</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">          minutesViewed</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        dimensions</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">          creator</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Stream is focused on helping creator platforms innovate and scale. Matt Ober, CTO of NFT media management platform <a href="https://www.pinata.cloud" target="_blank" rel="noopener noreferrer">Piñata</a>, says "By allowing us to upload and then query using creator IDs, large-scale analytics of Cloudflare Stream is about to get a lot easier."</p>
+<h3>Getting Started</h3>
+<p><a href="https://developers.cloudflare.com/stream/uploading-videos/creator-id" target="_blank" rel="noopener noreferrer">Read the docs</a> to learn more about setting the creator property on new and previously uploaded videos. You can also set the creator property on live inputs, so the recorded videos generated from the live event will already have the creator field populated.</p>
+<p>Being able to filter analytics is just the beginning. We can’t wait to enable more creator-level operations, so you can spend more time on what makes your idea unique and less time maintaining table stakes infrastructure.</p>

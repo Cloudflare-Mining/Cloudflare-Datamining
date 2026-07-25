@@ -1,0 +1,176 @@
+<p><a href="https://developers.cloudflare.com/workers/languages/rust" target="_blank" rel="noopener noreferrer"><u>Rust Workers</u></a> 是 Cloudflare Workers 平台上运行的一个工具，它将 Rust 代码编译为 WebAssembly 格式，但我们发现 WebAssembly 存在一些缺陷。当出现 panic 错误或意外中止时，运行时可能处于未定义状态。对于 Rust Workers 用户而言，panic 往往会产生致命影响：不仅污染实例，甚至可能导致 Worker 在一段时间内无法响应。</p>
+<p>虽然我们能够检测并缓解这些问题，但 Rust Worker 仍然有可能意外失败，并导致其他请求也随之失败。Worker 中未处理的 Rust 中止会影响单个请求，可能升级为影响同级请求的更大故障，甚至持续影响新的传入请求。问题的根源在于 wasm-bindgen，这是生成 Rust worker 所依赖的 Rust-to-JavaScript 绑定的核心项目，而 wasm-bindgen 缺乏内置的恢复机制。</p>
+<p>在这篇文章中，我们将分享最新版 Rust Workers 如何处理全面的 Wasm 错误恢复，以解决这种由中止引起的沙箱污染问题。作为我们<a href="https://github.com/wasm-bindgen/wasm-bindgen" target="_blank" rel="noopener noreferrer"><u>去年在 wasm-bindgen 组织内部</u></a>合作的一部分，我们已将这项工作贡献融入 <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org" target="_blank" rel="noopener noreferrer"><u>wasm-bindgen</u></a>。首先，我们添加了 <code>panic=unwind</code> 支持，确保单个失败的请求不会影响其他请求；其次，我们添加了中止恢复机制，保证 Wasm 中的 Rust 代码在中止后绝不会再次执行。 </p>
+<h2>初始恢复缓解措施</h2>
+<p>我们最开始尝试解决这方面的可靠性问题时，侧重于理解和控制生产环境中的 Rust Worker 因 Rust panic 和中止引起的故障。我们引入了自定义 Rust panic 处理程序来跟踪 Worker 中的故障状态，并在处理后续请求之前触发了完整的应用重新初始化。在 JavaScript 端，这需要使用基于代理的间接寻址来封装 Rust-JavaScript 调用边界，以确保以一致的方式封装所有入口点。我们还对生成的绑定进行了针对性修改，以便在故障发生后正确地重新初始化 WebAssembly 模块。</p>
+<p>虽然这种方法依赖于自定义 JavaScript 逻辑，但它证明了可靠的恢复是可以实现的，并且排除了我们在实践中遇到的持续性故障模式。从 0.6 版本开始，此解决方案已默认提供给所有 workers-rs 用户，并为下文所述的更普遍的、上游中止恢复机制奠定了基础。</p>
+<h2>使用 WebAssembly Exception Handling，实施 <code>panic=unwind</code></h2>
+<p>上文描述的中止恢复机制可确保 Worker 能够在出现故障时继续运行，但这些机制是通过重新初始化整个应用来实现这个目标。对于无状态请求处理程序来说，这没有问题。但对于在内存中保存有意义状态的工作负载（例如 Durable Objects）来说，重新初始化意味着完全丢失该状态。一个请求中的单个 panic 可能会清除其他并发请求正在使用的内存状态。</p>
+<p>在大多数原生 Rust 环境中，可以进行 panic unwind 处理，从而允许析构函数运行，程序在不丢失状态的情况下恢复。在 WebAssembly 中，情况历来截然不同。通过 <code>wasm32-unknown-unknown</code> 编译成 Wasm 的 Rust 默认使用 <code>panic=abort</code>，因此，Rust Worker 内部的 panic 会突然生成 <code>unreachable</code> 指令，导致 Wasm 退出执行并抛出 <code>WebAssembly.RuntimeError</code> 错误给 JS。</p>
+<p>为了从 panic 中恢复且不丢弃实例状态，我们需要 wasm-bindgen 中对 <code>wasm32-unknown-unknown</code> 的 <code>panic=unwind</code> 支持。WebAssembly Exception Handling 提案使这成为可能，该提案在 2023 年获得了广泛的引擎支持。</p>
+<p>我们首先使用 <code>RUSTFLAGS='-Cpanic=unwind' cargo build -Zbuild-std</code> 进行编译，这重新构建支持 unwind 的标准库，并生成具备适当 panic unwind 处理策略的代码。例如：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> HasDropA</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> HasDropB</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">extern</span><span class="sk-032f62-99ffe4"> "C"</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    fn</span><span class="sk-6f42c1-ffc799"> imported_func</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-ffc799">fn</span><span class="sk-6f42c1-ffc799"> some_func</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> a </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> HasDropA</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> b </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> HasDropB</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    imported_func</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>编译为 WebAssembly 格式的代码如下：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">try</span></span>
+<span class="line"><span class="sk-24292e-fff">  call &lt;imported_func&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">catch_all</span></span>
+<span class="line"><span class="sk-24292e-fff">  call &lt;drop_b&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">  call &lt;drop_a&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">  rethrow</span></span>
+<span class="line"><span class="sk-24292e-fff">end</span></span>
+<span class="line"><span class="sk-24292e-fff">call &lt;drop_b&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">call &lt;drop_a&gt;</span></span></code></pre>
+</div>
+<p>这可确保即使 <code>imported_func()</code> panic 错误，析构函数仍然会运行。类似地，<code>std::panic::catch_unwind(|| some_func())</code> 编译后的格式为：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">try</span></span>
+<span class="line"><span class="sk-24292e-fff">  call &lt;some_func&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">  ;; set result to </span><span class="sk-6f42c1-ffc799">Ok</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> value)</span></span>
+<span class="line"><span class="sk-24292e-fff">catch</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  try</span></span>
+<span class="line"><span class="sk-24292e-fff">    call &lt;</span><span class="sk-6f42c1-ffc799">std</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">panicking</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">catch_unwind</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">cleanup&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">    ;; set result to </span><span class="sk-6f42c1-ffc799">Err</span><span class="sk-24292e-fff">(panic payload)</span></span>
+<span class="line"><span class="sk-24292e-fff">  catch_all</span></span>
+<span class="line"><span class="sk-24292e-fff">    call &lt;</span><span class="sk-6f42c1-ffc799">core</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">panicking</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">cannot_unwind&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">    unreachable</span></span>
+<span class="line"><span class="sk-24292e-fff">  end</span></span>
+<span class="line"><span class="sk-24292e-fff">end</span></span></code></pre>
+</div>
+<p>要使这种编译方式能够端到端正常发挥作用，我们对 wasm-bindgen 工具链进行了一些更改。WebAssembly 解析器 Walrus 无法处理 try/catch 指令，因此，我们添加了对它们的支持。描述符解释器还需要学会如何评估包含异常处理块的代码。就在这时，可以使用 <code>panic=unwind</code> 构建完整的应用。</p>
+<p>最后一步是修改 wasm-bindgen 生成的导出，以便在 Rust-JavaScript 边界处捕获 panic，并将其显示为 JavaScript <code>PanicError</code> 异常。需要注意的一点是：Rust 会捕获外部异常，并在通过 <code>extern "C"</code> 函数进行 unwind 时终止，因此，需要将导出标记为 <code>extern "C-unwind"</code>，以明确支持跨边界进行 unwind 处理。如果使用 futures 库，panic 会拒绝 JavaScript <code>Promise</code>，并抛出 <code>PanicError</code>。</p>
+<p>闭包问题需要特别注意，确保通过新的<code> MaybeUnwindSafe</code> trait 来正确检查 unwind 安全性，该 trait 仅在使用 <code>panic=unwind</code> 进行构建时才会检查 <code>UnwindSafe</code>。但这很快暴露了一个问题：许多闭包捕获了 unwind 处理后仍然存在的引用，这使得它们本质上不安全。为避免出现用户错误地将闭包包装在 <code>AssertUnwindSafe</code> 中只为满足编译器要求这种情况，我们添加了 <code>Closure::new_aborting</code> 变体，在无法保证 unwind 安全性的情况下，这些变体会在发生 panic 时终止程序，而不是进行 unwind 处理。</p>
+<p>启用 panic unwind 时：</p>
+<ul>
+	<li>wasm-bindgen 会捕获已导出 Rust 函数中的 panic</li>
+	<li>panic 会作为 PanicError 异常抛给 JavaScript</li>
+	<li>异步导出会拒绝其返回的 Promise，并抛出 PanicError</li>
+	<li>Rust 析构函数正常运行</li>
+	<li>WebAssembly 实例仍然有效且可重用</li>
+</ul>
+<p>有关这种方法的详细信息以及在 wasm-bindgen 中的使用方式，请参阅 <a href="https://wasm-bindgen.github.io/wasm-bindgen/reference/catch-unwind.html" target="_blank" rel="noopener noreferrer"><u>Wasm Bindgen：捕获 panic</u></a> 最新指南页面。</p>
+<h2>中止恢复</h2>
+<p>即便启用 <code>panic=unwind</code> 支持，也仍然会出现中止，而内存溢出错误是常见原因之一。由于无法对中止进行 unwind 处理，因此完全无法恢复状态，但我们至少可以检测中止并从中恢复，以执行后续操作，避免无效状态导致后续请求出错。</p>
+<p>Panic unwind 支持为中止恢复引入了新问题。当我们收到源自 Wasm 的错误时，我们无法确定它是源自 <code>extern “C-unwind”</code>的错误，还是真正的中止。WebAssembly 中的中止可能以多种形式出现。</p>
+<p>有两种技术方案来解决这个问题：标记所有明确的中止错误，或者标记所有明确的 unwind 错误。两种方案都可行，但我们选择了后者。由于我们的外部异常处理已直接使用原始的 WAT 级 Exception Handling （WebAssembly 文本格式）指令，因此，我们发现可以更轻松地为外部异常添加异常标记，将它们与中止 non-unwind-safe 异常区分开来。</p>
+<p>借助 WebAssembly Exception Handling 中的 <code>Exception.Tag</code> 特性，我们能够清楚地区分可恢复错误与不可恢复错误，然后集成新的中止处理程序以及中止重入防护。<br><br>新的中止 hook <code>set_on_abort</code> 可用于在初始化时附加处理程序，该处理程序会根据平台嵌入的需求进行相应的恢复。</p>
+<p>强化 panic 和中止处理是避免无效执行状态的关键。WebAssembly 支持调用栈深度交错，也就是说，Wasm 可以调用 JavaScript，JavaScript 可以重新进入 Wasm，无论嵌套调用有多深；除此之外，多个任务可以在同一个 WebAssembly 实例中运行。之前，某个任务或嵌套栈中发生的中止并不一定能通过 JS 导致更高层级的栈失效，从而引发未定义的行为。我们需要谨慎地确保执行模型的可靠性，并且这方面的工作仍在持续进行。</p>
+<p>虽然中止并非理想情况，故障后重新初始化更是极端情况，但将关键错误恢复作为最后一道安全防线可确保执行正确无误，以及后续操作能够成功。无效状态不会持续存在，从而确保单个故障不会引发多个故障。</p>
+<h2>扩展：wasm-bindgen 库的中止后重新初始化</h2>
+<p>在开发过程中，我们意识到这是使用 wasm-bindgen 构建 JS 库的常见问题，以及添加一个中止处理程序进行恢复，也会让这些库从中受益。</p>
+<p>但是，当以 ES 模块的形式构建 Wasm 并直接导入（例如，使用 <code>import { func } from ‘wasm-dep’</code>）时，如果用户 JS 应用中已链接并初始化的库在调用 <code>func()</code> 函数时发生 Wasm 中止，尚不清楚其恢复机制是什么。</p>
+<p>虽然这并非严格意义上的 Rust Workers 用例，但我们团队也支持基于 JS 的 Workers 用户，此类用户运行 Rust 支持的 Wasm 库依赖项。如果我们能够同时解决这个问题，可能会间接推动 Cloudflare Workers 平台上的 Wasm 使用。</p>
+<p>为了支持 Wasm 库用例的自动化中止恢复，我们在 wasm - bindgen 中添加了试验性重新初始化机制 <code>--reset-state-function</code> 支持。该机制提供一个函数，让 Rust 应用能够有效地请求将其内部 Wasm 实例重置回初始状态以备下一次调用，而无需生成的绑定的用户重新导入或重新创建实例。旧实例中的类实例会抛出异常，因为其句柄已变为孤立类，但此后可以构造新的类。使用 Wasm 库的 JS 应用会出现错误，但不是完全无响应。</p>
+<p>有关此项功能的完整技术详情以及在 wasm-bindgen 中的使用方式，请参阅新的 wasm-bindgen 指南中的 <a href="https://wasm-bindgen.github.io/wasm-bindgen/reference/handling-aborts.html" target="_blank" rel="noopener noreferrer"><u>Wasm Bindgen：处理中止</u></a>部分。</p>
+<h2>完善 Rust Wasm Exception Handling 生态系统</h2>
+<p>对这项工作的上游贡献并不仅限于 wasm-bindgen 项目。使用 <code>panic=unwind</code> 进行 Wasm 构建仍然需要采用试验性 Nightly Rust 目标，因此，我们也一直在努力推进 Rust Wasm 对 WebAssembly Exception Handling 的支持，以便将其引入稳定的 Rust 版本。</p>
+<p>在开发 WebAssembly Exception Handling 功能的过程中，后期规范变更导致了两种变体：<a href="https://github.com/WebAssembly/exception-handling/blob/main/proposals/exception-handling/legacy/Exceptions.md" target="_blank" rel="noopener noreferrer"><u>传统异常处理</u></a>以及最终的<a href="https://github.com/WebAssembly/exception-handling/blob/main/proposals/exception-handling/Exceptions.md" target="_blank" rel="noopener noreferrer"><u>现代异常处理（使用 exnref）</u></a>。目前，Rust 的 WebAssembly 目标仍然会默认生成传统异常处理的代码。虽然传统异常处理仍然得到广泛支持，但它如今已被弃用。</p>
+<p>以下 JS 平台版本开始支持现代 WebAssembly Exception Handling：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>运行时</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>版本</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>发布日期</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>v8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13.8.1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 4 月 28 日</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>workerd</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>v1.20250620.0</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 19 日</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Chrome</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>138</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 28 日</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Firefox</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>131</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2024 年 10 月 1 日</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Safari</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>18.4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 3 月 31 日</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Node.js</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>25.0.0</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 10 月 15 日</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>在调查支持矩阵的过程中，我们发现最大的问题是 Node.js 24 LTS 的发布计划，这将导致整个生态系统只能继续使用旧版 WebAssembly Exception Handling 直至 2028 年 4 月。</p>
+<p>发现这一差异后，我们成功地将现代异常处理机制移植到 Node.js 24 版本，甚至还移植了必要的修复程序，使其能够在 Node.js 22 系列版本上运行，以确保支持这个目标。如此一来，现代异常处理提案应该在明年会成为默认目标。</p>
+<p>在未来几个月，我们将努力让最终用户顺畅地过渡到稳定的 <code>panic=unwind</code> 支持和现代异常处理机制。</p>
+<p>虽然对完善生态系统的这些长期投入需要时间才能见效，但它们有助于为整个 Rust WebAssembly 社区奠定更坚实的基础，Cloudflare 很高兴能够为这些改进贡献一份力量。</p>
+<h2>在 Rust Workers 中使用 panic unwind</h2>
+<p>从 Rust Workers 0.8.0 版本开始，我们新增了一个 <code>--panic-unwind</code> 标志，用户可以按照<a href="https://github.com/cloudflare/workers-rs?tab=readme-ov-file#panic-recovery-with---panic-unwind" target="_blank" rel="noopener noreferrer"><u>此处的说明</u></a>将其添加到 build 命令中。</p>
+<p>使用该标志，可以完全恢复 panic 错误，中止恢复机制将使用新的中止分类和恢复 hook 机制。我们强烈建议用户升级并试用新版本，获得更稳定的 Rust Workers 体验；另外，我们还计划在后续版本中将 <code>panic=unwind</code> 设置为默认值。继续使用 <code>panic=abort</code> 方法的用户，将继续受益于 0.6.0 版本中之前的自定义恢复封装器处理功能。</p>
+<h2>确保 Rust Workers 的稳定性</h2>
+<p>这项工作是我们持续努力的一部分，旨在推出稳定版 Rust Workers。Cloudflare 通过从根本上解决 Wasm 平台基础架构中的这些棘手问题，并在适当的时候回馈生态系统，我们不仅为自己的平台，也为整个 Rust、JS 和 Wasm 生态系统构建了更坚实的基础。</p>
+<p>我们计划对 Rust Workers 进行一系列改进，并很快分享这项额外工作的最新进展，包括 wasm-bindgen 泛型和自动化 bindgen。上个月，我们团队的 Guy Bedford 在 <a href="https://www.youtube.com/watch?v=zlSJY8Qv5XI" target="_blank" rel="noopener noreferrer"><u>Wasm.io 大会上关于 Rust 与 JS 互操作性</u></a>的一场演讲中预告了这方面的信息。</p>
+<p>请关注我们在 <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Cloudflare Discord</u></a> 的 <strong>#rust‑on‑workers</strong> 频道。我们也欢迎用户提供反馈并展开讨论，尤其是所有新加入 <a href="https://github.com/cloudflare/workers-rs" target="_blank" rel="noopener noreferrer"><u>workers-rs</u></a> 和 <a href="https://github.com/wasm-bindgen/wasm-bindgen" target="_blank" rel="noopener noreferrer"><u>wasm-bindgen</u></a> GitHub 项目的贡献者。</p>

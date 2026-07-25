@@ -1,0 +1,102 @@
+<p>今天，我们隆重宣布开源 Pingora——我们一直用来构建网络服务的 Rust 框架，这些服务驱动着 Cloudflare 上的大部分流量。Pingora 是根据 <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener noreferrer">Apache 许可证 2.0 版</a><a href="https://github.com/cloudflare/pingora" target="_blank" rel="noopener noreferrer">发布的</a>。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="196" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=715&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=640&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=715&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=750&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=828&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=1080&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=1280&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=1430&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Open sourcing Pingora: our Rust framework for building programmable network services" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48T4WJ4GS573P9HY87KBJ8.png&amp;w=1920&amp;h=526&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="526" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="196" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>正如<a href="https://blog.cloudflare.com/zh-cn/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet-zh-cn">我们在上一篇博客文章</a>所述，Pingora 是一个 Rust 异步多线程框架，用于帮助我们构建 HTTP 代理服务。自我们上一篇博客文章以来，Pingora 已经在我们的全球网络中处理了近千万亿次互联网请求。</p>
+<p>我们将 Pingora 开源，旨在帮助在我们自己的基础设施之外构建更好、更安全的互联网。我们希望为我们的客户、用户和其他人提供工具、想法和灵感，使用一个内存安全框架来构建自己的互联网基础设施。鉴于整个<a href="https://www.theregister.com/2022/09/20/rust_microsoft_c" target="_blank" rel="noopener noreferrer">行业</a>和<a href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report" target="_blank" rel="noopener noreferrer">美国政府</a>日益意识到内存安全的重要性，拥有这样一个框架尤其重要。在这个共同目标下，我们与<a href="https://www.abetterinternet.org" target="_blank" rel="noopener noreferrer">互联网安全研究组织</a> ISRG 的 <a href="https://www.memorysafety.org/blog/introducing-river" target="_blank" rel="noopener noreferrer">Prossimo 项目</a>合作，帮助推动 Pingora 在互联网最关键的基础设施中得到采用。</p>
+<p>在<a href="https://blog.cloudflare.com/zh-cn/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet-zh-cn">上一篇博客文章</a>中，我们讨论了构建 Pingora 的原因和方式。本期我们将讨论为什么以及如何使用 Pingora。</p>
+<p>Pingora 不仅为代理、还为客户端和服务器提供构建块。除了这些组件，我们还提供一些实用库用于实现<a href="https://blog.cloudflare.com/how-pingora-keeps-count">事件计数</a>、错误处理和缓存等常见逻辑。</p>
+<h3>框架内容</h3>
+<p>Pingora 提供在 HTTP/1 和 HTTP/2、 TLS 或仅 TCP / UDP 之上构建服务的库和 API。作为代理，它支持 HTTP/1 和 HTTP/2 端到端、gRPC 和 websocket 代理。（HTTP/3 支持在路线图上）。它还提供可自定义的负载平衡和故障转移策略。在合规性和安全性方面，它同时支持常用的 OpenSSL 和 BoringSSL 库，两者均符合 FIPS 要求并支持<a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">后量子加密</a>。</p>
+<p>除了提供以上功能，Pingora 还提供过滤器和回调函数，让用户完全自定义服务应该如何处理、转换和转发请求。这些 API 对于 OpenResty 和 NGINX 用户来说应该很熟悉，因为许多 API 直观地映射到 OpenResty 的 “*_by_lua” 回调函数上。</p>
+<p>在运行方面，Pingora 提供零停机优雅重启，以便在不丢失任何传入请求的情况下进行自身升级。Syslog、Prometheus、Sentry、OpenTelemetry 和其他必备的可观察性工具也可以轻松与 Pingora 集成。</p>
+<h3>谁可受益于 Pingora</h3>
+<p>对于如下情况，您应该考虑 Pingora：</p>
+<p>**安全是您的首要考虑因素：**对于用 C/C++ 编写的服务而言，Pingora 是一种内存安全性更高的替代方案。虽然有些人可能会争论编程语言之间的内存安全问题，但根据我们的实践经验，我们发现自己犯下导致内存安全问题的编码错误的可能性要小得多。此外由于我们花在解决这些问题上的时间更少，我们在实施新功能时更有成效。</p>
+<p>**您的服务对性能敏感：**Pingora 快速高效。正如我们在上一篇博客文章中所述，由于 Pingora 的多线程架构，我们节省了大量 CPU 和内存资源。就对系统成本和/或速度敏感的工作负载而言，时间和资源的节省可能非常引人注目。</p>
+<p>**您的服务需要广泛的定制：**Pingora 代理框架提供的 API 是高度可编程的。对于希望构建自定义高级网关或负载平衡器的用户，Pingora 提供了强大但简单的实施方法。我们将在下一节中提供示例。</p>
+<h2>让我们构建一个负载平衡器</h2>
+<p>让我们通过构建一个简单的负载均衡器来探索 Pingora 的可编程 API。该负载均衡器将以轮询的方式在 <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer">https://1.1.1.1/</a> 和 <a href="https://1.0.0.1" target="_blank" rel="noopener noreferrer">https://1.0.0.1/</a> &nbsp;之间选择上游。</p>
+<p>首先让我们创建一个空白的 HTTP 代理。</p>
+<p>任何实现 <code>ProxyHttp</code> 特征（类似于 C++ 或 Java 中接口的概念）的对象都是 HTTP 代理。那里唯一需要的方法是 <code>upstream_peer()</code>，对于每个请求都会调用这个方法。这个函数应该返回一个 <code>HttpPeer</code>，包含要连接的源 IP 以及连接方式。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> LB</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#[async_trait]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">impl</span><span class="sk-032f62-99ffe4"> ProxyHttp</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> LB</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> upstream_peer</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">...</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Box</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">HttpPee</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        todo!</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>接下来让我们实现轮询选择。Pingora 框架已经提供了 <code>LoadBalancer</code>，其中包含常见的选择算法，例如轮询和哈希，所以让我们直接使用它。如果用例需要更复杂或定制化的服务器选择逻辑，用户可以在这个函数中自行实现。</p>
+<p>由于我们要连接到 HTTPS 服务器，还需要设置 SNI。如果需要，证书、超时和其他连接选项也可以在 HttpPeer 对象中设置。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> LB</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Arc</span><span class="sk-24292e-fff">&lt;LoadBalancer&lt;RoundRobin&gt;&gt;);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#[async_trait]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">impl</span><span class="sk-032f62-99ffe4"> ProxyHttp</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> LB</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> upstream_peer</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">...</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Box</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">HttpPee</span><span class="sk-24292e-fff">r</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        let</span><span class="sk-032f62-99ffe4"> upstream</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> self.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            .select(b</span><span class="sk-6f42c1-ffc799">""</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-005cc5-ffc799"> 256</span><span class="sk-24292e-fff">) // hash doesn</span><span class="sk-032f62-99ffe4">'t matter for round robin</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            .unwrap();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">        // Set SNI to one.one.one.one</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        let peer = Box::new(HttpPeer::new(upstream, true, "one.one.one.one".to_string()));</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        Ok(peer)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+</div>
+<p>最后，让我们将服务投入运行。在这个示例中，我们硬编码了源服务器的 IP 地址。在实际工作负载中，当调用 <code>upstream_peer()</code> 时或在后台中，也可以动态发现源服务器的 IP 地址。创建服务后，我们只需告诉 LB 服务监听 127.0.0.1:6188。最后，我们创建了一个 Pingora 服务器，该服务器将是运行负载平衡服务的进程。</p>
+<p>让我们尝试一下：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">fn</span><span class="sk-032f62-99ffe4"> main</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> upstreams</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> LoadBalancer::try_from_iter</span><span class="sk-24292e-fff">([</span><span class="sk-032f62-99ffe4">"1.1.1.1:443"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"1.0.0.1:443"</span><span class="sk-24292e-fff">])</span><span class="sk-032f62-99ffe4">.unwrap</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> lb</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> pingora_proxy::http_proxy_service</span><span class="sk-24292e-fff">(&amp;</span><span class="sk-6f42c1-ffc799">my_server.configuration,</span><span class="sk-032f62-99ffe4"> LB</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">upstreams</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    lb.add_tcp(</span><span class="sk-6f42c1-ffc799">"127.0.0.1:6188"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">    let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> my_server</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> Server::new</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">None</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">.unwrap</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    my_server.add_service(lb</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    my_server.run_forever</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>我们可以看到代理正在工作，但源服务器以 403 拒绝我们。这是因为我们的服务只是简单地代理了 curl 设置的 Host 头部 127.0.0.1:6188，这让源服务器感到不悦。我们如何使代理修正这个问题？这可以简单地通过添加另一个名为 <code>upstream_request_filter</code> 的过滤器来完成。在连接到源服务器之后，发送任何 HTTP 请求之前，过滤器在每个请求上运行。我们可以在这个过滤器中添加、删除或更改 HTTP 请求头。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> 127.0.0.1:6188</span><span class="sk-005cc5-99ffe4"> -svo</span><span class="sk-032f62-99ffe4"> /dev/null</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> GET / HTTP/1.1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Host: 127.0.0.1:6188</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> User-Agent: curl/7.88.1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Accept: </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">/</span><span class="sk-d73a49-a0a0a0">*</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 403 Forbidden</span></span></code></pre>
+</div>
+<p>我们再试一次：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> upstream_request_filter</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">…,</span><span class="sk-032f62-99ffe4"> upstream_request:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> RequestHeader,</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Result&lt;()</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    upstream_request.insert_header(</span><span class="sk-6f42c1-ffc799">"Host"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> "one.one.one.one"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>这次成功了！完整示例请参见<a href="https://github.com/cloudflare/pingora/blob/main/pingora-proxy/examples/load_balancer.rs" target="_blank" rel="noopener noreferrer">此处</a>。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> 127.0.0.1:6188</span><span class="sk-005cc5-99ffe4"> -svo</span><span class="sk-032f62-99ffe4"> /dev/null</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> HTTP/1.1 200 OK</span></span></code></pre>
+</div>
+<p>下面是一个非常简单的图示，展示在本示例中请求如何通过回调和过滤器流动。Pingora 代理框架目前提供了更多的<a href="https://github.com/cloudflare/pingora/blob/main/docs/user_guide/phase.md" target="_blank" rel="noopener noreferrer">过滤器</a>和回调，可以在请求的不同阶段允许用户修改、拒绝、路由和/或记录请求（和响应）。</p>
+<p>在幕后，Pingora 代理框架负责连接池、TLS 握手、读取、写入、解析请求和其他常见代理任务，以便用户可以专注于对他们重要的逻辑。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="710" height="213" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=710&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=640&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=710&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 710w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=750&amp;h=225&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=828&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=1080&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=1280&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=1420&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1420w" alt="BLOG-2224 Embedded Image - HH9gJ1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C4T3K7DHV8JSWVCCQW65.png&amp;w=710&amp;h=213&amp;f=webp" data-lightbox-width="710" data-lightbox-height="213" data-astro-cid-7nvefuv6="true" sizes="(min-width: 710px) 710px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="710" height="213" class="pt-portable-image-media"></div>
+</figure>
+<h2>开源，现在与未来</h2>
+<p>Pingora 是一个库和工具集，而不是可执行二进制文件。换句话说，Pingora 是驱动汽车的引擎，而不是汽车本身。虽然 Pingora 已经生产就绪，可供业界使用，但我们理解很多人希望有一种一揽子、即插即用的 Web 服务，具备低代码或无代码配置选项。我们与 ISRG 合作的重点将是在 Pingora 之上构建这样的应用，以扩大 Pingora 的影响力。请继续关注该项目的后续公告。</p>
+<p>其他需要牢记的注意事项：</p>
+<ul>
+	<li>**目前，API 的稳定性不能保证。**尽管我们会尽量减少进行破坏性更改的频率，但在库的演变过程中，特别是在 1.0 版本前，我们仍保留添加、删除或更改请求和响应过滤器等组件的权利。</li>
+	<li>**对非 Unix 操作系统的支持目前不在路线图中。**尽管我们目前没有支持这些系统的计划，但未来情况可能会发生变化。</li>
+</ul>
+<h2>如何贡献</h2>
+<p>欢迎在我们的 GitHub <a href="https://github.com/cloudflare/pingora/issues" target="_blank" rel="noopener noreferrer">问题跟踪器</a>中提出错误报告、文档问题或功能请求。在提交拉取请求之前，我们强烈建议您先阅读我们的<a href="https://github.com/cloudflare/pingora/blob/main/.github/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">贡献指南</a> 。</p>
+<h2>总结</h2>
+<p>本篇博客文章中，我们宣布了 Pingora 框架的开源。我们展示了互联网实体和基础设施可受益于 Pingora 的安全性、性能和可定制性。我们还展示了 Pingora 的易用性和可定制性。</p>
+<p>无论您是在构建生产 Web 服务，还是试验网络技术，我们都希望您能在 Pingora 中找到价值。这是一段漫长的旅程，但与开源社区分享这个项目从一开始就是一个目标。我们希望感谢 Rust 社区，因为 Pingora 是使用许多优秀的开源 Rust 包构建的。迁移到内存安全的互联网似乎是一个不可能的旅程，但我们希望您加入我们的行列。</p>

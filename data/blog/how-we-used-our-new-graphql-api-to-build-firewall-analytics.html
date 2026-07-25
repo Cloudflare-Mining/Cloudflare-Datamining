@@ -1,200 +1,159 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/fr-fr/how-we-used-our-new-graphql-api-to-build-firewall-analytics">Français</a>, <a href="https://blog.cloudflare.com/es-es/how-we-used-our-new-graphql-api-to-build-firewall-analytics">Español</a> and <a href="https://blog.cloudflare.com/de-de/how-we-used-our-new-graphql-api-to-build-firewall-analytics">Deutsch</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QivoS1cSb6wu822m7ewSZ/2a1632d7d5394b3e1256a82894e7f6c9/how-we-used-our-new-graphql-api-to-build-firewall-analytics.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Firewall Analytics is the first product in the Cloudflare dashboard to utilize the new GraphQL Analytics API. All Cloudflare dashboard products are built using the same public APIs that we provide to our customers, allowing us to understand the challenges they face when interfacing with our APIs. This parity helps us build and shape our products, most recently the new GraphQL Analytics API that we’re thrilled to release today.</p>
-	<p>By defining the data we want, along with the response format, our GraphQL Analytics API has enabled us to prototype new functionality and iterate quickly from our beta user feedback. It is helping us deliver more insightful analytics tools within the Cloudflare dashboard to our customers.</p>
-	<p>Our user research and testing for <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/#new-firewall-analytics-for-analysing-events-and-maintaining-optimal-configurations">Firewall Analytics</a> surfaced common use cases in our customers' workflow:</p>
-	<ul>
-		<li>
-			<p>Identifying spikes in firewall activity over time</p>
-		</li>
-		<li>
-			<p>Understanding the common attributes of threats</p>
-		</li>
-		<li>
-			<p>Drilling down into granular details of an individual event to identify potential false positives</p>
-		</li>
-	</ul>
-	<p>We can address all of these use cases using our new GraphQL Analytics API.</p>
-	<div class="flex anchor relative">
-		<h3 id="graphql-basics">GraphQL Basics</h3>
-		<a href="https://blog.cloudflare.com/#graphql-basics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Before we look into how to address each of these use cases, let's take a look at the format of a GraphQL query and how our schema is structured.</p>
-	<p>A GraphQL query is comprised of a structured set of fields, for which the server provides corresponding values in its response. The schema defines which fields are available and their type. You can find more information about the GraphQL query syntax and format in the <a href="https://graphql.org/learn/queries" target="_blank" rel="noopener noreferrer">official GraphQL documentation</a>.</p>
-	<p>To run some GraphQL queries, we recommend downloading a GraphQL client, such as <a href="https://electronjs.org/apps/graphiql" target="_blank" rel="noopener noreferrer">GraphiQL</a>, to explore our schema and run some queries. You can find documentation on getting started with this in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started" target="_blank" rel="noopener noreferrer">developer docs</a>.</p>
-	<p>At the top level of the schema is the <code>viewer</code> field. This represents the top level node of the user running the query. Within this, we can query the <code>zones</code> field to find zones the current user has access to, providing a <code>filter</code> argument, with a <code>zoneTag</code> of the identifier of the zone we'd like narrow down to.</p>
-	<pre class="language-bash"><code class="language-bash">{
-  viewer {
-    zones(filter: { zoneTag: "YOUR_ZONE_ID" }) {
-      # Here is where we'll query our firewall events
-    }
-  }
-}</code></pre>
-	<p>Now that we have a query that finds our zone, we can start querying the firewall events which have occurred in that zone, to help solve some of the use cases we’ve identified.</p>
-	<div class="flex anchor relative">
-		<h3 id="visualising-spikes-in-firewall-activity">Visualising spikes in firewall activity</h3>
-		<a href="https://blog.cloudflare.com/#visualising-spikes-in-firewall-activity" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It's important for customers to be able to visualise and understand anomalies and spikes in their firewall activity, as these could indicate an attack or be the result of a misconfiguration.</p>
-	<p>Plotting events in a timeseries chart, by their respective action, provides users with a visual overview of the trend of their firewall events.</p>
-	<p>Within the <code>zones</code> field in the query we’ve created earlier, we can query our firewall event aggregates using the <code>firewallEventsAdaptiveGroups</code> field, providing arguments to limit the count of groups, a filter for the date range we're looking for (combined with any user-entered filters), and a list of fields to order by; in this case, just the <code>datetimeHour</code> field that we're grouping by.</p>
-	<p>Within the <code>zones</code> field in the query we created earlier, we can further query our firewall event aggregates using the <code>firewallEventsAdaptiveGroups</code> field and providing arguments for:</p>
-	<ul>
-		<li>
-			<p>A <code>limit</code> for the count of groups</p>
-		</li>
-		<li>
-			<p>A <code>filter</code> for the date range we're looking for (combined with any user-entered filters)</p>
-		</li>
-		<li>
-			<p>A list of fields to <code>orderBy</code> (in this case, just the <code>datetimeHour</code> field that we're grouping by).</p>
-		</li>
-	</ul>
-	<p>By adding the <code>dimensions</code> field, we're querying for groups of firewall events, aggregated by the fields nested within <code>dimensions</code>. In this case, our query includes the <code>action</code> and <code>datetimeHour</code> fields, meaning the response will be groups of firewall events which share the same action, and fall within the same hour. We also add a <code>count</code> field, to get a numeric count of how many events fall within each group.</p>
-	<pre class="language-bash"><code class="language-bash">query FirewallEventsByTime($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      firewallEventsAdaptiveGroups(
-        limit: 576
-        filter: $filter
-        orderBy: [datetimeHour_DESC]
-      ) {
-        count
-        dimensions {
-          action
-          datetimeHour
-        }
-      }
-    }
-  }
-}</code></pre>
-	<p><i>Note - Each of our groups queries require a limit to be set. A firewall event can have one of 8 possible actions, and we are querying over a 72 hour period. At most, we’ll end up with 567 groups, so we can set that as the limit for our query.</i></p>
-	<p>This query would return a response in the following format:</p>
-	<pre class="language-bash"><code class="language-bash">{
-  "viewer": {
-    "zones": [
-      {
-        "firewallEventsAdaptiveGroups": [
-          {
-            "count": 5,
-            "dimensions": {
-              "action": "jschallenge",
-              "datetimeHour": "2019-09-12T18:00:00Z"
-            }
-          }
-          ...
-        ]
-      }
-    ]
-  }
-}</code></pre>
-	<p>We can then take these groups and plot each as a point on a time series chart. Mapping over the <code>firewallEventsAdaptiveGroups</code> array, we can use the group’s <code>count</code> property on the y-axis for our chart, then use the nested fields within the <code>dimensions</code> object, using <code>action</code> as unique series and the <code>datetimeHour</code> as the time stamp on the x-axis.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4RH0u6Cc6dIk9ztyZ3E0Ag/21256377669133e2416150a4b1798e85/pasted-image-0--1--3.png" alt="" class="kg-image" width="998" height="505" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="top-ns">Top Ns</h3>
-		<a href="https://blog.cloudflare.com/#top-ns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After identifying a spike in activity, our next step is to highlight events with commonality in their attributes. For example, if a certain IP address or individual user agent is causing many firewall events, this could be a sign of an individual attacker, or could be surfacing a false positive.</p>
-	<p>Similarly to before, we can query aggregate groups of firewall events using the <code>firewallEventsAdaptiveGroups</code> field. However, in this case, instead of supplying <code>action</code> and <code>datetimeHour</code> to the group’s <code>dimensions</code>, we can add individual fields that we want to find common groups of.</p>
-	<p>By ordering by descending count, we’ll retrieve groups with the highest commonality first, limiting to the top 5 of each. We can add a single field nested within <code>dimensions</code> to group by it. For example, adding <code>clientIP</code> will give five groups with the IP addresses causing the most events.</p>
-	<p>We can also add a <code>firewallEventsAdaptiveGroups</code> field with no nested <code>dimensions</code>. This will create a single group which allows us to find the total count of events matching our filter.</p>
-	<pre class="language-bash"><code class="language-bash">query FirewallEventsTopNs($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      topIPs: firewallEventsAdaptiveGroups(
-        limit: 5
-        filter: $filter
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          clientIP
-        }
-      }
-      topUserAgents: firewallEventsAdaptiveGroups(
-        limit: 5
-        filter: $filter
-        orderBy: [count_DESC]
-      ) {
-        count
-        dimensions {
-          userAgent
-        }
-      }
-      total: firewallEventsAdaptiveGroups(
-        limit: 1
-        filter: $filter
-      ) {
-        count
-      }
-    }
-  }
-}</code></pre>
-	<p><i>Note - we can add the </i><code><i>firewallEventsAdaptiveGroups</i></code><i> field multiple times within a single query, each aliased differently. This allows us to fetch multiple different groupings by different fields, or with no groupings at all. In this case, getting a list of top IP addresses, top user agents, and the total events.</i></p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/48ybDlyb9qiOXRcqbxYMBT/ef8646776579eae9468db6b0e34dd7cc/pasted-image-0--2--1.png" alt="" class="kg-image" width="1025" height="813" loading="lazy">
-
-	</figure>
-	<p>We can then reference each of these aliases in the UI, mapping over their respective groups to render each row with its count, and a bar which represents the proportion of total events, showing the proportion of all events each row equates to.</p>
-	<div class="flex anchor relative">
-		<h3 id="are-these-firewall-events-false-positives">Are these firewall events false positives?</h3>
-		<a href="https://blog.cloudflare.com/#are-these-firewall-events-false-positives" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After users have identified spikes, anomalies and common attributes, we wanted to surface more information as to whether these have been caused by malicious traffic, or are false positives.</p>
-	<p>To do this, we wanted to provide additional context on the events themselves, rather than just counts. We can do this by querying the <code>firewallEventsAdaptive</code> field for these events.</p>
-	<p>Our GraphQL schema uses the same filter format for both the aggregate <code>firewallEventsAdaptiveGroups</code> field and the raw <code>firewallEventsAdaptive</code> field. This allows us to use the same filters to fetch the individual events which summate to the counts and aggregates in the visualisations above.</p>
-	<pre class="language-bash"><code class="language-bash">query FirewallEventsList($zoneTag: string, $filter: FirewallEventsAdaptiveFilter_InputObject) {
-  viewer {
-    zones(filter: { zoneTag: $zoneTag }) {
-      firewallEventsAdaptive(
-        filter: $filter
-        limit: 10
-        orderBy: [datetime_DESC]
-      ) {
-        action
-        clientAsn
-        clientCountryName
-        clientIP
-        clientRequestPath
-        clientRequestQuery
-        datetime
-        rayName
-        source
-        userAgent
-      }
-    }
-  }
-}</code></pre>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BmadcWdFvLxALf8fO3MbW/3d8878f086b962e671162b6d62e4fc7f/pasted-image-0--3--1.png" alt="" class="kg-image" width="1150" height="580" loading="lazy">
-
-	</figure>
-	<p>Once we have our individual events, we can render all of the individual fields we’ve requested, providing users the additional context on event they need to determine whether this is a false positive or not.</p>
-	<p>That’s how we used our new GraphQL Analytics API to build Firewall Analytics, helping solve some of our customers most common security workflow use cases. We’re excited to see what you build with it, and the problems you can help tackle.</p>
-	<p>You can find out how to get started querying our GraphQL Analytics API using GraphiQL in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started" target="_blank" rel="noopener noreferrer">developer documentation</a>, or learn more about writing GraphQL queries on the official GraphQL Foundation <a href="https://graphql.org/learn/queries" target="_blank" rel="noopener noreferrer">documentation</a>.</p>
+<p>Firewall Analytics is the first product in the Cloudflare dashboard to utilize the new GraphQL Analytics API. All Cloudflare dashboard products are built using the same public APIs that we provide to our customers, allowing us to understand the challenges they face when interfacing with our APIs. This parity helps us build and shape our products, most recently the new GraphQL Analytics API that we’re thrilled to release today.</p>
+<p>By defining the data we want, along with the response format, our GraphQL Analytics API has enabled us to prototype new functionality and iterate quickly from our beta user feedback. It is helping us deliver more insightful analytics tools within the Cloudflare dashboard to our customers.</p>
+<p>Our user research and testing for <a href="https://blog.cloudflare.com/new-firewall-tab-and-analytics/#new-firewall-analytics-for-analysing-events-and-maintaining-optimal-configurations">Firewall Analytics</a> surfaced common use cases in our customers' workflow:</p>
+<ul>
+	<li>Identifying spikes in firewall activity over time</li>
+	<li>Understanding the common attributes of threats</li>
+	<li>Drilling down into granular details of an individual event to identify potential false positives</li>
+</ul>
+<p>We can address all of these use cases using our new GraphQL Analytics API.</p>
+<h3>GraphQL Basics</h3>
+<p>Before we look into how to address each of these use cases, let's take a look at the format of a GraphQL query and how our schema is structured.</p>
+<p>A GraphQL query is comprised of a structured set of fields, for which the server provides corresponding values in its response. The schema defines which fields are available and their type. You can find more information about the GraphQL query syntax and format in the <a href="https://graphql.org/learn/queries" target="_blank" rel="noopener noreferrer">official GraphQL documentation</a>.</p>
+<p>To run some GraphQL queries, we recommend downloading a GraphQL client, such as <a href="https://electronjs.org/apps/graphiql" target="_blank" rel="noopener noreferrer">GraphiQL</a>, to explore our schema and run some queries. You can find documentation on getting started with this in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started" target="_blank" rel="noopener noreferrer">developer docs</a>.</p>
+<p>At the top level of the schema is the <code>viewer</code> field. This represents the top level node of the user running the query. Within this, we can query the <code>zones</code> field to find zones the current user has access to, providing a <code>filter</code> argument, with a <code>zoneTag</code> of the identifier of the zone we'd like narrow down to.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  viewer</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    zones(filter:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> zoneTag:</span><span class="sk-032f62-99ffe4"> "YOUR_ZONE_ID"</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      # Here is where we'll query our firewall events</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Now that we have a query that finds our zone, we can start querying the firewall events which have occurred in that zone, to help solve some of the use cases we’ve identified.</p>
+<h3>Visualising spikes in firewall activity</h3>
+<p>It's important for customers to be able to visualise and understand anomalies and spikes in their firewall activity, as these could indicate an attack or be the result of a misconfiguration.</p>
+<p>Plotting events in a timeseries chart, by their respective action, provides users with a visual overview of the trend of their firewall events.</p>
+<p>Within the <code>zones</code> field in the query we’ve created earlier, we can query our firewall event aggregates using the <code>firewallEventsAdaptiveGroups</code> field, providing arguments to limit the count of groups, a filter for the date range we're looking for (combined with any user-entered filters), and a list of fields to order by; in this case, just the <code>datetimeHour</code> field that we're grouping by.</p>
+<p>Within the <code>zones</code> field in the query we created earlier, we can further query our firewall event aggregates using the <code>firewallEventsAdaptiveGroups</code> field and providing arguments for:</p>
+<ul>
+	<li>A <code>limit</code> for the count of groups</li>
+	<li>A <code>filter</code> for the date range we're looking for (combined with any user-entered filters)</li>
+	<li>A list of fields to <code>orderBy</code> (in this case, just the <code>datetimeHour</code> field that we're grouping by).</li>
+</ul>
+<p>By adding the <code>dimensions</code> field, we're querying for groups of firewall events, aggregated by the fields nested within <code>dimensions</code>. In this case, our query includes the <code>action</code> and <code>datetimeHour</code> fields, meaning the response will be groups of firewall events which share the same action, and fall within the same hour. We also add a <code>count</code> field, to get a numeric count of how many events fall within each group.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">query</span><span class="sk-032f62-99ffe4"> FirewallEventsByTime</span><span class="sk-24292e-fff">($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  viewer</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    zones(filter:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> zoneTag:</span><span class="sk-24292e-fff"> $zoneTag </span><span class="sk-032f62-99ffe4">}</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      firewallEventsAdaptiveGroups(</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        limit:</span><span class="sk-005cc5-ffc799"> 576</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        filter:</span><span class="sk-24292e-fff"> $filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        orderBy:</span><span class="sk-24292e-fff"> [datetimeHour_DESC]</span></span>
+<span class="line"><span class="sk-24292e-fff">      ) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        count</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        dimensions</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          action</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          datetimeHour</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><em>Note - Each of our groups queries require a limit to be set. A firewall event can have one of 8 possible actions, and we are querying over a 72 hour period. At most, we’ll end up with 567 groups, so we can set that as the limit for our query.</em></p>
+<p>This query would return a response in the following format:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "viewer"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "zones"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "firewallEventsAdaptiveGroups"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">          {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            "count"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 5,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            "dimensions"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              "action"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "jschallenge",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              "datetimeHour"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2019-09-12T18:00:00Z"</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">          ...</span></span>
+<span class="line"><span class="sk-24292e-fff">        ]</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We can then take these groups and plot each as a point on a time series chart. Mapping over the <code>firewallEventsAdaptiveGroups</code> array, we can use the group’s <code>count</code> property on the y-axis for our chart, then use the nested fields within the <code>dimensions</code> object, using <code>action</code> as unique series and the <code>datetimeHour</code> as the time stamp on the x-axis.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="362" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=640&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=750&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=828&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=1080&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=1280&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=1430&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How we used our new GraphQL Analytics API to build Firewall Analytics Embedded Image - wSYDPV" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QP3YQJ6N7KR8KVRZV5H6.png&amp;w=998&amp;h=505&amp;f=webp" data-lightbox-width="998" data-lightbox-height="505" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="362" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Top Ns</h3>
+<p>After identifying a spike in activity, our next step is to highlight events with commonality in their attributes. For example, if a certain IP address or individual user agent is causing many firewall events, this could be a sign of an individual attacker, or could be surfacing a false positive.</p>
+<p>Similarly to before, we can query aggregate groups of firewall events using the <code>firewallEventsAdaptiveGroups</code> field. However, in this case, instead of supplying <code>action</code> and <code>datetimeHour</code> to the group’s <code>dimensions</code>, we can add individual fields that we want to find common groups of.</p>
+<p>By ordering by descending count, we’ll retrieve groups with the highest commonality first, limiting to the top 5 of each. We can add a single field nested within <code>dimensions</code> to group by it. For example, adding <code>clientIP</code> will give five groups with the IP addresses causing the most events.</p>
+<p>We can also add a <code>firewallEventsAdaptiveGroups</code> field with no nested <code>dimensions</code>. This will create a single group which allows us to find the total count of events matching our filter.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">query</span><span class="sk-032f62-99ffe4"> FirewallEventsTopNs</span><span class="sk-24292e-fff">($zoneTag: string, $filter: FirewallEventsAdaptiveGroupsFilter_InputObject) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  viewer</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    zones(filter:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> zoneTag:</span><span class="sk-24292e-fff"> $zoneTag </span><span class="sk-032f62-99ffe4">}</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      topIPs:</span><span class="sk-032f62-99ffe4"> firewallEventsAdaptiveGroups</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        limit:</span><span class="sk-005cc5-ffc799"> 5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        filter:</span><span class="sk-24292e-fff"> $filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        orderBy:</span><span class="sk-24292e-fff"> [count_DESC]</span></span>
+<span class="line"><span class="sk-24292e-fff">      ) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        count</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        dimensions</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          clientIP</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      topUserAgents:</span><span class="sk-032f62-99ffe4"> firewallEventsAdaptiveGroups</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        limit:</span><span class="sk-005cc5-ffc799"> 5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        filter:</span><span class="sk-24292e-fff"> $filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        orderBy:</span><span class="sk-24292e-fff"> [count_DESC]</span></span>
+<span class="line"><span class="sk-24292e-fff">      ) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        count</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        dimensions</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          userAgent</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      total:</span><span class="sk-032f62-99ffe4"> firewallEventsAdaptiveGroups</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        limit:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        filter:</span><span class="sk-24292e-fff"> $filter</span></span>
+<span class="line"><span class="sk-24292e-fff">      ) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        count</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><em>Note - we can add the <code>firewallEventsAdaptiveGroups</code> field multiple times within a single query, each aliased differently. This allows us to fetch multiple different groupings by different fields, or with no groupings at all. In this case, getting a list of top IP addresses, top user agents, and the total events.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="567" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=715&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=640&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=715&amp;h=567&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=750&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=828&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=1080&amp;h=856&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=1280&amp;h=1015&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=1430&amp;h=1134&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How we used our new GraphQL Analytics API to build Firewall Analytics Embedded Image - vu8mUx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46H3PRGV3KZ32ZBCH1WBHZ.png&amp;w=1025&amp;h=813&amp;f=webp" data-lightbox-width="1025" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="567" class="pt-portable-image-media"></div>
+</figure>
+<p>We can then reference each of these aliases in the UI, mapping over their respective groups to render each row with its count, and a bar which represents the proportion of total events, showing the proportion of all events each row equates to.</p>
+<h3>Are these firewall events false positives?</h3>
+<p>After users have identified spikes, anomalies and common attributes, we wanted to surface more information as to whether these have been caused by malicious traffic, or are false positives.</p>
+<p>To do this, we wanted to provide additional context on the events themselves, rather than just counts. We can do this by querying the <code>firewallEventsAdaptive</code> field for these events.</p>
+<p>Our GraphQL schema uses the same filter format for both the aggregate <code>firewallEventsAdaptiveGroups</code> field and the raw <code>firewallEventsAdaptive</code> field. This allows us to use the same filters to fetch the individual events which summate to the counts and aggregates in the visualisations above.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">query</span><span class="sk-032f62-99ffe4"> FirewallEventsList</span><span class="sk-24292e-fff">($zoneTag: string, $filter: FirewallEventsAdaptiveFilter_InputObject) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  viewer</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    zones(filter:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> zoneTag:</span><span class="sk-24292e-fff"> $zoneTag </span><span class="sk-032f62-99ffe4">}</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      firewallEventsAdaptive(</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        filter:</span><span class="sk-24292e-fff"> $filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        limit:</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        orderBy:</span><span class="sk-24292e-fff"> [datetime_DESC]</span></span>
+<span class="line"><span class="sk-24292e-fff">      ) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        action</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        clientAsn</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        clientCountryName</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        clientIP</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        clientRequestPath</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        clientRequestQuery</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        datetime</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        rayName</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        source</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        userAgent</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="361" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=715&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=640&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=715&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=750&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=828&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=1080&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=1280&amp;h=646&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=1430&amp;h=722&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="How we used our new GraphQL Analytics API to build Firewall Analytics Embedded Image - ZXdug6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47903JD8T7VVYWBB0HFPDM.png&amp;w=1150&amp;h=580&amp;f=webp" data-lightbox-width="1150" data-lightbox-height="580" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="361" class="pt-portable-image-media"></div>
+</figure>
+<p>Once we have our individual events, we can render all of the individual fields we’ve requested, providing users the additional context on event they need to determine whether this is a false positive or not.</p>
+<p>That’s how we used our new GraphQL Analytics API to build Firewall Analytics, helping solve some of our customers most common security workflow use cases. We’re excited to see what you build with it, and the problems you can help tackle.</p>
+<p>You can find out how to get started querying our GraphQL Analytics API using GraphiQL in our <a href="https://developers.cloudflare.com/analytics/graphql-api/getting-started" target="_blank" rel="noopener noreferrer">developer documentation</a>, or learn more about writing GraphQL queries on the official GraphQL Foundation <a href="https://graphql.org/learn/queries" target="_blank" rel="noopener noreferrer">documentation</a>.</p>

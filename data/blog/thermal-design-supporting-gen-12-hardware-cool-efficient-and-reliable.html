@@ -1,156 +1,108 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1FqWWd057mGYRH9fhoWcHq/efe74e960eb2857bf59e7c871feaf9ab/BLOG-2444_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>In the dynamic evolution of AI and cloud computing, the deployment of efficient and reliable hardware is critical. As we roll out our <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>Gen 12 hardware</u></a> across hundreds of cities worldwide, the challenge of maintaining optimal thermal performance becomes essential. This blog post provides a deep dive into the robust thermal design that supports our newest Gen 12 server hardware, ensuring it remains reliable, efficient, and cool (pun very much intended).</p>
-	<div class="flex anchor relative">
-		<h2 id="the-importance-of-thermal-design-for-hardware-electronics">The importance of thermal design for hardware electronics</h2>
-		<a href="https://blog.cloudflare.com/#the-importance-of-thermal-design-for-hardware-electronics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Generally speaking, a server has five core resources: CPU (computing power), RAM (short term memory), SSD (long term storage), NIC (Network Interface Controller, connectivity beyond the server), and GPU (for AI/ML computations). Each of these components can withstand different temperature limits based on their design, materials, location within the server, and most importantly, the power they are designed to work at. This final criteria is known as thermal design power (TDP).</p>
-	<p>The reason why TDP is so important is closely related to the <a href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Thermodynamics/The_Four_Laws_of_Thermodynamics/First_Law_of_Thermodynamics" target="_blank" rel="noopener noreferrer"><u>first law of thermodynamics</u></a>, which states that energy cannot be created or destroyed, only transformed. In semiconductors, electrical energy is converted into heat, and TDP measures the maximum heat output that needs to be managed to ensure proper functioning.</p>
-	<p>Back in December 2023, we <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor"><u>talked</u></a> about our decision to move to a 2U form factor, doubling the height of the server chassis to optimize rack density and increase cooling capacity. In this post, we want to share more details on how this additional space is being used to improve performance and reliability supporting up to three times more total system power.</p>
-	<div class="flex anchor relative">
-		<h2 id="standardization">Standardization</h2>
-		<a href="https://blog.cloudflare.com/#standardization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In order to support our multi-vendor strategy that mitigates supply chain risks ensuring continuity for our infrastructure, we introduced our own thermal specification to standardize thermal design and system performance. At Cloudflare, we find significant value in building customized hardware optimized for our unique workloads and applications, and we are very fortunate to partner with great hardware vendors who understand and support this vision. However, partnering with multiple vendors can introduce design variables that Cloudflare then controls for consistency within a hardware generation. Some of the most relevant requirements we include in our thermal specification are:</p>
-	<ul>
-		<li>
-			<p><b>Ambient conditions:</b> Given our globally distributed footprint with presence <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>in over 330 cities</u></a>, environmental conditions can vary significantly.&nbsp; Hence, servers in our fleet can experience a wide range of temperatures, typically ranging between 28 to 35°C. Therefore, our systems are designed and validated to operate with no issue over temperature ranges from 5 to 40°C (following the <a href="https://xp20.ashrae.org/datacom1_4th/ReferenceCard.pdf" target="_blank" rel="noopener noreferrer"><u>ASHRAE A3</u></a> definition).</p>
-		</li>
-		<li>
-			<p><b>Thermal margins:</b> Cloudflare designs with clear requirements for temperature limits on different operating conditions, simulating peak stress, average workloads, and idle conditions. This allows Cloudflare to validate that the system won’t experience thermal throttling, which is a power management control mechanism used to protect electronics from high temperatures.</p>
-		</li>
-		<li>
-			<p><b>Fan failure support to increase system reliability:</b> This new generation of servers is 100% air cooled. As such, the algorithm that controls fan speed based on critical component temperature needs to be optimized to support continuous operation over the server life cycle. Even though fans are designed with a high (up to seven years) mean time between failure (MTBF), we know fans can and do fail. Losing a server's worth of capacity due to thermal risks caused by a single fan failure is expensive. Cloudflare requires the server to continue to operate with no issue even in the event of one fan failure. Each Gen 12 server contains four axial fans providing the extra cooling capacity to prevent failures.</p>
-		</li>
-		<li>
-			<p><b>Maximum power used to cool the system:</b> Because our goal is to serve more Internet traffic using less power, we aim to ensure the hardware we deploy is using power efficiently. Great thermal management must consider the overall cost of cooling relative to the total system power input. It is inefficient to burn power consumption on cooling instead of compute. Thermal solutions should look at the hardware architecture holistically and implement mechanical modifications to the system design in order to optimize airflow and cooling capacity before considering increasing fan speed, as fan power consumption proportionally scales to the cube of its rotational speed. (For example, running the fans at twice (2x) the rotational speed would consume 8x more power,)</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="system-layout">System layout</h2>
-		<a href="https://blog.cloudflare.com/#system-layout" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Placing each component strategically within the server will also influence the thermal performance of the system. For this generation of servers, we made several internal layout decisions, where the final component placement takes into consideration optimal airflow patterns, preventing pre-heated air from affecting equipment in the rear end of the chassis.&nbsp;</p>
-	<p>Bigger and more powerful fans were selected in order to take advantage of the additional volume available in a 2U form factor. Growing from 40 to 80 millimeters, a single fan can provide up to four times more airflow. Hence, bigger fans can run at slower speeds to provide the required airflow to cool down the same components, significantly improving power efficiency.&nbsp;</p>
-	<p>The Extended Volume Air Cooled (EVAC) heatsink was optimized for Gen 12 hardware, and is designed with increased surface area to maximize heat transfer. It uses heatpipes to move the heat effectively away from the CPU to the extended fin region that sits immediately in front of the fans as shown in the picture below.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5jC8iqP4QeyZ6EfJsQo9Fi/c5ff4981a3f5bb70dfa2576f864df5e1/BLOG-2444_2.png" alt="BLOG-2444 2" class="kg-image" width="560" height="453" loading="lazy">
-	</figure>
-	<p><sub><i>EVAC heatsink installed in one of our Gen 12 servers. The extended fin region sits right in front of the axial fans. (Photo courtesy of vendor.)</i></sub></p>
-	<p>The combination of optimized heatsink design and selection of high-performing fans is expected to significantly reduce the power used for cooling the system. These savings will vary depending on ambient conditions and system stress, but under a typical stress scenario at 25°C ambient temperature, power savings could be as much as 50%.</p>
-	<p>Additionally, we ensured that the critical components in the rear section of the system, such as the NIC and <a href="https://blog.cloudflare.com/introducing-the-project-argus-datacenter-ready-secure-control-module-design-specification"><u>DC-SCM</u></a>, were positioned away from the heatsink to promote the use of cooler available air within the system. Learning from past experience, the NIC temperature is monitored by the Baseboard Management Controller (BMC), which provides remote access to the server for administrative tasks and monitoring health metrics. Because the NIC has a built-in feature to protect itself from overheating by going into standby mode when the chip temperature reaches critical limits, it is important to provide air at the lowest possible temperature. As a reference, the temperature of the air right behind the CPU heatsink can reach 70°C or higher, whereas behind the memory banks, it would reach about 55°C under the same circumstances. The image below shows the internal placement of the most relevant components considered while building the thermal solution.&nbsp;&nbsp;</p>
-	<p>Using air as cold as possible to cool down any component will increase overall system reliability, preventing potential thermal issues and unplanned system shutdowns. That’s why our fan algorithm uses every thermal sensor available to ensure thermal health while using the minimum possible amount of energy.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4O9x7Xe3PxR1iU1gNCEHIg/86a8e4a89d069f3f8d41c5c0a83ea00b/BLOG-2444_3.png" alt="BLOG-2444 3" class="kg-image" width="832" height="531" loading="lazy">
-	</figure>
-	<p><sub><i>Components inside the compute server from one of our vendors, viewed from the rear of the server. (Illustration courtesy of vendor.)</i></sub></p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+<p>In the dynamic evolution of AI and cloud computing, the deployment of efficient and reliable hardware is critical. As we roll out our <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor" target="_blank" rel="noopener noreferrer"><u>Gen 12 hardware</u></a> across hundreds of cities worldwide, the challenge of maintaining optimal thermal performance becomes essential. This blog post provides a deep dive into the robust thermal design that supports our newest Gen 12 server hardware, ensuring it remains reliable, efficient, and cool (pun very much intended).</p>
+<h2>The importance of thermal design for hardware electronics</h2>
+<p>Generally speaking, a server has five core resources: CPU (computing power), RAM (short term memory), SSD (long term storage), NIC (Network Interface Controller, connectivity beyond the server), and GPU (for AI/ML computations). Each of these components can withstand different temperature limits based on their design, materials, location within the server, and most importantly, the power they are designed to work at. This final criteria is known as thermal design power (TDP).</p>
+<p>The reason why TDP is so important is closely related to the <a href="https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Thermodynamics/The_Four_Laws_of_Thermodynamics/First_Law_of_Thermodynamics" target="_blank" rel="noopener noreferrer"><u>first law of thermodynamics</u></a>, which states that energy cannot be created or destroyed, only transformed. In semiconductors, electrical energy is converted into heat, and TDP measures the maximum heat output that needs to be managed to ensure proper functioning.</p>
+<p>Back in December 2023, we <a href="https://blog.cloudflare.com/cloudflare-gen-12-server-bigger-better-cooler-in-a-2u1n-form-factor" target="_blank" rel="noopener noreferrer"><u>talked</u></a> about our decision to move to a 2U form factor, doubling the height of the server chassis to optimize rack density and increase cooling capacity. In this post, we want to share more details on how this additional space is being used to improve performance and reliability supporting up to three times more total system power.</p>
+<h2>Standardization</h2>
+<p>In order to support our multi-vendor strategy that mitigates supply chain risks ensuring continuity for our infrastructure, we introduced our own thermal specification to standardize thermal design and system performance. At Cloudflare, we find significant value in building customized hardware optimized for our unique workloads and applications, and we are very fortunate to partner with great hardware vendors who understand and support this vision. However, partnering with multiple vendors can introduce design variables that Cloudflare then controls for consistency within a hardware generation. Some of the most relevant requirements we include in our thermal specification are:</p>
+<ul>
+	<li><strong>Ambient conditions:</strong> Given our globally distributed footprint with presence <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>in over 330 cities</u></a>, environmental conditions can vary significantly.&nbsp; Hence, servers in our fleet can experience a wide range of temperatures, typically ranging between 28 to 35°C. Therefore, our systems are designed and validated to operate with no issue over temperature ranges from 5 to 40°C (following the <a href="https://xp20.ashrae.org/datacom1_4th/ReferenceCard.pdf" target="_blank" rel="noopener noreferrer"><u>ASHRAE A3</u></a> definition).</li>
+	<li><strong>Thermal margins:</strong> Cloudflare designs with clear requirements for temperature limits on different operating conditions, simulating peak stress, average workloads, and idle conditions. This allows Cloudflare to validate that the system won’t experience thermal throttling, which is a power management control mechanism used to protect electronics from high temperatures.</li>
+	<li><strong>Fan failure support to increase system reliability:</strong> This new generation of servers is 100% air cooled. As such, the algorithm that controls fan speed based on critical component temperature needs to be optimized to support continuous operation over the server life cycle. Even though fans are designed with a high (up to seven years) mean time between failure (MTBF), we know fans can and do fail. Losing a server's worth of capacity due to thermal risks caused by a single fan failure is expensive. Cloudflare requires the server to continue to operate with no issue even in the event of one fan failure. Each Gen 12 server contains four axial fans providing the extra cooling capacity to prevent failures.</li>
+	<li><strong>Maximum power used to cool the system:</strong> Because our goal is to serve more Internet traffic using less power, we aim to ensure the hardware we deploy is using power efficiently. Great thermal management must consider the overall cost of cooling relative to the total system power input. It is inefficient to burn power consumption on cooling instead of compute. Thermal solutions should look at the hardware architecture holistically and implement mechanical modifications to the system design in order to optimize airflow and cooling capacity before considering increasing fan speed, as fan power consumption proportionally scales to the cube of its rotational speed. (For example, running the fans at twice (2x) the rotational speed would consume 8x more power,)</li>
+</ul>
+<h2>System layout</h2>
+<p>Placing each component strategically within the server will also influence the thermal performance of the system. For this generation of servers, we made several internal layout decisions, where the final component placement takes into consideration optimal airflow patterns, preventing pre-heated air from affecting equipment in the rear end of the chassis.&nbsp;</p>
+<p>Bigger and more powerful fans were selected in order to take advantage of the additional volume available in a 2U form factor. Growing from 40 to 80 millimeters, a single fan can provide up to four times more airflow. Hence, bigger fans can run at slower speeds to provide the required airflow to cool down the same components, significantly improving power efficiency.&nbsp;</p>
+<p>The Extended Volume Air Cooled (EVAC) heatsink was optimized for Gen 12 hardware, and is designed with increased surface area to maximize heat transfer. It uses heatpipes to move the heat effectively away from the CPU to the extended fin region that sits immediately in front of the fans as shown in the picture below.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="560" height="453" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=560&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=560&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 560w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=640&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=750&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=828&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=1080&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=1120&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 1120w" alt="BLOG-2444 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NC9A9TB16Q3GM1SBXSJA.png&amp;w=560&amp;h=453&amp;f=webp" data-lightbox-width="560" data-lightbox-height="453" data-astro-cid-7nvefuv6="true" sizes="(min-width: 560px) 560px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="560" height="453" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sub><em>EVAC heatsink installed in one of our Gen 12 servers. The extended fin region sits right in front of the axial fans. (Photo courtesy of vendor.)</em></sub></p>
+<p>The combination of optimized heatsink design and selection of high-performing fans is expected to significantly reduce the power used for cooling the system. These savings will vary depending on ambient conditions and system stress, but under a typical stress scenario at 25°C ambient temperature, power savings could be as much as 50%.</p>
+<p>Additionally, we ensured that the critical components in the rear section of the system, such as the NIC and <a href="https://blog.cloudflare.com/introducing-the-project-argus-datacenter-ready-secure-control-module-design-specification" target="_blank" rel="noopener noreferrer"><u>DC-SCM</u></a>, were positioned away from the heatsink to promote the use of cooler available air within the system. Learning from past experience, the NIC temperature is monitored by the Baseboard Management Controller (BMC), which provides remote access to the server for administrative tasks and monitoring health metrics. Because the NIC has a built-in feature to protect itself from overheating by going into standby mode when the chip temperature reaches critical limits, it is important to provide air at the lowest possible temperature. As a reference, the temperature of the air right behind the CPU heatsink can reach 70°C or higher, whereas behind the memory banks, it would reach about 55°C under the same circumstances. The image below shows the internal placement of the most relevant components considered while building the thermal solution.&nbsp;&nbsp;</p>
+<p>Using air as cold as possible to cool down any component will increase overall system reliability, preventing potential thermal issues and unplanned system shutdowns. That’s why our fan algorithm uses every thermal sensor available to ensure thermal health while using the minimum possible amount of energy.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="456" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=715&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=640&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=715&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=750&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=828&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=1080&amp;h=689&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=1280&amp;h=816&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=1430&amp;h=912&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2444 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PF5NYJMVVKM9RBSH35GK.png&amp;w=832&amp;h=531&amp;f=webp" data-lightbox-width="832" data-lightbox-height="531" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="456" class="pt-portable-image-media"></div>
+</figure>
+<p><sub><em>Components inside the compute server from one of our vendors, viewed from the rear of the server. (Illustration courtesy of vendor.)</em></sub></p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
 					<p>1️. Host Processor Module (HPM)</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>8. Power Distribution Board (PDB)</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2️. DIMMs (x12)&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9. GPUs (up to 2)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3️. CPU (under CPU heatsink)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>10. GPU riser card</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4. CPU heatsink</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>11. GPU riser cage</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5. System fans (x4: 80mm, dual rotor)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>12. Power Supply Units, PSUs (x2)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6. Bracket with power button and intrusion switch</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>13. DC-SCM 2.0 module</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7. E1.S SSD&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>14. OCP 3.0 module</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<div class="flex anchor relative">
-		<h2 id="making-hardware-flexible">Making hardware flexible</h2>
-		<a href="https://blog.cloudflare.com/#making-hardware-flexible" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With the same thought process of optimizing system layout, we decided to use a PCIe riser above the Power Supply Units (PSUs), enabling the support of up to 2x single wide GPU add-in cards. Once again, the combination of high-performing fans with strategic system architecture gave us the capability to add up to 400W to the original power envelope and incorporate accelerators used in our new and recently announced AI and ML features.&nbsp;</p>
-	<p>Hardware lead times are typically long, certainly when compared to software development. Therefore, a reliable strategy for hardware flexibility is imperative in this rapidly changing environment for specialized computing. When we started evaluating Gen 12 hardware architecture and early concept design, we didn’t know for sure we would be needing to implement GPUs for this generation, let alone how many or which type. However, highly efficient design and intentional due diligence analyzing hypothetical use cases help ensure flexibility and scalability of our thermal solution, supporting new requirements from our product teams, and ultimately providing the best solutions to our customers.</p>
-	<div class="flex anchor relative">
-		<h2 id="rack-integrated-solutions">Rack-integrated solutions</h2>
-		<a href="https://blog.cloudflare.com/#rack-integrated-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We are also increasing the volume of integrated racks shipped to our global colocation facilities. Due to the expected increase in rack shipments, it is now more important that we also increase the corresponding mechanical and thermal test coverage from system level (L10) to rack level (L11).</p>
-	<p>Since our servers don’t use the full depth of a standard rack in order to leave room for cable management and Power Distribution Units (PDUs), there is another fluid mechanics factor that we need to consider to improve our holistic solution.&nbsp;</p>
-	<p>We design our hardware based on one of the most typical data center architectures, which have alternating cold and hot aisles. Fans at the front of the server pull in cold air from the corresponding aisle, the air then flows through the server, cooling down the internal components and the hot air is exhausted into the adjacent aisle, as illustrated in the diagram below.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3rxT3iQ1d2ObzYRzH5tMVc/78e372f64e79e0c1c773b9d108514d01/BLOG-2444_4.png" alt="BLOG-2444 4" class="kg-image" width="1676" height="761" loading="lazy">
-	</figure>
-	<p><sub><i>A conventional air-flow diagram of a standard server where the cold air enters from the front of the server and hot air leaves through the rear side of the system.&nbsp;</i></sub></p>
-	<p>In fluid dynamics, the minimum effort principle will drive fluids (air in this case) to move where there is less resistance — i.e. wherever it takes less energy to get from point A to point B. With the help of fans forcing air to flow inside the server and pushing it through the rear, the more crowded systems will naturally get less air than those with more space where the air can move around. Since we need more airflow to pass through the systems with higher power demands, we’ve also ensured that the rack configuration keeps these systems in the bottom of the rack where air tends to be at a lower temperature. Remember that heat rises, so even within the cold aisle, there can be a small but important temperature difference between the bottom and the top section of the rack. It is our duty as hardware engineers to use thermodynamics in our favor.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our new generation of hardware is live in our data centers and it represents a significant leap forward in our efficiency, reliability, and sustainability commitments. Combining optimal heat sink design, thoughtful fan selection, and meticulous system layout and hardware architecture, we are confident that these new servers will operate smoothly in our global network with diverse environmental conditions, maintaining optimal performance of our Connectivity Cloud.&nbsp;</p>
-	<p><a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>Come join us</u></a> at Cloudflare to help deliver a better Internet!</p>
 </div>
+<h2>Making hardware flexible</h2>
+<p>With the same thought process of optimizing system layout, we decided to use a PCIe riser above the Power Supply Units (PSUs), enabling the support of up to 2x single wide GPU add-in cards. Once again, the combination of high-performing fans with strategic system architecture gave us the capability to add up to 400W to the original power envelope and incorporate accelerators used in our new and recently announced AI and ML features.&nbsp;</p>
+<p>Hardware lead times are typically long, certainly when compared to software development. Therefore, a reliable strategy for hardware flexibility is imperative in this rapidly changing environment for specialized computing. When we started evaluating Gen 12 hardware architecture and early concept design, we didn’t know for sure we would be needing to implement GPUs for this generation, let alone how many or which type. However, highly efficient design and intentional due diligence analyzing hypothetical use cases help ensure flexibility and scalability of our thermal solution, supporting new requirements from our product teams, and ultimately providing the best solutions to our customers.</p>
+<h2>Rack-integrated solutions</h2>
+<p>We are also increasing the volume of integrated racks shipped to our global colocation facilities. Due to the expected increase in rack shipments, it is now more important that we also increase the corresponding mechanical and thermal test coverage from system level (L10) to rack level (L11).</p>
+<p>Since our servers don’t use the full depth of a standard rack in order to leave room for cable management and Power Distribution Units (PDUs), there is another fluid mechanics factor that we need to consider to improve our holistic solution.&nbsp;</p>
+<p>We design our hardware based on one of the most typical data center architectures, which have alternating cold and hot aisles. Fans at the front of the server pull in cold air from the corresponding aisle, the air then flows through the server, cooling down the internal components and the hot air is exhausted into the adjacent aisle, as illustrated in the diagram below.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2444 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46B4RDEP2TDH1VNG4TWZER.png&amp;w=1676&amp;h=761&amp;f=webp" data-lightbox-width="1676" data-lightbox-height="761" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media"></div>
+</figure>
+<p><sub><em>A conventional air-flow diagram of a standard server where the cold air enters from the front of the server and hot air leaves through the rear side of the system.&nbsp;</em></sub></p>
+<p>In fluid dynamics, the minimum effort principle will drive fluids (air in this case) to move where there is less resistance — i.e. wherever it takes less energy to get from point A to point B. With the help of fans forcing air to flow inside the server and pushing it through the rear, the more crowded systems will naturally get less air than those with more space where the air can move around. Since we need more airflow to pass through the systems with higher power demands, we’ve also ensured that the rack configuration keeps these systems in the bottom of the rack where air tends to be at a lower temperature. Remember that heat rises, so even within the cold aisle, there can be a small but important temperature difference between the bottom and the top section of the rack. It is our duty as hardware engineers to use thermodynamics in our favor.&nbsp;</p>
+<h2>Conclusion</h2>
+<p>Our new generation of hardware is live in our data centers and it represents a significant leap forward in our efficiency, reliability, and sustainability commitments. Combining optimal heat sink design, thoughtful fan selection, and meticulous system layout and hardware architecture, we are confident that these new servers will operate smoothly in our global network with diverse environmental conditions, maintaining optimal performance of our Connectivity Cloud.&nbsp;</p>
+<p><a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer"><u>Come join us</u></a> at Cloudflare to help deliver a better Internet!</p>

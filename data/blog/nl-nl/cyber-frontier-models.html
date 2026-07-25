@@ -1,0 +1,178 @@
+<p>De afgelopen maanden hebben we op onze eigen infrastructuur een reeks op beveiliging gerichte LLM’s getest. Deze LLM’s helpen ons mogelijke kwetsbaarheden in onze eigen systemen op te sporen, zodat we die kunnen verhelpen – en ze laten ons ook zien wat aanvallers met de nieuwste modellen kunnen doen.</p>
+<p>Geen van deze LLM's heeft meer aandacht getrokken dan Mythos Preview van Anthropic. Een paar weken geleden werden we uitgenodigd om Mythos Preview te gebruiken als onderdeel van <a href="https://www.anthropic.com/glasswing" target="_blank" rel="noopener noreferrer"><u>Project Glasswing</u></a>. We richtten het model al snel op meer dan vijftig van onze eigen repositories – om te zien wat het zou vinden en om te zien hoe het werkt. </p>
+<p>In deze blog delen we onze bevindingen: wat de modellen goed deden en wat niet, en hoe de architectuur en de processen eromheen moeten worden aangepast, zodat ze op grote schaal kunnen worden ingezet.</p>
+<h2>Wat is er veranderd door Mythos Preview</h2>
+<p>Mythos Preview is echt een grote stap vooruit, en het is de moeite waard om dat duidelijk te zeggen voordat we dieper op andere zaken ingaan. We zijn al een tijdje bezig met het testen van modellen op onze code, en de sprong van wat er mogelijk was met eerdere algemene frontier-modellen naar wat Mythos Preview vandaag de dag doet, is meer dan alleen een verfijning.</p>
+<p>Mythos is een heel andere soort tool die voor andere doeleinden wordt gebruikt, en dat maakt een eerlijke vergelijking met eerdere modellen lastig. In plaats van Mythos Preview te vergelijken met algemene state-of-the-art-modellen, is het zinvoller om te beschrijven wat het model daadwerkelijk kan, en er zijn twee kenmerken die ons tijdens het werk met Mythos Preview opvielen:</p>
+<ul>
+	<li><strong>Constructie van exploitketens -</strong> Een echte aanval profiteert zelden van slechts één bug. Voor een aanval worden verschillende kleine aanvalselementen tot een werkende exploit samengevoegd. Zo zou het bijvoorbeeld een 'use-after-free'-bug kunnen omzetten in een willekeurige lees- en schrijfopdracht, de controlestroom kunnen kapen en met behulp van ROP-ketens (Return-Oriented Programming) de volledige controle over een systeem kunnen overnemen. Mythos Preview kan meerdere van deze basiselementen verwerken en bepalen hoe deze tot een geldig bewijs kunnen worden samengevoegd. De redenering die daarbij wordt gevolgd, lijkt meer op het werk van een ervaren onderzoeker dan op de output van een geautomatiseerde scanner.</li>
+	<li><strong>Generatie van bewijsmateriaal -</strong> Een bug vinden en aantonen dat deze misbruikt kan worden, zijn twee verschillende dingen, en Mythos Preview kan beide. Het model schrijft code die de vermoedelijke bug zou activeren, compileert die code in een testomgeving en voert deze uit. Als het programma doet wat het model voorspelde, is dat het bewijs. Zo niet, dan registreert het model de fout, past het zijn hypothese aan en probeert het opnieuw. De testcyclus is net zo belangrijk als de bugs die ermee worden opgespoord, want een vermoedelijke fout zonder enig bewijs is slechts speculatie, en Mythos Preview vult die leemte zelf op.</li>
+</ul>
+<p>Een deel van wat we hierboven beschrijven, is niet helemaal uniek voor Mythos Preview. Toen we andere geavanceerde modellen door hetzelfde harnas haalden, ontdekten ze een behoorlijk aantal van dezelfde onderliggende bugs, en in sommige gevallen gingen ze ook op het gebied van redenering verder dan we hadden verwacht. Waar ze tekortschoten, was bij het samenvoegen van de verschillende onderdelen. Een model spoorde een interessante bug op, gaf een goed doordachte beschrijving van waarom die bug van belang was, en daar hield het mee op, waardoor de eigenlijke lus niet af was en de vraag open bleef of de bug misbruikt kon worden. Wat er met Mythos Preview is veranderd, is dat een model nu die bugs met een lage ernstgraad (die voorheen onzichtbaar in een backlog zouden blijven zitten) tot één enkele, ernstigere kwetsbaarheid kan samenvoegen.&nbsp;</p>
+<h2>Voorbeelden van afwijzingen bij legitiem kwetsbaarheidsonderzoek</h2>
+<p>Het Mythos Preview-model dat door Anthropic werd verstrekt in het kader van Project Glasswing, beschikte niet over de extra veiligheidsmaatregelen die wel aanwezig zijn in algemeen beschikbare modellen (zoals Opus 4.7 of GPT-5.5).</p>
+<p>Desondanks wijst het model bepaalde verzoeken op natuurlijke wijze af. Net zoals de cybercapaciteiten die het model geschikt maakten voor het opsporen van kwetsbaarheden, heeft het model zijn eigen, vanzelf ontstane restricties waardoor soms legitieme verzoeken om veiligheidsonderzoek worden afgewezen. Maar we hebben opgemerkt dat deze natuurlijke afwijzingen niet consistent zijn: indien anders geformuleerd of in een andere context gepresenteerd, kan dezelfde taak tot totaal andere resultaten leiden, zoals uit de onderstaande voorbeelden blijkt.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="412" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=715&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=640&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=715&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=750&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=828&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=1080&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=1280&amp;h=738&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=1430&amp;h=824&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3301 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FHYGPJ1X9TZE5PP0KPR2.png&amp;w=1242&amp;h=716&amp;f=webp" data-lightbox-width="1242" data-lightbox-height="716" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="412" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>Voorbeeld van hoe Mythos Preview het opzetten van een werkend proof-of-concept vertraagt&nbsp;</em></sup></p>
+<p>Zo weigerde het model aanvankelijk een kwetsbaarheidsonderzoek uit te voeren voor een project, maar ging vervolgens akkoord met hetzelfde onderzoek op dezelfde code na een wijziging van de projectomgeving, die daar los van stond. Er was niets veranderd aan de code die werd geanalyseerd. <br><br>In een ander geval ontdekte en bevestigde het model verschillende ernstige geheugenfouten in een codebase, maar weigerde vervolgens een demonstratie-exploit te schrijven. Hetzelfde verzoek, anders geformuleerd, leverde een ander antwoord op. Hetzelfde verzoek kan bij verschillende uitvoeringen zelfs tot verschillende resultaten leiden vanwege het probabilistische karakter van het model. Semantisch gelijkwaardige taken kunnen tot tegengestelde resultaten leiden, afhankelijk van hoe en wanneer ze aan het model worden voorgelegd.</p>
+<p>Dit is van belang, omdat de ingebouwde afwijzingen en restricties van het model weliswaar reëel zijn, maar niet consistent genoeg zijn om op zichzelf als volledige veiligheidsgrens te fungeren. Dat is precies de reden waarom elk degelijk cyberfrontier-model dat in de toekomst algemeen beschikbaar wordt gesteld, naast dit basisgedrag ook aanvullende veiligheidsmaatregelen moet bevatten, zodat het geschikt is voor algemeen gebruik buiten een gecontroleerde onderzoeksomgeving zoals Project Glasswing.</p>
+<h2>Het signaal-ruisprobleem</h2>
+<p>Een van de moeilijkste aspecten bij het prioriteren van beveiligingskwetsbaarheden is bepalen welke bugs daadwerkelijk bestaan, welke misbruikt kunnen worden en welke onmiddellijk verholpen moeten worden. Dit was zelfs in de tijd vóór de opkomst van AI al een lastig probleem. AI-kwetsbaarheidsscanners en door AI gegenereerde code hebben de situatie verder verergerd, en bij Cloudflare hebben we meerdere fasen voor validatie achteraf ingebouwd om dit aan te pakken.</p>
+<p>Twee factoren bepalen de mate van ruis:</p>
+<ul>
+	<li><strong>Programmeertaal</strong> - C en C++ bieden directe controle over het geheugen, maar brengen daarmee ook een reeks veelvoorkomende bugs met zich mee, zoals bufferoverschrijdingen en het lezen of schrijven buiten de toegestane grenzen, die in geheugenveilige talen zoals Rust al tijdens het compileren worden voorkomen. We zagen consequent meer valse positieven bij projecten die in talen waren geschreven die niet geheugenveilig zijn.</li>
+	<li><strong>Modelbias</strong> - Goede menselijke onderzoekers vertellen wat ze hebben gevonden en hoe zeker ze van hun zaak zijn. Modellen doen dat niet. Vraag een model om bugs op te sporen, dan worden die gevonden, ongeacht of de code bugs bevat of niet. De bevindingen worden vaak afgezwakt met woorden als 'mogelijk', 'potentieel' en 'in theorie', en deze afgezwakte bevindingen zijn veel talrijker dan de onomstotelijke. Dat is een aanvaardbare bias voor een verkennende tool. Dat is echter rampzalig voor een triage-wachtrij, waar elke twijfelachtige bevinding menselijke aandacht vergt en tokens kost om te worden afgewezen. Deze kosten lopen bij duizenden bevindingen alleen maar op.</li>
+</ul>
+<p>Mythos Preview is een duidelijke verbetering, met name wat betreft de mogelijkheid om kwetsbaarheden aan elkaar te koppelen, door meerdere kwetsbaarheden tot een werkend proof-of-concept te combineren in plaats van ze afzonderlijk te rapporteren. Een bevinding die met een proof-of-concept wordt geleverd, is een bevinding waarop je kunt voortbouwen, en dat betekent dat je veel minder tijd kwijt bent aan de vraag: "Is dit wel echt?"</p>
+<p>Onze detectiemiddelen zijn opzettelijk afgesteld om te veel te rapporteren, zodat we meer zien (en minder missen), wat met veel meer ruis gepaard gaat. Maar bij de eerste beoordeling blijkt de output van Mythos Preview van merkbaar hogere kwaliteit te zijn: minder onzekere bevindingen, duidelijkere reproductiestappen en minder werk om tot een besluit te komen over het verhelpen of afwijzen van de bug.</p>
+<h2>Waarom het niet werkt om een generieke codeeragent op een repository te richten</h2>
+<p>Toen we vorig jaar voor het eerst begonnen met AI-ondersteund kwetsbaarheidsonderzoek, volgden we ons instinct: we lieten een generieke codeeragent een willekeurige repository doorzoeken en vroegen hem om kwetsbaarheden op te sporen. Deze aanpak werkt wel, in die zin dat het model bevindingen oplevert, maar slaagt er niet in om een goed beeld te geven van een echte codebase en om waardevolle bevindingen te identificeren. Daar zijn twee belangrijke redenen voor:</p>
+<ul>
+	<li><strong>Context -</strong> Codeeragents zijn afgestemd op één specifieke taak: een functie ontwikkelen, een bug verhelpen of een refactor uitvoeren. Ze verwerken grote hoeveelheden broncode, houden zich telkens aan één hypothese en testen die herhaaldelijk. Dat is precies de verkeerde aanpak voor kwetsbaarheidsonderzoek dat van nature beperkt en parallel van aard is. Menselijke onderzoekers kiezen één specifiek onderwerp uit en bestuderen dat grondig. Dat ene onderwerp kan een enkele complexe functie zijn, het overschrijden van beveiligingsgrenzen of een specifieke kwetsbaarheidscategorie, zoals command-injecties, waarbij input van een aanvaller uiteindelijk als een shell-commando wordt uitgevoerd. Vervolgens doen ze dat opnieuw, voor een andere functie, beveiligingsgrens of kwetsbaarheidsklasse, en dat wel duizenden keren voor de hele codebase. Een sessie met één agent (zelfs met subagents) op een repository van honderdduizend regels kan op een zinvolle manier misschien een tiende van een procent van het geheel bestrijken, voordat het contextvenster van het model vol raakt en de comprimering in werking treedt, waardoor eerdere bevindingen die van belang zouden zijn geweest, mogelijk verloren gaan.</li>
+	<li><strong>Doorvoer -</strong> Een single-stream-agent voert één taak tegelijk uit, maar in echte codebases zijn er vaak veel hypothesen nodig die tegelijkertijd op verschillende componenten worden getoetst, met de mogelijkheid om verder uit te breiden wanneer er iets interessants opduikt. Je kunt één agent wel harder laten werken, maar op een gegeven moment word je niet langer beperkt door het model, maar door de aard van de interactie zelf. Het rechtstreekse gebruik van het model in een codeeragent blijkt prima te werken voor handmatig onderzoek wanneer een onderzoeker al een aanknopingspunt heeft en een tweede mening wil. Het is echter de verkeerde tool voor een hoge dekking. Toen we dat eenmaal hadden geaccepteerd, hebben we Mythos Preview niet langer voor de verkeerde taak ingezet, en zijn we begonnen met het bouwen van het harnas eromheen.</li>
+</ul>
+<h2>De functie van een harnas</h2>
+<p>We hebben vier lessen geleerd door het werk op schaal uit te voeren, die stuk voor stuk wezen op de noodzaak van een harnas dat de algehele uitvoering aanstuurt:</p>
+<ul>
+	<li><strong>Kleinere scope leidt tot betere resultaten -</strong> Als je tegen het model zegt: "Zoek kwetsbaarheden in deze repository", gaat het dwalen. Als je tegen het systeem zegt: "Zoek naar command-injection in deze specifieke functie, met deze vertrouwensgrens erboven; hier is het architectuurdocument en hier vind je eerdere berichtgeving over dit onderwerp", zorg je ervoor dat het systeem iets doet wat veel dichter in de buurt komt van wat een menselijke onderzoeker zou doen.</li>
+	<li><strong>Adversariële controle vermindert ruis –</strong> Door tussen de eerste bevinding en de wachtrij een tweede agent in te zetten, een agent met een andere prompt, een ander model en zonder de mogelijkheid om zelf bevindingen te genereren, wordt veel van de ruis opgevangen die de eerste agent zou missen als die alleen zijn eigen werk zou controleren. Het blijkt dat het veel effectiever is om twee agents opzettelijk met elkaar in conflict te brengen, dan om slechts één agent te vragen om voorzichtig te zijn.</li>
+	<li><strong>Door de keten over verschillende agents te verdelen, ontstaat een betere redenering -</strong> De vragen "Bevat deze code bugs?" en "Kan een aanvaller deze fout daadwerkelijk van buiten het systeem omzeilen?" zijn heel verschillend, en het model presteert bij beide beter als je ze afzonderlijk stelt, omdat elke vraag specifieker is dan de gecombineerde versie.</li>
+	<li><strong>Parallelle, beperkte taken presteren beter dan één alomvattende agent -</strong> De dekking wordt beter wanneer veel agents aan duidelijk afgebakende vragen werken en we alle gedupliceerde resultaten achteraf verwijderen, in plaats van één agent te vragen alles uitputtend te behandelen.</li>
+</ul>
+<p>Al deze observaties hebben betrekking op het gedrag van het model, en samen geven ze een beeld van iets dat geen chatinterface meer is. Het is een harnas dat je helpt om de gewenste resultaten te behalen. De eerste stappen bij het bouwen van een harnas zijn eenvoudig, aangezien je het model om hulp kunt vragen, en dat is precies wat wij hebben gedaan. We hebben Mythos Preview gebruikt om onze oorspronkelijke harnassen uit te breiden, aan te passen en te verbeteren, zodat ze optimaal aansluiten bij de sterke punten van het systeem.<br><br>Hieronder wordt beschreven hoe een harnas er in de praktijk uitziet.</p>
+<h2>Ons harnas voor het opsporen van kwetsbaarheden</h2>
+<p>Zo ziet ons systeem voor het opsporen van kwetsbaarheden er stapsgewijs uit. Het werd gebruikt om live code te scannen in onze runtime, het edge-datapad, de protocolstack, de control plane en de open-sourceprojecten waarvan we afhankelijk zijn.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=750&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=1080&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=1280&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=1430&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3301 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GX0SYD5QTE33E2VCP7EB.png&amp;w=1920&amp;h=869&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="869" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="324" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-k2e" class="html-block">
+	<figure class="table table-style-block-align-left" style="width:97.66%">
+		<table class="ck-table-resized" style="border-style:none">
+			<colgroup>
+				<col style="width:11.55%">
+				<col style="width:56.06%">
+				<col style="width:32.39%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong>Fase</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong>Wat het doet</strong></span>
+					</td>
+					<td style="background-color:#fce5cd;border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong>Waarom het belangrijk is</strong></span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/5736CBrNDFnYglaRFUtGp0/2bccdc1e5b5f1b21416c6439cdb63967/BLOG-3301_image7.png" data-ckbox-resource-id="822rcAA5ctaT" width="32" height="32" alt=""><br>
+								Verkennen</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Een agent doorloopt de repository van boven naar beneden, verdeelt de taken over subagents die verantwoordelijk zijn voor elk subsysteem, en stelt een architectuurdocument op met daarin de bouwopdrachten, vertrouwensgrenzen, toegangspunten en het verwachte aanvalsoppervlak. Ook genereert de agent de aanvankelijke takenwachtrij voor de volgende fase.&nbsp;&nbsp;</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Geeft alle downstream-agents een gedeelde context. Lost het afdwalingsprobleem op.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/7wGJ8jmh1gjMevxH31nSfv/b3bd6772cfa57939a1291cae8c4faab3/BLOG-3301_image8.png" data-ckbox-resource-id="MZetX0ROffYM" width="31" height="31" alt="">&nbsp;<br>
+								Zoeken</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Elke taak bestaat uit een aanvalsklasse in combinatie met een aanwijzing over het toepassingsgebied. De zogenaamde 'hunters' (de agents die op zoek gaan naar bugs) werken gelijktijdig, meestal zo’n vijftig tegelijk, waarbij elk zich in een aantal verkenning-subagents opsplitst. Elke hunter heeft toegang tot tools waarmee in een tijdelijke map en voor elke taak een proof-of-concept-code samengesteld en uitgevoerd kan worden.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Hier vindt het grootste deel van het werk plaats. Veel afzonderlijke taken tegelijkertijd, niet één alomvattende agent.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/7mMu2OOeot8CLuvu2PYAjx/144ecd5ef0785d8c6b0c7c3cd6feccc8/BLOG-3301_image5.png" data-ckbox-resource-id="b0ZpxOYkUhjr" width="29" height="29" alt=""><br>
+								Valideren</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Een onafhankelijke agent neemt de code nogmaals door en probeert de oorspronkelijke bevinding te weerleggen. Deze agent maakt gebruik van een andere prompt en kan zelf geen nieuwe bevindingen genereren.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Vangt een aanzienlijk deel van de fouten op die de hunter zelf niet zou opmerken bij het nakijken van zijn eigen werk.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/7f8SJhTAja5bLPvydZkrv4/11a9cf6b0cee030db5f56d0dd46e0b45/BLOG-3301_image11.png" data-ckbox-resource-id="Y31tucc41jy0" width="28" height="28" alt=""><br>
+								Gaten opvullen</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Hunters markeren gebieden die ze wel hebben bezocht, maar niet grondig hebben doorzocht. Die gebieden worden opnieuw in de wachtrij gezet voor een nieuwe verwerkingsronde.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Neutraliseert de neiging van het model om zich te richten op aanvalsklassen waarmee het al succes heeft geboekt.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/5tbCM9SUgCZlYF0m9e8CY0/c48b7f90e39ddc5bd6060d5067bae0ea/BLOG-3301_image4.png" data-ckbox-resource-id="lvNRuZ_yo_es" width="28" height="28" alt=""><br>
+								Duplicaten verwijderen</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Bevindingen die dezelfde hoofdoorzaak hebben, worden in één record samengevoegd.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Variantanalyse is een functie, niet een manier om de wachtrij vol dubbele vermeldingen te proppen.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/51VLQM1a40KKRdvq2HidRj/c9ad0209a54544fe783d9eb019a6f02b/BLOG-3301_image3.png" data-ckbox-resource-id="_rUjvs8wRMj1" width="29" height="29" alt=""><br>
+								Traceren</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Voor elke bevestigde bevinding in een gedeelde bibliotheek wordt een tracer-agent ingezet (één exemplaar per consumentenrepository), die gebruikmaakt van een symboolindex voor meerdere repositories en bepaalt of door aanvallers gecontroleerde input daadwerkelijk van buiten het systeem de bug bereikt.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">'Er is een fout' wordt verandert in 'Er is een bereikbare kwetsbaarheid'. Dit is de fase die er het meeste toe doet.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/4UhAgIcdpKcWxNG2kO5fIN/6f883a0f993604339b5381b14f63f40d/BLOG-3301_image1.png" data-ckbox-resource-id="ylBXj7IP-Thj" width="26" height="26" alt=""><br>
+								Feedback leveren</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">De bereikbare traces worden nieuwe zoekopdrachten in de consumentenrepositories waar de bug daadwerkelijk aan het licht is gekomen.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Dit maakt de cirkel rond. De pijplijn wordt tijdens het gebruik steeds beter.</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px"><strong><img src="https://images.ctfassets.net/zkvhlag99gkb/558dSiaH5GNrtmKGKbUEUH/8684108e9b99580e5194245a1e20cb79/BLOG-3301_image10.png" data-ckbox-resource-id="pDRKY2-VeUPg" width="27" height="27" alt=""><br>
+								Rapporteren</strong></span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">Een agent stelt een gestructureerd rapport op aan de hand van een vooraf gedefinieerd schema, corrigeert eventuele validatiefouten op basis van dat schema en stuurt het rapport naar een ingest-API.</span>
+					</td>
+					<td style="border-color:#f6b26b;border-width:1pt;padding:5pt;vertical-align:top">
+						<span style="background-color:transparent;color:#000000;font-family:Inter,sans-serif;font-size:15px">De output bestaat uit doorzoekbare gegevens, niet uit vrije tekst.</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</figure>
+</div>
+<h2>Wat dit voor beveiligingsteams betekent</h2>
+<p>De meest uitgesproken reactie van andere beveiligingsverantwoordelijken op Mythos Preview had betrekking op snelheid: sneller scannen, sneller patches installeren en de responscyclus verkorten. Meerdere teams waarmee we hebben gesproken, hebben nu een SLA van twee uur tussen de release van een CVE en de implementatie van de patch in de productieomgeving. Dat instinct is begrijpelijk: als de tijdlijn van de aanvaller korter wordt, moet die van de verdediger ook korter worden. Sneller alleen echter is niet genoeg, en wij denken dat veel teams op het punt staan om hun neus te stoten, ondanks de tijd, moeite en het geld dat hieraan wordt besteed.</p>
+<p>Sneller patchen heeft geen invloed op de structuur van de pijplijn die de patch genereert. Als regressietesten een dag in beslag nemen, kun je een SLA van twee uur niet halen zonder deze testen over te slaan, en de bugs die je meelevert als je regressietesten overslaat, zijn doorgaans ernstiger dan de bugs die je juist probeerde te verhelpen. We hebben dit gemerkt toen we het model zijn eigen patches lieten schrijven en zagen dat er een paar werden uitgerold die de oorspronkelijke bug weliswaar verhielpen, maar stilletjes iets anders kapotmaakten waar de code van afhankelijk was.</p>
+<p>De moeilijkere vraag is hoe de architectuur rondom de kwetsbaarheid eruit moet zien. Het uitgangspunt is om het voor een aanvaller moeilijker te maken om misbruik te maken van een kwetsbaarheid, zelfs als er een bug in het systeem zit, zodat het tijdsverschil tussen het moment waarop een kwetsbaarheid wordt ontdekt en het moment waarop deze wordt verholpen, minder belangrijk wordt. Dat betekent dat er beveiligingsmechanismen vóór de applicatie staan die voorkomen dat de bug wordt bereikt. Dit houdt in dat de applicatie zo moet worden ontworpen dat een fout in een bepaald deel van de code een aanvaller geen toegang geeft tot andere delen. Het betekent dat je een oplossing tegelijkertijd op alle plaatsen waar de code draait, kunt implementeren, in plaats van te moeten wachten tot afzonderlijke teams deze zelf implementeren.&nbsp;</p>
+<p>We beseffen ook dat dit onderwerp twee kanten heeft. Dezelfde mogelijkheden die ons hebben geholpen om bugs in onze eigen code op te sporen, zullen in verkeerde handen de aanvallen op alle applicaties op het internet alleen maar in de hand werken. Cloudflare fungeert als een soort buffer voor miljoenen van die applicaties, en de hierboven beschreven architectuurprincipes zijn precies de principes die onze producten ten behoeve van onze klanten toepassen. De komende weken zullen we meer informatie geven over wat dit voor onze klanten betekent.</p>
+<p>Als uw team soortgelijk werk verricht en ervaringen wil uitwisselen, neem dan contact met ons op via <a href="mailto:security-ai-research@cloudflare.com"><u>security-ai-research@cloudflare.com</u></a>.</p>
+<p><em>Ons onderzoek met Mythos Preview werd uitgevoerd in een gecontroleerde omgeving op basis van onze eigen code; elke kwetsbaarheid die daarbij aan het licht kwam, werd beoordeeld, geverifieerd en zo nodig verholpen volgens het formele kwetsbaarheidsbeheerproces van Cloudflare.</em></p>
+<p><em>Dit werk was een gezamenlijke inspanning. Met dank aan Albert Pedersen, Craig Strubhart, Dan Jones, Irtefa Fairuz, Martin Schwarzl en Rohit Chenna Reddy voor hun bijdragen aan het onderzoek, de technische ontwikkeling en de analyse die ten grondslag liggen aan dit blogbericht.</em></p>

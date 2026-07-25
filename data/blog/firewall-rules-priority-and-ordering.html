@@ -1,50 +1,29 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Uh1tgoBm2Buqz0bhdao9s/b7d696d76b6fc8dfc1fecf457464a293/firewall-rules-priority-and-ordering.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Firewall Rules are one of the best security features we released this year and have been an overwhelming success. Customers have been using Firewall Rules to solve interesting security related use cases; for example, advanced hotlink protection, restricting access to embargoed content (e.g. productId=1234), locking down sensitive API endpoints, and more.</p>
-	<p>One of the biggest pieces of feedback from the <a href="https://community.cloudflare.com/c/security" target="_blank" rel="noopener noreferrer">Cloudflare community</a>, Twitter, and via customer support, has been around the order in which rules are actioned. By default, Firewall Rules have a default precedence, based on the actions set on the rule:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rL1K406rCKQ3YftQq1ULq/b5801c680dc13c33522ac3bea55bc4ea/Default-Precedence.png" alt="" class="kg-image" width="188" height="142" loading="lazy">
-
-	</figure>
-	<p>If two or more rules match a request, but have different actions, the above precedence will take effect. However, what happens if you've got a bad actor who needs to be blocked from your API, and you have other specific allow or challenge rules already created for their originating ASN or a perhaps one of your URLs? Once a Firewall Rule is matched, it will not continue processing other rule, unless you are using the Log action. Without a method of overriding the default precedence, you cannot easily achieve what's needed.</p>
-	<p>Today, we’re launching the ability for customers to change the ordering of their rules. The team at Cloudflare had a very long discussion about whether priority was the right solution, i.e. using an arbitrary number between 1 and 2,147,483,647 (int32) or whether customers should have a sequential list, and be able to drag and drop rules similarly to how Page Rules operates today.</p>
-	<p>After testing potential solutions with our users and learning about the wide range of use cases it was clear that we needed to offer customers the ability to choose.</p>
-	<p>In the Firewall Rules user interface, you should now have an additional button on the top right, shown here:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3SsVymtGhbWmBW62F5vEee/72db09f7e1a3b5e7e94f91e2d01ebf34/cloudflare-order-options.gif" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="priority-numbering">Priority Numbering</h3>
-		<a href="https://blog.cloudflare.com/#priority-numbering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For customers managing a large number of rules, or predominantly using the API or <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">Terraform</a> for configuration, priority numbering is a great solution. Within Firewall Rules, as explained above, the default precedence is the final “conflict resolver”, providing a very useful way of grouping rules.</p>
-	<p>For example, one of the engineers behind Firewall Rules uses Priority to organise their rules into specific groups, e.g.</p>
-	<pre class="language-bash"><code class="language-bash">5000-9999 - Trusted IP addresses
-10000-19999 - Blocking Rules for Bad Crawlers
-20000-29999 - Blocking Rules for Abusive/Spam Users</code></pre>
-	<p>Priority is an optional field on Rules and is available as an additional control to override the default precedence mentioned above. As this is the case, Cloudflare do not apply any default priority numbers on rules, and will be left blank.</p>
-	<div class="flex anchor relative">
-		<h3 id="drag-and-drop-ordering">Drag and Drop Ordering</h3>
-		<a href="https://blog.cloudflare.com/#drag-and-drop-ordering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Ordering is intuitive, being literally a drag and drop placement of rules in order of execution. See below for a quick demo of how straightforward the controls are:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2dUASOudWuDH00VNk3pb9z/a6b459cf2c0521437186e7ce05927de8/cloudflare-order-rule.gif" alt="" class="kg-image" width="1600" height="1163" loading="lazy">
-
-	</figure>
-	<p>There is currently a 200 rule limit with this method, so upon creating your 201st rule, you will be switched to Priority Numbering, automatically.</p>
-	<p>For more information on how Ordering and Priority Number operates, please visit our Firewall Rules documentation, found <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>Firewall Rules are one of the best security features we released this year and have been an overwhelming success. Customers have been using Firewall Rules to solve interesting security related use cases; for example, advanced hotlink protection, restricting access to embargoed content (e.g. productId=1234), locking down sensitive API endpoints, and more.</p>
+<p>One of the biggest pieces of feedback from the <a href="https://community.cloudflare.com/c/security" target="_blank" rel="noopener noreferrer">Cloudflare community</a>, Twitter, and via customer support, has been around the order in which rules are actioned. By default, Firewall Rules have a default precedence, based on the actions set on the rule:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="188" height="142" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KFNQ99GFP3MBERHQDMTJ.png&amp;w=188&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KFNQ99GFP3MBERHQDMTJ.png&amp;w=188&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 188w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KFNQ99GFP3MBERHQDMTJ.png&amp;w=376&amp;h=284&amp;f=webp&amp;fit=cover&amp;position=center 376w" alt="Firewall Rules - Priority and Ordering Embedded Image - bSQlaO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KFNQ99GFP3MBERHQDMTJ.png&amp;w=188&amp;h=142&amp;f=webp" data-lightbox-width="188" data-lightbox-height="142" data-astro-cid-7nvefuv6="true" sizes="(min-width: 188px) 188px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="188" height="142" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>If two or more rules match a request, but have different actions, the above precedence will take effect. However, what happens if you've got a bad actor who needs to be blocked from your API, and you have other specific allow or challenge rules already created for their originating ASN or a perhaps one of your URLs? Once a Firewall Rule is matched, it will not continue processing other rule, unless you are using the Log action. Without a method of overriding the default precedence, you cannot easily achieve what's needed.</p>
+<p>Today, we’re launching the ability for customers to change the ordering of their rules. The team at Cloudflare had a very long discussion about whether priority was the right solution, i.e. using an arbitrary number between 1 and 2,147,483,647 (int32) or whether customers should have a sequential list, and be able to drag and drop rules similarly to how Page Rules operates today.</p>
+<p>After testing potential solutions with our users and learning about the wide range of use cases it was clear that we needed to offer customers the ability to choose.</p>
+<p>In the Firewall Rules user interface, you should now have an additional button on the top right, shown here:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="520" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW461P0QN3X4J7MWBWP5Q3AZ.gif" alt="Firewall Rules - Priority and Ordering Embedded Image - eL4mHF" width="715" height="520" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h3>Priority Numbering</h3>
+<p>For customers managing a large number of rules, or predominantly using the API or <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">Terraform</a> for configuration, priority numbering is a great solution. Within Firewall Rules, as explained above, the default precedence is the final “conflict resolver”, providing a very useful way of grouping rules.</p>
+<p>For example, one of the engineers behind Firewall Rules uses Priority to organise their rules into specific groups, e.g.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">5000-9999</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Trusted</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-032f62-99ffe4"> addresses</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">10000-19999</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Blocking</span><span class="sk-032f62-99ffe4"> Rules</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> Bad</span><span class="sk-032f62-99ffe4"> Crawlers</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">20000-29999</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> Blocking</span><span class="sk-032f62-99ffe4"> Rules</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> Abusive/Spam</span><span class="sk-032f62-99ffe4"> Users</span></span></code></pre>
 </div>
+<p>Priority is an optional field on Rules and is available as an additional control to override the default precedence mentioned above. As this is the case, Cloudflare do not apply any default priority numbers on rules, and will be left blank.</p>
+<h3>Drag and Drop Ordering</h3>
+<p>Ordering is intuitive, being literally a drag and drop placement of rules in order of execution. See below for a quick demo of how straightforward the controls are:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="520" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW45EJP2PNK3SFPGRVB1FNZH.gif" alt="Firewall Rules - Priority and Ordering Embedded Image - boqDvD" width="715" height="520" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>There is currently a 200 rule limit with this method, so upon creating your 201st rule, you will be switched to Priority Numbering, automatically.</p>
+<p>For more information on how Ordering and Priority Number operates, please visit our Firewall Rules documentation, found <a href="https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority" target="_blank" rel="noopener noreferrer">here</a>.</p>

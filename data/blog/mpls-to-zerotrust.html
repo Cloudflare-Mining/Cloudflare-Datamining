@@ -1,468 +1,349 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/47YNjIrOT8six3qaSn0LxA/504da9027ff70a54fd27a75ad0ed8ffa/mpls-to-zerotrust.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Employees returning to the office are experiencing that their corporate networks are much slower compared to what they’ve been using at home. It’s partly due to outdated line speeds, and also partly due to security requirements that force all traffic to get back hauled through centralized data centers. While 44% of the US currently has access to fiber-based broadband Internet with speeds reaching 1 Gbps, many MPLS sites are still on old 1.5 Mbps circuits. This is a reality check and a reminder that the current MPLS based networks are unable to support the shift from centralized applications in the datacenter to a distributed SaaS and hybrid multi-cloud world.</p>
-	<p>In this post, we are going to outline the steps required to take your network from MPLS to <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>. But, before we do — a little about how we ended up in this situation.</p>
-	<div class="flex anchor relative">
-		<h3 id="enterprise-networks-today">Enterprise networks today</h3>
-		<a href="https://blog.cloudflare.com/#enterprise-networks-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Over the past 10 years, most <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking" target="_blank" rel="noopener noreferrer">enterprise networks</a> have evolved from perimeter hub and spoke networks into franken-networks as a means to solve connectivity and security issues. We have not had a chance to redesign them holistically for distributed application access. The band-aid and point solutions have only pushed the problems further down the road — to a future day for someone else to solve.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2g4qxCDY9uN6sCggULAK04/507ed83f4c5be7658a685313d408e95b/image6-13.png" alt="Example of legacy MPLS-based WAN" class="kg-image" width="1035" height="690" loading="lazy">
-
-	</figure>
-	<p>The advent of cloud adoption put additional pressure on the already ailing legacy WAN. Increased Internet use for business, mining data for actionable insights, advanced security monitoring multiplied bandwidth demand at customer branches. This puts additional pressure on companies seeking to manage their WAN cost. Below is a graphical representation of business loss due to growing bandwidth needs on.</p>
-	<div class="flex anchor relative">
-		<h3 id="business-loss-x-cost-of-project-delay-y-loss-of-productivity-due-to-outages">Business loss = (X) cost of project delay &nbsp;+ (Y) loss of productivity due to outages</h3>
-		<a href="https://blog.cloudflare.com/#business-loss-x-cost-of-project-delay-y-loss-of-productivity-due-to-outages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/50jWFTo8tiwY6abJO3Aa8v/c2f8efd777aa480a7c7e1a686f8df8e8/image5-11.png" alt="" class="kg-image" width="693" height="637" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="excitement-about-sd-wan">Excitement about SD-WAN</h3>
-		<a href="https://blog.cloudflare.com/#excitement-about-sd-wan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Organizations have been looking to<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan" target="_blank" rel="noopener noreferrer"> Software-Defined WAN (SD-WAN) </a>to solve some of these challenges. It allows organizations to shift from MPLS private lines to broadband Internet and significantly reduce their cost per Mbps. SD-WAN offers other valuable features like application-aware intelligent routing based on path quality. Orchestrator and analytics help to provide much-needed deployment speed and network visibility, respectively.</p>
-	<p>Despite the incremental improvement that SD-WAN offers over traditional network architectures, some fundamental challenges remain. SD-WAN is a hardware-dependent edge routing technology that does not always account for the middle mile. While broadband Internet is reasonably fast and available everywhere, it doesn't offer the end-to-end security and reliability that mission-critical applications require. Further, managing security policies and Internet breakouts across hundreds of edge devices is complex, and many organizations are still choosing to backhaul traffic to centralized data centers. We require a new architecture — with security, speed, and reliability built-in.</p>
-	<div class="flex anchor relative">
-		<h3 id="cloudflare-magic-wan">Cloudflare Magic WAN</h3>
-		<a href="https://blog.cloudflare.com/#cloudflare-magic-wan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Magic WAN simplifies legacy WAN architectures by enabling customers to use the Cloudflare global network to interconnect their branch offices, data centers, and public cloud services. It includes Zero Trust security services that can be enabled as needed, improve performance, and can be managed through a single dashboard.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6p3czpYwUDvwvZKYlIeGJG/a74b18e59e1193c35c2b0f13cf7beae8/image3-24.png" alt="" class="kg-image" width="1801" height="734" loading="lazy">
-
-	</figure>
-	<p>Magic WAN has many advantages over traditional WAN architectures. It eliminates the need to manage a mesh of tunnels. A single <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a> IPSec or GRE tunnel from a site provides connectivity to all other sites and applications, with the Cloudflare network acting as the network hub, simplifying operational overhead. It removes the requirement for all traffic to be backhauled to a centralized data center to enforce security policies. Cloud-native <a href="https://www.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">firewall-as-a-service</a> (FWaaS) for inbound and site-to-site traffic and <a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank" rel="noopener noreferrer">security web gateway</a> (SWG) for outbound traffic is available at the same data centers where WAN traffic enters the Cloudflare network. Organizations can deploy consistent security policies globally which get enforced at the Cloudflare data center closest to the user at any of our 270+ cities. SaaS and consumer application traffic can be routed directly to the Internet from the edge of the network. With Cloudflare serving millions of websites, the destination might be available on the same server, resulting in better performance for users.</p>
-	<p>Furthermore, with no appliances to manage or scale, Magic WAN gives you an elastic WAN with zero capital investment that you can quickly scale up or down depending on business needs.</p>
-	<div class="flex anchor relative">
-		<h3 id="bridge-to-zero-trust">Bridge to Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#bridge-to-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The ultimate goal for many organizations is to move their network and security architecture from a castle &amp; moat model to a Zero Trust model where there’s no longer a hard boundary between “private” and “public” networks. Instead, security is enforced at the user and the application level, using identity, endpoint health and location as key attributes. So an employee on a managed laptop in their home country may have access to all corporate applications, but if they log in from a personal laptop, they might have limited access to only certain applications. Or if the network detects malware on their managed laptop, their access can be quickly revoked, <a href="https://www.cloudflare.com/learning/security/ransomware/how-to-prevent-ransomware" target="_blank" rel="noopener noreferrer">preventing the spread of ransomware</a>, for example, through their organization.</p>
-	<p>This requires a WAN that is intelligent enough to understand user identities and endpoint health and make intelligent enforcement decisions based on these attributes. This also requires enforcement points that can apply consistent security policies regardless of whether the users are coming from a corporate branch office or from a home office over the Internet.</p>
-	<p>Cloudflare Magic WAN, part of the Cloudflare One product suite, enables this transition to a true Zero Trust architecture by building in security natively into the network.</p>
-	<div class="flex anchor relative">
-		<h3 id="prep-work-for-successful-transformation-from-mpls-to-zero-trust">Prep work for successful transformation from MPLS to Zero Trust</h3>
-		<a href="https://blog.cloudflare.com/#prep-work-for-successful-transformation-from-mpls-to-zero-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Planning leads to awareness, while preparation leads to readiness.</p>
-	<p>MPLS to Zero Trust transformation is a team effort. Traditionally, network managers are responsible for the WAN; security managers for the security perimeter &amp; policies; infrastructure team for the cloud; application teams for application development. Future transformed state has built-in security for seamless on-demand, secured and reliable distributed application access.</p>
-	<p>1. Network, security, infrastructure, and application project management teams should collectively discuss and document the current/future state. &nbsp;Sample document below:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+<p>Employees returning to the office are experiencing that their corporate networks are much slower compared to what they’ve been using at home. It’s partly due to outdated line speeds, and also partly due to security requirements that force all traffic to get back hauled through centralized data centers. While 44% of the US currently has access to fiber-based broadband Internet with speeds reaching 1 Gbps, many MPLS sites are still on old 1.5 Mbps circuits. This is a reality check and a reminder that the current MPLS based networks are unable to support the shift from centralized applications in the datacenter to a distributed SaaS and hybrid multi-cloud world.</p>
+<p>In this post, we are going to outline the steps required to take your network from MPLS to <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>. But, before we do — a little about how we ended up in this situation.</p>
+<h3>Enterprise networks today</h3>
+<p>Over the past 10 years, most <a href="https://www.cloudflare.com/learning/network-layer/enterprise-networking" target="_blank" rel="noopener noreferrer">enterprise networks</a> have evolved from perimeter hub and spoke networks into franken-networks as a means to solve connectivity and security issues. We have not had a chance to redesign them holistically for distributed application access. The band-aid and point solutions have only pushed the problems further down the road — to a future day for someone else to solve.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example of legacy MPLS-based WAN" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FDQX883WFHCR208MQFV1.png&amp;w=1035&amp;h=690&amp;f=webp" data-lightbox-width="1035" data-lightbox-height="690" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The advent of cloud adoption put additional pressure on the already ailing legacy WAN. Increased Internet use for business, mining data for actionable insights, advanced security monitoring multiplied bandwidth demand at customer branches. This puts additional pressure on companies seeking to manage their WAN cost. Below is a graphical representation of business loss due to growing bandwidth needs on.</p>
+<h3>Business loss = (X) cost of project delay &nbsp;+ (Y) loss of productivity due to outages</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="693" height="637" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=693&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=640&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=693&amp;h=637&amp;f=webp&amp;fit=cover&amp;position=center 693w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=750&amp;h=689&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=828&amp;h=761&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=1080&amp;h=993&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=1280&amp;h=1177&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=1386&amp;h=1274&amp;f=webp&amp;fit=cover&amp;position=center 1386w" alt="BLOG-1166 Embedded Image - AXW6h4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47540P7XWVAY4HANMKJ4EN.png&amp;w=693&amp;h=637&amp;f=webp" data-lightbox-width="693" data-lightbox-height="637" data-astro-cid-7nvefuv6="true" sizes="(min-width: 693px) 693px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="693" height="637" class="pt-portable-image-media"></div>
+</figure>
+<h3>Excitement about SD-WAN</h3>
+<p>Organizations have been looking to<a href="https://www.cloudflare.com/learning/network-layer/what-is-an-sd-wan" target="_blank" rel="noopener noreferrer"> Software-Defined WAN (SD-WAN) </a>to solve some of these challenges. It allows organizations to shift from MPLS private lines to broadband Internet and significantly reduce their cost per Mbps. SD-WAN offers other valuable features like application-aware intelligent routing based on path quality. Orchestrator and analytics help to provide much-needed deployment speed and network visibility, respectively.</p>
+<p>Despite the incremental improvement that SD-WAN offers over traditional network architectures, some fundamental challenges remain. SD-WAN is a hardware-dependent edge routing technology that does not always account for the middle mile. While broadband Internet is reasonably fast and available everywhere, it doesn't offer the end-to-end security and reliability that mission-critical applications require. Further, managing security policies and Internet breakouts across hundreds of edge devices is complex, and many organizations are still choosing to backhaul traffic to centralized data centers. We require a new architecture — with security, speed, and reliability built-in.</p>
+<h3>Cloudflare Magic WAN</h3>
+<p>Cloudflare Magic WAN simplifies legacy WAN architectures by enabling customers to use the Cloudflare global network to interconnect their branch offices, data centers, and public cloud services. It includes Zero Trust security services that can be enabled as needed, improve performance, and can be managed through a single dashboard.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="291" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=750&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=828&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=1080&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=1280&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=1430&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1166 Embedded Image - qd208n" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DCEVQWY5WNN03ZKQWMXB.png&amp;w=1801&amp;h=734&amp;f=webp" data-lightbox-width="1801" data-lightbox-height="734" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="291" class="pt-portable-image-media"></div>
+</figure>
+<p>Magic WAN has many advantages over traditional WAN architectures. It eliminates the need to manage a mesh of tunnels. A single <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer">Anycast</a> IPSec or GRE tunnel from a site provides connectivity to all other sites and applications, with the Cloudflare network acting as the network hub, simplifying operational overhead. It removes the requirement for all traffic to be backhauled to a centralized data center to enforce security policies. Cloud-native <a href="https://www.cloudflare.com/magic-firewall" target="_blank" rel="noopener noreferrer">firewall-as-a-service</a> (FWaaS) for inbound and site-to-site traffic and <a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank" rel="noopener noreferrer">security web gateway</a> (SWG) for outbound traffic is available at the same data centers where WAN traffic enters the Cloudflare network. Organizations can deploy consistent security policies globally which get enforced at the Cloudflare data center closest to the user at any of our 270+ cities. SaaS and consumer application traffic can be routed directly to the Internet from the edge of the network. With Cloudflare serving millions of websites, the destination might be available on the same server, resulting in better performance for users.</p>
+<p>Furthermore, with no appliances to manage or scale, Magic WAN gives you an elastic WAN with zero capital investment that you can quickly scale up or down depending on business needs.</p>
+<h3>Bridge to Zero Trust</h3>
+<p>The ultimate goal for many organizations is to move their network and security architecture from a castle &amp; moat model to a Zero Trust model where there’s no longer a hard boundary between “private” and “public” networks. Instead, security is enforced at the user and the application level, using identity, endpoint health and location as key attributes. So an employee on a managed laptop in their home country may have access to all corporate applications, but if they log in from a personal laptop, they might have limited access to only certain applications. Or if the network detects malware on their managed laptop, their access can be quickly revoked, <a href="https://www.cloudflare.com/learning/security/ransomware/how-to-prevent-ransomware" target="_blank" rel="noopener noreferrer">preventing the spread of ransomware</a>, for example, through their organization.</p>
+<p>This requires a WAN that is intelligent enough to understand user identities and endpoint health and make intelligent enforcement decisions based on these attributes. This also requires enforcement points that can apply consistent security policies regardless of whether the users are coming from a corporate branch office or from a home office over the Internet.</p>
+<p>Cloudflare Magic WAN, part of the Cloudflare One product suite, enables this transition to a true Zero Trust architecture by building in security natively into the network.</p>
+<h3>Prep work for successful transformation from MPLS to Zero Trust</h3>
+<p>Planning leads to awareness, while preparation leads to readiness.</p>
+<p>MPLS to Zero Trust transformation is a team effort. Traditionally, network managers are responsible for the WAN; security managers for the security perimeter &amp; policies; infrastructure team for the cloud; application teams for application development. Future transformed state has built-in security for seamless on-demand, secured and reliable distributed application access.</p>
+<p>1. Network, security, infrastructure, and application project management teams should collectively discuss and document the current/future state. &nbsp;Sample document below:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
-					<p><b>Current state</b></p>
-				</td>
-				<td>
-					<p><b>Future state</b></p>
-				</td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Current state</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Future state</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Applications</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>List</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Example: 1600 apps</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Example: 2400 apps</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Location</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Local: 300, DC: 600, Public cloud: 400, Private cloud:100, SaaS: 200</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>TBD</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Regional application needs</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Local File servers</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloud</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Location/branch</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p># of branch locations</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>80</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>85</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Availability</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Example: Platinum 99%, Gold 95%, Silver: 90%, bronze: best effort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Platinum 100%, Gold 99%, Silver: 95%, bronze: best effort</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Current set up</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Platinum: Dual MPLS, Gold: MPLS + Internet etc</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Platinum: 2 x 1G DIA, Gold: 2 x 1G DIA etc</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Bandwidth</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Platinum: 100M, Gold 50M etc</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Platinum 1G, Gold 500M etc</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CSP with location</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Azure/GCP/AWS</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1G ExpressRoute 1G Direct Connect</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>10G 10G</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Internet breakout</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Capacity</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>500M</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>On demand</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>DC: XXX Firewall HA</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloud based local break out</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Features</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Limited security control</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Identity based granular ZT based policies</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Remote Access</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Quantity</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1000 seats</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2000 seats</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Technology</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>SSL VPN</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Zero Trust Network Access</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloud security</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>None</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CASB, RBI</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Device posture</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>None</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Yes</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>2. Conduct transformation workshop to:</p>
-	<ul>
-		<li>
-			<p>Map all combinations of future traffic flows: Device Type - User profile - Application - Enforcement technology - Zero Trust rules</p>
-		</li>
-		<li>
-			<p>Traffic flows help to determine future architecture baseline</p>
-		</li>
-	</ul>
-	<ol>
-		<li>
-			<p>Invite vendors, partners, and providers for discussion to validate the design and identify technology readiness to support traffic flows and architecture.</p>
-		</li>
-		<li>
-			<p>Carry out budgeting exercises and a business plan to map current pain points with solutions and pricing. Involve specialized experts to develop business plans if needed.</p>
-		</li>
-		<li>
-			<p>Form a special project team that includes project managers, engineering point of contact from all technical groups, local site contacts, escalation team, stakeholder representatives, business owners.</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="transition-plan">Transition plan</h3>
-		<a href="https://blog.cloudflare.com/#transition-plan" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A transition plan is a critical step toward a successful transformation. A good transition and project plan will ensure minimal downtime, while a bad plan will result in outages, business disruption, increased transition time, and cost. The plan should include detailed steps and milestones.</p>
-	<p>Sample transition plan below:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19yCemA4UrDIklPMCsZ8e9/95bb6568990ecf89ab11d4d3a95956b8/image4-22.png" alt="" class="kg-image" width="1999" height="903" loading="lazy">
-
-	</figure>
-	<ol>
-		<li>
-			<p><b>Identify bridging point</b></p>
-			<ul>
-				<li>
-					<p>Bridging point will act as a bridge between transitioned and non-transitioned branch locations.</p>
-				</li>
-				<li>
-					<p>Ideally, regional and global data centers are preferred bridging points between existing MPLS and the new Cloudflare based WAN.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p><b>Create user acceptance test (UAT)</b></p>
-			<ul>
-				<li>
-					<p>Collaborate with internal teams and site contacts to create a UAT.</p>
-				</li>
-				<li>
-					<p>Perform UAT before and after cutover for each site to ensure users can access their applications as expected performance after transition.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p><b>Migration schedule</b></p>
-			<ul>
-				<li>
-					<p>Develop a migration schedule to ensure minimal business impact.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p><b>Prep for Magic WAN</b></p>
-			<ul>
-				<li>
-					<p>Connect applications: Leverage Cloudflare onramp options to connect your various applications to Cloudflare platform.</p>
-				</li>
-				<li>
-					<p>Connect branch: Configure your WAN Edge device (router, SD-WAN device, firewall etc) and connect to Cloudflare platform</p>
-				</li>
-				<li>
-					<p>Please refer <a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/magic-wan/</a> for detailed step-by-step instructions to configure Magic WAN</p>
-				</li>
-			</ul>
-		</li>
-	</ol>
-	<p>Note: <i>Above step will NOT impact existing traffic flows via the existing MPLS path. Take precautions to ensure no production impact. Please follow your change control guidelines and request a maintenance window if applicable.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gRUYKe4nUXMEEeI2Y34lM/86448ce7a61b87c90cd5f956afde82e1/image2-36.png" alt="" class="kg-image" width="1410" height="1185" loading="lazy">
-
-	</figure>
-	<ol>
-		<li>
-			<p><b>Ready for cutover</b></p>
-			<ul>
-				<li>
-					<p>We are ready for cutover after steps 4 &amp; 5, i.e., ready to migrate and transition branches to Cloudflare based network.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p><b>Cutover window</b></p>
-			<ul>
-				<li>
-					<p>During the cutover window, production traffic will stop traversing the existing MPLS path and transition to the new Cloudflare based network..</p>
-				</li>
-				<li>
-					<p>Perform UAT before and after cutover.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p><b>Disconnect MPLS</b></p>
-			<ul>
-				<li>
-					<p>MPLS circuits can be disconnected, as sites are migrated.</p>
-				</li>
-			</ul>
-		</li>
-	</ol>
-	<p><b>Additional:</b></p>
-	<ul>
-		<li>
-			<p>Retire legacy VPN</p>
-			<ul>
-				<li>
-					<p>Customers can leverage Cloudflare’s Zero Trust Network Access to access their applications and retire legacy VPN based access.</p>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<p>Assumption</p>
-			<ul>
-				<li>
-					<p>Customer is responsible for Internet circuit procurement and installation to replace MPLS circuits.</p>
-				</li>
-			</ul>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2fpero8ipUPnWWgaT79a9R/1e56757b97f79c8c55c3b5d8dd42e5f2/image1-35.png" alt="" class="kg-image" width="1410" height="932" loading="lazy">
-
-	</figure>
-	<p>We’re proud of how we’ve been able to help some of Cloudflare customers reinvent their corporate networks. It makes sense to close with their own words</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/42Cl7WQXBLxGEVKQOav3Ze/a4ec545ac52f130345c92d5913a7e639/image8-9.png" alt="" class="kg-image" width="1382" height="554" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Replacing MPLS, modernizing network and network security to provide business agility is a must for the digital future. Move to Zero Trust is inevitable for most organizations. Temporary band-aids and point solutions have resulted in business losses, poor employee experience and increased security risk. Moving from MPLS to Zero Trust sounds like a daunting task but teamwork, proper planning, preparation, and right <a href="https://www.cloudflare.com/network-security" target="_blank" rel="noopener noreferrer">solution</a> will make transformation easily achievable and more manageable.</p>
-	<p>If you’d like to get started, <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">contact us</a> today and get started on your journey.</p>
-	<p>Replacing MPLS lines is a great project to fit into your overall <a href="https://zerotrustroadmap.org" target="_blank" rel="noopener noreferrer">Zero Trust roadmap</a>. For a full summary of Cloudflare One Week and what’s new, tune in to our <a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog" target="_blank" rel="noopener noreferrer">recap webinar</a>.</p>
 </div>
+<p>2. Conduct transformation workshop to:</p>
+<ul>
+	<li>Map all combinations of future traffic flows: Device Type - User profile - Application - Enforcement technology - Zero Trust rules</li>
+	<li>Traffic flows help to determine future architecture baseline</li>
+</ul>
+<ol>
+	<li>Invite vendors, partners, and providers for discussion to validate the design and identify technology readiness to support traffic flows and architecture.</li>
+	<li>Carry out budgeting exercises and a business plan to map current pain points with solutions and pricing. Involve specialized experts to develop business plans if needed.</li>
+	<li>Form a special project team that includes project managers, engineering point of contact from all technical groups, local site contacts, escalation team, stakeholder representatives, business owners.</li>
+</ol>
+<h3>Transition plan</h3>
+<p>A transition plan is a critical step toward a successful transformation. A good transition and project plan will ensure minimal downtime, while a bad plan will result in outages, business disruption, increased transition time, and cost. The plan should include detailed steps and milestones.</p>
+<p>Sample transition plan below:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="323" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=715&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=640&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=715&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=750&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=828&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=1080&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=1280&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=1430&amp;h=646&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1166 Embedded Image - 6sfA5m" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B8TRZPSQBQE801CHMSWS.png&amp;w=1920&amp;h=867&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="867" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="323" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li><strong>Identify bridging point</strong>
+		<ul>
+			<li>Bridging point will act as a bridge between transitioned and non-transitioned branch locations.</li>
+			<li>Ideally, regional and global data centers are preferred bridging points between existing MPLS and the new Cloudflare based WAN.</li>
+		</ul>
+	</li>
+	<li><strong>Create user acceptance test (UAT)</strong>
+		<ul>
+			<li>Collaborate with internal teams and site contacts to create a UAT.</li>
+			<li>Perform UAT before and after cutover for each site to ensure users can access their applications as expected performance after transition.</li>
+		</ul>
+	</li>
+	<li><strong>Migration schedule</strong>
+		<ul>
+			<li>Develop a migration schedule to ensure minimal business impact.</li>
+		</ul>
+	</li>
+	<li><strong>Prep for Magic WAN</strong>
+		<ul>
+			<li>Connect applications: Leverage Cloudflare onramp options to connect your various applications to Cloudflare platform.</li>
+			<li>Connect branch: Configure your WAN Edge device (router, SD-WAN device, firewall etc) and connect to Cloudflare platform</li>
+			<li>Please refer <a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">https://developers.cloudflare.com/magic-wan/</a> for detailed step-by-step instructions to configure Magic WAN</li>
+		</ul>
+	</li>
+</ol>
+<p>Note: <em>Above step will NOT impact existing traffic flows via the existing MPLS path. Take precautions to ensure no production impact. Please follow your change control guidelines and request a maintenance window if applicable.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="601" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=640&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=750&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=828&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=1080&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=1280&amp;h=1076&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=1430&amp;h=1202&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1166 Embedded Image - oXxyjt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A95126P2PT1XFBRQ0DFE.png&amp;w=1410&amp;h=1185&amp;f=webp" data-lightbox-width="1410" data-lightbox-height="1185" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="601" class="pt-portable-image-media"></div>
+</figure>
+<ol>
+	<li><strong>Ready for cutover</strong>
+		<ul>
+			<li>We are ready for cutover after steps 4 &amp; 5, i.e., ready to migrate and transition branches to Cloudflare based network.</li>
+		</ul>
+	</li>
+	<li><strong>Cutover window</strong>
+		<ul>
+			<li>During the cutover window, production traffic will stop traversing the existing MPLS path and transition to the new Cloudflare based network..</li>
+			<li>Perform UAT before and after cutover.</li>
+		</ul>
+	</li>
+	<li><strong>Disconnect MPLS</strong>
+		<ul>
+			<li>MPLS circuits can be disconnected, as sites are migrated.</li>
+		</ul>
+	</li>
+</ol>
+<p><strong>Additional:</strong></p>
+<ul>
+	<li>Retire legacy VPN<ul>
+			<li>Customers can leverage Cloudflare’s Zero Trust Network Access to access their applications and retire legacy VPN based access.</li>
+		</ul>
+	</li>
+	<li>Assumption<ul>
+			<li>Customer is responsible for Internet circuit procurement and installation to replace MPLS circuits.</li>
+		</ul>
+	</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="473" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=715&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=640&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=715&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=750&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=828&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=1080&amp;h=714&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=1280&amp;h=847&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=1430&amp;h=946&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1166 Embedded Image - 2kekaq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45FBC1XEW623EZX4PJD65P.png&amp;w=1410&amp;h=932&amp;f=webp" data-lightbox-width="1410" data-lightbox-height="932" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="473" class="pt-portable-image-media"></div>
+</figure>
+<p>We’re proud of how we’ve been able to help some of Cloudflare customers reinvent their corporate networks. It makes sense to close with their own words</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="287" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=640&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=750&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=828&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=1080&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=1280&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=1430&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1166 Embedded Image - olxteJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46EFWR1EQ39PVWG84VGY4H.png&amp;w=1382&amp;h=554&amp;f=webp" data-lightbox-width="1382" data-lightbox-height="554" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="287" class="pt-portable-image-media"></div>
+</figure>
+<h3>Summary</h3>
+<p>Replacing MPLS, modernizing network and network security to provide business agility is a must for the digital future. Move to Zero Trust is inevitable for most organizations. Temporary band-aids and point solutions have resulted in business losses, poor employee experience and increased security risk. Moving from MPLS to Zero Trust sounds like a daunting task but teamwork, proper planning, preparation, and right <a href="https://www.cloudflare.com/network-security" target="_blank" rel="noopener noreferrer">solution</a> will make transformation easily achievable and more manageable.</p>
+<p>If you’d like to get started, <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">contact us</a> today and get started on your journey.</p>
+<p>Replacing MPLS lines is a great project to fit into your overall <a href="https://zerotrustroadmap.org" target="_blank" rel="noopener noreferrer">Zero Trust roadmap</a>. For a full summary of Cloudflare One Week and what’s new, tune in to our <a href="https://gateway.on24.com/wcc/eh/2153307/lp/3824611/the-evolution-of-cloudflare-one?partnerref=blog" target="_blank" rel="noopener noreferrer">recap webinar</a>.</p>

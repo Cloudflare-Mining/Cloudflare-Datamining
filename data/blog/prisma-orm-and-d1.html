@@ -1,189 +1,185 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/26o8O090SjtKiIcXtt14OD/33e47b832e8f6a959a39cc2b3350bbb2/prisma-orm-and-d1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Working with <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">databases</a> can be difficult. Developers face increasing data complexity and needs beyond simple create, read, update, and delete (CRUD) operations. Unfortunately, these issues also compound on themselves: developers have a harder time iterating in an increasingly complex environment. Cloudflare Workers and D1 help by reducing time spent managing infrastructure and deploying applications, and <a href="https://prisma.io" target="_blank" rel="noopener noreferrer">Prisma</a> provides a great experience for your team to work and interact with data. &nbsp;</p>
-	<p>Together, Cloudflare and Prisma make it easier than ever to deploy globally available apps with a focus on developer experience. To further that goal, Prisma Object Relational Mapper (ORM) now natively supports Cloudflare Workers and D1 in Preview. With version <code>5.12.0</code> of Prisma ORM you can now interact with your data stored in D1 from your Cloudflare Workers with the convenience of the Prisma Client API. Learn more and <a href="https://pris.ly/d/d1" target="_blank" rel="noopener noreferrer">try it out now</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-prisma">What is Prisma?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-prisma" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>From writing to debugging, SQL queries take a long time and slow developer productivity. Even before writing queries, modeling tables can quickly become unwieldy, and migrating data is a nerve-wracking process. Prisma ORM looks to resolve all of these issues by providing an intuitive data modeling language, an automated migration workflow, and a developer-friendly and type-safe client for JavaScript and TypeScript, allowing developers to focus on what they enjoy: developing!</p>
-	<p><a href="https://prisma.io" target="_blank" rel="noopener noreferrer">Prisma</a> is focused on making working with data easy. Alongside an ORM, Prisma offers <a href="https://www.prisma.io/data-platform/accelerate" target="_blank" rel="noopener noreferrer">Accelerate</a> and <a href="https://www.prisma.io/data-platform/pulse" target="_blank" rel="noopener noreferrer">Pulse</a>, products built on Cloudflare that cover needs from connection pooling, to query caching, to real-time type-safe database subscriptions.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-to-get-started-with-prisma-orm-cloudflare-workers-and-d1"><b>How to get started with Prisma ORM, Cloudflare Workers, and D1</b></h2>
-		<a href="https://blog.cloudflare.com/#how-to-get-started-with-prisma-orm-cloudflare-workers-and-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To get started with Prisma ORM and D1, first create a basic Cloudflare Workers app. This guide will start with the <code>”Hello World”</code> Worker example app, but any Workers example app will work. If you don’t have a project yet, start by creating a new one. Name your project something memorable, like <code>my-d1-prisma-app</code> and select “Hello World” worker and TypeScript. For now, we will choose to not deploy and will wait until after we have set up D1 and Prisma ORM.</p>
-	<p><code>npm create cloudflare@latest</code></p>
-	<p>Next, move into your newly created project and make sure that dependencies are installed:</p>
-	<p><code>cd my-d1-prisma-app &amp;&amp; npm install</code></p>
-	<p>After dependencies are installed, we can move on to the D1 setup.</p>
-	<p>First, create a new D1 database for your app.</p>
-	<pre class="language-bash"><code class="language-bash">npx wrangler d1 create prod-prisma-d1-app
-.
-.
-.
-
-[[d1_databases]]
-binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "prod-prisma-d1-app"
-database_id = "&lt;unique-ID-for-your-database&gt;"</code></pre>
-	<p>The section starting with <code>[[d1_databases]]</code> is the binding configuration needed in your <code>wrangler.toml</code> for your Worker to communicate with D1. Add that now:</p>
-	<pre class="language-bash"><code class="language-bash">// wrangler.toml
-name="my-d1-prisma-app"
-main = "src/index.ts"
-compatibility_date = "2024-03-20"
-compatibility_flags = ["nodejs_compat"]
-
-[[d1_databases]]
-binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "prod-prisma-d1-app"
-database_id = "&lt;unique-ID-for-your-database&gt;"</code></pre>
-	<p>Your application now has D1 available! Next, add Prisma ORM to manage your queries, schema and migrations! To add Prisma ORM, first make sure the latest version is installed. Prisma ORM versions 5.12.0 and up support Cloudflare Workers and D1.</p>
-	<p><code>npm install prisma@latest @prisma/client@latest @prisma/adapter-d1</code></p>
-	<p>Now run <code>npx prisma init</code> in order to create the necessary files to start with. Since D1 uses SQLite’s SQL dialect, we set the provider to be <code>sqlite</code>.</p>
-	<p><code>npx prisma init --datasource-provider sqlite</code></p>
-	<p>This will create a few files, but the one to look at first is your <a href="https://www.prisma.io/docs/orm/prisma-schema/overview" target="_blank" rel="noopener noreferrer">Prisma schema file</a>, available at <code>prisma/schema.prisma</code></p>
-	<pre class="language-bash"><code class="language-bash">// schema.prisma
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "sqlite"
-  url  = env("DATABASE_URL")
-}</code></pre>
-	<p>Before you can create any models, first enable the <code>driverAdapters</code> Preview feature. This will allow the Prisma Client to use an adapter to communicate with D1.</p>
-	<pre class="language-bash"><code class="language-bash">// schema.prisma
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
-+ previewFeatures = ["driverAdapters"]
-}
-
-datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-}</code></pre>
-	<p>Now you are ready to create your first model! In this app, you will be creating a “ticker”, a mainstay of many classic Internet sites.</p>
-	<p>Add a new model to your schema, <code>Visit</code>, which will track that an individual visited your site. A <code>Visit</code> is a simple model that will have a unique ID and the time at which an individual visited your site.</p>
-	<pre class="language-bash"><code class="language-bash">// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
-}
-
-datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-}
-
-+ model Visit {
-+   id        Int      @id @default(autoincrement())
-+   visitTime DateTime @default(now())
-+ }
-</code></pre>
-	<p>Now that you have a schema and a model, let’s create a migration. First use <code>wrangler</code> to generate an empty migration file and <code>prisma migrate</code> to fill it. If prompted, select “yes” to create a migrations folder at the root of your project.</p>
-	<pre class="language-bash"><code class="language-bash">npx wrangler d1 migrations create prod-prisma-d1-app init
- ⛅️ wrangler 3.36.0
--------------------
-✔ No migrations folder found. Set `migrations_dir` in wrangler.toml to choose a different path.
-Ok to create /path/to/your/project/my-d1-prisma-app/migrations? … yes
-✅ Successfully created Migration '0001_init.sql'!
-
-The migration is available for editing here
-/path/to/your/project/my-d1-prisma-app/migrations/0001_init.sql</code></pre>
-
-	<pre class="language-bash"><code class="language-bash">npx prisma migrate diff --script --from-empty --to-schema-datamodel ./prisma/schema.prisma &gt;&gt; migrations/0001_init.sql</code></pre>
-	<p>The <code>npx prisma migrate diff</code> command takes the difference between your database (which is currently empty) and the Prisma schema. It then saves this difference to a new file in the migrations directory.</p>
-	<pre class="language-bash"><code class="language-bash">// 0001_init.sql
--- Migration number: 0001 	 2024-03-21T22:15:50.184Z
--- CreateTable
-CREATE TABLE "Visit" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "visitTime" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP</code></pre>
-	<p>Now you can migrate your local and remote D1 database instances using <code>wrangler</code> and re-generate your Prisma Client to begin making queries.</p>
-	<pre class="language-bash"><code class="language-bash">npx wrangler d1 migrations apply prod-prisma-d1-app --local
-npx wrangler d1 migrations apply prod-prisma-d1-app --remote
-npx prisma generate</code></pre>
-	<p>Make sure to import <code>PrismaClient</code> and <code>PrismaD1</code>, define the binding for your D1 database, and you’re ready to use Prisma in your application.</p>
-	<pre class="language-js"><code class="language-js">// src/index.ts
-import { PrismaClient } from "@prisma/client";
-import { PrismaD1 } from "@prisma/adapter-d1";
-
-export interface Env {
-  DB: D1Database,
-}
-
-export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
-    const adapter = new PrismaD1(env.DB);
-    const prisma = new PrismaClient({ adapter });
-    const { pathname } = new URL(request.url);
-
-    if (pathname === '/') {
-      const numVisitors = await prisma.visit.count();
-      return new Response(
-        `You have had ${numVisitors} visitors!`
-      );
-    }
-
-    return new Response('');
-  },
-};</code></pre>
-	<p>You may notice that there’s always 0 visitors. Add another route to create a new visitor whenever someone visits the <code>/visit</code> route</p>
-	<pre class="language-js"><code class="language-js">// src/index.ts
-import { PrismaClient } from "@prisma/client";
-import { PrismaD1 } from "@prisma/adapter-d1";
-
-export interface Env {
-  DB: D1Database,
-}
-
-export default {
-  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
-    const adapter = new PrismaD1(env.DB);
-    const prisma = new PrismaClient({ adapter });
-    const { pathname } = new URL(request.url);
-
-    if (pathname === '/') {
-      const numVisitors = await prisma.visit.count();
-      return new Response(
-        `You have had ${numVisitors} visitors!`
-      );
-    } else if (pathname === '/visit') {
-      const newVisitor = await prisma.visit.create({ data: {} });
-      return new Response(
-        `You visited at ${newVisitor.visitTime}. Thanks!`
-      );
-    }
-
-    return new Response('');
-  },
-};</code></pre>
-	<p>Your app is now set up to record visits and report how many visitors you have had!</p>
-	<div class="flex anchor relative">
-		<h2 id="summary-and-further-reading">Summary and further reading</h2>
-		<a href="https://blog.cloudflare.com/#summary-and-further-reading" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We were able to build a simple app easily with Cloudflare Workers, D1 and Prisma ORM, but the benefits don’t stop there! Check the <a href="https://www.prisma.io/docs" target="_blank" rel="noopener noreferrer">official documentation</a> for information on using Prisma ORM with <a href="https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare#d1" target="_blank" rel="noopener noreferrer">D1</a> along with workflows for <a href="https://www.prisma.io/docs/orm/prisma-migrate/getting-started" target="_blank" rel="noopener noreferrer">migrating your data</a>, and even <a href="https://www.prisma.io/docs/orm/prisma-client/client-extensions" target="_blank" rel="noopener noreferrer">extending the Prisma Client</a> for your specific needs.</p>
+<p>Working with <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">databases</a> can be difficult. Developers face increasing data complexity and needs beyond simple create, read, update, and delete (CRUD) operations. Unfortunately, these issues also compound on themselves: developers have a harder time iterating in an increasingly complex environment. Cloudflare Workers and D1 help by reducing time spent managing infrastructure and deploying applications, and <a href="https://prisma.io" target="_blank" rel="noopener noreferrer">Prisma</a> provides a great experience for your team to work and interact with data. &nbsp;</p>
+<p>Together, Cloudflare and Prisma make it easier than ever to deploy globally available apps with a focus on developer experience. To further that goal, Prisma Object Relational Mapper (ORM) now natively supports Cloudflare Workers and D1 in Preview. With version <code>5.12.0</code> of Prisma ORM you can now interact with your data stored in D1 from your Cloudflare Workers with the convenience of the Prisma Client API. Learn more and <a href="https://pris.ly/d/d1" target="_blank" rel="noopener noreferrer">try it out now</a>.</p>
+<h3>What is Prisma?</h3>
+<p>From writing to debugging, SQL queries take a long time and slow developer productivity. Even before writing queries, modeling tables can quickly become unwieldy, and migrating data is a nerve-wracking process. Prisma ORM looks to resolve all of these issues by providing an intuitive data modeling language, an automated migration workflow, and a developer-friendly and type-safe client for JavaScript and TypeScript, allowing developers to focus on what they enjoy: developing!</p>
+<p><a href="https://prisma.io" target="_blank" rel="noopener noreferrer">Prisma</a> is focused on making working with data easy. Alongside an ORM, Prisma offers <a href="https://www.prisma.io/data-platform/accelerate" target="_blank" rel="noopener noreferrer">Accelerate</a> and <a href="https://www.prisma.io/data-platform/pulse" target="_blank" rel="noopener noreferrer">Pulse</a>, products built on Cloudflare that cover needs from connection pooling, to query caching, to real-time type-safe database subscriptions.</p>
+<h2><strong>How to get started with Prisma ORM, Cloudflare Workers, and D1</strong></h2>
+<p>To get started with Prisma ORM and D1, first create a basic Cloudflare Workers app. This guide will start with the <code>”Hello World”</code> Worker example app, but any Workers example app will work. If you don’t have a project yet, start by creating a new one. Name your project something memorable, like <code>my-d1-prisma-app</code> and select “Hello World” worker and TypeScript. For now, we will choose to not deploy and will wait until after we have set up D1 and Prisma ORM.</p>
+<p><code>npm create cloudflare@latest</code></p>
+<p>Next, move into your newly created project and make sure that dependencies are installed:</p>
+<p><code>cd my-d1-prisma-app &amp;&amp; npm install</code></p>
+<p>After dependencies are installed, we can move on to the D1 setup.</p>
+<p>First, create a new D1 database for your app.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> prod-prisma-d1-app</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[[d1_databases]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span><span class="sk-6a737d-8b8b8b94"> # i.e. available in your Worker on env.DB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "prod-prisma-d1-app"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;unique-ID-for-your-database&gt;"</span></span></code></pre>
 </div>
+<p>The section starting with <code>[[d1_databases]]</code> is the binding configuration needed in your <code>wrangler.toml</code> for your Worker to communicate with D1. Add that now:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> wrangler.toml</span></span>
+<span class="line"><span class="sk-24292e-fff">name</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"my-d1-prisma-app"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "src/index.ts"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">compatibility_date</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "2024-03-20"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">compatibility_flags</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"nodejs_compat"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[[d1_databases]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "DB"</span><span class="sk-6a737d-8b8b8b94"> # i.e. available in your Worker on env.DB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">database_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "prod-prisma-d1-app"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">database_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;unique-ID-for-your-database&gt;"</span></span></code></pre>
+</div>
+<p>Your application now has D1 available! Next, add Prisma ORM to manage your queries, schema and migrations! To add Prisma ORM, first make sure the latest version is installed. Prisma ORM versions 5.12.0 and up support Cloudflare Workers and D1.</p>
+<p><code>npm install prisma@latest @prisma/client@latest @prisma/adapter-d1</code></p>
+<p>Now run <code>npx prisma init</code> in order to create the necessary files to start with. Since D1 uses SQLite’s SQL dialect, we set the provider to be <code>sqlite</code>.</p>
+<p><code>npx prisma init --datasource-provider sqlite</code></p>
+<p>This will create a few files, but the one to look at first is your <a href="https://www.prisma.io/docs/orm/prisma-schema/overview" target="_blank" rel="noopener noreferrer">Prisma schema file</a>, available at <code>prisma/schema.prisma</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> schema.prisma</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> Prisma</span><span class="sk-032f62-99ffe4"> schema</span><span class="sk-032f62-99ffe4"> file,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> learn</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> about</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> docs:</span><span class="sk-032f62-99ffe4"> https://pris.ly/d/prisma-schema</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">generator</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "prisma-client-js"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">datasource</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "sqlite"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  url</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"DATABASE_URL"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Before you can create any models, first enable the <code>driverAdapters</code> Preview feature. This will allow the Prisma Client to use an adapter to communicate with D1.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> schema.prisma</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> Prisma</span><span class="sk-032f62-99ffe4"> schema</span><span class="sk-032f62-99ffe4"> file,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> learn</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> about</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> docs:</span><span class="sk-032f62-99ffe4"> https://pris.ly/d/prisma-schema</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">generator</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "prisma-client-js"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> previewFeatures</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"driverAdapters"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">datasource</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "sqlite"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  url</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"DATABASE_URL"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Now you are ready to create your first model! In this app, you will be creating a “ticker”, a mainstay of many classic Internet sites.</p>
+<p>Add a new model to your schema, <code>Visit</code>, which will track that an individual visited your site. A <code>Visit</code> is a simple model that will have a unique ID and the time at which an individual visited your site.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> Prisma</span><span class="sk-032f62-99ffe4"> schema</span><span class="sk-032f62-99ffe4"> file,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> learn</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> about</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> docs:</span><span class="sk-032f62-99ffe4"> https://pris.ly/d/prisma-schema</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">generator</span><span class="sk-032f62-99ffe4"> client</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> "prisma-client-js"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  previewFeatures</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"driverAdapters"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">datasource</span><span class="sk-032f62-99ffe4"> db</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  provider</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "sqlite"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  url</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"DATABASE_URL"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> model</span><span class="sk-032f62-99ffe4"> Visit</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">   id</span><span class="sk-032f62-99ffe4">        Int</span><span class="sk-032f62-99ffe4">      @id</span><span class="sk-032f62-99ffe4"> @default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">autoincrement</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4">   visitTime</span><span class="sk-032f62-99ffe4"> DateTime</span><span class="sk-032f62-99ffe4"> @default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+</span><span class="sk-032f62-99ffe4"> }</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Now that you have a schema and a model, let’s create a migration. First use <code>wrangler</code> to generate an empty migration file and <code>prisma migrate</code> to fill it. If prompted, select “yes” to create a migrations folder at the root of your project.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> prod-prisma-d1-app</span><span class="sk-032f62-99ffe4"> init</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> ⛅️</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-005cc5-ffc799"> 3.36.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------------------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">✔</span><span class="sk-032f62-99ffe4"> No</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> folder</span><span class="sk-032f62-99ffe4"> found.</span><span class="sk-032f62-99ffe4"> Set</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">migrations_dir</span><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff"> in wrangler.toml to choose a different path.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Ok</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> /path/to/your/project/my-d1-prisma-app/migrations?</span><span class="sk-032f62-99ffe4"> …</span><span class="sk-032f62-99ffe4"> yes</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">✅</span><span class="sk-032f62-99ffe4"> Successfully</span><span class="sk-032f62-99ffe4"> created</span><span class="sk-032f62-99ffe4"> Migration</span><span class="sk-032f62-99ffe4"> '0001_init.sql'!</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-032f62-99ffe4"> migration</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> available</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> editing</span><span class="sk-032f62-99ffe4"> here</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">/path/to/your/project/my-d1-prisma-app/migrations/0001_init.sql</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> prisma</span><span class="sk-032f62-99ffe4"> migrate</span><span class="sk-032f62-99ffe4"> diff</span><span class="sk-005cc5-99ffe4"> --script</span><span class="sk-005cc5-99ffe4"> --from-empty</span><span class="sk-005cc5-99ffe4"> --to-schema-datamodel</span><span class="sk-032f62-99ffe4"> ./prisma/schema.prisma</span><span class="sk-d73a49-a0a0a0"> &gt;&gt;</span><span class="sk-032f62-99ffe4"> migrations/0001_init.sql</span></span></code></pre>
+</div>
+<p>The <code>npx prisma migrate diff</code> command takes the difference between your database (which is currently empty) and the Prisma schema. It then saves this difference to a new file in the migrations directory.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> 0001_init.sql</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">--</span><span class="sk-032f62-99ffe4"> Migration</span><span class="sk-032f62-99ffe4"> number:</span><span class="sk-005cc5-ffc799"> 0001</span><span class="sk-032f62-99ffe4"> 	 2024-03-21T22:15:50.184Z</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">--</span><span class="sk-032f62-99ffe4"> CreateTable</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CREATE</span><span class="sk-032f62-99ffe4"> TABLE</span><span class="sk-032f62-99ffe4"> "Visit"</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-032f62-99ffe4"> INTEGER</span><span class="sk-032f62-99ffe4"> NOT</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-032f62-99ffe4"> PRIMARY</span><span class="sk-032f62-99ffe4"> KEY</span><span class="sk-032f62-99ffe4"> AUTOINCREMENT,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "visitTime"</span><span class="sk-032f62-99ffe4"> DATETIME</span><span class="sk-032f62-99ffe4"> NOT</span><span class="sk-032f62-99ffe4"> NULL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4"> CURRENT_TIMESTAMP</span></span></code></pre>
+</div>
+<p>Now you can migrate your local and remote D1 database instances using <code>wrangler</code> and re-generate your Prisma Client to begin making queries.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-032f62-99ffe4"> prod-prisma-d1-app</span><span class="sk-005cc5-99ffe4"> --local</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-032f62-99ffe4"> prod-prisma-d1-app</span><span class="sk-005cc5-99ffe4"> --remote</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> prisma</span><span class="sk-032f62-99ffe4"> generate</span></span></code></pre>
+</div>
+<p>Make sure to import <code>PrismaClient</code> and <code>PrismaD1</code>, define the binding for your D1 database, and you’re ready to use Prisma in your application.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/index.ts</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { PrismaClient } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@prisma/client"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { PrismaD1 } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@prisma/adapter-d1"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  DB</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> D1Database</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> adapter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> PrismaD1</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> prisma</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> PrismaClient</span><span class="sk-24292e-fff">({ adapter });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> '/'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> numVisitors</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> prisma.visit.</span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        `You have had ${</span><span class="sk-24292e-fff">numVisitors</span><span class="sk-032f62-99ffe4">} visitors!`</span></span>
+<span class="line"><span class="sk-24292e-fff">      );</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>You may notice that there’s always 0 visitors. Add another route to create a new visitor whenever someone visits the <code>/visit</code> route</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/index.ts</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { PrismaClient } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@prisma/client"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { PrismaD1 } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@prisma/adapter-d1"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  DB</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> D1Database</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> adapter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> PrismaD1</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> prisma</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> PrismaClient</span><span class="sk-24292e-fff">({ adapter });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> '/'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> numVisitors</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> prisma.visit.</span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        `You have had ${</span><span class="sk-24292e-fff">numVisitors</span><span class="sk-032f62-99ffe4">} visitors!`</span></span>
+<span class="line"><span class="sk-24292e-fff">      );</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> '/visit'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> newVisitor</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> prisma.visit.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">({ data: {} });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        `You visited at ${</span><span class="sk-24292e-fff">newVisitor</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">visitTime</span><span class="sk-032f62-99ffe4">}. Thanks!`</span></span>
+<span class="line"><span class="sk-24292e-fff">      );</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>Your app is now set up to record visits and report how many visitors you have had!</p>
+<h2>Summary and further reading</h2>
+<p>We were able to build a simple app easily with Cloudflare Workers, D1 and Prisma ORM, but the benefits don’t stop there! Check the <a href="https://www.prisma.io/docs" target="_blank" rel="noopener noreferrer">official documentation</a> for information on using Prisma ORM with <a href="https://www.prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare#d1" target="_blank" rel="noopener noreferrer">D1</a> along with workflows for <a href="https://www.prisma.io/docs/orm/prisma-migrate/getting-started" target="_blank" rel="noopener noreferrer">migrating your data</a>, and even <a href="https://www.prisma.io/docs/orm/prisma-client/client-extensions" target="_blank" rel="noopener noreferrer">extending the Prisma Client</a> for your specific needs.</p>

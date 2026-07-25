@@ -1,45 +1,46 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rL1LoWn7GhWtDIPYloJ2J/6e917385456d515289f0993bf40c4a7a/meta-llama-3-1-available-on-workers-ai.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>At Cloudflare, we’re big supporters of the open-source community – and that extends to our approach for <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a> models as well. Our strategy for our Cloudflare AI products is to provide a top-notch developer experience and toolkit that can help people build applications with open-source models. </p>
-	<p>We’re excited to be one of Meta’s launch partners to make their newest <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md" target="_blank" rel="noopener noreferrer">Llama 3.1 8B model</a> available to all Workers AI users on Day 1. You can run their latest model by simply swapping out your model ID to <code>@cf/meta/llama-3.1-8b-instruct</code> or test out the model on our <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers AI Playground</a>. Llama 3.1 8B is free to use on Workers AI until the model graduates out of beta.</p>
-	<p>Meta’s Llama collection of models have consistently shown high-quality performance in areas like general knowledge, steerability, math, tool use, and multilingual translation. Workers AI is excited to continue to distribute and serve the Llama collection of models on our serverless inference platform, powered by our globally distributed GPUs.</p>
-	<p>The Llama 3.1 model is particularly exciting, as it is released in a higher precision (bfloat16), incorporates function calling, and adds support across 8 languages. Having multilingual support built-in means that you can use Llama 3.1 to write prompts and receive responses directly in languages like English, French, German, Hindi, Italian, Portuguese, Spanish, and Thai. Expanding model understanding to more languages means that your applications have a bigger reach across the world, and it’s all possible with just one model.</p>
-	<pre class="language-javascript"><code class="language-javascript">const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
-    stream: true,
-    messages: [{
-        "role": "user",
-        "content": "Qu'est-ce que ç'est verlan en français?"
-    }],
-});</code></pre>
-	<p>Llama 3.1 also introduces native function calling (also known as tool calls) which allows LLMs to generate structured JSON outputs which can then be fed into different APIs. This means that function calling is supported out-of-the-box, without the need for a fine-tuned variant of Llama that specializes in tool use. Having this capability built-in means that you can use one model across various tasks.</p>
-	<p>Workers AI recently announced <a href="https://blog.cloudflare.com/embedded-function-calling">embedded function calling</a>, which is now usable with Meta Llama 3.1 as well. Our embedded function calling gives developers a way to run their inference tasks far more efficiently than traditional architectures, leveraging Cloudflare Workers to reduce the number of requests that need to be made manually. It also makes use of our open-source <a href="https://www.npmjs.com/package/@cloudflare/ai-utils" target="_blank" rel="noopener noreferrer">ai-utils</a> package, which helps you orchestrate the back-and-forth requests for function calling along with other helper methods that can automatically generate tool schemas. Below is an example function call to Llama 3.1 with embedded function calling that then stores key-values in Workers KV.</p>
-	<pre class="language-javascript"><code class="language-javascript">const response = await runWithTools(env.AI, "@cf/meta/llama-3.1-8b-instruct", {
-    messages: [{ role: "user", content: "Greet the user and ask them a question" }],
-    tools: [{
-        name: "Store in memory",
-        description: "Store everything that the user talks about in memory as a key-value pair.",
-        parameters: {
-            type: "object",
-            properties: {
-                key: {
-                    type: "string",
-                    description: "The key to store the value under.",
-                },
-                value: {
-                    type: "string",
-                    description: "The value to store.",
-                },
-            },
-            required: ["key", "value"],
-        },
-        function: async ({ key, value }) =&gt; {
-                await env.KV.put(key, value);
-
-                return JSON.stringify({
-                    success: true,
-                });
-         }
-    }]
-})</code></pre>
-	<p>We’re excited to see what you build with these new capabilities. As always, use of the new model should be conducted with Meta’s <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/USE_POLICY.md" target="_blank" rel="noopener noreferrer">Acceptable Use Policy</a> and <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE" target="_blank" rel="noopener noreferrer">License</a> in mind. Take a look at our <a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct" target="_blank" rel="noopener noreferrer">developer documentation</a> to get started!</p>
+<p>At Cloudflare, we’re big supporters of the open-source community – and that extends to our approach for <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">Workers AI</a> models as well. Our strategy for our Cloudflare AI products is to provide a top-notch developer experience and toolkit that can help people build applications with open-source models. </p>
+<p>We’re excited to be one of Meta’s launch partners to make their newest <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md" target="_blank" rel="noopener noreferrer">Llama 3.1 8B model</a> available to all Workers AI users on Day 1. You can run their latest model by simply swapping out your model ID to <code>@cf/meta/llama-3.1-8b-instruct</code> or test out the model on our <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers AI Playground</a>. Llama 3.1 8B is free to use on Workers AI until the model graduates out of beta.</p>
+<p>Meta’s Llama collection of models have consistently shown high-quality performance in areas like general knowledge, steerability, math, tool use, and multilingual translation. Workers AI is excited to continue to distribute and serve the Llama collection of models on our serverless inference platform, powered by our globally distributed GPUs.</p>
+<p>The Llama 3.1 model is particularly exciting, as it is released in a higher precision (bfloat16), incorporates function calling, and adds support across 8 languages. Having multilingual support built-in means that you can use Llama 3.1 to write prompts and receive responses directly in languages like English, French, German, Hindi, Italian, Portuguese, Spanish, and Thai. Expanding model understanding to more languages means that your applications have a bigger reach across the world, and it’s all possible with just one model.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> answer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/meta/llama-3.1-8b-instruct'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    messages: [{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "role"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "content"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Qu'est-ce que ç'est verlan en français?"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }],</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
 </div>
+<p>Llama 3.1 also introduces native function calling (also known as tool calls) which allows LLMs to generate structured JSON outputs which can then be fed into different APIs. This means that function calling is supported out-of-the-box, without the need for a fine-tuned variant of Llama that specializes in tool use. Having this capability built-in means that you can use one model across various tasks.</p>
+<p>Workers AI recently announced <a href="https://blog.cloudflare.com/embedded-function-calling">embedded function calling</a>, which is now usable with Meta Llama 3.1 as well. Our embedded function calling gives developers a way to run their inference tasks far more efficiently than traditional architectures, leveraging Cloudflare Workers to reduce the number of requests that need to be made manually. It also makes use of our open-source <a href="https://www.npmjs.com/package/@cloudflare/ai-utils" target="_blank" rel="noopener noreferrer">ai-utils</a> package, which helps you orchestrate the back-and-forth requests for function calling along with other helper methods that can automatically generate tool schemas. Below is an example function call to Llama 3.1 with embedded function calling that then stores key-values in Workers KV.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> runWithTools</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"@cf/meta/llama-3.1-8b-instruct"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    messages: [{ role: </span><span class="sk-032f62-99ffe4">"user"</span><span class="sk-24292e-fff">, content: </span><span class="sk-032f62-99ffe4">"Greet the user and ask them a question"</span><span class="sk-24292e-fff"> }],</span></span>
+<span class="line"><span class="sk-24292e-fff">    tools: [{</span></span>
+<span class="line"><span class="sk-24292e-fff">        name: </span><span class="sk-032f62-99ffe4">"Store in memory"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        description: </span><span class="sk-032f62-99ffe4">"Store everything that the user talks about in memory as a key-value pair."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        parameters: {</span></span>
+<span class="line"><span class="sk-24292e-fff">            type: </span><span class="sk-032f62-99ffe4">"object"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            properties: {</span></span>
+<span class="line"><span class="sk-24292e-fff">                key: {</span></span>
+<span class="line"><span class="sk-24292e-fff">                    type: </span><span class="sk-032f62-99ffe4">"string"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                    description: </span><span class="sk-032f62-99ffe4">"The key to store the value under."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                },</span></span>
+<span class="line"><span class="sk-24292e-fff">                value: {</span></span>
+<span class="line"><span class="sk-24292e-fff">                    type: </span><span class="sk-032f62-99ffe4">"string"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                    description: </span><span class="sk-032f62-99ffe4">"The value to store."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                },</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-24292e-fff">            required: [</span><span class="sk-032f62-99ffe4">"key"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"value"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        function</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">key</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">value</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">KV</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(key, value);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                return</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">                    success: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">                });</span></span>
+<span class="line"><span class="sk-24292e-fff">         }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }]</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>We’re excited to see what you build with these new capabilities. As always, use of the new model should be conducted with Meta’s <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/USE_POLICY.md" target="_blank" rel="noopener noreferrer">Acceptable Use Policy</a> and <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/LICENSE" target="_blank" rel="noopener noreferrer">License</a> in mind. Take a look at our <a href="https://developers.cloudflare.com/workers-ai/models/llama-3.1-8b-instruct" target="_blank" rel="noopener noreferrer">developer documentation</a> to get started!</p>

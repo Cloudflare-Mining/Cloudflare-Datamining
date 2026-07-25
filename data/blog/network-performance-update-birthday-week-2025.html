@@ -1,1199 +1,1175 @@
-<div class="mb2 gray5">9 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2l7g7sbSNy8BCbRrk7ExqH/c92a422155483c2bed5ffc2630da0c20/image1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>We are committed to being the fastest network in the world because improvements in our performance translate to improvements for the own end users of your application. We are excited to share that Cloudflare continues to be the fastest network for the most peered networks in the world.</p>
-	<p>We relentlessly measure our own performance and our performance against peers. We publish those results routinely, starting with our first update in <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance"><u>June 2021</u></a> and most recently with our last post in <a href="https://blog.cloudflare.com/tr-tr/network-performance-update-birthday-week-2024"><u>September 2024</u></a>.</p>
-	<p>Today’s update breaks down where we have improved since our update last year and what our priorities are going into the next year. While we are excited to be the fastest in the greatest number of last-mile ISPs, we are never done improving and have more work to do.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-do-we-measure-this-metric-and-what-are-the-results">How do we measure this metric, and what are the results?</h3>
-		<a href="https://blog.cloudflare.com/#how-do-we-measure-this-metric-and-what-are-the-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We measure network performance by attempting to capture what the experience is like for Internet users across the globe. To do that we need to simulate what their connection is like from their last-mile ISP to our networks.</p>
-	<p>We start by taking the 1,000 largest networks in the world based on estimated population. We use that to give ourselves a representation of real users in nearly every geography.</p>
-	<p>We then measure performance itself with TCP connection time. TCP connection time is the time it takes for an end user to connect to the website or endpoint they are trying to reach. We chose this metric because we believe this most closely approximates what users perceive to be Internet speed, as opposed to other metrics which are either too scientific (ignoring real world challenges like congestion or distance) or too broad.</p>
-	<p>We take the trimean measurement of TCP connection times to calculate our metric. The trimean is a weighted average of three statistical values: the first quartile, the median, and the third quartile. This approach allows us to reduce some of the noise and outliers and get a comprehensive picture of quality.</p>
-	<p>For this year’s update, we examined the trimean of TCP connection times measured from August 6 to September 4, Cloudflare is the #1 provider in 40% of the top 1000 networks. In our September 2024 update, we shared that we were the #1 provider in 44% of the top 1000 networks.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aMHnKc3pQMa8oHds3N1uZ/fce6e2eecf2e7e8c257d6a2409befcdc/image2.png" alt="" class="kg-image" width="826" height="500" loading="lazy">
-	</figure>
-	<p>The TCP Connection Time (Trimean) graph shows that we are the fastest TCP connection time in 383 networks, but that would make us the fastest in 38% of the top 1,000. We exclude networks that aren’t last-mile ISPs, such as transit networks, since they don’t reflect the end user experience, which brings the number of measured networks to 964 and makes Cloudflare the fastest in 40% of measured ISPs and the fastest across the top networks.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-do-we-capture-this-data">How do we capture this data?&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#how-do-we-capture-this-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A Cloudflare-branded error page does more than just display an error; it kicks off a real-world speed test. Behind the scenes, on a selection of our error pages, we use Real User Measurements (RUM), which involves a browser retrieving a small file from multiple networks, including Cloudflare, Amazon CloudFront, Google, Fastly and Akamai.</p>
-	<p>Running these tests lets us gather performance data directly from the user's perspective, providing a genuine comparison of different network speeds. We do this to understand where our network is fastest and, more importantly, where we can make further improvements. For a deeper dive into the technical details, the <a href="https://blog.cloudflare.com/introducing-radar-internet-quality-page"><u>Speed Week blog post</u></a> covers the full methodology.</p>
-	<p>By using RUM data, we track key metrics like TCP Connection Time, Time to First Byte (TTFB), and Time to Last Byte (TTLB). These are widely recognized, industry-standard metrics that allow us to objectively measure how quickly and efficiently a website loads for actual users. By monitoring these benchmarks, we can objectively compare our performance against other networks.</p>
-	<p>We specifically chose the top 1000 networks by estimated population from APNIC, excluding those that aren’t last-mile ISPs. Consistency is key: by analyzing the same group of networks in every cycle, we ensure our measurements and reporting remain reliable and directly comparable over time.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-do-the-results-compare-across-countries">How do the results compare across countries?</h3>
-		<a href="https://blog.cloudflare.com/#how-do-the-results-compare-across-countries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The map below shows the fastest providers per country and Cloudflare is fastest in dozens of countries.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/b6jJn6IQTCWQDhjHdtb9P/9a324658130c08caf865a81f604b2000/image5.png" alt="" class="kg-image" width="787" height="525" loading="lazy">
-	</figure>
-	<p>The color coding is generated by grouping all the measurements we generate by which country the measurement originates from. Then we look at the trimean measurements for each provider to identify who is the fastest… Akamai was measured as well, but providers are only represented in the map if they ranked first in a country which Akamai does not anywhere in the world.</p>
-	<p>These slim margins mean that the fastest provider in a country is often determined by <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer"><u>latency</u></a> differences so small that the fastest provider is often only faster by less than 5%. As an example, let’s look at India, a country where we are currently the second-fastest provider.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>India (IN)</b></p>
-				</td>
-				<td>
+<p>We are committed to being the fastest network in the world because improvements in our performance translate to improvements for the own end users of your application. We are excited to share that Cloudflare continues to be the fastest network for the most peered networks in the world.</p>
+<p>We relentlessly measure our own performance and our performance against peers. We publish those results routinely, starting with our first update in <a href="https://blog.cloudflare.com/benchmarking-edge-network-performance" target="_blank" rel="noopener noreferrer"><u>June 2021</u></a> and most recently with our last post in <a href="https://blog.cloudflare.com/tr-tr/network-performance-update-birthday-week-2024" target="_blank" rel="noopener noreferrer"><u>September 2024</u></a>.</p>
+<p>Today’s update breaks down where we have improved since our update last year and what our priorities are going into the next year. While we are excited to be the fastest in the greatest number of last-mile ISPs, we are never done improving and have more work to do.</p>
+<h3>How do we measure this metric, and what are the results?</h3>
+<p>We measure network performance by attempting to capture what the experience is like for Internet users across the globe. To do that we need to simulate what their connection is like from their last-mile ISP to our networks.</p>
+<p>We start by taking the 1,000 largest networks in the world based on estimated population. We use that to give ourselves a representation of real users in nearly every geography.</p>
+<p>We then measure performance itself with TCP connection time. TCP connection time is the time it takes for an end user to connect to the website or endpoint they are trying to reach. We chose this metric because we believe this most closely approximates what users perceive to be Internet speed, as opposed to other metrics which are either too scientific (ignoring real world challenges like congestion or distance) or too broad.</p>
+<p>We take the trimean measurement of TCP connection times to calculate our metric. The trimean is a weighted average of three statistical values: the first quartile, the median, and the third quartile. This approach allows us to reduce some of the noise and outliers and get a comprehensive picture of quality.</p>
+<p>For this year’s update, we examined the trimean of TCP connection times measured from August 6 to September 4, Cloudflare is the #1 provider in 40% of the top 1000 networks. In our September 2024 update, we shared that we were the #1 provider in 44% of the top 1000 networks.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="433" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=715&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=640&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=715&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=750&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=828&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=1080&amp;h=654&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=1280&amp;h=775&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=1430&amp;h=866&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2979 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4884C9HXFC7SHK2M8GEQ48.png&amp;w=826&amp;h=500&amp;f=webp" data-lightbox-width="826" data-lightbox-height="500" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="433" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The TCP Connection Time (Trimean) graph shows that we are the fastest TCP connection time in 383 networks, but that would make us the fastest in 38% of the top 1,000. We exclude networks that aren’t last-mile ISPs, such as transit networks, since they don’t reflect the end user experience, which brings the number of measured networks to 964 and makes Cloudflare the fastest in 40% of measured ISPs and the fastest across the top networks.</p>
+<h3>How do we capture this data?&nbsp;</h3>
+<p>A Cloudflare-branded error page does more than just display an error; it kicks off a real-world speed test. Behind the scenes, on a selection of our error pages, we use Real User Measurements (RUM), which involves a browser retrieving a small file from multiple networks, including Cloudflare, Amazon CloudFront, Google, Fastly and Akamai.</p>
+<p>Running these tests lets us gather performance data directly from the user's perspective, providing a genuine comparison of different network speeds. We do this to understand where our network is fastest and, more importantly, where we can make further improvements. For a deeper dive into the technical details, the <a href="https://blog.cloudflare.com/introducing-radar-internet-quality-page" target="_blank" rel="noopener noreferrer"><u>Speed Week blog post</u></a> covers the full methodology.</p>
+<p>By using RUM data, we track key metrics like TCP Connection Time, Time to First Byte (TTFB), and Time to Last Byte (TTLB). These are widely recognized, industry-standard metrics that allow us to objectively measure how quickly and efficiently a website loads for actual users. By monitoring these benchmarks, we can objectively compare our performance against other networks.</p>
+<p>We specifically chose the top 1000 networks by estimated population from APNIC, excluding those that aren’t last-mile ISPs. Consistency is key: by analyzing the same group of networks in every cycle, we ensure our measurements and reporting remain reliable and directly comparable over time.</p>
+<h3>How do the results compare across countries?</h3>
+<p>The map below shows the fastest providers per country and Cloudflare is fastest in dozens of countries.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2979 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DS4XBS5R0PAY5HQDYF55.png&amp;w=787&amp;h=525&amp;f=webp" data-lightbox-width="787" data-lightbox-height="525" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<p>The color coding is generated by grouping all the measurements we generate by which country the measurement originates from. Then we look at the trimean measurements for each provider to identify who is the fastest… Akamai was measured as well, but providers are only represented in the map if they ranked first in a country which Akamai does not anywhere in the world.</p>
+<p>These slim margins mean that the fastest provider in a country is often determined by <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer"><u>latency</u></a> differences so small that the fastest provider is often only faster by less than 5%. As an example, let’s look at India, a country where we are currently the second-fastest provider.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>India (IN)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Rank</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Entity&nbsp;</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Connect Time (Trimean)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>#1 Diff</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Rank</b></p>
-				</td>
-				<td>
-					<p><b>Entity&nbsp;</b></p>
-				</td>
-				<td>
-					<p><b>Connect Time (Trimean)</b></p>
-				</td>
-				<td>
-					<p><b>#1 Diff</b></p>
-				</td>
-			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>107 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>113 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+4.81% (+5.16 ms)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>117 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+8.74% (+9.39 ms)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#4&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>133 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+24% (+26 ms)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Akamai</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>144 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+34% (+37 ms)</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>In India, Cloudflare is 5ms behind Cloudfront, the #1 provider (To put milliseconds into perspective, the average human eye blink lasts between 100ms and 400ms). The competition for the number one spot in many countries is fierce and often shifts day by day. For example, in Mexico on Tuesday, August 5th, Cloudflare was the second-fastest provider by 0.73 ms but then on Tuesday, August 12th, Cloudflare was the fastest provider by 3.72 ms.&nbsp;</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Mexico (MX)</b></p>
-				</td>
-				<td>
+</div>
+<p>In India, Cloudflare is 5ms behind Cloudfront, the #1 provider (To put milliseconds into perspective, the average human eye blink lasts between 100ms and 400ms). The competition for the number one spot in many countries is fierce and often shifts day by day. For example, in Mexico on Tuesday, August 5th, Cloudflare was the second-fastest provider by 0.73 ms but then on Tuesday, August 12th, Cloudflare was the fastest provider by 3.72 ms.&nbsp;</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Mexico (MX)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Date</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Rank</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Entity&nbsp;</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Connect Time (Trimean)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>#1 Diff</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Date</b></p>
-				</td>
-				<td>
-					<p><b>Rank</b></p>
-				</td>
-				<td>
-					<p><b>Entity&nbsp;</b></p>
-				</td>
-				<td>
-					<p><b>Connect Time (Trimean)</b></p>
-				</td>
-				<td>
-					<p><b>#1 Diff</b></p>
-				</td>
-			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>August 5, 2025</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>116 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>116 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+0.63% (+0.73 ms)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>August 12, 2025</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>106 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>109 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>+3.52% (+3.72 ms)</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Because ranking reorderings are common, we also review country and network level rankings to evaluate and benchmark our performance.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="focusing-on-where-we-are-not-the-fastest-yet">Focusing on where we are not the fastest yet</h3>
-		<a href="https://blog.cloudflare.com/#focusing-on-where-we-are-not-the-fastest-yet" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As mentioned above, in September 2024, Cloudflare was fastest in 44% of measured ISPs. These values can shift as providers constantly make improvements to their networks. One way we focus in on how we are prioritizing improving is to not just observe where we are not the fastest but to measure how far we are from the leader.</p>
-	<p>In these locations we tend to pace extremely close to the fastest provider, giving us an opportunity to capture the spot as we <a href="https://blog.cloudflare.com/20-percent-internet-upgrade">relentlessly improve</a>. In networks where Cloudflare is 2nd, over 50% of those networks have a less than 5% difference (10ms or less) with the top provider.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Country</b></p>
-				</td>
-				<td>
-					<p><b>ASN</b></p>
-				</td>
-				<td>
-					<p><b>#1</b></p>
-				</td>
-				<td>
-					<p><b>Cloudflare Rank</b></p>
-				</td>
-				<td>
-					<p><b>#1 Diff (ms)</b></p>
-				</td>
-				<td>
-					<p><b>#1 Diff (%)</b></p>
-				</td>
+</div>
+<p>Because ranking reorderings are common, we also review country and network level rankings to evaluate and benchmark our performance.&nbsp;</p>
+<h3>Focusing on where we are not the fastest yet</h3>
+<p>As mentioned above, in September 2024, Cloudflare was fastest in 44% of measured ISPs. These values can shift as providers constantly make improvements to their networks. One way we focus in on how we are prioritizing improving is to not just observe where we are not the fastest but to measure how far we are from the leader.</p>
+<p>In these locations we tend to pace extremely close to the fastest provider, giving us an opportunity to capture the spot as we <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer">relentlessly improve</a>. In networks where Cloudflare is 2nd, over 50% of those networks have a less than 5% difference (10ms or less) with the top provider.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Country</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>ASN</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>#1</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Cloudflare Rank</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>#1 Diff (ms)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>#1 Diff (%)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS36352</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS36352</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>25 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>32%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS46475</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS46475</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>35 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>29%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS29802</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS29802</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.03 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>21%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS20473</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS20473</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>15 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>13%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS7018</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS7018</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>23 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>13%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS4181</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS4181</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.19 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>11%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS62240</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS62240</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>18 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.77%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS22773</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS22773</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>12 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.48%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS6167</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS6167</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>13 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.55%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS11427</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS11427</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.33 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.27%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS6614</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS6614</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.68 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.12%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS4922</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS4922</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.38 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.86%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS11492</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS11492</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.73 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.33%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS11351</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS11351</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.14 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.04%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS396356</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS396356</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.12 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.23%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS212238</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS212238</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.42 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.35%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS20055</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS20055</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.22 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.33%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS40021</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS40021</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>2.06 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.91%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS12271</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS12271</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.26 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.89%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS141039</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS141039</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>2</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>1.26 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>0.88%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>In networks where Cloudflare is 3rd, 50% of those networks are less than a 10% difference with the top provider (10ms or less). Margins are small and suggest that in instances where Cloudflare isn’t number one across networks, we’re extremely close to our competitors and the top networks change day over day.&nbsp;</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Country</b></p>
-				</td>
-				<td>
-					<p><b>ASN</b></p>
-				</td>
-				<td>
-					<p><b>#1</b></p>
-				</td>
-				<td>
-					<p><b>Cloudflare Rank</b></p>
-				</td>
-				<td>
-					<p><b>#1 Diff (ms)</b></p>
-				</td>
-				<td>
-					<p><b>#1 Diff (%)</b></p>
-				</td>
+</div>
+<p>In networks where Cloudflare is 3rd, 50% of those networks are less than a 10% difference with the top provider (10ms or less). Margins are small and suggest that in instances where Cloudflare isn’t number one across networks, we’re extremely close to our competitors and the top networks change day over day.&nbsp;</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Country</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>ASN</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>#1</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Cloudflare Rank</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>#1 Diff (ms)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>#1 Diff (%)</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS6461</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS6461</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>33 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>39%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS81</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS81</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>43 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>35%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS14615</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS14615</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>24 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>24%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS13977</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS13977</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>21 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>19%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS33363</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS33363</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>29 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>18%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS63949</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS63949</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.56 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>14%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS14593</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS14593</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>17 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>13%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS23089</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS23089</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>7.4 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>11%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS16509</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS16509</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>10 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.48%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS209</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS209</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>9.69 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.87%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS27364</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS27364</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.76 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.61%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS11404</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS11404</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.11 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>6.16%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS46690</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS46690</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.91 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.43%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS136787</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS136787</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>8.23 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.18%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS6079</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS6079</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>5.45 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>4.49%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>US</b></p>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>US</p>
 				</td>
-				<td>
-					<p><b>AS5650</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AS5650</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
-					<p><b>3</b></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.91 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>3.35%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>Countries with an abundance of networks, like the United States, have a lot of noise we need to calibrate against. For example, the graph below represents the performance of all providers for a major ISP like AS701 (Verizon Business).</p>
-	<p><sub>AS701 (Verizon Business) Connect Time (P95) between 2025-08-09 and 2025-09-09</sub></p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kiADi8Ld1teDWjMgnE4Qq/d6d3b1ca387ac12de1aac86b415129d1/image6.png" alt="" class="kg-image" width="1632" height="766" loading="lazy">
-	</figure>
-	<p>In this chart, the “P95” value, or 95th percentile, refers to one point of a percentile distribution. The P95 shows the value below which 95% of the data points fall and is specifically good at helping identify the slowest or worst-case user experiences, such as those on poor networks or older devices. Additionally, we review the other numbers lower on the percentile chain in the table below, which tell us how performance varies across the full range of data. When we do so, the picture becomes more nuanced.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>AS701 (Verizon Business) Provider Rankings for Connect Time at P95, P75 and P50</b></p>
-				</td>
-				<td>
+</div>
+<p>Countries with an abundance of networks, like the United States, have a lot of noise we need to calibrate against. For example, the graph below represents the performance of all providers for a major ISP like AS701 (Verizon Business).</p>
+<p><sub>AS701 (Verizon Business) Connect Time (P95) between 2025-08-09 and 2025-09-09</sub></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=640&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=750&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=828&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=1080&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=1280&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=1430&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2979 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y6PBQF7NWQAAEMYC4938.png&amp;w=1632&amp;h=766&amp;f=webp" data-lightbox-width="1632" data-lightbox-height="766" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="336" class="pt-portable-image-media"></div>
+</figure>
+<p>In this chart, the “P95” value, or 95th percentile, refers to one point of a percentile distribution. The P95 shows the value below which 95% of the data points fall and is specifically good at helping identify the slowest or worst-case user experiences, such as those on poor networks or older devices. Additionally, we review the other numbers lower on the percentile chain in the table below, which tell us how performance varies across the full range of data. When we do so, the picture becomes more nuanced.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>AS701 (Verizon Business) Provider Rankings for Connect Time at P95, P75 and P50</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Rank</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Entity&nbsp;</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Connect Time (P95)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Connect Time (P75)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Connect Time (P50)</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<p><b>Rank</b></p>
-				</td>
-				<td>
-					<p><b>Entity&nbsp;</b></p>
-				</td>
-				<td>
-					<p><b>Connect Time (P95)</b></p>
-				</td>
-				<td>
-					<p><b>Connect Time (P75)</b></p>
-				</td>
-				<td>
-					<p><b>Connect Time (P50)</b></p>
-				</td>
-			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#1</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Fastly</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>128 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>66 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>48 ms</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#2</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Google</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>134 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>72 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>54 ms</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#3</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>CloudFront</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>139 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>67 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>47 ms</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#4&nbsp;</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Cloudflare</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>141 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>68 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>49 ms</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>#5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Akamai</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>160 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>84 ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>61 ms</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>At the 95th percentile for AS701, Cloudflare ranks 4th but at the 75th and 50th, Cloudflare is only 2 milliseconds slower than the fastest provider. In other words, when reviewing more than one point along the distribution at the network level, Cloudflare is keeping up with the top providers for the less extreme samples. To capture these details, it’s important to look at the range of outcomes, not just one percentile.</p>
-	<p>To better reflect the full spectrum of user experiences, we started using the trimean in July 2025 to rank providers. This metric combines values from across the distribution of data - specifically the 75th, 50th and 25th percentiles - which gives a more balanced representation of overall performance, rather than only focusing on the extremes. Summarizing user experience with a single number is always challenging, but the trimean helps us compare providers in a way that better reflects how users actually experience the Internet.</p>
-	<p>Cloudflare is the fastest provider in 40% of networks in the majority of real-world conditions, not just in worst-case scenarios. Still, the 95th percentile remains key to understanding how performance holds up in challenging conditions and where other providers might fall behind in performance. When we review the 95th percentile across the same date range for all the networks, not just AS701, Cloudflare is fastest across roughly the same amount of networks but by 103 more networks than the next fastest provider. Being faster in such a wide margin of networks tells us that Cloudflare is particularly strong in the challenging, long-tail cases that other providers struggle with.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jOvjHJBG1fefaz25yi8sk/4e649bdeaf743b3bbeb8cd696fe9669d/image4.png" alt="" class="kg-image" width="904" height="498" loading="lazy">
-	</figure>
-	<p>Our performance data shows that even when we are not the top-ranked provider, we remain exceptionally competitive, often trailing the leader by a mere handful of percentage points. Our strength at the 95th percentile also highlights our superior performance in the most challenging scenarios. Cloudflare’s ability to outperform other providers, in the worst-case, is a testament to the resilience and efficiency of our network.</p>
-	<p>Moving forward, we'll continue to share multiple metrics and continue to make improvements to our network —and we’ll use this data to do it! Let’s talk about how.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="how-does-cloudflare-use-this-data-to-improve">How does Cloudflare use this data to improve?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-cloudflare-use-this-data-to-improve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare applies this data to identify regions and networks that need prioritization. If we are consistently slower than other providers in a network, we want to know why, so we can fix it.</p>
-	<p>For example, the graph below shows the 95th percentile of Connect Time for AS8966. Prior to June 13, 2025, our performance was suffering, and we were the slowest provider for the network. By referencing our own measurement data, we prioritized partner data centers in the region and almost immediately performance improved for users connecting through AS8966.</p>
-	<p>Cloudflare’s partner data centers consist of collaborations with local service providers who host Cloudflare's equipment within their own facilities. This allows us to expand our network to new locations and get closer to users more quickly. In the case of AS8966, adding a new partner data center took us from being ranked last to ranked first and improved latency by roughly 150ms in one day. By using a data-driven approach, we made our network faster and most importantly, improved the end user experience.</p>
-	<p><sub>TCP Connect Time (P95) for AS8966</sub></p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1kX76JFqDOZq0FF798XLRM/4dc346e0a33dd564f7d42db24f91cae1/image3.png" alt="" class="kg-image" width="1544" height="642" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We are always working to build a faster network and will continue sharing our process as we go. Our approach is straightforward: identify performance bottlenecks, implement fixes, and report the results. We believe in being transparent about our methods and are committed to a continuous cycle of improvement to achieve the best possible performance. Follow our blog for the latest performance updates as we continue to optimize our network and share our progress.</p>
 </div>
+<p>At the 95th percentile for AS701, Cloudflare ranks 4th but at the 75th and 50th, Cloudflare is only 2 milliseconds slower than the fastest provider. In other words, when reviewing more than one point along the distribution at the network level, Cloudflare is keeping up with the top providers for the less extreme samples. To capture these details, it’s important to look at the range of outcomes, not just one percentile.</p>
+<p>To better reflect the full spectrum of user experiences, we started using the trimean in July 2025 to rank providers. This metric combines values from across the distribution of data - specifically the 75th, 50th and 25th percentiles - which gives a more balanced representation of overall performance, rather than only focusing on the extremes. Summarizing user experience with a single number is always challenging, but the trimean helps us compare providers in a way that better reflects how users actually experience the Internet.</p>
+<p>Cloudflare is the fastest provider in 40% of networks in the majority of real-world conditions, not just in worst-case scenarios. Still, the 95th percentile remains key to understanding how performance holds up in challenging conditions and where other providers might fall behind in performance. When we review the 95th percentile across the same date range for all the networks, not just AS701, Cloudflare is fastest across roughly the same amount of networks but by 103 more networks than the next fastest provider. Being faster in such a wide margin of networks tells us that Cloudflare is particularly strong in the challenging, long-tail cases that other providers struggle with.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="394" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=640&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=715&amp;h=394&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=750&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=828&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=1080&amp;h=595&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=1280&amp;h=705&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=1430&amp;h=788&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2979 image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW467X3MPSV02TXP43MYAD22.png&amp;w=904&amp;h=498&amp;f=webp" data-lightbox-width="904" data-lightbox-height="498" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="394" class="pt-portable-image-media"></div>
+</figure>
+<p>Our performance data shows that even when we are not the top-ranked provider, we remain exceptionally competitive, often trailing the leader by a mere handful of percentage points. Our strength at the 95th percentile also highlights our superior performance in the most challenging scenarios. Cloudflare’s ability to outperform other providers, in the worst-case, is a testament to the resilience and efficiency of our network.</p>
+<p>Moving forward, we'll continue to share multiple metrics and continue to make improvements to our network —and we’ll use this data to do it! Let’s talk about how.&nbsp;</p>
+<h3>How does Cloudflare use this data to improve?</h3>
+<p>Cloudflare applies this data to identify regions and networks that need prioritization. If we are consistently slower than other providers in a network, we want to know why, so we can fix it.</p>
+<p>For example, the graph below shows the 95th percentile of Connect Time for AS8966. Prior to June 13, 2025, our performance was suffering, and we were the slowest provider for the network. By referencing our own measurement data, we prioritized partner data centers in the region and almost immediately performance improved for users connecting through AS8966.</p>
+<p>Cloudflare’s partner data centers consist of collaborations with local service providers who host Cloudflare's equipment within their own facilities. This allows us to expand our network to new locations and get closer to users more quickly. In the case of AS8966, adding a new partner data center took us from being ranked last to ranked first and improved latency by roughly 150ms in one day. By using a data-driven approach, we made our network faster and most importantly, improved the end user experience.</p>
+<p><sub>TCP Connect Time (P95) for AS8966</sub></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="297" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=640&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=715&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=750&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=828&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=1080&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=1280&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=1430&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2979 image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44S8Q1AQ73273R4C7P1PSW.png&amp;w=1544&amp;h=642&amp;f=webp" data-lightbox-width="1544" data-lightbox-height="642" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="297" class="pt-portable-image-media"></div>
+</figure>
+<h3>What’s next?</h3>
+<p>We are always working to build a faster network and will continue sharing our process as we go. Our approach is straightforward: identify performance bottlenecks, implement fixes, and report the results. We believe in being transparent about our methods and are committed to a continuous cycle of improvement to achieve the best possible performance. Follow our blog for the latest performance updates as we continue to optimize our network and share our progress.</p>

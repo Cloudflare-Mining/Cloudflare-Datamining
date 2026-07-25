@@ -1,0 +1,293 @@
+<p>借助灵活的基础设施和创新的 AI 工具，初创企业能够快速、高效地部署生产就绪的应用。Cloudflare 在无数应用中发挥着举足轻重的作用，赋能创始人和工程团队轻松构建、扩展和加速其创新——无需承担技术开销的负担。在适用的情况下，我们的<a href="http://www.cloudflare.com/forstartups" target="_blank" rel="noopener noreferrer"><u>初创企业</u></a>和 <a href="http://www.cloudflare.com/lp/workers-launchpad" target="_blank" rel="noopener noreferrer"><u>Workers Launchpad</u></a> 等计划提供工具和资源，进一步推动这些雄心勃勃的项目发展壮大。</p>
+<p>Cloudflare 最近发布了 <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><strong><u>AI Agents</u></strong></a>，让开发人员可以利用 Cloudflare 部署智能体以完成自主任务。我们已经看到一些很棒的例子，其中初创公司将 Cloudflare 作为投资构建智能体基础设施的首选平台。欢迎继续阅读，了解一些正在崛起的初创企业如何基于 Cloudflare 构建他们的 AI 智能体平台。</p>
+<h2>Lamatic AI 使用 Workers for Platform 构建了一个可扩展的 AI 智能体平台</h2>
+<p>Lamatic.ai 成立于 2023 年，致力于帮助 SaaS 初创企业将 AI 智能体无缝集成到其产品中。Lamatic.ai 提供全托管的生命周期管理，并充分考虑了可扩展性和安全性，从而简化了 AI 智能体的部署。SaaS 服务提供商正在利用 Lamatic 通过无代码可视化构建器重构其 AI 工作流，以降低技术债务并加速产品交付。Lamatic 的架构专为高可用性、可扩展性和低延迟而设计，使开发者能够构建在高负载下仍保持高性能的 AI 驱动应用。在 Product Hunt 上短时间内获得大量用户后，Lamatic 意识到用户对使用 AI 智能体解决复杂问题有着强烈的需求，而且团队深知他们需要构建一个兼顾可扩展性和性能的解决方案。</p>
+<p>Cloudflare 在支持 Lamatic 发展方面发挥着关键作用。通过利用 <strong><a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>，</strong>Lamatic 确保请求更贴近终端用户，最大程度降低延迟，同时减轻中心化服务器的计算压力。在短短几个月内，Lamatic.ai 已高效扩展到每月超过 300 万个无服务器请求，支持 1000 多个客户——全部由一个精简的三人团队管理。</p>
+<p>客户通过无代码可视化构建器设计智能体工作流，继而生成可互操作的 YAML 配置。敏感凭据（例如 API 密钥和模型访问令牌）会安全地加密并存储在 Workers KV 中，确保它们仅在运行时解密以增强安全性。然后，所有 YAML 配置都被编译为兼容 Workers 的 JavaScript 捆绑包。项目部署时，Lamatic 编排关键组件，如用于定期数据 ETL 操作的同步作业和传入的 Webhook，并通过 <strong>Cloudflare <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer"><u>Queues </u></a></strong>处理事件驱动的工作流。部署完成后，该项目即作为 Cloudflare Worker 全面运行，并提供一个公开 API 接口，使客户能够以最低摩擦成本将 AI 驱动的自动化直接集成到其应用中。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="429" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=640&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=715&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=750&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=828&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=1080&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=1280&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=1430&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2746 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW463PCY9A50VBWV13F9BFQG.png&amp;w=1738&amp;h=1043&amp;f=webp" data-lightbox-width="1738" data-lightbox-height="1043" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="429" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>为了支持平台的扩展，Lamatic.ai 构建了一个将无服务器逻辑和 AI 逻辑按客户隔离的架构。Lamatic.ai 不是将请求批量发送到中央式集群，而是在 Cloudflare 的全球网络中分配工作负载，确保每个客户和端点都由自己执行专用逻辑的 Worker 来服务。这种由 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><strong><u>Workers for Platforms</u></strong></a> 支持的分客户部署模式使 Lamatic.ai 能够大规模交付客户特定的无服务器函数，并减少接入更多客户过程中的技术开销。每个客户均获得专属的 Worker，其请求和速率限制将根据订阅等级进行配置。</p>
+<p>除了处理请求之外，Lamatic 还使用 <strong>Cloudflare <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a></strong> 作为分布式配置存储，以确保高可用性和安全性。所有值在静态存储时均使用 <a href="https://en.wikipedia.org/wiki/Galois/Counter_Mode" target="_blank" rel="noopener noreferrer"><u>AES-256-GCM</u></a> 加密，仅在运行时解密，确保操作安全、低延迟。令牌和用户凭据被加密并存储于数据库和 KV 中。</p>
+<p>为进一步提升性能，<strong>Cloudflare Queues</strong> 在编排任务完成过程中发挥关键作用。Lamatic 利用 Queues 从 Workers 请求中卸载工作负载，并处理 webhook 和协调分布式进程等任务，这对于在大规模环境中保持系统一致性和可靠性至关重要。Workers 在执行点处理同步请求，而运行时间较长的作业通过 Queues 进行处理。例如，在执行预定的 ETL 同步期间，新生成的数据记录将作为消息队列存储在 Cloudflare <a href="https://developers.cloudflare.com/pub-sub" target="_blank" rel="noopener noreferrer"><strong><u>Pub/Sub</u></strong></a>上。消费者 Worker 收集这些消息，并通过 Workers Queue 向 Pod 发起 API 请求。在处理完每个队列后，消费者 Worker 就会消费更多消息。</p>
+<p>在管理 AI 工作流方面，这种方法同样被证明极其高效。许多 AI 工作流涉及对多个数据源的并发请求，Queues 简化数据处理，高效地将信息输送至客户的<a href="https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation" target="_blank" rel="noopener noreferrer"><u>检索增强生成（Retrieval Augmented Generation，RAG）</u></a>工作流中。这种方法可以消除工作负载峰值，减少性能瓶颈，确保 AI 智能体能够无延迟、可靠地聚合和处理数据。</p>
+<p>除此之外，Lamatic.ai 还将 <strong>Workers AI</strong> 作为支持推理提供者之一，供客户在其平台上使用。客户可以根据其应用场景（聊天机器人、图像生成、语音等），选择运行 Workers AI 上托管的众多开源模型之一。这些层一起解决了 AI 智能体扩展的挑战，可处理大量数据，保持低延迟响应，并确保健壮的安全性。以 Cloudflare 的基础设施为主干，Lamatic.ai 打造了一个富有韧性、高性能的平台，满足现代 AI 应用的严格要求，使其成为初创公司将 AI 驱动功能嵌入其产品的理想选择。</p>
+<h2>Skyward AI 使用基于 Durable Objects 和 <code>Agents</code>的AI 智能体自动化合规工作</h2>
+<p>Skyward AI 利用 Cloudflare 的无服务器计算能力，打造由 AI 驱动的合规智能体，简化证据收集、实时风险分析和策略更新等关键任务，从而革新合规工作流程。金融科技、供应链和其他高度监管行业的合规团队使用这些 AI 智能体来提取与整理证据、提供实时建议，并自动协调策略和流程更新。通过处理文档解析、风险监控和策略执行，这些 AI 智能体降低了人为错误风险，使合规专业人员能够专注于高价值任务。</p>
+<p>Skyward 打造了一个采用无服务器优先设计的的 AI 智能体平台，规避了集中式云计算的制约。为了实现这一点，该公司利用 Cloudflare 的开发人员平台来创建和维护一个高度响应式、可扩展的基础设施。<strong>Workers</strong> 处理传入请求，例如聊天输入、合规检查或身份验证，并跨多个地理位置高效地路由这些请求。Skyward 最初使用 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><strong><u>Durable Objects</u></strong></a>、<a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><strong><u>Workflows</u></strong></a> 和 JavaScript 原生 RPC 构建其 AI 智能体基础设施以支持 AI 协调，但最近已过渡到 Cloudflare <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>全新 AI Agents 框架</u></a> 。鉴于 <code>AI Agents</code> 提供了一个构建和编排 AI 智能体的框架，这一迁移帮助 Skyward 抽象化了手动管理 Durable Objects 的需求，显著减少了管理这些工具所耗费的时间。虽然这一框架才推出不久，但这种迁移帮助简化了智能体的通信方式，同时也保留了原始设计的优点，例如数据隐私、隔离和并发管理。这也使得向其最终用户提供实时反馈和响应变得更加容易。</p>
+<p>Skyward 使 AI 智能体查询响应时间不超过 100 毫秒，优化了实时合规自动化。工作负载的结构经过优化，以最大程度减少不必要的网络往返，而同步引擎方法通过主动预加载和推送数据给客户端，提供了高度响应式的用户体验。为了代理 AI 推理，Skyward 使用 <a href="https://developers.cloudflare.com/ai-gateway" target="_blank" rel="noopener noreferrer"><strong><u>AI Gateway</u></strong></a> 提供跨对多个提供商的使用情况、性能和成本的可观察性，从而提升 AI 运行效率。利用 Cloudflare 无服务器开发人员平台，Skyward 成功简化了自身架构，同时支持全球可用性，避免了使用 Kubernetes 集群或复杂的锁定机制。该团队还避免了管理区域部署的负担，因为 Cloudflare 的多区域支持确保了全球范围内的一致性能而不增加运维复杂性。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="287" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=640&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=750&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=828&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=1080&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=1280&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=1430&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2746 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4975XR1F1HNA82YNDTQT8G.png&amp;w=1371&amp;h=551&amp;f=webp" data-lightbox-width="1371" data-lightbox-height="551" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="287" class="pt-portable-image-media"></div>
+</figure>
+<p>状态管理是执行智能体工作流的关键组件。每个合规会话在专用的 <strong>Durable Object</strong> 中运行，使相关数据保持接近执行层。这种配置最大程度地减少了数据库往返，确保反洗钱（AML）检查、客户尽职调查（KYB）验证和文档处理等任务保持高效。合规会话完成后，系统会汇总相关信息并将其存储在 Postgres 和 <strong>R2</strong> 中，在不依赖持久性云基础设施的情况下优化内存使用。</p>
+<p>为了在低延迟操作与长期存储之间取得平衡，Skyward 采用了多层数据管理策略。通过使用 <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><strong><u>Hyperdrive</u></strong></a> ，Skyward 团队能够将查询延迟减少近 50%，使合规团队能够收到即时反馈。Skyward 的核心目标是提供一个“为合规团队简化”的平台。该团队认为，快速的反馈循环确保最终客户获得采取行动所需的数据和响应。无论是单个智能体，还是数百个智能体并行处理任务，Hyperdrive 都能确保高效响应对广泛公司文档（即法规、政策、程序、内部文件）、复杂的监管知识图谱以及有关会话式工作流的即时上下文信息发出的数据库请求。</p>
+<p><strong>Durable Objects</strong> 便利实时会话状态管理，确保 AI 智能体顺畅运行，而无需复杂的锁定机制。对于较大型的合规相关文档，例如法律 PDF 和存档数据， Cloudflare <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><strong><u>R2</u></strong></a> 提供长期存储，确保只有经常访问的信息随时可用。这种方法能提高性能，同时维持存储管理的高效和经济性。</p>
+<p>对于注重合规的 AI 应用而言，安全性和可扩展性依然是首要考虑因素。Skyward 实施严格的访问控制，确保只有授权用户能够访问开发和生产环境。每个 AI 会话都维护一个可审计的日志，包含关键事件、用户操作和批准，并支持导出这些洞察以满足合规和法律要求的能力。由于每个智能体都部署在自己的实例中，并拥有自己的数据库，Skyward 可以确保每个要求的用户、智能体交互和审计要求都有详细记录。此外，借助 Cloudflare 的网络，Skyward 能够在全球范围内部署和扩展，确保跨多个地区维持一致的高性能运行，而无需承担高昂的基础设施开销。</p>
+<p>展望未来，Skyward 计划通过直接在 <strong>Cloudflare Workers AI</strong> 上运行特定模型，进一步增强 AI 智能体的响应性，从而减少对外部推理提供商的依赖。该团队计划进一步集成 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer"><strong><u>Workers for Platforms</u></strong></a>，以便更好地隔离客户数据和工作流程，从而支持最终用户更好地控制合规自动化过程。随着 Cloudflare 不断发展其 AI 能力，Skyward 旨在突破分布式 AI 合规解决方案的界限，使监管合规更加自动化、可扩展和安全。</p>
+<h2>在 Cloudflare 上构建</h2>
+<p>像 Lamatic AI 和 Skyward AI 这样的初创公司在 Cloudflare 上构建各自的 AI 智能体平台 ，让我们感到兴奋。正是这种创新，让我们在看到众多初创公司信任 Cloudflare，并将其作为可扩展、可靠和高效的基础平台时引以为豪。</p>
+<p>我们还借此宣布，Lamatic AI 和 Skyward AI 均已受邀加入 Cloudflare 即将启动的 Workers Launchpad 第五期。谈到 Workers Launchpad，自我们上次更新以来已经有几个月了，让我们来看看最新动态。</p>
+<h2>感谢 Workers Launchpad 第四期，并热烈欢迎第五期</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2746 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW475TS94S9WCS086PBAKFBW.png&amp;w=1200&amp;h=675&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="675" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>Workers Launchpad 团队对客户在开发人员平台上展示的成果感到震惊。第四期的成员在我们半年一度的 <a href="https://cloudflare.tv/shows/workers-launchpad-demo-day/workers-launchpad-demo-day-cohort-4/QgLLnBg1" target="_blank" rel="noopener noreferrer"><u>演示日</u></a>进行了成果展示。我们的客户展示了正在为多个行业构建的应用，包括 AI/ML、开发人员工具、3D 设计、云基础设施、广告技术、媒体等等。看到这些出色的公司在 Cloudflare 网络上构建的项目，令人感到非常振奋。我们期待在他们的创业旅程中继续携手合作。</p>
+<p>继 Workers Launchpad 第四期演示日之后，我们从全球各地渴望加入第五期的初创公司收到大量申请，数量创历史新高。下一波创始人正在挑战可能性的边界，在 AI 智能体、开发人员工具、MCP、媒体等领域进行构建。随着每一期开展，创始团队的素质、他们带来的大胆创意，以及他们利用技术解决的现实问题都持续给我们带来启发。</p>
+<p>请帮助我们向第五期的参与者表达一些爱意和热烈的欢迎：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="298" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=640&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=715&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=750&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=828&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=1080&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=1280&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=1430&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2746 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44HWDQ1YBC8BBKEC7MGRYH.png&amp;w=1600&amp;h=666&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="666" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="298" class="pt-portable-image-media"></div>
+</figure>
+<p>我们迫不及待想与您分享第五期所取得的成就。欢迎在 X 上关注<a href="https://x.com/CloudflareDev" target="_blank" rel="noopener noreferrer"><u> @CloudflareDev</u></a>，并加入我们的<a href="https://discord.com/invite/cloudflaredev?cf_target_id=4874A68FFE682C2DFA5CB8063B4025ED" target="_blank" rel="noopener noreferrer"><u> 开发人员 Discord</u></a> ，以获取各期参与者的最新动态。</p>
+<p>如果您正在我们的开发人员平台上开发您的应用，我们渴望知道 Cloudflare 如何为您的开发提供支持。欢迎<a href="https://docs.google.com/forms/d/e/1FAIpQLSeIZmgY5ste4LZi-hNaJzbXHBbeD2DHWe8R2xxp0wKO0byRYA/viewform" target="_blank" rel="noopener noreferrer"><u>分享</u></a>您正在构建的项目，我们的团队会认真进行审核。如果您是一家初创公司，并有意参与 Workers Launchpad，欢迎<a href="https://www.cloudflare.com/lp/workers-launchpad" target="_blank" rel="noopener noreferrer"><u>申请第六期</u></a>——申请现已开放！</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>公司</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>关于</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Acemate</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>面向大学生和教育工作者的 AI 学习平台</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Centillion AI</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>构建用于身份验证和欺诈预防的 MCP</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Ductize</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30 分钟内产品化服务推出集成支付功能的网站</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Firmly</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>智能商务平台，使消费者能够在灵感出现的瞬间立即购物</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Heartspace</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>按需提供高质量 PR：为实际展示付费，无需预付费</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Lamatic</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>托管 AI 中间件和 IDE ，快速、可靠地嵌入 AI 功能</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Lu.ma</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>帮助轻松举办大型活动的应用</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Manticore</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 驱动的渗透测试：按需识别、修复并重新测试</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>MC² Finance</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>众包 DeFi 策略并将作为 ETF 上市</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Muppet</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用于大规模构建和管理 MCP 的平台</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Navatech</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>为一线工作人员消除语言、访问和模式方面的障碍</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>New Era</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>使用自然语言撰写美观、精彩的电子邮件</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>NewHarbor</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>为组织提供简单、友好、一体化的网络安全</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Nexartis</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>为权利管理、保护知识产权和适当货币化个人贡献提供新的路径</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Notika AI</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>几分钟即可将交易通知添加到您的应用中，无需工程师</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Periculum</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>为服务不足市场中的组织提供数据分析软件解决方案的 AI 平台</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pressbox</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>面向体育和媒体组织 AI 驱动多模态内容个性化</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Prompteus</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>针对 AI 集成的安全防护、日志记录和成本削减</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Remix Labs</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>通过智能应用体验实现下一代数字互动</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Skyward</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>合规团队的 AI 原生工作区</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Sonora</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 原生客户情报平台，跨所有沟通渠道综合客户反馈并提供可据以行动的洞察</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SSOJet</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>可用的智能企业 SSO</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Syrenn</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 外部销售辅导平台</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Testdriver</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>通过使用计算机的智能体增加测试覆盖</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Toddle</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Web 开发引擎，让产品团队构建精美的交互式 Web 应用</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Toolhouse</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>该平台使任何开发人员都能以出色的开发体验构建 AI 智能体和工作流</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Unravo</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 智能体驱动的端到端商业研究平台</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Witify.ai</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用于客户交互活动的高级阿拉伯语对话式 AI</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zero Sum Defense</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>通过定制安全和隐私保护实现数字自由</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="185" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=715&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=640&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=715&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=750&amp;h=194&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=828&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=1080&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=1280&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=1430&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2746 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DXVHAXRPB5DP05J9YKVJ.png&amp;w=1800&amp;h=465&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="465" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="185" class="pt-portable-image-media"></div>
+</figure>

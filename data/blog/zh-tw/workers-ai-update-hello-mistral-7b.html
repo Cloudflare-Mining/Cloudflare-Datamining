@@ -1,0 +1,153 @@
+<p>今天，我們很高興地宣佈，我們已將 Mistral-7B-v0.1-instruct 新增到 Workers AI 中。Mistral 7B 是一個 73 億參數語言模型，具有許多獨特的優勢。我們將在 Mistral AI 創始人的幫助下介紹 Mistral 7B 模型的一些亮點，並利用這個機會更深入地研究「注意力」及其變體，例如多查詢注意力 (multi-query attention) 和分組查詢注意力 (grouped-query attention)。</p>
+<h2>Mistral 7B tl;dr:</h2>
+<p>Mistral 7B 是一個 73 億參數模型，<a href="https://mistral.ai/news/announcing-mistral-7b" target="_blank" rel="noopener noreferrer">在基準測試中得出了令人印象深刻的數據</a>。該模型：</p>
+<ul>
+	<li>在所有基準測試中都優於 Llama 2 13B；</li>
+	<li>在許多基準測試中都優於 Llama 1 34B；</li>
+	<li>程式碼效能接近 CodeLlama 7B，同時仍擅長英文任務；以及</li>
+	<li>在 Mistral 提供的基準測試中，我們部署的聊天微調版本優於 Llama 2 13B 聊天。</li>
+</ul>
+<p>下面是透過 <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank" rel="noopener noreferrer">REST API</a> 使用串流處理的範例：</p>
+<p>下面是使用 Worker 指令碼的範例：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">“https://api.cloudflare.com/client/v4/accounts/{</span><span class="sk-6f42c1-ffc799">account-id}/ai/run/@cf/mistral/mistral-7b-instruct-v0.1”</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">“Authorization:</span><span class="sk-032f62-99ffe4"> Bearer</span><span class="sk-032f62-99ffe4"> {api-token}”</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">“Content-Type:application/json”</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-d </span><span class="sk-032f62-99ffe4">'{ “prompt”: “What is grouped query attention”, “stream”: true }'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">API</span><span class="sk-032f62-99ffe4"> Response:</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> response:</span><span class="sk-032f62-99ffe4"> “Grouped</span><span class="sk-032f62-99ffe4"> query</span><span class="sk-032f62-99ffe4"> attention</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> technique</span><span class="sk-032f62-99ffe4"> used</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> natural</span><span class="sk-032f62-99ffe4"> language</span><span class="sk-032f62-99ffe4"> processing</span><span class="sk-24292e-fff">  (NLP) and machine learning to improve the performance of models…” }</span></span></code></pre>
+</div>
+<p>Mistral 利用<a href="https://arxiv.org/abs/2305.13245" target="_blank" rel="noopener noreferrer">分組查詢注意力</a>來加快推理速度。這項最近開發的技術提高了推理速度，同時又不影響輸出品質。對於 70 億參數模型，藉助分組查詢注意力，我們使用 Mistral 每秒產生的權杖數量幾乎是 Llama 的 4 倍。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/ai'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> ai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Ai</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@cf/mistral/mistral-7b-instruct-v0.1'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">            prompt: </span><span class="sk-032f62-99ffe4">'What is grouped query attention'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            stream: </span><span class="sk-005cc5-ffc799">true</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(stream, { headers: { “content-type”: “text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">event</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">stream” } });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>您不需要除此之外的任何資訊即可開始使用 Mistral-7B，您可以立即在 <a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">ai.cloudflare.com</a> 上進行測試。要瞭解有關注意力和分組查詢注意力的更多資訊，請繼續閱讀！</p>
+<h2>那麼，「注意力」到底是什麼呢？</h2>
+<p>注意力的基本機制，特別是里程碑式論文「<a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">Attention Is All You Need</a>」（注意力就是你所需要的一切）中介紹的「縮放點積注意力 (Scaled Dot-Product Attention)」，相當簡單：</p>
+<blockquote>我們將我們的特定注意力稱為「縮放點積注意力」。輸入由維度 d_k 的查詢和鍵以及維度 d_v 的值組成。我們使用所有鍵計算查詢的點積，將每個鍵除以 sqrt(d_k) 並套用 softmax 函數來獲取值的權重。</blockquote>
+<p>更具體地說，這看起來像這樣：</p>
+<p><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">來源</a></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="258" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=640&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=750&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=828&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=1080&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=1280&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=1430&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2170 Embedded Image - Ssv2fy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48WGJQZSSW7M5M6KX69FE8.png&amp;w=1882&amp;h=680&amp;f=webp" data-lightbox-width="1882" data-lightbox-height="680" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="258" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>簡而言之，這使得模型能夠專注於輸入的重要部分。想像一下您正在閱讀一個句子並試圖理解它。縮放點積注意力使您能夠根據某些單詞的相關性更加關注它們。它的工作原理是計算句子中每個單詞 (K) 與查詢 (Q) 之間的相似度。然後，它透過將相似度分數除以查詢維度的平方根來縮放相似度分數。這種縮放有助於避免非常小或非常大的值。最後，使用這些縮放後的相似度分數，我們可以確定每個單詞應該受到多少關注（或者說其重要性如何）。這種注意力機制有助於模型識別關鍵資訊 (V) 並提高其理解和翻譯能力。</p>
+<p>很簡單，對吧？為了從這個簡單的機制發展到可以編寫「Jerry 學習冒泡排序演算法的《宋飛正傳》」的人工智慧，我們需要讓它變得更加複雜。事實上，我們剛剛介紹的所有內容甚至沒有任何學習參數，這是在模型訓練期間學習的恒定值，用於自訂注意力區塊的輸出！</p>
+<p>「<em>Attention is All You Need</em>」中的注意力區塊主要增加了三種類型的複雜性：</p>
+<h3>學習參數</h3>
+<p>學習參數是指在模型訓練過程中為了提高模型效能而調整的值或權重。這些參數用於控制模型內的資訊流或注意力，使其能夠專注於輸入資料的最相關部分。簡而言之，學習參數就像機器上的可調節旋鈕，可以轉動它來最佳化其操作。</p>
+<h3>垂直堆疊——分層注意力區塊</h3>
+<p>垂直分層堆疊是一種將多個注意力機制堆疊在一起的方法，每一層都建立在前一層的輸出之上。這使得模型能夠專注於不同抽象層級的輸入資料的不同部分，從而可以在某些任務上獲得更好的效能。</p>
+<h3>水準堆疊——又名多頭注意力 (Multi-Head Attention)</h3>
+<p>論文中的圖顯示了完整的多頭注意力模組。多個注意力操作是同時執行的，每個注意力操作的 Q-K-V 輸入由相同輸入資料（由一組唯一的學習參數定義）的唯一線性投影產生。這些並行的注意力區塊被稱為「注意力頭」。所有注意力頭的加權和輸出被連接成一個向量，並透過另一個參數化線性變換以獲得最終輸出。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="286" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=715&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=640&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=715&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=750&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=828&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=1080&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=1280&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=1430&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2170 Embedded Image - qq9QTo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47BKT7A6TE9XFV3Y19651R.png&amp;w=1806&amp;h=722&amp;f=webp" data-lightbox-width="1806" data-lightbox-height="722" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="286" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">來源</a></p>
+<p>這種機制允許模型同時關注輸入資料的不同部分。想像一下，您正在嘗試理解一條複雜的資訊，例如一個句子或一個段落。為了理解它，您需要同時注意它的不同部分。例如，您可能需要同時注意句子的主語、動詞和賓語，才能理解句子的含義。多頭注意力的工作原理與此類似。它允許模型透過使用多個注意力「頭」同時關注輸入資料的不同部分。每個注意力頭關注輸入資料的不同方面，所有注意力頭的輸出組合起來產生模型的最終輸出。</p>
+<h2>注意力的類型</h2>
+<p>近年來開發的大型語言模型使用三種常見的注意力區塊排列：多頭注意力、分組查詢注意力和多查詢注意力。它們的不同之處在于相對于查詢向量數量的 K 和 V 向量的數量。<strong>多頭注意力</strong>使用與 Q 向量相同數量的 K 和 V 向量，在下表中用「N」表示。<strong>多查詢注意力</strong>僅使用單個 K 和 V 向量。<strong>分組查詢注意力</strong>是 Mistral 7B 模型中使用的類型，它將 Q 向量均勻地分成每個包含「G」向量的群組，然後為每個群組使用單個 K 和 V 向量，總共 N 個向量，除以 G 組 K 和 V 向量。這裡簡單總結了這些差異，我們將在下面深入探討這些差異的含義。</p>
+<div id="html-block-k2g" class="html-block">
+	<table style="border-collapse:collapse;border:none;width:100%">
+		<tbody>
+			<tr>
+				<td style="vertical-align:top;width:232px">&nbsp;</td>
+				<td style="vertical-align:top;width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Number of Key/Value Blocks</strong></span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Quality</strong></span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Memory Usage</strong></span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-head attention (MHA)</strong></span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N</span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Best</span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Most</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Grouped-query attention (GQA)</strong></span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">N / G</span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Better</span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Less</span></span></span></p>
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:top;width:232px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000"><strong>Multi-query attention (MQA)</strong></span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:189px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">1</span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:83px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Good</span></span></span></p>
+				</td>
+				<td style="vertical-align:top;width:99px">
+					<p><span style="font-size:11pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Least</span></span></span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p style="text-align:center"><span style="font-size:9pt"><span style="font-family:Arial,sans-serif"><span style="color:#000000">Summary of attention styles</span></span></span></p>
+</div>
+<p>&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="249" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=715&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=640&amp;h=223&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=715&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=750&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=828&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=1080&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=1280&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=1430&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2170 Embedded Image - rBEsca" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45J04ZN83K3PGJNP9G9V4H.png&amp;w=1112&amp;h=388&amp;f=webp" data-lightbox-width="1112" data-lightbox-height="388" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="249" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>鍵／值區塊數</strong></p>
+<p><strong>品質</strong></p>
+<p><strong>記憶體使用量</strong></p>
+<p><strong>多頭注意力 (MHA)</strong></p>
+<p>N</p>
+<p>最佳</p>
+<p>最多</p>
+<p><strong>分組查詢注意力 (GQA)</strong></p>
+<p>N / G</p>
+<p>更佳</p>
+<p>較少</p>
+<p><strong>多查詢注意力 (MQA)</strong></p>
+<p>1</p>
+<p>良性</p>
+<p>最少</p>
+<p>注意力類型摘要</p>
+<p>這張圖有助於說明三種類型之間的區別：</p>
+<p><a href="https://arxiv.org/pdf/2305.13245.pdf" target="_blank" rel="noopener noreferrer">來源</a></p>
+<h3>多查詢注意力</h3>
+<p>2019 年 Google 的論文「<a href="https://arxiv.org/abs/1911.02150" target="_blank" rel="noopener noreferrer">Fast Transformer Decoding: One Write-Head is All You Need</a>」（快速 Transformer 解碼：一個寫頭即可滿足您的需求）描述了多查詢注意力。這個理念是，不像上面的多頭注意力那樣為注意力機制中的每個 Q 向量建立單獨的 K 和 V 項目，而是僅將單個 K 和 V 向量用於整個 Q 向量集。因此，多個查詢組合成一個單一的注意力機制。在論文中，這是在翻譯任務上進行基準測試的，並且在基準任務上表現出與多頭注意力相同的效能。</p>
+<p>最初的想法是減少執行模型推理時存取的記憶體總大小。從那時起，隨著廣義模型的出現和參數數量的增長，所需的 GPU 記憶體往往成為多查詢注意力的瓶頸，因為它在三種注意力類型中所需的加速器記憶體最少。然而，隨著模型規模和通用性的增長，多查詢注意力的效能相對於多頭注意力有所下降。</p>
+<h3>分組查詢注意力</h3>
+<p>其中最新的（也是 Mistral 使用的）是分組查詢注意力，這在 2023 年 5 月在 arxiv.org 上發佈的論文「<a href="https://arxiv.org/abs/2305.13245" target="_blank" rel="noopener noreferrer">GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints</a>」（GQA：從多頭檢查點訓練通用多查詢 Transformer 模型）中進行了介紹。多組查詢注意力結合了兩者的優點：多頭注意力的品質與多查詢注意力的速度和低記憶體使用量。不是使用一組 K 和 V 向量，也不是每個 Q 向量使用一組，而是每個 Q 向量使用 1 組 K 和 V 向量的固定比例，從而減少記憶體使用量，同時在許多任務上保持高效能。</p>
+<p>通常，為生產任務選擇模型不僅僅是選擇可用的最佳模型，因為我們必須考慮效能、記憶體使用、批量大小和可用硬體（或雲端成本）之間的權衡。瞭解這三種注意力方式可以協助指導這些決策，並瞭解我們何時可以根據具體情況選擇特定模型。</p>
+<h2>進入 Mistral——立即試用</h2>
+<p>作為第一個利用分組查詢注意力並將其與滑動視窗注意力相結合的大型語言模型，Mistral 似乎已經達到了最佳狀態——它具有低延遲、高輸送量的特點，而且即使與更大的模型 (13B) 相比，它在基準測試中也表現得非常好。所有這一切都表明，它的尺寸與功能都達到了巔峰，我們非常高興今天能夠透過 Workers AI 將其提供給所有開發人員。</p>
+<p>請前往我們的<a href="https://developers.cloudflare.com/workers-ai/models/text-generation" target="_blank" rel="noopener noreferrer">開發人員文件</a>以開始使用。如果您需要幫助、想要提供意見反應或想要分享您正在構建的內容，請進入我們的<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">開發人員 Discord</a>！</p>
+<p>Workers AI 團隊也在擴大和招聘；如果您對人工智慧工程充滿熱情，並希望幫助我們構建和發展我們的全球無伺服器 GPU 驅動的推理平台，請查看我們的<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">職位頁面</a>，瞭解空缺職位。</p>

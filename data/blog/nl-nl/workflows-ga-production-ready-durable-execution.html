@@ -1,0 +1,262 @@
+<p>Bètaversies zijn handig voor feedback en herhaling, maar uiteindelijk wil niet iedereen proefkonijn zijn of de scherpe kantjes die bètasoftware met zich meebrengt, tolereren. Soms heb je dat grote, glimmende label 'Algemeen beschikbaar' (of blogbericht) nodig, en nu is het de beurt aan Workflows.</p>
+<p><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>, onze serverless , duurzame uitvoeringsengine waarmee u langlopende, meerstapstoepassingen (sommigen noemen ze 'stapfuncties') op Workers kunt bouwen, is nu GA.</p>
+<p>Kortom, dat betekent dat het <em>klaar is voor productie</em> , maar het betekent niet dat Workflows zal verstarren. We blijven Workflows opschalen (inclusief meer gelijktijdige instanties), bieden nieuwe mogelijkheden (zoals de nieuwe <code>waitForEvent</code> API) en maken het eenvoudiger om AI-agenten te bouwen met <a href="https://developers.cloudflare.com/agents/api-reference/run-workflows" target="_blank" rel="noopener noreferrer"><u>onze Agents SDK en Workflows</u></a>.</p>
+<p>Als u de voorkeur geeft aan code in plaats van proza, kunt u snel het Workflows starter-project installeren en met één enkele opdracht de code en de API gaan verkennen:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">npm create cloudflare</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">latest workflows</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">starter </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">template</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare/workflows-starter"</span></span></code></pre>
+</div>
+<p>Hoe werken Workflows? Wat kan ik ermee bouwen? Hoe denk ik over het bouwen van AI-agenten met Workflows en de <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>? Lees dan verder.</p>
+<h2>Bouwen met Workflows</h2>
+<p>Workflows is een duurzame uitvoeringsengine die is gebouwd op Cloudflare Workers en waarmee u veerkrachtige, meerstapstoepassingen kunt bouwen.</p>
+<p>Workflows implementeert in de kern een stapsgewijze architectuur waarbij elke stap in uw toepassing onafhankelijk opnieuw kan worden uitgevoerd en de status tussen de stappen automatisch wordt behouden. Dit betekent dat zelfs als een stap mislukt vanwege een tijdelijke fout of een netwerkprobleem, Workflows alleen die stap opnieuw kunnen proberen zonder dat u de hele applicatie opnieuw hoeft te starten.</p>
+<p>Wanneer u een workflow definieert, verdeelt u uw toepassing in logische stappen.</p>
+<ul>
+	<li>Elke stap kan code uitvoeren (<code>step.do</code>), Zet uw workflow in slaapstand (<code>step.sleep</code> of <code>step.sleepUntil</code>), of wacht op een gebeurtenis (<code>step.waitForEvent</code>).</li>
+	<li>Terwijl uw workflow wordt uitgevoerd, wordt automatisch de status opgeslagen die bij elke stap wordt geretourneerd. Zo weet u zeker dat uw toepassing precies kan doorgaan waar u was gebleven, zelfs na storingen of een periode van slaapstand.&nbsp;</li>
+	<li>Dit duurzame uitvoeringsmodel is vooral krachtig voor toepassingen die coördinatie tussen meerdere systemen vereisen, gegevens in volgorde verwerken of langdurige taken moeten uitvoeren die minuten, uren of zelfs dagen kunnen duren.</li>
+</ul>
+<p>Workflows zijn vooral handig bij het verwerken van complexe bedrijfsprocessen waar traditionele stateless functies moeite mee hebben.</p>
+<p>Een workflow voor het verwerken van e-commerce commerceorders kan bijvoorbeeld de voorraad controleren, een betaalmethode belasten, een e-mailbevestiging verzenden en een database bijwerken. Dit alles gebeurt als afzonderlijke stappen. Als de betalingsverwerking mislukt vanwege een tijdelijke storing, proberen Workflows automatisch die stap opnieuw uit zodra de betalingsservice weer beschikbaar is. Dit gebeurt zonder de inventariscontrole te dupliceren of het hele proces opnieuw te starten.&nbsp;</p>
+<p>Hieronder ziet u hoe dit werkt: elke aanroep van een service kan worden gemodelleerd als een stap, die onafhankelijk opnieuw kan worden geprobeerd en, indien nodig, vanaf die stap kan worden hersteld:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { WorkflowEntrypoint, WorkflowStep, WorkflowEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'cloudflare:workers'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// The params we expect when triggering this Workflow</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> OrderParams</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">	orderId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">	customerId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">	items</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Array</span><span class="sk-24292e-fff">&lt;{ </span><span class="sk-e36209-fff">productId</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">; </span><span class="sk-e36209-fff">quantity</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> number</span><span class="sk-24292e-fff"> }&gt;;</span></span>
+<span class="line"><span class="sk-e36209-fff">	paymentMethod</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">		type</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">		id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	};</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Our Workflow definition</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> OrderProcessingWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">OrderParams</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">OrderParams</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 1: Check inventory</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> inventoryResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'check-inventory'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Checking inventory for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">			// Mock: In a real workflow, you'd query your inventory system</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			const</span><span class="sk-005cc5-fff"> inventoryCheck</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">INVENTORY_SERVICE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">checkAvailability</span><span class="sk-24292e-fff">(event.payload.items);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">			// Return inventory status as state for the next step</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">				inStock: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">				reservationId: </span><span class="sk-032f62-99ffe4">'inv-123456'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">				itemsChecked: event.payload.items.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">			};</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Exit workflow if items aren't in stock</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">inventoryResult.inStock) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> { status: </span><span class="sk-032f62-99ffe4">'failed'</span><span class="sk-24292e-fff">, reason: </span><span class="sk-032f62-99ffe4">'out-of-stock'</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 2: Process payment</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Configure specific retry logic for payment processing</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> paymentResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">			'process-payment'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">			{</span></span>
+<span class="line"><span class="sk-24292e-fff">				retries: {</span></span>
+<span class="line"><span class="sk-24292e-fff">					limit: </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					delay: </span><span class="sk-032f62-99ffe4">'30 seconds'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					backoff: </span><span class="sk-032f62-99ffe4">'exponential'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">				},</span></span>
+<span class="line"><span class="sk-24292e-fff">				timeout: </span><span class="sk-032f62-99ffe4">'2 minutes'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">			},</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">				console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Processing payment for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">				// Mock: In a real workflow, you'd call your payment processor</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">				const</span><span class="sk-005cc5-fff"> paymentResponse</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">PAYMENT_SERVICE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">processPayment</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">					customerId: event.payload.customerId,</span></span>
+<span class="line"><span class="sk-24292e-fff">					orderId: event.payload.orderId,</span></span>
+<span class="line"><span class="sk-24292e-fff">					amount: </span><span class="sk-6f42c1-ffc799">calculateTotal</span><span class="sk-24292e-fff">(event.payload.items),</span></span>
+<span class="line"><span class="sk-24292e-fff">					paymentMethodId: event.payload.paymentMethod.id,</span></span>
+<span class="line"><span class="sk-24292e-fff">				});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">				// If payment failed, throw an error that will trigger retry logic</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">				if</span><span class="sk-24292e-fff"> (paymentResponse.status </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> 'success'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">					throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Payment failed: ${</span><span class="sk-24292e-fff">paymentResponse</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">message</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">				}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">				// Return payment info as state for the next step</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">				return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">					transactionId: </span><span class="sk-032f62-99ffe4">'txn-789012'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					amount: </span><span class="sk-005cc5-ffc799">129.99</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">					timestamp: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toISOString</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">				};</span></span>
+<span class="line"><span class="sk-24292e-fff">			},</span></span>
+<span class="line"><span class="sk-24292e-fff">		);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 3: Send email confirmation</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'send-confirmation-email'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Sending confirmation email for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Including payment confirmation ${</span><span class="sk-24292e-fff">paymentResult</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">transactionId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">EMAIL_SERVICE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">sendOrderConfirmation</span><span class="sk-24292e-fff">({ </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Step 4: Update database</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> dbResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'update-database'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Updating database for order ${</span><span class="sk-24292e-fff">event</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">payload</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">orderId</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">updateOrderStatus</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			return</span><span class="sk-24292e-fff"> { dbUpdated: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> };</span></span>
+<span class="line"><span class="sk-24292e-fff">		});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Return final workflow state</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			orderId: event.payload.orderId,</span></span>
+<span class="line"><span class="sk-24292e-fff">			processedAt: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">toISOString</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">		};</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><br>Deze combinatie van duurzaamheid, automatische herhalingen en statuspersistentie maakt Workflows ideaal voor het bouwen van betrouwbare gedistribueerde applicaties die daadwerkelijke fouten probleemloos kunnen verwerken.</p>
+<h2>Mensen blijven betrokken</h2>
+<p>Workflows bestaan alleen uit code en dat maakt ze extreem krachtig: u kunt dynamisch en on-the-fly stappen definiëren, voorwaardelijk vertakken en API-aanroep maken naar elk systeem dat u nodig hebt. Maar soms heb je ook een Workflow nodig die wacht tot er iets in de echte wereld gebeurt.</p>
+<p>Bijvoorbeeld:</p>
+<ul>
+	<li>Goedkeuring van een mens voor vooruitgang.</li>
+	<li>Een binnenkomende webhook, bijvoorbeeld van een Stripe-betaling of een GitHub-gebeurtenis. </li>
+	<li>Een statuswijziging, zoals het uploaden van een bestand naar R2, activeert een <a href="https://developers.cloudflare.com/r2/buckets/event-notifications" target="_blank" rel="noopener noreferrer"><u>gebeurtenismelding</u></a> en pusht vervolgens een verwijzing naar het bestand naar de workflow, zodat deze het bestand kan verwerken (of via een AI-model kan uitvoeren).</li>
+</ul>
+<p>Met de nieuwe <code>waitForEvent</code> API in Workflows kunt u precies dat doen:&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> event </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">IncomingStripeWebhook</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-032f62-99ffe4">"receive invoice paid webhook from Stripe"</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">"stripe-webhook"</span><span class="sk-24292e-fff">, timeout: </span><span class="sk-032f62-99ffe4">"1 hour"</span><span class="sk-24292e-fff"> }) </span></span></code></pre>
+</div>
+<p>Vervolgens kunt u een gebeurtenis naar een specifiek exemplaar sturen vanuit elke externe service die een HTTP-verzoek kan doen:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">d </span><span class="sk-032f62-99ffe4">'{"transaction":"complete","id":"1234-6789"}'</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${CF_TOKEN}"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">\ </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}"</span></span></code></pre>
+</div>
+<p>… of via de <a href="https://developers.cloudflare.com/workflows/build/workers-api/#workflowinstance" target="_blank" rel="noopener noreferrer"><u>Workers API</u></a> binnen een Worker zelf:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  MY_WORKFLOW</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Workflow</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Payload</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  transaction</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  id</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> instanceId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(req.url).searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"instanceId"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> webhookPayload</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> req.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Payload</span><span class="sk-24292e-fff">&gt;()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> instance </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">MY_WORKFLOW</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(instanceId);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Send our event, with `type` matching the event type defined in</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // our step.waitForEvent call</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">sendEvent</span><span class="sk-24292e-fff">({type: </span><span class="sk-032f62-99ffe4">"stripe-webhook"</span><span class="sk-24292e-fff">, payload: webhookPayload})</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">      status: </span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> instance.</span><span class="sk-6f42c1-ffc799">status</span><span class="sk-24292e-fff">(),</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>U kunt zelfs wachten op meerdere gebeurtenissen met behulp van de <code>typeparameter</code> en/of meerdere gebeurtenissen racen met behulp van <code>Promise.race</code> om door te gaan, afhankelijk van welke gebeurtenis het eerst is ontvangen:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowEvent</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Params</span><span class="sk-24292e-fff">&gt;, </span><span class="sk-e36209-fff">step</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> WorkflowStep</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> state </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"get some data"</span><span class="sk-24292e-fff">, () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> { </span><span class="sk-6a737d-8b8b8b94">/* step call here */</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Race the events, resolving the Promise based on which event</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// we receive first</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">race</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"payment success"</span><span class="sk-24292e-fff">, { type: </span><span class="sk-032f62-99ffe4">"payment-success-webhook"</span><span class="sk-24292e-fff">, timeout: </span><span class="sk-032f62-99ffe4">"4 hours"</span><span class="sk-24292e-fff"> ),</span></span>
+<span class="line"><span class="sk-24292e-fff">step.waitForEvent(</span><span class="sk-032f62-99ffe4">"payment failure"</span><span class="sk-24292e-fff">, { </span><span class="sk-6f42c1-ffc799">type</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"payment-failure-webhook"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">timeout</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"4 hours"</span><span class="sk-24292e-fff"> ),</span></span>
+<span class="line"><span class="sk-24292e-fff">])</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Continue on based on the value and event received</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Om <code>waitForEvent</code> wat gedetailleerder te visualiseren, gaan we ervan uit dat we een workflow hebben die wordt geactiveerd door een codereviewagent die een GitHub-repository in de gaten houdt.</p>
+<p>Omdat we niet op gebeurtenissen kunnen wachten, kan onze workflow niet zomaar menselijke goedkeuring krijgen om suggesties terug te schrijven (of zelfs een eigen PR in te dienen). Het <em>zou</em> potentieel kunnen peilen naar een bijgewerkte status, maar dat betekent dat we <code>step.sleep</code> voor willekeurige tijdsperioden moeten aanroepen, een opslagservice moeten peilen naar een bijgewerkte waarde en dit moeten herhalen als de waarde er niet is. Dat is een hoop code en ruimte voor fouten:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WRCNRJ57DGF0ER2CDC2K.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>Zonder waitForEvent is het moeilijker om gegevens te verzenden naar een Workflow-instantie die actief is</em></sup></p>
+<p>Als we datzelfde voorbeeld zouden aanpassen om de nieuwe waitForEvent API te integreren, zouden we deze kunnen gebruiken om te wachten op menselijke goedkeuring voordat we een muterende wijziging doorvoeren:&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="308" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=640&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=715&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=750&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=828&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1080&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1280&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1430&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453SH1C487P8ZRX65G1Z0A.png&amp;w=1920&amp;h=826&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="826" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="308" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>WaitForEvent toevoegen aan onze codebeoordelingsworkflow, zodat er expliciet om goedkeuring kan worden gevraagd.</em></sup></p>
+<p>Je kunt je zelfs voorstellen dat een AI-agent zelf namens een mens iets verstuurt en/of handelt: <code>waitForEvent</code> biedt een manier voor een workflow om iets in de wereld op te halen en te pauzeren voordat deze wordt gewijzigd (of niet).</p>
+<p>Belangrijk is dat u <code>waitForEvent</code> net als elke andere stap in Workflows kunt aanroepen: u kunt het voorwaardelijk, en/of meerdere keren en/of in een lus aanroepen. Workflows zijn gewoon Workers: u beschikt over de volledige kracht van een programmeertaal en wordt niet beperkt door een <a href="https://en.wikipedia.org/wiki/Domain-specific_language" target="_blank" rel="noopener noreferrer"><u>domeinspecifieke taal (DSL)</u></a> of configuratietaal.</p>
+<h2>Prijzen</h2>
+<p>Goed nieuws: er is niet veel veranderd sinds onze oorspronkelijke bèta-aankondiging! We voegen opslagprijzen toe voor de status die door uw Workflows wordt opgeslagen en behouden onze op CPU gebaseerde en op aanvraag (aanroep) gebaseerde prijzen als volgt:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Eenheid</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers Free</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers Paid</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>CPU-tijd (ms)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10 ms per workflow</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30 miljoen CPU-milliseconden per maand inbegrepen+$ 0,02 per extra miljoen CPU-milliseconden</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Verzoeken</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100.000 Workflow-aanroepen per dag (gedeeld met Workers)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10 miljoen inbegrepen per maand+$ 0,30 per extra miljoen</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Opslag (GB)</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1GB</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1 GB inbegrepen per maand<br> + $ 0,20/ GB-maand</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Omdat de opslagprijzen nieuw zijn, factureren we pas vanaf 15 september 2025 actief voor opslag. Gebruikers boven de limiet van 1 GB worden door ons op de hoogte gesteld voordat we kosten voor opslag in rekening brengen. Standaard verloopt de opslagstatus van Workflows na drie (3) dagen (Free abonnement) of dertig (30) dagen (betaald abonnement).</p>
+<p>Als u zich afvraagt wat hier wordt bedoeld met "CPU-tijd", dan is dit de tijd dat uw workflow actief gebruikmaakt van computerbronnen. Hierbij is de tijd die wordt besteed <em>aan het wachten op</em> API-aanroep, het redeneren van LLM's of andere I/O (zoals het schrijven naar een database) niet meegerekend. Dat lijkt misschien een kleinigheid, maar in de praktijk kan het aardig oplopen: de meeste applicaties hebben maar een paar milliseconden CPU-tijd en meerdere seconden wall-tijd: een API of twee die 100 tot 250 ms nodig heeft om te reageren, tikt flink aan!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2729 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H9DWQE1V1CAKW32GAXYE.png&amp;w=1912&amp;h=832&amp;f=webp" data-lightbox-width="1912" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>Facturering voor CPU, niet voor de tijd die wordt besteed wanneer een workflow inactief is of wacht.</em></sup></p>
+<p>Vooral workflow engines besteden vaak veel tijd aan wachten: het lezen van gegevens uit object storage (zoals <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2</u></a>), het aanroepen van API's of LLM's van derden zoals o3-mini of Claude 3.7 en zelfs het raadplegen van databases zoals <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Postgres of MySQL. Met Workflows, net als met Workers, betaalt u niet voor de tijd dat uw applicatie wacht.</p>
+<h2>Begin met bouwen</h2>
+<p>U hebt dus een goed beeld van Workflows en hoe deze werken, en u wilt aan de slag. Wat nu?</p>
+<ol>
+	<li><a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Bezoek de Workflows-documentatie</u></a> om te leren hoe het werkt, de Workflows API te begrijpen en best practices te vinden</li>
+	<li>Bekijk de code in het <a href="https://github.com/cloudflare/workflows-starter" target="_blank" rel="noopener noreferrer"><u>starterproject</u></a></li>
+	<li>En tot slot kunt u de starter met een paar klikken implementeren in uw eigen Cloudflare-account:</li>
+</ol>
+<div id="html-block-k4f" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fworkflows-starter"><img src="https://deploy.workers.cloudflare.com/button" alt="Implementeren naar Cloudflare"></a></div>

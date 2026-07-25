@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "年間600時間を削減した１行のKubernetes修正",
+	"url": "https://blog.cloudflare.com/ja-jp/one-line-kubernetes-fix-saved-600-hours-a-year/",
+	"datePublished": "2026-03-26T13:00:00.000Z",
+	"dateModified": "2026-07-15T15:21:26.646Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW48KFE2QVP1AE33D66FHW4G.png",
+	"description": "Atlantisインスタンスが再起動に30分かかった理由を調査したところ、Kubernetesがボリューム許可を処理する方法にボトルネックがあることがわかりました。fsGroupChangePolicyを調整することで、再起動時間を30秒に短縮しました。"
+}

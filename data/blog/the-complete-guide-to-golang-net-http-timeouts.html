@@ -1,188 +1,142 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/the-complete-guide-to-golang-net-http-timeouts">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6vTKS6Y5QPbl52ONtLm9WQ/b0047898381acad412621dbd464d7aab/the-complete-guide-to-golang-net-http-timeouts.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>When writing an HTTP server or client in Go, timeouts are amongst the easiest and most subtle things to get wrong: there’s many to choose from, and a mistake can have no consequences for a long time, until the network glitches and the process hangs.</p>
-	<p><a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer">HTTP</a> is a complex multi-stage protocol, so there's no one-size fits all solution to timeouts. Think about a <a href="https://www.cloudflare.com/learning/video/what-is-streaming" target="_blank" rel="noopener noreferrer">streaming</a> endpoint versus a JSON API versus a <a href="https://en.wikipedia.org/wiki/Comet_%28programming%29" target="_blank" rel="noopener noreferrer">Comet</a> endpoint. Indeed, the defaults are often not what you want.</p>
-	<p>In this post I’ll take apart the various stages you might need to apply a timeout to, and look at the different ways to do it, on both the Server and the Client side.</p>
-	<div class="flex anchor relative">
-		<h3 id="setdeadline">SetDeadline</h3>
-		<a href="https://blog.cloudflare.com/#setdeadline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First, you need to know about the network primitive that Go exposes to implement timeouts: Deadlines.</p>
-	<p>Exposed by <a href="https://golang.org/pkg/net/#Conn" target="_blank" rel="noopener noreferrer"><code>net.Conn</code></a> with the <code>Set[Read|Write]Deadline(time.Time)</code> methods, Deadlines are an absolute time which when reached makes all I/O operations fail with a timeout error.</p>
-	<p><b>Deadlines are not timeouts.</b> Once set they stay in force forever (or until the next call to <code>SetDeadline</code>), no matter if and how the connection is used in the meantime. So to build a timeout with <code>SetDeadline</code> you'll have to call it before <i>every</i> <code>Read</code>/<code>Write</code> operation.</p>
-	<p>You probably don't want to call <code>SetDeadline</code> yourself, and let <code>net/http</code> call it for you instead, using its higher level timeouts. However, keep in mind that all timeouts are implemented in terms of Deadlines, so they <b>do NOT reset every time data is sent or received</b>.</p>
-	<div class="flex anchor relative">
-		<h3 id="server-timeouts">Server Timeouts</h3>
-		<a href="https://blog.cloudflare.com/#server-timeouts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><i>The </i><a href="https://blog.cloudflare.com/exposing-go-on-the-internet"><i>"So you want to expose Go on the Internet" post</i></a><i> has more information on server timeouts, in particular about HTTP/2 and Go 1.7 bugs.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sOlH0CkRueHYFHY9JhYag/3688eee879f10624eb42b75302000929/Timeouts-001.png" alt="HTTP server phases" class="kg-image" width="2215" height="648" loading="lazy">
-
-	</figure>
-	<p>It's critical for an HTTP server exposed to the Internet to enforce timeouts on client connections. Otherwise very slow or disappearing clients might leak file descriptors and eventually result in something along the lines of:</p>
-	<pre class="language-bash"><code class="language-bash">http: Accept error: accept tcp [::]:80: accept4: too many open files; retrying in 5ms</code></pre>
-	<p>There are two timeouts exposed in <code>http.Server</code>: <code>ReadTimeout</code> and <code>WriteTimeout</code>. You set them by explicitly using a Server:</p>
-	<pre class="language-go"><code class="language-go">srv := &amp;http.Server{
-    ReadTimeout: 5 * time.Second,
-    WriteTimeout: 10 * time.Second,
-}
-log.Println(srv.ListenAndServe())</code></pre>
-	<p><code>ReadTimeout</code> covers the time from when the connection is accepted to when the request body is fully read (if you do read the body, otherwise to the end of the headers). It's implemented in <code>net/http</code> by calling <code>SetReadDeadline</code> <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L750" target="_blank" rel="noopener noreferrer">immediately after Accept</a>.</p>
-	<p><code>WriteTimeout</code> normally covers the time from the end of the request header read to the end of the response write (a.k.a. the lifetime of the ServeHTTP), by calling <code>SetWriteDeadline</code> <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L753-L755" target="_blank" rel="noopener noreferrer">at the end of readRequest</a>.</p>
-	<p>However, when the connection is <a href="https://www.cloudflare.com/learning/ssl/what-is-https" target="_blank" rel="noopener noreferrer">HTTPS</a>, <code>SetWriteDeadline</code> is called <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L1477-L1483" target="_blank" rel="noopener noreferrer">immediately after Accept</a> so that it also covers the packets written as part of the TLS handshake. Annoyingly, this means that (in that case only) <code>WriteTimeout</code> ends up including the header read and the first byte wait.</p>
-	<p>You should set both timeouts when you deal with untrusted clients and/or networks, so that a client can't hold up a connection by being slow to write or read.</p>
-	<p>Finally, there's <a href="https://golang.org/pkg/net/http/#TimeoutHandler" target="_blank" rel="noopener noreferrer"><code>http.TimeoutHandler</code></a>. It’s not a Server parameter, but a Handler wrapper that limits the maximum duration of <code>ServeHTTP</code> calls. It works by buffering the response, and sending a <i>504 Gateway Timeout</i> instead if the deadline is exceeded. Note that it is <a href="https://github.com/golang/go/issues/15327" target="_blank" rel="noopener noreferrer">broken in 1.6 and fixed in 1.6.2</a>.</p>
-	<div class="flex anchor relative">
-		<h4 id="http-listenandserve-is-doing-it-wrong">http.ListenAndServe is doing it wrong</h4>
-		<a href="https://blog.cloudflare.com/#http-listenandserve-is-doing-it-wrong" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Incidentally, this means that the package-level convenience functions that bypass <code>http.Server</code> like <code>http.ListenAndServe</code>, <code>http.ListenAndServeTLS</code> and <code>http.Serve</code> are unfit for public Internet servers.</p>
-	<p>Those functions leave the Timeouts to their default off value, with no way of enabling them, so if you use them you'll soon be leaking connections and run out of file descriptors. I've made this mistake at least half a dozen times.</p>
-	<p>Instead, create a <code>http.Server</code> instance with ReadTimeout and WriteTimeout and use its corresponding methods, like in the example a few paragraphs above.</p>
-	<div class="flex anchor relative">
-		<h4 id="about-streaming">About streaming</h4>
-		<a href="https://blog.cloudflare.com/#about-streaming" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Very annoyingly, there is no way of accessing the underlying <code>net.Conn</code> from <code>ServeHTTP</code> so a server that intends to stream a response is forced to unset the <code>WriteTimeout</code> (which is also possibly why they are 0 by default). This is because without <code>net.Conn</code> access, there is no way of calling <code>SetWriteDeadline</code> before each <code>Write</code> to implement a proper idle (not absolute) timeout.</p>
-	<p>Also, there's no way to cancel a blocked <code>ResponseWriter.Write</code> since <code>ResponseWriter.Close</code> (which you can access via an interface upgrade) is not documented to unblock a concurrent Write. So there's no way to build a timeout manually with a Timer, either.</p>
-	<p>Sadly, this means that streaming servers can't really defend themselves from a slow-reading client.</p>
-	<p>I submitted <a href="https://github.com/golang/go/issues/16100" target="_blank" rel="noopener noreferrer">an issue with some proposals</a>, and I welcome feedback there.</p>
-	<div class="flex anchor relative">
-		<h3 id="client-timeouts">Client Timeouts</h3>
-		<a href="https://blog.cloudflare.com/#client-timeouts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/255U6cjjLCH1vUEJoA9QWo/b73eae7e11ea4e42c847a5ee9c9c8f96/Timeouts-002.png" alt="HTTP Client phases" class="kg-image" width="2234" height="603" loading="lazy">
-
-	</figure>
-	<p>Client-side timeouts can be simpler or much more complex, depending which ones you use, but are just as important to prevent leaking resources or getting stuck.</p>
-	<p>The easiest to use is the <code>Timeout</code> field of <a href="https://golang.org/pkg/net/http/#Client" target="_blank" rel="noopener noreferrer"><code>http.Client</code></a>. It covers the entire exchange, from Dial (if a connection is not reused) to reading the body.</p>
-	<pre class="language-go"><code class="language-go">c := &amp;http.Client{
-    Timeout: 15 * time.Second,
-}
-resp, err := c.Get("https://blog.filippo.io/")</code></pre>
-	<p>Like the server-side case above, the package level functions such as <code>http.Get</code> use <a href="https://golang.org/pkg/net/http/#DefaultClient" target="_blank" rel="noopener noreferrer">a Client without timeouts</a>, so are dangerous to use on the open Internet.</p>
-	<p>For more granular control, there are a number of other more specific timeouts you can set:</p>
-	<ul>
-		<li>
-			<p><code>net.Dialer.Timeout</code> limits the time spent establishing a TCP connection (if a new one is needed).</p>
-		</li>
-		<li>
-			<p><code>http.Transport.TLSHandshakeTimeout</code> limits the time spent performing the TLS handshake.</p>
-		</li>
-		<li>
-			<p><code>http.Transport.ResponseHeaderTimeout</code> limits the time spent reading the headers of the response.</p>
-		</li>
-		<li>
-			<p><code>http.Transport.ExpectContinueTimeout</code> limits the time the client will wait between sending the request headers <i>when including an </i><code><i>Expect: 100-continue</i></code> and receiving the go-ahead to send the body. Note that setting this in 1.6 <a href="https://github.com/golang/go/issues/14391" target="_blank" rel="noopener noreferrer">will disable HTTP/2</a> (<code>DefaultTransport</code> <a href="https://github.com/golang/go/commit/406752b640fcc56a9287b8454564cffe2f0021c1#diff-6951e7593bfb1e773c9121df44df1c36R179" target="_blank" rel="noopener noreferrer">is special-cased from 1.6.2</a>).</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">c := &amp;http.Client{
-    Transport: &amp;http.Transport{
-        Dial: (&amp;net.Dialer{
-                Timeout:   30 * time.Second,
-                KeepAlive: 30 * time.Second,
-        }).Dial,
-        TLSHandshakeTimeout:   10 * time.Second,
-        ResponseHeaderTimeout: 10 * time.Second,
-        ExpectContinueTimeout: 1 * time.Second,
-    }
-}</code></pre>
-	<p>As far as I can tell, there's no way to limit the time spent sending the request specifically. The time spent reading the request body can be controlled manually with a <code>time.Timer</code> since it happens after the Client method returns (see below for how to cancel a request).</p>
-	<p>Finally, new in 1.7, there's <code>http.Transport.IdleConnTimeout</code>. It does not control a blocking phase of a client request, but how long an idle connection is kept in the connection pool.</p>
-	<p>Note that a Client will follow redirects by default. <code>http.Client.Timeout</code> includes all time spent following redirects, while the granular timeouts are specific for each request, since <code>http.Transport</code> is a lower level system that has no concept of redirects.</p>
-	<div class="flex anchor relative">
-		<h4 id="cancel-and-context">Cancel and Context</h4>
-		<a href="https://blog.cloudflare.com/#cancel-and-context" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><code>net/http</code> offers two ways to cancel a client request: <code>Request.Cancel</code> and, new in 1.7, Context.</p>
-	<p><code>Request.Cancel</code> is an optional channel that when set and then closed causes the request to abort as if the <code>Request.Timeout</code> had been hit. (They are actually implemented through the same mechanism, and while writing this post I <a href="https://github.com/golang/go/issues/16094" target="_blank" rel="noopener noreferrer">found a bug</a> in 1.7 where all cancellations would be returned as timeout errors.)</p>
-	<p>We can use <code>Request.Cancel</code> and <code>time.Timer</code> to build a more granular timeout that allows streaming, pushing the deadline back every time we successfully read some data from the Body:</p>
-	<pre class="language-go"><code class="language-go">package main
-
-import (
-	"io"
-	"io/ioutil"
-	"log"
-	"net/http"
-	"time"
-)
-
-func main() {
-	c := make(chan struct{})
-	timer := time.AfterFunc(5*time.Second, func() {
-		close(c)
-	})
-
-        // Serve 256 bytes every second.
-	req, err := http.NewRequest("GET", "http://httpbin.org/range/2048?duration=8&amp;chunk_size=256", nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	req.Cancel = c
-
-	log.Println("Sending request...")
-	resp, err := http.DefaultClient.Do(req)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer resp.Body.Close()
-
-	log.Println("Reading body...")
-	for {
-		timer.Reset(2 * time.Second)
-                // Try instead: timer.Reset(50 * time.Millisecond)
-		_, err = io.CopyN(ioutil.Discard, resp.Body, 256)
-		if err == io.EOF {
-			break
-		} else if err != nil {
-			log.Fatal(err)
-		}
-	}
-}</code></pre>
-	<p>In the example above, we put a timeout of 5 seconds on the Do phases of the request, but then we spend at least 8 seconds reading the body in 8 rounds, each time with a timeout of 2 seconds. We could go on streaming like this forever without risk of getting stuck. If we were not to receive body data for more than 2 seconds, then io.CopyN would return <code>net/http: request canceled</code>.</p>
-	<p>In 1.7 the <code>context</code> package graduated to the standard library. There's <a href="https://blog.golang.org/context" target="_blank" rel="noopener noreferrer">a lot to learn about Contexts</a>, but for our purposes you should know that they replace and deprecate <code>Request.Cancel</code>.</p>
-	<p>To use Contexts to cancel a request we just obtain a new Context and its <code>cancel()</code> function with <code>context.WithCancel</code> and create a Request bound to it with <code>Request.WithContext</code>. When we want to cancel the request, we cancel the Context by calling <code>cancel()</code> (instead of closing the Cancel channel):</p>
-	<pre class="language-go"><code class="language-go">ctx, cancel := context.WithCancel(context.TODO())
-timer := time.AfterFunc(5*time.Second, func() {
-	cancel()
-})
-
-req, err := http.NewRequest("GET", "http://httpbin.org/range/2048?duration=8&amp;chunk_size=256", nil)
-if err != nil {
-	log.Fatal(err)
-}
-req = req.WithContext(ctx)</code></pre>
-	<p>Contexts have the advantage that if the parent context (the one we passed to <code>context.WithCancel</code>) is canceled, ours will be, too, propagating the command down the entire pipeline.</p>
-	<p>This is all. I hope I didn't exceed your <code>ReadDeadline</code>!</p>
-	<p>If this kind of deep dive into the Go standard libraries sound entertaining to you, know that <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">we are hiring in London, Austin (TX), Champaign (IL), San Francisco and Singapore.</a></p>
+<p>When writing an HTTP server or client in Go, timeouts are amongst the easiest and most subtle things to get wrong: there’s many to choose from, and a mistake can have no consequences for a long time, until the network glitches and the process hangs.</p>
+<p><a href="https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http" target="_blank" rel="noopener noreferrer">HTTP</a> is a complex multi-stage protocol, so there's no one-size fits all solution to timeouts. Think about a <a href="https://www.cloudflare.com/learning/video/what-is-streaming" target="_blank" rel="noopener noreferrer">streaming</a> endpoint versus a JSON API versus a <a href="https://en.wikipedia.org/wiki/Comet_%28programming%29" target="_blank" rel="noopener noreferrer">Comet</a> endpoint. Indeed, the defaults are often not what you want.</p>
+<p>In this post I’ll take apart the various stages you might need to apply a timeout to, and look at the different ways to do it, on both the Server and the Client side.</p>
+<h3>SetDeadline</h3>
+<p>First, you need to know about the network primitive that Go exposes to implement timeouts: Deadlines.</p>
+<p>Exposed by <a href="https://golang.org/pkg/net/#Conn" target="_blank" rel="noopener noreferrer"><code>net.Conn</code></a> with the <code>Set[Read|Write]Deadline(time.Time)</code> methods, Deadlines are an absolute time which when reached makes all I/O operations fail with a timeout error.</p>
+<p><strong>Deadlines are not timeouts.</strong> Once set they stay in force forever (or until the next call to <code>SetDeadline</code>), no matter if and how the connection is used in the meantime. So to build a timeout with <code>SetDeadline</code> you'll have to call it before <em>every</em> <code>Read</code>/<code>Write</code> operation.</p>
+<p>You probably don't want to call <code>SetDeadline</code> yourself, and let <code>net/http</code> call it for you instead, using its higher level timeouts. However, keep in mind that all timeouts are implemented in terms of Deadlines, so they <strong>do NOT reset every time data is sent or received</strong>.</p>
+<h3>Server Timeouts</h3>
+<p><em>The <a href="https://blog.cloudflare.com/exposing-go-on-the-internet">"So you want to expose Go on the Internet" post</a> has more information on server timeouts, in particular about HTTP/2 and Go 1.7 bugs.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="209" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=640&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=750&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=828&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1080&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1280&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1430&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP server phases" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KV4YB9Z53KA9MP6BJY5K.png&amp;w=1920&amp;h=562&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="562" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="209" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>It's critical for an HTTP server exposed to the Internet to enforce timeouts on client connections. Otherwise very slow or disappearing clients might leak file descriptors and eventually result in something along the lines of:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">http:</span><span class="sk-032f62-99ffe4"> Accept</span><span class="sk-032f62-99ffe4"> error:</span><span class="sk-032f62-99ffe4"> accept</span><span class="sk-032f62-99ffe4"> tcp</span><span class="sk-24292e-fff"> [::]:80: accept4: too many open files; </span><span class="sk-6f42c1-ffc799">retrying</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> 5ms</span></span></code></pre>
 </div>
+<p>There are two timeouts exposed in <code>http.Server</code>: <code>ReadTimeout</code> and <code>WriteTimeout</code>. You set them by explicitly using a Server:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">srv </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">http</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Server</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">    ReadTimeout: </span><span class="sk-005cc5-ffc799">5</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> time.Second,</span></span>
+<span class="line"><span class="sk-24292e-fff">    WriteTimeout: </span><span class="sk-005cc5-ffc799">10</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> time.Second,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">log.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(srv.</span><span class="sk-6f42c1-ffc799">ListenAndServe</span><span class="sk-24292e-fff">())</span></span></code></pre>
+</div>
+<p><code>ReadTimeout</code> covers the time from when the connection is accepted to when the request body is fully read (if you do read the body, otherwise to the end of the headers). It's implemented in <code>net/http</code> by calling <code>SetReadDeadline</code> <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L750" target="_blank" rel="noopener noreferrer">immediately after Accept</a>.</p>
+<p><code>WriteTimeout</code> normally covers the time from the end of the request header read to the end of the response write (a.k.a. the lifetime of the ServeHTTP), by calling <code>SetWriteDeadline</code> <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L753-L755" target="_blank" rel="noopener noreferrer">at the end of readRequest</a>.</p>
+<p>However, when the connection is <a href="https://www.cloudflare.com/learning/ssl/what-is-https" target="_blank" rel="noopener noreferrer">HTTPS</a>, <code>SetWriteDeadline</code> is called <a href="https://github.com/golang/go/blob/3ba31558d1bca8ae6d2f03209b4cae55381175b3/src/net/http/server.go#L1477-L1483" target="_blank" rel="noopener noreferrer">immediately after Accept</a> so that it also covers the packets written as part of the TLS handshake. Annoyingly, this means that (in that case only) <code>WriteTimeout</code> ends up including the header read and the first byte wait.</p>
+<p>You should set both timeouts when you deal with untrusted clients and/or networks, so that a client can't hold up a connection by being slow to write or read.</p>
+<p>Finally, there's <a href="https://golang.org/pkg/net/http/#TimeoutHandler" target="_blank" rel="noopener noreferrer"><code>http.TimeoutHandler</code></a>. It’s not a Server parameter, but a Handler wrapper that limits the maximum duration of <code>ServeHTTP</code> calls. It works by buffering the response, and sending a <em>504 Gateway Timeout</em> instead if the deadline is exceeded. Note that it is <a href="https://github.com/golang/go/issues/15327" target="_blank" rel="noopener noreferrer">broken in 1.6 and fixed in 1.6.2</a>.</p>
+<h4>http.ListenAndServe is doing it wrong</h4>
+<p>Incidentally, this means that the package-level convenience functions that bypass <code>http.Server</code> like <code>http.ListenAndServe</code>, <code>http.ListenAndServeTLS</code> and <code>http.Serve</code> are unfit for public Internet servers.</p>
+<p>Those functions leave the Timeouts to their default off value, with no way of enabling them, so if you use them you'll soon be leaking connections and run out of file descriptors. I've made this mistake at least half a dozen times.</p>
+<p>Instead, create a <code>http.Server</code> instance with ReadTimeout and WriteTimeout and use its corresponding methods, like in the example a few paragraphs above.</p>
+<h4>About streaming</h4>
+<p>Very annoyingly, there is no way of accessing the underlying <code>net.Conn</code> from <code>ServeHTTP</code> so a server that intends to stream a response is forced to unset the <code>WriteTimeout</code> (which is also possibly why they are 0 by default). This is because without <code>net.Conn</code> access, there is no way of calling <code>SetWriteDeadline</code> before each <code>Write</code> to implement a proper idle (not absolute) timeout.</p>
+<p>Also, there's no way to cancel a blocked <code>ResponseWriter.Write</code> since <code>ResponseWriter.Close</code> (which you can access via an interface upgrade) is not documented to unblock a concurrent Write. So there's no way to build a timeout manually with a Timer, either.</p>
+<p>Sadly, this means that streaming servers can't really defend themselves from a slow-reading client.</p>
+<p>I submitted <a href="https://github.com/golang/go/issues/16100" target="_blank" rel="noopener noreferrer">an issue with some proposals</a>, and I welcome feedback there.</p>
+<h3>Client Timeouts</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="193" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=715&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=640&amp;h=173&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=715&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=750&amp;h=202&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=828&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1080&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1280&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1430&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP Client phases" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW451114VD7S5MBSQ8QYV9VA.png&amp;w=1920&amp;h=518&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="518" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="193" class="pt-portable-image-media"></div>
+</figure>
+<p>Client-side timeouts can be simpler or much more complex, depending which ones you use, but are just as important to prevent leaking resources or getting stuck.</p>
+<p>The easiest to use is the <code>Timeout</code> field of <a href="https://golang.org/pkg/net/http/#Client" target="_blank" rel="noopener noreferrer"><code>http.Client</code></a>. It covers the entire exchange, from Dial (if a connection is not reused) to reading the body.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">c </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-6f42c1-ffc799">http</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Client</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">    Timeout: </span><span class="sk-005cc5-ffc799">15</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> time.Second,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">resp, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">Get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://blog.filippo.io/"</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Like the server-side case above, the package level functions such as <code>http.Get</code> use <a href="https://golang.org/pkg/net/http/#DefaultClient" target="_blank" rel="noopener noreferrer">a Client without timeouts</a>, so are dangerous to use on the open Internet.</p>
+<p>For more granular control, there are a number of other more specific timeouts you can set:</p>
+<ul>
+	<li><code>net.Dialer.Timeout</code> limits the time spent establishing a TCP connection (if a new one is needed).</li>
+	<li><code>http.Transport.TLSHandshakeTimeout</code> limits the time spent performing the TLS handshake.</li>
+	<li><code>http.Transport.ResponseHeaderTimeout</code> limits the time spent reading the headers of the response.</li>
+	<li><code>http.Transport.ExpectContinueTimeout</code> limits the time the client will wait between sending the request headers <em>when including an <code>Expect: 100-continue</code></em> and receiving the go-ahead to send the body. Note that setting this in 1.6 <a href="https://github.com/golang/go/issues/14391" target="_blank" rel="noopener noreferrer">will disable HTTP/2</a> (<code>DefaultTransport</code> <a href="https://github.com/golang/go/commit/406752b640fcc56a9287b8454564cffe2f0021c1#diff-6951e7593bfb1e773c9121df44df1c36R179" target="_blank" rel="noopener noreferrer">is special-cased from 1.6.2</a>).</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">c</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">http.Client</span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    Transport:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">http.Transport</span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Dial:</span><span class="sk-24292e-fff"> (&amp;</span><span class="sk-6f42c1-ffc799">net.Dialer</span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                Timeout:</span><span class="sk-005cc5-ffc799">   30</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> time.Second,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                KeepAlive:</span><span class="sk-005cc5-ffc799"> 30</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> time.Second,</span></span>
+<span class="line"><span class="sk-24292e-fff">        }).Dial,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        TLSHandshakeTimeout:</span><span class="sk-005cc5-ffc799">   10</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> time.Second,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        ResponseHeaderTimeout:</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> time.Second,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        ExpectContinueTimeout:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4"> time.Second,</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>As far as I can tell, there's no way to limit the time spent sending the request specifically. The time spent reading the request body can be controlled manually with a <code>time.Timer</code> since it happens after the Client method returns (see below for how to cancel a request).</p>
+<p>Finally, new in 1.7, there's <code>http.Transport.IdleConnTimeout</code>. It does not control a blocking phase of a client request, but how long an idle connection is kept in the connection pool.</p>
+<p>Note that a Client will follow redirects by default. <code>http.Client.Timeout</code> includes all time spent following redirects, while the granular timeouts are specific for each request, since <code>http.Transport</code> is a lower level system that has no concept of redirects.</p>
+<h4>Cancel and Context</h4>
+<p><code>net/http</code> offers two ways to cancel a client request: <code>Request.Cancel</code> and, new in 1.7, Context.</p>
+<p><code>Request.Cancel</code> is an optional channel that when set and then closed causes the request to abort as if the <code>Request.Timeout</code> had been hit. (They are actually implemented through the same mechanism, and while writing this post I <a href="https://github.com/golang/go/issues/16094" target="_blank" rel="noopener noreferrer">found a bug</a> in 1.7 where all cancellations would be returned as timeout errors.)</p>
+<p>We can use <code>Request.Cancel</code> and <code>time.Timer</code> to build a more granular timeout that allows streaming, pushing the deadline back every time we successfully read some data from the Body:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">package</span><span class="sk-6f42c1-ffc799"> main</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">io</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">io/ioutil</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">net/http</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">	"</span><span class="sk-6f42c1-ffc799">time</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">func</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-24292e-fff">	c </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-6f42c1-ffc799"> make</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">chan</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-24292e-fff">{})</span></span>
+<span class="line"><span class="sk-24292e-fff">	timer </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> time.</span><span class="sk-6f42c1-ffc799">AfterFunc</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">5</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">time.Second, </span><span class="sk-d73a49-a0a0a0">func</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		close</span><span class="sk-24292e-fff">(c)</span></span>
+<span class="line"><span class="sk-24292e-fff">	})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Serve 256 bytes every second.</span></span>
+<span class="line"><span class="sk-24292e-fff">	req, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> http.</span><span class="sk-6f42c1-ffc799">NewRequest</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"http://httpbin.org/range/2048?duration=8&amp;chunk_size=256"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">nil</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">		log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(err)</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">	req.Cancel </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	log.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Sending request..."</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">	resp, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> http.DefaultClient.</span><span class="sk-6f42c1-ffc799">Do</span><span class="sk-24292e-fff">(req)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">		log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(err)</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	defer</span><span class="sk-24292e-fff"> resp.Body.</span><span class="sk-6f42c1-ffc799">Close</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">	log.</span><span class="sk-6f42c1-ffc799">Println</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Reading body..."</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">		timer.</span><span class="sk-6f42c1-ffc799">Reset</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">2</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff"> time.Second)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">                // Try instead: timer.Reset(50 * time.Millisecond)</span></span>
+<span class="line"><span class="sk-24292e-fff">		_, err </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> io.</span><span class="sk-6f42c1-ffc799">CopyN</span><span class="sk-24292e-fff">(ioutil.Discard, resp.Body, </span><span class="sk-005cc5-ffc799">256</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> io.EOF {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			break</span></span>
+<span class="line"><span class="sk-24292e-fff">		} </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">			log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(err)</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>In the example above, we put a timeout of 5 seconds on the Do phases of the request, but then we spend at least 8 seconds reading the body in 8 rounds, each time with a timeout of 2 seconds. We could go on streaming like this forever without risk of getting stuck. If we were not to receive body data for more than 2 seconds, then io.CopyN would return <code>net/http: request canceled</code>.</p>
+<p>In 1.7 the <code>context</code> package graduated to the standard library. There's <a href="https://blog.golang.org/context" target="_blank" rel="noopener noreferrer">a lot to learn about Contexts</a>, but for our purposes you should know that they replace and deprecate <code>Request.Cancel</code>.</p>
+<p>To use Contexts to cancel a request we just obtain a new Context and its <code>cancel()</code> function with <code>context.WithCancel</code> and create a Request bound to it with <code>Request.WithContext</code>. When we want to cancel the request, we cancel the Context by calling <code>cancel()</code> (instead of closing the Cancel channel):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">ctx, cancel </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> context.</span><span class="sk-6f42c1-ffc799">WithCancel</span><span class="sk-24292e-fff">(context.</span><span class="sk-6f42c1-ffc799">TODO</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-24292e-fff">timer </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> time.</span><span class="sk-6f42c1-ffc799">AfterFunc</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">5</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">time.Second, </span><span class="sk-d73a49-a0a0a0">func</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	cancel</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">req, err </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> http.</span><span class="sk-6f42c1-ffc799">NewRequest</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"http://httpbin.org/range/2048?duration=8&amp;chunk_size=256"</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">nil</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> err </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-005cc5-fff"> nil</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">	log.</span><span class="sk-6f42c1-ffc799">Fatal</span><span class="sk-24292e-fff">(err)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">req </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> req.</span><span class="sk-6f42c1-ffc799">WithContext</span><span class="sk-24292e-fff">(ctx)</span></span></code></pre>
+</div>
+<p>Contexts have the advantage that if the parent context (the one we passed to <code>context.WithCancel</code>) is canceled, ours will be, too, propagating the command down the entire pipeline.</p>
+<p>This is all. I hope I didn't exceed your <code>ReadDeadline</code>!</p>
+<p>If this kind of deep dive into the Go standard libraries sound entertaining to you, know that <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">we are hiring in London, Austin (TX), Champaign (IL), San Francisco and Singapore.</a></p>

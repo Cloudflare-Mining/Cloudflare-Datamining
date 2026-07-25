@@ -1,85 +1,71 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jBZdXAoPqfhomNhDPEG0y/6749c88fd5b90ce7b093b028db8eba78/unit-testing-worker-functions.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. We’re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. &nbsp;</p>
-	<p>More specifically, if your Worker includes a number of functions, it’s important to ensure each function does what it’s intended to do in addition to ensuring the output of the entire Worker returns as expected.</p>
-	<p>In this post, we’re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank" rel="noopener noreferrer">Cloudworker</a>, created by the Dollar Shave Club engineering team.</p>
-	<p>Dollar Shave Club is a Cloudflare customer, and they created Cloudworker, a mock for the Workers runtime, for testing purposes. We’re really grateful to them for this. They were kind enough to <a href="https://blog.cloudflare.com/cloudworker-a-local-cloudflare-worker-runner">post on our blog</a> about it.</p>
-	<p>This post will demonstrate how to abstract away Cloudworker, and test Workers with the same syntax you write them in.</p>
-	<div class="flex anchor relative">
-		<h3 id="example-script">Example Script</h3>
-		<a href="https://blog.cloudflare.com/#example-script" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Before we get into configuring Cloudworker, let’s introduce the simple script we are going to test against in our example. As you can see this script contains two functions, both of which contribute to the response to the client.</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
- event.respondWith(handleRequest(event.request))
-})
-
-async function addition(a, b) {
-  return a + b
-}
-
-async function handleRequest(request) {
-  const added = await addition(1,3)
-  return new Response(`The Sum is ${added}!`)
-}</code></pre>
-	<p>This script will be active for the route <code>worker.example.com</code>.</p>
-	<div class="flex anchor relative">
-		<h3 id="directory-set-up">Directory Set Up</h3>
-		<a href="https://blog.cloudflare.com/#directory-set-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After I’ve created a new npm ( <code>npm init</code> ) project in a new directory, I placed my <code>worker.js</code> file inside, containing the above, and created the folder <code>test</code> which contains <code>worker-test.js</code>. The structure is laid out below.</p>
-	<pre class="language-javascript"><code class="language-javascript">.
------ worker.js
------ test
-      . worker-test.js
------ node_modules
------ package.json
------ package-lock.json.</code></pre>
-	<p>Next I need to install Cloudworker ( <code>npm install @dollarshaveclub/cloudworker --save-dev</code> ) and the Mocha testing framework ( <code>npm install mocha --save-dev</code> ) if you do not have it installed globally. Make sure that <code>package.json</code> reflects a value of <code>mocha</code> for <code>tests</code>, like:</p>
-	<pre class="language-javascript"><code class="language-javascript">"scripts": {
-    "test": "mocha"
-  }</code></pre>
-	<p>Now we can finally write some tests! Luckily, <code>mocha</code> has <code>async/await</code> support which is going to make this very simple. &nbsp;The idea is straightforward: Cloudworker allows you to place a Worker in development in front of an HTTP request and inspect the response.</p>
-	<div class="flex anchor relative">
-		<h3 id="writing-tests">Writing Tests!</h3>
-		<a href="https://blog.cloudflare.com/#writing-tests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Before any test logic, we’ll place two lines at the top of the test file ( <code>worker-test.js</code> ). The first line assigns all property values from Cloudworker and our Worker script to the global context before every <code>async function()</code> is run in mocha. The second line requires <code>assert</code>, which is commonly used to compare an expected output to a mocked output.</p>
-	<pre class="language-javascript"><code class="language-javascript">before(async function () {
-   Object.assign(global, new (require('@dollarshaveclub/cloudworker'))(require('fs').readFileSync('worker.js', ‘utf8’)).context);
-});
-
-// You will replace worker.js with the relative path to your worker
-
-const assert = require('assert')</code></pre>
-	<p>Now, testing looks a lot more like a Worker itself as we access to all the underlying functions used by Cloudworker AND the Worker script.</p>
-	<pre class="language-javascript"><code class="language-javascript">describe('Worker Test', function() {
-
-    it('returns a body that says The Sum is 4', async function () {
-        let url = new URL('https://worker.example.com')
-        let req = new Request(url)
-        let res = await handleRequest(req)
-        let body = await res.text()
-        assert.equal(body, 'The Sum is 4!')
-    })
-
-    it('does addition properly', async function() {
-        let res = await addition(1, 1)
-        assert.equal(res, 2)
-    })
-
-})</code></pre>
-	<p>We can test individual functions with our Worker this way, as shown above with the <code>addition()</code> function call. This is really powerful and allows for more confidence when deploying complex workers as you can test each component that makes up the script. We hope this was useful and welcome any feedback.</p>
+<p>If you were not aware, Cloudflare Workers lets you run Javascript in all 165+ of our Data Centers. We’re delighted to see some of the creative applications of Workers. As the use cases grow in complexity, the need to smoke test your code also grows. &nbsp;</p>
+<p>More specifically, if your Worker includes a number of functions, it’s important to ensure each function does what it’s intended to do in addition to ensuring the output of the entire Worker returns as expected.</p>
+<p>In this post, we’re going to demonstrate how to unit test Cloudflare Workers, and their individual functions, with <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank" rel="noopener noreferrer">Cloudworker</a>, created by the Dollar Shave Club engineering team.</p>
+<p>Dollar Shave Club is a Cloudflare customer, and they created Cloudworker, a mock for the Workers runtime, for testing purposes. We’re really grateful to them for this. They were kind enough to <a href="https://blog.cloudflare.com/cloudworker-a-local-cloudflare-worker-runner">post on our blog</a> about it.</p>
+<p>This post will demonstrate how to abstract away Cloudworker, and test Workers with the same syntax you write them in.</p>
+<h3>Example Script</h3>
+<p>Before we get into configuring Cloudworker, let’s introduce the simple script we are going to test against in our example. As you can see this script contains two functions, both of which contribute to the response to the client.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> addition</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">a</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">b</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> a </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> b</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> added</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> addition</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`The Sum is ${</span><span class="sk-24292e-fff">added</span><span class="sk-032f62-99ffe4">}!`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>This script will be active for the route <code>worker.example.com</code>.</p>
+<h3>Directory Set Up</h3>
+<p>After I’ve created a new npm ( <code>npm init</code> ) project in a new directory, I placed my <code>worker.js</code> file inside, containing the above, and created the folder <code>test</code> which contains <code>worker-test.js</code>. The structure is laid out below.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> worker.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> test</span></span>
+<span class="line"><span class="sk-24292e-fff">      . worker</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">test.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> node_modules</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-24292e-fff"> package.json</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-----</span><span class="sk-d73a49-a0a0a0"> package-</span><span class="sk-24292e-fff">lock.json.</span></span></code></pre>
+</div>
+<p>Next I need to install Cloudworker ( <code>npm install @dollarshaveclub/cloudworker --save-dev</code> ) and the Mocha testing framework ( <code>npm install mocha --save-dev</code> ) if you do not have it installed globally. Make sure that <code>package.json</code> reflects a value of <code>mocha</code> for <code>tests</code>, like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"scripts"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "test"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"mocha"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+</div>
+<p>Now we can finally write some tests! Luckily, <code>mocha</code> has <code>async/await</code> support which is going to make this very simple. &nbsp;The idea is straightforward: Cloudworker allows you to place a Worker in development in front of an HTTP request and inspect the response.</p>
+<h3>Writing Tests!</h3>
+<p>Before any test logic, we’ll place two lines at the top of the test file ( <code>worker-test.js</code> ). The first line assigns all property values from Cloudworker and our Worker script to the global context before every <code>async function()</code> is run in mocha. The second line requires <code>assert</code>, which is commonly used to compare an expected output to a mocked output.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">before</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff"> () {</span></span>
+<span class="line"><span class="sk-24292e-fff">   Object.</span><span class="sk-6f42c1-ffc799">assign</span><span class="sk-24292e-fff">(global, </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'@dollarshaveclub/cloudworker'</span><span class="sk-24292e-fff">))(</span><span class="sk-6f42c1-ffc799">require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fs'</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">readFileSync</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'worker.js'</span><span class="sk-24292e-fff">, ‘utf8’)).context);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// You will replace worker.js with the relative path to your worker</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> assert</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'assert'</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Now, testing looks a lot more like a Worker itself as we access to all the underlying functions used by Cloudworker AND the Worker script.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">describe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Worker Test'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'returns a body that says The Sum is 4'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff"> () {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://worker.example.com'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> req </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(req)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">        assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(body, </span><span class="sk-032f62-99ffe4">'The Sum is 4!'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    it</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'does addition properly'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> addition</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        assert.</span><span class="sk-6f42c1-ffc799">equal</span><span class="sk-24292e-fff">(res, </span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>We can test individual functions with our Worker this way, as shown above with the <code>addition()</code> function call. This is really powerful and allows for more confidence when deploying complex workers as you can test each component that makes up the script. We hope this was useful and welcome any feedback.</p>

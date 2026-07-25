@@ -1,0 +1,216 @@
+<p>智慧體可協助您以前所未有的速度建立軟體，但要確保您的環境及所編寫程式碼的安全性（避免人為錯誤與惡意行為），則需要付出切實的努力。<a href="https://www.cloudflare.com/learning/security/threats/owasp-top-10" target="_blank" rel="noopener noreferrer"><u>開放 Web 應用程式安全專案</u></a> (OWASP) 詳細列舉了自主式 AI 系統中存在的許多<a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations" target="_blank" rel="noopener noreferrer"><u>風險</u></a>，其中包括認證外洩、使用者身分冒充以及權限提升等風險。這些風險可能對您的環境造成極其嚴重的破壞，例如阻斷服務攻擊、資料遺失或資料外洩，進而引發難以估量的財務損失和聲譽損害。 </p>
+<p>這是一個身分識別問題。在現代開發中，「身分」不僅僅指人，還包括智慧體、指令碼及代表您行事的第三方工具。要保護這些非人類身分，您需要管理其整個生命週期：確保其認證（權杖）不會外洩、查看哪些應用程式透過 OAuth 擁有存取權，並使用細粒度的 RBAC 來限制其權限。</p>
+<p>今天，我們推出多項更新來滿足這些需求：可掃描的權杖，用於保護您的認證；OAuth 可見度，以便於您管理各類主體；以及限定資源範圍的 RBAC，幫助您對安全策略進行精細化調優。</p>
+<h2>理解身分識別：主體、認證與政策</h2>
+<p>在<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>自主智慧體</u></a>時代保護網際網路，我們必須重新思考如何處理身分識別。無論請求來自人類開發人員或 AI 智慧體，每次與 API 的互動都依賴三個核心支柱：</p>
+<ul>
+	<li><strong>主體（旅行者）：</strong>這是身分本身——即「誰」。可能是您透過 OAuth 登入，或是使用 API 權杖來部署程式碼的背景智慧體。</li>
+	<li><strong>認證（護照）：</strong>這是該身分的證明。在這個世界中，您的 API 權杖就是您的護照。如果它被盜或洩露，任何人都可以「冒充」您的身分。</li>
+	<li><strong>政策（簽證）：</strong>這定義了該身分被允許做什麼。僅僅擁有有效護照並不意味著您擁有進入每個國家的簽證。政策確保即使是一個經過驗證的身分，也只能存取其所需的特定資源。</li>
+</ul>
+<p>當這三個支柱沒有被一起管理時，安全性就會瓦解。您可能會遇到使用被盜認證的有效主體，或是合法的身分卻擁有過於寬鬆的政策。 </p>
+<h2>洩露權杖偵測</h2>
+<p>智慧體與其他第三方應用程式使用 API 權杖來存取 Cloudflare API。我們觀察到，人們最常意外洩露其機密的方式之一，便是將其推送到公開的 GitHub 存放庫。<a href="https://www.gitguardian.com/files/the-state-of-secrets-sprawl-report-2026" target="_blank" rel="noopener noreferrer"><u>GitGuardian</u></a> 報告指出，去年有超過 2,800 萬筆機密資訊被發布到公開的 GitHub 儲存庫，而 AI 正導致外洩速度比以往快了 5 倍。</p>
+<p>如果 API 權杖是數位護照，那麼將其洩露到公開存放庫，就如同將您的護照遺忘在公園長椅上。任何找到它的人都可以冒充該身分，直到該文件被註銷。我們與 GitHub 的合作夥伴關係，就如同這些認證的全球「失物招領處」。在您意識到護照遺失之前，我們就已經辨識出該文件、透過校驗和驗證其真實性，並將其作廢以防止不當使用。</p>
+<p>我們正與數個領先的認證掃描工具合作，協助主動找出您洩露的權杖，並在其被惡意使用前將其撤銷。我們明白，這並非「是否會發生」的問題，而僅僅是「何時發生」的問題——無論是您、您的員工，還是您的一個智慧體，總會犯下錯誤，將機密推到不該出現的地方。</p>
+<h4>Github：</h4>
+<p>我們已與 GitHub 建立合作夥伴關係，並參與他們的機密掃描計畫，以便在公開和私人存放庫中尋找您的權杖。如果我們收到通知，有權杖已洩露至公開存放庫，我們將自動撤銷該權杖，以防止其被惡意使用。對於私人存放庫，GitHub 會向您傳送通知，提示您清理其中洩漏的 Cloudflare 權杖。</p>
+<h5>運作方式</h5>
+<p>我們已將最新的權杖格式（詳見下文！）分享給 GitHub。如今，GitHub 會在處理每個提交 (Commit) 時，對這些格式進行掃描。一旦偵測到疑似洩漏的 Cloudflare 權杖，系統便會（透過校驗和）驗證其真實性，然後向我們傳送 Webhook 通知以進行撤銷；最後，我們會透過電子郵件通知您，以便您在 Cloudflare 儀表板 (Dashboard) 設定中產生新的權杖。</p>
+<p>這意味著，一旦發現安全漏洞，我們就會立即修補。在您意識到自己犯錯時，我們已經將其修復了。</p>
+<p>我們希望這是您永遠不需要用到的功能，但我們的合作夥伴會持續監控洩露情況，以協助保障您的安全。</p>
+<h4>Cloudflare One</h4>
+<p>Cloudflare One 客戶同樣受到保護，免於此類洩露風險。透過設定<a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#credentials-and-secrets" target="_blank" rel="noopener noreferrer"><u>認證與機密</u></a> DLP 設定檔，組織可以在認證可能流經的各個環節啟用防護措施：</p>
+<ul>
+	<li><strong>網路流量 (<a href="https://www.cloudflare.com/sase/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>)：</strong>將這些項目套用到政策中，以偵測並封鎖網路中傳輸的 Cloudflare API 令牌。檔案上傳、外送請求或下載中的權杖，在其到達目的地前就會被攔截。</li>
+	<li><strong>外送電子郵件 (<a href="https://www.cloudflare.com/sase/products/email-security" target="_blank" rel="noopener noreferrer"><u>Cloudflare Email Security</u></a>)：</strong>Microsoft 365 客戶可以將相同的防護擴展到 Outlook。<a href="https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp" target="_blank" rel="noopener noreferrer"><u>DLP Assist</u></a> 附加元件會在郵件投遞前進行掃描，在權杖被外發前將其攔截。</li>
+	<li><strong>靜態資料 (<a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a>)：</strong>Cloudflare 的雲端存取安全性代理程式會套用相同的設定檔，掃描已連線 SaaS 應用程式中的檔案，捕捉儲存或分享於 Google Drive、OneDrive、Dropbox 及其他整合服務中的權杖。</li>
+</ul>
+<p>然而，最新穎的暴露途徑是 AI 流量。<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Gateway</u></a> 整合了相同的 DLP 設定檔，以即時掃描並封鎖傳入的提示和傳出的 AI 模型回應。</p>
+<h4>其他認證掃描工具</h4>
+<p>認證掃描要發揮作用，關鍵在於我們能在您所在之處提供保護。因此，我們正與多個開源和商業認證掃描工具合作，確保無論您使用何種機密掃描工具，都能獲得保護。</p>
+<h3>運作方式</h3>
+<p>至今為止，Cloudflare 的 API 權杖看起來相當普通，因此認證掃描工具難以準確地高度辨識它們。這些自動化安全工具會掃描您的程式碼存放庫，尋找暴露的認證，如 API 金鑰、權杖或密碼。「cf」前綴讓 Cloudflare 權杖能立即被高度確信地辨識，而校驗和則讓工具能輕鬆進行靜態驗證。您現有的權杖將繼續有效，但您產生的每個新權杖都將使用可掃描的格式，以便能被輕易且高度確信地偵測到。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>認證類型</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>用途</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>新格式</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>使用者 API 金鑰</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>與您使用者帳戶綁定的舊版全域 API 金鑰（完整存取權）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>cfk_[40 characters][checksum]</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>使用者 API 權杖</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>為特定權限建立的範圍化權杖</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>cfut_[40 characters][checksum]</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>帳戶 API 權杖</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>由帳戶（而非特定使用者）擁有的權杖</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>cfat_[40 characters][checksum]</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h4>開始使用</h4>
+<p>如果您已有現有的 API 權杖，您可以重新產生權杖，以建立一個新的、可掃描的 API 權杖。此操作雖非強制，但建議您這麼做，以確保您的權杖萬一外洩時能夠被輕鬆發現。</p>
+<p>雖然 API 權杖通常由您自己的指令碼和智慧體使用，但 OAuth 是您管理第三方平台存取權限的方式。兩者都需要清晰的可見度，以防止未經授權的存取，並確保您確切知道有誰（或什麼）能存取您的資料。</p>
+<h2>改善 OAuth 同意體驗</h2>
+<p>當您使用 OAuth 將像 Wrangler 這樣的第三方應用程式連接到您的 Cloudflare 帳戶時，即授予該應用程式存取您帳戶資料的權限。隨著時間推移，您可能會忘記最初為何授予某個第三方應用程式存取您帳戶的權限。過去，沒有一個集中的地方可以檢視和管理這些應用程式。從今天開始，有了。</p>
+<p>未來，當第三方應用程式請求存取您的 Cloudflare 帳戶時，您將能夠檢閱：</p>
+<ul>
+	<li><strong>哪個第三方應用程式</strong>正在請求存取，以及該應用程式的資訊，例如名稱、標誌和發布者。</li>
+	<li>第三方應用程式請求存取<strong>哪些授權範圍</strong>。</li>
+	<li>授予該第三方應用程式存取<strong>哪些帳戶</strong>的權限。</li>
+</ul>
+<div id="html-block-k3e" class="html-block">
+	<style>
+		#html-block-k3e .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k3e .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3e .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3e .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k3e .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">之前</span></th>
+					<th class="tg-amwm"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">之後</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2p3RZFDklLn9cfQOVYq5vS/d40e6116c115c453095f8ed2d110f062/image3.png" alt=""></td>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/33yGBWfD468P6T0hAnvbPX/9241ef24b6381eedaf2830b782a69f2e/image4.png" alt=""><br><br>
+
+						<img src="https://images.ctfassets.net/zkvhlag99gkb/22pDfCAFbPLNhnAPXLB36w/0671d7e892c5a93040ab17a62eda4a3c/image1.png" alt="">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>並非所有應用程式都需要相同的權限；有些僅需要讀取資料，有些可能需要變更您的帳戶。在授予存取權限前理解這些範圍，有助於您保持最低權限原則。 </p>
+<p>我們還新增了<a href="https://dash.cloudflare.com/profile/access-management/authorization" target="_blank" rel="noopener noreferrer"><u>「已連線應用程式」</u></a>體驗，讓您可以看到哪些應用程式有權存取哪些帳戶、哪些範圍/權限與該應用程式相關聯，並在需要時輕鬆撤銷該存取權限。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="246" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=715&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=640&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=715&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=750&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=828&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1080&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1280&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1430&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3216 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1530&amp;h=527&amp;f=webp" data-lightbox-width="1530" data-lightbox-height="527" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="246" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h4>開始使用</h4>
+<p>開始使用OAuth 授權與撤銷功能的改進現已推出。請造訪「我的個人檔案」&gt;「存取管理」&gt;「已連線應用程式」，查看目前有哪些應用程式有權存取您的帳戶。</p>
+<p>對於正在與 Cloudflare 建立整合的開發人員，請關注 <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>Cloudflare 更新記錄</u></a>，我們很快就會發布更多公告，指導您註冊屬於自己的 OAuth 應用程式！</p>
+<h2>細粒度的資源層級權限設定</h2>
+<p>如果權杖是護照，那麼限定資源範圍的權限就是其中的簽證。擁有有效護照讓您能通過大門，但它不應賦予您進入建築物中每個房間的權限。透過將權限範圍縮小到特定資源（例如單一的負載平衡器集區或特定的 Gateway 政策），您可以確保，即使身分已經驗證，它也僅擁有前往絕對必要之處的「簽證」。</p>
+<p>去年，我們<a href="https://developers.cloudflare.com/changelog/post/2025-10-01-fine-grained-permissioning-beta" target="_blank" rel="noopener noreferrer"><u>宣布</u></a>在 Cloudflare 的<a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac" target="_blank" rel="noopener noreferrer"><u>角色型存取控制 (RBAC)</u></a> 系統中，為多項 Zero Trust 產品支援限定資源範圍的權限。這讓您能為使用者和智慧體設定恰當的權限，以最小化安全風險。我們已將此功能擴展到數項新的資源層級權限。資源範圍現已支援：</p>
+<ul>
+	<li>存取應用程式</li>
+	<li>存取身分識別提供者</li>
+	<li>存取原則</li>
+	<li>存取服務權杖</li>
+	<li>存取目標</li>
+</ul>
+<p>我們也對 API 權杖的建立流程進行了全面重構，讓客戶能夠更輕鬆地直接從 Cloudflare 儀表板佈建與管理帳戶 API 權杖。 </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="368" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW45CB1KE9WABP8N71MR4PK9.gif" alt="BLOG-3216 8" width="715" height="368" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h4>運作方式</h4>
+<p>當您將成員新增到您的 Cloudflare 帳戶或建立 API 權杖時，通常會為該主體指派一項政策。權限政策賦予主體執行某項動作的權限，無論是管理 Cloudflare One 存取應用程式，或是管理 DNS 記錄。沒有政策，主體可以進行驗證，但它們未經授權，無法在帳戶內執行任何動作。</p>
+<p>政策由三個元件組成：主體 (Principal)、角色 (Role) 和範圍 (Scope)。「主體」是您授予存取權的對象，無論是真人使用者、API 權杖之類的非人類身分 (NHI)，或是日益增多的、代表使用者行事的智慧體。「角色」定義了允許他們執行的動作。「範圍」則決定了這些權限適用的位置，以往這僅限於整個帳戶或個別區域。</p>
+<h2>新的權限角色</h2>
+<p>我們也將在帳戶和區域層級更廣泛地擴展角色範圍，並為許多產品推出多個新角色。 </p>
+<ul>
+	<li>帳戶範圍<ul>
+			<li>CDN 管理</li>
+			<li>MCP 入口網站</li>
+			<li>Radar</li>
+			<li>Request Tracer</li>
+			<li>SSL/TLS 管理</li>
+		</ul>
+	</li>
+	<li>區域範圍<ul>
+			<li>Analytics</li>
+			<li>Logpush</li>
+			<li>Page Rule</li>
+			<li>網路安全中心</li>
+			<li>Snippets</li>
+			<li>區域設定</li>
+		</ul>
+	</li>
+</ul>
+<h4>開始使用</h4>
+<p>資源範圍及所有新的帳戶與區域層級角色，現已提供給所有 Cloudflare 客戶使用。您可以透過 Cloudflare 儀表板、API 或 Terraform 來指派帳戶、區域或限定資源範圍的政策。</p>
+<p>有關所有可用角色的完整細分以及範圍的運作方式，請參閱我們的<a href="https://developers.cloudflare.com/fundamentals/manage-members/roles" target="_blank" rel="noopener noreferrer"><u>角色</u></a>和<a href="https://developers.cloudflare.com/fundamentals/manage-members/scope" target="_blank" rel="noopener noreferrer"><u>範圍文件</u></a>。</p>
+<h2>保護您的帳戶</h2>
+<p>這些更新提供了建構真正最低權限架構所需的細粒度基礎元件。透過改進我們管理權限和認證的方式，開發人員和企業可以對存取 Cloudflare 的使用者、應用程式、智慧體和指令碼的安全性狀態更有信心。最低權限並非新概念，對於企業而言，它也從來都不是一個可選項。無論是人類管理員在管理區域，或是智慧體以程式化方式部署 Worker，期望都是一樣的：他們僅應被授權執行被指派的工作，除此之外，別無其他。</p>
+<p>基於今天的發佈內容，我們建議廣大客戶採取以下措施：</p>
+<ol>
+	<li>審查您的 <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer"><u>API 權杖</u></a>，並盡快重新發行新的、可掃描的 API 權杖。</li>
+	<li><a href="https://dash.cloudflare.com/profile/access-management/authorization" target="_blank" rel="noopener noreferrer"><u>審查您已授權的 OAuth 應用程式</u></a>，並撤銷任何您不再使用的應用程式的存取權。</li>
+	<li>審查您帳戶中的<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fbilling" target="_blank" rel="noopener noreferrer"><u>成員</u></a>與 <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer"><u>API 權杖</u></a>權限，確保使用者根據實際需求充分利用全新的帳戶級、區域級或資源級權限，以縮小您的風險範圍。</li>
+</ol>

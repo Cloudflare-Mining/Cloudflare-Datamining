@@ -1,0 +1,49 @@
+<p>即日起，我們的<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>安全性存取服務邊緣 (SASE)</u></a> 平台 <a href="https://www.cloudflare.com/zero-trust" target="_blank" rel="noopener noreferrer"><u>Cloudflare One</u></a> 的所有使用者均可使用我們基於 API 的<a href="https://www.cloudflare.com/zero-trust/products/casb" target="_blank" rel="noopener noreferrer"><u>雲端存取安全性代理程式 (CASB)</u></a>，來評估其生成式 AI (GenAI) 工具的安全狀態，特別是 OpenAI 的 <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer"><u>ChatGPT</u></a>、Anthropic 的 <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer"><u>Claude</u></a> 和 Google 的 <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer"><u>Gemini</u></a>組織可連線其 GenAI 帳戶，並在幾分鐘內開始偵測錯誤設定、<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer"><u>資料丟失防護 (DLP)</u></a> 相符項、資料暴露與共用、合規性風險等，而且無需在使用者裝置上安裝繁瑣的軟體。</p>
+<p>隨著<a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer"><u>生成式 AI</u></a> 在企業的採用呈爆炸式增長，IT 和安全性團隊需要竭力應對伴隨這些強大工具一起出現的新興<a href="https://www.cloudflare.com/the-net/generative-ai-zero-trust" target="_blank" rel="noopener noreferrer"><u>安全性與合規性挑戰</u></a>。在這個快速變化的環境中，IT 和安全性團隊需要各種工具來協助實現 AI 採用，同時保護企業網路和資料的安全性與隱私權。</p>
+<p>Cloudflare 的 API CASB 和內聯 CASB 協同運作，協助組織安全地採用 AI 工具。API CASB 整合提供對 ChatGPT、Claude 和 Gemini 等熱門 AI 工具內靜態資料與安全狀態的頻外可見度。同時，Cloudflare Gateway 提供<a href="https://blog.cloudflare.com/ai-prompt-protection" target="_blank" rel="noopener noreferrer"><u>內聯提示控制</u></a>與<a href="https://blog.cloudflare.com/shadow-AI-analytics" target="_blank" rel="noopener noreferrer"><u>影子 AI</u></a>識別。其在流量傳輸至這些 AI 服務提供者時，將原則和 DLP 套用至流量。這些功能協同運作，為組織提供了一個統一的控制平面，以保護其 GenAI 使用。</p>
+<h3>新功能</h3>
+<p>ChatGPT、Claude 和 Gemini 現在運行於由 <a href="https://developers.cloudflare.com/cloudflare-one/applications/scan-apps/casb-integrations" target="_blank" rel="noopener noreferrer"><u>Cloudflare 的 API CASB</u></a> 提供支援的整合中。所有 Cloudflare One 使用者都能使用這些整合，帳戶擁有者可輕鬆連線其 GenAI 租用戶，並且 CASB 會掃描多個網域的安全性問題：</p>
+<ul>
+	<li><strong>無代理程式連線：</strong>透過基於 API 的無代理程式整合來連線 ChatGPT、Claude 和 Gemini，以掃描狀態和資料風險；無須安裝任何端點軟體。</li>
+	<li><strong>狀態管理：</strong>偵測可能導致資料暴露或濫用的不安全設定和錯誤設定。</li>
+	<li><strong>DLP 偵測：</strong>識別聊天附件中<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention" target="_blank" rel="noopener noreferrer"><u>敏感性資料</u></a>的上傳位置（即將推出提示功能）。</li>
+	<li><strong>針對 GenAI 的深入解析：</strong>揭示與特定 AI 服務提供者工具集的獨特功能相關聯的風險。</li>
+</ul>
+<p>管理員現在可回答下列問題：我們的員工在 ChatGPT 中做什麼？Claude 正在上傳和使用哪些資料？Gemini 在 Google Workspace 中的設定是否正確？</p>
+<p>現在，我們來深入探究每一種整合。</p>
+<h3>OpenAI ChatGPT</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="627" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=715&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=640&amp;h=561&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=715&amp;h=627&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=750&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=828&amp;h=726&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=1080&amp;h=947&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=1280&amp;h=1122&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=1430&amp;h=1254&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2889 Image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4470QF4D9HZV2D0AQRGVR4.png&amp;w=1920&amp;h=1684&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1684" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="627" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare CASB 與 OpenAI 的 ChatGPT 整合，可透過掃描提供多種類型的深入解析，包括：</p>
+<ul>
+	<li><strong>功能啟用</strong>︰醒目顯示針對 ChatGPT 特徵集的功能，例如<a href="https://platform.openai.com/docs/actions/introduction" target="_blank" rel="noopener noreferrer"><u>動作</u></a>、<a href="https://platform.openai.com/docs/guides/tools-code-interpreter" target="_blank" rel="noopener noreferrer"><u>程式碼執行</u></a>、<a href="https://help.openai.com/en/articles/9237897-chatgpt-search" target="_blank" rel="noopener noreferrer"><u>Web 存取</u></a>。</li>
+	<li><strong>外部暴露：</strong>尋找在租用戶之外共用的聊天和 GPT，例如公開共用或在 <a href="https://openai.com/index/introducing-the-gpt-store" target="_blank" rel="noopener noreferrer"><u>GPT 商店</u></a>列出的 GPT，並將其與擁有者聯繫起來，以便快速進行分流處理。</li>
+	<li><strong>密碼、金鑰和邀請</strong>：識別未變換或不再用於維護憑證檢疫的 API 金鑰。識別權限過高或過時的邀請。</li>
+	<li><strong>敏感性內容（透過 DLP）</strong>：在上傳的聊天附件中，透過 <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles" target="_blank" rel="noopener noreferrer"><u>DLP 設定檔</u></a>比對項來偵測敏感性資料（例如資料和機密、財務/運作狀態資訊、原始程式碼等），以實現針對性回應。</li>
+</ul>
+<h3>Anthropic Claude</h3>
+<p>針對 Claude，Cloudflare 能夠提供下列頻外 Cloudflare 偵測：</p>
+<ul>
+	<li><strong>密碼、金鑰和邀請：</strong>提早顯示高風險邀請和權利漂移，從而保持嚴格的最低權限存取控制。發現未使用的 API 金鑰和輪換間隙，防止其變成被遺忘的敞開的大門。</li>
+	<li><strong>敏感性內容（透過 DLP）</strong>：監控上傳檔案中的<a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles/predefined-profiles" target="_blank" rel="noopener noreferrer"><u>敏感性資料</u></a>，以協助組織安全地啟用 Claude，同時確保合規性。安全性團隊在 CASB 掃描時可立即獲得此資訊，為其提供所需的可見度，協助員工高效、安全地使用 Claude 來處理敏感性資料。</li>
+</ul>
+<p>隨著 Anthropic 繼續擴展 Claude 的 API 功能與特徵，Cloudflare 將新增相應的安全性偵測，以在新功能可用時與之匹配。</p>
+<h3>Google Gemini</h3>
+<p>適用於 Google Gemini 的 Cloudflare 偵測是我們針對 Google Workspace 的 API CASB 整合的一部分：</p>
+<ul>
+	<li><strong>身分與 MFA</strong>：識別未採用 MFA 的 Gemini 使用者和管理員，他們是入侵的主要目標。想像一下，如果一位 IT 管理員每天依賴 Gemini 處理公司資料，但其 Google Workspace 帳戶缺少多重因素驗證。一封成功的網路釣魚電子郵件可能為攻擊者提供對 Gemini 和更廣泛的 Google Workspace 環境的特殊存取權限，從而將一個小疏忽轉變為整個組織的入侵。</li>
+	<li><strong>授權檢疫</strong>：標記仍持有 Gemini 或 <a href="https://support.google.com/a/answer/16345165" target="_blank" rel="noopener noreferrer"><u>AI Ultra</u></a> 授權的已暫停帳戶，以削減成本和減少暴露。AI Ultra 使用者能夠存取更強大、風險更高的功能，例如 <a href="https://deepmind.google/models/project-mariner" target="_blank" rel="noopener noreferrer"><u>ProjectMariner</u></a>，這是可充當自主代理程式的研究原型，能夠在 Web 瀏覽器中同時自動執行最多 10 項任務。攻擊者可透過入侵 AI Ultra 使用者造成更大的破壞，這也是我們將其納入偵測項的原因。</li>
+</ul>
+<p>Gemini 整合的範圍較窄，因為 Google 的產品和 API 結構不同於 OpenAI 或 Anthropic。針對組織，Gemini 作為 <a href="https://workspace.google.com" target="_blank" rel="noopener noreferrer"><u>Google Workspace</u></a> 附加元件提供。企業透過 Gemini 企業方案或 AI Ultra 等附加授權，在 Gmail、Docs、Sheets 和其他 Google Workspace 應用程式中啟用 Gemini 功能。我們的 CASB 偵測專注於身分、MFA 和授權檢疫，而不是公開共用或自訂助理發佈等狀態問題，因為 Gemini 尚未提供那些 API 端點。</p>
+<h3>GenAI 狀態管理的未來</h3>
+<p>與無數其他組織一樣，Cloudflare 採用 GenAI 的同時，也讓這些環境變得比現在更安全。我們很高興能夠將我們的管理涵蓋範圍延伸至我們的客戶，好讓他們能夠繼續藉助 GenAI 進行創新。但展望未來，我們期待 GenAI 服務提供者採取具體措施，讓安全性、合規性與資料隱私權成為其平台更重要的原則。</p>
+<h3>保護 GenAI 超越內聯控制</h3>
+<p>生成式 AI 的採用帶來了新的安全性要求。Cloudflare CASB 提供對這些工具的頻外可見度，從而揭示全面瞭解內嵌控制的深入解析。狀態、存取和資料在掌控之下，組織便可自信且安全地採用 GenAI。</p>
+<p><strong>如何開始使用：</strong></p>
+<ul>
+	<li><strong>現有 Cloudflare One 客戶：</strong>請立即聯絡您的客戶經理或直接在儀表板中啟用整合。</li>
+	<li><strong>剛接觸 Cloudflare One？</strong><a href="https://dash.cloudflare.com/sign-up/zero-trust" target="_blank" rel="noopener noreferrer"><u>請立即註冊</u></a>獲取 50 個免費席位，即可開始安全地使用 Gen AI。若是較大規模的部署，請<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise/?utm_medium=referral&amp;utm_source=blog&amp;utm_campaign=2025-q3-acq-gbl-connectivity-ge-ge-general-ai_week_blog" target="_blank" rel="noopener noreferrer"><u>諮詢我們的專家</u></a>。</li>
+</ul>
+<p>如果您想要預覽其他新功能，以及協助制定我們的藍圖，<a href="https://www.cloudflare.com/lp/ai-security-user-research-program-2025" target="_blank" rel="noopener noreferrer"><u>請對我們關於 AI 安全性的使用者研究計畫表示興趣</u></a>。 </p>

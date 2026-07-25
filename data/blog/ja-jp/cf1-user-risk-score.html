@@ -1,70 +1,30 @@
-<div class="mb2 gray5">3分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cf1-user-risk-score">English</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yjHolXzQ690iou5zlUk6D/01aff501cd4d48f804ccfb1f05446df5/cf1-user-risk-score.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Cloudflareの<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">セキュアアクセスサービスエッジ（SASE）</a> プラットフォーム、Cloudflare Oneは、ユーザーの行動に基づいてリスクを検出する新機能を導入し、組織全体のセキュリティ体制の改善につなげます。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fk5wFcIHUEHkUSj42Laqb/6db1080703d7136147c63db6e87e9a6b/Cloudflare-One-User-Risk-Scores.png" alt="Introducing behavior-based user risk scoring in Cloudflare One" class="kg-image" width="1600" height="900" loading="lazy">
-
-	</figure>
-	<p>これまで、セキュリティ/ITチームは、ビジネスにおけるリスクの変化を追跡し、脅威を把握するために、多くの時間と労力、コストを費やしてログデータの分析を行っていました。大部分は問題のないユーザーアクティビティであろう大量のデータのふるい分けは、干し草の山から針を見つけるように感じられたかもしれません。</p>
-	<p>Cloudflareのアプローチは、ユーザーリスクスコアリングによってこのプロセスをシンプルにします。Cloudflareは、AI/MLテクノロジーを使って、Cloudflareのネットワークを通過するユーザーアクティビティと挙動についてリアルタイムのテレメトリーを分析し、組織にとって危険となりうる異常な挙動や潜在的な攻撃の指標を特定します。組織のセキュリティチームは疑わしい行動をロックダウンし、変化するリスク要因や巧妙な脅威に向かってセキュリティ体制を整えることができます。</p>
-	<div class="flex anchor relative">
-		<h3 id="user-risk-scoring">ユーザーリスクスコアリング</h3>
-		<a href="https://blog.cloudflare.com/#user-risk-scoring" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>サイバーセキュリティにおける信頼（Trust）の概念は劇的に進化しています。「信頼はするが検証はする」という古いモデルは、「信頼はせず検証は継続的に行う」という<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trustアプローチ</a>に変わりました。このアプローチでは、各ネットワークリクエストが精査されます。この継続的な評価により、管理者はリクエストの内容やメタデータだけでなく、そのユーザーが普段どおりの時間や場所でログインしているかどうかなど、_コンテキスト_に基づいてアクセスを許可することができます。</p>
-	<p>これまでは、このようなコンテキストに基づくリスク評価には時間がかかり、ログデータを解析する専門知識が必要でした。ここで紹介する<b>Zero Trustユーザーリスクスコアリング</b>では、コンテキストに基づくリスク評価が自動で実行され、管理者は、異常な「ありえない移動」などの監視や<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">データ損失防止（DLP）</a>トリガーのような行動ルールをカスタマイズし、これらを使用して動的なユーザーリスクスコアを生成することが可能です。</p>
-	<p>Zero Trustユーザーリスクスコアリングは、組織、システム、データにリスクをもたらす可能性のあるユーザーのアクティビティや挙動を検出し、関係するユーザーにスコア（低、中、高）を割り当てます。これは、ユーザーおよびエンティティの行動分析（UEBA）とも呼ばれるアプローチで、セキュリティ/ITチームはアカウント侵害の可能性、組織ポリシーの違反、その他の危険な行動を検出し、修正することができます。</p>
-	<div class="flex anchor relative">
-		<h3 id="how-risk-scoring-works-and-detecting-user-risk">リスクスコアリングの仕組みとユーザーリスクの検出</h3>
-		<a href="https://blog.cloudflare.com/#how-risk-scoring-works-and-detecting-user-risk" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>ユーザーリスクスコアリングは、リスク行動を検査するように構築されています。リスク行動とは、ユーザーによって実行または完了され、Cloudflare Oneによって観測されるアクティビティのことです。Cloudflare Oneは、組織のZero Trustの実装を支援するSASEプラットフォームです。</p>
-	<p>特定のリスク行動のトラッキングが有効になると、Zero Trustリスクスコアリングエンジンは直ちにZero Trustアカウント内で生成された<a href="https://developers.cloudflare.com/logs/reference/log-fields/account" target="_blank" rel="noopener noreferrer">既存のログ</a>のレビューを開始します。そして、組織アカウント内のユーザーの挙動が、レビューされたログデータに基づいて有効となったリスク行動に一致する場合、Cloudflareはその挙動をとったユーザーにリスクスコア（低、中、高）を割り当てます。</p>
-	<p>リスク行動はCloudflareアカウント内のログデータを使用して構築されます。利用可能な既存のZero Trustログ（<a href="https://developers.cloudflare.com/cloudflare-one/insights/logs/#log-retention" target="_blank" rel="noopener noreferrer">ログの保持</a>期間に従う）以外のユーザーデータが、収集、追跡、保存されることはありません。</p>
-	<p>セキュリティチームや内部脅威チームの間での一般的な優先事項は、ユーザーが、いわゆる「ありえない移動」を行った場合の検出です。ありえない移動とは、ユーザーがその期間に移動できるはずのない2つの異なる場所からログインすることで、すぐに<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#predefined-risk-behaviors" target="_blank" rel="noopener noreferrer">定義済みのリスク行動</a>として利用可能です。たとえば、シアトルにいるアリスが<a href="https://developers.cloudflare.com/cloudflare-one/applications" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>で保護されている組織の財務アプリケーションにログインし、わずか数分後にシドニーで組織のビジネススイートにログインしているのが確認された場合、ありえない移動がトリガーされ、アリスにはリスクスコア「高」が割り当てられます。</p>
-	<p>複数のリスク行動が観察されたユーザーには、そのユーザーがトリガーした最も高いレベルのリスクスコアが割り当てられます。このリアルタイムのリスク評価により、セキュリティチームは迅速かつ果断に行動できるようになります。</p>
-	<p><i>Zero Trust ユーザーリスクスコアリングがありえない移動を検出し、高リスクとしてフラグを立てる</i></p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2wtNRTX4iieMuxydsjyjYC/8e04c12a39568559428d4cdbd1f7ef96/2240-2.png" alt="" class="kg-image" width="1600" height="698" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="enabling-predefined-risk-behaviors">事前定義されたリスク行動の有効化</h3>
-		<a href="https://blog.cloudflare.com/#enabling-predefined-risk-behaviors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>リスク行動はいつでも有効/無効にできますが、デフォルトでは無効になっています。したがって、組織にとって何がリスクとみなされ、そのリスクがどの程度緊急なものであるかが決定されるまでは、ユーザーにリスクスコアが割り当てられることはありません。</p>
-	<p>指定されたリスク行動の検出を開始するには、管理者はまず<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#predefined-risk-behaviors" target="_blank" rel="noopener noreferrer">行動要件</a>が満たされていることを確認します。たとえば、ユーザーによって多数のDLPポリシーがトリガーされたかどうかを検出するには、まずDLPプロファイルを設定する必要があります。その後は、<a href="https://one.dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Zero Trustダッシュボード</a>で<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#enable-risk-behaviors" target="_blank" rel="noopener noreferrer">リスク行動を有効</a>にすれば開始できます。</p>
-	<p>リスク行動を有効にすると、Cloudflareはユーザーの挙動の分析を開始し、リスク行動が検出されたユーザーには対応するリスクのフラグを立てます。管理者はすべてのリスク行動のリスクレベルを<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#change-risk-behavior-risk-levels" target="_blank" rel="noopener noreferrer">変更</a>することが可能です。たとえばセキュリティ体制に関連するリスク行動を有効にしたり、デフォルトのリスクスコア（低、中、高）を調整したりすることができます。</p>
-	<p>セキュリティ管理者が、ユーザーを調査した後にユーザーのリスクスコアをクリアする必要がある場合は、[リスクスコア] &gt; [ユーザーリスクスコアリング] で該当するユーザーを選択して、[ユーザーリスクをリセット] &gt; [確認] でリスクスコアをリセットできます。ユーザーのリスクスコアがリセットされると、そのユーザーは別のリスク行動をトリガーするまでリスクテーブルから消去されます。</p>
-	<p><b>Zero Trust ユーザーリスクスコアリングのリスク行動は、数秒で有効にできる</b></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2w2STqpcPM8aLQZzNUi7w1/d6c8984807a858894e194c51819b0feb/2240-3.png" alt="" class="kg-image" width="1600" height="979" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="how-do-i-get-started">開始方法</h3>
-		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>ユーザーリスクスコアリングおよびDLPは<a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a>の一部です。Cloudflare Oneは、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>セキュリティおよびネットワーク接続サービスを、一つの統合プラットフォームとグローバルコントロールプレーンに集約します。</p>
-	<p>Cloudflare One経由でDLPにアクセスするには、<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise" target="_blank" rel="noopener noreferrer">コンサルタントを利用するか</a>、アカウントマネージャーにご連絡ください。</p>
-</div>
+<p>Cloudflareの<a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer">セキュアアクセスサービスエッジ（SASE）</a> プラットフォーム、Cloudflare Oneは、ユーザーの行動に基づいてリスクを検出する新機能を導入し、組織全体のセキュリティ体制の改善につなげます。</p>
+<p>これまで、セキュリティ/ITチームは、ビジネスにおけるリスクの変化を追跡し、脅威を把握するために、多くの時間と労力、コストを費やしてログデータの分析を行っていました。大部分は問題のないユーザーアクティビティであろう大量のデータのふるい分けは、干し草の山から針を見つけるように感じられたかもしれません。</p>
+<p>Cloudflareのアプローチは、ユーザーリスクスコアリングによってこのプロセスをシンプルにします。Cloudflareは、AI/MLテクノロジーを使って、Cloudflareのネットワークを通過するユーザーアクティビティと挙動についてリアルタイムのテレメトリーを分析し、組織にとって危険となりうる異常な挙動や潜在的な攻撃の指標を特定します。組織のセキュリティチームは疑わしい行動をロックダウンし、変化するリスク要因や巧妙な脅威に向かってセキュリティ体制を整えることができます。</p>
+<h3>ユーザーリスクスコアリング</h3>
+<p>サイバーセキュリティにおける信頼（Trust）の概念は劇的に進化しています。「信頼はするが検証はする」という古いモデルは、「信頼はせず検証は継続的に行う」という<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trustアプローチ</a>に変わりました。このアプローチでは、各ネットワークリクエストが精査されます。この継続的な評価により、管理者はリクエストの内容やメタデータだけでなく、そのユーザーが普段どおりの時間や場所でログインしているかどうかなど、_コンテキスト_に基づいてアクセスを許可することができます。</p>
+<p>これまでは、このようなコンテキストに基づくリスク評価には時間がかかり、ログデータを解析する専門知識が必要でした。ここで紹介する<strong>Zero Trustユーザーリスクスコアリング</strong>では、コンテキストに基づくリスク評価が自動で実行され、管理者は、異常な「ありえない移動」などの監視や<a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">データ損失防止（DLP）</a>トリガーのような行動ルールをカスタマイズし、これらを使用して動的なユーザーリスクスコアを生成することが可能です。</p>
+<p>Zero Trustユーザーリスクスコアリングは、組織、システム、データにリスクをもたらす可能性のあるユーザーのアクティビティや挙動を検出し、関係するユーザーにスコア（低、中、高）を割り当てます。これは、ユーザーおよびエンティティの行動分析（UEBA）とも呼ばれるアプローチで、セキュリティ/ITチームはアカウント侵害の可能性、組織ポリシーの違反、その他の危険な行動を検出し、修正することができます。</p>
+<h3>リスクスコアリングの仕組みとユーザーリスクの検出</h3>
+<p>ユーザーリスクスコアリングは、リスク行動を検査するように構築されています。リスク行動とは、ユーザーによって実行または完了され、Cloudflare Oneによって観測されるアクティビティのことです。Cloudflare Oneは、組織のZero Trustの実装を支援するSASEプラットフォームです。</p>
+<p>特定のリスク行動のトラッキングが有効になると、Zero Trustリスクスコアリングエンジンは直ちにZero Trustアカウント内で生成された<a href="https://developers.cloudflare.com/logs/reference/log-fields/account" target="_blank" rel="noopener noreferrer">既存のログ</a>のレビューを開始します。そして、組織アカウント内のユーザーの挙動が、レビューされたログデータに基づいて有効となったリスク行動に一致する場合、Cloudflareはその挙動をとったユーザーにリスクスコア（低、中、高）を割り当てます。</p>
+<p>リスク行動はCloudflareアカウント内のログデータを使用して構築されます。利用可能な既存のZero Trustログ（<a href="https://developers.cloudflare.com/cloudflare-one/insights/logs/#log-retention" target="_blank" rel="noopener noreferrer">ログの保持</a>期間に従う）以外のユーザーデータが、収集、追跡、保存されることはありません。</p>
+<p>セキュリティチームや内部脅威チームの間での一般的な優先事項は、ユーザーが、いわゆる「ありえない移動」を行った場合の検出です。ありえない移動とは、ユーザーがその期間に移動できるはずのない2つの異なる場所からログインすることで、すぐに<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#predefined-risk-behaviors" target="_blank" rel="noopener noreferrer">定義済みのリスク行動</a>として利用可能です。たとえば、シアトルにいるアリスが<a href="https://developers.cloudflare.com/cloudflare-one/applications" target="_blank" rel="noopener noreferrer">Cloudflare Access</a>で保護されている組織の財務アプリケーションにログインし、わずか数分後にシドニーで組織のビジネススイートにログインしているのが確認された場合、ありえない移動がトリガーされ、アリスにはリスクスコア「高」が割り当てられます。</p>
+<p>複数のリスク行動が観察されたユーザーには、そのユーザーがトリガーした最も高いレベルのリスクスコアが割り当てられます。このリアルタイムのリスク評価により、セキュリティチームは迅速かつ果断に行動できるようになります。</p>
+<p><em>Zero Trust ユーザーリスクスコアリングがありえない移動を検出し、高リスクとしてフラグを立てる</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="312" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=640&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=750&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=828&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=1080&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=1280&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=1430&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2240 Embedded Image - ZFWv7r" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NRXVFYJKJZ1SWRADB208.png&amp;w=1600&amp;h=698&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="698" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="312" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>事前定義されたリスク行動の有効化</h3>
+<p>リスク行動はいつでも有効/無効にできますが、デフォルトでは無効になっています。したがって、組織にとって何がリスクとみなされ、そのリスクがどの程度緊急なものであるかが決定されるまでは、ユーザーにリスクスコアが割り当てられることはありません。</p>
+<p>指定されたリスク行動の検出を開始するには、管理者はまず<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#predefined-risk-behaviors" target="_blank" rel="noopener noreferrer">行動要件</a>が満たされていることを確認します。たとえば、ユーザーによって多数のDLPポリシーがトリガーされたかどうかを検出するには、まずDLPプロファイルを設定する必要があります。その後は、<a href="https://one.dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Zero Trustダッシュボード</a>で<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#enable-risk-behaviors" target="_blank" rel="noopener noreferrer">リスク行動を有効</a>にすれば開始できます。</p>
+<p>リスク行動を有効にすると、Cloudflareはユーザーの挙動の分析を開始し、リスク行動が検出されたユーザーには対応するリスクのフラグを立てます。管理者はすべてのリスク行動のリスクレベルを<a href="https://developers.cloudflare.com/cloudflare-one/insights/risk-score/#change-risk-behavior-risk-levels" target="_blank" rel="noopener noreferrer">変更</a>することが可能です。たとえばセキュリティ体制に関連するリスク行動を有効にしたり、デフォルトのリスクスコア（低、中、高）を調整したりすることができます。</p>
+<p>セキュリティ管理者が、ユーザーを調査した後にユーザーのリスクスコアをクリアする必要がある場合は、[リスクスコア] &gt; [ユーザーリスクスコアリング] で該当するユーザーを選択して、[ユーザーリスクをリセット] &gt; [確認] でリスクスコアをリセットできます。ユーザーのリスクスコアがリセットされると、そのユーザーは別のリスク行動をトリガーするまでリスクテーブルから消去されます。</p>
+<p><strong>Zero Trust ユーザーリスクスコアリングのリスク行動は、数秒で有効にできる</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="437" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=715&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=640&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=715&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=750&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=828&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=1080&amp;h=660&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=1280&amp;h=782&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=1430&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2240 Embedded Image - sE5g7i" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NBVQA77789X74D5TFK37.png&amp;w=1600&amp;h=979&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="979" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="437" class="pt-portable-image-media"></div>
+</figure>
+<h3>開始方法</h3>
+<p>ユーザーリスクスコアリングおよびDLPは<a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a>の一部です。Cloudflare Oneは、<a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a>セキュリティおよびネットワーク接続サービスを、一つの統合プラットフォームとグローバルコントロールプレーンに集約します。</p>
+<p>Cloudflare One経由でDLPにアクセスするには、<a href="https://www.cloudflare.com/products/zero-trust/plans/enterprise" target="_blank" rel="noopener noreferrer">コンサルタントを利用するか</a>、アカウントマネージャーにご連絡ください。</p>

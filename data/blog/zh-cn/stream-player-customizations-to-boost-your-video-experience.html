@@ -1,0 +1,32 @@
+<p>当我们推出 Stream 时，我们的目标之一就是提供性能最好的视频播放器。我们致力于构建一个能够快速加载、跨不同浏览器和框架工作、并根据最终用户的连接智能切换视频质量级别的播放器。</p>
+<p>我们正在扩展 Stream 播放器的视野，因此您可以控制观看体验的外观和感觉。今天，我们宣布了一系列新的自定义选项，以帮助您提供最佳的视频播放体验。</p>
+<h3>添加您自己的色彩</h3>
+<p>我们不断从客户那里听到的一件事是，他们希望能够定制 Stream 播放器以更好地反映他们的品牌。Stream 播放器现在支持设置与公司颜色匹配的原色。下面是我们使用 primaryColor 属性将首选颜色设置为 Cloudflare 橙色的示例。</p>
+<p>要使用 primaryColor 属性，只需将其添加到 iframe URL。在此示例中，十六进制代码为 #F48120，uri 编码值为 %23F48120。</p>
+<div id="html-block-kb" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<p><code>https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23F48120</code></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor</span><span class="sk-032f62-99ffe4">=%23F48120</span></span></code></pre>
+</div>
+<p>如果您使用 React 或 Angular 包装，则可以使用 primaryColor 属性自定义播放器颜色。</p>
+<p>目前，设置首选颜色属性会将播放按钮和搜索栏的颜色更改为您指定的首选颜色。我们计划在未来为 Stream 播放器提供更多的品牌推广方式。</p>
+<h3>视频中的深层链接</h3>
+<p>以前，如果希望视频在某个时间点开始，则需要编写自定义代码，使用 Stream 播放器 SDK 将查看器快进到精确的开始时间。Stream 播放器现在支持 startTime 属性，如果您只是想将视图深度链接到视频中的某个时间点，则无需加载 SDK 和编写自定义代码。</p>
+<p>假设您运行一个电子学习平台，并希望讲师能够通过深度链接到一小时视频的特定部分来回答问题。如果您设置新的 startTime 查询字符串参数或道具，则 Stream 播放器中的视频播放将从指定的时间戳开始。</p>
+<div id="html-block-kp" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<h3>默认启用本地化字幕</h3>
+<p>Cloudflare Stream 长期以来一直支持多种语言的视频字幕。但是我们从客户那里听说，他们希望能够默认打开字幕_并_指定默认语言。这现已得到原生支持，使您的视频更轻松触及全球受众。</p>
+<p>如果您有一个支持本地化的网站，您可能希望使用预设语言打开字幕。在视频自动播放同时静音的情况下，自动启用字幕还可以改善观看者体验。这是一个不断增长的趋势，事实上，Facebook 报告称，在该平台上观看的视频中，超过 85% 的视频都是在静音的情况下播放的。</p>
+<p>使用 Stream 播放器自动启用字幕现在就像在 iframe URL 中指定语言代码一样简单。</p>
+<h3>改进的嵌入选项卡</h3>
+<p>最后，我们改进了嵌入选项卡，因此您无需编写任何代码即可尝试所有播放器自定义选项。您可以从“嵌入”选项卡轻松配置海报图像和首选颜色等属性。嵌入选项卡可让您查看自定义播放器的即时预览，并提供您可以粘贴到应用程序或网站中的嵌入代码。</p>
+<p>Stream 媒体用户经常难以为单个视频设置完美的海报图像。该过程将涉及观看视频、找到用作封面图像的正确时间戳、阅读 API 文档，最后手动修改查询参数，直到找到正确的封面图像。使用新的增强功能，您可以将视频播放到视频中的正确位置，然后单击“从播放器复制”以设置海报图像时间戳。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="629" height="674" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=629&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=629&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 629w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=640&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=750&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=828&amp;h=887&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=1080&amp;h=1157&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=1258&amp;h=1348&amp;f=webp&amp;fit=cover&amp;position=center 1258w" alt="BLOG-818 Embedded Image - tPzyUD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=629&amp;h=674&amp;f=webp" data-lightbox-width="629" data-lightbox-height="674" data-astro-cid-7nvefuv6="true" sizes="(min-width: 629px) 629px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="629" height="674" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>我们让 Stream 播放器高度可定制的旅程才刚刚开始。如果您希望支持某个特定的自定义设置，<a href="https://forms.gle/cquHEXK8St6sVZnx5" target="_blank" rel="noopener noreferrer">我们很乐意听取您的意见</a>。</p>

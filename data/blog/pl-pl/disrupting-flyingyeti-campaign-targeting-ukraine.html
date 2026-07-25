@@ -1,0 +1,541 @@
+<p>Cloudforce One публікує результати нашого розслідування та заходів, вжитих у режимі реального часу, для виявлення, блокування, зменшення впливу, уповільнення та зриву зловмисної діяльності підтримуваної Росією хакерської групи FlyingYeti під час їхньої останньої фішингової кампанії проти України. Після вторгнення Росії 24 лютого 2022 року Україна запровадила мораторій на виселення з житла та припинення надання комунальних послуг через несплачену заборгованість. У січні 2024 року цей мораторій закінчився, що призвело до значної боргової відповідальності й посилення фінансового стресу для громадян України. Зловмисники, які організували кампанію FlyingYeti, скористались занепокоєнням громадян через можливу втрату доступу до житла й комунальних послуг і спонукали свої жертви відкривати шкідливі файли, використовуючи приманки, які мали вигляд пов’язаних із заборгованостями. Відкриття таких файлів призводило до встановлення шкідливої програми PowerShell, відомої як <a href="https://cert.gov.ua/article/6277849" target="_blank" rel="noopener noreferrer">COOKBOX</a>, що дозволяло FlyingYeti виконувати подальші дії, такі як додавання додаткових пейлоадів (корисних даних) і контроль над системою жертви.</p>
+<p>З 26 квітня 2024 року спеціалісти Cloudforce One почали вживати заходів, щоб не дозволити FlyingYeti розпочати свою фішингову кампанію — кампанію, яка залучала компоненти Cloudflare Worker і ресурс GitHub, а також використовувала вразливість архіватора WinRAR <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-38831" target="_blank" rel="noopener noreferrer">CVE-2023-38831</a>. Наші контрзаходи охоплювали дії на внутрішньому рівні, зокрема виявлення операцій і пошкодження коду, а також співпрацю з третіми сторонами для видалення шкідливого програмного забезпечення, розміщеного у хмарному середовищі зловмисників. Завдяки нашим ефективним протидіям оперативний графік цієї хакерської групи збільшився з кількох днів до кількох тижнів. Наприклад, в одному випадку через наше втручання FlyingYeti витратили майже вісім годин на виправлення свого коду. Вжиті нами проактивні захисні заходи не дозволили цим зловмисникам досягти своїх цілей.</p>
+<h3>Стислий виклад</h3>
+<ul>
+	<li>18 квітня 2024 року спеціалісти Cloudforce One виявили, що підтримувана Росією хакерська група FlyingYeti готувалася розпочати шпигунську фішингову кампанію проти громадян України.</li>
+	<li>Ми з’ясували, що хакери використовували тактичні сценарії, технічні методи та процедури (TTP), подібні до тих, які докладно описані у <a href="https://cert.gov.ua/article/6278620" target="_blank" rel="noopener noreferrer">статті команди реагування на надзвичайні комп’ютерні події України щодо UAC-0149</a>, групи зловмисників, яка <a href="https://cert.gov.ua/article/6277849" target="_blank" rel="noopener noreferrer">принаймні з осені 2023 року діє переважно проти представників Сил оборони України, використовуючи шкідливу програму COOKBOX</a>.</li>
+	<li>З середини квітня до середини травня ми спостерігали, як FlyingYeti проводили розвідку, створювали контент-приманку для використання у фішинговій кампанії та розробляли різні ітерації свого шкідливого програмного забезпечення. За нашими оцінками, зловмисники планували розпочати свою кампанію на початку травня, імовірно, після православного Великодня.</li>
+	<li>Після кількох тижнів спостереження розвідувальної та підготовчої діяльності зловмисників (<a href="https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html" target="_blank" rel="noopener noreferrer">етапи Cyber Kill Chain 1 і 2</a>) ми успішно зірвали робочі процеси групи FlyingYeti після створення остаточного пейлоаду COOKBOX.</li>
+	<li>Цей пейлоад містив експлойт для вразливості WinRAR CVE-2023-38831, яку FlyingYeti, імовірно, будуть надалі використовувати у своїх фішингових кампаніях для зараження жертв шкідливими програмами.</li>
+	<li>Ми пропонуємо заходи, яких користувачі можуть вжити для захисту від фішингових атак FlyingYeti, а також надаємо рекомендації, інформацію про виявлені випадки й індикатори компрометації.</li>
+</ul>
+<h2>Хто такі FlyingYeti?</h2>
+<p>FlyingYeti — це <a href="https://www.merriam-webster.com/dictionary/cryptonym" target="_blank" rel="noopener noreferrer">фіктивне ім’я</a>, надане спеціалістами <a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">Cloudforce One</a> групі зловмисників — організаторів цієї фішингової кампанії, яка дуже схожа на кібератаку UAC-0149, зафіксовану командою <a href="https://cert.gov.ua" target="_blank" rel="noopener noreferrer">CERT-UA</a> у <a href="https://cert.gov.ua/article/6277849" target="_blank" rel="noopener noreferrer">лютому</a> та <a href="https://cert.gov.ua/article/6278620" target="_blank" rel="noopener noreferrer">квітні</a> 2024 року. Для своєї інфраструктури зловмисники використовують динамічний DNS (<a href="https://www.cloudflare.com/learning/dns/glossary/dynamic-dns" target="_blank" rel="noopener noreferrer">DDNS</a>), а також залучають хмарні платформи для розміщення шкідливого контенту й віддаленого керування шкідливим програмним забезпеченням (C2). Результати нашого дослідження тактичних сценаріїв, технічних методів і процедур FlyingYeti свідчать про те, що це, імовірно, російська хакерська група, діяльність якої насамперед спрямована проти українських військових. Крім того, у коді FlyingYeti були виявлені російськомовні коментарі, а години активності групи збігалися з часовим поясом UTC+3.</p>
+<h2>Загальні відомості про кампанію</h2>
+<p>Протягом кількох днів перед початком кампанії спеціалісти Cloudforce One спостерігали, як FlyingYeti проводили розвідку, вивчаючи процеси оплати за житлово-комунальні послуги в Україні:</p>
+<ul>
+	<li>22 квітня 2024 року — аналіз змін, які були впроваджені у 2016 році щодо використання QR-кодів у платіжних повідомленнях;</li>
+	<li>22 квітня 2024 року — аналіз поточних рішень щодо заборгованості за житлово-комунальні послуги в Україні;</li>
+	<li>25 квітня 2024 року — аналіз юридичної основи для реструктуризації боргів за житло в Україні, а також боргів за комунальні послуги, такі як газ та електроенергія.</li>
+</ul>
+<p>Cloudforce One вважає, що зафіксована розвідувальна діяльність, імовірно, пов’язана з мораторієм на оплату, запровадженим урядом України на початку повномасштабного вторгнення в лютому 2022 року. Згідно з цим мораторієм, непогашена заборгованість не призводила до виселення чи припинення надання комунальних послуг. Однак 9 січня 2024 року <a href="https://en.interfax.com.ua/news/economic/959388.html" target="_blank" rel="noopener noreferrer">уряд скасував цю заборону</a>, що призвело до посилення тиску на українських громадян, які мають непогашену заборгованість. Хакери FlyingYeti прагнули скористатись цим тиском й залучили приманки, пов’язані з реструктуризацією боргу та платежів, щоб збільшити шанси на успіх своїх атак на українських громадян.</p>
+<h2>Аналіз фішингового вебсайту, схожого на ресурс «Комуналка»</h2>
+<p>Зірвана фішингова кампанія спрямовувала б жертв хакерів FlyingYeti на контрольовану ними сторінку на ресурсі GitHub за адресою hxxps[:]//komunalka[.]github[.]io, яка є фальшивою версією сайту для комунальних послуг «Київська комуналка» <a href="https://www.komunalka.ua" target="_blank" rel="noopener noreferrer">https://www.komunalka.ua</a>. Сайт «Комуналка» виступає в ролі обробника платежів для жителів Київської області й дозволяє оплачувати комунальні послуги, такі як газ, електроенергія, телефон та Інтернет. До того ж користувачі можуть сплачувати інші комісії та штрафи, а також робити пожертви на потреби Сил оборони України.</p>
+<p>Виходячи з попередніх операцій хакерів FlyingYeti, користувачі-жертви можуть бути спрямовані на сторінку групи на GitHub через посилання у фішинговому електронному листі або в зашифрованому повідомленні в месенджері Signal. Якщо жертва перейде на фальшиву платформу «Комуналка» hxxps[:]//komunalka[.]github[.]io, на сторінці відобразиться велика зелена кнопка з пропозицією завантажити документ «Рахунок.docx» («Invoice.docx»), як показано на зображенні 1. Ця кнопка маскується під посилання на рахунок простроченої оплати, але насправді призводить до завантаження шкідливого архіву «Заборгованість по ЖКП.rar».</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="310" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=750&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=828&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=1080&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=1280&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=1430&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2428 Embedded Image - R9zI7r" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4505QX7Y6KABHT06G5DG6W.png&amp;w=1920&amp;h=834&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="834" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="310" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Зображення 1. Пропозиція завантажити шкідливий архів «Заборгованість по ЖКП.rar»</p>
+<p>Для завантаження потрібно виконати декілька дій.</p>
+<ul>
+	<li>Користувач-жертва натискає зелену кнопку на хакерській сторінці GitHub hxxps[:]//komunalka.github[.]io.</li>
+	<li>Пристрій користувача відправляє запит HTTP POST до компонента Cloudflare Worker worker-polished-union-f396[.]vqu89698[.]workers[.]dev, у якому для тіла запиту HTTP вказано «user=Iahhdr».</li>
+	<li>Cloudflare Worker обробляє цей запит та аналізує тіло запиту HTTP.</li>
+	<li>Якщо умови запиту виконуються, Worker отримує файл RAR від hxxps[:]//raw[.]githubusercontent[.]com/kudoc8989/project/main/Заборгованість по ЖКП.rar, який потім завантажується на пристрій цільового користувача.</li>
+</ul>
+<p>Спеціалісти Cloudforce One визначили інфраструктуру, яка відповідала за завантаження шкідливого файлу RAR, й усунули пов’язаний із хакерами компонент Worker, не дозволивши FlyingYeti використати свої шкідливі інструменти. Намагаючись обійти заходи, впроваджені Cloudforce One, пізніше FlyingYeti змінили свій спосіб доставлення шкідливих програм. Замість того, щоб шкідливий файл RAR передавався через домен компонентів Worker, він завантажувався безпосередньо з GitHub.</p>
+<h2>Аналіз шкідливого файлу RAR</h2>
+<p>У процесі ліквідації загрози спеціалісти Cloudforce One отримали файл «Заборгованість по ЖКП.rar» і проаналізували цей шкідливий пейлоад. Завантажений архів RAR містить кілька файлів, зокрема файл, в імені якого є символ Юнікод «U+201F». На пристроях з операційною системою Windows цей символ відображається як пробіл і може використовуватися, щоб «приховати» розширення файлу додаванням зайвих пробілів між назвою файлу та його розширенням. Як виділено синім кольором на зображенні 2, цей хитро названий файл в архіві RAR виглядає як документ у форматі PDF, але насправді є шкідливим командним файлом CMD («Рахунок на оплату.pdf[символ Юнікод U+201F].cmd»).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="172" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=715&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=640&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=715&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=750&amp;h=180&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=828&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=1080&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=1280&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=1430&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2428 Embedded Image - 0Sa9he" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QCV19RV6EM2CN9BB80VJ.png&amp;w=1920&amp;h=461&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="461" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="172" class="pt-portable-image-media"></div>
+</figure>
+<p>Зображення 2. Файли в архіві RAR «Заборгованість по ЖКП.rar»</p>
+<p>FlyingYeti додали до архіву безпечний файл PDF із таким самим ім’ям, що й командний файл CMD, але без символу Юнікод — «Рахунок на оплату.pdf». До того ж ім’я каталогу для розпакованого архіву також містило ім’я «Рахунок на оплату.pdf». Такий збіг імен безпечного файлу й каталогу дозволяє зловмисникам скористатися вразливістю WinRAR <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-38831" target="_blank" rel="noopener noreferrer">CVE-2023-38831</a>. Точніше, коли архів містить безпечний файл із таким самим ім’ям, що й каталог, увесь контент каталогу відкривається програмою WinRAR, що призводить до виконання шкідливого файлу CMD. Іншими словами, коли користувач вважає, що відкриває безпечний файл PDF «Рахунок на оплату.pdf», запускається шкідливий командний файл CMD.</p>
+<p>Файл CMD містить шкідливу програму FlyingYeti PowerShell, яка називається <a href="https://cert.gov.ua/article/6277849" target="_blank" rel="noopener noreferrer">COOKBOX</a>. Ця програма зберігається на хост-комп’ютері та виконує роль бази на зараженому пристрої. Після встановлення цей варіант COOKBOX буде відправляти запити на DDNS-домен postdock[.]serveftp[.]com для C2, очікуючи на команду PowerShell <a href="https://learn.microsoft.com/en-us/powershell/scripting/powershell-commands?view=powershell-7.4" target="_blank" rel="noopener noreferrer">cmdlets</a>, яку шкідлива програма згодом запустить.</p>
+<p>Паралельно з COOKBOX відкриваються кілька документів-приманок, які містять приховані посилання для відстеження з використанням служби <a href="https://canarytokens.com/generate" target="_blank" rel="noopener noreferrer">Canary Tokens</a>. Перший документ, показаний нижче на зображенні 3, являє собою договір, згідно з яким буде реструктуризована заборгованість за житлово-комунальні послуги.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="314" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=640&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=750&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=828&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=1080&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=1280&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=1430&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2428 Embedded Image - FVFylF" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZKMVK7CFJMBKV4CEPEGE.png&amp;w=1920&amp;h=844&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="844" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="314" class="pt-portable-image-media"></div>
+</figure>
+<p>Зображення 3. Документ-приманка «Реструктуризація боргу за житлово-комунальні послуги.docx»</p>
+<p>Другий документ (зображення 4) — це угода користувача з умовами використання платіжної платформи komunalka[.]ua.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="418" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=715&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=640&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=715&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=750&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=828&amp;h=484&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=1080&amp;h=631&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=1280&amp;h=748&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=1430&amp;h=836&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2428 Embedded Image - BfixqQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KRF1TA72286X0WB94A5E.png&amp;w=1104&amp;h=646&amp;f=webp" data-lightbox-width="1104" data-lightbox-height="646" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="418" class="pt-portable-image-media"></div>
+</figure>
+<p>Зображення 4. Документ-приманка «Угода користувача.docx»</p>
+<p>Використання відповідних документів-приманок як частини діяльності з фішингу й передавання даних є спробою хакерів FlyingYeti надати більшої видимої легітимності своїм діям.</p>
+<p>Тема фішингу, яку ми визначили в цій кампанії, імовірно, є однією з багатьох тем, використаних цією групою зловмисників у більшій операції, спрямованій на українські структури, зокрема на їхні сили оборони. Власне у зловмисній операції, яку ми детально описали в цьому блозі, використовується багато методів, ідентичних до задіяних у <a href="https://cert.gov.ua/article/6278620" target="_blank" rel="noopener noreferrer">нещодавній кампанії FlyingYeti</a>, яку було виявлено групою CERT-UA в середині квітня 2024 року. Тоді хакери використали приманки на тему ООН, у яких згадувались операції з підтримання миру, для атаки на українських військовослужбовців. Завдяки захисним діям Cloudforce One, описаним у наступному розділі, на момент публікації цю останню кампанію FlyingYeti вдалось попередити.</p>
+<h2>Обмеження діяльності хакерів FlyingYeti</h2>
+<p>Cloudforce One обмежили наслідки кампанії FlyingYeti, виконавши низку дій. Кожна дія ускладнювала хакерам подальше виконання своїх операцій. Оцінюючи, яку дію необхідно здійснити та з якою метою, ми ретельно зважили всі переваги й недоліки для забезпечення ефективної діючої стратегії протидії цій групі зловмисників. Наша загальна мета полягала у тому, щоб збільшити кількість часу, який хакери витрачали на розробку та проведення своєї кампанії.</p>
+<p>Нам вдалося збільшити оперативний графік групи зловмисників із кількох годин до кількох тижнів. На кожному етапі протидії ми оцінювали результати своїх зусиль із послаблення наслідків кампанії, щоб переконатися, що хакери витратять ще більше часу на спроби її запустити. Наші заходи щодо зменшення ефективності атак дозволили зірвати діяльність цієї групи зловмисників, а в одному випадку їм довелось витратити вісім додаткових годин на виправлення коду.</p>
+<p>Через наші проактивні захисні дії хакери FlyingYeti кілька разів адаптували свою тактику, намагаючись розпочати кампанію. Спочатку вони мали намір змусити компонент Cloudflare Worker отримати шкідливий файл RAR із ресурсу GitHub. Коли Cloudforce One заборонили використовувати Worker, зловмисники спробували створити додаткові компоненти Worker у новому обліковому записі. У відповідь ми деактивували всі компоненти Worker, через що зловмисникам необхідно було завантажувати файл RAR безпосередньо з GitHub. Cloudforce One повідомили про це спеціалістів GitHub, які видалили файл RAR і проєкт на GitHub, а також заблокували обліковий запис, який використовувався для розміщення файлу RAR. Після цього хакери FlyingYeti почали тестувати можливість розміщення файлу RAR на файлообмінних сайтах <a href="https://pixeldrain.com" target="_blank" rel="noopener noreferrer">pixeldrain</a> і <a href="https://www.filemail.com" target="_blank" rel="noopener noreferrer">Filemail</a>, де ми зафіксували їхні спроби змінити посилання на фішинговий сайт «Комуналка» між наступними адресами:</p>
+<ul>
+	<li>hxxps://pixeldrain[.]com/api/file/ZAJxwFFX?download=one;</li>
+	<li>hxxps://1014.filemail[.]com/api/file/get?filekey=e_8S1HEnM5Rzhy_jpN6nL-GF4UAP533VrXzgXjxH1GzbVQZvmpFzrFA&amp;pk_vid=a3d82455433c8ad11715865826cf18f6.</li>
+</ul>
+<p>Ми повідомили GitHub про зміну тактики хакерів, після чого GitHub видалили фішинговий сайт «Комуналка». Проаналізувавши файли, розміщені на ресурсах pixeldrain і Filemail, ми визначили, що зловмисники завантажили фіктивні пейлоади, імовірно, щоб відстежувати доступ до своєї фішингової інфраструктури (Filemail реєструє IP-адреси, а обидва файлообмінні сайти надають інформацію про кількість переглядів і завантажень). На момент публікації ми не зафіксували, щоб FlyingYeti завантажували шкідливий файл RAR на будь-який із цих файлових хостингів, а також не виявили використання альтернативних методів фішингу або доставлення зловмисного програмного забезпечення.</p>
+<p>Оперативний графік операцій FlyingYeti та наші відповідні обмежувальні дії наведені нижче.</p>
+<h3>Хронологія подій</h3>
+<div id="html-block-k4f" class="html-block">
+	<style>
+		#html-block-k4f .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k4f .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k4f .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k4f .tg .tg-tlx9 {
+			background-color: #FFF;
+			color: #333;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k4f .tg .tg-citn {
+			background-color: #FFF;
+			color: #333;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k4f .tg .tg-s1pt {
+			background-color: #D9D9D9;
+			color: #333;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:200.88889px">
+				<col style="width:500.88889px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-s1pt"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Date</span></th>
+					<th class="tg-s1pt"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Event Description</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-18 12:18</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Threat Actor (TA) creates a Worker to handle requests from a phishing site</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-18 14:16</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA creates phishing site komunalka[.]github[.]io on GitHub</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-25 12:25</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA creates a GitHub repo to host a RAR file</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-26 07:46</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA updates the first Worker to handle requests from users visiting komunalka[.]github[.]io</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-26 08:24</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA uploads a benign test RAR to the GitHub repo</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-26 13:38</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One identifies a Worker receiving requests from users visiting komunalka[.]github[.]io, observes its use as a phishing page</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-26 13:46</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One identifies that the Worker fetches a RAR file from GitHub (the malicious RAR payload is not yet hosted on the site)</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-26 19:22</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One creates a detection to identify the Worker that fetches the RAR</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-04-26 21:13</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One deploys real-time monitoring of the RAR file on GitHub</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-02 06:35</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA deploys a weaponized RAR (CVE-2023-38831) to GitHub with their COOKBOX malware packaged in the archive</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-06 10:03</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA attempts to update the Worker with link to weaponized RAR, the Worker is immediately blocked</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-06 10:38</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA creates a new Worker, the Worker is immediately blocked</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-06 11:04</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA creates a new account (#2) on Cloudflare</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-06 11:06</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA creates a new Worker on account #2 (blocked)</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-06 11:50</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA creates a new Worker on account #2 (blocked)</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-06 12:22</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA creates a new modified Worker on account #2</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-06 16:05</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One disables the running Worker on account #2</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-07 22:16</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA notices the Worker is blocked, ceases all operations</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-07 22:18</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA deletes original Worker first created to fetch the RAR file from the GitHub phishing page</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-09 19:28</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One adds phishing page komunalka[.]github[.]io to real-time monitoring</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-13 07:36</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA updates the github.io phishing site to point directly to the GitHub RAR link</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-13 17:47</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One adds COOKBOX C2 postdock[.]serveftp[.]com to real-time monitoring for DNS resolution</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-14 00:04</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One notifies GitHub to take down the RAR file</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-15 09:00</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GitHub user, project, and link for RAR are no longer accessible</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-21 08:23</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA updates Komunalka phishing site on github.io to link to pixeldrain URL for dummy payload (pixeldrain only tracks view and download counts)</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-21 08:25</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TA updates Komunalka phishing site to link to FileMail URL for dummy payload (FileMail tracks not only view and download counts, but also IP addresses)</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-21 12:21</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One downloads PixelDrain document to evaluate payload</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-21 12:47</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One downloads FileMail document to evaluate payload</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-29 23:59</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GitHub takes down Komunalka phishing site</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tlx9"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2024-05-30 13:00</span></td>
+					<td class="tg-citn"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudforce One publishes the results of this investigation</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>.tg {border-collapse:collapse;border-spacing:0;margin:0px auto;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-tlx9{background-color:#FFF;color:#333;text-align:center;vertical-align:top} .tg .tg-citn{background-color:#FFF;color:#333;text-align:left;vertical-align:top} .tg .tg-s1pt{background-color:#D9D9D9;color:#333;font-weight:bold;text-align:center;vertical-align:top} @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</p>
+<p>Дата</p>
+<p>Опис події</p>
+<p>18.04.2024 12:18</p>
+<p>Зловмисники створюють компонент Worker для обробки запитів від фішингового сайту</p>
+<p>18.04.2024 14:16</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">CVE-2023-38831</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Description:winrar</span><span class="sk-032f62-99ffe4"> exploit</span><span class="sk-032f62-99ffe4"> detection</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">open</span><span class="sk-032f62-99ffe4"> suspios</span><span class="sk-24292e-fff"> (.tar </span><span class="sk-032f62-99ffe4">/</span><span class="sk-032f62-99ffe4"> .zip</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-032f62-99ffe4"> .rar</span><span class="sk-24292e-fff">) and run this script to check it </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> winrar-exploit-detect</span><span class="sk-24292e-fff">(){</span></span>
+<span class="line"><span class="sk-24292e-fff">$targetExtensions </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> @</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">".cmd"</span><span class="sk-032f62-99ffe4"> ,</span><span class="sk-032f62-99ffe4"> ".ps1"</span><span class="sk-032f62-99ffe4"> ,</span><span class="sk-032f62-99ffe4"> ".bat"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">$tempDir = [System.Environment]::GetEnvironmentVariable(</span><span class="sk-6f42c1-ffc799">"TEMP"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">$dirsToCheck = Get-ChildItem -Path $tempDir -Directory -Filter </span><span class="sk-032f62-99ffe4">"Rar*"</span></span>
+<span class="line"><span class="sk-24292e-fff">foreach ($dir in $dirsToCheck) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    $files </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> Get-ChildItem</span><span class="sk-005cc5-99ffe4"> -Path</span><span class="sk-24292e-fff"> $dir</span><span class="sk-032f62-99ffe4">.FullName</span><span class="sk-005cc5-99ffe4"> -File</span></span>
+<span class="line"><span class="sk-24292e-fff">    foreach ($file in $files) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        $fileName </span><span class="sk-032f62-99ffe4">=</span><span class="sk-24292e-fff"> $file</span><span class="sk-032f62-99ffe4">.Name</span></span>
+<span class="line"><span class="sk-24292e-fff">        $fileExtension </span><span class="sk-032f62-99ffe4">=</span><span class="sk-24292e-fff"> [System.IO.Path]::GetExtension($fileName)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> ($targetExtensions -contains $fileExtension) {</span></span>
+<span class="line"><span class="sk-24292e-fff">            $fileWithoutExtension </span><span class="sk-032f62-99ffe4">=</span><span class="sk-24292e-fff"> [System.IO.Path]::GetFileNameWithoutExtension($fileName); </span><span class="sk-6f42c1-ffc799">$filename.TrimEnd</span><span class="sk-24292e-fff">() -replace </span><span class="sk-032f62-99ffe4">'\.$'</span></span>
+<span class="line"><span class="sk-24292e-fff">            $cmdFileName </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> "</span><span class="sk-24292e-fff">$fileWithoutExtension</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">            $secondFile </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> Join-Path</span><span class="sk-005cc5-99ffe4"> -Path</span><span class="sk-24292e-fff"> $dir</span><span class="sk-032f62-99ffe4">.FullName</span><span class="sk-005cc5-99ffe4"> -ChildPath</span><span class="sk-24292e-fff"> $cmdFileName</span></span>
+<span class="line"><span class="sk-24292e-fff">            </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">Test-Path</span><span class="sk-24292e-fff"> $secondFile </span><span class="sk-005cc5-99ffe4">-PathType</span><span class="sk-032f62-99ffe4"> Leaf</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                Write-Host</span><span class="sk-032f62-99ffe4"> "[!] Suspicious pair detected "</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                Write-Host</span><span class="sk-032f62-99ffe4"> "[*]  Original File:$(</span><span class="sk-24292e-fff">$secondFile</span><span class="sk-032f62-99ffe4">)"</span><span class="sk-005cc5-99ffe4"> -ForegroundColor</span><span class="sk-032f62-99ffe4"> Green</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                Write-Host</span><span class="sk-032f62-99ffe4"> "[*] Suspicious File:$(</span><span class="sk-24292e-fff">$file</span><span class="sk-032f62-99ffe4">.FullName)"</span><span class="sk-005cc5-99ffe4"> -ForegroundColor</span><span class="sk-032f62-99ffe4"> Red</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">                # Read and display the content of the command file</span></span>
+<span class="line"><span class="sk-24292e-fff">                $cmdFileContent </span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> Get-Content</span><span class="sk-005cc5-99ffe4"> -Path</span><span class="sk-24292e-fff"> $($file.FullName)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                Write-Host</span><span class="sk-032f62-99ffe4"> "[+] Command File Content:</span><span class="sk-24292e-fff">$cmdFileContent</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">winrar-exploit-detect</span></span></code></pre>
+</div>
+<p>Зловмисники створюють фішинговий сайт komunalka[.]github[.]io на ресурсі GitHub</p>
+<p>25.04.2024 12:25</p>
+<p>Зловмисники створюють репозиторій GitHub для розміщення файлу RAR</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">DeviceProcessEvents</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> where</span><span class="sk-032f62-99ffe4"> InitiatingProcessParentFileName</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> @"winrar.exe"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> where</span><span class="sk-032f62-99ffe4"> InitiatingProcessFileName</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> @"cmd.exe"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> project</span><span class="sk-032f62-99ffe4"> Timestamp,</span><span class="sk-032f62-99ffe4"> DeviceName,</span><span class="sk-032f62-99ffe4"> FileName,</span><span class="sk-032f62-99ffe4"> FolderPath,</span><span class="sk-032f62-99ffe4"> ProcessCommandLine,</span><span class="sk-032f62-99ffe4"> AccountName</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> sort</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> Timestamp</span><span class="sk-032f62-99ffe4"> desc</span></span></code></pre>
+</div>
+<p>26.04.2024 07:46</p>
+<p>Зловмисники оновлюють перший компонент Worker для обробки запитів від користувачів, які відвідують сайт komunalka[.]github[.]io</p>
+<p>26.04.2024 08:24</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> tstats</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">security_content_summariesonly</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> count</span><span class="sk-032f62-99ffe4"> min</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">_time</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">as</span><span class="sk-032f62-99ffe4"> firstTime</span><span class="sk-032f62-99ffe4"> max</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">_time</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">as</span><span class="sk-032f62-99ffe4"> lastTime</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> datamodel=Endpoint.Processes</span><span class="sk-032f62-99ffe4"> where</span><span class="sk-032f62-99ffe4"> Processes.parent_process_name=winrar.exe</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">windows_shells</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> OR</span><span class="sk-032f62-99ffe4"> Processes.process_name</span><span class="sk-032f62-99ffe4"> IN</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">"certutil.exe"</span><span class="sk-24292e-fff">,</span><span class="sk-032f62-99ffe4">"mshta.exe"</span><span class="sk-24292e-fff">,</span><span class="sk-032f62-99ffe4">"bitsadmin.exe"</span><span class="sk-24292e-fff">) by Processes.dest Processes.user Processes.parent_process_name Processes.parent_process Processes.process_name Processes.process Processes.process_id Processes.parent_process_id </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">drop_dm_object_name(Processes</span><span class="sk-032f62-99ffe4">)`</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">security_content_ctime(firstTime</span><span class="sk-032f62-99ffe4">)`</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">security_content_ctime(lastTime</span><span class="sk-032f62-99ffe4">)`</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">winrar_spawning_shell_application_filter</span><span class="sk-032f62-99ffe4">`</span></span></code></pre>
+</div>
+<p>Зловмисники завантажують безпечний тестовий файл RAR до репозиторію GitHub</p>
+<p>26.04.2024 13:38</p>
+<p>Cloudforce One визначає компонент Worker, який отримує запити від користувачів, які відвідують сайт komunalka[.]github[.]io, фіксує його використання як фішингової сторінки</p>
+<p>26.04.2024 13:46</p>
+<p>Cloudforce One визначає, що Worker отримує файл RAR з ресурсу GitHub (шкідливий пейлоад RAR ще не розміщено на сайті)</p>
+<p>26.04.2024 19:22</p>
+<p>Cloudforce One створює засіб виявлення, щоб визначити компонент Worker, який отримує файл RAR</p>
+<p>26.04.2024 21:13</p>
+<p>Cloudforce One проводить моніторинг у реальному часі файлу RAR на GitHub</p>
+<div id="html-block-k5p" class="html-block">
+	<style>
+		#html-block-k5p .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k5p .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k5p .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k5p .tg .tg-jut8 {
+			background-color: #CCC;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k5p .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<colgroup>
+				<col style="width:500.88889px">
+				<col style="width:200.88889px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th class="tg-jut8"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Domain / URL</span></th>
+					<th class="tg-jut8"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Description</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">komunalka[.]github[.]io</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Phishing page</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hxxps[:]//github[.]com/komunalka/komunalka[.]github[.]io</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Phishing page</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hxxps[:]//worker-polished-union-f396[.]vqu89698[.]workers[.]dev</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Worker that fetches malicious RAR file</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hxxps[:]//raw[.]githubusercontent[.]com/kudoc8989/project/main/Заборгованість по ЖКП.rar</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Delivery of malicious RAR file</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hxxps[:]//1014[.]filemail[.]com/api/file/get?filekey=e_8S1HEnM5Rzhy_jpN6nL-GF4UAP533VrXzgXjxH1GzbVQZvmpFzrFA&amp;pk_vid=a3d82455433c8ad11715865826cf18f6</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dummy payload</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hxxps[:]//pixeldrain[.]com/api/file/ZAJxwFFX?download=</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Dummy payload</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hxxp[:]//canarytokens[.]com/stuff/tags/ni1cknk2yq3xfcw2al3efs37m/payments.js</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tracking link</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hxxp[:]//canarytokens[.]com/stuff/terms/images/k22r2dnjrvjsme8680ojf5ccs/index.html</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Tracking link</span></td>
+				</tr>
+				<tr>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">postdock[.]serveftp[.]com</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">COOKBOX C2</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>02.05.2024 06:35</p>
+<p>Зловмисники розгортають інфікований файл RAR (CVE-2023-38831) на ресурсі GitHub, шкідлива програма COOKBOX запакована в архіві</p>
+<p>06.05.2024 10:03</p>
+<p>Зловмисники намагаються оновити компонент Worker, додавши інфікований файл RAR, цей Worker негайно блокується</p>
+<p>06.05.2024 10:38</p>
+<p>Зловмисники створюють новий компонент Worker, цей Worker негайно блокується</p>
+<p>06.05.2024 11:04</p>
+<p>Зловмисники створюють новий обліковий запис (№ 2) на Cloudflare</p>
+<p>06.05.2024 11:06</p>
+<p>Зловмисники створюють новий компонент Worker в обліковому записі № 2 (блокується)</p>
+<p>06.05.2024 11:50</p>
+<p>Зловмисники створюють новий компонент Worker в обліковому записі № 2 (блокується)</p>
+<p>06.05.2024 12:22</p>
+<p>Зловмисники створюють новий модифікований компонент Worker в обліковому записі № 2</p>
+<p>06.05.2024 16:05</p>
+<p>Cloudforce One блокує запуск компонента Worker в обліковому записі № 2</p>
+<p>07.05.2024 22:16</p>
+<p>Зловмисники помічають, що Worker заблокований, припиняють усі операції</p>
+<p>07.05.2024 22:18</p>
+<p>Зловмисники видаляють перший компонент Worker, створений для отримання файлу RAR з фішингової сторінки на GitHub</p>
+<p>09.05.2024 19:28</p>
+<p>Cloudforce One додає фішингову сторінку komunalka[.]github[.]io до свого списку моніторингу в реальному часі</p>
+<p>13.05.2024 07:36</p>
+<p>Зловмисники оновляють фішинговий сайт github.io, який тепер містить пряме посилання на файл RAR на GitHub</p>
+<p>13.05.2024 17:47</p>
+<p>Cloudforce One додає сервер керування й контролю програми COOKBOX postdock[.]serveftp[.]com до свого списку моніторингу перетворення DNS-імен</p>
+<p>14.05.2024 00:04</p>
+<p>Cloudforce One повідомляє GitHub про необхідність заблокувати файл RAR</p>
+<p>15.05.2024 09:00</p>
+<p>Профіль користувача, проєкт і посилання на файл RAR на ресурсі GitHub більше недоступні</p>
+<p>21.05.2024 08:23</p>
+<p>Зловмисники оновлюють фішинговий сайт «Комуналка» за адресою github.io, який тепер містить URL-посилання на файловий хостинг pixeldrain для завантаження фальшивого пейлоаду (pixeldrain відстежує лише кількість переглядів і завантажень)</p>
+<p>21.05.2024 08:25</p>
+<p>Зловмисники оновлюють фішинговий сайт «Комуналка», який тепер містить URL-посилання на файловий хостинг Filemail для завантаження фальшивого пейлоаду (Filemail відстежує не лише кількість переглядів і завантажень, а й IP-адреси)</p>
+<p>21.05.2024 12:21</p>
+<p>Cloudforce One завантажує документ із ресурсу pixeldrain для аналізу пейлоаду</p>
+<p>21.05.2024 12:47</p>
+<p>Cloudforce One завантажує документ із ресурсу Filemail для аналізу пейлоаду</p>
+<p>29.05.2024 23:59</p>
+<p>GitHub блокує фішинговий сайт «Комуналка»</p>
+<p>30.05.2024 13:00</p>
+<p>Cloudforce One публікує результати цього розслідування</p>
+<h2>Координація нашої протидії хакерам FlyingYeti</h2>
+<p>Cloudforce One використала свої відносини з представниками галузі, щоб надати завчасне попередження та зменшити ефективність дій зловмисників. Для забезпечення подальшого захисту намічених цільових об’єктів від цих фішингових атак спеціалісти Cloudforce One сповістили й тісно співпрацювали з командами, які займаються розвідкою загроз і забезпечують надійність і безпеку даних на ресурсі GitHub. До того ж ми сповістили команду CERT-UA й галузевих партнерів Cloudflare, таких як CrowdStrike, групи аналізу загроз Mandiant/Google Threat Intelligence і Microsoft Threat Intelligence.</p>
+<h3>Відстеження операцій групи FlyingYeti</h3>
+<p>Є кілька способів відстежувати діяльність хакерів FlyingYeti у вашому середовищі. Серед них використання PowerShell для пошуку файлів WinRAR, впровадження правил аналітики Microsoft Sentinel і запуск скриптів Splunk, як це докладніше описано нижче. Зауважте, що наведені вище дії з виявлення можуть ідентифікувати операції, пов’язані з цією загрозою, але також можуть ініціювати процеси, які не пов’язані з нею.</p>
+<h3>Відстеження з використанням PowerShell</h3>
+<p>Спробуйте запустити у своєму середовищі скрипт PowerShell, наприклад <a href="https://github.com/IR-HuntGuardians/CVE-2023-38831-HUNT/blob/main/hunt-script.ps1" target="_blank" rel="noopener noreferrer">такий</a>, щоб виявити використання вразливості CVE-2023-38831. Цей скрипт перевірить файли WinRAR на наявність ознак цього експлойту.</p>
+<h3>Microsoft Sentinel</h3>
+<p>У Microsoft Sentinel спробуйте впровадити наведене нижче правило, яке дозволяє ідентифікувати запуск WinRAR через файл cmd.exe. Результати, отримані після впровадження цього правила, можуть свідчити про активність атаки на кінцевій точці, і їх слід проаналізувати.</p>
+<h3>Splunk</h3>
+<p>У середовищі Splunk спробуйте використати <a href="https://research.splunk.com/endpoint/d2f36034-37fa-4bd4-8801-26807c15540f" target="_blank" rel="noopener noreferrer">цей скрипт</a>, щоб виявити використання вразливості WinRAR CVE-2023-38831 на кінцевих точках Microsoft. Результати, отримані після виконання цього скрипту, можуть свідчити про наявність атаки на кінцевій точці, і їх слід проаналізувати.</p>
+<h2>Виявлення за допомогою рішення Cloudflare</h2>
+<h3>Cloudflare Email Security</h3>
+<p>Користувачі рішення Cloudflare Email Security (CES) можуть виявити хакерську загрозу FlyingYeti за наступними процесами.</p>
+<ul>
+	<li>CVE-2023-38831</li>
+	<li>FLYINGYETI.COOKBOX</li>
+	<li>FLYINGYETI.COOKBOX.Launcher</li>
+	<li>FLYINGYETI.Rar</li>
+</ul>
+<h2>Рекомендації</h2>
+<p>Щоб зменшити ефективність подібних операцій, Cloudflare рекомендує виконати дії, наведені нижче.</p>
+<ul>
+	<li>Впровадьте основи архітектури Zero Trust:</li>
+	<li>Використовуйте рішення Cloud Email Security, щоб забезпечити захист поштових сервісів від фішингових атак, компрометації корпоративної пошти (BEC) та інших загроз.</li>
+	<li>Використовуйте ізоляцію браузера, щоб відокремити програми обміну повідомленнями, такі як LinkedIn, електронна пошта й Signal, від своєї основної мережі.</li>
+	<li>Перевіряйте, відстежуйте й контролюйте певні або конфіденційні дані, які передаються у вашому мережевому середовищі, використовуючи політики запобігання втраті даних.</li>
+	<li>Регулярно перевіряйте, чи встановлені у вашій системі останні оновлення безпеки для архіватора WinRAR і системи Microsoft.</li>
+	<li>Спробуйте заблокувати потрапляння файлів WinRAR у ваше середовище, як у рішенні Cloud Email Security, так і у шлюзі Інтернет-трафіку.</li>
+	<li>Запустіть інструмент виявлення й реагування на кінцевих точках (EDR), наприклад CrowdStrike або Microsoft Defender for Endpoint, щоб отримати інформацію про запуск бінарних файлів на хост-комп’ютерах.</li>
+	<li>Перевірте своє середовище на наявність наведених нижче індикаторів компрометації FlyingYeti, щоб визначити потенційну активність зловмисників у мережі.</li>
+</ul>
+<p>Якщо вам потрібні додаткові дані розвідки загроз безпеки для своєї організації або необхідна спеціальна інформація розвідки загроз безпеки для того чи іншого інциденту, розгляньте можливість співпраці з Cloudforce One, зв’язавшись зі своїм менеджером по роботі з клієнтами або заповнивши <a href="https://www.cloudflare.com/zero-trust/lp/cloudforce-one-threat-intel-subscription" target="_blank" rel="noopener noreferrer">цю форму</a>.</p>
+<h2>Індикатори компрометації</h2>
+<p>.tg {border-collapse:collapse;border-spacing:0;margin:0px auto;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-px6y{background-color:#D9D9D9;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</p>
+<p>Ім’я файлу</p>
+<p>Хеш SHA256</p>
+<p>Опис</p>
+<p>Заборгованість по ЖКП.rar</p>
+<p>a0a294f85c8a19be048ffcc05ede6fd5a7ac5e2f0032a3ca0050dc1ae960c314</p>
+<p>Архів RAR</p>
+<p>Рахунок на оплату.pdf                                                                                 .cmd</p>
+<p>0cca8f795c7a81d33d36d5204fcd9bc73bdc2af7de315c1449cbc3551ef4fb59</p>
+<p>Приклад COOKBOX (міститься в архіві RAR)</p>
+<p>Реструктуризація боргу за житлово комунальні послуги.docx</p>
+<p>915721b94e3dffa6cef3664532b586be6cf989fec923b26c62fdaf201ee81d2c</p>
+<p>Безпечний документ Word із посиланням для відстеження (міститься в архіві RAR)</p>
+<p>Угода користувача.docx</p>
+<p>79a9740f5e5ea4aa2157d9d96df34ee49a32e2d386fe55fedfd1aa33e151c06d</p>
+<p>Безпечний документ Word із посиланням для відстеження (міститься в архіві RAR)</p>
+<p>Рахунок на оплату.pdf</p>
+<p>19e25456c2996ded3e29577b609de54a2bef90dad8f868cdad795c18df05a79b</p>
+<p>Випадкові бінарні дані (містяться в архіві RAR)</p>
+<p>Заборгованість по ЖКП станом на 26.04.24.docx</p>
+<p>e0d65e2d36afd3db1b603f10e0488cee3f58ade24d8abc6bee240314d8696708</p>
+<p>Випадкові бінарні дані (містяться в архіві RAR)</p>
+<p>.tg {border-collapse:collapse;border-spacing:0;margin:0px auto;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-jut8{background-color:#CCC;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top} @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</p>
+<p>Домен/URL-адреса</p>
+<p>Опис</p>
+<p>komunalka[.]github[.]io</p>
+<p>Фішингова сторінка</p>
+<p>hxxps[:]//github[.]com/komunalka/komunalka[.]github[.]io</p>
+<p>Фішингова сторінка</p>
+<p>hxxps[:]//worker-polished-union-f396[.]vqu89698[.]workers[.]dev</p>
+<p>Компонент Worker, який отримує шкідливий файл RAR</p>
+<p>hxxps[:]//raw[.]githubusercontent[.]com/kudoc8989/project/main/Заборгованість по ЖКП.rar</p>
+<p>Доставлення шкідливого файлу RAR</p>
+<p>hxxps[:]//1014[.]filemail[.]com/api/file/get?filekey=e_8S1HEnM5Rzhy_jpN6nL-GF4UAP533VrXzgXjxH1GzbVQZvmpFzrFA&amp;pk_vid=a3d82455433c8ad11715865826cf18f6</p>
+<p>Фальшивий пейлоад</p>
+<p>hxxps[:]//pixeldrain[.]com/api/file/ZAJxwFFX?download=</p>
+<p>Фальшивий пейлоад</p>
+<p>hxxp[:]//canarytokens[.]com/stuff/tags/ni1cknk2yq3xfcw2al3efs37m/payments.js</p>
+<p>Посилання для відстеження</p>
+<p>hxxp[:]//canarytokens[.]com/stuff/terms/images/k22r2dnjrvjsme8680ojf5ccs/index.html</p>
+<p>Посилання для відстеження</p>
+<p>postdock[.]serveftp[.]com</p>
+<p>Сервер керування й контролю програми COOKBOX</p>

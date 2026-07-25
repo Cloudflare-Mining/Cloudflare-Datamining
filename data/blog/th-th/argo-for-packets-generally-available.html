@@ -1,0 +1,172 @@
+<p>คุณมีความคิดเห็นอย่างไรถ้าเราจะบอกคุณว่า เครือข่าย IP ของคุณสามารถทำงานได้เร็วขึ้น 10% และคุณทำสิ่งนี้ได้ด้วยการติดต่อทีมบัญชีของคุณ</p>
+<p>วันนี้ เรากำลังประกาศความพร้อมใช้งานทั่วไปของ Argo for Packets ซึ่งจะเพิ่มประสิทธิภาพเครือข่ายเลเยอร์ IP เพื่อเพิ่มความสามารถระดับสูงสุดให้กับผลิตภัณฑ์บริการเครือข่าย Cloudflare ของคุณ ไม่ว่าจะเป็น <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> (บริการป้องกัน Layer 3 DDoS ของเรา), <a href="https://www.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a> (ซึ่งช่วยให้คุณสร้าง SD-WAN ของคุณเองบน Cloudflare) และ <a href="https://blog.cloudflare.com/cloudflare-for-offices">Cloudflare for Offices</a> (ความคิดริเริ่มของเราเพื่อให้บริการการเชื่อมต่อที่ปลอดภัยและมีประสิทธิภาพในอาคารสำนักงานหลายพันแห่งทั่วโลก)</p>
+<p>หากคุณไม่คุ้นเคยกับ Argo ขอตอบว่า นี่คือผลิตภัณฑ์ Cloudflare ที่ทำให้การรับส่งข้อมูลของคุณเร็วขึ้น Argo จะค้นหาเส้นทางที่เร็วที่สุดและพร้อมใช้งานมากที่สุดเพื่อการรับส่งข้อมูลของคุณบนอินเทอร์เน็ต Cloudflare ดำเนินการกับคำขอ การเชื่อมต่อ และแพ็กเก็ตจำนวนหลายล้านล้านรายการในแต่ละวันทั่วทั้งเครือข่ายของเราและบนอินเทอร์เน็ต เนื่องจากเครือข่ายของเรา ลูกค้าของเรา และผู้ใช้ปลายทางของลูกค้ากระจายตัวอย่างดีทั่วโลก คำขอทั้งหมดเหล่านี้ที่เคลื่อนผ่านโครงสร้างพื้นฐานของเราได้แสดงให้เห็นเป็นอย่างดีถึงการทำงานของส่วนต่าง ๆ ของอินเทอร์เน็ต ณ กรอบเวลาที่กำหนดให้ Cloudflare ใช้ประโยชน์จากสิ่งที่เห็นนี้เพื่อยืนยันว่า การรับส่งข้อมูลของคุณใช้เส้นทางที่เร็วที่สุดผ่านโครงสร้างพื้นฐานของเรา</p>
+<p>ก่อนหน้านี้ Argo ปรับการรับส่งข้อมูลที่เลเยอร์แอปพลิเคชันเลเยอร์ 7 และที่เลเยอร์โปรโตคอลเลเยอร์ 4 ซึ่งด้วย GA ของ Argo for Packets เราสามารถเพิ่มประสิทธิภาพเลเยอร์ IP สำหรับเครือข่ายส่วนตัวของคุณ ในช่วง <a href="https://blog.cloudflare.com/argo-v2">Speed Week เราได้ประกาศ</a>การเข้าถึง Argo for Packets ล่วงหน้า และหาคำตอบที่ว่าผลิตภัณฑ์นี้ช่วยลดเวลาหน่วงลง 10% ได้อย่างไร มาวันนี้ เพื่อเป็นการเฉลิมฉลอง Argo for Packets ที่เข้าถึง GA เราจะให้ข้อมูลโดยละเอียดเกี่ยวกับการลดเวลาหน่วง พร้อมแสดงตัวอย่าง อธิบายวิธีที่คุณสามารถดูการเพิ่มประสิทธิภาพให้ดียิ่งขึ้น และพูดถึงวิธีที่ data plane ที่ปลอดภัยของ Argo ให้การเข้ารหัสเพิ่มเติมแก่คุณแม้จะอยู่ที่เลเยอร์ 3</p>
+<p>และหากคุณสนใจที่จะเปิดใช้งาน Argo for Packets ตั้งแต่วันนี้เลย โปรดติดต่อทีมบัญชีของคุณเพื่อเริ่มต้น!</p>
+<h3><strong>ดีกว่า BGP</strong></h3>
+<p>เราเคยเกริ่นไว้ในระหว่าง Speed Week ว่า Argo for Packets มาพร้อมการปรับปรุงเวลาหน่วงโดยเฉลี่ย 10% ทั่วโลกในการทดสอบภายในของเรา:</p>
+<p>เมื่อเราก้าวไปสู่ GA เราพบว่าตัวเลขที่แท้จริงของเราตรงกับการทดสอบที่เราทำเป็นการภายใน และเรายังเห็นว่ามีการปรับปรุงขึ้น 10% แต่สิ่งสำคัญคือต้องสังเกตว่าตัวเลขการลดเวลาหน่วง 10% เป็นค่าเฉลี่ยในทุกเส้นทางทั่วโลก ลูกค้าหลายๆ รายจะเห็นเวลาหน่วงที่ดีขึ้นแตกต่างกันไปตามการตั้งค่าของตน</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - IfZZ34" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GCB7SFS91T1T7K8ST835.png&amp;w=1200&amp;h=742&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="742" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Argo for Packets มีเวลาหน่วงเพิ่มขึ้นตามเป้าที่ตั้งไว้หลังจากเลือกเส้นทางที่ดีที่สุดตลอดเครือข่ายของเราแบบไดนามิก มาพูดถึงความหมายกันสักหน่อย</p>
+<p>แพ็กเก็ตปกติบนเครือข่ายค้นหาวิธีไปยังปลายทางโดยใช้สิ่งที่เรียกว่า <a href="https://www.cloudflare.com/learning/security/glossary/what-is-bgp" target="_blank" rel="noopener noreferrer">Border Gateway Protocol (BGP)</a> ซึ่งช่วยให้แพ็กเก็ตเดินทางผ่านเส้นทางที่ "สั้นที่สุด" ไปยังจุดหมายปลายทาง อย่างไรก็ตาม เส้นทางที่สั้นที่สุดภายใต้เงื่อนไข BGP นั้นไม่มีความสัมพันธ์ใกล้ชิดกับเวลาหน่วง แต่กลับมีความเชื่อมโยงอย่างใกล้ชิดกับการฮอป (Hop) ของเครือข่าย ตัวอย่างเช่น เส้นทาง A ในเครือข่ายมีสองเส้นทางที่เป็นไปได้: 12345 - 54321 - 13335 และ 12345 13335 เครือข่ายทั้งสองเริ่มต้นจากเครือข่าย 12345 และสิ้นสุดที่ Cloudflare ซึ่งก็คือ AS 13335 ทั้งนี้ ตรรกะ BGP กำหนดว่าการรับส่งข้อมูลจะผ่านเส้นทางที่สองเสมอ แต่ถ้าเส้นทางแรกมีเวลาหน่วงของเครือข่ายที่ต่ำกว่าหรือการสูญเสียแพ็กเก็ตที่ต่ำกว่า ลูกค้าอาจมองเห็นประสิทธิภาพที่ดีขึ้นโดยที่ไม่รู้ตัวก็ได้!</p>
+<p>วิธีแก้ไขปัญหานี้แบ่งออกเป็นสองวิธี วิธีแรกคือการลงทุนสร้างท่อเพิ่มเติมสำหรับเครือข่าย 12345 พร้อมขยายเครือข่ายให้อยู่ใกล้กับทุกเครือข่าย ลูกค้ายังสามารถสร้างเครือข่ายของตนเอง หรือซื้อเครือข่าย MPLS ที่มีราคาแพงจากผู้จำหน่ายได้ ทั้งสองวิธีจะใช้ทั้งเงินและเวลามากมาย ในการที่จะได้ประสิทธิภาพในระดับที่ลูกค้าต้องการ</p>
+<p>Cloudflare ปรับปรุงประสิทธิภาพการทำงานของลูกค้าโดยใช้ประโยชน์จากเครือข่ายและแกนหลักที่มีอยู่ทั่วโลกของเรา ควบคู่กับข้อมูลเครือข่ายจากการรับส่งข้อมูลที่ถูกส่งไปแล้วเพื่อปรับเส้นทางกลับไปยังคุณให้เหมาะสมที่สุด ซึ่งช่วยให้เราปรับปรุงเส้นทางที่จะนำไปใช้เมื่อมีการเปลี่ยนแปลงการรับส่งข้อมูลและเกิดความแออัดบนอินเทอร์เน็ต Argo จะตรวจสอบทุกเส้นทางที่ย้อนกลับจากศูนย์ข้อมูล Cloudflare ทุกศุนย์ไปยังต้นทางของคุณ ไปจนถึงเส้นทางเครือข่ายแต่ละเส้นทาง Argo เปรียบเทียบการรับส่งข้อมูลเลเยอร์ 4 ที่มีอยู่และการวิเคราะห์เครือข่ายในเส้นทางที่ไม่ซ้ำกันทั้งหมดเหล่านี้ เพื่อพิจารณาเลือกเส้นทางที่เร็วที่สุดและพร้อมใช้งานมากที่สุด</p>
+<p>Cloudflare ทำให้ Argo สอดคล้องกับเครือข่ายส่วนตัวของคุณได้ด้วยการใช้แหล่งข้อมูลที่เราสร้างขึ้นสำหรับ <a href="https://www.cloudflare.com/magic-transit" target="_blank" rel="noopener noreferrer">Magic Transit</a> แหล่งข้อมูลนั้นคือโพรบตรวจสภาพ โดย Cloudflare จะใช้ประโยชน์จากโพรบตรวจสอบสุขภาพที่มีอยู่จากศูนย์ข้อมูล Cloudflare ทุกแห่งกลับไปยังต้นทางของลูกค้าแต่ละราย โพรบเหล่านี้นำมาใช้เพื่อกำหนดความสมบูรณ์ของเส้นทางจาก Cloudflare กลับไปยังลูกค้า Magic Transit เพื่อให้ Cloudflare รู้ว่าเส้นทางใดที่กลับไปยังต้นทางนั้นมีสภาพที่ดี โพรบเหล่านี้ประกอบด้วยข้อมูลที่หลากหลายที่นำมาใช้ปรับปรุงประสิทธิภาพได้ เช่น แพ็กเก็ตสูญหายและข้อมูลเวลาหน่วง ซึ่งด้วยการตรวจสอบโพรบตรวจสอบสภาพและการเพิ่มโพรบดังกล่าวลงในข้อมูลเลเยอร์ 4 ที่มีอยู่ สิ่งที่เกิดขึ้นคือ Cloudflare สามารถทำความเข้าใจเวลาหน่วงทางเดียวได้ดีขึ้น และสามารถสร้างแผนที่ที่ช่วยให้เราเห็นศูนย์ข้อมูลที่เชื่อมต่อถึงกันทั้งหมดและระดับความรวดเร็วของแต่ละศูนย์ข้อมูลไปยังอีกศูนย์หนึ่ง จากนั้น Cloudflare จะค้นหาเส้นทางที่ดีที่สุดที่เลเยอร์ 3 กลับไปที่ศูนย์ข้อมูลลูกค้าโดยเลือกตำแหน่งเข้าที่แพ็กเก็ตเข้าสู่เครือข่ายของเรา และตำแหน่งออกที่เชื่อมต่อโดยตรงกลับไปยังลูกค้าผ่าน Cloudflare Network Interconnect</p>
+<p>Cloudflare ใช้แผนที่นี้สร้างเส้นทางแบบไดนามิกสำหรับลูกค้าแต่ละรายโดยพิจารณาจากจุดที่การรับส่งข้อมูลเข้าสู่เครือข่ายของ Cloudflare และจุดที่ออกจากเครือข่าย</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - E7s1ZO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YTYH21D7RZNKQD209N4D.png&amp;w=1920&amp;h=980&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="980" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<p>มาดูรายละเอียดเกี่ยวกับการลดเวลาหน่วงของคุณโดยขึ้นอยู่กับการตั้งค่าของคุณ</p>
+<h3><strong>เครือข่าย Cloudflare คือเครือข่ายของคุณ</strong></h3>
+<p>ใน<a href="https://blog.cloudflare.com/magic-makes-your-network-faster">บล็อก Speed Week ของเรา</a> ได้ให้รายละเอียดคร่าว ๆ ว่าผลิตภัณฑ์ Magic ทำให้เครือข่ายของคุณเร็วขึ้นได้อย่างไร และเราได้สรุปตัวอย่างโทโพโลยีเครือข่ายต่าง ๆ มากมายและแสดงให้เห็นถึงการปรับปรุงที่ Magic Transit และ Magic WAN มีต่อเครือข่ายของตน ลองช่วยกันขยับตัวเลขเหล่านั้นโดยเพิ่ม Argo for Packets ลงไป เพื่อดูว่าเราจะสามารถปรับปรุงประสิทธิภาพให้ดียิ่งขึ้นได้อย่างไร</p>
+<p>ตัวอย่างจากบล็อกนี้ให้รายละเอียดบริษัทที่ตั้งอยู่ในเซาท์แคโรไลนา โอเรกอน และลอสแองเจลิส ในบล็อกนั้น เราแสดงให้เห็นว่า Magic Transit ได้ปรับปรุงเวลาหน่วงสำหรับการเดินทางขาเดียว เครือข่ายนั้นมีลักษณะดังนี้:</p>
+<p>ขอใช้โอกาสนี้แบ่งซอยเนื้อหาดังกล่าวเพื่อชี้ให้เห็นเวลาหน่วงระหว่างเส้นทางทั้งหมดบนเครือข่ายนั้น สมมติว่าเซาท์แคโรไลนาเชื่อมต่อกับแอตแลนต้า และโอเรกอนเชื่อมต่อกับซีแอตเทิล ซึ่งเป็นสถานการณ์ที่เป็นไปได้มากที่สุด:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - cwAGX0" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW494TZJK6BB0JGE9YV5E8YX.png&amp;w=1092&amp;h=728&amp;f=webp" data-lightbox-width="1092" data-lightbox-height="728" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="396" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=640&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=715&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=750&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=828&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=1080&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=1280&amp;h=709&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=1430&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - IgfCF2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQSF32GQ0PY0X3GKGX7F.png&amp;w=1502&amp;h=832&amp;f=webp" data-lightbox-width="1502" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="396" class="pt-portable-image-media"></div>
+</figure>
+<p>ตำแหน่งที่ตั้งต้นทาง</p>
+<p>ตำแหน่งที่ตั้งปลายทาง</p>
+<p>เวลาหน่วงทางเดียวของ Magic WAN</p>
+<p>เวลาหน่วงทางเดียวของ Argo for Packets</p>
+<p>การปรับปรุง Argo (แสดงเป็นมิลลิวินาที)</p>
+<p>การปรับปรุงเปอร์เซ็นต์เวลาหน่วง</p>
+<p>ลอสแองเจลิส</p>
+<p>แอตแลนต้า</p>
+<p>49.1</p>
+<p>45</p>
+<p>4.11</p>
+<p>8.36</p>
+<p>ลอสแองเจลิส</p>
+<p>ซีแอตเทิล</p>
+<p>32.4</p>
+<p>27.2</p>
+<p>5.18</p>
+<p>16</p>
+<p>แอตแลนต้า</p>
+<p>ลอสแองเจลิส</p>
+<p>49</p>
+<p>44.9</p>
+<p>4.09</p>
+<p>8.35</p>
+<p>แอตแลนต้า</p>
+<p>ซีแอตเทิล</p>
+<p>78.1</p>
+<p>56.9</p>
+<p>21.2</p>
+<p>27.1</p>
+<p>ซีแอตเทิล</p>
+<p>ลอสแองเจลิส</p>
+<p>32.2</p>
+<p>27</p>
+<p>5.22</p>
+<p>16.2</p>
+<p>ซีแอตเทิล</p>
+<p>แอตแลนต้า</p>
+<p>77.7</p>
+<p>56.7</p>
+<p>20.9</p>
+<p>26.9</p>
+<p>สำหรับเครือข่ายลูกค้าตัวอย่างนี้ Argo for Packets ปรับปรุงเวลาหน่วงในทุกเส้นทางที่เป็นไปได้ ซึ่งคุณเห็นแล้วว่าการปรับปรุงเปอร์เซ็นต์เฉลี่ยสำหรับเครือข่ายเฉพาะนี้สูงกว่าค่าเฉลี่ยทั่วโลกที่ 10% มาก</p>
+<p>มาดูอีกตัวอย่างหนึ่งของลูกค้าที่มีที่ตั้งในเอเชีย: เกาหลีใต้ ฟิลิปปินส์ สิงคโปร์ โอซาก้า และฮ่องกง สำหรับเครือข่ายที่อยู่ในที่ตั้งเหล่านั้น Argo for Packets สามารถสร้างการลดเวลาหน่วงได้ 17% โดยการค้นหาเส้นทางที่เหมาะสมที่สุดระหว่างสถานที่ต่างๆ ซึ่งโดยปกติแล้วจะนำทางได้ยากที่สุด เช่น ระหว่างเกาหลีใต้ โอซาก้า และฟิลิปปินส์ ลูกค้าที่มีสถานที่ตั้งหลายแห่งจะได้รับประโยชน์มหาศาลจาก Argo for Packets เนื่องจากผลิตภัณฑ์นี้จะปรับเส้นทางที่การจราจรคับคั่งที่สุดบนอินเทอร์เน็ตให้เหมาะสม และทำให้มีความรวดเร็วพอ ๆ กับเส้นทางอื่น ๆ โดยจะลบเวลาหน่วงที่เกิดจากเส้นทางเครือข่ายที่แย่ที่สุดของคุณ และไม่เฉพาะตัวเลขเฉลี่ยเท่านั้นที่ดูดี แต่รวมถึงตัวเลขเวลาหน่วงเปอร์เซ็นไทล์ที่ 90 ของคุณเป็นกรณีพิเศษด้วย</p>
+<p>การลดเวลาหน่วงระยะยาวเหล่านี้มีความสำคัญอย่างยิ่ง โดยเฉพาะเมื่อลูกค้าเปลี่ยนกลับไปหาสิ่งที่ดีกว่า และทะทยอยกลับมาที่สำนักงานทั่วโลก</p>
+<h3><strong>สถานีถัดไป: สำนักงานของคุณ</strong></h3>
+<p>Argo for Packets จับคู่กับ Magic WAN และ Cloudflare for Offices ได้อย่างยอดเยี่ยม เพื่อสร้างเครือข่ายส่วนตัวที่มีการเพิ่มประสิทธิภาพสูงสุดและปลอดภัยเป็นพิเศษ ที่ปรับให้เข้ากับทุกสิ่งที่คุณทำได้ หากนี่เป็นครั้งแรกที่คุณได้ยินเรื่อง <a href="https://blog.cloudflare.com/cloudflare-for-offices">Cloudflare for Offices</a> เราขออธิบายว่า เราเป็นผู้ริเริ่มให้บริการการเชื่อมต่อที่เป็นส่วนตัว ปลอดภัย และมีประสิทธิภาพไปยังตำแหน่งที่ตั้งใหม่ ๆ หลายพันแห่งทั่วโลก และการเชื่อมต่อส่วนตัวนั้นเป็นรากฐานที่ยอดเยี่ยมสำหรับ Argo for Packets เพื่อปรับเครือข่ายของคุณให้เร็วยิ่งขึ้น</p>
+<p>หากดูตัวอย่างข้างต้นจากประเทศสหรัฐอเมริกา พบว่า บริษัทนี้เพิ่มตำแหน่งที่ตั้งใหม่สองแห่งในบอสตันและดัลลัส ซึ่งสถานที่ตั้งเหล่านั้นก็พบว่าเวลาหน่วงลดลงอย่างเห็นได้ชัดผ่าน Argo for Packets ตอนนี้เครือข่ายของบริษัทมีลักษณะดังนี้:</p>
+<p>Argo for Packets ยังช่วยให้มั่นใจได้ว่าสำนักงานใหม่ที่เพิ่มเข้ามาใหม่จะเห็นประสิทธิภาพที่ยอดเยี่ยมในเครือข่ายส่วนตัวในทันที:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="458" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=640&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=750&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=828&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=1080&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=1280&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=1430&amp;h=916&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-844 Embedded Image - YtQcVv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44G5QA20YTJQGYKSGZHHQ1.png&amp;w=1125&amp;h=720&amp;f=webp" data-lightbox-width="1125" data-lightbox-height="720" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="458" class="pt-portable-image-media"></div>
+</figure>
+<p>ตำแหน่งที่ตั้งต้นทาง</p>
+<p>ตำแหน่งที่ตั้งปลายทาง</p>
+<p>การปรับปรุง Argo (แสดงเป็นมิลลิวินาที)</p>
+<p>การปรับปรุงเปอร์เซ็นต์เวลาหน่วง</p>
+<p>ลอสแองเจลิส</p>
+<p>ดัลลาส</p>
+<p>9.89</p>
+<p>23.3</p>
+<p>ลอสแองเจลิส</p>
+<p>แอตแลนต้า</p>
+<p>0.774</p>
+<p>1.58</p>
+<p>ลอสแองเจลิส</p>
+<p>ซีแอตเทิล</p>
+<p>0.478</p>
+<p>1.51</p>
+<p>ลอสแองเจลิส</p>
+<p>บอสตัน</p>
+<p>13.3</p>
+<p>16.8</p>
+<p>ดัลลาส</p>
+<p>ลอสแองเจลิส</p>
+<p>9.66</p>
+<p>23</p>
+<p>ดัลลาส</p>
+<p>แอตแลนต้า</p>
+<p>0</p>
+<p>0</p>
+<p>ดัลลาส</p>
+<p>ซีแอตเทิล</p>
+<p>2.96</p>
+<p>5.2</p>
+<p>ดัลลาส</p>
+<p>บอสตัน</p>
+<p>0.43</p>
+<p>0.955</p>
+<p>แอตแลนต้า</p>
+<p>ลอสแองเจลิส</p>
+<p>0.687</p>
+<p>1.4</p>
+<p>แอตแลนต้า</p>
+<p>ดัลลาส</p>
+<p>0</p>
+<p>0</p>
+<p>แอตแลนต้า</p>
+<p>ซีแอตเทิล</p>
+<p>9.7</p>
+<p>12.4</p>
+<p>แอตแลนต้า</p>
+<p>บอสตัน</p>
+<p>4.39</p>
+<p>15.2</p>
+<p>ซีแอตเทิล</p>
+<p>ลอสแองเจลิส</p>
+<p>0.322</p>
+<p>1.02</p>
+<p>ซีแอตเทิล</p>
+<p>ดัลลาส</p>
+<p>3.11</p>
+<p>5.43</p>
+<p>ซีแอตเทิล</p>
+<p>แอตแลนต้า</p>
+<p>9.81</p>
+<p>12.6</p>
+<p>ซีแอตเทิล</p>
+<p>บอสตัน</p>
+<p>34.7</p>
+<p>30.3</p>
+<p>บอสตัน</p>
+<p>ลอสแองเจลิส</p>
+<p>13.3</p>
+<p>16.8</p>
+<p>บอสตัน</p>
+<p>ดัลลาส</p>
+<p>0.386</p>
+<p>0.85</p>
+<p>บอสตัน</p>
+<p>แอตแลนต้า</p>
+<p>4.37</p>
+<p>15</p>
+<p>บอสตัน</p>
+<p>ซีแอตเทิล</p>
+<p>33.7</p>
+<p>29.6</p>
+<p>Cloudflare for Offices ทำให้ง่ายต่อการตั้งค่าสำนักงานเหล่านั้น เนื่องจากลูกค้าไม่ต้องนำไฟร์วอลล์ อุปกรณ์ WAN หรือสิ่งอื่นใดมา ลูกค้าแค่เสียบปลั๊กเข้ากับ Cloudflare One ที่อยู่ภายในอาคารของตนเท่านั้น และพลังของ Cloudflare One จะช่วยให้พวกเขาได้รับบริการรักษาความปลอดภัยเครือข่ายทั้งหมดผ่านการเชื่อมต่อส่วนตัวไปยัง Cloudflare ซึ่งปรับให้เหมาะสมโดย Argo for Packets</p>
+<h3><strong>เครือข่ายของคุณ แต่เร็วขึ้น</strong></h3>
+<p>Argo for Packets เป็นส่วนประกอบที่สมบูรณ์แบบสำหรับโซลูชัน Cloudflare One ของเรา: ให้บิตที่เร็วขึ้นผ่านเครือข่ายของคุณ สร้างขึ้นบน Cloudflare ตอนนี้ โซลูชัน SD-WAN และ Magic Transit ของคุณสามารถนำมาใช้ประโยชน์ไม่เพียงแค่เรื่องความปลอดภัย แต่ยังรวมถึงเรื่องความมีประสิทธิภาพด้วย</p>
+<p>หากคุณสนใจที่จะเปิดใช้งาน Argo for Packets หรือเริ่มการทำงานในสำนักงานของคุณโดยใช้โซลูชันการเชื่อมต่อที่เป็นส่วนตัวและปลอดภัย โปรดติดต่อทีมบัญชีของคุณเพื่อเริ่มต้นกระบวนการ</p>

@@ -1,0 +1,128 @@
+<p><em>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</em></p>
+<p>Cloudflare 플랫폼은 Cloudflare 자체에 중요한 시스템입니다. Cloudflare는 Cloudflare 제품을 사용하여 자체 서비스를 보호하고 최적화하는 Customer Zero입니다.&nbsp;</p>
+<p>Cloudflare의 보안 부서 내에서는 Customer Zero라는 독특한 위치를 활용하여, Cloudflare 제품을 지속적으로 개선할 수 있도록 제품 및 엔지니어링에 정확하고 충실한 피드백 루프를 지속적으로 제공하고 있습니다<strong>. </strong>이러한 조치를 글로벌 규모로 수행하고 있습니다. 하나의 잘못된 구성으로도 몇 초만에 Cloudflare 에지에 전파되어 의도하지 않은 결과를 초래할 수 있기 때문입니다. 작은 실수 하나 때문에 모든 직원이 중요한 애플리케이션에서 액세스할 수 없게 되거나 프로덕션 서비스가 중단될 수 있다는 사실 때문에 프로덕션으로 변경을 도입하기 전에 주저했던 적이 있다면 그 심정을 알 것입니다. 의도하지 않은 결과가 초래될 위험은 현실적이며, 밤잠을 설치게 됩니다.</p>
+<p>이것은 흥미로운 과제를 제시합니다. 수백 개의 내부 Cloudflare 프로덕션 계정을 어떻게 보호하면서 동시에 인적 오류를 최소화할 수 있을까요?</p>
+<p>Cloudflare 대시보드는 <a href="https://www.cloudflare.com/learning/performance/what-is-observability" target="_blank" rel="noopener noreferrer">관찰 가능성</a> 및 분석 측면에서는 탁월하지만, 보안 설정이 동일한지 확인하기 위해 수백 개의 계정을 수동으로 클릭하는 것은 실수를 유발할 수 있습니다. 온전함과 보안을 그대로 유지하기 위해 우리는 구성을 수동적인 포인트 앤 클릭 작업으로 취급하지 않고, 이를 코드처럼 취급하기 시작했습니다. 저희는 '시프트 레프트(shift left)' 원칙을 채택하여 보안 검사를 개발의 초기 단계에서 수행할 수 있었습니다.&nbsp;</p>
+<p>이는 추상적인 기업 목표가 아니었습니다. 오류가 사고로 이어지기 전에 이를 포착하기 위한 생존 메커니즘이자, 거버넌스 아키텍처의 근본적인 변화가 필요했습니다.</p>
+<h2>Shift Left의 의미</h2>
+<p>"왼쪽으로 이동"은 소프트웨어 개발 수명 주기(SDLC)에서 유효성 검사 단계를 더 일찍 이동하는 것을 의미합니다. 이는 실제로 테스트, 보안 감사, 정책 준수 검사를 <a href="https://www.cloudflare.com/learning/serverless/glossary/what-is-ci-cd" target="_blank" rel="noopener noreferrer">지속적인 통합 및 지속적 배포(CI/CD) 파이프라인</a>에 직접 통합하는 것을 의미합니다. 병합 요청 단계에서 문제나 구성 오류를 포착함으로써 배포 후에 이를 발견하는 것이 아니라 복원 비용이 가장 낮은 문제를 식별하는 것입니다.</p>
+<p>Cloudflare에서 Shift Left 원칙을 적용하는 것에 대해 생각할 때, 네 가지 핵심 원칙이 두드러집니다.</p>
+<ul>
+	<li><strong>일관성</strong>: 계정 간에 구성을 쉽게 복사하고 재사용할 수 있어야 합니다.</li>
+	<li><strong>확장성</strong>: 큰 변경 사항을 여러 계정에 빠르게 적용할 수 있습니다.</li>
+	<li><strong>Observability</strong>: 누구나 구성의 현재 상태, 정확성, 보안을 감사할 수 있어야 합니다.</li>
+	<li><strong>거버넌스</strong>: 가드레일은 사전 예방적이어야 하며, 사고를 방지하려면 배포 전에 시행해야 합니다.</li>
+</ul>
+<h2>프로덕션 IaC 운영 모델</h2>
+<p>이 모델을 지원하기 위해 Cloudflare는 모든 프로덕션 계정을 코드형 인프라(IaC)로 관리하도록 전환했습니다. 모든 수정 사항은 추적되어 사용자, 커밋, 내부 티켓과 연계됩니다. 팀에서는 여전히 분석과 인사이트를 위해 대시보드를 사용하지만, 중요한 프로덕션 변경은 모두 코드에서 수행됩니다.</p>
+<p>이 모델에서는 모든 변경 사항이 동료 검토를 거치게 되며, 정책은 보안 팀에서 설정했지만, 엔지니어링 팀 자체에서 직접 구현합니다.</p>
+<p>이 설정은 <a href="https://developer.hashicorp.com/terraform" target="_blank" rel="noopener noreferrer"><u>Terraform</u></a> 과 사용자 지정 CI/CD 파이프라인이라는 두 가지 주요 기술을 기반으로 합니다.</p>
+<h2>Cloudflare의 엔터프라이즈 IaC 스택</h2>
+<p>Terraform은 성숙한 오픈 소스 생태계, 강력한 커뮤니티 지원, 코드형 정책(Policy as Code) 도구와의 긴밀한 통합이 특징인 Terraform을 선택했습니다. 또한, 내부적으로 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs" target="_blank" rel="noopener noreferrer"><u>Cloudflare Terraform Provider를</u></a> 사용하면 고객 경험을 적극적으로 <a href="https://blog.cloudflare.com/tag/dogfooding" target="_blank" rel="noopener noreferrer"><u>평가하고 개선할 수 있습니다.</u></a></p>
+<p>수백 개의 계정과 하루 30건의 병합 요청이라는 규모를 관리하기 위해, 우리의 CI/CD 파이프라인은 <a href="https://about.gitlab.com" target="_blank" rel="noopener noreferrer"><u>GitLab과</u></a> 통합된 <a href="https://www.runatlantis.io" target="_blank" rel="noopener noreferrer"><u>Atlantis에서</u></a> 실행됩니다. 또한 우리는 상태 파일을 안전하게 저장하기 위한 브로커 역할을 하는 맞춤형 Go 프로그램인 tfstate-butler를 사용합니다.</p>
+<p>tfstate-butler는 Terraform의 HTTP 백엔드 역할을 합니다. 주요 설계 요인은 보안이었습니다. 상태 파일별로 고유한 암호화 키를 보장하여 잠재적인 손상으로 인한 공격 반경을 제한합니다.&nbsp;</p>
+<p>모든 내부 계정 구성은 중앙 집중식 <a href="https://developers.cloudflare.com/pages/configuration/monorepos" target="_blank" rel="noopener noreferrer"><u>모노레포</u></a>에서 정의됩니다. 개별 팀이 각자의 특정 구성을 소유하고 배포하며, 이 중앙 집중식 리포지토리의 각 섹션에 지정된 코드 소유자이므로 책임이 보장됩니다. 이 구성에 대해 자세히 알아보려면 <a href="https://blog.cloudflare.com/terraforming-cloudflare-at-cloudflare" target="_blank" rel="noopener noreferrer"><u>Cloudflare에서 Terraform을 사용하여 Cloudflare를 관리하는 방법</u></a>을 확인하세요.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="388" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=640&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=715&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=750&amp;h=407&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=828&amp;h=449&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=1080&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=1280&amp;h=695&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=1430&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3074 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A7NW34R9Z3J0D3667THE.png&amp;w=1374&amp;h=746&amp;f=webp" data-lightbox-width="1374" data-lightbox-height="746" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="388" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup>코드형 인프라 데이터 흐름도</sup></p>
+<h2>강령으로서의 기준과 정책</h2>
+<p>전체적 전략은 모든 내부 프로덕션 Cloudflare 계정에 강력한 보안 기준을 수립하는 것에 달려 있습니다. 베이스라인은 코드(코드로서의 정책)로 정의된 보안 정책의 모음입니다. 이 기준선은 단순한 지침의 집합이 아니라 Cloudflare가 플랫폼 전반에 걸쳐 시행하는 필수 보안 구성(예: 최대 세션 길이, 필요한 로그, 특정 WAF 구성 등)입니다.&nbsp;</p>
+<p>이러한 설정에서 정책 시행이 수동 감사에서 자동화된 게이트로 전환됩니다. Cloudflare는 Atlantis conftest 정책 확인 기능을 <a href="https://www.openpolicyagent.org" target="_blank" rel="noopener noreferrer"><u>통해 Open Policy Agent(OPA)</u></a> 프레임워크와 정책 언어<a href="https://www.openpolicyagent.org/docs/policy-language#what-is-rego" target="_blank" rel="noopener noreferrer"><u>Rego를</u></a> 사용합니다.</p>
+<h2>정책을 코드로 정의</h2>
+<p>Rego 정책은 모든 Cloudflare 공급자 리소스의 기준을 구성하는 특정 보안 요구 사항을 정의합니다. Cloudflare는 현재 약 50개의 정책을 유지 관리합니다.</p>
+<p>예를 들어, 다음 Rego 정책은 @cloudflare.com 이메일만 액세스 정책에 사용될 수 있는지 확인합니다.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># validate no </span><span class="sk-d73a49-ffc799">use</span><span class="sk-24292e-fff"> of non</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare email</span></span>
+<span class="line"><span class="sk-24292e-fff">warn contains reason </span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> tfplan</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resource_changes[_]</span></span>
+<span class="line"><span class="sk-24292e-fff">    r</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">mode </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> "managed"</span></span>
+<span class="line"><span class="sk-24292e-fff">    r</span><span class="sk-d73a49-a0a0a0">.type</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-24292e-fff"> "cloudflare_access_policy"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    include </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> r</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">change</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">after</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">include[_]</span></span>
+<span class="line"><span class="sk-24292e-fff">    email_address </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> include</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">email[_]</span></span>
+<span class="line"><span class="sk-24292e-fff">    not endswith(email_address, "</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com")</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    reason </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> sprintf("</span><span class="sk-d73a49-a0a0a0">%-</span><span class="sk-24292e-fff">40s </span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff"> only </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com emails are allowed", [r</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">address])</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">warn contains reason </span><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    r </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> tfplan</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">resource_changes[_]</span></span>
+<span class="line"><span class="sk-24292e-fff">    r</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">mode </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> "managed"</span></span>
+<span class="line"><span class="sk-24292e-fff">    r</span><span class="sk-d73a49-a0a0a0">.type</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-24292e-fff"> "cloudflare_access_policy"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    require </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> r</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">change</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">after</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">require[_]</span></span>
+<span class="line"><span class="sk-24292e-fff">    email_address </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> require</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">email[_]</span></span>
+<span class="line"><span class="sk-24292e-fff">    not endswith(email_address, "</span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com")</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    reason </span><span class="sk-d73a49-a0a0a0">:=</span><span class="sk-24292e-fff"> sprintf("</span><span class="sk-d73a49-a0a0a0">%-</span><span class="sk-24292e-fff">40s </span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff"> only </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">com emails are allowed", [r</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">address])</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>기준 적용</h2>
+<p>정책 검사는 모든 병합 요청(MR)마다 실행되어 <em>배포 전에</em> 구성이 규정을 준수하는지 확인합니다. 정책 검사 결과는 GitLab MR 댓글 스레드에 직접 표시됩니다.&nbsp;</p>
+<p>정책 시행은 두 가지 모드로 작동합니다.</p>
+<ol>
+	<li><strong>경고:</strong> MR에 댓글을 남기지만, 병합을 허용합니다.</li>
+	<li><strong>거부:</strong> 배포를 완전히 차단합니다.</li>
+</ol>
+<p>정책 검사에서 MR에 적용되는 구성이 기준에서 벗어나는 것으로 확인되면 규정을 준수하지 않은 리소스가 반환됩니다.</p>
+<p>아래 예에서는 병합 요청에서 불일치 3개를 식별하는 정책 검사의 출력을 보여줍니다.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">WARN</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff"> cloudflare_zero_trust_access_application</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">app_saas_xxx </span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-032f62-99ffe4"> "session_duration"</span><span class="sk-24292e-fff"> must be less than or equal to 10h</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-fff">WARN</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff"> cloudflare_zero_trust_access_application</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">app_saas_xxx_pay_per_crawl </span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-032f62-99ffe4"> "session_duration"</span><span class="sk-24292e-fff"> must be less than or equal to 10h</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-fff">WARN</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-24292e-fff"> cloudflare_zero_trust_access_application</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">app_saas_ms </span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff"> you must have at least one require statement of auth_method </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "swk"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">41</span><span class="sk-24292e-fff"> tests, </span><span class="sk-005cc5-ffc799">38</span><span class="sk-24292e-fff"> passed, </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff"> warnings, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> failures, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff"> exception</span></span></code></pre>
+</div>
+<h2>정책 예외 처리</h2>
+<p>우리는 예외가 필요하다는 것을 이해하지만, 정책 자체와 마찬가지로 예외를 관리해야 합니다. 팀에서는 예외를 요구하면 Jira를 통해 요청을 제출합니다.</p>
+<p>Customer Zero 팀의 승인을 받으면, 중앙 예외 사항인 예외 Rego 리포지토리에 풀 요청을 제출하여 예외가 공식화됩니다. 다양한 수준에서 예외가 적용될 수 있습니다.</p>
+<ul>
+	<li><strong>계정:</strong> account_x를 policy_y에서 제외합니다.</li>
+	<li><strong>자원</strong> 카테고리: account_x의 모든 자원_a를 policy_y에서 제외합니다.</li>
+	<li><strong>특정 자원: </strong>account_x의 a_1 자원을 policy_y에서 제외합니다.</li>
+</ul>
+<p>이 예에서는 두 개의 개별 Cloudflare 계정에 있는 다섯 개의 특정 애플리케이션에 대한 세션 길이 예외가 나와 있습니다.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{  </span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "exception_type"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "session_length"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "exceptions"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "account_id"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "1xxxx"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              "tf_addresses"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "cloudflare_access_application.app_identity_access_denied"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "cloudflare_access_application.enforcing_ext_auth_worker_bypass"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "cloudflare_access_application.enforcing_ext_auth_worker_bypass_dev"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            ],</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "account_id"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "2xxxx"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">              "tf_addresses"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "cloudflare_access_application.extra_wildcard_application"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "cloudflare_access_application.wildcard"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            ],</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>과제 및 교훈</h2>
+<p>우리의 여정에 장애물이 없었던 것은 아닙니다. 당사는 수년간 수백 개의 계정에 분산된 클릭옵(대시보드에서 직접 수행한 수동 변경)을 수행했습니다. 기존의 혼란을 엄격한 인프라 코드 시스템으로 가져오는 것은 움직이는 자동차의 타이어를 교체하는 것처럼 느꼈습니다. 오늘날에도 리소스 가져오기는 지속적으로 진행되고 있습니다.</p>
+<p>또한 자체 도구의 한계에 부딪혔습니다. Cloudflare Terraform 공급자에서 이러한 규모의 인프라를 관리해야 할 때만 나타나는 에지 케이스를 발견했습니다. 단순한 과속 방지턱이 아니었습니다. 우리 자체의 시험제품을 사용하면서 더 나은 솔루션을 구축할 수 있는 필요성에 대한 어려운 교훈이었습니다.</p>
+<p>이러한 어려움을 통해 당사가 직면한 문제가 무엇인지 정확히 파악하여 힘들게 얻은 세 가지 교훈을 얻을 수 있었습니다.</p>
+<h2>교훈 1: 실속 있는 도입을 가로막는 높은 장벽&nbsp;</h2>
+<p>모든 대규모 IaC 롤아웃의 첫 번째 장애물은 수동으로 구성된 기존 리소스를 온보딩하는 것입니다. Terraform 리소스를 수동으로 생성하고 블록을 가져오는 것과 <a href="https://github.com/cloudflare/cf-terraforming" target="_blank" rel="noopener noreferrer"><u>cf-terraforming을</u></a> 사용하는 것의 두 가지 옵션을 팀에 제공했습니다.</p>
+<p>Terraform의 유창함은 팀마다 다르며, 기존 리소스를 수동으로 가져올 때의 학습 곡선은 예상보다 훨씬 가파릅니다.</p>
+<p>다행히 cf-terraforming 명령줄 유틸리티를 사용하면 Cloudflare API를 사용하여 필요한 Terraform 코드 및 문을 가져오기 때문에 마이그레이션 프로세스가 크게 빨라집니다.&nbsp;</p>
+<p>또한 숙련된 엔지니어가 내부 커뮤니티를 형성하여 공급자의 미묘한 차이를 파악하고 복잡한 요소의 차단을 해소할 수 있도록 지원했습니다.</p>
+<h2>강의 2: 드리프트가 발생합니다&nbsp;</h2>
+<p>또한 긴급 변경을 신속히 처리하기 위해 IaC 프로세스를 우회할 때 발생하는 구성 드리프트 문제도 해결해야 했습니다. 사고 발생 중에는 대시보드에서 직접 편집하는 것이 더 빠르지만, Terraform 상태가 현실과 동떨어져 있게 됩니다.</p>
+<p>우리는 Terraform에서 정의한 상태를 Cloudflare API를 통해 실제 배포 상태와 지속해서 비교하는 맞춤형 드리프트 감지 서비스를 구현했습니다. 드리프트가 감지되면 자동화된 시스템이 내부 티켓을 생성하고 다양한 서비스 수준 계약(SLA)에 따라 소유 팀에 할당하여 수정합니다.&nbsp;</p>
+<h2>교훈 3: 자동화가 핵심입니다</h2>
+<p>Cloudflare는 빠르게 혁신하므로 제품 및 APIs 집합은 계속 증가하고 있습니다. 하지만 안타깝게도 이는 Terraform 공급자가 제품과 기능 동등한 측면에서 자주 뒤처진다는 것을 의미했습니다.&nbsp;</p>
+<p>Cloudflare는 OpenAPI 사양을 기반으로 Terraform 공급자를 자동으로 생성하는 <a href="https://blog.cloudflare.com/automatically-generating-cloudflares-terraform-provider" target="_blank" rel="noopener noreferrer"><u>v5</u></a> 공급자를 출시하면서 이 문제를 해결했습니다. 이러한 전환에는 저희가 코드 생성에 대한 접근 방식을 강화하면서 충돌이 있었던 것은 아니지만, 이 접근 방식을 통해 API와 Terraform이 동기화 상태를 유지하여 기능 드리프트의 가능성이 줄어듭니다.&nbsp;</p>
+<h2>교훈: 사전 예방적 &gt; 사후적 대응</h2>
+<p>보안 기준을 중앙 집중화하고, 피어 검토를 의무화하며, 변경 사항이 프로덕션에 반영되기 전에 정책을 시행함으로써 구성 오류, 실수로 인한 삭제, 정책 위반이 발생할 가능성을 최소화합니다. 이 아키텍처는 수동 실수를 방지하는 데 도움이 될 뿐만 아니라 팀에서 변경 사항이 규정을 준수한다고 확신하므로 엔지니어링 속도가 실제로 빨라집니다.&nbsp;</p>
+<p>Customer Zero에 대한 작업에서 얻은 핵심 교훈은 다음과 같습니다. Cloudflare 대시보드는 일상적인 운영에 탁월하지만, 엔터프라이즈 수준의 규모와 일관된 거버넌스를 달성하려면 다른 접근 방식이 필요합니다. Cloudflare 구성을 라이브 코드로 취급할 때, 안전하고 자신 있게 확장할 수 있습니다.&nbsp;</p>
+<p>코드형 인프라에 대한 의견이 있으신가요? <a href="http://community.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>community.cloudflare.com</u></a>에서 대화를 계속하고 경험을 공유해 주세요.</p>

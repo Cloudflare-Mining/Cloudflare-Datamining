@@ -1,0 +1,614 @@
+<p>今天，我们隆重推出 Project Think：也就是新一代 <a href="https://developers.cloudflare.com/agents" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>。Project Think 为构建长时间运行的智能体提供一套新原语，包括持久化执行、子智能体、沙箱代码执行和持续会话，以及将这些基础组件集成在一起的有明确设计理念的基类。可以利用这些原语准确构建所需功能，也可以使用基类快速入门。</p>
+<p>今年年初发生的一件事改变了我们对 AI 的认知。<a href="https://github.com/badlogic/pi-mono" target="_blank" rel="noopener noreferrer"><u>Pi</u></a>、<a href="https://github.com/openclaw" target="_blank" rel="noopener noreferrer"><u>OpenClaw</u></a>、<a href="https://docs.anthropic.com/en/docs/agents" target="_blank" rel="noopener noreferrer"><u>Claude Code</u></a> 和 <a href="https://openai.com/codex" target="_blank" rel="noopener noreferrer"><u>Codex</u></a> 等工具证明了一个简单而强大的理念：赋予 LLM 如下四项能力：读取文件、编写代码、执行代码、记住所学知识，用户就能得到看起来更像是通用助手的工具，而不是开发人员工具。</p>
+<p>这些编码智能体的功能不再局限于编写代码。人们使用它们来管理日历、分析数据集、洽谈采购合同、提交税务申报，以及自动化整个业务工作流程。运行模式始终相同：智能体读取上下文，对上下文进行推理，编写代码来执行操作，观察结果，然后迭代。代码是智能体将意图转化为行动的通用媒介。</p>
+<p>Cloudflare 团队每天都在使用这些编码智能体。而且我们不断遇到同样的难题：</p>
+<ul>
+	<li><strong>它们只能在笔记本电脑或昂贵的 VPS 上运行：</strong>无法共享、协作，也无法在不同设备之间切换。</li>
+	<li><strong>闲置成本较高</strong>：无论智能体是否工作，需要支付固定的月费。如果扩展到团队或全公司，闲置成本迅速增加。</li>
+	<li><strong>需要管理和手动设置</strong>：安装依赖项、管理更新、配置身份和密钥。</li>
+</ul>
+<p>此外，还有更深层次的结构性问题。传统应用通过单个实例为许多用户提供服务。正如我们在“欢迎参加 Agents Week”博客文章中提到的，<a href="https://blog.cloudflare.com/welcome-to-agents-week" target="_blank" rel="noopener noreferrer"><u>智能体是一对一服务</u></a>。每个智能体都是一个独立实例，服务一个用户，运行一项任务。餐馆有菜单和优化的厨房，可以高效批量出餐。智能体更像是私人厨师：每次使用的食材、烹饪技巧和工具都各不相同。</p>
+<p>这从根本上改变了扩展的计算方式。如果一亿知识工作者每人使用一个智能助手，则即使并发率适中，也需要足够支持数千万个并发会话的容量。按照目前每个容器的成本，这种方法难以为继。我们需要不同的基础架构。</p>
+<p>这正是 Cloudflare 一直在努力构建的解决方案。</p>
+<h2>隆重推出 Project Think</h2>
+<p>Project Think 为 Agents SDK 提供一套新原语：</p>
+<ul>
+	<li><strong>持久化执行</strong>（使用纤程）：崩溃恢复、检查点、自动确保持续存在</li>
+	<li><strong>子智能体</strong>：隔离的子智能体，具有各自的 SQLite 数据库和类型化 RPC</li>
+	<li><strong>持续会话</strong>：树状结构信息、分叉、压缩、全文检索</li>
+	<li><strong>沙箱代码执行</strong>：Dynamic Workers、codemode 执行模式、runtime npm 解析</li>
+	<li><strong>执行层级</strong>：工作区、隔离区、npm、浏览器、沙箱</li>
+	<li><strong>自主编写扩展</strong>：在运行时自主编写工具的智能体</li>
+</ul>
+<p>这些基础组件均可直接与 Agent 基类搭配使用。可以利用这些原语准确构建所需功能，也可以使用 Think 基类快速入门。接下来，我们将逐一介绍它们的作用。</p>
+<h2>长时间运行的智能体</h2>
+<p>目前存在的智能体都是短暂运行。它们只在单个会话期间运行，绑定到单个进程或设备，随后便终止。在笔记本电脑进入睡眠模式后即终止的编码智能体，只能算是一个工具。而一个持久运行的智能体（可以按需唤醒，在中断后继续工作，且不依赖本地运行时即可保持状态）则更像是基础设施。并且它会彻底改变智能体的扩展模式。</p>
+<p>Agents SDK 基于 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> 构建，为每个智能体赋予身份、持续状态以及收到消息时唤醒的功能。这就是 <a href="https://en.wikipedia.org/wiki/Actor_model" target="_blank" rel="noopener noreferrer"><u>actor 模型</u></a>：每个智能体都是可寻址的实体，且拥有自己的 SQLite 数据库。当它处于休眠状态时，不会消耗任何计算资源。如果发生了某件事（HTTP 请求、WebSocket 消息、计划的警报、入站电子邮件），平台会唤醒智能体，加载其状态，并将事件传递给它。智能体完成其工作，然后再次进入休眠状态。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>虚拟机/容器</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Durable Objects</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>闲置成本</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>始终收取计算成本</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>零（休眠）</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>扩展</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>配置和管理容量</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>全自动、按智能体</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>状态</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>需要外部数据库</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>内置 SQLite 数据库</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>恢复</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>自行构建（进程管理器、运行状况检查）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>平台重启，状态保留</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>身份/路由</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>自行构建（负载均衡器、粘性会话）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>内置（名称 → 智能体）</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10000 个智能体，每个处理活跃状态的时间占 1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10000 个始终在线的实例</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>约 100 个随时活跃的实例</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>这将改变大规模运行智能体的成本。您可以构建“每个客户一个智能体”、“每个任务一个智能体”或“每个电子邮件线程一个智能体”，而不是构建“每个高级用户一个昂贵的智能体”。创建新智能体的边际成本几乎为零。</p>
+<h3>应对崩溃：使用纤程实现持久化执行</h3>
+<p>一个 LLM 调用需要耗费 30 秒。多回合智能体的运行时间可能更长。在此期间，执行环境可能会消失：例如一次部署、平台重启或达到资源限制，与模型提供商的上游连接被永久断开，内存状态丢失，以及连接的客户端发现数据流被无故中断。</p>
+<p><a href="https://developers.cloudflare.com/agents/api-reference/durable-execution" target="_blank" rel="noopener noreferrer"><code><u>runFiber()</u></code></a> 可以解决这个问题。纤程是一种持久化函数调用实例：执行前先在 SQLite 中注册、随时通过 <code>stash()</code> 检查存档，以及在重启后通过 <code>onFiberRecovered</code> 回调恢复。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> ResearchAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> startResearch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">topic</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    void</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">runFiber</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"research"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> findings</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">callLLM</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Research step ${</span><span class="sk-24292e-fff">i</span><span class="sk-032f62-99ffe4">}: ${</span><span class="sk-24292e-fff">topic</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">        findings.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Checkpoint: if evicted, we resume from here</span></span>
+<span class="line"><span class="sk-24292e-fff">        ctx.</span><span class="sk-6f42c1-ffc799">stash</span><span class="sk-24292e-fff">({ findings, step: i, topic });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">        this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">broadcast</span><span class="sk-24292e-fff">({ type: </span><span class="sk-032f62-99ffe4">"progress"</span><span class="sk-24292e-fff">, step: i });</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> { findings };</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onFiberRecovered</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (ctx.name </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "research"</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> ctx.snapshot) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">topic</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ctx.snapshot;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">startResearch</span><span class="sk-24292e-fff">(topic);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>在纤程执行期间，SDK 会自动维持智能体处于活动状态，无需任何特殊配置。对于以分钟为单位的工作，keepAlive()/keepAliveWhile() 可防止在执行任务期间被清理。对于耗时更长的操作（例如 CI 管道、设计评审、视频生成），智能体会启动工作、持久化作业 ID、进入休眠状态，以及在回调时唤醒。</p>
+<h3>委派工作：通过 Facets 实现子智能体</h3>
+<p>单一智能体不应包揽所有工作。<a href="https://developers.cloudflare.com/agents/api-reference/sub-agents" target="_blank" rel="noopener noreferrer"><u>子智能体</u></a>是通过 <a href="https://blog.cloudflare.com/durable-object-facets-dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Facets</u></a> 与父智能体在同一物理/虚拟节点上运行的子 Durable Objects，每个子智能体都有各自独立的 SQLite 数据库和执行上下文：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> ResearchAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> search</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">query</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) { </span><span class="sk-6a737d-8b8b8b94">/* ... */</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> ReviewAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> analyze</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">query</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) { </span><span class="sk-6a737d-8b8b8b94">/* ... */</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Orchestrator</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> handleTask</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">task</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> researcher</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">subAgent</span><span class="sk-24292e-fff">(ResearchAgent, </span><span class="sk-032f62-99ffe4">"research"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> reviewer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">subAgent</span><span class="sk-24292e-fff">(ReviewAgent, </span><span class="sk-032f62-99ffe4">"review"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-fff">research</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">review</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-24292e-fff">      researcher.</span><span class="sk-6f42c1-ffc799">search</span><span class="sk-24292e-fff">(task),</span></span>
+<span class="line"><span class="sk-24292e-fff">      reviewer.</span><span class="sk-6f42c1-ffc799">analyze</span><span class="sk-24292e-fff">(task)</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">synthesize</span><span class="sk-24292e-fff">(research, review);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>子智能体在存储层面彼此隔离。每个子智能体都有自己的 SQLite 数据库，它们之间不存在隐式数据共享。运行时会强制执行这一隔离规则，其中子智能体 RPC 延迟是一个函数调用。TypeScript 在编译时会发现误用行为。</p>
+<h3>持续对话：Session API</h3>
+<p>运行数日或数周的智能体，需要比典型的扁平消息列表更丰富的存储方式。实验性 <a href="https://developers.cloudflare.com/agents/api-reference/sessions" target="_blank" rel="noopener noreferrer"><u>Session API</u></a> 对此进行了明确的建模。在 Agent 基类中，对话以树状结构存储，其中每条消息都有一个 parent_id。这支持对话分叉（探索替代方案而不丢失原始路径），非破坏性压缩（总结较早的消息而非删除消息），以及通过 <a href="https://www.sqlite.org/fts5.html" target="_blank" rel="noopener noreferrer"><u>FTS5</u></a> 全文搜索对话历史记录。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Agent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Session, SessionManager } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/experimental/memory/session"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Agent</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  sessions</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> SessionManager.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> onStart</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.sessions.</span><span class="sk-6f42c1-ffc799">create</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"main"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> history</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">getHistory</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> forked</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.sessions.</span><span class="sk-6f42c1-ffc799">fork</span><span class="sk-24292e-fff">(session.id, messageId, </span><span class="sk-032f62-99ffe4">"alternative-approach"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Session 可以直接与 <code>Agent</code> 搭配使用，而且它是 <code>Think</code> 基类构建的存储层。</p>
+<h2>从工具调用到代码执行</h2>
+<p>传统工具的调用方式非常繁琐。模型调用一个工具，通过上下文窗口拉取结果；随后调用另一个工具，以同样的方式再次拉取结果，如此循环往复。随着工具数量的增加，这种做法既耗时又笨拙。100 个文件意味着需要经过模型完成 100 次往返通信。</p>
+<p>但是，<a href="https://blog.cloudflare.com/code-mode" target="_blank" rel="noopener noreferrer"><u>模型更擅长编写代码以调用系统的代码，而不是进行繁琐的工具调用</u></a>。这正是 <a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><u>@cloudflare/codemode</u></a> 背后的理念：LLM 不按顺序调用工具，而是编写一个程序来处理整个任务。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// The LLM writes this. It runs in a sandboxed Dynamic Worker.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> files</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> tools.</span><span class="sk-6f42c1-ffc799">find</span><span class="sk-24292e-fff">({ pattern: </span><span class="sk-032f62-99ffe4">"**/*.ts"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> file</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> files) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> content</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> tools.</span><span class="sk-6f42c1-ffc799">read</span><span class="sk-24292e-fff">({ path: file });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (content.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"TODO"</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    results.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({ file, todos: content.</span><span class="sk-6f42c1-ffc799">match</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-a0a0a0">/</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\/\/</span><span class="sk-032f62-a0a0a0"> TODO:</span><span class="sk-005cc5-a0a0a0">.</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-a0a0a0">/</span><span class="sk-d73a49-ffc799">g</span><span class="sk-24292e-fff">) });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> results;</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>无需通过模型进行 100 次往返通信，只需运行单个程序即可。这可以减少词元使用量，加快执行速度，以及改善结果。<a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer"><u>Cloudflare API MCP 服务器</u></a>在规模上证明了这一点。我们只暴露两个通用工具<code>（search()</code> 和 <code>execute()）</code>，它们消耗了大约 1000 个词元，而天真的“一个端点一个工具”方法则消耗将近 117 万个词元。这相当于词元使用量减少了 99.9%。</p>
+<h3>缺失的原语：安全沙箱</h3>
+<p>接受模型应该代表用户编写代码这一理念后，接着面临的问题就是：这些代码在哪里运行？不是最终，也不是等候产品团队将其纳入路线图。而是现在，针对当前用户，针对当前系统，且拥有严格定义的权限。</p>
+<p><a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a> 就是那种安全沙箱。它会在运行时在数毫秒内启动一个全新的 V8 隔离区，仅占用几兆字节内存。与容器相比，启动速度大约加快 100 倍，内存效率也至多提高 100 倍。您可以为每个请求启动一个新隔离区，运行一段代码，然后将其丢弃。</p>
+<p>关键的设计选择是能力模型。Dynamic Workers 并非从通用机器开始并试尝试对其限制，而是开始时几乎没有任何环境权限（<code>globalOutbound: null</code>，没有网络访问权限），开发人员通过绑定，逐个资源地明确授予其访问特定能力的权限。我们思考的问题从“如何阻止模型生成过多内容？”变成“我们希望模型能够做到什么？”。</p>
+<p>关于智能体基础设施，这才是合适的问题。</p>
+<h3>执行层级</h3>
+<p>这种能力模型自然而然地引出了一系列计算环境，也就是<strong>执行层级</strong>，智能体根据需要在这些计算环境中逐步提升权限：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="667" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=715&amp;h=667&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=640&amp;h=597&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=715&amp;h=667&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=750&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=828&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1080&amp;h=1007&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1280&amp;h=1194&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1430&amp;h=1334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3200 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48H0G3Y1NFFRVA3Z21GJX2.png&amp;w=1288&amp;h=1202&amp;f=webp" data-lightbox-width="1288" data-lightbox-height="1202" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="667" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>第 0 级</strong>是工作区，它是由 SQLite 和 R2 提供支持的持久化虚拟文件系统。可执行读取、写入、编辑、搜索、grep、diff 操作。由 <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/shell</u></code></a> 提供支持。</p>
+<p><strong>第 1 级</strong>是 Dynamic Worker：由 LLM 生成的 JavaScript 在沙箱隔离环境中运行，没有网络访问权限。由 <a href="https://www.npmjs.com/package/@cloudflare/codemode" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/codemode</u></code></a> 提供支持。</p>
+<p><strong>第 2 级</strong>添加了 npm。<a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a> 从注册表中获取软件包，使用 esbuild 对其进行打包，然后将结果加载到 Dynamic Worker 中。智能体只需写入 <code>import { z } from “zod”</code> 即可正常运行。</p>
+<p><strong>第 3 级</strong>是通过 <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare Browser Run</u></a> 提供的无头浏览器。可执行导航、点击、提取、截屏操作。当服务尚不支持通过 MCP 或 API 使用智能体时，这个层级非常有用。</p>
+<p><strong>第 4 级</strong>是 <a href="https://developers.cloudflare.com/sandbox" target="_blank" rel="noopener noreferrer"><u>Cloudflare 沙箱</u></a>，其中配置了用户自定义的工具链、代码存储库和依赖项：<code>git clone、npm test、cargo build</code>，与工作区双向同步。</p>
+<p>关键设计原则：<strong>智能体应仅在第 0 级有用处，每一级的权限逐步添加。</strong>用户可以根据需要随时添加功能。</p>
+<h3>构建模块，而不是框架</h3>
+<p>所有这些基础组件都以独立包的形式提供。<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>Dynamic Workers</u></a>、<a href="https://github.com/cloudflare/agents/tree/main/packages/codemode" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/codemode</u></code></a>、<a href="https://github.com/cloudflare/agents/tree/main/packages/worker-bundler" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/worker-bundler</u></code></a> 和 <a href="https://www.npmjs.com/package/@cloudflare/shell" target="_blank" rel="noopener noreferrer"><code><u>@cloudflare/shell</u></code></a>（包含工具的持久化文件系统）均可直接与 Agent 基类搭配使用。您可以组合利用它们，为智能体提供工作区、代码执行和运行时包解析功能，而无需采用任何预设框架。</p>
+<h2>平台</h2>
+<p>以下是在 Cloudflare 上构建智能体的完整技术栈：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>能力</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>作用</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>技术支持</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每个智能体隔离</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每个智能体都是自洽的系统</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Durable Objects (DO)</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>闲置时零成本</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0 美元，直到智能体被唤醒</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>DO Hibernation</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>持续状态</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>可查询的事务性存储</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>DO SQLite</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>持久化文件系统</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>重启后文件仍然存在</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>工作区 (SQLite + R2)</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>沙箱代码执行</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>安全运行 LLM 生成的代码</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Dynamic Workers + @cloudflare/codemode</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>运行时依赖项</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>import * from react 正常运行</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>@cloudflare/worker-bundler</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Web 自动化</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>浏览、导航、填写表单</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Browser Run</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>操作系统完全访问权限</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>git、编译器、测试运行器</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>沙箱</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>按计划执行</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>主动保护，而不只是被动响应</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>DO 警报 + 纤程</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>实时流式传输</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>向客户端逐个发送词元</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>WebSocket</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>外部工具</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>连接到任何工具服务器</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>MCP</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>智能体协调</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>智能体之间类型安全的 RPC</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>子智能体 (Facets)</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>模型访问</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>连接到 LLM 以支持智能体</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI Gateway + Workers AI（或自带模型）</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>这些都是构建块。它们共同构成一个全新的平台：可供任何用户构建、部署和运行 AI 智能体，其功能与目前在本地计算机上运行的智能体一样强大，但从设计上来说，它具有<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer"><u>无服务器</u></a>、持久和安全的特性。 </p>
+<h2>Think 基类</h2>
+<p>现在您已了解这些基础组件，接下来我们将介绍如何将它们集成在一起。</p>
+<p><code>Think</code> 是一个具有明确设计理念的框架，它负责处理完整的聊天生命周期：智能体逻辑循环、消息持久化、流式传输、工具执行、流恢复以及扩展。您只需聚焦智能体的核心功能。</p>
+<p>最小子类如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Think } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkersAI } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "workers-ai-provider"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Think</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getModel</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> createWorkersAI</span><span class="sk-24292e-fff">({ binding: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> })(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "@cf/moonshotai/kimi-k2.5"</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>如此一来，您便可以轻松创建一个工作聊天智能体，它具有流式传输、持久化、中止/取消、错误处理、可恢复的工作流，以及内置工作区文件系统。使用 <code>npx wrangler deploy</code> 进行部署。</p>
+<p>Think 会为您做出决策。如果您需要加强控制，则可以覆盖自己关注的各项决策：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>覆盖</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>目的</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>getModel()</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>返回要使用的 LanguageModel</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>getSystemPrompt()</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>系统提示词</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>getTools()</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>兼容 AI SDK 的 ToolSet，以支持智能体逻辑循环</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>maxSteps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>单个对话轮次的最大工具调用次数</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>configureSession()</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>上下文块、压缩、搜索、技能</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>其实从底层机制来说，Think 在每个轮次执行完整的智能体逻辑循环：组装上下文（基本指令 + 工具描述 + 技能 + 内存 + 对话历史记录），调用 <code>streamText</code>，执行工具调用（使用输出截断以防止上下文膨胀），附加结果，然后循环直到模型完成或达到步数限制。每个轮次结束后，所有消息会被持久化。</p>
+<h3>生命周期 hook 接口</h3>
+<p>Think 为用户在对话轮次的每个阶段提供 hook 接口，而无须拥有整个管道：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">beforeTurn</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  → </span><span class="sk-6f42c1-ffc799">streamText</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    → </span><span class="sk-6f42c1-ffc799">beforeToolCall</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    → </span><span class="sk-6f42c1-ffc799">afterToolCall</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  → </span><span class="sk-6f42c1-ffc799">onStepFinish</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">→ </span><span class="sk-6f42c1-ffc799">onChatResponse</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>切换到成本更低的模型来处理后续轮次，限制其可以使用的工具，以及在每个轮次对话中传递客户端上下文。此外，将每个工具调用记录到分析，并在模型完成后自动触发一个后续轮次，所有这些都无需替换 <code>onChatMessage</code> 函数。</p>
+<h3>持久性内存与长对话</h3>
+<p>Think 以 <a href="https://developers.cloudflare.com/agents/api-reference/sessions/?cf_target_id=E7A3D837FA7DC4C7DDA822B3DE0F831B" target="_blank" rel="noopener noreferrer"><u>Session API</u></a> 作为其存储层而构建，提供内置分支的树状结构化消息。</p>
+<p>除此之外，它还通过<strong>上下文块</strong>添加持久性内存。这些是系统提示词的结构化部分，可供模型读取并随时间更新，且在休眠后仍然保留<strong>。</strong>模型会看到“MEMORY（重要信息，请使用 set_context 进行更新）[42%，462/1100 个词元]”，且可以主动记住信息。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">configureSession</span><span class="sk-24292e-fff">(session: Session) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> session</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">withContext</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"soul"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      provider: { </span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> "You are a helpful coding assistant."</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">withContext</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"memory"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      description: </span><span class="sk-032f62-99ffe4">"Important facts learned during conversation."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      maxTokens: </span><span class="sk-005cc5-ffc799">2000</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">withCachedPrompt</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>会话非常灵活。每个智能体可以运行多个对话，并且可以分叉这些对话以尝试不同的方向，而不会丢失原始对话。<strong>&nbsp;</strong></p>
+<p>随着上下文的增加，Think 会使用非破坏性压缩方法来解决限制。总结较早的消息而不是删除，同时完整的历史记录仍然存储在 SQLite 中。<strong>&nbsp;</strong></p>
+<p>还内置了搜索功能。使用 FTS5，可以查询会话内或所有会话的对话历史记录。智能体还能够利用 <code>search_context</code> 工具，搜索自己的历史记录。</p>
+<h3>集成的完整执行层级</h3>
+<p>将完整的执行层级集成到单个 <code>getTools()</code> 返回中：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Think } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkspaceTools } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think/tools/workspace"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createExecuteTool } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think/tools/execute"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createBrowserTools } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think/tools/browser"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createSandboxTools } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think/tools/sandbox"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createExtensionTools } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think/tools/extensions"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Think</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-e36209-fff">  extensionLoader</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">LOADER</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getModel</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* ... */</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getTools</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      execute: </span><span class="sk-6f42c1-ffc799">createExecuteTool</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        tools: </span><span class="sk-6f42c1-ffc799">createWorkspaceTools</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.workspace),</span></span>
+<span class="line"><span class="sk-24292e-fff">        loader: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">LOADER</span></span>
+<span class="line"><span class="sk-24292e-fff">      }),</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      ...</span><span class="sk-6f42c1-ffc799">createBrowserTools</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">BROWSER</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      ...</span><span class="sk-6f42c1-ffc799">createSandboxTools</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">SANDBOX</span><span class="sk-24292e-fff">), </span><span class="sk-6a737d-8b8b8b94">// configured per-agent: toolchains, repos, snapshots</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      ...</span><span class="sk-6f42c1-ffc799">createExtensionTools</span><span class="sk-24292e-fff">({ manager: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.extensionManager</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff"> }),</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      ...</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.extensionManager</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">getTools</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>自主编写扩展</h3>
+<p>Think 将代码执行功能提升到全新的层次。智能体可以编写自己的扩展：在 Dynamic Workers 中运行的 TypeScript 程序，用于声明网络访问和工作区操作的权限。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"github"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GitHub integration: PRs, issues, repos"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "tools"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"create_pr"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"list_issues"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"review_pr"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "permissions"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "network"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"api.github.com"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "workspace"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"read-write"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Think 的 <code>ExtensionManager</code> 会使用 <code>@cloudflare/worker-bundler</code> 打包扩展（可以选择包含 npm 依赖项），将其加载到 Dynamic Worker 中，并注册新工具。该扩展程序会持久保存在 DO 存储中，并且在休眠后仍然有效。用户下次询问拉取请求时，智能体会拥有一个 30 秒前尚不存在的 <code> github_create_pr </code> 工具。</p>
+<p>这种自我改进的循环，让 AI 智能体随着时间的推移变得越来越实用。不是通过微调或 RLHF，而是通过代码本身实现改进。智能体能够自行编写新功能，所有代码均采用沙盒化、可审核且可撤销的 TypeScript 编写。</p>
+<h3>子智能体 RPC</h3>
+<p>Think 也可以充当子智能体，由父智能体通过 RPC 发起 <code>chat()</code> 调用，通过回调函数接收流式传输事件：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> researcher</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">subAgent</span><span class="sk-24292e-fff">(ResearchSession, </span><span class="sk-032f62-99ffe4">"research"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> researcher.</span><span class="sk-6f42c1-ffc799">chat</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Research this: ${</span><span class="sk-24292e-fff">task</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">, streamRelay);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>每个子智能体都拥有自己的对话树、记忆、工具和模型。父智能体无需了解具体细节。</p>
+<h3>开始使用</h3>
+<p>Project Think 目前处于实验阶段。虽然 API 接口稳定，但会在未来几天和几周内持续改进。Cloudflare 内部已将其用于构建自己的后台智能体基础设施，现在提前发布，便于用户可以与我们一起开发。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/think</span><span class="sk-032f62-99ffe4"> agents</span><span class="sk-032f62-99ffe4"> ai</span><span class="sk-032f62-99ffe4"> @cloudflare/shell</span><span class="sk-032f62-99ffe4"> zod</span><span class="sk-032f62-99ffe4"> workers-ai-provider</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/server.ts</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Think } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/think"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { createWorkersAI } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "workers-ai-provider"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { routeAgentRequest } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyAgent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Think</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getModel</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> createWorkersAI</span><span class="sk-24292e-fff">({ binding: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> })(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "@cf/moonshotai/kimi-k2.5"</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-24292e-fff">      (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-6f42c1-ffc799"> routeAgentRequest</span><span class="sk-24292e-fff">(request, env)) </span><span class="sk-d73a49-a0a0a0">||</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    );</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">satisfies</span><span class="sk-6f42c1-ffc799"> ExportedHandler</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/client.tsx</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useAgent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "agents/react"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { useAgentChat } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai-chat/react"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> Chat</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> agent</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> useAgent</span><span class="sk-24292e-fff">({ agent: </span><span class="sk-032f62-99ffe4">"MyAgent"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">messages</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">sendMessage</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">status</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> useAgentChat</span><span class="sk-24292e-fff">({ agent });</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Render your chat UI</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Think 使用与 <code>@cloudflare/ai-chat</code> 相同的 WebSocket 协议，因此，现有 UI 组件可以开箱即用。如果您已经基于 <a href="https://developers.cloudflare.com/agents/api-reference/chat-agents" target="_blank" rel="noopener noreferrer"><code><u>AIChatAgent</u></code></a> 进行了构建，则无需更改客户端代码。</p>
+<h2>第三次浪潮</h2>
+<p>我们见证了 AI 智能体发展的三个时期：</p>
+<p><strong>第一个时期主要是聊天机器人。</strong>它们无状态、被动响应且比较脆弱。每次对话都是从头开始，没有记忆、没有工具，也无法执行任何操作。这让它们能够回答问题，但也将它们的功能限制在只能回答问题。</p>
+<p><strong>第二个时期是编码智能体。</strong>它们有状态、会使用工具，且功能远比聊天机器人更强大，例如 Pi、Claude Code、OpenClaw 和 Codex。这些智能体可以读取代码库、编写代码、执行代码并进行迭代。这证明，配备适当工具的 LLM 可以成为一台通用计算机，但它们只能在笔记本电脑上运行，供单个用户使用，且无法保证持久性。</p>
+<p><strong>如今，我们进入到第三个时期：智能体作为基础设施。</strong>它们具备持久化、分布式、结构安全、无服务器的特点。这些智能体运行在互联网上，经历故障后仍可运行，闲置时不产生任何成本，并通过架构而非行为来确保安全性。任何开发人员均可构建并部署智能体，服务于任意数量的用户。</p>
+<p>这是我们看好的发展方向。</p>
+<p>目前，Agents SDK 已为数千个生产环境智能体提供支持。凭借 Project Think 及其引入的基础组件，我们将添加缺失的组件，从而显著提高这些智能体的功能：持久工作区、沙箱代码执行、持久的长时间运行任务、结构化安全性、子智能体协调，以及自主编写扩展。</p>
+<p>现已推出预览版。我们将与您一同构建，并真切地期待看到您（以及您的编码智能体）使用它来创作哪些精彩的作品。</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><sup><em>Think 是 Cloudflare Agents SDK 的一部分，提供 @cloudflare/think 供选择。本博客文章所述的这些功能处于预览阶段。我们会根据用户反馈，不断改进 API。请查看<a href="https://github.com/cloudflare/agents/blob/main/docs/think/index.md" target="_blank" rel="noopener noreferrer"><u>文档</u></a>和<a href="https://github.com/cloudflare/agents/tree/main/examples/assistant" target="_blank" rel="noopener noreferrer"><u>示例</u></a>，开始使用。</em></sup></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3200 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW449MZWKJNNEBP4805C2CT1.png&amp;w=1200&amp;h=295&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="295" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
+</figure>

@@ -1,0 +1,72 @@
+<p>我們透過在 Cloudflare <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Containers</u></a> 的基礎上重建，為 Browser Run 實現了更高的使用限制、更快的效能及更好的可靠性。</p>
+<p>現在您可以透過 Workers 繫結每分鐘啟動 60 個瀏覽器，並同時執行最多 120 個——這是先前限制的 4 倍。此外，<a href="https://developers.cloudflare.com/browser-run/quick-actions" target="_blank" rel="noopener noreferrer"><u>Quick Action</u></a> 的回應時間下降了超過 50%。您無需進行任何變更：這些改進已於今日上線。除此之外，我們現在能以更快的速度發布修正和新功能。請繼續閱讀，瞭解我們如何實現這些改進並查看相關數據。</p>
+<h3>提醒一下：Browser Run 是什麼？</h3>
+<p><a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>Browser Run</u></a> 讓開發人員能夠以程式化方式控制執行於 Cloudflare 全球網路之上的無頭瀏覽器執行個體並與之互動。這對於 Web 應用程式的端對端測試、安全調查可疑 URL，以及利用瀏覽器輕鬆轉譯 PDF 文件等功能非常有用，同時也能執行其他快速操作，例如擷取螢幕畫面和提取內容。最近，它更成為 AI 智慧體與網路互動的重要推動者。我們正將 Browser Run 打造為一個能以大規模、負責任的方式使用自動化瀏覽器的首選平台。</p>
+<h3>告別「上下鋪」：獨立基礎架構勢在必行</h3>
+<p>在採用 Cloudflare Containers 之前，我們是與<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer"><u>瀏覽器隔離</u></a> (BISO) 共用基礎架構。雖然技術上類似，但 BISO 使用的容器映像檔較大，導致啟動與開發速度變慢。更關鍵的是，BISO 瀏覽器缺乏最佳化的全球分佈，影響了韌性與延遲表現。此外，BISO 典型使用者偏向長時間、穩定的工作階段，與 Browser Run 短暫、高突發性的使用模式相衝突，進而造成擴展瓶頸與可用性延遲。</p>
+<p>所幸，經過內部大量開發後，Cloudflare 於<a href="https://blog.cloudflare.com/cloudflare-containers-coming-2025" target="_blank" rel="noopener noreferrer"><u>去年推出了支援 Durable Object (DO) 的 Containers 公開測試版</u></a>，這意味著我們已準備好嘗試採用，最終使兩個產品平台都受益。正如大多數成功的產品平台一樣，只要技術可行，我們始終堅持基於自身平台進行建置；這樣做的目的是為了確保我們能在外部客戶遭遇任何痛點之前，率先感知並解決這些問題。</p>
+<h3>遷移：Containers</h3>
+<p>我們開始了漸進式遷移，在傳入請求路徑中插入一個 Worker，為少數使用者提供由 Container 驅動的瀏覽器，同時保留 BISO 提供的瀏覽器。開發期間的這種雙重支援至關重要：它讓我們能夠比較效能、隔離實作錯誤，並最終對 Container 驅動方法帶來的好處充滿信心。</p>
+<p>在逐步擴大採用範圍時，我們先針對所有「Quick Actions」端點使用 Container 瀏覽器，接著對透過 Workers 瀏覽器繫結連線的免費帳戶使用，然後是隨用隨付帳戶，以驗證穩定性；最後才推廣至所有其餘的合約客戶，確保整個轉換過程無需客戶採取任何動作或重新部署既有的 Worker。</p>
+<h3>挑戰：效能和擴展瓶頸</h3>
+<p>然而，在我們這端，要熟悉一個新穎且不穩定的早期 Containers 平台介面，也面臨到全新的挑戰。這個平台的文件稀少、可觀測性不足，而且重疊時區的同事也不多。不過，我們作為<a href="https://www.cloudflare.com/en-gb/the-net/top-of-mind-security/customer-zero" target="_blank" rel="noopener noreferrer"><u>「零號客戶」</u></a>(Customer Zero) 向內部團隊提供的回饋，能夠形成緊密的意見回饋循環，進而帶來重大的升級，這也讓外部客戶受益。儘管如此，初期還是遇到許多阻礙，鑑於這尚處於積極開發中的「封閉測試」階段，其中大部分阻礙其實都在意料之中。其他需要克服的障礙則源自於新的技術環境。</p>
+<p>舉例來說，一旦我們的瀏覽器能夠在全球運作，我們的架構就必須調整。具備 DO 功能的 Containers 會盡可能在靠近傳入請求的位置建立 Durable Object，但與之相連的 Container 可能在地球的另一端啟動。對於像是「啟動我的應用程式」這種一次性訊息來說，這沒有問題。但是，當您在它們之間建立 WebSocket，並且為了單一個螢幕畫面截取請求而交換數十條訊息時，那些在全球之間傳輸所多出來的毫秒級延遲就會累積起來，變得不容忽視。</p>
+<p>我們的解決方案是什麼呢？建立預先暖機的 DO 後端瀏覽器容器的區域集區，以限制 DO 與容器之間的最大距離（進而限制最大延遲）。當請求進來時，我們會在該區域內挑選離使用者最近的 DO-容器配對。這樣可以同時保持兩個躍點的低延遲：從使用者到 DO，以及從 DO 到容器。這為我們的整體架構增加了一些活動部件，但我們認為只要能夠觀測到每個瀏覽器的全球狀態，以便根據變動的需求來配置與重新配置容量，這就非常值得。這在某種程度上是 <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer"><u>Workers KV</u></a> 的完美使用案例。</p>
+<p>從去年初開始，對我們無頭瀏覽器的需求就一直在增加。簡而言之，AI 智慧體開發者發現了 Browser Run，並很快地讓請求量超出了我們現有的容量。我們很快就遇到了瓶頸：無法以可擴展的方式快速調整集區容量來滿足這項新需求。KV 大約 30 秒的<em>最終</em>一致性，開始成為我們關鍵請求路徑上的瓶頸。可能當您檢查 KV 時，看到某個容器標示為「可用」，但等到您路由到它時（30 秒後），它已經被佔用了。這種延遲會造成競爭條件和瀏覽器的過度配置，嚴重限制了我們擴展以應對需求高峰的速度。</p>
+<h3>從 KV 遷移至 D1 + Queues</h3>
+<p>先前，我們將每個容器的狀態儲存在 KV 中。這表示，由於快取 TTL 的關係，我們可能會不斷取得一分鐘前的狀態（最近 <a href="https://developers.cloudflare.com/changelog/post/2026-01-30-kv-reduced-minimum-cachettl" target="_blank" rel="noopener noreferrer"><u>KV 已將最低快取 TTL 改為 30 秒</u></a>，但即便如此，這個值還是太高）。</p>
+<p>我們決定將容器狀態遷移到 <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> 執行個體中。D1 的交易特性在此非常適合。一旦我們將瀏覽器指派給使用者，它就獨屬於該使用者。瀏覽器不是共用資源。SQLite 交易確保了原子性分配，並防止兩個請求可能同時搶佔同一個瀏覽器的競爭條件。</p>
+<p>以下是我們取得瀏覽器查詢的簡化版本：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">WITH</span><span class="sk-24292e-fff"> candidate_pool </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    -- candidate pool logic to pick based on latency and other rules</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">UPDATE</span><span class="sk-24292e-fff"> containers</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">SET</span><span class="sk-d73a49-ffc799"> status</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'picked'</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-24292e-fff"> sessionId </span><span class="sk-d73a49-ffc799">IN</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    SELECT</span><span class="sk-24292e-fff"> sessionId</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    FROM</span><span class="sk-24292e-fff"> candidate_pool</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    ORDER BY</span><span class="sk-24292e-fff"> RANDOM()</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    LIMIT</span><span class="sk-24292e-fff"> ?</span><span class="sk-005cc5-ffc799">5</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">RETURNING </span><span class="sk-d73a49-ffc799">data</span></span></code></pre>
+</div>
+<p>我們為<a href="https://developers.cloudflare.com/d1/configuration/data-location/#available-location-hints" target="_blank" rel="noopener noreferrer"><u>每個地點</u></a>保留 D1 分片。考慮到我們可能同時執行數千個容器，而且每個容器每 5 秒需要更新其狀態，我們一直遇到一個問題：<a href="https://developers.cloudflare.com/d1/platform/limits/#concurrency-and-throughput" target="_blank" rel="noopener noreferrer"><u>資料庫會過載</u></a>。舉例來說，如果每次寫入需要 1 毫秒，我們每秒最多只能寫入 1000 次。這意味著每次寫入一列時，我們只能擁有 5000 個容器，超過就會使資料庫過載。</p>
+<p>然而，如果我們批次處理這些寫入作業，就可以獲得更高的數值，因為批次寫入的時間並不會比單次寫入長多少，因此我們可以將輸送量提高數個數量級。在我們的情況中，我們使用 100 列的批次，這表示現在每個地點最多可以更新 500,000 個容器。這樣的餘裕意味著容量規劃不再是瓶頸。</p>
+<p>目前，我們批次寫入的 P95 是 0.1 毫秒！</p>
+<p>為了批次寫入，我們使用了 <a href="https://www.cloudflare.com/developer-platform/products/cloudflare-queues" target="_blank" rel="noopener noreferrer"><u>Queues</u></a>：每 5 秒鐘，每個容器會計算自己的狀態，並將其加入到所屬地點的佇列中。然後，我們<a href="https://developers.cloudflare.com/queues/configuration/batching-retries/#batching" target="_blank" rel="noopener noreferrer"><u>設定一個批次大小為 100、批次逾時為 1 秒的 Worker 消費者</u></a>：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    ...</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "queues"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "consumers"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">            {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                "queue"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"production-core-containers-queue-weur"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                "max_batch_size"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">100</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                "max_batch_timeout"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">                "max_retries"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">            ...</span></span>
+<span class="line"><span class="sk-24292e-fff">        ]</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>透過這樣的設定，我們能將可接受的延遲時間控制在遠低於 2 秒。儘管如此，佇列積壓仍可能導致狀態過時。當這種情況發生時，每個區域會退回到指定的備用區域，直到主要佇列跟上進度為止。</p>
+<h3>快速動作的額外好處</h3>
+<p>有了專屬的基礎架構，我們現在可以升級瀏覽器容器映像檔，而不會產生不必要的副作用，或是讓其他產品（如 BISO）變得臃腫。這為最佳化快速動作（例如擷取螢幕畫面和內容擷取）打開了大門。過去，我們的 Worker 會與遠端瀏覽器建立 WebSocket，然後逐一傳送指令：開啟頁面、導覽到 URL、等待頁面載入，然後擷取螢幕畫面。每個步驟都必須完成後，才能開始下一個步驟。</p>
+<p>然而，現在我們將所有參數透過單一 HTTP 請求直接傳送給容器，整個流程在內部執行，不需要在 Worker 和瀏覽器之間來回通訊。</p>
+<h3>結果：大幅提升效能並提高限制</h3>
+<p>我們觀察到平均快速動作回應時間急遽下降，因為使用者能夠在更短的時間內從瀏覽器工作階段取得所需的資訊：減少等待瀏覽器就緒的時間，並加快處理其 <a href="https://chromedevtools.github.io/devtools-protocol" target="_blank" rel="noopener noreferrer"><u>DevTools Protocol</u></a> 訊息的速度。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="274" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=715&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=640&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=715&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=750&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=828&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=1080&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=1280&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=1430&amp;h=548&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3042 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465ZAJGWM01283ENEE4A8X.png&amp;w=1920&amp;h=737&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="737" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="274" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>克服了在新的規模下進行即時狀態管理的挑戰，意味著我們能有更多時間在實驗場中探索並開發新功能，例如我們最近推出的 <a href="https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl 端點</u></a>。</p>
+<h3>更好的瀏覽器靈活性</h3>
+<p>我們也因為擺脫了共用的瀏覽器隔離容器，而獲得了另一個重要好處：更快速的升級。</p>
+<p>當我們的瀏覽器在共用的產品基礎架構上執行時，升級 Chrome 意味著需要跨多個團隊和產品進行協調，而每個團隊和產品都有自己的開發藍圖和優先事項。然而，現在我們執行自己的容器映像檔，就能以更快的節奏進行升級。例如，WebGL（一項備受期待的功能）現在已可用於基於瀏覽器的渲染，同時 WebMCP（適用於 Web 的模型情境通訊協定）也實現了新的智慧體互動模式。這兩項功能之所以能實現，是因為我們可以控制瀏覽器版本和標誌，而不會對 Cloudflare 的其他產品產生不必要的副作用。</p>
+<p>簡而言之，我們在大規模釋放瀏覽器潛能（尤其是針對智慧體開發領域）的征途上，才剛踏出第一步。我們誠摯地邀請您也加入其中——歡迎查閱我們的<a href="https://developers.cloudflare.com/browser-run" target="_blank" rel="noopener noreferrer"><u>相關文件</u></a>。</p>
+<h3>開始使用</h3>
+<p>Browser Run 適用於所有 Workers 方案。從<a href="https://developers.cloudflare.com/browser-rendering/get-started" target="_blank" rel="noopener noreferrer"><u>快速入門指南</u></a>開始，探索 <a href="https://developers.cloudflare.com/browser-rendering/rest-api" target="_blank" rel="noopener noreferrer"><u>Quick Actions</u></a>，或嘗試 <a href="https://developers.cloudflare.com/browser-rendering/rest-api/crawl-endpoint" target="_blank" rel="noopener noreferrer"><u>/crawl 端點</u></a>，以從任何網頁深度擷取資料，並跟隨連結遍歷整個網站。</p>
+<p>正在建構 AI 智慧體？請查看我們的 <a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Agents SDK</u></a>，其中內建了 Browser Run 支援。</p>

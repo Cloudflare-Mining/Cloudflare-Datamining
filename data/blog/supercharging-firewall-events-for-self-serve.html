@@ -1,85 +1,32 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/supercharging-firewall-events-for-self-serve">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/supercharging-firewall-events-for-self-serve">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/supercharging-firewall-events-for-self-serve">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/supercharging-firewall-events-for-self-serve">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/AG5dfPUOAhHuw1oqKbMV0/00cb8efac637feaeb2770eb88e96b506/supercharging-firewall-events-for-self-serve.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Today, I’m very pleased to announce the release of a completely overhauled version of our Firewall Event log to our Free, Pro and Business customers. This new Firewall Events log is now available in your Dashboard, and you are not required to do anything to receive this new capability.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/141jSRK1fTPux3n04DH7ud/0dcd81e892295258abd387fcfa4fbb61/image1-6.png" alt="" class="kg-image" width="1999" height="1315" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="no-more-modals">No more modals!</h2>
-		<a href="https://blog.cloudflare.com/#no-more-modals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have done away with those pesky modals, providing a much smoother user experience. To review more detailed information about an event, you simply click anywhere on the event list row.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VRogojtxjTNxa5Xjo5UBK/6611c2560fd3b102c69f33a42a3de1f2/image4-3.png" alt="" class="kg-image" width="1999" height="866" loading="lazy">
-
-	</figure>
-	<p>In the expanded view, you are provided with all the information you may need to identify or diagnose issues with your Firewall or find more details about a potential threat to your application.</p>
-	<div class="flex anchor relative">
-		<h2 id="additional-matches-per-event">Additional matches per event</h2>
-		<a href="https://blog.cloudflare.com/#additional-matches-per-event" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare has several Firewall features to give customers granular control of their security. With this control comes some complexity when debugging why a request was stopped by the Firewall. To help clarify what happened, we have provided an “Additional matches” count at the bottom for events triggered by multiple services or rules for the same request. Clicking the number expands a list showing each rule and service along with the corresponding action.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4fqalGyuTVZGq4sEX8Dtl8/cf7278c59f4e83c748083ffadc512a9c/image5.png" alt="" class="kg-image" width="1999" height="1440" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="search-for-any-field-within-a-firewall-event">Search for any field within a Firewall Event</h2>
-		<a href="https://blog.cloudflare.com/#search-for-any-field-within-a-firewall-event" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is one of my favourite parts of our new Firewall Event Log. Many of our customers have expressed their frustration with the difficulty of pinpointing specific events. This is where our new search capabilities come into their own. Customers can now filter and freeform search for any field that is visible in a Firewall Event!</p>
-	<p>Let’s say you want to find all the requests originating from a specific ISP or country where your Firewall Rules issued a JavaScript challenge. There are two different ways to do this in the UI.</p>
-	<p>Firstly, when in the detail view, you can create an <i>include</i> or <i>exclude</i> filter for that field value.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xIXJmuiiwnn8xlida4IaN/0af3214cc4f4b70b265f7d84a541a1a8/image6.gif" alt="" class="kg-image" width="1024" height="898" loading="lazy">
-
-	</figure>
-	<p>Secondly, you can create a freeform filter using the “+ Add Filter” button at the top, or edit one of the already filtered fields:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xg5KWxcCmxUCyRrNsw6dp/9e43274178c59c966ce32dfad233cdd0/image2.gif" alt="" class="kg-image" width="1030" height="484" loading="lazy">
-
-	</figure>
-	<p>As illustrated above, with our WAF Managed Rules enabled in log only, we can see all the rules which would have triggered if this was a legitimate attack. This allows you to confirm that your configuration is working as expected.</p>
-	<div class="flex anchor relative">
-		<h2 id="scoping-your-search-to-a-specific-date-and-time">Scoping your search to a specific date and time</h2>
-		<a href="https://blog.cloudflare.com/#scoping-your-search-to-a-specific-date-and-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In our old Firewall Event Log, to find an event, users had to traverse through many pages to find Events from a specific date. The last major change we have added is the capability to select a time window to view events between two points in time over the last 2 weeks. In the time selection window, Free and Pro customers can choose a 24 hour time window and our Business customers can view up to 72 hours.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4tHEAR3fymBerYnU86FSsk/4424d791d85ecaede8c05cb639c1c326/image3.gif" alt="" class="kg-image" width="1012" height="709" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="we-want-your-feedback">We want your feedback!</h2>
-		<a href="https://blog.cloudflare.com/#we-want-your-feedback" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We need your help! Please feel free to leave any feedback on our <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Community forums</a>, or open a Support ticket with any problems you find. Your feedback is critical to our product improvement process, and we look forward to hearing from you.</p>
-</div>
+<p>Today, I’m very pleased to announce the release of a completely overhauled version of our Firewall Event log to our Free, Pro and Business customers. This new Firewall Events log is now available in your Dashboard, and you are not required to do anything to receive this new capability.</p>
+<h2>No more modals!</h2>
+<p>We have done away with those pesky modals, providing a much smoother user experience. To review more detailed information about an event, you simply click anywhere on the event list row.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="310" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=715&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=750&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=828&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1080&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1280&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1430&amp;h=620&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Supercharging Firewall Events for Self-Serve Embedded Image - aN1ore" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49BM118FXMHGQ4TDJPRATK.png&amp;w=1920&amp;h=832&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="832" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="310" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>In the expanded view, you are provided with all the information you may need to identify or diagnose issues with your Firewall or find more details about a potential threat to your application.</p>
+<h2>Additional matches per event</h2>
+<p>Cloudflare has several Firewall features to give customers granular control of their security. With this control comes some complexity when debugging why a request was stopped by the Firewall. To help clarify what happened, we have provided an “Additional matches” count at the bottom for events triggered by multiple services or rules for the same request. Clicking the number expands a list showing each rule and service along with the corresponding action.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Supercharging Firewall Events for Self-Serve Embedded Image - KEVQ6K" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46X3EAV8Q094B8655FCFF7.png&amp;w=1920&amp;h=1383&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1383" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
+</figure>
+<h2>Search for any field within a Firewall Event</h2>
+<p>This is one of my favourite parts of our new Firewall Event Log. Many of our customers have expressed their frustration with the difficulty of pinpointing specific events. This is where our new search capabilities come into their own. Customers can now filter and freeform search for any field that is visible in a Firewall Event!</p>
+<p>Let’s say you want to find all the requests originating from a specific ISP or country where your Firewall Rules issued a JavaScript challenge. There are two different ways to do this in the UI.</p>
+<p>Firstly, when in the detail view, you can create an <em>include</em> or <em>exclude</em> filter for that field value.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="627" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW492HR2KVY35QSVNRS7ATCP.gif" alt="Supercharging Firewall Events for Self-Serve Embedded Image - UJKQjF" width="715" height="627" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>Secondly, you can create a freeform filter using the “+ Add Filter” button at the top, or edit one of the already filtered fields:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47TAD041SCRM71KYNKFW15.gif" alt="Supercharging Firewall Events for Self-Serve Embedded Image - PXVh5z" width="715" height="336" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>As illustrated above, with our WAF Managed Rules enabled in log only, we can see all the rules which would have triggered if this was a legitimate attack. This allows you to confirm that your configuration is working as expected.</p>
+<h2>Scoping your search to a specific date and time</h2>
+<p>In our old Firewall Event Log, to find an event, users had to traverse through many pages to find Events from a specific date. The last major change we have added is the capability to select a time window to view events between two points in time over the last 2 weeks. In the time selection window, Free and Pro customers can choose a 24 hour time window and our Business customers can view up to 72 hours.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="501" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW472AC8425RFH9KEE97SKD8.gif" alt="Supercharging Firewall Events for Self-Serve Embedded Image - IMEmBK" width="715" height="501" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h2>We want your feedback!</h2>
+<p>We need your help! Please feel free to leave any feedback on our <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Community forums</a>, or open a Support ticket with any problems you find. Your feedback is critical to our product improvement process, and we look forward to hearing from you.</p>

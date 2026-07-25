@@ -1,202 +1,113 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/introducing-automatic-audit-logs">简体中文</a> and <a href="https://blog.cloudflare.com/zh-tw/introducing-automatic-audit-logs">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Iy1bsPCw6N0Y7GuWDDcKB/9a974f2eebdceb8a4978582631ed39a6/Social_Blog.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<div class="flex anchor relative">
-		<h2 id="what-are-audit-logs-and-why-do-they-matter">What are audit logs and why do they matter?</h2>
-		<a href="https://blog.cloudflare.com/#what-are-audit-logs-and-why-do-they-matter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Audit logs are a critical tool for tracking and recording changes, actions, and resource access patterns within your Cloudflare environment. They provide visibility into who performed an action, what the action was, when it occurred, where it happened, and how it was executed. This enables security teams to identify vulnerabilities, ensure regulatory compliance, and assist in troubleshooting operational issues. Audit logs provide critical transparency and accountability. That's why we're making them "automatic" — eliminating the need for individual Cloudflare product teams to manually send events. Instead, audit logs are generated automatically in a standardized format when an action is performed, providing complete visibility and ensuring comprehensive coverage across all our products.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-new">What's new?</h2>
-		<a href="https://blog.cloudflare.com/#whats-new" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We're excited to announce the beta release of Automatic Audit Logs — a system that unifies audit logging across Cloudflare products. This new system is designed to give you a complete and consistent view of your environment’s activity. Here’s how we’ve enhanced our audit logging capabilities:</p>
-	<ul>
-		<li>
-			<p><b>Standardized logging: </b>Previously, audit logs generation was dependent on separate internal teams, which could lead to gaps and inconsistencies. Now, audit logs are automatically produced in a seamless and standardized way, eliminating reliance on individual teams and ensuring consistency across all Cloudflare services.</p>
-		</li>
-		<li>
-			<p><b>Expanded Product Coverage: </b>Automatic Audit Logs now extend our coverage from 62 to 111 products, boosting overall coverage from 75% to 95%. We now capture actions from key endpoints such as the <code>/accounts</code>, <code>/zones</code>, and <code>/organizations</code> APIs.</p>
-		</li>
-		<li>
-			<p><b>Granular Filtering: </b>With uniformly formatted logs, you can quickly pinpoint specific actions, users, methods, and resources, making investigations faster and more efficient.</p>
-		</li>
-		<li>
-			<p><b>Enhanced Context and Transparency: </b>Each log entry includes detailed context like the authentication method used, whether the action was performed via the API or Dashboard, and mappings to Cloudflare Ray IDs for better traceability.</p>
-		</li>
-		<li>
-			<p><b>Comprehensive Activity Capture: </b>In addition to create, edit, and delete actions, the system now records GET requests and failed attempts, ensuring that no critical activity goes unnoticed.</p>
-		</li>
-	</ul>
-	<p>This new system reflects Cloudflare's commitment to building a safer, more transparent Internet. It also supports Cloudflare's pledge to <a href="https://blog.cloudflare.com/secure-by-design-principles"><u>CISA’s Cybersecurity Commitment</u></a>, reinforcing our dedication to increase our customers’ ability to gather evidence of cybersecurity intrusions.</p>
-	<p>Automatic Audit Logs (beta release) is available exclusively through the <a href="https://developers.cloudflare.com/api/resources/audit_logs/methods/list" target="_blank" rel="noopener noreferrer"><u>API</u></a>.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="the-journey-of-an-audit-log-how-cloudflare-creates-reliable-secure-records">The journey of an audit log: how Cloudflare creates reliable, secure records</h2>
-		<a href="https://blog.cloudflare.com/#the-journey-of-an-audit-log-how-cloudflare-creates-reliable-secure-records" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At Cloudflare, we’ve always made audit logs available through the <a href="https://developers.cloudflare.com/api/resources/audit_logs/methods/list" target="_blank" rel="noopener noreferrer"><u>Audit Log API</u></a>, but the experience has not been very consistent.</p>
-	<p>Why? Individual product teams were responsible for creating and maintaining their audit logs. This resulted in inconsistencies, gaps in coverage, and a fragmented user experience</p>
-	<p>Recognizing the importance of reliable audit logs, we set out to improve coverage across all Cloudflare products. Our goal was to standardize, secure, and automate the process, giving users comprehensive insights into user-initiated actions while enhancing visibility and usability. Let’s take a closer look at how an audit log is created at Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h3 id="which-apis-are-audit-logged"><b>Which APIs are audit logged?</b>&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#which-apis-are-audit-logged" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Audit logs are generated for all user requests made via the public API or the Cloudflare dashboard. While a few exceptions exist, such as GraphQL requests and static assets, the majority of user actions are captured.</p>
-	<p>When a user action occurs, the request is forwarded to our audit logging pipeline. This ensures logs are generated automatically for all products, close to the source of the action, and capturing the most relevant details.</p>
-	<p>For <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer"><u>RESTful</u></a> APIs that produce JSON, sanitized request bodies are logged to prevent any sensitive information from being included in the audit logs. For GET requests, which are typically read-only and may generate large responses, only the action performed and the resource accessed are logged, avoiding unnecessary overhead while still maintaining essential visibility.</p>
-	<div class="flex anchor relative">
-		<h3 id="streaming-http-requests">Streaming HTTP requests</h3>
-		<a href="https://blog.cloudflare.com/#streaming-http-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Any user-initiated action on Cloudflare, whether through the API or the Dashboard, is handled by the API Gateway. The HTTP request, along with its corresponding request and response data, is then forwarded to a <a href="https://www.cloudflare.com/en-gb/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Worker</u></a> called the Audit Log Redactor. This allows audit logging to happen automatically without relying on internal teams to send events.</p>
-	<p>To minimise the latency, the API Gateway streams these requests to the redactor Worker via <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC (Remote Procedure Calls</u></a>) using service bindings. This approach ensures the requests are successfully sent without going through a publicly-accessible URL.</p>
-	<div class="flex anchor relative">
-		<h3 id="redacting-sensitive-information">Redacting sensitive information</h3>
-		<a href="https://blog.cloudflare.com/#redacting-sensitive-information" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once the Worker receives the HTTP request, it references the <a href="https://blog.cloudflare.com/open-api-transition"><u>Cloudflare OpenAPI Schema</u></a> to handle sensitive information. OpenAPI is a widely adopted, machine-readable, and human-friendly specification format that is used to define HTTP APIs. It relies on <a href="https://blog.postman.com/what-is-json-schema" target="_blank" rel="noopener noreferrer"><u>JSON Schema</u></a> to describe the API’s underlying data.&nbsp;&nbsp;</p>
-	<p>Using the <a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer"><u>OpenAPI Schema</u></a>, the redactor Worker identifies the corresponding API schema for the HTTP request. It then redacts any sensitive information, leaving only those explicitly marked as <b>auditable</b> in the schema. This redaction process ensures that no sensitive data progresses further down the pipeline while retaining enough information to debug and analyze how an action impacted a resource’s value.</p>
-	<p>Each Cloudflare product team defines its APIs within the OpenAPI schema and marks specific fields as auditable. This provides visibility into resource changes while safeguarding sensitive data.</p>
-	<p>Once redacted, the data moves through Cloudflare’s data pipeline. This <a href="https://blog.cloudflare.com/cloudflare-incident-on-november-14-2024-resulting-in-lost-logs/#system-architecture"><u>pipeline</u></a> includes several key components including Logfwdr, Logreceiver and Buftee buffers, where the sanitized data is eventually pushed, awaiting further processing.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aWb850BBQPt7iRNZk0rs9/2d18bd6e22f6f28e352666015ae15c1e/image1.png" alt="" class="kg-image" width="1508" height="976" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="ingesting-and-building-the-audit-log">Ingesting and building the audit log</h3>
-		<a href="https://blog.cloudflare.com/#ingesting-and-building-the-audit-log" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Ingestor service consumes messages from Buftee buffers and transforms individual requests into audit log records. Using a fixed schema, the Ingestor ensures that audit logs remain standardized across all Cloudflare products, regardless of scale.</p>
-	<p>Because API Gateway — the system from which the majority of Automatic Audit Logs are recorded, as noted above — handles tens of thousands of requests per second, the Ingestor was designed to process multiple requests concurrently.&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ZdjrAiIP6Eu9DgsfDiRX5/6b19819a78911440b173e685ae9b6224/image2.png" alt="" class="kg-image" width="1999" height="845" loading="lazy">
-	</figure>
-	<p><sup><i>Plot of audit requests rate. x-axis indicates the time and y-axis indicates the total number of audit requests handled per second.</i></sup></p>
-	<div class="flex anchor relative">
-		<h3 id="enriching-and-storing-the-logs">Enriching and storing the logs</h3>
-		<a href="https://blog.cloudflare.com/#enriching-and-storing-the-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>From a security perspective, it is critical to capture who initiated a change and how they were authenticated. To achieve this, the audit log is enriched with user details and authentication information extracted from custom response headers.</p>
-	<p>Additional contextual details, such as the account name, are retrieved by making calls to internal services. To enhance performance, a read-through caching mechanism is used. The system checks the cache for responses first and if unavailable, it fetches the data from internal services and caches it for future use.</p>
-	<p>Once the audit logs are fully transformed and enriched, they are stored in a database in batches to prevent overwhelming the system. For the beta release, we are storing 30 days of audit logs in the database. This will be extended to 18 months for our GA (General Availability) release in the second half of 2025.</p>
-	<div class="flex anchor relative">
-		<h3 id="sample-audit-log">Sample audit log</h3>
-		<a href="https://blog.cloudflare.com/#sample-audit-log" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Here is a complete sample audit log generated when an alert notification policy is updated. It provides all the essential details to answer the who, what, when, where, and how of the action.</p>
-	<p>Audit logs are always associated with an account, and some actions also include user and zone information when relevant. The action section outlines what changed and when, while the actor section provides context on who made the change and how it was performed, including whether it was done via the API or through the UI.</p>
-	<p>Information about the resource is also included, so you can easily identify what was altered (in this case, the <a href="https://developers.cloudflare.com/waf/reference/alerts" target="_blank" rel="noopener noreferrer"><u>Advanced Security Events Alert</u></a> was updated). Additionally, raw API request details are provided, allowing users to trace the audit log back to a specific API call.</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">curl -X PUT https://api.cloudflare.com/client/v4/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt; --data-raw '{...'}</code></pre>
-
-	<pre class="language-JavaScript"><code class="language-JavaScript">       {
-            "account": {
-                "id": "&lt;account_id&gt;",
-                "name": "Example account"
-            },
-            "action": {
-                "description": "Update a Notification policy",
-                "result": "success",
-                "time": "2025-01-23T18:25:14.749Z",
-                "type": "update"
-            },
-            "actor": {
-                "context": "dash",
-                "email": "test@example.com",
-                "id": "&lt;actor-id&gt;",
-                "ip_address": "127.0.0.1",
-                "token": {},
-                "type": "user"
-            },
-            "id": "&lt;audit_log_id&gt;",
-            "raw": {
-                "cf_ray_id": "&lt;ray_id&gt;",
-                "method": "PUT",
-                "status_code": 200,
-                "uri": "/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt;",
-                "user_agent": "Postman"
-            },
-            "resource": {
-                "id": "&lt;resource-id&gt;",
-                "product": "alerting",
-                "request": {
-                    "alert_type": "clickhouse_alert_fw_ent_anomaly",
-                    "enabled": false,
-                    "filters": {
-                        "services": [
-                            "securitylevel",
-                            "ratelimit",
-                            "firewallrules"
-                        ],
-                        "zones": [
-                            "&lt;zone_id&gt;"
-                        ]
-                    },
-                    "name": "Advanced Security Events Alert"
-                },
-                "response": {
-                    "id": "&lt;resource_id&gt;"
-                },
-                "scope": "accounts",
-                "type": "policies"
-            }</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="upcoming-enhancements">Upcoming enhancements</h2>
-		<a href="https://blog.cloudflare.com/#upcoming-enhancements" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For General Availability (GA) we are focusing on developing a new user interface in the Dashboard for Automatic Audit Logs, extracting additional auditable fields for the audit logs — including system-initiated actions and user-level actions such as login events — and enabling audit log export via <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a>. In the longer term, we plan to introduce dashboards, trend analysis, and alerting features for audit logs to further enhance their utility and ease of use. By enhancing our audit log system, Cloudflare is taking another step toward empowering users to manage their environments with greater transparency, security, and efficiency.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="get-started-with-automatic-audit-logs">Get started with Automatic Audit Logs</h2>
-		<a href="https://blog.cloudflare.com/#get-started-with-automatic-audit-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Automatic Audit Logs</b> are now available for testing. We encourage you to explore the new features and provide your valuable feedback.</p>
-	<p>Retrieve audit logs using the following endpoint:</p>
-	<p><code>/accounts/&lt;account_id&gt;/logs/audit?since=&lt;date&gt;&amp;before=&lt;date&gt;</code></p>
-	<p>You can access detailed documentation for Automatic Audit Logs Beta API release <a href="https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit" target="_blank" rel="noopener noreferrer"><u>here</u></a>.&nbsp;</p>
-	<p><i>Please note that the Beta release does not include updates to the Audit Logs UI in the Cloudflare Dashboard. The existing UI and API for the current audit logs will remain available until we Automatic Audit Logs reach General Availability.</i></p>
-	<p><b>We want your feedback</b>: Your feedback is essential to improving Automatic Audit Logs. Please consider filling out a <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXGkJpOG1jUPEh-flJy9B13icmcdBhveFwe-X0EzQjJQnQfQ/viewform?usp=sharing" target="_blank" rel="noopener noreferrer"><u>short survey</u></a>.</p>
+<h2>What are audit logs and why do they matter?</h2>
+<p>Audit logs are a critical tool for tracking and recording changes, actions, and resource access patterns within your Cloudflare environment. They provide visibility into who performed an action, what the action was, when it occurred, where it happened, and how it was executed. This enables security teams to identify vulnerabilities, ensure regulatory compliance, and assist in troubleshooting operational issues. Audit logs provide critical transparency and accountability. That's why we're making them "automatic" — eliminating the need for individual Cloudflare product teams to manually send events. Instead, audit logs are generated automatically in a standardized format when an action is performed, providing complete visibility and ensuring comprehensive coverage across all our products.</p>
+<h2>What's new?</h2>
+<p>We're excited to announce the beta release of Automatic Audit Logs — a system that unifies audit logging across Cloudflare products. This new system is designed to give you a complete and consistent view of your environment’s activity. Here’s how we’ve enhanced our audit logging capabilities:</p>
+<ul>
+	<li><strong>Standardized logging: </strong>Previously, audit logs generation was dependent on separate internal teams, which could lead to gaps and inconsistencies. Now, audit logs are automatically produced in a seamless and standardized way, eliminating reliance on individual teams and ensuring consistency across all Cloudflare services.</li>
+	<li><strong>Expanded Product Coverage: </strong>Automatic Audit Logs now extend our coverage from 62 to 111 products, boosting overall coverage from 75% to 95%. We now capture actions from key endpoints such as the <code>/accounts</code>, <code>/zones</code>, and <code>/organizations</code> APIs.</li>
+	<li><strong>Granular Filtering: </strong>With uniformly formatted logs, you can quickly pinpoint specific actions, users, methods, and resources, making investigations faster and more efficient.</li>
+	<li><strong>Enhanced Context and Transparency: </strong>Each log entry includes detailed context like the authentication method used, whether the action was performed via the API or Dashboard, and mappings to Cloudflare Ray IDs for better traceability.</li>
+	<li><strong>Comprehensive Activity Capture: </strong>In addition to create, edit, and delete actions, the system now records GET requests and failed attempts, ensuring that no critical activity goes unnoticed.</li>
+</ul>
+<p>This new system reflects Cloudflare's commitment to building a safer, more transparent Internet. It also supports Cloudflare's pledge to <a href="https://blog.cloudflare.com/secure-by-design-principles" target="_blank" rel="noopener noreferrer"><u>CISA’s Cybersecurity Commitment</u></a>, reinforcing our dedication to increase our customers’ ability to gather evidence of cybersecurity intrusions.</p>
+<p>Automatic Audit Logs (beta release) is available exclusively through the <a href="https://developers.cloudflare.com/api/resources/audit_logs/methods/list" target="_blank" rel="noopener noreferrer"><u>API</u></a>.&nbsp;</p>
+<h2>The journey of an audit log: how Cloudflare creates reliable, secure records</h2>
+<p>At Cloudflare, we’ve always made audit logs available through the <a href="https://developers.cloudflare.com/api/resources/audit_logs/methods/list" target="_blank" rel="noopener noreferrer"><u>Audit Log API</u></a>, but the experience has not been very consistent.</p>
+<p>Why? Individual product teams were responsible for creating and maintaining their audit logs. This resulted in inconsistencies, gaps in coverage, and a fragmented user experience</p>
+<p>Recognizing the importance of reliable audit logs, we set out to improve coverage across all Cloudflare products. Our goal was to standardize, secure, and automate the process, giving users comprehensive insights into user-initiated actions while enhancing visibility and usability. Let’s take a closer look at how an audit log is created at Cloudflare.</p>
+<h3><strong>Which APIs are audit logged?</strong>&nbsp;</h3>
+<p>Audit logs are generated for all user requests made via the public API or the Cloudflare dashboard. While a few exceptions exist, such as GraphQL requests and static assets, the majority of user actions are captured.</p>
+<p>When a user action occurs, the request is forwarded to our audit logging pipeline. This ensures logs are generated automatically for all products, close to the source of the action, and capturing the most relevant details.</p>
+<p>For <a href="https://en.wikipedia.org/wiki/REST" target="_blank" rel="noopener noreferrer"><u>RESTful</u></a> APIs that produce JSON, sanitized request bodies are logged to prevent any sensitive information from being included in the audit logs. For GET requests, which are typically read-only and may generate large responses, only the action performed and the resource accessed are logged, avoiding unnecessary overhead while still maintaining essential visibility.</p>
+<h3>Streaming HTTP requests</h3>
+<p>Any user-initiated action on Cloudflare, whether through the API or the Dashboard, is handled by the API Gateway. The HTTP request, along with its corresponding request and response data, is then forwarded to a <a href="https://www.cloudflare.com/en-gb/developer-platform/products/workers" target="_blank" rel="noopener noreferrer"><u>Worker</u></a> called the Audit Log Redactor. This allows audit logging to happen automatically without relying on internal teams to send events.</p>
+<p>To minimise the latency, the API Gateway streams these requests to the redactor Worker via <a href="https://developers.cloudflare.com/workers/runtime-apis/rpc" target="_blank" rel="noopener noreferrer"><u>RPC (Remote Procedure Calls</u></a>) using service bindings. This approach ensures the requests are successfully sent without going through a publicly-accessible URL.</p>
+<h3>Redacting sensitive information</h3>
+<p>Once the Worker receives the HTTP request, it references the <a href="https://blog.cloudflare.com/open-api-transition" target="_blank" rel="noopener noreferrer"><u>Cloudflare OpenAPI Schema</u></a> to handle sensitive information. OpenAPI is a widely adopted, machine-readable, and human-friendly specification format that is used to define HTTP APIs. It relies on <a href="https://blog.postman.com/what-is-json-schema" target="_blank" rel="noopener noreferrer"><u>JSON Schema</u></a> to describe the API’s underlying data.&nbsp;&nbsp;</p>
+<p>Using the <a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer"><u>OpenAPI Schema</u></a>, the redactor Worker identifies the corresponding API schema for the HTTP request. It then redacts any sensitive information, leaving only those explicitly marked as <strong>auditable</strong> in the schema. This redaction process ensures that no sensitive data progresses further down the pipeline while retaining enough information to debug and analyze how an action impacted a resource’s value.</p>
+<p>Each Cloudflare product team defines its APIs within the OpenAPI schema and marks specific fields as auditable. This provides visibility into resource changes while safeguarding sensitive data.</p>
+<p>Once redacted, the data moves through Cloudflare’s data pipeline. This <a href="https://blog.cloudflare.com/cloudflare-incident-on-november-14-2024-resulting-in-lost-logs/#system-architecture" target="_blank" rel="noopener noreferrer"><u>pipeline</u></a> includes several key components including Logfwdr, Logreceiver and Buftee buffers, where the sanitized data is eventually pushed, awaiting further processing.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2635 image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4886YS0Z6H24ZNH7KZ19ZB.png&amp;w=1508&amp;h=976&amp;f=webp" data-lightbox-width="1508" data-lightbox-height="976" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Ingesting and building the audit log</h3>
+<p>The Ingestor service consumes messages from Buftee buffers and transforms individual requests into audit log records. Using a fixed schema, the Ingestor ensures that audit logs remain standardized across all Cloudflare products, regardless of scale.</p>
+<p>Because API Gateway — the system from which the majority of Automatic Audit Logs are recorded, as noted above — handles tens of thousands of requests per second, the Ingestor was designed to process multiple requests concurrently.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="302" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=640&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=750&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=828&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1080&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1280&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1430&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2635 image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HWDMSMBW91JSEGGV08Y5.png&amp;w=1920&amp;h=812&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="812" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="302" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>Plot of audit requests rate. x-axis indicates the time and y-axis indicates the total number of audit requests handled per second.</em></sup></p>
+<h3>Enriching and storing the logs</h3>
+<p>From a security perspective, it is critical to capture who initiated a change and how they were authenticated. To achieve this, the audit log is enriched with user details and authentication information extracted from custom response headers.</p>
+<p>Additional contextual details, such as the account name, are retrieved by making calls to internal services. To enhance performance, a read-through caching mechanism is used. The system checks the cache for responses first and if unavailable, it fetches the data from internal services and caches it for future use.</p>
+<p>Once the audit logs are fully transformed and enriched, they are stored in a database in batches to prevent overwhelming the system. For the beta release, we are storing 30 days of audit logs in the database. This will be extended to 18 months for our GA (General Availability) release in the second half of 2025.</p>
+<h3>Sample audit log</h3>
+<p>Here is a complete sample audit log generated when an alert notification policy is updated. It provides all the essential details to answer the who, what, when, where, and how of the action.</p>
+<p>Audit logs are always associated with an account, and some actions also include user and zone information when relevant. The action section outlines what changed and when, while the actor section provides context on who made the change and how it was performed, including whether it was done via the API or through the UI.</p>
+<p>Information about the resource is also included, so you can easily identify what was altered (in this case, the <a href="https://developers.cloudflare.com/waf/reference/alerts" target="_blank" rel="noopener noreferrer"><u>Advanced Security Events Alert</u></a> was updated). Additionally, raw API request details are provided, allowing users to trace the audit log back to a specific API call.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> PUT</span><span class="sk-6f42c1-ffc799"> https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//api.cloudflare.com/client/v4/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt; --data-raw '{...'}</span></span></code></pre>
 </div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">       {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "account"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;account_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Example account"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "action"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Update a Notification policy"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "result"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"success"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"2025-01-23T18:25:14.749Z"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"update"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "actor"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "context"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"dash"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "email"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"test@example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;actor-id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "ip_address"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"127.0.0.1"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "token"</span><span class="sk-24292e-fff">: {},</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"user"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;audit_log_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "raw"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "cf_ray_id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;ray_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"PUT"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "status_code"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "uri"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/accounts/&lt;account_id&gt;/alerting/v3/policies/&lt;policy_id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "user_agent"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Postman"</span></span>
+<span class="line"><span class="sk-24292e-fff">            },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "resource"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;resource-id&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "product"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"alerting"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "request"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "alert_type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"clickhouse_alert_fw_ent_anomaly"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "enabled"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "filters"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                        "services"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "securitylevel"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "ratelimit"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "firewallrules"</span></span>
+<span class="line"><span class="sk-24292e-fff">                        ],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                        "zones"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                            "&lt;zone_id&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">                        ]</span></span>
+<span class="line"><span class="sk-24292e-fff">                    },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Advanced Security Events Alert"</span></span>
+<span class="line"><span class="sk-24292e-fff">                },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "response"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "id"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;resource_id&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">                },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "scope"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"accounts"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                "type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"policies"</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span></code></pre>
+</div>
+<h2>Upcoming enhancements</h2>
+<p>For General Availability (GA) we are focusing on developing a new user interface in the Dashboard for Automatic Audit Logs, extracting additional auditable fields for the audit logs — including system-initiated actions and user-level actions such as login events — and enabling audit log export via <a href="https://developers.cloudflare.com/logs/about" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a>. In the longer term, we plan to introduce dashboards, trend analysis, and alerting features for audit logs to further enhance their utility and ease of use. By enhancing our audit log system, Cloudflare is taking another step toward empowering users to manage their environments with greater transparency, security, and efficiency.&nbsp;</p>
+<h2>Get started with Automatic Audit Logs</h2>
+<p><strong>Automatic Audit Logs</strong> are now available for testing. We encourage you to explore the new features and provide your valuable feedback.</p>
+<p>Retrieve audit logs using the following endpoint:</p>
+<p><code>/accounts/&lt;account_id&gt;/logs/audit?since=&lt;date&gt;&amp;before=&lt;date&gt;</code></p>
+<p>You can access detailed documentation for Automatic Audit Logs Beta API release <a href="https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit" target="_blank" rel="noopener noreferrer"><u>here</u></a>.&nbsp;</p>
+<p><em>Please note that the Beta release does not include updates to the Audit Logs UI in the Cloudflare Dashboard. The existing UI and API for the current audit logs will remain available until we Automatic Audit Logs reach General Availability.</em></p>
+<p><strong>We want your feedback</strong>: Your feedback is essential to improving Automatic Audit Logs. Please consider filling out a <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXGkJpOG1jUPEh-flJy9B13icmcdBhveFwe-X0EzQjJQnQfQ/viewform?usp=sharing" target="_blank" rel="noopener noreferrer"><u>short survey</u></a>.</p>

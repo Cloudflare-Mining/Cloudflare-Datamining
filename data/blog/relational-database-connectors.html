@@ -1,97 +1,59 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/relational-database-connectors">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/relational-database-connectors">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/relational-database-connectors">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/relational-database-connectors">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cY68DvcTTjvbOj71cDjaZ/4ec15a11800906faac6b47e463eb2bb5/relational-database-connectors.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>At Cloudflare, we’re building the best compute platform in the world. We want to make it easy, seamless, and obvious to build your applications with us. But simply making the best compute platform is not enough — at the heart of your applications are the data they interact with.</p>
-	<p>Cloudflare has multiple data storage solutions available today: <a href="https://blog.cloudflare.com/introducing-workers-kv">Workers KV</a>, <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>, and <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>. All three follow Cloudflare’s design goals for Workers: global by default, infinitely scalable, and delightful for developers to use. We’ve partnered with third-party storage solutions like Fauna, MongoDB and Prisma, who have built data platforms that align beautifully with our design goals and written tutorials for databases that already support HTTP connections.</p>
-	<p>The one area that’s been sorely missed: relational databases. Cloudflare itself runs on relational databases, and we’re not alone. In April, we asked <a href="https://workers.cloudflare.com/node" target="_blank" rel="noopener noreferrer">which Node libraries</a> you wanted us to support, and <b>four of the top five requests</b> were related to databases. For this Full Stack Week, we asked ourselves: how could we support relational databases in a way that aligned with our design goals?</p>
-	<p>Today, we’re taking a first step towards that world by announcing support for relational databases, including Postgres and MySQL from Workers.</p>
-	<p>Connecting to a database is no simple task — if it were as easy as passing a connection string to a database driver, we would have already done it. We’ve had to overcome several hurdles to reach this point, and have several more still to conquer. &nbsp;</p>
-	<p>Our goal with this announcement is to work with you, our developers, to solve the unique pain points that come from accessing databases inside Workers. If you’d like to work with us, fill out <a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank" rel="noopener noreferrer">this form</a> or join us <a href="https://discord.gg/rH4SsffFcc" target="_blank" rel="noopener noreferrer">on Discord</a> — this is just the beginning. If you’d just like to grab the code and play around, use this <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">example</a> to get started connecting to your own database, or check out our demo.</p>
-	<div class="flex anchor relative">
-		<h3 id="why-are-database-connectors-so-hard-to-build">Why are Database Connectors so hard to build?</h3>
-		<a href="https://blog.cloudflare.com/#why-are-database-connectors-so-hard-to-build" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Serverless database connections are challenging to support for several reasons.</p>
-	<p>Databases are needy — they often require TCP connections, since they assume long-lived connections between an application server and the database. The Workers runtime doesn’t currently support TCP connections, so we’ve only been able to support HTTP-based databases or proxies.</p>
-	<p>Like a relationship, establishing a connection isn’t quite enough. Developers use client libraries for databases to make submitting queries and managing the responses easy. Since the Workers runtime is not entirely Node.js compatible, we need to either roll our own database library or find one that does not use unsupported built-in libraries.</p>
-	<p>Finally, databases are sensitive. It often takes external libraries to manage shared connections between an application server and a database, since these connections tend to be expensive to establish.</p>
-	<div class="flex anchor relative">
-		<h3 id="moving-past-these-challenges">Moving past these challenges</h3>
-		<a href="https://blog.cloudflare.com/#moving-past-these-challenges" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our approach today gives us the foundation to address each of these challenges in creative ways going forward.</p>
-	<p>First, we’re leveraging <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup" target="_blank" rel="noopener noreferrer">cloudflared</a> to create a secure tunnel between Cloudflare and a private network within your existing infrastructure. Cloudflared already supports proxying HTTP to TCP over WebSockets — Our challenge is providing interfaces that look like the socket interfaces existing libraries expect, while rewiring the implementations to redirect reads and writes to our websocket. This method is fast, safe, and secure; but limiting in that we lack control of where to direct the final connections. This is a problem we will solve soon, but until then our approach is essential to gathering latency and performance data to see where else we need to improve.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/vVs0KefQQxbNEt3VsNHHj/41225487a689b82c04c9ef7beb7d8ae2/unnamed-10.png" alt="Leveraging Cloudflare Tunnels, we’re able to connect to a relational database" class="kg-image" width="1416" height="611" loading="lazy">
-
-	</figure>
-	<p>Next, we’ve created a shim-layer that adapts the socket API from a popular runtime to connect directly to databases using a WebSocket. This allows us to bundle code as-is, without forking or otherwise making significant changes to the database library. As part of this announcement, we’ve published a <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">tutorial</a> on how to connect to and query a Postgres database from your Workers, using existing Cloudflare technology and a driver from the growing community at Deno. We’re excited to work with the upstream maintainers, on expanding support.</p>
-	<p>Finally, we’re most excited for how this approach will let us begin to manage connection pooling and connection establishment overhead. While our current tech demo requires setting up the Cloudflare Tunnel on your own infrastructure, we’re looking for customers who’d like to pilot a model where Cloudflare hosts the tunnel for you.</p>
-	<div class="flex anchor relative">
-		<h3 id="where-were-going">Where we’re going</h3>
-		<a href="https://blog.cloudflare.com/#where-were-going" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’re just getting started. Our goal with today’s announcement is to find customers who are looking to build new applications or migrate existing applications to Workers while working with data that’s stored in a relational database.</p>
-	<p>Just as Cloudflare started by providing security, performance, and reliability for customer’s websites, we’re excited about a future where Cloudflare manages database connections, handles replication of data across cloud providers and provides low-latency access to data globally.</p>
-	<p>First, we’re looking to add <a href="https://blog.cloudflare.com/introducing-socket-workers">support for TCP into the runtime natively</a>. With native support for TCP we’ll not only have better support for databases, but expand the Workers runtime to work with data infrastructure more broadly.</p>
-	<p>Our position in the network layer of the stack makes providing performance, security benefits and extremely reduced egress costs to global databases all possible realities. To do so, we’ll repurpose the HTTP to TCP proxy service that we’ve currently built and run it for developers as a connection pooling service, managing connections to their databases on their behalf.</p>
-	<p>Finally, our network makes caching data and making it accessible globally at low latency possible. Once we have connections back to your data, making it globally accessible in Cloudflare’s network will unlock fundamentally new architectures for distributed data.</p>
-	<div class="flex anchor relative">
-		<h3 id="take-our-connectors-for-a-spin">Take our connectors for a spin</h3>
-		<a href="https://blog.cloudflare.com/#take-our-connectors-for-a-spin" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Want to check things out? There are three main steps to getting up-and-running:</p>
-	<ol>
-		<li>
-			<p>Deploying cloudflared within your infrastructure.</p>
-		</li>
-		<li>
-			<p>Deploying a database that connects to cloudflared.</p>
-		</li>
-		<li>
-			<p>Deploying a Worker with the database driver that submits queries.</p>
-		</li>
-	</ol>
-	<p>The Postgres tutorial is available <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<p>When you’re all done, it’ll look a little something like this:</p>
-	<pre class="language-javascript"><code class="language-javascript">import { Client } from './driver/postgres/postgres'
-
-export default {
-  async fetch(request: Request, env, ctx: ExecutionContext) {
-    try {
-      const client = new Client({
-        user: 'postgres',
-        database: 'postgres',
-        hostname: 'https://db.example.com',
-        password: '',
-        port: 5432,
-      })
-      await client.connect()
-      const result = await client.queryArray('SELECT * FROM users WHERE uuid=1;')
-      ctx.waitUntil(client.end())
-      return new Response(JSON.stringify(result.rows[0]))
-    } catch (e) {
-      return new Response((e as Error).message)
-    }
-  },
-}</code></pre>
-	<p>Hit any snags? Fill out <a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank" rel="noopener noreferrer">this form</a>, join <a href="https://discord.gg/rH4SsffFcc" target="_blank" rel="noopener noreferrer">our Discord</a> or shoot us an <a href="https://blog.cloudflare.com/#">email</a> and let’s chat!</p>
+<p>At Cloudflare, we’re building the best compute platform in the world. We want to make it easy, seamless, and obvious to build your applications with us. But simply making the best compute platform is not enough — at the heart of your applications are the data they interact with.</p>
+<p>Cloudflare has multiple data storage solutions available today: <a href="https://blog.cloudflare.com/introducing-workers-kv">Workers KV</a>, <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2</a>, and <a href="https://blog.cloudflare.com/introducing-workers-durable-objects">Durable Objects</a>. All three follow Cloudflare’s design goals for Workers: global by default, infinitely scalable, and delightful for developers to use. We’ve partnered with third-party storage solutions like Fauna, MongoDB and Prisma, who have built data platforms that align beautifully with our design goals and written tutorials for databases that already support HTTP connections.</p>
+<p>The one area that’s been sorely missed: relational databases. Cloudflare itself runs on relational databases, and we’re not alone. In April, we asked <a href="https://workers.cloudflare.com/node" target="_blank" rel="noopener noreferrer">which Node libraries</a> you wanted us to support, and <strong>four of the top five requests</strong> were related to databases. For this Full Stack Week, we asked ourselves: how could we support relational databases in a way that aligned with our design goals?</p>
+<p>Today, we’re taking a first step towards that world by announcing support for relational databases, including Postgres and MySQL from Workers.</p>
+<p>Connecting to a database is no simple task — if it were as easy as passing a connection string to a database driver, we would have already done it. We’ve had to overcome several hurdles to reach this point, and have several more still to conquer. &nbsp;</p>
+<p>Our goal with this announcement is to work with you, our developers, to solve the unique pain points that come from accessing databases inside Workers. If you’d like to work with us, fill out <a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank" rel="noopener noreferrer">this form</a> or join us <a href="https://discord.gg/rH4SsffFcc" target="_blank" rel="noopener noreferrer">on Discord</a> — this is just the beginning. If you’d just like to grab the code and play around, use this <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">example</a> to get started connecting to your own database, or check out our demo.</p>
+<h3>Why are Database Connectors so hard to build?</h3>
+<p>Serverless database connections are challenging to support for several reasons.</p>
+<p>Databases are needy — they often require TCP connections, since they assume long-lived connections between an application server and the database. The Workers runtime doesn’t currently support TCP connections, so we’ve only been able to support HTTP-based databases or proxies.</p>
+<p>Like a relationship, establishing a connection isn’t quite enough. Developers use client libraries for databases to make submitting queries and managing the responses easy. Since the Workers runtime is not entirely Node.js compatible, we need to either roll our own database library or find one that does not use unsupported built-in libraries.</p>
+<p>Finally, databases are sensitive. It often takes external libraries to manage shared connections between an application server and a database, since these connections tend to be expensive to establish.</p>
+<h3>Moving past these challenges</h3>
+<p>Our approach today gives us the foundation to address each of these challenges in creative ways going forward.</p>
+<p>First, we’re leveraging <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup" target="_blank" rel="noopener noreferrer">cloudflared</a> to create a secure tunnel between Cloudflare and a private network within your existing infrastructure. Cloudflared already supports proxying HTTP to TCP over WebSockets — Our challenge is providing interfaces that look like the socket interfaces existing libraries expect, while rewiring the implementations to redirect reads and writes to our websocket. This method is fast, safe, and secure; but limiting in that we lack control of where to direct the final connections. This is a problem we will solve soon, but until then our approach is essential to gathering latency and performance data to see where else we need to improve.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="309" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=715&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=640&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=715&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=750&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=828&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=1080&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=1280&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=1430&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Leveraging Cloudflare Tunnels, we’re able to connect to a relational database" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MQ2N460E3NDQ094TKJW6.png&amp;w=1416&amp;h=611&amp;f=webp" data-lightbox-width="1416" data-lightbox-height="611" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="309" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Next, we’ve created a shim-layer that adapts the socket API from a popular runtime to connect directly to databases using a WebSocket. This allows us to bundle code as-is, without forking or otherwise making significant changes to the database library. As part of this announcement, we’ve published a <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">tutorial</a> on how to connect to and query a Postgres database from your Workers, using existing Cloudflare technology and a driver from the growing community at Deno. We’re excited to work with the upstream maintainers, on expanding support.</p>
+<p>Finally, we’re most excited for how this approach will let us begin to manage connection pooling and connection establishment overhead. While our current tech demo requires setting up the Cloudflare Tunnel on your own infrastructure, we’re looking for customers who’d like to pilot a model where Cloudflare hosts the tunnel for you.</p>
+<h3>Where we’re going</h3>
+<p>We’re just getting started. Our goal with today’s announcement is to find customers who are looking to build new applications or migrate existing applications to Workers while working with data that’s stored in a relational database.</p>
+<p>Just as Cloudflare started by providing security, performance, and reliability for customer’s websites, we’re excited about a future where Cloudflare manages database connections, handles replication of data across cloud providers and provides low-latency access to data globally.</p>
+<p>First, we’re looking to add <a href="https://blog.cloudflare.com/introducing-socket-workers">support for TCP into the runtime natively</a>. With native support for TCP we’ll not only have better support for databases, but expand the Workers runtime to work with data infrastructure more broadly.</p>
+<p>Our position in the network layer of the stack makes providing performance, security benefits and extremely reduced egress costs to global databases all possible realities. To do so, we’ll repurpose the HTTP to TCP proxy service that we’ve currently built and run it for developers as a connection pooling service, managing connections to their databases on their behalf.</p>
+<p>Finally, our network makes caching data and making it accessible globally at low latency possible. Once we have connections back to your data, making it globally accessible in Cloudflare’s network will unlock fundamentally new architectures for distributed data.</p>
+<h3>Take our connectors for a spin</h3>
+<p>Want to check things out? There are three main steps to getting up-and-running:</p>
+<ol>
+	<li>Deploying cloudflared within your infrastructure.</li>
+	<li>Deploying a database that connects to cloudflared.</li>
+	<li>Deploying a Worker with the database driver that submits queries.</li>
+</ol>
+<p>The Postgres tutorial is available <a href="https://developers.cloudflare.com/workers/tutorials/query-postgres-from-workers-using-database-connectors" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>When you’re all done, it’ll look a little something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Client } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './driver/postgres/postgres'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Client</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        user: </span><span class="sk-032f62-99ffe4">'postgres'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        database: </span><span class="sk-032f62-99ffe4">'postgres'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        hostname: </span><span class="sk-032f62-99ffe4">'https://db.example.com'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        password: </span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        port: </span><span class="sk-005cc5-ffc799">5432</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">queryArray</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'SELECT * FROM users WHERE uuid=1;'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">      ctx.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(client.</span><span class="sk-6f42c1-ffc799">end</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(result.rows[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]))</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">((e </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">).message)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Hit any snags? Fill out <a href="https://www.cloudflare.com/database-connectors-early-access" target="_blank" rel="noopener noreferrer">this form</a>, join <a href="https://discord.gg/rH4SsffFcc" target="_blank" rel="noopener noreferrer">our Discord</a> or shoot us an <a href="mailto:workers-product@cloudflare.com">email</a> and let’s chat!</p>

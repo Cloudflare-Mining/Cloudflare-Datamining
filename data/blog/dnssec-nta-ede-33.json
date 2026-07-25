@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "A broken DNSSEC rollover took down .AL. Now 1.1.1.1 tells you when validation is bypassed",
+	"url": "https://blog.cloudflare.com/dnssec-nta-ede-33/",
+	"datePublished": "2026-07-14T13:00:00.000Z",
+	"dateModified": "2026-07-15T16:15:34.208Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KXEF370BA04JCGFB3M86S6HE.png",
+	"description": "When a failed DNSSEC key rollover took down the .AL TLD, we deployed a Negative Trust Anchor to restore resolution. This time, though, clients didn't have to take our word for it: 1.1.1.1 returned EDE 33, a new DNS error code that signals directly in the response that DNSSEC validation was bypassed."
+}

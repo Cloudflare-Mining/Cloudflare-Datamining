@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "'유휴'가 유휴가 아닐 때: Linux 커널 최적화가 QUIC 버그가 된 방법",
+	"url": "https://blog.cloudflare.com/ko-kr/quic-death-spiral-fix/",
+	"datePublished": "2026-05-12T13:00:00.000Z",
+	"dateModified": "2026-07-15T16:48:25.075Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW45VSCEX3RARQSM9H9JQNVR.png",
+	"description": "CUBIC에서는 CUBIC의 혼잡 기간이 최소 층에 고정되어 성능이 급감하는 버그를 조사했습니다. 이 문제를 해결하려면 RTT 대기 시간과 실제 애플리케이션 유휴 시간을 구분하기 위해 유휴 기간을 올바르게 측정해야 했습니다."
+}

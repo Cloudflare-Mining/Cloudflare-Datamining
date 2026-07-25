@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "「idle」がアイドルではない場合：Linuxカーネルの最適化がQUICバグになった経緯",
+	"url": "https://blog.cloudflare.com/ja-jp/quic-death-spiral-fix/",
+	"datePublished": "2026-05-12T13:00:00.000Z",
+	"dateModified": "2026-07-15T15:23:28.738Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW45VSCEX3RARQSM9H9JQNVR.png",
+	"description": "CUBICの輻輳ウィンドウが最小フロアでピン留めとなり、パフォーマンスが低下するバグを調査しました。この修正には、RTT待機時間と実際のアプリケーションのアイドル状態を区別するために、アイドル時間を正しく測定することが含まれていました。"
+}

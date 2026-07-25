@@ -1,207 +1,143 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2jQij9GpVmsJnXneAvwCdA/89979c6965a975850a49f2b72adc3083/workers-and-webpagetest.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This article was originally published as part of &nbsp;</i><a href="https://calendar.perfplanet.com/2019" target="_blank" rel="noopener noreferrer"><i>Perf Planet's 2019 Web Performance Calendar</i></a><i>.</i></p>
-	<p>Have you ever wanted to quickly test a new performance idea, or see if the latest performance wisdom is beneficial to your site? As web performance appears to be a stochastic process, it is really important to be able to iterate quickly and review the effects of different experiments. The challenge is to be able to arbitrarily change requests and responses without the overhead of setting up another internet facing server. This can be straightforward to implement by combining two of my favourite technologies : <a href="https://webpagetest.org" target="_blank" rel="noopener noreferrer">WebPageTest</a> and <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>. Pat Meenan sums this up with the following slide from a recent <a href="https://www.slideshare.net/patrickmeenan/getting-the-most-out-of-webpagetest" target="_blank" rel="noopener noreferrer">getting the most of WebPageTest</a> presentation:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/63FuSzxUDPepqCC577lP24/0e40f5e48ed07432017fe9bdf4abef6b/magic.jpg" alt="With the OverrideHost script command WebPageTest + Cloudflare Workers = magic" class="kg-image" width="1024" height="576" loading="lazy">
-
-	</figure>
-	<p>So what is Cloudflare Workers and why is it ideally suited to easy prototyping of optimizations?</p>
-	<div class="flex anchor relative">
-		<h2 id="cloudflare-workers">Cloudflare Workers</h2>
-		<a href="https://blog.cloudflare.com/#cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>From the documentation :</p>
-	<blockquote>
-		<p>Cloudflare Workers provides a lightweight JavaScript execution environment that allows developers to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.A Cloudflare Worker is a programmable proxy which brings the simplicity and flexibility of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Workers event-based fetch API</a> from the browser to the edge. This allows a worker to intercept and modify requests and responses.</p>
-	</blockquote>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3y9pmmtBYue73BYEUOHtpN/74e7e29b940d04cebe403e8cdacb26b5/worker-4.svg" alt="worker-4" class="kg-image" width="671" height="268" loading="lazy">
-
-	</figure>
-	<p>With the Service Worker API you can add an <code>EventListener</code> to any fetch event that is routed through the worker script and modify the request to come from a different origin.</p>
-	<p>Cloudflare Workers also provides a <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter" target="_blank" rel="noopener noreferrer">streaming HTMLRewriter</a> to enable on the fly modification of HTML as it passes through the worker. The streaming nature of this parser ensures latency is minimised as the entire HTML document does not have to be buffered before rewriting can happen.</p>
-	<div class="flex anchor relative">
-		<h3 id="setting-up-a-worker">Setting up a worker</h3>
-		<a href="https://blog.cloudflare.com/#setting-up-a-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It is really quick and easy to <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">sign up</a> for a free subdomain at <code>workers.dev</code> which provides you with 100,000 free requests per day. There is a quick-start guide available <a href="https://developers.cloudflare.com/workers/quickstart" target="_blank" rel="noopener noreferrer">here</a>.To be able to run the examples in this post you will need to <a href="https://github.com/cloudflare/wrangler#installation" target="_blank" rel="noopener noreferrer">install Wrangler</a>, the CLI tool for deploying workers. Once Wrangler is installed run the following command to download the example worker project: &nbsp; &nbsp;</p>
-	<pre class="language-bash"><code class="language-bash">wrangler generate wpt-proxy https://github.com/xtuc/WebPageTest-proxy</code></pre>
-	<p><a href="https://github.com/xtuc/WebPageTest-proxyYou" target="_blank" rel="noopener noreferrer">You</a> will then need to update the <code>wrangler.toml</code> with your account_id, which can be found in the <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dashboard</a> in the right sidebar. Then configure an API key with the command:</p>
-	<p><code>wrangler config</code></p>
-	<p>Finally, you can publish the worker with: &nbsp;</p>
-	<p><code>wrangler publish</code></p>
-	<p>At this the point, the worker will be active at</p>
-	<p><code>https://wpt-proxy.&lt;your-subdomain&gt;.workers.dev</code>.</p>
-	<div class="flex anchor relative">
-		<h2 id="webpagetest-overridehost">WebPageTest OverrideHost &nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#webpagetest-overridehost" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that your worker is configured, the next step is to configure WebPageTest to redirect requests through the worker. WebPageTest has a feature where it can re-point arbitrary origins to a different domain. To access the feature in WebPageTest, you need to use the WebPageTest scripting language "overrideHost" command, as shown:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3obNudq5ry3Gg8kYI0basR/5ca5e9269e797c9d05cc46baf66bc534/samplescript.png" alt="Override the bbc.co.uk domain to wpt-proxy.prf.workers.dev" class="kg-image" width="944" height="368" loading="lazy">
-
-	</figure>
-	<p>This example will redirect all network requests to <a href="http://www.bbc.co.uk" target="_blank" rel="noopener noreferrer">www.bbc.co.uk</a> to wpt-proxy.prf.workers.dev instead. WebPageTest also adds an <code>x-host</code> header to each redirected request so that the destination can determine for which host the request was originally intended: &nbsp; &nbsp;</p>
-	<p><code>x-host: www.bbc.co.uk</code></p>
-	<p>The script can process multiple overrideHost commands to override multiple different origins. If HTTPS is used, WebPageTest can use HTTP/2 and benefit from <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing" target="_blank" rel="noopener noreferrer">connection coalescing</a>: &nbsp;</p>
-	<pre class="language-bash"><code class="language-bash">overrideHost www.bbc.co.uk wpt-proxy.prf.workers.dev    
-overrideHost nav.files.bbci.co.uk wpt-proxy.prf.workers.dev
-navigate https://www.bbc.co.uk</code></pre>
-	<p>&nbsp;It also supports wildcards: &nbsp;</p>
-	<pre class="language-bash"><code class="language-bash">overrideHost *bbc.co.uk wpt-proxy.prf.workers.dev    
-navigate https://www.bbc.co.uk</code></pre>
-	<p>There are a few special strings that can be used in a script when bulk testing, so a single script can be re-used across multiple URLs:</p>
-	<ul>
-		<li>
-			<p><code>%URL%</code> - Replaces with the URL of the current test</p>
-		</li>
-		<li>
-			<p><code>%HOST%</code> - Replaces with the hostname of the URL of the current test</p>
-		</li>
-		<li>
-			<p><code>%HOSTR%</code> - Replaces with the hostname of the final URL in case the test URL does a redirect.</p>
-		</li>
-	</ul>
-	<p>A more generic script would look like this: &nbsp; &nbsp;</p>
-	<pre class="language-bash"><code class="language-bash">overrideHost %HOSTR% wpt-proxy.prf.workers.dev    
-navigate %URL% </code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="basic-worker">Basic worker</h2>
-		<a href="https://blog.cloudflare.com/#basic-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the base example below, the worker listens for the fetch event, looks for the <code>x-host</code> header that WebPageTest has set and responds by fetching the content from the orginal url:</p>
-	<pre class="language-javascript"><code class="language-javascript">/* 
-* Handle all requests. 
-* Proxy requests with an x-host header and return 403
-* for everything else
-*/
-
-addEventListener("fetch", event =&gt; {    
-   const host = event.request.headers.get('x-host');        
-   if (host) {          
-      const url = new URL(event.request.url);          
-      const originUrl = url.protocol + '//' + host + url.pathname + url.search;             
-      let init = {             
-         method: event.request.method,             
-         redirect: "manual",             
-         headers: [...event.request.headers]          
-      };          
-      event.respondWith(fetch(originUrl, init));        
-   } 
-   else {           
-     const response = new Response('x-Host headers missing', {status: 403});                
-     event.respondWith(response);        
-   }    
-});</code></pre>
-	<p>The source code can be found <a href="https://github.com/xtuc/WebPageTest-proxy" target="_blank" rel="noopener noreferrer">here</a> and instructions to download and deploy this worker are described in the earlier section.</p>
-	<p>So what happens if we point all the domains on the BBC website through this worker, using the following config: &nbsp;</p>
-	<pre class="language-bash"><code class="language-bash">overrideHost    *bbci.co.uk wpt.prf.workers.dev    
-overrideHost    *bbc.co.uk  wpt.prf.workers.dev    
-navigate    https://www.bbc.co.uk</code></pre>
-	<p>configured to a 3G Fast setting from a UK test location.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6y7lIsq1654FwvbSlcpBvh/68324705a4c88d6ae450da4e1e405e17/simpleworkercompare.png" alt="" class="kg-image" width="2000" height="268" loading="lazy">
-
-	</figure>
-	<p>Comparison of BBC website if when using a single connection.&nbsp;</p>
-	<p>Before</p>
-	<p>After</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2pwdrZ0TRNcU2x2AosI09b/7ee354130eab1e1a05d0f74e93bf85c7/beforeBBC2-1.png" alt="beforeBBC2-1" class="kg-image" width="1073" height="1126" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DE8XJvQoNTKguQR4Y9a9J/3a588557c9048328de75816bd666c07a/afterBBC2.png" alt="afterBBC2" class="kg-image" width="1012" height="1127" loading="lazy">
-
-	</figure>
-	<p>The potential performance improvement of loading a page over a single connection, eliminating the additional DNS lookup, TCP connection and TLS handshakes, can be seen &nbsp;by comparing the filmstrips and waterfalls. There are several reasons why you may not want or be able to move everything to a single domain, but at least it is now easy to see what the performance difference would be. &nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="htmlrewriter">HTMLRewriter</h2>
-		<a href="https://blog.cloudflare.com/#htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With the HTMLRewriter, it is possible to change the HTML response as it passes through the worker. A jQuery-like syntax provides CSS-selector matching and a standard set of DOM mutation methods. For instance you could rewrite your page to measure the effects of different preload/prefetch strategies, review the performance savings of removing or using different third-party scripts, or you could stock-take the HEAD of your document. One piece of performance advice is to self-host some third-party scripts. This <a href="https://github.com/xtuc/rewrite-3d-party.git" target="_blank" rel="noopener noreferrer">example</a> script invokes the HTMLRewriter to listen for a script tag with a <code>src</code> attribute. If the script is from a proxiable domain the src is rewritten to be first-party, with a specific path prefix.</p>
-	<pre class="language-javascript"><code class="language-javascript">async function rewritePage(request) {  
-  const response = await fetch(request);    
-    return new HTMLRewriter()      
-      .on("script[src]", {        
-        element: el =&gt; {          
-          let src = el.getAttribute("src");          
-          if (PROXIED_URL_PREFIXES_RE.test(src)) {
-            el.setAttribute("src", createProxiedScriptUrl(src));
-          }           
-        }    
-    })    
-    .transform(response);
-}</code></pre>
-	<p>Subsequently, when the browser makes a request with the specific prefix, the worker fetches the asset from the original URL. This example can be downloaded with this command: &nbsp; &nbsp;</p>
-	<p><code>wrangler generate test [https://github.com/xtuc/rewrite-3d-party.git](https://github.com/xtuc/rewrite-3d-party.git)</code></p>
-	<div class="flex anchor relative">
-		<h2 id="request-mangling">Request Mangling</h2>
-		<a href="https://blog.cloudflare.com/#request-mangling" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As well as rewriting content, it is also possible to change or delay a request. Below is an example of how to randomly add a delay of a second to a request:</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", event =&gt; {    
-    const host = event.request.headers.get('x-host');    
-    if (host) { 
-//....     
-    // Add the delay if necessary     
-    if (Math.random() * 100 &lt; DELAY_PERCENT) {       
-      await new Promise(resolve =&gt; setTimeout(resolve, DELAY_MS));     
-    }    
-    event.respondWith(fetch(originUrl, init));
-//...
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="http-2-prioritization">HTTP/2 prioritization</h2>
-		<a href="https://blog.cloudflare.com/#http-2-prioritization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>What if you want to see what the effect of changing the HTTP/2 prioritization of assets would make to your website? Cloudflare Workers provide <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">custom http2 prioritization schemes</a> that can be applied by setting a custom header on the response. The <code>cf-priority</code> header is defined as <code>&lt;priority&gt;/&lt;concurrency&gt;</code> so adding: &nbsp; &nbsp;</p>
-	<p><code>response.headers.set('cf-priority', “30/0”);</code> &nbsp; &nbsp;</p>
-	<p>would set the priority of that response to 30 with a concurrency of 0 for the given response. Similarly, “30/1” would set concurrency to 1 and “30/n” would set concurrency to n. With this flexibility, you can prioritize the bytes that are important for your website or run a bulk test to prove that your new &nbsp;prioritization scheme is better than any of the existing browser implementations.</p>
-	<div class="flex anchor relative">
-		<h2 id="summary">Summary</h2>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A major barrier to understanding and innovation, is the amount of time is takes to get feedback. Having a quick and easy framework, to try out a new idea and comprehend the impact, is key. I hope this post has convinced you that combining WebPageTest and Cloudflare Workers is an easy solution to this problem and is indeed magic</p>
+<p><em>This article was originally published as part of &nbsp;<a href="https://calendar.perfplanet.com/2019" target="_blank" rel="noopener noreferrer">Perf Planet's 2019 Web Performance Calendar</a>.</em></p>
+<p>Have you ever wanted to quickly test a new performance idea, or see if the latest performance wisdom is beneficial to your site? As web performance appears to be a stochastic process, it is really important to be able to iterate quickly and review the effects of different experiments. The challenge is to be able to arbitrarily change requests and responses without the overhead of setting up another internet facing server. This can be straightforward to implement by combining two of my favourite technologies : <a href="https://webpagetest.org" target="_blank" rel="noopener noreferrer">WebPageTest</a> and <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>. Pat Meenan sums this up with the following slide from a recent <a href="https://www.slideshare.net/patrickmeenan/getting-the-most-out-of-webpagetest" target="_blank" rel="noopener noreferrer">getting the most of WebPageTest</a> presentation:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="With the OverrideHost script command WebPageTest + Cloudflare Workers = magic" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47W81PJ0K1XBGNJMVP0D0H.jpg&amp;w=1024&amp;h=576&amp;f=webp" data-lightbox-width="1024" data-lightbox-height="576" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>So what is Cloudflare Workers and why is it ideally suited to easy prototyping of optimizations?</p>
+<h2>Cloudflare Workers</h2>
+<p>From the documentation :</p>
+<blockquote>Cloudflare Workers provides a lightweight JavaScript execution environment that allows developers to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.A Cloudflare Worker is a programmable proxy which brings the simplicity and flexibility of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Workers event-based fetch API</a> from the browser to the edge. This allows a worker to intercept and modify requests and responses.</blockquote>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="671" height="268" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=671&amp;h=268&amp;f=svg&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=640&amp;h=256&amp;f=svg&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=671&amp;h=268&amp;f=svg&amp;fit=cover&amp;position=center 671w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=750&amp;h=300&amp;f=svg&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=828&amp;h=331&amp;f=svg&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=1080&amp;h=431&amp;f=svg&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=1280&amp;h=511&amp;f=svg&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=1342&amp;h=536&amp;f=svg&amp;fit=cover&amp;position=center 1342w" alt="worker-4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D2FBG2MHA746QXSTFBKC.svg&amp;w=671&amp;h=268&amp;f=svg" data-lightbox-width="671" data-lightbox-height="268" data-astro-cid-7nvefuv6="true" sizes="(min-width: 671px) 671px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="671" height="268" class="pt-portable-image-media"></div>
+</figure>
+<p>With the Service Worker API you can add an <code>EventListener</code> to any fetch event that is routed through the worker script and modify the request to come from a different origin.</p>
+<p>Cloudflare Workers also provides a <a href="https://developers.cloudflare.com/workers/reference/apis/html-rewriter" target="_blank" rel="noopener noreferrer">streaming HTMLRewriter</a> to enable on the fly modification of HTML as it passes through the worker. The streaming nature of this parser ensures latency is minimised as the entire HTML document does not have to be buffered before rewriting can happen.</p>
+<h3>Setting up a worker</h3>
+<p>It is really quick and easy to <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">sign up</a> for a free subdomain at <code>workers.dev</code> which provides you with 100,000 free requests per day. There is a quick-start guide available <a href="https://developers.cloudflare.com/workers/quickstart" target="_blank" rel="noopener noreferrer">here</a>.To be able to run the examples in this post you will need to <a href="https://github.com/cloudflare/wrangler#installation" target="_blank" rel="noopener noreferrer">install Wrangler</a>, the CLI tool for deploying workers. Once Wrangler is installed run the following command to download the example worker project: &nbsp; &nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> wpt-proxy</span><span class="sk-032f62-99ffe4"> https://github.com/xtuc/WebPageTest-proxy</span></span></code></pre>
 </div>
+<p><a href="https://github.com/xtuc/WebPageTest-proxyYou" target="_blank" rel="noopener noreferrer">You</a> will then need to update the <code>wrangler.toml</code> with your account_id, which can be found in the <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">dashboard</a> in the right sidebar. Then configure an API key with the command:</p>
+<p><code>wrangler config</code></p>
+<p>Finally, you can publish the worker with: &nbsp;</p>
+<p><code>wrangler publish</code></p>
+<p>At this the point, the worker will be active at</p>
+<p><code>https://wpt-proxy.&lt;your-subdomain&gt;.workers.dev</code>.</p>
+<h2>WebPageTest OverrideHost &nbsp;</h2>
+<p>Now that your worker is configured, the next step is to configure WebPageTest to redirect requests through the worker. WebPageTest has a feature where it can re-point arbitrary origins to a different domain. To access the feature in WebPageTest, you need to use the WebPageTest scripting language "overrideHost" command, as shown:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="279" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=715&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=640&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=715&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=750&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=828&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=1080&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=1280&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=1430&amp;h=558&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Override the bbc.co.uk domain to wpt-proxy.prf.workers.dev" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469ZCSJBRHXV7XFJXRXRRC.png&amp;w=944&amp;h=368&amp;f=webp" data-lightbox-width="944" data-lightbox-height="368" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="279" class="pt-portable-image-media"></div>
+</figure>
+<p>This example will redirect all network requests to <a href="http://www.bbc.co.uk" target="_blank" rel="noopener noreferrer">www.bbc.co.uk</a> to wpt-proxy.prf.workers.dev instead. WebPageTest also adds an <code>x-host</code> header to each redirected request so that the destination can determine for which host the request was originally intended: &nbsp; &nbsp;</p>
+<p><code>x-host: www.bbc.co.uk</code></p>
+<p>The script can process multiple overrideHost commands to override multiple different origins. If HTTPS is used, WebPageTest can use HTTP/2 and benefit from <a href="https://daniel.haxx.se/blog/2016/08/18/http2-connection-coalescing" target="_blank" rel="noopener noreferrer">connection coalescing</a>: &nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-032f62-99ffe4"> www.bbc.co.uk</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-032f62-99ffe4"> nav.files.bbci.co.uk</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> https://www.bbc.co.uk</span></span></code></pre>
+</div>
+<p>&nbsp;It also supports wildcards: &nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">bbc.co.uk</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> https://www.bbc.co.uk</span></span></code></pre>
+</div>
+<p>There are a few special strings that can be used in a script when bulk testing, so a single script can be re-used across multiple URLs:</p>
+<ul>
+	<li><code>%URL%</code> - Replaces with the URL of the current test</li>
+	<li><code>%HOST%</code> - Replaces with the hostname of the URL of the current test</li>
+	<li><code>%HOSTR%</code> - Replaces with the hostname of the final URL in case the test URL does a redirect.</li>
+</ul>
+<p>A more generic script would look like this: &nbsp; &nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-032f62-99ffe4"> %HOSTR%</span><span class="sk-032f62-99ffe4"> wpt-proxy.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4"> %URL%</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<h2>Basic worker</h2>
+<p>In the base example below, the worker listens for the fetch event, looks for the <code>x-host</code> header that WebPageTest has set and responds by fetching the content from the orginal url:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/* </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">* Handle all requests. </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">* Proxy requests with an x-host header and return 403</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">* for everything else</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">*/</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> host</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> event.request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'x-host'</span><span class="sk-24292e-fff">);        </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> (host) {          </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url);          </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> originUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> url.protocol </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> '//'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> host </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> url.pathname </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> url.search;             </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> init </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {             </span></span>
+<span class="line"><span class="sk-24292e-fff">         method: event.request.method,             </span></span>
+<span class="line"><span class="sk-24292e-fff">         redirect: </span><span class="sk-032f62-99ffe4">"manual"</span><span class="sk-24292e-fff">,             </span></span>
+<span class="line"><span class="sk-24292e-fff">         headers: [</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">event.request.headers]          </span></span>
+<span class="line"><span class="sk-24292e-fff">      };          </span></span>
+<span class="line"><span class="sk-24292e-fff">      event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(originUrl, init));        </span></span>
+<span class="line"><span class="sk-24292e-fff">   } </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   else</span><span class="sk-24292e-fff"> {           </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'x-Host headers missing'</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">});                </span></span>
+<span class="line"><span class="sk-24292e-fff">     event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(response);        </span></span>
+<span class="line"><span class="sk-24292e-fff">   }    </span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>The source code can be found <a href="https://github.com/xtuc/WebPageTest-proxy" target="_blank" rel="noopener noreferrer">here</a> and instructions to download and deploy this worker are described in the earlier section.</p>
+<p>So what happens if we point all the domains on the BBC website through this worker, using the following config: &nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-005cc5-a0a0a0">    *</span><span class="sk-032f62-99ffe4">bbci.co.uk</span><span class="sk-032f62-99ffe4"> wpt.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">overrideHost</span><span class="sk-005cc5-a0a0a0">    *</span><span class="sk-032f62-99ffe4">bbc.co.uk</span><span class="sk-032f62-99ffe4">  wpt.prf.workers.dev</span><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">navigate</span><span class="sk-032f62-99ffe4">    https://www.bbc.co.uk</span></span></code></pre>
+</div>
+<p>configured to a 3G Fast setting from a UK test location.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="96" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=715&amp;h=96&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=640&amp;h=86&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=715&amp;h=96&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=750&amp;h=101&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=828&amp;h=111&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=1080&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=1280&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=1430&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Prototyping optimizations with Cloudflare Workers and WebPageTest Embedded Image - Pozd3H" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GRHHSEJT2WDPWDF5XW1W.png&amp;w=1920&amp;h=257&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="257" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="96" class="pt-portable-image-media"></div>
+</figure>
+<p>Comparison of BBC website if when using a single connection.&nbsp;</p>
+<p>Before</p>
+<p>After</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="750" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=715&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=640&amp;h=671&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=715&amp;h=750&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=750&amp;h=787&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=828&amp;h=869&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=1080&amp;h=1133&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=1280&amp;h=1343&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=1430&amp;h=1500&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="beforeBBC2-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45K01X42HG1DFYEW34JQ8R.png&amp;w=1073&amp;h=1126&amp;f=webp" data-lightbox-width="1073" data-lightbox-height="1126" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="750" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="796" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=715&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=640&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=715&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=750&amp;h=835&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=828&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=1080&amp;h=1202&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=1280&amp;h=1425&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=1430&amp;h=1592&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="afterBBC2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PG6120YBHBQXKP4W390J.png&amp;w=1012&amp;h=1127&amp;f=webp" data-lightbox-width="1012" data-lightbox-height="1127" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="796" class="pt-portable-image-media"></div>
+</figure>
+<p>The potential performance improvement of loading a page over a single connection, eliminating the additional DNS lookup, TCP connection and TLS handshakes, can be seen &nbsp;by comparing the filmstrips and waterfalls. There are several reasons why you may not want or be able to move everything to a single domain, but at least it is now easy to see what the performance difference would be. &nbsp;</p>
+<h2>HTMLRewriter</h2>
+<p>With the HTMLRewriter, it is possible to change the HTML response as it passes through the worker. A jQuery-like syntax provides CSS-selector matching and a standard set of DOM mutation methods. For instance you could rewrite your page to measure the effects of different preload/prefetch strategies, review the performance savings of removing or using different third-party scripts, or you could stock-take the HEAD of your document. One piece of performance advice is to self-host some third-party scripts. This <a href="https://github.com/xtuc/rewrite-3d-party.git" target="_blank" rel="noopener noreferrer">example</a> script invokes the HTMLRewriter to listen for a script tag with a <code>src</code> attribute. If the script is from a proxiable domain the src is rewritten to be first-party, with a specific path prefix.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> rewritePage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request);    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> HTMLRewriter</span><span class="sk-24292e-fff">()      </span></span>
+<span class="line"><span class="sk-24292e-fff">      .</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"script[src]"</span><span class="sk-24292e-fff">, {        </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        element</span><span class="sk-24292e-fff">: </span><span class="sk-e36209-fff">el</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {          </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          let</span><span class="sk-24292e-fff"> src </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> el.</span><span class="sk-6f42c1-ffc799">getAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"src"</span><span class="sk-24292e-fff">);          </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">PROXIED_URL_PREFIXES_RE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">test</span><span class="sk-24292e-fff">(src)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">            el.</span><span class="sk-6f42c1-ffc799">setAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"src"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">createProxiedScriptUrl</span><span class="sk-24292e-fff">(src));</span></span>
+<span class="line"><span class="sk-24292e-fff">          }           </span></span>
+<span class="line"><span class="sk-24292e-fff">        }    </span></span>
+<span class="line"><span class="sk-24292e-fff">    })    </span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(response);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Subsequently, when the browser makes a request with the specific prefix, the worker fetches the asset from the original URL. This example can be downloaded with this command: &nbsp; &nbsp;</p>
+<p><code>wrangler generate test [https://github.com/xtuc/rewrite-3d-party.git](https://github.com/xtuc/rewrite-3d-party.git)</code></p>
+<h2>Request Mangling</h2>
+<p>As well as rewriting content, it is also possible to change or delay a request. Below is an example of how to randomly add a delay of a second to a request:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> host</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> event.request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'x-host'</span><span class="sk-24292e-fff">);    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (host) { </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">//....     </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Add the delay if necessary     </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (Math.</span><span class="sk-6f42c1-ffc799">random</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 100</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-005cc5-fff"> DELAY_PERCENT</span><span class="sk-24292e-fff">) {       </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">resolve</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-6f42c1-ffc799"> setTimeout</span><span class="sk-24292e-fff">(resolve, </span><span class="sk-005cc5-fff">DELAY_MS</span><span class="sk-24292e-fff">));     </span></span>
+<span class="line"><span class="sk-24292e-fff">    }    </span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(originUrl, init));</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">//...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>HTTP/2 prioritization</h2>
+<p>What if you want to see what the effect of changing the HTTP/2 prioritization of assets would make to your website? Cloudflare Workers provide <a href="https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web">custom http2 prioritization schemes</a> that can be applied by setting a custom header on the response. The <code>cf-priority</code> header is defined as <code>&lt;priority&gt;/&lt;concurrency&gt;</code> so adding: &nbsp; &nbsp;</p>
+<p><code>response.headers.set('cf-priority', “30/0”);</code> &nbsp; &nbsp;</p>
+<p>would set the priority of that response to 30 with a concurrency of 0 for the given response. Similarly, “30/1” would set concurrency to 1 and “30/n” would set concurrency to n. With this flexibility, you can prioritize the bytes that are important for your website or run a bulk test to prove that your new &nbsp;prioritization scheme is better than any of the existing browser implementations.</p>
+<h2>Summary</h2>
+<p>A major barrier to understanding and innovation, is the amount of time is takes to get feedback. Having a quick and easy framework, to try out a new idea and comprehend the impact, is key. I hope this post has convinced you that combining WebPageTest and Cloudflare Workers is an easy solution to this problem and is indeed magic</p>

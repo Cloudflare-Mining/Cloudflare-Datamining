@@ -1,59 +1,31 @@
-<div class="mb2 gray5">2 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/stream-player-customizations-to-boost-your-video-experience">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/stream-player-customizations-to-boost-your-video-experience">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7pShDLUc8fvT3hXxXlBbyT/a8aede3923a966c4197799547185eacf/stream-player-customizations-to-boost-your-video-experience.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>When we launched Stream, one of our goals was to provide the most performant video player. We focused on building a player that loads fast, works across different browsers and frameworks, and intelligently switches video quality levels depending on your end user’s connectivity.</p>
-	<p>We are expanding the Stream Player vision, so you can control the look and feel of the viewing experience. Today, we are announcing a series of new customization options to help you deliver the best video playback experience.</p>
-	<div class="flex anchor relative">
-		<h3 id="add-your-own-color">Add Your Own Color</h3>
-		<a href="https://blog.cloudflare.com/#add-your-own-color" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One thing we kept hearing from customers is that they would like to be able to customize the Stream Player to better reflect their brand. Stream Player now supports setting a primary color to match your company’s color. Here is an example of us using the primaryColor property to set the primary color to the Cloudflare Orange.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>To use the primaryColor property, simply add it to the iframe URL. In this example, the hex code is #F48120 and the uri-encoded value is %23F48120.</p>
-	<pre class="language-bash"><code class="language-bash">https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23F48120</code></pre>
-	<p>If you are using the React or Angular wrapper, you can use the primaryColor prop to customize the player color.</p>
-	<p>Currently, setting the primary color property will change the colors of the play button and the seekbar to the primary color you specify. We plan to offer more ways to brand the Stream Player in the future.</p>
-	<div class="flex anchor relative">
-		<h3 id="deep-link-within-videos">Deep link within videos</h3>
-		<a href="https://blog.cloudflare.com/#deep-link-within-videos" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Previously, if you wanted the video to start at a certain point in time, you would need to write custom code that uses the Stream Player SDK to fast-forward the viewer to the precise start time. Stream Player now supports a startTime property, which eliminates the need to load the SDK and write custom code if you simply want to deep link the view to a point-in-time in the video.</p>
-	<p>Let’s say you run an e-learning platform and would like the instructors to be able to answer questions by deep linking to a specific part of an hour-long video. If you set the new startTime querystring parameter or prop, video playback in the Stream Player will begin at the specified timestamp.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="enable-localized-captions-by-default">Enable localized captions by default</h3>
-		<a href="https://blog.cloudflare.com/#enable-localized-captions-by-default" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Stream has long supported video captions for multiple languages. But we heard from customers that they would like to be able to turn on captions by default <i>and</i> specify the default language. This is now natively supported and makes it significantly easier to make your video accessible for a global audience.</p>
-	<p>If you have a website with localization support, you likely want captions to be turned on with a preset language. Auto-enabling captions can also improve the viewer experience in instances where the video is auto-played while also muted. This is a growing trend and, in fact, Facebook reports that over 85% of videos watched on the platform are played with sound off.</p>
-	<p>Auto-enabling captions with the Stream Player is now as simple as specifying a language code in the iframe URL.</p>
-	<div class="flex anchor relative">
-		<h3 id="revamped-embed-tab">Revamped Embed Tab</h3>
-		<a href="https://blog.cloudflare.com/#revamped-embed-tab" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, we’ve revamped the Embed tab, so you can experiment with all the player customization options without writing a single line of code. You can easily configure properties like the poster image and primary color from the Embed tab. The Embed tab lets you see an instant preview of the customized player and provides the embed code that you can paste in your app or website.</p>
-	<p>Stream users often struggled with setting the perfect poster image for individual videos. The process would involve watching the video, finding the right timestamp to use as a cover image, reading the API docs and finally, modifying the query parameters manually until you land on the right cover image. With the new enhancements, you can play the video to the right point in the video and click <b>Copy from player</b> to set the poster image timestamp.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5D1vyYVZgTafO82CRJKICx/d11cee9615fd2a7e36975ce969379f87/image1-55.png" alt="" class="kg-image" width="629" height="674" loading="lazy">
-
-	</figure>
-	<p>We are just starting our journey of making the Stream Player super customizable. If you have a particular customization that you’d like to see supported, <a href="https://forms.gle/cquHEXK8St6sVZnx5" target="_blank" rel="noopener noreferrer">we’d love to hear from you.</a></p>
+<p>When we launched Stream, one of our goals was to provide the most performant video player. We focused on building a player that loads fast, works across different browsers and frameworks, and intelligently switches video quality levels depending on your end user’s connectivity.</p>
+<p>We are expanding the Stream Player vision, so you can control the look and feel of the viewing experience. Today, we are announcing a series of new customization options to help you deliver the best video playback experience.</p>
+<h3>Add Your Own Color</h3>
+<p>One thing we kept hearing from customers is that they would like to be able to customize the Stream Player to better reflect their brand. Stream Player now supports setting a primary color to match your company’s color. Here is an example of us using the primaryColor property to set the primary color to the Cloudflare Orange.</p>
+<div id="html-block-k9" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor=%23ffa057" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>
+<p>To use the primaryColor property, simply add it to the iframe URL. In this example, the hex code is #F48120 and the uri-encoded value is %23F48120.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?primaryColor</span><span class="sk-032f62-99ffe4">=%23F48120</span></span></code></pre>
+</div>
+<p>If you are using the React or Angular wrapper, you can use the primaryColor prop to customize the player color.</p>
+<p>Currently, setting the primary color property will change the colors of the play button and the seekbar to the primary color you specify. We plan to offer more ways to brand the Stream Player in the future.</p>
+<h3>Deep link within videos</h3>
+<p>Previously, if you wanted the video to start at a certain point in time, you would need to write custom code that uses the Stream Player SDK to fast-forward the viewer to the precise start time. Stream Player now supports a startTime property, which eliminates the need to load the SDK and write custom code if you simply want to deep link the view to a point-in-time in the video.</p>
+<p>Let’s say you run an e-learning platform and would like the instructors to be able to answer questions by deep linking to a specific part of an hour-long video. If you set the new startTime querystring parameter or prop, video playback in the Stream Player will begin at the specified timestamp.</p>
+<div id="html-block-kn" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/fcfa5c97795ba90251cbbae1880a0e18?startTime=11s" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<h3>Enable localized captions by default</h3>
+<p>Cloudflare Stream has long supported video captions for multiple languages. But we heard from customers that they would like to be able to turn on captions by default <em>and</em> specify the default language. This is now natively supported and makes it significantly easier to make your video accessible for a global audience.</p>
+<p>If you have a website with localization support, you likely want captions to be turned on with a preset language. Auto-enabling captions can also improve the viewer experience in instances where the video is auto-played while also muted. This is a growing trend and, in fact, Facebook reports that over 85% of videos watched on the platform are played with sound off.</p>
+<p>Auto-enabling captions with the Stream Player is now as simple as specifying a language code in the iframe URL.</p>
+<h3>Revamped Embed Tab</h3>
+<p>Finally, we’ve revamped the Embed tab, so you can experiment with all the player customization options without writing a single line of code. You can easily configure properties like the poster image and primary color from the Embed tab. The Embed tab lets you see an instant preview of the customized player and provides the embed code that you can paste in your app or website.</p>
+<p>Stream users often struggled with setting the perfect poster image for individual videos. The process would involve watching the video, finding the right timestamp to use as a cover image, reading the API docs and finally, modifying the query parameters manually until you land on the right cover image. With the new enhancements, you can play the video to the right point in the video and click <strong>Copy from player</strong> to set the poster image timestamp.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="629" height="674" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=629&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=629&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 629w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=640&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=750&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=828&amp;h=887&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=1080&amp;h=1157&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=1258&amp;h=1348&amp;f=webp&amp;fit=cover&amp;position=center 1258w" alt="BLOG-818 Embedded Image - tPzyUD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EGKFSFP6FN7HDN32TBF.png&amp;w=629&amp;h=674&amp;f=webp" data-lightbox-width="629" data-lightbox-height="674" data-astro-cid-7nvefuv6="true" sizes="(min-width: 629px) 629px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="629" height="674" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We are just starting our journey of making the Stream Player super customizable. If you have a particular customization that you’d like to see supported, <a href="https://forms.gle/cquHEXK8St6sVZnx5" target="_blank" rel="noopener noreferrer">we’d love to hear from you.</a></p>

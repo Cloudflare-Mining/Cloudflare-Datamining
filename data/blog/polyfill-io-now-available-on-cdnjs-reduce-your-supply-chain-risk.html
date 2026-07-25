@@ -1,143 +1,104 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4nxvskYVuRnRJHoLUMRY4l/e26d2d6b57eb9a286238ab84863dc947/image1-17.png" alt="polyfill.io now available on cdnjs: reduce your supply chain risk" class="kg-image" width="1201" height="675" loading="lazy">
-
-	</figure>
-	<p>Polyfill.io is a popular JavaScript library that nullifies differences across old browser versions. These differences often take up substantial development time.</p>
-	<p>It does this by adding support for modern functions (via <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill" target="_blank" rel="noopener noreferrer">polyfilling</a>), ultimately letting developers work against a uniform environment simplifying development. The tool is historically loaded by linking to the endpoint provided under the domain polyfill.io.</p>
-	<p>In the interest of providing developers with additional options to use polyfill, today we are launching an <a href="https://cdnjs.cloudflare.com/polyfill" target="_blank" rel="noopener noreferrer">alternative endpoint under cdnjs</a>. You can replace links to polyfill.io “as is” with our new endpoint. You will then rely on the same service and reputation that <a href="https://cdnjs.com" target="_blank" rel="noopener noreferrer">cdnjs</a> has built over the years for your polyfill needs.</p>
-	<p>Our interest in creating an alternative endpoint was also sparked by some <a href="https://github.com/polyfillpolyfill/polyfill-service/issues/2834" target="_blank" rel="noopener noreferrer">concerns raised by the community</a>, and <a href="https://twitter.com/triblondon/status/1761852117579427975" target="_blank" rel="noopener noreferrer">main contributors</a>, following the transition of the domain polyfill.io to a new provider (Funnull).</p>
-	<p>The concerns are that any website embedding a link to the original polyfill.io domain, will now be relying on Funnull to maintain and secure the underlying project to avoid the risk of a supply chain attack. Such an attack would occur if the underlying third party is compromised or alters the code being served to end users in nefarious ways, causing, by consequence, all websites using the tool to be compromised.</p>
-	<p>Supply chain attacks, in the context of web applications, are a growing concern for security teams, and also led us to build a client side security product to detect and mitigate these attack vectors: <a href="https://developers.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a>.</p>
-	<p>Irrespective of the scenario described above, this is a timely reminder of the complexities and risks tied to modern web applications. As maintainers and contributors of <a href="https://cdnjs.com" target="_blank" rel="noopener noreferrer">cdnjs</a>, currently used by <a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank" rel="noopener noreferrer">more than 12% of all sites</a>, this reinforces our commitment to help keep the Internet safe.</p>
-	<div class="flex anchor relative">
-		<h3 id="polyfill-io-on-cdnjs">polyfill.io on cdnjs</h3>
-		<a href="https://blog.cloudflare.com/#polyfill-io-on-cdnjs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The full polyfill.io implementation has been deployed at the following URL:</p>
-	<p><a href="https://cdnjs.cloudflare.com/polyfill" target="_blank" rel="noopener noreferrer"><code>https://cdnjs.cloudflare.com/polyfill/</code></a></p>
-	<p>The underlying bundle link is:</p>
-	<p>For minified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js" target="_blank" rel="noopener noreferrer">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js</a>For unminified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js" target="_blank" rel="noopener noreferrer">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js</a></p>
-	<p>Usage and deployment is intended to be identical to the original polyfill.io site. As a developer, you should be able to simply “replace” the old link with the new cdnjs-hosted link without observing any side effects, besides a possible improvement in performance and reliability.</p>
-	<p>If you don’t have access to the underlying website code, but your website is behind Cloudflare, replacing the links is even easier, as you can deploy a Cloudflare Worker to update the links for you:</p>
-	<pre class="language-javascript"><code class="language-javascript">export interface Env {}
-
-export default {
-    async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise&lt;Response&gt; {
-        ctx.passThroughOnException();
-
-        const response = await fetch(request);
-
-        if ((response.headers.get('content-type') || '').includes('text/html')) {
-            const rewriter = new HTMLRewriter()
-                .on('link', {
-                    element(element) {
-                        const rel = element.getAttribute('rel');
-                        if (rel === 'preconnect') {
-                            const href = new URL(element.getAttribute('href') || '', request.url);
-
-                            if (href.hostname === 'polyfill.io') {
-                                href.hostname = 'cdnjs.cloudflare.com';
-                                element.setAttribute('href', href.toString());
-                            }
-                        }
-                    },
-                })
-
-                .on('script', {
-                    element(element) {
-                        if (element.hasAttribute('src')) {
-                            const src = new URL(element.getAttribute('src') || '', request.url);
-                            if (src.hostname === 'polyfill.io') {
-                                src.hostname = 'cdnjs.cloudflare.com';
-                                src.pathname = '/polyfill' + src.pathname;
-
-                                element.setAttribute('src', src.toString());
-                            }
-                        }
-                    },
-                });
-
-            return rewriter.transform(response);
-        } else {
-            return response;
-        }
-    },
-};</code></pre>
-	<p>Instructions on how to deploy a worker can be found on our <a href="https://developers.cloudflare.com/workers/get-started" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
-	<p>You can also test the Worker on your website without deploying the worker. You can find instructions on how to do this in <a href="https://blog.cloudflare.com/workers-and-webpagetest">another blog post we wrote in the past</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="implemented-with-rust-on-cloudflare-workers">Implemented with Rust on Cloudflare Workers</h3>
-		<a href="https://blog.cloudflare.com/#implemented-with-rust-on-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We were happy to discover that polyfill.io is a <a href="https://github.com/polyfillpolyfill/polyfill-service" target="_blank" rel="noopener noreferrer">Rust project</a>. As you might know, Rust has been a <a href="https://blog.cloudflare.com/workers-rust-sdk">first class citizen on Cloudflare Workers</a> from the start.</p>
-	<p>The polyfill.io service was hosted on Fastly and used their Rust library. We forked the project to add the compatibility for Cloudflare Workers, and plan to make the fork publicly accessible in the near future.</p>
-	<div class="flex anchor relative">
-		<h3 id="worker">Worker</h3>
-		<a href="https://blog.cloudflare.com/#worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The <code>https://cdnjs.cloudflare.com/polyfill/[...].js</code> endpoints are also implemented in a Cloudflare Worker that wraps our Polyfill.io fork. The wrapper uses <a href="https://github.com/cloudflare/workers-rs" target="_blank" rel="noopener noreferrer">Cloudflare’s Rust API</a> and looks like the following:</p>
-	<pre class="language-javascript"><code class="language-javascript">#[event(fetch)]
-async fn main(req: Request, env: Env, ctx: Context) -&gt; Result&lt;Response&gt; {
-    let metrics = {...};
-
-    let polyfill_store = get_d1(&amp;req, &amp;env)?;
-    let polyfill_env = Arc::new(service::Env { polyfill_store, metrics });
-    
-    // Run the polyfill.io entrypoint
-    let res = service::handle_request(req2, polyfill_env).await;
-
-    let status_code = if let Ok(res) = &amp;res {
-        res.status_code()
-    } else {
-        500
-    };
-    metrics
-        .requests
-        .with_label_values(&amp;[&amp;status_code.to_string()])
-        .inc();
-
-    ctx.wait_until(async move {
-        if let Err(err) = metrics.report_metrics().await {
-            console_error!("failed to report metrics: {err}");
-        }
-    });
-
-    res
-}</code></pre>
-	<p>The wrapper only sets up our internal <a href="https://developers.cloudflare.com/workers/observability/metrics-and-analytics" target="_blank" rel="noopener noreferrer">metrics</a> and <a href="https://developers.cloudflare.com/workers/observability/logging/logpush" target="_blank" rel="noopener noreferrer">logging</a> tools, so we can monitor uptime and performance of the underlying logic while calling the Polyfill.io entrypoint.</p>
-	<div class="flex anchor relative">
-		<h3 id="storage-for-the-polyfill-files">Storage for the Polyfill files</h3>
-		<a href="https://blog.cloudflare.com/#storage-for-the-polyfill-files" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All the polyfill files are stored in a key-value store powered by <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">Cloudflare D1</a>. This allows us to fetch as many polyfill files as we need with a single SQL query, as opposed to the original implementation doing one KV get() per file.</p>
-	<p>For performance, we have one Cloudflare D1 instance per region and the SQL queries are routed to the nearest database.</p>
-	<div class="flex anchor relative">
-		<h3 id="cdnjs-for-your-javascript-libraries">cdnjs for your JavaScript libraries</h3>
-		<a href="https://blog.cloudflare.com/#cdnjs-for-your-javascript-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>cdnjs is hosting over 6k JavaScript libraries as of today. We are looking for ways to improve the service and provide new content. We listen to community feedback and welcome suggestions on our <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">community forum</a>, or <a href="https://github.com/cdnjs" target="_blank" rel="noopener noreferrer">cdnjs on GitHub</a>.</p>
-	<p><a href="https://developers.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a> is also available to all paid plans. Log in to turn it on with a single click to increase visibility and security for your third party assets.</p>
+<p>Polyfill.io is a popular JavaScript library that nullifies differences across old browser versions. These differences often take up substantial development time.</p>
+<p>It does this by adding support for modern functions (via <a href="https://developer.mozilla.org/en-US/docs/Glossary/Polyfill" target="_blank" rel="noopener noreferrer">polyfilling</a>), ultimately letting developers work against a uniform environment simplifying development. The tool is historically loaded by linking to the endpoint provided under the domain polyfill.io.</p>
+<p>In the interest of providing developers with additional options to use polyfill, today we are launching an <a href="https://cdnjs.cloudflare.com/polyfill" target="_blank" rel="noopener noreferrer">alternative endpoint under cdnjs</a>. You can replace links to polyfill.io “as is” with our new endpoint. You will then rely on the same service and reputation that <a href="https://cdnjs.com" target="_blank" rel="noopener noreferrer">cdnjs</a> has built over the years for your polyfill needs.</p>
+<p>Our interest in creating an alternative endpoint was also sparked by some <a href="https://github.com/polyfillpolyfill/polyfill-service/issues/2834" target="_blank" rel="noopener noreferrer">concerns raised by the community</a>, and <a href="https://twitter.com/triblondon/status/1761852117579427975" target="_blank" rel="noopener noreferrer">main contributors</a>, following the transition of the domain polyfill.io to a new provider (Funnull).</p>
+<p>The concerns are that any website embedding a link to the original polyfill.io domain, will now be relying on Funnull to maintain and secure the underlying project to avoid the risk of a supply chain attack. Such an attack would occur if the underlying third party is compromised or alters the code being served to end users in nefarious ways, causing, by consequence, all websites using the tool to be compromised.</p>
+<p>Supply chain attacks, in the context of web applications, are a growing concern for security teams, and also led us to build a client side security product to detect and mitigate these attack vectors: <a href="https://developers.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a>.</p>
+<p>Irrespective of the scenario described above, this is a timely reminder of the complexities and risks tied to modern web applications. As maintainers and contributors of <a href="https://cdnjs.com" target="_blank" rel="noopener noreferrer">cdnjs</a>, currently used by <a href="https://w3techs.com/technologies/overview/content_delivery" target="_blank" rel="noopener noreferrer">more than 12% of all sites</a>, this reinforces our commitment to help keep the Internet safe.</p>
+<h3>polyfill.io on cdnjs</h3>
+<p>The full polyfill.io implementation has been deployed at the following URL:</p>
+<p><a href="https://cdnjs.cloudflare.com/polyfill" target="_blank" rel="noopener noreferrer"><code>https://cdnjs.cloudflare.com/polyfill/</code></a></p>
+<p>The underlying bundle link is:</p>
+<p>For minified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js" target="_blank" rel="noopener noreferrer">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js</a>For unminified: <a href="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js" target="_blank" rel="noopener noreferrer">https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js</a></p>
+<p>Usage and deployment is intended to be identical to the original polyfill.io site. As a developer, you should be able to simply “replace” the old link with the new cdnjs-hosted link without observing any side effects, besides a possible improvement in performance and reliability.</p>
+<p>If you don’t have access to the underlying website code, but your website is behind Cloudflare, replacing the links is even easier, as you can deploy a Cloudflare Worker to update the links for you:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-24292e-fff">        ctx.</span><span class="sk-6f42c1-ffc799">passThroughOnException</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> ((response.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'content-type'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-005cc5-fff"> rewriter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> HTMLRewriter</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">                .</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'link'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                    element</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">element</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                        const</span><span class="sk-005cc5-fff"> rel</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> element.</span><span class="sk-6f42c1-ffc799">getAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'rel'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                        if</span><span class="sk-24292e-fff"> (rel </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'preconnect'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                            const</span><span class="sk-005cc5-fff"> href</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(element.</span><span class="sk-6f42c1-ffc799">getAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'href'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff">, request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                            if</span><span class="sk-24292e-fff"> (href.hostname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'polyfill.io'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">                                href.hostname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'cdnjs.cloudflare.com'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">                                element.</span><span class="sk-6f42c1-ffc799">setAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'href'</span><span class="sk-24292e-fff">, href.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">                            }</span></span>
+<span class="line"><span class="sk-24292e-fff">                        }</span></span>
+<span class="line"><span class="sk-24292e-fff">                    },</span></span>
+<span class="line"><span class="sk-24292e-fff">                })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">                .</span><span class="sk-6f42c1-ffc799">on</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'script'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                    element</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">element</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                        if</span><span class="sk-24292e-fff"> (element.</span><span class="sk-6f42c1-ffc799">hasAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'src'</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                            const</span><span class="sk-005cc5-fff"> src</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(element.</span><span class="sk-6f42c1-ffc799">getAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'src'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff">, request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">                            if</span><span class="sk-24292e-fff"> (src.hostname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'polyfill.io'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">                                src.hostname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> 'cdnjs.cloudflare.com'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">                                src.pathname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> '/polyfill'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> src.pathname;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">                                element.</span><span class="sk-6f42c1-ffc799">setAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'src'</span><span class="sk-24292e-fff">, src.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">                            }</span></span>
+<span class="line"><span class="sk-24292e-fff">                        }</span></span>
+<span class="line"><span class="sk-24292e-fff">                    },</span></span>
+<span class="line"><span class="sk-24292e-fff">                });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> rewriter.</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(response);</span></span>
+<span class="line"><span class="sk-24292e-fff">        } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
 </div>
+<p>Instructions on how to deploy a worker can be found on our <a href="https://developers.cloudflare.com/workers/get-started" target="_blank" rel="noopener noreferrer">developer documentation</a>.</p>
+<p>You can also test the Worker on your website without deploying the worker. You can find instructions on how to do this in <a href="https://blog.cloudflare.com/workers-and-webpagetest">another blog post we wrote in the past</a>.</p>
+<h3>Implemented with Rust on Cloudflare Workers</h3>
+<p>We were happy to discover that polyfill.io is a <a href="https://github.com/polyfillpolyfill/polyfill-service" target="_blank" rel="noopener noreferrer">Rust project</a>. As you might know, Rust has been a <a href="https://blog.cloudflare.com/workers-rust-sdk">first class citizen on Cloudflare Workers</a> from the start.</p>
+<p>The polyfill.io service was hosted on Fastly and used their Rust library. We forked the project to add the compatibility for Cloudflare Workers, and plan to make the fork publicly accessible in the near future.</p>
+<h3>Worker</h3>
+<p>The <code>https://cdnjs.cloudflare.com/polyfill/[...].js</code> endpoints are also implemented in a Cloudflare Worker that wraps our Polyfill.io fork. The wrapper uses <a href="https://github.com/cloudflare/workers-rs" target="_blank" rel="noopener noreferrer">Cloudflare’s Rust API</a> and looks like the following:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">#[</span><span class="sk-6f42c1-ffc799">event</span><span class="sk-24292e-fff">(fetch)]</span></span>
+<span class="line"><span class="sk-24292e-fff">async fn </span><span class="sk-6f42c1-ffc799">main</span><span class="sk-24292e-fff">(req: Request, env: Env, ctx: Context) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Response</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    let metrics </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    let polyfill_store </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> get_d1</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">req, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">env)</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    let polyfill_env </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Arc</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">:</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">service</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">Env</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">polyfill_store</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">metrics</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Run the polyfill.io entrypoint</span></span>
+<span class="line"><span class="sk-24292e-fff">    let res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> service::</span><span class="sk-6f42c1-ffc799">handle_request</span><span class="sk-24292e-fff">(req2, polyfill_env).await;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    let status_code </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> if let </span><span class="sk-6f42c1-ffc799">Ok</span><span class="sk-24292e-fff">(res) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> &amp;</span><span class="sk-24292e-fff">res {</span></span>
+<span class="line"><span class="sk-24292e-fff">        res.status_code()</span></span>
+<span class="line"><span class="sk-24292e-fff">    } else {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        500</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"><span class="sk-24292e-fff">    metrics</span></span>
+<span class="line"><span class="sk-24292e-fff">        .requests</span></span>
+<span class="line"><span class="sk-24292e-fff">        .with_label_values(&amp;[</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">status_code.</span><span class="sk-6f42c1-ffc799">to_string</span><span class="sk-24292e-fff">()])</span></span>
+<span class="line"><span class="sk-24292e-fff">        .inc();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    ctx.wait_until(async move {</span></span>
+<span class="line"><span class="sk-24292e-fff">        if let Err(err) = metrics.report_metrics().await {</span></span>
+<span class="line"><span class="sk-24292e-fff">            console_error!("failed to report metrics: {err}</span><span class="sk-032f62-99ffe4">")</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    res</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The wrapper only sets up our internal <a href="https://developers.cloudflare.com/workers/observability/metrics-and-analytics" target="_blank" rel="noopener noreferrer">metrics</a> and <a href="https://developers.cloudflare.com/workers/observability/logging/logpush" target="_blank" rel="noopener noreferrer">logging</a> tools, so we can monitor uptime and performance of the underlying logic while calling the Polyfill.io entrypoint.</p>
+<h3>Storage for the Polyfill files</h3>
+<p>All the polyfill files are stored in a key-value store powered by <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">Cloudflare D1</a>. This allows us to fetch as many polyfill files as we need with a single SQL query, as opposed to the original implementation doing one KV get() per file.</p>
+<p>For performance, we have one Cloudflare D1 instance per region and the SQL queries are routed to the nearest database.</p>
+<h3>cdnjs for your JavaScript libraries</h3>
+<p>cdnjs is hosting over 6k JavaScript libraries as of today. We are looking for ways to improve the service and provide new content. We listen to community feedback and welcome suggestions on our <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">community forum</a>, or <a href="https://github.com/cdnjs" target="_blank" rel="noopener noreferrer">cdnjs on GitHub</a>.</p>
+<p><a href="https://developers.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a> is also available to all paid plans. Log in to turn it on with a single click to increase visibility and security for your third party assets.</p>

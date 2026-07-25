@@ -1,186 +1,137 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HZEjHVnWVRyoS9CfwLHgn/ddcc2ce30966862da4f417bd3fb15fe4/identifying-and-alerting-on-data-loss-using-workers.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Markus Spiske</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
-	<p>You hear about data breaches almost every day in the news these days. New regulations, such as GDPR, require companies to disclose data breaches within 72 hours of becoming aware. Becoming aware of and identifying data breaches as they happen, however, is not an easy task. It is often challenging for companies to become aware of their own data breaches and losses well-before they get picked up by the media.</p>
-	<p>One symptom of a data breach is data (such as passwords or PII) that should never leave internal systems making its way through an HTTP response into the public Internet. Since Cloudflare Workers sits between your infrastructure and the public for any endpoints exposed to the Internet, Workers can be used as a way of alerting you of canary data leaving.</p>
-	<p>In the following example, we will be inspecting the content of each response, checking to see if our canary data has leaked out, and if so, returning a static response and calling the PagerDuty API to notify of a potential breach.</p>
-	<div class="flex anchor relative">
-		<h3 id="detecting-data-loss">Detecting Data Loss</h3>
-		<a href="https://blog.cloudflare.com/#detecting-data-loss" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this example, we’ll be looking for a particular string in the body of the response. This string can be canary data in your database (in our example, the secret is “SHHHTHISISASECRET”, and we are matching on a very specific string).</p>
-	<p>To get the body of the content, we use<code>javascript let body = await response.text()</code>This pulls the body of the response into the body variable. Note, that since this method consumes the body of the response, we will have to construct a new Response object prior to returning it. If you are expecting JSON, you may also call <code>response.json()</code>. Since we cannot read the body of images and other non-text formats, we check the Content-Type of the response prior to trying to parse the body.</p>
-	<pre class="language-javascript"><code class="language-javascript"> if(response.headers.get('Content-Type').includes('text')){
-     let body = await response.text()
-     if(body.includes('SHHHTHISISASECRET')) {
-       response = new Response('Blocked.', {status: 403, headers: new Headers({'Private-block': true})})
-       return response
-     }
-     return new Response(body, {status: response.status, headers: response.headers})
-   }</code></pre>
-	<p>By default, Workers will stream responses back to the client to help improve performance and TTFB. It is worthwhile noting that reading the body of the response in the Worker means that the response will not be streamed (as we must wait on the read to complete to identify the presence of this string in the body)</p>
-	<div class="flex anchor relative">
-		<h3 id="returning-a-response-to-the-client">Returning a response to the client</h3>
-		<a href="https://blog.cloudflare.com/#returning-a-response-to-the-client" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h4 id="static-block">Static block</h4>
-		<a href="https://blog.cloudflare.com/#static-block" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the example, we create a static response:</p>
-	<pre class="language-javascript"><code class="language-javascript">response = new Response('&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})</code></pre>
-	<p>To make sure that the browser can parse and display it properly, we also add the Content-Type header with the value “text/html”. Assuming the origin responded with something it should not have responded with, we will replace the response headers so as not to reflect back any additional information.</p>
-	<div class="flex anchor relative">
-		<h4 id="rate-limiting-the-response">Rate limiting the response</h4>
-		<a href="https://blog.cloudflare.com/#rate-limiting-the-response" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the example above, we are looking for a string that clearly should never be leaked. However, in some cases, it may be possible that you are looking to detect data that is valid for your application to respond with, but you still want to rate limit the number of times it is being accessed.</p>
-	<p>Cloudflare Rate Limiting allows you to create Rate Limiting rules based on response headers and response status codes.</p>
-	<p>By defining the rule below, and setting the X-Rate-Limiting response header to true, we can make sure each IP can only access this data once per minute:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rYW1xkLXxYYReGbmdfira/73715ef5ab78be1ce681997bba82c004/Screen-Shot-2018-08-27-at-11.25.48-AM.png" alt="Screen-Shot-2018-08-27-at-11.25.48-AM" class="kg-image" width="605" height="543" loading="lazy">
-
-	</figure>
-	<p>Adding the header in the Worker:</p>
-	<pre class="language-javascript"><code class="language-javascript">response = new Response(body, {status: response.status, headers: new Headers({'X-Rate-Limiting': true}})</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="triggering-pagerduty">Triggering PagerDuty</h3>
-		<a href="https://blog.cloudflare.com/#triggering-pagerduty" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As our method of alerting on these incidents, we’ll be making an API call to PagerDuty.</p>
-	<p>To start, you will have to set up a Service to receive alerts and incidents on. In the Integration setting, make sure you select the API since that will allow us to make HTTP requests directly from the Worker.</p>
-	<p>You will additionally need to set up an API key (under Configuration → API Access) to allow the Worker to create Incident events and trigger alerts.</p>
-	<p>When making the API call, we will use event.waitUntil(). This serves two purposes:We don’t necessarily want to block the response that is returned to the client, and make it wait until we complete the request to PagerDuty (this is important for the performance of critical tasks).Outstanding asynchronous tasks are canceled as soon as a worker finishes sending its main response body back to the client. event.waitUntil() helps ensure that the call the PagerDuty is complete even after the response is sent to the client.</p>
-	<pre class="language-javascript"><code class="language-javascript">async function createPagerDutyIncident(event) {
- let body = `{
-     "incident": {
-         "type": "incident",
-         "title": "Potential data breach",
-         "service": {
-           "id": "${PD_SERVICE_ID}",
-           "type": "service_reference"
-         },
-       }
-   }`
-
- let PDInit = {
-   method: 'POST',
-   headers: new Headers({
-     "Content-Type": "application/json",
-     "Accept": "application/vnd.pagerduty+json;version=2",
-     "From": `${PD_FROM}`,
-     "Authorization": `Token token=${PD_API_KEY}`
-   }),
-   body: body
- }
- event.waitUntil(fetch('https://api.pagerduty.com/incidents', PDInit))
-
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="the-complete-worker">The Complete Worker</h3>
-		<a href="https://blog.cloudflare.com/#the-complete-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-javascript"><code class="language-javascript">const PD_API_KEY = 'key'
-const PD_FROM = 'email@gmail.com'
-const PD_SERVICE_ID = 'ID'
-
-addEventListener('fetch', event =&gt; {
- let response = handleRequest(event)
- event.respondWith(response)
-})
-
-/**
-* Find canary data in the response
-* @param {Request} request
-*/
-async function handleRequest(event) {
- try{
-   let request = event.request
-   let response = await fetch(request)
-   // Only check when content type contains "text"
-   if(response.headers.get('Content-Type').includes('text')){
-     let body = await response.text()
-     if(body.includes('SHHHTHISISASECRET')) {
-       response = new Response('&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;', {status: 403, headers: new Headers({'Content-Type': 'text/html'})})
-       createPagerDutyIncident(event)
-       return response
-     }
-     return new Response(body, {status: response.status, headers: response.headers})
-   }
-   else {
-     return response
-   }
- }
- catch (e) {
-   console.log(e)
- }
-}
-
-async function createPagerDutyIncident(event) {
- let body = `{
-     "incident": {
-         "type": "incident",
-         "title": "Potential data breach",
-         "service": {
-           "id": "${PD_SERVICE_ID}",
-           "type": "service_reference"
-         },
-       }
-   }`
-
- let PDInit = {
-   method: 'POST',
-   headers: new Headers({
-     "Content-Type": "application/json",
-     "Accept": "application/vnd.pagerduty+json;version=2",
-     "From": `${PD_FROM}`,
-     "Authorization": `Token token=${PD_API_KEY}`
-   }),
-   body: body
- }
- event.waitUntil(fetch('https://api.pagerduty.com/incidents', PDInit))
-
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Workers give you full control over each request and response that flows through Cloudflare. Being able to inspect the body of the response means that you can identify, alert and modify content sent back by your origin, and thus use Workers for things such as data loss prevention.</p>
-	<p>You can check out more uses and recipes for Workers <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<p>As always, we would love to hear what you are doing with Workers.</p>
+<p>Photo by <a href="https://unsplash.com/@markusspiske?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Markus Spiske</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+<p>You hear about data breaches almost every day in the news these days. New regulations, such as GDPR, require companies to disclose data breaches within 72 hours of becoming aware. Becoming aware of and identifying data breaches as they happen, however, is not an easy task. It is often challenging for companies to become aware of their own data breaches and losses well-before they get picked up by the media.</p>
+<p>One symptom of a data breach is data (such as passwords or PII) that should never leave internal systems making its way through an HTTP response into the public Internet. Since Cloudflare Workers sits between your infrastructure and the public for any endpoints exposed to the Internet, Workers can be used as a way of alerting you of canary data leaving.</p>
+<p>In the following example, we will be inspecting the content of each response, checking to see if our canary data has leaked out, and if so, returning a static response and calling the PagerDuty API to notify of a potential breach.</p>
+<h3>Detecting Data Loss</h3>
+<p>In this example, we’ll be looking for a particular string in the body of the response. This string can be canary data in your database (in our example, the secret is “SHHHTHISISASECRET”, and we are matching on a very specific string).</p>
+<p>To get the body of the content, we use<code>javascript let body = await response.text()</code>This pulls the body of the response into the body variable. Note, that since this method consumes the body of the response, we will have to construct a new Response object prior to returning it. If you are expecting JSON, you may also call <code>response.json()</code>. Since we cannot read the body of images and other non-text formats, we check the Content-Type of the response prior to trying to parse the body.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff">(response.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'text'</span><span class="sk-24292e-fff">)){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     let</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     if</span><span class="sk-24292e-fff">(body.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'SHHHTHISISASECRET'</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Blocked.'</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">, headers: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">'Private-block'</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">})})</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">     }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {status: response.status, headers: response.headers})</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span></code></pre>
 </div>
+<p>By default, Workers will stream responses back to the client to help improve performance and TTFB. It is worthwhile noting that reading the body of the response in the Worker means that the response will not be streamed (as we must wait on the read to complete to identify the presence of this string in the body)</p>
+<h3>Returning a response to the client</h3>
+<h4>Static block</h4>
+<p>In the example, we create a static response:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;'</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">, headers: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">})})</span></span></code></pre>
+</div>
+<p>To make sure that the browser can parse and display it properly, we also add the Content-Type header with the value “text/html”. Assuming the origin responded with something it should not have responded with, we will replace the response headers so as not to reflect back any additional information.</p>
+<h4>Rate limiting the response</h4>
+<p>In the example above, we are looking for a string that clearly should never be leaked. However, in some cases, it may be possible that you are looking to detect data that is valid for your application to respond with, but you still want to rate limit the number of times it is being accessed.</p>
+<p>Cloudflare Rate Limiting allows you to create Rate Limiting rules based on response headers and response status codes.</p>
+<p>By defining the rule below, and setting the X-Rate-Limiting response header to true, we can make sure each IP can only access this data once per minute:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="605" height="543" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=605&amp;h=543&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=605&amp;h=543&amp;f=webp&amp;fit=cover&amp;position=center 605w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=640&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=750&amp;h=673&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=828&amp;h=743&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=1080&amp;h=969&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=1210&amp;h=1086&amp;f=webp&amp;fit=cover&amp;position=center 1210w" alt="Screen-Shot-2018-08-27-at-11.25.48-AM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KJYFMVEHWVAYVZC7MGCR.png&amp;w=605&amp;h=543&amp;f=webp" data-lightbox-width="605" data-lightbox-height="543" data-astro-cid-7nvefuv6="true" sizes="(min-width: 605px) 605px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="605" height="543" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Adding the header in the Worker:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {status: response.status, headers: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">'X-Rate-Limiting'</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">}})</span></span></code></pre>
+</div>
+<h3>Triggering PagerDuty</h3>
+<p>As our method of alerting on these incidents, we’ll be making an API call to PagerDuty.</p>
+<p>To start, you will have to set up a Service to receive alerts and incidents on. In the Integration setting, make sure you select the API since that will allow us to make HTTP requests directly from the Worker.</p>
+<p>You will additionally need to set up an API key (under Configuration → API Access) to allow the Worker to create Incident events and trigger alerts.</p>
+<p>When making the API call, we will use event.waitUntil(). This serves two purposes:We don’t necessarily want to block the response that is returned to the client, and make it wait until we complete the request to PagerDuty (this is important for the performance of critical tasks).Outstanding asynchronous tasks are canceled as soon as a worker finishes sending its main response body back to the client. event.waitUntil() helps ensure that the call the PagerDuty is complete even after the response is sent to the client.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> createPagerDutyIncident</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> `{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "incident": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         "type": "incident",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         "title": "Potential data breach",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         "service": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "id": "${</span><span class="sk-005cc5-fff">PD_SERVICE_ID</span><span class="sk-032f62-99ffe4">}",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "type": "service_reference"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">       }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   }`</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> PDInit </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">   method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">   headers: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "Accept"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/vnd.pagerduty+json;version=2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "From"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-005cc5-fff">PD_FROM</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "Authorization"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">`Token token=${</span><span class="sk-005cc5-fff">PD_API_KEY</span><span class="sk-032f62-99ffe4">}`</span></span>
+<span class="line"><span class="sk-24292e-fff">   }),</span></span>
+<span class="line"><span class="sk-24292e-fff">   body: body</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://api.pagerduty.com/incidents'</span><span class="sk-24292e-fff">, PDInit))</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>The Complete Worker</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> PD_API_KEY</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'key'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> PD_FROM</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'email@gmail.com'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> PD_SERVICE_ID</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'ID'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(event)</span></span>
+<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(response)</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">* Find canary data in the response</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">* </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-6f42c1-ffc799"> {Request}</span><span class="sk-24292e-fff"> request</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">*/</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> try</span><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   let</span><span class="sk-24292e-fff"> request </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> event.request</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   let</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // Only check when content type contains "text"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff">(response.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'text'</span><span class="sk-24292e-fff">)){</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     let</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     if</span><span class="sk-24292e-fff">(body.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'SHHHTHISISASECRET'</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'&lt;html&gt;&lt;h1&gt;Blocked.&lt;/h1&gt;&lt;/html&gt;'</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff">, headers: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">})})</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       createPagerDutyIncident</span><span class="sk-24292e-fff">(event)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">     }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {status: response.status, headers: response.headers})</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-24292e-fff">   console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(e)</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> createPagerDutyIncident</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> body </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> `{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "incident": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         "type": "incident",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         "title": "Potential data breach",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         "service": {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "id": "${</span><span class="sk-005cc5-fff">PD_SERVICE_ID</span><span class="sk-032f62-99ffe4">}",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "type": "service_reference"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">         },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">       }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   }`</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> PDInit </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">   method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">   headers: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "Accept"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/vnd.pagerduty+json;version=2"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "From"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-005cc5-fff">PD_FROM</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "Authorization"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">`Token token=${</span><span class="sk-005cc5-fff">PD_API_KEY</span><span class="sk-032f62-99ffe4">}`</span></span>
+<span class="line"><span class="sk-24292e-fff">   }),</span></span>
+<span class="line"><span class="sk-24292e-fff">   body: body</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff"> event.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://api.pagerduty.com/incidents'</span><span class="sk-24292e-fff">, PDInit))</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Conclusion</h3>
+<p>Cloudflare Workers give you full control over each request and response that flows through Cloudflare. Being able to inspect the body of the response means that you can identify, alert and modify content sent back by your origin, and thus use Workers for things such as data loss prevention.</p>
+<p>You can check out more uses and recipes for Workers <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>As always, we would love to hear what you are doing with Workers.</p>

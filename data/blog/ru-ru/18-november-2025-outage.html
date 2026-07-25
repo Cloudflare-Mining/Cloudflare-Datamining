@@ -1,0 +1,269 @@
+<p>18 ноября 2025 г. в 11:20 UTC (все время в этом блоге указано в UTC), в сети Cloudflare начались значительные сбои в передаче основного сетевого трафика. Это обнаруживалось у пользователей Интернета, пытавшихся получить доступ к сайтам наших клиентов в виде страницы с ошибкой, указывающей на сбой в сети Cloudflare. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="485" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=640&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=715&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=750&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=828&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1080&amp;h=733&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1280&amp;h=868&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1430&amp;h=970&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="HTTP error page displayed during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46A2BAVX0VJV0ZTS4X81PR.png&amp;w=1258&amp;h=854&amp;f=webp" data-lightbox-width="1258" data-lightbox-height="854" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="485" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>Проблема не была вызвана прямо или косвенно кибератакой или вредоносными действиями любого рода.</strong> Это было вызвано изменением разрешений одной из наших систем баз данных, что привело к выводу нескольких записей в «файл функций», используемый нашей системой управления ботами. Этот файл функций, в свою очередь, увеличился вдвое. Файл функции, превышающий ожидания, был затем распространен на все машины, составляющие нашу сеть.</p>
+<p>Программное обеспечение, работающее на этих машинах и предназначенное для маршрутизации трафика в нашей сети, считывает этот файл конфигурации, чтобы поддерживать систему управления ботами в актуальном состоянии в условиях постоянно меняющихся угроз. В программном обеспечении существовало ограничение на размер файла компонента, который был меньше его удвоенного размера. Это вызвало сбой в работе программного обеспечения.</p>
+<p>После того, как мы сначала ошибочно предположили, что наблюдаемые симптомы вызваны масштабной DDoS-атакой, мы правильно определили основную проблему и смогли остановить распространение файла функций, размер которого превышал ожидаемый, и заменили его более ранней версией. К 14:30 основной трафик в основном восстановился до нормального уровня. В течение следующих нескольких часов мы работали над снижением возросшей нагрузки на различные части нашей сети, поскольку трафик восстанавливался. По состоянию на 17:06 все системы Cloudflare функционировали в штатном режиме.</p>
+<p>Приносим извинения за последствия для наших клиентов и для Интернета в целом. Учитывая важность Cloudflare в интернет-экосистеме, любой сбой наших систем недопустим. Тот факт, что в течение некоторого времени наша сеть не могла маршрутизировать трафик, вызывает глубокую боль у каждого члена нашей команды. Мы знаем, что сегодня мы вас подвели.</p>
+<p>Эта публикация представляет собой подробное изложение того, что именно произошло, и какие системы и процессы дали сбой. Это также начало, но не конец того, что мы планируем предпринять, чтобы подобный сбой больше не повторился.</p>
+<h2>Сбой</h2>
+<p>На диаграмме ниже показано количество кодов состояния HTTP 5xx, обработанных сетью Cloudflare. Обычно это значение должно быть очень низким, и оно таким и было вплоть до начала сбоя. </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="348" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=640&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=715&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=750&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=828&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1080&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1280&amp;h=623&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1430&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Volume of HTTP 5xx requests served by the Cloudflare network" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QJPQKY6M0ZGYW9BEGTXJ.png&amp;w=1507&amp;h=733&amp;f=webp" data-lightbox-width="1507" data-lightbox-height="733" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="348" class="pt-portable-image-media"></div>
+</figure>
+<p>Объем до 11:20 — это ожидаемый базовый уровень ошибок 5xx, наблюдаемый в нашей сети. Всплеск и последующие колебания указывают на сбой нашей системы из-за загрузки некорректного файла функций. Примечательно, что затем наша система восстанавливалась в течение некоторого времени. Такое поведение совсем не характерно для внутренней ошибки.</p>
+<p>Объяснение заключалось в том, что файл генерировался каждые пять минут запросом, выполняемым в кластере баз данных ClickHouse, который постепенно обновлялся для улучшения управления разрешениями. Недопустимые данные генерировались только в том случае, если запрос выполнялся на части кластера, которая была обновлена. В результате, каждые пять минут существовала вероятность генерации и быстрого распространения по сети как работоспособных, так и вредоносных файлов конфигурации.</p>
+<p>Из-за этих колебаний было неясно, что происходит, так как вся система восстанавливалась, а затем снова выходила из строя, поскольку в нашу сеть распространялись то хорошие, то плохие файлы конфигурации. Первоначально это заставило нас предположить, что причиной может быть атака. В конечном итоге каждый узел ClickHouse генерировал некорректный файл конфигурации, и колебания стабилизировались в аварийном состоянии.</p>
+<p>Ошибки продолжались до выявления и устранения основной проблемы, что началось с 14:30. Мы решили проблему, остановив генерацию и распространение поврежденного файла компонента и вручную добавив заведомо исправный файл в очередь распространения файлов компонентов. Затем принудительно перезапустив наш основной прокси-сервер.</p>
+<p>Оставшийся «длинный хвост» на диаграмме выше — это наша команда, перезапустившая остальные сервисы, которые перешли в аварийное состояние. Объем ошибок 5xx вернулся к норме в 17:06.</p>
+<p>Были затронуты следующие сервисы:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Сервис и продукт</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Описание воздействия</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Основные службы CDN и безопасности</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Коды состояния HTTP 5xx. На снимке экрана в верхней части этой статьи показана типичная страница ошибки, отображаемая для конечных пользователей.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turnstile</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Turnstile не удалось выполнить загрузку.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV вернул значительно повышенный уровень ошибок HTTP 5xx, поскольку запросы к шлюзу KV «front end» не удалось выполнить из-за сбоя основного прокси-сервера.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Информационная панель</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Хотя панель управления в основном работала, большинство пользователей не могли войти в систему, так как Turnstile был недоступен на странице входа.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Защита электронной почты</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Несмотря на то, что обработка и доставка электронной почты не были затронуты, мы наблюдали временную потерю доступа к источнику IP-репутации, что снизило точность обнаружения спама и препятствовало срабатыванию некоторых обнаружений возраста новых доменов, при этом не было отмечено критического воздействия на клиентов. Мы также наблюдали сбои в некоторых операциях автоматического перемещения. Все затронутые сообщения были просмотрены и исправлены.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Сбои аутентификации были широко распространены среди большинства пользователей с начала инцидента и до момента запуска отката в 13:05. Существующие сеансы Access не были затронуты.<br>Все неудачные попытки аутентификации приводили к появлению страницы ошибки. Это означает, что ни один из этих пользователей не получил доступ к целевому приложению во время сбоя аутентификации. Успешные входы в систему за этот период были корректно зарегистрированы во время инцидента.&nbsp;<br>Любые попытки обновления конфигурации Access в то время либо сразу потерпели бы неудачу, либо распространялись бы очень медленно. Все обновления конфигураций восстановлены.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Помимо возврата ошибок HTTP 5xx, мы наблюдали значительное увеличение задержки ответов от нашей CDN в период воздействия. Это произошло из-за того, что наши системы отладки и мониторинга используют большое количество ЦП, которые автоматически сопоставляют неперехваченные ошибки с помощью дополнительной отладочной информации.</p>
+<h2>Как Cloudflare обрабатывает запросы и что сегодня пошло не так</h2>
+<p>Каждый запрос к Cloudflare проходит по четко определенному пути в нашей сети. Это может быть браузер, загружающий веб-страницу, мобильное приложение, вызывающее API, или автоматизированный трафик из другого сервиса. Эти запросы сначала завершаются на нашем уровне HTTP и TLS, затем поступают в нашу основную прокси-сервер систему (которую мы называем FL — «Frontline»), и, наконец, в Pingora, которая выполняет поиск в кэше или, при необходимости, извлекает данные из исходного сервера.</p>
+<p>Ранее мы поделились более подробной информацией о том, как работает базовый прокси-сервер, <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>здесь</u></a>.&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="303" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=640&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=715&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=750&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=828&amp;h=351&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1080&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1280&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1430&amp;h=606&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Diagram of our reverse proxy architecture" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48E04GF44VW0S1HCTJT5EC.png&amp;w=1920&amp;h=813&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="813" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="303" class="pt-portable-image-media"></div>
+</figure>
+<p>Когда запрос проходит через основной прокси-сервер, мы запускаем различные продукты для обеспечения безопасности и повышения производительности, доступные в нашей сети. Прокси-сервер применяет уникальную конфигурацию и настройки каждого клиента, от применения правил WAF и Защиты от DDoS-атак до маршрутизации трафика на платформу разработчиков и R2. Это достигается посредством набора специализированных модулей, которые применяют правила конфигурации и политики к трафику, проходящему через наш прокси-сервер.</p>
+<p>Один из этих модулей, Управление ботами, и стал источником сегодняшнего сбоя.&nbsp;</p>
+<p><a href="https://www.cloudflare.com/application-services/products/bot-management" target="_blank" rel="noopener noreferrer"><u>Управление ботами</u></a> от Cloudflare включает в себя, помимо прочего, модель машинного обучения, которую мы используем для генерации оценок ботов для каждого запроса, проходящего через нашу сеть. Наши клиенты используют баллы ботов, чтобы контролировать доступ ботов к своим сайтам, разрешая или запрещая его.</p>
+<p>Модель использует в качестве входных данных файл конфигурации «функции». В данном контексте признак — это отдельная характеристика, используемая моделью машинного обучения для прогнозирования, был ли запрос автоматизированным. Файл конфигурации функций представляет собой набор отдельных функций.</p>
+<p>Этот файл с данными об особенностях работы сети обновляется каждые несколько минут и публикуется во всей нашей сети, что позволяет нам реагировать на изменения в потоках трафика в Интернете. Это позволяет нам реагировать на новые типы ботов и новые бот-атаки. Поэтому крайне важно, чтобы развертывание выполнялось часто и быстро, так как злоумышленники оперативно меняют тактику.</p>
+<p>Изменение в нашем базовом поведении запросов ClickHouse (описано ниже), которое привело к созданию этого файла, вызвало появление большого количества дублирующихся строк «feature». Изменение размера файла конфигурации функции с ранее фиксированным размером привело к ошибке в модуле ботов.</p>
+<p>В результате, основная прокси-сервер система, обрабатывающая трафик наших клиентов, возвращала коды ошибок HTTP 5xx для трафика, зависящего от модуля ботов. Это также затронуло Workers KV и Access, которые используют основной прокси-сервер.</p>
+<p>Вне связи с этим инцидентом, мы переносили и в настоящее время переносим трафик наших клиентов на новую версию нашего прокси-сервера, внутренне известную как <a href="https://blog.cloudflare.com/20-percent-internet-upgrade" target="_blank" rel="noopener noreferrer"><u>FL2</u></a>. Обе версии были затронуты этой проблемой, хотя наблюдаемое воздействие отличалось.</p>
+<p>Клиенты, использующие новый прокси-сервер FL2, наблюдали ошибки HTTP 5xx. Клиенты, использующие наши старые прокси-серверы FL, не наблюдали ошибок, но оценки ботов генерировались некорректно, в результате чего весь трафик получал нулевой балл бота. Клиенты, у которых были развернуты правила для блокировки ботов, могли наблюдать большое количество ложноположительных результатов. Клиенты, которые не использовали нашу оценку бота в своих правилах, не заметили какого-либо влияния.</p>
+<p>Сбить нас с толку и заставить полагать, что это могла быть атака, было еще одним очевидным симптомом, который мы наблюдали: страница статуса Cloudflare не работала. Страница статуса размещена полностью за пределами инфраструктуры Cloudflare и не имеет зависимостей от Cloudflare. Хотя это оказалось совпадением, это привело некоторых сотрудников, занимавшихся диагностикой проблемы, к мнению, что злоумышленник мог нацелиться как на наши системы, так и на страницу статуса. Посетители страницы статуса в это время встречались сообщением об ошибке:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="171" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=640&amp;h=153&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=715&amp;h=171&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=750&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=828&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1080&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1280&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1430&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Error on the Cloudflare status page" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48SDRSCKYVGTKDJ2G4GGXG.png&amp;w=1920&amp;h=459&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="459" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="171" class="pt-portable-image-media"></div>
+</figure>
+<p>Во внутреннем чате по инцидентам мы забеспокоились, что это может быть продолжением недавней серии <a href="https://blog.cloudflare.com/defending-the-internet-how-cloudflare-blocked-a-monumental-7-3-tbps-ddos" target="_blank" rel="noopener noreferrer"><u>DDoS-атак большой мощности на</u></a> Aisuru:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="167" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=715&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=750&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=828&amp;h=193&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1080&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1280&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1430&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Internal chat screenshot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460AE6F151MG2AFHC53YGK.png&amp;w=1188&amp;h=278&amp;f=webp" data-lightbox-width="1188" data-lightbox-height="278" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="167" class="pt-portable-image-media"></div>
+</figure>
+<h3>Изменение в поведении запроса</h3>
+<p>Выше я упоминал, что изменение в базовом поведении запроса привело к тому, что файл компонента содержит большое количество повторяющихся строк. Рассматриваемая система баз данных использует программное обеспечение ClickHouse.</p>
+<p>Для контекста полезно знать, как работают распределенные запросы ClickHouse. Кластер ClickHouse состоит из множества сегментов. Для запроса данных из всех сегментов у нас есть так называемые распределённые таблицы (на базе табличного движка <code>Distributed</code>) в базе данных под названием <code>default</code>. Распределенный механизм запрашивает базовые таблицы в базе данных <code>r0</code>. Базовые таблицы — это место, где данные хранятся на каждом сегменте кластера ClickHouse.</p>
+<p>Запросы к распределенным таблицам выполняются через общую системную учетную запись. В рамках усилий по повышению безопасности и надежности наших распределенных запросов, ведется работа по их запуску от имени первоначальных учетных записей пользователей.</p>
+<p>До настоящего времени пользователи CheckHouse могли видеть таблицы в <code>базе</code> данных по умолчанию только при запросе метаданных таблиц из системных таблиц clickHouse, таких как <code>системные.tables</code> или системные.columns.</p>
+<p>Поскольку у пользователей уже есть неявный доступ к базовым таблицам в <code>r0</code>, мы внесли изменение в 11:05, чтобы сделать этот доступ явным. Теперь пользователи также могут видеть метаданные этих таблиц. Убедившись, что все распределенные подзапросы выполняются от имени исходного пользователя, можно более точно оценить ограничения запросов и права доступа, что позволит избежать влияния одного неудачного подзапроса от пользователя на других.</p>
+<p>В результате описанного выше изменения все пользователи получили доступ к точным метаданным таблиц, к которым у них есть доступ. К сожалению, в прошлом делались предположения, что список столбцов, возвращаемый подобным запросом, будет включать только базу данных «<code>по умолчанию</code>»:</p>
+<p><code>ВЫБЕРИТЕ<br> имя,<br> тип <br>ИЗ system.columns ГДЕ<br> table = 'http_requests_features'<br>сортировать по имени;<br></code></p>
+<p>Обратите внимание, что запрос не фильтрует по имени базы данных. По мере постепенного развертывания явных разрешений для пользователей определенного кластера ClickHouse, после изменения в 11:05 вышеуказанный запрос начал возвращать «дубликаты» столбцов, поскольку они относились к базовым таблицам, хранящимся в базе данных r0.</p>
+<p>К сожалению, именно такой тип запроса выполнялся логикой генерации файла признаков управление ботами для создания каждого входного «признака» для файла, упомянутого в начале этого раздела.&nbsp;</p>
+<p>Приведенный выше запрос возвращает таблицу столбцов, аналогичную показанной (упрощенный пример):</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="548" height="121" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 548w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=640&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=750&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=828&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1080&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=1096&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1096w" alt="Example of code block" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49D1ADZJSH7WHD06XCEAMM.png&amp;w=548&amp;h=121&amp;f=webp" data-lightbox-width="548" data-lightbox-height="121" data-astro-cid-7nvefuv6="true" sizes="(min-width: 548px) 548px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="548" height="121" class="pt-portable-image-media"></div>
+</figure>
+<p>Однако в рамках дополнительных разрешений, предоставленных пользователю, ответ теперь содержал все метаданные схемы <code>r0</code>, что фактически более чем вдвое увеличило количество строк в ответе, в конечном итоге повлияв на количество строк (т. е. функции) в конечном выходном файле.&nbsp;</p>
+<h3>Предварительное выделение памяти</h3>
+<p>Каждый модуль, работающий в нашем прокси-сервере, имеет ряд ограничений для предотвращения неограниченного потребления памяти и предварительного выделения памяти в целях оптимизации производительности. В данном конкретном случае, система управления ботами имеет ограничение на количество функций машинного обучения, используемых во время выполнения. В настоящее время это ограничение установлено на 200, что значительно превышает текущее использование ~60 функций. Опять же, ограничение существует, поскольку для повышения производительности мы предварительно выделяем память для функций.</p>
+<p>Когда вредоносный файл, содержащий более 200 функций, был распространен на наши серверы, это привело к превышению лимита и системной панике. Ниже представлен код Rust FL2, который выполняет проверку и является источником необработанной ошибки:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="221" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1080&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1280&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1430&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="code that generated the error" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WGY8GKFJ60E93AX233VZ.png&amp;w=1472&amp;h=456&amp;f=webp" data-lightbox-width="1472" data-lightbox-height="456" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="221" class="pt-portable-image-media"></div>
+</figure>
+<p>Это вызвало следующую панику, что, в свою очередь, привело к ошибке 5xx:</p>
+<p><code>поток fl2_worker_thread запаниковал: вызван Result::unwrap() для значения Err</code></p>
+<h3>Другое воздействие во время инцидента</h3>
+<p>Во время инцидента были затронуты другие системы, использующие наш основной прокси-сервер. Сюда входили Workers KV и Cloudflare Access. Команде удалось снизить воздействие на эти системы в 13:04, когда в Workers KV было применено исправление безопасности, обходящее основной прокси-сервер. Впоследствии во всех подчиненных системах, использующих Workers KV (например, Access), наблюдалось снижение частоты ошибок.&nbsp;</p>
+<p>Информационная панель Cloudflare также была затронута, поскольку как для внутреннего использования использовалось Workers KV, так и для внутреннего использования Cloudflare Turnstile, который был развернут при входе в систему.</p>
+<p>Этот сбой затронул компанию Turnstile, в результате чего клиенты, не имевшие активного сеанса работы с панелью управления, не могли войти в систему. Это отображалось как снижение доступности в течение двух периодов времени: с 11:30 до 13:10 и с 14:40 до 15:30, как показано на графике ниже.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="241" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=640&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=715&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=750&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=828&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1080&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1280&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1430&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="availability of Cloudflare internal APIs during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HVBRCES9NW26RAKCYSPW.png&amp;w=1920&amp;h=647&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="647" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="241" class="pt-portable-image-media"></div>
+</figure>
+<p>Первый период с 11:30 до 13:10 был вызван воздействием на Workers KV, от которого зависят некоторые функции панели управления и мониторинга. Это было восстановлено в 13:10, когда Workers KV обошёл основную систему прокси-серверов.<br><br>Второй период воздействия на панель мониторинга произошел после восстановления данных конфигурации функции. Накопление попыток входа в систему начало перегружать панель управления. Этот бэклог в сочетании с повторными попытками привел к увеличению задержки и снижению доступности панели управления. Масштабирование параллельной плоскости управления восстановило доступность приблизительно в 15:30.</p>
+<h2>Действия по исправлению и последующие шаги</h2>
+<p>Теперь, когда наши системы снова в сети и функционируют нормально, уже началась работа над тем, как мы будем укреплять их для защиты от подобных сбоев в будущем. В частности, мы:</p>
+<ul>
+	<li>Усиление приема файлов конфигурации, созданных Cloudflare, аналогично усилению приема пользовательского ввода</li>
+	<li>Включение большего количества глобальных выключателей для функций</li>
+	<li>Устранение возможности перегрузки системных ресурсов дампами памяти или другими отчётами об ошибках</li>
+	<li>Анализ режимов отказов на предмет ошибочных ситуаций во всех основных прокси-сервер модулях</li>
+</ul>
+<p>Сегодня был самый серьезный сбой в работе Cloudflare <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019" target="_blank" rel="noopener noreferrer"><u>с 2019 года</u></a>. У нас случались сбои, из-за которых наша <a href="https://blog.cloudflare.com/post-mortem-on-cloudflare-control-plane-and-analytics-outage" target="_blank" rel="noopener noreferrer"><u>информационная панель была недоступна</u></a>. Некоторые из них привели к тому, что <a href="https://blog.cloudflare.com/cloudflare-service-outage-june-12-2025" target="_blank" rel="noopener noreferrer"><u>новые функции</u></a> не будут доступны в течение определенного периода времени. Но за последние шесть с лишним лет у нас не было ни одного другого сбоя, который привел бы к прекращению большей части основного трафика, проходящего через нашу сеть.</p>
+<p>Сегодняшний сбой недопустим. Мы разработали высокую устойчивость наших систем к сбоям, чтобы гарантировать бесперебойную работу трафика. Сбои в работе у нас всегда приводили к созданию новых, более устойчивых систем.</p>
+<p>От имени всей команды Cloudflare, я хотел бы принести извинения за боль, которую мы причинили сегодня Интернету. </p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Время (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Статус</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Описание</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Нормально.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Изменение контроля доступа к базе данных развернуто.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Начало воздействия.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Развертывание достигает сред клиентской инфраструктуры, первые ошибки наблюдаются в клиентском HTTP-трафике.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11:32–13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Команда исследовала повышенные уровни трафика и ошибки в сервисе Workers KV.<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Первоначальным симптомом было снижение скорости отклика Workers KV, что вызвало негативное влияние на другие сервисы Cloudflare.<br>Такие меры, как манипулирование трафиком и ограничение учетных записей, были предприняты, чтобы вернуть сервис Workers KV к нормальному уровню работы.<br>Первый автоматический тест выявил проблему в 11:31, ручное расследование началось в 11:32. Вызов по инциденту был создан в 11:35.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Внедрен обход Workers KV и Cloudflare Access — снижение воздействия.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>В ходе расследования мы использовали внутренние системные обходы для Workers KV и Cloudflare Access, чтобы они вернулись к предыдущей версии нашего основного прокси-сервера. Хотя эта проблема также присутствовала в предыдущих версиях нашего прокси-сервера, ее влияние было менее значительным, как описано ниже.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13:37</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Работа была сосредоточена на восстановлении файла конфигурации управления ботами до последней работоспособной версии.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Мы были уверены, что файл конфигурации управления ботами стал причиной инцидента. Команды работали над способами восстановления сервиса, используя несколько рабочих потоков. Самым быстрым способом было восстановление предыдущей версии файла.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Создание и распространение новых файлов конфигурации управление ботами прекращено.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Мы определили, что модуль управления ботами был источником ошибок 500, и это было вызвано некорректным файлом конфигурации. Мы остановили автоматическое развертывание новых файлов конфигурации управление ботами.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:24</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Тестирование нового файла завершено.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Мы наблюдали успешное восстановление, используя старую версию файла конфигурации, а затем сосредоточились на ускорении исправления в глобальном масштабе.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14:30</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Основное воздействие устранено. Сервисы для нейтрализации DDoS-атак начали отмечать снижение ошибок.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Правильный файл конфигурации Управление ботами был развернут глобально, и большинство сервисов начали работать правильно.</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17:06</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Работа всех сервисов восстановлена. Воздействие прекращается.</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Все подчиненные службы перезапущены, и все операции полностью восстановлены.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,29 +1,20 @@
-<div class="mb2 gray5">4分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-incident-march-21-2025">English</a>および<a href="https://blog.cloudflare.com/zh-cn/cloudflare-incident-march-21-2025">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1zVzYYX4Zs6rRox4hJO4wJ/c64947208676753e532135f9393df5c5/BLOG-2793_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>2025年3月21日に、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2オブジェクトストレージ</u></a>を含む複数のCloudflareサービスで、1時間7分にわたってエラー率上昇が見られました（21:38 UTCに開始、22:45 UTCに終了）。このインシデントウィンドウでは、世界全体でR2への書き込み操作が100%失敗し、読み込み操作は約35%が失敗しました。このインシデントはR2から始まりましたが、<a href="https://www.cloudflare.com/developer-platform/products/cache-reserve" target="_blank" rel="noopener noreferrer"><u>Cache Reserve</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-images" target="_blank" rel="noopener noreferrer"><u>Images</u></a>、<a href="https://developers.cloudflare.com/logs/edge-log-delivery" target="_blank" rel="noopener noreferrer"><u>Log Delivery</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-stream" target="_blank" rel="noopener noreferrer"><u>Stream</u></a>、<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>など、他のCloudflareサービスにも影響を及ぼしました。</p>
-	<p>R2 Gatewayサービス（R2のAPIフロントエンド）が当社ストレージインフラストラクチャでの認証に使用する認証情報をローテーションしている間に、R2のエンジニアリングチームが誤って新しい認証情報（IDとキーペア）を、サービスの本番インスタンスではなく開発インスタンスにデプロイしてしまいました。（キーローテーションプロセスの一環として）古い認証情報が当社のストレージインフラストラクチャから削除された時、本番用のR2 Gatewayサービスは新しい認証情報にアクセスできませんでした。この最終的な結果として、R2のGatewayサービスはストレージバックエンドで認証不可能となりました。このインシデントで発生したデータの損失や破損はありませんでした。未了のアップロードやミューテーションは、成功のHTTPステータスコードを返したものは続けられました。</p>
-	<p>根本的な原因を特定し、本番用のR2 Gatewayサービスに新しい認証情報をデプロイしていないことに気づいた後は、更新後の認証情報をデプロイし、サービスの可用性を回復しました。</p>
-	<p>このインシデントは人為的なミスによって発生し、想定より長く続きました。Gateway Workerがストレージインフラストラクチャの認証にどの認証情報を使用しているかを、当社が適切に可視化できていなかったためです。</p>
-	<p>このインシデントによりお客様やお客様のユーザーに多大なご迷惑をおかけしたことを、深くお詫び申し上げます。当社では高水準の維持を心掛けており、今回のような事態は許容されるものではありません。このブログ記事では、インシデントの影響、いつ何が起こったのか、この障害（および類似の障害）を二度と起こさないようにするために当社が講じている措置を正確に説明します。</p>
-	<div class="flex anchor relative">
-		<h2 id="what-was-impacted">何に影響が出たか？</h2>
-		<a href="https://blog.cloudflare.com/#what-was-impacted" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>プライマリインシデントのウィンドウは21:38 UTCから22:45 UTCでした。</b></p>
-	<p>次の表では、R2と、R2に依存するかR2と対話するCloudflareサービスへの具体的な影響について詳しく説明します：</p>
-	<style type="text/css">
-		.tg {
+<p>2025年3月21日に、<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2オブジェクトストレージ</u></a>を含む複数のCloudflareサービスで、1時間7分にわたってエラー率上昇が見られました（21:38 UTCに開始、22:45 UTCに終了）。このインシデントウィンドウでは、世界全体でR2への書き込み操作が100%失敗し、読み込み操作は約35%が失敗しました。このインシデントはR2から始まりましたが、<a href="https://www.cloudflare.com/developer-platform/products/cache-reserve" target="_blank" rel="noopener noreferrer"><u>Cache Reserve</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-images" target="_blank" rel="noopener noreferrer"><u>Images</u></a>、<a href="https://developers.cloudflare.com/logs/edge-log-delivery" target="_blank" rel="noopener noreferrer"><u>Log Delivery</u></a>、<a href="https://www.cloudflare.com/developer-platform/products/cloudflare-stream" target="_blank" rel="noopener noreferrer"><u>Stream</u></a>、<a href="https://developers.cloudflare.com/vectorize" target="_blank" rel="noopener noreferrer"><u>Vectorize</u></a>など、他のCloudflareサービスにも影響を及ぼしました。</p>
+<p>R2 Gatewayサービス（R2のAPIフロントエンド）が当社ストレージインフラストラクチャでの認証に使用する認証情報をローテーションしている間に、R2のエンジニアリングチームが誤って新しい認証情報（IDとキーペア）を、サービスの本番インスタンスではなく開発インスタンスにデプロイしてしまいました。（キーローテーションプロセスの一環として）古い認証情報が当社のストレージインフラストラクチャから削除された時、本番用のR2 Gatewayサービスは新しい認証情報にアクセスできませんでした。この最終的な結果として、R2のGatewayサービスはストレージバックエンドで認証不可能となりました。このインシデントで発生したデータの損失や破損はありませんでした。未了のアップロードやミューテーションは、成功のHTTPステータスコードを返したものは続けられました。</p>
+<p>根本的な原因を特定し、本番用のR2 Gatewayサービスに新しい認証情報をデプロイしていないことに気づいた後は、更新後の認証情報をデプロイし、サービスの可用性を回復しました。</p>
+<p>このインシデントは人為的なミスによって発生し、想定より長く続きました。Gateway Workerがストレージインフラストラクチャの認証にどの認証情報を使用しているかを、当社が適切に可視化できていなかったためです。</p>
+<p>このインシデントによりお客様やお客様のユーザーに多大なご迷惑をおかけしたことを、深くお詫び申し上げます。当社では高水準の維持を心掛けており、今回のような事態は許容されるものではありません。このブログ記事では、インシデントの影響、いつ何が起こったのか、この障害（および類似の障害）を二度と起こさないようにするために当社が講じている措置を正確に説明します。</p>
+<h2>何に影響が出たか？</h2>
+<p><strong>プライマリインシデントのウィンドウは21:38 UTCから22:45 UTCでした。</strong></p>
+<p>次の表では、R2と、R2に依存するかR2と対話するCloudflareサービスへの具体的な影響について詳しく説明します：</p>
+<div id="html-block-ky" class="html-block">
+	<style>
+		#html-block-ky .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		.tg td {
+		#html-block-ky .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -34,7 +25,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-ky .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -46,33 +37,17 @@
 			word-break: normal;
 		}
 
-		.tg .tg-fymr {
+		#html-block-ky .tg .tg-fymr {
 			border-color: inherit;
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0pky {
+		#html-block-ky .tg .tg-0pky {
 			border-color: inherit;
 			text-align: left;
 			vertical-align: top
-		}
-
-		@media screen and (max-width: 767px) {
-			.tg {
-				width: auto !important;
-			}
-
-			.tg col {
-				width: auto !important;
-			}
-
-			.tg-wrap {
-				overflow-x: auto;
-				-webkit-overflow-scrolling: touch;
-				margin: auto 0px;
-			}
 		}
 	</style>
 	<div class="tg-wrap">
@@ -123,23 +98,18 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="flex anchor relative">
-		<h2 id="incident-timeline">インシデントのタイムライン</h2>
-		<a href="https://blog.cloudflare.com/#incident-timeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>参照されるタイムスタンプはすべて協定世界時（UTC）です。</b></p>
-	<style type="text/css">
-		.tg {
+</div>
+<h2>インシデントのタイムライン</h2>
+<p><strong>参照されるタイムスタンプはすべて協定世界時（UTC）です。</strong></p>
+<div id="html-block-k13" class="html-block">
+	<style>
+		#html-block-k13 .tg {
 			border-collapse: collapse;
 			border-spacing: 0;
 			margin: 0px auto;
 		}
 
-		.tg td {
+		#html-block-k13 .tg td {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -150,7 +120,7 @@
 			word-break: normal;
 		}
 
-		.tg th {
+		#html-block-k13 .tg th {
 			border-color: black;
 			border-style: solid;
 			border-width: 1px;
@@ -162,38 +132,22 @@
 			word-break: normal;
 		}
 
-		.tg .tg-1wig {
+		#html-block-k13 .tg .tg-1wig {
 			font-weight: bold;
 			text-align: left;
 			vertical-align: top
 		}
 
-		.tg .tg-0lax {
+		#html-block-k13 .tg .tg-0lax {
 			text-align: left;
 			vertical-align: top
 		}
-
-		@media screen and (max-width: 767px) {
-			.tg {
-				width: auto !important;
-			}
-
-			.tg col {
-				width: auto !important;
-			}
-
-			.tg-wrap {
-				overflow-x: auto;
-				-webkit-overflow-scrolling: touch;
-				margin: auto 0px;
-			}
-		}
 	</style>
 	<div class="tg-wrap">
-		<table class="tg" style="undefined;table-layout: fixed; width: 762px">
+		<table class="tg">
 			<colgroup>
-				<col style="width: 185.88889px">
-				<col style="width: 575.88889px">
+				<col style="width:185.88889px">
+				<col style="width:575.88889px">
 			</colgroup>
 			<thead>
 				<tr>
@@ -265,80 +219,38 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="flex anchor relative">
-		<h2 id="analysis">分析</h2>
-		<a href="https://blog.cloudflare.com/#analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>R2のアーキテクチャは主に3つの部分で構成されています。本番用R2 Gateway Worker（S3 API、REST API、Workers APIからのリクエストを処理）、メタデータサービス、ストレージインフラストラクチャ（暗号化されたオブジェクトデータを格納）です。</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1G9gfdEE4RIuMIUeNz42RN/25d1b4cca187a4a24c600a43ba51fb71/BLOG-2793_2.png" alt="BLOG-2793 2" class="kg-image" width="1840" height="1000" loading="lazy">
-	</figure>
-	<p>R2 Gateway Workerは、分散ストレージインフラストラクチャでセキュアに認証を行うのに認証情報（IDとキーペア）を使用します。当社では、ベストプラクティスのセキュリティ対策として、これらの認証情報を定期的にローテーションしています。</p>
-	<p>キーローテーションのプロセスには、おおまかには以下のステップが含まれます：</p>
-	<ol>
-		<li>
-			<p>ストレージインフラストラクチャ用の新しい認証情報セット（IDとキーペア）を作成します。この時点では、認証情報変更中のダウンタイムを回避するために、古い認証情報を維持します。</p>
-		</li>
-		<li>
-			<p><code>wrangler secret put</code>コマンドを使用して、本番R2 Gateway Workerの新しい認証情報シークレットを設定します。</p>
-		</li>
-		<li>
-			<p><code>wrangler deploy</code>コマンドを使用して、更新後の新しい認証情報ID を、本番R2 Gateway Workerで環境変数として設定します。この時点から、Gateway Workerは新しいストレージの認証情報を使用し始めます。</p>
-		</li>
-		<li>
-			<p>ストレージインフラストラクチャから古い認証情報を削除し、認証情報のローテーションプロセスを完了します。</p>
-		</li>
-		<li>
-			<p>運用ダッシュボードやログを監視して、変更を確認します。</p>
-		</li>
-	</ol>
-	<p>R2のエンジニアリングチームは<a href="https://developers.cloudflare.com/workers/wrangler/environments" target="_blank" rel="noopener noreferrer"><u>Workers環境</u></a>を使用して、R2 Gateway Workerの本番環境と開発環境を隔離します。それぞれの環境は、別々に分離されたCloudflare Workerを別々の環境変数とシークレットで定義します。</p>
-	<p>重要なのは、もし--envコマンドラインパラメータが含まれていなければ、<code>wrangler secret put</code>コマンドと<code>wrangler deploy</code>コマンドの両方がデフォルト環境をデフォルトにしてしまうということです。今回の場合は、人為的なミスで--envパラメータをうっかり省略し、新しいストレージ認証情報を間違ったWorker（<code></code>本番環境ではなくデフォルト環境<code></code>）にデプロイしてしまいました。ストレージの認証情報を本番R2 Gateway Workerに正しくデプロイするには、<code>--env product</code>を指定する必要があります。</p>
-	<p>上記のステップ4でストレージインフラストラクチャから古い認証情報を削除するアクションを実行したところ、認証エラーが発生しました。本番R2 Gateway Workerの認証情報が古いままだったからです。このエラーが最終的に可用性低下を引き起こしました。</p>
-	<p>古い認証情報の削除がストレージインフラへ伝播するまでに遅延があったため、R2の可用性メトリクスの低下は徐々に進行し、すぐには明確になりませんでした。最初の問題発見が遅れたのはこのためです。古い認証情報セットを更新した後、可用性メトリクスに頼るのではなく、R2 GatewayサービスがR2のストレージインフラストラクチャの認証にどのトークンを使用しているかを明示的に検証するべきでした。</p>
-	<p>全体的に見て、読み取りについては、ストレージの前に配置された中間キャッシュがリクエストに対応し続けたおかげで、可用性への影響はかなり抑えられました。</p>
-	<div class="flex anchor relative">
-		<h2 id="resolution">解決方法</h2>
-		<a href="https://blog.cloudflare.com/#resolution" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>根本的な原因を特定した後は、本番R2 Gateway Workerに新しい認証情報をデプロイし、迅速にインシデントを解決することができました。R2の可用性は即時に回復しました。</p>
-	<div class="flex anchor relative">
-		<h2 id="next-steps">次のステップ</h2>
-		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>このインシデントは人為的ミスによって発生し、R2 Gateway Workerがストレージインフラストラクチャの認証にどの認証情報を使用しているかを適切に可視化していなかったために、予想以上に長引きました。</p>
-	<p>この故障（や類似の故障）が二度と起こらないよう、当社は直ちに再発防止策を講じました：</p>
-	<ul>
-		<li>
-			<p>R2 Gateway Workerがストレージインフラストラクチャの認証に使用する認証情報IDのサフィックスを含むログ用タグを追加しました。この変更により、どの認証情報が使用されているかを明示的に確認することができます。</p>
-		</li>
-		<li>
-			<p>上記の対策に関連する内部プロセスとして、新しいトークンIDのサフィックスがストレージインフラストラクチャのログと一致することを、古いトークンを削除する前に明示的に確認するよう義務付けています。</p>
-		</li>
-		<li>
-			<p>人為的ミスの可能性がある手動のwranglerコマンド入力に依存するのではなく、ホットフィックスのリリースツールによってキーローテーションを行うように義務付けています。当社のホットフィックスリリースデプロイツールは、環境設定を明示的に強制するほか、他の安全性チェックも含まれています。</p>
-		</li>
-		<li>
-			<p>このプロセスでは、次の段階へ進む前に少なくとも2人の人間が変更の検証に関与することが暗黙の基準でしたが、関連するSOP（標準的業務手順書）を更新してこれを明示化しました。</p>
-		</li>
-		<li>
-			<p><b>作業中</b>：エンドポイントを監視する既存のクローズドループヘルスチェックシステムを新しいキーのテストにも拡張し、アラートプラットフォームを通じてステータス報告を自動化し、Gateway Workerをリリースする前にグローバルな伝播を確認します。</p>
-		</li>
-		<li>
-			<p><b>作業中</b>：分散ストレージエンドポイントで今後問題が発生した場合のトリアージを迅速化するため、可観測性プラットフォームを更新し、キャッシュをバイパスするアップストリームの成功率のビューを含めることで、理由は何であれリクエスト処理の問題が発生していることが明確にわかるようにします。</p>
-		</li>
-	</ul>
-	<p>上のリストはすべてを網羅しているわけではありません。上記の項目を進めていく中で、システム、制御、プロセスの他の改善点が見つかる可能性があります。当社は、通常の改善業務はもちろん、新たに見つかった改善点にも取り組んで、R2の耐障害性を高めていきます。上述した一連の変更により、この故障と関連する認証情報ローテーション故障モードの再発を防止できると確信しています。繰り返しになりますが、この件によりお客様やお客様のユーザーに多大なご迷惑をおかけしたことを、深くお詫び申し上げます。</p>
 </div>
+<h2>分析</h2>
+<p>R2のアーキテクチャは主に3つの部分で構成されています。本番用R2 Gateway Worker（S3 API、REST API、Workers APIからのリクエストを処理）、メタデータサービス、ストレージインフラストラクチャ（暗号化されたオブジェクトデータを格納）です。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="389" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=715&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=640&amp;h=348&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=715&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=750&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=828&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1080&amp;h=588&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1280&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1430&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2793 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44DQQJ0Q0QG9WAKP2CETWC.png&amp;w=1840&amp;h=1000&amp;f=webp" data-lightbox-width="1840" data-lightbox-height="1000" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="389" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>R2 Gateway Workerは、分散ストレージインフラストラクチャでセキュアに認証を行うのに認証情報（IDとキーペア）を使用します。当社では、ベストプラクティスのセキュリティ対策として、これらの認証情報を定期的にローテーションしています。</p>
+<p>キーローテーションのプロセスには、おおまかには以下のステップが含まれます：</p>
+<ol>
+	<li>ストレージインフラストラクチャ用の新しい認証情報セット（IDとキーペア）を作成します。この時点では、認証情報変更中のダウンタイムを回避するために、古い認証情報を維持します。</li>
+	<li><code>wrangler secret put</code>コマンドを使用して、本番R2 Gateway Workerの新しい認証情報シークレットを設定します。</li>
+	<li><code>wrangler deploy</code>コマンドを使用して、更新後の新しい認証情報ID を、本番R2 Gateway Workerで環境変数として設定します。この時点から、Gateway Workerは新しいストレージの認証情報を使用し始めます。</li>
+	<li>ストレージインフラストラクチャから古い認証情報を削除し、認証情報のローテーションプロセスを完了します。</li>
+	<li>運用ダッシュボードやログを監視して、変更を確認します。</li>
+</ol>
+<p>R2のエンジニアリングチームは<a href="https://developers.cloudflare.com/workers/wrangler/environments" target="_blank" rel="noopener noreferrer"><u>Workers環境</u></a>を使用して、R2 Gateway Workerの本番環境と開発環境を隔離します。それぞれの環境は、別々に分離されたCloudflare Workerを別々の環境変数とシークレットで定義します。</p>
+<p>重要なのは、もし--envコマンドラインパラメータが含まれていなければ、<code>wrangler secret put</code>コマンドと<code>wrangler deploy</code>コマンドの両方がデフォルト環境をデフォルトにしてしまうということです。今回の場合は、人為的なミスで--envパラメータをうっかり省略し、新しいストレージ認証情報を間違ったWorker（<code></code>本番環境ではなくデフォルト環境<code></code>）にデプロイしてしまいました。ストレージの認証情報を本番R2 Gateway Workerに正しくデプロイするには、<code>--env product</code>を指定する必要があります。</p>
+<p>上記のステップ4でストレージインフラストラクチャから古い認証情報を削除するアクションを実行したところ、認証エラーが発生しました。本番R2 Gateway Workerの認証情報が古いままだったからです。このエラーが最終的に可用性低下を引き起こしました。</p>
+<p>古い認証情報の削除がストレージインフラへ伝播するまでに遅延があったため、R2の可用性メトリクスの低下は徐々に進行し、すぐには明確になりませんでした。最初の問題発見が遅れたのはこのためです。古い認証情報セットを更新した後、可用性メトリクスに頼るのではなく、R2 GatewayサービスがR2のストレージインフラストラクチャの認証にどのトークンを使用しているかを明示的に検証するべきでした。</p>
+<p>全体的に見て、読み取りについては、ストレージの前に配置された中間キャッシュがリクエストに対応し続けたおかげで、可用性への影響はかなり抑えられました。</p>
+<h2>解決方法</h2>
+<p>根本的な原因を特定した後は、本番R2 Gateway Workerに新しい認証情報をデプロイし、迅速にインシデントを解決することができました。R2の可用性は即時に回復しました。</p>
+<h2>次のステップ</h2>
+<p>このインシデントは人為的ミスによって発生し、R2 Gateway Workerがストレージインフラストラクチャの認証にどの認証情報を使用しているかを適切に可視化していなかったために、予想以上に長引きました。</p>
+<p>この故障（や類似の故障）が二度と起こらないよう、当社は直ちに再発防止策を講じました：</p>
+<ul>
+	<li>R2 Gateway Workerがストレージインフラストラクチャの認証に使用する認証情報IDのサフィックスを含むログ用タグを追加しました。この変更により、どの認証情報が使用されているかを明示的に確認することができます。</li>
+	<li>上記の対策に関連する内部プロセスとして、新しいトークンIDのサフィックスがストレージインフラストラクチャのログと一致することを、古いトークンを削除する前に明示的に確認するよう義務付けています。</li>
+	<li>人為的ミスの可能性がある手動のwranglerコマンド入力に依存するのではなく、ホットフィックスのリリースツールによってキーローテーションを行うように義務付けています。当社のホットフィックスリリースデプロイツールは、環境設定を明示的に強制するほか、他の安全性チェックも含まれています。</li>
+	<li>このプロセスでは、次の段階へ進む前に少なくとも2人の人間が変更の検証に関与することが暗黙の基準でしたが、関連するSOP（標準的業務手順書）を更新してこれを明示化しました。</li>
+	<li><strong>作業中</strong>：エンドポイントを監視する既存のクローズドループヘルスチェックシステムを新しいキーのテストにも拡張し、アラートプラットフォームを通じてステータス報告を自動化し、Gateway Workerをリリースする前にグローバルな伝播を確認します。</li>
+	<li><strong>作業中</strong>：分散ストレージエンドポイントで今後問題が発生した場合のトリアージを迅速化するため、可観測性プラットフォームを更新し、キャッシュをバイパスするアップストリームの成功率のビューを含めることで、理由は何であれリクエスト処理の問題が発生していることが明確にわかるようにします。</li>
+</ul>
+<p>上のリストはすべてを網羅しているわけではありません。上記の項目を進めていく中で、システム、制御、プロセスの他の改善点が見つかる可能性があります。当社は、通常の改善業務はもちろん、新たに見つかった改善点にも取り組んで、R2の耐障害性を高めていきます。上述した一連の変更により、この故障と関連する認証情報ローテーション故障モードの再発を防止できると確信しています。繰り返しになりますが、この件によりお客様やお客様のユーザーに多大なご迷惑をおかけしたことを、深くお詫び申し上げます。</p>

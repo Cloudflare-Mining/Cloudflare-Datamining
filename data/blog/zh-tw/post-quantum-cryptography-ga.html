@@ -1,0 +1,286 @@
+<p>在過去的十二個月裡，我們一直在談論網際網路加密的新基線：後量子加密。去年生日週期間，我們宣布 <a href="https://blog.cloudflare.com/post-quantum-for-all">Kyber 測試版可供測試</a>，並且 <a href="https://blog.cloudflare.com/post-quantum-tunnel">Cloudflare Tunnel</a> 可以透過後量子加密技術啟用。今年早些時候，我們明確表明了我們的立場：這項基礎技術<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">應該永遠免費提供給所有人</a>。</p>
+<p>今天，經過六年的時間和發表 <a href="https://blog.cloudflare.com/searchresults/#q=post%20quantum%20crypto&amp;sort=relevancy&amp;f:@customer_facing_source=%5BBlog%5D&amp;f:@language=%5BEnglish%5D">31 篇部落格文章</a> 之後，我們達到了一個里程碑：我們的後量子加密支援開始對我們的客戶、服務和內部系統<a href="https://blog.cloudflare.com/post-quantum-to-origins">普遍可用</a>1，這將在下文進行更詳細的描述。這包括用於來源連線的 <a href="https://blog.cloudflare.com/post-quantum-to-origins">Pingora</a>、1.1.1.1、R2、Argo Smart Routing、Snippets 等產品。</p>
+<p>這是網際網路的一個里程碑。我們還不知道量子電腦何時才能擁有足夠的規模來打破當今的密碼學，但現在升級到後量子加密的好處是顯而易見的。由於 Cloudflare、Google、Mozilla、美國國家標準與技術研究院、網際網路工程任務推動小組和眾多學術機構所取得的進步，<a href="https://blog.cloudflare.com/the-tls-post-quantum-experiment">快速連線和面向未來</a>的安全性如今已成為可能</p>
+<p>普遍可用是什麼意思？2022 年 10 月，我們為透過 Cloudflare 提供服務的<a href="https://blog.cloudflare.com/post-quantum-for-all">所有網站和 API</a> <a href="https://blog.cloudflare.com/post-quantum-for-all">啟用了</a> <a href="https://blog.cloudflare.com/post-quantum-for-all"><em>X25519+Kyber</em></a> 作為測試版。然而，一個巴掌拍不響：只有當瀏覽器也支援後量子加密技術時，連線才是安全的。從 2023 年 8 月開始，<a href="https://blog.chromium.org/2023/08/protecting-chrome-traffic-with-hybrid.html" target="_blank" rel="noopener noreferrer">Chrome</a> 正在慢慢預設啟用 <em>X25519+Kyber</em>。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="187" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=640&amp;h=167&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=715&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=750&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=828&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1080&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1280&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1430&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Connections involved when a user visits an uncached page on a website served through Cloudflare: 1. browser to edge; 2. internal connection(s); and 3. edge to customer origin server. " loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D4QRSEAHGYB4E88VZSAB.png&amp;w=1920&amp;h=501&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="501" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="187" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>使用者的請求透過 Cloudflare 的網路 (2) 路由。我們已經升級了許多內部連線以使用後量子加密技術，並預計在 2024 年底之前完成所有內部連線的升級。這使得我們和_來源伺服器_之間的連線 (3) 成為最終連結。</p>
+<p>我們很高興地宣布，<strong>我們正在為大多數輸入和輸出連線推出對 X25519+Kyber 的支援，代表該功能已普遍可用</strong>，適用對象包括_來源伺服器_和 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> <code>fetch()</code>。</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-k1m" class="html-block">
+	<style>
+		#html-block-k1m .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k1m .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1m .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1m .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1m .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Plan</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Support for post-quantum outbound connections</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Free</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Started roll-out. Aiming for 100% by the end of the October.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pro and business</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Aiming for 100% by the end of year.</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Enterprise</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Roll-out begins February 2024. 100% by March 2024.</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>方案</p>
+<p>對後量子輸出連線的支援</p>
+<p>免费方案</p>
+<p>開始推出。目標是 10 月底達到 100%。</p>
+<div id="html-block-k1v" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td>1.1.1.1</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>AMP</td>
+			</tr>
+			<tr>
+				<td>API Gateway</td>
+			</tr>
+			<tr>
+				<td>Argo Smart Routing</td>
+			</tr>
+			<tr>
+				<td>Auto Minify</td>
+			</tr>
+			<tr>
+				<td>Automatic Platform Optimization</td>
+			</tr>
+			<tr>
+				<td>Automatic Signed Exchange</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Egress</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Images</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Rulesets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Snippets</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Tunnel</td>
+			</tr>
+			<tr>
+				<td>Custom Error Pages</td>
+			</tr>
+			<tr>
+				<td>Flow Based Monitoring</td>
+			</tr>
+			<tr>
+				<td>Health checks</td>
+			</tr>
+			<tr>
+				<td>Hermes</td>
+			</tr>
+			<tr>
+				<td>Host Head Checker</td>
+			</tr>
+			<tr>
+				<td>Magic Firewall</td>
+			</tr>
+			<tr>
+				<td>Magic Network Monitoring</td>
+			</tr>
+			<tr>
+				<td>Network Error Logging</td>
+			</tr>
+			<tr>
+				<td>Project Flame</td>
+			</tr>
+			<tr>
+				<td>Quicksilver</td>
+			</tr>
+			<tr>
+				<td>R2 Storage</td>
+			</tr>
+			<tr>
+				<td>Request Tracer</td>
+			</tr>
+			<tr>
+				<td>Rocket Loader</td>
+			</tr>
+			<tr>
+				<td>Speed on Cloudflare Dash</td>
+			</tr>
+			<tr>
+				<td>SSL/TLS</td>
+			</tr>
+			<tr>
+				<td>Traffic Manager</td>
+			</tr>
+			<tr>
+				<td>WAF, Managed Rules</td>
+			</tr>
+			<tr>
+				<td>Waiting Room</td>
+			</tr>
+			<tr>
+				<td>Web Analytics</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Pro 和商業方案</p>
+<p>目標是年底前達到 100%。</p>
+<div id="html-block-k20" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td>Cloudflare Gateway</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Cloudflare DNS</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Load Balancer</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Access</td>
+			</tr>
+			<tr>
+				<td>Always Online</td>
+			</tr>
+			<tr>
+				<td>Zaraz</td>
+			</tr>
+			<tr>
+				<td>Logging</td>
+			</tr>
+			<tr>
+				<td>D1</td>
+			</tr>
+			<tr>
+				<td>Cloudflare Workers</td>
+			</tr>
+			<tr>
+				<td>Cloudflare WARP</td>
+			</tr>
+			<tr>
+				<td>Bot Management</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Enterprise 方案</p>
+<p>將於 2024 年 2 月開始推出。到 2024 年 3 月達到 100%。</p>
+<p>對於我們的企業方案客戶，我們將在接下來的六個月內定期傳送更多資訊，以幫助您為推出做好準備。Pro 方案、商業方案和企業方案客戶可以跳過部署並立即在您的區域內選擇加入，或使用我們的<a href="https://blog.cloudflare.com/post-quantum-to-origins">配套部落格文章</a>中所述的 API 提前選擇退出。在 2024 年 2 月為企業方案推出該 API 之前，我們將在儀表板上新增一個用於選擇退出的切換按鈕。</p>
+<p>如果您對此感到興奮，並想要立即開始，<a href="https://blog.cloudflare.com/post-quantum-to-origins">請查看我們的部落格，瞭解技術詳細資訊，並透過 API 開啟後量子加密支援</a>！</p>
+<h3>包含內容以及後續計畫</h3>
+<p>對於如此大規模的升級，我們希望首先關注我們最常用的產品，然後向外擴展以覆蓋我們的邊緣情況。基於此，我們在此次推出中包含了以下產品和系統：</p>
+<p>1.1.1.1</p>
+<p>AMP</p>
+<p>API 閘道</p>
+<p>Argo Smart Routing</p>
+<p>Auto Minify</p>
+<p>自動平台最佳化</p>
+<p>Automatic Signed Exchange</p>
+<p>Cloudflare 輸出</p>
+<p>Cloudflare Images</p>
+<p>Cloudflare 規則集</p>
+<p>Cloudflare Snippets</p>
+<p>Cloudflare Tunnel</p>
+<p>自訂錯誤頁面</p>
+<p>基於流程的監控</p>
+<p>健康情況檢查</p>
+<p>Hermes</p>
+<p>Host Head Checker</p>
+<p>Magic Firewall</p>
+<p>Magic Network Monitoring</p>
+<p>網路錯誤記錄</p>
+<p>Flame 專案</p>
+<p>Quicksilver</p>
+<p>R2 儲存空間</p>
+<p>Request Tracer</p>
+<p>Rocket Loader</p>
+<p>Cloudflare Dash 上的速度</p>
+<p>SSL/TLS</p>
+<p>流量管理員</p>
+<p>WAF、受管理規則</p>
+<p>Waiting Room</p>
+<p>Web Analytics</p>
+<p>如果您使用的產品或服務未在此列出，則表示我們尚未開始為其推出後量子加密技術。我們正在積極推出對所有產品和服務的後量子加密支援，包括我們的 Zero Trust 產品。在我們的所有系統中實現後量子加密支援之前，我們將在每個 Innovation Week 發布更新部落格，介紹我們已推出後量子加密的產品、下一步將支援的產品以及未來的計畫。</p>
+<p>我們將在不久後為以下產品提供後量子加密支援：</p>
+<p>Cloudflare Gateway</p>
+<p>Cloudflare DNS</p>
+<p>Cloudflare Load Balancer</p>
+<p>Cloudflare Access</p>
+<p>Always Online</p>
+<p>Zaraz</p>
+<p>記錄</p>
+<p>D1</p>
+<p>Cloudflare Workers</p>
+<p>Cloudflare WARP</p>
+<p>機器人管理</p>
+<h3>為什麼現在要推出這項服務？</h3>
+<p>正如我們今年早些時候宣布的那樣，後量子加密技術將免費包含在所有支援它的 Cloudflare 產品和服務中。最好的加密技術應該可供所有人免費使用，以幫助支援全球的隱私和人權。</p>
+<p>正如我們在三月<a href="https://blog.cloudflare.com/post-quantum-crypto-should-be-free">提到的</a>：</p>
+<p><em>「曾經的實驗性前沿已經變成了現代社會的基礎結構。它在我們最關鍵的基礎設施中執行，例如電力系統、醫院、機場和銀行。我們將最珍貴的記憶託付給它。我們把祕密託付給它。這就是為什麼網際網路需要預設是私密的，需要預設是安全的。」</em></p>
+<p>我們對後量子加密技術的研究是基於這樣一個論點，即量子電腦可以破解傳統加密，產生類似「千年蟲」(Year 2000) 的漏洞。我們知道未來會出現一個問題，可能會為使用者、企業甚至國家帶來災難性的後果。這次的差別在於，我們不知道這種運算範式的突破將會在何年何月發生。更糟糕的是，今天擷取的任何流量在未來可能會被解密。我們今天就需要為應對這種威脅做好準備。</p>
+<p>我們很高興每個人都能在他們的系統中採用後量子加密。要瞭解我們部署後量子加密和第三方用戶端/伺服器支援的最新進展，請造訪 <a href="https://pq.cloudflareresearch.com" target="_blank" rel="noopener noreferrer">pq.cloudflareresearch.com</a> 並關注此部落格。</p>
+<p>***</p>
+<p><sup>1</sup>我們正在使用 Kyber（NIST 選擇的後量子金鑰協議）的<a href="https://datatracker.ietf.org/doc/draft-tls-westerbaan-xyber768d00" target="_blank" rel="noopener noreferrer">初步版本</a>。Kyber 尚未最終定稿。我們預計最終標準將在 2024 年以 ML-KEM 的名稱發布，屆時我們將迅速採用該標準，並停止支援 X25519Kyber768Draft00。</p>

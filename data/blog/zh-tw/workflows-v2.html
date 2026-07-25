@@ -1,0 +1,121 @@
+<p>當我們最初建構 <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>（我們用於多步驟應用程式的持久性執行引擎）時，它是為一個工作流程由人類操作觸發的世界而設計的，例如使用者註冊或下訂單。對於像是新使用者上線流程這類用例，工作流程只需支援「每人一個執行個體」的模式——而且人類點擊的速度有限。</p>
+<p>隨著時間推移，我們實際觀察到工作負載和存取模式發生了數量上的轉變：由人類觸發的工作流程變少，而由智慧體觸發、以機器速度建立的工作流程大幅增加。</p>
+<p>隨著智慧體成為持久且自主的基礎架構，代表使用者運作數小時甚至數天，它們需要一個持久、非同步的執行引擎來處理其工作。Workflows 正能提供此功能：每個步驟都可以獨立重試，工作流程可以暫停等待人工介入核准，且每一個執行個體都能在遭遇故障時倖存下來，而不會遺失任何已取得的進度。</p>
+<p>此外，工作流程本身正被用於實現智慧體循環，並作為管理和維持智慧體運作的持久性框架。我們的 <a href="https://developers.cloudflare.com/changelog/post/2026-02-03-agents-workflows-integration" target="_blank" rel="noopener noreferrer"><u>Agents SDK 整合</u></a>加速了這一進程，使智慧體能輕鬆產生工作流程執行個體並獲得即時進度回饋。一個智慧體工作階段現在可以啟動數十個工作流程，而多個智慧體同時執行意味著在幾秒鐘內可以建立數千個執行個體。隨著 <a href="https://blog.cloudflare.com/project-think" target="_blank" rel="noopener noreferrer"><u>Project Think</u></a> 的推出，我們預計這一速度只會進一步提升。</p>
+<p>為了協助開發人員在 Workflows 上擴展他們的智慧體和應用程式，我們很高興地宣布，我們現在支援：</p>
+<ul>
+	<li>50,000 個並行執行個體（同時執行的工作流程數量），<a href="https://developers.cloudflare.com/changelog/post/2025-02-25-workflows-concurrency-increased" target="_blank" rel="noopener noreferrer"><u>原為 4500 個</u></a></li>
+	<li>每個帳戶每秒可建立 300 個執行個體，原為 100 個</li>
+	<li>每個工作流程 200 萬個佇列執行個體（指已建立或喚醒並等待並行槽位的執行個體），原為 100 萬個</li>
+</ul>
+<p>我們根據使用資料和第一原理，重新設計了 Workflows 控制平面以支援這些增長。對於控制平面的 V1 版本，單個 Durable Object (DO) 可以作為整個帳戶的中心註冊表和協調器。對於 V2，我們建立了兩個新元件來幫助系統水平擴展，並緩解 V1 引入的瓶頸。隨後，我們在保持現有流量不中斷的前提下，將所有客戶無縫遷移到了這一全新的版本之上。</p>
+<h2>V1：Workflows 的初始架構</h2>
+<p>如我們在<a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers/#building-cloudflare-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>公開測試版部落格文章</u></a>中所述，我們完全在自己的開發人員平台上建構了 <a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>。根本上來說，工作流程是一系列持久性步驟，每一步都可以獨立重試，它們可以執行任務、等待外部事件，或是休眠直到預定時間。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">step</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch-data"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> fetchFromAPI</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> approval</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"approval"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      type: </span><span class="sk-032f62-99ffe4">"approval"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      timeout: </span><span class="sk-032f62-99ffe4">"24 hours"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"process-and-save"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> store</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(data));</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>為了觸發每個執行個體、執行其邏輯並儲存其中繼資料，我們利用以 SQLite 為後盾的 <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>，這是在分散式系統中用於協調與儲存的簡單但強大的基礎元件。</p>
+<p>在控制平面中，某些 Durable Objects（例如 <em>Engine</em>，它負責執行實際的工作流程執行個體，包括其步驟、重試和休眠邏輯）會以每個執行個體 1:1 的比例啟動。另一方面，<em>Account</em> 是一個帳戶層級的 Durable Object，負責管理該帳戶的所有工作流程和工作流程執行個體。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="524" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=715&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=640&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=715&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=750&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=828&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1080&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1280&amp;h=938&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1430&amp;h=1048&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3116 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1920&amp;h=1408&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1408" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="524" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>若要進一步瞭解 V1 控制平面，請參閱我們的 <a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers" target="_blank" rel="noopener noreferrer"><u>Workflows 發佈公告部落格文章</u></a>。</p>
+<p>在 Workflows 進入測試階段後，我們很高興看到客戶迅速擴展他們對該產品的使用，但我們也意識到，使用單個 Durable Object 來儲存所有帳戶層級資訊會帶來瓶頸。許多客戶每分鐘需要建立和執行數百甚至數千個工作流程執行個體，這在原架構中很容易使 <em>Account</em> 不堪負荷。最初的速率限制——4,500 個並行槽位和每秒 100 個執行個體建立數——就是此限制的結果。</p>
+<p>在 V1 控制平面上，這些限制是硬性的上限。任何依賴 <em>Account</em> 的操作，包括建立、更新和列表，都必須透過那個單一的 DO。擁有高並行工作負載的使用者，任何時刻都可能有數千個執行個體啟動和結束，每秒對 <em>Account</em> 發出數千個請求。為了解決這個問題，我們重新架構了 workflow 控制平面，使其能夠水平擴展以達到更高的並行度和建立速率限制。</p>
+<h2>V2：水平擴展以獲得更高輸送量</h2>
+<p>對於新版本，我們從頭開始重新思考每一個操作，目標是針對高流量工作負載進行最佳化。最終，Workflows 應該要能擴展以支援開發人員的任何需求——無論是每秒建立數千個執行個體，還是同時執行數百萬個執行個體。我們也希望確保 V2 能夠允許靈活的限制，讓我們可以調整並持續增加，而不是像 V1 那樣有硬性的上限。經過多次設計迭代，我們為新架構確立了以下幾個支柱：</p>
+<ul>
+	<li>特定執行個體存在性的真實來源應是其 <em>Engine</em>，而非其他。<ul>
+			<li>在 V1 控制平面架構中，我們在將執行個體排入佇列之前，沒有檢查它的 <em>Engine</em> 是否真的存在。這導致了一種錯誤狀態：執行個體可能已被排入佇列，但其對應的 <em>Engine</em> 卻尚未啟動。</li>
+			<li>執行個體的生命週期和存活機制必須能夠按工作流程水平擴展，並分散在多個區域。</li>
+		</ul>
+	</li>
+	<li>新的 Account 單例應僅儲存最必要的中繼資料，並具有不變的最大並行請求量。</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="414" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=640&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=750&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=828&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1080&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1280&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1430&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3116 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1920&amp;h=1111&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1111" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="414" class="pt-portable-image-media"></div>
+</figure>
+<p>在 V2 控制平面中有兩個新的關鍵元件，使我們能夠提升 Workflows 的可擴展性：<em>SousChef</em> 和 <em>Gatekeeper</em>。第一個元件 <em>SousChef</em> 是 <em>Account</em> 的「二把手」。回想一下，先前 <em>Account</em> 管理著給定帳戶內所有工作流程中所有執行個體的中繼資料和生命週期。引入 <em>SousChef</em> 是為了追蹤給定工作流程中<strong>一部分</strong>執行個體的中繼資料和生命週期。在一個帳戶內，一群 <em>SousChefs</em> 能夠以更有效率、更易於管理的方式向 <em>Account</em> 回報。（這種設計還有一個額外的好處：我們不僅已經有了每個帳戶的隔離性，還意外地在同一個帳戶內獲得了「每個工作流程」的隔離性，因為每個 <em>SousChef</em> 只負責一個特定的工作流程）。</p>
+<p>第二個元件 <em>Gatekeeper</em> 是一種機制，負責將並行「槽位」（源自並行限制）分配給帳戶內的所有 <em>SousChefs</em>。它就像一個租賃系統。當一個執行個體被建立時，它會被隨機分配給該帳戶內的一個 <em>SousChef</em>。然後該 <em>SousChef</em> 向 <em>Account</em> 發出請求以觸發該執行個體。此時要麼獲得一個槽位，要麼執行個體被放入佇列。一旦槽位獲得核准，<em>SousChef</em> 就會觸發該執行個體的執行，並承擔確保該執行個體永遠不會卡住的責任。</p>
+<p><em>Gatekeeper</em> 的存在是為了確保 <em>Engines</em> 永遠不會讓它們的 <em>Account</em> 過載（這是 V1 版本的一個迫切風險），因此 <em>SousChefs</em> 與其 <em>Account</em> 之間的每次通訊都以週期性的方式進行，每秒一次——每個週期也會批次處理所有槽位請求，確保只發出一次 JSRPC 呼叫。這確保了執行個體建立速率永遠不會壓垮或影響最重要的元件 <em>Account</em>（附帶一提：如果 <em>SousChef</em> 數量過高，我們會對呼叫進行速率限制，或將它們分散到不同時段的不同 <em>SousChef</em>）。此外，這種週期性特性使我們能夠保持對較舊執行個體的公平性，並透過眾多 <em>SousChef</em> 確保最大最小公平性，讓它們都能繼續進展。例如，如果一個執行個體被喚醒，它應該比一個新建立的執行個體更優先獲得槽位，但每個 <em>SousChef</em> 都會確保它自己的執行個體不會卡住。</p>
+<p>這種架構更加分散，因此更具可擴展性。現在，當一個執行個體被建立時，請求路徑如下：</p>
+<ol>
+	<li>檢查控制平面版本</li>
+	<li>檢查在該位置是否有工作流程和版本詳細資料的快取版本可用<ol>
+			<li>如果沒有，檢查 <em>Account</em> 以取得工作流名稱、唯一 ID 和版本，並快取該資訊</li>
+		</ol>
+	</li>
+	<li>僅將必要的中繼資料（執行個體負載、建立日期）儲存到其自身的 <em>Engine</em> 上</li>
+</ol>
+<p>那麼，<em>Engine</em> 如何告訴控制平面它現在已經存在？這發生在執行個體中繼資料設定之後的背景作業中。由於 Durable Object 上的背景作業可能因驅逐或伺服器故障而失敗，我們也在建立流程的熱路徑 (hot-path) 上為 <em>Engine</em> 設定了一個「鬧鐘」(alarm)。這樣一來，如果背景任務沒有完成，鬧鐘就會<strong>確保</strong>該執行個體將會啟動。</p>
+<p><a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Durable Object 鬧鐘</u></a>允許一個 Durable Object 執行個體在未來的某個精細時間點被喚醒，採用<strong>至少執行一次</strong>的模型，並內建自動重試機制。我們廣泛使用這種背景「任務」與鬧鐘的組合，將操作移出熱路徑，同時仍然確保一切都將按計畫發生。這就是我們在不影響可靠性的前提下，保持像<em>建立執行個體</em>這樣的關鍵操作快速執行的方式。</p>
+<p>除了釋放擴展能力之外，這個版本的控制平面還意味著：</p>
+<ul>
+	<li>執行個體列表的效能更快，並且與游標分頁 (cursor pagination) 保持一致；</li>
+	<li>對執行個體的任何操作只需一個網路躍點（因為它可以直接前往其 <em>Engine</em>，確保終端使用者請求的延遲盡可能小）；</li>
+	<li>我們可以確保更多執行個體能夠同時正常運作（按時執行），並在運作異常時進行修正（確保 <em>Engines</em> 永遠不會延遲繼續執行）。</li>
+</ul>
+<h2>V1 → V2 遷移</h2>
+<p>現在我們有了新版本的 Workflows 控制平面，能夠處理更大量的使用者負載，接下來我們需要做「枯燥無味」的部分：將我們的客戶和執行個體遷移到新系統。在 Cloudflare 的規模下，這本身就變成了一個問題，因此「枯燥無味」的部分反而成了最大的挑戰。在滿一週年之前，Workflows 就已經累積了數百萬個執行個體和數千名客戶。此外，V1 控制平面上的一些技術債意味著，一個排隊中的執行個體可能還沒有建立自己的 <em>Engine</em> Durable Object，這讓情況更加複雜。</p>
+<p>這樣的遷移非常棘手，因為客戶可能隨時都有執行個體在執行；我們需要一種方法，將 <em>SousChef</em> 和 <em>Gatekeeper</em> 元件加入到較舊的帳戶中，而不造成任何中斷或停機時間。</p>
+<p>我們最終決定將現有的 <em>Accounts</em>（以下稱之為 <em>AccountOld</em>）遷移，讓它們像 <em>SousChefs</em> 一樣行事。透過保留 <em>Account</em> DO，我們維持了執行個體的中繼資料，並簡單地將該 DO 轉換為一個 <em>SousChef</em>「DO」：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// You might be wondering what's this SousChef class? This is the SousChef DO class!</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { SousChef } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@repo/souschef"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AccountOld</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> DurableObject</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">state</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectState</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // We added the following snippet to the end of our AccountOld DO's</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // constructor. This ensures that if we want, we can use any primitive</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // that is available on SousChef DO</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.currentVersion </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> ControlPlaneVersions.</span><span class="sk-005cc5-fff">SOUS_CHEFS</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.sousChef </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> SousChef</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.sousChef.</span><span class="sk-6f42c1-ffc799">setup</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> updateInstance</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">params</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> UpdateInstanceParams</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.currentVersion </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> ControlPlaneVersions.</span><span class="sk-005cc5-fff">SOUS_CHEFS</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      assert</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.sousChef </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'SousChef must exist on v2'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.sousChef.</span><span class="sk-6f42c1-ffc799">updateInstance</span><span class="sk-24292e-fff">(params);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // old logic remains the same</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  @</span><span class="sk-6f42c1-ffc799">RequiresVersion</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">AccountOld</span><span class="sk-24292e-fff">&gt;(ControlPlaneVersions.</span><span class="sk-005cc5-fff">V1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> getMetadata</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // this method can only be run if </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // this.currentVersion === ControlPlaneVersions.V1</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>我們可以在 <em>AccountOld</em> 中實例化 <em>SousChef</em> 類別，因為追蹤執行個體中繼資料的 SQL 表格，在 <em>SousChefs</em> 和 <em>AccountOld</em> DO 上都是相同的。因此，我們可以決定使用哪個版本的程式碼。如果情況不是這樣，我們將被迫遷移數百萬個執行個體的中繼資料，這會使每個帳戶的遷移更加困難且耗時更長。那麼，遷移是如何進行的呢？</p>
+<p>首先，我們準備將 <em>AccountOld</em> DO 切換為像 <em>SousChefs</em> 一樣運作（這意味著建立一個包含上述程式碼片段的版本發佈）。然後，我們按帳戶啟用控制平面 V2，這大致在同一時間觸發了接下來的三個步驟：</p>
+<ul>
+	<li>所有新執行個體建立請求現在都被路由到新的 <em>SousChefs</em>（<em>SousChefs</em> 在收到第一個請求時被建立），新的執行個體不再傳送到 <em>AccountOld</em>；</li>
+	<li><em>AccountOld</em> DO 開始遷移自身，使其像 <em>SousChefs</em> 一樣行事；</li>
+	<li>新的 <em>Account</em> DO 隨對應的中繼資料一起啟動。</li>
+</ul>
+<p>在所有帳戶都遷移到新的控制平面版本之後，我們就能在 <em>AccountOld</em> DO 的執行給保留期到期後將其淘汰。一旦 <em>AccountOld</em> 上所有帳戶的所有執行個體都完成遷移，我們就可以永久地關閉這些 DO。遷移過程在零停機的情況下完成，感覺就像在行駛中更換汽車的輪胎一樣。</p>
+<h2>試用</h2>
+<p>如果您是 Workflows 的新手，請嘗試我們的<a href="https://developers.cloudflare.com/workflows/get-started/guide" target="_blank" rel="noopener noreferrer"><u>入門指南</u></a>，或使用 Workflows <a href="https://developers.cloudflare.com/workflows/get-started/durable-agents" target="_blank" rel="noopener noreferrer"><u>建立您的第一個持久性智慧體</u></a>。</p>
+<p>如果您的使用案例需要比我們新的預設值更高的限制（50,000 個槽位的並行限制，以及每個帳戶每秒 300 個、每個工作流程每秒 100 個執行個體的建立速率限制），請透過您的客戶團隊或 <a href="https://forms.gle/ukpeZVLWLnKeixDu7" target="_blank" rel="noopener noreferrer"><u>Workers 限制申請表單</u></a>與我們聯絡。您也可以在我們的 <a href="https://discord.com/channels/595317990191398933/1296923707792560189" target="_blank" rel="noopener noreferrer"><u>Discord 伺服器</u></a>上提供回饋、提出功能請求，或者分享您使用 Workflows 的心得。</p>

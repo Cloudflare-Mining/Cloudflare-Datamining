@@ -1,0 +1,144 @@
+<p>Вчера, 8 августа 2022 года, компания Twilio сообщила, что она <a href="https://www.twilio.com/blog/august-2022-social-engineering-attack" target="_blank" rel="noopener noreferrer">подверглась целевой фишинговой атаке</a>. Примерно в то же время, когда была атакована Twilio, мы наблюдали атаку с очень похожими характеристиками, направленную также на сотрудников Cloudflare. Несмотря на то, что отдельные сотрудники «клюнули» на фишинговые сообщения, мы смогли предотвратить атаку с помощью собственных <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">продуктов Cloudflare One</a> и благодаря физическим ключам безопасности, выдаваемым каждому сотруднику, которые необходимы для доступа ко всем нашим приложениям.</p>
+<p>Мы подтвердили, что ни одна из систем Cloudflare не была скомпрометирована. Наша <a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">команда Cloudforce One по сбору и анализу информации об угрозах</a> смогла провести дополнительный анализ, чтобы более углубленно проанализировать механизм атаки и собрать важные доказательства для помощи в отслеживании злоумышленника.</p>
+<p>Это была изощренная атака, нацеленная на сотрудников и системы таким образом, который, по нашему мнению, привел бы к взлому большинства организаций. Учитывая, что целью злоумышленников являлось несколько организаций, мы хотели поделиться здесь кратким и точным изложением того, что именно мы наблюдали, с тем, чтобы помочь другим компаниям распознать и нейтрализовать эту атаку.</p>
+<h2>Целевые текстовые сообщения</h2>
+<p>20 июля 2022 года команда безопасности Cloudflare получила сообщения о том, что сотрудники получают выглядящие легитимными текстовые сообщения, ведущие на якобы страницу входа в Cloudflare Okta. Сообщения начали поступать 20.07.2022 в 22:50 UTC. В течение менее одной минуты по меньшей мере 76 сотрудников получили текстовые сообщения на свои личные и рабочие телефоны. Некоторые сообщения были также отправлены членам семей сотрудников. Мы пока не смогли определить, как злоумышленнику удалось собрать список телефонных номеров сотрудников, но проверили журналы доступа к нашим службам каталогов сотрудников и не обнаружили никаких признаков компрометации.</p>
+<p>Cloudflare имеет группу реагирования на инциденты безопасности (SIRT — от англ. Security Incident Response Team), работающую в режиме 24x7. Каждый сотрудник Cloudflare проинструктирован сообщать обо всех подозрительных действиях в SIRT. Более 90 процентов сообщений, поступающих в SIRT, на деле оказываются не связанными с настоящими угрозами. Тем не менее, сотрудников поощряют сообщать обо всем, что им кажется подозрительным, и чрезмерное информирование никогда не является причиной неодобрения. Однако в данном случае сообщения в SIRT относились к реальной угрозе.</p>
+<p>Текстовые сообщения, полученные сотрудниками, выглядели следующим образом:</p>
+<p>Они поступили с четырех телефонных номеров, привязанных к СИМ-картам, выпущенным T-Mobile: (754) 268-9387, (205) 946-7573, (754) 364-6683 и (561) 524-5989. Текстовые сообщения включали официально выглядящий домен: cloudflare-okta.com. Этот домен был зарегистрирован через Porkbun, регистратор доменов, 20.07.2022 в 22:13:04 UTC — менее чем за 40 минут до начала фишинговой кампании.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="601" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=640&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=715&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=750&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=828&amp;h=696&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1080&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1280&amp;h=1076&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1430&amp;h=1202&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1279 Embedded Image - mzDQx2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW458M23R42VF210NMM8NBN6.png&amp;w=1125&amp;h=945&amp;f=webp" data-lightbox-width="1125" data-lightbox-height="945" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="601" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare создала наш <a href="https://www.cloudflare.com/products/registrar/custom-domain-protection" target="_blank" rel="noopener noreferrer">продукт по безопасной регистрации</a> частично для того, чтобы иметь возможность отслеживать, когда домены, использующие бренд Cloudflare, были зарегистрированы, и принудительно закрывать их. Однако, поскольку этот домен был зарегистрирован совсем недавно, он еще не был опубликован как новая регистрация .com, поэтому наши системы не обнаружили его.</p>
+<p>Нажимая на ссылку, пользователь попадал на фишинговую страницу. Фишинговая страница была размещена на DigitalOcean и выглядела следующим образом:</p>
+<p>Cloudflare использует Okta в качестве нашего сервиса авторизации. Фишинговая страница была разработана таким образом, чтобы выглядеть идентично легитимной странице входа в Okta. Фишинговая страница запрашивала имя пользователя и пароль у каждого посещающего ее пользователя.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1279 Embedded Image - 5SXCpt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45QS52KCAFCN2KSPGK32J4.png&amp;w=1600&amp;h=1200&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1200" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<h2>Фишинг в режиме реального времени</h2>
+<p>Мы смогли проанализировать код фишинговой атаки, основываясь на данных, полученных нашими сотрудниками, а также на контенте атаки, размещенном в таких сервисах, как VirusTotal, другими компаниями, подвергшимися атаке. После того как фишинговая страница заполнялась жертвой, учетные данные немедленно передавались злоумышленнику через службу обмена сообщениями Telegram. Эта передача в реальном времени имела важное значение, поскольку фишинговая страница также запрашивала код одноразового пароля с ограниченным сроком действия (TOTP — от англ. Time-based One Time Password).</p>
+<p>Предположительно, злоумышленник получал учетные данные в режиме реального времени, вводил их на реальной странице входа в систему компании-жертвы, и для многих организаций это действие инициировало генерирование кода, отправляемого сотруднику через SMS или отображаемого в генераторе паролей. Затем сотрудник вводил код TOTP на фишинговом сайте, и он также передавался злоумышленнику. Затем, до истечения срока действия кода TOTP, злоумышленник мог использовать его для доступа к реальной странице входа в систему компании, что позволяло обойти большинство систем двухфакторной аутентификации.</p>
+<h2>Обеспечение защиты, даже если она не является совершенной</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="250" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=715&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=640&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=715&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=750&amp;h=262&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=828&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=1080&amp;h=378&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=1280&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=1430&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1279 Embedded Image - y0kAKQ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48BDTY0D16K46QEKFRZ8VJ.png&amp;w=951&amp;h=332&amp;f=webp" data-lightbox-width="951" data-lightbox-height="332" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="250" class="pt-portable-image-media"></div>
+</figure>
+<p>Мы подтвердили, что трое сотрудников Cloudflare попались на фишинговое сообщение и ввели свои учетные данные. Однако Cloudflare не использует коды TOTP. Вместо этого каждому сотруднику компании выдается ключ безопасности, соответствующий FIDO2, от такого поставщика, как, в частности, YubiKey. Поскольку аппаратные ключи привязаны к пользователям и реализуют <a href="https://www.yubico.com/blog/creating-unphishable-security-key" target="_blank" rel="noopener noreferrer">привязку к источнику</a>, даже такая изощренная фишинговая операция в режиме реального времени не может обеспечить сбор информации, необходимой для входа в любую из наших систем. Хотя злоумышленник попытался войти в наши системы, используя скомпрометированные данные имени пользователя и пароля, он не смог пройти проверку на основе аппаратного ключа.</p>
+<p>Но эта фишинговая страница была создана не просто для получения учетных данных и кодов TOTP. Если тот или иной пользователь проходил эти этапы, фишинговая страница затем инициировала загрузку фишингового вредоносного кода, который включал программное обеспечение удаленного доступа AnyDesk. Это программное обеспечение, если оно установлено, позволит злоумышленнику удаленно управлять компьютером жертвы. Мы подтвердили, что никто из членов нашей команды не дошел до этого этапа. Однако, даже если бы кому-либо из них это удалось, наша система безопасности конечных точек остановила бы установку программного обеспечения для удаленного доступа.</p>
+<h2>Как мы отреагировали?</h2>
+<p>Ниже перечислены основные меры реагирования, которые мы предприняли в связи с этим инцидентом:</p>
+<h3>1. <strong>Блокировка фишингового домена с помощью Cloudflare Gateway</strong></h3>
+<p>Cloudflare Gateway — это защищенный веб-шлюз, решение, обеспечивающее защиту от угроз и данных с помощью фильтрации DNS / HTTP и нативно интегрированной функции Zero Trust. Мы используем это решение внутри компании для превентивного выявления вредоносных доменов и их блокировки. Наша команда добавила вредоносный домен в Cloudflare Gateway, чтобы заблокировать доступ к нему для всех сотрудников.</p>
+<p>Автоматическое обнаружение вредоносных доменов с помощью Gateway также позволило идентифицировать домен и заблокировать его, но тот факт, что домен был зарегистрирован и сообщения были отправлены в течение такого короткого промежутка времени, означал, что система не предприняла автоматических действий до того, как некоторые сотрудники перешли по ссылкам. Учитывая этот инцидент, мы работаем над тем, чтобы ускорить идентификацию и блокировку вредоносных доменов. Мы также внедряем средства контроля доступа к недавно зарегистрированным доменам, которые мы предлагаем клиентам, но не внедрили сами.</p>
+<h3>2. <strong>Определение всех затронутых сотрудников Cloudflare и сброс скомпрометированных учетных данных</strong></h3>
+<p>Мы смогли сравнить получателей фишинговых сообщений с действиями при входе в систему и выявить попытки злоумышленников пройти аутентификацию в учетных записях наших сотрудников. Мы идентифицировали попытки входа в систему, заблокированные на основе требований к наличию аппаратного ключа (U2F), указывающие на то, что был использован правильный пароль, но второй фактор не прошел проверку. В связи с утечкой учетных данных трех наших сотрудников мы сбросили их учетные данные и все активные сеансы, и инициировали сканирование их устройств.</p>
+<h3>3. Выявление и устранение инфраструктуры злоумышленника</h3>
+<p>Фишинговый домен злоумышленника был недавно зарегистрирован через Porkbun и размещен на DigitalOcean. Фишинговый домен, использованный для атаки на Cloudflare, был создан менее чем за час до начала первой волны фишинговой атаки. Сайт имел клиентскую часть на Nuxt.js, а серверную часть — на Django. Мы работали с DigitalOcean над отключением сервера злоумышленника. Мы также сотрудничали с компанией Porkbun, чтобы взять под контроль вредоносный домен.</p>
+<p>По неудачным попыткам входа в систему мы смогли определить, что злоумышленник воспользовался программным обеспечением Mullvad VPN и очевидно использовал браузер Google Chrome на компьютере с Windows 10. Злоумышленник использовал следующие IP-адреса VPN: 198.54.132.88 и 198.54.135.222. Эти IP-адреса присвоены Tzulo, американскому поставщику выделенных серверов, при этом согласно информации, представленной на их веб-сайте, у них имеются серверы, расположенные в Лос-Анджелесе и Чикаго. На самом же деле оказалось, что первый IP-адрес фактически работал на сервере в районе Торонто, а второй — на сервере в районе Вашингтона, округ Колумбия. Мы заблокировали для этих IP-адресов доступ к любым нашим сервисам.</p>
+<h3>4. Обновление обнаружений для выявления последующих попыток атаки</h3>
+<p>С учетом того, что нам удалось выяснить об этой атаке, мы включили дополнительные сигналы в наши уже существующие обнаружения, с тем, чтобы конкретно идентифицировать этого злоумышленника. На момент написания статьи мы не наблюдали никаких дополнительных волн атак, нацеленных на наших сотрудников. Однако аналитическая информация с сервера показала, что злоумышленник нацеливался на другие организации, включая Twilio. Мы связались с этими организациями и поделились аналитической информацией о кибератаке.</p>
+<h3>5. Аудит журналов доступа к сервисам для выявления дополнительных признаков атаки</h3>
+<p>После атаки мы проверили все наши журналы системы на наличие каких-либо дополнительных цифровых отпечатков этого конкретного злоумышленника. Поскольку Cloudflare Access служит центральной точкой управления для всех приложений Cloudflare, мы можем искать в журналах любые признаки взлома злоумышленником каких-либо систем. Учитывая, что объектом атаки стали телефоны сотрудников, мы также тщательно проверили журналы наших поставщиков каталогов сотрудников. Мы не нашли никаких доказательств компрометации.</p>
+<h2>Извлеченные уроки и дополнительные шаги, которые мы предпринимаем</h2>
+<p>Мы извлекаем уроки из каждой атаки. Несмотря на то, что злоумышленник не добился успеха, мы вносим дополнительные коррективы на основе полученных сведений. Мы корректируем настройки Cloudflare Gateway, чтобы ограничить или изолировать доступ к сайтам, работающим на доменах, которые были зарегистрированы в течение последних 24 часов. Мы также будем запускать любые сайты, находящиеся в списке запрещенных сайтов, содержащие такие термины, как “cloudflare”, “okta”, “sso” и “2fa”, с помощью нашей технологии изоляции браузера. Кроме того, мы все чаще используем технологию идентификации фишинга Cloudflare Area 1 для сканирования Интернета и поиска любых страниц, нацеленных на Cloudflare. Наконец, мы ужесточаем нашу реализацию Access, чтобы предотвратить любые входы в систему из неизвестных VPN, резидентных прокси-серверов и поставщиков инфраструктуры. Все это на основе тех же стандартных функций, которые мы предлагаем клиентам.</p>
+<p>Атака также подчеркнула важность трех аспектов, которые мы успешно реализуем. Первый аспект — требование аппаратных ключей для доступа ко всем приложениям. <a href="https://krebsonsecurity.com/2018/07/google-security-keys-neutralized-employee-phishing" target="_blank" rel="noopener noreferrer">Как и в Google</a>, мы не наблюдали успешных фишинговых атак с момента развертывания аппаратных ключей. Такие инструменты, как Cloudflare Access, упростили поддержку аппаратных ключей даже в устаревших приложениях. Если вы представляете организацию, которая хотела бы получить дополнительную информацию по внедрению нами аппаратных ключей, вы можете обратиться по адресу <a href="mailto:cloudforceone-irhelp@cloudflare.com">cloudforceone-irhelp@cloudflare.com</a>, и наш отдел ИБ будет рад поделиться практическими рекомендациями, разработанными нами на основании этого процесса.</p>
+<p>Второй аспект — использование собственной технологии Cloudflare для защиты наших сотрудников и систем. Решения Cloudflare One, такие как Access и Gateway, имели решающее значение для предотвращения этой атаки. Мы настроили нашу реализацию Access так, чтобы для каждого приложения требовались аппаратные ключи. Также в рамках этой реализации создается центральная локация журналирования для всех аутентификаций приложения. И, при необходимости, место, из которого мы можем прекратить сеансы потенциально скомпрометированного сотрудника. Gateway позволяет нам быстро закрывать вредоносные сайты, подобные этому, и понимать, какие сотрудники могли подвергнуться атаке. Все вышеперечисленные функциональные возможности представляются нами клиентам Cloudflare в составе пакета Cloudflare One, и эта атака демонстрирует их высокую эффективность.</p>
+<p>Третий аспект — «сверхподозрительная», но при этом не связанная с порицанием культура имеет критическую важность для обеспечения безопасности. Трое сотрудников, попавшихся на фишинговую «удочку», не получили выговоров. Мы все люди, и мы совершаем ошибки. При этом крайне важно, что когда это с нами происходит, мы сообщали об ошибках и не скрывали их. Этот инцидент стал еще одним примером того, почему безопасность является частью работы каждого члена команды Cloudflare.</p>
+<h2>Подробная хронология событий</h2>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>2022-07-20 22:49 UTC</p>
+<p>Злоумышленник отправил более 100 SMS-сообщений сотрудникам Cloudflare и их семьям.</p>
+<p>2022-07-20 22:50 UTC</p>
+<p>Сотрудники начали сообщать о SMS-сообщениях в службу безопасности Cloudflare.</p>
+<p>2022-07-20 22:52 UTC</p>
+<p>Проверка блокировки домена злоумышленника в Cloudflare Gateway для корпоративных устройств.</p>
+<p>2022-07-20 22:58 UTC</p>
+<p>Предупреждающее сообщение отправлено всем сотрудникам через чат и электронную почту.</p>
+<p>2022-07-20 22:50 UTC to2022-07-20 23:26 UTC</p>
+<p>Мониторинг телеметрии в журнале системы Okta и журналах HTTP Cloudflare Gateway с целью обнаружения компрометации учетных данных. Очистка сеансов входа и приостановка учетных записей при обнаружении.</p>
+<p>2022-07-20 23:26 UTC</p>
+<p>Фишинговый сайт удален провайдером хостинга.</p>
+<p>2022-07-20 23:37 UTC</p>
+<p>Сброс скомпрометированных учетных данных сотрудников.</p>
+<p>2022-07-21 00:15 UTC</p>
+<p>Глубокий анализ инфраструктуры и возможностей злоумышленника.</p>
+<h2>Индикаторы компрометации</h2>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-nr0u{border-color:inherit;font-family:inherit;font-size:100%;text-align:left;vertical-align:top} .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}</p>
+<div id="html-block-k3w" class="html-block">
+	<style>
+		#html-block-k3w .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k3w .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3w .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3w .tg .tg-nr0u {
+			border-color: inherit;
+			font-family: inherit;
+			font-size: 100%;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k3w .tg .tg-0pky {
+			border-color: inherit;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-nr0u">Value</th>
+				<th class="tg-0pky">Type</th>
+				<th class="tg-0pky">Context and MITRE Mapping</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0pky">cloudflare-okta[.]com hosted on 147[.]182[.]132[.]52</td>
+				<td class="tg-0pky">Phishing URL</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1566/002">T1566.002</a>: Phishing: Spear Phishing Link sent to users.</td>
+			</tr>
+			<tr>
+				<td class="tg-0pky">64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</td>
+				<td class="tg-0pky">SHA-256</td>
+				<td class="tg-0pky"><a href="https://attack.mitre.org/techniques/T1219">T1219</a>: Remote Access Software being distributed by the threat actor</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Значение</p>
+<p>Тип</p>
+<p>Контекст и сопоставление MITRE</p>
+<p>cloudflare-okta[.]com с размещением на 147[.]182[.]132[.]52</p>
+<p>Фишинговый URL-адрес</p>
+<p><a href="https://attack.mitre.org/techniques/T1566/002" target="_blank" rel="noopener noreferrer">T1566.002</a>: Фишинг: целевая фишинговая ссылка, отправленная пользователям.</p>
+<p>64547b7a4a9de8af79ff0eefadde2aed10c17f9d8f9a2465c0110c848d85317a</p>
+<p>SHA-256</p>
+<p><a href="https://attack.mitre.org/techniques/T1219" target="_blank" rel="noopener noreferrer">T1219</a>: Программное обеспечение для удаленного доступа, распространяемое злоумышленником</p>
+<h2>Что вы можете предпринять</h2>
+<p>Если вы наблюдаете подобные атаки в своей среде, вы можете обратиться по адресу <a href="mailto:cloudforceone-irhelp@cloudflare.com">cloudforceone-irhelp@cloudflare.com</a>, и мы будем рады поделиться практическими рекомендациями по обеспечению безопасности вашего бизнеса. Если же вам интересно узнать больше о том, как мы внедрили ключи безопасности, ознакомьтесь с нашей <a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">публикацией в блоге</a> или обратитесь по адресу: <a href="mailto:securitykeys@cloudflare.com">securitykeys@cloudflare.com</a>.</p>
+<p>Возможно, вы хотите работать вместе с нами над обнаружением и нейтрализацией следующих атак? Мы набираем команду по обнаружению и реагированию. <a href="https://boards.greenhouse.io/cloudflare/jobs/4364485?gh_jid=4364485" target="_blank" rel="noopener noreferrer">Присоединяйтесь к нам</a>!</p>

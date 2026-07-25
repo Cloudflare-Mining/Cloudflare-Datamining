@@ -1,226 +1,174 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/every-7-8us-your-computers-memory-has-a-hiccup">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/every-7-8us-your-computers-memory-has-a-hiccup">Deutsch</a>, <a href="https://blog.cloudflare.com/es-es/every-7-8us-your-computers-memory-has-a-hiccup">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/every-7-8us-your-computers-memory-has-a-hiccup">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/791063MiEVgyr0YOABGN7W/8b88ff9f9aedf985d6f240c7c1588c68/every-7-8us-your-computers-memory-has-a-hiccup.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Modern DDR3 SDRAM. Source: <a href="https://en.wikipedia.org/wiki/DDR3_SDRAM#/media/File:2013_Transcend_TS512MLK72V6N-(straightened).jpg" target="_blank" rel="noopener noreferrer">BY-SA/4.0 by Kjerish</a></p>
-	<p>During my recent visit to <a href="http://www.computerhistory.org" target="_blank" rel="noopener noreferrer">the Computer History Museum</a> in Mountain View, I found myself staring at some ancient <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank" rel="noopener noreferrer">magnetic core memory</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hsvsgHolMQyvCWSIDzdNw/a1c5ba4bf5c4781ddfce24e468d40ee2/240px-KL_CoreMemory.jpg" alt="240px-KL_CoreMemory" class="kg-image" width="240" height="240" loading="lazy">
-
-	</figure>
-	<p>Source: <a href="https://en.wikipedia.org/wiki/File:KL_CoreMemory.jpg" target="_blank" rel="noopener noreferrer">BY-SA/3.0 by Konstantin Lanzet</a></p>
-	<p>I promptly concluded I had absolutely no idea on how these things could ever work. I wondered if the rings rotate (they don't), and why each ring has three wires woven through it (and I still don’t understand exactly how these work). More importantly, I realized I have very little understanding on how the modern computer memory - dynamic RAM - works!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3dVCvpQMSH4SxxcOltfABE/4e7e4aa9b619a4f8f7516336f14692b8/cpumemory.8.png" alt="cpumemory.8" class="kg-image" width="115" height="77" loading="lazy">
-
-	</figure>
-	<p>Source: <a href="https://lwn.net/Articles/250967" target="_blank" rel="noopener noreferrer">Ulrich Drepper's series about memory</a></p>
-	<p>I was particularly interested in one of the consequences of how dynamic RAM works. You see, each bit of data is stored by the charge (or lack of it) on a tiny capacitor within the RAM chip. But these capacitors gradually lose their charge over time. To avoid losing the stored data, they must regularly get refreshed to restore the charge (if present) to its original level. This <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank" rel="noopener noreferrer">refresh process</a> involves reading the value of every bit and then writing it back. During this "refresh" time, the memory is busy and it can't perform normal operations like loading or storing bits.</p>
-	<p>This has bothered me for quite some time and I wondered... is it possible to notice the refresh delay in software?</p>
-	<div class="flex anchor relative">
-		<h2 id="dynamic-ram-refresh-primer">Dynamic RAM refresh primer</h2>
-		<a href="https://blog.cloudflare.com/#dynamic-ram-refresh-primer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Each DIMM module is composed of "cells" and "rows", "columns", "sides" and/or "ranks". This presentation from <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank" rel="noopener noreferrer">the University of Utah explains the nomenclature</a>. You can check the configuration of memory in your computer with <code>decode-dimms</code> command. Here's an example:</p>
-	<pre class="language-bash"><code class="language-bash">$ decode-dimms
-Size                                       4096 MB
-Banks x Rows x Columns x Bits              8 x 15 x 10 x 64
-Ranks                                      2</code></pre>
-	<p>For today we don't need to get into the whole DDR DIMM layout, we just need to understand a single memory cell, storing one bit of information. Specifically we are only interested in how the refresh process is performed.</p>
-	<p>Let's review two sources:</p>
-	<ul>
-		<li>
-			<p><a href="http://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html" target="_blank" rel="noopener noreferrer">A DRAM Refresh Tutorial, from the University of Utah</a></p>
-		</li>
-		<li>
-			<p>And an awesome documentation of 1 gigabit cell from micron: <a href="https://www.micron.com/~/media/documents/products/technical-note/dram/tn4609.pdf" target="_blank" rel="noopener noreferrer">TN-46-09 Designing for 1Gb DDR SDRAM</a></p>
-		</li>
-	</ul>
-	<p>Each bit stored in dynamic memory must be refreshed, typically every 64ms (called Static Refresh). This is a rather costly operation. To avoid one major stall every 64ms, this process is divided into 8192 smaller refresh operations. In each operation, the computer’s memory controller sends refresh commands to the DRAM chips. After receiving the instruction a chip will refresh 1/8192 of its cells. Doing the math - 64ms / 8192 = 7812.5 ns or 7.81 μs. This means:</p>
-	<ul>
-		<li>
-			<p>A refresh command is issued every 7812.5 ns. This is called tREFI.</p>
-		</li>
-		<li>
-			<p>It takes some time for the chip to perform the refresh and recover so it can perform normal read and write operations again. This time, called tRFC is either 75ns or 120ns (as per the mentioned Micron datasheet).</p>
-		</li>
-	</ul>
-	<p>When the memory is hot (&gt;85C) the memory retention time drops and the static refresh time halves to 32ms, and tREFI falls to 3906.25 ns.</p>
-	<p>A typical memory chip is busy with refreshes for a significant fraction of its running time - between 0.4% to 5%. Furthermore, memory chips are responsible for a nontrivial share of typical computer's power draw, and large chunk of that power is spent on performing the refreshes.</p>
-	<p>For the duration of the refresh action, the whole memory chip is blocked. This means each and every bit in memory is blocked for more than 75ns every 7812ns. Let's measure this.</p>
-	<div class="flex anchor relative">
-		<h2 id="preparing-an-experiment">Preparing an experiment</h2>
-		<a href="https://blog.cloudflare.com/#preparing-an-experiment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To measure operations with nanosecond granularity we must write a tight loop, perhaps in C. It looks like this:</p>
-	<pre class="language-bash"><code class="language-bash">    for (i = 0; i &lt; ...; i++) {
-		// Perform memory load. Any load instruction will do
-		*(volatile int *) one_global_var;
-
-		// Flush CPU cache. This is relatively slow
-		_mm_clflush(one_global_var);
-
-		// mfence is needed, otherwise sometimes the loop
-		// takes very short time (25ns instead of like 160). I
-		// blame reordering.
-		asm volatile("mfence");
-
-		// Measure and record time
-		clock_gettime(CLOCK_MONOTONIC, &amp;ts);
-    }</code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank" rel="noopener noreferrer">Full code is available on Github</a>.</p>
-	<p>The code is really straightforward. Perform a memory read. Flush data from CPU caches. Measure time.</p>
-	<p>(Note: in <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank" rel="noopener noreferrer">second experiment I attempted to use MOVNTDQA</a> to perform the data load, but this requires special uncacheable memory page, which needs root access.)</p>
-	<p>On my computer it generates data like this:</p>
-	<pre class="language-bash"><code class="language-bash"># timestamp, loop duration
-3101895733,     134
-3101895865,     132
-3101896002,     137
-3101896134,     132
-3101896268,     134
-3101896403,     135
-3101896762,     359
-3101896901,     139
-3101897038,     137</code></pre>
-	<p>Typically I get ~140ns per loop, periodically the loop duration jumps to ~360ns. Sometimes I get odd readings longer than 3200ns.</p>
-	<p>Unfortunately, the data turns out to be very noisy. It's very hard to see if there is a noticeable delay related to the refresh cycles.</p>
-	<div class="flex anchor relative">
-		<h2 id="fast-fourier-transform">Fast Fourier Transform</h2>
-		<a href="https://blog.cloudflare.com/#fast-fourier-transform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At some point it clicked. Since we want to find a fixed-interval event, we can feed the data into the FFT (fast fourier transform) algorithm, which deciphers the underlying frequencies.</p>
-	<p>I'm not the first one to think about this - Mark Seaborn of Rowhammer fame <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc" target="_blank" rel="noopener noreferrer">implemented this very technique</a> back in 2015. Even after peeking at Mark's code, getting FFT to work turned out to be harder than I anticipated. But finally I got all the pieces together.</p>
-	<p>First we need to prepare the data. FFT requires input data to be sampled with a constant sampling interval. We also want to crop the data to reduce noise. By trial and error I found the best results are when data is preprocessed:</p>
-	<ul>
-		<li>
-			<p>Small (smaller than average * 1.8) values of loop iterations are cut out, ignored, and replaced with readings of "0". We really don't want to feed the noise into the algorithm.</p>
-		</li>
-		<li>
-			<p>All the remaining readings are replaced with "1", since we really don't care about the amplitude of the delay caused by some noise.</p>
-		</li>
-		<li>
-			<p>I settled on sampling interval of 100ns, but any number up to <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank" rel="noopener noreferrer">a Nyquist value (double expected frequency) also work fine</a>.</p>
-		</li>
-		<li>
-			<p>The data needs to be sampled with fixed timings before feeding to FFT. All reasonable sampling methods work ok, I ended up doing basic linear interpolation.</p>
-		</li>
-	</ul>
-	<p>The algorithm is roughly:</p>
-	<pre class="language-bash"><code class="language-bash">UNIT=100ns
-A = [(timestamp, loop_duration),...] 
-p = 1
-for curr_ts in frange(fist_ts, last_ts, UNIT):
-    while not(A[p-1].timestamp &lt;= curr_ts &lt; A[p].timestamp):
-        p += 1
-    v1 = 1 if avg*1.8 &lt;= A[p-1].duration &lt;= avg*4 else 0
-    v2 = 1 if avg*1.8 &lt;= A[p].duration &lt;= avg*4 else 0
-    v = estimate_linear(v1, v2, A[p-1].timestamp, curr_ts, A[p].timestamp)
-    B.append( v )</code></pre>
-	<p>Which on my data produces fairly boring vector like this:</p>
-	<pre class="language-bash"><code class="language-bash">[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
- 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
- 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
- 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</code></pre>
-	<p>The vector is pretty long though, typically about ~200k data points. With data prepared like this, we are ready to feed it into FFT!</p>
-	<pre class="language-bash"><code class="language-bash">C = numpy.fft.fft(B)
-C = numpy.abs(C)
-F = numpy.fft.fftfreq(len(B)) * (1000000000/UNIT)</code></pre>
-	<p>Pretty simple, right? This produces two vectors:</p>
-	<ul>
-		<li>
-			<p>C contains complex numbers of the frequency components. We are not interested in complex numbers and we can flatten them out by calling <code>abs()</code>.</p>
-		</li>
-		<li>
-			<p>F contains labels to what frequency bin lies in which place in vector C. We need to normalize it to Hz - by multiplying it by the input vector sampling frequency.</p>
-		</li>
-	</ul>
-	<p>The result can be charted:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7GN44y65zWWJhSV8uNzqnu/cd9ff00a109e3eac49d858948edfbbf0/fft1a.png" alt="fft1a" class="kg-image" width="1893" height="824" loading="lazy">
-
-	</figure>
-	<p>Y axis is unit-less since we normalized the delay times. Even though, it clearly shows spikes at some fixed frequency intervals. Let's zoom in:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xnQR5GYgpUVqOqH4Lvbry/35d7dab15d7515d3101d341cd882abdf/fft2a.png" alt="fft2a" class="kg-image" width="1893" height="824" loading="lazy">
-
-	</figure>
-	<p>We can clearly see first three spikes. After a bit of wishy-washy arithmetic, involving filtering the reading at least 10 times the size of average, we can extract the underlying frequencies:</p>
-	<pre class="language-bash"><code class="language-bash">127850.0
-127900.0
-127950.0
-255700.0
-255750.0
-255800.0
-255850.0
-255900.0
-255950.0
-383600.0
-383650.0</code></pre>
-	<p>Doing the math: 1000000000 (ns/s) / 127900 (Hz) = 7818.6 ns</p>
-	<p>Hurray! The first frequency spike is indeed what we were looking for, and indeed does correlate with the refresh times.</p>
-	<p>The other spikes at 256kHz, 384kHz, 512kHz and so on, are multiplies of our base frequency of 128kHz called harmonics. These are a side effect of <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank" rel="noopener noreferrer">performing FFT on something like a square wave</a> and totally expected.</p>
-	<p>For easier experimentation, we <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank" rel="noopener noreferrer">prepared a command line version of this tool</a>. You can run the code yourself. Here is a sample run on my server:</p>
-	<pre class="language-bash"><code class="language-bash">~/2018-11-memory-refresh$ make
-gcc -msse4.1 -ggdb -O3 -Wall -Wextra measure-dram.c -o measure-dram
-./measure-dram | python3 ./analyze-dram.py
-[*] Verifying ASLR: main=0x555555554890 stack=0x7fffffefe2ec
-[ ] Fun fact. I did 40663553 clock_gettime()'s per second
-[*] Measuring MOVQ + CLFLUSH time. Running 131072 iterations.
-[*] Writing out data
-[*] Input data: min=117 avg=176 med=167 max=8172 items=131072
-[*] Cutoff range 212-inf
-[ ] 127849 items below cutoff, 0 items above cutoff, 3223 items non-zero
-[*] Running FFT
-[*] Top frequency above 2kHz below 250kHz has magnitude of 7716
-[+] Top frequency spikes above 2kHZ are at:
-127906Hz    7716
-255813Hz    7947
-383720Hz    7460
-511626Hz    7141</code></pre>
-	<p>I must admit the code is not perfectly stable. In case of trouble, consider disabling Turbo Boost, CPU frequency scaling and tuning for performance.</p>
-	<div class="flex anchor relative">
-		<h2 id="finale">Finale</h2>
-		<a href="https://blog.cloudflare.com/#finale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are two major takeaways from this work.</p>
-	<p>We've seen that the low level data is pretty hard to analyze and seem to be pretty noisy. Instead of trying to figure something out with naked eye, we can always employ good old FFT. Some wishful thinking is needed when preparing the data.</p>
-	<p>Most importantly, we showed it's often possible to measure subtle hardware behaviours from a simple userspace process. This kind of thinking led to the discovery of <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank" rel="noopener noreferrer">the original Rowhammer</a> vulnerability, was used in Meltdown/Spectre attacks and showed again in <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections" target="_blank" rel="noopener noreferrer">recent ECC-defeating reincarnation of Rowhammer</a>.</p>
-	<p>There is so much more to be said. We barely scratched the surface of the inner workings of the memory subsystem. I recommend further reading:</p>
-	<ul>
-		<li>
-			<p><a href="http://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank" rel="noopener noreferrer">L3 cache mapping on Sandy Bridge CPUs</a></p>
-		</li>
-		<li>
-			<p><a href="http://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank" rel="noopener noreferrer">How physical address maps to rows and banks in DRAM</a></p>
-		</li>
-		<li>
-			<p><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd" target="_blank" rel="noopener noreferrer">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></p>
-		</li>
-	</ul>
-	<p>Finally, here is a good reading about the old magnetic core memory:</p>
-	<ul>
-		<li>
-			<p><a href="http://www.psych.usyd.edu.au/pdp-11/core.html" target="_blank" rel="noopener noreferrer">PDP-11 core memory explained by University of Sydney</a></p>
-		</li>
-	</ul>
+<p>Modern DDR3 SDRAM. Source: <a href="https://en.wikipedia.org/wiki/DDR3_SDRAM#/media/File:2013_Transcend_TS512MLK72V6N-(straightened).jpg" target="_blank" rel="noopener noreferrer">BY-SA/4.0 by Kjerish</a></p>
+<p>During my recent visit to <a href="http://www.computerhistory.org" target="_blank" rel="noopener noreferrer">the Computer History Museum</a> in Mountain View, I found myself staring at some ancient <a href="https://en.wikipedia.org/wiki/Magnetic-core_memory" target="_blank" rel="noopener noreferrer">magnetic core memory</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="240" height="240" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MWZDRS5Z0T1Y4KRJJBGP.jpg&amp;w=240&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MWZDRS5Z0T1Y4KRJJBGP.jpg&amp;w=240&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 240w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MWZDRS5Z0T1Y4KRJJBGP.jpg&amp;w=480&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 480w" alt="240px-KL_CoreMemory" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MWZDRS5Z0T1Y4KRJJBGP.jpg&amp;w=240&amp;h=240&amp;f=webp" data-lightbox-width="240" data-lightbox-height="240" data-astro-cid-7nvefuv6="true" sizes="(min-width: 240px) 240px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="240" height="240" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Source: <a href="https://en.wikipedia.org/wiki/File:KL_CoreMemory.jpg" target="_blank" rel="noopener noreferrer">BY-SA/3.0 by Konstantin Lanzet</a></p>
+<p>I promptly concluded I had absolutely no idea on how these things could ever work. I wondered if the rings rotate (they don't), and why each ring has three wires woven through it (and I still don’t understand exactly how these work). More importantly, I realized I have very little understanding on how the modern computer memory - dynamic RAM - works!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="115" height="77" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465PHE5DFYKG3K7B785Y5B.png&amp;w=115&amp;h=77&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465PHE5DFYKG3K7B785Y5B.png&amp;w=115&amp;h=77&amp;f=webp&amp;fit=cover&amp;position=center 115w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465PHE5DFYKG3K7B785Y5B.png&amp;w=230&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center 230w" alt="cpumemory.8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW465PHE5DFYKG3K7B785Y5B.png&amp;w=115&amp;h=77&amp;f=webp" data-lightbox-width="115" data-lightbox-height="77" data-astro-cid-7nvefuv6="true" sizes="(min-width: 115px) 115px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="115" height="77" class="pt-portable-image-media"></div>
+</figure>
+<p>Source: <a href="https://lwn.net/Articles/250967" target="_blank" rel="noopener noreferrer">Ulrich Drepper's series about memory</a></p>
+<p>I was particularly interested in one of the consequences of how dynamic RAM works. You see, each bit of data is stored by the charge (or lack of it) on a tiny capacitor within the RAM chip. But these capacitors gradually lose their charge over time. To avoid losing the stored data, they must regularly get refreshed to restore the charge (if present) to its original level. This <a href="https://en.wikipedia.org/wiki/Memory_refresh" target="_blank" rel="noopener noreferrer">refresh process</a> involves reading the value of every bit and then writing it back. During this "refresh" time, the memory is busy and it can't perform normal operations like loading or storing bits.</p>
+<p>This has bothered me for quite some time and I wondered... is it possible to notice the refresh delay in software?</p>
+<h2>Dynamic RAM refresh primer</h2>
+<p>Each DIMM module is composed of "cells" and "rows", "columns", "sides" and/or "ranks". This presentation from <a href="https://pubweb.eng.utah.edu/~cs7810/pres/11-7810-12.pdf" target="_blank" rel="noopener noreferrer">the University of Utah explains the nomenclature</a>. You can check the configuration of memory in your computer with <code>decode-dimms</code> command. Here's an example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> decode-dimms</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Size</span><span class="sk-005cc5-ffc799">                                       4096</span><span class="sk-032f62-99ffe4"> MB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Banks</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Rows</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Columns</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-032f62-99ffe4"> Bits</span><span class="sk-005cc5-ffc799">              8</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 15</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-032f62-99ffe4"> x</span><span class="sk-005cc5-ffc799"> 64</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Ranks</span><span class="sk-005cc5-ffc799">                                      2</span></span></code></pre>
 </div>
+<p>For today we don't need to get into the whole DDR DIMM layout, we just need to understand a single memory cell, storing one bit of information. Specifically we are only interested in how the refresh process is performed.</p>
+<p>Let's review two sources:</p>
+<ul>
+	<li><a href="http://utaharch.blogspot.com/2013/11/a-dram-refresh-tutorial.html" target="_blank" rel="noopener noreferrer">A DRAM Refresh Tutorial, from the University of Utah</a></li>
+	<li>And an awesome documentation of 1 gigabit cell from micron: <a href="https://www.micron.com/~/media/documents/products/technical-note/dram/tn4609.pdf" target="_blank" rel="noopener noreferrer">TN-46-09 Designing for 1Gb DDR SDRAM</a></li>
+</ul>
+<p>Each bit stored in dynamic memory must be refreshed, typically every 64ms (called Static Refresh). This is a rather costly operation. To avoid one major stall every 64ms, this process is divided into 8192 smaller refresh operations. In each operation, the computer’s memory controller sends refresh commands to the DRAM chips. After receiving the instruction a chip will refresh 1/8192 of its cells. Doing the math - 64ms / 8192 = 7812.5 ns or 7.81 μs. This means:</p>
+<ul>
+	<li>A refresh command is issued every 7812.5 ns. This is called tREFI.</li>
+	<li>It takes some time for the chip to perform the refresh and recover so it can perform normal read and write operations again. This time, called tRFC is either 75ns or 120ns (as per the mentioned Micron datasheet).</li>
+</ul>
+<p>When the memory is hot (&gt;85C) the memory retention time drops and the static refresh time halves to 32ms, and tREFI falls to 3906.25 ns.</p>
+<p>A typical memory chip is busy with refreshes for a significant fraction of its running time - between 0.4% to 5%. Furthermore, memory chips are responsible for a nontrivial share of typical computer's power draw, and large chunk of that power is spent on performing the refreshes.</p>
+<p>For the duration of the refresh action, the whole memory chip is blocked. This means each and every bit in memory is blocked for more than 75ns every 7812ns. Let's measure this.</p>
+<h2>Preparing an experiment</h2>
+<p>To measure operations with nanosecond granularity we must write a tight loop, perhaps in C. It looks like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">i</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">i</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> ...</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">i++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Perform</span><span class="sk-032f62-99ffe4"> memory</span><span class="sk-032f62-99ffe4"> load.</span><span class="sk-032f62-99ffe4"> Any</span><span class="sk-032f62-99ffe4"> load</span><span class="sk-032f62-99ffe4"> instruction</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> do</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		*(volatile</span><span class="sk-032f62-99ffe4"> int</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-24292e-fff">) one_global_var;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Flush</span><span class="sk-032f62-99ffe4"> CPU</span><span class="sk-032f62-99ffe4"> cache.</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> relatively</span><span class="sk-032f62-99ffe4"> slow</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		_mm_clflush(one_global_var</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> mfence</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> needed,</span><span class="sk-032f62-99ffe4"> otherwise</span><span class="sk-032f62-99ffe4"> sometimes</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> loop</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> takes</span><span class="sk-032f62-99ffe4"> very</span><span class="sk-032f62-99ffe4"> short</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-24292e-fff"> (25ns </span><span class="sk-032f62-99ffe4">instead</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> like</span><span class="sk-005cc5-ffc799"> 160</span><span class="sk-24292e-fff">). I</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> blame</span><span class="sk-032f62-99ffe4"> reordering.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		asm</span><span class="sk-032f62-99ffe4"> volatile</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"mfence"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Measure</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> record</span><span class="sk-032f62-99ffe4"> time</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		clock_gettime(CLOCK_MONOTONIC,</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">ts</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+</div>
+<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram.c" target="_blank" rel="noopener noreferrer">Full code is available on Github</a>.</p>
+<p>The code is really straightforward. Perform a memory read. Flush data from CPU caches. Measure time.</p>
+<p>(Note: in <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2018-11-memory-refresh/measure-dram-movntdqa.c#L113-L119" target="_blank" rel="noopener noreferrer">second experiment I attempted to use MOVNTDQA</a> to perform the data load, but this requires special uncacheable memory page, which needs root access.)</p>
+<p>On my computer it generates data like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># timestamp, loop duration</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101895733,</span><span class="sk-005cc5-ffc799">     134</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101895865,</span><span class="sk-005cc5-ffc799">     132</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101896002,</span><span class="sk-005cc5-ffc799">     137</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101896134,</span><span class="sk-005cc5-ffc799">     132</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101896268,</span><span class="sk-005cc5-ffc799">     134</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101896403,</span><span class="sk-005cc5-ffc799">     135</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101896762,</span><span class="sk-005cc5-ffc799">     359</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101896901,</span><span class="sk-005cc5-ffc799">     139</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3101897038,</span><span class="sk-005cc5-ffc799">     137</span></span></code></pre>
+</div>
+<p>Typically I get ~140ns per loop, periodically the loop duration jumps to ~360ns. Sometimes I get odd readings longer than 3200ns.</p>
+<p>Unfortunately, the data turns out to be very noisy. It's very hard to see if there is a noticeable delay related to the refresh cycles.</p>
+<h2>Fast Fourier Transform</h2>
+<p>At some point it clicked. Since we want to find a fixed-interval event, we can feed the data into the FFT (fast fourier transform) algorithm, which deciphers the underlying frequencies.</p>
+<p>I'm not the first one to think about this - Mark Seaborn of Rowhammer fame <a href="https://github.com/google/rowhammer-test/blob/master/refresh_timing/refresh_timing.cc" target="_blank" rel="noopener noreferrer">implemented this very technique</a> back in 2015. Even after peeking at Mark's code, getting FFT to work turned out to be harder than I anticipated. But finally I got all the pieces together.</p>
+<p>First we need to prepare the data. FFT requires input data to be sampled with a constant sampling interval. We also want to crop the data to reduce noise. By trial and error I found the best results are when data is preprocessed:</p>
+<ul>
+	<li>Small (smaller than average * 1.8) values of loop iterations are cut out, ignored, and replaced with readings of "0". We really don't want to feed the noise into the algorithm.</li>
+	<li>All the remaining readings are replaced with "1", since we really don't care about the amplitude of the delay caused by some noise.</li>
+	<li>I settled on sampling interval of 100ns, but any number up to <a href="https://en.wikipedia.org/wiki/Nyquist%E2%80%93Shannon_sampling_theorem" target="_blank" rel="noopener noreferrer">a Nyquist value (double expected frequency) also work fine</a>.</li>
+	<li>The data needs to be sampled with fixed timings before feeding to FFT. All reasonable sampling methods work ok, I ended up doing basic linear interpolation.</li>
+</ul>
+<p>The algorithm is roughly:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">UNIT</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">100ns</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">A</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [(timestamp, </span><span class="sk-032f62-99ffe4">loop_duration</span><span class="sk-24292e-fff">),...] </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">p</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> curr_ts </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-032f62-99ffe4"> frange</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fist_ts,</span><span class="sk-032f62-99ffe4"> last_ts,</span><span class="sk-032f62-99ffe4"> UNIT</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    while</span><span class="sk-6f42c1-ffc799"> not(A[p-1].timestamp</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> curr_ts</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> A[p].timestamp</span><span class="sk-24292e-fff">):</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        p</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    v1</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1.8</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> A[p-1].duration</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">4</span><span class="sk-032f62-99ffe4"> else</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    v2</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">1.8</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> A[p].duration</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">=</span><span class="sk-032f62-99ffe4"> avg</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">4</span><span class="sk-032f62-99ffe4"> else</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    v</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> estimate_linear</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">v1,</span><span class="sk-032f62-99ffe4"> v2,</span><span class="sk-032f62-99ffe4"> A[p-1].timestamp,</span><span class="sk-032f62-99ffe4"> curr_ts,</span><span class="sk-032f62-99ffe4"> A[p].timestamp</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    B.append(</span><span class="sk-032f62-99ffe4"> v</span><span class="sk-24292e-fff"> )</span></span></code></pre>
+</div>
+<p>Which on my data produces fairly boring vector like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, </span></span>
+<span class="line"><span class="sk-24292e-fff"> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,</span></span>
+<span class="line"><span class="sk-24292e-fff"> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, </span></span>
+<span class="line"><span class="sk-24292e-fff"> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...]</span></span></code></pre>
+</div>
+<p>The vector is pretty long though, typically about ~200k data points. With data prepared like this, we are ready to feed it into FFT!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">C</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fft</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">B</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">C</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.abs</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">C</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">F</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> numpy.fft.fftfreq</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(B</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">1000000000/UNIT</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Pretty simple, right? This produces two vectors:</p>
+<ul>
+	<li>C contains complex numbers of the frequency components. We are not interested in complex numbers and we can flatten them out by calling <code>abs()</code>.</li>
+	<li>F contains labels to what frequency bin lies in which place in vector C. We need to normalize it to Hz - by multiplying it by the input vector sampling frequency.</li>
+</ul>
+<p>The result can be charted:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="fft1a" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDQVSRXM9Q6RTGCQ3ZSR.png&amp;w=1893&amp;h=824&amp;f=webp" data-lightbox-width="1893" data-lightbox-height="824" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media"></div>
+</figure>
+<p>Y axis is unit-less since we normalized the delay times. Even though, it clearly shows spikes at some fixed frequency intervals. Let's zoom in:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="fft2a" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TCED3EB8WE3EH685YM7W.png&amp;w=1893&amp;h=824&amp;f=webp" data-lightbox-width="1893" data-lightbox-height="824" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media"></div>
+</figure>
+<p>We can clearly see first three spikes. After a bit of wishy-washy arithmetic, involving filtering the reading at least 10 times the size of average, we can extract the underlying frequencies:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">127850.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">127900.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">127950.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">255700.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">255750.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">255800.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">255850.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">255900.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">255950.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">383600.0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">383650.0</span></span></code></pre>
+</div>
+<p>Doing the math: 1000000000 (ns/s) / 127900 (Hz) = 7818.6 ns</p>
+<p>Hurray! The first frequency spike is indeed what we were looking for, and indeed does correlate with the refresh times.</p>
+<p>The other spikes at 256kHz, 384kHz, 512kHz and so on, are multiplies of our base frequency of 128kHz called harmonics. These are a side effect of <a href="https://en.wikipedia.org/wiki/Square_wave" target="_blank" rel="noopener noreferrer">performing FFT on something like a square wave</a> and totally expected.</p>
+<p>For easier experimentation, we <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2018-11-memory-refresh" target="_blank" rel="noopener noreferrer">prepared a command line version of this tool</a>. You can run the code yourself. Here is a sample run on my server:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">/2018-11-memory-refresh$ make</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">gcc</span><span class="sk-005cc5-99ffe4"> -msse4.1</span><span class="sk-005cc5-99ffe4"> -ggdb</span><span class="sk-005cc5-99ffe4"> -O3</span><span class="sk-005cc5-99ffe4"> -Wall</span><span class="sk-005cc5-99ffe4"> -Wextra</span><span class="sk-032f62-99ffe4"> measure-dram.c</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> measure-dram</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">./measure-dram</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> python3</span><span class="sk-032f62-99ffe4"> ./analyze-dram.py</span></span>
+<span class="line"><span class="sk-24292e-fff">[</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">] Verifying ASLR: main</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x555555554890</span><span class="sk-24292e-fff"> stack</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x7fffffefe2ec</span></span>
+<span class="line"><span class="sk-24292e-fff">[ ] Fun fact. I did 40663553 </span><span class="sk-6f42c1-ffc799">clock_gettime</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">'s per second</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[*] Measuring MOVQ + CLFLUSH time. Running 131072 iterations.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[*] Writing out data</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[*] Input data: min=117 avg=176 med=167 max=8172 items=131072</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[*] Cutoff range 212-inf</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[ ] 127849 items below cutoff, 0 items above cutoff, 3223 items non-zero</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[*] Running FFT</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[*] Top frequency above 2kHz below 250kHz has magnitude of 7716</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[+] Top frequency spikes above 2kHZ are at:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">127906Hz    7716</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">255813Hz    7947</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">383720Hz    7460</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">511626Hz    7141</span></span></code></pre>
+</div>
+<p>I must admit the code is not perfectly stable. In case of trouble, consider disabling Turbo Boost, CPU frequency scaling and tuning for performance.</p>
+<h2>Finale</h2>
+<p>There are two major takeaways from this work.</p>
+<p>We've seen that the low level data is pretty hard to analyze and seem to be pretty noisy. Instead of trying to figure something out with naked eye, we can always employ good old FFT. Some wishful thinking is needed when preparing the data.</p>
+<p>Most importantly, we showed it's often possible to measure subtle hardware behaviours from a simple userspace process. This kind of thinking led to the discovery of <a href="https://googleprojectzero.blogspot.com/2015/03/exploiting-dram-rowhammer-bug-to-gain.html" target="_blank" rel="noopener noreferrer">the original Rowhammer</a> vulnerability, was used in Meltdown/Spectre attacks and showed again in <a href="https://arstechnica.com/information-technology/2018/11/potentially-disastrous-rowhammer-bitflips-can-bypass-ecc-protections" target="_blank" rel="noopener noreferrer">recent ECC-defeating reincarnation of Rowhammer</a>.</p>
+<p>There is so much more to be said. We barely scratched the surface of the inner workings of the memory subsystem. I recommend further reading:</p>
+<ul>
+	<li><a href="http://lackingrhoticity.blogspot.com/2015/04/l3-cache-mapping-on-sandy-bridge-cpus.html" target="_blank" rel="noopener noreferrer">L3 cache mapping on Sandy Bridge CPUs</a></li>
+	<li><a href="http://lackingrhoticity.blogspot.com/2015/05/how-physical-addresses-map-to-rows-and-banks.html" target="_blank" rel="noopener noreferrer">How physical address maps to rows and banks in DRAM</a></li>
+	<li><a href="https://hannuhartikainen.fi/blog/hacking-ddr3-spd" target="_blank" rel="noopener noreferrer">Hannu Hartikainen hacking DDR3 SO-DIMM to work... slower</a></li>
+</ul>
+<p>Finally, here is a good reading about the old magnetic core memory:</p>
+<ul>
+	<li><a href="http://www.psych.usyd.edu.au/pdp-11/core.html" target="_blank" rel="noopener noreferrer">PDP-11 core memory explained by University of Sydney</a></li>
+</ul>

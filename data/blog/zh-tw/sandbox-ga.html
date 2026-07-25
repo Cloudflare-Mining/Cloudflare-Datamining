@@ -1,0 +1,217 @@
+<p>當我們在去年六月推出 <a href="https://github.com/cloudflare/sandbox-sdk" target="_blank" rel="noopener noreferrer"><u>Cloudflare Sandboxes</u></a> 時，最初的構想很簡單：<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>AI 智慧體</u></a>需要開發與執行程式碼，而且必須在安全的環境中進行。</p>
+<p>如果智慧體要像開發人員一樣行事，那就會涉及複製存放庫、以多種語言建置程式碼、執行開發伺服器等。要有效完成這些任務，智慧體通常需要一台完整的電腦（如果沒有，也可以<a href="https://blog.cloudflare.com/dynamic-workers" target="_blank" rel="noopener noreferrer"><u>選擇輕量級的方案</u></a>）。</p>
+<p>許多開發人員正在利用 VM 或現有的容器解決方案來拼湊出可行的架構，但仍有許多棘手的問題需要解決：</p>
+<ul>
+	<li><strong>突發性</strong> – 每個工作階段都需要自己的沙箱，因此經常需要快速啟動大量的沙箱，但又不希望為了待命的閒置運算資源付費。</li>
+	<li><strong>快速狀態還原</strong> – 每個工作階段必須能快速啟動、快速重啟，並恢復先前的狀態。</li>
+	<li><strong>安全性</strong>：智慧體需要安全地存取服務，但不能將認證交給它們。</li>
+	<li><strong>控制能力</strong> – 必須能夠以程式化方式簡單地控制沙箱的生命週期、執行指令、處理檔案等。</li>
+	<li><strong>人體工學</strong> - 需要提供簡單的介面，讓人類和智慧體都能輕鬆進行常見操作。</li>
+</ul>
+<p>我們已投入大量時間解決這些問題，讓您無需為此操心。自最初發布以來，我們不斷最佳化 Sandboxes，使其成為大規模執行智慧體的理想平台。我們與 Figma 等早期合作夥伴攜手合作，他們使用 <a href="https://www.figma.com/make" target="_blank" rel="noopener noreferrer"><u>Figma Make</u></a> 在容器中執行智慧體：</p>
+<blockquote>
+	<p><em>「Figma Make 旨在幫助各種背景的建立者和創造者更快地將想法轉化為產品。為了實現這一目標，我們需要一套基礎架構解決方案，能夠提供可靠、高度可擴展的沙箱，以便在其中執行智慧體和使用者編寫的不受信任程式碼。Cloudflare Containers 正是這樣的解決方案。」</em></p>
+	<p><em>——<strong>Alex Mullans</strong>，Figma AI 和開發人員平台負責人</em></p>
+</blockquote>
+<p>我們希望將 Sandboxes 帶給更多優秀的組織，因此，今天我們很高興地宣布，<strong>Sandboxes 和 Cloudflare Containers 均已正式上市。</strong></p>
+<p>讓我們來看看 Sandboxes 的一些最新變更：</p>
+<ul>
+	<li><strong>安全認證插入</strong>讓智慧體能在無需存取認證的情況下進行需要身分驗證的呼叫</li>
+	<li><strong>PTY 支援</strong>為您和智慧體提供真實的終端</li>
+	<li><strong>持久性程式碼解譯器</strong>讓您的智慧體能開箱即用地執行具狀態的 Python、JavaScript 和 TypeScript</li>
+	<li><strong>背景處理序與即時預覽 URL</strong> 提供簡單的方式與開發伺服器互動，並驗證進行中的變更</li>
+	<li><strong>檔案系統監視</strong>可提升智慧體修改程式碼時的反覆運算速度</li>
+	<li><strong>快照</strong>可讓您快速復原智慧體的編碼工作階段</li>
+	<li><strong>更高的限制與活動 CPU 計價模式</strong>讓您能大規模部署一整批智慧體，且不需為未使用的 CPU 週期付費</li>
+</ul>
+<h2>Sandboxes 基礎入門</h2>
+<p>在深入探討近期的一些變更之前，讓我們先快速瞭解一下基本概念。</p>
+<p>Cloudflare Sandbox 是一個由 <a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>Cloudflare Containers</u></a> 提供支援的持久性、隔離環境。您可以透過名稱請求一個沙箱。如果它正在執行，您就會取得它；如果沒有，它就會啟動。當它處於閒置狀態時，會自動休眠，並在收到請求時喚醒。透過 <code>exec</code>、<code>gitClone</code>、<code>writeFile</code> 以及<a href="https://developers.cloudflare.com/sandbox/api" target="_blank" rel="noopener noreferrer"><u>其他方法</u></a>，您可以輕鬆地以程式化方式與沙箱互動。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getSandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { Sandbox } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Ask for a sandbox by name. It starts on demand.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> sandbox</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(env.Sandbox, </span><span class="sk-032f62-99ffe4">"agent-session-47"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Clone a repository into it.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">gitCheckout</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://github.com/org/repo"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      targetDir: </span><span class="sk-032f62-99ffe4">"/workspace"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      depth: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Run the test suite. Stream output back in real time.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm"</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">"test"</span><span class="sk-24292e-fff">], { stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>只要您提供相同的 ID，後續的請求無論從世界哪個角落發出，都能連接到這個相同的沙箱。</p>
+<h2>安全認證插入</h2>
+<p>自主式工作負載中最棘手的問題之一就是驗證。您經常需要讓智慧體存取私人服務，但又不能完全信任它們持有原始認證。</p>
+<p>Sandboxes 透過在網路層使用可程式設計的輸出代理插入認證來解決這個問題。這意味著沙箱內的智慧體永遠無法存取認證，而且您可以根據需求完全自訂驗證邏輯：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> OpenCodeInABox</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  static</span><span class="sk-e36209-fff"> outboundByHost</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "my-internal-vcs.dev"</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> headersWithAuth</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">(request.headers);</span></span>
+<span class="line"><span class="sk-24292e-fff">      headersWithAuth.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x-auth-token"</span><span class="sk-24292e-fff">, env.</span><span class="sk-005cc5-fff">SECRET</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request, { headers: headersWithAuth });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>若想深入瞭解其運作原理，包括身分感知認證插入、動態修改規則以及與 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers 綁定</u></a>整合，請閱讀我們近期關於<a href="https://blog.cloudflare.com/sandbox-auth" target="_blank" rel="noopener noreferrer"><u>沙箱驗證</u></a>的部落格文章。</p>
+<h2>真實終端機，而非模擬</h2>
+<p>早期的智慧體系統通常將 Shell 存取建模為請求-回應迴圈：執行指令、等待輸出、把輸出文字塞回提示詞，然後重複。這雖然可行，但這並不是開發人員實際使用終端機的方式。</p>
+<p>人類會執行某個指令，觀察輸出串流、中斷它、稍後重新連接，然後繼續操作。智慧體也能從這種回饋迴圈中受益。</p>
+<p>今年二月，我們推出了 PTY 支援。這是一個在沙箱內的偽終端機工作階段，透過 WebSocket 代理，並與 <a href="https://xtermjs.org" target="_blank" rel="noopener noreferrer"><u>xterm.js</u></a> 相容。</p>
+<p>只需呼叫 <code>sandbox.terminal</code> 即可為後端提供服務：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Worker: upgrade a WebSocket connection into a live terminal session</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (url.pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/terminal"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> sandbox</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(env.Sandbox, </span><span class="sk-032f62-99ffe4">"my-session"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">terminal</span><span class="sk-24292e-fff">(request, { cols: </span><span class="sk-005cc5-ffc799">80</span><span class="sk-24292e-fff">, rows: </span><span class="sk-005cc5-ffc799">24</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"></span></code></pre>
+</div>
+<p>並使用 <code>xterm addon</code> 從用戶端呼叫它：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Browser: connect xterm.js to the sandbox shell</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Terminal } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "xterm"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { SandboxAddon } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/sandbox/xterm"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> term</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Terminal</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> addon</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> SandboxAddon</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  getWebSocketUrl</span><span class="sk-24292e-fff">: ({ </span><span class="sk-e36209-fff">origin</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-032f62-99ffe4"> `${</span><span class="sk-24292e-fff">origin</span><span class="sk-032f62-99ffe4">}/terminal`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">term.</span><span class="sk-6f42c1-ffc799">loadAddon</span><span class="sk-24292e-fff">(addon);</span></span>
+<span class="line"><span class="sk-24292e-fff">term.</span><span class="sk-6f42c1-ffc799">open</span><span class="sk-24292e-fff">(document.</span><span class="sk-6f42c1-ffc799">getElementById</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"terminal-container"</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">addon.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">({ sandboxId: </span><span class="sk-032f62-99ffe4">"my-session"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>這讓智慧體和開發人員能使用完整的 PTY 即時偵錯這些工作階段。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46523K9AXQMVFN36FY21VP.gif" alt="BLOG-3264 2" width="715" height="244" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>每個終端機工作階段都有自己隔離的 Shell、自己的工作目錄和環境。您可以像在自己的電腦上一樣，視需要開啟多個終端機。輸出會在伺服器端緩衝，因此重新連接時會重播您錯過的內容。</p>
+<h2>具備記憶功能的程式碼解譯器</h2>
+<p>針對資料分析、指令碼編寫和探索性工作流程，我們也提供了更高層級的抽象：持久性程式碼執行環境。</p>
+<p>關鍵字是「持久性」。許多程式碼解譯器的實作是在隔離區中執行每個程式碼片段，導致狀態在呼叫之間會消失。您無法在一個步驟中設定變數，然後在下一個步驟中讀取它。</p>
+<p>Sandboxes 允許您建立「上下文」來持久保存狀態。變數和匯入項目會像在 Jupyter Notebook 中一樣，在呼叫之間持續存在：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create a Python context. State persists for its lifetime.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> ctx</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">createCodeContext</span><span class="sk-24292e-fff">({ language: </span><span class="sk-032f62-99ffe4">"python"</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// First execution: load data</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">runCode</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  import pandas as pd</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  df = pd.read_csv('/workspace/sales.csv')</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  df['margin'] = (df['revenue'] - df['cost']) / df['revenue']</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">, { context: ctx });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Second execution: df is still there</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">runCode</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  df.groupby('region')['margin'].mean().sort_values(ascending=False)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">, { context: ctx, </span><span class="sk-6f42c1-ffc799">onStdout</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">line</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(line.text) });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// result contains matplotlib charts, structured json output, and Pandas tables in HTML</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>啟動伺服器、取得 URL、立即交付</h2>
+<p>當智慧體能夠建置產品並立即展示給使用者時，它們會更有用。Sandboxes 支援背景處理序、就緒性檢查和<a href="https://developers.cloudflare.com/sandbox/concepts/preview-urls" target="_blank" rel="noopener noreferrer"><u>預覽 URL</u></a>。這讓智慧體無需離開對話視窗，就能啟動開發伺服器並分享即時連結。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Start a dev server as a background process</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> server</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">startProcess</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"npm run dev"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  cwd: </span><span class="sk-032f62-99ffe4">"/workspace"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Wait until the server is actually ready — don't just sleep and hope</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> server.</span><span class="sk-6f42c1-ffc799">waitForLog</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-a0a0a0">/Local:</span><span class="sk-005cc5-a0a0a0">.</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-032f62-a0a0a0">localhost:(</span><span class="sk-005cc5-a0a0a0">\d</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-a0a0a0">)/</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Expose the running service with a public URL</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">url</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exposePort</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">3000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// url is a live public URL the agent can share with the user</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Preview: ${</span><span class="sk-24292e-fff">url</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>透過 <em><code>waitForPort()</code></em> 和 <em><code>waitForLog()</code></em>，智慧體可以根據執行程式發出的真實訊號來安排工作順序，而不是靠猜測。這比常見的替代方案（通常是某種 <code>sleep(2000)</code>，然後祈禱它成功）要好得多。</p>
+<h2>觀察檔案系統並立即做出反應</h2>
+<p>現代的開發循環是事件驅動的。儲存檔案、重新執行建置；編輯設定、重啟伺服器；變更測試、重新執行測試套件。</p>
+<p>我們在三月份推出了 <em>sandbox.watch()</em>。它回傳一個由原生 <a href="https://man7.org/linux/man-pages/man7/inotify.7.html" target="_blank" rel="noopener noreferrer"><u>inotify</u></a>（Linux 用於檔案系統事件的內核機制）支援的 SSE 串流。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { parseSSEStream, </span><span class="sk-d73a49-a0a0a0">type</span><span class="sk-24292e-fff"> FileWatchSSEEvent } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/sandbox'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">watch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/workspace/src'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">  recursive: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  include: [</span><span class="sk-032f62-99ffe4">'*.ts'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'*.tsx'</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> event</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-6f42c1-ffc799"> parseSSEStream</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">FileWatchSSEEvent</span><span class="sk-24292e-fff">&gt;(stream)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (event.type </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> 'modify'</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span><span class="sk-24292e-fff"> event.path.</span><span class="sk-6f42c1-ffc799">endsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'.ts'</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> sandbox.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'npx tsc --noEmit'</span><span class="sk-24292e-fff">, { cwd: </span><span class="sk-032f62-99ffe4">'/workspace'</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>這是一種默默改變智慧體能力的基礎功能。能夠即時監控檔案系統的智慧體可以像人類開發人員一樣參與相同的回饋循環。</p>
+<h2>透過快照快速喚醒</h2>
+<p>想像一位（人類）開發人員正在筆記型電腦上工作。他們 <code>git clone</code> 一個存放庫，執行 <code>npm install</code>，撰寫程式碼，推送 PR，然後在等待程式碼審查時合上筆記型電腦。當需要恢復工作時，他們只需重新開啟筆記型電腦，從上次離開的地方繼續即可。</p>
+<p>如果智慧體想在普通的容器平台上複製這個工作流程，您會遇到阻礙。如何快速從上次離開的地方恢復？您可以讓沙箱持續執行，但這樣您就要為閒置的運算資源付費。您可以從容器映像重新開始，但這樣您必須等待漫長的 <code>git clone</code> 和 <code>npm install</code>。</p>
+<p>我們的解決方案是快照，該功能將在未來幾週內推出。</p>
+<p>快照會保留容器的完整磁碟狀態、作業系統組態、已安裝的依賴項目、已修改的檔案、資料檔案等等，並讓您稍後快速還原它。</p>
+<p>您可以設定沙箱在進入休眠時自動建立快照。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  sleepAfter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "5m"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">  persistAcrossSessions</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {type: </span><span class="sk-032f62-99ffe4">"disk"</span><span class="sk-24292e-fff">}; </span><span class="sk-6a737d-8b8b8b94">// you can also specify individual directories</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>您也可以透過程式設計方式建立快照並手動還原。這對於檢查點工作或分叉工作階段很有用。例如，如果您想平行執行一個智慧體的四個執行個體，您可以輕鬆地從相同狀態啟動四個沙箱。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AgentDevEnvironment</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Sandbox</span><span class="sk-24292e-fff"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">forkDevEnvironment</span><span class="sk-24292e-fff">(baseId, numberOfForks) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> baseInstance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(baseId);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> snapshotId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> baseInstance.</span><span class="sk-6f42c1-ffc799">snapshot</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> forks</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> Array.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">({ length: numberOfForks }, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">_</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">i</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> newInstance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getSandbox</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">baseId</span><span class="sk-032f62-99ffe4">}-fork-${</span><span class="sk-24292e-fff">i</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> newInstance.</span><span class="sk-6f42c1-ffc799">start</span><span class="sk-24292e-fff">({ snapshot: snapshotId });</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">(forks);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>快照會儲存在您帳戶內的 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 中，為您提供持久性和位置獨立性。R2 的 <a href="https://developers.cloudflare.com/cache/how-to/tiered-cache" target="_blank" rel="noopener noreferrer"><u>Tiered Caching</u></a> 系統允許在全球快速還原。</p>
+<p>在未來的版本中，我們也會擷取即時記憶體狀態，允許執行中的處理序從上次離開的地方精確恢復。終端機和編輯器將會以關閉時的確切狀態重新開啟。</p>
+<p>如果您想在快照正式上線前還原工作階段狀態，您現在就可以使用<a href="https://developers.cloudflare.com/sandbox/guides/backup-restore" target="_blank" rel="noopener noreferrer"><code><u>備份和還原</u></code></a>方法。這些方法同樣使用 R2 來持久化和還原目錄，雖然效能不如真正的 VM 層級快照，但與簡單地重新建立工作階段狀態相比，它們仍然可以顯著提高速度。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="188" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW498BPY5VC065XFA2GZ34P5.gif" alt="BLOG-3264 3" width="715" height="188" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p><sup><em>啟動沙箱、複製「axios」並執行 npm install 需要 30 秒。從備份還原只需 2 秒。</em></sup></p>
+<p>請持續關注快照功能的正式發布。</p>
+<h2>更高的限制和活動 CPU 定價</h2>
+<p>自首次推出以來，我們一直在穩步增加容量。現在可以執行 15,000 個並行的輕量型執行個體、6000 個基本型執行個體，以及超過 1000 個並行的大型執行個體。如果需要執行更多，請<a href="https://forms.gle/3vvDvXPECjy6F8v56" target="_blank" rel="noopener noreferrer"><u>聯繫我們</u></a>！</p>
+<p>我們也改變了定價模式，使其在大規模執行時更具成本效益。Sandboxes 現在<a href="https://developers.cloudflare.com/changelog/post/2025-11-21-new-cpu-pricing" target="_blank" rel="noopener noreferrer"><u>僅對積極使用的 CPU 週期收費</u></a>。這意味著當您的智慧體正在等待 LLM 回應時，您無需為閒置的 CPU 付費。</p>
+<h2>這就是電腦的樣子</h2>
+<p>九個月前，我們推出的沙箱只能執行指令和存取檔案系統。那時足以證明概念。</p>
+<p>我們現在擁有的則是質的不同。今天的沙箱是一個完整的開發環境：一個可以連接瀏覽器的終端機、一個具有持久狀態的程式碼解譯器、帶有即時預覽 URL 的背景處理序、一個能即時發出變更事件的檔案系統、用於安全認證插入的輸出代理，以及一個幾乎可以瞬間完成熱啟動的快照機制。</p>
+<p>當您在此基礎上建構時，一個令人滿意的模式隨之浮現：智慧體可以執行真正的工程工作。複製存放庫、安裝它、執行測試、閱讀失敗報告、編輯程式碼、再次執行測試。這種讓人類工程師高效工作的緊密回饋迴圈，現在智慧體也擁有了。</p>
+<p>SDK 版本已更新至 0.8.9。您可以立即開始使用：</p>
+<p><code>npm i @cloudflare/sandbox@latest</code></p>

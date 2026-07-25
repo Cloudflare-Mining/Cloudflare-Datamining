@@ -1,184 +1,151 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5EyKRro7QD2kOp73vdKh1T/7904808eb1ab43c91595108c5fc4eb53/this-is-strictly-a-violation-of-the-tcp-specification.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>I was asked to debug another weird issue on our network. Apparently every now and then a connection going through CloudFlare would time out with 522 HTTP error.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2G5eLlitmSrxYlXxvBL47P/3b7ccb5c5278e82642aa321fb89abd21/16132759228_7eed8f32d1_z.jpg" alt="" class="kg-image" width="640" height="426" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/lclosicenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/cosmicherb70/16132759228" target="_blank" rel="noopener noreferrer">image</a> by Chris Combe</p>
-	<p><a href="https://support.cloudflare.com/hc/en-us/articles/200171906-Error-522-Connection-timed-out" target="_blank" rel="noopener noreferrer">522 error on CloudFlare</a> indicates a connection issue between our edge server and the origin server. Most often the blame is on the origin server side - the origin server is slow, offline or encountering high packet loss. Less often the problem is on our side.</p>
-	<p>In the case I was debugging it was neither. The internet connectivity between CloudFlare and origin was perfect. No packet loss, flat latency. So why did we see a 522 error?</p>
-	<p>The root cause of this issue was pretty complex. After a lot of debugging we identified an important symptom: sometimes, once in thousands of runs, our test program failed to establish a connection between two daemons on the same machine. To be precise, an NGINX instance was trying to establish a TCP connection to our internal acceleration service on localhost. This failed with a timeout error.</p>
-	<p>Once we knew what to look for we were able to reproduce this with good old <code>netcat</code>. After a couple of dozen of runs this is what we saw:</p>
-	<pre class="language-bash"><code class="language-bash">$ nc 127.0.0.1 5000  -v
-nc: connect to 127.0.0.1 port 5000 (tcp) failed: Connection timed out</code></pre>
-	<p>The view from <code>strace</code>:</p>
-	<pre class="language-bash"><code class="language-bash">socket(PF_INET, SOCK_STREAM, IPPROTO_TCP) = 3
-connect(3, {sa_family=AF_INET, sin_port=htons(5000), sin_addr=inet_addr("127.0.0.1")}, 16) = -110 ETIMEDOUT</code></pre>
-	<p><code>netcat</code> calls <code>connect()</code> to establish a connection to localhost. This takes a long time and eventually fails with <code>ETIMEDOUT</code> error. Tcpdump confirms that <code>connect()</code> did send SYN packets over loopback but never received any SYN+ACKs:</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo tcpdump -ni lo port 5000 -ttttt -S
-00:00:02.405887 IP 127.0.0.12.59220 &gt; 127.0.0.1.5000: Flags [S], seq 220451580, win 43690, options [mss 65495,sackOK,TS val 15971607 ecr 0,nop,wscale 7], length 0
-00:00:03.406625 IP 127.0.0.12.59220 &gt; 127.0.0.1.5000: Flags [S], seq 220451580, win 43690, options [mss 65495,sackOK,TS val 15971857 ecr 0,nop,wscale 7], length 0
-... 5 more ...</code></pre>
-	<p>Hold on. What just happened here?</p>
-	<p>Well, we called <code>connect()</code> to localhost and it timed out. The SYN packets went off over loopback to localhost but were never answered.</p>
-	<div class="flex anchor relative">
-		<h3 id="loopback-congestion">Loopback congestion</h3>
-		<a href="https://blog.cloudflare.com/#loopback-congestion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3bdZxdRdturLuABS6ep2WV/c8fa6def43cc2ce57a89e2ee86508129/26449341072_009ae28070_z.jpg" alt="" class="kg-image" width="640" height="427" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/akj1706/26449341072" target="_blank" rel="noopener noreferrer">image</a> by akj1706</p>
-	<p>The first thought is about Internet stability. Maybe the SYN packets were lost? A little known fact is that it's not possible to have any packet loss or congestion on the loopback interface. The <a href="http://lxr.free-electrons.com/source/drivers/net/loopback.c" target="_blank" rel="noopener noreferrer">loopback works magically</a>: when an application sends packets to it, it immediately, still within the <code>send</code> syscall handling, gets delivered to the appropriate target. There is no buffering over loopback. Calling <code>send</code> over loopback triggers iptables, network stack delivery mechanisms and <i>delivers</i> the packet to the appropriate queue of the target application. Assuming the target application has some space in its buffers, packet loss over loopback is not possible.</p>
-	<div class="flex anchor relative">
-		<h3 id="maybe-the-listening-application-misbehaved">Maybe the listening application misbehaved?</h3>
-		<a href="https://blog.cloudflare.com/#maybe-the-listening-application-misbehaved" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Under normal circumstances connections to localhost are not supposed to time out. There is one corner case when this may happen though - when the listening application does not call <code>accept()</code> fast enough.</p>
-	<p>When that happens, the default behavior is to drop the new SYN packets. If the listening socket has a full accept queue, then new SYN packets will be dropped. The intention is to cause push-back, to slow down the rate of incoming connections. The peers should eventually re-send SYN packets, and hopefully by that time the accept queue will be freed. This behavior is controlled by the <code>tcp_abort_on_overflow</code> <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank" rel="noopener noreferrer">sysctl</a>.</p>
-	<p>But this accept queue overflow did not happen in our case. Our listening application had an empty accept queue. We checked this with the <code>ss</code> command:</p>
-	<pre class="language-bash"><code class="language-bash">$ ss -n4lt 'sport = :5000'
-State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port
-LISTEN     0      128                 *:5000               *:*</code></pre>
-	<p>The <code>Send-Q</code> column <a href="https://github.com/torvalds/linux/blob/c1e64e298b8cad309091b95d8436a0255c84f54a/net/ipv4/tcp_diag.c#L26" target="_blank" rel="noopener noreferrer">shows the backlog / accept queue size</a> given to <code>listen()</code> syscall - 128 in our case. The <code>Recv-Q</code> reports on the number of outstanding connections in the accept queue - zero.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-problem">The problem</h3>
-		<a href="https://blog.cloudflare.com/#the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To recap: we are establishing connections to localhost. Most of them work fine but sometimes the <code>connect()</code> syscall times out. The SYN packets are being sent over loopback. Because it's loopback they <i>are</i> being delivered to the listening socket. The listening socket accept queue is empty, but we see no SYN+ACKs.</p>
-	<p>Further investigation revealed something peculiar. We noticed hundreds of CLOSE_WAIT sockets:</p>
-	<pre class="language-bash"><code class="language-bash">$ ss -n4t | head
-State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port
-CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36599
-CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36467
-CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36154
-CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36412
-CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36536
-...</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="what-is-close_wait-anyway">What is CLOSE_WAIT anyway?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-close_wait-anyway" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Ts0oIJkae9HpoHZtvZAsf/b5a86e303739746bb9f5afecb8f2f90a/20147524535_8c6ac1c853_z.jpg" alt="" class="kg-image" width="640" height="424" loading="lazy">
-
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/sidelong/20147524535" target="_blank" rel="noopener noreferrer">image</a> by DaveBleasdale</p>
-	<p>Citing the <a href="https://access.redhat.com/solutions/437133" target="_blank" rel="noopener noreferrer">Red Hat docs</a>:</p>
-	<p><i>CLOSE_WAIT - Indicates that the server has received the first FIN signal from the client and the connection is in the process of being closed. This means the socket is waiting for the application to execute </i><code><i>close()</i></code><i>. A socket can be in CLOSE_WAIT state indefinitely until the application closes it. Faulty scenarios would be like a file descriptor leak: server not executing </i><code><i>close()</i></code><i> on sockets leading to pile up of CLOSE_WAIT sockets.</i></p>
-	<p>This makes sense. Indeed, we were able to confirm the listening application leaks sockets. Hurray, good progress!</p>
-	<p>The leaking sockets don't explain everything though.</p>
-	<p>Usually a Linux process can open up to 1,024 file descriptors. If our application did run out of file descriptors the <code>accept</code> syscall would return the EMFILE error. If the application further mishandled this error case, this could result in losing incoming SYN packets. Failed <code>accept</code> calls will <a href="https://github.com/torvalds/linux/blob/c1e64e298b8cad309091b95d8436a0255c84f54a/net/socket.c#L1438" target="_blank" rel="noopener noreferrer">not dequeue a socket from accept queue</a>, causing the accept queue to grow. The accept queue will not be drained and will eventually overflow. An overflowing accept queue could result in dropped SYN packets and failing connection attempts.</p>
-	<p>But this is not what happened here. Our application hasn't run out of file descriptors yet. This can be verified by counting file descriptors in <code>/proc/&lt;pid&gt;/fd</code> directory:</p>
-	<pre class="language-bash"><code class="language-bash">$ ls /proc/` pidof listener `/fd | wc -l
-517</code></pre>
-	<p>517 file descriptors are comfortably far from the 1,024 file descriptor limit. Also, we earlier showed with <code>ss</code> that the accept queue is empty. So why did our connections time out?</p>
-	<div class="flex anchor relative">
-		<h3 id="what-really-happens">What really happens</h3>
-		<a href="https://blog.cloudflare.com/#what-really-happens" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The root cause of the problem is definitely our application leaking sockets. The symptoms though, the connection timing out, are still unexplained.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SnoSfKadf8y4R4YJk1IYw/0243e1e7d60760e303fcf65739137bcb/Screen-Shot-2016-08-11-at-23-59-05-1.png" alt="" class="kg-image" width="530" height="600" loading="lazy">
-
-	</figure>
-	<p>Time to raise the curtain of doubt. Here is what happens.</p>
-	<p>The listening application leaks sockets, they are stuck in CLOSE_WAIT TCP state forever. These sockets look like (127.0.0.1:5000, 127.0.0.1:some-port). The client socket at the other end of the connection is (127.0.0.1:some-port, 127.0.0.1:5000), and is properly closed and cleaned up.</p>
-	<p>When the client application quits, the (127.0.0.1:some-port, 127.0.0.1:5000) socket enters the FIN_WAIT_1 state and then quickly transitions to FIN_WAIT_2. The FIN_WAIT_2 state should move on to TIME_WAIT if the client received FIN packet, but this never happens. The FIN_WAIT_2 eventually times out. On Linux this is 60 seconds, controlled by <code>net.ipv4.tcp_fin_timeout</code> sysctl.</p>
-	<p>This is where the problem starts. The (127.0.0.1:5000, 127.0.0.1:some-port) socket is still in CLOSE_WAIT state, while (127.0.0.1:some-port, 127.0.0.1:5000) has been cleaned up and is ready to be reused. When this happens the result is a total mess. One part of the socket won't be able to advance from the SYN_SENT state, while the other part is stuck in CLOSE_WAIT. The SYN_SENT socket will eventually give up failing with ETIMEDOUT.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-to-reproduce">How to reproduce</h3>
-		<a href="https://blog.cloudflare.com/#how-to-reproduce" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>It all starts with a listening application that leaks sockets and forgets to call <code>close()</code>. This kind of bug does happen in complex applications. An example <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-08-time-out/listener.go" target="_blank" rel="noopener noreferrer">buggy code is available here</a>. When you run it nothing will happen initially. <code>ss</code> will show a usual listening socket:</p>
-	<pre class="language-bash"><code class="language-bash">$ go build listener.go &amp;&amp; ./listener &amp;
-$ ss -n4tpl 'sport = :5000'
-State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port
-LISTEN     0      128                 *:5000               *:*      users:(("listener",81425,3))
-</code></pre>
-	<p>Then we have a client application. The client behaves correctly - it establishes a connection and after a while it closes it. We can demonstrate this with <code>nc</code>:</p>
-	<pre class="language-bash"><code class="language-bash">$ nc -4 localhost 5000 &amp;
-$ ss -n4tp '( dport = :5000 or sport = :5000 )'
-State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port
-ESTAB      0      0           127.0.0.1:5000       127.0.0.1:36613  users:(("listener",81425,5))
-ESTAB      0      0           127.0.0.1:36613      127.0.0.1:5000   users:(("nc",81456,3))</code></pre>
-	<p>As you see above <code>ss</code> shows two TCP sockets, representing the two ends of the TCP connection. The client one is (127.0.0.1:36613, 127.0.0.1:5000), the server one (127.0.0.1:5000, 127.0.0.1:36613).</p>
-	<p>The next step is to gracefully close the client connection:</p>
-	<pre class="language-bash"><code class="language-bash">$ kill `pidof nc`</code></pre>
-	<p>Now the connections enter TCP cleanup stages: FIN_WAIT_2 for the client connection, and CLOSE_WAIT for the server one (if you want to read more about these TCP states <a href="https://benohead.com/tcp-about-fin_wait_2-time_wait-and-close_wait" target="_blank" rel="noopener noreferrer">here's a recommended read</a>):</p>
-	<pre class="language-bash"><code class="language-bash">$ ss -n4tp
-State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port
-CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36613  users:(("listener",81425,5))
-FIN-WAIT-2 0      0           127.0.0.1:36613      127.0.0.1:5000</code></pre>
-	<p>After a while FIN_WAIT_2 will expire:</p>
-	<pre class="language-bash"><code class="language-bash">$ ss -n4tp
-State      Recv-Q Send-Q  Local Address:Port    Peer Address:Port
-CLOSE-WAIT 1      0           127.0.0.1:5000       127.0.0.1:36613  users:(("listener",81425,5))</code></pre>
-	<p>But the CLOSE_WAIT socket stays in! Since we have a leaked file descriptor in the <code>listener</code> program, the kernel is not allowed to move it to FIN_WAIT state. It is stuck in CLOSE_WAIT indefinitely. This stray CLOSE_WAIT would not be a problem if only the same port pair was never reused. Unfortunately, it happens and causes the problem.</p>
-	<p>To see this we need to launch hundreds of <code>nc</code> instances and hope the kernel will assign the colliding port number to one of them. The affected <code>nc</code> will be stuck in <code>connect()</code> for a while:</p>
-	<pre class="language-bash"><code class="language-bash">$ nc -v -4 localhost 5000 -w0
-...</code></pre>
-	<p>We can use the <code>ss</code> to confirm that the ports indeed collide:</p>
-	<pre class="language-bash"><code class="language-bash">SYN-SENT   0  1   127.0.0.1:36613      127.0.0.1:5000   users:(("nc",89908,3))
-CLOSE-WAIT 1  0   127.0.0.1:5000       127.0.0.1:36613  users:(("listener",81425,5))</code></pre>
-	<p>In our example the kernel allocated source address (127.0.0.1:36613) to the <code>nc</code> process. This TCP flow is okay to be used for a connection going <i>to</i> the listener application. But the listener will not be able to allocate a flow in reverse direction since (127.0.0.1:5000, 127.0.0.1:36613) from previous connections is still being used and remains with CLOSE_WAIT state.</p>
-	<p>The kernel gets confused. It retries the SYN packets, but will never respond since the other TCP socket is stick in the CLOSE_WAIT state. Eventually our affected <code>netcat</code> will die with unhappy ETIMEDOUT error message:</p>
-	<pre class="language-bash"><code class="language-bash">...
-nc: connect to localhost port 5000 (tcp) failed: Connection timed out</code></pre>
-	<p>If you want to reproduce this weird scenario consider running this script. It will greatly increase the probability of netcat hitting the conflicted socket:</p>
-	<pre class="language-bash"><code class="language-bash">$ for i in `seq 500`; do nc -v -4 -s 127.0.0.1 localhost 5000 -w0; done</code></pre>
-	<p>A little known fact is that the source port automatically assigned by the kernel is incremental, unless you <a href="https://idea.popcount.org/2014-04-03-bind-before-connect" target="_blank" rel="noopener noreferrer">select the source IP manually</a>. In such case the source port is random. This bash script will create a minefield of CLOSE_WAIT sockets randomly distributed across the ephemeral port range.</p>
-	<div class="flex anchor relative">
-		<h3 id="final-words">Final words</h3>
-		<a href="https://blog.cloudflare.com/#final-words" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If there's a moral from the story it's to watch out for CLOSE_WAIT sockets. Their presence indicate leaking sockets, and with leaking sockets some incoming connections may time out. Presence of many FIN_WAIT_2 sockets says the problem is not on current machine but on the remote end of the connection.</p>
-	<p>Furthermore, this bug shows that it is possible for the states of the two ends of a TCP connection to be at odds, even if the connection is over the loopback interface.</p>
-	<p>It seems that the design decisions made by the BSD Socket API have unexpected long lasting consequences. If you think about it - why exactly the socket can automatically expire the FIN_WAIT state, but can't move off from CLOSE_WAIT after some grace time. This is very confusing... And it should be! The original TCP specification does not allow automatic state transition after FIN_WAIT_2 state! According to the spec FIN_WAIT_2 is supposed to stay running until the application on the other side cleans up.</p>
-	<p>Let me leave you with the <a href="http://man7.org/linux/man-pages/man7/tcp.7.html" target="_blank" rel="noopener noreferrer"><code>tcp(7)</code> manpage</a> describing the <code>tcp_fin_timeout</code> setting:</p>
-	<pre class="language-bash"><code class="language-bash">tcp_fin_timeout (integer; default: 60)
-      This specifies how many seconds to wait for a final FIN packet
-      before the socket is forcibly closed.  This is strictly a
-      violation of the TCP specification, but required to prevent
-      denial-of-service attacks.</code></pre>
-	<p>I think now we understand why automatically closing FIN_WAIT_2 is strictly speaking a violation of the TCP specification.</p>
-	<p><i>Do you enjoy playing with low level networking bits? Are you interested in dealing with some of the largest DDoS attacks ever seen?</i></p>
-	<p><i>If so you should definitely have a look at the </i><a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer"><i>open positions</i></a><i> in our London, San Francisco, Singapore, Champaign (IL) and Austin (TX) offices!</i></p>
+<p>I was asked to debug another weird issue on our network. Apparently every now and then a connection going through CloudFlare would time out with 522 HTTP error.</p>
+<p><a href="https://creativecommons.org/lclosicenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/cosmicherb70/16132759228" target="_blank" rel="noopener noreferrer">image</a> by Chris Combe</p>
+<p><a href="https://support.cloudflare.com/hc/en-us/articles/200171906-Error-522-Connection-timed-out" target="_blank" rel="noopener noreferrer">522 error on CloudFlare</a> indicates a connection issue between our edge server and the origin server. Most often the blame is on the origin server side - the origin server is slow, offline or encountering high packet loss. Less often the problem is on our side.</p>
+<p>In the case I was debugging it was neither. The internet connectivity between CloudFlare and origin was perfect. No packet loss, flat latency. So why did we see a 522 error?</p>
+<p>The root cause of this issue was pretty complex. After a lot of debugging we identified an important symptom: sometimes, once in thousands of runs, our test program failed to establish a connection between two daemons on the same machine. To be precise, an NGINX instance was trying to establish a TCP connection to our internal acceleration service on localhost. This failed with a timeout error.</p>
+<p>Once we knew what to look for we were able to reproduce this with good old <code>netcat</code>. After a couple of dozen of runs this is what we saw:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span><span class="sk-005cc5-ffc799"> 5000</span><span class="sk-005cc5-99ffe4">  -v</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">nc:</span><span class="sk-032f62-99ffe4"> connect</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 5000</span><span class="sk-24292e-fff"> (tcp) failed: Connection timed out</span></span></code></pre>
 </div>
+<p>The view from <code>strace</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">socket(PF_INET,</span><span class="sk-032f62-99ffe4"> SOCK_STREAM,</span><span class="sk-032f62-99ffe4"> IPPROTO_TCP</span><span class="sk-24292e-fff">) = 3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">connect(3,</span><span class="sk-032f62-99ffe4"> {sa_family=AF_INET,</span><span class="sk-032f62-99ffe4"> sin_port=htons</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">5000</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> sin_addr=inet_addr</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"127.0.0.1"</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">},</span><span class="sk-005cc5-ffc799"> 16</span><span class="sk-24292e-fff">) = -110 ETIMEDOUT</span></span></code></pre>
+</div>
+<p><code>netcat</code> calls <code>connect()</code> to establish a connection to localhost. This takes a long time and eventually fails with <code>ETIMEDOUT</code> error. Tcpdump confirms that <code>connect()</code> did send SYN packets over loopback but never received any SYN+ACKs:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> tcpdump</span><span class="sk-005cc5-99ffe4"> -ni</span><span class="sk-032f62-99ffe4"> lo</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 5000</span><span class="sk-005cc5-99ffe4"> -ttttt</span><span class="sk-005cc5-99ffe4"> -S</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:00:02.405887</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 127.0.0.12.59220</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 127.0.0.1.5000:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [S], seq 220451580, win 43690, options [mss 65495,sackOK,TS val </span><span class="sk-005cc5-ffc799">15971607</span><span class="sk-24292e-fff"> ecr 0,nop,wscale 7], length 0</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00:00:03.406625</span><span class="sk-032f62-99ffe4"> IP</span><span class="sk-005cc5-ffc799"> 127.0.0.12.59220</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> 127.0.0.1.5000:</span><span class="sk-032f62-99ffe4"> Flags</span><span class="sk-24292e-fff"> [S], seq 220451580, win 43690, options [mss 65495,sackOK,TS val </span><span class="sk-005cc5-ffc799">15971857</span><span class="sk-24292e-fff"> ecr 0,nop,wscale 7], length 0</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> ...</span></span></code></pre>
+</div>
+<p>Hold on. What just happened here?</p>
+<p>Well, we called <code>connect()</code> to localhost and it timed out. The SYN packets went off over loopback to localhost but were never answered.</p>
+<h3>Loopback congestion</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="427" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46515KV852G5RBGZXZCS0C.jpg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46515KV852G5RBGZXZCS0C.jpg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46515KV852G5RBGZXZCS0C.jpg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46515KV852G5RBGZXZCS0C.jpg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46515KV852G5RBGZXZCS0C.jpg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46515KV852G5RBGZXZCS0C.jpg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="This is strictly a violation of the TCP specification Embedded Image - YMkqc5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46515KV852G5RBGZXZCS0C.jpg&amp;w=640&amp;h=427&amp;f=webp" data-lightbox-width="640" data-lightbox-height="427" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="427" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/akj1706/26449341072" target="_blank" rel="noopener noreferrer">image</a> by akj1706</p>
+<p>The first thought is about Internet stability. Maybe the SYN packets were lost? A little known fact is that it's not possible to have any packet loss or congestion on the loopback interface. The <a href="http://lxr.free-electrons.com/source/drivers/net/loopback.c" target="_blank" rel="noopener noreferrer">loopback works magically</a>: when an application sends packets to it, it immediately, still within the <code>send</code> syscall handling, gets delivered to the appropriate target. There is no buffering over loopback. Calling <code>send</code> over loopback triggers iptables, network stack delivery mechanisms and <em>delivers</em> the packet to the appropriate queue of the target application. Assuming the target application has some space in its buffers, packet loss over loopback is not possible.</p>
+<h3>Maybe the listening application misbehaved?</h3>
+<p>Under normal circumstances connections to localhost are not supposed to time out. There is one corner case when this may happen though - when the listening application does not call <code>accept()</code> fast enough.</p>
+<p>When that happens, the default behavior is to drop the new SYN packets. If the listening socket has a full accept queue, then new SYN packets will be dropped. The intention is to cause push-back, to slow down the rate of incoming connections. The peers should eventually re-send SYN packets, and hopefully by that time the accept queue will be freed. This behavior is controlled by the <code>tcp_abort_on_overflow</code> <a href="https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt" target="_blank" rel="noopener noreferrer">sysctl</a>.</p>
+<p>But this accept queue overflow did not happen in our case. Our listening application had an empty accept queue. We checked this with the <code>ss</code> command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n4lt</span><span class="sk-032f62-99ffe4"> 'sport = :5000'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">    Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-005cc5-ffc799">      128</span><span class="sk-005cc5-a0a0a0">                 *</span><span class="sk-032f62-99ffe4">:5000</span><span class="sk-005cc5-a0a0a0">               *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span></span></code></pre>
+</div>
+<p>The <code>Send-Q</code> column <a href="https://github.com/torvalds/linux/blob/c1e64e298b8cad309091b95d8436a0255c84f54a/net/ipv4/tcp_diag.c#L26" target="_blank" rel="noopener noreferrer">shows the backlog / accept queue size</a> given to <code>listen()</code> syscall - 128 in our case. The <code>Recv-Q</code> reports on the number of outstanding connections in the accept queue - zero.</p>
+<h3>The problem</h3>
+<p>To recap: we are establishing connections to localhost. Most of them work fine but sometimes the <code>connect()</code> syscall times out. The SYN packets are being sent over loopback. Because it's loopback they <em>are</em> being delivered to the listening socket. The listening socket accept queue is empty, but we see no SYN+ACKs.</p>
+<p>Further investigation revealed something peculiar. We noticed hundreds of CLOSE_WAIT sockets:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n4t</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> head</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">    Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36599</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36467</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36154</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36412</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36536</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<h3>What is CLOSE_WAIT anyway?</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="424" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4621Y47AA2VV9B32DY57VC.jpg&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4621Y47AA2VV9B32DY57VC.jpg&amp;w=640&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4621Y47AA2VV9B32DY57VC.jpg&amp;w=750&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4621Y47AA2VV9B32DY57VC.jpg&amp;w=828&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4621Y47AA2VV9B32DY57VC.jpg&amp;w=1080&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4621Y47AA2VV9B32DY57VC.jpg&amp;w=1280&amp;h=848&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="This is strictly a violation of the TCP specification Embedded Image - moufuo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4621Y47AA2VV9B32DY57VC.jpg&amp;w=640&amp;h=424&amp;f=webp" data-lightbox-width="640" data-lightbox-height="424" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="424" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://creativecommons.org/licenses/by/2.0" target="_blank" rel="noopener noreferrer">CC BY 2.0</a> <a href="https://www.flickr.com/photos/sidelong/20147524535" target="_blank" rel="noopener noreferrer">image</a> by DaveBleasdale</p>
+<p>Citing the <a href="https://access.redhat.com/solutions/437133" target="_blank" rel="noopener noreferrer">Red Hat docs</a>:</p>
+<p><em>CLOSE_WAIT - Indicates that the server has received the first FIN signal from the client and the connection is in the process of being closed. This means the socket is waiting for the application to execute <code>close()</code>. A socket can be in CLOSE_WAIT state indefinitely until the application closes it. Faulty scenarios would be like a file descriptor leak: server not executing <code>close()</code> on sockets leading to pile up of CLOSE_WAIT sockets.</em></p>
+<p>This makes sense. Indeed, we were able to confirm the listening application leaks sockets. Hurray, good progress!</p>
+<p>The leaking sockets don't explain everything though.</p>
+<p>Usually a Linux process can open up to 1,024 file descriptors. If our application did run out of file descriptors the <code>accept</code> syscall would return the EMFILE error. If the application further mishandled this error case, this could result in losing incoming SYN packets. Failed <code>accept</code> calls will <a href="https://github.com/torvalds/linux/blob/c1e64e298b8cad309091b95d8436a0255c84f54a/net/socket.c#L1438" target="_blank" rel="noopener noreferrer">not dequeue a socket from accept queue</a>, causing the accept queue to grow. The accept queue will not be drained and will eventually overflow. An overflowing accept queue could result in dropped SYN packets and failing connection attempts.</p>
+<p>But this is not what happened here. Our application hasn't run out of file descriptors yet. This can be verified by counting file descriptors in <code>/proc/&lt;pid&gt;/fd</code> directory:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ls</span><span class="sk-032f62-99ffe4"> /proc/` </span><span class="sk-6f42c1-ffc799">pidof</span><span class="sk-032f62-99ffe4"> listener `</span><span class="sk-6f42c1-ffc799">/fd</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> wc</span><span class="sk-005cc5-99ffe4"> -l</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">517</span></span></code></pre>
+</div>
+<p>517 file descriptors are comfortably far from the 1,024 file descriptor limit. Also, we earlier showed with <code>ss</code> that the accept queue is empty. So why did our connections time out?</p>
+<h3>What really happens</h3>
+<p>The root cause of the problem is definitely our application leaking sockets. The symptoms though, the connection timing out, are still unexplained.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="530" height="600" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485GZ3VAPBYY2NA56Q691T.png&amp;w=530&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485GZ3VAPBYY2NA56Q691T.png&amp;w=530&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 530w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485GZ3VAPBYY2NA56Q691T.png&amp;w=640&amp;h=725&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485GZ3VAPBYY2NA56Q691T.png&amp;w=750&amp;h=849&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485GZ3VAPBYY2NA56Q691T.png&amp;w=828&amp;h=937&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485GZ3VAPBYY2NA56Q691T.png&amp;w=1060&amp;h=1200&amp;f=webp&amp;fit=cover&amp;position=center 1060w" alt="This is strictly a violation of the TCP specification Embedded Image - CFHFod" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485GZ3VAPBYY2NA56Q691T.png&amp;w=530&amp;h=600&amp;f=webp" data-lightbox-width="530" data-lightbox-height="600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 530px) 530px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="530" height="600" class="pt-portable-image-media"></div>
+</figure>
+<p>Time to raise the curtain of doubt. Here is what happens.</p>
+<p>The listening application leaks sockets, they are stuck in CLOSE_WAIT TCP state forever. These sockets look like (127.0.0.1:5000, 127.0.0.1:some-port). The client socket at the other end of the connection is (127.0.0.1:some-port, 127.0.0.1:5000), and is properly closed and cleaned up.</p>
+<p>When the client application quits, the (127.0.0.1:some-port, 127.0.0.1:5000) socket enters the FIN_WAIT_1 state and then quickly transitions to FIN_WAIT_2. The FIN_WAIT_2 state should move on to TIME_WAIT if the client received FIN packet, but this never happens. The FIN_WAIT_2 eventually times out. On Linux this is 60 seconds, controlled by <code>net.ipv4.tcp_fin_timeout</code> sysctl.</p>
+<p>This is where the problem starts. The (127.0.0.1:5000, 127.0.0.1:some-port) socket is still in CLOSE_WAIT state, while (127.0.0.1:some-port, 127.0.0.1:5000) has been cleaned up and is ready to be reused. When this happens the result is a total mess. One part of the socket won't be able to advance from the SYN_SENT state, while the other part is stuck in CLOSE_WAIT. The SYN_SENT socket will eventually give up failing with ETIMEDOUT.</p>
+<h3>How to reproduce</h3>
+<p>It all starts with a listening application that leaks sockets and forgets to call <code>close()</code>. This kind of bug does happen in complex applications. An example <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2016-08-time-out/listener.go" target="_blank" rel="noopener noreferrer">buggy code is available here</a>. When you run it nothing will happen initially. <code>ss</code> will show a usual listening socket:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-032f62-99ffe4"> listener.go</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">./listener</span><span class="sk-24292e-fff"> &amp;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n4tpl</span><span class="sk-032f62-99ffe4"> 'sport = :5000'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">    Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">LISTEN</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-005cc5-ffc799">      128</span><span class="sk-005cc5-a0a0a0">                 *</span><span class="sk-032f62-99ffe4">:5000</span><span class="sk-005cc5-a0a0a0">               *</span><span class="sk-032f62-99ffe4">:</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">      users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"listener"</span><span class="sk-6f42c1-ffc799">,81425,3</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Then we have a client application. The client behaves correctly - it establishes a connection and after a while it closes it. We can demonstrate this with <code>nc</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-005cc5-99ffe4"> -4</span><span class="sk-032f62-99ffe4"> localhost</span><span class="sk-005cc5-ffc799"> 5000</span><span class="sk-24292e-fff"> &amp;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n4tp</span><span class="sk-032f62-99ffe4"> '( dport = :5000 or sport = :5000 )'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">    Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ESTAB</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36613</span><span class="sk-032f62-99ffe4">  users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"listener"</span><span class="sk-6f42c1-ffc799">,81425,5</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ESTAB</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:36613</span><span class="sk-032f62-99ffe4">      127.0.0.1:5000</span><span class="sk-032f62-99ffe4">   users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"nc"</span><span class="sk-6f42c1-ffc799">,81456,3</span><span class="sk-24292e-fff">))</span></span></code></pre>
+</div>
+<p>As you see above <code>ss</code> shows two TCP sockets, representing the two ends of the TCP connection. The client one is (127.0.0.1:36613, 127.0.0.1:5000), the server one (127.0.0.1:5000, 127.0.0.1:36613).</p>
+<p>The next step is to gracefully close the client connection:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> kill</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">pidof</span><span class="sk-032f62-99ffe4"> nc`</span></span></code></pre>
+</div>
+<p>Now the connections enter TCP cleanup stages: FIN_WAIT_2 for the client connection, and CLOSE_WAIT for the server one (if you want to read more about these TCP states <a href="https://benohead.com/tcp-about-fin_wait_2-time_wait-and-close_wait" target="_blank" rel="noopener noreferrer">here's a recommended read</a>):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n4tp</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">    Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36613</span><span class="sk-032f62-99ffe4">  users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"listener"</span><span class="sk-6f42c1-ffc799">,81425,5</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FIN-WAIT-2</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:36613</span><span class="sk-032f62-99ffe4">      127.0.0.1:5000</span></span></code></pre>
+</div>
+<p>After a while FIN_WAIT_2 will expire:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ss</span><span class="sk-005cc5-99ffe4"> -n4tp</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">State</span><span class="sk-032f62-99ffe4">      Recv-Q</span><span class="sk-032f62-99ffe4"> Send-Q</span><span class="sk-032f62-99ffe4">  Local</span><span class="sk-032f62-99ffe4"> Address:Port</span><span class="sk-032f62-99ffe4">    Peer</span><span class="sk-032f62-99ffe4"> Address:Port</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">      0</span><span class="sk-032f62-99ffe4">           127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36613</span><span class="sk-032f62-99ffe4">  users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"listener"</span><span class="sk-6f42c1-ffc799">,81425,5</span><span class="sk-24292e-fff">))</span></span></code></pre>
+</div>
+<p>But the CLOSE_WAIT socket stays in! Since we have a leaked file descriptor in the <code>listener</code> program, the kernel is not allowed to move it to FIN_WAIT state. It is stuck in CLOSE_WAIT indefinitely. This stray CLOSE_WAIT would not be a problem if only the same port pair was never reused. Unfortunately, it happens and causes the problem.</p>
+<p>To see this we need to launch hundreds of <code>nc</code> instances and hope the kernel will assign the colliding port number to one of them. The affected <code>nc</code> will be stuck in <code>connect()</code> for a while:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> nc</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -4</span><span class="sk-032f62-99ffe4"> localhost</span><span class="sk-005cc5-ffc799"> 5000</span><span class="sk-005cc5-99ffe4"> -w0</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>We can use the <code>ss</code> to confirm that the ports indeed collide:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SYN-SENT</span><span class="sk-005cc5-ffc799">   0</span><span class="sk-005cc5-ffc799">  1</span><span class="sk-032f62-99ffe4">   127.0.0.1:36613</span><span class="sk-032f62-99ffe4">      127.0.0.1:5000</span><span class="sk-032f62-99ffe4">   users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"nc"</span><span class="sk-6f42c1-ffc799">,89908,3</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">CLOSE-WAIT</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-005cc5-ffc799">  0</span><span class="sk-032f62-99ffe4">   127.0.0.1:5000</span><span class="sk-032f62-99ffe4">       127.0.0.1:36613</span><span class="sk-032f62-99ffe4">  users:</span><span class="sk-24292e-fff">((</span><span class="sk-6f42c1-ffc799">"listener"</span><span class="sk-6f42c1-ffc799">,81425,5</span><span class="sk-24292e-fff">))</span></span></code></pre>
+</div>
+<p>In our example the kernel allocated source address (127.0.0.1:36613) to the <code>nc</code> process. This TCP flow is okay to be used for a connection going <em>to</em> the listener application. But the listener will not be able to allocate a flow in reverse direction since (127.0.0.1:5000, 127.0.0.1:36613) from previous connections is still being used and remains with CLOSE_WAIT state.</p>
+<p>The kernel gets confused. It retries the SYN packets, but will never respond since the other TCP socket is stick in the CLOSE_WAIT state. Eventually our affected <code>netcat</code> will die with unhappy ETIMEDOUT error message:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">nc:</span><span class="sk-032f62-99ffe4"> connect</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> localhost</span><span class="sk-032f62-99ffe4"> port</span><span class="sk-005cc5-ffc799"> 5000</span><span class="sk-24292e-fff"> (tcp) failed: Connection timed out</span></span></code></pre>
+</div>
+<p>If you want to reproduce this weird scenario consider running this script. It will greatly increase the probability of netcat hitting the conflicted socket:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">seq</span><span class="sk-005cc5-ffc799"> 500</span><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> nc</span><span class="sk-005cc5-99ffe4"> -v</span><span class="sk-005cc5-99ffe4"> -4</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-005cc5-ffc799"> 127.0.0.1</span><span class="sk-032f62-99ffe4"> localhost</span><span class="sk-005cc5-ffc799"> 5000</span><span class="sk-005cc5-99ffe4"> -w0</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">done</span></span></code></pre>
+</div>
+<p>A little known fact is that the source port automatically assigned by the kernel is incremental, unless you <a href="https://idea.popcount.org/2014-04-03-bind-before-connect" target="_blank" rel="noopener noreferrer">select the source IP manually</a>. In such case the source port is random. This bash script will create a minefield of CLOSE_WAIT sockets randomly distributed across the ephemeral port range.</p>
+<h3>Final words</h3>
+<p>If there's a moral from the story it's to watch out for CLOSE_WAIT sockets. Their presence indicate leaking sockets, and with leaking sockets some incoming connections may time out. Presence of many FIN_WAIT_2 sockets says the problem is not on current machine but on the remote end of the connection.</p>
+<p>Furthermore, this bug shows that it is possible for the states of the two ends of a TCP connection to be at odds, even if the connection is over the loopback interface.</p>
+<p>It seems that the design decisions made by the BSD Socket API have unexpected long lasting consequences. If you think about it - why exactly the socket can automatically expire the FIN_WAIT state, but can't move off from CLOSE_WAIT after some grace time. This is very confusing... And it should be! The original TCP specification does not allow automatic state transition after FIN_WAIT_2 state! According to the spec FIN_WAIT_2 is supposed to stay running until the application on the other side cleans up.</p>
+<p>Let me leave you with the <a href="http://man7.org/linux/man-pages/man7/tcp.7.html" target="_blank" rel="noopener noreferrer"><code>tcp(7)</code> manpage</a> describing the <code>tcp_fin_timeout</code> setting:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">tcp_fin_timeout</span><span class="sk-24292e-fff"> (integer; </span><span class="sk-6f42c1-ffc799">default:</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      This</span><span class="sk-032f62-99ffe4"> specifies</span><span class="sk-032f62-99ffe4"> how</span><span class="sk-032f62-99ffe4"> many</span><span class="sk-032f62-99ffe4"> seconds</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> wait</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> final</span><span class="sk-032f62-99ffe4"> FIN</span><span class="sk-032f62-99ffe4"> packet</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      before</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> socket</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> forcibly</span><span class="sk-032f62-99ffe4"> closed.</span><span class="sk-032f62-99ffe4">  This</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> strictly</span><span class="sk-032f62-99ffe4"> a</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      violation</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> TCP</span><span class="sk-032f62-99ffe4"> specification,</span><span class="sk-032f62-99ffe4"> but</span><span class="sk-032f62-99ffe4"> required</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> prevent</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      denial-of-service</span><span class="sk-032f62-99ffe4"> attacks.</span></span></code></pre>
+</div>
+<p>I think now we understand why automatically closing FIN_WAIT_2 is strictly speaking a violation of the TCP specification.</p>
+<p><em>Do you enjoy playing with low level networking bits? Are you interested in dealing with some of the largest DDoS attacks ever seen?</em></p>
+<p><em>If so you should definitely have a look at the <a href="https://www.cloudflare.com/join-our-team" target="_blank" rel="noopener noreferrer">open positions</a> in our London, San Francisco, Singapore, Champaign (IL) and Austin (TX) offices!</em></p>

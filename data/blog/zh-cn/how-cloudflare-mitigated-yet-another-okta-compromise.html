@@ -1,0 +1,39 @@
+<p>2023 年 10 月 18 日星期三，我们发现我们的系统受到了攻击，这些攻击可以追溯到 Okta——威胁行为者能够利用在 Okta 遭到破解的身份验证令牌进入 Cloudflare 的 Okta 实例。虽然这是一个令人不安的安全事件，但我们的安全事件响应团队 (SIRT) 的实时检测和及时响应使事件得到了控制，并最大限度地减少了对 Cloudflare 系统和数据的影响。我们已经核实，由于我们快速反应，<strong>Cloudflare 的客户信息或系统没有受到此次事件的影响</strong>。Okta 现已就此次事件发布<a href="https://sec.okta.com/harfiles" target="_blank" rel="noopener noreferrer">公开声明</a>。</p>
+<p>这是 Cloudflare 第二次受到 Okta 系统被入侵的影响。在 <a href="https://blog.cloudflare.com/cloudflare-investigation-of-the-january-2022-okta-compromise">2022 年 3 月</a>，我们在博客中介绍了我们对 Okta 系统被入侵如何影响 Cloudflare 的调查。在那次事件中，我们得出的结论是，威胁者无法访问我们的任何系统或数据——Cloudflare 使用硬件密钥进行多因素身份验证阻止了本次攻击。</p>
+<p>缓解本周这个事件的关键在于我们团队及早发现和立即反应。事实上，在 Okta 通知我们之前，我们就已经就他们的统被入侵一事与他们取得了联系。攻击者使用具有管理权限的 Okta 开放会话访问了我们的 Okta 实例。我们能够利用我们的 Cloudflare Zero Trust 访问、网关和数据丢失防护以及 Cloudforce One 威胁研究来验证事件的范围，并在攻击者访问客户数据、客户系统或我们的生产网络之前将其控制住。有了这种信心，我们就能在威胁行为者达到稳定状态之前迅速缓解事件。</p>
+<p>根据 Okta 的声明，威胁行为者访问了 Okta 的客户支持系统，并查看了某些 Okta 客户在处理近期支持案例过程中上传的文件。在我们的案例中，威胁行为者似乎能够从 Cloudflare 员工创建的支持工单中截获会话令牌。通过使用从 Okta 截获的令牌，威胁行为者在 10 月 18 日访问了 Cloudflare 系统。在这次复杂的攻击中，我们观察到威胁行为者在 Okta 平台上入侵了两个独立的 Cloudflare 员工帐户。我们在内部检测到了这一活动的时间比 Okta 就入侵事件通知我们的时间早了超过 24 小时。一检测到这一活动，我们的 SIRT 就迅速介入，以确定完整的入侵范围并控制住安全事件。Cloudflare 的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust 架构</a>保护着我们的生产环境，帮助避免对客户造成任何影响。</p>
+<h2>对 Okta 的建议</h2>
+<p>我们敦促 Okta 考虑实施以下最佳做法，其中包括：</p>
+<ul>
+	<li>严肃对待任何入侵报告，并立即采取行动限制损失；在这个案例中，<a href="https://www.beyondtrust.com/blog/entry/okta-support-unit-breach" target="_blank" rel="noopener noreferrer">BeyondTrust</a> 早在 2023 年 10 月 2 日就通知了 Okta，但至少在 2023 年 10 月 18 日之前，攻击者仍可访问其支持系统。</li>
+	<li>当你们发现你们的系统被入侵并影响到客户时，你们应该负责任地及时向客户披露。</li>
+	<li>要求使用硬件密钥保护所有系统，包括第三方支持提供商。</li>
+</ul>
+<p>对于像 Okta 这样的重要安全服务提供商来说，我们认为遵循这些最佳做法十分重要。</p>
+<h2>对 Okta 客户的建议</h2>
+<p>如果您是 Okta 的客户，我们建议您与 Okta 联系，以进一步了解对您的组织可能造成的影响。我们还建议采取以下措施：</p>
+<ul>
+	<li>为所有用户帐户启用硬件 MFA。仅凭密码达不到防范攻击所需的保护程度。我们强烈建议使用硬件密钥，因为其他 MFA 方法容易受到网络钓鱼攻击。</li>
+	<li>调查以下事件并作出反应：<ul>
+			<li>您的 Okta 实例的所有非预期密码和 MFA 更改。</li>
+			<li>由支持人员引发的可疑事件。</li>
+			<li>确保所有密码重置有效，并强制重置任何可疑的密码。</li>
+			<li>与 MFA 相关的任何可疑事件，确保用户帐户配置中只有有效的 MFA 密钥。</li>
+		</ul>
+	</li>
+	<li>监控以下事件：<ul>
+			<li>创建新的 Okta 用户。</li>
+			<li>重新激活 Okta 用户。</li>
+			<li>所有会话都与适当的身份验证相关联。</li>
+			<li>所有 Okta 帐户和权限更改。</li>
+			<li>MFA 策略覆盖、MFA 更改和 MFA 移除。</li>
+			<li>敏感应用程序降级。</li>
+			<li>供应链供应商访问您的租户。</li>
+		</ul>
+	</li>
+	<li>审核会话过期策略，以限制会话劫持攻击。</li>
+	<li>利用工具验证连接到关键系统的设备，如 Cloudflare 访问设备态势检查。</li>
+	<li>实行纵深防御作为您的检测和监控策略。</li>
+</ul>
+<p>Cloudflare 的安全和 IT 团队在此次入侵事件后继续保持警惕。如果 Okta 披露更多信息或通过额外的日志分析发现更多信息，我们将发布本篇博客文章的更新。</p>
+<p><em>Cloudflare 的安全事件响应团队<a href="http://cloudflare.com/careers" target="_blank" rel="noopener noreferrer">正在招贤纳士</a>。</em></p>

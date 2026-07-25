@@ -1,138 +1,61 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/custom-dlp-profiles">日本語</a>.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7qJZd1dizqFIdaPcbY7Xxo/c285a34ed84c8120f86801f516037e27/image5-4.png" alt="Announcing Custom DLP profiles" class="kg-image" width="1800" height="1012" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="introduction">Introduction</h3>
-		<a href="https://blog.cloudflare.com/#introduction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Where does sensitive data live? Who has access to that data? How do I know if that data has been improperly shared or leaked? These questions keep many IT and security administrators up at night. The goal of <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">data loss prevention (DLP)</a> is to give administrators the desired visibility and control over their sensitive data.</p>
-	<p>We shipped the <a href="https://blog.cloudflare.com/inline-dlp-ga">general availability of DLP</a> in September 2022, offering Cloudflare One customers better protection of their sensitive data. With DLP, customers can identify sensitive data in their corporate traffic, evaluate the intended destination of the data, and then allow or block it accordingly -- with details logged as permitted by your privacy and sovereignty requirements. We began by offering customers predefined detections for identifier numbers (e.g. Social Security #s) and financial information (e.g. credit card #s). Since then, nearly every customer has asked:</p>
-	<blockquote>
-		<p>“When can I build my own detections?”</p>
-	</blockquote>
-	<p>Most organizations care about credit card numbers, which use standard patterns that are easily detectable. But the data patterns of intellectual property or trade secrets vary widely between industries and companies, so customers need a way to detect the loss of their unique data. This can include internal project names, unreleased product names, or unannounced partner names.</p>
-	<p>As of today, your organization can build custom detections to identify these types of sensitive data using Cloudflare One. That’s right, today you are able to build Custom DLP Profile using the same regular expression approach that is used in policy building across our platform.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-to-use-it">How to use it</h3>
-		<a href="https://blog.cloudflare.com/#how-to-use-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">Cloudflare’s DLP</a> is embedded in our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">secure web gateway (SWG)</a> product, <a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gatewa</a>y, which routes your corporate traffic through Cloudflare for fast, safe Internet browsing. As your traffic passes through Cloudflare, you can inspect that HTTP traffic for sensitive data and apply DLP policies.</p>
-	<p>Building DLP custom profiles follows the same intuitive approach you’ve come to expect from Cloudflare.</p>
-	<p>First, once within the Zero Trust dashboard, navigate to the DLP Profiles tab under Gateway:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3kfzsPRGyGAS35yu7A0uC9/e02371cee6289fe92c38b0dacbbccef1/image2-13.png" alt="" class="kg-image" width="1198" height="428" loading="lazy">
-
-	</figure>
-	<p>Here you will find any available DLP profiles, either predefined or custom:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/199ahBcyglz52Lpsofvl1F/0ef3b17dd0a17ffc290db20d735bdc98/image1-20.png" alt="" class="kg-image" width="1999" height="748" loading="lazy">
-
-	</figure>
-	<p>Select to <b>Create Profile</b> to begin a new one. &nbsp;After providing a name and description, select <b>Add detection entry</b> to add a custom regular expression. A <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank" rel="noopener noreferrer">regular expression</a>, or regex, is a sequence of characters that specifies a search pattern in text, and is a standard way for administrators to achieve the flexibility and granularity they need in policy building.</p>
-	<p>Cloudflare Gateway currently supports regexes in HTTP policies using the <a href="https://docs.rs/regex/latest/regex/#syntax" target="_blank" rel="noopener noreferrer">Rust regex crate</a>. For consistency, we used the same crate to offer custom DLP detections. For documentation on our regex support, see <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank" rel="noopener noreferrer">our documentation</a>.</p>
-	<p>Regular expressions can be used to build custom PII detections of your choosing, such as email addresses, or to detect keywords for sensitive intellectual property.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6KclkjaZOxF6PMVkY0L2yM/9b327971802a650d2ffc7977fcd712c0/image3-9.png" alt="" class="kg-image" width="1999" height="844" loading="lazy">
-
-	</figure>
-	<p>Provide a name and a regex of your choosing. Every entry in a DLP profile is a new detection that you can scan for in your corporate traffic. Our <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank" rel="noopener noreferrer">documentation</a> provides resources to help you create and test Rust regexes.</p>
-	<p>Below is an example of regex to detect a simple email address:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4QUMf9IdSNh6i81pYWdzUb/b4295e07168c644dce339715c493bb43/image7-1.png" alt="" class="kg-image" width="1340" height="472" loading="lazy">
-
-	</figure>
-	<p>When you are done, you will see the entry in your profile. &nbsp;You can turn entries on and off in the <b>Status</b> field for easier testing.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3XCjno9mGXiEPz3oCv8BwL/96c7075d1516f4e8fb6484ba5f01fbfc/image4-5.png" alt="" class="kg-image" width="1999" height="1053" loading="lazy">
-
-	</figure>
-	<p>The custom profile can then be applied to traffic using an HTTP policy, just like a predefined profile. Here both a predefined and custom profile are used in the same policy, blocking sensitive traffic to dlptest.com:</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6cUsE6rB7AcS5oQMQVicXs/b5858d4f1aff7a7295d1c04edbe9000c/image6.png" alt="" class="kg-image" width="1910" height="1568" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="our-dlp-roadmap">Our DLP roadmap</h3>
-		<a href="https://blog.cloudflare.com/#our-dlp-roadmap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is just the start of our DLP journey, and we aim to grow the product exponentially in the coming quarters. In Q4 we delivered:</p>
-	<ul>
-		<li>
-			<p>Expanded Predefined DLP Profiles</p>
-		</li>
-		<li>
-			<p>Custom DLP Profiles</p>
-		</li>
-		<li>
-			<p>PDF scanning support</p>
-		</li>
-		<li>
-			<p>Upgraded file name logging</p>
-		</li>
-	</ul>
-	<p>Over the next quarters, we will add a number of features, including:</p>
-	<ul>
-		<li>
-			<p>Data at rest scanning with Cloudflare CASB</p>
-		</li>
-		<li>
-			<p>Minimum DLP match counts</p>
-		</li>
-		<li>
-			<p>Microsoft Sensitivity Label support</p>
-		</li>
-		<li>
-			<p>Exact Data Match (EDM)</p>
-		</li>
-		<li>
-			<p>Context analysis</p>
-		</li>
-		<li>
-			<p>Optical Character Recognition (OCR)</p>
-		</li>
-		<li>
-			<p>Even more predefined DLP detections</p>
-		</li>
-		<li>
-			<p>DLP analytics</p>
-		</li>
-		<li>
-			<p>Many more!</p>
-		</li>
-	</ul>
-	<p>Each of these features will offer you new data visibility and control solutions, and we are excited to bring these features to customers very soon.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-do-i-get-started">How do I get started?</h3>
-		<a href="https://blog.cloudflare.com/#how-do-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> <a href="https://blog.cloudflare.com/custom-dlp-profiles/edit">network-as-a-service</a> platform that connects users to enterprise resources. Our <a href="https://blog.cloudflare.com/inline-dlp-ga">GA blog announcement</a> provides more detail about using Cloudflare One to onboard traffic to DLP.</p>
-	<p>To get access to DLP via Cloudflare One, <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">reach out for a consultation</a>, or contact your account manager.</p>
-</div>
+<h3>Introduction</h3>
+<p>Where does sensitive data live? Who has access to that data? How do I know if that data has been improperly shared or leaked? These questions keep many IT and security administrators up at night. The goal of <a href="https://www.cloudflare.com/learning/access-management/what-is-dlp" target="_blank" rel="noopener noreferrer">data loss prevention (DLP)</a> is to give administrators the desired visibility and control over their sensitive data.</p>
+<p>We shipped the <a href="https://blog.cloudflare.com/inline-dlp-ga">general availability of DLP</a> in September 2022, offering Cloudflare One customers better protection of their sensitive data. With DLP, customers can identify sensitive data in their corporate traffic, evaluate the intended destination of the data, and then allow or block it accordingly -- with details logged as permitted by your privacy and sovereignty requirements. We began by offering customers predefined detections for identifier numbers (e.g. Social Security #s) and financial information (e.g. credit card #s). Since then, nearly every customer has asked:</p>
+<blockquote>“When can I build my own detections?”</blockquote>
+<p>Most organizations care about credit card numbers, which use standard patterns that are easily detectable. But the data patterns of intellectual property or trade secrets vary widely between industries and companies, so customers need a way to detect the loss of their unique data. This can include internal project names, unreleased product names, or unannounced partner names.</p>
+<p>As of today, your organization can build custom detections to identify these types of sensitive data using Cloudflare One. That’s right, today you are able to build Custom DLP Profile using the same regular expression approach that is used in policy building across our platform.</p>
+<h3>How to use it</h3>
+<p><a href="https://www.cloudflare.com/products/zero-trust/dlp" target="_blank" rel="noopener noreferrer">Cloudflare’s DLP</a> is embedded in our <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">secure web gateway (SWG)</a> product, <a href="https://www.cloudflare.com/products/zero-trust/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gatewa</a>y, which routes your corporate traffic through Cloudflare for fast, safe Internet browsing. As your traffic passes through Cloudflare, you can inspect that HTTP traffic for sensitive data and apply DLP policies.</p>
+<p>Building DLP custom profiles follows the same intuitive approach you’ve come to expect from Cloudflare.</p>
+<p>First, once within the Zero Trust dashboard, navigate to the DLP Profiles tab under Gateway:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="255" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=715&amp;h=255&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=640&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=715&amp;h=255&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=750&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=828&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=1080&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=1280&amp;h=457&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=1430&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1494 Embedded Image - CodJoT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW468CMSJWM6Q342G1RTMJSK.png&amp;w=1198&amp;h=428&amp;f=webp" data-lightbox-width="1198" data-lightbox-height="428" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="255" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Here you will find any available DLP profiles, either predefined or custom:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="268" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=640&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=750&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=828&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=1080&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=1280&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=1430&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1494 Embedded Image - i54OIu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AYPP0FARF32PFVCW97CK.png&amp;w=1920&amp;h=718&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="718" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="268" class="pt-portable-image-media"></div>
+</figure>
+<p>Select to <strong>Create Profile</strong> to begin a new one. &nbsp;After providing a name and description, select <strong>Add detection entry</strong> to add a custom regular expression. A <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank" rel="noopener noreferrer">regular expression</a>, or regex, is a sequence of characters that specifies a search pattern in text, and is a standard way for administrators to achieve the flexibility and granularity they need in policy building.</p>
+<p>Cloudflare Gateway currently supports regexes in HTTP policies using the <a href="https://docs.rs/regex/latest/regex/#syntax" target="_blank" rel="noopener noreferrer">Rust regex crate</a>. For consistency, we used the same crate to offer custom DLP detections. For documentation on our regex support, see <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank" rel="noopener noreferrer">our documentation</a>.</p>
+<p>Regular expressions can be used to build custom PII detections of your choosing, such as email addresses, or to detect keywords for sensitive intellectual property.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="302" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=640&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=750&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=828&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=1080&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=1280&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=1430&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1494 Embedded Image - Ms9fhv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW482T5ZF3GC2PA745S7P991.png&amp;w=1920&amp;h=811&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="811" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="302" class="pt-portable-image-media"></div>
+</figure>
+<p>Provide a name and a regex of your choosing. Every entry in a DLP profile is a new detection that you can scan for in your corporate traffic. Our <a href="https://developers.cloudflare.com/cloudflare-one/policies/filtering/http-policies/data-loss-prevention/#build-a-custom-profile" target="_blank" rel="noopener noreferrer">documentation</a> provides resources to help you create and test Rust regexes.</p>
+<p>Below is an example of regex to detect a simple email address:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="252" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=715&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=640&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=715&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=750&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=828&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=1080&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=1280&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=1430&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1494 Embedded Image - D2WWmA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QEYMTFNX49TFFBN1FSR9.png&amp;w=1340&amp;h=472&amp;f=webp" data-lightbox-width="1340" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="252" class="pt-portable-image-media"></div>
+</figure>
+<p>When you are done, you will see the entry in your profile. &nbsp;You can turn entries on and off in the <strong>Status</strong> field for easier testing.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="377" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=750&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=828&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=1080&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=1280&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=1430&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1494 Embedded Image - ZYCN67" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46384D3YVXPVMDWTDPXRZJ.png&amp;w=1920&amp;h=1011&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1011" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="377" class="pt-portable-image-media"></div>
+</figure>
+<p>The custom profile can then be applied to traffic using an HTTP policy, just like a predefined profile. Here both a predefined and custom profile are used in the same policy, blocking sensitive traffic to dlptest.com:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="587" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=715&amp;h=587&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=640&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=715&amp;h=587&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=750&amp;h=616&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=828&amp;h=680&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=1080&amp;h=887&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=1280&amp;h=1051&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=1430&amp;h=1174&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1494 Embedded Image - iYm1my" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488V0NC0PTNP6K4MXPMW9E.png&amp;w=1910&amp;h=1568&amp;f=webp" data-lightbox-width="1910" data-lightbox-height="1568" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="587" class="pt-portable-image-media"></div>
+</figure>
+<h3>Our DLP roadmap</h3>
+<p>This is just the start of our DLP journey, and we aim to grow the product exponentially in the coming quarters. In Q4 we delivered:</p>
+<ul>
+	<li>Expanded Predefined DLP Profiles</li>
+	<li>Custom DLP Profiles</li>
+	<li>PDF scanning support</li>
+	<li>Upgraded file name logging</li>
+</ul>
+<p>Over the next quarters, we will add a number of features, including:</p>
+<ul>
+	<li>Data at rest scanning with Cloudflare CASB</li>
+	<li>Minimum DLP match counts</li>
+	<li>Microsoft Sensitivity Label support</li>
+	<li>Exact Data Match (EDM)</li>
+	<li>Context analysis</li>
+	<li>Optical Character Recognition (OCR)</li>
+	<li>Even more predefined DLP detections</li>
+	<li>DLP analytics</li>
+	<li>Many more!</li>
+</ul>
+<p>Each of these features will offer you new data visibility and control solutions, and we are excited to bring these features to customers very soon.</p>
+<h3>How do I get started?</h3>
+<p>DLP is part of Cloudflare One, our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust</a> <a href="https://blog.cloudflare.com/custom-dlp-profiles/edit">network-as-a-service</a> platform that connects users to enterprise resources. Our <a href="https://blog.cloudflare.com/inline-dlp-ga">GA blog announcement</a> provides more detail about using Cloudflare One to onboard traffic to DLP.</p>
+<p>To get access to DLP via Cloudflare One, <a href="https://www.cloudflare.com/lp/cio-week-2023-cloudflare-one-contact-us" target="_blank" rel="noopener noreferrer">reach out for a consultation</a>, or contact your account manager.</p>

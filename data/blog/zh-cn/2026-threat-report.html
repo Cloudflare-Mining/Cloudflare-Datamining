@@ -1,0 +1,175 @@
+<p>如今的威胁形势变得空前复杂多变，也更加令人担忧：老练的民族国家行为者、超大容量 DDoS 攻击、利用深度伪造技术参与贵公司面试的欺诈者，甚至通过 Google Calendar、Dropbox 和 GitHub 等可信赖的内部工具发起的秘密攻击。</p>
+<p><a href="https://www.cloudflare.com/cloudforce-one" target="_blank" rel="noopener noreferrer"><u>Cloudforce One</u></a> 在过去一年里将数以万亿计的网络信号转化为可落地的情报，发现威胁形势发生了根本性演变：暴力入侵的时代正渐行渐远。取而代之的是一种高信任攻击模式，这种模式优先考虑不惜一切代价取得成果。为了给防御人员配备战略路线图以应对这个新时代的各种挑战，我们今天发布了首份<a href="https://cloudflare.com/lp/threat-report-2026" target="_blank" rel="noopener noreferrer"><strong><u>《2026 年 Cloudflare 威胁形势报告》</u></strong></a>。本报告将介绍企业所需的情报，以应对不断涌现的工业化网络威胁。</p>
+<h2>衡量风险的新型晴雨表：有效性度量 (MOE)</h2>
+<p>Cloudforce One 观察到攻击者的心理发生了更广泛的转变。要理解这些方法是如何成功的，我们必须探究其背后的原因：<strong>有效性度量</strong> (MOE)。</p>
+<p>2026 年，现代攻击者不再追求“复杂性”（即：复杂、昂贵的一次性攻击），转而追求吞吐量。MOE 是攻击者用于决定下一步攻击目标的指标。它是对<strong>投入与实际成效比</strong>的冷酷计算。</p>
+<ul>
+	<li>既然窃取的会话令牌（身份信息）具有更高的 MOE，为什么还要使用昂贵的 zero-day 漏洞利用？</li>
+	<li>既然声誉护盾 (LotX) 提供免费、几乎无法追踪且交付率高的基础设施，为什么还要构建自定义服务器？</li>
+	<li>既然 AI 可以自动发现连接最敏感数据的连接纽带信息，为什么还要手动编写代码？</li>
+</ul>
+<p>2026 年，最危险的威胁行为者并不是拥有最先进代码的人，而是能够将情报与技术整合到一个单一、连续的系统，并在最短时间内完成使命的人。</p>
+<h2>《2026 年 Cloudflare 威胁形势报告》的主要发现</h2>
+<p>2026 年的威胁形势呈现出八个主要趋势，均由 MOE 驱动：</p>
+<ol>
+	<li><strong>AI 自动化执行攻击者的高速操作。</strong>威胁行为者利用生成式 AI 进行实时网络映射、漏洞利用开发和制作深度伪造内容，使低技能行为者也能够发起高影响力攻击。</li>
+	<li><strong>政府支持的预先部署削弱了关键基础设施的韧性。</strong>包括 Salt Typhoon 和 Linen Typhoon 在内的中国威胁行为者正优先攻击北美电信、商业、政府和 IT 服务行业，以巩固其在北美的影响力，从而获得长期的地缘政治优势。</li>
+	<li><strong>权限过高的 SaaS 集成扩大了攻击影响范围。</strong>正如 <a href="https://blog.cloudflare.com/response-to-salesloft-drift-incident" target="_blank" rel="noopener noreferrer"><u>GRUB1 漏洞入侵 Salesloft</u></a> 的案例所示，第三方 API 集成的网络连接纽带导致单个被入侵的 API 能够引发连锁反应，进而影响数百个不同的企业环境。</li>
+	<li><strong>攻击者利用可信赖的云工具作为武器，掩盖攻击。</strong>威胁行为者积极瞄准各种合法的 SaaS、IaaS 和 PaaS 工具，例如 Google Calendar、Dropbox 和 GitHub，以掩盖正常的企业活动中的恶意行为。</li>
+	<li><strong>深度伪造身份正将敌对特工渗透至西方企业薪酬体系内部。</strong>朝鲜已将远程 IT 员工计划付诸实施，利用深度伪造技术和欺诈性身份将国家支持的特工直接安插到西方公司的薪酬体系中，以从事间谍活动和非法牟利。</li>
+	<li><strong>令牌窃取导致多因素身份验证失效。</strong>通过将 LummaC2 等信息窃取程序作为武器来收集活跃的会话令牌，<a href="https://www.cloudflare.com/the-net/bypassing-mfa" target="_blank" rel="noopener noreferrer"><u>攻击者可以绕过传统的多因素身份验证</u></a>，直接进行身份验证后的各项操作。</li>
+	<li><strong>中继盲区导致内部品牌仿冒成为可能。</strong>网络钓鱼即服务机器人利用邮件服务器未能重新验证发件人身份的盲区，将高信任度品牌的仿冒邮件直接发送至用户收件箱。</li>
+	<li><strong>超大规模攻击耗尽基础设施容量。</strong>由 <a href="https://www.cloudflare.com/learning/ddos/glossary/aisuru-kimwolf-botnet" target="_blank" rel="noopener noreferrer"><u>Aisuru</u></a> 等大型僵尸网络提供支持的超大规模分布式拒绝服务 (DDoS) 攻击不断刷新纪录，显著缩短人工响应的时间窗口。</li>
+</ol>
+<h2>深入研究：攻击者如何利用云工具作为武器</h2>
+<p>现在，我们来深入探讨 Cloudflare 发现的一个高 MOE 策略：利用云工具作为武器。攻击者不再使用已知的恶意服务器，而是利用 Google Drive、Microsoft Teams 和 Amazon S3 等合法云生态系统来掩盖其命令与控制 (C2) 流量。这称为“离地攻击”（或“一切即服务”）：攻击者伪装成可信赖的提供商，使其恶意活动几乎与正常的企业流量无法区分。</p>
+<p>威胁行为者还利用 SaaS 平台来托管、发起、重定向或扩大攻击。例如，Amazon SES 和 SendGrid 等专为合法批量发送电子邮件而设计的服务经常被用于发起<a href="https://www.cloudflare.com/the-net/phishing-impersonation" target="_blank" rel="noopener noreferrer"><u>复杂的网络钓鱼和恶意软件分发活动</u></a>。</p>
+<h3>某些攻击组织如何运用这些策略</h3>
+<p>尽管利用云资源是一种成熟的攻击手段，但 2025 年的调查显示，国家级攻击组织的策略正加速走向成熟：攻击者从单纯的基础设施滥用转向普遍的离地攻击。我们预测，2026 年，威胁行为者会将这些技术标准化，作为其作战手册中的战略目标。</p>
+<p>以下是一些威胁行为者组织、其总部所在地及其采用的攻击方法示例。</p>
+<div id="html-block-k27" class="html-block">
+	<style>
+		#html-block-k27 .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k27 .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k27 .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k27 .tg .tg-bniq {
+			background-color: #EFEFEF;
+			border-color: inherit;
+			color: #36393A;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k27 .tg .tg-v0hj {
+			background-color: #efefef;
+			border-color: inherit;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k27 .tg .tg-53s5 {
+			background-color: #FFF;
+			color: #1F1F1F;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k27 .tg .tg-bl8p {
+			background-color: #EFEFEF;
+			color: #36393A;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k27 .tg .tg-tp98 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #1F1F1F;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k27 .tg .tg-e4b2 {
+			background-color: #FFF;
+			border-color: inherit;
+			color: #1F1F1F;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-v0hj">威胁行为者</th>
+					<th class="tg-bl8p">国家/地区</th>
+					<th class="tg-bniq"><span style="font-weight:bold;background-color:#EFEFEF">技术</span></th>
+					<th class="tg-bniq"><span style="font-weight:bold;background-color:#EFEFEF">详情</span></th>
+					<th class="tg-bniq"><span style="font-weight:bold;background-color:#EFEFEF">示例</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">FrumpyToad</span></td>
+					<td class="tg-53s5">中国大陆</td>
+					<td class="tg-tp98"><span style="color:#1F1F1F;background-color:#FFF">基于逻辑的 C2</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">在信誉良好的 SaaS 逻辑“内部环境”中移动，以逃避检测。</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">将 Google Calendar 用作云到云 C2 循环的武器，直接在事件描述中读写加密命令。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">PunyToad</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">中国大陆</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">加密隧道技术</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">利用合法的开发人员工具，绕过出口过滤。</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">使用隧道技术和云计算来创建有韧性的、离云攻击架构，从而屏蔽后端源 IP 并优先长期驻留。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">NastyShrew</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">俄罗斯</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">粘贴站点死信解析器</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">利用公共“粘贴”网站，协调基础设施的迁移。</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">利用 Teletype.in 和 Rentry.co 等服务作为死信解析器 (DDR)；受感染的主机会定期轮询这些站点，以检索轮换使用的 C2 地址。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">PatheticSlug</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">朝鲜</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">边界 PaaS 化</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">利用云生态系统的“声誉护盾”，掩盖恶意投送。</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">使用 Google Drive 和 Dropbox 来托管 XenoRAT 恶意有效负载，利用 GitHub 进行隐蔽的 C2 通信，从而成功融入合法的企业流量。</span></td>
+				</tr>
+				<tr>
+					<td class="tg-tp98"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">CrustyKrill</span></td>
+					<td class="tg-53s5"><span style="font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">伊朗</span></td>
+					<td class="tg-tp98"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">SaaS 托管网络钓鱼</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">将凭证收集融入常见的云托管环境中。</span></td>
+					<td class="tg-e4b2"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#1F1F1F;background-color:transparent">在 Azure Web Apps (.azurewebsites.net) 上托管 C2 页面，并使用 ONLYOFFICE 来托管恶意有效负载，使其操作披上一层“合法”的外衣。</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<h2>Cloudforce One 如何揭示 2026 年的威胁形势</h2>
+<p>确立 MOE 需要的不仅仅是高层次观察。为了真实揭示 2026 年的威胁形势，本报告详细介绍了 Cloudforce One 如何独特地综合利用内部专业知识与全球遥测数据，充分挖掘传统安全模型遗漏的洞见。</p>
+<p>我们的方法多种多样。例如：</p>
+<ul>
+	<li>作为 AI 提供支持的防御措施研究的一部分，我们让 AI 编码智能体负责进行自我漏洞分析，利用该智能体发现其自身的安全漏洞。这种“内部测试”方法发现了 <strong><a href="https://github.com/anomalyco/opencode/security/advisories/GHSA-c83v-7274-4vgp" target="_blank" rel="noopener noreferrer"><u>CVE-2026-22813</u></a> (9.4 CVSS)</strong> 漏洞，这是 Markdown 渲染管道中的一个严重缺陷，可能会导致未经身份验证的远程代码执行。</li>
+	<li>我们对<strong>网络钓鱼即服务</strong> (PhaaS) 的深入研究表明，准入门槛已不复存在。分析师观察到，攻击者利用高信誉域名（Google Drive、Azure 等）绕过安全过滤。电子邮件遥测发现了一个身份验证漏洞，也就是<strong>将近 46% 的分析电子邮件未通过 <a href="https://developers.cloudflare.com/dmarc-management" target="_blank" rel="noopener noreferrer"><u>DMARC</u></a></strong> 验证（它是一种电子邮件身份验证协议），这揭示了 PhaaS 机器人正在迅速利用这个巨大的攻击面。</li>
+	<li>我们追踪了从隐蔽的漏洞利用到企图发起断网攻击的转变，发现 DDoS 攻击的<strong>基准流量达到 31.4 Tbps</strong>。我们的遥测数据还显示，在过去 3 个月内，<a href="https://radar.cloudflare.com/security/application-layer?dateRange=12w#leaked-credentials-usage" target="_blank" rel="noopener noreferrer"><u>63%</u></a> 的登录凭证来自其他地方已泄露的账户凭证，并且 <a href="https://radar.cloudflare.com/security/application-layer?dateRange=12w#leaked-credentials-usage" target="_blank" rel="noopener noreferrer"><u>94%</u></a> 的登录尝试源自机器人。</li>
+</ul>
+<p>在这项研究的每一个阶段，Cloudforce One 充分利用了我们庞大的全球遥测数据和前沿威胁情报，将看似孤立的事件联系起来。无论我们是在内部测试使用自有 AI 智能体来防范 zero-day 漏洞利用，还是追踪那些利用数百万台已被感染的机器人主机，通过隧道技术和住宅代理发起的攻击，这种统一的可见性能让我们看到单个遭受钓鱼网络攻击的凭证与超大规模分布式拒绝服务攻击之间的联系。</p>
+<h2>未来之路：利用自主防御，将 MOE 降至零</h2>
+<p>识别这些关联仅仅只是第一步。当威胁以机器速度移动时，以人为中心的防御措施不再是有效的屏障。为了应对“系统发起的进攻”，整个行业的防御人员必须转为采用<strong>自主防御</strong>模型，才能将攻击者的 MOE 降至零<strong>。</strong></p>
+<p>这种向自主防御的转变需要超越手动检查清单和碎片化警报的局限。企业必须利用实时可见性和自动化响应功能，强化其网络的连接纽带。在这个新时代，防御目标不仅仅是构建更坚固的防御墙，而是确保系统即使是在无人监测的情况下也能比攻击者更快地做出反应。</p>
+<p>为了支持这种转变，我们今天<a href="https://blog.cloudflare.com/cloudflare-threat-intelligence-platform" target="_blank" rel="noopener noreferrer"><u>正式推出威胁事件平台重大升级</u></a>：从简单的数据访问，升级为面向安全运营中心的完全自动化、可视化指挥中心。</p>
+<h2>获取《2026 年 Cloudflare 威胁形势报告》</h2>
+<p>借助 Cloudforce 无以伦比的威胁情报可见性和 Cloudforce One 研究人员的专业知识，我们提供您所需的情报，以防范工业化网络威胁。<strong>如需查看完整数据集、深入了解案例研究和战术建议，请阅读完整版<a href="https://cloudflare.com/lp/threat-report-2026" target="_blank" rel="noopener noreferrer"><u>《2026 年 Cloudflare 威胁形势报告》</u></a></strong>。</p>
+<p>如果您有兴趣进一步了解 Cloudflare 威胁情报、托管防御或事件响应产品，<strong><a href="https://www.cloudflare.com/lp/cloudforce-one-contact" target="_blank" rel="noopener noreferrer"><u>请联系 Cloudforce One 专家</u></a>。</strong></p>

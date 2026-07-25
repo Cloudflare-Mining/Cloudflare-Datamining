@@ -1,0 +1,250 @@
+<p>2022 年 Developer Week 已经圆满结束。过去一周，我们分享了 31 篇文章，涉及您可以在 Cloudflare 上构建什么，以及我们关于前进方向的愿景和路线图。我们分享了产品公告、客户和合作伙伴案例，并提供了技术深入剖析。如果您错过了任何文章，这里提供了回顾，供您参考。</p>
+<h2>产品和功能公告</h2>
+<p>发布</p>
+<div id="html-block-k7" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Announcement</th>
+				<th>Summary</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/welcome-to-the-supercloud-and-developer-week-2022">Welcome to the Supercloud (and Developer Week 2022)</a></td>
+				<td>Our vision of the cloud -- a model of cloud computing that promises to make developers highly productive at scaling from one to Internet-scale in the most flexible, efficient, and economical way.</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/cloudflare-queues-open-beta">Build applications of any size on Cloudflare with the Queues open beta</a></td>
+				<td>Build performant and resilient distributed applications with Queues. Available to all developers with a paid Workers plan.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/cloudflare-r2-super-slurper">Migrate from S3 easily with the R2 Super Slurper</a></td>
+				<td>A tool to easily and efficiently move objects from your existing storage provider to R2.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/cloudflare-workers-templates">Get started with Cloudflare Workers with ready-made templates</a></td>
+				<td>See what’s possible with Workers and get building faster with these starter templates.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/cache-reserve-open-beta">Reduce origin load, save on cloud egress fees, and maximize cache hits with Cache Reserve</a></td>
+				<td>Cache Reserve is graduating to open beta – users can now test and integrate it into their content delivery strategy without any additional waiting.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/announcing-logs-engine">Store and process your Cloudflare Logs... with Cloudflare</a></td>
+				<td>Query Cloudflare logs stored on R2.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/d1-open-alpha">UPDATE Supercloud SET status = 'open alpha' WHERE product = 'D1'</a></td>
+				<td>D1, our first global relational database, is in open alpha. Start building and share your feedback with us.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/introducing-workers-browser-rendering-api">Automate an isolated browser instance with just a few lines of code</a></td>
+				<td>The Browser Rendering API is an out of the box solution to run browser automation tasks with Puppeteer in Workers.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/mutual-tls-for-workers">Bringing authentication and identification to Workers through Mutual TLS</a></td>
+				<td>Send outbound requests with Workers through a mutually authenticated channel.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/pages-function-goes-GA">Spice up your sites on Cloudflare Pages with Pages Functions General Availability</a></td>
+				<td>Easily add dynamic content to your Pages projects with Functions. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/launchpad-fall-22">Announcing the first Workers Launchpad cohort and growth of the program to $2 billion</a></td>
+				<td>We were blown away by the interest in the Workers Launchpad Funding Program and are proud to introduce the first cohort.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/snippets-announcement">The most programmable Supercloud with Cloudflare Snippets</a></td>
+				<td>Modify traffic routed through the Cloudflare CDN without having to write a Worker.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/deployments-for-workers">Keep track of Workers’ code and configuration changes with Deployments</a></td>
+				<td>Track your changes to a Worker configuration, binding, and code.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/workers-logpush-GA">Send Cloudflare Workers logs to a destination of your choice with Workers Trace Events Logpush</a></td>
+				<td>Gain visibility into your Workers when logs are sent to your analytics platform or <a href="https://www.cloudflare.com/learning/cloud/what-is-object-storage">object storage</a>. Available to all users on a Workers paid plan. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/improving-workers-types">Improved Workers TypeScript support</a></td>
+				<td>Based on feedback from users we’ve improved our types and are open-sourcing the automatic generation scripts. </td>
+			</tr>
+
+
+		</tbody>
+	</table>
+</div>
+<p>摘要</p>
+<div id="html-block-ka" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Announcement</th>
+				<th>Summary</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/standards-compliant-workers-api">The road to a more standards-compliant Workers API</a></td>
+				<td>An update on the work the <a href="https://github.com/wintercg">WinterCG</a> is doing on the creation of common API standards in JavaScript runtimes and how Workers is implementing them.
+				</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/r2-rayid-retrieval">Indexing millions of HTTP requests using Durable Objects
+					</a></td>
+				<td>Indexing and querying millions of logs stored in R2 using Workers, Durable Objects, and the Streams API. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/building-a-better-developer-experience-through-api-documentation">Iteration isn't just for code: here are our latest API docs</a></td>
+				<td>We’ve revamped our API reference documentation to standardize our API content and improve the overall developer experience when using the Cloudflare APIs. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/making-static-sites-dynamic-with-cloudflare-d1">Making static sites dynamic with D1</a></td>
+				<td>A template to build a D1-based comments API. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/open-api-transition">The Cloudflare API now uses OpenAPI schemas</a></td>
+				<td>OpenAPI schemas are now available for the Cloudflare API. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/pages-full-stack-frameworks">Server-side render full stack applications with Pages Functions</a></td>
+				<td>Run server-side rendering in a Function using a variety of frameworks including Qwik, Astro, and SolidStart.</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/fragment-piercing">Incremental adoption of micro-frontends with Cloudflare Workers</a></td>
+				<td>How to replace selected elements of a legacy client-side rendered application with server-side rendered fragments using Workers. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/technology-behind-radar2">How we built it: the technology behind Cloudflare Radar 2.0</a></td>
+				<td>Details on how we rebuilt Radar using Pages, Remix, Workers, and R2. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/terraforming-cloudflare-at-cloudflare">How Cloudflare uses Terraform to manage Cloudflare</a></td>
+				<td>How we made it easier for our developers to make changes with the Cloudflare Terraform provider. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/network-performance-update-developer-week">Network performance Update: Developer Week 2022</a></td>
+				<td>See how fast Cloudflare Workers are compared to other solutions.</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/using-analytics-engine-to-improve-analytics-engine">How Cloudflare instruments services using Workers Analytics Engine</a></td>
+				<td>Instrumentation with Analytics Engine provides data to find bugs and helps us prioritize new features. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/miniflare-and-workerd">Doubling down on local development with Workers:Miniflare meets workerd</a></td>
+				<td>Improving local development using Miniflare3, now powered by workerd.</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+<p><a href="https://blog.cloudflare.com/zh-cn/welcome-to-the-supercloud-and-developer-week-2022-zh-cn">欢迎来到 Supercloud 时代（且欢迎参加 2022 年Developer Week）</a></p>
+<div id="html-block-ke" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Announcement</th>
+				<th>Summary</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/devcycle-customer-story">Cloudflare Workers scale too well and broke our infrastructure, so we are rebuilding it on Workers</a></td>
+				<td>How DevCycle re-architected their feature management tool using Workers. </td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/neon-postgres-database-from-workers">Easy Postgres integration with Workers and Neon.tech</a></td>
+				<td>Neon.tech solves the challenges of connecting to Postgres from Workers</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/xata-customer-story">Xata Workers: client-side database access without client-side secrets</a></td>
+				<td>Xata uses Workers for Platform to reduce security risks of running untrusted code.</td>
+			</tr>
+			<tr>
+				<td><a href="http://staging.blog.mrk.cfdata.org/twilio-segment-sdk-powered-by-cloudflare-workers">Twilio Segment Edge SDK powered by Cloudflare Workers</a></td>
+				<td>The Segment Edge SDK, built on Workers, helps applications collect and track events from the client, and get access to realtime user state to personalize experiences.</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>我们的云愿景——一种云计算模型，有望使开发人员在从个体规模扩展到互联网规模时以更灵活、高效、经济的方式提高生产力。</p>
+<p><a href="https://blog.cloudflare.com/cloudflare-queues-open-beta">使用 Queues 公测版，在 Cloudflare 上构建任意大小的应用程序</a></p>
+<p>使用 Queues 构建高性能、弹性的分布式应用程序。对 Workers 付费计划的所有开发人员可用。</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/cloudflare-r2-super-slurper-zh-cn">使用 R2 Super Slurper 轻松从 S3 迁移</a></p>
+<p>该工具可将对象从现有存储提供商轻松高效地移至 R2。</p>
+<p><a href="https://blog.cloudflare.com/cloudflare-workers-templates">开始将现成模板与 Cloudflare Workers 搭配使用</a></p>
+<p>了解使用 Workers 可以实现的功能，并通过这些入门模板更快构建。</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/cache-reserve-open-beta-zh-cn">使用 Cache Reserve，减少源站负载，节省云出口费用，并最大限度提高缓存命中率</a></p>
+<p>Cache Reserve 正式进入公开测试阶段——用户无需再苦苦等待，现在即可对其进行测试，并将其集成至内容交付策略中</p>
+<p><a href="https://blog.cloudflare.com/announcing-logs-engine">使用 Cloudflare 存储并处理您的 Cloudflare 日志...</a></p>
+<p>在 R2 上存储的查询 Cloudflare 日志。</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/d1-open-alpha-zh-cn">更新 Supercloud 设置状态 =“公开 α 测试”，其中产品 =“D1”；</a></p>
+<p>我们的首个全球关系数据库 D1 已处于公开 α 测试阶段。开始构建并与我们分享您的反馈。</p>
+<p><a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">使用短短几行代码，自动执行隔离的浏览器实例</a></p>
+<p>浏览器渲染 API 是即开即用型解决方案，可使用 Workers 中的 Puppeteer 运行浏览器自动化任务。</p>
+<p><a href="https://blog.cloudflare.com/mutual-tls-for-workers">通过相互 TLS，将身份验证和识别引入 Workers</a></p>
+<p>使用 Workers 通过手动进行身份验证的通道发送出站请求。</p>
+<p><a href="https://blog.cloudflare.com/pages-function-goes-GA">利用 Pages Functions 普遍可用性为 Cloudflare Pages 上的网站丰富内容</a></p>
+<p>使用 Functions 轻松向 Pages 项目添加动态内容。</p>
+<p><a href="https://blog.cloudflare.com/zh-cn/launchpad-fall-22-zh-cn">隆重宣布 Workers Launchpad 首批初创公司暨投资规模扩大到 20 亿美元</a></p>
+<p>Workers Launchpad 基金计划受到极其广泛的关注，令我们印象深刻，我们很荣幸地隆重推出第一个群组。</p>
+<p><a href="https://blog.cloudflare.com/snippets-announcement">具有 Cloudflare Snippets 的最高可编程性 Supercloud</a></p>
+<p>修改通过 Cloudflare CDN 路由的流量，而不必编写 Worker。</p>
+<p><a href="https://blog.cloudflare.com/deployments-for-workers">使用 Deployments 追踪 Workers 的代码与配置更改</a></p>
+<p>跟踪您对 Worker 配置、绑定和代码的更改。</p>
+<p><a href="https://blog.cloudflare.com/workers-logpush-GA">使用 Workers Trace Events Logpush，将 Cloudflare Workers 日志发送到您选择的目的地</a></p>
+<p>将日志发送到您的分析平台或对象存储时获得对 Workers 的可见性。对 Workers 付费计划的所有用户可用。</p>
+<p><a href="https://blog.cloudflare.com/improving-workers-types">改进了 Workers TypeScript 支持</a></p>
+<p>基于用户的反馈，我们改进了我们的类型，并将自动生成脚本开源。</p>
+<h2><strong>技术深入剖析</strong></h2>
+<p>公告</p>
+<p>摘要</p>
+<p><a href="https://blog.cloudflare.com/standards-compliant-workers-api">通往更合规的 Workers API 的道路</a></p>
+<p>关于WinterCG 在创建 JavaScript 运行时中的常见 API 标准时所做工作以及 Workers 实现它们的方法的更新。</p>
+<p><a href="https://blog.cloudflare.com/r2-rayid-retrieval">使用 Durable Objects 索引数百万个 HTTP 请求</a></p>
+<p>使用 Workers、Durable Objects 和 Streams API 对 R2 中存储的数百万日志进行索引编制和查询。</p>
+<p><a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation">迭代并不止针对代码：下面是我们的最新 API 文档</a></p>
+<p>我们改造了我们的 API 参考文档，为我们的 API 内容定下标准，并提升了使用 Cloudflare API 时的整体开发人员体验。</p>
+<p><a href="https://blog.cloudflare.com/making-static-sites-dynamic-with-cloudflare-d1">利用 D1，将静态网站变为动态</a></p>
+<p>构建基于 D1 的评论 API 的模板。</p>
+<p><a href="https://blog.cloudflare.com/open-api-transition">Cloudflare API 现在使用 OpenAPI 架构</a></p>
+<p>OpenAPI 模式现在可用于 Cloudflare API。</p>
+<p><a href="https://blog.cloudflare.com/pages-full-stack-frameworks">具有 Pages Functions 的服务器端渲染全栈应用程序</a></p>
+<p>使用包括 Qwik、Astro 和 SolidStart 在内的各种框架，在 Function 中运行服务器端渲染。</p>
+<p><a href="https://blog.cloudflare.com/fragment-piercing">通过 Cloudflare Workers 增加采用微前端</a></p>
+<p>如何使用 Workers 将旧版客户端渲染的应用程序的所选元素替换为服务器端渲染的片段。</p>
+<p><a href="https://blog.cloudflare.com/technology-behind-radar2">我们的构建过程：Cloudflare Radar 2.0 背后的技术</a></p>
+<p>关于我们如何使用 Pages、Remix、Workers 和 R2 重新构建 Radar 的详细信息。</p>
+<p><a href="https://blog.cloudflare.com/terraforming-cloudflare-at-cloudflare">Cloudflare 如何使用 Terraform 管理 Cloudflare</a></p>
+<p>我们如何让开发人员能够更轻松地通过 Cloudflare Terraform 提供商做出更改。</p>
+<p><a href="https://blog.cloudflare.com/network-performance-update-developer-week">网络性能更新：2022 年 Developer Week</a></p>
+<p>了解 Cloudflare Workers 相较于其他解决方案有多快速。</p>
+<p><a href="https://blog.cloudflare.com/using-analytics-engine-to-improve-analytics-engine">Cloudflare 如何使用 Workers Analytics Engine 检测服务</a></p>
+<p>使用 Analytics Engine 提供了用于查找错误的数据，并帮助我们优先处理新功能。</p>
+<p><a href="https://blog.cloudflare.com/miniflare-and-workerd">使用 Workers 加倍推进本地开发：Miniflare 与 workerd 相结合</a></p>
+<p>使用现在由 workerd 提供技术支持的 Miniflare3 改进本地开发。</p>
+<h2><strong>客户和合作伙伴案例</strong></h2>
+<p>发布</p>
+<p>摘要</p>
+<p><a href="https://blog.cloudflare.com/devcycle-customer-story">Cloudflare Workers 规模太大，打破了我们的基础结构，因此我们正在 Workers 上进行重新构建</a></p>
+<p>DevCycle 如何使用 Workers 重新构建了其功能管理工具。</p>
+<p><a href="https://blog.cloudflare.com/neon-postgres-database-from-workers">轻松将 Postgres 与 Workers 和 Neon.tech 进行集成</a></p>
+<p>Neon.tech 解决了从 Workers 连接到 Postgres 的难题</p>
+<p><a href="https://blog.cloudflare.com/xata-customer-story">Xata Workers：无需客户端密码即可进行客户端数据库访问</a></p>
+<p>Xata 使用 Workers for Platform 降低运行不可信代码的安全风险。</p>
+<p><a href="https://blog.cloudflare.com/twilio-segment-sdk-powered-by-cloudflare-workers">由 Cloudflare Workers 提供支持的 Twilio Segment Edge SDK</a></p>
+<p>Workers 上构建的 Segment Edge SDK 帮助应用程序从客户端收集和跟踪事件，访问实时用户状态以个性化体验。</p>
+<h2><strong>下一步</strong></h2>
+<p>2022 年 Developer Week 就是这样了。但您可以加入 <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Discord 社区</a>，继续进行讨论。</p>

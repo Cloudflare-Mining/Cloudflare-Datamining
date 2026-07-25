@@ -1,99 +1,44 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1RP1guCDorqN0cUjg2BsPt/20009973e6374002968eae8bdc2c4a5b/learn-more-about-workers-sites-at-austin-san-francisco-meetups.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Last Friday, at the end of Cloudflare’s 9th <a href="https://blog.cloudflare.com/birthday-week-2019-wrap-up">birthday week</a>, we announced <a href="https://blog.cloudflare.com/extending-the-workers-platform">Workers Sites</a>.</p>
-	<p>Now, using the Wrangler CLI, you can deploy entire websites directly to the Cloudflare Network using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> and Workers KV. If you can statically generate the assets for your site, think create-react-app, Jekyll, or even the WP2Static plugin, you can deploy it to our global network, which spans 194 cities in more than 90 countries.</p>
-	<p>If you’d like to learn more about how it was built, you can read more about this in the <a href="https://blog.cloudflare.com/extending-the-workers-platform">technical blog post</a>. Additionally, I wanted to give you an opportunity to meet with some of the developers who contributed to this product and hear directly from them about their process, potential use cases, and what it took to build.</p>
-	<p>Check out these events. If you’re based in Austin or San Francisco (more cities coming soon!), join us on-site. If you’re based somewhere else, you can watch the recording of the events afterwards.</p>
-	<p>Growing Dev Platforms at Scale &amp; Deploying Static Websites</p>
-	<hr>
-	<div class="flex anchor relative">
-		<h3 id="talk-1-inspiring-with-content-how-to-grow-developer-platforms-at-scale">Talk 1: Inspiring with Content: How to Grow Developer Platforms at Scale</h3>
-		<a href="https://blog.cloudflare.com/#talk-1-inspiring-with-content-how-to-grow-developer-platforms-at-scale" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Serverless platforms like Cloudflare Workers provide benefits like scalability, high performance, and lower costs. However, when talking to developers, one of the most common reactions is, "this sounds interesting, but what do I build with it?"</p>
-	<p>In this talk, we’ll cover how at Cloudflare we’ve been able to answer this question at scale with Workers Sites. We’ll go over why this product exists and how the implementation leads to some unintended discoveries.</p>
-	<p><b>Speaker Bio</b>:<a href="https://twitter.com/miss_vee22" target="_blank" rel="noopener noreferrer">Victoria Bernard</a> is a full-stack, product-minded engineer focused on Cloudflare Workers Developer Experience. An engineer who started a career working at large firms in hardware sales and moved throughout Cloudflare from support to product and to development. Passionate about building products that make developer lives easier and more productive.</p>
-	<div class="flex anchor relative">
-		<h3 id="talk-2-extending-a-serverless-platform-how-to-fake-a-file-system-and-get-away-with-it">Talk 2: &nbsp;Extending a Serverless Platform: How to Fake a File System…and Get Away With It</h3>
-		<a href="https://blog.cloudflare.com/#talk-2-extending-a-serverless-platform-how-to-fake-a-file-system-and-get-away-with-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When building a platform for developers, you can’t anticipate every use case. So, how do you build new functionality into a platform in a sustainable way, and inspire others to do the same?</p>
-	<p>Let’s talk about how we took a globally distributed serverless platform (Cloudflare Workers) and key-value store (Workers KV) intended to store short-lived data and turned them into a way to easily deploy static websites. It wasn’t a straightforward journey, but join as we overcome roadblocks and learn a few lessons along the way.</p>
-	<p><b>Speaker Bio:</b><a href="https://twitter.com/ashleymichaldev" target="_blank" rel="noopener noreferrer">Ashley Lewis</a> headed the development of the features that became Workers Sites. She's process and collaboration oriented and focused on user experience first at every level of the stack. Ashley proudly tops the leaderboard for most LOC deleted.</p>
-	<p><b>Agenda</b>:</p>
-	<ul>
-		<li>
-			<p>6:00pm - Doors open</p>
-		</li>
-		<li>
-			<p>6:30pm - Talk 1: Inspiring with Content: How to Grow Developer Platforms at Scale</p>
-		</li>
-		<li>
-			<p>7:00pm - Talk 2: &nbsp;Extending a Serverless Platform: How to Fake a File System…and Get Away With It</p>
-		</li>
-		<li>
-			<p>7:30pm - Networking over food and drinks</p>
-		</li>
-		<li>
-			<p>8:00pm - Event conclusion</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="austin-texas-meetup">Austin, Texas Meetup</h3>
-		<a href="https://blog.cloudflare.com/#austin-texas-meetup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gxlJEQ4Q6yT0QJcAeGyV0/f252f8d4902f9010d147cf1ecc9c762f/Austin-Serverless-Meetup-_2x.png" alt="" class="kg-image" width="1600" height="1016" loading="lazy">
-
-	</figure>
-	<ul>
-		<li>
-			<p><b>DATE/TIME</b> - October 3, 6:00pm-8:00pm</p>
-		</li>
-		<li>
-			<p><b>LOCATION</b>: <a href="https://goo.gl/maps/K2scWSiF4NzGXU7CA" target="_blank" rel="noopener noreferrer">Cloudflare Austin</a></p>
-		</li>
-	</ul>
-	<p><a href="https://www.meetup.com/Real-World-Serverless-Austin/events/265007453" target="_blank" rel="noopener noreferrer">Register Here »</a></p>
-	<div class="flex anchor relative">
-		<h3 id="san-francisco-california-meetup">San Francisco, California Meetup</h3>
-		<a href="https://blog.cloudflare.com/#san-francisco-california-meetup" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5nERQrfsBd0TwvmDwAWR5x/5d6b7d200e65c19d15803814dacdbb5f/San-Francisco-Serverless-Meetup_2x-1.png" alt="" class="kg-image" width="1600" height="1012" loading="lazy">
-
-	</figure>
-	<ul>
-		<li>
-			<p><b>DATE/TIME -</b> October 14, 6:00pm-8:00pm</p>
-		</li>
-		<li>
-			<p><b>LOCATION</b> - <a href="https://g.page/cloudflare-hq?share=" target="_blank" rel="noopener noreferrer">Cloudflare San Francisco</a></p>
-		</li>
-	</ul>
-	<p><a href="https://www.meetup.com/Real-World-Serverless-San-Francisco/events/265104055" target="_blank" rel="noopener noreferrer">Register Here »</a></p>
-	<p>While you’re at it, check out our monthly developer newsletter: <a href="https://blog.cloudflare.com/serverlist">The Serverlist</a></p>
-	<hr>
-	<p><i>Have you built something interesting with Workers? Let us know</i> <a href="http://twitter.com/@CloudflareDev" target="_blank" rel="noopener noreferrer"><i>@CloudflareDev</i></a><i>!</i></p>
-</div>
+<p>Last Friday, at the end of Cloudflare’s 9th <a href="https://blog.cloudflare.com/birthday-week-2019-wrap-up">birthday week</a>, we announced <a href="https://blog.cloudflare.com/extending-the-workers-platform">Workers Sites</a>.</p>
+<p>Now, using the Wrangler CLI, you can deploy entire websites directly to the Cloudflare Network using <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> and Workers KV. If you can statically generate the assets for your site, think create-react-app, Jekyll, or even the WP2Static plugin, you can deploy it to our global network, which spans 194 cities in more than 90 countries.</p>
+<p>If you’d like to learn more about how it was built, you can read more about this in the <a href="https://blog.cloudflare.com/extending-the-workers-platform">technical blog post</a>. Additionally, I wanted to give you an opportunity to meet with some of the developers who contributed to this product and hear directly from them about their process, potential use cases, and what it took to build.</p>
+<p>Check out these events. If you’re based in Austin or San Francisco (more cities coming soon!), join us on-site. If you’re based somewhere else, you can watch the recording of the events afterwards.</p>
+<p>Growing Dev Platforms at Scale &amp; Deploying Static Websites</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<h3>Talk 1: Inspiring with Content: How to Grow Developer Platforms at Scale</h3>
+<p>Serverless platforms like Cloudflare Workers provide benefits like scalability, high performance, and lower costs. However, when talking to developers, one of the most common reactions is, "this sounds interesting, but what do I build with it?"</p>
+<p>In this talk, we’ll cover how at Cloudflare we’ve been able to answer this question at scale with Workers Sites. We’ll go over why this product exists and how the implementation leads to some unintended discoveries.</p>
+<p><strong>Speaker Bio</strong>:<a href="https://twitter.com/miss_vee22" target="_blank" rel="noopener noreferrer">Victoria Bernard</a> is a full-stack, product-minded engineer focused on Cloudflare Workers Developer Experience. An engineer who started a career working at large firms in hardware sales and moved throughout Cloudflare from support to product and to development. Passionate about building products that make developer lives easier and more productive.</p>
+<h3>Talk 2: &nbsp;Extending a Serverless Platform: How to Fake a File System…and Get Away With It</h3>
+<p>When building a platform for developers, you can’t anticipate every use case. So, how do you build new functionality into a platform in a sustainable way, and inspire others to do the same?</p>
+<p>Let’s talk about how we took a globally distributed serverless platform (Cloudflare Workers) and key-value store (Workers KV) intended to store short-lived data and turned them into a way to easily deploy static websites. It wasn’t a straightforward journey, but join as we overcome roadblocks and learn a few lessons along the way.</p>
+<p><strong>Speaker Bio:</strong><a href="https://twitter.com/ashleymichaldev" target="_blank" rel="noopener noreferrer">Ashley Lewis</a> headed the development of the features that became Workers Sites. She's process and collaboration oriented and focused on user experience first at every level of the stack. Ashley proudly tops the leaderboard for most LOC deleted.</p>
+<p><strong>Agenda</strong>:</p>
+<ul>
+	<li>6:00pm - Doors open</li>
+	<li>6:30pm - Talk 1: Inspiring with Content: How to Grow Developer Platforms at Scale</li>
+	<li>7:00pm - Talk 2: &nbsp;Extending a Serverless Platform: How to Fake a File System…and Get Away With It</li>
+	<li>7:30pm - Networking over food and drinks</li>
+	<li>8:00pm - Event conclusion</li>
+</ul>
+<h3>Austin, Texas Meetup</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="454" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=640&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=715&amp;h=454&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=750&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=828&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=1080&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=1280&amp;h=813&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=1430&amp;h=908&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Learn more about Workers Sites at Austin &amp; San Francisco Meetups Embedded Image - DOl4yZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44R00ZMBDW2WXSYY3JY22D.png&amp;w=1600&amp;h=1016&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1016" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="454" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<ul>
+	<li><strong>DATE/TIME</strong> - October 3, 6:00pm-8:00pm</li>
+	<li><strong>LOCATION</strong>: <a href="https://goo.gl/maps/K2scWSiF4NzGXU7CA" target="_blank" rel="noopener noreferrer">Cloudflare Austin</a></li>
+</ul>
+<p><a href="https://www.meetup.com/Real-World-Serverless-Austin/events/265007453" target="_blank" rel="noopener noreferrer">Register Here »</a></p>
+<h3>San Francisco, California Meetup</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="452" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=715&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=640&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=715&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=750&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=828&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=1080&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=1280&amp;h=809&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=1430&amp;h=904&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Learn more about Workers Sites at Austin &amp; San Francisco Meetups Embedded Image - UeNIlO" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47PPZ5JYCMTKEZEXNGBWB2.png&amp;w=1600&amp;h=1012&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1012" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="452" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li><strong>DATE/TIME -</strong> October 14, 6:00pm-8:00pm</li>
+	<li><strong>LOCATION</strong> - <a href="https://g.page/cloudflare-hq?share=" target="_blank" rel="noopener noreferrer">Cloudflare San Francisco</a></li>
+</ul>
+<p><a href="https://www.meetup.com/Real-World-Serverless-San-Francisco/events/265104055" target="_blank" rel="noopener noreferrer">Register Here »</a></p>
+<p>While you’re at it, check out our monthly developer newsletter: <a href="https://blog.cloudflare.com/serverlist">The Serverlist</a></p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><em>Have you built something interesting with Workers? Let us know</em> <em><a href="http://twitter.com/@CloudflareDev" target="_blank" rel="noopener noreferrer">@CloudflareDev</a>!</em></p>

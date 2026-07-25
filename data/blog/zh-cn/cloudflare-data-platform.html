@@ -1,0 +1,166 @@
+<p>在 2025 年 4 月的 Developer Week 期间，我们宣布推出 <a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog 公开测试版</u></a>——这是一个基于 <a href="https://www.cloudflare.com/developer-platform/products/r2" target="_blank" rel="noopener noreferrer"><u>Cloudflare R2 对象存储</u></a>构建的全托管 <a href="https://iceberg.apache.org/docs/nightly" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a> 目录服务。今天，我们在此基础之上，正式推出三项全新功能：</p>
+<ul>
+	<li><strong>Cloudflare Pipelines</strong> 接收通过 Workers 或 HTTP 发送的事件，使用 SQL 对其进行转换，并将它们提取到 Iceberg 中，或作为文件存储在 R2 上</li>
+	<li><strong>R2 Data Catalog</strong> 管理 Iceberg 元数据，目前执行包括压缩在内的持续维护，以提升查询性能</li>
+	<li><strong>R2 SQL</strong> 是我们自研的分布式 SQL 引擎，旨在对 R2 中的数据执行 PB 级查询</li>
+</ul>
+<p>这些产品共同构成了 <strong>Cloudflare 数据平台</strong>，它是一个完整的解决方案，用于提取、存储和查询分析数据表。</p>
+<p>与所有 <a href="https://www.cloudflare.com/developer-platform/products" target="_blank" rel="noopener noreferrer"><u>Cloudflare 开发人员平台产品</u></a>一样，它们在我们的全球计算基础架构上运行。它们基于开放标准和互操作性构建。这意味着您可以携带自己的 Iceberg 查询引擎（无论是 PyIceberg、DuckDB 还是 Spark）与 Databricks 和 Snowflake 等其他平台连接，并且无需支付输出费用即可访问您的数据。</p>
+<p>对于现代公司而言，分析数据至关重要。它使您能够了解用户的行为、公司的业绩，并在出现问题时向您发出警报。但传统的数据基础设施成本高昂且难以运营，需要固定的云基础设施和内部专业知识。我们构建的 Cloudflare 数据平台简单易用，任何人都可以轻松使用，并且价格合理，并基于使用量进行定价。</p>
+<p>如果您想立即开始实践，可以按照<a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>数据平台教程</u></a>的逐步指导，创建一个用于处理事件并将其投递到 <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a> 表的<a href="https://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>数据处理管道 (Pipeline)</u></a>——该表支持通过 <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> 进行查询。如果想深入了解我们的技术发展历程及整体实现原理，欢迎继续阅读。</p>
+<h3>我们最终是如何打造出这套数据平台的？</h3>
+<p>我们<a href="https://blog.cloudflare.com/introducing-r2-object-storage" target="_blank" rel="noopener noreferrer"><u>于 2021 年推出了 R2 对象存储</u></a>，并制定了颠覆性的定价策略：免除<a href="https://www.cloudflare.com/learning/cloud/what-are-data-egress-fees" target="_blank" rel="noopener noreferrer"><u>数据输出费用</u></a>——也就是传统云服务商在数据调取时收取的带宽费用，这种收费模式相当于变相“绑架”用户数据。之所以能做到这一点，是因为我们早已构建起规模最大的全球网络之一，与全球数千家互联网服务提供商、云服务平台及其他企业实现了互联互通。</p>
+<p>对象存储支撑着从媒体内容、静态资产到 AI 训练数据等多样化的应用场景。但随着时间的推移，我们看到越来越多的公司使用开放数据和表格格式在 R2 中存储其分析数据仓库。</p>
+<p>实现这一能力的关键技术是 <a href="https://iceberg.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a>。作为一种<em>表格式</em>解决方案，Iceberg 能在对象存储的数据文件基础上，提供类数据库能力（包括更新、ACID 事务和架构演进）。换言之，它是一个元数据层，能明确告知客户端：哪些数据文件构成特定的逻辑表、有哪些架构，以及如何高效查询这些数据。</p>
+<p>随着 Iceberg 在全行业的广泛采用，用户不再受限于单一的查询引擎。但跨区域和跨云查询数据时，数据传出费用仍会导致成本过高。而具备<a href="https://www.cloudflare.com/the-net/egress-fees-exit" target="_blank" rel="noopener noreferrer"><u>零成本输出</u></a>特性的 R2 解决了这一难题——用户也无需再被单一云服务商绑定。他们可以将数据存储在不受供应商限制的中立位置，让团队根据自身数据特点和查询模式自由选择合适的查询引擎。</p>
+<p>但用户仍然需要自行管理所有元数据和其他基础设施。我们意识到，我们有机会解决一个主要痛点，并减少在 R2 上存储数据湖的摩擦。这便诞生了 R2 Data Catalog，即我们托管的 Iceberg 目录。</p>
+<p>虽然数据已存储在 R2 中且元数据得到了管理，但用户仍需自行解决一些遗留问题。</p>
+<p>如何将数据导入 Iceberg 表？数据就位后，怎样优化查询性能？在不自建查询引擎或使用其他云平台的情况下，如何真正挖掘数据价值？</p>
+<p>在本文后续内容中，我们将详细解析数据平台三大核心产品如何协同解决这些技术挑战。</p>
+<h3>Cloudflare Pipelines</h3>
+<p>分析型数据表由一系列<em>事件</em>构成，这些事件是特定时间点发生的具体事项。它们可能源自服务器日志、移动应用程序或 IoT 设备，并以 JSON、Avro 或 Protobuf 等数据格式进行编码。理想情况下，这些事件应遵循统一的字段标准（即具有明确的架构），但实际上，它们可能只是某个团队随意收集的各类数据。</p>
+<p>但是，在使用 Iceberg 查询事件之前，需要先提取事件，根据模式进行结构化，然后写入对象存储。这就是 <a href="https://developers.cloudflare.com/pipelines" target="_blank" rel="noopener noreferrer"><u>Cloudflare Pipelines</u></a> 的作用。</p>
+<p>Pipelines 基于我们今年早些时候收购的流处理引擎 <a href="https://www.arroyo.dev" target="_blank" rel="noopener noreferrer"><u>Arroyo</u></a> 构建，用于接收事件，使用 SQL 查询对其进行转换，并将其接收到 R2 和 R2 Data Catalog。</p>
+<p>Pipelines 围绕三个核心对象构建：</p>
+<p><a href="https://developers.cloudflare.com/pipelines/streams" target="_blank" rel="noopener noreferrer"><strong><u>Streams</u></strong></a> 是您将数据接入 Cloudflare 的通道。它们是持久化、带缓冲的队列，负责接收事件并存储起来以待后续处理。Streams 支持两种事件接入方式：通过 HTTP 端点接收，或从 <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Cloudflare Worker 绑定</u></a>获取。</p>
+<p><a href="https://developers.cloudflare.com/pipelines/sinks" target="_blank" rel="noopener noreferrer"><strong><u>Sinks</u></strong></a> 定义数据的目的地。我们支持将原始文件提取到 R2 Data Catalog 中，以及以 JSON 或 <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> 格式写入 R2。Sinks 可以配置为频繁写入文件，优先处理低延迟数据；也可以配置为写入频率较低、容量较大的文件，以获得更佳的查询性能。无论哪种情况，<em>数据提取都是恰好一次</em>，这意味着我们绝不会重复或丢弃传输至 R2 的事件。</p>
+<p><a href="https://developers.cloudflare.com/pipelines/pipelines" target="_blank" rel="noopener noreferrer"><strong><u>Pipelines</u></strong></a> 通过 <a href="https://developers.cloudflare.com/pipelines/sql-reference" target="_blank" rel="noopener noreferrer"><u>SQL 转换</u></a>连接数据流与接收器，这些转换可在将事件写入存储之前对其进行修改。借此，您能够实现<em>“左移”</em>，将验证、模式化和处理推送到您的提取层，从而使您的查询更加轻松、快速且准确。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="244" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=640&amp;h=218&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=715&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=750&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=828&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1080&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1280&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1430&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2972 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PXS6M05FPAZRDTVET6AN.png&amp;w=1200&amp;h=409&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="409" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="244" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>例如，下面是一个从点击流数据源摄取事件并写入 Iceberg 的数据处理管道示例：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">INSERT into</span><span class="sk-24292e-fff"> events_table</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">SELECT</span></span>
+<span class="line"><span class="sk-24292e-fff">  user_id,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  lower</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-ffc799">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> event_type,</span></span>
+<span class="line"><span class="sk-24292e-fff">  to_timestamp_micros(ts_us) </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> event_time,</span></span>
+<span class="line"><span class="sk-24292e-fff">  regexp_match(</span><span class="sk-d73a49-ffc799">url</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'^https?://([^/]+)'</span><span class="sk-24292e-fff">)[1]  </span><span class="sk-d73a49-ffc799">AS</span><span class="sk-24292e-fff"> domain,</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  url</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  referrer,</span></span>
+<span class="line"><span class="sk-24292e-fff">  user_agent</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">FROM</span><span class="sk-24292e-fff"> events_json</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">WHERE</span><span class="sk-d73a49-ffc799"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'page_view'</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">  AND</span><span class="sk-d73a49-ffc799"> NOT</span><span class="sk-24292e-fff"> regexp_like(user_agent, </span><span class="sk-032f62-99ffe4">'(?i)bot|spider'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>SQL 转换功能非常强大，让您可以完全控制数据的结构以及将其写入表的方式。例如，您可以</p>
+<ul>
+	<li>对数据进行模式化和标准化处理，甚至使用 <a href="https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json" target="_blank" rel="noopener noreferrer"><u>JSON 函数</u></a>从任意 JSON 中提取字段</li>
+	<li>过滤掉事件，或者将事件拆分到具有各自架构的单独表中</li>
+	<li>使用正则表达式在存储前编辑敏感信息</li>
+	<li>将嵌套数组和对象展开为单独的事件</li>
+</ul>
+<p>目前，Pipelines 仅支持无状态转换。未来，我们将充分利用 <a href="https://www.arroyo.dev/blog/stateful-stream-processing" target="_blank" rel="noopener noreferrer"><u>Arroyo 的具状态处理功能</u></a>，以实现数据聚合、增量更新的物化视图以及连接等高级功能。</p>
+<p>Cloudflare Pipelines 现已推出公开测试版。您可以使用仪表板、Wrangler 或 REST API 来创建数据处理管道。要开始使用，请查看我们的<a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>开发者文档</u></a>。</p>
+<p>目前公开测试期间，Pipelines 服务暂不收费。但是，R2 存储以及接收器向 R2 写入数据所产生的操作将按<a href="https://developers.cloudflare.com/r2/pricing" target="_blank" rel="noopener noreferrer"><u>标准费率</u></a>计费。待正式收费后，我们预计将根据以下维度计费：数据读取量、通过 SQL 转换处理的数据量，以及实际交付的数据量。</p>
+<h3>R2 Data Catalog</h3>
+<p>我们在 4 月推出了 <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a> 的公开测试版，并对其反响感到非常惊喜。像 DuckDB 这样的查询引擎<a href="https://duckdb.org/docs/stable/guides/network_cloud_storage/cloudflare_r2_import.html" target="_blank" rel="noopener noreferrer"><u>已添加原生支持</u></a>，并且我们还看到了像 <a href="https://blog.cloudflare.com/marimo-cloudflare-notebooks" target="_blank" rel="noopener noreferrer"><u>marimo 笔记本</u></a>这样的实用集成。</p>
+<p>它让 Iceberg 的入门变得简单。无需设置数据库集群、连接对象存储或管理任何基础设施。您可以使用几个 <a href="https://developers.cloudflare.com/workers/wrangler" target="_blank" rel="noopener noreferrer"><u>Wrangler</u></a> 命令创建目录：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler bucket create mycatalog </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog enable mycatalog</span></span></code></pre>
+</div>
+<p>这提供了一个可扩展到 PB 级存储的数据湖，您可以通过任何您想要使用的引擎进行查询，且无需支付任何输出费用。</p>
+<p>但仅仅存储数据是不够的。随着时间推移和数据持续写入，构成表的底层数据文件的数量将会增加，导致查询性能越来越慢。</p>
+<p>这是低延迟数据采集的一个特殊问题，其目标是尽快查询事件。频繁写入数据意味着文件更小，文件数量更多。查询所需的每个文件都必须列出、下载和读取。过多的小文件带来的开销可能会显著影响总查询时间。</p>
+<p>解决方案是<em>压缩</em>，这是目录自动执行的定期维护操作。压缩会将小文件重写为更大的文件，从而减少元数据开销并提高查询性能。</p>
+<p>今天，我们正式推出 R2 Data Catalog 的压缩功能支持。要为您的目录启用此功能，操作非常简单：<br></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 bucket catalog compaction enable mycatalog</span></span></code></pre>
+</div>
+<p>我们目前支持小文件压缩，未来将扩展至更多压缩策略。请参阅<a href="https://developers.cloudflare.com/r2/data-catalog/about-compaction" target="_blank" rel="noopener noreferrer"><u>压缩文档</u></a>，详细了解其工作原理和启用方法。</p>
+<p>目前处于公开测试阶段，R2 Data Catalog 暂不收费。以下是我们对未来定价的初步规划：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>定价*</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>R2 存储对于标准存储类别</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每 GB 数据存储一个月收费 0.015 美元</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>R2 A 类操作</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每百万次操作 4.50 美元（无变化）</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>R2 B 类操作</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每百万次操作 0.36 美元（无变化）</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Data Catalog 操作例如，创建表、获取表元数据、更新表属性。</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每百万次目录操作 9.00 美元</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Data Catalog 压缩数据处理</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每处理 1GB 数据收费 0.005 美元每处理一百万个对象 2.00 美元</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>数据输出</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0 美元（无变化，永久免费）</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><em>*价格可能会在正式发布前发生变化</em></p>
+<p>在开始计费或任何政策调整前，我们将至少提前 30 天发出通知。</p>
+<h3>R2 SQL</h3>
+<p>将数据存入 R2 数据目录只是第一步，真正的目标是从中获取洞察和价值。传统方式下，这意味着您需要搭建并管理 DuckDB、Spark、Trino 或其他查询引擎，这会在您与数据洞察之间增加一层运维负担。但如果能直接在 Cloudflare 上运行查询，会怎样？</p>
+<p>现在，您可以做到了！我们专为 R2 Data Catalog 和 Cloudflare 边缘基础设施打造了一款查询引擎，并将其命名为 <a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>。该查询引擎即日起开启公开测试。</p>
+<p>使用 Wrangler，对 R2 Data Catalog 表运行查询就像下面的示例一样简单</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler r2 sql query </span><span class="sk-032f62-99ffe4">"{WAREHOUSE}"</span><span class="sk-032f62-99ffe4"> "\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  SELECT user_id, url FROM events \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  WHERE domain = 'mywebsite.com'"</span></span></code></pre>
+</div>
+<p>Cloudflare 在全球网络任意节点调度计算的能力，是 R2 SQL 设计的基石。这使我们能够直接在数据存储位置进行处理，无需您为分析工作负载管理集中式集群。</p>
+<p>R2 SQL 与 R2 Data Catalog 和 R2 服务紧密集成，这使得查询规划器不仅能进行简单的存储扫描，还能深度利用 R2 Data Catalog 中存储的丰富统计信息。这为新一代查询优化提供了强大基础，例如未来可支持辅助索引或更复杂分析函数。</p>
+<p>最终，用户将获得完全无服务器的体验。您可以专注于 SQL，无需深入了解引擎的运作方式。若想探究 R2 SQL 的工作原理，技术团队已撰写<a href="https://blog.cloudflare.com/r2-sql-deep-dive" target="_blank" rel="noopener noreferrer"><u>深度解析文章，详细介绍 R2 SQL 分布式查询引擎在大规模场景下的运行机制。</u></a></p>
+<p>本次公开测试是 R2 SQL 查询功能的早期预览，初期主要支持过滤查询功能。后续我们将逐步扩展其功能，覆盖更丰富的 SQL 特性，例如复杂聚合操作。</p>
+<p>我们非常期待看到用户通过 R2 SQL 实现的创新应用！如需体验，请查阅相关<a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>文档</u></a>和<a href="https://developers.cloudflare.com/r2-sql/get-started" target="_blank" rel="noopener noreferrer"><u>教程</u></a><strong>。</strong>测试期间，R2 SQL 的使用目前暂不收费，但查询产生的 R2 存储费用及操作费用将按标准费率计费。未来我们计划根据查询扫描的数据量进行收费，并将在收费开始前发布通知。</p>
+<h3>总结</h3>
+<p>现在，您可以使用 Cloudflare 数据平台将事件提取到 R2 Data Catalog 中，并通过 R2 SQL 进行查询。2026 年上半年，我们将在所有这些产品中扩展各项功能，包括：</p>
+<ul>
+	<li>与 <a href="https://developers.cloudflare.com/logs/logpush" target="_blank" rel="noopener noreferrer"><u>Logpush</u></a> 集成，以便直接在 Cloudflare 中转换、存储和查询日志</li>
+	<li>通过 Workers 实现的用户定义函数，以及对流式转换的具状态处理支持</li>
+	<li>扩展 R2 SQL 的功能集，以涵盖聚合与连接功能</li>
+</ul>
+<p>在此期间，您可以通过<a href="https://developers.cloudflare.com/pipelines/getting-started" target="_blank" rel="noopener noreferrer"><u>本教程</u></a>快速上手 Cloudflare 数据平台——只需跟随指引，即可构建端到端的分析型数据系统：从使用 Pipelines 进行数据接入，到将数据存储至 R2 Data Catalog，再到通过 R2 SQL 执行查询。<br><br>我们非常期待看到您的精彩作品！欢迎前往我们的<a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>开发人员 Discord 社区</u></a>分享使用反馈。</p>
+<div id="html-block-k74" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/5ba9884c376445afc963b00e36fa0f9c/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F5ba9884c376445afc963b00e36fa0f9c%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>

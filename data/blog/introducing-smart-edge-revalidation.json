@@ -1,16 +1,9 @@
 {
-	"author": {
-		"name": "Alex Krivit",
-		"url": "http://blog.cloudflare.com/author/alex/",
-		"sameAs": [
-			"https://twitter.com/ackriv"
-		]
-	},
+	"author": {},
 	"headline": "Introducing Smart Edge Revalidation",
-	"url": "http://blog.cloudflare.com/introducing-smart-edge-revalidation/",
+	"url": "https://blog.cloudflare.com/introducing-smart-edge-revalidation/",
 	"datePublished": "2021-07-28T12:59:17.000Z",
-	"dateModified": "2023-11-17T00:39:57.000Z",
-	"image": "http://blog.cloudflare.com/content/images/2021/07/image1-30.png",
-	"keywords": "Impact Week, Cache, Product News, Edge, Developer Platform, Agile Developer Services",
-	"description": "When both Last-Modified and Etag headers are absent from the origin response, Smart Edge Revalidation will use the time the object was cached on Cloudflare as the Last-Modified header value. When Cloudflare receives a revalidation request, our edge can respond using the generated header. "
+	"dateModified": "2026-07-15T12:33:58.097Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW49DDPMRPRT5745W0TDJG1K.png",
+	"description": "When both Last-Modified and Etag headers are absent from the origin response, Smart Edge Revalidation will use the time the object was cached on Cloudflare as the Last-Modified header value. When "
 }

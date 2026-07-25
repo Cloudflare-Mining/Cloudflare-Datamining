@@ -1,417 +1,387 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3d9KPAGYI16xK5qi0VwQUV/35e990a187f5c519b76f09d841b8cfe5/rollbacks-and-api-access-for-pages.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>A couple of months ago, we announced the general availability of <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>: the easiest way to host and collaboratively develop websites on Cloudflare’s global network. It’s been amazing to see over 20,000 incredible sites built by users and hear your feedback. Since then, we’ve released user-requested features like URL redirects, web analytics, and Access integration.</p>
-	<p>We’ve been listening to your feedback and today we announce two new features: rollbacks and the Pages API. Deployment rollbacks allow you to host production-level code on Pages without needing to stress about broken builds resulting in website downtime. The API empowers you to create custom functionality and better integrate Pages with your development workflows. Now, it’s even easier to use Pages for production hosting.</p>
-	<div class="flex anchor relative">
-		<h3 id="rollbacks">Rollbacks</h3>
-		<a href="https://blog.cloudflare.com/#rollbacks" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can now rollback your production website to a previous working deployment with just a click of a button. This is especially useful when you want to quickly undo a new deployment for troubleshooting. Before, developers would have to push another deployment and then wait for the build to finish updating production. Now, you can restore a working version within a few moments by rolling back to a previous working build.</p>
-	<p>To rollback to a previous build, just click the “Rollback to this deployment” button on either the deployments list menu or on a specific deployment page.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/EgmHaPNJ9tsoAkaPDXEqi/df37d8b3c4d95d3428642fe8e4c69796/image3.gif" alt="" class="kg-image" width="1280" height="550" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="api-access">API Access</h3>
-		<a href="https://blog.cloudflare.com/#api-access" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Pages API exposes endpoints for you to easily create automations and to integrate Pages within your development workflow. Refer to the <a href="https://api.cloudflare.com/#pages-project-properties" target="_blank" rel="noopener noreferrer">API documentation</a> for a full breakdown of the object types and endpoints. To get started, navigate to the <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer">Cloudflare API Tokens</a> page and copy your "Global API Key". Now, you can authenticate and make requests to the API using your email and auth key in the request headers.</p>
-	<p>For example, here is an API request to get all projects on an account.</p>
-	<p>Request (example)</p>
-	<pre class="language-bash"><code class="language-bash">curl -X GET "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects" \
-     -H "X-Auth-Email: {email}" \
-     -H "X-Auth-Key: {auth_key}"</code></pre>
-	<p>Response (example)</p>
-	<pre class="language-bash"><code class="language-bash">{
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "name": "NextJS Blog",
-    "id": "7b162ea7-7367-4d67-bcde-1160995d5",
-    "created_on": "2017-01-01T00:00:00Z",
-    "subdomain": "helloworld.pages.dev",
-    "domains": [
-      "customdomain.com",
-      "customdomain.org"
-    ],
-    "source": {
-      "type": "github",
-      "config": {
-        "owner": "cloudflare",
-        "repo_name": "ninjakittens",
-        "production_branch": "main",
-        "pr_comments_enabled": true,
-        "deployments_enabled": true
-      }
-    },
-    "build_config": {
-      "build_command": "npm run build",
-      "destination_dir": "build",
-      "root_dir": "/",
-      "web_analytics_tag": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-      "web_analytics_token": "021e1057c18547eca7b79f2516f06o7x"
-    },
-    "deployment_configs": {
-      "preview": {
-        "env_vars": {
-          "BUILD_VERSION": {
-            "value": "3.3"
-          }
-        }
-      },
-      "production": {
-        "env_vars": {
-          "BUILD_VERSION": {
-            "value": "3.3"
-          }
-        }
-      }
-    },
-    "latest_deployment": {
-      "id": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
-      "short_id": "f64788e9",
-      "project_id": "7b162ea7-7367-4d67-bcde-1160995d5",
-      "project_name": "ninjakittens",
-      "environment": "preview",
-      "url": "https://f64788e9.ninjakittens.pages.dev",
-      "created_on": "2021-03-09T00:55:03.923456Z",
-      "modified_on": "2021-03-09T00:58:59.045655",
-      "aliases": [
-        "https://branchname.projectname.pages.dev"
-      ],
-      "latest_stage": {
-        "name": "deploy",
-        "started_on": "2021-03-09T00:55:03.923456Z",
-        "ended_on": "2021-03-09T00:58:59.045655",
-        "status": "success"
-      },
-      "env_vars": {
-        "BUILD_VERSION": {
-          "value": "3.3"
-        },
-        "ENV": {
-          "value": "STAGING"
-        }
-      },
-      "deployment_trigger": {
-        "type": "ad_hoc",
-        "metadata": {
-          "branch": "main",
-          "commit_hash": "ad9ccd918a81025731e10e40267e11273a263421",
-          "commit_message": "Update index.html"
-        }
-      },
-      "stages": [
-        {
-          "name": "queued",
-          "started_on": "2021-06-03T15:38:15.608194Z",
-          "ended_on": "2021-06-03T15:39:03.134378Z",
-          "status": "active"
-        },
-        {
-          "name": "initialize",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        },
-        {
-          "name": "clone_repo",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        },
-        {
-          "name": "build",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        },
-        {
-          "name": "deploy",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        }
-      ],
-      "build_config": {
-        "build_command": "npm run build",
-        "destination_dir": "build",
-        "root_dir": "/",
-        "web_analytics_tag": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-        "web_analytics_token": "021e1057c18547eca7b79f2516f06o7x"
-      },
-      "source": {
-        "type": "github",
-        "config": {
-          "owner": "cloudflare",
-          "repo_name": "ninjakittens",
-          "production_branch": "main",
-          "pr_comments_enabled": true,
-          "deployments_enabled": true
-        }
-      }
-    },
-    "canonical_deployment": {
-      "id": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
-      "short_id": "f64788e9",
-      "project_id": "7b162ea7-7367-4d67-bcde-1160995d5",
-      "project_name": "ninjakittens",
-      "environment": "preview",
-      "url": "https://f64788e9.ninjakittens.pages.dev",
-      "created_on": "2021-03-09T00:55:03.923456Z",
-      "modified_on": "2021-03-09T00:58:59.045655",
-      "aliases": [
-        "https://branchname.projectname.pages.dev"
-      ],
-      "latest_stage": {
-        "name": "deploy",
-        "started_on": "2021-03-09T00:55:03.923456Z",
-        "ended_on": "2021-03-09T00:58:59.045655",
-        "status": "success"
-      },
-      "env_vars": {
-        "BUILD_VERSION": {
-          "value": "3.3"
-        },
-        "ENV": {
-          "value": "STAGING"
-        }
-      },
-      "deployment_trigger": {
-        "type": "ad_hoc",
-        "metadata": {
-          "branch": "main",
-          "commit_hash": "ad9ccd918a81025731e10e40267e11273a263421",
-          "commit_message": "Update index.html"
-        }
-      },
-      "stages": [
-        {
-          "name": "queued",
-          "started_on": "2021-06-03T15:38:15.608194Z",
-          "ended_on": "2021-06-03T15:39:03.134378Z",
-          "status": "active"
-        },
-        {
-          "name": "initialize",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        },
-        {
-          "name": "clone_repo",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        },
-        {
-          "name": "build",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        },
-        {
-          "name": "deploy",
-          "started_on": null,
-          "ended_on": null,
-          "status": "idle"
-        }
-      ],
-      "build_config": {
-        "build_command": "npm run build",
-        "destination_dir": "build",
-        "root_dir": "/",
-        "web_analytics_tag": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-        "web_analytics_token": "021e1057c18547eca7b79f2516f06o7x"
-      },
-      "source": {
-        "type": "github",
-        "config": {
-          "owner": "cloudflare",
-          "repo_name": "ninjakittens",
-          "production_branch": "main",
-          "pr_comments_enabled": true,
-          "deployments_enabled": true
-        }
-      }
-    }
-  },
-  "result_info": {
-    "page": 1,
-    "per_page": 100,
-    "count": 1,
-    "total_count": 1
-  }
-}</code></pre>
-	<p>Here’s another quick example using the API to rollback to a previous deployment:</p>
-	<p>Request (example)</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback" \
-     -H "X-Auth-Email: {email}" \
-     -H "X-Auth-Key: {auth_key"</code></pre>
-	<p>Response (example)</p>
-	<pre class="language-bash"><code class="language-bash">{
-  "success": true,
-  "errors": [],
-  "messages": [],
-  "result": {
-    "id": "f64788e9-fccd-4d4a-a28a-cb84f88f6",
-    "short_id": "f64788e9",
-    "project_id": "7b162ea7-7367-4d67-bcde-1160995d5",
-    "project_name": "ninjakittens",
-    "environment": "preview",
-    "url": "https://f64788e9.ninjakittens.pages.dev",
-    "created_on": "2021-03-09T00:55:03.923456Z",
-    "modified_on": "2021-03-09T00:58:59.045655",
-    "aliases": [
-      "https://branchname.projectname.pages.dev"
-    ],
-    "latest_stage": {
-      "name": "deploy",
-      "started_on": "2021-03-09T00:55:03.923456Z",
-      "ended_on": "2021-03-09T00:58:59.045655",
-      "status": "success"
-    },
-    "env_vars": {
-      "BUILD_VERSION": {
-        "value": "3.3"
-      },
-      "ENV": {
-        "value": "STAGING"
-      }
-    },
-    "deployment_trigger": {
-      "type": "ad_hoc",
-      "metadata": {
-        "branch": "main",
-        "commit_hash": "ad9ccd918a81025731e10e40267e11273a263421",
-        "commit_message": "Update index.html"
-      }
-    },
-    "stages": [
-      {
-        "name": "queued",
-        "started_on": "2021-06-03T15:38:15.608194Z",
-        "ended_on": "2021-06-03T15:39:03.134378Z",
-        "status": "active"
-      },
-      {
-        "name": "initialize",
-        "started_on": null,
-        "ended_on": null,
-        "status": "idle"
-      },
-      {
-        "name": "clone_repo",
-        "started_on": null,
-        "ended_on": null,
-        "status": "idle"
-      },
-      {
-        "name": "build",
-        "started_on": null,
-        "ended_on": null,
-        "status": "idle"
-      },
-      {
-        "name": "deploy",
-        "started_on": null,
-        "ended_on": null,
-        "status": "idle"
-      }
-    ],
-    "build_config": {
-      "build_command": "npm run build",
-      "destination_dir": "build",
-      "root_dir": "/",
-      "web_analytics_tag": "cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-      "web_analytics_token": "021e1057c18547eca7b79f2516f06o7x"
-    },
-    "source": {
-      "type": "github",
-      "config": {
-        "owner": "cloudflare",
-        "repo_name": "ninjakittens",
-        "production_branch": "main",
-        "pr_comments_enabled": true,
-        "deployments_enabled": true
-      }
-    }
-  }
-}</code></pre>
-	<p>Try out an API request with one of your projects by replacing {account_id}, {deployment_id},{email}, and {auth_key}. You can find your <code>account_id</code> in the URL address bar by navigating to the <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a>. (Ex: <code>41643ed677c7c7gba4x463c4zdb9563c</code>).</p>
-	<p>Refer to the <a href="https://api.cloudflare.com/#pages-project-properties" target="_blank" rel="noopener noreferrer">API documentation</a> for a full breakdown of the object types and endpoints.</p>
-	<div class="flex anchor relative">
-		<h3 id="using-the-pages-api-on-workers">Using the Pages API on Workers</h3>
-		<a href="https://blog.cloudflare.com/#using-the-pages-api-on-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Pages API is even more powerful and simple to use with <a href="https://workers.cloudflare.com/?_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9003761&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=CjwKCAjwiLGGBhAqEiwAgq3q_glwMF_1OxraB8Ot18vFR78uKF9rCAWNALrvlHmfQRPcKSWiKYwTPBoCwgMQAvD_BwE&amp;gclsrc=aw.ds" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>: the easiest way to deploy serverless functions globally. Below are three ways you can use the Pages API on Workers.</p>
-	<p><b>1. Triggering a new build every hour:</b> Suppose you have a CMS that pulls data from live sources to compile a static output. You can keep the static content as fresh as possible by triggering new builds periodically using the API. This is easy to do on Workers using Cron Triggers, so let’s walk through an example.</p>
-	<p>First, let’s create a new Worker by navigating to <a href="http://workers.new" target="_blank" rel="noopener noreferrer">workers.new</a>. If you haven’t used Workers before, feel free to go through the <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank" rel="noopener noreferrer">getting started guide</a> to learn more. However, you’ll need to have set up a Pages project to follow along. Next, you can copy and paste this template for the new worker. Then, customize the values such as {account_id}, {project_name}, {auth_key}, and {your_email}.</p>
-	<pre class="language-js"><code class="language-js">const endpoint = "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments";
-const email = "{your_email}";
-addEventListener("scheduled", (event) =&gt; {
-  event.waitUntil(handleScheduled(event.scheduledTime));
-});
-async function handleScheduled(request) {
-  const init = {
-    method: "POST",
-    headers: {
-      "content-type": "application/json;charset=UTF-8",
-      "X-Auth-Email": email,
-      "X-Auth-Key": API_KEY,
-      //We recommend you store API keys as secrets using the Workers dashboard or using Wrangler as documented here https://developers.cloudflare.com/workers/cli-wrangler/commands#secret
-    },
-  };
-  const response = await fetch(endpoint, init);
-  return new Response(200);
-}</code></pre>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/n9hdXplYEOTptwrYLue08/e5f87b8bdf8e3e12472f906689b8a139/image2-11.png" alt="" class="kg-image" width="1999" height="1411" loading="lazy">
-
-	</figure>
-	<p>To finish configuring the script, click the back arrow near the top left of the window and click on the settings tab. Then, set an environment variable “API_KEY” with the value of your Cloudflare Global key and click “Encrypt” and then “Save”.</p>
-	<p>The script just makes a POST request to the deployments' endpoint to trigger a new build. Click “Quick edit” to go back to the code editor to finish testing the script. You can test out your configuration and make a request by clicking on the “Trigger scheduled event” button in the “Schedule” tab near the tabs saying “HTTP” and “Preview”. You should see a new queued build on your Project through the Pages dashboard. Now, you can click “Save and Deploy” to publish your work. Finally, back to the worker settings page by clicking the back arrow near the top left of the window.</p>
-	<p>All that’s left to do is set a cron trigger to periodically run this Worker on the “Triggers tab”. Click on “Add Cron Trigger”.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SomjQN0tprTNYqLhQD01k/0c970e8c710598c6df67906eb710c32e/image4-7.png" alt="" class="kg-image" width="1999" height="1026" loading="lazy">
-
-	</figure>
-	<p>Next, we can input “0 * * * *” to trigger the build every hour.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4dxsHy7Yf9qLp9AI3mPu2F/ddd564bc11a8525b6335878b737f4220/image5-3.png" alt="" class="kg-image" width="1999" height="797" loading="lazy">
-
-	</figure>
-	<p>Finally, click save and your automation using the Pages API will trigger a new build every hour.</p>
-	<p><b>2. Deleting old deployments after a week</b>: Pages hosts and serves all project deployments on preview links. Suppose you want to keep your project relatively private and prevent access to old deployments. You can use the API to delete deployments after a month so that they are no longer public online. This is easy to do on Workers using Cron Triggers.</p>
-	<p><b>3. Sharing project information</b>: Imagine you are working on a development team using Pages to build our websites. You probably want an easy way to share deployment preview links and build status without having to share Cloudflare accounts. Using the API, you can easily share project information, including deployment status and preview links, and serve this content as HTML from a Cloudflare Worker.</p>
-	<p>Find the code snippets for all three examples <a href="https://developers.cloudflare.com/pages/platform/api" target="_blank" rel="noopener noreferrer">here</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We will continue making the API more powerful with features such as supporting prebuilt deployments in the future. We are excited to see what you build with the API and hope you enjoy using rollbacks. At Cloudflare, we are committed to building the best developer experience on Pages, and we always appreciate hearing your feedback. Come chat with us and share more feedback on the <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Workers Discord</a> (We have a dedicated #pages-help channel!).</p>
+<p>A couple of months ago, we announced the general availability of <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a>: the easiest way to host and collaboratively develop websites on Cloudflare’s global network. It’s been amazing to see over 20,000 incredible sites built by users and hear your feedback. Since then, we’ve released user-requested features like URL redirects, web analytics, and Access integration.</p>
+<p>We’ve been listening to your feedback and today we announce two new features: rollbacks and the Pages API. Deployment rollbacks allow you to host production-level code on Pages without needing to stress about broken builds resulting in website downtime. The API empowers you to create custom functionality and better integrate Pages with your development workflows. Now, it’s even easier to use Pages for production hosting.</p>
+<h3>Rollbacks</h3>
+<p>You can now rollback your production website to a previous working deployment with just a click of a button. This is especially useful when you want to quickly undo a new deployment for troubleshooting. Before, developers would have to push another deployment and then wait for the build to finish updating production. Now, you can restore a working version within a few moments by rolling back to a previous working build.</p>
+<p>To rollback to a previous build, just click the “Rollback to this deployment” button on either the deployments list menu or on a specific deployment page.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="307" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW4961VT148ZAAKH3GTG59GB.gif" alt="BLOG-531 Embedded Image - iOxXj4" width="715" height="307" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>API Access</h3>
+<p>The Pages API exposes endpoints for you to easily create automations and to integrate Pages within your development workflow. Refer to the <a href="https://api.cloudflare.com/#pages-project-properties" target="_blank" rel="noopener noreferrer">API documentation</a> for a full breakdown of the object types and endpoints. To get started, navigate to the <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer">Cloudflare API Tokens</a> page and copy your "Global API Key". Now, you can authenticate and make requests to the API using your email and auth key in the request headers.</p>
+<p>For example, here is an API request to get all projects on an account.</p>
+<p>Request (example)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> GET</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {email}"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {auth_key}"</span></span></code></pre>
 </div>
+<p>Response (example)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "errors"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "messages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "NextJS Blog",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "7b162ea7-7367-4d67-bcde-1160995d5",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "created_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2017-01-01T00:00:00Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "subdomain"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "helloworld.pages.dev",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "domains"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "customdomain.com"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "customdomain.org"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "source"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "github",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "owner"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cloudflare",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "repo_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ninjakittens",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "production_branch"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "main",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "pr_comments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "deployments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "build_config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "build_command"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "npm run build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "destination_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "root_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "/",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "web_analytics_tag"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cee1c73f6e4743d0b5e6bb1a0bcaabcc",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "web_analytics_token"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "021e1057c18547eca7b79f2516f06o7x"</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "deployment_configs"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "preview"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "env_vars"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "BUILD_VERSION"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "3.3"</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "production"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "env_vars"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "BUILD_VERSION"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "3.3"</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "latest_deployment"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "f64788e9-fccd-4d4a-a28a-cb84f88f6",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "short_id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "f64788e9",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "project_id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "7b162ea7-7367-4d67-bcde-1160995d5",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "project_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ninjakittens",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "environment"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "preview",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "url"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "https://f64788e9.ninjakittens.pages.dev",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "created_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:55:03.923456Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "modified_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:58:59.045655",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "aliases"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "https://branchname.projectname.pages.dev"</span></span>
+<span class="line"><span class="sk-24292e-fff">      ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "latest_stage"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "deploy",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:55:03.923456Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:58:59.045655",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "success"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "env_vars"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "BUILD_VERSION"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "3.3"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ENV"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "STAGING"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "deployment_trigger"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ad_hoc",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "metadata"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "branch"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "main",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "commit_hash"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ad9ccd918a81025731e10e40267e11273a263421",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "commit_message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Update index.html"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "stages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "queued",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-06-03T15:38:15.608194Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-06-03T15:39:03.134378Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "active"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "initialize",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "clone_repo",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "deploy",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "build_config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "build_command"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "npm run build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "destination_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "root_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "/",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "web_analytics_tag"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cee1c73f6e4743d0b5e6bb1a0bcaabcc",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "web_analytics_token"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "021e1057c18547eca7b79f2516f06o7x"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "source"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "github",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "owner"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cloudflare",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "repo_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ninjakittens",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "production_branch"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "main",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "pr_comments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "deployments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "canonical_deployment"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "f64788e9-fccd-4d4a-a28a-cb84f88f6",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "short_id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "f64788e9",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "project_id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "7b162ea7-7367-4d67-bcde-1160995d5",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "project_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ninjakittens",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "environment"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "preview",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "url"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "https://f64788e9.ninjakittens.pages.dev",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "created_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:55:03.923456Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "modified_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:58:59.045655",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "aliases"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "https://branchname.projectname.pages.dev"</span></span>
+<span class="line"><span class="sk-24292e-fff">      ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "latest_stage"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "deploy",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:55:03.923456Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:58:59.045655",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "success"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "env_vars"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "BUILD_VERSION"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "3.3"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ENV"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "STAGING"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "deployment_trigger"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ad_hoc",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "metadata"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "branch"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "main",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "commit_hash"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ad9ccd918a81025731e10e40267e11273a263421",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "commit_message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Update index.html"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "stages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "queued",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-06-03T15:38:15.608194Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-06-03T15:39:03.134378Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "active"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "initialize",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "clone_repo",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        },</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "deploy",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "build_config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "build_command"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "npm run build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "destination_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "root_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "/",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "web_analytics_tag"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cee1c73f6e4743d0b5e6bb1a0bcaabcc",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "web_analytics_token"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "021e1057c18547eca7b79f2516f06o7x"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "source"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "github",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "owner"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cloudflare",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "repo_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ninjakittens",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "production_branch"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "main",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "pr_comments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "deployments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "result_info"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "page"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 1,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "per_page"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 100,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "count"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 1,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "total_count"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Here’s another quick example using the API to rollback to a previous deployment:</p>
+<p>Request (example)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments/{deployment_id}/rollback"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: {email}"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: {auth_key"</span></span></code></pre>
+</div>
+<p>Response (example)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "errors"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "messages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "f64788e9-fccd-4d4a-a28a-cb84f88f6",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "short_id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "f64788e9",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "project_id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "7b162ea7-7367-4d67-bcde-1160995d5",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "project_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ninjakittens",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "environment"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "preview",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "url"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "https://f64788e9.ninjakittens.pages.dev",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "created_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:55:03.923456Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "modified_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:58:59.045655",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "aliases"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "https://branchname.projectname.pages.dev"</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "latest_stage"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "deploy",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:55:03.923456Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-03-09T00:58:59.045655",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "success"</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "env_vars"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "BUILD_VERSION"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "3.3"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "ENV"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "STAGING"</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "deployment_trigger"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ad_hoc",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "metadata"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "branch"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "main",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "commit_hash"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ad9ccd918a81025731e10e40267e11273a263421",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "commit_message"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "Update index.html"</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "stages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "queued",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-06-03T15:38:15.608194Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "2021-06-03T15:39:03.134378Z",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "active"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "initialize",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "clone_repo",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "deploy",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "started_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "ended_on"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> null,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "status"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "idle"</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "build_config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "build_command"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "npm run build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "destination_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "build",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "root_dir"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "/",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "web_analytics_tag"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cee1c73f6e4743d0b5e6bb1a0bcaabcc",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "web_analytics_token"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "021e1057c18547eca7b79f2516f06o7x"</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "source"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "type"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "github",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "config"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "owner"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "cloudflare",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "repo_name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ninjakittens",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "production_branch"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "main",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "pr_comments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "deployments_enabled"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Try out an API request with one of your projects by replacing {account_id}, {deployment_id},{email}, and {auth_key}. You can find your <code>account_id</code> in the URL address bar by navigating to the <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Dashboard</a>. (Ex: <code>41643ed677c7c7gba4x463c4zdb9563c</code>).</p>
+<p>Refer to the <a href="https://api.cloudflare.com/#pages-project-properties" target="_blank" rel="noopener noreferrer">API documentation</a> for a full breakdown of the object types and endpoints.</p>
+<h3>Using the Pages API on Workers</h3>
+<p>The Pages API is even more powerful and simple to use with <a href="https://workers.cloudflare.com/?_bt=521144407143&amp;_bk=&amp;_bm=b&amp;_bn=g&amp;_bg=123914288844&amp;_placement=&amp;_target=&amp;_loc=9003761&amp;_dv=c&amp;awsearchcpc=1&amp;gclid=CjwKCAjwiLGGBhAqEiwAgq3q_glwMF_1OxraB8Ot18vFR78uKF9rCAWNALrvlHmfQRPcKSWiKYwTPBoCwgMQAvD_BwE&amp;gclsrc=aw.ds" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a>: the easiest way to deploy serverless functions globally. Below are three ways you can use the Pages API on Workers.</p>
+<p><strong>1. Triggering a new build every hour:</strong> Suppose you have a CMS that pulls data from live sources to compile a static output. You can keep the static content as fresh as possible by triggering new builds periodically using the API. This is easy to do on Workers using Cron Triggers, so let’s walk through an example.</p>
+<p>First, let’s create a new Worker by navigating to <a href="http://workers.new" target="_blank" rel="noopener noreferrer">workers.new</a>. If you haven’t used Workers before, feel free to go through the <a href="https://developers.cloudflare.com/workers/get-started/guide" target="_blank" rel="noopener noreferrer">getting started guide</a> to learn more. However, you’ll need to have set up a Pages project to follow along. Next, you can copy and paste this template for the new worker. Then, customize the values such as {account_id}, {project_name}, {auth_key}, and {your_email}.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> endpoint</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/{account_id}/pages/projects/{project_name}/deployments"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> email</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "{your_email}"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"scheduled"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleScheduled</span><span class="sk-24292e-fff">(event.scheduledTime));</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleScheduled</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> init</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"application/json;charset=UTF-8"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "X-Auth-Email"</span><span class="sk-24292e-fff">: email,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "X-Auth-Key"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">API_KEY</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      //We recommend you store API keys as secrets using the Workers dashboard or using Wrangler as documented here https://developers.cloudflare.com/workers/cli-wrangler/commands#secret</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(endpoint, init);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="505" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=715&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=640&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=715&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=750&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=828&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=1080&amp;h=763&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=1280&amp;h=904&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=1430&amp;h=1010&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-531 Embedded Image - w2z56v" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HSXTMAHYX48QJP5ACQG0.png&amp;w=1920&amp;h=1355&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1355" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="505" class="pt-portable-image-media"></div>
+</figure>
+<p>To finish configuring the script, click the back arrow near the top left of the window and click on the settings tab. Then, set an environment variable “API_KEY” with the value of your Cloudflare Global key and click “Encrypt” and then “Save”.</p>
+<p>The script just makes a POST request to the deployments' endpoint to trigger a new build. Click “Quick edit” to go back to the code editor to finish testing the script. You can test out your configuration and make a request by clicking on the “Trigger scheduled event” button in the “Schedule” tab near the tabs saying “HTTP” and “Preview”. You should see a new queued build on your Project through the Pages dashboard. Now, you can click “Save and Deploy” to publish your work. Finally, back to the worker settings page by clicking the back arrow near the top left of the window.</p>
+<p>All that’s left to do is set a cron trigger to periodically run this Worker on the “Triggers tab”. Click on “Add Cron Trigger”.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="367" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=640&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=750&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=828&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=1080&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=1280&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=1430&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-531 Embedded Image - QOAec8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46R7X9BRPPCE0DDH3BYX5X.png&amp;w=1920&amp;h=985&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="985" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="367" class="pt-portable-image-media"></div>
+</figure>
+<p>Next, we can input “0 * * * *” to trigger the build every hour.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="285" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=715&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=640&amp;h=255&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=715&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=750&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=828&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=1080&amp;h=430&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=1280&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=1430&amp;h=570&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-531 Embedded Image - UIdKfh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46WEK9XYX1KB7ZSM13V153.png&amp;w=1920&amp;h=766&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="766" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="285" class="pt-portable-image-media"></div>
+</figure>
+<p>Finally, click save and your automation using the Pages API will trigger a new build every hour.</p>
+<p><strong>2. Deleting old deployments after a week</strong>: Pages hosts and serves all project deployments on preview links. Suppose you want to keep your project relatively private and prevent access to old deployments. You can use the API to delete deployments after a month so that they are no longer public online. This is easy to do on Workers using Cron Triggers.</p>
+<p><strong>3. Sharing project information</strong>: Imagine you are working on a development team using Pages to build our websites. You probably want an easy way to share deployment preview links and build status without having to share Cloudflare accounts. Using the API, you can easily share project information, including deployment status and preview links, and serve this content as HTML from a Cloudflare Worker.</p>
+<p>Find the code snippets for all three examples <a href="https://developers.cloudflare.com/pages/platform/api" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<h3>Conclusion</h3>
+<p>We will continue making the API more powerful with features such as supporting prebuilt deployments in the future. We are excited to see what you build with the API and hope you enjoy using rollbacks. At Cloudflare, we are committed to building the best developer experience on Pages, and we always appreciate hearing your feedback. Come chat with us and share more feedback on the <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">Workers Discord</a> (We have a dedicated #pages-help channel!).</p>

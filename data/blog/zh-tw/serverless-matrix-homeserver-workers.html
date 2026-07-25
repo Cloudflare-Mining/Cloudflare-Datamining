@@ -1,0 +1,232 @@
+<p><sup><em>* 本文於太平洋時間上午 11:45 更新，以澄清此處描述的應用案例僅為概念驗證與個人專案。部分章節已進行修訂以使其更清晰易懂。</em></sup></p>
+<p>Matrix 是去中心化、端對端加密通訊的黃金標準。它為政府通訊系統、開放原始碼社群及全球注重隱私的組織提供技術核心。</p>
+<p>然而，對個別開發人員而言，其吸引力往往更貼近日常需求：例如將分散的聊天網路（如 Discord 與 Slack）整合至單一收件匣，或單純確保您的對話歷程記錄儲存在您自己掌控的基礎架構上。從功能面來看，Matrix 的運作方式猶如一台去中心化、最終一致性的狀態機。它沒有中央伺服器推送更新，而是各個家庭伺服器 (Homeserver) 透過 HTTP 交換經過簽署的 JSON 事件，並使用衝突解決演算法，將這些事件流合併為房間歷史的統一檢視。</p>
+<p><strong>但維運 Matrix 是有「代價」的。</strong>傳統上，運作一台 Matrix <a href="https://matrix.org/homeserver/about" target="_blank" rel="noopener noreferrer"><u>Homeserver</u></a> 意味著必須承擔沉重的維運負擔。您得佈建虛擬私人伺服器 (VPS)、針對大量寫入負載調校 PostgreSQL、管理用於快取的 Redis、設定<a href="https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy" target="_blank" rel="noopener noreferrer"><u>反向代理</u></a>，還得處理 TLS 憑證的輪替等瑣事。這是一頭有狀態又笨重的巨獸，無論您用量多寡，都得投入時間與金錢去「餵養」它。</p>
+<p>我們想看看能否完全消除這種代價。</p>
+<p><strong>先說結論：我們做到了。</strong>在本篇文章中，我們將說明如何將 Matrix Homeserver 移植到 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> 上。最終的概念驗證是一種無伺服器架構，讓維運工作近乎消失、閒置時成本可降至零，且每一筆連線預設都受到<a href="https://www.cloudflare.com/learning/ssl/quantum/what-is-post-quantum-cryptography" target="_blank" rel="noopener noreferrer"><u>後量子加密</u></a>的保護。您可以<a href="https://github.com/nkuntz1934/matrix-workers" target="_blank" rel="noopener noreferrer"><u>直接在 GitHub 上檢視原始碼，並部署屬於自己的執行個體</u></a>。</p>
+<div id="html-block-kt" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fnkuntz1934%2Fmatrix-workers"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<h2>從 Synapse 到 Workers</h2>
+<p>我們的起點是 <a href="https://github.com/matrix-org/synapse" target="_blank" rel="noopener noreferrer"><u>Synapse</u></a>，這是一套基於 Python、為傳統部署所設計的參照 Matrix Homeserver。它使用 PostgreSQL 實現持久化儲存，使用 Redis 作為快取，並使用檔案系統儲存媒體。</p>
+<p>要將它移植到 Cloudflare Workers，我們就得重新思考所有過去視為理所當然的儲存假設。</p>
+<p>最大的挑戰是儲存。傳統的 Homeserver 仰賴集中式 SQL 資料庫來達成強一致性。而 Cloudflare 的 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> 提供了一個強大的替代方案。這項基元讓我們能獲得 Matrix 狀態解析所需的強一致性和原子性，同時仍允許應用程式在邊緣執行。</p>
+<p>我們使用 Hono 框架，以 TypeScript 重寫了 Matrix 的核心通訊協定邏輯，包括事件授權、聊天室狀態解析、密碼學驗證等。使用 D1 取代 PostgreSQL，用 KV 取代 Redis，用 R2 取代檔案系統，而 Durable Objects 則負責即時協調的工作。</p>
+<p>以下展示了各元件如何對應：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="458" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=640&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=715&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=750&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=828&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=1080&amp;h=692&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=1280&amp;h=820&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=1430&amp;h=916&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3101 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44EVY3KNXMQBKHA56QTCQ3.png&amp;w=1432&amp;h=918&amp;f=webp" data-lightbox-width="1432" data-lightbox-height="918" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="458" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>從單體架構到無伺服器</h2>
+<p>轉移到 Cloudflare Workers 為開發人員帶來多項優勢：部署簡單、成本低、延遲低，以及內建安全性。</p>
+<p><strong>輕鬆部署：</strong>傳統 Matrix 部署需要佈建伺服器、管理 PostgreSQL、設定 Redis 叢集、更新 TLS 憑證、設定負載平衡器、建置監控基礎架構，還得安排值班輪值人員。</p>
+<p>而在 Workers 上，部署只需一行指令：wrangler deploy。TLS、負載平衡、DDoS 防護與全球分發全都由 Workers 自動處理。 </p>
+<p><strong>依用量計價的成本模式：</strong>傳統 Homeserver 不管有沒有人使用，都要持續花錢。Workers 的計價方式是依請求數量計算，所以只有在使用時才需付費，當大家都休息時，成本幾乎降到零。</p>
+<p><strong>在全球範圍內降低延遲：</strong>部署在 us-east-1 的傳統 Matrix Homeserver，對亞洲或歐洲使用者來說，延遲至少 200 毫秒以上。而 Workers 在全球超過 300 個位置執行。當東京的使用者傳送訊息時，Worker 會直接在東京本地執行。</p>
+<p><strong>內建安全性：</strong>Matrix Homeserver 往往是高價值攻擊目標：它們處理加密通訊、儲存訊息歷程記錄，還負責使用者驗證。傳統部署需手動強化安全：防火牆設定、限速、DDoS 緩解、WAF 規則、IP 信譽篩選等。</p>
+<p>Workers 預設提供上述所有安全防護。</p>
+<h3>後量子保護</h3>
+<p>Cloudflare 於 <a href="https://blog.cloudflare.com/post-quantum-for-all" target="_blank" rel="noopener noreferrer"><u>2022 年 10 月</u></a>在所有 <a href="https://www.cloudflare.com/learning/ssl/why-use-tls-1.3" target="_blank" rel="noopener noreferrer"><u>TLS 1.3</u></a> 連線中全面部署了「後量子混合金鑰協議」。任何連線到我們 Worker 的請求，都會自動協商使用 X25519MLKEM768——這是一種混合式金鑰交換演算法，結合了經典的 X25519 與 ML-KEM（NIST 標準化的後量子密碼演算法）。</p>
+<p>傳統密碼學仰賴一些數學難題，這些問題對傳統電腦來說極難破解，但對執行 Shor 演算法的量子電腦卻輕而易舉。ML-KEM 則是基於晶格問題，，即使在量子電腦上依然難以求解。採用混合方式意味著，只有當兩種演算法都被破解時，連線才有可能遭到入侵。</p>
+<h3>追蹤訊息在系統中的流動路徑</h3>
+<p>瞭解加密在何處發生，對安全架構設計至關重要。當某人透過我們的 Homeserver 傳送一則訊息時，實際流程如下：</p>
+<p>寄件者的用戶端取得純文字訊息，並使用 Megolm（Matrix 的端對端加密）對其進行加密。這個加密後的負載接著被包裹在 TLS 中進行傳輸。在 Cloudflare 上，該 TLS 連線使用 X25519MLKEM768，使其具備抗量子能力。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="557" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=715&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=640&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=715&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=750&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=828&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=1080&amp;h=841&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=1280&amp;h=997&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=1430&amp;h=1114&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3101 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49MZD4QZ8MNFFHB6GAXN5K.png&amp;w=1544&amp;h=1202&amp;f=webp" data-lightbox-width="1544" data-lightbox-height="1202" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="557" class="pt-portable-image-media"></div>
+</figure>
+<p>Worker 會終止 TLS 連線，但它接收到的內容仍然是加密的——即 Megolm 密文。我們將此密文儲存在 D1 資料庫中，依照聊天室和時間戳記進行索引，並將其遞送給接收者。但我們從未看見純文字。訊息「Hello, world」只存在於寄件者的裝置與接收者的裝置上。</p>
+<p>當接收者進行同步時，流程反向進行。他們透過另一條抗量子的 TLS 連線接收加密負載，然後在本機使用他們的 Megolm 工作階段金鑰進行解密。</p>
+<h3>雙層獨立保護</h3>
+<p>此機制透過兩層獨立運作的加密提供保護：</p>
+<p><a href="https://www.cloudflare.com/learning/ssl/transport-layer-security-tls" target="_blank" rel="noopener noreferrer"><u>傳輸層 (TLS)</u></a> 保護傳輸中的資料。它在用戶端加密，並在 Cloudflare 邊緣解密。透過 X25519MLKEM768，該層現已具備後量子安全性。</p>
+<p><a href="https://www.cloudflare.com/learning/ddos/what-is-layer-7" target="_blank" rel="noopener noreferrer"><u>應用程式層</u></a> (Megolm E2EE) 保護訊息內容。它在寄件者的裝置上加密，且僅在接收者的裝置上解密。該層使用傳統的 Curve25519 密碼學。</p>
+<h3>各方所能見到的資訊</h3>
+<p>任何 Matrix Homeserver 的營運者，不論是在 VPS 上執行 Synapse，還是使用我們在 Workers 上的實作，都能看到中繼資料：例如有哪些聊天室、誰在裡面、訊息的傳送時間等等。但基礎架構鏈中的任何一方都無法看到訊息內容，因為端對端加密的資料負載在進入網路之前，就已於寄件者的裝置上加密了。Cloudflare 終止 TLS 連線並將請求傳遞給您的 Worker，但這兩者都只看到 Megolm 密文。加密聊天室中的媒體在上傳前已於用戶端側加密，而私密金鑰從未離開使用者的裝置。</p>
+<h3>傳統部署所需的工作</h3>
+<p>若要在傳統 Matrix 部署中啟用後量子 TLS，您需要：將 OpenSSL 或 BoringSSL 升級到支援 ML-KEM 的版本；正確設定密碼套件偏好；測試所有 Matrix 應用程式的用戶端相容性；監控 TLS 協商失敗的情況；持續追蹤 PQC 標準的演進妥；善處理不支援 PQC 的用戶端。</p>
+<p>而使用 Workers，這一切都是「自動生效」的。Chrome、Firefox 和 Edge 都已支援 X25519MLKEM768。使用平台 TLS 堆疊的行動應用程式也會自動繼承這項支援。隨著 Cloudflare 持續擴展其 <a href="https://developers.cloudflare.com/ssl/post-quantum-cryptography" target="_blank" rel="noopener noreferrer"><u>PQC</u></a> 部署，安全狀態也會自動提升，而且我們無需採取任何行動。</p>
+<h2>使其可行的儲存架構</h2>
+<p>在移植 Tuwunel 過程中，我們領悟到的關鍵點是：不同資料需要不同的「一致性」保證。我們讓每個 Cloudflare 基元都發揮其最擅長的功能。</p>
+<h3>D1 用於資料模型</h3>
+<p>D1 負責儲存需要在重啟後仍留存且需支援查詢的所有資料，例如使用者、聊天室、事件、裝置金鑰等。整套 Matrix 資料模型共用了超過 25 張資料表。 </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> TABLE</span><span class="sk-6f42c1-ffc799"> events</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-24292e-fff">	event_id </span><span class="sk-005cc5-fff">TEXT</span><span class="sk-005cc5-fff"> PRIMARY</span><span class="sk-005cc5-fff"> KEY</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	room_id </span><span class="sk-005cc5-fff">TEXT</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	sender </span><span class="sk-005cc5-fff">TEXT</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	event_type </span><span class="sk-005cc5-fff">TEXT</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	state_key </span><span class="sk-005cc5-fff">TEXT</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	content </span><span class="sk-005cc5-fff">TEXT</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	origin_server_ts </span><span class="sk-005cc5-fff">INTEGER</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">	depth </span><span class="sk-005cc5-fff">INTEGER</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> NULL</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>D1 基於 SQLite，意味著我們只需極少改動就能移植 Tuwunel 的查詢。JOIN、索引與彙總操作都能正常運作。</p>
+<p>我們吸取了一個慘痛的教訓：D1 的最終一致性打破了外鍵限制。當後續對事件的寫入檢查外鍵時，對聊天室的寫入可能不可見。我們移除了所有外鍵，並在應用程式碼中強制執行參照完整性。</p>
+<h3>KV 用於暫時性狀態</h3>
+<p>OAuth 授權碼的有效期為 10 分鐘，而重新整理權杖則在整個工作階段內有效。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Store OAuth code with 10-minute TTL</span></span>
+<span class="line"><span class="sk-24292e-fff">kv.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-6f42c1-ffc799">format</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"oauth_code:{}"</span><span class="sk-24292e-fff">, code), </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">token_data)</span><span class="sk-d73a49-a0a0a0">?</span></span>
+<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">expiration_ttl</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">600</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">	.</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">	.await</span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>KV 的全球分佈特性，意味著無論使用者身在何處，OAuth 流程都能快速運作。</p>
+<h3>R2 用於媒體檔案</h3>
+<p>Matrix 的媒體檔案可直接對應到 R2：上傳一張影像後，會得到一個內容定址 URL，而且無需輸出費用。</p>
+<h3>Durable Objects 用於原子性操作</h3>
+<p>有些操作無法接受「最終一致性」，例如當用戶端申領一次性加密金鑰時，該金鑰必須被原子性地移除。如果兩個用戶端同時嘗試申領同一個金鑰，就會造成加密工作階段建立失敗。</p>
+<p>Durable Objects 提供單執行緒、強一致性的儲存：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">#[durable_object]</span></span>
+<span class="line"><span class="sk-24292e-fff">pub struct UserKeysObject {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	state</span><span class="sk-24292e-fff">: State,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	env</span><span class="sk-24292e-fff">: Env,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">impl UserKeysObject {</span></span>
+<span class="line"><span class="sk-24292e-fff">	async fn </span><span class="sk-6f42c1-ffc799">claim_otk</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">self, algorithm: </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">str) </span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-24292e-fff"> Result</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Option</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Key</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    	// Atomic within single DO - no race conditions possible</span></span>
+<span class="line"><span class="sk-24292e-fff">    	let mut keys: Vec</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Key</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> self.state.</span><span class="sk-6f42c1-ffc799">storage</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">        	.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"one_time_keys"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        	.await</span></span>
+<span class="line"><span class="sk-24292e-fff">        	.</span><span class="sk-6f42c1-ffc799">ok</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">        	.</span><span class="sk-6f42c1-ffc799">flatten</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">        	.</span><span class="sk-6f42c1-ffc799">unwrap_or_default</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    	if let </span><span class="sk-6f42c1-ffc799">Some</span><span class="sk-24292e-fff">(idx) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> keys.</span><span class="sk-6f42c1-ffc799">iter</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">position</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff">k</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> k.algorithm </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> algorithm) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        	let key </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> keys.</span><span class="sk-6f42c1-ffc799">remove</span><span class="sk-24292e-fff">(idx);</span></span>
+<span class="line"><span class="sk-24292e-fff">        	self.state.storage().put(</span><span class="sk-032f62-99ffe4">"one_time_keys"</span><span class="sk-24292e-fff">, &amp;keys).await?;</span></span>
+<span class="line"><span class="sk-24292e-fff">        	return </span><span class="sk-6f42c1-ffc799">Ok</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">Some</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">key</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">    	}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    	Ok</span><span class="sk-24292e-fff">(None)</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>我們將 UserKeysObject 用於端對端加密的金鑰管理，將 RoomObject 用於即時聊天室事件（如正在輸入指示和已讀回條），將 UserSyncObject 用於裝置對裝置的訊息佇列。其餘的流程則透過 D1 處理。</p>
+<h3>完整的端對端加密與 OAuth 支援</h3>
+<p>我們的實作支援完整的 Matrix E2EE 堆疊：裝置金鑰、跨裝置簽署金鑰、單次金鑰、備用金鑰、金鑰備份以及脫水裝置。</p>
+<p>現代 Matrix 用戶端採用 OAuth 2.0/OIDC，而非舊式的密碼登入流程。我們實作了一個完整的 OAuth 提供者，包含動態用戶端註冊、PKCE 授權、RS256 簽署的 JWT 權杖、支援輪替的權杖更新機制，以及標準的 OIDC 探索端點。<br></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//matrix.example.com/.well-known/openid-configuration</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "issuer"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://matrix.example.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "authorization_endpoint"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://matrix.example.com/oauth/authorize"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "token_endpoint"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://matrix.example.com/oauth/token"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "jwks_uri"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://matrix.example.com/.well-known/jwks.json"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>將 Element 或任何 Matrix 用戶端指向您的網域，它就能自動探索所有設定。</p>
+<h2>適用於行動裝置的 Sliding Sync</h2>
+<p>傳統的 Matrix 同步機制會在初始連線時傳輸數 MB 的資料，消耗行動裝置的電量與流量。</p>
+<p>Sliding Sync 讓用戶端只請求需要的資料。初始同步僅取得最近 20 個聊天室的基本狀態，使用者捲動時才逐步請求更多範圍。伺服器會追蹤位置，並僅推送變更部分 (deltas)。</p>
+<p>結合邊緣執行，即使在緩慢的網路環境下，行動用戶端也能在 500 毫秒內完成連線並顯示聊天室清單。</p>
+<h2>比較</h2>
+<p>對於為小型團隊提供服務的 Homeserver：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>&nbsp;</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>過去 (VPS)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每月費用（閒置）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$20-50</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>&lt;$1</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每月費用（作用中）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$20-50</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>$3-10</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>全球延遲</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>100-300ms</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>20-50ms</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>部署時間</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>小時</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>幾秒鐘</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>維護</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>每週一次</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>無</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>DDoS 防護</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>額外的費用</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>已內含</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>後量子 TLS</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>設定複雜</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>自動</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><sup>*<em>基於截至 2026 年 1 月 15 日，DigitalOcean、AWS Lightsail 及 Linode 等服務公開的費率與指標。</em></sup></p>
+<p>在擴展規模時，經濟效益更為顯著。傳統部署需要容量規劃與過度佈建，而 Workers 會自動擴展。</p>
+<h2>分散式通訊協定的未來</h2>
+<p>我們最初只是實驗：Matrix 能在 Workers 上執行嗎？結果證明，不僅可以，這套方法也適用於其他具狀態的通訊協定。</p>
+<p>透過將傳統的具狀態元件對應到 Cloudflare 的基礎元件：Postgres 對應 D1、Redis 對應 KV、互斥鎖對應 Durable Objects，我們發現複雜的應用程式並不需要複雜的基礎架構。我們移除了作業系統、資料庫管理和網路設定的負擔，只留下應用程式邏輯與資料本身。</p>
+<p>Workers 讓您擁有資料主權，卻不必承擔基礎架構的負擔。</p>
+<p>我目前仍在積極實驗這套實作，並熱切歡迎任何對此類服務感興趣的朋友貢獻心力。</p>
+<p>準備好使用 Workers 建構強大的即時應用程式了嗎？立即開始使用 <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>，並探索 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> 以打造您自己的具狀態邊緣應用程式。加入我們的 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord 社群</u></a>，與其他在邊緣建置的開發人員交流。</p>

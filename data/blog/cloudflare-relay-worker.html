@@ -1,136 +1,119 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4qRNZdMMFcmDWu5lILHhhn/ca8cf10760f3773b794bd30b2ac9bc5c/cloudflare-relay-worker.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Our <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">Notification Center</a> offers first class support for a variety of popular services (a list of which are available <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks" target="_blank" rel="noopener noreferrer">here</a>). However, even with such extensive support, you may use a tool that isn’t on that list. In that case, it is possible to leverage <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> in combination with a generic webhook to deliver notifications to <i>any</i> service that accepts webhooks.</p>
-	<p>Today, we are excited to announce that we are open sourcing a Cloudflare Worker that will make it as easy as possible for you to transform our generic webhook response into any format you require. Here’s how to do it.</p>
-	<p>For this example, we are going to write a Cloudflare Worker that takes a generic webhook response, transforms it into the correct format and delivers it to Rocket Chat, a popular customer service messaging platform. &nbsp;When Cloudflare sends you a generic webhook, it will have the following schema, where “text” and “data” will vary depending on the alert that has fired:</p>
-	<pre class="language-json"><code class="language-json">{
-   "name": "Your custom webhook",
-   "text": "The alert text",
-   "data": {
-       "some": "further",
-       "info": [
-           "about",
-           "your",
-           "alert",
-           "in"
-       ],
-       "json": "format"
-   },
-   "ts": 123456789
-}</code></pre>
-	<p>Whereas Rocket Chat is looking for this format:</p>
-	<pre class="language-json"><code class="language-json">{
-   "text": "Example message",
-   "attachments": [
-       {
-           "title": "Rocket Chat",
-           "title_link": "https://rocket.chat",
-           "text": "Rocket.Chat, the best open source chat",
-           "image_url": "/images/integration-attachment-example.png",
-           "color": "#764FA5"
-       }
-   ]
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="getting-started">Getting Started</h2>
-		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Firstly, you’ll need to ensure you are ready to develop on the Cloudflare Workers platform. You can find more information on how to do that <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">here</a>. For the purpose of this example, we will assume you have a Cloudflare account and Wrangler, the Workers CLI, setup.</p>
-	<p>Next, let us see the steps to extend the notifications system in detail.</p>
-	<p><b>Step 1</b>Clone the webhook relay worker GitHub repository: <code>git clone https://github.com/cloudflare/cf-webhook-relay.git</code></p>
-	<p><b>Step 2</b>Check the webhook payload format required by your communication tool. In this specific case, it would look like the Rocket Chat example payload shared above.</p>
-	<p><b>Step 3</b>Sign up for Rocket Chat and add a webhook integration to accept incoming webhook notifications.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1LYgyVgd1cLkVVTBLKqaog/ffab14ab05cbb012449410d17b03403e/image2-15.png" alt="Example configuration of incoming webhook integration in Rocket Chat" class="kg-image" width="1999" height="1261" loading="lazy">
-
-	</figure>
-	<p>**Step 4**Configure an encrypted wrangler secret for request authentication and the Rocket Chat URL for sending requests in your Worker: <a href="https://developers.cloudflare.com/workers/platform/environment-variables/#adding-secrets-via-wrangler" target="_blank" rel="noopener noreferrer">Environment variables · Cloudflare Workers docs</a> (for this example, the secret is not encrypted.)</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6SRZ9WJYEbf0IfKEv568b/27fda35b3a413f11a523084e8f6235b4/image3-15.png" alt="Workers environment variables configuration in Cloudflare dashboard" class="kg-image" width="1999" height="693" loading="lazy">
-
-	</figure>
-	<p><b>Step 5</b>Modify your worker to accept POST webhook requests with the secret configured as a query param for authentication.</p>
-	<pre class="language-json"><code class="language-json">if (headers.get("cf-webhook-auth") !== WEBHOOK_SECRET) {
-    return new Response(":(", {
-        headers: {'content-type': 'text/plain'},
-            status: 401
-    })
-}</code></pre>
-	<p><b>Step 6</b>Convert the incoming request payload from the notification system (like in the example shared above) to the Rocket Chat format in the worker.</p>
-	<pre class="language-json"><code class="language-json">let incReq = await request.json()
-let msg = incReq.text
-let webhookName = incReq.name
-let rocketBody = {
-    "text": webhookName,
-    "attachments": [
-        {
-            "title": "Cloudflare Webhook",
-            "text": msg,
-            "title_link": "https://cloudflare.com",
-            "color": "#764FA5"
-        }
-    ]
-}</code></pre>
-	<p><b>Step 7</b>Configure the Worker to send POST requests to the Rocket Chat webhook with the converted payload.</p>
-	<pre class="language-json"><code class="language-json">const rocketReq = {
-    headers: {
-        'content-type': 'application/json',
-    },
-    method: 'POST',
-    body: JSON.stringify(rocketBody),
-}
-const response = await fetch(
-    ROCKET_CHAT_URL,
-    rocketReq,
-)
-const res = await response.json()
-console.log(res)
-return new Response(":)", {
-    headers: {'content-type': 'text/plain'},
-})</code></pre>
-	<p><b>Step 8</b>Set up deployment configuration in your wrangler.toml file and publish your Worker. You can now see the Worker in the Cloudflare dashboard.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4v3krfdWPyWlb5XxsErwsk/3102a9bdde5eed1da0d21c863dc23893/image1-20.png" alt="View and Manage workers in Cloudflare dashboard" class="kg-image" width="1928" height="862" loading="lazy">
-
-	</figure>
-	<p><b>Step 9</b>You can manage and monitor the Worker with a variety of available tools.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5kFBdyg5YEaadtiQwyVqYB/801b12c030df701346223ad2dac72b5b/image9-8.png" alt="Monitoring workers in Cloudflare dashboard" class="kg-image" width="1999" height="1337" loading="lazy">
-
-	</figure>
-	<p><b>Step 10</b>Add the Worker URL as a generic webhook to the notification destinations in the Cloudflare dashboard: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks/#generic-webhooks" target="_blank" rel="noopener noreferrer">Configure webhooks · Cloudflare Fundamentals docs</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2p1qMaGDkEM6H3C5hHVst1/4bb7ebc358be784bf2b11dcab7f0920d/image6-7.png" alt="Webhooks destination under Destinations in Notifications tab" class="kg-image" width="1999" height="872" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6PNvwMldKKmfZa8UlLvbHA/ca07b97c7ceb57eb14251410851dff08/image7-6.png" alt="Workers URL as a generic webhook in Cloudflare dashboard example" class="kg-image" width="1999" height="875" loading="lazy">
-
-	</figure>
-	<p><b>Step 11</b>Create a notification with the destination as the configured generic webhook: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications" target="_blank" rel="noopener noreferrer">Create a Notification · Cloudflare Fundamentals docs</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/216pxD7Q6yTqyPuMbYuTgk/fbd0b31d0ebba181f868b179a3d7f5c9/image8-6.png" alt="Example of notification creation" class="kg-image" width="1999" height="1208" loading="lazy">
-
-	</figure>
-	<p><b>Step 12</b>Tada! With your Cloudflare Worker running, you can now receive all notifications to Rocket Chat. We can configure in the same way for any communication tool.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7nnSDSJrXuT0QlVXoGLVDY/942155854f00bb616768e10d726503d1/image4-9.png" alt="Sample webhook notification in Rocket Chat" class="kg-image" width="1999" height="223" loading="lazy">
-
-	</figure>
-	<p>We know that a notification system is essential to proactively monitor any issues that may arise within a project. We are excited with this announcement to make notifications available to any communication service without having to worry too much about the system's compatibility to them. We have lots of updates planned, like adding more alertable events to choose from and extending our support to a wide range of webhook services to receive them.</p>
-	<p><i>If you're interested in building scalable services and solving interesting technical problems, we are hiring engineers on our team in</i> <a href="https://boards.greenhouse.io/cloudflare/jobs/3252504?gh_jid=3252504" target="_blank" rel="noopener noreferrer"><i>Austin</i></a> <i>&amp;</i> <a href="https://boards.greenhouse.io/cloudflare/jobs/3231716?gh_jid=3231716" target="_blank" rel="noopener noreferrer"><i>Lisbon</i></a>.</p>
+<p>Our <a href="https://blog.cloudflare.com/new-tools-to-monitor-your-server-and-avoid-downtime">Notification Center</a> offers first class support for a variety of popular services (a list of which are available <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks" target="_blank" rel="noopener noreferrer">here</a>). However, even with such extensive support, you may use a tool that isn’t on that list. In that case, it is possible to leverage <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> in combination with a generic webhook to deliver notifications to <em>any</em> service that accepts webhooks.</p>
+<p>Today, we are excited to announce that we are open sourcing a Cloudflare Worker that will make it as easy as possible for you to transform our generic webhook response into any format you require. Here’s how to do it.</p>
+<p>For this example, we are going to write a Cloudflare Worker that takes a generic webhook response, transforms it into the correct format and delivers it to Rocket Chat, a popular customer service messaging platform. &nbsp;When Cloudflare sends you a generic webhook, it will have the following schema, where “text” and “data” will vary depending on the alert that has fired:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Your custom webhook"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   "text"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"The alert text"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   "data"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">       "some"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"further"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">       "info"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "about"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "your"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "alert"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">           "in"</span></span>
+<span class="line"><span class="sk-24292e-fff">       ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">       "json"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"format"</span></span>
+<span class="line"><span class="sk-24292e-fff">   },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   "ts"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">123456789</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Whereas Rocket Chat is looking for this format:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   "text"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Example message"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   "attachments"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">       {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">           "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Rocket Chat"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">           "title_link"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://rocket.chat"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">           "text"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Rocket.Chat, the best open source chat"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">           "image_url"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/images/integration-attachment-example.png"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">           "color"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"#764FA5"</span></span>
+<span class="line"><span class="sk-24292e-fff">       }</span></span>
+<span class="line"><span class="sk-24292e-fff">   ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>Getting Started</h2>
+<p>Firstly, you’ll need to ensure you are ready to develop on the Cloudflare Workers platform. You can find more information on how to do that <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">here</a>. For the purpose of this example, we will assume you have a Cloudflare account and Wrangler, the Workers CLI, setup.</p>
+<p>Next, let us see the steps to extend the notifications system in detail.</p>
+<p><strong>Step 1</strong>Clone the webhook relay worker GitHub repository: <code>git clone https://github.com/cloudflare/cf-webhook-relay.git</code></p>
+<p><strong>Step 2</strong>Check the webhook payload format required by your communication tool. In this specific case, it would look like the Rocket Chat example payload shared above.</p>
+<p><strong>Step 3</strong>Sign up for Rocket Chat and add a webhook integration to accept incoming webhook notifications.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="451" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=715&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=640&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=715&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=750&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=828&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=1080&amp;h=681&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=1280&amp;h=807&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=1430&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example configuration of incoming webhook integration in Rocket Chat" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44FHWP1D7WF7B7QQFZPMES.png&amp;w=1920&amp;h=1211&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1211" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="451" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>**Step 4**Configure an encrypted wrangler secret for request authentication and the Rocket Chat URL for sending requests in your Worker: <a href="https://developers.cloudflare.com/workers/platform/environment-variables/#adding-secrets-via-wrangler" target="_blank" rel="noopener noreferrer">Environment variables · Cloudflare Workers docs</a> (for this example, the secret is not encrypted.)</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="248" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=715&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=640&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=715&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=750&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=828&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=1080&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=1280&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=1430&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers environment variables configuration in Cloudflare dashboard" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW485D8F4ECCYYK1DERADAAE.png&amp;w=1920&amp;h=666&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="666" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="248" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Step 5</strong>Modify your worker to accept POST webhook requests with the secret configured as a query param for authentication.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">if (headers.get(</span><span class="sk-032f62-99ffe4">"cf-webhook-auth"</span><span class="sk-24292e-fff">) !== WEBHOOK_SECRET) {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    return</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> new</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> Response(</span><span class="sk-005cc5-ffc799">":("</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">,</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        headers</span><span class="sk-24292e-fff">: {</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'content-type'</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'text/plain'</span><span class="sk-24292e-fff">},</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">            status</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">401</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><strong>Step 6</strong>Convert the incoming request payload from the notification system (like in the example shared above) to the Rocket Chat format in the worker.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">let incReq = await request.json()</span></span>
+<span class="line"><span class="sk-24292e-fff">let msg = incReq.text</span></span>
+<span class="line"><span class="sk-24292e-fff">let webhookName = incReq.name</span></span>
+<span class="line"><span class="sk-24292e-fff">let rocketBody = {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "text"</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">webhookName</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "attachments"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">        {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Cloudflare Webhook"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "text"</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">msg</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "title_link"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"https://cloudflare.com"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">            "color"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"#764FA5"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><strong>Step 7</strong>Configure the Worker to send POST requests to the Rocket Chat webhook with the converted payload.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">const rocketReq = {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    headers</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">        'content-type'</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'application/json'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    method</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'POST'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    body</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">JSON.stringify(rocketBody)</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">const response = await fetch(</span></span>
+<span class="line"><span class="sk-24292e-fff">    ROCKET_CHAT_URL,</span></span>
+<span class="line"><span class="sk-24292e-fff">    rocketReq,</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">const res = await response.json()</span></span>
+<span class="line"><span class="sk-24292e-fff">console.log(res)</span></span>
+<span class="line"><span class="sk-24292e-fff">return new Response(</span><span class="sk-032f62-99ffe4">":)"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">    headers</span><span class="sk-24292e-fff">: {</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'content-type'</span><span class="sk-24292e-fff">: </span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">'text/plain'</span><span class="sk-24292e-fff">},</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p><strong>Step 8</strong>Set up deployment configuration in your wrangler.toml file and publish your Worker. You can now see the Worker in the Cloudflare dashboard.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="320" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=715&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=640&amp;h=286&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=715&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=750&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=828&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=1080&amp;h=483&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=1280&amp;h=573&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=1430&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="View and Manage workers in Cloudflare dashboard" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4730VKGV0YW69KM9ADG347.png&amp;w=1920&amp;h=858&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="858" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="320" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Step 9</strong>You can manage and monitor the Worker with a variety of available tools.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="478" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=715&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=640&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=715&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=750&amp;h=501&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=828&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=1080&amp;h=722&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=1280&amp;h=856&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=1430&amp;h=956&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Monitoring workers in Cloudflare dashboard" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NS7KV8139TTYFVEPD6HR.png&amp;w=1920&amp;h=1284&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1284" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="478" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Step 10</strong>Add the Worker URL as a generic webhook to the notification destinations in the Cloudflare dashboard: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks/#generic-webhooks" target="_blank" rel="noopener noreferrer">Configure webhooks · Cloudflare Fundamentals docs</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="312" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=640&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=750&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=828&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=1080&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=1280&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=1430&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Webhooks destination under Destinations in Notifications tab" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45JKZR2NJ94XBV3TJJG3AM.png&amp;w=1920&amp;h=838&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="838" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="312" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="313" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=715&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=640&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=715&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=750&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=828&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=1080&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=1280&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=1430&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers URL as a generic webhook in Cloudflare dashboard example" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW484GV6P92JR8MA4JRT2RH7.png&amp;w=1920&amp;h=840&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="840" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="313" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Step 11</strong>Create a notification with the destination as the configured generic webhook: <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications" target="_blank" rel="noopener noreferrer">Create a Notification · Cloudflare Fundamentals docs</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="432" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=640&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=750&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=828&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=1080&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=1280&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=1430&amp;h=864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example of notification creation" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZPAPXTYW31Q5W0CS739M.png&amp;w=1920&amp;h=1160&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1160" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="432" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>Step 12</strong>Tada! With your Cloudflare Worker running, you can now receive all notifications to Rocket Chat. We can configure in the same way for any communication tool.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="80" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=715&amp;h=80&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=640&amp;h=72&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=715&amp;h=80&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=750&amp;h=84&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=828&amp;h=93&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=1080&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=1280&amp;h=143&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=1430&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Sample webhook notification in Rocket Chat" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Z9EFTD16DF2DHY1CCG9A.png&amp;w=1920&amp;h=214&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="214" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="80" class="pt-portable-image-media"></div>
+</figure>
+<p>We know that a notification system is essential to proactively monitor any issues that may arise within a project. We are excited with this announcement to make notifications available to any communication service without having to worry too much about the system's compatibility to them. We have lots of updates planned, like adding more alertable events to choose from and extending our support to a wide range of webhook services to receive them.</p>
+<p><em>If you're interested in building scalable services and solving interesting technical problems, we are hiring engineers on our team in</em> <a href="https://boards.greenhouse.io/cloudflare/jobs/3252504?gh_jid=3252504" target="_blank" rel="noopener noreferrer"><em>Austin</em></a> <em>&amp;</em> <a href="https://boards.greenhouse.io/cloudflare/jobs/3231716?gh_jid=3231716" target="_blank" rel="noopener noreferrer"><em>Lisbon</em></a>.</p>

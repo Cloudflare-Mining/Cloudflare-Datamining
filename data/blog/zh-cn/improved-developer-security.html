@@ -1,0 +1,216 @@
+<p>智能体让用户能够以空前的速度构建软件，但保护运行环境和编写的代码免受错误和恶意攻击却需要付出真正的努力。<a href="https://www.cloudflare.com/learning/security/threats/owasp-top-10" target="_blank" rel="noopener noreferrer"><u>开放式 Web 应用安全项目</u></a> (OWASP) 详细列举了一些代理式 AI 系统中存在的<a href="https://genai.owasp.org/resource/agentic-ai-threats-and-mitigations" target="_blank" rel="noopener noreferrer"><u>风险</u></a>，包括凭证泄露、用户假冒和权限提升。这些风险可能会对环境造成严重的损害，包括拒绝服务攻击、数据丢失或数据泄露，从而导致严重的财务和声誉损失。 </p>
+<p>这是一个身份问题。在现代开发中，“身份”不仅仅是人类用户，还包括代表用户行事的智能体、脚本，以及第三方工具。为了保护这些非人类身份，需要管理它们的整个生命周期：确保其凭证（令牌）不泄露、查看哪些应用可以通过 OAuth 访问，以及使用精细化 RBAC 方法来缩小其权限范围。</p>
+<p>今天，我们将推出多项更新来满足这些需求：保护凭证安全的可扫描令牌，管理访问主体的 OAuth 可见性，以及用于微调策略的特定资源范围的 RBAC。</p>
+<h2>理解身份：主体、凭证和策略</h2>
+<p>在这个<a href="https://www.cloudflare.com/learning/ai/what-is-agentic-ai" target="_blank" rel="noopener noreferrer"><u>自主智能体</u></a>时代，如果要保护互联网安全，则必须重新审视我们处理身份的方式。无论请求来自人类开发人员还是 AI 智能体，与 API 的每一次交互都依赖于三个核心支柱：</p>
+<ul>
+	<li><strong>主体（旅行者）：</strong>身份本身，即“是谁”。这可能是通过 OAuth 登录的您本人，也可能是使用 API 令牌部署代码的后台智能体。</li>
+	<li><strong>凭证（护照）：</strong>身份证明。在网络世界中，API 令牌就相当于“护照”。如果被盗或泄露，任何人都可以假冒与之相关的身份。</li>
+	<li><strong>策略（签证）：</strong>它定义允许该身份执行的操作。持有有效护照，并不意味着拥有进入每个国家/地区的签证。策略可以确保即使是经过验证的身份，也只能访问其所需的特定资源。</li>
+</ul>
+<p>如果无法协同管理这三个支柱，安全防护会崩溃。您可能会遇到以下情况：拥有一个使用被盗凭证的有效主体，或者拥有一个合法身份但访问策略过于宽泛。 </p>
+<h2>检测已泄露的令牌</h2>
+<p>智能体和其他第三方应用使用 API 令牌访问 Cloudflare API。我们发现，人们泄露密钥的最简单方法之一是意外地将其推送到公共 GitHub 存储库。<a href="https://www.gitguardian.com/files/the-state-of-secrets-sprawl-report-2026" target="_blank" rel="noopener noreferrer"><u>GitGuardian</u></a> 报告指出，去年有超过 2800 万个密钥被发布到公共 GitHub 存储库，而 AI 导致泄露事件的发生速度比之前快 5 倍。</p>
+<p>如果说 API 令牌是数字护照，则将其泄露到公共存储库就相当于将护照遗落在公园长椅上。任何捡到该护照的人均可假冒该身份，直到证件作废。我们与 GitHub 的合作就像一个全球性“失物招领处”，用于找回这些凭证。在您意识到自己的“护照”丢失之前，我们已经识别了该证件，通过校验和验证了其真实性并将其作废，以防止滥用。</p>
+<p>我们将与多家领先的凭证扫描工具提供商合作，帮助用户主动查找已泄露的令牌并将其作废，以防止令牌被恶意利用。我们深知，您本人、您的员工或某个智能体犯下错误并将密钥推送到不应推送的位置而泄露令牌，这并非是否会发生的问题，而是何时会发生的问题。</p>
+<h4>Github</h4>
+<p>我们已与 GitHub 合作并加入了他们的 Secret Scanning 计划，以便在公共和专用存储库中查找令牌。如果我们收到令牌已泄露到公共存储库的通知，我们将自动作废该令牌，以防止其被恶意利用。对于专用存储库，GitHub 会通知您任何已泄露的 Cloudflare 令牌，您可以清理这些令牌。</p>
+<h5>工作原理</h5>
+<p>我们已与 GitHub 分享了新的令牌格式（如下所示！），他们现在会在每次提交时扫描这些格式。如果发现疑似已泄露的 Cloudflare 令牌，他们会使用校验和验证令牌的真实性，向我们发送 webhook 来作废该令牌；然后我们会通过电子邮件通知您，以便您可以在仪表板设置中生成新的令牌。</p>
+<p>也就是说，发现漏洞后，我们会立即将其堵上。当用户意识到自己犯了错时，我们已经将其修复。</p>
+<p>我们希望用户无需使用此类功能。但是我们的合作伙伴会密切关注安全漏洞，以帮助确保用户安全。</p>
+<h4>Cloudflare One</h4>
+<p>Cloudflare One 客户也能得到保护，免受此类泄露事件的影响。通过配置<a href="https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#credentials-and-secrets" target="_blank" rel="noopener noreferrer"><u>凭证和密钥</u></a>数据丢失防护 (DLP) 配置文件，企业可以在凭据可能传输的任何位置启用安全防护：</p>
+<ul>
+	<li><strong>网络流量 (<a href="https://www.cloudflare.com/sase/products/gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare Gateway</u></a>)：</strong>针对这些条目应用安全策略，以检测并阻止 Cloudflare API 令牌在网络中的传输。文件上传、出站请求或下载中的令牌会被拦截，使其无法到达目的地。</li>
+	<li><strong>出站电子邮件 (<a href="https://www.cloudflare.com/sase/products/email-security" target="_blank" rel="noopener noreferrer"><u>Cloudflare Email Security</u></a>)：</strong>Microsoft 365 客户可以将相同的防护扩展到 Outlook。<a href="https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp" target="_blank" rel="noopener noreferrer"><u>DLP Assist</u></a> 外接程序将扫描邮件然后再发送，从而在令牌发送到外部之前将其捕获。</li>
+	<li><strong>静态数据 (<a href="https://www.cloudflare.com/sase/products/casb" target="_blank" rel="noopener noreferrer"><u>Cloudflare CASB</u></a>)：</strong>Cloudflare 云访问安全代理应用相同的配置文件来扫描所有已连接的 SaaS 应用中的文件，从而捕获 Google Drive、OneDrive、Dropbox 及其他集成服务中保存或共享的令牌。</li>
+</ul>
+<p>不过，最新的泄露媒介是 AI 流量。<a href="https://www.cloudflare.com/developer-platform/products/ai-gateway" target="_blank" rel="noopener noreferrer"><u>Cloudflare AI Gateway</u></a> 集成了相同的数据丢失防护 (DLP) 配置文件，可实时扫描并拦截传入的提示词与传出的 AI 模型响应。</p>
+<h4>其他凭证扫描工具</h4>
+<p>凭证扫描只有在用户使用时才会发挥作用，因此，我们与多个开源和商业凭证扫描工具合作，确保用户无论使用哪种密钥扫描工具，都能得到保护。</p>
+<h3>工作原理</h3>
+<p>迄今为止，Cloudflare API 令牌看起来相当通用，因此，凭证扫描工具难以高置信度地加以识别。这些自动化安全工具会扫描代码存储库，寻找已泄露的凭证，例如 API 密钥、令牌或密码。“cf”前缀让 Cloudflare 令牌可被即时识别，且置信度更高，而校验和让工具可以轻松地对其进行静态验证。现有令牌将继续有效，但生成的每个新令牌会采用可扫描格式，以便能够轻松检测，且具备高置信度。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>凭证类型</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>用途</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>新格式</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用户 API 密钥</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>与用户账户相关联的旧版全球 API 密钥（完全访问权限）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>cfk_[40 个字符][校验和]</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>用户 API 令牌</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>为特定权限而创建的范围令牌</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>cfut_[40 个字符][校验和]</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>账户 API 令牌</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>账户（而非特定用户）拥有的令牌</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>cfat_[40 个字符][校验和]</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h4>开始使用</h4>
+<p>如果拥有现有 API 令牌，则可以滚动现有令牌以创建新的可扫描 API 令牌。这是可选步骤，但建议执行，以确保在令牌泄露的情况下轻松发现它们。</p>
+<p>API 令牌通常由用户的脚本和智能体使用，OAuth 用于管理第三方平台的访问权限。两者都需要明确的可见性，以防止未经授权的访问，并确保用户确切地知道谁（或什么工具）可以访问数据。</p>
+<h2>改善 OAuth 同意体验</h2>
+<p>当用户使用 OAuth 将 Wrangler 等第三方应用连接到 Cloudflare 账户时，实际上是授予该应用访问账户数据的权限。随着时间的推移，用户可能会忘记当初授予第三方应用访问账户的初衷。之前，没有一个集中位置来查看并管理这些应用。从今天开始，有了这样的集中位置。&nbsp;&nbsp;</p>
+<p>未来，当第三方应用请求访问您的 Cloudflare 账户时，您将能够查看：</p>
+<ul>
+	<li><strong>哪些第三方应用</strong>正在请求访问，以及该应用的名称、徽标和发布者等信息。</li>
+	<li>第三方应用请求访问<strong>哪些范围</strong>。</li>
+	<li>授予第三方应用访问<strong>哪些账户</strong>的权限。</li>
+</ul>
+<div id="html-block-k3e" class="html-block">
+	<style>
+		#html-block-k3e .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k3e .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3e .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k3e .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k3e .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">之前</span></th>
+					<th class="tg-amwm"><span style="font-style:normal;text-decoration:none;color:#000;background-color:transparent">使用之后</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/2p3RZFDklLn9cfQOVYq5vS/d40e6116c115c453095f8ed2d110f062/image3.png" alt=""></td>
+					<td class="tg-0lax"><img src="https://images.ctfassets.net/zkvhlag99gkb/33yGBWfD468P6T0hAnvbPX/9241ef24b6381eedaf2830b782a69f2e/image4.png" alt=""><br><br>
+
+						<img src="https://images.ctfassets.net/zkvhlag99gkb/22pDfCAFbPLNhnAPXLB36w/0671d7e892c5a93040ab17a62eda4a3c/image1.png" alt="">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>并非所有的应用都需要相同的权限；某些应用只需读取数据，其他应用则可能需要更改账户。在授予访问权限之前了解具体的权限范围，有助于遵循最低权限原则。 </p>
+<p>我们还新增了“<a href="https://dash.cloudflare.com/profile/access-management/authorization" target="_blank" rel="noopener noreferrer"><u>关联应用</u></a>”功能，便于用户查看哪些应用可以访问哪些账户，哪些范围/权限与应用相关联，以及根据需要轻松撤销访问权限。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="246" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=715&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=640&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=715&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=750&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=828&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1080&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1280&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1430&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3216 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478N509TPMXJW3ZKV633D6.png&amp;w=1530&amp;h=527&amp;f=webp" data-lightbox-width="1530" data-lightbox-height="527" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="246" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h4>开始使用</h4>
+<p>OAuth 同意和撤销改进功能现已推出。访问“我的个人资料 &gt; 访问管理 &gt; 关联应用”，即可查看当前哪些应用可以访问您的账户。</p>
+<p>对于正在构建与 Cloudflare 集成的开发人员，请密切关注 <a href="https://developers.cloudflare.com/changelog" target="_blank" rel="noopener noreferrer"><u>Cloudflare 更新日志</u></a>，了解更多关于如何注册自己的 OAuth 应用的公告信息！</p>
+<h2>精细化资源级权限管理</h2>
+<p>如果说令牌是护照，则特定资源范围的权限就是护照中的签证。持有有效护照可以让您进入大楼的正门，但它不得允许您访问大楼里的每一个房间。通过将访问范围缩小到特定资源（例如负载均衡池或特定 Gateway 策略），可确保即使用户通过了身份验证，也只拥有访问绝对必要资源的“签证”。</p>
+<p>去年，Cloudflare <a href="https://developers.cloudflare.com/changelog/post/2025-10-01-fine-grained-permissioning-beta" target="_blank" rel="noopener noreferrer"><u>宣布</u></a>为其多款 Zero Trust 产品提供<a href="https://www.cloudflare.com/learning/access-management/role-based-access-control-rbac" target="_blank" rel="noopener noreferrer"><u>基于角色的访问控制 (RBAC)</u></a> 系统的资源范围权限支持。这让您能够为用户和智能体配置适当的权限，从而最大限度地降低安全风险。我们已将此项功能扩展到多个新的资源级权限。资源范围现在支持：</p>
+<ul>
+	<li>Access 应用</li>
+	<li>Access 身份提供商</li>
+	<li>访问策略</li>
+	<li>Access 服务令牌</li>
+	<li>Access 目标</li>
+</ul>
+<p>我们还彻底改进了 API 令牌的创建体验，让客户能够更轻松地直接从 Cloudflare 仪表板配置和管理账户 API 令牌。 </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="368" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW45CB1KE9WABP8N71MR4PK9.gif" alt="BLOG-3216 8" width="715" height="368" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h4>工作原理</h4>
+<p>当您将成员添加到 Cloudflare 账户或创建 API 令牌时，通常会为该主体分配一项策略。权限策略就是赋予主体执行某种操作的权限，例如管理 Cloudflare One Access 应用或 DNS 记录。如果没有策略，主体可以进行身份验证，但没有执行任何账户内操作的权限。</p>
+<p>策略由三个部分组成：主体、角色和范围。主体是指授予其访问权限的对象，可能是人类用户、API 令牌等非人类身份 (NHI)，或是越来越多地代表用户行事的智能体。角色定义了其获准执行的操作。范围则决定着这些权限的应用范围，而且从过去来看，范围仅限于整个账户或单个区域。</p>
+<h2>新增权限角色</h2>
+<p>我们还在“账户”和“区域”级别扩展了角色范围，为许多产品引入了多个新角色。 </p>
+<ul>
+	<li>账户范围<ul>
+			<li>CDN 管理</li>
+			<li>MCP 门户</li>
+			<li>Radar</li>
+			<li>Request Tracer</li>
+			<li>SSL/TLS 管理</li>
+		</ul>
+	</li>
+	<li>区域范围<ul>
+			<li>Analytics</li>
+			<li>日志推送</li>
+			<li>Page Rule</li>
+			<li>安全中心</li>
+			<li>Snippets</li>
+			<li>区域设置</li>
+		</ul>
+	</li>
+</ul>
+<h4>开始使用</h4>
+<p>我们现已面向所有 Cloudflare 客户推出资源范围和所有新账户和区域级角色。您可以通过 Cloudflare 仪表板、API 或 Terraform 指定账户、区域或资源范围策略。</p>
+<p>如需了解所有可用角色以及权限范围的完整说明，请访问我们的<a href="https://developers.cloudflare.com/fundamentals/manage-members/roles" target="_blank" rel="noopener noreferrer"><u>角色</u></a>和<a href="https://developers.cloudflare.com/fundamentals/manage-members/scope" target="_blank" rel="noopener noreferrer"><u>范围文档</u></a>。</p>
+<h2>保护账户安全</h2>
+<p>这些更新提供了真正的最低权限架构所需的精细化构建模块。通过改进权限和凭证管理方式，开发人员和企业可以对安全态势更有信心，确保 Cloudflare 的用户、应用、智能体和脚本安全无虞。最低权限并不是一个新概念，对于企业来说，它从来都不是可选项。无论是人工管理员管理区域，还是智能体以编程方式部署 Worker，预期都是相同的：它们应该只被授权执行分配的任务，而不能执行任何其他操作。</p>
+<p>在今天的公告发布之后，我们建议客户：</p>
+<ol>
+	<li>检查 <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer"><u>API 令牌</u></a>，并尽快重新签发新的可扫描 API 令牌。</li>
+	<li><a href="https://dash.cloudflare.com/profile/access-management/authorization" target="_blank" rel="noopener noreferrer"><u>检查已授权的 OAuth 应用</u></a>，并撤销不再使用的应用的授权</li>
+	<li>检查账户中的<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fbilling" target="_blank" rel="noopener noreferrer"><u>成员</u></a>与 <a href="https://dash.cloudflare.com/profile/api-tokens" target="_blank" rel="noopener noreferrer"><u>API 令牌</u></a>权限，确保用户根据需要使用新的账户、区域或资源范围权限，以降低风险。</li>
+</ol>

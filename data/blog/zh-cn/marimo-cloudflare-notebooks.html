@@ -1,0 +1,115 @@
+<p>此内容已使用自动机器翻译服务进行翻译，仅供您参考及阅读便利。其中可能包含错误、遗漏，或与原始英文版本存在理解方面的细微差别。如有疑问，请参考原始英文版本。</p>
+<p>许多开发人员、数据科学家和研究人员在 Python 笔记本中完成大部分工作：十多年来， Python 笔记本一直是数据科学和共享的事实上的标准。笔记本之所以受欢迎，是因为它们可以轻松编码、探索数据、制作原型和分享结果。Cloudflare 大量使用笔记本，发现越来越多的开发人员使用笔记本处理数据，从分析 HTTP 流量趋势、查询 <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer"><u>Workers Analytics Engine</u></a> 到查询自己存储在 R2 中的<a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer"><u> Iceberg 表</u></a>。</p>
+<p>传统笔记本非常强大，但在构建它们时并没有考虑到协作、可重复性或作为数据应用部署的因素。随着使用量在不同团队和工作流程中增长，这些限制开始面临大规模工作的现实。</p>
+<p><a href="https://marimo.io/blog/lessons-learned" target="_blank" rel="noopener noreferrer"><u>考虑到这些挑战</u></a>，<a href="https://marimo.io" target="_blank" rel="noopener noreferrer"><strong><u>marimo</u></strong></a> 重新构想了笔记本的体验。这是一个<a href="https://github.com/marimo-team/marimo" target="_blank" rel="noopener noreferrer"><u>开源的</u></a>反应式 Python 笔记本，具有可重复性，易于在 Git 中跟踪，可作为独立脚本执行并且可部署。我们与 marimo 团队合作，为 Cloudflare 开发人员带来这种简化的、生产友好的体验。减少因工具问题带来的麻烦，将更多时间用于探索数据。</p>
+<p>今天，我们隆重宣布三件事：</p>
+<ul>
+	<li><a href="https://notebooks.cloudflare.com/html-wasm/_start" target="_blank" rel="noopener noreferrer"><u>marimo 笔记本内置 Cloudflare 身份验证</u></a> – 直接从笔记本登录您的 Cloudflare 帐户，即可使用 Cloudflare API，无需创建 API 令牌</li>
+	<li><a href="https://github.com/cloudflare/notebook-examples" target="_blank" rel="noopener noreferrer"><u>开源笔记本示例</u></a> – 通过适用于 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a>、<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u>Workers AI</u></a>、<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a> 等服务的现成运行的笔记本示例探索您的 Cloudflare 数据</li>
+	<li><a href="https://github.com/cloudflare/containers-demos" target="_blank" rel="noopener noreferrer"><u>在 Cloudflare 容器上运行 marimo</u></a> – 轻松将 marimo 笔记本部署到 Cloudflare 容器，实现可扩展、长时间运行的数据工作流</li>
+</ul>
+<p>想立即开始探索您的 Cloudflare 数据吗？前往 <a href="http://notebooks.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>notebooks.cloudflare.com</u></a> 。您也可以继续阅读，了解关于 marimo 的更多信息，我们如何在笔记本中简化身份验证，以及如何使用 marimo 在 Cloudflare 上浏览和共享笔记本和应用。</p>
+<h3>为什么选择 marimo？</h3>
+<p>marimo 是一个<a href="https://docs.marimo.io" target="_blank" rel="noopener noreferrer"><u>开源的</u></a>反应式 Python 笔记本，专门为处理数据而设计，从头开始构建，以解决传统笔记本的许多问题。</p>
+<p>将 marimo 与传统笔记本区分开来的核心功能在于其<a href="https://marimo.io/blog/lessons-learned" target="_blank" rel="noopener noreferrer"><u>响应式执行模型</u></a>，该模型由单元格上的静态推理数据流图谱提供支持。运行一个单元格或与 <a href="https://docs.marimo.io/guides/interactivity" target="_blank" rel="noopener noreferrer"><u>UI 元素</u></a>交互，marimo 要么运行依赖的单元格，要么将其标记为过时（您的选择）。这可以保持代码和输出的一致性，防止错误发生，并显着提高用数据进行实验的速度。</p>
+<p>得益于被动执行，笔记本也可作为数据应用部署，易于共享。虽然您可以在本地、在云服务器、GPU —— 任何可以传统上运行软件的地方运行 marimo 笔记本，但你也可以<a href="https://docs.marimo.io/guides/wasm" target="_blank" rel="noopener noreferrer"><u>通过 WebAssembly</u></a> 完全在浏览器中运行它们，使共享成本降至零。</p>
+<p>因为 marimo 笔记本以 Python 格式存储，所以它们<a href="https://marimo.io/blog/python-not-json" target="_blank" rel="noopener noreferrer"><u>享受软件的所有好处</u></a>：使用 Git 管理版本，作为脚本或管道执行，使用 pytest 测试，使用 uv 内联包要求，并将符号从笔记本导入其他 Python 模块。虽然存储为 Python，marimo 也<a href="https://docs.marimo.io/guides/working_with_data/sql" target="_blank" rel="noopener noreferrer"><u>支持 SQL</u></a> 和数据源，例如 DuckDB、Postgres 和基于 Iceberg 的数据目录（除了 RAM 中的数据外，marimo 的<a href="https://docs.marimo.io/guides/generate_with_ai" target="_blank" rel="noopener noreferrer"><u>AI 助手</u></a>还可以访问这些数据目录）。</p>
+<p>要了解 marimo 笔记本是什么样的，请查看下面的嵌入式示例笔记本：</p>
+<div id="html-block-k2f" class="html-block">
+	<div class="post-content lh-copy gray1">
+		<div>
+			<iframe allow="fullscreen; autoplay; encrypted-media; picture-in-picture" src="https://koaning.github.io/drawdata/" style="margin:0 auto;border:1px solid var;border-radius:5px;max-height:750px"></iframe>
+		</div>
+	</div>
+	<p></p>
+</div>
+<h3>使用 marimo 探索您的 Cloudflare 数据</h3>
+<p>准备好在 marimo 笔记本中探索您自己的 Cloudflare 数据了吗？最简单的开始方法是访问 <a href="http://notebooks.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>notebooks.cloudflare.com</u></a> 并通过 <a href="https://webassembly.org" target="_blank" rel="noopener noreferrer"><u>WebAssembly (Wasm)</u></a> 直接在浏览器中运行我们的一个示例笔记本。您也可以在我们的<a href="https://github.com/cloudflare/notebook-examples" target="_blank" rel="noopener noreferrer"><u>笔记本示例 GitHub 存储库</u></a>中浏览源代码。</p>
+<p>想要创建自己的笔记本在本地运行？下面是一个简单示例，向您展示如何使用您的 Cloudflare 帐户进行身份验证，并列出您有权访问的区域：</p>
+<ol>
+	<li>如果尚未安装 <a href="https://docs.astral.sh/uv" target="_blank" rel="noopener noreferrer"><u>uv</u></a>，请按照<a href="https://docs.astral.sh/uv/getting-started/installation" target="_blank" rel="noopener noreferrer"><u>安装指南</u></a>进行安装。</li>
+	<li>为笔记本创建一个新的项目目录：</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">mkdir cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">zones</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">notebook</span></span>
+<span class="line"><span class="sk-24292e-fff">cd cloudflare</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">zones</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">notebook</span></span></code></pre>
+</div>
+<p>3. 初始化一个新的 uv 项目（这将创建一个 <code>.venv</code>和一个<code>pyproject.toml</code>）：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">uv init</span></span></code></pre>
+</div>
+<p>4. 添加 marimo 和所需的依赖项：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">uv add marimo</span></span></code></pre>
+</div>
+<p>5. 创建一个名为 <code>list-zones.py</code> 的文件，并将以下笔记本粘贴到其中：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> marimo</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">__generated_with </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "0.14.10"</span></span>
+<span class="line"><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> marimo.App(</span><span class="sk-e36209-fff">width</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"full"</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">auto_download</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">[</span><span class="sk-032f62-99ffe4">"ipynb"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"html"</span><span class="sk-24292e-fff">])</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@app.cell</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> _</span><span class="sk-24292e-fff">():</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    from</span><span class="sk-24292e-fff"> moutils.oauth </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> PKCEFlow</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    import</span><span class="sk-24292e-fff"> requests</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # Start OAuth PKCE flow to authenticate with Cloudflare</span></span>
+<span class="line"><span class="sk-24292e-fff">    auth </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> PKCEFlow(</span><span class="sk-e36209-fff">provider</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # Renders login UI in notebook</span></span>
+<span class="line"><span class="sk-24292e-fff">    auth</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> (auth,)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@app.cell</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">def</span><span class="sk-6f42c1-ffc799"> _</span><span class="sk-24292e-fff">(auth):</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    import</span><span class="sk-24292e-fff"> marimo </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> mo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    from</span><span class="sk-24292e-fff"> cloudflare </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> Cloudflare</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    mo.stop(</span><span class="sk-d73a49-a0a0a0">not</span><span class="sk-24292e-fff"> auth.access_token, mo.md(</span><span class="sk-032f62-99ffe4">"Please **sign in** using the button above."</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">    client </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Cloudflare(</span><span class="sk-e36209-fff">api_token</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">auth.access_token)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    zones </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> client.zones.list()</span></span>
+<span class="line"><span class="sk-24292e-fff">    [zone.name </span><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> zone </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> zones.result]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-005cc5-fff"> __name__</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-032f62-99ffe4"> "__main__"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    app.run()</span></span></code></pre>
+</div>
+<p>6. 打开笔记本编辑器：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">uv run marimo edit list</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">zones</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">py </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">sandbox</span></span></code></pre>
+</div>
+<p>7. 根据笔记本中的 OAuth 提示符登录。通过身份验证后，您将在最终单元格中看到 Cloudflare 区域的列表。</p>
+<p>大功告成！从这里，您可以展开笔记本以调用<a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer"><u> Workers AI</u></a> 模型，查询<a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u> R2 Data Catalog</u></a> 中的 Iceberg 表，或与任何 Cloudflare API 交互。</p>
+<h3>OAuth 在笔记本中的工作方式</h3>
+<p>您可以把 OAuth 想象成笔记本和 Cloudflare 之间的一次安全握手。无需复制粘贴 API 令牌，您只需点击“使用 Cloudflare 登录”，笔记本会处理剩下的事情。</p>
+<p>我们使用 PKCE（代码交换证明密钥）构建这种体验，这是一种安全的 OAuth 2.0 流程，无需使用客户端密钥，并能防止代码拦截攻击。PKCE 的工作原理是生成一个一次性代码，该代码可在登录后交换令牌，永远不需要共享客户端密钥。<a href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce" target="_blank" rel="noopener noreferrer"><u>了解有关 PKCE 如何工作的更多信息</u></a>。</p>
+<p>登录小部件位于 Cloudflare 和 marimo 合作的 <a href="https://github.com/marimo-team/moutils/blob/main/notebooks/pkceflow_login.py" target="_blank" rel="noopener noreferrer"><u>moutils.oauth</u></a> 中，使笔记本中的 OAuth 身份验证简单而安全。要使用它，只需创建一个如下所示的单元格：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">auth </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> PKCEFlow(</span><span class="sk-e36209-fff">provider</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"cloudflare"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Renders login UI in notebook</span></span>
+<span class="line"><span class="sk-24292e-fff">auth</span></span></code></pre>
+</div>
+<p>运行单元格时，您将看到一个“使用 Cloudflare 登录”按钮：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="305" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=640&amp;h=273&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=715&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=750&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=828&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1080&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1280&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1430&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example sign in with Cloudflare button" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KD5VAB3P42SX3RD3WT5A.png&amp;w=1600&amp;h=682&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="682" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="305" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>登录后，您将拥有一个可在使用 Cloudflare API 时传递的只读访问令牌。</p>
+<h3>在 Cloudflare 上运行 marimo：Workers 与容器</h3>
+<p>除了在本地运行 marimo 笔记本外，您还可以使用 Cloudflare 通过 <a href="https://developers.cloudflare.com/workers/static-assets" target="_blank" rel="noopener noreferrer"><u>Workers 静态资产</u></a> 或 <a href="https://developers.cloudflare.com/containers" target="_blank" rel="noopener noreferrer"><u>Cloudflare 容器</u></a>共享和运行它们。</p>
+<p>如果您有本地笔记本想与他人分享，可将其发布到 Workers。这之所以可行，是因为 marimo 可以将笔记本导出到 WebAssembly，从而使它们可以完全在浏览器中运行。您可以仅使用两个命令来开始：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">marimo export html</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">wasm notebook</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">py </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">o output_dir </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">mode edit </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">include</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">cloudflare</span></span>
+<span class="line"><span class="sk-24292e-fff">npx wrangler deploy</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>如果您的笔记本需要身份验证，可叠加 <a href="https://developers.cloudflare.com/cloudflare-one/policies/access" target="_blank" rel="noopener noreferrer"><u>Cloudflare Access</u></a>，实现经过身份验证的安全访问。</p>
+<p>对于需要更多计算能力、持久会话或长时间运行的任务的笔记本，您可以在我们的<a href="https://blog.cloudflare.com/containers-are-available-in-public-beta-for-simple-global-and-programmable" target="_blank" rel="noopener noreferrer"><u>新容器平台</u></a>上部署 marimo。要开始使用，请在 GitHub 上查看我们的 <a href="https://github.com/cloudflare/containers-demos/tree/main/marimo" target="_blank" rel="noopener noreferrer"><u>marimo 容器示例</u></a>。</p>
+<h3>Cloudflare + marimo 的下一步计划</h3>
+<p>这篇博文仅仅标志着 Cloudflare 与 marimo 合作的开端。虽然我们很期待看到您如何使用我们基于 WebAssembly 的联合笔记本平台来探索 Cloudflare 数据，但我们也希望帮助您对您的数据进行认真的计算——使您能够直接运行大规模分析和批处理作业。通过 marimo 笔记本。敬请关注！</p>

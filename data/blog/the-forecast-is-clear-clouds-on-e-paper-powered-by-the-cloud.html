@@ -1,276 +1,186 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1TSg890rflZBzhceV3aJbD/63ebae70376a25525d9b7aa5776b206e/image10.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>I’ve noticed that many shops are increasingly using e-paper displays. They’re impressive: high contrast, no backlight, and no visible cables. Unlike most electronics, these displays are seamlessly integrated and feel very natural. This got me wondering: is it possible to use such a display for a pet project? I want to experiment with this technology myself.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Be8SEo0lqoZ0t10tPbtcT/ffa6f9263df05392d7c4408e9c98bc28/Screenshot_2024-12-23_at_15.26.23.png" alt="" class="kg-image" width="1404" height="528" loading="lazy">
-	</figure>
-	<p style="text-align:center;"><span style="background-color:transparent;color:#000000;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><sup>(</sup></span></span><a style="text-decoration:none;" target="_blank" rel="noopener noreferrer" href="https://www.wiadomoscihandlowe.pl/najwieksze-sieci-handlowe/lidl/lidl-wprowadza-do-sklepow-elektroniczne-etykiety-mniejsze-obciazenie-pracownikow-mniej-zuzytego-papieru-2447917"><span style="background-color:transparent;color:#1155cc;"><span style="-webkit-text-decoration-skip:none;font-style:normal;font-variant:normal;font-weight:400;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre-wrap;"><sup><u>source</u></sup></span></span></a><span style="background-color:transparent;color:#000000;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><sup>)</sup></span></span></p>
-	<p>My main goal in this project is to understand the hardware and its capabilities. Here, I'll be using an e-paper display to show the current weather, but at its core, I’m simply feeding data from a website to the display. While it sounds straightforward, it actually requires three layers of software to pull off. Still, it’s a fun challenge and a great opportunity to work with both embedded hardware and Cloudflare Workers.</p>
-	<div class="flex anchor relative">
-		<h2 id="sourcing-the-hardware">Sourcing the hardware</h2>
-		<a href="https://blog.cloudflare.com/#sourcing-the-hardware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For this project, I'm using components from Waveshare. They offer <a href="https://www.waveshare.com/product/displays/e-paper/epaper-1.htm?___SID=U&amp;limit=80" target="_blank" rel="noopener noreferrer"><u>a variety of e-paper displays</u></a>, ranging from credit card-sized to A4-sized models. I chose the 7.5-inch, two-color "e-Paper (G)" display. For the controller, I'm using a Waveshare <a href="https://www.waveshare.com/e-Paper-ESP32-Driver-Board.htm" target="_blank" rel="noopener noreferrer"><u>ESP32-based universal board</u></a>. With just these two components — a display and a controller — I was ready to get started.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7A6SqnMUHriAgRAAJM5Mbj/0d1282a915a1192d276e7dff1b901013/Screenshot_2024-12-23_at_15.25.45.png" alt="" class="kg-image" width="1404" height="704" loading="lazy">
-	</figure>
-	<p>When the components arrived, I carefully connected the display’s ribbon cable to the ESP32 board. Even though this step isn’t documented anywhere, it was simple and almost impossible to get wrong. Best of all, no soldering was needed!</p>
-	<p>That’s pretty much it for the hardware setup! I’m keeping the device powered with a 5V supply through a micro-USB connection.</p>
-	<div class="flex anchor relative">
-		<h2 id="one-layer-of-hardware">One layer of hardware&nbsp;</h2>
-		<a href="https://blog.cloudflare.com/#one-layer-of-hardware" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WNVmUFDsLdewKrZJr4Otl/ae5eb976d1c7dc176cc288619b18c036/image1.png" alt="" class="kg-image" width="1206" height="589" loading="lazy">
-	</figure>
-	<p style="text-align:center;"><span style="background-color:transparent;color:#000000;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><sup>(</sup></span></span><a style="text-decoration:none;" target="_blank" rel="noopener noreferrer" href="https://www.waveshare.com/e-paper-esp32-driver-board.htm"><span style="background-color:transparent;color:#1155cc;"><span style="-webkit-text-decoration-skip:none;font-style:normal;font-variant:normal;font-weight:400;text-decoration-skip-ink:none;vertical-align:baseline;white-space:pre-wrap;"><sup><u>source</u></sup></span></span></a><span style="background-color:transparent;color:#000000;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;"><sup>)</sup></span></span></p>
-	<p>This was my first time working with the <a href="https://en.wikipedia.org/wiki/ESP32" target="_blank" rel="noopener noreferrer"><u>ESP32 CPU family</u></a>, and I’m really impressed. It’s a system-on-chip controller with built-in Bluetooth and Wi-Fi. It’s relatively fast, very power-efficient, and <a href="https://youtu.be/qLh1FOcGysY?t=157" target="_blank" rel="noopener noreferrer"><u>quite popular in DSP</u></a> (digital signal processing) applications. For example, your audio device might be powered by a CPU like this. Interestingly, the newer models have switched to the <a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener noreferrer"><u>RISC-V</u></a> instruction set.</p>
-	<p>For our purposes, we’ll only scratch the surface of what the ESP32 is capable of. The chip is straightforward to work with, thanks to the familiar Arduino environment. A great starting point is <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#How_to_Use" target="_blank" rel="noopener noreferrer"><u>the demo provided by Waveshare</u></a>. It sets up a web page where you can easily upload a custom image to the display.</p>
-	<p>To run the demo you need to:</p>
-	<ul>
-		<li>
-			<p>Install the <a href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE" target="_blank" rel="noopener noreferrer"><u>Arduino IDE</u></a>.</p>
-		</li>
-		<li>
-			<p>Fix permissions of the <code>/dev/ACM0</code> device.</p>
-		</li>
-		<li>
-			<p>Install "Additional Boards Manager URL" as per the <a href="https://www.waveshare.com/wiki/Arduino_ESP32/8266_Online_Installation" target="_blank" rel="noopener noreferrer"><u>instructions</u></a>, and install the "esp32 by expressif" bundle.</p>
-		</li>
-		<li>
-			<p>Open the "Loader_esp32wf" example downloaded from <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#Download_Demo" target="_blank" rel="noopener noreferrer"><u>waveshare</u></a>.</p>
-		</li>
-		<li>
-			<p>Change the Wi-Fi name, password and IP address in the Arduino IDE <code>srvr.h</code> tab.</p>
-		</li>
-	</ul>
-	<p>Once everything is set up, you should be able to connect to the ESP32’s IP address and use the simple web interface to upload an image to the display.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KUXIJqF1J9hQqHISumuaV/85c211b315f338ba2339b4a7120162d4/Screenshot_2024-12-23_at_15.24.46.png" alt="" class="kg-image" width="1386" height="696" loading="lazy">
-	</figure>
-	<p>With a simple click of the "Upload Image" button, the magic happens: the e-paper display comes to life, showcasing the uploaded image.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3qxQCybmGmpxufDfU69OcY/d995257657f5991dd1d152b59ae2b84e/Screenshot_2024-12-23_at_15.24.09.png" alt="" class="kg-image" width="1384" height="856" loading="lazy">
-	</figure>
-	<p>With the demo up and running, we can move on to the next step: figuring out how to render a web page on the e-paper display.</p>
-	<div class="flex anchor relative">
-		<h2 id="three-layers-of-software">Three layers of software</h2>
-		<a href="https://blog.cloudflare.com/#three-layers-of-software" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The ESP32 comes with some limitations. It has 520 KiB of RAM, 4 MiB of flash, and a 240 MHz clock speed. While this is fine for tasks like connecting to Wi-Fi or fetching a simple URL, it’s not powerful enough for more demanding tasks, such as parsing JSON or rendering an entire web page.</p>
-	<p>There are basic Arduino libraries for handling bitmaps, which can draw rectangles and render simple fonts, but manually managing layout doesn't sound appealing to me. A better approach is to play to the ESP32’s strengths — fetching and displaying bitmaps — and delegate the more complex task of HTML rendering to a more powerful server.&nbsp;</p>
-	<p>Let’s break the problem into three layers:</p>
-	<ol>
-		<li>
-			<p><b>ESP32 (Display Layer): </b>The ESP32 will periodically, say every minute, fetch a pre-rendered bitmap from the server and display it on the e-paper screen. This keeps the ESP32's tasks lightweight and manageable.</p>
-		</li>
-		<li>
-			<p><b>Server A (Rendering Layer): </b>This server will fetch the desired website, render it, and rasterize it into a bitmap format. Its job is to prepare a bitmap that the ESP32 can handle without additional processing.</p>
-		</li>
-		<li>
-			<p><b>Server B (Content Layer): </b>This server hosts the actual website with the HTML and CSS content. In this case, it will provide the local weather data in a styled format, ready to be fetched and rendered by Server A.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3V3LbBwfxhaWMukCVw0Tx/ab272f72ee2e45879acf3fea9a0fe75e/image8.png" alt="" class="kg-image" width="914" height="166" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="esp32-display-layer">ESP32 (Display Layer)</h3>
-		<a href="https://blog.cloudflare.com/#esp32-display-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The ESP32 provides some great higher-level libraries to simplify development. For this project, we’ll need three key components:</p>
-	<ol>
-		<li>
-			<p><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/examples/WiFiClientBasic/WiFiClientBasic.ino" target="_blank" rel="noopener noreferrer"><b><u>Wi-Fi Arduino Library</u></b></a><b>:</b> To connect the ESP32 to a Wi-Fi network.</p>
-		</li>
-		<li>
-			<p><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/HTTPClient/examples/BasicHttpClient/BasicHttpClient.ino" target="_blank" rel="noopener noreferrer"><b><u>HTTP Arduino Library</u></b></a><b>:</b> To handle HTTP requests and fetch the rendered bitmap from the server.</p>
-		</li>
-		<li>
-			<p><b>EPD (e-Paper Display) Driver:</b> To control the e-paper display and render the fetched bitmap.</p>
-		</li>
-	</ol>
-	<p>These libraries make it much easier to implement the required functionality without dealing with low-level details.</p>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/ESP32-fetch-from-worker/ESP32-fetch-from-worker.ino#L31" target="_blank" rel="noopener noreferrer"><u>Here's my ESP32 Arduino project code</u></a>. It's actually pretty straightforward:</p>
-	<ul>
-		<li>
-			<p>First, it connects to Wi-Fi</p>
-		</li>
-		<li>
-			<p>Then, it fetches a rendered bitmap from an HTTP endpoint</p>
-		</li>
-		<li>
-			<p>Then it pushes it to the e-paper display if needed</p>
-		</li>
-		<li>
-			<p>Waits a minute</p>
-		</li>
-		<li>
-			<p>And repeats the whole process forever</p>
-		</li>
-	</ul>
-	<p>E-paper displays typically start to degrade after about one million refresh cycles. To preserve the display's lifespan, I’m being extra careful to avoid unnecessary refreshes.</p>
-	<div class="flex anchor relative">
-		<h3 id="server-a-rendering-layer">Server A (Rendering Layer)</h3>
-		<a href="https://blog.cloudflare.com/#server-a-rendering-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now for the exciting part! We need an online service that can fetch a website, render it, rasterize it to fit our small monochromatic display, and return it as a display-sized binary blob. Initially, I considered using headless Chrome paired with an ImageMagick script, but then I discovered <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s </u><b><u>Browser Rendering API</u></b></a>, which fits our needs perfectly.</p>
-	<p>This API can be used quite trivially and nicely fits our needs. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-render-raster/index.ts#L79" target="_blank" rel="noopener noreferrer"><u>Here's the typescript worker code</u></a>, and there are two particularly interesting parts: handling a remote browser and dithering.</p>
-	<div class="flex anchor relative">
-		<h3 id="remote-browser-api">Remote Browser API</h3>
-		<a href="https://blog.cloudflare.com/#remote-browser-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First, see how easy it is to render a website as a PNG using Browser Rendering:</p>
-	<pre class="language-C"><code class="language-C">if (!browser) {
-       browser = await puppeteer.launch(env.MYBROWSER, { keep_alive: 600000 });
-       launched = true;
-}
-sessionId = browser.sessionId();
-
-const page = await browser.newPage();
-await page.setViewport({
-         width: 480,
-         height: 800,
-         deviceScaleFactor: 1,
-})
-
-await page.goto(url);
-img = (await page.screenshot()) as Buffer;</code></pre>
-	<p>I’m genuinely surprised at how practical and effective this approach is. While the remote browser startup isn’t exactly fast — it can take a few seconds to generate the screenshot — it’s not an issue for my use case. The delay is perfectly acceptable, especially considering how much work is offloaded to the cloud.</p>
-	<div class="flex anchor relative">
-		<h4 id="dithering">Dithering</h4>
-		<a href="https://blog.cloudflare.com/#dithering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To prepare the bitmap for the ESP32, we need to decode the PNG, reduce the color palette to monochromatic, and apply <a href="https://en.wikipedia.org/wiki/Dither" target="_blank" rel="noopener noreferrer"><u>dithering</u></a>. Here's the dithering code:</p>
-	<pre class="language-C"><code class="language-C">function ditherTwoBits(px: Buffer,
-                       width: number,
-                       height: number
-                      ): Buffer {
-    px = new Float32Array(px);
-
-    for (let y = 0; y &lt; height; y++) {
-        for (let x = 0; x &lt; width; x++) {
-            const old_pixel = px[y * width + x];
-            const new_pixel = old_pixel &gt; 128 ? 0xff : 0x00;
-
-            const quant_error = (old_pixel - new_pixel) / 16.0;
-            px[(y + 0) * width + (x + 0)] = new_pixel;
-            px[(y + 0) * width + (x + 1)] += quant_error * 7.;
-            px[(y + 1) * width + (x - 1)] += quant_error * 3.;
-            px[(y + 1) * width + (x + 0)] += quant_error * 5.;
-            px[(y + 1) * width + (x + 1)] += quant_error * 1.;
-        }
-    }
-
-    return Buffer.from(Uint8ClampedArray.from(px));
-}</code></pre>
-	<p>This was my first time experimenting with dithering, and it’s been a lot of fun! I was surprised by how straightforward the process is and that it’s fully deterministic. Now that I understand the details of the algorithm, I can’t help but notice its subtle side effects everywhere — in printed materials, on screens, and even in design choices around me. It’s fascinating how something so simple has such a broad impact!</p>
-	<p>To deploy this code as a Cloudflare Worker, you only need to install the required dependencies, configure the <code>wrangler.toml</code> file, and publish the code. Here’s a step-by-step guide:</p>
-	<pre class="language-Rust"><code class="language-Rust">sudo apt install npm
-cd worker-render-raster
-npm install wrangler
-npm install @cloudflare/puppeteer --save-dev
-npm install fast-png --save-dev
-npx wrangler kv:namespace create KV
-npx wrangler kv:namespace create KV --preview</code></pre>
-	<p>With this out of the way, you can run the code:</p>
-	<pre class="language-Rust"><code class="language-Rust">2025-01-e-paper/worker-render-raster$ npx wrangler dev --remote
-
- ⛅️ wrangler 3.99.0
--------------------
-
-Your worker has access to the following bindings:
-- KV Namespaces:
-  - KV: XXX
-- Browser:
-  - Name: BROWSER
-[wrangler:inf] Ready on http://localhost:46131
-⎔ Starting remote preview...
-Total Upload: 755.39 KiB / gzip: 149.05 KiB
-╭─────────────────────────────────────────────────────────────────────────────────────────────────╮
-│  [b] open a browser, [d] open devtools, [l] turn on local mode, [c] clear console, [x] to exit  │
-╰─────────────────────────────────────────────────────────────────────────────────────────────────╯</code></pre>
-	<p>With everything set up, you can now open a browser and see a rendered and rasterized version of a website, processed through your Cloudflare Worker! For example, here’s how the <b>1.1.1.1</b> page looks in a 800x480 monochromatic resolution, complete with dithering:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6awlaJqO4LduSLwvUXQbYJ/b2b43d14c0a8d44fbed1ed4bc2a4de12/Screenshot_2024-12-23_at_15.23.14.png" alt="" class="kg-image" width="1406" height="746" loading="lazy">
-	</figure>
-	<p>This demonstrates how effectively the Worker can handle rendering, rasterizing, and adapting web content for an e-paper display. It’s quite satisfying to see the pipeline in action.</p>
-	<div class="flex anchor relative">
-		<h3 id="server-b-content-layer">Server B (Content Layer)</h3>
-		<a href="https://blog.cloudflare.com/#server-b-content-layer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To create the weather panel, I designed a simple HTML and CSS page and <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-weather-panel/entry.py#L165" target="_blank" rel="noopener noreferrer"><u>published it as another Cloudflare Worker</u></a>. This time, I used <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>Python in Cloudflare Workers</u></a> because it felt more straightforward, especially since the site needs to query an external weather API. The simplicity of the code was surprising and made the process smooth.</p>
-	<pre class="language-Python"><code class="language-Python">async def on_fetch(request, env):
-    cached = await env.KV.get("weather")
-    if cached:
-        cached = json.loads(cached)
-    else:
-        u = "https://api.open-meteo.com/..."
-        a = await fetch(u)
-        result = await a.text()
-        cached = json.loads(result)
-        await env.KV.put("weather", json.dumps(cached))
-    return Response.new(render(...), headers=[('content-type', 'text/html')])</code></pre>
-	<p>Here’s how it appears in a normal browser compared to the rendered and rasterized version by our worker:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5irsWxy9nIgTRirXP6l8Nh/a4bb0d31df18c8385ddd96c4542941d0/Screenshot_2024-12-23_at_15.19.21.png" alt="" class="kg-image" width="1814" height="956" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="summary">Summary</h2>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, the display deserves a proper frame. Here’s the finished version:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Dymme1r2SJ8rAKRJjyl0K/4fa344362ca037607c7989dbf47b7fff/image11.png" alt="" class="kg-image" width="1600" height="1200" loading="lazy">
-	</figure>
-	<p>I started this project wanting to experiment with an e-paper display hardware, but I ended up spending most of my time writing software—and it turned out to be surprisingly enjoyable across all layers:</p>
-	<ul>
-		<li>
-			<p><b>ESP32:</b> The CPU is fantastic. Programming it is straightforward, thanks to powerful built-in libraries that simplify development.</p>
-		</li>
-		<li>
-			<p><b>Cloudflare Worker Browser Rendering:</b> This is an underrated but incredibly powerful technology. It made implementing features like the Floyd–Steinberg dithering algorithm surprisingly easy.</p>
-		</li>
-		<li>
-			<p><b>Cloudflare Worker Python:</b> Although still in beta, it worked flawlessly for my needs and was a great fit for handling API requests and serving dynamic content.</p>
-		</li>
-	</ul>
-	<p>It’s remarkable how much you can achieve with relatively inexpensive hardware and free Cloudflare services.</p>
+<p>I’ve noticed that many shops are increasingly using e-paper displays. They’re impressive: high contrast, no backlight, and no visible cables. Unlike most electronics, these displays are seamlessly integrated and feel very natural. This got me wondering: is it possible to use such a display for a pet project? I want to experiment with this technology myself.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="269" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=715&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=640&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=715&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=750&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=828&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=1080&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=1280&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=1430&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW453YTW27ZK9BW8RFD2G4XX.png&amp;w=1404&amp;h=528&amp;f=webp" data-lightbox-width="1404" data-lightbox-height="528" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="269" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<div id="html-block-k3" class="html-block">
+	<p style="text-align:center"><span style="background-color:transparent;color:#000000"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><sup>(</sup></span></span><a style="text-decoration:none" target="_blank" href="https://www.wiadomoscihandlowe.pl/najwieksze-sieci-handlowe/lidl/lidl-wprowadza-do-sklepow-elektroniczne-etykiety-mniejsze-obciazenie-pracownikow-mniej-zuzytego-papieru-2447917"><span style="background-color:transparent;color:#1155cc"><span style="font-style:normal;font-weight:400;vertical-align:baseline;white-space:pre-wrap"><sup><u>source</u></sup></span></span></a><span style="background-color:transparent;color:#000000"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><sup>)</sup></span></span></p>
 </div>
+<p>My main goal in this project is to understand the hardware and its capabilities. Here, I'll be using an e-paper display to show the current weather, but at its core, I’m simply feeding data from a website to the display. While it sounds straightforward, it actually requires three layers of software to pull off. Still, it’s a fun challenge and a great opportunity to work with both embedded hardware and Cloudflare Workers.</p>
+<h2>Sourcing the hardware</h2>
+<p>For this project, I'm using components from Waveshare. They offer <a href="https://www.waveshare.com/product/displays/e-paper/epaper-1.htm?___SID=U&amp;limit=80" target="_blank" rel="noopener noreferrer"><u>a variety of e-paper displays</u></a>, ranging from credit card-sized to A4-sized models. I chose the 7.5-inch, two-color "e-Paper (G)" display. For the controller, I'm using a Waveshare <a href="https://www.waveshare.com/e-Paper-ESP32-Driver-Board.htm" target="_blank" rel="noopener noreferrer"><u>ESP32-based universal board</u></a>. With just these two components — a display and a controller — I was ready to get started.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NA1TFXG28TH2WD4QJN6M.png&amp;w=1404&amp;h=704&amp;f=webp" data-lightbox-width="1404" data-lightbox-height="704" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<p>When the components arrived, I carefully connected the display’s ribbon cable to the ESP32 board. Even though this step isn’t documented anywhere, it was simple and almost impossible to get wrong. Best of all, no soldering was needed!</p>
+<p>That’s pretty much it for the hardware setup! I’m keeping the device powered with a 5V supply through a micro-USB connection.</p>
+<h2>One layer of hardware&nbsp;</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="349" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=640&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=715&amp;h=349&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=750&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=828&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=1080&amp;h=527&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=1280&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=1430&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486PPNYYW2B0B5J6FCQ0YP.png&amp;w=1206&amp;h=589&amp;f=webp" data-lightbox-width="1206" data-lightbox-height="589" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="349" class="pt-portable-image-media"></div>
+</figure>
+<div id="html-block-ko" class="html-block">
+	<p style="text-align:center"><span style="background-color:transparent;color:#000000"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><sup>(</sup></span></span><a style="text-decoration:none" target="_blank" href="https://www.waveshare.com/e-paper-esp32-driver-board.htm"><span style="background-color:transparent;color:#1155cc"><span style="font-style:normal;font-weight:400;vertical-align:baseline;white-space:pre-wrap"><sup><u>source</u></sup></span></span></a><span style="background-color:transparent;color:#000000"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><sup>)</sup></span></span></p>
+</div>
+<p>This was my first time working with the <a href="https://en.wikipedia.org/wiki/ESP32" target="_blank" rel="noopener noreferrer"><u>ESP32 CPU family</u></a>, and I’m really impressed. It’s a system-on-chip controller with built-in Bluetooth and Wi-Fi. It’s relatively fast, very power-efficient, and <a href="https://youtu.be/qLh1FOcGysY?t=157" target="_blank" rel="noopener noreferrer"><u>quite popular in DSP</u></a> (digital signal processing) applications. For example, your audio device might be powered by a CPU like this. Interestingly, the newer models have switched to the <a href="https://en.wikipedia.org/wiki/RISC-V" target="_blank" rel="noopener noreferrer"><u>RISC-V</u></a> instruction set.</p>
+<p>For our purposes, we’ll only scratch the surface of what the ESP32 is capable of. The chip is straightforward to work with, thanks to the familiar Arduino environment. A great starting point is <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#How_to_Use" target="_blank" rel="noopener noreferrer"><u>the demo provided by Waveshare</u></a>. It sets up a web page where you can easily upload a custom image to the display.</p>
+<p>To run the demo you need to:</p>
+<ul>
+	<li>Install the <a href="https://support.arduino.cc/hc/en-us/articles/360019833020-Download-and-install-Arduino-IDE" target="_blank" rel="noopener noreferrer"><u>Arduino IDE</u></a>.</li>
+	<li>Fix permissions of the <code>/dev/ACM0</code> device.</li>
+	<li>Install "Additional Boards Manager URL" as per the <a href="https://www.waveshare.com/wiki/Arduino_ESP32/8266_Online_Installation" target="_blank" rel="noopener noreferrer"><u>instructions</u></a>, and install the "esp32 by expressif" bundle.</li>
+	<li>Open the "Loader_esp32wf" example downloaded from <a href="https://www.waveshare.com/wiki/E-Paper_ESP32_Driver_Board#Download_Demo" target="_blank" rel="noopener noreferrer"><u>waveshare</u></a>.</li>
+	<li>Change the Wi-Fi name, password and IP address in the Arduino IDE <code>srvr.h</code> tab.</li>
+</ul>
+<p>Once everything is set up, you should be able to connect to the ESP32’s IP address and use the simple web interface to upload an image to the display.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CB19DA4J68VRQKQQYM0H.png&amp;w=1386&amp;h=696&amp;f=webp" data-lightbox-width="1386" data-lightbox-height="696" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<p>With a simple click of the "Upload Image" button, the magic happens: the e-paper display comes to life, showcasing the uploaded image.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="442" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=640&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=715&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=750&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=828&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=1080&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=1280&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=1430&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46ARKG2TDR0QMN9KVAQF6Y.png&amp;w=1384&amp;h=856&amp;f=webp" data-lightbox-width="1384" data-lightbox-height="856" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="442" class="pt-portable-image-media"></div>
+</figure>
+<p>With the demo up and running, we can move on to the next step: figuring out how to render a web page on the e-paper display.</p>
+<h2>Three layers of software</h2>
+<p>The ESP32 comes with some limitations. It has 520 KiB of RAM, 4 MiB of flash, and a 240 MHz clock speed. While this is fine for tasks like connecting to Wi-Fi or fetching a simple URL, it’s not powerful enough for more demanding tasks, such as parsing JSON or rendering an entire web page.</p>
+<p>There are basic Arduino libraries for handling bitmaps, which can draw rectangles and render simple fonts, but manually managing layout doesn't sound appealing to me. A better approach is to play to the ESP32’s strengths — fetching and displaying bitmaps — and delegate the more complex task of HTML rendering to a more powerful server.&nbsp;</p>
+<p>Let’s break the problem into three layers:</p>
+<ol>
+	<li><strong>ESP32 (Display Layer): </strong>The ESP32 will periodically, say every minute, fetch a pre-rendered bitmap from the server and display it on the e-paper screen. This keeps the ESP32's tasks lightweight and manageable.</li>
+	<li><strong>Server A (Rendering Layer): </strong>This server will fetch the desired website, render it, and rasterize it into a bitmap format. Its job is to prepare a bitmap that the ESP32 can handle without additional processing.</li>
+	<li><strong>Server B (Content Layer): </strong>This server hosts the actual website with the HTML and CSS content. In this case, it will provide the local weather data in a styled format, ready to be fetched and rendered by Server A.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="130" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=715&amp;h=130&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=640&amp;h=116&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=715&amp;h=130&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=750&amp;h=136&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=828&amp;h=151&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=1080&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=1280&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=1430&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462FG7DK395774CJKX40RM.png&amp;w=914&amp;h=166&amp;f=webp" data-lightbox-width="914" data-lightbox-height="166" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="130" class="pt-portable-image-media"></div>
+</figure>
+<h3>ESP32 (Display Layer)</h3>
+<p>The ESP32 provides some great higher-level libraries to simplify development. For this project, we’ll need three key components:</p>
+<ol>
+	<li><strong><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFi/examples/WiFiClientBasic/WiFiClientBasic.ino" target="_blank" rel="noopener noreferrer"><u>Wi-Fi Arduino Library</u></a>:</strong> To connect the ESP32 to a Wi-Fi network.</li>
+	<li><strong><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/HTTPClient/examples/BasicHttpClient/BasicHttpClient.ino" target="_blank" rel="noopener noreferrer"><u>HTTP Arduino Library</u></a>:</strong> To handle HTTP requests and fetch the rendered bitmap from the server.</li>
+	<li><strong>EPD (e-Paper Display) Driver:</strong> To control the e-paper display and render the fetched bitmap.</li>
+</ol>
+<p>These libraries make it much easier to implement the required functionality without dealing with low-level details.</p>
+<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/ESP32-fetch-from-worker/ESP32-fetch-from-worker.ino#L31" target="_blank" rel="noopener noreferrer"><u>Here's my ESP32 Arduino project code</u></a>. It's actually pretty straightforward:</p>
+<ul>
+	<li>First, it connects to Wi-Fi</li>
+	<li>Then, it fetches a rendered bitmap from an HTTP endpoint</li>
+	<li>Then it pushes it to the e-paper display if needed</li>
+	<li>Waits a minute</li>
+	<li>And repeats the whole process forever</li>
+</ul>
+<p>E-paper displays typically start to degrade after about one million refresh cycles. To preserve the display's lifespan, I’m being extra careful to avoid unnecessary refreshes.</p>
+<h3>Server A (Rendering Layer)</h3>
+<p>Now for the exciting part! We need an online service that can fetch a website, render it, rasterize it to fit our small monochromatic display, and return it as a display-sized binary blob. Initially, I considered using headless Chrome paired with an ImageMagick script, but then I discovered <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer"><u>Cloudflare’s <strong>Browser Rendering API</strong></u></a>, which fits our needs perfectly.</p>
+<p>This API can be used quite trivially and nicely fits our needs. <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-render-raster/index.ts#L79" target="_blank" rel="noopener noreferrer"><u>Here's the typescript worker code</u></a>, and there are two particularly interesting parts: handling a remote browser and dithering.</p>
+<h3>Remote Browser API</h3>
+<p>First, see how easy it is to render a website as a PNG using Browser Rendering:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">browser) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       browser </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> await puppeteer.</span><span class="sk-6f42c1-ffc799">launch</span><span class="sk-24292e-fff">(env.MYBROWSER, { keep_alive: </span><span class="sk-005cc5-ffc799">600000</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">       launched </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> true</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">sessionId </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> browser.</span><span class="sk-6f42c1-ffc799">sessionId</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> page </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> await browser.</span><span class="sk-6f42c1-ffc799">newPage</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">await page.</span><span class="sk-6f42c1-ffc799">setViewport</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">         width: </span><span class="sk-005cc5-ffc799">480</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">         height: </span><span class="sk-005cc5-ffc799">800</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">         deviceScaleFactor: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">await page.</span><span class="sk-d73a49-a0a0a0">goto</span><span class="sk-24292e-fff">(url);</span></span>
+<span class="line"><span class="sk-24292e-fff">img </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (await page.</span><span class="sk-6f42c1-ffc799">screenshot</span><span class="sk-24292e-fff">()) as Buffer;</span></span></code></pre>
+</div>
+<p>I’m genuinely surprised at how practical and effective this approach is. While the remote browser startup isn’t exactly fast — it can take a few seconds to generate the screenshot — it’s not an issue for my use case. The delay is perfectly acceptable, especially considering how much work is offloaded to the cloud.</p>
+<h4>Dithering</h4>
+<p>To prepare the bitmap for the ESP32, we need to decode the PNG, reduce the color palette to monochromatic, and apply <a href="https://en.wikipedia.org/wiki/Dither" target="_blank" rel="noopener noreferrer"><u>dithering</u></a>. Here's the dithering code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">function </span><span class="sk-6f42c1-ffc799">ditherTwoBits</span><span class="sk-24292e-fff">(px: Buffer,</span></span>
+<span class="line"><span class="sk-24292e-fff">                       width: number,</span></span>
+<span class="line"><span class="sk-24292e-fff">                       height: number</span></span>
+<span class="line"><span class="sk-24292e-fff">                      ): Buffer {</span></span>
+<span class="line"><span class="sk-24292e-fff">    px </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> new </span><span class="sk-6f42c1-ffc799">Float32Array</span><span class="sk-24292e-fff">(px);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (let y </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; y </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> height; y</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        for</span><span class="sk-24292e-fff"> (let x </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; x </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> width; x</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-24292e-fff"> old_pixel </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-e36209-fff"> px</span><span class="sk-24292e-fff">[y </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> width </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> x];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-24292e-fff"> new_pixel </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> old_pixel </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-ffc799"> 128</span><span class="sk-d73a49-a0a0a0"> ?</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ff</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">00</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            const</span><span class="sk-24292e-fff"> quant_error </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (old_pixel </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> new_pixel) </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799"> 16.0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            px</span><span class="sk-24292e-fff">[(y </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> width </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> (x </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">)] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> new_pixel;</span></span>
+<span class="line"><span class="sk-e36209-fff">            px</span><span class="sk-24292e-fff">[(y </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> width </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> (x </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> quant_error </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 7.</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            px</span><span class="sk-24292e-fff">[(y </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> width </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> (x </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> quant_error </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 3.</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            px</span><span class="sk-24292e-fff">[(y </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> width </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> (x </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> quant_error </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 5.</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            px</span><span class="sk-24292e-fff">[(y </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> width </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> (x </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">)] </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> quant_error </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 1.</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Buffer.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(Uint8ClampedArray.</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(px));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>This was my first time experimenting with dithering, and it’s been a lot of fun! I was surprised by how straightforward the process is and that it’s fully deterministic. Now that I understand the details of the algorithm, I can’t help but notice its subtle side effects everywhere — in printed materials, on screens, and even in design choices around me. It’s fascinating how something so simple has such a broad impact!</p>
+<p>To deploy this code as a Cloudflare Worker, you only need to install the required dependencies, configure the <code>wrangler.toml</code> file, and publish the code. Here’s a step-by-step guide:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">sudo apt install npm</span></span>
+<span class="line"><span class="sk-24292e-fff">cd worker</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">render</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">raster</span></span>
+<span class="line"><span class="sk-24292e-fff">npm install wrangler</span></span>
+<span class="line"><span class="sk-24292e-fff">npm install </span><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">cloudflare</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">puppeteer </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">save</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">dev</span></span>
+<span class="line"><span class="sk-24292e-fff">npm install fast</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">png </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">save</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">dev</span></span>
+<span class="line"><span class="sk-24292e-fff">npx wrangler kv</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">namespace create </span><span class="sk-005cc5-fff">KV</span></span>
+<span class="line"><span class="sk-24292e-fff">npx wrangler kv</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">namespace create </span><span class="sk-005cc5-fff">KV</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">preview</span></span></code></pre>
+</div>
+<p>With this out of the way, you can run the code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">2025</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">01</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">paper</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">worker</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">render</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">raster</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff"> npx wrangler dev </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">remote</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff"> ⛅️ wrangler </span><span class="sk-005cc5-ffc799">3.99</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-005cc5-ffc799">0</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-------------------</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Your</span><span class="sk-24292e-fff"> worker has access to the following bindings</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-fff"> KV</span><span class="sk-6f42c1-ffc799"> Namespaces</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff"> KV</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> XXX</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799"> Browser</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-6f42c1-ffc799"> Name</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-fff"> BROWSER</span></span>
+<span class="line"><span class="sk-24292e-fff">[wrangler</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">inf] </span><span class="sk-6f42c1-ffc799">Ready</span><span class="sk-24292e-fff"> on http</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//localhost:46131</span></span>
+<span class="line"><span class="sk-24292e-fff">⎔ </span><span class="sk-6f42c1-ffc799">Starting</span><span class="sk-24292e-fff"> remote preview</span><span class="sk-d73a49-a0a0a0">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Total</span><span class="sk-6f42c1-ffc799"> Upload</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 755.39</span><span class="sk-6f42c1-ffc799"> KiB</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff"> gzip</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> 149.05</span><span class="sk-6f42c1-ffc799"> KiB</span></span>
+<span class="line"><span class="sk-24292e-fff">╭─────────────────────────────────────────────────────────────────────────────────────────────────╮</span></span>
+<span class="line"><span class="sk-24292e-fff">│  [b] open a browser, [d] open devtools, [l] turn on local mode, [c] clear console, [x] to exit  │</span></span>
+<span class="line"><span class="sk-24292e-fff">╰─────────────────────────────────────────────────────────────────────────────────────────────────╯</span></span></code></pre>
+</div>
+<p>With everything set up, you can now open a browser and see a rendered and rasterized version of a website, processed through your Cloudflare Worker! For example, here’s how the <strong>1.1.1.1</strong> page looks in a 800x480 monochromatic resolution, complete with dithering:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="379" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=640&amp;h=339&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=715&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=750&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=828&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=1080&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=1280&amp;h=678&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=1430&amp;h=758&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW488BG6HB8T08Q97PD97SX3.png&amp;w=1406&amp;h=746&amp;f=webp" data-lightbox-width="1406" data-lightbox-height="746" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="379" class="pt-portable-image-media"></div>
+</figure>
+<p>This demonstrates how effectively the Worker can handle rendering, rasterizing, and adapting web content for an e-paper display. It’s quite satisfying to see the pipeline in action.</p>
+<h3>Server B (Content Layer)</h3>
+<p>To create the weather panel, I designed a simple HTML and CSS page and <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2024-12-e-paper/worker-weather-panel/entry.py#L165" target="_blank" rel="noopener noreferrer"><u>published it as another Cloudflare Worker</u></a>. This time, I used <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>Python in Cloudflare Workers</u></a> because it felt more straightforward, especially since the site needs to query an external weather API. The simplicity of the code was surprising and made the process smooth.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> def</span><span class="sk-6f42c1-ffc799"> on_fetch</span><span class="sk-24292e-fff">(request, env):</span></span>
+<span class="line"><span class="sk-24292e-fff">    cached </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">KV</span><span class="sk-24292e-fff">.get(</span><span class="sk-032f62-99ffe4">"weather"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> cached:</span></span>
+<span class="line"><span class="sk-24292e-fff">        cached </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> json.loads(cached)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    else</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">        u </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "https://api.open-meteo.com/..."</span></span>
+<span class="line"><span class="sk-24292e-fff">        a </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> fetch(u)</span></span>
+<span class="line"><span class="sk-24292e-fff">        result </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> a.text()</span></span>
+<span class="line"><span class="sk-24292e-fff">        cached </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> json.loads(result)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">KV</span><span class="sk-24292e-fff">.put(</span><span class="sk-032f62-99ffe4">"weather"</span><span class="sk-24292e-fff">, json.dumps(cached))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.new(render(</span><span class="sk-005cc5-fff">...</span><span class="sk-24292e-fff">), </span><span class="sk-e36209-fff">headers</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">[(</span><span class="sk-032f62-99ffe4">'content-type'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff">)])</span></span></code></pre>
+</div>
+<p>Here’s how it appears in a normal browser compared to the rendered and rasterized version by our worker:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="377" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=640&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=715&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=750&amp;h=395&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=828&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=1080&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=1280&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=1430&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screenshot 2024-12-23 at 15.19.21" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47N865PQ8RKXNZVGX71W35.png&amp;w=1814&amp;h=956&amp;f=webp" data-lightbox-width="1814" data-lightbox-height="956" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="377" class="pt-portable-image-media"></div>
+</figure>
+<h2>Summary</h2>
+<p>Finally, the display deserves a proper frame. Here’s the finished version:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="536" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=640&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=715&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=750&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=828&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=1080&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=1280&amp;h=960&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=1430&amp;h=1072&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image11" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CX4QVEXR7YFFEB5631AM.png&amp;w=1600&amp;h=1200&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1200" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="536" class="pt-portable-image-media"></div>
+</figure>
+<p>I started this project wanting to experiment with an e-paper display hardware, but I ended up spending most of my time writing software—and it turned out to be surprisingly enjoyable across all layers:</p>
+<ul>
+	<li><strong>ESP32:</strong> The CPU is fantastic. Programming it is straightforward, thanks to powerful built-in libraries that simplify development.</li>
+	<li><strong>Cloudflare Worker Browser Rendering:</strong> This is an underrated but incredibly powerful technology. It made implementing features like the Floyd–Steinberg dithering algorithm surprisingly easy.</li>
+	<li><strong>Cloudflare Worker Python:</strong> Although still in beta, it worked flawlessly for my needs and was a great fit for handling API requests and serving dynamic content.</li>
+</ul>
+<p>It’s remarkable how much you can achieve with relatively inexpensive hardware and free Cloudflare services.</p>

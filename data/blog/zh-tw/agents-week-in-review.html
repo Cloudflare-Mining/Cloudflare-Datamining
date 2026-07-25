@@ -1,0 +1,334 @@
+<p>今天，我們的首屆 Agents Week 圓滿結束，這是一場專門針對智慧體時代打造的創新週。這簡直再及時不過了：在過去一年裡，智慧體迅速改變了人們的工作方式。編碼智慧體正協助開發人員加速交付。支援智慧體可解決端對端工單。研究智慧體在幾分鐘內，即可從數百個來源驗證假設。人們不只是執行一個智慧體，而是同時全天候執行多個智慧體。</p>
+<p>正如 Cloudflare 的 CTO Dane Knecht 和產品副總裁 Rita Kozlov 在我們的<a href="https://blog.cloudflare.com/welcome-to-agents-week" target="_blank" rel="noopener noreferrer"><u>Agents Week 歡迎文章</u></a>中指出的那樣，智慧體的潛在規模是驚人的：甚至全世界只有小部分知識工作者同時執行一些智慧體，您就需要用於執行數千萬個同步工作階段的運算能力。雲端所依賴的「單一應用程式服務多個使用者」模型並不適用於此類情況。但這正是開發人員和企業想要做的事情：建置智慧體，在使用者中部署智慧體，以及大規模執行。</p>
+<p>實現目標意味著解決整個堆疊的問題。智慧體需要支援從完整作業系統，擴展至輕量型隔離的<strong>運算</strong>。他們需要在運作方式中內建<strong>安全性</strong>與身分識別。&nbsp;他們需要<strong>智慧體工具箱</strong>：提供適當的模型、工具和環境來完成實際工作。智慧體生成的所有程式碼都需要一條清晰的路徑，從<strong>原型到生產</strong>應用程式。最後，隨著智慧體在網際網路流量中所佔份額不斷增加，Web 本身需要適應新興的<strong>智慧體 Web</strong>。事實證明，我們八年前推出的配備 Workers 的無容器、無伺服器運算平台正是為這一刻準備的。從那時起，我們已將其發展為一個完整的平台，並且在本週，我們發布了專為智能體量身打造的下一波基元，這些元件正是圍繞上述具體問題而建置的。</p>
+<p>我們在此建立 Cloud 2.0 — 智慧體雲端。此基礎架構專門針對智慧體為主要工作負載的世界而設計。&nbsp;</p>
+<p>以下是我們本週公告的所有內容 — 我們不希望您錯過任何精彩內容。</p>
+<h2>運算</h2>
+<p>首先是運算。智慧體需要在某處執行，並在某處儲存和執行其編寫的程式碼。並非所有智慧體都需要相同的東西：有些需要完整的作業系統來安裝套件和執行終端命令，大多數則需要可在毫秒內啟動並擴展至數百萬個的輕量型系統。本週我們推出了用於執行智慧體的環境，以及與 Git 相容的全新智慧體工作區：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>公告</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>摘要</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Artifacts：支援 Git 的版本化儲存</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>為您的代理程式、開發人員及自動化流程，打造專屬的程式碼與資料歸屬地。我們剛剛推出了 Artifacts：專為智慧體打造的 Git 相容版本化儲存。可建立數千萬個存放庫、從任何遠端儲存庫進行進程複製，並將 URL 傳遞給任何 Git 用戶端。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Sandboxes 正式發佈，為智慧體提供專屬電腦</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Sandboxes 為 AI 智慧體提供了一個持久且隔離的環境：一台真正的電腦，具備 shell、檔案系統以及背景處理序，可依需求啟動，並能從上次中斷的地方精確接續執行。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>動態、身分感知且安全：適用於沙箱的輸出控制</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Outbound Workers for Sandboxes 為 AI 智慧體提供了可程式設計、遵循 Zero Trust 原則的輸出代理。這讓開發人員能夠在無需將敏感權杖暴露給不受信任程式碼的情況下，插入認證並強制執行動態安全政策。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Dynamic Workers 中的 Durable Objects：為每個 AI 產生的應用程式提供其自己的資料庫</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Durable Object Facets 允許 Dynamic Workers 使用各自獨立的 SQLite 資料庫來具現化 Durable Objects。這讓開發人員能夠建立可執行即時產生之持久性、具狀態程式碼的平台。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>重新架構 Workflows 控制平面以迎接智慧體時代</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Workflows 是一個專為多步驟應用程式設計的持久性執行引擎，現已透過重新架構的控制平面，支援 50,000 個並行處理量與建立速率限制，有助於擴展以滿足持久性背景智慧體的各類使用案例。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="190" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=715&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=640&amp;h=170&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=715&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=750&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=828&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=1080&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=1280&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=1430&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW481G6WAHD37CR9HJA8V7JJ.png&amp;w=1920&amp;h=510&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="510" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="190" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h2>安全性</h2>
+<p>執行智慧體及其程式碼，僅僅是一半挑戰。智慧體代表使用者連線至私人網路、存取內部服務，以及採取自主動作。當組織中的任何人都可啟動自己的智慧體時，安全性絕不能被視為事後才考慮的問題。必須是預設功能。本週，我們推出了各種工具來輕鬆實現。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>公告</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>摘要</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>保護一切私人網路：使用者、節點、代理程式、Workers — 隆重推出 Cloudflare Mesh</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Mesh 為使用者、節點和自發 AI 智慧體提供安全的私人網路存取。透過與 Workers VPC 整合，開發人員現在可授予 AI 智慧體對私人資料庫和 API 限定範圍的存取權，而無需手動通道。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>受管 OAuth for Access：一鍵即可讓內部應用程式為代理程式做好準備</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>受管 OAuth for Cloudflare Access 可協助 AI 智慧體安全地導覽內部應用程式。藉由採用 RFC 9728，AI 智慧體可代表使用者進行驗證，而無需使用不安全的服務帳戶。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>保護非人類身分：自動撤銷、OAuth 和限定範圍的權限</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 即將推出可掃描的 API 權杖、增強的 OAuth 可見度，以及正式推出限定資源範圍的權限。這些工具可協助開發人員實作真正的最低權限架構，同時防止憑證洩漏。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>擴展 MCP 採用：我們用於企業 MCP 部署的參考架構</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們分享了 Cloudflare 使用 Access、AI Gateway 和 MCP 伺服器入口網站來治理 MCP 的內部策略。我們還推出了 Code Mode 以大幅削減權杖成本，並推薦使用新規則，以便在 Cloudflare Gateway 中偵測影子 MCP。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4897GAYQW9PR2AY6KA1F94.png&amp;w=1920&amp;h=472&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
+</figure>
+<h2>智慧體工具箱</h2>
+<p>一個有能力的智能體需要具備思考與記憶、溝通、感知的能力。這意味著能夠獲得適當的模型支援，並能獲得針對目前任務所需的適當工具與情境。本週我們推出了一些基元：推斷、搜尋、記憶體、語音、電子郵件和瀏覽器，這些基元將智慧體轉變為真正能完成工作的實體。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>公告</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>摘要</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Project Think：於 Cloudflare 上建置下一代 AI 智慧體</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>搶先預覽新一版 Agents SDK——從輕量級基元演進為一個「自帶全套工具」的平台，專為能夠思考、行動並持久運行的 AI 智慧體打造。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>為智慧體新增語音功能</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Agents SDK 的實驗性語音管道，可透過 WebSocket 實現即時語音互動。開發人員現在只需撰寫約 30 行伺服端程式碼，即可建置具備連續 STT 與 TTS 功能的智慧體。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Email Service︰現在推出公開測試版。隨時可為您的智慧體提供服務</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>智慧體正朝著多通路發展。這意味著要讓它們能在使用者已經所在的任何地方提供服務，包括電子郵件收件匣。Cloudflare Email Service 正式進入公開測試階段，提供了基礎架構層來簡化這個流程：讓您的智慧體能夠原生地傳送、接收及處理電子郵件。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare AI 平台：為智慧體設計的推斷層&nbsp;</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們正將 Cloudflare 打造成為智慧體的統一推斷層，讓開發人員能夠呼叫來自 14 家以上提供者的模型。新功能包括用於執行第三方模型的 Workers 繫結，以及包含多模態模型的擴充模型目錄。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>為執行大型 LLM 建立基礎</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們建置了自訂技術堆疊，以在 Cloudflare 的基礎架構上執行高速的大型語言模型。本文探討了為了實現高可用、高效能的 AI 推斷，所涉及的工程權衡取捨與技術最佳化。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Unweight：我們如何在不犧牲品質的情況下將 LLM 壓縮了 22%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>在 Cloudflare 的網路上執行大型 LLM，需要我們更加智慧和高效地利用 GPU 記憶體頻寬。因此，我們開發了一種無損推斷時點壓縮系統 Unweight，該系統可實現減少高達 22% 的模型佔用空間，從而提供比以往更快捷且更經濟實惠的推斷。&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>讓智慧體具有記憶：推出 Agent Memory</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Agent Memory 是一項受管理服務，可為 AI 智慧體提供持久記憶，使其能夠記住重要的訊息，忘記不重要的訊息，並隨著時間的推移變得更加智慧。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI Search：適用於智慧體的搜尋基元</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI Search 是專為您的智慧體打造的搜尋基元。您可以動態建立執行個體、上傳檔案，並透過混合擷取與相關性提升功能跨執行個體進行搜尋。只需建立搜尋執行個體、上傳資料，即可開始搜尋。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Browser Run：為您的智慧體提供專屬瀏覽器</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Browser Rendering 現已更名為 Browser Run，具備即時檢視、人為介入、CDP 存取、工作階段錄影，以及針對 AI 智慧體提升 4 倍的並行處理限制。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46BB60CNFE5N4V0C5JD5CK.png&amp;w=1920&amp;h=472&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="472" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
+</figure>
+<h2>原型到生產</h2>
+<p>最好的基礎架構必須也便捷易用。我們希望讓開發人員及其智慧體在他們慣用的工作環境中，例如終端機、編輯器、提示，即可存取完整的 Cloudflare 平台，而無需切換上下文。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>公告</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>摘要</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>為整個 Cloudflare 打造統一的 CLI</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們正式推出 cf，這是一款為了確保 Cloudflare 平台一致性而設計的全新統一 CLI，同時也推出了用於偵錯本地資料的 Local Explorer。這些工具簡化了開發人員與 AI 智慧體與我們將近 3000 個 API 操作進行互動的方式。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>推出 Agent Lee - Cloudflare 技術堆疊新介面</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Agent Lee 是一個內建於儀表板中的智慧體，它將 Cloudflare 的操作介面從手動切換分頁，轉變為只需單一提示。透過使用沙箱化的 TypeScript，它作為一個紮實的技術協作者，協助您進行疑難排解並管理技術堆疊。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>推出 Flagship：專為 AI 時代打造的功能標誌</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>我們正式推出 Flagship，這是一款基於 Cloudflare 全球網路建置的原生功能標誌服務，旨在消除第三方提供者帶來的延遲。Flagship 利用 KV 和 Durable Objects 技術，實現了亞毫秒的功能標誌評估。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>與 PlanetScale 聯合部署 Postgres 與 MySQL 資料庫 + Workers</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>瞭解如何透過 Cloudflare 部署 PlanetScale Postgres 和 MySQL 資料庫，以及連接 Cloudflare Workers。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>無論在哪裡建置都能註冊網域：Cloudflare Registrar API 現已進入測試階段</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Registrar API 現已進入測試階段。開發人員與 AI 智慧體現在可以直接在編輯器、終端機或其智慧體中，以成本價搜尋、查詢可用性並註冊網域——完全無需中斷他們的工作流程。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="209" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=640&amp;h=187&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=715&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=750&amp;h=219&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=828&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=1080&amp;h=316&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=1280&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=1430&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1HA8DEY2Z58FAG72MA1.png&amp;w=1920&amp;h=560&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="560" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="209" class="pt-portable-image-media"></div>
+</figure>
+<h2>智慧體 Web</h2>
+<p>隨著更多智慧體上線，其瀏覽的網際網路依然是專為人類而打造。現有網站需要藉助新工具，來管控哪些機器人能夠存取其內容，針對智慧體對內容進行封裝與呈現，並衡量自身對這項轉變的就緒程度。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>公告</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>摘要</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>推出智慧體就緒程度分數。您的網站是否具備智慧體就緒能力？</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>智慧體就緒程度分數有助於網站擁有者瞭解其網站支援 AI 智慧體的情況。我們將在此探討新標準，分享 Radar 資料，並詳細介紹我們如何將 Cloudflare 文件打造成 Web 上最便於智慧體使用的文件。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI 訓練重新導向可強制執行規範內容</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>軟性指令無法阻止網路爬蟲擷取棄用的內容。AI 訓練重新導向讓任何 Cloudflare 使用者只需一次切換，即可將經驗證的網路爬蟲重新導向至規範頁面，而無需變更來源。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Agents Week：網路效能更新</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>藉由將我們的請求處理層遷移至名為 FL2 的 Rust 架構，Cloudflare 將其效能領先優勢擴大到全球前 60% 的頂級網路。我們使用真實使用者測量值和 TCP 連線三次平均值，以確保我們的資料反映人在網際網路上的實際體驗</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>共用字典：跟上智慧體 Web 發展步伐的壓縮技術</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>您可搶先預覽我們對共用壓縮字典的支援，向您顯示其如何改善頁面載入時間，以及揭示何時可親自試用測試版。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="230" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=640&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=715&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=750&amp;h=241&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=828&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=1080&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=1280&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=1430&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NF4NYDESC80R1THJPERF.png&amp;w=1920&amp;h=617&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="617" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="230" class="pt-portable-image-media"></div>
+</figure>
+<h2>這是一篇總結性文章</h2>
+<p>2026 年 Agents Week 即將結束，但智慧體雲端才剛剛開始。從運算和安全到智慧體工具箱和智慧體 Web，我們本週發布的所有內容都是基礎。我們將繼續在此基礎上不斷完善，為您提供建置未來的所需一切。</p>
+<p>我們今明兩天還會發布更多部落格文章來延續本主題，敬請關注<a href="https://blog.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>我們的部落格</u></a>中的最新消息。</p>
+<p>如果您正在基於我們本週發布的內容進行開發，我們很希望聽到您的消息。歡迎在 <a href="https://x.com/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>X</u></a> 或 <a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer"><u>Discord</u></a> 找到我們、或前往瀏覽<a href="https://developers.cloudflare.com/products/?product-group=Developer+platform" target="_blank" rel="noopener noreferrer"><u>開發人員文件</u></a>。 </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="176" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=640&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=715&amp;h=176&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=750&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=828&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=1080&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=1280&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=1430&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3239 7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49CND3ZQY9S79CA616EGX7.png&amp;w=1200&amp;h=295&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="295" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="176" class="pt-portable-image-media"></div>
+</figure>

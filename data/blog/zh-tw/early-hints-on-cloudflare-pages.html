@@ -1,0 +1,92 @@
+<p>去年，我們展示了何為「快如閃電」，<a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast">展示了 Pages 在世界各地的一流效能</a>，而今天，我們很高興地宣佈一項進一步實現這一承諾的整合——為 Early Hints 引入 Pages 支援！Early Hints 讓您能夠在任何交付緩慢的 HTML 頁面之前解除封鎖頁面關鍵資源的載入。Early Hints 可透過顯著降低關鍵效能指標（如最大內容繪製 (LCP)）來改善訪客的載入體驗。</p>
+<h2>什麼是 Early Hints？</h2>
+<p><a href="https://blog.cloudflare.com/early-hints">Early Hints</a> 是網際網路的一項新功能，<a href="https://developer.chrome.com/blog/early-hints/#implementing-early-hints" target="_blank" rel="noopener noreferrer">Chrome 自版本 103 起支援此功能</a>，<a href="https://blog.cloudflare.com/early-hints-performance">Cloudflare 使其在使用我們網路的網站中普遍可用</a>。Early Hints 取代 <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/K3rYLvmQUBY/m/vOWBKZGoAQAJ" target="_blank" rel="noopener noreferrer">Server Push</a>，作為一種機制向瀏覽器「提示」您頁面上的關鍵資源（例如字型、CSS 和頭版畫面影像）。瀏覽器可以在等待完整的 HTML 回應之前立即開始載入這些資源。這使用了以前浪費的時間！在 Early Hints 之前，在瀏覽器收到回應的第一個位元組之前，無法開始任何工作。現在，瀏覽器可以有效地填補之前等待的時間。Early Hints 可以顯著改善您網站的效能，尤其是 LCP 等指標。</p>
+<h3>Early Hints 的運作原理</h3>
+<p>Cloudflare 快取從您的 200 OK 回應傳送的任何 <code>preload</code> 和 <code>preconnect</code> 類型 <code>Link</code> 標頭，並將它們作為 103 Early Hints 回應提前傳送給任何後續請求。</p>
+<p>實際上，HTTP 交談現在看起來如下所示：</p>
+<p><strong>請求</strong></p>
+<p><strong>Early Hints 回應</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>GET /</span></span>
+<span class="line"><span>Host: example.com</span></span></code></pre>
+</div>
+<p><strong>回應</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>103 Early Hints</span></span>
+<span class="line"><span>Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre>
+</div>
+<h2>Cloudflare 頁面上的 Early Hints</h2>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>200 OK</span></span>
+<span class="line"><span>Content-Type: text/html; charset=utf-8</span></span>
+<span class="line"><span>Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>&lt;html&gt;</span></span>
+<span class="line"><span>&lt;!-- ... --&gt;</span></span>
+<span class="line"><span>&lt;/html&gt;</span></span></code></pre>
+</div>
+<p>託管在 Cloudflare Pages 上的網站尤其可以從 Early Hints 中獲益。如果您使用 <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Pages Functions</a> 來產生動態伺服器端轉譯 (SSR) 頁面，Early Hints很有可能會對您的網站進行重大改進。</p>
+<h3>效能測試</h3>
+<p>我們建立了一個簡單的示範電子商務網站，來評估 Early Hints 的效能。</p>
+<p>這個登陸頁面有每件商品的價格，以及一個剩餘庫存計數器。頁面本身只是手工製作的 HTML 和 CSS，但這些定價和庫存值正在為使用 <a href="https://developers.cloudflare.com/pages/platform/functions" target="_blank" rel="noopener noreferrer">Pages Functions</a> 的每個請求即時樣板化。為了模擬從外部資料來源（可能由 <a href="https://developers.cloudflare.com/workers/runtime-apis/kv" target="_blank" rel="noopener noreferrer">KV</a>、<a href="https://developers.cloudflare.com/workers/runtime-apis/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>、<a href="https://blog.cloudflare.com/introducing-d1">D1</a> 甚至 Shopify 等外部 API 支援）的載入，我們在該資料解析之前新增了固定延遲。我們在對一些關鍵資源的回應中包含了 <code>preload</code> 連結：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A screenshot of the landing page of a demo Cloudflare e-commerce website selling a t-shirt, cap and keycap. Each item is branded with the Cloudflare logo, and has a price and &quot;stock remaining&quot; number." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48MEYFHV8XSPPPK3ZMNH9R.png&amp;w=1920&amp;h=1201&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1201" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<ul>
+	<li>一個外部 CSS 樣式表，</li>
+	<li>T 恤的影像，</li>
+	<li>帽子的影像，</li>
+	<li>和鍵帽的影像。</li>
+</ul>
+<p>第一個請求會像您預期的那樣產生一個瀑布。在我們解決此定價和庫存資料時，第一個請求會被阻擋相當長的時間。載入后，瀏覽器將解析 HTML，拉出外部資源，並對其內容發出後續請求。CSS 和影像由於其大尺寸和高品質而大大延長了載入時間。最大內容繪製 (LCP) 發生在 T 恤影像載入時，文件在滿足所有請求後完成。</p>
+<p>隨後的請求使事情變得有趣起來！這些 <code>preload</code> 連結在 Cloudflare 的全球網路上進行快取，並在 103 Early Hints 回應中先於文件傳送。現在，瀑布看起來大不相同。最初的請求是一樣的，但現在，對 CSS 和影像的請求向左滑動得更遠，因為它們可以在 103 回應交付後立即開始。瀏覽器開始擷取這些資源，同時等待原始請求完成伺服器端轉譯。T 恤影像載入後，LCP 再次發生，但這次提前了 <strong>530 毫秒</strong>，因為它開始載入的時間加快了 <strong>752 毫秒</strong>，文件完全載入的時間加快了 <strong>562 毫秒</strong>，同樣是因為外部資源能夠更快地開始載入。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="279" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=715&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=640&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=715&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=750&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=828&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=1080&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=1280&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=1430&amp;h=558&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A network diagnostics waterfall for the page without Early Hints, as described above." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450TPDAA0PD8BZ8W2AQ6YW.png&amp;w=930&amp;h=363&amp;f=webp" data-lightbox-width="930" data-lightbox-height="363" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="279" class="pt-portable-image-media"></div>
+</figure>
+<p>最後四個請求（以黃色醒目提示）返回為使用 <code>If-None-Match</code> 標頭的 304 Not Modified 回應。依預設，Cloudflare Pages 要求瀏覽器確認所有資產都是最新的，因此，如果它們在 Early Hints 回應和開始使用之間更新的可能性很小，瀏覽器會檢查它們是否已變更。因為它們沒有更新，所以沒有內容可下載，回應很快就完成了。這可以透過使用<a href="https://developers.cloudflare.com/pages/platform/headers" target="_blank" rel="noopener noreferrer">一個 <code>_headers</code> 檔案</a>在這些資產上設定自訂 <code>Cache-Control</code> 標頭來避免。例如，您可以使用如下規則將這些影像快取一分鐘：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="318" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=715&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=640&amp;h=285&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=715&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=750&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=828&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=1080&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=1280&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=1430&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A network diagnostics waterfall with Early Hints, as described above." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CX81NJ7GP0CNFG5H8N8A.png&amp;w=930&amp;h=414&amp;f=webp" data-lightbox-width="930" data-lightbox-height="414" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="318" class="pt-portable-image-media"></div>
+</figure>
+<p>我們可以透過探索 Cloudflare 提供的其他功能（例如<a href="https://support.cloudflare.com/hc/en-us/articles/200168196" target="_blank" rel="noopener noreferrer">自動 CSS 縮製</a>、<a href="https://developers.cloudflare.com/images" target="_blank" rel="noopener noreferrer">Cloudflare Images</a> 和 <a href="https://developers.cloudflare.com/images/image-resizing" target="_blank" rel="noopener noreferrer">Image Resizing</a>）來進一步進行效能稽核。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># _headers</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>/*.png</span></span>
+<span class="line"><span>  Cache-Control: max-age=60</span></span></code></pre>
+</div>
+<p>我們已經透過<a href="https://blog.cloudflare.com/cloudflare-pages-is-lightning-fast">全球最快的網路之一</a>為 Cloudflare Pages 提供服務——Early Hints 讓開發人員能夠進一步利用我們的全球網路。</p>
+<h2>使用 Early Hints 和 Cloudflare Pages</h2>
+<p>Cloudflare 上的 Early Hints 功能目前僅限於在網頁回應中快取 <code>Link</code> 標頭。通常，這意味著 Cloudflare Pages 使用者需要使用 <code>_headers</code> 檔案或 Pages Functions 來套用這些標頭。但是，為了您的方便，我們還新增了支援，將您包含在主體中的任何 <code>&lt;link&gt;</code> HTML 元素轉換為 <code>Link</code> 標頭。這讓您能夠直接從參照這些資源的同一文件中直接控制您傳送的Early Hints，無需從 HTML 中出來以利用Early Hints。</p>
+<p>例如，對於以下 HTML 文件，將產生 Early Hints 回應：</p>
+<p><strong>HTML 文件</strong></p>
+<p><strong>Early Hints 回應</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">    &lt;</span><span class="sk-22863a-ffc799">link</span><span class="sk-6f42c1-ffc799"> rel</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"preload"</span><span class="sk-6f42c1-ffc799"> as</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"style"</span><span class="sk-6f42c1-ffc799"> href</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"/styles.css"</span><span class="sk-24292e-a0a0a0"> /&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    &lt;!-- ... --&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">  &lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>如前所述，如果您願意，也可以使用 <a href="https://blog.cloudflare.com/custom-headers-for-pages"><code>_headers</code></a> <a href="https://blog.cloudflare.com/custom-headers-for-pages">檔案</a>設定 <code>Link</code> 標頭：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>103 Early Hints</span></span>
+<span class="line"><span>Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre>
+</div>
+<p>Early Hints（和自動 HTML <code>&lt;link&gt;</code> 剖析）已經為所有 <code>pages.dev</code> 網域自動啟用。如果您在 Pages 專案上設定了任何自訂網域，請確保在 Cloudflare 儀表板的「速度」索引標籤下的該網域上啟用 Early Hints。如需更多資訊，請參見我們的<a href="https://developers.cloudflare.com/pages/platform/early-hints" target="_blank" rel="noopener noreferrer">文件</a>。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># _headers</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>/</span></span>
+<span class="line"><span>  Link: &lt;/styles.css&gt;; rel=preload; as=style</span></span></code></pre>
+</div>
+<p>此外，我們希望未來能夠支援 Smart Early Hints 功能。使用 Smart Early Hints，即使不存在 <code>Link</code> 標頭或 <code>&lt;link&gt;</code> 元素，Cloudflare 也能透過分析網站流量並推斷哪些資源對給定頁面很重要，從而自動產生 Early Hints。我們將很快分享有關 Smart Early Hints 的更多資訊。</p>
+<p>同時，誠邀立即試用 <a href="https://developers.cloudflare.com/pages/platform/early-hints" target="_blank" rel="noopener noreferrer">Early Hints on Pages</a> ！讓我們知道您在<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">我們的 Discord 伺服器</a>中看到了多少載入改進。</p>
+<h2>在 Cloudflare TV 上觀看</h2>
+<div id="html-block-k4w" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/17f981baa4fb87a0a3f8023e67c57358/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F17f981baa4fb87a0a3f8023e67c57358%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D1s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>

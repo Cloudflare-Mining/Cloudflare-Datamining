@@ -1,0 +1,122 @@
+<p><em>본 콘텐츠는 사용자의 편의를 고려해 자동 기계 번역 서비스를 사용하였습니다. 영어 원문과 다른 오류, 누락 또는 해석상의 미묘한 차이가 포함될 수 있습니다. 필요하시다면 영어 원문을 참조하시기를 바랍니다.</em></p>
+<p>처음에 다단계 애플리케이션을 위한 지속형 실행 엔진인 <a href="https://developers.cloudflare.com/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>를 구축했을 때는 사용자가 등록이나 주문하는 등의 인간 행동에 의해 워크플로우가 트리거되는 세상을 위해 설계되었습니다. 온보딩 흐름과 같은 사용 사례의 경우, 워크플로에서 1인당 하나의 인스턴스만 지원하면 되었고, 사람들은 매우 빠른 속도로 클릭할 수 있었습니다.&nbsp;</p>
+<p>시간이 지남에 따라 우리가 실제로 목격한 것은 워크로드와 액세스 패턴에 양적인 변화입니다. 사람에 의해 트리거된 워크플로는 줄어들고 기계의 속도로 생성되는 에이전트에 의해 트리거되는 워크플로는 더 많아졌습니다.&nbsp;</p>
+<p>에이전트가 영구적이고 자율적인 인프라가 되어 몇 시간이나 며칠 동안 사용자를 대신하여 작동하게 됨에 따라, 에이전트는 현재 수행 중인 작업을 위한 내구성 있는 비동기 실행 엔진이 필요하게 됩니다. Workflows는 바로, 모든 단계를 독립적으로 재시도할 수 있고, 휴먼인더루프(human-in-the-loop) 승인을 위해 워크플로를 일시 중지할 수 있으며, 각 인스턴스가 진행 상황을 잃지 않고 실패할 때까지 생존할 수 있다는 점을 제공합니다.&nbsp;&nbsp;</p>
+<p>또한 워크플로 자체는 에이전트 루프를 구현하는 데 사용되고 에이전트를 관리하고 유지하는 지속적인 장치 역할을 합니다. Our<a href="https://developers.cloudflare.com/changelog/post/2026-02-03-agents-workflows-integration" target="_blank" rel="noopener noreferrer"> <u>에이전트 SDK 통합</u></a> 으로 이 작업이 가속화되어 에이전트가 워크플로우 인스턴스를 쉽게 생성하고 실시간으로 진행 상황을 다시 확인할 수 있었습니다. 이제 단일 에이전트 세션으로 수십 개의 워크플로가 시작될 수 있으며, 많은 에이전트가 동시에 실행되므로 수천 개의 인스턴스가 몇 초 만에 생성됩니다. <a href="https://blog.cloudflare.com/project-think" target="_blank" rel="noopener noreferrer"><u>Project Think</u></a> 를 이제 사용할 수 있으므로 이러한 속도는 더욱 커질 것으로 예상합니다.</p>
+<p>개발자가 Workflows에서 에이전트와 애플리케이션을 확장할 수 있도록 이제 다음을 지원한다는 소식을 발표하게 되어 기쁩니다.</p>
+<ul>
+	<li>50,000개의 동시 인스턴스(병렬로 실행되는 워크플로우 실행 수), <a href="https://developers.cloudflare.com/changelog/post/2025-02-25-workflows-concurrency-increased" target="_blank" rel="noopener noreferrer"><u>원래 4,500개</u></a></li>
+	<li>초당 300개의 인스턴스 생성, 이전에는 100개</li>
+	<li>기존 100만 개에서 증가한 2백만 개의 대기 중인 인스턴스(즉, 생성되었거나 활성화되어 동시성 슬롯을 기다리는 인스턴스)</li>
+</ul>
+<p>Cloudflare는 이러한 증가를 지원하기 위해 사용 데이터와 첫 번째 원칙의 Workflows 제어판을 다시 설계했습니다. 제어 영역 V1의 경우, 단일 Durable Object(DO)가 전체 계정의 중앙 레지스트리이자 코디네이터의 역할을 할 수 있습니다. V2의 경우, 시스템을 수평적으로 확장하고 V1으로 인한 병목 현상을 완화한 후 라이브 트래픽을 가진 모든 고객이 새 버전으로 원활하게 마이그레이션할 수 있도록 두 가지 새로운 구성 요소를 구축했습니다.</p>
+<h2>V1: Workflows의 초기 아키텍처</h2>
+<p><a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers/#building-cloudflare-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>공개 베타 블로그 게시물에서</u></a> 설명한 바와 같이 Cloudflare는 전적으로 Cloudflare의 개발자 플랫폼 상에서 <a href="https://www.cloudflare.com/developer-platform/products/workflows" target="_blank" rel="noopener noreferrer"><u>Workflows</u></a>를 구축했습니다. 기본적으로 워크플로우는 각각 독립적으로 다시 시도할 수 있는 일련의 지속 가능한 단계이며, 작업을 실행하거나 외부 이벤트를 기다리거나 미리 정해진 시간까지 절전 모드로 전환될 수 있습니다.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> MyWorkflow</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> WorkflowEntrypoint</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">step</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch-data"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> fetchFromAPI</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> approval</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">waitForEvent</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"approval"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">      type: </span><span class="sk-032f62-99ffe4">"approval"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      timeout: </span><span class="sk-032f62-99ffe4">"24 hours"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> step.</span><span class="sk-6f42c1-ffc799">do</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"process-and-save"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> store</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">transform</span><span class="sk-24292e-fff">(data));</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>각 인스턴스를 트리거하고 로직을 실행하며 메타데이터를 저장하기 위해 SQLite가 지원하는 <a href="https://www.cloudflare.com/developer-platform/products/durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>를 활용합니다. 이는 분산 시스템 내에서 조정과 저장을 위한 간단하지만 강력한 기본 요소입니다.&nbsp;</p>
+<p>제어 영역에서는 실제 워크플로우 인스턴스를 실행하는 <em>Engine</em> 등의 일부 Durable Objects(단계, 재시도, 절전 모드)는 인스턴스당 1:1의 비율로 스핀업됩니다. 반면에 <em>계정</em> 은 해당 계정의 모든 워크플로와 워크플로 인스턴스를 관리하는 계정 수준 Durable Object입니다.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="524" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=715&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=640&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=715&amp;h=524&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=750&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=828&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1080&amp;h=791&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1280&amp;h=938&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1430&amp;h=1048&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3116 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW476HKM08WHF56TFMTT2ZRM.png&amp;w=1920&amp;h=1408&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1408" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="524" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>V1 제어판에 대해 자세히 알아보려면 <a href="https://blog.cloudflare.com/building-workflows-durable-execution-on-workers" target="_blank" rel="noopener noreferrer"><u>Workflows 발표 블로그 게시물</u></a>을 참조하세요.</p>
+<p>Workflows 베타 버전을 출시한 후 고객이 제품 사용을 빠르게 확장하는 모습은 정말 기뻤지만, 계정 수준의 모든 정보를 저장할 수 있는 Durable Object가 하나 더 생겨서 병목 현상이 발생한다는 사실도 깨달았습니다. 많은 고객이 분당 수백 개 또는 수천 개의 Workflow 인스턴스를 생성하고 실행해야 했으며, 이는 원래 아키텍처에서 <em>계정</em> 을 빠르게 압도할 수 있었습니다. 원래 레이트 리미팅(10초당 4,500개의 동시성 슬롯 및 100개의 인스턴스 생성)은 이러한 제한에서 비롯된 것입니다.&nbsp;</p>
+<p>V1 제어판에서 이러한 제한은 큰 제약이었습니다. 생성, 업데이트, 나열을 포함하여 <em>계정</em>에 의존하는 모든 작업은 해당 단일 DO를 거쳐야 했습니다. 높은 동시성 워크로드를 가진 사용자는 언제든지 시작되고 끝나는 수천 개의 인스턴스를 가지고 있으므로 <em>계정</em>에 초당 최대 수천 개의 요청이 축적될 수 있습니다. 이 문제를 해결하기 위해 저희는 워크플로우 제어판을 다시 설계하여 동시성 및 생성 레이트 리미팅을 높일 수 있도록 수평적으로 확장할 수 있었습니다.&nbsp;</p>
+<h2>V2: 더 높은 처리량을 위한 수평적 확장</h2>
+<p>새로운 버전의 경우 저희는 대량 워크플로우를 위해 최적화한다는 목표를 위해 처음부터 모든 작업을 다시 고려했습니다. 궁극적으로 Workflows는 초당 생성되는 수천 개의 인스턴스든, 동시에 수백만 개의 인스턴스 실행이든 개발자가 필요로 하는 모든 것을 지원할 수 있도록 확장되어야 합니다. 또한 저희는 V2에서 V1 제한에 부과되는 엄격한 제한이 아니라 전환하고 계속 늘릴 수 있는 유연한 제한을 허용하도록 하고 싶었습니다. 여러 차례의 설계 반복 끝에 Cloudflare는 새로운 아키텍처의 기본 요소로 다음과 같이 결정했습니다.&nbsp;</p>
+<ul>
+	<li>주어진 인스턴스의 존재에 대한 진실의 소스는 해당 <em>Engine</em> 이어야 하며, 다른 어떤 것이어서는 안 됩니다.&nbsp;<ul>
+			<li>V1 제어창 아키텍처에서는 인스턴스를 대기열에 추가하기 전에 해당 <em>Engine</em> 이 실제로 존재하는지 여부를 확인하는 검사가 부족했습니다. 이로 인해 인스턴스가 해당 <em>Engine</em>을 가동하지 않은 채 대기열에 들어가는 잘못된 상태가 발생할 수 있었습니다.&nbsp;</li>
+			<li>인스턴스 수명 주기 및 활성화 메커니즘은 워크플로우에 따라 수평으로 확장할 수 있어야 하고 여러 지역에 분산되어야 합니다.</li>
+		</ul>
+	</li>
+	<li>새 계정 싱글톤은 필요한 최소한의 메타데이터만 저장해야 하며 최대 동시 요청 수는 고정되어 있어야 합니다.</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="414" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=640&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=715&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=750&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=828&amp;h=479&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1080&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1280&amp;h=741&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1430&amp;h=828&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3116 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WPSJARNNF1HB3CZV0GKM.png&amp;w=1920&amp;h=1111&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1111" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="414" class="pt-portable-image-media"></div>
+</figure>
+<p>V2 제어판에는 Workflows의 확장성을 개선할 수 있는 두 가지 새로운 중요 구성 요소인 <em>SousChef</em> 와 <em>Gatekeeper</em>가 있습니다. 첫 번째 구성 요소인 <em>SousChef</em>는 <em>계정</em>의 "두 번째 명령"입니다. 이전에는 <em>계정</em> 을 통해 특정 계정 내의 모든 워크플로우에 걸쳐 모든 인스턴스의 메타데이터 및 수명 주기를 관리할 수 있었습니다. <em>SousChef</em> 는 주어진 워크플로우의 인스턴스 <strong>하위 집합</strong> 에 대한 메타데이터 및 수명 주기를 추적하기 위해 도입되었습니다. 계정 내에서 <em>SousChefs</em> 의 배포는 보다 효율적이고 관리하기 쉬운 방식으로 <em>계정</em> 에 다시 보고할 수 있습니다. (이 설계의 또 다른 이점: 이미 계정별 격리가 있을 뿐만 아니라 각 <em>SousChef</em> 는 하나의 특정 워크플로만 처리하기 때문에 실수로 동일한 계정 내에서 "워크플로별" 격리도 수행되었습니다.)</p>
+<p>두 번째 구성 요소인 <em>Gatekeeper</em>는 계정 내의 모든 <em>SousChefs</em> 에 동시성 “슬롯”(동시성 제한에서 파생됨)을 분산하는 메커니즘입니다. 이는 임대 시스템 역할을 합니다. 인스턴스가 생성되면 해당 계정 내의 <em>SousChefs</em> 중 한 명에게 무작위로 할당됩니다. 그런 다음 <em>SousChef</em> 는 해당 인스턴스를 트리거하도록 <em>Account</em> 에 요청합니다. 슬롯이 할당되었거나, 인스턴스가 대기 중입니다. 슬롯이 부여되면 <em>SousChef</em> 는 인스턴스의 실행을 트리거하고 인스턴스가 절대 멈추지 않을 책임을 집니다.&nbsp;</p>
+<p><em>Gatekeeper는</em> <em>엔진이</em> 계정에 과부하가 걸리지 <em></em> 않도록 하여(V1에 시급한 위험이 됨) <em>SousChef와</em> 계정 간의 <em>모든</em> 통신이 1초에 한 번, 주기적인 주기로 이루어지도록 해야 했습니다. 각 주기에서는 모든 슬롯 요청을 일괄 처리하여 하나의 슬롯 요청만 처리되도록 했습니다. JSRPC 호출이 이루어집니다. 이렇게 하면 인스턴스 생성 속도로 인해 가장 중요한 구성 요소인 <em>계정</em> 이 과부하되거나 영향을 받지 않습니다(여담이지만, <em>SousChef </em>수가 너무 많으면 호출 레이트 리미팅을 하거나 다른 시간대에 걸쳐 다른 <em>SousChef</em> 에 걸쳐 확산됩니다). 또한 이 주기적 속성을 통해 이전 인스턴스의 공정성을 유지하고, 많은 <em>SousChefs</em>를 통해 최대-최소 공정성을 보장하여 모든 SousChef가 진행할 수 있도록 합니다. 예를 들어 인스턴스가 활성화되면 새로 만든 인스턴스보다 슬롯에 우선순위가 있어야 하지만, 각 <em>SousChef</em> 는 자체 인스턴스가 멈추지 않도록 합니다.</p>
+<p>이 아키텍처는 더욱 분산되어 있으므로 더 쉽게 확장할 수 있습니다. 이제 인스턴스가 생성될 때의 요청 경로는 다음과 같습니다.</p>
+<ol>
+	<li>제어판 버전 확인</li>
+	<li>워크플로우의 캐시된 버전 및 버전 세부 정보를 해당 위치에서 사용할 수 있는지 확인합니다<ol>
+			<li>그렇지 않은 경우 <em>계정</em> 을 확인하여 워크플로우 이름, 고유 ID, 버전을 가져오고 해당 정보를 캐시합니다.</li>
+		</ol>
+	</li>
+	<li>필요한 메타데이터(인스턴스 페이로드, 생성 날짜)만 자체 <em>Engine</em>에 저장</li>
+</ol>
+<p>그렇다면 <em>Engine</em>은 제어 영역에 자신이 이제 존재한다는 것을 어떻게 알릴까요? 이 작업은 인스턴스 메타데이터가 설정된 후 백그라운드에서 발생합니다. 만료나 서버 장애로 인해 Durable Object의 백그라운드 작업이 실패할 수 있으므로 저희는 생성 핫 경로의 <em>Engine</em> 에도 "알람"을 설정했습니다. 이렇게 하면 백그라운드 작업이 완료되지 않을 때 경보가 인스턴스를 <strong>시작하도록 보장합니다</strong>.&nbsp;</p>
+<p><a href="https://developers.cloudflare.com/durable-objects/api/alarms" target="_blank" rel="noopener noreferrer"><u>Durable Object 경보</u></a>를 사용하면 Durable Object 인스턴스가<strong> 최소 한 번 이상의 </strong>실행 모델을 통해 향후 세밀한 시간에 다시 활성화될 수 있으며, 이 기능은 자동 재시도 기능이 내장되어 있습니다. 저희는 모든 것이 계획대로 진행되도록 보장하면서 핫 패스에서 벗어난 작업을 제거하기 위해 이러한 백그라운드 "작업"과 경보 조합을 광범위하게 사용합니다. 이것이 당사가 안정성을 타협하지 않고도 <em>인스턴스 생성</em> 과 같은 중요한 작업을 빠르게 유지하는 방법입니다.&nbsp;</p>
+<p>규모의 잠금 해제 외에도 이 버전의 제어판은 다음과 같은 기능을 제공합니다.&nbsp;</p>
+<ul>
+	<li>인스턴스 나열 성능이 더 빠르고 실제로 커서 페이지 매김과 일치합니다.&nbsp;</li>
+	<li>인스턴스에 대한 모든 작업은 정확히 한 번만 네트워크 홉을 수행합니다(해당 <em>Engine</em>으로 직접 이동할 수 있으므로 아이볼 요청 대기 시간을 최대한 짧게 관리할 수 있습니다).</li>
+	<li>더 많은 인스턴스가 동시에 (정시에 실행하여) 올바르게 작동하도록 보장할 수 있으며 (그렇지 않은 경우 수정하여 <em>Engine</em>이 실행을 계속하는 데 지연되지 않도록 합니다).</li>
+</ul>
+<h2>V1 → V2 마이그레이션</h2>
+<p>이제 더 많은 사용자 부하를 처리할 수 있는 새 버전의 Workflows 제어판을 확보했으므로 고객과 인스턴스를 새 시스템으로 마이그레이션하는 "지루한" 부분을 수행해야 했습니다. Cloudflare의 규모에서는 이것이 그 자체로 문제가 되므로 "지루한" 부분이 가장 큰 문제가 됩니다. Workflows는 출시 1년이 훨씬 전에 이미 수백만 개의 인스턴스와 수천 명의 고객을 확보했습니다. 또한 V1의 제어판에 기술 부채가 있다는 것은 대기 중인 인스턴스에 아직 자체 <em>Engine</em> Durable Object가 생성되지 않았을 수 있다는 뜻이며, 이는 문제를 더욱 복잡하게 만듭니다.</p>
+<p>고객은 언제든지 인스턴스를 실행하고 있을 수 있으므로 이러한 마이그레이션은 까다롭습니다. 따라서 중단이나 가동 중지 시간 없이 <em>SousChef</em> 및 <em>Gatekeeper</em> 구성 요소를 이전 계정에 추가하는 방법이 필요했습니다.</p>
+<p>우리는 궁극적으로 기존 <em>계정 </em>(이하 <em>AccountOlds </em>라고 부름)을 <em>SousChefs</em>처럼 작동하도록 마이그레이션하기로 결정했습니다.<em>계정</em> DO를 유지함으로써 인스턴스 메타데이터를 유지하고 간단히 DO를 <em>SousChef</em> “DO”로 전환했습니다.&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// You might be wondering what's this SousChef class? This is the SousChef DO class!</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { SousChef } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@repo/souschef"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> AccountOld</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> DurableObject</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">state</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectState</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // We added the following snippet to the end of our AccountOld DO's</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // constructor. This ensures that if we want, we can use any primitive</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // that is available on SousChef DO</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.currentVersion </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> ControlPlaneVersions.</span><span class="sk-005cc5-fff">SOUS_CHEFS</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.sousChef </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> SousChef</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx, </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.sousChef.</span><span class="sk-6f42c1-ffc799">setup</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> updateInstance</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">params</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> UpdateInstanceParams</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.currentVersion </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> ControlPlaneVersions.</span><span class="sk-005cc5-fff">SOUS_CHEFS</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      assert</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.sousChef </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'SousChef must exist on v2'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.sousChef.</span><span class="sk-6f42c1-ffc799">updateInstance</span><span class="sk-24292e-fff">(params);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // old logic remains the same</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  @</span><span class="sk-6f42c1-ffc799">RequiresVersion</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">AccountOld</span><span class="sk-24292e-fff">&gt;(ControlPlaneVersions.</span><span class="sk-005cc5-fff">V1</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> getMetadata</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // this method can only be run if </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // this.currentVersion === ControlPlaneVersions.V1</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>SQL 테이블이 <em>SousChefs</em> 및 <em>AccountOld</em> DO 모두에서 <em>인스턴스</em> 메타데이터를 추적하므로, AccountOld 내에서 SousChef 클래스를 인스턴스화할 <em>수 있습니다.</em> 따라서 우리는 사용할 코드 버전을 결정할 수 있었습니다. 그렇지 않았다면 수백만 개의 인스턴스 메타데이터를 마이그레이션해야 했을 것이었으므로 마이그레이션이 더 어렵고 각 계정에서 실행되는 데 시간이 오래 걸렸습니다. 그렇다면 마이그레이션은 어떻게 이루어졌을까요?</p>
+<p>먼저, <em>AccountOld</em> DO가 <em>SousChefs</em> 역할을 하도록 전환되도록 준비했습니다(이는 위의 스니펫 버전으로 릴리스를 만드는 것을 의미했습니다). 그런 다음 계정별로 V2 제어창을 활성화했고, 거의 동시에 다음 세 단계가 트리거되었습니다.</p>
+<ul>
+	<li>이제 모든 새 인스턴스 생성 요청이 새로운 <em>SousChefs</em> 로 라우팅되고(<em>SousChefs</em> 는 첫 번째 요청을 받을 때 생성됨) 새 인스턴스는 다시는 <em>AccountOld</em> 로 이동하지 않습니다.</li>
+	<li><em>AccountOld</em> DO는 <em>SousChefs</em>처럼 동작하도록 마이그레이션을 시작합니다.</li>
+	<li>새 <em>계정</em> DO가 해당 메타데이터와 함께 스핀업됩니다.</li>
+</ul>
+<p>모든 계정이 새로운 제어 영역 버전으로 마이그레이션된 후, 인스턴스 보존 기간이 만료됨에 따라 <em>AccountOld</em> DO를 사용 중지할 수 있었습니다. <em>accountOlds의</em> 모든 계정에 있는 모든 인스턴스가 마이그레이션되면 해당 DO를 영구적으로 스핀다운할 수 있습니다. 마이그레이션은 다운타임 없이 완료되었습니다. 그 과정은 운전하면서 자동차의 핸들을 바꾸는 것 같았습니다.</p>
+<h2>사용해 보기</h2>
+<p>Workflows를 처음 사용하는 경우, <a href="https://developers.cloudflare.com/workflows/get-started/guide" target="_blank" rel="noopener noreferrer"><u>시작 가이드</u></a> 를 참조하거나 Workflows로 <a href="https://developers.cloudflare.com/workflows/get-started/durable-agents" target="_blank" rel="noopener noreferrer"><u>첫 번째 지속형 에이전트를 구축</u></a> 하세요.</p>
+<p>사용 사례가 새로운 기본값보다 더 높은 제한(동시 50,000개의 슬롯, 계정 수준 생성 속도 제한인 초당 300개의 인스턴스, 워크플로당 100개)을 요구하는 경우, 계정 팀 또는 <a href="https://forms.gle/ukpeZVLWLnKeixDu7" target="_blank" rel="noopener noreferrer"><u>Workers 제한 요청 양식</u></a>을 통해 연락해 주세요. 또한 피드백을 받거나 기능을 요청하거나,<a href="https://discord.com/channels/595317990191398933/1296923707792560189" target="_blank" rel="noopener noreferrer"><u>Discord 서버에서</u></a> Workflows를 어떻게 사용하고 있는지 공유할 수 있습니다.</p>

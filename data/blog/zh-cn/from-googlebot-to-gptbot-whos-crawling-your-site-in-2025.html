@@ -1,0 +1,972 @@
+<p><a href="https://www.cloudflare.com/learning/bots/what-is-a-web-crawler" target="_blank" rel="noopener noreferrer"><u>Web 爬虫</u></a>并非新鲜事物。<a href="https://en.wikipedia.org/wiki/World_Wide_Web_Wanderer" target="_blank" rel="noopener noreferrer"><u>万维网漫游者（World Wide Web Wanderer）</u></a>于 1993 年问世，但真正使用爬虫和索引器的首批万维网搜索引擎是 <a href="https://en.wikipedia.org/wiki/JumpStation" target="_blank" rel="noopener noreferrer"><u>JumpStation </u></a>和 <a href="https://en.wikipedia.org/wiki/WebCrawler" target="_blank" rel="noopener noreferrer"><u>WebCrawler</u></a>。爬虫是互联网成功支柱之一 —— 搜索 —— 的组成部分。其主要目的是为互联网上的网站内容建立索引，以便这些网站能出现在搜索引擎结果，并适当地引导用户前往网站。在本篇博客文章中，我们将分析 Web 爬虫的最新趋势。随着 AI 兴起，Web 爬虫如今已扮演着关键且复杂的全新角色。</p>
+<p>并非所有爬虫都是相同的。机器人（即在互联网上执行任务的自动化脚本）有多种形式：有些被认为是无威胁或“<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>好</u></a>”的（例如 API 客户端、Googlebot 之类的搜索引擎索引机器人或健康检查程序），而有些则被视为恶意或“<a href="https://www.cloudflare.com/learning/bots/how-to-manage-good-bots" target="_blank" rel="noopener noreferrer"><u>坏</u></a>”的（例如用于凭据填充、垃圾邮件或未经许可抓取内容的机器人）。事实上，根据<a href="https://radar.cloudflare.com/traffic?dateRange=52w#bot-vs-human" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar 数据</u></a>，如今大约 30%的全球 Web 流量来自机器人，在某些地区甚至超过了人类的互联网流量。</p>
+<p>近年来，一个新的类别 “AI 爬虫” 已然兴起。这些机器人从整个 Web 收集数据以训练 AI 模型，在优化工具与体验的同时，也引发了<a href="https://en.wikipedia.org/wiki/Artificial_intelligence_and_copyright" target="_blank" rel="noopener noreferrer"><u>内容权利、未经授权使用及基础设施过载等问题</u></a>。我们旨在确认搜索爬虫和 AI 爬虫的增长情况，审视特定 AI 爬虫，并了解更广泛的爬虫使用情况。</p>
+<p>随着 AI 的快速采用、内容版权问题日益增多以及数据隐私讨论的增加，这一点变得越来越重要。一些网站和创作者希望使用 <code>robots.txt</code> 或 <a href="https://blog.cloudflare.com/bringing-ai-to-cloudflare/#enabling-dynamic-updates-for-the-ai-bot-rule" target="_blank" rel="noopener noreferrer"><u>防火墙规则</u></a>等工具来限制或阻止 AI 爬虫。其他人士，如荷兰独立创作者兼企业家 <a href="https://x.com/levelsio/status/1916626339924267319" target="_blank" rel="noopener noreferrer"><u>Pieter Levels</u></a>，则持接纳态度：“<em>我完全不介意 AI 爬虫…… 这对在大型语言模型（LLM）中获得排名至关重要。</em>”</p>
+<p>需要注意的是，爬虫有不同的用途。例如，<code>facebookexternalhit </code>机器人未纳入本分析，因为它用于 Facebook 在为共享链接生成预览时抓取页面内容。然而，在本文中，我们仅关注索引和抓取网站内容的 AI 和搜索爬虫。</p>
+<h2>仅限 AI 爬虫的视角</h2>
+<p>我们从<a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;dt=12w" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> 上目前提供的仅 AI 爬虫视角开始，专注于宣传为 AI 相关的爬虫。为了识别它们，我们在此使用<a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>源自一个开源项目的列表</u></a>，该项目帮助网站所有者管理和控制 AI 爬虫的访问，特别是那些用于训练大型语言模型（LLM）的爬虫。它还为您提供关于在 <code>robots.txt</code> 文件中应包含哪些内容的指导（下文将详细介绍）。下面显示的数据是基于将爬虫名称与 HTTP 请求中的用户代理字符串进行匹配而得。(有关此方法的更多详细信息，包括一个例外情况，请参阅博客文章的末尾。)</p>
+<p>在 2024 年 5 月至 2025 年 5 月期间，AI 爬虫格局发生了重大变化：您可以看到来自 <code>GPTBot</code>（来自 OpenAI）崛起为主要力量，其占比从 5% 飙升至 30%；而 <code>Meta-ExternalAgent</code>（来自 Meta）作为新入局者表现强劲，占比达 19%。以上增长的代价是前领导者 <code>Bytespider</code> 的占比从 42% 大幅下降至 7%，而 <code>ClaudeBot</code> 和 <code>Amazonbot</code> 等其他 AI 爬虫的流量也有所下降。我们的数据清晰表明，头部 AI 爬虫的格局已重新洗牌，这凸显出 OpenAI 和 Meta 在该领域的地位日益重要。</p>
+<p><strong>2024 年 5 月</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="568" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=640&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=715&amp;h=568&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=750&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=828&amp;h=658&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1080&amp;h=858&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1280&amp;h=1017&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1430&amp;h=1136&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462VJHMZ7FXECJXVEPJQ6W.png&amp;w=1600&amp;h=1270&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1270" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="568" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><strong>2025 年 5 月</strong></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="641" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=715&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=640&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=715&amp;h=641&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=750&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=828&amp;h=742&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1080&amp;h=968&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1280&amp;h=1148&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1430&amp;h=1282&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47NN9VM8X3B298N9YNTTJT.png&amp;w=1600&amp;h=1434&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1434" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="641" class="pt-portable-image-media"></div>
+</figure>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>排名</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>机器人名称</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>占比 （2024 年 5 月）</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>排名</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>机器人名称</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>占比 （2025 年 5 月）</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bytespider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>42%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GPTBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ClaudeBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>27%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ClaudeBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>21%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Amazonbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>21%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Meta-ExternalAgent</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>19%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GPTBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Amazonbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Applebot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bytespider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7.2%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div id="html-block-k2a" class="html-block">
+	<style>
+		#html-block-k2a .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k2a .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2a .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k2a .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2a .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k2a .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">排名</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">机器人名称</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">占比 （2024 年 5 月）</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">排名</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">机器人名称</span></th>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">占比 （2025 年 5 月）</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">42%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30％</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">27%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazonbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Meta-ExternalAgent</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazonbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Applebot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.2%</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>为了提供更多背景信息，下方列表为上述爬取份额较高的机器人显示更多信息。这些信息来自上述相同的开源<a href="https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.json" target="_blank" rel="noopener noreferrer"><u>列表</u></a>，以及<a href="https://platform.openai.com/docs/bots" target="_blank" rel="noopener noreferrer"><u>OpenAI</u></a>等公司的出版物，这些公司解释了其爬虫的使用方法。</p>
+<ul>
+	<li><strong>GPTBot</strong> – OpenAI 的爬虫，用于改进和训练大型语言模型，例如 ChatGPT。</li>
+	<li><strong>ClaudeBot</strong> – Anthropic 的爬虫，用于训练和更新 Claude AI 助手。</li>
+	<li><strong>Meta-ExternalAgent</strong> – Meta 的机器人，可能用于收集数据，以训练或微调 LLM。</li>
+	<li><strong>Amazonbot</strong> – Amazon 的爬虫，用于为其搜索和 AI 应用收集数据。</li>
+	<li><strong>Bytespider</strong> – 字节跳动的 AI 数据收集器，通常与 Ernie 或 TikTok 相关 AI 等训练模型相关联。</li>
+	<li><strong>Applebot</strong> – Apple 的 Web 爬虫，主要用于 Siri 和 Spotlight 搜索，可能用于 AI 开发。</li>
+	<li><strong>OAI-SearchBot</strong> – OpenAI 专注于搜索的爬虫，可能用于为模型检索实时 Web 信息。</li>
+	<li><strong>ChatGPT-User</strong> – 代表与用户交互相关的 ChatGPT API 调用或浏览器使用行为。</li>
+	<li><strong>PerplexityBot</strong> – 来自 Perplexity.ai 的爬虫，使用实时 Web 数据驱动其 AI 应答引擎。</li>
+</ul>
+<p>网站管理员可以通过在<a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer"><code><u>robots.txt</u></code></a> 文件中设置规则，告知爬虫运营者是否允许这些机器人和爬虫访问您的网站内容，让爬虫知道哪些页面它们应该或不应该访问。<a href="https://blog.cloudflare.com/ai-audit-enforcing-robots-txt" target="_blank" rel="noopener noreferrer"><u>如我们近期所见</u></a>，爬虫遵守您的 <code>robots.txt</code> 策略属于自愿行为，但 Cloudflare 已推出 <a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>AI Audit</u></a> 之类的工具，帮助内容创作者强制实施相关策略。</p>
+<p>正如我们所见，随着搜索引擎和 AI 角色的融合，Web 爬虫的格局正在迅速演变。AI 现在已深度集成到搜索中，不仅体现在 Google 的 AI 概览和 AI 模式中，也体现在社交媒体平台中，例如 Instagram 上的 Meta AI。因此，让我们扩大分析范围，以涵盖这些更广泛的 AI 驱动爬取活动。</p>
+<h2>通用 AI 和搜索爬取活动增长：+18%</h2>
+<p>从更广泛的视角来看，2025 年初几个月，搜索爬虫和 AI 爬虫的爬取流量都呈现增长。为了消除客户增长偏差，我们将使用特定几周内的一组固定客户来分析趋势（我们在 <a href="http://radar.cloudflare.com/year-in-review" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar 年度回顾</u></a> 中使用过的方法）：2024 年 5 月的第一周、2024 年 11 月的一周，以及 2025 年 4 月的第一周。</p>
+<p>使用该方法，我们发现从 2024 年 5 月至 2025 年 5 月（比较整月期间），AI 和搜索爬虫的流量增长了 18%。在包括这段时间增加的 Cloudflare 新客户时，增幅甚至更高，达到 48%。AI 和搜索爬取流量的峰值出现在 2025 年 4 月，比 2024 年 5 月增长了 32%。这证实了爬取流量在过去一年中显著增加，但也表明增长并不总是稳定的。Google 仍然是市场的主导者，其市场份额也在增长，我们将在下一节中看到这一点。</p>
+<p>如下图所示，爬取流量在 2025 年 3 月和 4 月急剧增长，并在 5 月维持高位，尽管略有下降。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="233" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=640&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=715&amp;h=233&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=750&amp;h=244&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=828&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1080&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1280&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1430&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G0TZHXVMVVYYDDTZEYBB.png&amp;w=1920&amp;h=625&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="625" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="233" class="pt-portable-image-media"></div>
+</figure>
+<p>上述抓取流量图表中的模式似乎也反映了更广泛的季节性规律及普遍的互联网用户流量规律。2024 年夏季，北半球的流量有所下降，其中 8 月和 9 月为活跃度最低的月份。与整体互联网流量类似，流量随后在 11 月有所回升。正如我们在<a href="https://blog.cloudflare.com/from-deals-to-ddos-exploring-cyber-week-2024-internet-trends" target="_blank" rel="noopener noreferrer"><u>过往分析</u></a>中所见，由于购物及季节性习惯，人们通常在 11 月更频繁地上网。</p>
+<h2>Googlebot 爬取活动在一年内增长了 96%</h2>
+<p>在此期间，为 Google 搜索内容建立索引的 <a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a> 显然是最主要的爬虫，并且显示出强劲增长，从 2024 年 5 月到 2025 年 5 月增长了 96%，这反映了 Google 爬取活动的增加。爬取流量在 2025 年 4 月达到峰值，比 2024 年 5 月高出 145%。同样值得一提的是，Google 在此期间对其搜索进行了更改，并在其搜索引擎中推出了 <a href="https://ahrefs.com/blog/google-ai-overviews" target="_blank" rel="noopener noreferrer"><u>AI 概览</u></a>——首先于 2024 年 5 月在美国推出，随后在更多国家推出。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="237" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=640&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=750&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=828&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1080&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1280&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1430&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44VB51P2DFX2R8MJFA155J.png&amp;w=1920&amp;h=636&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="636" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="237" class="pt-portable-image-media"></div>
+</figure>
+<p>从 Google 相关爬虫的日常数据来看，有两个趋势尤为明显，如下图所示。首先，<a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers" target="_blank" rel="noopener noreferrer"><code><u>Googlebot</u></code></a> 和更新的 <code>GoogleOther</code>（<a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u>2023 年推出，用于“研究与开发”的 Web 爬虫</u></a>）占 Google 爬取活动的大部分。其次，爬取流量有两次明显下降：一次是 2024 年 12 月 14 日（在一次 Google 搜索<a href="https://status.search.google.com/incidents/V9nDKuo6nWKh2ThBALgA#:~:text=Incident%20began%20at%202024%2D12,Time" target="_blank" rel="noopener noreferrer"><u>更新</u></a>前后），另一次是 2025 年 5 月 20 日至 28 日。5 月 20 日的下降与 Google 搜索在美国推出 AI 模式的时间大致重合，尽管时间可能纯属巧合。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="239" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=715&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=640&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=715&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=750&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=828&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1080&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1280&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1430&amp;h=478&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44A0EBQ7T2H37A8WQRAGTB.png&amp;w=1920&amp;h=643&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="643" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="239" class="pt-portable-image-media"></div>
+</figure>
+<h2>前二十名 AI 和搜索 Web 爬虫的详细分析</h2>
+<p>按请求总量占比对爬虫进行排名，能更清晰地呈现哪些机器人正在崛起或衰落，尤其是在专注于搜索和 AI 领域的爬虫中。下表显示了一个清晰的趋势：部分 AI 机器人自去年起（甚至更早便已开始）快速增长，而许多传统搜索爬虫的份额则保持平稳或有所下降（例如必应及其 <code>Bingbot </code>爬虫）。主要的例外是 <code>Googlebot</code>。</p>
+<p>下表显示了 Cloudflare 在 2024 年 5 月和 2025 年 5 月观察到的特定爬虫群组（包含 30 多个 AI 和搜索爬虫）生成的所有爬取流量中每个爬虫的百分比份额。下表还包括百分比变化以及原始请求量的增长或下降。2025 年 5 月爬虫的活动流量占比。主要爬虫流量变化包括 <code>GPTBot</code> 大幅上升(+305%)，而 <code>Bytespider</code> 大幅下降(-85%)。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>排名</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>机器人名称</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>占比 <br>2024 年 5 月</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>占比 <br>2025 年 5 月</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Δ 百分点变化</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>原始请求增长（2024 年 5 月至 2025 年 5 月）</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Googlebot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>30%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>50%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+20 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>96%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bingbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8.7％</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>下降 1.3 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2％</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GPTBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7.7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+5.5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>305%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ClaudeBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11.7%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>下降 6.3 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-46%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>GoogleOther</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0.1 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>6</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Amazonbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7.6%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-3.4 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-35%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Googlebot-Image</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>下降 1.2 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-13%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Bytespider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>22.8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.9%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>下降 19.8 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-85%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>9</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Yandex</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.8%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0.7 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-10%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>ChatGPT 用户</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+1.2 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2,825%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Applebot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.9%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0.7 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-26%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>12</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Timpibot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.3%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.6%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0.3 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>133%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>13</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Baiduspider</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.5%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.4%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0.1 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>7%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>PerplexityBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>&lt;0.01%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>+0.2 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>157,490%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>15</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>DuckDuckBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.2%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0.1 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-16%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>16</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>SeznamBot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2％</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Yeti</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>47%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>18</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>coccocbot</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-3%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>19</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Sogou</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-22%</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>20</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Yahoo! Slurp</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.1%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.0%</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-0.1 个百分点</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>-8%</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div id="html-block-k5v" class="html-block">
+	<style>
+		#html-block-k5v .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0px auto;
+		}
+
+		#html-block-k5v .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k5v .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k5v .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-51vm {
+			background-color: #D9D9D9;
+			color: #4A86E8;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-amwm {
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k5v .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<div class="tg-wrap">
+		<table class="tg">
+			<thead>
+				<tr>
+					<th class="tg-amwm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">排名</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">机器人名称</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">占比（2024 年 5 月）</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">占比（2025 年 5 月）</span></th>
+					<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Δ 百分点变化</span></th>
+					<th class="tg-51vm"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#4A86E8;background-color:transparent">原始请求增长（2024 年 5 月至 2025 年 5 月）</span></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Googlebot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30％</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+20 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">96%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bingbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.7％</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">下降 1.3 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2％</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.7%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+5.5%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">305%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11.7%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5.4%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">下降 6.3 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-46%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GoogleOther</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4.4%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4.3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0.1 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazonbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7.6%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4.2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-3.4 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-35%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Googlebot-Image</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4.5%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3.3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">下降 1.2 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-13%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">22.8%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.9%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">下降 19.8 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-85%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yandex</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.8%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0.7 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-10%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ChatGPT 用户</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+1.2 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2,825%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Applebot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.9%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0.7 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-26%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Timpibot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.3%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.6%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+0.3 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">133%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Baiduspider</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.5%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.4%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0.1 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PerplexityBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">&lt;0.01%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">+0.2 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">157,490%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DuckDuckBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.2%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0.1 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-16%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SeznamBot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2％</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yeti</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">coccocbot</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-3%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sogou</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-0lax"></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-22%</span></td>
+				</tr>
+				<tr>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+					<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Yahoo! Slurp</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.1%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.0%</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-0.1 个百分点</span></td>
+					<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">-8%</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<p>根据这些数据，2024 年 5 月至 2025 年 5 月期间 Web 爬取活动发生了两个重大变化：</p>
+<p><strong>1. 部分 AI 爬虫流量激增。<br></strong><code>GPTBot</code>（来自 OpenAI）的份额从 2.2% 增长至 7.7%（+5.5 个百分点），请求数量增加了 305%。这凸显了训练 ChatGPT 等大型语言模型的数据需求。<code>GPTBot</code> 从 2024 年 5 月的第 9 位跃升至 2025 年 5 月的第 3 位。</p>
+<p>另一个 OpenAI 爬虫 <code>ChatGPT-User</code> 的请求激增了 2825%，份额达到 1.3%。这反映出 ChatGPT 用户活动或基于 API 的交互（涉及访问 Web 内容）大幅增加。<code>PerplexityBot</code>（来自 Perplexity.ai）尽管占比仅为 0.2%，但录得最高的增长率：原始请求增长了惊人的 157490%。</p>
+<p>与此同时，一些 AI 爬虫流量录得急剧下降。<code>ClaudeBot</code> (Anthropic) 占总流量的比例从 11.7% 下降到 5.4%，请求数减少 46%。<code>Bytespider</code> 的请求量下降了 85%，在爬虫中的占比从第 2 位下降到第 8 位（现在仅为 2.9%）。</p>
+<p>同样被纳入 AI 爬虫之列的 <code>Amazonbot</code> 和 <code>Applebot</code> 的份额和原始请求数量均有所下降（分别下降 35% 和 26%）。</p>
+<p><strong>2. Google 的主导地位扩大。<br></strong><code>Googlebot</code> 的份额从 30% 上升到 50%，支持搜索索引，但也可能具有 AI 相关目的（例如 Google 搜索中的新 AI 概览）。<code>GoogleOther</code>（<a href="https://searchengineland.com/google-launches-new-googlebot-named-googleother-395827" target="_blank" rel="noopener noreferrer"><u>2023 年推出的爬虫</u></a>）的爬取流量也有所增长，达到 14%。其他未进入前 20 名的 Google 爬虫（例如 <code>Googlebot-News</code>）也大幅增长（请求量 +71%）。在公司大力投资将 AI 与搜索结合之际，这些与 Google 相关的 Web 爬虫呈现出明显的增长趋势。</p>
+<p>同样在搜索类别，<code>Bingbot</code>（来自 Microsoft）的份额略有下降，从 10% 至 8.7%（-1.3 个百分点），但其原始请求数仍小幅增长了 2%。</p>
+<p>这些趋势表明，Web 爬虫正日益被来自 Google 和 OpenAI 的机器人主导，反映了一年间的明显变化。Google 似乎也在调整其收集数据的方式，以支持传统搜索和 AI 驱动的功能。</p>
+<p>同样值得注意的是 <code>FriendlyCrawler</code>，截至 2025 年 5 月，它不再出现在前 20 榜单中（目前排名第 35 位）。2024 年 5 月，它的排名是第 14 位，市场份额为 0.2%，但到 2025 年 5 月，请求量下降了 100%。众所周知，这种机器人会对网站内容进行索引和分析，但其所有者和<a href="https://imho.alex-kunz.com/2024/01/25/an-update-on-friendly-crawler" target="_blank" rel="noopener noreferrer"><u>目的</u></a>仍不清楚。通常，这类爬虫用于改进搜索结果、市场调研或数据分析。</p>
+<h2>robots.txt 和 AI 机器人：GPTBot 两次领先</h2>
+<p><a href="https://radar.cloudflare.com/ai-insights?dateStart=2025-05-30&amp;dateEnd=2025-06-06" target="_blank" rel="noopener noreferrer"><u>Cloudflare Radar</u></a> 截至 2025 年 6 月 6 日的数据显示，在我们能够找到<em> robots.txt</em> 文件的 3,816 个域中（前<a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer"><u> 10,000</u></a> 个），有 546 个（约 14%）个域的 robots.txt 文件包含针对 AI 机器人的“允许”或“禁止”(全部或部分）指令。</p>
+<p>这让许多网站所有者处于一个灰色区域，因为并不总是清楚 <em>robots.txt</em> 在管理 AI 爬虫方面的效果。一些网站所有者可能不会想到专门针对 AI 机器人使用它，而另一些人可能不确定这些机器人是否会遵守 <em>robots.txt</em> 规则，尤其是较新或透明度较低的爬虫。在其他情况下，网站会使用部分规则进行访问微调，尝试在不完全选择加入或退出的情况下平衡可见性与保护。</p>
+<p>“禁止”规则出现的频率远高于“允许”规则。最常被阻止的机器人是 <code>GPTBot</code> ，被 312 个域（250 个完全，62 个部分）禁止，其次是 <code>CCBot</code> 和 <code>Google-Extending</code> ，如下图所示。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="549" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=640&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=715&amp;h=549&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=750&amp;h=576&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=828&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1080&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1280&amp;h=983&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1430&amp;h=1098&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2841 Image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4802VBKJS46AW7GWNFVZ5N.png&amp;w=1600&amp;h=1228&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1228" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="549" class="pt-portable-image-media"></div>
+</figure>
+<p>尽管 <code>GPTBot</code> 被阻止最多，但它也是最被明确允许的，有 61 个域授予访问权限（18 个完全，43 个部分）。尽管如此，公开且明确允许 AI 机器人访问的网站仍寥寥无几，即便允许，通常也仅针对有限的部分。请注意，站点的 robots.txt 中未列出的机器人默认情况下是被允许的。</p>
+<p>随着 AI 爬取活动增加，越来越多网站正在从 <em>robots.txt</em> 等被动保护措施转向 <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer"><u>Web 应用防火墙</u></a> 等主动保护。生态系统正在发生变化，越来越注重可执行的控制措施。</p>
+<p><em>注意：在分析爬虫流量时，我们将 robots.txt 文件中找到的用户代理令牌（如 AI 爬虫的用户代理）与 HTTP 请求中的实际用户代理字符串进行比较。值得注意的是，某些 robots.txt 令牌（例如 Google-Extended）不是用户代理子字符串。如 <a href="https://www.rfc-editor.org/rfc/rfc9309.html#name-the-user-agent-line" target="_blank" rel="noopener noreferrer"><u>RFC 9309</u></a> 中所述，这些令牌的一个目标可能是表明爬虫的用途。例如，Google 在 robots.txt 中使用 Google-Extended 来查看您的内容是否可用于 AI 训练，但流量本身仍来自标准的 Google 用户代理，例如 Googlebot。因此，并非每个 robots.txt 条目在 HTTP 请求日志中都会有直接匹配。</em></p>
+<h2>总结</h2>
+<p>随着 AI 爬虫重塑互联网，网站在管理其在线存在时既面临新的挑战，也迎来新的机遇。</p>
+<p>本分析凸显了 AI 对 Web 爬虫的影响与日俱增，表明其已从传统的搜索索引明确转向为训练 AI 模型进行数据收集。详细统计数据，例如 Googlebot 的持续增长和 AI 爬虫的快速崛起，为理解该领域的发展及其对未来 Web 内容访问的影响提供了背景。</p>
+<p>目前的趋势是采用更强大、可执行的屏蔽方法，<a href="https://blog.cloudflare.com/cloudflare-ai-audit-control-ai-content-crawlers" target="_blank" rel="noopener noreferrer"><u>Cloudflare 也有参与其中</u></a>，标志着未来网站控制与 AI 系统交互的方式将发生关键转变。</p>

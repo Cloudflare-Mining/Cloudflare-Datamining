@@ -1,590 +1,527 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vjHqnuCEEjHJ5Na1W8zrT/04f614cb747f683c6ff5cdf1dc0b83f6/minecraft-api-with-workers-coffeescript.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>The following was originally written as a guest post by </i><a href="https://ashcon.app" target="_blank" rel="noopener noreferrer"><i>Ashcon Partovi</i></a><i>, while a computer science and business undergraduate at the University of British Columbia in Vancouver, Canada. He's the founder of a popular Minecraft multiplayer server, </i><a href="https://stratus.network/forums" target="_blank" rel="noopener noreferrer"><i>stratus.network</i></a><i>, that provides competitive, team-based gameplay to thousands of players every week. He also now works at Cloudflare.</i></p>
-	<p>If you've ever played a video game in the past couple of years, chances are you know about <a href="https://en.wikipedia.org/wiki/Minecraft" target="_blank" rel="noopener noreferrer"><i>Minecraft</i>.</a> You might be familiar with the game or even planted a tree or two, but what you might not know about is the vast number of <i>Minecraft</i> online communities. In this post, I'm going to describe how I used Cloudflare Workers to deploy and scale a production-grade API that solves a big problem for these <i>Minecraft</i> websites.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-the-problem">Introducing the Problem</h3>
-		<a href="https://blog.cloudflare.com/#introducing-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Here is an example of my <i>Minecraft</i> <a href="https://stratus.network/ElectroidFilms" target="_blank" rel="noopener noreferrer">player profile</a> from one of the many multiplayer websites. It shows some identity information such as my username, a bitmap of my avatar, and a preview of my friends. Although rendering this page with 49 bitmap avatars may seem like an easy task, it's far from trivial. In fact, it's unnecessarily complicated.</p>
-	<p>Here is the current workflow to render a player profile on a website given their username:</p>
-	<ol>
-		<li>
-			<p>Find the UUID from the player's username.</p>
-		</li>
-	</ol>
-	<pre class="language-bash"><code class="language-bash">curl api.mojang.com/users/profiles/minecraft/ElectroidFilms
-{
-    "id": "dad8b95ccf6a44df982e8c8dd70201e0",
-    "name": "ElectroidFilms"
-}</code></pre>
-	<ol>
-		<li>
-			<p>Use that UUID to fetch the latest player information from the session server.</p>
-		</li>
-	</ol>
-	<pre class="language-bash"><code class="language-bash">curl sessionserver.mojang.com/session/minecraft/profile/dad8b95cc...
-{
-    "id": "dad8b95ccf6a44df982e8c8dd70201e0",
-    "name": "ElectroidFilms",
-    "properties": [{
-      "name": "textures",
-      "value": "eyJ0aW1lc3RhbXAiOjE1MzI1MDI..." // &lt;base64&gt;
-    }]
-}</code></pre>
-	<ol>
-		<li>
-			<p>Decode the textures string which is encoded as base64.</p>
-		</li>
-	</ol>
-	<pre class="language-bash"><code class="language-bash">echo "eyJ0aW1lc3RhbXAiOjE1MzI1MDIwNDY5NjIsIn..." | base64 --decode
-{
-    "timestamp": 1532502046962,
-    "profileId": "dad8b95ccf6a44df982e8c8dd70201e0",
-    "profileName": "ElectroidFilms",
-    "textures": {
-      "SKIN": {"url": "textures.minecraft.net/texture/741df6aa0..."},
-      "CAPE": {"url": "textures.minecraft.net/texture/e7dfea16d..."}
-    }
-}</code></pre>
-	<ol>
-		<li>
-			<p>Fetch the texture from the URL in the decoded JSON payload.</p>
-		</li>
-	</ol>
-	<pre class="language-bash"><code class="language-bash">curl textures.minecraft.net/texture/741df6aa027... &gt; skin.png</code></pre>
-	<ol>
-		<li>
-			<p>Cache the texture in a database to avoid the 60-second rate limit.</p>
-		</li>
-	</ol>
-	<pre class="language-bash"><code class="language-bash">mongo
-&gt; db.users.findOneAndUpdate(
-      { _id: "dad8b95ccf6a44df982e8c8dd70201e0" },
-      { skin_png: new BinData(0, "GWA3u4F42GIH318sAlN2wfDAWTQ...") })</code></pre>
-	<p>Yikes, that's 5 complex operations required to render a single avatar! But that's not all, in my example profile, there are 49 avatars, which would require a total of <code>5 * 49 = 245</code> operations.</p>
-	<p>And that's just <i>fetching</i> the data, we haven't even started to serve it to players! Then you have to setup a host to serve the web traffic, ensure that the service scales with demand, handle cache expiration of assets, and deploy across multiple regions. Then you have to deploy There has to be a better way!</p>
-	<div class="flex anchor relative">
-		<h3 id="prototyping-with-workers">Prototyping with Workers</h3>
-		<a href="https://blog.cloudflare.com/#prototyping-with-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener('fetch', event =&gt; {
-  event.respondWith(renderPlayerBitmap(event.request))
-})
-
-async function renderPlayerBitmap(request) {
-  var username = request.url.split("/").pop()
-  console.log("Starting request for... " + username)
-
-  // Step 1: Username -&gt; UUID
-  var uuid = await fetch("https://api.mojang.com/users/profiles/minecraft/" + username)
-  if(uuid.ok) {
-    uuid = (await uuid.json()).id
-    console.log("Found uuid... " + uuid)
-
-    // Step 2: UUID -&gt; Profile
-    var session = await fetch("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid)
-    if(session.ok) {
-      session = await session.json()
-      console.log("Found session... " + JSON.stringify(session))
-
-      // Step 3: Profile -&gt; Texture URL
-      var texture = atob(session.properties[0].value)
-      console.log("Found texture... " + texture)
-
-      // Step 4 + 5: Texture URL -&gt; Texture PNG + Caching
-      texture = JSON.parse(texture)
-      return fetch(texture.textures.SKIN.url, cf: {cacheTtl: 60})
-    }
-  }
-
-  return new Response(undefined, {status: 500})
-}
-</code></pre>
-	<p>Within a couple minutes I had my first Workers implementation! I gave it my username and it was able to make all the necessary sub-requests to return my player's bitmap texture.</p>
-	<p>After realizing the potential of Workers, I started to wonder if I could use it for more than just a single script. What if I could design and deploy a production-ready API for <i>Minecraft</i> that runs exclusively on Workers?</p>
-	<div class="flex anchor relative">
-		<h3 id="designing-an-api">Designing an API</h3>
-		<a href="https://blog.cloudflare.com/#designing-an-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>I wanted to address an essential problem for <i>Minecraft</i> developers: too many APIs with too many restrictions. The hassle of parsing multiple requests and handling errors prevents developers from focusing on creating great experiences for players. There needs to be a solution that requires only <b>1 HTTP request with no rate limiting and no client-side caching.</b> After looking at the various use-cases for the existing APIs, I created a JSON schema that encompassed all the essential data into a single response:</p>
-	<pre class="language-bash"><code class="language-bash">GET: api.ashcon.app/mojang/v1/user/&lt;username|uuid&gt;</code></pre>
-
-	<pre class="language-json"><code class="language-json">{
-  "uuid": "&lt;uuid&gt;",
-  "username": "&lt;username&gt;",
-  "username_history": [
-    {
-      "username": "&lt;username&gt;",
-      "changed_at": "&lt;date|null&gt;"
-    }
-  ],
-  "textures": {
-    "slim": "&lt;boolean&gt;",
-    "custom": "&lt;boolean&gt;",
-    "skin": {
-      "url": "&lt;url&gt;",
-      "data": "&lt;base64&gt;"
-    },
-    "cape": {
-      "url": "&lt;url|null&gt;",
-      "data": "&lt;base64|null&gt;"
-    }
-  },
-  "cached_at": "&lt;date&gt;"
-}</code></pre>
-	<p>One of the primary goals I had in mind was to minimize sub-requests by clients. For example, instead of giving developers a URL to a <code>image/png</code> static asset, why not fetch it for them and embed it as a base64 string? Now that's simplicity!</p>
-	<div class="flex anchor relative">
-		<h3 id="getting-started">Getting Started</h3>
-		<a href="https://blog.cloudflare.com/#getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For this project, I decided to use <a href="https://coffeescript.org" target="_blank" rel="noopener noreferrer">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>
-	<pre class="language-coffeescript"><code class="language-coffeescript"># Welcome to CoffeeScript!
-
-str = "heyo! #{40+2}"    # 'heyo! 42'
-num = 12 if str?         # 12
-arr = [1, null, "apple"] # [1, null, 'apple']
-val = arr[1]?.length()   # null
-hash =                   # {key: 'value'}
-  key: "value"
-
-add = (a, b, {c, d} = {}) -&gt;
-  c ?= 3
-  d ?= 4
-  a + b + c + d
-
-add(1, 2, d: 5) # 1 + 2 + 3 + 5 = 11</code></pre>
-	<p>First, let's make sure we have the proper dependencies installed for the project! These commands will create a <code>package.json</code> file and a <code>node_modules/</code> folder in our workspace.</p>
-	<pre class="language-bash"><code class="language-bash">mkdir -p workspace/src
-cd workspace
-npm init --yes
-npm install --save-dev webpack webpack-cli coffeescript coffee-loader workers-preview</code></pre>
-	<p>Now, we're going to edit our <code>package.json</code> to add two helper scripts for later. You can delete the default <code>"test"</code> script as well.</p>
-	<pre class="language-json"><code class="language-json">"scripts": {
-  "build": "webpack",
-  "build:watch": "webpack --watch",
-  "preview": "workers-preview &lt; dist/bundle.js"
-}</code></pre>
-	<p>We also need to initialize a <code>webpack.config.js</code> file with a CoffeeScript compiler.</p>
-	<pre class="language-javascript"><code class="language-javascript">const path = require('path')
-
-module.exports = {
-  entry: {
-    bundle: path.join(__dirname, './src/index.coffee'),
-  },
-  output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, 'dist'),
-  },
-  mode: 'production',
-  watchOptions: {
-    ignored: /node_modules|dist|\.js/g,
-  },
-  resolve: {
-    extensions: ['.coffee', '.js', '.json'],
-    plugins: [],
-  },
-  module: {
-    rules: [
-      {
-        test: /\.coffee?$/,
-        loader: 'coffee-loader',
-      }
-    ]
-  }
-}</code></pre>
-	<p>Before we start coding, we'll create a <code>src/index.coffee</code> file and make sure everything is working so far.</p>
-	<pre class="language-coffeescript"><code class="language-coffeescript">addEventListener('fetch', (event) -&gt;
-  event.respondWith(route(event.request)))
-
-# We will populate this with our own logic after we test it!
-route = (request) -&gt;
-  fetch('https://api.ashcon.app/mojang/v1/user/ElectroidFilms')</code></pre>
-	<p>Open your terminal in the <code>workspace/</code> directory and run the following commands:</p>
-	<pre class="language-bash"><code class="language-bash">npm run build
-npm run preview</code></pre>
-	<p>Your computer's default internet browser will open up a new window and preview the result of our Worker. If you see a JSON response, then everything is working properly and we're ready to go!</p>
-	<div class="flex anchor relative">
-		<h3 id="writing-production-code-for-workers">Writing Production Code for Workers</h3>
-		<a href="https://blog.cloudflare.com/#writing-production-code-for-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that we're setup with a working example, we can design our source code file structure. It's important that we break up our code into easily testable chunks, so I've gone ahead and outlined the approach that I took with this project:</p>
-	<pre class="language-bash"><code class="language-bash">src/
-  index.coffee  # routing and serving requests
-  api.coffee    # logic layer to mutate and package requests
-  mojang.coffee # non-logic layer to send upstream requests
-  http.coffee   # HTTP requesting, parsing, and responding
-  util.coffee   # util methods and extensions</code></pre>
-	<p>If you've feeling adventurous, I've included a simplified version of my API code that you can browse through below. If you look at each file, you'll have a fully working implementation by the end! Otherwise, you can continue reading to learn about my deployment and analysis of the APIs impact.</p>
-	<div class="flex anchor relative">
-		<h4 id="http-coffee"><code>http.coffee</code></h4>
-		<a href="https://blog.cloudflare.com/#http-coffee" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since our API will be making several HTTP requests, it's a good idea to code some common <code>request</code> and <code>respond</code> methods that can be reused among multiple requests. At the very least, we need to support parsing JSON or base64 responses and sending JSON or string data back to the client.</p>
-	<pre class="language-coffeescript"><code class="language-coffeescript"># Send a Http request and get a response.
-#
-# @param {string} url - Url to send the request.
-# @param {string} method - Http method (get, post, etc).
-# @param {integer} ttl - Time in seconds for Cloudflare to cache the request.
-# @param {boolean} json - Whether to parse the response as json.
-# @param {boolean} base64 - Whether to parse the response as a base64 string.
-# @returns {promise&lt;
-#   json -&gt; [err, json]
-#   base64 -&gt; string|null
-#   else -&gt; response
-# &gt;} - A different response based on the method parameters above.
-export request = (url, {method, ttl, json, base64} = {}) -&gt;
-  method ?= "GET"
-  response = await fetch(url, method: method, cf: {cacheTtl: ttl} if ttl)
-  if json # Return a tuple of [err, json].
-    if err = coerce(response.status)
-      [err, null]
-    else
-      [null, await response.json()]
-  else if base64 # Return base64 string or null.
-    if response.ok
-      Buffer.from(await response.arrayBuffer(), "binary").toString("base64")
-  else # If no parser is specified, just return the raw response.
-    response
-
-export get = (url, options = {}) -&gt;
-  request(url, Object.assign(options, {method: "GET"}))
-
-# Respond to a client with a http response.
-#
-# @param {object} data - Data to send back in the response.
-# @param {integer} code - Http status code.
-# @param {string} type - Http content type.
-# @param {boolean} json - Whether to respond in json.
-# @param {boolean} text - Whether to respond in plain text.
-# @returns {response} - Raw response object.
-export respond = (data, {code, type, json, text} = {}) -&gt;
-  code ?= 200
-  if json
-    type = "application/json"
-    # "Pretty-print" our JSON response with 2 spaces.
-    data = JSON.stringify(data, undefined, 2)
-  else if text
-    type = "text/plain"
-    data = String(data)
-  else
-    type ?= "application/octet-stream"
-  new Response(data, {status: code, headers: {"Content-Type": type}})
-
-export error = (reason = null, {code, type} = {}) -&gt;
-  code ?= 500
-  type ?= "Internal Error"
-  # An example would be: "Internal Error - 500 (this is the reason)"
-  respond("#{code} - #{type}" + (if reason then " (#{reason})" else ""), code: code, text: true)
-
-export badRequest = (reason = null) -&gt;
-  error(reason, code: 400, type: "Bad Request")
-
-export notFound = (reason = null) -&gt;
-  error(reason, code: 404, type: "Not Found")
-
-export tooManyRequests = (reason = null) -&gt;
-  error(reason, code: 429, type: "Too Many Requests")
-
-# Convert common http error codes into error responses.
-#
-# @param {integer} code - Http status code.
-# @returns {response|null} - An error response or null if a 200 code.
-export coerce = (code) -&gt;
-  switch code
-    when 200 then null
-    # Some Minecraft APIs use 204 as a stand-in for a 404.
-    when 204 then notFound()
-    when 400 then invalidRequest()
-    # Theoretically this should never happen, but sometimes does.
-    when 429 then tooManyRequests()
-    else error("Unknown Response", code: code)</code></pre>
-	<p>The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features" target="_blank" rel="noopener noreferrer">Workers documentation</a> for a more in-depth explanation.</p>
-	<pre class="language-coffeescript"><code class="language-coffeescript">cf:
-  cacheTtl: 120 # Cache for 2 mins.
-  # Pro+ only.
-  polish: "lossless" # Compress image data.
-  # Enterprise only.
-  cacheTtlByStatus:
-    "200-299": 60 # Cache for 60 secs.
-    "300-399": 0  # Cache but expire instantly.
-    "400-404": 10 # Cache for 10 secs.
-    "405-599": -1 # Do not cache at all.
-  cacheKey: url # Cache lookup key, defaults to the request URL.</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="mojang-coffee"><code>mojang.coffee</code></h4>
-		<a href="https://blog.cloudflare.com/#mojang-coffee" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that we have code to send and parse requests, we can create an interface to retrieve data from the upstream APIs. It's good to note that there should be no mutation logic in this file, it's purpose is just to get the old APIs, not change them.</p>
-	<pre class="language-coffeescript"><code class="language-coffeescript">import { get } from "./http"
-
-# Get the UUID of a username at the current time.
-#
-# @param {string} name - Minecraft username.
-# @throws {204} - When no user exists with that name.
-# @returns {[err, json]} - An error or username and UUID response.
-export usernameToUuid = (name) -&gt;
-  get("https://api.mojang.com/users/profiles/minecraft/#{name}", json: true)
-
-# Get the history of usernames for the given UUID.
-#
-# @param {string} id - The UUID to check the username history.
-# @returns {[err, json]} - An error or the username history.
-export uuidToUsernameHistory = (id) -&gt;
-  get("https://api.mojang.com/user/profiles/#{id}/names", json: true)
-
-# Get the session profile of the UUID.
-#
-# @param {string} id - UUID to get the session profile.
-# @returns {[err, json]} - An error or the session profile.
-export uuidToProfile = (id) -&gt;
-  get("https://sessionserver.mojang.com/session/minecraft/profile/#{id}", json: true)</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="api-coffee"><code>api.coffee</code></h4>
-		<a href="https://blog.cloudflare.com/#api-coffee" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This is where the bulk of our API logic will reside. I've broken up the process into 3 interdependent tasks that are executed in order:</p>
-	<ol>
-		<li>
-			<p>Given a username, fetch its UUID.</p>
-		</li>
-		<li>
-			<p>Given a UUID, fetch the user's profile.</p>
-		</li>
-		<li>
-			<p>Given a user's profile, decode and fetch the textures.</p>
-		</li>
-	</ol>
-	<pre class="language-coffeescript"><code class="language-coffeescript">import { get, respond, error, notFound, badRequest } from "./http"
-import { usernameToUuid, uuidToProfile, uuidToUsernameHistory } from "./mojang"
-
-# Get the uuid of a user given their username.
-#
-# @param {string} name - Minecraft username, must be alphanumeric 16 characters.
-# @returns {[err, response]} - An error or the dashed uuid of the user.
-export uuid = (name) -&gt;
-  if name.asUsername() # Fits regex of a Minecraft username.
-    [err, res] = await usernameToUuid(name)
-    if id = res?.id?.asUuid(dashed: true)
-      [null, respond(id, text: true)]
-    else # Response was received, but contains no UUID.
-      [err || notFound(), null]
-  else
-    [badRequest("malformed username '#{name}'"), null]
-
-# Get the full profile of a user given their uuid or username.
-#
-# @param {string} id - Minecraft username or uuid.
-# @returns {[err, json]} - An error or user profile.
-export user = (id) -&gt;
-  if id.asUsername()
-    [err, res] = await uuid(id)
-    if err # Could not find a player with that username.
-      [err, null]
-    else # Recurse with the new UUID.
-      await user(id = await res.text())
-  else if id.asUuid()
-    # Fetch the profile and usernames in parallel.
-    [[err0, profile], [err1, history]] = await Promise.all([
-      uuidToProfile(id = id.asUuid())
-      uuidToUsernameHistory(id)])
-    # Extract the textures from the profile.
-    # Since this operation is complex, off-load
-    # the logic into its own method.
-    [err2, texture] = await textures(profile)
-    if err = err0 || err1 || err2
-      [err, null] # One of the last three operations failed.
-    else
-      # Everything is good, now just put the data together.
-      [null, respond(
-        uuid: profile.id.asUuid(dashed: true)
-        username: profile.name
-        username_history: history.map((item) -&gt;
-          username: item.name
-          changed_at: item.changedToAt?.asDate())
-        textures: texture
-        cached_at: new Date(),
-      json: true)]
-  else
-    [badRequest("malformed uuid '#{id}'"), null]
-
-# Parse and decode base64 textures from the user profile.
-#
-# @param {json} profile - User profile from #uuidToProfile(id).
-# @returns {json} - Enhanced user profile with more convient texture fields.
-textures = (profile) -&gt;
-  unless profile # Will occur if the profile api failed.
-    return [error("no user profile found"), null]
-  properties = profile.properties
-  if properties.length == 1
-    texture = properties[0]
-  else
-    texture = properties.filter((pair) -&gt; pair.name == "textures" &amp;&amp; pair.value?)[0]
-  # If a embedded texture does not exist or is empty,
-  # that user does not have a custom skin.
-  if !texture || (texture = JSON.parse(atob(texture.value)).textures).isEmpty()
-    skinUrl = "http://assets.mojang.com/SkinTemplates/steve.png"
-  # Fetch the skin and cape data in parallel, and cache for a day.
-  [skin, cape] = await Promise.all([
-    get(skinUrl ?= texture.SKIN?.url, base64: true, ttl: 86400)
-    get(capeUrl = texture.CAPE?.url, base64: true, ttl: 86400)])
-  unless skin
-    [error("unable to fetch skin '#{skinUrl}'"), null]
-  else
-    texture =
-      slim: texture.SKIN?.metadata?.model == "slim"
-      skin: {url: skinUrl, data: skin}
-      cape: {url: capeUrl, data: cape} if capeUrl
-    [null, texture]</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="index-coffee"><code>index.coffee</code></h4>
-		<a href="https://blog.cloudflare.com/#index-coffee" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now, we parse the request's route and respond with the corresponding API.</p>
-	<pre class="language-coffeescript"><code class="language-coffeescript">import "./util"
-import { notFound } from "./http"
-import { uuid, user } from "./api"
-
-addEventListener("fetch", (event) -&gt;
-  event.respondWith(route(event.request)))
-
-route = (request) -&gt;
-  [base, version, method, id] = request.url.split("/")[3..6]
-  if base == "mojang" &amp;&amp; id?
-    if version == "v1"
-      v1(method, id)
-    else
-      notFound("unknown api version '#{version}'")
-  else
-    notFound("unknown route")
-
-v1 = (method, id) -&gt;
-  if method == "uuid"
-    [err, res] = await uuid(id)
-  else if method == "user"
-    [err, res] = await user(id)
-  err || res || notFound("unknown v1 route '#{method}'")</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="util-coffee"><code>util.coffee</code></h4>
-		<a href="https://blog.cloudflare.com/#util-coffee" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Finally, we'll add some prototype extensions that we used along the way.</p>
-	<pre class="language-coffeescript"><code class="language-coffeescript"># Insert a string at a given index.
-#
-# @param {integer} i - Index to insert the string at.
-# @param {string} str - String to insert.
-String::insert = (i, str) -&gt;
-  this.slice(0, i) + str + this.slice(i)
-
-# Ensure that the string is a valid Uuid.
-#
-# If dashed is enabled, it is possible the input
-# string is not the same as the output string.
-#
-# @param {boolean} dashed - Whether to return a dashed uuid.
-# @returns {string|null} - A uuid or null.
-String::asUuid = ({dashed} = {}) -&gt;
-  if match = uuidPattern.exec(this)
-    uuid = match[1..].join("")
-    if dashed
-      uuid.insert(8, "-")
-          .insert(12+1, "-")
-          .insert(16+2, "-")
-          .insert(20+3, "-")
-    else
-      uuid
-uuidPattern = /^([0-9a-f]{8})(?:-|)([0-9a-f]{4})(?:-|)(4[0-9a-f]{3})(?:-|)([0-9a-f]{4})(?:-|)([0-9a-f]{12})$/i
-
-# Ensure that the string is a valid Minecraft username.
-#
-# @returns {string|null} - Minecraft username or null.
-String::asUsername = -&gt;
-  if usernamePattern.test(this) then this else false
-usernamePattern = /^[0-9A-Za-z_]{1,16}$/i
-
-# Ensure that the unix number is a Date.
-#
-# @returns {date} - The number as a floored date.
-Number::asDate = -&gt;
-  new Date(Math.floor(this))
-
-# Determine if the object is empty.
-#
-# @returns {boolean} - Whether the object is empty.
-Object::isEmpty = -&gt;
-  Object.keys(this).length == 0</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="analyzing-a-workers-deployment">Analyzing a Workers Deployment</h3>
-		<a href="https://blog.cloudflare.com/#analyzing-a-workers-deployment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>I've had this code deployed and tested by real <i>Minecraft</i> users for the past few weeks. As a developer that has global web traffic, it's pivotal that players can quickly get access to my services. The essential advantage of Workers is that I don't need to deploy several replicas of my code to different cloud regions, it's everywhere! That means players from any part of the world get the same great web experience with minimal latency.</p>
-	<p>As of today, the API is processing over <b>400k requests per day</b> from users all over the world! Cloudflare caches responses in the closest point of presence to the client, so I don't need to setup a database and developers don't need to worry about rate-limiting.</p>
-	<p>Since each request to the API generates 4 to 5 additional sub-requests, it handles approximately <b>1.8 million fetches per day</b> with a 88% cache hit rate.</p>
-	<div class="flex anchor relative">
-		<h3 id="wrapping-up">Wrapping Up</h3>
-		<a href="https://blog.cloudflare.com/#wrapping-up" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Workers have enabled me to solve complex technical problems without worrying about host infrastructure or cloud regions. It's simple, easy to deploy, and works blazing fast all around the world. And for <b>50 cents for every 1 million requests</b>, it's incomparable to the other serverless solutions on the market.</p>
-	<p>If you're not already convinced to start using Workers, here's the deployment history of my API. I went from <b>0 to 5 million requests</b> with no scaling, no resizing, no servers, no clusters, and no containers. Just code.</p>
-	<p>If you're interested in looking at all of the code used in the post, you can find it here:<a href="https://github.com/Electroid/mojang-api" target="_blank" rel="noopener noreferrer">https://github.com/Electroid/mojang-api</a></p>
-	<p>And if you're a <i>Minecraft</i> developer, my API is open for you to use for free:</p>
-	<pre class="language-bash"><code class="language-bash">curl https://api.ashcon.app/mojang/v1/uuid/ElectroidFilms
-curl https://api.ashcon.app/mojang/v1/user/ElectroidFilms</code></pre>
-	<p>You can also use this <a href="https://github.com/Electroid/mojang-api/tree/master/avatar" target="_blank" rel="noopener noreferrer">extra goodie</a> that will crop just the face from a player texture:</p>
-	<pre class="language-bash"><code class="language-bash">curl https://api.ashcon.app/mojang/v1/avatar/ElectroidFilms &gt; avatar.png
-open avatar.png</code></pre>
+<p><em>The following was originally written as a guest post by <a href="https://ashcon.app" target="_blank" rel="noopener noreferrer">Ashcon Partovi</a>, while a computer science and business undergraduate at the University of British Columbia in Vancouver, Canada. He's the founder of a popular Minecraft multiplayer server, <a href="https://stratus.network/forums" target="_blank" rel="noopener noreferrer">stratus.network</a>, that provides competitive, team-based gameplay to thousands of players every week. He also now works at Cloudflare.</em></p>
+<p>If you've ever played a video game in the past couple of years, chances are you know about <a href="https://en.wikipedia.org/wiki/Minecraft" target="_blank" rel="noopener noreferrer"><em>Minecraft</em>.</a> You might be familiar with the game or even planted a tree or two, but what you might not know about is the vast number of <em>Minecraft</em> online communities. In this post, I'm going to describe how I used Cloudflare Workers to deploy and scale a production-grade API that solves a big problem for these <em>Minecraft</em> websites.</p>
+<h3>Introducing the Problem</h3>
+<p>Here is an example of my <em>Minecraft</em> <a href="https://stratus.network/ElectroidFilms" target="_blank" rel="noopener noreferrer">player profile</a> from one of the many multiplayer websites. It shows some identity information such as my username, a bitmap of my avatar, and a preview of my friends. Although rendering this page with 49 bitmap avatars may seem like an easy task, it's far from trivial. In fact, it's unnecessarily complicated.</p>
+<p>Here is the current workflow to render a player profile on a website given their username:</p>
+<ol>
+	<li>Find the UUID from the player's username.</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> api.mojang.com/users/profiles/minecraft/ElectroidFilms</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "dad8b95ccf6a44df982e8c8dd70201e0",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ElectroidFilms"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<ol>
+	<li>Use that UUID to fetch the latest player information from the session server.</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> sessionserver.mojang.com/session/minecraft/profile/dad8b95cc...</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "dad8b95ccf6a44df982e8c8dd70201e0",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ElectroidFilms",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "properties"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "name"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "textures",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "value"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "eyJ0aW1lc3RhbXAiOjE1MzI1MDI..."</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">base6</span><span class="sk-d73a49-a0a0a0">4&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<ol>
+	<li>Decode the textures string which is encoded as base64.</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-032f62-99ffe4"> "eyJ0aW1lc3RhbXAiOjE1MzI1MDIwNDY5NjIsIn..."</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> base64</span><span class="sk-005cc5-99ffe4"> --decode</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "timestamp"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> 1532502046962,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "profileId"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "dad8b95ccf6a44df982e8c8dd70201e0",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "profileName"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "ElectroidFilms",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "textures"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "SKIN"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {"url":</span><span class="sk-032f62-99ffe4"> "textures.minecraft.net/texture/741df6aa0..."},</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "CAPE"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {"url":</span><span class="sk-032f62-99ffe4"> "textures.minecraft.net/texture/e7dfea16d..."}</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<ol>
+	<li>Fetch the texture from the URL in the decoded JSON payload.</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> textures.minecraft.net/texture/741df6aa027...</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> skin.png</span></span></code></pre>
+</div>
+<ol>
+	<li>Cache the texture in a database to avoid the 60-second rate limit.</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mongo</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> db.users.findOneAndUpdate(</span></span>
+<span class="line"><span class="sk-24292e-fff">      { </span><span class="sk-6f42c1-ffc799">_id:</span><span class="sk-032f62-99ffe4"> "dad8b95ccf6a44df982e8c8dd70201e0"</span><span class="sk-032f62-99ffe4"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">      { </span><span class="sk-6f42c1-ffc799">skin_png:</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> BinData</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">0,</span><span class="sk-032f62-99ffe4"> "GWA3u4F42GIH318sAlN2wfDAWTQ..."</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">}</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Yikes, that's 5 complex operations required to render a single avatar! But that's not all, in my example profile, there are 49 avatars, which would require a total of <code>5 * 49 = 245</code> operations.</p>
+<p>And that's just <em>fetching</em> the data, we haven't even started to serve it to players! Then you have to setup a host to serve the web traffic, ensure that the service scales with demand, handle cache expiration of assets, and deploy across multiple regions. Then you have to deploy There has to be a better way!</p>
+<h3>Prototyping with Workers</h3>
+<p>I'm a strong believer in the future of serverless computing. So naturally, when I learned how <a href="https://developers.cloudflare.com/workers/about" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> allow you to run JavaScript code in 150+ points of presence, I started to tinker with the possibilities of solving this problem. After looking at the documentation and using the <a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Workers playground</a>, I quickly put together some JavaScript code that aggregated all that profile complexity into a single request.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">renderPlayerBitmap</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> renderPlayerBitmap</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> username </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.url.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">pop</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Starting request for... "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> username)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Step 1: Username -&gt; UUID</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  var</span><span class="sk-24292e-fff"> uuid </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://api.mojang.com/users/profiles/minecraft/"</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> username)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff">(uuid.ok) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    uuid </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> uuid.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()).id</span></span>
+<span class="line"><span class="sk-24292e-fff">    console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Found uuid... "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> uuid)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Step 2: UUID -&gt; Profile</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> session </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://sessionserver.mojang.com/session/minecraft/profile/"</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> uuid)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff">(session.ok) {</span></span>
+<span class="line"><span class="sk-24292e-fff">      session </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Found session... "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(session))</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Step 3: Profile -&gt; Texture URL</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      var</span><span class="sk-24292e-fff"> texture </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> atob</span><span class="sk-24292e-fff">(session.properties[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">].value)</span></span>
+<span class="line"><span class="sk-24292e-fff">      console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Found texture... "</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> texture)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Step 4 + 5: Texture URL -&gt; Texture PNG + Caching</span></span>
+<span class="line"><span class="sk-24292e-fff">      texture </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(texture)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(texture.textures.</span><span class="sk-005cc5-fff">SKIN</span><span class="sk-24292e-fff">.url, cf: {cacheTtl: </span><span class="sk-005cc5-ffc799">60</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">undefined</span><span class="sk-24292e-fff">, {status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Within a couple minutes I had my first Workers implementation! I gave it my username and it was able to make all the necessary sub-requests to return my player's bitmap texture.</p>
+<p>After realizing the potential of Workers, I started to wonder if I could use it for more than just a single script. What if I could design and deploy a production-ready API for <em>Minecraft</em> that runs exclusively on Workers?</p>
+<h3>Designing an API</h3>
+<p>I wanted to address an essential problem for <em>Minecraft</em> developers: too many APIs with too many restrictions. The hassle of parsing multiple requests and handling errors prevents developers from focusing on creating great experiences for players. There needs to be a solution that requires only <strong>1 HTTP request with no rate limiting and no client-side caching.</strong> After looking at the various use-cases for the existing APIs, I created a JSON schema that encompassed all the essential data into a single response:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET:</span><span class="sk-032f62-99ffe4"> api.ashcon.app/mojang/v1/user/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">username</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">uuid</span><span class="sk-24292e-fff">&gt;</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "uuid"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;uuid&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "username"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;username&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "username_history"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "username"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;username&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "changed_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;date|null&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "textures"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "slim"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;boolean&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "custom"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;boolean&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "skin"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "url"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;url&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "data"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;base64&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "cape"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "url"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;url|null&gt;"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "data"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;base64|null&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "cached_at"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"&lt;date&gt;"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>One of the primary goals I had in mind was to minimize sub-requests by clients. For example, instead of giving developers a URL to a <code>image/png</code> static asset, why not fetch it for them and embed it as a base64 string? Now that's simplicity!</p>
+<h3>Getting Started</h3>
+<p>For this project, I decided to use <a href="https://coffeescript.org" target="_blank" rel="noopener noreferrer">CoffeeScript</a>, which transcompiles to JavaScript and has a simple syntax. We'll also need to use <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">Webpack</a> to bundle all of our code into a single JavaScript file to upload to Cloudflare.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Welcome to CoffeeScript!</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>str = "heyo! #{40+2}"    # 'heyo! 42'</span></span>
+<span class="line"><span>num = 12 if str?         # 12</span></span>
+<span class="line"><span>arr = [1, null, "apple"] # [1, null, 'apple']</span></span>
+<span class="line"><span>val = arr[1]?.length()   # null</span></span>
+<span class="line"><span>hash =                   # {key: 'value'}</span></span>
+<span class="line"><span>  key: "value"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>add = (a, b, {c, d} = {}) -&gt;</span></span>
+<span class="line"><span>  c ?= 3</span></span>
+<span class="line"><span>  d ?= 4</span></span>
+<span class="line"><span>  a + b + c + d</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>add(1, 2, d: 5) # 1 + 2 + 3 + 5 = 11</span></span></code></pre>
+</div>
+<p>First, let's make sure we have the proper dependencies installed for the project! These commands will create a <code>package.json</code> file and a <code>node_modules/</code> folder in our workspace.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-005cc5-99ffe4"> -p</span><span class="sk-032f62-99ffe4"> workspace/src</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> workspace</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> --yes</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-032f62-99ffe4"> webpack</span><span class="sk-032f62-99ffe4"> webpack-cli</span><span class="sk-032f62-99ffe4"> coffeescript</span><span class="sk-032f62-99ffe4"> coffee-loader</span><span class="sk-032f62-99ffe4"> workers-preview</span></span></code></pre>
+</div>
+<p>Now, we're going to edit our <code>package.json</code> to add two helper scripts for later. You can delete the default <code>"test"</code> script as well.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">"scripts"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "build"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"webpack"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "build:watch"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"webpack --watch"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "preview"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"workers-preview &lt; dist/bundle.js"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We also need to initialize a <code>webpack.config.js</code> file with a CoffeeScript compiler.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> path</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'path'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  entry: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    bundle: path.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(__dirname, </span><span class="sk-032f62-99ffe4">'./src/index.coffee'</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  output: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    filename: </span><span class="sk-032f62-99ffe4">'bundle.js'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: path.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(__dirname, </span><span class="sk-032f62-99ffe4">'dist'</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  mode: </span><span class="sk-032f62-99ffe4">'production'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  watchOptions: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    ignored:</span><span class="sk-032f62-a0a0a0"> /node_modules</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-a0a0a0">dist</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\.</span><span class="sk-032f62-a0a0a0">js/</span><span class="sk-d73a49-ffc799">g</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  resolve: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    extensions: [</span><span class="sk-032f62-99ffe4">'.coffee'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'.js'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'.json'</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">    plugins: [],</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  module: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    rules: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        test:</span><span class="sk-032f62-a0a0a0"> /</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\.</span><span class="sk-032f62-a0a0a0">coffee</span><span class="sk-d73a49-a0a0a0">?$</span><span class="sk-032f62-a0a0a0">/</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        loader: </span><span class="sk-032f62-99ffe4">'coffee-loader'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    ]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Before we start coding, we'll create a <code>src/index.coffee</code> file and make sure everything is working so far.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>addEventListener('fetch', (event) -&gt;</span></span>
+<span class="line"><span>  event.respondWith(route(event.request)))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># We will populate this with our own logic after we test it!</span></span>
+<span class="line"><span>route = (request) -&gt;</span></span>
+<span class="line"><span>  fetch('https://api.ashcon.app/mojang/v1/user/ElectroidFilms')</span></span></code></pre>
+</div>
+<p>Open your terminal in the <code>workspace/</code> directory and run the following commands:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> build</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> preview</span></span></code></pre>
+</div>
+<p>Your computer's default internet browser will open up a new window and preview the result of our Worker. If you see a JSON response, then everything is working properly and we're ready to go!</p>
+<h3>Writing Production Code for Workers</h3>
+<p>Now that we're setup with a working example, we can design our source code file structure. It's important that we break up our code into easily testable chunks, so I've gone ahead and outlined the approach that I took with this project:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">src/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  index.coffee</span><span class="sk-6a737d-8b8b8b94">  # routing and serving requests</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  api.coffee</span><span class="sk-6a737d-8b8b8b94">    # logic layer to mutate and package requests</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  mojang.coffee</span><span class="sk-6a737d-8b8b8b94"> # non-logic layer to send upstream requests</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  http.coffee</span><span class="sk-6a737d-8b8b8b94">   # HTTP requesting, parsing, and responding</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  util.coffee</span><span class="sk-6a737d-8b8b8b94">   # util methods and extensions</span></span></code></pre>
+</div>
+<p>If you've feeling adventurous, I've included a simplified version of my API code that you can browse through below. If you look at each file, you'll have a fully working implementation by the end! Otherwise, you can continue reading to learn about my deployment and analysis of the APIs impact.</p>
+<h4><code>http.coffee</code></h4>
+<p>Since our API will be making several HTTP requests, it's a good idea to code some common <code>request</code> and <code>respond</code> methods that can be reused among multiple requests. At the very least, we need to support parsing JSON or base64 responses and sending JSON or string data back to the client.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Send a Http request and get a response.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {string} url - Url to send the request.</span></span>
+<span class="line"><span># @param {string} method - Http method (get, post, etc).</span></span>
+<span class="line"><span># @param {integer} ttl - Time in seconds for Cloudflare to cache the request.</span></span>
+<span class="line"><span># @param {boolean} json - Whether to parse the response as json.</span></span>
+<span class="line"><span># @param {boolean} base64 - Whether to parse the response as a base64 string.</span></span>
+<span class="line"><span># @returns {promise&lt;</span></span>
+<span class="line"><span>#   json -&gt; [err, json]</span></span>
+<span class="line"><span>#   base64 -&gt; string|null</span></span>
+<span class="line"><span>#   else -&gt; response</span></span>
+<span class="line"><span># &gt;} - A different response based on the method parameters above.</span></span>
+<span class="line"><span>export request = (url, {method, ttl, json, base64} = {}) -&gt;</span></span>
+<span class="line"><span>  method ?= "GET"</span></span>
+<span class="line"><span>  response = await fetch(url, method: method, cf: {cacheTtl: ttl} if ttl)</span></span>
+<span class="line"><span>  if json # Return a tuple of [err, json].</span></span>
+<span class="line"><span>    if err = coerce(response.status)</span></span>
+<span class="line"><span>      [err, null]</span></span>
+<span class="line"><span>    else</span></span>
+<span class="line"><span>      [null, await response.json()]</span></span>
+<span class="line"><span>  else if base64 # Return base64 string or null.</span></span>
+<span class="line"><span>    if response.ok</span></span>
+<span class="line"><span>      Buffer.from(await response.arrayBuffer(), "binary").toString("base64")</span></span>
+<span class="line"><span>  else # If no parser is specified, just return the raw response.</span></span>
+<span class="line"><span>    response</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export get = (url, options = {}) -&gt;</span></span>
+<span class="line"><span>  request(url, Object.assign(options, {method: "GET"}))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Respond to a client with a http response.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {object} data - Data to send back in the response.</span></span>
+<span class="line"><span># @param {integer} code - Http status code.</span></span>
+<span class="line"><span># @param {string} type - Http content type.</span></span>
+<span class="line"><span># @param {boolean} json - Whether to respond in json.</span></span>
+<span class="line"><span># @param {boolean} text - Whether to respond in plain text.</span></span>
+<span class="line"><span># @returns {response} - Raw response object.</span></span>
+<span class="line"><span>export respond = (data, {code, type, json, text} = {}) -&gt;</span></span>
+<span class="line"><span>  code ?= 200</span></span>
+<span class="line"><span>  if json</span></span>
+<span class="line"><span>    type = "application/json"</span></span>
+<span class="line"><span>    # "Pretty-print" our JSON response with 2 spaces.</span></span>
+<span class="line"><span>    data = JSON.stringify(data, undefined, 2)</span></span>
+<span class="line"><span>  else if text</span></span>
+<span class="line"><span>    type = "text/plain"</span></span>
+<span class="line"><span>    data = String(data)</span></span>
+<span class="line"><span>  else</span></span>
+<span class="line"><span>    type ?= "application/octet-stream"</span></span>
+<span class="line"><span>  new Response(data, {status: code, headers: {"Content-Type": type}})</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export error = (reason = null, {code, type} = {}) -&gt;</span></span>
+<span class="line"><span>  code ?= 500</span></span>
+<span class="line"><span>  type ?= "Internal Error"</span></span>
+<span class="line"><span>  # An example would be: "Internal Error - 500 (this is the reason)"</span></span>
+<span class="line"><span>  respond("#{code} - #{type}" + (if reason then " (#{reason})" else ""), code: code, text: true)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export badRequest = (reason = null) -&gt;</span></span>
+<span class="line"><span>  error(reason, code: 400, type: "Bad Request")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export notFound = (reason = null) -&gt;</span></span>
+<span class="line"><span>  error(reason, code: 404, type: "Not Found")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>export tooManyRequests = (reason = null) -&gt;</span></span>
+<span class="line"><span>  error(reason, code: 429, type: "Too Many Requests")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Convert common http error codes into error responses.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {integer} code - Http status code.</span></span>
+<span class="line"><span># @returns {response|null} - An error response or null if a 200 code.</span></span>
+<span class="line"><span>export coerce = (code) -&gt;</span></span>
+<span class="line"><span>  switch code</span></span>
+<span class="line"><span>    when 200 then null</span></span>
+<span class="line"><span>    # Some Minecraft APIs use 204 as a stand-in for a 404.</span></span>
+<span class="line"><span>    when 204 then notFound()</span></span>
+<span class="line"><span>    when 400 then invalidRequest()</span></span>
+<span class="line"><span>    # Theoretically this should never happen, but sometimes does.</span></span>
+<span class="line"><span>    when 429 then tooManyRequests()</span></span>
+<span class="line"><span>    else error("Unknown Response", code: code)</span></span></code></pre>
+</div>
+<p>The <code>cf</code> key can be used to control various Cloudflare features, including how sub-requests are cached. See the <a href="https://developers.cloudflare.com/workers/reference/cloudflare-features" target="_blank" rel="noopener noreferrer">Workers documentation</a> for a more in-depth explanation.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>cf:</span></span>
+<span class="line"><span>  cacheTtl: 120 # Cache for 2 mins.</span></span>
+<span class="line"><span>  # Pro+ only.</span></span>
+<span class="line"><span>  polish: "lossless" # Compress image data.</span></span>
+<span class="line"><span>  # Enterprise only.</span></span>
+<span class="line"><span>  cacheTtlByStatus:</span></span>
+<span class="line"><span>    "200-299": 60 # Cache for 60 secs.</span></span>
+<span class="line"><span>    "300-399": 0  # Cache but expire instantly.</span></span>
+<span class="line"><span>    "400-404": 10 # Cache for 10 secs.</span></span>
+<span class="line"><span>    "405-599": -1 # Do not cache at all.</span></span>
+<span class="line"><span>  cacheKey: url # Cache lookup key, defaults to the request URL.</span></span></code></pre>
+</div>
+<h4><code>mojang.coffee</code></h4>
+<p>Now that we have code to send and parse requests, we can create an interface to retrieve data from the upstream APIs. It's good to note that there should be no mutation logic in this file, it's purpose is just to get the old APIs, not change them.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>import { get } from "./http"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Get the UUID of a username at the current time.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {string} name - Minecraft username.</span></span>
+<span class="line"><span># @throws {204} - When no user exists with that name.</span></span>
+<span class="line"><span># @returns {[err, json]} - An error or username and UUID response.</span></span>
+<span class="line"><span>export usernameToUuid = (name) -&gt;</span></span>
+<span class="line"><span>  get("https://api.mojang.com/users/profiles/minecraft/#{name}", json: true)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Get the history of usernames for the given UUID.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {string} id - The UUID to check the username history.</span></span>
+<span class="line"><span># @returns {[err, json]} - An error or the username history.</span></span>
+<span class="line"><span>export uuidToUsernameHistory = (id) -&gt;</span></span>
+<span class="line"><span>  get("https://api.mojang.com/user/profiles/#{id}/names", json: true)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Get the session profile of the UUID.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {string} id - UUID to get the session profile.</span></span>
+<span class="line"><span># @returns {[err, json]} - An error or the session profile.</span></span>
+<span class="line"><span>export uuidToProfile = (id) -&gt;</span></span>
+<span class="line"><span>  get("https://sessionserver.mojang.com/session/minecraft/profile/#{id}", json: true)</span></span></code></pre>
+</div>
+<h4><code>api.coffee</code></h4>
+<p>This is where the bulk of our API logic will reside. I've broken up the process into 3 interdependent tasks that are executed in order:</p>
+<ol>
+	<li>Given a username, fetch its UUID.</li>
+	<li>Given a UUID, fetch the user's profile.</li>
+	<li>Given a user's profile, decode and fetch the textures.</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>import { get, respond, error, notFound, badRequest } from "./http"</span></span>
+<span class="line"><span>import { usernameToUuid, uuidToProfile, uuidToUsernameHistory } from "./mojang"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Get the uuid of a user given their username.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {string} name - Minecraft username, must be alphanumeric 16 characters.</span></span>
+<span class="line"><span># @returns {[err, response]} - An error or the dashed uuid of the user.</span></span>
+<span class="line"><span>export uuid = (name) -&gt;</span></span>
+<span class="line"><span>  if name.asUsername() # Fits regex of a Minecraft username.</span></span>
+<span class="line"><span>    [err, res] = await usernameToUuid(name)</span></span>
+<span class="line"><span>    if id = res?.id?.asUuid(dashed: true)</span></span>
+<span class="line"><span>      [null, respond(id, text: true)]</span></span>
+<span class="line"><span>    else # Response was received, but contains no UUID.</span></span>
+<span class="line"><span>      [err || notFound(), null]</span></span>
+<span class="line"><span>  else</span></span>
+<span class="line"><span>    [badRequest("malformed username '#{name}'"), null]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Get the full profile of a user given their uuid or username.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {string} id - Minecraft username or uuid.</span></span>
+<span class="line"><span># @returns {[err, json]} - An error or user profile.</span></span>
+<span class="line"><span>export user = (id) -&gt;</span></span>
+<span class="line"><span>  if id.asUsername()</span></span>
+<span class="line"><span>    [err, res] = await uuid(id)</span></span>
+<span class="line"><span>    if err # Could not find a player with that username.</span></span>
+<span class="line"><span>      [err, null]</span></span>
+<span class="line"><span>    else # Recurse with the new UUID.</span></span>
+<span class="line"><span>      await user(id = await res.text())</span></span>
+<span class="line"><span>  else if id.asUuid()</span></span>
+<span class="line"><span>    # Fetch the profile and usernames in parallel.</span></span>
+<span class="line"><span>    [[err0, profile], [err1, history]] = await Promise.all([</span></span>
+<span class="line"><span>      uuidToProfile(id = id.asUuid())</span></span>
+<span class="line"><span>      uuidToUsernameHistory(id)])</span></span>
+<span class="line"><span>    # Extract the textures from the profile.</span></span>
+<span class="line"><span>    # Since this operation is complex, off-load</span></span>
+<span class="line"><span>    # the logic into its own method.</span></span>
+<span class="line"><span>    [err2, texture] = await textures(profile)</span></span>
+<span class="line"><span>    if err = err0 || err1 || err2</span></span>
+<span class="line"><span>      [err, null] # One of the last three operations failed.</span></span>
+<span class="line"><span>    else</span></span>
+<span class="line"><span>      # Everything is good, now just put the data together.</span></span>
+<span class="line"><span>      [null, respond(</span></span>
+<span class="line"><span>        uuid: profile.id.asUuid(dashed: true)</span></span>
+<span class="line"><span>        username: profile.name</span></span>
+<span class="line"><span>        username_history: history.map((item) -&gt;</span></span>
+<span class="line"><span>          username: item.name</span></span>
+<span class="line"><span>          changed_at: item.changedToAt?.asDate())</span></span>
+<span class="line"><span>        textures: texture</span></span>
+<span class="line"><span>        cached_at: new Date(),</span></span>
+<span class="line"><span>      json: true)]</span></span>
+<span class="line"><span>  else</span></span>
+<span class="line"><span>    [badRequest("malformed uuid '#{id}'"), null]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Parse and decode base64 textures from the user profile.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {json} profile - User profile from #uuidToProfile(id).</span></span>
+<span class="line"><span># @returns {json} - Enhanced user profile with more convient texture fields.</span></span>
+<span class="line"><span>textures = (profile) -&gt;</span></span>
+<span class="line"><span>  unless profile # Will occur if the profile api failed.</span></span>
+<span class="line"><span>    return [error("no user profile found"), null]</span></span>
+<span class="line"><span>  properties = profile.properties</span></span>
+<span class="line"><span>  if properties.length == 1</span></span>
+<span class="line"><span>    texture = properties[0]</span></span>
+<span class="line"><span>  else</span></span>
+<span class="line"><span>    texture = properties.filter((pair) -&gt; pair.name == "textures" &amp;&amp; pair.value?)[0]</span></span>
+<span class="line"><span>  # If a embedded texture does not exist or is empty,</span></span>
+<span class="line"><span>  # that user does not have a custom skin.</span></span>
+<span class="line"><span>  if !texture || (texture = JSON.parse(atob(texture.value)).textures).isEmpty()</span></span>
+<span class="line"><span>    skinUrl = "http://assets.mojang.com/SkinTemplates/steve.png"</span></span>
+<span class="line"><span>  # Fetch the skin and cape data in parallel, and cache for a day.</span></span>
+<span class="line"><span>  [skin, cape] = await Promise.all([</span></span>
+<span class="line"><span>    get(skinUrl ?= texture.SKIN?.url, base64: true, ttl: 86400)</span></span>
+<span class="line"><span>    get(capeUrl = texture.CAPE?.url, base64: true, ttl: 86400)])</span></span>
+<span class="line"><span>  unless skin</span></span>
+<span class="line"><span>    [error("unable to fetch skin '#{skinUrl}'"), null]</span></span>
+<span class="line"><span>  else</span></span>
+<span class="line"><span>    texture =</span></span>
+<span class="line"><span>      slim: texture.SKIN?.metadata?.model == "slim"</span></span>
+<span class="line"><span>      skin: {url: skinUrl, data: skin}</span></span>
+<span class="line"><span>      cape: {url: capeUrl, data: cape} if capeUrl</span></span>
+<span class="line"><span>    [null, texture]</span></span></code></pre>
+</div>
+<h4><code>index.coffee</code></h4>
+<p>Now, we parse the request's route and respond with the corresponding API.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>import "./util"</span></span>
+<span class="line"><span>import { notFound } from "./http"</span></span>
+<span class="line"><span>import { uuid, user } from "./api"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>addEventListener("fetch", (event) -&gt;</span></span>
+<span class="line"><span>  event.respondWith(route(event.request)))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>route = (request) -&gt;</span></span>
+<span class="line"><span>  [base, version, method, id] = request.url.split("/")[3..6]</span></span>
+<span class="line"><span>  if base == "mojang" &amp;&amp; id?</span></span>
+<span class="line"><span>    if version == "v1"</span></span>
+<span class="line"><span>      v1(method, id)</span></span>
+<span class="line"><span>    else</span></span>
+<span class="line"><span>      notFound("unknown api version '#{version}'")</span></span>
+<span class="line"><span>  else</span></span>
+<span class="line"><span>    notFound("unknown route")</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>v1 = (method, id) -&gt;</span></span>
+<span class="line"><span>  if method == "uuid"</span></span>
+<span class="line"><span>    [err, res] = await uuid(id)</span></span>
+<span class="line"><span>  else if method == "user"</span></span>
+<span class="line"><span>    [err, res] = await user(id)</span></span>
+<span class="line"><span>  err || res || notFound("unknown v1 route '#{method}'")</span></span></code></pre>
+</div>
+<h4><code>util.coffee</code></h4>
+<p>Finally, we'll add some prototype extensions that we used along the way.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Insert a string at a given index.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {integer} i - Index to insert the string at.</span></span>
+<span class="line"><span># @param {string} str - String to insert.</span></span>
+<span class="line"><span>String::insert = (i, str) -&gt;</span></span>
+<span class="line"><span>  this.slice(0, i) + str + this.slice(i)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Ensure that the string is a valid Uuid.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># If dashed is enabled, it is possible the input</span></span>
+<span class="line"><span># string is not the same as the output string.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @param {boolean} dashed - Whether to return a dashed uuid.</span></span>
+<span class="line"><span># @returns {string|null} - A uuid or null.</span></span>
+<span class="line"><span>String::asUuid = ({dashed} = {}) -&gt;</span></span>
+<span class="line"><span>  if match = uuidPattern.exec(this)</span></span>
+<span class="line"><span>    uuid = match[1..].join("")</span></span>
+<span class="line"><span>    if dashed</span></span>
+<span class="line"><span>      uuid.insert(8, "-")</span></span>
+<span class="line"><span>          .insert(12+1, "-")</span></span>
+<span class="line"><span>          .insert(16+2, "-")</span></span>
+<span class="line"><span>          .insert(20+3, "-")</span></span>
+<span class="line"><span>    else</span></span>
+<span class="line"><span>      uuid</span></span>
+<span class="line"><span>uuidPattern = /^([0-9a-f]{8})(?:-|)([0-9a-f]{4})(?:-|)(4[0-9a-f]{3})(?:-|)([0-9a-f]{4})(?:-|)([0-9a-f]{12})$/i</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Ensure that the string is a valid Minecraft username.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @returns {string|null} - Minecraft username or null.</span></span>
+<span class="line"><span>String::asUsername = -&gt;</span></span>
+<span class="line"><span>  if usernamePattern.test(this) then this else false</span></span>
+<span class="line"><span>usernamePattern = /^[0-9A-Za-z_]{1,16}$/i</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Ensure that the unix number is a Date.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @returns {date} - The number as a floored date.</span></span>
+<span class="line"><span>Number::asDate = -&gt;</span></span>
+<span class="line"><span>  new Date(Math.floor(this))</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Determine if the object is empty.</span></span>
+<span class="line"><span>#</span></span>
+<span class="line"><span># @returns {boolean} - Whether the object is empty.</span></span>
+<span class="line"><span>Object::isEmpty = -&gt;</span></span>
+<span class="line"><span>  Object.keys(this).length == 0</span></span></code></pre>
+</div>
+<h3>Analyzing a Workers Deployment</h3>
+<p>I've had this code deployed and tested by real <em>Minecraft</em> users for the past few weeks. As a developer that has global web traffic, it's pivotal that players can quickly get access to my services. The essential advantage of Workers is that I don't need to deploy several replicas of my code to different cloud regions, it's everywhere! That means players from any part of the world get the same great web experience with minimal latency.</p>
+<p>As of today, the API is processing over <strong>400k requests per day</strong> from users all over the world! Cloudflare caches responses in the closest point of presence to the client, so I don't need to setup a database and developers don't need to worry about rate-limiting.</p>
+<p>Since each request to the API generates 4 to 5 additional sub-requests, it handles approximately <strong>1.8 million fetches per day</strong> with a 88% cache hit rate.</p>
+<h3>Wrapping Up</h3>
+<p>Cloudflare Workers have enabled me to solve complex technical problems without worrying about host infrastructure or cloud regions. It's simple, easy to deploy, and works blazing fast all around the world. And for <strong>50 cents for every 1 million requests</strong>, it's incomparable to the other serverless solutions on the market.</p>
+<p>If you're not already convinced to start using Workers, here's the deployment history of my API. I went from <strong>0 to 5 million requests</strong> with no scaling, no resizing, no servers, no clusters, and no containers. Just code.</p>
+<p>If you're interested in looking at all of the code used in the post, you can find it here:<a href="https://github.com/Electroid/mojang-api" target="_blank" rel="noopener noreferrer">https://github.com/Electroid/mojang-api</a></p>
+<p>And if you're a <em>Minecraft</em> developer, my API is open for you to use for free:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.ashcon.app/mojang/v1/uuid/ElectroidFilms</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.ashcon.app/mojang/v1/user/ElectroidFilms</span></span></code></pre>
+</div>
+<p>You can also use this <a href="https://github.com/Electroid/mojang-api/tree/master/avatar" target="_blank" rel="noopener noreferrer">extra goodie</a> that will crop just the face from a player texture:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-032f62-99ffe4"> https://api.ashcon.app/mojang/v1/avatar/ElectroidFilms</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> avatar.png</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">open</span><span class="sk-032f62-99ffe4"> avatar.png</span></span></code></pre>
 </div>

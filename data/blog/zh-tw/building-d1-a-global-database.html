@@ -1,0 +1,236 @@
+<p>建置 Worker 應用程式的開發人員專注於他們正在建立的內容，而不是所需的基礎架構，並受益於 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">Cloudflare 網路</a>的全球覆蓋范圍。許多應用程式需要持久性資料，從個人專案到業務關鍵型工作負載。Workers 提供適合開發人員需求的各種<a href="https://developers.cloudflare.com/workers/platform/storage-options" target="_blank" rel="noopener noreferrer">資料庫和儲存選項</a>，例如鍵值儲存體和物件儲存體。，</p>
+<p>關聯式資料庫是當今許多應用程式的支柱。Cloudflare 的關聯式資料庫補充產品 <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1</a> 現已正式上市。從 2022 年底推出 Alpha 版本，到 2024 年 4 月正式上市，這一段旅程的重點是讓開發人員能夠熟練使用關聯式資料和 SQL 來建立生產工作負載。</p>
+<h3>D1 是什麼？</h3>
+<p>D1 是 Cloudflare 內建的無伺服器關聯式資料庫。對於 Worker 應用程式，D1 利用 SQLite 的 SQL 方言和開發人員工具整合（包括 <a href="https://github.com/drizzle-team/drizzle-orm/blob/main/examples/cloudflare-d1/README.md" target="_blank" rel="noopener noreferrer">Drizzle ORM</a> 之類的物件關聯式對應程式 (ORM)，提供了 SQL 的表現力。D1 可透過 <a href="https://developers.cloudflare.com/d1/build-with-d1/d1-client-api" target="_blank" rel="noopener noreferrer">Workers</a> 或 <a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database" target="_blank" rel="noopener noreferrer">HTTP API</a> 存取。</p>
+<p>無伺服器意味著無需佈建、透過 <a href="https://developers.cloudflare.com/d1/reference/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a> 進行預設災難復原以及<a href="https://developers.cloudflare.com/d1/platform/pricing" target="_blank" rel="noopener noreferrer">基於使用情況的定價</a>。D1 包含慷慨的免費方案，允許開發人員試用 D1，然後再升級到生產階段。</p>
+<h3>如何讓資料全球化？</h3>
+<p>D1 GA 版專注於可靠性和開發人員體驗。現在，我們計劃擴展 D1，以更好地支援全球分散式應用程式。</p>
+<p>在 Workers 模型中，傳入請求會在最近的資料中心中叫用無伺服器執行。Worker 應用程式可以根據使用者請求在全球擴展。然而，應用程式資料仍然儲存在集中式資料庫中，並且全球使用者流量必須考慮到與資料位置的存取往返。例如，現在的 D1 資料庫駐留在單一位置。</p>
+<p>Workers 支援 <a href="https://developers.cloudflare.com/workers/configuration/smart-placement" target="_blank" rel="noopener noreferrer">Smart Placement</a> 來考慮經常存取的資料位置。Smart Placement 叫用更接近集中式後端服務（例如資料庫）的 Worker，以減少延遲並提高應用程式效能。我們已經解決了全球化應用程式中的 Workers 放置問題，但還需要解決資料放置問題。</p>
+<p>那麼問題來了，D1 作為 Cloudflare 內建的資料庫解決方案，如何更好的支援全球化應用程式的資料放置呢？答案是非同步讀取複製。</p>
+<h3>什麼是非同步讀取複製？</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="234" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=715&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=640&amp;h=209&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=715&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=750&amp;h=245&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=828&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=1080&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=1280&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=1430&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2296 Embedded Image - RJ93wm" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ECNBGAAPA469D6785E0T.png&amp;w=1800&amp;h=590&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="590" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="234" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>在基於伺服器的資料庫管理系統（例如 Postgres、MySQL、SQL Server 或 Oracle）中，<strong>讀取複本</strong>是一個單獨的資料庫伺服器，可作為主要資料庫伺服器的接近最新唯讀複本。管理員透過從主要伺服器的快照啟動新伺服器，並將主要伺服器設定為將更新非同步傳送到複本伺服器，來建立讀取複本。由於更新是非同步的，讀取複本可能落後於主要伺服器的當前狀態。主要伺服器和複本伺服器之間的差異稱為<strong>複本滯後</strong>。可以有多個讀取複本。</p>
+<p>非同步讀取複製是一種經過時間驗證的提高資料庫效能的解決方案：</p>
+<ul>
+	<li>可以透過在多個複本之間分配負載來提高輸送量。</li>
+	<li>當複本靠近進行查詢的使用者時，可以減少查詢延遲。</li>
+</ul>
+<p>請注意，某些資料庫系統還提供同步複製。在同步複製系統中，寫入必須等到所有複本都確認寫入為止。同步複製系統的執行速度只能與最慢的複本一樣快，並且只要其中一個複本發生故障，就會陷入停滯。如果我們試圖在全球範圍內提高效能，我們希望盡可能避免同步複製！</p>
+<h3>一致性模型和讀取複本</h3>
+<p>大多數資料庫系統提供<a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">讀取已提交</a>、<a href="https://jepsen.io/consistency/models/snapshot-isolation" target="_blank" rel="noopener noreferrer">快照隔離</a>或<a href="https://jepsen.io/consistency/models/serializable" target="_blank" rel="noopener noreferrer">可串聯化</a>一致性模型，具體取決於其設定。例如，Postgres <a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">預設為讀取已提交</a>，但可以設定為使用更強的模型。SQLite 提供 <a href="https://www.sqlite.org/draft/isolation.html" target="_blank" rel="noopener noreferrer">WAL 模式的快照隔離</a>。快照隔離或可串聯化等更強的模式更容易進行程式設計，因為它們限制了允許的系統並行場景以及程式設計師需要擔心的並行競爭條件類型。</p>
+<p>讀取複本是獨立更新的，因此每個複本的內容在任何時刻都可能不同。如果所有查詢都傳送到同一台伺服器，無論是主要伺服器還是讀取複本，則不管底層資料庫提供什麼<a href="https://jepsen.io/consistency" target="_blank" rel="noopener noreferrer">一致性模型</a>，結果都應該保持一致。如果您使用讀取複本，結果可能並不是最新。</p>
+<p>在具有讀取複本的伺服器型資料庫中，對一個工作階段中的所有查詢始終使用相同伺服器非常重要。如果您在同一工作階段中切換不同的讀取複本，則會損害您的應用程式提供的一致性模型，這可能會違反您對資料庫行為方式的假設，並導致您的應用程式返回不正確的結果！</p>
+<p><strong>範例</strong>例如，有兩個複本 A 和 B，複本 A 落後主要資料庫 100 毫秒，複本 B 落後主要資料庫 2 秒。假設使用者希望：</p>
+<ol>
+	<li>執行查詢 11a. 根據查詢 1 結果進行一些計算</li>
+	<li>根據 (1a) 中的計算結果執行查詢 2</li>
+</ol>
+<p>在時間 t=10s 時，查詢 1 前往複本 A 並傳回結果。查詢 1 查看主要資料庫在 t=9.9s 時的情況。假設計算需要 500 毫秒，因此在 t=10.5s 時，查詢 2 轉到複本 B。請記住，複本 B 落後主要資料庫 2 秒，因此在 t=10.5 秒時，查詢 2 會看到資料庫 t =8.5s 時的樣子。就該應用程式而言，查詢 2 的結果看起來資料庫已經時間倒退了！</p>
+<p>正式地說，這是<a href="https://jepsen.io/consistency/models/read-committed" target="_blank" rel="noopener noreferrer">讀取已提交</a>一致性，因為您的查詢只會看到已提交的資料，但沒有其他保證——甚至您不能讀取自己的寫入。雖然讀取已提交是一種有效的一致性模型，但很難推斷讀取已提交模型允許的所有可能的競爭條件，這導致難以正確編寫應用程式。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="304" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=715&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=640&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=715&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=750&amp;h=319&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=828&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=1080&amp;h=459&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=1280&amp;h=544&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=1430&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2296 Embedded Image - XdtLWK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459VK9CP6M5QZP23NJXY2K.png&amp;w=1200&amp;h=510&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="510" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="304" class="pt-portable-image-media"></div>
+</figure>
+<h3>D1 的一致性模型與讀取複本</h3>
+<p>預設情況下，D1 提供 SQLite 提供的<a href="https://jepsen.io/consistency/models/snapshot-isolation" target="_blank" rel="noopener noreferrer">快照隔離</a>。</p>
+<p>快照隔離是一種熟悉的一致性模型，大多數開發人員都認為它易於使用。我們確保 D1 資料庫最多只有一個作用中複本，並將所有 HTTP 請求路由到該單一資料庫，從而在 D1 中實作這種一致性模型。雖然確保 D1 資料庫最多有一個作用中複本是一個棘手的分散式系統問題，但我們透過使用 <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> 建立 D1 解決了這個問題。Durable Objects 保證全球唯一性，因此一旦我們依賴 Durable Objects，路由 HTTP 請求就很容易：只需將它們傳送到 D1 Durable Object 即可。</p>
+<p>如果您有資料庫的多個作用中複本，則此技巧不起作用，因為沒有 100% 可靠的方法來查看一般傳入 HTTP 請求並將其 100% 路由到相同複本。遺憾的是，正如我們在上一節的範例中看到的，如果我們不能始終將相關請求路由到同一個複本，那麼我們可以提供的最佳一致性模型就是讀取已提交。</p>
+<p>鑑於不可能一致地路由到特定複本，另一種方法是將請求路由到任何複本，並確保所選複本根據對程式設計師「有意義」的一致性模型回應請求。如果我們願意在請求中包含 <a href="https://en.wikipedia.org/wiki/Lamport_timestamp" target="_blank" rel="noopener noreferrer">Lamport 時間戳記</a>，我們可以使用任何複本來實現<a href="https://jepsen.io/consistency/models/sequential" target="_blank" rel="noopener noreferrer">順序一致性</a>。順序一致性模型具有重要的屬性，例如「<a href="https://jepsen.io/consistency/models/read-your-writes" target="_blank" rel="noopener noreferrer">讀取我自己的寫入</a>」和「<a href="https://jepsen.io/consistency/models/writes-follow-reads" target="_blank" rel="noopener noreferrer">寫入跟隨讀取</a>」以及寫入的總順序。寫入的總順序意味著每個複本都會看到交易以相同的順序提交，這正是我們希望交易系統中發生的行為。順序一致性伴隨著一個警告，即系統中的任何單一實體都可能隨意過時，但這個警告對我們來說是一個功能，因為它允許我們在設計 API 時考慮複本滯後。</p>
+<p>這個想法是，如果 D1 針對每個資料庫查詢為應用程式提供一個 Lamport 時間戳記，並且這些應用程式告訴 D1 它們看到的最後一個 Lamport 時間戳記，我們可以讓每個複本確定如何根據順序一致性模型使查詢工作。</p>
+<p>實現複本順序一致性的一種強大但簡單的方法是：</p>
+<ul>
+	<li>將 Lamport 時間戳記與對資料庫的每個請求相關聯。單調遞增的提交權杖可以很好地實現這一點。</li>
+	<li>將所有寫入查詢傳送到主要資料庫以確保寫入的總順序。</li>
+	<li>將讀取查詢傳送到任何複本，但讓複本延遲為查詢提供服務，直到複本從主要資料庫接收到晚於查詢中的 Lamport 時間戳記的更新。</li>
+</ul>
+<p>這種實作的優點在於，在讀取繁重的工作負載始終前往同一個複本的常見情況下速度很快，而且即使請求路由到不同的複本也能正常工作。</p>
+<h3><strong>搶先預覽</strong>：透過 Sessions 將讀取複製引入 D1</h3>
+<p>為了將讀取複製引入 D1，我們將使用新概念擴展 D1 API：<strong>Sessions</strong>。一個 Session 封裝了代表應用程式的一個邏輯工作階段的所有查詢。例如，Session 可能代表來自特定 Web 瀏覽器的所有請求或來自行動 App 的所有請求。如果您使用 Sessions，您的查詢將使用對您的請求最有意義的 D1 資料庫複本，可能是主要資料庫，也可能是附近的複本。D1 的 Sessions 實作將確保 Session 中所有查詢的順序一致性。</p>
+<p>由於 Sessions API 改變了 D1 的一致性模型，開發人員必須選擇使用新的 API。現有的 D1 API 方法保持不變，仍將具有與先前相同的快照隔離一致性模型。但是，只有使用新的 Sessions API 進行的查詢才會使用複本。</p>
+<p>以下是 D1 Sessions API 的範例：</p>
+<p>D1 的 Sessions 實作利用了提交權杖。提交權杖標識對資料庫的特定已提交查詢。在工作階段中，D1 將使用提交權杖來確保查詢是按順序排序的。在上面的範例中，D1 工作階段確保新訂單的「SELECT COUNT(*)」查詢發生在「INSERT」之後，即使我們在等待之間切換複本也是如此。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // When we create a D1 Session, we can continue where we left off</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // from a previous Session if we have that Session's last commit</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // token.  This Worker will return the commit token back to the</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // browser, so that it can send it back on the next request to</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // continue the Session.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    //</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // If we don't have a commit token, make the first query in this</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // session an "unconditional" query that will use the state of the</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // database at whatever replica we land on.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> token</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'x-d1-token'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">??</span><span class="sk-032f62-99ffe4"> 'first-unconditional'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> session</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">withSession</span><span class="sk-24292e-fff">(token)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Use this Session for all our Workers' routes.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(request, session)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (response.status </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-ffc799"> 200</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Set the token so we can continue the Session in another request.</span></span>
+<span class="line"><span class="sk-24292e-fff">      response.headers.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'x-d1-token'</span><span class="sk-24292e-fff">, session.latestCommitToken)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">session</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> D1DatabaseSession</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> '/api/orders/list'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // This statement is a read query, so it will execute on any</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // replica that has a commit equal or later than `token` we used</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // to create the Session.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">results</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'SELECT * FROM Orders'</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(results)</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> '/api/orders/add'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> order</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Order</span><span class="sk-24292e-fff">&gt;()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // This statement is a write query, so D1 will send the query to</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // the primary, which always has the latest commit token.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> session</span></span>
+<span class="line"><span class="sk-24292e-fff">      .</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'INSERT INTO Orders VALUES (?, ?, ?)'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">      .</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(order.orderName, order.customer, order.value)</span></span>
+<span class="line"><span class="sk-24292e-fff">      .</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // In order for the application to be correct, this SELECT</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // statement must see the results of the INSERT statement above.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // The Session API keeps track of commit tokens for queries</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // within the session and will ensure that we won't execute this</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // query until whatever replica we're using has seen the results</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // of the INSERT.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">results</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session</span></span>
+<span class="line"><span class="sk-24292e-fff">      .</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'SELECT COUNT(*) FROM Orders'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">      .</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(results)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Not found'</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>關於如何在 Workers fetch 處理常式中啟動工作階段，有多種選項。 &nbsp;<code>db.withSession(&lt;condition&gt;)</code> 接受下列引數：</p>
+<p><strong><code>condition</code> 引數</strong></p>
+<div id="html-block-k4o" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><b><code>condition</code> argument</b></span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><b>Behavior</b></span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><code>&lt;commit_token&gt;</code></span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">(1) starts Session as of given commit token</span></p>
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><code>first-unconditional</code></span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">(1) if the first query is read, read whatever current replica has and use the commit token of that read as the basis for subsequent queries.&nbsp; If the first query is a write, forward the query to the primary and use the commit token of the write as the basis for subsequent queries.</span></p>
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><code>first-primary</code></span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">(1) runs first query, read or write, against the primary</span></p>
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">(2) subsequent queries have sequential consistency</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><code>null</code> or missing argument</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">treated like <code>first-unconditional</code>&nbsp;</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><strong>行為</strong></p>
+<p><code>&lt;commit_token&gt;</code></p>
+<p>(1) 從給定的提交權杖開始工作階段</p>
+<p>(2) 後續查詢具有順序一致性</p>
+<p><code>first-unconditional</code></p>
+<p>(1) 如果第一個查詢是讀取，則讀取目前複本的所有內容，並使用該讀取的提交權杖作為後續查詢的基礎。&nbsp; 如果第一個查詢是寫入，則將查詢轉送到主要伺服器，並使用寫入的提交權杖作為後續查詢的基礎。</p>
+<p>(2) 後續查詢具有順序一致性</p>
+<p><code>first-primary</code></p>
+<p>(1) 針對主要伺服器執行第一個查詢（讀取或寫入）</p>
+<p>(2) 後續查詢具有順序一致性</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> northwind-traders</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># omit --remote to run on a local database for development</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> northwind-traders</span><span class="sk-005cc5-99ffe4"> --remote</span><span class="sk-005cc5-99ffe4"> --file=./schema.sql</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> northwind-traders</span><span class="sk-005cc5-99ffe4"> --remote</span><span class="sk-005cc5-99ffe4"> --file=./data.sql</span></span></code></pre>
+</div>
+<p><code>null</code> 或缺少引數</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># database schema &amp; data</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> northwind-traders</span><span class="sk-005cc5-99ffe4"> --remote</span><span class="sk-005cc5-99ffe4"> --output=./database.sql</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># single table schema &amp; data</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-032f62-99ffe4"> northwind-traders</span><span class="sk-005cc5-99ffe4"> --remote</span><span class="sk-005cc5-99ffe4"> --table=</span><span class="sk-032f62-99ffe4">'Employee'</span><span class="sk-005cc5-99ffe4"> --output=./table.sql</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># database schema only</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> export</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">database_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> --remote</span><span class="sk-005cc5-99ffe4"> --output=./database-schema.sql</span><span class="sk-005cc5-99ffe4"> --no-data=true</span></span></code></pre>
+</div>
+<p>視為 <code>first-unconditional</code>&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># To find top 10 queries by average execution time:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> insights</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">database_nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-005cc5-99ffe4"> --sort-type=avg</span><span class="sk-005cc5-99ffe4"> --sort-by=time</span><span class="sk-005cc5-99ffe4"> --count=10</span></span></code></pre>
+</div>
+<p>透過雙向傳遞工作階段最後一個查詢的提交權杖並使用它來啟動新工作階段，可以使工作階段跨越多個請求。這使得單一使用者代理程式（例如 Web App 或行動 App）能夠確保使用者看到的所有查詢都順序一致。</p>
+<p>D1 的讀取複製將是內建的，不會產生額外的使用或儲存成本，並且不需要複本設定。Cloudflare 將<a href="https://www.cloudflare.com/application-services/solutions/app-performance-monitoring" target="_blank" rel="noopener noreferrer">監控</a>應用程式的 D1 流量並自動建立資料庫複本，以將使用者流量分散到更靠近使用者的位置的多個伺服器。與我們的無伺服器模型一樣，D1 開發人員不必擔心複本設定和管理，而應專注於設計應用程式以進行複製和資料一致性權衡。</p>
+<p>我們正在積極處理全球讀取複製工作並實現上述提議（在我們的開發人員 Discord 上的 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">#d1 頻道</a>中分享意見反應）。而在目前，D1 GA 版中已經包含了一些令人興奮的新功能。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="283" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=640&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=750&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=828&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1080&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1280&amp;h=507&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1430&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2296 Embedded Image - awnaGg" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1800&amp;h=713&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="713" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="283" class="pt-portable-image-media"></div>
+</figure>
+<h3>查看 D1 GA 版</h3>
+<p>自 2023 年 10 月 D1 公開測試以來，我們一直注重關鍵服務所需的 D1 可靠性、可擴展性和開發人員體驗。我們投資了多項新功能，使開發人員能夠使用 D1 更快地建立和偵錯應用程式。</p>
+<p><strong>使用更大的資料庫進行更大的構建</strong>我們聽取了開發人員對更大資料庫的需求。D1 現在支援高達 10GB 的資料庫，其中 Workers Paid 方案支援 50K 資料庫。藉助 D1 的水平擴展，應用程式可以對「每個企業實體一個資料庫」用例進行建模。自 Beta 版以來，新的 D1 資料庫在給定時間內處理的請求比 D1 Alpha 版資料庫多 40 倍。</p>
+<p><strong>匯入和匯出大量資料</strong>開發人員會出於多種原因匯入和匯出資料：</p>
+<ul>
+	<li>不同資料庫系統之間的資料庫遷移測試</li>
+	<li>用於本地開發或測試的資料複本</li>
+	<li>手動備份以滿足合規性等自訂要求</li>
+</ul>
+<p>您之前可以針對 D1 執行 SQL 檔案，但我們正在改進 <code>wrangler d1 execute –file=&lt;filename&gt;</code> 以確保大型匯入是原子操作，永遠不會讓您的資料庫處於不完全狀態。 <code>wrangler d1 execute</code> 在也預設為本機優先，以保護您的遠端生產資料庫。</p>
+<p>若要匯入我們的 <a href="https://github.com/cloudflare/d1-northwind/tree/main" target="_blank" rel="noopener noreferrer">Northwind Traders</a> 示範資料庫，您可以下載<a href="https://github.com/cloudflare/d1-northwind/blob/main/db/schema.sql" target="_blank" rel="noopener noreferrer">結構描述</a>和<a href="https://github.com/cloudflare/d1-northwind/blob/main/db/data.sql" target="_blank" rel="noopener noreferrer">資料</a>並執行 SQL 檔案。</p>
+<p>可以使用以下命令將 D1 資料庫資料和結構描述、僅結構描述或僅資料匯出到 SQL 檔案：</p>
+<p><strong>偵錯查詢效能</strong>瞭解 SQL 查詢效能和偵錯慢速查詢是生產工作負載的關鍵步驟。我們加入了實驗性的 <a href="https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights" target="_blank" rel="noopener noreferrer"><code>wrangler d1 insights</code></a>, 以幫助開發人員分析也可透過 <a href="https://developers.cloudflare.com/d1/observability/metrics-analytics" target="_blank" rel="noopener noreferrer">GraphQL API</a> 獲得的查詢效能指標。</p>
+<p><strong>開發人員工具</strong>各種<a href="https://developers.cloudflare.com/d1/reference/community-projects" target="_blank" rel="noopener noreferrer">社群開發人員專案</a>支援 D1。新加入的內容包括 5.12.0 版本的 <a href="https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm" target="_blank" rel="noopener noreferrer">Prisma ORM</a>，其現在支援 Workers 和 D1。</p>
+<h3>後續步驟</h3>
+<p>GA 版現在提供的功能和我們的全球讀取複製設計只是滿足開發人員應用程式 SQL 資料庫需求的開始。如果您尚未使用 D1，您可以立即<a href="https://developers.cloudflare.com/d1/get-started" target="_blank" rel="noopener noreferrer">開始使用</a>，請造訪 D1 的<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">開發人員文件</a>以激發一些想法，或<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">加入我們的開發人員 Discord 上的 #d1 頻道</a>，與其他 D1 開發人員和我們的產品工程團隊進行交流。</p>

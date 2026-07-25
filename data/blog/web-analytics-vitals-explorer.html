@@ -1,190 +1,72 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Zym0QshYSHwrgbbXkMsGx/cabf7bf34e3fe16b587cef9ae4bfc3e1/web-analytics-vitals-explorer.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
+<p>Web Analytics is Cloudflare’s privacy-focused real user measurement solution. It leverages a lightweight JavaScript beacon and does not use any client-side state, such as cookies or localStorage, to collect usage metrics. Nor does it “fingerprint” individuals via their IP address, User Agent string, or any other data.</p>
+<p>Cloudflare Web Analytics makes essential web analytics, such as the top-performing pages on your website and top referrers, available to everyone for free, and it’s becoming more powerful than ever.</p>
+<div id="html-block-k5" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/9df6fe1aee6853c1061ee04df8534e1f?muted=true&amp;autoplay=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
-	<p>Web Analytics is Cloudflare’s privacy-focused real user measurement solution. It leverages a lightweight JavaScript beacon and does not use any client-side state, such as cookies or localStorage, to collect usage metrics. Nor does it “fingerprint” individuals via their IP address, User Agent string, or any other data.</p>
-	<p>Cloudflare Web Analytics makes essential web analytics, such as the top-performing pages on your website and top referrers, available to everyone for free, and it’s becoming more powerful than ever.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/9df6fe1aee6853c1061ee04df8534e1f?muted=true&amp;autoplay=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="focusing-on-performance">Focusing on Performance</h3>
-		<a href="https://blog.cloudflare.com/#focusing-on-performance" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Earlier this year we merged Web Analytics with our Browser Insights product, which enabled customers proxying their websites through Cloudflare to evaluate visitors’ experience on their web properties through Core Web Vitals such as Largest Contentful Paint (<a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer">LCP</a>) and First Input Delay (<a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer">FID</a>).</p>
-	<p>It was important to bring the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals</a> performance measurements into Web Analytics given the outsized impact that page load times have on bounce rates. A page load time increase from 1s to 3s increases bounce rates by 32% and from 1s to 6s increases it by 106% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks" target="_blank" rel="noopener noreferrer">source</a>).</p>
-	<p>Now that you know the impact a slow-loading web page can have on your visitors, it’s time for us to make it a no-brainer to take action. Read on.</p>
-	<div class="flex anchor relative">
-		<h3 id="becoming-action-oriented">Becoming Action-Oriented</h3>
-		<a href="https://blog.cloudflare.com/#becoming-action-oriented" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We believe that, to deliver the most value to our users, the product should facilitate the following process:</p>
-	<ol>
-		<li>
-			<p>Measure the real user experience</p>
-		</li>
-		<li>
-			<p>Grade this experience — is it satisfactory or in need of improvement?</p>
-		</li>
-		<li>
-			<p>Provide actionable insights — what part of the web page should be tweaked to improve the user experience?</p>
-		</li>
-		<li>
-			<p>Repeat</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4GQowdAhCnJcy1FEpHD2DU/82cba4b60abe2f0309af0c45366139c6/Web-Analytics-Speed-Week-graphic.png" alt="Cycle of measure, grade, improve and repeat" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>And it all starts with Web Analytics Vitals Explorer, which started rolling out today.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-web-analytics-vitals-explorer">Introducing Web Analytics Vitals Explorer</h3>
-		<a href="https://blog.cloudflare.com/#introducing-web-analytics-vitals-explorer" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Vitals Explorer enables you to easily pinpoint which elements on your pages are affecting users the most, with accurate measurements from the visitors perspective and an easy-to-read impact grading.</p>
-	<p>To do that, we have automatically updated the Web Analytics JavaScript beacon so that it collects the relevant vital measurements from the browser. As always, we are not collecting any information that would invade your visitors’ privacy.</p>
-	<div class="flex anchor relative">
-		<h3 id="usage">Usage</h3>
-		<a href="https://blog.cloudflare.com/#usage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once this new beacon is updated on your sites — and again the update will happen transparently to you — you can then navigate to the Core Web Vitals page on Web Analytics. When entering that page, you will see three graphs grading the user experience for Largest Contentful Paint (<a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer">LCP</a>), First Input Delay (<a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer">FID</a>), and Cumulative Layout Shift (<a href="https://web.dev/cls" target="_blank" rel="noopener noreferrer">CLS</a>). Below each graph you can see the debug section with the top five elements with a negative impact on the metric. Lastly, when clicking on either of these elements shown in the data table, you will be presented with its impact and exact paths so that you can easily decide whether this is worth keeping on your website in its current format.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4kPEaAqI5L8Eic7UpxN9us/d630acbde75e30fc1cda725a6a3c1413/web-vitals-debug-view.gif" alt="Click Core Web Vitals, then select any element" class="kg-image" width="960" height="734" loading="lazy">
-
-	</figure>
-	<p>In addition to this new Core Web Vitals content, we have also added First Paint and First Contentful Paint to the Page Load Time page. When you navigate to this page you will now see the page load summary and a graph representing page load timing. These will allow you to quickly identify any regressions to these important performance metrics.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5ykJcE6691J94zFURXRXXB/c0aad6243315458688d8782cd8c7e5b5/painttiming-trimmed.gif" alt="click Page Load Time and the new graphs are presented to you" class="kg-image" width="960" height="726" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="measurement-details">Measurement details</h3>
-		<a href="https://blog.cloudflare.com/#measurement-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This additional debugging information for Core Web Vitals is measured during the lifespan of the page (until the user leaves the tab or closes the browser window, which updates <b>visibilityState</b> to a hidden state).</p>
-	<p>Here’s what we collect:</p>
-	<div class="flex anchor relative">
-		<h4 id="common-for-all-core-web-vitals">Common for all Core Web Vitals</h4>
-		<a href="https://blog.cloudflare.com/#common-for-all-core-web-vitals" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p><b>Element</b> is a CSS selector representing the DOM node. With this string, the developer can use `document.querySelector(&lt;element_name&gt;)` in their browser's dev console to find out which DOM node has a negative impact on your scores/values.</p>
-		</li>
-		<li>
-			<p><b>Path</b> is the URL path at the time the Core Web Vitals are captured.</p>
-		</li>
-		<li>
-			<p><b>Value</b> is the metric value for each Core Web Vitals. This value is in milliseconds for LCP or FID and a score for CLS (Cumulative Layout Shift).</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h4 id="largest-contentful-paint">Largest Contentful Paint</h4>
-		<a href="https://blog.cloudflare.com/#largest-contentful-paint" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p><b>URL</b> is the source URL (such as image, text, web fonts).</p>
-		</li>
-		<li>
-			<p><b>Size</b> is the source object's size in bytes.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h4 id="first-input-delay">First Input Delay</h4>
-		<a href="https://blog.cloudflare.com/#first-input-delay" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p><b>Name</b> is the type of event (such as mousedown, keydown, pointerdown).</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h4 id="cumulative-layout-shift">Cumulative Layout Shift</h4>
-		<a href="https://blog.cloudflare.com/#cumulative-layout-shift" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Layout information is a JSON value that includes width, height, x axis position, y axis position, left, right, top, and bottom. You are able to observe layout shifts that happen on the page by observing these values.</p>
-	<ul>
-		<li>
-			<p><b>CurrentRect</b> is the largest source element's layout information after the shift. This JSON value is shown as <b>Current</b> under <b>Layout Shifts</b> section in the Web Analytics UI.</p>
-		</li>
-		<li>
-			<p><b>PreviousRect</b> is the largest source element's layout information before the shift. This JSON value is shown as <b>Previous</b> under <b>Layout Shifts</b> section in the Web Analytics UI.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h4 id="paint-timings">Paint Timings</h4>
-		<a href="https://blog.cloudflare.com/#paint-timings" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Additionally, we have added two important paint timings</p>
-	<ul>
-		<li>
-			<p><b>First Paint</b> is the time between navigation and when the browser renders the first pixels to the screen.</p>
-		</li>
-		<li>
-			<p><b>First Contentful Paint</b> is the time when the browser renders the first bit of content from the DOM.</p>
-		</li>
-	</ul>
-	<p>A lot of this is based on standard browser measurements, which you can read about in detail on <a href="https://web.dev/debug-web-vitals-in-the-field" target="_blank" rel="noopener noreferrer">this blog post</a> from Google.</p>
-	<div class="flex anchor relative">
-		<h3 id="moving-forward">Moving forward</h3>
-		<a href="https://blog.cloudflare.com/#moving-forward" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>And we are by no means done. Moving forward, we will bring this structured approach with grading and actionable insights into as Web Analytics measurements as possible, and keep guiding you through how to improve your visitors’ experience. So stay tuned.And in the meantime, do let us know what you think about this feature and ask questions on the <a href="https://community.cloudflare.com/c/general/insight" target="_blank" rel="noopener noreferrer">community forums</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/fcdabb54e0f0ea75877ad81b4af626ec?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+</div>
+<h3>Focusing on Performance</h3>
+<p>Earlier this year we merged Web Analytics with our Browser Insights product, which enabled customers proxying their websites through Cloudflare to evaluate visitors’ experience on their web properties through Core Web Vitals such as Largest Contentful Paint (<a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer">LCP</a>) and First Input Delay (<a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer">FID</a>).</p>
+<p>It was important to bring the <a href="https://www.cloudflare.com/learning/performance/what-are-core-web-vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals</a> performance measurements into Web Analytics given the outsized impact that page load times have on bounce rates. A page load time increase from 1s to 3s increases bounce rates by 32% and from 1s to 6s increases it by 106% (<a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks" target="_blank" rel="noopener noreferrer">source</a>).</p>
+<p>Now that you know the impact a slow-loading web page can have on your visitors, it’s time for us to make it a no-brainer to take action. Read on.</p>
+<h3>Becoming Action-Oriented</h3>
+<p>We believe that, to deliver the most value to our users, the product should facilitate the following process:</p>
+<ol>
+	<li>Measure the real user experience</li>
+	<li>Grade this experience — is it satisfactory or in need of improvement?</li>
+	<li>Provide actionable insights — what part of the web page should be tweaked to improve the user experience?</li>
+	<li>Repeat</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cycle of measure, grade, improve and repeat" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KQAZXZYGNXPPGXRJBTPZ.png&amp;w=1200&amp;h=675&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="675" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>And it all starts with Web Analytics Vitals Explorer, which started rolling out today.</p>
+<h3>Introducing Web Analytics Vitals Explorer</h3>
+<p>Vitals Explorer enables you to easily pinpoint which elements on your pages are affecting users the most, with accurate measurements from the visitors perspective and an easy-to-read impact grading.</p>
+<p>To do that, we have automatically updated the Web Analytics JavaScript beacon so that it collects the relevant vital measurements from the browser. As always, we are not collecting any information that would invade your visitors’ privacy.</p>
+<h3>Usage</h3>
+<p>Once this new beacon is updated on your sites — and again the update will happen transparently to you — you can then navigate to the Core Web Vitals page on Web Analytics. When entering that page, you will see three graphs grading the user experience for Largest Contentful Paint (<a href="https://web.dev/lcp" target="_blank" rel="noopener noreferrer">LCP</a>), First Input Delay (<a href="https://web.dev/fid" target="_blank" rel="noopener noreferrer">FID</a>), and Cumulative Layout Shift (<a href="https://web.dev/cls" target="_blank" rel="noopener noreferrer">CLS</a>). Below each graph you can see the debug section with the top five elements with a negative impact on the metric. Lastly, when clicking on either of these elements shown in the data table, you will be presented with its impact and exact paths so that you can easily decide whether this is worth keeping on your website in its current format.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="547" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW46YWXV166AEBZJ3SY9QF7G.gif" alt="Click Core Web Vitals, then select any element" width="715" height="547" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<p>In addition to this new Core Web Vitals content, we have also added First Paint and First Contentful Paint to the Page Load Time page. When you navigate to this page you will now see the page load summary and a graph representing page load timing. These will allow you to quickly identify any regressions to these important performance metrics.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="541" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW47TS6X2Z7BNM3J3GATMYKR.gif" alt="click Page Load Time and the new graphs are presented to you" width="715" height="541" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<h3>Measurement details</h3>
+<p>This additional debugging information for Core Web Vitals is measured during the lifespan of the page (until the user leaves the tab or closes the browser window, which updates <strong>visibilityState</strong> to a hidden state).</p>
+<p>Here’s what we collect:</p>
+<h4>Common for all Core Web Vitals</h4>
+<ul>
+	<li><strong>Element</strong> is a CSS selector representing the DOM node. With this string, the developer can use `document.querySelector(&lt;element_name&gt;)` in their browser's dev console to find out which DOM node has a negative impact on your scores/values.</li>
+	<li><strong>Path</strong> is the URL path at the time the Core Web Vitals are captured.</li>
+	<li><strong>Value</strong> is the metric value for each Core Web Vitals. This value is in milliseconds for LCP or FID and a score for CLS (Cumulative Layout Shift).</li>
+</ul>
+<h4>Largest Contentful Paint</h4>
+<ul>
+	<li><strong>URL</strong> is the source URL (such as image, text, web fonts).</li>
+	<li><strong>Size</strong> is the source object's size in bytes.</li>
+</ul>
+<h4>First Input Delay</h4>
+<ul>
+	<li><strong>Name</strong> is the type of event (such as mousedown, keydown, pointerdown).</li>
+</ul>
+<h4>Cumulative Layout Shift</h4>
+<p>Layout information is a JSON value that includes width, height, x axis position, y axis position, left, right, top, and bottom. You are able to observe layout shifts that happen on the page by observing these values.</p>
+<ul>
+	<li><strong>CurrentRect</strong> is the largest source element's layout information after the shift. This JSON value is shown as <strong>Current</strong> under <strong>Layout Shifts</strong> section in the Web Analytics UI.</li>
+	<li><strong>PreviousRect</strong> is the largest source element's layout information before the shift. This JSON value is shown as <strong>Previous</strong> under <strong>Layout Shifts</strong> section in the Web Analytics UI.</li>
+</ul>
+<h4>Paint Timings</h4>
+<p>Additionally, we have added two important paint timings</p>
+<ul>
+	<li><strong>First Paint</strong> is the time between navigation and when the browser renders the first pixels to the screen.</li>
+	<li><strong>First Contentful Paint</strong> is the time when the browser renders the first bit of content from the DOM.</li>
+</ul>
+<p>A lot of this is based on standard browser measurements, which you can read about in detail on <a href="https://web.dev/debug-web-vitals-in-the-field" target="_blank" rel="noopener noreferrer">this blog post</a> from Google.</p>
+<h3>Moving forward</h3>
+<p>And we are by no means done. Moving forward, we will bring this structured approach with grading and actionable insights into as Web Analytics measurements as possible, and keep guiding you through how to improve your visitors’ experience. So stay tuned.And in the meantime, do let us know what you think about this feature and ask questions on the <a href="https://community.cloudflare.com/c/general/insight" target="_blank" rel="noopener noreferrer">community forums</a>.</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k3v" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/fcdabb54e0f0ea75877ad81b4af626ec?preload=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

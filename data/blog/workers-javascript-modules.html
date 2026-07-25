@@ -1,189 +1,169 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/workers-javascript-modules">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/workers-javascript-modules">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7HTaKzPO9I9k25CvOiTyEs/959cb3d715a44a013186ecc013f117f5/workers-javascript-modules.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>We’re excited to announce that JavaScript modules are now supported on Cloudflare Workers. If you’ve ever taken look at an example Worker written in JavaScript, you might recognize the following code snippet that has been floating around the Internet the past few years:</p>
-	<pre class="language-javascript"><code class="language-javascript">addEventListener("fetch", (event) =&gt; {
-  event.respondWith(new Response("Hello Worker!"));
-}</code></pre>
-	<p>The above syntax is known as the “<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Worker</a>” API, and it was proposed to be standardized for use in web browsers. The idea is that you can attach a JavaScript file to a web page to modify its HTTP requests and responses, acting like a virtual endpoint. It was exactly what we needed for Workers, and it even integrated well with standard Web APIs like <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><code>fetch()</code></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><code>caches</code></a>.</p>
-	<p>Before introducing modules, we want to make it clear that we will continue to support the Service Worker API. No developer wants to get an email saying that <i>you</i> need to rewrite <i>your</i> code because an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> or feature is being deprecated; and you won’t be getting one from us. If you’re interested in learning why we made this decision, you can read about our commitment to <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">backwards-compatibility</a> for Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-are-javascript-modules">What are JavaScript modules?</h3>
-		<a href="https://blog.cloudflare.com/#what-are-javascript-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>JavaScript modules, also known as ECMAScript (abbreviated. “ES”) modules, is the standard API for importing and exporting code in JavaScript. It was introduced by the “ES6” language specification for JavaScript, and has been implemented by most Web browsers, Node.js, Deno, and now Cloudflare Workers. Here’s an example to demonstrate how it works:</p>
-	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/util.js
-export function getDate(time) {
-  return new Date(time).toISOString().split("T")[0]; // "YYYY-MM-DD"
-}</code></pre>
-	<p>The "export" keyword indicates that the "getDate" function should be exported from the current module. Then, you can use "import" from another module to use that function.</p>
-	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/index.js
-import { getDate } from "./util.js"
-
-console.log("Today’s date:", getDate());</code></pre>
-	<p>Those are the basics, but there’s a lot more you can do with modules. It allows you to organize, maintain, and re-use your code elegantly that just works. While we can’t go over <i>every</i> aspect of modules here, if you’d like to learn more we’d encourage you to read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank" rel="noopener noreferrer">MDN guide</a> on modules, or a more <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive" target="_blank" rel="noopener noreferrer">technical deep-dive</a> by Lin Clark.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-can-i-use-modules-in-workers">How can I use modules in Workers?</h3>
-		<a href="https://blog.cloudflare.com/#how-can-i-use-modules-in-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can export a default module, which will represent your Worker. Instead of using "addEventListener," each event handler is defined as a function on that module. Today, we support "<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">fetch</a>" for HTTP and WebSocket requests and "<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">scheduled</a>" for cron triggers.</p>
-	<pre class="language-javascript"><code class="language-javascript">export default {
-  async fetch(request, environment, context) {
-    return new Response("I’m a module!");
-  },
-  async scheduled(controller, environment, context) {
-    // await doATask();
-  }
-}</code></pre>
-	<p>You may also notice some other differences, such as the parameters on each event handler. Instead of a single "Event" object, the parameters that you need the most are spread out on their own. The first parameter is specific to the event type: for "fetch" it’s the <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">Request</a> object, and for "scheduled" it’s a <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1" target="_blank" rel="noopener noreferrer">controller</a> that contains the cron schedule.</p>
-	<p>The second parameter is an object that contains your environment variables (also known as "<a href="https://developers.cloudflare.com/workers/platform/environment-variables" target="_blank" rel="noopener noreferrer">bindings</a>"). Previously, each variable was inserted into the global scope of the Worker. While a simple solution, it was confusing to have variables magically appear in your code. Now, with an environment object, you can control which modules and libraries get access to your environment variables. This mechanism is more secure, as it can prevent a compromised or nosy third-party library from enumerating all your variables or secrets.</p>
-	<p>The third parameter is a context object, which allows you to register background tasks using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil" target="_blank" rel="noopener noreferrer"><code>waitUntil()</code></a>. This is useful for tasks like logging or error reporting that should not block the execution of the event.</p>
-	<p>When you put that all together, you can import and export multiple modules, as well as use the new event handler syntax.</p>
-	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/error.js
-export async function logError(url, error) {
-  await fetch(url, {
-     method: "POST",
-     body: error.stack
-  })
-}</code></pre>
-
-	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/worker.js
-import { logError } from "./error.js"
-
-export default {
-  async fetch(request, environment, context) {
-    try {
-       return await fetch(request);
-    } catch (error) {
-       context.waitUntil(logError(environment.ERROR_URL, error));
-       return new Response("Oops!", { status: 500 });
-    }
-  }
-}</code></pre>
-	<p>Let’s not forget about Durable Objects, which became <a href="https://blog.cloudflare.com/durable-objects-ga">generally available</a> earlier this week! You can also export classes, which is how you define a Durable Object class. Here’s another example with a "Counter" Durable Object, that responds with an incrementing value.</p>
-	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/counter.js
-export class Counter {
-  value = 0;
-  fetch() {
-    this.value++;
-    return new Response(this.value.toString());
-  }
-}</code></pre>
-
-	<pre class="language-javascript"><code class="language-javascript">// filename: ./src/worker.js
-// We need to re-export the Durable Object class in the Worker module.
-export { Counter } from "./counter.js"
-
-export default {
-  async fetch(request, environment) {
-    const clientId = request.headers.get("cf-connecting-ip");
-    const counterId = environment.Counter.idFromName(clientId);
-    // Each IP address gets its own Counter.
-    const counter = environment.Counter.get(counterId);
-    return counter.fetch("https://counter.object/increment");
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="are-there-non-javascript-modules">Are there non-JavaScript modules?</h3>
-		<a href="https://blog.cloudflare.com/#are-there-non-javascript-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Yes! While modules are primarily for JavaScript, we also support other modules types, some of which are not yet standardized.</p>
-	<p>For instance, you can import <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" rel="noopener noreferrer">WebAssembly</a> as a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module" target="_blank" rel="noopener noreferrer">module</a>. Previously, with the Service Worker API, WebAssembly was included as a binding. We think that was a mistake, since WebAssembly should be represented as code and not an external resource. With modules, here’s the new way to import WebAssembly:</p>
-	<pre class="language-javascript"><code class="language-javascript">import module from "./lib/hello.wasm"
-
-export default {
-  async fetch(request) {
-    const instance = await WebAssembly.instantiate(module);
-    const result = instance.exports.hello();
-    return new Response(result);
-  }
-}</code></pre>
-	<p>While not supported today, we look forward to a future where WebAssembly and JavaScript modules can be more tightly integrated, as outlined in this <a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration" target="_blank" rel="noopener noreferrer">proposal</a>. The ergonomics improvement, demonstrated below, can go a long way to make WebAssembly more included in the JavaScript ecosystem.</p>
-	<pre class="language-javascript"><code class="language-javascript">import { hello } from "./lib/hello.wasm"
-
-export default {
-  async fetch(request) {
-    return new Response(hello());
-  }
-}</code></pre>
-	<p>We’ve also added support for text and binary modules, which allow you to import a <code>String</code> and <code>ArrayBuffer</code>, respectively. While not standardized, it allows you to easily import resources like an HTML file or an image.</p>
-	<pre class="language-html"><code class="language-html">&lt;!-- filename: ./public/index.html --&gt;
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;&lt;body&gt;
-&lt;p&gt;Hello!&lt;/p&gt;
-&lt;/body&gt;&lt;/html&gt;</code></pre>
-
-	<pre class="language-javascript"><code class="language-javascript">import html from "../public/index.html"
-
-export default {
-  fetch(request) {
-    if (request.url.endsWith("/index.html") {
-       return new Response(html, {
-          headers: { "Content-Type": "text/html" }
-       });
-    }
-    return fetch(request);
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="how-can-i-get-started">How can I get started?</h3>
-		<a href="https://blog.cloudflare.com/#how-can-i-get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are many ways to get started with modules.</p>
-	<p>First, you can try out modules in your browser using our <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank" rel="noopener noreferrer">playground</a> (which doesn’t require an account) or by using the dashboard <a href="https://workers.new" target="_blank" rel="noopener noreferrer">quick editor</a>. Your browser will automatically detect when you’re using modules to allow you to seamlessly switch from the Service Worker API. For now, you’ll only be able to create one JavaScript module in the browser, though supporting multiple modules is something we’ll be improving soon.</p>
-	<p>If you’re feeling adventurous and want to start a <i>new</i> project using modules, you can try out the beta release of <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, the next-generation of the command-line interface (CLI) for Workers.</p>
-	<p>For existing projects, we still recommend using <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler 1.0</a> (release 1.17 or later). To enable modules, you can adapt your "<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank" rel="noopener noreferrer">wrangler.toml</a>" configuration to the following example:</p>
-	<pre class="language-toml"><code class="language-toml">name = "my-worker"
-type = "javascript"
-workers_dev = true
-
-[build.upload]
-format = "modules"
-dir = "./src"
-main = "./worker.js" # becomes "./src/worker.js"
-
-[[build.upload.rules]]
-type = "ESModule"
-globs = ["**/*.js"]
-
-# Uncomment if you have a build script.
-# [build]
-# command = "npm run build"</code></pre>
-	<p>We’ve updated our <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">documentation</a> to provide more details about <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">modules</a>, though some examples will still be using the Service Worker API as we transition to showing both formats. (and TypeScript as a bonus!)</p>
-	<p>If you experience an issue or notice something strange with modules, please <a href="https://blog.cloudflare.com/#">let us know</a>, and we’ll take a look. Happy coding, and we’re excited to see what you build with modules!</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ZcNNYExuFZtWS9zT5TZ9E/04b138284d4ba8bfbf3b73eba1f18cdf/image2-11.png" alt="" class="kg-image" width="1200" height="385" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p></p>
+<p>We’re excited to announce that JavaScript modules are now supported on Cloudflare Workers. If you’ve ever taken look at an example Worker written in JavaScript, you might recognize the following code snippet that has been floating around the Internet the past few years:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello Worker!"</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The above syntax is known as the “<a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener noreferrer">Service Worker</a>” API, and it was proposed to be standardized for use in web browsers. The idea is that you can attach a JavaScript file to a web page to modify its HTTP requests and responses, acting like a virtual endpoint. It was exactly what we needed for Workers, and it even integrated well with standard Web APIs like <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch" target="_blank" rel="noopener noreferrer"><code>fetch()</code></a> and <a href="https://developers.cloudflare.com/workers/runtime-apis/cache" target="_blank" rel="noopener noreferrer"><code>caches</code></a>.</p>
+<p>Before introducing modules, we want to make it clear that we will continue to support the Service Worker API. No developer wants to get an email saying that <em>you</em> need to rewrite <em>your</em> code because an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> or feature is being deprecated; and you won’t be getting one from us. If you’re interested in learning why we made this decision, you can read about our commitment to <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">backwards-compatibility</a> for Workers.</p>
+<h3>What are JavaScript modules?</h3>
+<p>JavaScript modules, also known as ECMAScript (abbreviated. “ES”) modules, is the standard API for importing and exporting code in JavaScript. It was introduced by the “ES6” language specification for JavaScript, and has been implemented by most Web browsers, Node.js, Deno, and now Cloudflare Workers. Here’s an example to demonstrate how it works:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/util.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getDate</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">time</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">(time).</span><span class="sk-6f42c1-ffc799">toISOString</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"T"</span><span class="sk-24292e-fff">)[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]; </span><span class="sk-6a737d-8b8b8b94">// "YYYY-MM-DD"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The "export" keyword indicates that the "getDate" function should be exported from the current module. Then, you can use "import" from another module to use that function.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/index.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getDate } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./util.js"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Today’s date:"</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">getDate</span><span class="sk-24292e-fff">());</span></span></code></pre>
+</div>
+<p>Those are the basics, but there’s a lot more you can do with modules. It allows you to organize, maintain, and re-use your code elegantly that just works. While we can’t go over <em>every</em> aspect of modules here, if you’d like to learn more we’d encourage you to read the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" target="_blank" rel="noopener noreferrer">MDN guide</a> on modules, or a more <a href="https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive" target="_blank" rel="noopener noreferrer">technical deep-dive</a> by Lin Clark.</p>
+<h3>How can I use modules in Workers?</h3>
+<p>You can export a default module, which will represent your Worker. Instead of using "addEventListener," each event handler is defined as a function on that module. Today, we support "<a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">fetch</a>" for HTTP and WebSocket requests and "<a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">scheduled</a>" for cron triggers.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"I’m a module!"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> scheduled</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">controller</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // await doATask();</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>You may also notice some other differences, such as the parameters on each event handler. Instead of a single "Event" object, the parameters that you need the most are spread out on their own. The first parameter is specific to the event type: for "fetch" it’s the <a href="https://developers.cloudflare.com/workers/runtime-apis/request" target="_blank" rel="noopener noreferrer">Request</a> object, and for "scheduled" it’s a <a href="https://developers.cloudflare.com/workers/runtime-apis/scheduled-event#properties-1" target="_blank" rel="noopener noreferrer">controller</a> that contains the cron schedule.</p>
+<p>The second parameter is an object that contains your environment variables (also known as "<a href="https://developers.cloudflare.com/workers/platform/environment-variables" target="_blank" rel="noopener noreferrer">bindings</a>"). Previously, each variable was inserted into the global scope of the Worker. While a simple solution, it was confusing to have variables magically appear in your code. Now, with an environment object, you can control which modules and libraries get access to your environment variables. This mechanism is more secure, as it can prevent a compromised or nosy third-party library from enumerating all your variables or secrets.</p>
+<p>The third parameter is a context object, which allows you to register background tasks using <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#waituntil" target="_blank" rel="noopener noreferrer"><code>waitUntil()</code></a>. This is useful for tasks like logging or error reporting that should not block the execution of the event.</p>
+<p>When you put that all together, you can import and export multiple modules, as well as use the new event handler syntax.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/error.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> logError</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">error</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(url, {</span></span>
+<span class="line"><span class="sk-24292e-fff">     method: </span><span class="sk-032f62-99ffe4">"POST"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">     body: error.stack</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/worker.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { logError } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./error.js"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">context</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       context.</span><span class="sk-6f42c1-ffc799">waitUntil</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">logError</span><span class="sk-24292e-fff">(environment.</span><span class="sk-005cc5-fff">ERROR_URL</span><span class="sk-24292e-fff">, error));</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Oops!"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Let’s not forget about Durable Objects, which became <a href="https://blog.cloudflare.com/durable-objects-ga">generally available</a> earlier this week! You can also export classes, which is how you define a Durable Object class. Here’s another example with a "Counter" Durable Object, that responds with an incrementing value.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/counter.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Counter</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">  value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fetch</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.value</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.value.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// filename: ./src/worker.js</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// We need to re-export the Durable Object class in the Worker module.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> { Counter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./counter.js"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">environment</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> clientId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"cf-connecting-ip"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> counterId</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> environment.Counter.</span><span class="sk-6f42c1-ffc799">idFromName</span><span class="sk-24292e-fff">(clientId);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Each IP address gets its own Counter.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> counter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> environment.Counter.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(counterId);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> counter.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://counter.object/increment"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Are there non-JavaScript modules?</h3>
+<p>Yes! While modules are primarily for JavaScript, we also support other modules types, some of which are not yet standardized.</p>
+<p>For instance, you can import <a href="https://developer.mozilla.org/en-US/docs/WebAssembly" target="_blank" rel="noopener noreferrer">WebAssembly</a> as a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module/Module#synchronously_compiling_a_webassembly_module" target="_blank" rel="noopener noreferrer">module</a>. Previously, with the Service Worker API, WebAssembly was included as a binding. We think that was a mistake, since WebAssembly should be represented as code and not an external resource. With modules, here’s the new way to import WebAssembly:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> module </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./lib/hello.wasm"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> instance</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> WebAssembly.</span><span class="sk-6f42c1-ffc799">instantiate</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> instance.exports.</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(result);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>While not supported today, we look forward to a future where WebAssembly and JavaScript modules can be more tightly integrated, as outlined in this <a href="https://github.com/WebAssembly/esm-integration/tree/main/proposals/esm-integration#webassemblyes-module-integration" target="_blank" rel="noopener noreferrer">proposal</a>. The ergonomics improvement, demonstrated below, can go a long way to make WebAssembly more included in the JavaScript ecosystem.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { hello } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "./lib/hello.wasm"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">hello</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We’ve also added support for text and binary modules, which allow you to import a <code>String</code> and <code>ArrayBuffer</code>, respectively. While not standardized, it allows you to easily import resources like an HTML file or an image.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">&lt;!-- filename: ./public/index.html --&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;&lt;</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Hello!</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">p</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">body</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">html</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> html </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "../public/index.html"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (request.url.</span><span class="sk-6f42c1-ffc799">endsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/index.html"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">       return new </span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">html</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-e36209-fff">          headers</span><span class="sk-24292e-fff">: { </span><span class="sk-032f62-99ffe4">"Content-Type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/html"</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">       });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">    return </span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>How can I get started?</h3>
+<p>There are many ways to get started with modules.</p>
+<p>First, you can try out modules in your browser using our <a href="https://cloudflareworkers.com/#a47f44190209e87bc95d5127ae0b2c84:https://welcome.developers.workers.dev" target="_blank" rel="noopener noreferrer">playground</a> (which doesn’t require an account) or by using the dashboard <a href="https://workers.new" target="_blank" rel="noopener noreferrer">quick editor</a>. Your browser will automatically detect when you’re using modules to allow you to seamlessly switch from the Service Worker API. For now, you’ll only be able to create one JavaScript module in the browser, though supporting multiple modules is something we’ll be improving soon.</p>
+<p>If you’re feeling adventurous and want to start a <em>new</em> project using modules, you can try out the beta release of <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, the next-generation of the command-line interface (CLI) for Workers.</p>
+<p>For existing projects, we still recommend using <a href="https://github.com/cloudflare/wrangler" target="_blank" rel="noopener noreferrer">wrangler 1.0</a> (release 1.17 or later). To enable modules, you can adapt your "<a href="https://developers.cloudflare.com/workers/cli-wrangler/configuration#modules" target="_blank" rel="noopener noreferrer">wrangler.toml</a>" configuration to the following example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>name = "my-worker"</span></span>
+<span class="line"><span>type = "javascript"</span></span>
+<span class="line"><span>workers_dev = true</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[build.upload]</span></span>
+<span class="line"><span>format = "modules"</span></span>
+<span class="line"><span>dir = "./src"</span></span>
+<span class="line"><span>main = "./worker.js" # becomes "./src/worker.js"</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[[build.upload.rules]]</span></span>
+<span class="line"><span>type = "ESModule"</span></span>
+<span class="line"><span>globs = ["**/*.js"]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span># Uncomment if you have a build script.</span></span>
+<span class="line"><span># [build]</span></span>
+<span class="line"><span># command = "npm run build"</span></span></code></pre>
+</div>
+<p>We’ve updated our <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">documentation</a> to provide more details about <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch-event#syntax-module-worker" target="_blank" rel="noopener noreferrer">modules</a>, though some examples will still be using the Service Worker API as we transition to showing both formats. (and TypeScript as a bonus!)</p>
+<p>If you experience an issue or notice something strange with modules, please <a href="mailto:workers-modules@cloudflare.com">let us know</a>, and we’ll take a look. Happy coding, and we’re excited to see what you build with modules!</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="229" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=640&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=715&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=750&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=828&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1080&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1280&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1430&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-785 Embedded Image - Erw4Ne" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4644W8KPEAQNGERE7TKF12.png&amp;w=1200&amp;h=385&amp;f=webp" data-lightbox-width="1200" data-lightbox-height="385" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="229" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k4c" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/07356fcb9d66ada45f8dcc2217b8c1d7?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F07356fcb9d66ada45f8dcc2217b8c1d7%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

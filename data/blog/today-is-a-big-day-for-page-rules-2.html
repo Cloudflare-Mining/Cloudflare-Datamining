@@ -1,91 +1,45 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11H1CVRums70EMNVgsJMyW/21c269c451dfdb8124b2fc5c2177438b/today-is-a-big-day-for-page-rules-2.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Today we're releasing a whole suite of upgrades to page rules: API support, additional settings, pausing a page rule and a mobile-friendly design. Page Rules is the technology that allows you to configure your CloudFlare settings on a per-URL basis. It's often our most powerful feature, enabling CloudFlare domain owners to customize CloudFlare's functionality to exactly match their application's needs.</p>
-	<div class="flex anchor relative">
-		<h3 id="announcing-api-support-for-page-rules">Announcing API Support For Page Rules</h3>
-		<a href="https://blog.cloudflare.com/#announcing-api-support-for-page-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Page Rules are now fully programmable via API.</p>
-	<pre class="language-bash"><code class="language-bash">$ curl -X POST "https://api.cloudflare.com/client/v4/zones/${ZONE_TAG}/pagerules" \
-    -H "X-Auth-Email: user@example.com" \
-    -H "X-Auth-Key: 000000000000" \
-    -H "Content-Type: application/json" \
-    --data '{
-        "targets":[{
-            "target":"url",
-            "constraint":{
-                    "operator":"matches",
-                    "value":"*example.com/images/*"
-            }
-        }],
-        "actions":[{
-            "id":"always_online",
-            "value":"on"
-        }],
-        "priority":1,
-        "status":"active"
-    }'</code></pre>
-	<p>Starting today, you can script the creation and modification of page rules. You can integrate page rules into your deployment process to bypass caching on every new API endpoint you ship, or to automatically sync your page rules across your domains on CloudFlare. <a href="https://api.cloudflare.com/#page-rules-for-a-zone-create-a-page-rule" target="_blank" rel="noopener noreferrer">Check out the page rules API docs</a> and get started today. We can't wait to see what automations you build.</p>
-	<div class="flex anchor relative">
-		<h3 id="13-new-settings-now-available-on-page-rules">13 New Settings Now Available On Page Rules</h3>
-		<a href="https://blog.cloudflare.com/#13-new-settings-now-available-on-page-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Instead of the short list of settings you could previously toggle, we've added menus with almost every setting on CloudFlare. You can see the full list of settings now available in page rules <a href="https://support.cloudflare.com/hc/en-us/articles/218411427" target="_blank" rel="noopener noreferrer">here</a>. Moreover, as we introduce features, they will automatically be added to page rules.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7rZVpFjdpiIRZxjH8KvMa1/4fbf8bf208c150eabc23ef7e6516b9eb/Screen-Shot-2016-04-18-at-5-41-19-PM-2.png" alt="" class="kg-image" width="1742" height="1360" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="pause-a-page-rule">Pause A Page Rule</h3>
-		<a href="https://blog.cloudflare.com/#pause-a-page-rule" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To make debugging page rules easier, we've added a way for you to pause a page rule, temporarily taking it out of production while saving its current configuration. Previously to debug, you'd have to remove a page rule, and then later re-add it from scratch, somehow remembering all of its configuration. Now you can just toggle page rules on and off to take them out of production and reinstate them.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/21xvt0PY7t8qHopFjnVHG0/e0b72f690685e29eccdcdcb2c2aa233e/Screen-Shot-2016-04-18-at-5-44-46-PM.png" alt="" class="kg-image" width="2054" height="1098" loading="lazy">
-
-	</figure>
-	<p>Even when you're initially creating page rules, you can start them off as paused so that you can save your draft and come back later to finish writing the page rule and deploy it.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GayTGEeXhtg2nZCnjsWss/63429bee71113e75e36f1e8db871bc98/Screen-Shot-2016-04-18-at-5-46-32-PM.png" alt="" class="kg-image" width="1814" height="1382" loading="lazy">
-
-	</figure>
-	<p>You can even edit page rules while they are paused, meaning that you can make unlimited changes to a page rule until you choose to finally deploy it into production.</p>
-	<div class="flex anchor relative">
-		<h3 id="manage-your-page-rules-on-the-go">Manage Your Page Rules On The Go</h3>
-		<a href="https://blog.cloudflare.com/#manage-your-page-rules-on-the-go" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We've removed the old page rules iframe and replaced it with a brand new management panel that not only makes page rules even easier to set up and deploy, it's also perfectly responsive to any device so that you can configure page rules on the go from your phone.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7AtJKwp6TtG25wc89PGBt2/7a180aca077d08f001842748a845c2ee/IMG_3076-4.png" alt="" class="kg-image" width="288" height="512" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="available-now">Available Now</h3>
-		<a href="https://blog.cloudflare.com/#available-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We're rolling out support for the new page rules dashboard and API this morning for all CloudFlare customers. If you're a current CloudFlare customer, <a href="https://www.cloudflare.com/a/page-rules" target="_blank" rel="noopener noreferrer">visit the dashboard</a> to check it out. All of your existing page rules are still intact and unchanged, just presented in a new interface. If you’re not a customer yet and you’re interested in trying this out, you can sign up <a href="https://www.cloudflare.com/a/sign-up" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p>Today we're releasing a whole suite of upgrades to page rules: API support, additional settings, pausing a page rule and a mobile-friendly design. Page Rules is the technology that allows you to configure your CloudFlare settings on a per-URL basis. It's often our most powerful feature, enabling CloudFlare domain owners to customize CloudFlare's functionality to exactly match their application's needs.</p>
+<h3>Announcing API Support For Page Rules</h3>
+<p>Page Rules are now fully programmable via API.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/zones/${</span><span class="sk-24292e-fff">ZONE_TAG</span><span class="sk-032f62-99ffe4">}/pagerules"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "X-Auth-Key: 000000000000"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">    --data</span><span class="sk-032f62-99ffe4"> '{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "targets":[{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "target":"url",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "constraint":{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "operator":"matches",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">                    "value":"*example.com/images/*"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        }],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "actions":[{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "id":"always_online",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "value":"on"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        }],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "priority":1,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        "status":"active"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }'</span></span></code></pre>
 </div>
+<p>Starting today, you can script the creation and modification of page rules. You can integrate page rules into your deployment process to bypass caching on every new API endpoint you ship, or to automatically sync your page rules across your domains on CloudFlare. <a href="https://api.cloudflare.com/#page-rules-for-a-zone-create-a-page-rule" target="_blank" rel="noopener noreferrer">Check out the page rules API docs</a> and get started today. We can't wait to see what automations you build.</p>
+<h3>13 New Settings Now Available On Page Rules</h3>
+<p>Instead of the short list of settings you could previously toggle, we've added menus with almost every setting on CloudFlare. You can see the full list of settings now available in page rules <a href="https://support.cloudflare.com/hc/en-us/articles/218411427" target="_blank" rel="noopener noreferrer">here</a>. Moreover, as we introduce features, they will automatically be added to page rules.</p>
+<h3>Pause A Page Rule</h3>
+<p>To make debugging page rules easier, we've added a way for you to pause a page rule, temporarily taking it out of production while saving its current configuration. Previously to debug, you'd have to remove a page rule, and then later re-add it from scratch, somehow remembering all of its configuration. Now you can just toggle page rules on and off to take them out of production and reinstate them.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="382" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=715&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=640&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=715&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=750&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=828&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=1080&amp;h=577&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=1280&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=1430&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Today Is A Big Day For Page Rules Embedded Image - FJdNnG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44ZYFPCAW1E1M8GJ5142CC.png&amp;w=1920&amp;h=1026&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1026" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="382" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Even when you're initially creating page rules, you can start them off as paused so that you can save your draft and come back later to finish writing the page rule and deploy it.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="545" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=715&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=640&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=715&amp;h=545&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=750&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=828&amp;h=631&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=1080&amp;h=823&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=1280&amp;h=976&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=1430&amp;h=1090&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Today Is A Big Day For Page Rules Embedded Image - bDZ1dy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AQ92C9YZYAWFRNXGDV2J.png&amp;w=1814&amp;h=1382&amp;f=webp" data-lightbox-width="1814" data-lightbox-height="1382" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="545" class="pt-portable-image-media"></div>
+</figure>
+<p>You can even edit page rules while they are paused, meaning that you can make unlimited changes to a page rule until you choose to finally deploy it into production.</p>
+<h3>Manage Your Page Rules On The Go</h3>
+<p>We've removed the old page rules iframe and replaced it with a brand new management panel that not only makes page rules even easier to set up and deploy, it's also perfectly responsive to any device so that you can configure page rules on the go from your phone.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="288" height="512" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NMP07301ZP4D71E959ZT.png&amp;w=288&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NMP07301ZP4D71E959ZT.png&amp;w=288&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 288w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NMP07301ZP4D71E959ZT.png&amp;w=576&amp;h=1024&amp;f=webp&amp;fit=cover&amp;position=center 576w" alt="Today Is A Big Day For Page Rules Embedded Image - vx1lWx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NMP07301ZP4D71E959ZT.png&amp;w=288&amp;h=512&amp;f=webp" data-lightbox-width="288" data-lightbox-height="512" data-astro-cid-7nvefuv6="true" sizes="(min-width: 288px) 288px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="288" height="512" class="pt-portable-image-media"></div>
+</figure>
+<h3>Available Now</h3>
+<p>We're rolling out support for the new page rules dashboard and API this morning for all CloudFlare customers. If you're a current CloudFlare customer, <a href="https://www.cloudflare.com/a/page-rules" target="_blank" rel="noopener noreferrer">visit the dashboard</a> to check it out. All of your existing page rules are still intact and unchanged, just presented in a new interface. If you’re not a customer yet and you’re interested in trying this out, you can sign up <a href="https://www.cloudflare.com/a/sign-up" target="_blank" rel="noopener noreferrer">here</a>.</p>

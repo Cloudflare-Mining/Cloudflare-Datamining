@@ -1,0 +1,138 @@
+<p><strong>D1 現在處於公開測試階段</strong>，主題是「規模」：憑藉每個資料庫更高的儲存限制_和_建立更多資料庫的能力，我們正在為開發人員解鎖在 D1 上建立生產規模應用程式的能力。擁有現有付費 Workers 方案的所有無需採取任何動作即可受益：我們已將其追溯套用至所有現有的 D1 資料庫。</p>
+<p>如果您錯過了 Developer Week 期間的<a href="https://blog.cloudflare.com/d1-turning-it-up-to-11">上一次 D1 更新</a>、<a href="https://developers.cloudflare.com/d1/changelog" target="_blank" rel="noopener noreferrer">變更記錄中的大量更新</a>，或者只是 D1 的新內容：請繼續閱讀。</p>
+<h3>提醒我：D1？資料庫？</h3>
+<p>D1 是我們的原生無伺服器資料庫，我們在去年 11 月推出了 Alpha 版：對 <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a>、<a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> 和 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">R2</a> 的可查詢資料庫補充。</p>
+<p>當我們開始建立 D1 時，我們確定了一些事情：它需要速度快，能夠非常輕鬆地建立資料庫，並且需要基於 SQL。</p>
+<p>最後一點至關重要，這樣開發人員就可以：a) 無需學習另一種自訂查詢語言；b) 讓現有查詢建置、ORM（物件關係對應程式）庫和其他工具以最小的努力更輕鬆地連接到 D1。由此，我們看到大量專案為 D1 建立了支援：從 <a href="https://github.com/drizzle-team/drizzle-orm/blob/main/examples/cloudflare-d1/README.md" target="_blank" rel="noopener noreferrer">Drizzle ORM</a> 和 <a href="https://developers.cloudflare.com/d1/platform/community-projects/#d1-adapter-for-kysely-orm" target="_blank" rel="noopener noreferrer">Kysely</a> 中對 D1 的支援，到 <a href="https://t4stack.com" target="_blank" rel="noopener noreferrer">T4 App</a>（一個使用 D1 作為其資料庫的完整堆疊工具包）。</p>
+<p>我們也知道，D1 不可能是從 Workers 查詢資料庫的唯一方法：對於擁有現有資料庫和數千行 SQL 或現有 ORM 程式碼的團隊來說，遷移到 D1 並不能在一個下午之內完成。對於這些團隊，我們建立了 <a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed">Hyperdrive</a>，讓您可以連接到現有資料庫並讓它們具有全球化的感覺。我們認為這為團隊提供了靈活性：將 D1 和 Workers 結合起來用於全球分散式應用程式，並使用 Hyperdrive 來查詢傳統雲端中無法一夜之間擺脫的資料庫。</p>
+<h3>更多更大的資料庫</h3>
+<p>這是整個 Alpha 測試期間數千名 D1 使用者提出的最大要求：不僅要有更多的資料庫，還要有_更大的_資料庫。</p>
+<p><strong>Workers 付費方案的開發人員現在可以將每個資料庫擴展至 2GB，並建立 50,000 個資料庫（之前分別為 500MB 和 10 個）。是的，您沒有看錯：每個帳戶 50,000 個資料庫。這解鎖了大量每個使用者一個資料庫的用例，並實現了客戶之間的真正隔離，這是傳統關係型資料庫部署所無法做到的。</strong></p>
+<p>我們將在未來幾週和幾個月內繼續努力解鎖更大的資料庫：使用 D1 Beta 測試版的開發人員將看到 <a href="https://developers.cloudflare.com/d1/changelog" target="_blank" rel="noopener noreferrer">D1 公用變更記錄</a>中發佈的這些限制自動增加。</p>
+<p>兩位數 GB 資料庫的最大障礙之一是效能：我們希望確保資料庫能夠快速載入並準備就緒_——_數秒（或更長時間）的冷啟動是不可接受的。如果一個 10GB 或 20GB 的資料庫需要 15 秒才能回答查詢，那麼使用起來會非常令人沮喪。</p>
+<p>Workers 免費方案的使用者將永遠保留 10 個 500MB 資料庫（<a href="https://developers.cloudflare.com/d1/changelog/#per-database-limit-now-500-mb" target="_blank" rel="noopener noreferrer">變更記錄</a>）：我們希望為更多開發人員提供更多空間，讓他們在正式訂購 D1 和 Workers 之前進行充分試驗。</p>
+<h3>推出 Time Travel</h3>
+<p><a href="https://developers.cloudflare.com/d1/learning/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a> 可讓您將資料庫回滾到特定時間點：具體來說，是過去 30 天內的任何分鐘。每個 D1 資料庫預設啟用此功能，不再需要任何費用，並且不會計入您的儲存限制。</p>
+<p>對於那些一直關注此功能的人：我們最初在今年早些時候宣佈推出 Time Travel，並<a href="https://developers.cloudflare.com/d1/changelog/#time-travel" target="_blank" rel="noopener noreferrer">在 7 月向所有 D1 使用者開放</a>。它的核心功能非常簡單：Time Travel 在 D1 中引入了「書籤」的概念。書籤代表資料庫在特定時間點的狀態，實際上是一個僅附加的記錄。Time Travel 可以獲取時間戳記並將其轉換為書籤，或直接獲取書籤：讓您可以還原到該點。更秒的是：還原之後，您仍然可以返回現狀。</p>
+<p>我們認為最好用一個範例來說明 Time Travel，因此讓我們對資料庫進行變更：一個資料庫包含一個訂單表格，用於儲存我們電子商務商店的每個訂單：</p>
+<p>好的，太好了。現在，如果我們想要變更一組特定的訂單：變更地址或貨運公司，該怎麼辦？</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># To </span><span class="sk-6f42c1-ffc799">illustrate</span><span class="sk-24292e-fff">: we have </span><span class="sk-005cc5-ffc799">89</span><span class="sk-24292e-fff">,</span><span class="sk-005cc5-ffc799">185</span><span class="sk-24292e-fff"> unique addresses </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> our order database. </span></span>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"SELECT count(distinct ShipAddress) FROM [Order]"</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">┌──────────┐</span></span>
+<span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
+<span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
+<span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+</div>
+<p>等等，我們犯了很多人以前都犯過的錯誤：我們忘記了 UPDATE 查詢中的 WHERE 子句。我們沒有更新特定的訂單 ID，而是更新了表格中每個訂單的送貨地址。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># </span><span class="sk-005cc5-fff">I</span><span class="sk-24292e-fff"> think we might be forgetting something here</span><span class="sk-d73a49-a0a0a0">...</span></span>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"UPDATE [Order] SET ShipAddress = 'Av. Veracruz 38, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX, Mexico'</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span></code></pre>
+</div>
+<p>恐慌開始了。在此之前我們記得先做了備份嗎？那是多久以前的事了？我們開啟時間點恢復了嗎？當時它似乎很貴…</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># Every order is now going to a wine bar </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> Mexico City. </span></span>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"SELECT count(distinct ShipAddress) FROM [Order]"</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">┌──────────┐</span></span>
+<span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
+<span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
+<span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">        │</span></span>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+</div>
+<p>沒關係。我們用的是 D1。我們可以使用 Time Travel。預設情況下它是打開的：讓我們修復這個問題，回到幾分鐘前。</p>
+<p>讓我們檢查一下它是否有效：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># Let</span><span class="sk-032f62-99ffe4">'s go back in time</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">.</span></span>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 time</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">travel restore northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">timestamp</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"2023-09-23T14:20:00Z"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">🚧 Restoring database northwind from bookmark 0000000b</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">00000002</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">9f3dba64bda132e1c1706a4b9d44c3c9</span></span>
+<span class="line"><span class="sk-24292e-fff">✔ </span><span class="sk-005cc5-fff">OK</span><span class="sk-24292e-fff"> to </span><span class="sk-6f42c1-ffc799">proceed</span><span class="sk-24292e-fff"> (y</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-fff">N</span><span class="sk-24292e-fff">) … yes</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">⚡️ Time travel </span><span class="sk-d73a49-a0a0a0">in</span><span class="sk-24292e-fff"> progress</span><span class="sk-d73a49-a0a0a0">...</span></span>
+<span class="line"><span class="sk-24292e-fff">✅ Database dash</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">db restored back to bookmark </span><span class="sk-005cc5-ffc799">00000000</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">00000004</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">97a8857d35583887de16219c766c0785</span></span>
+<span class="line"><span class="sk-24292e-fff">↩️ To undo </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff"> operation, you can restore to the previous </span><span class="sk-6f42c1-ffc799">bookmark</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">00000013</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">ffffffff</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">00004ca7</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">90b029f26ab5bd88843c55c87b26f497</span></span></code></pre>
+</div>
+<p>我們認為，當您擁有許多較小的資料庫時，Time Travel 會變得更加強大：任何還原操作的弊端都會進一步減少，並且僅限於單一使用者或租用戶。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff"># Phew. We</span><span class="sk-032f62-99ffe4">'re good.</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span>
+<span class="line"><span class="sk-24292e-fff">➜  wrangler d1 execute northwind </span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">command </span><span class="sk-032f62-99ffe4">"SELECT count(distinct ShipAddress) FROM [Order]"</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">┌──────────┐</span></span>
+<span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-6f42c1-ffc799">count</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">) │</span></span>
+<span class="line"><span class="sk-24292e-fff">├──────────┤</span></span>
+<span class="line"><span class="sk-24292e-fff">│ </span><span class="sk-005cc5-ffc799">89185</span><span class="sk-24292e-fff">    │</span></span>
+<span class="line"><span class="sk-24292e-fff">└──────────┘</span></span></code></pre>
+</div>
+<p>這還只是 Time Travel 的開始：我們不僅在努力支援復原資料庫，還支援從現有資料庫中派生資料庫和複寫現有資料庫。如果您可以使用單一命令派生資料庫和/或針對真實資料測試遷移和結構描述變更，則可以消除過去使用資料庫所帶來的許多傳統挑戰的風險。</p>
+<h3>基於行的定價</h3>
+<p><a href="https://blog.cloudflare.com/d1-turning-it-up-to-11/#not-going-to-burn-a-hole-in-your-wallet">早在 5 月份</a>，我們就宣佈了 D1 的定價，並針對我們在免費方案和付費方案中包含的內容收到了許多正面回饋。8 月份，我們發佈了一個新的基於行的模型，取代了先前的位元組單位，這使得預測和量化使用量變得更加容易。具體來說，我們改為使用行，是因為這樣更容易推理：如果您正在寫入一行，那麼它是 1KB 還是 1MB 並不重要。如果您的讀取查詢使用索引欄進行篩選，您不僅會看到效能優勢，還會節省成本。</p>
+<p>以下是 D1 的定價——幾乎所有內容都保持不變，還提供了按行收費的額外好處：</p>
+<p>D1 的定價——您可以在 <a href="https://developers.cloudflare.com/d1/platform/pricing" target="_blank" rel="noopener noreferrer">D1 的公開文件</a>中找到更多詳細資訊。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="221" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=640&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=715&amp;h=221&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=750&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=828&amp;h=256&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=1080&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=1280&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=1430&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2082 Embedded Image - i0fKUE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DQ8M8HBWKYP8PYMYNGAV.png&amp;w=1584&amp;h=490&amp;f=webp" data-lightbox-width="1584" data-lightbox-height="490" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="221" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>和以前一樣，D1 不會針對「資料庫小時數」、資料庫數量或時間點復原 (<a href="https://developers.cloudflare.com/d1/learning/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a>) 收取費用，您只需要查詢 D1 並為您的讀取、寫入和儲存付費，這就夠了。</p>
+<p>我們相信，這不僅使 D1 更具成本效益，而且還可以更輕鬆地管理多個資料庫以隔離客戶資料或生產與暫存：我們不關心您查詢_哪個_資料庫。您可以按照自己喜歡的方式管理資料，分離客戶資料，並避免落入「基於計費的架構」陷阱，這種架構僅圍繞收費方式進行構建，即使這對您的團隊來說並不直觀或合理。</p>
+<p>為了更容易瞭解給定查詢的費用_以及_何時<a href="https://developers.cloudflare.com/d1/learning/using-indexes" target="_blank" rel="noopener noreferrer">使用索引最佳化查詢</a>，D1 還傳回查詢讀取或寫入（或兩者）的行數，以便您可以瞭解它的金錢和時間成本。</p>
+<p>例如，以下查詢根據日期篩選訂單：</p>
+<p>上面的未索引查詢掃描了 16,800 行。即使我們不對其進行最佳化，D1 每月免費包含 250 億次查詢，這意味著我們可以在整個月內進行該查詢 140 萬次，而不必擔心額外成本。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-fff"> FROM</span><span class="sk-24292e-fff"> [Order] </span><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> ShippedDate </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> '2016-01-22'"</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "results"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "meta"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">5.032</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "size_after"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">33067008</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "rows_read"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">16818</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>但我們可以透過索引做得更好：</p>
+<p>建立索引後，讓我們看看我們的查詢現在需要讀取多少行：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">CREATE</span><span class="sk-005cc5-fff"> INDEX</span><span class="sk-005cc5-fff"> IF</span><span class="sk-005cc5-fff"> NOT</span><span class="sk-005cc5-fff"> EXISTS</span><span class="sk-24292e-fff"> idx_orders_date </span><span class="sk-005cc5-fff">ON</span><span class="sk-24292e-fff"> [Order](ShippedDate)</span></span></code></pre>
+</div>
+<p>在 ShippedDate 欄上使用索引的相同查詢僅讀取 417 行：不僅速度更快（持續時間以毫秒為單位！），而且成本更低。使用 5 美元的 Workers 方案，我們可以每月執行此查詢 5900 萬次，超出此次數才需要額外付費。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">SELECT</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-fff"> FROM</span><span class="sk-24292e-fff"> [Order] </span><span class="sk-005cc5-fff">WHERE</span><span class="sk-24292e-fff"> ShippedDate </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> '2016-01-22'"</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit"> </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "results"</span><span class="sk-24292e-fff">: [],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "success"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "meta"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">3.793</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">             "size_after"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">33067008</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "rows_read"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">417</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "rows_written"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">0</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>D1 也透過 Cloudflare 儀表板和我們的 GraphQL 分析 API <a href="https://developers.cloudflare.com/d1/platform/metrics-analytics/#metrics" target="_blank" rel="noopener noreferrer">公開行計數</a>，這樣，您不僅可以在調整效能時查看每個查詢，還可以分解所有資料庫中的查詢模式。</p>
+<h3>D1 for Platforms</h3>
+<p>在整個 D1 的 Alpha 測試階段，我們合作的團隊和其他一些團隊都對 D1 的水平擴展能力感到興奮：能夠為每個客戶（或使用者！）部署一個資料庫，以將資料儲存在離團隊更近的位置_，同時_更強有力地將該資料與其他使用者隔離。</p>
+<p>在 <a href="https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms" target="_blank" rel="noopener noreferrer">Workers for Platforms</a> 上構建下一個重要產品的團隊（將其視為「功能即服務，即服務」）可以使用 D1 <strong>為每個使用者部署一個資料庫</strong>，從而使客戶資料彼此嚴格分離。</p>
+<p>例如，作為 D1 的早期採用者之一，<a href="https://twitter.com/roninapp" target="_blank" rel="noopener noreferrer">RONIN</a> 正在建立一個邊緣優先的內容和資料平台，為每個客戶提供一個專用的 D1 資料庫，這允許客戶將資料放置在更靠近使用者的位置，並讓客戶之間的查詢互相隔離。</p>
+<p>RONIN 使用 D1 for Platforms 在邊緣提供自動無限可擴展性，而不是啟動並管理無數的傳統資料庫執行個體。這使得 RONIN 能夠專注於為您的內容提供直覺的編輯體驗。</p>
+<p>談到啟用「D1 for Platforms」，我們從一開始就從幾個方面考慮了這一點：</p>
+<ul>
+	<li><strong><strong><strong>除了 D1 支援每個帳戶 50,000 個資料庫之外，還為 Workers for Platforms 使用者支援超過 100,000 個資料庫——其實並沒有限制，但如果我們直接說「無限制」，您可能不會相信。</strong></strong></strong></li>
+	<li>D1 的定價——您無需為每個資料庫或「閒置資料庫」付費。如果您擁有許多使用者，有的使用者每秒數千個查詢，有的 10 分鐘才有 1-2 個查詢，您無需為流量較少的資料庫上的「資料庫小時數」支付更多費用，也無需針對整個使用者群體中的峰值工作負載來進行規劃。</li>
+	<li>能夠透過 <a href="https://developers.cloudflare.com/api/operations/cloudflare-d1-create-database" target="_blank" rel="noopener noreferrer">D1 的 HTTP API</a> 以程式設計方式設定更多資料庫_，且無需重新部署即可將_<a href="https://developers.cloudflare.com/api/operations/worker-script-patch-settings" target="_blank" rel="noopener noreferrer">它們附加到您的 Worker 上</a>。也沒有「佈建」延遲：建立了資料庫，就立即可供您或您的使用者查詢。</li>
+	<li>詳細的<a href="https://developers.cloudflare.com/d1/platform/metrics-analytics" target="_blank" rel="noopener noreferrer">每個資料庫分析</a>，以便您可以瞭解哪些資料庫正在使用中以及如何透過 D1 的 GraphQL 分析 API 查詢它們。</li>
+</ul>
+<p>如果您正在 Workers 之上構建下一個大型平台並希望大規模使用 D1（無論您是否參與 <a href="https://www.cloudflare.com/lp/workers-launchpad" target="_blank" rel="noopener noreferrer">Workers Launchpad 計畫）</a>，請與我們聯絡。</p>
+<h3>D1 的後續計畫是什麼？</h3>
+<p>**我們設定了一個明確的目標：我們希望在明年初（2024 年第一季）使 D1 對於生產使用案例「普遍可用」(GA)。**儘管您已經可以在無需等候清單或核准流程的情況下使用 D1，但我們知道 GA 標籤對許多人來說是資料庫的一個重要標籤（我們也是如此）。</p>
+<p>從現在到 GA 之前，我們會努力研究 D1 願景的一些真正關鍵部分，並持續專注於可靠性和效能。</p>
+<p>這個願景中尚未實現的一個重大部分是全域讀取複寫，我們在<a href="https://blog.cloudflare.com/d1-turning-it-up-to-11">今年早些時候寫到過這一點</a>。重要的是，複寫將是免費的，不會增加您的儲存消耗，並且仍將實現工作階段一致性（閱讀您所寫）。D1 的部分使命是讓資料更接近使用者所在地，我們很期待能夠實現這一目標。</p>
+<p>我們也正在努力擴展 <a href="https://developers.cloudflare.com/d1/learning/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a>（D1 的內建時間點復原功能），以便您可以即時從特定時間點分支和/或複製資料庫。</p>
+<p><strong>我們還將逐步開放每個資料庫儲存的限制，為每個帳戶解鎖更多儲存空間，以及您在今年剩餘時間內可以建立的資料庫數量</strong>，因此請密切關注 D1 變更記錄（或您的<a href="https://developers.cloudflare.com/d1/changelog" target="_blank" rel="noopener noreferrer">收件匣</a>）。</p>
+<p>同時，如果您尚未使用 D1，您可以<a href="https://developers.cloudflare.com/d1/get-started" target="_blank" rel="noopener noreferrer">立即開始使用</a>，造訪 D1 的<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">開發人員文件</a>來激發一些想法，或<a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">加入我們 Developer Discord 上的 #d1-beta 頻道</a>，與其他 D1 開發人員和我們的產品工程團隊進行交流。</p>

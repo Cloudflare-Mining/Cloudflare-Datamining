@@ -1,36 +1,39 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bgRw7syr0i4ussFwCEhD6/61c55c20d24742a53e2aed8b8a9d004f/how-my-team-wrote-12-cloudflare-apps-with-fewer-than-20-lines-of-code.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This is a guest post by</i> <a href="https://www.linkedin.com/in/benmross" target="_blank" rel="noopener noreferrer"><i>Ben Ross</i></a><i>. Ben is a Berkeley PhD, serial entrepreneur, and Founder and CTO and</i> <a href="http://www.powr.io/?src=cloudflareblog" target="_blank" rel="noopener noreferrer"><i>POWr.io</i></a><i>, where he spends his days helping small businesses grow online.</i></p>
-	<p>I like my code the same way I like my <a href="http://www.powr.io/about" target="_blank" rel="noopener noreferrer">team of POWr Rangers</a>… <b>DRY</b>.</p>
-	<p>And no, I don’t mean dull and unexciting! (If you haven’t heard this acronym before, DRY stands for Don’t Repeat Yourself, the single most important principle in software engineering. Because, as a mentor once told me, “when someone needs to re-write your code, at least they only need to do it once.”)</p>
-	<p>At <a href="https://www.powr.io/?src=cloudflareblog" target="_blank" rel="noopener noreferrer">POWr</a>, being DRY is not just a way to write code, it’s a way of life. This is true whether you’re an Engineer, a Customer Support agent, or an Office Manager; if you find you’re repeating yourself, we want to find a way to automate that repetition away. Our employees’ time is our company’s most valuable resource. Not to mention, who wants to spend all day repeating themselves?</p>
-	<p>We call this process becoming a <b>Scaled Employee</b>. A Scaled Employee leverages their time and resources to make a multifold impact compared to an average employee in their field. Building a culture of scaled employees plays a large part in how we have been able rapidly grow our company over the past 4 years without raising any VC funding.</p>
-	<p>So when we recently integrated <a href="https://www.cloudflare.com/apps/list/powr" target="_blank" rel="noopener noreferrer">12 POWr apps into Cloudflare</a>, you might think that we had to write code for 12 different apps. This would have required months of tedious building and QA testing.</p>
-	<p>Instead, we built a single integration template. Then, we wrote a few lines of code to automatically generate 12 apps in about as long as it takes to enjoy a sumptuous sip of California Cab. Ready for a quick overview? Begin swirling...</p>
-	<p>First we defined a “replacements” object with the important attributes of each app (which is already available in our database in an AppDetail model):</p>
-	<pre class="language-ruby"><code class="language-ruby">replacements = {
-    APP_COMMON_NAME: app_detail.common_name, #eg “Form Builder”
-    APP_SLUG: app_detail.slug, #e.g. “form-builder”
-    APP_DESCRIPTION: app_detail.short_description #e.g. “Increase conversions and get more sign-ups.”
-    …
-}</code></pre>
-	<p>Using these replacements, we then duplicated and renamed each file of our Cloudflare App accordingly:</p>
-	<pre class="language-ruby"><code class="language-ruby">replacements.each do |key, val|
-  `find #{parent_dir} -name "*#{key}*" -exec rename 's/#{key}/#{val}/' * -v {} +`
-end</code></pre>
-	<p>And finally, we moved into each file and made the corresponding replacements:</p>
-	<pre class="language-ruby"><code class="language-ruby">Dir.glob("lib/cloudflare/powr-#{replacements[:APP_SLUG]}/**/*").reject{|fn| File.directory?(fn)}.each do |file_name|
-  text = File.read(file_name)
-  replacements.each do |key, val|
-    text = text.gsub(key.to_s, val)
-   end
-   File.open(file_name, "w") {|file| file.puts text }
-end</code></pre>
-	<p>Delicious, right?</p>
-	<p>At this point, you may be wondering, “what are POWr Apps, anyway?” I’m glad you asked. They are a customizable and easy-to-use set of tools to supercharge any website… from forms to galleries to social media integrations to eCommerce.</p>
-	<p>Could you build a custom form for your website, a backend to handle and graph responses, and an integration with Zapier to turn on a lightbulb every time someone presses submit? Probably. Is that a good use of your time? Probably not. Instead, you can install <a href="https://www.cloudflare.com/apps/powr-form-builder" target="_blank" rel="noopener noreferrer">POWr Form Builder</a> in about 2 minutes, pass it off to your Marketing Intern to make it look pretty, and get back to the hard problems.</p>
-	<p><i>Adding POWr Form Builder to Cloudflare</i></p>
-	<p><i>Customize your app in the POWr Editor</i></p>
-	<p>If YOU want to be a Scaled Engineer, it’s not about knowing everything there is to know. The geekiest engineers that spend their lunches vehemently discussing the pros and cons of bubble vs selection sort often do not make the best Scaled Engineers. Scaled Engineers know when to avoid going down Rabbit Holes and use whatever tools are at their disposal to maximize impact.</p>
-	<p>So if you want to add some dynamic content to your site, take a look at <a href="https://www.cloudflare.com/apps/list/powr" target="_blank" rel="noopener noreferrer">POWr Apps for Cloudflare</a>. I’d tell you that again, but I don’t want to repeat myself.</p>
+<p><em>This is a guest post by</em> <em><a href="https://www.linkedin.com/in/benmross" target="_blank" rel="noopener noreferrer">Ben Ross</a>. Ben is a Berkeley PhD, serial entrepreneur, and Founder and CTO and</em> <em><a href="http://www.powr.io/?src=cloudflareblog" target="_blank" rel="noopener noreferrer">POWr.io</a>, where he spends his days helping small businesses grow online.</em></p>
+<p>I like my code the same way I like my <a href="http://www.powr.io/about" target="_blank" rel="noopener noreferrer">team of POWr Rangers</a>… <strong>DRY</strong>.</p>
+<p>And no, I don’t mean dull and unexciting! (If you haven’t heard this acronym before, DRY stands for Don’t Repeat Yourself, the single most important principle in software engineering. Because, as a mentor once told me, “when someone needs to re-write your code, at least they only need to do it once.”)</p>
+<p>At <a href="https://www.powr.io/?src=cloudflareblog" target="_blank" rel="noopener noreferrer">POWr</a>, being DRY is not just a way to write code, it’s a way of life. This is true whether you’re an Engineer, a Customer Support agent, or an Office Manager; if you find you’re repeating yourself, we want to find a way to automate that repetition away. Our employees’ time is our company’s most valuable resource. Not to mention, who wants to spend all day repeating themselves?</p>
+<p>We call this process becoming a <strong>Scaled Employee</strong>. A Scaled Employee leverages their time and resources to make a multifold impact compared to an average employee in their field. Building a culture of scaled employees plays a large part in how we have been able rapidly grow our company over the past 4 years without raising any VC funding.</p>
+<p>So when we recently integrated <a href="https://www.cloudflare.com/apps/list/powr" target="_blank" rel="noopener noreferrer">12 POWr apps into Cloudflare</a>, you might think that we had to write code for 12 different apps. This would have required months of tedious building and QA testing.</p>
+<p>Instead, we built a single integration template. Then, we wrote a few lines of code to automatically generate 12 apps in about as long as it takes to enjoy a sumptuous sip of California Cab. Ready for a quick overview? Begin swirling...</p>
+<p>First we defined a “replacements” object with the important attributes of each app (which is already available in our database in an AppDetail model):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-e36209-fff">replacements</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-fff">    APP_COMMON_NAME:</span><span class="sk-24292e-fff"> app_detail.</span><span class="sk-6f42c1-ffc799">common_name</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">#eg “Form Builder”</span></span>
+<span class="line"><span class="sk-005cc5-fff">    APP_SLUG:</span><span class="sk-24292e-fff"> app_detail.</span><span class="sk-6f42c1-ffc799">slug</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">#e.g. “form-builder”</span></span>
+<span class="line"><span class="sk-005cc5-fff">    APP_DESCRIPTION:</span><span class="sk-24292e-fff"> app_detail.</span><span class="sk-6f42c1-ffc799">short_description</span><span class="sk-6a737d-8b8b8b94"> #e.g. “Increase conversions and get more sign-ups.”</span></span>
+<span class="line"><span class="sk-24292e-fff">    …</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Using these replacements, we then duplicated and renamed each file of our Cloudflare App accordingly:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">replacements.</span><span class="sk-6f42c1-ffc799">each</span><span class="sk-d73a49-a0a0a0"> do</span><span class="sk-24292e-fff"> |key, val|</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  `find </span><span class="sk-032f62-a0a0a0">#{</span><span class="sk-032f62-99ffe4">parent_dir</span><span class="sk-032f62-a0a0a0">}</span><span class="sk-032f62-99ffe4"> -name "*</span><span class="sk-032f62-a0a0a0">#{</span><span class="sk-032f62-99ffe4">key</span><span class="sk-032f62-a0a0a0">}</span><span class="sk-032f62-99ffe4">*" -exec rename 's/</span><span class="sk-032f62-a0a0a0">#{</span><span class="sk-032f62-99ffe4">key</span><span class="sk-032f62-a0a0a0">}</span><span class="sk-032f62-99ffe4">/</span><span class="sk-032f62-a0a0a0">#{</span><span class="sk-032f62-99ffe4">val</span><span class="sk-032f62-a0a0a0">}</span><span class="sk-032f62-99ffe4">/' * -v {} +`</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">end</span></span></code></pre>
+</div>
+<p>And finally, we moved into each file and made the corresponding replacements:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">Dir</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">glob</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"lib/cloudflare/powr-</span><span class="sk-032f62-a0a0a0">#{</span><span class="sk-032f62-99ffe4">replacements[</span><span class="sk-005cc5-99ffe4">:APP_SLUG</span><span class="sk-032f62-99ffe4">]</span><span class="sk-032f62-a0a0a0">}</span><span class="sk-032f62-99ffe4">/**/*"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">reject</span><span class="sk-24292e-fff">{|fn| </span><span class="sk-005cc5-ffc799">File</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">directory?</span><span class="sk-24292e-fff">(fn)}.</span><span class="sk-6f42c1-ffc799">each</span><span class="sk-d73a49-a0a0a0"> do</span><span class="sk-24292e-fff"> |file_name|</span></span>
+<span class="line"><span class="sk-e36209-fff">  text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> File</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">read</span><span class="sk-24292e-fff">(file_name)</span></span>
+<span class="line"><span class="sk-24292e-fff">  replacements.</span><span class="sk-6f42c1-ffc799">each</span><span class="sk-d73a49-a0a0a0"> do</span><span class="sk-24292e-fff"> |key, val|</span></span>
+<span class="line"><span class="sk-e36209-fff">    text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> text.</span><span class="sk-005cc5-ffc799">gsub</span><span class="sk-24292e-fff">(key.</span><span class="sk-6f42c1-ffc799">to_s</span><span class="sk-24292e-fff">, val)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   end</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   File</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">open</span><span class="sk-24292e-fff">(file_name, </span><span class="sk-032f62-99ffe4">"w"</span><span class="sk-24292e-fff">) {|file| file.</span><span class="sk-005cc5-ffc799">puts</span><span class="sk-24292e-fff"> text }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">end</span></span></code></pre>
+</div>
+<p>Delicious, right?</p>
+<p>At this point, you may be wondering, “what are POWr Apps, anyway?” I’m glad you asked. They are a customizable and easy-to-use set of tools to supercharge any website… from forms to galleries to social media integrations to eCommerce.</p>
+<p>Could you build a custom form for your website, a backend to handle and graph responses, and an integration with Zapier to turn on a lightbulb every time someone presses submit? Probably. Is that a good use of your time? Probably not. Instead, you can install <a href="https://www.cloudflare.com/apps/powr-form-builder" target="_blank" rel="noopener noreferrer">POWr Form Builder</a> in about 2 minutes, pass it off to your Marketing Intern to make it look pretty, and get back to the hard problems.</p>
+<p><em>Adding POWr Form Builder to Cloudflare</em></p>
+<p><em>Customize your app in the POWr Editor</em></p>
+<p>If YOU want to be a Scaled Engineer, it’s not about knowing everything there is to know. The geekiest engineers that spend their lunches vehemently discussing the pros and cons of bubble vs selection sort often do not make the best Scaled Engineers. Scaled Engineers know when to avoid going down Rabbit Holes and use whatever tools are at their disposal to maximize impact.</p>
+<p>So if you want to add some dynamic content to your site, take a look at <a href="https://www.cloudflare.com/apps/list/powr" target="_blank" rel="noopener noreferrer">POWr Apps for Cloudflare</a>. I’d tell you that again, but I don’t want to repeat myself.</p>

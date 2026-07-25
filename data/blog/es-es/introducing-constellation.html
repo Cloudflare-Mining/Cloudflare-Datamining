@@ -1,219 +1,161 @@
-<div class="mb2 gray5">4 min de lectura</div>
-<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/introducing-constellation">English</a>, <a href="https://blog.cloudflare.com/fr-fr/introducing-constellation">Français</a>, <a href="https://blog.cloudflare.com/de-de/introducing-constellation">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/introducing-constellation">日本語</a> y <a href="https://blog.cloudflare.com/zh-cn/introducing-constellation">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WaWFnRKBDS974N8UKHf9I/1ae1c9933a6f527ffc1a39a6a10e6e78/introducing-constellation.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>El ecosistema de Cloudflare Workers ofrece ahora productos y funciones que incluyen el proceso, el alojamiento, el almacenamiento, las bases de datos, el streaming, las redes, la seguridad y <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">mucho más</a>. Con el tiempo, hemos intentado motivar a otros para que se alejen de las arquitecturas de software tradicionales, y para ello hemos <a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare">demostrado</a> y <a href="https://blog.cloudflare.com/es-es/technology-behind-radar2-es-es">documentado</a> cómo es posible crear aplicaciones complejas que se amplían globalmente sobre nuestra pila.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3R4RgKJy7bJgVYTAAfaVHG/f3f2ef323f76c75d0da732f003a25863/image4-6.png" alt="Introducing Constellation, bringing AI to the Cloudflare stack" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>Hoy nos complace dar la bienvenida a Constellation, una nueva función de la pila de Cloudflare que permite a los desarrolladores ejecutar modelos de aprendizaje automático entrenados previamente y tareas de inferencia en la red de Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h2 id="one-more-building-block-in-our-supercloud">Un bloque de creación más en nuestra supernube</h2>
-		<a href="https://blog.cloudflare.com/#one-more-building-block-in-our-supercloud" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank" rel="noopener noreferrer">El aprendizaje automático</a> y la IA han sido temas candentes últimamente, pero la realidad es que llevamos años utilizando estas tecnologías en nuestra vida cotidiana, aunque no nos demos cuenta. Nuestros teléfonos móviles, ordenadores, coches y asistentes domésticos, por poner algunos ejemplos, todos tienen IA. Está en todas partes.</p>
-	<p>Sin embargo, sigue sin ser una ventaja para los desarrolladores. A menudo necesitan entender las matemáticas que hay detrás, el software y las herramientas están dispersos y son complejos, y el hardware o los servicios en la nube para ejecutar los marcos y los datos son caros.</p>
-	<p><b>Hoy lanzamos una nueva función de nuestra pila, que permite a todo el mundo ejecutar modelos de aprendizaje automático y realizar inferencias sobre Cloudflare Workers.</b></p>
-	<div class="flex anchor relative">
-		<h2 id="introducing-constellation">Novedad: Constellation</h2>
-		<a href="https://blog.cloudflare.com/#introducing-constellation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6xTzpRtAzAndPm92lizbSW/8915b8578353576900208e752426c8dc/image2-8.png" alt="" class="kg-image" width="1784" height="510" loading="lazy">
-
-	</figure>
-	<p>Constellation te permite ejecutar tareas de inferencia rápidas y de baja latencia utilizando modelos de aprendizaje automático entrenados previamente de forma nativa con los scripts de Cloudflare Workers.</p>
-	<p>Algunos ejemplos de aplicaciones que puedes implementar con Constellation son:</p>
-	<ul>
-		<li>
-			<p>Clasificación de imágenes o audio o detección de objetos</p>
-		</li>
-		<li>
-			<p>Detección de anomalías en los datos</p>
-		</li>
-		<li>
-			<p>Traducción, resumen o análisis de similitud de textos</p>
-		</li>
-		<li>
-			<p>Procesamiento del lenguaje natural</p>
-		</li>
-		<li>
-			<p>Análisis de opiniones</p>
-		</li>
-		<li>
-			<p>Reconocimiento de voz o conversión de texto a voz</p>
-		</li>
-		<li>
-			<p>Respuesta a preguntas</p>
-		</li>
-	</ul>
-	<p>Los desarrolladores pueden cargar a Constellation cualquier modelo compatible, que pueden entrenar de forma independiente, o bien descargar modelos entrenados previamente de centros de aprendizaje automático como <a href="https://huggingface.co/models?library=onnx&amp;sort=downloads" target="_blank" rel="noopener noreferrer">HuggingFace</a> u <a href="https://github.com/onnx/models" target="_blank" rel="noopener noreferrer">ONNX Zoo</a>.</p>
-	<p>Sin embargo, no todos querrán entrenar modelos o buscar en Internet modelos que aún no haya probado. Por esa razón, Cloudflare también mantendrá un catálogo de modelos verificados y listos para usar.</p>
-	<p>Creamos Constellation pensando en ofrecer una gran experiencia para los desarrolladores y API fáciles de usar. Aquí tienes un ejemplo para empezar.</p>
-	<div class="flex anchor relative">
-		<h2 id="image-classification-application">Aplicación de clasificación de imágenes</h2>
-		<a href="https://blog.cloudflare.com/#image-classification-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>En este ejemplo, crearemos una aplicación de clasificación de imágenes basada en la API de inferencia de Constellation y el modelo <a href="https://github.com/onnx/models/blob/main/vision/classification/squeezenet/README.md" target="_blank" rel="noopener noreferrer">SqueezeNet</a>, una red neuronal convolucional (CNN) que se entrenó previamente en más de un millón de imágenes de la base de datos de código abierto <a href="https://www.image-net.org" target="_blank" rel="noopener noreferrer">ImageNet</a> y puede clasificar imágenes en 1000 categorías, como máximo.</p>
-	<p>SqueezeNet se compara con <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener noreferrer">AlexNet</a>, una de las CNN originales y punto de referencia para la clasificación de imágenes, por ser aproximadamente 3 veces más rápida y más o menos 500 veces más pequeña sin dejar de alcanzar niveles similares de precisión. Su reducido tamaño permite que se pueda ejecutar en dispositivos portátiles con recursos limitados o hardware personalizado.</p>
-	<p>En primer lugar, vamos a crear un nuevo proyecto Constellation utilizando el entorno de ejecución de ONNX. Wrangler ya tiene incorporada la funcionalidad para Constellation con la palabra clave `constellation`.</p>
-	<p>Ahora vamos a crear el archivo de configuración <code>wrangler.toml</code> con el enlace del proyecto:</p>
-	<pre class="language-bash"><code class="language-bash">$ npx wrangler constellation project create "image-classifier" ONNX</code></pre>
-	<p>Instala la biblioteca API del cliente Constellation:</p>
-	<pre class="language-yaml"><code class="language-yaml"># Top-level configuration
-name = "image-classifier-worker"
-main = "src/index.ts"
-compatibility_date = "2022-07-12"
-
-constellation = [
-    {
-      binding = 'CLASSIFIER',
-      project_id = '2193053a-af0a-40a6-b757-00fa73908ef6'
-    },
-]</code></pre>
-	<p>Carga al proyecto el modelo ONNX SqueezeNet 1.1 entrenado previamente.</p>
-	<pre class="language-bash"><code class="language-bash">$ npm install @cloudflare/constellation --save-dev</code></pre>
-	<p>Como hemos mencionado antes, SqueezeNet clasifica las imágenes en un máximo de 1000 clases de objetos. Estas clases tienen en realidad la forma de una lista de anillos de sinónimos o <a href="http://wordnet-rdf.princeton.edu/pwn30/01440764-n" target="_blank" rel="noopener noreferrer">synsets</a>. Un synset tiene un Id. y una etiqueta. Proviene de la <a href="https://wordnet.princeton.edu" target="_blank" rel="noopener noreferrer">terminología</a> de la base de datos <a href="https://wordnet.princeton.edu/documentation" target="_blank" rel="noopener noreferrer">WordNet</a> de Princeton, la misma que se utiliza para etiquetar la <a href="https://www.image-net.org/about.php" target="_blank" rel="noopener noreferrer">base de datos de imágenes,</a> ImageNet.</p>
-	<pre class="language-bash"><code class="language-bash">$ wget https://github.com/microsoft/onnxjs-demo/raw/master/docs/squeezenet1_1.onnx
-$ npx wrangler constellation model upload "image-classifier" "squeezenet11" squeezenet1_1.onnx</code></pre>
-	<p>Para traducir los resultados de SqueezeNet en clases de imágenes legibles por humanos, necesitamos un archivo que asigne los Id. de synset (lo que obtenemos del modelo) con sus etiquetas correspondientes.</p>
-	<p>Y por último, vamos a codificar e implementar nuestro script de clasificación de imágenes:</p>
-	<pre class="language-bash"><code class="language-bash">$ mkdir src; cd src
-$ wget https://raw.githubusercontent.com/microsoft/onnxjs-demo/master/src/data/imagenet.ts</code></pre>
-	<p>Este script lee una imagen de la solicitud, la descodifica en un tensor multidimensional float32 (ahora mismo solo descodificamos PNG, pero podemos añadir otros formatos), la proporciona al modelo SqueezeNet que se ejecuta en Constellation, obtiene los resultados, los combina con la lista de clases de ImageNet y devuelve las etiquetas de la imagen legibles por humanos.</p>
-	<pre class="language-javascript"><code class="language-javascript">import { imagenetClasses } from './imagenet';
-import { Tensor, run } from '@cloudflare/constellation';
-
-export interface Env {
-    CLASSIFIER: any,
-}
-
-export default {
-    async fetch(request: Request, env: Env, ctx: ExecutionContext) {
-        const formData = await request.formData();
-        const file = formData.get("file");
-        const data = await file.arrayBuffer();
-        const result = await processImage(env, data);
-        return new Response(JSON.stringify(result));
-    },
-};
-
-async function processImage(env: Env, data: ArrayBuffer) {
-    const input = await decodeImage(data)
-
-    const tensorInput = new Tensor("float32", [1, 3, 224, 224], input)
-
-    const output = await run(env.CLASSIFIER, "MODEL-UUID", tensorInput);
-
-    const probs = output.squeezenet0_flatten0_reshape0.value
-    const softmaxResult = softmax(probs)
-    const results = imagenetClasses(softmaxResult, 5);
-    const topResult = results[0];
-    return topResult
-}</code></pre>
-	<p>Bastante sencillo, ¿no? Vamos a probarlo:</p>
-	<p>A continuación, puedes ver las probabilidades en la práctica. El modelo está bastante seguro sobre las montañas y el descapotable, pero la probabilidad del podenco ibicenco es menor. Efectivamente, el perro de la foto es de otra raza.</p>
-	<pre class="language-bash"><code class="language-bash">$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/mountain.png | jq .name
-
-alp
-
-$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/car.png | jq .name
-
-convertible
-
-$ curl https://ai.cloudflare.com/demos/image-classifier -F file=@images/dog.png | jq .name
-
-Ibizan hound</code></pre>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xWxx9wYlUqkpVYUlOOeYL/ee44e25d82b6297eb048938e18384678/Screenshot-2023-05-15-at-12.55.21.png" alt="" class="kg-image" width="1888" height="682" loading="lazy">
-
-	</figure>
-	<p>Esta pequeña aplicación demuestra lo fácil y rápido que puedes empezar a utilizar modelos de aprendizaje automático y Constellation al crear aplicaciones sobre Workers. Consulta el código fuente completo <a href="https://developers.cloudflare.com/constellation/get-started/first-constellation-worker" target="_blank" rel="noopener noreferrer">aquí</a> e impleméntalo tú mismo.</p>
-	<div class="flex anchor relative">
-		<h2 id="transformers">Transformadores</h2>
-		<a href="https://blog.cloudflare.com/#transformers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)" target="_blank" rel="noopener noreferrer">Google introdujo los transformadores</a>, que son modelos de aprendizaje profundo diseñados para procesar datos de entrada secuenciales y se utilizan normalmente para el procesamiento del lenguaje natural (PLN), como traducciones, resúmenes o análisis de sentimientos, y tareas de visión por ordenador, como la clasificación de imágenes.</p>
-	<p><a href="https://github.com/xenova/transformers.js" target="_blank" rel="noopener noreferrer">Transformers.js</a> es una popular demostración que carga modelos de transformadores de HuggingFace y los ejecuta dentro de tu navegador utilizando el entorno de ejecución de ONNX compilado a <a href="https://developers.cloudflare.com/workers/platform/web-assembly" target="_blank" rel="noopener noreferrer">WebAssembly</a>. Hemos adaptado esta demostración para que utilice las API de Constellation.</p>
-	<p>Aquí tienes el enlace a nuestra versión: <a href="https://transformers-js.pages.dev" target="_blank" rel="noopener noreferrer">https://transformers-js.pages.dev/</a></p>
-	<div class="flex anchor relative">
-		<h2 id="interoperability-with-workers">Interoperabilidad con Workers</h2>
-		<a href="https://blog.cloudflare.com/#interoperability-with-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75BazjDxuRzLywP7ZwjeMz/d9ebaebfffd4b4d79954fbb2d77bc6c2/image3-5.png" alt="" class="kg-image" width="1999" height="1195" loading="lazy">
-
-	</figure>
-	<p>El otro elemento interesante de Constellation es que, como se ejecuta de forma nativa en Workers, puedes agruparla con otros productos y las API de nuestra pila. Puedes utilizar KV, R2, D1, Queues, lo que quieras, incluso el correo electrónico.</p>
-	<p>A continuación, te mostramos un ejemplo de un Worker que <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer">recibe</a> correos electrónicos para tu dominio en Cloudflare utilizando <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer">Email Routing</a>, ejecuta Constellation utilizando el modelo de análisis de sentimiento <a href="https://huggingface.co/Xenova/t5-small/tree/main/onnx" target="_blank" rel="noopener noreferrer">t5-small,</a> añade un encabezado con la puntuación resultante, y lo reenvía a la dirección de destino.</p>
-	<p>Ahora puedes utilizar Gmail o cualquier cliente de correo electrónico para aplicar una regla a tus mensajes basada en el encabezado "X-Sentiment". Por ejemplo, puede que quieras mover todos los correos molestos que estén fuera de tu bandeja de entrada a una carpeta diferente cuando lleguen.</p>
-	<pre class="language-javascript"><code class="language-javascript">import { Tensor, run } from '@cloudflare/constellation';
-import * as PostalMime from 'postal-mime';
-
-export interface Env {
-    SENTIMENT: any,
-}
-
-export default {
-  async email(message, env, ctx) {
-    const rawEmail = await streamToArrayBuffer(event.raw, event.rawSize);
-    const parser = new PostalMime.default();
-    const parsedEmail = await parser.parse(rawEmail);
-
-    const input = tokenize(parsedEmail.text)
-    const output = await run( env.SENTIMENT, "MODEL-UUID", input);
-
-
-    var headers = new Headers();
-    headers.set("X-Sentiment", idToLabel[output.label]);
-    await message.forward("gooddestination@example.com", headers);
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="start-using-constellation">Empieza a utilizar Constellation</h2>
-		<a href="https://blog.cloudflare.com/#start-using-constellation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Hoy, lanzamos Constellation en versión beta privada. Para unirte a la lista de espera, ve al panel de control, haz clic en la pestaña Workers debajo de tu cuenta y haz clic en "Solicitar acceso". El equipo irá incorporando cuentas por grupos. Recibirás un correo electrónico cuando tu cuenta esté habilitada.</p>
-	<p>Mientras tanto, puedes leer nuestra <a href="https://developers.cloudflare.com/constellation" target="_blank" rel="noopener noreferrer">documentación para desarrolladores sobre Constellation</a> y obtener más información sobre su funcionamiento y las API. Constellation se puede utilizar desde Wrangler, nuestra herramienta de línea de comandos para configurar, crear e implementar aplicaciones con los productos para desarrolladores de Cloudflare, o la puedes gestionar directamente en la interfaz de usuario del panel de control.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Gn2kLFDXOMHjK2x0biPlS/9a1af77c70a2ea36f472f0643e13d396/image1-25.png" alt="" class="kg-image" width="1999" height="1426" loading="lazy">
-
-	</figure>
-	<p>Estamos deseando saber cómo quieres utilizar el aprendizaje automático y la inteligencia artificial con tus aplicaciones. Constellation seguirá mejorando con límites más altos, nuevos entornos de ejecución compatibles y otros modelos más grandes, pero queremos saber de ti. Tu opinión influirá, sin duda, en nuestras decisiones sobre la hoja de ruta.</p>
-	<p>Una última cosa. Hoy hemos estado hablando de cómo puedes escribir Workers que utilicen Constellation, pero atento a este dato inicial. Constellation se creó utilizando la capacidad de WebAssembly, Workers, R2 y nuestras API. Procuraremos escribir un blog de seguimiento sobre cómo lo desarrollamos. No te lo pierdas.</p>
-	<p>Como siempre, puedes hablar con nosotros en nuestro <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Developers Discord</a> (únete al canal #constellation) o en <a href="https://community.cloudflare.com/c/developers/constellation/97" target="_blank" rel="noopener noreferrer">el foro de la comunidad</a>. Te escuchamos.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f422c9ec2baed5c7139f8fc55bdee136/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff422c9ec2baed5c7139f8fc55bdee136%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+<p>El ecosistema de Cloudflare Workers ofrece ahora productos y funciones que incluyen el proceso, el alojamiento, el almacenamiento, las bases de datos, el streaming, las redes, la seguridad y <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer">mucho más</a>. Con el tiempo, hemos intentado motivar a otros para que se alejen de las arquitecturas de software tradicionales, y para ello hemos <a href="https://blog.cloudflare.com/welcome-to-wildebeest-the-fediverse-on-cloudflare">demostrado</a> y <a href="https://blog.cloudflare.com/es-es/technology-behind-radar2-es-es">documentado</a> cómo es posible crear aplicaciones complejas que se amplían globalmente sobre nuestra pila.</p>
+<p>Hoy nos complace dar la bienvenida a Constellation, una nueva función de la pila de Cloudflare que permite a los desarrolladores ejecutar modelos de aprendizaje automático entrenados previamente y tareas de inferencia en la red de Cloudflare.</p>
+<h2>Un bloque de creación más en nuestra supernube</h2>
+<p><a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank" rel="noopener noreferrer">El aprendizaje automático</a> y la IA han sido temas candentes últimamente, pero la realidad es que llevamos años utilizando estas tecnologías en nuestra vida cotidiana, aunque no nos demos cuenta. Nuestros teléfonos móviles, ordenadores, coches y asistentes domésticos, por poner algunos ejemplos, todos tienen IA. Está en todas partes.</p>
+<p>Sin embargo, sigue sin ser una ventaja para los desarrolladores. A menudo necesitan entender las matemáticas que hay detrás, el software y las herramientas están dispersos y son complejos, y el hardware o los servicios en la nube para ejecutar los marcos y los datos son caros.</p>
+<p><strong>Hoy lanzamos una nueva función de nuestra pila, que permite a todo el mundo ejecutar modelos de aprendizaje automático y realizar inferencias sobre Cloudflare Workers.</strong></p>
+<h2>Novedad: Constellation</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="204" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=715&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=640&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=715&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=750&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=828&amp;h=236&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=1080&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=1280&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=1430&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1803 Embedded Image - 1HyE4b" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GGRGX24H6B3F7HR9PSAF.png&amp;w=1784&amp;h=510&amp;f=webp" data-lightbox-width="1784" data-lightbox-height="510" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="204" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Constellation te permite ejecutar tareas de inferencia rápidas y de baja latencia utilizando modelos de aprendizaje automático entrenados previamente de forma nativa con los scripts de Cloudflare Workers.</p>
+<p>Algunos ejemplos de aplicaciones que puedes implementar con Constellation son:</p>
+<ul>
+	<li>Clasificación de imágenes o audio o detección de objetos</li>
+	<li>Detección de anomalías en los datos</li>
+	<li>Traducción, resumen o análisis de similitud de textos</li>
+	<li>Procesamiento del lenguaje natural</li>
+	<li>Análisis de opiniones</li>
+	<li>Reconocimiento de voz o conversión de texto a voz</li>
+	<li>Respuesta a preguntas</li>
+</ul>
+<p>Los desarrolladores pueden cargar a Constellation cualquier modelo compatible, que pueden entrenar de forma independiente, o bien descargar modelos entrenados previamente de centros de aprendizaje automático como <a href="https://huggingface.co/models?library=onnx&amp;sort=downloads" target="_blank" rel="noopener noreferrer">HuggingFace</a> u <a href="https://github.com/onnx/models" target="_blank" rel="noopener noreferrer">ONNX Zoo</a>.</p>
+<p>Sin embargo, no todos querrán entrenar modelos o buscar en Internet modelos que aún no haya probado. Por esa razón, Cloudflare también mantendrá un catálogo de modelos verificados y listos para usar.</p>
+<p>Creamos Constellation pensando en ofrecer una gran experiencia para los desarrolladores y API fáciles de usar. Aquí tienes un ejemplo para empezar.</p>
+<h2>Aplicación de clasificación de imágenes</h2>
+<p>En este ejemplo, crearemos una aplicación de clasificación de imágenes basada en la API de inferencia de Constellation y el modelo <a href="https://github.com/onnx/models/blob/main/vision/classification/squeezenet/README.md" target="_blank" rel="noopener noreferrer">SqueezeNet</a>, una red neuronal convolucional (CNN) que se entrenó previamente en más de un millón de imágenes de la base de datos de código abierto <a href="https://www.image-net.org" target="_blank" rel="noopener noreferrer">ImageNet</a> y puede clasificar imágenes en 1000 categorías, como máximo.</p>
+<p>SqueezeNet se compara con <a href="https://en.wikipedia.org/wiki/AlexNet" target="_blank" rel="noopener noreferrer">AlexNet</a>, una de las CNN originales y punto de referencia para la clasificación de imágenes, por ser aproximadamente 3 veces más rápida y más o menos 500 veces más pequeña sin dejar de alcanzar niveles similares de precisión. Su reducido tamaño permite que se pueda ejecutar en dispositivos portátiles con recursos limitados o hardware personalizado.</p>
+<p>En primer lugar, vamos a crear un nuevo proyecto Constellation utilizando el entorno de ejecución de ONNX. Wrangler ya tiene incorporada la funcionalidad para Constellation con la palabra clave `constellation`.</p>
+<p>Ahora vamos a crear el archivo de configuración <code>wrangler.toml</code> con el enlace del proyecto:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> constellation</span><span class="sk-032f62-99ffe4"> project</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> "image-classifier"</span><span class="sk-032f62-99ffe4"> ONNX</span></span></code></pre>
+</div>
+<p>Instala la biblioteca API del cliente Constellation:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Top-level configuration</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">name = "image-classifier-worker"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">main = "src/index.ts"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">compatibility_date = "2022-07-12"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">constellation = [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      binding = 'CLASSIFIER'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      project_id = '2193053a-af0a-40a6-b757-00fa73908ef6'</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>Carga al proyecto el modelo ONNX SqueezeNet 1.1 entrenado previamente.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> @cloudflare/constellation</span><span class="sk-005cc5-99ffe4"> --save-dev</span></span></code></pre>
+</div>
+<p>Como hemos mencionado antes, SqueezeNet clasifica las imágenes en un máximo de 1000 clases de objetos. Estas clases tienen en realidad la forma de una lista de anillos de sinónimos o <a href="http://wordnet-rdf.princeton.edu/pwn30/01440764-n" target="_blank" rel="noopener noreferrer">synsets</a>. Un synset tiene un Id. y una etiqueta. Proviene de la <a href="https://wordnet.princeton.edu" target="_blank" rel="noopener noreferrer">terminología</a> de la base de datos <a href="https://wordnet.princeton.edu/documentation" target="_blank" rel="noopener noreferrer">WordNet</a> de Princeton, la misma que se utiliza para etiquetar la <a href="https://www.image-net.org/about.php" target="_blank" rel="noopener noreferrer">base de datos de imágenes,</a> ImageNet.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wget</span><span class="sk-032f62-99ffe4"> https://github.com/microsoft/onnxjs-demo/raw/master/docs/squeezenet1_1.onnx</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> constellation</span><span class="sk-032f62-99ffe4"> model</span><span class="sk-032f62-99ffe4"> upload</span><span class="sk-032f62-99ffe4"> "image-classifier"</span><span class="sk-032f62-99ffe4"> "squeezenet11"</span><span class="sk-032f62-99ffe4"> squeezenet1_1.onnx</span></span></code></pre>
+</div>
+<p>Para traducir los resultados de SqueezeNet en clases de imágenes legibles por humanos, necesitamos un archivo que asigne los Id. de synset (lo que obtenemos del modelo) con sus etiquetas correspondientes.</p>
+<p>Y por último, vamos a codificar e implementar nuestro script de clasificación de imágenes:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mkdir</span><span class="sk-032f62-99ffe4"> src</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> src</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wget</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/microsoft/onnxjs-demo/master/src/data/imagenet.ts</span></span></code></pre>
+</div>
+<p>Este script lee una imagen de la solicitud, la descodifica en un tensor multidimensional float32 (ahora mismo solo descodificamos PNG, pero podemos añadir otros formatos), la proporciona al modelo SqueezeNet que se ejecuta en Constellation, obtiene los resultados, los combina con la lista de clases de ImageNet y devuelve las etiquetas de la imagen legibles por humanos.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { imagenetClasses } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './imagenet'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Tensor, run } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/constellation'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">    CLASSIFIER</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ExecutionContext</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> formData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">formData</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> file</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> formData.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"file"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> file.</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> processImage</span><span class="sk-24292e-fff">(env, data);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(result));</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> processImage</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">data</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> ArrayBuffer</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> decodeImage</span><span class="sk-24292e-fff">(data)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> tensorInput</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Tensor</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"float32"</span><span class="sk-24292e-fff">, [</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">224</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">224</span><span class="sk-24292e-fff">], input)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">CLASSIFIER</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"MODEL-UUID"</span><span class="sk-24292e-fff">, tensorInput);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> probs</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> output.squeezenet0_flatten0_reshape0.value</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> softmaxResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> softmax</span><span class="sk-24292e-fff">(probs)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> results</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> imagenetClasses</span><span class="sk-24292e-fff">(softmaxResult, </span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> topResult</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> results[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> topResult</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Bastante sencillo, ¿no? Vamos a probarlo:</p>
+<p>A continuación, puedes ver las probabilidades en la práctica. El modelo está bastante seguro sobre las montañas y el descapotable, pero la probabilidad del podenco ibicenco es menor. Efectivamente, el perro de la foto es de otra raza.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://ai.cloudflare.com/demos/image-classifier</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> file=@images/mountain.png</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .name</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">alp</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://ai.cloudflare.com/demos/image-classifier</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> file=@images/car.png</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .name</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">convertible</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> https://ai.cloudflare.com/demos/image-classifier</span><span class="sk-005cc5-99ffe4"> -F</span><span class="sk-032f62-99ffe4"> file=@images/dog.png</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> .name</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Ibizan</span><span class="sk-032f62-99ffe4"> hound</span></span></code></pre>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="258" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=640&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=715&amp;h=258&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=750&amp;h=271&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=828&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=1080&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=1280&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=1430&amp;h=516&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1803 Embedded Image - koxyvv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492PP6PECDT8PGKGQ6BTEZ.png&amp;w=1888&amp;h=682&amp;f=webp" data-lightbox-width="1888" data-lightbox-height="682" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="258" class="pt-portable-image-media"></div>
+</figure>
+<p>Esta pequeña aplicación demuestra lo fácil y rápido que puedes empezar a utilizar modelos de aprendizaje automático y Constellation al crear aplicaciones sobre Workers. Consulta el código fuente completo <a href="https://developers.cloudflare.com/constellation/get-started/first-constellation-worker" target="_blank" rel="noopener noreferrer">aquí</a> e impleméntalo tú mismo.</p>
+<h2>Transformadores</h2>
+<p><a href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)" target="_blank" rel="noopener noreferrer">Google introdujo los transformadores</a>, que son modelos de aprendizaje profundo diseñados para procesar datos de entrada secuenciales y se utilizan normalmente para el procesamiento del lenguaje natural (PLN), como traducciones, resúmenes o análisis de sentimientos, y tareas de visión por ordenador, como la clasificación de imágenes.</p>
+<p><a href="https://github.com/xenova/transformers.js" target="_blank" rel="noopener noreferrer">Transformers.js</a> es una popular demostración que carga modelos de transformadores de HuggingFace y los ejecuta dentro de tu navegador utilizando el entorno de ejecución de ONNX compilado a <a href="https://developers.cloudflare.com/workers/platform/web-assembly" target="_blank" rel="noopener noreferrer">WebAssembly</a>. Hemos adaptado esta demostración para que utilice las API de Constellation.</p>
+<p>Aquí tienes el enlace a nuestra versión: <a href="https://transformers-js.pages.dev" target="_blank" rel="noopener noreferrer">https://transformers-js.pages.dev/</a></p>
+<h2>Interoperabilidad con Workers</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="427" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=640&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=750&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=828&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=1080&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=1280&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=1430&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1803 Embedded Image - k3MyMB" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KDB1TQA7AFEXH35T7P0N.png&amp;w=1920&amp;h=1148&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1148" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="427" class="pt-portable-image-media"></div>
+</figure>
+<p>El otro elemento interesante de Constellation es que, como se ejecuta de forma nativa en Workers, puedes agruparla con otros productos y las API de nuestra pila. Puedes utilizar KV, R2, D1, Queues, lo que quieras, incluso el correo electrónico.</p>
+<p>A continuación, te mostramos un ejemplo de un Worker que <a href="https://developers.cloudflare.com/email-routing/email-workers" target="_blank" rel="noopener noreferrer">recibe</a> correos electrónicos para tu dominio en Cloudflare utilizando <a href="https://developers.cloudflare.com/email-routing" target="_blank" rel="noopener noreferrer">Email Routing</a>, ejecuta Constellation utilizando el modelo de análisis de sentimiento <a href="https://huggingface.co/Xenova/t5-small/tree/main/onnx" target="_blank" rel="noopener noreferrer">t5-small,</a> añade un encabezado con la puntuación resultante, y lo reenvía a la dirección de destino.</p>
+<p>Ahora puedes utilizar Gmail o cualquier cliente de correo electrónico para aplicar una regla a tus mensajes basada en el encabezado "X-Sentiment". Por ejemplo, puede que quieras mover todos los correos molestos que estén fuera de tu bandeja de entrada a una carpeta diferente cuando lleguen.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Tensor, run } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@cloudflare/constellation'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> PostalMime </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'postal-mime'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-e36209-fff">    SENTIMENT</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> email</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">message</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> rawEmail</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> streamToArrayBuffer</span><span class="sk-24292e-fff">(event.raw, event.rawSize);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> parser</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-24292e-fff"> PostalMime.</span><span class="sk-6f42c1-ffc799">default</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> parsedEmail</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> parser.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(rawEmail);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> input</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> tokenize</span><span class="sk-24292e-fff">(parsedEmail.text)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> output</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> run</span><span class="sk-24292e-fff">( env.</span><span class="sk-005cc5-fff">SENTIMENT</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"MODEL-UUID"</span><span class="sk-24292e-fff">, input);</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    var</span><span class="sk-24292e-fff"> headers </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"X-Sentiment"</span><span class="sk-24292e-fff">, idToLabel[output.label]);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> message.</span><span class="sk-6f42c1-ffc799">forward</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"gooddestination@example.com"</span><span class="sk-24292e-fff">, headers);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>Empieza a utilizar Constellation</h2>
+<p>Hoy, lanzamos Constellation en versión beta privada. Para unirte a la lista de espera, ve al panel de control, haz clic en la pestaña Workers debajo de tu cuenta y haz clic en "Solicitar acceso". El equipo irá incorporando cuentas por grupos. Recibirás un correo electrónico cuando tu cuenta esté habilitada.</p>
+<p>Mientras tanto, puedes leer nuestra <a href="https://developers.cloudflare.com/constellation" target="_blank" rel="noopener noreferrer">documentación para desarrolladores sobre Constellation</a> y obtener más información sobre su funcionamiento y las API. Constellation se puede utilizar desde Wrangler, nuestra herramienta de línea de comandos para configurar, crear e implementar aplicaciones con los productos para desarrolladores de Cloudflare, o la puedes gestionar directamente en la interfaz de usuario del panel de control.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="510" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=715&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=640&amp;h=457&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=715&amp;h=510&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=750&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=828&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=1080&amp;h=770&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=1280&amp;h=913&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=1430&amp;h=1020&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1803 Embedded Image - l6cGpb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW455VWY6CCCM0FTQ4SQTXV7.png&amp;w=1920&amp;h=1370&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1370" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="510" class="pt-portable-image-media"></div>
+</figure>
+<p>Estamos deseando saber cómo quieres utilizar el aprendizaje automático y la inteligencia artificial con tus aplicaciones. Constellation seguirá mejorando con límites más altos, nuevos entornos de ejecución compatibles y otros modelos más grandes, pero queremos saber de ti. Tu opinión influirá, sin duda, en nuestras decisiones sobre la hoja de ruta.</p>
+<p>Una última cosa. Hoy hemos estado hablando de cómo puedes escribir Workers que utilicen Constellation, pero atento a este dato inicial. Constellation se creó utilizando la capacidad de WebAssembly, Workers, R2 y nuestras API. Procuraremos escribir un blog de seguimiento sobre cómo lo desarrollamos. No te lo pierdas.</p>
+<p>Como siempre, puedes hablar con nosotros en nuestro <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Developers Discord</a> (únete al canal #constellation) o en <a href="https://community.cloudflare.com/c/developers/constellation/97" target="_blank" rel="noopener noreferrer">el foro de la comunidad</a>. Te escuchamos.</p>
+<div id="html-block-k4x" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/f422c9ec2baed5c7139f8fc55bdee136/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2Ff422c9ec2baed5c7139f8fc55bdee136%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D2s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

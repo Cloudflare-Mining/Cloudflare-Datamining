@@ -1,301 +1,281 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3w7jaH3B0aNtw8NPhF6CPm/8af4c055c48aa7b1a2ffcdaf341117bf/511102367_1ce398ad1d_o.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3w7jaH3B0aNtw8NPhF6CPm/8af4c055c48aa7b1a2ffcdaf341117bf/511102367_1ce398ad1d_o.png" alt="511102367 1ce398ad1d o" class="kg-image" width="994" height="796" loading="lazy">
-	</figure>
-	<p><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer"><sub>CC BY-SA 2.0</sub></a><sub> </sub><a href="https://www.flickr.com/photos/davidjoyner/511102367/in/photolist-MawVM-7zyucG-7aZ4QT-6GBfU4-aFrGn6-unAh43-axBGXx-ciiroq-92cKAD-iER1r2-5bRGPh-92fVBf-92fQBm-iER1Gc-2JMg5k-8rfzDR-iERFKo-jL2WXi-iEU2RU-jL4n6N-nqbf3-iER2q6-6H9k7G-dgnntH-eMMtEx-hHiLuM-9Sx4wb-9pCef2-9RLkVe-iEU1Nb-jL27Jr-ai89xS-dWQYFd-dyZqij-7cnSxN-8dyQSg-6yATnF-3om4q-nMWdCg-2KEjsj-eoQ3Lw-eoQfdN-9snnkJ-abB6Hb-2KEvib-eoQcXG-iEU2xh-9Hz7sB-5VhaNf-2KzRJp" target="_blank" rel="noopener noreferrer"><sub>image</sub></a><sub> by </sub><a href="https://www.flickr.com/photos/davidjoyner" target="_blank" rel="noopener noreferrer"><sub>David Joyner</sub></a></p>
-	<p><a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a> is JavaScript with optional types. Here’s a simple example:</p>
-	<pre class="language-undefined"><code class="language-undefined">// Sends some data to some analytics endpoint
-function sendAnalyticsJS(data) {
-  if (typeof data.type !== 'string') {
-    throw new Error('The `type` property is required')
-  }
-
-  navigator.sendBeacon('/beacon', JSON.stringify(data))
-}
-
-
-// Results in run-time error
-//    The `type` property is required
-sendAnalyticsJS({ foo: 'bar' })</code></pre>
-	<p>The JavaScript code will result in a run-time error. This is fine if the developer catches it early, but it would be better if the developer were warned as the bug was introduced. Here’s the same code written using TypeScript:</p>
-	<pre class="language-undefined"><code class="language-undefined">// Describe the shape of the data parameter
-interface IAnalyticsData {
-  // Type is required
-  type: string
-  // All other fields are fair game
-  [propName: string]: string
-}
-
-
-// We don’t particularly need the data.type check here since
-// the compiler will stamp out the majority of those cases.
-function sendAnalytics(data: IAnalyticsData) {
-  if (typeof data.type !== 'string') {
-    throw new Error('The `type` property is required')
-  }
-
-  navigator.sendBeacon('/beacon', JSON.stringify(data))
-}
-
-
-// Results in compile-time error:
-//   Argument of type '{ foo: string; }' is not assignable to
-//   parameter of type 'IAnalyticsData'.
-//   Property 'type' is missing in type '{ foo: string; }'.
-sendAnalytics({ foo: 'bar' })</code></pre>
-	<p>These annotations are all optional and the more you add, the more the compiler can help you. Compiling the TypeScript version results in code equivalent to the first example. The only difference is that the developer is warned about an error while writing the code.</p>
-	<p>With TypeScript, JavaScript developers are given powerful tools that aid the development of applications, large and small. Anders Hejlsberg, lead architect of C# and core dev for TypeScript, describes the language as, “JavaScript that scales.”</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3jIOfMZV8iXfXxcMK7BE3k/d6a0cd9a3506b97173a9eb5c45dd3844/code-peek.gif" alt="" class="kg-image" width="712" height="395" loading="lazy">
-	</figure>
-	<p>Using TypeScript means you can:</p>
-	<ul>
-		<li>
-			<p>Interactively explore library interfaces from your text editor</p>
-		</li>
-		<li>
-			<p>Enjoy useful auto-completion</p>
-		</li>
-		<li>
-			<p>Use good <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications" target="_blank" rel="noopener noreferrer">refactoring</a> tools</p>
-		</li>
-		<li>
-			<p>Navigate your codebase via the ontology that describes it (by that, I mean jumping to class and interface definitions, modules, etc. from individual instances/references)</p>
-		</li>
-		<li>
-			<p>And most importantly to this post, generate documentation that’s tightly coupled to your codebase.</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4o7pH1ZjdsErMByLoT0rIo/20a9cdb37bb362904cef82980d290fb1/amp-viewer-docs-2.png" alt="amp-viewer-docs-2" class="kg-image" width="1312" height="704" loading="lazy">
-	</figure>
-	<p><sub><i>The screenshot above is of the generated documentation from a TypeScript project at Cloudflare.</i></sub></p>
-	<div class="flex anchor relative">
-		<h3 id="why-not-jsdoc">Why not JSDoc?</h3>
-		<a href="https://blog.cloudflare.com/#why-not-jsdoc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gM4NbM9ekay7QlBVJrifP/f6bb60a9c6d50eb2ade0172d616832c1/jsdoc-example-1.png" alt="jsdoc-example-1" class="kg-image" width="449" height="164" loading="lazy">
-	</figure>
-	<p>The amount of work required to annotate source code with JSDoc comments is comparable to adopting TypeScript annotations. However, JSDoc comments are not tightly coupled to the codebase, so when the code changes, an independent change of the JSDoc comment is also required. Contrast to TypeScript where the structure is gleaned directly from the source. Here’s a side-by-side comparison between JSDoc and TypeScript:</p>
-	<pre class="language-undefined"><code class="language-undefined">/**
- * A class representing a point
- * @class  Point
- */
-class Point {
-  /**
-   * Create a point.
-   * @param {number} x - The x value.
-   * @param {number} y - The y value.
-   */
-  constructor(x, y) {
-    /**
-     * The x coordinate
-     * @name  Point#x
-     * @type {number}
-     */
-    this.x = x
-    /**
-     * The y coordinate
-     * @name  Point#y
-     * @type {number}
-     */
-    this.y = y
-  }
-
-
-  /**
-   * Get the x value.
-   * @return {number} The x value.
-   */
-  getX() {
-    return this.x
-  }
-
-
-  /**
-   * Get the y value.
-   * @return {number} The y value.
-   */
-  getY() {
-    return this.y
-  }
-
-
-  /**
-   * Convert a string containing two comma-separated numbers into a point.
-   * @param {string} str - The string containing two comma-separated numbers.
-   * @return {Point} A Point object.
-   */
-  static fromString(str) {
-    const args = str.split(',').map(arg =&gt; +arg)
-    return new Point(args[0], args[1])
-  }
-}</code></pre>
-	<p><b>TypeScript</b></p>
-	<pre class="language-undefined"><code class="language-undefined">/** Class representing a point. */
-class Point {
-  /** The x coordinate */
-  public x: number
-  /** The x coordinate */
-  public y: number
-
-
-  /**
-   * Create a point.
-   * @param x - The x value.
-   * @param y - The y value.
-   */
-  constructor(x: number, y: number) {
-    this.x = x
-    this.y = y
-  }
-
-
-  /**
-   * Get the x value.
-   */
-  getX() {
-    return this.x
-  }
-
-
-  /**
-   * Get the y value.
-   */
-  getY() {
-    return this.y
-  }
-
-  /**
-   * Convert a string containing two comma-separated numbers into a point.
-   * @param str - The string containing two comma-separated numbers.
-   */
-  static fromString(str: string): Point {
-    const args = str.split(',').map(arg =&gt; +arg)
-    return new Point(args[0], args[1])
-  }
-}</code></pre>
-	<p>The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html#documenting-a-simple-class" target="_blank" rel="noopener noreferrer">JSDoc documentation</a> and adapted for use with TypeScript.</p>
-	<p>The annotations for TypeScript are much more compact, they’re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
-	<p>The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we won’t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
-	<div class="flex anchor relative">
-		<h3 id="using-typedoc">Using TypeDoc</h3>
-		<a href="https://blog.cloudflare.com/#using-typedoc" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At Cloudflare, we use a tool called <a href="http://typedoc.org" target="_blank" rel="noopener noreferrer">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
-	<p>If you’re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
-	<pre class="language-undefined"><code class="language-undefined">npm install --save-dev https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build</code></pre>
-	<p>Otherwise, for prior versions of TypeScript, you can install straight from </p>
-	<pre class="language-undefined"><code class="language-undefined">npm install --save-dev typedoc</code></pre>
-	<p>From within your project directory, run the following command:</p>
-	<pre class="language-undefined"><code class="language-undefined"># Change the --out flag to wherever you’d like the output to be stored
-./node_modules/.bin/typedoc --out dist/docs --mode modules .</code></pre>
-	<p>You should see a bunch of HTML documents generated. One for each class and module.</p>
-	<pre class="language-undefined"><code class="language-undefined">dist/docs
-├── assets
-│   ├── css
-│   │   ├── main.css
-│   │   └── main.css.map
-│   ├── images
-│   │   ├── icons.png
-│   │   ├── icons@2x.png
-│   │   ├── widgets.png
-│   │   └── widgets@2x.png
-│   └── js
-│       ├── main.js
-│       └── search.js
-├── classes
-│   ├── _src_my_class.html
-│   └── ...
-├── globals.html
-├── index.html
-├── interfaces
-│   ├── _src.my_interface.html
-└── modules
-    ├── _src_my_module_.html
-    └── ...</code></pre>
-	<p>I wanted to build something akin to <a href="https://lodash.com/docs" target="_blank" rel="noopener noreferrer">Lodash’s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDoc’s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
-	<pre class="language-undefined"><code class="language-undefined">./node_modules/.bin/typedoc --json dist/docs.json --mode modules</code></pre>
-	<p><i>Note: In order to use the --json flag, you’ll need to setup a proper </i><a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" rel="noopener noreferrer"><i>tsconfig.json</i></a><i> for your TypeScript project.</i></p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3xn0KEhoWHUw1oYZNtv7yX/d7107a0ca746db90d9fe50a8aa6e5e51/ts-docs-post-screen-1.png" alt="" class="kg-image" width="806" height="443" loading="lazy">
-	</figure>
-	<p>With this high-level, structured description of our code base, we can render any HTML we’d like with a few scripts and a templating language like <a href="http://handlebarsjs.com" target="_blank" rel="noopener noreferrer">Handlebars</a>. Here’s a simple script to render a list of code base modules:</p>
-	<pre class="language-undefined"><code class="language-undefined">const fs = require('fs')
-const hbs = require('handlebars')
-const project = require('./dist/docs.json')
-
-
-// The HTML template to use for our simple docs
-const tmpl = `
-&lt;!DOCTYPE HTML&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My Project Documentation&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Modules&lt;/h1&gt;
-    &lt;ul&gt;
-    {{#each project.children}}
-      &lt;li&gt;{{this.name}}&lt;/li&gt;
-    {{/each}}
-    &lt;/ul&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-`
-
-
-// Compile the template with handlebars using our project
-// object as context key
-const result = hbs.compile(tmpl)({ project })
-
-
-fs.writeFileSync('dist/docs.html', result)</code></pre>
-	<p>While this means that there is a lot of work up front to create a template that suits the needs of this particular code base, I hope to use the same infrastructure for TypeScript projects at Cloudflare moving forward.</p>
-	<div class="flex anchor relative">
-		<h3 id="more-than-api-reference">More Than API Reference</h3>
-		<a href="https://blog.cloudflare.com/#more-than-api-reference" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>TypeDoc gets us halfway there. It provides a structured and automated way to create reference material that is always in sync with our codebase; but we can do more than reference material. Suppose you’re writing a getting-started.md file. You might say something like this:</p>
-	<pre class="language-undefined"><code class="language-undefined">To get started, call the `viewer.init()` method.</code></pre>
-	<p>Since we’re using TypeDoc and Handlebars, we can assume we have all the information necessary to actually link to the source code. That might look something like this:</p>
-	<pre class="language-undefined"><code class="language-undefined">{{!-- Pull the AMPViewer class into scope --}}
-{{#Class "AMPViewer"}}
-{{!-- Pull the init member from AMPViewer into scope --}}
-{{#Member "init"}}
-{{!-- Link viewer.init(...) to its location in the source code --}}
-{{!-- Also, if the function signature of the .init() method ever changes, --}}
-{{!-- it will be reflected here --}}
-To get started, call the
-`viewer.[init({{&gt; signature signature=signatures.0}})]({{getSourceURL this.sources.0}})`
-{{/Member}}
-{{/Class}}</code></pre>
-	<p>While the above looks arcane, it’s just Markdown and Handlebars. The template contains a block helper called Class that will pull the AMPViewer class object into the current scope. Then using the AMPViewer class, we pull the init member into the current scope. We use the {{&gt; signature}} partial to pretty-print the function’s signature and the getSourceUrl helper to link to this method in the source code.</p>
-	<p>If the source code changes, our docs update too.</p>
-	<div class="flex anchor relative">
-		<h3 id="open-source-and-beyond">Open Source and Beyond</h3>
-		<a href="https://blog.cloudflare.com/#open-source-and-beyond" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Over next couple of months, we’ll be open sourcing the tools we’ve created to generate our documentation. We’ll also open source the theme shown in this post so you can generate docs without worrying about the styling. We hope to create a rich TypeScript ecosystem and to have fantastic documentation for all of our projects.</p>
-	<p>If you’re thinking of generating documentation by annotating your source, use TypeScript instead and enjoy the benefits.</p>
+<p>Documentation for JavaScript projects has traditionally been generated via annotations inserted as code comments. While this gets the job done, it seems far from ideal. In this post, I’ll explore how to use TypeScript to generate documentation from source code alone.</p>
+<p><sub><a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a> <a href="https://www.flickr.com/photos/davidjoyner/511102367/in/photolist-MawVM-7zyucG-7aZ4QT-6GBfU4-aFrGn6-unAh43-axBGXx-ciiroq-92cKAD-iER1r2-5bRGPh-92fVBf-92fQBm-iER1Gc-2JMg5k-8rfzDR-iERFKo-jL2WXi-iEU2RU-jL4n6N-nqbf3-iER2q6-6H9k7G-dgnntH-eMMtEx-hHiLuM-9Sx4wb-9pCef2-9RLkVe-iEU1Nb-jL27Jr-ai89xS-dWQYFd-dyZqij-7cnSxN-8dyQSg-6yATnF-3om4q-nMWdCg-2KEjsj-eoQ3Lw-eoQfdN-9snnkJ-abB6Hb-2KEvib-eoQcXG-iEU2xh-9Hz7sB-5VhaNf-2KzRJp" target="_blank" rel="noopener noreferrer">image</a> by <a href="https://www.flickr.com/photos/davidjoyner" target="_blank" rel="noopener noreferrer">David Joyner</a></sub></p>
+<p><a href="https://www.typescriptlang.org" target="_blank" rel="noopener noreferrer">TypeScript</a> is JavaScript with optional types. Here’s a simple example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>// Sends some data to some analytics endpoint</span></span>
+<span class="line"><span>function sendAnalyticsJS(data) {</span></span>
+<span class="line"><span>  if (typeof data.type !== 'string') {</span></span>
+<span class="line"><span>    throw new Error('The `type` property is required')</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  navigator.sendBeacon('/beacon', JSON.stringify(data))</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Results in run-time error</span></span>
+<span class="line"><span>//    The `type` property is required</span></span>
+<span class="line"><span>sendAnalyticsJS({ foo: 'bar' })</span></span></code></pre>
 </div>
+<p>The JavaScript code will result in a run-time error. This is fine if the developer catches it early, but it would be better if the developer were warned as the bug was introduced. Here’s the same code written using TypeScript:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>// Describe the shape of the data parameter</span></span>
+<span class="line"><span>interface IAnalyticsData {</span></span>
+<span class="line"><span>  // Type is required</span></span>
+<span class="line"><span>  type: string</span></span>
+<span class="line"><span>  // All other fields are fair game</span></span>
+<span class="line"><span>  [propName: string]: string</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// We don’t particularly need the data.type check here since</span></span>
+<span class="line"><span>// the compiler will stamp out the majority of those cases.</span></span>
+<span class="line"><span>function sendAnalytics(data: IAnalyticsData) {</span></span>
+<span class="line"><span>  if (typeof data.type !== 'string') {</span></span>
+<span class="line"><span>    throw new Error('The `type` property is required')</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  navigator.sendBeacon('/beacon', JSON.stringify(data))</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Results in compile-time error:</span></span>
+<span class="line"><span>//   Argument of type '{ foo: string; }' is not assignable to</span></span>
+<span class="line"><span>//   parameter of type 'IAnalyticsData'.</span></span>
+<span class="line"><span>//   Property 'type' is missing in type '{ foo: string; }'.</span></span>
+<span class="line"><span>sendAnalytics({ foo: 'bar' })</span></span></code></pre>
+</div>
+<p>These annotations are all optional and the more you add, the more the compiler can help you. Compiling the TypeScript version results in code equivalent to the first example. The only difference is that the developer is warned about an error while writing the code.</p>
+<p>With TypeScript, JavaScript developers are given powerful tools that aid the development of applications, large and small. Anders Hejlsberg, lead architect of C# and core dev for TypeScript, describes the language as, “JavaScript that scales.”</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="712" height="395" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW467V5T25KWTMB5VPDDDG2A.gif" alt="Typescript Gif" width="712" height="395" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Using TypeScript means you can:</p>
+<ul>
+	<li>Interactively explore library interfaces from your text editor</li>
+	<li>Enjoy useful auto-completion</li>
+	<li>Use good <a href="https://www.cloudflare.com/learning/cloud/how-to-refactor-applications" target="_blank" rel="noopener noreferrer">refactoring</a> tools</li>
+	<li>Navigate your codebase via the ontology that describes it (by that, I mean jumping to class and interface definitions, modules, etc. from individual instances/references)</li>
+	<li>And most importantly to this post, generate documentation that’s tightly coupled to your codebase.</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="384" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=640&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=715&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=750&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=828&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1080&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1280&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1430&amp;h=768&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="amp-viewer-docs-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47038SME7KKVF1YG1TKN6Q.png&amp;w=1312&amp;h=704&amp;f=webp" data-lightbox-width="1312" data-lightbox-height="704" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="384" class="pt-portable-image-media"></div>
+</figure>
+<p><sub><em>The screenshot above is of the generated documentation from a TypeScript project at Cloudflare.</em></sub></p>
+<h3>Why not JSDoc?</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="449" height="164" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=449&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=449&amp;h=164&amp;f=webp&amp;fit=cover&amp;position=center 449w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=640&amp;h=234&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=750&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=828&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=898&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 898w" alt="jsdoc-example-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A7B1SY49K4ZA6THQGCCR.png&amp;w=449&amp;h=164&amp;f=webp" data-lightbox-width="449" data-lightbox-height="164" data-astro-cid-7nvefuv6="true" sizes="(min-width: 449px) 449px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="449" height="164" class="pt-portable-image-media"></div>
+</figure>
+<p>The amount of work required to annotate source code with JSDoc comments is comparable to adopting TypeScript annotations. However, JSDoc comments are not tightly coupled to the codebase, so when the code changes, an independent change of the JSDoc comment is also required. Contrast to TypeScript where the structure is gleaned directly from the source. Here’s a side-by-side comparison between JSDoc and TypeScript:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>/**</span></span>
+<span class="line"><span> * A class representing a point</span></span>
+<span class="line"><span> * @class  Point</span></span>
+<span class="line"><span> */</span></span>
+<span class="line"><span>class Point {</span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Create a point.</span></span>
+<span class="line"><span>   * @param {number} x - The x value.</span></span>
+<span class="line"><span>   * @param {number} y - The y value.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  constructor(x, y) {</span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * The x coordinate</span></span>
+<span class="line"><span>     * @name  Point#x</span></span>
+<span class="line"><span>     * @type {number}</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    this.x = x</span></span>
+<span class="line"><span>    /**</span></span>
+<span class="line"><span>     * The y coordinate</span></span>
+<span class="line"><span>     * @name  Point#y</span></span>
+<span class="line"><span>     * @type {number}</span></span>
+<span class="line"><span>     */</span></span>
+<span class="line"><span>    this.y = y</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Get the x value.</span></span>
+<span class="line"><span>   * @return {number} The x value.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  getX() {</span></span>
+<span class="line"><span>    return this.x</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Get the y value.</span></span>
+<span class="line"><span>   * @return {number} The y value.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  getY() {</span></span>
+<span class="line"><span>    return this.y</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Convert a string containing two comma-separated numbers into a point.</span></span>
+<span class="line"><span>   * @param {string} str - The string containing two comma-separated numbers.</span></span>
+<span class="line"><span>   * @return {Point} A Point object.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  static fromString(str) {</span></span>
+<span class="line"><span>    const args = str.split(',').map(arg =&gt; +arg)</span></span>
+<span class="line"><span>    return new Point(args[0], args[1])</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p><strong>TypeScript</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>/** Class representing a point. */</span></span>
+<span class="line"><span>class Point {</span></span>
+<span class="line"><span>  /** The x coordinate */</span></span>
+<span class="line"><span>  public x: number</span></span>
+<span class="line"><span>  /** The x coordinate */</span></span>
+<span class="line"><span>  public y: number</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Create a point.</span></span>
+<span class="line"><span>   * @param x - The x value.</span></span>
+<span class="line"><span>   * @param y - The y value.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  constructor(x: number, y: number) {</span></span>
+<span class="line"><span>    this.x = x</span></span>
+<span class="line"><span>    this.y = y</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Get the x value.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  getX() {</span></span>
+<span class="line"><span>    return this.x</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Get the y value.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  getY() {</span></span>
+<span class="line"><span>    return this.y</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  /**</span></span>
+<span class="line"><span>   * Convert a string containing two comma-separated numbers into a point.</span></span>
+<span class="line"><span>   * @param str - The string containing two comma-separated numbers.</span></span>
+<span class="line"><span>   */</span></span>
+<span class="line"><span>  static fromString(str: string): Point {</span></span>
+<span class="line"><span>    const args = str.split(',').map(arg =&gt; +arg)</span></span>
+<span class="line"><span>    return new Point(args[0], args[1])</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>The above code sample was taken from the <a href="http://usejsdoc.org/howto-es2015-classes.html#documenting-a-simple-class" target="_blank" rel="noopener noreferrer">JSDoc documentation</a> and adapted for use with TypeScript.</p>
+<p>The annotations for TypeScript are much more compact, they’re syntax-highlighted, and most importantly, if something is wrong, the compiler lets us know. Long-form descriptions of things are still made in comments, but the type information has been moved into language semantics.</p>
+<p>The downside to adopting TypeScript is the large amount of work required to fit the build tools into your current processes. However, we won’t focus on the nitty-gritty details of build tools since the ecosystem is rapidly changing.</p>
+<h3>Using TypeDoc</h3>
+<p>At Cloudflare, we use a tool called <a href="http://typedoc.org" target="_blank" rel="noopener noreferrer">TypeDoc</a> to help build documentation. It’s set up such that documentation-generation is on watch and will re-build on codebase changes. Anybody hacking on the project will always have up-to-date docs at localhost:3000/docs.</p>
+<p>If you’re using TypeScript 2.x, use the following command to install TypeDoc for your project:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>npm install --save-dev https://github.com/DatenMetzgerX/typedoc/tarball/typescript-2-build</span></span></code></pre>
+</div>
+<p>Otherwise, for prior versions of TypeScript, you can install straight from </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>npm install --save-dev typedoc</span></span></code></pre>
+</div>
+<p>From within your project directory, run the following command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># Change the --out flag to wherever you’d like the output to be stored</span></span>
+<span class="line"><span>./node_modules/.bin/typedoc --out dist/docs --mode modules .</span></span></code></pre>
+</div>
+<p>You should see a bunch of HTML documents generated. One for each class and module.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>dist/docs</span></span>
+<span class="line"><span>├── assets</span></span>
+<span class="line"><span>│   ├── css</span></span>
+<span class="line"><span>│   │   ├── main.css</span></span>
+<span class="line"><span>│   │   └── main.css.map</span></span>
+<span class="line"><span>│   ├── images</span></span>
+<span class="line"><span>│   │   ├── icons.png</span></span>
+<span class="line"><span>│   │   ├── icons@2x.png</span></span>
+<span class="line"><span>│   │   ├── widgets.png</span></span>
+<span class="line"><span>│   │   └── widgets@2x.png</span></span>
+<span class="line"><span>│   └── js</span></span>
+<span class="line"><span>│       ├── main.js</span></span>
+<span class="line"><span>│       └── search.js</span></span>
+<span class="line"><span>├── classes</span></span>
+<span class="line"><span>│   ├── _src_my_class.html</span></span>
+<span class="line"><span>│   └── ...</span></span>
+<span class="line"><span>├── globals.html</span></span>
+<span class="line"><span>├── index.html</span></span>
+<span class="line"><span>├── interfaces</span></span>
+<span class="line"><span>│   ├── _src.my_interface.html</span></span>
+<span class="line"><span>└── modules</span></span>
+<span class="line"><span>    ├── _src_my_module_.html</span></span>
+<span class="line"><span>    └── ...</span></span></code></pre>
+</div>
+<p>I wanted to build something akin to <a href="https://lodash.com/docs" target="_blank" rel="noopener noreferrer">Lodash’s documentation</a> (a beautiful single page API reference with examples and links to source code). Luckily, you can use TypeDoc’s --json flag to produce a set of useful descriptions of your codebase in JSON format.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>./node_modules/.bin/typedoc --json dist/docs.json --mode modules</span></span></code></pre>
+</div>
+<p><em>Note: In order to use the --json flag, you’ll need to setup a proper <a href="https://www.typescriptlang.org/docs/handbook/tsconfig-json.html" target="_blank" rel="noopener noreferrer">tsconfig.json</a> for your TypeScript project.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="ts-docs-post-screen-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CXT9D75H0ARF8PYA4YHB.png&amp;w=806&amp;h=443&amp;f=webp" data-lightbox-width="806" data-lightbox-height="443" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<p>With this high-level, structured description of our code base, we can render any HTML we’d like with a few scripts and a templating language like <a href="http://handlebarsjs.com" target="_blank" rel="noopener noreferrer">Handlebars</a>. Here’s a simple script to render a list of code base modules:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>const fs = require('fs')</span></span>
+<span class="line"><span>const hbs = require('handlebars')</span></span>
+<span class="line"><span>const project = require('./dist/docs.json')</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// The HTML template to use for our simple docs</span></span>
+<span class="line"><span>const tmpl = `</span></span>
+<span class="line"><span>&lt;!DOCTYPE HTML&gt;</span></span>
+<span class="line"><span>&lt;html&gt;</span></span>
+<span class="line"><span>  &lt;head&gt;</span></span>
+<span class="line"><span>    &lt;title&gt;My Project Documentation&lt;/title&gt;</span></span>
+<span class="line"><span>  &lt;/head&gt;</span></span>
+<span class="line"><span>  &lt;body&gt;</span></span>
+<span class="line"><span>    &lt;h1&gt;Modules&lt;/h1&gt;</span></span>
+<span class="line"><span>    &lt;ul&gt;</span></span>
+<span class="line"><span>    {{#each project.children}}</span></span>
+<span class="line"><span>      &lt;li&gt;{{this.name}}&lt;/li&gt;</span></span>
+<span class="line"><span>    {{/each}}</span></span>
+<span class="line"><span>    &lt;/ul&gt;</span></span>
+<span class="line"><span>  &lt;/body&gt;</span></span>
+<span class="line"><span>&lt;/html&gt;</span></span>
+<span class="line"><span>`</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>// Compile the template with handlebars using our project</span></span>
+<span class="line"><span>// object as context key</span></span>
+<span class="line"><span>const result = hbs.compile(tmpl)({ project })</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>fs.writeFileSync('dist/docs.html', result)</span></span></code></pre>
+</div>
+<p>While this means that there is a lot of work up front to create a template that suits the needs of this particular code base, I hope to use the same infrastructure for TypeScript projects at Cloudflare moving forward.</p>
+<h3>More Than API Reference</h3>
+<p>TypeDoc gets us halfway there. It provides a structured and automated way to create reference material that is always in sync with our codebase; but we can do more than reference material. Suppose you’re writing a getting-started.md file. You might say something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>To get started, call the `viewer.init()` method.</span></span></code></pre>
+</div>
+<p>Since we’re using TypeDoc and Handlebars, we can assume we have all the information necessary to actually link to the source code. That might look something like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>{{!-- Pull the AMPViewer class into scope --}}</span></span>
+<span class="line"><span>{{#Class "AMPViewer"}}</span></span>
+<span class="line"><span>{{!-- Pull the init member from AMPViewer into scope --}}</span></span>
+<span class="line"><span>{{#Member "init"}}</span></span>
+<span class="line"><span>{{!-- Link viewer.init(...) to its location in the source code --}}</span></span>
+<span class="line"><span>{{!-- Also, if the function signature of the .init() method ever changes, --}}</span></span>
+<span class="line"><span>{{!-- it will be reflected here --}}</span></span>
+<span class="line"><span>To get started, call the</span></span>
+<span class="line"><span>`viewer.[init({{&gt; signature signature=signatures.0}})]({{getSourceURL this.sources.0}})`</span></span>
+<span class="line"><span>{{/Member}}</span></span>
+<span class="line"><span>{{/Class}}</span></span></code></pre>
+</div>
+<p>While the above looks arcane, it’s just Markdown and Handlebars. The template contains a block helper called Class that will pull the AMPViewer class object into the current scope. Then using the AMPViewer class, we pull the init member into the current scope. We use the {{&gt; signature}} partial to pretty-print the function’s signature and the getSourceUrl helper to link to this method in the source code.</p>
+<p>If the source code changes, our docs update too.</p>
+<h3>Open Source and Beyond</h3>
+<p>Over next couple of months, we’ll be open sourcing the tools we’ve created to generate our documentation. We’ll also open source the theme shown in this post so you can generate docs without worrying about the styling. We hope to create a rich TypeScript ecosystem and to have fantastic documentation for all of our projects.</p>
+<p>If you’re thinking of generating documentation by annotating your source, use TypeScript instead and enjoy the benefits.</p>

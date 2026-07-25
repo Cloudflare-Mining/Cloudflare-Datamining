@@ -1,458 +1,372 @@
-<div class="mb2 gray5">13 min read</div><img class="mr2" src="https:undefined" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Modern Linux operating systems provide many tools to run code more securely. There are <a href="https://www.man7.org/linux/man-pages/man7/namespaces.7.html" target="_blank" rel="noopener noreferrer">namespaces</a> (the basic building blocks for containers), <a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank" rel="noopener noreferrer">Linux Security Modules</a>, <a href="https://wiki.gentoo.org/wiki/Integrity_Measurement_Architecture" target="_blank" rel="noopener noreferrer">Integrity Measurement Architecture</a> etc.</p>
-	<p>In this post we will review <a href="https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html" target="_blank" rel="noopener noreferrer">Linux seccomp</a> and learn how to sandbox any (even a proprietary) application without writing a single line of code.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I6LYA0Qq7KBBc5vj9LDV0/eb6f886ee659efc0b3abd38b39024e2f/linux-sandbox-1.jpg" alt="linux-sandbox-1" class="kg-image" width="1500" height="800" loading="lazy">
-
-	</figure>
-	<p><a href="https://www.deviantart.com/qubodup/art/Tux-Flat-SVG-607655623" target="_blank" rel="noopener noreferrer">Tux by Iwan Gabovitch, GPL</a><a href="https://pixabay.com/vectors/sandpit-sandbox-container-sand-35536" target="_blank" rel="noopener noreferrer">Sandbox, Simplified Pixabay License</a></p>
-	<div class="flex anchor relative">
-		<h2 id="linux-system-calls">Linux system calls</h2>
-		<a href="https://blog.cloudflare.com/#linux-system-calls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>System calls (syscalls) is a well-defined interface between <a href="https://en.wikipedia.org/wiki/User_space" target="_blank" rel="noopener noreferrer">userspace applications</a> and the <a href="https://en.wikipedia.org/wiki/Kernel_(operating_system)" target="_blank" rel="noopener noreferrer">operating system (OS) kernel</a>. On modern operating systems most applications provide only application-specific logic as code. Applications do not, and most of the time cannot, directly access low-level hardware or networking, when they need to store data or send something over the wire. Instead they use system calls to ask the OS kernel to do specific hardware and networking tasks on their behalf:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2t6kOXlTPfyGwZ5IEPq07g/03b56292c1136c5fb3f7694e3e44fcdd/image2-2.png" alt="image2-2" class="kg-image" width="1280" height="772" loading="lazy">
-
-	</figure>
-	<p>Apart from providing a generic high level way for applications to interact with the low level hardware, the system call architecture allows the OS kernel to manage available resources between applications as well as enforce policies, like application permissions, networking access control lists etc.</p>
-	<div class="flex anchor relative">
-		<h2 id="linux-seccomp">Linux seccomp</h2>
-		<a href="https://blog.cloudflare.com/#linux-seccomp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Linux seccomp is <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">yet another syscall</a> on Linux, but it is a bit special, because it influences how the OS kernel will behave when the application uses other system calls. By default, the OS kernel has almost no insight into userspace application logic, so it provides all the possible services it can. But not all applications require all services. Consider an application which converts image formats: it needs the ability to read and write data from disk, but in its simplest form probably does not need any network access. Using seccomp an application can declare its intentions in advance to the Linux kernel. For this particular case it can notify the kernel that it will be using the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a> and <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write</a> system calls, but never the <a href="https://www.man7.org/linux/man-pages/man2/send.2.html" target="_blank" rel="noopener noreferrer">send</a> and <a href="https://www.man7.org/linux/man-pages/man2/recv.2.html" target="_blank" rel="noopener noreferrer">recv</a> system calls (because its intent is to work with local files and never with the network). It’s like establishing a contract between the application and the OS kernel:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6X06iaPGGtyi9O1geWqZq8/8bb6c0006df4e30c5d5de2ccd31ecf5f/image1-4.png" alt="image1-4" class="kg-image" width="1602" height="752" loading="lazy">
-
-	</figure>
-	<p>But what happens if the application later breaks the contract and tries to use one of the system calls it promised not to use? The kernel will “penalise” the application, usually by immediately terminating it. Linux seccomp also <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">allows less restrictive actions</a> for the kernel to take:</p>
-	<ul>
-		<li>
-			<p>instead of terminating the whole application, the kernel can be requested to terminate only the thread, which issued the prohibited system call</p>
-		</li>
-		<li>
-			<p>the kernel may just send a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener noreferrer">signal</a> to the calling thread</p>
-		</li>
-		<li>
-			<p>the seccomp policy can specify an error code, which the kernel will then return to the calling application instead of executing the prohibited system call</p>
-		</li>
-		<li>
-			<p>if the violating process is under <a href="https://man7.org/linux/man-pages/man2/ptrace.2.html" target="_blank" rel="noopener noreferrer">ptrace</a> (for example executing under a debugger), the kernel can notify the tracer (the debugger) that a prohibited system call is about to happen and let the debugger decide what to do</p>
-		</li>
-		<li>
-			<p>the kernel may be instructed to allow and execute the system call, but log the attempt: this is useful, when we want to verify that our seccomp policy is not too tight without the risk of terminating the application and potentially creating an outage</p>
-		</li>
-	</ul>
-	<p>Although there is a lot of flexibility in defining the potential penalty for the application, from a security perspective it is usually best to stick with the complete application termination upon seccomp policy violation. The reason for that will be described later in the examples in the post.</p>
-	<p>So why would the application take the risk of being abruptly terminated and declare its intentions beforehand, if it can just be “silent” and the OS kernel will allow it to use any system call by default? Of course, for a normal behaving application it makes no sense, but it turns out this feature is quite effective to protect from rogue applications and <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution" target="_blank" rel="noopener noreferrer">arbitrary code execution</a> exploits.</p>
-	<p>Imagine our image format converter is written in some unsafe language and <a href="https://imagetragick.com" target="_blank" rel="noopener noreferrer">an attacker was able to take control of the application by making it process some malformed image</a>. What the attacker might do is to try to steal some sensitive information from the machine running our converter and send it to themselves via the network. By default, the OS kernel will most likely allow it and a data leak will happen. But if our image converter “confined” (or sandboxed) itself beforehand to only read and write local data the kernel will terminate the application when the latter tries to leak the data over the network thus preventing the leak and locking out the attacker from our system!</p>
-	<div class="flex anchor relative">
-		<h2 id="integrating-seccomp-into-the-application">Integrating seccomp into the application</h2>
-		<a href="https://blog.cloudflare.com/#integrating-seccomp-into-the-application" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To see how seccomp can be used in practice, let’s consider a toy example program</p>
-	<p><i>myos.c:</i></p>
-	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;sys/utsname.h&gt;
-
-int main(void)
-{
-    struct utsname name;
-
-    if (uname(&amp;name)) {
-        perror("uname failed: ");
-        return 1;
-    }
-
-    printf("My OS is %s!\n", name.sysname);
-    return 0;
-}</code></pre>
-	<p></p>
-	<p>This is a simplified version of the <a href="https://www.man7.org/linux/man-pages/man1/uname.1.html" target="_blank" rel="noopener noreferrer">uname command line tool</a>, which just prints your operating system name. Like its full-featured counterpart, it uses the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> to actually get the name of the current operating system from the kernel. Let’s see it action:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos.c
-$ ./myos
-My OS is Linux!</code></pre>
-	<p></p>
-	<p>Great! We’re on Linux, so can further experiment with <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> (it is a Linux-only feature). Notice that we’re properly handling the error code after invoking the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a>. However, according to the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">man page</a> it can only fail, when the passed in buffer pointer is invalid. And in this case the set error number will be “EINVAL”, which translates to invalid parameter. In our case, the “struct utsname” structure is being allocated on the stack, so our pointer will always be valid. In other words, in normal circumstances the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> should never fail in this particular program.</p>
-	<p>To illustrate seccomp capabilities we will add a “sandbox” function to our program before the main logic</p>
-	<p><i>myos_raw_seccomp.c:</i></p>
-	<pre class="language-c"><code class="language-c">#include &lt;linux/seccomp.h&gt;
-#include &lt;linux/filter.h&gt;
-#include &lt;linux/audit.h&gt;
-#include &lt;sys/ptrace.h&gt;
-#include &lt;sys/prctl.h&gt;
-
-#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;stddef.h&gt;
-#include &lt;sys/utsname.h&gt;
-#include &lt;errno.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;sys/syscall.h&gt;
-
-static void sandbox(void)
-{
-    struct sock_filter filter[] = {
-        /* seccomp(2) says we should always check the arch */
-        /* as syscalls may have different numbers on different architectures */
-        /* see https://fedora.juszkiewicz.com.pl/syscalls.html */
-        /* for simplicity we only allow x86_64 */
-        BPF_STMT(BPF_LD | BPF_W | BPF_ABS, (offsetof(struct seccomp_data, arch))),
-        /* if not x86_64, tell the kernel to kill the process */
-        BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, AUDIT_ARCH_X86_64, 0, 4),
-        /* get the actual syscall number */
-        BPF_STMT(BPF_LD | BPF_W | BPF_ABS, (offsetof(struct seccomp_data, nr))),
-        /* if "uname", tell the kernel to return EPERM, otherwise just allow */
-        BPF_JUMP(BPF_JMP | BPF_JEQ | BPF_K, SYS_uname, 0, 1),
-        BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ERRNO | (EPERM &amp; SECCOMP_RET_DATA)),
-        BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_ALLOW),
-        BPF_STMT(BPF_RET | BPF_K, SECCOMP_RET_KILL),
-    };
-
-    struct sock_fprog prog = {
-        .len = (unsigned short) (sizeof(filter) / sizeof(filter[0])),
-        .filter = filter,
-    };
-
-    /* see seccomp(2) on why this is needed */
-    if (prctl(PR_SET_NO_NEW_PRIVS, 1, 0, 0, 0)) {
-        perror("PR_SET_NO_NEW_PRIVS failed");
-        exit(1);
-    };
-
-    /* glibc does not have a wrapper for seccomp(2) */
-    /* invoke it via the generic syscall wrapper */
-    if (syscall(SYS_seccomp, SECCOMP_SET_MODE_FILTER, 0, &amp;prog)) {
-        perror("seccomp failed");
-        exit(1);
-    };
-}
-
-int main(void)
-{
-    struct utsname name;
-
-    sandbox();
-
-    if (uname(&amp;name)) {
-        perror("uname failed");
-        return 1;
-    }
-
-    printf("My OS is %s!\n", name.sysname);
-    return 0;
-}</code></pre>
-	<p></p>
-	<p>To sandbox itself the application defines a <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">BPF program</a>, which implements the desired sandboxing policy. Then the application passes this program to the kernel via the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> system call. The kernel does some validation checks to ensure the BPF program is OK and then runs this program on every system call the application makes. The results of the execution of the program is used by the kernel to determine if the current call complies with the desired policy. In other words the BPF program is the “contract” between the application and the kernel.</p>
-	<p>In our toy example above, the BPF program simply checks which system call is about to be invoked. If the application is trying to use the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> we tell the kernel to just return a EPERM (which stands for “operation not permitted”) error code. We also tell the kernel to allow any other system call. Let’s see if it works now:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos_raw_seccomp.c
-$ ./myos
-uname failed: Operation not permitted</code></pre>
-	<p><code></code></p>
-	<p><code>uname</code> failed now with the EPERM error code and EPERM is not even described as a potential failure code in the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname manpage</a>! So we know now that this happened because we “told” the kernel to prohibit us using the uname syscall and to return EPERM instead. We can double check this by replacing EPERM with some other error code, which is totally inappropriate for this context, for example ENETDOWN (“network is down”). Why would we need the network to be up to just get the currently executing OS? Yet, recompiling and rerunning the program we get:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos_raw_seccomp.c
-$ ./myos
-uname failed: Network is down</code></pre>
-	<p></p>
-	<p>We can also verify the other part of our “contract” works as expected. We told the kernel to allow any other system call, remember? In our program, when uname fails, we convert the error code to a human readable message and print it on the screen with the <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html" target="_blank" rel="noopener noreferrer">perror</a> function. To print on the screen <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html" target="_blank" rel="noopener noreferrer">perror</a> uses the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write system call</a> under the hood and since we can actually see the printed error message, we know that the kernel allowed our program to make the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write system call</a> in the first place.</p>
-	<div class="flex anchor relative">
-		<h3 id="seccomp-with-libseccomp">seccomp with libseccomp</h3>
-		<a href="https://blog.cloudflare.com/#seccomp-with-libseccomp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While it is possible to use seccomp directly, as in the examples above, BPF programs are cumbersome to write by hand and hard to debug, review and update later. That’s why it is usually a good idea to use a more high-level library, which abstracts away most of the low-level details. Luckily <a href="https://github.com/seccomp/libseccomp" target="_blank" rel="noopener noreferrer">such a library exists</a>: it is called libseccomp and is even recommended by the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp man page</a>.</p>
-	<p>Let’s rewrite our program’s <code>sandbox()</code> function to use this library instead:</p>
-	<p><i>myos_libseccomp.c:</i></p>
-	<pre class="language-c"><code class="language-c">#define _GNU_SOURCE
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;sys/utsname.h&gt;
-#include &lt;seccomp.h&gt;
-#include &lt;err.h&gt;
-
-static void sandbox(void)
-{
-    /* allow all syscalls by default */
-    scmp_filter_ctx seccomp_ctx = seccomp_init(SCMP_ACT_ALLOW);
-    if (!seccomp_ctx)
-        err(1, "seccomp_init failed");
-
-    /* kill the process, if it tries to use "uname" syscall */
-    if (seccomp_rule_add_exact(seccomp_ctx, SCMP_ACT_KILL, seccomp_syscall_resolve_name("uname"), 0)) {
-        perror("seccomp_rule_add_exact failed");
-        exit(1);
-    }
-
-    /* apply the composed filter */
-    if (seccomp_load(seccomp_ctx)) {
-        perror("seccomp_load failed");
-        exit(1);
-    }
-
-    /* release allocated context */
-    seccomp_release(seccomp_ctx);
-}
-
-int main(void)
-{
-    struct utsname name;
-
-    sandbox();
-
-    if (uname(&amp;name)) {
-        perror("uname failed: ");
-        return 1;
-    }
-
-    printf("My OS is %s!\n", name.sysname);
-    return 0;
-}</code></pre>
-	<p></p>
-	<p>Our <code>sandbox()</code> function not only became shorter and much more readable, but also provided the ability to reference syscalls in our rules by names and not internal numbers as well as not having to deal with other quirks, like setting <code>PR_SET_NO_NEW_PRIVS</code> bit and dealing with system architectures.</p>
-	<p>It is worth noting we have modified our seccomp policy a bit. In the raw seccomp example above we instructed the kernel to return an error code when the application tries to execute a prohibited syscall. This is good for demonstration purposes, but in most cases a stricter action is required. Just returning an error code and allowing the application to continue gives the potentially malicious code a chance to bypass the policy. There are many syscalls in Linux and some of them do the same or similar things. For example, we might want to prohibit the application to read data from disk, so we deny the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a> syscall in our policy and tell the kernel to return an error code instead. However, if the application does get exploited, the exploit code/logic might look like below:</p>
-	<pre class="language-c"><code class="language-c">…
-if (-1 == read(fd, buf, count)) {
-    /* hm… read failed, but what about pread? */
-    if (-1 == pread(fd, buf, count, offset) {
-        /* what about readv? */ ...
-    }
-    /* bypassed the prohibited read(2) syscall */
-}
-…</code></pre>
-	<p></p>
-	<p>Wait what?! There is more than one read system call? Yes, there are <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a>, <a href="https://man7.org/linux/man-pages/man2/pread.2.html" target="_blank" rel="noopener noreferrer">pread</a>, <a href="https://man7.org/linux/man-pages/man2/readv.2.html" target="_blank" rel="noopener noreferrer">readv</a> as well as more obscure ones, like <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about">io_submit</a> and <code>io_uring_enter</code>. Of course, it is our fault for providing incomplete seccomp policy, which does not block all possible read syscalls. But if at least we had instructed the kernel to terminate the process immediately upon violation of the first plain <code>read</code>, the malicious code above would not have the chance to be clever and try other options.</p>
-	<p>Given the above in the libseccomp example we have a stricter policy now, which tells the kernel to terminate the process upon the policy violation. Let’s see if it works:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos_libseccomp.c -lseccomp
-$ ./myos
-Bad system call</code></pre>
-	<p></p>
-	<p>Notice that we need to link against <a href="https://github.com/seccomp/libseccomp" target="_blank" rel="noopener noreferrer">libseccomp</a> when compiling the application. Also, when we run the application, we don’t see the <code>uname failed: Operation not permitted</code> error output anymore, because we don’t give the application the ability to even print a failure message. Instead, we see a <code>Bad system call</code> message from the shell, which tells us that the application was terminated with a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener noreferrer">signal</a>. Great!</p>
-	<div class="flex anchor relative">
-		<h2 id="zero-code-seccomp">zero code seccomp</h2>
-		<a href="https://blog.cloudflare.com/#zero-code-seccomp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The previous examples worked fine, but both of them have one disadvantage: we actually needed to modify the source code to embed our desired seccomp policy into the application. This is because <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp syscall</a> affects the calling process and its children, but there is no interface to inject the policy from “outside”. It is expected that developers will sandbox their code themselves as part of the application logic, but in practice this rarely happens. When developers are starting a new project, most of the time the focus is on primary functionality and security features are usually either postponed or omitted altogether. Also, most real-world software is usually written using some high-level programming language and/or a framework, where the developers do not deal with the system calls directly and probably are even unaware which system calls are being used by their code.</p>
-	<p>On the other hand we have system operators, sysadmins, SRE and other folks, who run the above code in production. They are more incentivized to keep production systems secure, thus would probably want to sandbox the services as much as possible. But most of the time they don’t have access to the source code. So there are mismatched expectations: developers have the ability to sandbox their code, but are usually not incentivized to do so and operators have the incentive to sandbox the code, but don’t have the ability.</p>
-	<p>This is where “zero code seccomp” might help, where an external operator can inject the desired sandbox policy into any process without needing to modify any source code. <a href="https://www.freedesktop.org/wiki/Software/systemd" target="_blank" rel="noopener noreferrer">Systemd</a> is one of the popular implementations of a “zero code seccomp” approach. Systemd-managed services can have a <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> directive defined in their <a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html" target="_blank" rel="noopener noreferrer">unit files</a> listing all the system calls the managed service is allowed to make. As an example, let’s go back to our toy application without any sandboxing code embedded:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos.c
-$ ./myos
-My OS is Linux!</code></pre>
-	<p></p>
-	<p>Now we can run the same code with systemd, but prohibit the application for using <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname</a> without changing or recompiling any code (we’re using <a href="https://www.freedesktop.org/software/systemd/man/systemd-run.html" target="_blank" rel="noopener noreferrer">systemd-run</a> to create an ephemeral systemd service unit for us):</p>
-	<pre class="language-bash"><code class="language-bash">$ systemd-run --user --pty --same-dir --wait --collect --service-type=exec --property="SystemCallFilter=~uname" ./myos
-Running as unit: run-u0.service
-Press ^] three times within 1s to disconnect TTY.
-Finished with result: signal
-Main processes terminated with: code=killed/status=SYS
-Service runtime: 6ms</code></pre>
-	<p></p>
-	<p>We don’t see the normal <code>My OS is Linux!</code> output anymore and systemd conveniently tells us that the managed process was terminated with a <code>SIGSYS</code> signal. We can even go further and use another directive <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallErrorNumber=" target="_blank" rel="noopener noreferrer"><code>SystemCallErrorNumber=</code></a> to configure our seccomp policy not to terminate the application, but return an error code instead as in our first seccomp raw example:</p>
-	<pre class="language-bash"><code class="language-bash">$ systemd-run --user --pty --same-dir --wait --collect --service-type=exec --property="SystemCallFilter=~uname" --property="SystemCallErrorNumber=ENETDOWN" ./myos
-Running as unit: run-u2.service
-Press ^] three times within 1s to disconnect TTY.
-uname failed: Network is down
-Finished with result: exit-code
-Main processes terminated with: code=exited/status=1
-Service runtime: 6ms</code></pre>
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="systemd-small-print">systemd small print</h3>
-		<a href="https://blog.cloudflare.com/#systemd-small-print" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Great! We can now inject almost any seccomp policy into any process without the need to write any code or recompile the application. However, there is an interesting statement in the <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer">systemd documentation</a>:</p>
-	<blockquote>
-		<p>...Note that the <code>execve, exit, exit_group, getrlimit, rt_sigreturn, sigreturn</code> system calls and the system calls for querying time and sleeping are implicitly whitelisted and do not need to be listed explicitly...</p>
-	</blockquote>
-	<p>Some system calls are implicitly allowed and we don’t have to list them. This is mostly related to the way how systemd manages processes and injects the seccomp policy. We established earlier that seccomp policy applies to the current process and its children. So, to inject the policy, systemd <a href="https://www.man7.org/linux/man-pages/man2/fork.2.html" target="_blank" rel="noopener noreferrer">forks</a> itself, calls <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> in the forked process and then <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execs</a> the forked process into the target application. That’s why always allowing the <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> system call is necessary in the first place, because otherwise systemd cannot do its job as a service manager.</p>
-	<p>But what if we want to explicitly prohibit some of these system calls? If we continue with the <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> as an example, that can actually be a dangerous system call most applications would want to prohibit. Seccomp is an effective tool to protect the code from arbitrary code execution exploits, remember? If a malicious actor takes over our code, most likely the first thing they will try is to get a shell (or replace our code with any other application which is easier to control) by directing our code to call <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> with the desired binary. So, if our code does not need <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> for its main functionality, it would be a good idea to prohibit it. Unfortunately, it is not possible with the systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> approach...</p>
-	<div class="flex anchor relative">
-		<h2 id="introducing-cloudflare-sandbox">Introducing Cloudflare sandbox</h2>
-		<a href="https://blog.cloudflare.com/#introducing-cloudflare-sandbox" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We really liked the “zero code seccomp” approach with systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> directive, but were not satisfied with its limitations. We decided to take it one step further and make it possible to prohibit any system call in any process externally without touching its source code, so came up with the <a href="https://github.com/cloudflare/sandbox" target="_blank" rel="noopener noreferrer">Cloudflare sandbox</a>. It’s a simple standalone toolkit consisting of a shared library and an executable. The shared library is supposed to be used with dynamically linked applications and the executable is for statically linked applications.</p>
-	<div class="flex anchor relative">
-		<h3 id="sandboxing-dynamically-linked-executables">sandboxing dynamically linked executables</h3>
-		<a href="https://blog.cloudflare.com/#sandboxing-dynamically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For dynamically linked executables it is possible to inject custom code into the process by utilizing the <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer"><code>LD_PRELOAD</code></a> environment variable. The <code>libsandbox.so</code> shared library from our toolkit also contains a so-called <a href="https://gcc.gnu.org/onlinedocs/gccint/Initialization.html" target="_blank" rel="noopener noreferrer">initialization routine</a>, which should be executed before the main logic. This is how we make the target application sandbox itself:</p>
-	<ul>
-		<li>
-			<p><a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer"><code>LD_PRELOAD</code></a> tells the dynamic loader to load our <code>libsandbox.so</code> as part of the application, when it starts</p>
-		</li>
-		<li>
-			<p>the runtime executes the <a href="https://gcc.gnu.org/onlinedocs/gccint/Initialization.html" target="_blank" rel="noopener noreferrer">initialization routine</a> from the <code>libsandbox.so</code> before most of the main logic</p>
-		</li>
-		<li>
-			<p>our initialization routine configures the sandbox policy described in special environment variables</p>
-		</li>
-		<li>
-			<p>by the time the main application logic begin executing, the target process has the configured seccomp policy enforced</p>
-		</li>
-	</ul>
-	<p>Let’s see how it works with our <code>myos</code> toy tool. First, we need to make sure it is actually a dynamically linked application:</p>
-	<pre class="language-bash"><code class="language-bash">$ ldd ./myos
-	linux-vdso.so.1 (0x00007ffd8e1e3000)
-	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f339ddfb000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f339dfcf000)</code></pre>
-	<p></p>
-	<p>Yes, it is . Now, let’s prohibit it from using the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname</a> system call with our toolkit:</p>
-	<pre class="language-bash"><code class="language-bash">$ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so SECCOMP_SYSCALL_DENY=uname ./myos
-adding uname to the process seccomp filter
-Bad system call</code></pre>
-	<p></p>
-	<p>Yet again, we’ve managed to inject our desired seccomp policy into the <code>myos</code> application without modifying or recompiling it. The advantage of this approach is that it doesn’t have the shortcomings of the systemd’s <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> and we can block any system call (luckily <a href="https://www.gnu.org/software/bash" target="_blank" rel="noopener noreferrer">Bash</a> is a dynamically linked application as well):</p>
-	<pre class="language-bash"><code class="language-bash">$ /bin/bash -c 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'
-I will try to execve something...
-Doing arbitrary code execution!!!
-$ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so SECCOMP_SYSCALL_DENY=execve /bin/bash -c 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'
-adding execve to the process seccomp filter
-I will try to execve something...
-Bad system call</code></pre>
-	<p></p>
-	<p>The only problem here is that we may accidentally forget to <code>LD_PRELOAD</code> our <code>libsandbox.so</code> library and potentially run unprotected. Also, as described in the <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">man page</a>, <code>LD_PRELOAD</code> has some limitations. We can overcome all these problems by making <code>libsandbox.so</code> a permanent part of our target application:</p>
-	<pre class="language-bash"><code class="language-bash">$ patchelf --add-needed /usr/lib/x86_64-linux-gnu/libsandbox.so ./myos
-$ ldd ./myos
-	linux-vdso.so.1 (0x00007fff835ae000)
-	/usr/lib/x86_64-linux-gnu/libsandbox.so (0x00007fc4f55f2000)
-	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fc4f5425000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007fc4f5647000)</code></pre>
-	<p></p>
-	<p>Again, we didn’t need access to the source code here, but patched the compiled binary instead. Now we can just configure our seccomp policy as before without the need of <code>LD_PRELOAD</code>:</p>
-	<pre class="language-bash"><code class="language-bash">$ ./myos
-My OS is Linux!
-$ SECCOMP_SYSCALL_DENY=uname ./myos
-adding uname to the process seccomp filter
-Bad system call</code></pre>
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="sandboxing-statically-linked-executables">sandboxing statically linked executables</h3>
-		<a href="https://blog.cloudflare.com/#sandboxing-statically-linked-executables" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The above method is quite convenient and easy, but it doesn’t work for statically linked executables:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -static -o myos myos.c
-$ ldd ./myos
-	not a dynamic executable
-$ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so SECCOMP_SYSCALL_DENY=uname ./myos
-My OS is Linux!</code></pre>
-	<p></p>
-	<p>This is because there is no <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">dynamic loader</a> involved in starting a statically linked executable, so <code>LD_PRELOAD</code> has no effect. For this case our toolkit contains a special application launcher, which will inject the seccomp rules similarly to the way systemd does it:</p>
-	<pre class="language-bash"><code class="language-bash">$ sandboxify ./myos
-My OS is Linux!
-$ SECCOMP_SYSCALL_DENY=uname sandboxify ./myos
-adding uname to the process seccomp filter</code></pre>
-	<p></p>
-	<p>Note that we don’t see the <code>Bad system call</code> shell message anymore, because our target executable is being started by the launcher instead of the shell directly. Unlike systemd however, we can use this launcher to block dangerous system calls, like <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a>, as well:</p>
-	<pre class="language-bash"><code class="language-bash">$ sandboxify /bin/bash -c 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'
-I will try to execve something...
-Doing arbitrary code execution!!!
-SECCOMP_SYSCALL_DENY=execve sandboxify /bin/bash -c 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'
-adding execve to the process seccomp filter
-I will try to execve something...</code></pre>
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="sandboxify-vs-libsandbox-so">sandboxify vs libsandbox.so</h3>
-		<a href="https://blog.cloudflare.com/#sandboxify-vs-libsandbox-so" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>From the examples above you may notice that it is possible to use <code>sandboxify</code> with dynamically linked executables as well, so why even bother with <code>libsandbox.so</code>? The difference becomes visible, when we start using not the “denylist” policy as in most examples in this post, but rather the preferred “allowlist” policy, where we explicitly allow only the system calls we need, but prohibit everything else.</p>
-	<p>Let’s convert our toy application back into the dynamically-linked one and try to come up with the minimal list of allowed system calls it needs to function properly:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o myos myos.c
-$ ldd ./myos
-	linux-vdso.so.1 (0x00007ffe027f6000)
-	libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f4f1410a000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f4f142de000)
-$ LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so SECCOMP_SYSCALL_ALLOW=exit_group:fstat:uname:write ./myos
-adding exit_group to the process seccomp filter
-adding fstat to the process seccomp filter
-adding uname to the process seccomp filter
-adding write to the process seccomp filter
-My OS is Linux</code></pre>
-	<p></p>
-	<p>So we need to allow 4 system calls: <code>exit_group:fstat:uname:write</code>. This is the tightest “sandbox”, which still doesn’t break the application. If we remove any system call from this list, the application will terminate with the <code>Bad system call</code> message (try it yourself!).</p>
-	<p>If we use the same allowlist, but with the <code>sandboxify</code> launcher, things do not work anymore:</p>
-	<pre class="language-bash"><code class="language-bash">$ SECCOMP_SYSCALL_ALLOW=exit_group:fstat:uname:write sandboxify ./myos
-adding exit_group to the process seccomp filter
-adding fstat to the process seccomp filter
-adding uname to the process seccomp filter
-adding write to the process seccomp filter</code></pre>
-	<p></p>
-	<p>The reason is <code>sandboxify</code> and <code>libsandbox.so</code> inject seccomp rules at different stages of the process lifecycle. Consider the following very high level diagram of a process startup:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1gnqXj5b3tLBdG5pG9b9yH/ff6fb1ab546047ed8fabb610bee2c1df/image3-2.png" alt="image3-2" class="kg-image" width="1646" height="774" loading="lazy">
-
-	</figure>
-	<p>
-		In a nutshell, every process has two runtime stages: “runtime init” and the “main logic”. The main logic is basically the code, which is located in the program <code>main()</code> function and other code put there by the application developers. But the process usually needs to do some work before the code from the <code>main()</code> function is able to execute - we call this work the “runtime init” on the diagram above. Developers do not write this code directly, but most of the time this code is automatically generated by the compiler toolchain, which is used to compile the source code.</p>
-	<p>To do its job, the “runtime init” stage uses a lot of different system calls, but most of them are not needed later at the “main logic” stage. If we’re using the “allowlist” approach for our sandboxing, it does not make sense to allow these system calls for the whole duration of the program, if they are only used once on program init. This is where the difference between <code>libsandbox.so</code> and <code>sandboxify</code> comes from: <code>libsandbox.so</code> enforces the seccomp rules usually after the “runtime init” stage has already executed, so we don’t have to allow most system calls from that stage. <code>sandboxify</code> on the other hand enforces the policy before the “runtime init” stage, so we have to allow all the system calls from both stages, which usually results in a bigger allowlist, thus wider attack surface.</p>
-	<p>Going back to our toy <code>myos</code> example, here is the minimal list of all the system calls we need to allow to make the application work under our sandbox:</p>
-	<pre class="language-bash"><code class="language-bash">$ SECCOMP_SYSCALL_ALLOW=access:arch_prctl:brk:close:exit_group:fstat:mmap:mprotect:munmap:openat:read:uname:write sandboxify ./myos
-adding access to the process seccomp filter
-adding arch_prctl to the process seccomp filter
-adding brk to the process seccomp filter
-adding close to the process seccomp filter
-adding exit_group to the process seccomp filter
-adding fstat to the process seccomp filter
-adding mmap to the process seccomp filter
-adding mprotect to the process seccomp filter
-adding munmap to the process seccomp filter
-adding openat to the process seccomp filter
-adding read to the process seccomp filter
-adding uname to the process seccomp filter
-adding write to the process seccomp filter
-My OS is Linux!</code></pre>
-	<p></p>
-	<p>It is 13 syscalls vs 4 syscalls, if we’re using the <code>libsandbox.so</code> approach!</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusions">Conclusions</h2>
-		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this post we discussed how to easily sandbox applications on Linux without the need to write any additional code. We introduced the <a href="https://github.com/cloudflare/sandbox" target="_blank" rel="noopener noreferrer">Cloudflare sandbox toolkit</a> and discussed the different approaches we take at sandboxing dynamically linked applications vs statically linked applications.</p>
-	<p>Having safer code online helps to build a Better Internet and we would be happy if you find our <a href="https://github.com/cloudflare/sandbox" target="_blank" rel="noopener noreferrer">sandbox toolkit</a> useful. Looking forward to the feedback, improvements and other contributions!</p>
+<p>Modern Linux operating systems provide many tools to run code more securely. There are <a href="https://www.man7.org/linux/man-pages/man7/namespaces.7.html" target="_blank" rel="noopener noreferrer">namespaces</a> (the basic building blocks for containers), <a href="https://www.kernel.org/doc/html/latest/admin-guide/LSM/index.html" target="_blank" rel="noopener noreferrer">Linux Security Modules</a>, <a href="https://wiki.gentoo.org/wiki/Integrity_Measurement_Architecture" target="_blank" rel="noopener noreferrer">Integrity Measurement Architecture</a> etc.</p>
+<p>In this post we will review <a href="https://www.kernel.org/doc/html/latest/userspace-api/seccomp_filter.html" target="_blank" rel="noopener noreferrer">Linux seccomp</a> and learn how to sandbox any (even a proprietary) application without writing a single line of code.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="381" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=715&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=640&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=715&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=750&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=828&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=1080&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=1280&amp;h=682&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=1430&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="linux-sandbox-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7WHQ8NS6NWPCF8F3QQS.jpg&amp;w=1500&amp;h=800&amp;f=webp" data-lightbox-width="1500" data-lightbox-height="800" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="381" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><a href="https://www.deviantart.com/qubodup/art/Tux-Flat-SVG-607655623" target="_blank" rel="noopener noreferrer">Tux by Iwan Gabovitch, GPL</a><a href="https://pixabay.com/vectors/sandpit-sandbox-container-sand-35536" target="_blank" rel="noopener noreferrer">Sandbox, Simplified Pixabay License</a></p>
+<h2>Linux system calls</h2>
+<p>System calls (syscalls) is a well-defined interface between <a href="https://en.wikipedia.org/wiki/User_space" target="_blank" rel="noopener noreferrer">userspace applications</a> and the <a href="https://en.wikipedia.org/wiki/Kernel_(operating_system)" target="_blank" rel="noopener noreferrer">operating system (OS) kernel</a>. On modern operating systems most applications provide only application-specific logic as code. Applications do not, and most of the time cannot, directly access low-level hardware or networking, when they need to store data or send something over the wire. Instead they use system calls to ask the OS kernel to do specific hardware and networking tasks on their behalf:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="431" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=715&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=640&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=715&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=750&amp;h=452&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=828&amp;h=499&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=1080&amp;h=651&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=1280&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=1430&amp;h=862&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45M87TF5MSTPP2D3XQVZE8.png&amp;w=1280&amp;h=772&amp;f=webp" data-lightbox-width="1280" data-lightbox-height="772" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="431" class="pt-portable-image-media"></div>
+</figure>
+<p>Apart from providing a generic high level way for applications to interact with the low level hardware, the system call architecture allows the OS kernel to manage available resources between applications as well as enforce policies, like application permissions, networking access control lists etc.</p>
+<h2>Linux seccomp</h2>
+<p>Linux seccomp is <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">yet another syscall</a> on Linux, but it is a bit special, because it influences how the OS kernel will behave when the application uses other system calls. By default, the OS kernel has almost no insight into userspace application logic, so it provides all the possible services it can. But not all applications require all services. Consider an application which converts image formats: it needs the ability to read and write data from disk, but in its simplest form probably does not need any network access. Using seccomp an application can declare its intentions in advance to the Linux kernel. For this particular case it can notify the kernel that it will be using the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a> and <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write</a> system calls, but never the <a href="https://www.man7.org/linux/man-pages/man2/send.2.html" target="_blank" rel="noopener noreferrer">send</a> and <a href="https://www.man7.org/linux/man-pages/man2/recv.2.html" target="_blank" rel="noopener noreferrer">recv</a> system calls (because its intent is to work with local files and never with the network). It’s like establishing a contract between the application and the OS kernel:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=640&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=750&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=828&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=1080&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=1280&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=1430&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1-4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486YSN9899MRD9H92386X0.png&amp;w=1602&amp;h=752&amp;f=webp" data-lightbox-width="1602" data-lightbox-height="752" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="336" class="pt-portable-image-media"></div>
+</figure>
+<p>But what happens if the application later breaks the contract and tries to use one of the system calls it promised not to use? The kernel will “penalise” the application, usually by immediately terminating it. Linux seccomp also <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">allows less restrictive actions</a> for the kernel to take:</p>
+<ul>
+	<li>instead of terminating the whole application, the kernel can be requested to terminate only the thread, which issued the prohibited system call</li>
+	<li>the kernel may just send a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener noreferrer">signal</a> to the calling thread</li>
+	<li>the seccomp policy can specify an error code, which the kernel will then return to the calling application instead of executing the prohibited system call</li>
+	<li>if the violating process is under <a href="https://man7.org/linux/man-pages/man2/ptrace.2.html" target="_blank" rel="noopener noreferrer">ptrace</a> (for example executing under a debugger), the kernel can notify the tracer (the debugger) that a prohibited system call is about to happen and let the debugger decide what to do</li>
+	<li>the kernel may be instructed to allow and execute the system call, but log the attempt: this is useful, when we want to verify that our seccomp policy is not too tight without the risk of terminating the application and potentially creating an outage</li>
+</ul>
+<p>Although there is a lot of flexibility in defining the potential penalty for the application, from a security perspective it is usually best to stick with the complete application termination upon seccomp policy violation. The reason for that will be described later in the examples in the post.</p>
+<p>So why would the application take the risk of being abruptly terminated and declare its intentions beforehand, if it can just be “silent” and the OS kernel will allow it to use any system call by default? Of course, for a normal behaving application it makes no sense, but it turns out this feature is quite effective to protect from rogue applications and <a href="https://en.wikipedia.org/wiki/Arbitrary_code_execution" target="_blank" rel="noopener noreferrer">arbitrary code execution</a> exploits.</p>
+<p>Imagine our image format converter is written in some unsafe language and <a href="https://imagetragick.com" target="_blank" rel="noopener noreferrer">an attacker was able to take control of the application by making it process some malformed image</a>. What the attacker might do is to try to steal some sensitive information from the machine running our converter and send it to themselves via the network. By default, the OS kernel will most likely allow it and a data leak will happen. But if our image converter “confined” (or sandboxed) itself beforehand to only read and write local data the kernel will terminate the application when the latter tries to leak the data over the network thus preventing the leak and locking out the attacker from our system!</p>
+<h2>Integrating seccomp into the application</h2>
+<p>To see how seccomp can be used in practice, let’s consider a toy example program</p>
+<p><em>myos.c:</em></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/utsname.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> utsname name;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">name)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"uname failed: "</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"My OS is </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name.sysname);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>This is a simplified version of the <a href="https://www.man7.org/linux/man-pages/man1/uname.1.html" target="_blank" rel="noopener noreferrer">uname command line tool</a>, which just prints your operating system name. Like its full-featured counterpart, it uses the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> to actually get the name of the current operating system from the kernel. Let’s see it action:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+</div>
+<p>Great! We’re on Linux, so can further experiment with <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> (it is a Linux-only feature). Notice that we’re properly handling the error code after invoking the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a>. However, according to the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">man page</a> it can only fail, when the passed in buffer pointer is invalid. And in this case the set error number will be “EINVAL”, which translates to invalid parameter. In our case, the “struct utsname” structure is being allocated on the stack, so our pointer will always be valid. In other words, in normal circumstances the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> should never fail in this particular program.</p>
+<p>To illustrate seccomp capabilities we will add a “sandbox” function to our program before the main logic</p>
+<p><em>myos_raw_seccomp.c:</em></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/seccomp.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/filter.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/audit.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/ptrace.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/prctl.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdlib.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stddef.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/utsname.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;errno.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;unistd.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/syscall.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> sandbox</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> sock_filter filter</span><span class="sk-d73a49-a0a0a0">[]</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* seccomp(2) says we should always check the arch */</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* as syscalls may have different numbers on different architectures */</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* see https://fedora.juszkiewicz.com.pl/syscalls.html */</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* for simplicity we only allow x86_64 */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        BPF_STMT</span><span class="sk-24292e-fff">(BPF_LD </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_W </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_ABS, (</span><span class="sk-6f42c1-ffc799">offsetof</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> seccomp_data, arch))),</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* if not x86_64, tell the kernel to kill the process */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        BPF_JUMP</span><span class="sk-24292e-fff">(BPF_JMP </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_JEQ </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_K, AUDIT_ARCH_X86_64, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* get the actual syscall number */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        BPF_STMT</span><span class="sk-24292e-fff">(BPF_LD </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_W </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_ABS, (</span><span class="sk-6f42c1-ffc799">offsetof</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> seccomp_data, nr))),</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* if "uname", tell the kernel to return EPERM, otherwise just allow */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        BPF_JUMP</span><span class="sk-24292e-fff">(BPF_JMP </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_JEQ </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_K, SYS_uname, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        BPF_STMT</span><span class="sk-24292e-fff">(BPF_RET </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_K, SECCOMP_RET_ERRNO </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> (EPERM </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff"> SECCOMP_RET_DATA)),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        BPF_STMT</span><span class="sk-24292e-fff">(BPF_RET </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_K, SECCOMP_RET_ALLOW),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        BPF_STMT</span><span class="sk-24292e-fff">(BPF_RET </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> BPF_K, SECCOMP_RET_KILL),</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> sock_fprog prog </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        .len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">unsigned</span><span class="sk-d73a49-a0a0a0"> short</span><span class="sk-24292e-fff">) (</span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(filter) </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-d73a49-a0a0a0"> sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">filter</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">])),</span></span>
+<span class="line"><span class="sk-24292e-fff">        .filter </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> filter,</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* see seccomp(2) on why this is needed */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">prctl</span><span class="sk-24292e-fff">(PR_SET_NO_NEW_PRIVS, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"PR_SET_NO_NEW_PRIVS failed"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* glibc does not have a wrapper for seccomp(2) */</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* invoke it via the generic syscall wrapper */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">syscall</span><span class="sk-24292e-fff">(SYS_seccomp, SECCOMP_SET_MODE_FILTER, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">prog)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"seccomp failed"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> utsname name;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    sandbox</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">name)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"uname failed"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"My OS is </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name.sysname);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>To sandbox itself the application defines a <a href="https://www.kernel.org/doc/Documentation/networking/filter.txt" target="_blank" rel="noopener noreferrer">BPF program</a>, which implements the desired sandboxing policy. Then the application passes this program to the kernel via the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> system call. The kernel does some validation checks to ensure the BPF program is OK and then runs this program on every system call the application makes. The results of the execution of the program is used by the kernel to determine if the current call complies with the desired policy. In other words the BPF program is the “contract” between the application and the kernel.</p>
+<p>In our toy example above, the BPF program simply checks which system call is about to be invoked. If the application is trying to use the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname system call</a> we tell the kernel to just return a EPERM (which stands for “operation not permitted”) error code. We also tell the kernel to allow any other system call. Let’s see if it works now:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos_raw_seccomp.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Operation</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> permitted</span></span></code></pre>
+</div>
+<p><code>uname</code> failed now with the EPERM error code and EPERM is not even described as a potential failure code in the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname manpage</a>! So we know now that this happened because we “told” the kernel to prohibit us using the uname syscall and to return EPERM instead. We can double check this by replacing EPERM with some other error code, which is totally inappropriate for this context, for example ENETDOWN (“network is down”). Why would we need the network to be up to just get the currently executing OS? Yet, recompiling and rerunning the program we get:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos_raw_seccomp.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Network</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> down</span></span></code></pre>
+</div>
+<p>We can also verify the other part of our “contract” works as expected. We told the kernel to allow any other system call, remember? In our program, when uname fails, we convert the error code to a human readable message and print it on the screen with the <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html" target="_blank" rel="noopener noreferrer">perror</a> function. To print on the screen <a href="https://www.man7.org/linux/man-pages/man3/perror.3.html" target="_blank" rel="noopener noreferrer">perror</a> uses the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write system call</a> under the hood and since we can actually see the printed error message, we know that the kernel allowed our program to make the <a href="https://www.man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener noreferrer">write system call</a> in the first place.</p>
+<h3>seccomp with libseccomp</h3>
+<p>While it is possible to use seccomp directly, as in the examples above, BPF programs are cumbersome to write by hand and hard to debug, review and update later. That’s why it is usually a good idea to use a more high-level library, which abstracts away most of the low-level details. Luckily <a href="https://github.com/seccomp/libseccomp" target="_blank" rel="noopener noreferrer">such a library exists</a>: it is called libseccomp and is even recommended by the <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp man page</a>.</p>
+<p>Let’s rewrite our program’s <code>sandbox()</code> function to use this library instead:</p>
+<p><em>myos_libseccomp.c:</em></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> _GNU_SOURCE</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdlib.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/utsname.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;seccomp.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;err.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> sandbox</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* allow all syscalls by default */</span></span>
+<span class="line"><span class="sk-24292e-fff">    scmp_filter_ctx seccomp_ctx </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> seccomp_init</span><span class="sk-24292e-fff">(SCMP_ACT_ALLOW);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">seccomp_ctx)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        err</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"seccomp_init failed"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* kill the process, if it tries to use "uname" syscall */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">seccomp_rule_add_exact</span><span class="sk-24292e-fff">(seccomp_ctx, SCMP_ACT_KILL, </span><span class="sk-6f42c1-ffc799">seccomp_syscall_resolve_name</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"uname"</span><span class="sk-24292e-fff">), </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"seccomp_rule_add_exact failed"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* apply the composed filter */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">seccomp_load</span><span class="sk-24292e-fff">(seccomp_ctx)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"seccomp_load failed"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* release allocated context */</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    seccomp_release</span><span class="sk-24292e-fff">(seccomp_ctx);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-24292e-fff"> utsname name;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    sandbox</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">uname</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">name)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"uname failed: "</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"My OS is </span><span class="sk-005cc5-fff">%s</span><span class="sk-032f62-99ffe4">!</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name.sysname);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Our <code>sandbox()</code> function not only became shorter and much more readable, but also provided the ability to reference syscalls in our rules by names and not internal numbers as well as not having to deal with other quirks, like setting <code>PR_SET_NO_NEW_PRIVS</code> bit and dealing with system architectures.</p>
+<p>It is worth noting we have modified our seccomp policy a bit. In the raw seccomp example above we instructed the kernel to return an error code when the application tries to execute a prohibited syscall. This is good for demonstration purposes, but in most cases a stricter action is required. Just returning an error code and allowing the application to continue gives the potentially malicious code a chance to bypass the policy. There are many syscalls in Linux and some of them do the same or similar things. For example, we might want to prohibit the application to read data from disk, so we deny the <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a> syscall in our policy and tell the kernel to return an error code instead. However, if the application does get exploited, the exploit code/logic might look like below:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">…</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-6f42c1-ffc799"> read</span><span class="sk-24292e-fff">(fd, buf, count)) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* hm… read failed, but what about pread? */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-d73a49-a0a0a0"> ==</span><span class="sk-6f42c1-ffc799"> pread</span><span class="sk-24292e-fff">(fd, buf, count, offset) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* what about readv? */</span><span class="sk-24292e-fff"> ...</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* bypassed the prohibited read(2) syscall */</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">…</span></span></code></pre>
+</div>
+<p>Wait what?! There is more than one read system call? Yes, there are <a href="https://www.man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener noreferrer">read</a>, <a href="https://man7.org/linux/man-pages/man2/pread.2.html" target="_blank" rel="noopener noreferrer">pread</a>, <a href="https://man7.org/linux/man-pages/man2/readv.2.html" target="_blank" rel="noopener noreferrer">readv</a> as well as more obscure ones, like <a href="https://blog.cloudflare.com/io_submit-the-epoll-alternative-youve-never-heard-about" target="_blank" rel="noopener noreferrer">io_submit</a> and <code>io_uring_enter</code>. Of course, it is our fault for providing incomplete seccomp policy, which does not block all possible read syscalls. But if at least we had instructed the kernel to terminate the process immediately upon violation of the first plain <code>read</code>, the malicious code above would not have the chance to be clever and try other options.</p>
+<p>Given the above in the libseccomp example we have a stricter policy now, which tells the kernel to terminate the process upon the policy violation. Let’s see if it works:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos_libseccomp.c</span><span class="sk-005cc5-99ffe4"> -lseccomp</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+</div>
+<p>Notice that we need to link against <a href="https://github.com/seccomp/libseccomp" target="_blank" rel="noopener noreferrer">libseccomp</a> when compiling the application. Also, when we run the application, we don’t see the <code>uname failed: Operation not permitted</code> error output anymore, because we don’t give the application the ability to even print a failure message. Instead, we see a <code>Bad system call</code> message from the shell, which tells us that the application was terminated with a <code>SIGSYS</code> <a href="https://man7.org/linux/man-pages/man7/signal.7.html" target="_blank" rel="noopener noreferrer">signal</a>. Great!</p>
+<h2>zero code seccomp</h2>
+<p>The previous examples worked fine, but both of them have one disadvantage: we actually needed to modify the source code to embed our desired seccomp policy into the application. This is because <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp syscall</a> affects the calling process and its children, but there is no interface to inject the policy from “outside”. It is expected that developers will sandbox their code themselves as part of the application logic, but in practice this rarely happens. When developers are starting a new project, most of the time the focus is on primary functionality and security features are usually either postponed or omitted altogether. Also, most real-world software is usually written using some high-level programming language and/or a framework, where the developers do not deal with the system calls directly and probably are even unaware which system calls are being used by their code.</p>
+<p>On the other hand we have system operators, sysadmins, SRE and other folks, who run the above code in production. They are more incentivized to keep production systems secure, thus would probably want to sandbox the services as much as possible. But most of the time they don’t have access to the source code. So there are mismatched expectations: developers have the ability to sandbox their code, but are usually not incentivized to do so and operators have the incentive to sandbox the code, but don’t have the ability.</p>
+<p>This is where “zero code seccomp” might help, where an external operator can inject the desired sandbox policy into any process without needing to modify any source code. <a href="https://www.freedesktop.org/wiki/Software/systemd" target="_blank" rel="noopener noreferrer">Systemd</a> is one of the popular implementations of a “zero code seccomp” approach. Systemd-managed services can have a <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> directive defined in their <a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html" target="_blank" rel="noopener noreferrer">unit files</a> listing all the system calls the managed service is allowed to make. As an example, let’s go back to our toy application without any sandboxing code embedded:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+</div>
+<p>Now we can run the same code with systemd, but prohibit the application for using <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname</a> without changing or recompiling any code (we’re using <a href="https://www.freedesktop.org/software/systemd/man/systemd-run.html" target="_blank" rel="noopener noreferrer">systemd-run</a> to create an ephemeral systemd service unit for us):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> systemd-run</span><span class="sk-005cc5-99ffe4"> --user</span><span class="sk-005cc5-99ffe4"> --pty</span><span class="sk-005cc5-99ffe4"> --same-dir</span><span class="sk-005cc5-99ffe4"> --wait</span><span class="sk-005cc5-99ffe4"> --collect</span><span class="sk-005cc5-99ffe4"> --service-type=exec</span><span class="sk-005cc5-99ffe4"> --property=</span><span class="sk-032f62-99ffe4">"SystemCallFilter=~uname"</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Running</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> unit:</span><span class="sk-032f62-99ffe4"> run-u0.service</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Press</span><span class="sk-032f62-99ffe4"> ^]</span><span class="sk-032f62-99ffe4"> three</span><span class="sk-032f62-99ffe4"> times</span><span class="sk-032f62-99ffe4"> within</span><span class="sk-032f62-99ffe4"> 1s</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> disconnect</span><span class="sk-032f62-99ffe4"> TTY.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Finished</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> result:</span><span class="sk-032f62-99ffe4"> signal</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Main</span><span class="sk-032f62-99ffe4"> processes</span><span class="sk-032f62-99ffe4"> terminated</span><span class="sk-032f62-99ffe4"> with:</span><span class="sk-032f62-99ffe4"> code=killed/status=SYS</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Service</span><span class="sk-032f62-99ffe4"> runtime:</span><span class="sk-032f62-99ffe4"> 6ms</span></span></code></pre>
+</div>
+<p>We don’t see the normal <code>My OS is Linux!</code> output anymore and systemd conveniently tells us that the managed process was terminated with a <code>SIGSYS</code> signal. We can even go further and use another directive <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallErrorNumber=" target="_blank" rel="noopener noreferrer"><code>SystemCallErrorNumber=</code></a> to configure our seccomp policy not to terminate the application, but return an error code instead as in our first seccomp raw example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> systemd-run</span><span class="sk-005cc5-99ffe4"> --user</span><span class="sk-005cc5-99ffe4"> --pty</span><span class="sk-005cc5-99ffe4"> --same-dir</span><span class="sk-005cc5-99ffe4"> --wait</span><span class="sk-005cc5-99ffe4"> --collect</span><span class="sk-005cc5-99ffe4"> --service-type=exec</span><span class="sk-005cc5-99ffe4"> --property=</span><span class="sk-032f62-99ffe4">"SystemCallFilter=~uname"</span><span class="sk-005cc5-99ffe4"> --property=</span><span class="sk-032f62-99ffe4">"SystemCallErrorNumber=ENETDOWN"</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Running</span><span class="sk-032f62-99ffe4"> as</span><span class="sk-032f62-99ffe4"> unit:</span><span class="sk-032f62-99ffe4"> run-u2.service</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Press</span><span class="sk-032f62-99ffe4"> ^]</span><span class="sk-032f62-99ffe4"> three</span><span class="sk-032f62-99ffe4"> times</span><span class="sk-032f62-99ffe4"> within</span><span class="sk-032f62-99ffe4"> 1s</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> disconnect</span><span class="sk-032f62-99ffe4"> TTY.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">uname</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> Network</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> down</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Finished</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> result:</span><span class="sk-032f62-99ffe4"> exit-code</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Main</span><span class="sk-032f62-99ffe4"> processes</span><span class="sk-032f62-99ffe4"> terminated</span><span class="sk-032f62-99ffe4"> with:</span><span class="sk-032f62-99ffe4"> code=exited/status=</span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Service</span><span class="sk-032f62-99ffe4"> runtime:</span><span class="sk-032f62-99ffe4"> 6ms</span></span></code></pre>
+</div>
+<h3>systemd small print</h3>
+<p>Great! We can now inject almost any seccomp policy into any process without the need to write any code or recompile the application. However, there is an interesting statement in the <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer">systemd documentation</a>:</p>
+<blockquote>...Note that the <code>execve, exit, exit_group, getrlimit, rt_sigreturn, sigreturn</code> system calls and the system calls for querying time and sleeping are implicitly whitelisted and do not need to be listed explicitly...</blockquote>
+<p>Some system calls are implicitly allowed and we don’t have to list them. This is mostly related to the way how systemd manages processes and injects the seccomp policy. We established earlier that seccomp policy applies to the current process and its children. So, to inject the policy, systemd <a href="https://www.man7.org/linux/man-pages/man2/fork.2.html" target="_blank" rel="noopener noreferrer">forks</a> itself, calls <a href="https://www.man7.org/linux/man-pages/man2/seccomp.2.html" target="_blank" rel="noopener noreferrer">seccomp</a> in the forked process and then <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execs</a> the forked process into the target application. That’s why always allowing the <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> system call is necessary in the first place, because otherwise systemd cannot do its job as a service manager.</p>
+<p>But what if we want to explicitly prohibit some of these system calls? If we continue with the <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> as an example, that can actually be a dangerous system call most applications would want to prohibit. Seccomp is an effective tool to protect the code from arbitrary code execution exploits, remember? If a malicious actor takes over our code, most likely the first thing they will try is to get a shell (or replace our code with any other application which is easier to control) by directing our code to call <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> with the desired binary. So, if our code does not need <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a> for its main functionality, it would be a good idea to prohibit it. Unfortunately, it is not possible with the systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> approach...</p>
+<h2>Introducing Cloudflare sandbox</h2>
+<p>We really liked the “zero code seccomp” approach with systemd <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> directive, but were not satisfied with its limitations. We decided to take it one step further and make it possible to prohibit any system call in any process externally without touching its source code, so came up with the <a href="https://github.com/cloudflare/sandbox" target="_blank" rel="noopener noreferrer">Cloudflare sandbox</a>. It’s a simple standalone toolkit consisting of a shared library and an executable. The shared library is supposed to be used with dynamically linked applications and the executable is for statically linked applications.</p>
+<h3>sandboxing dynamically linked executables</h3>
+<p>For dynamically linked executables it is possible to inject custom code into the process by utilizing the <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer"><code>LD_PRELOAD</code></a> environment variable. The <code>libsandbox.so</code> shared library from our toolkit also contains a so-called <a href="https://gcc.gnu.org/onlinedocs/gccint/Initialization.html" target="_blank" rel="noopener noreferrer">initialization routine</a>, which should be executed before the main logic. This is how we make the target application sandbox itself:</p>
+<ul>
+	<li><a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer"><code>LD_PRELOAD</code></a> tells the dynamic loader to load our <code>libsandbox.so</code> as part of the application, when it starts</li>
+	<li>the runtime executes the <a href="https://gcc.gnu.org/onlinedocs/gccint/Initialization.html" target="_blank" rel="noopener noreferrer">initialization routine</a> from the <code>libsandbox.so</code> before most of the main logic</li>
+	<li>our initialization routine configures the sandbox policy described in special environment variables</li>
+	<li>by the time the main application logic begin executing, the target process has the configured seccomp policy enforced</li>
+</ul>
+<p>Let’s see how it works with our <code>myos</code> toy tool. First, we need to make sure it is actually a dynamically linked application:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ldd</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	linux-vdso.so.1</span><span class="sk-24292e-fff"> (0x00007ffd8e1e3000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	libc.so.6</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /lib/x86_64-linux-gnu/libc.so.6</span><span class="sk-24292e-fff"> (0x00007f339ddfb000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	/lib64/ld-linux-x86-64.so.2</span><span class="sk-24292e-fff"> (0x00007f339dfcf000)</span></span></code></pre>
+</div>
+<p>Yes, it is . Now, let’s prohibit it from using the <a href="https://www.man7.org/linux/man-pages/man2/uname.2.html" target="_blank" rel="noopener noreferrer">uname</a> system call with our toolkit:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+</div>
+<p>Yet again, we’ve managed to inject our desired seccomp policy into the <code>myos</code> application without modifying or recompiling it. The advantage of this approach is that it doesn’t have the shortcomings of the systemd’s <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#SystemCallFilter=" target="_blank" rel="noopener noreferrer"><code>SystemCallFilter=</code></a> and we can block any system call (luckily <a href="https://www.gnu.org/software/bash" target="_blank" rel="noopener noreferrer">Bash</a> is a dynamically linked application as well):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> /bin/bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> try</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> something...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Doing</span><span class="sk-032f62-99ffe4"> arbitrary</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> execution!!!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=execve</span><span class="sk-032f62-99ffe4"> /bin/bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> try</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> something...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+</div>
+<p>The only problem here is that we may accidentally forget to <code>LD_PRELOAD</code> our <code>libsandbox.so</code> library and potentially run unprotected. Also, as described in the <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">man page</a>, <code>LD_PRELOAD</code> has some limitations. We can overcome all these problems by making <code>libsandbox.so</code> a permanent part of our target application:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> patchelf</span><span class="sk-005cc5-99ffe4"> --add-needed</span><span class="sk-032f62-99ffe4"> /usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ldd</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	linux-vdso.so.1</span><span class="sk-24292e-fff"> (0x00007fff835ae000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-24292e-fff"> (0x00007fc4f55f2000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	libc.so.6</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /lib/x86_64-linux-gnu/libc.so.6</span><span class="sk-24292e-fff"> (0x00007fc4f5425000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	/lib64/ld-linux-x86-64.so.2</span><span class="sk-24292e-fff"> (0x00007fc4f5647000)</span></span></code></pre>
+</div>
+<p>Again, we didn’t need access to the source code here, but patched the compiled binary instead. Now we can just configure our seccomp policy as before without the need of <code>LD_PRELOAD</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Bad</span><span class="sk-032f62-99ffe4"> system</span><span class="sk-032f62-99ffe4"> call</span></span></code></pre>
+</div>
+<h3>sandboxing statically linked executables</h3>
+<p>The above method is quite convenient and easy, but it doesn’t work for statically linked executables:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -static</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ldd</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	not</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> dynamic</span><span class="sk-032f62-99ffe4"> executable</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+</div>
+<p>This is because there is no <a href="https://www.man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">dynamic loader</a> involved in starting a statically linked executable, so <code>LD_PRELOAD</code> has no effect. For this case our toolkit contains a special application launcher, which will inject the seccomp rules similarly to the way systemd does it:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sandboxify</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_DENY=uname</span><span class="sk-032f62-99ffe4"> sandboxify</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span></code></pre>
+</div>
+<p>Note that we don’t see the <code>Bad system call</code> shell message anymore, because our target executable is being started by the launcher instead of the shell directly. Unlike systemd however, we can use this launcher to block dangerous system calls, like <a href="https://www.man7.org/linux/man-pages/man2/execve.2.html" target="_blank" rel="noopener noreferrer">execve</a>, as well:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sandboxify</span><span class="sk-032f62-99ffe4"> /bin/bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> try</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> something...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Doing</span><span class="sk-032f62-99ffe4"> arbitrary</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> execution!!!</span></span>
+<span class="line"><span class="sk-24292e-fff">SECCOMP_SYSCALL_DENY</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">execve</span><span class="sk-6f42c1-ffc799"> sandboxify</span><span class="sk-032f62-99ffe4"> /bin/bash</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> 'echo I will try to execve something...; exec /usr/bin/echo Doing arbitrary code execution!!!'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">I</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> try</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> execve</span><span class="sk-032f62-99ffe4"> something...</span></span></code></pre>
+</div>
+<h3>sandboxify vs libsandbox.so</h3>
+<p>From the examples above you may notice that it is possible to use <code>sandboxify</code> with dynamically linked executables as well, so why even bother with <code>libsandbox.so</code>? The difference becomes visible, when we start using not the “denylist” policy as in most examples in this post, but rather the preferred “allowlist” policy, where we explicitly allow only the system calls we need, but prohibit everything else.</p>
+<p>Let’s convert our toy application back into the dynamically-linked one and try to come up with the minimal list of allowed system calls it needs to function properly:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> myos</span><span class="sk-032f62-99ffe4"> myos.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ldd</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	linux-vdso.so.1</span><span class="sk-24292e-fff"> (0x00007ffe027f6000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	libc.so.6</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> /lib/x86_64-linux-gnu/libc.so.6</span><span class="sk-24292e-fff"> (0x00007f4f1410a000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	/lib64/ld-linux-x86-64.so.2</span><span class="sk-24292e-fff"> (0x00007f4f142de000)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libsandbox.so</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_ALLOW=exit_group:fstat:uname:write</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> exit_group</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> fstat</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux</span></span></code></pre>
+</div>
+<p>So we need to allow 4 system calls: <code>exit_group:fstat:uname:write</code>. This is the tightest “sandbox”, which still doesn’t break the application. If we remove any system call from this list, the application will terminate with the <code>Bad system call</code> message (try it yourself!).</p>
+<p>If we use the same allowlist, but with the <code>sandboxify</code> launcher, things do not work anymore:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_ALLOW=exit_group:fstat:uname:write</span><span class="sk-032f62-99ffe4"> sandboxify</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> exit_group</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> fstat</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span></code></pre>
+</div>
+<p>The reason is <code>sandboxify</code> and <code>libsandbox.so</code> inject seccomp rules at different stages of the process lifecycle. Consider the following very high level diagram of a process startup:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="336" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=640&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=715&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=750&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=828&amp;h=389&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=1080&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=1280&amp;h=602&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=1430&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44QYABHZC5VR1YMD8SPCG7.png&amp;w=1646&amp;h=774&amp;f=webp" data-lightbox-width="1646" data-lightbox-height="774" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="336" class="pt-portable-image-media"></div>
+</figure>
+<p><br>In a nutshell, every process has two runtime stages: “runtime init” and the “main logic”. The main logic is basically the code, which is located in the program <code>main()</code> function and other code put there by the application developers. But the process usually needs to do some work before the code from the <code>main()</code> function is able to execute - we call this work the “runtime init” on the diagram above. Developers do not write this code directly, but most of the time this code is automatically generated by the compiler toolchain, which is used to compile the source code.</p>
+<p>To do its job, the “runtime init” stage uses a lot of different system calls, but most of them are not needed later at the “main logic” stage. If we’re using the “allowlist” approach for our sandboxing, it does not make sense to allow these system calls for the whole duration of the program, if they are only used once on program init. This is where the difference between <code>libsandbox.so</code> and <code>sandboxify</code> comes from: <code>libsandbox.so</code> enforces the seccomp rules usually after the “runtime init” stage has already executed, so we don’t have to allow most system calls from that stage. <code>sandboxify</code> on the other hand enforces the policy before the “runtime init” stage, so we have to allow all the system calls from both stages, which usually results in a bigger allowlist, thus wider attack surface.</p>
+<p>Going back to our toy <code>myos</code> example, here is the minimal list of all the system calls we need to allow to make the application work under our sandbox:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> SECCOMP_SYSCALL_ALLOW=access:arch_prctl:brk:close:exit_group:fstat:mmap:mprotect:munmap:openat:read:uname:write</span><span class="sk-032f62-99ffe4"> sandboxify</span><span class="sk-032f62-99ffe4"> ./myos</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> arch_prctl</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> brk</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> close</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> exit_group</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> fstat</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> mmap</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> mprotect</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> munmap</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> openat</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> read</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> uname</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">adding</span><span class="sk-032f62-99ffe4"> write</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> process</span><span class="sk-032f62-99ffe4"> seccomp</span><span class="sk-032f62-99ffe4"> filter</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">My</span><span class="sk-032f62-99ffe4"> OS</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> Linux!</span></span></code></pre>
+</div>
+<p>It is 13 syscalls vs 4 syscalls, if we’re using the <code>libsandbox.so</code> approach!</p>
+<h2>Conclusions</h2>
+<p>In this post we discussed how to easily sandbox applications on Linux without the need to write any additional code. We introduced the <a href="https://github.com/cloudflare/sandbox" target="_blank" rel="noopener noreferrer">Cloudflare sandbox toolkit</a> and discussed the different approaches we take at sandboxing dynamically linked applications vs statically linked applications.</p>
+<p>Having safer code online helps to build a Better Internet and we would be happy if you find our <a href="https://github.com/cloudflare/sandbox" target="_blank" rel="noopener noreferrer">sandbox toolkit</a> useful. Looking forward to the feedback, improvements and other contributions!</p>

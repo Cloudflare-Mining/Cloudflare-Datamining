@@ -1,199 +1,74 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2xjGo1J9nQZJlkdPblnCHu/51b57db49f500a8d16656657834d0173/cloudflare-peering-portal-beta.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>It can be a big deal for Internet users when Cloudflare rolls into town. After our recent <a href="https://blog.cloudflare.com/mongolia">Mongolia launch</a>, we received lots of feedback from happy customers that all of a sudden, Internet performance noticeably improved.</p>
-	<p>As a result, it's not a surprising that we regularly receive requests from all over the world to either peer with our network, or to host a node. However, potential partners are always keen to know just how much traffic will be served over that link. What performance benefits can end-users expect? How much upstream traffic will the ISP save? What new bandwidth will they have available for traffic management?</p>
-	<p>Starting today, ISPs and hosting providers can request a login to the Cloudflare Peering Portal to find the answers to these questions. After validating ownership of your ASN, the Cloudflare network team will provide a login to the newly launched Peering Portal - Beta. You can find more information at: <a href="https://cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">cloudflare.com/partners/peering-portal/</a></p>
-	<div class="flex anchor relative">
-		<h3 id="what-problem-does-peering-solve">What problem does peering solve?</h3>
-		<a href="https://blog.cloudflare.com/#what-problem-does-peering-solve" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you're new to the core infrastructure of the Internet, the best way to understand peering is to frame the problems it solves:</p>
-	<ol>
-		<li>
-			<p>Bandwidth costs money</p>
-		</li>
-		<li>
-			<p>Internet users don't like slow websites</p>
-		</li>
-		<li>
-			<p>Network operators have limited resources</p>
-		</li>
-	</ol>
-	<p>Consider what happens if you request a site hosted on Cloudflare from home:</p>
-	<ul>
-		<li>
-			<p>The domain resolves to a Cloudflare IP</p>
-		</li>
-		<li>
-			<p>Your browser sends an HTTP request to that IP</p>
-		</li>
-		<li>
-			<p>Your ISP's routers consult their routing table and route the packets upstream to their transit provider (<b>COSTS MONEY</b>)</p>
-		</li>
-		<li>
-			<p>The packets traverse multiple hops to the nearest Cloudflare POP (<b>TAKES TIME</b>)</p>
-		</li>
-		<li>
-			<p>Those packets are taking up some of the ISPs capacity, making it unavailable for other competing packets (<b>TRAFFIC MANAGEMENT</b>)</p>
-		</li>
-	</ul>
-	<p>As Cloudflare continues to grow, we represent an ever-increasing share of the Internet's traffic. A Network Administrator reviewing his or her network, will see this represented as an increasing cost of bandwidth, of slower than optimal request times and of bandwidth not able to be allocated for other competing traffic.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-peering">What is Peering?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-peering" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To address these problems, large networks, hosting providers and <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDNs</a> will peer with each other. That is, to <b>interconnect their networks</b> directly. Put another way, cut out the middleman. If I request a site on Cloudflare and my ISP is already directly connected to the Cloudflare network, the packet will traverse fewer hops, my website will load faster, my ISP will pay less to their transit provider and they can allocate that bandwidth for other sites.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-does-peering-work">How does Peering work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-peering-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are a few different types of peering. The simplest way to conceptualize is plugging in a dedicated cable to exchange data directly between two networks. Practically, there a few ways it happens:</p>
-	<div class="flex anchor relative">
-		<h4 id="scenario-1-private-network-interconnect-pni">Scenario 1: Private Network Interconnect (PNI)</h4>
-		<a href="https://blog.cloudflare.com/#scenario-1-private-network-interconnect-pni" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If Cloudflare and the potential peering partner have equipment in the same data center, we can setup a "Private Network Interconnect", which involves dedicated cabling and network configuration.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1i1kyRktjC9GA3x7FRnrrA/1424300bdbbb08a7b15a26659bcc0925/privatenetworkinterconnect-2-1.png" alt="" class="kg-image" width="415" height="634" loading="lazy">
-
-	</figure>
-	<p>PNI: Private Network Interconnect</p>
-	<div class="flex anchor relative">
-		<h4 id="scenario-2-internet-exchange-point-ixp">Scenario 2: Internet Exchange Point (IxP)</h4>
-		<a href="https://blog.cloudflare.com/#scenario-2-internet-exchange-point-ixp" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>An <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp" target="_blank" rel="noopener noreferrer">Internet exchange point (IxP)</a> is a physical location through which Internet companies such as Internet Service Providers (ISPs) and CDNs connect with each other. It typically involves a switching-fabric, that Cloudflare is already connected to. If our potential peering partner is also present in the IxP, setting up peering is a simple as network configuration, with no additional cabling required.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cjSMAotYckrvpjkY9uMXN/db35f023896aba3712fe58b542cb47b8/internetexchangepoint-1.png" alt="" class="kg-image" width="425" height="629" loading="lazy">
-
-	</figure>
-	<p>Internet Exchange Point (IxP)</p>
-	<div class="flex anchor relative">
-		<h4 id="scenario-3-hosting-a-node">Scenario 3: &nbsp;Hosting a Node</h4>
-		<a href="https://blog.cloudflare.com/#scenario-3-hosting-a-node" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are scenarios where neither PNI nor IxP peering is feasible, such as when Cloudflare and our potential partners are not present in the same physical location. In these cases, our partner can request to host Cloudflare equipment in their own data center racks. Once commissioned, the equipment effectively operates as if it were a Cloudflare data center (PoP). The cache will populate and all of our performance and reliability services will execute right there, close to our peering partner's customer.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3zX6b3g8yYq0rgRQMSeAdJ/d38a68df692d1e1d0f04e8444d83a434/cachenode-1.png" alt="" class="kg-image" width="428" height="766" loading="lazy">
-
-	</figure>
-	<p>Hosting a node</p>
-	<div class="flex anchor relative">
-		<h4 id="so-every-network-should-peer-all-the-time">So every network should peer all the time?</h4>
-		<a href="https://blog.cloudflare.com/#so-every-network-should-peer-all-the-time" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Peering still has some costs - particularly an administrative burden. The Network Administrators have to agree the details. Commercial teams may require contractual agreements. The link has to be monitored. Therefore, most large networks will have a <a href="https://www.cloudflare.com/peering-policy" target="_blank" rel="noopener noreferrer">peering policy</a> and prioritize peering with the networks with which they exchange the most data and will thus generate the most mutual value.</p>
-	<p>This is especially true for hosting nodes. In addition to the configuration and contractual agreements, there is the logistical effort of receiving and configuring equipment.</p>
-	<div class="flex anchor relative">
-		<h4 id="so-when-should-networks-peer-with-cloudflare">So when should networks peer with Cloudflare?</h4>
-		<a href="https://blog.cloudflare.com/#so-when-should-networks-peer-with-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Peering Portal - Beta, released today, allows any ASN (Autonomous System Number) network to view detailed statistics on transit data between it and Cloudflare. Existing partners can use it to review existing session data and statistics and prospective partners can use it to estimate potential transit cost savings, performance improvements and the freeing up of upstream bandwidth to use for other traffic.</p>
-	<div class="flex anchor relative">
-		<h3 id="welcome-to-the-peering-portal-beta">Welcome to the Peering Portal - Beta</h3>
-		<a href="https://blog.cloudflare.com/#welcome-to-the-peering-portal-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Peering Portal allows both existing and prospective partners to see:</p>
-	<div class="flex anchor relative">
-		<h4 id="time-series-traffic-statistics">Time Series Traffic Statistics</h4>
-		<a href="https://blog.cloudflare.com/#time-series-traffic-statistics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This view shows both growth over time, and the relative traffic for each location.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1VInCXk8nVCor6bXE2BH9j/18fffb9cf1c5a30281d40e4dc38c2cc9/cloudflare-peering-time-series.png" alt="" class="kg-image" width="2000" height="1222" loading="lazy">
-
-	</figure>
-	<p>Time series traffic data</p>
-	<div class="flex anchor relative">
-		<h4 id="peering-session-statistics">Peering Session Statistics</h4>
-		<a href="https://blog.cloudflare.com/#peering-session-statistics" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Peering sessions outline how many sessions are established in various locations.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iDKSEfo3wryhE3uWE9nH5/c75c4cc7c568edda683f4032cd359b79/session-statistics.png" alt="" class="kg-image" width="2000" height="1194" loading="lazy">
-
-	</figure>
-	<p>Session Statistics</p>
-	<div class="flex anchor relative">
-		<h4 id="prefix-data">Prefix Data</h4>
-		<a href="https://blog.cloudflare.com/#prefix-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5e9Ukn7x5XJx7aluOrpQOJ/ff546e133108284b01027b5f3aaa0559/public-ixp-sessions-1.png" alt="" class="kg-image" width="2000" height="1220" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="pop-relative-traffic-weighting">POP Relative Traffic Weighting</h4>
-		<a href="https://blog.cloudflare.com/#pop-relative-traffic-weighting" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At a glance view of where data flows in- and out- of connections to Cloudflare from your ASN.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1xCCzvTrc7mWanTpOZCSuV/268d5f7ce5bb14a244d098a27e7e19bd/cloudflare-pop-traffic.png" alt="" class="kg-image" width="1992" height="1246" loading="lazy">
-
-	</figure>
-	<p>Relative Traffic Weight by Peering Location</p>
-	<p>We plan to add many more statistics over time.</p>
-	<p>So, whether you're a current peering partner who'd like more insight into your current traffic with Cloudflare, or a future partner who'd like to explore the performance, financial and traffic management benefits of peering with Cloudflare, or hosting a node visit <a href="https://cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">cloudflare.com/partners/peering-portal</a> and request a login.</p>
-	<p>You can also review our peering policy <a href="https://cloudflare.com/peering-policy" target="_blank" rel="noopener noreferrer">here</a>.</p>
-</div>
+<p>It can be a big deal for Internet users when Cloudflare rolls into town. After our recent <a href="https://blog.cloudflare.com/mongolia">Mongolia launch</a>, we received lots of feedback from happy customers that all of a sudden, Internet performance noticeably improved.</p>
+<p>As a result, it's not a surprising that we regularly receive requests from all over the world to either peer with our network, or to host a node. However, potential partners are always keen to know just how much traffic will be served over that link. What performance benefits can end-users expect? How much upstream traffic will the ISP save? What new bandwidth will they have available for traffic management?</p>
+<p>Starting today, ISPs and hosting providers can request a login to the Cloudflare Peering Portal to find the answers to these questions. After validating ownership of your ASN, the Cloudflare network team will provide a login to the newly launched Peering Portal - Beta. You can find more information at: <a href="https://cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">cloudflare.com/partners/peering-portal/</a></p>
+<h3>What problem does peering solve?</h3>
+<p>If you're new to the core infrastructure of the Internet, the best way to understand peering is to frame the problems it solves:</p>
+<ol>
+	<li>Bandwidth costs money</li>
+	<li>Internet users don't like slow websites</li>
+	<li>Network operators have limited resources</li>
+</ol>
+<p>Consider what happens if you request a site hosted on Cloudflare from home:</p>
+<ul>
+	<li>The domain resolves to a Cloudflare IP</li>
+	<li>Your browser sends an HTTP request to that IP</li>
+	<li>Your ISP's routers consult their routing table and route the packets upstream to their transit provider (<strong>COSTS MONEY</strong>)</li>
+	<li>The packets traverse multiple hops to the nearest Cloudflare POP (<strong>TAKES TIME</strong>)</li>
+	<li>Those packets are taking up some of the ISPs capacity, making it unavailable for other competing packets (<strong>TRAFFIC MANAGEMENT</strong>)</li>
+</ul>
+<p>As Cloudflare continues to grow, we represent an ever-increasing share of the Internet's traffic. A Network Administrator reviewing his or her network, will see this represented as an increasing cost of bandwidth, of slower than optimal request times and of bandwidth not able to be allocated for other competing traffic.</p>
+<h3>What is Peering?</h3>
+<p>To address these problems, large networks, hosting providers and <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDNs</a> will peer with each other. That is, to <strong>interconnect their networks</strong> directly. Put another way, cut out the middleman. If I request a site on Cloudflare and my ISP is already directly connected to the Cloudflare network, the packet will traverse fewer hops, my website will load faster, my ISP will pay less to their transit provider and they can allocate that bandwidth for other sites.</p>
+<h3>How does Peering work?</h3>
+<p>There are a few different types of peering. The simplest way to conceptualize is plugging in a dedicated cable to exchange data directly between two networks. Practically, there a few ways it happens:</p>
+<h4>Scenario 1: Private Network Interconnect (PNI)</h4>
+<p>If Cloudflare and the potential peering partner have equipment in the same data center, we can setup a "Private Network Interconnect", which involves dedicated cabling and network configuration.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="415" height="634" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RB8M1TVFAATKSY95YNK2.png&amp;w=415&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RB8M1TVFAATKSY95YNK2.png&amp;w=415&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 415w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RB8M1TVFAATKSY95YNK2.png&amp;w=640&amp;h=978&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RB8M1TVFAATKSY95YNK2.png&amp;w=750&amp;h=1146&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RB8M1TVFAATKSY95YNK2.png&amp;w=828&amp;h=1265&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RB8M1TVFAATKSY95YNK2.png&amp;w=830&amp;h=1268&amp;f=webp&amp;fit=cover&amp;position=center 830w" alt="Cloudflare Peering Portal - Beta Embedded Image - pQnSuZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RB8M1TVFAATKSY95YNK2.png&amp;w=415&amp;h=634&amp;f=webp" data-lightbox-width="415" data-lightbox-height="634" data-astro-cid-7nvefuv6="true" sizes="(min-width: 415px) 415px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="415" height="634" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>PNI: Private Network Interconnect</p>
+<h4>Scenario 2: Internet Exchange Point (IxP)</h4>
+<p>An <a href="https://www.cloudflare.com/learning/cdn/glossary/internet-exchange-point-ixp" target="_blank" rel="noopener noreferrer">Internet exchange point (IxP)</a> is a physical location through which Internet companies such as Internet Service Providers (ISPs) and CDNs connect with each other. It typically involves a switching-fabric, that Cloudflare is already connected to. If our potential peering partner is also present in the IxP, setting up peering is a simple as network configuration, with no additional cabling required.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="425" height="629" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PK945ZKDTSF9J6GMM4V1.png&amp;w=425&amp;h=629&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PK945ZKDTSF9J6GMM4V1.png&amp;w=425&amp;h=629&amp;f=webp&amp;fit=cover&amp;position=center 425w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PK945ZKDTSF9J6GMM4V1.png&amp;w=640&amp;h=947&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PK945ZKDTSF9J6GMM4V1.png&amp;w=750&amp;h=1110&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PK945ZKDTSF9J6GMM4V1.png&amp;w=828&amp;h=1225&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PK945ZKDTSF9J6GMM4V1.png&amp;w=850&amp;h=1258&amp;f=webp&amp;fit=cover&amp;position=center 850w" alt="Cloudflare Peering Portal - Beta Embedded Image - 9R90Wh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PK945ZKDTSF9J6GMM4V1.png&amp;w=425&amp;h=629&amp;f=webp" data-lightbox-width="425" data-lightbox-height="629" data-astro-cid-7nvefuv6="true" sizes="(min-width: 425px) 425px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="425" height="629" class="pt-portable-image-media"></div>
+</figure>
+<p>Internet Exchange Point (IxP)</p>
+<h4>Scenario 3: &nbsp;Hosting a Node</h4>
+<p>There are scenarios where neither PNI nor IxP peering is feasible, such as when Cloudflare and our potential partners are not present in the same physical location. In these cases, our partner can request to host Cloudflare equipment in their own data center racks. Once commissioned, the equipment effectively operates as if it were a Cloudflare data center (PoP). The cache will populate and all of our performance and reliability services will execute right there, close to our peering partner's customer.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="428" height="766" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DJX3DCEDFREHVYETVAT1.png&amp;w=428&amp;h=766&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DJX3DCEDFREHVYETVAT1.png&amp;w=428&amp;h=766&amp;f=webp&amp;fit=cover&amp;position=center 428w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DJX3DCEDFREHVYETVAT1.png&amp;w=640&amp;h=1145&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DJX3DCEDFREHVYETVAT1.png&amp;w=750&amp;h=1342&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DJX3DCEDFREHVYETVAT1.png&amp;w=828&amp;h=1482&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DJX3DCEDFREHVYETVAT1.png&amp;w=856&amp;h=1532&amp;f=webp&amp;fit=cover&amp;position=center 856w" alt="Cloudflare Peering Portal - Beta Embedded Image - gVqvBz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46DJX3DCEDFREHVYETVAT1.png&amp;w=428&amp;h=766&amp;f=webp" data-lightbox-width="428" data-lightbox-height="766" data-astro-cid-7nvefuv6="true" sizes="(min-width: 428px) 428px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="428" height="766" class="pt-portable-image-media"></div>
+</figure>
+<p>Hosting a node</p>
+<h4>So every network should peer all the time?</h4>
+<p>Peering still has some costs - particularly an administrative burden. The Network Administrators have to agree the details. Commercial teams may require contractual agreements. The link has to be monitored. Therefore, most large networks will have a <a href="https://www.cloudflare.com/peering-policy" target="_blank" rel="noopener noreferrer">peering policy</a> and prioritize peering with the networks with which they exchange the most data and will thus generate the most mutual value.</p>
+<p>This is especially true for hosting nodes. In addition to the configuration and contractual agreements, there is the logistical effort of receiving and configuring equipment.</p>
+<h4>So when should networks peer with Cloudflare?</h4>
+<p>The Peering Portal - Beta, released today, allows any ASN (Autonomous System Number) network to view detailed statistics on transit data between it and Cloudflare. Existing partners can use it to review existing session data and statistics and prospective partners can use it to estimate potential transit cost savings, performance improvements and the freeing up of upstream bandwidth to use for other traffic.</p>
+<h3>Welcome to the Peering Portal - Beta</h3>
+<p>The Peering Portal allows both existing and prospective partners to see:</p>
+<h4>Time Series Traffic Statistics</h4>
+<p>This view shows both growth over time, and the relative traffic for each location.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="437" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=715&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=640&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=715&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=750&amp;h=458&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=828&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=1080&amp;h=660&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=1280&amp;h=782&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=1430&amp;h=874&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Peering Portal - Beta Embedded Image - fXSb6a" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KS3E9QQJ9GFT28RZJM31.png&amp;w=1920&amp;h=1173&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1173" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="437" class="pt-portable-image-media"></div>
+</figure>
+<p>Time series traffic data</p>
+<h4>Peering Session Statistics</h4>
+<p>Peering sessions outline how many sessions are established in various locations.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="427" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=640&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=715&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=750&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=828&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=1080&amp;h=645&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=1280&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=1430&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Peering Portal - Beta Embedded Image - oWYMj4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MZNEKG5FYQ56QSERT01J.png&amp;w=1920&amp;h=1146&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1146" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="427" class="pt-portable-image-media"></div>
+</figure>
+<p>Session Statistics</p>
+<h4>Prefix Data</h4>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="436" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=715&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=640&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=715&amp;h=436&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=750&amp;h=457&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=828&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=1080&amp;h=659&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=1280&amp;h=781&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=1430&amp;h=872&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Peering Portal - Beta Embedded Image - ZfjJ4v" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KE03KVCQ55S3F2SAEAJJ.png&amp;w=1920&amp;h=1171&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1171" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="436" class="pt-portable-image-media"></div>
+</figure>
+<h4>POP Relative Traffic Weighting</h4>
+<p>At a glance view of where data flows in- and out- of connections to Cloudflare from your ASN.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Peering Portal - Beta Embedded Image - 72WVJn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44Y2H6XEFV23VAEPTYZFKB.png&amp;w=1920&amp;h=1201&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1201" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<p>Relative Traffic Weight by Peering Location</p>
+<p>We plan to add many more statistics over time.</p>
+<p>So, whether you're a current peering partner who'd like more insight into your current traffic with Cloudflare, or a future partner who'd like to explore the performance, financial and traffic management benefits of peering with Cloudflare, or hosting a node visit <a href="https://cloudflare.com/partners/peering-portal" target="_blank" rel="noopener noreferrer">cloudflare.com/partners/peering-portal</a> and request a login.</p>
+<p>You can also review our peering policy <a href="https://cloudflare.com/peering-policy" target="_blank" rel="noopener noreferrer">here</a>.</p>

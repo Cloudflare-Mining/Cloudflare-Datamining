@@ -1,0 +1,132 @@
+<p>2022 年 5 月，我们<a href="https://blog.cloudflare.com/introducing-d1">宣布</a>致力于简化数据库，即对其进行构建、维护和集成。我们的目标是为您提供强大的工具，便于您轻松运行功能强大、可扩展、性能世界一流的数据库。我们首先致力于为每种类型的用户重塑数据库开发体验，而不仅限于数据库专家。</p>
+<p>过去几个月以来，我们<a href="https://blog.cloudflare.com/whats-new-with-d1">一直致力于</a>开展这些工作，同时获得了一些非常重要的经验教训。我们发现，在 Workers 之上构建全局关系数据库产品将开发人员平台的边界推向了绝对极限，甚至常常超越了极限，但我们的 Cloudflare 员工对此感到绝对的兴奋。这意味着，虽然我们的进展在外人看来似乎很慢，但每一项改进、错误修复或压力测试都有助于为我们的_所有_客户构建世界上最<a href="https://blog.cloudflare.com/welcome-to-the-supercloud-and-developer-week-2022">雄心勃勃的无服务器应用程序</a>铺平道路。</p>
+<p>但是，随着我们继续致力于使 D1 可投入生产，这并不会是“Cloudflare 模式”，除非我们停下来先看看反馈情况，尽管反馈尚未_完全_完成。在 Developer Week 的氛围下，<strong>推出 D1 公开 α 测试正当其时</strong>！</p>
+<p>“公开 α 测试”对我们来说是一种新的概念。您很可能会在 Cloudflare 的各种公告中听到“公测”的说法，虽然这符合我们的许多产品，但对于 D1 却不尽然。仍有一些关键部分尚在积极开发和测试中，因此，在我们将完全成型的 D1 作为公开测试版发布以供您开始构建现实世界应用之前，我们想确保所有人都可以开始在自己喜爱的应用或副项目中尝试体验该产品。</p>
+<h2><strong>α 测试中包含哪些内容？</strong></h2>
+<p>虽然 D1 仍有许多内容在幕后进行修改，但我们已经对开发人员与之交互的方式做了许多工作，即使您不熟悉数据库也没有关系。</p>
+<h3><strong>使用 D1 仪表板</strong></h3>
+<p>您只需点击几次，就可直接从仪表板中使 D1 数据库启动并运行。在我们的 D1 界面中，您可以随意创建、维护和查看您的数据库。UI 中做出的更改会立即可用于您的 Worker，无需重新部署！</p>
+<h3><strong>使用 Wrangler</strong></h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="263" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=640&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=715&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=750&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=828&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1080&amp;h=397&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1280&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1430&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1458 Embedded Image - agHVpu" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FPYRYDJYPFBXHJ4JC9Y1.png&amp;w=1920&amp;h=707&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="707" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="263" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>如果您想亲自动手操作，还可以使用我们的 Wrangler CLI 处理您的数据库。创建您的数据库，并开始手动添加数据或引导您的数据库，具体可采用以下两种方式之一：</p>
+<p><strong>1. 执行 SQL 文件</strong></p>
+<p>其中，您的 <code>.sql</code>文件如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> my-database-name</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> ./customers.sql</span></span></code></pre>
+</div>
+<p>customers.sql</p>
+<p><strong>2. 创建并运行迁移</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">DROP</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-d73a49-ffc799"> IF</span><span class="sk-d73a49-ffc799"> EXISTS</span><span class="sk-24292e-fff"> Customers;</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">CREATE</span><span class="sk-d73a49-ffc799"> TABLE</span><span class="sk-6f42c1-ffc799"> Customers</span><span class="sk-24292e-fff"> (CustomerID </span><span class="sk-d73a49-a0a0a0">INT</span><span class="sk-24292e-fff">, CompanyName </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">, ContactName </span><span class="sk-d73a49-a0a0a0">TEXT</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">PRIMARY KEY</span><span class="sk-24292e-fff"> (</span><span class="sk-032f62-99ffe4">`CustomerID`</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">INSERT INTO</span><span class="sk-24292e-fff"> Customers (CustomerID, CompanyName, ContactName) </span></span>
+<span class="line"><span class="sk-d73a49-ffc799">VALUES</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Alfreds Futterkiste'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Maria Anders'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Around the Horn'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Thomas Hardy'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">11</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Bs Beverages'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Victoria Ashworth'</span><span class="sk-24292e-fff">),(</span><span class="sk-005cc5-ffc799">13</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Bs Beverages'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'Random Name'</span><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>迁移是对数据库更改进行版本控制的一种方式。使用 D1，您可以<a href="https://developers.cloudflare.com/d1/migrations" target="_blank" rel="noopener noreferrer">创建迁移</a>，然后将其应用于您的数据库。</p>
+<p>要创建迁移，请执行：</p>
+<p>届时将在 <code>migrations</code> 文件夹中创建 SQL 文件，您可在其中添加查询。然后将迁移应用于您的数据库，方法是执行：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">short</span><span class="sk-032f62-99ffe4"> description</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> migratio</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<h3>从您的Worker 中访问 D1</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> migrations</span><span class="sk-032f62-99ffe4"> apply</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">my-database-nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>您可以通过将 D1 绑定添加到您的 <code>wrangler.toml</code> 配置文件，将 D1 附加到 Worker。然后与 D1 交互，方法是在 Worker 中执行查询，具体如下所示：</p>
+<h3><strong>或者从您的 Pages Function 中访问 D1</strong></h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/api/beverages"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">results</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">       "SELECT * FROM Customers WHERE CompanyName = ?"</span></span>
+<span class="line"><span class="sk-24292e-fff">     )</span></span>
+<span class="line"><span class="sk-24292e-fff">       .</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Bs Beverages"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">       .</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(results);</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Call /api/beverages to see Bs Beverages customers"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>在此 α 测试发布中，D1 还支持与 <a href="https://pages.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Pages</a> 集成！您可以在 Pages 仪表板中添加 D1 绑定，并在 Pages Function 中编写查询以构建全堆栈应用程序！查看<a href="https://developers.cloudflare.com/pages/platform/functions/bindings/#d1-database" target="_blank" rel="noopener noreferrer">完整文档</a>，开始使用 Pages 和 D1。</p>
+<h2><strong>社区构建的工具</strong></h2>
+<p>在我们的封闭 α 测试期间，社区成员对 D1 表现出很大的热情，继而对 D1 生态系统和开发人员体验做出了宝贵的贡献。下面是目前为止我们最喜爱的一些项目：</p>
+<h3>d1-orm</h3>
+<p>对象关系映射 (ORM) 是使用 JavaScript 查询和操控数据的一种方式。d1-orm 由 Cloudflare Discord 社区拥护者创建，旨在提供使用 D1 时的严格类型的体验：</p>
+<p>您可以查看<a href="https://docs.interactions.rest/d1-orm" target="_blank" rel="noopener noreferrer">完整文档</a>，并通过就 <a href="https://github.com/Interactions-as-a-Service/d1-orm/issues" target="_blank" rel="noopener noreferrer">GitHub 存储库</a>提出问题来提供反馈。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> users</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Model</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // table name, primary keys, indexes etc</span></span>
+<span class="line"><span class="sk-24292e-fff">    tableDefinition,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // column types, default values, nullable etc</span></span>
+<span class="line"><span class="sk-24292e-fff">    columnDefinitions</span></span>
+<span class="line"><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// TS helper for typed queries</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> User</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> Infer</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">type</span><span class="sk-6f42c1-ffc799"> of</span><span class="sk-6f42c1-ffc799"> users</span><span class="sk-24292e-fff">&gt;;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// ORM-style query builder</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> user</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> users.</span><span class="sk-6f42c1-ffc799">First</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    where: {</span></span>
+<span class="line"><span class="sk-24292e-fff">        id: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<h3><strong>workers-qb</strong></h3>
+<p>这是一种零依赖性的查询构建器，不仅提供了简单的标准化界面，同时保留了在传统 ORM 上使用原始查询的优势和速度。<code>workers-qb</code>虽然并不旨在提供类似于 ORM 的功能，但可以更方便地通过直接访问 SQL 的代码与数据库交互：</p>
+<p>您可以点击<a href="https://workers-qb.massadas.com" target="_blank" rel="noopener noreferrer">此处</a>阅读关于查询构建器的更多信息。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> qb</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> D1QB</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> fetched</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> qb.</span><span class="sk-6f42c1-ffc799">fetchOne</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  tableName: </span><span class="sk-032f62-99ffe4">'employees'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  fields: </span><span class="sk-032f62-99ffe4">'count(*) as count'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  where: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    conditions: </span><span class="sk-032f62-99ffe4">'department = ?1'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    params: [</span><span class="sk-032f62-99ffe4">'HQ'</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<h3>d1-console</h3>
+<p>您不必每次与数据库交互时在终端运行 <code>wrangler d1 execute</code> 命令，而可以从d1-console 中与 D1 交互。<code>d1-console</code>由 Discord 社区拥护者创建，具有执行多行查询、获取命令历史记录和查看整洁格式化表格输出的优势。</p>
+<p>虽然“D1 Console”现在是社区项目，但我们计划在未来对其提供原生支持。目前，首先点击<a href="https://github.com/isaac-mcfadyen/d1-console" target="_blank" rel="noopener noreferrer">此处</a>查看 d1-console 程序包。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="409" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=715&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=640&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=715&amp;h=409&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=750&amp;h=429&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=828&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1080&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1280&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1430&amp;h=818&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1458 Embedded Image - wLLdA5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46QDYTNV18MQV7XZXTF82A.png&amp;w=1476&amp;h=844&amp;f=webp" data-lightbox-width="1476" data-lightbox-height="844" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="409" class="pt-portable-image-media"></div>
+</figure>
+<h3><a href="https://github.com/koskimas/kysely" target="_blank" rel="noopener noreferrer"><strong>Kysely</strong></a>的 D1 适配器</h3>
+<p>Kysely 是一种类型安全、自动补全友好的 TypeScript SQL 查询构建器。利用此适配器，您可以使用熟悉的 Kysely 界面与 D1 交互：</p>
+<p>点击<a href="https://github.com/aidenwallis/kysely-d1" target="_blank" rel="noopener noreferrer">此处</a>查看项目。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Create Kysely instance with kysely-d1</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> db</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Kysely</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Database</span><span class="sk-24292e-fff">&gt;({ </span></span>
+<span class="line"><span class="sk-24292e-fff">  dialect: </span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> D1Dialect</span><span class="sk-24292e-fff">({ database: env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Read row from D1 table</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> db</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">selectFrom</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'kv'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">selectAll</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">where</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'key'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'='</span><span class="sk-24292e-fff">, key)</span></span>
+<span class="line"><span class="sk-24292e-fff">  .</span><span class="sk-6f42c1-ffc799">executeTakeFirst</span><span class="sk-24292e-fff">();</span></span></code></pre>
+</div>
+<h2><strong>哪些内容仍在测试中？</strong></h2>
+<p>此 α 测试版中禁用的最大部分是复制和 JavaScript 事务支持。虽然我们会逐渐应用这些更改，但我们想着重强调我们正在积极进行测试的一些现存局限性：</p>
+<p>**数据库位置：**每个 D1 数据库仅运行单个实例。该实例靠近开发人员创建数据库的位置创建，并且不会基于访问模式移动区域。因此，在世界其他地方运行的 Workers 将发生更高的延迟。</p>
+<ul>
+	<li>**并发局限性：**在高负载下，读写查询可能会排队，而不是触发创建新副本。因此，公开 α 测试的性能和吞吐量特征不能代表最终产品。</li>
+	<li>**可用性局限性：**运行备份时，将阻止对数据库的访问。在大部分情况下，这种情况应该只会持续一两秒钟，备份期间到达的任何请求都将排队。</li>
+</ul>
+<p>您还可以查看有关 <a href="https://developers.cloudflare.com/d1/limits-and-pricing" target="_blank" rel="noopener noreferrer">D1 α 测试局限性</a>的更详细的最新列表。</p>
+<h2>请求反馈</h2>
+<p>虽然我们可以就您希望将 D1 用于的数据库种类进行各类推测，但毕竟我们不是用户，您才是用户！我们想让所有背景的开发人员都能够预览早期阶段的 D1 技术，并告诉我们，我们需要在哪些方面做出改进，使其适合您的生产应用。</p>
+<p>要就您的体验提供总体反馈并与参加α 测试的其他人互动，请加入我们的 <a href="https://discord.com/channels/595317990191398933/992060581832032316" target="_blank" rel="noopener noreferrer">#d1-open-alpha</a> 频道（位于 <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Developers Discord</a> 上）。我们计划在此频道以及我们的<a href="https://discord.com/channels/595317990191398933/832698219824807956" target="_blank" rel="noopener noreferrer">每月社区集会</a>中发布重要公告和变更。</p>
+<p>要提交更具体的功能请求（无论有多古怪）并报告任何错误，请在 <a href="https://community.cloudflare.com/c/developers/d1" target="_blank" rel="noopener noreferrer">Cloudflare 社区论坛</a>中的 D1 类别下创建话题。我们会维护此论坛，以便规划未来几个月的工作！</p>
+<h2>PS：我们正在招揽人才！</h2>
+<p>您是否跃跃欲试？如果您喜欢解决模糊的问题和构建会扩展的强大产品，D1 团队热忱欢迎您的加入！请随时查看我们的<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">空缺岗位</a>。</p>

@@ -1,0 +1,338 @@
+<p>2025 年 6 月 12 日，Cloudflare 发生了一次重大服务中断，影响了我们多项关键服务，包括 Workers KV、WARP、Access、Gateway、Images、Stream、Workers AI、Turnstile 和 Challenges、AutoRAG、Zaraz，以及 Cloudflare Dashboard 的部分功能。</p>
+<p>这次中断持续了 2 小时 28 分钟，全球范围内使用相关服务的所有 Cloudflare 客户都受到了影响。这次中断的原因是由于我们的 Workers KV 服务所使用的底层存储基础设施出现故障，该服务是许多 Cloudflare 产品的关键依赖项，并被用于受影响服务的配置、身份验证和资产交付。这一基础设施的一部分由第三方云提供商支持，该提供商今天发生了故障，直接影响了我们 KV 服务的可用性。</p>
+<p>我们对本次中断深表歉意：这是我们一方的失误，虽然这次中断的直接原因（或触发因素）是第三方供应商的故障，但我们对所选择的依赖及围绕其设计的架构方式负有最终责任。</p>
+<p>这不是攻击或其他安全事件造成的。此次事件没有导致数据丢失。Cloudflare Magic Transit 和 Magic WAN、DNS、缓存、代理、WAF 及相关服务未受到本次事件的直接影响。</p>
+<h2>造成了什么影响？</h2>
+<p>通常情况下，Cloudflare 在我们自己的平台构建组件之上设计和构建服务，因此许多 Cloudflare 的产品都是基于 Workers KV 服务构建的。</p>
+<p>下表详细列出了受影响的服务，包括对用户的影响、操作失败以及观察到的错误率增加：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>产品/服务</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>影响</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers KV 的请求失败率为 90.22%：任何未被缓存且需要从 Workers KV 的源存储后端检索值的键值对都会导致请求失败，返回响应代码 503 或 500。其余请求成功从 Workers KV 的缓存中提供（状态代码 200 和 404），或者返回的错误在我们的预期范围和错误预算内。事件没有影响存储在 Workers KV 中的数据。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access 使用 Workers KV 存储应用和策略配置以及用户身份信息。在事件期间，对于所有应用类型（包括自托管、SaaS 和基础设施）的身份登录，Access 的失败率为 100%。在本次事件中，用户身份信息对 WARP 和 Gateway 等其他服务不可用。Access 设计为在无法成功获取策略配置或用户身份时自动关闭。因依赖于 Workers KV，启用命令日志的活动基础设施应用 SSH 会话无法保存日志。Access 的跨域身份系统（SCIM）服务也受到了影响，因为该服务依赖于 Workers KV 和 Durable Objects 来存储用户信息。在此事件期间，由于 Workers KV 更新失败，用户身份未能更新。这些失败将导致向身份提供商返回 500。一些提供商可能需要手动重新同步，但大多数客户会根据身份提供商的重试逻辑，在 Access 的 SCIM 服务恢复后立即看到服务恢复。基于服务身份验证的登录（例如服务令牌、Mutual TLS 和基于 IP 的策略以及绕过策略）未受影响。在此期间，Access 策略的编辑或更改没有丢失。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Gateway<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>这一事件没有影响到大多数 Gateway DNS 查询，包括通过 IPv4、IPv6、DNS over TLS (DoT) 和 DNS over HTTPS (DoH) 的查询。但是，有两个例外：基于身份的规则的 DoH 查询失败。发生这种情况是因为 Gateway 无法检索到所需用户的身份信息。某些用户的 Authenticated DoH 服务被中断。拥有有效身份验证令牌的活动会话用户不受影响，但需要开始新会话或刷新身份验证令牌的用户无法完成操作。使用 Gateway 代理、出口和 TLS 解密的用户无法连接、注册、代理或记录流量。这是因为我们依赖 Workers KV 来检索最新的身份和设备态势信息。这些操作中的每一个都需要调用 Workers KV，当不可用时，Gateway 设计为关闭以防止流量绕过客户配置的规则。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>WARP<br><br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>WARP 客户端受到影响，因为其核心依赖于 Access 和 Workers KV，后两者是设备注册和身份验证是必需的。因此，事件发生期间没有新的客户能够连接或注册。通过 Gateway 代理路由的现有 WARP 客户端用户会话遭遇中断，因为 Gateway 无法执行其所需的策略评估。此外，由于底层依赖的 Workers KV 出现故障，WARP 紧急断开覆盖功能变得不可用。Consumer WARP 也经历了与 Zero Trust 版本类似的间歇性影响。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>仪表板<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>仪表板用户登录和大多数原有仪表板会话不可用。这是由于影响 Turnstile、DO、KV 和 Access 的故障所致。登录失败的具体原因是：标准登录（用户/密码）：由于 Turnstile 不可用而失败。使用 Google (OIDC) 登录：因 KV 依赖问题而失败。SSO 登录：由于完全依赖 Access 而失败。Cloudflare v4 API 在此次事件中未受到影响。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Challenges 与 Turnstile<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>在事件发生期间，由于依赖 Workers KV 和 Durable Objects，支持 Cloudflare Challenges 和 Turnstile 的 Challenge 平台上，siteverify API 请求的失败和超时率达到较高水平。我们设置了紧急开关，以便在发生此类事件和中断时禁用这些调用。我们激活了这些紧急开关作为一种缓解措施，以确保用户不会被阻止继续访问。值得注意的是，当这些紧急开关处于活动状态时，Turnstile 的 siteverify API（验证已发布令牌的 API）可以多次兑换有效令牌，这可能允许攻击者尝试使用以前有效的令牌来绕过。Turnstile 检测机器人的能力未受到影响。试图解决质询的机器人仍然会失败，因此没有收到令牌。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>浏览器隔离<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>由于依赖于 Gateway 进行策略评估，现有的通过链接隔离的浏览器隔离会话受到影响。由于依赖于 Cloudflare Access，无法启动新的基于链接的浏览器隔离会话。所有由 Gateway 发起的隔离会话都因其对 Gateway 的依赖而失败。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Images<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>在事件期间，上传到 Cloudflare Images 的操作受到影响，事件高峰时的失败率达到 100%。整体图像交付成功率下降至 97% 左右。Image Transformations 没有受到重大影响，Polish 没有受到影响。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Stream<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>在事件期间，由于无法提供视频播放列表，Stream 的错误率超过了90%。Stream Live 观察到的错误率为 100%。视频上传未受影响。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Realtime<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Realtime TURN（通过中继穿越 NAT）服务使用 KV 并受到了严重影响。在整个事件期间，错误率接近 100%。Realtime SFU (选择性转发单元）服务无法创建新会话，尽管现有连接得以维持。这导致在受影响期间内流量减少到正常水平的 20%。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers AI<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>在事件发生期间，所有对 Workers AI 的推理请求均失败。Workers AI 依赖 Workers KV 在全球范围内分发 AI 请求的配置和路由信息。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Pages 和 Workers Assets<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Pages 和 Workers Assets 服务的静态资产（例如 HTML、JavaScript、CSS、图像等）存储在 Workers KV 中，进行缓存，并在收到请求时检索。在此期间，Workers Assets 的平均错误率增加了约 0.06% 的请求总数。在事件期间，Pages 错误率峰值达到约100%，所有 Pages 构建均无法完成。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AutoRAG<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AutoRAG 在文档转换和索引过程中依赖 Workers AI 模型生成向量嵌入，同时在查询和搜索时使用 LLM 模型。由于依赖于 Workers AI，AutoRAG 在事件期间不可用。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Durable Objects<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>基于 SQLite 的 Durable Objects 使用与 Workers KV 相同的基础存储基础设施。事件期间的平均错误率达到 22% 的峰值，并在服务开始恢复时降至 2%。使用传统键值存储的 Durable Object 命名空间未受影响。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>D1<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>D1 数据库与 Workers KV 和 Durable Objects 共享相同的底层存储基础设施。与 Durable Objects 类似，事件期间的平均错误率达到了 22% 的峰值，并在服务开始恢复时降至 2%。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Queues 与 Event Notifications<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>事件发生期间，包括推送和消费在内的队列消息操作不可用。Queues 使用 KV 将每个队列映射到包含排队消息的底层 Durable Objects。Event Notifications 使用队列作为其底层传递机制。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI Gateway<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AI Gateway 基于 Workers 构建，并依赖于 Workers KV 进行客户端和内部配置。在事件发生期间，AI Gateway 的请求错误率达到 97% 的峰值，直至依赖恢复。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>CDN<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>受影响期间，自动化流量管理基础设施正常运行，但效能有所降低。具体而言，由于此次中断，来自 Zero Trust 客户端的注册请求显著增加。请求增加在数个 Cloudflare 节点造成了额外负载，触发了自动化流量管理的响应。针对这些情况，系统将传入的 CDN 流量重新路由到附近节点，减小对客户的影响。有一部分流量未按预期重新路由，目前正在调查中。受该问题影响的 CDN 请求将会经历延迟增加、HTTP 499 错误和/或 HTTP 503 错误。受影响的 Cloudflare 服务区域包括圣保罗、费城、亚特兰大和罗利。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers / Workers for Platforms<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers 和 Workers for Platforms 依赖一项第三方服务进行上传。在事件期间，Workers 的总体错误率达到总请求数约 2% 的峰值。在同一时间段内，Workers for Platforms 的总体错误率峰值达到了总请求量的约 10%。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Workers Builds (CI/CD)<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>从 18:03 UTC 开始，由于 Access 出现故障，Workers Builds 无法接收新的源代码管理推送事件。在事件期间，100% 的新 Workers Builds 操作失败。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>浏览器渲染<br><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>浏览器渲染依赖于浏览器隔离来支持浏览器实例基础设施。在事件期间，REST API 和通过 Workers 浏览器绑定的请求 100% 受到影响。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zaraz<br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>事件发生期间，100% 的请求受到了影响。Zaraz 在处理最终用户流量时依赖于 Workers KV 配置。由于相同的依赖关系，在此期间保存对 Zaraz 配置的更新尝试未能成功，但我们的监控显示仅有一位用户受到影响。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>背景</h2>
+<p>Workers KV 被设计为我们所称的“无核心”服务，意味着该服务在我们全球每个节点独立运行，因此应该不存在单点故障。然而，如今的 Workers KV 依赖于一个中央数据存储来提供数据的真实来源。该存储发生故障，导致 Cloudflare 服务所用 KV 命名空间的冷读写操作完全中断。</p>
+<p>Workers KV 正在将其中央存储迁移到更具弹性的基础设施上：遗憾的是，我们的覆盖范围存在一个缺口，这在此次事件中暴露无遗。在我们重新架构 KV 的后端（包括将其迁移到 Cloudflare R2）时，Workers KV 移除了一个存储提供商，以防止数据一致性问题（由原始数据同步架构引起），并改善对数据驻留要求的支持。</p>
+<p>我们的原则之一是尽可能在我们自己的平台上构建 Cloudflare 服务，Workers KV 也不例外。我们的许多内部和外部服务都高度依赖于 Workers KV，在正常情况下，这有助于我们提供最强大的服务，而不是让服务团队尝试构建自己的存储服务。在此情况下，Workers KV 故障所引发的连锁影响加剧了问题，并显著扩大了影响范围。</p>
+<h2>事件时间线和影响</h2>
+<p>事件时间表，包括最初影响、调查、根本原因和补救措施，详述如下。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="337" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=640&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=715&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=750&amp;h=353&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=828&amp;h=390&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1080&amp;h=509&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1280&amp;h=603&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1430&amp;h=674&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2847 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48P4GT3G5QS3VR3MGE78WW.png&amp;w=1686&amp;h=794&amp;f=webp" data-lightbox-width="1686" data-lightbox-height="794" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="337" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sub><em>Workers KV 对存储基础设施请求的错误率。在事件时段内，对 KV 的请求有 91% 失败。</em></sub></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2847 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RG6911FGNQ638SD84QB7.png&amp;w=978&amp;h=501&amp;f=webp" data-lightbox-width="978" data-lightbox-height="501" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
+</figure>
+<p><sub><em>Cloudflare Access 成功请求的百分比。Cloudflare Access 直接依赖于 Workers KV，是衡量 Workers KV 可用性随时间变化的有效代表。</em></sub></p>
+<p>所有时间戳均为协调世界时 (UTC)。</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>时间</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>事件</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 17:52</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>事件开始<br>Cloudflare WARP 团队开始发现新设备注册失败，开始调查这些失败并宣布发生事件。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 18:05</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Access 团队因错误率迅速增加而收到警报。多项服务的服务级别目标下降至至预期水平以下并触发各团队的警报。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 18:06</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>随着我们确定一个共同原因（Workers KV 不可用），多个服务特定事件被合并为一个事件。事件优先级上升到 P1。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 18:21</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>随着影响的严重性变得清晰，事件优先级从 P1 升级为 P0。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 18:43</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Access 开始与 Workers KV 工程团队合作，探索迁移到其他后端数据存储的方案，以消除对 Workers KV 的依赖。这是为了防止存储基础设施继续宕机而采取的主动措施。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 19:09</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Zero Trust Gateway 开始通过优雅降级引用身份或设备态势状态的规则，来消除对 Workers KV 的依赖。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 19:32</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Access 和设备态势强制丢弃身份和设备态势请求，以减轻 Workers KV 的负载，直到第三方服务恢复上线。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 19:45</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare 团队继续工作以制定方案，以便在替代的后端数据存储上部署 Workers KV 发行版，并让关键服务将配置数据写入该存储。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 20:23</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>随着存储基础设施的恢复，服务开始恢复。由于大量服务重新填充缓存，我们继续观察到不可忽视的错误率和基础设施速率限制。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 20:25</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>在第三方服务恢复后，Access 和设备态势恢复调用 Workers KV。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2025 年 6 月 12 日 20:28</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>影响结束&nbsp;<br>服务水平目标恢复到事件前的水平。Cloudflare 团队继续监控系统，确保依赖系统恢复时服务不降级。</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p><br></p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>事件结束<br>Cloudflare 团队看到所有受影响的服务恢复正常运行。服务级别目标警报已解除。</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h2>补救及后续步骤</h2>
+<p>我们正在采取立即措施，为依赖于 Workers KV 和我们的存储基础设施的服务提高韧性。这包括由于此次事件而加速进行的现有计划内工作。</p>
+<p>这包括多个工作流程，旨在避免对我们不拥有的存储基础设施的单一依赖，改善我们恢复关键服务（包括 Access、Gateway 和 WARP）的能力</p>
+<p>具体如下：</p>
+<ul>
+	<li>（积极进行中）：推进我们在 Workers KV 存储基础设施中提高冗余性的工作，消除对任何单一提供商的依赖。在事件发生期间，我们开始将关键的 KV 命名空间切换并回填到我们自己的基础设施中，以防事件继续。 </li>
+	<li>（积极进行中）：对本次事件中受影响的各个产品进行短期影响范围的补救，以确保每个产品都具备抵御任何单一故障点（包括第三方依赖）所致服务中断的能力。</li>
+	<li>（积极进行中）：实施一些工具，以便在存储基础设施发生故障时，逐步重新启用命名空间。这将使我们能够确保包括 Access 和 WARP 在内的关键依赖服务能够恢复运行，而不会因缓存重新填充而对我们自己的基础设施造成拒绝服务的风险。</li>
+</ul>
+<p>此列表并不详尽：我们的团队将继续重新审视设计决策，并评估我们在近期（立即）和长期需要进行的基础设施更改，以防止类似事件再次发生。</p>
+<p>这是一次严重的中断，我们理解各种规模的组织和机构依赖我们来保护和/或运行他们的网站、应用、Zero Trust 和网络基础设施。我们再次对造成的影响深表歉意，并正在努力提高我们的服务弹性。</p>

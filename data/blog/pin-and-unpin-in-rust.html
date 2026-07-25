@@ -1,289 +1,188 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6MS1FJyHeF1ZHRn406L9Ff/7da2582030aad8f6581dda3bc11e07b0/pin-and-unpin-in-rust.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Using async Rust libraries is usually easy. It's just like using normal Rust code, with a little <code>async</code> or <code>.await</code> here and there. But writing your own async libraries can be hard. The first time I tried this, I got really confused by arcane, esoteric syntax like <code>T: ?Unpin</code> and <code>Pin&lt;&amp;mut Self&gt;</code>. I had never seen these types before, and I didn't understand what they were doing. Now that I understand them, I've written the explainer I wish I could have read back then. In this post, we're gonna learn</p>
-	<ul>
-		<li>
-			<p>What Futures are</p>
-		</li>
-		<li>
-			<p>What self-referential types are</p>
-		</li>
-		<li>
-			<p>Why they were unsafe</p>
-		</li>
-		<li>
-			<p>How Pin/Unpin made them safe</p>
-		</li>
-		<li>
-			<p>Using Pin/Unpin to write tricky nested futures</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="what-are-futures">What are Futures?</h3>
-		<a href="https://blog.cloudflare.com/#what-are-futures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A few years ago, I needed to write some code which would take some async function, run it and collect some metrics about it, e.g. how long it took to resolve. I wanted to write a type <code>TimedWrapper</code> that would work like this:</p>
-	<pre class="language-bash"><code class="language-bash">// Some async function, e.g. polling a URL with [https://docs.rs/reqwest]
-// Remember, Rust functions do nothing until you .await them, so this isn't
-// actually making a HTTP request yet.
-let async_fn = reqwest::get("http://adamchalmers.com");
-
-// Wrap the async function in my hypothetical wrapper.
-let timed_async_fn = TimedWrapper::new(async_fn);
-
-// Call the async function, which will send a HTTP request and time it.
-let (resp, time) = timed_async_fn.await;
-println!("Got a HTTP {} in {}ms", resp.unwrap().status(), time.as_millis())</code></pre>
-	<p></p>
-	<p>I like this interface, it's simple and should be easy for the other programmers on my team to use. OK, let's implement it! I know that, under the hood, Rust's async functions are just regular functions that return a <a href="https://doc.rust-lang.org/stable/std/future/trait.Future.html" target="_blank" rel="noopener noreferrer"><code>Future</code></a>. The Future trait is pretty simple. It just means a type which:</p>
-	<ul>
-		<li>
-			<p>Can be polled</p>
-		</li>
-		<li>
-			<p>When it's polled, it might return "Pending" or "Ready"</p>
-		</li>
-		<li>
-			<p>If it's pending, you should poll it again later</p>
-		</li>
-		<li>
-			<p>If it's ready, it responds with a value. We call this "resolving".</p>
-		</li>
-	</ul>
-	<p>Here's a really easy example of implementing a Future. Let's make a Future that returns a random <code>u16</code>.</p>
-	<pre class="language-bash"><code class="language-bash">use std::{future::Future, pin::Pin, task::Context}
-
-/// A future which returns a random number when it resolves.
-#[derive(Default)]
-struct RandFuture;
-
-impl Future for RandFuture {
-	// Every future has to specify what type of value it returns when it resolves.
-	// This particular future will return a u16.
-	type Output = u16;
-
-	// The `Future` trait has only one method, named &amp;quot;poll&amp;quot;.
-fn poll(self: Pin&amp;lt;&amp;amp;mut Self&amp;gt;, _cx: &amp;amp;mut Context) -&amp;gt; Poll&amp;lt;Self::Output  {
-		Poll::ready(rand::random())
-	}
-}</code></pre>
-	<p></p>
-	<p>Not too hard! I think we're ready to implement <code>TimedWrapper</code>.</p>
-	<div class="flex anchor relative">
-		<h3 id="trying-and-failing-to-use-nested-futures">Trying and failing to use nested Futures</h3>
-		<a href="https://blog.cloudflare.com/#trying-and-failing-to-use-nested-futures" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let's start by defining the type.</p>
-	<pre class="language-bash"><code class="language-bash">pub struct TimedWrapper&lt;Fut: Future&gt; {
-	start: Option&lt;Instant&gt;,
-	future: Fut,
-}</code></pre>
-	<p></p>
-	<p>OK, so a <code>TimedWrapper</code> is generic over a type <code>Fut</code>, which must be a <code>Future</code>. And it will store a future of that type as a field. It'll also have a <code>start</code> field which will record when it was first polled. Let's write a constructor:</p>
-	<pre class="language-bash"><code class="language-bash">impl&lt;Fut: Future&gt; TimedWrapper&lt;Fut&gt; {
-	pub fn new(future: Fut) -&gt; Self {
-		Self { future, start: None }
-	}
-}</code></pre>
-	<p></p>
-	<p>Nothing too complicated here. The <code>new</code> function takes a future and wraps it in the <code>TimedWrapper</code>. Of course, we have to set start to None, because it hasn't been polled yet. So, let's implement the <code>poll</code> method, which is the only thing we need to implement <code>Future</code> and make it <code>.await</code>able.</p>
-	<pre class="language-bash"><code class="language-bash">impl&lt;Fut: Future&gt; Future for TimedWrapper&lt;Fut&gt; {
-	// This future will output a pair of values:
-	// 1. The value from the inner future
-	// 2. How long it took for the inner future to resolve
-	type Output = (Fut::Output, Duration);
-
-	fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt; {
-		// Call the inner poll, measuring how long it took.
-		let start = self.start.get_or_insert_with(Instant::now);
-		let inner_poll = self.future.poll(cx);
-		let elapsed = self.elapsed();
-
-		match inner_poll {
-			// The inner future needs more time, so this future needs more time too
-			Poll::Pending =&gt; Poll::Pending,
-			// Success!
-			Poll::Ready(output) =&gt; Poll::Ready((output, elapsed)),
-		}
-	}
-}</code></pre>
-	<p></p>
-	<p>OK, that wasn't too hard. There's just one problem: this doesn't work.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vQYwC1N4iXqv6DzpxWJDq/ce5125480ef4ad35b8eb0d4882a408bf/Screen-Shot-2021-08-25-at-11.15.17-PM.png" alt="" class="kg-image" width="2000" height="509" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p>So, the Rust compiler reports an error on <code>self.future.poll(cx)</code>, which is "no method named <code>poll</code> found for type parameter <code>Fut</code> in the current scope". This is confusing, because we know <code>Fut</code> is a <code>Future</code>, so surely it has a poll method? OK, but Rust continues: <code>Fut</code> doesn't have a poll method, but <code>Pin&lt;&amp;mut Fut&gt;</code> has one. What is this weird type?</p>
-	<p>Well, we know that methods have a "receiver", which is some way it can access <code>self</code>. The receiver might be <code>self, &amp;self or &amp;mut self</code>, which mean "take ownership of self," "borrow self," and "mutably borrow self" respectively. So this is just a new, unfamiliar kind of receiver. Rust is complaining because we have Fut and we really need a <code>Pin&lt;&amp;mut Fut&gt;</code>. At this point I have two questions:</p>
-	<ol>
-		<li>
-			<p>What is <code>Pin</code>?</p>
-		</li>
-		<li>
-			<p>If I have a T value, how do I get a <code>Pin&lt;&amp;mut T&gt;</code>?</p>
-		</li>
-	</ol>
-	<p>The rest of this post is going to be answering those questions. I'll explain some problems in Rust that could lead to unsafe code, and why Pin safely solves them.</p>
-	<div class="flex anchor relative">
-		<h3 id="self-reference-is-unsafe">Self-reference is unsafe</h3>
-		<a href="https://blog.cloudflare.com/#self-reference-is-unsafe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Pin exists to solve a very specific problem: self-referential datatypes, i.e. data structures which have pointers into themselves. For example, a binary search tree might have self-referential pointers, which point to other nodes in the same struct.</p>
-	<p>Self-referential types can be really useful, but they're also hard to make memory-safe. To see why, let's use this example type with two fields, an i32 called <code>val</code> and a pointer to an i32 called <code>pointer</code>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6DejT3ngy1ze7AWuwy37Zq/6b9d388bb27d37a9d06f1e8ef2898615/memory_before.png" alt="" class="kg-image" width="256" height="110" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p>So far, everything is OK. The <code>pointer</code> field points to the val field in memory address A, which contains a valid i32. All the pointers are <i>valid</i>, i.e. they point to memory that does indeed encode a value of the right type (in this case, an i32). But the Rust compiler often moves values around in memory. For example, if we pass this struct into another function, it might get moved to a different memory address. Or we might Box it and put it on the heap. Or if this struct was in a <code>Vec&lt;MyStruct&gt;</code>, and we pushed more values in, the Vec might outgrow its capacity and need to move its elements into a new, larger buffer.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6WF4QNkOCFQiAIsmpbUaQK/fb8d03bc290071fb69a6d35399bec85f/memory_after.png" alt="" class="kg-image" width="577" height="134" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p>When we move it, the struct's fields change their address, but not their value. So the <code>pointer</code> field is still pointing at address A, but address A now doesn't have a valid i32. The data that was there was moved to address B, and some other value might have been written there instead! So now the pointer is invalid. This is bad -- at best, invalid pointers cause crashes, at worst they cause hackable vulnerabilities. We only want to allow memory-unsafe behaviour in unsafe blocks, and we should be very careful to document this type and tell users to update the pointers after moves.</p>
-	<div class="flex anchor relative">
-		<h3 id="unpin-and-unpin">Unpin and !Unpin</h3>
-		<a href="https://blog.cloudflare.com/#unpin-and-unpin" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To recap, all Rust types fall into two categories.</p>
-	<ol>
-		<li>
-			<p>Types that are safe to move around in memory. This is the default, the norm. For example, this includes primitives like numbers, strings, bools, as well as structs or enums entirely made of them. Most types fall into this category!</p>
-		</li>
-		<li>
-			<p>Self-referential types, which are <i>not</i> safe to move around in memory. These are pretty rare. An example is the <a href="https://docs.rs/tokio/1.10.0/src/tokio/util/linked_list.rs.html" target="_blank" rel="noopener noreferrer">intrusive linked list inside some Tokio internals</a>. Another example is most types which implement Future and also borrow data, for reasons <a href="https://rust-lang.github.io/async-book/04_pinning/01_chapter.html" target="_blank" rel="noopener noreferrer">explained in the Rust async book</a>.</p>
-		</li>
-	</ol>
-	<p>Types in category (1) are totally safe to move around in memory. You won't invalidate any pointers by moving them around. But if you move a type in (2), then you invalidate pointers and can get undefined behaviour, as we saw before. In earlier versions of Rust, you had to be really careful using these types to not move them, or if you moved them, to use unsafe and update all the pointers. But since Rust 1.33, the compiler can automatically figure out which category any type is in, and make sure you only use it safely.</p>
-	<p>Any type in (1) implements a special auto trait called <a href="https://doc.rust-lang.org/stable/std/marker/trait.Unpin.html" target="_blank" rel="noopener noreferrer"><code>Unpin</code></a>. Weird name, but its meaning will become clear soon. Again, most "normal" types implement Unpin, and because it's an auto trait (like Send or Sync or <code>Sized</code><a href="https://blog.adamchalmers.com/pin-unpin/#1" target="_blank" rel="noopener noreferrer">1</a>), so you don't have to worry about implementing it yourself. If you're unsure if a type can be safely moved, just check it on <a href="https://docs.rs" target="_blank" rel="noopener noreferrer">docs.rs</a> and see if it impls <code>Unpin</code>!</p>
-	<p>Types in (2) are creatively named <code>!Unpin</code> (the <code>!</code> in a trait means "does not implement"). To use these types safely, we can't use regular pointers for self-reference. Instead, we use special pointers that "pin" their values into place, ensuring they can't be moved. This is exactly what the <a href="https://doc.rust-lang.org/stable/std/pin/struct.Pin.html" target="_blank" rel="noopener noreferrer"><code>Pin</code></a> type does.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19Usw25JStox7edODSK287/8d0f6e45aa88340d6f34bcde72b31980/pin_diagram.png" alt="" class="kg-image" width="1172" height="162" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p>Pin wraps a pointer and stops its value from moving. The only exception is if the value impls <code>Unpin</code> -- then we know it's safe to move. Voila! Now we can write self-referential structs safely! This is really important, because as discussed above, many Futures are self-referential, and we need them for async/await.</p>
-	<div class="flex anchor relative">
-		<h3 id="using-pin">Using Pin</h3>
-		<a href="https://blog.cloudflare.com/#using-pin" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So now we understand why Pin exists, and why our Future poll method has a pinned <code>&amp;mut self</code> to self instead of a regular <code>&amp;mut self</code>. So let's get back to the problem we had before: I need a pinned reference to the inner future. More generally: given a pinned struct, how do we access its fields?</p>
-	<p>The solution is to write helper functions which give you references to the fields. These references might be normal Rust references like &amp;mut, or they might <i>also</i> be pinned. You can choose whichever one you need. This is called <i>projection</i>: if you have a pinned struct, you can write a projection method that gives you access to all its fields.</p>
-	<p>Projecting is really just getting data into and out of Pins. For example, we get the <code>start: Option&lt;Duration&gt;</code> field from the <code>Pin&lt;&amp;mut self&gt;</code>, and we need to put the <code>future: Fut</code> into a Pin so we can call its <code>poll</code> method). If you read the <a href="https://doc.rust-lang.org/stable/std/pin/struct.Pin.html" target="_blank" rel="noopener noreferrer"><code>Pin</code> methods</a> you'll see this is always safe if it points to an <code>Unpin</code> value, but requires unsafe otherwise.</p>
-	<pre class="language-bash"><code class="language-bash">// Putting data into Pin
-pub        fn new          &lt;P: Deref&lt;Target:Unpin&gt;&gt;(pointer: P) -&gt; Pin&lt;P&gt;;
-pub unsafe fn new_unchecked&lt;P&gt;                     (pointer: P) -&gt; Pin&lt;P&gt;;
-
-// Getting data from Pin
-pub        fn into_inner          &lt;P: Deref&lt;Target: Unpin&gt;&gt;(pin: Pin&lt;P&gt;) -&gt; P;
-pub unsafe fn into_inner_unchecked&lt;P&gt;                      (pin: Pin&lt;P&gt;) -&gt; P;</code></pre>
-	<p></p>
-	<p>I know <code>unsafe</code> can be a bit scary, but it's OK to write unsafe code! I think of unsafe as the compiler saying "hey, I can't tell if this code follows the rules here, so I'm going to rely on you to check for me." The Rust compiler does so much work for us, it's only fair that we do some of the work every now and then. If you want to learn how to write your own projection methods, I can highly recommend <a href="https://fasterthanli.me/articles/pin-and-suffering" target="_blank" rel="noopener noreferrer">this fasterthanli.me blog post</a> on the topic. But we're going to take a little shortcut.</p>
-	<div class="flex anchor relative">
-		<h3 id="using-pin-project-instead">Using pin-project instead</h3>
-		<a href="https://blog.cloudflare.com/#using-pin-project-instead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So, OK, look, it's time for a confession: I don't like using <code>unsafe</code>. I know I just explained why it's OK, but still, given the option, I would rather not.</p>
-	<p>I didn't start writing Rust because I wanted to carefully think about the consequences of my actions, damnit, I just want to go fast and not break things. Luckily, someone sympathized with me and made a crate which generates totally safe projections! It's called <a href="https://docs.rs/pin-project" target="_blank" rel="noopener noreferrer">pin-project</a> and it's <i>awesome</i>. All we need to do is change our definition:</p>
-	<pre class="language-rust"><code class="language-rust">#[pin_project::pin_project] // This generates a `project` method
-pub struct TimedWrapper&lt;Fut: Future&gt; {
-	// For each field, we need to choose whether `project` returns an
-	// unpinned (&amp;mut T) or pinned (Pin&lt;&amp;mut T&gt;) reference to the field.
-	// By default, it assumes unpinned:
-	start: Option&lt;Instant&gt;,
-	// Opt into pinned references with this attribute:
-	#[pin]
-	future: Fut,
-}</code></pre>
-	<p></p>
-	<p>For each field, you have to choose whether its projection should be pinned or not. By default, you should use a normal reference, just because they're easier and simpler. But if you know you need a pinned reference -- for example, because you want to call <code>.poll()</code>, whose receiver is <code>Pin&lt;&amp;mut Self&gt;</code> -- then you can do that with <code>#[pin]</code>.</p>
-	<p>Now we can finally poll the inner future!</p>
-	<pre class="language-bash"><code class="language-bash">fn poll(self: Pin&lt;&amp;mut Self&gt;, cx: &amp;mut Context) -&gt; Poll&lt;Self::Output&gt; {
-	// This returns a type with all the same fields, with all the same types,
-	// except that the fields defined with #[pin] will be pinned.
-	let mut this = self.project();
-	
-    // Call the inner poll, measuring how long it took.
-	let start = this.start.get_or_insert_with(Instant::now);
-	let inner_poll = this.future.as_mut().poll(cx);
-	let elapsed = start.elapsed();
-
-	match inner_poll {
-		// The inner future needs more time, so this future needs more time too
-		Poll::Pending =&gt; Poll::Pending,
-		// Success!
-		Poll::Ready(output) =&gt; Poll::Ready((output, elapsed)),
-	}
-}</code></pre>
-	<p></p>
-	<p>Finally, our goal is complete -- and we did it all without any unsafe code.</p>
-	<div class="flex anchor relative">
-		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If a Rust type has self-referential pointers, it can't be moved safely. After all, moving doesn't update the pointers, so they'll still be pointing at the old memory address, so they're now invalid. Rust can automatically tell which types are safe to move (and will auto impl the <code>Unpin</code> trait for them). If you have a <code>Pin</code>-ned pointer to some data, Rust can guarantee that nothing unsafe will happen (if it's safe to move, you can move it, if it's unsafe to move, then you can't). This is important because many Future types are self-referential, so we need <code>Pin</code> to safely poll a Future. You probably won't have to poll a future yourself (just use async/await instead), but if you do, use the <a href="https://docs.rs/pin-project" target="_blank" rel="noopener noreferrer">pin-project</a> crate to simplify things.</p>
-	<p>I hope this helped -- if you have any questions, please <a href="https://twitter.com/adam_chal" target="_blank" rel="noopener noreferrer">ask me on Twitter</a>. And if you want to get paid to talk to me about Rust and networking protocols, my team at Cloudflare is hiring, so be sure to visit <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">careers.cloudflare.com</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="references">References</h3>
-		<a href="https://blog.cloudflare.com/#references" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p>Complete TimedWrapper example code on <a href="https://github.com/adamchalmers/nested-future-example/blob/master/src/main.rs" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-		</li>
-		<li>
-			<p>This post is based on a <a href="https://cloudflare.tv/event/2F1zRnM58eBCSHP2VEd74x" target="_blank" rel="noopener noreferrer">presentation</a> I gave at a Rust Bay Area meetup a few weeks ago. My talk starts around 40 minutes in.</p>
-		</li>
-		<li>
-			<p>The <a href="https://doc.rust-lang.org/stable/std/pin/index.html" target="_blank" rel="noopener noreferrer">std::pin docs</a> have a pretty good explanation of Pin's details.</p>
-		</li>
-		<li>
-			<p>The <a href="https://rust-lang.github.io/async-book/04_pinning/01_chapter.html" target="_blank" rel="noopener noreferrer">Rust async book</a> explains why Futures often need self-referential pointers.</p>
-		</li>
-		<li>
-			<p>Comprehensive article on <a href="https://fasterthanli.me/articles/pin-and-suffering" target="_blank" rel="noopener noreferrer">how pin projection actually works</a> by <a href="https://twitter.com/fasterthanlime" target="_blank" rel="noopener noreferrer">@fasterthanlime</a></p>
-		</li>
-		<li>
-			<p>Great article explaining when and how Rust <a href="https://hashrust.com/blog/moves-copies-and-clones-in-rust" target="_blank" rel="noopener noreferrer">moves values to different memory addresses</a>, by <a href="https://twitter.com/hashrust" target="_blank" rel="noopener noreferrer">@HashRust</a><i>Thanks to Nick Vollmar for feedback and to</i> <a href="https://stackoverflow.com/users/155423/shepmaster" target="_blank" rel="noopener noreferrer"><i>Shepmaster</i></a> <i>for helping me use pin-project when I first needed to write a nested Future</i></p>
-		</li>
-	</ul>
-	<p></p>
+<p>Using async Rust libraries is usually easy. It's just like using normal Rust code, with a little <code>async</code> or <code>.await</code> here and there. But writing your own async libraries can be hard. The first time I tried this, I got really confused by arcane, esoteric syntax like <code>T: ?Unpin</code> and <code>Pin&lt;&amp;mut Self&gt;</code>. I had never seen these types before, and I didn't understand what they were doing. Now that I understand them, I've written the explainer I wish I could have read back then. In this post, we're gonna learn</p>
+<ul>
+	<li>What Futures are</li>
+	<li>What self-referential types are</li>
+	<li>Why they were unsafe</li>
+	<li>How Pin/Unpin made them safe</li>
+	<li>Using Pin/Unpin to write tricky nested futures</li>
+</ul>
+<h3>What are Futures?</h3>
+<p>A few years ago, I needed to write some code which would take some async function, run it and collect some metrics about it, e.g. how long it took to resolve. I wanted to write a type <code>TimedWrapper</code> that would work like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Some</span><span class="sk-032f62-99ffe4"> async</span><span class="sk-032f62-99ffe4"> function,</span><span class="sk-032f62-99ffe4"> e.g.</span><span class="sk-032f62-99ffe4"> polling</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-24292e-fff"> [https://docs.rs/reqwest]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Remember,</span><span class="sk-032f62-99ffe4"> Rust</span><span class="sk-032f62-99ffe4"> functions</span><span class="sk-032f62-99ffe4"> do</span><span class="sk-032f62-99ffe4"> nothing</span><span class="sk-032f62-99ffe4"> until</span><span class="sk-032f62-99ffe4"> you</span><span class="sk-032f62-99ffe4"> .await</span><span class="sk-032f62-99ffe4"> them,</span><span class="sk-032f62-99ffe4"> so</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> isn't</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">// actually making a HTTP request yet.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">let async_fn = reqwest::get("http://adamchalmers.com");</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">// Wrap the async function in my hypothetical wrapper.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">let timed_async_fn = TimedWrapper::new(async_fn);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">// Call the async function, which will send a HTTP request and time it.</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">let (resp, time) = timed_async_fn.await;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">println!("Got a HTTP {} in {}ms", resp.unwrap().status(), time.as_millis())</span></span></code></pre>
 </div>
+<p>I like this interface, it's simple and should be easy for the other programmers on my team to use. OK, let's implement it! I know that, under the hood, Rust's async functions are just regular functions that return a <a href="https://doc.rust-lang.org/stable/std/future/trait.Future.html" target="_blank" rel="noopener noreferrer"><code>Future</code></a>. The Future trait is pretty simple. It just means a type which:</p>
+<ul>
+	<li>Can be polled</li>
+	<li>When it's polled, it might return "Pending" or "Ready"</li>
+	<li>If it's pending, you should poll it again later</li>
+	<li>If it's ready, it responds with a value. We call this "resolving".</li>
+</ul>
+<p>Here's a really easy example of implementing a Future. Let's make a Future that returns a random <code>u16</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">use</span><span class="sk-032f62-99ffe4"> std::{future::Future,</span><span class="sk-032f62-99ffe4"> pin::Pin,</span><span class="sk-032f62-99ffe4"> task::Context}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">///</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> which</span><span class="sk-032f62-99ffe4"> returns</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> random</span><span class="sk-032f62-99ffe4"> number</span><span class="sk-032f62-99ffe4"> when</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> resolves.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">#[derive(Default)]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">struct</span><span class="sk-032f62-99ffe4"> RandFuture</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">impl</span><span class="sk-032f62-99ffe4"> Future</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> RandFuture</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> Every</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> specify</span><span class="sk-032f62-99ffe4"> what</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> returns</span><span class="sk-032f62-99ffe4"> when</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> resolves.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> particular</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> return</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> u16.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	type</span><span class="sk-032f62-99ffe4"> Output</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> u16</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">Future</span><span class="sk-032f62-99ffe4">`</span><span class="sk-6f42c1-ffc799"> trait</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> only</span><span class="sk-032f62-99ffe4"> one</span><span class="sk-032f62-99ffe4"> method,</span><span class="sk-032f62-99ffe4"> named</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">poll</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">quot</span><span class="sk-24292e-fff">;</span><span class="sk-005cc5-ffc799">.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">fn</span><span class="sk-032f62-99ffe4"> poll</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">self:</span><span class="sk-032f62-99ffe4"> Pin</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">lt</span><span class="sk-24292e-fff">;&amp;</span><span class="sk-6f42c1-ffc799">amp</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Self</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">gt</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> _cx:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">amp</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Context</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">-</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">gt</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">Poll</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">lt</span><span class="sk-24292e-fff">;</span><span class="sk-6f42c1-ffc799">Self::Output</span><span class="sk-032f62-99ffe4">  {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		Poll::ready(rand::random(</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Not too hard! I think we're ready to implement <code>TimedWrapper</code>.</p>
+<h3>Trying and failing to use nested Futures</h3>
+<p>Let's start by defining the type.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> struct</span><span class="sk-032f62-99ffe4"> TimedWrapper</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Fut:</span><span class="sk-032f62-99ffe4"> Futur</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	start:</span><span class="sk-032f62-99ffe4"> Option</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Instan</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	future:</span><span class="sk-032f62-99ffe4"> Fut,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>OK, so a <code>TimedWrapper</code> is generic over a type <code>Fut</code>, which must be a <code>Future</code>. And it will store a future of that type as a field. It'll also have a <code>start</code> field which will record when it was first polled. Let's write a constructor:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">impl</span><span class="sk-24292e-fff">&lt;Fut: </span><span class="sk-032f62-99ffe4">Futur</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> TimedWrapper</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Fu</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	pub</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">future:</span><span class="sk-032f62-99ffe4"> Fut</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Self</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		Self</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> future,</span><span class="sk-032f62-99ffe4"> start:</span><span class="sk-032f62-99ffe4"> None</span><span class="sk-032f62-99ffe4"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Nothing too complicated here. The <code>new</code> function takes a future and wraps it in the <code>TimedWrapper</code>. Of course, we have to set start to None, because it hasn't been polled yet. So, let's implement the <code>poll</code> method, which is the only thing we need to implement <code>Future</code> and make it <code>.await</code>able.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">impl</span><span class="sk-24292e-fff">&lt;Fut: </span><span class="sk-032f62-99ffe4">Futur</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Future</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> TimedWrapper</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Fu</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> will</span><span class="sk-032f62-99ffe4"> output</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> pair</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> values:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> 1.</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> value</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> inner</span><span class="sk-032f62-99ffe4"> future</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> 2.</span><span class="sk-032f62-99ffe4"> How</span><span class="sk-032f62-99ffe4"> long</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> took</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> inner</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> resolve</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	type</span><span class="sk-032f62-99ffe4"> Output</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> (Fut::Output, </span><span class="sk-032f62-99ffe4">Duration</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	fn</span><span class="sk-032f62-99ffe4"> poll</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">self:</span><span class="sk-032f62-99ffe4"> Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Sel</span><span class="sk-24292e-fff">f</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> cx:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Context</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Self::Outpu</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Call</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> inner</span><span class="sk-032f62-99ffe4"> poll,</span><span class="sk-032f62-99ffe4"> measuring</span><span class="sk-032f62-99ffe4"> how</span><span class="sk-032f62-99ffe4"> long</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> took.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">		let</span><span class="sk-032f62-99ffe4"> start</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> self.start.get_or_insert_with</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Instant::now</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">		let</span><span class="sk-032f62-99ffe4"> inner_poll</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> self.future.poll</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cx</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">		let</span><span class="sk-032f62-99ffe4"> elapsed</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> self.elapsed</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		match</span><span class="sk-032f62-99ffe4"> inner_poll</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">			//</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> inner</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> needs</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> time,</span><span class="sk-032f62-99ffe4"> so</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> needs</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-032f62-99ffe4"> too</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">			Poll::Pending</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Pending,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">			//</span><span class="sk-032f62-99ffe4"> Success!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">			Poll::Ready(output</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Poll::Ready((output</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> elapsed)),</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>OK, that wasn't too hard. There's just one problem: this doesn't work.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="182" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=715&amp;h=182&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=640&amp;h=163&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=715&amp;h=182&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=750&amp;h=191&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=828&amp;h=211&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=1080&amp;h=275&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=1280&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=1430&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Pin, Unpin, and why Rust needs them Embedded Image - uZElp1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SHXG37CP0RA2MXZ1DVTG.png&amp;w=1920&amp;h=489&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="489" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="182" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>So, the Rust compiler reports an error on <code>self.future.poll(cx)</code>, which is "no method named <code>poll</code> found for type parameter <code>Fut</code> in the current scope". This is confusing, because we know <code>Fut</code> is a <code>Future</code>, so surely it has a poll method? OK, but Rust continues: <code>Fut</code> doesn't have a poll method, but <code>Pin&lt;&amp;mut Fut&gt;</code> has one. What is this weird type?</p>
+<p>Well, we know that methods have a "receiver", which is some way it can access <code>self</code>. The receiver might be <code>self, &amp;self or &amp;mut self</code>, which mean "take ownership of self," "borrow self," and "mutably borrow self" respectively. So this is just a new, unfamiliar kind of receiver. Rust is complaining because we have Fut and we really need a <code>Pin&lt;&amp;mut Fut&gt;</code>. At this point I have two questions:</p>
+<ol>
+	<li>What is <code>Pin</code>?</li>
+	<li>If I have a T value, how do I get a <code>Pin&lt;&amp;mut T&gt;</code>?</li>
+</ol>
+<p>The rest of this post is going to be answering those questions. I'll explain some problems in Rust that could lead to unsafe code, and why Pin safely solves them.</p>
+<h3>Self-reference is unsafe</h3>
+<p>Pin exists to solve a very specific problem: self-referential datatypes, i.e. data structures which have pointers into themselves. For example, a binary search tree might have self-referential pointers, which point to other nodes in the same struct.</p>
+<p>Self-referential types can be really useful, but they're also hard to make memory-safe. To see why, let's use this example type with two fields, an i32 called <code>val</code> and a pointer to an i32 called <code>pointer</code>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="256" height="110" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480ACW2MEDKTXZKVDDKEW8.png&amp;w=256&amp;h=110&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480ACW2MEDKTXZKVDDKEW8.png&amp;w=256&amp;h=110&amp;f=webp&amp;fit=cover&amp;position=center 256w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480ACW2MEDKTXZKVDDKEW8.png&amp;w=512&amp;h=220&amp;f=webp&amp;fit=cover&amp;position=center 512w" alt="Pin, Unpin, and why Rust needs them Embedded Image - hwGPV4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW480ACW2MEDKTXZKVDDKEW8.png&amp;w=256&amp;h=110&amp;f=webp" data-lightbox-width="256" data-lightbox-height="110" data-astro-cid-7nvefuv6="true" sizes="(min-width: 256px) 256px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="256" height="110" class="pt-portable-image-media"></div>
+</figure>
+<p>So far, everything is OK. The <code>pointer</code> field points to the val field in memory address A, which contains a valid i32. All the pointers are <em>valid</em>, i.e. they point to memory that does indeed encode a value of the right type (in this case, an i32). But the Rust compiler often moves values around in memory. For example, if we pass this struct into another function, it might get moved to a different memory address. Or we might Box it and put it on the heap. Or if this struct was in a <code>Vec&lt;MyStruct&gt;</code>, and we pushed more values in, the Vec might outgrow its capacity and need to move its elements into a new, larger buffer.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="577" height="134" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=577&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=577&amp;h=134&amp;f=webp&amp;fit=cover&amp;position=center 577w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=640&amp;h=149&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=750&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=828&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=1080&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=1154&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 1154w" alt="Pin, Unpin, and why Rust needs them Embedded Image - C830m8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW486N0S3AFM6D8Q9D5XCVFP.png&amp;w=577&amp;h=134&amp;f=webp" data-lightbox-width="577" data-lightbox-height="134" data-astro-cid-7nvefuv6="true" sizes="(min-width: 577px) 577px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="577" height="134" class="pt-portable-image-media"></div>
+</figure>
+<p>When we move it, the struct's fields change their address, but not their value. So the <code>pointer</code> field is still pointing at address A, but address A now doesn't have a valid i32. The data that was there was moved to address B, and some other value might have been written there instead! So now the pointer is invalid. This is bad -- at best, invalid pointers cause crashes, at worst they cause hackable vulnerabilities. We only want to allow memory-unsafe behaviour in unsafe blocks, and we should be very careful to document this type and tell users to update the pointers after moves.</p>
+<h3>Unpin and !Unpin</h3>
+<p>To recap, all Rust types fall into two categories.</p>
+<ol>
+	<li>Types that are safe to move around in memory. This is the default, the norm. For example, this includes primitives like numbers, strings, bools, as well as structs or enums entirely made of them. Most types fall into this category!</li>
+	<li>Self-referential types, which are <em>not</em> safe to move around in memory. These are pretty rare. An example is the <a href="https://docs.rs/tokio/1.10.0/src/tokio/util/linked_list.rs.html" target="_blank" rel="noopener noreferrer">intrusive linked list inside some Tokio internals</a>. Another example is most types which implement Future and also borrow data, for reasons <a href="https://rust-lang.github.io/async-book/04_pinning/01_chapter.html" target="_blank" rel="noopener noreferrer">explained in the Rust async book</a>.</li>
+</ol>
+<p>Types in category (1) are totally safe to move around in memory. You won't invalidate any pointers by moving them around. But if you move a type in (2), then you invalidate pointers and can get undefined behaviour, as we saw before. In earlier versions of Rust, you had to be really careful using these types to not move them, or if you moved them, to use unsafe and update all the pointers. But since Rust 1.33, the compiler can automatically figure out which category any type is in, and make sure you only use it safely.</p>
+<p>Any type in (1) implements a special auto trait called <a href="https://doc.rust-lang.org/stable/std/marker/trait.Unpin.html" target="_blank" rel="noopener noreferrer"><code>Unpin</code></a>. Weird name, but its meaning will become clear soon. Again, most "normal" types implement Unpin, and because it's an auto trait (like Send or Sync or <code>Sized</code><a href="https://blog.adamchalmers.com/pin-unpin/#1" target="_blank" rel="noopener noreferrer">1</a>), so you don't have to worry about implementing it yourself. If you're unsure if a type can be safely moved, just check it on <a href="https://docs.rs" target="_blank" rel="noopener noreferrer">docs.rs</a> and see if it impls <code>Unpin</code>!</p>
+<p>Types in (2) are creatively named <code>!Unpin</code> (the <code>!</code> in a trait means "does not implement"). To use these types safely, we can't use regular pointers for self-reference. Instead, we use special pointers that "pin" their values into place, ensuring they can't be moved. This is exactly what the <a href="https://doc.rust-lang.org/stable/std/pin/struct.Pin.html" target="_blank" rel="noopener noreferrer"><code>Pin</code></a> type does.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="99" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=715&amp;h=99&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=640&amp;h=89&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=715&amp;h=99&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=750&amp;h=104&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=828&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=1080&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=1280&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=1430&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Pin, Unpin, and why Rust needs them Embedded Image - wGczQK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B41QGHSTQ62F0B36550A.png&amp;w=1172&amp;h=162&amp;f=webp" data-lightbox-width="1172" data-lightbox-height="162" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="99" class="pt-portable-image-media"></div>
+</figure>
+<p>Pin wraps a pointer and stops its value from moving. The only exception is if the value impls <code>Unpin</code> -- then we know it's safe to move. Voila! Now we can write self-referential structs safely! This is really important, because as discussed above, many Futures are self-referential, and we need them for async/await.</p>
+<h3>Using Pin</h3>
+<p>So now we understand why Pin exists, and why our Future poll method has a pinned <code>&amp;mut self</code> to self instead of a regular <code>&amp;mut self</code>. So let's get back to the problem we had before: I need a pinned reference to the inner future. More generally: given a pinned struct, how do we access its fields?</p>
+<p>The solution is to write helper functions which give you references to the fields. These references might be normal Rust references like &amp;mut, or they might <em>also</em> be pinned. You can choose whichever one you need. This is called <em>projection</em>: if you have a pinned struct, you can write a projection method that gives you access to all its fields.</p>
+<p>Projecting is really just getting data into and out of Pins. For example, we get the <code>start: Option&lt;Duration&gt;</code> field from the <code>Pin&lt;&amp;mut self&gt;</code>, and we need to put the <code>future: Fut</code> into a Pin so we can call its <code>poll</code> method). If you read the <a href="https://doc.rust-lang.org/stable/std/pin/struct.Pin.html" target="_blank" rel="noopener noreferrer"><code>Pin</code> methods</a> you'll see this is always safe if it points to an <code>Unpin</code> value, but requires unsafe otherwise.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Putting</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> into</span><span class="sk-032f62-99ffe4"> Pin</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4">        fn</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-d73a49-a0a0a0">          &lt;</span><span class="sk-032f62-99ffe4">P:</span><span class="sk-032f62-99ffe4"> Deref</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Target:Unpi</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pointer:</span><span class="sk-032f62-99ffe4"> P</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> unsafe</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> new_unchecked</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">                     (pointer: </span><span class="sk-032f62-99ffe4">P</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> Getting</span><span class="sk-032f62-99ffe4"> data</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> Pin</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4">        fn</span><span class="sk-032f62-99ffe4"> into_inner</span><span class="sk-d73a49-a0a0a0">          &lt;</span><span class="sk-032f62-99ffe4">P:</span><span class="sk-032f62-99ffe4"> Deref</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Target:</span><span class="sk-032f62-99ffe4"> Unpi</span><span class="sk-24292e-fff">n</span><span class="sk-d73a49-a0a0a0">&gt;&gt;</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pin:</span><span class="sk-032f62-99ffe4"> Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> P</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pub</span><span class="sk-032f62-99ffe4"> unsafe</span><span class="sk-032f62-99ffe4"> fn</span><span class="sk-032f62-99ffe4"> into_inner_unchecked</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">                      (pin: </span><span class="sk-032f62-99ffe4">Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">P</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> P;</span></span></code></pre>
+</div>
+<p>I know <code>unsafe</code> can be a bit scary, but it's OK to write unsafe code! I think of unsafe as the compiler saying "hey, I can't tell if this code follows the rules here, so I'm going to rely on you to check for me." The Rust compiler does so much work for us, it's only fair that we do some of the work every now and then. If you want to learn how to write your own projection methods, I can highly recommend <a href="https://fasterthanli.me/articles/pin-and-suffering" target="_blank" rel="noopener noreferrer">this fasterthanli.me blog post</a> on the topic. But we're going to take a little shortcut.</p>
+<h3>Using pin-project instead</h3>
+<p>So, OK, look, it's time for a confession: I don't like using <code>unsafe</code>. I know I just explained why it's OK, but still, given the option, I would rather not.</p>
+<p>I didn't start writing Rust because I wanted to carefully think about the consequences of my actions, damnit, I just want to go fast and not break things. Luckily, someone sympathized with me and made a crate which generates totally safe projections! It's called <a href="https://docs.rs/pin-project" target="_blank" rel="noopener noreferrer">pin-project</a> and it's <em>awesome</em>. All we need to do is change our definition:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">#[pin_project</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">pin_project] </span><span class="sk-6a737d-8b8b8b94">// This generates a `project` method</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">pub</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> TimedWrapper</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Fut</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Future</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// For each field, we need to choose whether `project` returns an</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// unpinned (&amp;mut T) or pinned (Pin&lt;&amp;mut T&gt;) reference to the field.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// By default, it assumes unpinned:</span></span>
+<span class="line"><span class="sk-24292e-fff">	start</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Option</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Instant</span><span class="sk-24292e-fff">&gt;,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">	// Opt into pinned references with this attribute:</span></span>
+<span class="line"><span class="sk-24292e-fff">	#[pin]</span></span>
+<span class="line"><span class="sk-24292e-fff">	future</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Fut</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>For each field, you have to choose whether its projection should be pinned or not. By default, you should use a normal reference, just because they're easier and simpler. But if you know you need a pinned reference -- for example, because you want to call <code>.poll()</code>, whose receiver is <code>Pin&lt;&amp;mut Self&gt;</code> -- then you can do that with <code>#[pin]</code>.</p>
+<p>Now we can finally poll the inner future!</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">fn</span><span class="sk-032f62-99ffe4"> poll</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">self:</span><span class="sk-032f62-99ffe4"> Pin</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Sel</span><span class="sk-24292e-fff">f</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> cx:</span><span class="sk-24292e-fff"> &amp;</span><span class="sk-6f42c1-ffc799">mut</span><span class="sk-032f62-99ffe4"> Context</span><span class="sk-24292e-fff">) -</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">Self::Outpu</span><span class="sk-24292e-fff">t</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> This</span><span class="sk-032f62-99ffe4"> returns</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> type</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> same</span><span class="sk-032f62-99ffe4"> fields,</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> same</span><span class="sk-032f62-99ffe4"> types,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	//</span><span class="sk-032f62-99ffe4"> except</span><span class="sk-032f62-99ffe4"> that</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> fields</span><span class="sk-032f62-99ffe4"> defined</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-6a737d-8b8b8b94"> #[pin] will be pinned.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	let</span><span class="sk-032f62-99ffe4"> mut</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> self.project</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">	</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    //</span><span class="sk-032f62-99ffe4"> Call</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> inner</span><span class="sk-032f62-99ffe4"> poll,</span><span class="sk-032f62-99ffe4"> measuring</span><span class="sk-032f62-99ffe4"> how</span><span class="sk-032f62-99ffe4"> long</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> took.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	let</span><span class="sk-032f62-99ffe4"> start</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> this.start.get_or_insert_with</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Instant::now</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	let</span><span class="sk-032f62-99ffe4"> inner_poll</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> this.future.as_mut</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">.poll</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">cx</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">	let</span><span class="sk-032f62-99ffe4"> elapsed</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> start.elapsed</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	match</span><span class="sk-032f62-99ffe4"> inner_poll</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> inner</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> needs</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> time,</span><span class="sk-032f62-99ffe4"> so</span><span class="sk-032f62-99ffe4"> this</span><span class="sk-032f62-99ffe4"> future</span><span class="sk-032f62-99ffe4"> needs</span><span class="sk-032f62-99ffe4"> more</span><span class="sk-032f62-99ffe4"> time</span><span class="sk-032f62-99ffe4"> too</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		Poll::Pending</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> Poll::Pending,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		//</span><span class="sk-032f62-99ffe4"> Success!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		Poll::Ready(output</span><span class="sk-24292e-fff">) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> Poll::Ready((output</span><span class="sk-d73a49-a0a0a0">,</span><span class="sk-24292e-fff"> elapsed)),</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Finally, our goal is complete -- and we did it all without any unsafe code.</p>
+<h3>Summary</h3>
+<p>If a Rust type has self-referential pointers, it can't be moved safely. After all, moving doesn't update the pointers, so they'll still be pointing at the old memory address, so they're now invalid. Rust can automatically tell which types are safe to move (and will auto impl the <code>Unpin</code> trait for them). If you have a <code>Pin</code>-ned pointer to some data, Rust can guarantee that nothing unsafe will happen (if it's safe to move, you can move it, if it's unsafe to move, then you can't). This is important because many Future types are self-referential, so we need <code>Pin</code> to safely poll a Future. You probably won't have to poll a future yourself (just use async/await instead), but if you do, use the <a href="https://docs.rs/pin-project" target="_blank" rel="noopener noreferrer">pin-project</a> crate to simplify things.</p>
+<p>I hope this helped -- if you have any questions, please <a href="https://twitter.com/adam_chal" target="_blank" rel="noopener noreferrer">ask me on Twitter</a>. And if you want to get paid to talk to me about Rust and networking protocols, my team at Cloudflare is hiring, so be sure to visit <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">careers.cloudflare.com</a>.</p>
+<h3>References</h3>
+<ul>
+	<li>Complete TimedWrapper example code on <a href="https://github.com/adamchalmers/nested-future-example/blob/master/src/main.rs" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+	<li>This post is based on a <a href="https://cloudflare.tv/event/2F1zRnM58eBCSHP2VEd74x" target="_blank" rel="noopener noreferrer">presentation</a> I gave at a Rust Bay Area meetup a few weeks ago. My talk starts around 40 minutes in.</li>
+	<li>The <a href="https://doc.rust-lang.org/stable/std/pin/index.html" target="_blank" rel="noopener noreferrer">std::pin docs</a> have a pretty good explanation of Pin's details.</li>
+	<li>The <a href="https://rust-lang.github.io/async-book/04_pinning/01_chapter.html" target="_blank" rel="noopener noreferrer">Rust async book</a> explains why Futures often need self-referential pointers.</li>
+	<li>Comprehensive article on <a href="https://fasterthanli.me/articles/pin-and-suffering" target="_blank" rel="noopener noreferrer">how pin projection actually works</a> by <a href="https://twitter.com/fasterthanlime" target="_blank" rel="noopener noreferrer">@fasterthanlime</a></li>
+	<li>Great article explaining when and how Rust <a href="https://hashrust.com/blog/moves-copies-and-clones-in-rust" target="_blank" rel="noopener noreferrer">moves values to different memory addresses</a>, by <a href="https://twitter.com/hashrust" target="_blank" rel="noopener noreferrer">@HashRust</a><em>Thanks to Nick Vollmar for feedback and to</em> <a href="https://stackoverflow.com/users/155423/shepmaster" target="_blank" rel="noopener noreferrer"><em>Shepmaster</em></a> <em>for helping me use pin-project when I first needed to write a nested Future</em></li>
+</ul>

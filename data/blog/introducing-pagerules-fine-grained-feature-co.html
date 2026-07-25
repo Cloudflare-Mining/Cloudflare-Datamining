@@ -1,119 +1,53 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6bWDEUemWyi7yOXg1xYvBU/2adca5511caf6e6af0f09570e68efdac/introducing-pagerules-fine-grained-feature-co.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>CloudFlare is provisioned by DNS. That means that, from the beginning, you've been able to turn CloudFlare on or off on a subdomain level. From the CloudFlare DNS Manager, you can toggle the little clouds next to your subdomains orange (on) or gray (off) in order to control whether traffic for that subdomain will pass through CloudFlare's proxy.</p>
-	<p>Often, however, users have wanted finer-grained control. For example, you may want to have a CloudFlare app like UserVoice added to your public-facing pages, but not appear on your private administrative areas of your website. Before today, that wasn't an option.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-page-rules">Introducing Page Rules</h3>
-		<a href="https://blog.cloudflare.com/#introducing-page-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Page Rules is a powerful new set of tools that allows you to control how CloudFlare works on your site on a page-by-page basis. The feature provides many of the most popular controls of HTACCESS with a user-friendly interface. Page Rules are now available for all users from the Settings menu next to each domain on the My Websites page. Over the next few days we'll be posting some tutorials on the CloudFlare Blog on various ways you can use Page Rules, but I wanted to start with the example above: how to turn a <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare app</a> like UserVoice off on the administrative portion of your website.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5LTm69sDiI1jAiwKVOC1sm/d7152f7cc3b507b634ff74e7c82bd0e6/page_rules_menu_highlighted.png.scaled500.png" alt="Introducing Page Rules: Fine Grained Control over CloudFlare's Features" class="kg-image" width="214" height="236" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="using-page-rules-to-control-cloudflare-features-and-apps">Using Page Rules to Control CloudFlare Features and Apps</h3>
-		<a href="https://blog.cloudflare.com/#using-page-rules-to-control-cloudflare-features-and-apps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The first step to using Page Rules is to define a pattern that defines when the rule is triggered. These patterns can be simple, such as a single URL, or complicated including multiple wildcards. Imagine you have a content management system with a single administrative URL:</p>
-	<ul>
-		<li>
-			<p><code>https://www.example.com/admin.php</code></p>
-		</li>
-	</ul>
-	<p>If that is the only URL where you want <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare Apps</a> to be turned off, you can enter it in exactly that form as a new pattern. Then, below the pattern, toggle the "Apps" setting to "Off." It's as simple as that.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2XxkZRlVkPF0IUSWK3XT6z/fd8bff9a9e492c0b99d43219598a5883/new_page_rule.png.scaled500.png" alt="Introducing Page Rules: Fine Grained Control over CloudFlare's Features" class="kg-image" width="500" height="83" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="wildcard-and-advanced-pattern-matching">Wildcard and Advanced Pattern Matching</h3>
-		<a href="https://blog.cloudflare.com/#wildcard-and-advanced-pattern-matching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The pattern above will only match the following URL:</p>
-	<ul>
-		<li>
-			<p><code>https://www.example.com/admin.php</code></p>
-		</li>
-	</ul>
-	<p>It will not match any of the following URLs:</p>
-	<ul>
-		<li>
-			<p><code>http://www.example.com/admin.php</code> <i>[http ≠ https]</i></p>
-		</li>
-		<li>
-			<p><code>https://example.com/admin.php</code> <i>[missing www subdomain]</i></p>
-		</li>
-		<li>
-			<p><code>https://www.example.com/admin</code> <i>[admin ≠ admin.php]</i></p>
-		</li>
-	</ul>
-	<p>You can make rules more flexible by including wildcards with the * character. For example, if you wanted the pattern to match all four of the above URLs, you could use a pattern like:</p>
-	<ul>
-		<li>
-			<p><code>*example.com/admin*</code></p>
-		</li>
-	</ul>
-	<p>A wildcard can represent <b>zero or more</b> characters and can be used anywhere in the pattern. So, for example, the following pattern:</p>
-	<ul>
-		<li>
-			<p><code>https://www.example.com/*b*/*</code></p>
-		</li>
-	</ul>
-	<p>Would match:</p>
-	<ul>
-		<li>
-			<p><code>https://www.example.com/blog/</code></p>
-		</li>
-		<li>
-			<p><code>https://www.example.com/blog/index.php</code></p>
-		</li>
-		<li>
-			<p><code>https://www.example.com/b/admin/folder/index.php</code></p>
-		</li>
-		<li>
-			<p><code>https://www.example.com/myblog/</code></p>
-		</li>
-	</ul>
-	<p>But would not match:</p>
-	<ul>
-		<li>
-			<p><code>https://www.example.com/blog</code> <i>[missing the trailing slash]</i></p>
-		</li>
-		<li>
-			<p><code>https://www.example.com/sam/index.php</code> <i>[sam doesn't contain a "b"]</i></p>
-		</li>
-	</ul>
-	<p>### Practical Example Many WordPress users want to disable CloudFlare Apps and performance features like Rocket Loader on their WordPress Admin panel while leaving them on for their public facing pages. To do this, for most default WordPress setups, you can now create a PageRule by defining the following rule:</p>
-	<ul>
-		<li>
-			<p><code>*example.com/wp-admin*</code></p>
-		</li>
-	</ul>
-	<p>Then toggle Apps and Performance to "off" then click the Add Rule button. As soon as the rule is in place, your WordPress admin pages will not have CloudFlare Apps like UserVoice included and will not be altered by features like Rocket Loader or AutoMinify.</p>
-	<div class="flex anchor relative">
-		<h3 id="non-trivial">Non-Trivial</h3>
-		<a href="https://blog.cloudflare.com/#non-trivial" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Making this work at our scale is non-trivial. To make sure it is fast, when you create a rule, it is compiled into machine code and pushed out to the edge of our network within a couple seconds. Every rule needs then needs to be checked with every request. Given that, under normal load, we're now processing well over 50,000 requests per second, we needed to put some limits on the number of rules per user. Free accounts include three (3) Page Rules per domain. If you need more, you can upgrade to a Pro account which includes twenty (20) Page Rules per domain.</p>
-	<p>Over the next few days, we'll be posting other powerful things you can do with Page Rules including how you can use it for advanced URL forwarding as well as ways that it can enable powerful new caching.</p>
-</div>
+<p>CloudFlare is provisioned by DNS. That means that, from the beginning, you've been able to turn CloudFlare on or off on a subdomain level. From the CloudFlare DNS Manager, you can toggle the little clouds next to your subdomains orange (on) or gray (off) in order to control whether traffic for that subdomain will pass through CloudFlare's proxy.</p>
+<p>Often, however, users have wanted finer-grained control. For example, you may want to have a CloudFlare app like UserVoice added to your public-facing pages, but not appear on your private administrative areas of your website. Before today, that wasn't an option.</p>
+<h3>Introducing Page Rules</h3>
+<p>Page Rules is a powerful new set of tools that allows you to control how CloudFlare works on your site on a page-by-page basis. The feature provides many of the most popular controls of HTACCESS with a user-friendly interface. Page Rules are now available for all users from the Settings menu next to each domain on the My Websites page. Over the next few days we'll be posting some tutorials on the CloudFlare Blog on various ways you can use Page Rules, but I wanted to start with the example above: how to turn a <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare app</a> like UserVoice off on the administrative portion of your website.</p>
+<h3>Using Page Rules to Control CloudFlare Features and Apps</h3>
+<p>The first step to using Page Rules is to define a pattern that defines when the rule is triggered. These patterns can be simple, such as a single URL, or complicated including multiple wildcards. Imagine you have a content management system with a single administrative URL:</p>
+<ul>
+	<li><code>https://www.example.com/admin.php</code></li>
+</ul>
+<p>If that is the only URL where you want <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">CloudFlare Apps</a> to be turned off, you can enter it in exactly that form as a new pattern. Then, below the pattern, toggle the "Apps" setting to "Off." It's as simple as that.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="500" height="83" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=500&amp;h=83&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=500&amp;h=83&amp;f=webp&amp;fit=cover&amp;position=center 500w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=640&amp;h=106&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=750&amp;h=125&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=828&amp;h=137&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=1000&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 1000w" alt="Introducing Page Rules: Fine Grained Control over CloudFlare's Features" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45CG35R6TTEPYM6KR9X9D6.png&amp;w=500&amp;h=83&amp;f=webp" data-lightbox-width="500" data-lightbox-height="83" data-astro-cid-7nvefuv6="true" sizes="(min-width: 500px) 500px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="500" height="83" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Wildcard and Advanced Pattern Matching</h3>
+<p>The pattern above will only match the following URL:</p>
+<ul>
+	<li><code>https://www.example.com/admin.php</code></li>
+</ul>
+<p>It will not match any of the following URLs:</p>
+<ul>
+	<li><code>http://www.example.com/admin.php</code> <em>[http ≠ https]</em></li>
+	<li><code>https://example.com/admin.php</code> <em>[missing www subdomain]</em></li>
+	<li><code>https://www.example.com/admin</code> <em>[admin ≠ admin.php]</em></li>
+</ul>
+<p>You can make rules more flexible by including wildcards with the * character. For example, if you wanted the pattern to match all four of the above URLs, you could use a pattern like:</p>
+<ul>
+	<li><code>*example.com/admin*</code></li>
+</ul>
+<p>A wildcard can represent <strong>zero or more</strong> characters and can be used anywhere in the pattern. So, for example, the following pattern:</p>
+<ul>
+	<li><code>https://www.example.com/*b*/*</code></li>
+</ul>
+<p>Would match:</p>
+<ul>
+	<li><code>https://www.example.com/blog/</code></li>
+	<li><code>https://www.example.com/blog/index.php</code></li>
+	<li><code>https://www.example.com/b/admin/folder/index.php</code></li>
+	<li><code>https://www.example.com/myblog/</code></li>
+</ul>
+<p>But would not match:</p>
+<ul>
+	<li><code>https://www.example.com/blog</code> <em>[missing the trailing slash]</em></li>
+	<li><code>https://www.example.com/sam/index.php</code> <em>[sam doesn't contain a "b"]</em></li>
+</ul>
+<p>### Practical Example Many WordPress users want to disable CloudFlare Apps and performance features like Rocket Loader on their WordPress Admin panel while leaving them on for their public facing pages. To do this, for most default WordPress setups, you can now create a PageRule by defining the following rule:</p>
+<ul>
+	<li><code>*example.com/wp-admin*</code></li>
+</ul>
+<p>Then toggle Apps and Performance to "off" then click the Add Rule button. As soon as the rule is in place, your WordPress admin pages will not have CloudFlare Apps like UserVoice included and will not be altered by features like Rocket Loader or AutoMinify.</p>
+<h3>Non-Trivial</h3>
+<p>Making this work at our scale is non-trivial. To make sure it is fast, when you create a rule, it is compiled into machine code and pushed out to the edge of our network within a couple seconds. Every rule needs then needs to be checked with every request. Given that, under normal load, we're now processing well over 50,000 requests per second, we needed to put some limits on the number of rules per user. Free accounts include three (3) Page Rules per domain. If you need more, you can upgrade to a Pro account which includes twenty (20) Page Rules per domain.</p>
+<p>Over the next few days, we'll be posting other powerful things you can do with Page Rules including how you can use it for advanced URL forwarding as well as ways that it can enable powerful new caching.</p>

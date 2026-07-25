@@ -1,0 +1,244 @@
+<p>Cloudflare <a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>看好</u></a>代理程式的未來，這已經不是什麼秘密了。我們對未來充滿驚喜，在未來，AI 的能力不僅可與我們並駕齊驅，而且實際上我們可以開始將整個任務委託給 AI。</p>
+<p>自我們<a href="https://blog.cloudflare.com/build-ai-agents-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>首次推出</u></a> Agents SDK，以便於開發人員更輕鬆地構建代理程式以來，雖然過去的時間並不長，但構建代理程式的未來需要持續不斷地實現這一目標。今天，我們將發佈幾項公告以協助加速代理程式開發，包括：</p>
+<ul>
+	<li><strong>全新的 Agents SDK 功能：</strong>構建遠端 MCP 用戶端，並內建傳輸和驗證功能，以允許 AI 代理程式連線至外部服務。</li>
+	<li><strong><a href="https://developers.cloudflare.com/agents/model-context-protocol/authorization/#3-bring-your-own-oauth-provider" target="_blank" rel="noopener noreferrer"><u>MCP 的 BYO 驗證提供者</u></a>：</strong>與 <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>、<a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> 和 <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a> 整合，以新增對遠端 MCP 伺服器的驗證與授權。</li>
+	<li><strong><a href="https://developers.cloudflare.com/agents/model-context-protocol/mcp-agent-api/#hibernation-support" target="_blank" rel="noopener noreferrer"><u>McpAgent 休眠</u></a>：</strong>具狀態的遠端 MCP 伺服器處於非作用中時自動休眠，並在需要時將其喚醒。這讓您能夠將長時間執行的工作階段保持連線，同時確保您無需為空閒時間付費。&nbsp;</li>
+	<li><strong><a href="https://developers.cloudflare.com/changelog/2025-04-07-durable-objects-free-tier" target="_blank" rel="noopener noreferrer"><u>Durable Objects 免費方案</u></a>：</strong>我們將 Durable Objects 視為構建代理程式的關鍵元件，如果您使用我們的 Agents SDK，則需要存取該元件。在此之前， Durable Objects 僅作為我們付費方案的一部分提供，而今天我們很高興將其納入免費方案。</li>
+	<li><strong><a href="https://blog.cloudflare.com/workflows-ga-production-ready-durable-execution" target="_blank" rel="noopener noreferrer"><u>Workflows 正式版</u></a>：</strong>讓您能夠在代理程式中交付可用於生產環境、長時間執行、多步驟動作。</li>
+	<li><strong><a href="https://blog.cloudflare.com/introducing-autorag-on-cloudflare" target="_blank" rel="noopener noreferrer"><u>AutoRAG</u></a>：</strong>只需點按幾下，即可協助您將環境感知 AI 整合至應用程式</li>
+	<li><strong><a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agent.cloudflare.com</u></a>：</strong>適用於所有代理程式的全新登陸頁面。</li>
+</ul>
+<h2>Agents SDK 中的全新 MCP 功能</h2>
+<p>AI 代理程式現在可透過 MCP（<a href="https://modelcontextprotocol.io/introduction" target="_blank" rel="noopener noreferrer"><u>模型情境通訊協定</u></a>）連線至外部服務並與之互動。我們已更新 Agents SDK，可讓您將遠端 MCP 用戶端構建到 AI 代理程式中，並為您內建所有元件（驗證流程、工具探索和連線管理）。</p>
+<p>這讓您能夠構建可完成以下操作的代理程式：</p>
+<ol>
+	<li>提示終端使用者授予對第三方服務（MCP 伺服器）的存取權。</li>
+	<li>使用這些外部服務中的工具，從而代表終端使用者進行處理。</li>
+	<li>從 Workflows、排定任務或代理程式的任何部分呼叫 MCP 伺服器。</li>
+	<li>連線至多個 MCP 伺服器，並自動探索第三方服務提供的新工具或功能。</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="468" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=715&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=640&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=715&amp;h=468&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=750&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=828&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1080&amp;h=707&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1280&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1430&amp;h=936&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49C78G21Y8CDPCQ0CSEEXR.png&amp;w=1920&amp;h=1257&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1257" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="468" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>MCP（模型情境通訊協定）由 <a href="https://www.anthropic.com/news/model-context-protocol" target="_blank" rel="noopener noreferrer"><u>Anthropic 首次推出</u></a>，正迅速成為 AI 代理程式與外部服務互動的標準方式，OpenAI、Cursor 和 Copilot 等提供者都在採用該通訊協定。</p>
+<p>我們<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp" target="_blank" rel="noopener noreferrer"><u>最近宣佈</u></a>，支援在 Cloudflare 上<a href="https://developers.cloudflare.com/agents/guides/remote-mcp-server" target="_blank" rel="noopener noreferrer"><u>構建遠端 MCP 伺服器</u></a>，並在我們的 Agents SDK 中新增了一個 <code>McpAgent</code> 類別，以自動處理 MCP 的遠端方面：傳輸與驗證/授權。現在，我們很高興將同樣的功能擴展至充當 MCP 用戶端的代理程式。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="235" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=715&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=750&amp;h=247&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1280&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1430&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW469PXFY940AGJCHXHZ8NRE.png&amp;w=1810&amp;h=596&amp;f=webp" data-lightbox-width="1810" data-lightbox-height="596" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="235" class="pt-portable-image-media"></div>
+</figure>
+<p>想要一睹其運作嗎？使用下面的按鈕，即可部署可用於連線遠端 MCP 伺服器的完全遠端 MCP 用戶端。</p>
+<div id="html-block-k2m" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-client"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<h2>AI 代理程式現在可充當遠端 MCP 用戶端，包括傳輸與驗證</h2>
+<p>AI 代理程式需要連線至外部服務，才能存取超出其內建知識的工具、資料和功能。這意味著 AI 代理程式需要能夠充當遠端 MCP 用戶端，以便連線至託管這些工具和功能的遠端 MCP 伺服器。&nbsp;</p>
+<p>我們已在 Agents SDK 中新增一個新類別 <code>MCPClientManager</code>，為您提供所需的全部工具，以允許 AI 代理程式透過 MCP 呼叫外部服務。<code>MCPClientManager</code> 類別會自動處理以下操作：&nbsp;</p>
+<ul>
+	<li><strong>傳輸：</strong>透過 SSE 和 HTTP 連線至遠端 MCP 伺服器，即將推出對 <a href="https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http" target="_blank" rel="noopener noreferrer"><u>Streamable HTTP</u></a> 的支援。</li>
+	<li><strong>連線管理：</strong>用戶端會追蹤所有連線的狀態，並在連線中斷時自動重新連線。</li>
+	<li><strong>功能探索：</strong>自動探索 MCP 伺服器提供的所有功能、工具、資源和提示。</li>
+	<li><strong>即時更新</strong> ：當伺服器的工具、資源或提示變更時，用戶端會自動接收通知並更新其內部狀態。</li>
+	<li><strong>命名空間：</strong>連線至多個 MCP 伺服器時，所有工具和資源會自動命名空間以避免衝突。</li>
+</ul>
+<h3>授予代理程式對內建 MCP 用戶端驗證檢查的各種工具的存取權</h3>
+<p>我們已將完整的 OAuth 驗證流程直接整合至 Agents SDK，因此，您的 AI 代理程式可安全地連線至任何遠端 MCP 伺服器並進行驗證，而無需從頭開始構建驗證流程。</p>
+<p>這樣一來，您可為使用者提供一種安全的登入方式，並明確授予存取權，以允許代理程式自動執行以下操作來代表他們進行處理：</p>
+<ul>
+	<li>支援 OAuth 2.1 通訊協定。</li>
+	<li>將使用者重新導向至服務的登入頁面。</li>
+	<li>產生程式碼質詢並用授權碼交換存取權杖。</li>
+	<li>使用存取權杖向 MCP 伺服器發出經驗證的請求。</li>
+</ul>
+<p>以下是一個代理程式範例，其可透過初始化用戶端管理器、新增伺服器和處理驗證回呼，來安全地連線至 MCP 伺服器：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onStart</span><span class="sk-24292e-fff">(): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // initialize MCPClientManager which manages multiple MCP clients with optional auth</span></span>
+<span class="line"><span class="sk-24292e-fff">  this.mcp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> MCPClientManager</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my-agent"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"1.0.0"</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    baseCallbackUri: </span><span class="sk-032f62-99ffe4">`${</span><span class="sk-24292e-fff">serverHost</span><span class="sk-032f62-99ffe4">}/agents/${</span><span class="sk-24292e-fff">agentNamespace</span><span class="sk-032f62-99ffe4">}/${</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">name</span><span class="sk-032f62-99ffe4">}/callback`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    storage: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.ctx.storage,</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">addMcpServer</span><span class="sk-24292e-fff">(url: string): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">string</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Add one MCP client to our MCPClientManager</span></span>
+<span class="line"><span class="sk-24292e-fff">  const { id, authUrl } = await this.mcp.connect(url);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Return authUrl to redirect the user to if the user is unauthorized</span></span>
+<span class="line"><span class="sk-24292e-fff">  return authUrl</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onRequest</span><span class="sk-24292e-fff">(req: Request): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // handle the auth callback after being finishing the MCP server auth flow</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  if</span><span class="sk-24292e-fff"> (this.mcp.isCallbackRequest(</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.mcp.</span><span class="sk-6f42c1-ffc799">handleCallbackRequest</span><span class="sk-24292e-fff">(req);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Authorized"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>連線至多個 MCP 伺服器並探索其提供的功能</p>
+<p>您可以使用 Agents SDK，將一個 MCP 用戶端同時連線至多個 MCP 伺服器。若您想要代理程式存取由不同服務提供者提供的工具和資源並與之互動，這種方式特別有用。</p>
+<p><code>MCPClientManager</code> 類別透過 <code> mcpConnections</code> 物件保持與多個 MCP 伺服器的連線，這是一個將不重複的伺服器名稱與至其各自 <code>MCPClientConnection</code> 執行個體相對應的字典。</p>
+<p>使用 <code>connect()</code> 註冊新的伺服器連線時，管理器可執行下列操作：&nbsp;</p>
+<ol>
+	<li>透過伺服器特定的驗證來建立新的連線執行個體。</li>
+	<li>初始化連線並註冊伺服器功能通知。</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">onStart</span><span class="sk-24292e-fff">(): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;void&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Connect to an image generation MCP server</span></span>
+<span class="line"><span class="sk-24292e-fff">  await this.mcp.connect(</span><span class="sk-032f62-99ffe4">"https://image-gen.example.com/mcp/sse"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Connect to a code analysis MCP server</span></span>
+<span class="line"><span class="sk-24292e-fff">  await this.mcp.connect(</span><span class="sk-032f62-99ffe4">"https://code-analysis.example.org/sse"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Now we can access tools with proper namespacing</span></span>
+<span class="line"><span class="sk-24292e-fff">  const allTools = this.mcp.listTools();</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.log(</span><span class="sk-032f62-99ffe4">`Total tools available: ${</span><span class="sk-24292e-fff">allTools</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-99ffe4">length</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>每個連線會管理自己的驗證內容，允許一個 AI 代理程式同時對多個伺服器進行驗證。此外，<code>MCPClientManager</code> 會自動處理命名空間，以防止不同伺服器具有相同名稱的工具之間發生衝突。</p>
+<p>例如，如果「影像 MCP 伺服器」和「程式碼 MCP 伺服器」都有一個名為「分析」的工具，則它們都可獨立呼叫，不會發生任何命名衝突。</p>
+<h2>使用 Stytch、Auth0 和 WorkOS，為您的 MCP 伺服器帶來驗證與授權功能&nbsp;</h2>
+<p>使用 MCP 時，使用者將採用一種與應用程式互動的全新方式，不再依賴於儀表板或 API 作為入口點。取而代之的是，該服務將由代表使用者進行處理的 AI 代理程式存取。為確保使用者和代理程式能安全地連線至您的服務，您需要擴展現有的驗證與授權系統，以支援這些代理程式互動，從而為您的 MCP 伺服器實作登入流程、權限適用範圍、同意表單和存取強制執行。&nbsp;</p>
+<p>我們將新增與 <a href="https://stytch.com" target="_blank" rel="noopener noreferrer"><u>Stytch</u></a>、<a href="https://auth0.com" target="_blank" rel="noopener noreferrer"><u>Auth0</u></a> 和 <a href="https://workos.com" target="_blank" rel="noopener noreferrer"><u>WorkOS</u></a> 的整合，讓構建 MCP 伺服器的任何人都能更輕鬆地為其 MCP 伺服器設定驗證與授權。</p>
+<p>您可利用我們的 MCP 伺服器與 Stytch、Auth0 和 WorkOS 的整合來執行以下操作：</p>
+<ul>
+	<li>允許使用者透過電子郵箱、社交登入、SSO（單一登入）和 MFA（多重要素驗證），對您的 MCP 伺服器進行驗證。</li>
+	<li>定義直接對應至 MCP 工具的適用範圍和權限。</li>
+	<li>向使用者呈現與所請求權限相對應的同意頁面。</li>
+</ul>
+<p>強制執行權限，以便代理程式只能叫用允許的工具。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="352" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=640&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=750&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=828&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1080&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1280&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1430&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2721 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D5P8AQV026BGFF3DNQ00.png&amp;w=1226&amp;h=604&amp;f=webp" data-lightbox-width="1226" data-lightbox-height="604" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="352" class="pt-portable-image-media"></div>
+</figure>
+<p>透過下面的範例，開始使用「部署至 Cloudflare」按鈕，在您的 Cloudflare 帳戶中部署示範 MCP 伺服器。這些示範包括預先設定的驗證端點、同意流程和權限模型，您可以根據自己的需求進行調整。部署示範 MCP 伺服器後，您可以使用 <a href="https://playground.ai.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers AI 平台</u></a>（一個基於瀏覽器的遠端 MCP 用戶端）來測試端對端使用者流程。</p>
+<h3>Stytch</h3>
+<p>從使用 Stytch 的遠端 MCP 伺服器<a href="https://stytch.com/docs/guides/connected-apps/mcp-servers" target="_blank" rel="noopener noreferrer"><u>開始</u></a>，以允許使用者透過電子郵箱、Google 登入或企業 SSO 登入，並授權其 AI 代理程式代表使用者檢視並管理公司的 OKR。Stytch 將根據使用者在其組織內的角色和權限，來限制授予 AI 代理程式的適用範圍。向 MCP 用戶端授權時，每位使用者會看到一個同意頁面，其中概述了代理程式請求的權限，他們可根據其角色授予這些權限。</p>
+<div id="html-block-k5o" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-b2b-okr-manager"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>如需更多取用者使用案例，可為使用 Stytch 的待辦事項應用程式部署遠端 MCP 伺服器，以進行驗證和 MCP 用戶端授權。使用者可透過電子郵箱登入，立即存取與其帳戶關聯的待辦事項清單，並向任何 AI 助理授予存取權以協助管理其任務。</p>
+<div id="html-block-k5r" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fmcp-stytch-consumer-todo-list"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>無論使用案例如何，Stytch 都能讓您輕鬆地將應用程式轉變為 OAuth 2.0 身分識別提供者，並使遠端 MCP 伺服器成為依賴方，以便其輕鬆地從您的應用程式繼承身分識別和權限。若要進一步瞭解 Stytch 如何為遠端 MCP 伺服器啟用安全驗證，請閱讀其<a href="http://stytch.com/blog/remote-mcp-stytch-cloudflare" target="_blank" rel="noopener noreferrer"><u>部落格文章</u></a> 。</p>
+<blockquote><em>「要實現 AI 代理程式承諾，其中一項挑戰是使這些代理程式能夠安全、可靠地從其他平台存取資料。Stytch 連網應用程式專為這些代理使用案例而構建，可輕鬆地將您的應用程式轉變為 OAuth 2.0 身分識別提供者，以實現對遠端 MCP 伺服器的安全存取。透過結合使用 Cloudflare Workers 與 Stytch 連網應用程式，我們為開發人員消除了障礙，使其能夠快速從 AI 概念驗證過渡到安全、已部署的實作。」— Stytch 共同創辦人兼技術長 Julianna Lamb</em></blockquote>
+<h3>Auth0</h3>
+<p>從遠端 MCP 伺服器開始，該伺服器使用 Auth0，透過電子郵箱、社交登入或企業 SSO 對使用者進行驗證，進而透過 AI 代理程式與其待辦事項和個人資料互動。MCP 伺服器代表使用者安全地連線至 API 端點，確切顯示代理程式在取得使用者同意後能夠存取哪些資源。在此實作中，存取權杖會在長時間執行的互動期間會自動重新整理。</p>
+<p>若要進行設定，請首先部署受保護的 API 端點： </p>
+<div id="html-block-k65" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Ftodos-api"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<p>然後，透過 Auth0 部署可處理驗證的 MCP 伺服器，並將 AI 代理程式安全地連線至您的 API 端點。</p>
+<div id="html-block-k68" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-auth0%2Fmcp-auth0-oidc"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<blockquote><em>「Cloudflare 將繼續為使用 AI Gateway、Vectorize 和Workers AI 等工具構建 AI 產品的開發人員提供支援。最近新增的遠端 MCP 伺服器進一步證明了，Cloudflare Workers 和 Durable Objects 是部署無伺服器 AI 的領先平台。Auth0 能夠協助滿足這些尖端工作負載的驗證與授權需求，我們深感自豪。」— 產品架構 Auth0 資深總監 Sandrino Di Mattia</em></blockquote>
+<h3>WorkOS</h3>
+<p>從遠端 MCP 伺服器開始，該伺服器使用 WorkOS 的 AuthKit 來驗證使用者，並管理授予 AI 代理程式的權限。在此範例中，MCP 伺服器根據使用者的角色和存取權限來動態公開工具。所有經驗證的使用者都可存取<code>新增</code>工具，但只有在 WorkOS 中獲得 <code>image_generation</code> 權限的使用者，才能授予 AI 代理程式存取影像產生工具的權限。這展示了 MCP 伺服器如何根據已驗證使用者的角色和權限，有條件地向 AI 代理程式公開功能。</p>
+<div id="html-block-k6j" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fcloudflare%2Fai%2Ftree%2Fmain%2Fdemos%2Fremote-mcp-authkit"><img src="https://deploy.workers.cloudflare.com/button" alt="部署到 Cloudflare"></a>
+	<p></p>
+</div>
+<blockquote><em>「MCP 正在成為 AI 代理程式整合的標準，但驗證與授權仍是企業採用的主要差距。WorkOS Connect 讓任何應用程式都能成為 OAuth 2.0 授權伺服器，從而允許代理程式和 MCP 用戶端安全地獲取權杖，以進行精細的權限授權和資源存取。藉助 Cloudflare Workers，開發人員可快速部署具有內建 OAuth 和企業級存取控制的遠端 MCP 伺服器。WorkOS 與 Cloudflare 相結合，可輕鬆交付安全的企業級代理程式基礎架構。」— WorkOS 執行長 Michael Grinich</em></blockquote>
+<h2>具有休眠功能的 WebSocket：在不使用 AI 代理程式時將其置於休眠狀態</h2>
+<p>即日起，McpAgent 類別將迎來一項新的改進：支援 <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/#websocket-hibernation-api" target="_blank" rel="noopener noreferrer"><u>WebSockets Hibernation API</u></a>，讓您的 MCP 伺服器在沒有收到請求時進入休眠狀態，並在需要時立即喚醒。這意味著，您現在僅在代理程式實際工作時才為運算付費。</p>
+<p>我們<a href="https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp" target="_blank" rel="noopener noreferrer"><u>最近推出了</u></a> <a href="https://developers.cloudflare.com/agents/model-context-protocol/tools/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A11%2C%22targetId%22%3A%22DF3E523E0077ACCB6730439891CDD7D4%22%7D" target="_blank" rel="noopener noreferrer"><u>McpAgent 類別</u></a>，允許開發人員使用 Durable Objects 讓每個用戶端工作階段保持具狀態連線，藉此在 Cloudflare 上構建遠端 MCP 伺服器。我們決定從一開始就將 McpAgent 構建為具狀態，從而允許開發人員構建可記住情境、使用者喜好設定和對話歷史記錄的伺服器。而保持用戶端連線，意味著工作階段可在長時間內保持作用中狀態，甚至不使用時亦如此。</p>
+<h3>MCP 代理程式預設可休眠</h3>
+<p>您無需變更程式碼，即可充分利用休眠功能。透過我們最近的 SDK 更新，所有 McpAgent 執行個體將自動包含休眠支援，讓您的具狀態 MCP 伺服器在非作用中期間進入休眠狀態，在需要時喚醒並保留其狀態。</p>
+<h3>運作方式</h3>
+<p>伺服器-傳送事件端點 (/sse) 收到請求後，Worker 會初始化 WebSocket 連線至工作階段的適當 Durable Object，並將 SSE 串流傳回用戶端。所有回應都流經此資料串流。</p>
+<p>該實作會利用 Durable Objects 中的 WebSocket Hibernation API。在一段時間處於非作用中時，可從記憶體中逐出 Durable Object，同時保持 WebSocket 連線開啟。如果 WebSocket 稍後收到訊息，執行階段會重新建立 Durable Object，並將訊息傳遞給適當的處理程式。</p>
+<h2>免費方案中的 Durable Objects</h2>
+<p>為協助您在 Cloudflare 上構建 AI 代理程式，我們在免費方案中提供了 <a href="http://developers.cloudflare.com/durable-objects/what-are-durable-objects" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a>，以便您可以從零承諾開始。藉助 Agents SDK，您的 AI 代理程式可部署至在 Durable Objects 上執行的 Cloudflare 。</p>
+<p>Durable Objects 提供運算及持久儲存體，與 Workers 結合使用時，可解鎖具狀態的無伺服器應用程式。每個 Durable Object 都是一個具狀態協調器，用於處理用戶端即時互動、向 LLM 等外部服務發出請求，以及透過<a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>零延遲 SQLite 儲存體</u></a>中的狀態持續性建立代理「記憶體」— 所有任務都需要在 AI 代理程式中完成。Durable Objects 可輕鬆擴展至數百萬個代理程式，在靠近使用者位置建立的每個代理程式都會與其代理程式互動，以實現快速效能，且全部由 Cloudflare 管理。</p>
+<p>2024 年 9 月生日週期間，在 Durable Objects <a href="https://blog.cloudflare.com/sqlite-in-durable-objects" target="_blank" rel="noopener noreferrer"><u>公開測試版中推出了</u></a>零延遲 SQLite 儲存體。從那時起，我們就一直專注於與 Durable Objects 中預先存在的鍵值儲存體相比缺少的功能和穩健性。我們很高興正式推出 SQLite 儲存體，每個 Durable Object 具備一個 10 GB 的 SQLite 資料庫，並建議將 SQLite 儲存體用於所有新的 Durable Object 類別。Durable Objects 免費方案只能存取 SQLite 儲存體。</p>
+<p>Cloudflare 的免費方案可讓您構建真實世界的應用程式。在免費方案中，每個 Worker 請求都能呼叫一個 Durable Object。對於<a href="https://developers.cloudflare.com/durable-objects/platform/pricing" target="_blank" rel="noopener noreferrer"><u>基於使用量的定價</u></a>，Durable Objects 會產生運算與儲存使用量，且具有下列免費方案限制。</p>
+<div id="html-block-k7x" class="html-block">
+	<div style="margin-left:0pt">
+		<figure class="table">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
+				<colgroup>
+					<col style="width:33.33%">
+					<col style="width:33.33%">
+					<col style="width:33.34%">
+				</colgroup>
+				<tbody>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">&nbsp;</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Workers Free</strong></span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap"><strong>Workers Paid</strong></span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">運算：請求</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每天 100,000 列</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每月包含 100 萬</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 每百萬 0.15 美元</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">計算：持續時間</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每天 13,000 GB-s</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每月包含 400,000 GB-s</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 每秒每百萬 GB 12.50 美元</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">儲存：讀取的列數</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">500 萬列/天</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每月包含 250 億</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 每百萬 0.001 美元</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">儲存：寫入的行數</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每天 100,000 列</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每月包含 5,000 萬</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 每百萬 1.00 美元</span></span></p>
+						</td>
+					</tr>
+					<tr style="height:0pt">
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">儲存： SQL 儲存資料</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5GB（總計）</span></span></p>
+						</td>
+						<td style="border-color:#000000;border-width:1pt;overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">每月包含 5 GB</span></span></p>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">+ 每月每 GB 0.20 美元</span></span></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</figure>
+	</div>
+</div>
+<h3>請前往 agent.cloudflare.com 查閱</h3>
+<p>我們知道這需要瞭解大量資訊，但請不要擔心。無論您是剛接觸代理程式，還是希望深入瞭解 Cloudflare 如何協助您構建代理程式，我們今天推出的新網站都能協助您盡快入門：<a href="https://agents.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>agent.cloudflare.com</u></a> 。</p>
+<p>請不吝分享您構建的內容！</p>

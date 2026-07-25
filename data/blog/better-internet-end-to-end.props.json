@@ -1,247 +1,61 @@
 {
-	"footerBlurb": "<span></span>",
-	"initialReadingTime": "4",
+	"initialReadingTime": "5",
 	"locale": "en-us",
-	"localesAvailable": [],
 	"post": {
 		"authors": [
 			{
 				"name": "Timothy Fong",
-				"slug": "timothy",
-				"bio": null,
-				"profile_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Dgk5iT6vLEgg7IHLxgPS6/07d73b48e1ea0ebc2af618d5a2255917/timothy.jpeg",
-				"location": null,
-				"website": null,
-				"twitter": null,
-				"facebook": null,
-				"publiclyIndex": true
+				"slug": "timothy"
 			}
 		],
 		"excerpt": "In Q2, Cloudflare released several products which enable a better Internet “end-to-end” — from the mobile client to host infrastructure. Now, anyone from an individual developer to large companies and governments, can control, secure, and accelerate their applications from “perimeter” to “host.”",
-		"feature_image": "https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3ADBkXmMjHpoNAbmqjCRWB/bf7356c41ba41aefb249f6c3c591933d/better-internet-end-to-end.jpg",
-		"featured": false,
-		"html": "<p></p><p>Photo by <a href=\"https://unsplash.com/@allenliu?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit\" target=\"_blank\" rel=\"noopener noreferrer\">Liu Zai Hou</a> / <a href=\"https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit\" target=\"_blank\" rel=\"noopener noreferrer\">Unsplash</a></p><p>In Q2, Cloudflare released several products which enable a better Internet “end-to-end” — from the mobile client to host infrastructure. Now, anyone from an individual developer to large companies and governments, can control, secure, and accelerate their applications from the “<a href=\"https://www.cloudflare.com/learning/access-management/what-is-the-network-perimeter/\" target=\"_blank\" rel=\"noopener noreferrer\">perimeter</a>” back to the “host.”</p><p>On the client side, <a href=\"https://www.cloudflare.com/products/mobile-sdk/\" target=\"_blank\" rel=\"noopener noreferrer\">Cloudflare’s Mobile SDK</a> extends control directly into your mobile apps, providing visibility into application performance and load times across any global carrier network.</p><p>On the host side, <a href=\"https://www.cloudflare.com/products/cloudflare-workers/\" target=\"_blank\" rel=\"noopener noreferrer\">Cloudflare Workers</a> lets companies move workloads from their host to the Cloudflare Network, reducing infrastructure costs and speeding up the user experience. <a href=\"https://www.cloudflare.com/products/argo-tunnel/\" target=\"_blank\" rel=\"noopener noreferrer\">Argo Tunnel</a> lets you securely connect your host directly to a Cloudflare data center. If your host infrastructure is running other TCP services besides HTTP(S), you can now protect it with Cloudflare’s DDoS protection using <a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/\" target=\"_blank\" rel=\"noopener noreferrer\">Spectrum</a>.</p><p>So for end-to-end control that is easy and fast to deploy, these recent products are all incredible “workers” across the “spectrum” of your needs.</p>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"but-theres-more-to-the-story\">But there’s more to the story</h3>\n      <a href=\"#but-theres-more-to-the-story\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p>End users want richer experiences, such as more video, interactivity, and images. Meeting those needs can incur real costs in bandwidth, hardware, and time. Cloudflare addresses these with three products that improve video delivery, reduce paint times, and shrink the round-trip times.</p><p>Cloudflare now simplifies and reduces delivery cost of video with <a href=\"https://www.cloudflare.com/products/stream-delivery/\" target=\"_blank\" rel=\"noopener noreferrer\">Stream Delivery</a>. Pages using plenty of Javascript now have faster paint times and wider mobile-device support with <a href=\"/we-have-lift-off-rocket-loader-ga-is-mobile/\">Rocket Loader</a>. If you’re managing multiple origins and want to ensure fastest delivery based on the shortest round-trip time, Cloudflare Load Balancer now supports <a href=\"/i-wanna-go-fast-load-balancing-dynamic-steering/\">Dynamic Steering</a>.</p><p>Attackers are shifting their focus to the application layer. Some security features, like CAPTCHA and Javascript Challenge, give you more control and reduce false-positives when blocking rate-based threats at the edge, such as layer 7 DDoS or brute-force attacks.</p><p>Finally, Cloudflare extended privacy to consumers through the launch of our DNS resolver <a href=\"https://1.1.1.1\" target=\"_blank\" rel=\"noopener noreferrer\">1.1.1.1</a> on 4/1/2018! Now users who set their DNS resolvers to 1.1.1.1 can browse faster while protecting browser data with Cloudflare’s privacy-first consumer DNS service.</p>\n    <div class=\"flex anchor relative\">\n      <h3 id=\"here-is-a-recap-from-april-to-june-of-the-features-we-released-in-q2\">Here is a recap from April to June of the features we released in Q2</h3>\n      <a href=\"#here-is-a-recap-from-april-to-june-of-the-features-we-released-in-q2\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    \n    <div class=\"flex anchor relative\">\n      <h4 id=\"dynamic-steering\">Dynamic Steering</h4>\n      <a href=\"#dynamic-steering\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Tue, July 10, 2018</i>Dynamic steering is a load balancing feature that automates traffic steering across origins in multiple geographic regions. <a href=\"https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt/\" target=\"_blank\" rel=\"noopener noreferrer\">Round-trip time (RTT)</a> for health checks is calculated across multiple pools of load balanced servers and origins to determine the fastest server pools. This RTT data enables the load balancers to identify the fastest pools, and to direct user requests to the most responsive origins.</p><ul><li><p><a href=\"/i-wanna-go-fast-load-balancing-dynamic-steering/\">Blog Post</a></p></li><li><p><a href=\"https://www.cloudflare.com/load-balancing/\" target=\"_blank\" rel=\"noopener noreferrer\">Product Page</a></p></li><li><p><a href=\"https://support.cloudflare.com/hc/en-us/articles/360006900952\" target=\"_blank\" rel=\"noopener noreferrer\">Support Article</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"support-for-new-dns-record-types\">Support for New DNS Record Types</h4>\n      <a href=\"#support-for-new-dns-record-types\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Thu, July 5, 2018</i>Cloudflare&#39;s Authoritative DNS now supports the following record types: CERT, DNSKEY, DS, NAPTR, SMIMEA, SSHFP, TLSA, and URI via the web and API.</p>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"developer-portal-q2-update\">Developer Portal Q2 Update</h4>\n      <a href=\"#developer-portal-q2-update\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Mon, June 11, 2018</i>The Developer Portal has been updated in Q2 to include improved search, documentation for new products, and listings of upcoming Cloudflare community events.</p><ul><li><p><a href=\"https://developers.cloudflare.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Developer Portal</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"rocket-loader-upgrade\">Rocket Loader Upgrade</h4>\n      <a href=\"#rocket-loader-upgrade\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Fri, June 1, 2018</i>Rocket Loader has been updated to deliver faster performance for website paint &amp; load times by prioritizing website content over JavaScript. Majority of mobile devices are now supported. Increased compliance with strict content security policies.</p><ul><li><p><a href=\"https://support.cloudflare.com/hc/en-us/articles/200168056-What-does-Rocket-Loader-do-\" target=\"_blank\" rel=\"noopener noreferrer\">Support</a></p></li><li><p><a href=\"/we-have-lift-off-rocket-loader-ga-is-mobile/\">Blog</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"stream-delivery\">Stream Delivery</h4>\n      <a href=\"#stream-delivery\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Thu, May 31, 2018</i>Cloudflare’s Stream Delivery solution offers fast caching and delivery of video content across our network of 150+ global data centers.</p><ul><li><p><a href=\"https://www.cloudflare.com/products/stream-delivery/\" target=\"_blank\" rel=\"noopener noreferrer\">Product Page</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"deprecating-tls-1-0-and-1-1-on-api-cloudflare-com\">Deprecating TLS 1.0 and 1.1 on api.cloudflare.com</h4>\n      <a href=\"#deprecating-tls-1-0-and-1-1-on-api-cloudflare-com\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Tue, May 29, 2018</i>On June 4, Cloudflare will be dropping support for TLS 1.0 and 1.1 on <a href=\"http://api.cloudflare.com/\" target=\"_blank\" rel=\"noopener noreferrer\">api.cloudflare.com</a>. Additionally, the dashboard will be moved from <a href=\"http://www.cloudflare.com/a\" target=\"_blank\" rel=\"noopener noreferrer\">www.cloudflare.com/a</a> to <a href=\"http://dash.cloudflare.com/\" target=\"_blank\" rel=\"noopener noreferrer\">dash.cloudflare.com</a> and will require a browser that supports TLS 1.2 or higher.</p><ul><li><p><a href=\"https://www.cloudflare.com/ssl/\" target=\"_blank\" rel=\"noopener noreferrer\">Product Page</a></p></li><li><p><a href=\"/deprecating-old-tls-versions-on-cloudflare-dashboard-and-api/\">Blog Post</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"rate-limiting-has-new-actions-and-triggers\">Rate Limiting has new Actions and Triggers</h4>\n      <a href=\"#rate-limiting-has-new-actions-and-triggers\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Mon, May 21, 2018</i>Rate Limiting has two new features: challenges (CAPTCHA and JS Challenge) as an Action; and matching Header attributes in the response (from either origin or the cache) as the Trigger. These features give more control over how Cloudflare Rate Limiting responds to threshold violations, giving customers granularity over the types of requests to &quot;count&quot; to fit their different applications. To learn more, go to the blog post.</p><ul><li><p><a href=\"https://www.cloudflare.com/rate-limiting/\" target=\"_blank\" rel=\"noopener noreferrer\">Product Page</a></p></li><li><p><a href=\"/rate-limiting-delivering-more-rules-and-greater-control/\">Blog Post</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"support-purge-by-tag-for-large-tag-sizes\">Support purge-by-tag for large tag sizes</h4>\n      <a href=\"#support-purge-by-tag-for-large-tag-sizes\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Thu, May 10, 2018</i>The Cache-Tag header now supports up to 1000 tags and a total header length of 16kb. This update simplifies file purges for customers who deploy websites with Drupal.</p><ul><li><p><a href=\"https://support.cloudflare.com/hc/en-us/articles/206596608-How-to-Purge-Cache-Using-Cache-Tags-Enterprise-only-\" target=\"_blank\" rel=\"noopener noreferrer\">Support article</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"multi-user-access-on-dash-cloudflare-com\">Multi-User Access on dash.cloudflare.com</h4>\n      <a href=\"#multi-user-access-on-dash-cloudflare-com\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Wed, May 2, 2018</i>Starting May 2 2018, users can go to the new home of Cloudflare’s Dashboard at <a href=\"http://dash.cloudflare.com/\" target=\"_blank\" rel=\"noopener noreferrer\">dash.cloudflare.com</a> and share account access. This has been supported at our Enterprise level of service, but is now being extended to all customers.</p><ul><li><p><a href=\"/expanding-multi-user-access/\">Blog Post</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"support-full-ssl-strict-mode-validation-for-cname-domains\">Support full SSL (Strict) mode validation for CNAME domains</h4>\n      <a href=\"#support-full-ssl-strict-mode-validation-for-cname-domains\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Thu, April 12, 2018</i>Cloudflare is now able to validate origin certificates that use a hostname&#39;s CNAME target in Full SSL (Strict) mode. Previously, Cloudflare would not validate any certificate without a direct match of the HTTP hostname and the certificate&#39;s Common Name or SAN. This update allows SSL for SaaS customers to more easily enable end-to-end security.</p><ul><li><p><a href=\"https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-\" target=\"_blank\" rel=\"noopener noreferrer\">Support</a></p></li><li><p><a href=\"https://www.cloudflare.com/ssl-for-saas-providers\" target=\"_blank\" rel=\"noopener noreferrer\">SSL for SaaS</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"cloudflare-spectrum\">Cloudflare Spectrum</h4>\n      <a href=\"#cloudflare-spectrum\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Thu, April 12, 2018</i>Spectrum protects TCP applications and ports from volumetric DDoS attacks and data theft by proxying non-web traffic through Cloudflare’s Anycast network.</p><ul><li><p><a href=\"https://www.cloudflare.com/products/cloudflare-spectrum/\" target=\"_blank\" rel=\"noopener noreferrer\">Product Page</a></p></li><li><p><a href=\"/spectrum/\">Blog Post</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"workers-can-control-cache-ttl-by-response-code\">Workers Can Control Cache TTL by Response Code</h4>\n      <a href=\"#workers-can-control-cache-ttl-by-response-code\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Wed, April 11, 2018</i>Cloudflare workers can now control cache TTL by response code. This provides greater control over cached assets with Cloudflare Workers.</p><ul><li><p><a href=\"https://developers.cloudflare.com/workers/reference/cloudflare-features/\" target=\"_blank\" rel=\"noopener noreferrer\">Documentation</a></p></li></ul>\n    <div class=\"flex anchor relative\">\n      <h4 id=\"argo-tunnel\">Argo Tunnel</h4>\n      <a href=\"#argo-tunnel\" aria-hidden=\"true\" class=\"relative sm:absolute sm:-start-5\">\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\"><path fill=\"currentcolor\" d=\"m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z\"></path></svg>\n      </a>\n    </div>\n    <p><i>Thu, April 5, 2018</i>Argo Tunnel ensures that no visitor or attacker can reach your web server unless they first pass through Cloudflare. Using a lightweight agent installed on your origin, Cloudflare creates an encrypted tunnel between your host infrastructure and our nearest data centers without opening a public inbound port. It’s more secure, more performant, and easier to manage than exposing your services publically.</p><ul><li><p><a href=\"https://developers.cloudflare.com/argo-tunnel/quickstart/\" target=\"_blank\" rel=\"noopener noreferrer\">Developer Doc</a></p></li><li><p><a href=\"https://www.cloudflare.com/products/argo-tunnel/\" target=\"_blank\" rel=\"noopener noreferrer\">Read More</a></p></li></ul>",
-		"id": "30mcTficRd4F27mbRddmAS",
-		"localeList": {
-			"name": "Q2 FY 18 Product Releases, for a better Internet “end-to-end” Config",
-			"enUS": "English for Locale",
-			"zhCN": "No Page for Locale",
-			"zhHansCN": "No Page for Locale",
-			"zhTW": "No Page for Locale",
-			"frFR": "No Page for Locale",
-			"deDE": "No Page for Locale",
-			"itIT": "No Page for Locale",
-			"jaJP": "No Page for Locale",
-			"koKR": "No Page for Locale",
-			"ptBR": "No Page for Locale",
-			"esLA": "No Page for Locale",
-			"esES": "No Page for Locale",
-			"enAU": "No Page for Locale",
-			"enCA": "No Page for Locale",
-			"enIN": "No Page for Locale",
-			"enGB": "No Page for Locale",
-			"idID": "No Page for Locale",
-			"ruRU": "No Page for Locale",
-			"svSE": "No Page for Locale",
-			"viVN": "No Page for Locale",
-			"plPL": "No Page for Locale",
-			"arAR": "No Page for Locale",
-			"nlNL": "No Page for Locale",
-			"thTH": "No Page for Locale",
-			"trTR": "No Page for Locale",
-			"heIL": "No Page for Locale",
-			"lvLV": "No Page for Locale",
-			"etEE": "No Page for Locale",
-			"ltLT": "No Page for Locale"
-		},
-		"meta_description": null,
-		"metadata": {
-			"imgPreview": ""
-		},
-		"primary_author": {},
-		"publicly_index": true,
-		"published_at": "2018-07-26T19:35:23.000+01:00",
+		"feature_image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW45TRNYR3Q34W84K1QWJ7BY.jpg",
+		"published_at": "2018-07-26T18:35:23.000Z",
 		"slug": "better-internet-end-to-end",
 		"tags": [
 			{
-				"id": "6QktrXeEFcl4e2dZUTZVGl",
-				"name": "Product News",
-				"slug": "product-news"
-			},
-			{
-				"id": "3z28IzlHI03BaO3svvMV6o",
-				"name": "Mobile SDK",
-				"slug": "mobile-sdk"
-			},
-			{
-				"id": "6hbkItfupogJP3aRDAq6v8",
-				"name": "Cloudflare Workers",
-				"slug": "workers"
-			},
-			{
-				"id": "z8ZZrDbXCT44IU6BaHLWl",
-				"name": "Load Balancing",
-				"slug": "loadbalancing"
-			},
-			{
-				"id": "4HIPcb68qM0e26fIxyfzwQ",
-				"name": "Developers",
-				"slug": "developers"
-			},
-			{
-				"id": "7GsUXAEWttzfewhzSJXA6W",
-				"name": "Spectrum",
-				"slug": "spectrum"
-			},
-			{
-				"id": "7nc8PvxvXGrGLlWRRj0wVG",
-				"name": "Rocket Loader",
-				"slug": "rocketloader"
-			},
-			{
-				"id": "48r7QV00gLMWOIcM1CSDRy",
-				"name": "Speed & Reliability",
-				"slug": "speed-and-reliability"
-			},
-			{
-				"id": "2kFnzwwExTv3DVtV0CTReO",
 				"name": "Cloudflare Tunnel",
 				"slug": "cloudflare-tunnel"
 			},
 			{
-				"id": "3JAY3z7p7An94s6ScuSQPf",
+				"name": "Cloudflare Workers",
+				"slug": "workers"
+			},
+			{
 				"name": "Developer Platform",
 				"slug": "developer-platform"
+			},
+			{
+				"name": "Developers",
+				"slug": "developers"
+			},
+			{
+				"name": "Load Balancing",
+				"slug": "loadbalancing"
+			},
+			{
+				"name": "Mobile SDK",
+				"slug": "mobile-sdk"
+			},
+			{
+				"name": "Product News",
+				"slug": "product-news"
+			},
+			{
+				"name": "Rocket Loader",
+				"slug": "rocketloader"
+			},
+			{
+				"name": "Spectrum",
+				"slug": "spectrum"
+			},
+			{
+				"name": "Speed & Reliability",
+				"slug": "speed-and-reliability"
 			}
 		],
 		"title": "Q2 FY 18 Product Releases, for a better Internet “end-to-end”",
-		"updated_at": "2025-10-24T10:52:00.145Z",
-		"url": "https://blog.cloudflare.com/better-internet-end-to-end"
-	},
-	"translations": {
-		"posts.by": "By",
-		"closeHint": "Close",
-		"selectHint": "Select",
-		"errorPrefix": "Error:",
-		"footer.gdpr": "GDPR",
-		"lang_blurb1": "This post is also available in {lang1}.",
-		"lang_blurb2": "This post is also available in {lang1} and {lang2}.",
-		"lang_blurb3": "This post is also available in {lang1}, {lang2} and {lang3}.",
-		"placeholder": "Search...",
-		"footer.press": "Press",
-		"header.title": "The Cloudflare Blog",
-		"navigateHint": "Navigate",
-		"search.clear": "Clear",
-		"search.filter": "Filter",
-		"search.source": "Source",
-		"footer.careers": "Careers",
-		"footer.company": "Company",
-		"footer.support": "Support",
-		"footer.the_net": "theNet",
-		"noResultsTitle": "No Results Found",
-		"search.filters": "Filters",
-		"seeMoreResults": "See more results",
-		"emptyStateTitle": "Start Searching",
-		"footer.our_team": "Our team",
-		"footer.webinars": "Webinars",
-		"loadingMessages": [
-			"Searching...",
-			"Digging through results...",
-			"Scanning the knowledge base...",
-			"Finding the best matches...",
-			"Sifting through the data...",
-			"Almost there...",
-			"Looking far and wide...",
-			"Connecting the dots...",
-			"Rummaging through pages...",
-			"Hunting down answers..."
-		],
-		"page.more_posts": "More posts",
-		"posts.time_read": "{time} min read",
-		"search.language": "Language",
-		"footer.community": "Community",
-		"footer.resources": "Resources",
-		"footer.solutions": "Solutions",
-		"footer.trademark": "Trademark",
-		"header.subscribe": "Subscribe",
-		"loadingAriaLabel": "Loading",
-		"footer.compliance": "Compliance",
-		"footer.free_plans": "Free plans",
-		"footer.impact_ESG": "Impact/ESG",
-		"modalResultsCount": "{n} result",
-		"posts.follow_on_X": "Follow on X",
-		"searchButtonLabel": "Search",
-		"footer.help_center": "Help center",
-		"footer.network_map": "Network Map",
-		"header.please_wait": "Please Wait",
-		"missingApiUrlError": "The api-url attribute is required. Please provide a valid API URL.",
-		"page.related_posts": "Related posts",
-		"search.result_stat": "Results <strong>{search_range}</strong> of <strong>{search_total}</strong> for <strong>{search_keyword}</strong>",
-		"footer.case_studies": "Case Studies",
-		"footer.connect_2024": "Connect 2024",
-		"footer.terms_of_use": "Terms of Use",
-		"footer.white_papers": "White Papers",
-		"modalNoResultsTitle": "No results found",
-		"footer.cloudflare_tv": "Cloudflare TV",
-		"footer.community_hub": "Community Hub",
-		"footer.compare_plans": "Compare plans",
-		"footer.contact_sales": "Contact Sales",
-		"header.contact_sales": "Contact Sales",
-		"header.email_address": "Email Address",
-		"noResultsDescription": "No results found for \"{query}\"",
-		"page.error.not_found": "Page not found",
-		"searchInputAriaLabel": "Search input",
-		"emptyStateDescription": "Enter a query to search for results",
-		"footer.developer_docs": "Developer docs",
-		"footer.privacy_policy": "Privacy Policy",
-		"footer.request_a_demo": "Request a demo",
-		"modalResultsCountZero": "0 results",
-		"page.continue_reading": "Continue reading",
-		"footer.analysts_report": "Analyst reports",
-		"footer.for_enterprises": "For enterprises",
-		"footer.getting_started": "Getting Started",
-		"footer.learning_center": "Learning Center",
-		"footer.project_galileo": "Project Galileo",
-		"modalResultsCountError": "Error",
-		"pagination.newer_posts": "Newer Posts",
-		"pagination.older_posts": "Older Posts",
-		"posts.social_buttons.x": "Discuss on X",
-		"search.icon_aria_label": "Search",
-		"search.source_location": "Source/Location",
-		"searchResultsAriaLabel": "Search results",
-		"footer.about_cloudflare": "About Cloudflare",
-		"footer.athenian_project": "Athenian Project",
-		"footer.become_a_partner": "Become a partner",
-		"footer.cloudflare_radar": "Cloudflare Radar",
-		"footer.network_services": "Network services",
-		"footer.trust_and_safety": "Trust & Safety",
-		"header.get_started_free": "Get Started Free",
-		"modalResultsCountPlural": "{n} results",
-		"page.search.placeholder": "Search Cloudflare",
-		"footer.cloudflare_status": "Cloudflare Status",
-		"footer.cookie_preference": "Cookie Preferences",
-		"header.valid_email_error": "Must be valid email.",
-		"search.result_stat_empty": "Results <strong>{search_range}</strong> of <strong>{search_total}</strong>",
-		"footer.connectivity_cloud": "Connectivity cloud",
-		"footer.developer_services": "Developer services",
-		"footer.investor_relations": "Investor relations",
-		"modalNoResultsDescription": "No results for \"{query}\"",
-		"page.not_found.error_code": "Error Code: 404",
-		"search.autocomplete_title": "Insert a query. Press enter to send",
-		"footer.logos_and_press_kit": "Logos & press kit",
-		"modalEmptyStateDescription": "Start typing to search",
-		"footer.application_services": "Application services",
-		"footer.get_a_recommendation": "Get a recommendation",
-		"posts.social_buttons.reddit": "Discuss on Reddit",
-		"footer.sse_and_sase_services": "SSE and SASE services",
-		"page.not_found.outdated_link": "You may have used an outdated link, or you may have typed the address incorrectly.",
-		"footer.report_security_issues": "Report Security Issues",
-		"page.error.error_message_page": "Sorry, we can't find the page you are looking for.",
-		"header.subscribe_notifications": "Subscribe to receive notifications of new posts:",
-		"footer.cloudflare_for_campaigns": "Cloudflare for Campaigns",
-		"header.subscription_confimation": "Subscription confirmed. Thank you for subscribing!",
-		"posts.social_buttons.hackernews": "Discuss on Hacker News",
-		"footer.diversity_equity_inclusion": "Diversity, equity & inclusion",
-		"footer.critical_infrastructure_defense_project": "Critical Infrastructure Defense Project"
+		"updated_at": "2026-07-15T13:06:00.967Z",
+		"url": "https://blog.cloudflare.com/better-internet-end-to-end/"
 	}
 }

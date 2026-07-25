@@ -1,215 +1,182 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WLKJEQLzMQnxnGLYc4CDp/d40f475039ad6084b3c14255f4e5d0bf/recycling-memory-buffers-in-go.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><b>THIS BLOG POST IS VERY OLD NOW. YOU PROBABLY DON'T WANT TO USE THE TECHNIQUE DESCRIBED HERE. GO'S </b><a href="https://golang.org/pkg/sync/#Pool" target="_blank" rel="noopener noreferrer"><b>sync.Pool</b></a><b> IS A BETTER WAY TO GO.</b></p>
-	<p>The other day I wrote about our use of Lua to <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">implement our new Web Application Firewall</a>. The other language that's become very popular at CloudFlare is <a href="http://golang.org" target="_blank" rel="noopener noreferrer">Go</a>. In the past, I've written about <a href="https://blog.cloudflare.com/go-at-cloudflare">how we use Go</a> to write network services including <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun</a>.</p>
-	<p>One of the operational challenges of using a garbage-collected language like Go for long-running network services is memory management.</p>
-	<p>To understand Go's memory management it's necessary to dig a little into the Go run-time code. There are two separate processes that take care of identifying memory that is no longer used by the program (that's garbage collection) and returning memory to the operating system when it doesn't look like it will be used again (that's called scavenging in the Go code).</p>
-	<p>Here's a small program that creates a lot of garbage. Once a second it asks for a byte array of between 5,000,000 and 10,000,000 bytes. It keeps a pool of 20 of these buffers around and discards others. This program is designed to simulate something that happens quite often in programs: memory is allocated by different parts of the program over time, some of it is retained, most of it is no longer needed. In a networked Go program this can easily happen with goroutines that handle network connections or requests. It's common to have goroutines that allocate blocks of memory (such as slices to store received data) and then no longer need them. Over time there will be some number of blocks of memory in use by network connections that are being handled and accumulated garbage from connections that have come and gone.</p>
-	<p>package main</p>
-	<p>import ("fmt""math/rand""runtime""time"
-		)</p>
-	<p>func makeBuffer() []byte {return make([]byte, rand.Intn(5000000)+5000000)}</p>
-	<p>func main() {pool := make([][]byte, 20)</p>
-	<pre class="language-bash"><code class="language-bash">var m runtime.MemStats  
-makes := 0  
-for {  
-    b := makeBuffer()  
-    makes += 1
-    i := rand.Intn(len(pool))
-    pool\[i\] = b
-
-    time.Sleep(time.Second)
-
-    bytes := 0
-
-    for i := 0; i &lt; len(pool); i++ {
-        if pool\[i\] != nil {
-            bytes += len(pool\[i\])
-        }
-    }
-
-    runtime.ReadMemStats(&amp;m)
-    fmt.Printf("%d,%d,%d,%d,%d,%d\\n", m.HeapSys, bytes, m.HeapAlloc,
-        m.HeapIdle, m.HeapReleased, makes)
-}</code></pre>
-	<p>}</p>
-	<p>The program uses the <a href="http://golang.org/pkg/runtime/#ReadMemStats" target="_blank" rel="noopener noreferrer">runtime.ReadMemStats</a> function to get information about the size of the heap. It prints out four values: <code>HeapSys</code> (the number of bytes the program has asked the operating system for), <code>HeapAlloc</code> (the number of bytes currently allocated in the heap), <code>HeapIdle</code> (the number of bytes in the heap that are unused) and <code>HeapReleased</code> (the number of bytes returned to the operating system).</p>
-	<p>Garbage collection runs frequently in a Go program (see the <code>GOGC</code> environment variable to understand how to control the garbage collector's operation), so when running the size of the heap will change as memory is spotted as unused: this will causes <code>HeapAlloc</code> and <code>HeapIdle</code> to change over time. The scavenger will only release memory that has been unused for more than 5 minutes so <code>HeapReleased</code> does not change often.</p>
-	<p>Here's a chart of the program above running for ten minutes.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/76nenz8v0eyxrZHmIti2zW/0304ac9ad9c4af487ba7afc40c074807/garbage.png" alt="" class="kg-image" width="1859" height="1240" loading="lazy">
-
-	</figure>
-	<p>(On this and subsequent charts the left axis in in bytes and the right axis is a count used for Make Count)</p>
-	<p>The red line shows the number of bytes that are actually in byte buffers in the pool. Because it has a fixed size of 20 buffers it quickly plateaus at around 150,000,000 bytes. The top blue line shows the amount of memory request from the operating system; it plateaus at around 375,000,000 bytes. So the program is using about 2.5x the amount of memory it needs.</p>
-	<p>As the program is churning through memory the allocated size of the heap and the amount of idle memory jumps around as garbage collection occurs. The orange line just counts the number of times <code>makeBuffer()</code> has been called to create a new buffer.</p>
-	<p>This sort of over request of memory is common in garbage collected programs (see, for example, the paper <a href="http://cs.canisius.edu/~hertzm/gcmalloc-oopsla-2005.pdf" target="_blank" rel="noopener noreferrer">Quantifying the Performance of Garbage Collection vs. Explicit Memory Management</a>). As the program churns through memory the idle memory gets reused and rarely gets released to the operating system.</p>
-	<p>One way to solve this problem is to perform some memory management manually in the program. For example, using a channel it's possible to keep a separate pool of buffers that are no longer used and use that pool to retrieve a buffer (or make a new one if the channel is empty).</p>
-	<p>The program can then be rewritten as follows:</p>
-	<p>package main</p>
-	<p>import (
-		"fmt"
-		"math/rand"
-		"runtime"
-		"time"
-		)</p>
-	<p>func makeBuffer() []byte {
-		return make([]byte, rand.Intn(5000000)+5000000)
-		}</p>
-	<p>func main() {
-		pool := make([][]byte, 20)</p>
-	<pre class="language-bash"><code class="language-bash">buffer := make(chan \[\]byte, 5)
-
-var m runtime.MemStats
-makes := 0
-for {
-    var b \[\]byte
-    select {
-    case b = &lt;-buffer:
-    default:
-        makes += 1
-        b = makeBuffer()
-    }
-
-    i := rand.Intn(len(pool))
-    if pool\[i\] != nil {
-        select {
-        case buffer &lt;- pool\[i\]:
-            pool\[i\] = nil
-        default:
-        }
-    }
-
-    pool\[i\] = b
-
-    time.Sleep(time.Second)
-
-    bytes := 0
-    for i := 0; i &lt; len(pool); i++ {
-        if pool\[i\] != nil {
-            bytes += len(pool\[i\])
-        }
-    }
-
-    runtime.ReadMemStats(&amp;m)
-    fmt.Printf("%d,%d,%d,%d,%d,%d\\n", m.HeapSys, bytes, m.HeapAlloc,
-        m.HeapIdle, m.HeapReleased, makes)
-}</code></pre>
-	<p>}</p>
-	<p>And here's a graph of its operation for 10 minutes:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SJYyQrsi4WUg9Vdg8xxvx/a9da773d3b0ad6238f20aca96d2a8172/garbage-pool.png" alt="" class="kg-image" width="1690" height="1378" loading="lazy">
-
-	</figure>
-	<p>This tells a very different story from above. The memory actually in pool is very close to the memory requested from the operating system and the garbage collector has little to no work to do. The heap only has a very small amount of idle memory that eventually gets released to the operating system.</p>
-	<p>The key to the operation of this memory recycling mechanism is a buffered channel called <code>buffer</code>. In the code above it can store 5 <code>[]byte</code> slices. When the program needs a buffer it first tries to read one from the channel using a <code>select</code> trick:</p>
-	<p>select {
-		case b = &lt;-buffer:
-		default:
-		b = makeBuffer()
-		}</p>
-	<p>This will never block because if the channel called <code>buffer</code> has a slice in it then the first case works and the slice is placed in <code>b</code>. If the channel is empty (meaning a receive would block) the <code>default</code> case happens a new buffer is allocated.</p>
-	<p>Putting slices back in the channel uses a similar non-blocking trick:</p>
-	<p>select {
-		case buffer &lt;- pool[i]:
-		pool[i] = nil
-		default:
-		}</p>
-	<p>If the <code>buffer</code> channel is full then a send to it would block. In that case the empty <code>default</code> clause occurs. This simple mechanism can be used to safely make a shared pool. It can even be shared across goroutines since channel communication is perfectly safe from multiple goroutines.</p>
-	<p>We actually use a similar technique to this in our Go programs. The actual recycler (in simplified form) is shown below. It works by having a goroutine that handles the creation of buffers and shares them across goroutines in our software. Two channels <code>get</code> (to get a new buffer) and <code>give</code> (to return a buffer to the pool) are used for all communication.</p>
-	<p>The recycler keeps a linked list of returned buffers and periodically throws away those that are too old and are unlikely to be reused (in the example code that's buffers that are older than one minute). That allows the program to cope with bursts of demand for buffers dynamically.</p>
-	<p>package main</p>
-	<p>import (
-		"container/list"
-		"fmt"
-		"math/rand"
-		"runtime"
-		"time"
-		)</p>
-	<p>var makes int
-		var frees int</p>
-	<p>func makeBuffer() []byte {
-		makes += 1
-		return make([]byte, rand.Intn(5000000)+5000000)
-		}</p>
-	<p>type queued struct {
-		when time.Time
-		slice []byte
-		}</p>
-	<p>func makeRecycler() (get, give chan []byte) {
-		get = make(chan []byte)
-		give = make(chan []byte)</p>
-	<pre class="language-bash"><code class="language-bash">go func() {
-    q := new(list.List)
-    for {
-        if q.Len() == 0 {
-            q.PushFront(queued{when: time.Now(), slice: makeBuffer()})
-        }
-
-        e := q.Front()
-
-        timeout := time.NewTimer(time.Minute)
-        select {
-        case b := &lt;-give:
-            timeout.Stop()
-            q.PushFront(queued{when: time.Now(), slice: b})
-
-       case get &lt;- e.Value.(queued).slice:
-           timeout.Stop()
-           q.Remove(e)
-
-       case &lt;-timeout.C:
-           e := q.Front()
-           for e != nil {
-               n := e.Next()
-               if time.Since(e.Value.(queued).when) &gt; time.Minute {
-                   q.Remove(e)
-                   e.Value = nil
-               }
-               e = n
-           }
-       }
-   }
-
-}()
-
-return</code></pre>
-	<p>}</p>
-	<p>func main() {
-		pool := make([][]byte, 20)</p>
-	<pre class="language-bash"><code class="language-bash">get, give := makeRecycler()
-
-var m runtime.MemStats
-for {
-    b := &lt;-get
-    i := rand.Intn(len(pool))
-    if pool\[i\] != nil {
-        give &lt;- pool\[i\]
-    }
-
-    pool\[i\] = b
-
-    time.Sleep(time.Second)
-
-    bytes := 0
-    for i := 0; i &lt; len(pool); i++ {
-        if pool\[i\] != nil {
-            bytes += len(pool\[i\])
-        }
-    }
-
-    runtime.ReadMemStats(&amp;m)
-    fmt.Printf("%d,%d,%d,%d,%d,%d,%d\\n", m.HeapSys, bytes, m.HeapAlloc
-         m.HeapIdle, m.HeapReleased, makes, frees)
-}</code></pre>
-	<p>}</p>
-	<p>Running that program for ten minutes looks very similar to the second program above:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Ob2nuz31JU6rVynv82T7z/1391c2e044d550e9386f374fa814c1b5/garbage-recyler.png" alt="" class="kg-image" width="1926" height="1271" loading="lazy">
-
-	</figure>
-	<p>These techniques can be used to recycle memory that the programmer knows is likely to be reused without asking the garbage collector to do the work. They can significantly reduce the amount of memory a program needs. And they can be used for more than just byte slices. Any arbitrary Go type (user-defined or not) could be recycled in a similar manner.</p>
+<p><strong>THIS BLOG POST IS VERY OLD NOW. YOU PROBABLY DON'T WANT TO USE THE TECHNIQUE DESCRIBED HERE. GO'S <a href="https://golang.org/pkg/sync/#Pool" target="_blank" rel="noopener noreferrer">sync.Pool</a> IS A BETTER WAY TO GO.</strong></p>
+<p>The other day I wrote about our use of Lua to <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">implement our new Web Application Firewall</a>. The other language that's become very popular at CloudFlare is <a href="http://golang.org" target="_blank" rel="noopener noreferrer">Go</a>. In the past, I've written about <a href="https://blog.cloudflare.com/go-at-cloudflare">how we use Go</a> to write network services including <a href="https://blog.cloudflare.com/cacheing-the-uncacheable-cloudflares-railgun-73454">Railgun</a>.</p>
+<p>One of the operational challenges of using a garbage-collected language like Go for long-running network services is memory management.</p>
+<p>To understand Go's memory management it's necessary to dig a little into the Go run-time code. There are two separate processes that take care of identifying memory that is no longer used by the program (that's garbage collection) and returning memory to the operating system when it doesn't look like it will be used again (that's called scavenging in the Go code).</p>
+<p>Here's a small program that creates a lot of garbage. Once a second it asks for a byte array of between 5,000,000 and 10,000,000 bytes. It keeps a pool of 20 of these buffers around and discards others. This program is designed to simulate something that happens quite often in programs: memory is allocated by different parts of the program over time, some of it is retained, most of it is no longer needed. In a networked Go program this can easily happen with goroutines that handle network connections or requests. It's common to have goroutines that allocate blocks of memory (such as slices to store received data) and then no longer need them. Over time there will be some number of blocks of memory in use by network connections that are being handled and accumulated garbage from connections that have come and gone.</p>
+<p>package main</p>
+<p>import ("fmt""math/rand""runtime""time"<br>)</p>
+<p>func makeBuffer() []byte {return make([]byte, rand.Intn(5000000)+5000000)}</p>
+<p>func main() {pool := make([][]byte, 20)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> m</span><span class="sk-032f62-99ffe4"> runtime.MemStats</span><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">makes</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> {  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    b</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> makeBuffer</span><span class="sk-24292e-fff">()  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    makes</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    i</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> rand.Intn</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(pool</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    pool\[i\]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> b</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    time.Sleep(time.Second)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    bytes</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> i := </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">i</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pool</span><span class="sk-24292e-fff">); </span><span class="sk-6f42c1-ffc799">i++</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-6f42c1-ffc799"> pool\[i\]</span><span class="sk-032f62-99ffe4"> !=</span><span class="sk-032f62-99ffe4"> nil</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            bytes</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pool\[i\]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    runtime.ReadMemStats(</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">m</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fmt.Printf(</span><span class="sk-6f42c1-ffc799">"%d,%d,%d,%d,%d,%d</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-6f42c1-ffc799">n"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> m.HeapSys,</span><span class="sk-032f62-99ffe4"> bytes,</span><span class="sk-032f62-99ffe4"> m.HeapAlloc,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        m.HeapIdle,</span><span class="sk-032f62-99ffe4"> m.HeapReleased,</span><span class="sk-032f62-99ffe4"> makes</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>}</p>
+<p>The program uses the <a href="http://golang.org/pkg/runtime/#ReadMemStats" target="_blank" rel="noopener noreferrer">runtime.ReadMemStats</a> function to get information about the size of the heap. It prints out four values: <code>HeapSys</code> (the number of bytes the program has asked the operating system for), <code>HeapAlloc</code> (the number of bytes currently allocated in the heap), <code>HeapIdle</code> (the number of bytes in the heap that are unused) and <code>HeapReleased</code> (the number of bytes returned to the operating system).</p>
+<p>Garbage collection runs frequently in a Go program (see the <code>GOGC</code> environment variable to understand how to control the garbage collector's operation), so when running the size of the heap will change as memory is spotted as unused: this will causes <code>HeapAlloc</code> and <code>HeapIdle</code> to change over time. The scavenger will only release memory that has been unused for more than 5 minutes so <code>HeapReleased</code> does not change often.</p>
+<p>Here's a chart of the program above running for ten minutes.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Recycling memory buffers in Go Embedded Image - fplXwx" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48KZJJPE4JPZ12822NHSQV.png&amp;w=1859&amp;h=1240&amp;f=webp" data-lightbox-width="1859" data-lightbox-height="1240" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>(On this and subsequent charts the left axis in in bytes and the right axis is a count used for Make Count)</p>
+<p>The red line shows the number of bytes that are actually in byte buffers in the pool. Because it has a fixed size of 20 buffers it quickly plateaus at around 150,000,000 bytes. The top blue line shows the amount of memory request from the operating system; it plateaus at around 375,000,000 bytes. So the program is using about 2.5x the amount of memory it needs.</p>
+<p>As the program is churning through memory the allocated size of the heap and the amount of idle memory jumps around as garbage collection occurs. The orange line just counts the number of times <code>makeBuffer()</code> has been called to create a new buffer.</p>
+<p>This sort of over request of memory is common in garbage collected programs (see, for example, the paper <a href="http://cs.canisius.edu/~hertzm/gcmalloc-oopsla-2005.pdf" target="_blank" rel="noopener noreferrer">Quantifying the Performance of Garbage Collection vs. Explicit Memory Management</a>). As the program churns through memory the idle memory gets reused and rarely gets released to the operating system.</p>
+<p>One way to solve this problem is to perform some memory management manually in the program. For example, using a channel it's possible to keep a separate pool of buffers that are no longer used and use that pool to retrieve a buffer (or make a new one if the channel is empty).</p>
+<p>The program can then be rewritten as follows:</p>
+<p>package main</p>
+<p>import (<br>"fmt"<br>"math/rand"<br>"runtime"<br>"time"<br>)</p>
+<p>func makeBuffer() []byte {<br>return make([]byte, rand.Intn(5000000)+5000000)<br>}</p>
+<p>func main() {<br>pool := make([][]byte, 20)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">buffer</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> make</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">chan</span><span class="sk-005cc5-a0a0a0"> \[\]</span><span class="sk-032f62-99ffe4">byte,</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> m</span><span class="sk-032f62-99ffe4"> runtime.MemStats</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">makes</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    var</span><span class="sk-032f62-99ffe4"> b</span><span class="sk-005cc5-a0a0a0"> \[\]</span><span class="sk-032f62-99ffe4">byte</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    select</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> b</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-buffer:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    default:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        makes</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        b</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> makeBuffer</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    i</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> rand.Intn</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(pool</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-6f42c1-ffc799"> pool\[i\]</span><span class="sk-032f62-99ffe4"> !=</span><span class="sk-032f62-99ffe4"> nil</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        s</span><span class="sk-6f42c1-ffc799">elect</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> buffer</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-</span><span class="sk-032f62-99ffe4"> pool</span><span class="sk-005cc5-a0a0a0">\[</span><span class="sk-032f62-99ffe4">i</span><span class="sk-005cc5-a0a0a0">\]</span><span class="sk-032f62-99ffe4">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            pool\[i\]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> nil</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        default:</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    pool\[i\]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> b</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    time.Sleep(time.Second)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    bytes</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> i := </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">i</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pool</span><span class="sk-24292e-fff">); </span><span class="sk-6f42c1-ffc799">i++</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-6f42c1-ffc799"> pool\[i\]</span><span class="sk-032f62-99ffe4"> !=</span><span class="sk-032f62-99ffe4"> nil</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            bytes</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pool\[i\]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    runtime.ReadMemStats(</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">m</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fmt.Printf(</span><span class="sk-6f42c1-ffc799">"%d,%d,%d,%d,%d,%d</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-6f42c1-ffc799">n"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> m.HeapSys,</span><span class="sk-032f62-99ffe4"> bytes,</span><span class="sk-032f62-99ffe4"> m.HeapAlloc,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        m.HeapIdle,</span><span class="sk-032f62-99ffe4"> m.HeapReleased,</span><span class="sk-032f62-99ffe4"> makes</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>}</p>
+<p>And here's a graph of its operation for 10 minutes:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="583" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=715&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=640&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=715&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=750&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=828&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=1080&amp;h=881&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=1280&amp;h=1044&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=1430&amp;h=1166&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Recycling memory buffers in Go Embedded Image - CnzDfy" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FCT9RY744E49KSNM0N7X.png&amp;w=1690&amp;h=1378&amp;f=webp" data-lightbox-width="1690" data-lightbox-height="1378" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="583" class="pt-portable-image-media"></div>
+</figure>
+<p>This tells a very different story from above. The memory actually in pool is very close to the memory requested from the operating system and the garbage collector has little to no work to do. The heap only has a very small amount of idle memory that eventually gets released to the operating system.</p>
+<p>The key to the operation of this memory recycling mechanism is a buffered channel called <code>buffer</code>. In the code above it can store 5 <code>[]byte</code> slices. When the program needs a buffer it first tries to read one from the channel using a <code>select</code> trick:</p>
+<p>select {<br>case b = &lt;-buffer:<br>default:<br>b = makeBuffer()<br>}</p>
+<p>This will never block because if the channel called <code>buffer</code> has a slice in it then the first case works and the slice is placed in <code>b</code>. If the channel is empty (meaning a receive would block) the <code>default</code> case happens a new buffer is allocated.</p>
+<p>Putting slices back in the channel uses a similar non-blocking trick:</p>
+<p>select {<br>case buffer &lt;- pool[i]:<br>pool[i] = nil<br>default:<br>}</p>
+<p>If the <code>buffer</code> channel is full then a send to it would block. In that case the empty <code>default</code> clause occurs. This simple mechanism can be used to safely make a shared pool. It can even be shared across goroutines since channel communication is perfectly safe from multiple goroutines.</p>
+<p>We actually use a similar technique to this in our Go programs. The actual recycler (in simplified form) is shown below. It works by having a goroutine that handles the creation of buffers and shares them across goroutines in our software. Two channels <code>get</code> (to get a new buffer) and <code>give</code> (to return a buffer to the pool) are used for all communication.</p>
+<p>The recycler keeps a linked list of returned buffers and periodically throws away those that are too old and are unlikely to be reused (in the example code that's buffers that are older than one minute). That allows the program to cope with bursts of demand for buffers dynamically.</p>
+<p>package main</p>
+<p>import (<br>"container/list"<br>"fmt"<br>"math/rand"<br>"runtime"<br>"time"<br>)</p>
+<p>var makes int<br>var frees int</p>
+<p>func makeBuffer() []byte {<br>makes += 1<br>return make([]byte, rand.Intn(5000000)+5000000)<br>}</p>
+<p>type queued struct {<br>when time.Time<br>slice []byte<br>}</p>
+<p>func makeRecycler() (get, give chan []byte) {<br>get = make(chan []byte)<br>give = make(chan []byte)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> func</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    q</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">list.List</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-6f42c1-ffc799"> q.Len</span><span class="sk-24292e-fff">() == 0 {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            q.PushFront(queued</span><span class="sk-032f62-99ffe4">{when:</span><span class="sk-032f62-99ffe4"> time.Now</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> slice:</span><span class="sk-032f62-99ffe4"> makeBuffer</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">}</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        e</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> q.Front</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        timeout</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> time.NewTimer</span><span class="sk-24292e-fff">(time.Minute)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        select</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> b</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-give:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            timeout.Stop</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            q.PushFront(queued</span><span class="sk-032f62-99ffe4">{when:</span><span class="sk-032f62-99ffe4"> time.Now</span><span class="sk-24292e-fff">()</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> slice:</span><span class="sk-032f62-99ffe4"> b}</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">       case get </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">- e.Value.(</span><span class="sk-6f42c1-ffc799">queued</span><span class="sk-24292e-fff">).slice:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">           timeout.Stop</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">           q.Remove(e</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">       case </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">-timeout.C:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">           e</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> q.Front</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">           for</span><span class="sk-24292e-fff"> e </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">= nil {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">               n</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> e.Next</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">               if</span><span class="sk-24292e-fff"> time.Since(</span><span class="sk-6f42c1-ffc799">e.Value.(queued</span><span class="sk-24292e-fff">).when) </span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> time.Minute {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                   q.Remove(e</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                   e.Value</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> nil</span></span>
+<span class="line"><span class="sk-24292e-fff">               }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">               e</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> n</span></span>
+<span class="line"><span class="sk-24292e-fff">           }</span></span>
+<span class="line"><span class="sk-24292e-fff">       }</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">}</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span></span></code></pre>
+</div>
+<p>}</p>
+<p>func main() {<br>pool := make([][]byte, 20)</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">get,</span><span class="sk-032f62-99ffe4"> give</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> makeRecycler</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">var</span><span class="sk-032f62-99ffe4"> m</span><span class="sk-032f62-99ffe4"> runtime.MemStats</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    b</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-get</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    i</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-032f62-99ffe4"> rand.Intn</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">len(pool</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-6f42c1-ffc799"> pool\[i\]</span><span class="sk-032f62-99ffe4"> !=</span><span class="sk-032f62-99ffe4"> nil</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        give</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">-</span><span class="sk-032f62-99ffe4"> pool</span><span class="sk-005cc5-a0a0a0">\[</span><span class="sk-032f62-99ffe4">i</span><span class="sk-005cc5-a0a0a0">\]</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    pool\[i\]</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> b</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    time.Sleep(time.Second)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    bytes</span><span class="sk-032f62-99ffe4"> :=</span><span class="sk-005cc5-ffc799"> 0</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> i := </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">; </span><span class="sk-6f42c1-ffc799">i</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pool</span><span class="sk-24292e-fff">); </span><span class="sk-6f42c1-ffc799">i++</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-6f42c1-ffc799"> pool\[i\]</span><span class="sk-032f62-99ffe4"> !=</span><span class="sk-032f62-99ffe4"> nil</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            bytes</span><span class="sk-032f62-99ffe4"> +=</span><span class="sk-032f62-99ffe4"> len</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">pool\[i\]</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    runtime.ReadMemStats(</span><span class="sk-24292e-fff">&amp;</span><span class="sk-6f42c1-ffc799">m</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fmt.Printf(</span><span class="sk-6f42c1-ffc799">"%d,%d,%d,%d,%d,%d,%d</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-6f42c1-ffc799">n"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> m.HeapSys,</span><span class="sk-032f62-99ffe4"> bytes,</span><span class="sk-032f62-99ffe4"> m.HeapAlloc</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">         m.HeapIdle,</span><span class="sk-032f62-99ffe4"> m.HeapReleased,</span><span class="sk-032f62-99ffe4"> makes,</span><span class="sk-032f62-99ffe4"> frees</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>}</p>
+<p>Running that program for ten minutes looks very similar to the second program above:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="472" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=715&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=640&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=715&amp;h=472&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=750&amp;h=495&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=828&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=1080&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=1280&amp;h=845&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=1430&amp;h=944&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Recycling memory buffers in Go Embedded Image - Hic1uv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GW1RE6DHBQHAHKASRQ4M.png&amp;w=1920&amp;h=1267&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1267" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="472" class="pt-portable-image-media"></div>
+</figure>
+<p>These techniques can be used to recycle memory that the programmer knows is likely to be reused without asking the garbage collector to do the work. They can significantly reduce the amount of memory a program needs. And they can be used for more than just byte slices. Any arbitrary Go type (user-defined or not) could be recycled in a similar manner.</p>

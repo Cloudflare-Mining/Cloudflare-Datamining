@@ -1,0 +1,38 @@
+<p>在互联网上做恶是一门好生意。在超过 90% 的网络安全事件中，网络钓鱼是遭受攻击的根本原因；据报道，8 月的第三周期间发生了针对<a href="https://apnews.com/article/trump-campaign-hacking-iran-769d8411d9a13ef9a0e039c0b6c3b032" target="_blank" rel="noopener noreferrer">美国大选</a>的网络钓鱼攻击，美国、以色列与伊朗之间的<a href="https://blog.google/threat-analysis-group/iranian-backed-group-steps-up-phishing-campaigns-against-israel-us" target="_blank" rel="noopener noreferrer">地缘政治冲突</a>，以及 <a href="https://www.sec.gov/Archives/edgar/data/1609804/000095014224002170/eh240519238_8k.htm" target="_blank" rel="noopener noreferrer">6000 万美元的企业损失</a>。</p>
+<p>您可能会认为，电子邮件 30 多年来一直都是主要的攻击手段和风险载体，我们对此无能为力，但这种观点可能不仅对恶意行为者过誉了，而且误解了专注于检测的防御者如何能够掌握主动控制权并获胜。</p>
+<p>网络钓鱼并不只与电子邮件有关，也不只针对特定的电子邮件的协议。简而言之，这是一种企图让你我这样的个人用户执行操作且无意中引发损害的行为。此类攻击之所以奏效，是因为它们无论从<a href="http://blog.cloudflare.com/50-most-impersonated-brands-protect-phishing" target="_blank" rel="noopener noreferrer">视觉</a>还是组织角度看上去都真实可信，例如，冒充公司的 CEO 或 CFO。分开来看看 <a href="http://blog.cloudflare.com/2023-phishing-report" target="_blank" rel="noopener noreferrer">Cloudflare 发现的恶意电子邮件中最有影响力的三种主要攻击手段</a>。我们保护客户不出现以下行为：1. 单击链接（35.6% 是欺诈链接）；2. 下载文件或恶意软件（恶意附件占威胁指标的 1.9%）；3. 遭受商业电子邮件入侵 (BEC) 钓鱼攻击，无需链接或文件即可获取金钱或知识产权（占威胁指标的 0.5%）。</p>
+<p>如今，Cloudflare 发现，所谓的多渠道网络钓鱼有所增加。还有哪些其他渠道用于发送链接、文件和引发 BEC 行为？<a href="https://en.wikipedia.org/wiki/SMS" target="_blank" rel="noopener noreferrer">短信 (SMS)</a> 以及公共和专用消息应用程序正成为越来越常见的攻击手段，充分利用通过这些渠道发送链接的功能以及人们使用信息和工作的方式。还有一种是云协作，攻击者依靠链接、文件和 BEC 网络钓鱼，针对常用的协作工具发起攻击，例如 Google Workspace、Atlassian 和 Microsoft Office 365。最后，还有 Web 和社交媒体网络钓鱼，攻击目标是领英和 X 上的用户。从根本上说，任何阻止网络钓鱼的尝试都需要足够全面，以及时检测和防范这些不同的攻击手段。</p>
+<p><em>如需进一步了解这些技术和产品，请访问<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer">此处</a></em></p>
+<h3>真实示例</h3>
+<p>告诉您这一点是一回事，但我们很乐意提供具体示例，来说明老练的攻击者如何完成多渠道网络钓鱼攻击。</p>
+<p>位高管注意到，以下这封邮件处于垃圾邮件文件夹。这是因为我们的 <a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">Email Security</a> 产品注意到该邮件存在问题并将其移到垃圾邮件文件夹；但它与这位高管正在处理的项目相关，于是高管认为这是一封合法邮件。攻击者请求提供公司组织的结构图，并且攻击者知道如果继续发送邮件，就会捕获此类信息。因此，他们在邮件中纳入了一个真实 Google 表单的链接：</p>
+<ul>
+	<li>高管单击链接，因为这是一个合法的 Google 表单，因此，其中显示了以下内容：</li>
+	<li>有人请求“请在此处上传组织结构图”，而这正是攻击者的企图：</li>
+	<li>高管拖放文件但并没有完成上传，因为我们的<a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">网关</a>和<a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank" rel="noopener noreferrer">数据丢失防护 (DLP)</a> 引擎检测到该文档中存在一个“内部专用”水印，这反过来阻止了上传。</li>
+	<li>老练的攻击者利用紧迫性来获得更好的结果。在这里，攻击者知道高管为咨询顾问设定了向首席执行官 (CEO) 报告的最后期限。由于无法上传文档，咨询顾问回复了攻击者。攻击者建议该顾问尝试使用其他上传方法，或者在最糟糕的情况下，通过 WhatsApp 发送文档。</li>
+	<li>高管试图将组织结构图上传到第二封电子邮件中提供的网站，压根不知道该网站可能已加载恶意软件，但由于是在 Cloudflare <a href="https://www.cloudflare.com/zero-trust/products/browser-isolation" target="_blank" rel="noopener noreferrer">浏览器隔离</a>中加载，因此，它保护了高管的设备安全。最重要的是，当该高管尝试上传敏感的公司文件时，系统再次阻止了此项操作：</li>
+	<li>最后，他们尝试使用 WhatsApp，但我们再次予以阻止：</li>
+</ul>
+<h3>易用性</h3>
+<p>设置并维护安全解决方案是落实长期保护的关键。但是，让 IT 管理团队持续不断地调整每个产品、配置并监测每个用户的需求不仅成本高昂，而且也存在风险，因为这会给这些团队增加大量的开销。</p>
+<p>保护上述示例中所述的高管，只需完成四个步骤：</p>
+<ol>
+	<li>安装并登录 Cloudflare 的设备代理，以获得保护</li>
+</ol>
+<p>只需单击几下，拥有设备代理客户端的用户可以获得保护来防范多渠道网络钓鱼，这让最终用户和管理员都可以轻松操作。对于不允许安装客户端的组织，还提供<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank" rel="noopener noreferrer">无代理部署</a>。</p>
+<p>2. &nbsp;配置适用于通过 Cloudflare 安全 Web 网关路由的所有用户流量的策略。这些策略可以直接阻止访问高风险网站，例如，那些已知参与网络钓鱼活动的网站。对于可能的可疑网站，例如新注册的域，隔离浏览器访问让用户可以访问该网站，但限制用户与网站的交互。</p>
+<p>高管也无法将组织结构图上传到免费的云存储服务，因为其所在组织正在使用 Cloudflare One 的<a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">网关</a>和<a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/setup" target="_blank" rel="noopener noreferrer">浏览器隔离</a>解决方案，这些解决方案均配置为在远程隔离环境中加载免费的云存储网站，这不仅阻止了文件上传，而且也删除了复制和粘贴信息的功能。</p>
+<p>此外，虽然高管能够通过 WhatsApp 与恶意行为者进行交谈，但其文件上传受阻，原因在于管理员将 Cloudflare One 的网关解决方案配置为阻止 WhatsApp 上的所有上传和下载。</p>
+<p>3. &nbsp;根据不应上传、录入或复制并粘贴的内容，设置 DLP 策略。</p>
+<p>高管无法将组织结构图上传到 Google 表单，因为该组织正在使用 Cloudflare One 的安全网关和数据丢失防护 (DLP) 解决方案。通过配置<a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer">网关</a>来阻止 <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles" target="_blank" rel="noopener noreferrer">DLP</a> 违规行为来实施这种保护，即使是在 Google 这样的有效网站上也不例外。</p>
+<p>4. &nbsp;部署电子邮件安全，并根据检测到的电子邮件类型来设置自动移动规则。</p>
+<p>在上面的示例中，由于 Cloudflare 电子邮件安全保护着收件箱，高管从未收到发送给他们的多封恶意电子邮件。而真正收到的网络钓鱼邮件被放入垃圾邮件文件夹，因为此类邮件冒充了与邮件签名不符的人员，而由于高管的 IT 管理员设置了<a href="https://developers.cloudflare.com/email-security/email-configuration/retract-settings" target="_blank" rel="noopener noreferrer">一键配置</a>，因此，电子邮件安全中的配置自动将其移到垃圾邮件文件夹。</p>
+<p>但即便使用一流的检测，毫无疑问，至关重要的一点是能够深入分析各项指标，了解遭受持续攻击影响的单个用户。下面是 Cloudflare 即将推出的电子邮件安全监测仪表板的改进版模型。</p>
+<h3>下一步</h3>
+<p>尽管网络钓鱼已经存在了三十年，但它仍然是一种显而易见且确实存在的危险；如今，部署无缝、全面的解决方案来进行有效检测真的是受到保护的唯一方法。</p>
+<p>如果只考虑购买电子邮件安全解决方案，您可能会发现这还远远不够。多层保护对于保护现代企业的员工队伍绝对有必要，因为工作和数据并不只容纳在电子邮件中。它们无处不在，几乎存在于所有设备中。因此，网络钓鱼防护措施也需要面面俱到。</p>
+<p>虽然可以通过将多个供应商的解决方案拼凑在一起来实现这个目标，但是它们无法全部发挥协同作用。除了成本之外，多供应商方法通常还会增加本已捉襟见肘的 IT 团队在调查、维护和确保一致性方面的开销。</p>
+<p>无论您是否刚刚开始使用 Cloudflare 解决方案，都可以了解 Cloudflare One 产品套件的不同部分如何有助于企业全面应对网络钓鱼攻击。如果您已经熟练使用 Cloudflare 解决方案，并且期望获得深受财富 500 强企业、全球组织甚至政府实体信任的电子邮件解决方案（有效性高达 99.99%），Cloudflare 电子邮件安全可助您一臂之力。</p>
+<p>如果您正在运行 Office 365，并且希望了解 Cloudflare 可以捕获哪些您当前的服务提供商无法捕获的内容，您可以立即使用 <a href="https://developers.cloudflare.com/email-security/deployment/api/setup/email-retro-scan" target="_blank" rel="noopener noreferrer">Retro Scan</a>。</p>
+<p>如果您已经在使用 Cloudflare 电子邮件安全解决方案，则可以访问<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer">此处</a>，进一步了解我们的全面保护方法。</p>

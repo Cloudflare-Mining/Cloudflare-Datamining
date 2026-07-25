@@ -1,0 +1,392 @@
+<p><a href="https://developers.cloudflare.com/workers/learning/using-durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a> 是 Workers 开发者生态系统的一个很棒的补充，它允许您在特定的 Worker 中寻址和工作，以提供应用程序的一致性。这听起来很令人兴奋，但如果你像我一样，你可能想知道“好吧，我可以用它做什么？”</p>
+<p>没有什么比用技术构建真实的东西更能真正理解它了。</p>
+<p>为了更好地理解为什么 Durable Objects 很重要，以及<a href="https://blog.cloudflare.com/introducing-websockets-in-workers">像 WebSockets 这样的 Workers 生态系统中的新公告</a>如何与 Durable Objects 一起玩，我转向了我几个月来一直在业余时间构建的一类软件：视频游戏。</p>
+<p>在过去十年中，游戏的技术方面发生了巨大变化。许多游戏都是默认在线的，而像 <a href="https://unity.com" target="_blank" rel="noopener noreferrer">Unity</a> 这样无处不在的工具使任何人都可以开始尝试开发游戏。</p>
+<p>我听说了很多关于 Durable Objects 和 WebSockets 在应用程序中提供实时一致性的能力，为了测试这个用例，我构建了 <a href="https://durable-world.pages.dev" target="_blank" rel="noopener noreferrer">Durable World</a>：一个简单的 3D 多人游戏世界，完全部署在我们的 Cloudflare 上堆栈：为客户端游戏提供服务的页面，在 Unity 和 WebGL 中运行，Worker 作为协调层，使用 Durable Objects 和 WebSockets 同步玩家位置和其他信息，例如随机生成的用户名。</p>
+<blockquote>
+	<p>playing multiplayer on the edge with some of my friends from the <a href="https://twitter.com/CloudflareDev?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@cloudflaredev</a> discord?</p>
+	<p>client-side:- <a href="https://twitter.com/unity?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">@unity</a> webgl + websockets client- hosted on cf pages</p>
+	<p>serverless:- cloudflare workers- durable objects- websockets <a href="https://t.co/Ef3nr76D2e" target="_blank" rel="noopener noreferrer">pic.twitter.com/Ef3nr76D2e</a></p>
+	<p>— Kristian Freeman (@signalnerve) <a href="https://twitter.com/signalnerve/status/1384274000986005511?ref_src=twsrc%5Etfw" target="_blank" rel="noopener noreferrer">April 19, 2021</a></p>
+</blockquote>
+<p>3D 游戏往往看起来非常令人印象深刻—它们是伟大的技术演示。即使看到来自世界各地的人员与您联系并与您一起在地图上移动这一“令人惊叹的因素”，您也可能会惊讶于该项目的相应代码是多么简单。让我们深入探讨 Durable World 的客户端和服务器方面，然后我将就这样的项目在未来如何发展以及接下来我想探索的内容提出一些想法。</p>
+<p>除了这篇博文之外，我们最近还<a href="https://blog.cloudflare.com/doom-multiplayer-workers">在 Cloudflare 的博客上发表了一篇关于使用 WebAssembly 和 Durable Objects 的 Workers 的文章，展示了多人 Doom 端口。</a>随着 Durable Objects、WebSockets 和 WebAssembly 等工具的添加，无论您是移植现有游戏还是构建全新游戏，Workers 上的游戏用例数量都非常多。</p>
+<p>Durable World 是使用_权威的客户端_模型构建的。客户端直接在浏览器中运行已编译的游戏，内置在 WebAssembly 中，因此无需将特定于平台的客户端下载到本地机器即可运行。该服务器完全运行在 Cloudflare Workers 上，可以通过 WebSockets 进行交互，并使用 Durable Objects 来管理游戏状态。</p>
+<p>与我们在博客中展示的 Doom 示例非常相似，由 Workers 应用程序管理的 Durable Object 充当消息路由器，接受来自客户端的游戏状态更改，并保留通过 Worker 接收这些更新的活动客户端列表。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="483" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=715&amp;h=483&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=640&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=715&amp;h=483&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=750&amp;h=507&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=828&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=1080&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=1280&amp;h=865&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=1430&amp;h=966&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-503 Embedded Image - 1CaJtG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48AG5QDWHCYBZ0XHSB7023.png&amp;w=1566&amp;h=1057&amp;f=webp" data-lightbox-width="1566" data-lightbox-height="1057" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="483" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>管理连接：Character Durable Object</h3>
+<p>在开始这个项目之前，我最大的恐惧是使用 Durable Objects。尽管我从未用 Unity 制作过任何严肃的游戏，而且我甚至无法在没有对基本语法进行 Google 搜索的情况下定义 C# 变量，但有关 Durable Objects 的概念部分的某些内容仍然让我感到害怕，直到我开始编写实际代码的那一刻。</p>
+<p>想象一下，当编写 Durable Objects 和使用 API 变得非常简单时，我的惊讶。</p>
+<p>Character 模块是一个使用我们在 Workers 中的新模块支持的 Durable Object，它构建在我们的 <a href="https://github.com/cloudflare/modules-rollup-esm" target="_blank" rel="noopener noreferrer">modules-rollup-esm</a> 模板之上。该模块处理传入的请求，并充当客户端的 WebSocket 提供商程序：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Character</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">state</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.state </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.env </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> initialize</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> stored </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.state.storage.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"state"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> stored </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> { users: [], websockets: [] }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> handleSession</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">websocket</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ip</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    websocket.</span><span class="sk-6f42c1-ffc799">accept</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Game state code</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Handle HTTP requests from clients.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.initializePromise) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.initializePromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">initialize</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">catch</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">err</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">        this</span><span class="sk-24292e-fff">.initializePromise </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        throw</span><span class="sk-24292e-fff"> err</span></span>
+<span class="line"><span class="sk-24292e-fff">      });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.initializePromise;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Apply requested action.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    switch</span><span class="sk-24292e-fff"> (url.pathname) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      case</span><span class="sk-032f62-99ffe4"> "/websocket"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Upgrade"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-032f62-99ffe4"> "websocket"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Expected websocket"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">406</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> ip </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"CF-Connecting-IP"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> pair </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> WebSocketPair</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">handleSession</span><span class="sk-24292e-fff">(pair[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">], ip);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">101</span><span class="sk-24292e-fff">, webSocket: pair[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">] });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      case</span><span class="sk-032f62-99ffe4"> "/"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      default</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Not found"</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.value);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>其中大部分在概念上与我们的 <a href="https://github.com/cloudflare/websocket-template" target="_blank" rel="noopener noreferrer">websocket 模板</a>相同—我们在传入请求中查找 Upgrade 标头，并设置一个 WebSocketPair，其中包含一个_服务器_和一个_客户端_ WebSocket。</p>
+<p>handleSession 函数是我们大部分游戏特定逻辑发生的地方。在这种情况下，我们的 Durable Objects + WebSocket 代码有两个任务需要管理：第一，处理新玩家—给他们一个随机生成的用户名，并使用有效的 WebSocket 设置他们，第二，接受新的玩家位置，并广播这些位置给目前在游戏中的每个人。‘tick’ 函数用于向我们的客户端广播游戏状态，其余代码解析传入的数据，并确定哪些 WebSocket 客户端应该接收新数据。执行此操作的代码如下所示：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">tick</span><span class="sk-24292e-fff">(skipKey) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> users</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.value.users.</span><span class="sk-6f42c1-ffc799">filter</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">user</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> user.id </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-24292e-fff"> skipKey)</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">  this</span><span class="sk-24292e-fff">.value.websockets</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">      ({ </span><span class="sk-e36209-fff">id</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">name</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">websocket</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        websocket.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-005cc5-fff">          JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">            id,</span></span>
+<span class="line"><span class="sk-24292e-fff">            name,</span></span>
+<span class="line"><span class="sk-24292e-fff">            users</span></span>
+<span class="line"><span class="sk-24292e-fff">          })</span></span>
+<span class="line"><span class="sk-24292e-fff">        )</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    )</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">key</span><span class="sk-24292e-fff">(ip) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> text</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> TextEncoder</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">encode</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`${</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">env</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-fff">SECRET</span><span class="sk-032f62-99ffe4">}-${</span><span class="sk-24292e-fff">ip</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> digest</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> crypto.subtle.</span><span class="sk-6f42c1-ffc799">digest</span><span class="sk-24292e-fff">({ name: </span><span class="sk-032f62-99ffe4">"SHA-256"</span><span class="sk-24292e-fff">, }, text)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> digestArray</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(digest)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> btoa</span><span class="sk-24292e-fff">(String.fromCharCode.</span><span class="sk-6f42c1-ffc799">apply</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, digestArray))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">constructName</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  function</span><span class="sk-6f42c1-ffc799"> titleCase</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">str</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> str.</span><span class="sk-6f42c1-ffc799">toLowerCase</span><span class="sk-24292e-fff">().</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">function</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">word</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> word.</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(word[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">], word[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">].</span><span class="sk-6f42c1-ffc799">toUpperCase</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-24292e-fff">    }).</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> titleCase</span><span class="sk-24292e-fff">(faker.</span><span class="sk-6f42c1-ffc799">fake</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"{{commerce.color}} {{hacker.adjective}} {{hacker.abbreviation}}"</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">async </span><span class="sk-6f42c1-ffc799">handleSession</span><span class="sk-24292e-fff">(websocket, ip) {</span></span>
+<span class="line"><span class="sk-24292e-fff">  websocket.</span><span class="sk-6f42c1-ffc799">accept</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> currentState </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.value;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> key</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">key</span><span class="sk-24292e-fff">(ip)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> name</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">constructName</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> newUser </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> { id: key, name, position: </span><span class="sk-032f62-99ffe4">'0.0,0.0,0.0'</span><span class="sk-24292e-fff">, rotation: </span><span class="sk-032f62-99ffe4">'0.0,0.0,0.0'</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">currentState.users.</span><span class="sk-6f42c1-ffc799">find</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">user</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> user.id </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> key)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">      currentState.users.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(newUser)</span></span>
+<span class="line"><span class="sk-24292e-fff">      currentState.websockets.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">({ id: key, name, websocket })</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> currentState</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">tick</span><span class="sk-24292e-fff">(key)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    websocket.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"message"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> msg</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        let</span><span class="sk-24292e-fff"> { type, position, rotation } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(msg.data)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        switch</span><span class="sk-24292e-fff"> (type) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          case</span><span class="sk-032f62-99ffe4"> 'POSITION_UPDATED'</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            let</span><span class="sk-24292e-fff"> user </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> currentState.users.</span><span class="sk-6f42c1-ffc799">find</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">user</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> user.id </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> key)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            if</span><span class="sk-24292e-fff"> (user) {</span></span>
+<span class="line"><span class="sk-24292e-fff">              user.position </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> position</span></span>
+<span class="line"><span class="sk-24292e-fff">              user.rotation </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> rotation</span></span>
+<span class="line"><span class="sk-24292e-fff">            }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">            this</span><span class="sk-24292e-fff">.value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> currentState</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">            this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">tick</span><span class="sk-24292e-fff">(key)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          default</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">            console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Unknown type of message ${</span><span class="sk-24292e-fff">type</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">            websocket.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ message: </span><span class="sk-032f62-99ffe4">"UNKNOWN"</span><span class="sk-24292e-fff"> }))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            break</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">      } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (err) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        websocket.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ error: err.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">() }))</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-6f42c1-ffc799"> closeOrError</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-e36209-fff"> evt</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      currentState.users </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> currentState.users.</span><span class="sk-6f42c1-ffc799">filter</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">user</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> user.id </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-24292e-fff"> key)</span></span>
+<span class="line"><span class="sk-24292e-fff">      currentState.websockets </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> currentState.websockets.</span><span class="sk-6f42c1-ffc799">filter</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">user</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> user.id </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-24292e-fff"> key)</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> currentState</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">tick</span><span class="sk-24292e-fff">(key)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    websocket.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"close"</span><span class="sk-24292e-fff">, closeOrError)</span></span>
+<span class="line"><span class="sk-24292e-fff">    websocket.</span><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"error"</span><span class="sk-24292e-fff">, closeOrError)</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (err) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    websocket.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">({ message: err.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">() }))</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>在设置新的 WebSocketPair 时，Workers 函数会创建一个从用户 IP 地址派生的唯一 ID（尽管您可以轻松地使用 UUID 或其他任何内容），然后开始将 WebSocket 数据发送到新客户端。当数据传入时（例如一个新的玩家位置），该函数会查看是_谁_在发送数据，并将新信息发送到当前游戏中的所有_其他的_ WebSocket。</p>
+<h3>处理玩家位置和移动：在 Unity 中使用 Durable Objects 构建</h3>
+<p>对于像我这样的人来说，Unity 是一个很棒的游戏引擎：一个_没有_制作游戏经验的相当有经验的程序员。多年来，我一直断断续续地使用 Unity，但在过去的几个月里，我一直在深入研究它并扩展我对如何实际构建真实游戏的理解。</p>
+<p>以下是您在构建 Durable World 的上下文中需要了解的有关 Unity 的内容：游戏对象_是_ Unity 中所有事物的首选，并且使用 C# 脚本，您可以为游戏对象编程不同的行为，无论是联网的还是玩家本地的。</p>
+<p>在我们的游戏中，存在三种不同类型的游戏对象。首先，是世界本身—静态网格的集合，主要是立方体。这些网格在游戏的网络方面根本没有表现出来。通过一系列_对撞机_，可以停止在这些网格之上或周围导航的任何其他游戏对象从地板上掉下来和穿过墙壁移动。过去 20 年来，您在每款 3D 游戏中都看到了这种设计，包括像《超级马里奥 64》这样的经典游戏。</p>
+<div id="html-block-k2f" class="html-block">
+	<div style="width:100%;height:0;padding-bottom:70%"><iframe src="https://giphy.com/embed/fTmOPDE3jH9qP9HVuL" width="100%" height="100%" style="position:absolute" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe></div>
+	<p><a href="https://giphy.com/gifs/glitch-cheat-mario-64-fTmOPDE3jH9qP9HVuL">via GIPHY</a></p>
+</div>
+<p><a href="https://giphy.com/gifs/glitch-cheat-mario-64-fTmOPDE3jH9qP9HVuL" target="_blank" rel="noopener noreferrer">via GIPHY</a></p>
+<p>在 Durable World 中，您的玩家游戏对象是一个简单的胶囊。此形状内置于 Unity 中，通过附加 C# 脚本，我们可以使用键盘控件进行基本移动（在我的情况下，我使用了<a href="https://www.youtube.com/watch?v=4HpC--2iowE" target="_blank" rel="noopener noreferrer">Brackey 的本教程</a>）。</p>
+<p>多人游戏角色被表示为同一玩家胶囊的简化版本。与将任何类型的输入逻辑（键盘、鼠标等）附加到这些游戏对象不同，它们在 3D 空间中的位置的关键方面—即位置和旋转—由 WebSocket 客户端管理。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="352" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=640&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=715&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=750&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=828&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=1080&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=1280&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=1430&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-503 Embedded Image - Z4NFIz" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4993J42D5BQH0AZT3DCDGX.png&amp;w=1920&amp;h=946&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="946" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="352" class="pt-portable-image-media"></div>
+</figure>
+<p>游戏开始时，您被置于单人游戏环境中：您的角色可以在静态 3D 世界中移动。一旦游戏连接到 Workers 并接收到一个 WebSocket，它就可以开始在多人游戏环境中运行了。这是在世界启动之前的线框图：</p>
+<p>当谈到项目的实际代码时，连接方面非常简单：在游戏开始时创建一个连接单例，它使用 WebSocket 类连接到 Worker，并在新的 WebSocket 更新上调用各种函数。您可以在<a href="https://github.com/signalnerve/durable-world/blob/main/packages/unity/Assets/Connection.cs" target="_blank" rel="noopener noreferrer">此处</a>找到完整的代码，但我将在下面总结重要部分。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>using System;</span></span>
+<span class="line"><span>using System.Collections;</span></span>
+<span class="line"><span>using System.Collections.Generic;</span></span>
+<span class="line"><span>using UnityEngine;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>using NativeWebSocket;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>public class Connection : MonoBehaviour</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>  WebSocket websocket;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Start is called before the first frame update</span></span>
+<span class="line"><span>  void Start()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>    Connect();</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  async void Connect()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>    retries += 1;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if (maxRetries &lt; retries)</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      return;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    websocket = new WebSocket("wss://durable-world.signalnerve.workers.dev/websocket");</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    websocket.OnOpen += () =&gt;</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      Debug.Log("Connection open!");</span></span>
+<span class="line"><span>    };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    websocket.OnError += (e) =&gt;</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      Debug.Log("Error! " + e);</span></span>
+<span class="line"><span>      Connect();</span></span>
+<span class="line"><span>    };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    websocket.OnClose += (e) =&gt;</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      Debug.Log("Connection closed!" + e);</span></span>
+<span class="line"><span>      Connect();</span></span>
+<span class="line"><span>    };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    websocket.OnMessage += (bytes) =&gt;</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      // Do things with new messages</span></span>
+<span class="line"><span>    };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Keep sending messages at every 0.2 seconds</span></span>
+<span class="line"><span>    InvokeRepeating("UpdatePosition", 0.0f, 0.2f);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // waiting for messages</span></span>
+<span class="line"><span>    await websocket.Connect();</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  void Update()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>#if !UNITY_WEBGL || UNITY_EDITOR</span></span>
+<span class="line"><span>    websocket.DispatchMessageQueue();</span></span>
+<span class="line"><span>#endif</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  async void UpdatePosition()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>    if (websocket.State == WebSocketState.Open)</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      var currentPos = player.transform.position;</span></span>
+<span class="line"><span>      if (currentPos == lastPosition)</span></span>
+<span class="line"><span>      {</span></span>
+<span class="line"><span>        return;</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      PlayerPosition playerPosition = new PlayerPosition();</span></span>
+<span class="line"><span>      playerPosition.position = $"{currentPos.x},{currentPos.y},{currentPos.z}";</span></span>
+<span class="line"><span>      var currentRot = player.transform.rotation;</span></span>
+<span class="line"><span>      playerPosition.rotation = $"{currentRot.eulerAngles.x},{currentRot.eulerAngles.y},{currentRot.eulerAngles.z}";</span></span>
+<span class="line"><span>      playerPosition.type = "POSITION_UPDATED";</span></span>
+<span class="line"><span>      await websocket.SendText(JsonUtility.ToJson(playerPosition));</span></span>
+<span class="line"><span>      lastPosition = currentPos;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  private async void OnApplicationQuit()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>    await websocket.Close();</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>首先，我们需要将玩家的位置发送回 Workers。这发生在一个循环中，每 0.2 秒调用一次。UpdatePosition 函数获取玩家位置和旋转，将它们编码为 JSON，并将数据发送到 WebSocket。请注意，通过每 0.2 秒发送一次位置，我们有效地构建了一个以每秒 5 帧更新的播放器。考虑到大多数游戏_至少_每秒运行 30 帧，如果不是更高，这将是我们稍后将使用插值解决的问题。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>using System;</span></span>
+<span class="line"><span>using System.Collections;</span></span>
+<span class="line"><span>using System.Collections.Generic;</span></span>
+<span class="line"><span>using UnityEngine;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>using NativeWebSocket;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>public class Connection : MonoBehaviour</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>  async void Connect()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>    // Truncated code</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    websocket.OnMessage += (bytes) =&gt;</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      var payload = System.Text.Encoding.UTF8.GetString(bytes);</span></span>
+<span class="line"><span>      GameState gameState = JsonUtility.FromJson&lt;GameState&gt;(payload);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      foreach (var user in gameState.users)</span></span>
+<span class="line"><span>      {</span></span>
+<span class="line"><span>        try</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>          if (user.id == gameState.id)</span></span>
+<span class="line"><span>          {</span></span>
+<span class="line"><span>            continue;</span></span>
+<span class="line"><span>          }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>          Client client;</span></span>
+<span class="line"><span>          if (!Clients.TryGetValue(user.id, out client))</span></span>
+<span class="line"><span>          {</span></span>
+<span class="line"><span>            client = CreateClient(user);</span></span>
+<span class="line"><span>          }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>          var rt = user.rotation.Split(","[0]); // gets 3 parts of the vector into separate strings</span></span>
+<span class="line"><span>          var rtx = float.Parse(rt[0]);</span></span>
+<span class="line"><span>          var rty = float.Parse(rt[1]);</span></span>
+<span class="line"><span>          var rtz = float.Parse(rt[2]);</span></span>
+<span class="line"><span>          var newRot = Quaternion.Euler(rtx, rty, rtz);</span></span>
+<span class="line"><span>          client.interpolateMovement.endRotation = newRot;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>          var pt = user.position.Split(","[0]); // gets 3 parts of the vector into separate strings</span></span>
+<span class="line"><span>          var ptx = float.Parse(pt[0]);</span></span>
+<span class="line"><span>          var pty = float.Parse(pt[1]);</span></span>
+<span class="line"><span>          var ptz = float.Parse(pt[2]);</span></span>
+<span class="line"><span>          var newPos = new Vector3(ptx, pty, ptz);</span></span>
+<span class="line"><span>          client.interpolateMovement.endPosition = newPos;</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>        catch (Exception e)</span></span>
+<span class="line"><span>        {</span></span>
+<span class="line"><span>          Debug.Log(e);</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>      }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>      TMPro.TextMeshProUGUI text = onlineText.GetComponent&lt;TMPro.TextMeshProUGUI&gt;();</span></span>
+<span class="line"><span>      text.text = $"Online: {gameState.users.Length + 1}\\nPlaying as {gameState.name}";</span></span>
+<span class="line"><span>    };</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // Keep sending messages at every 0.2 seconds</span></span>
+<span class="line"><span>    InvokeRepeating("UpdatePosition", 0.0f, 0.2f);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    // waiting for messages</span></span>
+<span class="line"><span>    await websocket.Connect();</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  Client CreateClient(User user)</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>    var newClient = new Client();</span></span>
+<span class="line"><span>    newClient.id = user.id;</span></span>
+<span class="line"><span>    var otherPlayer = Instantiate(otherPlayerPrefab, new Vector3(0, 0, 0), Quaternion.identity);</span></span>
+<span class="line"><span>    otherPlayer.name = user.id;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    TMPro.TextMeshPro text = otherPlayer.GetComponentInChildren&lt;TMPro.TextMeshPro&gt;();</span></span>
+<span class="line"><span>    text.text = user.name;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    newClient.playerObject = otherPlayer;</span></span>
+<span class="line"><span>    newClient.interpolateMovement = otherPlayer.GetComponent&lt;InterpolateMovement&gt;();</span></span>
+<span class="line"><span>    Clients.Add(user.id, newClient);</span></span>
+<span class="line"><span>    return newClient;</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  // Truncated code</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>接下来，我们需要监听当前在游戏中的其他玩家。为了解决这个问题，我们监听来自 Workers 的传入 WebSocket 消息。每条消息都将包含我们的整个游戏状态（我们将来肯定可以优化），我们可以解析并使用它们来决定我们的本地游戏版本应该如何更新。对于我们的 gameState 负载中的每个用户，我们可以创建一个玩家的新实例，并开始在本地跟踪它。我们还可以在 CreateClient 中更新位置、旋转并设置一个指示玩家姓名的简单 UI 元素：</p>
+<p>设置所有这些代码后，我们建立了一个简单的系统，用于将我们的本地玩家位置发送给 Workers。当我的玩家位置更新时，游戏中的其他所有人都会收到该位置作为更大游戏状态负载的一部分，并相应地更新每个玩家的本地副本。</p>
+<p>我提到这些更新_每 0.2 秒发生一次。_游戏预计每秒_至少_更新 30 次，甚至更多：现代游戏通常预计以每秒 60 帧的速度运行，并且更新速度极快。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>using System.Collections;</span></span>
+<span class="line"><span>using System.Collections.Generic;</span></span>
+<span class="line"><span>using UnityEngine;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>public class InterpolateMovement : MonoBehaviour</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>  public Vector3 endPosition;</span></span>
+<span class="line"><span>  public Quaternion endRotation;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  public float rotationSmoothTime = 0.3f;</span></span>
+<span class="line"><span>  public float positionSmoothTime = 0.6f;</span></span>
+<span class="line"><span>  private Vector3 posVelocity = Vector3.zero;</span></span>
+<span class="line"><span>  private float rotVelocity = 0.0f;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  void Update()</span></span>
+<span class="line"><span>  {</span></span>
+<span class="line"><span>    transform.position = Vector3.SmoothDamp(transform.position, endPosition, ref posVelocity, positionSmoothTime);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    float delta = Quaternion.Angle(transform.rotation, endRotation);</span></span>
+<span class="line"><span>    if (delta &gt; 0f)</span></span>
+<span class="line"><span>    {</span></span>
+<span class="line"><span>      float t = Mathf.SmoothDampAngle(delta, 0.0f, ref rotVelocity, rotationSmoothTime);</span></span>
+<span class="line"><span>      t = 1.0f - (t / delta);</span></span>
+<span class="line"><span>      transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, t);</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span>  }</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>正是因为这种期望，我们需要_为我们的玩家插入_运动。而不是每秒发送玩家更新六十次，这将是对我们的持久对象一个巨大的负荷，我们可以看一下传入的新位置或旋转的对象，并使用一些数学运算来平滑移动，从玩家所在的位置到他们要_去的地方_ Unity（以及许多其他游戏引擎）通过诸如 SmoothDamp 之类的 API 提供这种行为—一种用于随着时间的推移平滑快速、不和谐的运动—如下面的 InterpolateMovement 脚本所示，该脚本用于管理玩家位置和旋转：</p>
+<h3>下一步</h3>
+<p>边缘的 Durable Objects 和 WebSockets 等工具的可用性开启了我们可以使用 Cloudflare Workers 构建的一类新应用程序。游戏只是一个用例，我们才刚刚开始探索边缘实时、高度交互游戏的可能性。如果您有兴趣查看 Durable World 的源代码，可以<a href="https://github.com/signalnerve/durable-world" target="_blank" rel="noopener noreferrer">在 GitHub 上</a>查看。如果您想聊聊 Workers、Durable Objects 或其他任何探索我们可以在分布式无服务器环境中构建的新的、有趣的东西，<a href="https://discord.com/invite/cloudflaredev" target="_blank" rel="noopener noreferrer">请加入我们的 Cloudflare Workers Discord</a>。</p>

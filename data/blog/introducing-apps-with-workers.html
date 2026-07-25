@@ -1,56 +1,34 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2YeDFlqzKVL3p9c6WDBJa8/1e9696be13e4c73af12ad0ed2fa9cd0a/introducing-apps-with-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Since its inception, <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">Cloudflare Apps</a> has made it possible for website owners to install a tool or a service directly onto a domain they have that lives on the Cloudflare network. &nbsp;As an App Developer, you’ve had the ability to deliver your product by modifying traffic and content of a user’s website using a combination of Javascript, HTML, CSS injection with the ability to modify Cloudflare features such as DNS.</p>
-	<p>Today we are announcing a public beta for our Cloudflare Apps with Workers! &nbsp;If you are a developer who has been using Workers or Cloudflare Apps, this is a significant step forward to bring together our server-less platform allowing you the next wave of innovation in the Cloudflare marketplace.</p>
-	<p>Wait! &nbsp;Yet more Workers news? &nbsp;It’s already been a furious year of releases for Workers, from our GA launch in February to numerous improvements including the beta of Cache API and a flurry of updates during Cloudflare’s Birthday week, where we made available our K/V Storage and WASM support. &nbsp;With this beta, developers can now package all Workers capabilities, deliver new worker-powered experiences to Cloudflare customers all within a few clicks via Cloudflare Apps.</p>
-	<p>Now your Apps can be more powerful, and Workers code running on the Cloudflare network are the engine that can take you there. &nbsp; If you’ve successfully built and deployed a worker on your own domain, you can package it as an App and bring your idea to the Cloudflare Marketplace. &nbsp;</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2HUeaGOjSurGZn1Uirfs38/3706aa58600fdc5053dac63974783e4a/workers-marketplace-apps-_2x.png" alt="" class="kg-image" width="2000" height="1098" loading="lazy">
-
-	</figure>
-	<p>Apps and Workers Life of a Request</p>
-	<p>New App experiences are possible including but not limited to personalization, experimentation with A/B testing, custom security, content validation, and localization.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-do-i-build-an-app-with-cloudflare-workers">How Do I Build An App with Cloudflare Workers?</h3>
-		<a href="https://blog.cloudflare.com/#how-do-i-build-an-app-with-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To package a Worker in your App as an additional resource in your <a href="https://www.cloudflare.com/apps/developer/docs/install-json" target="_blank" rel="noopener noreferrer"><i>install.json</i></a>, simply add a reference to your Worker script similar to how <a href="https://www.cloudflare.com/apps/developer/docs/dns" target="_blank" rel="noopener noreferrer">DNS entries</a> were declared before.</p>
-	<pre class="language-bash"><code class="language-bash">{
-	"resources": [...],
-	"hooks": [...],
-	"workers": [{
-		"src": "./worker.js"
-	}]
-}</code></pre>
-	<p>You can also deliver custom variables as <a href="https://www.cloudflare.com/apps/developer/docs/environment" target="_blank" rel="noopener noreferrer">install options</a> which can then be referenced in Workers; useful for apps who may need to include a service specific token at App install time.</p>
-	<pre class="language-bash"><code class="language-bash">// inside src/worker.js
-addEventListener('fetch', event =&gt; {
-  event.respondWith(workerFn(event.request))
-  let someOptionFromInstall = INSTALL_OPTIONS.UserAgents // UserAgents was selected by siteowner in previewer
-})</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="does-the-approval-process-change">Does the Approval Process Change?</h3>
-		<a href="https://blog.cloudflare.com/#does-the-approval-process-change" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As before, when you submit your app for approval and review, the submission process will gather your app &nbsp;and worker &nbsp;sources and make it available for our Moderation Team to review. &nbsp;Once successfully through the Moderation process, you can expect an additional Security Review of your Worker, before this app will be made available just like any App is today.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-can-i-apply-to-the-beta">How Can I Apply to the Beta?</h3>
-		<a href="https://blog.cloudflare.com/#how-can-i-apply-to-the-beta" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Back in August, we <a href="https://blog.cloudflare.com/growing-the-cloudflare-apps-ecosystem">announced</a> the upcoming App with Worker capability and since then we’ve seen great interest across our developers and partners who are eager to put their Workers based solutions into the hands to a much broader audience We are continuing to welcome new App Developers in our beta. Apply below to be part of our beta program.</p>
-	<p><a href="https://www.cloudflare.com/products/cloudflare-workers/#otherways" target="_blank" rel="noopener noreferrer">Sign-up to Join the beta!</a></p>
+<p>Since its inception, <a href="https://www.cloudflare.com/apps" target="_blank" rel="noopener noreferrer">Cloudflare Apps</a> has made it possible for website owners to install a tool or a service directly onto a domain they have that lives on the Cloudflare network. &nbsp;As an App Developer, you’ve had the ability to deliver your product by modifying traffic and content of a user’s website using a combination of Javascript, HTML, CSS injection with the ability to modify Cloudflare features such as DNS.</p>
+<p>Today we are announcing a public beta for our Cloudflare Apps with Workers! &nbsp;If you are a developer who has been using Workers or Cloudflare Apps, this is a significant step forward to bring together our server-less platform allowing you the next wave of innovation in the Cloudflare marketplace.</p>
+<p>Wait! &nbsp;Yet more Workers news? &nbsp;It’s already been a furious year of releases for Workers, from our GA launch in February to numerous improvements including the beta of Cache API and a flurry of updates during Cloudflare’s Birthday week, where we made available our K/V Storage and WASM support. &nbsp;With this beta, developers can now package all Workers capabilities, deliver new worker-powered experiences to Cloudflare customers all within a few clicks via Cloudflare Apps.</p>
+<p>Now your Apps can be more powerful, and Workers code running on the Cloudflare network are the engine that can take you there. &nbsp; If you’ve successfully built and deployed a worker on your own domain, you can package it as an App and bring your idea to the Cloudflare Marketplace. &nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="393" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=640&amp;h=352&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=715&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=750&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=828&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=1080&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=1280&amp;h=704&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=1430&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing Apps with Workers Embedded Image - XWJYdD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4562HAVBEZQSVSTY5KCZ0M.png&amp;w=1920&amp;h=1054&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1054" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="393" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Apps and Workers Life of a Request</p>
+<p>New App experiences are possible including but not limited to personalization, experimentation with A/B testing, custom security, content validation, and localization.</p>
+<h3>How Do I Build An App with Cloudflare Workers?</h3>
+<p>To package a Worker in your App as an additional resource in your <a href="https://www.cloudflare.com/apps/developer/docs/install-json" target="_blank" rel="noopener noreferrer"><em>install.json</em></a>, simply add a reference to your Worker script similar to how <a href="https://www.cloudflare.com/apps/developer/docs/dns" target="_blank" rel="noopener noreferrer">DNS entries</a> were declared before.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	"resources"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [...],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	"hooks"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [...],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">	"workers"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">		"src"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "./worker.js"</span></span>
+<span class="line"><span class="sk-24292e-fff">	}]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>You can also deliver custom variables as <a href="https://www.cloudflare.com/apps/developer/docs/environment" target="_blank" rel="noopener noreferrer">install options</a> which can then be referenced in Workers; useful for apps who may need to include a service specific token at App install time.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">//</span><span class="sk-032f62-99ffe4"> inside</span><span class="sk-032f62-99ffe4"> src/worker.js</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">'fetch'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> event</span><span class="sk-24292e-fff"> =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(workerFn(event.request</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  let</span><span class="sk-032f62-99ffe4"> someOptionFromInstall</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> INSTALL_OPTIONS.UserAgents</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-032f62-99ffe4"> UserAgents</span><span class="sk-032f62-99ffe4"> was</span><span class="sk-032f62-99ffe4"> selected</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> siteowner</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> previewer</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<h3>Does the Approval Process Change?</h3>
+<p>As before, when you submit your app for approval and review, the submission process will gather your app &nbsp;and worker &nbsp;sources and make it available for our Moderation Team to review. &nbsp;Once successfully through the Moderation process, you can expect an additional Security Review of your Worker, before this app will be made available just like any App is today.</p>
+<h3>How Can I Apply to the Beta?</h3>
+<p>Back in August, we <a href="https://blog.cloudflare.com/growing-the-cloudflare-apps-ecosystem">announced</a> the upcoming App with Worker capability and since then we’ve seen great interest across our developers and partners who are eager to put their Workers based solutions into the hands to a much broader audience We are continuing to welcome new App Developers in our beta. Apply below to be part of our beta program.</p>
+<p><a href="https://www.cloudflare.com/products/cloudflare-workers/#otherways" target="_blank" rel="noopener noreferrer">Sign-up to Join the beta!</a></p>

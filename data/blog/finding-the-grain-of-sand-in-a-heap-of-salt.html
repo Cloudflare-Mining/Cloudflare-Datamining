@@ -1,292 +1,225 @@
-<div class="mb2 gray5">12 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/finding-the-grain-of-sand-in-a-heap-of-salt">日本語</a> and <a href="https://blog.cloudflare.com/ko-kr/finding-the-grain-of-sand-in-a-heap-of-salt">한국어</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/714qZwpH4BDJ6T69EnoiHE/db1ae0a3666dbb1abec3c57b21d81fc5/image3.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>How do you find the root cause of a configuration management failure when you have a peak of hundreds of changes in 15 minutes on thousands of servers?</p>
-	<p>That was the challenge we faced as we built the infrastructure to reduce release delays due to failures of Salt, a configuration management tool. (We eventually reduced such failures on the edge by over 5%, as we’ll explain below.) We’ll explore the fundamentals of Salt, and how it is used at Cloudflare. We then describe the common failure modes and how they delay our ability to release valuable changes to serve our customers.</p>
-	<p>By first solving an architectural problem, we provided the foundation for self-service mechanisms to find the root cause of Salt failures on servers, datacenters and groups of datacenters. This system is able to correlate failures with git commits, external service failures and ad hoc releases. The result of this has been a reduction in the duration of software release delays, and an overall reduction in toilsome, repetitive triage for SRE.</p>
-	<p>To start, we will go into the basics of the Cloudflare network and how Salt operates within it. And then we’ll get to how we solved the challenge akin to finding a grain of sand in a heap of Salt.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-salt-works">How Salt works</h3>
-		<a href="https://blog.cloudflare.com/#how-salt-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Configuration management (CM) ensures that a system corresponds to its configuration information, and maintains the integrity and traceability of that information over time. A good configuration management system ensures that a system does not “drift” – i.e. deviate from the desired state. Modern CM systems include detailed descriptions of infrastructure, version control for these descriptions, and other mechanisms to enforce the desired state across different environments. Without CM, administrators must manually configure systems, a process that is error-prone and difficult to reproduce.</p>
-	<p><a href="https://docs.saltproject.io/en/latest/topics/tutorials/walkthrough.html" target="_blank" rel="noopener noreferrer"><u>Salt</u></a> is an example of such a CM tool. Designed for high-speed remote execution and configuration management, it uses a simple, scalable model to manage large fleets. As a mature CM tool, it provides consistency, reproducibility, change control, auditability and collaboration across team and organisational boundaries.</p>
-	<p>Salt’s design revolves around a <b>master</b>/<b>minion</b> architecture, a message bus built on ZeroMQ, and a declarative state system. (At Cloudflare we generally avoid the terms "master" and "minion." But we will use them here because that's how Salt describes its architecture.) The <b>salt master</b> is a central controller that distributes jobs and configuration data. It listens for requests on the message bus and dispatches commands to targeted minions. It also stores state files, pillar data and cache files. The <b>salt minion </b>is a lightweight agent installed on each managed host/server. Each minion maintains a connection to the master via ZeroMQ and subscribes to published jobs. When a job matches the minion, it executes the requested function and returns results.</p>
-	<p>The diagram below shows a simplification of the Salt architecture described <a href="https://docs.saltproject.io/en/3006/topics/salt_system_architecture.html" target="_blank" rel="noopener noreferrer"><u>in the docs</u></a>, for the purpose of this blog post.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/19pmijzWlmIf3ACxW5M4hF/1c2ff0aab6afd76d1bc2286953ef509b/image5.png" alt="" class="kg-image" width="1386" height="1092" loading="lazy">
-	</figure>
-	<p>The <b>state system</b> provides declarative configuration management. States are often written in YAML and describe a resource (package, file, service, user, etc.) and the desired attributes. A common example is a package state, which ensures that a package is installed at a specified version.</p>
-	<pre class="language-YAML"><code class="language-YAML"># /srv/salt/webserver/init.sls
-include:
-  - common
-
-nginx:
-  pkg.installed: []
-
-/etc/nginx/nginx.conf:
-  file.managed:
-    - source: salt://webserver/files/nginx.conf
-    - require:
-      - pkg: nginx</code></pre>
-	<p>States can call <b>execution modules</b>, which are Python functions that implement system actions. When applying states, Salt returns a structured result containing whether the state succeeded (<code>result: True/False</code>), a comment, changes made, and duration.</p>
-	<div class="flex anchor relative">
-		<h3 id="salt-at-cloudflare">Salt at Cloudflare</h3>
-		<a href="https://blog.cloudflare.com/#salt-at-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We use Salt to manage our ever-growing fleet of machines, and have previously written about our <a href="https://blog.cloudflare.com/tag/salt"><u>extensive usage</u></a>. The master-minion architecture described above allows us to push configuration in the form of states to thousands of servers, which is essential for maintaining our network. We’ve designed our change propagation to involve blast radius protection. With these protections in place, a <a href="https://docs.saltproject.io/en/3006/ref/states/highstate.html" target="_blank" rel="noopener noreferrer"><u>highstate</u></a> failure becomes a signal, rather than a customer-impacting event.</p>
-	<p>This release design was intentional – we decided to “fail safe” instead of failing hard. By <a href="https://blog.cloudflare.com/safe-change-at-any-scale"><u>further adding guardrails</u></a> to safely release new code before a feature reaches all users, we are able to propagate a change with confidence that failures will halt the Salt deployment pipeline by default. However, every halt blocks other configuration deployments and requires human intervention to determine the root cause. This can quickly become a toilsome process as the steps are repetitive and bring no enduring value.</p>
-	<p>Part of our deployment pipeline for Salt changes uses <a href="https://en.wikipedia.org/wiki/APT_(software)" target="_blank" rel="noopener noreferrer"><u>Apt</u></a>. Every X minutes a commit is merged into the master branch, per Y minutes those merges are bundled and deployed to APT servers. The key file to retrieving Salt Master configuration from that APT server is the APT source file:</p>
-	<pre class="language-Shell"><code class="language-Shell"># /etc/apt/sources.list.d/saltcodebase.sources
-# MANAGED BY SALT -- DO NOT MODIFY
-
-Types: deb
-URIs: mirror+file:/etc/apt/mirrorlists/saltcodebase.txt
-Suites: stable canary
-Components: cloudflare
-Signed-By: /etc/apt/keyrings/cloudflare.gpg</code></pre>
-	<p>This file directs a master to the correct suite for its specific environment. Using that suite, it retrieves the latest package containing the relevant Salt Debian package with the latest changes. It installs that package and begins deploying the included configuration. As it deploys the configuration on machines, the machines report their health using <a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale"><u>Prometheus</u></a>. If a version is healthy, it will be progressed into the next environment. Before it can be progressed, a version has to pass a certain soak threshold to allow a version to develop its errors, making more complex issues become apparent. That is the happy case.</p>
-	<p>The unhappy case brings a myriad of complications: As we do progressive deployments, if a version is broken, any subsequent version is also broken. And because broken versions are continuously overtaken by newer versions, we need to stop deployments altogether. In a broken version scenario, it is crucial to get a fix out as soon as possible. This touches upon the core question of this blog post: What if a broken Salt version is propagated across the environment, we are abandoning deployments, and we need to get a fix out as soon as possible?</p>
-	<div class="flex anchor relative">
-		<h3 id="the-pain-how-salt-breaks-and-reports-errors-and-how-it-affects-cloudflare">The pain: how Salt breaks and reports errors (and how it affects Cloudflare)</h3>
-		<a href="https://blog.cloudflare.com/#the-pain-how-salt-breaks-and-reports-errors-and-how-it-affects-cloudflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While Salt aims for idempotent and predictable configuration, failures can occur during the render, compile, or runtime stages. These failures are commonly due to misconfiguration. Errors in Jinja templates or invalid YAML can cause the render stage to fail. Examples include missing colons, incorrect indentation, or undefined variables. A syntax error is often raised with a stack trace pointing to the offending line.</p>
-	<p>Another frequent cause of failure is missing pillar or grain data. Since pillar data is compiled on the master, forgetting to update pillar top files or refreshing pillar can result in <i>KeyError</i> exceptions. As a system that maintains order using requisites, misconfigured requisites can lead to states executing out-of-order or being skipped. Failures can also happen when minions are unable to authenticate with the master, or cannot reach the master due to network or firewall issues.</p>
-	<p>Salt reports errors in several ways. By default, the <code>salt</code> and <code>salt-call</code> commands exit with a retcode <b>1 </b>when any state fails. Salt also sets internal retcodes for specific cases: 1 for compile errors, 2 when a state returns False, and 5 for pillar compilation errors. Test mode shows what changes would be made without actually executing them, but is useful for catching syntax or ordering issues. Debug logs can be toggled using the <code>-l debug</code> CLI option (<code>salt &lt;minion&gt; state.highstate -l debug</code>).</p>
-	<p>The state return also includes the details of the individual state failures - the durations, timestamps, functions and results. If we introduce a failure to the&nbsp; <code>file.managed</code> state by referencing a file that doesn’t exist in the Salt fileserver, we see this failure:</p>
-	<pre class="language-JSON"><code class="language-JSON">web1:
-----------
-          ID: nginx
-    Function: pkg.installed
-      Result: True
-     Comment: Package nginx is already installed
-     Started: 15:32:41.157235
-    Duration: 256.138 ms
-     Changes:   
-
-----------
-          ID: /etc/nginx/nginx.conf
-    Function: file.managed
-      Result: False
-     Comment: Source file salt://webserver/files/nginx.conf not found in saltenv 'base'
-     Started: 15:32:41.415128
-    Duration: 14.581 ms
-     Changes:   
-
-Summary for web1
-------------
-Succeeded: 1 (changed=0)
-Failed:    1
-------------
-Total states run:     2
-Total run time: 270.719 ms</code></pre>
-	<p>The return can also be displayed in JSON:</p>
-	<pre class="language-JSON"><code class="language-JSON">{
-  "web1": {
-    "pkg_|-nginx_|-nginx_|-installed": {
-      "comment": "Package nginx is already installed",
-      "name": "nginx",
-      "start_time": "15:32:41.157235",
-      "result": true,
-      "duration": 256.138,
-      "changes": {}
-    },
-    "file_|-/etc/nginx/nginx.conf_|-/etc/nginx/nginx.conf_|-managed": {
-      "comment": "Source file salt://webserver/files/nginx.conf not found in saltenv 'base'",
-      "name": "/etc/nginx/nginx.conf",
-      "start_time": "15:32:41.415128",
-      "result": false,
-      "duration": 14.581,
-      "changes": {}
-    }
-  }
-}</code></pre>
-	<p>The flexibility of the output format means that humans can parse them in custom scripts. But more importantly, it can also be consumed by more complex, interconnected automation systems. We knew we could easily parse these outputs to attribute the cause of a Salt failure with an input – e.g. a change in source control, an external service failure, or a software release. But something was missing.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-solutions">The solutions</h3>
-		<a href="https://blog.cloudflare.com/#the-solutions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Configuration errors are a common cause of failure in large-scale systems. Some of these could even lead to full system outages, which we prevent with our release architecture. When a new release or configuration breaks in production, our SRE team needs to find and fix the root cause to avoid release delays. As we’ve previously noted, this triage is tedious and increasingly difficult due to system complexity.</p>
-	<p>While some organisations use formal techniques such as automated root cause analysis, most triage is still frustratingly manual. After evaluating the scope of the problem, we decided to adopt an automated approach. This section describes the step-by-step approach to solving this broad, complex problem in production.</p>
-	<div class="flex anchor relative">
-		<h3 id="phase-one-retrievable-cm-inputs">Phase one: retrievable CM inputs</h3>
-		<a href="https://blog.cloudflare.com/#phase-one-retrievable-cm-inputs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When a Salt highstate fails on a minion, SRE teams faced a tedious investigation process: manually SSHing into minions, searching through logs for error messages, tracking down job IDs (JIDs), and locating the job associated with the JID on one of multiple associated masters. This is all while racing against a 4-hour retention window on master logs. The fundamental problem was architectural: Job results live on Salt Masters, not on the minions where they're executed, forcing operators to guess which master processed their job (SSHing into each one) and limiting visibility for users without master access.</p>
-	<p>We built a solution that caches job results directly on minions, similar to the <a href="https://docs.saltproject.io/en/3006/ref/returners/all/index.html" target="_blank" rel="noopener noreferrer"><u>local_cache</u></a> returner that exists for masters. That enables local job retrieval and extended retention periods. This transformed a multistep, time-sensitive investigation into a single query — operators can retrieve job details, automatically extract error context, and trace failures back to specific file changes and commit authors, all from the minion itself. The custom returner filters and manages cache size intelligently, eliminating the “which master?” problem while also enabling automated error attribution, reducing time to resolution, and removing human toil from routine troubleshooting.</p>
-	<p>By decentralizing job history and making it queryable at the source, we moved significantly closer to a self-service debugging experience where failures are automatically contextualized and attributed, letting SRE teams focus on fixes rather than forensics.</p>
-	<div class="flex anchor relative">
-		<h3 id="phase-two-self-service-using-a-salt-blame-module">Phase two: Self-service using a Salt Blame Module</h3>
-		<a href="https://blog.cloudflare.com/#phase-two-self-service-using-a-salt-blame-module" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once job information was available on the minion, we no longer needed to resolve which master triggered the job that failed. The next step was to write a Salt execution module that would allow an external service to query for job information, and more specifically failed job information, without needing to know Salt internals. This led us to write a module called <b><i>Salt Blame</i></b>. Cloudflare prides itself on its blameless culture, our software on the other hand…</p>
-	<p>The blame module is responsible for pulling together three things:</p>
-	<ul>
-		<li>
-			<p>Local job history information</p>
-		</li>
-		<li>
-			<p>CM inputs (latest commit present during the job)</p>
-		</li>
-		<li>
-			<p>Git repo commit history</p>
-		</li>
-	</ul>
-	<p>We chose to write an execution module for simplicity, decoupling external automation from the need to understand Salt internals, and potential usage by operators for further troubleshooting. Writing execution modules is already well established within operational teams and adheres to well-defined best practices such as unit tests, linting and extensive peer-review.</p>
-	<p>The module is understandably very simple. It iterates in reverse chronological order through the jobs in the local cache and looks for the first job failure chronologically, and then the successful job immediately prior to it. This is for no other reason than narrowing down the true first failure and giving us before and after state results. At this stage, we have several avenues to present context to the caller: To find possible commit culprits, we look through all commits between the last successful Job ID and the failure to determine if any of these changed files relevant to the failure. We also provided the list of failed states and their outputs as another avenue to spot the root cause. We’ve learned that this flexibility is important to cover the wide range of failure possibilities.</p>
-	<p>We also make a distinction between normal failed states, and compile errors. As <a href="https://docs.saltproject.io/en/3007/topics/return_codes/index.html" target="_blank" rel="noopener noreferrer"><u>described in the Salt docs</u></a>, each job returns different retcodes based on the outcome.&nbsp;</p>
-	<ul>
-		<li>
-			<p>Compile Error: 1 is set when any error is encountered in the state compiler.</p>
-		</li>
-		<li>
-			<p>Failed State: 2 is set when any state returns a <code>False</code> result.</p>
-		</li>
-	</ul>
-	<p>Most of our failures manifest as failed states as a result of a change in source control. An engineer building a new feature for our customers may unintentionally introduce a failure that was uncaught by our CI and Salt Master tests. In the first iteration of the module, listing all the failed states was sufficient to pinpoint the root cause of a highstate failure.</p>
-	<p>However, we noticed that we had a blind spot. Compile errors do not result in a failed state, since no state runs. Since these errors returned a different retcode from what we checked for, the module was completely blind to them. Most compile errors happen when a Salt service dependency fails during the state compile phase. They can also happen as a result of a change in source control, although that is rare.</p>
-	<p>With both state failures and compile errors accounted for, we drastically improved our ability to pinpoint issues. We released the module to SREs who immediately realised the benefits of faster Salt triage.</p>
-	<pre class="language-Shell"><code class="language-Shell"># List all the recent failed states
-minion~$ salt-call -l info blame.last_failed_states
-local:
-    |_
-      ----------
-      __id__:
-          /etc/nginx/nginx.conf
-      __run_num__:
-          5221
-      __sls__:
-          foo
-      changes:
-          ----------
-      comment:
-          Source file salt://webserver/files/nginx.conf not found in saltenv 'base'
-      duration:
-          367.233
-      finish_time_stamp:
-          2025-10-22T10:00:17.289897+00:00
-      fun:
-          file.managed
-      name:
-          /etc/nginx/nginx.conf
-      result:
-          False
-      start_time:
-          10:00:16.922664
-      start_time_stamp:
-          2025-10-22T10:00:16.922664+00:00
-
-# List all the commits that correlate with a failed state
-minion~$ salt-call -l info blame.last_highstate_failure
-local:
-    ----------
-    commits:
-        |_
-          ----------
-          author_email:
-              johndoe@cloudflare.com
-          author_name:
-              John Doe
-          commit_datetime:
-              2025-06-30T15:29:26.000+00:00
-          commit_id:
-              e4a91b2c9f7d3b6f84d12a9f0e62a58c3c7d9b5a
-          path:
-              /srv/salt/webserver/init.sls
-    message:
-        reviewed 5 change(s) over 12 commit(s) looking for 1 state failure(s)
-    result:
-        True
-
-# List all the compile errors
-minion~$ salt-call -l info blame.last_compile_errors
-local:
-    |_
-      ----------
-      error_types:
-      job_timestamp:
-          2025-10-24T21:55:54.595412+00:00
-      message: A service failure has occured
-      state: foo
-      traceback:
-          Full stack trace of the failure
-      urls: http://url-matching-external-service-if-found</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="phase-three-automate-automate-automate">Phase three: automate, automate, automate!</h3>
-		<a href="https://blog.cloudflare.com/#phase-three-automate-automate-automate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Faster triage is always a welcome development, and engineers were comfortable running local commands on minions to triage Salt failures. But in a busy shift, time is of the essence. When failures spanned across multiple datacenters or machines, it easily became cumbersome to run commands across all these minions. This solution also required context-switches between multiple nodes and datacenters. We needed a way to aggregate common failure types using a single command – single minions, pre-production datacenters and production datacenters.</p>
-	<p>We implemented several mechanisms to simplify triage and eliminate manual triggers. We aimed to get this tooling as close to the triage location as possible, which is often chat. With three distinct commands, engineers were now able to triage Salt failures right from chat threads.</p>
-	<p>With a hierarchical approach, we made individual triage possible for minions, data centers and groups of data centers. A hierarchy makes this architecture fully extensible, flexible and self-organising. An engineer is able to triage a failure on one minion, and at the same time the entire data center as needed.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/0lEOmpdw9err62tIWqn0Y/3905580de41daf9fc81928a740c2dd14/image2.png" alt="" class="kg-image" width="1999" height="1011" loading="lazy">
-	</figure>
-	<p>The ability to triage multiple data centers at the same time became immediately useful for tracking the root cause of failures in pre-production data centers. These failures delay the propagation of changes to other data centers, and hinder our ability to release changes for customer features, bug fixes or incident remediation. The addition of this triage option has cut down the time to debug and remediate Salt failures by over 5%, allowing us to consistently release important changes for our customers.</p>
-	<p>While 5% does not immediately look like a drastic improvement, the magic is in the cumulative effect. We won’t release actual figures of the amount of time releases are delayed for, but we can do a simple thought experiment. If the average amount of time spent is even just 60 minutes per day, a reduction by 5% saves us 90 minutes (one hour 30 minutes) per month.&nbsp;</p>
-	<p>Another indirect benefit lies in more efficient feedback loops. Since engineers spend less time fiddling with complex configurations, that energy is diverted towards preventing reoccurrence, further reducing the overall time by an immeasurable amount. Our future plans include measurement and data analytics to understand the outcomes of these direct and indirect feedback loops.</p>
-	<p>The image below shows an example of pre-production triage output. We are able to correlate failures with git commits, releases, and external service failures. During a busy shift, this information is invaluable for quickly fixing breakage. On average, each minion “blame” takes less than 30 seconds, while multiple data centers are able to return a result in a minute or less.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/70qnYIpPDFI1gl0u7FrT4o/51899c016dabc382fb3346ccaab254b5/Screenshot_2025-11-12_at_20.40.53.png" alt="" class="kg-image" width="2040" height="808" loading="lazy">
-	</figure>
-	<p>The image below describes the hierarchical model. Each step in the hierarchy is executed in parallel, allowing us to achieve blazing fast results.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5HpNSQrNN4wZMjpOG9J30o/912164038586e57e1e09124f36998ff8/image6.png" alt="" class="kg-image" width="1550" height="878" loading="lazy">
-	</figure>
-	<p>With these mechanisms available, we further cut down triage time by triggering the triage automation on known conditions, especially those with impact to the release pipeline. This directly improved the velocity of changes to the edge since it took less time to find a root cause and fix-forward or revert.</p>
-	<div class="flex anchor relative">
-		<h3 id="phase-four-measure-measure-measure">Phase four: measure, measure, measure</h3>
-		<a href="https://blog.cloudflare.com/#phase-four-measure-measure-measure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After we got blazing fast Salt triage, we needed a way to measure the root causes. While individual root causes are not immediately valuable, historical analysis was deemed important. We wanted to understand the common causes of failure, especially as they hinder our ability to deliver value to customers. This knowledge creates a feedback loop that can be used to keep the number of failures low.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5QeJ1C9CT3rlDqaqHsQjdA/02ac41494ef3594ced1fddc0f801fae7/image1.png" alt="" class="kg-image" width="1550" height="778" loading="lazy">
-	</figure>
-	<p>Using Prometheus and Grafana, we track the top causes of failure: git commits, releases, external service failures and unattributed failed states. The list of failed states is particularly useful because we want to know repeat offenders and drive better adoption of stable releasing practices. We are also particularly interested in root causes — a spike in the number of failures due to git commits indicates a need to adopt better coding practices and linting, a spike in external service failures indicates a regression in an internal system to be investigated, and a spike in release-based failures indicates a need for better gating and release-shepherding.</p>
-	<p>We analyse these metrics on a monthly cycle, providing feedback mechanisms through internal tickets and escalations. While the immediate impact of these efforts is not yet visible as the efforts are nascent, we expect to improve the overall health of our Saltstack infrastructure and release process by reducing the amount of breakage we see.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-broader-picture">The broader picture</h3>
-		<a href="https://blog.cloudflare.com/#the-broader-picture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Much of operational work is often seen as a “necessary evil”. Humans in ops are conditioned to intervene when failures happen and remediate them. This cycle of alert-response is necessary to keep the infrastructure running, but it often leads to toil. We have <a href="https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare"><u>discussed the effect of toil</u></a> in a previous blog post.</p>
-	<p>This work represents another step in the right direction – removing more toil for our on-call SREs, and freeing up valuable time to work on novel issues. We hope that this encourages other operations engineers to share the progress they are making towards reducing overall toil in their organizations. We also hope that this sort of work can be adopted within Saltstack itself, although the lack of homogeneity in production systems across several companies makes it unlikely.</p>
-	<p>In the future, we plan to improve the accuracy of detection and rely less on external correlation of inputs to determine the root cause of failed outcomes. We will investigate how to move more of this logic into our native Saltstack modules, further streamlining the process and avoiding regressions as external systems drift.</p>
-	<p>If this sort of work is exciting to you, we encourage you to take a look at our <a href="https://www.cloudflare.com/en-gb/careers" target="_blank" rel="noopener noreferrer"><u>careers page</u></a>.</p>
+<p>How do you find the root cause of a configuration management failure when you have a peak of hundreds of changes in 15 minutes on thousands of servers?</p>
+<p>That was the challenge we faced as we built the infrastructure to reduce release delays due to failures of Salt, a configuration management tool. (We eventually reduced such failures on the edge by over 5%, as we’ll explain below.) We’ll explore the fundamentals of Salt, and how it is used at Cloudflare. We then describe the common failure modes and how they delay our ability to release valuable changes to serve our customers.</p>
+<p>By first solving an architectural problem, we provided the foundation for self-service mechanisms to find the root cause of Salt failures on servers, datacenters and groups of datacenters. This system is able to correlate failures with git commits, external service failures and ad hoc releases. The result of this has been a reduction in the duration of software release delays, and an overall reduction in toilsome, repetitive triage for SRE.</p>
+<p>To start, we will go into the basics of the Cloudflare network and how Salt operates within it. And then we’ll get to how we solved the challenge akin to finding a grain of sand in a heap of Salt.</p>
+<h3>How Salt works</h3>
+<p>Configuration management (CM) ensures that a system corresponds to its configuration information, and maintains the integrity and traceability of that information over time. A good configuration management system ensures that a system does not “drift” – i.e. deviate from the desired state. Modern CM systems include detailed descriptions of infrastructure, version control for these descriptions, and other mechanisms to enforce the desired state across different environments. Without CM, administrators must manually configure systems, a process that is error-prone and difficult to reproduce.</p>
+<p><a href="https://docs.saltproject.io/en/latest/topics/tutorials/walkthrough.html" target="_blank" rel="noopener noreferrer"><u>Salt</u></a> is an example of such a CM tool. Designed for high-speed remote execution and configuration management, it uses a simple, scalable model to manage large fleets. As a mature CM tool, it provides consistency, reproducibility, change control, auditability and collaboration across team and organisational boundaries.</p>
+<p>Salt’s design revolves around a <strong>master</strong>/<strong>minion</strong> architecture, a message bus built on ZeroMQ, and a declarative state system. (At Cloudflare we generally avoid the terms "master" and "minion." But we will use them here because that's how Salt describes its architecture.) The <strong>salt master</strong> is a central controller that distributes jobs and configuration data. It listens for requests on the message bus and dispatches commands to targeted minions. It also stores state files, pillar data and cache files. The <strong>salt minion </strong>is a lightweight agent installed on each managed host/server. Each minion maintains a connection to the master via ZeroMQ and subscribes to published jobs. When a job matches the minion, it executes the requested function and returns results.</p>
+<p>The diagram below shows a simplification of the Salt architecture described <a href="https://docs.saltproject.io/en/3006/topics/salt_system_architecture.html" target="_blank" rel="noopener noreferrer"><u>in the docs</u></a>, for the purpose of this blog post.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="563" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=715&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=640&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=715&amp;h=563&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=750&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=828&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=1080&amp;h=850&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=1280&amp;h=1008&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=1430&amp;h=1126&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3070 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44B7JQ16GVPN8GJPANQA85.png&amp;w=1386&amp;h=1092&amp;f=webp" data-lightbox-width="1386" data-lightbox-height="1092" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="563" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>The <strong>state system</strong> provides declarative configuration management. States are often written in YAML and describe a resource (package, file, service, user, etc.) and the desired attributes. A common example is a package state, which ensures that a package is installed at a specified version.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># /srv/salt/webserver/init.sls</span></span>
+<span class="line"><span class="sk-22863a-ffc799">include</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">  - </span><span class="sk-032f62-99ffe4">common</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-22863a-ffc799">nginx</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">  pkg.installed</span><span class="sk-24292e-fff">: []</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-22863a-ffc799">/etc/nginx/nginx.conf</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-22863a-ffc799">  file.managed</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-22863a-ffc799">source</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">salt://webserver/files/nginx.conf</span></span>
+<span class="line"><span class="sk-24292e-fff">    - </span><span class="sk-22863a-ffc799">require</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">      - </span><span class="sk-22863a-ffc799">pkg</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">nginx</span></span></code></pre>
 </div>
+<p>States can call <strong>execution modules</strong>, which are Python functions that implement system actions. When applying states, Salt returns a structured result containing whether the state succeeded (<code>result: True/False</code>), a comment, changes made, and duration.</p>
+<h3>Salt at Cloudflare</h3>
+<p>We use Salt to manage our ever-growing fleet of machines, and have previously written about our <a href="https://blog.cloudflare.com/tag/salt" target="_blank" rel="noopener noreferrer"><u>extensive usage</u></a>. The master-minion architecture described above allows us to push configuration in the form of states to thousands of servers, which is essential for maintaining our network. We’ve designed our change propagation to involve blast radius protection. With these protections in place, a <a href="https://docs.saltproject.io/en/3006/ref/states/highstate.html" target="_blank" rel="noopener noreferrer"><u>highstate</u></a> failure becomes a signal, rather than a customer-impacting event.</p>
+<p>This release design was intentional – we decided to “fail safe” instead of failing hard. By <a href="https://blog.cloudflare.com/safe-change-at-any-scale" target="_blank" rel="noopener noreferrer"><u>further adding guardrails</u></a> to safely release new code before a feature reaches all users, we are able to propagate a change with confidence that failures will halt the Salt deployment pipeline by default. However, every halt blocks other configuration deployments and requires human intervention to determine the root cause. This can quickly become a toilsome process as the steps are repetitive and bring no enduring value.</p>
+<p>Part of our deployment pipeline for Salt changes uses <a href="https://en.wikipedia.org/wiki/APT_(software)" target="_blank" rel="noopener noreferrer"><u>Apt</u></a>. Every X minutes a commit is merged into the master branch, per Y minutes those merges are bundled and deployed to APT servers. The key file to retrieving Salt Master configuration from that APT server is the APT source file:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># /etc/apt/sources.list.d/saltcodebase.sources</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># MANAGED BY SALT -- DO NOT MODIFY</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Types:</span><span class="sk-032f62-99ffe4"> deb</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">URIs:</span><span class="sk-032f62-99ffe4"> mirror+file:/etc/apt/mirrorlists/saltcodebase.txt</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Suites:</span><span class="sk-032f62-99ffe4"> stable</span><span class="sk-032f62-99ffe4"> canary</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Components:</span><span class="sk-032f62-99ffe4"> cloudflare</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Signed-By:</span><span class="sk-032f62-99ffe4"> /etc/apt/keyrings/cloudflare.gpg</span></span></code></pre>
+</div>
+<p>This file directs a master to the correct suite for its specific environment. Using that suite, it retrieves the latest package containing the relevant Salt Debian package with the latest changes. It installs that package and begins deploying the included configuration. As it deploys the configuration on machines, the machines report their health using <a href="https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale" target="_blank" rel="noopener noreferrer"><u>Prometheus</u></a>. If a version is healthy, it will be progressed into the next environment. Before it can be progressed, a version has to pass a certain soak threshold to allow a version to develop its errors, making more complex issues become apparent. That is the happy case.</p>
+<p>The unhappy case brings a myriad of complications: As we do progressive deployments, if a version is broken, any subsequent version is also broken. And because broken versions are continuously overtaken by newer versions, we need to stop deployments altogether. In a broken version scenario, it is crucial to get a fix out as soon as possible. This touches upon the core question of this blog post: What if a broken Salt version is propagated across the environment, we are abandoning deployments, and we need to get a fix out as soon as possible?</p>
+<h3>The pain: how Salt breaks and reports errors (and how it affects Cloudflare)</h3>
+<p>While Salt aims for idempotent and predictable configuration, failures can occur during the render, compile, or runtime stages. These failures are commonly due to misconfiguration. Errors in Jinja templates or invalid YAML can cause the render stage to fail. Examples include missing colons, incorrect indentation, or undefined variables. A syntax error is often raised with a stack trace pointing to the offending line.</p>
+<p>Another frequent cause of failure is missing pillar or grain data. Since pillar data is compiled on the master, forgetting to update pillar top files or refreshing pillar can result in <em>KeyError</em> exceptions. As a system that maintains order using requisites, misconfigured requisites can lead to states executing out-of-order or being skipped. Failures can also happen when minions are unable to authenticate with the master, or cannot reach the master due to network or firewall issues.</p>
+<p>Salt reports errors in several ways. By default, the <code>salt</code> and <code>salt-call</code> commands exit with a retcode <strong>1 </strong>when any state fails. Salt also sets internal retcodes for specific cases: 1 for compile errors, 2 when a state returns False, and 5 for pillar compilation errors. Test mode shows what changes would be made without actually executing them, but is useful for catching syntax or ordering issues. Debug logs can be toggled using the <code>-l debug</code> CLI option (<code>salt &lt;minion&gt; state.highstate -l debug</code>).</p>
+<p>The state return also includes the details of the individual state failures - the durations, timestamps, functions and results. If we introduce a failure to the&nbsp; <code>file.managed</code> state by referencing a file that doesn’t exist in the Salt fileserver, we see this failure:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">web</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-24292e-fff">----------</span></span>
+<span class="line"><span class="sk-24292e-fff">          ID: nginx</span></span>
+<span class="line"><span class="sk-24292e-fff">    Function: pkg.installed</span></span>
+<span class="line"><span class="sk-24292e-fff">      Result: True</span></span>
+<span class="line"><span class="sk-24292e-fff">     Comment: Package nginx is already installed</span></span>
+<span class="line"><span class="sk-24292e-fff">     Started: </span><span class="sk-005cc5-ffc799">15</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">41.157235</span></span>
+<span class="line"><span class="sk-24292e-fff">    Duration: </span><span class="sk-005cc5-ffc799">256.138</span><span class="sk-24292e-fff"> ms</span></span>
+<span class="line"><span class="sk-24292e-fff">     Changes:   </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">----------</span></span>
+<span class="line"><span class="sk-24292e-fff">          ID: /etc/nginx/nginx.conf</span></span>
+<span class="line"><span class="sk-24292e-fff">    Function: file.managed</span></span>
+<span class="line"><span class="sk-24292e-fff">      Result: False</span></span>
+<span class="line"><span class="sk-24292e-fff">     Comment: Source file salt:</span><span class="sk-6a737d-8b8b8b94">//webserver/files/nginx.conf not found in saltenv 'base'</span></span>
+<span class="line"><span class="sk-24292e-fff">     Started: </span><span class="sk-005cc5-ffc799">15</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">32</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">41.415128</span></span>
+<span class="line"><span class="sk-24292e-fff">    Duration: </span><span class="sk-005cc5-ffc799">14.581</span><span class="sk-24292e-fff"> ms</span></span>
+<span class="line"><span class="sk-24292e-fff">     Changes:   </span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">Summary for web</span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">------------</span></span>
+<span class="line"><span class="sk-24292e-fff">Succeeded: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff"> (changed=</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">Failed:    </span><span class="sk-005cc5-ffc799">1</span></span>
+<span class="line"><span class="sk-24292e-fff">------------</span></span>
+<span class="line"><span class="sk-24292e-fff">Total states run:     </span><span class="sk-005cc5-ffc799">2</span></span>
+<span class="line"><span class="sk-24292e-fff">Total run time: </span><span class="sk-005cc5-ffc799">270.719</span><span class="sk-24292e-fff"> ms</span></span></code></pre>
+</div>
+<p>The return can also be displayed in JSON:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "web1"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "pkg_|-nginx_|-nginx_|-installed"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "comment"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Package nginx is already installed"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"nginx"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "start_time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"15:32:41.157235"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "result"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">256.138</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "changes"</span><span class="sk-24292e-fff">: {}</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    "file_|-/etc/nginx/nginx.conf_|-/etc/nginx/nginx.conf_|-managed"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "comment"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Source file salt://webserver/files/nginx.conf not found in saltenv 'base'"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "name"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/etc/nginx/nginx.conf"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "start_time"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"15:32:41.415128"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "result"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">false</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "duration"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">14.581</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "changes"</span><span class="sk-24292e-fff">: {}</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The flexibility of the output format means that humans can parse them in custom scripts. But more importantly, it can also be consumed by more complex, interconnected automation systems. We knew we could easily parse these outputs to attribute the cause of a Salt failure with an input – e.g. a change in source control, an external service failure, or a software release. But something was missing.</p>
+<h3>The solutions</h3>
+<p>Configuration errors are a common cause of failure in large-scale systems. Some of these could even lead to full system outages, which we prevent with our release architecture. When a new release or configuration breaks in production, our SRE team needs to find and fix the root cause to avoid release delays. As we’ve previously noted, this triage is tedious and increasingly difficult due to system complexity.</p>
+<p>While some organisations use formal techniques such as automated root cause analysis, most triage is still frustratingly manual. After evaluating the scope of the problem, we decided to adopt an automated approach. This section describes the step-by-step approach to solving this broad, complex problem in production.</p>
+<h3>Phase one: retrievable CM inputs</h3>
+<p>When a Salt highstate fails on a minion, SRE teams faced a tedious investigation process: manually SSHing into minions, searching through logs for error messages, tracking down job IDs (JIDs), and locating the job associated with the JID on one of multiple associated masters. This is all while racing against a 4-hour retention window on master logs. The fundamental problem was architectural: Job results live on Salt Masters, not on the minions where they're executed, forcing operators to guess which master processed their job (SSHing into each one) and limiting visibility for users without master access.</p>
+<p>We built a solution that caches job results directly on minions, similar to the <a href="https://docs.saltproject.io/en/3006/ref/returners/all/index.html" target="_blank" rel="noopener noreferrer"><u>local_cache</u></a> returner that exists for masters. That enables local job retrieval and extended retention periods. This transformed a multistep, time-sensitive investigation into a single query — operators can retrieve job details, automatically extract error context, and trace failures back to specific file changes and commit authors, all from the minion itself. The custom returner filters and manages cache size intelligently, eliminating the “which master?” problem while also enabling automated error attribution, reducing time to resolution, and removing human toil from routine troubleshooting.</p>
+<p>By decentralizing job history and making it queryable at the source, we moved significantly closer to a self-service debugging experience where failures are automatically contextualized and attributed, letting SRE teams focus on fixes rather than forensics.</p>
+<h3>Phase two: Self-service using a Salt Blame Module</h3>
+<p>Once job information was available on the minion, we no longer needed to resolve which master triggered the job that failed. The next step was to write a Salt execution module that would allow an external service to query for job information, and more specifically failed job information, without needing to know Salt internals. This led us to write a module called <strong><em>Salt Blame</em></strong>. Cloudflare prides itself on its blameless culture, our software on the other hand…</p>
+<p>The blame module is responsible for pulling together three things:</p>
+<ul>
+	<li>Local job history information</li>
+	<li>CM inputs (latest commit present during the job)</li>
+	<li>Git repo commit history</li>
+</ul>
+<p>We chose to write an execution module for simplicity, decoupling external automation from the need to understand Salt internals, and potential usage by operators for further troubleshooting. Writing execution modules is already well established within operational teams and adheres to well-defined best practices such as unit tests, linting and extensive peer-review.</p>
+<p>The module is understandably very simple. It iterates in reverse chronological order through the jobs in the local cache and looks for the first job failure chronologically, and then the successful job immediately prior to it. This is for no other reason than narrowing down the true first failure and giving us before and after state results. At this stage, we have several avenues to present context to the caller: To find possible commit culprits, we look through all commits between the last successful Job ID and the failure to determine if any of these changed files relevant to the failure. We also provided the list of failed states and their outputs as another avenue to spot the root cause. We’ve learned that this flexibility is important to cover the wide range of failure possibilities.</p>
+<p>We also make a distinction between normal failed states, and compile errors. As <a href="https://docs.saltproject.io/en/3007/topics/return_codes/index.html" target="_blank" rel="noopener noreferrer"><u>described in the Salt docs</u></a>, each job returns different retcodes based on the outcome.&nbsp;</p>
+<ul>
+	<li>Compile Error: 1 is set when any error is encountered in the state compiler.</li>
+	<li>Failed State: 2 is set when any state returns a <code>False</code> result.</li>
+</ul>
+<p>Most of our failures manifest as failed states as a result of a change in source control. An engineer building a new feature for our customers may unintentionally introduce a failure that was uncaught by our CI and Salt Master tests. In the first iteration of the module, listing all the failed states was sufficient to pinpoint the root cause of a highstate failure.</p>
+<p>However, we noticed that we had a blind spot. Compile errors do not result in a failed state, since no state runs. Since these errors returned a different retcode from what we checked for, the module was completely blind to them. Most compile errors happen when a Salt service dependency fails during the state compile phase. They can also happen as a result of a change in source control, although that is rare.</p>
+<p>With both state failures and compile errors accounted for, we drastically improved our ability to pinpoint issues. We released the module to SREs who immediately realised the benefits of faster Salt triage.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># List all the recent failed states</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">minion~$</span><span class="sk-032f62-99ffe4"> salt-call</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> info</span><span class="sk-032f62-99ffe4"> blame.last_failed_states</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">local:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    |</span><span class="sk-6f42c1-ffc799">_</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      ----------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      __id__:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          /etc/nginx/nginx.conf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      __run_num__:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          5221</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      __sls__:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          foo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      changes:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          ----------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      comment:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          Source</span><span class="sk-032f62-99ffe4"> file</span><span class="sk-032f62-99ffe4"> salt://webserver/files/nginx.conf</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> found</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> saltenv</span><span class="sk-032f62-99ffe4"> 'base'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      duration:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          367.233</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      finish_time_stamp:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          2025-10-22T10:00:17.289897+00:00</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      fun:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          file.managed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      name:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          /etc/nginx/nginx.conf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      result:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          False</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      start_time:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          10:00:16.922664</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      start_time_stamp:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          2025-10-22T10:00:16.922664+00:00</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># List all the commits that correlate with a failed state</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">minion~$</span><span class="sk-032f62-99ffe4"> salt-call</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> info</span><span class="sk-032f62-99ffe4"> blame.last_highstate_failure</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">local:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    ----------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    commits:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        |</span><span class="sk-6f42c1-ffc799">_</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          ----------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          author_email:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              johndoe@cloudflare.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          author_name:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              John</span><span class="sk-032f62-99ffe4"> Doe</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          commit_datetime:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              2025-06-30T15:29:26.000+00:00</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          commit_id:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              e4a91b2c9f7d3b6f84d12a9f0e62a58c3c7d9b5a</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          path:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              /srv/salt/webserver/init.sls</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    message:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        reviewed</span><span class="sk-005cc5-ffc799"> 5</span><span class="sk-032f62-99ffe4"> change</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">over</span><span class="sk-005cc5-ffc799"> 12</span><span class="sk-032f62-99ffe4"> commit</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">looking</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> state</span><span class="sk-032f62-99ffe4"> failure</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">s</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    result:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        True</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># List all the compile errors</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">minion~$</span><span class="sk-032f62-99ffe4"> salt-call</span><span class="sk-005cc5-99ffe4"> -l</span><span class="sk-032f62-99ffe4"> info</span><span class="sk-032f62-99ffe4"> blame.last_compile_errors</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">local:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    |</span><span class="sk-6f42c1-ffc799">_</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      ----------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      error_types:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      job_timestamp:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          2025-10-24T21:55:54.595412+00:00</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      message:</span><span class="sk-032f62-99ffe4"> A</span><span class="sk-032f62-99ffe4"> service</span><span class="sk-032f62-99ffe4"> failure</span><span class="sk-032f62-99ffe4"> has</span><span class="sk-032f62-99ffe4"> occured</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      state:</span><span class="sk-032f62-99ffe4"> foo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      traceback:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          Full</span><span class="sk-032f62-99ffe4"> stack</span><span class="sk-032f62-99ffe4"> trace</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> failure</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      urls:</span><span class="sk-032f62-99ffe4"> http://url-matching-external-service-if-found</span></span></code></pre>
+</div>
+<h3>Phase three: automate, automate, automate!</h3>
+<p>Faster triage is always a welcome development, and engineers were comfortable running local commands on minions to triage Salt failures. But in a busy shift, time is of the essence. When failures spanned across multiple datacenters or machines, it easily became cumbersome to run commands across all these minions. This solution also required context-switches between multiple nodes and datacenters. We needed a way to aggregate common failure types using a single command – single minions, pre-production datacenters and production datacenters.</p>
+<p>We implemented several mechanisms to simplify triage and eliminate manual triggers. We aimed to get this tooling as close to the triage location as possible, which is often chat. With three distinct commands, engineers were now able to triage Salt failures right from chat threads.</p>
+<p>With a hierarchical approach, we made individual triage possible for minions, data centers and groups of data centers. A hierarchy makes this architecture fully extensible, flexible and self-organising. An engineer is able to triage a failure on one minion, and at the same time the entire data center as needed.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="362" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=640&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=715&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=750&amp;h=380&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=828&amp;h=419&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=1080&amp;h=547&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=1280&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=1430&amp;h=724&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3070 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4473QCYEVSHYXYDTJ2GHDG.png&amp;w=1920&amp;h=971&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="971" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="362" class="pt-portable-image-media"></div>
+</figure>
+<p>The ability to triage multiple data centers at the same time became immediately useful for tracking the root cause of failures in pre-production data centers. These failures delay the propagation of changes to other data centers, and hinder our ability to release changes for customer features, bug fixes or incident remediation. The addition of this triage option has cut down the time to debug and remediate Salt failures by over 5%, allowing us to consistently release important changes for our customers.</p>
+<p>While 5% does not immediately look like a drastic improvement, the magic is in the cumulative effect. We won’t release actual figures of the amount of time releases are delayed for, but we can do a simple thought experiment. If the average amount of time spent is even just 60 minutes per day, a reduction by 5% saves us 90 minutes (one hour 30 minutes) per month.&nbsp;</p>
+<p>Another indirect benefit lies in more efficient feedback loops. Since engineers spend less time fiddling with complex configurations, that energy is diverted towards preventing reoccurrence, further reducing the overall time by an immeasurable amount. Our future plans include measurement and data analytics to understand the outcomes of these direct and indirect feedback loops.</p>
+<p>The image below shows an example of pre-production triage output. We are able to correlate failures with git commits, releases, and external service failures. During a busy shift, this information is invaluable for quickly fixing breakage. On average, each minion “blame” takes less than 30 seconds, while multiple data centers are able to return a result in a minute or less.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="283" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=640&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=750&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=828&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=1080&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=1280&amp;h=507&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=1430&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3070 image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48HR8DQK6X294GX23Q70XE.png&amp;w=1920&amp;h=760&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="760" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="283" class="pt-portable-image-media"></div>
+</figure>
+<p>The image below describes the hierarchical model. Each step in the hierarchy is executed in parallel, allowing us to achieve blazing fast results.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="405" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=750&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=828&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=1080&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=1280&amp;h=725&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=1430&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3070 image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47B866Q8MJ5RG18Z79M56G.png&amp;w=1550&amp;h=878&amp;f=webp" data-lightbox-width="1550" data-lightbox-height="878" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="405" class="pt-portable-image-media"></div>
+</figure>
+<p>With these mechanisms available, we further cut down triage time by triggering the triage automation on known conditions, especially those with impact to the release pipeline. This directly improved the velocity of changes to the edge since it took less time to find a root cause and fix-forward or revert.</p>
+<h3>Phase four: measure, measure, measure</h3>
+<p>After we got blazing fast Salt triage, we needed a way to measure the root causes. While individual root causes are not immediately valuable, historical analysis was deemed important. We wanted to understand the common causes of failure, especially as they hinder our ability to deliver value to customers. This knowledge creates a feedback loop that can be used to keep the number of failures low.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3070 image 6" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47EKVK6Z3WEM27Q2V2QXT8.png&amp;w=1550&amp;h=778&amp;f=webp" data-lightbox-width="1550" data-lightbox-height="778" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<p>Using Prometheus and Grafana, we track the top causes of failure: git commits, releases, external service failures and unattributed failed states. The list of failed states is particularly useful because we want to know repeat offenders and drive better adoption of stable releasing practices. We are also particularly interested in root causes — a spike in the number of failures due to git commits indicates a need to adopt better coding practices and linting, a spike in external service failures indicates a regression in an internal system to be investigated, and a spike in release-based failures indicates a need for better gating and release-shepherding.</p>
+<p>We analyse these metrics on a monthly cycle, providing feedback mechanisms through internal tickets and escalations. While the immediate impact of these efforts is not yet visible as the efforts are nascent, we expect to improve the overall health of our Saltstack infrastructure and release process by reducing the amount of breakage we see.</p>
+<h3>The broader picture</h3>
+<p>Much of operational work is often seen as a “necessary evil”. Humans in ops are conditioned to intervene when failures happen and remediate them. This cycle of alert-response is necessary to keep the infrastructure running, but it often leads to toil. We have <a href="https://blog.cloudflare.com/improving-platform-resilience-at-cloudflare" target="_blank" rel="noopener noreferrer"><u>discussed the effect of toil</u></a> in a previous blog post.</p>
+<p>This work represents another step in the right direction – removing more toil for our on-call SREs, and freeing up valuable time to work on novel issues. We hope that this encourages other operations engineers to share the progress they are making towards reducing overall toil in their organizations. We also hope that this sort of work can be adopted within Saltstack itself, although the lack of homogeneity in production systems across several companies makes it unlikely.</p>
+<p>In the future, we plan to improve the accuracy of detection and rely less on external correlation of inputs to determine the root cause of failed outcomes. We will investigate how to move more of this logic into our native Saltstack modules, further streamlining the process and avoiding regressions as external systems drift.</p>
+<p>If this sort of work is exciting to you, we encourage you to take a look at our <a href="https://www.cloudflare.com/en-gb/careers" target="_blank" rel="noopener noreferrer"><u>careers page</u></a>.</p>

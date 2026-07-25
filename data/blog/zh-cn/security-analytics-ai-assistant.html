@@ -1,0 +1,51 @@
+<p>想象一下，您最关键的生产应用程序正在受到攻击，您需要了解正在发生什么。如果只需登录仪表板并输入问题，例如“比较美国和英国之间的攻击流量”或“比较针对自动流量的速率限制范围与人工流量的速率限制范围”，然后就能在屏幕上看到一个时间序列图表，而无需选择一组复杂的过滤器，您会有多高兴呢？</p>
+<p>今天，我们隆重推出一个 AI 助手，它能帮助您查询安全事件数据，以更快发现异常和潜在的安全攻击。您现在可以用通俗的语言查询 Cloudflare 的分析数据，让我们来展现魔力。</p>
+<h2>我们构建了什么？</h2>
+<p>在分析流量激增或流量中的任何异常时，一个重大挑战是创建过滤器，以分离问题的根本原因。这意味着需要熟悉通常复杂的仪表板和工具，知道在哪里点击以及如何进行筛选。</p>
+<p>此外，任何传统的安全仪表板都受限于数据存储的方式、数据库的索引方式以及在创建过滤器时允许使用的字段。例如，在我们的 Security Analytics 视图，比较具有不同特征的时间序列并不容易。例如，如果不打开到 Security Analytics 的多个标签并单独进行过滤，您将无法将来自 IP 地址 x.x.x.x 的流量与来自德国的自动化流量进行比较。从工程角度来看，构建允许进行这些无约束比较的系统将非常困难。</p>
+<p>AI 助手将消除这种复杂性，我们利用 Workers AI 平台构建了一个工具，帮助您查询 HTTP 请求和安全事件数据，并根据用自然语言构建的请求生成时间序列图表。现在，AI 助手将完成这些麻烦的工作：找到所需的过滤器，并能在单个图表上绘制多个数据系列，以协助比较。这个新工具开辟了一种查询数据和日志的全新方式，摆脱传统仪表板引入的限制。</p>
+<p>现在，通过使用简单的语言来查询数据，您将更容易获得关于应用程序安全的强大洞察，并更好地了解 Cloudflare 如何保护您的业务。全新 AI 助手位于 Security Analytics 仪表板上，与现有的过滤器无缝协同工作。只需提出问题，就能获得所需的答案。</p>
+<h2>您可以问什么？</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="412" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=715&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=640&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=715&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=750&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=828&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=1080&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=1280&amp;h=738&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=1430&amp;h=824&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2237 Embedded Image - QC1sYn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47X32VNHE8CN2AHZ3KK5T2.png&amp;w=1600&amp;h=922&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="922" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="412" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>为了展示 AI 助手的能力，我们首先考虑我们每天在帮助客户部署其应用程序的最佳安全解决方案时问自己的问题。</p>
+<p>我们在仪表板中包含了一些可点击的示例，以便您开始使用。</p>
+<p>您可以使用 AI 助手</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="420" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=715&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=640&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=715&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=750&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=828&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=1080&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=1280&amp;h=752&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=1430&amp;h=840&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2237 Embedded Image - XEF37M" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YBYY1DRRS3HWS9GT9XQW.png&amp;w=1600&amp;h=939&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="939" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="420" class="pt-portable-image-media"></div>
+</figure>
+<ul>
+	<li>询问：“Compare attack traffic between US and UK”，以确定攻击流量激增的来源</li>
+	<li>询问：“Compare origin and edge 5xx errors”，以确定 5xx 错误的根本原因</li>
+	<li>询问：“Compare traffic across major web browsers”，以查看用户最常用的浏览器</li>
+	<li>询问：“Compare traffic between /api/login and /api/basket”，以比较电子商务网站的访问用户与添加商品到购物车的用户比例</li>
+	<li>询问：“Show requests to /api/basket with a bot score less than 20”，以识别针对电子商务网站的机器人攻击</li>
+	<li>询问：“Compare traffic by each HTTP version”，以识别客户端使用的 HTTP 版本</li>
+	<li>询问：“Show POST requests to /admin with a Bot Score over 30”，以识别对特定端点的无用自动化流量</li>
+</ul>
+<p>在探索 AI 助手时，您可以从这些示例开始。</p>
+<div id="html-block-k15" class="html-block">
+	<div style="padding-top:57.57839721254355%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/b17fbe1e0c1f38752fd057ca0cd465d6/iframe?autoplay=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2Fb17fbe1e0c1f38752fd057ca0cd465d6%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>
+<h2>工作原理</h2>
+<p>通过使用 Cloudflare 强大的 <a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">Workers AI</a> 全球网络推理平台，我们能够利用平台上提供的现成大型语言模型（LLM）之一，将客户查询转换为 GraphQL 过滤器。通过将我们 Security Analytics GraphQL 数据集中的可用过滤器教给 AI 模型，我们能够让 AI 模型将一个请求（例如 “<em>比较 /api 和 /admin 端点上的流量</em>”） &nbsp;转换成一组匹配的结构化过滤器：</p>
+<p>然后，利用 AI 模型提供的过滤器，我们可以向我们的 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL API</a> 发出请求，收集必要的数据，并绘制数据可视化图表以回答客户的查询。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">```</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">[</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  {“name”: “Attack Traffic on /api”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/api”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]},</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  {“name”: “Attack Traffic on /admin”, “filters”: [{“key”: “clientRequestPath”, “operator”: “eq”, “value”: “/admin”}, {“key”: “wafAttackScoreClass”, “operator”: “eq”, “value”: “attack”}]}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">```</span></span></code></pre>
+</div>
+<p>通过这种方法，我们能够保持客户信息的私密性，避免将任何安全分析数据暴露给 AI 模型本身，人们依然能够轻松查询他们的数据。这确保您的查询永远不会被用来训练模型。而且，由于 Workers AI 在 Cloudflare 自己的网络上托管了 LLM 的本地实例，您的查询和生成的数据永远不会离开 Cloudflare 的网络。</p>
+<h2>未来发展</h2>
+<p>我们正在开发这一能力的早期阶段，并计划迅速扩展安全分析 AI 助手的能力。最初，如果我们无法处理您的一些请求，请不要感到意外。这个功能发布时，我们能够支持可在时间序列图表中绘制的基本查询，例如“为我显示”或“比较”任何当前可过滤的字段。</p>
+<p>然而，我们意识到有很多我们甚至没有想到的用例，我们很高兴向所有 Business 和 Enterprise 客户发布 AI 助手的测试版，以便客户测试这个功能，看看能用它做什么。我们很乐意听取您的反馈，进一步了解您发现有用的东西，以及您希望在下一步中看到什么。在未来的版本中，您将能够提问类似“昨天我是否遭受了任何攻击？”的问题，并使用 AI 自动生成 WAF 规则，帮助您应用这些规则以缓解风险。</p>
+<h2>测试版可用性</h2>
+<p>从今天开始，AI 助手已经对少数用户可用，并将在 3 月期间陆续推广到所有 Business 和 Enterprise 客户。请留意并免费试用，并使用 Security Analytics 页面顶部的<a href="https://docs.google.com/forms/d/e/1FAIpQLSfKtXvPvKUZpjoKZa93ceTk_NAdRY4CF_PpjvFwZwa69o7i6A/viewform?entry.2073820081=Account+security+analytics" target="_blank" rel="noopener noreferrer">反馈</a>链接告诉我们您的想法。</p>
+<p>最终定价将在正式推出之前确定。</p>

@@ -1,369 +1,312 @@
-<div class="mb2 gray5">5 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3D3QyUCnVZPOBUwGqq9C1a/13da5d1ec5b562e81c16f52678d36d68/terraforming-cloudflare.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This is a guest post by Dimitris Koutsourelis and Alexis Dimitriadis, working for the Security Team at </i><a href="https://www.workable.com" target="_blank" rel="noopener noreferrer"><i>Workable</i></a><i>, a company that makes software to help companies find and hire great people.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/37cT4OaneCnyyBgWYOprbJ/b0b143f2cbc1b9dd55ccf7bb76f7fd17/Image_20191002_222359-1-1.png" alt="" class="kg-image" width="1662" height="1142" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="overview">Overview</h2>
-		<a href="https://blog.cloudflare.com/#overview" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>This post is about our introductive journey to the infrastructure-as-code practice; managing Cloudflare configuration in a declarative and version-controlled way. We'd like to share the experience we've gained during this process; our pain points, limitations we faced, different approaches we took and provide parts of our solution and experimentations.</p>
-	<div class="flex anchor relative">
-		<h2 id="terraform-world">Terraform world</h2>
-		<a href="https://blog.cloudflare.com/#terraform-world" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://www.terraform.io/intro/index.html" target="_blank" rel="noopener noreferrer">Terraform</a> is a great tool that fulfills our requirements, and fortunately, Cloudflare maintains its own <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">provider</a> that allows us to manage its service configuration hasslefree.</p>
-	<p>On top of that, <a href="https://github.com/gruntwork-io/terragrunt" target="_blank" rel="noopener noreferrer">Terragrunt</a>, is a thin wrapper that provides extra commands and functionality for keeping Terraform configurations DRY, and managing remote state.</p>
-	<p>The combination of both leads to a more modular and re-usable structure for Cloudflare <a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener noreferrer">resources</a> (configuration), by utilizing <a href="https://www.terraform.io/docs/configuration/modules.html" target="_blank" rel="noopener noreferrer">terraform</a> and <a href="https://github.com/gruntwork-io/terragrunt-infrastructure-modules-example" target="_blank" rel="noopener noreferrer">terragrunt</a> modules.</p>
-	<p>We've chosen to use the latest version of both tools (<a href="https://www.hashicorp.com/blog/terraform-0-1-2-preview" target="_blank" rel="noopener noreferrer">Terraform-v0.12</a> &amp; <a href="https://github.com/gruntwork-io/terragrunt/releases/tag/v0.19.0" target="_blank" rel="noopener noreferrer">Terragrunt-v0.19</a> respectively) and constantly upgrade to take advantage of the valuable new features and functionality, which at this point in time, remove important limitations.</p>
-	<div class="flex anchor relative">
-		<h2 id="workable-context">Workable context</h2>
-		<a href="https://blog.cloudflare.com/#workable-context" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our set up includes multiple domains that are grouped in two distinct Cloudflare organisations: production &amp; staging. Our environments have their own purposes and technical requirements (i.e.: QA, development, sandbox and production) which translates to slightly different sets of Cloudflare zone configuration.</p>
-	<div class="flex anchor relative">
-		<h2 id="our-approach">Our approach</h2>
-		<a href="https://blog.cloudflare.com/#our-approach" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our main goal was to have a modular set up with the ability to manage any configuration for any zone, while keeping code repetition to a minimum. This is more complex than it sounds; we have repeatedly changed our Terraform folder structure - and other technical aspects - during the development period. The following sections illustrate a set of alternatives through our path, along with pros &amp; cons.</p>
-	<div class="flex anchor relative">
-		<h3 id="structure">Structure</h3>
-		<a href="https://blog.cloudflare.com/#structure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Terraform configuration is based on the project's directory structure, so this is the place to start.</p>
-	<p>Instead of retaining the Cloudflare organisation structure (production &amp; staging as root level directories containing the zones that belong in each organization), our decision was to group zones that share common configuration under the same directory. This helps keep the code dry and the set up consistent and readable.</p>
-	<p>On the down side, this structure adds an extra layer of complexity, as two different sets of credentials need to be handled conditionally and two state files (at the <i>environments/</i> root level) must be managed and isolated using <a href="https://www.terraform.io/docs/state/workspaces.html" target="_blank" rel="noopener noreferrer">workspaces</a>.</p>
-	<p>On top of that, we used Terraform modules, to keep sets of common configuration across zone groups into a single place.Terraform modules repository</p>
-	<pre class="language-bash"><code class="language-bash">modules/
-│    ├── firewall/
-│        ├── main.tf
-│        ├── variables.tf
-│    ├── zone_settings/
-│        ├── main.tf
-│        ├── variables.tf
-│    └── [...]  
-└──</code></pre>
-	<p>Terragrunt modules repository</p>
-	<pre class="language-bash"><code class="language-bash">environments/
-│    ├── [...]
-│    ├── dev/
-│    ├── qa/
-│    ├── demo/
-│        ├── zone-8/ (production)
-│            └── terragrunt.hcl
-│        ├── zone-9/ (staging)
-│            └── terragrunt.hcl
-│        ├── config.tfvars
-│        ├── main.tf
-│        └── variables.tf
-│    ├── config.tfvars
-│    ├── secrets.tfvars
-│    ├── main.tf
-│    ├── variables.tf
-│    └── terragrunt.hcl
-└──</code></pre>
-	<p>The Terragrunt modules tree gives flexibility, since we are able to apply configuration on a zone, group zone, or organisation level (which is inline with Cloudflare configuration capabilities - i.e.: custom error pages can also be configured on the organisation level).</p>
-	<div class="flex anchor relative">
-		<h3 id="resource-types">Resource types</h3>
-		<a href="https://blog.cloudflare.com/#resource-types" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We decided to implement Terraform resources in different ways, to cover our requirements more efficiently.</p>
-	<div class="flex anchor relative">
-		<h5 id="1-static-resource">1. Static resource</h5>
-		<a href="https://blog.cloudflare.com/#1-static-resource" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The first thought that came to mind was having one, or multiple <i>.tf</i> files implementing all the resources with hardcoded values assigned to each attribute. It's simple and straightforward, but can have a high maintenance cost if it leads to code copy/paste between environments.</p>
-	<p>So, common settings seem to be a good use case; we chose to implement <i>access_rules</i> Terraform resources accordingly:modules/access_rules/main.tf</p>
-	<pre class="language-bash"><code class="language-bash">resource "cloudflare_access_rule" "no_17" {
-  notes   = "this is a description"
-  mode    = "blacklist"
-  configuration = {
-    target  = "ip"
-    value   = "x.x.x.x"
-  }
-}
-[...]</code></pre>
-
-	<div class="flex anchor relative">
-		<h5 id="2-parametrized-resources">2. Parametrized resources</h5>
-		<a href="https://blog.cloudflare.com/#2-parametrized-resources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our next step was to add variables to gain flexibility. This is useful when few attributes of a shared resource configuration differ between multiple zones. Most of the configuration remains the same (as described above) and the variable instantiation is added in the Terraform module, while their values are fed through the Terragrunt module, as input variables, or entries inside_.tfvars_ files. The <i>zone_settings_override</i> resource was implemented accordingly:</p>
-	<p>modules/zone_settings/main.tf</p>
-	<pre class="language-bash"><code class="language-bash">resource "cloudflare_zone_settings_override" "zone_settings" {
-  zone_id = var.zone_id
-  settings {
-    always_online       = "on"
-    always_use_https    = "on"
-    [...]
-    browser_check       = var.browser_check
-    mobile_redirect {
-      mobile_subdomain  = var.mobile_redirect_subdomain
-      status            = var.mobile_redirect_status
-      strip_uri         = var.mobile_redirect_uri
-    }
-    
-    [...]
-    waf                 = "on"
-    webp                = "off"
-    websockets          = "on"
-  }
-}</code></pre>
-	<p>environments/qa/main.tf</p>
-	<pre class="language-bash"><code class="language-bash">module "zone_settings" {
-  source        = "git@github.com:foo/modules/zone_settings"
-  zone_name     = var.zone_name
-  browser_check = var.zone_settings_browser_check
-  [...]
-}</code></pre>
-	<p>environments/qa/config.tfvars</p>
-	<pre class="language-bash"><code class="language-bash">#zone settings
-zone_settings_browser_check = "off"
-[...]
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h5 id="3-dynamic-resource">3. Dynamic resource</h5>
-		<a href="https://blog.cloudflare.com/#3-dynamic-resource" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At that point, we thought that a more interesting approach would be to create generic resource templates to manage all instances of a given resource in one place. A template is implemented as a Terraform module and creates each resource dynamically, based on its input: data fed through the Terragrunt modules (/environments in our case), or entries in the tfvars files.</p>
-	<p>We chose to implement the <i>account_member</i> resource this way.modules/account_members/variables.tf</p>
-	<pre class="language-bash"><code class="language-bash">variable "users" {
-  description   = "map of users - roles"
-  type          = map(list(string))
-}
-variable "member_roles" {
-  description   = "account role ids"
-  type          = map(string)
-}</code></pre>
-	<p>modules/account_members/main.tf</p>
-	<pre class="language-bash"><code class="language-bash">resource "cloudflare_account_member" "account_member" {
- for_each          = var.users
- email_address     = each.key
- role_ids          = [for role in each.value : lookup(var.member_roles, role)]
- lifecycle {
-   prevent_destroy = true
- }
-}</code></pre>
-	<p>We feed the template with a list of users (list of maps). Each member is assigned a number of roles. To make code more readable, we mapped users to role names instead of role ids:environments/config.tfvars</p>
-	<pre class="language-bash"><code class="language-bash">member_roles = {
-  admin       = "000013091sds0193jdskd01d1dsdjhsd1"
-  admin_ro    = "0000ds81hd131bdsjd813hh173hds8adh"
-  analytics   = "0000hdsa8137djahd81y37318hshdsjhd"
-  [...]
-  super_admin = "00001534sd1a2123781j5gj18gj511321"
-}
-users = {
-  "user1@workable.com"  = ["super_admin"]
-  "user2@workable.com"  = ["analytics", "audit_logs", "cache_purge", "cf_workers"]
-  "user3@workable.com"  = ["cf_stream"]
-  [...]
-  "robot1@workable.com" = ["cf_stream"]
-}</code></pre>
-	<p>Another interesting case we dealt with was the <i>rate_limit</i> resource; the variable declaration (list of objects) &amp; implementation goes as follows:modules/rate_limit/variables.tf</p>
-	<pre class="language-bash"><code class="language-bash">variable "rate_limits" {
-  description   = "list of rate limits"
-  default       = []
- 
-  type          = list(object(
-  {
-    disabled    = bool,
-    threshold   = number,
-    description = string,
-    period      = number,
-    
-    match       = object({
-      request   = object({
-        url_pattern     = map(string),
-        schemes         = list(string),
-        methods         = list(string)
-      }),
-      response          = object({
-        statuses        = list(number),
-        origin_traffic  = bool
-      })
-    }),
-    action      = object({
-      mode      = string,
-      timeout   = number
-    })
-  }))
-}</code></pre>
-	<p>modules/rate_limit/main.tf</p>
-	<pre class="language-bash"><code class="language-bash">locals {
- […]
-}
-data "cloudflare_zones" "zone" {
-  filter {
-    name    = var.zone_name
-    status  = "active"
-    paused  = false
-  }
-}
-resource "cloudflare_rate_limit" "rate_limit" {
-  count         = length(var.rate_limits)
-  zone_id       =  lookup(data.cloudflare_zones.zone.zones[0], "id")
-  disabled      = var.rate_limits[count.index].disabled
-  threshold     = var.rate_limits[count.index].threshold
-  description   = var.rate_limits[count.index].description
-  period        = var.rate_limits[count.index].period
-  
-  match {
-    request {
-      url_pattern     = local.url_patterns[count.index]
-      schemes         = var.rate_limits[count.index].match.request.schemes
-      methods         = var.rate_limits[count.index].match.request.methods
-    }
-    response {
-      statuses        = var.rate_limits[count.index].match.response.statuses
-      origin_traffic  = var.rate_limits[count.index].match.response.origin_traffic
-    }
-  }
-  action {
-    mode        = var.rate_limits[count.index].action.mode
-    timeout     = var.rate_limits[count.index].action.timeout
-  }
-}</code></pre>
-	<p>environments/qa/rate_limit.tfvars</p>
-	<pre class="language-bash"><code class="language-bash">common_rate_limits = [
-{
-    #1
-    disabled      = false
-    threshold     = 50
-    description   = "sample description"
-    period        = 60
-   
-   match  = {
-      request   = {
-        url_pattern  = {
-          "subdomain"   = "foo"
-          "path"        = "/api/v1/bar"
-        }
-        schemes         = [ "_ALL_", ]
-        methods         = [ "GET", "POST", ]
-      }
-      response  = {
-        statuses        = []
-        origin_traffic  = true
-      }
-    }
-    action  = {
-      mode      = "simulate"
-      timeout   = 3600
-    }
-  },
-  [...]
-  }
-]</code></pre>
-	<p>The biggest advantage of this approach is that all common <i>rate_limit</i> rules are in one place and each environment can include its own rules in their <i>.tfvars</i>. The combination of those using Terraform built-in <code>concat()</code> function, achieves a 2-layer join of the two lists (common|unique rules). So we wanted to give it a try:</p>
-	<pre class="language-bash"><code class="language-bash">locals {
-  rate_limits  = concat(var.common_rate_limits, var.unique_rate_limits)
-}</code></pre>
-	<p>There is however a drawback: <i>.tfvars</i> files can only contain static values. So, since all <i>url</i> attributes - that include the zone name itself - have to be set explicitly in the data of each environment, it means that every time a change is needed to a url, this value has to be copied across all environments and change the zone name to match the environment.</p>
-	<p>The solution we came up with, in order to make the zone name dynamic, was to split the <i>url</i> attribute into 3 parts: subdomain, domain and path. This is effective for the <i>.tfvars</i>, but the added complexity to handle the new variables is non negligible. The corresponding code illustrates the issue:modules/rate_limit/main.tf</p>
-	<pre class="language-bash"><code class="language-bash">locals {
-  rate_limits   = concat(var.common_rate_limits, var.unique_rate_limits)
-  url_patterns  = [for rate_limit in local.rate_limits:  "${lookup(rate_limit.match.request.url_pattern, "subdomain", null) != null ? "${lookup(rate_limit.match.request.url_pattern, "subdomain")}." : ""}"${lookup(rate_limit.match.request.url_pattern, "domain", null) != null ? "${lookup(rate_limit.match.request.url_pattern, "domain")}" : ${var.zone_name}}${lookup(rate_limit.match.request.url_pattern, "path", null) != null ? lookup(rate_limit.match.request.url_pattern, "path") : ""}"]
-}</code></pre>
-	<p><i>Readability vs functionality</i>: although flexibility is increased and code duplication is reduced, the url transformations have an impact on code's readability and ease of debugging (it took us several minutes to spot a typo). You can imagine this is even worse if you attempt to implement a more complex resource (such as <i>page_rule</i> which is a list of maps with four <i>url</i> attributes).</p>
-	<p>The underlying issue here is that at the point we were implementing our resources, we had to choose maps over objects due to their capability to omit attributes, using the lookup() function (by setting default values). This is a requirement for certain resources such as <i>page_rules</i>: only certain attributes need to be defined (and others ignored).</p>
-	<p>In the end, the context will determine if more complex resources can be implemented with dynamic resources.</p>
-	<div class="flex anchor relative">
-		<h5 id="4-sequential-resources">4. Sequential resources</h5>
-		<a href="https://blog.cloudflare.com/#4-sequential-resources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare page rule resource has a specific peculiarity that differentiates it from other types of resources: the <i>priority</i> attribute.When a page rule is applied, it gets a unique id and priority number which corresponds to the order it has been submitted. Although Cloudflare API and terraform provider give the ability to explicitly specify the priority, there is a catch.</p>
-	<p>Terraform doesn't respect the order of resources inside a <i>.tf</i> file (even in a _for each loop!); each resource is randomly picked up and then applied to the provider. So, if page_rule priority is important - as in our case - the submission order counts. The solution is to lock the sequence in which the resources are created through the <i>depends_on</i> meta-attribute:</p>
-	<pre class="language-bash"><code class="language-bash">resource "cloudflare_page_rule" "no_3" {
-  depends_on  = [cloudflare_page_rule.no_2]
-  zone_id     = lookup(data.cloudflare_zones.zone.zones[0], "id")
-  target      = "www.${var.zone_name}/foo"
-  status      = "active"
-  priority    = 3
-  actions {
-    forwarding_url {
-      status_code    = 301
-      url            = "https://www.${var.zone_name}"
-    }
-  }
-}
-resource "cloudflare_page_rule" "no_2" {
-  depends_on  = [cloudflare_page_rule.no_1]
-  zone_id     = lookup(data.cloudflare_zones.zone.zones[0], "id")
-  target      = "www.${var.zone_name}/lala*"
-  status      = "active"
-  priority    = 24
-  actions {
-    ssl                     = "flexible"
-    cache_level             = "simplified"
-    resolve_override        = "bar.${var.zone_name}"
-    host_header_override    = "new.domain.com"
-  }
-}
-resource "cloudflare_page_rule" "page_rule_1" {
-  zone_id   = lookup(data.cloudflare_zones.zone.zones[0], "id")
-  target    = "*.${var.zone_name}/foo/*"
-  status    = "active"
-  priority  = 1
-  actions {
-    forwarding_url {
-      status_code     = 301
-      url             = "https://foo.${var.zone_name}/$1/$2"
-    }
-  }
-}</code></pre>
-	<p>So we had to go with to a more static resource configuration because the <i>depends_on</i> attribute only takes static values (not dynamically calculated ones during the runtime).</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>After changing our minds several times along the way on Terraform structure and other technical details, we believe that there isn't a single best solution. It all comes down to the requirements and keeping a balance between complexity and simplicity. In our case, a mixed approach is good middle ground.</p>
-	<p>Terraform is evolving quickly, but at this point it lacks some common coding capabilities. So over engineering can be a catch (which we fell-in too many times). Keep it simple and as DRY as possible. :)</p>
+<p><em>This is a guest post by Dimitris Koutsourelis and Alexis Dimitriadis, working for the Security Team at <a href="https://www.workable.com" target="_blank" rel="noopener noreferrer">Workable</a>, a company that makes software to help companies find and hire great people.</em></p>
+<h2>Overview</h2>
+<p>This post is about our introductive journey to the infrastructure-as-code practice; managing Cloudflare configuration in a declarative and version-controlled way. We'd like to share the experience we've gained during this process; our pain points, limitations we faced, different approaches we took and provide parts of our solution and experimentations.</p>
+<h2>Terraform world</h2>
+<p><a href="https://www.terraform.io/intro/index.html" target="_blank" rel="noopener noreferrer">Terraform</a> is a great tool that fulfills our requirements, and fortunately, Cloudflare maintains its own <a href="https://www.terraform.io/docs/providers/cloudflare/index.html" target="_blank" rel="noopener noreferrer">provider</a> that allows us to manage its service configuration hasslefree.</p>
+<p>On top of that, <a href="https://github.com/gruntwork-io/terragrunt" target="_blank" rel="noopener noreferrer">Terragrunt</a>, is a thin wrapper that provides extra commands and functionality for keeping Terraform configurations DRY, and managing remote state.</p>
+<p>The combination of both leads to a more modular and re-usable structure for Cloudflare <a href="https://www.terraform.io/docs/configuration/resources.html" target="_blank" rel="noopener noreferrer">resources</a> (configuration), by utilizing <a href="https://www.terraform.io/docs/configuration/modules.html" target="_blank" rel="noopener noreferrer">terraform</a> and <a href="https://github.com/gruntwork-io/terragrunt-infrastructure-modules-example" target="_blank" rel="noopener noreferrer">terragrunt</a> modules.</p>
+<p>We've chosen to use the latest version of both tools (<a href="https://www.hashicorp.com/blog/terraform-0-1-2-preview" target="_blank" rel="noopener noreferrer">Terraform-v0.12</a> &amp; <a href="https://github.com/gruntwork-io/terragrunt/releases/tag/v0.19.0" target="_blank" rel="noopener noreferrer">Terragrunt-v0.19</a> respectively) and constantly upgrade to take advantage of the valuable new features and functionality, which at this point in time, remove important limitations.</p>
+<h2>Workable context</h2>
+<p>Our set up includes multiple domains that are grouped in two distinct Cloudflare organisations: production &amp; staging. Our environments have their own purposes and technical requirements (i.e.: QA, development, sandbox and production) which translates to slightly different sets of Cloudflare zone configuration.</p>
+<h2>Our approach</h2>
+<p>Our main goal was to have a modular set up with the ability to manage any configuration for any zone, while keeping code repetition to a minimum. This is more complex than it sounds; we have repeatedly changed our Terraform folder structure - and other technical aspects - during the development period. The following sections illustrate a set of alternatives through our path, along with pros &amp; cons.</p>
+<h3>Structure</h3>
+<p>Terraform configuration is based on the project's directory structure, so this is the place to start.</p>
+<p>Instead of retaining the Cloudflare organisation structure (production &amp; staging as root level directories containing the zones that belong in each organization), our decision was to group zones that share common configuration under the same directory. This helps keep the code dry and the set up consistent and readable.</p>
+<p>On the down side, this structure adds an extra layer of complexity, as two different sets of credentials need to be handled conditionally and two state files (at the <em>environments/</em> root level) must be managed and isolated using <a href="https://www.terraform.io/docs/state/workspaces.html" target="_blank" rel="noopener noreferrer">workspaces</a>.</p>
+<p>On top of that, we used Terraform modules, to keep sets of common configuration across zone groups into a single place.Terraform modules repository</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">modules/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> firewall/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> main.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> variables.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> zone_settings/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> main.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> variables.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    └──</span><span class="sk-24292e-fff"> [...]  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">└──</span></span></code></pre>
 </div>
+<p>Terragrunt modules repository</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">environments/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-24292e-fff"> [...]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> dev/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> qa/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> demo/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> zone-8/</span><span class="sk-24292e-fff"> (production)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">            └──</span><span class="sk-032f62-99ffe4"> terragrunt.hcl</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> zone-9/</span><span class="sk-24292e-fff"> (staging)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">            └──</span><span class="sk-032f62-99ffe4"> terragrunt.hcl</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> config.tfvars</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        ├──</span><span class="sk-032f62-99ffe4"> main.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">        └──</span><span class="sk-032f62-99ffe4"> variables.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> config.tfvars</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> secrets.tfvars</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> main.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    ├──</span><span class="sk-032f62-99ffe4"> variables.tf</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4">    └──</span><span class="sk-032f62-99ffe4"> terragrunt.hcl</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">└──</span></span></code></pre>
+</div>
+<p>The Terragrunt modules tree gives flexibility, since we are able to apply configuration on a zone, group zone, or organisation level (which is inline with Cloudflare configuration capabilities - i.e.: custom error pages can also be configured on the organisation level).</p>
+<h3>Resource types</h3>
+<p>We decided to implement Terraform resources in different ways, to cover our requirements more efficiently.</p>
+<h5>1. Static resource</h5>
+<p>The first thought that came to mind was having one, or multiple <em>.tf</em> files implementing all the resources with hardcoded values assigned to each attribute. It's simple and straightforward, but can have a high maintenance cost if it leads to code copy/paste between environments.</p>
+<p>So, common settings seem to be a good use case; we chose to implement <em>access_rules</em> Terraform resources accordingly:modules/access_rules/main.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_access_rule"</span><span class="sk-032f62-99ffe4"> "no_17"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  notes</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "this is a description"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  mode</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "blacklist"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  configuration</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    target</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> "ip"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    value</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "x.x.x.x"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+</div>
+<h5>2. Parametrized resources</h5>
+<p>Our next step was to add variables to gain flexibility. This is useful when few attributes of a shared resource configuration differ between multiple zones. Most of the configuration remains the same (as described above) and the variable instantiation is added in the Terraform module, while their values are fed through the Terragrunt module, as input variables, or entries inside_.tfvars_ files. The <em>zone_settings_override</em> resource was implemented accordingly:</p>
+<p>modules/zone_settings/main.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_zone_settings_override"</span><span class="sk-032f62-99ffe4"> "zone_settings"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.zone_id</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  settings</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    always_online</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "on"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    always_use_https</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "on"</span></span>
+<span class="line"><span class="sk-24292e-fff">    [...]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    browser_check</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> var.browser_check</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    mobile_redirect</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      mobile_subdomain</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> var.mobile_redirect_subdomain</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      status</span><span class="sk-032f62-99ffe4">            =</span><span class="sk-032f62-99ffe4"> var.mobile_redirect_status</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      strip_uri</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> var.mobile_redirect_uri</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-24292e-fff">    [...]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    waf</span><span class="sk-032f62-99ffe4">                 =</span><span class="sk-032f62-99ffe4"> "on"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    webp</span><span class="sk-032f62-99ffe4">                =</span><span class="sk-032f62-99ffe4"> "off"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    websockets</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> "on"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>environments/qa/main.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">module</span><span class="sk-032f62-99ffe4"> "zone_settings"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  source</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> "git@github.com:foo/modules/zone_settings"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_name</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.zone_name</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  browser_check</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> var.zone_settings_browser_check</span></span>
+<span class="line"><span class="sk-24292e-fff">  [...]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>environments/qa/config.tfvars</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">#zone settings</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">zone_settings_browser_check</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "off"</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h5>3. Dynamic resource</h5>
+<p>At that point, we thought that a more interesting approach would be to create generic resource templates to manage all instances of a given resource in one place. A template is implemented as a Terraform module and creates each resource dynamically, based on its input: data fed through the Terragrunt modules (/environments in our case), or entries in the tfvars files.</p>
+<p>We chose to implement the <em>account_member</em> resource this way.modules/account_members/variables.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">variable</span><span class="sk-032f62-99ffe4"> "users"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  description</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "map of users - roles"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> map</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">list(string</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">variable</span><span class="sk-032f62-99ffe4"> "member_roles"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  description</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "account role ids"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> map</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>modules/account_members/main.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_account_member"</span><span class="sk-032f62-99ffe4"> "account_member"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> for_each</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> var.users</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> email_address</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> each.key</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> role_ids</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-24292e-fff"> [for </span><span class="sk-032f62-99ffe4">role</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> each.value</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">var.member_roles,</span><span class="sk-032f62-99ffe4"> role</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> lifecycle</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   prevent_destroy</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We feed the template with a list of users (list of maps). Each member is assigned a number of roles. To make code more readable, we mapped users to role names instead of role ids:environments/config.tfvars</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">member_roles</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  admin</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> "000013091sds0193jdskd01d1dsdjhsd1"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  admin_ro</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "0000ds81hd131bdsjd813hh173hds8adh"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  analytics</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "0000hdsa8137djahd81y37318hshdsjhd"</span></span>
+<span class="line"><span class="sk-24292e-fff">  [...]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  super_admin</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "00001534sd1a2123781j5gj18gj511321"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">users</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "user1@workable.com"</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"super_admin"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "user2@workable.com"</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"analytics"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"audit_logs",</span><span class="sk-032f62-99ffe4"> "cache_purge",</span><span class="sk-032f62-99ffe4"> "cf_workers"]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "user3@workable.com"</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"cf_stream"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">  [...]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "robot1@workable.com"</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"cf_stream"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Another interesting case we dealt with was the <em>rate_limit</em> resource; the variable declaration (list of objects) &amp; implementation goes as follows:modules/rate_limit/variables.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">variable</span><span class="sk-032f62-99ffe4"> "rate_limits"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  description</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "list of rate limits"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  default</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  type</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> list</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">object(</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    disabled</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> bool,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    threshold</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> number,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    description</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> string,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    period</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> number,</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    match</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4"> object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      request</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        url_pattern</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> map</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        schemes</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> list</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        methods</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> list</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">string</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">      })</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      response</span><span class="sk-032f62-99ffe4">          =</span><span class="sk-032f62-99ffe4"> object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        statuses</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> list</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">number</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        origin_traffic</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> bool</span></span>
+<span class="line"><span class="sk-24292e-fff">      })</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    action</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> object</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      mode</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> string,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      timeout</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> number</span></span>
+<span class="line"><span class="sk-24292e-fff">    })</span></span>
+<span class="line"><span class="sk-24292e-fff">  }))</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>modules/rate_limit/main.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">locals</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-24292e-fff"> […]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data</span><span class="sk-032f62-99ffe4"> "cloudflare_zones"</span><span class="sk-032f62-99ffe4"> "zone"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  filter</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    name</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> var.zone_name</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    status</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> "active"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    paused</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_rate_limit"</span><span class="sk-032f62-99ffe4"> "rate_limit"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  count</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> length</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">var.rate_limits</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4">       =</span><span class="sk-032f62-99ffe4">  lookup</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data.cloudflare_zones.zone.zones[0],</span><span class="sk-032f62-99ffe4"> "id"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  disabled</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].disabled</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  threshold</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].threshold</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  description</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].description</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  period</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].period</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  match</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    request</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      url_pattern</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> local.url_patterns[count.index]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      schemes</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].match.request.schemes</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      methods</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].match.request.methods</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    response</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      statuses</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].match.response.statuses</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      origin_traffic</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].match.response.origin_traffic</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  action</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    mode</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].action.mode</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    timeout</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> var.rate_limits[count.index].action.timeout</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>environments/qa/rate_limit.tfvars</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">common_rate_limits</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    #1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    disabled</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-005cc5-99ffe4"> false</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    threshold</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-005cc5-ffc799"> 50</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    description</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "sample description"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    period</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-005cc5-ffc799"> 60</span></span>
+<span class="line"><span class="sk-24292e-fff">   </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   match</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      request</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        url_pattern</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "subdomain"</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> "foo"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          "path"</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> "/api/v1/bar"</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        schemes</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-24292e-fff"> [ </span><span class="sk-032f62-99ffe4">"_ALL_",</span><span class="sk-032f62-99ffe4"> ]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        methods</span><span class="sk-032f62-99ffe4">         =</span><span class="sk-24292e-fff"> [ </span><span class="sk-032f62-99ffe4">"GET",</span><span class="sk-032f62-99ffe4"> "POST",</span><span class="sk-032f62-99ffe4"> ]</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      response</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        statuses</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        origin_traffic</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    action</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      mode</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> "simulate"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      timeout</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-005cc5-ffc799"> 3600</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">  [...]</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span></code></pre>
+</div>
+<p>The biggest advantage of this approach is that all common <em>rate_limit</em> rules are in one place and each environment can include its own rules in their <em>.tfvars</em>. The combination of those using Terraform built-in <code>concat()</code> function, achieves a 2-layer join of the two lists (common|unique rules). So we wanted to give it a try:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">locals</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  rate_limits</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-032f62-99ffe4"> concat</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">var.common_rate_limits,</span><span class="sk-032f62-99ffe4"> var.unique_rate_limits</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>There is however a drawback: <em>.tfvars</em> files can only contain static values. So, since all <em>url</em> attributes - that include the zone name itself - have to be set explicitly in the data of each environment, it means that every time a change is needed to a url, this value has to be copied across all environments and change the zone name to match the environment.</p>
+<p>The solution we came up with, in order to make the zone name dynamic, was to split the <em>url</em> attribute into 3 parts: subdomain, domain and path. This is effective for the <em>.tfvars</em>, but the added complexity to handle the new variables is non negligible. The corresponding code illustrates the issue:modules/rate_limit/main.tf</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">locals</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  rate_limits</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> concat</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">var.common_rate_limits,</span><span class="sk-032f62-99ffe4"> var.unique_rate_limits</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  url_patterns</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [for </span><span class="sk-032f62-99ffe4">rate_limit</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> local.rate_limits:</span><span class="sk-032f62-99ffe4">  "${</span><span class="sk-24292e-fff">lookup</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">rate_limit</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">match</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">request</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url_pattern</span><span class="sk-032f62-99ffe4">, "subdomain", </span><span class="sk-24292e-fff">null</span><span class="sk-032f62-99ffe4">) </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-032f62-99ffe4">= </span><span class="sk-24292e-fff">null</span><span class="sk-032f62-99ffe4"> ? "${</span><span class="sk-24292e-fff">lookup</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">rate_limit</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">match</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">request</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url_pattern</span><span class="sk-032f62-99ffe4">, "subdomain")}." </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> ""}"</span><span class="sk-24292e-fff">${lookup(rate_limit.match.request.url_pattern, </span><span class="sk-032f62-99ffe4">"domain"</span><span class="sk-24292e-fff">, null) </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">= null ? </span><span class="sk-032f62-99ffe4">"${</span><span class="sk-24292e-fff">lookup</span><span class="sk-032f62-99ffe4">(</span><span class="sk-24292e-fff">rate_limit</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">match</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">request</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">url_pattern</span><span class="sk-032f62-99ffe4">, "domain")}"</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-24292e-fff"> ${var.zone_name}}${lookup(rate_limit.match.request.url_pattern, </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">, null) </span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">= null ? lookup(rate_limit.match.request.url_pattern, </span><span class="sk-032f62-99ffe4">"path"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">}</span><span class="sk-032f62-99ffe4">"]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+</div>
+<p><em>Readability vs functionality</em>: although flexibility is increased and code duplication is reduced, the url transformations have an impact on code's readability and ease of debugging (it took us several minutes to spot a typo). You can imagine this is even worse if you attempt to implement a more complex resource (such as <em>page_rule</em> which is a list of maps with four <em>url</em> attributes).</p>
+<p>The underlying issue here is that at the point we were implementing our resources, we had to choose maps over objects due to their capability to omit attributes, using the lookup() function (by setting default values). This is a requirement for certain resources such as <em>page_rules</em>: only certain attributes need to be defined (and others ignored).</p>
+<p>In the end, the context will determine if more complex resources can be implemented with dynamic resources.</p>
+<h5>4. Sequential resources</h5>
+<p>Cloudflare page rule resource has a specific peculiarity that differentiates it from other types of resources: the <em>priority</em> attribute.When a page rule is applied, it gets a unique id and priority number which corresponds to the order it has been submitted. Although Cloudflare API and terraform provider give the ability to explicitly specify the priority, there is a catch.</p>
+<p>Terraform doesn't respect the order of resources inside a <em>.tf</em> file (even in a _for each loop!); each resource is randomly picked up and then applied to the provider. So, if page_rule priority is important - as in our case - the submission order counts. The solution is to lock the sequence in which the resources are created through the <em>depends_on</em> meta-attribute:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_page_rule"</span><span class="sk-032f62-99ffe4"> "no_3"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  depends_on</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [cloudflare_page_rule.no_2]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data.cloudflare_zones.zone.zones[0],</span><span class="sk-032f62-99ffe4"> "id"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  target</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> "www.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone_name</span><span class="sk-032f62-99ffe4">}/foo"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  status</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> "active"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  priority</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  actions</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    forwarding_url</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      status_code</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 301</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      url</span><span class="sk-032f62-99ffe4">            =</span><span class="sk-032f62-99ffe4"> "https://www.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone_name</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_page_rule"</span><span class="sk-032f62-99ffe4"> "no_2"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  depends_on</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-24292e-fff"> [cloudflare_page_rule.no_1]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data.cloudflare_zones.zone.zones[0],</span><span class="sk-032f62-99ffe4"> "id"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  target</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> "www.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone_name</span><span class="sk-032f62-99ffe4">}/lala*"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  status</span><span class="sk-032f62-99ffe4">      =</span><span class="sk-032f62-99ffe4"> "active"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  priority</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 24</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  actions</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    ssl</span><span class="sk-032f62-99ffe4">                     =</span><span class="sk-032f62-99ffe4"> "flexible"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    cache_level</span><span class="sk-032f62-99ffe4">             =</span><span class="sk-032f62-99ffe4"> "simplified"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    resolve_override</span><span class="sk-032f62-99ffe4">        =</span><span class="sk-032f62-99ffe4"> "bar.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone_name</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    host_header_override</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "new.domain.com"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">resource</span><span class="sk-032f62-99ffe4"> "cloudflare_page_rule"</span><span class="sk-032f62-99ffe4"> "page_rule_1"</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  zone_id</span><span class="sk-032f62-99ffe4">   =</span><span class="sk-032f62-99ffe4"> lookup</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">data.cloudflare_zones.zone.zones[0],</span><span class="sk-032f62-99ffe4"> "id"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  target</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "*.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone_name</span><span class="sk-032f62-99ffe4">}/foo/*"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  status</span><span class="sk-032f62-99ffe4">    =</span><span class="sk-032f62-99ffe4"> "active"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  priority</span><span class="sk-032f62-99ffe4">  =</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  actions</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    forwarding_url</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      status_code</span><span class="sk-032f62-99ffe4">     =</span><span class="sk-005cc5-ffc799"> 301</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      url</span><span class="sk-032f62-99ffe4">             =</span><span class="sk-032f62-99ffe4"> "https://foo.${</span><span class="sk-24292e-fff">var</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">zone_name</span><span class="sk-032f62-99ffe4">}/</span><span class="sk-005cc5-fff">$1</span><span class="sk-032f62-99ffe4">/</span><span class="sk-005cc5-fff">$2</span><span class="sk-032f62-99ffe4">"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>So we had to go with to a more static resource configuration because the <em>depends_on</em> attribute only takes static values (not dynamically calculated ones during the runtime).</p>
+<h2>Conclusion</h2>
+<p>After changing our minds several times along the way on Terraform structure and other technical details, we believe that there isn't a single best solution. It all comes down to the requirements and keeping a balance between complexity and simplicity. In our case, a mixed approach is good middle ground.</p>
+<p>Terraform is evolving quickly, but at this point it lacks some common coding capabilities. So over engineering can be a catch (which we fell-in too many times). Keep it simple and as DRY as possible. :)</p>

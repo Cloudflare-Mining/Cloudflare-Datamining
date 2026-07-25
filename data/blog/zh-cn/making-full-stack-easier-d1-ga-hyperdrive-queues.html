@@ -1,0 +1,302 @@
+<h3>让全栈开发更简单</h3>
+<p>虽然今天是愚人节，而且我们也和其他人一样喜欢玩乐，但我们希望在今天发布一些严肃的公告。事实上，截至今天，已有超过 200 万开发者在 Cloudflare 平台上进行开发——这绝对不是开玩笑！</p>
+<p>作为本届 Developer Week 的序幕，我们宣布三个产品进入“生产就绪”状态： <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">D1 ——我们的无服务器 SQL 数据库</a>；<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">Hyperdrive</a>——使您的_现有_数据库运行犹如分布式（而且更快！）；以及 <a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a>——我们的时间序列数据库。</p>
+<p>一段时间以来，我们一直致力于让开发人员将他们的整个技术栈迁移到 Cloudflare 上，但在 Cloudflare 上构建的应用程序会是什么样子呢?</p>
+<p>这个图表本身看起来应该与您已经熟悉的工具没有太大差异：您需要一个<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">数据库</a>用于存储核心用户数据。<a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer">对象存储</a>用于存储资产和用户内容。也许一个<a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">队列</a>用于处理后台任务，例如电子邮件或上传处理。一个<a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">快速键值存储</a>用于运行时配置。也许甚至一个<a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">时间序列数据库</a>聚合用户事件和/或性能数据。我们甚至还没有涉及到 <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">AI（人工智能）</a>——它正日益成为许多应用程序在搜索、推荐和/或图像分析任务（最低限度！）中的一个核心部分。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="365" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=640&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=715&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=750&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=828&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=1080&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=1280&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=1430&amp;h=730&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2364 Embedded Image - aTgEZg" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479EMR1AFCVACFCMNEZBTB.png&amp;w=1920&amp;h=980&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="980" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="365" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>而且，无需多想，这种架构需要运行在全球范围内，意味着它是可扩展、可靠和快速的，全部开箱即用。</p>
+<h3>D1 <strong><strong>正式版：生产就绪</strong></strong></h3>
+<p>核心数据库是基础设施中最关键的组成部分之一。它需要高度可靠，不能丢失数据，需要能够扩展。因此，在过去的一年里，我们一直全力以赴使 D1 达到生产就绪状态。现在，我们隆重宣布 D1 —— <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">我们的全球、无服务器 &nbsp;SQL 数据库</a> —— 现在已经正式发布。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="283" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=640&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=750&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=828&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1080&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1280&amp;h=507&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1430&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2296 Embedded Image - awnaGg" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45EJA1JGK06GE1ACZ10FHD.png&amp;w=1800&amp;h=713&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="713" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="283" class="pt-portable-image-media"></div>
+</figure>
+<p>D1 的正式发布带来了一些备受期待的功能，包括：</p>
+<ul>
+	<li>支持 10 GB 数据库——以及每个账户 5 万个数据库；</li>
+	<li>全新数据导出功能；以及</li>
+	<li>增强查询调试功能（我们称之为“D1 Insights”）——以便您了解哪些查询消耗了最多的时间、成本，或者哪些查询效率低下……</li>
+</ul>
+<p>……旨在赋能开发人员以利用 D1 构建满足其所有关系型 SQL 需求的生产就绪应用程序。而且重要的是，在“免费计划”或“爱好型计划”显然面临风险的情况下，我们无意取消 D1 的免费级，也不打算降低 5 美元/月 Workers Paid 计划包含的 _250 亿行读取_配额：</p>
+<p>计划</p>
+<div id="html-block-k1q" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Plan</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Rows Read</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Rows Written</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Storage</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Workers</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"> </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Paid</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">First 25 billion / month included</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">+ $0.001 / million rows</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">First 50 million / month included</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">+ $1.00 / million rows</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">First 5 GB included</span></p><br>
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">+ $0.75 / GB-mo</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Workers Free</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">5 million / day</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">100,000 / day</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><span class="Apple-tab-span" style="white-space:pre"> </span></span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">5 GB (total)</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>读取行数</p>
+<p>写入行数</p>
+<p>存储</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> {</span><span class="sk-005cc5-fff">pathname</span><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> resp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> session </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">withSession</span><span class="sk-24292e-fff">(token); </span><span class="sk-6a737d-8b8b8b94">// An optional commit token or mode</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Handle requests within the session.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/api/orders/list"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // This statement is a read query, so it will work against any</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // replica that has a commit equal or later than `token`.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">results</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"SELECT * FROM Orders"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">      resp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(results);</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (pathname </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-032f62-99ffe4"> "/api/orders/add"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">      order </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> request.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // This statement is a write query, so D1 will send the query to</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // the primary, which always has the latest commit token.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"INSERT INTO Orders VALUES (?, ?, ?)"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        .</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(order.orderName, order.customer, order.value);</span></span>
+<span class="line"><span class="sk-24292e-fff">        .</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // In order for the application to be correct, this SELECT</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // statement must see the results of the INSERT statement above.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      //</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // D1's new Session API keeps track of commit tokens for queries</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // within the session and will ensure that we won't execute this</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // query until whatever replica we're using has seen the results</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // of the INSERT.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">results</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> session.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"SELECT COUNT(*) FROM Orders"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">        .</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">      resp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(results);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Set the token so we can continue the session in another request.</span></span>
+<span class="line"><span class="sk-24292e-fff">    resp.headers.</span><span class="sk-6f42c1-ffc799">set</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x-d1-token"</span><span class="sk-24292e-fff">, session.latestCommitToken);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> resp;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Workers Paid</p>
+<p>包含 250 亿行/月</p>
+<p>+ 0.001 美元/百万行</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="257" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=715&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=640&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=715&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=750&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=828&amp;h=298&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=1080&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=1280&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=1430&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2364 Embedded Image - JgQNPX" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46GHX0J9GWSTXQJJ84R6B3.png&amp;w=1800&amp;h=647&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="647" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="257" class="pt-portable-image-media"></div>
+</figure>
+<p>包含 5000 万行/月</p>
+<p>+ 1.00 美元/百万行</p>
+<p>包含 5 GB</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Use the popular 'pg' driver? Easy. Hyperdrive just exposes a connection string</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// to your Worker.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Client</span><span class="sk-24292e-fff">({ connectionString: env.</span><span class="sk-005cc5-fff">HYPERDRIVE</span><span class="sk-24292e-fff">.connectionString });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Prefer using an ORM like Drizzle? Use it with Hyperdrive too.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// https://orm.drizzle.team/docs/get-started-postgresql#node-postgres</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Client</span><span class="sk-24292e-fff">({ connectionString: env.</span><span class="sk-005cc5-fff">HYPERDRIVE</span><span class="sk-24292e-fff">.connectionString });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> db</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> drizzle</span><span class="sk-24292e-fff">(client);</span></span></code></pre>
+</div>
+<p>+0.75 美元/GB/月</p>
+<p>Workers Free</p>
+<p>500 万/日</p>
+<div id="html-block-k2i" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Plan</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Price per query</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Connection Pooling</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Workers</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"> </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Paid</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">$0&nbsp;</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">$0</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>100,000 /日</p>
+<p>5 GB（总计）</p>
+<p><em>如果您从一开始就关注 D1：这与我们在 <a href="https://blog.cloudflare.com/d1-open-beta-is-here">公开测试版</a>时宣布的价格一致</em></p>
+<p>但正式发布并不意味着我们的工作停顿下来：我们计划为 D1 推出一些重大全新功能，包括全球读复制，甚至更大的数据库，更多 <a href="https://developers.cloudflare.com/d1/reference/time-travel" target="_blank" rel="noopener noreferrer">Time Travel</a> 功能，以便您对数据库进行分支；以及用于动态查询和/或从 Worker 中动态创建新数据库的全新 API。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Pull and acknowledge messages from a Queue using any HTTP client</span></span>
+<span class="line"><span class="sk-24292e-fff">$  curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/pull"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> POST</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">data </span><span class="sk-032f62-99ffe4">'{"visibilityTimeout":10000,"batchSize":100}}'</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${QUEUES_TOKEN}"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Content-Type:application/json"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Ack the messages you processed successfully; mark others to be retried.</span></span>
+<span class="line"><span class="sk-24292e-fff">$ curl </span><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/queues/${QUEUE_ID}/messages/ack"</span><span class="sk-d73a49-a0a0a0"> -</span><span class="sk-005cc5-fff">X</span><span class="sk-005cc5-fff"> POST</span><span class="sk-d73a49-a0a0a0"> --</span><span class="sk-24292e-fff">data </span><span class="sk-032f62-99ffe4">'{"acks":["lease-id-1", "lease-id-2"],"retries":["lease-id-100"]}'</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer ${QUEUES_TOKEN}"</span><span class="sk-24292e-fff"> \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Content-Type:application/json"</span></span></code></pre>
+</div>
+<p>D1 的读复制会根据需要自动部署读副本，使数据更靠近您的用户：而且无需您启动或管理扩展，也不会遇到一致性（复制滞后）问题。让我们提前一窥 D1 即将推出的 Replication API 是什么模样：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="238" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=715&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=640&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=715&amp;h=238&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=750&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=828&amp;h=276&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=1080&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=1280&amp;h=426&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=1430&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2364 Embedded Image - wugVmp" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45B7NBF5P56KNNM3F230EK.png&amp;w=1800&amp;h=600&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="600" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="238" class="pt-portable-image-media"></div>
+</figure>
+<p>重要的是，我们将使开发人员能够维持基于会话的一致性，以便用户既能看到自己的更改得到反映，同时仍然能够享受复制带来的性能和延迟优势。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Apply a delay to a message when sending it</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">YOUR_QUEUE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">send</span><span class="sk-24292e-fff">(msg, { delaySeconds: </span><span class="sk-005cc5-ffc799">3600</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Delay a message (or a batch of messages) when marking it for retry</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> msg</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-24292e-fff"> batch.messages) {</span></span>
+<span class="line"><span class="sk-24292e-fff">	msg.</span><span class="sk-6f42c1-ffc799">retry</span><span class="sk-24292e-fff">({delaySeconds: </span><span class="sk-005cc5-ffc799">300</span><span class="sk-24292e-fff">})</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span></span></code></pre>
+</div>
+<p>如需进一步了解 D1 读复制的底层工作原理，欢迎阅读<a href="https://blog.cloudflare.com/building-d1-a-global-database">我们的深入探讨文章</a>。如果您希望立即开始使用 D1 进行构建，请<a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer">浏览我们的开发人员文档</a>以创建您的第一个数据库。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="161" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=715&amp;h=161&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=640&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=715&amp;h=161&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=750&amp;h=169&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=828&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=1080&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=1280&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=1430&amp;h=322&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2364 Embedded Image - QLnQH8" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44J0FZR4G6X03ET7QNEKRJ.png&amp;w=1800&amp;h=405&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="405" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="161" class="pt-portable-image-media"></div>
+</figure>
+<h3>Hyperdrive: <strong><strong>正式发布</strong></strong></h3>
+<p>我们在<a href="https://blog.cloudflare.com/hyperdrive-making-regional-databases-feel-distributed">去年 9 月的生日周</a>期间推出 Hyperdrive 的公测版，现已正式发布，换句话说，这个产品经过实战测试并已生产就绪。</p>
+<p>如果您还不了解 Hyperdrive 是什么，它旨在使您已有的中心化数据库给人分布式的感觉。我们使用我们的<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">全球网络</a>来获得到您的数据库的更快路径，保持连接池处于最佳状态，并在尽可能接近用户的地方缓存您最频繁执行的查询。</p>
+<p>重要的是，Hyperdrive 开箱就支持最流行的驱动程序和 ORM（对象关系映射）库，因而您无需重新学习或重写您的查询：</p>
+<p>但是有关 Hyperdrive 的工作不会因为正式发布而停下来。接下来的几个月内，我们将为_另一个_部署最广泛的数据库引擎提供支持：MySQL。我们还将支持通过 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer">Cloudflare Tunnel</a> 和 <a href="https://developers.cloudflare.com/magic-wan" target="_blank" rel="noopener noreferrer">Magic WAN</a> 连接到专用网络（包括云 VPC 网络）内的数据库。除此之外，我们计划推出围绕失效和缓存策略的配置选项，以便您能就性能与数据新鲜度做出更细致的决策。</p>
+<p>当我们考虑如何为 Hyperdrive 定价时，我们意识到对其收费似乎并不合适。毕竟，Hyperdrive 不仅带来显著的的性能提升，而且对于连接传统数据库引擎至关重要。如果没有 Hyperdrive，每个连接和查询数据库的请求都需要支付 6 次以上往返的延迟开销，这样做显然是不合理的。</p>
+<p>因此，我们很高兴地宣布：<strong>对于任何订阅 &nbsp;Workers Paid 计划的开发人员，Hyperdrive 均免费使用</strong>。 这包括查询缓存和连接池，以及创建多个 Hyperdrive 的能力——以区分不同的应用程序、生产环境与测试环境，或提供不同的配置（例如，缓存与不缓存）。</p>
+<div id="html-block-k46" class="html-block">
+	<table style="border:none;border-collapse:collapse">
+		<colgroup>
+			<col>
+			<col>
+			<col>
+		</colgroup>
+		<tbody>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Plan</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Data points written</span></p>
+				</td>
+				<td style="vertical-align:top;background-color:#ff6600;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#ffffff;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Read queries</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Workers</span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"> </span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Paid</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">10 million included per month</span></p>
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">+$0.25 per additional million</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">1 million included per month</span></p>
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap"><br></span><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">+$1.00 per additional million</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Workers Free</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">100,000 included per day</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">10,000 included per day</span></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>计划</p>
+<p>每次查询的价格</p>
+<p>连接池</p>
+<p>Workers Paid</p>
+<p>$0&nbsp;</p>
+<p>$0</p>
+<p>要开始使用 Hyperdrive，请<a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer">查看文档</a>以了解如何连接您的现有数据库并开始从您的 Workers 进行查询。</p>
+<h3>Queues：从任何地方拉取</h3>
+<p>对于构建现代全栈应用而言，任务队列是越来越关键的一个部分。这正是我们<a href="https://blog.cloudflare.com/cloudflare-queues-open-beta">最初宣布</a>推出 <a href="https://developers.cloudflare.com/queues" target="_blank" rel="noopener noreferrer">Queues</a> 公测时所考虑的因素。自那以后，我们一直在开发几个重要的 Queues 特性，并在本周推出其中的两个：基于拉取的消费者和新的消息传递控制。</p>
+<p>任何支持HTTP的客户端<a href="https://developers.cloudflare.com/queues/reference/pull-consumers" target="_blank" rel="noopener noreferrer">现在都可以从一个队列中拉取消息</a>：调用一个队列的新 /pull 端点以请求一批消息，并在成功处理每条消息（或每批消息）后调用 /ack 端点以进行确认：</p>
+<p>基于拉取的消费者可以在任何地方运行，允许您与现有的传统云基础设施一同运行队列消费者。Cloudflare的内部团队很早就采用了这种方式，其中一个用例专注于从我们的 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">310+数据中心</a>写入设备遥测数据到队列，并在一些在Kubernetes上运行的后台基础设施中进行消费。重要的是，我们全球分布的队列基础设施意味着消息保留在队列中，直到消费者准备好处理它们。</p>
+<p>Queues <a href="https://developers.cloudflare.com/queues/reference/batching-retries/#delay-messages" target="_blank" rel="noopener noreferrer">现在也支持推迟消息</a>， 包括在发送到队列时和在标记消息以便重试时。这个功能适用于为将来对任务进行排队，以及如果上游 API 或基础设施有速率限制，需要您控制处理消息的速度，用于应用退避机制。</p>
+<p>在未来几个月中，我们还将大幅提高每个队列的吞吐量，以便将 Queues 到正式发布。对我们来说，Queues 的 _高度_可靠性非常重要：丢失或掉落的消息意味着用户收不到订单确认邮件，密码重置通知，和/或他们的上传未被处理的反馈——每一种情况都会对用户产生影响且难以恢复。</p>
+<h3>Workers Analytics Engine <strong><strong>正式发布</strong></strong></h3>
+<p><a href="https://developers.cloudflare.com/analytics/analytics-engine" target="_blank" rel="noopener noreferrer">Workers Analytics Engine</a> 通过内置 API 从 Workers 写入数据点，并通过 SQL API 查询那些数据，提供了大规模的无限基数分析。</p>
+<p>Workers Analytics Engine 背后是 Cloudflare 已经依赖多年、基于 ClickHouse 的系统。我们用它来观察自己服务的健康状况，捕获产品使用数据进行计费，以及回答有关特定客户使用模式的问题。几乎每一个对 Cloudflare 网络的请求都会向这个系统写入至少一个数据点。Workers Analytics Engine 让您可以使用同样的基础设施构建自己的自定义分析，同时我们为您管理那些困难的部分。</p>
+<p>自从<a href="https://blog.cloudflare.com/workers-analytics-engine">推出测试版</a>以来， 从大型企业到诸如 <a href="https://github.com/benvinegar/counterscale" target="_blank" rel="noopener noreferrer">Counterscale</a> 的开源项目，开发人员都开始依赖 Workers Analytics Engine 来处理这些相同的用例以及其他。Workers Analytics Engine 已经以生产规模运行了数年，处理任务关键性工作负载 —— 但直到今天，我们还没有分享过任何关于定价的信息。</p>
+<p>我们使 Workers Analytics Engine 的定价保持简单，基于两个指标：</p>
+<ol>
+	<li><strong><strong>写入数据点</strong></strong> —— 每次在一个 Worker 中调用 <a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#3-write-data-from-your-worker" target="_blank" rel="noopener noreferrer">writeDataPoint()</a>，都会算作写入一个数据点。每个数据点的成本相同 —— 与其他平台不同，我们不会因为增加维度或基数而额外收费，也不需要预测压缩数据点的大小和成本可能是—多少。</li>
+	<li><strong><strong>读取查询</strong></strong> —— 每次向 Workers Analytics Engine <a href="https://developers.cloudflare.com/analytics/analytics-engine/sql-api" target="_blank" rel="noopener noreferrer">SQL API</a> 发出 POST 请求，就算作一次读查询。每次查询的成本相同 —— 与其他平台不同，我们不会因为查询复杂性而额外收费，也不需要考虑每次查询将读取的数据行数。</li>
+</ol>
+<p>Workers Free 和 Workers Paid 都将包括一定数量的数据点写入和读取查询，额外使用量的定价如下：</p>
+<p>计划</p>
+<p>写入数据点</p>
+<p>读取查询</p>
+<p>Workers Paid</p>
+<p>包含 1000 万/月</p>
+<p>+ 0.25 美元/每增加 100 万</p>
+<p>包含 1000 万/月</p>
+<p>+1.00 美元/每增加 100 万</p>
+<p>Workers Free</p>
+<p>包含 10 万/日</p>
+<p>包含 1 万/日</p>
+<p>根据这一定价，通过计算在 Worker 中调用函数的次数，以及向 HTTP API 端点发出请求的次数，即可回答 “Workers Analytics Engine 会花费我多少钱？” 的问题。计算简单明了，无需使用电子表格。</p>
+<p>这一定价将在未来几个月内向所有人开放。在那以前，Workers Analytics Engine 继续免费提供使用。您<a href="https://developers.cloudflare.com/analytics/analytics-engine/get-started/#limits" target="_blank" rel="noopener noreferrer">今天就可以开始从 Worker 中写入数据点</a> ——只需要短短几分钟，不到 10 行代码，即可开始捕获数据。我们期待听到您的反馈。</p>
+<h3><strong>本周才刚刚开始</strong></h3>
+<p>欢迎关注我们将在 Developer Week 第二天为您准备的精彩内容。如有任何问题，或者希望展示您已经构建的炫酷作品，欢迎加入我们的 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><em>Discord</em></a> 服务器。</p>

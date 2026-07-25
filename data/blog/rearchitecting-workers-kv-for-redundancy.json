@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "Redesigning Workers KV for increased availability and faster performance",
+	"url": "https://blog.cloudflare.com/rearchitecting-workers-kv-for-redundancy/",
+	"datePublished": "2025-08-08T13:00:00.000Z",
+	"dateModified": "2026-07-15T14:24:12.196Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW46J1G36VH1EPRBE3A703F7.png",
+	"description": "Workers KV is Cloudflare's global key-value store, serving millions of requests per second across hundreds of billions of stored objects. The service powers critical infrastructure for dozens of Cloudflare products—from Access authentication to Pages static assets—making its availability essential to our platform's reliability.\n\nAfter the incident on June 12, we accelerated work to re-architect KV’s redundant storage backend, remove single points of failure, and make substantial improvements…"
+}

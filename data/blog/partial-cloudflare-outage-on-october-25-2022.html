@@ -1,149 +1,78 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/partial-cloudflare-outage-on-october-25-2022">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/partial-cloudflare-outage-on-october-25-2022">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/partial-cloudflare-outage-on-october-25-2022">日本語</a>, <a href="https://blog.cloudflare.com/es-es/partial-cloudflare-outage-on-october-25-2022">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/partial-cloudflare-outage-on-october-25-2022">Français</a>.</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hJhY1sHBOZSpglFZVl7Hq/df78cb9e5dccac95d320287b3cb42dd8/1-2.png" alt="" class="kg-image" width="1200" height="675" loading="lazy">
-
-	</figure>
-	<p>Today, a change to our Tiered Cache system caused some requests to fail for users with status code 530. The impact lasted for almost six hours in total. We estimate that about 5% of all requests failed at peak. Because of the complexity of our system and a blind spot in our tests, we did not spot this when the change was released to our test environment. &nbsp;</p>
-	<p>The failures were caused by side effects of how we handle cacheable requests across locations. At first glance, the errors looked like they were caused by a different system that had started a release some time before. It took our teams a number of tries to identify exactly what was causing the problems. Once identified we expedited a rollback which completed in 87 minutes.</p>
-	<p>We’re sorry, and we’re taking steps to make sure this does not happen again.</p>
-	<div class="flex anchor relative">
-		<h3 id="background">Background</h3>
-		<a href="https://blog.cloudflare.com/#background" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One of Cloudflare’s products is our Content Delivery Network, or CDN. This is used to cache assets for websites globally. However, a data center is not guaranteed to have an asset cached. It could be new, expired, or has been purged. If that happens, and a user requests that asset, our CDN needs to retrieve a fresh copy from a website’s origin server. But the data center that the user is accessing might still be pretty far away from the origin server. This presents an additional issue for customers: every time an asset is not cached in the data center, we need to retrieve a new copy from the origin server.</p>
-	<p>To improve cache hit ratios, we introduced <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Tiered Cache</a>. With Tiered Cache, we organize our data centers in the CDN into a hierarchy of “lower tiers” which are closer to the end users and “upper tiers” that are closer to the origin. When a cache-miss occurs in a lower tier, the upper tier is checked. If the upper tier has a fresh copy of the asset, we can serve that in response to the request. This improves performance and reduces the amount of times that Cloudflare has to reach out to an origin server to retrieve assets that are not cached in lower tier data centers.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/yyZ1ow2W0dM1zPPSWlYDb/442072566ebc71758aa6e70c0193a9fd/2-2.png" alt="" class="kg-image" width="1439" height="883" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="incident-timeline-and-impact">Incident timeline and impact</h3>
-		<a href="https://blog.cloudflare.com/#incident-timeline-and-impact" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>At 08:40 UTC, a software release of a CDN component containing a bug began slowly rolling out. The bug was triggered when a user visited a site with either Tiered Cache, Cloudflare Images, or Bandwidth Alliance configured. This bug caused a subset of those customers to return HTTP Status Code 530 — an error. Content that could be served directly from a data center's local cache was unaffected.</p>
-	<p>We started an investigation after receiving customer reports of an intermittent increase in 530s after the faulty component was released to a subset of data centers.</p>
-	<p>Once the release started rolling out globally to the remaining data centers, a sharp increase in 530s triggered alerts along with more customer reports, and an incident was declared.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5GRoqSuj9kxooMxIeQ7X6o/e751538115c6108f2335261d3f835807/3-2.png" alt="Requests resulting in a response with status code 530" class="kg-image" width="1600" height="705" loading="lazy">
-
-	</figure>
-	<p><i>Requests resulting in a response with status code 530</i></p>
-	<p>We confirmed a bad release was responsible by rolling back the release in a data center at 17:03 UTC. After the rollback, we observed a drop in 530 errors. After this confirmation, an accelerated global rollback began and the 530s started to decrease. Impact ended once the release was reverted in all data centers configured as Tiered Cache upper tiers at 18:04 UTC.</p>
-	<p>Timeline:</p>
-	<ul>
-		<li>
-			<p>2022-10-25 08:40: The release started to roll out to a small subset of data centers.</p>
-		</li>
-		<li>
-			<p>2022-10-25 10:35: An individual customer alert fires, indicating an increase in 500 error codes.</p>
-		</li>
-		<li>
-			<p>2022-10-25 11:20: After an investigation, a single small data center is pinpointed as the source of the issue and removed from production while teams investigate the issue there.</p>
-		</li>
-		<li>
-			<p>2022-10-25 12:30: Issue begins spreading more broadly as more data centers get the code changes.</p>
-		</li>
-		<li>
-			<p>2022-10-25 14:22: 530s errors increase as the release starts to slowly roll out to our largest data centers.</p>
-		</li>
-		<li>
-			<p>2022-10-25 14:39: Multiple teams become involved in the investigation as more customers start reporting increases in errors.</p>
-		</li>
-		<li>
-			<p>2022-10-25 17:03: CDN Release is rolled back in Atlanta and root cause is confirmed.</p>
-		</li>
-		<li>
-			<p>2022-10-25 17:28: Peak impact with approximately 5% of all HTTP requests resulting in an error with status code 530.</p>
-		</li>
-		<li>
-			<p>2022-10-25 17:38: An accelerated rollback continues with large data centers acting as Upper tier for many customers.</p>
-		</li>
-		<li>
-			<p>2022-10-25 18:04: Rollback is complete in all Upper Tiers.</p>
-		</li>
-		<li>
-			<p>2022-10-25 18:30: Rollback is complete.</p>
-		</li>
-	</ul>
-	<p>During the early phases of the investigation, the indicators were that this was a problem with our internal DNS system that also had a release rolling out at the same time. As the following section shows, that was a side effect rather than the cause of the outage. &nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="adding-distributed-tracing-to-tiered-cache-introduced-the-problem">Adding distributed tracing to Tiered Cache introduced the problem</h3>
-		<a href="https://blog.cloudflare.com/#adding-distributed-tracing-to-tiered-cache-introduced-the-problem" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In order to help improve our performance, we routinely add monitoring code to various parts of our services. Monitoring code helps by giving us visibility into how various components are performing, allowing us to determine bottlenecks that we can improve on. Our team recently added additional distributed tracing to our Tiered Cache logic. The tiered cache entrypoint code is as follows:</p>
-	<p>* Before:</p>
-	<pre class="language-lua"><code class="language-lua">function _M.go()
-   -- code to run here
-end
-</code></pre>
-	<p>* After:</p>
-	<pre class="language-lua"><code class="language-lua">local trace_fn = require("opentracing").trace_fn
-
-local function go()
-  -- code to run here
-end
-
-function _M.go()
-  trace_fn(ngx.ctx, "tiered_cache_rewrite", go)
-end</code></pre>
-	<p>The code above wraps the existing go() function with trace_fn() which will call the go() function and then reports its execution time.</p>
-	<p>However, the logic that injects a function to the opentracing module clears control headers on every request:</p>
-	<pre class="language-lua"><code class="language-lua">require("opentracing").configure_module(conf,
-  -- control header extractor
-  function(ctx)
-    -- Always clear the headers.
-    clear_control_headers()
-    -- </code></pre>
-	<p>Normally, we extract data from these control headers before clearing them as a routine part of how we process requests.</p>
-	<p>But internal tiered cache traffic expects the control headers from the lower tier to be passed as-is. The combination of clearing headers and using an upper tier meant that information that might be critical to the routing of the request was not available. In the subset of requests affected, we were missing the hostname to resolve by our internal DNS lookup for origin server IP addresses. As a result, a 530 DNS error was returned to the client.</p>
-	<div class="flex anchor relative">
-		<h3 id="remediation-and-follow-up-steps">Remediation and follow-up steps</h3>
-		<a href="https://blog.cloudflare.com/#remediation-and-follow-up-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To prevent this from happening again, in addition to the fixing the bug, we have identified a set of changes that help us detect and prevent issues like this in the future:</p>
-	<ul>
-		<li>
-			<p>Include a larger data center that is configured as a Tiered Cache upper tier in an earlier stage in the release plan. This will allow us to notice similar issues more quickly, before a global release.</p>
-		</li>
-		<li>
-			<p>Expand our acceptance test coverage to include a broader set of configurations, including various Tiered Cache topologies.</p>
-		</li>
-		<li>
-			<p>Alert more aggressively in situations where we do not have full context on requests, and need the extra host information in the control headers.</p>
-		</li>
-		<li>
-			<p>Ensure that our system correctly fails fast in an error like this, which would have helped identify the problem during development and test.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We experienced an incident that affected a significant set of customers using Tiered Cache. After identifying the faulty component, we were able to quickly rollback and remediate the issue. We are sorry for any disruption this has caused our customers and end users trying to access services.</p>
-	<p>Remediations to prevent such an incident from happening in the future will be put in place as soon as possible.</p>
+<p>Today, a change to our Tiered Cache system caused some requests to fail for users with status code 530. The impact lasted for almost six hours in total. We estimate that about 5% of all requests failed at peak. Because of the complexity of our system and a blind spot in our tests, we did not spot this when the change was released to our test environment. &nbsp;</p>
+<p>The failures were caused by side effects of how we handle cacheable requests across locations. At first glance, the errors looked like they were caused by a different system that had started a release some time before. It took our teams a number of tries to identify exactly what was causing the problems. Once identified we expedited a rollback which completed in 87 minutes.</p>
+<p>We’re sorry, and we’re taking steps to make sure this does not happen again.</p>
+<h3>Background</h3>
+<p>One of Cloudflare’s products is our Content Delivery Network, or CDN. This is used to cache assets for websites globally. However, a data center is not guaranteed to have an asset cached. It could be new, expired, or has been purged. If that happens, and a user requests that asset, our CDN needs to retrieve a fresh copy from a website’s origin server. But the data center that the user is accessing might still be pretty far away from the origin server. This presents an additional issue for customers: every time an asset is not cached in the data center, we need to retrieve a new copy from the origin server.</p>
+<p>To improve cache hit ratios, we introduced <a href="https://blog.cloudflare.com/introducing-smarter-tiered-cache-topology-generation">Tiered Cache</a>. With Tiered Cache, we organize our data centers in the CDN into a hierarchy of “lower tiers” which are closer to the end users and “upper tiers” that are closer to the origin. When a cache-miss occurs in a lower tier, the upper tier is checked. If the upper tier has a fresh copy of the asset, we can serve that in response to the request. This improves performance and reduces the amount of times that Cloudflare has to reach out to an origin server to retrieve assets that are not cached in lower tier data centers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="439" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=640&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=750&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=828&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1080&amp;h=663&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1280&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1430&amp;h=878&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1499 Embedded Image - 5W1wJs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49NYN4ZWHJPG8X9S3SBCCB.png&amp;w=1439&amp;h=883&amp;f=webp" data-lightbox-width="1439" data-lightbox-height="883" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="439" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Incident timeline and impact</h3>
+<p>At 08:40 UTC, a software release of a CDN component containing a bug began slowly rolling out. The bug was triggered when a user visited a site with either Tiered Cache, Cloudflare Images, or Bandwidth Alliance configured. This bug caused a subset of those customers to return HTTP Status Code 530 — an error. Content that could be served directly from a data center's local cache was unaffected.</p>
+<p>We started an investigation after receiving customer reports of an intermittent increase in 530s after the faulty component was released to a subset of data centers.</p>
+<p>Once the release started rolling out globally to the remaining data centers, a sharp increase in 530s triggered alerts along with more customer reports, and an incident was declared.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="315" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=640&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=715&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=750&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=828&amp;h=365&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1080&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1280&amp;h=564&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1430&amp;h=630&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Requests resulting in a response with status code 530" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AN3DSGPH91K0TSRM43KG.png&amp;w=1600&amp;h=705&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="705" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="315" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Requests resulting in a response with status code 530</em></p>
+<p>We confirmed a bad release was responsible by rolling back the release in a data center at 17:03 UTC. After the rollback, we observed a drop in 530 errors. After this confirmation, an accelerated global rollback began and the 530s started to decrease. Impact ended once the release was reverted in all data centers configured as Tiered Cache upper tiers at 18:04 UTC.</p>
+<p>Timeline:</p>
+<ul>
+	<li>2022-10-25 08:40: The release started to roll out to a small subset of data centers.</li>
+	<li>2022-10-25 10:35: An individual customer alert fires, indicating an increase in 500 error codes.</li>
+	<li>2022-10-25 11:20: After an investigation, a single small data center is pinpointed as the source of the issue and removed from production while teams investigate the issue there.</li>
+	<li>2022-10-25 12:30: Issue begins spreading more broadly as more data centers get the code changes.</li>
+	<li>2022-10-25 14:22: 530s errors increase as the release starts to slowly roll out to our largest data centers.</li>
+	<li>2022-10-25 14:39: Multiple teams become involved in the investigation as more customers start reporting increases in errors.</li>
+	<li>2022-10-25 17:03: CDN Release is rolled back in Atlanta and root cause is confirmed.</li>
+	<li>2022-10-25 17:28: Peak impact with approximately 5% of all HTTP requests resulting in an error with status code 530.</li>
+	<li>2022-10-25 17:38: An accelerated rollback continues with large data centers acting as Upper tier for many customers.</li>
+	<li>2022-10-25 18:04: Rollback is complete in all Upper Tiers.</li>
+	<li>2022-10-25 18:30: Rollback is complete.</li>
+</ul>
+<p>During the early phases of the investigation, the indicators were that this was a problem with our internal DNS system that also had a release rolling out at the same time. As the following section shows, that was a side effect rather than the cause of the outage. &nbsp;</p>
+<h3>Adding distributed tracing to Tiered Cache introduced the problem</h3>
+<p>In order to help improve our performance, we routinely add monitoring code to various parts of our services. Monitoring code helps by giving us visibility into how various components are performing, allowing us to determine bottlenecks that we can improve on. Our team recently added additional distributed tracing to our Tiered Cache logic. The tiered cache entrypoint code is as follows:</p>
+<p>* Before:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> _M</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">go</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   -- code to run here</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">end</span></span>
+<span class="line"></span></code></pre>
 </div>
+<p>* After:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">local</span><span class="sk-24292e-fff"> trace_fn </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"opentracing"</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-fff">trace_fn</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">local</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> go</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  -- code to run here</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">end</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">function</span><span class="sk-6f42c1-ffc799"> _M</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">go</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  trace_fn</span><span class="sk-24292e-fff">(ngx.</span><span class="sk-6f42c1-fff">ctx</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"tiered_cache_rewrite"</span><span class="sk-24292e-fff">, go)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">end</span></span></code></pre>
+</div>
+<p>The code above wraps the existing go() function with trace_fn() which will call the go() function and then reports its execution time.</p>
+<p>However, the logic that injects a function to the opentracing module clears control headers on every request:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-ffc799">require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"opentracing"</span><span class="sk-24292e-fff">).</span><span class="sk-005cc5-ffc799">configure_module</span><span class="sk-24292e-fff">(conf,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  -- control header extractor</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  function</span><span class="sk-24292e-fff">(ctx)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    -- Always clear the headers.</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">    clear_control_headers</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    -- </span></span></code></pre>
+</div>
+<p>Normally, we extract data from these control headers before clearing them as a routine part of how we process requests.</p>
+<p>But internal tiered cache traffic expects the control headers from the lower tier to be passed as-is. The combination of clearing headers and using an upper tier meant that information that might be critical to the routing of the request was not available. In the subset of requests affected, we were missing the hostname to resolve by our internal DNS lookup for origin server IP addresses. As a result, a 530 DNS error was returned to the client.</p>
+<h3>Remediation and follow-up steps</h3>
+<p>To prevent this from happening again, in addition to the fixing the bug, we have identified a set of changes that help us detect and prevent issues like this in the future:</p>
+<ul>
+	<li>Include a larger data center that is configured as a Tiered Cache upper tier in an earlier stage in the release plan. This will allow us to notice similar issues more quickly, before a global release.</li>
+	<li>Expand our acceptance test coverage to include a broader set of configurations, including various Tiered Cache topologies.</li>
+	<li>Alert more aggressively in situations where we do not have full context on requests, and need the extra host information in the control headers.</li>
+	<li>Ensure that our system correctly fails fast in an error like this, which would have helped identify the problem during development and test.</li>
+</ul>
+<h3>Conclusion</h3>
+<p>We experienced an incident that affected a significant set of customers using Tiered Cache. After identifying the faulty component, we were able to quickly rollback and remediate the issue. We are sorry for any disruption this has caused our customers and end users trying to access services.</p>
+<p>Remediations to prevent such an incident from happening in the future will be put in place as soon as possible.</p>

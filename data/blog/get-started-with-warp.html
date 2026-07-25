@@ -1,76 +1,37 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/y6h2YsYmta14Tar46N6Fs/d37ed8946b00ebe4f8c786559a4fb254/get-started-with-warp.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>NOTE: Prior to launch, this product was renamed Argo Tunnel. Read more in the </i><a href="https://blog.cloudflare.com/argo-tunnel"><i>launch announcement</i></a><i>.</i></p>
-	<p>Tomorrow is Thanksgiving in the United States. It’s a holiday for getting together with family characterized by turkey dinner and whatever it is that happens in American football. While celebrating with family is great, if you use a computer for your main line of work, sometimes the conversation turns to how to setup the home wifi or can Russia really use Facebook to hack the US election. Just in case you’re a geek who finds yourself in that position this week, we wanted to give you something to play with. To that end, we’re opening the <a href="http://warp.cloudflare.com" target="_blank" rel="noopener noreferrer">Warp</a> beta to all Cloudflare users. Feel free to tell your family there’s been an important technical development you need to attend to immediately and enjoy!</p>
-	<div class="flex anchor relative">
-		<h3 id="hello-warp-getting-started">Hello Warp! Getting Started</h3>
-		<a href="https://blog.cloudflare.com/#hello-warp-getting-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Warp allows you to expose a locally running web server to the internet without having to open up ports in the firewall or even needing a public IP address. Warp connects a web server directly to the Cloudflare network where Cloudflare acts as your web server’s network gateway. Every request reaching your origin must travel to the Cloudflare network where you can apply rate limits, access policies and authentication before the request hits your origin. Plus, because your origin is never exposed directly to the internet, attackers can’t bypass protections to reach your origin.</p>
-	<p>Warp is really easy to get started with. If you use homebrew (we also have <a href="https://warp.cloudflare.com/downloads" target="_blank" rel="noopener noreferrer">packages for Linux and Windows</a>) you can do:</p>
-	<pre class="language-bash"><code class="language-bash">$ brew install cloudflare/cloudflare/warp
-$ cloudflare-warp login
-$ cloudflare-warp --hostname warp.example.com --hello-world</code></pre>
-	<p>In this example, replace example.com with the domain you chose at the login command. The warp.example.com subdomain doesn’t need to exist yet in DNS, Warp will automatically add it for you.</p>
-	<p>That last command spins up a web server on your machine serving the hello warp world webpage. Then Warp starts up an encrypted virtual tunnel from that web server to the Cloudflare edge. When you visit warp.example.com (or whatever domain you chose), your request first hits a Cloudflare data center, then is routed back to your locally running hello world web server on your machine.</p>
-	<p>If someone far away visits warp.example.com, they connect to the Cloudflare data center closest to them, and then are routed to the Cloudflare data center your Warp instance is connected to, and then over the Warp tunnel back to your web server. If you want to make that connection between Cloudflare data centers really fast, <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">enable Argo</a>, which bypasses internet latencies and network congestions on optimized routes linking the Cloudflare data centers.</p>
-	<p>To point Warp at a real web server you are running instead of the hello world web server, replace the hello-world flag with the location of your locally running server:</p>
-	<pre class="language-bash"><code class="language-bash">$ cloudflare-warp --hostname warp.example.com http://localhost:8080</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="using-warp-for-load-balancing">Using Warp for Load Balancing</h3>
-		<a href="https://blog.cloudflare.com/#using-warp-for-load-balancing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s say you have multiple instances of your application running and you want to balance load between them or always route to the closest one for any given visitor. As you spin up Warp, you can register the origins behind Warp to a load balancer. For example, I can run this on 2 different servers (e.g. one on a container in ECS and one on a container in GKE):</p>
-	<pre class="language-bash"><code class="language-bash">$ cloudflare-warp --hostname warp.example.com --lb-pool origin-pool-1 http://localhost:8080</code></pre>
-	<p>And connections to warp.example.com will be routed seamlessly between the two servers. You can do this with an existing origin pool or a brand new one. If you visit the <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">load balancing dashboard</a> you will see the new pool created with your origins in it, or the origins added to an existing pool.</p>
-	<p>You can also <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">set up a health check</a> so that if one goes offline, it automatically gets deregistered from the load balancer pool and requests are only routed to the online pools.</p>
-	<div class="flex anchor relative">
-		<h3 id="automating-warp-with-docker">Automating Warp with Docker</h3>
-		<a href="https://blog.cloudflare.com/#automating-warp-with-docker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can add Warp to your Dockerfile so that as containers spin up or as you autoscale, containers automatically register themselves with Warp to connect to Cloudflare. This acts as a kind of service discovery.</p>
-	<p>A reference <a href="https://warp.cloudflare.com/docs/docker" target="_blank" rel="noopener noreferrer">Dockerfile is available here</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="requiring-user-authentication">Requiring User Authentication</h3>
-		<a href="https://blog.cloudflare.com/#requiring-user-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you use Warp to expose dashboards, staging sites and other internal tools to the internet that you don’t want to be available for everyone, we have a new product in beta that allows you to quickly put up a login page in front of your Warp tunnel.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/24ItxFhwmPF9EcZc1qHE45/9028a584093a8597833b93318c7cc256/1Screen-Shot-2017-11-08-at-9.00.33-AM.png" alt="" class="kg-image" width="845" height="670" loading="lazy">
-
-	</figure>
-	<p>To get started, go to the <a href="https://www.cloudflare.com/a/access" target="_blank" rel="noopener noreferrer">Access tab in the Cloudflare dashboard</a>.</p>
-	<p>There you can define which users should be able to login to use your applications. For example, if I wanted to limit access to warp.example.com to just people who work at Cloudflare, I can do:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/sGHDnCCZoCGhGRqM1GICF/ae667903ba8524e99308853be795b13a/Screen-Shot-2017-11-22-at-11.24.51-AM.png" alt="" class="kg-image" width="711" height="512" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="enjoy">Enjoy!</h3>
-		<a href="https://blog.cloudflare.com/#enjoy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Enjoy the Warp beta! (But don't wander too deep into the Warp tunnel and forget to enjoy time with your family.) The whole <a href="https://community.cloudflare.com/t/cloudflare-warp-beta/5656" target="_blank" rel="noopener noreferrer">Warp team is following this thread</a> for comments, ideas, feedback and show and tell. We’re excited to see what you build.</p>
+<p><em>NOTE: Prior to launch, this product was renamed Argo Tunnel. Read more in the <a href="https://blog.cloudflare.com/argo-tunnel">launch announcement</a>.</em></p>
+<p>Tomorrow is Thanksgiving in the United States. It’s a holiday for getting together with family characterized by turkey dinner and whatever it is that happens in American football. While celebrating with family is great, if you use a computer for your main line of work, sometimes the conversation turns to how to setup the home wifi or can Russia really use Facebook to hack the US election. Just in case you’re a geek who finds yourself in that position this week, we wanted to give you something to play with. To that end, we’re opening the <a href="http://warp.cloudflare.com" target="_blank" rel="noopener noreferrer">Warp</a> beta to all Cloudflare users. Feel free to tell your family there’s been an important technical development you need to attend to immediately and enjoy!</p>
+<h3>Hello Warp! Getting Started</h3>
+<p>Warp allows you to expose a locally running web server to the internet without having to open up ports in the firewall or even needing a public IP address. Warp connects a web server directly to the Cloudflare network where Cloudflare acts as your web server’s network gateway. Every request reaching your origin must travel to the Cloudflare network where you can apply rate limits, access policies and authentication before the request hits your origin. Plus, because your origin is never exposed directly to the internet, attackers can’t bypass protections to reach your origin.</p>
+<p>Warp is really easy to get started with. If you use homebrew (we also have <a href="https://warp.cloudflare.com/downloads" target="_blank" rel="noopener noreferrer">packages for Linux and Windows</a>) you can do:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> brew</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> cloudflare/cloudflare/warp</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflare-warp</span><span class="sk-032f62-99ffe4"> login</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflare-warp</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> warp.example.com</span><span class="sk-005cc5-99ffe4"> --hello-world</span></span></code></pre>
 </div>
+<p>In this example, replace example.com with the domain you chose at the login command. The warp.example.com subdomain doesn’t need to exist yet in DNS, Warp will automatically add it for you.</p>
+<p>That last command spins up a web server on your machine serving the hello warp world webpage. Then Warp starts up an encrypted virtual tunnel from that web server to the Cloudflare edge. When you visit warp.example.com (or whatever domain you chose), your request first hits a Cloudflare data center, then is routed back to your locally running hello world web server on your machine.</p>
+<p>If someone far away visits warp.example.com, they connect to the Cloudflare data center closest to them, and then are routed to the Cloudflare data center your Warp instance is connected to, and then over the Warp tunnel back to your web server. If you want to make that connection between Cloudflare data centers really fast, <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">enable Argo</a>, which bypasses internet latencies and network congestions on optimized routes linking the Cloudflare data centers.</p>
+<p>To point Warp at a real web server you are running instead of the hello world web server, replace the hello-world flag with the location of your locally running server:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflare-warp</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> warp.example.com</span><span class="sk-032f62-99ffe4"> http://localhost:8080</span></span></code></pre>
+</div>
+<h3>Using Warp for Load Balancing</h3>
+<p>Let’s say you have multiple instances of your application running and you want to balance load between them or always route to the closest one for any given visitor. As you spin up Warp, you can register the origins behind Warp to a load balancer. For example, I can run this on 2 different servers (e.g. one on a container in ECS and one on a container in GKE):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflare-warp</span><span class="sk-005cc5-99ffe4"> --hostname</span><span class="sk-032f62-99ffe4"> warp.example.com</span><span class="sk-005cc5-99ffe4"> --lb-pool</span><span class="sk-032f62-99ffe4"> origin-pool-1</span><span class="sk-032f62-99ffe4"> http://localhost:8080</span></span></code></pre>
+</div>
+<p>And connections to warp.example.com will be routed seamlessly between the two servers. You can do this with an existing origin pool or a brand new one. If you visit the <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">load balancing dashboard</a> you will see the new pool created with your origins in it, or the origins added to an existing pool.</p>
+<p>You can also <a href="https://www.cloudflare.com/a/traffic" target="_blank" rel="noopener noreferrer">set up a health check</a> so that if one goes offline, it automatically gets deregistered from the load balancer pool and requests are only routed to the online pools.</p>
+<h3>Automating Warp with Docker</h3>
+<p>You can add Warp to your Dockerfile so that as containers spin up or as you autoscale, containers automatically register themselves with Warp to connect to Cloudflare. This acts as a kind of service discovery.</p>
+<p>A reference <a href="https://warp.cloudflare.com/docs/docker" target="_blank" rel="noopener noreferrer">Dockerfile is available here</a>.</p>
+<h3>Requiring User Authentication</h3>
+<p>If you use Warp to expose dashboards, staging sites and other internal tools to the internet that you don’t want to be available for everyone, we have a new product in beta that allows you to quickly put up a login page in front of your Warp tunnel.</p>
+<p>To get started, go to the <a href="https://www.cloudflare.com/a/access" target="_blank" rel="noopener noreferrer">Access tab in the Cloudflare dashboard</a>.</p>
+<p>There you can define which users should be able to login to use your applications. For example, if I wanted to limit access to warp.example.com to just people who work at Cloudflare, I can do:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="711" height="512" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=711&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=711&amp;h=512&amp;f=webp&amp;fit=cover&amp;position=center 711w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=1422&amp;h=1024&amp;f=webp&amp;fit=cover&amp;position=center 1422w" alt="Want to try Warp? We just enabled the beta for you Embedded Image - zBgs1P" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49KRZS2PEYG03TDXTFSQMP.png&amp;w=711&amp;h=512&amp;f=webp" data-lightbox-width="711" data-lightbox-height="512" data-astro-cid-7nvefuv6="true" sizes="(min-width: 711px) 711px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="711" height="512" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Enjoy!</h3>
+<p>Enjoy the Warp beta! (But don't wander too deep into the Warp tunnel and forget to enjoy time with your family.) The whole <a href="https://community.cloudflare.com/t/cloudflare-warp-beta/5656" target="_blank" rel="noopener noreferrer">Warp team is following this thread</a> for comments, ideas, feedback and show and tell. We’re excited to see what you build.</p>

@@ -1,0 +1,64 @@
+<p>到目前為止，有關矽谷銀行 (SVB) 發生<a href="https://www.cnn.com/2023/03/11/business/svb-collapse-roundup-takeaways/index.html" target="_blank" rel="noopener noreferrer">崩塌</a>和被美國聯邦政府接管的新聞已經人盡皆知。崩塌發生速度之快讓很多人大跌眼鏡，並且對大大小小的組織的影響預計會持續一段時間。</p>
+<p>很遺憾，大家看到的是慘況，而威脅執行者看到的卻是機會。我們一次又一次地目睹這種事情 —— 為了破壞信任和欺騙毫無戒心的受害者，威脅執行者會排山倒海地使用熱點時事作為誘餌。這些威脅活動緊跟新聞週期或備受矚目的公開活動（超級盃、瘋狂三月、繳稅日，黑色星期五促銷、新冠肺炎，等等）而來，因為無論在任何時候，如果郵件中提到了最熱門的事件，使用者都更有可能被吸引。</p>
+<p>SVB 新聞週期促成了一個同樣引人注目的熱點時事，讓威脅執行者能夠加以利用；組織必須加強宣傳活動和技術控制，以幫助抵制最終在即將發生的攻擊中使用這些策略。可悲的是，FDIC 正在保證 SVB 客戶的資金是安全的，而不良執行者卻試圖竊取這筆錢！</p>
+<h3>先發制人的行動</h3>
+<p>由於預計未來網路釣魚攻擊會利用 SVB 品牌，<a href="https://blog.cloudflare.com/introducing-cloudforce-one-threat-operations-and-threat-research">Cloudforce One</a>（Cloudflare 的威脅運作與研究團隊）自 2023 年 3 月 10 日起大幅增加了我們對 SVB 數位存在的品牌監控，並推出了其他多個偵測模組來發現 SVB 主題的網路釣魚活動。所有利用我們各種網路釣魚保護服務的客戶都會自動從這些新模型中獲益。</p>
+<p>下面是一個真實的例子，描述了 SVB 自 FDIC 接管銀行以來發生的一起活動。</p>
+<h3>KYC 網路釣魚——以 DocuSign 為主題的 SVB 活動</h3>
+<p>威脅執行者經常使用的一項策略是模仿正在進行的 KYC（了解您的客戶）工作，銀行會定期執行這些工作以驗證有關客戶的詳細資料。這樣做是為了保護金融機構，幫助其避免欺詐、洗錢和金融犯罪等風險。</p>
+<p>2023 年 3 月 14 日，Cloudflare 在 DocuSign 主題範本中偵測到一起利用 SVB 品牌的大型 KYC 網路釣魚活動。此活動針對 Cloudflare 和幾乎所有產業類別。在活動開始後的前幾個小時內，我們偵測到 79 起針對多個組織中不同個人的攻擊。Cloudflare 將發佈此活動的一個具體範例以及策略和值得注意的情況，我們認為這些內容有助於客戶瞭解此活動並保持警惕。</p>
+<h3>活動詳情</h3>
+<p>下面顯示的網路釣魚攻擊於 2023 年 3 月 14 日針對 Cloudflare 的創辦人兼 CEO Matthew Prince 發起。它包括的 HTML 程式碼中包含一個初始連結和一個複雜的四層重新導向鏈結。當使用者按一下「<em>檢閱文件</em>」連結時，鏈結就開始了。它會透過 Amazon Advertising Server bs[.]serving-sys[.]com 將使用者帶到由 Sizmek 執行的可追蹤的分析連結。然後，該連結會將使用者進一步重新導向到託管在網域 na2signing[.]web[.]app 上的 Google Firebase 應用程式。而 na2signing[.]web[.]app HTML 隨後會將使用者重新導向到一個 WordPress 網站，該網站正在 eaglelodgealaska[.]com 執行另一個重新導向程式。在這個最後的重新導向之後，使用者被傳送至攻擊者控制的 docusigning[.]kirklandellis[.]net 網站。</p>
+<p>活動時間表</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1000" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=715&amp;h=1000&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=640&amp;h=895&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=715&amp;h=1000&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=750&amp;h=1049&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=828&amp;h=1158&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=1080&amp;h=1510&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=1280&amp;h=1790&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=1430&amp;h=2000&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1759 Embedded Image - SvYE9u" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47992PKKZWCVE4SFKMFASK.png&amp;w=1070&amp;h=1497&amp;f=webp" data-lightbox-width="1070" data-lightbox-height="1497" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1000" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>查看 HTML 檔案 Google Firebase 應用程式 (na2signing[.]web[.]app)</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">2023-03-14T12:05:28Z</span><span class="sk-032f62-99ffe4">		First</span><span class="sk-032f62-99ffe4"> Observed</span><span class="sk-032f62-99ffe4"> SVB</span><span class="sk-032f62-99ffe4"> DocuSign</span><span class="sk-032f62-99ffe4"> Campaign</span><span class="sk-032f62-99ffe4"> Launched</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2023-03-14T15:25:26Z</span><span class="sk-032f62-99ffe4">		Last</span><span class="sk-032f62-99ffe4"> Observed</span><span class="sk-032f62-99ffe4"> SVB</span><span class="sk-032f62-99ffe4"> DocuSign</span><span class="sk-032f62-99ffe4"> Campaign</span><span class="sk-032f62-99ffe4"> Launched</span></span></code></pre>
+</div>
+<p>攻擊中包含的 HTML 檔案會將使用者傳送到具有遞迴重新導向功能的 WordPress 實例。截至撰寫本文之時，我們不確定這一特定的 WordPress 安裝是否已遭到入侵或是否安裝了外掛程式以開啟此重新導向位置。</p>
+<h3>入侵指標</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">html dir</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"ltr"</span><span class="sk-24292e-fff"> class</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">""</span><span class="sk-24292e-fff"> lang</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"en"</span><span class="sk-24292e-fff">&gt;&lt;</span><span class="sk-032f62-99ffe4">head</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-6f42c1-ffc799">title</span><span class="sk-24292e-fff">&gt;</span><span class="sk-032f62-99ffe4">Sign</span><span class="sk-032f62-99ffe4"> in</span><span class="sk-032f62-99ffe4"> to</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> account</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">/titl</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    &lt;</span><span class="sk-6f42c1-ffc799">script</span><span class="sk-032f62-99ffe4"> type="text/javascript"</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    window.onload</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        function</span><span class="sk-6f42c1-ffc799"> Redirect</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">url</span><span class="sk-24292e-fff">){</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            window.location.href</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> url</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        var</span><span class="sk-032f62-99ffe4"> urlParams</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> URLSearchParams</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">window.location.href</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        var</span><span class="sk-032f62-99ffe4"> e</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> window.location.href</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-24292e-fff">       </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Redirect(</span><span class="sk-6f42c1-ffc799">"https://eaglelodgealaska[.]com/wp-header.php?url="</span><span class="sk-6f42c1-ffc799">+e</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">/script</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>建議</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">na2signing[.]web[.]app</span><span class="sk-032f62-99ffe4">	Malicious</span><span class="sk-032f62-99ffe4"> Google</span><span class="sk-032f62-99ffe4"> Cloudbase</span><span class="sk-032f62-99ffe4"> Application.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">eaglelodgealaska[.]com</span><span class="sk-032f62-99ffe4">	Possibly</span><span class="sk-032f62-99ffe4"> compromised</span><span class="sk-032f62-99ffe4"> Wordpress</span><span class="sk-032f62-99ffe4"> website</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> an</span><span class="sk-032f62-99ffe4"> open</span><span class="sk-032f62-99ffe4"> redirect.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">[.]kirklandellis[.]net		Attacker Controlled Application running on at least docusigning[.]kirklandellis[.]net.</span></span></code></pre>
+</div>
+<ol>
+	<li>Cloudflare Email Security 客戶可以使用下列搜尋字詞判斷他們是否已在儀表板上收到此活動：</li>
+	<li><code>SH_6a73a08e46058f0ff78784f63927446d875e7e045ef46a3cb7fc00eb8840f6f0</code></li>
+	<li>客戶也可以透過我們的威脅指標 API 追蹤與此活動相關的 IOC。任何更新的 IOC 都會持續推送至相關的 API 端點。</li>
+	<li>請確定在內送郵件中強制執行適當的 DMARC 原則。Cloudflare 建議，對於傳入郵件上的任何 DMARC 失敗，強制執行 <strong>[p = quarantine]</strong> 。SVB 的 DMARC 記錄 [<code>v=DMARC1; p=reject; pct=100</code>] 明確表示，拒絕任何模擬其品牌且未從 SVB 的指定和已驗證寄件者清單傳送的郵件。Cloudflare Email Security 客戶將根據 SVB 發佈的 DMARC 記錄自動獲得此強制執行。對於其他網域，或者若要對所有內送郵件套用更廣泛的基於 DMARC 的原則，Cloudflare 建議在 <a href="https://developers.cloudflare.com/email-security/email-configuration/email-policies" target="_blank" rel="noopener noreferrer">Cloudflare Area 1 儀表板</a>內對所有內送電子郵件中遵循「增強型寄件者驗證」原則。</li>
+	<li>Cloudflare Gateway 會自動保護客戶免受這些惡意 URL 和網域的攻擊。客戶可以在記錄中檢查這些特定的 IOC，以判斷其組織是否有流量流向這些網站。</li>
+	<li>與網路釣魚意識和訓練提供者合作，為終端使用者部署 SVB 主題的網路釣魚模擬（如果他們尚未這樣做）。</li>
+	<li>鼓勵終端使用者對任何 ACH（自動清算所）或 SWIFT（環球銀行金融電信協會）相關郵件保持警惕。ACH 和 SWIFT 是金融機構用於實體之間電匯的系統。鑒於它們的使用範圍非常之廣，威脅執行者經常利用 ACH 和 SWIFT 網路釣魚來將支付重新導向到自己。儘管過去幾天我們還沒有看到任何利用 SVB 品牌的大型 ACH 活動，但這並不意味著它們不在謀劃之中或者正在逼近。以下是我們在類似的付款欺詐活動中看到的幾個主題行範例：</li>
+	<li><em>「我們已變更銀行詳細資料」「銀行帳戶資訊已更新」「需要緊急行動 -重要 - 銀行帳戶詳細資料變更」「重要 - 銀行帳戶詳細資料變更」「金融機構變更通知」</em></li>
+	<li>保持警惕，防止類似網域在電子郵件和與 SVB 相關的 Web 流量中出現。Cloudflare 客戶在電子郵件和 Web 流量中內建了新網域控制項，可防止來自這些新網域的異常活動通過。</li>
+	<li>確保所有面向公眾的 Web 應用程式始終修補至最新版本，並在應用程式前面執行新式 Web 應用程式防火牆服務。上面提到的活動利用了 WordPress，威脅執行者經常在網路釣魚網站上使用它。如果您使用的是 Cloudflare WAF，甚至可以在尚未瞭解協力廠商 CVE 的時候就自動受到保護。擁有有效的 WAF 至關重要，它可防止威脅執行者接管您的公共 Web 存在並利用它發起網路釣魚活動（SVB 主題或其他方式）。</li>
+</ol>
+<h3>保持領先</h3>
+<p>Cloudforce One（Cloudflare 的威脅運作團隊）會在新興活動的形成階段主動監控它們，並發佈公告和偵測模型更新，以確保我們的客戶受到保護。儘管這個特定的活動以 SVB 為中心，但所使用的策略與其他類似的活動並沒有什麼不同，我們的全球網路每天都會看到這些活動，並在它們影響到我們的客戶之前自動予以阻止。</p>
+<p>在多個通訊通道中融合強大的技術控制，再加上讓訓練有素和保持警惕的員工瞭解數位通訊帶來的危險，對於阻止這些攻擊通過起著至關重要的作用。</p>
+<p>深入瞭解 Cloudflare 如何使用 <a href="https://www.cloudflare.com/zero-trust-hub" target="_blank" rel="noopener noreferrer">Zero Trust 服務</a>幫您完成全面的網路釣魚保護之旅，並立即連絡<a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank" rel="noopener noreferrer">免費評估</a>。</p>

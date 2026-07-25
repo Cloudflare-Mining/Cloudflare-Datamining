@@ -1,0 +1,320 @@
+<p>考虑一个恶意行为者试图通过 API 进行数据注入、抓取、收集或泄露的情况。这类恶意活动通常以行为者以特定顺序向 API 端点发起请求。此外，仅仅使用容量技术往往无法轻易检测到这些恶意活动，因为行为者可能故意缓慢地执行 API 请求，以试图规避容量滥用保护。因此，为了可靠地防止这种恶意活动，我们需要考虑 API 请求的顺序。我们使用<strong>序列滥用</strong>这个术语来指代恶意的 API 请求行为。因此，我们的基本目标是区分恶意和合法的 API 请求序列。</p>
+<p>在这篇博客文章中，您将了解我们如何应对帮助客户保护其 API 免受序列滥用的挑战。为此，我们将介绍目前支撑我们<a href="https://developers.cloudflare.com/api-shield/security/sequence-analytics" target="_blank" rel="noopener noreferrer">序列分析</a>产品的统计机器学习(ML)技术。我们将在<a href="https://blog.cloudflare.com/zh-cn/api-sequence-analytics" target="_blank" rel="noopener noreferrer"><u>此前一篇博客文章</u></a>提供的序列分析概括性介绍基础上进行深入探讨。</p>
+<h3><strong>API 会话</strong></h3>
+<p>在之前的博客文章中提到过，我们来考虑一下由某个用户发起一系列按时间顺序排列的 HTTP API 请求的概念。发起请求是因为该用户与一项服务进行交互，例如浏览一个网站或使用一个移动应用。我们将用户按时间顺序发出的一系列 API 请求称为一个<strong>会话</strong>。举一个熟悉的例子，客户与银行服务交互的会话可能如下所示：</p>
+<div id="html-block-ki" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>时间顺序</th>
+				<th>方法</th>
+				<th>路径</th>
+				<th>描述</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>POST</td>
+				<td>/api/v1/auth</td>
+				<td>验证用户的身份</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>GET</td>
+				<td>/api/v1/accounts/{account_id}</td>
+				<td>显示账户余额，其中 account_id 是属于用户的账户</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>POST</td>
+				<td>/api/v1/transferFunds</td>
+				<td>包含请求正文，详细说明了转出账户、转入账户以及转账金额</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+</div>
+<p>我们的目标之一是，通过自动建议适用于我们的<a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">序列缓解</a>产品的规则，强制执行期望的序列行为，从而帮助客户<a href="https://www.cloudflare.com/learning/security/api/what-is-api-security" target="_blank" rel="noopener noreferrer">保护他们的 API</a>。如果我们强制执行预期的行为，就可以防止不想要的顺序行为。在我们的例子中，期望的序列行为可能意味着 /api/v1/auth 必须始终先于 /api/v1/accounts/{account_id} 执行。</p>
+<p>我们必须解决的一个重要挑战是，<a href="https://blog.cloudflare.com/zh-cn/api-sequence-analytics" target="_blank" rel="noopener noreferrer"><u>可能的会话数量会随着会话长度的增加而迅速增长</u></a>。要理解为什么，我们可以考虑用户与示例银行服务交互的其他方式：例如，用户可以任何顺序执行多次转账，和/或查看多个账户的余额。假设有 3 个可能的<strong>端点</strong>，下图说明了用户与银行服务交互时可能的会话：</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1975-IMG-1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47HKPRTNJ34BT7WX77HPYN.png&amp;w=1600&amp;h=900&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="900" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>由于可能的会话数量庞大，建议缓解规则需要我们解决一个挑战，即从过去的会话数据中总结序列行为作为中间步骤。在我们的例子中，我们将会话中一系列连续端点（例如 /api/v1/accounts/{account_id} → /api/v1/transferFunds）称为<strong>序列</strong>。具体来说，我们需要解决的一个挑战是，创建规则所需的顺序行为并不一定仅从数量上就能明显看出：例如，/api/transferFunds 几乎总是发生在在 /api/v1/accounts/{account_id} 之后，但与序列 /api/v1/auth → /api/v1/accounts/{account_id} 相比，序列 /api/v1/accounts/{account_id} → /api/v1/transferFunds 可能相对少见。因此，如果我们仅根据数量进行总结，可能会认为序列 /api/v1/accounts/{account_id} → /api/v1/transferFunds 不重要，而实际上我们应该将其作为潜在规则挖掘出来。</p>
+<h3><strong>从 API 会话中学习重要的序列</strong></h3>
+<p><strong><a href="https://en.wikipedia.org/wiki/Markov_chain" target="_blank" rel="noopener noreferrer">马尔可夫链（Markov chain）</a> </strong>是一种适用于序列数据的广泛建模方法 ，其中我们会话数据中每个端点的概率仅取决于先行端点的固定数量。首先，我们将展示如何将标准马尔可夫链应用于会话数据，同时指出它们的一些局限性。其次，我们将展示如何使用一种不太知名但强大的马尔可夫链来确定重要的序列。</p>
+<p>为便于说明，我们假设我们的会话数据中有 3 个可能的端点。我们将使用字母 <em>a</em> 、 <em>b</em> 和 <em>c</em> 来表示这些端点：</p>
+<ul>
+	<li><em>a</em>: /api/v1/auth</li>
+	<li><em>b</em>: /api/v1/accounts/{account_id}</li>
+	<li><em>c</em>: /api/v1/transferFunds</li>
+</ul>
+<p>在最简单的形式下，马尔可夫链不过是一个表格，它告诉我们在知道前一个字母的情况下，下一个字母的概率。如果我们使用最简单的马尔可夫链为过去的会话数据建模，我们最终可能会得到这样的表：</p>
+<div id="html-block-k1u" class="html-block">
+	<table>
+		<tbody>
+			<tr>
+				<td rowspan="2" style="width:30%">会话中已知的先行端点</td>
+				<td colspan="3">会话中下一个端点的估计概率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr>
+				<td>a</td>
+				<td>0.10 (1555)</td>
+				<td>0.89 (13718)</td>
+				<td>0.01 (169)</td>
+			</tr>
+			<tr>
+				<td>b</td>
+				<td>0.03 (9618)</td>
+				<td>0.63 (205084)</td>
+				<td>0.35 (113382)</td>
+			</tr>
+			<tr>
+				<td>c</td>
+				<td>0.02 (3340)</td>
+				<td>0.67 (109896)</td>
+				<td>0.31 (51553)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 1</small>
+	<br>
+</div>
+<p>表 1 列出了马尔可夫链的参数，即在已知会话中前一个端点的情况下，观察到 <em>a</em> 、<em>b</em> 或 <em>c</em> 作为会话中下一个端点的估计概率。例如，第 3 行值为 0.67 的格表示：在已知前一个端点为 <em>c</em> 的情况下 ，观察到 <em>b</em> 作为会话中的下一个端点的估计概率为 67%，无论 <em>c</em> 之前是否有任何端点。因此，表中的每个条目对应于两个端点的序列。括号中的值是我们在过去的会话数据中看到每个双端点序列的次数，用于计算表中的概率。例如，值 0.01 是计算分数 169 / (1555+13718+169) 的结果。这种估计概率的方法称为<a href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation" target="_blank" rel="noopener noreferrer">最大似然估计</a> 。</p>
+<p>为了确定重要的序列，我们依赖于<a href="https://en.wikipedia.org/wiki/Credible_interval" target="_blank" rel="noopener noreferrer">可信区间</a>（而非最大似然估计）来估计概率。可信区间不产生单点估计（如上所述），而是表示一个合理的概率范围。这个范围反映了可用的数据量，即每行中序列出现的总数。数据越多，可信区间越窄（反映确定性程度较高），数据越少，可信区间越宽（反映确定性程度较低）。因此，根据上表中括号内的值，我们可能会获得以下可信区间（粗体条目将在下文中进一步解释）：</p>
+<div id="html-block-k2h" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">会话中已知的先行端点</td>
+				<td colspan="3">会话中下一个端点的估计概率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>a</td>
+				<td><b>0.09-0.11 (1555)</b></td>
+				<td><b>0.88-0.89 (13718)</b></td>
+				<td><b>0.01-0.01 (169)</b></td>
+			</tr>
+			<tr>
+				<td>b</td>
+				<td>0.03-0.03 (9618)</td>
+				<td>0.62-0.63 (205084)</td>
+				<td>0.34-0.35 (113382)</td>
+			</tr>
+			<tr>
+				<td>c</td>
+				<td>0.02-0.02 (3340)</td>
+				<td>0.66-0.67 (109896)</td>
+				<td>0.31-0.32 (51553)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 2</small>
+	<br>
+</div>
+<p>为简洁起见，我们不会在这里演示如何手动计算出可信区间（它们涉及评估<a href="https://en.wikipedia.org/wiki/Beta_distribution" target="_blank" rel="noopener noreferrer"> beta 分布</a>的<a href="https://en.wikipedia.org/wiki/Quantile_function" target="_blank" rel="noopener noreferrer">分位数函数</a> ）。尽管如此，修订后的表格显示更多数据导致可信区间缩小：注意第一行总共出现 15442 次，而第二行总共出现 328084 次。</p>
+<p>为了确定重要的序列，我们使用比上述稍微复杂一些的马尔可夫链。作为中间步骤，我们先考虑每个表项对应三个端点序列的情况（而不是上面提到的两个），以下是一个示例表格：</p>
+<div id="html-block-k2s" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">会话中的已知先行端点</td>
+				<td colspan="3">会话中下一个端点的估计概率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>aa</td>
+				<td><b>0.09-0.13 (173)</b></td>
+				<td><b>0.86-0.90 (1367)</b></td>
+				<td><b>0.00-0.02 (13)</b></td>
+			</tr>
+			<tr>
+				<td>ba</td>
+				<td><b>0.09-0.11 (940)</b></td>
+				<td><b>0.88-0.90 (8552)</b></td>
+				<td><b>0.01-0.01 (109)</b></td>
+			</tr>
+			<tr>
+				<td>ca</td>
+				<td><b>0.09-0.12 (357)</b></td>
+				<td><b>0.87-0.90 (2945)</b></td>
+				<td><b>0.01-0.02 (35)</b></td>
+			</tr>
+			<tr>
+				<td>ab</td>
+				<td>0.02-0.02 (272)</td>
+				<td>0.56-0.58 (7823)</td>
+				<td>0.40-0.42 (5604)</td>
+			</tr>
+			<tr>
+				<td>bb</td>
+				<td>0.03-0.03 (6067)</td>
+				<td>0.60-0.60 (122796)</td>
+				<td>0.37-0.37 (75801)</td>
+			</tr>
+			<tr>
+				<td>cb</td>
+				<td>0.03-0.03 (3279)</td>
+				<td>0.68-0.68 (74449)</td>
+				<td>0.29-0.29 (31960)</td>
+			</tr>
+			<tr>
+				<td>ac</td>
+				<td>0.01-0.09 (6)</td>
+				<td>0.77-0.91 (144)</td>
+				<td>0.06-0.19 (19)</td>
+			</tr>
+			<tr>
+				<td>bc</td>
+				<td>0.02-0.02 (2326)</td>
+				<td>0.77-0.77 (87215)</td>
+				<td>0.21-0.21 (23612)</td>
+			</tr>
+			<tr>
+				<td>cc</td>
+				<td>0.02-0.02 (1008)</td>
+				<td>0.43-0.44 (22527)</td>
+				<td>0.54-0.55 (27919)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 3</small>
+	<br>
+</div>
+<p>表 3 再次列出观察到 <em>a</em> 、<em>b</em> 或 <em>c</em> 作为会话中下一个端点的估计概率，但基于已知会话中的前两个端点。也就是说，第 3 行区间值为 0.09-0.13 的格意味着，已知前两个端点为 <em>ca</em> 时，观察到 <em>a</em> 作为下一个端点的概率具有从 9% 到 13% 的可信区间，无论 <em>&nbsp;ca</em> 之前是否有任何端点。用行话来说，我们说上表代表一个<strong>二</strong>阶马尔可夫链。这是因为表中的项表示，在知道前两个端点作为<strong>上下文</strong>的情况下观察到下一个端点的概率。</p>
+<p>作为一个特例，零阶马尔可夫链仅仅表示会话中接口的分布。我们可以将“空上下文”对应的一行的概率列表如下：</p>
+<div id="html-block-k3d" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">会话中的已知先行端点</td>
+				<td colspan="3">会话中下一个端点的估计概率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td>0.03-0.03 (15466)</td>
+				<td>0.64-0.65 (328732)</td>
+				<td>0.32-0.33 (165117)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 4</small>
+	<br>
+</div>
+<p>请注意，表 4 中的概率并不仅仅代表会话中没有先行端点的情况。相反，概率是会话中端点出现的情况，适用于一般情况下，我们不知道前面的端点，也不管以前出现了多少个端点。&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>回到我们识别重要序列的任务，一种可能的方法可能是简单地使用某个固定阶数 <em>N</em> 的马尔可夫链。例如，如果我们将表 3 中可信区间下限的阈值设为 0.85，则总共会保留 3 个序列。另一方面，这种方法有两个值得注意的限制：</p>
+<ol>
+	<li>我们需要一种方法为模型阶数 <em>N</em> 选择合适的值。</li>
+	<li>由于模型阶保持固定，则已识别序列均具有相同的长度 <em>N</em> +1。</li>
+</ol>
+<h3><strong>变阶马尔可夫链</strong></h3>
+<p><strong>变阶马尔可夫链</strong>（VOMC）是上述固定阶马尔可夫链的更强大扩展，它解决了上述限制。 VOMC 利用这样一个事实，即对于固定阶数<em>N</em>的马尔可夫链的某些选定值，概率表可能包括统计冗余信息：让我们比较一下上面的表 3 和表 2，并考虑表 3 中对应上下文 <em>aa</em>、 <em>ba</em> 、 <em>ca</em> （这 3 个上下文共享 <em>a</em> 作为后缀）的粗体行。</p>
+<p>对于所有 3 个可能的下一个端点<em> a, b, c</em> ，这些行给出了可信区间，这些区间与表 2 中对应上下文 <em>a</em> 的各自估计重叠 （也以粗体表示）。我们可以将这些重叠的区间解释为，在已知 <em>a</em> 为先行端点<em>的情况下，概率估计之间不存在明显的差异</em> 。由于 a 的先行端点是什么对下一个端点的概率没有明显影响 ，我们可以认为表 3 中的这 3 行是冗余的：我们可以通过替换成表 2 中对应于上下文<em> a</em> 的行来“折叠”它们。</p>
+<p>按所述修改表 3 的结果如下（新行以粗体表示）：</p>
+<div id="html-block-k4l" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<td rowspan="2" style="width:30%">会话中已知的先行端点</td>
+				<td colspan="3">会话中下一个端点的估计概率</td>
+			</tr>
+			<tr>
+				<td>a</td>
+				<td>b</td>
+				<td>c</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> a</td>
+				<td><b>0.09-0.11 (1555)</b></td>
+				<td><b>0.88-0.89 (13718)</b></td>
+				<td><b>0.01-0.01 (169)</b></td>
+			</tr>
+			<tr>
+				<td>ab</td>
+				<td>0.02-0.02 (272)</td>
+				<td>0.56-0.58 (7823)</td>
+				<td>0.40-0.42 (5604)</td>
+			</tr>
+			<tr>
+				<td>ac</td>
+				<td>0.03-0.03 (6067)</td>
+				<td>0.60-0.60 (122796)</td>
+				<td>0.37-0.37 (75801)</td>
+			</tr>
+			<tr>
+				<td>bb</td>
+				<td>0.03-0.03 (3279)</td>
+				<td>0.68-0.68 (74449)</td>
+				<td>0.29-0.29 (31960)</td>
+			</tr>
+			<tr>
+				<td>bc</td>
+				<td>0.01-0.09 (6)</td>
+				<td>0.77-0.91 (144)</td>
+				<td>0.06-0.19 (19)</td>
+			</tr>
+			<tr>
+				<td>cb</td>
+				<td>0.02-0.02 (2326)</td>
+				<td>0.77-0.77 (87215)</td>
+				<td>0.21-0.21 (23612)</td>
+			</tr>
+			<tr>
+				<td>cc</td>
+				<td>0.02-0.02 (1008)</td>
+				<td>0.43-0.44 (22527)</td>
+				<td>0.54-0.55 (27919)</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>表 5</small>
+	<br>
+</div>
+<p>表 5 代表一个 VOMC，因为上下文长度可变：在示例中，上下文长度为 1 和 2。由此可见，表中的条目表示长度在 2 到 3 个端点之间变化的序列，具体取决于上下文长度。对所述折叠上下文的方法进行推广，可以得到如下在离线环境中学习一种 VOMC 的算法草图：</p>
+<p><code>(1) 定义 包含会话中下一个端点的估计概率的表 <em>T ，给定会话中可选的 0, 1, 2, …, N_max</em> 个端点。也就是说，通过连接对应于固定阶数<em> 0, 1, 2, …, N_max</em> 的马尔可夫链的行来形成一个表。</code></p>
+<p><code>(2) is_modified := true&nbsp;</code></p>
+<p><code>(3) DO WHILE is_modified</code></p>
+<p><code> (4) <em>D</em> :=<em> T</em> 中不是 T 中至少 1 个其他上下文后缀的<em>所有上下文</em></code></p>
+<p><code> (5) is_modified = false</code></p>
+<p><code> (6) FOR <em>ctx</em> IN <em>C</em></code></p>
+<p><code> (7) IF length(<em>ctx</em>) &gt; 0</code></p>
+<p><code> (8) <em>parent_ctx</em> := 通过删除<em>ctx</em> 中最左边端点而获得的上下文。</code></p>
+<p><code> (9) IF is_collapsible(<em>ctx</em>, <em>parent_ctx</em>)</code></p>
+<p><code> (10) 修改 <em>T</em> ，丢弃 <em>ctx</em></code></p>
+<p><code> (11) is_modified = true</code></p>
+<p>在以上伪代码中， length(<em> ctx</em>) 是上下文 <em>ctx</em> 的长度。在第 9 行，is_colrapsible() 涉及比较上下文 <em>ctx</em> 和 <em>&nbsp;parent_ctx</em> ，按照生成表 5 所描述的方式：is_colrapsible() 评估为 true，当且仅当在我们为每一个可能的下一个端点比较上下文 <em>ctx</em> 和 <em>&nbsp;parent_ctx</em> 时，观察到所有可信区间重叠。最大序列长度为 <em>N_max</em> +1<em> ，</em> 其中<em> N_max</em> 是某个常量。在第 4 行， 如果我们可以通过在上下文 <em>q</em> 前添加零个或多个端点来构成另一个上下文 <em>p， 则 </em>q<strong> </strong>&nbsp;是 <em>p</em> 的后缀。 （根据这个定义，上面提到的 0 阶模型的“空上下文”是 <em>T</em> 中所有上下文的后缀。）上述算法草图是 Rissanen [<a href="https://ieeexplore.ieee.org/abstract/document/1056741" target="_blank" rel="noopener noreferrer"> 1</a> ]和 Ron 等人首先提出的想法的一个变体。 [<a href="https://link.springer.com/article/10.1023/A:1026490906255" target="_blank" rel="noopener noreferrer"> 2</a> ]。</p>
+<p>最后，我们将结果表 <em>T</em> 中的条目作为我们的重要序列。因此，应用 VOMC 的结果是一组我们认为重要的序列。然而，对于序列分析，我们认为对序列进行排名也很有用。我们通过计算一个 0.0 到 1.0 之间的“优先级分数”来做到这一点，即序列中出现的次数除以序列中最后一个端点的出现次数。因此，优先顺序分数接近 1.0 表示给定端点几乎总是在序列中的其余端点之前。通过这种方式，手动检查最高分序列就成为了在我们的序列缓解产品中创建优先规则的一种半自动启发式方法。</p>
+<h3><strong>大规模学习序列</strong></h3>
+<p>以上内容是我们在序列分析中使用的统计机器学习技术的高层概述。实际上，我们设计了一种高效的算法，它不需要事先的训练步骤，而是随着数据到达不断更新模型，并生成重要序列的频繁更新摘要。这种方法使我们能够克服在此博客文章中未涉及的内存成本等额外挑战。最重要的是，上述算法草图的简单实现仍会导致表中的行数（上下文）随着最大序列长度的增加而激增。我们需要解决的另一个挑战是确保我们的系统能够处理海量 API，而不会对 CPU 负载产生不利影响。我们在前期使用了一种水平可扩展的自适应采样策略，以便对海量 API 进行更激进的采样。我们的算法随后处理这些采样的 API 请求流。在客户入驻后，序列会随着时间的推移进行组装和学习，因此重要序列的当前摘要表示一个大约24小时的回顾区间。序列分析进一步将序列存储在 <a href="https://blog.cloudflare.com/tag/clickhouse" target="_blank" rel="noopener noreferrer">Clickhouse</a> 中，并通过一个 <a href="https://developers.cloudflare.com/analytics/graphql-api" target="_blank" rel="noopener noreferrer">GraphQL API</a> 和 <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare 仪表板</a>显示它们。希望实施序列规则的客户可以使用<a href="https://developers.cloudflare.com/api-shield/security/sequence-mitigation" target="_blank" rel="noopener noreferrer">序列分析</a>来执行此操作。序列分析负责确保规则在 Cloudflare 的全球网络上以分布式方式共享和匹配，这是另外一个令人兴奋的话题，我们将在未来的博客文章中讨论。</p>
+<h3><strong>下一步</strong></h3>
+<p>现在，您已经对我们如何揭示重要的 API 请求序列有了更好的理解，请继续关注本系列后续的博客文章，我们将描述我们如何发现客户可能想要阻止的异常 API 请求序列。目前，API Gateway 客户可以通过两种方式开始：使用序列分析来探索重要的 API 请求序列，使用序列缓解来强制执行 API 请求序列。尚未购买 API Gateway 的 Enterprise 客户可在 Cloudflare 仪表板中<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fapi-shield" target="_blank" rel="noopener noreferrer">启用 API Gateway 试用</a> ，或联系帐户经理。</p>

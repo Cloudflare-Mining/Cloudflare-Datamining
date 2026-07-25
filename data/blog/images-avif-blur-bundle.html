@@ -1,197 +1,139 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/images-avif-blur-bundle">简体中文</a> and <a href="https://blog.cloudflare.com/ja-jp/images-avif-blur-bundle">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Qn3rboUqsLu0XCr6YnD7s/c73d363d36d47030e574422161bfd648/images-avif-blur-bundle.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Two months ago we <a href="https://blog.cloudflare.com/announcing-cloudflare-images">launched</a> Cloudflare Images for everyone, and we are amazed about the adoption and the feedback we received.</p>
-	<p>Let’s start with some numbers:</p>
-	<p>More than <b>70 million</b> images delivered per day on average in the week of November 5 to 12.</p>
-	<p>More than <b>1.5 million</b> images have been uploaded so far, growing faster every day.</p>
-	<p>But we are just getting started and are happy to announce the release of the most requested features, first we talk about the AVIF support for Images, converting as many images as possible with <b>AVIF</b> results in highly compressed, fast delivered images without compromising on the quality.</p>
-	<p>Secondly we introduce <b>blur</b>. By blurring an image, in combination with the already supported protection of private images via <a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">signed URL</a>, we make Cloudflare Images a great solution for previews for paid content.</p>
-	<p>For many of our customers it is important to be able to serve Images from their <b>own domain</b> and not only via imagedelivery.net. Here we show an easy solution for this using a custom Worker or a special URL.</p>
-	<p>Last but not least we announce the launch of new attractively priced <b>bundles</b> for both Cloudflare Images and Stream.</p>
-	<div class="flex anchor relative">
-		<h3 id="images-supports-avif">Images supports AVIF</h3>
-		<a href="https://blog.cloudflare.com/#images-supports-avif" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We <a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">announced support</a> for the new AVIF image format in Image Resizing product last year.</p>
-	<p>Last month we added AVIF support in Cloudflare Images. It compresses images significantly better than older-generation formats such as WebP and JPEG. Today, AVIF image format is supported both in Chrome and Firefox. <a href="https://caniuse.com/avif" target="_blank" rel="noopener noreferrer">Globally, almost 70%</a> of users have a web browser that supports AVIF.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-avif">What is AVIF</h3>
-		<a href="https://blog.cloudflare.com/#what-is-avif" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As we <a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">explained previously</a>, AVIF is a combination of the HEIF ISO standard, and a royalty-free AV1 codec by <a href="https://aomedia.org" target="_blank" rel="noopener noreferrer">Mozilla, Xiph, Google, Cisco, and many others</a>.</p>
-	<p>“Currently, JPEG is the most popular image format on the web. It's doing remarkably well for its age, and it will likely remain popular for years to come thanks to its excellent compatibility. There have been many previous attempts at replacing JPEG, such as JPEG 2000, JPEG XR, and WebP. However, these formats offered only modest compression improvements and didn't always beat JPEG on image quality. Compression and image quality in <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank" rel="noopener noreferrer">AVIF is better than in all of them, and by a wide margin</a>.”<sup>1</sup></p>
-	<div class="flex anchor relative">
-		<h3 id="how-cloudflare-images-supports-avif">How Cloudflare Images supports AVIF</h3>
-		<a href="https://blog.cloudflare.com/#how-cloudflare-images-supports-avif" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As a reminder, <a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">image delivery</a> is done through the Cloudflare managed imagedelivery.net domain. It is powered by Cloudflare Workers. We have the following logic to request the AVIF format based on the Accept HTTP request header:</p>
-	<pre class="language-javascript"><code class="language-javascript">const WEBP_ACCEPT_HEADER = /image\/webp/i;
-const AVIF_ACCEPT_HEADER = /image\/avif/i;
-
-addEventListener("fetch", (event) =&gt; {
-  event.respondWith(handleRequest(event));
-});
-
-async function handleRequest(event) {
-  const request = event.request;
-  const url = new URL(request.url);
-  
-  const headers = new Headers(request.headers);
-
-  const accept = headers.get("accept");
-
-  let format = undefined;
-
-  if (WEBP_ACCEPT_HEADER.test(accept)) {
-    format = "webp";
-  }
-
-  if (AVIF_ACCEPT_HEADER.test(accept)) {
-    format = "avif";
-  }
-
-  const resizingReq = new Request(url, {
-    headers,
-    cf: {
-      image: { ..., format },
-    },
-  });
-
-  return fetch(resizingReq);
-}</code></pre>
-	<p>Based on the Accept header, the logic in the Worker detects if WebP or AVIF format can be served. The request is passed to Image Resizing. If the image is available in the Cloudflare cache it will be served immediately, otherwise the image will be resized, transformed, and cached. This approach ensures that for clients without AVIF format support we deliver images in WebP or JPEG formats.</p>
-	<p>The benefit of Cloudflare Images product is that we added AVIF support without a need for customers to change a single line of code from their side.</p>
-	<p>The transformation of an image to AVIF is compute-intensive but leads to a significant benefit in file-size. We are always weighing the cost and benefits in the decision which format to serve.</p>
-	<p>It Is worth noting that all the conversions to WebP and AVIF formats happen on the request phase for image delivery at the moment. We will be adding the ability to convert images on the upload phase in the future.</p>
-	<div class="flex anchor relative">
-		<h3 id="introducing-blur">Introducing Blur</h3>
-		<a href="https://blog.cloudflare.com/#introducing-blur" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One of the most requested features for Images and Image Resizing was adding support for blur. We recently added the support for blur both via <a href="https://developers.cloudflare.com/images/image-resizing/url-format" target="_blank" rel="noopener noreferrer">URL format</a> and <a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers" target="_blank" rel="noopener noreferrer">with Cloudflare Workers</a>.</p>
-	<p>Cloudflare Images uses variants. When you create a variant, you can define properties including variant name, width, height, and whether the variant should be publicly accessible. Blur will be available as a new option for variants via <a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant" target="_blank" rel="noopener noreferrer">variant API</a>:</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants" \
-     -H "Authorization: Bearer &lt;api_token&gt;" \
-     -H "Content-Type: application/json" \
-     --data '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</code></pre>
-	<p>One of the use cases for using blur with Cloudflare Images is to control access to the premium content.</p>
-	<p>The customer will upload the image that requires an access token:</p>
-	<pre class="language-bash"><code class="language-bash">curl -X POST "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1" \
-     -H "Authorization: Bearer &lt;api_token&gt;"
-     --form 'file=@./&lt;file_name&gt;' \
-     --form 'requireSignedURLs=true'</code></pre>
-	<p>Using the variant we defined via API we can fetch the image without providing a signature:</p><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps"><!--kg-card-end: html-->
-	<p>To access the protected image a <a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">valid signed URL</a> will be required:</p><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/public?sig=d67d49055d652b8fb2575b3ec11f0e1a8fae3932d3e516d381e49e498dd4a96e" alt="Unblurred example picture of lava lamps">
-	Lava lamps in the Cloudflare lobby. Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a>
-	<br><!--kg-card-end: html-->
-	<p>The combination of image blurring and restricted access to images could be integrated into many scenarios and provides a powerful tool set for content publishers.</p>
-	<p>The functionality to define a variant with a blur option is coming soon in the Cloudflare dashboard.</p>
-	<div class="flex anchor relative">
-		<h3 id="serving-images-from-custom-domains">Serving images from custom domains</h3>
-		<a href="https://blog.cloudflare.com/#serving-images-from-custom-domains" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>One important use case for Cloudflare Images customers is to serve images from custom domains. It could improve latency and loading performance by not requiring additional TLS negotiations on the client. Using Cloudflare Workers customers can add this functionality today using the following example:</p>
-	<pre class="language-bash"><code class="language-bash">const IMAGE_DELIVERY_HOST = "https://imagedelivery.net";
-
-addEventListener("fetch", async (event) =&gt; {
-  event.respondWith(handleRequest(event.request));
-});
-
-async function handleRequest(request) {
-  const url = new URL(request.url);
-  const { pathname, search } = url;
-
-  const destinationURL = IMAGE_DELIVERY_HOST + pathname + search;
-  return fetch(new Request(destinationURL));
-}</code></pre>
-	<p>For simplicity, the Workers script makes the redirect from the domain where it’s deployed to the imagedelivery.net. We assume the same format as for Cloudflare Images URLs:</p>
-	<pre class="language-bash"><code class="language-bash">https://&lt;customdomain.net&gt;/&lt;encoded account id&gt;/&lt;image id&gt;/&lt;variant name&gt;</code></pre>
-	<p>The Worker could be adjusted to fit customer needs like:</p>
-	<ul>
-		<li>
-			<p>Serving images from a specific domains' path e.g. /images/</p>
-		</li>
-		<li>
-			<p>Populate account id or variant name automatically</p>
-		</li>
-		<li>
-			<p>Map Cloudflare Images to custom URLs altogether</p>
-		</li>
-	</ul>
-	<p>For customers who just want the simplicity of serving Cloudflare Images from their domains on Cloudflare we will be adding the ability to serve Cloudflare Images using the following format:</p>
-	<pre class="language-bash"><code class="language-bash">https://&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</code></pre>
-	<p>Image delivery will be supported from all customer domains under the same Cloudflare account where Cloudflare Images subscription is activated. This will be available to all Cloudflare Images customers before the holidays.</p>
-	<div class="flex anchor relative">
-		<h3 id="images-and-stream-bundle">Images and Stream Bundle</h3>
-		<a href="https://blog.cloudflare.com/#images-and-stream-bundle" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Creator platforms, eCommerce, and many other products have one thing in common: having an easy and accessible way to upload, store and deliver your images and videos in the best and most affordable way is vital.</p>
-	<p>We teamed up with the Stream team to create a set of bundles that make it super easy to get started with your product.</p>
-	<p>The Starter bundle is perfect for experimenting and a first MVP. For just $10 per month it is 50% cheaper than the unbundled option, and includes enough to get started:</p>
-	<ul>
-		<li>
-			<p>Stream: 1,000 stored minutes and 5,000 minutes served</p>
-		</li>
-		<li>
-			<p>Images: 100,000 stored images and 500,000 images served</p>
-		</li>
-	</ul>
-	<p>For larger and fast scaling applications we have the Creator Bundle for $50 per month which saves over 60% compared to the unbundled products. It includes everything to start scaling:</p>
-	<ul>
-		<li>
-			<p>Stream: 10,000 stored minutes and 50,000 minutes served</p>
-		</li>
-		<li>
-			<p>Images: 500,000 stored images and 1,000,000 images served</p>
-		</li>
-	</ul><!--kg-card-begin: html--><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/fb149b8a-8d93-494d-74da-0a88b8ffd600/public" alt="Screenshot of the bundle selection UI, mentioning the price and what's included"><!--kg-card-end: html-->
-	<p>These new bundles will be available to all customers from the end of November.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We are not stopping here, and we already have the next features for Images lined up. One of them is Images Analytics. Having great analytics for a product is vital, and so we will be introducing analytics functionality for Cloudflare Images for all customers to be able to keep track of all images and their usage.</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Watch on Cloudflare TV</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e5726d54ab932f49c1431963272e3222?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe5726d54ab932f49c1431963272e3222%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p>
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<hr>
-	<p><sup>1</sup><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif</a></p>
+<p>Two months ago we <a href="https://blog.cloudflare.com/announcing-cloudflare-images">launched</a> Cloudflare Images for everyone, and we are amazed about the adoption and the feedback we received.</p>
+<p>Let’s start with some numbers:</p>
+<p>More than <strong>70 million</strong> images delivered per day on average in the week of November 5 to 12.</p>
+<p>More than <strong>1.5 million</strong> images have been uploaded so far, growing faster every day.</p>
+<p>But we are just getting started and are happy to announce the release of the most requested features, first we talk about the AVIF support for Images, converting as many images as possible with <strong>AVIF</strong> results in highly compressed, fast delivered images without compromising on the quality.</p>
+<p>Secondly we introduce <strong>blur</strong>. By blurring an image, in combination with the already supported protection of private images via <a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">signed URL</a>, we make Cloudflare Images a great solution for previews for paid content.</p>
+<p>For many of our customers it is important to be able to serve Images from their <strong>own domain</strong> and not only via imagedelivery.net. Here we show an easy solution for this using a custom Worker or a special URL.</p>
+<p>Last but not least we announce the launch of new attractively priced <strong>bundles</strong> for both Cloudflare Images and Stream.</p>
+<h3>Images supports AVIF</h3>
+<p>We <a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing">announced support</a> for the new AVIF image format in Image Resizing product last year.</p>
+<p>Last month we added AVIF support in Cloudflare Images. It compresses images significantly better than older-generation formats such as WebP and JPEG. Today, AVIF image format is supported both in Chrome and Firefox. <a href="https://caniuse.com/avif" target="_blank" rel="noopener noreferrer">Globally, almost 70%</a> of users have a web browser that supports AVIF.</p>
+<h3>What is AVIF</h3>
+<p>As we <a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">explained previously</a>, AVIF is a combination of the HEIF ISO standard, and a royalty-free AV1 codec by <a href="https://aomedia.org" target="_blank" rel="noopener noreferrer">Mozilla, Xiph, Google, Cisco, and many others</a>.</p>
+<p>“Currently, JPEG is the most popular image format on the web. It's doing remarkably well for its age, and it will likely remain popular for years to come thanks to its excellent compatibility. There have been many previous attempts at replacing JPEG, such as JPEG 2000, JPEG XR, and WebP. However, these formats offered only modest compression improvements and didn't always beat JPEG on image quality. Compression and image quality in <a href="https://netflixtechblog.com/avif-for-next-generation-image-coding-b1d75675fe4" target="_blank" rel="noopener noreferrer">AVIF is better than in all of them, and by a wide margin</a>.”<sup>1</sup></p>
+<h3>How Cloudflare Images supports AVIF</h3>
+<p>As a reminder, <a href="https://blog.cloudflare.com/building-cloudflare-images-in-rust-and-cloudflare-workers/#image-delivery">image delivery</a> is done through the Cloudflare managed imagedelivery.net domain. It is powered by Cloudflare Workers. We have the following logic to request the AVIF format based on the Accept HTTP request header:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> WEBP_ACCEPT_HEADER</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-a0a0a0"> /image</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\/</span><span class="sk-032f62-a0a0a0">webp/</span><span class="sk-d73a49-ffc799">i</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> AVIF_ACCEPT_HEADER</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-a0a0a0"> /image</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\/</span><span class="sk-032f62-a0a0a0">avif/</span><span class="sk-d73a49-ffc799">i</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event));</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> request</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> event.request;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> headers</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">(request.headers);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> accept</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"accept"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> format </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">WEBP_ACCEPT_HEADER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">test</span><span class="sk-24292e-fff">(accept)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    format </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "webp"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-fff">AVIF_ACCEPT_HEADER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">test</span><span class="sk-24292e-fff">(accept)) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    format </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "avif"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> resizingReq</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(url, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers,</span></span>
+<span class="line"><span class="sk-24292e-fff">    cf: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      image: { </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">, format },</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(resizingReq);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>Based on the Accept header, the logic in the Worker detects if WebP or AVIF format can be served. The request is passed to Image Resizing. If the image is available in the Cloudflare cache it will be served immediately, otherwise the image will be resized, transformed, and cached. This approach ensures that for clients without AVIF format support we deliver images in WebP or JPEG formats.</p>
+<p>The benefit of Cloudflare Images product is that we added AVIF support without a need for customers to change a single line of code from their side.</p>
+<p>The transformation of an image to AVIF is compute-intensive but leads to a significant benefit in file-size. We are always weighing the cost and benefits in the decision which format to serve.</p>
+<p>It Is worth noting that all the conversions to WebP and AVIF formats happen on the request phase for image delivery at the moment. We will be adding the ability to convert images on the upload phase in the future.</p>
+<h3>Introducing Blur</h3>
+<p>One of the most requested features for Images and Image Resizing was adding support for blur. We recently added the support for blur both via <a href="https://developers.cloudflare.com/images/image-resizing/url-format" target="_blank" rel="noopener noreferrer">URL format</a> and <a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers" target="_blank" rel="noopener noreferrer">with Cloudflare Workers</a>.</p>
+<p>Cloudflare Images uses variants. When you create a variant, you can define properties including variant name, width, height, and whether the variant should be publicly accessible. Blur will be available as a new option for variants via <a href="https://api.cloudflare.com/#cloudflare-images-variants-create-a-variant" target="_blank" rel="noopener noreferrer">variant API</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1/variants"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     --data</span><span class="sk-032f62-99ffe4"> '{"id":"blur","options":{"metadata":"none","blur":20},"neverRequireSignedURLs":true}'</span></span></code></pre>
+</div>
+<p>One of the use cases for using blur with Cloudflare Images is to control access to the premium content.</p>
+<p>The customer will upload the image that requires an access token:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/accounts/9a7806061c88ada191ed06f989cc3dac/images/v1"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     -H</span><span class="sk-032f62-99ffe4"> "Authorization: Bearer &lt;api_token&gt;"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     --form</span><span class="sk-032f62-99ffe4"> 'file=@./&lt;file_name&gt;'</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">     --form</span><span class="sk-032f62-99ffe4"> 'requireSignedURLs=true'</span></span></code></pre>
+</div>
+<p>Using the variant we defined via API we can fetch the image without providing a signature:</p>
+<div id="html-block-k2u" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/blur20" alt="Blurred example picture of lava lamps"></div>
+<p>To access the protected image a <a href="https://developers.cloudflare.com/images/cloudflare-images/serve-images/serve-private-images-using-signed-url-tokens" target="_blank" rel="noopener noreferrer">valid signed URL</a> will be required:</p>
+<div id="html-block-k30" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/dfc72df8-863f-46e3-7bba-a21f9795e401/public?sig=d67d49055d652b8fb2575b3ec11f0e1a8fae3932d3e516d381e49e498dd4a96e" alt="Unblurred example picture of lava lamps">
+	Lava lamps in the Cloudflare lobby. Courtesy of <a href="https://twitter.com/mahtin/status/888251632550424577">@mahtin</a>
+	<br>
+</div>
+<p>The combination of image blurring and restricted access to images could be integrated into many scenarios and provides a powerful tool set for content publishers.</p>
+<p>The functionality to define a variant with a blur option is coming soon in the Cloudflare dashboard.</p>
+<h3>Serving images from custom domains</h3>
+<p>One important use case for Cloudflare Images customers is to serve images from custom domains. It could improve latency and loading performance by not requiring additional TLS negotiations on the client. Using Cloudflare Workers customers can add this functionality today using the following example:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">const</span><span class="sk-032f62-99ffe4"> IMAGE_DELIVERY_HOST</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "https://imagedelivery.net"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener(</span><span class="sk-6f42c1-ffc799">"fetch"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> async</span><span class="sk-24292e-fff"> (event) =</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  event.respondWith(handleRequest(event.request</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> url</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request.url</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> pathname,</span><span class="sk-032f62-99ffe4"> search</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> url</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> destinationURL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> IMAGE_DELIVERY_HOST</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> pathname</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> search</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">new</span><span class="sk-032f62-99ffe4"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">destinationURL</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>For simplicity, the Workers script makes the redirect from the domain where it’s deployed to the imagedelivery.net. We assume the same format as for Cloudflare Images URLs:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/&lt;encoded </span><span class="sk-032f62-99ffe4">account</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">image</span><span class="sk-032f62-99ffe4"> i</span><span class="sk-24292e-fff">d</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">/</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">variant</span><span class="sk-032f62-99ffe4"> nam</span><span class="sk-24292e-fff">e</span><span class="sk-d73a49-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p>The Worker could be adjusted to fit customer needs like:</p>
+<ul>
+	<li>Serving images from a specific domains' path e.g. /images/</li>
+	<li>Populate account id or variant name automatically</li>
+	<li>Map Cloudflare Images to custom URLs altogether</li>
+</ul>
+<p>For customers who just want the simplicity of serving Cloudflare Images from their domains on Cloudflare we will be adding the ability to serve Cloudflare Images using the following format:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">https://</span><span class="sk-24292e-fff">&lt;customdomain.net&gt;/cdn-cgi/imagedelivery/&lt;encrypted_account_id&gt;/&lt;_image_id&gt;/&lt;variant_name&gt;</span></span></code></pre>
+</div>
+<p>Image delivery will be supported from all customer domains under the same Cloudflare account where Cloudflare Images subscription is activated. This will be available to all Cloudflare Images customers before the holidays.</p>
+<h3>Images and Stream Bundle</h3>
+<p>Creator platforms, eCommerce, and many other products have one thing in common: having an easy and accessible way to upload, store and deliver your images and videos in the best and most affordable way is vital.</p>
+<p>We teamed up with the Stream team to create a set of bundles that make it super easy to get started with your product.</p>
+<p>The Starter bundle is perfect for experimenting and a first MVP. For just $10 per month it is 50% cheaper than the unbundled option, and includes enough to get started:</p>
+<ul>
+	<li>Stream: 1,000 stored minutes and 5,000 minutes served</li>
+	<li>Images: 100,000 stored images and 500,000 images served</li>
+</ul>
+<p>For larger and fast scaling applications we have the Creator Bundle for $50 per month which saves over 60% compared to the unbundled products. It includes everything to start scaling:</p>
+<ul>
+	<li>Stream: 10,000 stored minutes and 50,000 minutes served</li>
+	<li>Images: 500,000 stored images and 1,000,000 images served</li>
+</ul>
+<div id="html-block-k48" class="html-block"><img src="https://imagedelivery.net/r1xBEzoDl4p34DP7QLrECw/fb149b8a-8d93-494d-74da-0a88b8ffd600/public" alt="Screenshot of the bundle selection UI, mentioning the price and what's included"></div>
+<p>These new bundles will be available to all customers from the end of November.</p>
+<h3>What’s next</h3>
+<p>We are not stopping here, and we already have the next features for Images lined up. One of them is Images Analytics. Having great analytics for a product is vital, and so we will be introducing analytics functionality for Cloudflare Images for all customers to be able to keep track of all images and their usage.</p>
+<h3>Watch on Cloudflare TV</h3>
+<div id="html-block-k4h" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/e5726d54ab932f49c1431963272e3222?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe5726d54ab932f49c1431963272e3222%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+	<p></p>
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/e7e82657a9463b085dcb6f2ee2142c94?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2Fe7e82657a9463b085dcb6f2ee2142c94%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m4s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><sup>1</sup><a href="https://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif">http://blog.cloudflare.com/generate-avif-images-with-image-resizing/#what-is-avif</a></p>

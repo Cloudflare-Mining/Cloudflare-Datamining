@@ -1,304 +1,240 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5fjJVEAUPyTxUALPA8laM1/ca02561f0af0380c5fc3ab07b988cb7a/using-webpack-to-bundle-workers.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>A brief introduction to bundling your Service Worker scripts.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4NwkPVtyHfmAOZMPI2Z4as/47366eb8eb56dc184584166cdaab3bff/photo-1523212727988-82c430c79c8e" alt="" class="kg-image" width="1080" height="720" loading="lazy">
-
-	</figure>
-	<p>Photo by <a href="https://unsplash.com/@joyceromero?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Joyce Romero</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
-	<pre class="language-javascript"><code class="language-javascript">// The simplest Service Worker: A passthrough script
-addEventListener('fetch', event =&gt; {
-  event.respondWith(fetch(event.request))
-})</code></pre>
-	<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <i>absolutely no need</i> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="noopener noreferrer">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
-	<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">Webpack</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="webpack">Webpack</h3>
-		<a href="https://blog.cloudflare.com/#webpack" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s just say Webpack is a module bundler. That is, if you have code in multiple files, and you tie them together like this:</p>
-	<div class="flex anchor relative">
-		<h4 id="app-js">app.js</h4>
-		<a href="https://blog.cloudflare.com/#app-js" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-javascript"><code class="language-javascript">// Import the CoolSocks class from dresser.js
-import { CoolSocks } from './dresser'
-import { FancyShoes } from './closet'</code></pre>
-	<p>Then you can tell webpack to follow all of those import statements to produce a single file. This is useful because Service Workers running on Cloudflare need to be a single file as well.</p>
-	<div class="flex anchor relative">
-		<h3 id="show-me-the-code">Show me the code</h3>
-		<a href="https://blog.cloudflare.com/#show-me-the-code" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Remember when I said something about predicting weather? Let’s build a worker with TypeScript that responds with the current weather.</p>
-	<p>Make sure to have <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">NodeJS</a> installed.</p>
-	<pre class="language-bash"><code class="language-bash"># Make a new project directory
-mkdir weather-worker
-cd weather-worker
-mkdir src dist
-# Initialize project and install dependencies
-npm init
-npm install --save-dev \
-  awesome-typescript-loader \
-  typescript \
-  webpack \
-  webpack-cli \
-  workers-preview
-touch src/index.ts src/fetch-weather.ts webpack.config.js tsconfig.json</code></pre>
-	<p>You should now have a file in your project called <code>package.json</code>. Add the following code to that file:</p>
-	<pre class="language-javascript"><code class="language-javascript">  "scripts": {
-    "build": "webpack",
-    "build:watch": "webpack --watch",
-    "preview": "workers-preview &lt; dist/bundle.js"
-  }</code></pre>
-	<p>Now edit the following files to match what is shown:</p>
-	<div class="flex anchor relative">
-		<h4 id="tsconfig-json">tsconfig.json</h4>
-		<a href="https://blog.cloudflare.com/#tsconfig-json" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-javascript"><code class="language-javascript">{
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "esnext",
-    "lib": ["es2015", "webworker"],
-    "jsx": "react",
-    "noImplicitAny": true,
-    "preserveConstEnums": true,
-    "outDir": "./dist",
-    "moduleResolution": "node"
-  },
-  "include": ["src/*.ts", "src/**/*.ts", "src/*.tsx", "src/**/*.tsx"]
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="webpack-config-js">webpack.config.js</h4>
-		<a href="https://blog.cloudflare.com/#webpack-config-js" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-javascript"><code class="language-javascript">const path = require('path')
-
-module.exports = {
-  entry: {
-    bundle: path.join(__dirname, './src/index.ts'),
-  },
-
-  output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, 'dist'),
-  },
-
-  mode: process.env.NODE_ENV || 'development',
-
-  watchOptions: {
-    ignored: /node_modules|dist|\.js/g,
-  },
-
-  devtool: 'cheap-module-eval-source-map',
-
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
-    plugins: [],
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
-      },
-    ],
-  },
-}</code></pre>
-	<p>For newcomers, this file will seem incredibly cryptic. All I can say is just to accept it as magic for now. You’ll eventually understand what’s going on.</p>
-	<blockquote>
-		<p>A note about <code>devtool: 'cheap-module-eval-source-map'</code>. Specifying this type of sourcemap is fast, lightweight, and results in stacktraces much more representative of your source code. They’re not exact (yet!), but we’re getting there.</p>
-	</blockquote>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/18EkSrkR6zwUeYdaw5raii/bf076831c7dd2c8d485757721a21e9bb/Screen-Shot-2018-06-20-at-5.46.48-PM.png" alt="Fiddle Error" class="kg-image" width="1212" height="148" loading="lazy">
-
-	</figure>
-	<p><i>Cloudflare fiddle devtools uses source maps to point you to the correct source file. Click through to see the problematic line.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/246fUhbfWAx68lusG2fhKb/47265b387877e2d339a7c00cd4815722/Screen-Shot-2018-06-20-at-5.47.52-PM.png" alt="Fiddle error source" class="kg-image" width="2934" height="936" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h4 id="src-index-ts">src/index.ts</h4>
-		<a href="https://blog.cloudflare.com/#src-index-ts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-typescript"><code class="language-typescript">import { fetchWeather } from './fetch-weather'
-
-addEventListener('fetch', (event: FetchEvent) =&gt; {
-  event.respondWith(handleRequest(event.request))
-})
-
-async function handleRequest(request: Request) {
-  const weather = await fetchWeather('austin')
-  const body = `
-    ${weather.location.city}, ${weather.location.region}&lt;br&gt;
-    ${weather.item.condition.temp} ${weather.item.condition.text}
-  `.trim()
-
-  return new Response(body, {
-    headers: { 'Content-Type': 'text/html' },
-  })
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h4 id="src-fetch-weather-ts">src/fetch-weather.ts</h4>
-		<a href="https://blog.cloudflare.com/#src-fetch-weather-ts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-typescript"><code class="language-typescript">/**
- * Fetch the current weather conditions and forecast for a particular location
- * @param location location string to fetch
- * @param unit temperature units (c or f)
- */
-export async function fetchWeather(location: string, unit = 'f') {
-  const url = `https://query.yahooapis.com/v1/public/yql?q=select *
-  from weather.forecast
-  where u='${unit}'
-    AND woeid in (
-      select woeid from geo.places(1)
-      where text="${location}"
-  )&amp;format=json`
-    .split('\n')
-    .join(' ')
-    // yahoo's api doesn't like spaces unless they're encoded
-    .replace(/\s/g, '%20')
-
-  const res = await fetch(url)
-
-  if (res.status &gt;= 400) {
-    throw new Error('Bad response from server')
-  }
-
-  const result = await res.json()
-
-  return result.query.results &amp;&amp; result.query.results.channel
-}</code></pre>
-	<p>Now simply run:</p>
-	<pre class="language-bash"><code class="language-bash">npm run build &amp;&amp; npm run preview</code></pre>
-	<p>This ought to build your script and open a page very similar to:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5hNT2U1yxvTRfm5Cpa5cxR/4677b288db793b3023af2475671e48d9/Screen-Shot-2018-06-20-at-5.51.19-PM.png" alt="Workers Fiddle Screenshot" class="kg-image" width="2522" height="1852" loading="lazy">
-
-	</figure>
-	<p>This is great, but instead of returning the weather for every single resource request, maybe we should only return the weather on pathnames that match a particular pattern. Something like:</p>
-	<pre class="language-bash"><code class="language-bash">GET /weather/:city
-GET /weather/austin
-GET /weather/toronto</code></pre>
-	<p>In that pattern, <code>city</code> is a variable. Anything that starts with <code>/weather/</code> will match, and everything after will be our city. This shouldn’t match a path like <code>/weather/austin/tatious</code>. Luckily there are off-the-shelf solutions on npm to handle exactly this sort of logic.</p>
-	<div class="flex anchor relative">
-		<h3 id="loading-node-modules">Loading node modules</h3>
-		<a href="https://blog.cloudflare.com/#loading-node-modules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp" target="_blank" rel="noopener noreferrer">path-to-regexp</a> module.</p>
-	<p>Install and save the module:</p>
-	<pre class="language-bash"><code class="language-bash">npm install -S path-to-regexp</code></pre>
-	<p>The path-to-regexp module converts the url path pattern <code>/weather/:city</code> to a regular expression. Using that regular expression, we can extract the variable <code>city</code> out of a pathname string. For instance, in the string ‘/weather/toronto’, the city variable is ‘toronto’. However, for the string ‘/users/123’, there is no match at all.</p>
-	<p>Let’s modify our <code>src/index.ts</code> file to include this new routing logic.</p>
-	<div class="flex anchor relative">
-		<h4 id="src-index-ts">src/index.ts</h4>
-		<a href="https://blog.cloudflare.com/#src-index-ts" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-typescript"><code class="language-typescript">import * as pathToRegExp from 'path-to-regexp'
-import { fetchWeather } from './fetch-weather'
-
-type TWeatherRequestParams = { city: string }
-const weatherPath = '/weather/:city'
-
-addEventListener('fetch', (event: FetchEvent) =&gt; {
-  // Create a regular expression based on the pathname of the request
-  const weatherPathKeys: pathToRegExp.Key[] = []
-  const weatherRegex = pathToRegExp(weatherPath, weatherPathKeys)
-  const url = new URL(event.request.url)
-  const result = weatherRegex.exec(url.pathname)
-
-  // No result, return early and passthrough
-  if (!Array.isArray(result)) return
-
-  // Build the request parameters object
-  const params = weatherPathKeys.reduce(
-    (params, key, i) =&gt; {
-      params[key.name as keyof TWeatherRequestParams] = result[i + 1]
-      return params
-    },
-    {} as TWeatherRequestParams,
-  )
-
-  event.respondWith(handleWeatherRequest(params))
-})
-
-async function handleWeatherRequest(params: TWeatherRequestParams) {
-  const weather = await fetchWeather(params.city)
-  const body = `
-    ${weather.location.city}, ${weather.location.region}&lt;br&gt;
-    ${weather.item.condition.temp} ${weather.item.condition.text}
-  `.trim()
-
-  return new Response(body, {
-    headers: { 'Content-Type': 'text/html' },
-  })
-}</code></pre>
-	<p>Notice that after installing the module, all we have to do is import by its name on npm. This is because webpack knows to look inside of your node_modules directory to resolve import statement paths.</p>
-	<p>Run:</p>
-	<pre class="language-bash"><code class="language-bash">npm run build &amp;&amp; npm run preview -- \
-  --preview-url https://foo.bar.com/weather/austin</code></pre>
-	<p>You should see the weather for Austin, TX displayed. Congrats!</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Webpack is an incredibly robust and configurable piece of technology. It’s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, it’s a perfect fit for bundling Cloudflare Service Workers.</p>
-	<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers" target="_blank" rel="noopener noreferrer">github.com/jrf0110/weather-workers</a></p>
-	<hr>
-	<p><i>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the </i><a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer"><i>“Recipe Exchange”</i></a><i> in the Workers section of the </i><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer"><i>Cloudflare Community Forum</i></a><i>.</i></p>
+<p><em>A brief introduction to bundling your Service Worker scripts.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="477" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=640&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=715&amp;h=477&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=750&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=828&amp;h=552&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=1080&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=1280&amp;h=854&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=1430&amp;h=954&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Using Webpack to bundle your Workers modules Embedded Image - Alj3S2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46PCCK3S90M8YQRR44E6GP.jpeg&amp;w=1080&amp;h=720&amp;f=webp" data-lightbox-width="1080" data-lightbox-height="720" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="477" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Photo by <a href="https://unsplash.com/@joyceromero?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Joyce Romero</a> / <a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// The simplest Service Worker: A passthrough script</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
 </div>
+<p>The code above is simple and sweet: when a request comes into one of Cloudflare’s data centers, passthrough to the origin server. There is <em>absolutely no need</em> for us to introduce any complex tooling or dependencies. Nevertheless, introduce we will! The problem is, once your script grows even just a little bit, you’ll be tempted to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import" target="_blank" rel="noopener noreferrer">JavaScript’s fancy new module system</a>. However, in doing so, you’ll have a little bit of trouble uploading your script via our API (we only accept a single JS file).</p>
+<p>Throughout this post, we’ll use contrived examples, shaky metaphors, and questionably accurate weather predictions to explain how to bundle your Service Worker with <a href="https://webpack.js.org" target="_blank" rel="noopener noreferrer">Webpack</a>.</p>
+<h3>Webpack</h3>
+<p>Let’s just say Webpack is a module bundler. That is, if you have code in multiple files, and you tie them together like this:</p>
+<h4>app.js</h4>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// Import the CoolSocks class from dresser.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { CoolSocks } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './dresser'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { FancyShoes } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './closet'</span></span></code></pre>
+</div>
+<p>Then you can tell webpack to follow all of those import statements to produce a single file. This is useful because Service Workers running on Cloudflare need to be a single file as well.</p>
+<h3>Show me the code</h3>
+<p>Remember when I said something about predicting weather? Let’s build a worker with TypeScript that responds with the current weather.</p>
+<p>Make sure to have <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">NodeJS</a> installed.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Make a new project directory</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> weather-worker</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> weather-worker</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mkdir</span><span class="sk-032f62-99ffe4"> src</span><span class="sk-032f62-99ffe4"> dist</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Initialize project and install dependencies</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> init</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> --save-dev</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  awesome-typescript-loader</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  typescript</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  webpack</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  webpack-cli</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  workers-preview</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">touch</span><span class="sk-032f62-99ffe4"> src/index.ts</span><span class="sk-032f62-99ffe4"> src/fetch-weather.ts</span><span class="sk-032f62-99ffe4"> webpack.config.js</span><span class="sk-032f62-99ffe4"> tsconfig.json</span></span></code></pre>
+</div>
+<p>You should now have a file in your project called <code>package.json</code>. Add the following code to that file:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-032f62-99ffe4">  "scripts"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "build"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"webpack"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "build:watch"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"webpack --watch"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "preview"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"workers-preview &lt; dist/bundle.js"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+</div>
+<p>Now edit the following files to match what is shown:</p>
+<h4>tsconfig.json</h4>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "compilerOptions"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "module"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"commonjs"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "target"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"esnext"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "lib"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"es2015"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"webworker"</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "jsx"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"react"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "noImplicitAny"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "preserveConstEnums"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "outDir"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"./dist"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "moduleResolution"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"node"</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "include"</span><span class="sk-24292e-fff">: [</span><span class="sk-032f62-99ffe4">"src/*.ts"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"src/**/*.ts"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"src/*.tsx"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"src/**/*.tsx"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h4>webpack.config.js</h4>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> path</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'path'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  entry: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    bundle: path.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(__dirname, </span><span class="sk-032f62-99ffe4">'./src/index.ts'</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  output: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    filename: </span><span class="sk-032f62-99ffe4">'bundle.js'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    path: path.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(__dirname, </span><span class="sk-032f62-99ffe4">'dist'</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  mode: process.env.</span><span class="sk-005cc5-fff">NODE_ENV</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-032f62-99ffe4"> 'development'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  watchOptions: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    ignored:</span><span class="sk-032f62-a0a0a0"> /node_modules</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-032f62-a0a0a0">dist</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\.</span><span class="sk-032f62-a0a0a0">js/</span><span class="sk-d73a49-ffc799">g</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  devtool: </span><span class="sk-032f62-99ffe4">'cheap-module-eval-source-map'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  resolve: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    extensions: [</span><span class="sk-032f62-99ffe4">'.ts'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'.tsx'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'.js'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'.json'</span><span class="sk-24292e-fff">],</span></span>
+<span class="line"><span class="sk-24292e-fff">    plugins: [],</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  module: {</span></span>
+<span class="line"><span class="sk-24292e-fff">    rules: [</span></span>
+<span class="line"><span class="sk-24292e-fff">      {</span></span>
+<span class="line"><span class="sk-24292e-fff">        test:</span><span class="sk-032f62-a0a0a0"> /</span><span class="sk-22863a-a0a0a0 sk-fw-bold-inherit">\.</span><span class="sk-032f62-a0a0a0">tsx</span><span class="sk-d73a49-a0a0a0">?$</span><span class="sk-032f62-a0a0a0">/</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        loader: </span><span class="sk-032f62-99ffe4">'awesome-typescript-loader'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-24292e-fff">    ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>For newcomers, this file will seem incredibly cryptic. All I can say is just to accept it as magic for now. You’ll eventually understand what’s going on.</p>
+<blockquote>A note about <code>devtool: 'cheap-module-eval-source-map'</code>. Specifying this type of sourcemap is fast, lightweight, and results in stacktraces much more representative of your source code. They’re not exact (yet!), but we’re getting there.</blockquote>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="87" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=715&amp;h=87&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=640&amp;h=78&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=715&amp;h=87&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=750&amp;h=91&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=828&amp;h=101&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=1080&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=1280&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=1430&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Fiddle Error" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44AKEERDD0F17SPE7Q9X4B.png&amp;w=1212&amp;h=148&amp;f=webp" data-lightbox-width="1212" data-lightbox-height="148" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="87" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Cloudflare fiddle devtools uses source maps to point you to the correct source file. Click through to see the problematic line.</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="228" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=640&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=715&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=750&amp;h=239&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=828&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=1080&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=1280&amp;h=408&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=1430&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Fiddle error source" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW450QJ9D935A30E411VPED4.png&amp;w=1920&amp;h=613&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="613" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="228" class="pt-portable-image-media"></div>
+</figure>
+<h4>src/index.ts</h4>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { fetchWeather } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './fetch-weather'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> weather</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetchWeather</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'austin'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">location</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">city</span><span class="sk-032f62-99ffe4">}, ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">location</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">region</span><span class="sk-032f62-99ffe4">}&lt;br&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">item</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">condition</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">temp</span><span class="sk-032f62-99ffe4">} ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">item</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">condition</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">text</span><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  `</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: { </span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h4>src/fetch-weather.ts</h4>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Fetch the current weather conditions and forecast for a particular location</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-24292e-fff"> location</span><span class="sk-6a737d-8b8b8b94"> location string to fetch</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * </span><span class="sk-d73a49-a0a0a0">@param</span><span class="sk-24292e-fff"> unit</span><span class="sk-6a737d-8b8b8b94"> temperature units (c or f)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> fetchWeather</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">location</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">unit</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'f'</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `https://query.yahooapis.com/v1/public/yql?q=select *</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  from weather.forecast</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  where u='${</span><span class="sk-24292e-fff">unit</span><span class="sk-032f62-99ffe4">}'</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    AND woeid in (</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      select woeid from geo.places(1)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      where text="${</span><span class="sk-24292e-fff">location</span><span class="sk-032f62-99ffe4">}"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  )&amp;format=json`</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">' '</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // yahoo's api doesn't like spaces unless they're encoded</span></span>
+<span class="line"><span class="sk-24292e-fff">    .</span><span class="sk-6f42c1-ffc799">replace</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-a0a0a0">/</span><span class="sk-005cc5-a0a0a0">\s</span><span class="sk-032f62-a0a0a0">/</span><span class="sk-d73a49-ffc799">g</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'%20'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(url)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (res.status </span><span class="sk-d73a49-a0a0a0">&gt;=</span><span class="sk-005cc5-ffc799"> 400</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    throw</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Bad response from server'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> result.query.results </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-24292e-fff"> result.query.results.channel</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Now simply run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> preview</span></span></code></pre>
+</div>
+<p>This ought to build your script and open a page very similar to:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="525" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=715&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=640&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=715&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=750&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=828&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=1080&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=1280&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=1430&amp;h=1050&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Workers Fiddle Screenshot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MSYZQF0JP6YVY3M1F7K2.png&amp;w=1920&amp;h=1410&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1410" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="525" class="pt-portable-image-media"></div>
+</figure>
+<p>This is great, but instead of returning the weather for every single resource request, maybe we should only return the weather on pathnames that match a particular pattern. Something like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> /weather/:city</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> /weather/austin</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">GET</span><span class="sk-032f62-99ffe4"> /weather/toronto</span></span></code></pre>
+</div>
+<p>In that pattern, <code>city</code> is a variable. Anything that starts with <code>/weather/</code> will match, and everything after will be our city. This shouldn’t match a path like <code>/weather/austin/tatious</code>. Luckily there are off-the-shelf solutions on npm to handle exactly this sort of logic.</p>
+<h3>Loading node modules</h3>
+<p>Webpack also understands how to import npm modules into your bundle. To illustrate this, we’re going to use the fantastic <a href="https://www.npmjs.com/package/path-to-regexp" target="_blank" rel="noopener noreferrer">path-to-regexp</a> module.</p>
+<p>Install and save the module:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -S</span><span class="sk-032f62-99ffe4"> path-to-regexp</span></span></code></pre>
+</div>
+<p>The path-to-regexp module converts the url path pattern <code>/weather/:city</code> to a regular expression. Using that regular expression, we can extract the variable <code>city</code> out of a pathname string. For instance, in the string ‘/weather/toronto’, the city variable is ‘toronto’. However, for the string ‘/users/123’, there is no match at all.</p>
+<p>Let’s modify our <code>src/index.ts</code> file to include this new routing logic.</p>
+<h4>src/index.ts</h4>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-005cc5-fff"> *</span><span class="sk-d73a49-a0a0a0"> as</span><span class="sk-24292e-fff"> pathToRegExp </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'path-to-regexp'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { fetchWeather } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> './fetch-weather'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">type</span><span class="sk-6f42c1-ffc799"> TWeatherRequestParams</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> { </span><span class="sk-e36209-fff">city</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> weatherPath</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> '/weather/:city'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Create a regular expression based on the pathname of the request</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> weatherPathKeys</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> pathToRegExp</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">Key</span><span class="sk-24292e-fff">[] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> weatherRegex</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> pathToRegExp</span><span class="sk-24292e-fff">(weatherPath, weatherPathKeys)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(event.request.url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> weatherRegex.</span><span class="sk-6f42c1-ffc799">exec</span><span class="sk-24292e-fff">(url.pathname)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // No result, return early and passthrough</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">Array.</span><span class="sk-6f42c1-ffc799">isArray</span><span class="sk-24292e-fff">(result)) </span><span class="sk-d73a49-a0a0a0">return</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Build the request parameters object</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> params</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> weatherPathKeys.</span><span class="sk-6f42c1-ffc799">reduce</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">    (</span><span class="sk-e36209-fff">params</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">key</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">i</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">      params[key.name </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-d73a49-a0a0a0"> keyof</span><span class="sk-6f42c1-ffc799"> TWeatherRequestParams</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> result[i </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> params</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">    {} </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-6f42c1-ffc799"> TWeatherRequestParams</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  )</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleWeatherRequest</span><span class="sk-24292e-fff">(params))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleWeatherRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">params</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> TWeatherRequestParams</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> weather</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetchWeather</span><span class="sk-24292e-fff">(params.city)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> body</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">location</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">city</span><span class="sk-032f62-99ffe4">}, ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">location</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">region</span><span class="sk-032f62-99ffe4">}&lt;br&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">item</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">condition</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">temp</span><span class="sk-032f62-99ffe4">} ${</span><span class="sk-24292e-fff">weather</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">item</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">condition</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">text</span><span class="sk-032f62-99ffe4">}</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  `</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">trim</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(body, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: { </span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">'text/html'</span><span class="sk-24292e-fff"> },</span></span>
+<span class="line"><span class="sk-24292e-fff">  })</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Notice that after installing the module, all we have to do is import by its name on npm. This is because webpack knows to look inside of your node_modules directory to resolve import statement paths.</p>
+<p>Run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">npm</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-032f62-99ffe4"> preview</span><span class="sk-005cc5-99ffe4"> --</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  --preview-url</span><span class="sk-032f62-99ffe4"> https://foo.bar.com/weather/austin</span></span></code></pre>
+</div>
+<p>You should see the weather for Austin, TX displayed. Congrats!</p>
+<h3>Conclusion</h3>
+<p>Webpack is an incredibly robust and configurable piece of technology. It’s not just a module bundler, but rather a general static asset build system for web development. Although it was built with front-end assets in mind, it’s a perfect fit for bundling Cloudflare Service Workers.</p>
+<p>You can view the full source of our weather script here: <a href="https://github.com/jrf0110/weather-workers" target="_blank" rel="noopener noreferrer">github.com/jrf0110/weather-workers</a></p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p><em>If you have a worker you'd like to share, or want to check out workers from other Cloudflare users, visit the <a href="https://community.cloudflare.com/tags/recipe-exchange" target="_blank" rel="noopener noreferrer">“Recipe Exchange”</a> in the Workers section of the <a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Cloudflare Community Forum</a>.</em></p>

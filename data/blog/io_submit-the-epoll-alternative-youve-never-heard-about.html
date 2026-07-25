@@ -1,291 +1,258 @@
-<div class="mb2 gray5">6 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2ZpaAETYvADuip6gpfOvTP/ec3fd5ee1439b795656cc11679384d91/io_submit-the-epoll-alternative-youve-never-heard-about.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>My curiosity was piqued by an LWN article about <a href="https://lwn.net/Articles/743714" target="_blank" rel="noopener noreferrer">IOCB_CMD_POLL - A new kernel polling interface</a>. It discusses an addition of a new polling mechanism to Linux AIO API, which was merged in 4.18 kernel. The whole idea is rather intriguing. The author of the patch is proposing to use the Linux AIO API with things like network sockets.</p>
-	<p>Hold on. The Linux AIO is designed for, well, <b>A</b>synchronous disk <b>IO</b>! Disk files are not the same thing as network sockets! Is it even possible to use the Linux AIO API with network sockets in the first place?</p>
-	<p>The answer turns out to be a strong YES! In this article I'll explain how to use the strengths of Linux AIO API to write better and faster network servers.</p>
-	<p>But before we start, what is Linux AIO anyway?</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/eFqY9nu5REcVlHdjmlag3/bc9f6b06f408bd6703a8ceb51b27f588/6891085910_3390ebe29f_k.jpg" alt="" class="kg-image" width="2048" height="1182" loading="lazy">
-
-	</figure>
-	<p><a href="https://www.flickr.com/photos/schill/6891085910" target="_blank" rel="noopener noreferrer">Photo</a> by <a href="https://www.flickr.com/photos/schill" target="_blank" rel="noopener noreferrer">Scott Schiller</a> CC/BY/2.0</p>
-	<div class="flex anchor relative">
-		<h2 id="introduction-to-linux-aio">Introduction to Linux AIO</h2>
-		<a href="https://blog.cloudflare.com/#introduction-to-linux-aio" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Linux AIO exposes asynchronous disk IO to userspace software.</p>
-	<p>Historically on Linux, all disk operations were blocking. Whether you did <code>open()</code>, <code>read()</code>, <code>write()</code> or <code>fsync()</code>, you could be sure your thread would stall if the needed data and meta-data was not ready in disk cache. This usually isn't a problem. If you do small amount of IO or have plenty of memory, the disk syscalls would gradually fill the cache and on average be rather fast.</p>
-	<p>The IO operation performance drops for IO-heavy workloads, like databases or caching web proxies. In such applications it would be tragic if a whole server stalled, just because some odd <code>read()</code> syscall had to wait for disk.</p>
-	<p>To work around this problem, applications use one of the three approaches:</p>
-	<p>(1) Use thread pools and offload blocking syscalls to worker threads. This is what glibc POSIX AIO (not to be confused with Linux AIO) wrapper does. (See: <a href="https://www.ibm.com/developerworks/linux/library/l-async" target="_blank" rel="noopener noreferrer">IBM's documentation</a>). This is also what we ended up doing in our application at Cloudflare - <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">we offloaded read() and open() calls to a thread pool</a>.</p>
-	<p>(2) Pre-warm the disk cache with <code>posix_fadvise(2)</code> and hope for the best.</p>
-	<p>(3) Use Linux AIO with XFS file system, <a href="https://lwn.net/Articles/671649" target="_blank" rel="noopener noreferrer">file opened with O_DIRECT</a>, and <a href="https://www.scylladb.com/2016/02/09/qualifying-filesystems" target="_blank" rel="noopener noreferrer">avoid the undocumented pitfalls</a>.</p>
-	<p>None of these methods is perfect. Even the Linux AIO if used carelessly, could still block in the <code>io_submit()</code> call. This was recently mentioned <a href="https://lwn.net/Articles/724198" target="_blank" rel="noopener noreferrer">in another LWN article</a>:</p>
-	<blockquote>
-		<p>The Linux asynchronous I/O (AIO) layer tends to have many critics and few defenders, but most people at least expect it to actually be asynchronous. In truth, an AIO operation can block in the kernel for a number of reasons, making AIO difficult to use in situations where the calling thread truly cannot afford to block.</p>
-	</blockquote>
-	<p>Now that we know what Linux AIO API doesn't do well, let's see where it shines.</p>
-	<div class="flex anchor relative">
-		<h2 id="simplest-linux-aio-program">Simplest Linux AIO program</h2>
-		<a href="https://blog.cloudflare.com/#simplest-linux-aio-program" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To use Linux AIO you first need <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c" target="_blank" rel="noopener noreferrer">to define the 5 needed syscalls</a> - glibc doesn't provide wrapper functions. To use Linux AIO we need:</p>
-	<p>(1) First call <code>io_setup()</code> to set up the <code>aio_context</code> data structure. Kernel will hand us an opaque pointer.</p>
-	<p>(2) Then we can call <code>io_submit()</code> to submit a vector of "I/O control blocks" <code>struct iocb</code> for processing.</p>
-	<p>(3) Finally, we can call <code>io_getevents()</code> to block and wait for a vector of <code>struct io_event</code> - completion notification of the iocb's.</p>
-	<p>There are 8 commands that can be submitted in an iocb. Two read, two write, two fsync variants and a POLL command introduced in 4.18 Kernel:</p>
-	<pre class="language-bash"><code class="language-bash">IOCB_CMD_PREAD = 0,
-IOCB_CMD_PWRITE = 1,
-IOCB_CMD_FSYNC = 2,
-IOCB_CMD_FDSYNC = 3,
-IOCB_CMD_POLL = 5,   /* from 4.18 */
-IOCB_CMD_NOOP = 6,
-IOCB_CMD_PREADV = 7,
-IOCB_CMD_PWRITEV = 8,</code></pre>
-	<p>The <a href="https://github.com/torvalds/linux/blob/f346b0becb1bc62e45495f9cdbae3eef35d0b635/include/uapi/linux/aio_abi.h#L73-L107" target="_blank" rel="noopener noreferrer"><code>struct iocb</code></a> passed to <code>io_submit</code> is large, and tuned for disk IO. Here's a simplified version:</p>
-	<pre class="language-.c"><code class="language-.c">struct iocb {
-  __u64 data;           /* user data */
-  ...
-  __u16 aio_lio_opcode; /* see IOCB_CMD_ above */
-  ...
-  __u32 aio_fildes;     /* file descriptor */
-  __u64 aio_buf;        /* pointer to buffer */
-  __u64 aio_nbytes;     /* buffer size */
-...
-}</code></pre>
-	<p>The completion notification retrieved from <code>io_getevents</code>:</p>
-	<pre class="language-.c"><code class="language-.c">struct io_event {
-  __u64  data;  /* user data */
-  __u64  obj;   /* pointer to request iocb */
-  __s64  res;   /* result code for this event */
-  __s64  res2;  /* secondary result */
-};
-</code></pre>
-	<p>Let's try an example. Here's the simplest program reading /etc/passwd file with Linux AIO API:</p>
-	<pre class="language-.c"><code class="language-.c">fd = open("/etc/passwd", O_RDONLY);
-
-aio_context_t ctx = 0;
-r = io_setup(128, &amp;ctx);
-
-char buf[4096];
-struct iocb cb = {.aio_fildes = fd,
-                  .aio_lio_opcode = IOCB_CMD_PREAD,
-                  .aio_buf = (uint64_t)buf,
-                  .aio_nbytes = sizeof(buf)};
-struct iocb *list_of_iocb[1] = {&amp;cb};
-
-r = io_submit(ctx, 1, list_of_iocb);
-
-struct io_event events[1] = {{0}};
-r = io_getevents(ctx, 1, 1, events, NULL);
-
-bytes_read = events[0].res;
-printf("read %lld bytes from /etc/passwd\n", bytes_read);</code></pre>
-	<p>Full source is, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c" target="_blank" rel="noopener noreferrer">as usual, on GitHub</a>. Here's a strace of this program:</p>
-	<pre class="language-.txt"><code class="language-.txt">openat(AT_FDCWD, "/etc/passwd", O_RDONLY)
-io_setup(128, [0x7f4fd60ea000])
-io_submit(0x7f4fd60ea000, 1, [{aio_lio_opcode=IOCB_CMD_PREAD, aio_fildes=3, aio_buf=0x7ffc5ff703d0, aio_nbytes=4096, aio_offset=0}])
-io_getevents(0x7f4fd60ea000, 1, 1, [{data=0, obj=0x7ffc5ff70390, res=2494, res2=0}], NULL)</code></pre>
-	<p>This all worked fine! But the disk read was not asynchronous: the <code>io_submit</code> syscall blocked and did all the work! The <code>io_getevents</code> call finished instantly. We could try to make the disk read async, but this requires O_DIRECT flag which skips the caches.</p>
-	<p>Let's try to better illustrate the blocking nature of <code>io_submit</code> on normal files. Here's similar example, showing strace when reading large 1GiB block from <code>/dev/zero</code>:</p>
-	<pre class="language-bash"><code class="language-bash">io_submit(0x7fe1e800a000, 1, [{aio_lio_opcode=IOCB_CMD_PREAD, aio_fildes=3, aio_buf=0x7fe1a79f4000, aio_nbytes=1073741824, aio_offset=0}]) \
-    = 1 &lt;0.738380&gt;
-io_getevents(0x7fe1e800a000, 1, 1, [{data=0, obj=0x7fffb9588910, res=1073741824, res2=0}], NULL) \
-    = 1 &lt;0.000015&gt;</code></pre>
-	<p>The kernel spent 738ms in <code>io_submit</code> and only 15us in <code>io_getevents</code>. The kernel behaves the same way with network sockets - all the work is done in <code>io_submit</code>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Aem3ZSReNmWJZwFNQmySO/326c6c7ca476e955d42a4e14ba8e6150/Network_card-2.jpg" alt="" class="kg-image" width="2000" height="876" loading="lazy">
-
-	</figure>
-	<p><a href="https://commons.wikimedia.org/wiki/File:Network_card.jpg" target="_blank" rel="noopener noreferrer">Photo</a> by <a href="https://commons.wikimedia.org/wiki/User:Helix84" target="_blank" rel="noopener noreferrer">Helix84</a> CC/BY-SA/3.0</p>
-	<div class="flex anchor relative">
-		<h2 id="linux-aio-with-sockets-batching">Linux AIO with sockets - batching</h2>
-		<a href="https://blog.cloudflare.com/#linux-aio-with-sockets-batching" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The implementation of <code>io_submit</code> is rather conservative. Unless the passed descriptor is O_DIRECT file, it will just block and perform the requested action. In case of network sockets it means:</p>
-	<ul>
-		<li>
-			<p>For blocking sockets IOCB_CMD_PREAD will hang until a packet arrives.</p>
-		</li>
-		<li>
-			<p>For non-blocking sockets IOCB_CMD_PREAD will -11 (EAGAIN) return code.</p>
-		</li>
-	</ul>
-	<p>These are exactly the same semantics as for vanilla <code>read()</code> syscall. It's fair to say that for network sockets <code>io_submit</code> is no smarter than good old read/write calls.</p>
-	<p>It's important to note the <code>iocb</code> requests passed to kernel are evaluated in-order sequentially.</p>
-	<p>While Linux AIO won't help with async operations, it can definitely be used for syscall batching!</p>
-	<p>If you have a web server needing to send and receive data from hundreds of network sockets, using <code>io_submit</code> can be a great idea. This would avoid having to call <code>send</code> and <code>recv</code> hundreds of times. This will improve performance - jumping back and forth from userspace to kernel is not free, especially <a href="https://gist.github.com/antirez/9e716670f76133ec81cb24036f86ee95" target="_blank" rel="noopener noreferrer">since the meltdown and spectre mitigations</a>.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
+<p>My curiosity was piqued by an LWN article about <a href="https://lwn.net/Articles/743714" target="_blank" rel="noopener noreferrer">IOCB_CMD_POLL - A new kernel polling interface</a>. It discusses an addition of a new polling mechanism to Linux AIO API, which was merged in 4.18 kernel. The whole idea is rather intriguing. The author of the patch is proposing to use the Linux AIO API with things like network sockets.</p>
+<p>Hold on. The Linux AIO is designed for, well, <strong>A</strong>synchronous disk <strong>IO</strong>! Disk files are not the same thing as network sockets! Is it even possible to use the Linux AIO API with network sockets in the first place?</p>
+<p>The answer turns out to be a strong YES! In this article I'll explain how to use the strengths of Linux AIO API to write better and faster network servers.</p>
+<p>But before we start, what is Linux AIO anyway?</p>
+<p><a href="https://www.flickr.com/photos/schill/6891085910" target="_blank" rel="noopener noreferrer">Photo</a> by <a href="https://www.flickr.com/photos/schill" target="_blank" rel="noopener noreferrer">Scott Schiller</a> CC/BY/2.0</p>
+<h2>Introduction to Linux AIO</h2>
+<p>Linux AIO exposes asynchronous disk IO to userspace software.</p>
+<p>Historically on Linux, all disk operations were blocking. Whether you did <code>open()</code>, <code>read()</code>, <code>write()</code> or <code>fsync()</code>, you could be sure your thread would stall if the needed data and meta-data was not ready in disk cache. This usually isn't a problem. If you do small amount of IO or have plenty of memory, the disk syscalls would gradually fill the cache and on average be rather fast.</p>
+<p>The IO operation performance drops for IO-heavy workloads, like databases or caching web proxies. In such applications it would be tragic if a whole server stalled, just because some odd <code>read()</code> syscall had to wait for disk.</p>
+<p>To work around this problem, applications use one of the three approaches:</p>
+<p>(1) Use thread pools and offload blocking syscalls to worker threads. This is what glibc POSIX AIO (not to be confused with Linux AIO) wrapper does. (See: <a href="https://www.ibm.com/developerworks/linux/library/l-async" target="_blank" rel="noopener noreferrer">IBM's documentation</a>). This is also what we ended up doing in our application at Cloudflare - <a href="https://blog.cloudflare.com/how-we-scaled-nginx-and-saved-the-world-54-years-every-day">we offloaded read() and open() calls to a thread pool</a>.</p>
+<p>(2) Pre-warm the disk cache with <code>posix_fadvise(2)</code> and hope for the best.</p>
+<p>(3) Use Linux AIO with XFS file system, <a href="https://lwn.net/Articles/671649" target="_blank" rel="noopener noreferrer">file opened with O_DIRECT</a>, and <a href="https://www.scylladb.com/2016/02/09/qualifying-filesystems" target="_blank" rel="noopener noreferrer">avoid the undocumented pitfalls</a>.</p>
+<p>None of these methods is perfect. Even the Linux AIO if used carelessly, could still block in the <code>io_submit()</code> call. This was recently mentioned <a href="https://lwn.net/Articles/724198" target="_blank" rel="noopener noreferrer">in another LWN article</a>:</p>
+<blockquote>The Linux asynchronous I/O (AIO) layer tends to have many critics and few defenders, but most people at least expect it to actually be asynchronous. In truth, an AIO operation can block in the kernel for a number of reasons, making AIO difficult to use in situations where the calling thread truly cannot afford to block.</blockquote>
+<p>Now that we know what Linux AIO API doesn't do well, let's see where it shines.</p>
+<h2>Simplest Linux AIO program</h2>
+<p>To use Linux AIO you first need <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c" target="_blank" rel="noopener noreferrer">to define the 5 needed syscalls</a> - glibc doesn't provide wrapper functions. To use Linux AIO we need:</p>
+<p>(1) First call <code>io_setup()</code> to set up the <code>aio_context</code> data structure. Kernel will hand us an opaque pointer.</p>
+<p>(2) Then we can call <code>io_submit()</code> to submit a vector of "I/O control blocks" <code>struct iocb</code> for processing.</p>
+<p>(3) Finally, we can call <code>io_getevents()</code> to block and wait for a vector of <code>struct io_event</code> - completion notification of the iocb's.</p>
+<p>There are 8 commands that can be submitted in an iocb. Two read, two write, two fsync variants and a POLL command introduced in 4.18 Kernel:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_PREAD</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 0,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_PWRITE</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 1,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_FSYNC</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 2,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_FDSYNC</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 3,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_POLL</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 5,</span><span class="sk-032f62-99ffe4">   /</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-005cc5-ffc799"> 4.18</span><span class="sk-005cc5-a0a0a0"> *</span><span class="sk-032f62-99ffe4">/</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_NOOP</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 6,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_PREADV</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 7,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IOCB_CMD_PWRITEV</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> 8,</span></span></code></pre>
+</div>
+<p>The <a href="https://github.com/torvalds/linux/blob/f346b0becb1bc62e45495f9cdbae3eef35d0b635/include/uapi/linux/aio_abi.h#L73-L107" target="_blank" rel="noopener noreferrer"><code>struct iocb</code></a> passed to <code>io_submit</code> is large, and tuned for disk IO. Here's a simplified version:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>struct iocb {</span></span>
+<span class="line"><span>  __u64 data;           /* user data */</span></span>
+<span class="line"><span>  ...</span></span>
+<span class="line"><span>  __u16 aio_lio_opcode; /* see IOCB_CMD_ above */</span></span>
+<span class="line"><span>  ...</span></span>
+<span class="line"><span>  __u32 aio_fildes;     /* file descriptor */</span></span>
+<span class="line"><span>  __u64 aio_buf;        /* pointer to buffer */</span></span>
+<span class="line"><span>  __u64 aio_nbytes;     /* buffer size */</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>The completion notification retrieved from <code>io_getevents</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>struct io_event {</span></span>
+<span class="line"><span>  __u64  data;  /* user data */</span></span>
+<span class="line"><span>  __u64  obj;   /* pointer to request iocb */</span></span>
+<span class="line"><span>  __s64  res;   /* result code for this event */</span></span>
+<span class="line"><span>  __s64  res2;  /* secondary result */</span></span>
+<span class="line"><span>};</span></span>
+<span class="line"><span></span></span></code></pre>
+</div>
+<p>Let's try an example. Here's the simplest program reading /etc/passwd file with Linux AIO API:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>fd = open("/etc/passwd", O_RDONLY);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>aio_context_t ctx = 0;</span></span>
+<span class="line"><span>r = io_setup(128, &amp;ctx);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>char buf[4096];</span></span>
+<span class="line"><span>struct iocb cb = {.aio_fildes = fd,</span></span>
+<span class="line"><span>                  .aio_lio_opcode = IOCB_CMD_PREAD,</span></span>
+<span class="line"><span>                  .aio_buf = (uint64_t)buf,</span></span>
+<span class="line"><span>                  .aio_nbytes = sizeof(buf)};</span></span>
+<span class="line"><span>struct iocb *list_of_iocb[1] = {&amp;cb};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>r = io_submit(ctx, 1, list_of_iocb);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>struct io_event events[1] = {{0}};</span></span>
+<span class="line"><span>r = io_getevents(ctx, 1, 1, events, NULL);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>bytes_read = events[0].res;</span></span>
+<span class="line"><span>printf("read %lld bytes from /etc/passwd\n", bytes_read);</span></span></code></pre>
+</div>
+<p>Full source is, <a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_passwd.c" target="_blank" rel="noopener noreferrer">as usual, on GitHub</a>. Here's a strace of this program:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>openat(AT_FDCWD, "/etc/passwd", O_RDONLY)</span></span>
+<span class="line"><span>io_setup(128, [0x7f4fd60ea000])</span></span>
+<span class="line"><span>io_submit(0x7f4fd60ea000, 1, [{aio_lio_opcode=IOCB_CMD_PREAD, aio_fildes=3, aio_buf=0x7ffc5ff703d0, aio_nbytes=4096, aio_offset=0}])</span></span>
+<span class="line"><span>io_getevents(0x7f4fd60ea000, 1, 1, [{data=0, obj=0x7ffc5ff70390, res=2494, res2=0}], NULL)</span></span></code></pre>
+</div>
+<p>This all worked fine! But the disk read was not asynchronous: the <code>io_submit</code> syscall blocked and did all the work! The <code>io_getevents</code> call finished instantly. We could try to make the disk read async, but this requires O_DIRECT flag which skips the caches.</p>
+<p>Let's try to better illustrate the blocking nature of <code>io_submit</code> on normal files. Here's similar example, showing strace when reading large 1GiB block from <code>/dev/zero</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">io_submit(0x7fe1e800a000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{aio_lio_opcode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">IOCB_CMD_PREAD,</span><span class="sk-24292e-fff"> aio_fildes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">3,</span><span class="sk-24292e-fff"> aio_buf</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x7fe1a79f4000,</span><span class="sk-24292e-fff"> aio_nbytes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1073741824,</span><span class="sk-24292e-fff"> aio_offset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">}]) </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">0.73838</span><span class="sk-d73a49-a0a0a0">0&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">io_getevents(0x7fe1e800a000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{data</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0,</span><span class="sk-24292e-fff"> obj</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x7fffb9588910,</span><span class="sk-24292e-fff"> res</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1073741824,</span><span class="sk-24292e-fff"> res2</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">}], NULL) </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">0.00001</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span></code></pre>
+</div>
+<p>The kernel spent 738ms in <code>io_submit</code> and only 15us in <code>io_getevents</code>. The kernel behaves the same way with network sockets - all the work is done in <code>io_submit</code>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="313" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=715&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=640&amp;h=280&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=715&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=750&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=828&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=1080&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=1280&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=1430&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="io_submit: The epoll alternative you've never heard about Embedded Image - AC0lRt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BGW6YX490EPG2R42JR8V.jpg&amp;w=1920&amp;h=841&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="841" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="313" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><a href="https://commons.wikimedia.org/wiki/File:Network_card.jpg" target="_blank" rel="noopener noreferrer">Photo</a> by <a href="https://commons.wikimedia.org/wiki/User:Helix84" target="_blank" rel="noopener noreferrer">Helix84</a> CC/BY-SA/3.0</p>
+<h2>Linux AIO with sockets - batching</h2>
+<p>The implementation of <code>io_submit</code> is rather conservative. Unless the passed descriptor is O_DIRECT file, it will just block and perform the requested action. In case of network sockets it means:</p>
+<ul>
+	<li>For blocking sockets IOCB_CMD_PREAD will hang until a packet arrives.</li>
+	<li>For non-blocking sockets IOCB_CMD_PREAD will -11 (EAGAIN) return code.</li>
+</ul>
+<p>These are exactly the same semantics as for vanilla <code>read()</code> syscall. It's fair to say that for network sockets <code>io_submit</code> is no smarter than good old read/write calls.</p>
+<p>It's important to note the <code>iocb</code> requests passed to kernel are evaluated in-order sequentially.</p>
+<p>While Linux AIO won't help with async operations, it can definitely be used for syscall batching!</p>
+<p>If you have a web server needing to send and receive data from hundreds of network sockets, using <code>io_submit</code> can be a great idea. This would avoid having to call <code>send</code> and <code>recv</code> hundreds of times. This will improve performance - jumping back and forth from userspace to kernel is not free, especially <a href="https://gist.github.com/antirez/9e716670f76133ec81cb24036f86ee95" target="_blank" rel="noopener noreferrer">since the meltdown and spectre mitigations</a>.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
 					<p></p>
-				</td>
-				<td>
-					<p><b>One buffer</b></p>
-				</td>
-				<td>
-					<p><b>Multiple buffers</b></p>
-				</td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>One buffer</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Multiple buffers</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>One file descriptor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>read()</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>readv()</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Many file descriptors</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>io_submit + IOCB_CMD_PREAD</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>io_submit + IOCB_CMD_PREADV</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>To illustrate the batching aspect of <code>io_submit</code>, let's create a small program forwarding data from one TCP socket to another. In simplest form, without Linux AIO, the program would have a trivial flow like this:</p>
-	<pre class="language-.py"><code class="language-.py">while True:
-  d = sd1.read(4096)
-  sd2.write(d)</code></pre>
-	<p>We can express the same logic with Linux AIO. The code will look like this:</p>
-	<pre class="language-.c"><code class="language-.c">struct iocb cb[2] = {{.aio_fildes = sd2,
-                      .aio_lio_opcode = IOCB_CMD_PWRITE,
-                      .aio_buf = (uint64_t)&amp;buf[0],
-                      .aio_nbytes = 0},
-                     {.aio_fildes = sd1,
-                     .aio_lio_opcode = IOCB_CMD_PREAD,
-                     .aio_buf = (uint64_t)&amp;buf[0],
-                     .aio_nbytes = BUF_SZ}};
-struct iocb *list_of_iocb[2] = {&amp;cb[0], &amp;cb[1]};
-while(1) {
-  r = io_submit(ctx, 2, list_of_iocb);
-
-  struct io_event events[2] = {};
-  r = io_getevents(ctx, 2, 2, events, NULL);
-  cb[0].aio_nbytes = events[1].res;
-}</code></pre>
-	<p>This code submits two jobs to <code>io_submit</code>. First, request to write data to <code>sd2</code> then to read data from <code>sd1</code>. After the read is done, the code fixes up the write buffer size and loops again. The code does a cool trick - the first write is of size 0. We are doing so since we can fuse write+read in one io_submit (but not read+write). After a read is done we have to fix the write buffer size.</p>
-	<p>Is this code faster than the simple read/write version? Not yet. Both versions have two syscalls: read+write and io_submit+io_getevents. Fortunately, we can improve it.</p>
-	<div class="flex anchor relative">
-		<h2 id="getting-rid-of-io_getevents">Getting rid of io_getevents</h2>
-		<a href="https://blog.cloudflare.com/#getting-rid-of-io_getevents" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When running <code>io_setup()</code>, the kernel allocates a couple of pages of memory for the process. This is how this memory block looks like in /proc//maps:</p>
-	<pre class="language-bash"><code class="language-bash">marek:~$ cat /proc/`pidof -s aio_passwd`/maps
-...
-7f7db8f60000-7f7db8f63000 rw-s 00000000 00:12 2314562     /[aio] (deleted)
-...</code></pre>
-	<p>The [aio] memory region (12KiB in my case) was allocated by the <code>io_setup</code>. This memory range is used a ring buffer storing the completion events. In most cases, there isn't any reason to call the real <code>io_getevents</code> syscall. The completion data can be easily retrieved from the ring buffer without the need of consulting the kernel. Here is a fixed version of the code:</p>
-	<pre class="language-.c"><code class="language-.c">int io_getevents(aio_context_t ctx, long min_nr, long max_nr,
-                 struct io_event *events, struct timespec *timeout)
-{
-    int i = 0;
-
-    struct aio_ring *ring = (struct aio_ring*)ctx;
-    if (ring == NULL || ring-&gt;magic != AIO_RING_MAGIC) {
-        goto do_syscall;
-    }
-
-    while (i &lt; max_nr) {
-        unsigned head = ring-&gt;head;
-        if (head == ring-&gt;tail) {
-            /* There are no more completions */
-            break;
-        } else {
-            /* There is another completion to reap */
-            events[i] = ring-&gt;events[head];
-            read_barrier();
-            ring-&gt;head = (head + 1) % ring-&gt;nr;
-            i++;
-        }
-    }
-
-    if (i == 0 &amp;&amp; timeout != NULL &amp;&amp; timeout-&gt;tv_sec == 0 &amp;&amp; timeout-&gt;tv_nsec == 0) {
-        /* Requested non blocking operation. */
-        return 0;
-    }
-
-    if (i &amp;&amp; i &gt;= min_nr) {
-        return i;
-    }
-
-do_syscall:
-    return syscall(__NR_io_getevents, ctx, min_nr-i, max_nr-i, &amp;events[i], timeout);
-}
-</code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_poll.c#L63" target="_blank" rel="noopener noreferrer">Here's full code</a>. This ring buffer interface is poorly documented. I adapted this code from <a href="https://github.com/axboe/fio/blob/702906e9e3e03e9836421d5e5b5eaae3cd99d398/engines/libaio.c#L149-L172" target="_blank" rel="noopener noreferrer">the axboe/fio project</a>.</p>
-	<p>With this code fixing the <code>io_getevents</code> function, our Linux AIO version of the TCP proxy needs only one syscall per loop, and indeed is a tiny bit faster than the read+write code.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5BUl6rp23b2NJ1XX8Z7RmV/1260b98a4e8b77dc6610626a38ce6ecb/16026681353_90b26e0731_z.jpg" alt="" class="kg-image" width="640" height="361" loading="lazy">
-
-	</figure>
-	<p><a href="https://www.flickr.com/photos/99279135@N05/16026681353" target="_blank" rel="noopener noreferrer">Photo</a> by <a href="https://www.flickr.com/photos/99279135@N05" target="_blank" rel="noopener noreferrer">Train Photos</a> CC/BY-SA/2.0</p>
-	<div class="flex anchor relative">
-		<h2 id="epoll-alternative">Epoll alternative</h2>
-		<a href="https://blog.cloudflare.com/#epoll-alternative" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With the addition of IOCB_CMD_POLL in kernel 4.18, one could use <code>io_submit</code> also as select/poll/epoll equivalent. For example, here's some code waiting for data on a socket:</p>
-	<pre class="language-.c"><code class="language-.c">struct iocb cb = {.aio_fildes = sd,
-                  .aio_lio_opcode = IOCB_CMD_POLL,
-                  .aio_buf = POLLIN};
-struct iocb *list_of_iocb[1] = {&amp;cb};
-
-r = io_submit(ctx, 1, list_of_iocb);
-r = io_getevents(ctx, 1, 1, events, NULL);</code></pre>
-	<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_poll.c" target="_blank" rel="noopener noreferrer">Full code</a>. Here's the strace view:</p>
-	<pre class="language-bash"><code class="language-bash">io_submit(0x7fe44bddd000, 1, [{aio_lio_opcode=IOCB_CMD_POLL, aio_fildes=3}]) \
-    = 1 &lt;0.000015&gt;
-io_getevents(0x7fe44bddd000, 1, 1, [{data=0, obj=0x7ffef65c11a8, res=1, res2=0}], NULL) \
-    = 1 &lt;1.000377&gt;</code></pre>
-	<p>As you can see this time the "async" part worked fine, the <code>io_submit</code> finished instantly and the <code>io_getevents</code> successfully blocked for 1s while awaiting data. This is pretty powerful and can be used instead of the <code>epoll_wait()</code> syscall.</p>
-	<p>Furthermore, normally dealing with <code>epoll</code> requires juggling <code>epoll_ctl</code> syscalls. Application developers go to great lengths to avoid calling this syscall too often. <a href="http://man7.org/linux/man-pages/man7/epoll.7.html" target="_blank" rel="noopener noreferrer">Just read the man page</a> on EPOLLONESHOT and EPOLLET flags. Using <code>io_submit</code> for polling works around this whole complexity, and doesn't require any spurious syscalls. Just push your sockets to the iocb request vector, call <code>io_submit</code> exactly once and wait for completions. The API can't be simpler than this.</p>
-	<div class="flex anchor relative">
-		<h2 id="summary">Summary</h2>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this blog post we reviewed the Linux AIO API. While initially conceived to be a disk-only API, it seems to be working in the same way as normal read/write syscalls on network sockets. But as opposed to read/write <code>io_submit</code> allows syscall batching, potentially improving performance.</p>
-	<p>Since kernel 4.18 <code>io_submit</code> and <code>io_getevents</code> can be used to wait for events like POLLIN and POLLOUT on network sockets. This is great, and could be used as a replacement for <code>epoll()</code> in the event loop.</p>
-	<p>I can imagine a network server that could just be doing <code>io_submit</code> and <code>io_getevents</code> syscalls, as opposed to the usual mix of <code>read</code>, <code>write</code>, <code>epoll_ctl</code> and <code>epoll_wait</code>. With such design the syscall batching aspect of <code>io_submit</code> could really shine. Such a server would be meaningfully faster.</p>
-	<p>Sadly, even with recent Linux AIO API improvements, the larger discussion remains. Famously, <a href="https://lwn.net/Articles/671657" target="_blank" rel="noopener noreferrer">Linus hates it</a>:</p>
-	<blockquote>
-		<p>AIO is a horrible ad-hoc design, with the main excuse being "other, less gifted people, made that design, and we are implementing it for compatibility because database people - who seldom have any shred of taste - actually use it". But AIO was always really really ugly.</p>
-	</blockquote>
-	<p>Over the years there had been multiple attempts on creating a better batching and async interfaces, unfortunately, lacking coherent vision. For example, <a href="https://github.com/torvalds/linux/blob/6f0d349d922ba44e4348a17a78ea51b7135965b1/Documentation/networking/msg_zerocopy.rst" target="_blank" rel="noopener noreferrer">recent addition of <code>sendto(MSG_ZEROCOPY)</code></a> allows for truly async transmission operations, but no batching. <code>io_submit</code> allows batching but not async. It's even worse than that - Linux currently has three ways of delivering async notifications - signals, <code>io_getevents</code> and <code>MSG_ERRQUEUE</code>.</p>
-	<p>Having said that I'm really excited to see the new developments which allow developing faster network servers. I'm jumping on the code to replace my rusty epoll event loops with io_submit!</p>
 </div>
+<p>To illustrate the batching aspect of <code>io_submit</code>, let's create a small program forwarding data from one TCP socket to another. In simplest form, without Linux AIO, the program would have a trivial flow like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>while True:</span></span>
+<span class="line"><span>  d = sd1.read(4096)</span></span>
+<span class="line"><span>  sd2.write(d)</span></span></code></pre>
+</div>
+<p>We can express the same logic with Linux AIO. The code will look like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>struct iocb cb[2] = {{.aio_fildes = sd2,</span></span>
+<span class="line"><span>                      .aio_lio_opcode = IOCB_CMD_PWRITE,</span></span>
+<span class="line"><span>                      .aio_buf = (uint64_t)&amp;buf[0],</span></span>
+<span class="line"><span>                      .aio_nbytes = 0},</span></span>
+<span class="line"><span>                     {.aio_fildes = sd1,</span></span>
+<span class="line"><span>                     .aio_lio_opcode = IOCB_CMD_PREAD,</span></span>
+<span class="line"><span>                     .aio_buf = (uint64_t)&amp;buf[0],</span></span>
+<span class="line"><span>                     .aio_nbytes = BUF_SZ}};</span></span>
+<span class="line"><span>struct iocb *list_of_iocb[2] = {&amp;cb[0], &amp;cb[1]};</span></span>
+<span class="line"><span>while(1) {</span></span>
+<span class="line"><span>  r = io_submit(ctx, 2, list_of_iocb);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>  struct io_event events[2] = {};</span></span>
+<span class="line"><span>  r = io_getevents(ctx, 2, 2, events, NULL);</span></span>
+<span class="line"><span>  cb[0].aio_nbytes = events[1].res;</span></span>
+<span class="line"><span>}</span></span></code></pre>
+</div>
+<p>This code submits two jobs to <code>io_submit</code>. First, request to write data to <code>sd2</code> then to read data from <code>sd1</code>. After the read is done, the code fixes up the write buffer size and loops again. The code does a cool trick - the first write is of size 0. We are doing so since we can fuse write+read in one io_submit (but not read+write). After a read is done we have to fix the write buffer size.</p>
+<p>Is this code faster than the simple read/write version? Not yet. Both versions have two syscalls: read+write and io_submit+io_getevents. Fortunately, we can improve it.</p>
+<h2>Getting rid of io_getevents</h2>
+<p>When running <code>io_setup()</code>, the kernel allocates a couple of pages of memory for the process. This is how this memory block looks like in /proc//maps:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">marek:~$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> /proc/`</span><span class="sk-6f42c1-ffc799">pidof</span><span class="sk-005cc5-99ffe4"> -s</span><span class="sk-032f62-99ffe4"> aio_passwd`</span><span class="sk-6f42c1-ffc799">/maps</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">7f7db8f60000-7f7db8f63000</span><span class="sk-032f62-99ffe4"> rw-s</span><span class="sk-005cc5-ffc799"> 00000000</span><span class="sk-032f62-99ffe4"> 00:12</span><span class="sk-005cc5-ffc799"> 2314562</span><span class="sk-032f62-99ffe4">     /[aio]</span><span class="sk-24292e-fff"> (deleted)</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>The [aio] memory region (12KiB in my case) was allocated by the <code>io_setup</code>. This memory range is used a ring buffer storing the completion events. In most cases, there isn't any reason to call the real <code>io_getevents</code> syscall. The completion data can be easily retrieved from the ring buffer without the need of consulting the kernel. Here is a fixed version of the code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>int io_getevents(aio_context_t ctx, long min_nr, long max_nr,</span></span>
+<span class="line"><span>                 struct io_event *events, struct timespec *timeout)</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>    int i = 0;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    struct aio_ring *ring = (struct aio_ring*)ctx;</span></span>
+<span class="line"><span>    if (ring == NULL || ring-&gt;magic != AIO_RING_MAGIC) {</span></span>
+<span class="line"><span>        goto do_syscall;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    while (i &lt; max_nr) {</span></span>
+<span class="line"><span>        unsigned head = ring-&gt;head;</span></span>
+<span class="line"><span>        if (head == ring-&gt;tail) {</span></span>
+<span class="line"><span>            /* There are no more completions */</span></span>
+<span class="line"><span>            break;</span></span>
+<span class="line"><span>        } else {</span></span>
+<span class="line"><span>            /* There is another completion to reap */</span></span>
+<span class="line"><span>            events[i] = ring-&gt;events[head];</span></span>
+<span class="line"><span>            read_barrier();</span></span>
+<span class="line"><span>            ring-&gt;head = (head + 1) % ring-&gt;nr;</span></span>
+<span class="line"><span>            i++;</span></span>
+<span class="line"><span>        }</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if (i == 0 &amp;&amp; timeout != NULL &amp;&amp; timeout-&gt;tv_sec == 0 &amp;&amp; timeout-&gt;tv_nsec == 0) {</span></span>
+<span class="line"><span>        /* Requested non blocking operation. */</span></span>
+<span class="line"><span>        return 0;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    if (i &amp;&amp; i &gt;= min_nr) {</span></span>
+<span class="line"><span>        return i;</span></span>
+<span class="line"><span>    }</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>do_syscall:</span></span>
+<span class="line"><span>    return syscall(__NR_io_getevents, ctx, min_nr-i, max_nr-i, &amp;events[i], timeout);</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span></code></pre>
+</div>
+<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_poll.c#L63" target="_blank" rel="noopener noreferrer">Here's full code</a>. This ring buffer interface is poorly documented. I adapted this code from <a href="https://github.com/axboe/fio/blob/702906e9e3e03e9836421d5e5b5eaae3cd99d398/engines/libaio.c#L149-L172" target="_blank" rel="noopener noreferrer">the axboe/fio project</a>.</p>
+<p>With this code fixing the <code>io_getevents</code> function, our Linux AIO version of the TCP proxy needs only one syscall per loop, and indeed is a tiny bit faster than the read+write code.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="640" height="361" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478WXVCZWTZCF3AH44W1CC.jpg&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478WXVCZWTZCF3AH44W1CC.jpg&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478WXVCZWTZCF3AH44W1CC.jpg&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478WXVCZWTZCF3AH44W1CC.jpg&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478WXVCZWTZCF3AH44W1CC.jpg&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478WXVCZWTZCF3AH44W1CC.jpg&amp;w=1280&amp;h=722&amp;f=webp&amp;fit=cover&amp;position=center 1280w" alt="io_submit: The epoll alternative you've never heard about Embedded Image - IGCphp" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW478WXVCZWTZCF3AH44W1CC.jpg&amp;w=640&amp;h=361&amp;f=webp" data-lightbox-width="640" data-lightbox-height="361" data-astro-cid-7nvefuv6="true" sizes="(min-width: 640px) 640px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="640" height="361" class="pt-portable-image-media"></div>
+</figure>
+<p><a href="https://www.flickr.com/photos/99279135@N05/16026681353" target="_blank" rel="noopener noreferrer">Photo</a> by <a href="https://www.flickr.com/photos/99279135@N05" target="_blank" rel="noopener noreferrer">Train Photos</a> CC/BY-SA/2.0</p>
+<h2>Epoll alternative</h2>
+<p>With the addition of IOCB_CMD_POLL in kernel 4.18, one could use <code>io_submit</code> also as select/poll/epoll equivalent. For example, here's some code waiting for data on a socket:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>struct iocb cb = {.aio_fildes = sd,</span></span>
+<span class="line"><span>                  .aio_lio_opcode = IOCB_CMD_POLL,</span></span>
+<span class="line"><span>                  .aio_buf = POLLIN};</span></span>
+<span class="line"><span>struct iocb *list_of_iocb[1] = {&amp;cb};</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>r = io_submit(ctx, 1, list_of_iocb);</span></span>
+<span class="line"><span>r = io_getevents(ctx, 1, 1, events, NULL);</span></span></code></pre>
+</div>
+<p><a href="https://github.com/cloudflare/cloudflare-blog/blob/master/2019-01-io-submit/aio_poll.c" target="_blank" rel="noopener noreferrer">Full code</a>. Here's the strace view:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">io_submit(0x7fe44bddd000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{aio_lio_opcode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">IOCB_CMD_POLL,</span><span class="sk-24292e-fff"> aio_fildes</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">3</span><span class="sk-24292e-fff">}]) </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">0.00001</span><span class="sk-d73a49-a0a0a0">5&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">io_getevents(0x7fe44bddd000,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-032f62-99ffe4"> 1,</span><span class="sk-24292e-fff"> [{data</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0,</span><span class="sk-24292e-fff"> obj</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0x7ffef65c11a8,</span><span class="sk-24292e-fff"> res</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">1,</span><span class="sk-24292e-fff"> res2</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">0</span><span class="sk-24292e-fff">}], NULL) </span><span class="sk-005cc5-a0a0a0">\</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    =</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-d73a49-a0a0a0"> &lt;</span><span class="sk-032f62-99ffe4">1.00037</span><span class="sk-d73a49-a0a0a0">7&gt;</span></span></code></pre>
+</div>
+<p>As you can see this time the "async" part worked fine, the <code>io_submit</code> finished instantly and the <code>io_getevents</code> successfully blocked for 1s while awaiting data. This is pretty powerful and can be used instead of the <code>epoll_wait()</code> syscall.</p>
+<p>Furthermore, normally dealing with <code>epoll</code> requires juggling <code>epoll_ctl</code> syscalls. Application developers go to great lengths to avoid calling this syscall too often. <a href="http://man7.org/linux/man-pages/man7/epoll.7.html" target="_blank" rel="noopener noreferrer">Just read the man page</a> on EPOLLONESHOT and EPOLLET flags. Using <code>io_submit</code> for polling works around this whole complexity, and doesn't require any spurious syscalls. Just push your sockets to the iocb request vector, call <code>io_submit</code> exactly once and wait for completions. The API can't be simpler than this.</p>
+<h2>Summary</h2>
+<p>In this blog post we reviewed the Linux AIO API. While initially conceived to be a disk-only API, it seems to be working in the same way as normal read/write syscalls on network sockets. But as opposed to read/write <code>io_submit</code> allows syscall batching, potentially improving performance.</p>
+<p>Since kernel 4.18 <code>io_submit</code> and <code>io_getevents</code> can be used to wait for events like POLLIN and POLLOUT on network sockets. This is great, and could be used as a replacement for <code>epoll()</code> in the event loop.</p>
+<p>I can imagine a network server that could just be doing <code>io_submit</code> and <code>io_getevents</code> syscalls, as opposed to the usual mix of <code>read</code>, <code>write</code>, <code>epoll_ctl</code> and <code>epoll_wait</code>. With such design the syscall batching aspect of <code>io_submit</code> could really shine. Such a server would be meaningfully faster.</p>
+<p>Sadly, even with recent Linux AIO API improvements, the larger discussion remains. Famously, <a href="https://lwn.net/Articles/671657" target="_blank" rel="noopener noreferrer">Linus hates it</a>:</p>
+<blockquote>AIO is a horrible ad-hoc design, with the main excuse being "other, less gifted people, made that design, and we are implementing it for compatibility because database people - who seldom have any shred of taste - actually use it". But AIO was always really really ugly.</blockquote>
+<p>Over the years there had been multiple attempts on creating a better batching and async interfaces, unfortunately, lacking coherent vision. For example, <a href="https://github.com/torvalds/linux/blob/6f0d349d922ba44e4348a17a78ea51b7135965b1/Documentation/networking/msg_zerocopy.rst" target="_blank" rel="noopener noreferrer">recent addition of <code>sendto(MSG_ZEROCOPY)</code></a> allows for truly async transmission operations, but no batching. <code>io_submit</code> allows batching but not async. It's even worse than that - Linux currently has three ways of delivering async notifications - signals, <code>io_getevents</code> and <code>MSG_ERRQUEUE</code>.</p>
+<p>Having said that I'm really excited to see the new developments which allow developing faster network servers. I'm jumping on the code to replace my rusty epoll event loops with io_submit!</p>

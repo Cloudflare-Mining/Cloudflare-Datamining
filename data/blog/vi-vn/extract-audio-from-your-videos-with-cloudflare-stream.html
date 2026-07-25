@@ -1,0 +1,121 @@
+<p>Cloudflare Stream yêu thích video. Nhưng chúng tôi biết rằng không phải quy trình làm việc nào cũng cần đến toàn bộ phần hình ảnh, và sự phổ biến của podcast cho thấy âm thanh khi ở một mình cũng có thể hấp dẫn đến mức nào. Đối với các nhà phát triển, việc xử lý video chỉ để lấy âm thanh là việc làm tốn thời gian, tiền bạc và phức tạp.&nbsp;</p>
+<p>Điều gì khiến video trở nên đắt đỏ đến vậy? Tệp video là một tập hợp dày đặc các hình ảnh có độ phân giải cao, được ghép lại với nhau theo thời gian. Như vậy, nó không chỉ là "một tệp tin" mà là một vùng chứa dữ liệu đa chiều như số khung hình mỗi giây, độ phân giải, bộ mã hoá —&nbsp;giải mã. Phân tích video nghĩa là xem xét độ phân giải thời gian và tốc độ khung hình.</p>
+<h2>Tại sao cần trích xuất âm thanh?</h2>
+<p>Ngược lại, một tệp âm thanh đơn giản hơn nhiều. Nếu một tệp âm thanh chỉ bao gồm một kênh, nó được định nghĩa là một dạng sóng đơn. Các đặc tính kỹ thuật của dạng sóng này được xác định bởi tốc độ lấy mẫu (số lượng mẫu âm thanh được lấy mỗi giây) và độ sâu bit (độ chính xác của mỗi mẫu).</p>
+<p>Với sự phát triển của các quy trình suy luận AI đòi hỏi nhiều tài nguyên tính toán, nhiều khách hàng của chúng tôi muốn thực hiện các quy trình xử lý tiếp theo chỉ cần phân tích phần âm thanh. Ví dụ:</p>
+<ul>
+	<li><strong>Sức mạnh của AI và Học máy:</strong> Ngoài dịch thuật và phiên âm, bạn có thể đưa âm thanh vào các mô hình Chuyển giọng nói thành văn bản để nhận dạng hoặc phân tích giọng nói, hoặc tạo các bản tóm tắt với sự hỗ trợ của AI.</li>
+	<li><strong>Cải thiện việc kiểm duyệt nội dung:</strong> Phân tích âm thanh trong video của bạn để đảm bảo nội dung an toàn và tuân thủ các quy định.</li>
+</ul>
+<p>Việc sử dụng dữ liệu video trong những trường hợp như vậy rất tốn kém và không cần thiết.&nbsp;</p>
+<p>Đó là lý do chúng tôi giới thiệu tính năng trích xuất âm thanh. Nhờ tính năng này, chỉ với một lệnh gọi API hoặc một cú nhấp chuột trên bảng điều khiển, bạn có thể trích xuất phần âm thanh M4A dung lượng nhỏ từ bất kỳ video nào.</p>
+<p>Chúng tôi giới thiệu hai phương pháp linh hoạt cho phép trích xuất âm thanh từ video của bạn.&nbsp;</p>
+<h3>1. Trích xuất âm thanh tức thời thông qua Media Transformations</h3>
+<p><a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>Media Transformations</u></a> là phần mềm hoàn hảo để xử lý và chuyển đổi các video ngắn, chẳng hạn như các clip trên mạng xã hội, mà bạn lưu trữ ở bất cứ đâu bạn muốn. Nó hoạt động bằng cách lấy nội dung phương tiện trực tiếp từ nguồn của bạn, tối ưu hoá tại các máy chủ biên của chúng tôi và phân phối một cách hiệu quả. </p>
+<p>Chúng tôi đã mở rộng quy trình này để bao gồm cả âm thanh. Chỉ cần thêm <code>mode=audio</code> vào URL chuyển đổi, bạn có thể trích xuất âm thanh ngay lập tức từ tệp video được lưu trữ ở bất kỳ đâu.</p>
+<p>Sau khi <a href="https://developers.cloudflare.com/stream/transform-videos/#getting-started" target="_blank" rel="noopener noreferrer"><u>bật tính năng Media Transformations cho miền của bạn</u></a>, bạn có thể trích xuất âm thanh từ bất kỳ video nguồn nào. Bạn còn có thể cắt các phần cụ thể bằng cách chỉ định <code>thời gian</code> và <code>độ dài</code>.</p>
+<p>Ví dụ:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/cdn-cgi/media/mode=audio,time=5s,duration=10s/&lt;SOURCE-VIDEO&gt;</span></span></code></pre>
+</div>
+<p>Yêu cầu trên tạo ra một đoạn âm thanh M4A dài 10 giây từ video nguồn, bắt đầu từ giây thứ 5. Bạn có thể tìm hiểu thêm về thiết lập và các tùy chọn khác trong <a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>tài liệu Media Transformations</u></a>.&nbsp;</p>
+<h3>2. Tải xuống âm thanh</h3>
+<p>Giờ đây, bạn có thể tải trực tiếp bản nhạc âm thanh cho bất kỳ nội dung nào bạn quản lý trong Stream. Bên cạnh khả năng tạo tệp MP4 có thể tải xuống để xem ngoại tuyến, giờ đây bạn cũng có thể tạo và lưu trữ tệp âm thanh M4A có thể lưu giữ vĩnh viễn.</p>
+<h2>Bản minh hoạ Workers AI</h2>
+<p>Dưới đây là một đoạn mã mẫu minh họa cách sử dụng Media Transformations với một trong những sản phẩm của Cloudflare —&nbsp;Workers AI. Đoạn mã sau tạo ra một quy trình hai bước: đầu tiên là chuyển đổi âm thanh của video sang tiếng Anh, sau đó dịch sang tiếng Tây Ban Nha.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 1. Use Media Transformations to fetch only the audio track</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">( </span><span class="sk-032f62-99ffe4">"https://blog.cloudflare.com/cdn-cgi/media/mode=audio/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/announcing-audio-mode.mp4"</span><span class="sk-24292e-fff"> );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> blob</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 2. Transcribe the audio to text using Whisper</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> transcript_response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "@cf/openai/whisper-large-v3-turbo"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">     {</span></span>
+<span class="line"><span class="sk-24292e-fff">       audio: </span><span class="sk-6f42c1-ffc799">base64Encode</span><span class="sk-24292e-fff">(blob), </span><span class="sk-6a737d-8b8b8b94">// A base64 encoded string is required by @cf/openai/whisper-large-v3-turbo</span></span>
+<span class="line"><span class="sk-24292e-fff">     }</span></span>
+<span class="line"><span class="sk-24292e-fff">   );</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // Check if transcription was successful and text exists</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">transcript_response.text) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({ error: </span><span class="sk-032f62-99ffe4">"Failed to transcribe audio."</span><span class="sk-24292e-fff"> }, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 3. Translate the transcribed text using the M2M100 model</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> translation_response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     '@cf/meta/m2m100-1.2b'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">     {</span></span>
+<span class="line"><span class="sk-24292e-fff">       text: transcript_response.text,</span></span>
+<span class="line"><span class="sk-24292e-fff">       source_lang: </span><span class="sk-032f62-99ffe4">'en'</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// The source language (English)</span></span>
+<span class="line"><span class="sk-24292e-fff">       target_lang: </span><span class="sk-032f62-99ffe4">'es'</span><span class="sk-6a737d-8b8b8b94">  // The target language (Spanish)</span></span>
+<span class="line"><span class="sk-24292e-fff">     }</span></span>
+<span class="line"><span class="sk-24292e-fff">   );</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 4. Return both the original transcription and the translation</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        transcription: transcript_response.text,</span></span>
+<span class="line"><span class="sk-24292e-fff">        translation: translation_response.translated_text</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> base64Encode</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">buf</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> string </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(buf)).</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">   (</span><span class="sk-e36209-fff">byte</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> { string </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> String.</span><span class="sk-6f42c1-ffc799">fromCharCode</span><span class="sk-24292e-fff">(byte) }</span></span>
+<span class="line"><span class="sk-24292e-fff"> )</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-6f42c1-ffc799"> btoa</span><span class="sk-24292e-fff">(string)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Sau khi chạy, Worker sẽ trả về một phản hồi JSON sạch. Dưới đây là một đoạn trích từ phản hồi đã được phiên âm và dịch lại của Worker.</p>
+<p>Phiên âm:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "transcription"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"I'm excited to announce that Media Transformations from Cloudflare has added audio-only mode. Now you can quickly extract and deliver just the audio from your short form video. And from there, you can transcribe it or summarize it on Worker's AI or run moderation or inference tasks easily."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "translation"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Estoy encantado de anunciar que Media Transformations de Cloudflare ha añadido el modo solo de audio. Ahora puede extraer y entregar rápidamente sólo el audio de su vídeo de forma corta. Y desde allí, puede transcribirlo o resumirlo en la IA de Worker o ejecutar tareas de moderación o inferencia fácilmente."</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>Thông tin chi tiết về kỹ thuật</h2>
+<p>Trong vai trò thực tập sinh mùa hè trong nhóm Stream, tôi đã tham gia triển khai tính năng được mong đợi từ lâu này. Bước đầu tiên của tôi là tìm hiểu kiến trúc phức tạp của các quy trình xử lý phương tiện trong hệ thống Stream.</p>
+<p>Khi video được xử lý bởi Stream, nó có thể theo một trong hai hướng đi. Đầu tiên là hệ thống video theo yêu cầu (VOD) của chúng tôi, xử lý các video được tải trực tiếp lên Stream. Hệ thống tạo ra và lưu trữ một tập hợp các phân đoạn video đã được mã hoá phục vụ cho truyền phát tốc độ bit thích ứng, có thể được truyền phát thông qua HLS hoặc DASH. Hướng còn lại là quy trình mã hoá tức thời (OTFE), vận hành dịch vụ Stream Live và Media Transformations. Thay vì xử lý trước và lưu trữ các tập tin, OTFE lấy dữ liệu đa phương tiện từ trang web của khách hàng và thực hiện các chuyển đổi ngay tại biên.</p>
+<p>Dự án của tôi bao gồm việc mở rộng cả hai quy trình này để hỗ trợ trích xuất âm thanh.</p>
+<h3>Quy trình OTFE</h3>
+<p>Hệ thống quy trình OTFE được thiết kế để hoạt động trong thời gian thực. Quy trình hiện tại được thiết kế cho các tác vụ trực quan. Khi khách hàng đã bật tính năng Media Transformations gửi yêu cầu trên trang web của họ, yêu cầu đó sẽ được chuyển tiếp đến các máy chủ biên của chúng tôi đóng vai trò là điểm truy cập đầu vào. Sau đó, yêu cầu sẽ được xác thực, và theo yêu cầu của người dùng, OTFE sẽ tải video và tạo phiên bản đã được điều chỉnh kích thước hoặc hình thu nhỏ tĩnh.</p>
+<p>Để hỗ trợ việc chỉ trích xuất âm thanh, tôi đã phát triển quy trình làm việc hiện có để thêm một chế độ mới. Điều này bao gồm:</p>
+<ol>
+	<li>Mở rộng logic xác thực: Đặc biệt đối với âm thanh, một bước xác thực quan trọng là kiểm tra xem video nguồn có chứa bản nhạc âm thanh hay không trước khi tiến hành trích xuất. Điều này được thực hiện bổ sung bên cạnh các bước xác thực đã có sẵn nhằm bảo đảm rằng URL được yêu cầu có định dạng chính xác.&nbsp;</li>
+	<li>Xây dựng một trình xử lý chuyển đổi mới: Đây là trọng tâm của dự án của tôi. Tôi đã xây dựng một trình xử lý mới trong nền tảng OTFE, chuyên loại bỏ các luồng hình ảnh để tạo ra tệp M4A chất lượng cao.<br></li>
+</ol>
+<h3>Quy trình VOD</h3>
+<p>Tương tự như công việc tôi đã thực hiện với OTFE, dự án này liên quan đến việc mở rộng quy trình tải xuống MP4 hiện tại của chúng tôi sang định dạng chỉ có âm thanh, cụ thể là tải xuống M4A. Điều này dẫn đến một loạt các quyết định kỹ thuật thú vị.&nbsp;</p>
+<p>Quy trình thông thường để tạo một lượt tải xuống video bắt đầu bằng một yêu cầu POST gửi đến tầng API chính của chúng tôi. Tầng này chịu trách nhiệm xác thực và kiểm tra tính hợp lệ, đồng thời tạo bản ghi tương ứng trong cơ sở dữ liệu. Sau đó, công việc sẽ được đưa vào hàng đợi bất đồng bộ của chúng tôi nơi các worker thực hiện nhiệm vụ xử lý. Để kích hoạt tải xuống âm thanh cho VOD, tôi đã bổ sung các điểm cuối API mới theo từng loại (<code>POST /downloads/{type}</code>) đồng thời vẫn giữ nguyên tuyến <code>POST /downloads</code>cũ làm bí danh để tạo các lượt tải xuống theo loại mặc định, hay loại tải xuống video. Điều này đảm bảo khả năng tương thích ngược hoàn toàn.</p>
+<p>Công việc cốt lõi, tạo bản tải xuống, được thực hiện bởi hàng đợi bất đồng bộ của chúng tôi. Bao gồm:</p>
+<ul>
+	<li>Thêm logic vào phía người dùng để phát hiện loại tải xuống âm thanh mới</li>
+	<li>Sử dụng mẫu cấu hình ffmpeg được định nghĩa trong tầng API của chúng tôi để mã hóa luồng âm thanh đúng cách vào một container M4A chất lượng cao</li>
+</ul>
+<p>Bằng cách mở rộng từng thành phần của quy trình này – từ các tuyến API đến các lệnh xử lý phương tiện – tôi đã có thể cung cấp một tính năng mới, được yêu cầu rất nhiều, giúp mở khóa các quy trình làm việc tập trung vào âm thanh cho khách hàng của chúng tôi!<br></p>
+<h2>Ảnh chụp màn hình Bảng điều khiển</h2>
+<p>Chúng tôi rất vui mừng thông báo rằng tính năng này cũng đã có sẵn trong bảng điều khiển Stream. Chỉ cần truy cập vào video bất kỳ của mình, bạn sẽ tìm thấy tùy chọn tải xuống video hoặc chỉ tải xuống âm thanh.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2990 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1920&amp;h=982&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="982" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Sau khi quá trình tải xuống hoàn tất, bạn sẽ thấy URL của tệp, cùng với tùy chọn cho phép vô hiệu hóa nó.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="277" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=715&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=640&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=715&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=750&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=828&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1080&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1280&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1430&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2990 image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1260&amp;h=488&amp;f=webp" data-lightbox-width="1260" data-lightbox-height="488" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="277" class="pt-portable-image-media"></div>
+</figure>
+<h2>Vậy là xong rồi!</h2>
+<p>Dự án này đã giải quyết một nhu cầu lâu dài của khách hàng, cung cấp một cách thức đơn giản hơn để xử lý âm thanh từ video. Tôi vô cùng biết ơn toàn bộ hành trình này, từ việc hiểu rõ vấn đề đến việc đưa ra giải pháp, và đặc biệt là sự hướng dẫn và hỗ trợ mà tôi nhận được từ nhóm của mình trong suốt quá trình. Chúng tôi rất hào hứng chờ xem các nhà phát triển sẽ sử dụng khả năng mới này như thế nào để xây dựng các ứng dụng hiệu quả và hấp dẫn hơn trên Cloudflare Stream.</p>
+<p>Bạn có thể thử tính năng trích xuất âm thanh bằng cách <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>tải một video lên Stream</u></a> hoặc sử dụng API! Nếu bạn muốn tự mình giải quyết những thách thức kỹ thuật này, hãy tìm hiểu <a href="https://www.cloudflare.com/careers/early-talent/?cf_target_id=97C555BF0DA9E4427F470C0134F7E2C9" target="_blank" rel="noopener noreferrer"><u>các chương trình thực tập và chương trình cho tài năng trẻ</u></a> của chúng tôi để bắt đầu hành trình của riêng mình.</p>

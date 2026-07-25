@@ -1,288 +1,153 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5aXWOdv5cPnlRRLs1Ql56d/7acd426b2358dd812270826ed5fd68e7/malicious-redalert-rocket-alerts-application-targets-israeli-phone-calls-sms-and-user-information.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (<a href="https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1" target="_blank" rel="noopener noreferrer">https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1</a>). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
-	<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, “Red Alert: Israel” by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas" target="_blank" rel="noopener noreferrer">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a “nuclear bomb is coming”. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally.</p>
-	<p>In the last two days, a new malicious website (<i>hxxps://redalerts[.]me</i>) has advertised the download of well-known open source application RedAlert by Elad Nava (<a href="https://github.com/eladnava/redalert-android" target="_blank" rel="noopener noreferrer">https://github.com/eladnava/redalert-android</a>). Domain impersonation continues to be a popular vector for attackers, as the legitimate website for the application (<i>hxxps://redalert[.]me</i> ) differs from the malicious website by only one letter. Further, threat actors continue to exploit open source code and deploy modified, malicious versions to unsuspecting users.</p>
-	<p>The malicious website hosted links to both the iOS and the Android version of the RedAlert app. But while the link to the Apple App Store referred to the legitimate version of the RedAlert app by Elad Nava, the link supposedly referring to the Android version hosted on the Play Store directly downloads a malicious APK file. This attack demonstrates the danger of sideloading applications directly from the Internet as opposed to installing applications from the approved app store.</p>
-	<p>The malicious RedAlert version imitates the legitimate rocket alert application but simultaneously collects sensitive user data. Additional permissions requested by the malicious app include access to contacts, call logs, SMS, account information, as well as an overview of all installed apps.</p>
-	<p>The website hosting the malicious file was created on October 12, 2023 and has since been taken offline. Only users who installed the Android version of the app from this specific website are impacted and urgently advised to delete the app. Users can determine if they installed the malicious version by reviewing the permissions granted to the RedAlert app. If users are unsure whether they installed the malicious version, they can delete the RedAlert applications and reinstall the legitimate version directly in the Play Store.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6nCyNtOTncD702msYn7mzW/9550d6742b8bbf6ba382d36166da4357/pasted-image-0--13-.png" alt="" class="kg-image" width="1600" height="1334" loading="lazy">
-
-	</figure>
-	<p><i>Screenshot of the attacker site </i><a href="https://redalerts/[./]me" target="_blank" rel="noopener noreferrer"><i>https://redalerts\[.\]me</i></a></p>
-	<div class="flex anchor relative">
-		<h3 id="malicious-android-package-kit-apk-analysis">Malicious Android Package Kit (APK) Analysis</h3>
-		<a href="https://blog.cloudflare.com/#malicious-android-package-kit-apk-analysis" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The malicious Android Package Kit (APK) file is installed by a user when they click the Google Play button on the fake RedAlert site. Once clicked, the user downloads the app directly from the fake site at <code><i>hxxps://redalerts[.]me/app.apk</i></code>. The SHA-256 hash of the APK is <code><i>5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5</i></code>.</p>
-	<div class="flex anchor relative">
-		<h2 id="capabilities">Capabilities</h2>
-		<a href="https://blog.cloudflare.com/#capabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>A quick analysis of the <i>AndroidManifest.xml</i> file shows several differences compared to the legitimate, open source RedAlert application. Most notable are the additional permissions needed to collect information on the victim. The permissions added are listed below:</p>
-	<ul>
-		<li>
-			<p>android.permission.GET_ACCOUNTS</p>
-		</li>
-		<li>
-			<p>android.permission.QUERY_ALL_PACKAGES</p>
-		</li>
-		<li>
-			<p>android.permission.READ_CALL_LOG</p>
-		</li>
-		<li>
-			<p>android.permission.READ_CONTACTS</p>
-		</li>
-		<li>
-			<p>android.permission.READ_PHONE_NUMBERS</p>
-		</li>
-		<li>
-			<p>android.permission.READ_PHONE_STATE</p>
-		</li>
-		<li>
-			<p>android.permission.READ_PRIVILEGED_PHONE_STATE</p>
-		</li>
-		<li>
-			<p>android.permission.READ_SMS</p>
-		</li>
-	</ul>
-	<p>The application is designed to look and act like RedAlert. However, upon opening the app, a malicious service is started in the background. The <code><i>startService()</i></code> call is the only change to the <code><i>onCreate()</i></code> method, and this begins the sequence of malicious activity, which the actor has placed in a package called <code><i>com.company.allinclusive.AI</i></code></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5SOvfo0vzlyyREVB4A9Jyt/a3a971fe5b0860bb403528579a5f5393/pasted-image-0--14-.png" alt="" class="kg-image" width="1530" height="442" loading="lazy">
-
-	</figure>
-	<p><i>The attacker starts their malicious code within the legitimate RedAlert code com.red.alert.activities: Main.java</i></p>
-	<p>The service is run to gather data from victims’ phones and upload it to the actor’s secure server. The data is extensive and includes:</p>
-	<ul>
-		<li>
-			<p>SIM information, including IMEI and IMSI numbers, network type, country, voicemail number, PIN status, and more</p>
-		</li>
-		<li>
-			<p>Full Contact list</p>
-		</li>
-		<li>
-			<p>All SMS messages, including content and metadata for all statuses (e.g. received, outgoing, sent, etc.)</p>
-		</li>
-		<li>
-			<p>A list of accounts associated with the device</p>
-		</li>
-		<li>
-			<p>All phone calls and conversation details for including incoming, outgoing, missed, rejected, and blocked calls</p>
-		</li>
-		<li>
-			<p>Logged-in email and app accounts</p>
-		</li>
-		<li>
-			<p>List of installed applications</p>
-		</li>
-	</ul>
-	<p>The actor’s code for gathering this information is illustrated below.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/33VyzytviTDeG7qXy6aCrK/3f74918c7ceaaae9a9ce18fd650050a2/Screenshot-2023-10-13-at-3.32.27-PM.png" alt="" class="kg-image" width="1842" height="1326" loading="lazy">
-
-	</figure>
-	<p><i>com.company.allinclusive.AI: AIMain.java contains the data the attacker will capture form the target</i></p>
-	<p>Stolen data is uploaded to an HTTP server at a hardcoded IP address. The actor has a <i>Tools</i> class which details the IP address where the data is to be uploaded:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Fh4WgPsM5kmKnuM8Jqyxh/1307c4a8306bafcdfd47cc2f5e5323b8/Screenshot-2023-10-13-at-3.31.42-PM.png" alt="" class="kg-image" width="1896" height="668" loading="lazy">
-
-	</figure>
-	<p><b>com.company.allinclusive.AI: Tools.java stores the attackers command and control for the malware</b></p>
-	<p>Although HTTP and port 80 are specified, the actor appears to have the ability to use HTTPS and port 443 if a certificate is found bundled within the application package:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4ty1JMARyIggOGXmFoJjcE/7c4fe21747005a3882da8d2ca448583d/Screenshot-2023-10-13-at-3.30.20-PM.png" alt="" class="kg-image" width="2000" height="935" loading="lazy">
-
-	</figure>
-	<p><i>com.company.allinclusive.AI: UploadFileAsync.java</i></p>
-	<p>Data is uploaded through a <i>Connector</i> class, written by the actor. The <i>Connector</i> is responsible for encrypting the stolen data and uploading it to the HTTP server. In this sample, files are encrypted with AES in CBC mode with PKCS5 Padding. The keys are randomly generated and appended to the packaged data, however the keys are encrypted with RSA using a public key bundled in the malicious app. Because of this, anybody who is able to intercept the stolen data will be unable to decrypt it without the actor’s private key.</p>
-	<p>The encrypted files have names that look like <i>_</i><i>.final</i>, which contain:</p>
-	<ul>
-		<li>
-			<p><i><b>_</b></i><i><b>.enc</b></i><b> (encrypted data)</b></p>
-		</li>
-		<li>
-			<p><i><b>_</b></i><i><b>.param</b></i><b> (AES encryption parameters, e.g. key and IV)</b></p>
-		</li>
-		<li>
-			<p><i><b>_</b></i><i><b>.eparam</b></i><b> (RSA parameters, e.g. public key)</b></p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="anti-analysis-runtime-capabilities">Anti-Analysis Runtime Capabilities</h2>
-		<a href="https://blog.cloudflare.com/#anti-analysis-runtime-capabilities" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To avoid detection the actor included anti-analysis capabilities which can run at the time the app is started. The methods for anti-analysis that the attacker has included were anti-debugging, anti-emulation, and anti-test operations</p>
-	<div class="flex anchor relative">
-		<h3 id="anti-debugging">Anti-Debugging</h3>
-		<a href="https://blog.cloudflare.com/#anti-debugging" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The application makes a simple call using the builtin <i>android.os.Debug</i> package to see if the application is being debugged.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7n1Dsyz3tBVwTCQDzQjCpu/62e2fcf823fee0b7c1f144d1d302c557/Screenshot-2023-10-13-at-3.29.28-PM.png" alt="" class="kg-image" width="1970" height="474" loading="lazy">
-
-	</figure>
-	<p><i>com.company.allinclusive.AI.anti.debugger: FindDebugger.java</i></p>
-	<div class="flex anchor relative">
-		<h3 id="anti-emulation">Anti-Emulation</h3>
-		<a href="https://blog.cloudflare.com/#anti-emulation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The application attempts to locate certain files and identifiers to determine whether it is being run in an emulated environment. A snippet of these indicators are shown below:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oRGahgfmW0fqsFZ3L7Bi1/c63b68f780e19a3a3d8f005db7e15c50/pasted-image-0--12--1.png" alt="" class="kg-image" width="1558" height="436" loading="lazy">
-
-	</figure>
-	<p><i>com.company.allinclusive.AI.anti.emulator: FindEmulator.java checks for common emulators</i></p>
-	<div class="flex anchor relative">
-		<h3 id="anti-test">Anti-Test</h3>
-		<a href="https://blog.cloudflare.com/#anti-test" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The application has utilities to identify whether a test user (“monkey”) is using the application:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5bibuD77OAXj6pBVkBb012/9d5c06d0c17b43978e70bfe6101ea8d4/Screenshot-2023-10-13-at-3.28.48-PM.png" alt="" class="kg-image" width="2000" height="774" loading="lazy">
-
-	</figure>
-	<p><i>com.company.allinclusive.AI.anti.monkey: FindMonkey.java</i></p>
-	<p>These methodologies are all rudimentary checks for whether the application is under runtime analysis. It does not, however, protect the malicious code against static analysis.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-to-detect-this-malware-on-your-device">How To Detect This Malware On Your Device</h2>
-		<a href="https://blog.cloudflare.com/#how-to-detect-this-malware-on-your-device" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you have installed RedAlert on your device, the extraneous permissions added by the actor can be used to determine whether you have been compromised. The following permissions appearing on the RedAlert app (whether or not enabled) would indicate compromise:</p>
-	<ul>
-		<li>
-			<p>Call Logs</p>
-		</li>
-		<li>
-			<p>Contacts</p>
-		</li>
-		<li>
-			<p>Phone</p>
-		</li>
-		<li>
-			<p>SMS</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="how-to-protect-yourself">How To Protect Yourself</h2>
-		<a href="https://blog.cloudflare.com/#how-to-protect-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>You can avoid attacks like this by following the guidance below:</p>
-	<ul>
-		<li>
-			<p>Keep your mobile device up to date on the latest software version at all times</p>
-		</li>
-		<li>
-			<p>Consider using Cloudflare Teams (with <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gateway</a>)</p>
-		</li>
-		<li>
-			<p>Avoid using third party mobile application stores</p>
-		</li>
-		<li>
-			<p>Never install applications from Internet URLs or sideload payloads</p>
-		</li>
-		<li>
-			<p>Consider using <a href="https://1.1.1.1/family" target="_blank" rel="noopener noreferrer">1.1.1.1 for families</a> to block malicious domains on your network</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="iocs">IOCs</h2>
-		<a href="https://blog.cloudflare.com/#iocs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<table style="border:none;border-collapse:collapse;">
+<p>On October 13, 2023, Cloudflare’s Cloudforce One Threat Operations Team became aware of a website hosting a Google Android Application (APK) impersonating the legitimate RedAlert - Rocket Alerts application (<a href="https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1" target="_blank" rel="noopener noreferrer">https://play.google.com/store/apps/details?id=com.red.alert&amp;hl=en&amp;pli=1</a>). &nbsp;More than 5,000 rockets have been launched into Israel since the attacks from Hamas began on October 7th 2023. &nbsp;RedAlert - Rocket Alerts developed by Elad Nava allows individuals to receive timely and precise alerts about incoming airstrikes. Many people living in Israel rely on these alerts to seek safety - a service which has become increasingly important given the newest escalations in the region.</p>
+<p>Applications alerting of incoming airstrikes have become targets as only days ago, Pro-Palestinian hacktivist group AnonGhost exploited a vulnerability in another application, “Red Alert: Israel” by Kobi Snir. (<a href="https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas" target="_blank" rel="noopener noreferrer">https://cybernews.com/cyber-war/israel-redalert-breached-anonghost-hamas/</a>) Their exploit allowed them to intercept requests, expose servers and APIs, and send fake alerts to some app users, including a message that a “nuclear bomb is coming”. AnonGhost also claimed they attacked other rocket alert applications, including RedAlert by Elad Nava. As of October 11, 2023, the RedAlert app was reportedly functioning normally.</p>
+<p>In the last two days, a new malicious website (<em>hxxps://redalerts[.]me</em>) has advertised the download of well-known open source application RedAlert by Elad Nava (<a href="https://github.com/eladnava/redalert-android" target="_blank" rel="noopener noreferrer">https://github.com/eladnava/redalert-android</a>). Domain impersonation continues to be a popular vector for attackers, as the legitimate website for the application (<em>hxxps://redalert[.]me</em> ) differs from the malicious website by only one letter. Further, threat actors continue to exploit open source code and deploy modified, malicious versions to unsuspecting users.</p>
+<p>The malicious website hosted links to both the iOS and the Android version of the RedAlert app. But while the link to the Apple App Store referred to the legitimate version of the RedAlert app by Elad Nava, the link supposedly referring to the Android version hosted on the Play Store directly downloads a malicious APK file. This attack demonstrates the danger of sideloading applications directly from the Internet as opposed to installing applications from the approved app store.</p>
+<p>The malicious RedAlert version imitates the legitimate rocket alert application but simultaneously collects sensitive user data. Additional permissions requested by the malicious app include access to contacts, call logs, SMS, account information, as well as an overview of all installed apps.</p>
+<p>The website hosting the malicious file was created on October 12, 2023 and has since been taken offline. Only users who installed the Android version of the app from this specific website are impacted and urgently advised to delete the app. Users can determine if they installed the malicious version by reviewing the permissions granted to the RedAlert app. If users are unsure whether they installed the malicious version, they can delete the RedAlert applications and reinstall the legitimate version directly in the Play Store.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="596" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=715&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=640&amp;h=533&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=715&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=750&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=828&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=1080&amp;h=900&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=1280&amp;h=1067&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=1430&amp;h=1192&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - fhUTs4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48CMN46M3HCRWB027VNQ82.png&amp;w=1600&amp;h=1334&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="1334" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="596" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>Screenshot of the attacker site <a href="https://redalerts/[./]me" target="_blank" rel="noopener noreferrer">https://redalerts\[.\]me</a></em></p>
+<h3>Malicious Android Package Kit (APK) Analysis</h3>
+<p>The malicious Android Package Kit (APK) file is installed by a user when they click the Google Play button on the fake RedAlert site. Once clicked, the user downloads the app directly from the fake site at <em><code>hxxps://redalerts[.]me/app.apk</code></em>. The SHA-256 hash of the APK is <em><code>5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5</code></em>.</p>
+<h2>Capabilities</h2>
+<p>A quick analysis of the <em>AndroidManifest.xml</em> file shows several differences compared to the legitimate, open source RedAlert application. Most notable are the additional permissions needed to collect information on the victim. The permissions added are listed below:</p>
+<ul>
+	<li>android.permission.GET_ACCOUNTS</li>
+	<li>android.permission.QUERY_ALL_PACKAGES</li>
+	<li>android.permission.READ_CALL_LOG</li>
+	<li>android.permission.READ_CONTACTS</li>
+	<li>android.permission.READ_PHONE_NUMBERS</li>
+	<li>android.permission.READ_PHONE_STATE</li>
+	<li>android.permission.READ_PRIVILEGED_PHONE_STATE</li>
+	<li>android.permission.READ_SMS</li>
+</ul>
+<p>The application is designed to look and act like RedAlert. However, upon opening the app, a malicious service is started in the background. The <em><code>startService()</code></em> call is the only change to the <em><code>onCreate()</code></em> method, and this begins the sequence of malicious activity, which the actor has placed in a package called <em><code>com.company.allinclusive.AI</code></em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="207" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=715&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=640&amp;h=185&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=715&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=750&amp;h=217&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=828&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=1080&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=1280&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=1430&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - ZJ4mIJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FE13RRTCAVW1NFVPC1HR.png&amp;w=1530&amp;h=442&amp;f=webp" data-lightbox-width="1530" data-lightbox-height="442" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="207" class="pt-portable-image-media"></div>
+</figure>
+<p><em>The attacker starts their malicious code within the legitimate RedAlert code com.red.alert.activities: Main.java</em></p>
+<p>The service is run to gather data from victims’ phones and upload it to the actor’s secure server. The data is extensive and includes:</p>
+<ul>
+	<li>SIM information, including IMEI and IMSI numbers, network type, country, voicemail number, PIN status, and more</li>
+	<li>Full Contact list</li>
+	<li>All SMS messages, including content and metadata for all statuses (e.g. received, outgoing, sent, etc.)</li>
+	<li>A list of accounts associated with the device</li>
+	<li>All phone calls and conversation details for including incoming, outgoing, missed, rejected, and blocked calls</li>
+	<li>Logged-in email and app accounts</li>
+	<li>List of installed applications</li>
+</ul>
+<p>The actor’s code for gathering this information is illustrated below.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="515" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=640&amp;h=461&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=715&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=750&amp;h=540&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=828&amp;h=596&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=1080&amp;h=778&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=1280&amp;h=922&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=1430&amp;h=1030&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - htjxCt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45R9FG65WAFMS0EASKX3QY.png&amp;w=1842&amp;h=1326&amp;f=webp" data-lightbox-width="1842" data-lightbox-height="1326" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="515" class="pt-portable-image-media"></div>
+</figure>
+<p><em>com.company.allinclusive.AI: AIMain.java contains the data the attacker will capture form the target</em></p>
+<p>Stolen data is uploaded to an HTTP server at a hardcoded IP address. The actor has a <em>Tools</em> class which details the IP address where the data is to be uploaded:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="252" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=715&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=640&amp;h=226&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=715&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=750&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=828&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=1080&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=1280&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=1430&amp;h=504&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - vP9tZq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47AAHJYJ6T5ZRXCDZFQN4N.png&amp;w=1896&amp;h=668&amp;f=webp" data-lightbox-width="1896" data-lightbox-height="668" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="252" class="pt-portable-image-media"></div>
+</figure>
+<p><strong>com.company.allinclusive.AI: Tools.java stores the attackers command and control for the malware</strong></p>
+<p>Although HTTP and port 80 are specified, the actor appears to have the ability to use HTTPS and port 443 if a certificate is found bundled within the application package:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="334" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=640&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=715&amp;h=334&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=750&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=828&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=1080&amp;h=505&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=1280&amp;h=598&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=1430&amp;h=668&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - g7xWeE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472M9M8N7Y2DV5TXMNPTX0.png&amp;w=1920&amp;h=898&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="898" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="334" class="pt-portable-image-media"></div>
+</figure>
+<p><em>com.company.allinclusive.AI: UploadFileAsync.java</em></p>
+<p>Data is uploaded through a <em>Connector</em> class, written by the actor. The <em>Connector</em> is responsible for encrypting the stolen data and uploading it to the HTTP server. In this sample, files are encrypted with AES in CBC mode with PKCS5 Padding. The keys are randomly generated and appended to the packaged data, however the keys are encrypted with RSA using a public key bundled in the malicious app. Because of this, anybody who is able to intercept the stolen data will be unable to decrypt it without the actor’s private key.</p>
+<p>The encrypted files have names that look like <em>_.final</em>, which contain:</p>
+<ul>
+	<li><strong><em>_.enc</em> (encrypted data)</strong></li>
+	<li><strong><em>_.param</em> (AES encryption parameters, e.g. key and IV)</strong></li>
+	<li><strong><em>_.eparam</em> (RSA parameters, e.g. public key)</strong></li>
+</ul>
+<h2>Anti-Analysis Runtime Capabilities</h2>
+<p>To avoid detection the actor included anti-analysis capabilities which can run at the time the app is started. The methods for anti-analysis that the attacker has included were anti-debugging, anti-emulation, and anti-test operations</p>
+<h3>Anti-Debugging</h3>
+<p>The application makes a simple call using the builtin <em>android.os.Debug</em> package to see if the application is being debugged.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="172" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=715&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=640&amp;h=154&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=715&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=750&amp;h=180&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=828&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=1080&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=1280&amp;h=308&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=1430&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - zPeGAP" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YY0CM5EFZ6A3R6GG1E0A.png&amp;w=1920&amp;h=462&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="462" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="172" class="pt-portable-image-media"></div>
+</figure>
+<p><em>com.company.allinclusive.AI.anti.debugger: FindDebugger.java</em></p>
+<h3>Anti-Emulation</h3>
+<p>The application attempts to locate certain files and identifiers to determine whether it is being run in an emulated environment. A snippet of these indicators are shown below:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="200" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=715&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=640&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=715&amp;h=200&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=750&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=828&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=1080&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=1280&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=1430&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - Wt9DZk" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47Q5BKSHV8X0TBFVQP1WP7.png&amp;w=1558&amp;h=436&amp;f=webp" data-lightbox-width="1558" data-lightbox-height="436" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="200" class="pt-portable-image-media"></div>
+</figure>
+<p><em>com.company.allinclusive.AI.anti.emulator: FindEmulator.java checks for common emulators</em></p>
+<h3>Anti-Test</h3>
+<p>The application has utilities to identify whether a test user (“monkey”) is using the application:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="277" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=715&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=640&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=715&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=750&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=828&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=1080&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=1280&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=1430&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2154 Embedded Image - dVqLhZ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47JHJNNRCK9S93XN8E4SJ3.png&amp;w=1920&amp;h=743&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="743" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="277" class="pt-portable-image-media"></div>
+</figure>
+<p><em>com.company.allinclusive.AI.anti.monkey: FindMonkey.java</em></p>
+<p>These methodologies are all rudimentary checks for whether the application is under runtime analysis. It does not, however, protect the malicious code against static analysis.</p>
+<h2>How To Detect This Malware On Your Device</h2>
+<p>If you have installed RedAlert on your device, the extraneous permissions added by the actor can be used to determine whether you have been compromised. The following permissions appearing on the RedAlert app (whether or not enabled) would indicate compromise:</p>
+<ul>
+	<li>Call Logs</li>
+	<li>Contacts</li>
+	<li>Phone</li>
+	<li>SMS</li>
+</ul>
+<h2>How To Protect Yourself</h2>
+<p>You can avoid attacks like this by following the guidance below:</p>
+<ul>
+	<li>Keep your mobile device up to date on the latest software version at all times</li>
+	<li>Consider using Cloudflare Teams (with <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">Cloudflare Gateway</a>)</li>
+	<li>Avoid using third party mobile application stores</li>
+	<li>Never install applications from Internet URLs or sideload payloads</li>
+	<li>Consider using <a href="https://1.1.1.1/family" target="_blank" rel="noopener noreferrer">1.1.1.1 for families</a> to block malicious domains on your network</li>
+</ul>
+<h2>IOCs</h2>
+<div id="html-block-k5a" class="html-block">
+	<table style="border:none;border-collapse:collapse">
 		<colgroup>
-			<col width="333">
-			<col width="333">
+			<col>
+			<col>
 		</colgroup>
 		<tbody>
 			<tr style="height:0pt">
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Type</span></p>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Type</span></p>
 				</td>
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Indicator</span></p>
-				</td>
-			</tr>
-			<tr style="height:0pt">
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Malicious RedAlert APK Download URL</span></p>
-				</td>
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">hxxp://redalerts[.]me/app.apk</span></p>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:700;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Indicator</span></p>
 				</td>
 			</tr>
 			<tr style="height:0pt">
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Malicious RedAlert APK Command and Control</span></p>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Malicious RedAlert APK Download URL</span></p>
 				</td>
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">hxxp://23.254.228[.]135:80/file.php</span></p>
-				</td>
-			</tr>
-			<tr style="height:0pt">
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Malicious RedAlert APK</span></p>
-				</td>
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Roboto,sans-serif;color:#20242c;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5</span></p>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">hxxp://redalerts[.]me/app.apk</span></p>
 				</td>
 			</tr>
 			<tr style="height:0pt">
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.2;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;">Public key, RSA/ECB/PKCS1Padding</span></p>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Malicious RedAlert APK Command and Control</span></p>
 				</td>
-				<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word;">
-					<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Roboto,sans-serif;color:#20242c;background-color:#ffffff;font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;word-break:break-all;">MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvBYe8dLw1TVH39EVQEwCr7kgBRtQz2M2vQbgkbr0UiTFm0Tk9KVZ1jn0uVgJ+dh1I7uuIfzFEopFQ35OxRnjmNAJsOYpYA5ZvD2llS+KUyE4TRJZGh+dfGjc98dCGCVW9aPVuyfciFNpzGU+lUV/nIbi8xmHOSzho+GZvrRWNDvJqmX7Xunjr1crAKIpG1kF8bpa9+VkoKnMOqFBTc6aPEmwj4CmeTsTy+j7ubdKc8tsdoCTGfrLzVj4wlGDjtf06dYEtZ6zvdBbzb4UA6Ilxsb12KY03qdlqlFREqCxjtJUYDEYChnpOSkrzpLOu+TTkAlW68+u6JjgE8AAAnjpIGRRNvuj5ZfTS3Ub3xEABBRUuHcesseuaN3wVwvMBIMbWJabVUWUNWYyCewxrtdrc8HStECbS/b05j2lv6Cl1Qv1iQefurL/hvfREmxlHAnkCmzTxlrEStHHnNmhWOccQI+u0VO6klJShNg8XlRsKXnqpPi3aicki+QMo3i1oWOve6aWkAIJvmHaY4Gmz0nX2foxlJ2YxOGQe0rUAqDXa8S6tYSmIyCYJoTmllvwJAEpCtOFxerZIAa/1BaxYFhH/iQUzzayJuc6ooUmKLw7q72pe3tN0cRT3RAJUmRwTcV5hL+UQgakkSzIMFBpM/rpvNC0Qy94mtpNf6iA6gbKm40CAwEAAQ==</span></p>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">hxxp://23.254.228[.]135:80/file.php</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Malicious RedAlert APK</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style="font-size:10pt;font-family:Roboto,sans-serif;color:#20242c;background-color:#ffffff;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">5087a896360f5d99fbf4eb859c824d19eb6fa358387bf6c2c5e836f7927921c5</span></p>
+				</td>
+			</tr>
+			<tr style="height:0pt">
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.2;margin-top:0pt;margin-bottom:0pt"><span style="font-size:11pt;font-family:Arial,sans-serif;color:#000000;background-color:transparent;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap">Public key, RSA/ECB/PKCS1Padding</span></p>
+				</td>
+				<td style="vertical-align:top;padding:5pt 5pt 5pt 5pt;overflow:hidden;overflow-wrap:break-word">
+					<p style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><span style="font-size:10pt;font-family:Roboto,sans-serif;color:#20242c;background-color:#ffffff;font-weight:400;font-style:normal;text-decoration:none;vertical-align:baseline;white-space:pre;white-space:pre-wrap;word-break:break-all">MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvBYe8dLw1TVH39EVQEwCr7kgBRtQz2M2vQbgkbr0UiTFm0Tk9KVZ1jn0uVgJ+dh1I7uuIfzFEopFQ35OxRnjmNAJsOYpYA5ZvD2llS+KUyE4TRJZGh+dfGjc98dCGCVW9aPVuyfciFNpzGU+lUV/nIbi8xmHOSzho+GZvrRWNDvJqmX7Xunjr1crAKIpG1kF8bpa9+VkoKnMOqFBTc6aPEmwj4CmeTsTy+j7ubdKc8tsdoCTGfrLzVj4wlGDjtf06dYEtZ6zvdBbzb4UA6Ilxsb12KY03qdlqlFREqCxjtJUYDEYChnpOSkrzpLOu+TTkAlW68+u6JjgE8AAAnjpIGRRNvuj5ZfTS3Ub3xEABBRUuHcesseuaN3wVwvMBIMbWJabVUWUNWYyCewxrtdrc8HStECbS/b05j2lv6Cl1Qv1iQefurL/hvfREmxlHAnkCmzTxlrEStHHnNmhWOccQI+u0VO6klJShNg8XlRsKXnqpPi3aicki+QMo3i1oWOve6aWkAIJvmHaY4Gmz0nX2foxlJ2YxOGQe0rUAqDXa8S6tYSmIyCYJoTmllvwJAEpCtOFxerZIAa/1BaxYFhH/iQUzzayJuc6ooUmKLw7q72pe3tN0cRT3RAJUmRwTcV5hL+UQgakkSzIMFBpM/rpvNC0Qy94mtpNf6iA6gbKm40CAwEAAQ==</span></p>
 				</td>
 			</tr>
 		</tbody>
-	</table><!--kg-card-end: html-->
-	<hr>
-	<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">hotline</a> to speak with someone immediately.<i>Visit</i> <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer"><i>1.1.1.1</i></a> <i>from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start</i> <a href="https://www.cloudflare.com/learning/what-is-cloudflare" target="_blank" rel="noopener noreferrer"><i>here</i></a><i>. If you’re looking for a new career direction, check out</i> <a href="https://cloudflare.com/careers" target="_blank" rel="noopener noreferrer"><i>our open positions</i></a><i>.</i></p>
+	</table>
 </div>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<p>Under attack? Contact our <a href="https://www.cloudflare.com/under-attack-hotline" target="_blank" rel="noopener noreferrer">hotline</a> to speak with someone immediately.<em>Visit</em> <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer"><em>1.1.1.1</em></a> <em>from any device to get started with our free app that makes your Internet faster and safer.To learn more about our mission to help build a better Internet, start</em> <em><a href="https://www.cloudflare.com/learning/what-is-cloudflare" target="_blank" rel="noopener noreferrer">here</a>. If you’re looking for a new career direction, check out</em> <em><a href="https://cloudflare.com/careers" target="_blank" rel="noopener noreferrer">our open positions</a>.</em></p>

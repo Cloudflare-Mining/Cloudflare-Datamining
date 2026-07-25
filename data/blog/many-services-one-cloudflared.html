@@ -1,117 +1,81 @@
-<div class="mb2 gray5">3 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/YuYC8rMeikhlUWZDeYgHb/708857f8e911c3ea6735faf1b5d9f4f1/Multiple-proxy-services-in-one-cloudflared-1.png" alt="" class="kg-image" width="1418" height="769" loading="lazy">
-
-	</figure>
-	<p><i>Route many different local services through many different URLs, with only one cloudflared</i></p>
-	<p>I work on the <a href="https://www.cloudflare.com/products/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a> team, and we make a program called <a href="https://github.com/cloudflare/cloudflared" target="_blank" rel="noopener noreferrer">cloudflared</a><i>,</i> which lets you securely expose your web service to the Internet while ensuring that <i>all</i> its traffic goes through Cloudflare.</p>
-	<p>Say you have some local service (a website, an API, a TCP server, etc), and you want to securely expose it to the internet using Argo Tunnel. First, you run cloudflared, which establishes some long-lived TCP connections to the Cloudflare edge. Then, when Cloudflare receives a request for your chosen hostname, it proxies the request through those connections to cloudflared, which in turn proxies the request to your local service. This means anyone accessing your service has to go through Cloudflare, and Cloudflare can do caching, rewrite parts of the page, block attackers, or build <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Zero Trust rules</a> to control who can reach your application (e.g. users with a @corp.com email). Previously, companies had to use VPNs or firewalls to achieve this, but Argo Tunnel aims to be more flexible, more secure, and more scalable than the alternatives.</p>
-	<p>Some of our larger customers have deployed hundreds of services with Argo Tunnel, but they’re consistently experiencing a pain point with these larger deployments. Each instance of <i>cloudflared</i> can only proxy a single service. This means if you want to put, say, 100 services on the internet, you’ll need 100 instances of cloudflared running on your server. This is inefficient (because you’re using 100x as many system resources) and, even worse, it’s a pain to manage 100 long-lived services!</p>
-	<p>Today, we’re thrilled to announce our most-requested feature: you can now expose unlimited services using one cloudflared. Any customer can start using this today, at no extra cost, using the Named Tunnels we released a few months ago.</p>
-	<div class="flex anchor relative">
-		<h3 id="named-tunnels">Named Tunnels</h3>
-		<a href="https://blog.cloudflare.com/#named-tunnels" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Earlier this year, we announced <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever">Named Tunnels</a>—tunnels with immutable IDs that you can run and stop as you please. You can route traffic into the tunnel by adding a DNS or Cloudflare Load Balancer record, and you can route traffic from the tunnel into your local services by running cloudflared_._</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/640RbNyTpOVzJ2YIenEh4S/f44194c5729857698baa96862c771627/BLOG-314-Multi-Service-Support-for-Cloudflared.png" alt="" class="kg-image" width="624" height="205" loading="lazy">
-
-	</figure>
-	<p>You can <a href="https://developers.cloudflare.com/argo-tunnel/create-tunnel" target="_blank" rel="noopener noreferrer">create a tunnel</a> by running $ cloudflared tunnel create my_tunnel_name. Once you’ve got a tunnel, you can use <a href="https://developers.cloudflare.com/argo-tunnel/routing-to-tunnel/dns" target="_blank" rel="noopener noreferrer">DNS records</a> or <a href="https://developers.cloudflare.com/argo-tunnel/routing-to-tunnel/lb" target="_blank" rel="noopener noreferrer">Cloudflare Load Balancers</a> to route traffic into the tunnel. Once traffic is routed into the tunnel, you can use our new ingress rules to map traffic to local services.</p>
-	<div class="flex anchor relative">
-		<h3 id="map-traffic-with-ingress-rules">Map traffic with ingress rules</h3>
-		<a href="https://blog.cloudflare.com/#map-traffic-with-ingress-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>An ingress rule basically says “send traffic for <i>this</i> internet URL to <i>this</i> local service.” When you invoke <i>cloudflared</i> it’ll read these ingress rules from the configuration file. You write ingress rules under the ingress key of your config file, like this:</p>
-	<pre class="language-bash"><code class="language-bash">$ cat ~/cloudflared_config.yaml
-
-tunnel: my_tunnel_name
-credentials-file: .cloudflared/e0000000-e650-4190-0000-19c97abb503b.json
-ingress:
- # Rules map traffic from a hostname to a local service:
- - hostname: example.com
-   service: https://localhost:8000
- # Rules can match the request's path to a regular expression:
- - hostname: static.example.com
-   path: /images/*\.(jpg|png|gif)
-   service: https://machine1.local:3000
- # Rules can match the request's hostname to a wildcard character:
- - hostname: "*.ssh.foo.com"
-   service: ssh://localhost:2222
- # You can map traffic to the built-in “Hello World” test server:
- - hostname: foo.com
-   service: hello_world
- # This “catch-all” rule doesn’t have a hostname/path, so it matches everything
- - service: http_status:404</code></pre>
-	<p>This example maps traffic to three different local services. But cloudflared can map traffic to more than just addresses: it can respond with a given HTTP status (as in the last rule) or with the built-in Hello World test server (as in the second-last rule). See <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress" target="_blank" rel="noopener noreferrer">the docs</a> for a full list of supported services.</p>
-	<p>You can match traffic using the hostname, a path regex, or both. If you don’t use any filters, the ingress rule will match everything (so if you have DNS records from different zones routing into the tunnel, the rule will match all their URLs). Traffic is matched to rules from top to bottom, so in this example, the last rule will match anything that wasn’t matched by an earlier rule. We actually require the last rule to match everything; otherwise, cloudflared could receive a request and not know what to respond with.</p>
-	<div class="flex anchor relative">
-		<h3 id="testing-your-rules">Testing your rules</h3>
-		<a href="https://blog.cloudflare.com/#testing-your-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To make sure all your rules are valid, you can run</p>
-	<pre class="language-bash"><code class="language-bash">$ cat ~/cloudflared_config_invalid.yaml
-
-ingress:
- - hostname: example.com
-   service: https://localhost:8000
-
-$ cloudflared tunnel ingress validate
-Validating rules from /usr/local/etc/cloudflared/config.yml
-Validation failed: The last ingress rule must match all URLs (i.e. it should not have a hostname or path filter)</code></pre>
-	<p>This will check that all your ingress rules use valid regexes and map to valid services, and it’ll ensure that your last rule (and only your last rule) matches all traffic. To make sure your ingress rules do what you expect them to do, you can run</p>
-	<pre class="language-bash"><code class="language-bash">$ cloudflared tunnel ingress rule https://static.example.com/images/dog.gif
-Using rules from ~/cloudflared_config.yaml
-Matched rule #2
-        Hostname: static.example.com
-        path: /images/*\.(jpg|png|gif)</code></pre>
-	<p>This will check which rule matches the given URL, almost like a dry run for the ingress rules (no tunnels are run and no requests are actually sent). It’s helpful for making sure you’re routing the right URLs to the right services!</p>
-	<div class="flex anchor relative">
-		<h3 id="per-rule-configuration">Per-rule configuration</h3>
-		<a href="https://blog.cloudflare.com/#per-rule-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Whenever cloudflared gets a request from the internet, it proxies that request to the matching local service on your origin. Different services might need different configurations for this request; for example, you might want to tweak the timeout or HTTP headers for a certain origin. You can set a default configuration for all your local services, and then override it for specific ones, e.g.</p>
-	<pre class="language-bash"><code class="language-bash">ingress:
-  # Set configuration for all services
-  originRequest:
-    connectTimeout: 30s
- # This service inherits all the default (root-level) configuration
- - hostname: example.com
-   service: https://localhost:8000
- # This service overrides the default configuration
- - service: https://localhost:8001
-   originRequest:
-     connectTimeout: 10s
-     disableChunkedEncoding: true
- # Catch-all rule doesn’t actually use any of the config
- - service: http_status:404</code></pre>
-	<p>For a full list of configuration options, check out the <a href="https://developers.cloudflare.com/argo-tunnel/configuration/ingress" target="_blank" rel="noopener noreferrer">docs</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next?</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We really hope this makes Argo Tunnel an even easier way to deploy services onto the Internet. If you have any questions, file an issue on our <a href="https://github.com/cloudflare/cloudflared" target="_blank" rel="noopener noreferrer">GitHub</a>. Happy developing!</p>
+<p><em>Route many different local services through many different URLs, with only one cloudflared</em></p>
+<p>I work on the <a href="https://www.cloudflare.com/products/argo-tunnel" target="_blank" rel="noopener noreferrer">Argo Tunnel</a> team, and we make a program called <a href="https://github.com/cloudflare/cloudflared" target="_blank" rel="noopener noreferrer">cloudflared</a><em>,</em> which lets you securely expose your web service to the Internet while ensuring that <em>all</em> its traffic goes through Cloudflare.</p>
+<p>Say you have some local service (a website, an API, a TCP server, etc), and you want to securely expose it to the internet using Argo Tunnel. First, you run cloudflared, which establishes some long-lived TCP connections to the Cloudflare edge. Then, when Cloudflare receives a request for your chosen hostname, it proxies the request through those connections to cloudflared, which in turn proxies the request to your local service. This means anyone accessing your service has to go through Cloudflare, and Cloudflare can do caching, rewrite parts of the page, block attackers, or build <a href="https://www.cloudflare.com/teams/access" target="_blank" rel="noopener noreferrer">Zero Trust rules</a> to control who can reach your application (e.g. users with a @corp.com email). Previously, companies had to use VPNs or firewalls to achieve this, but Argo Tunnel aims to be more flexible, more secure, and more scalable than the alternatives.</p>
+<p>Some of our larger customers have deployed hundreds of services with Argo Tunnel, but they’re consistently experiencing a pain point with these larger deployments. Each instance of <em>cloudflared</em> can only proxy a single service. This means if you want to put, say, 100 services on the internet, you’ll need 100 instances of cloudflared running on your server. This is inefficient (because you’re using 100x as many system resources) and, even worse, it’s a pain to manage 100 long-lived services!</p>
+<p>Today, we’re thrilled to announce our most-requested feature: you can now expose unlimited services using one cloudflared. Any customer can start using this today, at no extra cost, using the Named Tunnels we released a few months ago.</p>
+<h3>Named Tunnels</h3>
+<p>Earlier this year, we announced <a href="https://blog.cloudflare.com/argo-tunnels-that-live-forever">Named Tunnels</a>—tunnels with immutable IDs that you can run and stop as you please. You can route traffic into the tunnel by adding a DNS or Cloudflare Load Balancer record, and you can route traffic from the tunnel into your local services by running cloudflared_._</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="624" height="205" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=624&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=624&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 624w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=640&amp;h=210&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=750&amp;h=246&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=828&amp;h=272&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=1080&amp;h=355&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=1248&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1248w" alt="Many services, one cloudflared Embedded Image - laeY6x" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47WG6PDTXW0C7RF8PZST4K.png&amp;w=624&amp;h=205&amp;f=webp" data-lightbox-width="624" data-lightbox-height="205" data-astro-cid-7nvefuv6="true" sizes="(min-width: 624px) 624px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="624" height="205" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>You can <a href="https://developers.cloudflare.com/argo-tunnel/create-tunnel" target="_blank" rel="noopener noreferrer">create a tunnel</a> by running $ cloudflared tunnel create my_tunnel_name. Once you’ve got a tunnel, you can use <a href="https://developers.cloudflare.com/argo-tunnel/routing-to-tunnel/dns" target="_blank" rel="noopener noreferrer">DNS records</a> or <a href="https://developers.cloudflare.com/argo-tunnel/routing-to-tunnel/lb" target="_blank" rel="noopener noreferrer">Cloudflare Load Balancers</a> to route traffic into the tunnel. Once traffic is routed into the tunnel, you can use our new ingress rules to map traffic to local services.</p>
+<h3>Map traffic with ingress rules</h3>
+<p>An ingress rule basically says “send traffic for <em>this</em> internet URL to <em>this</em> local service.” When you invoke <em>cloudflared</em> it’ll read these ingress rules from the configuration file. You write ingress rules under the ingress key of your config file, like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ~/cloudflared_config.yaml</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tunnel:</span><span class="sk-032f62-99ffe4"> my_tunnel_name</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">credentials-file:</span><span class="sk-032f62-99ffe4"> .cloudflared/e0000000-e650-4190-0000-19c97abb503b.json</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ingress:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # Rules map traffic from a hostname to a local service:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   service:</span><span class="sk-032f62-99ffe4"> https://localhost:8000</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # Rules can match the request's path to a regular expression:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> static.example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   path:</span><span class="sk-032f62-99ffe4"> /images/</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-005cc5-a0a0a0">\.</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">jpg</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">png</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">gif</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   service:</span><span class="sk-032f62-99ffe4"> https://machine1.local:3000</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # Rules can match the request's hostname to a wildcard character:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> "*.ssh.foo.com"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   service:</span><span class="sk-032f62-99ffe4"> ssh://localhost:2222</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # You can map traffic to the built-in “Hello World” test server:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> foo.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   service:</span><span class="sk-032f62-99ffe4"> hello_world</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # This “catch-all” rule doesn’t have a hostname/path, so it matches everything</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre>
 </div>
+<p>This example maps traffic to three different local services. But cloudflared can map traffic to more than just addresses: it can respond with a given HTTP status (as in the last rule) or with the built-in Hello World test server (as in the second-last rule). See <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/ingress" target="_blank" rel="noopener noreferrer">the docs</a> for a full list of supported services.</p>
+<p>You can match traffic using the hostname, a path regex, or both. If you don’t use any filters, the ingress rule will match everything (so if you have DNS records from different zones routing into the tunnel, the rule will match all their URLs). Traffic is matched to rules from top to bottom, so in this example, the last rule will match anything that wasn’t matched by an earlier rule. We actually require the last rule to match everything; otherwise, cloudflared could receive a request and not know what to respond with.</p>
+<h3>Testing your rules</h3>
+<p>To make sure all your rules are valid, you can run</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cat</span><span class="sk-032f62-99ffe4"> ~/cloudflared_config_invalid.yaml</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ingress:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   service:</span><span class="sk-032f62-99ffe4"> https://localhost:8000</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> validate</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Validating</span><span class="sk-032f62-99ffe4"> rules</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> /usr/local/etc/cloudflared/config.yml</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Validation</span><span class="sk-032f62-99ffe4"> failed:</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> last</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> must</span><span class="sk-032f62-99ffe4"> match</span><span class="sk-032f62-99ffe4"> all</span><span class="sk-032f62-99ffe4"> URLs</span><span class="sk-24292e-fff"> (i.e. </span><span class="sk-032f62-99ffe4">it</span><span class="sk-032f62-99ffe4"> should</span><span class="sk-032f62-99ffe4"> not</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> a</span><span class="sk-032f62-99ffe4"> hostname</span><span class="sk-032f62-99ffe4"> or</span><span class="sk-032f62-99ffe4"> path</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>This will check that all your ingress rules use valid regexes and map to valid services, and it’ll ensure that your last rule (and only your last rule) matches all traffic. To make sure your ingress rules do what you expect them to do, you can run</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cloudflared</span><span class="sk-032f62-99ffe4"> tunnel</span><span class="sk-032f62-99ffe4"> ingress</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-032f62-99ffe4"> https://static.example.com/images/dog.gif</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Using</span><span class="sk-032f62-99ffe4"> rules</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> ~/cloudflared_config.yaml</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Matched</span><span class="sk-032f62-99ffe4"> rule</span><span class="sk-6a737d-8b8b8b94"> #2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Hostname:</span><span class="sk-032f62-99ffe4"> static.example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        path:</span><span class="sk-032f62-99ffe4"> /images/</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-005cc5-a0a0a0">\.</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">jpg</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">png</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">gif</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>This will check which rule matches the given URL, almost like a dry run for the ingress rules (no tunnels are run and no requests are actually sent). It’s helpful for making sure you’re routing the right URLs to the right services!</p>
+<h3>Per-rule configuration</h3>
+<p>Whenever cloudflared gets a request from the internet, it proxies that request to the matching local service on your origin. Different services might need different configurations for this request; for example, you might want to tweak the timeout or HTTP headers for a certain origin. You can set a default configuration for all your local services, and then override it for specific ones, e.g.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">ingress:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  # Set configuration for all services</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  originRequest:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    connectTimeout:</span><span class="sk-032f62-99ffe4"> 30s</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # This service inherits all the default (root-level) configuration</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> hostname:</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   service:</span><span class="sk-032f62-99ffe4"> https://localhost:8000</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # This service overrides the default configuration</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> https://localhost:8001</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   originRequest:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     connectTimeout:</span><span class="sk-032f62-99ffe4"> 10s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     disableChunkedEncoding:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> # Catch-all rule doesn’t actually use any of the config</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> -</span><span class="sk-032f62-99ffe4"> service:</span><span class="sk-032f62-99ffe4"> http_status:404</span></span></code></pre>
+</div>
+<p>For a full list of configuration options, check out the <a href="https://developers.cloudflare.com/argo-tunnel/configuration/ingress" target="_blank" rel="noopener noreferrer">docs</a>.</p>
+<h3>What’s next?</h3>
+<p>We really hope this makes Argo Tunnel an even easier way to deploy services onto the Internet. If you have any questions, file an issue on our <a href="https://github.com/cloudflare/cloudflared" target="_blank" rel="noopener noreferrer">GitHub</a>. Happy developing!</p>

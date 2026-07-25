@@ -1,105 +1,70 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Eh9CutmKzzir3UkBhGbUb/8d917b01d8e3d1647a686421a036f103/reclaiming-cpu-for-free-with-pgo.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p><a href="https://tip.golang.org/doc/go1.20" target="_blank" rel="noopener noreferrer">Golang 1.20</a> introduced support for Profile Guided Optimization (PGO) to the go compiler. This allows guiding the compiler to introduce optimizations based on the real world behaviour of your system. In the Observability Team at Cloudflare, we maintain a few Go-based services that use thousands of cores worldwide, so even the 2-7% savings advertised would drastically reduce our CPU footprint, effectively for free. This would reduce the CPU usage for our internal services, freeing up those resources to serve customer requests, providing measurable improvements to our customer experience. In this post, I will cover the process we created for experimenting with PGO – collecting representative profiles across our production infrastructure and then deploying new PGO binaries and measuring the CPU savings.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-does-pgo-work">How does PGO work?</h3>
-		<a href="https://blog.cloudflare.com/#how-does-pgo-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>PGO itself is not a Go-specific tool, although it is relatively new. PGO allows you to take CPU profiles from a program running in production and use that to optimise the generated assembly for that program. This includes a bunch of different optimisations such as inlining heavily used functions more aggressively, reworking branch prediction to favour the more common branches, and rearranging the generated code to lump hot paths together to save on CPU cache swapping.</p>
-	<p>The general flow for using PGO is to compile a non-PGO binary and deploy it to production, collect CPU profiles from the binary in production, and then compile a <i>second</i> binary using that CPU profile. CPU Profiles contain samples of what the CPU was spending the most time on when executing a program, which provides valuable context to the compiler when it’s making decisions about optimising a program. For example, the compiler may choose to inline a function that is called many times to reduce the function call overhead, or it might choose to unroll a particularly jump-heavy loop. Crucially, using a profile from production can guide the compiler much more efficiently than any upfront heuristics.</p>
-	<div class="flex anchor relative">
-		<h3 id="a-practical-example">A practical example</h3>
-		<a href="https://blog.cloudflare.com/#a-practical-example" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the Observability team, we operate a system we call “wshim”. Wshim is a service that runs on every one of our edge servers, providing a push gateway for telemetry sourced from our internal Cloudflare Workers. Because this service runs on every server, and is called every time an internal worker is called, wshim requires a lot of CPU time to run. In order to track exactly how much, we put wshim into its own <a href="https://en.wikipedia.org/wiki/Cgroups" target="_blank" rel="noopener noreferrer">cgroup</a>, and use <a href="https://github.com/google/cadvisor" target="_blank" rel="noopener noreferrer">cadvisor</a> to expose Prometheus metrics pertaining to the resources that it uses.</p>
-	<p>Before deploying PGO, wshim was using over 3000 cores globally:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1YefuIqASjynzrsnMuKMYk/9d5ef360c79393dac4771b21f7cdc1a3/image1-3.png" alt="" class="kg-image" width="780" height="259" loading="lazy">
-
-	</figure>
-	<p><code>container_cpu_time_seconds</code> is our internal metric that tracks the amount of time a CPU has spent running wshim across the world. Even a 2% saving would return 60 cores to our customers, making the Cloudflare network even more efficient.</p>
-	<p>The first step in deploying PGO was to collect representative profiles from our servers worldwide. The first problem we run into is that we run thousands of servers, each with different usage patterns at given points in time – a datacenter serving lots of requests during daytime hours will have a different usage pattern than a different data center that locally is in the middle of the night. As such, selecting exactly which servers to profile is paramount to collecting good profiles for PGO to use.</p>
-	<p>In the end, we decided that the best samples would be from those datacenters experiencing heavy load – those are the ones where the slowest parts of wshim would be most obvious. Even further, we will only collect profiles from our Tier 1 data centers. These are data centers that serve our most heavily populated regions, are generally our largest, and are generally under very heavy loads during peak hours.</p>
-	<p>Concretely, we can get a list of high CPU servers by querying our <a href="https://thanos.io" target="_blank" rel="noopener noreferrer">Thanos</a> infrastructure:</p>
-	<pre class="language-bash"><code class="language-bash">num_profiles="1000"
-
-# Fetch the top n CPU users for wshim across the edge using Thanos.
-cloudflared access curl "https://thanos/api/v1/query?query=topk%28${num_profiles}%2Cinstance%3Acontainer_cpu_time_seconds_total%3Arate2m%7Bapp_name%3D%22wshim.service%22%7D%29&amp;dedup=true&amp;partial_response=true" --compressed | jq '.data.result[].metric.instance' -r &gt; "${instances_file}"</code></pre>
-	<p>Go makes actually fetching CPU profiles trivial with <a href="https://pkg.go.dev/net/http/pprof" target="_blank" rel="noopener noreferrer">pprof</a>. In order for our engineers to debug their systems in production, we provide a method to easily retrieve production profiles that we can use here. Wshim provides a pprof interface that we can use to retrieve profiles, and we can collect these again with bash:</p>
-	<pre class="language-bash"><code class="language-bash"># For every instance, attempt to pull a CPU profile. Note that due to the transient nature of some data centers
-# a certain percentage of these will fail, which is fine, as long as we get enough nodes to form a representative sample.
-while read instance; do fetch-pprof $instance –port 8976 –seconds 30' &gt; "${working_dir}/${instance}.pprof" &amp; done &lt; "${instances_file}"
-
-wait $(jobs -p)</code></pre>
-	<p>And then merge all the gathered profiles into one, with go tool:</p>
-	<pre class="language-bash"><code class="language-bash"># Merge the fetched profiles into one.
-go tool pprof -proto "${working_dir}/"*.pprof &gt; profile.pprof</code></pre>
-	<p>It’s this merged profile that we will use to compile our pprof binary. As such, we commit it to our repo so that it lives alongside all the other deployment components of wshim:</p>
-	<pre class="language-bash"><code class="language-bash">~/cf-repos/wshim ± master
-23/01/2024 10:49:08 AEDT❯ tree pgo
-pgo
-├── README.md
-├── fetch-profiles.sh
-└── profile.pprof</code></pre>
-	<p>And update our Makefile to pass in the <code>-pgo</code> flag to the <code>go build</code> command:</p>
-	<pre class="language-bash"><code class="language-bash">build:
-       go build -pgo ./pgo/profile.pprof -o /tmp/wshim ./cmd/wshim</code></pre>
-	<p>After that, we can build and deploy our new PGO optimized version of wshim, like any other version.</p>
-	<div class="flex anchor relative">
-		<h3 id="results">Results</h3>
-		<a href="https://blog.cloudflare.com/#results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once our new version is deployed, we can review our CPU metrics to see if we have any meaningful savings. Resource usages are notoriously hard to compare. Because wshim’s CPU usage scales with the amount of traffic that any given server is receiving, it has a lot of potentially confounding variables, including the time of day, day of the year, and whether there are any active attacks affecting the datacenter. That being said, we can take a couple of numbers that might give us a good indication of any potential savings.</p>
-	<p>Firstly, we can look at the CPU usage of wshim immediately before and after the deployment. This may be confounded by the time difference between the sets, but it shows a decent improvement. Because our release takes just under two hours to roll to every tier 1 datacenter, we can use PromQLs `offset` operator to measure the difference:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3enVHBJjLVGDCSBBRqrLAn/157a65a91619f9252ad8819600241921/image3-1.png" alt="" class="kg-image" width="1612" height="258" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/I7piaGicvlQbFmzpiHxUT/65553d182d296b4b1d663b69eb34cb41/image4-1.png" alt="" class="kg-image" width="1475" height="191" loading="lazy">
-
-	</figure>
-	<p>This indicates that following the release, we’re using ~97 cores fewer than before the release, a ~3.5% reduction. This seems to be inline with the <a href="https://go.dev/doc/pgo#overview" target="_blank" rel="noopener noreferrer">upstream documentation</a> that gives numbers between 2% and 14%.</p>
-	<p>The second number we can look at is the usage at the same time of day on different days of the week. The average usage for the 7 days prior to the release was 3067.83 cores, whereas the 7 days <i>after</i> the release were 2996.78, a savings of 71 CPUs. Not quite as good as our 97 CPU savings, but still pretty substantial!</p>
-	<p>This seems to prove the benefits of PGO – without changing the code at all, we managed to save ourselves several servers worth of CPU time.</p>
-	<div class="flex anchor relative">
-		<h3 id="future-work">Future work</h3>
-		<a href="https://blog.cloudflare.com/#future-work" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Looking at these initial results certainly seems to prove the case for PGO – saving multiple servers worth of CPU without any code changes is a big win for freeing up resources to better serve customer requests. However, there is definitely more work to be done here. In particular:</p>
-	<ul>
-		<li>
-			<p>Automating the collection of profiles, perhaps using <a href="https://www.cncf.io/blog/2022/05/31/what-is-continuous-profiling" target="_blank" rel="noopener noreferrer">continuous profiling</a></p>
-		</li>
-		<li>
-			<p>Refining the deployment process to handle the new “two-step deployment”, deploying a non PGO binary, and then a PGO one</p>
-		</li>
-		<li>
-			<p>Refining our techniques to derive representative profiling samples</p>
-		</li>
-		<li>
-			<p>Implementing further improvements with <a href="https://github.com/facebookarchive/BOLT" target="_blank" rel="noopener noreferrer">BOLT</a>, or other Link Time Optimization (LTO) techniques</p>
-		</li>
-	</ul>
-	<p><i>If that sounds interesting to you, we’re hiring in both the </i><a href="https://boards.greenhouse.io/cloudflare/jobs/5563753?gh_jid=5563753" target="_blank" rel="noopener noreferrer"><i>USA</i></a><i> and </i><a href="https://boards.greenhouse.io/cloudflare/jobs/5443710?gh_jid=5443710" target="_blank" rel="noopener noreferrer"><i>EMEA</i></a><i>!</i></p>
+<p><a href="https://tip.golang.org/doc/go1.20" target="_blank" rel="noopener noreferrer">Golang 1.20</a> introduced support for Profile Guided Optimization (PGO) to the go compiler. This allows guiding the compiler to introduce optimizations based on the real world behaviour of your system. In the Observability Team at Cloudflare, we maintain a few Go-based services that use thousands of cores worldwide, so even the 2-7% savings advertised would drastically reduce our CPU footprint, effectively for free. This would reduce the CPU usage for our internal services, freeing up those resources to serve customer requests, providing measurable improvements to our customer experience. In this post, I will cover the process we created for experimenting with PGO – collecting representative profiles across our production infrastructure and then deploying new PGO binaries and measuring the CPU savings.</p>
+<h3>How does PGO work?</h3>
+<p>PGO itself is not a Go-specific tool, although it is relatively new. PGO allows you to take CPU profiles from a program running in production and use that to optimise the generated assembly for that program. This includes a bunch of different optimisations such as inlining heavily used functions more aggressively, reworking branch prediction to favour the more common branches, and rearranging the generated code to lump hot paths together to save on CPU cache swapping.</p>
+<p>The general flow for using PGO is to compile a non-PGO binary and deploy it to production, collect CPU profiles from the binary in production, and then compile a <em>second</em> binary using that CPU profile. CPU Profiles contain samples of what the CPU was spending the most time on when executing a program, which provides valuable context to the compiler when it’s making decisions about optimising a program. For example, the compiler may choose to inline a function that is called many times to reduce the function call overhead, or it might choose to unroll a particularly jump-heavy loop. Crucially, using a profile from production can guide the compiler much more efficiently than any upfront heuristics.</p>
+<h3>A practical example</h3>
+<p>In the Observability team, we operate a system we call “wshim”. Wshim is a service that runs on every one of our edge servers, providing a push gateway for telemetry sourced from our internal Cloudflare Workers. Because this service runs on every server, and is called every time an internal worker is called, wshim requires a lot of CPU time to run. In order to track exactly how much, we put wshim into its own <a href="https://en.wikipedia.org/wiki/Cgroups" target="_blank" rel="noopener noreferrer">cgroup</a>, and use <a href="https://github.com/google/cadvisor" target="_blank" rel="noopener noreferrer">cadvisor</a> to expose Prometheus metrics pertaining to the resources that it uses.</p>
+<p>Before deploying PGO, wshim was using over 3000 cores globally:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="237" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=640&amp;h=212&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=715&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=750&amp;h=249&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=828&amp;h=274&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=1080&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=1280&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=1430&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2222 Embedded Image - cOxUzH" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44N1NQCNXD8V3Z6HP7JX99.png&amp;w=780&amp;h=259&amp;f=webp" data-lightbox-width="780" data-lightbox-height="259" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="237" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><code>container_cpu_time_seconds</code> is our internal metric that tracks the amount of time a CPU has spent running wshim across the world. Even a 2% saving would return 60 cores to our customers, making the Cloudflare network even more efficient.</p>
+<p>The first step in deploying PGO was to collect representative profiles from our servers worldwide. The first problem we run into is that we run thousands of servers, each with different usage patterns at given points in time – a datacenter serving lots of requests during daytime hours will have a different usage pattern than a different data center that locally is in the middle of the night. As such, selecting exactly which servers to profile is paramount to collecting good profiles for PGO to use.</p>
+<p>In the end, we decided that the best samples would be from those datacenters experiencing heavy load – those are the ones where the slowest parts of wshim would be most obvious. Even further, we will only collect profiles from our Tier 1 data centers. These are data centers that serve our most heavily populated regions, are generally our largest, and are generally under very heavy loads during peak hours.</p>
+<p>Concretely, we can get a list of high CPU servers by querying our <a href="https://thanos.io" target="_blank" rel="noopener noreferrer">Thanos</a> infrastructure:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">num_profiles</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">"1000"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Fetch the top n CPU users for wshim across the edge using Thanos.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">cloudflared</span><span class="sk-032f62-99ffe4"> access</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-032f62-99ffe4"> "https://thanos/api/v1/query?query=topk%28${</span><span class="sk-24292e-fff">num_profiles</span><span class="sk-032f62-99ffe4">}%2Cinstance%3Acontainer_cpu_time_seconds_total%3Arate2m%7Bapp_name%3D%22wshim.service%22%7D%29&amp;dedup=true&amp;partial_response=true"</span><span class="sk-005cc5-99ffe4"> --compressed</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span><span class="sk-032f62-99ffe4"> '.data.result[].metric.instance'</span><span class="sk-005cc5-99ffe4"> -r</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">instances_file</span><span class="sk-032f62-99ffe4">}"</span></span></code></pre>
 </div>
+<p>Go makes actually fetching CPU profiles trivial with <a href="https://pkg.go.dev/net/http/pprof" target="_blank" rel="noopener noreferrer">pprof</a>. In order for our engineers to debug their systems in production, we provide a method to easily retrieve production profiles that we can use here. Wshim provides a pprof interface that we can use to retrieve profiles, and we can collect these again with bash:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># For every instance, attempt to pull a CPU profile. Note that due to the transient nature of some data centers</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># a certain percentage of these will fail, which is fine, as long as we get enough nodes to form a representative sample.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">while</span><span class="sk-005cc5-ffc799"> read</span><span class="sk-032f62-99ffe4"> instance</span><span class="sk-24292e-fff">; </span><span class="sk-d73a49-a0a0a0">do</span><span class="sk-6f42c1-ffc799"> fetch-pprof</span><span class="sk-24292e-fff"> $instance </span><span class="sk-032f62-99ffe4">–port</span><span class="sk-005cc5-ffc799"> 8976</span><span class="sk-032f62-99ffe4"> –seconds</span><span class="sk-005cc5-ffc799"> 30</span><span class="sk-032f62-99ffe4">' &gt; "${working_dir}/${instance}.pprof" &amp; done &lt; "${instances_file}"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">wait $(jobs -p)</span></span></code></pre>
+</div>
+<p>And then merge all the gathered profiles into one, with go tool:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Merge the fetched profiles into one.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">go</span><span class="sk-032f62-99ffe4"> tool</span><span class="sk-032f62-99ffe4"> pprof</span><span class="sk-005cc5-99ffe4"> -proto</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">working_dir</span><span class="sk-032f62-99ffe4">}/"</span><span class="sk-005cc5-a0a0a0">*</span><span class="sk-032f62-99ffe4">.pprof</span><span class="sk-d73a49-a0a0a0"> &gt;</span><span class="sk-032f62-99ffe4"> profile.pprof</span></span></code></pre>
+</div>
+<p>It’s this merged profile that we will use to compile our pprof binary. As such, we commit it to our repo so that it lives alongside all the other deployment components of wshim:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">~</span><span class="sk-24292e-fff">/cf-repos/wshim ± master</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">23/01/2024</span><span class="sk-032f62-99ffe4"> 10:49:08</span><span class="sk-032f62-99ffe4"> AEDT❯</span><span class="sk-032f62-99ffe4"> tree</span><span class="sk-032f62-99ffe4"> pgo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">pgo</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> README.md</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├──</span><span class="sk-032f62-99ffe4"> fetch-profiles.sh</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">└──</span><span class="sk-032f62-99ffe4"> profile.pprof</span></span></code></pre>
+</div>
+<p>And update our Makefile to pass in the <code>-pgo</code> flag to the <code>go build</code> command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">build:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       go</span><span class="sk-032f62-99ffe4"> build</span><span class="sk-005cc5-99ffe4"> -pgo</span><span class="sk-032f62-99ffe4"> ./pgo/profile.pprof</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> /tmp/wshim</span><span class="sk-032f62-99ffe4"> ./cmd/wshim</span></span></code></pre>
+</div>
+<p>After that, we can build and deploy our new PGO optimized version of wshim, like any other version.</p>
+<h3>Results</h3>
+<p>Once our new version is deployed, we can review our CPU metrics to see if we have any meaningful savings. Resource usages are notoriously hard to compare. Because wshim’s CPU usage scales with the amount of traffic that any given server is receiving, it has a lot of potentially confounding variables, including the time of day, day of the year, and whether there are any active attacks affecting the datacenter. That being said, we can take a couple of numbers that might give us a good indication of any potential savings.</p>
+<p>Firstly, we can look at the CPU usage of wshim immediately before and after the deployment. This may be confounded by the time difference between the sets, but it shows a decent improvement. Because our release takes just under two hours to roll to every tier 1 datacenter, we can use PromQLs `offset` operator to measure the difference:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="114" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=715&amp;h=114&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=640&amp;h=102&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=715&amp;h=114&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=750&amp;h=120&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=828&amp;h=132&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=1080&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=1280&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=1430&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2222 Embedded Image - yIXlrD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4664VGGX6EG45J8VG5BQTW.png&amp;w=1612&amp;h=258&amp;f=webp" data-lightbox-width="1612" data-lightbox-height="258" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="114" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="93" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=715&amp;h=93&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=640&amp;h=83&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=715&amp;h=93&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=750&amp;h=98&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=828&amp;h=108&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=1080&amp;h=140&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=1280&amp;h=166&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=1430&amp;h=186&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2222 Embedded Image - nyWn1Z" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4970Z7HYZ0Q739RV8GTKJT.png&amp;w=1475&amp;h=191&amp;f=webp" data-lightbox-width="1475" data-lightbox-height="191" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="93" class="pt-portable-image-media"></div>
+</figure>
+<p>This indicates that following the release, we’re using ~97 cores fewer than before the release, a ~3.5% reduction. This seems to be inline with the <a href="https://go.dev/doc/pgo#overview" target="_blank" rel="noopener noreferrer">upstream documentation</a> that gives numbers between 2% and 14%.</p>
+<p>The second number we can look at is the usage at the same time of day on different days of the week. The average usage for the 7 days prior to the release was 3067.83 cores, whereas the 7 days <em>after</em> the release were 2996.78, a savings of 71 CPUs. Not quite as good as our 97 CPU savings, but still pretty substantial!</p>
+<p>This seems to prove the benefits of PGO – without changing the code at all, we managed to save ourselves several servers worth of CPU time.</p>
+<h3>Future work</h3>
+<p>Looking at these initial results certainly seems to prove the case for PGO – saving multiple servers worth of CPU without any code changes is a big win for freeing up resources to better serve customer requests. However, there is definitely more work to be done here. In particular:</p>
+<ul>
+	<li>Automating the collection of profiles, perhaps using <a href="https://www.cncf.io/blog/2022/05/31/what-is-continuous-profiling" target="_blank" rel="noopener noreferrer">continuous profiling</a></li>
+	<li>Refining the deployment process to handle the new “two-step deployment”, deploying a non PGO binary, and then a PGO one</li>
+	<li>Refining our techniques to derive representative profiling samples</li>
+	<li>Implementing further improvements with <a href="https://github.com/facebookarchive/BOLT" target="_blank" rel="noopener noreferrer">BOLT</a>, or other Link Time Optimization (LTO) techniques</li>
+</ul>
+<p><em>If that sounds interesting to you, we’re hiring in both the <a href="https://boards.greenhouse.io/cloudflare/jobs/5563753?gh_jid=5563753" target="_blank" rel="noopener noreferrer">USA</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/5443710?gh_jid=5443710" target="_blank" rel="noopener noreferrer">EMEA</a>!</em></p>

@@ -1,0 +1,124 @@
+<h3>介紹</h3>
+<p>有許多方法可以在應用程式中儲存資料。例如，在 Cloudflare Workers 應用程式中，我們有用於鍵值儲存的 Workers KV，以及用於即時協調儲存的 Durable Objects，而不會影響一致性。在 Cloudflare 生態系統之外，您還可以插入其他工具，如 NoSQL 和圖形資料庫。</p>
+<p>但有時，您需要 SQL。Index 讓我們能夠快速擷取資料。Join 讓使我們能夠描述不同表單之間的複雜關係。SQL 以聲明方式描述如何驗證、建立及高效查詢應用程式的資料。</p>
+<p><a href="https://blog.cloudflare.com/d1-open-alpha">今天，D1 發佈了公開 alpha 版，</a>，為了表示慶祝，我希望分享使用 D1 構建應用程式的經驗：具體來說，即如何開始，以及為什麼我對 D1 加入可用於在 Cloudflare 上構建應用程式的長工具清單感到興奮。</p>
+<p>D1 非常出色，因為它可以即時為應用程序增值，而無需新工具或在 Cloudflare 生態系統之外進行。使用 wrangler，我們可以對 Workers 應用程式進行本機開發，並且在 wrangler 中新增 D1，我們現在也可以在本機開發適當的有狀態的應用程式。然後，當需要部署應用程式時，wrangler 允許我們存取 D1 資料庫及 API 本身並對其執行命令。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="405" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=640&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=715&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=750&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=828&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1080&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1280&amp;h=725&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1430&amp;h=810&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1448 Embedded Image - GkyxdY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44JR34ZAFY8YP883YFMAR2.png&amp;w=1498&amp;h=849&amp;f=webp" data-lightbox-width="1498" data-lightbox-height="849" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="405" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>我們正在構建什麼</h3>
+<p>在本篇部落格文章中，我將介紹如何使用 D1 來為靜態部落格網站新增評論。為此，我們將建構一個新的 D1 資料庫，並建置一個簡單的 JSON API 來建立和擷取評論。</p>
+<p>正如我所提到的，將 D1 與應用程式本身（與靜態網站保持分離的 API 和資料庫）分開，我們將能夠將網站的靜態和動態部分相互分離。它還使部署我們的應用程式變得更加容易：我們將前端部署到 Cloudflare Pages，並將 D1 驅動的 API 部署到Cloudflare Workers。</p>
+<h3>構建新應用程式</h3>
+<p>首先，我們將在 Workers 中新增一個基本的 API。建立新目錄，並在其中建立新的 wrangler 專案：</p>
+<p>在此範例中，我們將使用 Hono，一種 Express.js 式框架，以快速構建我們的 API。要在此專案中使用 Hono，請使用 NPM 安裝它：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> mkdir</span><span class="sk-032f62-99ffe4"> d1-example</span><span class="sk-24292e-fff"> &amp;&amp; </span><span class="sk-6f42c1-ffc799">d1-example</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> init</span></span></code></pre>
+</div>
+<p>然後，在 <code>src/index.ts</code> 中，我們將初始化一個新的 Hono 應用程式，並定義一些端點 - GET /API/posts/：slug/comments 和 POST /get/api/：slug/comments。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> hono</span></span></code></pre>
+</div>
+<p>現在，我們將建立一個 D1 資料庫。在 Wrangler 2 中，支援 <code>wrangler d1</code> 子命令，它允許您直接從命令行建立和查詢 D1 資料庫。因此，例如，我們可以使用單個命令建立一個新資料庫：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Hono } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'hono'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { cors } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'hono/cors'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> app</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Hono</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/api/posts/:slug/comments'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> c</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // do something</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">post</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/api/posts/:slug/comments'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> c</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // do something</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> app</span></span></code></pre>
+</div>
+<p>使用我們建立的資料庫，我們可以獲取資料庫名稱 ID 並將其與 wrangler 的設定檔 wrangler.toml 內部的<strong>繫結</strong>相關聯。繫結將允許我們在程式碼中使用簡單的變數名稱存取 Cloudflare 資源，例如 D1 資料庫、KV 命名空間和 R2 儲存桶。下面，我們將建立繫結 <code>DB</code> 並使用它來表示我們的新資料庫：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> create</span><span class="sk-032f62-99ffe4"> d1-example</span></span></code></pre>
+</div>
+<p>請注意，此指令，即 &nbsp;<code>[[d1_databases]]</code> 欄位當前需要 wrangler 的測試版。您可以使用命令 <code>npm install -D wrangler/beta</code> 為您的專案安裝它。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>[[ d1_databases ]]</span></span>
+<span class="line"><span>binding = "DB" # i.e. available in your Worker on env.DB</span></span>
+<span class="line"><span>database_name = "d1-example"</span></span>
+<span class="line"><span>database_id = "4e1c28a9-90e4-41da-8b4b-6cf36e5abb29"</span></span></code></pre>
+</div>
+<p>在我們的 wrangler.toml 中設定資料庫，我們可以從命令行和 Workers 函數中開始與它互動。</p>
+<p>首先，您可以使用 <code>wrangler d1 execute</code> 發出直接 SQL 命令：</p>
+<p>您還可以傳遞 SQL 檔案 - 非常適合在單個命令中進行初始資料種子設定。建立 <code>src/schema.sql</code>，這將為我們的專案建立一個新的 <code>comments</code> 表：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> d1-example</span><span class="sk-005cc5-99ffe4"> --command</span><span class="sk-032f62-99ffe4"> "SELECT name FROM sqlite_schema WHERE type ='table'"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> on</span><span class="sk-032f62-99ffe4"> d1-example:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">┌─────────────────┐</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4"> name</span><span class="sk-032f62-99ffe4"> │</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">├─────────────────┤</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">│</span><span class="sk-032f62-99ffe4"> sqlite_sequence</span><span class="sk-032f62-99ffe4"> │</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">└─────────────────┘</span></span></code></pre>
+</div>
+<p>建立檔案後，透過傳遞帶有標誌的模式檔案，針對 D1 資料庫執行模式檔案 <code>--file</code>：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">drop</span><span class="sk-d73a49-ffc799"> table</span><span class="sk-d73a49-ffc799"> if</span><span class="sk-d73a49-ffc799"> exists</span><span class="sk-24292e-fff"> comments;</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">create</span><span class="sk-d73a49-ffc799"> table</span><span class="sk-6f42c1-ffc799"> comments</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-24292e-fff">  id </span><span class="sk-d73a49-a0a0a0">integer</span><span class="sk-d73a49-a0a0a0"> primary key</span><span class="sk-24292e-fff"> autoincrement,</span></span>
+<span class="line"><span class="sk-24292e-fff">  author </span><span class="sk-d73a49-a0a0a0">text</span><span class="sk-d73a49-ffc799"> not null</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  body </span><span class="sk-d73a49-a0a0a0">text</span><span class="sk-d73a49-ffc799"> not null</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  post_slug </span><span class="sk-d73a49-a0a0a0">text</span><span class="sk-d73a49-ffc799"> not null</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">create</span><span class="sk-d73a49-ffc799"> index</span><span class="sk-6f42c1-ffc799"> idx_comments_post_id</span><span class="sk-d73a49-ffc799"> on</span><span class="sk-24292e-fff"> comments (post_slug);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">-- Optionally, uncomment the below query to create data</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">-- insert into comments (author, body, post_slug)</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">-- values ("Kristian", "Great post!", "hello-world");</span></span></code></pre>
+</div>
+<p>我們只用幾個命令即建立了一個 SQL 資料庫，並使用初始資料為其設定了種子。現在，我們可以向 Workers 函新增一個路由，以從該資料庫中擷取資料。基於我們的 wrangler.toml 設定，現在可以透 &nbsp;<code>DB</code> 繫結來存取 D1 資料庫。在我們的程式碼中，我們可以使用繫結來準備 SQL 語句並執行它們，例如，擷取註釋：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> d1</span><span class="sk-032f62-99ffe4"> execute</span><span class="sk-032f62-99ffe4"> d1-example</span><span class="sk-005cc5-99ffe4"> --file</span><span class="sk-032f62-99ffe4"> src/schema.sql</span></span></code></pre>
+</div>
+<p>在此函數中，我們接受了一個 <code>slug</code> URL 查詢參數並設定了一個新的 SQL 語句，在該語句中，我們選擇具有與查詢參數相符的 <code>post_slug</code> 值的所有註釋。然後，我們可以將其作為簡單的 JSON 回應返回。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/api/posts/:slug/comments'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> c</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">slug</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">results</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> c.env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    select * from comments where post_slug = ?</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  `</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(slug).</span><span class="sk-6f42c1-ffc799">all</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">(results)</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<p>到目前為止，我們已經建立了對資料的唯讀存取。但是，當然，向 SQL 「插入」值也是可能的。因此，讓我們定義另一個函數，以允許 POST 到端點以建立新註釋：</p>
+<p>在此範例中，我們建立了一個註釋 API 來為部落格提供支援。要查看此 D1 驅動的註釋 API 的原始程式碼，可以存取 <a href="https://github.com/cloudflare/templates/tree/main/worker-d1-api" target="_blank" rel="noopener noreferrer">cloudflare/templates/worker-d1-api</a>。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">app.</span><span class="sk-6f42c1-ffc799">post</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'/API/posts/:slug/comments'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-e36209-fff"> c</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">slug</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">param</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">author</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">body</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> c.req.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Comment</span><span class="sk-24292e-fff">&gt;()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">author) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Missing author value for new comment"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">body) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Missing body value for new comment"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">success</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> c.env.</span><span class="sk-005cc5-fff">DB</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">prepare</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    insert into comments (author, body, post_slug) values (?, ?, ?)</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  `</span><span class="sk-24292e-fff">).</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(author, body, slug).</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (success) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    c.</span><span class="sk-6f42c1-ffc799">status</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">201</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Created"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    c.</span><span class="sk-6f42c1-ffc799">status</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> c.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Something went wrong"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span></code></pre>
+</div>
+<h3>結論</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="465" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=640&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=715&amp;h=465&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=750&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=828&amp;h=538&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=1080&amp;h=702&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=1280&amp;h=832&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=1430&amp;h=930&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1448 Embedded Image - GcF8bo" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45V9EE6EZQZV1C3JGHHBT9.png&amp;w=994&amp;h=647&amp;f=webp" data-lightbox-width="994" data-lightbox-height="647" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="465" class="pt-portable-image-media"></div>
+</figure>
+<p>D1 最令人興奮的一點是有機會使用動態關係資料來增強現有應用程式或網站。作為一名前 Ruby on Rails 開發人員，在 JavaScript 和無伺服器開發工具領域，我最懷念的莫過於能夠快速啟動完整的資料驅動應用程式，而無需成為管理資料庫基礎結構的專家。藉由 D1 及其可輕鬆存取基於 SQL 的資料的功能，我們可以構建真正的資料驅動型應用程式，而不會影響效能或開發人員體驗。</p>
+<p>這種轉變與過去幾年使用 Hugo 或 Gatsby 等工具的靜態站點的出現非常吻合。使用諸如 Hugo 的靜態站點產生成器構建的部落格具有令人難以置信的效能，可以在幾秒鐘內以較小的資產大小進行構建。</p>
+<p>但是，透過將 WordPress 之類的工具換成靜態站點產生，您將失去向站點新增動態資訊的機會。許多開發人員透過增加構建過程的複雜性、獲取和擷取資料，及使用該資料來產生頁面作為構建過程的一部分來解決此問題。</p>
+<p>增加構建過程的複雜性以嘗試解決應用程式中缺乏動態的問題，但它仍然不是真正的動態。應用程式無法在建立新資料時擷取和顯示新資料，而是在資料變更時重新產生和重新部署，使其看起來像是資料的即時動態表示形式。您的應用程式可以保持靜態，且動態資料將在地理位置上靠近您站點的使用者，可透過可查詢和可表達的 API 進行存取。</p>

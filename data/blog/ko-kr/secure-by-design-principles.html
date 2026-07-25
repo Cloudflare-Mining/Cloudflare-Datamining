@@ -1,0 +1,59 @@
+<p>미국 사이버보안 및 인프라 보안국(CISA)과 17개 국제 파트너는 '<a href="https://www.cisa.gov/sites/default/files/2023-10/SecureByDesign_1025_508c.pdf" target="_blank" rel="noopener noreferrer">설계형 보안</a>' 원칙을 통해 기술 업계의 모범 사례를 형성하는 데 도움을 주고 있습니다. 이 원칙은 소프트웨어 제조업체가 보안을 제품 개발의 필수 요소로 삼을 뿐만 아니라 강력한 보안 기능이 기본으로 구성된 제품을 설계하도록 장려하는 것을 목표로 합니다.</p>
+<p>사이버 보안 회사로서 Cloudflare는 제품 보안을 회사 DNA의 필수적인 부분으로 간주합니다. Cloudflare는 CISA의 원칙을 굳게 믿고 있으며, 앞으로도 이러한 원칙을 지키며 업무를 수행할 것입니다. Cloudflare가 구축하는 제품과 모든 고객에게 제공하는 서비스에 설계형 보안 원칙을 적용하는 방법에 대한 이야기를 공유하게 되어 기쁘게 생각합니다.</p>
+<h2>"설계형 보안"과 "기본형 보안"이란 무엇을 의미하나요?</h2>
+<p>설계형 보안은 보안이 '볼트온(bolted on)' 방식이 아니라 '베이크인(baked in)' 방식으로 구현된 제품을 의미합니다. 이 방식에서는 제조업체가 보안 조치에 사후적으로 대응하기보다는 공격자가 성공적으로 액세스하지 못하도록 합리적으로 보호하는 방식으로 제품을 구축하여 사전에 위험을 완화하는 조치를 취합니다.</p>
+<p>기본형 보안이라는 것은 추가 비용 없이 필요한 보안 구성이 기본적으로 제공되도록 제품을 제작하는 것을 의미합니다.</p>
+<p>CISA는 다음 세 가지 소프트웨어 제품 보안 원칙을 정해두고 있습니다.</p>
+<ul>
+	<li>고객 보안 결과에 대한 책임 감수</li>
+	<li>근본적인 투명성 및 책임성 수용</li>
+	<li>처음부터 리드</li>
+</ul>
+<p>CISA는 <a href="https://www.cisa.gov/sites/default/files/2023-10/SecureByDesign_1025_508c.pdf" target="_blank" rel="noopener noreferrer">문서</a>에서 이 원칙을 달성하는 방법과 제조업체가 따라야 할 보안 조치에 대한 포괄적인 지침을 제공합니다. 이러한 가이드라인을 준수하면 고객에게 보안 혜택을 제공하고 개발자의 브랜드 평판을 높일 수 있을 뿐만 아니라 제조업체의 장기적인 유지 관리 및 패치 비용도 절감할 수 있습니다.</p>
+<h2>중요한 이유는 무엇인가요?</h2>
+<p>기술은 수많은 일상 업무를 자동화하며 우리 삶에서 중요한 역할을 수행하고 있습니다. 지난 몇 년 동안 기술과 인터넷 연결 기기에 대한 전 세계의 의존도가 크게 증가했는데 이는 대부분 <a href="https://datareportal.com/reports/digital-2022-time-spent-with-connected-tech" target="_blank" rel="noopener noreferrer">코로나19</a>의 영향이 컸습니다. 코로나19가 확산되는 동안 개인과 기업은 물리적 상호 작용을 제한하는 공중 보건 조치를 준수하면서 자연스레 온라인으로 이동했습니다.</p>
+<p>인터넷 연결은 온라인 학습과 원격 근무의 기회를 제공하는 등 우리의 삶을 편리하게 해주지만, 공격자에게는 이러한 활동을 통해 이익을 얻을 수 있는 기회이기도 합니다. 적절한 보호 장치가 없으면 사용자 정보, 금융 기록, 로그인 자격 증명과 같은 민감한 데이터가 모두 유출되어 악의적인 활동에 악용될 수 있습니다.</p>
+<p>시스템 취약점은 전체 업계와 경제에도 영향을 미칠 수 있습니다. 2023년, 북한의 해커들은 소프트웨어 취약점을 악용하여 전 세계 개인과 기업으로부터 3억 달러 이상의 암호화폐를 훔친 혐의로 <a href="https://finance.yahoo.com/news/north-korea-linked-lazarus-group-130000746.html?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%222168179FD2D36545B7494CB31CA686CB%22%7D&amp;_guc_consent_skip=1708084501" target="_blank" rel="noopener noreferrer">암호화폐 손실의 20% 이상을 책임</a>지고 있는 것으로 의심받고 있습니다.</p>
+<p>안전하지 않은 소프트웨어는 잠재적으로 치명적인 결과를 초래할 수 있음에도 불구하고 너무 많은 공급업체가 보안의 책임을 고객에게 전가하고 있으며, 이는 CISA가 가이드라인에서도 강조하고 있는 사실입니다. 물론 고객의 주의가 필요하겠지만 대부분의 위험은 제조업체와 해당 제품이 처리해야 합니다. 그래야만 더욱 안전하고 신뢰할 수 있는 온라인 상호작용을 할 수 있습니다. '설계형 보안' 원칙은 이러한 격차를 해소하고 업계를 변화시키는 데 필수적입니다.</p>
+<h2>Cloudflare는 설계형 보안 원칙을 어떻게 지원하나요?</h2>
+<h3>고객 보안 결과에 대한 책임 감수</h3>
+<p>CISA는 소프트웨어 제조업체가 고객 보안 결과에 대한 책임을 감수하기 위해 애플리케이션 강화, 애플리케이션 기능 및 애플리케이션 기본 설정을 포함한 제품 보안 노력에 투자해야 한다고 설명합니다. Cloudflare는 항상 이러한 제품 보안을 최우선으로 고려하고 있으며, 아래에 몇 가지 예를 공유합니다.</p>
+<h3>애플리케이션 강화</h3>
+<p>Cloudflare에서 개발자는 정의된 소프트웨어 개발 수명 주기(SDLC) 관리 프로세스와 보안팀의 체크포인트를 따릅니다. 또한 알려진 취약점이 악용되기 전에 선제적으로 대응하고, 악용된 취약점은 <em>모든</em> 고객을 위해 수정합니다. 예를 들어, Cloudflare는 메모리 안전 프로그래밍 언어에 전념하고 있으며 가능한 경우 언제나 이를 사용하고 있습니다. 2021년에는 <a href="https://blog.cloudflare.com/new-cloudflare-waf">Cloudflare WAF</a>를 Lua에서 메모리 안전성이 높은 Rust로 재작성했습니다. 최근에는 Cloudflare에서 <a href="https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet">자체 개발한 새로운 HTTP 프록시인 Pingora</a>를 도입하여 메모리 안전성이 없는 C에서 메모리 안전성이 있는 Rust로 전환했습니다. 이 두 프로젝트는 모두 기술 리더십 팀의 전폭적인 지원이 없었다면 불가능했을 초대형 프로젝트였습니다.</p>
+<h4><strong>Zero Trust 보안</strong></h4>
+<p>기본적으로 당사는 <a href="https://www.cisa.gov/zero-trust-maturity-model" target="_blank" rel="noopener noreferrer">Zero Trust 성숙도 모델</a>을 따라갑니다. 이는 Cloudflare의 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust 보안 서비스 제품군</a> 사용을 통해 이루어지며, Cloudflare 데이터, 개발 리소스 및 기타 서비스에 대한 무단 액세스를 방지합니다. Cloudflare는 신뢰 가정을 최소화하고 자체 호스팅 리소스든 클라우드에 있는 리소스든 여기에 액세스하려는 모든 개인과 기기에 대해 엄격한 신원 확인을 요구합니다.</p>
+<p>Cloudflare는 Zero Trust 보안이 사이버 보안 공격이 만연하고 하이브리드 업무 환경이 새로운 표준이 된 오늘날의 환경에서 반드시 필요한 보안 아키텍처라고 믿습니다. 오늘날 소규모 기업을 보호하기 <a href="https://www.cloudflare.com/plans/zero-trust-services" target="_blank" rel="noopener noreferrer">Zero Trust 요금제</a>를 운영 중입니다. 이 요금제는 최대 50명의 사용자에게 온라인에서 직원과 앱을 보호하는 데 필요한 필수 보안 제어 기능을 무료로 제공합니다.</p>
+<h4><strong>애플리케이션 기능</strong></h4>
+<p>Cloudflare는 사용자에게 다양한 필수 보안 도구를 무료로 제공할 뿐만 아니라, 초기부터 업계 전체가 더 나은 보안 기능을 기본으로 제공하도록 장려해 왔습니다.</p>
+<p>2014년에는 Cloudflare의 창립기념일 주간에 <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>을 선보이면서 모든 고객에게 암호화 기능을 무료로 제공한다고 발표했습니다. 그리고 2015년에는 한 걸음 더 나아가 브라우저에서 오리진에 이르는 모든 데이터의 <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">전체 암호화</a> 기능을 무료로 제공했습니다. 이제 다른 업계에서도 이 선례를 따르고 있으며 기본 암호화는 인터넷 애플리케이션의 표준이 되었습니다.</p>
+<p>2017년 Cloudflare의 일곱 번째 창립기념일 주간에는 <a href="https://blog.cloudflare.com/unmetered-mitigation">무제한 DDoS 완화</a> 서비스를 매우 자랑스럽게 발표했습니다. 이 서비스는 공격 중에 소비된 초과 대역폭에 대해 고객에게 요금을 부과하지 않고 대규모 DDoS 공격을 흡수하고 완화합니다. 이 발표를 통해 DDoS 공격에 대해서는 '높은 가격'을 책정했던 업계의 표준을 없앴습니다.</p>
+<p>2021년에는 사용자가 불필요한 정보를 노출하지 않고도 인증 정보가 유출되었는지 여부를 확인할 수 있는 <a href="https://blog.cloudflare.com/privacy-preserving-compromised-credential-checking">MIGP</a>("Might I Get Pwned")라는 프로토콜을 발표했습니다. 이메일 해시의 접두사에서 파생된 버킷 ID를 제외하고는 인증 정보가 디바이스 밖으로 유출되지 않고, 인터넷을 통해 전송되는 일도 결코 없습니다(암호화된 정보 역시 포함). 그 전에는 자격 증명 확인 서비스를 사용하는 것 자체가 취약점으로 작용하여 자격 증명 유출 여부를 확인하는 동안 민감한 정보가 유출될 수 있었습니다.</p>
+<p>1년 후인 2022년, Cloudflare는 <a href="https://blog.cloudflare.com/waf-for-everyone">모든 Cloudflare 요금제를 대상으로 WAF(웹 애플리케이션 방화벽) 관리형 규칙 세트를 무료로</a> 발표하면서 업계를 다시 한 번 뒤흔들었습니다. <a href="https://developers.cloudflare.com/waf/glossary" target="_blank" rel="noopener noreferrer">WAF</a>는 악의적인 공격으로부터 웹 애플리케이션을 보호하는 서비스입니다. 이러한 공격은 조직의 규모에 관계없이 인터넷 전반에 걸쳐 큰 영향을 미칩니다. Cloudflare는 WAF를 무료로 제공함으로써 모두에게 안전한 인터넷을 만들고 있습니다.</p>
+<p>그리고 마침내 2023년 말에는 모든 고객에게 요금제 수준에 관계없이 <a href="https://blog.cloudflare.com/post-quantum-to-origins">포스트 퀀텀 암호화</a>를 무료로 제공함으로써 업계를 선도한다는 큰 자부심을 느낄 수 있었습니다.</p>
+<h4><strong>애플리케이션 기본 설정</strong></h4>
+<p>고객을 더욱 안전하게 보호하기 위해 Cloudflare의 기본 설정은 처음부터 강력한 보안 태세를 제공합니다. 사용자가 익숙해지면 원하는 방식으로 설정을 변경하고 구성할 수 있습니다. 예를 들어, Cloudflare는 <a href="https://blog.cloudflare.com/waf-for-everyone">무료 Cloudflare 관리형 규칙 집합</a>을 모든 새 Cloudflare 영역에 자동으로 배포합니다. 관리형 규칙 집합에는 Log4j 규칙, Shellshock 규칙, 매우 일반적인 WordPress 익스플로잇과 일치하는 규칙 등이 포함됩니다. 고객은 필요한 경우 규칙 집합을 비활성화하거나 트래픽 필터 또는 개별 규칙을 구성할 수도 있습니다. 또한, 더욱 안전한 기본 시스템을 제공하기 위해 AI를 사용하여 기존 관리형 규칙의 우회를 탐지하고 소프트웨어 익스플로잇이 공개되기 전에 탐지할 수 있는 <a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">ML 계산 기반 WAF Attack Score</a>도 생성했습니다.</p>
+<p>또 다른 예로, 모든 Cloudflare 계정에는 인터넷에서 가장 일반적이고 처리하기 어려운 공격으로부터 애플리케이션을 보호하기 위해 기본적으로 무제한 DDoS 완화 서비스가 제공됩니다.</p>
+<p>또 다른 예로, 고객이 <a href="https://www.cloudflare.com/en-gb/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2 스토리지</a>를 사용하는 경우에는 저장된 모든 개체가 암호화된 상태로 저장됩니다. 암호화와 복호화는 모두 자동으로 이루어지며, 사용자가 설정할 필요가 없고 R2의 성능에 영향을 미치지도 않습니다.</p>
+<p>또한 Cloudflare는 모든 고객에게 강력한 감사 로그를 제공합니다. <a href="https://developers.cloudflare.com/fundamentals/setup/account/account-security/review-audit-logs" target="_blank" rel="noopener noreferrer">감사 로그</a>에는 Cloudflare 계정 내에서 이루어진 변경 내역이 요약되어 있습니다. 감사 로그에는 로그인과 같은 계정 수준 작업과 영역 구성 변경 사항이 포함됩니다. 감사 로그는 모든 요금제 유형에서 사용할 수 있으며, 개인 사용자 및 다중 사용자 조직 모두를 대상으로 캡처됩니다. 감사 로그는 모든 요금제 수준에서 18개월 동안 사용할 수 있습니다.</p>
+<h3>근본적인 투명성 및 책임성 수용</h3>
+<p>근본적인 투명성과 책임성을 수용한다는 것은 안전한 보안 제품을 제공한다는 자부심과 곧 같은 말입니다. 투명성 수용과 정보 공유는 보안 업계를 개선하고 발전시키며, 기업들이 서로 배우고 온라인 세상을 더욱 안전하게 만드는 환경을 조성하는 데 매우 중요합니다. Cloudflare는 아래와 같이 다양한 방식으로 투명성을 보여줍니다.</p>
+<h4><strong>Cloudflare 블로그</strong></h4>
+<p><a href="https://blog.cloudflare.com">Cloudflare 블로그</a>에서는 기능 및 개선 사항에 대한 최신 정보뿐 아니라 작년에 탐지된 역사적인 <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack">HTTP/2 Rapid Reset 공격</a>과 같이 전체 업계와 관련된 zero-day 공격에 대한 최신 정보까지 확인할 수 있습니다. <a href="https://blog.cloudflare.com/thanksgiving-2023-security-incident">2023년 추수감사절 보안 인시던트</a>와 같은 중요한 보안 인시던트에 대해서는 사건의 발생 경위와 원인, 해결 조치에 대해 자세히 설명하는 등 모든 정보를 투명하게 공개하고 있습니다. 또한 Cloudflare는 창립 초기부터 서비스에 영향을 미치는 인시던트에 대해 급진적인 투명성을 수용하기 위해 의식적으로 노력해 왔으며, 이 중요한 원칙을 핵심 <a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">가치</a> 중 하나로 계속 수용하고 있습니다. Cloudflare는 이렇게 공유하는 정보가 다른 이들도 소프트웨어 관행을 개선하는 데 도움이 되기를 진심으로 바랍니다.</p>
+<h4><strong>Cloudflare 시스템 상태</strong></h4>
+<p><a href="https://www.cloudflarestatus.com" target="_blank" rel="noopener noreferrer">Cloudflare 시스템 상태</a>는 웹 사이트 소유자에게 Cloudflare 서비스 상태를 알려주는 페이지입니다. 이 페이지에서는 서비스의 현재 상태와 서비스가 예상대로 작동 중인지 여부에 대한 정보를 제공합니다. 진행 중인 인시던트가 있는 경우, 상태 페이지에는 영향을 받은 서비스와 해당 문제에 대한 세부 정보가 표시됩니다. 사용자는 일부 서비스의 가용성에 영향을 미칠 수 있는 예정된 유지 관리에 대한 정보도 확인할 수 있습니다.</p>
+<h4><strong>코드 무결성을 위한 기술적 투명성</strong></h4>
+<p>Cloudflare는 신원과 데이터 무결성을 투명하게 검증하기 위한 기술적 수단으로 암호화를 사용하는 것이 중요하다고 생각합니다. 예를 들어, 2022년에는 <a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users">WhatsApp과 파트너십</a>을 맺고 웹 버전의 서비스를 방문할 때 <a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A14%2C%22targetId%22%3A%22135202E37AE255A706ECF9E58DB17616%22%7D" target="_blank" rel="noopener noreferrer">코드 확인 확장 프로그램</a>을 통해 해시 무결성을 자동으로 확인함으로써 사용자가 변조되지 않은 올바른 코드를 실행하고 있음을 보장하는 시스템을 WhatsApp에 제공했습니다. 사용자를 대신해 자동화로 작동하는 이 프로세스는 확장 가능한 방식으로 투명성을 제공하는 데 도움이 됩니다. 사용자가 직접 해시를 수동으로 가져와서 계산하고 비교해야 한다면 변조를 탐지하는 것은 일부 기술적인 사용자만 할 수 있을 것입니다.</p>
+<h4><strong>투명성 보고서 및 영장 카나리아</strong></h4>
+<p>또한 고객의 신뢰를 얻고 유지하는 데 있어 필수적인 부분은 법 집행 기관 및 기타 정부 기관으로부터 받는 요청에 대해 투명성을 유지하는 것이라고 믿습니다. 이를 위해 Cloudflare는 고객에 대한 정보 공개 요청에 대한 <a href="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q1INAiyBubYSlfGdUhthU/8cc0e3de0f160e2765af4f514991ef6c/Transparency-Report-H2-2022.pdf?_gl=1*1y467q5*_ga*MTEyMzg0OTg5MC4xNjc3Nzg2MDk2*_ga_SQCRB0TXZW*MTcwOTA2NTM5OS4yNDIuMS4xNzA5MDY2NjYyLjAuMC4w" target="_blank" rel="noopener noreferrer">투명성 보고서</a>를 반기별로 업데이트하여 게시합니다.</p>
+<p>Cloudflare 투명성 보고서의 중요한 부분은 영장 카나리아입니다. 영장 카나리아는 Cloudflare가 정부 또는 법 집행 기관으로부터 특정 요청을 받지 않았고, 당사의 암호화나 인증 키 또는 고객의 암호화나 인증 키를 제삼자에게 넘겨주는 등의 특정 조치를 취하지 않았음을 사용자에게 암묵적으로 알리는 방법입니다. 이러한 영장 카나리아를 통해, 법 집행 기관의 정보 요청 사실을 공개하지 못하도록 금지한 명령을 준수하면서도 사용자의 데이터가 얼마나 기밀로 유지되고 있고 안전한지 사용자에게 알릴 수 있습니다. Cloudflare의 영장 카나리아는 <a href="https://www.cloudflare.com/transparency" target="_blank" rel="noopener noreferrer">여기</a>에서 확인할 수 있습니다.</p>
+<p>투명성 보고서와 영장 카나리아는 CISA의 설계형 보안 원칙에 명시적으로 언급되어 있지는 않지만, 기술 회사의 관행을 투명하게 하는 데 있어 중요한 요소라고 생각합니다.</p>
+<h4><strong>공개 버그 바운티</strong></h4>
+<p>HackerOne에서 주최하는 <a href="https://hackerone.com/cloudflare?view_policy=true" target="_blank" rel="noopener noreferrer">공개 버그 바운티</a>에 참가하여 Cloudflare의 보안 노력에 동참하실 분들을 초대합니다. Cloudflare 취약점을 신고하고, 그 공로에 대한 감사의 의미로 금전적 보상까지 받아보세요.</p>
+<h3>처음부터 리드</h3>
+<p>이 원칙에 따라 보안은 Cloudflare의 비즈니스 목표에 깊이 뿌리내리고 있습니다. 보안과 품질은 밀접한 관계가 있기 때문에 제품의 기본 보안을 개선하면 전체 제품의 품질도 향상됩니다.</p>
+<p>Cloudflare의 보안에 대한 헌신은 회사 구조에도 반영되어 있습니다. 최고보안책임자는 CEO에게 직접 보고하고 모든 이사회 회의에 참석합니다. 이를 통해 이사회 구성원들은 현재의 사이버 보안 환경에 대해 잘 인지할 수 있고, 보안을 개선하기 위한 회사 이니셔티브의 중요성을 강조할 수 있습니다.</p>
+<p>또한 보안 엔지니어는 주요 R&amp;D 조직의 일원으로, 시스템 엔지니어만큼이나 제품에 필수적인 역할을 담당하고 있습니다. 즉, 보안 엔지니어는 보안을 사후에 볼트인하는 게 아니라 SDLC에 보안을 베이크인할 수 있습니다.</p>
+<h2>동참하는 방법은 무엇일까요?</h2>
+<p>소프트웨어 제조업체인 경우 CISA의 '설계형 보안' 원칙을 숙지하고 이를 회사에 적용할 수 있는 계획을 세울 것을 권장합니다.</p>
+<p>개인적으로는 버그 바운티 프로그램(예: <a href="https://hackerone.com/cloudflare?type=team&amp;view_policy=true" target="_blank" rel="noopener noreferrer">Cloudflare의 HackerOne</a> 공개 바운티)에 참가하여 커뮤니티에서 사이버 보안에 대한 인식을 높이는 것이 좋다고 생각합니다.</p>
+<p>더 나은 인터넷을 만드는 데 함께 힘을 보태주세요.</p>

@@ -1,132 +1,101 @@
-<div class="mb2 gray5">4 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4OFWKEgPI4IyhIiu5PcBvj/d53422877f3173bc8165438c2e88a1d2/cloudflare-php-api-binding.JPG" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Back in May last year, one of my colleagues blogged about the introduction of our <a href="https://blog.cloudflare.com/python-cloudflare">Python binding for the Cloudflare API</a> and drew reference to our other bindings in <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a> and <a href="https://github.com/cloudflare/node-cloudflare" target="_blank" rel="noopener noreferrer">Node</a>. Today we are complimenting this range by introducing a new official binding, this time in <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">PHP</a>.</p>
-	<p>This binding is available via Packagist as <a href="https://packagist.org/packages/cloudflare/sdk" target="_blank" rel="noopener noreferrer">cloudflare/sdk</a>, you can install it using Composer simply by running <code>composer require cloudflare/sdk</code>. We have documented various use-cases in our <a href="https://support.cloudflare.com/hc/en-us/articles/115001661191" target="_blank" rel="noopener noreferrer">"Cloudflare PHP API Binding" KB article</a> to help you get started.</p>
-	<p>Alternatively should you wish to help contribute, or just give us a star on GitHub, feel free to browse to the <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">cloudflare-php source code</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1cb8c0aCRK1QxtwReVtMDc/de48b0c9191df68bab840c53f5efea8b/installing-cloudflare-php.png" alt="Installing cloudflare/sdk" class="kg-image" width="1940" height="888" loading="lazy">
-
-	</figure>
-	<p>PHP is a controversial language, and there is no doubt there are elements of bad design within the language (as is the case with many other languages). However, love it or hate it, PHP is a language of high adoption; as of September 2017 <a href="https://w3techs.com/technologies/overview/programming_language/all" target="_blank" rel="noopener noreferrer">W3Techs</a> report that PHP is used by 82.8% of all the websites whose server-side programming language is known. In creating this binding the question clearly wasn't on the merits of PHP, but whether we wanted to help drive improvements to the developer experience for the sizeable number of developers integrating with us whilst using PHP.</p>
-	<p>In order to help those looking to contribute or build upon this library, I write this blog post to explain some of the design decisions made in putting this together.</p>
-	<div class="flex anchor relative">
-		<h3 id="exclusively-for-php-7">Exclusively for PHP 7</h3>
-		<a href="https://blog.cloudflare.com/#exclusively-for-php-7" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>PHP 5 initially introduced the ability for type hinting on the basis of classes and interfaces, this opened up (albeit seldom used) parametric polymorphic behaviour in PHP. Type hinting on the basis of interfaces made it easier for those developing in PHP to follow the Gang of Four's famous guidance: "Program to an 'interface', not an 'implementation'."</p>
-	<p>Type hinting has slowly developed in PHP, in PHP 7.0 the ability for Scalar Type Hinting was released after a few rounds of RFCs. Additionally PHP 7.0 introduced Return Type Declarations, allowing return values to be type hinted in a similar way to argument type hinting. In this library we extensively use Scalar Type Hinting and Return Type Declarations thereby restricting the backward compatibility that's available with PHP 5.</p>
-	<p>In order for backward compatibility to be available, these improvements to type hinting simply would not be implementable and the associated benefits would be lost. With Active Support <a href="http://php.net/supported-versions.php" target="_blank" rel="noopener noreferrer">no longer being offered to PHP 5.6</a> and Security Support little over a year away from disappearing for the entirety of PHP 5.x, we decided the additional coverage wasn't worth the cost.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/RJX9jaiMJuc3J7e8OBCor/2998f5d9da54264b9774aa8e18fe00b6/php-support.png" alt="PHP version history" class="kg-image" width="1890" height="462" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="object-composition">Object Composition</h3>
-		<a href="https://blog.cloudflare.com/#object-composition" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<blockquote>
-		<p>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <a href="https://www.martinfowler.com/articles/designDead.html" target="_blank" rel="noopener noreferrer">Martin Fowler</a></p>
-	</blockquote>
-	<p>When getting started with this package, you'll notice there are 3 classes you'll need to instantiate:</p>
-	<pre class="language-php"><code class="language-php">$key     = new \Cloudflare\API\Auth\APIKey('user@example.com', 'apiKey');
-$adapter = new Cloudflare\API\Adapter\Guzzle($key);
-$user    = new \Cloudflare\API\Endpoints\User($adapter);
-    
-echo $user-&gt;getUserID();</code></pre>
-	<p>The first class being instantiated is called <code>APIKey</code> (a few other classes for authentication are available). We then proceed to instantiate the <code>Guzzle</code> class and the <code>APIKey</code> object is then injected into the constructor of the <code>Guzzle</code> class. The <code>Auth</code> interface that the <code>APIKey</code> class implements is fairly simple:</p>
-	<pre class="language-php"><code class="language-php">namespace Cloudflare\API\Auth;
-
-interface Auth
-{
-    public function getHeaders(): array;
-}</code></pre>
-	<p>The <code>Adapter</code> interface (which the <code>Guzzle</code> class implements) makes explicit that an object built on the <code>Auth</code> interface is expected to be injected into the constructor:</p>
-	<pre class="language-bash"><code class="language-bash">namespace Cloudflare\API\Adapter;
-
-use Cloudflare\API\Auth\Auth;
-use Psr\Http\Message\ResponseInterface;
-
-interface Adapter
-{
-...
-    public function __construct(Auth $auth, string $baseURI);
-...
-}</code></pre>
-	<p>In doing so; we define that classes which implement the <code>Adapter</code> interface are to be composed using objects made from classes which implement the <code>Auth</code> interface.</p>
-	<p>So why am I explaining basic Dependency Injection here? It is critical to understand as the design of our API changes, the mechanisms for Authentication may vary independently of the HTTP Client or indeed API Endpoints themselves. Similarly the HTTP Client or the API Endpoints may vary independently of the other elements involved. Indeed, this package already contains three classes for the purpose of authentication (<code>APIKey</code>, <code>UserServiceKey</code> and <code>None</code>) which need to be interchangeably used. This package therefore considers the possibility for changes to different components in the API and seeks to allow these components to vary independently.</p>
-	<p>Dependency Injection is also used where the parameters for an API Endpoint become more complicated then what is permitted by simpler variables types; for example, this is done for defining the Target or Configuration when configuring a Page Rule:</p>
-	<pre class="language-php"><code class="language-php">require_once('vendor/autoload.php');
-
-$key = new \Cloudflare\API\Auth\APIKey('mjsa@junade.com', 'apiKey');
-$adapter = new Cloudflare\API\Adapter\Guzzle($key);
-$zones = new \Cloudflare\API\Endpoints\Zones($adapter);
-
-$zoneID = $zones-&gt;getZoneID("junade.com");
-
-$pageRulesTarget = new \Cloudflare\API\Configurations\PageRulesTargets('https://junade.com/noCache/*');
-
-$pageRulesConfig = new \Cloudflare\API\Configurations\PageRulesActions();
-$pageRulesConfig-&gt;setCacheLevel('bypass');
-
-$pageRules = new \Cloudflare\API\Endpoints\PageRules($adapter);
-$pageRules-&gt;createPageRule($zoneID, $pageRulesTarget, $pageRulesConfig, true, 6);</code></pre>
-	<p>The structure of this project is overall based on simple object composition; this provides a far more simple object model for the long-term and a design that provides higher flexibility. For example; should we later want to create an Endpoint class which is a <a href="https://en.wikipedia.org/wiki/Composite_pattern" target="_blank" rel="noopener noreferrer">composite</a> of other Endpoints, it becomes fairly trivial for us to build this by implementing the same interface as the other Endpoint classes. As more code is added, we are able to keep the design of the software relatively thinly layered.</p>
-	<div class="flex anchor relative">
-		<h3 id="testing-mocking-http-requests">Testing/Mocking HTTP Requests</h3>
-		<a href="https://blog.cloudflare.com/#testing-mocking-http-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you're interesting in helping contribute to this repository; there are two key ways you can help:</p>
-	<ol>
-		<li>
-			<p>Building out coverage of endpoints on our API</p>
-		</li>
-		<li>
-			<p>Building out test coverage of those endpoint classes</p>
-		</li>
-	</ol>
-	<p>The PHP-FIG (PHP Framework Interop Group) put together a standard on how HTTP responses can be represented in an interface, this is described in the <a href="http://www.php-fig.org/psr/psr-7" target="_blank" rel="noopener noreferrer">PSR-7 standard</a>. This response interface is utilised by our HTTP <code>Adapter</code> interface in which responses to API requests are type hinted to this interface (<code>Psr\Http\Message\ResponseInterface</code>).</p>
-	<p>By using this standard, it's easier to add further abstractions for additional HTTP clients and mock HTTP responses for unit testing. Let's assume the JSON response is stored in the <code>$response</code> variable and we want to test the <code>listIPs</code> method in the <code>IPs</code> Endpoint class:</p>
-	<pre class="language-php"><code class="language-php">public function testListIPs() {
-  $stream = GuzzleHttp\Psr7\stream_for($response);
-  $response = new GuzzleHttp\Psr7\Response(200, ['Content-Type' =&gt; 'application/json'], $stream);
-  $mock = $this-&gt;getMockBuilder(\Cloudflare\API\Adapter\Adapter::class)-&gt;getMock();
-  $mock-&gt;method('get')-&gt;willReturn($response);
-
-  $mock-&gt;expects($this-&gt;once())
-    -&gt;method('get')
-    -&gt;with($this-&gt;equalTo('ips'), $this-&gt;equalTo([])
-  );
-
-   $ips = new \Cloudflare\API\Endpoints\IPs($mock);
-   $ips = $ips-&gt;listIPs();
-   $this-&gt;assertObjectHasAttribute("ipv4_cidrs", $ips);
-   $this-&gt;assertObjectHasAttribute("ipv6_cidrs", $ips);
-}</code></pre>
-	<p>We are able to build a simple mock of our <code>Adapter</code> interface by using the standardised PSR-7 response format, when we do so we are able to define what parameters PHPUnit expects to be passed to this mock. With a mock <code>Adapter</code> class in place we are able to test the <code>IPs</code> Endpoint class as any if it was using a real HTTP client.</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusions">Conclusions</h3>
-		<a href="https://blog.cloudflare.com/#conclusions" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Through building on modern versions of PHP, using good Object-Oriented Programming theory and allowing for effective testing we hope our PHP API binding provides a developer experience that is pleasant to build upon.</p>
-	<p>If you're interesting in helping improve the design of this codebase, I'd encourage you to take a look at the <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">PHP API binding source code</a> on GitHub (and optionally give us a star).</p>
-	<p>If you work with Go or PHP and you're interested in helping Cloudflare turn our high-traffic customer-facing API into an ever more modern service-oriented environment; we're hiring for Web Engineers in <a href="https://boards.greenhouse.io/cloudflare/jobs/745994#.WcWKLtOGPys" target="_blank" rel="noopener noreferrer">San Francisco</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/682927#.WcWKPdOGPys" target="_blank" rel="noopener noreferrer">Austin</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/574636#.WcWKQdOGPys" target="_blank" rel="noopener noreferrer">London</a>.</p>
+<p>Back in May last year, one of my colleagues blogged about the introduction of our <a href="https://blog.cloudflare.com/python-cloudflare">Python binding for the Cloudflare API</a> and drew reference to our other bindings in <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a> and <a href="https://github.com/cloudflare/node-cloudflare" target="_blank" rel="noopener noreferrer">Node</a>. Today we are complimenting this range by introducing a new official binding, this time in <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">PHP</a>.</p>
+<p>This binding is available via Packagist as <a href="https://packagist.org/packages/cloudflare/sdk" target="_blank" rel="noopener noreferrer">cloudflare/sdk</a>, you can install it using Composer simply by running <code>composer require cloudflare/sdk</code>. We have documented various use-cases in our <a href="https://support.cloudflare.com/hc/en-us/articles/115001661191" target="_blank" rel="noopener noreferrer">"Cloudflare PHP API Binding" KB article</a> to help you get started.</p>
+<p>Alternatively should you wish to help contribute, or just give us a star on GitHub, feel free to browse to the <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">cloudflare-php source code</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="327" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=715&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=640&amp;h=293&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=715&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=750&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=828&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=1080&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=1280&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=1430&amp;h=654&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Installing cloudflare/sdk" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44PGQT76J8XXA265JW3BP6.png&amp;w=1920&amp;h=879&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="879" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="327" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>PHP is a controversial language, and there is no doubt there are elements of bad design within the language (as is the case with many other languages). However, love it or hate it, PHP is a language of high adoption; as of September 2017 <a href="https://w3techs.com/technologies/overview/programming_language/all" target="_blank" rel="noopener noreferrer">W3Techs</a> report that PHP is used by 82.8% of all the websites whose server-side programming language is known. In creating this binding the question clearly wasn't on the merits of PHP, but whether we wanted to help drive improvements to the developer experience for the sizeable number of developers integrating with us whilst using PHP.</p>
+<p>In order to help those looking to contribute or build upon this library, I write this blog post to explain some of the design decisions made in putting this together.</p>
+<h3>Exclusively for PHP 7</h3>
+<p>PHP 5 initially introduced the ability for type hinting on the basis of classes and interfaces, this opened up (albeit seldom used) parametric polymorphic behaviour in PHP. Type hinting on the basis of interfaces made it easier for those developing in PHP to follow the Gang of Four's famous guidance: "Program to an 'interface', not an 'implementation'."</p>
+<p>Type hinting has slowly developed in PHP, in PHP 7.0 the ability for Scalar Type Hinting was released after a few rounds of RFCs. Additionally PHP 7.0 introduced Return Type Declarations, allowing return values to be type hinted in a similar way to argument type hinting. In this library we extensively use Scalar Type Hinting and Return Type Declarations thereby restricting the backward compatibility that's available with PHP 5.</p>
+<p>In order for backward compatibility to be available, these improvements to type hinting simply would not be implementable and the associated benefits would be lost. With Active Support <a href="http://php.net/supported-versions.php" target="_blank" rel="noopener noreferrer">no longer being offered to PHP 5.6</a> and Security Support little over a year away from disappearing for the entirety of PHP 5.x, we decided the additional coverage wasn't worth the cost.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="175" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=715&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=640&amp;h=157&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=715&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=750&amp;h=184&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=828&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=1080&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=1280&amp;h=313&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=1430&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="PHP version history" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49A5PJCQTAMVR7YTKHK9F6.png&amp;w=1890&amp;h=462&amp;f=webp" data-lightbox-width="1890" data-lightbox-height="462" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="175" class="pt-portable-image-media"></div>
+</figure>
+<h3>Object Composition</h3>
+<blockquote>What do we mean by a software architecture? To me the term architecture conveys a notion of the core elements of the system, the pieces that are difficult to change. A foundation on which the rest must be built. <a href="https://www.martinfowler.com/articles/designDead.html" target="_blank" rel="noopener noreferrer">Martin Fowler</a></blockquote>
+<p>When getting started with this package, you'll notice there are 3 classes you'll need to instantiate:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$key     </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Auth</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">APIKey</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'user@example.com'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'apiKey'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">$adapter </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-ffc799"> Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Adapter</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Guzzle</span><span class="sk-24292e-fff">($key);</span></span>
+<span class="line"><span class="sk-24292e-fff">$user    </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Endpoints</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">User</span><span class="sk-24292e-fff">($adapter);</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-005cc5-ffc799">echo</span><span class="sk-24292e-fff"> $user</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getUserID</span><span class="sk-24292e-fff">();</span></span></code></pre>
 </div>
+<p>The first class being instantiated is called <code>APIKey</code> (a few other classes for authentication are available). We then proceed to instantiate the <code>Guzzle</code> class and the <code>APIKey</code> object is then injected into the constructor of the <code>Guzzle</code> class. The <code>Auth</code> interface that the <code>APIKey</code> class implements is fairly simple:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">namespace</span><span class="sk-6f42c1-ffc799"> Cloudflare</span><span class="sk-6f42c1-a0a0a0">\</span><span class="sk-6f42c1-ffc799">API</span><span class="sk-6f42c1-a0a0a0">\</span><span class="sk-6f42c1-ffc799">Auth</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">interface</span><span class="sk-6f42c1-ffc799"> Auth</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    public</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> getHeaders</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-ffc799"> array</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The <code>Adapter</code> interface (which the <code>Guzzle</code> class implements) makes explicit that an object built on the <code>Auth</code> interface is expected to be injected into the constructor:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">namespace</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-005cc5-a0a0a0">\A</span><span class="sk-032f62-99ffe4">PI</span><span class="sk-005cc5-a0a0a0">\A</span><span class="sk-032f62-99ffe4">dapter</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">use</span><span class="sk-032f62-99ffe4"> Cloudflare</span><span class="sk-005cc5-a0a0a0">\A</span><span class="sk-032f62-99ffe4">PI</span><span class="sk-005cc5-a0a0a0">\A</span><span class="sk-032f62-99ffe4">uth</span><span class="sk-005cc5-a0a0a0">\A</span><span class="sk-032f62-99ffe4">uth</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">use</span><span class="sk-032f62-99ffe4"> Psr</span><span class="sk-005cc5-a0a0a0">\H</span><span class="sk-032f62-99ffe4">ttp</span><span class="sk-005cc5-a0a0a0">\M</span><span class="sk-032f62-99ffe4">essage</span><span class="sk-005cc5-a0a0a0">\R</span><span class="sk-032f62-99ffe4">esponseInterface</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">interface</span><span class="sk-032f62-99ffe4"> Adapter</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    public</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> __construct</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">Auth</span><span class="sk-24292e-fff"> $auth</span><span class="sk-032f62-99ffe4">,</span><span class="sk-032f62-99ffe4"> string</span><span class="sk-24292e-fff"> $baseURI);</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>In doing so; we define that classes which implement the <code>Adapter</code> interface are to be composed using objects made from classes which implement the <code>Auth</code> interface.</p>
+<p>So why am I explaining basic Dependency Injection here? It is critical to understand as the design of our API changes, the mechanisms for Authentication may vary independently of the HTTP Client or indeed API Endpoints themselves. Similarly the HTTP Client or the API Endpoints may vary independently of the other elements involved. Indeed, this package already contains three classes for the purpose of authentication (<code>APIKey</code>, <code>UserServiceKey</code> and <code>None</code>) which need to be interchangeably used. This package therefore considers the possibility for changes to different components in the API and seeks to allow these components to vary independently.</p>
+<p>Dependency Injection is also used where the parameters for an API Endpoint become more complicated then what is permitted by simpler variables types; for example, this is done for defining the Target or Configuration when configuring a Page Rule:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">require_once</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'vendor/autoload.php'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">$key </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Auth</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">APIKey</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'mjsa@junade.com'</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'apiKey'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">$adapter </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-ffc799"> Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Adapter</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Guzzle</span><span class="sk-24292e-fff">($key);</span></span>
+<span class="line"><span class="sk-24292e-fff">$zones </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Endpoints</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Zones</span><span class="sk-24292e-fff">($adapter);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">$zoneID </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> $zones</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getZoneID</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"junade.com"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">$pageRulesTarget </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Configurations</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">PageRulesTargets</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://junade.com/noCache/*'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">$pageRulesConfig </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Configurations</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">PageRulesActions</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">$pageRulesConfig</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">setCacheLevel</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'bypass'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">$pageRules </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Endpoints</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">PageRules</span><span class="sk-24292e-fff">($adapter);</span></span>
+<span class="line"><span class="sk-24292e-fff">$pageRules</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">createPageRule</span><span class="sk-24292e-fff">($zoneID, $pageRulesTarget, $pageRulesConfig, </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">);</span></span></code></pre>
+</div>
+<p>The structure of this project is overall based on simple object composition; this provides a far more simple object model for the long-term and a design that provides higher flexibility. For example; should we later want to create an Endpoint class which is a <a href="https://en.wikipedia.org/wiki/Composite_pattern" target="_blank" rel="noopener noreferrer">composite</a> of other Endpoints, it becomes fairly trivial for us to build this by implementing the same interface as the other Endpoint classes. As more code is added, we are able to keep the design of the software relatively thinly layered.</p>
+<h3>Testing/Mocking HTTP Requests</h3>
+<p>If you're interesting in helping contribute to this repository; there are two key ways you can help:</p>
+<ol>
+	<li>Building out coverage of endpoints on our API</li>
+	<li>Building out test coverage of those endpoint classes</li>
+</ol>
+<p>The PHP-FIG (PHP Framework Interop Group) put together a standard on how HTTP responses can be represented in an interface, this is described in the <a href="http://www.php-fig.org/psr/psr-7" target="_blank" rel="noopener noreferrer">PSR-7 standard</a>. This response interface is utilised by our HTTP <code>Adapter</code> interface in which responses to API requests are type hinted to this interface (<code>Psr\Http\Message\ResponseInterface</code>).</p>
+<p>By using this standard, it's easier to add further abstractions for additional HTTP clients and mock HTTP responses for unit testing. Let's assume the JSON response is stored in the <code>$response</code> variable and we want to test the <code>listIPs</code> method in the <code>IPs</code> Endpoint class:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">public</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> testListIPs</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-24292e-fff">  $stream </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> GuzzleHttp</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Psr7</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-6f42c1-ffc799">stream_for</span><span class="sk-24292e-fff">($response);</span></span>
+<span class="line"><span class="sk-24292e-fff">  $response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-ffc799"> GuzzleHttp</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Psr7</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff">, [</span><span class="sk-032f62-99ffe4">'Content-Type'</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-032f62-99ffe4"> 'application/json'</span><span class="sk-24292e-fff">], $stream);</span></span>
+<span class="line"><span class="sk-24292e-fff">  $mock </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getMockBuilder</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Adapter</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Adapter</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-d73a49-ffc799">class</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">getMock</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">  $mock</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">method</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'get'</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">willReturn</span><span class="sk-24292e-fff">($response);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  $mock</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">expects</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">$this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">once</span><span class="sk-24292e-fff">())</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    -&gt;</span><span class="sk-6f42c1-ffc799">method</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'get'</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    -&gt;</span><span class="sk-6f42c1-ffc799">with</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">$this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">equalTo</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'ips'</span><span class="sk-24292e-fff">), </span><span class="sk-005cc5-a0a0a0">$this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">equalTo</span><span class="sk-24292e-fff">([])</span></span>
+<span class="line"><span class="sk-24292e-fff">  );</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">   $ips </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> new</span><span class="sk-005cc5-a0a0a0"> \</span><span class="sk-005cc5-ffc799">Cloudflare</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">API</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">Endpoints</span><span class="sk-005cc5-a0a0a0">\</span><span class="sk-005cc5-ffc799">IPs</span><span class="sk-24292e-fff">($mock);</span></span>
+<span class="line"><span class="sk-24292e-fff">   $ips </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> $ips</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">listIPs</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">   $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">assertObjectHasAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ipv4_cidrs"</span><span class="sk-24292e-fff">, $ips);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">   $this</span><span class="sk-d73a49-a0a0a0">-&gt;</span><span class="sk-6f42c1-ffc799">assertObjectHasAttribute</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"ipv6_cidrs"</span><span class="sk-24292e-fff">, $ips);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>We are able to build a simple mock of our <code>Adapter</code> interface by using the standardised PSR-7 response format, when we do so we are able to define what parameters PHPUnit expects to be passed to this mock. With a mock <code>Adapter</code> class in place we are able to test the <code>IPs</code> Endpoint class as any if it was using a real HTTP client.</p>
+<h3>Conclusions</h3>
+<p>Through building on modern versions of PHP, using good Object-Oriented Programming theory and allowing for effective testing we hope our PHP API binding provides a developer experience that is pleasant to build upon.</p>
+<p>If you're interesting in helping improve the design of this codebase, I'd encourage you to take a look at the <a href="https://github.com/cloudflare/cloudflare-php" target="_blank" rel="noopener noreferrer">PHP API binding source code</a> on GitHub (and optionally give us a star).</p>
+<p>If you work with Go or PHP and you're interested in helping Cloudflare turn our high-traffic customer-facing API into an ever more modern service-oriented environment; we're hiring for Web Engineers in <a href="https://boards.greenhouse.io/cloudflare/jobs/745994#.WcWKLtOGPys" target="_blank" rel="noopener noreferrer">San Francisco</a>, <a href="https://boards.greenhouse.io/cloudflare/jobs/682927#.WcWKPdOGPys" target="_blank" rel="noopener noreferrer">Austin</a> and <a href="https://boards.greenhouse.io/cloudflare/jobs/574636#.WcWKQdOGPys" target="_blank" rel="noopener noreferrer">London</a>.</p>

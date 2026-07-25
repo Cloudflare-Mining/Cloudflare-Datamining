@@ -1,0 +1,169 @@
+<p><sup><em>注意：本帖已更新，提供了关于 AWS Lambda 的更多详情。</em></sup></p>
+<p>去年，我们宣布了<a href="https://blog.cloudflare.com/python-workers" target="_blank" rel="noopener noreferrer"><u>对 Python Workers 的基本支持</u></a>，让 Python 开发人员能够使用单个命令，将 Python 部署到全球，并且可充分利用 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Workers 平台</u></a>。</p>
+<p>从那时起，我们一直在努力，力求让 <a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>Workers 上的 Python 体验</u></a>變得更加出色。我们一直专注于为平台提供套件支援，现在这已成为现实 — 具有极快的冷启动速度和原生 Python 开发体验。</p>
+<p>这意味着软件包集成到 Python Worker 的方式发生了变化。我们现在对 <a href="https://pyodide.org/en/stable/usage/packages-in-pyodide.html" target="_blank" rel="noopener noreferrer"><u>Pyodide 支持的任何软件包</u></a>都提供支持，而不是仅仅提供有限的内置软件包集。Pyodide 是为 Python Workers 提供支持的 WebAssembly 运行时。这包括所有纯 Python 软件包，以及许多依赖动态库的软件包。我们还围绕 <a href="https://docs.astral.sh/uv" target="_blank" rel="noopener noreferrer"><u>uv</u></a> 构建了工具，来简化软件包安装。</p>
+<p>此外，我们还实施了专用内存快照，以缩短冷启动时间。相比其他无服务器 Python 供应商，这些快照能够显著提升速度。在使用常见软件包的冷启动测试中，Cloudflare Workers 的启动速度比 <strong>AWS Lambda 快 2.4 倍</strong> <strong>（未使用 SnapStart）</strong>，比 <strong>Google Cloud Run 快 3 倍</strong>。</p>
+<p>在这篇博文中，我们将阐释 Python Workers 的独特之处，并分享我们如何实现上述优势的一些技术细节。首先，对于那些可能不熟悉 Workers 或无服务器平台（特别是具有 Python 背景的开发者）的人，我们来分享一下您可能想要使用 Workers 的原因。</p>
+<h3>2 分钟内即可在全球部署 Python</h3>
+<p>Workers 之所以有魔力，部分原因在于其简洁的代码和便捷的全球部署。首先，我们展示如何通过快速冷启动，在全球各地部署 FastAPI 应用，全程不到两分钟。</p>
+<p>只需几行代码，就能使用 FastAPI 实施一个简单的 Worker。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">from fastapi import </span><span class="sk-6f42c1-ffc799">FastAPI</span></span>
+<span class="line"><span class="sk-24292e-fff">from workers import </span><span class="sk-6f42c1-ffc799">WorkerEntrypoint</span></span>
+<span class="line"><span class="sk-24292e-fff">import asgi</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">app </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> FastAPI</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">@</span><span class="sk-24292e-fff">app</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">async</span><span class="sk-24292e-fff"> def </span><span class="sk-6f42c1-ffc799">root</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   return</span><span class="sk-24292e-fff"> {</span><span class="sk-032f62-99ffe4">"message"</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-032f62-99ffe4"> "This is FastAPI on Workers"</span><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">class </span><span class="sk-6f42c1-ffc799">Default</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">WorkerEntrypoint</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">   async</span><span class="sk-24292e-fff"> def </span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-24292e-fff">, request)</span><span class="sk-d73a49-a0a0a0">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> asgi</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(app, request</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">js_object, </span><span class="sk-005cc5-a0a0a0">self</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">env)</span></span></code></pre>
+</div>
+<p>要部署类似内容，只需确保已安装 <code>uv</code> 和 <code>npm</code>，然后运行以下命令：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> uv</span><span class="sk-032f62-99ffe4"> tool</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-032f62-99ffe4"> workers-py</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> init</span><span class="sk-005cc5-99ffe4"> --template</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    https://github.com/cloudflare/python-workers-examples/03-fastapi</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> pywrangler</span><span class="sk-032f62-99ffe4"> deploy</span></span></code></pre>
+</div>
+<p>只需使用少量代码和 <code>pywrangler deploy</code>，您就能在 Cloudflare 的边缘网络部署您的应用，并且可扩展到 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>125 个国家/地区的 330 个位置</u></a>。无需担心基础设施或扩展。</p>
+<p>而且，在许多使用案例中，Python Workers 完全免费。我们的免费计划每天提供 100,000 次请求，每次调用 10 毫秒的 CPU 时间。如需更多信息，请查看<a href="https://developers.cloudflare.com/workers/platform/pricing" target="_blank" rel="noopener noreferrer"><u>文档中的定价页面</u></a>。</p>
+<p>有关更多示例，请查看 <a href="https://github.com/cloudflare/python-workers-examples" target="_blank" rel="noopener noreferrer"><u>GitHub 中的存储库</u></a>。请继续阅读，了解有关 Python Workers 的更多信息。</p>
+<h3>您可以使用 Python Workers 来做些什么呢？</h3>
+<p>现在您已经拥有了 Worker，一切皆有可能。代码由您来编写，所以决定权在您。您的 Python Worker 接收 HTTP 请求，并且在公共互联网上，向任何服务器发出请求。</p>
+<p>您可以设置 cron 触发器，以便 Worker 定期运行。另外，如果您有更复杂的需求，您可以利用 <a href="https://blog.cloudflare.com/python-workflows" target="_blank" rel="noopener noreferrer"><u>Python Worker 的工作流</u></a>，甚至使用 <a href="https://developers.cloudflare.com/durable-objects/get-started" target="_blank" rel="noopener noreferrer"><u>Durable Objects</u></a> 长时间运行的 WebSocket 服务器和客户端。</p>
+<p>以下是使用 Python Workers 可以执行的更多操作示例：</p>
+<ul>
+	<li><a href="https://github.com/cloudflare/python-workers-examples/tree/main/03-fastapi" target="_blank" rel="noopener noreferrer"><u>使用诸如 Jinja 之类的库，在边缘渲染 HTML 模板，同时直接从您的服务器获取动态内容</u></a></li>
+	<li><a href="https://github.com/cloudflare/python-workers-examples/tree/main/11-opengraph" target="_blank" rel="noopener noreferrer"><u>修改服务器响应。例如，您可以根据请求的内容，动态地将 opengraph 标签注入到 HTML 中。</u></a></li>
+	<li><a href="https://github.com/cloudflare/python-workers-examples/tree/main/15-chatroom" target="_blank" rel="noopener noreferrer"><u>使用 Durable Objects 和 WebSockets 构建一个聊天室</u></a></li>
+	<li><a href="https://github.com/cloudflare/python-workers-examples/tree/main/14-websocket-stream-consumer" target="_blank" rel="noopener noreferrer"><u>通过 WebSocket 连接使用数据，例如 Bluesky 的 Firehose</u></a></li>
+	<li><a href="https://github.com/cloudflare/python-workers-examples/tree/main/12-image-gen" target="_blank" rel="noopener noreferrer"><u>使用 Pillow Python 软件包生成图像</u></a></li>
+	<li><a href="https://github.com/cloudflare/python-workers-examples/tree/main/13-js-api-pygments" target="_blank" rel="noopener noreferrer"><u>编写一个小型 Python Worker，用于公开 Python 软件包的 API，然后使用 RPC 通过 JavaScript Worker 来访问</u></a></li>
+</ul>
+<h3>加速软件包冷启动</h3>
+<p>Workers 这类无服务器平台，仅在必要时运行您的代码，从而为您节省资金。这意味着，如果您的 Worker 没有收到请求，它可能会被关闭，并且需要在收到新请求时重新启动。这通常会产生资源开销，我们将其称为“冷启动”。请务必尽量缩短这些字符串，以最大程度地减少最终用户的延迟。</p>
+<p>在标准 Python 中，启动运行时的成本很高，因此我们最初实施的 Python Workers 专注于加快<em>运行时</em>的启动速度。但是，我们很快意识到这还不够。即使 Python 运行时启动迅速，在实际应用中，初始启动通常包括从软件包加载模块；遗憾的是，在 Python 中，许多常用的软件包可能需要几秒钟才能完成加载。</p>
+<p>我们的目标是无论是否加载了软件包，能够快速进行冷启动。</p>
+<p>为了测量真实的冷启动性能，我们建立了一个导入常用软件包的基准测试，以及一个使用裸 Python 运行时运行“hello world”的基准测试。Standard Lambda 能够快速<a href="https://cold.picheta.me/#bare" target="_blank" rel="noopener noreferrer"><u>启动运行时</u></a>，但一旦需要导入软件包，冷启动时间就会显著增加。为了对此进行优化，以便在导入软件包的情况下加速冷启动，您可以在 Lambda 上使用 SnapStart（我们很快会将其添加到链接的基准测试中）。这样做会产生存储快照的费用，并且每次恢复时还会产生额外的费用。Python Workers 将自动针对每个 Python Worker，免费应用内存快照。</p>
+<p>以下是加载三个常见软件包 (<a href="https://www.python-httpx.org" target="_blank" rel="noopener noreferrer"><u>httpx</u></a>、<a href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer"><u>fastapi</u></a> 和 <a href="https://docs.pydantic.dev/latest" target="_blank" rel="noopener noreferrer"><u>pydantic</u></a>) 时的平均冷启动时间：</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>平台</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>平均冷启动时间（秒）</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare Python Workers</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.027</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>AWS Lambda（不使用 SnapStart）</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.502</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Google Cloud Run</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.069</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>在此案例中，<strong>Cloudflare Python Workers 的冷启动速度比不使用 SnapStart 的 AWS Lambda 快 2.4 倍，比 Google Cloud Run 快 3 倍</strong>。我们使用内存快照，实现了较低的冷启动次数，我们将在后面的章节中阐释我们是如何做到这一点的。</p>
+<p>我们会定期运行这些基准测试。<a href="https://cold.picheta.me/#bare" target="_blank" rel="noopener noreferrer"><u>在此</u></a>获取最新数据，以及有关我们测试方法的更多信息。</p>
+<p>在架构方面，我们与这些其他平台不同，也就是说，<a href="https://developers.cloudflare.com/workers/reference/how-workers-works" target="_blank" rel="noopener noreferrer"><u>Workers 是基于隔离的</u></a>。正因如此，我们的目标远大，并且正在规划零冷启动的未来。</p>
+<h3>与 uv 集成的软件包工具</h3>
+<p>Python 之所以如此令人惊叹，很大程度上归功于其多样化的软件包生态系统。因此，我们一直在努力，以确保在 Workers 中尽可能简单地使用软件包。</p>
+<p>我们认为，使用现有的 Python 工具是获得出色开发体验的最佳途径。因此，我们选择了 <code>uv</code> 软件包和项目管理器，原因是其快速、成熟，并且在 Python 生态系统中发展势头迅猛。</p>
+<p>我们围绕 <code>uv</code> 构建了称为 <a href="https://github.com/cloudflare/workers-py#pywrangler" target="_blank" rel="noopener noreferrer"><u>pywrangler</u></a> 的专属工具。此工具执行以下操作：</p>
+<ul>
+	<li>读取 Worker 的 pyproject.toml 文件，以确定其中指定的依赖项。</li>
+	<li>将依赖项包含在 Worker 的 <code>python_modules</code> 文件夹中。</li>
+</ul>
+<p>Pywrangler 会以与 Python Workers 兼容的方式调用 <code>uv</code> 来安装依赖项，并在本地开发或部署 Workers 时调用 <code>wrangler</code>。</p>
+<p>实际上，这意味着您只需要运行 <code>pywrangler dev</code> 和 <code>pywrangler</code> <code>deploy</code>，即可在本地测试并部署您的 Worker。</p>
+<h3>类型提示</h3>
+<p>您可以使用 <code>pywrangler types</code>，针对 Wrangler 配置中定义的所有<a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>绑定项</u></a>来生成类型提示。这些类型提示将适用于 <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance" target="_blank" rel="noopener noreferrer"><u>Pylance</u></a> 或最新版本的 <a href="https://mypy-lang.org" target="_blank" rel="noopener noreferrer"><u>mypy</u></a>。</p>
+<p>为了生成类型，我们使用 <a href="https://developers.cloudflare.com/workers/wrangler/commands/#types" target="_blank" rel="noopener noreferrer"><u>wrangler types</u></a> 来创建 TypeScript 类型提示，然后使用 TypeScript 编译器为这些类型生成抽象语法树。最后，我们使用 TypeScript 提示（例如 JS 对象是否有迭代器字段），来生成与 Pyodide 外部函数接口协同工作的 <code>mypy</code> 类型提示。</p>
+<h3>使用快照来缩短冷启动时间</h3>
+<p>Python 启动通常非常缓慢，导入 Python 模块会触发大量工作。我们使用内存快照，避免在冷启动期间运行 Python 启动程序。</p>
+<p>部署 Worker 时，我们会执行 Worker 的顶层作用域，然后拍摄内存快照，并将其与您的 Worker 一起存储。每当我们为 Worker 启动新的隔离时，我们会恢复内存快照，Worker 可随时处理请求，而无需预先执行任何 Python 代码。这显著改善了冷启动时间。例如，启动一个不使用快照的 Worker 且导入 <code>fastapi</code>、<code>httpx</code> 和 <code>pydantic</code> 等库大约需要 10 秒。使用快照则只需 1 秒。</p>
+<p>Pyodide 基于 WebAssembly 构建，正是这一点使其成为可能。我们可轻松捕获运行时的完整线性内存并进行恢复。</p>
+<h4>内存快照和熵</h4>
+<p>WebAssembly 运行时不需要像地址空间布局随机化这类安全功能，因此在现代操作系统上，与内存快照相关的大部分难题都不会出现。就像使用原生内存快照一样，我们仍然需要在启动时小心处理熵，以避免使用 <a href="https://xkcd.com/221" target="_blank" rel="noopener noreferrer"><u>XKCD 随机数生成器</u></a>（我们<a href="https://www.cloudflare.com/learning/ssl/lava-lamp-encryption" target="_blank" rel="noopener noreferrer"><u>非常注重实际的随机性</u></a>）。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="400" height="144" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459DS22T0KYDPDJGGEAW3H.png&amp;w=400&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459DS22T0KYDPDJGGEAW3H.png&amp;w=400&amp;h=144&amp;f=webp&amp;fit=cover&amp;position=center 400w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459DS22T0KYDPDJGGEAW3H.png&amp;w=640&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459DS22T0KYDPDJGGEAW3H.png&amp;w=750&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459DS22T0KYDPDJGGEAW3H.png&amp;w=800&amp;h=288&amp;f=webp&amp;fit=cover&amp;position=center 800w" alt="BLOG-2925 Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459DS22T0KYDPDJGGEAW3H.png&amp;w=400&amp;h=144&amp;f=webp" data-lightbox-width="400" data-lightbox-height="144" data-astro-cid-7nvefuv6="true" sizes="(min-width: 400px) 400px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="400" height="144" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>通过创建内存快照，我们可能会无意中锁定一个随机种子值。在这种情况下，未来对“随机”数的调用将在多个请求中始终返回相同的值序列。</p>
+<p>由于 Python 在启动时会使用大量的熵，因此避免这种情况尤其具有挑战性。其中包括 libc 函数 <code>getentropy()</code> 和 <code>getrandom()</code>，以及从 <code>/dev/random</code> 和 <code>/dev/urandom</code> 中读取。所有这些函数与 JavaScript <code>crypto.getRandomValues()</code> 函数的实施相同。</p>
+<p>在 Cloudflare Workers 中，<code>crypto.getRandomValues()</code>启动时始终处于禁用状态，以便将来我们可以转换为使用内存快照。遗憾的是，如果不调用此函数，Python 解释器将无法启动。而且许多软件包在启动时也需要熵。这种熵主要有两个用途：</p>
+<ul>
+	<li>用于哈希随机化的哈希种子</li>
+	<li>用于伪随机数生成器的种子</li>
+</ul>
+<p>在启动时进行哈希随机化，并且我们接受每个特定 Worker 具有固定哈希种子的成本。Python 没有在启动后允许替换哈希种子的机制。</p>
+<p>对于伪随机数生成器 (PRNG)，我们采取以下方法：</p>
+<p>在部署时:</p>
+<ol>
+	<li>使用固定的“毒种子”为 PRNG 设定种子，然后记录 PRNG 的状态。</li>
+	<li>将所有调用 PRNG 的 API 替换为一项覆盖，该覆盖会因用户错误而导致部署失败。</li>
+	<li>执行用户代码的顶层作用域。</li>
+	<li>捕获快照。</li>
+</ol>
+<p>运行时：</p>
+<ol>
+	<li>确认 PRNG 状态未更改。如果发生更改，说明我们忘记了某种方法的覆盖。部署因内部错误而失败。</li>
+	<li>恢复快照后，在执行任何处理程序之前，重新设定随机数生成器的种子。</li>
+</ol>
+<p>这样，我们可以确保 Worker 在运行的同时能够使用 PRNG，但在初始化和预快照期间会阻止 Workers 使用。</p>
+<h4>内存快照与 WebAssembly 状态</h4>
+<p>在 WebAssembly 上创建内存快照时，还会遇到一个额外的难题：我们保存的内存快照仅包含 WebAssembly 的线性内存；但是，Pyodide WebAssembly 实例的完整状态并未包含在线性内存中。</p>
+<p>在此内存之外有两张表。</p>
+<p>一张表用于保存函数指针的值。传统计算机使用“冯·诺伊曼”架构，这意味着代码与数据存在于相同的内存空间中，因此调用函数指针相当于跳转到某个内存地址。WebAssembly 具有“哈佛架构”，代码存在于单独的地址空间中。这是实现 WebAssembly 大部分安全保障的关键，特别是 WebAssembly 为何不需要地址空间布局随机化。在 WebAssembly 中，函数指针是指向函数指针表的索引。</p>
+<p>第二张表保存了所有从 Python 引用的 JavaScript 对象。JavaScript 对象不能直接存储到内存中，因为 JavaScript 虚拟机禁止直接获取指向 JavaScript 对象的指针。而这些对象被存储在一个表中，并在 WebAssembly 中表示为该表的索引。</p>
+<p>在将快照恢复为捕获快照时，我们需要确保这两个表的状态完全相同。</p>
+<p>WebAssembly 实例初始化时，函数指针表始终处于相同状态。加载动态库时（例如 numpy 等原生 Python 包），动态加载器会更新该表。&nbsp;</p>
+<p>处理动态加载：</p>
+<ol>
+	<li>在拍摄快照时，我们会为加载器打补丁，以记录动态库的加载顺序、每个库的元数据在内存中分配的地址，以及用于调整的函数指针表基址。</li>
+	<li>恢复快照时，我们以相同的顺序重新载入动态链接库，并使用经过打补丁的内存分配器将元数据放置在相同的位置。我们确认，函数指针表的当前大小与我们为动态库记录的动态库的函数指针表基址相匹配。</li>
+</ol>
+<p>所有这些确保在我们恢复快照后，每个函数指针都具有与拍摄快照时相同的含义。</p>
+<p>为了处理 JavaScript 引用，我们实施了一个相当有限的系统。如果一个 JavaScript 对象可以通过一系列属性访问项，从 globalThis 进行访问，我们会记录这些属性访问项，并在恢复快照时回放。如果存在任何无法通过此方式访问的 JavaScript 物件参考，我们将无法部署 Worker。这已经足以处理所有支持 Pyodide 的现有 Python 软件包，这些软件包会执行顶级导入，例如：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">from</span><span class="sk-24292e-fff"> js </span><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> fetch</span></span></code></pre>
+</div>
+<h3>使用分片来降低冷启动频率</h3>
+<p>Python Workers 性能策略的另一项重要特征是分片。<a href="https://blog.cloudflare.com/eliminating-cold-starts-2-shard-and-conquer" target="_blank" rel="noopener noreferrer"><u>此外</u></a>非常详细地介绍了其实施。简而言之，我们现在将请求路由到现有的 Worker 实例，而以前我们可能会选择启动一个新实例。</p>
+<p>实际上首先会为 Python Workers 启用分片，并证明其是一个很好的测试平台。在 Python 中，冷启动的成本远高于 JavaScript。因此，务必确保将请求路由到已在运行的隔离区，这一点至关重要。</p>
+<h3>我们接下来该怎么办？</h3>
+<p>这仅仅是开始。我们有很多计划来改进 Python Workers：</p>
+<ul>
+	<li>开发人员更便捷易用的工具</li>
+	<li>利用我们的隔离架构，实现更快的冷启动</li>
+	<li>支持更多软件包。</li>
+	<li>支持原生 TCP 套接字、原生 WebSocket 及更多绑定项。</li>
+</ul>
+<p>要了解有关 Python Workers 的更多信息，请查看<a href="https://developers.cloudflare.com/workers/languages/python" target="_blank" rel="noopener noreferrer"><u>此处</u></a>提供的文档。要获得帮助，请务必加入我们的 <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Discord</u></a>。</p>

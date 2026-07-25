@@ -1,0 +1,158 @@
+<p><a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack" target="_blank" rel="noopener noreferrer"><u>Distributed Denial of Service</u></a> (DDoS)-aanvallen zijn cyberaanvallen die zich richten op het overbelasten en verstoren van online diensten, waardoor ze ontoegankelijk worden voor gebruikers. Met behulp van een netwerk van gedistribueerde apparaten overspoelen DDoS-aanvallen het doelsysteem met buitensporig veel verzoeken. Zo wordt de bandbreedte verbruikt of de rekenkracht uitgeput totdat het systeem faalt. Deze aanvallen zijn vaak zeer effectief als de sites onbeschermd zijn en zijn ook relatief goedkoop voor de aanvallers. Ondanks het feit dat DDoS-aanvallen tot de oudste soorten aanvallen behoren, zijn ze nog altijd een bedreiging, vaak gericht op bekende of drukbezochte websites, diensten of een belangrijke infrastructuur. Cloudflare heeft sinds het begin van 2024 meer dan 14,5 miljoen DDoS-aanvallen ingeperkt. Dat is een gemiddelde van 2200 DDoS-aanvallen per uur. (Ons <a href="https://blog.cloudflare.com/ddos-threat-report-for-2024-q3" target="_blank" rel="noopener noreferrer"><u>DDoS Threat Report voor Q3 2024</u></a> bevat aanvullende gerelateerde statistieken).</p>
+<p>Als we kijken naar de statistieken die verband houden met grote aanvallen die de afgelopen 10 jaar zijn ingeperkt, zien we dan een exponentiële curve die steeds steiler wordt, vooral in de afgelopen jaren, of lijkt het meer op een lineaire toename? Het blijkt dat de groei niet lineair is, maar exponentieel, waarbij de helling afhankelijk is van de metriek die wordt gebruikt.</p>
+<p>Waarom is deze vraag interessant? Dat mag duidelijk zijn. Het antwoord op deze vraag biedt waardevolle inzichten in de evoluerende strategieën van aanvallers, hoe geavanceerd hun tools zijn en de paraatheid van de verdedigingsmechanismen.&nbsp;</p>
+<p>Een opwaartse curve van het aantal verzoeken per seconde (rps) suggereert bijvoorbeeld dat de aanvallers iets aan hun kant veranderen waardoor ze grotere hoeveelheden verzoeken kunnen genereren. Dit is een inzicht dat ons aanspoort om meer te onderzoeken en naar andere gegevens te kijken om te begrijpen of er iets nieuws aan de hand is.</p>
+<p>Op een van die momenten keken we bijvoorbeeld naar de bron van het verkeer. We zagen een verschuiving van de IP-adresruimte van abonnees/ondernemingen (wat wijst op IoT) naar de IP-adresruimte van cloudproviders (wat wijst op VM's). We realiseerden ons dat de aanvallers andere soorten apparaten met een verschillende functionaliteit begonnen te gebruiken.&nbsp;</p>
+<p>Een ander voorbeeld: toen de <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack" target="_blank" rel="noopener noreferrer"><u>HTTP/2 Rapid Reset-aanval</u></a> plaatsvond, suggereerde het recordaantal verzoeken per seconde dat er op dat moment een nieuwe techniek door aanvallers werd gebruikt. Dat gaf ons aanleiding om de situatie snel te onderzoeken en onze verdediging aan te passen.</p>
+<h2>Individuele aanvallen identificeren</h2>
+<p>Het afbakenen van een individuele aanval in de loop der tijd is verrassend moeilijk. Allereerst is het mogelijk dat een aanvalsanalyse inconsistente waarnemingen in verschillende lagen van het <a href="https://www.cloudflare.com/en-gb/learning/ddos/glossary/open-systems-interconnection-model-osi" target="_blank" rel="noopener noreferrer"><u>OSI-model</u></a> registreert. De voetafdruk die in al deze verschillende lagen te zien is, kan verschillende verhalen vertellen over dezelfde aanval. Er zijn echter bepaalde variabelen waarmee we een vingerafdruk kunnen samenstellen, zodat we een reeks gebeurtenissen kunnen groeperen. Zo kunnen we vaststellen of ze deel uitmaken van dezelfde individuele aanval. Voorbeelden hiervan zijn:&nbsp;</p>
+<ul>
+	<li>Zien we dat dezelfde <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/attack-vector" target="_blank" rel="noopener noreferrer"><u>aanvalsvector(en)</u></a> voor al deze gebeurtenissen worden gebruikt?</li>
+	<li>Zijn de individuele aanvallen op hetzelfde doel of doelen gericht?</li>
+	<li>Hebben de schadelijke payloads van de gebeurtenissen dezelfde kenmerken? (Specifieke gegevenspayloads of verzoektypen die uniek zijn voor bepaalde typen aanvallen of botnets, zoals Mirai, die soms gebruik maken van unieke HTTP-verzoekheaders of pakketstructuren).</li>
+</ul>
+<h2>Omvang van de DDoS-aanvallen&nbsp;</h2>
+<p>Voordat we ingaan op een groeianalyse van DDoS-aanvallen van de afgelopen 10 jaar, doen we eerst een stapje terug door naar de statistieken te kijken die doorgaans worden gebruikt om deze aanvallen te meten: 'requests per second' of rps (verzoeken per seconde), 'packets per second' of pps (pakketten per seconde) en 'bits per second' of bps (bits per seconde). Elke metriek verzamelt informatie over een ander aspect van de schaal en impact van de aanval.</p>
+<ul>
+	<li><strong>Verzoeken per seconde (rps):</strong> meet het aantal HTTP- of vergelijkbare protocolverzoeken dat elke seconde wordt veronden. Deze metriek is met name relevant voor aanvallen op de applicatielaag (laag 7), waarbij het de bedoeling is om <strong>een specifieke applicatie of dienst te overspoelen door de verzoekafhandeling te overbelasten</strong>. Deze waarde is nuttig voor het meten van aanvallen die gericht zijn op webservers, API's of applicaties, omdat die een weerspiegeling is van het volume van verzoeken en niet alleen de overdracht van onbewerkte gegevens.</li>
+	<li><strong>Pakketten per seconde (pps):</strong> vertegenwoordigt het aantal afzonderlijke pakketten dat per seconde naar het doel wordt verzonden, ongeacht de grootte ervan. Deze metriek is van cruciaal belang voor aanvallen op de netwerklaag (lagen 3 en 4), waarbij het doel is om <strong>de netwerkinfrastructuur te overbelasten door de pakketverwerkingscapaciteit te overschrijden</strong>. Pps-metingen zijn nuttig voor volumetrische aanvallen, waarbij de hoeveelheid pakketten wordt vastgesteld die van invloed kan zijn op routers, switches of firewalls.</li>
+	<li><strong>Bits per seconde (bps):</strong> meet het totale aantal gegevens dat per seconde wordt overgedragen en is vooral nuttig voor het evalueren van aanvallen op de netwerklaag die erop gericht zijn de bandbreedte van het doel of van de upstream-provider te verzadigen. Bps wordt veel gebruikt voor het meten van aanvallen op lagen 3 en 4, zoals UDP floods, waarbij de aanval is bedoeld om de netwerkbandbreedte te blokkeren. Deze metriek is vaak opvallend voor DDoS-aanvallen, omdat hoge bps-waarden (vaak gemeten in gigabits of terabits) wijzen op <strong>bandbreedteverzadiging</strong> en dat is vaak het doel van grootschalige DDoS-campagnes.</li>
+</ul>
+<h2>Evolutie van de omvang van DDoS-aanvallen in de afgelopen tien jaar</h2>
+<p>Op welke wijze is de omvang van DDoS-aanvallen de afgelopen tien jaar veranderd? In deze periode zijn DDoS-aanvallen steeds groter en sterker geworden, en elk jaar neemt het risico op een ernstige verstoring toe.&nbsp;</p>
+<p>Als we kijken naar de statistieken die verband houden met grote aanvallen van de afgelopen 10 jaar, zien we dan een exponentiële curve die steeds steiler wordt, vooral in de afgelopen jaren, of lijkt het meer op een lineaire toename? Het blijkt dat de groei exponentieel is. Laten we onderzoeken waarom we die conclusie hebben getrokken.</p>
+<p>Voor deze analyse hebben we de <a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer"><u>aanvallen op Google van 2010 tot 2022</u></a> als uitgangspunt gebruikt (Figuur 1). We keken bovendien naar de aanvallen die Cloudflare in 2023 en 2024 heeft waargenomen (Figuur 2).&nbsp;</p>
+<p>Als we teruggaan in de tijd, naar het begin van de jaren 2010, werden de grootste aanvallen gemeten op een schaal van gigabits per seconde (gbps), terwijl het tegenwoordig gaat om terabits per seconde (tbps). Ook het aantal verzoeken per seconde (rps) en bits per seconde (bps) zijn tegenwoordig significant hoger. Later komen we hierop terug.</p>
+<p>De historische gegevens van Google over de DDoS-aanvallen die tussen 2010 en 2022 werden waargenomen en die hieronder in Figuur 1 staan weergegeven, laten een stijgende trend zien van het aantal verzoeken per seconde. Daarbij was er in 2020 een piek van 6 miljoen verzoeken per seconde (Mrp's). De toename wijst op een aanzienlijke escalatie van het aanvalsvolume in de loop van deze tien jaar.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="359" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=640&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=715&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=750&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=828&amp;h=416&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1080&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1280&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1430&amp;h=718&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2616 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44GRYVV4MHK8HQNSTE839Y.png&amp;w=1800&amp;h=905&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="905" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="359" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>Figuur 1</em>.<em> Grootste bekende DDoS-aanvallen, 2010-2022. (<a href="https://cloud.google.com/blog/products/identity-security/how-to-protect-your-site-from-ddos-attacks-with-cloud-networking" target="_blank" rel="noopener noreferrer">Bron: Google</a>)</em>&nbsp;</sup></p>
+<p>Figuur 2 (hieronder) biedt een overzicht van de trends die de verschillende statistieken vertonen. De escalatie die de statistieken van Google tonen, is ook zichtbaar in de gegevens van Cloudflare met betrekking tot grote, ingeperkte DDoS-aanvallen in 2023 en 2024, die een piek van 201 Mreps (groene lijn) in september 2024 vertonen. Het aantal pakketten per seconde (pps) heeft een lichte exponentiële groei in de loop der tijd (blauwe lijn), van 230 Mpps in 2015 naar 2100 Mpps in 2024, wat aangeeft dat aanvallers meer aanvallen uitvoeren. Voor bits per seconde (bps) is de trend ook exponentieel en met een steilere opwaartse curve (rode lijn), van een aanval van 309 Gbps in 2013 naar een aanval van 5,6 Tbps (5600 Gbps) in 2024.&nbsp;</p>
+<p>De aanvallen achter deze statistieken de afgelopen tien jaar een aanzienlijke groei doorgemaakt:</p>
+<ul>
+	<li>Van 2013 tot 2024 twintigmaal meer bits per seconde</li>
+	<li>Van 2015 tot 2024 tienmaal meer pakketten per seconde</li>
+	<li>Van 2014 tot 2024 zeventigmaal meer verzoeken per seconde</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="357" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=715&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=640&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=715&amp;h=357&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=750&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=828&amp;h=413&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1080&amp;h=539&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1280&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1430&amp;h=714&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2616 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45T8W9DCTVT9RV5PMRP4T7.png&amp;w=1920&amp;h=958&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="958" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="357" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>Figuur 2. De gegevens uit Figuur 1, uitgebreid met grote aanvallen die in 2023 en 2024 door Cloudflare zijn waargenomen.</em></sup></p>
+<p>De blogberichten in tabel 1 bevatten informatie over een aantal aanvallen die we van 2021 tot 2024 hebben waargenomen.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Maand</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Omvang van de aanval</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Blogbericht</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Augustus 2021</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>17,2 Mrps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare thwarts 17.2M rps DDoS attack — the largest ever reported</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>April 2022</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>15 Mrps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare blocks 15M rps HTTPS DDoS attack</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Juni 2022</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>26 Mrps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare mitigates 26 million request per second DDoS attack</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Februari 2023</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>71 Mrps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Cloudflare mitigates record-breaking 71 million request-per-second DDoS attack</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>September 2024</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3,8 Tbps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>How Cloudflare auto-mitigated world record 3.8 Tbps DDoS attack</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Oktober 2024</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4,2 Tbps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.2 Tbps of bad packets and a whole lot more: Cloudflare's Q3 DDoS report&nbsp;</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>Oktober 2024</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5,6 Tbps</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.6 Tbps attack</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p><sup><strong>Tabel 1.</strong> Opmerkelijke DDoS-aanvallen van 2021 tot 2024 waargenomen door Cloudflare.</sup></p>
+<p>Voor een overzicht van andere DDoS-aanvallen met een significant hoog volume die de afgelopen tien jaar hebben plaatsgevonden, waaronder<a href="https://blog.cloudflare.com/memcrashed-major-amplification-attacks-from-port-11211" target="_blank" rel="noopener noreferrer"><u> het Memcached-misbruik in 2018</u></a> en de <a href="https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack" target="_blank" rel="noopener noreferrer"><u>HTTP/2 'Rapid Reset'-aanvallen in 2023</u></a>, gaat u naar <a href="https://www.cloudflare.com/learning/ddos/famous-ddos-attacks" target="_blank" rel="noopener noreferrer"><u>het Learning Center van Cloudflare</u></a>.</p>
+<h2>Aanvalsduur als metriek</h2>
+<p>De duur van een aanval is geen effectieve maatstaf om de agressiviteit van een aanval te beoordelen. Het is namelijk lastig om de duur van een enkele aanval of campagne vast te stellen, omdat de aanvallen mogelijk met tussenpozen worden uitgevoerd of een groot aantal aanvalsvectoren tegelijkertijd gebruikt wordt. Ook is het moeilijk vast te stellen hoe de verschillende verdedigingslagen in de loop der tijd worden geactiveerd.&nbsp;</p>
+<p>De aanvalspatronen kunnen aanzienlijk verschillen, waarbij sommige één grote piek en andere meerdere dicht bij elkaar liggende pieken vertonen, of een constante belasting die gedurende een bepaalde periode aanhoudt, plus allerlei andere variabelen.</p>
+<h2>De trend van het soort apparatuur dat wordt gebruikt om aanvallen uit te voeren</h2>
+<p>DDoS-aanvallen werden door IoT-gebaseerde botnets uitgevoerd, maar tegenwoordig steeds vaker door veel krachtigere VM-gebaseerde botnets. Deze verandering wordt voornamelijk veroorzaakt door de hogere rekencapaciteit en grotere doorvoermogelijkheden van in de cloud gehoste virtuele machines. Hierdoor kunnen aanvallers met veel minder apparaten zeer zware aanvallen uitvoeren.&nbsp;</p>
+<p>Deze verschuiving wordt mogelijk gemaakt door verschillende factoren: VM-botnets zijn gemakkelijker op te starten dan IoT-botnets, omdat ze niet per se grootschalige malware-infecties vereisen. Aanvallers kunnen deze infecties namelijk anoniem uitzetten op de infrastructuur van cloudproviders met gestolen betaalgegevens verkregen door gegevenslekken of <a href="https://blog.cloudflare.com/navigating-the-maze-of-magecart" target="_blank" rel="noopener noreferrer"><u>Magecart-aanvallen</u></a>.</p>
+<p>Deze trend wijst op de ontwikkeling van DDoS-tactieken: aanvallers misbruiken zowel de verwerkingskracht van VM's als de geanonimiseerde toegang tot cloudbronnen. Daardoor kunnen kleinere, efficiëntere botnets grootschalige aanvallen uitvoeren zonder de complexiteit die gepaard gaat met het infecteren en beheren van een groot aantal IoT-apparaten.</p>
+<h2>Hoe beschermt Cloudflare tegen DDoS-aanvallen?</h2>
+<p>De connectiviteitscloud van Cloudflare, gebouwd op ons uitgebreide wereldwijde anycast-netwerk, speelt een cruciale rol bij de verdediging tegen DDoS-aanvallen. De connectiviteitscloud zorgt namelijk voor een automatische detectie, verkeersdistributie en Rapid Response. Dit is hoe de DDoS-bescherming wordt versterkt:</p>
+<p><strong>Geautomatiseerde detectie en verdediging tegen aanvallen</strong>: de DDoS-bescherming van Cloudflare is sterk afhankelijk van automatisering en gebruikt machine learning-algoritmen om verdachte verkeerspatronen in realtime te identificeren. Cloudflare kan met <a href="https://blog.cloudflare.com/training-a-million-models-per-day-to-save-customers-of-all-sizes-from-ddos" target="_blank" rel="noopener noreferrer"><u>de automatisering van het detectieproces</u></a> snel DDoS-aanvallen herkennen en blokkeren, zonder handmatige tussenkomst. Dat is van cruciaal belang bij omvangrijke aanvallen, aangezien mensen die gewoon niet aankunnen.</p>
+<p><strong>Wereldwijde verkeersdistributie met IP anycast</strong>: het netwerk van Cloudflare strekt zich uit over meer dan 330 steden over de hele wereld en het DDoS-verkeer wordt over onze verschillende datacenters verdeeld. <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network" target="_blank" rel="noopener noreferrer"><u>IP anycast</u></a> stelt ons in staat om het verkeer over dit wereldwijde netwerk te verdelen. Deze brede distributie helpt bij het absorberen en inperken van grootschalige aanvallen, aangezien aanvalsverkeer niet op één enkel punt wordt gericht. Zo wordt de druk op individuele servers en netwerken verminderd.&nbsp;</p>
+<p><strong>Gelaagde verdediging</strong>: de connectiviteitscloud van Cloudflare verdedigt in meerdere lagen, zoals netwerk (laag 3), transport (laag 4) en applicatie (laag 7). Deze gelaagde aanpak maakt het mogelijk om verdedigingsstrategieën op maat te ontwikkelen, afhankelijk van het aanvalstype. Zo kunnen zelfs complexe, meerlaagse aanvallen effectief worden ingeperkt. Lees meer over DDoS-bescherming op lagen 3, 4 en 7 in <a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>onze documentatie over DDoS-bescherming</u></a>.</p>
+<p><strong>Onbeperkte DDoS-preventie</strong>: Cloudflare is sinds 2017 een pionier op het gebied van deze aanpak om de internetbeveiliging te waarborgen en biedt <a href="https://blog.cloudflare.com/unmetered-mitigation" target="_blank" rel="noopener noreferrer"><u>onbeperkte DDoS-bescherming</u></a>. Dat betekent dat klanten worden beschermd, zodat ze zich tijdens aanvallen geen zorgen hoeven te maken over onvoldoende bandbreedte of te hoge kosten. Dankzij deze aanpak kunnen bedrijven, ongeacht hun grootte of budget, van een robuuste DDoS-bescherming profiteren.</p>
+<p>Dankzij de gedistribueerde cloudinfrastructuur en geavanceerde technologie van Cloudflare kunnen we DDoS-aanvallen detecteren, opvangen en inperken op een manier die zowel schaalbaar als responsief is. Hierbij wordt downtime vermeden en de betrouwbaarheid van de service gehandhaafd. Daarnaast wordt een robuuste oplossing geboden om de toenemende intensiteit en frequentie van DDoS-aanvallen aan te pakken vergeleken met traditionele opties.</p>
+<p>Bescherming tegen DDoS-aanvallen is essentieel voor organisaties van elke omvang. Hoewel mensen deze aanvallen initiëren, worden ze uitgevoerd door bots. Een effectieve verdediging vereist dus geautomatiseerde tools om deze botgestuurde dreigingen tegen te gaan. De realtime detectie en inperking moeten zo geautomatiseerd mogelijk zijn, aangezien het voor verdedigers zeer nadelig is om uitsluitend op menselijke interventie te vertrouwen. Aanvallers passen zich namelijk aan nieuwe verdedigingslinies aan en kunnen hun aanvalsvectoren, verkeersgedrag en payloadhandtekeningen wijzigen, waardoor een onvoorspelbare situatie ontstaat en sommige handmatige configuraties dus nutteloos worden. De geautomatiseerde systemen van Cloudflare sporen voortdurend DDoS-aanvallen op en blokkeren deze voor onze klanten. Dit maakt op maat gemaakte bescherming mogelijk die aan de individuele behoeften voldoet.</p>
+<p>Onze missie is om een beter internet te ontwikkelen. Gezien de vele DDoS-dreigingen is het leveren van veerkracht onderdeel van deze missie.</p>
+<p>Lees meer over de DDoS-bescherming van Cloudflare in onze gepubliceerde <a href="https://developers.cloudflare.com/ddos-protection" target="_blank" rel="noopener noreferrer"><u>technische documentatie</u></a>.</p>

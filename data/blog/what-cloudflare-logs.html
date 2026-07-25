@@ -1,43 +1,17 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3GVJjV033MeQe0m3564twg/bf400eb8f5c94bba14aa2fccbcf777cf/what-cloudflare-logs.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Over the last few weeks, we've had a number of requests for information about what data CloudFlare logs when someone visits a site on our network. While we have provided a <a href="http://www.cloudflare.com/security-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> that outlines how we keep information private, I wanted to take the time to clarify our customer log retention policies.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-cloudflare-logs">What CloudFlare Logs</h3>
-		<a href="https://blog.cloudflare.com/#what-cloudflare-logs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When you visit a site on CloudFlare's network, we record information about that visit. If you run a web server you'll be familiar with these logs as they're similar to an Apache access log. We log data for two reasons: 1) to help us identify security threats and attacks hitting our customers in order to mitigate them; and 2) in order to identify performance bottlenecks and errors on our system.</p>
-	<p>It's somewhat hard to fathom the scale of the log data that we generate. Every minute of every day we generate more than 20GB (compressed) of log data. That translates, at our current volume, to more than 10 Petabytes of storage needed to store a year's worth of logs, and, due to our continued growth, that volume that has been doubling every 4 months or so. Today, even if we wanted to, we don't have the ability to retain all the logs we generate. This means that, for most customers, we discard access logs within 4 hours of them being recorded.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6XPI8N5qmkIddfIr1Y2VQs/ca45737fade4827b7260d6e9f6544768/dev_null.png.scaled500.png" alt="What CloudFlare
-Logs" class="kg-image" width="243" height="75" loading="lazy">
-
-	</figure>
-	<p>For our <a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Enterprise customers</a>, we offer an optional feature that allows them to export their raw log files in Apache format. This requires us to store log files for a longer period of time in order to allow them to be downloaded. By default, we store logs for these customers for 3 days.</p>
-	<div class="flex anchor relative">
-		<h4 id="crunching-data">Crunching Data</h4>
-		<a href="https://blog.cloudflare.com/#crunching-data" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Since CloudFlare does not keep the raw logs, it is impossible for us to answer questions like: tell me all the visitors who have been to a particular website on CloudFlare's network.</p>
-	<p>However, CloudFlare does generate aggregate data, so we can provide analytics back to customers. We use the aggregated data to populate things like the CloudFlare Analytics page which includes numbers of hits, page views, bandwidth consumed and unique visitors. As logs are received, we run a stream processing engine that extracts this summary data. This data is correlated in each of our edge data centers and then sent to one of our core facilities in order to report through our UI.</p>
-	<p>This same data summary engine also looks for attack patterns, which is then used to provide security protection for our customer's websites. Using this engine, we can identify an attack on one site, usually in less than 1 minute, and then push updated security rules that then protect every site using CloudFlare from that same attack.</p>
-	<p>Access logs for most customers are stored briefly at the edge of our network and then deleted within 4 hours. If there is an error, those logs are transmitted back to one of our core facilities in order for us to diagnose the error. Error logs sent to core are currently kept for 1 week then discarded.</p>
-	<div class="flex anchor relative">
-		<h4 id="the-future">The Future</h4>
-		<a href="https://blog.cloudflare.com/#the-future" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Going forward, we want to allow customers who would like to have more insight into the visitors to their sites to be able to choose to do so. As we do, we will provide details on how any feature we add changes our log retention policy, and we will continue to be guided by the principle that our customers should be able to understand and control what data is being stored about visitors to their sites.</p>
-</div>
+<p>Over the last few weeks, we've had a number of requests for information about what data CloudFlare logs when someone visits a site on our network. While we have provided a <a href="http://www.cloudflare.com/security-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> that outlines how we keep information private, I wanted to take the time to clarify our customer log retention policies.</p>
+<h3>What CloudFlare Logs</h3>
+<p>When you visit a site on CloudFlare's network, we record information about that visit. If you run a web server you'll be familiar with these logs as they're similar to an Apache access log. We log data for two reasons: 1) to help us identify security threats and attacks hitting our customers in order to mitigate them; and 2) in order to identify performance bottlenecks and errors on our system.</p>
+<p>It's somewhat hard to fathom the scale of the log data that we generate. Every minute of every day we generate more than 20GB (compressed) of log data. That translates, at our current volume, to more than 10 Petabytes of storage needed to store a year's worth of logs, and, due to our continued growth, that volume that has been doubling every 4 months or so. Today, even if we wanted to, we don't have the ability to retain all the logs we generate. This means that, for most customers, we discard access logs within 4 hours of them being recorded.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="243" height="75" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48741B2AKZJQ1Y8P3H40N0.png&amp;w=243&amp;h=75&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48741B2AKZJQ1Y8P3H40N0.png&amp;w=243&amp;h=75&amp;f=webp&amp;fit=cover&amp;position=center 243w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48741B2AKZJQ1Y8P3H40N0.png&amp;w=486&amp;h=150&amp;f=webp&amp;fit=cover&amp;position=center 486w" alt="What CloudFlare
+Logs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48741B2AKZJQ1Y8P3H40N0.png&amp;w=243&amp;h=75&amp;f=webp" data-lightbox-width="243" data-lightbox-height="75" data-astro-cid-7nvefuv6="true" sizes="(min-width: 243px) 243px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="243" height="75" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>For our <a href="https://www.cloudflare.com/plans/enterprise" target="_blank" rel="noopener noreferrer">Enterprise customers</a>, we offer an optional feature that allows them to export their raw log files in Apache format. This requires us to store log files for a longer period of time in order to allow them to be downloaded. By default, we store logs for these customers for 3 days.</p>
+<h4>Crunching Data</h4>
+<p>Since CloudFlare does not keep the raw logs, it is impossible for us to answer questions like: tell me all the visitors who have been to a particular website on CloudFlare's network.</p>
+<p>However, CloudFlare does generate aggregate data, so we can provide analytics back to customers. We use the aggregated data to populate things like the CloudFlare Analytics page which includes numbers of hits, page views, bandwidth consumed and unique visitors. As logs are received, we run a stream processing engine that extracts this summary data. This data is correlated in each of our edge data centers and then sent to one of our core facilities in order to report through our UI.</p>
+<p>This same data summary engine also looks for attack patterns, which is then used to provide security protection for our customer's websites. Using this engine, we can identify an attack on one site, usually in less than 1 minute, and then push updated security rules that then protect every site using CloudFlare from that same attack.</p>
+<p>Access logs for most customers are stored briefly at the edge of our network and then deleted within 4 hours. If there is an error, those logs are transmitted back to one of our core facilities in order for us to diagnose the error. Error logs sent to core are currently kept for 1 week then discarded.</p>
+<h4>The Future</h4>
+<p>Going forward, we want to allow customers who would like to have more insight into the visitors to their sites to be able to choose to do so. As we do, we will provide details on how any feature we add changes our log retention policy, and we will continue to be guided by the principle that our customers should be able to understand and control what data is being stored about visitors to their sites.</p>

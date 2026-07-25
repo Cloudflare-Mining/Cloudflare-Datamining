@@ -1,0 +1,95 @@
+<p><a href="https://blog.cloudflare.com/intro-access-for-infrastructure-ssh" target="_blank" rel="noopener noreferrer"><u>短期 SSH 访问</u></a>于 2024 年 10 月在 Cloudflare 的 <a href="https://www.cloudflare.com/learning/access-management/what-is-sase" target="_blank" rel="noopener noreferrer"><u>SASE</u></a> 平台上首次亮相。利用通过<a href="https://blog.cloudflare.com/cloudflare-acquires-bastionzero" target="_blank" rel="noopener noreferrer"><u>收购 BastionZero</u></a> 获得的知识，短期 SSH 访问使组织能够在其 Linux 服务器前应用 Zero Trust 控制。然而，这仅仅是个开始，我们很高兴地宣布推出一项期待已久的功能：无客户端、基于浏览器的<a href="https://www.cloudflare.com/learning/access-management/what-is-the-remote-desktop-protocol" target="_blank" rel="noopener noreferrer"><u>远程桌面协议</u></a> (RDP)。我们的 RDP 代理基于 Cloudflare 的现代代理架构构建，提供一个安全、高性能的解决方案，关键是部署、维护和使用都极其简便。</p>
+<h3>RDP 的安全挑战</h3>
+<p><a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/rdp" target="_blank" rel="noopener noreferrer"><u>远程桌面协议（Remote Desktop Protocol，RDP）</u></a>于 1998 年随 <a href="https://news.microsoft.com/1998/06/16/microsoft-releases-windows-nt-server-4-0-terminal-server-edition" target="_blank" rel="noopener noreferrer"><u>Windows NT 4.0 终端服务器版本</u></a>问世。如果您对这个 Windows 版本感到陌生，那是因为自那时以来已经发布了 16 个主要 Windows 版本。尽管如此，RDP 仍被数千个组织广泛使用，以支持对 Windows 服务器的远程访问。这是一个有点奇怪的协议，其工作原理是通过连续快速捕获屏幕画面，以模拟远程 Windows 服务器上的交互操作。（这里发生的事情远不止屏幕捕获，还包括绘图命令、位图更新，甚至视频流失传输。如我们所言——确实有点奇怪。）由于这种复杂性，RDP 对计算资源要求较高，且在传统 VPN 上实现高性能运行具有挑战性。</p>
+<p>除了其独特之处，RDP 在安全行业中也因该协议早期的漏洞而<a href="https://www.cloudflare.com/learning/access-management/rdp-security-risks" target="_blank" rel="noopener noreferrer"><u>声名不佳</u></a>。两个罪魁祸首是弱用户登录凭据和不加限制的端口访问。Windows 服务器通常受密码保护，但这些密码从一开始就安全性不足，更糟的是，可在多个账户间共享。这使得这些 RDP 服务器容易受到暴力攻击或凭据填充攻击。</p>
+<p>不良行为者已经滥用 RDP 的默认端口 3389 来发动在途攻击。已发现的最严重 RDP 漏洞之一是 BlueKeep。BlueKeep 是一个漏洞，正式名称为<a href="https://nvd.nist.gov/vuln/detail/CVE-2019-0708" target="_blank" rel="noopener noreferrer"><em> CVE-2019-0708</em></a> ，指只要请求遵守特定格式并发送到运行 RDP 的端口，无需身份验证即可执行远程代码（RCE）。更糟糕的是，它具有蠕虫的特性，这意味着 BlueKeep 可以在无需用户交互的情况下在网络内传播至其他设备。恶意行为者可以破坏 RDP 来获得未授权的访问权限，然后攻击者可以在网络内横向移动，提升权限，并安装恶意软件。RDP 也已被用来部署 Ryuk、Communi 和 DoppelPaymer 等勒索软件，因而获得“勒索软件传递协议”的绰号。</p>
+<p>这只是 RDP 历史中的一部分漏洞，但我们并非有意使人气馁。值得庆幸的是，由于更新的 Windows 版本、CVE 补丁、改进的密码卫生习惯以及对特权访问的更高意识，许多组织已经减少了其攻击面。然而，尽管存在许多已得到安全保障 Windows 服务器，仍有无数未打补丁或配置不当的系统在线，使它们成为勒索软件和僵尸网络的轻松目标。</p>
+<h3>需要基于浏览器的 RDP 解决方案</h3>
+<p>尽管存在安全风险，RDP 对许多组织而言仍然至关重要，特别是那些拥有分布式员工队伍和第三方承包商者。它为计算密集型任务提供了价值，因为这些任务需要高性能 Windows 服务器，其拥有的 CPU/GPU 资源超过用户的机器可以提供的水平。对于注重安全的组织，RDP 提供了更好的可见性，可了解谁在访问 Windows 服务器以及在这些会话期间采取了哪些操作。</p>
+<p>由于向承包商发放公司设备成本高昂且繁琐，因此许多组织采用了自带设备（BYOD）策略。这一决定要求组织为承包商提供 RDP 访问方式，使其能够连接到具有履行其职责所需企业资源的 Windows 服务器。</p>
+<p>传统 RDP 需要在用户设备上安装客户端软件，对于使用个人电脑或非受管设备的承包商（或任何员工）来说，这并不是一个合适的解决方案。以前， Cloudflare 客户必须依赖自托管的第三方工具，例如 <a href="https://guacamole.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Guacamole</u></a> 或 <a href="https://devolutions.net/gateway" target="_blank" rel="noopener noreferrer"><u>Devolutions Gateway</u></a>，才能启用基于浏览器的 RDP 访问。这造成了几个运营痛点：</p>
+<ul>
+	<li><strong>基础设施复杂性：</strong> 部署和维护 RDP 网关增加了运营开销。</li>
+	<li><strong>维护负担：</strong> 商业和开源工具可能需要频繁更新和修补，有时甚至需要定制分支。</li>
+	<li><strong>合规挑战：</strong> 第三方软件需要额外的安全审计和风险管理评估，尤其是受监管行业。</li>
+	<li><strong>冗余，但不是良性的冗余</strong>—— 客户向 Cloudflare 寻求解决方案，以减少维护其基础设施的复杂性，<em>而非相反</em>。</li>
+</ul>
+<p>我们一直在倾听。Cloudflare 设计了一个高性能 RDP 代理，它利用了已经成为我们 <a href="https://www.cloudflare.com/learning/access-management/what-is-ztna" target="_blank" rel="noopener noreferrer"><u>Zero Trust 网络访问（ZTNA）</u></a>服务一部分的现代安全控制措施。我们认为，业界普遍吹捧的“安全/性能权衡”是一种过时的思维模式。通过正确的底层网络架构，我们能帮助缓解 RDP 最为臭名昭著的挑战。</p>
+<h3>隆重推出基于浏览器的 RDP with Access</h3>
+<p>Cloudflare 基于浏览器的 RDP 解决方案是<a href="https://www.cloudflare.com/zero-trust/products/access" target="_blank" rel="noopener noreferrer"><u> Cloudflare Access</u></a> 中最新添加的一款产品，它与现有的无客户端<a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/browser-rendering" target="_blank" rel="noopener noreferrer"><u> SSH 和 VNC 产品</u></a>一起运行，无需 VPN 或 RDP 客户端即可支持对 Windows 服务器的安全地远程访问。它在 Cloudflare 的全球网络中原生构建，无需额外的基础设施。</p>
+<p>我们基于浏览器的 RDP 访问结合了自托管 Access 应用的强大功能，加上<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/use-cases/ssh/ssh-infrastructure-access/#4-add-a-target" target="_blank" rel="noopener noreferrer">目标</a>的额外灵活性（通过 <a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/infrastructure-apps" target="_blank" rel="noopener noreferrer"><u>Access for Infrastructure</u></a> 引入）。管理员可以实施：</p>
+<ul>
+	<li><strong>身份验证</strong>：通过 SSO、MFA 和设备态势，控制用户访问内部 RDP 资源进行身份验证的方式。</li>
+	<li><strong>授权：</strong> 使用基于策略的访问控制来确定谁可以在何时访问什么目标。</li>
+	<li><strong>审计：</strong> 提供 Access 日志，以支持在发生安全漏洞时的监管合规性和可见性。</li>
+</ul>
+<p>用户只需要一个 Web 浏览器，无需原生 RDP客户端！RDP 服务器通过我们的应用连接器 <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks" target="_blank" rel="noopener noreferrer"><u>Cloudflare Tunnel</u></a> 进行访问，使用现有 Access 客户的常见部署模型。无需为访问特定 RDP 服务器而配置用户设备，使得采用这一新功能只需最少的设置。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="367" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=640&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=750&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=828&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=1080&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=1280&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=1430&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2671 Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48FK4GK95AG3BAJ34M2FNR.png&amp;w=1600&amp;h=822&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="822" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="367" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h4>工作方式</h4>
+<h5>客户端</h5>
+<p>Cloudflare 的实现利用了 <a href="https://github.com/Devolutions/IronRDP" target="_blank" rel="noopener noreferrer"><u>IronRDP</u></a>，这是一个在浏览器中运行的高性能 RDP 客户端。选择它是因为它是一个现代化、维护良好的 RDP 客户端实现，提供高效且响应迅速的体验。与基于 Java 的 Apache Guacamole（另一种流行的 RDP 客户端实现）不同，IronRDP 是使用 Rust 构建的，与 Cloudflare 的开发生态系统高度兼容。</p>
+<p>尽管选择正确的工具非常关键，但使用浏览器来支持 RDP 会话仍面临一些挑战。从实用角度看，浏览器本身无法发送 RDP 消息。RDP 直接依赖于第 4 层传输控制协议（TCP）进行通信，虽然浏览器可以使用 TCP 作为底层协议，但它们并不提供允许应用直接在原始 TCP 套接字上构建协议支持的 API。</p>
+<p>另一个挑战源于安全考虑：在 Zero Trust 现代世界中，RDP 原生的用户名和密码认证机制远远不能满足需求。</p>
+<p>为了解决这两方面挑战，IronRDP 客户端将 RDP 会话封装在 WebSocket 连接中。将第 4 层 TCP 流量封装在 HTTPS 中，使客户端能够使用原生浏览器 API 与 Cloudflare 的 RDP 代理进行通信。此外，它让 Cloudflare Access 能够使用身份感知策略来保护整个会话。通过用 Cookie 将一个 Cloudflare Access 授权 JSON Web Token (JWT) 附加到 WebSocket 连接上，RDP 会话的每一次服务间跳转都需要验证，确保其来自已通过身份验证的用户。</p>
+<p>顺便简单介绍一下安全和性能是如何优化的：在基于客户端的传统 RDP 流量中，客户端和服务器需要协商一个 TLS 连接来保护和验证会话。然而，由于浏览器 WebSocket 连接已经通过 到 Cloudflare 的 TLS 得到保护，我们采用 IronRDP 的 RDCleanPath 协议扩展来消除流量的二次封装。消除这种冗余可以避免会话握手期间不必要的性能下降和复杂性增加。</p>
+<h5>服务器</h5>
+<p>IronRDP 客户端发起到一个专用 WebSocket代理的 WebSocket 连接，该代理负责客户端身份验证、终止 WebSocket 连接，并将隧道化的 RDP 流量代理至 Cloudflare 基础设施的更深层，以实现连接功能。确定如何构建这个 WebSocket代理这一看似简单的任务，其实是开发过程中最具挑战性的决定。</p>
+<p>我们最初的方案是开发一项新的服务，以便在我们网络中的每一台服务器上运行。虽然这在技术上是可行的，但运行一项新服务会带来不容忽视的维护负担，而这最终被证明是增加了更多开销而非增值。第二个方案是将其构建到<a href="https://blog.cloudflare.com/upgrading-one-of-the-oldest-components-in-cloudflare-software-stack" target="_blank" rel="noopener noreferrer"><u>Front Line</u></a>（FL）中，这是 Cloudflare 最古老的服务之一，每秒处理数千万个 HTTP 请求。这种方法本可以避免暴露新的 IP 地址，并从现有框架中获益，使团队能够快速行动。尽管这种方法最初看起来很有前景，但由于 FL 正在经历重大投资改造，团队不希望在不稳定的基础上进行构建，因此最终决定放弃。</p>
+<p>最后，我们确定了一个使用 <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> 实现代理服务的解决方案！幸运的是，Workers 能够自动扩展以应对庞大请求率，这消除了我们在选择构建新服务时需要奠定的一些基础工作。坦率地说，由于 Workers 与 Cloudflare 内部服务通信方面存在一些不确定性，这种方法最初并不被看好，但在 Workers 团队的支持下，我们找到了前进的道路。</p>
+<p>隧道化的 RDP 连接从 WebSocket 代理Worker 发送到 Apollo 服务，后者负责在Cloudflare Zero Trust 的入口和出口之间路由流量。Apollo 集中并抽象了这些复杂性，使其他服务能够专注于特定应用功能。Apollo 确定哪个 Cloudflare 数据中心距离目标 Cloudflare Tunnel 最近，并与该数据中心中运行的相同 Apollo 实例建立连接。随后，出口 Apollo 实例可以促成到 Cloudflare Tunnel 的最终连接。通过使用 Cloudflare 的全球网络遍历入口数据中心和目标 Cloudflare Tunnel 之间的距离，网络中断和拥塞得到有效管理。</p>
+<p>Apollo 连接到 RDP 服务器，并将入口和出口连接传递给 <a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework" target="_blank" rel="noopener noreferrer"><u>Oxy-teams</u></a>，这是负责检查和代理 RDP 流量的服务。在 Web 客户端向 RDP 服务器进行身份验证时，它作为直通代理（仅支持流量连接）运行。我们的初始版本使用 <a href="https://learn.microsoft.com/en-us/windows-server/security/kerberos/ntlm-overview" target="_blank" rel="noopener noreferrer"><u>NT Lan Manager（NTLM）</u></a>身份验证，这是一种质询-响应身份验证协议，要求输入用户名和密码。一旦客户端通过了服务器的身份验证，Oxy-teams 就能够代理所有后续的 RDP 流量！</p>
+<p>这听起来可能像是经过了很多跳转，但我们网络中的每台服务器都运行所有服务。因此，信不信由你，这种复杂的互动实际上发生在单台服务器上，并且通过使用 UNIX 域套接字进行通信，我们还将性能影响降至最低。如果这些服务器中的任何一个服务器过载，遇到网络故障或出现硬件问题，在 Cloudflare 的 L4 负载均衡器 <a href="https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer" target="_blank" rel="noopener noreferrer"><u>Unimog </u></a>的帮助下，负载会自动转移到邻近的服务器。</p>
+<h4>结合在一起</h4>
+<ol>
+	<li><strong>用户发起：</strong> 用户从 Cloudflare 的 <a href="https://developers.cloudflare.com/cloudflare-one/applications/app-launcher" target="_blank" rel="noopener noreferrer"><u>App Launcher</u></a> 中选择一个 RDP 服务器 （或通过直接 URL 访问）。每台 RDP 服务器都与一个由 Cloudflare 保护的公共主机名相关联。</li>
+	<li><strong>入口：</strong> 该请求由 <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>Cloudflare 网络</u></a>中最近的数据中心接收。</li>
+	<li><strong>身份验证：</strong> Cloudflare Access 通过检查请求是否包含有效的 JWT 来对会话进行身份验证。此令牌证明用户有权通过指定的域访问所选 RDP 服务器。</li>
+	<li><strong>Web 客户端交付：</strong> <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a> 将 IronRDP Web 客户端交付到用户浏览器。</li>
+	<li><strong>安全隧道技术：</strong>客户端通过 TLS 加密的 WebSocket 将 RDP 流量从用户浏览器隧道传输到另一个 Cloudflare Worker。</li>
+	<li><strong>流量路由：</strong>接收 IronRDP 连接的 Worker 终止 WebSocket 并发起到 <a href="https://blog.cloudflare.com/extending-local-traffic-management-load-balancing-to-layer-4-with-spectrum/#how-we-enabled-spectrum-to-support-private-networks" target="_blank" rel="noopener noreferrer"><u>Apollo</u></a> 的连接。Apollo 从那里创建到 RDP 服务器的连接。</li>
+	<li><strong>身份验证中继：</strong> 建立连接后，Apollo 在 Web 客户端和 RDP 服务器之间中继 RDP 身份验证消息。</li>
+	<li><strong>连接建立：</strong> 身份验证成功后， Cloudflare 充当Web 浏览器和 RDP 服务器之间的 RDP 代理，将用户连接到 RDP 服务器，支持流量自由传输。</li>
+	<li><strong>策略实施：</strong>Cloudflare 的安全 Web 网关 <a href="https://blog.cloudflare.com/from-ip-packets-to-http-the-many-faces-of-our-oxy-framework" target="_blank" rel="noopener noreferrer"><u>Oxy</u></a>-teams 对 RDP 流量应用第 4 层策略实施和日志记录。 </li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="475" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=715&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=640&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=715&amp;h=475&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=750&amp;h=498&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=828&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=1080&amp;h=717&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=1280&amp;h=850&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=1430&amp;h=950&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2671 Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45NMJCAC54TFHBVJPXZMS7.png&amp;w=1920&amp;h=1276&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1276" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="475" class="pt-portable-image-media"></div>
+</figure>
+<p>这种架构的主要优势：</p>
+<ul>
+	<li><strong>无需额外软件：</strong>直接从浏览器访问 Windows 服务器。</li>
+	<li><strong>低延迟：</strong>Cloudflare 的全球网络最大程度减少性能开销。</li>
+	<li><strong>增强安全性：</strong>RDP 访问受 Access 策略保护，防止横向移动。</li>
+	<li><strong>集成日志记录和监控：</strong>管理员可以观察和控制 RDP 流量。</li>
+</ul>
+<p>要进一步了解 Cloudflare 的代理能力，请查看我们解释代理框架的<a href="https://blog.cloudflare.com/introducing-oxy" target="_blank" rel="noopener noreferrer"><u>相关博客文章</u></a>。</p>
+<h3>选择性、现代化的 RDP 认证</h3>
+<p>Cloudflare 基于浏览器的 RDP 解决方案专门支持现代 RDP 认证机制，执行安全访问的最佳实践。我们的架构确保，如果 RDP 流量使用过时或薄弱的旧版安全功能（如来自较早版本 RDP 标准的不安全密码认证或 RC4 加密），将永远无法到达客户端点。</p>
+<p>Cloudflare 支持使用以下原则进行安全会话协商：</p>
+<ol>
+	<li>基于 TLS 的 WebSocket 连接，确保传输安全。</li>
+	<li>精细化策略，执行单点登录（SSO）、多因素认证（MFA）和动态授权。</li>
+	<li>通过 SAML（安全断言标记语言）和 OIDC（OpenID Connect）与企业身份提供商集成。</li>
+</ol>
+<p>通过 Cloudflare 网络的每个 RDP 会话都经过加密和身份验证。</p>
+<h4>后续工作</h4>
+<p>我们基于浏览器的 RDP 解决方案才刚刚开始！我们已经确定了几个需要继续关注的领域：</p>
+<ul>
+	<li><strong>增强管理员的可见性和控制：</strong> 由于 RDP 流量通过 Cloudflare Workers 和代理服务传输，基于浏览器的 RDP 将进行扩展以包含会话监控。我们还在评估数据丢失防护（DLP）支持，例如限制文件传输和剪贴板使用等操作，以防止未经授权的数据外泄，同时不影响性能。</li>
+	<li><strong>高级身份验证：</strong> 长期有效的凭证已成为过去式。基于浏览器的 RDP 未来迭代将包括无密码功能，最终用户无需记住密码，管理员也不必管理密码。为此，我们正在评估多种方法，例如客户端证书认证、通行密钥和智能卡，以及通过 Access 与第三方认证提供商集成。</li>
+</ul>
+<h5>合规与 FedRAMP High 认证</h5>
+<p>我们计划将基于浏览器的 RDP 纳入为企业和政府组织提供的 FedRAMP High 产品组合，这是我们<a href="https://blog.cloudflare.com/cloudflares-commitment-to-advancing-public-sector-security-worldwide" target="_blank" rel="noopener noreferrer"><u>在 2 月初宣布的</u></a>高优先级计划。这一认证将确认我们的解决方案符合以下最高标准：</p>
+<ul>
+	<li><strong>数据保护</strong></li>
+	<li><strong>身份和访问管理</strong></li>
+	<li><strong>持续监控</strong></li>
+	<li><strong>事件响应</strong></li>
+</ul>
+<p>寻求 FedRAMP High 合规认证彰显了 Cloudflare 致力于保护敏感环境的承诺，例如联邦政府、医疗保健和金融行业等领域。</p>
+<p>通过执行一个现代化、严谨且安全的 RDP 实现，Cloudflare 提供了一种安全、可扩展且合规的解决方案，专门具有关键安全和合规要求的组织量身打造。</p>
+<h3>立即开始使用</h3>
+<p>Cloudflare 致力于为 ZTNA 提供最全面的解决方案，现在还包括对敏感基础设施的特权访问，例如通过基于浏览器的 RDP 访问 Windows 服务器。Cloudflare 基于浏览器的 RDP 解决方案正处于封闭测试阶段，每周都有新客户加入。您可以<a href="http://www.cloudflare.com/lp/browser-based-rdp-beta" target="_blank" rel="noopener noreferrer"><u>在此处申请访问权限</u></a>，以试用这一令人兴奋的新功能。</p>
+<p>同时，请查看我们的 <a href="https://developers.cloudflare.com/cloudflare-one/applications/non-http/infrastructure-apps" target="_blank" rel="noopener noreferrer"> <u>Access for Infrastructure</u></a> 文档，进一步了解 Cloudflare 如何保护对敏感基础设施的特权访问。Access for Infrastructure 目前<a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer"><u>免费提供</u></a>给 50 用户以下的团队，现有的随用随付和合约计划客户通过 Access 或 Zero Trust 订阅也可免费使用。我们将继续将 BastionZero 的技术原生重新构建到 Cloudflare 的 Access for Infrastructure 服务中，敬请关注！</p>

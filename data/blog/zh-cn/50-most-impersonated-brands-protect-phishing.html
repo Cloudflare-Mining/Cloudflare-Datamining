@@ -1,0 +1,513 @@
+<p>组织的员工有可能刚刚在错误的网站上提交了某个内部系统的管理员用户名和密码。这样一来，攻击者就能够窃取敏感数据了。</p>
+<p>这一切是怎么发生的？一封精心制作的电子邮件。</p>
+<p>检测、阻止和缓解钓鱼攻击的风险可以说是任何安全团队经常面临的最困难挑战之一。</p>
+<p>从今天开始，我们的安全中心仪表板将开放全新品牌保护和防网络钓鱼工具的测试版，旨在针对组织的网络钓鱼活动发生之前进行捕捉和缓解。</p>
+<h2>网络钓鱼攻击的挑战</h2>
+<p>网络钓鱼攻击也许是过去几个月内最广为人知的威胁手段。这些攻击非常复杂，难以察觉，越来越频繁，可能给成为受害企业带来毁灭性的后果。</p>
+<p>防止网络钓鱼攻击的最大挑战之一是庞大的数量，而且难以区分合法和欺诈性的电子邮件和网站。攻击者制作的钓鱼邮件和网站几可乱真，即使用户保持警惕，也不一定能够发现。</p>
+<p>例如，去年 7 月，我们使用 Cloudflare One 产品套件和物理安全密钥 <a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">挫败了一次针对 Cloudflare 员工的复杂 “Oktapus” 攻击</a> 。这次 “Oktapus” 攻击成功入侵了 <a href="https://www.theregister.com/2022/08/25/twilio_cloudflare_oktapus_phishing" target="_blank" rel="noopener noreferrer">100 多家公司</a>，其攻击者将 “cloudflare-okta.com” 发送给我们的员工前 40 分钟才注册该域名。</p>
+<p>当时，我们的<a href="https://www.cloudflare.com/products/registrar/custom-domain-protection" target="_blank" rel="noopener noreferrer">安全域名产品</a>发现了这些钓鱼域名——但是，在收到用于监测的新注册域名列表前存在一定延迟。今天，通过流式传送 Cloudflare <a href="https://blog.cloudflare.com/announcing-1111">1.1.1.1 解析器</a> (及其他解析器) 解析的新域名，我们能够几乎即时检测到钓鱼域名。这让我们取得了先机，从而能够在网络钓鱼企图发生之前予以阻止。</p>
+<p>我们希望将内部使用的同一工具提供给客户，以帮助客户应对当前挑战。</p>
+<h2>Cloudflare 安全中心的全新品牌保护和防钓鱼工具</h2>
+<p>我们正在通过自动识别并屏蔽所谓的“易混淆”域名，扩大为 Cloudflare One 客户提供的防钓鱼保护。攻击者往往会注册常见错误拼写(cloudfalre.com)和服务连接(cloudflare-okta.com)，旨在欺骗毫无防备的受害者提交密码等隐私信息。这些新工具提供额外的一层保护来防范此类企图。</p>
+<p>全新品牌和钓鱼防护工具位于 Cloudflare 安全中心，向客户提供<a href="https://developers.cloudflare.com/security-center/tasks" target="_blank" rel="noopener noreferrer">更多控制</a> (例如自定义监控字符串，可搜索的历史域名列表，等)。Cloudflare One 计划可使用该工具，其控制、可见性和自动化级别因计划类型而有所不同。</p>
+<h3>全新域名品牌匹配和警报</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="295" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=715&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=640&amp;h=264&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=715&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=750&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=828&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=1080&amp;h=446&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=1280&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=1430&amp;h=590&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Our new brand protection interface" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46138TQ13FMSMJMNTSZR1Q.png&amp;w=1920&amp;h=791&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="791" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="295" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>全新品牌保护功能的核心是我们检测专门为钓鱼合法品牌而创建的主机名这一能力。首先，通过筛查每日对 Cloudflare 公共 DNS 解析器 1.1.1.1 发出的数万亿 DNS 查询，我们监测某个域或子域的首次使用，从而编制一个首次使用的主机名列表。</p>
+<p>通过使用这个列表，我们根据用户的已保存模式实时执行 <a href="https://en.wikipedia.org/wiki/Fuzzy_matching_(computer-assisted_translation)" target="_blank" rel="noopener noreferrer">“模糊”匹配</a>(一种技术，用于匹配两个意义或拼写相似的字符串) 。我们比较字符串，并根据各种因素(例如读音、距离、子字符串匹配)计算相似度分数。通过这些已保存的模式(可能是带有<a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank" rel="noopener noreferrer">编辑距离</a>的字符串)，我们的系统能够在检测到与列表中任何域的匹配时生成警报。</p>
+<p>虽然我们的用户目前必须创建和保存这些查询，但我们将在日后引入一个自动匹配系统。该系统将简化为用户进行匹配检测的过程，但自定义字符串仍可用于安全团队跟踪更复杂的模式。</p>
+<h3>历史搜索</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="290" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=750&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=828&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=1080&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=1280&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=1430&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Brand protection alerts" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47DYQVGEMWNJ1VM2M0DK7F.png&amp;w=1872&amp;h=758&amp;f=webp" data-lightbox-width="1872" data-lightbox-height="758" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="290" class="pt-portable-image-media"></div>
+</figure>
+<p>除了实时监控，我们还提供了历史搜索(已保存的查询)和对过去 30 天内新发现域的警报。当创建一个新模式时，我们将列出最近 30 天的搜索结果，以显示任何潜在的匹配。这允许安全团队快速评估新域的潜在威胁级别并采取必要的行动。</p>
+<p>此外，这种搜索机制还可以用于专门的域搜索，为可能需要调查特定域或模式的安全团队提供了额外的灵活性。</p>
+<h2>全网观察：遭到最多钓鱼攻击的品牌</h2>
+<p>在构建这些全新品牌保护工具时，我们想通过以下经常遭到钓鱼的品牌对我们的能力进行测试。为此，我们仔细查看了包含钓鱼 URL 的域名在我们的 1.1.1.1 解析器上被解析的频率。所有用于共享服务(例如托管网站谷歌、Amazon、GoDaddy)，无法被验证为钓鱼企图的域名，都被从数据集中删除。</p>
+<p>下表列出了我们发现的前 50 个品牌，以及最常被用于对这些品牌进行钓鱼的域名之一。</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-k20" class="html-block">
+	<style>
+		#html-block-k20 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k20 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k20 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k20 .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k20 .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k20 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rank</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Brand</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sample domain used to phish brand[1]</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AT&amp;T Inc.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">att-rsshelp[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PayPal</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">paypal-opladen[.]be</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">login[.]microsoftonline.ccisystems[.]us</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DHL</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">dhlinfos[.]link</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Meta</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">facebookztv[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Internal Revenue Service</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">irs-contact-payments[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Verizon</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">loginnnaolcccom[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Mitsubishi UFJ NICOS Co., Ltd.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">cufjaj[.]id</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Adobe</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">adobe-pdf-sick-alley[.]surge[.]sh</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazon</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">login-amazon-account[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apple</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">apple-grx-support-online[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Wells Fargo &amp; Company</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">connect-secure-wellsfargo-com.herokuapp[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">eBay, Inc.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]ebay8[.]bar</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Swiss Post</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]swiss-post-ch[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Naver</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">uzzmuqwv[.]naveicoipa[.]tech</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instagram (Meta)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">instagram-com-p[.]proxy.webtoppings[.]bar</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">WhatsApp (Meta)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">joingrub-whatsapp-pistol90[.]duckdns[.]org</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Rakuten</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">rakutentk[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">East Japan Railway Company</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]jreast[.]co[.]jp[.]card[.]servicelist[].bcens[.]net</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">American Express Company</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]webcome-aexp[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">21</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">KDDI</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">aupay[.]kddi-fshruyrt[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">22</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Office365 (Microsoft)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">office365loginonlinemicrosoft[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">23</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Chase Bank</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">safemailschaseonlineserviceupgrade09[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">24</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AEON</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">aeon-ver1fy[.]shop</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">25</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Singtel Optus Pty Limited</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">myoptus[.]mobi</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">26</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Coinbase Global, Inc.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">supp0rt-coinbase[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">27</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Banco Bradesco S.A.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">portalbradesco-acesso[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">28</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Caixa Econômica Federal</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">lnternetbanklng-caixa[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">29</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">JCB Co., Ltd.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]jcb-co-jp[.]ascaceeccea[.]ioukrg[.]top</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">30</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ING Group</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ing-ingdirect-movil[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">31</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">HSBC Holdings plc</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hsbc-bm-online[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">32</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Netflix Inc</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">renew-netflix[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">33</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sumitomo Mitsui Banking Corporation</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">smbc[.]co[.]jp[.]xazee[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">34</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Nubank</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">nuvip2[.]ru</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bank Millennium SA</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]bankmillenium-pl[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">36</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">National Police Agency Japan</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">sun[.]pollice[.]xyz</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">37</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Allegro</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">powiadomienieallegro[.]net</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">38</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">InPost</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www.inpost-polska-lox.order9512951[.]info</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">39</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Correos</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">correosa[.]online</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">FedEx</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">fedexpress-couriers[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">41</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">LinkedIn (Microsoft)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">linkkedin-2[.]weebly[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">42</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">United States Postal Service</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">uspstrack-7518276417-addressredelivery-itemnumber.netlify[.]app</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">43</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Alphabet</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">www[.]googlecom[.]vn10000[.]cc</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">44</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">The Bank of America Corporation</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">baanofamericase8[.]hostfree[.]pw</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">45</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Deutscher Paketdienst</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">dpd-info[.]net</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">46</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Banco Itaú Unibanco S.A.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">silly-itauu[.]netlify[.]app</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Steam</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">gift-steam-discord[.]com</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">48</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Swisscom AG</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">swiss-comch[.]duckdns[.]org</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">49</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">LexisNexis</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">mexce[.]live</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">50</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Orange S.A.</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">orange-france24[.]yolasite[.]com</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>排名</p>
+<p>品牌</p>
+<p>用于对品牌钓鱼的样本域名[1]</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="600" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=715&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=640&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=715&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=750&amp;h=629&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=828&amp;h=695&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=1080&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=1280&amp;h=1074&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=1430&amp;h=1200&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example of a DNS policy rule to block confusable domains" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45SWQXN7EC1VGJB1W4KX9G.png&amp;w=1173&amp;h=984&amp;f=webp" data-lightbox-width="1173" data-lightbox-height="984" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="600" class="pt-portable-image-media"></div>
+</figure>
+<p>1</p>
+<p>AT&amp;T Inc.</p>
+<p>att-rsshelp[.]com</p>
+<p>2</p>
+<p>PayPal</p>
+<p>paypal-opladen[.]be</p>
+<p>3</p>
+<p>Microsoft</p>
+<p>login[.]microsoftonline.ccisystems[.]us</p>
+<p>4</p>
+<p>DHL</p>
+<p>dhlinfos[.]link</p>
+<p>5</p>
+<p>Meta</p>
+<p>facebookztv[.]com</p>
+<p>6</p>
+<p>Internal Revenue Service</p>
+<p>irs-contact-payments[.]com</p>
+<p>7</p>
+<p>Verizon</p>
+<p>loginnnaolcccom[.]weebly[.]com</p>
+<p>8</p>
+<p>Mitsubishi UFJ NICOS Co., Ltd.</p>
+<p>cufjaj[.]id</p>
+<p>9</p>
+<p>Adobe</p>
+<p>adobe-pdf-sick-alley[.]surge[.]sh</p>
+<p>10</p>
+<p>Amazon</p>
+<p>login-amazon-account[.]com</p>
+<p>11</p>
+<p>Apple</p>
+<p>apple-grx-support-online[.]com</p>
+<p>12</p>
+<p>Wells Fargo &amp; Company</p>
+<p>connect-secure-wellsfargo-com.herokuapp[.]com</p>
+<p>13</p>
+<p>eBay, Inc.</p>
+<p>www[.]ebay8[.]bar</p>
+<p>14</p>
+<p>Swiss Post</p>
+<p>www[.]swiss-post-ch[.]com</p>
+<p>15</p>
+<p>Naver</p>
+<p>uzzmuqwv[.]naveicoipa[.]tech</p>
+<p>16</p>
+<p>Instagram (Meta)</p>
+<p>instagram-com-p[.]proxy.webtoppings[.]bar</p>
+<p>17</p>
+<p>WhatsApp (Meta)</p>
+<p>joingrub-whatsapp-pistol90[.]duckdns[.]org</p>
+<p>18</p>
+<p>Rakuten</p>
+<p>rakutentk[.]com</p>
+<p>19</p>
+<p>East Japan Railway Company</p>
+<p>www[.]jreast[.]co[.]jp[.]card[.]servicelist[].bcens[.]net</p>
+<p>20</p>
+<p>American Express Company</p>
+<p>www[.]webcome-aexp[.]com</p>
+<p>21</p>
+<p>KDDI</p>
+<p>aupay[.]kddi-fshruyrt[.]com</p>
+<p>22</p>
+<p>Office365 (Microsoft)</p>
+<p>office365loginonlinemicrosoft[.]weebly[.]com</p>
+<p>23</p>
+<p>Chase Bank</p>
+<p>safemailschaseonlineserviceupgrade09[.]weebly[.]com</p>
+<p>24</p>
+<p>AEON</p>
+<p>aeon-ver1fy[.]shop</p>
+<p>25</p>
+<p>Singtel Optus Pty Limited</p>
+<p>myoptus[.]mobi</p>
+<p>26</p>
+<p>Coinbase Global, Inc.</p>
+<p>supp0rt-coinbase[.]com</p>
+<p>27</p>
+<p>Banco Bradesco S.A.</p>
+<p>portalbradesco-acesso[.]com</p>
+<p>28</p>
+<p>Caixa Econômica Federal</p>
+<p>lnternetbanklng-caixa[.]com</p>
+<p>29</p>
+<p>JCB Co., Ltd.</p>
+<p>www[.]jcb-co-jp[.]ascaceeccea[.]ioukrg[.]top</p>
+<p>30</p>
+<p>ING Group</p>
+<p>ing-ingdirect-movil[.]com</p>
+<p>31</p>
+<p>HSBC Holdings plc</p>
+<p>hsbc-bm-online[.]com</p>
+<p>32</p>
+<p>Netflix Inc</p>
+<p>renew-netflix[.]com</p>
+<p>33</p>
+<p>Sumitomo Mitsui Banking Corporation</p>
+<p>smbc[.]co[.]jp[.]xazee[.]com</p>
+<p>34</p>
+<p>Nubank</p>
+<p>nuvip2[.]ru</p>
+<p>35</p>
+<p>Bank Millennium SA</p>
+<p>www[.]bankmillenium-pl[.]com</p>
+<p>36</p>
+<p>National Police Agency Japan</p>
+<p>sun[.]pollice[.]xyz</p>
+<p>37</p>
+<p>Allegro</p>
+<p>powiadomienieallegro[.]net</p>
+<p>38</p>
+<p>InPost</p>
+<p><a href="http://www.inpost-polska-lox.order9512951/[./]info" target="_blank" rel="noopener noreferrer">www.inpost-polska-lox.order9512951\[.\]info</a></p>
+<p>39</p>
+<p>Correos</p>
+<p>correosa[.]online</p>
+<p>40</p>
+<p>FedEx</p>
+<p>fedexpress-couriers[.]com</p>
+<p>41</p>
+<p>LinkedIn (Microsoft)</p>
+<p>linkkedin-2[.]weebly[.]com</p>
+<p>42</p>
+<p>United States Postal Service</p>
+<p>uspstrack-7518276417-addressredelivery-itemnumber.netlify[.]app</p>
+<p>43</p>
+<p>Alphabet</p>
+<p>www[.]googlecom[.]vn10000[.]cc</p>
+<p>44</p>
+<p>The Bank of America Corporation</p>
+<p>baanofamericase8[.]hostfree[.]pw</p>
+<p>45</p>
+<p>Deutscher Paketdienst</p>
+<p>dpd-info[.]net</p>
+<p>46</p>
+<p>Banco Itaú Unibanco S.A.</p>
+<p>silly-itauu[.]netlify[.]app</p>
+<p>47</p>
+<p>Steam</p>
+<p>gift-steam-discord[.]com</p>
+<p>48</p>
+<p>Swisscom AG</p>
+<p>swiss-comch[.]duckdns[.]org</p>
+<p>49</p>
+<p>LexisNexis</p>
+<p>mexce[.]live</p>
+<p>50</p>
+<p>Orange S.A.</p>
+<p>orange-france24[.]yolasite[.]com</p>
+<p>[1] 钓鱼站点往往通过特定的 URL 而不是根域名提供服务，例如，hxxp://example.com/login.html 而不是 hxxp://example.com/。这里没有提供完整的 URL。</p>
+<h2>将威胁情报能力与 Zero Trust 强制实施相结合</h2>
+<p>对于使用我们 Zero Trust 产品套件的客户来说，这一新功能变得更加有效。事实上，只要通过创建 Cloudflare Gateway 或 DNS 策略规则检测到易混淆的域名，您就可以轻松阻止它们。这将立即阻止您的用户解析或浏览潜在的恶意站点，从而挫败攻击。</p>
+<h2>未来增强</h2>
+<p>这个新功能只是我们更广泛的品牌保护和防钓鱼安全产品组合的开始。</p>
+<h3>匹配 SSL/TLS 证书</h3>
+<p>除了与域进行匹配之外，我们还计划与记录在 <a href="https://blog.cloudflare.com/introducing-certificate-transparency-and-nimbus">我们的 Certificate Transparency (CT) 日志 —— Nimbus</a> 中的新 SSL/TLS 证书进行匹配。通过分析 CT 日志，我们可以识别可能用于钓鱼攻击的潜在欺诈证书。这是有帮助的，因为证书通常是在域名注册后不久创建的，试图通过支持 HTTPS 为钓鱼网站提供更多合法性。</p>
+<h3>托管列表的自动填充</h3>
+<p>虽然现在客户可以通过脚本更新 Zero Trust 阻止规则中引用的自定义列表，但正如上面提到的，我们计划自动将域添加到动态更新的列表。此外，我们将自动将匹配的域添加到可以在 Zero Trust 规则中使用的列表中，例如：从 Gateway 阻止。</p>
+<h3>域所有权和其他元数据的变化</h3>
+<p>最后，我们计划提供监视域所有权或其他元数据(如注册者、名称服务器或解析的 IP 地址)变化的能力。这将使客户能够跟踪与他们的域相关的关键信息的变化，并在必要时采取适当的行动。</p>
+<h2>立即开始</h2>
+<p>如果您是 Enterprise 客户，欢迎立刻<a href="https://www.cloudflare.com/lp/brandprotection" target="_blank" rel="noopener noreferrer">注册品牌保护的测试版</a>，获得对自有域名的专门扫描，保存查询并为匹配域名设置警报。</p>

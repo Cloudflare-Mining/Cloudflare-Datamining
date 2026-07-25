@@ -1,0 +1,25 @@
+<p><strong>啟用 Cloudflare WAF 和 Cloudflare Specials 規則集可防止以下未修補的 CVE 被利用：CVE-2021-26855、CVE-2021-26857、CVE-2021-26858 和 CVE-2021-27065。</strong></p>
+<p>Cloudflare 已部署受管理規則，幫助客戶防範最近在 Microsoft Exchange Server 中發現的一系列可遠端利用的漏洞。已啟用 Cloudflare Specials 規則集的 Web 應用程式防火牆客戶會自動受到保護，以免受到 <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26855" target="_blank" rel="noopener noreferrer">CVE-2021-26855</a>、<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26857" target="_blank" rel="noopener noreferrer">CVE-2021-26857</a>、<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26858" target="_blank" rel="noopener noreferrer">CVE-2021-26858</a> 和 <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27065" target="_blank" rel="noopener noreferrer">CVE-2021-27065</a> 漏洞攻擊。</p>
+<p>如果您執行的是 Exchange Server 2013、2016 或 2019，且未啟用 Cloudflare Specials 規則集，則我們強烈建議您這麼做。您還應遵循 Microsoft 的<a href="https://www.microsoft.com/security/blog/2021/03/02/hafnium-targeting-exchange-servers" target="_blank" rel="noopener noreferrer">緊急建議，立即修補內部部署系統</a>。攻擊者正積極利用這些漏洞以外洩電子郵件收件匣內容，並在組織的 IT 系統內橫向移動。</p>
+<h2>邊緣緩解</h2>
+<p>如果您執行的是 Cloudflare WAF 並已啟用 Cloudflare Specials 規則集，則您無需執行任何其他動作。鑒於主動嘗試的漏洞利用，我們已經採取了<a href="https://developers.cloudflare.com/waf/change-log" target="_blank" rel="noopener noreferrer">不尋常的步驟，立即</a>在「封鎖」模式下部署這些規則。</p>
+<p>若您希望出於任何原因_停用_規則，例如遇到誤判緩解，則可以按照以下說明進行操作：</p>
+<ol>
+	<li>登入「Cloudflare 儀表板」，然後按一下「Cloudflare 防火牆」索引標籤，然後按一下「受管理規則」。</li>
+	<li>按一下 Cloudflare 受管理規則集卡底部的「進階」連結，然後搜尋規則識別碼 100179。選取任何適當的動作或停用規則。</li>
+	<li>對規則識別碼 100181 重複步驟 #2。</li>
+</ol>
+<h2>伺服器端緩解</h2>
+<p>除了封鎖邊緣處的攻擊之外，我們還建議您遵循 Microsoft 的<a href="https://www.microsoft.com/security/blog/2021/03/02/hafnium-targeting-exchange-servers" target="_blank" rel="noopener noreferrer">緊急建議，立即修補內部部署系統</a>。對於那些無法立即修補其系統的使用者，Microsoft 昨天已張貼可套用的<a href="https://msrc-blog.microsoft.com/2021/03/05/microsoft-exchange-server-vulnerabilities-mitigations-march-2021" target="_blank" rel="noopener noreferrer">臨時緩解措施</a>。</p>
+<p>若要確定系統是否（仍然）可被利用，則可以執行 Microsoft 張貼到 GitHub 的 Nmap 指令碼：<a href="https://github.com/microsoft/CSS-Exchange/blob/main/Security/http-vuln-cve2021-26855.nse" target="_blank" rel="noopener noreferrer">https://github.com/microsoft/CSS-Exchange/blob/main/Security/http-vuln-cve2021-26855.nse</a>。</p>
+<h2>漏洞詳情</h2>
+<p>外部觀察到的攻擊利用了多個 CVE，將其連結在一起可能導致電子郵件收件匣內容外洩，並執行遠端程式碼。Volexity 的安全研究人員發布了對零時差安全漏洞的<a href="https://www.volexity.com/blog/2021/03/02/active-exploitation-of-microsoft-exchange-zero-day-vulnerabilities" target="_blank" rel="noopener noreferrer">詳細分析</a>。</p>
+<p>簡而言之，攻擊者會：</p>
+<ol>
+	<li>首先利用記錄為 <a href="https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2021-26855" target="_blank" rel="noopener noreferrer">CVE-2021-26855</a> 的伺服器端要求偽造 (SSRF) 漏洞，傳送任意 HTTP 要求，並作為 Microsoft Exchange Server 進行認證。</li>
+	<li>使用此系統層級認證可傳送統一訊息服務不安全進行還原序列化的 SOAP 有效負載，如 <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26857" target="_blank" rel="noopener noreferrer">CVE-2021-26857</a> 中所述。惡意 SOAP 有效負載的範例可以在上面帶有連結的 Volexity 貼文中找到。</li>
+	<li>此外，利用 <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26858" target="_blank" rel="noopener noreferrer">CVE-2021-26858</a> 和 <a href="http://cve-2021-27065" target="_blank" rel="noopener noreferrer">CVE-2021-27065</a> 上傳任意檔案，比如 webshell，允許進一步利用系統以及基礎以橫向移動到其他系統和網路。寫入這些檔案需要認證，但這可以透過使用 <a href="https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2021-26855" target="_blank" rel="noopener noreferrer">CVE-2021-26855</a> 繞過。</li>
+</ol>
+<p>上面列出的所有 4 個 CVE 均被最近部署的以下 Cloudflare Specials 規則所封鎖：100179 和 100181。此外，現有規則識別碼 100173（依預設也啟用為「封鎖」），透過封鎖特定指令碼的上傳作業來緩解部分漏洞。</p>
+<h2>其他建議</h2>
+<p>組織可以採用 Zero Trust 模型，並讓 Exchange Server 僅供信任的連線使用，以此來部署額外的防護來抵禦此類型的攻擊。<a href="https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2021-26855" target="_blank" rel="noopener noreferrer">CVE 指南建議</a>部署 VPN 或其他解決方案，以封鎖到達公用端點的嘗試。除了來自 Cloudflare WAF 的邊緣緩解之外，團隊還可以<a href="https://developers.cloudflare.com/cloudflare-one/tutorials" target="_blank" rel="noopener noreferrer">保護 Exchange Server</a>，方法是使用 Cloudflare for Teams 來封鎖所有未經授權的要求。</p>

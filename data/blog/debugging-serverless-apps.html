@@ -1,200 +1,160 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4SRkW7jUzmBG8F8Sjwh5BA/a6a4ce3603a372acbc6cbdee351778b9/debugging-serverless-apps.gif" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>The Workers team have already done an amazing job of creating a functional, familiar edit and debug tooling experience in the Workers IDE. It's Chrome Developer Tools fully integrated to Workers.</p>
-	<p><code>console.log</code> in your Worker goes straight to the console, just as if you were debugging locally! Furthermore, errors and even log lines come complete with call-site info, so you click and navigate straight to the relevant line.In this blog post I’m going to show a small and powerful technique I use to make debugging serverless apps simple and quick.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1SFQMJY48ruzXTvK0EcG7p/8e4d2bcf77cda6a6ff2b360a8ad778f8/workers-ide-console.gif" alt="Integrated Chrome Dev Tools" class="kg-image" width="1320" height="791" loading="lazy">
-
-	</figure>
-	<p>There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips" target="_blank" rel="noopener noreferrer">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
-	<p>If you've followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part 1</a> or <a href="https://blog.cloudflare.com/p/5cd5d990-7b88-4e62-9615-9c51d33daae8">part 2</a> of my Workers series, you'll know I'm using Typescript, but the approach would equally apply to Javascript. In the rest of this example, I’ll be using the routing framework I created in part 2.</p>
-	<div class="flex anchor relative">
-		<h3 id="requesting-debug-info">Requesting Debug Info</h3>
-		<a href="https://blog.cloudflare.com/#requesting-debug-info" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>I want my Worker to return debugging information whenever:</p>
-	<ul>
-		<li>
-			<p>An X-Debug header is present or</p>
-		</li>
-		<li>
-			<p>a ?debug query parameter is present.</p>
-		</li>
-	</ul>
-	<p>Exercise for the reader: You may also like to require a shared secret key (so that you control who can enable debugging information) and pass a log level.</p>
-	<p>I'd like my debug info to be the same that I'd see in the Workers IDE. That is, all the log lines and any exception info from the execution of my Worker.</p>
-	<div class="flex anchor relative">
-		<h3 id="architecture">Architecture</h3>
-		<a href="https://blog.cloudflare.com/#architecture" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern" target="_blank" rel="noopener noreferrer">interceptor</a>.</p>
-	<p>Let's define an interceptor as something that runs pre and/or post the main request flow.</p>
-	<pre class="language-typescript"><code class="language-typescript">/**
- * Intercepts requests before handlers and responses after handlers
- */
-export interface IInterceptor {
-  preProcess(req: RequestContextBase): void;
-  postProcess(req: RequestContextBase, res: Response): void;
-}</code></pre>
-	<p>And then run pre and post processing before and after the handler has executed.</p>
-	<pre class="language-typescript"><code class="language-typescript">public async handle(request: Request): Promise&lt;Response&gt; {
-	this.preProcess(req);
-	const handler = this.route(req);
-	const res = await handler.handle(req);
-	this.postProcess(req, res);
-	return res;
-}
-
-private preProcess(req: RequestContextBase) {
-	for (const interceptor of this.interceptors) {
-	  interceptor.preProcess(req);
-	}
-}
-
-private postProcess(req: RequestContextBase, res: Response) {
-	for (const interceptor of this.interceptors) {
-	  interceptor.postProcess(req, res);
-	}
-}</code></pre>
-	<p>OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
-	<div class="flex anchor relative">
-		<h3 id="loginterceptor">LogInterceptor</h3>
-		<a href="https://blog.cloudflare.com/#loginterceptor" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>First we'll need a logger. This logger just redirects to console, but also keeps track of the log lines so the interceptor can retrieve them later.</p>
-	<pre class="language-typescript"><code class="language-typescript">export class Logger implements ILogger {
-  public logLines: string[] = [];
-
-  public debug(logLine: string): void {
-    this.log(`DEBUG: ${logLine}`);
-  }
-
-  public info(logLine: string): void {
-    this.log(`INFO: ${logLine}`);
-  }
-
-  public warn(logLine: string): void {
-    this.log(`WARN: ${logLine}`);
-  }
-
-  public error(logLine: string): void {
-    this.log(`ERROR: ${logLine}`);
-  }
-
-  public getLines(): string[] {
-    return this.logLines;
-  }
-
-  public clear(): void {
-    this.logLines = [];
-  }
-
-  private log(logLine: string): void {
-    // tslint:disable-next-line:no-console
-    console.log(logLine);
-    this.logLines.push(logLine);
-  }
-}</code></pre>
-	<p>The <code>LogInterceptor</code> is simple enough in post processing, if it detects the X-Debug header or debug query param, it adds all the log lines to the X-Debug response header as a URL-encoded string.</p>
-	<pre class="language-typescript"><code class="language-typescript">const logger = new Logger();
-
-export class LogInterceptor implements IInterceptor {
-  public preProcess(req: RequestContextBase) {
-    return;
-  }
-
-  public postProcess(req: RequestContextBase, res: Response) {
-    logger.debug('Evaluating request for logging');
-    const debugHeader = 'X-Debug';
-    if (
-      req.url.searchParams.get('debug') !== 'true' &amp;&amp;
-      req.request.headers.get(debugHeader) !== 'true'
-    ) {
-      return;
-    }
-    logger.debug('Executing log interceptor');
-    const lines = logger.getLines();
-    const logStr = encodeURIComponent(lines.join('\n'));
-
-    logger.debug(`Adding to ${debugHeader} header ${logStr.length} chars`);
-    res.headers.append(debugHeader, logStr);
-  }
-}</code></pre>
-	<p>Now it's up to the client to display.</p>
-	<div class="flex anchor relative">
-		<h3 id="decoding-the-result">Decoding the result</h3>
-		<a href="https://blog.cloudflare.com/#decoding-the-result" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
-	<pre class="language-bash"><code class="language-bash">$ urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }</code></pre>
-	<p>Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell" target="_blank" rel="noopener noreferrer">StackOverflow</a></p>
-	<p>Using that, we can call curl, extract the headers, grep for our X-Debug header and then invoke the urldecode function.</p>
-	<pre class="language-bash"><code class="language-bash">$ urldecode `curl -sD - -o /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd -H "X-Debug:true" | grep x-debug`
-x-debug: INFO: Handling: https://cryptoserviceworker.com/api/all/spot/btc-usd
-DEBUG: No handlers, getting from factory
-DEBUG: Found handler for /api/all/spot/btc-usd
-DEBUG: ["spot","btc-usd"]
-DEBUG: Getting spot from https://api.gdax.com/products/btc-usd/ticker
-DEBUG: ["spot","btc-usd"]
-DEBUG: Parsing spot...
-INFO: GDAX response {"trade_id":45329353,"price":"6287.01000000","size":"0.03440000","bid":"6287","ask":"6287.01","volume":"9845.51680796","time":"2018-06-25T18:12:48.282000Z"}
-INFO: Bitfinex response {"mid":"6283.45","bid":"6283.4","ask":"6283.5","last_price":"6283.5","low":"6068.5","high":"6341.0","volume":"28642.882017660013","timestamp":"1529950365.0694907"}
-DEBUG: Evaluating request for logging
-DEBUG: Executing log interceptor</code></pre>
-	<p>Boom. Decoded debug info right there in the console. Ship it.</p>
-	<p>If you log stack traces in your worker with <code>logger.error(e.stack)</code>, that will also format nicely:</p>
-	<pre class="language-bash"><code class="language-bash">$ urldecode `curl -sD - -o /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd -H "X-Debug:true" | grep x-debug`
-x-debug: INFO: Handling: https://cryptoserviceworker.com/api/all/spot/btc-usd
-ERROR: Error: boom
-    at Router.&lt;anonymous&gt; (worker.js:118:35)
-    at step (worker.js:32:23)
-    at Object.next (worker.js:13:53)
-    at worker.js:7:71
-    at new Promise (&lt;anonymous&gt;)
-    at __awaiter (worker.js:3:12)
-    at Router.handle (worker.js:111:16)
-    at worker.js:48:42
-    at step (worker.js:32:23)
-    at Object.next (worker.js:13:53)
-DEBUG: Evaluating request for logging
-DEBUG: Executing log interceptor</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="summary">Summary</h3>
-		<a href="https://blog.cloudflare.com/#summary" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this post we:</p>
-	<ul>
-		<li>
-			<p>Defined a pre- and post-processing framework using Interceptors</p>
-		</li>
-		<li>
-			<p>Implemented a LogInterceptor to return logs generated as we were processing in the X-Debug header</p>
-		</li>
-		<li>
-			<p>Decoded them in bash</p>
-		</li>
-	</ul>
-	<p>May the logs be with you.</p>
+<p>The Workers team have already done an amazing job of creating a functional, familiar edit and debug tooling experience in the Workers IDE. It's Chrome Developer Tools fully integrated to Workers.</p>
+<p><code>console.log</code> in your Worker goes straight to the console, just as if you were debugging locally! Furthermore, errors and even log lines come complete with call-site info, so you click and navigate straight to the relevant line.In this blog post I’m going to show a small and powerful technique I use to make debugging serverless apps simple and quick.</p>
+<p>There is a <a href="https://developers.cloudflare.com/workers/writing-workers/debugging-tips" target="_blank" rel="noopener noreferrer">comprehensive guide</a> to common debugging approaches and I'm going to focus on returning debug information in a header. This is a great tip and one that I use to capture debug information when I'm using curl or Postman, or integration tests. It was a little finicky to get right the first time, so let me save you some trouble.</p>
+<p>If you've followed <a href="https://blog.cloudflare.com/p/607ad519-5652-4688-9fff-33fbb1fc9d3f">part 1</a> or <a href="https://blog.cloudflare.com/p/5cd5d990-7b88-4e62-9615-9c51d33daae8">part 2</a> of my Workers series, you'll know I'm using Typescript, but the approach would equally apply to Javascript. In the rest of this example, I’ll be using the routing framework I created in part 2.</p>
+<h3>Requesting Debug Info</h3>
+<p>I want my Worker to return debugging information whenever:</p>
+<ul>
+	<li>An X-Debug header is present or</li>
+	<li>a ?debug query parameter is present.</li>
+</ul>
+<p>Exercise for the reader: You may also like to require a shared secret key (so that you control who can enable debugging information) and pass a log level.</p>
+<p>I'd like my debug info to be the same that I'd see in the Workers IDE. That is, all the log lines and any exception info from the execution of my Worker.</p>
+<h3>Architecture</h3>
+<p>Logging is orthogonal to the main request flow, so let's try keep it abstracted. Different frameworks use different terms for this abstraction. I’ll use the term <a href="https://en.wikipedia.org/wiki/Interceptor_pattern" target="_blank" rel="noopener noreferrer">interceptor</a>.</p>
+<p>Let's define an interceptor as something that runs pre and/or post the main request flow.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">/**</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> * Intercepts requests before handlers and responses after handlers</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"> */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> interface</span><span class="sk-6f42c1-ffc799"> IInterceptor</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  preProcess</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  postProcess</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">res</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>And then run pre and post processing before and after the handler has executed.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">public async </span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(request: Request): </span><span class="sk-005cc5-ffc799">Promise</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff">Response</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">	this.preProcess(req);</span></span>
+<span class="line"><span class="sk-24292e-fff">	const handler </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">route</span><span class="sk-24292e-fff">(req);</span></span>
+<span class="line"><span class="sk-24292e-fff">	const res </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> handler.</span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(req);</span></span>
+<span class="line"><span class="sk-24292e-fff">	this.postProcess(req, res);</span></span>
+<span class="line"><span class="sk-24292e-fff">	return res;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">private </span><span class="sk-6f42c1-ffc799">preProcess</span><span class="sk-24292e-fff">(req: RequestContextBase) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> interceptor</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.interceptors) {</span></span>
+<span class="line"><span class="sk-24292e-fff">	  interceptor.</span><span class="sk-6f42c1-ffc799">preProcess</span><span class="sk-24292e-fff">(req);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">private </span><span class="sk-6f42c1-ffc799">postProcess</span><span class="sk-24292e-fff">(req: RequestContextBase, res: Response) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> interceptor</span><span class="sk-d73a49-a0a0a0"> of</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.interceptors) {</span></span>
+<span class="line"><span class="sk-24292e-fff">	  interceptor.</span><span class="sk-6f42c1-ffc799">postProcess</span><span class="sk-24292e-fff">(req, res);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>OK, so with a generalized pattern to execute code before and after a request, let's add our first Interceptor:</p>
+<h3>LogInterceptor</h3>
+<p>First we'll need a logger. This logger just redirects to console, but also keeps track of the log lines so the interceptor can retrieve them later.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Logger</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> ILogger</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-e36209-fff"> logLines</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">[] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> debug</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">logLine</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`DEBUG: ${</span><span class="sk-24292e-fff">logLine</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> info</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">logLine</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`INFO: ${</span><span class="sk-24292e-fff">logLine</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> warn</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">logLine</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`WARN: ${</span><span class="sk-24292e-fff">logLine</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> error</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">logLine</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`ERROR: ${</span><span class="sk-24292e-fff">logLine</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> getLines</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">[] {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.logLines;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> clear</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.logLines </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> [];</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  private</span><span class="sk-6f42c1-ffc799"> log</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">logLine</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> void</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // tslint:disable-next-line:no-console</span></span>
+<span class="line"><span class="sk-24292e-fff">    console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(logLine);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.logLines.</span><span class="sk-6f42c1-ffc799">push</span><span class="sk-24292e-fff">(logLine);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The <code>LogInterceptor</code> is simple enough in post processing, if it detects the X-Debug header or debug query param, it adds all the log lines to the X-Debug response header as a URL-encoded string.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> logger</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Logger</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> LogInterceptor</span><span class="sk-d73a49-a0a0a0"> implements</span><span class="sk-6f42c1-fff"> IInterceptor</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> preProcess</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  public</span><span class="sk-6f42c1-ffc799"> postProcess</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">req</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestContextBase</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">res</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    logger.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Evaluating request for logging'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> debugHeader</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'X-Debug'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-24292e-fff">      req.url.searchParams.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'debug'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> 'true'</span><span class="sk-d73a49-a0a0a0"> &amp;&amp;</span></span>
+<span class="line"><span class="sk-24292e-fff">      req.request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(debugHeader) </span><span class="sk-d73a49-a0a0a0">!==</span><span class="sk-032f62-99ffe4"> 'true'</span></span>
+<span class="line"><span class="sk-24292e-fff">    ) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">    logger.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Executing log interceptor'</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> lines</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> logger.</span><span class="sk-6f42c1-ffc799">getLines</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> logStr</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> encodeURIComponent</span><span class="sk-24292e-fff">(lines.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">'</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    logger.</span><span class="sk-6f42c1-ffc799">debug</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Adding to ${</span><span class="sk-24292e-fff">debugHeader</span><span class="sk-032f62-99ffe4">} header ${</span><span class="sk-24292e-fff">logStr</span><span class="sk-032f62-99ffe4">.</span><span class="sk-005cc5-99ffe4">length</span><span class="sk-032f62-99ffe4">} chars`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">    res.headers.</span><span class="sk-6f42c1-ffc799">append</span><span class="sk-24292e-fff">(debugHeader, logStr);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Now it's up to the client to display.</p>
+<h3>Decoding the result</h3>
+<p>urldecode isn't native on most operating systems. There are Perl and Python implementations, but here's a Bash only function:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span><span class="sk-032f62-99ffe4"> :</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-d73a49-a0a0a0">*//</span><span class="sk-032f62-99ffe4">+</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-032f62-99ffe4"> }"</span><span class="sk-24292e-fff">; </span><span class="sk-005cc5-ffc799">echo</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> "${</span><span class="sk-24292e-fff">_</span><span class="sk-d73a49-a0a0a0">//%/</span><span class="sk-005cc5-a0a0a0">\\</span><span class="sk-24292e-fff">x</span><span class="sk-032f62-99ffe4">}"</span><span class="sk-24292e-fff">; }</span></span></code></pre>
+</div>
+<p>Source: <a href="https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell" target="_blank" rel="noopener noreferrer">StackOverflow</a></p>
+<p>Using that, we can call curl, extract the headers, grep for our X-Debug header and then invoke the urldecode function.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -sD</span><span class="sk-032f62-99ffe4"> - </span><span class="sk-005cc5-99ffe4">-o</span><span class="sk-032f62-99ffe4"> /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd </span><span class="sk-005cc5-99ffe4">-H</span><span class="sk-032f62-99ffe4"> "X-Debug:true" </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> x-debug`</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">x-debug:</span><span class="sk-032f62-99ffe4"> INFO:</span><span class="sk-032f62-99ffe4"> Handling:</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/api/all/spot/btc-usd</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> No</span><span class="sk-032f62-99ffe4"> handlers,</span><span class="sk-032f62-99ffe4"> getting</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> factory</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Found</span><span class="sk-032f62-99ffe4"> handler</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> /api/all/spot/btc-usd</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"spot"</span><span class="sk-24292e-fff">,</span><span class="sk-032f62-99ffe4">"btc-usd"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Getting</span><span class="sk-032f62-99ffe4"> spot</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> https://api.gdax.com/products/btc-usd/ticker</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"spot"</span><span class="sk-24292e-fff">,</span><span class="sk-032f62-99ffe4">"btc-usd"</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Parsing</span><span class="sk-032f62-99ffe4"> spot...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">INFO:</span><span class="sk-032f62-99ffe4"> GDAX</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> {"trade_id":45329353,"price":"6287.01000000","size":"0.03440000","bid":"6287","ask":"6287.01","volume":"9845.51680796","time":"2018-06-25T18:12:48.282000Z"}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">INFO:</span><span class="sk-032f62-99ffe4"> Bitfinex</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> {"mid":"6283.45","bid":"6283.4","ask":"6283.5","last_price":"6283.5","low":"6068.5","high":"6341.0","volume":"28642.882017660013","timestamp":"1529950365.0694907"}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Evaluating</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> logging</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Executing</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> interceptor</span></span></code></pre>
+</div>
+<p>Boom. Decoded debug info right there in the console. Ship it.</p>
+<p>If you log stack traces in your worker with <code>logger.error(e.stack)</code>, that will also format nicely:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> urldecode</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -sD</span><span class="sk-032f62-99ffe4"> - </span><span class="sk-005cc5-99ffe4">-o</span><span class="sk-032f62-99ffe4"> /dev/null https://cryptoserviceworker.com/api/all/spot/btc-usd </span><span class="sk-005cc5-99ffe4">-H</span><span class="sk-032f62-99ffe4"> "X-Debug:true" </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799"> grep</span><span class="sk-032f62-99ffe4"> x-debug`</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">x-debug:</span><span class="sk-032f62-99ffe4"> INFO:</span><span class="sk-032f62-99ffe4"> Handling:</span><span class="sk-032f62-99ffe4"> https://cryptoserviceworker.com/api/all/spot/btc-usd</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ERROR:</span><span class="sk-032f62-99ffe4"> Error:</span><span class="sk-032f62-99ffe4"> boom</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> Router.</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">anonymou</span><span class="sk-24292e-fff">s</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-24292e-fff"> (worker.js:118:35)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff"> (worker.js:32:23)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> Object.next</span><span class="sk-24292e-fff"> (worker.js:13:53)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> worker.js:7:71</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Promise</span><span class="sk-24292e-fff"> (&lt;anonymous&gt;)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> __awaiter</span><span class="sk-24292e-fff"> (worker.js:3:12)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> Router.handle</span><span class="sk-24292e-fff"> (worker.js:111:16)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> worker.js:48:42</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> step</span><span class="sk-24292e-fff"> (worker.js:32:23)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    at</span><span class="sk-032f62-99ffe4"> Object.next</span><span class="sk-24292e-fff"> (worker.js:13:53)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Evaluating</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> logging</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DEBUG:</span><span class="sk-032f62-99ffe4"> Executing</span><span class="sk-032f62-99ffe4"> log</span><span class="sk-032f62-99ffe4"> interceptor</span></span></code></pre>
+</div>
+<h3>Summary</h3>
+<p>In this post we:</p>
+<ul>
+	<li>Defined a pre- and post-processing framework using Interceptors</li>
+	<li>Implemented a LogInterceptor to return logs generated as we were processing in the X-Debug header</li>
+	<li>Decoded them in bash</li>
+</ul>
+<p>May the logs be with you.</p>

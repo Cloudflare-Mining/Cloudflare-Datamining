@@ -1,178 +1,128 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/gateway-swg">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/gateway-swg">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/gateway-swg">日本語</a> and <a href="https://blog.cloudflare.com/fr-fr/gateway-swg">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6k1C003vKaHTVkDER8PYo2/cbdf6c9afb2e4bbe68d97aabb558ebb5/gateway-swg.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
+<p>In <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams">January 2020</a>, we launched Cloudflare for Teams—a new way to protect organizations and their employees globally, without sacrificing performance. Cloudflare for Teams centers around two core products - Cloudflare Access and Cloudflare Gateway.</p>
+<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">In March 2020</a>, Cloudflare launched the first feature of Cloudflare Gateway, a secure DNS filtering solution powered by the world’s fastest DNS resolver. Gateway’s DNS filtering feature kept users safe by blocking DNS queries to potentially harmful destinations associated with threats like malware, phishing, or ransomware. Organizations could change the router settings in their office and, in about five minutes, keep the entire team safe.</p>
+<p>Shortly after that launch, entire companies began leaving their offices. Users connected from initially makeshift home offices that have become permanent in the last several months. Protecting users and data has now shifted from a single office-level setting to user and device management in hundreds or thousands of locations.</p>
+<p>Security threats on the Internet have also evolved. Phishing campaigns and malware attacks have increased in the last six months. Detecting those types of attacks requires looking deeper than just the <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS query</a>.</p>
+<p>Starting today, we’re excited to announce two features in Cloudflare Gateway that solve those new challenges. First, Cloudflare Gateway now integrates with the <a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare WARP desktop client</a>. We built WARP around WireGuard, a modern, efficient VPN protocol that is much more efficient and flexible than legacy VPN protocols.</p>
+<p>Second, Cloudflare Gateway becomes a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">Secure Web Gateway</a> and performs L7 filtering to inspect traffic for threats that hide below the surface. Like our DNS filtering and 1.1.1.1 resolver, both features are powered by everything we’ve learned by offering Cloudflare WARP to millions of users globally.</p>
+<h3>Securing the distributed workforce</h3>
+<p>Our customers are largely distributed workforces with employees split between corporate offices and their homes. Due to the pandemic, this is their operating environment for the foreseeable future.</p>
+<p>The fact that users aren’t located at fixed, known locations (with remote workers allowed by exception) has created challenges for already overworked IT staff:</p>
+<ol>
+	<li>VPNs are an all-or-nothing approach to providing remote access to internal applications. We address this with Cloudflare Access and our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust approach</a> to security for internal applications and <a href="https://blog.cloudflare.com/cloudflare-access-for-saas">now SaaS applications as well</a>.</li>
+	<li>VPNs are slow and expensive. However, back hauling traffic to a centralized security boundary has been the primary approach to enforcing corporate content and security policies to protect roaming users. Cloudflare Gateway was created to tackle this problem for our customers.</li>
+</ol>
+<p>Until today, Cloudflare Gateway has provided security for our customers through DNS filtering. While this provides a level of security and content control that’s application-agnostic, it still leaves our customers with a few challenges:</p>
+<ol>
+	<li>Customers need to register the source IP address of all locations that send DNS queries to Gateway, so their organization’s traffic can be identified for policy enforcement. This is tedious at best, if not intractable for larger organizations with hundreds of locations.</li>
+	<li>DNS policies are relatively coarse, with enforcement performed with an all-or-nothing approach per domain. Organizations lack the ability to, for example, allow access to a cloud storage provider but block the download of harmful files from known-malicious URLs.</li>
+	<li>Organizations that register IP addresses frequently use Network Address Translation (NAT) traffic in order to share public IP addresses across many users. This results in a loss of visibility into DNS activity logs at the individual user level. So while IT security admins can see that a malicious domain was blocked, they must leverage additional forensic tools to track down a potentially compromised device.</li>
+</ol>
+<p>Starting today, we are taking Cloudflare Gateway beyond a secure DNS filtering solution by pairing the Cloudflare for Teams client with a cloud L7 firewall. Now our customers can toss out another hardware appliance in their centralized security boundary and provide enterprise-level security for their users directly from the Cloudflare edge.</p>
+<h3>Protecting users and preventing corporate data loss</h3>
+<p>DNS filtering provides a baseline level of security across entire systems and even networks, since it’s leveraged by all applications for Internet communications. However, application-specific protection offers granular policy enforcement and visibility into whether traffic should be classified as malicious.</p>
+<p>Today we’re excited to extend the protection we offer through DNS filtering by adding an L7 firewall that allows our customers to apply security and content policies to HTTP traffic. This provides administrators with a better tool to protect users through granular controls within HTTP sessions, and with visibility into policy enforcement. Just as importantly, it also gives our customers greater control over where their data resides. By building policies, customers can specify whether to allow or block a request based on file type, on whether the request was to upload or download a file, or on whether the destination is an approved cloud storage provider for the organization.</p>
+<p>Enterprises protect their users’ Internet traffic wherever they are by connecting to Cloudflare with the Cloudflare for Teams client. This client provides a fast, secure connection to the Cloudflare data center nearest them, and it relies on the same Cloudflare WARP application millions of users connect through globally. Because the client uses the same WARP application under the hood, enterprises can be sure it has been tested at scale to provide security without compromising on performance. Cloudflare WARP optimizes network performance by leveraging WireGuard for the connection to the Cloudflare edge.</p>
+<p>The result is a secure, performant connection for enterprise users wherever they are without requiring the backhaul of network traffic to a centralized security boundary. By connecting to Cloudflare Gateway with the Cloudflare for Teams client, enterprise users are protected through filtering policies applied to all outbound Internet traffic--protecting users as they navigate the Internet and preventing the loss of corporate data.</p>
+<p>Cloudflare Gateway now supports HTTP traffic filtering based on a variety of criteria including:</p>
+<div id="html-block-k1u" class="html-block">
 	<p></p>
-	<p>In <a href="https://blog.cloudflare.com/introducing-cloudflare-for-teams">January 2020</a>, we launched Cloudflare for Teams—a new way to protect organizations and their employees globally, without sacrificing performance. Cloudflare for Teams centers around two core products - Cloudflare Access and Cloudflare Gateway.</p>
-	<p><a href="https://blog.cloudflare.com/protect-your-team-with-cloudflare-gateway">In March 2020</a>, Cloudflare launched the first feature of Cloudflare Gateway, a secure DNS filtering solution powered by the world’s fastest DNS resolver. Gateway’s DNS filtering feature kept users safe by blocking DNS queries to potentially harmful destinations associated with threats like malware, phishing, or ransomware. Organizations could change the router settings in their office and, in about five minutes, keep the entire team safe.</p>
-	<p>Shortly after that launch, entire companies began leaving their offices. Users connected from initially makeshift home offices that have become permanent in the last several months. Protecting users and data has now shifted from a single office-level setting to user and device management in hundreds or thousands of locations.</p>
-	<p>Security threats on the Internet have also evolved. Phishing campaigns and malware attacks have increased in the last six months. Detecting those types of attacks requires looking deeper than just the <a href="https://www.cloudflare.com/learning/dns/what-is-dns" target="_blank" rel="noopener noreferrer">DNS query</a>.</p>
-	<p>Starting today, we’re excited to announce two features in Cloudflare Gateway that solve those new challenges. First, Cloudflare Gateway now integrates with the <a href="https://blog.cloudflare.com/warp-for-desktop">Cloudflare WARP desktop client</a>. We built WARP around WireGuard, a modern, efficient VPN protocol that is much more efficient and flexible than legacy VPN protocols.</p>
-	<p>Second, Cloudflare Gateway becomes a <a href="https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway" target="_blank" rel="noopener noreferrer">Secure Web Gateway</a> and performs L7 filtering to inspect traffic for threats that hide below the surface. Like our DNS filtering and 1.1.1.1 resolver, both features are powered by everything we’ve learned by offering Cloudflare WARP to millions of users globally.</p>
-	<div class="flex anchor relative">
-		<h3 id="securing-the-distributed-workforce">Securing the distributed workforce</h3>
-		<a href="https://blog.cloudflare.com/#securing-the-distributed-workforce" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Our customers are largely distributed workforces with employees split between corporate offices and their homes. Due to the pandemic, this is their operating environment for the foreseeable future.</p>
-	<p>The fact that users aren’t located at fixed, known locations (with remote workers allowed by exception) has created challenges for already overworked IT staff:</p>
-	<ol>
-		<li>
-			<p>VPNs are an all-or-nothing approach to providing remote access to internal applications. We address this with Cloudflare Access and our <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust approach</a> to security for internal applications and <a href="https://blog.cloudflare.com/cloudflare-access-for-saas">now SaaS applications as well</a>.</p>
-		</li>
-		<li>
-			<p>VPNs are slow and expensive. However, back hauling traffic to a centralized security boundary has been the primary approach to enforcing corporate content and security policies to protect roaming users. Cloudflare Gateway was created to tackle this problem for our customers.</p>
-		</li>
-	</ol>
-	<p>Until today, Cloudflare Gateway has provided security for our customers through DNS filtering. While this provides a level of security and content control that’s application-agnostic, it still leaves our customers with a few challenges:</p>
-	<ol>
-		<li>
-			<p>Customers need to register the source IP address of all locations that send DNS queries to Gateway, so their organization’s traffic can be identified for policy enforcement. This is tedious at best, if not intractable for larger organizations with hundreds of locations.</p>
-		</li>
-		<li>
-			<p>DNS policies are relatively coarse, with enforcement performed with an all-or-nothing approach per domain. Organizations lack the ability to, for example, allow access to a cloud storage provider but block the download of harmful files from known-malicious URLs.</p>
-		</li>
-		<li>
-			<p>Organizations that register IP addresses frequently use Network Address Translation (NAT) traffic in order to share public IP addresses across many users. This results in a loss of visibility into DNS activity logs at the individual user level. So while IT security admins can see that a malicious domain was blocked, they must leverage additional forensic tools to track down a potentially compromised device.</p>
-		</li>
-	</ol>
-	<p>Starting today, we are taking Cloudflare Gateway beyond a secure DNS filtering solution by pairing the Cloudflare for Teams client with a cloud L7 firewall. Now our customers can toss out another hardware appliance in their centralized security boundary and provide enterprise-level security for their users directly from the Cloudflare edge.</p>
-	<div class="flex anchor relative">
-		<h3 id="protecting-users-and-preventing-corporate-data-loss">Protecting users and preventing corporate data loss</h3>
-		<a href="https://blog.cloudflare.com/#protecting-users-and-preventing-corporate-data-loss" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>DNS filtering provides a baseline level of security across entire systems and even networks, since it’s leveraged by all applications for Internet communications. However, application-specific protection offers granular policy enforcement and visibility into whether traffic should be classified as malicious.</p>
-	<p>Today we’re excited to extend the protection we offer through DNS filtering by adding an L7 firewall that allows our customers to apply security and content policies to HTTP traffic. This provides administrators with a better tool to protect users through granular controls within HTTP sessions, and with visibility into policy enforcement. Just as importantly, it also gives our customers greater control over where their data resides. By building policies, customers can specify whether to allow or block a request based on file type, on whether the request was to upload or download a file, or on whether the destination is an approved cloud storage provider for the organization.</p>
-	<p>Enterprises protect their users’ Internet traffic wherever they are by connecting to Cloudflare with the Cloudflare for Teams client. This client provides a fast, secure connection to the Cloudflare data center nearest them, and it relies on the same Cloudflare WARP application millions of users connect through globally. Because the client uses the same WARP application under the hood, enterprises can be sure it has been tested at scale to provide security without compromising on performance. Cloudflare WARP optimizes network performance by leveraging WireGuard for the connection to the Cloudflare edge.</p>
-	<p>The result is a secure, performant connection for enterprise users wherever they are without requiring the backhaul of network traffic to a centralized security boundary. By connecting to Cloudflare Gateway with the Cloudflare for Teams client, enterprise users are protected through filtering policies applied to all outbound Internet traffic--protecting users as they navigate the Internet and preventing the loss of corporate data.</p>
-	<p>Cloudflare Gateway now supports HTTP traffic filtering based on a variety of criteria including:</p><!--kg-card-begin: html-->
-	<p></p><!--kg-card-end: html-->
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Criteria</b></p>
-				</td>
-				<td>
-					<p><b>Example</b></p>
-				</td>
+</div>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Criteria</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Example</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>URL, path, and/or query string</p>
 				</td>
-				<td>
-					<p><a href="http://web.archive.org/web/20210826102410/https://www.myurl.com/path?query=" target="_blank" rel="noopener noreferrer">https://www.myurl.com/path?query</a></p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>https://www.myurl.com/path?query</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>HTTP method</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>GET, POST, etc.</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>HTTP response code</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>500</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>File type and file name</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>myfilename.zip</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>MIME type</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>application/zip</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>URL security or content category</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>Malware, phishing, adult themes</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>To complement DNS filtering policies, IT admins can now create L7 firewall rules to apply granular policies on HTTP traffic.</p>
-	<p>For example, an admin may want to allow users to navigate to useful parts of Reddit, but block undesirable subreddits.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ArFEuCCcc77PX9cMvTpaR/e5e5e7fc42ce8e89cd01a1bf8c0b3b56/image2-12.png" alt="" class="kg-image" width="1999" height="879" loading="lazy">
-
-	</figure>
-	<p>Or to prevent data loss, an admin could create a rule that allows users to receive content from popular cloud storage providers but not upload select file types from corporate devices.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/iKIRnSd2A6ehkzBhJWhhf/ce59d24f46a23138a298e3448742f7b5/image6-7.png" alt="" class="kg-image" width="1999" height="1243" loading="lazy">
-
-	</figure>
-	<p>Another admin might want to prevent malicious files from being smuggled in through zip file downloads, so they may decide to configure a rule to block downloads of compressed file types.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/mCROB1jq2CKam8tFz8ghi/79a00a382f860f263c62abe1dad3fb19/image5-6.png" alt="" class="kg-image" width="1999" height="908" loading="lazy">
-
-	</figure>
-	<p>Having used our DNS filtering categories to protect internal users, an admin may want to simply block security threats based on the classification of full URLs. Malware payloads are frequently disseminated from cloud storage and with DNS filtering an admin has to choose whether to allow or deny access to the entire domain for a given storage provider. <a href="https://www.cloudflare.com/learning/access-management/what-is-url-filtering" target="_blank" rel="noopener noreferrer">URL filtering</a> gives admins the ability to filter requests for the exact URLs where malware payloads reside, allowing customers to continue to leverage the usefulness of their chosen storage provider.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2rvW866zgYx5m9k9KybSCT/8b15d21f1aa664f51e419fce53652e80/image7-4.png" alt="" class="kg-image" width="1999" height="878" loading="lazy">
-
-	</figure>
-	<p>And because all of this is made possible with the Cloudflare for Teams client, distributed workforces with roaming clients receive this protection wherever they are through a secure connection to the Cloudflare data center nearest them.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5DZZ6DSVRQcNTHA4QVvb1X/c9d29b26ca1e590c68f002794a53334a/image4-7.png" alt="" class="kg-image" width="1638" height="286" loading="lazy">
-
-	</figure>
-	<p>We’re excited to protect teams as they browse the Internet by inspecting HTTP traffic, but what about non-HTTP traffic? Later this year, we will extend Cloudflare Gateway by adding support for IP, port, and protocol filtering with a cloud L4 firewall. This will allow administrators to apply rules to all Internet-bound traffic, like rules that allow outbound SSH, or rules that determine whether to send HTTP traffic arriving at a non-standard port to the L7 firewall for HTTP inspection.</p>
-	<p>At launch, Cloudflare Gateway will allow administrators to create policies that filter DNS and HTTP traffic across all users in an organization. This creates a great baseline for security. However, exceptions are part of reality: a one-size-fits-all approach to content and security policy enforcement rarely matches the specific needs of all users.</p>
-	<p>To address this, we’re working on supporting rules based on user and group identity by integrating Cloudflare Access with a customer’s existing identity provider. This will let administrators create granular rules that also leverage context around the user, such as:</p>
-	<ul>
-		<li>
-			<p>Deny access to social media to all users. But if John Doe is in the marketing group, allow him to access these sites in order to perform his job role.</p>
-		</li>
-		<li>
-			<p>Only allow Jane Doe to connect to specific SaaS applications through Cloudflare Gateway, or a certain <a href="https://blog.cloudflare.com/tanium-cloudflare-teams">device posture</a>.</p>
-		</li>
-	</ul>
-	<p>The need for policy enforcement and logging visibility based on identity arises from the reality that users aren’t tied to fixed, known workplaces. We meet that need by integrating identity and protecting users wherever they are with the Cloudflare for Teams client.</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-next">What’s next</h3>
-		<a href="https://blog.cloudflare.com/#whats-next" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>People do not start businesses to deal with the minutiae of information technology and security. They have a vision and a product or service they want to get out in the world, and we want to get them back to doing that. We can help eliminate the hard parts around implementing advanced security tools that are usually reserved for larger, more sophisticated organizations, and we want to make them available to teams regardless of size.</p>
-	<p>The launch of both the Cloudflare for Teams client and L7 firewall lays the foundation for an advanced Secure Web Gateway with integrations including antivirus scanning, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank" rel="noopener noreferrer">CASB</a>, and <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">remote browser isolation</a>—all performed at the Cloudflare edge. We’re excited to share this glimpse of the future our team has built—and we’re just getting started.</p>
-	<div class="flex anchor relative">
-		<h3 id="get-started-now">Get started now</h3>
-		<a href="https://blog.cloudflare.com/#get-started-now" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All of these new capabilities are ready for you to use today. The L7 firewall is available in Gateway standalone, Teams Standard, and Teams Enterprise plans. You can get started by <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer">signing up for a Gateway account</a> and following the <a href="https://developers.cloudflare.com/gateway/about" target="_blank" rel="noopener noreferrer">onboarding directions</a>.</p>
 </div>
+<p>To complement DNS filtering policies, IT admins can now create L7 firewall rules to apply granular policies on HTTP traffic.</p>
+<p>For example, an admin may want to allow users to navigate to useful parts of Reddit, but block undesirable subreddits.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="314" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=640&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=750&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=828&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=1080&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=1280&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=1430&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Gateway now protects teams, wherever they are Embedded Image - RJlnDs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44BMNGMDVPCTHZTDRDTJSE.png&amp;w=1920&amp;h=844&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="844" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="314" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Or to prevent data loss, an admin could create a rule that allows users to receive content from popular cloud storage providers but not upload select file types from corporate devices.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="445" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=715&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=640&amp;h=398&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=715&amp;h=445&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=750&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=828&amp;h=515&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=1080&amp;h=672&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=1280&amp;h=797&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=1430&amp;h=890&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Gateway now protects teams, wherever they are Embedded Image - WUE0rh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49G7E7812EEA4J480V7JWX.png&amp;w=1920&amp;h=1194&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1194" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="445" class="pt-portable-image-media"></div>
+</figure>
+<p>Another admin might want to prevent malicious files from being smuggled in through zip file downloads, so they may decide to configure a rule to block downloads of compressed file types.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Gateway now protects teams, wherever they are Embedded Image - YureON" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HJKEF9QC2AK4QZ93A3XC.png&amp;w=1920&amp;h=872&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="872" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media"></div>
+</figure>
+<p>Having used our DNS filtering categories to protect internal users, an admin may want to simply block security threats based on the classification of full URLs. Malware payloads are frequently disseminated from cloud storage and with DNS filtering an admin has to choose whether to allow or deny access to the entire domain for a given storage provider. <a href="https://www.cloudflare.com/learning/access-management/what-is-url-filtering" target="_blank" rel="noopener noreferrer">URL filtering</a> gives admins the ability to filter requests for the exact URLs where malware payloads reside, allowing customers to continue to leverage the usefulness of their chosen storage provider.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="314" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=640&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=715&amp;h=314&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=750&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=828&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=1080&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=1280&amp;h=562&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=1430&amp;h=628&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Gateway now protects teams, wherever they are Embedded Image - L2iDqp" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45KR8SD6KR0AE06504X0J6.png&amp;w=1920&amp;h=843&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="843" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="314" class="pt-portable-image-media"></div>
+</figure>
+<p>And because all of this is made possible with the Cloudflare for Teams client, distributed workforces with roaming clients receive this protection wherever they are through a secure connection to the Cloudflare data center nearest them.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="125" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=715&amp;h=125&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=640&amp;h=112&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=715&amp;h=125&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=750&amp;h=131&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=828&amp;h=145&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=1080&amp;h=189&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=1280&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=1430&amp;h=250&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare Gateway now protects teams, wherever they are Embedded Image - JYZrC9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW479KJXRKYK7MNH2Q55WAR9.png&amp;w=1638&amp;h=286&amp;f=webp" data-lightbox-width="1638" data-lightbox-height="286" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="125" class="pt-portable-image-media"></div>
+</figure>
+<p>We’re excited to protect teams as they browse the Internet by inspecting HTTP traffic, but what about non-HTTP traffic? Later this year, we will extend Cloudflare Gateway by adding support for IP, port, and protocol filtering with a cloud L4 firewall. This will allow administrators to apply rules to all Internet-bound traffic, like rules that allow outbound SSH, or rules that determine whether to send HTTP traffic arriving at a non-standard port to the L7 firewall for HTTP inspection.</p>
+<p>At launch, Cloudflare Gateway will allow administrators to create policies that filter DNS and HTTP traffic across all users in an organization. This creates a great baseline for security. However, exceptions are part of reality: a one-size-fits-all approach to content and security policy enforcement rarely matches the specific needs of all users.</p>
+<p>To address this, we’re working on supporting rules based on user and group identity by integrating Cloudflare Access with a customer’s existing identity provider. This will let administrators create granular rules that also leverage context around the user, such as:</p>
+<ul>
+	<li>Deny access to social media to all users. But if John Doe is in the marketing group, allow him to access these sites in order to perform his job role.</li>
+	<li>Only allow Jane Doe to connect to specific SaaS applications through Cloudflare Gateway, or a certain <a href="https://blog.cloudflare.com/tanium-cloudflare-teams">device posture</a>.</li>
+</ul>
+<p>The need for policy enforcement and logging visibility based on identity arises from the reality that users aren’t tied to fixed, known workplaces. We meet that need by integrating identity and protecting users wherever they are with the Cloudflare for Teams client.</p>
+<h3>What’s next</h3>
+<p>People do not start businesses to deal with the minutiae of information technology and security. They have a vision and a product or service they want to get out in the world, and we want to get them back to doing that. We can help eliminate the hard parts around implementing advanced security tools that are usually reserved for larger, more sophisticated organizations, and we want to make them available to teams regardless of size.</p>
+<p>The launch of both the Cloudflare for Teams client and L7 firewall lays the foundation for an advanced Secure Web Gateway with integrations including antivirus scanning, <a href="https://www.cloudflare.com/learning/access-management/what-is-a-casb" target="_blank" rel="noopener noreferrer">CASB</a>, and <a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">remote browser isolation</a>—all performed at the Cloudflare edge. We’re excited to share this glimpse of the future our team has built—and we’re just getting started.</p>
+<h3>Get started now</h3>
+<p>All of these new capabilities are ready for you to use today. The L7 firewall is available in Gateway standalone, Teams Standard, and Teams Enterprise plans. You can get started by <a href="https://dash.cloudflare.com/sign-up/teams" target="_blank" rel="noopener noreferrer">signing up for a Gateway account</a> and following the <a href="https://developers.cloudflare.com/gateway/about" target="_blank" rel="noopener noreferrer">onboarding directions</a>.</p>

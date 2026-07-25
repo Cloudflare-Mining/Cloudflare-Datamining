@@ -1,0 +1,59 @@
+<p>美国网络安全和基础设施安全局 (CISA) 和十七个国际合作伙伴正在通过其 “<a href="https://www.cisa.gov/sites/default/files/2023-10/SecureByDesign_1025_508c.pdf" target="_blank" rel="noopener noreferrer">Secure by Design</a>” （安全设计）原则帮助塑造科技行业的最佳实践。目的是鼓励软件制造商不仅将安全作为其产品开发的一个不可分割的部分，还要设计具有强大安全功能的产品，并默认配置这些功能。</p>
+<p>作为一家网络安全公司，Cloudflare 认为产品安全是其 DNA 中一个不可分割的部分。我们强烈相信 CISA 的原则，并将继续在我们的工作中坚持这些原则。我们希望分享一些故事，介绍 Cloudflare 如何将安全设计原则融入我们构建的产品以及我们向所有客户提供的服务中。</p>
+<h2>“安全设计”和“默认安全”意味着什么？</h2>
+<p>“Secure by Design”（安全设计）指产品的安全性为“内置”而非“附加上去”。制造商不应被动地采取安全措施，而是提前采取行动，通过合理保护产品以防攻击者成功获取访问权限的方式构建产品，从而降低相关风险。</p>
+<p>“Secure by default”（默认安全）意味着产品被设计为默认具备必要的安全配置，无需额外收费。</p>
+<p>CISA 概述了以下三个软件产品安全原则：</p>
+<ul>
+	<li>承担客户安全结果的责任</li>
+	<li>拥抱彻底的透明度和问责制</li>
+	<li>自上而下的领导</li>
+</ul>
+<p>CISA 在其<a href="https://www.cisa.gov/sites/default/files/2023-10/SecureByDesign_1025_508c.pdf" target="_blank" rel="noopener noreferrer">文件</a>中提供了如何实现这些原则以及制造商应遵循哪些安全措施的全面指导方针。遵守这些指导方针不仅能增强对客户的安全效益，提升开发商的品牌声誉，还将减少制造商的长期维护和修补成本。</p>
+<h2>为什么这很重要？</h2>
+<p>科技在我们的生活中无疑扮演了重要角色，自动化了很多日常任务。在过去几年中，世界对科技和联网设备的依赖显著增加，很大程度上是由于 <a href="https://datareportal.com/reports/digital-2022-time-spent-with-connected-tech" target="_blank" rel="noopener noreferrer">Covid-19</a> 。在疫情期间，个人和公司遵守限制身体接触的公共卫生措施，转向在线活动。</p>
+<p>虽然互联网连接让我们的生活变得更加便捷，提供了在线学习和远程办公的机会，但它也为攻击者利用这些活动制造了机会。如果没有适当的保护措施，诸如用户信息、财务记录和登录凭据之类的敏感数据都可能被泄露，并被用于恶意活动。</p>
+<p>系统漏洞也可能影响整个行业和经济。在 2023 年，来自朝鲜的黑客被怀疑<a href="https://finance.yahoo.com/news/north-korea-linked-lazarus-group-130000746.html?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%222168179FD2D36545B7494CB31CA686CB%22%7D&amp;_guc_consent_skip=1708084501" target="_blank" rel="noopener noreferrer">造成了超过 20% 的加密货币损失</a>，利用软件漏洞，从全球各地的个人和公司窃取了超过 3 亿美元。</p>
+<p>尽管不安全的软件可能带来毁灭性的后果，但太多的供应商将安全责任推给了他们的客户 —— CISA 的指导方针中强调了这个事实。虽然客户应该付出一定程度的关注，但大多数风险应由制造商及其产品来处理。只有这样，我们才能拥有更安全、更值得信赖的在线互动。“Secure by Design”原则对于弥合这一差距和改变行业至关重要。</p>
+<h2>Cloudflare 如何支持安全设计原则？</h2>
+<h3>承担客户安全结果的责任</h3>
+<p>CISA 解释说，为了对客户的安全结果负责，软件制造商应该投资于产品安全努力，包括应用程序加固、应用程序功能和应用程序默认设置。在 Cloudflare，我们始终将这些产品安全努力放在首位，下文分享一些例子。</p>
+<h4>应用程序加固</h4>
+<p>Cloudflare 的开发人员遵循一个定义明确的软件开发生命周期（SDLC）管理流程，安全团队会在各个检查点进行审核。我们主动解决已知漏洞，以防它们被利用，并为我们的_所有_客户修复任何被利用的漏洞。 例如，我们致力于使用内存安全的编程语言，并尽可能地使用它们。早在 2021 年， Cloudflare 就已经将 <a href="https://blog.cloudflare.com/zh-cn/new-cloudflare-waf-zh-cn">Cloudflare WAF</a> 从 Lua 重写为内存安全的 Rust。最近，Cloudflare 推出了<a href="https://blog.cloudflare.com/zh-cn/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet-zh-cn">自行开发的全新 HTTP 代理 —— Pingora</a>，这也使我们从内存不安全的 C 语言转向了内存安全的 Rust。这两个项目都是超大规模的任务，如果没有我们技术领导团队的高层支持是不可能完成的。</p>
+<h4>Zero Trust 安全</h4>
+<p>默认情况下，我们通过使用 Cloudflare 的 <a href="https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust 安全服务套件</a>与 CISA &nbsp;的 <a href="https://www.cisa.gov/zero-trust-maturity-model" target="_blank" rel="noopener noreferrer">Zero Trust 成熟度模型</a>保持一致，以防止未经授权访问 Cloudflare 的数据、开发资源和其他服务。我们最小化信任假设，并要求对每个尝试访问任何 Cloudflare 资源（无论是自托管还是在云中）的人员和设备进行严格的身份验证。</p>
+<p>Cloudflare 相信，在当今网络安全攻击猖獗和混合办公成为新常态的环境中，Zero Trust 安全是必须具备的安全架构。为了帮助保护当今的小型企业，我们有一个 <a href="https://www.cloudflare.com/plans/zero-trust-services" target="_blank" rel="noopener noreferrer">Zero Trust 计划</a>，提供保护员工和应用程序在线安全所需的基本安全控制措施，供最多 50 名用户免费使用。</p>
+<h4>应用程序功能</h4>
+<p>我们不仅免费为用户提供许多必要的安全工具，而且从创立之初以来，我们就帮助推动整个行业默认提供更好的安全功能。</p>
+<p>2014 年，Cloudflare 的生日周期间，我们宣布推出 <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>，为所有客户提供免费的加密服务。 随后在 2015 年，我们更进一步，对浏览器到源服务器的所有数据提供免费的<a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">完全加密</a>。现在，其他同业公司也跟随了我们的步伐，默认加密已成为互联网应用程序的标准。</p>
+<p>2017 年，Cloudflare 的第七个生日周期间，我们无比自豪地宣布推出<a href="https://blog.cloudflare.com/zh-cn/unmetered-mitigation-zh-cn">不计量的 DDoS 缓解</a>。该服务吸收并缓解大规模 DDoS 攻击，但不会就攻击期间消耗的额外带宽向客户收费。通过这些宣布，我们消除了行业有关 DDoS 攻击的“峰值定价”标准。</p>
+<p>2021 年，我们宣布了一种名为 &nbsp;<a href="https://blog.cloudflare.com/privacy-preserving-compromised-credential-checking">MIGP</a> ("Might I Get Pwned") 的协议，允许用户检查他们的凭据是否已经被泄露，而在这个过程中不会暴露任何不必要的信息。除了一个从用户电子邮件哈希的前缀派生出的 bucket ID 外，你的凭据留在设备上，绝不会（即使是加密的）通过互联网发送。在此之前，使用凭据检查服务本身可能会变成一个漏洞，检查凭据是否已经被泄露时会泄露敏感信息。</p>
+<p>一年后，在 2022 年，Cloudflare 再一次颠覆了行业，宣布<a href="https://blog.cloudflare.com/zh-cn/waf-for-everyone-zh-cn">对所有 Cloudflare 计划免费提供 WAF（Web 应用程序防火墙）托管规则集</a>。 <a href="https://developers.cloudflare.com/waf/glossary" target="_blank" rel="noopener noreferrer">WAF</a> 是一项负责保护 Web 应用程序免受恶意攻击的服务。无论组织大小，这类攻击都会对互联网产生巨大影响。通过免费提供 WAF，我们正在使互联网对每个人都更加安全。</p>
+<p>最后，在 2023 年底，我们非常高兴能够领先行业，宣布向所有客户免费提供<a href="https://blog.cloudflare.com/post-quantum-to-origins">后量子加密</a>，无论使用什么计划。</p>
+<h4>应用程序默认设置</h4>
+<p>为了进一步保护客户，我们确保默认设置从一开始就提供了强大的安全态势。 一旦用户感到舒适，他们可以根据自己的偏好更改和配置任何设置。例如， Cloudflare 自动为任何新的 Cloudflare &nbsp;区域部署<a href="https://blog.cloudflare.com/zh-cn/waf-for-everyone-zh-cn">免费 Cloudflare 托管规则集</a>。托管规则集包括 Log4j 规则、Shellshock 规则、匹配最常见 WordPress 漏洞的规则等等。如有必要，客户可以禁用规则集，或配置流量过滤器或个别规则。为了提供一个更加安全的默认系统，我们还打造了<a href="https://blog.cloudflare.com/stop-attacks-before-they-are-known-making-the-cloudflare-waf-smarter">机器学习计算的 WAF 攻击评分</a>，其使用 AI 检测现有托管规则的绕过，并能检测尚未公开的软件漏洞。</p>
+<p>另一个例子是，默认情况下，所有 Cloudflare 账户都拥有不计量的 DDoS 缓解服务，以保护应用程序免受许多互联网上最常见且难以处理的攻击破坏。</p>
+<p>再举一个例子，当客户使用我们的 <a href="https://www.cloudflare.com/en-gb/developer-platform/r2" target="_blank" rel="noopener noreferrer">R2 存储</a>时，所有存储的对象在静止时都是加密的。加密和解密都是自动的，无需用户配置即可启用，而且不会影响 R2 的性能。</p>
+<p>Cloudflare 还向所有客户提供强大的审计日志。 <a href="https://developers.cloudflare.com/fundamentals/setup/account/account-security/review-audit-logs" target="_blank" rel="noopener noreferrer">审计日志</a>总结您的 Cloudflare 账户内所做更改的历史。审计日志包括账户级别的操作，例如登录，以及区域配置更改。审计日志向所有计划类型提供，并同时为个人用户和多用户组织启用。我们的审计日志对所有计划级别可用，为期 18 个月。</p>
+<h3>拥抱彻底的透明度和问责制</h3>
+<p>拥抱彻底的透明度和问责制意味着以提供安全可靠的产品为荣。透明度和信息共享对于改进和发展安全行业至关重要，有助于营造企业互相学习并使网络世界更加安全的环境。Cloudflare 通过以下多种方式展示透明度。</p>
+<h4>Cloudflare 博客</h4>
+<p>在 <a href="https://blog.cloudflare.com">Cloudflare 博客</a>上，可以找到有关功能和改进的最新信息，也有牵涉整个行业的零日攻击相关信息，例如去年检测到的历史性 <a href="https://blog.cloudflare.com/zh-cn/technical-breakdown-http2-rapid-reset-ddos-attack-zh-cn">HTTP/2 Rapid Reset 攻击</a>。我们毫不保留地撰文披露重要的安全事件，例如<a href="https://blog.cloudflare.com/zh-cn/thanksgiving-2023-security-incident-zh-cn">2023 年感恩节安全事件</a>，当时我们详细介绍发生了什么、为什么会发生，以及我们采取了哪些步骤来解决它。此外，Cloudflare 成立之初我们就有意识地努力拥抱彻底的透明度，并继续将这一重要原则作为我们的核心<a href="https://www.cloudflare.com/careers" target="_blank" rel="noopener noreferrer">价值观</a>之一。我们希望我们所分享的信息能够帮助其他人增强他们的软件实践。</p>
+<h4>Cloudflare 系统状态</h4>
+<p><a href="https://www.cloudflarestatus.com" target="_blank" rel="noopener noreferrer">Cloudflare 系统状态</a>是一个向网站所有者显示 Cloudflare 服务状态的页面。它提供关于服务当前状态的信息，以及它们是否按预期运行。如果有正在发生中的事件，状态页面会注明哪些服务受到影响，以及问题的详细信息。用户还可以找到关于可能影响某些服务可用性的计划维护的信息。</p>
+<h4>代码完整性的技术透明度</h4>
+<p>我们相信使用加密作为一种技术手段来透明地验证身份和数据完整性的重要性。例如，在 2022 年，我们<a href="https://blog.cloudflare.com/zh-cn/cloudflare-verifies-code-whatsapp-web-serves-users-zh-cn">与 WhatsApp 合作</a>为 WhatsApp 提供了一个系统，通过启用<a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog/?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A14%2C%22targetId%22%3A%22135202E37AE255A706ECF9E58DB17616%22%7D" target="_blank" rel="noopener noreferrer">代码验证扩展</a>自动确认哈希完整性，确保用户在访问服务的 Web 版本时运行的是正确、未被篡改的代码。正是这一过程，以及它代表用户自动运行的事实，帮助以可扩展的方式提供透明度。如果用户必须手动获取、计算和比较哈希值，检测篡改很可能只会由一小部分技术用户完成。</p>
+<h4>透明度报告和金丝雀公告</h4>
+<p>我们还相信，赢得并保持客户信任的一个重要部分是对我们从执法部门和其他政府实体收到的请求保持透明。为此，Cloudflare 每半年发布<a href="https://cf-assets.www.cloudflare.com/slt3lc6tev37/Q1INAiyBubYSlfGdUhthU/8cc0e3de0f160e2765af4f514991ef6c/Transparency-Report-H2-2022.pdf?_gl=1*1y467q5*_ga*MTEyMzg0OTg5MC4xNjc3Nzg2MDk2*_ga_SQCRB0TXZW*MTcwOTA2NTM5OS4yNDIuMS4xNzA5MDY2NjYyLjAuMC4w" target="_blank" rel="noopener noreferrer">透明度报告</a>更新，公布我们收到的客户信息披露要求。</p>
+<p>Cloudflare 透明度报告的一个重要部分是我们的金丝雀公告。金丝雀公告是一种方法，用来间接通知用户我们没有采取某些行动或收到来自政府或执法机构的某些请求，例如将我们的加密或认证密钥或我们客户的加密或认证密钥交给任何人。通过这些手段，我们能够让用户知道他们的数据有多私密和安全，同时遵守执法机构有关禁止披露某些请求的命令。您可以在<a href="https://www.cloudflare.com/transparency" target="_blank" rel="noopener noreferrer">这里</a>这里阅读 Cloudflare 的金丝雀公告。</p>
+<p>虽然透明度报告和金丝雀公告在 CISA 的安全设计原则中没有被明确提及，但我们认为它们是科技公司对其实践保持透明度的一个重要方面。</p>
+<h4>公开漏洞悬赏</h4>
+<p>如果您希望对我们的安全工作做出贡献，欢迎参与我们在 HackerOne 举行的<a href="https://hackerone.com/cloudflare?view_policy=true" target="_blank" rel="noopener noreferrer">公共漏洞悬赏</a>活动，报告 Cloudflare 漏洞，并获得相应的经济报酬。</p>
+<h3>自上而下领导</h3>
+<p>基于这个原则，安全深深植根于 Cloudflare 的业务目标中。由于安全与质量之间的紧密关系，通过提高产品的默认安全性，整体产品质量也得到提升。</p>
+<p>Cloudflare 对安全的专注和投入体现在公司的结构中。我们的首席安全官直接向我们的首席执行官汇报，并在每次董事会会议上做报告。这让董事会成员能够充分了解当前的网络安全形势，并强调了公司提高安全性的主动性有多么重要。</p>
+<p>此外，我们的安全工程师是主要研发部门的一部分，他们的工作与我们的系统工程师的工作一样，都是我们的产品不可或缺的一部分。这意味着我们的安全工程师能够在软件开发生命周期 (SDLC) 中嵌入安全性，而非事后附加上去。</p>
+<h2>您能提供什么帮助？</h2>
+<p>如果您是软件制造商，我们鼓励您熟悉 CISA 的 “Secure by Design” 原则，并制定计划以在您的公司中实施这些原则。</p>
+<p>作为个人，我们鼓励您参与漏洞悬赏计划（例如 <a href="https://hackerone.com/cloudflare?type=team&amp;view_policy=true" target="_blank" rel="noopener noreferrer">Cloudflare 的 HackerOne</a> 公开悬赏）并在您的社区促进网络安全意识。</p>
+<p>让我们共同帮助构建更好的互联网。</p>

@@ -1,351 +1,309 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="post-content post-body-content lh-copy gray1">
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6o7ZLXKVXmuq5yaRC7sdbe/cef8a48e2dead5815f187b829103622d/Screenshot_2024-08-26_at_6.21.48_PM.png" alt="The Linux Crypto API for user applications." class="kg-image" width="1512" height="846" loading="lazy">
-
-	</figure>
-	<p>In this post we will explore Linux Crypto API for user applications and try to understand its pros and cons.</p>
-	<p>The Linux Kernel Crypto API was introduced in <a href="https://lwn.net/Articles/14197" target="_blank" rel="noopener noreferrer">October 2002</a>. It was initially designed to satisfy internal needs, mostly for <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec" target="_blank" rel="noopener noreferrer">IPsec</a>. However, in addition to the kernel itself, user space applications can benefit from it.</p>
-	<p>If we apply the basic definition of an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> to our case, we will have the kernel on one side and our application on the other. The application needs to send data, i.e. plaintext or ciphertext, and get encrypted/decrypted text in response from the kernel. To communicate with the kernel we need to make a system call. Also, before starting the data exchange, we need to agree on some cryptographic parameters, at least the selected crypto algorithm and key length. These constraints, along with all supported algorithms, can be found in the <code>/proc/crypto</code> virtual file.</p>
-	<p>Below is a short excerpt from my <code>/proc/crypto</code> looking at <code>ctr(aes)</code>. In the examples, we will use the AES cipher in CTR mode, further we will give more details about the algorithm itself.</p>
-	<pre class="language-bash"><code class="language-bash">name         : ctr(aes)
-driver       : ctr(aes-generic)
-module       : ctr
-priority     : 100
-refcnt       : 1
-selftest     : passed
-internal     : no
-type         : skcipher
-async        : no
-blocksize    : 1
-min keysize  : 16
-max keysize  : 32
-ivsize       : 16
-chunksize    : 16
-walksize     : 16
-
-
-name         : ctr(aes)
-driver       : ctr(aes-aesni)
-module       : ctr
-priority     : 300
-refcnt       : 1
-selftest     : passed
-internal     : no
-type         : skcipher
-async        : no
-blocksize    : 1
-min keysize  : 16
-max keysize  : 32
-ivsize       : 16
-chunksize    : 16
-walksize     : 16
-
-
-name         : ctr(aes)
-driver       : ctr-aes-aesni
-module       : aesni_intel
-priority     : 400
-refcnt       : 1
-selftest     : passed
-internal     : no
-type         : skcipher
-async        : yes
-blocksize    : 1
-min keysize  : 16
-max keysize  : 32
-ivsize       : 16
-chunksize    : 16
-walksize     : 16</code></pre>
-	<p>In the output above, there are three config blocks. The kernel may provide several implementations of the same algorithm depending on the CPU architecture, available hardware, presence of crypto accelerators etc.</p>
-	<p>We can pick the implementation based on the algorithm name or the driver name. The algorithm name is not unique, but the driver name is. If we use the algorithm name, the driver with the highest priority will be chosen for us, which in theory should provide the best cryptographic performance in this context. Let’s see the performance of different implementations of AES-CTR encryption. I use the <a href="https://github.com/smuellerDD/libkcapi" target="_blank" rel="noopener noreferrer">libkcapi library</a>: it’s a lightweight wrapper for the kernel crypto API which also provides built-in speed tests. We will examine <a href="https://github.com/smuellerDD/libkcapi/blob/master/speed-test/cryptoperf-skcipher.c#L228-L238" target="_blank" rel="noopener noreferrer">these tests</a>.</p>
-	<pre class="language-bash"><code class="language-bash">$ kcapi-speed -c "AES(G) CTR(G) 128" -b 1024 -t 10
-AES(G) CTR(G) 128   	|d|	1024 bytes|          	149.80 MB/s|153361 ops/s
-AES(G) CTR(G) 128   	|e|	1024 bytes|          	159.76 MB/s|163567 ops/s
- 
-$ kcapi-speed -c "AES(AESNI) CTR(ASM) 128" -b 1024 -t 10
-AES(AESNI) CTR(ASM) 128 |d|	1024 bytes|          	343.10 MB/s|351332 ops/s
-AES(AESNI) CTR(ASM) 128 |e|	1024 bytes|         	310.100 MB/s|318425 ops/s
- 
-$ kcapi-speed -c "AES(AESNI) CTR(G) 128" -b 1024 -t 10
-AES(AESNI) CTR(G) 128   |d|	1024 bytes|          	155.37 MB/s|159088 ops/s
-AES(AESNI) CTR(G) 128   |e|	1024 bytes|          	172.94 MB/s|177054 ops/s</code></pre>
-	<p>Here and later ignore the absolute numbers, as they depend on the environment where the tests were running. Rather look at the relationship between the numbers.</p>
-	<p>The <a href="https://en.wikipedia.org/wiki/AES_instruction_set" target="_blank" rel="noopener noreferrer">x86 AES instructions</a> showed the best results, twice as fast vs the generic portable C implementation. As expected, this implementation has the highest priority in the <code>/proc/crypto</code>. We will use only this one later.</p>
-	<p>This brief introduction can be rephrased as: “I can ask the kernel to encrypt or decrypt data from my application”. But, why do I need it?</p>
-	<div class="flex anchor relative">
-		<h2 id="why-do-i-need-it">Why do I need it?</h2>
-		<a href="https://blog.cloudflare.com/#why-do-i-need-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In our previous blog post <a href="https://blog.cloudflare.com/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">Linux Kernel Key Retention Service</a> we talked a lot about cryptographic key protection. We concluded that the best Linux option is to store <a href="https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-key" target="_blank" rel="noopener noreferrer">cryptographic keys</a> in the kernel space and restrict the access to a limited number of applications. However, if all our cryptography is processed in user space, potentially damaging code still has access to the raw key material. We have to think wisely about using the key: what part of the code has access to it, don’t log it accidentally, how the open-source libraries manage it and if the memory is purged after using it. We may need to support a dedicated process to not have a key in network-facing code. Thus, many things need to be done for security, and for each application which works with cryptography. And even after all these precautionary measures, the best of the best are subject to bugs and vulnerabilities. <a href="https://en.wikipedia.org/wiki/OpenSSL" target="_blank" rel="noopener noreferrer">OpenSSL</a>, the most known and widely used cryptographic library in user space, <a href="https://blog.cloudflare.com/cloudflare-is-not-affected-by-the-openssl-vulnerabilities-cve-2022-3602-and-cve-2022-37">has had a few problems in its security</a>.</p>
-	<p>Can we move all the cryptography to the kernel and help solve these problems? Looks like it! Our <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7984ceb134bf31aa9a597f10ed52d831d5aede14" target="_blank" rel="noopener noreferrer">recent patch</a> to upstream extended the key types which can be used in symmetric encryption in the Crypto API directly from the Linux Kernel Key Retention Service.</p>
-	<p>But nothing is free. There will be some overhead for the system calls and data copying between user and kernel spaces. So, the next question is how fast it is.</p>
-	<div class="flex anchor relative">
-		<h2 id="is-it-fast">Is it fast?</h2>
-		<a href="https://blog.cloudflare.com/#is-it-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To answer this question we need to have some baseline to compare with. OpenSSL would be the best as it’s used all around the Internet. OpenSSL provides a good composite of toolkits, including C-functions, a console utility and various speed tests. For the sake of equality, we will ignore the built-in tests and write our own tests using OpenSSL C-functions. We want the same data to be processed and the same logic parts to be measured in both cases (Kernel versus OpenSSL).</p>
-	<p>So, the task: write a benchmark for AES-CTR-128 encrypting data split in chunks. Make implementations for the Kernel Crypto API and OpenSSL.</p>
-	<div class="flex anchor relative">
-		<h3 id="about-aes-ctr-128">About AES-CTR-128</h3>
-		<a href="https://blog.cloudflare.com/#about-aes-ctr-128" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>AES stands for <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">Advanced Encryption Standard</a>. It is a block cipher algorithm, which means the whole plaintext is split into blocks and two operations are applied: substitution and permutation. There are two parameters characterizing a block cipher: the block size and the key size. AES processes a block of 128 bits using a key of either 128, 192 or 256 bits. Each 128 bits or 16 bytes block is presented as a 4x4 two-dimensional array (matrix), where one element of the matrix presents one byte of the plaintext. To change the plaintext to ciphertext several rounds of transformation are applied: the bits of the block XORs with a key derived from the main key and substitution with permutation are applied to rows and columns of the matrix. There can be 10, 12 or 14 rounds depending on the key size (the key size determines how many keys can be derived from it).</p>
-	<p>AES is a secure cipher, but there is one nuance - the same plaintext/block of text will produce the same result. Look at <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)" target="_blank" rel="noopener noreferrer">Linux’s mascot Tux</a>. To avoid this, a <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation" target="_blank" rel="noopener noreferrer">mode of operation</a> (or just mode) has to be applied. It determines how the text changes, so the same input doesn't result in the same output. Tux was encrypted using ECB mode, there is no text transformation at all. Another mode example is CBC, where the ciphertext from the previously encrypted block is added to the next block, for the first block an initial value (IV) is added. This mode guarantees that for the same input and different IV the output will be different. However, this mode is slow as each block depends on the previous one and so encryption can’t be parallelized. CTR is a counter mode, instead of using previously encrypted blocks it uses a counter and a nonce. A counter is an integer which is incremented for each block. A nonce is just a random number similar to the IV. The nonce, and IV, should be different for each message and can be transferred openly with the encrypted text. So, the title AES-CTR-128 means AES used in CTR mode with the key size of 128 bits.</p>
-	<div class="flex anchor relative">
-		<h3 id="implementing-aes-ctr-128-with-the-kernel-crypto-api">Implementing AES-CTR-128 with the Kernel Crypto API</h3>
-		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-the-kernel-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The kernel and user spaces are isolated for security reasons and each time data needs to be transferred between them, it’s copied. In our case, it would add a significant overhead - copying a big bunch of plain or encrypted text to the kernel and back. However, the crypto API supports a zero-copy interface. Instead of transferring the actual data, a file descriptor is passed. But it has a limitation - the maximum size is only <a href="https://www.kernel.org/doc/html/latest/crypto/userspace-if.html#zero-copy-interface" target="_blank" rel="noopener noreferrer">16 pages</a>. So for our tests we picked the number closest to the maximum limit - 63KB (16 pages of 4KB minus 1KB to avoid any potential edge cases).</p>
-	<p>The code below is the exact implementation of what is written in the <a href="https://www.kernel.org/doc/html/latest/crypto/userspace-if.html" target="_blank" rel="noopener noreferrer">kernel documentation</a>. Firstly we created a socket of AF_ALG type. The <code>salg_type</code> and <code>salg_name</code> parameters can be taken from the <code>/proc/crypto</code> file. Instead of a generic name we used the driver name <code>ctr-aes-aesni</code>. We might put just a name <code>ctr(aes)</code> and the driver with the highest priority (<code>ctr-aes-aesni</code> in our context) will be picked for us by the Kernel. Further we put the key length and accepted the socket. The IV size is provided before the payload as ancillary data. Constraints of the key and IV sizes can be found in <code>/proc/crypto</code> too.</p>
-	<p>Now we are ready to start communication. We excluded all pre-set up steps from the measurements. In a loop we send plaintext for encryption with the flag <code>SPLICE_F_MORE</code> to inform the kernel that more data will be provided. And here in the loop we <code>read</code> the cipher text from the kernel. The last plaintext should be sent without the flag thus saying that we are done, and the kernel can finalize the encryption.</p>
-	<p>In favor of brevity, error handling is omitted in both examples.</p>
-	<p>kernel.c</p>
-	<pre class="language-cpp"><code class="language-cpp">#define _GNU_SOURCE
-
-#include &lt;stdint.h&gt;
-#include &lt;string.h&gt;
-#include &lt;stdio.h&gt;
-
-#include &lt;unistd.h&gt;
-#include &lt;fcntl.h&gt;
-#include &lt;time.h&gt;
-#include &lt;sys/random.h&gt;
-#include &lt;sys/socket.h&gt;
-#include &lt;linux/if_alg.h&gt;
-
-#define PT_LEN (63 * 1024)
-#define CT_LEN PT_LEN
-#define IV_LEN 16
-#define KEY_LEN 16
-#define ITER_COUNT 100000
-
-static uint8_t pt[PT_LEN];
-static uint8_t ct[CT_LEN];
-static uint8_t key[KEY_LEN];
-static uint8_t iv[IV_LEN];
-
-static void time_diff(struct timespec *res, const struct timespec *start, const struct timespec *end)
-{
-    res-&gt;tv_sec = end-&gt;tv_sec - start-&gt;tv_sec;
-    res-&gt;tv_nsec = end-&gt;tv_nsec - start-&gt;tv_nsec;
-    if (res-&gt;tv_nsec &lt; 0) {
-        res-&gt;tv_sec--;
-        res-&gt;tv_nsec += 1000000000;
-    }
-}
-
-int main(void)
-{
-    // Fill the test data
-    getrandom(key, sizeof(key), GRND_NONBLOCK);
-    getrandom(iv, sizeof(iv), GRND_NONBLOCK);
-    getrandom(pt, sizeof(pt), GRND_NONBLOCK);
-
-    // Set up AF_ALG socket
-    int alg_s, aes_ctr;
-    struct sockaddr_alg sa = { .salg_family = AF_ALG };
-    strcpy(sa.salg_type, "skcipher");
-    strcpy(sa.salg_name, "ctr-aes-aesni");
-
-    alg_s = socket(AF_ALG, SOCK_SEQPACKET, 0);
-    bind(alg_s, (const struct sockaddr *)&amp;sa, sizeof(sa));
-    setsockopt(alg_s, SOL_ALG, ALG_SET_KEY, key, KEY_LEN);
-    aes_ctr = accept(alg_s, NULL, NULL);
-    close(alg_s);
-
-    // Set up IV
-    uint8_t cmsg_buf[CMSG_SPACE(sizeof(uint32_t)) + CMSG_SPACE(sizeof(struct af_alg_iv) + IV_LEN)] = {0};
-    struct msghdr msg = {
-	.msg_control = cmsg_buf,
-	.msg_controllen = sizeof(cmsg_buf)
-    };
-
-    struct cmsghdr *cmsg = CMSG_FIRSTHDR(&amp;msg);
-    cmsg-&gt;cmsg_len = CMSG_LEN(sizeof(uint32_t));
-    cmsg-&gt;cmsg_level = SOL_ALG;
-    cmsg-&gt;cmsg_type = ALG_SET_OP;
-    *((uint32_t *)CMSG_DATA(cmsg)) = ALG_OP_ENCRYPT;
-    
-    cmsg = CMSG_NXTHDR(&amp;msg, cmsg);
-    cmsg-&gt;cmsg_len = CMSG_LEN(sizeof(struct af_alg_iv) + IV_LEN);
-    cmsg-&gt;cmsg_level = SOL_ALG;
-    cmsg-&gt;cmsg_type = ALG_SET_IV;
-    ((struct af_alg_iv *)CMSG_DATA(cmsg))-&gt;ivlen = IV_LEN;
-    memcpy(((struct af_alg_iv *)CMSG_DATA(cmsg))-&gt;iv, iv, IV_LEN);
-    sendmsg(aes_ctr, &amp;msg, 0);
-
-    // Set up pipes for using zero-copying interface
-    int pipes[2];
-    pipe(pipes);
-
-    struct iovec pt_iov = {
-        .iov_base = pt,
-        .iov_len = sizeof(pt)
-    };
-
-    struct timespec start, end;
-    clock_gettime(CLOCK_MONOTONIC, &amp;start);
-    
-    int i;
-    for (i = 0; i &lt; ITER_COUNT; i++) {
-        vmsplice(pipes[1], &amp;pt_iov, 1, SPLICE_F_GIFT);
-        // SPLICE_F_MORE means more data will be coming
-        splice(pipes[0], NULL, aes_ctr, NULL, sizeof(pt), SPLICE_F_MORE);
-        read(aes_ctr, ct, sizeof(ct));
-    }
-    vmsplice(pipes[1], &amp;pt_iov, 1, SPLICE_F_GIFT);
-    // A final call without SPLICE_F_MORE
-    splice(pipes[0], NULL, aes_ctr, NULL, sizeof(pt), 0);
-    read(aes_ctr, ct, sizeof(ct));
-    
-    clock_gettime(CLOCK_MONOTONIC, &amp;end);
-
-    close(pipes[0]);
-    close(pipes[1]);
-    close(aes_ctr);
-
-    struct timespec diff;
-    time_diff(&amp;diff, &amp;start, &amp;end);
-    double tput_krn = ((double)ITER_COUNT * PT_LEN) / (diff.tv_sec + (diff.tv_nsec * 0.000000001 ));
-    printf("Kernel: %.02f Mb/s\n", tput_krn / (1024 * 1024));
-    
-    return 0;
-}</code></pre>
-	<p>Compile and run:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o kernel kernel.c
-$ ./kernel
-Kernel: 2112.49 Mb/s</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="implementing-aes-ctr-128-with-openssl">Implementing AES-CTR-128 with OpenSSL</h3>
-		<a href="https://blog.cloudflare.com/#implementing-aes-ctr-128-with-openssl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With OpenSSL everything is straight forward, we just repeated an example from the <a href="https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption#Encrypting_the_message" target="_blank" rel="noopener noreferrer">official documentation</a>.</p>
-	<p>openssl.c</p>
-	<pre class="language-cpp"><code class="language-cpp">#include &lt;time.h&gt;
-#include &lt;sys/random.h&gt;
-#include &lt;openssl/evp.h&gt;
-
-#define PT_LEN (63 * 1024)
-#define CT_LEN PT_LEN
-#define IV_LEN 16
-#define KEY_LEN 16
-#define ITER_COUNT 100000
-
-static uint8_t pt[PT_LEN];
-static uint8_t ct[CT_LEN];
-static uint8_t key[KEY_LEN];
-static uint8_t iv[IV_LEN];
-
-static void time_diff(struct timespec *res, const struct timespec *start, const struct timespec *end)
-{
-    res-&gt;tv_sec = end-&gt;tv_sec - start-&gt;tv_sec;
-    res-&gt;tv_nsec = end-&gt;tv_nsec - start-&gt;tv_nsec;
-    if (res-&gt;tv_nsec &lt; 0) {
-        res-&gt;tv_sec--;
-        res-&gt;tv_nsec += 1000000000;
-    }
-}
-
-int main(void)
-{
-    // Fill the test data
-    getrandom(key, sizeof(key), GRND_NONBLOCK);
-    getrandom(iv, sizeof(iv), GRND_NONBLOCK);
-    getrandom(pt, sizeof(pt), GRND_NONBLOCK);
-
-    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
-    EVP_EncryptInit_ex(ctx, EVP_aes_128_ctr(), NULL, key, iv);
-
-    int outl = sizeof(ct);
-    
-    struct timespec start, end;
-    clock_gettime(CLOCK_MONOTONIC, &amp;start);
-
-    int i;
-    for (i = 0; i &lt; ITER_COUNT; i++) {
-        EVP_EncryptUpdate(ctx, ct, &amp;outl, pt, sizeof(pt));
-    }
-    uint8_t *ct_final = ct + outl;
-    outl = sizeof(ct) - outl;
-    EVP_EncryptFinal_ex(ctx, ct_final, &amp;outl);
-
-    clock_gettime(CLOCK_MONOTONIC, &amp;end);
-
-    EVP_CIPHER_CTX_free(ctx);
-
-    struct timespec diff;
-    time_diff(&amp;diff, &amp;start, &amp;end);
-    double tput_ossl = ((double)ITER_COUNT * PT_LEN) / (diff.tv_sec + (diff.tv_nsec * 0.000000001 ));
-    printf("OpenSSL: %.02f Mb/s\n", tput_ossl / (1024 * 1024));
-
-    return 0;
-}</code></pre>
-	<p>Compile and run:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o openssl openssl.c -lcrypto
-$ ./openssl
-OpenSSL: 3758.60 Mb/s</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="results-of-openssl-vs-crypto-api">Results of OpenSSL vs Crypto API</h3>
-		<a href="https://blog.cloudflare.com/#results-of-openssl-vs-crypto-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-bash"><code class="language-bash">OpenSSL: 3758.60 Mb/s
-Kernel: 2112.49 Mb/s</code></pre>
-	<p>Don’t pay attention to the absolute values, look at the relationship.</p>
-	<p>The numbers look pessimistic. But why? Can't the kernel implement AES-CTR similar to OpenSSL? We used <a href="https://github.com/iovisor/bpftrace/blob/master/docs/tutorial_one_liners.md" target="_blank" rel="noopener noreferrer">bpftrace</a> to understand this better. The encryption function is called on the <code>read()</code> system call. Trying to be as close to the encryption code as possible, we put a probe on the <a href="https://elixir.bootlin.com/linux/v5.15.90/source/arch/x86/crypto/aesni-intel_glue.c#L1027" target="_blank" rel="noopener noreferrer">ctr_crypt function</a> instead of the whole <code>read</code> call.</p>
-	<pre class="language-bash"><code class="language-bash">$ sudo bpftrace -e 'kprobe:ctr_crypt { @start=nsecs; @count+=1; } kretprobe:ctr_crypt /@start!=0/ { @total+=nsecs-@start; }'</code></pre>
-	<p>We took the same plaintext, encrypted it in chunks of 63KB and measured how much time it took for both cases to encrypt it with <code>bpftrace</code> attached to the kernel:</p>
-	<pre class="language-bash"><code class="language-bash">OpenSSL: 1 sec 650532178 nsec
-Kernel: 3 sec 120442931 nsec // 3120442931 ns
-OpenSSL: 3727.49 Mb/s
-Kernel: 1971.63 Mb/s
-
-@total: 2031169756     //  2031169756 / 3120442931 = 0.6509235390339526</code></pre>
-	<p>The <code>@total</code> number is output from bpftrace, which tells us how much time the kernel spent in the encryption function. To compare plain kernel encryption vs OpenSSL we need to say how many Mb/s kernel would have done if only encryption had been involved (excluding all system calls and data copy/ manipulation). We need to apply some math:</p>
-	<ol>
-		<li>
-			<p>The correlation between the total time and the time which the kernel spent in the encryption is <code>2031169756 / 3120442931 = 0.6509235390339526</code> or 65%.</p>
-		</li>
-		<li>
-			<p>So throughput would be <code>1971.63 / 0.650923539033952</code> - 3028.97 Mb/s. Comparing this to OpenSSL Mb/s we get <code>3028.97 / 3727.49</code>, so around 81%.</p>
-		</li>
-	</ol>
-	<p>It would be fair to say that <code>bpftrace</code> adds some overhead and our numbers for the kernel are less than they could be. So, we can safely say that while the Kernel Crypto API is two times slower than OpenSSL, the crypto part itself is almost equal.</p>
-	<div class="flex anchor relative">
-		<h2 id="conclusion">Conclusion</h2>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In this post we reviewed the Linux Kernel Crypto API and its user space interface. We reiterated some security benefits of doing encryption through the Kernel vs using some sort of cryptographic library. We also measured the performance overhead of doing data encryption/decryption through the Kernel Crypto API, confirmed that in-kernel crypto is likely as good as in OpenSSL, but a better user space interface is needed to make Kernel Crypto API as fast as using a cryptographic library. Using Crypto API is a subjective decision depending on your circumstances, it’s a trade-off in speed vs. security.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="400" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=640&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=750&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=828&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=1080&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=1280&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=1430&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="The Linux Crypto API for user applications." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48D1E2F7QR6S3FWWX3MX6N.png&amp;w=1512&amp;h=846&amp;f=webp" data-lightbox-width="1512" data-lightbox-height="846" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="400" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>In this post we will explore Linux Crypto API for user applications and try to understand its pros and cons.</p>
+<p>The Linux Kernel Crypto API was introduced in <a href="https://lwn.net/Articles/14197" target="_blank" rel="noopener noreferrer">October 2002</a>. It was initially designed to satisfy internal needs, mostly for <a href="https://www.cloudflare.com/learning/network-layer/what-is-ipsec" target="_blank" rel="noopener noreferrer">IPsec</a>. However, in addition to the kernel itself, user space applications can benefit from it.</p>
+<p>If we apply the basic definition of an <a href="https://www.cloudflare.com/learning/security/api/what-is-an-api" target="_blank" rel="noopener noreferrer">API</a> to our case, we will have the kernel on one side and our application on the other. The application needs to send data, i.e. plaintext or ciphertext, and get encrypted/decrypted text in response from the kernel. To communicate with the kernel we need to make a system call. Also, before starting the data exchange, we need to agree on some cryptographic parameters, at least the selected crypto algorithm and key length. These constraints, along with all supported algorithms, can be found in the <code>/proc/crypto</code> virtual file.</p>
+<p>Below is a short excerpt from my <code>/proc/crypto</code> looking at <code>ctr(aes)</code>. In the examples, we will use the AES cipher in CTR mode, further we will give more details about the algorithm itself.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-032f62-99ffe4"> ctr</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">aes</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">driver</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4"> ctr</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">aes-generic</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">module</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4"> ctr</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">priority</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 100</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">refcnt</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">selftest</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-032f62-99ffe4"> passed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">internal</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-032f62-99ffe4"> no</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-032f62-99ffe4"> skcipher</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-032f62-99ffe4"> no</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blocksize</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">min</span><span class="sk-032f62-99ffe4"> keysize</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">max</span><span class="sk-032f62-99ffe4"> keysize</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ivsize</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">chunksize</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">walksize</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-032f62-99ffe4"> ctr</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">aes</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">driver</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4"> ctr</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">aes-aesni</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">module</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4"> ctr</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">priority</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 300</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">refcnt</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">selftest</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-032f62-99ffe4"> passed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">internal</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-032f62-99ffe4"> no</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-032f62-99ffe4"> skcipher</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-032f62-99ffe4"> no</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blocksize</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">min</span><span class="sk-032f62-99ffe4"> keysize</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">max</span><span class="sk-032f62-99ffe4"> keysize</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ivsize</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">chunksize</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">walksize</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-032f62-99ffe4"> ctr</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">aes</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">driver</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4"> ctr-aes-aesni</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">module</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-032f62-99ffe4"> aesni_intel</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">priority</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 400</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">refcnt</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">selftest</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-032f62-99ffe4"> passed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">internal</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-032f62-99ffe4"> no</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4">         :</span><span class="sk-032f62-99ffe4"> skcipher</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4">        :</span><span class="sk-032f62-99ffe4"> yes</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">blocksize</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-005cc5-ffc799"> 1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">min</span><span class="sk-032f62-99ffe4"> keysize</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">max</span><span class="sk-032f62-99ffe4"> keysize</span><span class="sk-032f62-99ffe4">  :</span><span class="sk-005cc5-ffc799"> 32</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ivsize</span><span class="sk-032f62-99ffe4">       :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">chunksize</span><span class="sk-032f62-99ffe4">    :</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">walksize</span><span class="sk-032f62-99ffe4">     :</span><span class="sk-005cc5-ffc799"> 16</span></span></code></pre>
 </div>
+<p>In the output above, there are three config blocks. The kernel may provide several implementations of the same algorithm depending on the CPU architecture, available hardware, presence of crypto accelerators etc.</p>
+<p>We can pick the implementation based on the algorithm name or the driver name. The algorithm name is not unique, but the driver name is. If we use the algorithm name, the driver with the highest priority will be chosen for us, which in theory should provide the best cryptographic performance in this context. Let’s see the performance of different implementations of AES-CTR encryption. I use the <a href="https://github.com/smuellerDD/libkcapi" target="_blank" rel="noopener noreferrer">libkcapi library</a>: it’s a lightweight wrapper for the kernel crypto API which also provides built-in speed tests. We will examine <a href="https://github.com/smuellerDD/libkcapi/blob/master/speed-test/cryptoperf-skcipher.c#L228-L238" target="_blank" rel="noopener noreferrer">these tests</a>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> kcapi-speed</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "AES(G) CTR(G) 128"</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">AES(G</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">G</span><span class="sk-24292e-fff">) 128   	</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">d</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	149.80</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">153361</span><span class="sk-032f62-99ffe4"> ops/s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">AES(G</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">G</span><span class="sk-24292e-fff">) 128   	</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	159.76</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">163567</span><span class="sk-032f62-99ffe4"> ops/s</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> kcapi-speed</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "AES(AESNI) CTR(ASM) 128"</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">AES(AESNI</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">ASM</span><span class="sk-24292e-fff">) 128 </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">d</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	343.10</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">351332</span><span class="sk-032f62-99ffe4"> ops/s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">AES(AESNI</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">ASM</span><span class="sk-24292e-fff">) 128 </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">         	310.100</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">318425</span><span class="sk-032f62-99ffe4"> ops/s</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> kcapi-speed</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> "AES(AESNI) CTR(G) 128"</span><span class="sk-005cc5-99ffe4"> -b</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-005cc5-99ffe4"> -t</span><span class="sk-005cc5-ffc799"> 10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">AES(AESNI</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">G</span><span class="sk-24292e-fff">) 128   </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">d</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	155.37</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">159088</span><span class="sk-032f62-99ffe4"> ops/s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">AES(AESNI</span><span class="sk-24292e-fff">) CTR(</span><span class="sk-6f42c1-ffc799">G</span><span class="sk-24292e-fff">) 128   </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">e</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">	1024</span><span class="sk-032f62-99ffe4"> bytes</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">          	172.94</span><span class="sk-032f62-99ffe4"> MB/s</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-6f42c1-ffc799">177054</span><span class="sk-032f62-99ffe4"> ops/s</span></span></code></pre>
+</div>
+<p>Here and later ignore the absolute numbers, as they depend on the environment where the tests were running. Rather look at the relationship between the numbers.</p>
+<p>The <a href="https://en.wikipedia.org/wiki/AES_instruction_set" target="_blank" rel="noopener noreferrer">x86 AES instructions</a> showed the best results, twice as fast vs the generic portable C implementation. As expected, this implementation has the highest priority in the <code>/proc/crypto</code>. We will use only this one later.</p>
+<p>This brief introduction can be rephrased as: “I can ask the kernel to encrypt or decrypt data from my application”. But, why do I need it?</p>
+<h2>Why do I need it?</h2>
+<p>In our previous blog post <a href="https://blog.cloudflare.com/the-linux-kernel-key-retention-service-and-why-you-should-use-it-in-your-next-application">Linux Kernel Key Retention Service</a> we talked a lot about cryptographic key protection. We concluded that the best Linux option is to store <a href="https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-key" target="_blank" rel="noopener noreferrer">cryptographic keys</a> in the kernel space and restrict the access to a limited number of applications. However, if all our cryptography is processed in user space, potentially damaging code still has access to the raw key material. We have to think wisely about using the key: what part of the code has access to it, don’t log it accidentally, how the open-source libraries manage it and if the memory is purged after using it. We may need to support a dedicated process to not have a key in network-facing code. Thus, many things need to be done for security, and for each application which works with cryptography. And even after all these precautionary measures, the best of the best are subject to bugs and vulnerabilities. <a href="https://en.wikipedia.org/wiki/OpenSSL" target="_blank" rel="noopener noreferrer">OpenSSL</a>, the most known and widely used cryptographic library in user space, <a href="https://blog.cloudflare.com/cloudflare-is-not-affected-by-the-openssl-vulnerabilities-cve-2022-3602-and-cve-2022-37">has had a few problems in its security</a>.</p>
+<p>Can we move all the cryptography to the kernel and help solve these problems? Looks like it! Our <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=7984ceb134bf31aa9a597f10ed52d831d5aede14" target="_blank" rel="noopener noreferrer">recent patch</a> to upstream extended the key types which can be used in symmetric encryption in the Crypto API directly from the Linux Kernel Key Retention Service.</p>
+<p>But nothing is free. There will be some overhead for the system calls and data copying between user and kernel spaces. So, the next question is how fast it is.</p>
+<h2>Is it fast?</h2>
+<p>To answer this question we need to have some baseline to compare with. OpenSSL would be the best as it’s used all around the Internet. OpenSSL provides a good composite of toolkits, including C-functions, a console utility and various speed tests. For the sake of equality, we will ignore the built-in tests and write our own tests using OpenSSL C-functions. We want the same data to be processed and the same logic parts to be measured in both cases (Kernel versus OpenSSL).</p>
+<p>So, the task: write a benchmark for AES-CTR-128 encrypting data split in chunks. Make implementations for the Kernel Crypto API and OpenSSL.</p>
+<h3>About AES-CTR-128</h3>
+<p>AES stands for <a href="https://en.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank" rel="noopener noreferrer">Advanced Encryption Standard</a>. It is a block cipher algorithm, which means the whole plaintext is split into blocks and two operations are applied: substitution and permutation. There are two parameters characterizing a block cipher: the block size and the key size. AES processes a block of 128 bits using a key of either 128, 192 or 256 bits. Each 128 bits or 16 bytes block is presented as a 4x4 two-dimensional array (matrix), where one element of the matrix presents one byte of the plaintext. To change the plaintext to ciphertext several rounds of transformation are applied: the bits of the block XORs with a key derived from the main key and substitution with permutation are applied to rows and columns of the matrix. There can be 10, 12 or 14 rounds depending on the key size (the key size determines how many keys can be derived from it).</p>
+<p>AES is a secure cipher, but there is one nuance - the same plaintext/block of text will produce the same result. Look at <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_codebook_(ECB)" target="_blank" rel="noopener noreferrer">Linux’s mascot Tux</a>. To avoid this, a <a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation" target="_blank" rel="noopener noreferrer">mode of operation</a> (or just mode) has to be applied. It determines how the text changes, so the same input doesn't result in the same output. Tux was encrypted using ECB mode, there is no text transformation at all. Another mode example is CBC, where the ciphertext from the previously encrypted block is added to the next block, for the first block an initial value (IV) is added. This mode guarantees that for the same input and different IV the output will be different. However, this mode is slow as each block depends on the previous one and so encryption can’t be parallelized. CTR is a counter mode, instead of using previously encrypted blocks it uses a counter and a nonce. A counter is an integer which is incremented for each block. A nonce is just a random number similar to the IV. The nonce, and IV, should be different for each message and can be transferred openly with the encrypted text. So, the title AES-CTR-128 means AES used in CTR mode with the key size of 128 bits.</p>
+<h3>Implementing AES-CTR-128 with the Kernel Crypto API</h3>
+<p>The kernel and user spaces are isolated for security reasons and each time data needs to be transferred between them, it’s copied. In our case, it would add a significant overhead - copying a big bunch of plain or encrypted text to the kernel and back. However, the crypto API supports a zero-copy interface. Instead of transferring the actual data, a file descriptor is passed. But it has a limitation - the maximum size is only <a href="https://www.kernel.org/doc/html/latest/crypto/userspace-if.html#zero-copy-interface" target="_blank" rel="noopener noreferrer">16 pages</a>. So for our tests we picked the number closest to the maximum limit - 63KB (16 pages of 4KB minus 1KB to avoid any potential edge cases).</p>
+<p>The code below is the exact implementation of what is written in the <a href="https://www.kernel.org/doc/html/latest/crypto/userspace-if.html" target="_blank" rel="noopener noreferrer">kernel documentation</a>. Firstly we created a socket of AF_ALG type. The <code>salg_type</code> and <code>salg_name</code> parameters can be taken from the <code>/proc/crypto</code> file. Instead of a generic name we used the driver name <code>ctr-aes-aesni</code>. We might put just a name <code>ctr(aes)</code> and the driver with the highest priority (<code>ctr-aes-aesni</code> in our context) will be picked for us by the Kernel. Further we put the key length and accepted the socket. The IV size is provided before the payload as ancillary data. Constraints of the key and IV sizes can be found in <code>/proc/crypto</code> too.</p>
+<p>Now we are ready to start communication. We excluded all pre-set up steps from the measurements. In a loop we send plaintext for encryption with the flag <code>SPLICE_F_MORE</code> to inform the kernel that more data will be provided. And here in the loop we <code>read</code> the cipher text from the kernel. The last plaintext should be sent without the flag thus saying that we are done, and the kernel can finalize the encryption.</p>
+<p>In favor of brevity, error handling is omitted in both examples.</p>
+<p>kernel.c</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> _GNU_SOURCE</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdint.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;string.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;unistd.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;fcntl.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;time.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/random.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/socket.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;linux/if_alg.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> PT_LEN</span><span class="sk-24292e-fff"> (63 * 1024)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> CT_LEN</span><span class="sk-24292e-fff"> PT_LEN</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> IV_LEN</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> KEY_LEN</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> ITER_COUNT</span><span class="sk-005cc5-ffc799"> 100000</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> pt[PT_LEN];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> ct[CT_LEN];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> key[KEY_LEN];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> iv[IV_LEN];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> time_diff</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">res</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">start</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">end</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">    res-&gt;tv_sec </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> end-&gt;tv_sec </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> start-&gt;tv_sec;</span></span>
+<span class="line"><span class="sk-24292e-fff">    res-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> end-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> start-&gt;tv_nsec;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (res-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        res-&gt;tv_sec</span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        res-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 1000000000</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Fill the test data</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    getrandom</span><span class="sk-24292e-fff">(key, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(key), GRND_NONBLOCK);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    getrandom</span><span class="sk-24292e-fff">(iv, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(iv), GRND_NONBLOCK);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    getrandom</span><span class="sk-24292e-fff">(pt, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(pt), GRND_NONBLOCK);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Set up AF_ALG socket</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> alg_s, aes_ctr;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> sockaddr_alg</span><span class="sk-24292e-fff"> sa </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> { .salg_family </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> AF_ALG };</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    strcpy</span><span class="sk-24292e-fff">(sa.salg_type, </span><span class="sk-032f62-99ffe4">"skcipher"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    strcpy</span><span class="sk-24292e-fff">(sa.salg_name, </span><span class="sk-032f62-99ffe4">"ctr-aes-aesni"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    alg_s </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> socket</span><span class="sk-24292e-fff">(AF_ALG, SOCK_SEQPACKET, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    bind</span><span class="sk-24292e-fff">(alg_s, (</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> sockaddr</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">sa, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(sa));</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    setsockopt</span><span class="sk-24292e-fff">(alg_s, SOL_ALG, ALG_SET_KEY, key, KEY_LEN);</span></span>
+<span class="line"><span class="sk-24292e-fff">    aes_ctr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> accept</span><span class="sk-24292e-fff">(alg_s, </span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    close</span><span class="sk-24292e-fff">(alg_s);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Set up IV</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    uint8_t</span><span class="sk-24292e-fff"> cmsg_buf[</span><span class="sk-6f42c1-ffc799">CMSG_SPACE</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-24292e-fff">)) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-6f42c1-ffc799"> CMSG_SPACE</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(struct af_alg_iv) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> IV_LEN)] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">};</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> msghdr</span><span class="sk-24292e-fff"> msg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">	.msg_control </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> cmsg_buf,</span></span>
+<span class="line"><span class="sk-24292e-fff">	.msg_controllen </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> sizeof</span><span class="sk-24292e-fff">(cmsg_buf)</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> cmsghdr</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">cmsg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> CMSG_FIRSTHDR</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">msg);</span></span>
+<span class="line"><span class="sk-24292e-fff">    cmsg-&gt;cmsg_len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> CMSG_LEN</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">    cmsg-&gt;cmsg_level </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> SOL_ALG;</span></span>
+<span class="line"><span class="sk-24292e-fff">    cmsg-&gt;cmsg_type </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ALG_SET_OP;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    *</span><span class="sk-24292e-fff">((</span><span class="sk-d73a49-a0a0a0">uint32_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">CMSG_DATA</span><span class="sk-24292e-fff">(cmsg)) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ALG_OP_ENCRYPT;</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-24292e-fff">    cmsg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> CMSG_NXTHDR</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">msg, cmsg);</span></span>
+<span class="line"><span class="sk-24292e-fff">    cmsg-&gt;cmsg_len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> CMSG_LEN</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(struct af_alg_iv) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> IV_LEN);</span></span>
+<span class="line"><span class="sk-24292e-fff">    cmsg-&gt;cmsg_level </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> SOL_ALG;</span></span>
+<span class="line"><span class="sk-24292e-fff">    cmsg-&gt;cmsg_type </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ALG_SET_IV;</span></span>
+<span class="line"><span class="sk-24292e-fff">    ((</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> af_alg_iv</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">CMSG_DATA</span><span class="sk-24292e-fff">(cmsg))-&gt;ivlen </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> IV_LEN;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    memcpy</span><span class="sk-24292e-fff">(((</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> af_alg_iv</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)</span><span class="sk-6f42c1-ffc799">CMSG_DATA</span><span class="sk-24292e-fff">(cmsg))-&gt;iv, iv, IV_LEN);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    sendmsg</span><span class="sk-24292e-fff">(aes_ctr, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">msg, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Set up pipes for using zero-copying interface</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> pipes[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    pipe</span><span class="sk-24292e-fff">(pipes);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> iovec</span><span class="sk-24292e-fff"> pt_iov </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        .iov_base </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> pt,</span></span>
+<span class="line"><span class="sk-24292e-fff">        .iov_len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> sizeof</span><span class="sk-24292e-fff">(pt)</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-24292e-fff"> start, end;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    clock_gettime</span><span class="sk-24292e-fff">(CLOCK_MONOTONIC, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">start);</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> i;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> ITER_COUNT; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        vmsplice</span><span class="sk-24292e-fff">(pipes[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">], </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">pt_iov, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, SPLICE_F_GIFT);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // SPLICE_F_MORE means more data will be coming</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        splice</span><span class="sk-24292e-fff">(pipes[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">], </span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, aes_ctr, </span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(pt), SPLICE_F_MORE);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        read</span><span class="sk-24292e-fff">(aes_ctr, ct, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(ct));</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    vmsplice</span><span class="sk-24292e-fff">(pipes[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">], </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">pt_iov, </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, SPLICE_F_GIFT);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // A final call without SPLICE_F_MORE</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    splice</span><span class="sk-24292e-fff">(pipes[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">], </span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, aes_ctr, </span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(pt), </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    read</span><span class="sk-24292e-fff">(aes_ctr, ct, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(ct));</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    clock_gettime</span><span class="sk-24292e-fff">(CLOCK_MONOTONIC, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">end);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    close</span><span class="sk-24292e-fff">(pipes[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    close</span><span class="sk-24292e-fff">(pipes[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">]);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    close</span><span class="sk-24292e-fff">(aes_ctr);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-24292e-fff"> diff;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    time_diff</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">diff, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">start, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">end);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    double</span><span class="sk-24292e-fff"> tput_krn </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ((</span><span class="sk-d73a49-a0a0a0">double</span><span class="sk-24292e-fff">)ITER_COUNT </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> PT_LEN) </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> (diff.tv_sec </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> (diff.tv_nsec </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 0.000000001</span><span class="sk-24292e-fff"> ));</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Kernel: </span><span class="sk-005cc5-fff">%.02f</span><span class="sk-032f62-99ffe4"> Mb/s</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, tput_krn </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">1024</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Compile and run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> kernel</span><span class="sk-032f62-99ffe4"> kernel.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./kernel</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 2112.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre>
+</div>
+<h3>Implementing AES-CTR-128 with OpenSSL</h3>
+<p>With OpenSSL everything is straight forward, we just repeated an example from the <a href="https://wiki.openssl.org/index.php/EVP_Symmetric_Encryption_and_Decryption#Encrypting_the_message" target="_blank" rel="noopener noreferrer">official documentation</a>.</p>
+<p>openssl.c</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;time.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;sys/random.h&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;openssl/evp.h&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> PT_LEN</span><span class="sk-24292e-fff"> (63 * 1024)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> CT_LEN</span><span class="sk-24292e-fff"> PT_LEN</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> IV_LEN</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> KEY_LEN</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">#define</span><span class="sk-6f42c1-ffc799"> ITER_COUNT</span><span class="sk-005cc5-ffc799"> 100000</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> pt[PT_LEN];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> ct[CT_LEN];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> key[KEY_LEN];</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> uint8_t</span><span class="sk-24292e-fff"> iv[IV_LEN];</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> time_diff</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">res</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">start</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">end</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">    res-&gt;tv_sec </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> end-&gt;tv_sec </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> start-&gt;tv_sec;</span></span>
+<span class="line"><span class="sk-24292e-fff">    res-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> end-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> start-&gt;tv_nsec;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (res-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        res-&gt;tv_sec</span><span class="sk-d73a49-a0a0a0">--</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        res-&gt;tv_nsec </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 1000000000</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">int</span><span class="sk-6f42c1-ffc799"> main</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Fill the test data</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    getrandom</span><span class="sk-24292e-fff">(key, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(key), GRND_NONBLOCK);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    getrandom</span><span class="sk-24292e-fff">(iv, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(iv), GRND_NONBLOCK);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    getrandom</span><span class="sk-24292e-fff">(pt, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(pt), GRND_NONBLOCK);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">    EVP_CIPHER_CTX </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">ctx </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> EVP_CIPHER_CTX_new</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    EVP_EncryptInit_ex</span><span class="sk-24292e-fff">(ctx, </span><span class="sk-6f42c1-ffc799">EVP_aes_128_ctr</span><span class="sk-24292e-fff">(), </span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, key, iv);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> outl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> sizeof</span><span class="sk-24292e-fff">(ct);</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-24292e-fff"> start, end;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    clock_gettime</span><span class="sk-24292e-fff">(CLOCK_MONOTONIC, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">start);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> i;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> ITER_COUNT; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        EVP_EncryptUpdate</span><span class="sk-24292e-fff">(ctx, ct, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">outl, pt, </span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(pt));</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    uint8_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">ct_final </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ct </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> outl;</span></span>
+<span class="line"><span class="sk-24292e-fff">    outl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> sizeof</span><span class="sk-24292e-fff">(ct) </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> outl;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    EVP_EncryptFinal_ex</span><span class="sk-24292e-fff">(ctx, ct_final, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">outl);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    clock_gettime</span><span class="sk-24292e-fff">(CLOCK_MONOTONIC, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">end);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    EVP_CIPHER_CTX_free</span><span class="sk-24292e-fff">(ctx);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    struct</span><span class="sk-6f42c1-ffc799"> timespec</span><span class="sk-24292e-fff"> diff;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    time_diff</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">diff, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">start, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">end);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    double</span><span class="sk-24292e-fff"> tput_ossl </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ((</span><span class="sk-d73a49-a0a0a0">double</span><span class="sk-24292e-fff">)ITER_COUNT </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> PT_LEN) </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> (diff.tv_sec </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> (diff.tv_nsec </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-005cc5-ffc799"> 0.000000001</span><span class="sk-24292e-fff"> ));</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    printf</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"OpenSSL: </span><span class="sk-005cc5-fff">%.02f</span><span class="sk-032f62-99ffe4"> Mb/s</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, tput_ossl </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-ffc799">1024</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1024</span><span class="sk-24292e-fff">));</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Compile and run:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> openssl</span><span class="sk-032f62-99ffe4"> openssl.c</span><span class="sk-005cc5-99ffe4"> -lcrypto</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./openssl</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 3758.60</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre>
+</div>
+<h3>Results of OpenSSL vs Crypto API</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 3758.60</span><span class="sk-032f62-99ffe4"> Mb/s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 2112.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span></code></pre>
+</div>
+<p>Don’t pay attention to the absolute values, look at the relationship.</p>
+<p>The numbers look pessimistic. But why? Can't the kernel implement AES-CTR similar to OpenSSL? We used <a href="https://github.com/iovisor/bpftrace/blob/master/docs/tutorial_one_liners.md" target="_blank" rel="noopener noreferrer">bpftrace</a> to understand this better. The encryption function is called on the <code>read()</code> system call. Trying to be as close to the encryption code as possible, we put a probe on the <a href="https://elixir.bootlin.com/linux/v5.15.90/source/arch/x86/crypto/aesni-intel_glue.c#L1027" target="_blank" rel="noopener noreferrer">ctr_crypt function</a> instead of the whole <code>read</code> call.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> sudo</span><span class="sk-032f62-99ffe4"> bpftrace</span><span class="sk-005cc5-99ffe4"> -e</span><span class="sk-032f62-99ffe4"> 'kprobe:ctr_crypt { @start=nsecs; @count+=1; } kretprobe:ctr_crypt /@start!=0/ { @total+=nsecs-@start; }'</span></span></code></pre>
+</div>
+<p>We took the same plaintext, encrypted it in chunks of 63KB and measured how much time it took for both cases to encrypt it with <code>bpftrace</code> attached to the kernel:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-032f62-99ffe4"> sec</span><span class="sk-005cc5-ffc799"> 650532178</span><span class="sk-032f62-99ffe4"> nsec</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 3</span><span class="sk-032f62-99ffe4"> sec</span><span class="sk-005cc5-ffc799"> 120442931</span><span class="sk-032f62-99ffe4"> nsec</span><span class="sk-032f62-99ffe4"> //</span><span class="sk-005cc5-ffc799"> 3120442931</span><span class="sk-032f62-99ffe4"> ns</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">OpenSSL:</span><span class="sk-005cc5-ffc799"> 3727.49</span><span class="sk-032f62-99ffe4"> Mb/s</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Kernel:</span><span class="sk-005cc5-ffc799"> 1971.63</span><span class="sk-032f62-99ffe4"> Mb/s</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@total:</span><span class="sk-005cc5-ffc799"> 2031169756</span><span class="sk-032f62-99ffe4">     //</span><span class="sk-005cc5-ffc799">  2031169756</span><span class="sk-032f62-99ffe4"> /</span><span class="sk-005cc5-ffc799"> 3120442931</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-ffc799"> 0.6509235390339526</span></span></code></pre>
+</div>
+<p>The <code>@total</code> number is output from bpftrace, which tells us how much time the kernel spent in the encryption function. To compare plain kernel encryption vs OpenSSL we need to say how many Mb/s kernel would have done if only encryption had been involved (excluding all system calls and data copy/ manipulation). We need to apply some math:</p>
+<ol>
+	<li>The correlation between the total time and the time which the kernel spent in the encryption is <code>2031169756 / 3120442931 = 0.6509235390339526</code> or 65%.</li>
+	<li>So throughput would be <code>1971.63 / 0.650923539033952</code> - 3028.97 Mb/s. Comparing this to OpenSSL Mb/s we get <code>3028.97 / 3727.49</code>, so around 81%.</li>
+</ol>
+<p>It would be fair to say that <code>bpftrace</code> adds some overhead and our numbers for the kernel are less than they could be. So, we can safely say that while the Kernel Crypto API is two times slower than OpenSSL, the crypto part itself is almost equal.</p>
+<h2>Conclusion</h2>
+<p>In this post we reviewed the Linux Kernel Crypto API and its user space interface. We reiterated some security benefits of doing encryption through the Kernel vs using some sort of cryptographic library. We also measured the performance overhead of doing data encryption/decryption through the Kernel Crypto API, confirmed that in-kernel crypto is likely as good as in OpenSSL, but a better user space interface is needed to make Kernel Crypto API as fast as using a cryptographic library. Using Crypto API is a subjective decision depending on your circumstances, it’s a trade-off in speed vs. security.</p>

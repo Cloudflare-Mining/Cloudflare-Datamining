@@ -1,257 +1,112 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/9dwM2xtvFppiZch8oBBY2/1c5a02fd1bc9effb5e97a7970e30ab7f/keeping-our-users-safe.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>To everyone in Cloudflare, account security is one of our most important tasks. We recognize that to every customer on our platform, we are critical infrastructure. We also know that the simplest attacks often lead to the most devastating of outcomes. Most people think that if they are going to get hacked it will be by some clever ”zero day”. The reality couldn’t be farther from the truth.</p>
-	<p>Attackers are smart and they have realized that even in 2018, the human is still the weakest link in the chain. <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2017_Report_en_xg.pdf" target="_blank" rel="noopener noreferrer">The 2017 Verizon breach report</a> identified that 81% of hacking related breaches occurred as a result of weak credentials or credential theft, an increase from the 63% reported in <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2016_Report_en_xg.pdf" target="_blank" rel="noopener noreferrer">2016’s breach report</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/bHJOWM7kUVLJfSApcuHcg/ef977cc58a2379e9a87eb4a57c1ae338/Verizon-2017-DBR-Graph-2.png" alt="Verizon-2017-DBR-Graph-2" class="kg-image" width="1050" height="1252" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>Source: Verizon 2017 data breach report</i></p>
-	<p>Your credentials are as important as your house or car keys. If someone copies or steals them, the repercussions can be catastrophic. If you suspect someone has access to your house keys you change your locks. If you aren’t fast enough, someone might break in.</p>
-	<p>Likewise if you realize that someone might have access to your password, the remedy is to change it. Too often, as with house keys, we are slow to change our passwords. This is why we see so many account compromises happen after a big public breach like Yahoo. As soon as the attacker gets their hands on a cache of credentials from a breach they immediately try them against every other account the user has. They know that a very high percentage of users still reuse the same credentials across multiple sites. So their chances of success are high - sometimes years after a breach has happened.</p>
-	<p>This is especially problematic with API keys because they often leak without anyone ever knowing it’s happened. Common examples include attackers who steal API keys by reversing client software, or using malicious code inside the browser to navigate and steal secrets - often long after the user has logged out. Some banking trojans such as the <a href="https://www.americanexpress.com/us/small-business/openforum/articles/vicious-malware-can-wipe-out-your-bank-account-in-secret" target="_blank" rel="noopener noreferrer">infamous Zeus</a> even continue to browse after you have logged out, and display fake balance information to hide withdrawals it makes. This is why many banks now force you to re-authenticate often with 2FA when you log in and again when you perform any kind of financial transaction.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1HKGLnd6bUd1EXPIt3w7Su/a667584331dfda2ae26ff700a6a03d8b/trojan-horse-woodcut1.jpg" alt="trojan-horse-woodcut1" class="kg-image" width="700" height="450" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>The Trojan Horse. (It’s not a new attack)</i></p>
-	<p>Attackers realize this too and they have been steadily upping their game to catch unsuspecting users. Not content to just sit and wait, attackers constantly try to grab credentials through a combination of trickery and sophisticated software attacks. The one thing that links all of this? It’s you that they are attacking, not some server sitting in a datacenter.</p>
-	<div class="flex anchor relative">
-		<h3 id="phishing">Phishing</h3>
-		<a href="https://blog.cloudflare.com/#phishing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Phishing emails remain the most popular method but they have now evolved and range from the mundane badly spelled email asking for your password or offering you a link to some unknown site...</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7De7pqzFX42hyFDvtjOYzZ/5264f2e6af3ba57ff558fbe317d87a3e/cloudflare-phishing2.png" alt="cloudflare-phishing2" class="kg-image" width="576" height="251" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>Common Cloudflare phishing email</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7BzFus0t1Ui54GhJOK7z1n/0a2b61763cd9a12f004b7f2992d1bebb/cloudflare-phishing1.png" alt="cloudflare-phishing1" class="kg-image" width="1004" height="980" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>A more sophisticated Cloudflare phishing email</i></p>
-	<div class="flex anchor relative">
-		<h3 id="malicious-software">Malicious software</h3>
-		<a href="https://blog.cloudflare.com/#malicious-software" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Stepping up from phishing emails, we now have to face malicious software hidden inside innocuous everyday packages from browser extensions to free games. The most popular and difficult to detect of these by far are the malicious browser extensions. Often these start out as legitimate browser tools, then either they get hacked, or an attacker simply buys a forgotten extension project and injects malicious code into it. Now, anything your browser can see, the malicious extension can also see.</p>
-	<p>The most sophisticated of these are often targeted at a particular institution and know how to silently navigate to the credentials they wish to steal. Over the past couple of years we have seen several of these targeted specifically at Cloudflare customers. Below is an example of one such campaign from late last year involving a very popular Chrome extension called “Web Developer”.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3yiNwj3OhOgpagJo4bQyjq/689ff57893495ee2d89c7513c4e2716b/WebDeveloperForChrome.png" alt="WebDeveloperForChrome" class="kg-image" width="1176" height="630" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>Web Developer for Chrome breach alert</i></p>
-	<p>The malicious code injected into the extension was designed to be as stealthy and as resilient to attempts to stop it as possible.</p>
-	<ul>
-		<li>
-			<p>First it checks to make sure its been installed for at least 10 minutes.</p>
-		</li>
-		<li>
-			<p>If it determines the coast is clear, it connects to a machine generated <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name" target="_blank" rel="noopener noreferrer">domain name</a>, also called a DGA or “Domain Generation Algorithm” domain. These are random seeming domain names that are actually made by an algorithm so that they are harder to find and the attacker can automatically change to a new domain if the old one gets shut down, without changing any code. On August 2nd 2017 the DGA domain for this malicious extension was “wd7bdb20e4d622f6569f3e8503138c859d[.]win”. By August 3rd it had changed to “wd8a2b7d68f1c7c7f34381dc1a198465b4[.]win” as you can imagine this makes predicting new domains very hard unless you break the code behind the DGA algorithm.</p>
-		</li>
-		<li>
-			<p>If the connection is successful it downloads a fresh payload, ga.js over HTTPS which is meant to fool anyone that sees it into thinking that it is downloading Google analytics.</p>
-		</li>
-	</ul>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Osb3iz4q32DscVWp9UzNM/4820be4f056cac5aa4251cef448f14bd/Screen-Shot-2018-02-09-at-11.49.05-PM.png" alt="Screen-Shot-2018-02-09-at-11.49.05-PM" class="kg-image" width="2196" height="882" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>Example code downloaded by the malicious version of Web Developer</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gAVvdg1UF8i7nwiJNwf38/ede13f3f6fb4891a26687f6a6c367e60/API-Stealing-Code.png" alt="API-Stealing-Code" class="kg-image" width="2180" height="620" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>The Cloudflare API Key stealing payload downloaded by the malicious extension.</i></p>
-	<p>Web Developer for Chrome wasn’t the only extension compromised in that particular campaign. Other extensions compromised included</p>
-	<ul>
-		<li>
-			<p>Chrometana – Version 1.1.3</p>
-		</li>
-		<li>
-			<p>Infinity New Tab – Version 3.12.3</p>
-		</li>
-		<li>
-			<p>CopyFish – Version 2.8.5</p>
-		</li>
-		<li>
-			<p>Web Paint – Version 1.2.1</p>
-		</li>
-		<li>
-			<p>Social Fixer 20.1.1 affected</p>
-		</li>
-		<li>
-			<p>TouchVPN</p>
-		</li>
-		<li>
-			<p>Betternet VPN</p>
-		</li>
-	</ul>
-	<p>All these extensions have since been updated, but anyone with an older version should consider themselves at risk. How did this happen? Phishing of course:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4I69nV4PjRDllt9ShwNmf5/37806eff0c0e12cbd4dc8741b8740d83/Screen-Shot-2018-02-10-at-12.19.32-AM.png" alt="Screen-Shot-2018-02-10-at-12.19.32-AM" class="kg-image" width="1724" height="1850" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>Phishing email sent to </i><a href="https://a9t9.com/blog/chrome-extension-adware" target="_blank" rel="noopener noreferrer"><i>Chrome developer a9t9.com</i></a></p>
-	<p><a href="https://a9t9.com/blog/chrome-extension-adware" target="_blank" rel="noopener noreferrer">If you want to read more about this, our friends over at proofpoint</a> <a href="https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree" target="_blank" rel="noopener noreferrer">have an in depth teardown</a> of all the other aspects of this particular campaign.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-we-protect-credentials">How we protect credentials</h2>
-		<a href="https://blog.cloudflare.com/#how-we-protect-credentials" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h3 id="what-we-do-today-how-we-store-them">What we do today - how we store them.</h3>
-		<a href="https://blog.cloudflare.com/#what-we-do-today-how-we-store-them" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h4 id="system-security">System security</h4>
-		<a href="https://blog.cloudflare.com/#system-security" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We have built our systems to be secure by design. In some cases, this is as simple as ensuring that sensitive data is restricted, or made completely unobtainable. In other cases this has meant building systems in a way that makes them secure against a wide range of common attacks.</p>
-	<p><i>Passwords</i> We store user passwords in a secure database using a complex, salted hash that uses the blowfish based bcrypt() hashing algorithm.</p>
-	<p><i>API Keys</i> We ensure that API keys are unique by generating them using a combination of AES (Rijndael 256), SHA256 and plenty of entropy. Once generated through these hashing algorithms, API Keys are also stored in a secure database that only a handful of people have access to.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-we-do-today-how-we-handle-credentials">What we do today - how we handle credentials.</h3>
-		<a href="https://blog.cloudflare.com/#what-we-do-today-how-we-handle-credentials" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<div class="flex anchor relative">
-		<h4 id="at-the-back-end">At the back-end</h4>
-		<a href="https://blog.cloudflare.com/#at-the-back-end" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All calls to these sensitive databases are audited, and stored in logs that go back to the very beginning of Cloudflare. In one recent audit exercise we were able to review, and determine the exact time an API Key was generated for a customer in 2013. Access to both the audit logs and critical systems, like our databases, is restricted to a handful of senior production engineers and security staff. All staff access is also logged, and stored securely for audit purposes.</p>
-	<p>Finally, all programmatic calls to these databases are made through stored procedures linked to dedicated accounts. Dynamic SQL is not permitted.</p>
-	<div class="flex anchor relative">
-		<h4 id="in-transit">In Transit</h4>
-		<a href="https://blog.cloudflare.com/#in-transit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>All connections are made over HTTPS and sensitive tokens or credentials are never exposed in transit.</p>
-	<p>In the User InterfaceTo access your dashboard you need your account email, your password, and <a href="https://blog.cloudflare.com/you-can-now-use-google-authenticator">assuming you enabled it</a>, (you <b>really</b> should if you haven’t) your 2FA code. If all of this is correct, and the IP you are using is one you are known to use, you are logged in. If the IP address isn’t known we send an email alert to your registered email address alerting you to the event.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3UQpLhmtniGdi5rl0geXvO/1b69863c376eb62d8e44b0ed3af6488e/Cloudflare-IP-Alert.png" alt="Cloudflare-IP-Alert" class="kg-image" width="1222" height="802" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>Screenshot of an IP alert generated by accessing the dashboard</i></p>
-	<p>If your account is Pro, Business or Enterprise, that email also contains a “Multi Factor Authentication” or MFA code. Until this code is typed in, attempts to log-in are blocked.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1WTe4xZnFzbcftanoRioRQ/b159c99c772165b0f24f3cea665c32ac/emfa-screenshot.png" alt="emfa-screenshot" class="kg-image" width="964" height="852" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>MFA Alert generated by accessing the dashboard</i></p>
-	<p><a href="https://www.cloudflare.com/a/profile" target="_blank" rel="noopener noreferrer">Make sure the email registered to your Cloudflare account is correct</a> and that it is one whose emails you can quickly see for maximum benefit. The faster you react to an alert the better!</p>
-	<div class="flex anchor relative">
-		<h3 id="api-keys">API Keys</h3>
-		<a href="https://blog.cloudflare.com/#api-keys" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>API Keys are very sensitive things. They have as much power as your password but benefit from relatively few of the protections built into a modern browser. This is why we are deepening our investment to make our API even more secure.</p>
-	<p>Our first improvement, released last week, was to protect the API key against malicious software - such as a malicious browser extension - by adding a CAPTCHA to the “View API Key” feature. Below is a screenshot of the challenge you will now see when attempting to access your API Key. This change means that even if malicious software manages to steal your password, it cannot easily request and harvest your API Key.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/39N3gFZfmtgwqlwofdhy2u/1dd235bd508e657c9f2a938d55715070/Screen-Shot-2018-02-09-at-11.30.22-PM.png" alt="Screen-Shot-2018-02-09-at-11.30.22-PM" class="kg-image" width="900" height="788" loading="lazy">
-
-	</figure>
-	<p></p>
-	<p><i>Updated “View API Key” user experience</i></p>
-	<p>Next, we are looking at looked at scoped API keys. These are keys which can either be restricted to authorized IP addresses or limited in terms of what they can do. At the same time we will be adding the ability to turn the API off completely for your account. Finally, looking to the future, we are exploring options like other technical frameworks and token types, so that you have even better tools to build an API architecture that that is secure by design.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-you-can-help-keep-your-account-safe">How you can help keep your account safe</h3>
-		<a href="https://blog.cloudflare.com/#how-you-can-help-keep-your-account-safe" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p><a href="https://www.cloudflare.com/a/profile" target="_blank" rel="noopener noreferrer">Turn on 2FA and ensure your email address is correct</a> The sooner you see an alert, the faster you can take action to lock your account down.Handle your credentials with care, NEVER enter them into a site other than Cloudflare.com if in doubt check the website certificate fingerprints:</p>
-		</li>
-	</ul>
-	<pre class="language-bash"><code class="language-bash">SHA 256 - 12 C4 A5 74 7E D5 6E 37 2C 87 89 02 25 E4 CD 51 89 6D 8E AD 7D 55 CF 76 BF D1 9B 6B 74 6C 70 D0
-
-SHA1 - D4 AD AB 1B 95 72 8D 3D 6E 26 4A 70 70 B1 1E 88 2F CA 71 67</code></pre>
-	<ul>
-		<li>
-			<p>Check your browser extensions regularly. If you see any you don’t recognize remove them immediately. Remember that like all software, regular updates to browser extensions are important too.</p>
-		</li>
-		<li>
-			<p>Design your client or application to protect your API credentials. If your API design is weak - for example it doesn’t do proper certificate validation, or even worse transmit any of the data in plaintext at any point in the connection - then you are risking disaster.</p>
-		</li>
-		<li>
-			<p>Change your API key regularly, especially if you have any concern that it may have been exposed.</p>
-		</li>
-		<li>
-			<p>Do not store your API key (or any credentials for that matter) in public repositories. One way to ensure this is by making sure you don’t store your API key in your application source tree. A significant number of accidental leaks to GitHub happen because this gets overlooked.</p>
-		</li>
-		<li>
-			<p>Be very careful when embedding keys or credentials in clients that you will expose publically. Do not expose your account API key this way. Reverse engineering is not hard and many organizations have learnt this the hard way.</p>
-		</li>
-		<li>
-			<p>Review your code before you release it. Use a tool that’s part of your CI or Build processes to automatically check for accidental key leakage. How many times have we seen API Keys for major institutions leak because they were accidentally checked into GitHub? Don’t be that person.</p>
-		</li>
-		<li>
-			<p>IBM has some great additional security guidance for organizations building with APIs <a href="https://www.ibm.com/blogs/cloud-computing/2015/09/api-security-key-takeaways-from-recent-breaches" target="_blank" rel="noopener noreferrer">here,</a></p>
-		</li>
-		<li>
-			<p>Finally, it may seem obvious but take care when clicking on links in emails. Even experienced Chrome developers get tricked sometimes!</p>
-		</li>
-	</ul>
-	<p></p>
+<p>To everyone in Cloudflare, account security is one of our most important tasks. We recognize that to every customer on our platform, we are critical infrastructure. We also know that the simplest attacks often lead to the most devastating of outcomes. Most people think that if they are going to get hacked it will be by some clever ”zero day”. The reality couldn’t be farther from the truth.</p>
+<p>Attackers are smart and they have realized that even in 2018, the human is still the weakest link in the chain. <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2017_Report_en_xg.pdf" target="_blank" rel="noopener noreferrer">The 2017 Verizon breach report</a> identified that 81% of hacking related breaches occurred as a result of weak credentials or credential theft, an increase from the 63% reported in <a href="http://www.verizonenterprise.com/resources/reports/rp_DBIR_2016_Report_en_xg.pdf" target="_blank" rel="noopener noreferrer">2016’s breach report</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="853" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=715&amp;h=853&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=640&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=715&amp;h=853&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=750&amp;h=895&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=828&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=1080&amp;h=1288&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=1280&amp;h=1527&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=1430&amp;h=1706&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Verizon-2017-DBR-Graph-2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DVPQ112A3B6ADFB4PAS4.png&amp;w=1050&amp;h=1252&amp;f=webp" data-lightbox-width="1050" data-lightbox-height="1252" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="853" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>Source: Verizon 2017 data breach report</em></p>
+<p>Your credentials are as important as your house or car keys. If someone copies or steals them, the repercussions can be catastrophic. If you suspect someone has access to your house keys you change your locks. If you aren’t fast enough, someone might break in.</p>
+<p>Likewise if you realize that someone might have access to your password, the remedy is to change it. Too often, as with house keys, we are slow to change our passwords. This is why we see so many account compromises happen after a big public breach like Yahoo. As soon as the attacker gets their hands on a cache of credentials from a breach they immediately try them against every other account the user has. They know that a very high percentage of users still reuse the same credentials across multiple sites. So their chances of success are high - sometimes years after a breach has happened.</p>
+<p>This is especially problematic with API keys because they often leak without anyone ever knowing it’s happened. Common examples include attackers who steal API keys by reversing client software, or using malicious code inside the browser to navigate and steal secrets - often long after the user has logged out. Some banking trojans such as the <a href="https://www.americanexpress.com/us/small-business/openforum/articles/vicious-malware-can-wipe-out-your-bank-account-in-secret" target="_blank" rel="noopener noreferrer">infamous Zeus</a> even continue to browse after you have logged out, and display fake balance information to hide withdrawals it makes. This is why many banks now force you to re-authenticate often with 2FA when you log in and again when you perform any kind of financial transaction.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="700" height="450" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=700&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=640&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=700&amp;h=450&amp;f=webp&amp;fit=cover&amp;position=center 700w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=750&amp;h=482&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=828&amp;h=532&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=1080&amp;h=694&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=1280&amp;h=823&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=1400&amp;h=900&amp;f=webp&amp;fit=cover&amp;position=center 1400w" alt="trojan-horse-woodcut1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44E659DWMZJ50AT3PQ3S5Z.jpg&amp;w=700&amp;h=450&amp;f=webp" data-lightbox-width="700" data-lightbox-height="450" data-astro-cid-7nvefuv6="true" sizes="(min-width: 700px) 700px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="700" height="450" class="pt-portable-image-media"></div>
+</figure>
+<p><em>The Trojan Horse. (It’s not a new attack)</em></p>
+<p>Attackers realize this too and they have been steadily upping their game to catch unsuspecting users. Not content to just sit and wait, attackers constantly try to grab credentials through a combination of trickery and sophisticated software attacks. The one thing that links all of this? It’s you that they are attacking, not some server sitting in a datacenter.</p>
+<h3>Phishing</h3>
+<p>Phishing emails remain the most popular method but they have now evolved and range from the mundane badly spelled email asking for your password or offering you a link to some unknown site...</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="576" height="251" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=576&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=576&amp;h=251&amp;f=webp&amp;fit=cover&amp;position=center 576w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=640&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=750&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=828&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=1080&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=1152&amp;h=502&amp;f=webp&amp;fit=cover&amp;position=center 1152w" alt="cloudflare-phishing2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PJHKT59DCSJGBZXEFGJX.png&amp;w=576&amp;h=251&amp;f=webp" data-lightbox-width="576" data-lightbox-height="251" data-astro-cid-7nvefuv6="true" sizes="(min-width: 576px) 576px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="576" height="251" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Common Cloudflare phishing email</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="698" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=715&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=640&amp;h=625&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=715&amp;h=698&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=750&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=828&amp;h=808&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=1080&amp;h=1054&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=1280&amp;h=1250&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=1430&amp;h=1396&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Example Phish" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RH5WNKPWRQF0E1R2REDZ.png&amp;w=1004&amp;h=980&amp;f=webp" data-lightbox-width="1004" data-lightbox-height="980" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="698" class="pt-portable-image-media"></div>
+</figure>
+<p><em>A more sophisticated Cloudflare phishing email</em></p>
+<h3>Malicious software</h3>
+<p>Stepping up from phishing emails, we now have to face malicious software hidden inside innocuous everyday packages from browser extensions to free games. The most popular and difficult to detect of these by far are the malicious browser extensions. Often these start out as legitimate browser tools, then either they get hacked, or an attacker simply buys a forgotten extension project and injects malicious code into it. Now, anything your browser can see, the malicious extension can also see.</p>
+<p>The most sophisticated of these are often targeted at a particular institution and know how to silently navigate to the credentials they wish to steal. Over the past couple of years we have seen several of these targeted specifically at Cloudflare customers. Below is an example of one such campaign from late last year involving a very popular Chrome extension called “Web Developer”.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="383" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=715&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=640&amp;h=343&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=715&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=750&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=828&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=1080&amp;h=579&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=1280&amp;h=686&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=1430&amp;h=766&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="WebDeveloperForChrome" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46D93TWH6EDSJKBJPMQEQW.png&amp;w=1176&amp;h=630&amp;f=webp" data-lightbox-width="1176" data-lightbox-height="630" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="383" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Web Developer for Chrome breach alert</em></p>
+<p>The malicious code injected into the extension was designed to be as stealthy and as resilient to attempts to stop it as possible.</p>
+<ul>
+	<li>First it checks to make sure its been installed for at least 10 minutes.</li>
+	<li>If it determines the coast is clear, it connects to a machine generated <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name" target="_blank" rel="noopener noreferrer">domain name</a>, also called a DGA or “Domain Generation Algorithm” domain. These are random seeming domain names that are actually made by an algorithm so that they are harder to find and the attacker can automatically change to a new domain if the old one gets shut down, without changing any code. On August 2nd 2017 the DGA domain for this malicious extension was “wd7bdb20e4d622f6569f3e8503138c859d[.]win”. By August 3rd it had changed to “wd8a2b7d68f1c7c7f34381dc1a198465b4[.]win” as you can imagine this makes predicting new domains very hard unless you break the code behind the DGA algorithm.</li>
+	<li>If the connection is successful it downloads a fresh payload, ga.js over HTTPS which is meant to fool anyone that sees it into thinking that it is downloading Google analytics.</li>
+</ul>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="287" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=640&amp;h=257&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=715&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=750&amp;h=301&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=828&amp;h=332&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=1080&amp;h=434&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=1280&amp;h=514&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=1430&amp;h=574&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screen-Shot-2018-02-09-at-11.49.05-PM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46037GEDMQBQZWRVQM5MWX.png&amp;w=1920&amp;h=771&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="771" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="287" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Example code downloaded by the malicious version of Web Developer</em></p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="203" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=715&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=640&amp;h=182&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=715&amp;h=203&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=750&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=828&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=1080&amp;h=307&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=1280&amp;h=363&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=1430&amp;h=406&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="API-Stealing-Code" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49FEHZCHQ75RMSDNXVXET3.png&amp;w=1920&amp;h=546&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="546" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="203" class="pt-portable-image-media"></div>
+</figure>
+<p><em>The Cloudflare API Key stealing payload downloaded by the malicious extension.</em></p>
+<p>Web Developer for Chrome wasn’t the only extension compromised in that particular campaign. Other extensions compromised included</p>
+<ul>
+	<li>Chrometana – Version 1.1.3</li>
+	<li>Infinity New Tab – Version 3.12.3</li>
+	<li>CopyFish – Version 2.8.5</li>
+	<li>Web Paint – Version 1.2.1</li>
+	<li>Social Fixer 20.1.1 affected</li>
+	<li>TouchVPN</li>
+	<li>Betternet VPN</li>
+</ul>
+<p>All these extensions have since been updated, but anyone with an older version should consider themselves at risk. How did this happen? Phishing of course:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="767" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=715&amp;h=767&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=640&amp;h=687&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=715&amp;h=767&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=750&amp;h=805&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=828&amp;h=888&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=1080&amp;h=1159&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=1280&amp;h=1373&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=1430&amp;h=1534&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screen-Shot-2018-02-10-at-12.19.32-AM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M7J14F9D7DKCWBJJCJ7Y.png&amp;w=1724&amp;h=1850&amp;f=webp" data-lightbox-width="1724" data-lightbox-height="1850" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="767" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Phishing email sent to <a href="https://a9t9.com/blog/chrome-extension-adware" target="_blank" rel="noopener noreferrer">Chrome developer a9t9.com</a></em></p>
+<p><a href="https://a9t9.com/blog/chrome-extension-adware" target="_blank" rel="noopener noreferrer">If you want to read more about this, our friends over at proofpoint</a> <a href="https://www.proofpoint.com/us/threat-insight/post/threat-actor-goes-chrome-extension-hijacking-spree" target="_blank" rel="noopener noreferrer">have an in depth teardown</a> of all the other aspects of this particular campaign.</p>
+<h2>How we protect credentials</h2>
+<h3>What we do today - how we store them.</h3>
+<h4>System security</h4>
+<p>We have built our systems to be secure by design. In some cases, this is as simple as ensuring that sensitive data is restricted, or made completely unobtainable. In other cases this has meant building systems in a way that makes them secure against a wide range of common attacks.</p>
+<p><em>Passwords</em> We store user passwords in a secure database using a complex, salted hash that uses the blowfish based bcrypt() hashing algorithm.</p>
+<p><em>API Keys</em> We ensure that API keys are unique by generating them using a combination of AES (Rijndael 256), SHA256 and plenty of entropy. Once generated through these hashing algorithms, API Keys are also stored in a secure database that only a handful of people have access to.</p>
+<h3>What we do today - how we handle credentials.</h3>
+<h4>At the back-end</h4>
+<p>All calls to these sensitive databases are audited, and stored in logs that go back to the very beginning of Cloudflare. In one recent audit exercise we were able to review, and determine the exact time an API Key was generated for a customer in 2013. Access to both the audit logs and critical systems, like our databases, is restricted to a handful of senior production engineers and security staff. All staff access is also logged, and stored securely for audit purposes.</p>
+<p>Finally, all programmatic calls to these databases are made through stored procedures linked to dedicated accounts. Dynamic SQL is not permitted.</p>
+<h4>In Transit</h4>
+<p>All connections are made over HTTPS and sensitive tokens or credentials are never exposed in transit.</p>
+<p>In the User InterfaceTo access your dashboard you need your account email, your password, and <a href="https://blog.cloudflare.com/you-can-now-use-google-authenticator">assuming you enabled it</a>, (you <strong>really</strong> should if you haven’t) your 2FA code. If all of this is correct, and the IP you are using is one you are known to use, you are logged in. If the IP address isn’t known we send an email alert to your registered email address alerting you to the event.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="469" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=715&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=640&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=715&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=750&amp;h=492&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=828&amp;h=543&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=1080&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=1280&amp;h=840&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=1430&amp;h=938&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Cloudflare-IP-Alert" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4628D6TJH6885YWASGRRKG.png&amp;w=1222&amp;h=802&amp;f=webp" data-lightbox-width="1222" data-lightbox-height="802" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="469" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Screenshot of an IP alert generated by accessing the dashboard</em></p>
+<p>If your account is Pro, Business or Enterprise, that email also contains a “Multi Factor Authentication” or MFA code. Until this code is typed in, attempts to log-in are blocked.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="632" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=715&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=640&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=715&amp;h=632&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=750&amp;h=663&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=828&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=1080&amp;h=955&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=1280&amp;h=1131&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=1430&amp;h=1264&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="emfa-screenshot" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44M74W0QS4YV0T8Y11RHTQ.png&amp;w=964&amp;h=852&amp;f=webp" data-lightbox-width="964" data-lightbox-height="852" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="632" class="pt-portable-image-media"></div>
+</figure>
+<p><em>MFA Alert generated by accessing the dashboard</em></p>
+<p><a href="https://www.cloudflare.com/a/profile" target="_blank" rel="noopener noreferrer">Make sure the email registered to your Cloudflare account is correct</a> and that it is one whose emails you can quickly see for maximum benefit. The faster you react to an alert the better!</p>
+<h3>API Keys</h3>
+<p>API Keys are very sensitive things. They have as much power as your password but benefit from relatively few of the protections built into a modern browser. This is why we are deepening our investment to make our API even more secure.</p>
+<p>Our first improvement, released last week, was to protect the API key against malicious software - such as a malicious browser extension - by adding a CAPTCHA to the “View API Key” feature. Below is a screenshot of the challenge you will now see when attempting to access your API Key. This change means that even if malicious software manages to steal your password, it cannot easily request and harvest your API Key.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="626" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=715&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=640&amp;h=560&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=715&amp;h=626&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=750&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=828&amp;h=725&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=1080&amp;h=946&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=1280&amp;h=1121&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=1430&amp;h=1252&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Screen-Shot-2018-02-09-at-11.30.22-PM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45TF1JFE3M292PPJCTH57A.png&amp;w=900&amp;h=788&amp;f=webp" data-lightbox-width="900" data-lightbox-height="788" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="626" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Updated “View API Key” user experience</em></p>
+<p>Next, we are looking at looked at scoped API keys. These are keys which can either be restricted to authorized IP addresses or limited in terms of what they can do. At the same time we will be adding the ability to turn the API off completely for your account. Finally, looking to the future, we are exploring options like other technical frameworks and token types, so that you have even better tools to build an API architecture that that is secure by design.</p>
+<h3>How you can help keep your account safe</h3>
+<ul>
+	<li><a href="https://www.cloudflare.com/a/profile" target="_blank" rel="noopener noreferrer">Turn on 2FA and ensure your email address is correct</a> The sooner you see an alert, the faster you can take action to lock your account down.Handle your credentials with care, NEVER enter them into a site other than Cloudflare.com if in doubt check the website certificate fingerprints:</li>
+</ul>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SHA</span><span class="sk-005cc5-ffc799"> 256</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 12</span><span class="sk-032f62-99ffe4"> C4</span><span class="sk-032f62-99ffe4"> A5</span><span class="sk-005cc5-ffc799"> 74</span><span class="sk-032f62-99ffe4"> 7E</span><span class="sk-032f62-99ffe4"> D5</span><span class="sk-032f62-99ffe4"> 6E</span><span class="sk-005cc5-ffc799"> 37</span><span class="sk-032f62-99ffe4"> 2C</span><span class="sk-005cc5-ffc799"> 87</span><span class="sk-005cc5-ffc799"> 89</span><span class="sk-005cc5-ffc799"> 02</span><span class="sk-005cc5-ffc799"> 25</span><span class="sk-032f62-99ffe4"> E4</span><span class="sk-032f62-99ffe4"> CD</span><span class="sk-005cc5-ffc799"> 51</span><span class="sk-005cc5-ffc799"> 89</span><span class="sk-032f62-99ffe4"> 6D</span><span class="sk-032f62-99ffe4"> 8E</span><span class="sk-032f62-99ffe4"> AD</span><span class="sk-032f62-99ffe4"> 7D</span><span class="sk-005cc5-ffc799"> 55</span><span class="sk-032f62-99ffe4"> CF</span><span class="sk-005cc5-ffc799"> 76</span><span class="sk-032f62-99ffe4"> BF</span><span class="sk-032f62-99ffe4"> D1</span><span class="sk-032f62-99ffe4"> 9B</span><span class="sk-032f62-99ffe4"> 6B</span><span class="sk-005cc5-ffc799"> 74</span><span class="sk-032f62-99ffe4"> 6C</span><span class="sk-005cc5-ffc799"> 70</span><span class="sk-032f62-99ffe4"> D0</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">SHA1</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> D4</span><span class="sk-032f62-99ffe4"> AD</span><span class="sk-032f62-99ffe4"> AB</span><span class="sk-032f62-99ffe4"> 1B</span><span class="sk-005cc5-ffc799"> 95</span><span class="sk-005cc5-ffc799"> 72</span><span class="sk-032f62-99ffe4"> 8D</span><span class="sk-032f62-99ffe4"> 3D</span><span class="sk-032f62-99ffe4"> 6E</span><span class="sk-005cc5-ffc799"> 26</span><span class="sk-032f62-99ffe4"> 4A</span><span class="sk-005cc5-ffc799"> 70</span><span class="sk-005cc5-ffc799"> 70</span><span class="sk-032f62-99ffe4"> B1</span><span class="sk-032f62-99ffe4"> 1E</span><span class="sk-005cc5-ffc799"> 88</span><span class="sk-032f62-99ffe4"> 2F</span><span class="sk-032f62-99ffe4"> CA</span><span class="sk-005cc5-ffc799"> 71</span><span class="sk-005cc5-ffc799"> 67</span></span></code></pre>
 </div>
+<ul>
+	<li>Check your browser extensions regularly. If you see any you don’t recognize remove them immediately. Remember that like all software, regular updates to browser extensions are important too.</li>
+	<li>Design your client or application to protect your API credentials. If your API design is weak - for example it doesn’t do proper certificate validation, or even worse transmit any of the data in plaintext at any point in the connection - then you are risking disaster.</li>
+	<li>Change your API key regularly, especially if you have any concern that it may have been exposed.</li>
+	<li>Do not store your API key (or any credentials for that matter) in public repositories. One way to ensure this is by making sure you don’t store your API key in your application source tree. A significant number of accidental leaks to GitHub happen because this gets overlooked.</li>
+	<li>Be very careful when embedding keys or credentials in clients that you will expose publically. Do not expose your account API key this way. Reverse engineering is not hard and many organizations have learnt this the hard way.</li>
+	<li>Review your code before you release it. Use a tool that’s part of your CI or Build processes to automatically check for accidental key leakage. How many times have we seen API Keys for major institutions leak because they were accidentally checked into GitHub? Don’t be that person.</li>
+	<li>IBM has some great additional security guidance for organizations building with APIs <a href="https://www.ibm.com/blogs/cloud-computing/2015/09/api-security-key-takeaways-from-recent-breaches" target="_blank" rel="noopener noreferrer">here,</a></li>
+	<li>Finally, it may seem obvious but take care when clicking on links in emails. Even experienced Chrome developers get tricked sometimes!</li>
+</ul>

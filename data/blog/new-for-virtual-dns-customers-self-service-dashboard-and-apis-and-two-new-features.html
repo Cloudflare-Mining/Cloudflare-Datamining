@@ -1,74 +1,29 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1L77BJKYlJB1vv2CAoHik3/63dad93f92cee8c494314ed3b60e4b6d/new-for-virtual-dns-customers-self-service-dashboard-and-apis-and-two-new-features.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Today we're launching two new features and a brand new dashboard and API for Virtual DNS. Virtual DNS is CloudFlare’s DNS proxy that sits in front of some of the largest hosting providers in the world, shielding their DNS infrastructure from attacks and providing them with the DNS performance benefits of CloudFlare's network and caching.</p>
-	<p>It's been a year since we <a href="https://blog.cloudflare.com/announcing-virtual-dns-ddos-mitigation-and-global-distribution-for-dns-traffic">launched Virtual DNS</a>, and the service has expanded a lot since then. Virtual DNS now answers 7 billion DNS queries a day, 4.6 billion of which are served from our cache, saving our Virtual DNS customers a collective 65% of their bandwidth. Beyond the bandwidth savings, Virtual DNS also protected its customers from a <a href="https://blog.cloudflare.com/a-deep-look-at-cve-2015-5477-and-how-cloudflare-virtual-dns-customers-are-protected">large vulnerability in BIND</a> when it was discovered in August.</p>
-	<p>Virtual DNS is different from CloudFlare’s core authoritative DNS service, which comes included in CloudFlare’s <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">standard plans</a>. In authoritative DNS, CloudFlare hosts DNS records for a zone on its own infrastructure. In Virtual DNS, the customer hosts all of the DNS records for all of their zones, and CloudFlare serves as a front end proxy to them.</p>
-	<div class="flex anchor relative">
-		<h3 id="a-brand-new-dashboard-and-api">A brand new dashboard and API</h3>
-		<a href="https://blog.cloudflare.com/#a-brand-new-dashboard-and-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The new Virtual DNS dashboard makes it fast and easy to update Virtual DNS settings, and the changes are just as quickly propagated worldwide.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ONjOslO5sOZzOESFElQan/f4d5ff9eac1adbd8a37f2f9e4b0bdccf/Screen-Shot-2016-04-09-at-8-12-41-PM.png" alt="" class="kg-image" width="1116" height="664" loading="lazy">
-
-	</figure>
-	<p>Alongside the dashboard, we've also released a new API for managing Virtual DNS. You can now configure every aspect of Virtual DNS programmatically. This is how easy it is to spin up a new Virtual DNS instance -- it’s just one command:</p>
-	<pre class="language-bash"><code class="language-bash">$ curl -X POST "https://api.cloudflare.com/client/v4/user/virtual_dns" \
--H "X-Auth-Email: user@example.com" \
--H "X-Auth-Key: XXX" \
--H "Content-Type: application/json" \
---data '{"name":"My Awesome Virtual DNS cluster","origin_ips":["1.1.1.1","2.2.2.2"],"minimum_cache_ttl":60,"maximum_cache_ttl":900,"deprecate_any_request":true}'</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="multi-user-control">Multi-User Control</h3>
-		<a href="https://blog.cloudflare.com/#multi-user-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Virtual DNS now supports Multi-User access control. You can now invite your team members to manage your Virtual DNS instance together. Multi-User comes with advanced security features such as the ability to require the use of two-factor authentication across your team. If you are a Virtual DNS user and have not yet enabled Multi-User, reach out to to your sales rep to get upgraded.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7tVTBlenySVik5DBURCmBc/0cc4bcc139e14393a64d4163feeb0e35/Screen-Shot-2016-04-13-at-8-44-31-AM.png" alt="" class="kg-image" width="1946" height="302" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="better-cache-control">Better Cache Control</h3>
-		<a href="https://blog.cloudflare.com/#better-cache-control" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Caching has always been a tradeoff between serving the most up-to-date data and having speedy responses, but starting today, we are giving Virtual DNS customers total control of how long we cache their DNS answers for.</p>
-	<p>This means that a DNS provider can reduce the amount of time we cache their answers to optimize for up-to-date data, but if any of their servers start to have problems, they can immediately increase the caching time to lessen the load on their origin DNS servers.</p>
-	<div class="flex anchor relative">
-		<h3 id="bringing-any-query-deprecation-to-virtual-dns">Bringing ANY query deprecation to Virtual DNS</h3>
-		<a href="https://blog.cloudflare.com/#bringing-any-query-deprecation-to-virtual-dns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In October 2015, CloudFlare <a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">stopped answering the ANY query</a>, a special query type in DNS meant to return every DNS record in a zone. It’s mostly used to launch giant DDoS attacks and hardly ever used for legitimate traffic. If DNS providers behind Virtual DNS also want to stop serving large answers for ANY, they can now enable ANY deprecation in one click or API call, which several of our Virtual DNS customers have already done.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cLZLyNLXFqq4IYb1grQ5s/2421cb541783a37aa780e6f1141b9e02/Screen-Shot-2016-04-13-at-9-48-18-AM.png" alt="" class="kg-image" width="1918" height="308" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="availability">Availability</h3>
-		<a href="https://blog.cloudflare.com/#availability" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you are a current customer of Virtual DNS, someone on your account team will be reaching out today to get you started with the dashboard and new features. If you are a DNS provider or registry and are not yet a Virtual DNS customer and would like to be, <a href="https://www.cloudflare.com/enterprise-service-request" target="_blank" rel="noopener noreferrer">get in touch</a>.</p>
+<p>Today we're launching two new features and a brand new dashboard and API for Virtual DNS. Virtual DNS is CloudFlare’s DNS proxy that sits in front of some of the largest hosting providers in the world, shielding their DNS infrastructure from attacks and providing them with the DNS performance benefits of CloudFlare's network and caching.</p>
+<p>It's been a year since we <a href="https://blog.cloudflare.com/announcing-virtual-dns-ddos-mitigation-and-global-distribution-for-dns-traffic">launched Virtual DNS</a>, and the service has expanded a lot since then. Virtual DNS now answers 7 billion DNS queries a day, 4.6 billion of which are served from our cache, saving our Virtual DNS customers a collective 65% of their bandwidth. Beyond the bandwidth savings, Virtual DNS also protected its customers from a <a href="https://blog.cloudflare.com/a-deep-look-at-cve-2015-5477-and-how-cloudflare-virtual-dns-customers-are-protected">large vulnerability in BIND</a> when it was discovered in August.</p>
+<p>Virtual DNS is different from CloudFlare’s core authoritative DNS service, which comes included in CloudFlare’s <a href="https://www.cloudflare.com/plans" target="_blank" rel="noopener noreferrer">standard plans</a>. In authoritative DNS, CloudFlare hosts DNS records for a zone on its own infrastructure. In Virtual DNS, the customer hosts all of the DNS records for all of their zones, and CloudFlare serves as a front end proxy to them.</p>
+<h3>A brand new dashboard and API</h3>
+<p>The new Virtual DNS dashboard makes it fast and easy to update Virtual DNS settings, and the changes are just as quickly propagated worldwide.</p>
+<p>Alongside the dashboard, we've also released a new API for managing Virtual DNS. You can now configure every aspect of Virtual DNS programmatically. This is how easy it is to spin up a new Virtual DNS instance -- it’s just one command:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-032f62-99ffe4"> "https://api.cloudflare.com/client/v4/user/virtual_dns"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"X-Auth-Email: user@example.com"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"X-Auth-Key: XXX"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"Content-Type: application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">--data </span><span class="sk-032f62-99ffe4">'{"name":"My Awesome Virtual DNS cluster","origin_ips":["1.1.1.1","2.2.2.2"],"minimum_cache_ttl":60,"maximum_cache_ttl":900,"deprecate_any_request":true}'</span></span></code></pre>
 </div>
+<h3>Multi-User Control</h3>
+<p>Virtual DNS now supports Multi-User access control. You can now invite your team members to manage your Virtual DNS instance together. Multi-User comes with advanced security features such as the ability to require the use of two-factor authentication across your team. If you are a Virtual DNS user and have not yet enabled Multi-User, reach out to to your sales rep to get upgraded.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="111" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=715&amp;h=111&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=640&amp;h=99&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=715&amp;h=111&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=750&amp;h=116&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=828&amp;h=129&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=1080&amp;h=168&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=1280&amp;h=199&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=1430&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="New for Virtual DNS Customers: Self-Service Dashboard and APIs, and Two New Features Embedded Image - SNZGS2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491CD8WX1R4XE0SVYSN441.png&amp;w=1920&amp;h=298&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="298" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="111" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Better Cache Control</h3>
+<p>Caching has always been a tradeoff between serving the most up-to-date data and having speedy responses, but starting today, we are giving Virtual DNS customers total control of how long we cache their DNS answers for.</p>
+<p>This means that a DNS provider can reduce the amount of time we cache their answers to optimize for up-to-date data, but if any of their servers start to have problems, they can immediately increase the caching time to lessen the load on their origin DNS servers.</p>
+<h3>Bringing ANY query deprecation to Virtual DNS</h3>
+<p>In October 2015, CloudFlare <a href="https://blog.cloudflare.com/what-happened-next-the-deprecation-of-any">stopped answering the ANY query</a>, a special query type in DNS meant to return every DNS record in a zone. It’s mostly used to launch giant DDoS attacks and hardly ever used for legitimate traffic. If DNS providers behind Virtual DNS also want to stop serving large answers for ANY, they can now enable ANY deprecation in one click or API call, which several of our Virtual DNS customers have already done.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="115" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=715&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=640&amp;h=103&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=715&amp;h=115&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=750&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=828&amp;h=133&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=1080&amp;h=174&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=1280&amp;h=206&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=1430&amp;h=230&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="New for Virtual DNS Customers: Self-Service Dashboard and APIs, and Two New Features Embedded Image - 9qDyhY" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSWZ1E6R1FW6HHDEEWZP.png&amp;w=1918&amp;h=308&amp;f=webp" data-lightbox-width="1918" data-lightbox-height="308" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="115" class="pt-portable-image-media"></div>
+</figure>
+<h3>Availability</h3>
+<p>If you are a current customer of Virtual DNS, someone on your account team will be reaching out today to get you started with the dashboard and new features. If you are a DNS provider or registry and are not yet a Virtual DNS customer and would like to be, <a href="https://www.cloudflare.com/enterprise-service-request" target="_blank" rel="noopener noreferrer">get in touch</a>.</p>

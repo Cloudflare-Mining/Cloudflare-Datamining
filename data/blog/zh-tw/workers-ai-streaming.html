@@ -1,0 +1,245 @@
+<p>Workers AI 是我們的無伺服器 GPU 驅動的推理平台，在 Cloudflare 的全球網路之上執行。它提供了越來越多的現成模型目錄，這些模型可以使用 Workers 無縫執行，並使開發人員能夠在幾分鐘內構建強大且可擴展的 AI 應用程式。我們已經看到開發人員使用 Workers AI 構建出了驚人的作品，隨著我們繼續擴展平台，我們迫不及待地想看到他們的最新成果。為此，今天我們很高興地宣佈推出一些飽受期待的新功能：Workers AI 上所有<a href="https://www.cloudflare.com/learning/ai/what-is-large-language-model" target="_blank" rel="noopener noreferrer">大型語言模型</a> (LLM) 的串流回應、更長的背景資訊和序列視窗以及全精度 <a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2</a> 模型變體。</p>
+<p>如果您以前使用過 ChatGPT，那麼您就會熟悉回應串流的好處，其中回應按權杖逐個流動。LLM 的內部工作方式是使用重複推理過程按順序產生回應，LLM 模型的完整輸出本質上是數百或數千個單獨預測任務的序列。因此，產生一個權杖只需要幾毫秒，而產生完整的回應則需要更長的時間，大約需要幾秒鐘。好消息是，我們可以在產生第一個權杖後立即開始顯示回應，並追加每一個額外的權杖，直到回應完成。這將為終端使用者帶來更好的體驗——隨著文字的產生而逐步顯示文字，不僅能提供即時回應，還能讓終端使用者有時間閱讀和解釋文字。</p>
+<p>截至今天，您可以對我們目錄中的任何 LLM 模型使用回應串流，包括非常流行的 <a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2 模型</a>。下面是它的工作原理。</p>
+<h3>Server-sent events：瀏覽器 API 中的寶藏</h3>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" target="_blank" rel="noopener noreferrer">Server-sent events</a> 易於使用、易於在伺服器端實作、合乎標準，並且可在許多平台上原生或作為填充程式廣泛使用。Server-sent events 填補了處理來自伺服器的更新串流的空白，處理事件串流原本所需的樣板代碼如今已不再需要。</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lt9p{background-color:#F3F3F3;text-align:left;vertical-align:top} .tg .tg-9qck{background-color:#F3F3F3;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-ko" class="html-block">
+	<style>
+		#html-block-ko .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-ko .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ko .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-ko .tg .tg-lt9p {
+			background-color: #F3F3F3;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-ko .tg .tg-9qck {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-ko .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-lt9p"></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Easy-to-use</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Streaming</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bidirectional</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">fetch</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Server-sent events</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"></td>
+			</tr>
+			<tr>
+				<td class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Websockets</span></td>
+				<td class="tg-0lax"></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">✅</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>易於使用</p>
+<p>串流</p>
+<p>雙向</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">curl</span><span class="sk-005cc5-99ffe4"> -X</span><span class="sk-032f62-99ffe4"> POST</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">"https://api.cloudflare.com/client/v4/accounts/&lt;account&gt;/ai/run/@cf/meta/llama-2-7b-chat-int8"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"Authorization: Bearer &lt;token&gt;"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-H </span><span class="sk-032f62-99ffe4">"Content-Type:application/json"</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-24292e-fff">-d </span><span class="sk-032f62-99ffe4">'{ "prompt": "where is new york?", "stream": true }'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span><span class="sk-032f62-99ffe4"> {"response":"New"}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span><span class="sk-032f62-99ffe4"> {"response":" York"}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span><span class="sk-032f62-99ffe4"> {"response":" is"}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span><span class="sk-032f62-99ffe4"> {"response":" located"}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span><span class="sk-032f62-99ffe4"> {"response":" in"}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span><span class="sk-032f62-99ffe4"> {"response":" the"}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">data:</span><span class="sk-24292e-fff"> [DONE]</span></span></code></pre>
+</div>
+<p>fetch</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Ai } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "@cloudflare/ai"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> ai</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Ai</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">, { sessionOptions: { ctx: ctx } });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> stream</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> ai.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">            "@cf/meta/llama-2-7b-chat-int8"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            { prompt: </span><span class="sk-032f62-99ffe4">"where is new york?"</span><span class="sk-24292e-fff">, stream: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">        );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(stream,</span></span>
+<span class="line"><span class="sk-24292e-fff">            { headers: { </span><span class="sk-032f62-99ffe4">"content-type"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"text/event-stream"</span><span class="sk-24292e-fff"> } }</span></span>
+<span class="line"><span class="sk-24292e-fff">        );</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>✅</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> source</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> EventSource</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/worker-endpoint"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">source.</span><span class="sk-6f42c1-ffc799">onmessage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff">(event.data</span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4">"[DONE]"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // SSE spec says the connection is restarted</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // if we don't explicitly close it</span></span>
+<span class="line"><span class="sk-24292e-fff">        source.</span><span class="sk-6f42c1-ffc799">close</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(event.data);</span></span>
+<span class="line"><span class="sk-24292e-fff">    el.innerHTML </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> data.response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Server-sent events</p>
+<p>✅</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="287" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-media" data-image-placeholder-media="" src="/_emdash/api/media/file/01KW486D9K9N6S5H4F87S32P8S.gif" alt="BLOG-2167 Embedded Image - MMUM6H" width="715" height="287" loading="lazy" decoding="async" data-astro-cid-7nvefuv6=""></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>✅</p>
+<p>Websockets</p>
+<p>✅</p>
+<p>✅</p>
+<p>比較 fetch、server-sent events 和 websocket</p>
+<div id="html-block-k1h" class="html-block">
+	<style>
+		#html-block-k1h .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k1h .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1h .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k1h .tg .tg-9qck {
+			background-color: #F3F3F3;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k1h .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Model</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Context length (in)</span></th>
+				<th class="tg-9qck"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Sequence length (out)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">@cf/meta/llama-2-7b-chat-int8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2048 (768 before)</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1800 (256 before)</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">@cf/meta/llama-2-7b-chat-fp16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3072</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2500</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>要開始在 WorkersAI 的文字產生模型上透過 server-sentevents 使用串流，請在請求輸入中將「stream」參數設定為true。這會將回應格式和 <code>mime-type</code> 變更為 <code>text/event-stream</code>。</p>
+<p>下面是透過 <a href="https://developers.cloudflare.com/workers-ai/get-started/rest-api" target="_blank" rel="noopener noreferrer">REST API</a> 使用串流處理的範例：</p>
+<p>下面是使用 Worker 指令碼的範例：</p>
+<p>如果您想在瀏覽器頁面中使用此 Worker 的輸出事件串流，則用戶端 JavaScript 類似於：</p>
+<p>您可以將此簡單的程式碼與任何簡單的 HTML 頁面、使用 React 或其他 Web 框架的複雜 SPA 結合使用。</p>
+<p>這為使用者建立了更具互動性的體驗，現在，隨著回應的增量建立，使用者會看到頁面更新，而不是看到一個旋轉畫面，等待整個回應序列產生。嘗試在 <a href="https://ai.cloudflare.com" target="_blank" rel="noopener noreferrer">ai.cloudflare.com</a> 上進行串流。</p>
+<p>Workers AI 支援 <a href="https://developers.cloudflare.com/workers-ai/models/llm" target="_blank" rel="noopener noreferrer">Llama-2</a> 模型以及我們未來新增到目錄中的任何 LLM 模型的串流文字回應。</p>
+<p>但這還不是全部。</p>
+<h3>更高的精度以及更長的背景資訊和序列長度</h3>
+<p>Workers AI 推出後，我們從社群聽到的另一個最重要的請求是在我們的 Llama-2 模型中提供更長的問題和答案。在 LLM 術語中，這意味著更高的背景資訊長度（模型在進行預測之前作為輸入的權杖數量）和更高的序列長度（模型在回應中產生的權杖數量）。</p>
+<p>我們聽取了建議，並結合串流，今天我們在目錄中新增了更高的 16 位元全精度 Llama-2 變體，並增加了現有 8 位元版本的背景資訊和序列長度。</p>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-9qck{background-color:#F3F3F3;font-weight:bold;text-align:left;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<p>模型</p>
+<p>背景資訊長度（輸入）</p>
+<p>序列長度（輸出）</p>
+<p>@cf/meta/llama-2-7b-chat-int8</p>
+<p>2048（之前為 768）</p>
+<p>1800（之前為 256）</p>
+<p>@cf/meta/llama-2-7b-chat-fp16</p>
+<p>3072</p>
+<p>2500</p>
+<p>串流、更高的精度以及更長的背景資訊和序列長度可提供更好的使用者體驗，並使用 Workers AI 中的大型語言模型啟用新的、更豐富的應用程式。</p>
+<p>查看 Workers AI <a href="https://developers.cloudflare.com/workers-ai" target="_blank" rel="noopener noreferrer">開發人員文件</a>以獲取更多資訊和選項。如果您對 Workers AI 有任何疑問或意見反應，請在 <a href="https://community.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare 社群</a>和 <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Discord</a> 中與我們聯繫。</p>
+<p>如果您對機器學習和無伺服器 AI 感興趣，Cloudflare Workers AI 團隊正在構建一個全球規模的平台和工具，讓我們的客戶能夠在我們的網路之上執行快速、低延遲的推理任務。請查看我們的<a href="https://www.cloudflare.com/careers/jobs" target="_blank" rel="noopener noreferrer">職位頁面</a>，瞭解工作機會。</p>

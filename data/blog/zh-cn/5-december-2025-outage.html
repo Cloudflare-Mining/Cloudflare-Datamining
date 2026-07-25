@@ -1,0 +1,121 @@
+<p>2025 年 12 月 5 日 08:47 UTC（本博客中的所有时间均为世界标准时间），Cloudflare 部分网络开始出现严重故障。事件已于 09:12 解决（总影响时间大约 25 分钟），所有服务均已完全恢复。</p>
+<p>部分客户受到了影响，约占 Cloudflare 处理的 HTTP 总流量的 28%。正如以下所述，需要满足多个条件，单个客户才会受到影响。</p>
+<p>并不是针对 Cloudflare 系统的网络攻击或任何形式的恶意活动直接或间接引发了此问题。相反，它是由于我们对正文解析逻辑进行更改而引起，当时我们在尝试检测并缓解本周披露的 <a href="https://blog.cloudflare.com/waf-rules-react-vulnerability" target="_blank" rel="noopener noreferrer"><u>React Server Components</u></a> 中存在的行业范围漏洞。</p>
+<p>我们深知，任何系统中断都是不可接受的，继 11 月 18 日的故障事件之后，我们再次让互联网用户失望了。我们将在下周发布详细信息，介绍我们正在采取的措施，以防止此类事件再次发生。</p>
+<h3>究竟发生了什么</h3>
+<p>下图显示了事件发生期间 Cloudflare 网络返回的 HTTP 500 错误（底部的红线），以及与未受影响的 Cloudflare 总流量（顶部的绿线）之间的对比。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="342" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=640&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=715&amp;h=342&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=750&amp;h=359&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=828&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1080&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1280&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1430&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="500 error codes served by Cloudflare’s network during the incident" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46F7MNPP5ZRDAGBJ51PFRJ.png&amp;w=1920&amp;h=917&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="917" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="342" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Cloudflare Web 应用防火墙 (WAF) 为客户提供安全防护，使其能够检测并阻止恶意有效负载。为此，Cloudflare 代理将 HTTP 请求的正文内容缓存在内存中，以供分析。在此之前，缓冲区大小设置为 128KB。</p>
+<p>我们持续努力保护使用 React 的客户免受关键漏洞 <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-55182" target="_blank" rel="noopener noreferrer"><u>CVE-2025-55182</u></a> 的影响，于是我们开始逐步将缓冲区大小增加到 1MB，这是 Next.js 应用允许的默认限制值，以确保让尽可能多的客户受到保护。</p>
+<p>第一项更改当时是使用我们的渐进式部署系统推出。在试运行过程中，我们注意到内部 WAF 测试工具不支持增加的缓冲区大小。由于当时不需要这个内部测试工具，而且它不影响客户流量，因此，我们进行了第二项更改，将其关闭。</p>
+<p>关闭 WAF 测试工具的这个第二项更改，则是通过 Cloudflare 全局配置系统实施。该系统不执行渐进式部署，而是在几秒钟之内将更改传播到我们网络中的所有服务器。<a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>在经历了 11 月 18 日发生的服务中断之后</u></a>，该系统目前正在接受审核。&nbsp;</p>
+<p>遗憾的是，在我们 FL1 代理版本中，在某些情况下，关闭 WAF 规则测试工具的第二项更改引发了错误状态，从而导致 Cloudflare 网络返回 500 HTTP 错误代码。</p>
+<p>更改传播到 Cloudflare 网络之后，FL1 代理中的代码执行在规则模块中遇到了一个错误，导致出现以下 Lua 异常： </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">[lua] </span><span class="sk-6f42c1-ffc799">Failed</span><span class="sk-24292e-fff"> to run module rulesets callback late_routing</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> /</span><span class="sk-24292e-fff">usr</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">local</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">nginx</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">fl</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">modules</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">init</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">lua</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799">314</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> attempt to index field </span><span class="sk-032f62-99ffe4">'execute'</span><span class="sk-24292e-fff"> (a nil value)</span></span></code></pre>
+</div>
+<p>导致系统发出 HTTP 500 错误代码。</p>
+<p>在应用更改后不久就发现了此问题，并在 09:12 进行了还原，之后的所有流量均恢复正常。</p>
+<p>如果客户使用我们的旧版 FL1 代理提供的服务保护 Web 资产，<strong>并且</strong>部署了 Cloudflare 托管规则集，则客户会受到影响。处于此状态的所有网站请求均返回 HTTP 500 错误，但少数测试端点（例如 <code>/cdn-cgi/trace</code>）除外。</p>
+<p>尚未应用上述配置的客户，则未受到任何影响。由我们的中国网络服务的客户流量也未受到影响。</p>
+<h3>运行时错误</h3>
+<p>Cloudflare 的规则集系统由多组规则构成，这些规则会对进入我们系统的每个请求进行评估。每条规则包含一个过滤器，用于筛选某些流量；以及一个操作，将效果应用于该流量。常见的操作包括“<code>block”</code>、“<code>log</code>”或“<code>skip</code>”。另一种类型的操作是“<code>execute</code>”，用于触发对另一个规则集的评估。</p>
+<p>Cloudflare 的内部日志记录系统使用此功能来评估新规则，然后再将其公开，向公众提供这些规则。顶级规则集会执行包含测试规则的另一个规则集。我们当时尝试禁用的正是这些测试规则。</p>
+<p>我们的规则集系统包含一个切断开关（熔断）子系统，旨在快速禁用行为异常的规则。此切断开关系统接收前几节中提到的全局配置系统发出的信息。过去，我们曾在许多场合使用过这种切断开关系统来缓解服务中断事件，并且制定了完善的标准操作规程，我们也遵循该规程来处理本次事故。</p>
+<p>但是，我们之前从未将切断开关应用于“<code>execute</code>”类操作规则。在我们应用了切断开关后，代码正确跳过了 execute 操作的评估，并且没有评估其指向的子规则集。然而，在处理规则集评估的整体结果时，却出现了一个错误：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">action </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "execute"</span><span class="sk-24292e-fff"> then</span></span>
+<span class="line"><span class="sk-24292e-fff">  rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> ruleset_results[</span><span class="sk-6f42c1-ffc799">tonumber</span><span class="sk-24292e-fff">(rule_result</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">execute</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-24292e-fff">results_index)]</span></span>
+<span class="line"><span class="sk-24292e-fff">end</span></span></code></pre>
+</div>
+<p>这段代码预计，如果规则集的操作为“execute”，则“rule_result.execute”对象将会存在。但是，由于已经跳过了该规则，rule_result.execute 对象其实不存在，因此，当 Lua 尝试在 nil 值中查找值时返回了错误。</p>
+<p>这是一个简单的代码错误，多年来一直存在却未被发现。强类型系统语言可以防止此类代码错误。在我们使用 Rust 编写的新 FL2 代理中，新代码替换了这段代码，因此没有出现此错误。</p>
+<h3>2025 年 11 月 18 日的事件发生后，我们正在进行哪些更改？</h3>
+<p>两周前，也就是 2025 年 11 月 18 日，我们进行了一项不相关的更改，导致了一次类似的、<a href="https://blog.cloudflare.com/18-november-2025-outage" target="_blank" rel="noopener noreferrer"><u>持续时间更长的服务中断事件</u></a>。在这两次事件中，为了帮助解决客户面临的安全问题而进行的部署最终影响了整个 Cloudflare 网络，并导致几乎所有客户都出现了错误。</p>
+<p>事件发生后，我们已与数百名客户进行了直接沟通，并分享了计划实施的改进措施，以防止因单一更新而造成如此广泛的影响。我们认为，这些更改本应有助于避免今天事件的巨大影响，但遗憾的是，我们尚未完成全面部署。</p>
+<p>我们深知，这项工作尚未完成，这会令人感到失望。但这仍然是 Cloudflare 全公司上下的头等大事。具体而言，下述项目将有助于抑制此类更改所造成的影响：</p>
+<ul>
+	<li><strong>增强发布推出与版本控制</strong>：通过严格的运行状况验证来缓慢地部署软件，与此方法类似的是，用于快速威胁响应和常规配置的数据也需要具备相同的安全性和故障缓解功能。其中包括运行状况验证、快速回滚功能，以及其他功能。</li>
+	<li><strong>简化应急访问功能：</strong>确保在面对更多类型的故障时，仍能顺利执行关键操作。这不仅适用于内部服务，而且还适用于 Cloudflare 客户用于与 Cloudflare 控制平面交互的各种标准方法。</li>
+	<li><strong>“故障开放”错误处理：</strong>作为韧性计划的一部分，我们将替换所有关键 Cloudflare 数据平面组件中错误应用的硬故障逻辑。如果配置文件已损坏或超出范围（例如，超出功能上限），则系统将记录错误，并默认恢复到已知良好状态，或在不进行评分的情况下允许传输流量，而不是丢弃请求。在特定情况下，某些服务可能为客户提供选择故障开放或故障关闭的选项。这将包括防止漂移功能，以确保持续执行此操作。</li>
+</ul>
+<p>下周结束之前，我们将会发布所有正在进行的韧性项目的详细说明，包括上面列出的项目。与此同时，我们将锁定对网络的所有更改，以确保在重新开始之前，增强缓解和回滚系统。</p>
+<p>对于像我们这样规模的网络来说，近期接二连三发生此类事件是不可接受的。我谨代表 Cloudflare 团队全体成员，再次对此次事件给广大客户和整个互联网社群造成的影响和困扰深表歉意。</p>
+<h3>时间表</h3>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>时间 (UTC)</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>状态</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>描述</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:47</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>事件开始</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>配置变更已部署，并且已传播至网络</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:48</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>全面影响</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>更改已全面传播</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>08:50</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>宣布发生了事件</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>自动化警报</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>09:11</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>已撤销更改</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>配置更改已回滚，并且开始传播</p>
+				</td>
+			</tr>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
+					<p>09:12</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>事件结束</p>
+				</td>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>已完全恢复，所有流量恢复正常</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

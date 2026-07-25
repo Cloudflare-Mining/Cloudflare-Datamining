@@ -1,0 +1,9 @@
+{
+	"author": {},
+	"headline": "QUIC restarts, slow problems: udpgrm to the rescue",
+	"url": "https://blog.cloudflare.com/quic-restarts-slow-problems-udpgrm-to-the-rescue/",
+	"datePublished": "2025-05-07T13:00:00.000Z",
+	"dateModified": "2026-07-15T14:22:15.976Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KW464WNEWSV65VCBS3GQ74MW.png",
+	"description": "udpgrm is a lightweight daemon for graceful restarts of UDP servers. It leverages SO_REUSEPORT and eBPF to route new and existing flows to the correct server instance. Designed for modern protocols like QUIC, udpgrm hides kernel complexity behind a clean, configurable API."
+}

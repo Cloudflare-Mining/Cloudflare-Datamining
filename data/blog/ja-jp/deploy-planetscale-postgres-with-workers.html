@@ -1,91 +1,64 @@
-<div class="mb2 gray5">3分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/deploy-planetscale-postgres-with-workers">English</a>および<a href="https://blog.cloudflare.com/ko-kr/deploy-planetscale-postgres-with-workers">한국어</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/VPnsUenQnhvHyp33AcXzw/2534f3fec82d50f173b2bda35cf161a5/BLOG-3213_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</i></p>
-	<p>Cloudflareは昨年9月に、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>にPostgresとMySQLデータベースへの直接アクセスを提供し、高速なフルスタックアプリケーションを実現するためのPlanetScaleパートナーシップを発表しました。</p>
-	<p>まもなく、Cloudflareのテクノロジーとの距離をさらに縮めることになります。CloudflareのダッシュボードやAPIから直接、PlanetScale PostgresやMySQLデータベースを作成し、Cloudflareアカウントに課金できるようになります。</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5Tj4gJrV5hxlIWxlmoXVZe/7661c1e47c0c868b88301b5f4aca4441/BLOG-3213_2.png" alt="BLOG-3213 2" class="kg-image" width="607" height="216" loading="lazy">
-	</figure>
-	<p>Workerアプリケーションのニーズに合わせてデータストレージを選択し、CloudflareのセルフサービスまたはEnterpriseプランの顧客として、請求を単一のシステムにまとめます。弊社の<a href="https://www.cloudflare.com/forstartups" target="_blank" rel="noopener noreferrer"><u>スタートアッププログラム</u></a>で提供されるCloudflareクレジット、またはCloudflareコミット済み利用額は、PlanetScaleデータベースに使用できます。</p>
-	<div class="flex anchor relative">
-		<h2 id="postgres-mysql-for-workers">PostgresとMySQL for Workers</h2>
-		<a href="https://blog.cloudflare.com/#postgres-mysql-for-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>PostgresやMySQLなどのSQLリレーショナルデータベースは、現代アプリケーションの基盤です。特に、Postgresは、その充実したツールエコシステム（ORM、GUIなど）と、AI駆動型アプリケーションでベクトル検索を構築するための<a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener noreferrer"><u>pgvector</u></a>などの拡張機能により、開発者の人気が高まっています。Postgresは、アプリケーションを稼働するために強力で柔軟性が高くスケーラブルなデータベースを必要とする多くの開発者にとって、デフォルトの選択肢です。</p>
-	<p>PlanetScaleアカウントを接続し、Workers向けに<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer">Cloudflareダッシュボード</a>から直接Postgresデータベースを作成できるようになりました。来月より、新規のCloudflareサブスクリプションが発生した場合、新しいPlanetScaleデータベースについてセルフサービスまたはEnterpriseユーザーとしてCloudflareアカウントに直接請求されるようになります。</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1CHTq1qoaNGSNO5atsiS8J/a8eba618b77362aa467d94c4f625c600/BLOG-3213_3.png" alt="BLOG-3213 3" class="kg-image" width="1540" height="1304" loading="lazy">
-	</figure>
-	<p><i><sup>PlanetScaleアカウントが接続された後に、</sup></i><a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer"><i><sup><u>Cloudflareダッシュボード</u></sup></i></a><i><sup>を介してPlanetScaleデータベースを作成する方法Cloudflareの請求は来月発生します。</sup></i></p>
-	<p>統合機能が組み込まれており、PlanetScaleデータベースはデータベース接続サービスHyperdriveを使ってWorkersと自動的に連携します。<a href="https://blog.cloudflare.com/how-hyperdrive-speeds-up-database-access"><u>Hyperdrive</u></a>サービスは、データベース接続プールとクエリキャッシングを管理し、データベースクエリを高速かつ信頼性の高いものにします。Worker の<a href="https://developers.cloudflare.com/workers/wrangler/configuration/#hyperdrive" target="_blank" rel="noopener noreferrer"><u> 設定ファイルに</u></a><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u> バインディング</u></a> を追加するだけです。</p>
-	<pre class="language-javascript"><code class="language-javascript">// wrangler.jsonc file
-{
-  "hyperdrive": [
-    {
-      "binding": "DATABASE",
-      "id": &lt;AUTO_CREATED_ID&gt;
-    }
-  ]
-}
-</code></pre>
-	<p>そして、選択したPostgresクライアントでWorkerを経由し、SQLクエリの実行を始めます。</p>
-	<pre class="language-javascript"><code class="language-javascript">import { Client } from "pg";
-
-export default {
-  async fetch(request, env, ctx) {
-   
-    const client = new Client({ connectionString: env.DATABASE.connectionString });
-    await client.connect();
-
-    const result = await client.query("SELECT * FROM pg_tables");
-    ...
-}
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="planetscale-developer-experience">PlanetScale開発者エクスペリエンス</h2>
-		<a href="https://blog.cloudflare.com/#planetscale-developer-experience" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>PlanetScaleは、比類のないパフォーマンスと信頼性により、Workersコミュニティに提供するのに当然の選択でした。開発者は、<a href="https://planetscale.com/docs/postgres/postgres-compatibility" target="_blank" rel="noopener noreferrer"><u>Postgres</u></a>とVites MySQLの最も人気のある2つのリレーショナルデータベースから選択することができます。PlanetScaleは、Cloudflareがパフォーマンスと信頼性を開発者プラットフォームの主要機能として扱う方法と一致しています。また、<a href="https://planetscale.com/docs/postgres/monitoring/query-insights" target="_blank" rel="noopener noreferrer"><u>クエリー洞察</u></a>や、SQLクエリーのパフォーマンスを向上させるための<a href="https://planetscale.com/docs/connect/ai-tooling" target="_blank" rel="noopener noreferrer"><u>エージェント駆動型</u></a>のワークフロー、データベース変更を含めたコードを安全にデプロイするための<a href="https://planetscale.com/docs/postgres/branching" target="_blank" rel="noopener noreferrer"><u>ブランチング</u></a>などの機能を備え、PlanetScaleデータベースの開発者体験は第一級です。</p>
-	<p>Cloudflareユーザーは、まったく同じPlanetScaleデータベースの開発者体験を得られます。PlanetScaleデータベースは、Hyperdriveを介して管理された接続を使用して、Cloudflareから直接デプロイでき、グローバルWorkersで既存のリージョンデータベースを高速化できます。つまり、同じPlanetScaleの<a href="https://planetscale.com/docs/plans/planetscale-skus" target="_blank" rel="noopener noreferrer"><u>データベースクラスター</u></a>に、標準PlanetScaleの<a href="https://planetscale.com/pricing" target="_blank" rel="noopener noreferrer"><u>料金</u></a>でアクセスでき、クエリインサイトや<a href="https://planetscale.com/docs/billing#organization-usage-and-billing-page" target="_blank" rel="noopener noreferrer"><u>使用量とコスト</u></a>の詳細な内訳などの全機能が含まれます。</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2Pfh4oM8zQSUGJKGEsxF3W/700f627c38279d9d90337b38de72b44e/BLOG-3213_4.png" alt="BLOG-3213 4" class="kg-image" width="1999" height="1027" loading="lazy">
-	</figure>
-	<p><i><sup>PlanetScale Postgresの単一ノードは、</sup></i><a href="https://planetscale.com/blog/5-dollar-planetscale" target="_blank" rel="noopener noreferrer"><i><sup><u>月額5ドル</u></sup></i></a><i><sup>からご利用いただけます。</sup></i></p>
-	<div class="flex anchor relative">
-		<h2 id="workers-placement">Workersの配置</h2>
-		<a href="https://blog.cloudflare.com/#workers-placement" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>中央集約型のデータベースでは、Workersはプライマリデータベースのすぐ隣で実行でき、<a href="https://developers.cloudflare.com/workers/configuration/placement/#configure-explicit-placement-hints" target="_blank" rel="noopener noreferrer"><u>明示的な配置のヒント</u></a>を使用して遅延を削減できます。デフォルトでは、Workersはユーザーのリクエストに最も近い場所で実行されるため、中央データベースにクエリを実行するとき、特に複数のクエリを実行するときに、ネットワークの遅延が追加されます。代わりに、PlanetScaleデータベースに最も近いCloudflareデータセンターで実行するようにWorkerを設定することができます。将来的には、Cloudflareは、PlanetScaleデータベースのロケーションに基づいて配置のヒントを自動的に設定し、ネットワーク遅延を1桁ミリ秒に短縮できるようになります。</p>
-	<pre class="language-javascript"><code class="language-javascript">{
-  "placement": {
-    "region": "aws:us-east-1"
-  }
-}
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="coming-soon">公開間近</h2>
-		<a href="https://blog.cloudflare.com/#coming-soon" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflareダッシュボードを介して、PlanetScale Postgresデータベースをデプロイしたり、既存のPlanetScaleデータベースをWorkersに接続することができます。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>現在、すべてがPlanetScale経由で請求されます。</p>
-	<p>来月のローンチでは、新しいPlanetScaleデータベースをCloudflareアカウントへの課金が可能になります。</p>
-	<p>Cloudflare API統合など、PlanetScaleパートナーと共に、さらに構築しています。次に、どのようなものを期待するかをお知らせください。</p>
+<p><em>このコンテンツは自動機械翻訳サービスによる翻訳版であり、皆さまの便宜のために提供しています。原本の英語版と異なる誤り、省略、解釈の微妙な違いが含まれる場合があります。ご不明な点がある場合は、英語版原本をご確認ください。</em></p>
+<p>Cloudflareは昨年9月に、<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Cloudflare Workers</u></a>にPostgresとMySQLデータベースへの直接アクセスを提供し、高速なフルスタックアプリケーションを実現するためのPlanetScaleパートナーシップを発表しました。</p>
+<p>まもなく、Cloudflareのテクノロジーとの距離をさらに縮めることになります。CloudflareのダッシュボードやAPIから直接、PlanetScale PostgresやMySQLデータベースを作成し、Cloudflareアカウントに課金できるようになります。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="607" height="216" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=607&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=607&amp;h=216&amp;f=webp&amp;fit=cover&amp;position=center 607w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=640&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=750&amp;h=267&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=828&amp;h=295&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=1080&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=1214&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 1214w" alt="BLOG-3213 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47FS4D0KC67C695NPF8NX7.png&amp;w=607&amp;h=216&amp;f=webp" data-lightbox-width="607" data-lightbox-height="216" data-astro-cid-7nvefuv6="true" sizes="(min-width: 607px) 607px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="607" height="216" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Workerアプリケーションのニーズに合わせてデータストレージを選択し、CloudflareのセルフサービスまたはEnterpriseプランの顧客として、請求を単一のシステムにまとめます。弊社の<a href="https://www.cloudflare.com/forstartups" target="_blank" rel="noopener noreferrer"><u>スタートアッププログラム</u></a>で提供されるCloudflareクレジット、またはCloudflareコミット済み利用額は、PlanetScaleデータベースに使用できます。</p>
+<h2>PostgresとMySQL for Workers</h2>
+<p>PostgresやMySQLなどのSQLリレーショナルデータベースは、現代アプリケーションの基盤です。特に、Postgresは、その充実したツールエコシステム（ORM、GUIなど）と、AI駆動型アプリケーションでベクトル検索を構築するための<a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener noreferrer"><u>pgvector</u></a>などの拡張機能により、開発者の人気が高まっています。Postgresは、アプリケーションを稼働するために強力で柔軟性が高くスケーラブルなデータベースを必要とする多くの開発者にとって、デフォルトの選択肢です。</p>
+<p>PlanetScaleアカウントを接続し、Workers向けに<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer">Cloudflareダッシュボード</a>から直接Postgresデータベースを作成できるようになりました。来月より、新規のCloudflareサブスクリプションが発生した場合、新しいPlanetScaleデータベースについてセルフサービスまたはEnterpriseユーザーとしてCloudflareアカウントに直接請求されるようになります。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="605" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=715&amp;h=605&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=640&amp;h=542&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=715&amp;h=605&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=750&amp;h=635&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=828&amp;h=701&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=1080&amp;h=914&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=1280&amp;h=1083&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=1430&amp;h=1210&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3213 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C77MPM4K3JZKS18M9Q7E.png&amp;w=1540&amp;h=1304&amp;f=webp" data-lightbox-width="1540" data-lightbox-height="1304" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="605" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>PlanetScaleアカウントが接続された後に、<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>を介してPlanetScaleデータベースを作成する方法Cloudflareの請求は来月発生します。</em></sup></p>
+<p>統合機能が組み込まれており、PlanetScaleデータベースはデータベース接続サービスHyperdriveを使ってWorkersと自動的に連携します。<a href="https://blog.cloudflare.com/how-hyperdrive-speeds-up-database-access" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a>サービスは、データベース接続プールとクエリキャッシングを管理し、データベースクエリを高速かつ信頼性の高いものにします。Worker の<a href="https://developers.cloudflare.com/workers/wrangler/configuration/#hyperdrive" target="_blank" rel="noopener noreferrer"><u> 設定ファイルに</u></a><a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u> バインディング</u></a> を追加するだけです。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// wrangler.jsonc file</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "hyperdrive"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-24292e-fff">    {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "binding"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"DATABASE"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "id"</span><span class="sk-24292e-fff">: </span><span class="sk-24292e-a0a0a0">&lt;</span><span class="sk-005cc5-ffc799">AUTO_CREATED_ID</span><span class="sk-24292e-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  ]</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
 </div>
+<p>そして、選択したPostgresクライアントでWorkerを経由し、SQLクエリの実行を始めます。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Client } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "pg"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">   </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> client</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Client</span><span class="sk-24292e-fff">({ connectionString: env.</span><span class="sk-005cc5-fff">DATABASE</span><span class="sk-24292e-fff">.connectionString });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">connect</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> client.</span><span class="sk-6f42c1-ffc799">query</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"SELECT * FROM pg_tables"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>PlanetScale開発者エクスペリエンス</h2>
+<p>PlanetScaleは、比類のないパフォーマンスと信頼性により、Workersコミュニティに提供するのに当然の選択でした。開発者は、<a href="https://planetscale.com/docs/postgres/postgres-compatibility" target="_blank" rel="noopener noreferrer"><u>Postgres</u></a>とVites MySQLの最も人気のある2つのリレーショナルデータベースから選択することができます。PlanetScaleは、Cloudflareがパフォーマンスと信頼性を開発者プラットフォームの主要機能として扱う方法と一致しています。また、<a href="https://planetscale.com/docs/postgres/monitoring/query-insights" target="_blank" rel="noopener noreferrer"><u>クエリー洞察</u></a>や、SQLクエリーのパフォーマンスを向上させるための<a href="https://planetscale.com/docs/connect/ai-tooling" target="_blank" rel="noopener noreferrer"><u>エージェント駆動型</u></a>のワークフロー、データベース変更を含めたコードを安全にデプロイするための<a href="https://planetscale.com/docs/postgres/branching" target="_blank" rel="noopener noreferrer"><u>ブランチング</u></a>などの機能を備え、PlanetScaleデータベースの開発者体験は第一級です。</p>
+<p>Cloudflareユーザーは、まったく同じPlanetScaleデータベースの開発者体験を得られます。PlanetScaleデータベースは、Hyperdriveを介して管理された接続を使用して、Cloudflareから直接デプロイでき、グローバルWorkersで既存のリージョンデータベースを高速化できます。つまり、同じPlanetScaleの<a href="https://planetscale.com/docs/plans/planetscale-skus" target="_blank" rel="noopener noreferrer"><u>データベースクラスター</u></a>に、標準PlanetScaleの<a href="https://planetscale.com/pricing" target="_blank" rel="noopener noreferrer"><u>料金</u></a>でアクセスでき、クエリインサイトや<a href="https://planetscale.com/docs/billing#organization-usage-and-billing-page" target="_blank" rel="noopener noreferrer"><u>使用量とコスト</u></a>の詳細な内訳などの全機能が含まれます。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="367" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=640&amp;h=329&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=715&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=750&amp;h=385&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=828&amp;h=425&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=1080&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=1280&amp;h=657&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=1430&amp;h=734&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3213 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW459A45CPW53BXV7542AMEW.png&amp;w=1920&amp;h=986&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="986" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="367" class="pt-portable-image-media"></div>
+</figure>
+<p><sup><em>PlanetScale Postgresの単一ノードは、<a href="https://planetscale.com/blog/5-dollar-planetscale" target="_blank" rel="noopener noreferrer"><u>月額5ドル</u></a>からご利用いただけます。</em></sup></p>
+<h2>Workersの配置</h2>
+<p>中央集約型のデータベースでは、Workersはプライマリデータベースのすぐ隣で実行でき、<a href="https://developers.cloudflare.com/workers/configuration/placement/#configure-explicit-placement-hints" target="_blank" rel="noopener noreferrer"><u>明示的な配置のヒント</u></a>を使用して遅延を削減できます。デフォルトでは、Workersはユーザーのリクエストに最も近い場所で実行されるため、中央データベースにクエリを実行するとき、特に複数のクエリを実行するときに、ネットワークの遅延が追加されます。代わりに、PlanetScaleデータベースに最も近いCloudflareデータセンターで実行するようにWorkerを設定することができます。将来的には、Cloudflareは、PlanetScaleデータベースのロケーションに基づいて配置のヒントを自動的に設定し、ネットワーク遅延を1桁ミリ秒に短縮できるようになります。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  "placement"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "region"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"aws:us-east-1"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h2>公開間近</h2>
+<p>Cloudflareダッシュボードを介して、PlanetScale Postgresデータベースをデプロイしたり、既存のPlanetScaleデータベースをWorkersに接続することができます。<a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers%2Fhyperdrive%3Fmodal%3D1" target="_blank" rel="noopener noreferrer"><u>Cloudflareダッシュボード</u></a>現在、すべてがPlanetScale経由で請求されます。</p>
+<p>来月のローンチでは、新しいPlanetScaleデータベースをCloudflareアカウントへの課金が可能になります。</p>
+<p>Cloudflare API統合など、PlanetScaleパートナーと共に、さらに構築しています。次に、どのようなものを期待するかをお知らせください。</p>

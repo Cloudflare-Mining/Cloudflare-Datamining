@@ -1,136 +1,104 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/making-the-waf-40-faster">简体中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1ph397oCX2vpDy4d6PIVCP/b194243293310362b36ad01c91d15211/making-the-waf-40-faster.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Cloudflare’s <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Web Application Firewall (WAF)</a> protects against malicious attacks aiming to exploit vulnerabilities in web applications. It is continuously updated to provide comprehensive coverage against the most recent threats while ensuring a low false positive rate.</p>
-	<p>As with all <a href="https://www.cloudflare.com/security" target="_blank" rel="noopener noreferrer">Cloudflare security products</a>, the WAF is designed to not sacrifice performance for security, but there is always room for improvement.</p>
-	<p>This blog post provides a brief overview of the latest performance improvements that were rolled out to our customers. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">how a Web Application Firewall (WAF) works</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="transitioning-from-pcre-to-re2">Transitioning from PCRE to RE2</h2>
-		<a href="https://blog.cloudflare.com/#transitioning-from-pcre-to-re2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Back in July 2019, the WAF transitioned from using a regular expression engine based on <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions" target="_blank" rel="noopener noreferrer">PCRE</a> to <a href="https://github.com/rust-lang/regex" target="_blank" rel="noopener noreferrer">one inspired by RE2</a>, which is based around using a <a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton" target="_blank" rel="noopener noreferrer">deterministic finite automaton (DFA)</a> instead of backtracking algorithms. This change came as a result of an outage where an update added a regular expression which backtracked enormously on certain HTTP requests, resulting in exponential execution time.</p>
-	<p>After the migration was finished, we saw no measurable difference in CPU consumption at the edge, but noticed execution time outliers in the 95th and 99th percentiles decreased, something we expected given RE2's guarantees of a linear time execution with the size of the input.</p>
-	<p>As the <a href="https://blog.cloudflare.com/the-problem-with-event-loops">WAF engine uses a thread pool</a>, we also had to implement and tune a regex cache shared between the threads to avoid excessive memory consumption (the first implementation turned out to use a staggering amount of memory).</p>
-	<p>These changes, along with others outlined in the <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/#what-s-happened-since-last-tuesday">postmortem blog post</a>, helped us improve reliability and safety at the edge and have the confidence to explore further performance improvements.</p>
-	<p>But while we’ve highlighted regular expressions, they are only one of the many capabilities of the WAF engine.</p>
-	<div class="flex anchor relative">
-		<h2 id="matching-stages">Matching Stages</h2>
-		<a href="https://blog.cloudflare.com/#matching-stages" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When an HTTP request reaches the WAF, it gets organized into several logical sections to be analyzed: method, path, headers, and body. These sections are all stored in <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua variables</a>. If you are interested in more detail on the implementation of the WAF itself you can <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank" rel="noopener noreferrer">watch this old presentation</a>.</p>
-	<p>Before matching these variables against specific malicious request signatures, some transformations are applied. These transformations are functions that range from simple modifications like lowercasing strings to complex tokenizers and parsers looking to fingerprint certain malicious payloads.</p>
-	<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org" target="_blank" rel="noopener noreferrer">ModSecurity</a> syntax, this is what a rule might look like:</p>
-	<pre class="language-bash"><code class="language-bash">SecRule REQUEST_BODY "@rx /\x00+evil" "drop, t:urlDecode, t:lowercase"</code></pre>
-	<p>It takes the request body stored in the <code>REQUEST_BODY</code> variable, applies the <code>urlDecode()</code> and <code>lowercase()</code> functions to it and then compares the result with the regular expression signature <code>\x00+evil</code>.</p>
-	<p>In pseudo-code, we can represent it as:</p>
-	<pre class="language-bash"><code class="language-bash">rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
-	<p>Which in turn would match a request whose body contained <a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener noreferrer">percent encoded</a> NULL bytes followed by the word "evil", e.g.:</p>
-	<pre class="language-bash"><code class="language-bash">POST /cms/admin?action=post HTTP/1.1
-Host: example.com
-Content-Type: text/plain; charset=utf-8
-Content-Length: 16
-
-thiSis%2F%00eVil</code></pre>
-	<p>The WAF contains thousands of these rules and its objective is to execute them as quickly as possible to minimize any added latency to a request. And to make things harder, it needs to run most of the rules on nearly every request. That’s because almost all HTTP requests are non-malicious and no rules are going to match. So we have to optimize for the worst case: execute everything!</p>
-	<p>To help mitigate this problem, one of the first matching steps executed for many rules is pre-filtering. By checking if a request contains certain bytes or sets of strings we are able to potentially skip a considerable number of expressions.</p>
-	<p>In the previous example, doing a quick check for the NULL byte (represented by <code>\x00</code> in the regular expression) allows us to completely skip the rule if it isn’t found:</p>
-	<pre class="language-bash"><code class="language-bash">contains( "\x00", REQUEST_BODY )
-and
-rx( "/\x00+evil", lowercase( urlDecode( REQUEST_BODY ) ) )</code></pre>
-	<p>Since most requests don’t match any rule and these checks are quick to execute, overall we aren’t doing more operations by adding them.</p>
-	<p>Other steps can also be used to scan through and combine several regular expressions and avoid execution of rule expressions. As usual, doing less work is often the simplest way to make a system faster.</p>
-	<div class="flex anchor relative">
-		<h2 id="memoization">Memoization</h2>
-		<a href="https://blog.cloudflare.com/#memoization" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Which brings us to <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank" rel="noopener noreferrer">memoization</a> - caching the output of a function call to reuse it in future calls.</p>
-	<p>Let’s say we have the following expressions:</p>
-	<pre class="language-bash"><code class="language-bash">1. rx( "\x00+evil", lowercase( url_decode( body ) ) )
-2. rx( "\x00+EVIL", remove_spaces( url_decode( body ) ) )
-3. rx( "\x00+evil", lowercase( url_decode( headers ) ) )
-4. streq( "\x00evil", lowercase( url_decode( body ) ) )</code></pre>
-	<p>In this case, we can reuse the result of the nested function calls (1) as they’re the same in (4). By saving intermediate results we are also able to take advantage of the result of <code>url_decode( body )</code> from (1) and use it in (2) and (4). Sometimes it is also possible to swap the order functions are applied to improve caching, though in this case we would get different results.</p>
-	<p>A naive implementation of this system can simply be a hash table with each entry having the function(s) name(s) and arguments as the key and its output as the value.</p>
-	<p>Some of these functions are expensive and caching the result does lead to significant savings. To give a sense of magnitude, one of the rules we modified to ensure memoization took place saw its execution time reduced by about 95%:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7kud0Xv668ZFip72geJ3h6/8cdc6f4a5c49664df89a2e33434c6147/rule.png" alt="" class="kg-image" width="1400" height="804" loading="lazy">
-
-	</figure>
-	<p>Execution time per rule</p>
-	<p>The WAF engine implements memoization and the rules take advantage of it, but there’s always room to increase cache hits.</p>
-	<div class="flex anchor relative">
-		<h2 id="rewriting-rules-and-results">Rewriting Rules and Results</h2>
-		<a href="https://blog.cloudflare.com/#rewriting-rules-and-results" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare has a <a href="https://developers.cloudflare.com/waf/change-log" target="_blank" rel="noopener noreferrer">very regular cadence of releasing updates</a> and new rules to the Managed Rulesets. However, as more rules are added and new functions implemented, the memoization cache hit rate tends to decrease.</p>
-	<p>To improve this, we first looked into the rules taking the most <a href="https://en.wikipedia.org/wiki/Elapsed_real_time" target="_blank" rel="noopener noreferrer">wall-clock time</a> to execute using some of our performance metrics:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ahB7tm8BWAjy3zyN8S1ZY/03369f203293f3ea39fa51b6d87088c8/execution-time.png" alt="" class="kg-image" width="1166" height="528" loading="lazy">
-
-	</figure>
-	<p>Execution time per rule</p>
-	<p>Having these, we cross-referenced them with the ones having cache misses (output is truncated with [...]):</p>
-	<pre class="language-bash"><code class="language-bash">$ ./parse.py --profile
-Hit Ratio:
--------------
-0.5608
-
-Hot entries:
--------------
-[urlDecode, replaceComments, REQUEST_URI, REQUEST_HEADERS, ARGS_POST]
-[urlDecode, REQUEST_URI]
-[urlDecode, htmlEntityDecode, jsDecode, replaceNulls, removeWhitespace, REQUEST_URI, REQUEST_HEADERS]
-[urlDecode, lowercase, REQUEST_FILENAME]
-[urlDecode, REQUEST_FILENAME]
-[urlDecode, lowercase, replaceComments, compressWhitespace, ARGS, REQUEST_FILENAME]
-[urlDecode, replaceNulls, removeWhitespace, REQUEST_URI, REQUEST_HEADERS, ARGS_POST]
-[...]
-
-Candidates:
--------------
-100152A - replace t:removeWhitespace with t:compressWhitespace,t:removeWhitespace
-100214 - replace t:lowercase with (?i)
-100215 - replace t:lowercase with (?i)
-100300 - consider REQUEST_URI over REQUEST_FILENAME
-100137D - invert order of t:replaceNulls,t:lowercase
-[...]</code></pre>
-	<p>After identifying more than 40 rules, we rewrote them to take full advantage of memoization and added pre-filter checks where possible. Many of these changes were not immediately obvious, which is why we’re also creating tools to aid analysts in creating even more efficient rules. This also helps ensure they run in accordance with the latency budgets the team has set.</p>
-	<p>This change resulted in an increase of the cache hit percentage from 56% to <b>74%</b>, which crucially included the most expensive transformations.</p>
-	<p>Most importantly, we also observed a sharp decrease of <b>40%</b> in the average time the WAF takes to process and analyze an HTTP request at the Cloudflare edge.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2cNxDlf2ad0Ns8yp8OLPLP/8b8d2d7953210ba57e0df12991b8a444/results.png" alt="" class="kg-image" width="1395" height="722" loading="lazy">
-
-	</figure>
-	<p>WAF Request Processing - Time Average</p>
-	<p>A comparable decrease was also observed for the 95th and 99th percentiles.</p>
-	<p>Finally, we saw a drop of CPU consumption at the edge of around <b>4.3%</b>.</p>
-	<div class="flex anchor relative">
-		<h2 id="next-steps">Next Steps</h2>
-		<a href="https://blog.cloudflare.com/#next-steps" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While the Lua WAF has served us well throughout all these years, we are currently porting it to use the same engine powering Firewall Rules. It is based on our open-sourced <a href="https://github.com/cloudflare/wirefilter" target="_blank" rel="noopener noreferrer">wirefilter</a> execution engine, which uses a filter syntax inspired by Wireshark®. In addition to allowing more flexible filter expressions, it provides better performance and safety.</p>
-	<p>The rule optimizations we've described in this blog post are not lost when moving to the new engine, however, as the changes were deliberately not specific to the current Lua engine’s implementation. And while we're routinely profiling, benchmarking and making complex optimizations to the Firewall stack, sometimes just relatively simple changes can have a surprisingly huge effect.</p>
+<p>Cloudflare’s <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Web Application Firewall (WAF)</a> protects against malicious attacks aiming to exploit vulnerabilities in web applications. It is continuously updated to provide comprehensive coverage against the most recent threats while ensuring a low false positive rate.</p>
+<p>As with all <a href="https://www.cloudflare.com/security" target="_blank" rel="noopener noreferrer">Cloudflare security products</a>, the WAF is designed to not sacrifice performance for security, but there is always room for improvement.</p>
+<p>This blog post provides a brief overview of the latest performance improvements that were rolled out to our customers. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">how a Web Application Firewall (WAF) works</a>.</p>
+<h2>Transitioning from PCRE to RE2</h2>
+<p>Back in July 2019, the WAF transitioned from using a regular expression engine based on <a href="https://en.wikipedia.org/wiki/Perl_Compatible_Regular_Expressions" target="_blank" rel="noopener noreferrer">PCRE</a> to <a href="https://github.com/rust-lang/regex" target="_blank" rel="noopener noreferrer">one inspired by RE2</a>, which is based around using a <a href="https://en.wikipedia.org/wiki/Deterministic_finite_automaton" target="_blank" rel="noopener noreferrer">deterministic finite automaton (DFA)</a> instead of backtracking algorithms. This change came as a result of an outage where an update added a regular expression which backtracked enormously on certain HTTP requests, resulting in exponential execution time.</p>
+<p>After the migration was finished, we saw no measurable difference in CPU consumption at the edge, but noticed execution time outliers in the 95th and 99th percentiles decreased, something we expected given RE2's guarantees of a linear time execution with the size of the input.</p>
+<p>As the <a href="https://blog.cloudflare.com/the-problem-with-event-loops">WAF engine uses a thread pool</a>, we also had to implement and tune a regex cache shared between the threads to avoid excessive memory consumption (the first implementation turned out to use a staggering amount of memory).</p>
+<p>These changes, along with others outlined in the <a href="https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/#what-s-happened-since-last-tuesday">postmortem blog post</a>, helped us improve reliability and safety at the edge and have the confidence to explore further performance improvements.</p>
+<p>But while we’ve highlighted regular expressions, they are only one of the many capabilities of the WAF engine.</p>
+<h2>Matching Stages</h2>
+<p>When an HTTP request reaches the WAF, it gets organized into several logical sections to be analyzed: method, path, headers, and body. These sections are all stored in <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Lua variables</a>. If you are interested in more detail on the implementation of the WAF itself you can <a href="https://www.youtube.com/watch?v=nlt4XKhucS4" target="_blank" rel="noopener noreferrer">watch this old presentation</a>.</p>
+<p>Before matching these variables against specific malicious request signatures, some transformations are applied. These transformations are functions that range from simple modifications like lowercasing strings to complex tokenizers and parsers looking to fingerprint certain malicious payloads.</p>
+<p>As the WAF currently uses a variant of the <a href="https://www.modsecurity.org" target="_blank" rel="noopener noreferrer">ModSecurity</a> syntax, this is what a rule might look like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">SecRule</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-032f62-99ffe4"> "@rx /\x00+evil"</span><span class="sk-032f62-99ffe4"> "drop, t:urlDecode, t:lowercase"</span></span></code></pre>
 </div>
+<p>It takes the request body stored in the <code>REQUEST_BODY</code> variable, applies the <code>urlDecode()</code> and <code>lowercase()</code> functions to it and then compares the result with the regular expression signature <code>\x00+evil</code>.</p>
+<p>In pseudo-code, we can represent it as:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+</div>
+<p>Which in turn would match a request whose body contained <a href="https://en.wikipedia.org/wiki/Percent-encoding" target="_blank" rel="noopener noreferrer">percent encoded</a> NULL bytes followed by the word "evil", e.g.:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">POST</span><span class="sk-032f62-99ffe4"> /cms/admin?action=post</span><span class="sk-032f62-99ffe4"> HTTP/1.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Host:</span><span class="sk-032f62-99ffe4"> example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content-Type:</span><span class="sk-032f62-99ffe4"> text/plain</span><span class="sk-24292e-fff">; charset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">utf-8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Content-Length:</span><span class="sk-005cc5-ffc799"> 16</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">thiSis%2F%00eVil</span></span></code></pre>
+</div>
+<p>The WAF contains thousands of these rules and its objective is to execute them as quickly as possible to minimize any added latency to a request. And to make things harder, it needs to run most of the rules on nearly every request. That’s because almost all HTTP requests are non-malicious and no rules are going to match. So we have to optimize for the worst case: execute everything!</p>
+<p>To help mitigate this problem, one of the first matching steps executed for many rules is pre-filtering. By checking if a request contains certain bytes or sets of strings we are able to potentially skip a considerable number of expressions.</p>
+<p>In the previous example, doing a quick check for the NULL byte (represented by <code>\x00</code> in the regular expression) allows us to completely skip the rule if it isn’t found:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">contains(</span><span class="sk-032f62-99ffe4"> "\x00",</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">and</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">rx(</span><span class="sk-032f62-99ffe4"> "/\x00+evil",</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">urlDecode(</span><span class="sk-032f62-99ffe4"> REQUEST_BODY</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+</div>
+<p>Since most requests don’t match any rule and these checks are quick to execute, overall we aren’t doing more operations by adding them.</p>
+<p>Other steps can also be used to scan through and combine several regular expressions and avoid execution of rule expressions. As usual, doing less work is often the simplest way to make a system faster.</p>
+<h2>Memoization</h2>
+<p>Which brings us to <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank" rel="noopener noreferrer">memoization</a> - caching the output of a function call to reuse it in future calls.</p>
+<p>Let’s say we have the following expressions:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">1.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">2.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+EVIL"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> remove_spaces</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3.</span><span class="sk-032f62-99ffe4"> rx</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00+evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> headers</span><span class="sk-24292e-fff"> ) ) )</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">4.</span><span class="sk-032f62-99ffe4"> streq</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">"\x00evil"</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> lowercase</span><span class="sk-24292e-fff">( </span><span class="sk-6f42c1-ffc799">url_decode(</span><span class="sk-032f62-99ffe4"> body</span><span class="sk-24292e-fff"> ) ) )</span></span></code></pre>
+</div>
+<p>In this case, we can reuse the result of the nested function calls (1) as they’re the same in (4). By saving intermediate results we are also able to take advantage of the result of <code>url_decode( body )</code> from (1) and use it in (2) and (4). Sometimes it is also possible to swap the order functions are applied to improve caching, though in this case we would get different results.</p>
+<p>A naive implementation of this system can simply be a hash table with each entry having the function(s) name(s) and arguments as the key and its output as the value.</p>
+<p>Some of these functions are expensive and caching the result does lead to significant savings. To give a sense of magnitude, one of the rules we modified to ensure memoization took place saw its execution time reduced by about 95%:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="411" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=640&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=750&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=828&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1080&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1280&amp;h=736&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1430&amp;h=822&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Making the WAF 40% faster Embedded Image - Df038k" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48Y9E1PK2GG15TKJP7WX7P.png&amp;w=1400&amp;h=804&amp;f=webp" data-lightbox-width="1400" data-lightbox-height="804" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="411" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Execution time per rule</p>
+<p>The WAF engine implements memoization and the rules take advantage of it, but there’s always room to increase cache hits.</p>
+<h2>Rewriting Rules and Results</h2>
+<p>Cloudflare has a <a href="https://developers.cloudflare.com/waf/change-log" target="_blank" rel="noopener noreferrer">very regular cadence of releasing updates</a> and new rules to the Managed Rulesets. However, as more rules are added and new functions implemented, the memoization cache hit rate tends to decrease.</p>
+<p>To improve this, we first looked into the rules taking the most <a href="https://en.wikipedia.org/wiki/Elapsed_real_time" target="_blank" rel="noopener noreferrer">wall-clock time</a> to execute using some of our performance metrics:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=750&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1080&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1280&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1430&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Making the WAF 40% faster Embedded Image - HX7eHD" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49DH1NZVPKAGR9C8J2R7YT.png&amp;w=1166&amp;h=528&amp;f=webp" data-lightbox-width="1166" data-lightbox-height="528" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="324" class="pt-portable-image-media"></div>
+</figure>
+<p>Execution time per rule</p>
+<p>Having these, we cross-referenced them with the ones having cache misses (output is truncated with [...]):</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./parse.py</span><span class="sk-005cc5-99ffe4"> --profile</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hit</span><span class="sk-032f62-99ffe4"> Ratio:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">0.5608</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hot</span><span class="sk-032f62-99ffe4"> entries:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------------</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, replaceComments, REQUEST_URI, REQUEST_HEADERS, ARGS_POST]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, REQUEST_URI]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, htmlEntityDecode, jsDecode, replaceNulls, removeWhitespace, REQUEST_URI, REQUEST_HEADERS]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, lowercase, REQUEST_FILENAME]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, REQUEST_FILENAME]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, lowercase, replaceComments, compressWhitespace, ARGS, REQUEST_FILENAME]</span></span>
+<span class="line"><span class="sk-24292e-fff">[urlDecode, replaceNulls, removeWhitespace, REQUEST_URI, REQUEST_HEADERS, ARGS_POST]</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Candidates:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-------------</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100152A</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> t:removeWhitespace</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-032f62-99ffe4"> t:compressWhitespace,t:removeWhitespace</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100214</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> t:lowercase</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-24292e-fff"> (?i)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100215</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> replace</span><span class="sk-032f62-99ffe4"> t:lowercase</span><span class="sk-032f62-99ffe4"> with</span><span class="sk-24292e-fff"> (?i)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100300</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> consider</span><span class="sk-032f62-99ffe4"> REQUEST_URI</span><span class="sk-032f62-99ffe4"> over</span><span class="sk-032f62-99ffe4"> REQUEST_FILENAME</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">100137D</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> invert</span><span class="sk-032f62-99ffe4"> order</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> t:replaceNulls,t:lowercase</span></span>
+<span class="line"><span class="sk-24292e-fff">[...]</span></span></code></pre>
+</div>
+<p>After identifying more than 40 rules, we rewrote them to take full advantage of memoization and added pre-filter checks where possible. Many of these changes were not immediately obvious, which is why we’re also creating tools to aid analysts in creating even more efficient rules. This also helps ensure they run in accordance with the latency budgets the team has set.</p>
+<p>This change resulted in an increase of the cache hit percentage from 56% to <strong>74%</strong>, which crucially included the most expensive transformations.</p>
+<p>Most importantly, we also observed a sharp decrease of <strong>40%</strong> in the average time the WAF takes to process and analyze an HTTP request at the Cloudflare edge.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="370" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=640&amp;h=331&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=715&amp;h=370&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=750&amp;h=388&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=828&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1080&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1280&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1430&amp;h=740&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Making the WAF 40% faster" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44V3RWKS8MSHG9VZCM6HGV.png&amp;w=1395&amp;h=722&amp;f=webp" data-lightbox-width="1395" data-lightbox-height="722" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="370" class="pt-portable-image-media"></div>
+</figure>
+<p>WAF Request Processing - Time Average</p>
+<p>A comparable decrease was also observed for the 95th and 99th percentiles.</p>
+<p>Finally, we saw a drop of CPU consumption at the edge of around <strong>4.3%</strong>.</p>
+<h2>Next Steps</h2>
+<p>While the Lua WAF has served us well throughout all these years, we are currently porting it to use the same engine powering Firewall Rules. It is based on our open-sourced <a href="https://github.com/cloudflare/wirefilter" target="_blank" rel="noopener noreferrer">wirefilter</a> execution engine, which uses a filter syntax inspired by Wireshark®. In addition to allowing more flexible filter expressions, it provides better performance and safety.</p>
+<p>The rule optimizations we've described in this blog post are not lost when moving to the new engine, however, as the changes were deliberately not specific to the current Lua engine’s implementation. And while we're routinely profiling, benchmarking and making complex optimizations to the Firewall stack, sometimes just relatively simple changes can have a surprisingly huge effect.</p>

@@ -1,76 +1,32 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https:undefined" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This blog post originally appeared as a </i><a href="http://www.rackspace.com/blog/protect-your-sites-with-rapidly-deployed-waf-rules" target="_blank" rel="noopener noreferrer"><i>guest post</i></a><i> on the </i><a href="http://www.rackspace.com/blog" target="_blank" rel="noopener noreferrer"><i>Rackspace blog</i></a></p>
-	<p>An attack on your site could be catastrophic. Even a small attack can have major implications. Responding quickly to an attack is imperative.</p>
-	<p>In August 2013, we at CloudFlare rolled out a new global <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Web Application Firewall</a> (WAF) that runs common sets of firewall rules such as the open source <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project" target="_blank" rel="noopener noreferrer">OWASP</a> rules that protect against SQL injection, cross-site scripting and more. But the WAF also has a custom rule language that CloudFlare’s support engineers use to write one-of-a-kind rules to protect specific customers or specific software.</p>
-	<p>Since the deployment of the new WAF we’ve rolled out many global and customer-specific rules to protect websites from attacks. This blog post looks at a few of them and the process of getting a custom rule deployed.</p>
-	<div class="flex anchor relative">
-		<h3 id="custom-rules-for-customers">Custom Rules For Customers</h3>
-		<a href="https://blog.cloudflare.com/#custom-rules-for-customers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Commonly, a customer will complain of an attack that’s hitting their web site and will provide us with their web server logs showing the attack (or by giving us permission to examine the traffic going to their web site). The logs will often show a common pattern. For example, here’s an anonymized attack against a customer web site showing up in their logs:</p>
-	<p>12/30 01:42:32 23.75.345.200 example.com /index.php?2346354=-349087 WordPress/3.7.2
-		12/30 01:42:31 23.75.345.200 example.com /index.php?7231344=4454226 WordPress/3.3.1
-		12/30 01:42:25 23.75.345.200 example.com /index.php?1243847=9161112 WordPress/3.7.2
-		12/30 01:42:23 23.75.345.200 example.com /index.php?8809549=4423410 WordPress/3.3.1
-		12/30 01:42:21 23.75.345.200 example.com /index.php?1834306=3447145 WordPress/3.5.1
-		12/30 01:42:16 23.75.345.200 example.com /index.php?-234069=6121852 WordPress/3.3.3
-		12/30 01:42:16 23.75.345.200 example.com /index.php?-152536=6922268 WordPress/3.3.1
-		12/30 01:42:14 23.75.345.200 example.com /index.php?3433701=7147876 WordPress/3.4.2
-		12/30 01:42:14 23.75.345.200 example.com /index.php?6732828=-106444 WordPress/3.2.2</p>
-	<p>The attacker was using a botnet to hit the script /index.php on example.com. To make each request different they are appending a query string in the form number=number where each number is randomly chosen. The User-Agent in the requests is spoofed to look like WordPress.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7aspwt221CBPj5b2BZCkK2/2425ccd8658bb2fe8c5e856a85ab2ddb/cloudflare.1.png" alt="" class="kg-image" width="661" height="98" loading="lazy">
-
-	</figure>
-	<p>Although this attack doesn’t cause CloudFlare a problem it can cause the customer’s web server to become overloaded. The customer contacted us and we put in place a custom rule for them that blocks the attack. The rule looks like this:</p>
-	<p>rule 12345678 WordPress Numbers Botnet
-		REQUEST_HEADERS:User-Agent matches ^WordPress\/ and
-		REQUEST_METHOD is GET and
-		REQUEST_URI matches /index.php\?-?\d+=-?\d+
-		deny</p>
-	<p>The support engineer wrote the rule (and an associated set of tests to make sure that it works correctly) and then pushed the rule to our git repository. From there it gets deployed to CloudFlare’s servers around the world in under 30 seconds.</p>
-	<p>The customer sees the rule appear in the Manage WAF page in CloudFlare Settings. They can turn the rule on and off and see how many times it has activated (i.e. blocked a request).</p>
-	<p>Another customer saw an attack that claimed to come from “Anonymous.” The attack hit the same page on their web server over and over again with a message from Anonymous (in French). A typical request looked like this:</p>
-	<p>example.com/?msg=Nous%20sommes%20Anonymous%20Nous%20sommes%20L%C3%A9g
-		ion%20Nous%20ne%20pardonnons%20pas%20Nous%20n%E2%80%99oublions%20pas</p>
-	<p>The rule for this one was simple:</p>
-	<p>rule 12345679 Anonymous attack
-		REQUEST_METHOD is GET and
-		REQUEST_URI begins /?msg=Nous%20sommes%20Anonymous
-		deny</p>
-	<p>Another simple attack that was very troublesome for the customer came in the form of a POST request to a URL that didn’t exist on the customer’s site. Once again, the request rate wasn’t troublesome for CloudFlare, but was for the customer, so we put in place a rule that would block all POSTs to that URL. This took the load off the customer web site: CloudFlare took the load for them.</p>
-	<p>The attack used a botnet to send the request POST /q to the customer’s web site. The rule to block that was very simple.</p>
-	<p>rule 1234567A Simple POST botnet
-		REQUEST_METHOD is POST and
-		REQUEST_URI is /q
-		deny</p>
-	<p>As simple as that looks, it took the load off the customer’s web server and in the first 12 hours after deployment was activated over 27 million times!</p>
-	<div class="flex anchor relative">
-		<h3 id="custom-global-rules">Custom Global Rules</h3>
-		<a href="https://blog.cloudflare.com/#custom-global-rules" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Other attacks are likely to be much more widespread and not focused on a single customer. These attacks are often directed at specific technologies such as WordPress, Joomla or other software.</p>
-	<p>Back in October a <a href="http://blog.whmcs.com/?t=79427" target="_blank" rel="noopener noreferrer">zero-day exploit for WHMCS</a> (the popular web hosting management software) was released. CloudFlare patched that by <a href="https://blog.cloudflare.com/patching-a-whmcs-zero-day-on-day-zero">deploying</a> a complex WAF rule on the day the zero-day became public. The WHMCS maintainers also patched the problem.</p>
-	<p>Shortly after that, two new WHMCS vulnerabilities were found and we patched them as well by deploying or modifying WHMCS WAF rules.</p>
-	<p>We’ve also added custom rules to protect Plone-based web sites, a PHP 5.x <a href="http://www.exploit-db.com/exploits/29290" target="_blank" rel="noopener noreferrer">remote code execution</a> exploit, and a number of other rules to protect against common botnets and other attack software.</p>
-	<p>All those are on top of the generic protection offered by the 2,372 other rules that CloudFlare’s WAF runs to check every request.</p>
-	<div class="flex anchor relative">
-		<h3 id="conclusion">Conclusion</h3>
-		<a href="https://blog.cloudflare.com/#conclusion" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The flexibility of the CloudFlare WAF language and the ability to deploy WAF rules in seconds means we can respond to attacks very rapidly. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">Web Application Firewalls</a>.</p>
-</div>
+<p><em>This blog post originally appeared as a <a href="http://www.rackspace.com/blog/protect-your-sites-with-rapidly-deployed-waf-rules" target="_blank" rel="noopener noreferrer">guest post</a> on the <a href="http://www.rackspace.com/blog" target="_blank" rel="noopener noreferrer">Rackspace blog</a></em></p>
+<p>An attack on your site could be catastrophic. Even a small attack can have major implications. Responding quickly to an attack is imperative.</p>
+<p>In August 2013, we at CloudFlare rolled out a new global <a href="https://blog.cloudflare.com/cloudflares-new-waf-compiling-to-lua">Web Application Firewall</a> (WAF) that runs common sets of firewall rules such as the open source <a href="https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project" target="_blank" rel="noopener noreferrer">OWASP</a> rules that protect against SQL injection, cross-site scripting and more. But the WAF also has a custom rule language that CloudFlare’s support engineers use to write one-of-a-kind rules to protect specific customers or specific software.</p>
+<p>Since the deployment of the new WAF we’ve rolled out many global and customer-specific rules to protect websites from attacks. This blog post looks at a few of them and the process of getting a custom rule deployed.</p>
+<h3>Custom Rules For Customers</h3>
+<p>Commonly, a customer will complain of an attack that’s hitting their web site and will provide us with their web server logs showing the attack (or by giving us permission to examine the traffic going to their web site). The logs will often show a common pattern. For example, here’s an anonymized attack against a customer web site showing up in their logs:</p>
+<p>12/30 01:42:32 23.75.345.200 example.com /index.php?2346354=-349087 WordPress/3.7.2<br>12/30 01:42:31 23.75.345.200 example.com /index.php?7231344=4454226 WordPress/3.3.1<br>12/30 01:42:25 23.75.345.200 example.com /index.php?1243847=9161112 WordPress/3.7.2<br>12/30 01:42:23 23.75.345.200 example.com /index.php?8809549=4423410 WordPress/3.3.1<br>12/30 01:42:21 23.75.345.200 example.com /index.php?1834306=3447145 WordPress/3.5.1<br>12/30 01:42:16 23.75.345.200 example.com /index.php?-234069=6121852 WordPress/3.3.3<br>12/30 01:42:16 23.75.345.200 example.com /index.php?-152536=6922268 WordPress/3.3.1<br>12/30 01:42:14 23.75.345.200 example.com /index.php?3433701=7147876 WordPress/3.4.2<br>12/30 01:42:14 23.75.345.200 example.com /index.php?6732828=-106444 WordPress/3.2.2</p>
+<p>The attacker was using a botnet to hit the script /index.php on example.com. To make each request different they are appending a query string in the form number=number where each number is randomly chosen. The User-Agent in the requests is spoofed to look like WordPress.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="661" height="98" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=661&amp;h=98&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=640&amp;h=95&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=661&amp;h=98&amp;f=webp&amp;fit=cover&amp;position=center 661w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=750&amp;h=111&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=828&amp;h=123&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=1080&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=1280&amp;h=190&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=1322&amp;h=196&amp;f=webp&amp;fit=cover&amp;position=center 1322w" alt="Protect Your Sites With Rapidly Deployed WAF Rules Embedded Image - gu9Azp" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TB16E7C35N0R2Z3TZRHV.png&amp;w=661&amp;h=98&amp;f=webp" data-lightbox-width="661" data-lightbox-height="98" data-astro-cid-7nvefuv6="true" sizes="(min-width: 661px) 661px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="661" height="98" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Although this attack doesn’t cause CloudFlare a problem it can cause the customer’s web server to become overloaded. The customer contacted us and we put in place a custom rule for them that blocks the attack. The rule looks like this:</p>
+<p>rule 12345678 WordPress Numbers Botnet<br>REQUEST_HEADERS:User-Agent matches ^WordPress\/ and<br>REQUEST_METHOD is GET and<br>REQUEST_URI matches /index.php\?-?\d+=-?\d+<br>deny</p>
+<p>The support engineer wrote the rule (and an associated set of tests to make sure that it works correctly) and then pushed the rule to our git repository. From there it gets deployed to CloudFlare’s servers around the world in under 30 seconds.</p>
+<p>The customer sees the rule appear in the Manage WAF page in CloudFlare Settings. They can turn the rule on and off and see how many times it has activated (i.e. blocked a request).</p>
+<p>Another customer saw an attack that claimed to come from “Anonymous.” The attack hit the same page on their web server over and over again with a message from Anonymous (in French). A typical request looked like this:</p>
+<p>example.com/?msg=Nous%20sommes%20Anonymous%20Nous%20sommes%20L%C3%A9g<br>ion%20Nous%20ne%20pardonnons%20pas%20Nous%20n%E2%80%99oublions%20pas</p>
+<p>The rule for this one was simple:</p>
+<p>rule 12345679 Anonymous attack<br>REQUEST_METHOD is GET and<br>REQUEST_URI begins /?msg=Nous%20sommes%20Anonymous<br>deny</p>
+<p>Another simple attack that was very troublesome for the customer came in the form of a POST request to a URL that didn’t exist on the customer’s site. Once again, the request rate wasn’t troublesome for CloudFlare, but was for the customer, so we put in place a rule that would block all POSTs to that URL. This took the load off the customer web site: CloudFlare took the load for them.</p>
+<p>The attack used a botnet to send the request POST /q to the customer’s web site. The rule to block that was very simple.</p>
+<p>rule 1234567A Simple POST botnet<br>REQUEST_METHOD is POST and<br>REQUEST_URI is /q<br>deny</p>
+<p>As simple as that looks, it took the load off the customer’s web server and in the first 12 hours after deployment was activated over 27 million times!</p>
+<h3>Custom Global Rules</h3>
+<p>Other attacks are likely to be much more widespread and not focused on a single customer. These attacks are often directed at specific technologies such as WordPress, Joomla or other software.</p>
+<p>Back in October a <a href="http://blog.whmcs.com/?t=79427" target="_blank" rel="noopener noreferrer">zero-day exploit for WHMCS</a> (the popular web hosting management software) was released. CloudFlare patched that by <a href="https://blog.cloudflare.com/patching-a-whmcs-zero-day-on-day-zero">deploying</a> a complex WAF rule on the day the zero-day became public. The WHMCS maintainers also patched the problem.</p>
+<p>Shortly after that, two new WHMCS vulnerabilities were found and we patched them as well by deploying or modifying WHMCS WAF rules.</p>
+<p>We’ve also added custom rules to protect Plone-based web sites, a PHP 5.x <a href="http://www.exploit-db.com/exploits/29290" target="_blank" rel="noopener noreferrer">remote code execution</a> exploit, and a number of other rules to protect against common botnets and other attack software.</p>
+<p>All those are on top of the generic protection offered by the 2,372 other rules that CloudFlare’s WAF runs to check every request.</p>
+<h3>Conclusion</h3>
+<p>The flexibility of the CloudFlare WAF language and the ability to deploy WAF rules in seconds means we can respond to attacks very rapidly. Visit our learning center to learn more about <a href="https://www.cloudflare.com/learning/ddos/glossary/web-application-firewall-waf" target="_blank" rel="noopener noreferrer">Web Application Firewalls</a>.</p>

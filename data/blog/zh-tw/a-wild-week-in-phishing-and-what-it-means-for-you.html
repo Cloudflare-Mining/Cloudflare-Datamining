@@ -1,0 +1,38 @@
+<p>在網際網路上當壞人確實是一樁好生意。在超過90% 的網路安全事件中，網路釣魚是攻擊的根本原因，而在 8 月的第三週，據報導網路釣魚攻擊<a href="https://apnews.com/article/trump-campaign-hacking-iran-769d8411d9a13ef9a0e039c0b6c3b032" target="_blank" rel="noopener noreferrer">針對美國大選</a>，美國、以色列和伊朗之間的<a href="https://blog.google/threat-analysis-group/iranian-backed-group-steps-up-phishing-campaigns-against-israel-us" target="_blank" rel="noopener noreferrer">地緣政治衝突</a>，並導致<a href="https://www.sec.gov/Archives/edgar/data/1609804/000095014224002170/eh240519238_8k.htm" target="_blank" rel="noopener noreferrer">公司損失 6000 萬美元</a>。</p>
+<p>您可能會認為，在電子郵件成為攻擊和風險的首要媒介 30 年後，我們對此無能為力，但這就過於高看不良行為者了，並且誤解了專注於偵測的防御者進行掌控與獲勝的能力。</p>
+<p>網路釣魚不僅涉及電子郵件或任何特定的通訊協定。簡而言之，這是試圖讓像你或我這樣的人採取無意中導致損害的行動。這些攻擊之所以有效，是因為它們在<a href="http://blog.cloudflare.com/50-most-impersonated-brands-protect-phishing" target="_blank" rel="noopener noreferrer">視覺上</a>或組織上看起來是真實的，例如假裝是您公司的執行長或財務長。當對其進行分解，下面是 <a href="http://blog.cloudflare.com/2023-phishing-report" target="_blank" rel="noopener noreferrer">Cloudflare 在阻止惡意電子郵件到達客戶收件匣時所看到的最具影響力的三個主要攻擊手段</a>：1. 點選連結（欺騙性連結佔威脅指標的 35.6%）2. 下載檔案或惡意程式碼（惡意附件佔威脅指標的 1.9%）3. 商業電子郵件入侵 (BEC) 網路釣魚，無需連結或檔案即可取得金錢或智慧財產權（佔威脅指標的 0.5%）。</p>
+<p>如今，Cloudflare 發現所謂的多通路網路釣魚增加。還有哪些通路可以傳送連結、檔案並引發 BEC 動作？<a href="https://en.wikipedia.org/wiki/SMS" target="_blank" rel="noopener noreferrer">SMS</a>（文字訊息）以及公共和私人訊息應用程式是越來越常見的攻擊媒介，攻擊者利用透過這些通路傳送連結的能力以及人們消費資訊和工作的方式。還有雲端協作，其中攻擊者依賴 Google Workspace、Atlassian 和 Microsoft Office 365 等常用協作工具上的連結、文件和 BEC 網路釣魚。最後，還有針對 LinkedIn 和 X 上的使用者的 Web 和社群網路釣魚。歸根結底，任何阻止網路釣魚的嘗試都需要足夠全面，以偵測和防範這些不同的媒介。</p>
+<p><em>Learn more about these technologies and products</em> <a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer"><em>here</em></a></p>
+<h3>真實範例</h3>
+<p>拋開上述理論，我們很樂意為您提供一個範例，說明老練的攻擊者如何利用多通道網路釣魚。</p>
+<p>這是一封電子郵件，一位高階主管在垃圾資料夾中發現了這封電子郵件。這是因為我們的<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">電子郵件安全</a>產品注意到它有問題並將其移至那裡，但它與該主管正在處理的項目相關，因此他認為它是合法的。其中有一個對公司組織結構圖的請求，攻擊者知道，如果他們在電子郵件中繼續，則可能會被發現，因此他們包含了一個指向真實 Google 表單的連結：</p>
+<ul>
+	<li>該高階主管點擊了連結，由於它是合法的 Google 表單，因此會顯示以下內容：</li>
+	<li>裡面有一個上傳組織結構圖的請求，這就是他們嘗試做的事情：</li>
+	<li>主管將其拖入，但它沒有完成上傳，因為我們的 <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">Gateway</a> 和<a href="https://www.cloudflare.com/zero-trust/products/dlp" target="_blank" rel="noopener noreferrer">數位防損 (DLP)</a> 引擎偵測到文件中存在「僅限內部」浮水印，從而阻止了上傳。</li>
+	<li>老練的攻擊者利用緊迫感來取得更好的結果。在這裡，攻擊者知道高階主管有一個以顧問身分向執行長報告的最後期限。由於無法上傳文件，他回覆了攻擊者。攻擊者建議他嘗試其他上傳方法，或者在最壞的情況下，透過 WhatsApp 傳送文件。</li>
+	<li>該主管嘗試將組織結構圖上傳到第二封電子郵件中提供的網站，並不知道該網站會載入惡意程式碼，但由於它是在 Cloudflare 的<a href="https://www.cloudflare.com/zero-trust/products/browser-isolation" target="_blank" rel="noopener noreferrer">瀏覽器隔離</a>中載入的，因此可以保證該主管的裝置安全。最重要的是，當嘗試上傳敏感公司文件時，動作再次停止：</li>
+	<li>最後，他嘗試了 WhatsApp，但我們再次封鎖了此動作：</li>
+</ul>
+<h3>容易使用</h3>
+<p>設定和維護安全解決方案對於長期保護至關重要。然而，讓 IT 管理團隊不斷調整每個產品、設定並監控每個使用者的需求不僅成本高昂，而且還存在風險，因為這會給這些團隊帶來大量開銷。</p>
+<p>保護上面範例中的高階主管只需要四個步驟：</p>
+<ol>
+	<li>安裝並登入 Cloudflare 的裝置代理程式以提供保護</li>
+</ol>
+<p>只需按幾下滑鼠，任何具有裝置代理程式用戶端的人都可以受到保護，免受多通道網路釣魚攻擊，讓終端使用者和管理員都能輕鬆使用。對於不允許安裝用戶端的組織，也可以使用<a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-devices/agentless" target="_blank" rel="noopener noreferrer">無代理程式部署</a>。</p>
+<p>2. 設定適用於透過我們安全 Web 閘道路由的所有使用者流量的原則。這些原則可以直接封鎖對高風險網站的存取，例如已知參與網路釣魚活動的網站。對於可能可疑的網站（例如新註冊的網域），隔離的瀏覽器存取允許使用者存取網站，但會限制他們的互動。</p>
+<p>該高階主管還無法將組織結構圖上傳到免費雲端儲存服務，因為他們的組織正在使用 Cloudflare One 的 <a href="https://www.cloudflare.com/zero-trust/products/gateway" target="_blank" rel="noopener noreferrer">Gateway</a> 和<a href="https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/setup" target="_blank" rel="noopener noreferrer">瀏覽器隔離</a>解決方案，該解決方案設定為在遠端隔離環境中載入任何免費雲端儲存網站，這不僅阻止了上傳，也移除了複製和貼上資訊的功能。</p>
+<p>此外，儘管該高階主管能夠透過 WhatsApp 與不良行为者交談，但他們的檔案卻因為 Cloudflare One 的 Gateway 解決方案而遭到封鎖，該解決方案由管理員設定為封鎖 WhatsApp 上的所有上傳和下載。</p>
+<p>3. &nbsp;根據不應上傳、鍵入或複制和貼上的內容設定 DLP 原則。</p>
+<p>該高階主管無法將組織結構圖上傳到 Google 表單，因為該組織正在使用 Cloudflare One 的 Gateway 和 DLP 解決方案。這種保護是透過將 <a href="https://developers.cloudflare.com/cloudflare-one/policies/gateway" target="_blank" rel="noopener noreferrer">Gateway</a> 設定為封鎖任何 <a href="https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/dlp-profiles" target="_blank" rel="noopener noreferrer">DLP</a> 違規行為來實現的，即使在 Google 等有效網站上也是如此。</p>
+<p>4. &nbsp;部署電子郵件安全並根據偵測到的電子郵件類型設定自動移動規則。</p>
+<p>在上面的範例中，該高階主管從未收到過傳送給他的多封惡意電子郵件，因為 Cloudflare 的電子郵件安全正在保護他的收件匣。確實到達的網路釣魚電子郵件被放入垃圾資料夾中，因為該電子郵件冒充與電子郵件中的簽名不匹配的某人，且由於高階主管的 IT 管理員設定的<a href="https://developers.cloudflare.com/email-security/email-configuration/retract-settings" target="_blank" rel="noopener noreferrer">一鍵式設定</a>，電子郵件安全中的設定會自動將其移至此處。</p>
+<p>但即使有了一流的偵測，很顯然，能夠深入研究任何指標以瞭解受到正在進行的攻擊影響的個人使用者也很重要。以下是我們即將推出的經過改進的電子郵件安全監控儀表板的模型。</p>
+<h3>下一步驟</h3>
+<p>儘管網路釣魚已經存在了三十年，但仍然是一種明顯且現實的危險，透過無縫和全面的解決方案進行有效偵測確實是當今實現保護的唯一方法。</p>
+<p>如果您只是考慮單獨購買電子郵件安全，您就會明白為什麼這還不夠。多層保護對於保護現代員工來說絕對必要，因為工作和資料不僅存在於電子郵件中。它們無所不在，存在於每台裝置上。您的網路釣魚防護也需要如此。</p>
+<p>雖然您可以透過將多個廠商拼接在一起來實現這一點，但並非所有廠商都能協同工作。除了成本之外，多廠商方法通常還會增加 IT 團隊的調查、維護和一致性開支，這對本已捉襟見肘的 IT 團隊而言無疑是雪上加霜。</p>
+<p>無論您是否剛開始使用 Cloudflare，您都可以瞭解獲取 Cloudflare One 產品套件的不同部分如何從整體上幫助應對網路釣魚。如果您已經深入瞭解 Cloudflare，並且正在尋找受財富 500 強、全球組織甚至政府實體信賴的 99.99% 有效電子郵件偵測，您可以瞭解我們的電子郵件安全如何提供協助。</p>
+<p>如果您正在執行 Office 365，並且希望瞭解我們可以擷取哪些您目前的提供者無法擷取的內容，則可以立即開始使用<a href="https://developers.cloudflare.com/email-security/deployment/api/setup/email-retro-scan" target="_blank" rel="noopener noreferrer">追溯掃描</a>。</p>
+<p>如果您已經在使用我們的電子郵件安全解決方案，則可以在<a href="https://www.cloudflare.com/zero-trust/products" target="_blank" rel="noopener noreferrer">這裡</a>進一步瞭解我們的全面保護。</p>

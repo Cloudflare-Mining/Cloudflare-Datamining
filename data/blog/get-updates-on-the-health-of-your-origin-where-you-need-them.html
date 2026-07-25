@@ -1,318 +1,250 @@
-<div class="mb2 gray5">8 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6A3BhRdmdV7baczo59eljI/2923e7088573c03811a43fabdb017bd6/get-updates-on-the-health-of-your-origin-where-you-need-them.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>We are thrilled to announce the availability of Health Checks in the Cloudflare Dashboard’s Notifications tab, available to all Pro, Business, and Enterprise customers. Now, you can get critical alerts on the health of your origin without checking your inbox! Keep reading to learn more about how this update streamlines notification management and unlocks countless ways to stay informed on the health of your servers.</p>
-	<div class="flex anchor relative">
-		<h2 id="keeping-your-site-reliable">Keeping your site reliable</h2>
-		<a href="https://blog.cloudflare.com/#keeping-your-site-reliable" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We first announced Health Checks when we realized some customers were setting up Load Balancers for their origins to monitor the origins’ availability and responsiveness. The Health Checks product provides a similarly powerful interface to Load Balancing, offering users the ability to ensure their origins meet criteria such as reachability, responsiveness, correct HTTP status codes, and correct HTTP body content. Customers can also receive email alerts when a Health Check finds their origin is unhealthy based on their custom criteria. In building a more focused product, we’ve added a slimmer, monitoring-based configuration, Health Check Analytics, and made it available for all paid customers. Health Checks run in multiple locations within Cloudflare’s edge network, meaning customers can monitor site performance across geographic locations.</p>
-	<div class="flex anchor relative">
-		<h2 id="whats-new-with-health-checks-notifications">What’s new with Health Checks Notifications</h2>
-		<a href="https://blog.cloudflare.com/#whats-new-with-health-checks-notifications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Health Checks email alerts have allowed customers to respond quickly to incidents and guarantee minimum disruption for their users. As before, Health Checks users can still select up to 20 email recipients to notify if a Health Check finds their site to be unhealthy. And if email is the right tool for your team, we’re excited to share that we have jazzed up our notification emails and added details on which Health Check triggered the notification, as well as the status of the Health Check:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6wQaM5dANtGNveurNe8YL8/ff5aba1af881fa0fcde15b0067cde725/image9-1.png" alt="New Health Checks email format with Time, Health Status, and Health Check details" class="kg-image" width="952" height="584" loading="lazy">
-
-	</figure>
-	<p><i>New Health Checks email format with Time, Health Status, and Health Check details</i></p>
-	<p>That being said, monitoring an inbox is not ideal for many customers needing to stay proactively informed. If email is not the communication channel your team typically relies upon, checking emails can at best be inconvenient and, at worst, allow critical updates to be missed. That's where the Notifications dashboard comes in.</p>
-	<p>Users can now create Health Checks notifications within the Cloudflare Notifications dashboard. By integrating Health Checks with Cloudflare's powerful Notification platform, we have unlocked myriad new ways to ensure customers receive critical updates for their origin health. One of the key benefits of Cloudflare's Notifications is webhooks, which give customers the flexibility to sync notifications with various external services. Webhook responses contain JSON-encoded information, allowing users to ingest them into their internal or third-party systems.</p>
-	<p>For real-time updates, users can now use webhooks to send Health Check alerts directly to their preferred instant messaging platforms such as Slack, Google Chat, or Microsoft Teams, to name a few. Beyond instant messaging, customers can also use webhooks to send Health Checks notifications to their internal APIs or their <a href="https://www.cloudflare.com/learning/security/what-is-siem" target="_blank" rel="noopener noreferrer">Security Information and Event Management (SIEM)</a> platforms, such as DataDog or Splunk, giving customers a single pane of glass for all Cloudflare activity, including notifications and event logs. For more on how to configure popular webhooks, <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks" target="_blank" rel="noopener noreferrer">check out our developer docs</a>. Below, we'll walk you through a couple of powerful webhook applications. But first, let's highlight a couple of other ways the update to Health Checks notifications improves user experience.</p>
-	<p>By including Health Checks in the Notifications tab, users need only to access one page for a single source of truth where they can manage their account notifications. &nbsp;For added ease of use, users can also migrate to Notification setup directly from the Health Check creation page as well. &nbsp;From within a Health Check, users will also be able to see what Notifications are tied to it.</p>
-	<p>Additionally, configuring notifications for multiple Health Checks is now simplified. Instead of configuring notifications one Health Check at a time, users can now set up notifications for multiple or even all Health Checks from a single workflow.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5KkiuxbDOJYQxkDjWPkkeu/74d1bfbb4303e7f4cab1b656721a392e/image6-8.png" alt="Notification creation workflow:  Tie one or multiple Health Checks to the same notification and select notification trigger–Becomes unhealthy, Becomes healthy, or both." class="kg-image" width="1844" height="1194" loading="lazy">
-
-	</figure>
-	<p>Also, users can now access Health Checks notification history, and Enterprise customers can integrate Health Checks <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/create-pagerduty" target="_blank" rel="noopener noreferrer">directly with PagerDuty</a>. Last but certainly not least, as Cloudflare’s Notifications infrastructure grows in capabilities, Health Checks will be able to leverage all of these improvements. This guarantees Health Checks users the most timely and versatile notification capabilities that Cloudflare offers now and into the future.</p>
-	<div class="flex anchor relative">
-		<h2 id="setting-up-a-health-checks-webhook">Setting up a Health Checks webhook</h2>
-		<a href="https://blog.cloudflare.com/#setting-up-a-health-checks-webhook" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To get notifications for health changes at an origin, <a href="https://support.cloudflare.com/hc/en-us/articles/4404867308429-About-Health-Checks" target="_blank" rel="noopener noreferrer">we first need to set up a Health Check for it.</a> In this example, we'll monitor HTTP responses: leave the Type and adjacent fields to their defaults. We will also monitor HTTP response codes: add `200` as an expected code, which will cause any other HTTP response code to trigger an unhealthy status.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6x9auU4cTDBaE0jmDBrhxZ/3aa5c3f88ab7ea8914e83c770b19c548/image13.png" alt="Health Check creation page set to monitor HTTP response codes with 200 as expected code." class="kg-image" width="1708" height="1458" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="creating-the-webhook-notification-policy">Creating the webhook notification policy</h3>
-		<a href="https://blog.cloudflare.com/#creating-the-webhook-notification-policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Once we’ve got our Health Check set up, we can create a webhook to link it to. Let’s start with a popular use case and send our Health Checks to a Slack channel. Before creating the webhook in the Cloudflare Notifications dashboard, we <a href="https://api.slack.com/messaging/webhooks" target="_blank" rel="noopener noreferrer">enable webhooks in our Slack workspace and retrieve the webhook URL of the Slack channel we want to send notifications to.</a> Next, we navigate to our account’s Notifications tab to add the Slack webhook as a Destination, entering the name and URL of our webhook — the secret will populate automatically.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/tZHXzAsptIeB2zPRASSXc/2d98e2b05b16508f8a5942bf090214e9/image2-91.png" alt="Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret" class="kg-image" width="1999" height="964" loading="lazy">
-
-	</figure>
-	<p><i>Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret</i></p>
-	<p>Once we hit <b>Save and Test</b>, we will receive a message in the designated Slack channel verifying that our webhook is working.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Is2c2YurjdOtduCuqNJB1/b50c6e395d4407023a1484945e1751f7/image5-23.png" alt="Message sent in Slack via the configured webhook, verifying the webhook is working" class="kg-image" width="1999" height="500" loading="lazy">
-
-	</figure>
-	<p><i>Message sent in Slack via the configured webhook, verifying the webhook is working</i></p>
-	<p>This webhook can now be used for any notification type available in the Notifications dashboard. To have a Health Check notification sent to this Slack channel, simply add a new Health Check notification from the Notifications dashboard, selecting the Health Check(s) to tie to this webhook and the Slack webhook we just created. And, voilà! Anytime our Health Check detects a response status code other than 200 or goes from unhealthy to healthy, this Slack channel will be notified.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vlEAwkWNFpTbQBd3h8nj3/a9ed32ad15594f48f9b0b49059223053/image10-1.png" alt="Health Check notification sent to Slack, indicating our server is online and Healthy." class="kg-image" width="1999" height="574" loading="lazy">
-
-	</figure>
-	<p><i>Health Check notification sent to Slack, indicating our server is online and Healthy.</i></p>
-	<div class="flex anchor relative">
-		<h3 id="create-an-origin-health-status-page">Create an Origin Health Status Page</h3>
-		<a href="https://blog.cloudflare.com/#create-an-origin-health-status-page" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let’s walk through another powerful webhooks implementation with Health Checks. Using the Health Check we configured in our last example, let’s create a simple status page using Cloudflare Workers and Durable Objects that stores an origin’s health, updates it upon receiving a webhook request, and displays a status page to visitors.</p>
-	<p><b>Writing our worker</b>You can find the code for this example <a href="https://github.com/georgethomas111/status-page" target="_blank" rel="noopener noreferrer">in this GitHub repository</a>, if you want to clone it and try it out.</p>
-	<p>We’ve got our Health Check set up, and we’re ready to write our worker and durable object. To get started, we first need to <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank" rel="noopener noreferrer">install</a> wrangler, our CLI tool for testing and deploying more complex worker setups.</p>
-	<pre class="language-bash"><code class="language-bash">$ wrangler -V
-wrangler 1.19.8</code></pre>
-	<p>The examples in this blog were tested in this wrangler version.</p>
-	<p>Then, to speed up writing our worker, we will use a template to generate a project:</p>
-	<pre class="language-bash"><code class="language-bash">$ wrangler generate status-page [https://github.com/cloudflare/durable-objects-template](https://github.com/cloudflare/durable-objects-template)
-$ cd status-page</code></pre>
-	<p>The template has a Durable Object with the name <code>Counter</code>. We’ll rename that to <code>Status</code>, as it will store and update the current state of the page.</p>
-	<p>For that, we update <code>wrangler.toml</code> to use the correct name and type, and rename the <code>Counter</code> class in <code>index.mjs</code>.</p>
-	<pre class="language-bash"><code class="language-bash">name = "status-page"
-# type = "javascript" is required to use the `[build]` section
-type = "javascript"
-workers_dev = true
-account_id = "&lt;Cloudflare account-id&gt;"
-route = ""
-zone_id = ""
-compatibility_date = "2022-02-11"
- 
-[build.upload]
-# Upload the code directly from the src directory.
-dir = "src"
-# The "modules" upload format is required for all projects that export a Durable Objects class
-format = "modules"
-main = "./index.mjs"
- 
-[durable_objects]
-bindings = [{name = "status", class_name = "Status"}]</code></pre>
-	<p>Now, we’re ready to fill in our logic. We want to serve two different kinds of requests: one at <code>/webhook</code> that we will pass to the Notification system for updating the status, and another at <code>/</code> for a rendered status page.</p>
-	<p>First, let’s write the <code>/webhook</code> logic. We will receive a JSON object with a <code>data</code> and a <code>text</code> field. The `data` object contains the following fields:</p>
-	<pre class="language-bash"><code class="language-bash">time - The time when the Health Check status changed.
-status - The status of the Health Check.
-reason - The reason why the Health Check failed.
-name - The Health Check name.
-expected_codes - The status code the Health Check is expecting.
-actual_code - The actual code received from the origin.
-health_check_id - The id of the Health Check pushing the webhook notification. </code></pre>
-	<p>For the status page we are using the Health Check <code>name</code>, <code>status</code>, and <code>reason</code> (the reason a Health Check became unhealthy, if any) fields. The <code>text</code> field contains a user-friendly version of this data, but it is more complex to parse.</p>
-	<pre class="language-bash"><code class="language-bash"> async handleWebhook(request) {
-  const json = await request.json();
- 
-  // Ignore webhook test notification upon creation
-  if ((json.text || "").includes("Hello World!")) return;
- 
-  let healthCheckName = json.data?.name || "Unknown"
-  let details = {
-    status: json.data?.status || "Unknown",
-    failureReason: json.data?.reason || "Unknown"
-  }
-  await this.state.storage.put(healthCheckName, details)
- }</code></pre>
-	<p>Now that we can store status changes, we can use our state to render a status page:</p>
-	<pre class="language-bash"><code class="language-bash"> async statusHTML() {
-  const statuses = await this.state.storage.list()
-  let statHTML = ""
- 
-  for(let[hcName, details] of statuses) {
-   const status = details.status || ""
-   const failureReason = details.failureReason || ""
-   let hc = `&lt;p&gt;HealthCheckName: ${hcName} &lt;/p&gt;
-         &lt;p&gt;Status: ${status} &lt;/p&gt;
-         &lt;p&gt;FailureReason: ${failureReason}&lt;/p&gt; 
-         &lt;br/&gt;`
-   statHTML = statHTML + hc
-  }
- 
-  return statHTML
- }
- 
- async handleRoot() {
-  // Default of healthy for before any notifications have been triggered
-  const statuses = await this.statusHTML()
- 
-  return new Response(`
-     &lt;!DOCTYPE html&gt;
-     &lt;head&gt;
-      &lt;title&gt;Status Page&lt;/title&gt;
-      &lt;style&gt;
-       body {
-        font-family: Courier New;
-        padding-left: 10vw;
-        padding-right: 10vw;
-        padding-top: 5vh;
-       }
-      &lt;/style&gt;
-     &lt;/head&gt;
-     &lt;body&gt;
-       &lt;h1&gt;Status of Production Servers&lt;/h1&gt;
-       &lt;p&gt;${statuses}&lt;/p&gt;
-     &lt;/body&gt;
-     `,
-   {
-    headers: {
-     'Content-Type': "text/html"
-    }
-   })
- }</code></pre>
-	<p>Then, we can direct requests to our two paths while also returning an error for invalid paths within our durable object with a <code>fetch</code> method:</p>
-	<pre class="language-bash"><code class="language-bash">async fetch(request) {
-  const url = new URL(request.url)
-  switch (url.pathname) {
-   case "/webhook":
-    await this.handleWebhook(request);
-    return new Response()
-   case "/":
-    return await this.handleRoot();
-   default:
-    return new Response('Path not found', { status: 404 })
-  }
- }</code></pre>
-	<p>Finally, we can call that <code>fetch</code> method from our worker, allowing the external world to access our durable object.</p>
-	<pre class="language-bash"><code class="language-bash">export default {
- async fetch(request, env) {
-  return await handleRequest(request, env);
- }
-}
-async function handleRequest(request, env) {
- let id = env.status.idFromName("A");
- let obj = env.status.get(id);
- 
- return await obj.fetch(request);
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="testing-and-deploying-our-worker">Testing and deploying our worker</h3>
-		<a href="https://blog.cloudflare.com/#testing-and-deploying-our-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>When we’re ready to deploy, it’s as simple as running the following command:</p>
-	<p><code>$ wrangler publish --new-class Status</code></p>
-	<p>To test the change, we create a webhook pointing to the path the worker was deployed to. On the Cloudflare account dashboard, navigate to Notifications &gt; Destinations, and create a webhook.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7DXxm3RcVgUe1EWhozBBqR/8d1436e9588ce2de2967b150ea8a2f08/image11.png" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank." class="kg-image" width="1999" height="1066" loading="lazy">
-
-	</figure>
-	<p><i>Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank.</i></p>
-	<p>Then, while still in the Notifications dashboard, create a Health Check notification tied to the status page webhook and Health Check.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/ltPFjk9hURZNEk1DfzXSm/d2432cc32fb4cf5a9c1294a3673a4a38/image4-26.png" alt="Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added." class="kg-image" width="1322" height="673" loading="lazy">
-
-	</figure>
-	<p><i>Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added.</i></p>
-	<p>Before getting any updates the <code>status-page</code> worker should look like this:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5vSrpTmAC3habEEBTyvuzu/437509c50d8649a232e4cf4e05aff26e/image1-103.png" alt="Status page without updates reads: “Status of Production Servers”" class="kg-image" width="864" height="376" loading="lazy">
-
-	</figure>
-	<p><i>Status page without updates reads: “Status of Production Servers”</i></p>
-	<p>Webhooks get triggered when the Health Check status changes. To simulate the change of Health Check status we take the origin down, which will send an update to the worker through the webhook. This causes the status page to get updated.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1Bv5XIq7lDRy5KdGMNxs9i/5422ab4e4091c0237c76dc445cd3e823/image8-3.png" alt="Status page showing the name of the Health Check as " configuration-service",="" status="" as="" "unhealthy" ,="" and="" the="" failure="" reason="" "tcp="" connection="" failed" .="" "="" class=" kg-image" width="529" height="263" loading="lazy">
-
-	</figure>
-	<p><i>Status page showing the name of the Health Check as "configuration-service", Status as "Unhealthy", and the failure reason as "TCP connection failed".</i>&nbsp;</p>
-	<p>Next, we simulate a return to normal by changing the Health Check expected status back to 200. This will make the status page show the origin as healthy.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6lyFS1mDPReF5CPG4ZU6jK/1b07d824de54eebce83879300820ccb0/image7-3.png" alt="Status page showing the name of the Health Check as " configuration-service",="" status="" as="" "healthy" ,="" and="" the="" failure="" reason="" "no="" failures" .="" "="" class=" kg-image" width="455" height="231" loading="lazy">
-
-	</figure>
-	<p><i>Status page showing the name of the Health Check as "configuration-service", Status as "Healthy", and the failure reason as "No failures".</i>&nbsp;</p>
-	<p>If you add more Health Checks and tie them to the webhook durable object, you will see the data being added to your account.</p>
-	<div class="flex anchor relative">
-		<h3 id="authenticating-webhook-requests">Authenticating webhook requests</h3>
-		<a href="https://blog.cloudflare.com/#authenticating-webhook-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We already have a working status page! However, anyone possessing the webhook URL would be able to forge a request, pushing arbitrary data to an externally-visible dashboard. Obviously, that’s not ideal. Thankfully, webhooks provide the ability to authenticate these requests by supplying a secret. Let’s create a new webhook that will provide a secret on every request. We can generate a secret by generating a pseudo-random UUID with Python:</p>
-	<pre class="language-python"><code class="language-python">$ python3
-&gt;&gt;&gt; import uuid
-&gt;&gt;&gt; uuid.uuid4()
-UUID('4de28cf2-4a1f-4abd-b62e-c8d69569a4d2')</code></pre>
-	<p>Now we create a new webhook with the secret.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3DvDHuoGw8qliF2bsYP7rZ/38e29d91df8569ded442bd7bd4bb95b8/image3-42.png" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added." class="kg-image" width="1999" height="1032" loading="lazy">
-
-	</figure>
-	<p><i>Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added.</i></p>
-	<p>We also want to provide this secret to our worker. Wrangler has a command that lets us save the secret.</p>
-	<pre class="language-bash"><code class="language-bash">$ wrangler secret put WEBHOOK_SECRET
-Enter the secret text you'd like assigned to the variable WEBHOOK_SECRET on the script named status-page:
-4de28cf2-4a1f-4abd-b62e-c8d69569a4d2
-? Creating the secret for script name status-page
-✨ Success! Uploaded secret WEBHOOK_SECRET.</code></pre>
-	<p>Wrangler will prompt us for the secret, then provide it to our worker. Now we can check for the token upon every webhook notification, as the secret is provided by the header <code>cf-webhook-auth</code>. By checking the header’s value against our secret, we can authenticate incoming webhook notifications as genuine. To do that, we modify <code>handleWebhook</code>:</p>
-	<pre class="language-bash"><code class="language-bash"> async handleWebhook(request) {
-  // ensure the request we receive is from the Webhook destination we created
-  // by examining its secret value, and rejecting it if it's incorrect
-  if((request.headers.get('cf-webhook-auth') != this.env.WEBHOOK_SECRET) {
-    return
-   }
-  ...old code here
- }</code></pre>
-	<p>This origin health status page is just one example of the versatility of webhooks, which allowed us to leverage Cloudflare Workers and Durable Objects to support a custom Health Checks application. From highly custom use cases such as this to more straightforward, out-of-the-box solutions, pairing webhooks and Health Checks empowers users to respond to critical origin health updates effectively by delivering that information where it will be most impactful.</p>
-	<div class="flex anchor relative">
-		<h2 id="migrating-to-the-notifications-dashboard">Migrating to the Notifications Dashboard</h2>
-		<a href="https://blog.cloudflare.com/#migrating-to-the-notifications-dashboard" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The Notifications dashboard is now the centralized location for most Cloudflare services. In the interest of consistency and streamlined administration, we will soon be limiting Health Checks notification setup to the Notifications dashboard. &nbsp;Many existing Health Checks customers have emails configured via our legacy alerting system. Over the next three months, we will support the legacy system, giving customers time to transition their Health Checks notifications to the Notifications dashboard. Customers can expect the following timeline for the phasing out of existing Health Checks notifications:</p>
-	<ul>
-		<li>
-			<p>For now, customers subscribed to legacy emails will continue to receive them unchanged, so any parsing infrastructure will still work. From within a Health Check, you will see two options for configuring notifications–the legacy format and a deep link to the Notifications dashboard.</p>
-		</li>
-		<li>
-			<p>On <b>May 24, 2022,</b> we will disable the legacy method for the configuration of email notifications from the Health Checks dashboard.</p>
-		</li>
-		<li>
-			<p>On <b>June 28, 2022,</b> we will stop sending legacy emails, and adding new emails at the <code>/healthchecks</code> endpoint will no longer send email notifications.</p>
-		</li>
-	</ul>
-	<p>We strongly encourage all our users to migrate existing Health Checks notifications to the Notifications dashboard within this timeframe to avoid lapses in alerts.</p>
+<p>We are thrilled to announce the availability of Health Checks in the Cloudflare Dashboard’s Notifications tab, available to all Pro, Business, and Enterprise customers. Now, you can get critical alerts on the health of your origin without checking your inbox! Keep reading to learn more about how this update streamlines notification management and unlocks countless ways to stay informed on the health of your servers.</p>
+<h2>Keeping your site reliable</h2>
+<p>We first announced Health Checks when we realized some customers were setting up Load Balancers for their origins to monitor the origins’ availability and responsiveness. The Health Checks product provides a similarly powerful interface to Load Balancing, offering users the ability to ensure their origins meet criteria such as reachability, responsiveness, correct HTTP status codes, and correct HTTP body content. Customers can also receive email alerts when a Health Check finds their origin is unhealthy based on their custom criteria. In building a more focused product, we’ve added a slimmer, monitoring-based configuration, Health Check Analytics, and made it available for all paid customers. Health Checks run in multiple locations within Cloudflare’s edge network, meaning customers can monitor site performance across geographic locations.</p>
+<h2>What’s new with Health Checks Notifications</h2>
+<p>Health Checks email alerts have allowed customers to respond quickly to incidents and guarantee minimum disruption for their users. As before, Health Checks users can still select up to 20 email recipients to notify if a Health Check finds their site to be unhealthy. And if email is the right tool for your team, we’re excited to share that we have jazzed up our notification emails and added details on which Health Check triggered the notification, as well as the status of the Health Check:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="439" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=640&amp;h=393&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=715&amp;h=439&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=750&amp;h=460&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=828&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=1080&amp;h=663&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=1280&amp;h=786&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=1430&amp;h=878&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="New Health Checks email format with Time, Health Status, and Health Check details" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48G4DZH25Z4Z564JX56KQ3.png&amp;w=952&amp;h=584&amp;f=webp" data-lightbox-width="952" data-lightbox-height="584" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="439" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><em>New Health Checks email format with Time, Health Status, and Health Check details</em></p>
+<p>That being said, monitoring an inbox is not ideal for many customers needing to stay proactively informed. If email is not the communication channel your team typically relies upon, checking emails can at best be inconvenient and, at worst, allow critical updates to be missed. That's where the Notifications dashboard comes in.</p>
+<p>Users can now create Health Checks notifications within the Cloudflare Notifications dashboard. By integrating Health Checks with Cloudflare's powerful Notification platform, we have unlocked myriad new ways to ensure customers receive critical updates for their origin health. One of the key benefits of Cloudflare's Notifications is webhooks, which give customers the flexibility to sync notifications with various external services. Webhook responses contain JSON-encoded information, allowing users to ingest them into their internal or third-party systems.</p>
+<p>For real-time updates, users can now use webhooks to send Health Check alerts directly to their preferred instant messaging platforms such as Slack, Google Chat, or Microsoft Teams, to name a few. Beyond instant messaging, customers can also use webhooks to send Health Checks notifications to their internal APIs or their <a href="https://www.cloudflare.com/learning/security/what-is-siem" target="_blank" rel="noopener noreferrer">Security Information and Event Management (SIEM)</a> platforms, such as DataDog or Splunk, giving customers a single pane of glass for all Cloudflare activity, including notifications and event logs. For more on how to configure popular webhooks, <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/configure-webhooks" target="_blank" rel="noopener noreferrer">check out our developer docs</a>. Below, we'll walk you through a couple of powerful webhook applications. But first, let's highlight a couple of other ways the update to Health Checks notifications improves user experience.</p>
+<p>By including Health Checks in the Notifications tab, users need only to access one page for a single source of truth where they can manage their account notifications. &nbsp;For added ease of use, users can also migrate to Notification setup directly from the Health Check creation page as well. &nbsp;From within a Health Check, users will also be able to see what Notifications are tied to it.</p>
+<p>Additionally, configuring notifications for multiple Health Checks is now simplified. Instead of configuring notifications one Health Check at a time, users can now set up notifications for multiple or even all Health Checks from a single workflow.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="463" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=640&amp;h=414&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=715&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=750&amp;h=486&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=828&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=1080&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=1280&amp;h=829&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=1430&amp;h=926&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Notification creation workflow:  Tie one or multiple Health Checks to the same notification and select notification trigger–Becomes unhealthy, Becomes healthy, or both." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47CD6RBTDT001K3MXTWAG7.png&amp;w=1844&amp;h=1194&amp;f=webp" data-lightbox-width="1844" data-lightbox-height="1194" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="463" class="pt-portable-image-media"></div>
+</figure>
+<p>Also, users can now access Health Checks notification history, and Enterprise customers can integrate Health Checks <a href="https://developers.cloudflare.com/fundamentals/notifications/create-notifications/create-pagerduty" target="_blank" rel="noopener noreferrer">directly with PagerDuty</a>. Last but certainly not least, as Cloudflare’s Notifications infrastructure grows in capabilities, Health Checks will be able to leverage all of these improvements. This guarantees Health Checks users the most timely and versatile notification capabilities that Cloudflare offers now and into the future.</p>
+<h2>Setting up a Health Checks webhook</h2>
+<p>To get notifications for health changes at an origin, <a href="https://support.cloudflare.com/hc/en-us/articles/4404867308429-About-Health-Checks" target="_blank" rel="noopener noreferrer">we first need to set up a Health Check for it.</a> In this example, we'll monitor HTTP responses: leave the Type and adjacent fields to their defaults. We will also monitor HTTP response codes: add `200` as an expected code, which will cause any other HTTP response code to trigger an unhealthy status.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="610" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=715&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=640&amp;h=546&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=715&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=750&amp;h=640&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=828&amp;h=706&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=1080&amp;h=921&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=1280&amp;h=1092&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=1430&amp;h=1220&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Health Check creation page set to monitor HTTP response codes with 200 as expected code." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48GDMFSJ4VT0TB6TCP81PQ.png&amp;w=1708&amp;h=1458&amp;f=webp" data-lightbox-width="1708" data-lightbox-height="1458" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="610" class="pt-portable-image-media"></div>
+</figure>
+<h3>Creating the webhook notification policy</h3>
+<p>Once we’ve got our Health Check set up, we can create a webhook to link it to. Let’s start with a popular use case and send our Health Checks to a Slack channel. Before creating the webhook in the Cloudflare Notifications dashboard, we <a href="https://api.slack.com/messaging/webhooks" target="_blank" rel="noopener noreferrer">enable webhooks in our Slack workspace and retrieve the webhook URL of the Slack channel we want to send notifications to.</a> Next, we navigate to our account’s Notifications tab to add the Slack webhook as a Destination, entering the name and URL of our webhook — the secret will populate automatically.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="345" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=640&amp;h=309&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=715&amp;h=345&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=750&amp;h=362&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=828&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=1080&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=1280&amp;h=618&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=1430&amp;h=690&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49M8935WGY1FD41W857X7P.png&amp;w=1920&amp;h=926&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="926" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="345" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Webhook creation page with the following user input: Webhook name, Slack webhook url, and auto-populated Secret</em></p>
+<p>Once we hit <strong>Save and Test</strong>, we will receive a message in the designated Slack channel verifying that our webhook is working.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="179" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=640&amp;h=160&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=715&amp;h=179&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=750&amp;h=188&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=828&amp;h=207&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=1080&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=1280&amp;h=320&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=1430&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Message sent in Slack via the configured webhook, verifying the webhook is working" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RC5GHK15D6D4H8X5N451.png&amp;w=1920&amp;h=480&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="480" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="179" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Message sent in Slack via the configured webhook, verifying the webhook is working</em></p>
+<p>This webhook can now be used for any notification type available in the Notifications dashboard. To have a Health Check notification sent to this Slack channel, simply add a new Health Check notification from the Notifications dashboard, selecting the Health Check(s) to tie to this webhook and the Slack webhook we just created. And, voilà! Anytime our Health Check detects a response status code other than 200 or goes from unhealthy to healthy, this Slack channel will be notified.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="205" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=715&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=640&amp;h=183&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=715&amp;h=205&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=750&amp;h=215&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=828&amp;h=237&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=1080&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=1280&amp;h=367&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=1430&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Health Check notification sent to Slack, indicating our server is online and Healthy." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4923G3JADSJM77CXP92HP9.png&amp;w=1920&amp;h=551&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="551" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="205" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Health Check notification sent to Slack, indicating our server is online and Healthy.</em></p>
+<h3>Create an Origin Health Status Page</h3>
+<p>Let’s walk through another powerful webhooks implementation with Health Checks. Using the Health Check we configured in our last example, let’s create a simple status page using Cloudflare Workers and Durable Objects that stores an origin’s health, updates it upon receiving a webhook request, and displays a status page to visitors.</p>
+<p><strong>Writing our worker</strong>You can find the code for this example <a href="https://github.com/georgethomas111/status-page" target="_blank" rel="noopener noreferrer">in this GitHub repository</a>, if you want to clone it and try it out.</p>
+<p>We’ve got our Health Check set up, and we’re ready to write our worker and durable object. To get started, we first need to <a href="https://developers.cloudflare.com/workers/cli-wrangler/install-update" target="_blank" rel="noopener noreferrer">install</a> wrangler, our CLI tool for testing and deploying more complex worker setups.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-005cc5-99ffe4"> -V</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">wrangler</span><span class="sk-005cc5-ffc799"> 1.19.8</span></span></code></pre>
 </div>
+<p>The examples in this blog were tested in this wrangler version.</p>
+<p>Then, to speed up writing our worker, we will use a template to generate a project:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-032f62-99ffe4"> status-page</span><span class="sk-24292e-fff"> [https://github.com/cloudflare/durable-objects-template](</span><span class="sk-6f42c1-ffc799">https://github.com/cloudflare/durable-objects-template</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cd</span><span class="sk-032f62-99ffe4"> status-page</span></span></code></pre>
+</div>
+<p>The template has a Durable Object with the name <code>Counter</code>. We’ll rename that to <code>Status</code>, as it will store and update the current state of the page.</p>
+<p>For that, we update <code>wrangler.toml</code> to use the correct name and type, and rename the <code>Counter</code> class in <code>index.mjs</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "status-page"</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># type = "javascript" is required to use the `[build]` section</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">type</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "javascript"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">workers_dev</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "&lt;Cloudflare account-id&gt;"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">route</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ""</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">zone_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ""</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">compatibility_date</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "2022-02-11"</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">[build.upload]</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Upload the code directly from the src directory.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">dir</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "src"</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># The "modules" upload format is required for all projects that export a Durable Objects class</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">format</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "modules"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "./index.mjs"</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">[durable_objects]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">bindings</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [{</span><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "status",</span><span class="sk-032f62-99ffe4"> class_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Status"}]</span></span></code></pre>
+</div>
+<p>Now, we’re ready to fill in our logic. We want to serve two different kinds of requests: one at <code>/webhook</code> that we will pass to the Notification system for updating the status, and another at <code>/</code> for a rendered status page.</p>
+<p>First, let’s write the <code>/webhook</code> logic. We will receive a JSON object with a <code>data</code> and a <code>text</code> field. The `data` object contains the following fields:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-ffc799">time</span><span class="sk-24292e-fff"> - The </span><span class="sk-d73a49-ffc799">time</span><span class="sk-24292e-fff"> when the Health Check status changed.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">status</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">reason</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> reason</span><span class="sk-032f62-99ffe4"> why</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> failed.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> name.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">expected_codes</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> expecting.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">actual_code</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> actual</span><span class="sk-032f62-99ffe4"> code</span><span class="sk-032f62-99ffe4"> received</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> origin.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">health_check_id</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-032f62-99ffe4"> The</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Health</span><span class="sk-032f62-99ffe4"> Check</span><span class="sk-032f62-99ffe4"> pushing</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> webhook</span><span class="sk-032f62-99ffe4"> notification.</span><span class="sk-24292e-fff"> </span></span></code></pre>
+</div>
+<p>For the status page we are using the Health Check <code>name</code>, <code>status</code>, and <code>reason</code> (the reason a Health Check became unhealthy, if any) fields. The <code>text</code> field contains a user-friendly version of this data, but it is more complex to parse.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> async</span><span class="sk-032f62-99ffe4"> handleWebhook</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> json</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> request.json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> Ignore</span><span class="sk-032f62-99ffe4"> webhook</span><span class="sk-032f62-99ffe4"> test</span><span class="sk-032f62-99ffe4"> notification</span><span class="sk-032f62-99ffe4"> upon</span><span class="sk-032f62-99ffe4"> creation</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> ((json.text </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-032f62-99ffe4"> ""</span><span class="sk-24292e-fff">).includes(</span><span class="sk-032f62-99ffe4">"Hello World!"</span><span class="sk-24292e-fff">)) return;</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  let</span><span class="sk-032f62-99ffe4"> healthCheckName</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> json.data?.name</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> "Unknown"</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  let</span><span class="sk-032f62-99ffe4"> details</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    status:</span><span class="sk-032f62-99ffe4"> json.data?.status</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> "Unknown"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    failureReason:</span><span class="sk-032f62-99ffe4"> json.data?.reason</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> "Unknown"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  await</span><span class="sk-032f62-99ffe4"> this.state.storage.put</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">healthCheckName,</span><span class="sk-032f62-99ffe4"> details</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+</div>
+<p>Now that we can store status changes, we can use our state to render a status page:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> async</span><span class="sk-032f62-99ffe4"> statusHTML</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> statuses</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> this.state.storage.list</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  let</span><span class="sk-032f62-99ffe4"> statHTML</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> ""</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  for</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">let</span><span class="sk-032f62-99ffe4">[hcName,</span><span class="sk-032f62-99ffe4"> details]</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> statuses</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> status</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> details.status</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> ""</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   const</span><span class="sk-032f62-99ffe4"> failureReason</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> details.failureReason</span><span class="sk-d73a49-a0a0a0"> ||</span><span class="sk-6f42c1-ffc799"> ""</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">   let</span><span class="sk-032f62-99ffe4"> hc</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> `</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">p</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4">HealthCheckName: ${</span><span class="sk-24292e-fff">hcName</span><span class="sk-032f62-99ffe4">} </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">/p</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         &lt;</span><span class="sk-6f42c1-ffc799">p</span><span class="sk-032f62-99ffe4">&gt;Status: ${</span><span class="sk-24292e-fff">status</span><span class="sk-032f62-99ffe4">} </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">/p</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         &lt;</span><span class="sk-6f42c1-ffc799">p</span><span class="sk-032f62-99ffe4">&gt;FailureReason: ${</span><span class="sk-24292e-fff">failureReason</span><span class="sk-032f62-99ffe4">}</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">/p</span><span class="sk-d73a49-a0a0a0">&gt;</span><span class="sk-032f62-99ffe4"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">         &lt;</span><span class="sk-6f42c1-ffc799">br/</span><span class="sk-032f62-99ffe4">&gt;`</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   statHTML</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> statHTML</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> hc</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> statHTML</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> async</span><span class="sk-032f62-99ffe4"> handleRoot</span><span class="sk-24292e-fff">() </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> Default</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> healthy</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> before</span><span class="sk-032f62-99ffe4"> any</span><span class="sk-032f62-99ffe4"> notifications</span><span class="sk-032f62-99ffe4"> have</span><span class="sk-032f62-99ffe4"> been</span><span class="sk-032f62-99ffe4"> triggered</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> statuses</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> this.statusHTML</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     &lt;!</span><span class="sk-6f42c1-ffc799">DOCTYPE</span><span class="sk-032f62-99ffe4"> html</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     &lt;</span><span class="sk-6f42c1-ffc799">head</span><span class="sk-032f62-99ffe4">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      &lt;</span><span class="sk-6f42c1-ffc799">title</span><span class="sk-032f62-99ffe4">&gt;Status Page</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">/title</span><span class="sk-d73a49-a0a0a0">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      &lt;</span><span class="sk-6f42c1-ffc799">style</span><span class="sk-032f62-99ffe4">&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">       body</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        font-family:</span><span class="sk-032f62-99ffe4"> Courier New;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        padding-left:</span><span class="sk-032f62-99ffe4"> 10vw;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        padding-right:</span><span class="sk-032f62-99ffe4"> 10vw;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        padding-top:</span><span class="sk-032f62-99ffe4"> 5vh;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">       }</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      &lt;</span><span class="sk-6f42c1-ffc799">/style</span><span class="sk-032f62-99ffe4">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     &lt;</span><span class="sk-6f42c1-ffc799">/head</span><span class="sk-032f62-99ffe4">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     &lt;</span><span class="sk-6f42c1-ffc799">body</span><span class="sk-032f62-99ffe4">&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       &lt;</span><span class="sk-6f42c1-ffc799">h1</span><span class="sk-032f62-99ffe4">&gt;Status of Production Servers</span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-032f62-99ffe4">/h</span><span class="sk-d73a49-a0a0a0">1&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       &lt;</span><span class="sk-6f42c1-ffc799">p</span><span class="sk-032f62-99ffe4">&gt;${</span><span class="sk-24292e-fff">statuses</span><span class="sk-032f62-99ffe4">}&lt;/p&gt;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">     &lt;</span><span class="sk-6f42c1-ffc799">/body</span><span class="sk-032f62-99ffe4">&gt;</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     `</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-24292e-fff">   {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    headers:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     'Content-Type'</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "text/html"</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">   })</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+</div>
+<p>Then, we can direct requests to our two paths while also returning an error for invalid paths within our durable object with a <code>fetch</code> method:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  const</span><span class="sk-032f62-99ffe4"> url</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> URL</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request.url</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  switch</span><span class="sk-24292e-fff"> (url.pathname) {</span></span>
+<span class="line"><span class="sk-24292e-fff">   c</span><span class="sk-6f42c1-ffc799">ase</span><span class="sk-032f62-99ffe4"> "/webhook":</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    await</span><span class="sk-032f62-99ffe4"> this.handleWebhook</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-24292e-fff">   case </span><span class="sk-032f62-99ffe4">"/"</span><span class="sk-24292e-fff">:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> this.handleRoot</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   default:</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-032f62-99ffe4"> new</span><span class="sk-032f62-99ffe4"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">'Path not found'</span><span class="sk-6f42c1-ffc799">,</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-005cc5-ffc799"> 404</span><span class="sk-032f62-99ffe4"> }</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span></code></pre>
+</div>
+<p>Finally, we can call that <code>fetch</code> method from our worker, allowing the external world to access our durable object.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-24292e-fff"> default {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> async</span><span class="sk-032f62-99ffe4"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request,</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request,</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">async</span><span class="sk-032f62-99ffe4"> function</span><span class="sk-032f62-99ffe4"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request,</span><span class="sk-032f62-99ffe4"> env</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799"> let</span><span class="sk-032f62-99ffe4"> id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> env.status.idFromName</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">"A"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-ffc799"> let</span><span class="sk-032f62-99ffe4"> obj</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> env.status.get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">id</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-032f62-99ffe4"> await</span><span class="sk-032f62-99ffe4"> obj.fetch</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Testing and deploying our worker</h3>
+<p>When we’re ready to deploy, it’s as simple as running the following command:</p>
+<p><code>$ wrangler publish --new-class Status</code></p>
+<p>To test the change, we create a webhook pointing to the path the worker was deployed to. On the Cloudflare account dashboard, navigate to Notifications &gt; Destinations, and create a webhook.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="381" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=715&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=640&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=715&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=750&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=828&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=1080&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=1280&amp;h=682&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=1430&amp;h=762&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48PHFFZ0V63HF6EYSMWD25.png&amp;w=1920&amp;h=1024&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1024" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="381" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Webhook creation page, with the following user input: name of webhook, destination URL, and optional secret is left blank.</em></p>
+<p>Then, while still in the Notifications dashboard, create a Health Check notification tied to the status page webhook and Health Check.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49HF9RFSBC7A5K1Z32Q241.png&amp;w=1322&amp;h=673&amp;f=webp" data-lightbox-width="1322" data-lightbox-height="673" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Notification creation page, with the following user input: Notification name and the Webhook created in the previous step added.</em></p>
+<p>Before getting any updates the <code>status-page</code> worker should look like this:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="311" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=640&amp;h=278&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=715&amp;h=311&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=750&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=828&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=1080&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=1280&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=1430&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Status page without updates reads: “Status of Production Servers”" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47SJR9B0V714EG360Q9SJ1.png&amp;w=864&amp;h=376&amp;f=webp" data-lightbox-width="864" data-lightbox-height="376" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="311" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Status page without updates reads: “Status of Production Servers”</em></p>
+<p>Webhooks get triggered when the Health Check status changes. To simulate the change of Health Check status we take the origin down, which will send an update to the worker through the webhook. This causes the status page to get updated.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="529" height="263" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1CVZEBR90EMMMTY9MP9.png&amp;w=529&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1CVZEBR90EMMMTY9MP9.png&amp;w=529&amp;h=263&amp;f=webp&amp;fit=cover&amp;position=center 529w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1CVZEBR90EMMMTY9MP9.png&amp;w=640&amp;h=318&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1CVZEBR90EMMMTY9MP9.png&amp;w=750&amp;h=373&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1CVZEBR90EMMMTY9MP9.png&amp;w=828&amp;h=412&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1CVZEBR90EMMMTY9MP9.png&amp;w=1058&amp;h=526&amp;f=webp&amp;fit=cover&amp;position=center 1058w" alt="Status page showing the name of the Health Check as &quot;configuration-service&quot;, Status as &quot;Unhealthy&quot;, and the failure reason as &quot;TCP connection failed&quot;. " loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44C1CVZEBR90EMMMTY9MP9.png&amp;w=529&amp;h=263&amp;f=webp" data-lightbox-width="529" data-lightbox-height="263" data-astro-cid-7nvefuv6="true" sizes="(min-width: 529px) 529px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="529" height="263" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Status page showing the name of the Health Check as "configuration-service", Status as "Unhealthy", and the failure reason as "TCP connection failed".</em>&nbsp;</p>
+<p>Next, we simulate a return to normal by changing the Health Check expected status back to 200. This will make the status page show the origin as healthy.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="455" height="231" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C5AFP30DAWQNR0WQTK28.png&amp;w=455&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C5AFP30DAWQNR0WQTK28.png&amp;w=455&amp;h=231&amp;f=webp&amp;fit=cover&amp;position=center 455w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C5AFP30DAWQNR0WQTK28.png&amp;w=640&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C5AFP30DAWQNR0WQTK28.png&amp;w=750&amp;h=381&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C5AFP30DAWQNR0WQTK28.png&amp;w=828&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C5AFP30DAWQNR0WQTK28.png&amp;w=910&amp;h=462&amp;f=webp&amp;fit=cover&amp;position=center 910w" alt="Status page showing the name of the Health Check as &quot;configuration-service&quot;, Status as &quot;Healthy&quot;, and the failure reason as &quot;No failures&quot;. " loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C5AFP30DAWQNR0WQTK28.png&amp;w=455&amp;h=231&amp;f=webp" data-lightbox-width="455" data-lightbox-height="231" data-astro-cid-7nvefuv6="true" sizes="(min-width: 455px) 455px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="455" height="231" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Status page showing the name of the Health Check as "configuration-service", Status as "Healthy", and the failure reason as "No failures".</em>&nbsp;</p>
+<p>If you add more Health Checks and tie them to the webhook durable object, you will see the data being added to your account.</p>
+<h3>Authenticating webhook requests</h3>
+<p>We already have a working status page! However, anyone possessing the webhook URL would be able to forge a request, pushing arbitrary data to an externally-visible dashboard. Obviously, that’s not ideal. Thankfully, webhooks provide the ability to authenticate these requests by supplying a secret. Let’s create a new webhook that will provide a secret on every request. We can generate a secret by generating a pseudo-random UUID with Python:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-b31d28-ff8080 sk-fs-italic-inherit">$</span><span class="sk-24292e-fff"> python3</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;&gt;&gt;</span><span class="sk-d73a49-a0a0a0"> import</span><span class="sk-24292e-fff"> uuid</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">&gt;&gt;&gt;</span><span class="sk-24292e-fff"> uuid.uuid4()</span></span>
+<span class="line"><span class="sk-24292e-fff">UUID(</span><span class="sk-032f62-99ffe4">'4de28cf2-4a1f-4abd-b62e-c8d69569a4d2'</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Now we create a new webhook with the secret.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="369" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=715&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=640&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=715&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=750&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=828&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=1080&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=1280&amp;h=661&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=1430&amp;h=738&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added." loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45W5CCTER5DE9A45MRZVWG.png&amp;w=1920&amp;h=991&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="991" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="369" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Webhook creation page, with the following user input: name of webhook, destination URL, and now with a secret added.</em></p>
+<p>We also want to provide this secret to our worker. Wrangler has a command that lets us save the secret.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> wrangler</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> put</span><span class="sk-032f62-99ffe4"> WEBHOOK_SECRET</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Enter</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> text</span><span class="sk-032f62-99ffe4"> you'd like assigned to the variable WEBHOOK_SECRET on the script named status-page:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">4de28cf2-4a1f-4abd-b62e-c8d69569a4d2</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">? Creating the secret for script name status-page</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">✨ Success! Uploaded secret WEBHOOK_SECRET.</span></span></code></pre>
+</div>
+<p>Wrangler will prompt us for the secret, then provide it to our worker. Now we can check for the token upon every webhook notification, as the secret is provided by the header <code>cf-webhook-auth</code>. By checking the header’s value against our secret, we can authenticate incoming webhook notifications as genuine. To do that, we modify <code>handleWebhook</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799"> async</span><span class="sk-032f62-99ffe4"> handleWebhook</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">request</span><span class="sk-24292e-fff">) </span><span class="sk-032f62-99ffe4">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> ensure</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> request</span><span class="sk-032f62-99ffe4"> we</span><span class="sk-032f62-99ffe4"> receive</span><span class="sk-032f62-99ffe4"> is</span><span class="sk-032f62-99ffe4"> from</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> Webhook</span><span class="sk-032f62-99ffe4"> destination</span><span class="sk-032f62-99ffe4"> we</span><span class="sk-032f62-99ffe4"> created</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  //</span><span class="sk-032f62-99ffe4"> by</span><span class="sk-032f62-99ffe4"> examining</span><span class="sk-032f62-99ffe4"> its</span><span class="sk-032f62-99ffe4"> secret</span><span class="sk-032f62-99ffe4"> value,</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> rejecting</span><span class="sk-032f62-99ffe4"> it</span><span class="sk-032f62-99ffe4"> if</span><span class="sk-032f62-99ffe4"> it's incorrect</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  if((request.headers.get('cf-webhook-auth') != this.env.WEBHOOK_SECRET) {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    return</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">   }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  ...old code here</span></span>
+<span class="line"><span class="sk-032f62-99ffe4"> }</span></span></code></pre>
+</div>
+<p>This origin health status page is just one example of the versatility of webhooks, which allowed us to leverage Cloudflare Workers and Durable Objects to support a custom Health Checks application. From highly custom use cases such as this to more straightforward, out-of-the-box solutions, pairing webhooks and Health Checks empowers users to respond to critical origin health updates effectively by delivering that information where it will be most impactful.</p>
+<h2>Migrating to the Notifications Dashboard</h2>
+<p>The Notifications dashboard is now the centralized location for most Cloudflare services. In the interest of consistency and streamlined administration, we will soon be limiting Health Checks notification setup to the Notifications dashboard. &nbsp;Many existing Health Checks customers have emails configured via our legacy alerting system. Over the next three months, we will support the legacy system, giving customers time to transition their Health Checks notifications to the Notifications dashboard. Customers can expect the following timeline for the phasing out of existing Health Checks notifications:</p>
+<ul>
+	<li>For now, customers subscribed to legacy emails will continue to receive them unchanged, so any parsing infrastructure will still work. From within a Health Check, you will see two options for configuring notifications–the legacy format and a deep link to the Notifications dashboard.</li>
+	<li>On <strong>May 24, 2022,</strong> we will disable the legacy method for the configuration of email notifications from the Health Checks dashboard.</li>
+	<li>On <strong>June 28, 2022,</strong> we will stop sending legacy emails, and adding new emails at the <code>/healthchecks</code> endpoint will no longer send email notifications.</li>
+</ul>
+<p>We strongly encourage all our users to migrate existing Health Checks notifications to the Notifications dashboard within this timeframe to avoid lapses in alerts.</p>

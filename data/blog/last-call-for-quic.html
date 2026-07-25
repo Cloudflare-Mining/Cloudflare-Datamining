@@ -1,66 +1,45 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11qdmm5lYr8eLTnd1HEu3g/63ee3ed9e65935fb953b2c2babbd8e1a/last-call-for-quic.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>QUIC is a new Internet transport protocol for secure, reliable and multiplexed communications. <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer">HTTP/3</a> builds on top of QUIC, leveraging the new features to fix performance problems such as Head-of-Line blocking. This enables web pages to load faster, especially over troublesome networks.</p>
-	<p>QUIC and HTTP/3 are open standards that have been under development in the IETF <a href="https://blog.cloudflare.com/http-3-from-root-to-tip">for almost exactly 4 years</a>. On October 21, 2020, following two rounds of Working Group Last Call, draft 32 of the family of documents that describe QUIC and HTTP/3 were put into <a href="https://mailarchive.ietf.org/arch/msg/quic/ye1LeRl7oEz898RxjE6D3koWhn0" target="_blank" rel="noopener noreferrer">IETF Last Call</a>. This is an important milestone for the group. We are now telling the entire IETF community that we think we're almost done and that we'd welcome their final review.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/78vaeSkXoriOtIbPyOU5rw/8ce2942b6542d94b5d0d42fc9e91d7b7/image2-24.png" alt="" class="kg-image" width="1668" height="933" loading="lazy">
-
-	</figure>
-	<p>Speaking personally, I've been involved with QUIC in some shape or form for many years now. Earlier this year I was honoured to be asked to help co-chair the Working Group. I'm pleased to help shepherd the documents through this important phase, and grateful for the efforts of everyone involved in getting us there, especially the editors. I'm also excited about future opportunities to evolve on top of QUIC v1 to help build a better Internet.</p>
-	<p>There are two aspects to protocol development. One aspect involves writing and iterating upon the documents that describe the protocols themselves. Then, there's implementing, deploying and testing libraries, clients and/or servers. These aspects operate hand in hand, helping the Working Group move towards satisfying the goals listed in its charter. IETF Last Call marks the point that the group and their responsible Area Director (in this case Magnus Westerlund) believe the job is almost done. Now is the time to solicit feedback from the wider IETF community for review. At the end of the Last Call period, the stakeholders will take stock, address feedback as needed and, fingers crossed, go onto the next step of requesting the documents be published as RFCs on the Standards Track.</p>
-	<p>Although specification and implementation work hand in hand, they often progress at different rates, and that is totally fine. The QUIC specification has been mature and deployable for a long time now. HTTP/3 has been <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">generally available</a> on the Cloudflare edge since September 2019, and we've been delighted to see support roll out in user agents such as Chrome, Firefox, Safari, curl and so on. Although draft 32 is the latest specification, the community has for the time being settled on draft 29 as a solid basis for interoperability. This shouldn't be surprising, as foundational aspects crystallize the scope of changes between iterations decreases. For the average person in the street, there's not really much difference between 29 and 32.</p>
-	<p>So today, if you visit a website with HTTP/3 enabled—such as <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">https://cloudflare-quic.com</a>—you’ll probably see response headers that contain Alt-Svc: h3-29="… . And in a while, once Last Call completes and the RFCs ship, you'll start to see websites simply offer Alt-Svc: h3="… (note, no draft version!).</p>
-	<div class="flex anchor relative">
-		<h3 id="need-a-deep-dive">Need a deep dive?</h3>
-		<a href="https://blog.cloudflare.com/#need-a-deep-dive" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We've collected a bunch of resource links at <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">https://cloudflare-quic.com</a>. If you're more of an interactive visual learner, you might be pleased to hear that I've also been hosting a series on <a href="https://cloudflare.tv/live" target="_blank" rel="noopener noreferrer">Cloudflare TV</a> called "Levelling up Web Performance with HTTP/3". There are over 12 hours of content including the basics of QUIC, ways to measure and debug the protocol in action using tools like Wireshark, and several deep dives into specific topics. I've also been lucky to have some guest experts join me along the way. The table below gives an overview of the episodes that are available on demand.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/41Oavd19lBk474V1BOr1ZQ/3b6d0466c42b3940e6329c754c63863d/image1-36.png" alt="" class="kg-image" width="1668" height="933" loading="lazy">
-
-	</figure>
-	<p>Episode</p>
-	<p>Description</p>
-	<p><a href="https://cloudflare.tv/event/6jJjzbBoFwvARsoaNiUt9i" target="_blank" rel="noopener noreferrer">1</a></p>
-	<p>Introduction to QUIC.</p>
-	<p><a href="https://cloudflare.tv/event/5rcGVibHCKs9l9xUUMdJqg" target="_blank" rel="noopener noreferrer">2</a></p>
-	<p>Introduction to HTTP/3.</p>
-	<p><a href="https://cloudflare.tv/event/3OM7upT7p3vpAdzphFdhnx" target="_blank" rel="noopener noreferrer">3</a></p>
-	<p>QUIC &amp; HTTP/3 logging and analysis using qlog and qvis. Featuring Robin Marx.</p>
-	<p><a href="https://cloudflare.tv/event/45tQd4UPkZGULg59BZPl1p" target="_blank" rel="noopener noreferrer">4</a></p>
-	<p>QUIC &amp; HTTP/3 packet capture and analysis using Wireshark. Featuring Peter Wu.</p>
-	<p><a href="https://cloudflare.tv/event/4YgvMrif2yma7pM6Srv6wi" target="_blank" rel="noopener noreferrer">5</a></p>
-	<p>The roles of Server Push and Prioritization in HTTP/2 and HTTP/3. Featuring Yoav Weiss.</p>
-	<p><a href="https://cloudflare.tv/event/7ufIyfjZfn2aQ2K635EH3t" target="_blank" rel="noopener noreferrer">6</a></p>
-	<p>"After dinner chat" about curl and QUIC. Featuring Daniel Stenberg.</p>
-	<p><a href="https://cloudflare.tv/event/6vMyFU2jyx2iKXZVp7YjHW" target="_blank" rel="noopener noreferrer">7</a></p>
-	<p>Qlog vs. Wireshark. Featuring Robin Marx and Peter Wu.</p>
-	<p><a href="https://cloudflare.tv/event/3miIPtXnktpzjslJlnkD9c" target="_blank" rel="noopener noreferrer">8</a></p>
-	<p>Understanding protocol performance using WebPageTest. Featuring Pat Meenan and Andy Davies.</p>
-	<p><a href="https://cloudflare.tv/event/6Qv7zmY2oi6j28M5HZNZmV" target="_blank" rel="noopener noreferrer">9</a></p>
-	<p>Handshake deep dive.</p>
-	<p><a href="https://cloudflare.tv/event/3gqUUBcl40LvThxO7UQH0T" target="_blank" rel="noopener noreferrer">10</a></p>
-	<p>Getting to grips with quiche, Cloudflare's QUIC and HTTP/3 library.</p>
-	<p><a href="https://cloudflare.tv/event/3Mrq6DHoA9fy4ATT3Wigrv" target="_blank" rel="noopener noreferrer">11</a></p>
-	<p>A review of SIGCOMM's EPIQ workshop on evolving QUIC.</p>
-	<p><a href="https://cloudflare.tv/event/CHrSpig5nqKeFGFA3fzLq" target="_blank" rel="noopener noreferrer">12</a></p>
-	<p>Understanding the role of congestion control in QUIC. Featuring Junho Choi.</p><!--kg-card-begin: html-->
-	<p></p><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h3 id="whither-quic">Whither QUIC?</h3>
-		<a href="https://blog.cloudflare.com/#whither-quic" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>So does Last Call mean QUIC is "done"? Not by a long shot. The new protocol is a giant leap for the Internet, because it enables new opportunities and innovation. QUIC v1 is basically the set of documents that have gone into Last Call. We'll continue to see people gain experience deploying and testing this, and no doubt cool blog posts about tweaking parameters for efficiency and performance are on the radar. But QUIC and HTTP/3 are extensible, so we'll see people interested in trying new things like multipath, different congestion control approaches, or new ways to carry data unreliably such as the <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-datagram" target="_blank" rel="noopener noreferrer">DATAGRAM frame</a>.</p>
-	<p>We're also seeing people interested in using QUIC for other use cases. Mapping other application protocols like DNS to QUIC is a rapid way to get its improvements. We're seeing people that want to use QUIC as a substrate for carrying other transport protocols, hence the formation of the <a href="https://datatracker.ietf.org/wg/masque/about" target="_blank" rel="noopener noreferrer">MASQUE Working Group</a>. There's folks that want to use QUIC and HTTP/3 as a "supercharged WebSocket", hence the formation of the <a href="https://datatracker.ietf.org/wg/webtrans/documents" target="_blank" rel="noopener noreferrer">WebTransport Working Group</a>.</p>
-	<p>Whatever the future holds for QUIC, we're just getting started, and I'm excited.</p>
+<p>QUIC is a new Internet transport protocol for secure, reliable and multiplexed communications. <a href="https://www.cloudflare.com/learning/performance/what-is-http3" target="_blank" rel="noopener noreferrer">HTTP/3</a> builds on top of QUIC, leveraging the new features to fix performance problems such as Head-of-Line blocking. This enables web pages to load faster, especially over troublesome networks.</p>
+<p>QUIC and HTTP/3 are open standards that have been under development in the IETF <a href="https://blog.cloudflare.com/http-3-from-root-to-tip">for almost exactly 4 years</a>. On October 21, 2020, following two rounds of Working Group Last Call, draft 32 of the family of documents that describe QUIC and HTTP/3 were put into <a href="https://mailarchive.ietf.org/arch/msg/quic/ye1LeRl7oEz898RxjE6D3koWhn0" target="_blank" rel="noopener noreferrer">IETF Last Call</a>. This is an important milestone for the group. We are now telling the entire IETF community that we think we're almost done and that we'd welcome their final review.</p>
+<p>Speaking personally, I've been involved with QUIC in some shape or form for many years now. Earlier this year I was honoured to be asked to help co-chair the Working Group. I'm pleased to help shepherd the documents through this important phase, and grateful for the efforts of everyone involved in getting us there, especially the editors. I'm also excited about future opportunities to evolve on top of QUIC v1 to help build a better Internet.</p>
+<p>There are two aspects to protocol development. One aspect involves writing and iterating upon the documents that describe the protocols themselves. Then, there's implementing, deploying and testing libraries, clients and/or servers. These aspects operate hand in hand, helping the Working Group move towards satisfying the goals listed in its charter. IETF Last Call marks the point that the group and their responsible Area Director (in this case Magnus Westerlund) believe the job is almost done. Now is the time to solicit feedback from the wider IETF community for review. At the end of the Last Call period, the stakeholders will take stock, address feedback as needed and, fingers crossed, go onto the next step of requesting the documents be published as RFCs on the Standards Track.</p>
+<p>Although specification and implementation work hand in hand, they often progress at different rates, and that is totally fine. The QUIC specification has been mature and deployable for a long time now. HTTP/3 has been <a href="https://blog.cloudflare.com/http3-the-past-present-and-future">generally available</a> on the Cloudflare edge since September 2019, and we've been delighted to see support roll out in user agents such as Chrome, Firefox, Safari, curl and so on. Although draft 32 is the latest specification, the community has for the time being settled on draft 29 as a solid basis for interoperability. This shouldn't be surprising, as foundational aspects crystallize the scope of changes between iterations decreases. For the average person in the street, there's not really much difference between 29 and 32.</p>
+<p>So today, if you visit a website with HTTP/3 enabled—such as <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">https://cloudflare-quic.com</a>—you’ll probably see response headers that contain Alt-Svc: h3-29="… . And in a while, once Last Call completes and the RFCs ship, you'll start to see websites simply offer Alt-Svc: h3="… (note, no draft version!).</p>
+<h3>Need a deep dive?</h3>
+<p>We've collected a bunch of resource links at <a href="https://cloudflare-quic.com" target="_blank" rel="noopener noreferrer">https://cloudflare-quic.com</a>. If you're more of an interactive visual learner, you might be pleased to hear that I've also been hosting a series on <a href="https://cloudflare.tv/live" target="_blank" rel="noopener noreferrer">Cloudflare TV</a> called "Levelling up Web Performance with HTTP/3". There are over 12 hours of content including the basics of QUIC, ways to measure and debug the protocol in action using tools like Wireshark, and several deep dives into specific topics. I've also been lucky to have some guest experts join me along the way. The table below gives an overview of the episodes that are available on demand.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="400" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=640&amp;h=358&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=715&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=750&amp;h=420&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=828&amp;h=463&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=1080&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=1280&amp;h=716&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=1430&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A Last Call for QUIC, a giant leap for the Internet Embedded Image - RQGgdv" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46E7GRX420PGAN4WYCFH6M.png&amp;w=1668&amp;h=933&amp;f=webp" data-lightbox-width="1668" data-lightbox-height="933" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="400" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Episode</p>
+<p>Description</p>
+<p><a href="https://cloudflare.tv/event/6jJjzbBoFwvARsoaNiUt9i" target="_blank" rel="noopener noreferrer">1</a></p>
+<p>Introduction to QUIC.</p>
+<p><a href="https://cloudflare.tv/event/5rcGVibHCKs9l9xUUMdJqg" target="_blank" rel="noopener noreferrer">2</a></p>
+<p>Introduction to HTTP/3.</p>
+<p><a href="https://cloudflare.tv/event/3OM7upT7p3vpAdzphFdhnx" target="_blank" rel="noopener noreferrer">3</a></p>
+<p>QUIC &amp; HTTP/3 logging and analysis using qlog and qvis. Featuring Robin Marx.</p>
+<p><a href="https://cloudflare.tv/event/45tQd4UPkZGULg59BZPl1p" target="_blank" rel="noopener noreferrer">4</a></p>
+<p>QUIC &amp; HTTP/3 packet capture and analysis using Wireshark. Featuring Peter Wu.</p>
+<p><a href="https://cloudflare.tv/event/4YgvMrif2yma7pM6Srv6wi" target="_blank" rel="noopener noreferrer">5</a></p>
+<p>The roles of Server Push and Prioritization in HTTP/2 and HTTP/3. Featuring Yoav Weiss.</p>
+<p><a href="https://cloudflare.tv/event/7ufIyfjZfn2aQ2K635EH3t" target="_blank" rel="noopener noreferrer">6</a></p>
+<p>"After dinner chat" about curl and QUIC. Featuring Daniel Stenberg.</p>
+<p><a href="https://cloudflare.tv/event/6vMyFU2jyx2iKXZVp7YjHW" target="_blank" rel="noopener noreferrer">7</a></p>
+<p>Qlog vs. Wireshark. Featuring Robin Marx and Peter Wu.</p>
+<p><a href="https://cloudflare.tv/event/3miIPtXnktpzjslJlnkD9c" target="_blank" rel="noopener noreferrer">8</a></p>
+<p>Understanding protocol performance using WebPageTest. Featuring Pat Meenan and Andy Davies.</p>
+<p><a href="https://cloudflare.tv/event/6Qv7zmY2oi6j28M5HZNZmV" target="_blank" rel="noopener noreferrer">9</a></p>
+<p>Handshake deep dive.</p>
+<p><a href="https://cloudflare.tv/event/3gqUUBcl40LvThxO7UQH0T" target="_blank" rel="noopener noreferrer">10</a></p>
+<p>Getting to grips with quiche, Cloudflare's QUIC and HTTP/3 library.</p>
+<p><a href="https://cloudflare.tv/event/3Mrq6DHoA9fy4ATT3Wigrv" target="_blank" rel="noopener noreferrer">11</a></p>
+<p>A review of SIGCOMM's EPIQ workshop on evolving QUIC.</p>
+<p><a href="https://cloudflare.tv/event/CHrSpig5nqKeFGFA3fzLq" target="_blank" rel="noopener noreferrer">12</a></p>
+<p>Understanding the role of congestion control in QUIC. Featuring Junho Choi.</p>
+<div id="html-block-k2v" class="html-block">
+	<p></p>
 </div>
+<h3>Whither QUIC?</h3>
+<p>So does Last Call mean QUIC is "done"? Not by a long shot. The new protocol is a giant leap for the Internet, because it enables new opportunities and innovation. QUIC v1 is basically the set of documents that have gone into Last Call. We'll continue to see people gain experience deploying and testing this, and no doubt cool blog posts about tweaking parameters for efficiency and performance are on the radar. But QUIC and HTTP/3 are extensible, so we'll see people interested in trying new things like multipath, different congestion control approaches, or new ways to carry data unreliably such as the <a href="https://datatracker.ietf.org/doc/draft-ietf-quic-datagram" target="_blank" rel="noopener noreferrer">DATAGRAM frame</a>.</p>
+<p>We're also seeing people interested in using QUIC for other use cases. Mapping other application protocols like DNS to QUIC is a rapid way to get its improvements. We're seeing people that want to use QUIC as a substrate for carrying other transport protocols, hence the formation of the <a href="https://datatracker.ietf.org/wg/masque/about" target="_blank" rel="noopener noreferrer">MASQUE Working Group</a>. There's folks that want to use QUIC and HTTP/3 as a "supercharged WebSocket", hence the formation of the <a href="https://datatracker.ietf.org/wg/webtrans/documents" target="_blank" rel="noopener noreferrer">WebTransport Working Group</a>.</p>
+<p>Whatever the future holds for QUIC, we're just getting started, and I'm excited.</p>

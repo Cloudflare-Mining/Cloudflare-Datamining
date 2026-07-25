@@ -1,0 +1,116 @@
+<p>如何在没有服务器的情况下对 PB 级数据运行 SQL 查询？</p>
+<p>我们对此问题有应对方案：<a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a>，这是一种无服务器查询引擎，可筛选巨大的数据集并在数秒内返回结果。</p>
+<p>这篇文章详细介绍了使之成为可能的架构和技术。我们将介绍我们的查询规划器，它使用 <a href="https://developers.cloudflare.com/r2/data-catalog" target="_blank" rel="noopener noreferrer"><u>R2 Data Catalog</u></a> 在读取字节之前修剪数 TB 的数据，并解释我们如何在 Cloudflare 的<a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer"><u>全球网络</u></a>、<a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer"><u>Workers</u></a> 和 <a href="https://developers.cloudflare.com/r2" target="_blank" rel="noopener noreferrer"><u>R2</u></a> 之间分配工作，以实现大规模并行执行。</p>
+<h3>从目录到查询</h3>
+<p>在 2025 年 Developer Week 期间，我们<a href="https://blog.cloudflare.com/r2-data-catalog-public-beta" target="_blank" rel="noopener noreferrer"><u>推出了</u></a> R2 Data Catalog，这是一个托管的 <a href="https://iceberg.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Iceberg</u></a> 目录，直接内置于您的 Cloudflare R2 存储桶中。Iceberg 是一种开放表格式，为 PB 级对象存储提供事务和架构演化等关键数据库功能。它为您提供可靠的数据目录，但不提供查询方式。</p>
+<p>在此之前，读取 R2 数据目录需要设置单独的服务，例如 <a href="https://spark.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Spark</u></a> 或 <a href="https://trino.io" target="_blank" rel="noopener noreferrer"><u>Trino</u></a>。大规模运营这些引擎并非易事：您需要配置集群、管理资源使用情况并负责其可用性，而这些都无助于实现从数据中获取价值这一主要目标。</p>
+<p><a href="https://developers.cloudflare.com/r2-sql" target="_blank" rel="noopener noreferrer"><u>R2 SQL</u></a> 完全删除了该步骤。它是一个无服务器查询引擎，可以在数据所在的 Iceberg 表上执行检索 SQL 查询。</p>
+<h3>设计用于处理 PB 级数据的查询引擎</h3>
+<p>对象存储与传统数据库的存储有着根本的不同。数据库的结构是经过精心设计的；而 R2 则是一个对象的海洋，单个逻辑表可能由数百万个大小不一的独立文件组成，而且每秒都会有更多文件生成。</p>
+<p>Apache Iceberg 在此基础上提供了强大的逻辑组织层。它通过将表的状态作为一系列不可变的快照进行管理，通过操作轻量级元数据文件（而不是重写数据文件本身）来创建可靠的、结构化的表视图。</p>
+<p>然而，这种逻辑结构并没有改变潜在的物理挑战：高效的查询引擎仍然必须在庞大的文件集合中找到所需的特定数据，而这需要克服两个主要的技术障碍：</p>
+<p><strong>I/O 问题</strong>：查询效率的核心挑战是最大限度地减少从存储中读取的数据量。强制读取每个对象的方法根本不可行。主要目标是只读取绝对必要的数据。</p>
+<p><strong>计算难题</strong>：即便经过优化后，仍需读取的数据量可能依然十分庞大。我们需要一种方式，能够为那些数据量巨大的查询任务精准匹配适量的计算资源——这些任务可能仅需运行短短几秒，随后便要立即将计算资源缩减至零，从而避免任何资源浪费。</p>
+<p>我们为 R2 SQL 设计的架构采用两阶段方案来解决这两个问题：一是利用元数据智能缩减搜索范围的<strong>查询规划器</strong>，二是通过 Cloudflare 全球网络分布式处理数据的<strong>查询执行系统</strong>。</p>
+<h2>查询规划器</h2>
+<p>最高效的数据处理方式，就是从一开始就避免读取不必要的数据。这正是 R2 SQL 查询规划器的核心策略。该规划器不会对所有文件进行详尽扫描，而是利用 R2 Data Catalog 提供的元数据结构来缩减搜索范围，也就是说，避免读取与查询无关的海量数据。</p>
+<p>这是一项自上而下的调查，其中规划器导航 Iceberg 元数据层的层次结构，使用每个级别的<strong>统计信息</strong>来构建快速计划，准确指定查询引擎需要读取的字节范围。</p>
+<h3>我们说的“统计信息”是什么意思？</h3>
+<p>当我们提到规划器使用“统计信息”时，指的是 Iceberg 存储的关于数据文件内容的摘要元数据。这些统计信息构建了一张数据的粗略地图，使规划器能够在无需打开文件的情况下，决定读取哪些文件而忽略哪些文件。</p>
+<p>规划器使用两种主要的统计级别来进行裁剪：</p>
+<p><strong>分区级统计信息</strong>：这些统计信息存储在 Iceberg 清单列表中，用于描述给定 Iceberg 清单文件中所有数据的分区值范围。以按 <code>day(event_timestamp)</code> 分区的情况为例，该统计信息会记录该清单所追踪文件中最早和最晚的日期。</p>
+<p><strong>列级统计信息</strong>：这些更为精细的统计信息存储在清单文件中，针对每个独立的数据文件进行记录。R2 Data Catalog 中的数据文件采用 <a href="https://parquet.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Parquet</u></a> 格式存储。对于 Parquet 文件的每一列，清单文件都会存储以下关键信息：</p>
+<ul>
+	<li>最小值和最大值。如果查询要求 <code>http_status = 500</code>，而文件的统计信息显示其 <code>http_status</code> 列的最小值为 200，最大值为 404，则可以跳过整个文件。</li>
+	<li>空值 (null) 的数量。当查询明确查找非空值（例如 <code>WHERE error_code IS NOT NULL</code>），且该文件的元数据显示 <code>error_code</code> 字段的所有值均为空时，规划器便可以跳过这些文件。</li>
+</ul>
+<p>现在，让我们看看规划器在遍历元数据层时如何使用这些统计数据。</p>
+<h3>缩减搜索范围</h3>
+<p>修剪过程是一个自上而下的调查，它包含以下三个主要步骤：</p>
+<ol>
+	<li><strong>表元数据和当前快照</strong></li>
+</ol>
+<p>规划器首先向目录请求当前表元数据的位置。这是一个 JSON 文件，包含表的当前架构、分区规范以及所有历史快照的日志。然后，规划器会获取最新的快照进行处理。</p>
+<p>2. <strong>清单列表和分区裁剪</strong></p>
+<p>当前快照指向单个 Iceberg 清单列表文件。规划器会读取该文件，并利用每个条目的分区级统计信息执行第一阶段（也是最关键的）修剪操作——丢弃所有分区值范围不符合查询条件的清单文件。例如，对于按 <code>day(event_timestamp)</code> 分区的表，规划器可通过清单列表中的最小/最大值，直接排除所有不包含查询相关日期数据的清单文件。</p>
+<p>3.<strong> 清单和文件级缩减</strong></p>
+<p>对于剩余的清单文件，规划器会逐一读取以获取实际的 Parquet 数据文件列表。这些清单文件包含其所追踪的每个数据文件更精细的列级统计信息。基于此可以进行第二轮筛选，直接丢弃那些完全不可能包含符合查询过滤器条件的数据行的数据文件。</p>
+<p>4. <strong>文件行组修剪</strong></p>
+<p>最后，对于仍然是候选的特定数据文件，查询规划器使用存储在 Parquet 文件页脚内的统计信息来跳过整个行组。</p>
+<p>这种多层修剪的结果是一份精确的 Parquet 文件列表，以及这些 Parquet 文件中的行组。这些行组将成为查询工作单元，并被调度到查询执行系统进行处理。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="898" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=715&amp;h=898&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=640&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=715&amp;h=898&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=750&amp;h=942&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=828&amp;h=1040&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=1080&amp;h=1356&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=1280&amp;h=1608&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=1430&amp;h=1796&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2972  Image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QDPK5FSXKCQSTBY5E82S.png&amp;w=1591&amp;h=1999&amp;f=webp" data-lightbox-width="1591" data-lightbox-height="1999" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="898" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>规划管道</h3>
+<p>在 R2 SQL 中，我们目前为止所描述的多层修剪并非一个单一的过程。对于包含数百万个文件的表，元数据可能太大，无法在开始任何实际工作之前处理。等待完整的计划会导致严重的延迟。</p>
+<p>相反，R2 SQL 将规划与执行视为一个协同运行的并发管道。规划器负责持续生成工作单元流，供执行器在每个工作单元就绪后立即处理。</p>
+<p>规划器的调查从两次获取表结构图开始：一次获取表的快照，另一次获取清单列表。</p>
+<h4>尽早开始执行</h4>
+<p>从这一阶段开始，查询将以流式处理方式执行。查询规划器在读取清单文件（以及这些清单文件指向的数据文件）并进行修剪的过程中，会即时将所有匹配的数据文件或行组作为工作单元发送至执行队列。</p>
+<p>这种管道结构能够确保计算节点几乎立即启动耗时的数据 I/O 操作，远早于规划器完成全面分析的时间。</p>
+<p>在这个管道模型的基础上，规划器添加了一项关键优化：<strong>“有序处理”</strong>。清单文件不会以任意顺序进行流式传输，相反，规划器会按照与查询语句中 <code>ORDER BY</code> 子句相匹配的顺序来处理这些文件，并依据元数据统计信息进行引导。这样可以确保最有可能包含目标结果的数据优先得到处理。</p>
+<p>这两个概念协同工作，以解决查询管道两端的查询延迟问题。</p>
+<p>流式规划管道让我们能够尽早开始处理数据，从而将首个字节处理前的延迟降至最低。而在管道的另一端，通过对工作任务的精心排序，我们能够在无需扫描整个数据集的情况下找到确定结果，从而提前完成任务。</p>
+<p>下一节将解释这种“提前完成”策略背后的机制。</p>
+<h4>及早停止：如何在不阅读所有内容的情况下完成</h4>
+<p>由于查询计划器按照与 <code>ORDER BY</code> 子句匹配的顺序流式传输工作单元，查询执行系统首先处理最有可能出现在最终结果集中的数据。</p>
+<p>这种优先级排序发生在元数据分层结构的两个层级：</p>
+<p><strong>清单排序</strong>：规划器首先会检查清单列表。通过分析每个清单文件的分区统计信息（例如该组文件中的最新时间戳），来决定优先流式传输哪些完整的清单文件。</p>
+<p><strong>Parquet 文件排序策略</strong>：在读取每个清单文件时，系统会根据更精细的列级统计信息，确定该清单内各个 Parquet 文件的处理顺序。</p>
+<p>这就确保了会有一个持续按优先级排序的工作单元流被输送到执行引擎。而正是这个经过优先级排序的工作单元流，让我们能够提前终止查询。</p>
+<p>例如，对于像 <code>ORDER BY timestamp DESC LIMIT 5</code> 这样的查询，当执行引擎处理工作单元并发回结果时，计划器会同时做两件事：</p>
+<p>它维护着迄今为止看到的最佳 5 个结果的有限堆，并不断将新结果与堆中最旧的时间戳进行比较。</p>
+<p>它会在流本身上保留一个“高水位标记”。借助元数据，它始终知道任何尚未处理的数据文件的绝对最新时间戳。</p>
+<p>规划器会不断将堆的状态与剩余流的水位线进行比较。当 Top 5 堆中最旧的时间戳比剩余流的高水位线更新时，整个查询就会停止。</p>
+<p>此时，我们可以确定剩余的工作单元中不可能再包含能够进入前 5 名的结果。于是，数据处理管道将停止运行，并向用户返回一个完整且正确的结果——而此时系统往往只读取了可能匹配数据中的一小部分。</p>
+<p>目前，R2 SQL 仅支持对表分区键中的列进行排序。我们将努力在未来解决这一限制。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="1069" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=715&amp;h=1069&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=640&amp;h=957&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=715&amp;h=1069&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=750&amp;h=1121&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=828&amp;h=1238&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=1080&amp;h=1615&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=1280&amp;h=1914&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=1430&amp;h=2138&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2972  Image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47QW04E67385X0420DX85X.png&amp;w=1337&amp;h=1999&amp;f=webp" data-lightbox-width="1337" data-lightbox-height="1999" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="1069" class="pt-portable-image-media"></div>
+</figure>
+<h3>架构</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="776" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=715&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=640&amp;h=695&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=715&amp;h=776&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=750&amp;h=814&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=828&amp;h=899&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=1080&amp;h=1172&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=1280&amp;h=1389&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=1430&amp;h=1552&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2972  Image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46CHBAN8N8Y4JZY149P7SF.png&amp;w=1841&amp;h=1999&amp;f=webp" data-lightbox-width="1841" data-lightbox-height="1999" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="776" class="pt-portable-image-media"></div>
+</figure>
+<h2>查询执行</h2>
+<p>查询规划器以名为“行组”的小块为单位，流式处理查询任务。单个 Parquet 文件通常包含多个行组，但大多数情况下，只有其中少数行组包含相关数据。将查询任务拆分为行组处理，能让 R2 SQL 仅读取可能高达数 GB 的 Parquet 文件中的少量部分。</p>
+<p>接收用户请求并执行查询规划的服务器充当查询协调器的角色。它将工作分配给查询工作器，并汇总结果，然后返回给用户。</p>
+<p>Cloudflare 的网络规模庞大，许多服务器可能同时处于维护状态。查询协调器会联系 Cloudflare 的内部 API，以确保只选择运行良好、功能齐全的服务器来执行查询。协调器和查询 Worker 之间的连接通过 <a href="https://www.cloudflare.com/en-gb/application-services/products/argo-smart-routing" target="_blank" rel="noopener noreferrer"><u>Cloudflare Argo Smart Routing</u></a> 进行，以确保快速可靠的连接。</p>
+<p>从协调器接收查询执行请求的服务器将承担查询 Worker 的角色。查询 Worker 是 R2 SQL 实现水平扩展的关键节点。通过增加查询 Worker 的数量，R2 SQL 能够将查询任务分配到多台服务器上并行处理，从而显著提升查询处理速度。这一优势在处理包含大量文件的查询时尤为明显。</p>
+<p>协调器和查询 Worker 都在 Cloudflare 的分布式网络上运行，确保 R2 SQL 具有足够的计算能力和 I/O 吞吐量来处理分析工作负载。</p>
+<p>每个查询 Worker 会从协调器接收一批行组数据以及待执行的 SQL 查询。此外，协调器还会发送关于包含这些行组的 Parquet 文件的序列化元数据。得益于这些元数据，查询 Worker 能够直接获知每个行组在 Parquet 文件中的精确字节偏移量，而无需从 R2 存储中读取这些信息。</p>
+<h3>Apache DataFusion</h3>
+<p>在内部，每个查询 Worker 都借助 <a href="https://github.com/apache/datafusion" target="_blank" rel="noopener noreferrer"><u>Apache DataFusion</u></a> 对行组运行 SQL 查询。DataFusion 是一个用 Rust 编写的开源分析型查询引擎，其构建理念围绕分区展开。一个查询会被拆分成多个并发的独立数据流，每个数据流负责处理属于自己的那部分数据分区。</p>
+<p>DataFusion 中的分区与 Iceberg 中的分区类似，但用途不同。在 Iceberg 中，分区是一种在对象存储上物理组织数据的方式。在 DataFusion 中，分区用于组织内存数据以进行查询处理。虽然从逻辑上讲它们很相似，都是行根据某种逻辑分组在一起，但实际上，Iceberg 中的分区并不总是与 DataFusion 中的分区相对应。</p>
+<p>DataFusion 分区与 R2 SQL 查询 Worker 的数据模型完美映射，因为每个行组都可以被视为独立的分区。因此，每个行组都可以并行处理。</p>
+<p>同时，由于行组通常至少包含 1000 行，R2 SQL 受益于矢量化执行。每个 DataFusion 分区流可以一次性对多行执行 SQL 查询，从而分摊查询解释的开销。</p>
+<p>在查询执行方面，存在两种极端方式：一种是批量顺序处理所有行，另一种是并行处理每一行数据。顺序处理会形成所谓的“紧密循环”，这种方式通常更有利于 CPU 缓存利用。除此之外，由于批量处理意味着我们只需较少次数地遍历查询计划，因此能显著降低解释开销。而完全并行处理虽然无法实现上述优化，但能通过利用多核 CPU 来更快完成查询。</p>
+<p>DataFusion 的架构使我们能够在此规模上实现平衡，从而兼顾两方面的优势。对于每个数据分区，我们获得了更好的 CPU 缓存局部性，并摊销了解释开销。同时，由于许多分区是并行处理的，我们将工作负载分配到多个 CPU 上，从而进一步缩短了执行时间。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="622" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=715&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=640&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=715&amp;h=622&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=750&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=828&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=1080&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=1280&amp;h=1114&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=1430&amp;h=1244&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2972  Image 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45AZMQ3EHHRMTRGN6HKTM9.png&amp;w=1920&amp;h=1669&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1669" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="622" class="pt-portable-image-media"></div>
+</figure>
+<p>除了智能查询执行模型之外，DataFusion 还提供一流的 Parquet 支持。</p>
+<p>作为文件格式，Parquet 为查询引擎设计了多项专属优化。它采用列式存储结构——这意味着各列数据在物理上是相互分离的。这种分离特性不仅带来了更高的压缩率，还使得查询引擎能够选择性地读取特定列。例如，如果查询只涉及五列数据，我们就可以仅读取这五列，而跳过其余五十列的读取。这种方式能大幅减少从 R2 读取的数据量，同时显著降低解压缩所需的 CPU 时间。</p>
+<p>DataFusion 正是这样做的。使用 R2 的远程读取，它可以读取 Parquet 文件中包含所需列的部分，而跳过其余部分。</p>
+<p>DataFusion 的优化器还支持将任意过滤器下推至查询计划的底层。换句话说，我们可以在从 Parquet 文件读取数据的同时就应用过滤条件。这使得我们能够跳过那些确定不会返回给用户的结果的物化过程，从而进一步缩短查询执行时间。</p>
+<h3>返回查询结果</h3>
+<p>查询 Worker 计算完结果后，会通过 <a href="https://grpc.io" target="_blank" rel="noopener noreferrer"><u>gRPC 协议</u></a>将其返回给协调者。</p>
+<p>R2 SQL 使用 <a href="https://arrow.apache.org" target="_blank" rel="noopener noreferrer"><u>Apache Arrow</u></a> 在内部表示查询结果。Arrow 是一种内存格式，可以高效地表示结构化数据数组。DataFusion 在查询执行期间也使用它来表示数据分区。</p>
+<p>除了作为内存中的数据格式外，Arrow 还定义了 <a href="https://arrow.apache.org/docs/format/Columnar.html#format-ipc" target="_blank" rel="noopener noreferrer"><u>Arrow IPC</u></a> 序列化格式。Arrow IPC 并非用于数据的长期存储，而是专为进程间通信设计——这正是查询 Worker 与协调器通过网络进行交互时所采用的方式。查询 Worker 会将所有结果序列化为 Arrow IPC 格式，并嵌入到 gRPC 响应中。随后，协调器会对这些结果进行反序列化，并继续处理 Arrow 数组。</p>
+<h2>未来计划</h2>
+<p>虽然 R2 SQL 目前在执行过滤查询方面表现相当出色，但我们计划在未来几个月内快速添加新功能。这包括但不限于：</p>
+<ul>
+	<li>以分布式和可扩展的方式支持复杂汇总；</li>
+	<li>用于提高查询执行可见性的工具，以帮助开发人员优化性能；</li>
+	<li>支持 Apache Iceberg 所支持的许多配置选项。</li>
+</ul>
+<p>此外，我们计划通过允许用户从 Cloudflare 仪表板使用 R2 SQL 查询其 R2 Data Catalog，来改善开发人员体验。</p>
+<p>鉴于 Cloudflare 的分布式计算、网络功能和开发人员工具生态系统，我们有机会在此构建真正独特的产品。我们正在探索不同类型的索引，以进一步提高 R2 SQL 查询的速度，并提供更多功能，例如全文搜索、地理空间查询等。</p>
+<h2>马上试试吧！</h2>
+<p>R2 SQL 目前尚处于早期阶段，但我们非常期待用户能够亲自体验。R2 SQL 今日正式开启公开测试！欢迎访问我们的<a href="https://developers.cloudflare.com/r2-sql/get-started" target="_blank" rel="noopener noreferrer"><u>入门指南</u></a>，了解如何构建端到端的数据管道——该管道能够处理事件并将结果传输至 R2 Data Catalog 表，之后您可以通过 R2 SQL 对这些数据进行查询。</p>
+<p><br>我们对于您将要构建的产品充满期待！欢迎在我们的<a href="http://discord.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>开发人员 Discord</u></a> 上与我们分享您的反馈。</p>
+<div id="html-block-k7o" class="html-block">
+	<div style="padding-top:56.25%">
+		<iframe src="https://customer-rhnwzxvb3mg4wz3v.cloudflarestream.com/4e0d32af30fc608fa6dc3a700529da52/iframe?poster=https%3A%2F%2Fcustomer-rhnwzxvb3mg4wz3v.cloudflarestream.com%2F4e0d32af30fc608fa6dc3a700529da52%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
+	</div>
+</div>

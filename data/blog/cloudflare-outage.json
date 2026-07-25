@@ -1,14 +1,9 @@
 {
-	"author": {
-		"name": "John Graham-Cumming",
-		"url": "http://blog.cloudflare.com/author/john-graham-cumming/",
-		"sameAs": []
-	},
+	"author": {},
 	"headline": "Cloudflare outage caused by bad software deploy (updated)",
-	"url": "http://blog.cloudflare.com/cloudflare-outage/",
+	"url": "https://blog.cloudflare.com/cloudflare-outage/",
 	"datePublished": "2019-07-02T15:50:00.000Z",
-	"dateModified": "2023-05-16T21:07:52.000Z",
-	"image": null,
-	"keywords": "Post Mortem, Outage, Deep Dive",
+	"dateModified": "2026-07-15T13:14:10.294Z",
+	"image": "https://blog.cloudflare.com/_emdash/api/media/file/01KXJHDG7CJT3B3133XAY31N4V.png",
 	"description": "Starting at 1342 UTC today we experienced a global outage across our network that resulted in visitors to Cloudflare-proxied domains being shown 502 errors (“Bad Gateway”). The cause of this outage was deployment of a single misconfigured rule within the Cloudflare Web Application Firewall (WAF) "
 }

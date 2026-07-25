@@ -1,0 +1,116 @@
+<p>今天，我們宣佈<a href="https://github.com/cloudflare/api-schemas" target="_blank" rel="noopener noreferrer">用於 Cloudflare API 的 OpenAPI 結構描述</a>正式發佈。這些 OpenAPI 結構描述透過 GitHub 發佈，並將隨著 Cloudflare 新增和更新 API 而定期更新。OpenAPI 是以機器可讀的格式定義 API 的廣泛採用標準。OpenAPI 結構描述允許將我們的 API 插入到各種工具中，以加速我們自己和客戶的開發。在內部，它將使我們更容易維護和更新我們的 API。在介紹這些好處之前，讓我們先從基礎知識開始。</p>
+<h2>什麼是 OpenAPI？</h2>
+<p>大部分網際網路都建立在 API（應用程式程式設計介面）之上，或者將它們作為服務提供給世界各地的客戶。這允許電腦以標準化的方式相互通訊。OpenAPI 是一種關於如何定義 API 的廣泛採用標準。這讓其他機器能夠可靠地剖析這些定義並以有趣的方式使用它們。Cloudflare 自己的 <a href="https://developers.cloudflare.com/api-shield/security/schema-validation" target="_blank" rel="noopener noreferrer">API Shield 產品</a>使用 OpenAPI 結構描述來提供結構描述驗證，以確保只有格式正確的 API 請求才會傳送到您的源站。</p>
+<p>Cloudflare 本身有一個 API，客戶可以使用它與網際網路上其他地方的安全性和效能產品進行互動。我們如何定義自己的 API？過去，我們使用稱為 <a href="https://github.com/json-schema-org/json-hyperschema-spec" target="_blank" rel="noopener noreferrer">JSON Hyper-Schema</a> 的標準。這對我們很有幫助，但隨著時間的推移，我們希望採用更多的工具，既可以使自己內部受益，又可以使客戶的生活更輕鬆。OpenAPI 社群在過去幾年中蓬勃發展，提供了許多在使用 JSON Hyper-Schema 時無法提供的功能，我們將在後面進行討論。從今天開始，我們將使用 OpenAPI。</p>
+<p>您可以在<a href="https://oai.github.io/Documentation/start-here.html" target="_blank" rel="noopener noreferrer">此處</a>瞭解有關 OpenAPI 本身的更多資訊。擁有一個開放、易於理解的標準來定義我們的 API，就可以使用共用工具和基礎結構來讀取這些標准定義。讓我們看幾個範例。</p>
+<h2>Cloudflare 的 OpenAPI 結構描述的使用</h2>
+<p>大多數客戶不需要使用結構描述本身來查看價值。第一個利用 OpenAPI 結構描述的系統是我們<a href="https://blog.cloudflare.com/building-a-better-developer-experience-through-api-documentation">今天推出</a><a href="https://developers.cloudflare.com/api" target="_blank" rel="noopener noreferrer">的新 API 文件</a>。因為我們現在有了 OpenAPI 結構描述，所以我們利用開放原始碼工具 <a href="https://stoplight.io/open-source/elements" target="_blank" rel="noopener noreferrer">Stoplight Elements</a> 來協助產生這個新的文件網站。這讓我們能夠停用以前難以維護的定製網站。此外，Cloudflare 的許多工程師都熟悉 OpenAPI，因此我們的團隊可以更快地編寫新結構描述，並且透過使用團隊在定義新 API 時理解的標準來減少出錯的可能性。</p>
+<p>但是，有一些方法可以直接利用結構描述。OpenAPI 社群擁有大量工具，只需要一組結構描述即可使用。模擬 API 和庫產生就是這樣的兩個範例。</p>
+<h3>模擬 Cloudflare 的 API</h3>
+<p>假設您有呼叫 Cloudflare API 的程式碼，並且您希望能夠輕鬆地在本地執行單元測試，或在 CI/CD 管道中執行整合測試。雖然您可以在每次執行時呼叫 Cloudflare 的 API，但出於一些原因，您可能不想這樣做。首先，您可能想要頻繁地執行測試，以至於管理資源的建立和卸除變得非常痛苦。此外，在許多此類測試中，您不一定會嘗試驗證 Cloudflare 中的邏輯，而是嘗試驗證您自己的系統行為。在這種情況下，模擬 Cloudflare 的 API 將是最佳做法，因為您可以確信自己沒有違反 Cloudflare 的 API 合約，又無需擔心管理實際資源的細節。此外，模擬讓您能夠模擬不同的場景，例如速率限制或接收 500 個錯誤。這讓您能夠針對通常可能產生嚴重影響的罕見情況測試程式碼。</p>
+<p>例如，<a href="https://docs.stoplight.io/docs/prism/83dbbd75532cf-http-mocking" target="_blank" rel="noopener noreferrer">Stoplight Prism</a> 可用於模擬 Cloudflare 的 API 進行測試。使用 Cloudflare API 結構描述的本機複本，您可以執行以下命令來啟動本機模擬伺服器：</p>
+<p>然後，您可以向模擬伺服器傳送請求，以驗證您對 Cloudflare API 的使用不會在本地違反 API 合約：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> docker</span><span class="sk-032f62-99ffe4"> run</span><span class="sk-005cc5-99ffe4"> --init</span><span class="sk-005cc5-99ffe4"> --rm</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -v</span><span class="sk-032f62-99ffe4"> /home/user/git/api-schemas/openapi.yaml:/tmp/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -p</span><span class="sk-032f62-99ffe4"> 4010:4010</span><span class="sk-032f62-99ffe4"> stoplight/prism:4</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  mock</span><span class="sk-005cc5-99ffe4"> -h</span><span class="sk-005cc5-ffc799"> 0.0.0.0</span><span class="sk-032f62-99ffe4"> /tmp/openapi.yaml</span></span></code></pre>
+</div>
+<p>這意味著更快的開發和更短的測試執行，同時仍然可以在 API 合併或部署之前儘早發現它們的合約問題。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> curl</span><span class="sk-005cc5-99ffe4"> -sX</span><span class="sk-032f62-99ffe4"> PUT</span><span class="sk-032f62-99ffe4"> localhost:4010/zones/f00/activation_check</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">  -Hx-auth-email:foo@bar.com</span><span class="sk-005cc5-99ffe4"> -Hx-auth-key:foobarbaz</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> jq</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "success"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-99ffe4"> true</span><span class="sk-032f62-99ffe4">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "errors"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "messages"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "result"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "id"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "023e105f4ecef8ad9ca31a8372d0c353"</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>庫產生</h3>
+<p>Cloudflare 擁有多種程式設計語言的庫，例如 <a href="https://registry.terraform.io/providers/cloudflare/cloudflare/latest" target="_blank" rel="noopener noreferrer">Terraform</a> 和 <a href="https://github.com/cloudflare/cloudflare-go" target="_blank" rel="noopener noreferrer">Go</a>，但我們並不支援所有可能的程式設計語言。幸運的是，使用像 <a href="https://github.com/OpenAPITools/openapi-generator" target="_blank" rel="noopener noreferrer">openapi generator</a> 這樣的工具，您可以輸入 Cloudflare 的 API 結構描述並產生各種語言的庫，然後在您的程式碼中使用它們來與 Cloudflare 的 API 對話。例如，您可以使用以下命令產生 Java 庫：</p>
+<p>然後開始在您的 Java 程式碼中使用該用戶端與 Cloudflare 的 API 對話。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">git</span><span class="sk-032f62-99ffe4"> clone</span><span class="sk-032f62-99ffe4"> https://github.com/openapitools/openapi-generator</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">cd</span><span class="sk-032f62-99ffe4"> openapi-generator</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">mvn</span><span class="sk-032f62-99ffe4"> clean</span><span class="sk-032f62-99ffe4"> package</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">java</span><span class="sk-005cc5-99ffe4"> -jar</span><span class="sk-032f62-99ffe4"> modules/openapi-generator-cli/target/openapi-generator-cli.jar</span><span class="sk-032f62-99ffe4"> generate</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   -i</span><span class="sk-032f62-99ffe4"> https://raw.githubusercontent.com/cloudflare/api-schemas/main/openapi.yaml</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   -g</span><span class="sk-032f62-99ffe4"> java</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-005cc5-99ffe4">   -o</span><span class="sk-032f62-99ffe4"> /var/tmp/java_api_client</span></span></code></pre>
+</div>
+<h2>Cloudflare 如何向 OpenAPI 轉換</h2>
+<p>如前所述，我們之前使用 JSON Hyper-Schema 來定義我們的 API。我們有大約 600 個已在結構描述中定義的端點。下面的程式碼片段展示了 JSON Hyper-Schema 中的端點是什麼樣子的：</p>
+<p>讓我們看一下 OpenAPI 中的同一端點：</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "title"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"List Zones"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "description"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"List, search, sort, and filter your zones."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "rel"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"collection"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "href"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"zones"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "method"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"GET"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "schema"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "$ref"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"definitions/zone.json#/definitions/collection_query"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "targetSchema"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "$ref"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"#/definitions/response_collection"</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "cfOwnership"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"www"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "cfPlanAvailability"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "free"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "pro"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "business"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "enterprise"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-fff">true</span></span>
+<span class="line"><span class="sk-24292e-fff">      },</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">      "cfPermissionsRequired"</span><span class="sk-24292e-fff">: {</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">        "enum"</span><span class="sk-24292e-fff">: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "#zone:read"</span></span>
+<span class="line"><span class="sk-24292e-fff">        ]</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span></code></pre>
+</div>
+<p>您可以看到，兩者看起來非常相似，並且在大多數情況下，它們都包含相同的資訊，包括方法類型、描述以及請求和回應定義（儘管它們在 $refs 中連結）。從一個結構描述移轉到另一個結構描述的價值不在於我們如何定義結構描述本身，而在於我們可以用這些結構描述做什麼。許多工具可以剖析 OpenAPI，但只有很少的工具可以剖析 JSON Hyper-Schema。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">/zones:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    get:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      description:</span><span class="sk-032f62-99ffe4"> List,</span><span class="sk-032f62-99ffe4"> search,</span><span class="sk-032f62-99ffe4"> sort,</span><span class="sk-032f62-99ffe4"> and</span><span class="sk-032f62-99ffe4"> filter</span><span class="sk-032f62-99ffe4"> your</span><span class="sk-032f62-99ffe4"> zones.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      operationId:</span><span class="sk-032f62-99ffe4"> zone-list-zones</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      responses:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        4xx:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          content:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            application/json:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              schema:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                allOf:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                -</span><span class="sk-24292e-fff"> $ref</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> '#/components/schemas/components-schemas-response_collection'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                -</span><span class="sk-24292e-fff"> $ref</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> '#/components/schemas/api-response-common-failure'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          description:</span><span class="sk-032f62-99ffe4"> List</span><span class="sk-032f62-99ffe4"> Zones</span><span class="sk-032f62-99ffe4"> response</span><span class="sk-032f62-99ffe4"> failure</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        "200"</span><span class="sk-005cc5-ffc799">:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          content:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            application/json:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">              schema:</span></span>
+<span class="line"><span class="sk-24292e-fff">                $ref</span><span class="sk-032f62-99ffe4">:</span><span class="sk-032f62-99ffe4"> '#/components/schemas/components-schemas-response_collection'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          description:</span><span class="sk-032f62-99ffe4"> List</span><span class="sk-032f62-99ffe4"> Zones</span><span class="sk-032f62-99ffe4"> response</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      security:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      -</span><span class="sk-032f62-99ffe4"> api_email:</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        api_key:</span><span class="sk-24292e-fff"> []</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      summary:</span><span class="sk-032f62-99ffe4"> List</span><span class="sk-032f62-99ffe4"> Zones</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      tags:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      -</span><span class="sk-032f62-99ffe4"> Zone</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      x-cfPermissionsRequired:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        enum:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        -</span><span class="sk-032f62-99ffe4"> '#zone:read'</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      x-cfPlanAvailability:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        business:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        enterprise:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        free:</span><span class="sk-005cc5-99ffe4"> true</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        pro:</span><span class="sk-005cc5-99ffe4"> true</span></span></code></pre>
+</div>
+<p>如果這個 API 是構成 Cloudflare API 的全部，那麼只需手動將 JSON Hyper-Schema 轉換為 OpenAPI 結構描述就可以了。然而，重複此動作 600 次將是一項艱巨的任務。考慮到團隊會不斷新增新的端點，這可以說是不可能維持的。我們現有的 API 文件也使用了現有的 JSON Hyper-Schema，這意味著我們需要在整個過渡期間使兩個結構描述保持最新。與這相比，肯定有更好的方法。</p>
+<h3>自動轉換</h3>
+<p>鑒於 JSON Hyper-Schema 和 OpenAPI 都是標準，因此應該可以輸入一種格式的檔案並將其轉換為另一種格式，對嗎？幸運的是，答案是肯定的！我們建置了一個工具，它擷取所有現有的 JSON Hyper-Schema 並輸出完全相容的 OpenAPI 結構描述。這當然不是一蹴而就的，但由於現有的 OpenAPI 工具，我們可以反覆改進自動轉換器，並在輸出結構描述上執行 OpenAPI 驗證工具，以查看轉換工具仍然存在哪些問題。</p>
+<p>經過對轉換工具的多次反覆運算和改進，我們最終能夠從現有的 JSON Hyper-Schema 自動產生完全相容的 OpenAPI Spec 結構描述。在我們建置此工具時，團隊不斷新增和更新現有結構描述，我們的產品內容團隊也在不斷更新結構描述中的文字，以使我們的 API 文件更易於使用。這個過程的好處是我們不必減慢任何工作速度，因為舊結構描述中的任何變更都會自動反映在新結構描述中！</p>
+<p>在工具準備就緒後，剩下的步驟就是決定何時以及如何停止對 JSON Hyper-Schemas 進行更新，並將所有團隊轉移到 OpenAPI 結構描述。（現在舊的）API 文件是最大的問題，因為它們只理解 JSON Hyper-Schema。感謝我們的開發人員體驗和產品內容團隊的幫助，我們今天才能夠發佈新的 API 文件，並且今天也可以正式切換到 OpenAPI！</p>
+<h2>接下來是什麼？</h2>
+<p>現在我們已經完全轉移到 OpenAPI，更多的機會就出現了。在內部，我們將研究我們可以採用哪些工具來幫助減少各個團隊的工作量並加快 API 開發。我們正在探索的一個想法是從程式碼標記法自動建立 openAPI 結構描述。在外部，我們現在擁有必要的基礎工具，可以開始探索如何自動產生和支援更多程式設計語言庫，以供客戶使用。我們也很期待看到大家使用結構描述獲得的成果，所以如果您做了一些很酷的事情或有什麼想法，請不要猶豫，與我們分享！</p>

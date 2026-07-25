@@ -1,178 +1,150 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3OJFuPzbh7O6f2CFrQTfOl/eafe854b1a8cffa1e1233fe25fc85e60/running-serverless-puppeteer-workers-durable-objects.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Last year, we <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">announced the Browser Rendering API</a> – letting users running Puppeteer, a browser automation library, directly in Workers. Puppeteer is one of the most popular libraries used to interact with a headless browser instance to accomplish tasks like taking screenshots, generating PDFs, crawling web pages, and testing <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security" target="_blank" rel="noopener noreferrer">web applications</a>. We’ve heard from developers that configuring and maintaining their own serverless browser automation systems can be quite painful.</p>
-	<p>The <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer">Workers Browser Rendering API</a> solves this. It makes the Puppeteer library available directly in your Worker, connected to a real web browser, without the need to configure and manage infrastructure or keep browser sessions warm yourself. You can use <a href="https://www.npmjs.com/package/@cloudflare/puppeteer" target="_blank" rel="noopener noreferrer">@cloudflare/puppeteer</a> to run the full Puppeteer API directly on Workers!</p>
-	<p>We’ve seen so much interest from the developer community since launching last year. While the Browser Rendering API is still in beta (sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2" target="_blank" rel="noopener noreferrer">waitlist</a> to get access), we wanted to share a way to get more out of our <a href="https://developers.cloudflare.com/browser-rendering/platform/limits" target="_blank" rel="noopener noreferrer">current limits</a> by using the Browser Rendering API with <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>. We’ll also be sharing pricing for the Rendering API, so you can build knowing exactly what you’ll pay for.</p>
-	<div class="flex anchor relative">
-		<h3 id="building-a-responsive-web-design-testing-tool-with-the-browser-rendering-api">Building a responsive web design testing tool with the Browser Rendering API</h3>
-		<a href="https://blog.cloudflare.com/#building-a-responsive-web-design-testing-tool-with-the-browser-rendering-api" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As a designer or frontend developer, you want to make sure that content is well-designed for visitors browsing on different screen sizes. With the number of possible devices that users are browsing on are growing, it becomes difficult to test all the possibilities manually. While there are many testing tools on the market, we want to show how easy it is to create your own Chromium based tool with the Workers Browser Rendering API and Durable Objects.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/OQNeORd8VW4RffHGH8ndq/b94872dfb08664a524eae20227785acf/pasted-image-0--6--2.png" alt="" class="kg-image" width="852" height="236" loading="lazy">
-
-	</figure>
-	<p>We’ll be using the Worker to handle any incoming requests, pass them to the Durable Object to take screenshots and store them in an R2 bucket. The Durable Object is used to create a browser session that’s persistent. By using <a href="https://developers.cloudflare.com/durable-objects/api/alarms-in-durable-objects" target="_blank" rel="noopener noreferrer">Durable Object Alarms</a> we can keep browsers open for longer and reuse browser sessions across requests.</p>
-	<p>Let’s dive into how we can build this application:</p>
-	<ol>
-		<li>
-			<p>Create a Worker with a Durable Object, Browser Rendering API binding and R2 bucket. This is the resulting wrangler.toml:</p>
-		</li>
-	</ol>
-	<pre class="language-bash"><code class="language-bash">name = "rendering-api-demo"
-main = "src/index.js"
-compatibility_date = "2023-09-04"
-compatibility_flags = [ "nodejs_compat"]
-account_id = "c05e6a39aa4ccdd53ad17032f8a4dc10"
-
-
-# Browser Rendering API binding
-browser = { binding = "MYBROWSER" }
-
-# Bind an R2 Bucket
-[[r2_buckets]]
-binding = "BUCKET"
-bucket_name = "screenshots"
-
-# Binding to a Durable Object
-[[durable_objects.bindings]]
-name = "BROWSER"
-class_name = "Browser"
-
-[[migrations]]
-tag = "v1" # Should be unique for each entry
-new_classes = ["Browser"] # Array of new classes</code></pre>
-	<p>2. Define the Worker</p>
-	<p>This Worker simply passes the request onto the Durable Object.</p>
-	<pre class="language-javascript"><code class="language-javascript">export default {
-	async fetch(request, env) {
-
-		let id = env.BROWSER.idFromName("browser");
-		let obj = env.BROWSER.get(id);
-	  
-		// Send a request to the Durable Object, then await its response.
-		let resp = await obj.fetch(request.url);
-		let count = await resp.text();
-	  
-		return new Response("success");
-	}
-};</code></pre>
-	<p>3. Define the Durable Object class</p>
-	<pre class="language-js"><code class="language-js">const KEEP_BROWSER_ALIVE_IN_SECONDS = 60;
-
-export class Browser {
-	constructor(state, env) {
-		this.state = state;
-		this.env = env;
-		this.keptAliveInSeconds = 0;
-		this.storage = this.state.storage;
-	}
-  
-	async fetch(request) {
-		// screen resolutions to test out
-		const width = [1920, 1366, 1536, 360, 414]
-		const height = [1080, 768, 864, 640, 896]
-
-		// use the current date and time to create a folder structure for R2
-		const nowDate = new Date()
-		var coeff = 1000 * 60 * 5
-		var roundedDate = (new Date(Math.round(nowDate.getTime() / coeff) * coeff)).toString();
-		var folder = roundedDate.split(" GMT")[0]
-
-		//if there's a browser session open, re-use it
-		if (!this.browser) {
-			console.log(`Browser DO: Starting new instance`);
-			try {
-			  this.browser = await puppeteer.launch(this.env.MYBROWSER);
-			} catch (e) {
-			  console.log(`Browser DO: Could not start browser instance. Error: ${e}`);
-			}
-		  }
-		
-		// Reset keptAlive after each call to the DO
-		this.keptAliveInSeconds = 0;
-		
-		const page = await this.browser.newPage();
-
-		// take screenshots of each screen size 
-		for (let i = 0; i &lt; width.length; i++) {
-			await page.setViewport({ width: width[i], height: height[i] });
-			await page.goto("https://workers.cloudflare.com/");
-			const fileName = "screenshot_" + width[i] + "x" + height[i]
-			const sc = await page.screenshot({
-				path: fileName + ".jpg"
-			}
-			);
-
-			this.env.BUCKET.put(folder + "/"+ fileName + ".jpg", sc);
-		  }
-		
-		// Reset keptAlive after performing tasks to the DO.
-		this.keptAliveInSeconds = 0;
-
-		// set the first alarm to keep DO alive
-		let currentAlarm = await this.storage.getAlarm();
-		if (currentAlarm == null) {
-		console.log(`Browser DO: setting alarm`);
-		const TEN_SECONDS = 10 * 1000;
-		this.storage.setAlarm(Date.now() + TEN_SECONDS);
-		}
-		
-		await this.browser.close();
-		return new Response("success");
-	}
-
-	async alarm() {
-		this.keptAliveInSeconds += 10;
-	
-		// Extend browser DO life
-		if (this.keptAliveInSeconds &lt; KEEP_BROWSER_ALIVE_IN_SECONDS) {
-		  console.log(`Browser DO: has been kept alive for ${this.keptAliveInSeconds} seconds. Extending lifespan.`);
-		  this.storage.setAlarm(Date.now() + 10 * 1000);
-		} else console.log(`Browser DO: cxceeded life of ${KEEP_BROWSER_ALIVE_IN_SECONDS}. Browser DO will be shut down in 10 seconds.`);
-	  }
-
-  }</code></pre>
-	<p>That’s it! With less than a hundred lines of code, you can fully customize a powerful tool to automate responsive web design testing. You can even incorporate it into your CI pipeline to automatically test different window sizes with each build and verify the result is as expected by using an automated library like <a href="https://www.npmjs.com/package/pixelmatch" target="_blank" rel="noopener noreferrer">pixelmatch</a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="how-much-will-this-cost">How much will this cost?</h3>
-		<a href="https://blog.cloudflare.com/#how-much-will-this-cost" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We’ve spoken to many customers deploying a Puppeteer service on their own infrastructure, on <a href="https://www.cloudflare.com/learning/cloud/what-is-a-public-cloud" target="_blank" rel="noopener noreferrer">public cloud containers</a> or <a href="https://www.cloudflare.com/learning/serverless/glossary/function-as-a-service-faas" target="_blank" rel="noopener noreferrer">functions</a> or using managed services. The common theme that we’ve heard is that these services are costly – costly to maintain and expensive to run.</p>
-	<p>While you won’t be billed for the Browser Rendering API yet, we want to be transparent with you about costs you start building. We know it’s important to understand the pricing structure so that you don’t get a surprise bill and so that you can design your application efficiently.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6gFIbTnuDafnmpIH2FpQUX/94ce188a354578aae872971f974fd4b4/pasted-image-0--7--2.png" alt="" class="kg-image" width="1316" height="468" loading="lazy">
-
-	</figure>
-	<p>You pay based on two usage metrics:</p>
-	<ol>
-		<li>
-			<p>Number of sessions: A Browser Session is a new instance of a browser being launched</p>
-		</li>
-		<li>
-			<p>Number of concurrent sessions: Concurrent Sessions is the number of browser instances open at once</p>
-		</li>
-	</ol>
-	<p>Using Durable Objects to persist browser sessions improves performance by eliminating the time that it takes to spin up a new browser session. Since it re-uses sessions, it cuts down on the number of concurrent sessions needed. We highly encourage this model of session re-use if you expect to see consistent traffic for applications that you build on the Browser Rendering API.</p>
-	<p>If you have feedback about this pricing, we’re all ears. Feel free to reach out through <a href="https://discord.gg/8Gs9T6jN" target="_blank" rel="noopener noreferrer">Discord</a> (channel name: browser-rendering-api-beta) and share your thoughts.</p>
-	<div class="flex anchor relative">
-		<h3 id="get-started">Get Started</h3>
-		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2" target="_blank" rel="noopener noreferrer">waitlist</a> to get access to the Workers Browser Rendering API. We’re so excited to see what you build! Share your creations with us on Twitter/X <a href="https://www.twitter.com/cloudflaredev" target="_blank" rel="noopener noreferrer">@CloudflareDev</a> or on our Discord community.</p>
+<p>Last year, we <a href="https://blog.cloudflare.com/introducing-workers-browser-rendering-api">announced the Browser Rendering API</a> – letting users running Puppeteer, a browser automation library, directly in Workers. Puppeteer is one of the most popular libraries used to interact with a headless browser instance to accomplish tasks like taking screenshots, generating PDFs, crawling web pages, and testing <a href="https://www.cloudflare.com/learning/security/what-is-web-application-security" target="_blank" rel="noopener noreferrer">web applications</a>. We’ve heard from developers that configuring and maintaining their own serverless browser automation systems can be quite painful.</p>
+<p>The <a href="https://developers.cloudflare.com/browser-rendering" target="_blank" rel="noopener noreferrer">Workers Browser Rendering API</a> solves this. It makes the Puppeteer library available directly in your Worker, connected to a real web browser, without the need to configure and manage infrastructure or keep browser sessions warm yourself. You can use <a href="https://www.npmjs.com/package/@cloudflare/puppeteer" target="_blank" rel="noopener noreferrer">@cloudflare/puppeteer</a> to run the full Puppeteer API directly on Workers!</p>
+<p>We’ve seen so much interest from the developer community since launching last year. While the Browser Rendering API is still in beta (sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2" target="_blank" rel="noopener noreferrer">waitlist</a> to get access), we wanted to share a way to get more out of our <a href="https://developers.cloudflare.com/browser-rendering/platform/limits" target="_blank" rel="noopener noreferrer">current limits</a> by using the Browser Rendering API with <a href="https://developers.cloudflare.com/durable-objects" target="_blank" rel="noopener noreferrer">Durable Objects</a>. We’ll also be sharing pricing for the Rendering API, so you can build knowing exactly what you’ll pay for.</p>
+<h3>Building a responsive web design testing tool with the Browser Rendering API</h3>
+<p>As a designer or frontend developer, you want to make sure that content is well-designed for visitors browsing on different screen sizes. With the number of possible devices that users are browsing on are growing, it becomes difficult to test all the possibilities manually. While there are many testing tools on the market, we want to show how easy it is to create your own Chromium based tool with the Workers Browser Rendering API and Durable Objects.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="198" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=715&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=640&amp;h=177&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=715&amp;h=198&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=750&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=828&amp;h=229&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=1080&amp;h=299&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=1280&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=1430&amp;h=396&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2085 Embedded Image - WlYWec" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4995AWCKBSQNQJ0GFHF2AR.png&amp;w=852&amp;h=236&amp;f=webp" data-lightbox-width="852" data-lightbox-height="236" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="198" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>We’ll be using the Worker to handle any incoming requests, pass them to the Durable Object to take screenshots and store them in an R2 bucket. The Durable Object is used to create a browser session that’s persistent. By using <a href="https://developers.cloudflare.com/durable-objects/api/alarms-in-durable-objects" target="_blank" rel="noopener noreferrer">Durable Object Alarms</a> we can keep browsers open for longer and reuse browser sessions across requests.</p>
+<p>Let’s dive into how we can build this application:</p>
+<ol>
+	<li>Create a Worker with a Durable Object, Browser Rendering API binding and R2 bucket. This is the resulting wrangler.toml:</li>
+</ol>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "rendering-api-demo"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">main</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "src/index.js"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">compatibility_date</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "2023-09-04"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">compatibility_flags</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [ </span><span class="sk-032f62-99ffe4">"nodejs_compat"]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">account_id</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "c05e6a39aa4ccdd53ad17032f8a4dc10"</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Browser Rendering API binding</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">browser</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> {</span><span class="sk-032f62-99ffe4"> binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "MYBROWSER"</span><span class="sk-032f62-99ffe4"> }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Bind an R2 Bucket</span></span>
+<span class="line"><span class="sk-24292e-fff">[[r2_buckets]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">binding</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "BUCKET"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">bucket_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "screenshots"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Binding to a Durable Object</span></span>
+<span class="line"><span class="sk-24292e-fff">[[durable_objects.bindings]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "BROWSER"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">class_name</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "Browser"</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">[[migrations]]</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">tag</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "v1"</span><span class="sk-6a737d-8b8b8b94"> # Should be unique for each entry</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">new_classes</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-032f62-99ffe4">"Browser"</span><span class="sk-24292e-fff">] </span><span class="sk-6a737d-8b8b8b94"># Array of new classes</span></span></code></pre>
 </div>
+<p>2. Define the Worker</p>
+<p>This Worker simply passes the request onto the Durable Object.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> id </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">BROWSER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">idFromName</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"browser"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> obj </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">BROWSER</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(id);</span></span>
+<span class="line"><span class="sk-24292e-fff">	  </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Send a request to the Durable Object, then await its response.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> resp </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> obj.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> count </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> resp.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">	  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"success"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>3. Define the Durable Object class</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> KEEP_BROWSER_ALIVE_IN_SECONDS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> Browser</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">state</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.state </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> state;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.env </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> env;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.keptAliveInSeconds </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.storage </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.state.storage;</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// screen resolutions to test out</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> width</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">1920</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1366</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">1536</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">360</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">414</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> height</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> [</span><span class="sk-005cc5-ffc799">1080</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">768</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">864</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">640</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">896</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// use the current date and time to create a folder structure for R2</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> nowDate</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		var</span><span class="sk-24292e-fff"> coeff </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 1000</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 60</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 5</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		var</span><span class="sk-24292e-fff"> roundedDate </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Date</span><span class="sk-24292e-fff">(Math.</span><span class="sk-6f42c1-ffc799">round</span><span class="sk-24292e-fff">(nowDate.</span><span class="sk-6f42c1-ffc799">getTime</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> coeff) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> coeff)).</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		var</span><span class="sk-24292e-fff"> folder </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> roundedDate.</span><span class="sk-6f42c1-ffc799">split</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">" GMT"</span><span class="sk-24292e-fff">)[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		//if there's a browser session open, re-use it</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.browser) {</span></span>
+<span class="line"><span class="sk-24292e-fff">			console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Browser DO: Starting new instance`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">			  this</span><span class="sk-24292e-fff">.browser </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> puppeteer.</span><span class="sk-6f42c1-ffc799">launch</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">MYBROWSER</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">			} </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (e) {</span></span>
+<span class="line"><span class="sk-24292e-fff">			  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Browser DO: Could not start browser instance. Error: ${</span><span class="sk-24292e-fff">e</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">			}</span></span>
+<span class="line"><span class="sk-24292e-fff">		  }</span></span>
+<span class="line"><span class="sk-24292e-fff">		</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Reset keptAlive after each call to the DO</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.keptAliveInSeconds </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">		</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> page</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.browser.</span><span class="sk-6f42c1-ffc799">newPage</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// take screenshots of each screen size </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> width.</span><span class="sk-005cc5-fff">length</span><span class="sk-24292e-fff">; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">setViewport</span><span class="sk-24292e-fff">({ width: width[i], height: height[i] });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">goto</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://workers.cloudflare.com/"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			const</span><span class="sk-005cc5-fff"> fileName</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> "screenshot_"</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> width[i] </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "x"</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> height[i]</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">			const</span><span class="sk-005cc5-fff"> sc</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> page.</span><span class="sk-6f42c1-ffc799">screenshot</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">				path: fileName </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> ".jpg"</span></span>
+<span class="line"><span class="sk-24292e-fff">			}</span></span>
+<span class="line"><span class="sk-24292e-fff">			);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">			this</span><span class="sk-24292e-fff">.env.</span><span class="sk-005cc5-fff">BUCKET</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(folder </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/"</span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> fileName </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> ".jpg"</span><span class="sk-24292e-fff">, sc);</span></span>
+<span class="line"><span class="sk-24292e-fff">		  }</span></span>
+<span class="line"><span class="sk-24292e-fff">		</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Reset keptAlive after performing tasks to the DO.</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.keptAliveInSeconds </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// set the first alarm to keep DO alive</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		let</span><span class="sk-24292e-fff"> currentAlarm </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">getAlarm</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> (currentAlarm </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">		console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Browser DO: setting alarm`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		const</span><span class="sk-005cc5-fff"> TEN_SECONDS</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1000</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">setAlarm</span><span class="sk-24292e-fff">(Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-fff"> TEN_SECONDS</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">		}</span></span>
+<span class="line"><span class="sk-24292e-fff">		</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.browser.</span><span class="sk-6f42c1-ffc799">close</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"success"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">	}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">	async</span><span class="sk-6f42c1-ffc799"> alarm</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		this</span><span class="sk-24292e-fff">.keptAliveInSeconds </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">	</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">		// Extend browser DO life</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">		if</span><span class="sk-24292e-fff"> (</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.keptAliveInSeconds </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-005cc5-fff"> KEEP_BROWSER_ALIVE_IN_SECONDS</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">		  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Browser DO: has been kept alive for ${</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-032f62-99ffe4">.</span><span class="sk-24292e-fff">keptAliveInSeconds</span><span class="sk-032f62-99ffe4">} seconds. Extending lifespan.`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">		  this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">setAlarm</span><span class="sk-24292e-fff">(Date.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">() </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 10</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-005cc5-ffc799"> 1000</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">		} </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`Browser DO: cxceeded life of ${</span><span class="sk-005cc5-fff">KEEP_BROWSER_ALIVE_IN_SECONDS</span><span class="sk-032f62-99ffe4">}. Browser DO will be shut down in 10 seconds.`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">	  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span></code></pre>
+</div>
+<p>That’s it! With less than a hundred lines of code, you can fully customize a powerful tool to automate responsive web design testing. You can even incorporate it into your CI pipeline to automatically test different window sizes with each build and verify the result is as expected by using an automated library like <a href="https://www.npmjs.com/package/pixelmatch" target="_blank" rel="noopener noreferrer">pixelmatch</a>.</p>
+<h3>How much will this cost?</h3>
+<p>We’ve spoken to many customers deploying a Puppeteer service on their own infrastructure, on <a href="https://www.cloudflare.com/learning/cloud/what-is-a-public-cloud" target="_blank" rel="noopener noreferrer">public cloud containers</a> or <a href="https://www.cloudflare.com/learning/serverless/glossary/function-as-a-service-faas" target="_blank" rel="noopener noreferrer">functions</a> or using managed services. The common theme that we’ve heard is that these services are costly – costly to maintain and expensive to run.</p>
+<p>While you won’t be billed for the Browser Rendering API yet, we want to be transparent with you about costs you start building. We know it’s important to understand the pricing structure so that you don’t get a surprise bill and so that you can design your application efficiently.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="254" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=715&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=640&amp;h=227&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=715&amp;h=254&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=750&amp;h=266&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=828&amp;h=294&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=1080&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=1280&amp;h=455&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=1430&amp;h=508&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2085 Embedded Image - BS57dM" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A6TSWAXNQ0YG757SXHJX.png&amp;w=1316&amp;h=468&amp;f=webp" data-lightbox-width="1316" data-lightbox-height="468" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="254" class="pt-portable-image-media"></div>
+</figure>
+<p>You pay based on two usage metrics:</p>
+<ol>
+	<li>Number of sessions: A Browser Session is a new instance of a browser being launched</li>
+	<li>Number of concurrent sessions: Concurrent Sessions is the number of browser instances open at once</li>
+</ol>
+<p>Using Durable Objects to persist browser sessions improves performance by eliminating the time that it takes to spin up a new browser session. Since it re-uses sessions, it cuts down on the number of concurrent sessions needed. We highly encourage this model of session re-use if you expect to see consistent traffic for applications that you build on the Browser Rendering API.</p>
+<p>If you have feedback about this pricing, we’re all ears. Feel free to reach out through <a href="https://discord.gg/8Gs9T6jN" target="_blank" rel="noopener noreferrer">Discord</a> (channel name: browser-rendering-api-beta) and share your thoughts.</p>
+<h3>Get Started</h3>
+<p>Sign up to our <a href="https://www.cloudflare.com/lp/workers-browser-rendering-api/?cf_target_id=99BC25CE5278572504B986049859D8A2" target="_blank" rel="noopener noreferrer">waitlist</a> to get access to the Workers Browser Rendering API. We’re so excited to see what you build! Share your creations with us on Twitter/X <a href="https://www.twitter.com/cloudflaredev" target="_blank" rel="noopener noreferrer">@CloudflareDev</a> or on our Discord community.</p>

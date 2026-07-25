@@ -1,148 +1,92 @@
-<div class="mb2 gray5">10 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5iJoxQ8Ui179Rs3u4dK9kr/d1f2c46a7b4c0161be11b3d4fd13fac8/picsart-move-to-workers-huge-performance-gains.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Delivering great user experiences with a global user base can be challenging. While serving requests quickly when you start out in a local market is straightforward, doing so for a global audience is much more difficult. Why? Even under optimal conditions, you cannot be faster than the speed of light, which brings single data center solutions to their performance limits.</p>
-	<p>In this post, we will cover how Picsart improved the performance of one of its most critical services by moving from a centralized architecture to a globally distributed service built on Cloudflare. Our serverless compute platform, <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Workers</a>, distributed throughout <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">310+ cities</a> around the world, and our globally distributed <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a> storage allowed them to improve their performance significantly and drive real business impact.</p>
-	<div class="flex anchor relative">
-		<h2 id="success-driven-by-data-driven-insights">Success driven by data-driven insights</h2>
-		<a href="https://blog.cloudflare.com/#success-driven-by-data-driven-insights" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://picsart.com" target="_blank" rel="noopener noreferrer">Picsart</a> is one of the world’s largest digital creation platforms and a long-standing Cloudflare partner. At its core, an advanced tech stack powers its comprehensive features, including AI-driven photo and video editing tools and community-driven content sharing. With its infrastructure spanning across multiple cloud environments and on-prem deployments, Picsart is engineered to handle billions of daily requests from its huge mobile and web user base and API integrations. For over a decade, Cloudflare has been integral to Picsart, providing support for performant content delivery and securing its digital ecosystem. &nbsp;</p>
-	<p>Similar to many other tech giants, Picsart approaches product development in a data-driven way. At the core of the innovation is Picsart's remote configuration and experimentation platform, which enables product managers, UX researchers, and others to segment their user base into different test groups. These test groups might get to see slightly different implementations of features or designs of the Picsart app. Users might also get early access to experimental features or see different in-app promotions. In combination with constant monitoring of relevant KPIs, this allows for informed product decisions based on user preference and business impact.</p>
-	<p>On each app start, the client device sends a request to the remote configuration service for the latest setup tailored to the user's session. The assignment of experiments relies on factors like the operating system and previous sessions, making each request unique and uncachable. Picsart's app showcases extensive remote configuration capabilities, enabling adjustments to nearly every element. This results in a response containing a 1.5 MB configuration file for mobile clients. While the long-term solution is to reduce the file size, which has grown over time as more teams adopted the powerful service, this is not possible in the near or mid-term as it requires a major rewrite of all clients.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5xgUdo4wBKIbu0YzxXotHi/3e855c5adc807cb115a3a59fcaf1893b/Screenshot-2024-04-01-at-2.47.52-PM.png" alt="" class="kg-image" width="752" height="804" loading="lazy">
-
-	</figure>
-	<p>This setup request is blocking in the "hot path" during app start, as the results of this request will decide how the app itself looks and behaves. Hence, performance is critical. To ensure users are not waiting for too long, Picsart apps will wait for 1500ms on mobile for the request to complete – if it does not, the user will not be assigned a test group and the app will fallback to default settings.</p>
-	<div class="flex anchor relative">
-		<h2 id="the-clock-is-ticking">The clock is ticking</h2>
-		<a href="https://blog.cloudflare.com/#the-clock-is-ticking" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>While a 1500ms round trip time seems like a sufficiently large time budget, the data suggested otherwise. Before the improvements were implemented, a staggering 50% of devices could not complete the requests in time. How come? In these 1.5 seconds the following steps need to complete:</p>
-	<ol>
-		<li>
-			<p>The request must travel from the users’ devices to the centralized backend servers</p>
-		</li>
-		<li>
-			<p>The server processes the request based on dozens of user attributes provided in the request and thousands of defined remote configuration variations, running experiments, and segments metadata. Using all the info, the server selects the right variation of each remote setting entry and builds the response payload.</p>
-		</li>
-		<li>
-			<p>The response must travel from the centralized backend servers to the user devices.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/54ZFnOPI3zMI2FNmf5uOwU/18cc25a5ee55887e590128be733b7774/image1.png" alt="" class="kg-image" width="1999" height="1125" loading="lazy">
-
-	</figure>
-	<p>Looking at the data, it was clear to the Picsart team that their backend service was already well-optimized, taking only 30 milliseconds, a tiny fraction of the available time budget, to process each of the billions of monthly requests. The bulk of the request time came from <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">network latency</a>. Especially with mobile devices, last mile performance can be very volatile, eating away a significant amount of the available time budget. Not only that, but the data was clear: users closer to the origin server had a much higher chance of making the round trip in time versus users out of region. It quickly became obvious that Picsart, fueled by its global success, had outgrown a single-region setup.</p>
-	<div class="flex anchor relative">
-		<h2 id="to-the-drawing-board">To the drawing board</h2>
-		<a href="https://blog.cloudflare.com/#to-the-drawing-board" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4XTH17l3JlPKoeV7i0MO5p/501ffe57026f80797089df6ddd627892/image6.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
-
-	</figure>
-	<p>A solution that comes to mind would be to replicate the existing cloud infrastructure in multiple regions and use global load balancing to minimize the distance a request needs to travel. However, this introduces significant overhead and cost. On the infrastructure side, it is not only the additional compute instances and database clusters that incur cost, but also cross-region data transfer to keep data in sync. Moreover, technical teams would need to operate and monitor infrastructure in multiple regions, which can add a lot to the complexity and cognitive load, leading to decreased development velocity and productivity loss.</p>
-	<p>Picsart instead looked to Cloudflare – we already had a long-lasting relationship for <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">Application Performance and Security</a>, and they aimed to use our <a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer">Developer Platform</a> to tackle the problem.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mRjLlmOaeyNOM6eUUudvZ/fc39dee9770bf76bef154efd52cdb48b/image2.png" alt="" class="kg-image" width="1999" height="1126" loading="lazy">
-
-	</figure>
-	<p>Workers and Workers KV seemed like the ideal solution. Both compute and data are globally distributed in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">310+ locations around the world</a>, resulting in a shorter distance between end users and the experimentation service. Not only that, but Cloudflare's global-by-default approach allows for deployment with minimal overhead, and in contrast to other considered solutions, no additional fees to distribute the data around the globe.</p>
-	<div class="flex anchor relative">
-		<h2 id="no-race-without-a-clock">No race without a clock</h2>
-		<a href="https://blog.cloudflare.com/#no-race-without-a-clock" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The objective for the refactor of the experimentation service was to increase the share of devices that successfully receive experimentation configuration within the set time budget.</p>
-	<p>But how to measure success? While synthetic testing can be useful in many situations, Picsart opted to come up with another clever solution:</p>
-	<p>During development, the Picsart engineers had already added a testing endpoint to the web and mobile versions of their app that sends a duplicate request to the new endpoint, discarding the response and swallowing all potential errors. This allows them to collect timing data based on real-user metrics without impacting the app's performance and reliability.</p>
-	<p>A simplified version of this pattern for a web client could look like this:</p>
-	<pre class="language-js"><code class="language-js">// API endpoint URLs
-const prodUrl = 'https://prod.example.com/';
-const devUrl = 'https://new.example.com/';
-
-// Function to collect metrics
-const collectMetrics = (duration) =&gt; {
-    console.log('Request duration:', duration);
-    // …
-};
-
-// Function to fetch data from an endpoint and call collectMetrics
-const fetchData = async (url, options) =&gt; {
-    const startTime = performance.now();
-    
-    try {
-        const response = await fetch(url, options);
-        const endTime = performance.now();
-        const duration = endTime - startTime;
-        collectMetrics(duration);
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-};
-
-// Fetching data from both endpoints
-async function fetchDataFromBothEndpoints() {
-    try {
-        const result1 = await fetchData(prodUrl, { method: 'POST', ... });
-        console.log('Result from endpoint 1:', result1);
-
-        // Fetching data from the second endpoint without awaiting its completion
-        fetchData(devUrl, { method: 'POST', ... });
-    } catch (error) {
-        console.error('Error fetching data from both endpoints:', error);
-    }
-}
-
-fetchDataFromBothEndpoints();</code></pre>
-	<p>Using existing data analytics tools, Picsart was able to analyze the performance of the new services from day one, starting with a dummy endpoint and a 'hello world' response. And with that a v0 was created that did not have the correct logic just yet, but simulated reading multiple values from KV and returning a response of a realistic size back to the end user.</p>
-	<div class="flex anchor relative">
-		<h2 id="the-need-for-a-do-over">The need for a do-over</h2>
-		<a href="https://blog.cloudflare.com/#the-need-for-a-do-over" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the initial phase, outcomes fell short of expectations. Surprisingly, requests were slower despite the service's proximity to end users. What caused this setback? &nbsp;Subsequent investigation unveiled multiple culprits and design patterns in need for optimization.</p>
-	<div class="flex anchor relative">
-		<h3 id="data-segmentation">Data segmentation</h3>
-		<a href="https://blog.cloudflare.com/#data-segmentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The previous, stateful solution operated on a single massive "blob" of data exceeding 100MB in value. Loading this into memory incurred a few seconds of initial startup time, but once the VM completed the task, request handling was fast, benefiting from the readily available data in memory.</p>
-	<p>However, this approach doesn't seamlessly transition to the serverless realm. Unlike long-running VMs, Worker isolates have short lifespans. Repeatedly parsing large JSON objects led to prolonged compute durations. Simply parsing four KV entries of 25MB each (KV maximum value size is 25MB) on each request was not a feasible option.</p>
-	<p>The Picsart team went back to solution design and embarked on a journey to optimize their system's execution time, resulting in a series of impactful improvements.</p>
-	<p>The fundamental insight that guided the solution was the unnecessary overhead that was involved in loading and parsing data irrelevant to the user's specific context. The 100MB configuration file contained configurations for all platforms and locations worldwide – a setup that was far from efficient in a globally distributed, serverless compute environment. For instance, when processing requests from users in the United States, there was no need to fetch configurations targeted for users in other countries, or for different platforms.</p>
-	<p>To address this inefficiency, the Picsart team stored the configuration of each platform and country in separate KV records. This targeted strategy meant that for a request originating from a US user on an Android device, our system would only fetch and parse the KV record specific to Android users in the US, thereby excluding all irrelevant data. This resulted in approximately 600 KV records, each with a maximum size of 10MB. While this leads to data duplication on the KV storage side, it decreases the amount of data that needs to be parsed upon request. As Cloudflare operates in over 120 countries around the world, only a subset of records were needed in each location. Hence, the increase in cardinality had minimal impact on KV cache performance, as demonstrated by more than 99.5% of KV reads being served from local cache.</p><!--kg-card-begin: html-->
-	<table style="margin-left:auto;margin-right:auto;">
+<p>Delivering great user experiences with a global user base can be challenging. While serving requests quickly when you start out in a local market is straightforward, doing so for a global audience is much more difficult. Why? Even under optimal conditions, you cannot be faster than the speed of light, which brings single data center solutions to their performance limits.</p>
+<p>In this post, we will cover how Picsart improved the performance of one of its most critical services by moving from a centralized architecture to a globally distributed service built on Cloudflare. Our serverless compute platform, <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Workers</a>, distributed throughout <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">310+ cities</a> around the world, and our globally distributed <a href="https://developers.cloudflare.com/kv" target="_blank" rel="noopener noreferrer">Workers KV</a> storage allowed them to improve their performance significantly and drive real business impact.</p>
+<h2>Success driven by data-driven insights</h2>
+<p><a href="https://picsart.com" target="_blank" rel="noopener noreferrer">Picsart</a> is one of the world’s largest digital creation platforms and a long-standing Cloudflare partner. At its core, an advanced tech stack powers its comprehensive features, including AI-driven photo and video editing tools and community-driven content sharing. With its infrastructure spanning across multiple cloud environments and on-prem deployments, Picsart is engineered to handle billions of daily requests from its huge mobile and web user base and API integrations. For over a decade, Cloudflare has been integral to Picsart, providing support for performant content delivery and securing its digital ecosystem. &nbsp;</p>
+<p>Similar to many other tech giants, Picsart approaches product development in a data-driven way. At the core of the innovation is Picsart's remote configuration and experimentation platform, which enables product managers, UX researchers, and others to segment their user base into different test groups. These test groups might get to see slightly different implementations of features or designs of the Picsart app. Users might also get early access to experimental features or see different in-app promotions. In combination with constant monitoring of relevant KPIs, this allows for informed product decisions based on user preference and business impact.</p>
+<p>On each app start, the client device sends a request to the remote configuration service for the latest setup tailored to the user's session. The assignment of experiments relies on factors like the operating system and previous sessions, making each request unique and uncachable. Picsart's app showcases extensive remote configuration capabilities, enabling adjustments to nearly every element. This results in a response containing a 1.5 MB configuration file for mobile clients. While the long-term solution is to reduce the file size, which has grown over time as more teams adopted the powerful service, this is not possible in the near or mid-term as it requires a major rewrite of all clients.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="764" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=715&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=640&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=715&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=750&amp;h=801&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=828&amp;h=885&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=1080&amp;h=1154&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=1280&amp;h=1368&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=1430&amp;h=1528&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2274 Embedded Image - 6Skm3N" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47TAHJX31NZTRJ0DKVD5X8.png&amp;w=752&amp;h=804&amp;f=webp" data-lightbox-width="752" data-lightbox-height="804" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="764" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>This setup request is blocking in the "hot path" during app start, as the results of this request will decide how the app itself looks and behaves. Hence, performance is critical. To ensure users are not waiting for too long, Picsart apps will wait for 1500ms on mobile for the request to complete – if it does not, the user will not be assigned a test group and the app will fallback to default settings.</p>
+<h2>The clock is ticking</h2>
+<p>While a 1500ms round trip time seems like a sufficiently large time budget, the data suggested otherwise. Before the improvements were implemented, a staggering 50% of devices could not complete the requests in time. How come? In these 1.5 seconds the following steps need to complete:</p>
+<ol>
+	<li>The request must travel from the users’ devices to the centralized backend servers</li>
+	<li>The server processes the request based on dozens of user attributes provided in the request and thousands of defined remote configuration variations, running experiments, and segments metadata. Using all the info, the server selects the right variation of each remote setting entry and builds the response payload.</li>
+	<li>The response must travel from the centralized backend servers to the user devices.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="402" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=640&amp;h=360&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=715&amp;h=402&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=750&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=828&amp;h=466&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=1080&amp;h=607&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=1280&amp;h=720&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=1430&amp;h=804&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2274 Embedded Image - gcEVWh" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47679K1V1VGZ74RVDXJ333.png&amp;w=1920&amp;h=1081&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1081" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="402" class="pt-portable-image-media"></div>
+</figure>
+<p>Looking at the data, it was clear to the Picsart team that their backend service was already well-optimized, taking only 30 milliseconds, a tiny fraction of the available time budget, to process each of the billions of monthly requests. The bulk of the request time came from <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">network latency</a>. Especially with mobile devices, last mile performance can be very volatile, eating away a significant amount of the available time budget. Not only that, but the data was clear: users closer to the origin server had a much higher chance of making the round trip in time versus users out of region. It quickly became obvious that Picsart, fueled by its global success, had outgrown a single-region setup.</p>
+<h2>To the drawing board</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2274 Embedded Image - MqpZon" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46SSJ1MC509JA5N6RT7XBH.png&amp;w=1920&amp;h=1082&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1082" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<p>A solution that comes to mind would be to replicate the existing cloud infrastructure in multiple regions and use global load balancing to minimize the distance a request needs to travel. However, this introduces significant overhead and cost. On the infrastructure side, it is not only the additional compute instances and database clusters that incur cost, but also cross-region data transfer to keep data in sync. Moreover, technical teams would need to operate and monitor infrastructure in multiple regions, which can add a lot to the complexity and cognitive load, leading to decreased development velocity and productivity loss.</p>
+<p>Picsart instead looked to Cloudflare – we already had a long-lasting relationship for <a href="https://www.cloudflare.com/application-services" target="_blank" rel="noopener noreferrer">Application Performance and Security</a>, and they aimed to use our <a href="https://www.cloudflare.com/developer-platform" target="_blank" rel="noopener noreferrer">Developer Platform</a> to tackle the problem.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="403" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=640&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=715&amp;h=403&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=750&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=828&amp;h=467&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=1080&amp;h=609&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=1280&amp;h=721&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=1430&amp;h=806&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2274 Embedded Image - aUMSfb" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YRKDX9C63KY6THMT7GEP.png&amp;w=1920&amp;h=1082&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1082" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="403" class="pt-portable-image-media"></div>
+</figure>
+<p>Workers and Workers KV seemed like the ideal solution. Both compute and data are globally distributed in <a href="https://www.cloudflare.com/network" target="_blank" rel="noopener noreferrer">310+ locations around the world</a>, resulting in a shorter distance between end users and the experimentation service. Not only that, but Cloudflare's global-by-default approach allows for deployment with minimal overhead, and in contrast to other considered solutions, no additional fees to distribute the data around the globe.</p>
+<h2>No race without a clock</h2>
+<p>The objective for the refactor of the experimentation service was to increase the share of devices that successfully receive experimentation configuration within the set time budget.</p>
+<p>But how to measure success? While synthetic testing can be useful in many situations, Picsart opted to come up with another clever solution:</p>
+<p>During development, the Picsart engineers had already added a testing endpoint to the web and mobile versions of their app that sends a duplicate request to the new endpoint, discarding the response and swallowing all potential errors. This allows them to collect timing data based on real-user metrics without impacting the app's performance and reliability.</p>
+<p>A simplified version of this pattern for a web client could look like this:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// API endpoint URLs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> prodUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'https://prod.example.com/'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> devUrl</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> 'https://new.example.com/'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Function to collect metrics</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> collectMetrics</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">duration</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Request duration:'</span><span class="sk-24292e-fff">, duration);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // …</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Function to fetch data from an endpoint and call collectMetrics</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-6f42c1-ffc799"> fetchData</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">url</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">options</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> startTime</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> performance.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(url, options);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> endTime</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> performance.</span><span class="sk-6f42c1-ffc799">now</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> duration</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> endTime </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff"> startTime;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        collectMetrics</span><span class="sk-24292e-fff">(duration);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        console.</span><span class="sk-6f42c1-ffc799">error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Error fetching data:'</span><span class="sk-24292e-fff">, error);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Fetching data from both endpoints</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> fetchDataFromBothEndpoints</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        const</span><span class="sk-005cc5-fff"> result1</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetchData</span><span class="sk-24292e-fff">(prodUrl, { method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">        console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Result from endpoint 1:'</span><span class="sk-24292e-fff">, result1);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // Fetching data from the second endpoint without awaiting its completion</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        fetchData</span><span class="sk-24292e-fff">(devUrl, { method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-24292e-fff">        console.</span><span class="sk-6f42c1-ffc799">error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Error fetching data from both endpoints:'</span><span class="sk-24292e-fff">, error);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">fetchDataFromBothEndpoints</span><span class="sk-24292e-fff">();</span></span></code></pre>
+</div>
+<p>Using existing data analytics tools, Picsart was able to analyze the performance of the new services from day one, starting with a dummy endpoint and a 'hello world' response. And with that a v0 was created that did not have the correct logic just yet, but simulated reading multiple values from KV and returning a response of a realistic size back to the end user.</p>
+<h2>The need for a do-over</h2>
+<p>In the initial phase, outcomes fell short of expectations. Surprisingly, requests were slower despite the service's proximity to end users. What caused this setback? &nbsp;Subsequent investigation unveiled multiple culprits and design patterns in need for optimization.</p>
+<h3>Data segmentation</h3>
+<p>The previous, stateful solution operated on a single massive "blob" of data exceeding 100MB in value. Loading this into memory incurred a few seconds of initial startup time, but once the VM completed the task, request handling was fast, benefiting from the readily available data in memory.</p>
+<p>However, this approach doesn't seamlessly transition to the serverless realm. Unlike long-running VMs, Worker isolates have short lifespans. Repeatedly parsing large JSON objects led to prolonged compute durations. Simply parsing four KV entries of 25MB each (KV maximum value size is 25MB) on each request was not a feasible option.</p>
+<p>The Picsart team went back to solution design and embarked on a journey to optimize their system's execution time, resulting in a series of impactful improvements.</p>
+<p>The fundamental insight that guided the solution was the unnecessary overhead that was involved in loading and parsing data irrelevant to the user's specific context. The 100MB configuration file contained configurations for all platforms and locations worldwide – a setup that was far from efficient in a globally distributed, serverless compute environment. For instance, when processing requests from users in the United States, there was no need to fetch configurations targeted for users in other countries, or for different platforms.</p>
+<p>To address this inefficiency, the Picsart team stored the configuration of each platform and country in separate KV records. This targeted strategy meant that for a request originating from a US user on an Android device, our system would only fetch and parse the KV record specific to Android users in the US, thereby excluding all irrelevant data. This resulted in approximately 600 KV records, each with a maximum size of 10MB. While this leads to data duplication on the KV storage side, it decreases the amount of data that needs to be parsed upon request. As Cloudflare operates in over 120 countries around the world, only a subset of records were needed in each location. Hence, the increase in cardinality had minimal impact on KV cache performance, as demonstrated by more than 99.5% of KV reads being served from local cache.</p>
+<div id="html-block-k2j" class="html-block">
+	<table style="margin-left:auto;margin-right:auto">
 		<tbody>
 			<tr>
 				<td><b>Key</b></td>
@@ -166,30 +110,19 @@ fetchDataFromBothEndpoints();</code></pre>
 			</tr>
 		</tbody>
 	</table>
-	<small>
-		<center>After (simplified)</center>
-	</small><br><br><!--kg-card-end: html-->
-	<p>This approach was a significant move for Picsart as they transitioned from a regional cloud setup to Cloudflare's globally distributed connectivity cloud. By serving data from close proximity to end user locations, they were able to combat the high network latency from their previous setup. This strategy radically transformed the data-handling process. Which unlocked two major benefits:</p>
-	<ul>
-		<li>
-			<p>Performance Gains**:** By ensuring that only the relevant subset of data is fetched and parsed based on the user's platform and geographical location, wall time and compute resources required for these operations could be significantly reduced.</p>
-		</li>
-		<li>
-			<p>Scalability and Flexibility: the granular segmentation of data enables effortless scaling of the service for new features or regional content. Adding support for new applications now only requires inserting new, standalone KV records in contrast to the previous solution where this would require increasing the size of the single record.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h3 id="immutable-updates">Immutable updates</h3>
-		<a href="https://blog.cloudflare.com/#immutable-updates" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Now that changes to the configuration were segmented by app, country, and platform, this also allowed for individual updates of the configuration in KV. KV storage showcases its best performance when records are updated infrequently but read very often. This pattern leverages <a href="https://developers.cloudflare.com/kv/reference/how-kv-works" target="_blank" rel="noopener noreferrer">KV's fundamental design</a> to cache values at edge locations upon reads, ensuring that subsequent queries for the same record are swiftly served by local caches rather than requiring a trip back to KV's centralized data centers. This architecture is fundamental for minimizing latency and maximizing the speed of data retrieval across a globally distributed platform.</p>
-	<p>A crucial requirement for Picsart’s experimentation system was the ability to propagate updates of remote configuration values immediately. Updating existing records would require very short cache TTLs and even the minimum KV cache TTL of 60 seconds was considered unacceptable for the dynamic nature of the feature flagging. Moreover, setting short <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl" target="_blank" rel="noopener noreferrer">TTLs</a> also impacts the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio" target="_blank" rel="noopener noreferrer">cache hit ratio</a> and the overall KV performance, specifically in regions with low traffic.</p>
-	<p>To reconcile the need for both rapid updates and efficient caching, Picsart adopted an innovative approach: making KV records immutable. Instead of modifying existing records, they opted to create new records with each configuration change. By appending the content hash to the KV key and writing new records after each update, Picsart ensured that each record was unique and immutable. This allowed them to leverage higher cache TTLs, as these records would never be updated.</p><!--kg-card-begin: html-->
-	<table style="margin-left:auto;margin-right:auto;">
+	<small>After (simplified)</small><br><br>
+</div>
+<p>This approach was a significant move for Picsart as they transitioned from a regional cloud setup to Cloudflare's globally distributed connectivity cloud. By serving data from close proximity to end user locations, they were able to combat the high network latency from their previous setup. This strategy radically transformed the data-handling process. Which unlocked two major benefits:</p>
+<ul>
+	<li>Performance Gains**:** By ensuring that only the relevant subset of data is fetched and parsed based on the user's platform and geographical location, wall time and compute resources required for these operations could be significantly reduced.</li>
+	<li>Scalability and Flexibility: the granular segmentation of data enables effortless scaling of the service for new features or regional content. Adding support for new applications now only requires inserting new, standalone KV records in contrast to the previous solution where this would require increasing the size of the single record.</li>
+</ul>
+<h3>Immutable updates</h3>
+<p>Now that changes to the configuration were segmented by app, country, and platform, this also allowed for individual updates of the configuration in KV. KV storage showcases its best performance when records are updated infrequently but read very often. This pattern leverages <a href="https://developers.cloudflare.com/kv/reference/how-kv-works" target="_blank" rel="noopener noreferrer">KV's fundamental design</a> to cache values at edge locations upon reads, ensuring that subsequent queries for the same record are swiftly served by local caches rather than requiring a trip back to KV's centralized data centers. This architecture is fundamental for minimizing latency and maximizing the speed of data retrieval across a globally distributed platform.</p>
+<p>A crucial requirement for Picsart’s experimentation system was the ability to propagate updates of remote configuration values immediately. Updating existing records would require very short cache TTLs and even the minimum KV cache TTL of 60 seconds was considered unacceptable for the dynamic nature of the feature flagging. Moreover, setting short <a href="https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl" target="_blank" rel="noopener noreferrer">TTLs</a> also impacts the <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio" target="_blank" rel="noopener noreferrer">cache hit ratio</a> and the overall KV performance, specifically in regions with low traffic.</p>
+<p>To reconcile the need for both rapid updates and efficient caching, Picsart adopted an innovative approach: making KV records immutable. Instead of modifying existing records, they opted to create new records with each configuration change. By appending the content hash to the KV key and writing new records after each update, Picsart ensured that each record was unique and immutable. This allowed them to leverage higher cache TTLs, as these records would never be updated.</p>
+<div id="html-block-k37" class="html-block">
+	<table style="margin-left:auto;margin-right:auto">
 		<tbody>
 			<tr>
 				<td><strong>Key</strong></td>
@@ -209,160 +142,153 @@ fetchDataFromBothEndpoints();</code></pre>
 			</tr>
 		</tbody>
 	</table>
-	<small>
-		<center>After (simplified)</center>
-	</small><br><br><!--kg-card-end: html-->
-	<p>There was a catch, though. The service must now keep track of the correct KV keys to use. The Picsart team addressed this challenge by storing references to the latest KV keys in the environment variables of the Worker.</p>
-	<p>Each configuration change triggers a new KV pair to be written and the services' environment variables to be updated. As global Workers deployments take mere seconds, changes to the experimentation and configuration data are near-instantaneously globally available.</p>
-	<div class="flex anchor relative">
-		<h3 id="json-serialization-alternatives">JSON serialization &amp; alternatives</h3>
-		<a href="https://blog.cloudflare.com/#json-serialization-alternatives" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Following the previous improvements, the Picsart team made another significant discovery: only a small fraction of configuration data is needed to assign the experiments, while the remaining majority of the data comprises JSON values for the remote configuration payloads. While the service must deliver the latter in the response, the data is not required during the initial processing phase.</p>
-	<p>The initial implementation used <a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs" target="_blank" rel="noopener noreferrer">KV's get()</a> method to retrieve the configuration data with the parameter type=<code>json</code>, which converts the KV value to an object. This process is very compute-intensive compared to using the <code>get()</code> method with parameter type= <code>text</code>, which simply returns the value as a string. In the context of Picsart's data, the bulk of the CPU cycles were wasted on serializing JSON data that is not needed to perform the required business logic.</p>
-	<p>What if the data structure and code could be changed in such a way that only the data needed to assign experiments was parsed as JSON, while the configuration values were treated as text? Picsart went ahead with a new approach: splitting the KV records into two, creating a small 300 KB record for the metadata, which can be quickly parsed to an object, and a 9.7 MB record of configuration values. The extracted configuration values are delimited by newline characters. The respective line number is used as reference in the metadata entry, so that the respective configuration value for an experiment can be merged back into the payload response later.</p>
-	<div style="margin-left:0pt;" dir="ltr" align="center">
+	<small>After (simplified)</small><br><br>
+</div>
+<p>There was a catch, though. The service must now keep track of the correct KV keys to use. The Picsart team addressed this challenge by storing references to the latest KV keys in the environment variables of the Worker.</p>
+<p>Each configuration change triggers a new KV pair to be written and the services' environment variables to be updated. As global Workers deployments take mere seconds, changes to the experimentation and configuration data are near-instantaneously globally available.</p>
+<h3>JSON serialization &amp; alternatives</h3>
+<p>Following the previous improvements, the Picsart team made another significant discovery: only a small fraction of configuration data is needed to assign the experiments, while the remaining majority of the data comprises JSON values for the remote configuration payloads. While the service must deliver the latter in the response, the data is not required during the initial processing phase.</p>
+<p>The initial implementation used <a href="https://developers.cloudflare.com/kv/api/read-key-value-pairs" target="_blank" rel="noopener noreferrer">KV's get()</a> method to retrieve the configuration data with the parameter type=<code>json</code>, which converts the KV value to an object. This process is very compute-intensive compared to using the <code>get()</code> method with parameter type= <code>text</code>, which simply returns the value as a string. In the context of Picsart's data, the bulk of the CPU cycles were wasted on serializing JSON data that is not needed to perform the required business logic.</p>
+<p>What if the data structure and code could be changed in such a way that only the data needed to assign experiments was parsed as JSON, while the configuration values were treated as text? Picsart went ahead with a new approach: splitting the KV records into two, creating a small 300 KB record for the metadata, which can be quickly parsed to an object, and a 9.7 MB record of configuration values. The extracted configuration values are delimited by newline characters. The respective line number is used as reference in the metadata entry, so that the respective configuration value for an experiment can be merged back into the payload response later.</p>
+<div id="html-block-k3t" class="html-block">
+	<div style="margin-left:0pt">
 		<figure class="table">
-			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+			<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
 				<colgroup>
-					<col style="width:100%;" width="667">
+					<col style="width:100%">
 				</colgroup>
 				<tbody>
-					<tr style="height:0pt;">
-						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">{</span></span>
+					<tr style="height:0pt">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">{</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;"name": "shape_replace_items",</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;"name": "shape_replace_items",</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;"default_value": "&lt;large json object&gt;",</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;"default_value": "&lt;large json object&gt;",</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;"segments": [</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;"segments": [</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "f1244",</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "f1244",</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Another json object json object&gt;"</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Another json object json object&gt;"</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;},</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;},</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;{</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "a2lfd",</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "a2lfd",</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Yet another large json object&gt;"</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"value": "&lt;Yet another large json object&gt;"</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;&nbsp;&nbsp;}</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">&nbsp;&nbsp;]</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">&nbsp;&nbsp;]</span></span>
 							</p>
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">}</span></span>
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+								<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">}</span></span>
 							</p>
 							<p>
 								&nbsp;
 							</p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:8pt;"><i><span style="font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Before: Metadata and Values in one JSON object (simplified)</span></i></span>
+					<tr style="height:0pt">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center">
+								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:8pt"><i><span style="font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">Before: Metadata and Values in one JSON object (simplified)</span></i></span>
 							</p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
+					<tr style="height:0pt">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
 							<p>
 								&nbsp;
 							</p>
-							<div style="margin-left:0pt;" dir="ltr" align="center">
+							<div style="margin-left:0pt">
 								<figure class="table">
-									<table class="ck-table-resized" style="border-collapse:collapse;border-style:none;">
+									<table class="ck-table-resized" style="border-collapse:collapse;border-style:none">
 										<colgroup>
-											<col style="width:50%;" width="333">
-											<col style="width:50%;" width="333">
+											<col style="width:50%">
+											<col style="width:50%">
 										</colgroup>
 										<tbody>
-											<tr style="height:0pt;">
-												<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">// com.picsart.studio_apple_am_metadata</span></span>
+											<tr style="height:0pt">
+												<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">// com.picsart.studio_apple_am_metadata</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
 														<br>
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1 {</span></span>
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">1 {</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2 &nbsp; "name": "shape_replace_items",</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">2 &nbsp; "name": "shape_replace_items",</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3 &nbsp; "default_value": 1,</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">3 &nbsp; "default_value": 1,</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4 &nbsp; "segments": [</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">4 &nbsp; "segments": [</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">5 &nbsp; &nbsp; {</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">5 &nbsp; &nbsp; {</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">6 &nbsp; &nbsp; &nbsp; "id": "f1244",</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">6 &nbsp; &nbsp; &nbsp; "id": "f1244",</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">7 &nbsp; &nbsp; &nbsp; "value": 2</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">7 &nbsp; &nbsp; &nbsp; "value": 2</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">8 &nbsp; &nbsp; },</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">8 &nbsp; &nbsp; },</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">9 &nbsp; &nbsp; {</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">9 &nbsp; &nbsp; {</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">10 &nbsp; &nbsp; &nbsp; "id": "a2lfd",</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">10 &nbsp; &nbsp; &nbsp; "id": "a2lfd",</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">11&nbsp; &nbsp; &nbsp; "value": 3</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">11&nbsp; &nbsp; &nbsp; "value": 3</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">12 &nbsp; &nbsp; }</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">12 &nbsp; &nbsp; }</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">13 &nbsp; ]</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">13 &nbsp; ]</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">14 }</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">14 }</span></span>
 													</p>
 												</td>
-												<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">// com.picsart.studio_apple_am_values</span></span>
+												<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">// com.picsart.studio_apple_am_values</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
 														<br>
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1 "&lt;large json object&gt;"</span></span>
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">1 "&lt;large json object&gt;"</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2 "&lt;Another json object&gt;"</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">2 "&lt;Another json object&gt;"</span></span>
 													</p>
-													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;" dir="ltr">
-														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt;"><span style="font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3 "&lt;Yet another json object&gt;"</span></span>
+													<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt">
+														<span style="background-color:transparent;color:#000000;font-family:'Roboto Mono',monospace;font-size:11pt"><span style="font-style:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">3 "&lt;Yet another json object&gt;"</span></span>
 													</p>
 												</td>
 											</tr>
@@ -375,10 +301,10 @@ fetchDataFromBothEndpoints();</code></pre>
 							</p>
 						</td>
 					</tr>
-					<tr style="height:0pt;">
-						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top;">
-							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center;" dir="ltr">
-								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:8pt;"><i><span style="font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">After:&nbsp; Metadata and Values are split (simplified)</span></i></span>
+					<tr style="height:0pt">
+						<td style="overflow-wrap:break-word;overflow:hidden;padding:5pt;vertical-align:top">
+							<p style="line-height:1.2;margin-bottom:0pt;margin-top:0pt;text-align:center">
+								<span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:8pt"><i><span style="font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap">After:&nbsp; Metadata and Values are split (simplified)</span></i></span>
 							</p>
 						</td>
 					</tr>
@@ -386,53 +312,23 @@ fetchDataFromBothEndpoints();</code></pre>
 			</table>
 		</figure>
 	</div>
-	<p>After calculating the experiments and selecting the correct variants based solely on the small metadata entry, the service constructs a JSON string for the response containing placeholders for the actual values that reference the corresponding line numbers in the separate text file. To finalize the response, the server replaces the placeholders with the corresponding serialized JSON strings from the text file. This approach circumvents the need for parsing and re-serializing large JSON objects and helps to avoid a significant computational overhead.</p>
-	<p>Note that the process of parsing the metadata JSON and determining the correct experiments as well as the loading of the large file with configuration values are executed in parallel, saving additional milliseconds.</p>
-	<p>By minimizing the size of the JSON data that needed to be parsed and leveraging a more efficient method for constructing the final response, the Picsart team managed to not only reduce the response times but also optimize the compute resource usage. This approach reflects a broader principle applicable across the tech industry: that efficiency, particularly in serverless architectures, can often be dramatically improved by rethinking data structure and utilization.</p>
-	<div class="flex anchor relative">
-		<h2 id="getting-a-head-start">Getting a head start</h2>
-		<a href="https://blog.cloudflare.com/#getting-a-head-start" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The changes on the server-side, moving from a single region setup to Cloudflare’s global architecture, paid off massively. Median response times globally dropped by more than 1 second, which was already a huge improvement for the team. However, in looking at the new data, two more paths for client-side optimizations were found.</p>
-	<p>As the web and mobile app would call the service at startup, most of the time no active connections to the servers were alive and establishing that connection at request time costs valuable milliseconds.</p>
-	<p>For the web version, setting a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect" target="_blank" rel="noopener noreferrer">pre-connect header</a> on initial page load showed a positive impact. For the mobile app version, the Picsart team took it a step further. Investigation showed that before the connection could be established, three modules had to complete initialization: the error tracker, the HTTP client, and the SDK. Reordering of the modules to initialize the HTTP client first allowed for connection establishment in parallel to the initialization of the SDK and error tracker, again saving time. This resulted in another 200ms improvement for end users.</p>
-	<div class="flex anchor relative">
-		<h2 id="setting-a-new-personal-best">Setting a new personal best</h2>
-		<a href="https://blog.cloudflare.com/#setting-a-new-personal-best" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The day had come, and it was time for the phased rollout, web first and the mobile apps second. With suspense, the team looked at the dashboards, and were pleasantly surprised. The rollout was successful and billions of requests were handled with ease.</p>
-	<figure class="kg-card kg-image-card kg-width-wide">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1aNPXwkM6Nk2lWZaDmJ4NV/e9b3268e3d395a34295ff72231b60e39/image4.png" alt="" class="kg-image" width="1999" height="791" loading="lazy">
-
-	</figure>
-	<p><i>Share of successfully delivered experiments</i></p>
-	<p>The result? The Picsart apps are loading faster than ever for millions of users worldwide, while the share of successfully delivered experiments increased from 50% to 85%. Median response time dropped from 1500 ms to 280 ms. The response time dropped to 70 ms on the web since the response size is smaller compared to mobile. This translates to a real business impact for Picsart as they can now deliver more personalized and data-driven experiences to even more of their users.</p>
-	<div class="flex anchor relative">
-		<h2 id="a-bright-future-ahead">A bright future ahead</h2>
-		<a href="https://blog.cloudflare.com/#a-bright-future-ahead" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Picsart is already thinking of the next generation of experimentation. To integrate with Cloudflare even further, the plan is to use Durable Objects to store hundreds of millions of user data records in a decentralized fashion, enabling even more powerful experiments without impacting performance. This is possible thanks to Durable Objects' underlying architecture that stores the user data in-region, close to the respective end user device.</p>
-	<p>Beyond that, Picsart’s experimentation team is also planning to onboard external B2B customers to their experimentation platform as Cloudflare's developer platform provides them with the scale and global network to handle more traffic and data with ease.</p>
-	<div class="flex anchor relative">
-		<h2 id="get-started-yourself">Get started yourself</h2>
-		<a href="https://blog.cloudflare.com/#get-started-yourself" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you’re also working on or with an application that would benefit from Cloudflare’s speed and scale, check out our developer <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">documentation</a> and <a href="https://developers.cloudflare.com/workers/tutorials" target="_blank" rel="noopener noreferrer">tutorials</a>, and join our developer <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a> to get community support and inspiration.</p>
 </div>
+<p>After calculating the experiments and selecting the correct variants based solely on the small metadata entry, the service constructs a JSON string for the response containing placeholders for the actual values that reference the corresponding line numbers in the separate text file. To finalize the response, the server replaces the placeholders with the corresponding serialized JSON strings from the text file. This approach circumvents the need for parsing and re-serializing large JSON objects and helps to avoid a significant computational overhead.</p>
+<p>Note that the process of parsing the metadata JSON and determining the correct experiments as well as the loading of the large file with configuration values are executed in parallel, saving additional milliseconds.</p>
+<p>By minimizing the size of the JSON data that needed to be parsed and leveraging a more efficient method for constructing the final response, the Picsart team managed to not only reduce the response times but also optimize the compute resource usage. This approach reflects a broader principle applicable across the tech industry: that efficiency, particularly in serverless architectures, can often be dramatically improved by rethinking data structure and utilization.</p>
+<h2>Getting a head start</h2>
+<p>The changes on the server-side, moving from a single region setup to Cloudflare’s global architecture, paid off massively. Median response times globally dropped by more than 1 second, which was already a huge improvement for the team. However, in looking at the new data, two more paths for client-side optimizations were found.</p>
+<p>As the web and mobile app would call the service at startup, most of the time no active connections to the servers were alive and establishing that connection at request time costs valuable milliseconds.</p>
+<p>For the web version, setting a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect" target="_blank" rel="noopener noreferrer">pre-connect header</a> on initial page load showed a positive impact. For the mobile app version, the Picsart team took it a step further. Investigation showed that before the connection could be established, three modules had to complete initialization: the error tracker, the HTTP client, and the SDK. Reordering of the modules to initialize the HTTP client first allowed for connection establishment in parallel to the initialization of the SDK and error tracker, again saving time. This resulted in another 200ms improvement for end users.</p>
+<h2>Setting a new personal best</h2>
+<p>The day had come, and it was time for the phased rollout, web first and the mobile apps second. With suspense, the team looked at the dashboards, and were pleasantly surprised. The rollout was successful and billions of requests were handled with ease.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="283" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=640&amp;h=253&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=715&amp;h=283&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=750&amp;h=297&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=828&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=1080&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=1280&amp;h=507&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=1430&amp;h=566&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2274 Embedded Image - lIjAAc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44NNGCJEFJZGYHNJ0G4V48.png&amp;w=1920&amp;h=760&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="760" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="283" class="pt-portable-image-media"></div>
+</figure>
+<p><em>Share of successfully delivered experiments</em></p>
+<p>The result? The Picsart apps are loading faster than ever for millions of users worldwide, while the share of successfully delivered experiments increased from 50% to 85%. Median response time dropped from 1500 ms to 280 ms. The response time dropped to 70 ms on the web since the response size is smaller compared to mobile. This translates to a real business impact for Picsart as they can now deliver more personalized and data-driven experiences to even more of their users.</p>
+<h2>A bright future ahead</h2>
+<p>Picsart is already thinking of the next generation of experimentation. To integrate with Cloudflare even further, the plan is to use Durable Objects to store hundreds of millions of user data records in a decentralized fashion, enabling even more powerful experiments without impacting performance. This is possible thanks to Durable Objects' underlying architecture that stores the user data in-region, close to the respective end user device.</p>
+<p>Beyond that, Picsart’s experimentation team is also planning to onboard external B2B customers to their experimentation platform as Cloudflare's developer platform provides them with the scale and global network to handle more traffic and data with ease.</p>
+<h2>Get started yourself</h2>
+<p>If you’re also working on or with an application that would benefit from Cloudflare’s speed and scale, check out our developer <a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">documentation</a> and <a href="https://developers.cloudflare.com/workers/tutorials" target="_blank" rel="noopener noreferrer">tutorials</a>, and join our developer <a href="https://discord.cloudflare.com" target="_blank" rel="noopener noreferrer">Discord</a> to get community support and inspiration.</p>

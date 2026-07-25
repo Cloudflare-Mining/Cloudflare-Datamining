@@ -1,261 +1,214 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/payload-cms-workers">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/11T4VDy7ogJAIETN32fEQZ/f95ac6a7cec852b9edc39b565c3007f8/Payload_CMS_on_Workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>Tucked behind the administrator login screen of countless websites is one of the Internet’s unsung heroes: the Content Management System (CMS). This seemingly basic piece of software is used to draft and publish blog posts, organize media assets, manage user profiles, and perform countless other tasks across a dizzying array of use cases. One standout in this category is a vibrant open-source project called Payload, which has over 35,000 stars on <a href="https://github.com/payloadcms/payload" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a> and has generated so much community excitement that it was recently <a href="https://www.figma.com/blog/payload-joins-figma" target="_blank" rel="noopener noreferrer"><u>acquired</u></a> by Figma.</p>
-	<p>Today we’re excited to showcase <a href="https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1" target="_blank" rel="noopener noreferrer"><b><u>a new template</u></b></a> from the Payload team, which makes it possible to deploy a full-fledged CMS to Cloudflare’s platform in a single click: just click the <i>Deploy to Cloudflare</i> button to generate a fully-configured Payload instance, complete with bindings to Cloudflare D1 and R2. Below we’ll dig into the technical work that enables this, some of the opportunities it unlocks, and how we’re using Payload to help power <a href="https://cloudflare.tv" target="_blank" rel="noopener noreferrer"><u>Cloudflare TV</u></a>. But first, a look at why hosting a CMS on Workers is such a game changer.</p>
-	<center><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fpayloadcms%2Fpayload%2Ftree%2Fmain%2Ftemplates%2Fwith-cloudflare-d1"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a></center>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/57tUnVPCONmXQIShJaJH1V/c9a7974265d79f784be0d789f924bb94/image3.png" alt="" class="kg-image" width="1999" height="1249" loading="lazy">
-	</figure>
-	<p><sup><i>Behind the scenes: Cloudflare TV’s Payload instance</i></sup></p>
-	<div class="flex anchor relative">
-		<h3 id="serverless-by-design">Serverless by design</h3>
-		<a href="https://blog.cloudflare.com/#serverless-by-design" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
+<p>Tucked behind the administrator login screen of countless websites is one of the Internet’s unsung heroes: the Content Management System (CMS). This seemingly basic piece of software is used to draft and publish blog posts, organize media assets, manage user profiles, and perform countless other tasks across a dizzying array of use cases. One standout in this category is a vibrant open-source project called Payload, which has over 35,000 stars on <a href="https://github.com/payloadcms/payload" target="_blank" rel="noopener noreferrer"><u>GitHub</u></a> and has generated so much community excitement that it was recently <a href="https://www.figma.com/blog/payload-joins-figma" target="_blank" rel="noopener noreferrer"><u>acquired</u></a> by Figma.</p>
+<p>Today we’re excited to showcase <a href="https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1" target="_blank" rel="noopener noreferrer"><strong><u>a new template</u></strong></a> from the Payload team, which makes it possible to deploy a full-fledged CMS to Cloudflare’s platform in a single click: just click the <em>Deploy to Cloudflare</em> button to generate a fully-configured Payload instance, complete with bindings to Cloudflare D1 and R2. Below we’ll dig into the technical work that enables this, some of the opportunities it unlocks, and how we’re using Payload to help power <a href="https://cloudflare.tv" target="_blank" rel="noopener noreferrer"><u>Cloudflare TV</u></a>. But first, a look at why hosting a CMS on Workers is such a game changer.</p>
+<div id="html-block-ki" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fpayloadcms%2Fpayload%2Ftree%2Fmain%2Ftemplates%2Fwith-cloudflare-d1"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a></div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="447" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=640&amp;h=400&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=715&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=750&amp;h=469&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=828&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=1080&amp;h=675&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=1280&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=1430&amp;h=894&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3026 image 1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW477JXRDW1N89RH6CCYVRNW.png&amp;w=1920&amp;h=1200&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1200" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="447" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p><sup><em>Behind the scenes: Cloudflare TV’s Payload instance</em></sup></p>
+<h3>Serverless by design</h3>
+<p>Most CMSs are designed to be hosted on a conventional server that runs 24/7. That means you need to provision hardware or virtual machines, install the CMS software and dependencies, manage ports and firewalls, and navigate ongoing maintenance and scaling hurdles.</p>
+<p>This presents significant operational overhead, and can be costly if your server needs to handle high volumes (or spiky peaks) of traffic. What’s worse, you’re paying for that server whether you have any active users or not. One of the superpowers of Cloudflare Workers is that your application and data are accessible 24/7, without needing a server running all the time. When people use your application, it spins up at the closest Cloudflare server, ready to go. When your users are asleep, the Worker spins down, and you don’t pay for compute you aren’t using.&nbsp;</p>
+<p>With Payload running on Workers, you get the best of conventional CMSs — fully configurable asset management, custom webhooks, a library of community plugins, version history —&nbsp;all in a serverless form factor. We’ve been piloting the Payload-on-Workers template with an instance of our 24/7 video platform Cloudflare TV, which we use as a test bed for new technologies. Migrating from a conventional CMS was painless, thanks to its support for common features like conditional logic and an extensive set of components for building out our admin dashboard. Our content library has over 2,000 episodes and 70,000 assets, and Payload’s <a href="https://payloadcms.com/docs/queries/overview" target="_blank" rel="noopener noreferrer"><u>filtering and search</u></a> features help us navigate them with ease.</p>
+<div id="html-block-kx" class="html-block">
+	<div style="padding-top:65.16587677725119%">
+		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5ac9ba174903f80c3d9dd7e52dc40c67/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5ac9ba174903f80c3d9dd7e52dc40c67%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe>
 	</div>
-	<p>Most CMSs are designed to be hosted on a conventional server that runs 24/7. That means you need to provision hardware or virtual machines, install the CMS software and dependencies, manage ports and firewalls, and navigate ongoing maintenance and scaling hurdles.</p>
-	<p>This presents significant operational overhead, and can be costly if your server needs to handle high volumes (or spiky peaks) of traffic. What’s worse, you’re paying for that server whether you have any active users or not. One of the superpowers of Cloudflare Workers is that your application and data are accessible 24/7, without needing a server running all the time. When people use your application, it spins up at the closest Cloudflare server, ready to go. When your users are asleep, the Worker spins down, and you don’t pay for compute you aren’t using.&nbsp;</p>
-	<p>With Payload running on Workers, you get the best of conventional CMSs — fully configurable asset management, custom webhooks, a library of community plugins, version history —&nbsp;all in a serverless form factor. We’ve been piloting the Payload-on-Workers template with an instance of our 24/7 video platform Cloudflare TV, which we use as a test bed for new technologies. Migrating from a conventional CMS was painless, thanks to its support for common features like conditional logic and an extensive set of components for building out our admin dashboard. Our content library has over 2,000 episodes and 70,000 assets, and Payload’s <a href="https://payloadcms.com/docs/queries/overview" target="_blank" rel="noopener noreferrer"><u>filtering and search</u></a> features help us navigate them with ease.</p>
-	<div style="position: relative; padding-top: 65.16587677725119%;">
-		<iframe src="https://customer-eq7kiuol0tk9chox.cloudflarestream.com/5ac9ba174903f80c3d9dd7e52dc40c67/iframe?preload=true&amp;poster=https%3A%2F%2Fcustomer-eq7kiuol0tk9chox.cloudflarestream.com%2F5ac9ba174903f80c3d9dd7e52dc40c67%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600" loading="lazy" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-	</div>
-	<p>It is worth reiterating just how many use cases CMSs can fulfill, from publishing to ecommerce to bespoke application dashboards whipped up by Claude Code or Codex. CMSs provide the sort of interface that less-technical users can pick up intuitively,&nbsp;and can be molded into whatever shape best fits the project. We’re excited to see what people get to building.</p>
-	<div class="flex anchor relative">
-		<h3 id="opennext-opens-doors">OpenNext opens doors</h3>
-		<a href="https://blog.cloudflare.com/#opennext-opens-doors" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Payload first launched in 2022 as a Node/Express.js application and quickly began building steam. In 2024, it <a href="https://payloadcms.com/posts/blog/payload-30-the-first-cms-that-installs-directly-into-any-nextjs-app" target="_blank" rel="noopener noreferrer"><u>introduced</u></a> native support for the popular Next.js framework, which helped pave the way for today’s announcement: this year, Cloudflare became the best place to host your applications built on Next.js, with the GA <a href="https://blog.cloudflare.com/deploying-nextjs-apps-to-cloudflare-workers-with-the-opennext-adapter"><u>release</u></a> of our OpenNext adapter.</p>
-	<p>Thanks to this adapter, porting Payload to OpenNext was relatively straightforward using the official OpenNext <a href="https://opennext.js.org/cloudflare/get-started#existing-nextjs-apps" target="_blank" rel="noopener noreferrer"><u>Get Started</u></a> guide. Because we wanted the application to run seamlessly on Workers, with all the benefits of <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers Bindings</u></a>, we set out to ensure support for Cloudflare’s database and storage products.</p>
-	<div class="flex anchor relative">
-		<h3 id="database">Database</h3>
-		<a href="https://blog.cloudflare.com/#database" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For our initial approach, we began by connecting Payload to an external Postgres database, using the official <code>@payloadcms/db-postgres </code>adapter. Thanks to Workers support for the <code>node-postgres</code> package, everything worked pretty much straight away. As connections <a href="https://opennext.js.org/cloudflare/troubleshooting#error-cannot-perform-io-on-behalf-of-a-different-request" target="_blank" rel="noopener noreferrer"><u>cannot be shared</u></a> across requests, we just had to disable connection pooling:</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">import { buildConfig } from 'payload'
-import { postgresAdapter } from '@payloadcms/db-postgres'
-
-export default buildConfig({
-  …
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI,
-      maxUses: 1,
-    },
-  }),
-  …
-});
-</code></pre>
-	<p>Of course, disabling connection pooling increases the overall latency, as each request needs to first establish a new connection with the database. To address this, we put <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a> in front of it, which not only maintains a pool of connections across the Cloudflare network, by setting up a tunnel to the database server, but also adds a query cache, significantly improving the performance. </p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">import { buildConfig } from 'payload'
-import { postgresAdapter } from '@payloadcms/db-postgres'
-import { getCloudflareContext } from '@opennextjs/cloudflare';
-
-const cloudflare = await getCloudflareContext({ async: true });
-
-export default buildConfig({
-  …
-  db: postgresAdapter({
-    pool: {
-      connectionString: cloudflare.env.HYPERDRIVE.connectionString,
-      maxUses: 1,    
-    },
-  }),
-  …
-});
-</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="database-with-d1">Database with D1</h3>
-		<a href="https://blog.cloudflare.com/#database-with-d1" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With Postgres working, we next sought to add support for <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Cloudflare’s <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">managed serverless database</a>, built on top of SQLite.</p>
-	<p>Payload doesn’t support D1 out of the box, but has support for SQLite via the <code>@payloadcms/db-sqlite</code> adapter, which uses <a href="https://orm.drizzle.team" target="_blank" rel="noopener noreferrer"><u>Drizzle ORM</u></a> alongside libSQL. Thankfully, Drizzle also has support for D1, so we decided to build a custom adapter for D1, using the SQLite one as a base.</p>
-	<p>The main difference between D1 and libSQL is on the result object, so we built a small method to map the result from D1 into the format expected by libSQL:</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">export const execute: Execute&lt;any&gt; = function execute({ db, drizzle, raw, sql: statement }) {
-  const executeFrom = (db ?? drizzle)!
-  const mapToLibSql = (query: SQLiteRaw&lt;D1Result&lt;unknown&gt;&gt;) =&gt; {
-    const execute = query.execute
-    query.execute = async () =&gt; {
-      const result: D1Result = await execute()
-      const resultLibSQL: Omit&lt;ResultSet, 'toJSON'&gt; = {
-        columns: undefined,
-        columnTypes: undefined,
-        lastInsertRowid: BigInt(result.meta.last_row_id),
-        rows: result.results as any[],
-        rowsAffected: result.meta.rows_written,
-      }
-
-      return Object.assign(result, resultLibSQL)
-    }
-
-    return query
-  }
-
-  if (raw) {
-    const result = mapToLibSql(executeFrom.run(sql.raw(raw)))
-    return result
-  } else {
-    const result = mapToLibSql(executeFrom.run(statement!))
-    return result
-  }
-}</code></pre>
-	<p>Other than that, it was just a matter of <a href="https://orm.drizzle.team/docs/connect-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u>passing the D1 binding</u></a> directly into Drizzle’s constructor in order to get it working.</p>
-	<p>For applying database migrations during deployment, we used the newly released<a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga" target="_blank" rel="noopener noreferrer"> <u>remote bindings</u></a> feature of Wrangler to connect to the remote database, using the same binding. This way we didn’t need to configure any API tokens to be able to interact with the database.</p>
-	<div class="flex anchor relative">
-		<h3 id="media-storage-with-r2">Media storage with R2</h3>
-		<a href="https://blog.cloudflare.com/#media-storage-with-r2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Payload provides an official S3 storage adapter, via the <code>@payloadcms/storage-s3</code> package. R2 is S3-compatible, which means we could have used the official adapter, but similar to the database, we wanted to use the R2 binding instead of having to create API tokens.</p>
-	<p>Therefore, we decided to also build a custom storage adapter for R2. This one was pretty straightforward, as the binding already handles most of the work:</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">import type { Adapter } from '@payloadcms/plugin-cloud-storage/types'
-import path from 'path'
-
-const isMiniflare = process.env.NODE_ENV === 'development';
-
-export const r2Storage: (bucket: R2Bucket) =&gt; Adapter = (bucket) =&gt; ({ prefix = '' }) =&gt; {
-  const key = (filename: string) =&gt; path.posix.join(prefix, filename)
-  return {
-    name: 'r2',
-    handleDelete: ({ filename }) =&gt; bucket.delete(key(filename)),
-    handleUpload: async ({ file }) =&gt; {
-      // Read more: https://github.com/cloudflare/workers-sdk/issues/6047#issuecomment-2691217843
-      const buffer = isMiniflare ? new Blob([file.buffer]) : file.buffer
-      await bucket.put(key(file.filename), buffer)
-    },
-    staticHandler: async (req, { params }) =&gt; {
-      // Due to https://github.com/cloudflare/workers-sdk/issues/6047
-      // We cannot send a Headers instance to Miniflare
-      const obj = await bucket?.get(key(params.filename), { range: isMiniflare ? undefined : req.headers })
-      if (obj?.body == undefined) return new Response(null, { status: 404 })
-
-      const headers = new Headers()
-      if (!isMiniflare) obj.writeHttpMetadata(headers)
-
-      return obj.etag === (req.headers.get('etag') || req.headers.get('if-none-match'))
-        ? new Response(null, { headers, status: 304 })
-        : new Response(obj.body, { headers, status: 200 })
-    },
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="deployment">Deployment</h3>
-		<a href="https://blog.cloudflare.com/#deployment" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>With the database and storage adapters in place, we were able to successfully launch an instance of Payload, running completely on Cloudflare’s Developer Platform.</p>
-	<p>The blank template consists of a simple database with just two tables, one for media and another for the users. In this template it’s possible to sign up, create new users and upload media files. Then, it’s quite easy to expand with additional collections, relationships and custom fields, by modifying Payload’s <a href="https://payloadcms.com/docs/configuration/collections" target="_blank" rel="noopener noreferrer"><u>configuration</u></a>.</p>
-	<div class="flex anchor relative">
-		<h3 id="performance-optimization-with-read-replicas">Performance optimization with Read Replicas</h3>
-		<a href="https://blog.cloudflare.com/#performance-optimization-with-read-replicas" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>By default, D1 is placed in a single location, customizable via a location hint. As Payload is deployed as a Worker, requests may be coming from any part of the world and so latency will be all over the place when connecting to the database.</p>
-	<p>To solve this, we can make use of D1’s <a href="https://developers.cloudflare.com/d1/best-practices/read-replication" target="_blank" rel="noopener noreferrer"><u>global read replication</u></a>, which deploys multiple read-only replicas across the globe. To select the correct replica and ensure sequential consistency, D1 uses sessions, with a bookmark that needs to be passed around.</p>
-	<p>Drizzle <a href="https://github.com/drizzle-team/drizzle-orm/issues/2226" target="_blank" rel="noopener noreferrer"><u>doesn’t support D1 sessions</u></a> yet, but we can still use the “first-primary” type of session, in which the first query will always hit the primary instance and subsequent queries may hit one of the replicas. Updating the adapter to use replicas is just a matter of updating the Drizzle initialization to pass the D1 session directly:</p>
-	<pre class="language-TypeScript"><code class="language-TypeScript">this.drizzle = drizzle(this.binding.withSession("first-primary"), 
-{ logger, schema: this.schema });</code></pre>
-	<p>After this simple change, we saw immediate latency improvements, with the P50 wall-time for requests from across the globe reduced by 60% when connecting to a database located in Eastern North America. Read replicas, as the name implies, only affect read-only queries, so any write operations will always be forwarded to the primary instance, but for our use case, reads are most of the traffic.</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p>
-					</p>
-				</td>
-				<td>
+</div>
+<p>It is worth reiterating just how many use cases CMSs can fulfill, from publishing to ecommerce to bespoke application dashboards whipped up by Claude Code or Codex. CMSs provide the sort of interface that less-technical users can pick up intuitively,&nbsp;and can be molded into whatever shape best fits the project. We’re excited to see what people get to building.</p>
+<h3>OpenNext opens doors</h3>
+<p>Payload first launched in 2022 as a Node/Express.js application and quickly began building steam. In 2024, it <a href="https://payloadcms.com/posts/blog/payload-30-the-first-cms-that-installs-directly-into-any-nextjs-app" target="_blank" rel="noopener noreferrer"><u>introduced</u></a> native support for the popular Next.js framework, which helped pave the way for today’s announcement: this year, Cloudflare became the best place to host your applications built on Next.js, with the GA <a href="https://blog.cloudflare.com/deploying-nextjs-apps-to-cloudflare-workers-with-the-opennext-adapter" target="_blank" rel="noopener noreferrer"><u>release</u></a> of our OpenNext adapter.</p>
+<p>Thanks to this adapter, porting Payload to OpenNext was relatively straightforward using the official OpenNext <a href="https://opennext.js.org/cloudflare/get-started#existing-nextjs-apps" target="_blank" rel="noopener noreferrer"><u>Get Started</u></a> guide. Because we wanted the application to run seamlessly on Workers, with all the benefits of <a href="https://developers.cloudflare.com/workers/runtime-apis/bindings" target="_blank" rel="noopener noreferrer"><u>Workers Bindings</u></a>, we set out to ensure support for Cloudflare’s database and storage products.</p>
+<h3>Database</h3>
+<p>For our initial approach, we began by connecting Payload to an external Postgres database, using the official <code>@payloadcms/db-postgres </code>adapter. Thanks to Workers support for the <code>node-postgres</code> package, everything worked pretty much straight away. As connections <a href="https://opennext.js.org/cloudflare/troubleshooting#error-cannot-perform-io-on-behalf-of-a-different-request" target="_blank" rel="noopener noreferrer"><u>cannot be shared</u></a> across requests, we just had to disable connection pooling:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { buildConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'payload'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { postgresAdapter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@payloadcms/db-postgres'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> buildConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  …</span></span>
+<span class="line"><span class="sk-24292e-fff">  db: </span><span class="sk-6f42c1-ffc799">postgresAdapter</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    pool: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      connectionString: process.env.</span><span class="sk-005cc5-fff">DATABASE_URI</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      maxUses: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  }),</span></span>
+<span class="line"><span class="sk-24292e-fff">  …</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Of course, disabling connection pooling increases the overall latency, as each request needs to first establish a new connection with the database. To address this, we put <a href="https://developers.cloudflare.com/hyperdrive" target="_blank" rel="noopener noreferrer"><u>Hyperdrive</u></a> in front of it, which not only maintains a pool of connections across the Cloudflare network, by setting up a tunnel to the database server, but also adds a query cache, significantly improving the performance. </p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { buildConfig } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'payload'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { postgresAdapter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@payloadcms/db-postgres'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { getCloudflareContext } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@opennextjs/cloudflare'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> cloudflare</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> getCloudflareContext</span><span class="sk-24292e-fff">({ async: </span><span class="sk-005cc5-ffc799">true</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-6f42c1-ffc799"> buildConfig</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">  …</span></span>
+<span class="line"><span class="sk-24292e-fff">  db: </span><span class="sk-6f42c1-ffc799">postgresAdapter</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">    pool: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      connectionString: cloudflare.env.</span><span class="sk-005cc5-fff">HYPERDRIVE</span><span class="sk-24292e-fff">.connectionString,</span></span>
+<span class="line"><span class="sk-24292e-fff">      maxUses: </span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">,    </span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  }),</span></span>
+<span class="line"><span class="sk-24292e-fff">  …</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span></code></pre>
+</div>
+<h3>Database with D1</h3>
+<p>With Postgres working, we next sought to add support for <a href="https://developers.cloudflare.com/d1" target="_blank" rel="noopener noreferrer"><u>D1</u></a>, Cloudflare’s <a href="https://www.cloudflare.com/developer-platform/products/d1" target="_blank" rel="noopener noreferrer">managed serverless database</a>, built on top of SQLite.</p>
+<p>Payload doesn’t support D1 out of the box, but has support for SQLite via the <code>@payloadcms/db-sqlite</code> adapter, which uses <a href="https://orm.drizzle.team" target="_blank" rel="noopener noreferrer"><u>Drizzle ORM</u></a> alongside libSQL. Thankfully, Drizzle also has support for D1, so we decided to build a custom adapter for D1, using the SQLite one as a base.</p>
+<p>The main difference between D1 and libSQL is on the result object, so we built a small method to map the result from D1 into the format expected by libSQL:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-6f42c1-ffc799"> execute</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Execute</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">any</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> execute</span><span class="sk-24292e-fff">({ </span><span class="sk-e36209-fff">db</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">drizzle</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">raw</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">sql</span><span class="sk-24292e-fff">: </span><span class="sk-e36209-fff">statement</span><span class="sk-24292e-fff"> }) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> executeFrom</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (db </span><span class="sk-d73a49-a0a0a0">??</span><span class="sk-24292e-fff"> drizzle)</span><span class="sk-d73a49-a0a0a0">!</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-6f42c1-ffc799"> mapToLibSql</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">query</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> SQLiteRaw</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">D1Result</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">unknown</span><span class="sk-24292e-fff">&gt;&gt;) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> execute</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> query.execute</span></span>
+<span class="line"><span class="sk-24292e-fff">    query.</span><span class="sk-6f42c1-ffc799">execute</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> D1Result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> execute</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> resultLibSQL</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Omit</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">ResultSet</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">'toJSON'</span><span class="sk-24292e-fff">&gt; </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">        columns: </span><span class="sk-005cc5-fff">undefined</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        columnTypes: </span><span class="sk-005cc5-fff">undefined</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        lastInsertRowid: </span><span class="sk-6f42c1-ffc799">BigInt</span><span class="sk-24292e-fff">(result.meta.last_row_id),</span></span>
+<span class="line"><span class="sk-24292e-fff">        rows: result.results </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-005cc5-ffc799"> any</span><span class="sk-24292e-fff">[],</span></span>
+<span class="line"><span class="sk-24292e-fff">        rowsAffected: result.meta.rows_written,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> Object.</span><span class="sk-6f42c1-ffc799">assign</span><span class="sk-24292e-fff">(result, resultLibSQL)</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> query</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (raw) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> mapToLibSql</span><span class="sk-24292e-fff">(executeFrom.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(sql.</span><span class="sk-6f42c1-ffc799">raw</span><span class="sk-24292e-fff">(raw)))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> result</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> result</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> mapToLibSql</span><span class="sk-24292e-fff">(executeFrom.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(statement</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> result</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Other than that, it was just a matter of <a href="https://orm.drizzle.team/docs/connect-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u>passing the D1 binding</u></a> directly into Drizzle’s constructor in order to get it working.</p>
+<p>For applying database migrations during deployment, we used the newly released<a href="https://developers.cloudflare.com/changelog/2025-09-16-remote-bindings-ga" target="_blank" rel="noopener noreferrer"> <u>remote bindings</u></a> feature of Wrangler to connect to the remote database, using the same binding. This way we didn’t need to configure any API tokens to be able to interact with the database.</p>
+<h3>Media storage with R2</h3>
+<p>Payload provides an official S3 storage adapter, via the <code>@payloadcms/storage-s3</code> package. R2 is S3-compatible, which means we could have used the official adapter, but similar to the database, we wanted to use the R2 binding instead of having to create API tokens.</p>
+<p>Therefore, we decided to also build a custom storage adapter for R2. This one was pretty straightforward, as the binding already handles most of the work:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-d73a49-a0a0a0"> type</span><span class="sk-24292e-fff"> { Adapter } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> '@payloadcms/plugin-cloud-storage/types'</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> path </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> 'path'</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> isMiniflare</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> process.env.</span><span class="sk-005cc5-fff">NODE_ENV</span><span class="sk-d73a49-a0a0a0"> ===</span><span class="sk-032f62-99ffe4"> 'development'</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> const</span><span class="sk-6f42c1-ffc799"> r2Storage</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">bucket</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> R2Bucket</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> Adapter</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">bucket</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">prefix</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-6f42c1-ffc799"> key</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">filename</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> path.posix.</span><span class="sk-6f42c1-ffc799">join</span><span class="sk-24292e-fff">(prefix, filename)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    name: </span><span class="sk-032f62-99ffe4">'r2'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    handleDelete</span><span class="sk-24292e-fff">: ({ </span><span class="sk-e36209-fff">filename</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> bucket.</span><span class="sk-6f42c1-ffc799">delete</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">key</span><span class="sk-24292e-fff">(filename)),</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    handleUpload</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> ({ </span><span class="sk-e36209-fff">file</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Read more: https://github.com/cloudflare/workers-sdk/issues/6047#issuecomment-2691217843</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> buffer</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> isMiniflare </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Blob</span><span class="sk-24292e-fff">([file.buffer]) </span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> file.buffer</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      await</span><span class="sk-24292e-fff"> bucket.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">key</span><span class="sk-24292e-fff">(file.filename), buffer)</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    staticHandler</span><span class="sk-24292e-fff">: </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">req</span><span class="sk-24292e-fff">, { </span><span class="sk-e36209-fff">params</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Due to https://github.com/cloudflare/workers-sdk/issues/6047</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // We cannot send a Headers instance to Miniflare</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> obj</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> bucket?.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">key</span><span class="sk-24292e-fff">(params.filename), { range: isMiniflare </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-24292e-fff"> req.headers })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (obj?.body </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-005cc5-fff"> undefined</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">404</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> headers</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Headers</span><span class="sk-24292e-fff">()</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">isMiniflare) obj.</span><span class="sk-6f42c1-ffc799">writeHttpMetadata</span><span class="sk-24292e-fff">(headers)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-24292e-fff"> obj.etag </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-24292e-fff"> (req.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'etag'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">||</span><span class="sk-24292e-fff"> req.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'if-none-match'</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        ?</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">null</span><span class="sk-24292e-fff">, { headers, status: </span><span class="sk-005cc5-ffc799">304</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        :</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(obj.body, { headers, status: </span><span class="sk-005cc5-ffc799">200</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Deployment</h3>
+<p>With the database and storage adapters in place, we were able to successfully launch an instance of Payload, running completely on Cloudflare’s Developer Platform.</p>
+<p>The blank template consists of a simple database with just two tables, one for media and another for the users. In this template it’s possible to sign up, create new users and upload media files. Then, it’s quite easy to expand with additional collections, relationships and custom fields, by modifying Payload’s <a href="https://payloadcms.com/docs/configuration/collections" target="_blank" rel="noopener noreferrer"><u>configuration</u></a>.</p>
+<h3>Performance optimization with Read Replicas</h3>
+<p>By default, D1 is placed in a single location, customizable via a location hint. As Payload is deployed as a Worker, requests may be coming from any part of the world and so latency will be all over the place when connecting to the database.</p>
+<p>To solve this, we can make use of D1’s <a href="https://developers.cloudflare.com/d1/best-practices/read-replication" target="_blank" rel="noopener noreferrer"><u>global read replication</u></a>, which deploys multiple read-only replicas across the globe. To select the correct replica and ensure sequential consistency, D1 uses sessions, with a bookmark that needs to be passed around.</p>
+<p>Drizzle <a href="https://github.com/drizzle-team/drizzle-orm/issues/2226" target="_blank" rel="noopener noreferrer"><u>doesn’t support D1 sessions</u></a> yet, but we can still use the “first-primary” type of session, in which the first query will always hit the primary instance and subsequent queries may hit one of the replicas. Updating the adapter to use replicas is just a matter of updating the Drizzle initialization to pass the D1 session directly:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.drizzle </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> drizzle</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.binding.</span><span class="sk-6f42c1-ffc799">withSession</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"first-primary"</span><span class="sk-24292e-fff">), </span></span>
+<span class="line"><span class="sk-24292e-fff">{ logger, schema: </span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">.schema });</span></span></code></pre>
+</div>
+<p>After this simple change, we saw immediate latency improvements, with the P50 wall-time for requests from across the globe reduced by 60% when connecting to a database located in Eastern North America. Read replicas, as the name implies, only affect read-only queries, so any write operations will always be forwarded to the primary instance, but for our use case, reads are most of the traffic.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p><br></p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>No read replicas</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Read replicas enabled</p>
-				</td>
-				<td>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
 					<p>Improvement</p>
-				</td>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>P50</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>300ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>120ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-60%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>P90</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>480ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>250ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-48%</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>P99</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>760ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>550ms</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>-28%</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><sup><i>Wall time for requests to the Payload worker, each involving two database calls, as reported by Cloudflare Dash. Load was generated via 4 globally distributed uptime checks making a request every 60s to 4 distinct URLs.</i></sup></p>
-	<p>Because we’ll be relying on Payload for managing Cloudflare TV’s enormous content library, we’re well positioned to test it at scale, and will continue to submit PRs with optimizations and improvements as they arise.</p>
-	<div class="flex anchor relative">
-		<h3 id="the-right-tool-for-the-job">The right tool for the job</h3>
-		<a href="https://blog.cloudflare.com/#the-right-tool-for-the-job" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The potential use cases for CMSs are limitless, which is all the more reason it’s a good thing to have choices. We opted for Payload because of its extensive library of components, mature feature set, and large community —&nbsp;but it’s not the only Workers-compatible CMS in town.</p>
-	<p>Another exciting project is <a href="https://github.com/lane711/sonicjs" target="_blank" rel="noopener noreferrer"><u>SonicJs</u></a> (<a href="https://sonicjs.com" target="_blank" rel="noopener noreferrer"><u>Docs</u></a>), which is built from the ground up on Workers, D1, and Astro, promising blazing speeds and a malleable foundation. SonicJs is working on a version that’s well suited for collaborating with agentic AI assistants like Claude and Codex, and we’re excited to see how that develops. For lightweight use cases, <a href="https://github.com/microfeed/microfeed" target="_blank" rel="noopener noreferrer"><u>microfeed</u></a> is a self-hosted CMS on Cloudflare designed for managing podcasts, blogs, photos, and more.</p>
-	<p>These are each headless CMSs, which means you choose the frontend for your application. Don’t miss our <a href="https://blog.cloudflare.com/cloudflare-astro-tanstack"><u>recent announcement</u></a> around sponsoring the powerful frameworks Astro and Tanstack, and find our complete guides to using these frameworks and others, including React + Vite, in the <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps" target="_blank" rel="noopener noreferrer"><u>Workers Docs</u></a>.</p>
-	<p>To get started using Payload right now, click the <i>Deploy to Cloudflare</i> button below, which will generate a fully functional Payload instance, including a D1 database and R2 bucket automatically bound to your worker. Find the README and more details in Payload’s <a href="https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u>template repository</u></a>.</p>
-	<center><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fpayloadcms%2Fpayload%2Ftree%2Fmain%2Ftemplates%2Fwith-cloudflare-d1"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a></center>
-	<p></p>
 </div>
+<p><sup><em>Wall time for requests to the Payload worker, each involving two database calls, as reported by Cloudflare Dash. Load was generated via 4 globally distributed uptime checks making a request every 60s to 4 distinct URLs.</em></sup></p>
+<p>Because we’ll be relying on Payload for managing Cloudflare TV’s enormous content library, we’re well positioned to test it at scale, and will continue to submit PRs with optimizations and improvements as they arise.</p>
+<h3>The right tool for the job</h3>
+<p>The potential use cases for CMSs are limitless, which is all the more reason it’s a good thing to have choices. We opted for Payload because of its extensive library of components, mature feature set, and large community —&nbsp;but it’s not the only Workers-compatible CMS in town.</p>
+<p>Another exciting project is <a href="https://github.com/lane711/sonicjs" target="_blank" rel="noopener noreferrer"><u>SonicJs</u></a> (<a href="https://sonicjs.com" target="_blank" rel="noopener noreferrer"><u>Docs</u></a>), which is built from the ground up on Workers, D1, and Astro, promising blazing speeds and a malleable foundation. SonicJs is working on a version that’s well suited for collaborating with agentic AI assistants like Claude and Codex, and we’re excited to see how that develops. For lightweight use cases, <a href="https://github.com/microfeed/microfeed" target="_blank" rel="noopener noreferrer"><u>microfeed</u></a> is a self-hosted CMS on Cloudflare designed for managing podcasts, blogs, photos, and more.</p>
+<p>These are each headless CMSs, which means you choose the frontend for your application. Don’t miss our <a href="https://blog.cloudflare.com/cloudflare-astro-tanstack" target="_blank" rel="noopener noreferrer"><u>recent announcement</u></a> around sponsoring the powerful frameworks Astro and Tanstack, and find our complete guides to using these frameworks and others, including React + Vite, in the <a href="https://developers.cloudflare.com/workers/framework-guides/web-apps" target="_blank" rel="noopener noreferrer"><u>Workers Docs</u></a>.</p>
+<p>To get started using Payload right now, click the <em>Deploy to Cloudflare</em> button below, which will generate a fully functional Payload instance, including a D1 database and R2 bucket automatically bound to your worker. Find the README and more details in Payload’s <a href="https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1" target="_blank" rel="noopener noreferrer"><u>template repository</u></a>.</p>
+<div id="html-block-k4x" class="html-block"><a href="https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2Fpayloadcms%2Fpayload%2Ftree%2Fmain%2Ftemplates%2Fwith-cloudflare-d1"><img src="https://deploy.workers.cloudflare.com/button" alt="Deploy to Cloudflare"></a></div>

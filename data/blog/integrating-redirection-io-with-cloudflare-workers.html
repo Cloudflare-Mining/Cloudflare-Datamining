@@ -1,213 +1,205 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Iuge2F8aQRmCIDvci80Lu/362b6ed4b5d3916bba8ddb1e39b24be3/integrating-redirection-io-with-cloudflare-workers.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>The following is a guest post by </i><a href="https://twitter.com/xavierlacot" target="_blank" rel="noopener noreferrer"><i>Xavier Lacot</i></a><i>, a developer at </i><a href="https://redirection.io" target="_blank" rel="noopener noreferrer"><i>redirection.io</i></a><i> and founder at </i><a href="https://jolicode.com" target="_blank" rel="noopener noreferrer"><i>JoliCode</i></a><i>. He works primarily on Web and mobile projects as a consultant, trainer and technical expert.</i></p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-redirection-io">What is redirection.io</h3>
-		<a href="https://blog.cloudflare.com/#what-is-redirection-io" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies, and developers, which help analyze HTTP errors, setup HTTP redirections, customize HTTP responses, and monitor the traffic efficiently.</p>
-	<p>The main part of a traditional redirection.io setup is the proxy, a software component which parses every request to check if a redirection or another response override is required. This "proxy" can be of several types - we <a href="https://redirection.io/documentation/developer-documentation/integrations" target="_blank" rel="noopener noreferrer">provide libraries in several languages</a> - but this setup can be simplified for Cloudflare clients by taking advantage of Cloudflare Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="here-come-cloudflare-workers">Here come Cloudflare Workers</h3>
-		<a href="https://blog.cloudflare.com/#here-come-cloudflare-workers" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Earlier this year, Cloudflare unveiled its <a href="https://www.cloudflare.com/fr-fr/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a> product, a smart way of running code <i>on the edge</i> of Cloudflare locations. This computing feature is particularly interesting, as it allows performing several traffic operations without requiring any change on your own platform, code, or infrastructure: just enable Workers, write some code, and let Cloudflare handle the magic ✨</p>
-	<p>In practical terms, Workers act as application middleware. They proxy incoming HTTP requests to your stack, and can modify both requests and responses. Cloudflare has <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">examples and code ideas</a> to help you build your own Worker.</p>
-	<p>Here is a very basic Cloudflare Worker:</p>
-	<pre class="language-js"><code class="language-js">addEventListener('fetch', event =&gt; {
-  event.respondWith(handleRequest(event.request))
-})
-
-async function handleRequest(request) {
-  console.log('Got request', request)
-  const response = await fetch(request)
-  console.log('Got response', response)
-  return response
-}</code></pre>
-	<p>Luckily, redirection.io already has a public HTTP endpoint for exposing hosted agents (for shared hosting, for instance, where it is impossible to install your own binaries). Offering redirection.io to all Cloudflare Workers users is as simple as querying our hosted agent at each incoming request:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xa23T55yNTFqNt71UL4He/a7c2d04334db32c398aaf6f6e3b6ae3a/cloudflare-redirectionio.png" alt="Integration of redirection.io with Clourdflare Workers" class="kg-image" width="778" height="723" loading="lazy">
-
-	</figure>
-	<p>In terms of code, the pattern we use is very similar to the Workers example: we listen on the incoming request:</p>
-	<pre class="language-js"><code class="language-js">addEventListener('fetch', (event) =&gt; {
-    event.respondWith(redirectAndLog(event.request));
-});
-
-async function redirectAndLog(request) {
-    const response = await redirectOrPass(request);
-    log(request, response);
-
-    return response;
-}</code></pre>
-	<p>Of course, we must implement the <code>redirectOrPass()</code> and <code>log()</code> functions, which will do all the magic:</p>
-	<ul>
-		<li>
-			<p><code>redirectOrPass()</code> queries redirection.io's API to know if some action has to be run for the current request, and lets the request pass if necessary. This call is blocking; it will stop the request until a response is received from redirection.io's backend.</p>
-		</li>
-		<li>
-			<p><code>log()</code> sends out log data to our backend for analysis and statistics purpose. This call is non-blocking, as it can be executed even after the response has been sent to the user.</p>
-		</li>
-	</ul>
-	<p>Hence, both of these functions are defined as asynchronous non-blocking functions:</p>
-	<pre class="language-js"><code class="language-js">async function redirectOrPass(request) {
-    ...
-}
-
-async function log(request, response) {
-    ...
-}</code></pre>
-	<p>Let's go with the <code>redirectOrPass()</code> implementation! Using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer">fetch API</a>, we can call redirection.io's agent API:</p>
-	<pre class="language-js"><code class="language-js">const urlObject = new URL(request.url);
-const context = {
-    'host': urlObject.host,
-    'request_uri': urlObject.pathname,
-    'user_agent': request.headers.get('user-agent'),
-    'scheme': urlObject.protocol.includes('https') ? 'https' : 'http'
-};
-let response = null;
-
-try {
-    response = await fetch('https://proxy.redirection.io/' + options.token + '/get', {
-        method: 'POST',
-        body: JSON.stringify(context),
-    });
-} catch (error) {
-    // if no action found, play the regular request
-    return await fetch(request);
-}</code></pre>
-	<p>Should our API respond with a <code>404</code> status (which means that no redirection or action rule is defined for a request of that type), we simply return the standard response from your website's backend - this is achieved with <code>return await fetch(request)</code></p>
-	<p>If a redirection has to be run, redirection.io's API will send a status <code>200</code> response with all the information on how to transform the response. The payload could, for instance, look like:</p>
-	<pre class="language-json"><code class="language-json">{
-  "status_code": 302,
-  "location": "/blog-yo"
-}</code></pre>
-	<p>... and we can simply use it to change the response:</p>
-	<pre class="language-js"><code class="language-js">const data = await response.text();
-
-try {
-    response = JSON.parse(data);
-} catch (error) {
-    // If some errors, play the regular request
-    return await fetch(request);
-}
-
-// Send gone response
-if (response.status_code === 410) {
-    return new Response('', { status: 410 });
-}
-
-// Send redirection response
-return new Response('', {
-    status: Number(response.status_code),
-    headers: {
-        'Location': response.location
-    }
-});</code></pre>
-	<p>The <code>log()</code> function implementation is pretty similar:</p>
-	<pre class="language-js"><code class="language-js">async function log(request, response) {
-    const urlObject = new URL(request.url);
-    const context = {
-        'status_code': response.status,
-        'host': urlObject.host,
-        'request_uri': urlObject.pathname,
-        'user_agent': request.headers.get('user-agent'),
-        'scheme': urlObject.protocol.includes('https') ? 'https' : 'http',
-    };
-
-    try {
-        return await fetch('https://proxy.redirection.io/' + options.token + '/log', {
-            method: 'POST',
-            body: JSON.stringify(context),
-        });
-    } catch (error) {
-        // do nothing, does not matter if some logs are lost
-    }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="impacts-and-performance-concerns">Impacts and performance concerns</h3>
-		<a href="https://blog.cloudflare.com/#impacts-and-performance-concerns" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare's workers run <i>very fast</i>. And by "very fast", we mean in microseconds, with the ability for Cloudflare to execute "many thousands of Worker scripts per second" as stated in their documentation.</p>
-	<p>The stack behind redirection.io is also very efficient, able to manage a similar level of traffic without any latency nor slowdown. However, there can be an occasional network slowdown, which could hurt the perceived performance of your web application. There are several ways to mitigate this possible impact.</p>
-	<p>First, Cloudflare Workers support caching subrequests made with the Fetch API. This means that, if a URL of your application is often hit (for instance the homepage), you may want to cache the result from redirection.io's API. With this approach, the impact on the vast majority of your incoming requests will be close to zero.</p>
-	<p>Another approach is possible, to define the maximum timing overhead using redirection.io will add: we can simply define a timeout to the <code>fetch()</code> calls made by our Service Worker! Just nest the <code>fetch()</code> call inside a <code>Promise.race()</code>:</p>
-	<pre class="language-js"><code class="language-js">response = await fetch('https://proxy.redirection.io/' + options.token + '/get', {
-    method: 'POST',
-    body: JSON.stringify(context),
-});</code></pre>
-	<p>becomes:</p>
-	<pre class="language-js"><code class="language-js">response = await Promise.race([
-  fetch('https://proxy.redirection.io/' + options.token + '/get', {
-    method: 'POST',
-    body: JSON.stringify(context),
-  }),
-  new Promise((_, reject) =&gt;
-    setTimeout(() =&gt; reject(new Error('Timeout')), options.timeout)
-  ),
-])</code></pre>
-	<p>When talking about performance, it is a good idea to provide some numbers for a valid comparison:</p>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<p><b>Cloudflare enabled</b></p>
-				</td>
-				<td>
-					<p><b>Workers enabled</b></p>
-				</td>
-				<td>
-					<p><b>Request timing</b></p>
-				</td>
+<p><em>The following is a guest post by <a href="https://twitter.com/xavierlacot" target="_blank" rel="noopener noreferrer">Xavier Lacot</a>, a developer at <a href="https://redirection.io" target="_blank" rel="noopener noreferrer">redirection.io</a> and founder at <a href="https://jolicode.com" target="_blank" rel="noopener noreferrer">JoliCode</a>. He works primarily on Web and mobile projects as a consultant, trainer and technical expert.</em></p>
+<h3>What is redirection.io</h3>
+<p>Redirection.io is a Web traffic redirection manager. It provides a collection of tools for website administrators, SEO agencies, and developers, which help analyze HTTP errors, setup HTTP redirections, customize HTTP responses, and monitor the traffic efficiently.</p>
+<p>The main part of a traditional redirection.io setup is the proxy, a software component which parses every request to check if a redirection or another response override is required. This "proxy" can be of several types - we <a href="https://redirection.io/documentation/developer-documentation/integrations" target="_blank" rel="noopener noreferrer">provide libraries in several languages</a> - but this setup can be simplified for Cloudflare clients by taking advantage of Cloudflare Workers.</p>
+<h3>Here come Cloudflare Workers</h3>
+<p>Earlier this year, Cloudflare unveiled its <a href="https://www.cloudflare.com/fr-fr/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Workers</a> product, a smart way of running code <em>on the edge</em> of Cloudflare locations. This computing feature is particularly interesting, as it allows performing several traffic operations without requiring any change on your own platform, code, or infrastructure: just enable Workers, write some code, and let Cloudflare handle the magic ✨</p>
+<p>In practical terms, Workers act as application middleware. They proxy incoming HTTP requests to your stack, and can modify both requests and responses. Cloudflare has <a href="https://developers.cloudflare.com/workers/recipes" target="_blank" rel="noopener noreferrer">examples and code ideas</a> to help you build your own Worker.</p>
+<p>Here is a very basic Cloudflare Worker:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handleRequest</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handleRequest</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Got request'</span><span class="sk-24292e-fff">, request)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Got response'</span><span class="sk-24292e-fff">, response)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Luckily, redirection.io already has a public HTTP endpoint for exposing hosted agents (for shared hosting, for instance, where it is impossible to install your own binaries). Offering redirection.io to all Cloudflare Workers users is as simple as querying our hosted agent at each incoming request:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="664" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=715&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=640&amp;h=594&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=715&amp;h=664&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=750&amp;h=697&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=828&amp;h=769&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=1080&amp;h=1003&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=1280&amp;h=1189&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=1430&amp;h=1328&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Integration of redirection.io with Clourdflare Workers" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492QTRS1V9JCE560Y2KAVJ.png&amp;w=778&amp;h=723&amp;f=webp" data-lightbox-width="778" data-lightbox-height="723" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="664" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>In terms of code, the pattern we use is very similar to the Workers example: we listen on the incoming request:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, (</span><span class="sk-e36209-fff">event</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">redirectAndLog</span><span class="sk-24292e-fff">(event.request));</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> redirectAndLog</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> redirectOrPass</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    log</span><span class="sk-24292e-fff">(request, response);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Of course, we must implement the <code>redirectOrPass()</code> and <code>log()</code> functions, which will do all the magic:</p>
+<ul>
+	<li><code>redirectOrPass()</code> queries redirection.io's API to know if some action has to be run for the current request, and lets the request pass if necessary. This call is blocking; it will stop the request until a response is received from redirection.io's backend.</li>
+	<li><code>log()</code> sends out log data to our backend for analysis and statistics purpose. This call is non-blocking, as it can be executed even after the response has been sent to the user.</li>
+</ul>
+<p>Hence, both of these functions are defined as asynchronous non-blocking functions:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> redirectOrPass</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> log</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">response</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    ...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Let's go with the <code>redirectOrPass()</code> implementation! Using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="noopener noreferrer">fetch API</a>, we can call redirection.io's agent API:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> urlObject</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> context</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'host'</span><span class="sk-24292e-fff">: urlObject.host,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'request_uri'</span><span class="sk-24292e-fff">: urlObject.pathname,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'user_agent'</span><span class="sk-24292e-fff">: request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'user-agent'</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    'scheme'</span><span class="sk-24292e-fff">: urlObject.protocol.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-032f62-99ffe4"> 'https'</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-032f62-99ffe4"> 'http'</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">let</span><span class="sk-24292e-fff"> response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> null</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://proxy.redirection.io/'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> options.token </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> '/get'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">        method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">        body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(context),</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // if no action found, play the regular request</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Should our API respond with a <code>404</code> status (which means that no redirection or action rule is defined for a request of that type), we simply return the standard response from your website's backend - this is achieved with <code>return await fetch(request)</code></p>
+<p>If a redirection has to be run, redirection.io's API will send a status <code>200</code> response with all the information on how to transform the response. The payload could, for instance, look like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "status_code"</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">302</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "location"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"/blog-yo"</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>... and we can simply use it to change the response:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> data</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-fff"> JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">parse</span><span class="sk-24292e-fff">(data);</span></span>
+<span class="line"><span class="sk-24292e-fff">} </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // If some errors, play the regular request</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Send gone response</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">if</span><span class="sk-24292e-fff"> (response.status_code </span><span class="sk-d73a49-a0a0a0">===</span><span class="sk-005cc5-ffc799"> 410</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">, { status: </span><span class="sk-005cc5-ffc799">410</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Send redirection response</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">''</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    status: </span><span class="sk-6f42c1-ffc799">Number</span><span class="sk-24292e-fff">(response.status_code),</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'Location'</span><span class="sk-24292e-fff">: response.location</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>The <code>log()</code> function implementation is pretty similar:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> log</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">response</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> urlObject</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> context</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'status_code'</span><span class="sk-24292e-fff">: response.status,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'host'</span><span class="sk-24292e-fff">: urlObject.host,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'request_uri'</span><span class="sk-24292e-fff">: urlObject.pathname,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'user_agent'</span><span class="sk-24292e-fff">: request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'user-agent'</span><span class="sk-24292e-fff">),</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">        'scheme'</span><span class="sk-24292e-fff">: urlObject.protocol.</span><span class="sk-6f42c1-ffc799">includes</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https'</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">?</span><span class="sk-032f62-99ffe4"> 'https'</span><span class="sk-d73a49-a0a0a0"> :</span><span class="sk-032f62-99ffe4"> 'http'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    };</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    try</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://proxy.redirection.io/'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> options.token </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> '/log'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">            method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">            body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(context),</span></span>
+<span class="line"><span class="sk-24292e-fff">        });</span></span>
+<span class="line"><span class="sk-24292e-fff">    } </span><span class="sk-d73a49-a0a0a0">catch</span><span class="sk-24292e-fff"> (error) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        // do nothing, does not matter if some logs are lost</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h3>Impacts and performance concerns</h3>
+<p>Cloudflare's workers run <em>very fast</em>. And by "very fast", we mean in microseconds, with the ability for Cloudflare to execute "many thousands of Worker scripts per second" as stated in their documentation.</p>
+<p>The stack behind redirection.io is also very efficient, able to manage a similar level of traffic without any latency nor slowdown. However, there can be an occasional network slowdown, which could hurt the perceived performance of your web application. There are several ways to mitigate this possible impact.</p>
+<p>First, Cloudflare Workers support caching subrequests made with the Fetch API. This means that, if a URL of your application is often hit (for instance the homepage), you may want to cache the result from redirection.io's API. With this approach, the impact on the vast majority of your incoming requests will be close to zero.</p>
+<p>Another approach is possible, to define the maximum timing overhead using redirection.io will add: we can simply define a timeout to the <code>fetch()</code> calls made by our Service Worker! Just nest the <code>fetch()</code> call inside a <code>Promise.race()</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://proxy.redirection.io/'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> options.token </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> '/get'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(context),</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<p>becomes:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">race</span><span class="sk-24292e-fff">([</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'https://proxy.redirection.io/'</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> options.token </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> '/get'</span><span class="sk-24292e-fff">, {</span></span>
+<span class="line"><span class="sk-24292e-fff">    method: </span><span class="sk-032f62-99ffe4">'POST'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    body: </span><span class="sk-005cc5-fff">JSON</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">stringify</span><span class="sk-24292e-fff">(context),</span></span>
+<span class="line"><span class="sk-24292e-fff">  }),</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  new</span><span class="sk-005cc5-ffc799"> Promise</span><span class="sk-24292e-fff">((</span><span class="sk-e36209-fff">_</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">reject</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    setTimeout</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> reject</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Error</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'Timeout'</span><span class="sk-24292e-fff">)), options.timeout)</span></span>
+<span class="line"><span class="sk-24292e-fff">  ),</span></span>
+<span class="line"><span class="sk-24292e-fff">])</span></span></code></pre>
+</div>
+<p>When talking about performance, it is a good idea to provide some numbers for a valid comparison:</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Cloudflare enabled</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Workers enabled</p>
+				</th>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Request timing</p>
+				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>✅</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>❌</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>~32ms</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>✅</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>✅ (empty worker)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>~36ms</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>✅</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>✅ (redirection.io Worker with no cache)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>~44ms</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's API are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io" target="_blank" rel="noopener noreferrer">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> today, and report back!</p>
 </div>
+<p>This means that you can benefit from redirection.io on your website through Cloudflare workers at the price of ~8ms. And, once responses from redirection.io's API are cached, we do not notice any difference compared to a standard Cloudflare-enabled website. We strongly believe Cloudflare Workers is an amazing way to integrate redirection.io into your website. Try <a href="https://redirection.io" target="_blank" rel="noopener noreferrer">redirection.io</a> and <a href="https://www.cloudflare.com/products/cloudflare-workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> today, and report back!</p>

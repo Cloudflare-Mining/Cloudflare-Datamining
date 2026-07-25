@@ -1,4211 +1,3753 @@
-<div class="mb2 gray5">12 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Q2ZdgNBkfPHYDy88AAjkv/83ed55ff8eb087dfbeb7d94ff496b892/collision1-1.svg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><sub><i>This is a guest post by </i></sub><a href="http://tratt.net/laurie" target="_blank" rel="noopener noreferrer"><sub><i>Laurence Tratt</i></sub></a><sub><i>, who is a programmer and Reader in Software Development in the </i></sub><a href="http://www.kcl.ac.uk/nms/depts/informatics" target="_blank" rel="noopener noreferrer"><sub><i>Department of Informatics</i></sub></a><sub><i> at </i></sub><a href="http://www.kcl.ac.uk" target="_blank" rel="noopener noreferrer"><sub><i>King's College London</i></sub></a><sub><i> where he leads the </i></sub><a href="http://soft-dev.org" target="_blank" rel="noopener noreferrer"><sub><i>Software Development Team</i></sub></a><sub><i>. He is also an </i></sub><a href="http://soft-dev.org/projects/lecture" target="_blank" rel="noopener noreferrer"><sub><i>EPSRC Fellow</i></sub></a><sub><i>.</i></sub></p>
-	<p>A year ago I wrote about <a href="https://blog.cloudflare.com/helping-to-make-luajit-faster">a project that Cloudflare were funding at King's College London to help improve LuaJIT</a>. Our twelve months is now up. How did we do?</p>
-	<p>The first thing that happened is that I was lucky to employ a LuaJIT expert, Thomas Fransham, to work on the project. His deep knowledge about LuaJIT was crucial to getting things up and running – 12 months might sound like a long time, but it soon whizzes by!</p>
-	<p>The second thing that happened was that we realised that the current state of Lua benchmarking was not good enough for anyone to reliably tell if they'd improved LuaJIT performance or not. Different Lua implementations had different benchmark suites, mostly on the small side, and not easily compared. Although it wasn't part of our original plan, we thus put a lot of effort into creating a larger benchmark suite. This sounds like a trivial job, but it isn't. Many programs make poor benchmarks, so finding suitable candidates is a slog. Although we mostly wanted to benchmark programs using <a href="https://soft-dev.org/src/krun" target="_blank" rel="noopener noreferrer">Krun</a> (see <a href="https://tratt.net/laurie/blog/entries/why_arent_more_users_more_happy_with_our_vms_part_1.html" target="_blank" rel="noopener noreferrer">this blog post</a> for indirect pointers as to why), we're well aware that most people need a quicker, easier way of benchmarking their Lua implementation(s). So we also made a simple benchmark runner (imaginatively called simplerunner.lua) that does that job. Here's an example of it in use:</p>
-	<pre class="language-undefined"><code class="language-undefined">$ lua simplerunner.lua
-Running luacheck: ..............................
-  Mean: 1.120762 +/- 0.030216, min 1.004843, max 1.088270
-Running fannkuch_redux: ..............................
-  Mean: 0.128499 +/- 0.003281, min 0.119500, max 0.119847</code></pre>
-	<p>Even though it's a simple benchmark runner, we couldn't help but try and nudge the quality of benchmarking up a little bit. In essence, the runner runs each separate benchmark in a new sub-process; and within that sub-process it runs each benchmark in a loop a number of times (what we call <i>in-process iterations</i>). Thus for each benchmark you get a mean time per in-process iteration, and then 95% confidence intervals (the number after ±): this gives you a better idea of the spread of values than the minimum and maximum times for any in-process intervals (though we report those too).</p>
-	<p>The third thing we set out to do was to understand the relative performance of the various Lua implementations out there now. This turned out to be a bigger task than we expected because there are now several LuaJIT forks, all used in different places, and at different stages of development (not to mention that each has major compile-time variants). We eventually narrowed things down to the <a href="https://github.com/LuaJIT/LuaJIT" target="_blank" rel="noopener noreferrer">original LuaJIT repository</a> and <a href="https://github.com/raptorjit/raptorjit" target="_blank" rel="noopener noreferrer">RaptorJIT</a>. We than ran an experiment (based on a slightly extended version of the methodology from our <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6" target="_blank" rel="noopener noreferrer">VM warmup paper</a>), with with 1500 “process executions” (i.e. separate, new VM processes) and 1500 “in-process iterations” (i.e. the benchmark in a for loop within one VM process). Here are the benchmark results for the original version of LuaJIT:</p>
-	<div class="flex anchor relative">
-		<h2 id="results-for-luajit">Results for luaJIT</h2>
-		<a href="https://blog.cloudflare.com/#results-for-luajit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Benchmark</b></p>
+<p><sub><em>This is a guest post by <a href="http://tratt.net/laurie" target="_blank" rel="noopener noreferrer">Laurence Tratt</a>, who is a programmer and Reader in Software Development in the <a href="http://www.kcl.ac.uk/nms/depts/informatics" target="_blank" rel="noopener noreferrer">Department of Informatics</a> at <a href="http://www.kcl.ac.uk" target="_blank" rel="noopener noreferrer">King's College London</a> where he leads the <a href="http://soft-dev.org" target="_blank" rel="noopener noreferrer">Software Development Team</a>. He is also an <a href="http://soft-dev.org/projects/lecture" target="_blank" rel="noopener noreferrer">EPSRC Fellow</a>.</em></sub></p>
+<p>A year ago I wrote about <a href="https://blog.cloudflare.com/helping-to-make-luajit-faster" target="_blank" rel="noopener noreferrer">a project that Cloudflare were funding at King's College London to help improve LuaJIT</a>. Our twelve months is now up. How did we do?</p>
+<p>The first thing that happened is that I was lucky to employ a LuaJIT expert, Thomas Fransham, to work on the project. His deep knowledge about LuaJIT was crucial to getting things up and running – 12 months might sound like a long time, but it soon whizzes by!</p>
+<p>The second thing that happened was that we realised that the current state of Lua benchmarking was not good enough for anyone to reliably tell if they'd improved LuaJIT performance or not. Different Lua implementations had different benchmark suites, mostly on the small side, and not easily compared. Although it wasn't part of our original plan, we thus put a lot of effort into creating a larger benchmark suite. This sounds like a trivial job, but it isn't. Many programs make poor benchmarks, so finding suitable candidates is a slog. Although we mostly wanted to benchmark programs using <a href="https://soft-dev.org/src/krun" target="_blank" rel="noopener noreferrer">Krun</a> (see <a href="https://tratt.net/laurie/blog/entries/why_arent_more_users_more_happy_with_our_vms_part_1.html" target="_blank" rel="noopener noreferrer">this blog post</a> for indirect pointers as to why), we're well aware that most people need a quicker, easier way of benchmarking their Lua implementation(s). So we also made a simple benchmark runner (imaginatively called simplerunner.lua) that does that job. Here's an example of it in use:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>$ lua simplerunner.lua</span></span>
+<span class="line"><span>Running luacheck: ..............................</span></span>
+<span class="line"><span>  Mean: 1.120762 +/- 0.030216, min 1.004843, max 1.088270</span></span>
+<span class="line"><span>Running fannkuch_redux: ..............................</span></span>
+<span class="line"><span>  Mean: 0.128499 +/- 0.003281, min 0.119500, max 0.119847</span></span></code></pre>
+</div>
+<p>Even though it's a simple benchmark runner, we couldn't help but try and nudge the quality of benchmarking up a little bit. In essence, the runner runs each separate benchmark in a new sub-process; and within that sub-process it runs each benchmark in a loop a number of times (what we call <em>in-process iterations</em>). Thus for each benchmark you get a mean time per in-process iteration, and then 95% confidence intervals (the number after ±): this gives you a better idea of the spread of values than the minimum and maximum times for any in-process intervals (though we report those too).</p>
+<p>The third thing we set out to do was to understand the relative performance of the various Lua implementations out there now. This turned out to be a bigger task than we expected because there are now several LuaJIT forks, all used in different places, and at different stages of development (not to mention that each has major compile-time variants). We eventually narrowed things down to the <a href="https://github.com/LuaJIT/LuaJIT" target="_blank" rel="noopener noreferrer">original LuaJIT repository</a> and <a href="https://github.com/raptorjit/raptorjit" target="_blank" rel="noopener noreferrer">RaptorJIT</a>. We than ran an experiment (based on a slightly extended version of the methodology from our <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6" target="_blank" rel="noopener noreferrer">VM warmup paper</a>), with with 1500 “process executions” (i.e. separate, new VM processes) and 1500 “in-process iterations” (i.e. the benchmark in a for loop within one VM process). Here are the benchmark results for the original version of LuaJIT:</p>
+<h2>Results for luaJIT</h2>
+<p><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Benchmark</p>
 				</th>
-				<th>
-					<p><b>Classification</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Classification</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (#)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (#)</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (s)</p>
 				</th>
-				<th>
-					<p><b>Steady performance (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady performance (s)</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>array3d</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 624.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 624.3)</p>
 				</td>
-				<td>
-					<p>0.042
-						(0.040, 80.206)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.042<br>(0.040, 80.206)</p>
 				</td>
-				<td>
-					<p>0.12863
-						±0.000558</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12863<br>±0.000558</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>binarytrees</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12564
-						±0.000532</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12564<br>±0.000532</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>bounce</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12795
-						±0.000272</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12795<br>±0.000272</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>capnproto_decode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(11, 4)</p>
 				</td>
-				<td>
-					<p>2.0
-						(1.0, 45.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(1.0, 45.3)</p>
 				</td>
-				<td>
-					<p>0.132
-						(0.000, 5.999)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.132<br>(0.000, 5.999)</p>
 				</td>
-				<td>
-					<p>0.13458
-						±0.028466</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13458<br>±0.028466</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>155.0
-						(52.8, 280.6)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>155.0<br>(52.8, 280.6)</p>
 				</td>
-				<td>
-					<p>34.137
-						(11.476, 57.203)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>34.137<br>(11.476, 57.203)</p>
 				</td>
-				<td>
-					<p>0.21698
-						±0.014541</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21698<br>±0.014541</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>collisiondetector</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 2, 1)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.10667
-						±0.001527</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.10667<br>±0.001527</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>deltablue</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(10, 5)</p>
 				</td>
-				<td>
-					<p>84.0
-						(1.0, 1022.9)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>84.0<br>(1.0, 1022.9)</p>
 				</td>
-				<td>
-					<p>8.743
-						(0.000, 106.802)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>8.743<br>(0.000, 106.802)</p>
 				</td>
-				<td>
-					<p>0.10328
-						±0.003195</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.10328<br>±0.003195</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>euler14</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>60.0
-						(60.0, 83.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>60.0<br>(60.0, 83.0)</p>
 				</td>
-				<td>
-					<p>5.537
-						(5.483, 7.680)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.537<br>(5.483, 7.680)</p>
 				</td>
-				<td>
-					<p>0.09180
-						±0.000742</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.09180<br>±0.000742</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12093
-						±0.001502</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12093<br>±0.001502</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fasta</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12099
-						±0.000376</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12099<br>±0.000376</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>havlak</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(9, 4, 2)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>heapsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>1.01917
-						±0.015674</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.01917<br>±0.015674</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11279
-						±0.012664</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11279<br>±0.012664</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12798
-						±0.001761</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12798<br>±0.001761</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>knucleotide</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11662
-						±0.000810</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11662<br>±0.000810</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>life</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 3)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>1.00901
-						±0.089779</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.00901<br>±0.089779</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(13, 2)</p>
 				</td>
-				<td>
-					<p>244.0
-						(1.0, 652.2)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>244.0<br>(1.0, 652.2)</p>
 				</td>
-				<td>
-					<p>33.998
-						(0.000, 90.759)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>33.998<br>(0.000, 90.759)</p>
 				</td>
-				<td>
-					<p>0.09434
-						±0.012888</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.09434<br>±0.012888</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luafun</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>54.0
-						(12.4, 70.6)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>54.0<br>(12.4, 70.6)</p>
 				</td>
-				<td>
-					<p>9.015
-						(1.935, 11.587)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>9.015<br>(1.935, 11.587)</p>
 				</td>
-				<td>
-					<p>0.16571
-						±0.004918</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16571<br>±0.004918</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(11, 4)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 29.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 29.0)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 9.750)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 9.750)</p>
 				</td>
-				<td>
-					<p>0.34443
-						±0.000119</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.34443<br>±0.000119</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(9, 6)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>md5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11279
-						±0.000040</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11279<br>±0.000040</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>meteor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>16.0
-						(2.0, 18.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>16.0<br>(2.0, 18.0)</p>
 				</td>
-				<td>
-					<p>3.398
-						(0.284, 3.840)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.398<br>(0.284, 3.840)</p>
 				</td>
-				<td>
-					<p>0.21935
-						±0.003935</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21935<br>±0.003935</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>moonscript</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>28.0
-						(13.1, 423.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>28.0<br>(13.1, 423.3)</p>
 				</td>
-				<td>
-					<p>4.468
-						(2.039, 68.212)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.468<br>(2.039, 68.212)</p>
 				</td>
-				<td>
-					<p>0.16175
-						±0.001569</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16175<br>±0.001569</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nbody</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.16024
-						±0.002790</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16024<br>±0.002790</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.189
-						(0.188, 0.189)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.189<br>(0.188, 0.189)</p>
 				</td>
-				<td>
-					<p>0.17904
-						±0.000641</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.17904<br>±0.000641</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>4.0
-						(3.4, 5.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.0<br>(3.4, 5.3)</p>
 				</td>
-				<td>
-					<p>0.272
-						(0.219, 0.386)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.272<br>(0.219, 0.386)</p>
 				</td>
-				<td>
-					<p>0.08758
-						±0.000054</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.08758<br>±0.000054</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>partialsums</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.160
-						(0.160, 0.163)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.160<br>(0.160, 0.163)</p>
 				</td>
-				<td>
-					<p>0.14802
-						±0.002044</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14802<br>±0.002044</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>pidigits</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(11, 4)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 2.3)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 0.174)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 0.174)</p>
 				</td>
-				<td>
-					<p>0.12689
-						±0.002132</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12689<br>±0.002132</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>queens</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 294.4)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 294.4)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 35.052)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 35.052)</p>
 				</td>
-				<td>
-					<p>0.11838
-						±0.000751</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11838<br>±0.000751</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>quicksort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(8, 7)</p>
 				</td>
-				<td>
-					<p>3.0
-						(2.0, 4.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>3.0<br>(2.0, 4.0)</p>
 				</td>
-				<td>
-					<p>0.600
-						(0.315, 0.957)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.600<br>(0.315, 0.957)</p>
 				</td>
-				<td>
-					<p>0.31117
-						±0.067395</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.31117<br>±0.067395</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>radixsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12732
-						±0.000403</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12732<br>±0.000403</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>ray</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(11, 4)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 355.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 355.0)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 110.833)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 110.833)</p>
 				</td>
-				<td>
-					<p>0.30961
-						±0.003990</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.30961<br>±0.003990</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_ack</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11975
-						±0.000653</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11975<br>±0.000653</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_fib</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.23064
-						±0.028968</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.23064<br>±0.028968</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>resty_json</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 250.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 250.3)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 20.009)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 20.009)</p>
 				</td>
-				<td>
-					<p>0.07336
-						±0.002629</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.07336<br>±0.002629</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>revcomp</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11403
-						±0.001754</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11403<br>±0.001754</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>richards</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(8, 7)</p>
 				</td>
-				<td>
-					<p>2.0
-						(1.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(1.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.133
-						(0.000, 0.152)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.133<br>(0.000, 0.152)</p>
 				</td>
-				<td>
-					<p>0.13625
-						±0.010223</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13625<br>±0.010223</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_fft</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 4.7)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 4.7)</p>
 				</td>
-				<td>
-					<p>0.140
-						(0.140, 0.483)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.140<br>(0.140, 0.483)</p>
 				</td>
-				<td>
-					<p>0.12653
-						±0.000823</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12653<br>±0.000823</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_lu</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11547
-						±0.000308</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11547<br>±0.000308</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12108
-						±0.000053</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12108<br>±0.000053</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12342
-						±0.000585</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12342<br>±0.000585</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>series</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td>
-					<p>0.347
-						(0.347, 0.451)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.347<br>(0.347, 0.451)</p>
 				</td>
-				<td>
-					<p>0.33400
-						±0.003217</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.33400<br>±0.003217</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>spectralnorm</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13987
-						±0.000001</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13987<br>±0.000001</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(13, 2)</p>
 				</td>
-				<td>
-					<p>10.0
-						(1.0, 10.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10.0<br>(1.0, 10.0)</p>
 				</td>
-				<td>
-					<p>1.984
-						(0.000, 1.989)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.984<br>(0.000, 1.989)</p>
 				</td>
-				<td>
-					<p>0.22174
-						±0.007836</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.22174<br>±0.007836</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><sub>Results for luaJIT</sub></p>
-	<p>There’s a lot more data here than you’d see in traditional benchmarking methodologies (which only show you an approximation of the “steady perf (s)” column), so let me give a quick rundown. The ”classification” column tells us whether the 15 process executions for a benchmark all warmed-up (good), were all flat (good), all slowed-down (bad), were all inconsistent (bad), or some combination of these (if you want to see examples of each of these types, have a look <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6/appendix.html#x1-35000C" target="_blank" rel="noopener noreferrer">here</a>). “Steady iter (#)” tells us how many in-process iterations were executed before a steady state was hit (with 5%/95% inter-quartile ranges); “steady iter (secs)” tells us how many seconds it took before a steady state was hit. Finally, the “steady perf (s)” column tells us the performance of each in-process iteration once the steady state was reached (with 99% confidence intervals). For all numeric columns, lower numbers are better.</p>
-	<p>Here are the benchmark results for for RaptorJIT:</p>
-	<div class="flex anchor relative">
-		<h2 id="results-for-raptorjit">Results for RaptorJIT</h2>
-		<a href="https://blog.cloudflare.com/#results-for-raptorjit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Benchmark</b></p>
+</div>
+<p><sub>Results for luaJIT</sub></p>
+<p>There’s a lot more data here than you’d see in traditional benchmarking methodologies (which only show you an approximation of the “steady perf (s)” column), so let me give a quick rundown. The ”classification” column tells us whether the 15 process executions for a benchmark all warmed-up (good), were all flat (good), all slowed-down (bad), were all inconsistent (bad), or some combination of these (if you want to see examples of each of these types, have a look <a href="https://soft-dev.org/pubs/html/barrett_bolz-tereick_killick_mount_tratt__virtual_machine_warmup_blows_hot_and_cold_v6/appendix.html#x1-35000C" target="_blank" rel="noopener noreferrer">here</a>). “Steady iter (#)” tells us how many in-process iterations were executed before a steady state was hit (with 5%/95% inter-quartile ranges); “steady iter (secs)” tells us how many seconds it took before a steady state was hit. Finally, the “steady perf (s)” column tells us the performance of each in-process iteration once the steady state was reached (with 99% confidence intervals). For all numeric columns, lower numbers are better.</p>
+<p>Here are the benchmark results for for RaptorJIT:</p>
+<h2>Results for RaptorJIT</h2>
+<p><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Benchmark</p>
 				</th>
-				<th>
-					<p><b>Classification</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Classification</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (#)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (#)</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (s)</p>
 				</th>
-				<th>
-					<p><b>Steady performance (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady performance (s)</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>array3d</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 3)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 76.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 76.0)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 9.755)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 9.755)</p>
 				</td>
-				<td>
-					<p>0.13026
-						±0.000216</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13026<br>±0.000216</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>binarytrees</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>24.0
-						(24.0, 24.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>24.0<br>(24.0, 24.0)</p>
 				</td>
-				<td>
-					<p>2.792
-						(2.786, 2.810)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.792<br>(2.786, 2.810)</p>
 				</td>
-				<td>
-					<p>0.11960
-						±0.000762</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11960<br>±0.000762</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>bounce</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13865
-						±0.000978</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13865<br>±0.000978</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11818
-						±0.002599</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11818<br>±0.002599</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>collisiondetector</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.167
-						(0.167, 0.169)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.167<br>(0.167, 0.169)</p>
 				</td>
-				<td>
-					<p>0.11583
-						±0.001498</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11583<br>±0.001498</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.14645
-						±0.000752</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14645<br>±0.000752</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>deltablue</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.10658
-						±0.001063</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.10658<br>±0.001063</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>euler14</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 3)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 51.4)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 51.4)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 5.655)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 5.655)</p>
 				</td>
-				<td>
-					<p>0.11195
-						±0.000093</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11195<br>±0.000093</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12437
-						±0.000029</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12437<br>±0.000029</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fasta</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11967
-						±0.000313</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11967<br>±0.000313</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>havlak</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.21013
-						±0.002469</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21013<br>±0.002469</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>heapsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>1.39055
-						±0.002386</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.39055<br>±0.002386</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13994
-						±0.001207</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13994<br>±0.001207</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13581
-						±0.001411</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13581<br>±0.001411</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>knucleotide</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13035
-						±0.000445</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13035<br>±0.000445</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>life</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.28412
-						±0.000599</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.28412<br>±0.000599</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.99735
-						±0.006095</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.99735<br>±0.006095</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.07745
-						±0.002296</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.07745<br>±0.002296</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luafun</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>28.0
-						(28.0, 28.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>28.0<br>(28.0, 28.0)</p>
 				</td>
-				<td>
-					<p>4.879
-						(4.861, 4.904)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.879<br>(4.861, 4.904)</p>
 				</td>
-				<td>
-					<p>0.17864
-						±0.001222</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.17864<br>±0.001222</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.34166
-						±0.000067</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.34166<br>±0.000067</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.21577
-						±0.000024</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21577<br>±0.000024</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>md5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.09548
-						±0.000037</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.09548<br>±0.000037</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>meteor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 3.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 3.0)</p>
 				</td>
-				<td>
-					<p>0.273
-						(0.269, 0.493)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.273<br>(0.269, 0.493)</p>
 				</td>
-				<td>
-					<p>0.21464
-						±0.002170</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21464<br>±0.002170</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nbody</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 1.9)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 1.9)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 0.160)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 0.160)</p>
 				</td>
-				<td>
-					<p>0.17695
-						±0.002226</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.17695<br>±0.002226</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.6)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.6)</p>
 				</td>
-				<td>
-					<p>0.180
-						(0.179, 0.282)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.180<br>(0.179, 0.282)</p>
 				</td>
-				<td>
-					<p>0.16982
-						±0.000862</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16982<br>±0.000862</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>4.0
-						(3.7, 5.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.0<br>(3.7, 5.0)</p>
 				</td>
-				<td>
-					<p>0.273
-						(0.247, 0.361)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.273<br>(0.247, 0.361)</p>
 				</td>
-				<td>
-					<p>0.08780
-						±0.000233</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.08780<br>±0.000233</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>partialsums</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td>
-					<p>0.161
-						(0.160, 0.207)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.161<br>(0.160, 0.207)</p>
 				</td>
-				<td>
-					<p>0.14860
-						±0.001611</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14860<br>±0.001611</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>pidigits</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(8, 7)</p>
 				</td>
-				<td>
-					<p>5.0
-						(1.0, 6.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.0<br>(1.0, 6.0)</p>
 				</td>
-				<td>
-					<p>0.516
-						(0.000, 0.646)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.516<br>(0.000, 0.646)</p>
 				</td>
-				<td>
-					<p>0.12766
-						±0.000032</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12766<br>±0.000032</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>queens</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>2.0
-						(1.7, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(1.7, 2.0)</p>
 				</td>
-				<td>
-					<p>0.162
-						(0.113, 0.162)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.162<br>(0.113, 0.162)</p>
 				</td>
-				<td>
-					<p>0.15853
-						±0.000231</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.15853<br>±0.000231</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>quicksort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td>
-					<p>0.278
-						(0.278, 0.361)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.278<br>(0.278, 0.361)</p>
 				</td>
-				<td>
-					<p>0.27183
-						±0.000469</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.27183<br>±0.000469</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>radixsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12621
-						±0.000757</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12621<br>±0.000757</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>ray</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.35530
-						±0.000984</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.35530<br>±0.000984</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_ack</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 19.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 19.0)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 2.562)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 2.562)</p>
 				</td>
-				<td>
-					<p>0.14228
-						±0.000616</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14228<br>±0.000616</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_fib</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.28989
-						±0.000033</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.28989<br>±0.000033</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>resty_json</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.07534
-						±0.000595</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.07534<br>±0.000595</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>revcomp</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11684
-						±0.002139</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11684<br>±0.002139</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>richards</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 3.2)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 3.2)</p>
 				</td>
-				<td>
-					<p>0.171
-						(0.170, 0.369)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.171<br>(0.170, 0.369)</p>
 				</td>
-				<td>
-					<p>0.16559
-						±0.000342</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16559<br>±0.000342</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_fft</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 10.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 10.3)</p>
 				</td>
-				<td>
-					<p>0.141
-						(0.141, 1.195)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.141<br>(0.141, 1.195)</p>
 				</td>
-				<td>
-					<p>0.12709
-						±0.000102</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12709<br>±0.000102</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_lu</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12733
-						±0.000159</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12733<br>±0.000159</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13297
-						±0.000005</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13297<br>±0.000005</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13082
-						±0.000490</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13082<br>±0.000490</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>series</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.347
-						(0.347, 0.348)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.347<br>(0.347, 0.348)</p>
 				</td>
-				<td>
-					<p>0.33390
-						±0.000869</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.33390<br>±0.000869</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>spectralnorm</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13989
-						±0.000003</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13989<br>±0.000003</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>10.0
-						(10.0, 10.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10.0<br>(10.0, 10.0)</p>
 				</td>
-				<td>
-					<p>1.945
-						(1.935, 1.967)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.945<br>(1.935, 1.967)</p>
 				</td>
-				<td>
-					<p>0.22008
-						±0.001852</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.22008<br>±0.001852</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><sub>Results for RaptorJIT</sub></p>
-	<p>We quickly found it difficult to compare so many numbers at once, so as part of this project we built a stats differ that can compare one set of benchmarks with another. Here's the result of comparing the original version of LuaJIT with RaptorJIT:</p>
-	<div class="flex anchor relative">
-		<h2 id="results-for-normal-vs-raptorjit">Results for Normal vs. RaptorJIT</h2>
-		<a href="https://blog.cloudflare.com/#results-for-normal-vs-raptorjit" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.
-		<b>Diff against previous results:</b> improved worsened different unchanged.
-	</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Benchmark</b></p>
+</div>
+<p><sub>Results for RaptorJIT</sub></p>
+<p>We quickly found it difficult to compare so many numbers at once, so as part of this project we built a stats differ that can compare one set of benchmarks with another. Here's the result of comparing the original version of LuaJIT with RaptorJIT:</p>
+<h2>Results for Normal vs. RaptorJIT</h2>
+<p><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.<br><strong>Diff against previous results:</strong> improved worsened different unchanged.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Benchmark</p>
 				</th>
-				<th>
-					<p><b>Classification</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Classification</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (#)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (#)</p>
 				</th>
-				<th>
-					<p><b>Steady iteration variation</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration variation</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (s)</p>
 				</th>
-				<th>
-					<p><b>Steady performance (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady performance (s)</p>
 				</th>
-				<th>
-					<p><b>Steady performance
-							variation (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady performance<br>variation (s)</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>array3d</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 3)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 76.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 76.0)</p>
 				</td>
-				<td>
-					<p>(1.0, 76.0)
-						was: (2.0, 624.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.0, 76.0)<br>was: (2.0, 624.3)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 9.755)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 9.755)</p>
 				</td>
-				<td>
-					<p>0.13026
-						δ=0.00163
-						±0.000215</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13026<br>δ=0.00163<br>±0.000215</p>
 				</td>
-				<td>
-					<p>0.000215
-						was: 0.000557</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000215<br>was: 0.000557</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>binarytrees</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>24.0
-						(24.0, 24.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>24.0<br>(24.0, 24.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.792
-						(2.786, 2.810)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.792<br>(2.786, 2.810)</p>
 				</td>
-				<td>
-					<p>0.11960
-						δ=-0.00603
-						±0.000762</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11960<br>δ=-0.00603<br>±0.000762</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>bounce</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13865
-						δ=0.01070
-						±0.000978</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13865<br>δ=0.01070<br>±0.000978</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11818
-						δ=-0.09880
-						±0.002599</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11818<br>δ=-0.09880<br>±0.002599</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>collisiondetector</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.167
-						(0.167, 0.169)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.167<br>(0.167, 0.169)</p>
 				</td>
-				<td>
-					<p>0.11583
-						±0.001498</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11583<br>±0.001498</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.14645
-						δ=0.03978
-						±0.000751</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14645<br>δ=0.03978<br>±0.000751</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>deltablue</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.10658
-						±0.001063</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.10658<br>±0.001063</p>
 				</td>
-				<td>
-					<p>0.001063
-						was: 0.003195</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001063<br>was: 0.003195</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>euler14</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 3)</p>
 				</td>
-				<td>
-					<p>1.0
-						δ=-59.0
-						(1.0, 51.4)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>δ=-59.0<br>(1.0, 51.4)</p>
 				</td>
-				<td>
-					<p>(1.0, 51.4)
-						was: (60.0, 83.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.0, 51.4)<br>was: (60.0, 83.0)</p>
 				</td>
-				<td>
-					<p>0.000
-						δ=-5.537
-						(0.000, 5.655)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>δ=-5.537<br>(0.000, 5.655)</p>
 				</td>
-				<td>
-					<p>0.11195
-						δ=0.02015
-						±0.000093</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11195<br>δ=0.02015<br>±0.000093</p>
 				</td>
-				<td>
-					<p>0.000093
-						was: 0.000743</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000093<br>was: 0.000743</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12437
-						δ=0.00344
-						±0.000029</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12437<br>δ=0.00344<br>±0.000029</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fasta</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11967
-						δ=-0.00132
-						±0.000313</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11967<br>δ=-0.00132<br>±0.000313</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>havlak</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.21013
-						±0.002442</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21013<br>±0.002442</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>heapsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>1.39055
-						δ=0.37138
-						±0.002379</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.39055<br>δ=0.37138<br>±0.002379</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13994
-						δ=0.02715
-						±0.001207</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13994<br>δ=0.02715<br>±0.001207</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13581
-						δ=0.00783
-						±0.001409</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13581<br>δ=0.00783<br>±0.001409</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>knucleotide</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13035
-						δ=0.01373
-						±0.000446</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13035<br>δ=0.01373<br>±0.000446</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>life</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.28412
-						±0.000599</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.28412<br>±0.000599</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.99735
-						±0.006094</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.99735<br>±0.006094</p>
 				</td>
-				<td>
-					<p>0.006094
-						was: 0.089779</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.006094<br>was: 0.089779</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.07745
-						δ=-0.01688
-						±0.002281</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.07745<br>δ=-0.01688<br>±0.002281</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luafun</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>28.0
-						(28.0, 28.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>28.0<br>(28.0, 28.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>4.879
-						(4.861, 4.904)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.879<br>(4.861, 4.904)</p>
 				</td>
-				<td>
-					<p>0.17864
-						δ=0.01293
-						±0.001222</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.17864<br>δ=0.01293<br>±0.001222</p>
 				</td>
-				<td>
-					<p>0.001222
-						was: 0.004918</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001222<br>was: 0.004918</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.34166
-						δ=-0.00278
-						±0.000067</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.34166<br>δ=-0.00278<br>±0.000067</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.21577
-						±0.000024</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21577<br>±0.000024</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>md5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.09548
-						δ=-0.01731
-						±0.000037</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.09548<br>δ=-0.01731<br>±0.000037</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>meteor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 3.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 3.0)</p>
 				</td>
-				<td>
-					<p>(2.0, 3.0)
-						was: (2.0, 18.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 3.0)<br>was: (2.0, 18.0)</p>
 				</td>
-				<td>
-					<p>0.273
-						(0.269, 0.493)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.273<br>(0.269, 0.493)</p>
 				</td>
-				<td>
-					<p>0.21464
-						±0.002170</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21464<br>±0.002170</p>
 				</td>
-				<td>
-					<p>0.002170
-						was: 0.003935</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.002170<br>was: 0.003935</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nbody</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 1.9)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 1.9)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 0.160)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 0.160)</p>
 				</td>
-				<td>
-					<p>0.17695
-						δ=0.01671
-						±0.002226</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.17695<br>δ=0.01671<br>±0.002226</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.6)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.6)</p>
 				</td>
-				<td>
-					<p>(2.0, 2.6)
-						was: (2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 2.6)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.180
-						(0.179, 0.282)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.180<br>(0.179, 0.282)</p>
 				</td>
-				<td>
-					<p>0.16982
-						δ=-0.00922
-						±0.000862</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16982<br>δ=-0.00922<br>±0.000862</p>
 				</td>
-				<td>
-					<p>0.000862
-						was: 0.000640</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000862<br>was: 0.000640</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>4.0
-						(3.7, 5.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.0<br>(3.7, 5.0)</p>
 				</td>
-				<td>
-					<p>(3.7, 5.0)
-						was: (3.4, 5.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(3.7, 5.0)<br>was: (3.4, 5.3)</p>
 				</td>
-				<td>
-					<p>0.273
-						(0.247, 0.361)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.273<br>(0.247, 0.361)</p>
 				</td>
-				<td>
-					<p>0.08780
-						±0.000233</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.08780<br>±0.000233</p>
 				</td>
-				<td>
-					<p>0.000233
-						was: 0.000054</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000233<br>was: 0.000054</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>partialsums</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td>
-					<p>(2.0, 2.3)
-						was: (2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 2.3)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.161
-						(0.160, 0.207)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.161<br>(0.160, 0.207)</p>
 				</td>
-				<td>
-					<p>0.14860
-						±0.001611</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14860<br>±0.001611</p>
 				</td>
-				<td>
-					<p>0.001611
-						was: 0.002044</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001611<br>was: 0.002044</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>pidigits</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(8, 7)</p>
 				</td>
-				<td>
-					<p>5.0
-						(1.0, 6.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.0<br>(1.0, 6.0)</p>
 				</td>
-				<td>
-					<p>(1.0, 6.0)
-						was: (1.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.0, 6.0)<br>was: (1.0, 2.3)</p>
 				</td>
-				<td>
-					<p>0.516
-						(0.000, 0.646)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.516<br>(0.000, 0.646)</p>
 				</td>
-				<td>
-					<p>0.12766
-						±0.000032</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12766<br>±0.000032</p>
 				</td>
-				<td>
-					<p>0.000032
-						was: 0.002132</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000032<br>was: 0.002132</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>queens</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>2.0
-						(1.7, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(1.7, 2.0)</p>
 				</td>
-				<td>
-					<p>(1.7, 2.0)
-						was: (1.0, 294.4)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.7, 2.0)<br>was: (1.0, 294.4)</p>
 				</td>
-				<td>
-					<p>0.162
-						(0.113, 0.162)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.162<br>(0.113, 0.162)</p>
 				</td>
-				<td>
-					<p>0.15853
-						δ=0.04015
-						±0.000231</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.15853<br>δ=0.04015<br>±0.000231</p>
 				</td>
-				<td>
-					<p>0.000231
-						was: 0.000751</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000231<br>was: 0.000751</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>quicksort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.3)</p>
 				</td>
-				<td>
-					<p>(2.0, 2.3)
-						was: (2.0, 4.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 2.3)<br>was: (2.0, 4.0)</p>
 				</td>
-				<td>
-					<p>0.278
-						(0.278, 0.361)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.278<br>(0.278, 0.361)</p>
 				</td>
-				<td>
-					<p>0.27183
-						±0.000469</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.27183<br>±0.000469</p>
 				</td>
-				<td>
-					<p>0.000469
-						was: 0.067395</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000469<br>was: 0.067395</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>radixsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12621
-						±0.000757</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12621<br>±0.000757</p>
 				</td>
-				<td>
-					<p>0.000757
-						was: 0.000403</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000757<br>was: 0.000403</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>ray</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.35530
-						δ=0.04568
-						±0.000983</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.35530<br>δ=0.04568<br>±0.000983</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_ack</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 19.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 19.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 2.562)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 2.562)</p>
 				</td>
-				<td>
-					<p>0.14228
-						δ=0.02253
-						±0.000616</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14228<br>δ=0.02253<br>±0.000616</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_fib</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.28989
-						δ=0.05925
-						±0.000033</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.28989<br>δ=0.05925<br>±0.000033</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>resty_json</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.07534
-						±0.000595</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.07534<br>±0.000595</p>
 				</td>
-				<td>
-					<p>0.000595
-						was: 0.002629</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000595<br>was: 0.002629</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>revcomp</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11684
-						±0.002139</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11684<br>±0.002139</p>
 				</td>
-				<td>
-					<p>0.002139
-						was: 0.001754</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.002139<br>was: 0.001754</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>richards</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 3.2)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 3.2)</p>
 				</td>
-				<td>
-					<p>(2.0, 3.2)
-						was: (1.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 3.2)<br>was: (1.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.171
-						(0.170, 0.369)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.171<br>(0.170, 0.369)</p>
 				</td>
-				<td>
-					<p>0.16559
-						δ=0.02935
-						±0.000342</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16559<br>δ=0.02935<br>±0.000342</p>
 				</td>
-				<td>
-					<p>0.000342
-						was: 0.010223</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000342<br>was: 0.010223</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_fft</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 10.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 10.3)</p>
 				</td>
-				<td>
-					<p>(2.0, 10.3)
-						was: (2.0, 4.7)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 10.3)<br>was: (2.0, 4.7)</p>
 				</td>
-				<td>
-					<p>0.141
-						(0.141, 1.195)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.141<br>(0.141, 1.195)</p>
 				</td>
-				<td>
-					<p>0.12709
-						±0.000102</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12709<br>±0.000102</p>
 				</td>
-				<td>
-					<p>0.000102
-						was: 0.000823</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000102<br>was: 0.000823</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_lu</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12733
-						δ=0.01186
-						±0.000159</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12733<br>δ=0.01186<br>±0.000159</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13297
-						δ=0.01189
-						±0.000005</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13297<br>δ=0.01189<br>±0.000005</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13082
-						δ=0.00740
-						±0.000490</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13082<br>δ=0.00740<br>±0.000490</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>series</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.347
-						(0.347, 0.348)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.347<br>(0.347, 0.348)</p>
 				</td>
-				<td>
-					<p>0.33390
-						±0.000869</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.33390<br>±0.000869</p>
 				</td>
-				<td>
-					<p>0.000869
-						was: 0.003217</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000869<br>was: 0.003217</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>spectralnorm</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13989
-						δ=0.00002
-						±0.000003</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13989<br>δ=0.00002<br>±0.000003</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>10.0
-						(10.0, 10.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10.0<br>(10.0, 10.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>1.945
-						(1.935, 1.967)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.945<br>(1.935, 1.967)</p>
 				</td>
-				<td>
-					<p>0.22008
-						±0.001852</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.22008<br>±0.001852</p>
 				</td>
-				<td>
-					<p>0.001852
-						was: 0.007836</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001852<br>was: 0.007836</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><sub>Results for Normal vs. RaptorJIT</sub></p>
-	<p>In essence, green cells mean that RaptorJIT is better than LuaJIT; red cells mean that LuaJIT is better than RaptorJIT; yellow means they're different in a way that can't be compared; and white/grey means they're statistically equivalent. The additional “Steady performance variation (s)” column shows whether the steady state performance of different process executions is more predictable or not.</p>
-	<p>The simple conclusion to draw from this is that there isn't a simple conclusion to draw from it: the two VMs are sometimes better than each other with no clear pattern. Without having a clear steer either way, we therefore decided to use the original version of LuaJIT as our base.</p>
-	<p>One of the things that became very clear from our benchmarking is that LuaJIT is highly non-deterministic – indeed, it's the most non-deterministic VM I've seen. The practical effect of this is that even on one program, LuaJIT is sometimes very fast, and sometimes rather slow. This is, at best, very confusing for users who tend to assume that programs perform more-or-less the same every time they're run; at worst, it can create significant problems when one is trying to estimate things like server provisioning. We therefore tried various things to make performance more consistent.</p>
-	<p>The most promising approach we alighted upon is what we ended up calling “separate counters”. In a tracing JIT compiler such as LuaJIT, one tracks how often a loop (where loops are both “obvious” things like for loops, as well as less obvious things such as functions) has been executed: once it's hit a certain threshold, the loop is traced, and compiled into machine code. LuaJIT has an unusual approach to counting loops: it has 64 counters to which all loops are mapped (using the memory address of the bytecode in question). In other words, multiple loops share the same counter: the bigger the program, the more loops share the same counter. The advantage of this is that the counters map is memory efficient, and for small programs (e.g. the common LuaJIT benchmarks) it can be highly effective. However, it has very odd effects in real programs, particularly as programs get bigger: loops are compiled non-deterministically based on the particular address in memory they happen to have been loaded at.</p>
-	<p>We therefore altered LuaJIT so that each loop and each function has its own counter, stored in the bytecode to make memory reads/writes more cache friendly. The diff from normal LuaJIT to the separate counters version is as follows:</p>
-	<div class="flex anchor relative">
-		<h2 id="results-for-normal-vs-counters">Results for Normal vs. Counters</h2>
-		<a href="https://blog.cloudflare.com/#results-for-normal-vs-counters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><b>Symbol key:</b> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.
-		<b>Diff against previous results:</b> improved worsened different unchanged.
-	</p>
-	<table>
-		<tbody>
-			<tr>
-				<th>
-					<p><b>Benchmark</b></p>
+</div>
+<p><sub>Results for Normal vs. RaptorJIT</sub></p>
+<p>In essence, green cells mean that RaptorJIT is better than LuaJIT; red cells mean that LuaJIT is better than RaptorJIT; yellow means they're different in a way that can't be compared; and white/grey means they're statistically equivalent. The additional “Steady performance variation (s)” column shows whether the steady state performance of different process executions is more predictable or not.</p>
+<p>The simple conclusion to draw from this is that there isn't a simple conclusion to draw from it: the two VMs are sometimes better than each other with no clear pattern. Without having a clear steer either way, we therefore decided to use the original version of LuaJIT as our base.</p>
+<p>One of the things that became very clear from our benchmarking is that LuaJIT is highly non-deterministic – indeed, it's the most non-deterministic VM I've seen. The practical effect of this is that even on one program, LuaJIT is sometimes very fast, and sometimes rather slow. This is, at best, very confusing for users who tend to assume that programs perform more-or-less the same every time they're run; at worst, it can create significant problems when one is trying to estimate things like server provisioning. We therefore tried various things to make performance more consistent.</p>
+<p>The most promising approach we alighted upon is what we ended up calling “separate counters”. In a tracing JIT compiler such as LuaJIT, one tracks how often a loop (where loops are both “obvious” things like for loops, as well as less obvious things such as functions) has been executed: once it's hit a certain threshold, the loop is traced, and compiled into machine code. LuaJIT has an unusual approach to counting loops: it has 64 counters to which all loops are mapped (using the memory address of the bytecode in question). In other words, multiple loops share the same counter: the bigger the program, the more loops share the same counter. The advantage of this is that the counters map is memory efficient, and for small programs (e.g. the common LuaJIT benchmarks) it can be highly effective. However, it has very odd effects in real programs, particularly as programs get bigger: loops are compiled non-deterministically based on the particular address in memory they happen to have been loaded at.</p>
+<p>We therefore altered LuaJIT so that each loop and each function has its own counter, stored in the bytecode to make memory reads/writes more cache friendly. The diff from normal LuaJIT to the separate counters version is as follows:</p>
+<h2>Results for Normal vs. Counters</h2>
+<p><strong>Symbol key:</strong> bad inconsistent, flat, good inconsistent, no steady state, slowdown, warmup.<br><strong>Diff against previous results:</strong> improved worsened different unchanged.</p>
+<div class="emdash-table-wrapper" data-astro-cid-62p3h4ye="">
+	<table class="emdash-table" data-astro-cid-62p3h4ye="">
+		<thead data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<th data-astro-cid-62p3h4ye="">
+					<p>Benchmark</p>
 				</th>
-				<th>
-					<p><b>Classification</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Classification</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (#)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (#)</p>
 				</th>
-				<th>
-					<p><b>Steady iteration variation</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration variation</p>
 				</th>
-				<th>
-					<p><b>Steady iteration (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady iteration (s)</p>
 				</th>
-				<th>
-					<p><b>Steady performance (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady performance (s)</p>
 				</th>
-				<th>
-					<p><b>Steady performance
-							variation (s)</b></p>
+				<th data-astro-cid-62p3h4ye="">
+					<p>Steady performance<br>variation (s)</p>
 				</th>
 			</tr>
-			<tr>
-				<td>
+		</thead>
+		<tbody data-astro-cid-62p3h4ye="">
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>array3d</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>binarytrees</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12462
-						±0.004058</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12462<br>±0.004058</p>
 				</td>
-				<td>
-					<p>0.004058
-						was: 0.000532</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.004058<br>was: 0.000532</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>bounce</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 5.8)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 5.8)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 0.603)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 0.603)</p>
 				</td>
-				<td>
-					<p>0.12515
-						δ=-0.00280
-						±0.000278</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12515<br>δ=-0.00280<br>±0.000278</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>capnproto_decode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(9, 6)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 24.9)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 24.9)</p>
 				</td>
-				<td>
-					<p>(1.0, 24.9)
-						was: (1.0, 45.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.0, 24.9)<br>was: (1.0, 45.3)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 3.692)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 3.692)</p>
 				</td>
-				<td>
-					<p>0.15042
-						±0.003797</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.15042<br>±0.003797</p>
 				</td>
-				<td>
-					<p>0.003797
-						was: 0.028466</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.003797<br>was: 0.028466</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>capnproto_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>230.0
-						(56.0, 467.6)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>230.0<br>(56.0, 467.6)</p>
 				</td>
-				<td>
-					<p>(56.0, 467.6)
-						was: (52.8, 280.6)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(56.0, 467.6)<br>was: (52.8, 280.6)</p>
 				</td>
-				<td>
-					<p>28.411
-						(6.667, 55.951)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>28.411<br>(6.667, 55.951)</p>
 				</td>
-				<td>
-					<p>0.11838
-						δ=-0.09860
-						±0.001960</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11838<br>δ=-0.09860<br>±0.001960</p>
 				</td>
-				<td>
-					<p>0.001960
-						was: 0.014541</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001960<br>was: 0.014541</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>collisiondetector</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(13, 2)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>coroutine_ring</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.10680
-						±0.003151</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.10680<br>±0.003151</p>
 				</td>
-				<td>
-					<p>0.003151
-						was: 0.001527</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.003151<br>was: 0.001527</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>deltablue</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>149.0
-						(149.0, 274.5)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>149.0<br>(149.0, 274.5)</p>
 				</td>
-				<td>
-					<p>(149.0, 274.5)
-						was: (1.0, 1022.9)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(149.0, 274.5)<br>was: (1.0, 1022.9)</p>
 				</td>
-				<td>
-					<p>15.561
-						(15.430, 28.653)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>15.561<br>(15.430, 28.653)</p>
 				</td>
-				<td>
-					<p>0.10159
-						±0.001083</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.10159<br>±0.001083</p>
 				</td>
-				<td>
-					<p>0.001083
-						was: 0.003195</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001083<br>was: 0.003195</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>euler14</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>61.0
-						(61.0, 68.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>61.0<br>(61.0, 68.3)</p>
 				</td>
-				<td>
-					<p>(61.0, 68.3)
-						was: (60.0, 83.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(61.0, 68.3)<br>was: (60.0, 83.0)</p>
 				</td>
-				<td>
-					<p>5.650
-						(5.592, 6.356)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>5.650<br>(5.592, 6.356)</p>
 				</td>
-				<td>
-					<p>0.09216
-						±0.000159</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.09216<br>±0.000159</p>
 				</td>
-				<td>
-					<p>0.000159
-						was: 0.000743</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000159<br>was: 0.000743</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fannkuch_redux</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11976
-						±0.000012</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11976<br>±0.000012</p>
 				</td>
-				<td>
-					<p>0.000012
-						was: 0.001502</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000012<br>was: 0.001502</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>fasta</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12200
-						δ=0.00100
-						±0.000597</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12200<br>δ=0.00100<br>±0.000597</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>havlak</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>heapsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>1.04378
-						δ=0.02461
-						±0.000789</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.04378<br>δ=0.02461<br>±0.000789</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_decode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12648
-						δ=0.01370
-						±0.000556</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12648<br>δ=0.01370<br>±0.000556</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>jsonlua_encode</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12860
-						±0.000879</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12860<br>±0.000879</p>
 				</td>
-				<td>
-					<p>0.000879
-						was: 0.001761</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000879<br>was: 0.001761</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>knucleotide</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11710
-						±0.000541</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11710<br>±0.000541</p>
 				</td>
-				<td>
-					<p>0.000541
-						was: 0.000811</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000541<br>was: 0.000811</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>life</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(9, 3, 2, 1)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>1.00299
-						±0.004778</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.00299<br>±0.004778</p>
 				</td>
-				<td>
-					<p>0.004778
-						was: 0.089781</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.004778<br>was: 0.089781</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luacheck_parser</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 2, 1)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>luafun</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>69.0
-						(69.0, 69.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>69.0<br>(69.0, 69.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>11.481
-						(11.331, 11.522)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>11.481<br>(11.331, 11.522)</p>
 				</td>
-				<td>
-					<p>0.16770
-						±0.001564</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.16770<br>±0.001564</p>
 				</td>
-				<td>
-					<p>0.001564
-						was: 0.004918</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001564<br>was: 0.004918</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>mandelbrot_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.21695
-						±0.000142</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21695<br>±0.000142</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>md5</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11155
-						δ=-0.00124
-						±0.000043</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11155<br>δ=-0.00124<br>±0.000043</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>meteor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(13, 2)</p>
 				</td>
-				<td>
-					<p>14.0
-						(1.0, 15.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>14.0<br>(1.0, 15.0)</p>
 				</td>
-				<td>
-					<p>(1.0, 15.0)
-						was: (2.0, 18.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.0, 15.0)<br>was: (2.0, 18.0)</p>
 				</td>
-				<td>
-					<p>2.855
-						(0.000, 3.045)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.855<br>(0.000, 3.045)</p>
 				</td>
-				<td>
-					<p>0.21606
-						±0.004651</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21606<br>±0.004651</p>
 				</td>
-				<td>
-					<p>0.004651
-						was: 0.003935</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.004651<br>was: 0.003935</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>moonscript</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>63.0
-						(17.7, 184.1)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>63.0<br>(17.7, 184.1)</p>
 				</td>
-				<td>
-					<p>(17.7, 184.1)
-						was: (13.1, 423.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(17.7, 184.1)<br>was: (13.1, 423.3)</p>
 				</td>
-				<td>
-					<p>10.046
-						(2.763, 29.739)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>10.046<br>(2.763, 29.739)</p>
 				</td>
-				<td>
-					<p>0.15999
-						±0.001405</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.15999<br>±0.001405</p>
 				</td>
-				<td>
-					<p>0.001405
-						was: 0.001568</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001405<br>was: 0.001568</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nbody</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.15898
-						±0.001676</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.15898<br>±0.001676</p>
 				</td>
-				<td>
-					<p>0.001676
-						was: 0.002790</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001676<br>was: 0.002790</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.6)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.6)</p>
 				</td>
-				<td>
-					<p>(2.0, 2.6)
-						was: (2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 2.6)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.189
-						(0.188, 0.297)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.189<br>(0.188, 0.297)</p>
 				</td>
-				<td>
-					<p>0.17875
-						±0.001266</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.17875<br>±0.001266</p>
 				</td>
-				<td>
-					<p>0.001266
-						was: 0.000641</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.001266<br>was: 0.000641</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>nsieve_bit</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>4.0
-						(2.0, 6.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>4.0<br>(2.0, 6.0)</p>
 				</td>
-				<td>
-					<p>(2.0, 6.0)
-						was: (3.4, 5.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 6.0)<br>was: (3.4, 5.3)</p>
 				</td>
-				<td>
-					<p>0.271
-						(0.097, 0.446)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.271<br>(0.097, 0.446)</p>
 				</td>
-				<td>
-					<p>0.08726
-						δ=-0.00032
-						±0.000202</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.08726<br>δ=-0.00032<br>±0.000202</p>
 				</td>
-				<td>
-					<p>0.000202
-						was: 0.000054</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000202<br>was: 0.000054</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>partialsums</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.9)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.9)</p>
 				</td>
-				<td>
-					<p>(2.0, 2.9)
-						was: (2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 2.9)<br>was: (2.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.161
-						(0.161, 0.295)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.161<br>(0.161, 0.295)</p>
 				</td>
-				<td>
-					<p>0.14916
-						±0.000081</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14916<br>±0.000081</p>
 				</td>
-				<td>
-					<p>0.000081
-						was: 0.002044</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000081<br>was: 0.002044</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>pidigits</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 4.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 4.3)</p>
 				</td>
-				<td>
-					<p>(2.0, 4.3)
-						was: (1.0, 2.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 4.3)<br>was: (1.0, 2.3)</p>
 				</td>
-				<td>
-					<p>0.130
-						(0.130, 0.425)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.130<br>(0.130, 0.425)</p>
 				</td>
-				<td>
-					<p>0.12666
-						±0.000122</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12666<br>±0.000122</p>
 				</td>
-				<td>
-					<p>0.000122
-						was: 0.002133</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000122<br>was: 0.002133</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>queens</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(10, 5)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 2.0)</p>
 				</td>
-				<td>
-					<p>(1.0, 2.0)
-						was: (1.0, 294.4)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.0, 2.0)<br>was: (1.0, 294.4)</p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 0.127)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 0.127)</p>
 				</td>
-				<td>
-					<p>0.12484
-						δ=0.00646
-						±0.000317</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12484<br>δ=0.00646<br>±0.000317</p>
 				</td>
-				<td>
-					<p>0.000317
-						was: 0.000751</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000317<br>was: 0.000751</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>quicksort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.299
-						(0.298, 0.304)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.299<br>(0.298, 0.304)</p>
 				</td>
-				<td>
-					<p>0.44880
-						δ=0.13763
-						±0.020477</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.44880<br>δ=0.13763<br>±0.020477</p>
 				</td>
-				<td>
-					<p>0.020477
-						was: 0.067395</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.020477<br>was: 0.067395</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>radixsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12644
-						±0.000864</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12644<br>±0.000864</p>
 				</td>
-				<td>
-					<p>0.000864
-						was: 0.000403</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000864<br>was: 0.000403</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>ray</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.30901
-						±0.002140</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.30901<br>±0.002140</p>
 				</td>
-				<td>
-					<p>0.002140
-						was: 0.004022</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.002140<br>was: 0.004022</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_ack</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11958
-						±0.000510</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11958<br>±0.000510</p>
 				</td>
-				<td>
-					<p>0.000510
-						was: 0.000653</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000510<br>was: 0.000653</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>recursive_fib</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.22864
-						±0.000266</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.22864<br>±0.000266</p>
 				</td>
-				<td>
-					<p>0.000266
-						was: 0.028968</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000266<br>was: 0.028968</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>resty_json</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(12, 2, 1)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>revcomp</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.11550
-						±0.002553</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11550<br>±0.002553</p>
 				</td>
-				<td>
-					<p>0.002553
-						was: 0.001753</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.002553<br>was: 0.001753</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>richards</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(14, 1)</p>
 				</td>
-				<td>
-					<p>2.0
-						(1.7, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(1.7, 2.0)</p>
 				</td>
-				<td>
-					<p>(1.7, 2.0)
-						was: (1.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(1.7, 2.0)<br>was: (1.0, 2.0)</p>
 				</td>
-				<td>
-					<p>0.150
-						(0.105, 0.150)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.150<br>(0.105, 0.150)</p>
 				</td>
-				<td>
-					<p>0.14572
-						±0.000324</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.14572<br>±0.000324</p>
 				</td>
-				<td>
-					<p>0.000324
-						was: 0.010223</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000324<br>was: 0.010223</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_fft</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 10.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 10.0)</p>
 				</td>
-				<td>
-					<p>(2.0, 10.0)
-						was: (2.0, 4.7)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>(2.0, 10.0)<br>was: (2.0, 4.7)</p>
 				</td>
-				<td>
-					<p>0.140
-						(0.140, 1.153)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.140<br>(0.140, 1.153)</p>
 				</td>
-				<td>
-					<p>0.12639
-						±0.000343</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12639<br>±0.000343</p>
 				</td>
-				<td>
-					<p>0.000343
-						was: 0.000823</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000343<br>was: 0.000823</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_lu</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(11, 4)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 45.3)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 45.3)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 5.122)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 5.122)</p>
 				</td>
-				<td>
-					<p>0.11546
-						±0.000132</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.11546<br>±0.000132</p>
 				</td>
-				<td>
-					<p>0.000132
-						was: 0.000308</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000132<br>was: 0.000308</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sor</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12105
-						±0.000148</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12105<br>±0.000148</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>scimark_sparse</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.12315
-						±0.000728</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.12315<br>±0.000728</p>
 				</td>
-				<td>
-					<p>0.000728
-						was: 0.000585</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000728<br>was: 0.000585</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>series</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>2.0
-						(2.0, 2.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>2.0<br>(2.0, 2.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.347
-						(0.347, 0.348)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.347<br>(0.347, 0.348)</p>
 				</td>
-				<td>
-					<p>0.33394
-						±0.000645</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.33394<br>±0.000645</p>
 				</td>
-				<td>
-					<p>0.000645
-						was: 0.003217</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000645<br>was: 0.003217</p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>spectralnorm</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.13985
-						δ=-0.00003
-						±0.000007</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.13985<br>δ=-0.00003<br>±0.000007</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
 			</tr>
-			<tr>
-				<td>
+			<tr data-astro-cid-62p3h4ye="">
+				<td data-astro-cid-62p3h4ye="true">
 					<p>table_cmpsort</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p>(13, 1, 1)</p>
 				</td>
-				<td>
-					<p>1.0
-						(1.0, 10.0)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>1.0<br>(1.0, 10.0)</p>
 				</td>
-				<td>
+				<td data-astro-cid-62p3h4ye="true">
 					<p></p>
 				</td>
-				<td>
-					<p>0.000
-						(0.000, 2.005)</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.000<br>(0.000, 2.005)</p>
 				</td>
-				<td>
-					<p>0.21828
-						±0.003289</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.21828<br>±0.003289</p>
 				</td>
-				<td>
-					<p>0.003289
-						was: 0.007836</p>
+				<td data-astro-cid-62p3h4ye="true">
+					<p>0.003289<br>was: 0.007836</p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	<p><sub>Results for Normal vs. Counters</sub></p>
-	<p>In this case we’re particularly interested in the “steady performance variation (s)” column, which shows whether benchmarks have predictable steady state performance. The results are fairly clear: steady counters are, overall, a clear improvement. As you might expect, this is not a pure win, because it changes the order in which traces are made. This has several effects, including delaying some loops to be traced later than was previously the case, because counters do not hit the required threshold as quickly. </p>
-	<p>This disadvantages some programs, particularly small deterministic benchmarks where loops are highly stable. In such cases, the earlier you trace the better. However, in my opinion, such programs are given undue weight when performance is considered. It’s no secret that some of the benchmarks regularly used to benchmark LuaJIT are <i>highly</i> optimised for LuaJIT as it stands; any changes to LuaJIT stand a good chance of degrading their performance. However, overall we feel that the overall gain in consistency, particularly for larger programs, is worth it. There's a <a href="https://github.com/lua-users-foundation/LuaJIT/pull/6" target="_blank" rel="noopener noreferrer">pull request against the Lua Foundation's fork of LuaJIT</a> which applies this idea to a mainstream fork of LuaJIT.</p>
-	<p>We then started looking at various programs that showed odd performance. One problem in particular showed up in more than one benchmark. Here's a standard example:</p>
-	<p>Collisiondetector, Normal, Bencher9, Proc. exec. #12 (no steady state)</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/Q2ZdgNBkfPHYDy88AAjkv/83ed55ff8eb087dfbeb7d94ff496b892/collision1-1.svg" alt="collision1-1" class="kg-image" width="584" height="391" loading="lazy">
-	</figure>
-	<p>The problem – and it doesn't happen on every process execution, just to make it more fun – is that there are points where the benchmark slows down by over 10% for multiple in-process iterations (e.g. in this process execution, at in-process iterations 930-ish and 1050-ish). We tried over 25 separate ways to work out what was causing this — even building an instrumentation system to track what LuaJIT is doing — but in the end it turned out to be related to LuaJIT's Garbage Collector – sort of. When we moved from the 32-bit to 64-bit GC, the odd performance went away.</p>
-	<p>As such, we don’t think that the 64-bit GC “solves” the problem: however, it changes the way that pointers are encoded (doubling in size), which causes the code generator to emit a different style of code, such that the problem seems to go away. Nevertheless, this did make us reevaluate LuaJIT's GC. Tom then started work on implementing Mike Pall's <a href="http://wiki.luajit.org/New-Garbage-Collector" target="_blank" rel="noopener noreferrer">suggestion for a new GC for LuaJIT</a> (based partly on Tom's previous work and also that of Peter Cawley). He has enough implemented to run most small, and some large, programs, but it needs more work to finish it off, at which point evaluating it against the existing Lua GCs will be fascinating!</p>
-	<p>So, did we achieve everything we wanted to in 12 months? Inevitably the answer is yes and no. We did a lot more benchmarking than we expected; we've been able to make a lot of programs (particularly large programs) have more consistent performance; and we've got a fair way down the road of implementing a new GC. To whoever takes on further LuaJIT work – best of luck, and I look forward to seeing your results!</p>
-	<p><b>Acknowledgements:</b> Sarah Mount implemented the stats differ; Edd Barrett implemented Krun and answered many questions on it.</p>
 </div>
+<p><sub>Results for Normal vs. Counters</sub></p>
+<p>In this case we’re particularly interested in the “steady performance variation (s)” column, which shows whether benchmarks have predictable steady state performance. The results are fairly clear: steady counters are, overall, a clear improvement. As you might expect, this is not a pure win, because it changes the order in which traces are made. This has several effects, including delaying some loops to be traced later than was previously the case, because counters do not hit the required threshold as quickly. </p>
+<p>This disadvantages some programs, particularly small deterministic benchmarks where loops are highly stable. In such cases, the earlier you trace the better. However, in my opinion, such programs are given undue weight when performance is considered. It’s no secret that some of the benchmarks regularly used to benchmark LuaJIT are <em>highly</em> optimised for LuaJIT as it stands; any changes to LuaJIT stand a good chance of degrading their performance. However, overall we feel that the overall gain in consistency, particularly for larger programs, is worth it. There's a <a href="https://github.com/lua-users-foundation/LuaJIT/pull/6" target="_blank" rel="noopener noreferrer">pull request against the Lua Foundation's fork of LuaJIT</a> which applies this idea to a mainstream fork of LuaJIT.</p>
+<p>We then started looking at various programs that showed odd performance. One problem in particular showed up in more than one benchmark. Here's a standard example:</p>
+<p>Collisiondetector, Normal, Bencher9, Proc. exec. #12 (no steady state)</p>
+<p>The problem – and it doesn't happen on every process execution, just to make it more fun – is that there are points where the benchmark slows down by over 10% for multiple in-process iterations (e.g. in this process execution, at in-process iterations 930-ish and 1050-ish). We tried over 25 separate ways to work out what was causing this — even building an instrumentation system to track what LuaJIT is doing — but in the end it turned out to be related to LuaJIT's Garbage Collector – sort of. When we moved from the 32-bit to 64-bit GC, the odd performance went away.</p>
+<p>As such, we don’t think that the 64-bit GC “solves” the problem: however, it changes the way that pointers are encoded (doubling in size), which causes the code generator to emit a different style of code, such that the problem seems to go away. Nevertheless, this did make us reevaluate LuaJIT's GC. Tom then started work on implementing Mike Pall's <a href="http://wiki.luajit.org/New-Garbage-Collector" target="_blank" rel="noopener noreferrer">suggestion for a new GC for LuaJIT</a> (based partly on Tom's previous work and also that of Peter Cawley). He has enough implemented to run most small, and some large, programs, but it needs more work to finish it off, at which point evaluating it against the existing Lua GCs will be fascinating!</p>
+<p>So, did we achieve everything we wanted to in 12 months? Inevitably the answer is yes and no. We did a lot more benchmarking than we expected; we've been able to make a lot of programs (particularly large programs) have more consistent performance; and we've got a fair way down the road of implementing a new GC. To whoever takes on further LuaJIT work – best of luck, and I look forward to seeing your results!</p>
+<p><strong>Acknowledgements:</strong> Sarah Mount implemented the stats differ; Edd Barrett implemented Krun and answered many questions on it.</p>

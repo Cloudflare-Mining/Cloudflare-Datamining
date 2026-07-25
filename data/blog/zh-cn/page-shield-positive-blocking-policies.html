@@ -1,0 +1,184 @@
+<p>Web 开发团队的任务是以闪电般的速度交付功能丰富的应用程序。为了帮助他们，有数千个预先构建的 JavaScript 库，他们可以毫不费力地集成这些库。</p>
+<p>然而，这些库并非总是有严密的安全措施支持，以确保它们提供的代码不会被恶意行为者篡改。这最终导致应用程序被入侵的风险增加。</p>
+<p>从今天起，企业可以更轻松地应对外部 JavaScript 库的风险。我们将为客户端安全解决方案添加一项新功能：<a href="https://www.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a> 策略。通过使用策略，您现在只需查看核对表，就能确保您的应用程序只执行允许和经过审核的库。</p>
+<h2>客户端库</h2>
+<p>截至撰写本文时，<a href="https://cdnjs.com" target="_blank" rel="noopener noreferrer">cdnjs</a>（一个流行的 JavaScript 存储库）上有超过 4,373 个库可用。这些库提供对构建 Web 应用程序的预构建功能的访问。下面的截图显示了平台上最流行的 <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">React</a>、<a href="https://vuejs.org" target="_blank" rel="noopener noreferrer">Vue.js</a> 和 <a href="https://getbootstrap.com" target="_blank" rel="noopener noreferrer">Bootstrap</a>。据 W3Techs 称，仅 Bootstrap 就被<a href="https://w3techs.com/technologies/overview/javascript_library" target="_blank" rel="noopener noreferrer">超过 20% 的网站</a>所使用。</p>
+<p>除了 cdnjs 这样的库，SaaS 平台还直接提供了成千上万的插件，包括来自 Google、Meta、Microsoft 等公司的插件。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="494" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=640&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=715&amp;h=494&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=750&amp;h=518&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=828&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=1080&amp;h=746&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=1280&amp;h=884&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=1430&amp;h=988&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="A list of the most popular libraries on cdnjs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47K1QNY78V481DN32T4RT8.png&amp;w=1810&amp;h=1250&amp;f=webp" data-lightbox-width="1810" data-lightbox-height="1250" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="494" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>根据我们的 Page Shield 数据，任何大型企业应用程序都在加载<strong>和</strong>连接数十个甚至数百个不同的目的地，以实现分析、支付、真实用户监控、转换跟踪、客户关系管理以及内部团队“必须具备”的许多其他功能。</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-baqh{text-align:center;vertical-align:top} .tg .tg-xmkd{background-color:#EFEFEF;text-align:center;vertical-align:top}</p>
+<div id="html-block-k12" class="html-block">
+	<style>
+		#html-block-k12 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k12 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k12 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k12 .tg .tg-baqh {
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k12 .tg .tg-xmkd {
+			background-color: #EFEFEF;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-xmkd"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Script hosts</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(JavaScript loaded from...)</span></th>
+				<th class="tg-xmkd"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Connection hosts </span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">(Data sent to...)</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Cloudflare</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Salesforce</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hotjar</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Prospect One</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">OneTrust</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Open JS Foundation</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Pinterest</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">TikTok</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Hotjar</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PayPal</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">hCaptcha</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Snapchat</span></td>
+			</tr>
+			<tr>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Fly.io</span></td>
+				<td class="tg-baqh"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">NewRelic</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>脚本主机（JavaScript 加载自......）</p>
+<p>连接主机（数据发送到......）</p>
+<p>Google</p>
+<p>Google</p>
+<p>Facebook</p>
+<p>Facebook</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="141" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=715&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=640&amp;h=126&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=715&amp;h=141&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=750&amp;h=148&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=828&amp;h=163&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=1080&amp;h=213&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=1280&amp;h=252&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=1430&amp;h=282&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Page Shield detecting an active exploit on a customer website" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4859T37ZYH3YDPSMERG07S.png&amp;w=1920&amp;h=377&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="377" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="141" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="423" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=715&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=640&amp;h=379&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=715&amp;h=423&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=750&amp;h=444&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=828&amp;h=490&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=1080&amp;h=639&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=1280&amp;h=757&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=1430&amp;h=846&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Connection details indicating the active exploit on a customer website" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492TD4HNCKGPB6KQ057MF9.png&amp;w=1700&amp;h=1006&amp;f=webp" data-lightbox-width="1700" data-lightbox-height="1006" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="423" class="pt-portable-image-media"></div>
+</figure>
+<p>Cloudflare</p>
+<p>Microsoft</p>
+<p>Salesforce</p>
+<p>Hotjar</p>
+<p>Prospect One</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="391" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=715&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=640&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=715&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=750&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=828&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=1080&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=1280&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=1430&amp;h=782&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Page Shield’s new policies feature" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WKAVVMBR3JQ11403X7K6.png&amp;w=1920&amp;h=1049&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1049" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="391" class="pt-portable-image-media"></div>
+</figure>
+<p>OneTrust</p>
+<p>Open JS Foundation</p>
+<p>Pinterest</p>
+<p>Microsoft</p>
+<p>TikTok</p>
+<p>Hotjar</p>
+<p>PayPal</p>
+<p>hCaptcha</p>
+<p>Snapchat</p>
+<p>Fly.io</p>
+<p>NewRelic</p>
+<p>最终，大多数组织都很难不依赖外部 JavaScript 库。</p>
+<h2>攻击者的另一个媒介</h2>
+<p>尽管在应用程序中嵌入外部 JavaScript 有其充分的理由，但客户端库（尤其是 SaaS 提供商提供的客户端库）的激增，让越来越多的恶意行为者试图寻找利用 Web 应用程序的新方法。只要入侵一个提供客户端库的 SaaS 提供商，就能直接访问成千上万的应用程序，大幅提高了“黑客”的投资回报。</p>
+<p>客户端安全问题并不新鲜。诸如“<a href="https://en.wikipedia.org/wiki/Web_skimming" target="_blank" rel="noopener noreferrer">Web 浏览</a>”之类的攻击（在支付页面中也称为“Magecart 式”）已经存在很长时间了。然而，核心<a href="https://www.cloudflare.com/application-services/solutions" target="_blank" rel="noopener noreferrer">应用程序安全产品</a>通常专注于保护底层 Web 应用程序，而不是最终用户数据，从而导致产生了大多数安全团队根本看不到的大型攻击面。这种由“<a href="https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack" target="_blank" rel="noopener noreferrer">供应链</a>”造成的可见性差距促使我们构建了 Cloudflare 的原生客户端安全解决方案 <a href="https://blog.cloudflare.com/zh-cn/introducing-page-shield-zh-cn">Page Shield</a>。</p>
+<p>尽管供应链攻击的风险已广为人知，但它们仍然是一个非常活跃的威胁。该领域的供应商每月都会发布新的研究报告，强调正在进行的攻击活动。支付卡行业安全标准委员会还在 <a href="https://blog.pcisecuritystandards.org/pci-dss-v4-0-resource-hub" target="_blank" rel="noopener noreferrer">PCI DSS 4.0</a>* 中引入了新要求，强制公司建立适当的<a href="https://www.cloudflare.com/learning/privacy/what-is-pci-dss-compliance" target="_blank" rel="noopener noreferrer">系统和流程</a>来应对客户端安全威胁。</p>
+<p>Page Shield 本身已经能够有效地警告客户其应用程序正在遭受攻击，例如下面的屏幕截图，突出显示了针对客户电子商务应用程序的 Magecart 式攻击的活动恶意出站连接。</p>
+<p>* PCI DSS 4.0 要求 6.4.3 和 11.6.1 只是侧重于客户端安全的两个例子。</p>
+<h2>减少攻击面</h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="291" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=750&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=828&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=1080&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=1280&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=1430&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Defining the policy scope" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47MJVK50DKZ76YGCQQF0QW.png&amp;w=1380&amp;h=562&amp;f=webp" data-lightbox-width="1380" data-lightbox-height="562" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="291" class="pt-portable-image-media"></div>
+</figure>
+<p>Page Shield 的目的是检测客户端环境中的恶意活动并在发现恶意活动时发出警报。随着我们进一步提高检测能力，这仍然是一个核心焦点。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="525" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=715&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=640&amp;h=470&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=715&amp;h=525&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=750&amp;h=551&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=828&amp;h=608&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=1080&amp;h=793&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=1280&amp;h=940&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=1430&amp;h=1050&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Page Shield’s policy suggestions interface" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46M2YEN4NCZ8248THH9DZZ.png&amp;w=1390&amp;h=1020&amp;f=webp" data-lightbox-width="1390" data-lightbox-height="1020" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="525" class="pt-portable-image-media"></div>
+</figure>
+<p>我们现在还在考虑扩展功能，先减少攻击者入侵应用程序的机会。换句话说，通过减少可用的攻击面来防止攻击发生。</p>
+<p>今天，我们宣布推出这一领域的首个重要功能：Page Shield 策略。看起来像这样：</p>
+<h3>积极的阻止策略</h3>
+<p>通过利用我们在网络堆栈中的地位作为反向代理，并使用 Page Shield 策略，您现在可以强制客户端浏览器仅加载和执行来自您预先批准的允许来源列表中的 JavaScript 库，从而实现积极的安全模型。</p>
+<p>这确保了能够在页面中注入脚本的攻击者不会成功危害用户，因为浏览器将拒绝加载它。同时，经过审查的工具将毫无问题地运行。</p>
+<p>策略很快还将允许您指定数据目的地（连接端点），不仅强制执行 JavaScript 文件的加载位置，还强制执行浏览器可以发送数据的位置，以大幅降低“Magecart 式”攻击的风险。</p>
+<h3>CSP 作为核心机制</h3>
+<p>目前，Page Shield 策略是通过<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP" target="_blank" rel="noopener noreferrer">内容安全策略</a> (CSP) 来实现的，这是所有主要浏览器本身都支持的功能。</p>
+<p>CSP 是添加到 HTML 页面加载中的特殊格式 HTTP 响应标头。这些标头可能包含一个或多个指令，指示浏览器如何在给定页面的上下文中执行以及执行什么。</p>
+<p>从今天开始，Page Shield 策略支持 <code>script-src</code> 指令。该指令允许应用程序所有者指定允许从“何处”加载 JavaScript 文件。对 <code>connect-src</code> 指令的支持也正在进行最终确定，其行为与 <code>script-src</code> 类似，但指定允许浏览器将数据发送“到”的位置。</p>
+<p>让我们看一个示例，假设我们打开以下网页 <code>www.example.com/index.html</code> 并且浏览器收到如下 CSP 标头：</p>
+<p><code>Content-Security-Policy: script-src 'self' *.example.com cdnjs.cloudflare.com https://www.google-analytics.com/analytics.js</code></p>
+<p>标头指示浏览器允许从与页面本身（由 <code>self</code> 定义）相同的主机名以及从任何子域 (<code>*.example.com</code>) 加载脚本（通过使用 <code>script-src</code> 指令定义）。此外，它还允许 cdnjs 下的任何脚本，并且仅允许 Google Analytics 的特定脚本，而不允许 Google 拥有的域下的其他脚本。</p>
+<p>这就确保了任何攻击者从不同主机注入的脚本都不会被执行，从而大大减少了可用的攻击面。</p>
+<p>如果我们收到的不是 <code>Content-Security-Policy</code> 标头，而是 <code>Content-Security-Policy-Report-Only</code> 标头，则不会强制执行该策略，浏览器只会发送违规报告，让您知道哪些内容超出了策略范围。</p>
+<p>这在测试和调查添加到应用程序中的新脚本时非常有用。</p>
+<p>Page Shield 还在 <code>script-src</code> 指令中提供并支持其他语句，以阻止内联 JavaScript (<code>unsafe-inline</code>) 或通常不安全的函数调用 (<code>unsafe-eval</code>)。这些指令有助于防止其他攻击类型，例如 Cross-site scripting (XSS) 攻击。</p>
+<h3>让策略管理变得简单</h3>
+<p>CSP 是 Page Shield 策略使用的底层系统，虽然很棒，但很难管理。应用程序越大，CSP 就越复杂，同时也会给应用程序开发团队带来瓶颈。随着安全团队扩大允许的主机列表，CSP 变得无效化，其使用目的也开始变得有争议。</p>
+<p>使策略管理变得简单并确保其有效是我们设计过程的核心目标。这促使我们建立了建议功能。</p>
+<p>部署策略时，第一步是决定将策略应用到“何处”。典型示例可能包括仅结账流程或管理页面。这是使用 <a href="https://developers.cloudflare.com/ruleset-engine/rules-language" target="_blank" rel="noopener noreferrer">wirefilter 语法</a>完成的，该语法与支持 <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">Cloudflare WAF</a> 的语法相同。</p>
+<p>指定过滤器后，界面将使用 Page Shield 已收集的数据，提供建议的指令值列表，让您可以轻松地为应用程序构建最简单且最有效的策略。无需担心语法，提交前将显示策略预览。</p>
+<p>最后，策略可以部署在“仅报告/日志”和“强制/允许”中，让您根据需要进行控制和测试。</p>
+<p>我们目前正在完成警报后端的工作，以便在发现违规报告激增时向您发出警告。这使您可以轻松返回策略构建器，并使用开发团队可能添加的任何新脚本对其进行更新。</p>
+<h3>积极的阻止策略并不足够</h3>
+<p>重要的是不要忘记，CSP 在允许端点列表中不提供安全或恶意活动检测。它们旨在通过减少可用的攻击面来降低发生攻击的可能性。因此，无论部署什么策略，Page Shield 的自动恶意活动检测都将继续在后台运行。</p>
+<h2>立即保护最终用户数据</h2>
+<p>现在，所有 Cloudflare 付费客户都可以访问一部分 <a href="https://www.cloudflare.com/page-shield" target="_blank" rel="noopener noreferrer">Page Shield</a> 功能。只需点击一个按钮，即可打开 Page Shield。前往**“安全”<strong>&gt;</strong>“Page Shield”**并尝试一下！</p>
+<p>如果您是 Enterprise 计划客户，并对 Page Shield 策略感兴趣，请联系您的客户团队，获取完整的功能集。</p>

@@ -1,197 +1,121 @@
-<div class="mb2 gray5">5 min de lectura</div>
-<div class="mt4">Esta publicación también está disponible en <a href="https://blog.cloudflare.com/extract-audio-from-your-videos-with-cloudflare-stream">English</a>, <a href="https://blog.cloudflare.com/ko-kr/extract-audio-from-your-videos-with-cloudflare-stream">한국어</a>, <a href="https://blog.cloudflare.com/vi-vn/extract-audio-from-your-videos-with-cloudflare-stream">Tiếng Việt</a> y <a href="https://blog.cloudflare.com/ja-jp/extract-audio-from-your-videos-with-cloudflare-stream">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Umt4dEGlo8qRckqLiYpE/f7e9916ea2b3db1fdba936024a9de7f6/BLOG-2990-hero.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>A Cloudflare Stream le encanta los videos. Pero sabemos que no todos los flujos de trabajo necesitan la imagen completa, y la popularidad de los podcasts pone de manifiesto lo atractivo que puede ser el audio independiente. Para los desarrolladores, procesar un video solo para acceder al audio es lento, costoso y complejo.&nbsp;</p>
-	<p>¿Qué hace que el video sea tan caro? Un archivo de video es una pila densa de imágenes de alta resolución, unidas a lo largo del tiempo. Como tal, no es solo "un archivo": es un contenedor de datos de alta dimensión, como fotogramas por segundo, resolución, códecs. Analizar un video implica recorrer la resolución temporal y la velocidad de fotogramas.</p>
-	<div class="flex anchor relative">
-		<h2 id="why-audio-extraction">Por qué extraer audio</h2>
-		<a href="https://blog.cloudflare.com/#why-audio-extraction" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>En comparación, un archivo de audio es mucho más simple. Si un archivo de audio consta de un solo canal, se define como una sola forma de onda. Las características técnicas de esta forma de onda están definidas por la frecuencia de muestreo (el número de muestras de audio tomadas por segundo) y la profundidad de bits (la precisión de cada muestra).</p>
-	<p>Con el auge de los canales de inferencia de IA con uso intensivo de recursos informáticos, muchos de nuestros clientes desean realizar flujos de trabajo posteriores que solo requieren analizar el audio. Por ejemplo:</p>
-	<ul>
-		<li>
-			<p><b>Potenciar la IA y el aprendizaje automático:</b> además de la traducción y la transcripción, puedes introducir el audio en modelos de voz a texto para el reconocimiento o análisis de voz, o resúmenes basados en la IA.</p>
-		</li>
-		<li>
-			<p><b>Mejorar la moderación del contenido:</b> analiza el audio de tus videos para garantizar que el contenido sea seguro y cumpla con las normas.</p>
-		</li>
-	</ul>
-	<p>El uso de los datos de video en estos casos es costoso e innecesario.&nbsp;</p>
-	<p>Por eso, presentamos la extracción de audio. A través de esta función, con solo una llamada API o un clic en el panel de control, ahora puedes extraer una pista de audio M4A ligera de cualquier video.</p>
-	<p>Presentamos dos métodos flexibles para extraer el audio de tus videos.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="1-on-the-fly-audio-extraction-through-media-transformations">1. Extracción de audio mediante Media Transformations</h3>
-		<a href="https://blog.cloudflare.com/#1-on-the-fly-audio-extraction-through-media-transformations" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>Media Transformations</u></a> es perfecto para procesar y transformar videos cortos, como clips de redes sociales, que almacenas en cualquier lugar que desees. Funciona al obtener tus medios directamente desde su origen, optimizarlos en nuestro perímetro y entregarlos de manera eficiente. </p>
-	<p>Ampliamos este flujo de trabajo para incluir audio. Con solo agregar <code>mode=audio</code> a la URL de transformación, ahora puedes extraer audio sobre la marcha de un archivo de video almacenado en cualquier lugar.</p>
-	<p>Una vez que <a href="https://developers.cloudflare.com/stream/transform-videos/#getting-started" target="_blank" rel="noopener noreferrer"><u>Media Transformations está habilitado para tu dominio</u></a>, puedes extraer el audio de cualquier fuente de video. Incluso puedes recortar secciones específicas especificando <code>el tiempo</code> y <code>la duración</code>.</p>
-	<p>Por ejemplo:</p>
-	<pre class="language-Rust"><code class="language-Rust">https://example.com/cdn-cgi/media/mode=audio,time=5s,duration=10s/&lt;SOURCE-VIDEO&gt;</code></pre>
-	<p>La solicitud anterior genera un clip de audio M4A de 10 segundos a partir del video de origen, comenzando en la marca de 5 segundos. Puedes obtener más información sobre la configuración y otras opciones en la <a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>documentación de Media Transformations</u></a>.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h3 id="2-audio-downloads">2. Descargas de audio</h3>
-		<a href="https://blog.cloudflare.com/#2-audio-downloads" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Ahora puedes descargar la pista de audio directamente para cualquier contenido que gestiones en Stream. Además de la capacidad de generar un MP4 descargable para verlo sin conexión, ahora también puedes crear y almacenar un archivo de audio M4A continuo.</p>
-	<div class="flex anchor relative">
-		<h2 id="workers-ai-demo">Demostración de Workers AI</h2>
-		<a href="https://blog.cloudflare.com/#workers-ai-demo" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Aquí puedes ver un fragmento de código de muestra para saber cómo usar Media Transformations con uno de los productos de Cloudflare: Workers AI. El siguiente código crea un proceso de dos pasos: primero transcribir el audio del video al inglés y luego traducirlo al español.</p>
-	<pre class="language-JavaScript"><code class="language-JavaScript">export default {
- async fetch(request, env, ctx) {
-
-
-   // 1. Use Media Transformations to fetch only the audio track
-   const res = await fetch( "https://blog.cloudflare.com/cdn-cgi/media/mode=audio/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/announcing-audio-mode.mp4" );
-   const blob = await res.arrayBuffer();
-
-
-   // 2. Transcribe the audio to text using Whisper
-   const transcript_response = await env.AI.run(
-     "@cf/openai/whisper-large-v3-turbo",
-     {
-       audio: base64Encode(blob), // A base64 encoded string is required by @cf/openai/whisper-large-v3-turbo
-     }
-   );
-
-
-   // Check if transcription was successful and text exists
-   if (!transcript_response.text) {
-       return Response.json({ error: "Failed to transcribe audio." }, { status: 500 });
-   }
-
-
-   // 3. Translate the transcribed text using the M2M100 model
-   const translation_response = await env.AI.run(
-     '@cf/meta/m2m100-1.2b',
-     {
-       text: transcript_response.text,
-       source_lang: 'en', // The source language (English)
-       target_lang: 'es'  // The target language (Spanish)
-     }
-   );
-
-
-   // 4. Return both the original transcription and the translation
-    return Response.json({
-        transcription: transcript_response.text,
-        translation: translation_response.translated_text
-    });
-
-
- }
-};
-
-
-export function base64Encode(buf) {
- let string = '';
- (new Uint8Array(buf)).forEach(
-   (byte) =&gt; { string += String.fromCharCode(byte) }
- )
- return btoa(string)
-}</code></pre>
-	<p>Después de ejecutarse, el programa devuelve una respuesta JSON limpia. A continuación, se muestra un fragmento de la transcripción y traducción de la respuesta que devolvió el programa.</p>
-	<p>Transcripción:</p>
-	<pre class="language-JSON"><code class="language-JSON">{
-  "transcription": "I'm excited to announce that Media Transformations from Cloudflare has added audio-only mode. Now you can quickly extract and deliver just the audio from your short form video. And from there, you can transcribe it or summarize it on Worker's AI or run moderation or inference tasks easily.",
-  "translation": "Estoy encantado de anunciar que Media Transformations de Cloudflare ha añadido el modo solo de audio. Ahora puede extraer y entregar rápidamente sólo el audio de su vídeo de forma corta. Y desde allí, puede transcribirlo o resumirlo en la IA de Worker o ejecutar tareas de moderación o inferencia fácilmente."
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h2 id="technical-details">Detalles técnicos</h2>
-		<a href="https://blog.cloudflare.com/#technical-details" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Como becaria de verano en el equipo de Stream, trabajé en el lanzamiento de esta función muy solicitada. Mi primer paso fue comprender la compleja arquitectura de los canales de medios de Stream.</p>
-	<p>Cuando Stream procesa un video, puede seguir una de dos rutas. La primera es nuestro canal de video a pedido (VOD), que maneja los videos cargados directamente en Stream. Genera y almacena un conjunto de segmentos de video codificados para la transmisión de velocidad de bits adaptable que se puede transmitir a través de HLS/DASH. La otra ruta es nuestro canal de codificación sobre la marcha (OTFE), que impulsa el servicio Stream Live y Media Transformations. En lugar de preprocesar y almacenar archivos, OTFE obtiene los medios del propio sitio web del cliente y realiza transformaciones en el perímetro.</p>
-	<p>Mi proyecto implicó la ampliación de ambos conductos para la compatibilidad con la extracción de audio.</p>
-	<div class="flex anchor relative">
-		<h3 id="otfe-pipeline">Canalización de OTFE</h3>
-		<a href="https://blog.cloudflare.com/#otfe-pipeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>La canalización de OTFE está diseñada para operaciones en tiempo real. El flujo existente se diseñó para tareas visuales. Cuando un cliente con Media Transformations habilitada realiza una solicitud en su propio sitio web, se enruta a nuestros servidores perimetrales, que actúan como punto de entrada. Luego, la solicitud se valida y, según la solicitud del usuario, OTFE obtiene el video y genera una versión redimensionada o una miniatura de fotograma fijo.</p>
-	<p>Para admitir la extracción de solo audio, me basé en nuestro flujo de trabajo existente para agregar un nuevo modo. Esto implicó:</p>
-	<ol>
-		<li>
-			<p>Extender la lógica de la validación: específicamente para el audio, un paso de validación crucial fue verificar que el video de origen contenía una pista de audio antes de intentar la extracción. Esto se añadió a los pasos de validación preexistentes que garantizan que la URL solicitada tenga el formato correcto.&nbsp;</p>
-		</li>
-		<li>
-			<p>Crear un nuevo controlador de transformación: este fue el núcleo de mi proyecto. Creé un nuevo controlador dentro de la plataforma OTFE que descartaba específicamente las pistas visuales para entregar un archivo M4A de alta calidad.
-			</p>
-		</li>
-	</ol>
-	<div class="flex anchor relative">
-		<h3 id="vod-pipeline">Canalización de VOD</h3>
-		<a href="https://blog.cloudflare.com/#vod-pipeline" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Al igual que mi trabajo en OTFE, este proyecto implicó ampliar nuestro flujo de trabajo actual de descargas MP4 a descargas M4A de solo audio. Esto presentó una serie de decisiones técnicas interesantes.&nbsp;</p>
-	<p>El flujo típico para crear una descarga de video comienza con una solicitud POST a nuestra capa API principal, que maneja la autenticación y la validación, y crea un registro de base de datos correspondiente. Lo que luego pone en cola un trabajo en nuestra fila asíncrona donde los trabajadores realizan el procesamiento. Para habilitar las descargas de audio para VOD, introduje nuevos puntos finales de API específicos del tipo (<code>POST /downloads/{type}</code>) y conservé la ruta heredada <code>POST /downloads </code>como un alias para crear descargas del tipo de descarga predeterminada o de video. Esto aseguró la compatibilidad total con las versiones anteriores.</p>
-	<p>El trabajo principal, el de crear una descarga, lo realiza nuestra fila asíncrona. Lo que incluía:</p>
-	<ul>
-		<li>
-			<p>Agregar lógica al consumidor para detectar el nuevo tipo de descarga de audio.</p>
-		</li>
-		<li>
-			<p>Extraer la plantilla ffmpeg que definimos en nuestra capa API para codificar de forma correcta la transmisión de audio en un contenedor M4A de alta calidad</p>
-		</li>
-	</ul>
-	<p>Al ampliar cada componente de esta canalización, desde las rutas de la API hasta los comandos de procesamiento de medios, pude ofrecer una nueva función muy solicitada que desbloquea flujos de trabajo centrados en el audio para nuestros clientes.
-	</p>
-	<div class="flex anchor relative">
-		<h2 id="dash-screenshots">Capturas de pantalla del tablero</h2>
-		<a href="https://blog.cloudflare.com/#dash-screenshots" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Nos complace anunciar que esta función también está disponible en el panel de control de Stream. Simplemente navega a cualquiera de tus videos y encontrarás la opción de descargar el video o solo el audio.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1DFBl200Npv24UfTbOBs5T/36229af550bb43305b0775a13e21e232/image5.png" alt="" class="kg-image" width="1999" height="1022" loading="lazy">
-	</figure>
-	<p>Una vez que la descarga esté lista, verás la URL del archivo, junto con la opción para desactivarlo.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1vyRvNfraFUHyZs0vz75uC/55471ea8700cec1b44932e81d89dd47d/image4.png" alt="" class="kg-image" width="1260" height="488" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="thats-a-wrap">Eso es todo</h2>
-		<a href="https://blog.cloudflare.com/#thats-a-wrap" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Este proyecto abordó una necesidad de los clientes desde hace mucho tiempo, y brindó una forma más sencilla de trabajar con audios desde los videos. Estoy realmente agradecido por todo este recorrido, desde la comprensión del problema hasta la entrega de la solución, y especialmente por la tutoría y la orientación que recibí de mi equipo a lo largo del camino. Estamos entusiasmados de ver cómo los desarrolladores utilizan esta nueva función para crear aplicaciones más eficientes y emocionantes en Cloudflare Stream.</p>
-	<p>Puedes probar la función de extracción de audio mediante <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>la carga de un video a Stream</u></a> o ¡el uso de la API! Si te interesa abordar este tipo de desafíos técnicos por tu cuenta, explora nuestros <a href="https://www.cloudflare.com/careers/early-talent/?cf_target_id=97C555BF0DA9E4427F470C0134F7E2C9" target="_blank" rel="noopener noreferrer"><u>programas de pasantías y jóvenes talentos</u></a> para comenzar tu propio recorrido.</p>
+<p>A Cloudflare Stream le encanta los videos. Pero sabemos que no todos los flujos de trabajo necesitan la imagen completa, y la popularidad de los podcasts pone de manifiesto lo atractivo que puede ser el audio independiente. Para los desarrolladores, procesar un video solo para acceder al audio es lento, costoso y complejo.&nbsp;</p>
+<p>¿Qué hace que el video sea tan caro? Un archivo de video es una pila densa de imágenes de alta resolución, unidas a lo largo del tiempo. Como tal, no es solo "un archivo": es un contenedor de datos de alta dimensión, como fotogramas por segundo, resolución, códecs. Analizar un video implica recorrer la resolución temporal y la velocidad de fotogramas.</p>
+<h2>Por qué extraer audio</h2>
+<p>En comparación, un archivo de audio es mucho más simple. Si un archivo de audio consta de un solo canal, se define como una sola forma de onda. Las características técnicas de esta forma de onda están definidas por la frecuencia de muestreo (el número de muestras de audio tomadas por segundo) y la profundidad de bits (la precisión de cada muestra).</p>
+<p>Con el auge de los canales de inferencia de IA con uso intensivo de recursos informáticos, muchos de nuestros clientes desean realizar flujos de trabajo posteriores que solo requieren analizar el audio. Por ejemplo:</p>
+<ul>
+	<li><strong>Potenciar la IA y el aprendizaje automático:</strong> además de la traducción y la transcripción, puedes introducir el audio en modelos de voz a texto para el reconocimiento o análisis de voz, o resúmenes basados en la IA.</li>
+	<li><strong>Mejorar la moderación del contenido:</strong> analiza el audio de tus videos para garantizar que el contenido sea seguro y cumpla con las normas.</li>
+</ul>
+<p>El uso de los datos de video en estos casos es costoso e innecesario.&nbsp;</p>
+<p>Por eso, presentamos la extracción de audio. A través de esta función, con solo una llamada API o un clic en el panel de control, ahora puedes extraer una pista de audio M4A ligera de cualquier video.</p>
+<p>Presentamos dos métodos flexibles para extraer el audio de tus videos.&nbsp;</p>
+<h3>1. Extracción de audio mediante Media Transformations</h3>
+<p><a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>Media Transformations</u></a> es perfecto para procesar y transformar videos cortos, como clips de redes sociales, que almacenas en cualquier lugar que desees. Funciona al obtener tus medios directamente desde su origen, optimizarlos en nuestro perímetro y entregarlos de manera eficiente. </p>
+<p>Ampliamos este flujo de trabajo para incluir audio. Con solo agregar <code>mode=audio</code> a la URL de transformación, ahora puedes extraer audio sobre la marcha de un archivo de video almacenado en cualquier lugar.</p>
+<p>Una vez que <a href="https://developers.cloudflare.com/stream/transform-videos/#getting-started" target="_blank" rel="noopener noreferrer"><u>Media Transformations está habilitado para tu dominio</u></a>, puedes extraer el audio de cualquier fuente de video. Incluso puedes recortar secciones específicas especificando <code>el tiempo</code> y <code>la duración</code>.</p>
+<p>Por ejemplo:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">https</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6a737d-8b8b8b94">//example.com/cdn-cgi/media/mode=audio,time=5s,duration=10s/&lt;SOURCE-VIDEO&gt;</span></span></code></pre>
 </div>
+<p>La solicitud anterior genera un clip de audio M4A de 10 segundos a partir del video de origen, comenzando en la marca de 5 segundos. Puedes obtener más información sobre la configuración y otras opciones en la <a href="https://developers.cloudflare.com/stream/transform-videos" target="_blank" rel="noopener noreferrer"><u>documentación de Media Transformations</u></a>.&nbsp;</p>
+<h3>2. Descargas de audio</h3>
+<p>Ahora puedes descargar la pista de audio directamente para cualquier contenido que gestiones en Stream. Además de la capacidad de generar un MP4 descargable para verlo sin conexión, ahora también puedes crear y almacenar un archivo de audio M4A continuo.</p>
+<h2>Demostración de Workers AI</h2>
+<p>Aquí puedes ver un fragmento de código de muestra para saber cómo usar Media Transformations con uno de los productos de Cloudflare: Workers AI. El siguiente código crea un proceso de dos pasos: primero transcribir el audio del video al inglés y luego traducirlo al español.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 1. Use Media Transformations to fetch only the audio track</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">( </span><span class="sk-032f62-99ffe4">"https://blog.cloudflare.com/cdn-cgi/media/mode=audio/https://pub-d9fcbc1abcd244c1821f38b99017347f.r2.dev/announcing-audio-mode.mp4"</span><span class="sk-24292e-fff"> );</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> blob</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">arrayBuffer</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 2. Transcribe the audio to text using Whisper</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> transcript_response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     "@cf/openai/whisper-large-v3-turbo"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">     {</span></span>
+<span class="line"><span class="sk-24292e-fff">       audio: </span><span class="sk-6f42c1-ffc799">base64Encode</span><span class="sk-24292e-fff">(blob), </span><span class="sk-6a737d-8b8b8b94">// A base64 encoded string is required by @cf/openai/whisper-large-v3-turbo</span></span>
+<span class="line"><span class="sk-24292e-fff">     }</span></span>
+<span class="line"><span class="sk-24292e-fff">   );</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // Check if transcription was successful and text exists</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">transcript_response.text) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">       return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({ error: </span><span class="sk-032f62-99ffe4">"Failed to transcribe audio."</span><span class="sk-24292e-fff"> }, { status: </span><span class="sk-005cc5-ffc799">500</span><span class="sk-24292e-fff"> });</span></span>
+<span class="line"><span class="sk-24292e-fff">   }</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 3. Translate the transcribed text using the M2M100 model</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">   const</span><span class="sk-005cc5-fff"> translation_response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> env.</span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">     '@cf/meta/m2m100-1.2b'</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">     {</span></span>
+<span class="line"><span class="sk-24292e-fff">       text: transcript_response.text,</span></span>
+<span class="line"><span class="sk-24292e-fff">       source_lang: </span><span class="sk-032f62-99ffe4">'en'</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// The source language (English)</span></span>
+<span class="line"><span class="sk-24292e-fff">       target_lang: </span><span class="sk-032f62-99ffe4">'es'</span><span class="sk-6a737d-8b8b8b94">  // The target language (Spanish)</span></span>
+<span class="line"><span class="sk-24292e-fff">     }</span></span>
+<span class="line"><span class="sk-24292e-fff">   );</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">   // 4. Return both the original transcription and the translation</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">json</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-24292e-fff">        transcription: transcript_response.text,</span></span>
+<span class="line"><span class="sk-24292e-fff">        translation: translation_response.translated_text</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff"> }</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> base64Encode</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">buf</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-24292e-fff"> string </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> ''</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">new</span><span class="sk-6f42c1-ffc799"> Uint8Array</span><span class="sk-24292e-fff">(buf)).</span><span class="sk-6f42c1-ffc799">forEach</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-24292e-fff">   (</span><span class="sk-e36209-fff">byte</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> { string </span><span class="sk-d73a49-a0a0a0">+=</span><span class="sk-24292e-fff"> String.</span><span class="sk-6f42c1-ffc799">fromCharCode</span><span class="sk-24292e-fff">(byte) }</span></span>
+<span class="line"><span class="sk-24292e-fff"> )</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0"> return</span><span class="sk-6f42c1-ffc799"> btoa</span><span class="sk-24292e-fff">(string)</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Después de ejecutarse, el programa devuelve una respuesta JSON limpia. A continuación, se muestra un fragmento de la transcripción y traducción de la respuesta que devolvió el programa.</p>
+<p>Transcripción:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "transcription"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"I'm excited to announce that Media Transformations from Cloudflare has added audio-only mode. Now you can quickly extract and deliver just the audio from your short form video. And from there, you can transcribe it or summarize it on Worker's AI or run moderation or inference tasks easily."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">  "translation"</span><span class="sk-24292e-fff">: </span><span class="sk-032f62-99ffe4">"Estoy encantado de anunciar que Media Transformations de Cloudflare ha añadido el modo solo de audio. Ahora puede extraer y entregar rápidamente sólo el audio de su vídeo de forma corta. Y desde allí, puede transcribirlo o resumirlo en la IA de Worker o ejecutar tareas de moderación o inferencia fácilmente."</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<h2>Detalles técnicos</h2>
+<p>Como becaria de verano en el equipo de Stream, trabajé en el lanzamiento de esta función muy solicitada. Mi primer paso fue comprender la compleja arquitectura de los canales de medios de Stream.</p>
+<p>Cuando Stream procesa un video, puede seguir una de dos rutas. La primera es nuestro canal de video a pedido (VOD), que maneja los videos cargados directamente en Stream. Genera y almacena un conjunto de segmentos de video codificados para la transmisión de velocidad de bits adaptable que se puede transmitir a través de HLS/DASH. La otra ruta es nuestro canal de codificación sobre la marcha (OTFE), que impulsa el servicio Stream Live y Media Transformations. En lugar de preprocesar y almacenar archivos, OTFE obtiene los medios del propio sitio web del cliente y realiza transformaciones en el perímetro.</p>
+<p>Mi proyecto implicó la ampliación de ambos conductos para la compatibilidad con la extracción de audio.</p>
+<h3>Canalización de OTFE</h3>
+<p>La canalización de OTFE está diseñada para operaciones en tiempo real. El flujo existente se diseñó para tareas visuales. Cuando un cliente con Media Transformations habilitada realiza una solicitud en su propio sitio web, se enruta a nuestros servidores perimetrales, que actúan como punto de entrada. Luego, la solicitud se valida y, según la solicitud del usuario, OTFE obtiene el video y genera una versión redimensionada o una miniatura de fotograma fijo.</p>
+<p>Para admitir la extracción de solo audio, me basé en nuestro flujo de trabajo existente para agregar un nuevo modo. Esto implicó:</p>
+<ol>
+	<li>Extender la lógica de la validación: específicamente para el audio, un paso de validación crucial fue verificar que el video de origen contenía una pista de audio antes de intentar la extracción. Esto se añadió a los pasos de validación preexistentes que garantizan que la URL solicitada tenga el formato correcto.&nbsp;</li>
+	<li>Crear un nuevo controlador de transformación: este fue el núcleo de mi proyecto. Creé un nuevo controlador dentro de la plataforma OTFE que descartaba específicamente las pistas visuales para entregar un archivo M4A de alta calidad.<br></li>
+</ol>
+<h3>Canalización de VOD</h3>
+<p>Al igual que mi trabajo en OTFE, este proyecto implicó ampliar nuestro flujo de trabajo actual de descargas MP4 a descargas M4A de solo audio. Esto presentó una serie de decisiones técnicas interesantes.&nbsp;</p>
+<p>El flujo típico para crear una descarga de video comienza con una solicitud POST a nuestra capa API principal, que maneja la autenticación y la validación, y crea un registro de base de datos correspondiente. Lo que luego pone en cola un trabajo en nuestra fila asíncrona donde los trabajadores realizan el procesamiento. Para habilitar las descargas de audio para VOD, introduje nuevos puntos finales de API específicos del tipo (<code>POST /downloads/{type}</code>) y conservé la ruta heredada <code>POST /downloads </code>como un alias para crear descargas del tipo de descarga predeterminada o de video. Esto aseguró la compatibilidad total con las versiones anteriores.</p>
+<p>El trabajo principal, el de crear una descarga, lo realiza nuestra fila asíncrona. Lo que incluía:</p>
+<ul>
+	<li>Agregar lógica al consumidor para detectar el nuevo tipo de descarga de audio.</li>
+	<li>Extraer la plantilla ffmpeg que definimos en nuestra capa API para codificar de forma correcta la transmisión de audio en un contenedor M4A de alta calidad</li>
+</ul>
+<p>Al ampliar cada componente de esta canalización, desde las rutas de la API hasta los comandos de procesamiento de medios, pude ofrecer una nueva función muy solicitada que desbloquea flujos de trabajo centrados en el audio para nuestros clientes.<br></p>
+<h2>Capturas de pantalla del tablero</h2>
+<p>Nos complace anunciar que esta función también está disponible en el panel de control de Stream. Simplemente navega a cualquiera de tus videos y encontrarás la opción de descargar el video o solo el audio.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="366" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=640&amp;h=328&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=715&amp;h=366&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=750&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=828&amp;h=424&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1080&amp;h=553&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1280&amp;h=655&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1430&amp;h=732&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2990 image 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44CMXR1DPH2BBK8KDTC5D1.png&amp;w=1920&amp;h=982&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="982" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="366" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Una vez que la descarga esté lista, verás la URL del archivo, junto con la opción para desactivarlo.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="277" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=715&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=640&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=715&amp;h=277&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=750&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=828&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1080&amp;h=418&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1280&amp;h=496&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1430&amp;h=554&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2990 image 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44XKTSRRJ7PRQCBE10MW84.png&amp;w=1260&amp;h=488&amp;f=webp" data-lightbox-width="1260" data-lightbox-height="488" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="277" class="pt-portable-image-media"></div>
+</figure>
+<h2>Eso es todo</h2>
+<p>Este proyecto abordó una necesidad de los clientes desde hace mucho tiempo, y brindó una forma más sencilla de trabajar con audios desde los videos. Estoy realmente agradecido por todo este recorrido, desde la comprensión del problema hasta la entrega de la solución, y especialmente por la tutoría y la orientación que recibí de mi equipo a lo largo del camino. Estamos entusiasmados de ver cómo los desarrolladores utilizan esta nueva función para crear aplicaciones más eficientes y emocionantes en Cloudflare Stream.</p>
+<p>Puedes probar la función de extracción de audio mediante <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>la carga de un video a Stream</u></a> o ¡el uso de la API! Si te interesa abordar este tipo de desafíos técnicos por tu cuenta, explora nuestros <a href="https://www.cloudflare.com/careers/early-talent/?cf_target_id=97C555BF0DA9E4427F470C0134F7E2C9" target="_blank" rel="noopener noreferrer"><u>programas de pasantías y jóvenes talentos</u></a> para comenzar tu propio recorrido.</p>

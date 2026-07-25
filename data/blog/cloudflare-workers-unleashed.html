@@ -1,198 +1,106 @@
-<div class="mb2 gray5">4 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/cloudflare-workers-unleashed">简体中文</a>, <a href="https://blog.cloudflare.com/de-de/cloudflare-workers-unleashed">Deutsch</a>, <a href="https://blog.cloudflare.com/ja-jp/cloudflare-workers-unleashed">日本語</a>, <a href="https://blog.cloudflare.com/es-es/cloudflare-workers-unleashed">Español</a> and <a href="https://blog.cloudflare.com/fr-fr/cloudflare-workers-unleashed">Français</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5cYM5YGgIbswhNwxIJeLsc/6404cf8560f17e738fe11c7a975e62bc/cloudflare-workers-unleashed.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This post is also available in </i><a href="https://blog.cloudflare.com/ja-jp/cloudflare-workers-unleashed-ja-jp"><i>日本語</i></a><i>.</i></p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Q5P6uXQ3lvPtobTplWq5U/7ef904ddcd1f9c2284caf65fd3b4511d/workers-social.png" alt="Edge computing for everyone." class="kg-image" width="1758" height="879" loading="lazy">
-
-	</figure>
-	<p>Exactly one year ago today, Cloudflare gave me a mission: Make it so people can run code on Cloudflare's edge. At the time, we didn't yet know what that would mean. Would it be container-based? A new Turing-incomplete domain-specific language? Lua? "Functions"? There were lots of ideas.</p>
-	<p>Eventually, we settled on what now seems the obvious choice: JavaScript, using the standard Service Workers API, running in a new environment built on V8. Five months ago, we <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">gave you a preview</a> of what we were building, and started the beta.</p>
-	<p>Today, with thousands of scripts deployed and many billions of requests served, <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is now ready for everyone.</p>
-	<p>"Moving away from VCL and adopting Cloudflare Workers will allow us to do some creative routing that will let us deliver JavaScript to npm's millions of users even faster than we do now. We will be building our next generation of services on Cloudflare's platform and we get to do it in JavaScript!"</p>
-	<p>— CJ Silverio, CTO, npm, Inc.</p>
-	<div class="flex anchor relative">
-		<h3 id="what-is-the-cloud-really">What is the Cloud, really?</h3>
-		<a href="https://blog.cloudflare.com/#what-is-the-cloud-really" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Historically, web application code has been split between servers and browsers. Between them lies a vast but fundamentally <i>dumb</i> network which merely ferries data from point to point.</p>
-	<p>We don't believe this lives up to the promise of "The Cloud."</p>
-	<p>We believe the true dream of cloud computing is that your code lives in the network itself. Your code doesn't run in "us-west-4" or "South Central Asia (Mumbai)", it runs <i>everywhere</i>.</p>
-	<p>More concretely, it should run where it is most needed. When responding to a user in New Zealand, your code should run in New Zealand. When crunching data in your database, your code should run on the machines that store the data. When interacting with a third-party API, your code should run wherever that API is hosted. When human explorers reach Mars, they aren't going to be happy waiting a half an hour for your app to respond -- your code needs to be running on Mars.</p>
-	<p>Cloudflare Workers are our first step towards this vision. When you deploy a Worker, it is deployed to Cloudflare's entire edge network of over a hundred locations worldwide in under 30 seconds. Each request for your domain will be handled by your Worker at a Cloudflare location close to the end user, with no need for you to think about individual locations. The more locations we bring online, the more your code just "runs everywhere."</p>
-	<p>Well, OK… it won't run on Mars. Yet. You out there, Elon?</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-a-worker">What's a Worker?</h3>
-		<a href="https://blog.cloudflare.com/#whats-a-worker" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare Workers derive their name from Web Workers, and more specifically Service Workers, the W3C standard API for scripts that run in the background in a web browser and intercept HTTP requests. Cloudflare Workers are written against the same standard API, but run on Cloudflare's servers, not in a browser.</p>
-	<p>Here are the tools you get to work with:</p>
-	<ul>
-		<li>
-			<p>Execute any JavaScript code, using the latest standard language features.</p>
-		</li>
-		<li>
-			<p>Intercept and modify HTTP request and response URLs, status, headers, and body content.</p>
-		</li>
-		<li>
-			<p>Respond to requests directly from your Worker, or forward them elsewhere.</p>
-		</li>
-		<li>
-			<p>Send HTTP requests to third-party servers.</p>
-		</li>
-		<li>
-			<p>Send multiple requests, in serial or parallel, and use the responses to compose a final response to the original request.</p>
-		</li>
-		<li>
-			<p>Send asynchronous requests after the response has already been returned to the client (for example, for logging or analytics).</p>
-		</li>
-		<li>
-			<p>Control other Cloudflare features, such as caching behavior.</p>
-		</li>
-	</ul>
-	<p>The possible uses for Workers are infinite, and we're excited to see what our customers come up with. Here are some ideas we've seen in the beta:</p>
-	<ul>
-		<li>
-			<p>Route different types of requests to different origin servers.</p>
-		</li>
-		<li>
-			<p>Expand HTML templates on the edge, to <a href="https://www.cloudflare.com/learning/cdn/how-cdns-reduce-bandwidth-cost" target="_blank" rel="noopener noreferrer">reduce bandwidth costs</a> at your origin.</p>
-		</li>
-		<li>
-			<p>Apply <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control" target="_blank" rel="noopener noreferrer">access control</a> to cached content.</p>
-		</li>
-		<li>
-			<p>Redirect a fraction of users to a staging server.</p>
-		</li>
-		<li>
-			<p>Perform A/B testing between two entirely different back-ends.</p>
-		</li>
-		<li>
-			<p>Build "<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">serverless</a>" applications that rely entirely on web APIs.</p>
-		</li>
-		<li>
-			<p>Create custom security filters to block unwanted traffic unique to your app.</p>
-		</li>
-		<li>
-			<p>Rewrite requests to <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio" target="_blank" rel="noopener noreferrer">improve cache hit rate</a>.</p>
-		</li>
-		<li>
-			<p>Implement custom <a href="https://www.cloudflare.com/learning/performance/what-is-load-balancing" target="_blank" rel="noopener noreferrer">load balancing</a> and failover logic.</p>
-		</li>
-		<li>
-			<p>Apply quick fixes to your application without having to update your production servers.</p>
-		</li>
-		<li>
-			<p>Collect analytics without running code in the user's browser.</p>
-		</li>
-		<li>
-			<p>Much more.</p>
-		</li>
-	</ul>
-	<p>Here's an example.</p>
-	<pre class="language-javascript"><code class="language-javascript">// A Worker which:
-// 1. Redirects visitors to the home page ("/") to a
-//    country-specific page (e.g. "/US/").
-// 2. Blocks hotlinks.
-// 3. Serves images directly from Google Cloud Storage.
-addEventListener('fetch', event =&gt; {
-  event.respondWith(handle(event.request))
-})
-
-async function handle(request) {
-  let url = new URL(request.url)
-  if (url.pathname == "/") {
-    // This is a request for the home page ("/").
-    // Redirect to country-specific path.
-    // E.g. users in the US will be sent to "/US/".
-    let country = request.headers.get("CF-IpCountry")
-    url.pathname = "/" + country + "/"
-    return Response.redirect(url, 302)
-
-  } else if (url.pathname.startsWith("/images/")) {
-    // This is a request for an image (under "/images").
-    // First, block third-party referrers to discourage
-    // hotlinking.
-    let referer = request.headers.get("Referer")
-    if (referer &amp;&amp;
-        new URL(referer).hostname != url.hostname) {
-      return new Response(
-          "Hotlinking not allowed.",
-          { status: 403 })
-    }
-
-    // Hotlink check passed. Serve the image directly
-    // from Google Cloud Storage, to save serving
-    // costs. The image will be cached at Cloudflare's
-    // edge according to its Cache-Control header.
-    url.hostname = "example-bucket.storage.googleapis.com"
-    return fetch(url, request)
-  } else {
-    // Regular request. Forward to origin server.
-    return fetch(request)
-  }
-}</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="its-really-fast">It's Really Fast</h3>
-		<a href="https://blog.cloudflare.com/#its-really-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Sometimes people ask us if JavaScript is "slow". Nothing could be further from the truth.</p>
-	<p>Workers uses the V8 JavaScript engine built by Google for Chrome. V8 is not only one of the fastest implementations of JavaScript, but one of the fastest implementations of any dynamically-typed language, period. Due to the immense amount of work that has gone into optimizing V8, it outperforms just about any popular server programming language with the possible exceptions of C/C++, Rust, and Go. (Incidentally, we will support those soon, via WebAssembly.)</p>
-	<p>The bottom line: <b>A typical Worker script executes in less than one millisecond.</b> Most users are unable to measure any <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">latency</a> difference when they enable Workers -- except, of course, when their worker actually <i>improves</i> latency by responding directly from the edge.</p>
-	<p>On another speed-related note, Workers deploy fast, too. <b>Workers deploy globally in under 30 seconds</b> from the time you save and enable the script.</p>
-	<div class="flex anchor relative">
-		<h3 id="pricing">Pricing</h3>
-		<a href="https://blog.cloudflare.com/#pricing" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Workers are a paid add-on to Cloudflare. We wanted to keep the pricing as simple as possible, so here's the deal:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4FhizNXvRr918DQvbZPx9V/218889d4e4623f62dfe041a5590e650f/workers-pricing-text_4x.png" alt="$0.50 per million requests, with a $5 monthly minimum (covers your first 10 million requests)" class="kg-image" width="1009" height="514" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="get-started">Get Started</h3>
-		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<ul>
-		<li>
-			<p><a href="https://www.cloudflare.com/a/overview" target="_blank" rel="noopener noreferrer">Log into your Cloudflare account</a> and visit the "Workers" section to configure Workers.</p>
-		</li>
-		<li>
-			<p><a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Experiment with Workers in the Playground</a>, no account required.</p>
-		</li>
-		<li>
-			<p><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Read the documentation</a> to learn how Workers are written.</p>
-		</li>
-		<li>
-			<p><a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Check out the original announcement blog post</a> for more technical details.</p>
-		</li>
-		<li>
-			<p><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Discuss Workers in the Cloudflare Community.</a></p>
-		</li>
-	</ul>
-	<p>"Cloudflare Workers saves us a great deal of time. Managing bot traffic without Workers would consume valuable development and server resources that are better spent elsewhere."</p>
-	<p>— John Thompson, Senior System Administrator, MaxMind</p>
+<p><em>This post is also available in <a href="https://blog.cloudflare.com/ja-jp/cloudflare-workers-unleashed-ja-jp">日本語</a>.</em></p>
+<p>Exactly one year ago today, Cloudflare gave me a mission: Make it so people can run code on Cloudflare's edge. At the time, we didn't yet know what that would mean. Would it be container-based? A new Turing-incomplete domain-specific language? Lua? "Functions"? There were lots of ideas.</p>
+<p>Eventually, we settled on what now seems the obvious choice: JavaScript, using the standard Service Workers API, running in a new environment built on V8. Five months ago, we <a href="https://blog.cloudflare.com/introducing-cloudflare-workers">gave you a preview</a> of what we were building, and started the beta.</p>
+<p>Today, with thousands of scripts deployed and many billions of requests served, <a href="https://www.cloudflare.com/developer-platform/workers" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> is now ready for everyone.</p>
+<p>"Moving away from VCL and adopting Cloudflare Workers will allow us to do some creative routing that will let us deliver JavaScript to npm's millions of users even faster than we do now. We will be building our next generation of services on Cloudflare's platform and we get to do it in JavaScript!"</p>
+<p>— CJ Silverio, CTO, npm, Inc.</p>
+<h3>What is the Cloud, really?</h3>
+<p>Historically, web application code has been split between servers and browsers. Between them lies a vast but fundamentally <em>dumb</em> network which merely ferries data from point to point.</p>
+<p>We don't believe this lives up to the promise of "The Cloud."</p>
+<p>We believe the true dream of cloud computing is that your code lives in the network itself. Your code doesn't run in "us-west-4" or "South Central Asia (Mumbai)", it runs <em>everywhere</em>.</p>
+<p>More concretely, it should run where it is most needed. When responding to a user in New Zealand, your code should run in New Zealand. When crunching data in your database, your code should run on the machines that store the data. When interacting with a third-party API, your code should run wherever that API is hosted. When human explorers reach Mars, they aren't going to be happy waiting a half an hour for your app to respond -- your code needs to be running on Mars.</p>
+<p>Cloudflare Workers are our first step towards this vision. When you deploy a Worker, it is deployed to Cloudflare's entire edge network of over a hundred locations worldwide in under 30 seconds. Each request for your domain will be handled by your Worker at a Cloudflare location close to the end user, with no need for you to think about individual locations. The more locations we bring online, the more your code just "runs everywhere."</p>
+<p>Well, OK… it won't run on Mars. Yet. You out there, Elon?</p>
+<h3>What's a Worker?</h3>
+<p>Cloudflare Workers derive their name from Web Workers, and more specifically Service Workers, the W3C standard API for scripts that run in the background in a web browser and intercept HTTP requests. Cloudflare Workers are written against the same standard API, but run on Cloudflare's servers, not in a browser.</p>
+<p>Here are the tools you get to work with:</p>
+<ul>
+	<li>Execute any JavaScript code, using the latest standard language features.</li>
+	<li>Intercept and modify HTTP request and response URLs, status, headers, and body content.</li>
+	<li>Respond to requests directly from your Worker, or forward them elsewhere.</li>
+	<li>Send HTTP requests to third-party servers.</li>
+	<li>Send multiple requests, in serial or parallel, and use the responses to compose a final response to the original request.</li>
+	<li>Send asynchronous requests after the response has already been returned to the client (for example, for logging or analytics).</li>
+	<li>Control other Cloudflare features, such as caching behavior.</li>
+</ul>
+<p>The possible uses for Workers are infinite, and we're excited to see what our customers come up with. Here are some ideas we've seen in the beta:</p>
+<ul>
+	<li>Route different types of requests to different origin servers.</li>
+	<li>Expand HTML templates on the edge, to <a href="https://www.cloudflare.com/learning/cdn/how-cdns-reduce-bandwidth-cost" target="_blank" rel="noopener noreferrer">reduce bandwidth costs</a> at your origin.</li>
+	<li>Apply <a href="https://www.cloudflare.com/learning/access-management/what-is-access-control" target="_blank" rel="noopener noreferrer">access control</a> to cached content.</li>
+	<li>Redirect a fraction of users to a staging server.</li>
+	<li>Perform A/B testing between two entirely different back-ends.</li>
+	<li>Build "<a href="https://www.cloudflare.com/learning/serverless/what-is-serverless" target="_blank" rel="noopener noreferrer">serverless</a>" applications that rely entirely on web APIs.</li>
+	<li>Create custom security filters to block unwanted traffic unique to your app.</li>
+	<li>Rewrite requests to <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cache-hit-ratio" target="_blank" rel="noopener noreferrer">improve cache hit rate</a>.</li>
+	<li>Implement custom <a href="https://www.cloudflare.com/learning/performance/what-is-load-balancing" target="_blank" rel="noopener noreferrer">load balancing</a> and failover logic.</li>
+	<li>Apply quick fixes to your application without having to update your production servers.</li>
+	<li>Collect analytics without running code in the user's browser.</li>
+	<li>Much more.</li>
+</ul>
+<p>Here's an example.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// A Worker which:</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// 1. Redirects visitors to the home page ("/") to a</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">//    country-specific page (e.g. "/US/").</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// 2. Blocks hotlinks.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// 3. Serves images directly from Google Cloud Storage.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">addEventListener</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">'fetch'</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">event</span><span class="sk-d73a49-a0a0a0"> =&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  event.</span><span class="sk-6f42c1-ffc799">respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">handle</span><span class="sk-24292e-fff">(event.request))</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> handle</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> url </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  if</span><span class="sk-24292e-fff"> (url.pathname </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-032f62-99ffe4"> "/"</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // This is a request for the home page ("/").</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Redirect to country-specific path.</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // E.g. users in the US will be sent to "/US/".</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> country </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"CF-IpCountry"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">    url.pathname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "/"</span><span class="sk-d73a49-a0a0a0"> +</span><span class="sk-24292e-fff"> country </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-032f62-99ffe4"> "/"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-24292e-fff"> Response.</span><span class="sk-6f42c1-ffc799">redirect</span><span class="sk-24292e-fff">(url, </span><span class="sk-005cc5-ffc799">302</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-d73a49-a0a0a0"> if</span><span class="sk-24292e-fff"> (url.pathname.</span><span class="sk-6f42c1-ffc799">startsWith</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/images/"</span><span class="sk-24292e-fff">)) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // This is a request for an image (under "/images").</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // First, block third-party referrers to discourage</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // hotlinking.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    let</span><span class="sk-24292e-fff"> referer </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> request.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Referer"</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (referer </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(referer).hostname </span><span class="sk-d73a49-a0a0a0">!=</span><span class="sk-24292e-fff"> url.hostname) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">          "Hotlinking not allowed."</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">          { status: </span><span class="sk-005cc5-ffc799">403</span><span class="sk-24292e-fff"> })</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Hotlink check passed. Serve the image directly</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // from Google Cloud Storage, to save serving</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // costs. The image will be cached at Cloudflare's</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // edge according to its Cache-Control header.</span></span>
+<span class="line"><span class="sk-24292e-fff">    url.hostname </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4"> "example-bucket.storage.googleapis.com"</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(url, request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Regular request. Forward to origin server.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(request)</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<h3>It's Really Fast</h3>
+<p>Sometimes people ask us if JavaScript is "slow". Nothing could be further from the truth.</p>
+<p>Workers uses the V8 JavaScript engine built by Google for Chrome. V8 is not only one of the fastest implementations of JavaScript, but one of the fastest implementations of any dynamically-typed language, period. Due to the immense amount of work that has gone into optimizing V8, it outperforms just about any popular server programming language with the possible exceptions of C/C++, Rust, and Go. (Incidentally, we will support those soon, via WebAssembly.)</p>
+<p>The bottom line: <strong>A typical Worker script executes in less than one millisecond.</strong> Most users are unable to measure any <a href="https://www.cloudflare.com/learning/performance/glossary/what-is-latency" target="_blank" rel="noopener noreferrer">latency</a> difference when they enable Workers -- except, of course, when their worker actually <em>improves</em> latency by responding directly from the edge.</p>
+<p>On another speed-related note, Workers deploy fast, too. <strong>Workers deploy globally in under 30 seconds</strong> from the time you save and enable the script.</p>
+<h3>Pricing</h3>
+<p>Workers are a paid add-on to Cloudflare. We wanted to keep the pricing as simple as possible, so here's the deal:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="364" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=640&amp;h=326&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=715&amp;h=364&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=750&amp;h=382&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=828&amp;h=422&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1080&amp;h=550&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1280&amp;h=652&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1430&amp;h=728&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="$0.50 per million requests, with a $5 monthly minimum (covers your first 10 million requests)" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46KF1B0W01AXYW9GWZ5T06.png&amp;w=1009&amp;h=514&amp;f=webp" data-lightbox-width="1009" data-lightbox-height="514" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="364" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Get Started</h3>
+<ul>
+	<li><a href="https://www.cloudflare.com/a/overview" target="_blank" rel="noopener noreferrer">Log into your Cloudflare account</a> and visit the "Workers" section to configure Workers.</li>
+	<li><a href="https://cloudflareworkers.com" target="_blank" rel="noopener noreferrer">Experiment with Workers in the Playground</a>, no account required.</li>
+	<li><a href="https://developers.cloudflare.com/workers" target="_blank" rel="noopener noreferrer">Read the documentation</a> to learn how Workers are written.</li>
+	<li><a href="https://blog.cloudflare.com/introducing-cloudflare-workers">Check out the original announcement blog post</a> for more technical details.</li>
+	<li><a href="https://community.cloudflare.com/c/developers/workers" target="_blank" rel="noopener noreferrer">Discuss Workers in the Cloudflare Community.</a></li>
+</ul>
+<p>"Cloudflare Workers saves us a great deal of time. Managing bot traffic without Workers would consume valuable development and server resources that are better spent elsewhere."</p>
+<p>— John Thompson, Senior System Administrator, MaxMind</p>

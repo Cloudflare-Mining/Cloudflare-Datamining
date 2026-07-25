@@ -1,202 +1,96 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7x5nWo5hyqZNsmBYE7mt5U/6410aeb0610d377fc72896ac9a696217/privacy-edge-making-building-privacy-first-apps-easier.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>When Cloudflare was founded, our value proposition had three pillars: more secure, more reliable, and more performant. Over time, we’ve realized that a better Internet is also a more private Internet, and we want to play a role in building it.</p>
-	<p>User awareness and expectations of and for privacy are higher than ever, but we believe that application developers and platforms shouldn’t have to start from scratch. We’re excited to introduce Privacy Edge – Code Auditability, Privacy Gateway, Privacy Proxy, and Cooperative Analytics – a suite of products that make it easy for site owners and developers to build privacy into their products, by default.</p>
-	<div class="flex anchor relative">
-		<h3 id="building-network-level-privacy-into-the-foundations-of-app-infrastructure">Building network-level privacy into the foundations of app infrastructure</h3>
-		<a href="https://blog.cloudflare.com/#building-network-level-privacy-into-the-foundations-of-app-infrastructure" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As you’re browsing the web every day, information from the networks and apps you use can expose more information than you intend. When accumulated over time, <a href="https://coveryourtracks.eff.org" target="_blank" rel="noopener noreferrer">identifiers</a> like your IP address, cookies, browser and device characteristics create a unique profile that can be used to track your browsing activity. We don’t think this status quo is right for the Internet, or that consumers should have to understand the complex ecosystem of third-party trackers to maintain privacy. Instead, we’ve been working on technologies that encourage and enable website operators and app developers to build privacy into their products at the protocol level.</p>
-	<p>Getting privacy right is hard. We figured we’d start in the area we know best: building privacy into our network infrastructure. Like other work we’ve done in this space – offering <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">free SSL certificates</a> to make encrypted HTTP requests the norm, and <a href="https://blog.cloudflare.com/announcing-1111">launching 1.1.1.1</a>, a privacy-respecting DNS resolver, for example – the products we’re announcing today are built upon the foundations of open Internet standards, many of which are co-authored by members of our <a href="https://research.cloudflare.com" target="_blank" rel="noopener noreferrer">Research Team</a>.</p>
-	<p>Privacy Edge – the collection of products we’re announcing today, includes:</p>
-	<ul>
-		<li>
-			<p><b>Privacy Gateway:</b> A lightweight proxy that encrypts request data and forwards it through an IP-blinding relay</p>
-		</li>
-		<li>
-			<p><b>Code Auditability:</b> A solution to verifying that code delivered in your browser hasn’t been tampered with</p>
-		</li>
-		<li>
-			<p><b>Private Proxy:</b> A proxy that offers the protection of a VPN, built natively into application architecture</p>
-		</li>
-		<li>
-			<p><b>Cooperative Analytics:</b> A multi-party computation approach to measurement and analytics based on an emerging distributed aggregation protocol.</p>
-		</li>
-	</ul>
-	<p>Today’s announcement of Privacy Edge isn’t exhaustive. We’re continuing to explore, research and develop new privacy-enabling technologies, and we’re excited about all of them.</p>
-	<div class="flex anchor relative">
-		<h3 id="privacy-gateway-ip-address-privacy-for-your-users">Privacy Gateway: IP address privacy for your users</h3>
-		<a href="https://blog.cloudflare.com/#privacy-gateway-ip-address-privacy-for-your-users" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>There are situations in which applications only need to receive certain HTTP requests for app functionality, but linking that data with who or where it came from creates a privacy concern.</p>
-	<p>We recently partnered with <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank" rel="noopener noreferrer">Flo Health</a>, a period tracking app, to solve exactly that privacy concern: for users that have turned on “Anonymous mode,” Flo encrypts and forwards traffic through Privacy Gateway so that the network-level request information (most importantly, users’ IP addresses) are replaced by the Cloudflare network.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6ZyPg6bstt6kfkkKdgLrxX/635d48b71118bdb22b9fd8b2d6cb5adf/Screen-Shot-2022-10-10-at-3.23.56-PM.png" alt="" class="kg-image" width="1544" height="1092" loading="lazy">
-
-	</figure>
-	<p>How data is encapsulated, forwarded, and decapsulated in the Privacy Gateway system.</p>
-	<p>So how does it work? <b>Privacy Gateway</b> is based on Oblivious HTTP, an <a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp" target="_blank" rel="noopener noreferrer">emerging IETF standard</a>, and at a high level describes the following data flow:</p>
-	<ol>
-		<li>
-			<p>The client <a href="https://datatracker.ietf.org/doc/html/draft-ietf-ohai-ohttp-04#section-4.3" target="_blank" rel="noopener noreferrer">encapsulates an HTTP request</a> using the public key of the customer’s gateway server, and sends it to the relay over a client&lt;&gt;relay HTTPS connection.</p>
-		</li>
-		<li>
-			<p>The relay forwards the request to the server over its own relay&lt;&gt;gateway HTTPS connection.</p>
-		</li>
-		<li>
-			<p>The gateway server decapsulates the request, forwarding it to the application server.</p>
-		</li>
-		<li>
-			<p>The gateway server returns an <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank" rel="noopener noreferrer">encapsulated response</a> to the relay, which then forwards the result to the client.</p>
-		</li>
-	</ol>
-	<p>The novel feature Privacy Gateway implements from the OHTTP specification is that messages sent through the relay are encrypted (via <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">HPKE</a>) <i>to the application server</i>, so that the relay learns nothing of the application data beyond the source and destination of each message.</p>
-	<p>The end result is that the relay will know where the data request is coming from (i.e. users’ IP addresses) but not what it contains (i.e. contents of the request), and the application can see what the data contains but won’t know where it comes from. A win for end-user privacy.</p>
-	<div class="flex anchor relative">
-		<h3 id="delivering-verifiable-and-authentic-code-for-privacy-critical-applications">Delivering verifiable and authentic code for privacy-critical applications</h3>
-		<a href="https://blog.cloudflare.com/#delivering-verifiable-and-authentic-code-for-privacy-critical-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>How can you ensure that the code — the JavaScript, CSS or even HTML —delivered to a browser hasn’t been tampered with?</p>
-	<p>One way is to generate a hash (a consistent, unique, and shorter representation) of the code, and have two independent parties compare those hashes when delivered to the user's browser.</p>
-	<p>Our <b>Code Auditability</b> service does exactly that, and our recent <a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users">partnership with Meta</a> deployed it at scale to WhatsApp Web. Installing their <a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog" target="_blank" rel="noopener noreferrer">Code Verify browser extension</a> ensures users can be sure that they are delivered the code they’re intended to run – free of tampering or corrupted files.</p>
-	<p>With WhatsApp Web:</p>
-	<ol>
-		<li>
-			<p>WhatsApp publishes the latest version of their JavaScript libraries to their servers, and the corresponding hash for that version to Cloudflare’s audit endpoint.</p>
-		</li>
-		<li>
-			<p>A WhatsApp web client fetches the latest libraries from WhatsApp.</p>
-		</li>
-		<li>
-			<p>The Code Verify browser extension subsequently fetches the hash for that version from Cloudflare over a separate, secure connection.</p>
-		</li>
-		<li>
-			<p>Code Verify compares the “known good” hash from Cloudflare with the hash of the libraries it locally computed.</p>
-		</li>
-	</ol>
-	<p>If the hashes match, as they should under almost any circumstance, the code is “verified” from the perspective of the extension. If the hashes don’t match, it indicates that the code running on the user's browser is different from the code WhatsApp intended to run on all its user's browsers.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7J7iewJRkCFkCVS83Vz78z/78ab22efc4567616ce4710193358d18f/image4-22.png" alt="" class="kg-image" width="1999" height="1649" loading="lazy">
-
-	</figure>
-	<p>How Cloudflare and WhatsApp Web verify code shipped to users isn't tampered with.</p>
-	<p>Right now, we call this "Code Auditability" and we see a ton of other potential use cases including password managers, email applications, certificate issuance – all technologies that are potentially targets of tampering or security threats because of the sensitive data they handle.</p>
-	<p>In the near term, we’re working with other app developers to co-design solutions that meet their needs for privacy-critical products. In the long term, we’re working on standardizing the approach, including building on existing <a href="https://w3c.github.io/webappsec-csp" target="_blank" rel="noopener noreferrer">Content Security Policy</a> standards, or the <a href="https://github.com/WICG/isolated-web-apps" target="_blank" rel="noopener noreferrer">Isolated Web Apps</a> proposal, and even an approach towards building Code Auditability natively into the browser so that a browser extension (existing or new) isn't required.</p>
-	<div class="flex anchor relative">
-		<h3 id="privacy-preserving-proxying-built-into-applications">Privacy-preserving proxying – built into applications</h3>
-		<a href="https://blog.cloudflare.com/#privacy-preserving-proxying-built-into-applications" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>What if applications could build the protection of a VPN into their products, by default?</p>
-	<p><b>Privacy Proxy</b> is our platform to proxy traffic through Cloudflare using a combination of privacy protocols that make it much more difficult to track users’ web browsing activity over time. At a high level, the Privacy Proxy Platform encrypts browsing traffic, replaces a device’s IP address with one from the Cloudflare network, and then forwards it onto its destination.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7o0fEdQW7qgzJugHzkc4qO/cc8b78a91f186f4706ba163cd9f31d2b/image5-21.png" alt="" class="kg-image" width="1833" height="1108" loading="lazy">
-
-	</figure>
-	<p>System architecture for Privacy Proxy.</p>
-	<p>The Privacy Proxy platform consists of several pieces and protocols to make it work:</p>
-	<ol>
-		<li>
-			<p>Privacy API: a service that issues unique <a href="https://www.ietf.org/archive/id/draft-private-access-tokens-01.html" target="_blank" rel="noopener noreferrer">cryptographic tokens</a>, later redeemed against the proxy service to ensure that only valid clients are able to connect to the service.</p>
-		</li>
-		<li>
-			<p>Geolocated IP assignment: a service that assigns each connection a new Cloudflare IP address based on the client’s <a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">approximate location</a>.</p>
-		</li>
-		<li>
-			<p>Privacy Proxy: the <a href="https://datatracker.ietf.org/wg/masque/about/?cf_target_id=FFEC349381334FBB00C45C937C7B2088" target="_blank" rel="noopener noreferrer">HTTP CONNECT</a>-based service running on Cloudflare’s network that handles the proxying of traffic. This service validates the privacy token passed by the client, enforces any double spend prevention necessary for the token.</p>
-		</li>
-	</ol>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7mtDkUW6hrd81lfVtxZJMw/5d5d85c528cc01e7b2d8be25c39fe000/image3-41.png" alt="" class="kg-image" width="1792" height="728" loading="lazy">
-
-	</figure>
-	<p>We’re working on several partnerships to provide network-level protection for user’s browsing traffic, most recently with Apple for <a href="https://blog.cloudflare.com/icloud-private-relay">Private Relay</a>. Private Relay’s design adds privacy to the traditional proxy design by adding an additional hop – an ingress proxy, operated by Apple – that separates handling users’ identities (i.e., whether they’re a valid iCloud+ user) from the proxying of traffic – the egress proxy, operated by Cloudflare.</p>
-	<div class="flex anchor relative">
-		<h3 id="measurements-and-analytics-without-seeing-individual-inputs">Measurements and analytics without seeing individual inputs</h3>
-		<a href="https://blog.cloudflare.com/#measurements-and-analytics-without-seeing-individual-inputs" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>What if you could calculate the results of a poll, without seeing individuals' votes, or update inputs to a <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">machine learning model</a> that predicted COVID-19 exposure without seeing who was exposed?</p>
-	<p>It might seem like magic, but it's actually just cryptography. <b>Cooperative Analytics</b> is a multi-party computation system for aggregating privacy-sensitive user measurements that doesn’t reveal individual inputs, based on the <a href="https://github.com/ietf-wg-ppm/draft-ietf-ppm-dap" target="_blank" rel="noopener noreferrer">Distributed Aggregation Protocol</a> (DAP).</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/l4oSgLQa7hJYT0ZDAR1b1/86d7511c982984e782f84a3e10e8e1c6/image6-11.png" alt="" class="kg-image" width="1612" height="656" loading="lazy">
-
-	</figure>
-	<p>How data flows through the Cooperative Analytics system.</p>
-	<p>At a high-level, DAP takes the core concept behind <a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank" rel="noopener noreferrer">MapReduce</a> — what became a fundamental way to aggregate large amounts of data — and rethinks how it would work with privacy-built in, so that each individual input cannot be (provably) mapped back to the original user.</p>
-	<p>Specifically:</p>
-	<ol>
-		<li>
-			<p>Measurements are first "secret shared," or split into multiple pieces. For example, if a user's input is the number 5, her input could be split into two shares of [10,-5].</p>
-		</li>
-		<li>
-			<p>The input share pieces are then distributed between different, non-colluding servers for aggregation (in this example, simply summed up). Similar to Privacy Gateway or Private Proxy, no one party has all the information needed to reconstruct any user's input.</p>
-		</li>
-		<li>
-			<p>Depending on the use case, the servers will then communicate with one another in order to verify that the input is "valid" – so that no one can insert an input that throws off the entire results. The magic of multi-party computation is that the servers can perform this computation without learning anything about the input beyond its validity.</p>
-		</li>
-		<li>
-			<p>Once enough input shares have been aggregated to ensure strong anonymity and a statistically significant sample size – each server sends its sum of the input shares to the overall consumer of this service to then compute the final result.</p>
-		</li>
-	</ol>
-	<p>For simplicity, the above example talks about measurements as summed up numbers, but DAP describes algorithms for multiple different types of inputs: the most common string input, or a linear regression, for example.</p>
-	<p>Early iterations of this system have been implemented by Apple and Google for COVID-19 <a href="https://www.abetterinternet.org/post/prio-services-for-covid-en" target="_blank" rel="noopener noreferrer">exposure notifications</a>, but there are many other potential use cases for a system like this: think sensitive browser telemetry, geolocation data – any situation where one has a question about a population of users, but doesn't want to have to measure them directly.</p>
-	<p>Because this system requires different parties to operate separate aggregation servers, Cloudflare is working with several partners to act as one of the aggregation servers for DAP. We’re calling our implementation <a href="https://github.com/cloudflare/daphne" target="_blank" rel="noopener noreferrer">Daphne</a>, and it’s built on top of Cloudflare Workers.</p>
-	<div class="flex anchor relative">
-		<h3 id="privacy-still-requires-trust">Privacy still requires trust</h3>
-		<a href="https://blog.cloudflare.com/#privacy-still-requires-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Part of what's cool about these systems is that they distribute information — whether user data, network traffic, or both — amongst multiple parties.</p>
-	<p>While we think that products included in Privacy Edge are moving the Internet in the right direction, we understand that trust only goes so far. To that end, we're trying to be as transparent as possible.</p>
-	<ul>
-		<li>
-			<p>We've open sourced the code for Privacy Gateway's server and DAP's aggregation server, and all the standards work we're doing is in public with the IETF.</p>
-		</li>
-		<li>
-			<p>We're also working on detailed and accessible privacy notices for each product that describe exactly what kind of network data Cloudflare sees, doesn't see, and how long we retain it for.</p>
-		</li>
-		<li>
-			<p>And, most importantly, we’re continuing to develop new protocols (like <a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp" target="_blank" rel="noopener noreferrer">Oblivious HTTP</a>) and technologies that don’t just require trust, but that can provably minimize the data observed or logged.</p>
-		</li>
-	</ul>
-	<p>We'd love to see more folks get involved in the standards space, and we welcome feedback from privacy experts and potential customers on how we can improve the integrity of these systems.</p>
-	<div class="flex anchor relative">
-		<h3 id="were-looking-for-collaborators">We’re looking for collaborators</h3>
-		<a href="https://blog.cloudflare.com/#were-looking-for-collaborators" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Privacy Edge products are currently in early access.</p>
-	<p>We're looking for application developers who want to build more private user-facing apps with Privacy Gateway; browser and existing VPN vendors looking to improve network-level security for their users via Privacy Proxy; and anyone shipping sensitive software on the Internet that is looking to iterate with us on code auditability and web app signing.</p>
-	<p>If you're interested in working with us on furthering privacy on the Internet, then <a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank" rel="noopener noreferrer">please reach out</a>, and we’ll be in touch!</p>
-</div>
+<p>When Cloudflare was founded, our value proposition had three pillars: more secure, more reliable, and more performant. Over time, we’ve realized that a better Internet is also a more private Internet, and we want to play a role in building it.</p>
+<p>User awareness and expectations of and for privacy are higher than ever, but we believe that application developers and platforms shouldn’t have to start from scratch. We’re excited to introduce Privacy Edge – Code Auditability, Privacy Gateway, Privacy Proxy, and Cooperative Analytics – a suite of products that make it easy for site owners and developers to build privacy into their products, by default.</p>
+<h3>Building network-level privacy into the foundations of app infrastructure</h3>
+<p>As you’re browsing the web every day, information from the networks and apps you use can expose more information than you intend. When accumulated over time, <a href="https://coveryourtracks.eff.org" target="_blank" rel="noopener noreferrer">identifiers</a> like your IP address, cookies, browser and device characteristics create a unique profile that can be used to track your browsing activity. We don’t think this status quo is right for the Internet, or that consumers should have to understand the complex ecosystem of third-party trackers to maintain privacy. Instead, we’ve been working on technologies that encourage and enable website operators and app developers to build privacy into their products at the protocol level.</p>
+<p>Getting privacy right is hard. We figured we’d start in the area we know best: building privacy into our network infrastructure. Like other work we’ve done in this space – offering <a href="https://www.cloudflare.com/application-services/products/ssl" target="_blank" rel="noopener noreferrer">free SSL certificates</a> to make encrypted HTTP requests the norm, and <a href="https://blog.cloudflare.com/announcing-1111">launching 1.1.1.1</a>, a privacy-respecting DNS resolver, for example – the products we’re announcing today are built upon the foundations of open Internet standards, many of which are co-authored by members of our <a href="https://research.cloudflare.com" target="_blank" rel="noopener noreferrer">Research Team</a>.</p>
+<p>Privacy Edge – the collection of products we’re announcing today, includes:</p>
+<ul>
+	<li><strong>Privacy Gateway:</strong> A lightweight proxy that encrypts request data and forwards it through an IP-blinding relay</li>
+	<li><strong>Code Auditability:</strong> A solution to verifying that code delivered in your browser hasn’t been tampered with</li>
+	<li><strong>Private Proxy:</strong> A proxy that offers the protection of a VPN, built natively into application architecture</li>
+	<li><strong>Cooperative Analytics:</strong> A multi-party computation approach to measurement and analytics based on an emerging distributed aggregation protocol.</li>
+</ul>
+<p>Today’s announcement of Privacy Edge isn’t exhaustive. We’re continuing to explore, research and develop new privacy-enabling technologies, and we’re excited about all of them.</p>
+<h3>Privacy Gateway: IP address privacy for your users</h3>
+<p>There are situations in which applications only need to receive certain HTTP requests for app functionality, but linking that data with who or where it came from creates a privacy concern.</p>
+<p>We recently partnered with <a href="https://www.theverge.com/2022/9/14/23351957/flo-period-tracker-privacy-anonymous-mode" target="_blank" rel="noopener noreferrer">Flo Health</a>, a period tracking app, to solve exactly that privacy concern: for users that have turned on “Anonymous mode,” Flo encrypts and forwards traffic through Privacy Gateway so that the network-level request information (most importantly, users’ IP addresses) are replaced by the Cloudflare network.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="506" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=715&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=640&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=715&amp;h=506&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=750&amp;h=531&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=828&amp;h=586&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=1080&amp;h=764&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=1280&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=1430&amp;h=1012&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1394 Embedded Image - REkTYt" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487YVSDJXZ93BPF1T3BR92.png&amp;w=1544&amp;h=1092&amp;f=webp" data-lightbox-width="1544" data-lightbox-height="1092" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="506" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>How data is encapsulated, forwarded, and decapsulated in the Privacy Gateway system.</p>
+<p>So how does it work? <strong>Privacy Gateway</strong> is based on Oblivious HTTP, an <a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp" target="_blank" rel="noopener noreferrer">emerging IETF standard</a>, and at a high level describes the following data flow:</p>
+<ol>
+	<li>The client <a href="https://datatracker.ietf.org/doc/html/draft-ietf-ohai-ohttp-04#section-4.3" target="_blank" rel="noopener noreferrer">encapsulates an HTTP request</a> using the public key of the customer’s gateway server, and sends it to the relay over a client&lt;&gt;relay HTTPS connection.</li>
+	<li>The relay forwards the request to the server over its own relay&lt;&gt;gateway HTTPS connection.</li>
+	<li>The gateway server decapsulates the request, forwarding it to the application server.</li>
+	<li>The gateway server returns an <a href="https://datatracker.ietf.org/doc/html/draft-thomson-http-oblivious-02#section-5.2" target="_blank" rel="noopener noreferrer">encapsulated response</a> to the relay, which then forwards the result to the client.</li>
+</ol>
+<p>The novel feature Privacy Gateway implements from the OHTTP specification is that messages sent through the relay are encrypted (via <a href="https://blog.cloudflare.com/hybrid-public-key-encryption">HPKE</a>) <em>to the application server</em>, so that the relay learns nothing of the application data beyond the source and destination of each message.</p>
+<p>The end result is that the relay will know where the data request is coming from (i.e. users’ IP addresses) but not what it contains (i.e. contents of the request), and the application can see what the data contains but won’t know where it comes from. A win for end-user privacy.</p>
+<h3>Delivering verifiable and authentic code for privacy-critical applications</h3>
+<p>How can you ensure that the code — the JavaScript, CSS or even HTML —delivered to a browser hasn’t been tampered with?</p>
+<p>One way is to generate a hash (a consistent, unique, and shorter representation) of the code, and have two independent parties compare those hashes when delivered to the user's browser.</p>
+<p>Our <strong>Code Auditability</strong> service does exactly that, and our recent <a href="https://blog.cloudflare.com/cloudflare-verifies-code-whatsapp-web-serves-users">partnership with Meta</a> deployed it at scale to WhatsApp Web. Installing their <a href="https://chrome.google.com/webstore/detail/code-verify/llohflklppcaghdpehpbklhlfebooeog" target="_blank" rel="noopener noreferrer">Code Verify browser extension</a> ensures users can be sure that they are delivered the code they’re intended to run – free of tampering or corrupted files.</p>
+<p>With WhatsApp Web:</p>
+<ol>
+	<li>WhatsApp publishes the latest version of their JavaScript libraries to their servers, and the corresponding hash for that version to Cloudflare’s audit endpoint.</li>
+	<li>A WhatsApp web client fetches the latest libraries from WhatsApp.</li>
+	<li>The Code Verify browser extension subsequently fetches the hash for that version from Cloudflare over a separate, secure connection.</li>
+	<li>Code Verify compares the “known good” hash from Cloudflare with the hash of the libraries it locally computed.</li>
+</ol>
+<p>If the hashes match, as they should under almost any circumstance, the code is “verified” from the perspective of the extension. If the hashes don’t match, it indicates that the code running on the user's browser is different from the code WhatsApp intended to run on all its user's browsers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="590" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=715&amp;h=590&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=640&amp;h=528&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=715&amp;h=590&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=750&amp;h=619&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=828&amp;h=683&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=1080&amp;h=891&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=1280&amp;h=1056&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=1430&amp;h=1180&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1394 Embedded Image - EJ72HB" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48RFT590XTEEAFEV6AXZKN.png&amp;w=1920&amp;h=1584&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1584" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="590" class="pt-portable-image-media"></div>
+</figure>
+<p>How Cloudflare and WhatsApp Web verify code shipped to users isn't tampered with.</p>
+<p>Right now, we call this "Code Auditability" and we see a ton of other potential use cases including password managers, email applications, certificate issuance – all technologies that are potentially targets of tampering or security threats because of the sensitive data they handle.</p>
+<p>In the near term, we’re working with other app developers to co-design solutions that meet their needs for privacy-critical products. In the long term, we’re working on standardizing the approach, including building on existing <a href="https://w3c.github.io/webappsec-csp" target="_blank" rel="noopener noreferrer">Content Security Policy</a> standards, or the <a href="https://github.com/WICG/isolated-web-apps" target="_blank" rel="noopener noreferrer">Isolated Web Apps</a> proposal, and even an approach towards building Code Auditability natively into the browser so that a browser extension (existing or new) isn't required.</p>
+<h3>Privacy-preserving proxying – built into applications</h3>
+<p>What if applications could build the protection of a VPN into their products, by default?</p>
+<p><strong>Privacy Proxy</strong> is our platform to proxy traffic through Cloudflare using a combination of privacy protocols that make it much more difficult to track users’ web browsing activity over time. At a high level, the Privacy Proxy Platform encrypts browsing traffic, replaces a device’s IP address with one from the Cloudflare network, and then forwards it onto its destination.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="432" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=640&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=715&amp;h=432&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=750&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=828&amp;h=500&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=1080&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=1280&amp;h=773&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=1430&amp;h=864&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1394 Embedded Image - O9wDpS" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48ZCRZT3J3BZBZVN4HN1ZW.png&amp;w=1833&amp;h=1108&amp;f=webp" data-lightbox-width="1833" data-lightbox-height="1108" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="432" class="pt-portable-image-media"></div>
+</figure>
+<p>System architecture for Privacy Proxy.</p>
+<p>The Privacy Proxy platform consists of several pieces and protocols to make it work:</p>
+<ol>
+	<li>Privacy API: a service that issues unique <a href="https://www.ietf.org/archive/id/draft-private-access-tokens-01.html" target="_blank" rel="noopener noreferrer">cryptographic tokens</a>, later redeemed against the proxy service to ensure that only valid clients are able to connect to the service.</li>
+	<li>Geolocated IP assignment: a service that assigns each connection a new Cloudflare IP address based on the client’s <a href="https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network">approximate location</a>.</li>
+	<li>Privacy Proxy: the <a href="https://datatracker.ietf.org/wg/masque/about/?cf_target_id=FFEC349381334FBB00C45C937C7B2088" target="_blank" rel="noopener noreferrer">HTTP CONNECT</a>-based service running on Cloudflare’s network that handles the proxying of traffic. This service validates the privacy token passed by the client, enforces any double spend prevention necessary for the token.</li>
+</ol>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="290" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=715&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=750&amp;h=304&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=828&amp;h=336&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=1080&amp;h=438&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=1280&amp;h=519&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=1430&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1394 Embedded Image - UECX9V" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48YX0QS6RCZD14AZ6GKDVE.png&amp;w=1792&amp;h=728&amp;f=webp" data-lightbox-width="1792" data-lightbox-height="728" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="290" class="pt-portable-image-media"></div>
+</figure>
+<p>We’re working on several partnerships to provide network-level protection for user’s browsing traffic, most recently with Apple for <a href="https://blog.cloudflare.com/icloud-private-relay">Private Relay</a>. Private Relay’s design adds privacy to the traditional proxy design by adding an additional hop – an ingress proxy, operated by Apple – that separates handling users’ identities (i.e., whether they’re a valid iCloud+ user) from the proxying of traffic – the egress proxy, operated by Cloudflare.</p>
+<h3>Measurements and analytics without seeing individual inputs</h3>
+<p>What if you could calculate the results of a poll, without seeing individuals' votes, or update inputs to a <a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">machine learning model</a> that predicted COVID-19 exposure without seeing who was exposed?</p>
+<p>It might seem like magic, but it's actually just cryptography. <strong>Cooperative Analytics</strong> is a multi-party computation system for aggregating privacy-sensitive user measurements that doesn’t reveal individual inputs, based on the <a href="https://github.com/ietf-wg-ppm/draft-ietf-ppm-dap" target="_blank" rel="noopener noreferrer">Distributed Aggregation Protocol</a> (DAP).</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="291" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=640&amp;h=260&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=715&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=750&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=828&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=1080&amp;h=440&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=1280&amp;h=521&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=1430&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1394 Embedded Image - Vj5gPC" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49H46722FHZRBKP7YKK5GK.png&amp;w=1612&amp;h=656&amp;f=webp" data-lightbox-width="1612" data-lightbox-height="656" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="291" class="pt-portable-image-media"></div>
+</figure>
+<p>How data flows through the Cooperative Analytics system.</p>
+<p>At a high-level, DAP takes the core concept behind <a href="https://en.wikipedia.org/wiki/MapReduce" target="_blank" rel="noopener noreferrer">MapReduce</a> — what became a fundamental way to aggregate large amounts of data — and rethinks how it would work with privacy-built in, so that each individual input cannot be (provably) mapped back to the original user.</p>
+<p>Specifically:</p>
+<ol>
+	<li>Measurements are first "secret shared," or split into multiple pieces. For example, if a user's input is the number 5, her input could be split into two shares of [10,-5].</li>
+	<li>The input share pieces are then distributed between different, non-colluding servers for aggregation (in this example, simply summed up). Similar to Privacy Gateway or Private Proxy, no one party has all the information needed to reconstruct any user's input.</li>
+	<li>Depending on the use case, the servers will then communicate with one another in order to verify that the input is "valid" – so that no one can insert an input that throws off the entire results. The magic of multi-party computation is that the servers can perform this computation without learning anything about the input beyond its validity.</li>
+	<li>Once enough input shares have been aggregated to ensure strong anonymity and a statistically significant sample size – each server sends its sum of the input shares to the overall consumer of this service to then compute the final result.</li>
+</ol>
+<p>For simplicity, the above example talks about measurements as summed up numbers, but DAP describes algorithms for multiple different types of inputs: the most common string input, or a linear regression, for example.</p>
+<p>Early iterations of this system have been implemented by Apple and Google for COVID-19 <a href="https://www.abetterinternet.org/post/prio-services-for-covid-en" target="_blank" rel="noopener noreferrer">exposure notifications</a>, but there are many other potential use cases for a system like this: think sensitive browser telemetry, geolocation data – any situation where one has a question about a population of users, but doesn't want to have to measure them directly.</p>
+<p>Because this system requires different parties to operate separate aggregation servers, Cloudflare is working with several partners to act as one of the aggregation servers for DAP. We’re calling our implementation <a href="https://github.com/cloudflare/daphne" target="_blank" rel="noopener noreferrer">Daphne</a>, and it’s built on top of Cloudflare Workers.</p>
+<h3>Privacy still requires trust</h3>
+<p>Part of what's cool about these systems is that they distribute information — whether user data, network traffic, or both — amongst multiple parties.</p>
+<p>While we think that products included in Privacy Edge are moving the Internet in the right direction, we understand that trust only goes so far. To that end, we're trying to be as transparent as possible.</p>
+<ul>
+	<li>We've open sourced the code for Privacy Gateway's server and DAP's aggregation server, and all the standards work we're doing is in public with the IETF.</li>
+	<li>We're also working on detailed and accessible privacy notices for each product that describe exactly what kind of network data Cloudflare sees, doesn't see, and how long we retain it for.</li>
+	<li>And, most importantly, we’re continuing to develop new protocols (like <a href="https://datatracker.ietf.org/doc/draft-ietf-ohai-ohttp" target="_blank" rel="noopener noreferrer">Oblivious HTTP</a>) and technologies that don’t just require trust, but that can provably minimize the data observed or logged.</li>
+</ul>
+<p>We'd love to see more folks get involved in the standards space, and we welcome feedback from privacy experts and potential customers on how we can improve the integrity of these systems.</p>
+<h3>We’re looking for collaborators</h3>
+<p>Privacy Edge products are currently in early access.</p>
+<p>We're looking for application developers who want to build more private user-facing apps with Privacy Gateway; browser and existing VPN vendors looking to improve network-level security for their users via Privacy Proxy; and anyone shipping sensitive software on the Internet that is looking to iterate with us on code auditability and web app signing.</p>
+<p>If you're interested in working with us on furthering privacy on the Internet, then <a href="https://www.cloudflare.com/lp/privacy-edge" target="_blank" rel="noopener noreferrer">please reach out</a>, and we’ll be in touch!</p>

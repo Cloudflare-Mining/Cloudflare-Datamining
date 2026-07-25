@@ -1,0 +1,392 @@
+<p>今天，我們很高興地宣佈 Cloudflare 正在參與 <a href="https://www.as112.net" target="_blank" rel="noopener noreferrer">AS112 專案</a>，成為這一社群營運、鬆散協調的 Anycast 部署的 DNS 伺服器營運商，這些伺服器主要回應被錯誤導向並在網際網路上產生大量無用負載的反向 DNS 查閱查詢。</p>
+<p>透過新增 Cloudflare 全球網路，我們可以大大改進這一分散式公用服務的穩定性、可靠性和效能。</p>
+<h2>何謂 AS112 專案</h2>
+<p>AS112 專案是為了執行重要網路服務而開展的一項社群工作，該網路服務旨在處理針對絕不應出現在公用 DNS 系統中的僅限私人使用之位址的反向 DNS 查閱查詢。例如，在本篇部落格文章發佈前七天中，Cloudflare 的 1.1.1.1 解析程式收到了超過 980 億個這樣的查詢——<em>所有這些查詢在 Domain Name System 中都沒有任何有用的回應</em>。</p>
+<p>我們可以透過一些歷史來瞭解背景資訊。網際網路通訊協定 (IP) 位址對網路通訊至關重要。很多網路使用為私人使用而保留的 IPv4 位址，而網路中的裝置能夠在傳輸資訊前使用網路位址轉譯 (NAT) 連線至網際網路，NAT 處理程序可將一或多個本機私人位址對應至一或多個全域 IP 位址，反之亦然。</p>
+<p>您的家庭網際網路路由器很有可能為您提供這一功能。您可能會發現，在家時，您的電腦的 IP 位址類似於 192.168.1.42。這是一個私人使用位址的範例，它可以在家使用，但不能在公用網際網路上使用。您的家庭路由器會透過 NAT 將其轉譯為 ISP 指派給您家的位址，後者可以在網際網路上使用。</p>
+<p>以下是在 <a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank" rel="noopener noreferrer">RFC 1918</a> 中指定的為「私人使用」而保留的位址。</p>
+<p>位址區塊</p>
+<div id="html-block-kp" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Address block</th>
+				<th>Address range</th>
+				<th>Number of addresses</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>10.0.0.0/8</td>
+				<td>10.0.0.0 – 10.255.255.255</td>
+				<td>16,777,216</td>
+			</tr>
+			<tr>
+				<td>172.16.0.0/12</td>
+				<td>172.16.0.0 – 172.31.255.255</td>
+				<td>1,048,576</td>
+			</tr>
+			<tr>
+				<td>192.168.0.0/16</td>
+				<td>192.168.0.0 – 192.168.255.255</td>
+				<td>65,536</td>
+			</tr>
+		</tbody>
+	</table>
+	<small>(Reserved private IPv4 network ranges)</small>
+</div>
+<p>位址範圍</p>
+<p>位址數目</p>
+<p>10.0.0.0/8</p>
+<p>10.0.0.0 – 10.255.255.255</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Lookup the domain name associated with IPv4 address 172.64.35.46</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># “+short” option make it output the short form of answers only</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-032f62-99ffe4"> PTR</span><span class="sk-032f62-99ffe4"> 46.35.64.172.in-addr.arpa</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Or use the shortcut “-x” for reverse lookups</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-005cc5-99ffe4"> -x</span><span class="sk-005cc5-ffc799"> 172.64.35.46</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Lookup the domain name associated with IPv6 address 2606:4700:58::a29f:2c2e</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-032f62-99ffe4"> PTR</span><span class="sk-032f62-99ffe4"> e.2.c.2.f.9.2.a.0.0.0.0.0.0.0.0.0.0.0.0.8.5.0.0.0.0.7.4.6.0.6.2.ip6.arpa.</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Or use the shortcut “-x” for reverse lookups</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @1.1.1.1</span><span class="sk-005cc5-99ffe4"> -x</span><span class="sk-032f62-99ffe4"> 2606:4700:58::a29f:2c2e</span><span class="sk-032f62-99ffe4"> +short</span><span class="sk-24292e-fff">  </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">hunts.ns.cloudflare.com.</span></span></code></pre>
+</div>
+<p>16,777,216</p>
+<p>172.16.0.0/12</p>
+<p>172.16.0.0 – 172.31.255.255</p>
+<p>1,048,576</p>
+<p>192.168.0.0/16</p>
+<p>192.168.0.0 – 192.168.255.255</p>
+<p>65,536</p>
+<p>（保留的私人 IPv4 網路範圍）</p>
+<p>儘管保留的位址本身遭到封鎖，無法出現在公用網際網路上，但私人環境中的裝置和程式可能偶爾會發起對應於這些位址的 DNS 查詢。這些查詢稱為「反向對應」，因為它們會詢問 DNS 是否存在與位址相關聯的名稱。</p>
+<h3>反向 DNS 查閱</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @blackhole-1.iana.org</span><span class="sk-005cc5-99ffe4"> -x</span><span class="sk-005cc5-ffc799"> 192.168.1.1</span><span class="sk-032f62-99ffe4"> +nord</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">Got</span><span class="sk-032f62-99ffe4"> answer:</span></span>
+<span class="line"><span class="sk-24292e-fff">;; </span><span class="sk-6f42c1-ffc799">-</span><span class="sk-24292e-fff">&gt;&gt;</span><span class="sk-032f62-99ffe4">HEADER</span><span class="sk-d73a49-a0a0a0">&lt;&lt;-</span><span class="sk-032f62-fff"> opcode:</span><span class="sk-6f42c1-ffc799"> QUERY,</span><span class="sk-032f62-99ffe4"> status:</span><span class="sk-032f62-99ffe4"> NXDOMAIN,</span><span class="sk-032f62-99ffe4"> id:</span><span class="sk-005cc5-ffc799"> 23870</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; flags: qr aa; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; OPT PSEUDOSECTION:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">; EDNS: version: 0, flags:; udp: 4096</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; QUESTION SECTION:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">;1.1.168.192.in-addr.arpa.	IN	PTR</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-032f62-99ffe4">;; AUTHORITY SECTION:</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">168.192.in-addr.arpa.	10800	IN	SOA	168.192.in-addr.arpa. nobody.localhost. 42 86400 43200 604800 10800</span></span></code></pre>
+</div>
+<p>反向 DNS 查閱是一個與更常用的 DNS 查閱相反的過程（DNS 查閱每天用來將 <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">www.cloudflare.com</a> 之類的名稱轉譯為對應的 IP 位址）。該查詢用來查閱與給定 IP 位址（特別是與路由器和交換器相關聯的那些位址）相關聯的網域名稱。例如，網路管理員和研究人員使用反向對應來協助理解資料封包在網路中所採用的路徑，並且理解有意義的名稱比理解無意義的數字要容易得多。</p>
+<p>反向對應透過查詢 DNS 伺服器中的指標記錄 (<a href="https://www.cloudflare.com/learning/dns/dns-records/dns-ptr-record" target="_blank" rel="noopener noreferrer">PTR</a>) 來完成。PTR 記錄會儲存區段反轉的的 IP 位址，並將「.in-addr.arpa」附加至結尾。例如，IP 位址 192.0.2.1 會將 PTR 記錄儲存為 1.2.0.192.in-addr.arpa。在 IPv6 中，PTR 記錄會儲存在「.ip6.arpa」網域而非「.in-addr.arpa」內。下面是一些使用 dig 命令列工具進行查詢的範例。</p>
+<h3>私人使用位址造成的 DNS 問題</h3>
+<p>所涉及的私人使用位址僅具有本地意義，公用 DNS 無法解析。換言之，公用 DNS 無法對沒有全域意義的問題提供有用的回答。因此，網路管理員最好能夠確保在本機回應針對私人使用位址的查詢。然而，這類查詢在公用 DNS 中遵循正常的委派路徑而非在網路內得到回應的情況並不罕見。這會產生不必要的負載。</p>
+<p>根據私人使用的定義，它們在公用領域沒有擁有權，因此沒有權威 DNS 伺服器來回應查詢。一開始，根伺服器會回應所有這些類型的查詢，因為它們服務於 IN-ADDR.ARPA 區域。</p>
+<p>隨著時間的推移，由於私人使用位址的廣泛部署以及網際網路的持續增長，IN-ADDR.ARPA DNS 基礎結構上的流量不斷增加，而這些垃圾查詢產生的負載開始引起關注。因此，有人提出了卸載與私人使用位址相關的 IN-ADDR.ARPA 查詢的想法。隨後，在一次根伺服器營運商的私人會議上，有人提出了使用 Anycast 來為此散發權威 DNS 服務的想法。最後，推出了 AS112 服務，來為垃圾提供一個替代目標。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">  ; </span><span class="sk-6f42c1-ffc799">db.dd-empty</span></span>
+<span class="line"><span class="sk-24292e-fff">   ;</span></span>
+<span class="line"><span class="sk-24292e-fff">   ; </span><span class="sk-6f42c1-ffc799">Empty</span><span class="sk-032f62-99ffe4"> zone</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> direct</span><span class="sk-032f62-99ffe4"> delegation</span><span class="sk-032f62-99ffe4"> AS112</span><span class="sk-032f62-99ffe4"> service.</span></span>
+<span class="line"><span class="sk-24292e-fff">   ;</span></span>
+<span class="line"><span class="sk-24292e-fff">   $TTL    </span><span class="sk-032f62-99ffe4">1W</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   @</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  SOA</span><span class="sk-032f62-99ffe4">  prisoner.iana.org.</span><span class="sk-032f62-99ffe4"> hostmaster.root-servers.org.</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1</span><span class="sk-24292e-fff">         ; </span><span class="sk-6f42c1-ffc799">serial</span><span class="sk-032f62-99ffe4"> number</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">refresh</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1M</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">retry</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">expire</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff"> )    ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
+<span class="line"><span class="sk-24292e-fff">   ;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-1.iana.org.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole-2.iana.org.</span></span></code></pre>
+</div>
+<h3><strong>AS112 專案就此誕生</strong></h3>
+<div id="html-block-k25" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Name server</th>
+				<th>IPv4 address</th>
+				<th>IPv6 address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>blackhole-1.iana.org</td>
+				<td>192.175.48.6</td>
+				<td>2620:4f:8000::6</td>
+			</tr>
+			<tr>
+				<td>blackhole-2.iana.org</td>
+				<td>192.175.48.42</td>
+				<td>2620:4f:8000::42</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>為了解決這個問題，網際網路社群設定了特殊的 DNS 伺服器（稱為「黑洞伺服器」）作為權威名稱伺服器，來回應私人使用位址區塊 10.0.0.0/8、172.16.0.0/12、192.168.0.0/16 以及連結-本機位址區塊 169.254.0.0/16（同樣僅具有本地意義）的反向對應。因為將相關區域直接委派給黑洞伺服器，所以這種方法被稱為「直接委派」。</p>
+<p>該專案設定的前兩個黑洞伺服器為：blackhole-1.iana.org 和 blackhole-2.iana.org。</p>
+<p>包括 DNS 名稱伺服器在內的任何伺服器都需要 IP 位址才能連線。IP 位址必須也與自主系統碼 (ASN) 相關聯，網路才能辨識其他網路並將資料封包路由至 IP 位址目的地。為了解決這個問題，會建立一個新的權威 DNS 服務，但為了使其發揮作用，社群必須為伺服器指定 IP 位址，而為了促進其可用性，還要指定一個 AS 編號，網路營運商可使用該編號來連線到（或提供）新服務。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># zone: example.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">www.example.com.</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">		203.0.113.1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">foo.example.com.</span><span class="sk-032f62-99ffe4">	DNAME</span><span class="sk-032f62-99ffe4">	example.net.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># zone: example.net</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">example.net.</span><span class="sk-032f62-99ffe4">		A</span><span class="sk-005cc5-ffc799">		203.0.113.2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">bar.example.net.</span><span class="sk-032f62-99ffe4">	A</span><span class="sk-005cc5-ffc799">		203.0.113.3</span></span></code></pre>
+</div>
+<p>選取的 AS 編號（由美國網際網路編號註冊機構提供）與該專案同名，即 112。開始是一小部分根伺服器營運商，後來成長為一群志工名稱伺服器營運商（包括很多其他組織）。他們執行黑洞伺服器的 Anycast 執行個體，這些執行個體一起形成一個分散式接收器，用於針對傳送至公用網際網路的私人網路和連結-本機位址進行反向 DNS 查閱。</p>
+<div id="html-block-k2f" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Query (Type + Name)</th>
+				<th>Substitution</th>
+				<th>Final result</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>A www.example.com</td>
+				<td>(no DNAME, don’t apply)</td>
+				<td>203.0.113.1</td>
+			</tr>
+			<tr>
+				<td>DNAME foo.example.com</td>
+				<td>(don’t apply to the owner name itself)</td>
+				<td>example.net</td>
+			</tr>
+			<tr>
+				<td>A foo.example.com</td>
+				<td>(don’t apply to the owner name itself)</td>
+				<td>&lt;NXDOMAIN&gt;</td>
+			</tr>
+			<tr>
+				<td>A bar.foo.example.com</td>
+				<td>bar.example.net</td>
+				<td>203.0.113.2</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>針對私人使用位址的反向 DNS 查閱會看到像下面範例中的回應，其中名稱伺服器 blackhole-1.iana.org 是它的權威伺服器，並表示該名稱不存在，由 <strong>NXDOMAIN</strong> 以 DNS 回應表示。</p>
+<p>在專案開始時，節點營運商以直接委派方式 (<a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank" rel="noopener noreferrer">RFC 7534</a>) 設定服務。然而，向此服務新增委派需要更新所有 AS112 伺服器，這在一個僅鬆散協調的系統中很難得到保證。隨後，<a href="https://datatracker.ietf.org/doc/html/rfc7535" target="_blank" rel="noopener noreferrer">RFC 7535</a> 引入了一種使用 DNAME 重新導向的替代方法，可將新區域新增至系統而無需重新設定黑洞伺服器。</p>
+<h4><strong>直接委派</strong></h4>
+<p>在這種方法中，會將 DNS 區域直接委派給黑洞伺服器。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">   ; </span><span class="sk-6f42c1-ffc799">db.dr-empty</span></span>
+<span class="line"><span class="sk-24292e-fff">   ;</span></span>
+<span class="line"><span class="sk-24292e-fff">   ; </span><span class="sk-6f42c1-ffc799">Empty</span><span class="sk-032f62-99ffe4"> zone</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> DNAME</span><span class="sk-032f62-99ffe4"> redirection</span><span class="sk-032f62-99ffe4"> AS112</span><span class="sk-032f62-99ffe4"> service.</span></span>
+<span class="line"><span class="sk-24292e-fff">   ;</span></span>
+<span class="line"><span class="sk-24292e-fff">   $TTL    </span><span class="sk-032f62-99ffe4">1W</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   @</span><span class="sk-032f62-99ffe4">  IN</span><span class="sk-032f62-99ffe4">  SOA</span><span class="sk-032f62-99ffe4">  blackhole.as112.arpa.</span><span class="sk-032f62-99ffe4"> noc.dns.icann.org.</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1</span><span class="sk-24292e-fff">         ; </span><span class="sk-6f42c1-ffc799">serial</span><span class="sk-032f62-99ffe4"> number</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">refresh</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1M</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">retry</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff">      ; </span><span class="sk-6f42c1-ffc799">expire</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                  1W</span><span class="sk-24292e-fff"> )    ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
+<span class="line"><span class="sk-24292e-fff">   ;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          NS</span><span class="sk-032f62-99ffe4">     blackhole.as112.arpa.</span></span></code></pre>
+</div>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank" rel="noopener noreferrer">RFC 7534</a> 定義了 AS112 名稱伺服器應對其進行權威回應的一組靜態反向對應區域。這些區域如下所示：</p>
+<div id="html-block-k31" class="html-block">
+	<table>
+		<thead>
+			<tr>
+				<th>Name server</th>
+				<th>IPv4 address</th>
+				<th>IPv6 address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>blackhole.as112.arpa</td>
+				<td>192.31.196.1</td>
+				<td>2001:4:112::1</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ul>
+	<li>10.in-addr-arpa</li>
+	<li>16.172.in-addr.arpa</li>
+	<li>17.172.in-addr.arpa</li>
+	<li>18.172.in-addr.arpa</li>
+	<li>19.172.in-addr.arpa</li>
+	<li>20.172.in-addr.arpa</li>
+	<li>21.172.in-addr.arpa</li>
+	<li>22.172.in-addr.arpa</li>
+	<li>23.172.in-addr.arpa</li>
+	<li>24.172.in-addr.arpa</li>
+	<li>25.172.in-addr.arpa</li>
+	<li>26.172.in-addr.arpa</li>
+	<li>27.172.in-addr.arpa</li>
+	<li>28.172.in-addr.arpa</li>
+	<li>29.172.in-addr.arpa</li>
+	<li>30.172.in-addr.arpa</li>
+	<li>31.172.in-addr.arpa</li>
+	<li>168.192.in-addr.arpa</li>
+	<li>254.169.in-addr.arpa（對應於 IPv4 連結-本機位址區塊）</li>
+</ul>
+<p>這些區域的區域檔案相當簡單，因為除了必需的 SOA 和 NS 記錄以外，這些檔案基本上是空的。區域檔案的範本定義為：</p>
+<p>直接委派名稱伺服器的 IP 位址由單一 IPv4 首碼 192.175.48.0/24 和 IPv6 首碼 2620:4f:8000::/48 所涵蓋。</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">$ORIGIN hostname.as112.net.</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">$TTL    </span><span class="sk-005cc5-ffc799">604800</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@</span><span class="sk-032f62-99ffe4">       IN</span><span class="sk-032f62-99ffe4">  SOA</span><span class="sk-032f62-99ffe4">     ns3.cloudflare.com.</span><span class="sk-032f62-99ffe4"> dns.cloudflare.com.</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       1</span><span class="sk-24292e-fff">                ; </span><span class="sk-6f42c1-ffc799">serial</span><span class="sk-032f62-99ffe4"> number</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       604800</span><span class="sk-24292e-fff">           ; </span><span class="sk-6f42c1-ffc799">refresh</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       60</span><span class="sk-24292e-fff">               ; </span><span class="sk-6f42c1-ffc799">retry</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       604800</span><span class="sk-24292e-fff">           ; </span><span class="sk-6f42c1-ffc799">expire</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       604800</span><span class="sk-24292e-fff"> )         ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            NS</span><span class="sk-032f62-99ffe4">      blackhole-1.iana.org.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            NS</span><span class="sk-032f62-99ffe4">      blackhole-2.iana.org.</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "Cloudflare DNS, &lt;DATA_CENTER_AIRPORT_CODE&gt;"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "See http://www.as112.net/ for more information."</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">$ORIGIN </span><span class="sk-032f62-99ffe4">hostname.as112.arpa.</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">$TTL    </span><span class="sk-005cc5-ffc799">604800</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">@</span><span class="sk-032f62-99ffe4">       IN</span><span class="sk-032f62-99ffe4">  SOA</span><span class="sk-032f62-99ffe4">     ns3.cloudflare.com.</span><span class="sk-032f62-99ffe4"> dns.cloudflare.com.</span><span class="sk-24292e-fff"> (</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       1</span><span class="sk-24292e-fff">                ; </span><span class="sk-6f42c1-ffc799">serial</span><span class="sk-032f62-99ffe4"> number</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       604800</span><span class="sk-24292e-fff">           ; </span><span class="sk-6f42c1-ffc799">refresh</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       60</span><span class="sk-24292e-fff">               ; </span><span class="sk-6f42c1-ffc799">retry</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       604800</span><span class="sk-24292e-fff">           ; </span><span class="sk-6f42c1-ffc799">expire</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                       604800</span><span class="sk-24292e-fff"> )         ; </span><span class="sk-6f42c1-ffc799">negative</span><span class="sk-032f62-99ffe4"> caching</span><span class="sk-032f62-99ffe4"> TTL</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            NS</span><span class="sk-032f62-99ffe4">      blackhole.as112.arpa.</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "Cloudflare DNS, &lt;DATA_CENTER_AIRPORT_CODE&gt;"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            TXT</span><span class="sk-032f62-99ffe4">     "See http://www.as112.net/ for more information."</span></span>
+<span class="line"><span class="sk-24292e-fff">;</span></span></code></pre>
+</div>
+<p>名稱伺服器</p>
+<p>IPv4 位址</p>
+<p>IPv6 位址</p>
+<p>blackhole-1.iana.org</p>
+<p>192.175.48.6</p>
+<p>2620:4f:8000::6</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="325" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=640&amp;h=291&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=715&amp;h=325&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=750&amp;h=341&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=828&amp;h=376&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=1080&amp;h=491&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=1280&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=1430&amp;h=650&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1563 Embedded Image - 3t6Qmq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47KQKTTTKZBPNTFVR0V2ZG.png&amp;w=1920&amp;h=872&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="872" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="325" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>blackhole-2.iana.org</p>
+<p>192.175.48.42</p>
+<p>2620:4f:8000::42</p>
+<h4><strong>DNAME 重新導向</strong></h4>
+<p>首先，何謂 DNAME？DNAME 記錄（即委派名稱記錄）由 <a href="https://www.rfc-editor.org/rfc/rfc6672" target="_blank" rel="noopener noreferrer">RFC 6672</a> 引入，會為網域名稱樹狀目錄的整個樹狀子目錄建立別名。相反，CNAME 記錄會為單一名稱而非其子網域建立別名。針對收到的 DNS 查詢，DNAME 記錄會指示名稱伺服器用出現在右側的名稱（別名名稱）替代左側的所有名稱（擁有者名稱）。被替代的查詢名稱（如 CNAME）可能位於區域內，也可能位於區域外。</p>
+<p>與 CNAME 記錄一樣，DNS 查閱會繼續使用被替代的名稱重試查閱。例如，如果有兩個 DNS 區域，如下所示：</p>
+<p>查詢解析案例會如下所示：</p>
+<p>查詢（類型 + 名稱）</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="135" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=715&amp;h=135&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=640&amp;h=121&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=715&amp;h=135&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=750&amp;h=142&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=828&amp;h=156&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=1080&amp;h=204&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=1280&amp;h=242&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=1430&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1563 Embedded Image - 9SduWW" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW470YPKH8CCPSJFYJX4ACEV.png&amp;w=1920&amp;h=363&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="363" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="135" class="pt-portable-image-media"></div>
+</figure>
+<p>替代</p>
+<p>最終結果</p>
+<p><a href="http://www.example.com" target="_blank" rel="noopener noreferrer">www.example.com</a></p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Declare what kind of queries the app handles.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">router</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    # The app is responsible for all the AS112 IP prefixes.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "dst in { 192.31.196.0/24 192.175.48.0/24 2001:4:112::/48 2620:4f:8000::/48 }"</span><span class="sk-6f42c1-ffc799">,</span></span>
+<span class="line"><span class="sk-24292e-fff">]</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># If the app fails to handle the query, servfail should be returned.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">fallback_action</span><span class="sk-032f62-99ffe4"> =</span><span class="sk-032f62-99ffe4"> "fail"</span></span></code></pre>
+</div>
+<p>（無 DNAME，不適用）</p>
+<p>203.0.113.1</p>
+<p>DNAME foo.example.com</p>
+<p>（不適用於擁有者名稱本身）</p>
+<p>example.net</p>
+<p>foo.example.com</p>
+<p>（不適用於擁有者名稱本身）</p>
+<p>bar.foo.example.com</p>
+<p>bar.example.net</p>
+<p>203.0.113.2</p>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc7535" target="_blank" rel="noopener noreferrer">RFC 7535</a> 指定新增另一個特殊區域 empty.as112.arpa，來支援 AS112 節點的 DNAME 重新導向。要新增新區域時，AS112 節點營運商無需更新其設定：相反，該區域的父代將使用目標網域 empty.as112.arpa 為新網域設定 DNAME 記錄。重新導向（可以快取並重複使用）會導致用戶端將未來的查詢傳送至作為目標區域權威伺服器的黑洞伺服器。</p>
+<p>請注意，黑洞伺服器不必支援 DNAME 記錄本身，但它們確實需要設定新區域，根伺服器會將查詢重新導向到該新區域。考慮到現有節點營運商可能出於某些原因並未更新其名稱伺服器設定，為了不引起服務中斷，會改為將該區域委派給新的黑洞伺服器——blackhole.as112.arpa。</p>
+<p>此名稱伺服器使用一組新的 IPv4 和 IPv6 位址，192.31.196.1 和 2001:4:112::1，因此，涉及 DNAME 重新導向的查詢只能進入由同樣設定新名稱伺服器的實體所營運的那些節點。由於無需所有 AS112 參與者都重新設定其伺服器來從這一新伺服器服務 empty.as112.arpa，即可讓此系統工作，因此，它可與整個系統的鬆散協調相容。</p>
+<p>新的 DNAME 重新導向名稱伺服器的位址由單一 IPv4 首碼 192.31.196.0/24 和 IPv6 首碼 2001:4:112::/48 所涵蓋。</p>
+<p>名稱伺服器</p>
+<p>IPv4 位址</p>
+<p>IPv6 位址</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> dig</span><span class="sk-032f62-99ffe4"> @blackhole-1.iana.org</span><span class="sk-032f62-99ffe4"> TXT</span><span class="sk-032f62-99ffe4"> hostname.as112.arpa</span><span class="sk-032f62-99ffe4"> +short</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"Cloudflare DNS, SFO"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">"See http://www.as112.net/ for more information."</span></span></code></pre>
+</div>
+<p>blackhole.as112.arpa</p>
+<p>192.31.196.1</p>
+<p>2001:4:112::1</p>
+<h4><strong>節點識別</strong></h4>
+<p><a href="https://datatracker.ietf.org/doc/html/rfc7534" target="_blank" rel="noopener noreferrer">RFC 7534</a>建議每個 AS112 節點也代管下列中繼資料區域：hostname.as112.net 和 hostname.as112.arpa。</p>
+<p>這些區域僅代管 TXT 記錄，並充當識別碼來查詢有關 AS112 節點的中繼資料資訊。在 Cloudflare 節點，區域檔案如下所示：</p>
+<h2>為 AS112 協助網際網路提供協助</h2>
+<p>由於 AS112 專案有助於減少公用 DNS 基礎結構上的負載，它在維持網際網路的穩定性和效率方面發揮著至關重要的作用。參與此專案和 Cloudflare 幫助打造更好的網際網路這一使命如出一轍。</p>
+<p>Cloudflare 是全球最快的 Anycast 網路之一，並營運著規模最大且效能和可靠性較高的一項 DNS 服務。我們為全球數百萬個網際網路資產執行權威 DNS 服務。我們還營運著注重隱私和效能的公用 DNS 解析程式 1.1.1.1 服務。鑒於我們的網路覆蓋範圍和營運規模，我們認為我們會對 AS112 專案做出有意義的貢獻。</p>
+<h2>如何構建</h2>
+<p>過去，我們多次公開談論過 Cloudflare 內部構建的權威 DNS 伺服器軟體 rrDNS，但沒太談論過我們為支援 Cloudflare 公用解析程式 1.1.1.1 而構建的軟體。我們可以藉此機會來瞭解構建 1.1.1.1 所使用的技術，因為這一 AS112 服務基於同一平台構建。</p>
+<h3>適用於 DNS 工作負載的平台</h3>
+<p>我們建立了一個平台來執行 DNS 工作負載。如今，它可支援 1.1.1.1、1.1.1.1 for Families、Oblivious DNS over HTTPS (ODoH)、Cloudflare WARP 和 Cloudflare Gateway。</p>
+<p>該平台的核心部分是一個非傳統的 DNS 伺服器，它有一個內建的 DNS 遞迴解析程式和一個用於將查詢轉寄給其他伺服器的轉寄站。該伺服器包含四大模組：</p>
+<ol>
+	<li>一個效率較高的接聽程式模組，用來接受傳入要求的連線。</li>
+	<li>一個查詢路由器模組，用來決定應如何解析查詢。</li>
+	<li>一個指揮模組，用來找出與上游伺服器交換 DNS 訊息的最佳方式。</li>
+	<li>一個沙箱環境，用來代管來賓應用程式。</li>
+</ol>
+<p>DNS 伺服器本身不包括任何商務邏輯，相反，在沙箱環境中執行的來賓應用程式可以實作具體的商務邏輯，例如，要求篩選、查詢處理、記錄、攻擊緩解、快取清除等。</p>
+<p>伺服器以 Rust 撰寫，而沙箱環境基於 WebAssembly 執行階段構建。透過結合 Rust 和 WebAssembly，我們能夠實作較為高效的連線處理、要求篩選和查詢分派模組，同時能夠以安全高效的方式靈活地實作自訂商務邏輯。</p>
+<p>主機會公開一組稱為 hostcall 的 API，讓來賓應用程式完成各種工作。您可以將它們視為 Linux 上的 syscall。以下是由 hostcall 提供的幾個函數範例：</p>
+<ul>
+	<li>獲取目前的 UNIX 時間戳記</li>
+	<li>查閱 IP 位址的地理位置資料</li>
+	<li>產生非同步工作</li>
+	<li>建立本機通訊端</li>
+	<li>將 DNS 查詢轉寄給指定的伺服器</li>
+	<li>登錄沙箱勾點的回呼函數</li>
+	<li>讀取目前的要求資訊，並寫入回應</li>
+	<li>發出應用程式記錄、計量資料點和追蹤跨距/事件</li>
+</ul>
+<p>DNS 要求生命週期分成幾個階段。要求階段是可以呼叫沙箱應用程式來變更要求解析過程的一個處理階段。而且每個來賓應用程式都可以為每個階段登錄回呼。</p>
+<h3>AS112 來賓應用程式</h3>
+<p>AS112 服務構建為一個以 Rust 撰寫並編譯成 WebAssembly 的來賓應用程式。在 <a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank" rel="noopener noreferrer">RFC 7534</a> 和 <a href="https://www.rfc-editor.org/rfc/rfc7535" target="_blank" rel="noopener noreferrer">RFC 7535</a> 中列出的區域作為靜態區域載入到記憶體中，並作為樹狀資料結構編製索引。透過在區域樹狀結構中查閱項目，可在本機回應傳入的查詢。</p>
+<p>在應用程式資訊清單中新增了路由器設定，告知主機來賓應用程式應處理哪種類型的 DNS 查詢，並新增了 fallback_action 設定以宣告預期的回退行為。</p>
+<p>然後，會對來賓應用程式及其資訊清單進行編譯並透過部署管線進行部署，該管線利用 <a href="https://blog.cloudflare.com/introducing-quicksilver-configuration-distribution-at-internet-scale">Quicksilver</a> 在全球範圍內儲存並複寫資產。</p>
+<p>現在，來賓應用程式已啟動並執行，但是目的地為新 IP 首碼的 DNS 查詢流量如何連線到 DNS 伺服器？我們是否必須在每次新增新的來賓應用程式時重新啟動 DNS 伺服器？當然不必。我們使用更早之前開發並部署的軟體，稱為 <a href="https://blog.cloudflare.com/tubular-fixing-the-socket-api-with-ebpf">Tubular</a>。使用該軟體，我們可以即時變更服務的位址。藉助 Tubular，會將目的地為 AS112 服務 IP 首碼的傳入封包分派給正確的 DNS 伺服器處理程序，而無需對 DNS 伺服器本身進行任何變更或釋放。</p>
+<p>同時，為了讓錯誤導向的 DNS 查詢先進入 Cloudflare 網路，我們使用了 <a href="https://developers.cloudflare.com/byoip" target="_blank" rel="noopener noreferrer">BYOIP</a>（將自己的 IP 帶到 Cloudflare），Cloudflare 的這款產品可以在我們所有的位置宣告客戶自己的 IP 首碼。四個 AS112 IP 首碼會登入 BYOIP 系統，並由它在全球範圍內宣告。</p>
+<h3>測試</h3>
+<p>我們如何才能確保我們設定的服務在向公用網際網路宣告之前行正確之事？1.1.1.1 每天會處理超過 130 億個這樣錯誤導向的查詢，並且它所啟用的邏輯可在本機直接為這些查詢傳回 NXDOMAIN，這是根據 <a href="https://www.rfc-editor.org/rfc/rfc7534" target="_blank" rel="noopener noreferrer">RFC 7534</a> 建議的做法。</p>
+<p>然而，我們可以使用一個動態規則來變更在 Cloudflare 測試位置處理錯誤導向查詢的方式。例如，下面這樣的規則：</p>
+<blockquote><code>phase = post-cache and qtype in { PTR } and colo in { test1 test2 } and qname-suffix in { 10.in-addr.arpa 16.172.in-addr.arpa 17.172.in-addr.arpa 18.172.in-addr.arpa 19.172.in-addr.arpa 20.172.in-addr.arpa 21.172.in-addr.arpa 22.172.in-addr.arpa 23.172.in-addr.arpa 24.172.in-addr.arpa 25.172.in-addr.arpa 26.172.in-addr.arpa 27.172.in-addr.arpa 28.172.in-addr.arpa 29.172.in-addr.arpa 30.172.in-addr.arpa 31.172.in-addr.arpa 168.192.in-addr.arpa 254.169.in-addr.arpa } forward 192.175.48.6:53</code></blockquote>
+<p>該規則指示，在資料中心 test1 和 test2 中，當 DNS 查詢類型為 PTR 且查詢名稱以清單中的項目結尾時，將查詢轉寄給伺服器 192.175.48.6（其中一個 AS112 服務 IP）上的連接埠 53 。</p>
+<p>因為我們將 AS112 IP 首碼佈建在相同的節點中，所以新的 AS112 服務將收到查詢並回應解析程式。</p>
+<p>值得一提的是，上述在快取後階段攔截查詢並變更查詢處理方式的動態規則也是由來賓應用程式執行的，其名為 override。此應用程式會在每個規則宣告的階段載入所有動態規則、剖析 DSL 文字和登錄回呼函數。並且當傳入查詢符合運算式時，它會執行指定的動作。</p>
+<h2>公開報告</h2>
+<p>我們將收集以下計量來產生公用統計資料，以供 AS112 營運商向營運商社群分享之用：</p>
+<ul>
+	<li>根據查詢類型分類的查詢數目</li>
+	<li>根據回應碼分類的查詢數目</li>
+	<li>根據通訊協定分類的查詢數目</li>
+	<li>根據 IP 版本分類的查詢數目</li>
+	<li>具有 EDNS 支援的查詢數目</li>
+	<li>具有 DNSSEC 支援的查詢數目</li>
+	<li>根據 ASN/資料中心分類的查詢數目</li>
+</ul>
+<p>我們會在 <a href="https://radar.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Radar</a> 網站上提供公用統計資料頁面。我們仍在努力實作所需的後端 API 和頁面前端——我們會在此頁面可用後與您分享其連結。</p>
+<h2>後續計劃</h2>
+<p>我們將於 2022 年 12 月 15 日開始推出 AS112 首碼。</p>
+<p>該服務推出後，您可以執行 dig 命令來檢查是否叫用了 Cloudflare 營運的 AS112 節點，如下所示：</p>

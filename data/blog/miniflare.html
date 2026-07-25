@@ -1,424 +1,367 @@
-<div class="mb2 gray5">6 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/ja-jp/miniflare">日本語</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1IwJgJJv2xtJSggJEtxXAW/79af3fd051e4692ea9af1002cf3a3cf9/miniflare.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
+<p>In July 2021, I launched Miniflare 1.0, a fun, full-featured, fully-local simulator for Workers, on the <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Workers Discord server</a>. What began as a pull request to the <a href="https://github.com/gja/cloudflare-worker-local/pull/57" target="_blank" rel="noopener noreferrer"><code>cloudflare-worker-local</code></a> project has now become an official Cloudflare project and a core part of the Workers ecosystem, being integrated into <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>. Today, I'm thrilled to announce the release of the next major version: a more modular, lightweight, and accurate Miniflare 2.0. ?</p>
+<h2><strong>Background: Why Miniflare was created</strong></h2>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="268" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=640&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=750&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=828&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=1080&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=1280&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=1430&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image3-7" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4883KXYMPXQ1G48ST6SAB2.png&amp;w=1920&amp;h=720&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="720" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="268" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>At the end of 2020, I started to build my first Workers app. Initially I used the then <a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost">recently released <code>wrangler dev</code></a>, but found it was taking a few seconds before changes were reflected. While this was still impressive considering it was running on the Workers runtime, I was using <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a> to develop the frontend, so I knew a significantly faster developer experience was possible.</p>
+<p>I then found <a href="https://github.com/gja/cloudflare-worker-local" target="_blank" rel="noopener noreferrer"><code>cloudflare-worker-local</code></a> and <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank" rel="noopener noreferrer"><code>cloudworker</code></a>, which were local Workers simulators, but didn’t have support for newer features like Workers Sites. I wanted a magical simulator that would <em>just work</em> ✨ in existing projects, focusing on the developer experience, and — by the reception of Miniflare 1.0 — I wasn't the only one.</p>
+<p>Miniflare 1.0 brought near instant reloads, source map support (so you could see where errors were thrown), cleaner logs (no more <code>{ unknown object }</code>s or massive JSON stack traces), a pretty error page that highlighted the cause of the error, <a href="https://miniflare.dev/developing/debugger" target="_blank" rel="noopener noreferrer">step-through debugger support</a>, and more.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="369" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=715&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=640&amp;h=330&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=715&amp;h=369&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=750&amp;h=387&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=828&amp;h=427&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=1080&amp;h=557&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=1280&amp;h=661&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=1430&amp;h=738&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image2-81" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW4579JF2WTYAK0GPKZEJVDJ.png&amp;w=1920&amp;h=990&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="990" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="369" class="pt-portable-image-media"></div>
+</figure>
+<p>Pretty-error page powered by `youch`</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="361" height="305" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47D6QCG03X0TW9W1BAHS2Z.png&amp;w=361&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47D6QCG03X0TW9W1BAHS2Z.png&amp;w=361&amp;h=305&amp;f=webp&amp;fit=cover&amp;position=center 361w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47D6QCG03X0TW9W1BAHS2Z.png&amp;w=640&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47D6QCG03X0TW9W1BAHS2Z.png&amp;w=722&amp;h=610&amp;f=webp&amp;fit=cover&amp;position=center 722w" alt="image5-5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47D6QCG03X0TW9W1BAHS2Z.png&amp;w=361&amp;h=305&amp;f=webp" data-lightbox-width="361" data-lightbox-height="305" data-astro-cid-7nvefuv6="true" sizes="(min-width: 361px) 361px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="361" height="305" class="pt-portable-image-media"></div>
+</figure>
+<h2><strong>The next iteration: What's new in version 2</strong></h2>
+<p>In the relatively short time since the launch of Miniflare 1.0 in July, Workers as a platform has improved dramatically. Durable Objects now have <a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three">input and output gates</a> for ensuring consistency without explicit transactions, Workers has <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">compatibility dates</a> allowing developers to opt-into backwards-incompatible fixes, and you can now write Workers using <a href="https://blog.cloudflare.com/workers-javascript-modules">JavaScript modules</a>.</p>
+<p>Miniflare 2 supports all these features and has been completely redesigned with three primary design goals:</p>
+<ol>
+	<li><strong>Modular:</strong> Miniflare 2 splits Workers components (KV, Durable Objects, etc.) into separate packages (<code>@miniflare/kv</code>, <code>@miniflare/durable-objects</code>, etc.) that you can import on their own for testing. This will also make it easier to add support for new, unreleased features like <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2 Storage</a>.</li>
+	<li><strong>Lightweight:</strong> Miniflare 1 included <a href="http://npm.anvaka.com/#/view/2d/miniflare/1.4.1" target="_blank" rel="noopener noreferrer">122 third-party packages</a> with a total install size of <code>88.3MB</code>. Miniflare 2 reduces this to <strong>23 packages and <code>6MB</code></strong> by leveraging features included with Node.js 16.</li>
+	<li><strong>Accurate:</strong> Miniflare 2 replicates the quirks and thrown errors of the real Workers runtime, so you'll know before you deploy if things are going to break. Of course, <code>wrangler dev</code> will always be the most accurate preview, running on the real edge with real data, but Miniflare 2 is really close!</li>
+</ol>
+<p>It also adds a new <a href="https://miniflare.dev/developing/live-reload" target="_blank" rel="noopener noreferrer">live-reload feature</a> and first-class support for testing with Jest for an even more enjoyable developer experience.</p>
+<div id="html-block-k2j" class="html-block">
+	<div style="padding-top:45.565217391304344%"><iframe src="https://iframe.videodelivery.net/3c37cfa72152fef7e44de922f84b0920?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F3c37cfa72152fef7e44de922f84b0920%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;primaryColor=%23e97f07" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 	<p></p>
-	<p>In July 2021, I launched Miniflare 1.0, a fun, full-featured, fully-local simulator for Workers, on the <a href="https://discord.gg/cloudflaredev" target="_blank" rel="noopener noreferrer">Cloudflare Workers Discord server</a>. What began as a pull request to the <a href="https://github.com/gja/cloudflare-worker-local/pull/57" target="_blank" rel="noopener noreferrer"><code>cloudflare-worker-local</code></a> project has now become an official Cloudflare project and a core part of the Workers ecosystem, being integrated into <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>. Today, I'm thrilled to announce the release of the next major version: a more modular, lightweight, and accurate Miniflare 2.0. ?</p>
-	<div class="flex anchor relative">
-		<h2 id="background-why-miniflare-was-created"><b>Background: Why Miniflare was created</b></h2>
-		<a href="https://blog.cloudflare.com/#background-why-miniflare-was-created" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6aIIQnDFxercxfK9GYesIQ/1eadb8649cdc019daee1dad6acf05d2a/image3-7.png" alt="image3-7" class="kg-image" width="1999" height="750" loading="lazy">
-
-	</figure>
-	<p>At the end of 2020, I started to build my first Workers app. Initially I used the then <a href="https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost">recently released <code>wrangler dev</code></a>, but found it was taking a few seconds before changes were reflected. While this was still impressive considering it was running on the Workers runtime, I was using <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">Vite</a> to develop the frontend, so I knew a significantly faster developer experience was possible.</p>
-	<p>I then found <a href="https://github.com/gja/cloudflare-worker-local" target="_blank" rel="noopener noreferrer"><code>cloudflare-worker-local</code></a> and <a href="https://github.com/dollarshaveclub/cloudworker" target="_blank" rel="noopener noreferrer"><code>cloudworker</code></a>, which were local Workers simulators, but didn’t have support for newer features like Workers Sites. I wanted a magical simulator that would <i>just work</i> ✨ in existing projects, focusing on the developer experience, and — by the reception of Miniflare 1.0 — I wasn't the only one.</p>
-	<p>Miniflare 1.0 brought near instant reloads, source map support (so you could see where errors were thrown), cleaner logs (no more <code>{ unknown object }</code>s or massive JSON stack traces), a pretty error page that highlighted the cause of the error, <a href="https://miniflare.dev/developing/debugger" target="_blank" rel="noopener noreferrer">step-through debugger support</a>, and more.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2KeKH4ewXNY0saCTIUa0pK/5f34f2c536ccccdf72752a4253ae4b9b/image2-81.png" alt="image2-81" class="kg-image" width="1999" height="1031" loading="lazy">
-
-	</figure>
-	<p>Pretty-error page powered by `youch`</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5MmJ7lqEBt90UQrBLC1Zxm/9a87a210a98b64b21f5a975129a4d830/image5-5.png" alt="image5-5" class="kg-image" width="361" height="305" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="the-next-iteration-whats-new-in-version-2"><b>The next iteration: What's new in version 2</b></h2>
-		<a href="https://blog.cloudflare.com/#the-next-iteration-whats-new-in-version-2" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the relatively short time since the launch of Miniflare 1.0 in July, Workers as a platform has improved dramatically. Durable Objects now have <a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three">input and output gates</a> for ensuring consistency without explicit transactions, Workers has <a href="https://blog.cloudflare.com/backwards-compatibility-in-cloudflare-workers">compatibility dates</a> allowing developers to opt-into backwards-incompatible fixes, and you can now write Workers using <a href="https://blog.cloudflare.com/workers-javascript-modules">JavaScript modules</a>.</p>
-	<p>Miniflare 2 supports all these features and has been completely redesigned with three primary design goals:</p>
-	<ol>
-		<li>
-			<p><b>Modular:</b> Miniflare 2 splits Workers components (KV, Durable Objects, etc.) into separate packages (<code>@miniflare/kv</code>, <code>@miniflare/durable-objects</code>, etc.) that you can import on their own for testing. This will also make it easier to add support for new, unreleased features like <a href="https://blog.cloudflare.com/introducing-r2-object-storage">R2 Storage</a>.</p>
-		</li>
-		<li>
-			<p><b>Lightweight:</b> Miniflare 1 included <a href="http://npm.anvaka.com/#/view/2d/miniflare/1.4.1" target="_blank" rel="noopener noreferrer">122 third-party packages</a> with a total install size of <code>88.3MB</code>. Miniflare 2 reduces this to <b>23 packages and </b><code><b>6MB</b></code> by leveraging features included with Node.js 16.</p>
-		</li>
-		<li>
-			<p><b>Accurate:</b> Miniflare 2 replicates the quirks and thrown errors of the real Workers runtime, so you'll know before you deploy if things are going to break. Of course, <code>wrangler dev</code> will always be the most accurate preview, running on the real edge with real data, but Miniflare 2 is really close!</p>
-		</li>
-	</ol>
-	<p>It also adds a new <a href="https://miniflare.dev/developing/live-reload" target="_blank" rel="noopener noreferrer">live-reload feature</a> and first-class support for testing with Jest for an even more enjoyable developer experience.</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 45.565217391304344%;"><iframe src="https://iframe.videodelivery.net/3c37cfa72152fef7e44de922f84b0920?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F3c37cfa72152fef7e44de922f84b0920%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600&amp;primaryColor=%23e97f07" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div>
-	<p></p><!--kg-card-end: html-->
-	<div class="flex anchor relative">
-		<h2 id="getting-started-with-local-development"><b>Getting started with local development</b></h2>
-		<a href="https://blog.cloudflare.com/#getting-started-with-local-development" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As mentioned in the introduction, Miniflare 2.0 is now integrated into <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, so you just need to run <code>npx wrangler@beta dev --local</code> to start a fully-local Worker development server or <code>npx wrangler@beta pages dev</code> to start a <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Cloudflare Pages Functions</a> server. Make sure you've got the <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">latest release of Node.js</a> installed.</p>
-	<p>However, if you're using Wrangler 1 or want to customize your local environment, you can install Miniflare standalone. If you've got an existing worker with a <code>wrangler.toml</code> file, just run <code>npx miniflare --live-reload</code> to start a live-reloading development server. Miniflare will automatically load configuration like KV namespaces or Durable Object bindings from your <code>wrangler.toml</code> file and secrets from a <code>.env</code> file.</p>
-	<p>Miniflare is highly configurable. For example, if you want to persist KV data between restarts, include the <code>--kv-persist</code> flag. See the <a href="https://miniflare.dev" target="_blank" rel="noopener noreferrer">Miniflare docs</a> or run <code>npx miniflare --help</code> for many more options, like running multiple workers or starting an HTTPS server.</p>
-	<p>If you've got a <code>scheduled</code> event handler, you can manually trigger it by visiting <code>http://localhost:8787/cdn-cgi/mf/scheduled</code> in your browser.</p>
-	<div class="flex anchor relative">
-		<h2 id="testing-for-workers-with-jest"><b>Testing for Workers with Jest</b></h2>
-		<a href="https://blog.cloudflare.com/#testing-for-workers-with-jest" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><a href="https://jestjs.io" target="_blank" rel="noopener noreferrer">Jest</a> is one of the most popular JavaScript testing frameworks, so it made sense to add first-class support for it. Miniflare 2.0 includes a <a href="https://jestjs.io/docs/configuration#testenvironment-string" target="_blank" rel="noopener noreferrer">custom test environment</a> that gives your tests access to <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer">Workers runtime APIs</a>.</p>
-	<p>For example, suppose we have the following worker, written using JavaScript modules, that stores the number of times each URL is visited in Workers KV:</p>
-	<blockquote>
-		<p>Aside: Workers KV is not designed for counters as it's eventually consistent. In a real worker, you should use Durable Objects. This is just a simple example.</p>
-	</blockquote>
-	<pre class="language-js"><code class="language-js">// src/index.mjs
-export async function increment(namespace, key) {
-  // Get the current count from KV
-  const currentValue = await namespace.get(key);
-  // Increment the count, defaulting it to 0
-  const newValue = parseInt(currentValue ?? "0") + 1;
-  // Store and return the new count
-  await namespace.put(key, newValue.toString());
-  return newValue;
-}
-
-export default {
-  async fetch(request, env, ctx) {
-    // Use the pathname for a key
-    const url = new URL(request.url);
-    const key = url.pathname;
-    // Increment the key
-    const value = await increment(env.COUNTER_NAMESPACE, key);
-    // Return the new incremented count
-    return new Response(`count for ${key} is now ${value}`);
-  },
-};</code></pre>
-
-	<pre class="language-toml"><code class="language-toml"># wrangler.toml
-kv_namespaces = [
-  { binding = "COUNTER_NAMESPACE", id = "..." }
-]
-
-[build.upload]
-format = "modules"
-dist = "src"
-main = "./index.mjs"</code></pre>
-	<p>...we can write unit tests like so:</p>
-	<pre class="language-js"><code class="language-js">// test/index.spec.mjs
-import worker, { increment } from "../src/index.mjs";
-
-// When using `format = "modules"`, bindings are included in the `env` parameter,
-// which we don't have access to in tests. Miniflare therefore provides a custom
-// global method to access these.
-const { COUNTER_NAMESPACE } = getMiniflareBindings();
-
-test("should increment the count", async () =&gt; {
-  // Seed the KV namespace
-  await COUNTER_NAMESPACE.put("a", "3");
-
-  // Perform the increment
-  const newValue = await increment(COUNTER_NAMESPACE, "a");
-  const storedValue = await COUNTER_NAMESPACE.get("a");
-
-  // Check the return value of increment
-  expect(newValue).toBe(4);
-  // Check increment had the side effect of updating KV
-  expect(storedValue).toBe("4");
-});
-
-test("should return new count", async () =&gt; {
-  // Note we're using Worker APIs in our test, without importing anything extra
-  const request = new Request("http://localhost/a");
-  const response = await worker.fetch(request, { COUNTER_NAMESPACE });
-
-  // Each test gets its own isolated storage environment, so the changes to "a"
-  // are *undone* automatically. This means at the start of this test, "a"
-  // wasn't in COUNTER_NAMESPACE, so it defaulted to 0, and the count is now 1.
-  expect(await response.text()).toBe("count for /a is now 1");
-});</code></pre>
-
-	<pre class="language-js"><code class="language-js">// jest.config.js
-const { defaults } = require("jest-config");
-
-module.exports = {
-  testEnvironment: "miniflare", // ✨
-  // Tell Jest to look for tests in .mjs files too
-  testMatch: [
-    "**/__tests__/**/*.?(m)[jt]s?(x)",
-    "**/?(*.)+(spec|test).?(m)[tj]s?(x)",
-  ],
-  moduleFileExtensions: ["mjs", ...defaults.moduleFileExtensions],
-};</code></pre>
-	<p>...and run them with:</p>
-	<pre class="language-shell"><code class="language-shell"># Install dependencies
-$ npm install -D jest jest-environment-miniflare
-# Run tests with experimental ES modules support
-$ NODE_OPTIONS=--experimental-vm-modules npx jest</code></pre>
-	<p>For more details about the custom test environment and isolated storage, see the <a href="https://miniflare.dev/testing/jest" target="_blank" rel="noopener noreferrer">Miniflare docs</a> or <a href="https://github.com/mrbbot/miniflare-typescript-esbuild-jest" target="_blank" rel="noopener noreferrer">this example project</a> that also uses TypeScript and Durable Objects.</p>
-	<p>Not using Jest? Miniflare lets you write your own integration tests with vanilla Node.js or any other test framework. For an example using AVA, see the <a href="https://miniflare.dev/testing/ava" target="_blank" rel="noopener noreferrer">Miniflare docs</a> or <a href="https://github.com/mrbbot/miniflare-esbuild-ava" target="_blank" rel="noopener noreferrer">this repository</a>.</p>
-	<div class="flex anchor relative">
-		<h2 id="how-miniflare-works"><b>How Miniflare works</b></h2>
-		<a href="https://blog.cloudflare.com/#how-miniflare-works" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Let's now dig deeper into how some interesting parts of Miniflare work.</p>
-	<p>Miniflare is powered by Node.js, a JavaScript runtime built on Chrome's V8 JavaScript engine. V8 is the same engine that powers the Cloudflare Workers runtime, but Node and Workers implement different runtime APIs on top of it. To ensure Node's APIs aren't visible to users' worker code and to inject Workers' APIs, Miniflare uses the <a href="https://nodejs.org/api/vm.html" target="_blank" rel="noopener noreferrer">Node.js <code>vm</code> module</a>. This lets you run arbitrary code in a custom V8 context.</p>
-	<p>A core part of Workers are the <code>Request</code> and <code>Response</code> classes. Miniflare gets these from <a href="https://github.com/nodejs/undici" target="_blank" rel="noopener noreferrer"><code>undici</code></a>, a project written by the Node team to bring <code>fetch</code> to Node. For service workers, we also need a way to <code>addEventListener</code>s and dispatch events using the <code>EventTarget</code> API, which was added in Node 15.</p>
-	<p>With that we can build a <i>mini</i>-miniflare:</p>
-	<pre class="language-js"><code class="language-js">import vm from "vm";
-import { Request, Response } from "undici";
-
-// An instance of this class will become the global scope of our Worker,
-// extending EventTarget for addEventListener and dispatchEvent
-class ServiceWorkerGlobalScope extends EventTarget {
-  constructor() {
-    super();
-
-    // Add Worker runtime APIs
-    this.Request = Request;
-    this.Response = Response;
-
-    // Make sure this is bound correctly when EventTarget methods are called
-    this.addEventListener = this.addEventListener.bind(this);
-    this.removeEventListener = this.removeEventListener.bind(this);
-    this.dispatchEvent = this.dispatchEvent.bind(this);
-  }
-}
-
-// An instance of this class will be passed as the event parameter to "fetch"
-// event listeners
-class FetchEvent extends Event {
-  constructor(type, init) {
-    super(type);
-    this.request = init.request;
-  }
-
-  respondWith(response) {
-    this.response = response;
-  }
-}
-
-// Create a V8 context to run user code in
-const globalScope = new ServiceWorkerGlobalScope();
-const context = vm.createContext(globalScope);
-
-// Example user worker code, this could be loaded from the file system
-const workerCode = `
-addEventListener("fetch", (event) =&gt; {
-  event.respondWith(new Response("Hello mini-miniflare!"));
-})
-`;
-const script = new vm.Script(workerCode);
-
-// Run the user's code, registering the "fetch" event listener
-script.runInContext(context);
-
-// Create an example request, this could come from an incoming HTTP request
-const request = new Request("http://localhost:8787/");
-const event = new FetchEvent("fetch", { request });
-
-// Dispatch the event and log the response
-globalScope.dispatchEvent(event);
-console.log(await event.response.text()); // Hello mini-miniflare!</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="plugins"><b>Plugins</b></h3>
-		<a href="https://blog.cloudflare.com/#plugins" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6qYQfyfQqHPj6BmnflgsJV/ff80edc724c00d644bd40a0765bd1f19/image1-108.png" alt="image1-108" class="kg-image" width="1653" height="443" loading="lazy">
-
-	</figure>
-	<p>Dependency graph of the Miniflare monorepo.</p>
-	<p>There are a lot of Workers runtime APIs, so adding and configuring them all manually as above would be tedious. Therefore, Miniflare 2 has a plugin system that allows each package to export globals and bindings to be included in the sandbox. Options have annotations describing their type, CLI flag, and where to find them in Wrangler configuration files:</p>
-	<pre class="language-ts"><code class="language-ts">@Option({
-  // Define type for runtime validation of the CLI flag
-  type: OptionType.ARRAY,
-  // Use --kv instead of auto-generated --kv-namespace for the CLI flag
-  name: "kv",
-  // Define -k as an alias
-  alias: "k",
-  // Displayed in --help
-  description: "KV namespace to bind",
-  // Where to find this option in wrangler.toml
-  fromWrangler: (config) =&gt; config.kv_namespaces?.map(({ binding }) =&gt; binding),
-})
-kvNamespaces?: string[];</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="durable-objects"><b>Durable Objects</b></h3>
-		<a href="https://blog.cloudflare.com/#durable-objects" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Before input and output gates were added, you usually needed to use the <code>transaction()</code> method to ensure consistency:</p>
-	<pre class="language-js"><code class="language-js">async function incrementCount() {
-  let value;
-  await this.storage.transaction(async (txn) =&gt; {
-    value = await txn.get("count");
-    await txn.put("count", value + 1);
-  });
-  return value;
-}</code></pre>
-	<p>Miniflare implements this using <a href="https://dl.acm.org/doi/10.1145/319566.319567" target="_blank" rel="noopener noreferrer">optimistic-concurrency control (OCC)</a>. However, input and output gates are now available, so to avoid race conditions when simulating newly-written Durable Object code, Miniflare 2 needed to implement them.</p>
-	<p>From the description in the <a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/#part1inputgates">gates announcement blog post</a>:</p>
-	<blockquote>
-		<p><b>Input gates:</b> While a storage operation is executing, no events shall be delivered to the object except for storage completion events. Any other events will be deferred until such a time as the object is no longer executing JavaScript code and is no longer waiting for any storage operations. We say that these events are waiting for the "input gate" to open.</p>
-	</blockquote>
-	<p>...we can see input gates need to have two methods, one for closing the gate while a storage operation is running and one for waiting until the input gate is open:</p>
-	<pre class="language-ts"><code class="language-ts">class InputGate {
-  async runWithClosed&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
-    // 1. Close the input gate
-    // 2. Run the closure and store the result
-    // 3. Open the input gate
-    // 4. Return the result
-  }
-
-  async waitForOpen(): Promise&lt;void&gt; {
-    // 1. Check if the input gate is open
-    // 2. If it is, return
-    // 3. Otherwise, wait until it is
-  }
-}</code></pre>
-	<p>Each Durable Object has its own <code>InputGate</code>. In the storage implementation, we call <code>runWithClosed</code> to defer other events until the storage operation completes:</p>
-	<pre class="language-ts"><code class="language-ts">class DurableObjectStorage {
-  async get&lt;Value&gt;(key: string): Promise&lt;Value | undefined&gt; {
-    return this.inputGate.runWithClosed(() =&gt; {
-      // Get key from storage
-    });
-  }
-}</code></pre>
-	<p>...and whenever we're ready to deliver another event, we call <code>waitForOpen</code>:</p>
-	<pre class="language-js"><code class="language-js">import { fetch as baseFetch } from "undici";
-
-async function fetch(input, init) {
-  const response = await baseFetch(input, init);
-  await inputGate.waitForOpen();
-  return response;
-}</code></pre>
-	<p>You may have noticed a problem here. Where does <code>inputGate</code> come from in <code>fetch</code>? We only have one global scope for the entire Worker and all its Durable Objects, so we can't have a <code>fetch</code> per Durable Object <code>InputGate</code>. We also can't ask the user to pass it around as another parameter to all functions that need it. We need some way of storing it in a <i>context</i> that's passed around automatically between potentially <code><i>async</i></code> functions. For this, we can use another lesser-known Node module, <a href="https://nodejs.org/api/async_context.html" target="_blank" rel="noopener noreferrer"><code>async_hooks</code></a>, which includes the <a href="https://nodejs.org/api/async_context.html#class-asynclocalstorage" target="_blank" rel="noopener noreferrer"><code>AsyncLocalStorage</code> class</a>:</p>
-	<pre class="language-ts"><code class="language-ts">import { AsyncLocalStorage } from "async_hooks";
-
-const inputGateStorage = new AsyncLocalStorage&lt;InputGate&gt;();
-
-const inputGate = new InputGate();
-await inputGateStorage.run(inputGate, async () =&gt; {
-  // This closure will run in an async context with inputGate
-  await fetch("https://example.com");
-});
-
-async function fetch(input: RequestInfo, init: RequestInit): Promise&lt;Response&gt; {
-  const response = await baseFetch(input, init);
-  // Get the input gate in the current async context
-  const inputGate = inputGateStorage.getStore();
-  await inputGate.waitForOpen();
-  return response;
-}</code></pre>
-	<p>Durable Objects also include a <code>blockConcurrencyWhile(closure)</code> method that defers events until the <code>closure</code> completes. This is exactly the <code>runWithClosed()</code> method:</p>
-	<pre class="language-ts"><code class="language-ts">class DurableObjectState {
-  // ...
-
-  blockConcurrencyWhile&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
-    return this.inputGate.runWithClosed(closure);
-  }
-}</code></pre>
-	<p>However, there's a problem with what we've got at the moment. Consider the following code:</p>
-	<pre class="language-js"><code class="language-js">export class CounterObject {
-  constructor(state: DurableObjectState) {
-    state.blockConcurrencyWhile(async () =&gt; {
-      const res = await fetch("https://example.com");
-      this.data = await res.text();
-    });
-  }
-}</code></pre>
-	<p><code>blockConcurrencyWhile</code> closes the input gate, but <code>fetch</code> won't return until the input gate is open, so we're deadlocked! To fix this, we need to make <code>InputGate</code>s nested:</p>
-	<pre class="language-ts"><code class="language-ts">class InputGate {
-  constructor(private parent?: InputGate) {}
-
-  async runWithClosed&lt;T&gt;(closure: () =&gt; Promise&lt;T&gt;): Promise&lt;T&gt; {
-    // 1. Close the input gate, *and any parents*
-    // 2. *Create a new child input gate with this as its parent*
-    const childInputGate = new InputGate(this);
-    // 3. Run the closure, *under the child input gate's context*
-    // 4. Open the input gate, *and any parents*
-    // 5. Return the result
-  }
-}</code></pre>
-	<p>Now the input gate outside of <code>blockConcurrencyWhile</code> will be closed, so fetches to the Durable Object will be deferred, but the input gate inside the closure will be open, so the <code>fetch</code> can return.</p>
-	<p>This glosses over some details, but you can check out the <a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts" target="_blank" rel="noopener noreferrer">gates implementation</a> for additional context and comments. ?</p>
-	<div class="flex anchor relative">
-		<h3 id="htmlrewriter"><b>HTMLRewriter</b></h3>
-		<a href="https://blog.cloudflare.com/#htmlrewriter" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p><code>HTMLRewriter</code> is another novel class that allows parsing and transforming HTML streams. In the edge Workers runtime, it's powered by C-bindings to the <a href="https://github.com/cloudflare/lol-html" target="_blank" rel="noopener noreferrer">lol-html</a> Rust library. Luckily, <a href="https://blog.cloudflare.com/author/ivan-nikulin">Ivan Nikulin</a> built <a href="https://github.com/cloudflare/lol-html/issues/38" target="_blank" rel="noopener noreferrer">WebAssembly bindings</a> for this, so we're able to use the same library in Node.js.</p>
-	<p>However, these were missing support for <code>async</code> handlers that allow you to access external resources when rewriting:</p>
-	<pre class="language-js"><code class="language-js">class UserElementHandler {
-  async element(node) {
-    const response = await fetch("/user");
-    // ...
-  }
-}</code></pre>
-	<p>The WebAssembly bindings Rust code includes something like:</p>
-	<pre class="language-rust"><code class="language-rust">macro_rules! make_handler {
-  ($handler:ident, $JsArgType:ident, $this:ident) =&gt; {
-    move |arg: &amp;mut _| {
-      // `js_arg` here is the `node` parameter from above
-      let js_arg = JsValue::from(arg);
-      // $handler here is the `element` method from above
-      match $handler.call1(&amp;$this, &amp;js_arg) {
-        Ok(res) =&gt; {
-          // Check if this is an async handler
-          if let Some(promise) = res.dyn_ref::&lt;JsPromise&gt;() {
-            await_promise(promise);
-          }
-          Ok(())
-        }
-        Err(e) =&gt; ...,
-      }
-    }
-  };
-}</code></pre>
-	<p>The key thing to note here is that the Rust <code>move |...| { ... }</code> closure is synchronous, but handlers can be asynchronous. This is like trying to <code>await</code> a <code>Promise</code> in a non-<code>async</code> function.</p>
-	<p>To solve this, we use the <a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp" target="_blank" rel="noopener noreferrer">Asyncify</a> feature of <a href="https://github.com/WebAssembly/binaryen" target="_blank" rel="noopener noreferrer">Binaryen</a>, a set of tools for working with WebAssembly modules. Whenever we call <code>await_promise</code>, Asyncify unwinds the current WebAssembly stack into some temporary storage. Then in JavaScript, we <code>await</code> the <code>Promise</code>. Finally, we rewind the stack from the temporary storage to the previous state and continue rewriting where we left off.</p>
-	<p>You can find the full implementation in the <a href="https://github.com/mrbbot/html-rewriter-wasm" target="_blank" rel="noopener noreferrer"><code>html-rewriter-wasm</code> package</a>.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2yhaL0yMZ6KwV2oKVvZEgd/92d6c0add7832053ea38f97c3ecf9bb8/image4-4.png" alt="image4-4" class="kg-image" width="849" height="755" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h2 id="the-future-of-miniflare"><b>The future of Miniflare</b></h2>
-		<a href="https://blog.cloudflare.com/#the-future-of-miniflare" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>As mentioned earlier, Miniflare is now included in wrangler 2.0. Try it out and let us know what you think!</p>
-	<p>I'd like to thank everyone on the Workers team at Cloudflare for building such an amazing platform and supportive community. Special thanks to anyone who's contributed to Miniflare, opened issues, given suggestions, or asked questions in the Discord server.</p>
-	<p>Maybe now I can finish off my original workers project... ?</p>
 </div>
+<h2><strong>Getting started with local development</strong></h2>
+<p>As mentioned in the introduction, Miniflare 2.0 is now integrated into <a href="https://blog.cloudflare.com/wrangler-v2-beta">wrangler 2.0</a>, so you just need to run <code>npx wrangler@beta dev --local</code> to start a fully-local Worker development server or <code>npx wrangler@beta pages dev</code> to start a <a href="https://blog.cloudflare.com/cloudflare-pages-goes-full-stack">Cloudflare Pages Functions</a> server. Make sure you've got the <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer">latest release of Node.js</a> installed.</p>
+<p>However, if you're using Wrangler 1 or want to customize your local environment, you can install Miniflare standalone. If you've got an existing worker with a <code>wrangler.toml</code> file, just run <code>npx miniflare --live-reload</code> to start a live-reloading development server. Miniflare will automatically load configuration like KV namespaces or Durable Object bindings from your <code>wrangler.toml</code> file and secrets from a <code>.env</code> file.</p>
+<p>Miniflare is highly configurable. For example, if you want to persist KV data between restarts, include the <code>--kv-persist</code> flag. See the <a href="https://miniflare.dev" target="_blank" rel="noopener noreferrer">Miniflare docs</a> or run <code>npx miniflare --help</code> for many more options, like running multiple workers or starting an HTTPS server.</p>
+<p>If you've got a <code>scheduled</code> event handler, you can manually trigger it by visiting <code>http://localhost:8787/cdn-cgi/mf/scheduled</code> in your browser.</p>
+<h2><strong>Testing for Workers with Jest</strong></h2>
+<p><a href="https://jestjs.io" target="_blank" rel="noopener noreferrer">Jest</a> is one of the most popular JavaScript testing frameworks, so it made sense to add first-class support for it. Miniflare 2.0 includes a <a href="https://jestjs.io/docs/configuration#testenvironment-string" target="_blank" rel="noopener noreferrer">custom test environment</a> that gives your tests access to <a href="https://developers.cloudflare.com/workers/runtime-apis" target="_blank" rel="noopener noreferrer">Workers runtime APIs</a>.</p>
+<p>For example, suppose we have the following worker, written using JavaScript modules, that stores the number of times each URL is visited in Workers KV:</p>
+<blockquote>Aside: Workers KV is not designed for counters as it's eventually consistent. In a real worker, you should use Durable Objects. This is just a simple example.</blockquote>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// src/index.mjs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> increment</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">namespace</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">key</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Get the current count from KV</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> currentValue</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> namespace.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(key);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Increment the count, defaulting it to 0</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> newValue</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> parseInt</span><span class="sk-24292e-fff">(currentValue </span><span class="sk-d73a49-a0a0a0">??</span><span class="sk-032f62-99ffe4"> "0"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Store and return the new count</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> namespace.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(key, newValue.</span><span class="sk-6f42c1-ffc799">toString</span><span class="sk-24292e-fff">());</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> newValue;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> default</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">request</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">env</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">ctx</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Use the pathname for a key</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> url</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> URL</span><span class="sk-24292e-fff">(request.url);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> key</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> url.pathname;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Increment the key</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> value</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> increment</span><span class="sk-24292e-fff">(env.</span><span class="sk-005cc5-fff">COUNTER_NAMESPACE</span><span class="sk-24292e-fff">, key);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Return the new incremented count</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Response</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">`count for ${</span><span class="sk-24292e-fff">key</span><span class="sk-032f62-99ffe4">} is now ${</span><span class="sk-24292e-fff">value</span><span class="sk-032f62-99ffe4">}`</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span># wrangler.toml</span></span>
+<span class="line"><span>kv_namespaces = [</span></span>
+<span class="line"><span>  { binding = "COUNTER_NAMESPACE", id = "..." }</span></span>
+<span class="line"><span>]</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>[build.upload]</span></span>
+<span class="line"><span>format = "modules"</span></span>
+<span class="line"><span>dist = "src"</span></span>
+<span class="line"><span>main = "./index.mjs"</span></span></code></pre>
+</div>
+<p>...we can write unit tests like so:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// test/index.spec.mjs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> worker, { increment } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "../src/index.mjs"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// When using `format = "modules"`, bindings are included in the `env` parameter,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// which we don't have access to in tests. Miniflare therefore provides a custom</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// global method to access these.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">COUNTER_NAMESPACE</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> getMiniflareBindings</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">test</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"should increment the count"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Seed the KV namespace</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-fff"> COUNTER_NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"a"</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"3"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Perform the increment</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> newValue</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> increment</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">COUNTER_NAMESPACE</span><span class="sk-24292e-fff">, </span><span class="sk-032f62-99ffe4">"a"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> storedValue</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-005cc5-fff"> COUNTER_NAMESPACE</span><span class="sk-24292e-fff">.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"a"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Check the return value of increment</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(newValue).</span><span class="sk-6f42c1-ffc799">toBe</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Check increment had the side effect of updating KV</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(storedValue).</span><span class="sk-6f42c1-ffc799">toBe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"4"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">test</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"should return new count"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Note we're using Worker APIs in our test, without importing anything extra</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> request</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"http://localhost/a"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> worker.</span><span class="sk-6f42c1-ffc799">fetch</span><span class="sk-24292e-fff">(request, { COUNTER_NAMESPACE });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Each test gets its own isolated storage environment, so the changes to "a"</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // are *undone* automatically. This means at the start of this test, "a"</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // wasn't in COUNTER_NAMESPACE, so it defaulted to 0, and the count is now 1.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  expect</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()).</span><span class="sk-6f42c1-ffc799">toBe</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"count for /a is now 1"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span></code></pre>
+</div>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94">// jest.config.js</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-24292e-fff"> { </span><span class="sk-005cc5-fff">defaults</span><span class="sk-24292e-fff"> } </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> require</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"jest-config"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-005cc5-ffc799">module</span><span class="sk-24292e-fff">.</span><span class="sk-005cc5-ffc799">exports</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  testEnvironment: </span><span class="sk-032f62-99ffe4">"miniflare"</span><span class="sk-24292e-fff">, </span><span class="sk-6a737d-8b8b8b94">// ✨</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Tell Jest to look for tests in .mjs files too</span></span>
+<span class="line"><span class="sk-24292e-fff">  testMatch: [</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "**/__tests__/**/*.?(m)[jt]s?(x)"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    "**/?(*.)+(spec|test).?(m)[tj]s?(x)"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  ],</span></span>
+<span class="line"><span class="sk-24292e-fff">  moduleFileExtensions: [</span><span class="sk-032f62-99ffe4">"mjs"</span><span class="sk-24292e-fff">, </span><span class="sk-d73a49-a0a0a0">...</span><span class="sk-24292e-fff">defaults.moduleFileExtensions],</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span></code></pre>
+</div>
+<p>...and run them with:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6a737d-8b8b8b94"># Install dependencies</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> npm</span><span class="sk-032f62-99ffe4"> install</span><span class="sk-005cc5-99ffe4"> -D</span><span class="sk-032f62-99ffe4"> jest</span><span class="sk-032f62-99ffe4"> jest-environment-miniflare</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94"># Run tests with experimental ES modules support</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> NODE_OPTIONS=--experimental-vm-modules</span><span class="sk-032f62-99ffe4"> npx</span><span class="sk-032f62-99ffe4"> jest</span></span></code></pre>
+</div>
+<p>For more details about the custom test environment and isolated storage, see the <a href="https://miniflare.dev/testing/jest" target="_blank" rel="noopener noreferrer">Miniflare docs</a> or <a href="https://github.com/mrbbot/miniflare-typescript-esbuild-jest" target="_blank" rel="noopener noreferrer">this example project</a> that also uses TypeScript and Durable Objects.</p>
+<p>Not using Jest? Miniflare lets you write your own integration tests with vanilla Node.js or any other test framework. For an example using AVA, see the <a href="https://miniflare.dev/testing/ava" target="_blank" rel="noopener noreferrer">Miniflare docs</a> or <a href="https://github.com/mrbbot/miniflare-esbuild-ava" target="_blank" rel="noopener noreferrer">this repository</a>.</p>
+<h2><strong>How Miniflare works</strong></h2>
+<p>Let's now dig deeper into how some interesting parts of Miniflare work.</p>
+<p>Miniflare is powered by Node.js, a JavaScript runtime built on Chrome's V8 JavaScript engine. V8 is the same engine that powers the Cloudflare Workers runtime, but Node and Workers implement different runtime APIs on top of it. To ensure Node's APIs aren't visible to users' worker code and to inject Workers' APIs, Miniflare uses the <a href="https://nodejs.org/api/vm.html" target="_blank" rel="noopener noreferrer">Node.js <code>vm</code> module</a>. This lets you run arbitrary code in a custom V8 context.</p>
+<p>A core part of Workers are the <code>Request</code> and <code>Response</code> classes. Miniflare gets these from <a href="https://github.com/nodejs/undici" target="_blank" rel="noopener noreferrer"><code>undici</code></a>, a project written by the Node team to bring <code>fetch</code> to Node. For service workers, we also need a way to <code>addEventListener</code>s and dispatch events using the <code>EventTarget</code> API, which was added in Node 15.</p>
+<p>With that we can build a <em>mini</em>-miniflare:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> vm </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "vm"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { Request, Response } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "undici"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// An instance of this class will become the global scope of our Worker,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// extending EventTarget for addEventListener and dispatchEvent</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> ServiceWorkerGlobalScope</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> EventTarget</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    super</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Add Worker runtime APIs</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.Request </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Request;</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.Response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> Response;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // Make sure this is bound correctly when EventTarget methods are called</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.addEventListener </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.addEventListener.</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.removeEventListener </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.removeEventListener.</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.dispatchEvent </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.dispatchEvent.</span><span class="sk-6f42c1-ffc799">bind</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// An instance of this class will be passed as the event parameter to "fetch"</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// event listeners</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-d73a49-a0a0a0"> extends</span><span class="sk-6f42c1-fff"> Event</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">type</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">init</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    super</span><span class="sk-24292e-fff">(type);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.request </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> init.request;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  respondWith</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">response</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">    this</span><span class="sk-24292e-fff">.response </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Create a V8 context to run user code in</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> globalScope</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> ServiceWorkerGlobalScope</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> context</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> vm.</span><span class="sk-6f42c1-ffc799">createContext</span><span class="sk-24292e-fff">(globalScope);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Example user worker code, this could be loaded from the file system</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> workerCode</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-032f62-99ffe4"> `</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">addEventListener("fetch", (event) =&gt; {</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  event.respondWith(new Response("Hello mini-miniflare!"));</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">})</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">`</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> script</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-24292e-fff"> vm.</span><span class="sk-6f42c1-ffc799">Script</span><span class="sk-24292e-fff">(workerCode);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Run the user's code, registering the "fetch" event listener</span></span>
+<span class="line"><span class="sk-24292e-fff">script.</span><span class="sk-6f42c1-ffc799">runInContext</span><span class="sk-24292e-fff">(context);</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Create an example request, this could come from an incoming HTTP request</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> request</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> Request</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"http://localhost:8787/"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> event</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> FetchEvent</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"fetch"</span><span class="sk-24292e-fff">, { request });</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">// Dispatch the event and log the response</span></span>
+<span class="line"><span class="sk-24292e-fff">globalScope.</span><span class="sk-6f42c1-ffc799">dispatchEvent</span><span class="sk-24292e-fff">(event);</span></span>
+<span class="line"><span class="sk-24292e-fff">console.</span><span class="sk-6f42c1-ffc799">log</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> event.response.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">()); </span><span class="sk-6a737d-8b8b8b94">// Hello mini-miniflare!</span></span></code></pre>
+</div>
+<h3><strong>Plugins</strong></h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="192" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=715&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=640&amp;h=172&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=715&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=750&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=828&amp;h=222&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=1080&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=1280&amp;h=344&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=1430&amp;h=384&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image1-108" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48DX4JEAZSZTDN104C1VV3.png&amp;w=1653&amp;h=443&amp;f=webp" data-lightbox-width="1653" data-lightbox-height="443" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="192" class="pt-portable-image-media"></div>
+</figure>
+<p>Dependency graph of the Miniflare monorepo.</p>
+<p>There are a lot of Workers runtime APIs, so adding and configuring them all manually as above would be tedious. Therefore, Miniflare 2 has a plugin system that allows each package to export globals and bindings to be included in the sandbox. Options have annotations describing their type, CLI flag, and where to find them in Wrangler configuration files:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">@</span><span class="sk-6f42c1-ffc799">Option</span><span class="sk-24292e-fff">({</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Define type for runtime validation of the CLI flag</span></span>
+<span class="line"><span class="sk-24292e-fff">  type: OptionType.</span><span class="sk-005cc5-fff">ARRAY</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Use --kv instead of auto-generated --kv-namespace for the CLI flag</span></span>
+<span class="line"><span class="sk-24292e-fff">  name: </span><span class="sk-032f62-99ffe4">"kv"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Define -k as an alias</span></span>
+<span class="line"><span class="sk-24292e-fff">  alias: </span><span class="sk-032f62-99ffe4">"k"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Displayed in --help</span></span>
+<span class="line"><span class="sk-24292e-fff">  description: </span><span class="sk-032f62-99ffe4">"KV namespace to bind"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Where to find this option in wrangler.toml</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  fromWrangler</span><span class="sk-24292e-fff">: (</span><span class="sk-e36209-fff">config</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> config.kv_namespaces?.</span><span class="sk-6f42c1-ffc799">map</span><span class="sk-24292e-fff">(({ </span><span class="sk-e36209-fff">binding</span><span class="sk-24292e-fff"> }) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> binding),</span></span>
+<span class="line"><span class="sk-24292e-fff">})</span></span>
+<span class="line"><span class="sk-24292e-fff">kvNamespaces</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-24292e-fff"> string[];</span></span></code></pre>
+</div>
+<h3><strong>Durable Objects</strong></h3>
+<p>Before input and output gates were added, you usually needed to use the <code>transaction()</code> method to ensure consistency:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> incrementCount</span><span class="sk-24292e-fff">() {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  let</span><span class="sk-24292e-fff"> value;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.storage.</span><span class="sk-6f42c1-ffc799">transaction</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">txn</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">    value </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> txn.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"count"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    await</span><span class="sk-24292e-fff"> txn.</span><span class="sk-6f42c1-ffc799">put</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"count"</span><span class="sk-24292e-fff">, value </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-ffc799"> 1</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">  });</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> value;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Miniflare implements this using <a href="https://dl.acm.org/doi/10.1145/319566.319567" target="_blank" rel="noopener noreferrer">optimistic-concurrency control (OCC)</a>. However, input and output gates are now available, so to avoid race conditions when simulating newly-written Durable Object code, Miniflare 2 needed to implement them.</p>
+<p>From the description in the <a href="https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/#part1inputgates">gates announcement blog post</a>:</p>
+<blockquote><strong>Input gates:</strong> While a storage operation is executing, no events shall be delivered to the object except for storage completion events. Any other events will be deferred until such a time as the object is no longer executing JavaScript code and is no longer waiting for any storage operations. We say that these events are waiting for the "input gate" to open.</blockquote>
+<p>...we can see input gates need to have two methods, one for closing the gate while a storage operation is running and one for waiting until the input gate is open:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> InputGate</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> runWithClosed</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-6f42c1-ffc799">closure</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 1. Close the input gate</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 2. Run the closure and store the result</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 3. Open the input gate</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 4. Return the result</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> waitForOpen</span><span class="sk-24292e-fff">()</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-005cc5-ffc799">void</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 1. Check if the input gate is open</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 2. If it is, return</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 3. Otherwise, wait until it is</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Each Durable Object has its own <code>InputGate</code>. In the storage implementation, we call <code>runWithClosed</code> to defer other events until the storage operation completes:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> DurableObjectStorage</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> get</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Value</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-e36209-fff">key</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-005cc5-ffc799"> string</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Value</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-005cc5-ffc799"> undefined</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.inputGate.</span><span class="sk-6f42c1-ffc799">runWithClosed</span><span class="sk-24292e-fff">(() </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // Get key from storage</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>...and whenever we're ready to deliver another event, we call <code>waitForOpen</code>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { fetch </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-24292e-fff"> baseFetch } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "undici"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">input</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">init</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> baseFetch</span><span class="sk-24292e-fff">(input, init);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> inputGate.</span><span class="sk-6f42c1-ffc799">waitForOpen</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>You may have noticed a problem here. Where does <code>inputGate</code> come from in <code>fetch</code>? We only have one global scope for the entire Worker and all its Durable Objects, so we can't have a <code>fetch</code> per Durable Object <code>InputGate</code>. We also can't ask the user to pass it around as another parameter to all functions that need it. We need some way of storing it in a <em>context</em> that's passed around automatically between potentially <em><code>async</code></em> functions. For this, we can use another lesser-known Node module, <a href="https://nodejs.org/api/async_context.html" target="_blank" rel="noopener noreferrer"><code>async_hooks</code></a>, which includes the <a href="https://nodejs.org/api/async_context.html#class-asynclocalstorage" target="_blank" rel="noopener noreferrer"><code>AsyncLocalStorage</code> class</a>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">import</span><span class="sk-24292e-fff"> { AsyncLocalStorage } </span><span class="sk-d73a49-a0a0a0">from</span><span class="sk-032f62-99ffe4"> "async_hooks"</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> inputGateStorage</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> AsyncLocalStorage</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">InputGate</span><span class="sk-24292e-fff">&gt;();</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> inputGate</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> InputGate</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">await</span><span class="sk-24292e-fff"> inputGateStorage.</span><span class="sk-6f42c1-ffc799">run</span><span class="sk-24292e-fff">(inputGate, </span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // This closure will run in an async context with inputGate</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">});</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">async</span><span class="sk-d73a49-a0a0a0"> function</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">input</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestInfo</span><span class="sk-24292e-fff">, </span><span class="sk-e36209-fff">init</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> RequestInit</span><span class="sk-24292e-fff">)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">Response</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> baseFetch</span><span class="sk-24292e-fff">(input, init);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // Get the input gate in the current async context</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  const</span><span class="sk-005cc5-fff"> inputGate</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> inputGateStorage.</span><span class="sk-6f42c1-ffc799">getStore</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  await</span><span class="sk-24292e-fff"> inputGate.</span><span class="sk-6f42c1-ffc799">waitForOpen</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  return</span><span class="sk-24292e-fff"> response;</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Durable Objects also include a <code>blockConcurrencyWhile(closure)</code> method that defers events until the <code>closure</code> completes. This is exactly the <code>runWithClosed()</code> method:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> DurableObjectState</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">  // ...</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  blockConcurrencyWhile</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-6f42c1-ffc799">closure</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-005cc5-a0a0a0"> this</span><span class="sk-24292e-fff">.inputGate.</span><span class="sk-6f42c1-ffc799">runWithClosed</span><span class="sk-24292e-fff">(closure);</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>However, there's a problem with what we've got at the moment. Consider the following code:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">export</span><span class="sk-d73a49-a0a0a0"> class</span><span class="sk-6f42c1-ffc799"> CounterObject</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">state</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> DurableObjectState</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">    state.</span><span class="sk-6f42c1-ffc799">blockConcurrencyWhile</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">async</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      const</span><span class="sk-005cc5-fff"> res</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"https://example.com"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-005cc5-a0a0a0">      this</span><span class="sk-24292e-fff">.data </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> res.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">    });</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p><code>blockConcurrencyWhile</code> closes the input gate, but <code>fetch</code> won't return until the input gate is open, so we're deadlocked! To fix this, we need to make <code>InputGate</code>s nested:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> InputGate</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  constructor</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">private</span><span class="sk-e36209-fff"> parent</span><span class="sk-d73a49-a0a0a0">?:</span><span class="sk-6f42c1-ffc799"> InputGate</span><span class="sk-24292e-fff">) {}</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> runWithClosed</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;(</span><span class="sk-6f42c1-ffc799">closure</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff"> () </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt;)</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-6f42c1-ffc799"> Promise</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">T</span><span class="sk-24292e-fff">&gt; {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 1. Close the input gate, *and any parents*</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 2. *Create a new child input gate with this as its parent*</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> childInputGate</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> new</span><span class="sk-6f42c1-ffc799"> InputGate</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-a0a0a0">this</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 3. Run the closure, *under the child input gate's context*</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 4. Open the input gate, *and any parents*</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // 5. Return the result</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Now the input gate outside of <code>blockConcurrencyWhile</code> will be closed, so fetches to the Durable Object will be deferred, but the input gate inside the closure will be open, so the <code>fetch</code> can return.</p>
+<p>This glosses over some details, but you can check out the <a href="https://github.com/cloudflare/miniflare/blob/v2.0.0/packages/shared/src/sync/gate.ts" target="_blank" rel="noopener noreferrer">gates implementation</a> for additional context and comments. ?</p>
+<h3><strong>HTMLRewriter</strong></h3>
+<p><code>HTMLRewriter</code> is another novel class that allows parsing and transforming HTML streams. In the edge Workers runtime, it's powered by C-bindings to the <a href="https://github.com/cloudflare/lol-html" target="_blank" rel="noopener noreferrer">lol-html</a> Rust library. Luckily, <a href="https://blog.cloudflare.com/author/ivan-nikulin">Ivan Nikulin</a> built <a href="https://github.com/cloudflare/lol-html/issues/38" target="_blank" rel="noopener noreferrer">WebAssembly bindings</a> for this, so we're able to use the same library in Node.js.</p>
+<p>However, these were missing support for <code>async</code> handlers that allow you to access external resources when rewriting:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">class</span><span class="sk-6f42c1-ffc799"> UserElementHandler</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  async</span><span class="sk-6f42c1-ffc799"> element</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">node</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-005cc5-fff"> response</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"/user"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    // ...</span></span>
+<span class="line"><span class="sk-24292e-fff">  }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The WebAssembly bindings Rust code includes something like:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">macro_rules!</span><span class="sk-6f42c1-ffc799"> make_handler</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">  (</span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">handler</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">ident, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-6f42c1-ffc799">JsArgType</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">ident, </span><span class="sk-d73a49-a0a0a0">$</span><span class="sk-24292e-fff">this</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-24292e-fff">ident) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-d73a49-ffc799">    move</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-24292e-fff">arg</span><span class="sk-d73a49-a0a0a0">:</span><span class="sk-d73a49-a0a0a0"> &amp;mut</span><span class="sk-24292e-fff"> _</span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // `js_arg` here is the `node` parameter from above</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      let</span><span class="sk-24292e-fff"> js_arg </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> JsValue</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-6f42c1-ffc799">from</span><span class="sk-24292e-fff">(arg);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">      // $handler here is the `element` method from above</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">      match</span><span class="sk-d73a49-a0a0a0"> $</span><span class="sk-24292e-fff">handler</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">call1</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;$</span><span class="sk-24292e-fff">this, </span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-24292e-fff">js_arg) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Ok</span><span class="sk-24292e-fff">(res) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">          // Check if this is an async handler</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">          if</span><span class="sk-d73a49-a0a0a0"> let</span><span class="sk-6f42c1-ffc799"> Some</span><span class="sk-24292e-fff">(promise) </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> res</span><span class="sk-d73a49-a0a0a0">.</span><span class="sk-6f42c1-ffc799">dyn_ref</span><span class="sk-d73a49-a0a0a0">::</span><span class="sk-24292e-fff">&lt;</span><span class="sk-6f42c1-ffc799">JsPromise</span><span class="sk-24292e-fff">&gt;() {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">            await_promise</span><span class="sk-24292e-fff">(promise);</span></span>
+<span class="line"><span class="sk-24292e-fff">          }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">          Ok</span><span class="sk-24292e-fff">(())</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        Err</span><span class="sk-24292e-fff">(e) </span><span class="sk-d73a49-a0a0a0">=&gt;</span><span class="sk-d73a49-a0a0a0"> ...</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">      }</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">  };</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>The key thing to note here is that the Rust <code>move |...| { ... }</code> closure is synchronous, but handlers can be asynchronous. This is like trying to <code>await</code> a <code>Promise</code> in a non-<code>async</code> function.</p>
+<p>To solve this, we use the <a href="https://github.com/WebAssembly/binaryen/blob/main/src/passes/Asyncify.cpp" target="_blank" rel="noopener noreferrer">Asyncify</a> feature of <a href="https://github.com/WebAssembly/binaryen" target="_blank" rel="noopener noreferrer">Binaryen</a>, a set of tools for working with WebAssembly modules. Whenever we call <code>await_promise</code>, Asyncify unwinds the current WebAssembly stack into some temporary storage. Then in JavaScript, we <code>await</code> the <code>Promise</code>. Finally, we rewind the stack from the temporary storage to the previous state and continue rewriting where we left off.</p>
+<p>You can find the full implementation in the <a href="https://github.com/mrbbot/html-rewriter-wasm" target="_blank" rel="noopener noreferrer"><code>html-rewriter-wasm</code> package</a>.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="636" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=715&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=640&amp;h=569&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=715&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=750&amp;h=667&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=828&amp;h=737&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=1080&amp;h=961&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=1280&amp;h=1139&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=1430&amp;h=1272&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="image4-4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45PEG2QKKEQ87ZSN5B0J3Q.png&amp;w=849&amp;h=755&amp;f=webp" data-lightbox-width="849" data-lightbox-height="755" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="636" class="pt-portable-image-media"></div>
+</figure>
+<h2><strong>The future of Miniflare</strong></h2>
+<p>As mentioned earlier, Miniflare is now included in wrangler 2.0. Try it out and let us know what you think!</p>
+<p>I'd like to thank everyone on the Workers team at Cloudflare for building such an amazing platform and supportive community. Special thanks to anyone who's contributed to Miniflare, opened issues, given suggestions, or asked questions in the Discord server.</p>
+<p>Maybe now I can finish off my original workers project... ?</p>

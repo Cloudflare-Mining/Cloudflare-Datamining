@@ -1,0 +1,284 @@
+<p>Para ajudar a preservar uma internet segura para os criadores de conteúdo, acabamos de lançar um novo "botão fácil" para bloquear todos os bots de IA. O recurso está disponível para todos os clientes, inclusive os do nível gratuito.</p>
+<p>A popularidade da <a href="https://www.cloudflare.com/learning/ai/what-is-generative-ai" target="_blank" rel="noopener noreferrer">IA generativa</a> fez com que a demanda por conteúdo usado para treinar modelos ou executar inferências disparasse e, embora algumas empresas de IA identifiquem claramente seus bots de raspagem da web, nem todas as empresas de IA estão sendo transparentes.O Google supostamente <a href="https://www.reuters.com/technology/reddit-ai-content-licensing-deal-with-google-sources-say-2024-02-22" target="_blank" rel="noopener noreferrer">pagava US$ 60 milhões por ano</a> para licenciar o conteúdo gerado por usuários do Reddit, Scarlett Johansson <a href="https://www.nature.com/articles/d41586-024-01578-4" target="_blank" rel="noopener noreferrer">alegou que a OpenAI usou sua voz para seu novo assistente pessoal</a> sem seu consentimento e, mais recentemente, a Perplexity foi acusada <a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">de se passar por visitantes da web legítimos</a> para raspar conteúdo de sites. O valor do conteúdo original em massa nunca foi tão alto.</p>
+<p>No ano passado, a <a href="https://blog.cloudflare.com/ai-bots">Cloudflare anunciou a possibilidade de os clientes bloquearem facilmente bots de IA</a> que se comportam bem. Esses bots seguem o <a href="https://www.cloudflare.com/learning/bots/what-is-robots-txt" target="_blank" rel="noopener noreferrer">robots.txt</a> e não usam conteúdo não licenciado para treinar seus modelos ou executar inferências para aplicativos <a href="https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation" target="_blank" rel="noopener noreferrer">RAG</a> usando dados do site. Mesmo que esses bots de IA sigam as regras, os clientes da Cloudflare optam predominantemente por bloqueá-los.</p>
+<p>Ouvimos claramente que os clientes não querem bots de IA visitando seus sites, especialmente aqueles que o fazem de forma desonesta. Para ajudar, adicionamos um novo clique único para bloquear todos os bots de IA. Está disponível para todos os clientes, inclusive os de nível gratuito. Para habilitá-lo, simplesmente navegue até a seção <a href="https://dash.cloudflare.com/?to=%2F%3Aaccount%2F%3Azone%2Fsecurity%2Fbots%2Fconfigure" target="_blank" rel="noopener noreferrer">Segurança &gt; Bots</a> no painel de controle da Cloudflare e clique no botão de alternância denominado Raspadores e Crawlers de IA.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="268" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=640&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=750&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=828&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=1080&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=1280&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=1430&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - R94aJc" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW47J022KTEQ4ZPM7T5C32F0.png&amp;w=1800&amp;h=675&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="675" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="268" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Esse recurso será atualizado automaticamente ao longo do tempo, à medida que vemos novas impressões digitais de bots ofensivos que identificamos como raspadores generalizados da web para treinamento de modelos. Para garantir que temos uma compreensão abrangente de toda a atividade dos crawlers de IA, pesquisamos o tráfego em nossa rede.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="321" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=715&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=640&amp;h=287&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=715&amp;h=321&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=750&amp;h=337&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=828&amp;h=372&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=1080&amp;h=485&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=1280&amp;h=575&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=1430&amp;h=642&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - 2sxYz9" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49N9R751NKNFBXK51C7X62.png&amp;w=1660&amp;h=746&amp;f=webp" data-lightbox-width="1660" data-lightbox-height="746" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="321" class="pt-portable-image-media"></div>
+</figure>
+<h3>A atividade de bots de IA hoje</h3>
+<p>O gráfico abaixo ilustra os bots de IA mais populares vistos na rede da Cloudflare em termos de volume de solicitações. Analisamos os agentes de usuários comuns de crawlers de IA e agregamos o número de solicitações em nossa plataforma desses agentes de usuários de IA no ano passado:</p>
+<p>Ao analisar o número de solicitações feitas aos sites da Cloudflare , vemos que <em>Bytespider</em>, <em>Amazonbot</em>, <em>ClaudeBot_e <em>GPTBot</em> são os quatro principais crawlers de IA. Operado pela ByteDance, a empresa chinesa proprietária do TikTok, o_Bytespider</em> seria supostamente usado para coletar dados de treinamento para seus modelos de linguagem grande (LLMs), incluindo aqueles que suportam seu concorrente do ChatGPT, o Doubao. O <em>Amazonbot</em> e o <em>ClaudeBot</em> seguem o <em>Bytespider</em> em volume de solicitações. O <em>Amazonbot</em>, supostamente usado para indexar conteúdo para as perguntas e respostas da Alexa, enviou o segundo maior número de solicitações e o <em>ClaudeBot</em>, usado para treinar o bot de bate-papo Claude , aumentou recentemente em volume de solicitações.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="451" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=715&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=640&amp;h=404&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=715&amp;h=451&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=750&amp;h=473&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=828&amp;h=522&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=1080&amp;h=681&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=1280&amp;h=807&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=1430&amp;h=902&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - RcnJe4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448NME0CC2X438ZZYY2JRA.png&amp;w=1920&amp;h=1212&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1212" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="451" class="pt-portable-image-media"></div>
+</figure>
+<p>Entre os principais bots de IA que vemos, o <em>Bytespider</em> não apenas lidera em termos de número de solicitações, mas também na extensão de seu rastreamento de ativos da internet e na frequência com que são bloqueados. Seguindo de perto está o <em>GPTBot</em>, que ocupa o segundo lugar em rastreamento e bloqueio. O <em>GPTBot</em>, gerenciado pela OpenAI, coleta dados de treinamento para seus LLMs, que sustentam produtos orientados por IA, como o ChatGPT. Na tabela abaixo, "Participação nos sites acessados" refere-se à proporção de sites protegidos pela Cloudflare que foram acessados pelo bot de IA nomeado.</p>
+<p>.tg {border-collapse:collapse;border-color:#ccc;border-spacing:0;} .tg td{background-color:#fff;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{background-color:#f0f0f0;border-color:#ccc;border-style:solid;border-width:1px;color:#333; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top} .tg .tg-0lax{text-align:left;vertical-align:top}</p>
+<div id="html-block-k20" class="html-block">
+	<style>
+		#html-block-k20 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k20 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k20 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k20 .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k20 .tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+
+		#html-block-k20 .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AI Bot</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Share of Websites Accessed</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Bytespider</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.40%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">GPTBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">35.46%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ClaudeBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11.17%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ImagesiftBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.75%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">CCBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.14%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">ChatGPT-User</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1.84%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">omgili</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.10%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Diffbot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.08%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Claude-Web</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.04%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">PerplexityBot</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">0.01%</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p>Bot de IA</p>
+<p>Participação nos sites acessados</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="386" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=640&amp;h=346&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=715&amp;h=386&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=750&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=828&amp;h=447&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=1080&amp;h=583&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=1280&amp;h=691&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=1430&amp;h=772&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - 3EQ8Lq" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48C7P60HFHQ3T2CGZZ0C8M.png&amp;w=1866&amp;h=1008&amp;f=webp" data-lightbox-width="1866" data-lightbox-height="1008" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="386" class="pt-portable-image-media"></div>
+</figure>
+<p>Bytespider</p>
+<div id="html-block-k28" class="html-block">
+	<style>
+		#html-block-k28 .tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+
+		#html-block-k28 .tg td {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k28 .tg th {
+			border-color: black;
+			border-style: solid;
+			border-width: 1px;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k28 .tg .tg-lqy6 {
+			text-align: right;
+			vertical-align: top
+		}
+
+		#html-block-k28 .tg .tg-kxn2 {
+			background-color: #EFEFEF;
+			font-weight: bold;
+			text-align: center;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Top N Internet properties by number of visitors seen by Cloudflare</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% accessed by AI bots</span></th>
+				<th class="tg-kxn2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">% blocking AI bots</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">80.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">40.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">63.0%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16.0%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">53.2%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.8%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">47.99%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8.92%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">100,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">44.53%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6.36%</span></td>
+			</tr>
+			<tr>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1,000,000</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">38.73%</span></td>
+				<td class="tg-lqy6"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2.98%</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="289" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=640&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=715&amp;h=289&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=750&amp;h=303&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=828&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=1080&amp;h=437&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=1280&amp;h=517&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=1430&amp;h=578&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - PnBXig" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48A63K28ZKN2PPA63R1Y6C.png&amp;w=1259&amp;h=509&amp;f=webp" data-lightbox-width="1259" data-lightbox-height="509" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="289" class="pt-portable-image-media"></div>
+</figure>
+<p>40.40%</p>
+<p>GPTBot</p>
+<p>35.46%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="224" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=715&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=640&amp;h=201&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=715&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=750&amp;h=235&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=828&amp;h=259&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=1080&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=1280&amp;h=401&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=1430&amp;h=448&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - fl1A24" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46MV028BS8NMXPDX5HM8TZ.png&amp;w=1800&amp;h=563&amp;f=webp" data-lightbox-width="1800" data-lightbox-height="563" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="224" class="pt-portable-image-media"></div>
+</figure>
+<p>ClaudeBot</p>
+<p>11.17%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="214" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=715&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=640&amp;h=192&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=715&amp;h=214&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=750&amp;h=224&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=828&amp;h=248&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=1080&amp;h=323&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=1280&amp;h=383&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=1430&amp;h=428&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - Oubh1m" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44YD35SXWM99PYM85TA3MV.png&amp;w=1386&amp;h=414&amp;f=webp" data-lightbox-width="1386" data-lightbox-height="414" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="214" class="pt-portable-image-media"></div>
+</figure>
+<p>ImagesiftBot</p>
+<p>8.75%</p>
+<p>CCBot</p>
+<p>2.14%</p>
+<p>ChatGPT-User</p>
+<p>1.84%</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="604" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=715&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=640&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=715&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=750&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=828&amp;h=699&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=1080&amp;h=912&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=1280&amp;h=1081&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=1430&amp;h=1208&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2460 Embedded Image - t6zyhj" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW49GEXXEB4H5ED50X485AB7.png&amp;w=1874&amp;h=1583&amp;f=webp" data-lightbox-width="1874" data-lightbox-height="1583" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="604" class="pt-portable-image-media"></div>
+</figure>
+<p>omgili</p>
+<p>0.10%</p>
+<p>Diffbot</p>
+<p>0.08%</p>
+<p>Claude-Web</p>
+<p>0.04%</p>
+<p>PerplexityBot</p>
+<p>0.01%</p>
+<p>Embora nossa análise tenha identificado os crawlers mais populares em termos de volume de solicitações e número de ativos da internet acessados, muitos clientes provavelmente não estão cientes dos crawlers de IA mais populares que rastreiam ativamente seus sites. Nossa equipe do Radar realizou uma análise das principais entradas do robots.txt nos <a href="https://radar.cloudflare.com/domains" target="_blank" rel="noopener noreferrer">10 mil principais domínios da internet</a> para identificar os bots de IA acionados com mais frequência e, em seguida, analisou com que frequência vimos esses bots em sites protegidos pela Cloudflare.</p>
+<p>No gráfico abaixo, que analisa os crawlers não permitidos para esses sites, vemos que os clientes costumam fazer referência ao <em>GPTBot, CCCBot</em> e ao <em>Google</em> no robots.txt, mas não desaprovam especificamente crawlers de IA populares como o <em>Bytespider</em> e o <em>ClaudeBot</em>.</p>
+<p>Com a internet agora inundada por esses bots de IA, estávamos curiosos para ver como os operadores de sites já responderam. Em junho, os bots de IA acessaram cerca de 39% dos principais um milhão de ativos da internet usando a Cloudflare, mas apenas 2,98% desses ativos tomaram medidas para bloquear ou contestar essas solicitações. Além disso, quanto mais alto na classificação (mais popular) for um ativo da internet, maior a probabilidade de ser alvo de bots de IA e, consequentemente, maior a probabilidade de bloquear tais solicitações.</p>
+<p>.tg {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-lqy6{text-align:right;vertical-align:top} .tg .tg-kxn2{background-color:#EFEFEF;font-weight:bold;text-align:center;vertical-align:top}</p>
+<p>N principais ativos da internet por número de visitantes da web vistos pela Cloudflare</p>
+<p>% acessado por bots de IA</p>
+<p>% de bots de IA que bloqueiam</p>
+<p>10</p>
+<p>80.0%</p>
+<p>40.0%</p>
+<p>100</p>
+<p>63.0%</p>
+<p>16.0%</p>
+<p>1,000</p>
+<p>53.2%</p>
+<p>8.8%</p>
+<p>10 mil</p>
+<p>47.99%</p>
+<p>8.92%</p>
+<p>100 mil</p>
+<p>44.53%</p>
+<p>6.36%</p>
+<p>1 milhão</p>
+<p>38.73%</p>
+<p>2.98%</p>
+<p>Vemos que os operadores de sites bloqueiam completamente o acesso a esses crawlers de IA usando o robots.txt. No entanto, esses bloqueios dependem do operador do bot respeitar o robots.txt e aderir ao <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.rfc-editor.org%2Frfc%2Frfc9309.html%23name-the-user-agent-line&amp;sa=D&amp;source=docs&amp;ust=1719843681615835&amp;usg=AOvVaw2B3a5XMThvVN-r6mf8xvgP" target="_blank" rel="noopener noreferrer">RFC9309</a> (garantia de variações do usuário em relação a todas as correspondências com o token do produto) para identificar honestamente quem são quando visitam um ativo da internet, mas os agentes de usuários são triviais para operadores de bot alterarem.</p>
+<h3>Como encontramos bots de IA fingindo ser navegadores web reais</h3>
+<p>Infelizmente, observamos operadores de bots tentando se passar por um navegador real usando um agente de usuário falsificado. Monitoramos essa atividade ao longo do tempo e temos orgulho de dizer que nosso modelo global de aprendizado de máquina sempre reconheceu essa atividade como um bot, mesmo quando os operadores mentem sobre seu agente de usuário.</p>
+<p>Vejamos um exemplo de bot específico que <a href="https://rknight.me/blog/perplexity-ai-is-lying-about-its-user-agent" target="_blank" rel="noopener noreferrer">outros</a> observaram estar <a href="https://www.wired.com/story/perplexity-is-a-bullshit-machine" target="_blank" rel="noopener noreferrer">ocultando sua atividade</a>. Executamos uma análise para ver como nossos modelos de aprendizado de máquina pontuaram o tráfego desse bot. No diagrama abaixo, é possível ver que todas as <a href="https://developers.cloudflare.com/bots/concepts/bot-score" target="_blank" rel="noopener noreferrer">pontuações do bot</a> estão firmemente abaixo de 30, indicando que nossa pontuação acredita que essa atividade provavelmente vem de um bot.</p>
+<p>O diagrama reflete a pontuação das solicitações usando <a href="https://blog.cloudflare.com/residential-proxy-bot-detection-using-machine-learning">nosso mais novo modelo</a>, onde cores "mais quentes" indicam mais solicitações caindo nessa banda e cores "mais frias" significam que menos solicitações o fizeram. Podemos ver que a grande maioria das solicitações caiu nas duas bandas inferiores, mostrando que o modelo da Cloudflare deu ao bot ofensivo uma pontuação de 9 ou menos. As alterações do agente do usuário não afetam a pontuação, porque essa é a primeira coisa que esperamos que os operadores de bots façam.</p>
+<p>Qualquer cliente com uma regra WAF existente configurada para desafiar os visitantes da web com uma pontuação de bot abaixo de 30 (nossa recomendação) bloqueava automaticamente todo esse tráfego de bots de IA sem nenhuma ação nova de sua parte. O mesmo será verdade para os futuros bots de IA que usarão técnicas semelhantes para ocultar sua atividade.</p>
+<p>Aproveitamos os sinais globais da Cloudflare para calcular nossa pontuação de bots , que para bots de IA como o acima, significa que os identificamos e classificamos corretamente como um "provável bot".</p>
+<p>Quando os agentes mal-intencionados tentam rastrear os sites em grande escala, geralmente usam ferramentas e estruturas das quais podemos extrair impressões digitais. Para cada impressão digital que vemos, usamos a rede da Cloudflare, que recebe mais de 57 milhões de solicitações por segundo em média, para entender o quanto devemos confiar nessa impressão digital. Para alimentar os nossos modelos, calculamos agregações globais em muitos sinais. Com base nesses sinais, nossos modelos conseguiram sinalizar adequadamente o tráfego de bots evasivos de IA, como o exemplo mencionado acima, como bot.</p>
+<p>O resultado desses dados agregados globalmente é que podemos detectar imediatamente novas ferramentas de raspagem e seu comportamento, sem a necessidade de identificar manualmente o bot, garantindo que os clientes permaneçam protegidos contra as mais recentes ondas de atividade de bot.</p>
+<p>Se você tiver uma dica de um bot de IA que não está se comportando, adoraríamos investigar. Existem duas opções que você pode usar para denunciar crawlers de IA que se comportam mal:</p>
+<ol>
+	<li>Os clientes do gerenciamento de bots Enterprise podem enviar um relatório de <a href="https://developers.cloudflare.com/bots/concepts/feedback-loop" target="_blank" rel="noopener noreferrer">de ciclo de feedback</a> falso negativo por meio do Bot Analytics, simplesmente selecionando o segmento de tráfego em que notaram o mau comportamento:</li>
+</ol>
+<p>2. Também configuramos uma <a href="https://docs.google.com/forms/d/14bX0RJH_0w17_cAUiihff5b3WLKzfieDO4upRlo5wj8/edit" target="_blank" rel="noopener noreferrer">ferramenta de denúncias</a> onde qualquer cliente da Cloudflare pode enviar relatórios de um bot de IA raspando seu site sem permissão.</p>
+<p>Tememos que algumas empresas de IA, com a intenção de contornar as regras para acessar conteúdo, se adaptem persistentemente para evitar a detecção de bots. Continuaremos observando e adicionando mais bloqueios de bot à nossa regra de raspadores e crawlers de IA e evoluindo nossos modelos de aprendizado de máquina para ajudar a manter a internet um lugar onde os criadores de conteúdo possam prosperar e ter controle total sobre quais modelos seu conteúdo é usado para treinar ou executar a inferência.</p>

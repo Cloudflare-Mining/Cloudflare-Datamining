@@ -1,85 +1,37 @@
-<div class="mb2 gray5">3分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-pages-headless-cms-partnerships">English</a>および<a href="https://blog.cloudflare.com/zh-cn/cloudflare-pages-headless-cms-partnerships">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/dN9LQfhhHzwAu7Pdej14V/d669bd5f1e4f9a26d48c290bfb342afd/cloudflare-pages-headless-cms-partnerships.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>ヘッドレスCMSへの関心は、過去数年間で目覚ましい成長を遂げており、多くの企業がツールの採用を検討しています。視聴者は、スマートフォン、ウェアラブル、パーソナルデバイスなど、さまざまな形式の新しいインターフェースを介してコンテンツを消費するため、コンテンツをバックエンドと切り離すというアイデアは、開発チームとエンドユーザー双方により良いエクスペリエンスを提供します。ヘッドレスCMSを利用する機会は、今後さらに増えるでしょう。こうしたことから、本日、<a href="https://sanity.io" target="_blank" rel="noopener noreferrer">Sanity</a>と<a href="https://strapi.io" target="_blank" rel="noopener noreferrer">Strapi</a>とのパートナーシップを発表できること、また、すべての人にとってお気に入りのCMSプロバイダーである<a href="https://www.contentful.com" target="_blank" rel="noopener noreferrer">Contentful</a>と<a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">WordPress</a> との既存の統合を共有することを嬉しく思います。</p>
-	<p></p>
-	<div class="flex anchor relative">
-		<h3 id="a-little-on-headless-cmses">ヘッドレスCMSについて</h3>
-		<a href="https://blog.cloudflare.com/#a-little-on-headless-cmses" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>ヘッドレスCMSは、マーケティングサイト、ブログ、電子商取引サイトのいずれにおいても、これまでで最も一般的なAPI統合の1つです。チームはユーザーフレンドリーなインターフェイスを介してサイトのコンテンツを入力し、データベースに保存できるため、コードベースに触れることなくサイトを簡単に更新できます。Jamstackのプラットフォームとして、私たちのロードマップの大きな部分は、私たち自身のツールを構築したり、お客様の開発エコシステムとPagesに適合するツールの統合を提供したりする方法を理解することです。こうしたことから、今年の8月には、<a href="https://blog.cloudflare.com/introducing-deploy-hooks-for-cloudflare-pages">Deploy Hooks のPagesによるサポートを発表しました</a>。</p>
-	<div class="flex anchor relative">
-		<h3 id="whats-a-hook-got-to-do-with-it">Deploy Hook はどう連携するの？</h3>
-		<a href="https://blog.cloudflare.com/#whats-a-hook-got-to-do-with-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Deploy Hooksは、ヘッドレスCMSで行われた更新を経由してPagesに接続し、デプロイを起動させるためのキーとなるものです。開発者がサイトのコンテンツ更新のために1日に数回pingを実行する代わりに、マーケティングチームは、Deploy Hookを介してヘッドレスCMSのインターフェイス内で直接サイトを更新できます。これは、gitコマンドの領域外で新しいデプロイをトリガーするHTTP POSTリクエストを受け入れる、Pagesで作成されたURLです。CMS 内で Deploy Hook を受け入れるように設定すれば、CMS 内でコンテンツが更新されるたびに、Pages ダッシュボードで新しいデプロイが自動的に開始されるようになります。</p>
-	<div class="flex anchor relative">
-		<h3 id="how-can-i-create-a-deploy-hook">Deploy Hookはどうすれば作成できますか？</h3>
-		<a href="https://blog.cloudflare.com/#how-can-i-create-a-deploy-hook" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ga9mYZKafjYTaWyk9Pyof/58187824144d2e7ad4066898b2a88272/image2-18.png" alt="" class="kg-image" width="895" height="290" loading="lazy">
-
-	</figure>
-	<p>Deploy Hookを作成するために、Pagesインターフェース内で2つのことを行う必要があります：</p>
-	<ol>
-		<li>
-			<p>Deploy Hookの名前を選択する：Deploy Hookには任意の名前を付けることができます</p>
-		</li>
-		<li>
-			<p>構築するブランチの選択：Deploy Hookを使用してURLがリクエストされたときに、ビルドおよびデプロイされるブランチを指定できます</p>
-		</li>
-	</ol>
-	<p>Deploy Hookが提供されると、選択したCMS内にウェブフックを設定してDeploy Hookを貼り付ける準備が整います。</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 75%;"><iframe src="https://iframe.videodelivery.net/a4fabda318990fa7b1bb8e9e2f5d3542?preload=true" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
-	<p>これで終了です！あとはマーケティングチームにお任せです。リッチコンテンツを更新し、ビルドが自動的にトリガーされて、サイトが更新されます！</p>
-	<div class="flex anchor relative">
-		<h3 id="our-partners">当社のパートナー</h3>
-		<a href="https://blog.cloudflare.com/#our-partners" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>もちろん、Deploy Hooksは、Pagesサイトで選択したヘッドレスCMSを使用して、チームにより良い開発エクスペリエンスを提供するための出発点にすぎません。統合はまだまだ続きます。当社はCMSパートナーの<a href="https://sanity.io" target="_blank" rel="noopener noreferrer">Sanity</a>、<a href="https://strapi.io" target="_blank" rel="noopener noreferrer">Strapi</a>、<a href="https://www.contentful.com" target="_blank" rel="noopener noreferrer">Contentful</a>、<a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">WordPress</a>とも統合します！</p>
-	<p>Pagesでは、これら4つのCMSが最も多く利用されています。今後数か月以内に、パートナーと緊密に協力して、さらに関係性を構築していきます。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cHjlUzTb0cWXGCgL1rrbk/0b23895d03dfd20c477fed63199c9ed4/image1-38.png" alt="" class="kg-image" width="1999" height="422" loading="lazy">
-
-	</figure>
-	<blockquote>
-		<p><i>Cloudflareと提携できることを、またCloudflare Pagesからこのことを新たに発表できることを喜ばしく思います。Sanityでは、プラットフォームでコンテンツを操作するユーザーに深い関心を持っています。Cloudflareの新しいDeploy Hooksを使用すると、開発者はコンテンツの変更に基づき、静的サイトのビルドの自動化を許可されます。これは、コンテンツ作成者にとって大きな改善です。これらを構造化コンテンツおよびGROQを利用したWebhookと組み合わせることで、お客様はこれらのビルドを行う時期について、戦略的に取り組むことができます。このリリースに参加できることをうれしく思います。コミュニティがSanityとCloudflareを使って何をビルドするのか、楽しみにしています。</i><i>-</i> Sanity.ioの共同創設者、Even Westvang</p>
-	</blockquote>
-	<p>PagesとSanityを使用してサイトを構築する方法については、<a href="https://www.sanity.io/blog/deploying-a-next-js-site-on-cloudflare-pages-with-webhooks" target="_blank" rel="noopener noreferrer">Sanityのビデオチュートリアル</a>をご覧ください！</p>
-	<blockquote>
-		<p><i>Strapiでは、Cloudflareとのパートナーシップにエキサイトしています。これにより開発者は、コンテンツチームの本番環境に変更をデプロイする際の複雑性を抽象化できます。StrapiのDeploy Hookなら、誰もが新しいコンテンツと更新を迅速かつ自律的に進められます。</i>- Strapi.ioのCEO、Pierre Burgy</p>
-	</blockquote>
-	<blockquote>
-		<p>この統合により、お客様はチームとより効率的かつ機能横断的に作業できます。マーケティングチームは、Contentfulを直接更新して、開発者がコードベースを更新することに依存することなく、デプロイを自動的にトリガーできます。だからこそ関係するすべてのチームのエクスペリエンスが向上し、生産性が向上します。- Contentfulのテクニカルパートナーシップディレクター、Jeff Blattel</p>
-	</blockquote>
-	<div class="flex anchor relative">
-		<h3 id="get-started">開始する</h3>
-		<a href="https://blog.cloudflare.com/#get-started" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>PagesプロジェクトをパートナーCMSに接続する方法の詳細については、 <a href="https://developers.cloudflare.com/pages/platform/deploy-hooks" target="_blank" rel="noopener noreferrer">Deploy Hooksのドキュメント</a>をご確認ください。今すぐ最初のプロジェクトをデプロイしましょう！</p><!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+<p>ヘッドレスCMSへの関心は、過去数年間で目覚ましい成長を遂げており、多くの企業がツールの採用を検討しています。視聴者は、スマートフォン、ウェアラブル、パーソナルデバイスなど、さまざまな形式の新しいインターフェースを介してコンテンツを消費するため、コンテンツをバックエンドと切り離すというアイデアは、開発チームとエンドユーザー双方により良いエクスペリエンスを提供します。ヘッドレスCMSを利用する機会は、今後さらに増えるでしょう。こうしたことから、本日、<a href="https://sanity.io" target="_blank" rel="noopener noreferrer">Sanity</a>と<a href="https://strapi.io" target="_blank" rel="noopener noreferrer">Strapi</a>とのパートナーシップを発表できること、また、すべての人にとってお気に入りのCMSプロバイダーである<a href="https://www.contentful.com" target="_blank" rel="noopener noreferrer">Contentful</a>と<a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">WordPress</a> との既存の統合を共有することを嬉しく思います。</p>
+<h3>ヘッドレスCMSについて</h3>
+<p>ヘッドレスCMSは、マーケティングサイト、ブログ、電子商取引サイトのいずれにおいても、これまでで最も一般的なAPI統合の1つです。チームはユーザーフレンドリーなインターフェイスを介してサイトのコンテンツを入力し、データベースに保存できるため、コードベースに触れることなくサイトを簡単に更新できます。Jamstackのプラットフォームとして、私たちのロードマップの大きな部分は、私たち自身のツールを構築したり、お客様の開発エコシステムとPagesに適合するツールの統合を提供したりする方法を理解することです。こうしたことから、今年の8月には、<a href="https://blog.cloudflare.com/introducing-deploy-hooks-for-cloudflare-pages">Deploy Hooks のPagesによるサポートを発表しました</a>。</p>
+<h3>Deploy Hook はどう連携するの？</h3>
+<p>Deploy Hooksは、ヘッドレスCMSで行われた更新を経由してPagesに接続し、デプロイを起動させるためのキーとなるものです。開発者がサイトのコンテンツ更新のために1日に数回pingを実行する代わりに、マーケティングチームは、Deploy Hookを介してヘッドレスCMSのインターフェイス内で直接サイトを更新できます。これは、gitコマンドの領域外で新しいデプロイをトリガーするHTTP POSTリクエストを受け入れる、Pagesで作成されたURLです。CMS 内で Deploy Hook を受け入れるように設定すれば、CMS 内でコンテンツが更新されるたびに、Pages ダッシュボードで新しいデプロイが自動的に開始されるようになります。</p>
+<h3>Deploy Hookはどうすれば作成できますか？</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="232" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=715&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=640&amp;h=208&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=715&amp;h=232&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=750&amp;h=243&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=828&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=1080&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=1280&amp;h=415&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=1430&amp;h=464&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-789 Embedded Image - PcThR5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48QHGRFY3NPQYFDK035TC8.png&amp;w=895&amp;h=290&amp;f=webp" data-lightbox-width="895" data-lightbox-height="290" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="232" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Deploy Hookを作成するために、Pagesインターフェース内で2つのことを行う必要があります：</p>
+<ol>
+	<li>Deploy Hookの名前を選択する：Deploy Hookには任意の名前を付けることができます</li>
+	<li>構築するブランチの選択：Deploy Hookを使用してURLがリクエストされたときに、ビルドおよびデプロイされるブランチを指定できます</li>
+</ol>
+<p>Deploy Hookが提供されると、選択したCMS内にウェブフックを設定してDeploy Hookを貼り付ける準備が整います。</p>
+<div id="html-block-k11" class="html-block">
+	<div style="padding-top:75%"><iframe src="https://iframe.videodelivery.net/a4fabda318990fa7b1bb8e9e2f5d3542?preload=true" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
+</div>
+<p>これで終了です！あとはマーケティングチームにお任せです。リッチコンテンツを更新し、ビルドが自動的にトリガーされて、サイトが更新されます！</p>
+<h3>当社のパートナー</h3>
+<p>もちろん、Deploy Hooksは、Pagesサイトで選択したヘッドレスCMSを使用して、チームにより良い開発エクスペリエンスを提供するための出発点にすぎません。統合はまだまだ続きます。当社はCMSパートナーの<a href="https://sanity.io" target="_blank" rel="noopener noreferrer">Sanity</a>、<a href="https://strapi.io" target="_blank" rel="noopener noreferrer">Strapi</a>、<a href="https://www.contentful.com" target="_blank" rel="noopener noreferrer">Contentful</a>、<a href="https://wordpress.org" target="_blank" rel="noopener noreferrer">WordPress</a>とも統合します！</p>
+<p>Pagesでは、これら4つのCMSが最も多く利用されています。今後数か月以内に、パートナーと緊密に協力して、さらに関係性を構築していきます。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="151" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=715&amp;h=151&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=640&amp;h=135&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=715&amp;h=151&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=750&amp;h=158&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=828&amp;h=175&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=1080&amp;h=228&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=1280&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=1430&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-789 Embedded Image - lyRQ4i" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46VSNA8HG9Q5RG6XAJZBM4.png&amp;w=1920&amp;h=405&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="405" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="151" class="pt-portable-image-media"></div>
+</figure>
+<blockquote><em>Cloudflareと提携できることを、またCloudflare Pagesからこのことを新たに発表できることを喜ばしく思います。Sanityでは、プラットフォームでコンテンツを操作するユーザーに深い関心を持っています。Cloudflareの新しいDeploy Hooksを使用すると、開発者はコンテンツの変更に基づき、静的サイトのビルドの自動化を許可されます。これは、コンテンツ作成者にとって大きな改善です。これらを構造化コンテンツおよびGROQを利用したWebhookと組み合わせることで、お客様はこれらのビルドを行う時期について、戦略的に取り組むことができます。このリリースに参加できることをうれしく思います。コミュニティがSanityとCloudflareを使って何をビルドするのか、楽しみにしています。-</em> Sanity.ioの共同創設者、Even Westvang</blockquote>
+<p>PagesとSanityを使用してサイトを構築する方法については、<a href="https://www.sanity.io/blog/deploying-a-next-js-site-on-cloudflare-pages-with-webhooks" target="_blank" rel="noopener noreferrer">Sanityのビデオチュートリアル</a>をご覧ください！</p>
+<blockquote>
+	<p><em>Strapiでは、Cloudflareとのパートナーシップにエキサイトしています。これにより開発者は、コンテンツチームの本番環境に変更をデプロイする際の複雑性を抽象化できます。StrapiのDeploy Hookなら、誰もが新しいコンテンツと更新を迅速かつ自律的に進められます。</em>- Strapi.ioのCEO、Pierre Burgy</p>
+	<p>この統合により、お客様はチームとより効率的かつ機能横断的に作業できます。マーケティングチームは、Contentfulを直接更新して、開発者がコードベースを更新することに依存することなく、デプロイを自動的にトリガーできます。だからこそ関係するすべてのチームのエクスペリエンスが向上し、生産性が向上します。- Contentfulのテクニカルパートナーシップディレクター、Jeff Blattel</p>
+</blockquote>
+<h3>開始する</h3>
+<p>PagesプロジェクトをパートナーCMSに接続する方法の詳細については、 <a href="https://developers.cloudflare.com/pages/platform/deploy-hooks" target="_blank" rel="noopener noreferrer">Deploy Hooksのドキュメント</a>をご確認ください。今すぐ最初のプロジェクトをデプロイしましょう！</p>
+<div id="html-block-k29" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/828f64562ca22e4c9e0deb17a8a3df22?preload=true&amp;poster=https%3A%2F%2Fvideodelivery.net%2F828f64562ca22e4c9e0deb17a8a3df22%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D0m5s%26height%3D600" style="border:none;position:absolute;top:0;left:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

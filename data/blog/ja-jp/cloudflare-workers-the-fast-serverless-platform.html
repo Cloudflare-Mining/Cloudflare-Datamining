@@ -1,114 +1,61 @@
-<div class="mb2 gray5">6分で読了</div>
-<div class="mt4">この投稿は<a href="https://blog.cloudflare.com/cloudflare-workers-the-fast-serverless-platform">English</a>、<a href="https://blog.cloudflare.com/zh-tw/cloudflare-workers-the-fast-serverless-platform">繁體中文</a>、<a href="https://blog.cloudflare.com/ko-kr/cloudflare-workers-the-fast-serverless-platform">한국어</a>、<a href="https://blog.cloudflare.com/pt-br/cloudflare-workers-the-fast-serverless-platform">Português</a>、<a href="https://blog.cloudflare.com/es-es/cloudflare-workers-the-fast-serverless-platform">Español</a>、<a href="https://blog.cloudflare.com/ru-ru/cloudflare-workers-the-fast-serverless-platform">Рyсский</a>、<a href="https://blog.cloudflare.com/zh-cn/cloudflare-workers-the-fast-serverless-platform">简体中文</a>でも表示されます。</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/387wwbe1g3UENZVROvsJkY/c3944f2226abb816e6f62e14f5cb19f9/cloudflare-workers-the-fast-serverless-platform.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>ちょうど4年前、私たちはエッジ上で直接動作するサーバーレスプラットフォーム「Cloudflare Workers」を発表しました。</p>
-	<p>今週は、既存のWebアプリケーションをより高速化するためにCloudflareが行っているさまざまな方法についてお話します。もし今日、あなたがアイデアを形にしたいと思ったなら、Cloudflareのエッジ上でプロジェクトを構築し、それをインターネット上に直接デプロイすることで、アプリケーションが場所に関係なくすべてのユーザーにとって常に高速であることを最高の形でご理解いただけるはずです。</p>
-	<p>Cloudflare Workersが性能面で他のサーバーレスプラットフォームとどのように差別化されるかについて<a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">お話ししてから</a>数年が経ちましたので、今こそ最新情報をお伝えする時だと考えました。ここ数年のWorkersプラットフォームでの取り組みのほとんどは、新機能、API、ストレージ、デバッグ、可観測性ツールの導入など、プラットフォームをより強力にするものでしたが、パフォーマンスも疎かにはしていません。</p>
-	<p>現在、<b>Workersは3年前に比べてP90で30%速くなっています</b>。また、<b>Lambda@Edgeに比べて210%、Lambdaに比べて298%速くなっています</b>。</p>
-	<p>さらに、<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers">コールドスタートも排除</a>しました。</p>
-	<div class="flex anchor relative">
-		<h3 id="how-do-you-measure-the-performance-of-serverless-platforms">サーバーレスプラットフォームのパフォーマンスの測定方法</h3>
-		<a href="https://blog.cloudflare.com/#how-do-you-measure-the-performance-of-serverless-platforms" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>これまでに何百もの<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a>のパフォーマンスベンチマークを実行してきましたが、方法はシンプルです。世界中のノードから同じアセットにリクエストを行い、それぞれのノードにその返答が返るまでにかかった時間について報告するツール「<a href="https://www.catchpoint.com" target="_blank" rel="noopener noreferrer">Catchpoint</a>」を使用します。</p>
-	<p>しかし、サーバーレスパフォーマンスの測定は少し異なります。比較する対象は静的アセットではなく、コンピューティングパフォーマンス（計算能力）であるため、すべての関数が同じ処理を行うことを確認する必要があります。</p>
-	<p>2018年の速度テストに関するブログで行ったテストは、単に各関数が現在の時間を返すだけのものでした。今回のテストでは、このタスクを実行できない「サーバーレス」製品は、最低条件を満たしていないため除外されました。この一連のテストで使用されたサーバーレス製品は、正確で公正な結果を得るため、同じ計算の複雑さを持つ同じ関数を実行しました。</p>
-	<p><i>何</i>を測定しているのかも重要です。パフォーマンスが重要な理由は、それが実際のエンドユーザーの体験に影響を与えるためです。利用者にとって遅延の原因が何であるか（DNS、ネットワーク輻輳、コールドスタート）は重要ではありません。利用者が気にすることはアプリケーションの読み込みにかかる時間を待つことです。</p>
-	<p>そのため、ユーザーエクスペリエンスを基準にしたエンドツーエンドのパフォーマンスを測定することが重要です。そのため、私たちはパフォーマンスの測定にグローバルなベンチマークを使用しています。</p>
-	<p>以下の結果は、北米、南米、ヨーロッパ、アジア、オセアニアにわたる50のノードからのテスト結果を示しています。</p>
-	<p>青：Cloudflare Workers 赤：Lambda@Edge 緑：Lambda</p>
-	<p>（<a href="https://p.catchpoint.com/ui/Entry/PC/V/ARLX-C-D-K39F4jZcluZ8gAA" target="_blank" rel="noopener noreferrer">結果へのリンク</a>）。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1tAIbisewKncTjTFG4t5Cq/3116626658017472b712f0834adf5b0b/image3-4.png" alt="" class="kg-image" width="2000" height="844" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2vF81UnslERSxVi0F1ooGC/afaef0fa3de45c86e9862f0f2bcd6319/image4-4.png" alt="" class="kg-image" width="1972" height="860" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2lgBF6iNE5xeL9WBr3uNGz/4230a8be591b57b16f3bac34dd25e7a1/image2-8.png" alt="" class="kg-image" width="1999" height="839" loading="lazy">
-
-	</figure>
-	<p>この結果からわかるように、Workersはユーザーが世界のどこにいても、速度において利用者に最高の体験を保証しています。</p>
-	<p>Workersでは、開発者はグローバルに最高のパフォーマンスを得るため追加の作業をする必要ありません。開発者が負荷分散やリージョンを追加で設定する必要はありません。すべてのデプロイは、Cloudflareの広範なエッジネットワーク上で瞬時に稼働します。</p>
-	<p>たとえ世界中で対応する必要がない場合でも、顧客基盤が米国の東海岸に位置している場合でも、Workersはすべてのリクエストに対して最速のレスポンスを保証することができます。</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/13Ubv3VwQDOg3tarSFLs9d/90197eb5d50eea07d44816d6b283bd78/image1-4.png" alt="" class="kg-image" width="1999" height="906" loading="lazy">
-
-	</figure>
-	<p>上のグラフは、us-east-1に可能な限り近いワシントンDCからの結果です。最適化を行っていないにもかかわらず、Workersは34%も高速です。</p>
-	<p>その理由は？</p>
-	<div class="flex anchor relative">
-		<h3 id="what-defines-the-performance-of-a-serverless-platform">サーバーレスプラットフォームのパフォーマンスを決定づける要素は何か</h3>
-		<a href="https://blog.cloudflare.com/#what-defines-the-performance-of-a-serverless-platform" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>コード自体のパフォーマンスは別として、エンドユーザーの観点からすると、サーバーレスアプリケーションのパフォーマンスは基本的に「実行されるアプリケーションとユーザーとの距離」と「ランタイム自体を起動するのに要する時間」の2つの不定要素に依存しています。ユーザーからの距離がアプリケーションのパフォーマンスにますます大きなボトルネックとなっていることに気づいた多くのサーバーレスベンダーは、エッジに近づくことに力を入れ始めています。エッジ（エンドユーザーに近い場所）でアプリケーションを実行することで、パフォーマンスを向上させることができます。5Gが普及するにつれて、この傾向はますます加速し続けていくでしょう。</p>
-	<p>しかし、サーバーレス分野の多くのクラウドベンダーは、より高速なパフォーマンスを追求する際に重要な問題に直面しています。そして、それは、サービスを構築するために使用しているレガシーアーキテクチャが、エッジ固有の制限ではうまく機能しないということです。</p>
-	<p>サーバーレスモデルの目標は、基盤となるアーキテクチャを意図的に抽象化することであるため、AWSのようなレガシークラウドプロバイダーがLambdaのようなサーバーレスサービスをどのように作成したのかを明確に知る人は居ません。従来のクラウドプロバイダーは、コードを実行するためにコンテナ化されたプロセスを立ち上げることでサーバーレスサービスを提供します。プロバイダーは、バックグラウンドでこれらのプロセスを自動的にスケールさせます。コンテナが立ち上がるたびに、コードだけでなく、使用している言語のランタイム全体も同時に起動されます。</p>
-	<p>最初のグラフで示されたグローバルパフォーマンスを改善するために、ベンダーは大規模で集中化されたアーキテクチャ（少数の大規模データセンター）から、エッジベースの分散型の世界（世界中に点在するより小さなデータセンター）へ移行し、アプリケーションとエンドユーザーの距離を縮めようとしています。しかし、このアプローチには問題があります。小規模なデータセンターは、マシンも少なく、メモリも少ないことを意味します。ベンダーがよりエッジに近いところで運用するために、小規模ではあるが多数のデータセンター戦略を追求するたびに、個々のプロセスでコールドスタートが発生する可能性が高まります。</p>
-	<p>これにより、コンテナベースのアーキテクチャ上のサーバーレスアプリケーションにパフォーマンスの上限が生じます。小規模データセンターを有するレガシーベンダーがアプリケーションをエッジ（ユーザーの近く）に移動させると、サーバーが減り、メモリ量も低下し、アプリケーションがコールドスタートを必要とする可能性が高まります。その可能性を減らすために、より集中型のモデルへと回帰しています。しかしそれは、数少ない大規模な集中型データセンターの1つからアプリケーションを実行することを意味します。このような大規模な集中型データセンターは、定義上、ほとんどの場合、ユーザーから遠く離れた場所に位置します。</p>
-	<p>これは、上記のグラフのLambda@Edgeで実行したときのテスト結果を見ることで確認できます。エンドユーザーに近づいているにもかかわらず、コンテナがより頻繁に立ち上がらなければならないため、p90のパフォーマンスはLambdaのそれよりも遅くなっています。</p>
-	<p>コンテナ上に構築されたサーバーレスアーキテクチャは、その境界線を上下させることはできますが、最終的に、その境界線の曲線を移動させるためにできることはあまりありません。</p>
-	<div class="flex anchor relative">
-		<h3 id="what-makes-workers-so-fast">Workersが非常に高速である理由</h3>
-		<a href="https://blog.cloudflare.com/#what-makes-workers-so-fast" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Workersは、エッジファーストのサーバーレスモデルを念頭に置いてゼロから設計されました。Cloudflareは、巨大な集中データセンターからエッジにコンピュートを押し出すのではなく、分散型のエッジネットワークからスタートしました。この制約の中で作業を進める中で、私たちは革新を余儀なくされました。</p>
-	<p>以前のブログ記事の1つで、<a href="https://blog.cloudflare.com/cloud-computing-without-containers">Workersのアーキテクチャ</a>に、この革新の結果である「リクエストごとにコールドスタートを発生させることなく、迅速に立ち上がる軽量なV8 Isolateに基づいて構築する」という新しいパラダイムシフトをどのようにもたらしたかについて説明しています。</p>
-	<p>Isolatesを運用することにより、私たちはすぐにメリットを享受できるだけでなく、V8が進化するにつれて、私たちのプラットフォームも向上します。たとえば、<a href="https://v8.dev/blog/liftoff" target="_blank" rel="noopener noreferrer">V8がWASMのコンパイラーであるLiftoffを発表</a>した際、すべてのWASM Workersが瞬時に高速化しました。</p>
-	<p>同様に、Cloudflareのネットワークに改善が加えられた場合（例えば、新しいデータセンターを追加する場合）やスタック（HTTP/3のような新しい高速プロトコルのサポート）などに改善が加えられれば、Workersは即座にその恩恵を受けます。</p>
-	<p>さらに、私たちは常にWorkers自体の改善を行い、プラットフォームをさらに高速化する努力を常に続けています。たとえば、昨年、当社はお客様のためにコールドスタートを<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers"><i>なくす</i></a>のに役立つ改善をリリースしました。</p>
-	<p>Workersがパフォーマンスの問題を特定し、解決する上での大きな強みは、その運用規模です。現在、Workersは何十万もの開発者にサービスを提供しており、趣味で利用する個人から世界中の企業まで、多岐にわたるユーザーが毎秒数百万のリクエストを処理しています。私たちが1人のお客様のために改善を行うたびに、プラットフォーム全体が高速化されます。</p>
-	<div class="flex anchor relative">
-		<h3 id="performance-that-matters">パフォーマンスは重要事項</h3>
-		<a href="https://blog.cloudflare.com/#performance-that-matters" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>サーバーレスモデルの最終目標は、開発者が本来得意とすること、つまりユーザーのためのエクスペリエンスの構築に集中できるようにすることです。すぐに最高のパフォーマンスを提供できるサーバーレスプラットフォームを選択することで、開発者の心配が1つ減ります。もしあなたがコールドスタートの最適化に時間を費やしているのであれば、それは顧客に最高の機能を構築する時間が奪われていることになります。</p>
-	<p><i>開発者が</i>ユーザーに最高の体験を提供するためにアプリケーションのパフォーマンスの向上に努めるように、私たちはWorkers上に構築する開発者の体験を向上させるために常に努力しています。</p>
-	<p>利用者が反応の遅さを我慢したくないように、開発者もデプロイサイクルの遅さを我慢したくありません。</p>
-	<p>ここでもWorkersプラットフォームが優位性を発揮します。</p>
-	<p>Cloudflare Workersへのすべてのデプロイは1秒未満でグローバルに反映されます。そのため、コードのデプロイを待つ必要がなく、利用者は可能な限りすばやく変更を確認できます。</p>
-	<p>もちろん、重要なのはデプロイ時間だけではなく、開発サイクル全体の効率も重要です。そのため、サインアップからデバッグまで、すべてのステップで<a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless">当社は常に改善を目指しています</a>。</p>
-	<div class="flex anchor relative">
-		<h3 id="dont-just-take-our-word-for-it">私たちの言葉をそのまま信じるだけでなく、ぜひご自身でお確かめください！</h3>
-		<a href="https://blog.cloudflare.com/#dont-just-take-our-word-for-it" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>言うまでもなく、私たちは当社に対する贔屓目を排除して中立な目線でお伝えしていますが、少しだけ自信を持っているのも事実です。とはいえ、私たちの言葉をそのまま信用する必要はありません。</p>
-	<p>是非サインアップして<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">最初のWorkerを今すぐ</a>デプロイしてみてください。わずか数分で完了します！</p>
-	<div class="flex anchor relative">
-		<h3 id="watch-on-cloudflare-tv">Cloudflare TVで視聴する</h3>
-		<a href="https://blog.cloudflare.com/#watch-on-cloudflare-tv" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<!--kg-card-begin: html-->
-	<div style="position: relative; padding-top: 56.25%;"><iframe src="https://iframe.videodelivery.net/d4e0ceda17365978936cfd3f55765557?preload=true" style="border: none; position: absolute; top: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe></div><!--kg-card-end: html-->
+<p>ちょうど4年前、私たちはエッジ上で直接動作するサーバーレスプラットフォーム「Cloudflare Workers」を発表しました。</p>
+<p>今週は、既存のWebアプリケーションをより高速化するためにCloudflareが行っているさまざまな方法についてお話します。もし今日、あなたがアイデアを形にしたいと思ったなら、Cloudflareのエッジ上でプロジェクトを構築し、それをインターネット上に直接デプロイすることで、アプリケーションが場所に関係なくすべてのユーザーにとって常に高速であることを最高の形でご理解いただけるはずです。</p>
+<p>Cloudflare Workersが性能面で他のサーバーレスプラットフォームとどのように差別化されるかについて<a href="https://blog.cloudflare.com/serverless-performance-comparison-workers-lambda">お話ししてから</a>数年が経ちましたので、今こそ最新情報をお伝えする時だと考えました。ここ数年のWorkersプラットフォームでの取り組みのほとんどは、新機能、API、ストレージ、デバッグ、可観測性ツールの導入など、プラットフォームをより強力にするものでしたが、パフォーマンスも疎かにはしていません。</p>
+<p>現在、<strong>Workersは3年前に比べてP90で30%速くなっています</strong>。また、<strong>Lambda@Edgeに比べて210%、Lambdaに比べて298%速くなっています</strong>。</p>
+<p>さらに、<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers">コールドスタートも排除</a>しました。</p>
+<h3>サーバーレスプラットフォームのパフォーマンスの測定方法</h3>
+<p>これまでに何百もの<a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">CDN</a>のパフォーマンスベンチマークを実行してきましたが、方法はシンプルです。世界中のノードから同じアセットにリクエストを行い、それぞれのノードにその返答が返るまでにかかった時間について報告するツール「<a href="https://www.catchpoint.com" target="_blank" rel="noopener noreferrer">Catchpoint</a>」を使用します。</p>
+<p>しかし、サーバーレスパフォーマンスの測定は少し異なります。比較する対象は静的アセットではなく、コンピューティングパフォーマンス（計算能力）であるため、すべての関数が同じ処理を行うことを確認する必要があります。</p>
+<p>2018年の速度テストに関するブログで行ったテストは、単に各関数が現在の時間を返すだけのものでした。今回のテストでは、このタスクを実行できない「サーバーレス」製品は、最低条件を満たしていないため除外されました。この一連のテストで使用されたサーバーレス製品は、正確で公正な結果を得るため、同じ計算の複雑さを持つ同じ関数を実行しました。</p>
+<p><em>何</em>を測定しているのかも重要です。パフォーマンスが重要な理由は、それが実際のエンドユーザーの体験に影響を与えるためです。利用者にとって遅延の原因が何であるか（DNS、ネットワーク輻輳、コールドスタート）は重要ではありません。利用者が気にすることはアプリケーションの読み込みにかかる時間を待つことです。</p>
+<p>そのため、ユーザーエクスペリエンスを基準にしたエンドツーエンドのパフォーマンスを測定することが重要です。そのため、私たちはパフォーマンスの測定にグローバルなベンチマークを使用しています。</p>
+<p>以下の結果は、北米、南米、ヨーロッパ、アジア、オセアニアにわたる50のノードからのテスト結果を示しています。</p>
+<p>青：Cloudflare Workers 赤：Lambda@Edge 緑：Lambda</p>
+<p>（<a href="https://p.catchpoint.com/ui/Entry/PC/V/ARLX-C-D-K39F4jZcluZ8gAA" target="_blank" rel="noopener noreferrer">結果へのリンク</a>）。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="302" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=640&amp;h=270&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=715&amp;h=302&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=750&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=828&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=1080&amp;h=456&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=1280&amp;h=541&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=1430&amp;h=604&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-707 Embedded Image - 2KzLZE" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44WC8AJM5HDHCVV2291KF7.png&amp;w=1920&amp;h=810&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="810" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="302" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="312" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=640&amp;h=279&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=715&amp;h=312&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=750&amp;h=327&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=828&amp;h=361&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=1080&amp;h=471&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=1280&amp;h=559&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=1430&amp;h=624&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-707 Embedded Image - 3La9bI" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45N1NXV5SN773DQB4WRXKT.png&amp;w=1920&amp;h=837&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="837" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="312" class="pt-portable-image-media"></div>
+</figure>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="300" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=715&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=640&amp;h=269&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=715&amp;h=300&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=750&amp;h=315&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=828&amp;h=347&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=1080&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=1280&amp;h=537&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=1430&amp;h=600&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-707 Embedded Image - uYjfAs" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45HE5M8VH3P6TTX5J6Z64N.png&amp;w=1920&amp;h=806&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="806" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="300" class="pt-portable-image-media"></div>
+</figure>
+<p>この結果からわかるように、Workersはユーザーが世界のどこにいても、速度において利用者に最高の体験を保証しています。</p>
+<p>Workersでは、開発者はグローバルに最高のパフォーマンスを得るため追加の作業をする必要ありません。開発者が負荷分散やリージョンを追加で設定する必要はありません。すべてのデプロイは、Cloudflareの広範なエッジネットワーク上で瞬時に稼働します。</p>
+<p>たとえ世界中で対応する必要がない場合でも、顧客基盤が米国の東海岸に位置している場合でも、Workersはすべてのリクエストに対して最速のレスポンスを保証することができます。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="324" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=640&amp;h=290&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=715&amp;h=324&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=750&amp;h=340&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=828&amp;h=375&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=1080&amp;h=489&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=1280&amp;h=580&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=1430&amp;h=648&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-707 Embedded Image - lsnka1" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW448J5M40528Q942C26CRDE.png&amp;w=1920&amp;h=870&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="870" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="324" class="pt-portable-image-media"></div>
+</figure>
+<p>上のグラフは、us-east-1に可能な限り近いワシントンDCからの結果です。最適化を行っていないにもかかわらず、Workersは34%も高速です。</p>
+<p>その理由は？</p>
+<h3>サーバーレスプラットフォームのパフォーマンスを決定づける要素は何か</h3>
+<p>コード自体のパフォーマンスは別として、エンドユーザーの観点からすると、サーバーレスアプリケーションのパフォーマンスは基本的に「実行されるアプリケーションとユーザーとの距離」と「ランタイム自体を起動するのに要する時間」の2つの不定要素に依存しています。ユーザーからの距離がアプリケーションのパフォーマンスにますます大きなボトルネックとなっていることに気づいた多くのサーバーレスベンダーは、エッジに近づくことに力を入れ始めています。エッジ（エンドユーザーに近い場所）でアプリケーションを実行することで、パフォーマンスを向上させることができます。5Gが普及するにつれて、この傾向はますます加速し続けていくでしょう。</p>
+<p>しかし、サーバーレス分野の多くのクラウドベンダーは、より高速なパフォーマンスを追求する際に重要な問題に直面しています。そして、それは、サービスを構築するために使用しているレガシーアーキテクチャが、エッジ固有の制限ではうまく機能しないということです。</p>
+<p>サーバーレスモデルの目標は、基盤となるアーキテクチャを意図的に抽象化することであるため、AWSのようなレガシークラウドプロバイダーがLambdaのようなサーバーレスサービスをどのように作成したのかを明確に知る人は居ません。従来のクラウドプロバイダーは、コードを実行するためにコンテナ化されたプロセスを立ち上げることでサーバーレスサービスを提供します。プロバイダーは、バックグラウンドでこれらのプロセスを自動的にスケールさせます。コンテナが立ち上がるたびに、コードだけでなく、使用している言語のランタイム全体も同時に起動されます。</p>
+<p>最初のグラフで示されたグローバルパフォーマンスを改善するために、ベンダーは大規模で集中化されたアーキテクチャ（少数の大規模データセンター）から、エッジベースの分散型の世界（世界中に点在するより小さなデータセンター）へ移行し、アプリケーションとエンドユーザーの距離を縮めようとしています。しかし、このアプローチには問題があります。小規模なデータセンターは、マシンも少なく、メモリも少ないことを意味します。ベンダーがよりエッジに近いところで運用するために、小規模ではあるが多数のデータセンター戦略を追求するたびに、個々のプロセスでコールドスタートが発生する可能性が高まります。</p>
+<p>これにより、コンテナベースのアーキテクチャ上のサーバーレスアプリケーションにパフォーマンスの上限が生じます。小規模データセンターを有するレガシーベンダーがアプリケーションをエッジ（ユーザーの近く）に移動させると、サーバーが減り、メモリ量も低下し、アプリケーションがコールドスタートを必要とする可能性が高まります。その可能性を減らすために、より集中型のモデルへと回帰しています。しかしそれは、数少ない大規模な集中型データセンターの1つからアプリケーションを実行することを意味します。このような大規模な集中型データセンターは、定義上、ほとんどの場合、ユーザーから遠く離れた場所に位置します。</p>
+<p>これは、上記のグラフのLambda@Edgeで実行したときのテスト結果を見ることで確認できます。エンドユーザーに近づいているにもかかわらず、コンテナがより頻繁に立ち上がらなければならないため、p90のパフォーマンスはLambdaのそれよりも遅くなっています。</p>
+<p>コンテナ上に構築されたサーバーレスアーキテクチャは、その境界線を上下させることはできますが、最終的に、その境界線の曲線を移動させるためにできることはあまりありません。</p>
+<h3>Workersが非常に高速である理由</h3>
+<p>Workersは、エッジファーストのサーバーレスモデルを念頭に置いてゼロから設計されました。Cloudflareは、巨大な集中データセンターからエッジにコンピュートを押し出すのではなく、分散型のエッジネットワークからスタートしました。この制約の中で作業を進める中で、私たちは革新を余儀なくされました。</p>
+<p>以前のブログ記事の1つで、<a href="https://blog.cloudflare.com/cloud-computing-without-containers">Workersのアーキテクチャ</a>に、この革新の結果である「リクエストごとにコールドスタートを発生させることなく、迅速に立ち上がる軽量なV8 Isolateに基づいて構築する」という新しいパラダイムシフトをどのようにもたらしたかについて説明しています。</p>
+<p>Isolatesを運用することにより、私たちはすぐにメリットを享受できるだけでなく、V8が進化するにつれて、私たちのプラットフォームも向上します。たとえば、<a href="https://v8.dev/blog/liftoff" target="_blank" rel="noopener noreferrer">V8がWASMのコンパイラーであるLiftoffを発表</a>した際、すべてのWASM Workersが瞬時に高速化しました。</p>
+<p>同様に、Cloudflareのネットワークに改善が加えられた場合（例えば、新しいデータセンターを追加する場合）やスタック（HTTP/3のような新しい高速プロトコルのサポート）などに改善が加えられれば、Workersは即座にその恩恵を受けます。</p>
+<p>さらに、私たちは常にWorkers自体の改善を行い、プラットフォームをさらに高速化する努力を常に続けています。たとえば、昨年、当社はお客様のためにコールドスタートを<a href="https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers"><em>なくす</em></a>のに役立つ改善をリリースしました。</p>
+<p>Workersがパフォーマンスの問題を特定し、解決する上での大きな強みは、その運用規模です。現在、Workersは何十万もの開発者にサービスを提供しており、趣味で利用する個人から世界中の企業まで、多岐にわたるユーザーが毎秒数百万のリクエストを処理しています。私たちが1人のお客様のために改善を行うたびに、プラットフォーム全体が高速化されます。</p>
+<h3>パフォーマンスは重要事項</h3>
+<p>サーバーレスモデルの最終目標は、開発者が本来得意とすること、つまりユーザーのためのエクスペリエンスの構築に集中できるようにすることです。すぐに最高のパフォーマンスを提供できるサーバーレスプラットフォームを選択することで、開発者の心配が1つ減ります。もしあなたがコールドスタートの最適化に時間を費やしているのであれば、それは顧客に最高の機能を構築する時間が奪われていることになります。</p>
+<p><em>開発者が</em>ユーザーに最高の体験を提供するためにアプリケーションのパフォーマンスの向上に努めるように、私たちはWorkers上に構築する開発者の体験を向上させるために常に努力しています。</p>
+<p>利用者が反応の遅さを我慢したくないように、開発者もデプロイサイクルの遅さを我慢したくありません。</p>
+<p>ここでもWorkersプラットフォームが優位性を発揮します。</p>
+<p>Cloudflare Workersへのすべてのデプロイは1秒未満でグローバルに反映されます。そのため、コードのデプロイを待つ必要がなく、利用者は可能な限りすばやく変更を確認できます。</p>
+<p>もちろん、重要なのはデプロイ時間だけではなく、開発サイクル全体の効率も重要です。そのため、サインアップからデバッグまで、すべてのステップで<a href="https://blog.cloudflare.com/making-magic-reimagining-developer-experiences-for-the-world-of-serverless">当社は常に改善を目指しています</a>。</p>
+<h3>私たちの言葉をそのまま信じるだけでなく、ぜひご自身でお確かめください！</h3>
+<p>言うまでもなく、私たちは当社に対する贔屓目を排除して中立な目線でお伝えしていますが、少しだけ自信を持っているのも事実です。とはいえ、私たちの言葉をそのまま信用する必要はありません。</p>
+<p>是非サインアップして<a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">最初のWorkerを今すぐ</a>デプロイしてみてください。わずか数分で完了します！</p>
+<h3>Cloudflare TVで視聴する</h3>
+<div id="html-block-k3n" class="html-block">
+	<div style="padding-top:56.25%"><iframe src="https://iframe.videodelivery.net/d4e0ceda17365978936cfd3f55765557?preload=true" style="border:none;position:absolute;top:0;height:100%;width:100%" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="true"></iframe></div>
 </div>

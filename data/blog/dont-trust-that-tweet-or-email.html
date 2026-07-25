@@ -1,107 +1,85 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2E3o6Ju78Dd4ML1dIWej3n/9d97c1294c25a72e79fa4fd44694ad76/dont-trust-that-tweet-or-email.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p><i>This blog originally appeared in July 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. </i><a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1"><i>Learn more</i></a><i>.</i></p>
-	<p>Each day, hundreds of thousands of new domains are registered by users around the world. Unfortunately, the simplicity of <a href="https://www.cloudflare.com/products/registrar" target="_blank" rel="noopener noreferrer">domain registration</a> makes it simple for attackers to register fraudulent domains for use in phishing campaigns. In fact, according to ICANN, nearly 5.45% of newly registered domains per day are malicious (including phishing, botnets, and malware). This means there are 25,070 newly registered malicious domains per day on average.</p>
-	<p>On July 16th, 2020, an email appearing to be from the Bill &amp; Melinda Gates Foundation was sent to numerous recipients, seeking donations for the Foundation in Bitcoin. The email enticed potential donors by offering to double any donations received within seven days. The sender domain of the email was strikingly similar to the legitimate foundation’s domain, gatesfoundation.org.</p>
-	<p><b>Aside from one letter, the malicious sender domain could easily pass for one belonging to the Gates Foundation.</b> The attacker cleverly employed <a href="https://www.cloudflare.com/learning/dns/what-is-cybersquatting" target="_blank" rel="noopener noreferrer">typosquatting</a> when creating the domain name, just minutes before sending the email. Without close scrutiny, the domain’s typo is indistinguishable from the legitimate domain. The attacker also set up an SPF record for the domain in order to ensure reliable delivery of their attack. Interestingly, this phish was sent just a day after Bill Gates’ Twitter account was hacked and used to tweet a message nearly identical to this email.</p>
-	<pre class="language-bash"><code class="language-bash">Benign Domain: gatesfoundation.org
-Malicious Domain: gatesfoundatlon[.]com
-Malicious Domain Age: 2020-07-16 17:00:54 +0000 UTC
-SPF Record:
-     gatesfoundatlon[.]com.	1759	IN	TXT	"v=spf1 include:spf.privateemail.com ~all"
-Bitcoin address: 18XJzrgPqYhKKeR2j4vz6wPQorK3sNuNxs</code></pre>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4DcmAJSHyYgulPzRRnPhHd/cf396f15cb6ff6500e612166dc146e35/image2-16.png" alt="" class="kg-image" width="822" height="407" loading="lazy">
-
-	</figure>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3Jc4dDl2jFFtw9pNOKIAzk/9883877608132754776b62ae2c0faebb/image3.jpg" alt="" class="kg-image" width="1999" height="1177" loading="lazy">
-
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="whois-record-for-gatesfoundatlon-com">Whois Record for gatesfoundatlon[.]com</h3>
-		<a href="https://blog.cloudflare.com/#whois-record-for-gatesfoundatlon-com" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<pre class="language-bash"><code class="language-bash">Domain name: gatesfoundatlon[.]com
-Registry Domain ID: 2546450570_DOMAIN_COM-VRSN
-Registrar WHOIS Server: whois.namecheap.com
-Registrar URL: http://www.namecheap.com
-Updated Date: 0001-01-01T00:00:00.00Z
-Creation Date: 2020-07-16T17:00:54.00Z
-Registrar Registration Expiration Date: 2021-07-16T17:00:54.00Z
-Registrar: NAMECHEAP INC
-Registrar IANA ID: 1068
-Registrar Abuse Contact Email: abuse@namecheap.com
-Registrar Abuse Contact Phone: +1.6613102107
-Reseller: NAMECHEAP INC
-Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
-Domain Status: addPeriod https://icann.org/epp#addPeriod
-Registry Registrant ID:
-Registrant Name: WhoisGuard Protected
-Registrant Organization: WhoisGuard, Inc.
-Registrant Street: P.O. Box 0823-03411
-Registrant City: Panama
-Registrant State/Province: Panama
-Registrant Postal Code:
-Registrant Country: PA
-Registrant Phone: +507.8365503
-Registrant Phone Ext:
-Registrant Fax: +51.17057182
-Registrant Fax Ext:
-Registrant Email: 42d8ccf1af2d41378f65f3d302938b5e.protect@whoisguard.com
-Registry Admin ID:
-Admin Name: WhoisGuard Protected
-Admin Organization: WhoisGuard, Inc.
-Admin Street: P.O. Box 0823-03411
-Admin City: Panama
-Admin State/Province: Panama
-Admin Postal Code:
-Admin Country: PA
-Admin Phone: +507.8365503
-Admin Phone Ext:
-Admin Fax: +51.17057182
-Admin Fax Ext:
-Admin Email: 42d8ccf1af2d41378f65f3d302938b5e.protect@whoisguard.com
-Registry Tech ID:
-Tech Name: WhoisGuard Protected
-Tech Organization: WhoisGuard, Inc.
-Tech Street: P.O. Box 0823-03411
-Tech City: Panama
-Tech State/Province: Panama
-Tech Postal Code:
-Tech Country: PA
-Tech Phone: +507.8365503
-Tech Phone Ext:
-Tech Fax: +51.17057182
-Tech Fax Ext:
-Tech Email: 42d8ccf1af2d41378f65f3d302938b5e.protect@whoisguard.com
-Name Server: dns1.registrar-servers.com
-Name Server: dns2.registrar-servers.com
-DNSSEC: unsigned
-URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
-&gt;&gt;&gt; Last update of WHOIS database: 2020-07-15T23:22:34.80Z &lt;&lt;&lt;</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="twitter-message-from-july-15-2020">Twitter Message From July 15, 2020:</h3>
-		<a href="https://blog.cloudflare.com/#twitter-message-from-july-15-2020" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/75JTu1z0KjOComkOIRQQWb/56b1c39969704ca0223a6614592b8761/image1-4.jpg" alt="" class="kg-image" width="1458" height="1332" loading="lazy">
-
-	</figure>
-	<p>Area 1 uses multiple analysis techniques that leverage insight gained from proactive web crawling and early identification of attacker campaign infrastructure, to detect and stop email from spoofed domains and accounts. Using preemptive threat hunting and a broad set of proprietary analysis techniques, Area 1 identifies phishing campaigns, including malicious newly registered domains, that other defenses miss.</p>
+<p><em>This blog originally appeared in July 2020 on the Area 1 Security website, and was issued in advance of Cloudflare's acquisition of Area 1 Security on April 1, 2022. <a href="https://blog.cloudflare.com/why-we-are-acquiring-area-1">Learn more</a>.</em></p>
+<p>Each day, hundreds of thousands of new domains are registered by users around the world. Unfortunately, the simplicity of <a href="https://www.cloudflare.com/products/registrar" target="_blank" rel="noopener noreferrer">domain registration</a> makes it simple for attackers to register fraudulent domains for use in phishing campaigns. In fact, according to ICANN, nearly 5.45% of newly registered domains per day are malicious (including phishing, botnets, and malware). This means there are 25,070 newly registered malicious domains per day on average.</p>
+<p>On July 16th, 2020, an email appearing to be from the Bill &amp; Melinda Gates Foundation was sent to numerous recipients, seeking donations for the Foundation in Bitcoin. The email enticed potential donors by offering to double any donations received within seven days. The sender domain of the email was strikingly similar to the legitimate foundation’s domain, gatesfoundation.org.</p>
+<p><strong>Aside from one letter, the malicious sender domain could easily pass for one belonging to the Gates Foundation.</strong> The attacker cleverly employed <a href="https://www.cloudflare.com/learning/dns/what-is-cybersquatting" target="_blank" rel="noopener noreferrer">typosquatting</a> when creating the domain name, just minutes before sending the email. Without close scrutiny, the domain’s typo is indistinguishable from the legitimate domain. The attacker also set up an SPF record for the domain in order to ensure reliable delivery of their attack. Interestingly, this phish was sent just a day after Bill Gates’ Twitter account was hacked and used to tweet a message nearly identical to this email.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Benign</span><span class="sk-032f62-99ffe4"> Domain:</span><span class="sk-032f62-99ffe4"> gatesfoundation.org</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Malicious</span><span class="sk-032f62-99ffe4"> Domain:</span><span class="sk-032f62-99ffe4"> gatesfoundatlon[.]com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Malicious</span><span class="sk-032f62-99ffe4"> Domain</span><span class="sk-032f62-99ffe4"> Age:</span><span class="sk-032f62-99ffe4"> 2020-07-16</span><span class="sk-032f62-99ffe4"> 17:00:54</span><span class="sk-032f62-99ffe4"> +0000</span><span class="sk-032f62-99ffe4"> UTC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">SPF</span><span class="sk-032f62-99ffe4"> Record:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     gatesfoundatlon[.]com.</span><span class="sk-005cc5-ffc799">	1759</span><span class="sk-032f62-99ffe4">	IN</span><span class="sk-032f62-99ffe4">	TXT</span><span class="sk-032f62-99ffe4">	"v=spf1 include:spf.privateemail.com ~all"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Bitcoin</span><span class="sk-032f62-99ffe4"> address:</span><span class="sk-032f62-99ffe4"> 18XJzrgPqYhKKeR2j4vz6wPQorK3sNuNxs</span></span></code></pre>
 </div>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="354" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=715&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=640&amp;h=317&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=715&amp;h=354&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=750&amp;h=371&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=828&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=1080&amp;h=535&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=1280&amp;h=634&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=1430&amp;h=708&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1424 Embedded Image - VrC7dw" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46JQJT0HPMSCG9M7RVTMJV.png&amp;w=822&amp;h=407&amp;f=webp" data-lightbox-width="822" data-lightbox-height="407" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="354" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="421" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=715&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=640&amp;h=377&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=715&amp;h=421&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=750&amp;h=442&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=828&amp;h=488&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=1080&amp;h=636&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=1280&amp;h=754&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=1430&amp;h=842&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-1424 Embedded Image - aavHji" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45Y3KP2HAV132MSWX7A9X5.jpg&amp;w=1920&amp;h=1130&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1130" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="421" class="pt-portable-image-media"></div>
+</figure>
+<h3>Whois Record for gatesfoundatlon[.]com</h3>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">Domain</span><span class="sk-032f62-99ffe4"> name:</span><span class="sk-032f62-99ffe4"> gatesfoundatlon[.]com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registry</span><span class="sk-032f62-99ffe4"> Domain</span><span class="sk-032f62-99ffe4"> ID:</span><span class="sk-032f62-99ffe4"> 2546450570_DOMAIN_COM-VRSN</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrar</span><span class="sk-032f62-99ffe4"> WHOIS</span><span class="sk-032f62-99ffe4"> Server:</span><span class="sk-032f62-99ffe4"> whois.namecheap.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrar</span><span class="sk-032f62-99ffe4"> URL:</span><span class="sk-032f62-99ffe4"> http://www.namecheap.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Updated</span><span class="sk-032f62-99ffe4"> Date:</span><span class="sk-032f62-99ffe4"> 0001-01-01T00:00:00.00Z</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Creation</span><span class="sk-032f62-99ffe4"> Date:</span><span class="sk-032f62-99ffe4"> 2020-07-16T17:00:54.00Z</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrar</span><span class="sk-032f62-99ffe4"> Registration</span><span class="sk-032f62-99ffe4"> Expiration</span><span class="sk-032f62-99ffe4"> Date:</span><span class="sk-032f62-99ffe4"> 2021-07-16T17:00:54.00Z</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrar:</span><span class="sk-032f62-99ffe4"> NAMECHEAP</span><span class="sk-032f62-99ffe4"> INC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrar</span><span class="sk-032f62-99ffe4"> IANA</span><span class="sk-032f62-99ffe4"> ID:</span><span class="sk-005cc5-ffc799"> 1068</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrar</span><span class="sk-032f62-99ffe4"> Abuse</span><span class="sk-032f62-99ffe4"> Contact</span><span class="sk-032f62-99ffe4"> Email:</span><span class="sk-032f62-99ffe4"> abuse@namecheap.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrar</span><span class="sk-032f62-99ffe4"> Abuse</span><span class="sk-032f62-99ffe4"> Contact</span><span class="sk-032f62-99ffe4"> Phone:</span><span class="sk-032f62-99ffe4"> +1.6613102107</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Reseller:</span><span class="sk-032f62-99ffe4"> NAMECHEAP</span><span class="sk-032f62-99ffe4"> INC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Domain</span><span class="sk-032f62-99ffe4"> Status:</span><span class="sk-032f62-99ffe4"> clientTransferProhibited</span><span class="sk-032f62-99ffe4"> https://icann.org/epp#clientTransferProhibited</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Domain</span><span class="sk-032f62-99ffe4"> Status:</span><span class="sk-032f62-99ffe4"> addPeriod</span><span class="sk-032f62-99ffe4"> https://icann.org/epp#addPeriod</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registry</span><span class="sk-032f62-99ffe4"> Registrant</span><span class="sk-032f62-99ffe4"> ID:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Name:</span><span class="sk-032f62-99ffe4"> WhoisGuard</span><span class="sk-032f62-99ffe4"> Protected</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Organization:</span><span class="sk-032f62-99ffe4"> WhoisGuard,</span><span class="sk-032f62-99ffe4"> Inc.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Street:</span><span class="sk-032f62-99ffe4"> P.O.</span><span class="sk-032f62-99ffe4"> Box</span><span class="sk-032f62-99ffe4"> 0823-03411</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> City:</span><span class="sk-032f62-99ffe4"> Panama</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> State/Province:</span><span class="sk-032f62-99ffe4"> Panama</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Postal</span><span class="sk-032f62-99ffe4"> Code:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Country:</span><span class="sk-032f62-99ffe4"> PA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Phone:</span><span class="sk-032f62-99ffe4"> +507.8365503</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Phone</span><span class="sk-032f62-99ffe4"> Ext:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Fax:</span><span class="sk-032f62-99ffe4"> +51.17057182</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Fax</span><span class="sk-032f62-99ffe4"> Ext:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registrant</span><span class="sk-032f62-99ffe4"> Email:</span><span class="sk-032f62-99ffe4"> 42d8ccf1af2d41378f65f3d302938b5e.protect@whoisguard.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registry</span><span class="sk-032f62-99ffe4"> Admin</span><span class="sk-032f62-99ffe4"> ID:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Name:</span><span class="sk-032f62-99ffe4"> WhoisGuard</span><span class="sk-032f62-99ffe4"> Protected</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Organization:</span><span class="sk-032f62-99ffe4"> WhoisGuard,</span><span class="sk-032f62-99ffe4"> Inc.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Street:</span><span class="sk-032f62-99ffe4"> P.O.</span><span class="sk-032f62-99ffe4"> Box</span><span class="sk-032f62-99ffe4"> 0823-03411</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> City:</span><span class="sk-032f62-99ffe4"> Panama</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> State/Province:</span><span class="sk-032f62-99ffe4"> Panama</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Postal</span><span class="sk-032f62-99ffe4"> Code:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Country:</span><span class="sk-032f62-99ffe4"> PA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Phone:</span><span class="sk-032f62-99ffe4"> +507.8365503</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Phone</span><span class="sk-032f62-99ffe4"> Ext:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Fax:</span><span class="sk-032f62-99ffe4"> +51.17057182</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Fax</span><span class="sk-032f62-99ffe4"> Ext:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Admin</span><span class="sk-032f62-99ffe4"> Email:</span><span class="sk-032f62-99ffe4"> 42d8ccf1af2d41378f65f3d302938b5e.protect@whoisguard.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Registry</span><span class="sk-032f62-99ffe4"> Tech</span><span class="sk-032f62-99ffe4"> ID:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Name:</span><span class="sk-032f62-99ffe4"> WhoisGuard</span><span class="sk-032f62-99ffe4"> Protected</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Organization:</span><span class="sk-032f62-99ffe4"> WhoisGuard,</span><span class="sk-032f62-99ffe4"> Inc.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Street:</span><span class="sk-032f62-99ffe4"> P.O.</span><span class="sk-032f62-99ffe4"> Box</span><span class="sk-032f62-99ffe4"> 0823-03411</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> City:</span><span class="sk-032f62-99ffe4"> Panama</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> State/Province:</span><span class="sk-032f62-99ffe4"> Panama</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Postal</span><span class="sk-032f62-99ffe4"> Code:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Country:</span><span class="sk-032f62-99ffe4"> PA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Phone:</span><span class="sk-032f62-99ffe4"> +507.8365503</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Phone</span><span class="sk-032f62-99ffe4"> Ext:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Fax:</span><span class="sk-032f62-99ffe4"> +51.17057182</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Fax</span><span class="sk-032f62-99ffe4"> Ext:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Tech</span><span class="sk-032f62-99ffe4"> Email:</span><span class="sk-032f62-99ffe4"> 42d8ccf1af2d41378f65f3d302938b5e.protect@whoisguard.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Name</span><span class="sk-032f62-99ffe4"> Server:</span><span class="sk-032f62-99ffe4"> dns1.registrar-servers.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Name</span><span class="sk-032f62-99ffe4"> Server:</span><span class="sk-032f62-99ffe4"> dns2.registrar-servers.com</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DNSSEC:</span><span class="sk-032f62-99ffe4"> unsigned</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">URL</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> the</span><span class="sk-032f62-99ffe4"> ICANN</span><span class="sk-032f62-99ffe4"> WHOIS</span><span class="sk-032f62-99ffe4"> Data</span><span class="sk-032f62-99ffe4"> Problem</span><span class="sk-032f62-99ffe4"> Reporting</span><span class="sk-032f62-99ffe4"> System:</span><span class="sk-032f62-99ffe4"> http://wdprs.internic.net/</span></span>
+<span class="line"><span class="sk-24292e-fff">&gt;&gt;&gt; </span><span class="sk-6f42c1-ffc799">Last</span><span class="sk-032f62-99ffe4"> update</span><span class="sk-032f62-99ffe4"> of</span><span class="sk-032f62-99ffe4"> WHOIS</span><span class="sk-032f62-99ffe4"> database:</span><span class="sk-032f62-99ffe4"> 2020-07-15T23:22:34.80Z</span><span class="sk-24292e-fff"> &lt;&lt;&lt;</span></span></code></pre>
+</div>
+<h3>Twitter Message From July 15, 2020:</h3>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="653" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=715&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=640&amp;h=585&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=715&amp;h=653&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=750&amp;h=685&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=828&amp;h=756&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=1080&amp;h=986&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=1280&amp;h=1169&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=1430&amp;h=1306&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Don’t trust that tweet…or that email from &quot;Bill Gates&quot;" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW454R52WZ0CVR8R3CD8S7WV.jpg&amp;w=1458&amp;h=1332&amp;f=webp" data-lightbox-width="1458" data-lightbox-height="1332" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="653" class="pt-portable-image-media"></div>
+</figure>
+<p>Area 1 uses multiple analysis techniques that leverage insight gained from proactive web crawling and early identification of attacker campaign infrastructure, to detect and stop email from spoofed domains and accounts. Using preemptive threat hunting and a broad set of proprietary analysis techniques, Area 1 identifies phishing campaigns, including malicious newly registered domains, that other defenses miss.</p>

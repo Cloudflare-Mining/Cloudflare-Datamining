@@ -1,102 +1,62 @@
-<div class="mb2 gray5">2 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/5oQmk0Xnt1xt8wQVlKeyFk/2f4046d563d507e229c3c368b8c4167c/protecting-the-origin-with-tls-authenticated-origin-pulls.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>As we have been discussing this week, securing the connection between Cloudflare and the origin server is arguably just as important as securing the connection between end users and Cloudflare. The <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">origin certificate authority</a> we announced this week will help CloudFlare verify that it is talking to the correct origin server. But what about verification in the opposite direction? How can the origin verify that the client talking to it is actually CloudFlare?</p>
-	<div class="flex anchor relative">
-		<h3 id="tls-client-authentication">TLS Client Authentication</h3>
-		<a href="https://blog.cloudflare.com/#tls-client-authentication" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4j8yHcLklM13sQFFE5NLds/f8d792142a8982d3fd71718990ffcc1c/illustration-tls-ssl-standard-1.png" alt="Normal TLS handshake" class="kg-image" width="900" height="1058" loading="lazy">
-
-	</figure>
-	<p>TLS (the modern version of SSL) allows a client to verify the identity of the server it is talking to. Normally, a TLS handshake is one-way, that is, the client is able to verify the server's identity, but the server is not able to verify the client's identity. What about when both sides need to verify each other's identity?</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4IJu2fHHc7jni7nKl63g16/a42aeadfa66be1e0c5255b4eeed0b7f5/illustration-tls-ssl-client-auth.png" alt="Client authenticated TLS handshake" class="kg-image" width="900" height="1256" loading="lazy">
-
-	</figure>
-	<p>Enter <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake" target="_blank" rel="noopener noreferrer">TLS Client Authentication</a>. In a client authenticated TLS handshake both sides provide a certificate to be verified. If the origin server is configured to only accept requests which use a valid client certificate from Cloudflare, requests which have not passed through Cloudflare will be dropped (as they will not have our certificate). This means that attackers cannot circumvent CloudFlare features such as our <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF</a>, even via an attack like <a href="http://www.cisco.com/web/about/ac123/ac147/archived_issues/ipj_10-4/104_ip-spoofing.html" target="_blank" rel="noopener noreferrer">TCP source IP spoofing</a> which could typically be used make an origin server believe malicious requests have passed through CloudFlare's network.</p>
-	<p>To implement TLS client authentication in Cloudflare, one of our engineers, Piotr Sikora, <a href="http://hg.nginx.org/nginx/rev/20d966ad5e89" target="_blank" rel="noopener noreferrer">added support to nginx</a>. This code is open source and has been merged into the official nginx 1.7 branch, and can be used by anyone utilizing nginx's proxy module.</p>
-	<div class="flex anchor relative">
-		<h3 id="enabling-authenticated-origin-pulls">Enabling Authenticated Origin Pulls</h3>
-		<a href="https://blog.cloudflare.com/#enabling-authenticated-origin-pulls" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Generally, enabling Authenticated Origin Pulls does not cause any problems with a website, even if client certificates are not validated. However, in the event a website uses client certificates for other purposes, the Cloudflare origin-pull certificate may conflict and cause problems. Consequently, Authenticated Origin Pulls are an opt-in setting for Cloudflare customers. This service is available for all levels of Cloudflare plan: Free, Professional, Business, and Enterprise.</p>
-	<p>In order to enable Authenticated Origin Pulls for your Cloudflare protected website, you will need to use our new dashboard (currently in beta). To access this beta dashboard, first log in to your Cloudflare account. In the lower right corner of the page there is a button labeled "Try Our New Dashboard." Click and log in again. At this point, you're in our new dashboard with access to all your existing domains and settings through a completely new user interface.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/3WKbGYfpdrkkxQXYOw7OqV/1acb9dc527efbf728a719fc885923b45/Screen-Shot-2015-02-27-at-15-16-11.png" alt="" class="kg-image" width="1298" height="1717" loading="lazy">
-
-	</figure>
-	<p>There will be more information about this new dashboard in the near future, but feel free to check it out. You can continue to freely switch between old and new dashboard.</p>
-	<div class="flex anchor relative">
-		<h3 id="certificate">Certificate</h3>
-		<a href="https://blog.cloudflare.com/#certificate" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare presents certificates signed by a CA with the following certificate:</p>
-	<pre class="language-bash"><code class="language-bash">
------BEGIN CERTIFICATE-----
-MIIGBjCCA/CgAwIBAgIIV5G6lVbCLmEwCwYJKoZIhvcNAQENMIGQMQswCQYDVQQG
-EwJVUzEZMBcGA1UEChMQQ2xvdWRGbGFyZSwgSW5jLjEUMBIGA1UECxMLT3JpZ2lu
-IFB1bGwxFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xEzARBgNVBAgTCkNhbGlmb3Ju
-aWExIzAhBgNVBAMTGm9yaWdpbi1wdWxsLmNsb3VkZmxhcmUubmV0MB4XDTE1MDEx
-MzAyNDc1M1oXDTIwMDExMjAyNTI1M1owgZAxCzAJBgNVBAYTAlVTMRkwFwYDVQQK
-ExBDbG91ZEZsYXJlLCBJbmMuMRQwEgYDVQQLEwtPcmlnaW4gUHVsbDEWMBQGA1UE
-BxMNU2FuIEZyYW5jaXNjbzETMBEGA1UECBMKQ2FsaWZvcm5pYTEjMCEGA1UEAxMa
-b3JpZ2luLXB1bGwuY2xvdWRmbGFyZS5uZXQwggIiMA0GCSqGSIb3DQEBAQUAA4IC
-DwAwggIKAoICAQDdsts6I2H5dGyn4adACQRXlfo0KmwsN7B5rxD8C5qgy6spyONr
-WV0ecvdeGQfWa8Gy/yuTuOnsXfy7oyZ1dm93c3Mea7YkM7KNMc5Y6m520E9tHooc
-f1qxeDpGSsnWc7HWibFgD7qZQx+T+yfNqt63vPI0HYBOYao6hWd3JQhu5caAcIS2
-ms5tzSSZVH83ZPe6Lkb5xRgLl3eXEFcfI2DjnlOtLFqpjHuEB3Tr6agfdWyaGEEi
-lRY1IB3k6TfLTaSiX2/SyJ96bp92wvTSjR7USjDV9ypf7AD6u6vwJZ3bwNisNw5L
-ptph0FBnc1R6nDoHmvQRoyytoe0rl/d801i9Nru/fXa+l5K2nf1koR3IX440Z2i9
-+Z4iVA69NmCbT4MVjm7K3zlOtwfI7i1KYVv+ATo4ycgBuZfY9f/2lBhIv7BHuZal
-b9D+/EK8aMUfjDF4icEGm+RQfExv2nOpkR4BfQppF/dLmkYfjgtO1403X0ihkT6T
-PYQdmYS6Jf53/KpqC3aA+R7zg2birtvprinlR14MNvwOsDOzsK4p8WYsgZOR4Qr2
-gAx+z2aVOs/87+TVOR0r14irQsxbg7uP2X4t+EXx13glHxwG+CnzUVycDLMVGvuG
-aUgF9hukZxlOZnrl6VOf1fg0Caf3uvV8smOkVw6DMsGhBZSJVwao0UQNqQIDAQAB
-o2YwZDAOBgNVHQ8BAf8EBAMCAAYwEgYDVR0TAQH/BAgwBgEB/wIBAjAdBgNVHQ4E
-FgQUQ1lLK2mLgOERM2pXzVc42p59xeswHwYDVR0jBBgwFoAUQ1lLK2mLgOERM2pX
-zVc42p59xeswCwYJKoZIhvcNAQENA4ICAQDKDQM1qPRVP/4Gltz0D6OU6xezFBKr
-LWtDoA1qW2F7pkiYawCP9MrDPDJsHy7dx+xw3bBZxOsK5PA/T7p1dqpEl6i8F692
-g//EuYOifLYw3ySPe3LRNhvPl/1f6Sn862VhPvLa8aQAAwR9e/CZvlY3fj+6G5ik
-3it7fikmKUsVnugNOkjmwI3hZqXfJNc7AtHDFw0mEOV0dSeAPTo95N9cxBbm9PKv
-qAEmTEXp2trQ/RjJ/AomJyfA1BQjsD0j++DI3a9/BbDwWmr1lJciKxiNKaa0BRLB
-dKMrYQD+PkPNCgEuojT+paLKRrMyFUzHSG1doYm46NE9/WARTh3sFUp1B7HZSBqA
-kHleoB/vQ/mDuW9C3/8Jk2uRUdZxR+LoNZItuOjU8oTy6zpN1+GgSj7bHjiy9rfA
-F+ehdrz+IOh80WIiqs763PGoaYUyzxLvVowLWNoxVVoc9G+PqFKqD988XlipHVB6
-Bz+1CD4D/bWrs3cC9+kk/jFmrrAymZlkFX8tDb5aXASSLJjUjcptci9SKqtI2h0J
-wUGkD7+bQAr+7vr8/R+CBmNMe7csE8NeEX6lVMF7Dh0a1YKQa6hUN18bBuYgTMuT
-QzMmZpRpIBB321ZBlcnlxiTJvWxvbCPHKHj20VwwAz7LONF59s84ZsOqfoBv8gKM
-s0s5dsq5zpLeaw==
------END CERTIFICATE-----</code></pre>
-	<p>This certificate is also available from <a href="https://origin-pull.cloudflare.com" target="_blank" rel="noopener noreferrer">https://origin-pull.cloudflare.com/</a></p>
-	<div class="flex anchor relative">
-		<h3 id="origin-server-configuration">Origin Server Configuration</h3>
-		<a href="https://blog.cloudflare.com/#origin-server-configuration" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We will include configuration examples for popular web servers in our <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up" target="_blank" rel="noopener noreferrer">Cloudflare Support Docs</a> in the next week.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1JjE8Qn3bmZblfN1zNWzb8/33c2ed63f0bf710fba2a75a38cc955a8/cloudflare_ssl-week-2-1.png" alt="" class="kg-image" width="1000" height="375" loading="lazy">
-
-	</figure>
+<p>As we have been discussing this week, securing the connection between Cloudflare and the origin server is arguably just as important as securing the connection between end users and Cloudflare. The <a href="https://blog.cloudflare.com/universal-ssl-encryption-all-the-way-to-the-origin-for-free">origin certificate authority</a> we announced this week will help CloudFlare verify that it is talking to the correct origin server. But what about verification in the opposite direction? How can the origin verify that the client talking to it is actually CloudFlare?</p>
+<h3>TLS Client Authentication</h3>
+<p>TLS (the modern version of SSL) allows a client to verify the identity of the server it is talking to. Normally, a TLS handshake is one-way, that is, the client is able to verify the server's identity, but the server is not able to verify the client's identity. What about when both sides need to verify each other's identity?</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="998" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=715&amp;h=998&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=640&amp;h=893&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=715&amp;h=998&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=750&amp;h=1047&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=828&amp;h=1156&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=1080&amp;h=1507&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=1280&amp;h=1787&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=1430&amp;h=1996&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Introducing TLS with Client Authentication Embedded Image - JGaWlJ" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44RQGK5G6E5D6AXJGQJ6PT.png&amp;w=900&amp;h=1256&amp;f=webp" data-lightbox-width="900" data-lightbox-height="1256" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="998" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Enter <a href="http://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake" target="_blank" rel="noopener noreferrer">TLS Client Authentication</a>. In a client authenticated TLS handshake both sides provide a certificate to be verified. If the origin server is configured to only accept requests which use a valid client certificate from Cloudflare, requests which have not passed through Cloudflare will be dropped (as they will not have our certificate). This means that attackers cannot circumvent CloudFlare features such as our <a href="https://www.cloudflare.com/waf" target="_blank" rel="noopener noreferrer">WAF</a>, even via an attack like <a href="http://www.cisco.com/web/about/ac123/ac147/archived_issues/ipj_10-4/104_ip-spoofing.html" target="_blank" rel="noopener noreferrer">TCP source IP spoofing</a> which could typically be used make an origin server believe malicious requests have passed through CloudFlare's network.</p>
+<p>To implement TLS client authentication in Cloudflare, one of our engineers, Piotr Sikora, <a href="http://hg.nginx.org/nginx/rev/20d966ad5e89" target="_blank" rel="noopener noreferrer">added support to nginx</a>. This code is open source and has been merged into the official nginx 1.7 branch, and can be used by anyone utilizing nginx's proxy module.</p>
+<h3>Enabling Authenticated Origin Pulls</h3>
+<p>Generally, enabling Authenticated Origin Pulls does not cause any problems with a website, even if client certificates are not validated. However, in the event a website uses client certificates for other purposes, the Cloudflare origin-pull certificate may conflict and cause problems. Consequently, Authenticated Origin Pulls are an opt-in setting for Cloudflare customers. This service is available for all levels of Cloudflare plan: Free, Professional, Business, and Enterprise.</p>
+<p>In order to enable Authenticated Origin Pulls for your Cloudflare protected website, you will need to use our new dashboard (currently in beta). To access this beta dashboard, first log in to your Cloudflare account. In the lower right corner of the page there is a button labeled "Try Our New Dashboard." Click and log in again. At this point, you're in our new dashboard with access to all your existing domains and settings through a completely new user interface.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="946" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=715&amp;h=946&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=640&amp;h=847&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=715&amp;h=946&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=750&amp;h=992&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=828&amp;h=1096&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=1080&amp;h=1429&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=1280&amp;h=1694&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=1430&amp;h=1892&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Protecting web origins with Authenticated Origin Pulls Embedded Image - 2MKIJn" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW462WWF701QCW5E6NMW09HM.png&amp;w=1298&amp;h=1717&amp;f=webp" data-lightbox-width="1298" data-lightbox-height="1717" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="946" class="pt-portable-image-media"></div>
+</figure>
+<p>There will be more information about this new dashboard in the near future, but feel free to check it out. You can continue to freely switch between old and new dashboard.</p>
+<h3>Certificate</h3>
+<p>Cloudflare presents certificates signed by a CA with the following certificate:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-----BEGIN</span><span class="sk-032f62-99ffe4"> CERTIFICATE-----</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">MIIGBjCCA/CgAwIBAgIIV5G6lVbCLmEwCwYJKoZIhvcNAQENMIGQMQswCQYDVQQG</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">EwJVUzEZMBcGA1UEChMQQ2xvdWRGbGFyZSwgSW5jLjEUMBIGA1UECxMLT3JpZ2lu</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">IFB1bGwxFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xEzARBgNVBAgTCkNhbGlmb3Ju</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">aWExIzAhBgNVBAMTGm9yaWdpbi1wdWxsLmNsb3VkZmxhcmUubmV0MB4XDTE1MDEx</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">MzAyNDc1M1oXDTIwMDExMjAyNTI1M1owgZAxCzAJBgNVBAYTAlVTMRkwFwYDVQQK</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ExBDbG91ZEZsYXJlLCBJbmMuMRQwEgYDVQQLEwtPcmlnaW4gUHVsbDEWMBQGA1UE</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">BxMNU2FuIEZyYW5jaXNjbzETMBEGA1UECBMKQ2FsaWZvcm5pYTEjMCEGA1UEAxMa</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">b3JpZ2luLXB1bGwuY2xvdWRmbGFyZS5uZXQwggIiMA0GCSqGSIb3DQEBAQUAA4IC</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">DwAwggIKAoICAQDdsts6I2H5dGyn4adACQRXlfo0KmwsN7B5rxD8C5qgy6spyONr</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">WV0ecvdeGQfWa8Gy/yuTuOnsXfy7oyZ1dm93c3Mea7YkM7KNMc5Y6m520E9tHooc</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">f1qxeDpGSsnWc7HWibFgD7qZQx+T+yfNqt63vPI0HYBOYao6hWd3JQhu5caAcIS2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ms5tzSSZVH83ZPe6Lkb5xRgLl3eXEFcfI2DjnlOtLFqpjHuEB3Tr6agfdWyaGEEi</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">lRY1IB3k6TfLTaSiX2/SyJ96bp92wvTSjR7USjDV9ypf7AD6u6vwJZ3bwNisNw5L</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">ptph0FBnc1R6nDoHmvQRoyytoe0rl/d801i9Nru/fXa+l5K2nf1koR3IX440Z2i9</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">+Z4iVA69NmCbT4MVjm7K3zlOtwfI7i1KYVv+ATo4ycgBuZfY9f/2lBhIv7BHuZal</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">b9D+/EK8aMUfjDF4icEGm+RQfExv2nOpkR4BfQppF/dLmkYfjgtO1403X0ihkT6T</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">PYQdmYS6Jf53/KpqC3aA+R7zg2birtvprinlR14MNvwOsDOzsK4p8WYsgZOR4Qr2</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">gAx+z2aVOs/87+TVOR0r14irQsxbg7uP2X4t+EXx13glHxwG+CnzUVycDLMVGvuG</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">aUgF9hukZxlOZnrl6VOf1fg0Caf3uvV8smOkVw6DMsGhBZSJVwao0UQNqQIDAQAB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">o2YwZDAOBgNVHQ8BAf8EBAMCAAYwEgYDVR0TAQH/BAgwBgEB/wIBAjAdBgNVHQ4E</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">FgQUQ1lLK2mLgOERM2pXzVc42p59xeswHwYDVR0jBBgwFoAUQ1lLK2mLgOERM2pX</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">zVc42p59xeswCwYJKoZIhvcNAQENA4ICAQDKDQM1qPRVP/4Gltz0D6OU6xezFBKr</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">LWtDoA1qW2F7pkiYawCP9MrDPDJsHy7dx+xw3bBZxOsK5PA/T7p1dqpEl6i8F692</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">g//EuYOifLYw3ySPe3LRNhvPl/1f6Sn862VhPvLa8aQAAwR9e/CZvlY3fj+6G5ik</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">3it7fikmKUsVnugNOkjmwI3hZqXfJNc7AtHDFw0mEOV0dSeAPTo95N9cxBbm9PKv</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">qAEmTEXp2trQ/RjJ/AomJyfA1BQjsD0j++DI3a9/BbDwWmr1lJciKxiNKaa0BRLB</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">dKMrYQD+PkPNCgEuojT+paLKRrMyFUzHSG1doYm46NE9/WARTh3sFUp1B7HZSBqA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">kHleoB/vQ/mDuW9C3/8Jk2uRUdZxR+LoNZItuOjU8oTy6zpN1+GgSj7bHjiy9rfA</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">F+ehdrz+IOh80WIiqs763PGoaYUyzxLvVowLWNoxVVoc9G+PqFKqD988XlipHVB6</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Bz+1CD4D/bWrs3cC9+kk/jFmrrAymZlkFX8tDb5aXASSLJjUjcptci9SKqtI2h0J</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">wUGkD7+bQAr+7vr8/R+CBmNMe7csE8NeEX6lVMF7Dh0a1YKQa6hUN18bBuYgTMuT</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">QzMmZpRpIBB321ZBlcnlxiTJvWxvbCPHKHj20VwwAz7LONF59s84ZsOqfoBv8gKM</span></span>
+<span class="line"><span class="sk-24292e-fff">s0s5dsq5zpLeaw</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-032f62-99ffe4">=</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">-----END</span><span class="sk-032f62-99ffe4"> CERTIFICATE-----</span></span></code></pre>
 </div>
+<p>This certificate is also available from <a href="https://origin-pull.cloudflare.com" target="_blank" rel="noopener noreferrer">https://origin-pull.cloudflare.com/</a></p>
+<h3>Origin Server Configuration</h3>
+<p>We will include configuration examples for popular web servers in our <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up" target="_blank" rel="noopener noreferrer">Cloudflare Support Docs</a> in the next week.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="268" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=640&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=750&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=828&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=1080&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=1280&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=1430&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Protecting web origins with Authenticated Origin Pulls Embedded Image - yQQ0wG" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44F0486XQVKMDF52FJE8XK.png&amp;w=1000&amp;h=375&amp;f=webp" data-lightbox-width="1000" data-lightbox-height="375" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="268" class="pt-portable-image-media"></div>
+</figure>

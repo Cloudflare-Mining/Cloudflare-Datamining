@@ -1,153 +1,106 @@
-<div class="mb2 gray5">5 min read</div>
-<div class="mt4">This post is also available in <a href="https://blog.cloudflare.com/zh-cn/markdown-for-agents">简体中文</a>, <a href="https://blog.cloudflare.com/ja-jp/markdown-for-agents">日本語</a>, <a href="https://blog.cloudflare.com/ko-kr/markdown-for-agents">한국어</a> and <a href="https://blog.cloudflare.com/zh-tw/markdown-for-agents">繁體中文</a>.</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/rzmAhLxuiqzCffB9yZrdf/91858defbc03196c5f074a26117248f9/BLOG-3162_1.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p>The way content and businesses are discovered online is changing rapidly. In the past, traffic originated from traditional search engines, and SEO determined who got found first. Now the traffic is increasingly coming from AI crawlers and agents that demand structured data within the often-unstructured Web that was built for humans.</p>
-	<p>As a business, to continue to stay ahead, now is the time to consider not just human visitors, or traditional wisdom for SEO-optimization, but start to treat agents as first-class citizens.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="why-markdown-is-important">Why markdown is important</h2>
-		<a href="https://blog.cloudflare.com/#why-markdown-is-important" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Feeding raw HTML to an AI is like paying by the word to read packaging instead of the letter inside. A simple <code>## About Us</code> on a page in markdown costs roughly 3 tokens; its HTML equivalent – <code>&lt;h2 class="section-title" id="about"&gt;About Us&lt;/h2&gt;</code> – burns 12-15, and that's before you account for the <code>&lt;div&gt;</code> wrappers, nav bars, and script tags that pad every real web page and have zero semantic value.</p>
-	<p>This blog post you’re reading takes 16,180 tokens in HTML and 3,150 tokens when converted to markdown. <b>That’s a 80% reduction in token usage</b>.</p>
-	<p><a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener noreferrer"><u>Markdown</u></a> has quickly become the <i>lingua franca</i> for agents and AI systems as a whole. The format’s explicit structure makes it ideal for AI processing, ultimately resulting in better results while minimizing token waste.</p>
-	<p>The problem is that the Web is made of HTML, not markdown, and page weight has been <a href="https://almanac.httparchive.org/en/2025/page-weight#page-weight-over-time" target="_blank" rel="noopener noreferrer"><u>steadily increasing</u></a> over the years, making pages hard to parse. For agents, their goal is to filter out all non-essential elements and scan the relevant content.</p>
-	<p>The conversion of HTML to markdown is now a common step for any AI pipeline. Still, this process is far from ideal: it wastes computation, adds costs and processing complexity, and above all, it may not be how the content creator intended their content to be used in the first place.</p>
-	<p>What if AI agents could bypass the complexities of intent analysis and document conversion, and instead receive structured markdown directly from the source?</p>
-	<div class="flex anchor relative">
-		<h2 id="convert-html-to-markdown-automatically">Convert HTML to markdown, automatically</h2>
-		<a href="https://blog.cloudflare.com/#convert-html-to-markdown-automatically" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Cloudflare's network now supports real-time content conversion at the source, for <a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>enabled zones</u></a> using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation" target="_blank" rel="noopener noreferrer"><u>content negotiation</u></a> headers. Now when AI systems request pages from any website that uses Cloudflare and has Markdown for Agents enabled, they can express the preference for text/markdown in the request. Our network will automatically and efficiently convert the HTML to markdown, when possible, on the fly.</p>
-	<p>Here’s how it works. To fetch the markdown version of any page from a zone with Markdown for Agents enabled, the client needs to add the <b>Accept</b> negotiation header with <code>text/markdown</code><b> </b>as one of the options. Cloudflare will detect this, fetch the original HTML version from the origin, and convert it to markdown before serving it to the client.</p>
-	<p>Here's a curl example with the Accept negotiation header requesting a page from our developer documentation:</p>
-	<pre class="language-typescript"><code class="language-typescript">curl https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/ \
-  -H "Accept: text/markdown"
-</code></pre>
-	<p>Or if you’re building an AI Agent using Workers, you can use TypeScript:</p>
-	<pre class="language-javascript"><code class="language-javascript">const r = await fetch(
-  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`,
-  {
-    headers: {
-      Accept: "text/markdown, text/html",
-    },
-  },
-);
-const tokenCount = r.headers.get("x-markdown-tokens");
-const markdown = await r.text();
-</code></pre>
-	<p>We already see some of the most popular coding agents today – like Claude Code and OpenCode – send these accept headers with their requests for content. Now, the response to this request is formatted&nbsp; in markdown. It's that simple.&nbsp;&nbsp;</p>
-	<pre class="language-typescript"><code class="language-typescript">HTTP/2 200
-date: Wed, 11 Feb 2026 11:44:48 GMT
-content-type: text/markdown; charset=utf-8
-content-length: 2899
-vary: accept
-x-markdown-tokens: 725
-content-signal: ai-train=yes, search=yes, ai-input=yes
-
----
-title: Markdown for Agents · Cloudflare Agents docs
----
-
-## What is Markdown for Agents
-
-The ability to parse and convert HTML to Markdown has become foundational for AI.
-...
-</code></pre>
-	<p>Note that we include an <code>x-markdown-tokens</code> header with the converted response that indicates the estimated number of tokens in the markdown document. You can use this value in your flow, for example to calculate the size of a context window or to decide on your chunking strategy.</p>
-	<p>Here’s a diagram of how it works:</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/6Zw1Q5kBBqTrouN1362H5I/3080d74a2a971be1f1e7e0ba79611998/BLOG-3162_2.png" alt="BLOG-3162 2" class="kg-image" width="1035" height="423" loading="lazy">
-	</figure>
-	<div class="flex anchor relative">
-		<h3 id="content-signals-policy">Content Signals Policy</h3>
-		<a href="https://blog.cloudflare.com/#content-signals-policy" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>During our last Birthday Week, Cloudflare <a href="https://blog.cloudflare.com/content-signals-policy"><u>announced</u></a> Content Signals — <a href="http://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>a framework</u></a> that allows anyone to express their preferences for how their content can be used after it has been accessed.&nbsp;</p>
-	<p>When you return markdown, you want to make sure your content is being used by the Agent or AI crawler. That’s why Markdown for Agents converted responses include the <code>Content-Signal: ai-train=yes, search=yes, ai-input=yes</code> header signaling that indicates content can be used for AI Training, Search results and AI Input, which includes agentic use. Markdown for Agents will provide options to define custom Content Signal policies in the future.</p>
-	<p>Check our dedicated <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>Content Signals</u></a> page for more information on this framework.</p>
-	<div class="flex anchor relative">
-		<h3 id="try-it-with-the-cloudflare-blog-developer-documentation">Try it with the Cloudflare Blog &amp; Developer Documentation&nbsp;</h3>
-		<a href="https://blog.cloudflare.com/#try-it-with-the-cloudflare-blog-developer-documentation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>We enabled this feature in our <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Developer Documentation</u></a> and our <a href="https://blog.cloudflare.com"><u>Blog</u></a>, inviting all AI crawlers and agents to consume our content using markdown instead of HTML.</p>
-	<p>Try it out now by requesting this blog with <code>Accept: text/markdown</code>.</p>
-	<pre class="language-typescript"><code class="language-typescript">curl https://blog.cloudflare.com/markdown-for-agents/ \
-  -H "Accept: text/markdown"</code></pre>
-	<p>The result is:</p>
-	<pre class="language-typescript"><code class="language-typescript">---
-description: The way content is discovered online is shifting, from traditional search engines to AI agents that need structured data from a Web built for humans. It’s time to consider not just human visitors, but start to treat agents as first-class citizens. Markdown for Agents automatically converts any HTML page requested from our network to markdown.
-title: Introducing Markdown for Agents
-image: https://blog.cloudflare.com/images/markdown-for-agents.png
----
-
-# Introducing Markdown for Agents
-
-The way content and businesses are discovered online is changing rapidly. In the past, traffic originated from traditional search engines and SEO determined who got found first. Now the traffic is increasingly coming from AI crawlers and agents that demand structured data within the often-unstructured Web that was built for humans.
-
-...</code></pre>
-
-	<div class="flex anchor relative">
-		<h3 id="other-ways-to-convert-to-markdown">Other ways to convert to Markdown</h3>
-		<a href="https://blog.cloudflare.com/#other-ways-to-convert-to-markdown" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If you’re building AI systems that require arbitrary document conversion from outside Cloudflare or Markdown for Agents is not available from the content source, we provide other ways to convert documents to Markdown for your applications:</p>
-	<ul>
-		<li>
-			<p>Workers AI <a href="https://developers.cloudflare.com/workers-ai/features/markdown-conversion" target="_blank" rel="noopener noreferrer"><u>AI.toMarkdown()</u></a> supports multiple document types, not just HTML, and summarization.</p>
-		</li>
-		<li>
-			<p>Browser Rendering <a href="https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint" target="_blank" rel="noopener noreferrer"><u>/markdown</u></a> REST API supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h2 id="tracking-markdown-usage">Tracking markdown usage</h2>
-		<a href="https://blog.cloudflare.com/#tracking-markdown-usage" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Anticipating a shift in how AI systems browse the Web, Cloudflare Radar now includes content type insights for AI bot and crawler traffic, both globally on the <a href="https://radar.cloudflare.com/ai-insights#content-type" target="_blank" rel="noopener noreferrer"><u>AI Insights</u></a> page and in the <a href="https://radar.cloudflare.com/bots/directory/gptbot" target="_blank" rel="noopener noreferrer"><u>individual bot</u></a> information pages.</p>
-	<p>The new <code>content_type</code> dimension and filter shows the distribution of content types returned to AI agents and crawlers, grouped by <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types" target="_blank" rel="noopener noreferrer"><u>MIME type</u></a> category.&nbsp; </p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7vQzvzHsTLPXGhoQK0Xbr5/183129a8947990bc4ee5bb5ca7ba71b5/BLOG-3162_3.png" alt="BLOG-3162 3" class="kg-image" width="1600" height="920" loading="lazy">
-	</figure>
-	<p>You can also see the requests for markdown filtered by a specific agent or crawler. Here are the requests that return markdown to OAI-Searchbot, the crawler used by OpenAI to power ChatGPT’s search:&nbsp;</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7Ah99DWLxnYjadW6xJhAXg/afef4a29ae504d4fe69df4f9823dd103/BLOG-3162_4.png" alt="BLOG-3162 4" class="kg-image" width="1600" height="876" loading="lazy">
-	</figure>
-	<p>This new data will allow us to track the evolution of how AI bots, crawlers, and agents are&nbsp;consuming Web content over time. As always, everything on Radar is freely accessible via the <a href="https://developers.cloudflare.com/api/resources/radar" target="_blank" rel="noopener noreferrer"><u>public APIs</u></a> and the <a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;groupBy=content_type&amp;filters=userAgent%253DGPTBot&amp;timeCompare=1" target="_blank" rel="noopener noreferrer"><u>Data Explorer</u></a>.&nbsp;</p>
-	<div class="flex anchor relative">
-		<h2 id="start-using-today">Start using today</h2>
-		<a href="https://blog.cloudflare.com/#start-using-today" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>To enable Markdown for Agents for your zone, log into the Cloudflare <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>dashboard</u></a>, select your account, select the zone, look for Quick Actions and toggle the Markdown for Agents button to enable. This feature is available today in Beta at no cost for Pro, Business and Enterprise plans, as well as SSL for SaaS customers.</p>
-	<figure class="kg-card kg-image-card">
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1UqzmHrNa1UdCCI6eXIfmn/3da0ff51dd94219d8af87c172d83fc72/BLOG-3162_5.png" alt="BLOG-3162 5" class="kg-image" width="1999" height="1047" loading="lazy">
-	</figure>
-	<p>You can find more information about Markdown for Agents on our<a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer"> Developer Docs</a>. We welcome your feedback as we continue to refine and enhance this feature. We’re curious to see how AI crawlers and agents navigate and adapt to the unstructured nature of the Web as it evolves.</p>
+<p>The way content and businesses are discovered online is changing rapidly. In the past, traffic originated from traditional search engines, and SEO determined who got found first. Now the traffic is increasingly coming from AI crawlers and agents that demand structured data within the often-unstructured Web that was built for humans.</p>
+<p>As a business, to continue to stay ahead, now is the time to consider not just human visitors, or traditional wisdom for SEO-optimization, but start to treat agents as first-class citizens.&nbsp;</p>
+<h2>Why markdown is important</h2>
+<p>Feeding raw HTML to an AI is like paying by the word to read packaging instead of the letter inside. A simple <code>## About Us</code> on a page in markdown costs roughly 3 tokens; its HTML equivalent – <code>&lt;h2 class="section-title" id="about"&gt;About Us&lt;/h2&gt;</code> – burns 12-15, and that's before you account for the <code>&lt;div&gt;</code> wrappers, nav bars, and script tags that pad every real web page and have zero semantic value.</p>
+<p>This blog post you’re reading takes 16,180 tokens in HTML and 3,150 tokens when converted to markdown. <strong>That’s a 80% reduction in token usage</strong>.</p>
+<p><a href="https://en.wikipedia.org/wiki/Markdown" target="_blank" rel="noopener noreferrer"><u>Markdown</u></a> has quickly become the <em>lingua franca</em> for agents and AI systems as a whole. The format’s explicit structure makes it ideal for AI processing, ultimately resulting in better results while minimizing token waste.</p>
+<p>The problem is that the Web is made of HTML, not markdown, and page weight has been <a href="https://almanac.httparchive.org/en/2025/page-weight#page-weight-over-time" target="_blank" rel="noopener noreferrer"><u>steadily increasing</u></a> over the years, making pages hard to parse. For agents, their goal is to filter out all non-essential elements and scan the relevant content.</p>
+<p>The conversion of HTML to markdown is now a common step for any AI pipeline. Still, this process is far from ideal: it wastes computation, adds costs and processing complexity, and above all, it may not be how the content creator intended their content to be used in the first place.</p>
+<p>What if AI agents could bypass the complexities of intent analysis and document conversion, and instead receive structured markdown directly from the source?</p>
+<h2>Convert HTML to markdown, automatically</h2>
+<p>Cloudflare's network now supports real-time content conversion at the source, for <a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer"><u>enabled zones</u></a> using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation" target="_blank" rel="noopener noreferrer"><u>content negotiation</u></a> headers. Now when AI systems request pages from any website that uses Cloudflare and has Markdown for Agents enabled, they can express the preference for text/markdown in the request. Our network will automatically and efficiently convert the HTML to markdown, when possible, on the fly.</p>
+<p>Here’s how it works. To fetch the markdown version of any page from a zone with Markdown for Agents enabled, the client needs to add the <strong>Accept</strong> negotiation header with <code>text/markdown</code><strong> </strong>as one of the options. Cloudflare will detect this, fetch the original HTML version from the origin, and convert it to markdown before serving it to the client.</p>
+<p>Here's a curl example with the Accept negotiation header requesting a page from our developer documentation:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//developers.cloudflare.com/fundamentals/reference/markdown-for-agents/ \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span></span>
+<span class="line"></span></code></pre>
 </div>
+<p>Or if you’re building an AI Agent using Workers, you can use TypeScript:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> r</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-6f42c1-ffc799"> fetch</span><span class="sk-24292e-fff">(</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  `https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/`</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">  {</span></span>
+<span class="line"><span class="sk-24292e-fff">    headers: {</span></span>
+<span class="line"><span class="sk-24292e-fff">      Accept: </span><span class="sk-032f62-99ffe4">"text/markdown, text/html"</span><span class="sk-24292e-fff">,</span></span>
+<span class="line"><span class="sk-24292e-fff">    },</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> tokenCount</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-24292e-fff"> r.headers.</span><span class="sk-6f42c1-ffc799">get</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"x-markdown-tokens"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">const</span><span class="sk-005cc5-fff"> markdown</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-d73a49-a0a0a0"> await</span><span class="sk-24292e-fff"> r.</span><span class="sk-6f42c1-ffc799">text</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>We already see some of the most popular coding agents today – like Claude Code and OpenCode – send these accept headers with their requests for content. Now, the response to this request is formatted&nbsp; in markdown. It's that simple.&nbsp;&nbsp;</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-005cc5-fff">HTTP</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-005cc5-ffc799">2</span><span class="sk-005cc5-ffc799"> 200</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">date</span><span class="sk-24292e-fff">: Wed, </span><span class="sk-005cc5-ffc799">11</span><span class="sk-24292e-fff"> Feb </span><span class="sk-005cc5-ffc799">2026</span><span class="sk-005cc5-ffc799"> 11</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">44</span><span class="sk-24292e-fff">:</span><span class="sk-005cc5-ffc799">48</span><span class="sk-005cc5-fff"> GMT</span></span>
+<span class="line"><span class="sk-24292e-fff">content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">type</span><span class="sk-24292e-fff">: text</span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff">markdown; charset</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">utf</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">8</span></span>
+<span class="line"><span class="sk-24292e-fff">content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">length</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">2899</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">vary</span><span class="sk-24292e-fff">: accept</span></span>
+<span class="line"><span class="sk-24292e-fff">x</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">markdown</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">tokens</span><span class="sk-24292e-fff">: </span><span class="sk-005cc5-ffc799">725</span></span>
+<span class="line"><span class="sk-24292e-fff">content</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-6f42c1-ffc799">signal</span><span class="sk-24292e-fff">: ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">train</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, search</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes, ai</span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-24292e-fff">input</span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff">yes</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">---</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">title</span><span class="sk-24292e-fff">: Markdown for Agents · Cloudflare Agents docs</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">---</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">## What is Markdown for Agents</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">The ability to parse and convert </span><span class="sk-005cc5-fff">HTML</span><span class="sk-24292e-fff"> to Markdown has become foundational for </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff">.</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">...</span></span>
+<span class="line"></span></code></pre>
+</div>
+<p>Note that we include an <code>x-markdown-tokens</code> header with the converted response that indicates the estimated number of tokens in the markdown document. You can use this value in your flow, for example to calculate the size of a context window or to decide on your chunking strategy.</p>
+<p>Here’s a diagram of how it works:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="292" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=640&amp;h=261&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=715&amp;h=292&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=750&amp;h=306&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=828&amp;h=338&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=1080&amp;h=441&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=1280&amp;h=523&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=1430&amp;h=584&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3162 2" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW487Y1MMS3BFM04Z4HZKDJA.png&amp;w=1035&amp;h=423&amp;f=webp" data-lightbox-width="1035" data-lightbox-height="423" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="292" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<h3>Content Signals Policy</h3>
+<p>During our last Birthday Week, Cloudflare <a href="https://blog.cloudflare.com/content-signals-policy" target="_blank" rel="noopener noreferrer"><u>announced</u></a> Content Signals — <a href="http://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>a framework</u></a> that allows anyone to express their preferences for how their content can be used after it has been accessed.&nbsp;</p>
+<p>When you return markdown, you want to make sure your content is being used by the Agent or AI crawler. That’s why Markdown for Agents converted responses include the <code>Content-Signal: ai-train=yes, search=yes, ai-input=yes</code> header signaling that indicates content can be used for AI Training, Search results and AI Input, which includes agentic use. Markdown for Agents will provide options to define custom Content Signal policies in the future.</p>
+<p>Check our dedicated <a href="https://contentsignals.org" target="_blank" rel="noopener noreferrer"><u>Content Signals</u></a> page for more information on this framework.</p>
+<h3>Try it with the Cloudflare Blog &amp; Developer Documentation&nbsp;</h3>
+<p>We enabled this feature in our <a href="https://developers.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Developer Documentation</u></a> and our <a href="https://blog.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>Blog</u></a>, inviting all AI crawlers and agents to consume our content using markdown instead of HTML.</p>
+<p>Try it out now by requesting this blog with <code>Accept: text/markdown</code>.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">curl </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//blog.cloudflare.com/markdown-for-agents/ \</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">  -</span><span class="sk-005cc5-fff">H</span><span class="sk-032f62-99ffe4"> "Accept: text/markdown"</span></span></code></pre>
+</div>
+<p>The result is:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">---</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">description</span><span class="sk-24292e-fff">: The way content is discovered online is shifting, from traditional search engines to </span><span class="sk-005cc5-fff">AI</span><span class="sk-24292e-fff"> agents that need structured data from a Web built for humans. It’s time to consider not just human visitors, but start to treat agents </span><span class="sk-d73a49-a0a0a0">as</span><span class="sk-6f42c1-ffc799"> first</span><span class="sk-d73a49-a0a0a0">-class</span><span class="sk-6f42c1-ffc799"> citizens</span><span class="sk-24292e-fff">. </span><span class="sk-6f42c1-ffc799">Markdown</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-6f42c1-ffc799"> Agents</span><span class="sk-6f42c1-ffc799"> automatically</span><span class="sk-6f42c1-ffc799"> converts</span><span class="sk-6f42c1-ffc799"> any</span><span class="sk-6f42c1-ffc799"> HTML</span><span class="sk-6f42c1-ffc799"> page</span><span class="sk-6f42c1-ffc799"> requested</span><span class="sk-6f42c1-ffc799"> from</span><span class="sk-6f42c1-ffc799"> our</span><span class="sk-6f42c1-ffc799"> network</span><span class="sk-6f42c1-ffc799"> to</span><span class="sk-6f42c1-ffc799"> markdown</span><span class="sk-24292e-fff">.</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">title</span><span class="sk-24292e-fff">: </span><span class="sk-6f42c1-ffc799">Introducing</span><span class="sk-6f42c1-ffc799"> Markdown</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-6f42c1-ffc799"> Agents</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">image</span><span class="sk-24292e-fff">: </span><span class="sk-6f42c1-ffc799">https</span><span class="sk-24292e-fff">:</span><span class="sk-6a737d-8b8b8b94">//blog.cloudflare.com/images/markdown-for-agents.png</span></span>
+<span class="line"><span class="sk-24292e-fff">---</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff"># </span><span class="sk-6f42c1-ffc799">Introducing</span><span class="sk-6f42c1-ffc799"> Markdown</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-6f42c1-ffc799"> Agents</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-6f42c1-ffc799">The</span><span class="sk-6f42c1-ffc799"> way</span><span class="sk-6f42c1-ffc799"> content</span><span class="sk-6f42c1-ffc799"> and</span><span class="sk-6f42c1-ffc799"> businesses</span><span class="sk-6f42c1-ffc799"> are</span><span class="sk-6f42c1-ffc799"> discovered</span><span class="sk-6f42c1-ffc799"> online</span><span class="sk-6f42c1-ffc799"> is</span><span class="sk-6f42c1-ffc799"> changing</span><span class="sk-6f42c1-ffc799"> rapidly</span><span class="sk-24292e-fff">. </span><span class="sk-6f42c1-ffc799">In</span><span class="sk-6f42c1-ffc799"> the</span><span class="sk-6f42c1-ffc799"> past</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">traffic</span><span class="sk-6f42c1-ffc799"> originated</span><span class="sk-6f42c1-ffc799"> from</span><span class="sk-6f42c1-ffc799"> traditional</span><span class="sk-6f42c1-ffc799"> search</span><span class="sk-6f42c1-ffc799"> engines</span><span class="sk-6f42c1-ffc799"> and</span><span class="sk-6f42c1-ffc799"> SEO</span><span class="sk-6f42c1-ffc799"> determined</span><span class="sk-6f42c1-ffc799"> who</span><span class="sk-6f42c1-ffc799"> got</span><span class="sk-6f42c1-ffc799"> found</span><span class="sk-6f42c1-ffc799"> first</span><span class="sk-24292e-fff">. </span><span class="sk-6f42c1-ffc799">Now</span><span class="sk-6f42c1-ffc799"> the</span><span class="sk-6f42c1-ffc799"> traffic</span><span class="sk-6f42c1-ffc799"> is</span><span class="sk-6f42c1-ffc799"> increasingly</span><span class="sk-6f42c1-ffc799"> coming</span><span class="sk-6f42c1-ffc799"> from</span><span class="sk-6f42c1-ffc799"> AI</span><span class="sk-6f42c1-ffc799"> crawlers</span><span class="sk-6f42c1-ffc799"> and</span><span class="sk-6f42c1-ffc799"> agents</span><span class="sk-6f42c1-ffc799"> that</span><span class="sk-6f42c1-ffc799"> demand</span><span class="sk-6f42c1-ffc799"> structured</span><span class="sk-6f42c1-ffc799"> data</span><span class="sk-6f42c1-ffc799"> within</span><span class="sk-6f42c1-ffc799"> the</span><span class="sk-6f42c1-ffc799"> often</span><span class="sk-24292e-fff">-</span><span class="sk-6f42c1-ffc799">unstructured</span><span class="sk-6f42c1-ffc799"> Web</span><span class="sk-6f42c1-ffc799"> that</span><span class="sk-6f42c1-ffc799"> was</span><span class="sk-6f42c1-ffc799"> built</span><span class="sk-6f42c1-ffc799"> for</span><span class="sk-6f42c1-ffc799"> humans</span><span class="sk-24292e-fff">.</span></span>
+<span class="line"></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<h3>Other ways to convert to Markdown</h3>
+<p>If you’re building AI systems that require arbitrary document conversion from outside Cloudflare or Markdown for Agents is not available from the content source, we provide other ways to convert documents to Markdown for your applications:</p>
+<ul>
+	<li>Workers AI <a href="https://developers.cloudflare.com/workers-ai/features/markdown-conversion" target="_blank" rel="noopener noreferrer"><u>AI.toMarkdown()</u></a> supports multiple document types, not just HTML, and summarization.</li>
+	<li>Browser Rendering <a href="https://developers.cloudflare.com/browser-rendering/rest-api/markdown-endpoint" target="_blank" rel="noopener noreferrer"><u>/markdown</u></a> REST API supports markdown conversion if you need to render a dynamic page or application in a real browser before converting it.</li>
+</ul>
+<h2>Tracking markdown usage</h2>
+<p>Anticipating a shift in how AI systems browse the Web, Cloudflare Radar now includes content type insights for AI bot and crawler traffic, both globally on the <a href="https://radar.cloudflare.com/ai-insights#content-type" target="_blank" rel="noopener noreferrer"><u>AI Insights</u></a> page and in the <a href="https://radar.cloudflare.com/bots/directory/gptbot" target="_blank" rel="noopener noreferrer"><u>individual bot</u></a> information pages.</p>
+<p>The new <code>content_type</code> dimension and filter shows the distribution of content types returned to AI agents and crawlers, grouped by <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types" target="_blank" rel="noopener noreferrer"><u>MIME type</u></a> category.&nbsp; </p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="411" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=640&amp;h=368&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=715&amp;h=411&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=750&amp;h=431&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=828&amp;h=476&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=1080&amp;h=621&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=1280&amp;h=736&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=1430&amp;h=822&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3162 3" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW491Z64ESRESPCGYP4VPK19.png&amp;w=1600&amp;h=920&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="920" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="411" class="pt-portable-image-media"></div>
+</figure>
+<p>You can also see the requests for markdown filtered by a specific agent or crawler. Here are the requests that return markdown to OAI-Searchbot, the crawler used by OpenAI to power ChatGPT’s search:&nbsp;</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="391" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=715&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=640&amp;h=350&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=715&amp;h=391&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=750&amp;h=410&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=828&amp;h=453&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=1080&amp;h=591&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=1280&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=1430&amp;h=782&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3162 4" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48NGJFS1G4J1MB37Y8BAVT.png&amp;w=1600&amp;h=876&amp;f=webp" data-lightbox-width="1600" data-lightbox-height="876" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="391" class="pt-portable-image-media"></div>
+</figure>
+<p>This new data will allow us to track the evolution of how AI bots, crawlers, and agents are&nbsp;consuming Web content over time. As always, everything on Radar is freely accessible via the <a href="https://developers.cloudflare.com/api/resources/radar" target="_blank" rel="noopener noreferrer"><u>public APIs</u></a> and the <a href="https://radar.cloudflare.com/explorer?dataSet=ai.bots&amp;groupBy=content_type&amp;filters=userAgent%253DGPTBot&amp;timeCompare=1" target="_blank" rel="noopener noreferrer"><u>Data Explorer</u></a>.&nbsp;</p>
+<h2>Start using today</h2>
+<p>To enable Markdown for Agents for your zone, log into the Cloudflare <a href="https://dash.cloudflare.com" target="_blank" rel="noopener noreferrer"><u>dashboard</u></a>, select your account, select the zone, look for Quick Actions and toggle the Markdown for Agents button to enable. This feature is available today in Beta at no cost for Pro, Business and Enterprise plans, as well as SSL for SaaS customers.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="374" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=640&amp;h=335&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=715&amp;h=374&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=750&amp;h=392&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=828&amp;h=433&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=1080&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=1280&amp;h=670&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=1430&amp;h=748&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-3162 5" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW44KJ6CREBM1HMAEXA3F7SM.png&amp;w=1920&amp;h=1006&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1006" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="374" class="pt-portable-image-media"></div>
+</figure>
+<p>You can find more information about Markdown for Agents on our<a href="https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents" target="_blank" rel="noopener noreferrer"> Developer Docs</a>. We welcome your feedback as we continue to refine and enhance this feature. We’re curious to see how AI crawlers and agents navigate and adapt to the unstructured nature of the Web as it evolves.</p>

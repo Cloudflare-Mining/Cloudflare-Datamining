@@ -1,0 +1,293 @@
+<p>在關閉影響 43 個國家/地區數千名受害者的「網路釣魚即服務」營運後，國際刑警組織最近<a href="https://www.interpol.int/en/News-and-Events/News/2023/Notorious-phishing-platform-shut-down-arrests-in-international-police-operation" target="_blank" rel="noopener noreferrer">指出</a>：「網路釣魚等網路攻擊本質上可能是無國界和虛擬的，但它們對受害者的影響是真實且具有毀滅性的。」商業電子郵件入侵 (<a href="https://www.cloudflare.com/learning/email-security/business-email-compromise-bec" target="_blank" rel="noopener noreferrer">BEC</a>) 是一種無惡意程式碼的攻擊，可誘騙收件者轉移資金，據 FBI 稱已導致全球受害者<a href="https://www.ic3.gov/Media/Y2023/PSA230609" target="_blank" rel="noopener noreferrer">損失</a>超過 500 億美元。</p>
+<p>據估計，90% 的成功網路攻擊都是從電子郵件<a href="https://www.cloudflare.com/learning/access-management/phishing-attack" target="_blank" rel="noopener noreferrer">網路釣魚</a><a href="https://www.cisa.gov/shields-guidance-families" target="_blank" rel="noopener noreferrer">開始</a>的，這對於攻擊者來說仍然是非常有利可圖的。目前，我們無法採取太多措施來阻止網路釣魚<em>嘗試</em>。然而，要<a href="https://www.cloudflare.com/learning/email-security/how-to-prevent-phishing" target="_blank" rel="noopener noreferrer">防止<em>成功</em>的攻擊</a>，瞭解（並主動應對）不斷變化的網路釣魚趨勢非常重要，包括瞭解攻擊者巧妙利用目標受害者對「已知」電子郵件寄件者的信任的方式。為此，本週 Cloudflare 發布了第一份<a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank" rel="noopener noreferrer">網路釣魚威脅報告</a>。</p>
+<p>本報告根據 2022 年 5 月至 2023 年 5 月的<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">電子郵件安全</a>資料，探討了主要的網路釣魚趨勢和相關建議。在此期間，Cloudflare <strong>處理了大約 130 億封電子郵件</strong>，其中包括阻止了大約 <strong>2.5 億封惡意郵件</strong>進入客戶的收件匣。該報告還基於 Cloudflare 委託對北美、歐洲、中東和非洲以及亞太地區 <strong>316 名安全決策者進行的調查</strong>（您可以在<a href="https://www.cloudflare.com/lp/zero-trust-to-combat-multichannel-phishing" target="_blank" rel="noopener noreferrer">此處</a>下載該單獨的研究）。</p>
+<p>查看完整報告以瞭解我們的三大要點：</p>
+<ul>
+	<li><strong>攻擊者使用欺騙性連結作為首要網路釣魚策略</strong>，以及他們如何不斷改變讓您點擊連結的方式以及將連結裝備成武器的時間；</li>
+	<li><strong>身分欺騙</strong>有多種形式（包括商業電子郵件入侵 (BEC) 和品牌假冒），<strong>並且可以輕鬆繞過電子郵件驗證標準；</strong></li>
+	<li>攻擊者假裝成數百個不同的組織，但<strong>主要冒充我們信任的實體</strong>，並需要完成一些前提工作。</li>
+</ul>
+<p>在閱讀《2023 年網路釣魚威脅報告》時，還需要記住以下幾點。</p>
+<h3>電子郵件威脅分類</h3>
+<p>攻擊者通常結合使用<a href="https://www.cloudflare.com/learning/security/threats/social-engineering-attack" target="_blank" rel="noopener noreferrer">社交工程</a>和技術混淆技術來使他們的邮件看起來合法。因此，Cloudflare 使用多種進階偵測技術來分析「模糊」訊號（不僅僅是肉眼可見的內容），以識別無用電子郵件。這些訊號包括：</p>
+<ul>
+	<li><strong>結構分析</strong>，使用專門針對網路釣魚訊號設計的啟發式和<a href="https://www.cloudflare.com/learning/ai/what-is-machine-learning" target="_blank" rel="noopener noreferrer">機器學習模型</a>來對標頭、內文、影像、連結、附件、負載等進行結構分析；</li>
+	<li><strong>情緒分析</strong>，用於偵測模式與行為（例如，書寫模式與表達）的變更；</li>
+	<li><strong>信任圖表</strong>，用於評估合作夥伴社交圖表、電子郵件傳送記錄，以及可能的合作夥伴假冒</li>
+</ul>
+<p>我們的<a href="https://www.cloudflare.com/zero-trust/solutions/email-security-services" target="_blank" rel="noopener noreferrer">電子郵件安全服務</a>還整合了來自 Cloudflare 全球網路的<a href="https://www.cloudflare.com/learning/security/glossary/threat-intelligence-feed" target="_blank" rel="noopener noreferrer">威脅情報</a>，該網路平均每天封鎖 1,400 億個網路威脅。</p>
+<p>這些訊號和許多其他訊號會導致電子郵件被當做惡意郵件、BEC、詐騙或垃圾郵件進行處理；我們的儀表板會告訴客戶處理特定電子郵件的具體原因（即威脅指標「類別」）。</p>
+<p>以下是我們在 2022 年 5 月 2 日至 2023 年 5 月 2 日期間觀察到的主要電子郵件威脅指標的快照。我們將威脅指標分為 30 多個不同類別；在此期間，最主要的威脅指標包括<strong>欺騙性連結</strong>、<strong>網域年齡</strong>（新註冊的網域）、<strong>身分欺騙</strong>、<strong>認證收集</strong>和<strong>品牌假冒</strong>。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="684" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=715&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=640&amp;h=612&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=715&amp;h=684&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=750&amp;h=717&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=828&amp;h=792&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=1080&amp;h=1033&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=1280&amp;h=1225&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=1430&amp;h=1368&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="BLOG-2019 Embedded Image - pusxpA" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW497HG4PAQNX6M93DW7PPFJ.png&amp;w=1920&amp;h=1837&amp;f=webp" data-lightbox-width="1920" data-lightbox-height="1837" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="684" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>以下是每個主要類別的簡要說明（詳細說明見報告的附錄）。</p>
+<p>點擊後，<strong>詐騙性連結</strong>會開啟使用者的預設 Web 瀏覽器並呈現連結中引用的資料，或直接開啟應用程式（例如，PDF）。由於 HTML 中連結的顯示文字（即超文字）可以任意設定，攻擊者可以讓 URL 看起來好像它連結至一個良性網站，而實際上是惡意的。</p>
+<p><strong>網域年齡</strong>與網域聲譽相關，後者是分配給網域的總分。例如，在註冊後立即傳送大量新電子郵件的網域往往聲譽較差，因此評分較低。</p>
+<p><strong>身分欺騙</strong>是指攻擊者或有惡意的人傳送電子郵件聲稱是其他人的情況。其機制和策略千差萬別。一些策略包括註冊看起來類似的網域（亦稱為網域假冒）、詐騙網域，或使用顯示名稱技巧使其看起來源於受信任的網域。其他變體包括使用網域前置和高聲譽 Web 服務平台傳送電子郵件。</p>
+<p><strong>憑證收集器</strong>可能會被攻擊者利用，欺騙使用者提供登入認證。毫無警覺的使用者可能會輸入自己的認證，最終為攻擊者提供了帳戶存取權。</p>
+<p><strong>品牌假冒</strong>是一種身分欺騙形式，攻擊者會傳送冒充知名公司或品牌的網路釣魚郵件。品牌假冒使用各種各樣的技術執行。</p>
+<p>電子郵件的<strong>附件</strong>，在攻擊環境中開啟或執行時，都會包括一個召喚行動（例如，引誘目標點擊連結）或執行攻擊者設定的一系列動作。</p>
+<p>Cloudflare 經常觀察到一封網路釣魚電子郵件中出現多個威脅指標。例如，一個以矽谷銀行為主題的網路釣魚活動（詳見 2023 年 3 月的<a href="https://blog.cloudflare.com/how-sophisticated-scammers-and-phishers-are-preying-on-customers-of-silicon-valley-bank">這篇</a>部落格）將<em>品牌假冒</em>與<em>欺騙性連結</em>和<em>惡意附件</em>結合在一起。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="637" height="697" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=637&amp;h=697&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=637&amp;h=697&amp;f=webp&amp;fit=cover&amp;position=center 637w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=640&amp;h=700&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=750&amp;h=821&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=828&amp;h=906&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=1080&amp;h=1182&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=1274&amp;h=1394&amp;f=webp&amp;fit=cover&amp;position=center 1274w" alt="BLOG-2019 Embedded Image - ZOFZps" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW472Z7R3TAEW52BQ85AMDFB.png&amp;w=637&amp;h=697&amp;f=webp" data-lightbox-width="637" data-lightbox-height="697" data-astro-cid-7nvefuv6="true" sizes="(min-width: 637px) 637px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="637" height="697" class="pt-portable-image-media"></div>
+</figure>
+<p>攻擊者在 DocuSign 主題範本中利用了 SVB 品牌。該電子郵件包含 HTML 代碼，其中包含初始連結和復雜的四層重新導向鏈。攻擊中包含的 HTML 檔案將收件者傳送到具有遞迴重新導向功能的 WordPress 執行個體。</p>
+<p>（說到連結，欺騙性連結是<strong>排名第一的威脅類別</strong>，佔<strong>所有偵測結果的 35.6%</strong>。攻擊者不僅僅使用電子郵件渠道中的連結；報告中也講到了多渠道網路釣魚威脅（利用簡訊、聊天和社交媒體等其他應用程式）的興起。）</p>
+<h3>值得信賴（也是最常被冒充）的品牌</h3>
+<p>我們在 2022 年 5 月至 2023 年 5 月期間觀察到針對 Cloudflare 客戶的電子郵件冒充了<strong>大約 1,000 個不同品牌</strong>，矽谷銀行只是其中之一。（在 <a href="https://www.cloudflare.com/cloudflare-one" target="_blank" rel="noopener noreferrer">Cloudflare One</a> 產品套件於 2022 年 7 月<a href="https://blog.cloudflare.com/2022-07-sms-phishing-attacks">阻止</a>的「Oktapus」網路釣魚攻擊中，Cloudflare 員工成為了品牌假冒的直接目標。）</p>
+<p>然而，正如網路釣魚威脅報告中詳細介紹的那樣，我們觀察到電子郵件攻擊者最常（51.7% 的時間）冒充 20 個全球知名品牌之一，其中 <strong>Microsoft</strong> 名列第一。</p>
+<div id="html-block-k4g" class="html-block">
+	<style>
+		#html-block-k4g .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k4g .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k4g .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k4g .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k4g .tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">排名</span></th>
+				<th class="tg-1wig"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">被冒充的品牌</span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">1</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Microsoft</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">2</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">世界衛生組織</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">3</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Google</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">4</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SpaceX</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">5</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Salesforce</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">6</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Apple</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">7</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Amazon</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">8</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">T-Mobile</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">9</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">YouTube</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">10</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterCard</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">11</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Notion.so</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">12</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Comcast</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">13</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Line Pay</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">14</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">MasterClass</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">15</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Box</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">16</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Truist Financial Corp</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">17</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Facebook</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">18</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Instagram</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">19</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">AT&amp;T</span></td>
+			</tr>
+			<tr>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">20</span></td>
+				<td class="tg-0lax"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">Louis Vuitton</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>Microsoft 認證收集嘗試的範例</h3>
+<p>今年早些時候，Cloudflare 偵測到並封鎖了一場利用 Microsoft 品牌的網路釣魚活動，該活動試圖透過合法但已遭受入侵的網站收集憑證。</p>
+<p>在下面的電子郵件範例中，儘管電子郵件正文中實際上顯示了文字，但其正文中沒有任何文字內容。整個正文是一個超連結的 JPEG 影像。因此，如果收件者點擊正文中的任何位置（即使他們不打算點擊該連結），他們實際上就是在點擊該連結。</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="671" height="497" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=671&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=640&amp;h=474&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=671&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 671w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=750&amp;h=556&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=828&amp;h=613&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=1080&amp;h=800&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=1280&amp;h=948&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=1342&amp;h=994&amp;f=webp&amp;fit=cover&amp;position=center 1342w" alt="BLOG-2019 Embedded Image - PRJFzT" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW48TDSYHNTDM24CYTEK8A0W.png&amp;w=671&amp;h=497&amp;f=webp" data-lightbox-width="671" data-lightbox-height="497" data-astro-cid-7nvefuv6="true" sizes="(min-width: 671px) 671px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="671" height="497" class="pt-portable-image-media"></div>
+</figure>
+<p>最初，該影像的超連結似乎是一個良性的百度 URL - hxxp://www.baidu[.]com/link?url=-yee3T9X9U41UHUa3VV6lx1j5eX2EoI6XpZqfDgDcf-2NYQ8RVpOn5OYkDTuk8Wg#&lt;recipient’s email address base64 encoded&gt;。但是，如果點擊此連結，目標的瀏覽器將被重新導向到已遭入侵並用於託管憑證收集器的網站。</p>
+<p>攻擊者使用 Microsoft Office 365 品牌，但試圖透過在影像中包含品牌資訊來規避任何品牌偵測技術（即，沒有可以進行檢查以識別品牌的純文字或 HTML 文字）。</p>
+<p>然而，使用光學字元識別 (OCR)，Cloudflare 成功識別了影像中的「Office 365」和「Microsoft」。使用 OCR，我們還發現其中使用了與密碼相關的可疑帳戶引誘。</p>
+<p>在此範例中，攻擊者的技術包括：</p>
+<ul>
+	<li>僅包含 JPEG 影像（無法在沒有 OCR 的情況下偵測文字）</li>
+	<li>在該影像中嵌入超連結（點擊正文中的任何位置即會導致點擊連結）</li>
+	<li>超連結到百度 URL（用於繞過基於信譽的 URL 偵測技術）</li>
+	<li>百度 URL 將收件者的瀏覽器重新導向到憑證收集站點（即，將繞過無法進行深度連結檢查的其他電子郵件安全防禦措施）</li>
+	<li>將憑證收集器託管在已被攻擊者入侵的合法網站上（即使使用深度連結檢查，也會再次嘗試繞過基於信譽的 URL 偵測技術）</li>
+</ul>
+<p>該攻擊手段利用百度的高聲譽和真實性來繞過憑證收集器所在的真實主機/IP 的聲譽。</p>
+<p>雖然這一具體活動的重點是獲取 Microsoft 憑證，但我們經常看到攻擊者使用類似的方法繞過品牌偵測技術並誘騙受害者下載<a href="https://www.cloudflare.com/learning/ddos/glossary/malware" target="_blank" rel="noopener noreferrer">惡意程式碼</a>和其他<a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload" target="_blank" rel="noopener noreferrer">惡意負載</a>。</p>
+<p>URL 重新導向技術經常出現在網路釣魚活動中，但威脅行為者正在透過濫用越來越多的合法網域（如 <a href="http://baidu.com" target="_blank" rel="noopener noreferrer">baidu.com</a>、<a href="http://bing.com" target="_blank" rel="noopener noreferrer">bing.com</a>、<a href="http://goo.gl" target="_blank" rel="noopener noreferrer">goo.gl</a> 等）來不斷改進他們的方法。我們擁有眾多偵測功能，因此能夠對使用各種重新導向技術（包括濫用合法網域的重新導向技術）的 URL 進行深度連結檢查。</p>
+<h3>那麼 SPF、DKIM 和 DMARC 呢？</h3>
+<p>人們通常認為電子郵件驗證（特別是 <a href="https://www.cloudflare.com/learning/email-security/dmarc-dkim-spf" target="_blank" rel="noopener noreferrer">SPF、DKIM 和 DMARC</a> 標準）對於防止品牌假冒很有用：這些標準有助於驗證伺服器和租用戶的來源、保護郵件完整性、提供原則實施等。</p>
+<p>然而，攻擊者仍然可以找到繞過驗證的方法來欺騙電子郵件套件；實際上，我們觀察到 <strong>89% 的無用郵件「通過」</strong>了SPF、DKIM 和/或 DMARC 檢查。</p>
+<p>電子郵件驗證的一些限制包括：</p>
+<div id="html-block-k64" class="html-block">
+	<style>
+		#html-block-k64 .tg {
+			border-collapse: collapse;
+			border-color: #ccc;
+			border-spacing: 0;
+		}
+
+		#html-block-k64 .tg td {
+			background-color: #fff;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k64 .tg th {
+			background-color: #f0f0f0;
+			border-color: #ccc;
+			border-style: solid;
+			border-width: 1px;
+			color: #333;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			overflow: hidden;
+			padding: 10px 5px;
+			word-break: normal;
+		}
+
+		#html-block-k64 .tg .tg-1wig {
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k64 .tg .tg-6v43 {
+			background-color: #ffffff;
+			font-weight: bold;
+			text-align: left;
+			vertical-align: top
+		}
+
+		#html-block-k64 .tg .tg-ktyi {
+			background-color: #FFF;
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<thead>
+			<tr>
+				<th class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">SPF</span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">（寄件者原則架構）</span></th>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">主要優點：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">驗證伺服器來源（即驗證郵件的來源）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">定義允許哪些電子郵件伺服器和服務代表網域擁有者傳送郵件</span></th>
+			</tr>
+			<tr>
+				<th class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">限制：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不會阻止極為相像的電子郵件、網域或顯示名稱</span><a href="https://www.cloudflare.com/learning/ssl/what-is-domain-spoofing"><span style="font-weight:400;font-style:normal;background-color:transparent">詐騙</span></a><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不會驗證「寄件者」標頭；使用信封「寄件者」來確定傳送網域</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">當轉寄電子郵件或將傳送到郵寄清單的郵件傳送給每個訂閱者時，驗證無效</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">SPF 評估過程可能限於一定數量的 </span><a href="https://www.cloudflare.com/learning/dns/what-is-dns"><span style="font-weight:400;font-style:normal;background-color:transparent">DNS</span></a> <span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">查閱</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">無法防範使用帶有內嵌 URL、</span><a href="https://www.cloudflare.com/learning/security/glossary/malicious-payload"><span style="font-weight:400;font-style:normal;background-color:transparent">惡意負載</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">或附件</span>的「經過驗證」的電子郵件進行的攻擊</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="tg-6v43" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">DKIM </span><br><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000">（網域金鑰識別郵件）</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">主要優點：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">提供租用戶來源驗證（即，檢查電子郵件是否由網域的擁有者透過數位簽名傳送/授權）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">確保電子郵件在從伺服器傳送至另一伺服器的過程中未被更改；保護郵件的完整性</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">限制：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不會阻止極為相像的電子郵件、網域或顯示名稱詐騙</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不能防禦</span><a href="https://developers.cloudflare.com/magic-wan/reference/anti-replay-protection"><span style="font-weight:400;font-style:normal;background-color:transparent">重播攻擊</span></a><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">（DKIM 僅對郵件的特定部分進行簽名。攻擊者可以向通過 DKIM 的電子郵件新增其他標頭欄位，然後轉寄它們。）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">無法防範使用帶有內嵌 URL、惡意負載或附件的「經過驗證」的電子郵件進行的攻擊</span></td>
+			</tr>
+			<tr>
+				<td class="tg-1wig" rowspan="2"><span style="font-weight:700;font-style:normal;text-decoration:none;color:#000;background-color:transparent">DMARC（基於網域的郵件驗證、報告和一致性）</span></td>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">主要優點：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">為 SPF 和 DKIM 提供原則執行和報告</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">規定當電子郵件未通過 SPF 或 DKIM 驗證時應遵循的原則（例如拒絕/刪除、隔離、無原則/傳送）</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">報告功能允許網域擁有者查看誰在代表他們傳送電子郵件（即防止您自己的網域被假冒和品牌濫用）</span></td>
+			</tr>
+			<tr>
+				<td class="tg-ktyi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:#FFF">限制：</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不會阻止假冒其他品牌的網域</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">不會阻止極為相像的電子郵件、網域或顯示名稱詐騙</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">網域擁有者指定郵件 DMARC 原則適用的百分比；當應用百分比低於 100% 時，則不太有效</span><br><span style="font-weight:400;font-style:normal;text-decoration:none;color:#000;background-color:transparent">無法防範使用帶有內嵌 URL、惡意負載或附件的「經過驗證」的電子郵件進行的攻擊</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<h3>結論</h3>
+<p>攻擊者不斷改進他們的策略。在郵件送達收件匣之前、期間和之後，都必須制定多個保護層。Cloudflare 本質上從不「信任」任何類型的電子郵件通訊（無論是內部、外部還是來自「已知」商業合作夥伴的郵件）。</p>
+<p>同樣，我們首先建議所有組織將「從不信任，始終驗證」的 <a href="https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust" target="_blank" rel="noopener noreferrer">Zero Trust 安全模型</a>擴展到網路和應用程式，同時擴展到電子郵件收件匣。</p>
+<p>除了使用 Zero Trust 方法<a href="https://www.cloudflare.com/zero-trust/products/email-security" target="_blank" rel="noopener noreferrer">保護電子郵件</a>之外，我們還建議：</p>
+<ul>
+	<li><strong>透過多個防網路釣魚控件增強雲端電子郵件</strong>。正如 6 月份的<a href="https://www.forrester.com/blogs/announcing-the-forrester-wave-enterprise-email-security-q2-2023" target="_blank" rel="noopener noreferrer">這篇</a> Forrester 部落格中指出的那樣：<em>「跨多個裝置使用訊息傳遞、協作、檔案共用和企業軟體即服務應用程式，都有助於提高員工的生產力和體驗。其中許多環境被認為是『封閉的』，但如果一位供應鏈合作夥伴的憑證遭受一次成功的網路釣魚攻擊，就會使您的組織面臨資料丟失、憑證盜竊、欺詐和勒索軟體攻擊的風險。為電子郵件收件匣開發的保護措施必須擴展到這些環境以及員工的日常工作流程。」</em></li>
+	<li><strong>採用防網路釣魚的多重要素驗證 (<a href="https://www.cloudflare.com/learning/access-management/what-is-multi-factor-authentication" target="_blank" rel="noopener noreferrer">MFA</a>)。</strong>儘管並非所有的 MFA 都提供相同的安全性層級，但硬體安全金鑰是<a href="https://blog.cloudflare.com/how-cloudflare-implemented-fido2-and-zero-trust">防止網路釣魚攻擊成功</a>的最安全的驗證方法之一。即使攻擊者獲得了使用者名稱和密碼，這些金鑰也能保護網路。</li>
+	<li><strong>讓人類更難犯錯誤。</strong>透過確保員工和團隊使用的工具更安全，防止他們犯錯，來滿足他們目前的需求。例如，遠端瀏覽器隔離 (<a href="https://www.cloudflare.com/learning/access-management/what-is-browser-isolation" target="_blank" rel="noopener noreferrer">RBI</a>) 技術與<a href="https://www.cloudflare.com/learning/email-security/what-is-email-security" target="_blank" rel="noopener noreferrer">雲端電子郵件安全性</a>整合時，可以自動隔離可疑電子郵件連結，以防止使用者接觸到潛在的惡意 Web 內容。還可以在不受信任的網站上停用鍵盤輸入，以防止使用者在表單填寫或憑證收集中意外輸入敏感性資訊。這讓使用者能夠安全地開啟連結而不中斷其工作流程，提供了針對多渠道網路釣魚攻擊的防禦層。</li>
+</ul>
+<p>如果您對完整調查結果感興趣，可以在<a href="https://www.cloudflare.com/lp/2023-phishing-report" target="_blank" rel="noopener noreferrer">此處</a>下載《2023 年網路釣魚威脅報告》，以及我們關於防止網路釣魚攻擊成功的建議。如果您想瞭解 Cloudflare 電子郵件安全性的實操情況，您可以在<a href="https://www.cloudflare.com/lp/emailsecurity" target="_blank" rel="noopener noreferrer">此處</a>請求免費的網路釣魚風險評估。</p>

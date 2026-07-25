@@ -1,51 +1,50 @@
-<div class="mb2 gray5">1 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4cUyJDRsMuhTZgYkQr05ah/0a667b59c2e68140bc394110ec48782b/why-is-there-a-v-in-sigsegv-segmentation-fault.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Another long night. I was working on my perfect, bug-free program in C, when the predictable thing happened:</p>
-	<pre class="language-bash"><code class="language-bash">$ clang skynet.c -o skynet
-$ ./skynet.out 
-Segmentation fault (core dumped)</code></pre>
-	<p>Oh, well... Maybe I'll be more lucky taking over the world another night. But then it struck me. My program received a SIGSEGV signal and crashed with "Segmentation Fault" message. Where does the "V" come from?</p>
-	<p>Did I read it wrong? Was there a "Segmentation _V_ault?"? Or did Linux authors make a mistake? Shouldn't the signal be named SIGSEGF?</p>
-	<p>I asked my colleagues and <a href="https://twitter.com/dwragg" target="_blank" rel="noopener noreferrer">David Wragg</a> quickly told me that the signal name stands for "Segmentation Violation". I guess that makes sense. Long long time ago, computers used to have <a href="https://en.wikipedia.org/wiki/X86_memory_segmentation" target="_blank" rel="noopener noreferrer">memory segmentation</a>. Each memory segment had defined length - called Segment Limit. Accessing data over this limit caused a processor fault. This error code got re-used <a href="https://en.wikipedia.org/wiki/Memory_segmentation#Segmentation_with_paging" target="_blank" rel="noopener noreferrer">by newer systems that used paging</a>. I think the Intel manuals call this error <a href="https://en.wikipedia.org/wiki/Page_fault#Invalid" target="_blank" rel="noopener noreferrer">"Invalid Page Fault"</a>. When it's triggered it gets reported to the userspace as a SIGSEGV signal. End of story.</p>
-	<p>Or is it?</p>
-	<p><a href="https://twitter.com/mahtin" target="_blank" rel="noopener noreferrer">Martin Levy</a> pointed me to an ancient <a href="http://man.cat-v.org/unix-6th/2/signal" target="_blank" rel="noopener noreferrer">Version 6th UNIX documentation on "signal"</a>. This is from around 1978:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4guHgMnVrZOyzBS0j2vOF3/1794a378bb035a8f938e3c11fb65de19/IMG_5177.jpg" alt="" class="kg-image" width="1195" height="928" loading="lazy">
-
-	</figure>
-	<p>Look carefully. There is no SIGSEGV signal! Signal number 11 is called SIGSEG!</p>
-	<p>It seems that userspace parts of the UNIX tree (i.e. /usr/include/signal.h) switched to SIGSEGV fairly early on. But the kernel internals continued to use the name SIGSEG for much longer.</p>
-	<p>Looking deeper David found that PDP11 trap vector used wording <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V4-Snapshot-Development/sys/ken/low.s#L59" target="_blank" rel="noopener noreferrer">"segmentation violation"</a>. This shows up in Research V4 Edition in the UNIX history repo, but it doesn't mean it was introduced in V4 - it's just because V4 is the first version with code still available.</p>
-	<p>This trap was converted into <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V4-Snapshot-Development/sys/ken/trap.c#L73" target="_blank" rel="noopener noreferrer">SIGSEG signal in trap.c</a> file.</p>
-	<p>The file /usr/include/signal.h appears in the tree for Research V7, <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V7-Snapshot-Development/usr/include/signal.h" target="_blank" rel="noopener noreferrer">with the name SIGSEGV</a>. But the kernel <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V7-Snapshot-Development/usr/sys/sys/trap.c#L177" target="_blank" rel="noopener noreferrer">still called it SIGSEG at the time</a></p>
-	<p>It seems the kernel side was <a href="https://github.com/dspinellis/unix-history-repo/blob/BSD-4/usr/src/sys/sys/trap.c#L67" target="_blank" rel="noopener noreferrer">renamed to SIGSEGV in BSD-4</a>.</p>
-	<p>Here you go. Originally the signal was called SIGSEG. It was subsequently renamed SIGSEGV in the userspace and a bit later - around 1980 - to SIGSEGV on the kernel side. Apparently there are still no Segmentation Vaults found on UNIX systems.</p>
-	<p>As for my original crash, I fixed it - of course - by catching the signal and jumping over the offending instruction. On Linux it is totally possible to catch and handle SIGSEGV. With that fix, my code will never again crash. For sure.</p>
-	<pre class="language-.c"><code class="language-.c">#define _GNU_SOURCE
-#include &lt;signal.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;ucontext.h&gt;
-
-static void sighandler(int signo, siginfo_t *si, void* v_context)
-{
-    ucontext_t *context = v_context;
-    context-&gt;uc_mcontext.gregs[REG_RIP] += 10;
-}
-
-int *totally_null_pointer = NULL;
-
-int main() {
-    struct sigaction psa;
-    psa.sa_sigaction = sighandler;
-    sigaction(SIGSEGV, &amp;psa, NULL);
-
-    printf("Before NULL pointer dereference\n");
-    *totally_null_pointer = 1;
-    __asm__ __volatile__("nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;");
-    printf("After NULL pointer. Still here!\n");
-
-    return 0;
-}</code></pre>
+<p>Another long night. I was working on my perfect, bug-free program in C, when the predictable thing happened:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> clang</span><span class="sk-032f62-99ffe4"> skynet.c</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> skynet</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./skynet.out</span><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Segmentation</span><span class="sk-032f62-99ffe4"> fault</span><span class="sk-24292e-fff"> (core </span><span class="sk-032f62-99ffe4">dumped</span><span class="sk-24292e-fff">)</span></span></code></pre>
+</div>
+<p>Oh, well... Maybe I'll be more lucky taking over the world another night. But then it struck me. My program received a SIGSEGV signal and crashed with "Segmentation Fault" message. Where does the "V" come from?</p>
+<p>Did I read it wrong? Was there a "Segmentation _V_ault?"? Or did Linux authors make a mistake? Shouldn't the signal be named SIGSEGF?</p>
+<p>I asked my colleagues and <a href="https://twitter.com/dwragg" target="_blank" rel="noopener noreferrer">David Wragg</a> quickly told me that the signal name stands for "Segmentation Violation". I guess that makes sense. Long long time ago, computers used to have <a href="https://en.wikipedia.org/wiki/X86_memory_segmentation" target="_blank" rel="noopener noreferrer">memory segmentation</a>. Each memory segment had defined length - called Segment Limit. Accessing data over this limit caused a processor fault. This error code got re-used <a href="https://en.wikipedia.org/wiki/Memory_segmentation#Segmentation_with_paging" target="_blank" rel="noopener noreferrer">by newer systems that used paging</a>. I think the Intel manuals call this error <a href="https://en.wikipedia.org/wiki/Page_fault#Invalid" target="_blank" rel="noopener noreferrer">"Invalid Page Fault"</a>. When it's triggered it gets reported to the userspace as a SIGSEGV signal. End of story.</p>
+<p>Or is it?</p>
+<p><a href="https://twitter.com/mahtin" target="_blank" rel="noopener noreferrer">Martin Levy</a> pointed me to an ancient <a href="http://man.cat-v.org/unix-6th/2/signal" target="_blank" rel="noopener noreferrer">Version 6th UNIX documentation on "signal"</a>. This is from around 1978:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="555" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=715&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=640&amp;h=497&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=715&amp;h=555&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=750&amp;h=582&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=828&amp;h=643&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=1080&amp;h=838&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=1280&amp;h=994&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=1430&amp;h=1110&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="Why is there a &quot;V&quot; in SIGSEGV Segmentation Fault? Embedded Image - acHBIr" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW46XHCNG4JM1AMK196D480R.jpg&amp;w=1195&amp;h=928&amp;f=webp" data-lightbox-width="1195" data-lightbox-height="928" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="555" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Look carefully. There is no SIGSEGV signal! Signal number 11 is called SIGSEG!</p>
+<p>It seems that userspace parts of the UNIX tree (i.e. /usr/include/signal.h) switched to SIGSEGV fairly early on. But the kernel internals continued to use the name SIGSEG for much longer.</p>
+<p>Looking deeper David found that PDP11 trap vector used wording <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V4-Snapshot-Development/sys/ken/low.s#L59" target="_blank" rel="noopener noreferrer">"segmentation violation"</a>. This shows up in Research V4 Edition in the UNIX history repo, but it doesn't mean it was introduced in V4 - it's just because V4 is the first version with code still available.</p>
+<p>This trap was converted into <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V4-Snapshot-Development/sys/ken/trap.c#L73" target="_blank" rel="noopener noreferrer">SIGSEG signal in trap.c</a> file.</p>
+<p>The file /usr/include/signal.h appears in the tree for Research V7, <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V7-Snapshot-Development/usr/include/signal.h" target="_blank" rel="noopener noreferrer">with the name SIGSEGV</a>. But the kernel <a href="https://github.com/dspinellis/unix-history-repo/blob/Research-V7-Snapshot-Development/usr/sys/sys/trap.c#L177" target="_blank" rel="noopener noreferrer">still called it SIGSEG at the time</a></p>
+<p>It seems the kernel side was <a href="https://github.com/dspinellis/unix-history-repo/blob/BSD-4/usr/src/sys/sys/trap.c#L67" target="_blank" rel="noopener noreferrer">renamed to SIGSEGV in BSD-4</a>.</p>
+<p>Here you go. Originally the signal was called SIGSEG. It was subsequently renamed SIGSEGV in the userspace and a bit later - around 1980 - to SIGSEGV on the kernel side. Apparently there are still no Segmentation Vaults found on UNIX systems.</p>
+<p>As for my original crash, I fixed it - of course - by catching the signal and jumping over the offending instruction. On Linux it is totally possible to catch and handle SIGSEGV. With that fix, my code will never again crash. For sure.</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span>#define _GNU_SOURCE</span></span>
+<span class="line"><span>#include &lt;signal.h&gt;</span></span>
+<span class="line"><span>#include &lt;stdio.h&gt;</span></span>
+<span class="line"><span>#include &lt;ucontext.h&gt;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>static void sighandler(int signo, siginfo_t *si, void* v_context)</span></span>
+<span class="line"><span>{</span></span>
+<span class="line"><span>    ucontext_t *context = v_context;</span></span>
+<span class="line"><span>    context-&gt;uc_mcontext.gregs[REG_RIP] += 10;</span></span>
+<span class="line"><span>}</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int *totally_null_pointer = NULL;</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>int main() {</span></span>
+<span class="line"><span>    struct sigaction psa;</span></span>
+<span class="line"><span>    psa.sa_sigaction = sighandler;</span></span>
+<span class="line"><span>    sigaction(SIGSEGV, &amp;psa, NULL);</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    printf("Before NULL pointer dereference\n");</span></span>
+<span class="line"><span>    *totally_null_pointer = 1;</span></span>
+<span class="line"><span>    __asm__ __volatile__("nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;");</span></span>
+<span class="line"><span>    printf("After NULL pointer. Still here!\n");</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>    return 0;</span></span>
+<span class="line"><span>}</span></span></code></pre>
 </div>

@@ -1,320 +1,324 @@
-<div class="mb2 gray5">7 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/4L2LYeMJ5dbwiIINGXRCJ2/2abd9bb41531604a3c657f4e4f9cc68b/how-to-execute-an-object-file-part-3.jpg" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<div class="flex anchor relative">
-		<h2 id="dealing-with-external-libraries">Dealing with external libraries</h2>
-		<a href="https://blog.cloudflare.com/#dealing-with-external-libraries" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies — that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2" target="_blank" rel="noopener noreferrer">the code from part 2</a>. Let's add another function to our toy object file:</p>
-	<p><i>obj.c</i>:</p>
-	<pre class="language-c"><code class="language-c">#include &lt;stdio.h&gt;
- 
-...
- 
-void say_hello(void)
-{
-    puts("Hello, world!");
-}</code></pre>
-	<p>In the above scenario our <code>say_hello</code> function now depends on the <code>puts</code> <a href="https://man7.org/linux/man-pages/man3/puts.3.html" target="_blank" rel="noopener noreferrer">function from the C standard library</a>. To try it out we also need to modify our <code>loader</code> to import the new function and execute it:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-static void execute_funcs(void)
-{
-    /* pointers to imported functions */
-    int (*add5)(int);
-    int (*add10)(int);
-    const char *(*get_hello)(void);
-    int (*get_var)(void);
-    void (*set_var)(int num);
-    void (*say_hello)(void);
- 
-...
- 
-    say_hello = lookup_function("say_hello");
-    if (!say_hello) {
-        fputs("Failed to find say_hello function\n", stderr);
-        exit(ENOENT);
-    }
- 
-    puts("Executing say_hello...");
-    say_hello();
-}
-...</code></pre>
-	<p>Let's run it:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -c obj.c
-$ gcc -o loader loader.c
-$ ./loader
-No runtime base address for section</code></pre>
-	<p>Seems something went wrong when the <code>loader</code> tried to process relocations, so let's check the relocations table:</p>
-	<pre class="language-bash"><code class="language-bash">$ readelf --relocs obj.o
- 
-Relocation section '.rela.text' at offset 0x3c8 contains 7 entries:
-  Offset          Info           Type           Sym. Value    Sym. Name + Addend
-000000000020  000a00000004 R_X86_64_PLT32    0000000000000000 add5 - 4
-00000000002d  000a00000004 R_X86_64_PLT32    0000000000000000 add5 - 4
-00000000003a  000500000002 R_X86_64_PC32     0000000000000000 .rodata - 4
-000000000046  000300000002 R_X86_64_PC32     0000000000000000 .data - 4
-000000000058  000300000002 R_X86_64_PC32     0000000000000000 .data - 4
-000000000066  000500000002 R_X86_64_PC32     0000000000000000 .rodata - 4
-00000000006b  001100000004 R_X86_64_PLT32    0000000000000000 puts - 4
-...</code></pre>
-	<p>The compiler generated a relocation for the <code>puts</code> invocation. The relocation type is <code>R_X86_64_PLT32</code> and our <code>loader</code> already knows how to process these, so the problem is elsewhere. The above entry shows that the relocation references 17th entry (<code>0x11</code> in hex) in the symbol table, so let's check that:</p>
-	<pre class="language-bash"><code class="language-bash">$ readelf --symbols obj.o
- 
-Symbol table '.symtab' contains 18 entries:
-   Num:    Value          Size Type    Bind   Vis      Ndx Name
-     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND
-     1: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS obj.c
-     2: 0000000000000000     0 SECTION LOCAL  DEFAULT    1
-     3: 0000000000000000     0 SECTION LOCAL  DEFAULT    3
-     4: 0000000000000000     0 SECTION LOCAL  DEFAULT    4
-     5: 0000000000000000     0 SECTION LOCAL  DEFAULT    5
-     6: 0000000000000000     4 OBJECT  LOCAL  DEFAULT    3 var
-     7: 0000000000000000     0 SECTION LOCAL  DEFAULT    7
-     8: 0000000000000000     0 SECTION LOCAL  DEFAULT    8
-     9: 0000000000000000     0 SECTION LOCAL  DEFAULT    6
-    10: 0000000000000000    15 FUNC    GLOBAL DEFAULT    1 add5
-    11: 000000000000000f    36 FUNC    GLOBAL DEFAULT    1 add10
-    12: 0000000000000033    13 FUNC    GLOBAL DEFAULT    1 get_hello
-    13: 0000000000000040    12 FUNC    GLOBAL DEFAULT    1 get_var
-    14: 000000000000004c    19 FUNC    GLOBAL DEFAULT    1 set_var
-    15: 000000000000005f    19 FUNC    GLOBAL DEFAULT    1 say_hello
-    16: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND _GLOBAL_OFFSET_TABLE_
-    17: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND puts</code></pre>
-	<p>Oh! The section index for the <code>puts</code> function is <code>UND</code> (essentially <code>0</code> in the code), which makes total sense: unlike previous symbols, <code>puts</code> is an external dependency, and it is not implemented in our <code>obj.o</code> file. Therefore, it can't be a part of any section within <code>obj.o</code>.So how do we resolve this relocation? We need to somehow point the code to jump to a <code>puts</code> implementation. Our <code>loader</code> actually already has access to the C library <code>puts</code> function (because it is written in C and we've used <code>puts</code> in the <code>loader</code> code itself already), but technically it doesn't have to be the C library <code>puts</code>, just some <code>puts</code> implementation. For completeness, let's implement our own custom <code>puts</code> function in the <code>loader</code>, which is just a decorator around the C library <code>puts</code>:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-/* external dependencies for obj.o */
-static int my_puts(const char *s)
-{
-    puts("my_puts executed");
-    return puts(s);
-}
-...</code></pre>
-	<p>Now that we have a <code>puts</code> implementation (and thus its runtime address) we should just write logic in the <code>loader</code> to resolve the relocation by instructing the code to jump to the correct function. However, there is one complication: in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a>, when we processed relocations for constants and global variables, we learned we're mostly dealing with 32-bit relative relocations and that the code or data we're referencing needs to be no more than 2147483647 (<code>0x7fffffff</code> in hex) bytes away from the relocation itself. <code>R_X86_64_PLT32</code> is also a 32-bit relative relocation, so it has the same requirements, but unfortunately we can't reuse the trick from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2</a> as our <code>my_puts</code> function is part of the <code>loader</code> itself and we don't have control over where in the address space the operating system places the <code>loader</code> code.</p>
-	<p>Luckily, we don't have to come up with any new solutions and can just borrow the approach used in shared libraries.</p>
-	<div class="flex anchor relative">
-		<h3 id="exploring-plt-got">Exploring PLT/GOT</h3>
-		<a href="https://blog.cloudflare.com/#exploring-plt-got" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>Real world ELF executables and shared libraries have the same problem: often executables have dependencies on shared libraries and shared libraries have dependencies on other shared libraries. And all of the different pieces of a complete runtime program may be mapped to random ranges in the process address space. When a shared library or an ELF executable is linked together, the linker enumerates all the external references and creates two or more additional sections (for a refresher on ELF sections check out the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1">part 1 of our series</a>) in the ELF file. The two mandatory ones are <a href="https://refspecs.linuxfoundation.org/ELF/zSeries/lzsabi0_zSeries/x2251.html" target="_blank" rel="noopener noreferrer">the Procedure Linkage Table (PLT) and the Global Offset Table (GOT)</a>.</p>
-	<p>We will not deep-dive into specifics of the standard PLT/GOT implementation as there are many other great resources online, but in a nutshell PLT/GOT is just a jumptable for external code. At the linking stage the linker resolves all external 32-bit relative relocations with respect to a locally generated PLT/GOT table. It can do that, because this table would become part of the final ELF file itself, so it will be "close" to the main code, when the file is mapped into memory at runtime. Later, at runtime <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">the dynamic loader</a> populates PLT/GOT tables for every loaded ELF file (both the executable and the shared libraries) with the runtime addresses of all the dependencies. Eventually, when the program code calls some external library function, the CPU "jumps" through the local PLT/GOT table to the final code:</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/7xHrWlui04cqRxeurzvRpd/2d4b41f80468fde55541c19933d924c1/image2-5.png" alt="simplified PLT/GOT call flow" class="kg-image" width="648" height="572" loading="lazy">
-
-	</figure>
-	<p>Why do we need two ELF sections to implement one jumptable you may ask? Well, because real world PLT/GOT is a bit more complex than described above. Turns out resolving all external references at runtime may significantly slow down program startup time, so symbol resolution is implemented via a "lazy approach": a reference is resolved by <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">the dynamic loader</a> only when the code actually tries to call a particular function. If the main application code never calls a library function, that reference will never be resolved.</p>
-	<div class="flex anchor relative">
-		<h3 id="implementing-a-simplified-plt-got">Implementing a simplified PLT/GOT</h3>
-		<a href="https://blog.cloudflare.com/#implementing-a-simplified-plt-got" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>For learning and demonstrative purposes though we will not be reimplementing a full-blown PLT/GOT with lazy resolution, but a simple jumptable, which resolves external references when the object file is loaded and parsed. First of all we need to know the size of the table: for ELF executables and shared libraries the linker will count the external references at link stage and create appropriately sized PLT and GOT sections. Because we are dealing with raw object files we would have to do another pass over the <code>.rela.text</code> section and count all the relocations, which point to an entry in the symbol table with undefined section index (or <code>0</code> in code). Let's add a function for this and store the number of external references in a global variable:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-/* number of external symbols in the symbol table */
-static int num_ext_symbols = 0;
-...
-static void count_external_symbols(void)
-{
-    const Elf64_Shdr *rela_text_hdr = lookup_section(".rela.text");
-    if (!rela_text_hdr) {
-        fputs("Failed to find .rela.text\n", stderr);
-        exit(ENOEXEC);
-    }
- 
-    int num_relocations = rela_text_hdr-&gt;sh_size / rela_text_hdr-&gt;sh_entsize;
-    const Elf64_Rela *relocations = (Elf64_Rela *)(obj.base + rela_text_hdr-&gt;sh_offset);
- 
-    for (int i = 0; i &lt; num_relocations; i++) {
-        int symbol_idx = ELF64_R_SYM(relocations[i].r_info);
- 
-        /* if there is no section associated with a symbol, it is probably
-         * an external reference */
-        if (symbols[symbol_idx].st_shndx == SHN_UNDEF)
-            num_ext_symbols++;
-    }
-}
-...</code></pre>
-	<p>This function is very similar to our <code>do_text_relocations</code> function. Only instead of actually performing relocations it just counts the number of external symbol references.</p>
-	<p>Next we need to decide the actual size in bytes for our jumptable. <code>num_ext_symbols</code> has the number of external symbol references in the object file, but how many bytes per symbol to allocate? To figure this out we need to design our jumptable format. As we established above, in its simple form our jumptable should be just a collection of unconditional CPU jump instructions — one for each external symbol. However, unfortunately modern x64 CPU architecture <a href="https://www.felixcloutier.com/x86/jmp" target="_blank" rel="noopener noreferrer">does not provide a jump instruction</a>, where an address pointer can be a direct operand. Instead, the jump address needs to be stored in memory somewhere "close" — that is within 32-bit offset — and the offset is the actual operand. So, for each external symbol we need to store the jump address (64 bits or 8 bytes on a 64-bit CPU system) and the actual jump instruction with an offset operand (<a href="https://www.felixcloutier.com/x86/jmp" target="_blank" rel="noopener noreferrer">6 bytes for x64 architecture</a>). We can represent an entry in our jumptable with the following C structure:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-struct ext_jump {
-    /* address to jump to */
-    uint8_t *addr;
-    /* unconditional x64 JMP instruction */
-    /* should always be {0xff, 0x25, 0xf2, 0xff, 0xff, 0xff} */
-    /* so it would jump to an address stored at addr above */
-    uint8_t instr[6];
-};
- 
-struct ext_jump *jumptable;
-...</code></pre>
-	<p>We've also added a global variable to store the base address of the jumptable, which will be allocated later. Notice that with the above approach the actual jump instruction will always be constant for every external symbol. Since we allocate a dedicated entry for each external symbol with this structure, the <code>addr</code> member would always be at the same offset from the end of the jump instruction in <code>instr</code>: <code>-14</code> bytes or <code>0xfffffff2</code> in hex for a 32-bit operand. So <code>instr</code> will always be <code>{0xff, 0x25, 0xf2, 0xff, 0xff, 0xff}</code>: <code>0xff</code> and <code>0x25</code> is the encoding of the x64 jump instruction and its modifier and <code>0xfffffff2</code> is the operand offset in little-endian format.</p>
-	<p>Now that we have defined the entry format for our jumptable, we can allocate and populate it when parsing the object file. First of all, let's not forget to call our new <code>count_external_symbols</code> function from the <code>parse_obj</code> to populate <code>num_ext_symbols</code> (it has to be done before we allocate the jumptable):</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-static void parse_obj(void)
-{
-...
- 
-    count_external_symbols();
- 
-    /* allocate memory for `.text`, `.data` and `.rodata` copies rounding up each section to whole pages */
-    text_runtime_base = mmap(NULL, page_align(text_hdr-&gt;sh_size)...
-...
-}</code></pre>
-	<p>Next we need to allocate memory for the jumptable and store the pointer in the <code>jumptable</code> global variable for later use. Just a reminder that in order to resolve 32-bit relocations from the <code>.text</code> section to this table, it has to be "close" in memory to the main code. So we need to allocate it in the same <code>mmap</code> call as the rest of the object sections. Since we defined the table's entry format in <code>struct ext_jump</code> and have <code>num_ext_symbols</code>, the size of the table would simply be <code>sizeof(struct ext_jump) * num_ext_symbols</code>:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-static void parse_obj(void)
-{
-...
- 
-    count_external_symbols();
- 
-    /* allocate memory for `.text`, `.data` and `.rodata` copies and the jumptable for external symbols, rounding up each section to whole pages */
-    text_runtime_base = mmap(NULL, page_align(text_hdr-&gt;sh_size) + \
-                                   page_align(data_hdr-&gt;sh_size) + \
-                                   page_align(rodata_hdr-&gt;sh_size) + \
-                                   page_align(sizeof(struct ext_jump) * num_ext_symbols),
-                                   PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-    if (text_runtime_base == MAP_FAILED) {
-        perror("Failed to allocate memory");
-        exit(errno);
-    }
- 
-...
-    rodata_runtime_base = data_runtime_base + page_align(data_hdr-&gt;sh_size);
-    /* jumptable will come after .rodata */
-    jumptable = (struct ext_jump *)(rodata_runtime_base + page_align(rodata_hdr-&gt;sh_size));
- 
-...
-}
-...</code></pre>
-	<p>Finally, because the CPU will actually be executing the jump instructions from our <code>instr</code> fields from the jumptable, we need to mark this memory readonly and executable (after <code>do_text_relocations</code> earlier in this function has completed):</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-static void parse_obj(void)
-{
-...
- 
-    do_text_relocations();
- 
-...
- 
-    /* make the jumptable readonly and executable */
-    if (mprotect(jumptable, page_align(sizeof(struct ext_jump) * num_ext_symbols), PROT_READ | PROT_EXEC)) {
-        perror("Failed to make the jumptable executable");
-        exit(errno);
-    }
-}
-...</code></pre>
-	<p>At this stage we have our jumptable allocated and usable — all is left to do is to populate it properly. We’ll do this by improving the <code>do_text_relocations</code> implementation to handle the case of external symbols. The <code>No runtime base address for section</code> error from the beginning of this post is actually caused by this line in <code>do_text_relocations</code>:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-static void do_text_relocations(void)
-{
-...
-    for (int i = 0; i &lt; num_relocations; i++) {
-...
-        /* symbol, with respect to which the relocation is performed */
-        uint8_t *symbol_address = = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
-...
-}
-...</code></pre>
-	<p>Currently we try to determine the runtime symbol address for the relocation by looking up the symbol's section runtime address and adding the symbol's offset. But we have established above that external symbols do not have an associated section, so their handling needs to be a special case. Let's update the implementation to reflect this:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-static void do_text_relocations(void)
-{
-...
-    for (int i = 0; i &lt; num_relocations; i++) {
-...
-        /* symbol, with respect to which the relocation is performed */
-        uint8_t *symbol_address;
-        
-        /* if this is an external symbol */
-        if (symbols[symbol_idx].st_shndx == SHN_UNDEF) {
-            static int curr_jmp_idx = 0;
- 
-            /* get external symbol/function address by name */
-            jumptable[curr_jmp_idx].addr = lookup_ext_function(strtab +  symbols[symbol_idx].st_name);
- 
-            /* x64 unconditional JMP with address stored at -14 bytes offset */
-            /* will use the address stored in addr above */
-            jumptable[curr_jmp_idx].instr[0] = 0xff;
-            jumptable[curr_jmp_idx].instr[1] = 0x25;
-            jumptable[curr_jmp_idx].instr[2] = 0xf2;
-            jumptable[curr_jmp_idx].instr[3] = 0xff;
-            jumptable[curr_jmp_idx].instr[4] = 0xff;
-            jumptable[curr_jmp_idx].instr[5] = 0xff;
- 
-            /* resolve the relocation with respect to this unconditional JMP */
-            symbol_address = (uint8_t *)(&amp;jumptable[curr_jmp_idx].instr);
- 
-            curr_jmp_idx++;
-        } else {
-            symbol_address = section_runtime_base(&amp;sections[symbols[symbol_idx].st_shndx]) + symbols[symbol_idx].st_value;
-        }
-...
-}
-...</code></pre>
-	<p>If a relocation symbol does not have an associated section, we consider it external and call a helper function to lookup the symbol's runtime address by its name. We store this address in the next available jumptable entry, populate the x64 jump instruction with our fixed operand and store the address of the instruction in the <code>symbol_address</code> variable. Later, the existing code in <code>do_text_relocations</code> will resolve the <code>.text</code> relocation with respect to the address in <code>symbol_address</code> in the same way it does for local symbols in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2">part 2 of our series</a>.</p>
-	<p>The only missing bit here now is the implementation of the newly introduced <code>lookup_ext_function</code> helper. Real world loaders may have complicated logic on how to find and resolve symbols in memory at runtime. But for the purposes of this article we'll provide a simple naive implementation, which can only resolve the <code>puts</code> function:</p>
-	<p><i>loader.c</i>:</p>
-	<pre class="language-c"><code class="language-c">...
- 
-static void *lookup_ext_function(const char *name)
-{
-    size_t name_len = strlen(name);
- 
-    if (name_len == strlen("puts") &amp;&amp; !strcmp(name, "puts"))
-        return my_puts;
- 
-    fprintf(stderr, "No address for function %s\n", name);
-    exit(ENOENT);
-}
-...</code></pre>
-	<p>Notice though that because we control the <code>loader</code> logic we are free to implement resolution as we please. In the above case we actually "divert" the object file to use our own "custom" <code>my_puts</code> function instead of the C library one. Let's recompile the <code>loader</code> and see if it works:</p>
-	<pre class="language-bash"><code class="language-bash">$ gcc -o loader loader.c
-$ ./loader
-Executing add5...
-add5(42) = 47
-Executing add10...
-add10(42) = 52
-Executing get_hello...
-get_hello() = Hello, world!
-Executing get_var...
-get_var() = 5
-Executing set_var(42)...
-Executing get_var again...
-get_var() = 42
-Executing say_hello...
-my_puts executed
-Hello, world!</code></pre>
-	<p>Hooray! We not only fixed our <code>loader</code> to handle external references in object files — we have also learned how to "hook" any such external function call and divert the code to a custom implementation, which might be useful in some cases, like malware research.</p>
-	<p>As in the previous posts, the complete source code from this post is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/3" target="_blank" rel="noopener noreferrer">available on GitHub</a>.</p>
+<h2>Dealing with external libraries</h2>
+<p>In the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2" target="_blank" rel="noopener noreferrer">part 2 of our series</a> we learned how to process relocations in object files in order to properly wire up internal dependencies in the code. In this post we will look into what happens if the code has external dependencies — that is, it tries to call functions from external libraries. As before, we will be building upon <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/2" target="_blank" rel="noopener noreferrer">the code from part 2</a>. Let's add another function to our toy object file:</p>
+<p><em>obj.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-d73a49-a0a0a0">#include</span><span class="sk-032f62-99ffe4"> &lt;stdio.h&gt;</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">void</span><span class="sk-6f42c1-ffc799"> say_hello</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Hello, world!"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
 </div>
+<p>In the above scenario our <code>say_hello</code> function now depends on the <code>puts</code> <a href="https://man7.org/linux/man-pages/man3/puts.3.html" target="_blank" rel="noopener noreferrer">function from the C standard library</a>. To try it out we also need to modify our <code>loader</code> to import the new function and execute it:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> execute_funcs</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* pointers to imported functions */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">add5)(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">add10)(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-d73a49-a0a0a0"> char</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">get_hello)(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">get_var)(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    void</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">set_var)(</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff"> num);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    void</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">say_hello)(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">    say_hello </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> lookup_function</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"say_hello"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">say_hello) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        fputs</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Failed to find say_hello function</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, stderr);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(ENOENT);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Executing say_hello..."</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    say_hello</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>Let's run it:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -c</span><span class="sk-032f62-99ffe4"> obj.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">No</span><span class="sk-032f62-99ffe4"> runtime</span><span class="sk-032f62-99ffe4"> base</span><span class="sk-032f62-99ffe4"> address</span><span class="sk-032f62-99ffe4"> for</span><span class="sk-032f62-99ffe4"> section</span></span></code></pre>
+</div>
+<p>Seems something went wrong when the <code>loader</code> tried to process relocations, so let's check the relocations table:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --relocs</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Relocation</span><span class="sk-032f62-99ffe4"> section</span><span class="sk-032f62-99ffe4"> '.rela.text'</span><span class="sk-032f62-99ffe4"> at</span><span class="sk-032f62-99ffe4"> offset</span><span class="sk-005cc5-ffc799"> 0x3c8</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-005cc5-ffc799"> 7</span><span class="sk-032f62-99ffe4"> entries:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  Offset</span><span class="sk-032f62-99ffe4">          Info</span><span class="sk-032f62-99ffe4">           Type</span><span class="sk-032f62-99ffe4">           Sym.</span><span class="sk-032f62-99ffe4"> Value</span><span class="sk-032f62-99ffe4">    Sym.</span><span class="sk-032f62-99ffe4"> Name</span><span class="sk-032f62-99ffe4"> +</span><span class="sk-032f62-99ffe4"> Addend</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000020</span><span class="sk-032f62-99ffe4">  000a00000004</span><span class="sk-032f62-99ffe4"> R_X86_64_PLT32</span><span class="sk-005cc5-ffc799">    0000000000000000</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00000000002d</span><span class="sk-032f62-99ffe4">  000a00000004</span><span class="sk-032f62-99ffe4"> R_X86_64_PLT32</span><span class="sk-005cc5-ffc799">    0000000000000000</span><span class="sk-032f62-99ffe4"> add5</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00000000003a</span><span class="sk-005cc5-ffc799">  000500000002</span><span class="sk-032f62-99ffe4"> R_X86_64_PC32</span><span class="sk-005cc5-ffc799">     0000000000000000</span><span class="sk-032f62-99ffe4"> .rodata</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000046</span><span class="sk-005cc5-ffc799">  000300000002</span><span class="sk-032f62-99ffe4"> R_X86_64_PC32</span><span class="sk-005cc5-ffc799">     0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000058</span><span class="sk-005cc5-ffc799">  000300000002</span><span class="sk-032f62-99ffe4"> R_X86_64_PC32</span><span class="sk-005cc5-ffc799">     0000000000000000</span><span class="sk-032f62-99ffe4"> .data</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">000000000066</span><span class="sk-005cc5-ffc799">  000500000002</span><span class="sk-032f62-99ffe4"> R_X86_64_PC32</span><span class="sk-005cc5-ffc799">     0000000000000000</span><span class="sk-032f62-99ffe4"> .rodata</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">00000000006b</span><span class="sk-005cc5-ffc799">  001100000004</span><span class="sk-032f62-99ffe4"> R_X86_64_PLT32</span><span class="sk-005cc5-ffc799">    0000000000000000</span><span class="sk-032f62-99ffe4"> puts</span><span class="sk-032f62-99ffe4"> -</span><span class="sk-005cc5-ffc799"> 4</span></span>
+<span class="line"><span class="sk-005cc5-ffc799">...</span></span></code></pre>
+</div>
+<p>The compiler generated a relocation for the <code>puts</code> invocation. The relocation type is <code>R_X86_64_PLT32</code> and our <code>loader</code> already knows how to process these, so the problem is elsewhere. The above entry shows that the relocation references 17th entry (<code>0x11</code> in hex) in the symbol table, so let's check that:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> readelf</span><span class="sk-005cc5-99ffe4"> --symbols</span><span class="sk-032f62-99ffe4"> obj.o</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Symbol</span><span class="sk-032f62-99ffe4"> table</span><span class="sk-032f62-99ffe4"> '.symtab'</span><span class="sk-032f62-99ffe4"> contains</span><span class="sk-005cc5-ffc799"> 18</span><span class="sk-032f62-99ffe4"> entries:</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">   Num:</span><span class="sk-032f62-99ffe4">    Value</span><span class="sk-032f62-99ffe4">          Size</span><span class="sk-032f62-99ffe4"> Type</span><span class="sk-032f62-99ffe4">    Bind</span><span class="sk-032f62-99ffe4">   Vis</span><span class="sk-032f62-99ffe4">      Ndx</span><span class="sk-032f62-99ffe4"> Name</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     0:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> NOTYPE</span><span class="sk-032f62-99ffe4">  LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-032f62-99ffe4">  UND</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     1:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> FILE</span><span class="sk-032f62-99ffe4">    LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-032f62-99ffe4">  ABS</span><span class="sk-032f62-99ffe4"> obj.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     2:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    1</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     3:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    3</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     4:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    4</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     5:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     6:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     4</span><span class="sk-032f62-99ffe4"> OBJECT</span><span class="sk-032f62-99ffe4">  LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    3</span><span class="sk-032f62-99ffe4"> var</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     7:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    7</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     8:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    8</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">     9:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> SECTION</span><span class="sk-032f62-99ffe4"> LOCAL</span><span class="sk-032f62-99ffe4">  DEFAULT</span><span class="sk-005cc5-ffc799">    6</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    10:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">    15</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> add5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    11:</span><span class="sk-032f62-99ffe4"> 000000000000000f</span><span class="sk-005cc5-ffc799">    36</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> add10</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    12:</span><span class="sk-005cc5-ffc799"> 0000000000000033</span><span class="sk-005cc5-ffc799">    13</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> get_hello</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    13:</span><span class="sk-005cc5-ffc799"> 0000000000000040</span><span class="sk-005cc5-ffc799">    12</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> get_var</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    14:</span><span class="sk-032f62-99ffe4"> 000000000000004c</span><span class="sk-005cc5-ffc799">    19</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> set_var</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    15:</span><span class="sk-032f62-99ffe4"> 000000000000005f</span><span class="sk-005cc5-ffc799">    19</span><span class="sk-032f62-99ffe4"> FUNC</span><span class="sk-032f62-99ffe4">    GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-005cc5-ffc799">    1</span><span class="sk-032f62-99ffe4"> say_hello</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    16:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> NOTYPE</span><span class="sk-032f62-99ffe4">  GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4">  UND</span><span class="sk-032f62-99ffe4"> _GLOBAL_OFFSET_TABLE_</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    17:</span><span class="sk-005cc5-ffc799"> 0000000000000000</span><span class="sk-005cc5-ffc799">     0</span><span class="sk-032f62-99ffe4"> NOTYPE</span><span class="sk-032f62-99ffe4">  GLOBAL</span><span class="sk-032f62-99ffe4"> DEFAULT</span><span class="sk-032f62-99ffe4">  UND</span><span class="sk-032f62-99ffe4"> puts</span></span></code></pre>
+</div>
+<p>Oh! The section index for the <code>puts</code> function is <code>UND</code> (essentially <code>0</code> in the code), which makes total sense: unlike previous symbols, <code>puts</code> is an external dependency, and it is not implemented in our <code>obj.o</code> file. Therefore, it can't be a part of any section within <code>obj.o</code>.So how do we resolve this relocation? We need to somehow point the code to jump to a <code>puts</code> implementation. Our <code>loader</code> actually already has access to the C library <code>puts</code> function (because it is written in C and we've used <code>puts</code> in the <code>loader</code> code itself already), but technically it doesn't have to be the C library <code>puts</code>, just some <code>puts</code> implementation. For completeness, let's implement our own custom <code>puts</code> function in the <code>loader</code>, which is just a decorator around the C library <code>puts</code>:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/* external dependencies for obj.o */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-6f42c1-ffc799"> my_puts</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> char</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">s</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    puts</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"my_puts executed"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    return</span><span class="sk-6f42c1-ffc799"> puts</span><span class="sk-24292e-fff">(s);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>Now that we have a <code>puts</code> implementation (and thus its runtime address) we should just write logic in the <code>loader</code> to resolve the relocation by instructing the code to jump to the correct function. However, there is one complication: in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2" target="_blank" rel="noopener noreferrer">part 2 of our series</a>, when we processed relocations for constants and global variables, we learned we're mostly dealing with 32-bit relative relocations and that the code or data we're referencing needs to be no more than 2147483647 (<code>0x7fffffff</code> in hex) bytes away from the relocation itself. <code>R_X86_64_PLT32</code> is also a 32-bit relative relocation, so it has the same requirements, but unfortunately we can't reuse the trick from <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2" target="_blank" rel="noopener noreferrer">part 2</a> as our <code>my_puts</code> function is part of the <code>loader</code> itself and we don't have control over where in the address space the operating system places the <code>loader</code> code.</p>
+<p>Luckily, we don't have to come up with any new solutions and can just borrow the approach used in shared libraries.</p>
+<h3>Exploring PLT/GOT</h3>
+<p>Real world ELF executables and shared libraries have the same problem: often executables have dependencies on shared libraries and shared libraries have dependencies on other shared libraries. And all of the different pieces of a complete runtime program may be mapped to random ranges in the process address space. When a shared library or an ELF executable is linked together, the linker enumerates all the external references and creates two or more additional sections (for a refresher on ELF sections check out the <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-1" target="_blank" rel="noopener noreferrer">part 1 of our series</a>) in the ELF file. The two mandatory ones are <a href="https://refspecs.linuxfoundation.org/ELF/zSeries/lzsabi0_zSeries/x2251.html" target="_blank" rel="noopener noreferrer">the Procedure Linkage Table (PLT) and the Global Offset Table (GOT)</a>.</p>
+<p>We will not deep-dive into specifics of the standard PLT/GOT implementation as there are many other great resources online, but in a nutshell PLT/GOT is just a jumptable for external code. At the linking stage the linker resolves all external 32-bit relative relocations with respect to a locally generated PLT/GOT table. It can do that, because this table would become part of the final ELF file itself, so it will be "close" to the main code, when the file is mapped into memory at runtime. Later, at runtime <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">the dynamic loader</a> populates PLT/GOT tables for every loaded ELF file (both the executable and the shared libraries) with the runtime addresses of all the dependencies. Eventually, when the program code calls some external library function, the CPU "jumps" through the local PLT/GOT table to the final code:</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="648" height="572" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=648&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=640&amp;h=565&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=648&amp;h=572&amp;f=webp&amp;fit=cover&amp;position=center 648w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=750&amp;h=662&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=828&amp;h=731&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=1080&amp;h=953&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=1280&amp;h=1130&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=1296&amp;h=1144&amp;f=webp&amp;fit=cover&amp;position=center 1296w" alt="simplified PLT/GOT call flow" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW492GZN9RYXJHZSF4VTKXQ5.png&amp;w=648&amp;h=572&amp;f=webp" data-lightbox-width="648" data-lightbox-height="572" data-astro-cid-7nvefuv6="true" sizes="(min-width: 648px) 648px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="648" height="572" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
+<p>Why do we need two ELF sections to implement one jumptable you may ask? Well, because real world PLT/GOT is a bit more complex than described above. Turns out resolving all external references at runtime may significantly slow down program startup time, so symbol resolution is implemented via a "lazy approach": a reference is resolved by <a href="https://man7.org/linux/man-pages/man8/ld.so.8.html" target="_blank" rel="noopener noreferrer">the dynamic loader</a> only when the code actually tries to call a particular function. If the main application code never calls a library function, that reference will never be resolved.</p>
+<h3>Implementing a simplified PLT/GOT</h3>
+<p>For learning and demonstrative purposes though we will not be reimplementing a full-blown PLT/GOT with lazy resolution, but a simple jumptable, which resolves external references when the object file is loaded and parsed. First of all we need to know the size of the table: for ELF executables and shared libraries the linker will count the external references at link stage and create appropriately sized PLT and GOT sections. Because we are dealing with raw object files we would have to do another pass over the <code>.rela.text</code> section and count all the relocations, which point to an entry in the symbol table with undefined section index (or <code>0</code> in code). Let's add a function for this and store the number of external references in a global variable:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">/* number of external symbols in the symbol table */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff"> num_ext_symbols </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> count_external_symbols</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> Elf64_Shdr </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">rela_text_hdr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> lookup_section</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">".rela.text"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">!</span><span class="sk-24292e-fff">rela_text_hdr) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        fputs</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Failed to find .rela.text</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, stderr);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(ENOEXEC);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    int</span><span class="sk-24292e-fff"> num_relocations </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> rela_text_hdr-&gt;sh_size </span><span class="sk-d73a49-a0a0a0">/</span><span class="sk-24292e-fff"> rela_text_hdr-&gt;sh_entsize;</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    const</span><span class="sk-24292e-fff"> Elf64_Rela </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">relocations </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (Elf64_Rela </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)(obj.base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-24292e-fff"> rela_text_hdr-&gt;sh_offset);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> num_relocations; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        int</span><span class="sk-24292e-fff"> symbol_idx </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> ELF64_R_SYM</span><span class="sk-24292e-fff">(</span><span class="sk-e36209-fff">relocations</span><span class="sk-24292e-fff">[i].r_info);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* if there is no section associated with a symbol, it is probably</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">         * an external reference */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">symbols</span><span class="sk-24292e-fff">[symbol_idx].st_shndx </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> SHN_UNDEF)</span></span>
+<span class="line"><span class="sk-24292e-fff">            num_ext_symbols</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>This function is very similar to our <code>do_text_relocations</code> function. Only instead of actually performing relocations it just counts the number of external symbol references.</p>
+<p>Next we need to decide the actual size in bytes for our jumptable. <code>num_ext_symbols</code> has the number of external symbol references in the object file, but how many bytes per symbol to allocate? To figure this out we need to design our jumptable format. As we established above, in its simple form our jumptable should be just a collection of unconditional CPU jump instructions — one for each external symbol. However, unfortunately modern x64 CPU architecture <a href="https://www.felixcloutier.com/x86/jmp" target="_blank" rel="noopener noreferrer">does not provide a jump instruction</a>, where an address pointer can be a direct operand. Instead, the jump address needs to be stored in memory somewhere "close" — that is within 32-bit offset — and the offset is the actual operand. So, for each external symbol we need to store the jump address (64 bits or 8 bytes on a 64-bit CPU system) and the actual jump instruction with an offset operand (<a href="https://www.felixcloutier.com/x86/jmp" target="_blank" rel="noopener noreferrer">6 bytes for x64 architecture</a>). We can represent an entry in our jumptable with the following C structure:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> ext_jump {</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* address to jump to */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    uint8_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">addr;</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* unconditional x64 JMP instruction */</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* should always be {0xff, 0x25, 0xf2, 0xff, 0xff, 0xff} */</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* so it would jump to an address stored at addr above */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    uint8_t</span><span class="sk-e36209-fff"> instr</span><span class="sk-24292e-fff">[</span><span class="sk-005cc5-ffc799">6</span><span class="sk-24292e-fff">];</span></span>
+<span class="line"><span class="sk-24292e-fff">};</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> ext_jump </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">jumptable;</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>We've also added a global variable to store the base address of the jumptable, which will be allocated later. Notice that with the above approach the actual jump instruction will always be constant for every external symbol. Since we allocate a dedicated entry for each external symbol with this structure, the <code>addr</code> member would always be at the same offset from the end of the jump instruction in <code>instr</code>: <code>-14</code> bytes or <code>0xfffffff2</code> in hex for a 32-bit operand. So <code>instr</code> will always be <code>{0xff, 0x25, 0xf2, 0xff, 0xff, 0xff}</code>: <code>0xff</code> and <code>0x25</code> is the encoding of the x64 jump instruction and its modifier and <code>0xfffffff2</code> is the operand offset in little-endian format.</p>
+<p>Now that we have defined the entry format for our jumptable, we can allocate and populate it when parsing the object file. First of all, let's not forget to call our new <code>count_external_symbols</code> function from the <code>parse_obj</code> to populate <code>num_ext_symbols</code> (it has to be done before we allocate the jumptable):</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> parse_obj</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    count_external_symbols</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* allocate memory for `.text`, `.data` and `.rodata` copies rounding up each section to whole pages */</span></span>
+<span class="line"><span class="sk-24292e-fff">    text_runtime_base </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> mmap</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">page_align</span><span class="sk-24292e-fff">(text_hdr-&gt;sh_size)...</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span></code></pre>
+</div>
+<p>Next we need to allocate memory for the jumptable and store the pointer in the <code>jumptable</code> global variable for later use. Just a reminder that in order to resolve 32-bit relocations from the <code>.text</code> section to this table, it has to be "close" in memory to the main code. So we need to allocate it in the same <code>mmap</code> call as the rest of the object sections. Since we defined the table's entry format in <code>struct ext_jump</code> and have <code>num_ext_symbols</code>, the size of the table would simply be <code>sizeof(struct ext_jump) * num_ext_symbols</code>:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> parse_obj</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    count_external_symbols</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* allocate memory for `.text`, `.data` and `.rodata` copies and the jumptable for external symbols, rounding up each section to whole pages */</span></span>
+<span class="line"><span class="sk-24292e-fff">    text_runtime_base </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> mmap</span><span class="sk-24292e-fff">(</span><span class="sk-005cc5-fff">NULL</span><span class="sk-24292e-fff">, </span><span class="sk-6f42c1-ffc799">page_align</span><span class="sk-24292e-fff">(text_hdr-&gt;sh_size) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                   page_align</span><span class="sk-24292e-fff">(data_hdr-&gt;sh_size) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                   page_align</span><span class="sk-24292e-fff">(rodata_hdr-&gt;sh_size) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-005cc5-a0a0a0"> \</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">                                   page_align</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> ext_jump) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> num_ext_symbols),</span></span>
+<span class="line"><span class="sk-24292e-fff">                                   PROT_READ </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> PROT_WRITE, MAP_PRIVATE </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> MAP_ANONYMOUS, </span><span class="sk-d73a49-a0a0a0">-</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">, </span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (text_runtime_base </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> MAP_FAILED) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Failed to allocate memory"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(errno);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff">    rodata_runtime_base </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> data_runtime_base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-6f42c1-ffc799"> page_align</span><span class="sk-24292e-fff">(data_hdr-&gt;sh_size);</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* jumptable will come after .rodata */</span></span>
+<span class="line"><span class="sk-24292e-fff">    jumptable </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> ext_jump </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff">)(rodata_runtime_base </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-6f42c1-ffc799"> page_align</span><span class="sk-24292e-fff">(rodata_hdr-&gt;sh_size));</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>Finally, because the CPU will actually be executing the jump instructions from our <code>instr</code> fields from the jumptable, we need to mark this memory readonly and executable (after <code>do_text_relocations</code> earlier in this function has completed):</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> parse_obj</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    do_text_relocations</span><span class="sk-24292e-fff">();</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">    /* make the jumptable readonly and executable */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (</span><span class="sk-6f42c1-ffc799">mprotect</span><span class="sk-24292e-fff">(jumptable, </span><span class="sk-6f42c1-ffc799">page_align</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">sizeof</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">struct</span><span class="sk-24292e-fff"> ext_jump) </span><span class="sk-d73a49-a0a0a0">*</span><span class="sk-24292e-fff"> num_ext_symbols), PROT_READ </span><span class="sk-d73a49-a0a0a0">|</span><span class="sk-24292e-fff"> PROT_EXEC)) {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        perror</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"Failed to make the jumptable executable"</span><span class="sk-24292e-fff">);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">        exit</span><span class="sk-24292e-fff">(errno);</span></span>
+<span class="line"><span class="sk-24292e-fff">    }</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>At this stage we have our jumptable allocated and usable — all is left to do is to populate it properly. We’ll do this by improving the <code>do_text_relocations</code> implementation to handle the case of external symbols. The <code>No runtime base address for section</code> error from the beginning of this post is actually caused by this line in <code>do_text_relocations</code>:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> do_text_relocations</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> num_relocations; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* symbol, with respect to which the relocation is performed */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        uint8_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">symbol_address </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-a0a0a0"> =</span><span class="sk-6f42c1-ffc799"> section_runtime_base</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">sections</span><span class="sk-24292e-fff">[</span><span class="sk-e36209-fff">symbols</span><span class="sk-24292e-fff">[symbol_idx].st_shndx]) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-e36209-fff"> symbols</span><span class="sk-24292e-fff">[symbol_idx].st_value;</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>Currently we try to determine the runtime symbol address for the relocation by looking up the symbol's section runtime address and adding the symbol's offset. But we have established above that external symbols do not have an associated section, so their handling needs to be a special case. Let's update the implementation to reflect this:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-6f42c1-ffc799"> do_text_relocations</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">void</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    for</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">int</span><span class="sk-24292e-fff"> i </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">; i </span><span class="sk-d73a49-a0a0a0">&lt;</span><span class="sk-24292e-fff"> num_relocations; i</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">) {</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* symbol, with respect to which the relocation is performed */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        uint8_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">symbol_address;</span></span>
+<span class="line"><span class="sk-24292e-fff">        </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">        /* if this is an external symbol */</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        if</span><span class="sk-24292e-fff"> (</span><span class="sk-e36209-fff">symbols</span><span class="sk-24292e-fff">[symbol_idx].st_shndx </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-24292e-fff"> SHN_UNDEF) {</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">            static</span><span class="sk-d73a49-a0a0a0"> int</span><span class="sk-24292e-fff"> curr_jmp_idx </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-005cc5-ffc799"> 0</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            /* get external symbol/function address by name */</span></span>
+<span class="line"><span class="sk-e36209-fff">            jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].addr </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> lookup_ext_function</span><span class="sk-24292e-fff">(strtab </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-e36209-fff">  symbols</span><span class="sk-24292e-fff">[symbol_idx].st_name);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            /* x64 unconditional JMP with address stored at -14 bytes offset */</span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            /* will use the address stored in addr above */</span></span>
+<span class="line"><span class="sk-e36209-fff">            jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">0</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">1</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">25</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">2</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">f2</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">3</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">4</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-e36209-fff">            jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].instr[</span><span class="sk-005cc5-ffc799">5</span><span class="sk-24292e-fff">] </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-d73a49-ffc799"> 0x</span><span class="sk-005cc5-ffc799">ff</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6a737d-8b8b8b94">            /* resolve the relocation with respect to this unconditional JMP */</span></span>
+<span class="line"><span class="sk-24292e-fff">            symbol_address </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-24292e-fff"> (</span><span class="sk-d73a49-a0a0a0">uint8_t</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-24292e-fff">)(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">jumptable</span><span class="sk-24292e-fff">[curr_jmp_idx].instr);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-24292e-fff">            curr_jmp_idx</span><span class="sk-d73a49-a0a0a0">++</span><span class="sk-24292e-fff">;</span></span>
+<span class="line"><span class="sk-24292e-fff">        } </span><span class="sk-d73a49-a0a0a0">else</span><span class="sk-24292e-fff"> {</span></span>
+<span class="line"><span class="sk-24292e-fff">            symbol_address </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> section_runtime_base</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">&amp;</span><span class="sk-e36209-fff">sections</span><span class="sk-24292e-fff">[</span><span class="sk-e36209-fff">symbols</span><span class="sk-24292e-fff">[symbol_idx].st_shndx]) </span><span class="sk-d73a49-a0a0a0">+</span><span class="sk-e36209-fff"> symbols</span><span class="sk-24292e-fff">[symbol_idx].st_value;</span></span>
+<span class="line"><span class="sk-24292e-fff">        }</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>If a relocation symbol does not have an associated section, we consider it external and call a helper function to lookup the symbol's runtime address by its name. We store this address in the next available jumptable entry, populate the x64 jump instruction with our fixed operand and store the address of the instruction in the <code>symbol_address</code> variable. Later, the existing code in <code>do_text_relocations</code> will resolve the <code>.text</code> relocation with respect to the address in <code>symbol_address</code> in the same way it does for local symbols in <a href="https://blog.cloudflare.com/how-to-execute-an-object-file-part-2" target="_blank" rel="noopener noreferrer">part 2 of our series</a>.</p>
+<p>The only missing bit here now is the implementation of the newly introduced <code>lookup_ext_function</code> helper. Real world loaders may have complicated logic on how to find and resolve symbols in memory at runtime. But for the purposes of this article we'll provide a simple naive implementation, which can only resolve the <code>puts</code> function:</p>
+<p><em>loader.c</em>:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">...</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">static</span><span class="sk-d73a49-a0a0a0"> void</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-6f42c1-ffc799">lookup_ext_function</span><span class="sk-24292e-fff">(</span><span class="sk-d73a49-a0a0a0">const</span><span class="sk-d73a49-a0a0a0"> char</span><span class="sk-d73a49-a0a0a0"> *</span><span class="sk-e36209-fff">name</span><span class="sk-24292e-fff">)</span></span>
+<span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    size_t</span><span class="sk-24292e-fff"> name_len </span><span class="sk-d73a49-a0a0a0">=</span><span class="sk-6f42c1-ffc799"> strlen</span><span class="sk-24292e-fff">(name);</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">    if</span><span class="sk-24292e-fff"> (name_len </span><span class="sk-d73a49-a0a0a0">==</span><span class="sk-6f42c1-ffc799"> strlen</span><span class="sk-24292e-fff">(</span><span class="sk-032f62-99ffe4">"puts"</span><span class="sk-24292e-fff">) </span><span class="sk-d73a49-a0a0a0">&amp;&amp;</span><span class="sk-d73a49-a0a0a0"> !</span><span class="sk-6f42c1-ffc799">strcmp</span><span class="sk-24292e-fff">(name, </span><span class="sk-032f62-99ffe4">"puts"</span><span class="sk-24292e-fff">))</span></span>
+<span class="line"><span class="sk-d73a49-a0a0a0">        return</span><span class="sk-24292e-fff"> my_puts;</span></span>
+<span class="line"><span class="sk-24292e-fff"> </span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    fprintf</span><span class="sk-24292e-fff">(stderr, </span><span class="sk-032f62-99ffe4">"No address for function </span><span class="sk-005cc5-fff">%s</span><span class="sk-005cc5-a0a0a0">\n</span><span class="sk-032f62-99ffe4">"</span><span class="sk-24292e-fff">, name);</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    exit</span><span class="sk-24292e-fff">(ENOENT);</span></span>
+<span class="line"><span class="sk-24292e-fff">}</span></span>
+<span class="line"><span class="sk-24292e-fff">...</span></span></code></pre>
+</div>
+<p>Notice though that because we control the <code>loader</code> logic we are free to implement resolution as we please. In the above case we actually "divert" the object file to use our own "custom" <code>my_puts</code> function instead of the C library one. Let's recompile the <code>loader</code> and see if it works:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> gcc</span><span class="sk-005cc5-99ffe4"> -o</span><span class="sk-032f62-99ffe4"> loader</span><span class="sk-032f62-99ffe4"> loader.c</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> ./loader</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add5...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add5(42</span><span class="sk-24292e-fff">) = 47</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> add10...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">add10(42</span><span class="sk-24292e-fff">) = 52</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_hello...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_hello</span><span class="sk-24292e-fff">() = Hello, world</span><span class="sk-d73a49-a0a0a0">!</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_var...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 5</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> set_var</span><span class="sk-24292e-fff">(</span><span class="sk-6f42c1-ffc799">42</span><span class="sk-24292e-fff">)</span><span class="sk-032f62-99ffe4">...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> get_var</span><span class="sk-032f62-99ffe4"> again...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">get_var</span><span class="sk-24292e-fff">() = 42</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Executing</span><span class="sk-032f62-99ffe4"> say_hello...</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">my_puts</span><span class="sk-032f62-99ffe4"> executed</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">Hello,</span><span class="sk-032f62-99ffe4"> world!</span></span></code></pre>
+</div>
+<p>Hooray! We not only fixed our <code>loader</code> to handle external references in object files — we have also learned how to "hook" any such external function call and divert the code to a custom implementation, which might be useful in some cases, like malware research.</p>
+<p>As in the previous posts, the complete source code from this post is <a href="https://github.com/cloudflare/cloudflare-blog/tree/master/2021-03-obj-file/3" target="_blank" rel="noopener noreferrer">available on GitHub</a>.</p>

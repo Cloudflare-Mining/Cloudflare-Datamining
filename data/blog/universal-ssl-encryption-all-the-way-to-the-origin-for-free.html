@@ -1,166 +1,85 @@
-<div class="mb2 gray5">3 min read</div><img class="mr2" src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/2gHvQCBsPLnj4tCflV5Pjj/95b59a29fffb69d9170abf75df0a056e/universal-ssl-encryption-all-the-way-to-the-origin-for-free.png" alt="">
-<div class="post-content post-body-content lh-copy gray1">
-	<p></p>
-	<p>Last September, CloudFlare unveiled <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>, enabling HTTPS support for all sites by default. All sites using CloudFlare now support strong cryptography from the browser to CloudFlare’s servers. One of the most popular requests for Universal SSL was to make it easier to encrypt the other half of the connection: from CloudFlare to the origin server.</p>
-	<p>Until today, encryption from CloudFlare to the origin required the purchase of a trusted certificate from a third party. The certificate purchasing process can be tedious and sometimes costly. To remedy this, CloudFlare has created a new Origin CA service in which we provide free limited-function certificates to customer origin servers.</p>
-	<p>Today we are excited to announce the public beta of this service, providing full encryption of all data from the browser to the origin, for free.</p>
-	<div class="flex anchor relative">
-		<h3 id="encrypted-all-the-way">Encrypted all the way</h3>
-		<a href="https://blog.cloudflare.com/#encrypted-all-the-way" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CloudFlare offers three modes for HTTPS: Flexible, Full and Strict. In Flexible mode, traffic from browsers to CloudFlare is encrypted, but traffic from CloudFlare to a site's origin server is not. In Full and Strict modes, traffic between CloudFlare and the origin server is encrypted. Strict mode adds validation of the origin server’s certificate. We strongly encourage customers to select Strict mode for their websites to ensure their visitors get the strongest data security possible.</p>
-	<p>As we <a href="https://blog.cloudflare.com/origin-server-connection-security-with-universal-ssl">previously discussed</a>, sites on <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer">CloudFlare’s Free plan</a> default to Flexible SSL mode. To take advantage of our Strict SSL mode it’s necessary to install a certificate on the origin server, which until now required them to buy one from a third party. Now customers can get that certificate directly from CloudFlare, for free.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/1uVSxqXR6vUpUQ6ugD42yo/79d259ee62d60e2105efd2e36ec13cbf/illustration-strict-ssl--2-.png" alt="" class="kg-image" width="1000" height="480" loading="lazy">
-
-	</figure>
-	<p>This certificate is only used to protect the traffic between the origin server and CloudFlare; it is never presented to browsers. For now you should only use it behind orange-clouded sites on CloudFlare.</p>
-	<p>If you are a CloudFlare customer and want to sign up for the beta, just send an email to <a href="https://blog.cloudflare.com/#">origin-ca-beta@cloudflare.com</a> with the following:</p>
-	<ul>
-		<li>
-			<p>A certificate signing request (CSR)</p>
-		</li>
-		<li>
-			<p>The domain name of the orange-clouded zone you want to install the certificate on</p>
-		</li>
-	</ul>
-	<p>The first <i>ten</i> brave beta customers will get a shiny new certificate to install on their web server. Note: do <i>not</i> send your private key to CloudFlare, only the CSR is needed.</p>
-	<p><i>Update: The beta is full! Thanks to those who are participating.</i></p>
-	<div class="flex anchor relative">
-		<h3 id="cloudflares-origin-certificate-authority">CloudFlare’s Origin Certificate Authority</h3>
-		<a href="https://blog.cloudflare.com/#cloudflares-origin-certificate-authority" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>In order to grant certificates to customer origins, CloudFlare had to create its own Certificate Authority. This consists of a set of processes and systems to validate certificate requests and create new certificates. For the Origin CA, CloudFlare created a private key and certificate for the specific purpose of signing certificates for origin servers.</p>
-	<div class="flex anchor relative">
-		<h4 id="software">Software</h4>
-		<a href="https://blog.cloudflare.com/#software" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The certificate authority software we use is <a href="https://blog.cloudflare.com/introducing-cfssl">CFSSL</a>, our open source PKI toolkit written in Go. It allows us to validate CSRs and use them to create new certificates for sites. These certificates are signed with our certificate authority private key, and validated when CloudFlare connects to the origin in Strict SSL mode.</p>
-	<p>In collaboration with other members of the industry (such as Richard Barnes from the <a href="https://letsencrypt.org" target="_blank" rel="noopener noreferrer">Let's Encrypt</a> project), we have updated CFSSL with several new features that help make it a viable certificate authority tool. These include <a href="http://en.wikipedia.org/wiki/PKCS_11" target="_blank" rel="noopener noreferrer">PKCS#11</a> support, which makes it possible for CFSSL to use a Hardware Security Module (HSM) to store private keys and <a href="http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol" target="_blank" rel="noopener noreferrer">OCSP</a> support, which lets CFSSL answer questions about the revocation status of a certificate.</p>
-	<div class="flex anchor relative">
-		<h4 id="validation">Validation</h4>
-		<a href="https://blog.cloudflare.com/#validation" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CAs are supposed to only give certificates to sites that own the domain(s) listed in the certificate. Domain validation is usually done in one of three ways:</p>
-	<ul>
-		<li>
-			<p>Putting a challenge in the DNS zone</p>
-		</li>
-		<li>
-			<p>Putting a challenge into a meta-tag of an HTML page hosted on the domain</p>
-		</li>
-		<li>
-			<p>Sending an email challenge to the domain registrant from the WhoIs DB</p>
-		</li>
-	</ul>
-	<p>Since CloudFlare is both a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">content delivery network</a> and a DNS provider, both DNS and HTML validation can be done by CloudFlare on behalf of the site. If your site is on CloudFlare and orange-clouded, we will give you a certificate for your site.</p>
-	<div class="flex anchor relative">
-		<h4 id="public-trust">Public trust</h4>
-		<a href="https://blog.cloudflare.com/#public-trust" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The CloudFlare Origin CA is currently not trusted by browsers, so these certificates should not be used on sites that are not behind CloudFlare. To issue certificates that are trusted by browsers, we would have to convince a publicly trusted certificate authority to cross-sign our CA certificate. This is not necessary in this case since it is CloudFlare that determines which certificates we trusted and the Origin CA is on our list.</p>
-	<hr>
-	<div class="flex anchor relative">
-		<h3 id="bonus-how-to-create-certificate-signing-requests">Bonus: How to create Certificate Signing Requests</h3>
-		<a href="https://blog.cloudflare.com/#bonus-how-to-create-certificate-signing-requests" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>The certificate signing request (CSR) is the standard mechanism for obtaining a certificate from a certificate authority. It contains a public key, some metadata such as which domain it is for and is digitally signed by a private key. It lets CloudFlare know that you own the private key.</p>
-	<div class="flex anchor relative">
-		<h4 id="creating-a-csr-and-private-key-with-cfssl">Creating a CSR and private key with CFSSL</h4>
-		<a href="https://blog.cloudflare.com/#creating-a-csr-and-private-key-with-cfssl" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>CFSSL is not only a tool that can be used for running a CA, but it can be used to create CSRs too. Following these instructions will get you a private key and a CSR to submit to a certificate authority.</p>
-	<h6>1) Install Go:</h6>
-	<p><a href="https://golang.org/doc/install" target="_blank" rel="noopener noreferrer">https://golang.org/doc/install</a></p>
-	<h6>2) Install CFSSL</h6>
-	<pre class="language-bash"><code class="language-bash">$ go get github.com/cloudflare/cfssl/cmd/...</code></pre>
-	<h6>3) Create a CSR template</h6>
-	<p>Use the following template for <code>csr.json</code> and replace “mysite.com” with your site’s <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name" target="_blank" rel="noopener noreferrer">domain name</a> and names with your company's information.</p>
-	<p>csr.json:</p>
-	<pre class="language-bash"><code class="language-bash">{
-  "key": {
-    "algo": "rsa",
-    "size": 2048
-  },
-  "hosts": [
-    “mysite.com"
-  ],
- "CN": "mysite.com",
-  "names": [
-    {
-      "C": "US",
-      "L": "San Francisco",
-      "ST": "California",
-      "O": "My Company, Inc.",
-      "OU": "My Company’s IT Department"
-    }
-  ]
-}</code></pre>
-	<h6>4) Create the certificate</h6>
-	<pre class="language-bash"><code class="language-bash">$ cfssl genkey csr.json | cfssljson -bare site</code></pre>
-	<p>This creates two files:</p>
-	<ul>
-		<li>
-			<p><code>site.csr</code>: your CSR</p>
-		</li>
-		<li>
-			<p><code>site-key.pem</code>: your private key</p>
-		</li>
-	</ul>
-	<div class="flex anchor relative">
-		<h5 id="other-resources">Other resources</h5>
-		<a href="https://blog.cloudflare.com/#other-resources" aria-hidden="true" class="relative sm:absolute sm:-start-5">
-			<svg width="16" height="16" viewBox="0 0 24 24">
-				<path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path>
-			</svg>
-		</a>
-	</div>
-	<p>If CFSSL is not working for you, here are some more resources for creating CSRs:</p>
-	<ul>
-		<li>
-			<p><a href="https://support.comodo.com/index.php?%2FDefault%2FKnowledgebase%2FArticle%2FView%2F1%2F19%2Fcsr-generation-using-openssl-apache-wmod_ssl-nginx-os-x=" target="_blank" rel="noopener noreferrer">Comodo</a></p>
-		</li>
-		<li>
-			<p><a href="https://support.globalsign.com/customer/portal/articles/1229769-certificate-signing-request-csr---overview" target="_blank" rel="noopener noreferrer">GlobalSign</a></p>
-		</li>
-		<li>
-			<p><a href="https://www.digicert.com/csr-creation.htm" target="_blank" rel="noopener noreferrer">Digicert</a></p>
-		</li>
-	</ul>
-	<p>In the future we plan on releasing tools to make certificate generation even easier and more automatic.</p>
-	<figure class="kg-card kg-image-card ">
-
-		<img src="https://cf-assets.www.cloudflare.com/zkvhlag99gkb/gkjU9sNg6L0UT6j0x6keC/bd0b762f12482a99f8a66eba329b7331/cloudflare_ssl-week-2.png" alt="CloudFlare SSL Week" class="kg-image" width="1000" height="375" loading="lazy">
-
-	</figure>
-	<p></p>
+<p>Last September, CloudFlare unveiled <a href="https://blog.cloudflare.com/introducing-universal-ssl">Universal SSL</a>, enabling HTTPS support for all sites by default. All sites using CloudFlare now support strong cryptography from the browser to CloudFlare’s servers. One of the most popular requests for Universal SSL was to make it easier to encrypt the other half of the connection: from CloudFlare to the origin server.</p>
+<p>Until today, encryption from CloudFlare to the origin required the purchase of a trusted certificate from a third party. The certificate purchasing process can be tedious and sometimes costly. To remedy this, CloudFlare has created a new Origin CA service in which we provide free limited-function certificates to customer origin servers.</p>
+<p>Today we are excited to announce the public beta of this service, providing full encryption of all data from the browser to the origin, for free.</p>
+<h3>Encrypted all the way</h3>
+<p>CloudFlare offers three modes for HTTPS: Flexible, Full and Strict. In Flexible mode, traffic from browsers to CloudFlare is encrypted, but traffic from CloudFlare to a site's origin server is not. In Full and Strict modes, traffic between CloudFlare and the origin server is encrypted. Strict mode adds validation of the origin server’s certificate. We strongly encourage customers to select Strict mode for their websites to ensure their visitors get the strongest data security possible.</p>
+<p>As we <a href="https://blog.cloudflare.com/origin-server-connection-security-with-universal-ssl">previously discussed</a>, sites on <a href="https://www.cloudflare.com/plans/free" target="_blank" rel="noopener noreferrer">CloudFlare’s Free plan</a> default to Flexible SSL mode. To take advantage of our Strict SSL mode it’s necessary to install a certificate on the origin server, which until now required them to buy one from a third party. Now customers can get that certificate directly from CloudFlare, for free.</p>
+<p>This certificate is only used to protect the traffic between the origin server and CloudFlare; it is never presented to browsers. For now you should only use it behind orange-clouded sites on CloudFlare.</p>
+<p>If you are a CloudFlare customer and want to sign up for the beta, just send an email to <a href="mailto:origin-ca-beta@cloudflare.com">origin-ca-beta@cloudflare.com</a> with the following:</p>
+<ul>
+	<li>A certificate signing request (CSR)</li>
+	<li>The domain name of the orange-clouded zone you want to install the certificate on</li>
+</ul>
+<p>The first <em>ten</em> brave beta customers will get a shiny new certificate to install on their web server. Note: do <em>not</em> send your private key to CloudFlare, only the CSR is needed.</p>
+<p><em>Update: The beta is full! Thanks to those who are participating.</em></p>
+<h3>CloudFlare’s Origin Certificate Authority</h3>
+<p>In order to grant certificates to customer origins, CloudFlare had to create its own Certificate Authority. This consists of a set of processes and systems to validate certificate requests and create new certificates. For the Origin CA, CloudFlare created a private key and certificate for the specific purpose of signing certificates for origin servers.</p>
+<h4>Software</h4>
+<p>The certificate authority software we use is <a href="https://blog.cloudflare.com/introducing-cfssl">CFSSL</a>, our open source PKI toolkit written in Go. It allows us to validate CSRs and use them to create new certificates for sites. These certificates are signed with our certificate authority private key, and validated when CloudFlare connects to the origin in Strict SSL mode.</p>
+<p>In collaboration with other members of the industry (such as Richard Barnes from the <a href="https://letsencrypt.org" target="_blank" rel="noopener noreferrer">Let's Encrypt</a> project), we have updated CFSSL with several new features that help make it a viable certificate authority tool. These include <a href="http://en.wikipedia.org/wiki/PKCS_11" target="_blank" rel="noopener noreferrer">PKCS#11</a> support, which makes it possible for CFSSL to use a Hardware Security Module (HSM) to store private keys and <a href="http://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol" target="_blank" rel="noopener noreferrer">OCSP</a> support, which lets CFSSL answer questions about the revocation status of a certificate.</p>
+<h4>Validation</h4>
+<p>CAs are supposed to only give certificates to sites that own the domain(s) listed in the certificate. Domain validation is usually done in one of three ways:</p>
+<ul>
+	<li>Putting a challenge in the DNS zone</li>
+	<li>Putting a challenge into a meta-tag of an HTML page hosted on the domain</li>
+	<li>Sending an email challenge to the domain registrant from the WhoIs DB</li>
+</ul>
+<p>Since CloudFlare is both a <a href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn" target="_blank" rel="noopener noreferrer">content delivery network</a> and a DNS provider, both DNS and HTML validation can be done by CloudFlare on behalf of the site. If your site is on CloudFlare and orange-clouded, we will give you a certificate for your site.</p>
+<h4>Public trust</h4>
+<p>The CloudFlare Origin CA is currently not trusted by browsers, so these certificates should not be used on sites that are not behind CloudFlare. To issue certificates that are trusted by browsers, we would have to convince a publicly trusted certificate authority to cross-sign our CA certificate. This is not necessary in this case since it is CloudFlare that determines which certificates we trusted and the Origin CA is on our list.</p>
+<hr class="emdash-break emdash-break-line" data-astro-cid-odjb7uk6="">
+<h3>Bonus: How to create Certificate Signing Requests</h3>
+<p>The certificate signing request (CSR) is the standard mechanism for obtaining a certificate from a certificate authority. It contains a public key, some metadata such as which domain it is for and is digitally signed by a private key. It lets CloudFlare know that you own the private key.</p>
+<h4>Creating a CSR and private key with CFSSL</h4>
+<p>CFSSL is not only a tool that can be used for running a CA, but it can be used to create CSRs too. Following these instructions will get you a private key and a CSR to submit to a certificate authority.</p>
+<h6>1) Install Go:</h6>
+<p><a href="https://golang.org/doc/install" target="_blank" rel="noopener noreferrer">https://golang.org/doc/install</a></p>
+<h6>2) Install CFSSL</h6>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> go</span><span class="sk-032f62-99ffe4"> get</span><span class="sk-032f62-99ffe4"> github.com/cloudflare/cfssl/cmd/...</span></span></code></pre>
 </div>
+<h6>3) Create a CSR template</h6>
+<p>Use the following template for <code>csr.json</code> and replace “mysite.com” with your site’s <a href="https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name" target="_blank" rel="noopener noreferrer">domain name</a> and names with your company's information.</p>
+<p>csr.json:</p>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-24292e-fff">{</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "key"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "algo"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-032f62-99ffe4"> "rsa",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    "size"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-005cc5-ffc799"> 2048</span></span>
+<span class="line"><span class="sk-24292e-fff">  },</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "hosts"</span><span class="sk-005cc5-ffc799">:</span><span class="sk-24292e-fff"> [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    “mysite.com</span><span class="sk-6f42c1-ffc799">"</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  ],</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799"> "</span><span class="sk-6f42c1-ffc799">CN</span><span class="sk-6f42c1-ffc799">": "</span><span class="sk-6f42c1-ffc799">mysite.com</span><span class="sk-6f42c1-ffc799">",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">  "</span><span class="sk-6f42c1-ffc799">names</span><span class="sk-6f42c1-ffc799">": [</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">    {</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "</span><span class="sk-6f42c1-ffc799">C</span><span class="sk-6f42c1-ffc799">": "</span><span class="sk-6f42c1-ffc799">US</span><span class="sk-6f42c1-ffc799">",</span></span>
+<span class="line"><span class="sk-6f42c1-ffc799">      "</span><span class="sk-6f42c1-ffc799">L</span><span class="sk-6f42c1-ffc799">": "</span><span class="sk-6f42c1-ffc799">San</span><span class="sk-032f62-99ffe4"> Francisco",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "ST": "California",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "O": "My</span><span class="sk-032f62-99ffe4"> Company,</span><span class="sk-032f62-99ffe4"> Inc.",</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">      "OU": "My</span><span class="sk-032f62-99ffe4"> Company’s</span><span class="sk-032f62-99ffe4"> IT</span><span class="sk-032f62-99ffe4"> Department"</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">    }</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">  ]</span></span>
+<span class="line"><span class="sk-032f62-99ffe4">}</span></span></code></pre>
+</div>
+<h6>4) Create the certificate</h6>
+<div class="emdash-code">
+	<pre class="shiki shiki-themes github-light vesper" tabindex="0"><code><span class="line"><span class="sk-6f42c1-ffc799">$</span><span class="sk-032f62-99ffe4"> cfssl</span><span class="sk-032f62-99ffe4"> genkey</span><span class="sk-032f62-99ffe4"> csr.json</span><span class="sk-d73a49-a0a0a0"> |</span><span class="sk-6f42c1-ffc799"> cfssljson</span><span class="sk-005cc5-99ffe4"> -bare</span><span class="sk-032f62-99ffe4"> site</span></span></code></pre>
+</div>
+<p>This creates two files:</p>
+<ul>
+	<li><code>site.csr</code>: your CSR</li>
+	<li><code>site-key.pem</code>: your private key</li>
+</ul>
+<h5>Other resources</h5>
+<p>If CFSSL is not working for you, here are some more resources for creating CSRs:</p>
+<ul>
+	<li><a href="https://support.comodo.com/index.php?%2FDefault%2FKnowledgebase%2FArticle%2FView%2F1%2F19%2Fcsr-generation-using-openssl-apache-wmod_ssl-nginx-os-x=" target="_blank" rel="noopener noreferrer">Comodo</a></li>
+	<li><a href="https://support.globalsign.com/customer/portal/articles/1229769-certificate-signing-request-csr---overview" target="_blank" rel="noopener noreferrer">GlobalSign</a></li>
+	<li><a href="https://www.digicert.com/csr-creation.htm" target="_blank" rel="noopener noreferrer">Digicert</a></li>
+</ul>
+<p>In the future we plan on releasing tools to make certificate generation even easier and more automatic.</p>
+<figure class="emdash-image pt-portable-image" data-astro-cid-7nvefuv6="">
+	<div class="pt-portable-image-frame" data-image-placeholder-frame="" data-astro-cid-7nvefuv6=""><img class="pt-portable-image-placeholder" data-image-placeholder="" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201%201%22%3E%3Crect%20width%3D%221%22%20height%3D%221%22%20fill%3D%22rgb(243%2C243%2C243)%22%2F%3E%3C%2Fsvg%3E" alt="" width="715" height="268" loading="eager" decoding="async" aria-hidden="true" data-astro-cid-7nvefuv6=""><img src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center" srcset="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=640&amp;h=240&amp;f=webp&amp;fit=cover&amp;position=center 640w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=715&amp;h=268&amp;f=webp&amp;fit=cover&amp;position=center 715w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=750&amp;h=281&amp;f=webp&amp;fit=cover&amp;position=center 750w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=828&amp;h=310&amp;f=webp&amp;fit=cover&amp;position=center 828w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=1080&amp;h=405&amp;f=webp&amp;fit=cover&amp;position=center 1080w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=1280&amp;h=480&amp;f=webp&amp;fit=cover&amp;position=center 1280w, /_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=1430&amp;h=536&amp;f=webp&amp;fit=cover&amp;position=center 1430w" alt="CloudFlare SSL Week" loading="lazy" decoding="async" data-image-placeholder-media="true" data-lightbox-src="/_image?href=https%3A%2F%2Fblog.cloudflare.com%2F_emdash%2Fapi%2Fmedia%2Ffile%2F01KW45H1HY48GN4CX6XT1KYENK.png&amp;w=1000&amp;h=375&amp;f=webp" data-lightbox-width="1000" data-lightbox-height="375" data-astro-cid-7nvefuv6="true" sizes="(min-width: 715px) 715px, 100vw" data-astro-image="constrained" data-astro-image-fit="cover" data-astro-image-pos="center" width="715" height="268" class="pt-portable-image-media"></div>
+</figure>
+<script type="module" src="/_astro/PTImage.astro_astro_type_script_index_0_lang.ihQLl0PR.js"></script>
